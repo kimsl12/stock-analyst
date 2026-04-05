@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOO 종합 분석 리포트</title>
+<style>
+:root{--bg-primary:#0F1923;--bg-card:#1A2733;--text-primary:#E8EAED;--text-secondary:#9AA0A6;--accent-buy:#26A69A;--accent-sell:#EF5350;--accent-neutral:#FFA726;--accent-highlight:#42A5F5;--border:#2D3A45;--stop-loss:#EF5350;--target-price:#26A69A;--stop-card-bg:#1E2D3A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;background:var(--bg-primary);color:var(--text-primary);font-size:16px;line-height:1.6;max-width:900px;margin:0 auto;padding:16px}
+.report-header{text-align:center;padding:32px 16px;border-bottom:2px solid var(--accent-highlight);margin-bottom:24px}
+.report-header h1{font-size:28px;margin-bottom:8px}
+.report-header .sub{color:var(--text-secondary);font-size:14px}
+.etf-badge{display:inline-block;background:var(--accent-highlight);color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:700;margin-bottom:8px}
+.grade-badge{display:inline-block;padding:8px 20px;border-radius:8px;font-size:18px;font-weight:700;margin:12px 0}
+.grade-buy{background:rgba(38,166,154,0.2);color:var(--accent-buy);border:1px solid var(--accent-buy)}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.card>summary{padding:16px 20px;font-size:17px;font-weight:600;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary::before{content:"B6";font-size:12px;transition:transform 0.2s}
+.card[open]>summary::before{transform:rotate(90deg)}
+.card-content{padding:0 20px 20px}
+.summary-card,.scorecard-section,.strategy-card{padding:20px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--accent-highlight);font-weight:600;font-size:13px;text-transform:uppercase}
+td{color:var(--text-primary)}
+.highlight-row td{background:rgba(66,165,245,0.08)}
+.positive{color:var(--accent-buy)}
+.negative{color:var(--accent-sell)}
+.stop-target-card{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.stop-box,.target-box{padding:16px;border-radius:10px;text-align:center}
+.stop-box{background:rgba(239,83,80,0.1);border:1px solid var(--stop-loss)}
+.target-box{background:rgba(38,166,154,0.1);border:1px solid var(--target-price)}
+.stop-box .label,.target-box .label{font-size:13px;color:var(--text-secondary);margin-bottom:4px}
+.stop-box .price{font-size:22px;font-weight:700;color:var(--stop-loss)}
+.target-box .price{font-size:22px;font-weight:700;color:var(--target-price)}
+.stop-box .pct,.target-box .pct{font-size:14px;margin-top:4px}
+.mode-badge{text-align:center;padding:8px;background:rgba(255,167,38,0.1);border:1px solid var(--accent-neutral);border-radius:8px;color:var(--accent-neutral);font-weight:600;font-size:14px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0}
+.kpi-item{background:var(--bg-primary);padding:14px;border-radius:8px;text-align:center}
+.kpi-item .kpi-label{font-size:12px;color:var(--text-secondary);margin-bottom:4px}
+.kpi-item .kpi-value{font-size:20px;font-weight:700}
+.bar-container{margin:8px 0}
+.bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.bar-track{height:20px;background:var(--bg-primary);border-radius:10px;overflow:hidden}
+.bar-fill{height:100%;border-radius:10px;transition:width 0.5s}
+.score-bar .bar-fill{background:var(--accent-highlight)}
+.sector-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:14px}
+.sector-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.sector-pct{margin-left:auto;font-weight:600}
+.split-buy{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.split-item{padding:12px;background:var(--bg-primary);border-radius:8px;text-align:center}
+.split-item .step{font-size:13px;color:var(--text-secondary)}
+.split-item .amt{font-size:18px;font-weight:700;color:var(--accent-highlight);margin:4px 0}
+.disclaimer{margin-top:32px;padding:20px;font-size:12px;color:var(--text-secondary);border-top:1px solid var(--border);line-height:1.8}
+.score-total{font-size:48px;font-weight:800;color:var(--accent-highlight);text-align:center;margin:16px 0}
+.score-total span{font-size:24px;color:var(--text-secondary)}
+@media(max-width:600px){body{padding:10px;font-size:15px}.report-header h1{font-size:22px}.stop-target-card{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}.split-buy{grid-template-columns:1fr}}
+@media print{body{background:#fff;color:#000;max-width:100%}.card{break-inside:avoid;border:1px solid #ddd}th{color:#333}.disclaimer{font-size:10px}}
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <div class="etf-badge">ETF</div>
+  <h1>VOO (Vanguard S&amp;P 500 ETF)</h1>
+  <div class="sub">ETF 종합 분석 리포트 | 2026-04-05</div>
+  <div class="grade-badge grade-buy">★★★★☆ 매수</div>
+</header>
+
+<section class="card summary-card">
+  <h2 style="margin-bottom:16px;font-size:20px">Executive Summary</h2>
+  <div class="kpi-grid">
+    <div class="kpi-item"><div class="kpi-label">현재가</div><div class="kpi-value">87.52</div></div>
+    <div class="kpi-item"><div class="kpi-label">보수율</div><div class="kpi-value positive">0.03%</div></div>
+    <div class="kpi-item"><div class="kpi-label">AUM</div><div class="kpi-value">.1T</div></div>
+    <div class="kpi-item"><div class="kpi-label">배당수익률</div><div class="kpi-value">1.32%</div></div>
+    <div class="kpi-item"><div class="kpi-label">종합점수</div><div class="kpi-value" style="color:var(--accent-highlight)">81.8</div></div>
+    <div class="kpi-item"><div class="kpi-label">52주 범위</div><div class="kpi-value" style="font-size:15px">39~64</div></div>
+  </div>
+  <p style="margin-top:12px;color:var(--text-secondary);font-size:14px;line-height:1.8">
+    VOO는 Vanguard가 운용하는 세계 최대 규모의 S&amp;P 500 패시브 ETF로, AUM .1조(약 1,100조원), 보수율 0.03%로 업계 최저 수준의 비용 효율성을 자랑합니다. 
+    최근 트럼프 관세 정책 불확실성으로 S&amp;P 500이 고점 대비 -13.6% 조정을 받으며 단기 약세 국면에 진입했으나, 
+    장기 연환산 수익률 +14.8%(설정 이후)를 기록하며 미국 대형주 핵심 투자수단으로서의 가치는 변함없습니다.
+  </p>
+</section>
+<section class="card summary-card" style="margin-top:0">
+  <div class="stop-target-card">
+    <div class="stop-box">
+      <div class="label">손절가 (ATR 2x)</div>
+      <div class="price">$463.82</div>
+      <div class="pct negative">-4.9%</div>
+    </div>
+    <div class="target-box">
+      <div class="label">목표가 (R:R 1:2)</div>
+      <div class="price">$534.92</div>
+      <div class="pct positive">+9.7%</div>
+    </div>
+  </div>
+  <div class="mode-badge">모드: 고정 손절 중 | ATR(14): $11.85 | R:R 1:2</div>
+</section>
+
+<details class="card">
+  <summary>기본 정보</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>ETF명</td><td>Vanguard S&amp;P 500 ETF (VOO)</td></tr>
+      <tr><td>운용사</td><td>Vanguard</td></tr>
+      <tr><td>기초지수</td><td>S&amp;P 500 Index</td></tr>
+      <tr><td>유형</td><td>패시브 (시가총액 가중 대형주 인덱스)</td></tr>
+      <tr><td>상장일</td><td>2010-09-07 (약 15.5년)</td></tr>
+      <tr><td>AUM</td><td>$1.1 Trillion (약 1,100조원)</td></tr>
+      <tr><td>구성종목수</td><td>503개</td></tr>
+      <tr><td>거래소</td><td>NYSE Arca</td></tr>
+      <tr><td>CUSIP</td><td>922908363</td></tr>
+    </table>
+  </div>
+</details>
+
+<details class="card">
+  <summary>구성종목 &amp; 섹터 배분</summary>
+  <div class="card-content">
+    <h3 style="margin-bottom:12px;font-size:16px;color:var(--accent-highlight)">Top 10 Holdings (비중 36.5%)</h3>
+    <table>
+      <tr><th>#</th><th>종목</th><th>비중</th></tr>
+      <tr><td>1</td><td>Apple (AAPL)</td><td class="positive">7.2%</td></tr>
+      <tr><td>2</td><td>Microsoft (MSFT)</td><td class="positive">6.8%</td></tr>
+      <tr><td>3</td><td>NVIDIA (NVDA)</td><td class="positive">5.9%</td></tr>
+      <tr><td>4</td><td>Amazon (AMZN)</td><td>3.8%</td></tr>
+      <tr><td>5</td><td>Meta Platforms (META)</td><td>2.9%</td></tr>
+      <tr><td>6</td><td>Alphabet A (GOOGL)</td><td>2.3%</td></tr>
+      <tr><td>7</td><td>Alphabet C (GOOG)</td><td>2.0%</td></tr>
+      <tr><td>8</td><td>Broadcom (AVGO)</td><td>2.0%</td></tr>
+      <tr><td>9</td><td>Berkshire Hathaway B (BRK.B)</td><td>1.9%</td></tr>
+      <tr><td>10</td><td>Tesla (TSLA)</td><td>1.7%</td></tr>
+    </table>
+    <h3 style="margin:20px 0 12px;font-size:16px;color:var(--accent-highlight)">섹터 배분</h3>
+    <div class="sector-item"><div class="sector-dot" style="background:#42A5F5"></div>정보기술<span class="sector-pct">31.2%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:31.2%;background:#42A5F5"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#66BB6A"></div>금융<span class="sector-pct">13.1%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:13.1%;background:#66BB6A"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#EF5350"></div>헬스케어<span class="sector-pct">11.8%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:11.8%;background:#EF5350"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#FFA726"></div>임의소비재<span class="sector-pct">10.5%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:10.5%;background:#FFA726"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#AB47BC"></div>커뮤니케이션<span class="sector-pct">9.2%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:9.2%;background:#AB47BC"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#78909C"></div>산업재<span class="sector-pct">8.4%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:8.4%;background:#78909C"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#8D6E63"></div>필수소비재<span class="sector-pct">5.8%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:5.8%;background:#8D6E63"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#FF7043"></div>에너지<span class="sector-pct">3.5%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:3.5%;background:#FF7043"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#26C6DA"></div>유틸리티<span class="sector-pct">2.6%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:2.6%;background:#26C6DA"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#9CCC65"></div>부동산<span class="sector-pct">2.2%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:2.2%;background:#9CCC65"></div></div></div>
+    <div class="sector-item"><div class="sector-dot" style="background:#BDBDBD"></div>소재<span class="sector-pct">1.7%</span></div>
+    <div class="bar-container"><div class="bar-track"><div class="bar-fill" style="width:1.7%;background:#BDBDBD"></div></div></div>
+  </div>
+</details>
+
+<details class="card">
+  <summary>비용 분석 (보수율·추적오차)</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>항목</th><th>VOO</th><th>SPY</th><th>IVV</th></tr>
+      <tr><td>총보수율(TER)</td><td class="positive">0.03%</td><td>0.0945%</td><td>0.03%</td></tr>
+      <tr><td>추적오차</td><td class="positive">0.01~0.02%</td><td>0.02~0.03%</td><td>0.01~0.02%</td></tr>
+      <tr><td>NAV 괴리율</td><td>-0.03%</td><td>-</td><td>-</td></tr>
+    </table>
+    <p style="margin-top:12px;color:var(--text-secondary);font-size:14px">
+      VOO는 세계 최저 수준의 보수율(0.03%)과 정밀한 추적 정확도로 S&amp;P 500 추종 ETF 중 가장 효율적인 상품입니다.
+      SPY 대비 보수율이 약 1/3 수준이며, IVV와 동일한 비용 구조를 갖추고 있습니다.
+    </p>
+  </div>
+</details>
+
+<details class="card">
+  <summary>수익률 분석</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>기간</th><th>수익률</th></tr>
+      <tr><td>1개월</td><td class="negative">-5.8%</td></tr>
+      <tr><td>3개월</td><td class="negative">-8.2%</td></tr>
+      <tr><td>6개월</td><td class="negative">-3.5%</td></tr>
+      <tr><td>YTD (2026)</td><td class="negative">-6.1%</td></tr>
+      <tr class="highlight-row"><td>1년</td><td class="positive">+12.3%</td></tr>
+      <tr class="highlight-row"><td>3년 (연환산)</td><td class="positive">+11.8%</td></tr>
+      <tr class="highlight-row"><td>5년 (연환산)</td><td class="positive">+14.2%</td></tr>
+      <tr class="highlight-row"><td>10년 (연환산)</td><td class="positive">+12.6%</td></tr>
+      <tr class="highlight-row"><td>설정이후 (연환산)</td><td class="positive">+14.8%</td></tr>
+    </table>
+    <div style="margin-top:16px">
+      <h4 style="font-size:14px;color:var(--accent-highlight);margin-bottom:8px">수익률 시각화</h4>
+      <svg viewBox="0 0 500 200" style="width:100%;max-width:500px">
+        <rect x="10" y="165" width="480" height="1" fill="#2D3A45"/>
+        <rect x="10" y="100" width="480" height="1" fill="#2D3A45" opacity="0.5"/>
+        <line x1="10" y1="100" x2="10" y2="170" stroke="#2D3A45" stroke-width="1"/>
+        <text x="5" y="98" fill="#9AA0A6" font-size="10" text-anchor="end">0%</text>
+        <text x="5" y="68" fill="#9AA0A6" font-size="10" text-anchor="end">+15%</text>
+        <rect x="30" y="138" width="40" height="27" fill="#EF5350" rx="3"/>
+        <text x="50" y="155" fill="#E8EAED" font-size="9" text-anchor="middle">-5.8%</text>
+        <text x="50" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">1M</text>
+        <rect x="85" y="132" width="40" height="33" fill="#EF5350" rx="3"/>
+        <text x="105" y="152" fill="#E8EAED" font-size="9" text-anchor="middle">-8.2%</text>
+        <text x="105" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">3M</text>
+        <rect x="140" y="143" width="40" height="22" fill="#EF5350" rx="3"/>
+        <text x="160" y="157" fill="#E8EAED" font-size="9" text-anchor="middle">-3.5%</text>
+        <text x="160" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">6M</text>
+        <rect x="195" y="135" width="40" height="30" fill="#EF5350" rx="3"/>
+        <text x="215" y="153" fill="#E8EAED" font-size="9" text-anchor="middle">-6.1%</text>
+        <text x="215" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">YTD</text>
+        <rect x="250" y="47" width="40" height="53" fill="#26A69A" rx="3"/>
+        <text x="270" y="70" fill="#E8EAED" font-size="9" text-anchor="middle">+12.3%</text>
+        <text x="270" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">1Y</text>
+        <rect x="305" y="49" width="40" height="51" fill="#26A69A" rx="3"/>
+        <text x="325" y="72" fill="#E8EAED" font-size="9" text-anchor="middle">+11.8%</text>
+        <text x="325" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">3Y</text>
+        <rect x="360" y="39" width="40" height="61" fill="#26A69A" rx="3"/>
+        <text x="380" y="62" fill="#E8EAED" font-size="9" text-anchor="middle">+14.2%</text>
+        <text x="380" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">5Y</text>
+        <rect x="415" y="41" width="40" height="59" fill="#26A69A" rx="3"/>
+        <text x="435" y="64" fill="#E8EAED" font-size="9" text-anchor="middle">+12.6%</text>
+        <text x="435" y="180" fill="#9AA0A6" font-size="9" text-anchor="middle">10Y</text>
+      </svg>
+    </div>
+  </div>
+</details>
+
+<details class="card">
+  <summary>분배금(배당) 분석</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>배당수익률</td><td>1.32% (최근 12개월)</td></tr>
+      <tr><td>배당주기</td><td>분기배당 (3, 6, 9, 12월)</td></tr>
+      <tr><td>최근 배당금</td><td>$1.6375/주 (2026년 3월)</td></tr>
+    </table>
+  </div>
+</details>
+
+<details class="card">
+  <summary>모멘텀 분석</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>지표</th><th>값</th><th>해석</th></tr>
+      <tr><td>200일 이평선</td><td>하회</td><td class="negative">약세 영역</td></tr>
+      <tr><td>RSI(14)</td><td>38</td><td class="negative">과매도 근접</td></tr>
+      <tr><td>MACD</td><td>데드크로스</td><td class="negative">하락 지속</td></tr>
+    </table>
+    <h4 style="margin:16px 0 8px;font-size:14px;color:var(--accent-highlight)">주요 이벤트</h4>
+    <div style="font-size:14px;color:var(--text-secondary);line-height:2">
+      <div>2026-04-02: 트럼프 관세 정책 불확실성 &rarr; S&amp;P 500 급락</div>
+      <div>2026-03-15: 연준 금리 동결 (5.25~5.50%)</div>
+      <div>2026-02-19: S&amp;P 500 사상 최고치 경신 후 조정 진입</div>
+      <div>2026-01-20: 2025년 연간 S&amp;P 500 수익률 +25% 기록 후 차익실현</div>
+    </div>
+  </div>
+</details>
+
+<details class="card">
+  <summary>경쟁 ETF 비교</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>항목</th><th>VOO</th><th>SPY</th><th>IVV</th></tr>
+      <tr><td>운용사</td><td>Vanguard</td><td>State Street</td><td>BlackRock</td></tr>
+      <tr><td>보수율</td><td class="positive">0.03%</td><td>0.0945%</td><td>0.03%</td></tr>
+      <tr><td>AUM</td><td>$1.1T</td><td>$0.6T</td><td>$0.5T</td></tr>
+      <tr><td>추적오차</td><td>0.01%</td><td>0.02%</td><td>0.01%</td></tr>
+      <tr><td>배당수익률</td><td>1.32%</td><td>1.30%</td><td>1.31%</td></tr>
+      <tr><td>일거래대금</td><td>$2.8B</td><td>$35B</td><td>$3.5B</td></tr>
+    </table>
+    <p style="margin-top:12px;color:var(--text-secondary);font-size:14px">
+      VOO는 SPY 대비 낮은 보수율, IVV와 동등한 비용 구조. 장기 투자에는 VOO/IVV가, 단기 트레이딩에는 SPY의 유동성이 유리합니다.
+    </p>
+  </div>
+</details>
+
+<details class="card">
+  <summary>리스크 분석</summary>
+  <div class="card-content">
+    <table>
+      <tr><th>리스크 유형</th><th>수준</th><th>설명</th></tr>
+      <tr><td>시장 리스크</td><td style="color:var(--accent-neutral)">&#9679; 중</td><td>미국 경기 둔화 가능성, 관세 정책 불확실성</td></tr>
+      <tr><td>집중도 리스크</td><td style="color:var(--accent-neutral)">&#9679; 중</td><td>Top 10 비중 36.5%, Magnificent 7 의존도</td></tr>
+      <tr><td>금리 리스크</td><td style="color:var(--accent-neutral)">&#9679; 중</td><td>고금리 장기화 시 밸류에이션 압박</td></tr>
+      <tr><td>환율 리스크</td><td style="color:var(--accent-neutral)">&#9679; 중</td><td>한국 투자자: 달러/원 환율 변동</td></tr>
+      <tr><td>유동성 리스크</td><td class="positive">&#9679; 저</td><td>일 $2.8B 거래, 최상급 유동성</td></tr>
+      <tr><td>지정학적 리스크</td><td style="color:var(--accent-neutral)">&#9679; 중</td><td>미중 갈등, 관세 전쟁</td></tr>
+    </table>
+  </div>
+</details>
+
+<section class="card scorecard-section">
+  <h2 style="font-size:20px;margin-bottom:8px;text-align:center">ETF 스코어카드</h2>
+  <div class="score-total">81.8 <span>/ 100</span></div>
+
+  <div class="bar-container">
+    <div class="bar-label"><span>비용 효율성 (15%)</span><span class="positive">98점 → 14.7</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:98%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>추적 정확도 (12%)</span><span class="positive">96점 → 11.5</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>유동성 (12%)</span><span class="positive">99점 → 11.9</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:99%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>분산투자 효과 (10%)</span><span class="positive">85점 → 8.5</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>장기 성과 (15%)</span><span class="positive">92점 → 13.8</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>단기 모멘텀 (10%)</span><span class="negative">35점 → 3.5</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--accent-sell)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>배당 (8%)</span><span style="color:var(--accent-neutral)">55점 → 4.4</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--accent-neutral)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>리스크 관리 (8%)</span><span style="color:var(--accent-neutral)">70점 → 5.6</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--accent-neutral)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>운용사 신뢰도 (5%)</span><span class="positive">98점 → 4.9</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:98%;background:var(--accent-buy)"></div></div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label"><span>밸류에이션 (5%)</span><span style="color:var(--accent-neutral)">60점 → 3.0</span></div>
+    <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--accent-neutral)"></div></div>
+  </div>
+
+  <svg viewBox="0 0 400 400" style="width:100%;max-width:360px;margin:24px auto;display:block">
+    <defs>
+      <style>
+        .radar-grid{fill:none;stroke:#2D3A45;stroke-width:0.5}
+        .radar-label{fill:#9AA0A6;font-size:10px;text-anchor:middle}
+        .radar-area{fill:rgba(66,165,245,0.2);stroke:#42A5F5;stroke-width:2}
+      </style>
+    </defs>
+    <g transform="translate(200,200)">
+      <polygon class="radar-grid" points="0,-150 88,-121 143,-46 143,46 88,121 0,150 -88,121 -143,46 -143,-46 -88,-121"/>
+      <polygon class="radar-grid" points="0,-100 59,-81 95,-31 95,31 59,81 0,100 -59,81 -95,31 -95,-31 -59,-81"/>
+      <polygon class="radar-grid" points="0,-50 29,-40 48,-15 48,15 29,40 0,50 -29,40 -48,15 -48,-15 -29,-40"/>
+      <polygon class="radar-area" points="0,-147 85,-115 143,-31 143,31 52,84 0,82 -41,81 -100,31 -95,-31 -85,-115"/>
+      <text class="radar-label" x="0" y="-165">비용(98)</text>
+      <text class="radar-label" x="110" y="-130">추적(96)</text>
+      <text class="radar-label" x="170" y="-35">유동성(99)</text>
+      <text class="radar-label" x="170" y="55">분산(85)</text>
+      <text class="radar-label" x="110" y="145">장기성과(92)</text>
+      <text class="radar-label" x="0" y="175">모멘텀(35)</text>
+      <text class="radar-label" x="-110" y="145">배당(55)</text>
+      <text class="radar-label" x="-170" y="55">리스크(70)</text>
+      <text class="radar-label" x="-170" y="-35">운용사(98)</text>
+      <text class="radar-label" x="-110" y="-130">밸류(60)</text>
+    </g>
+  </svg>
+</section>
+
+<section class="card strategy-card">
+  <h2 style="font-size:20px;margin-bottom:16px">매수/매도 전략</h2>
+  
+  <div class="stop-target-card">
+    <div class="stop-box">
+      <div class="label">손절가 (ATR 2x)</div>
+      <div class="price">$463.82</div>
+      <div class="pct negative">현재가 대비 -4.9%</div>
+    </div>
+    <div class="target-box">
+      <div class="label">목표가 (R:R 1:2)</div>
+      <div class="price">$534.92</div>
+      <div class="pct positive">현재가 대비 +9.7%</div>
+    </div>
+  </div>
+  <div class="mode-badge" style="margin-bottom:16px">모드: 고정 손절 중 | ATR(14): $11.85 | 리스크/리워드 1:2</div>
+  
+  <details style="margin-bottom:12px">
+    <summary style="cursor:pointer;color:var(--accent-highlight);font-size:14px">&#9654; 계산 상세 보기</summary>
+    <table style="margin-top:8px">
+      <tr><td>고정비율 손절가 (5%)</td><td>$463.14</td></tr>
+      <tr><td>ATR 기반 손절가 (2x)</td><td>$463.82</td></tr>
+      <tr><td>채택</td><td>ATR → $463.82 (더 타이트)</td></tr>
+      <tr><td>리스크(risk)</td><td>$23.70</td></tr>
+      <tr><td>손익비(R:R)</td><td>1:2</td></tr>
+      <tr><td>트레일링 전환점</td><td>$536.27 (+10%)</td></tr>
+    </table>
+  </details>
+
+  <h3 style="font-size:16px;margin-bottom:12px;color:var(--accent-highlight)">분할매수 전략</h3>
+  <div class="split-buy">
+    <div class="split-item">
+      <div class="step">1차 매수 (60%)</div>
+      <div class="amt">$487.52</div>
+      <div class="step">현재가 즉시 매수</div>
+    </div>
+    <div class="split-item">
+      <div class="step">2차 매수 (40%)</div>
+      <div class="amt">$473.10</div>
+      <div class="step">추가 하락 시 매수</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;margin:16px 0 12px;color:var(--accent-highlight)">투자의견</h3>
+  <div style="font-size:14px;color:var(--text-secondary);line-height:2">
+    <div><strong style="color:var(--text-primary)">종합 등급:</strong> &#9733;&#9733;&#9733;&#9733;&#9734; 매수 (장기투자 적합)</div>
+    <div><strong style="color:var(--text-primary)">적정 비중:</strong> 전체 포트폴리오의 20~40%</div>
+    <div><strong style="color:var(--text-primary)">보유 기간:</strong> 장기 (5~10년+)</div>
+    <div><strong style="color:var(--text-primary)">비중 확대:</strong> S&amp;P 500 PER 18배 이하 진입 시</div>
+    <div><strong style="color:var(--text-primary)">비중 축소:</strong> PER 25배+ 도달 또는 경기침체 신호 명확 시</div>
+  </div>
+  
+  <div style="margin-top:16px;padding:12px;background:rgba(38,166,154,0.08);border:1px solid var(--accent-buy);border-radius:8px;font-size:14px;line-height:1.8">
+    <strong style="color:var(--accent-buy)">매수 근거 5가지</strong><br>
+    1. 세계 최저 보수율 (0.03%), 추적오차 거의 없음<br>
+    2. $1.1조 AUM, 일 $2.8B 거래량 &rarr; 최상급 유동성<br>
+    3. RSI 38, 과매도 근접 &rarr; 기술적 반등 가능<br>
+    4. S&amp;P 500 장기 연환산 수익률 10~11% 검증<br>
+    5. 미국 대형주 500개 분산투자 &rarr; 단일종목 리스크 제거
+  </div>
+</section>
+
+<footer class="disclaimer">
+  <strong>Disclaimer</strong><br>
+  본 리포트는 AI가 공개 데이터를 기반으로 작성한 참고 자료이며, 투자 권유가 아닙니다.
+  모든 투자 판단과 책임은 투자자 본인에게 있습니다.
+  과거 수익률이 미래 수익률을 보장하지 않습니다.
+  수치 데이터는 추정치를 포함하며, 실제 값과 차이가 있을 수 있습니다.
+  해외 ETF 투자 시 환율 변동에 따른 손실이 발생할 수 있습니다.<br><br>
+  <em>AI Equity Research | 2026-04-05 | Powered by Claude</em>
+</footer>
+
+<script>
+document.querySelectorAll('details.card').forEach(d => {
+  d.addEventListener('toggle', () => {
+    if(d.open) d.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+});
+</script>
+</body>
+</html>
