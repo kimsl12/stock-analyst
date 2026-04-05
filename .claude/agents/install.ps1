@@ -8,21 +8,19 @@ $SettingsDir = Join-Path $ProjectDir ".claude"
 
 Write-Host ""
 Write-Host "====================================" -ForegroundColor Cyan
-Write-Host "  종목분석 에이전트 v2.1 설치" -ForegroundColor Cyan
+Write-Host "  종목분석 에이전트 v2.2 설치" -ForegroundColor Cyan
+Write-Host "  (개별종목 + ETF 지원)" -ForegroundColor Gray
 Write-Host "====================================" -ForegroundColor Cyan
 Write-Host "  프로젝트: $ProjectDir" -ForegroundColor Gray
 Write-Host ""
 
-# 1. 폴더 생성
 Write-Host "[1/4] 폴더 생성..." -ForegroundColor Yellow
 New-Item -ItemType Directory -Force -Path $AgentsDir | Out-Null
 New-Item -ItemType Directory -Force -Path $CommandsDir | Out-Null
-Write-Host "       OK  .claude\agents\" -ForegroundColor Green
-Write-Host "       OK  .claude\commands\" -ForegroundColor Green
+Write-Host "       OK" -ForegroundColor Green
 
-# 2. 에이전트 파일 복사
 Write-Host "[2/4] 에이전트 파일 복사..." -ForegroundColor Yellow
-$agents = @("stock-analyst-lead.md","data-collector.md","company-overview.md","financial-analyst.md","business-analyst.md","momentum-analyst.md","risk-analyst.md","scorecard-strategist.md","report-generator.md","stop-loss-rules.md")
+$agents = @("stock-analyst-lead.md","data-collector.md","company-overview.md","financial-analyst.md","business-analyst.md","momentum-analyst.md","risk-analyst.md","scorecard-strategist.md","etf-analyst.md","report-generator.md","stop-loss-rules.md")
 $c = 0
 foreach ($a in $agents) {
     $s = Join-Path $ProjectDir $a
@@ -31,19 +29,17 @@ foreach ($a in $agents) {
 }
 Write-Host "       에이전트: ${c}개" -ForegroundColor Gray
 
-# 3. 명령어 파일 복사
 Write-Host "[3/4] 슬래시 명령어 복사..." -ForegroundColor Yellow
-$cmds = @()
+$cc = 0
 Get-ChildItem -Path $ProjectDir -Filter "*.md" | Where-Object {
     $_.Name -match "^(종목분석|비교분석|빠른분석|손절계산|리포트)\.md$"
 } | ForEach-Object {
     Copy-Item $_.FullName -Destination $CommandsDir -Force
     Write-Host "       OK  /$($_.BaseName)" -ForegroundColor Green
-    $cmds += $_.Name
+    $cc++
 }
-Write-Host "       명령어: $($cmds.Count)개" -ForegroundColor Gray
+Write-Host "       명령어: ${cc}개" -ForegroundColor Gray
 
-# 4. settings.json 생성
 Write-Host "[4/4] settings.json..." -ForegroundColor Yellow
 $sp = Join-Path $SettingsDir "settings.json"
 $sc = @'
@@ -58,20 +54,14 @@ Write-Host "       OK" -ForegroundColor Green
 
 Write-Host ""
 Write-Host "====================================" -ForegroundColor Cyan
-Write-Host "  설치 완료!" -ForegroundColor Cyan
+Write-Host "  설치 완료! (v2.2)" -ForegroundColor Cyan
 Write-Host "====================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  사용법:" -ForegroundColor White
-Write-Host "    cd ""$ProjectDir""" -ForegroundColor Yellow
-Write-Host "    claude" -ForegroundColor Yellow
-Write-Host "" 
-Write-Host "  슬래시 명령어:" -ForegroundColor White
-Write-Host "    /종목분석 삼성전자" -ForegroundColor Yellow
-Write-Host "    /비교분석 삼성전자 SK하이닉스" -ForegroundColor Yellow
-Write-Host "    /빠른분석 네이버" -ForegroundColor Yellow
-Write-Host "    /손절계산 삼성전자 180000" -ForegroundColor Yellow
-Write-Host "    /리포트 삼성전자" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "  또는 자연어:" -ForegroundColor White
-Write-Host "    삼성전자 분석해줘" -ForegroundColor Yellow
+Write-Host "    /종목분석 삼성전자       (개별 종목)" -ForegroundColor Yellow
+Write-Host "    /종목분석 XLE            (ETF)" -ForegroundColor Yellow
+Write-Host "    /종목분석 KODEX 200      (ETF)" -ForegroundColor Yellow
+Write-Host "    /비교분석 SPY QQQ        (ETF 비교)" -ForegroundColor Yellow
+Write-Host "    /빠른분석 네이버         (빠른 요약)" -ForegroundColor Yellow
+Write-Host "    /손절계산 삼성전자 80000 (손절/목표)" -ForegroundColor Yellow
 Write-Host ""

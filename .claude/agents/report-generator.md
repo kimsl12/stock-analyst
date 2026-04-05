@@ -150,11 +150,87 @@ tools: Read, Bash, Grep, Glob, Write, Edit
 
 ### 차트 & 시각화 (SVG 기반)
 - **스코어카드 레이더 차트**: 10개 축, 점수 면적 표시
-- **실적 추이 바차트**: 매출/영업이익 5년 추이
-- **수익성 라인차트**: ROE/OPM 추이
+- **실적 추이 바차트**: 매출/영업이익 5년 추이 (개별 종목만)
+- **수익성 라인차트**: ROE/OPM 추이 (개별 종목만)
 - **리스크 히트맵**: 발생가능성 × 영향도 매트릭스
 - **주가 차트**: 52주 범위 내 현재 위치 표시
+- **섹터 배분 도넛차트**: 섹터별 비중 (ETF만)
+- **수익률 비교 바차트**: ETF vs 기초지수 vs 경쟁ETF (ETF만)
 - 모든 차트는 순수 SVG (외부 라이브러리 금지)
+
+### ETF 리포트 전용 구조
+
+ETF 분석 결과를 받으면 개별 종목 리포트 대신 아래 구조로 생성한다.
+
+```html
+<body>
+  <!-- 헤더 -->
+  <header class="report-header etf-header">
+    [ETF명] (티커) | ETF 분석 리포트 | YYYY-MM-DD
+  </header>
+
+  <!-- ETF 기본정보 카드 (항상 펼침) -->
+  <section class="card etf-summary-card">
+    <div class="etf-badge">ETF</div>
+    운용사 / 기초지수 / AUM / 보수율 / 현재가 / NAV 괴리율
+    스코어카드 종합: XX/100 | 등급 뱃지
+    🔴 손절가 / 🟢 목표가
+  </section>
+
+  <!-- 구성종목 Top 10 + 섹터 배분 차트 -->
+  <details class="card">
+    <summary>구성종목 & 섹터 배분</summary>
+    Top 10 테이블 + 섹터 도넛차트 (SVG)
+  </details>
+
+  <!-- 비용 분석 -->
+  <details class="card">
+    <summary>비용 분석 (보수율·추적오차)</summary>
+    보수율 비교 테이블 + 추적오차 차트
+  </details>
+
+  <!-- 수익률 분석 -->
+  <details class="card">
+    <summary>수익률 분석</summary>
+    기간별 수익률 테이블 + ETF vs 지수 비교 차트 (SVG)
+    샤프비율 / MDD / 변동성
+  </details>
+
+  <!-- 분배금 -->
+  <details class="card">
+    <summary>분배금(배당) 분석</summary>
+    분배금 수익률 / 주기 / 성장률
+  </details>
+
+  <!-- 경쟁 ETF 비교 -->
+  <details class="card">
+    <summary>경쟁 ETF 비교</summary>
+    3~5개 ETF 비교 테이블
+  </details>
+
+  <!-- 리스크 -->
+  <details class="card">
+    <summary>리스크 분석</summary>
+    ETF 고유 리스크 테이블
+  </details>
+
+  <!-- ETF 스코어카드 (항상 펼침) -->
+  <section class="card scorecard">
+    10항목 레이더 차트 (SVG) + 점수 테이블
+  </section>
+
+  <!-- 손절·목표가 + 매수/매도 전략 (항상 펼침) -->
+  <section class="card strategy-card">
+    ATR 손절·목표가 카드 + 매수/매도 전략
+  </section>
+
+  <footer class="disclaimer">...</footer>
+</body>
+```
+
+리포트 유형 판별:
+- etf-analyst 결과가 전달되면 → ETF 리포트 구조 사용
+- 그 외 → 기존 개별 종목 리포트 구조 사용
 
 ### 한글 파일 생성 규칙
 ```python
