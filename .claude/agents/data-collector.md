@@ -5,7 +5,7 @@ description: |
   financial statements from DART/EDGAR, news, analyst reports, and market data via web search 
   and public APIs. Provides structured raw data to other analysis agents.
   Triggers: 데이터 수집, 주가 조회, 공시 조회, DART, 재무제표, 뉴스 수집.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob
 mcpServers:
   - type: url

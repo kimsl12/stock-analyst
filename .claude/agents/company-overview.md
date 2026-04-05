@@ -5,7 +5,7 @@ description: |
   company fundamentals, corporate structure, economic moat depth and sustainability, 
   competitive advantages, and strategic positioning. 
   Triggers: 기업개요, 해자 분석, moat, 경쟁력, 사업구조, 지배구조.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob
 ---
 

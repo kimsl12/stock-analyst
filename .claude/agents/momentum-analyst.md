@@ -5,7 +5,7 @@ description: |
   price momentum, technical signals, institutional/foreign flow, consensus estimates, 
   earnings revisions, analyst coverage, and event catalysts. 
   Triggers: 모멘텀, 컨센서스, 수급, 외국인, 기관, 목표주가, 투자의견, 이벤트.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob
 ---
 

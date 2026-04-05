@@ -5,7 +5,7 @@ description: |
   investment risks including financial risk, business risk, regulatory risk, macro risk, 
   ESG risk, and tail risk. Devil's Advocate perspective. 
   Triggers: 리스크, 위험요인, 손절, 하방, ESG, 규제리스크, 지정학.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob
 ---
 

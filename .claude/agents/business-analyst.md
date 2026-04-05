@@ -5,7 +5,7 @@ description: |
   industry dynamics, megatrends, competitive landscape, market share, TAM/SAM/SOM, 
   Porter's Five Forces, technology disruption, and regulatory trends. 
   Triggers: 산업분석, 트렌드, 경쟁구도, 시장점유율, TAM, 메가트렌드, 규제.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob
 ---
 

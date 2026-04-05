@@ -5,7 +5,7 @@ description: |
   equity research reports in HTML and PDF formats. Creates visually polished, 
   mobile-responsive, downloadable reports from analysis results. 
   Triggers: 리포트 생성, HTML, PDF, 보고서, 출력, 다운로드, 문서화.
-model: opus
+model: sonnet
 tools: Read, Bash, Grep, Glob, Write, Edit
 ---
 
