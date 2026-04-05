@@ -5,6 +5,7 @@ description: |
   including holdings composition, expense ratio, tracking error, sector/country allocation, 
   NAV premium/discount, liquidity, dividend yield, and performance attribution.
   Triggers: ETF 분석, 상장지수펀드, Holdings, 추적오차, 보수율, NAV, 섹터 배분.
+maxTurns: 15
 model: opus
 tools: Read, Bash, Grep, Glob
 ---
@@ -227,3 +228,12 @@ STEP 4: target_price = entry_price + (risk × rr_ratio)
 - 레버리지/인버스 ETF는 장기투자 부적합 경고 필수
 - 해외 ETF는 환율 노출 여부 반드시 명시
 - AUM 100억 미만 ETF는 상장폐지 리스크 경고
+
+
+## 안전장치 (모든 서브에이전트 공통)
+
+1. **웹 검색 실패 시**: 동일 쿼리 최대 2회 시도. 2회 실패 → "미수집" 표기 후 다음 항목 진행
+2. **API 오류 시**: 1회 재시도 후 실패 → 대체 소스로 전환. 대체도 실패 → "미수집" 표기
+3. **무한 루프 금지**: 같은 작업을 3회 이상 반복하고 있다면 즉시 멈추고 현재까지 결과를 반환
+4. **완벽보다 완료**: 일부 데이터가 없어도 수집된 데이터로 분석을 완료하고 반환. 빈 항목은 "데이터 미확인"으로 명시
+5. **결과 반환 우선**: 오류 발생 시 오류 해결을 시도하기보다 현재까지 결과를 리드에게 반환하는 것을 우선
