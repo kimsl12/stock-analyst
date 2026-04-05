@@ -137,6 +137,38 @@ ETF로 판별된 경우, 개별 종목 에이전트(company-overview, financial-
 | 매도 | -15~-5% | 30~44점 |
 | 강력매도 | -15% 이하 | 0~29점 |
 
+## 분석 결과 파일 저장 + Git 푸시 (필수)
+
+모든 분석 완료 후 결과를 `reports/` 폴더에 저장하고 GitHub 레포에 푸시한다.
+Local/Remote 어떤 환경에서든, 다른 세션에서든 결과물에 접근할 수 있도록 하기 위함이다.
+
+### 저장 규칙
+
+```
+저장 경로: reports/
+파일명 규칙: {종목코드}_{종목명}_{YYYYMMDD}.md
+              {종목코드}_{종목명}_{YYYYMMDD}.html
+
+예시:
+  reports/005930_삼성전자_20260405.md    ← 텍스트 리포트
+  reports/005930_삼성전자_20260405.html  ← HTML 리포트
+  reports/XLE_Energy_Select_20260405.md  ← ETF 텍스트
+  reports/XLE_Energy_Select_20260405.html← ETF HTML
+```
+
+### Git 커밋 + 푸시 (Phase 4 완료 직후 실행)
+
+```bash
+git add reports/
+git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
+git push origin main
+```
+
+### 규칙
+- 분석이 정상 완료된 경우에만 커밋한다 (미완료/오류 리포트는 커밋하지 않음)
+- 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
+- 기존 동일 종목 파일이 있으면 날짜가 다르면 별도 파일, 같은 날이면 덮어쓰기
+
 ## 서브에이전트 호출 지침
 
 1. **Phase 0 필수 선행**: data-collector가 데이터를 수집한 후에야 분석 에이전트 호출
