@@ -5,6 +5,7 @@ description: |
   including earnings trends, profitability metrics, valuation, target price calculation 
   (DCF, relative valuation, SOTP), and scenario analysis. 
   Triggers: 재무분석, 실적추이, 수익성, 밸류에이션, 목표주가, PER, PBR, ROE, DCF.
+maxTurns: 12
 model: opus
 tools: Read, Bash, Grep, Glob
 ---
@@ -208,3 +209,12 @@ tools: Read, Bash, Grep, Glob
 컨센서스 성장률이 과거 5년 최대 성장률을 초과할 경우, 반드시 다음을 추가:
 - "이 성장률이 달성된 과거 사례가 있는가?" (동종업종 포함)
 - "달성 실패 시 밸류에이션 영향" (Bear Case에 반영)
+
+
+## 안전장치 (모든 서브에이전트 공통)
+
+1. **웹 검색 실패 시**: 동일 쿼리 최대 2회 시도. 2회 실패 → "미수집" 표기 후 다음 항목 진행
+2. **API 오류 시**: 1회 재시도 후 실패 → 대체 소스로 전환. 대체도 실패 → "미수집" 표기
+3. **무한 루프 금지**: 같은 작업을 3회 이상 반복하고 있다면 즉시 멈추고 현재까지 결과를 반환
+4. **완벽보다 완료**: 일부 데이터가 없어도 수집된 데이터로 분석을 완료하고 반환. 빈 항목은 "데이터 미확인"으로 명시
+5. **결과 반환 우선**: 오류 발생 시 오류 해결을 시도하기보다 현재까지 결과를 리드에게 반환하는 것을 우선

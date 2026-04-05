@@ -5,6 +5,7 @@ description: |
   financial statements from DART/EDGAR, news, analyst reports, and market data via web search 
   and public APIs. Provides structured raw data to other analysis agents.
   Triggers: 데이터 수집, 주가 조회, 공시 조회, DART, 재무제표, 뉴스 수집.
+maxTurns: 15
 model: sonnet
 tools: Read, Bash, Grep, Glob
 mcpServers:
@@ -422,3 +423,12 @@ DART API는 ETF에 사용하지 않는다 (ETF는 재무제표가 없음).
 8. **구성종목 기준일 필수**: Holdings 데이터에 반드시 기준일 기재. 30일 초과 시 경고
 9. **레버리지/인버스 자동 감지**: ETF명에 "2X", "인버스", "레버리지", "곱버스", "bear", "ultra" 포함 시 경고 플래그 삽입
 10. **국내/해외 자동 분기**: 종목코드 6자리(숫자) → 국내 ETF 소스 사용, 알파벳 티커 → 해외 ETF 소스 사용
+
+
+## 안전장치 (모든 서브에이전트 공통)
+
+1. **웹 검색 실패 시**: 동일 쿼리 최대 2회 시도. 2회 실패 → "미수집" 표기 후 다음 항목 진행
+2. **API 오류 시**: 1회 재시도 후 실패 → 대체 소스로 전환. 대체도 실패 → "미수집" 표기
+3. **무한 루프 금지**: 같은 작업을 3회 이상 반복하고 있다면 즉시 멈추고 현재까지 결과를 반환
+4. **완벽보다 완료**: 일부 데이터가 없어도 수집된 데이터로 분석을 완료하고 반환. 빈 항목은 "데이터 미확인"으로 명시
+5. **결과 반환 우선**: 오류 발생 시 오류 해결을 시도하기보다 현재까지 결과를 리드에게 반환하는 것을 우선
