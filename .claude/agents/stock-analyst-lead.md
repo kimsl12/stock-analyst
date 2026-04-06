@@ -166,6 +166,7 @@ reports/   ← 최종 산출물만 (사용자가 보는 파일)
 ```bash
 git add reports/
 git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
+git pull --rebase origin main
 git push origin main
 ```
 
