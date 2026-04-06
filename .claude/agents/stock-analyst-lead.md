@@ -137,26 +137,31 @@ ETF로 판별된 경우, 개별 종목 에이전트(company-overview, financial-
 | 매도 | -15~-5% | 30~44점 |
 | 강력매도 | -15% 이하 | 0~29점 |
 
-## 분석 결과 파일 저장 + Git 푸시 (필수)
+## 폴더 구조 & 파일 저장 규칙
 
-모든 분석 완료 후 결과를 `reports/` 폴더에 저장하고 GitHub 레포에 푸시한다.
-Local/Remote 어떤 환경에서든, 다른 세션에서든 결과물에 접근할 수 있도록 하기 위함이다.
-
-### 저장 규칙
+### 2개 폴더 분리 [v2.3]
 
 ```
-저장 경로: reports/
-파일명 규칙: {종목코드}_{종목명}_{YYYYMMDD}.md
-              {종목코드}_{종목명}_{YYYYMMDD}.html
+analysis/  ← 중간 작업 파일 (data-collector 수집 데이터 + 에이전트별 분석 결과)
+  analysis/TSLA_Tesla_data.json          ← data-collector 수집
+  analysis/TSLA_Tesla_company.md         ← company-overview 분석 결과
+  analysis/TSLA_Tesla_financial.md       ← financial-analyst 분석 결과
+  analysis/TSLA_Tesla_momentum.md        ← momentum-analyst 분석 결과
+  analysis/TSLA_Tesla_business.md        ← business-analyst 분석 결과
+  analysis/TSLA_Tesla_risk.md            ← risk-analyst 분석 결과
+  analysis/TSLA_Tesla_scorecard.md       ← scorecard-strategist 분석 결과
 
-예시:
-  reports/005930_삼성전자_20260405.md    ← 텍스트 리포트
-  reports/005930_삼성전자_20260405.html  ← HTML 리포트
-  reports/XLE_Energy_Select_20260405.md  ← ETF 텍스트
-  reports/XLE_Energy_Select_20260405.html← ETF HTML
+reports/   ← 최종 산출물만 (사용자가 보는 파일)
+  reports/TSLA_Tesla_20260405.md         ← 텍스트 종합 리포트
+  reports/TSLA_Tesla_20260405.html       ← HTML 종합 리포트
 ```
 
-### Git 커밋 + 푸시 (Phase 4 완료 직후 실행)
+### 규칙
+- **analysis/ 폴더:** 에이전트들의 작업 파일. 사용자 열람용이 아님. Git에 커밋하지 않음
+- **reports/ 폴더:** 최종 리포트만. Git에 커밋 + 푸시
+- 각 분석 에이전트에게 호출 시 "결과를 analysis/{종목코드}_{종목명}_{용도}.md에 저장하라"고 지시
+
+### Git 커밋 + 푸시 (Phase 4 완료 직후, 1회만 실행)
 
 ```bash
 git add reports/
@@ -164,19 +169,44 @@ git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
 git push origin main
 ```
 
-### 규칙
-- 분석이 정상 완료된 경우에만 커밋한다 (미완료/오류 리포트는 커밋하지 않음)
+- analysis/ 폴더는 git add하지 않는다
+- reports/ 폴더만 커밋한다
+- 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
 - 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
-- 기존 동일 종목 파일이 있으면 날짜가 다르면 별도 파일, 같은 날이면 덮어쓰기
 
-## 서브에이전트 호출 지침
+## 서브에이전트 호출 지침 [v2.3 개편]
 
-1. **Phase 0 필수 선행**: data-collector가 데이터를 수집한 후에야 분석 에이전트 호출
-2. 각 에이전트에게 종목명, 종목코드, 현재 시점, Phase 0 수집 데이터를 전달
-3. Phase 1은 백그라운드 병렬 실행으로 시간 절약
-4. 서브에이전트 결과가 상충할 경우 리드가 최종 판단
-5. 데이터 불충분 시 해당 섹션에 "데이터 제한 사항" 명시
-6. 모든 분석 완료 후 반드시 report-generator로 HTML/PDF 산출물 생성
+### 핵심 원칙: data-collector만 웹검색, 나머지는 파일 읽기만
+
+```
+data-collector (웹검색 O) → analysis/{종목}_data.json 생성
+                              ↓ (파일로 전달)
+company-overview  (웹검색 X) → analysis/{종목}_data.json 읽고 분석 → analysis/{종목}_company.md 저장
+financial-analyst (웹검색 X) → analysis/{종목}_data.json 읽고 분석 → analysis/{종목}_financial.md 저장
+momentum-analyst  (웹검색 X) → analysis/{종목}_data.json 읽고 분석 → analysis/{종목}_momentum.md 저장
+business-analyst  (웹검색 X) → analysis/{종목}_data.json 읽고 분석 → analysis/{종목}_business.md 저장
+risk-analyst      (웹검색 X) → analysis/{종목}_data.json 읽고 분석 → analysis/{종목}_risk.md 저장
+                              ↓ (전체 analysis/*.md 읽기)
+scorecard-strategist         → analysis/ 전체 읽고 → analysis/{종목}_scorecard.md 저장
+report-generator             → analysis/ 전체 읽고 → reports/{종목}_{날짜}.html 저장
+```
+
+### 호출 시 전달할 프롬프트 템플릿
+
+각 분석 에이전트 호출 시 아래 형식으로 지시한다:
+
+```
+"{종목명}({종목코드})을 분석해줘.
+데이터 파일: analysis/{종목코드}_{종목명}_data.json 을 읽어서 사용해.
+웹검색하지 마. 파일에 있는 데이터만 사용해.
+결과를 analysis/{종목코드}_{종목명}_{용도}.md 에 저장해."
+```
+
+### 기타 규칙
+- Phase 0 완료 후에만 분석 에이전트를 호출한다
+- Phase 1은 3개 에이전트를 한번에 병렬 호출한다
+- 서브에이전트 결과가 상충할 경우 리드가 최종 판단
+- 모든 분석 완료 후 report-generator로 HTML 산출물 생성
 
 ## 장애 대응 프로토콜 (Circuit Breaker)
 
