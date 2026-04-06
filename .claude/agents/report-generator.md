@@ -105,80 +105,102 @@ with open(filename, "w", encoding="utf-8") as f:
 print(f"리포트 생성 완료: {filename}")
 ```
 
-## 차트 & 시각화 (순수 SVG)
+## 차트 & 시각화 — 차트 템플릿 주입 방식
 
-모든 차트는 Python 스크립트 내에서 SVG 문자열로 생성한다.
-외부 라이브러리(Chart.js, D3 등) 없이 순수 SVG만 사용한다.
-각 차트별로 별도의 build_chart_ 함수를 만들어 관리한다.
+**차트를 직접 그리지 않는다.** `chart_templates.py` 모듈을 import하여 데이터만 주입하면 SVG가 반환된다.
 
-### 1. 스코어카드 레이더 차트 (10축)
-10개 평가 항목을 다각형 면적으로 표시. 만점 윤곽선과 실점수 면적을 겹쳐 그린다.
+### 사용법 (generate_report.py 내에서)
+
 ```python
-def build_chart_radar(scores):
-    # scores: [("Moat", 8), ("수익성", 7), ...]
-    # 10각형 좌표 계산 → polygon points
-    # 만점 윤곽: stroke=#2D3A45, fill=none
-    # 실점수: fill=rgba(38,166,154,0.3), stroke=#26A69A
-    # 각 축 라벨: text 태그
-    svg = '<svg viewBox="0 0 300 300" style="width:100%;max-width:300px;">'
-    # ... 좌표 계산 + polygon + text
-    svg += '</svg>'
-    return svg
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from chart_templates import (
+    radar_chart, bar_chart, line_chart,
+    risk_heatmap, price_range_bar,
+    donut_chart, etf_performance_chart
+)
+
+# 1. 스코어카드 레이더 — 데이터만 넘긴다
+scorecard_svg = radar_chart([
+    ("Moat", 8), ("수익성", 7), ("성장성", 6), ("재무", 9), ("밸류", 5),
+    ("모멘텀", 4), ("배당", 3), ("리스크", 7), ("산업", 8), ("경영", 6)
+])
+
+# 2. 실적 바차트
+earnings_svg = bar_chart(
+    years=["2022", "2023", "2024", "2025E"],
+    revenue=[302, 259, 300, 350],
+    op_income=[36, 6, 27, 45],
+    unit="조원",
+    estimates_from=3  # index 3부터 추정치 줄무늬
+)
+
+# 3. 수익성 라인차트
+profit_svg = line_chart(
+    years=["2021", "2022", "2023", "2024"],
+    series=[[15.2, 18.1, 12.3, 16.5], [10.5, 11.2, 2.3, 9.0]],
+    labels=["ROE(%)", "OPM(%)"]
+)
+
+# 4. 리스크 히트맵
+risk_svg = risk_heatmap([
+    ("HBM수율", "중", "고"),
+    ("환율", "고", "중"),
+    ("규제", "저", "저"),
+    ("경쟁심화", "고", "고"),
+])
+
+# 5. 가격 범위 바 (필수)
+price_svg = price_range_bar(
+    low52=50000, high52=90000, current=72000,
+    stop_loss=66000, target=86000, currency="₩"
+)
+# 해외 종목: currency="$"
+
+# 6. 섹터 도넛 (ETF 전용)
+sector_svg = donut_chart([
+    ("기술", 33.1), ("금융", 12.1), ("헬스케어", 9.9),
+    ("소비재", 10.1), ("산업재", 8.7), ("기타", 26.1)
+])
+
+# 7. ETF 수익률 비교 (ETF 전용)
+perf_svg = etf_performance_chart(
+    periods=["1M", "3M", "6M", "1Y", "3Y"],
+    etf_returns=[2.1, 5.3, 8.2, 15.1, 45.2],
+    index_returns=[2.0, 5.1, 8.0, 14.8, 44.0],
+    etf_name="VOO", index_name="S&P 500"
+)
+
+# HTML에 삽입
+html += f'<div class="chart-container">{scorecard_svg}</div>'
+html += f'<div class="chart-container">{price_svg}</div>'
+# ... 나머지 동일
 ```
 
-### 2. 실적 추이 바차트 (매출/영업이익)
-최근 5년 + 향후 2년(E) 실적을 수직 바차트로 표시. 추정치는 줄무늬 패턴으로 구분.
+### 차트 생성 우선순위
+
+데이터가 없거나 오류 발생 시 해당 차트만 건너뛴다 (전체 중단 금지).
+
+| 우선순위 | 차트 | 함수 | 필수 |
+|---------|------|------|------|
+| 1 | 가격 범위 바 | `price_range_bar()` | 필수 |
+| 2 | 스코어카드 레이더 | `radar_chart()` | 필수 |
+| 3 | 실적 바차트 | `bar_chart()` | 권장 |
+| 4 | 수익성 라인 | `line_chart()` | 선택 |
+| 5 | 리스크 히트맵 | `risk_heatmap()` | 선택 |
+| 6 | 섹터 도넛 (ETF) | `donut_chart()` | ETF 필수 |
+| 7 | 수익률 비교 (ETF) | `etf_performance_chart()` | ETF 권장 |
+
+### 차트 오류 처리
+
 ```python
-def build_chart_earnings(years, revenue, op_income):
-    # 이중 바 (매출=파랑, 영업이익=초록)
-    # 추정치 연도: <pattern> 으로 사선 줄무늬 적용
-    # x축: 연도, y축: 금액 (조원/억원)
+try:
+    svg = radar_chart(scores)
+except Exception:
+    svg = '<p style="color:#9AA0A6;font-size:13px;">차트 생성 실패</p>'
 ```
 
-### 3. 수익성 라인차트 (ROE/OPM 추이)
-최근 5년 ROE와 OPM 추이를 겹쳐서 선 그래프로 표시.
-```python
-def build_chart_profitability(years, roe, opm):
-    # 두 줄 라인차트 (ROE=파랑, OPM=초록)
-    # polyline points로 구현
-    # 각 데이터 포인트에 circle + 수치 라벨
-```
-
-### 4. 리스크 히트맵 (발생가능성 × 영향도)
-5~10개 리스크 항목을 2차원 매트릭스에 배치.
-```python
-def build_chart_risk_heatmap(risks):
-    # risks: [("HBM수율", "중", "高"), ...]
-    # 3×3 그리드 배경 (녹→황→적 그라데이션 없이 3단계 색상)
-    # 각 리스크를 해당 위치에 circle + 라벨로 배치
-    # 색상: 高영향+高확률=빨강, 低영향+低확률=초록
-```
-
-### 5. 가격 범위 바 (52주 + 손절/목표)
-52주 최저~최고 범위 내 현재가·손절가·목표가 위치를 표시.
-```python
-def build_chart_price_range(low52, high52, current, stop_loss, target):
-    # 수평 바: 전체 범위 = 52주 저~고
-    # 마커: ▼현재가(흰), ▼손절(빨강), ▼목표(초록)
-    # 하단: 가격 라벨
-```
-
-### 6. 섹터 배분 도넛차트 (ETF 전용)
-섹터별 비중을 도넛(ring) 형태로 표시.
-```python
-def build_chart_donut(sectors):
-    # sectors: [("기술", 35), ("금융", 20), ...]
-    # SVG circle + stroke-dasharray 방식으로 도넛 세그먼트
-    # 우측에 범례 (색상 + 섹터명 + 비중%)
-```
-
-### 7. 수익률 비교 바차트 (ETF 전용)
-ETF vs 기초지수 vs 경쟁 ETF 수익률을 기간별로 비교.
-```python
-def build_chart_etf_performance(etf_returns, index_returns, competitor_returns):
-    # 그룹 바차트: 1M, 3M, 6M, 1Y, 3Y
-    # 각 기간에 2~3개 바 나란히
-```
+각 차트를 try/except로 감싸서, 하나가 실패해도 나머지는 정상 출력한다.
 
 ### 차트 생성 우선순위
 
