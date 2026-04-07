@@ -305,3 +305,14 @@ last_synced_from_db: {오늘}
 2. 무한 루프 금지: 3회 반복 시 멈추고 반환
 3. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
 4. 결과 반환 우선: 오류 시 현재까지 결과 반환
+
+## Git 규칙
+- **main에 직접 push한다.** 별도 브랜치를 만들지 않는다.
+- PR(Pull Request)을 만들지 않는다.
+```bash
+git checkout main
+git add knowledge-base/ knowledge-db/
+git commit -m "KB 업데이트: {섹터명} - {YYYY-MM-DD}"
+git pull --rebase origin main
+git push origin main
+```
