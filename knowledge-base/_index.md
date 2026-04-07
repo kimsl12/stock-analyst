@@ -25,6 +25,37 @@ updated: 2026-04-07
 | `macro/geopolitics.md` | 미중 관세·기술전쟁, 대만, 중동, 북한, 유럽, 공급망 | 2026-04-07 |
 | `macro/korea_economy.md` | 한국 GDP, 환율, 수출, 금리, 산업별 동향, 정책·규제 | 2026-04-07 |
 | `macro/global_risk_factors.md` | 글로벌 Top 5 리스크, 시장 심리 지표, 원자재 가격 | 2026-04-07 |
+| `macro/political_cycle.md` | 주요국 정치 사이클, 정책→섹터 임팩트 `[v3.4 신규]` | 2026-04-07 |
+| `macro/tech_breakthrough.md` | AI·양자·바이오·에너지 기술 단계 판정 `[v3.4 신규]` | 2026-04-07 |
+| `macro/supply_chain.md` | 반도체·배터리·의약품·희토류 공급망 재편 `[v3.4 신규]` | 2026-04-07 |
+
+## 시장 KB `[v3.4 신규]`
+
+| 파일 | 커버리지 | 갱신 주기 |
+|------|---------|----------|
+| `market/daily_snapshot.md` | 미국·아시아 지수, 환율·원자재·채권·크립토 | 매 거래일 |
+| `market/economic_calendar.md` | 이번 주 경제 지표·이벤트·중앙은행 일정 | 주 1회 |
+| `market/surprise_index.md` | 경제 서프라이즈 누적 스코어 | 지표 발표 당일 |
+| `market/correlation_matrix.md` | 자산 페어 6종 30D/90D 롤링 상관계수 | 매 거래일 |
+| `market/guru_positions.md` | 거물 8인 13F 포지션 변화 (45일 시차) | 분기별 |
+
+## 포트폴리오 KB `[v3.4 신규]`
+
+| 파일 | 커버리지 | 갱신 주기 |
+|------|---------|----------|
+| `portfolio/user_portfolio.md` | 사용자 보유 종목·비중·프로파일 | 사용자 요청 시 |
+| `portfolio/model_portfolios.md` | 4종 모델 포트폴리오 (안전/중립/공격/배당) | 주간 |
+| `portfolio/rebalancing_history.md` | 리밸런싱 제안·실행 이력 누적 | 리밸런싱 시 |
+
+## 참조 레지스트리 `[v3.4 신규]`
+
+> 변경 드문 정적 데이터. `reference/` 디렉토리 (KB 외부).
+
+| 파일 | 내용 |
+|------|------|
+| `../reference/source_registry.md` | 37개 소스 + 접근성 등급(🟢🟡🔴) |
+| `../reference/rules_and_constraints.md` | 금지사항 31개 + 필수 준수 핵심 |
+| `../reference/guru_watchlist.md` | 거물 투자자 추적 대상 8인 |
 
 ## 레거시 파일 (macro/ 하위로 이전됨)
 
@@ -39,6 +70,7 @@ updated: 2026-04-07
 
 | 날짜 | 파일 | 변경 내용 |
 |------|------|----------|
+| 2026-04-07 | `_index.md` | **Phase 1 통합** — market/ + portfolio/ + reference/ 섹션 + 매크로 3종(political_cycle/tech_breakthrough/supply_chain) 추가 `[v3.4]` |
 | 2026-04-07 | `semiconductor.md` | **전면 갱신 (2차)** — DB 71건(+22건) 기반. 트럼프 관세 간접영향, 2026Q1 실적 프리뷰, 장비/소재 섹션, HBM4 스펙, 중국 자급화, 밸류에이션 신규 추가 |
 | 2026-04-07 | `macro/us_economy.md` | 신규 생성 — 미국 경제 KB 전면 구축 (DB 33건 기반, GDP·고용·인플레·소비·PMI·주택·무역·재정·Fed·리스크 전 항목) |
 | 2026-04-07 | `us_monetary_policy.md` | 갱신 — 미수집 해소, macro/us_economy.md 요약 포인터로 전환 |
@@ -55,3 +87,4 @@ updated: 2026-04-07
 | 2026-04-07 | `knowledge-db/energy_2026.jsonl` | 신규 생성 — 에너지 DB 40건 축적 |
 | 2026-04-07 | `industry/ai.md` | 신규 생성 — AI 섹터 KB 최초 구축 (DB 53건 기반, 전 분야 커버) |
 | 2026-04-07 | `knowledge-db/ai_2026.jsonl` | 신규 생성 — AI DB 53건 축적 |
+
