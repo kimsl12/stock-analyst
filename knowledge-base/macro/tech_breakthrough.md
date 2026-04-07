@@ -12,7 +12,7 @@ last_synced_from_db: 2026-04-07
 > **커버리지:** AI·반도체·양자·바이오·에너지·로봇·우주·신소재 — 기술 단계 판정 + 파괴 경로 분석
 > **갱신 주기:** 주간 (kb-updater 주기 갱신)
 > **쓰기 권한:** kb-updater
-> **읽기 권한:** briefing-lead, global-macro-analyst, 기존 종목분석 에이전트 10개
+> **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
 > **필수 규칙 (#23):** 모든 기술 분석에서 현재 단계(🔬연구→🧪시제품→🏭상용화→🌍대중화) 판정 필수
 
 ## ★ CURRENT ★

@@ -11,6 +11,10 @@ failure_reason: "외부 네트워크 차단 환경 — Investing.com, Trading Ec
 
 # 경제 서프라이즈 인덱스 (Economic Surprise Index)
 
+> **쓰기 권한:** correlation-monitor
+> **읽기 권한:** briefing-lead, global-macro-analyst, briefing-report-generator
+> **갱신 빈도:** 매일 (B-4 — Beat/Miss 누적)
+>
 > WARNING: 이 파일의 CURRENT 섹션은 2026-04-07 수집 시도에서 모든 데이터 수집에 실패했습니다.
 > 에이전트는 이 데이터를 신뢰하지 말고 수동 입력 또는 재수집을 요청해야 합니다.
 

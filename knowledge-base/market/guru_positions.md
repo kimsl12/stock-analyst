@@ -11,6 +11,11 @@ failure_reason: "외부 네트워크 차단 환경 — Dataroma, Gurufocus, SEC 
 
 # 거물 투자자 포지션 (Guru Positions)
 
+> **쓰기 권한:** market-data-collector
+> **읽기 권한:** briefing-lead, briefing-report-generator, 종목분석 9개 에이전트
+> **갱신 빈도:** 분기 1회 (13F 공시 후)
+> **명단 정본:** `reference/guru_watchlist.md` 참조 — Cathie Wood 4번 위치, Seth Klarman 미포함
+>
 > WARNING: 이 파일의 CURRENT 섹션은 2026-04-07 수집 시도에서 모든 데이터 수집에 실패했습니다.
 > 네트워크 차단 환경으로 Dataroma, Gurufocus, SEC EDGAR 접근 불가.
 >

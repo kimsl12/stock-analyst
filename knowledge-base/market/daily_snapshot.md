@@ -11,6 +11,10 @@ failure_reason: "외부 네트워크 차단 환경 — Yahoo Finance, CoinGecko 
 
 # 일일 시장 스냅샷 — 2026-04-07
 
+> **쓰기 권한:** market-data-collector
+> **읽기 권한:** briefing-lead, global-macro-analyst, correlation-monitor, briefing-report-generator, 종목분석 9개 에이전트
+> **갱신 빈도:** 매일 (장 마감 후)
+>
 > WARNING: 이 파일의 CURRENT 섹션은 2026-04-07 수집 시도에서 모든 데이터 수집에 실패했습니다.
 > 에이전트는 이 데이터를 신뢰하지 말고 수동 입력 또는 재수집을 요청해야 합니다.
 
