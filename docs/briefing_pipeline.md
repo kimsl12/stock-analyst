@@ -66,7 +66,7 @@
 | market-data-collector | ✅ | **W** | — | ❌ | ❌ | ❌ | ❌ |
 | kb-updater | ✅ | — | **W** | ❌ | **W** | ❌ | ❌ |
 | market-analyst | ❌ | R | — | ❌ | ❌ | **W (자기 파일)** | ❌ |
-| macro-analyst | ❌ | — | R | ❌ | R | **W (자기 파일)** | ❌ |
+| macro-analyst | ❌ | — | R | ❌ | ❌ | **W (자기 파일)** | ❌ |
 | guru-analyst | ❌ | R (guru_positions) | — | ❌ | ❌ | **W (자기 파일)** | ❌ |
 | briefing-synthesizer | ❌ | R | R | ❌ | ❌ | **R (3개 모두)** | **W** |
 | stock-analyst-lead 계열 | n/a | ❌ | ❌ | ❌ | n/a | ❌ | ❌ |

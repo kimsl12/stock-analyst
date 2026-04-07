@@ -7,6 +7,7 @@ description: |
   specialized sub-agents accordingly.
   Triggers: 종목 분석, 주식 추천, 투자 의견, 기업 분석, 애널리스트 리포트, 종목 리서치, 
   매수/매도 전략, 스코어카드, 목표주가, 추천픽, ETF 분석, ETF 추천.
+maxTurns: 40
 model: opus
 tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, business-analyst, momentum-analyst, risk-analyst, scorecard-strategist, etf-analyst, report-generator, market-data-collector, market-analyst, macro-analyst, guru-analyst, briefing-synthesizer), Read, Bash, Grep, Glob
 ---
