@@ -9,7 +9,8 @@ updated: 2026-04-07
 | 섹터 | 대표 종목 | KB 파일 | 관련 매크로 |
 |------|----------|---------|------------|
 | 반도체 | 삼성전자, SK하이닉스, 마이크론 | `semiconductor.md` | 미중관계, 금리 |
-| AI 인프라 | NVIDIA, AMD, TSMC | `industry/ai_infrastructure.md` | 금리, 기술규제 |
+| AI 인프라 | NVIDIA, AMD, 브로드컴, TSMC | `industry/ai.md` | 금리, 기술규제, CapEx |
+| AI 생태계 | OpenAI, Anthropic, Google, 네이버, 카카오 | `industry/ai.md` | AI 규제, 오픈소스 경쟁 |
 | 에너지 | SK이노베이션, GS칼텍스, S-Oil, 한국전력, 두산에너빌리티, 한화솔루션 | `industry/energy.md` | 유가, 지정학, 탄소중립 |
 | 2차전지 | LG에너지솔루션, CATL | `industry/battery.md` | 리튬가격, EV정책 |
 | 바이오 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | FDA, 환율 |
@@ -42,3 +43,5 @@ updated: 2026-04-07
 | 2026-04-07 | `knowledge-db/geopolitics_2026.jsonl` | 신규 생성 — 지정학 DB 31건 축적 |
 | 2026-04-07 | `industry/energy.md` | 신규 생성 — 에너지 섹터 KB 최초 구축 (DB 40건 기반) |
 | 2026-04-07 | `knowledge-db/energy_2026.jsonl` | 신규 생성 — 에너지 DB 40건 축적 |
+| 2026-04-07 | `industry/ai.md` | 신규 생성 — AI 섹터 KB 최초 구축 (DB 53건 기반, 전 분야 커버) |
+| 2026-04-07 | `knowledge-db/ai_2026.jsonl` | 신규 생성 — AI DB 53건 축적 |
