@@ -13,6 +13,7 @@ updated: 2026-04-07
 | 에너지 | 에코프로, XLE, 한국전력 | `industry/energy.md` | 유가, 지정학 |
 | 2차전지 | LG에너지솔루션, CATL | `industry/battery.md` | 리튬가격, EV정책 |
 | 바이오 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | FDA, 환율 |
+| 자동차 | 현대차, 기아, 토요타, BYD, 테슬라 | `industry/auto.md` | IRA, 관세, 리튬가격, EV정책 |
 
 ## 매크로 KB
 
@@ -27,4 +28,4 @@ updated: 2026-04-07
 
 | 날짜 | 파일 | 변경 내용 |
 |------|------|----------|
-| *(kb-updater가 자동 기록)* | | |
+| 2026-04-07 | `industry/auto.md` | 신규 생성 — 자동차 섹터 KB 최초 구축 (DB 45건 기반) |
