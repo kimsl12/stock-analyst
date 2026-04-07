@@ -1,66 +1,67 @@
 ---
 updated: 2026-04-07
 valid_until: 2026-04-08
-category: market
+file: daily_snapshot
 sources: []
-confidence: low
+confidence: none
 last_synced_from_db: 2026-04-07
+collection_status: FAILED
+failure_reason: "외부 네트워크 차단 환경 — Yahoo Finance, CoinGecko 등 모든 소스에 TCP 403 Forbidden. 2회 재시도 후 중단."
 ---
 
-# 일일 시장 스냅샷 (Daily Snapshot)
+# 일일 시장 스냅샷 — 2026-04-07
 
-> **갱신 주기:** 매 거래일 (미국장 마감 직후 / 아시아장 마감 직후)
-> **쓰기 권한:** market-data-collector
-> **읽기 권한:** briefing-lead, briefing-report-generator, 기존 종목분석 에이전트 10개
+> WARNING: 이 파일의 CURRENT 섹션은 2026-04-07 수집 시도에서 모든 데이터 수집에 실패했습니다.
+> 에이전트는 이 데이터를 신뢰하지 말고 수동 입력 또는 재수집을 요청해야 합니다.
 
 ## ★ CURRENT (에이전트는 이 섹션만 사용) ★
 
-### 미국 주요 지수
+### 1. 미국 주요 지수
 
 | 지수 | 종가 | 전일 대비 | 등락률 | 52주 고점 | 52주 저점 | 출처 |
 |------|------|----------|--------|----------|----------|------|
-| S&P 500 | *(미수집)* | | | | | |
-| NASDAQ Composite | *(미수집)* | | | | | |
-| DOW Jones | *(미수집)* | | | | | |
-| Russell 2000 | *(미수집)* | | | | | |
-| VIX (공포지수) | *(미수집)* | | | | | |
+| S&P 500 | N/A [네트워크 차단] | N/A | N/A | N/A | N/A | Yahoo Finance — 접근 불가 |
+| NASDAQ Composite | N/A [네트워크 차단] | N/A | N/A | N/A | N/A | Yahoo Finance — 접근 불가 |
+| DOW Jones | N/A [네트워크 차단] | N/A | N/A | N/A | N/A | Yahoo Finance — 접근 불가 |
+| Russell 2000 | N/A [네트워크 차단] | N/A | N/A | N/A | N/A | Yahoo Finance — 접근 불가 |
+| VIX (공포지수) | N/A [네트워크 차단] | N/A | N/A | — | — | Yahoo Finance — 접근 불가 |
 
-### 아시아 주요 지수
+### 2. 아시아 주요 지수
 
 | 지수 | 종가 | 전일 대비 | 등락률 | 출처 |
 |------|------|----------|--------|------|
-| KOSPI | *(미수집)* | | | |
-| KOSDAQ | *(미수집)* | | | |
-| 닛케이 225 | *(미수집)* | | | |
-| 상하이 종합 | *(미수집)* | | | |
-| 항셍 | *(미수집)* | | | |
+| KOSPI | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| KOSDAQ | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| 닛케이 225 | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| 상하이 종합 | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| 항셍 | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
 
-### 환율·원자재·금
+### 3. 환율·원자재·금
 
 | 항목 | 현재가 | 전일 대비 | 등락률 | 출처 |
 |------|-------|----------|--------|------|
-| USD/KRW | *(미수집)* | | | |
-| WTI 원유 | *(미수집)* | | | |
-| Gold (Spot) | *(미수집)* | | | |
-| DXY (달러인덱스) | *(미수집)* | | | |
+| USD/KRW | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| WTI 원유 | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| Gold (Spot) | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
+| DXY (달러인덱스) | N/A [네트워크 차단] | N/A | N/A | Yahoo Finance — 접근 불가 |
 
-### 채권 금리
+### 4. 채권 금리
 
 | 항목 | 금리 | 전일 대비(bp) | 출처 |
 |------|------|-------------|------|
-| 미국 10Y 국채 | *(미수집)* | | |
-| 미국 2Y 국채 | *(미수집)* | | |
-| 2Y-10Y 스프레드 | *(미수집)* | | |
+| 미국 10Y 국채 | N/A [네트워크 차단] | N/A | Yahoo Finance — 접근 불가 |
+| 미국 2Y 국채 | N/A [네트워크 차단] | N/A | Yahoo Finance — 접근 불가 |
+| 2Y-10Y 스프레드 | N/A [계산 불가] | N/A | 산출 원천 데이터 미수집 |
 
-### 크립토 (CoinGecko)
+### 5. 크립토
 
 | 항목 | 현재가 | 24H 등락률 | 시가총액 | 출처 |
 |------|-------|-----------|---------|------|
-| Bitcoin (BTC) | *(미수집)* | | | |
-| Ethereum (ETH) | *(미수집)* | | | |
-| Solana (SOL) | *(미수집)* | | | |
-| 크립토 시총 합계 | *(미수집)* | | | |
-| Fear & Greed Index | *(미수집)* | | | |
+| Bitcoin (BTC) | N/A [네트워크 차단] | N/A | N/A | CoinGecko — 접근 불가 |
+| Ethereum (ETH) | N/A [네트워크 차단] | N/A | N/A | CoinGecko — 접근 불가 |
+| Solana (SOL) | N/A [네트워크 차단] | N/A | N/A | CoinGecko — 접근 불가 |
+| 크립토 시총 합계 | N/A [네트워크 차단] | N/A | N/A | CoinGecko — 접근 불가 |
+| Fear & Greed Index | N/A [네트워크 차단] | N/A | N/A | alternative.me — 접근 불가 |
 
 ---
 
@@ -68,4 +69,4 @@ last_synced_from_db: 2026-04-07
 
 | 날짜 | 에이전트 | 변경 내용 |
 |------|---------|----------|
-| *(market-data-collector가 자동 기록)* | | |
+| 2026-04-07 | market-data-collector | 수집 시도 — 전 항목 네트워크 차단(TCP 403 Forbidden)으로 미수집. 2회 재시도 후 규칙에 따라 N/A 처리. |

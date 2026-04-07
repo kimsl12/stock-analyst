@@ -1,40 +1,47 @@
 ---
 updated: 2026-04-07
 valid_until: 2026-04-14
-category: market
+file: economic_calendar
 sources: []
-confidence: low
+confidence: none
 last_synced_from_db: 2026-04-07
+collection_status: FAILED
+failure_reason: "외부 네트워크 차단 환경 — Investing.com, ForexFactory 등 모든 소스에 TCP 403 Forbidden. 2회 재시도 후 중단."
 ---
 
 # 경제 지표 캘린더 (Economic Calendar)
 
-> **갱신 주기:** 주 1회 (월요일) + 주요 지표 발표 당일
-> **쓰기 권한:** market-data-collector
-> **읽기 권한:** briefing-lead, global-macro-analyst, 기존 종목분석 에이전트 10개
+> WARNING: 이 파일의 CURRENT 섹션은 2026-04-07 수집 시도에서 모든 데이터 수집에 실패했습니다.
+> 에이전트는 이 데이터를 신뢰하지 말고 수동 입력 또는 재수집을 요청해야 합니다.
 
-## ★ CURRENT (이번 주) ★
+## ★ CURRENT (이번 주: 2026-04-07 ~ 2026-04-11) ★
 
 ### 이번 주 주요 발표 일정
 
 | 날짜 | 시간(ET) | 국가 | 지표 | 시장 컨센서스 | 이전치 | 중요도 | 출처 |
 |------|---------|------|------|--------------|--------|-------|------|
-| *(미수집)* | | | | | | ⭐⭐⭐ | |
+| N/A | N/A | N/A | N/A [네트워크 차단 — 미수집] | N/A | N/A | — | Investing.com — 접근 불가 |
 
 ### 이번 주 주요 이벤트
 
 | 날짜 | 이벤트 | 설명 | 시장 영향 예상 | 출처 |
 |------|-------|------|--------------|------|
-| *(미수집)* | | | | |
+| N/A | N/A [네트워크 차단 — 미수집] | N/A | N/A | Investing.com — 접근 불가 |
+
+### 다음 주 주요 발표 일정 (2026-04-14 ~ 2026-04-18)
+
+| 날짜 | 시간(ET) | 국가 | 지표 | 시장 컨센서스 | 이전치 | 중요도 | 출처 |
+|------|---------|------|------|--------------|--------|-------|------|
+| N/A | N/A | N/A | N/A [네트워크 차단 — 미수집] | N/A | N/A | — | Investing.com — 접근 불가 |
 
 ### 다음 FOMC / BOJ / ECB / BOK 일정
 
 | 중앙은행 | 다음 회의 일자 | 현 기준금리 | 시장 예상 | 출처 |
 |---------|-------------|-----------|----------|------|
-| Fed (FOMC) | *(미수집)* | | | |
-| BOJ | *(미수집)* | | | |
-| ECB | *(미수집)* | | | |
-| BOK (한국은행) | *(미수집)* | | | |
+| Fed (FOMC) | N/A [네트워크 차단] | N/A | N/A | Investing.com — 접근 불가 |
+| BOJ | N/A [네트워크 차단] | N/A | N/A | Investing.com — 접근 불가 |
+| ECB | N/A [네트워크 차단] | N/A | N/A | Investing.com — 접근 불가 |
+| BOK (한국은행) | N/A [네트워크 차단] | N/A | N/A | Investing.com — 접근 불가 |
 
 ---
 
@@ -42,4 +49,4 @@ last_synced_from_db: 2026-04-07
 
 | 날짜 | 에이전트 | 변경 내용 |
 |------|---------|----------|
-| *(market-data-collector가 자동 기록)* | | |
+| 2026-04-07 | market-data-collector | 수집 시도 — 전 항목 네트워크 차단(TCP 403 Forbidden)으로 미수집. 2회 재시도 후 규칙에 따라 N/A 처리. |
