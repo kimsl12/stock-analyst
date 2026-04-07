@@ -99,7 +99,9 @@
 
 ---
 
-## 3. 접근 권한 매트릭스 (claude_code_instructions.md 명세 그대로)
+## 3. 접근 권한 매트릭스 (claude_code_instructions.md 명세 + 사용자 결정 일탈 명시)
+
+> **본 매트릭스 = 정본.** 원본 명세(claude_code_instructions.md)와 3건 일탈하며, 모두 사용자 명시 결정에 근거한다 — §3.1 일탈 일람 참조.
 
 | 에이전트 | KB industry/ | KB macro/ | KB market/ | KB portfolio/ | knowledge-db/ | analysis/briefing/ | reports/briefing/ |
 |---|---|---|---|---|---|---|---|
@@ -120,6 +122,22 @@
 - **briefing-lead 만이** `knowledge-db/performance/` 에 쓸 수 있다 (성과 추적 시스템)
 - **briefing-report-generator 만이** `reports/briefing/` 에 쓸 수 있다 (HTML 출력 전담)
 - 종목분석 계열 에이전트는 본 브리핑 파이프라인의 어떤 폴더에도 쓰지 않는다 (S6 에서 market/ 읽기 권한만 1줄씩 추가됨)
+
+---
+
+## 3.1 원본 명세 일탈 일람 (사용자 결정 근거)
+
+본 저장소 정본은 `claude_code_instructions.md` 와 다음 4건에서 의도적으로 일탈한다.
+모두 사용자 명시 결정 또는 fix_instructions.md 승인 사항에 근거하며, 본 §3.1 가 명세 갱신을 대체한다.
+
+| # | 항목 | 원본 명세 | 본 정본 | 근거 |
+|---|---|---|---|---|
+| D-01 | briefing-lead `knowledge-db/` 쓰기 | ❌ 전체 금지 | ✅ `performance/` 한정 허용 | 성과 추적 시스템(2026_recommendations / scenario_tracking / hit_rate) 운영 주체. fix_instructions F-03 승인. 다른 폴더는 여전히 금지. |
+| D-02 | 5개 브리핑 에이전트 모델 배정 | mixed (Opus + Sonnet) | **전부 Opus** | 사용자 명시 결정: "모델은 전체 OPUS" (재구현 요청 시점). 품질 우선·토큰 비용 감내. |
+| D-03 | correlation-monitor `analysis/briefing/correlation_*.md` 출력 | (명세에 없음) | ✅ 추가 산출물 | briefing-lead 인계용 노트. KB market/ 갱신과 별개로, lead 통합 게이트웨이에 raw 분석 텍스트 전달 필요. 미커밋 (산출물). |
+| D-04 | briefing-report-generator HTML 생성 방식 | "기존 chart_templates.py / report_template.py 패턴을 따름" (별도 .py 금지) | 에이전트 프롬프트 내 인라인 CSS/HTML | 종목 리포트 .py 는 score/grade 필드 구조 전제. 브리핑은 필드 스키마가 완전히 다름(매크로 요약·debate-card·contrarian-card 등). 재사용 시 분기 폭주. 별도 `briefing_template.py` 도 명세 금지. → 에이전트 내부 인라인이 유일한 명세 호환 경로. |
+
+> **D-04 추후 검토:** 인라인 패턴으로 1개월 운영 후 카드 컴포넌트 중복이 임계치 초과 시 `briefing_template.py` 분리 재논의 (명세 §"별도 .py 금지" 조항 갱신 동반).
 
 ---
 

@@ -1,5 +1,6 @@
 ---
-updated: 2026-04-07
+updated: 2026-04-08
+version: v3.0
 ---
 
 # Knowledge Base Index
@@ -30,15 +31,36 @@ updated: 2026-04-07
 | `macro/tech_breakthrough.md` | AI·양자·바이오·에너지 기술 단계 판정 `[v3.4 신규]` | 2026-04-07 |
 | `macro/supply_chain.md` | 반도체·배터리·의약품·희토류 공급망 재편 `[v3.4 신규]` | 2026-04-07 |
 
-## 시장 KB `[v3.4 신규]`
+## 시장 KB `[v3.4 신규 / v3.0 권한 헤더 추가]`
 
-| 파일 | 커버리지 | 갱신 주기 |
-|------|---------|----------|
-| `market/daily_snapshot.md` | 미국·아시아 지수, 환율·원자재·채권·크립토 | 매 거래일 |
-| `market/economic_calendar.md` | 이번 주 경제 지표·이벤트·중앙은행 일정 | 주 1회 |
-| `market/surprise_index.md` | 경제 서프라이즈 누적 스코어 | 지표 발표 당일 |
-| `market/correlation_matrix.md` | 자산 페어 6종 30D/90D 롤링 상관계수 | 매 거래일 |
-| `market/guru_positions.md` | 거물 8인 13F 포지션 변화 (45일 시차) | 분기별 |
+| 파일 | 커버리지 | 갱신 주기 | 쓰기 |
+|------|---------|----------|------|
+| `market/daily_snapshot.md` | 미국·아시아 지수, 환율·원자재·채권·크립토 | 매 거래일 | market-data-collector |
+| `market/economic_calendar.md` | 이번 주 경제 지표·이벤트·중앙은행 일정 | 주 1회 | market-data-collector |
+| `market/surprise_index.md` | 경제 서프라이즈 누적 스코어 | 지표 발표 당일 | correlation-monitor |
+| `market/correlation_matrix.md` | 자산 페어 6종 30D/90D 롤링 상관계수 | 매 거래일 | correlation-monitor |
+| `market/guru_positions.md` | 거물 8인 13F 포지션 변화 (45일 시차) | 분기별 | market-data-collector |
+
+### knowledge-db/market/ 시계열 영구 저장소 `[v3.0 — jsonl→연도별 .md 마이그레이션]`
+
+| 파일 | 커버리지 | 쓰기 |
+|------|---------|------|
+| `knowledge-db/market/2026_daily_prices.md` | 일별 가격 시계열 (지수·환율·채권·크립토 22항목) | market-data-collector |
+| `knowledge-db/market/2026_economic_indicators.md` | 경제지표 발표 이력 (CPI·NFP 등) | market-data-collector |
+| `knowledge-db/market/2026_guru_changes.md` | 분기별 13F 포지션 변동 | market-data-collector |
+| `knowledge-db/market/2026_correlation_log.md` | 6 페어 90D 상관 + Z-score 이력 | correlation-monitor |
+
+> 마이그레이션: `scripts/migrate_market_jsonl_to_md.py` (commit 3793ab9). 기존 `20260407.jsonl` 은 `_archive/` 에 보존.
+
+## 성과 추적 KB `[v3.0 신규 — briefing-lead 전용]`
+
+| 파일 | 커버리지 | 갱신 주기 | 쓰기 |
+|------|---------|----------|------|
+| `knowledge-db/performance/2026_recommendations.md` | 브리핑 신규 제안 누적 | 매 브리핑 실행 시 append | briefing-lead |
+| `knowledge-db/performance/2026_scenario_tracking.md` | G-8 시나리오 분기점 확률 추이 | 주간/글로벌인텔리전스 실행 시 | briefing-lead |
+| `knowledge-db/performance/2026_hit_rate.md` | 적중률 통계 (1w/2w/1m/3m) | /주간리포트 + /성과리뷰 | briefing-lead |
+
+> briefing-lead 만 쓰기 권한 보유. 다른 모든 에이전트는 읽기만 가능. (docs/briefing_pipeline.md §3.1 D-01)
 
 ## 포트폴리오 KB `[v3.4 신규]`
 
@@ -71,6 +93,9 @@ updated: 2026-04-07
 
 | 날짜 | 파일 | 변경 내용 |
 |------|------|----------|
+| 2026-04-08 | `_index.md` | **F-07 처리** — performance/ KB 섹션 + knowledge-db/market/ 4종 .md 시계열 + 시장 KB 권한 컬럼 추가 `[v3.0]` |
+| 2026-04-07 | `knowledge-db/market/` | jsonl → 연도별 4종 .md 마이그레이션 (`scripts/migrate_market_jsonl_to_md.py`) |
+| 2026-04-07 | `knowledge-db/performance/` | 신규 3 파일 (recommendations / scenario_tracking / hit_rate) — briefing-lead 전용 |
 | 2026-04-07 | `_index.md` | **Phase 1 통합** — market/ + portfolio/ + reference/ 섹션 + 매크로 3종(political_cycle/tech_breakthrough/supply_chain) 추가 `[v3.4]` |
 | 2026-04-07 | `semiconductor.md` | **전면 갱신 (2차)** — DB 71건(+22건) 기반. 트럼프 관세 간접영향, 2026Q1 실적 프리뷰, 장비/소재 섹션, HBM4 스펙, 중국 자급화, 밸류에이션 신규 추가 |
 | 2026-04-07 | `macro/us_economy.md` | 신규 생성 — 미국 경제 KB 전면 구축 (DB 33건 기반, GDP·고용·인플레·소비·PMI·주택·무역·재정·Fed·리스크 전 항목) |
