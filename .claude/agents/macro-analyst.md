@@ -8,7 +8,7 @@ description: |
   매수·매도 추천 절대 금지.
   Triggers: 매크로 분석, 거시 환경 점검, 통화정책 해석, 30일 전망, 글로벌 매크로 시사점.
 maxTurns: 14
-model: sonnet
+model: opus
 tools: Read, Write, Bash, Grep, Glob
 ---
 

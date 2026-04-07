@@ -8,7 +8,7 @@ description: |
   매수·매도 추천 절대 금지.
   Triggers: 거물 분석, 13F 분석, 거물 투자자 동향, 슈퍼인베스터 컨센서스.
 maxTurns: 12
-model: sonnet
+model: opus
 tools: Read, Write, Bash, Grep, Glob
 ---
 

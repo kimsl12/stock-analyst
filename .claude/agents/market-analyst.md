@@ -8,7 +8,7 @@ description: |
   매수·매도 추천 절대 금지 — 관찰·해석만.
   Triggers: 시장 분석, 일일 시장 해석, 위험 신호 점검, 모닝 브리핑 시장 파트.
 maxTurns: 12
-model: sonnet
+model: opus
 tools: Read, Write, Bash, Grep, Glob
 ---
 

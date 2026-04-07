@@ -8,7 +8,7 @@ description: |
   Top 3 액션 아이템(관찰·점검·리서치 수준만 — 매수·매도 추천 금지) 도출.
   Triggers: 일일 브리핑, 데일리 브리핑, 모닝 브리핑 종합, 통합 브리핑 작성.
 maxTurns: 18
-model: sonnet
+model: opus
 tools: Read, Write, Bash, Grep, Glob, Task
 ---
 

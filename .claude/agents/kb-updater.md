@@ -6,7 +6,7 @@ description: |
   리드 에이전트가 Phase 0-A에서 자동 호출하거나, /KB업데이트·/KB수정 커맨드로 수동 실행.
   Triggers: KB 업데이트, 산업 데이터 갱신, 매크로 업데이트, KB 수정.
 maxTurns: 15
-model: sonnet
+model: opus
 tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
 mcpServers:
   - type: url
