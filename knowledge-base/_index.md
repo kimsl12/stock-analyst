@@ -20,7 +20,8 @@ updated: 2026-04-07
 
 | 파일 | 커버리지 | 최종 업데이트 |
 |------|---------|------------|
-| `macro/us_monetary_policy.md` | Fed 금리, QT, 인플레이션 | — |
+| `macro/us_economy.md` | 미국 GDP, 고용, 인플레, 소비, PMI, 주택, 무역, 재정, Fed 정책, 리스크 | 2026-04-07 |
+| `macro/us_monetary_policy.md` | Fed 금리, QT, 인플레이션 (요약 포인터 — 상세는 us_economy.md) | 2026-04-07 |
 | `macro/geopolitics.md` | 미중 관세·기술전쟁, 대만, 중동, 북한, 유럽, 공급망 | 2026-04-07 |
 | `macro/korea_economy.md` | 한국 GDP, 환율, 수출, 금리, 산업별 동향, 정책·규제 | 2026-04-07 |
 | `macro/global_risk_factors.md` | 글로벌 Top 5 리스크, 시장 심리 지표, 원자재 가격 | 2026-04-07 |
@@ -32,11 +33,15 @@ updated: 2026-04-07
 | `geopolitics.md` (루트) | knowledge-base/ | macro/geopolitics.md |
 | `global_risk_factors.md` (루트) | knowledge-base/ | macro/global_risk_factors.md |
 | `korea_economy.md` (루트) | knowledge-base/ | macro/korea_economy.md (요약본 루트 유지) |
+| `us_monetary_policy.md` (루트) | knowledge-base/ | 루트 유지 + macro/us_economy.md로 확장 |
 
 ## 업데이트 이력
 
 | 날짜 | 파일 | 변경 내용 |
 |------|------|----------|
+| 2026-04-07 | `macro/us_economy.md` | 신규 생성 — 미국 경제 KB 전면 구축 (DB 33건 기반, GDP·고용·인플레·소비·PMI·주택·무역·재정·Fed·리스크 전 항목) |
+| 2026-04-07 | `us_monetary_policy.md` | 갱신 — 미수집 해소, macro/us_economy.md 요약 포인터로 전환 |
+| 2026-04-07 | `knowledge-db/macro_2026.jsonl` | 미국 경제 데이터 33건 추가 (기존 39건 → 총 72건) |
 | 2026-04-07 | `macro/korea_economy.md` | 신규 생성 — 한국 경제 KB 전면 구축 (DB 38건 기반, GDP·금리·환율·수출·산업·정책 전 항목) |
 | 2026-04-07 | `korea_economy.md` (루트) | 전면 갱신 — 미수집 해소, macro/korea_economy.md 요약본으로 전환 |
 | 2026-04-07 | `knowledge-db/macro_2026.jsonl` | 신규 생성 — 한국 매크로 DB 38건 축적 |
