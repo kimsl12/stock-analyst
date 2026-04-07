@@ -395,9 +395,15 @@ last_synced_from_db: 2026-04-07
 
 ---
 
-## Git 규칙 (Phase 5 통합 테스트 전까지)
+## Git 규칙
 
-- **Phase 2 단계에서는 push 금지**
-- 로컬 커밋만 `claude/phase1-infra` 브랜치에 누적
-- Phase 5 전체 테스트 통과 후 사용자 승인 하에 일괄 push
-- 직접 main push 절대 금지 (브리핑 통합 프로젝트 한정)
+- **main에 직접 push한다.** 별도 브랜치를 만들지 않는다.
+- 수집 완료 후 자동 커밋·자동 push (사용자 요청 없이도 수행).
+
+```bash
+git checkout main
+git add knowledge-base/market/ knowledge-db/market/
+git commit -m "market data snapshot: {YYYY-MM-DD}"
+git pull --rebase origin main
+git push origin main
+```

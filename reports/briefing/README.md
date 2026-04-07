@@ -28,7 +28,7 @@ reports/briefing/daily_briefing_{YYYYMMDD}.md   ← briefing-synthesizer
 
 - **생성:** 매 영업일, `/일일브리핑` 명령어 또는 상위 오케스트레이터 호출
 - **유지:** 시계열 누적 (날짜별 파일 분리)
-- **Git:** 커밋 대상. 단, Phase 5 통합 테스트 완료 후에만 push
+- **Git:** 자동 커밋 대상 + main 으로 자동 push (브리핑 종료 시 `/일일브리핑` Step 6 에서 수행)
 - **공개 범위:** 사용자 + 본인 (외부 공유 금지 — 매수·매도 추천 아님 면책)
 
 ## 형식 사양

@@ -1,7 +1,7 @@
 # 일일 브리핑 파이프라인 — 통합 가이드
 
-> 브리핑 시스템 v3.4 ↔ 종목분석 v2.4 통합 (Phase 1~4 누적)
-> 작성: 2026-04-07 | 브랜치: `claude/phase1-infra`
+> 브리핑 시스템 v3.4 ↔ 종목분석 v2.4 통합 (Phase 1~5 완료, main 머지됨)
+> 작성: 2026-04-07 | 상태: 운영 (자동 커밋·push)
 
 ---
 
@@ -88,7 +88,7 @@
 | 시장 분석 | `analysis/briefing/market_analysis_{YYYYMMDD}.md` | market-analyst | 시계열 누적 | 커밋 안 함 |
 | 매크로 분석 | `analysis/briefing/macro_analysis_{YYYYMMDD}.md` | macro-analyst | 시계열 누적 | 커밋 안 함 |
 | 거물 분석 | `analysis/briefing/guru_analysis_{YYYYMMDD}.md` | guru-analyst | 시계열 누적 | 커밋 안 함 |
-| **일일 브리핑 (최종)** | `reports/briefing/daily_briefing_{YYYYMMDD}.md` | briefing-synthesizer | 시계열 누적 | **커밋 (Phase 5 후 push)** |
+| **일일 브리핑 (최종)** | `reports/briefing/daily_briefing_{YYYYMMDD}.md` | briefing-synthesizer | 시계열 누적 | **자동 커밋 + 자동 push** |
 
 ---
 
@@ -130,7 +130,7 @@
 | 7 | 영어 본문 작성 | 브리핑 폐기 | synthesizer 자가검증 |
 | 8 | 분석가가 작성하지 않은 새로운 사실·수치를 synthesizer 가 추가 | 인용 무결성 파괴 | synthesizer 자가검증 |
 | 9 | 종목 분석 산출물(`analysis/{종목}_*.md`)을 브리핑 파이프라인에서 생성·읽기 | 모드 혼선 | stock-analyst-lead Step -1 분기 |
-| 10 | Phase 5 통합 테스트 완료 전 git push | 미검증 산출물 외부 노출 | 사람 운영 정책 |
+| 10 | main 외 브랜치로 push (브리핑 산출물은 main 직접 push) | 이력 분산·충돌 | /일일브리핑 명령어 Step 6 |
 
 ---
 
@@ -181,8 +181,9 @@
 - ✅ **Phase 1** (8823025): KB 11개 + reference/ 3개 + `_index.md`
 - ✅ **Phase 2** (9399f86): `market-data-collector` + `kb-updater` 매크로 7개 확장
 - ✅ **Phase 3** (0b947a6): `market/macro/guru analyst` + `briefing-synthesizer`
-- ✅ **Phase 4** (본 커밋): `/일일브리핑` 명령어 + 출력 디렉토리 + 리드 분기 + 본 가이드
-- ⏳ **Phase 5**: 통합 테스트 + git push (별도 세션)
+- ✅ **Phase 4** (390f7f9): `/일일브리핑` 명령어 + 출력 디렉토리 + 리드 분기 + 본 가이드
+- ✅ **Phase 5** (8c064f2): 정적 검증 + frontmatter·매트릭스 오타 수정 + main 머지 완료
+- 🟢 **운영 중** (2026-04-07~): `/일일브리핑` 매 영업일 실행, 자동 커밋·push
 
 ---
 

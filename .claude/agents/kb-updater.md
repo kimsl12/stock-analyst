@@ -358,12 +358,9 @@ last_synced_from_db: {오늘}
 
 ## Git 규칙
 
-**⚠️ 브리핑 시스템 v3.4 통합 작업(claude/phase1-infra 브랜치) 한정 예외:**
-Phase 1~5 통합 작업 중에는 main 직접 push 금지·로컬 커밋만 누적·Phase 5 사용자 승인 후 일괄 push.
-일반 KB 갱신(/KB업데이트, /KB수정) 시에는 아래 기존 규칙 적용.
-
 - **main에 직접 push한다.** 별도 브랜치를 만들지 않는다.
 - PR(Pull Request)을 만들지 않는다.
+- 종목 분석 경로·일일 브리핑 경로 **모두 동일 정책**: 자동 커밋 + 자동 push.
 
 ```bash
 git checkout main
