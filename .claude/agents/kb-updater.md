@@ -6,14 +6,13 @@ description: |
   리드 에이전트가 Phase 0-A에서 자동 호출하거나, /KB업데이트·/KB수정 커맨드로 수동 실행.
   Triggers: KB 업데이트, 산업 데이터 갱신, 매크로 업데이트, KB 수정.
 maxTurns: 15
-model: sonnet
-tools: Read, Write, Bash, Grep, Glob
+model: opus
+tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
 mcpServers:
   - type: url
     url: https://mcp.anthropic.com/web-search
     name: web-search
 ---
-
 # Knowledge Base 업데이트 에이전트
 
 ## 역할
@@ -48,13 +47,16 @@ mcpServers:
 ## 호출 방식
 
 ### 자동 호출 (리드가 Phase 0-A에서 호출)
+
 리드가 전달하는 정보:
+
 - `sector`: 주력 섹터
 - `sub_sectors`: 서브섹터 리스트
 - `macro_tags`: 관련 매크로 태그
 - `ticker`: 분석 대상 종목 (참고용)
 
 ### 수동 호출
+
 ```
 /KB업데이트 반도체       — 웹검색으로 섹터 갱신
 /KB수정 반도체 "..."     — 사용자가 직접 수정
@@ -65,6 +67,7 @@ mcpServers:
 ## knowledge-db/ 영구 저장소 설계
 
 ### 폴더 구조
+
 ```
 knowledge-db/
 ├── semiconductor_2026.jsonl    ← 반도체 섹터 2026년 데이터
@@ -77,6 +80,7 @@ knowledge-db/
 ### 연도별 파일 생성 규칙
 
 새해 첫 갱신 시 (예: 2027년 1월):
+
 1. `semiconductor_2027.jsonl` 신규 생성
 2. 파일 첫 줄에 **이전 연도 요약 레코드** 삽입:
 
@@ -97,15 +101,16 @@ knowledge-db/
 
 ### source 필드 값
 
-| source 값 | 의미 | confidence 기본값 |
-|-----------|------|-----------------|
-| `web_search` | kb-updater가 웹검색으로 수집 | high (교차검증 완료 시) |
-| `user` | 사용자가 /KB수정으로 직접 입력 | medium (검증 전) |
-| `kb-updater auto-summary` | 연도 요약 자동 생성 | high |
+| source 값                   | 의미                           | confidence 기본값       |
+| --------------------------- | ------------------------------ | ----------------------- |
+| `web_search`              | kb-updater가 웹검색으로 수집   | high (교차검증 완료 시) |
+| `user`                    | 사용자가 /KB수정으로 직접 입력 | medium (검증 전)        |
+| `kb-updater auto-summary` | 연도 요약 자동 생성            | high                    |
 
 ## 사용자 수정 처리 (/KB수정 커맨드)
 
 ### 기본 흐름
+
 ```
 1. 사용자 지시 파싱 → 수정 대상 key, 새 value 추출
 2. knowledge-db/에서 해당 key의 최근 레코드 조회
@@ -137,6 +142,7 @@ knowledge-db/
 사용자가 확인(Y)하면 무조건 반영한다. 최종 판단 권한은 사용자에게 있다.
 
 ### 사용자 수정 후 처리
+
 ```
 1. knowledge-db/ → source: "user"로 append
 2. knowledge-base/ → CURRENT 해당 항목 업데이트
@@ -179,10 +185,43 @@ KB는 언제든 knowledge-db/에서 재생성 가능하다.
 ### KB 동기화 검증
 
 kb-updater 시작 시:
+
 ```
 KB의 last_synced_from_db vs knowledge-db/ 최신 date 비교
 → 불일치 시 knowledge-db/에서 KB 재생성 (자동 복구)
 ```
+
+---
+
+## 매크로 KB 갱신 대상 (knowledge-base/macro/)
+
+kb-updater는 산업 KB 외에도 다음 매크로 KB 7개를 갱신한다.
+Phase 1에서 추가된 3개(political_cycle, tech_breakthrough, supply_chain)는
+브리핑 시스템 v3.4 통합으로 신규 편입되었다.
+
+### 기존 매크로 4개 (현행 유지)
+
+| 파일                       | 갱신 트리거                    | 주요 출처             |
+| -------------------------- | ------------------------------ | --------------------- |
+| `us_monetary_policy.md`  | FOMC 회의·연준 인사 발언      | Fed.gov, Reuters, WSJ |
+| `korea_economy.md`       | BOK 회의·국내 거시지표 발표   | 한국은행, 통계청      |
+| `geopolitics.md`         | 주요 국제 갈등·제재·무역분쟁 | Reuters, Bloomberg    |
+| `global_risk_factors.md` | IMF/WB/주요 IB 리스크 리포트   | IMF, 각 IB 리서치     |
+
+### Phase 1 신규 매크로 3개 (브리핑 v3.4 통합)
+
+| 파일                     | 갱신 트리거                         | 주요 출처                         | v3.4 원본                |
+| ------------------------ | ----------------------------------- | --------------------------------- | ------------------------ |
+| `political_cycle.md`   | 미·한 주요 선거·정책·재정 사이클 | Politico, 청와대, FRED 재정데이터 | briefing_module_G.md G-2 |
+| `tech_breakthrough.md` | AI·반도체·바이오 핵심 기술 돌파   | Nature, ArXiv, 주요 컨퍼런스      | briefing_module_G.md G-3 |
+| `supply_chain.md`      | 글로벌 물류·원자재·공급망 병목    | Drewry, Baltic Index, 산업부      | briefing_module_G.md G-4 |
+
+### 매크로 갱신 원칙
+
+1. 산업 KB 갱신과 동일한 3계층 단방향 흐름 적용
+2. 매크로는 산업보다 갱신 빈도가 낮음 — 트리거 이벤트 발생 시에만 갱신
+3. 신규 매크로 3개도 반드시 정합성 검사·트렌드 일관성 검증 통과 후 KB 덮어쓰기
+4. macro_2026.jsonl 단일 파일에 7개 카테고리 모두 append (key 필드로 구분)
 
 ---
 
@@ -199,6 +238,7 @@ KB의 last_synced_from_db vs knowledge-db/ 최신 date 비교
 ```
 
 ### 표준 섹터 KB 템플릿
+
 ```markdown
 ---
 updated: {오늘}
@@ -233,6 +273,7 @@ last_synced_from_db: {오늘}
 ## 정합성 검사 (갱신 완료 후 자동 수행)
 
 ### 수치 정합성
+
 ```
 1. 점유율 합계: 주요 3~5사 합계 85~105% 범위 확인
 2. 영업이익 역산: OP ÷ OPM ≒ 매출 (±30% 이내)
@@ -240,6 +281,7 @@ last_synced_from_db: {오늘}
 ```
 
 ### 트렌드 일관성 (knowledge-db/ 이전 레코드와 비교)
+
 ```
 1. 점유율 20%p 이상 급변 → ⚠️ 플래그
 2. 가격 전망 방향 전환 → ⚠️ "방향 전환" 태그
@@ -273,13 +315,18 @@ last_synced_from_db: {오늘}
 ## 검색 전략
 
 ### 검색 예산: 최대 10회
+
 ```
 산업 KB 갱신:     5~7회
-매크로 KB 갱신:   2~3회
+매크로 KB 갱신:   3~5회 (기존 4개 + Phase 1 신규 3개 포함)
 검증/보완:        1~2회
 ```
 
+매크로 7개 모두를 매번 갱신할 필요는 없다. 트리거 이벤트가 있는 매크로만 선택 갱신한다.
+매크로 3~5회 예산은 평균값이며, 이벤트가 몰린 날에는 7회까지 허용한다 (산업 갱신을 줄여 총 10회 유지).
+
 ### 검색 원칙
+
 1. 최신 데이터 우선 (검색어에 "2026" 포함)
 2. 정량 데이터 위주
 3. 1차 소스 우선 (증권사 리포트 > 통신사 > 블로그)
@@ -290,25 +337,31 @@ last_synced_from_db: {오늘}
 ## 안전장치
 
 ### 데이터 역류 방지 (최우선)
+
 - **analysis/ 읽기 절대 금지**
 - **reports/ 읽기 절대 금지**
 
 ### 웹검색 예산: 최대 10회
 
 ### knowledge-db/ 무결성
+
 - append only — 기존 레코드 수정·삭제 금지
 - 연도별 파일 자동 분리
 - 이전 연도 파일 삭제 금지
 
 ### 기존 규칙 (유지)
+
 1. 웹 검색 실패 시: 최대 2회 시도 → "미수집" 표기
 2. 무한 루프 금지: 3회 반복 시 멈추고 반환
 3. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
 4. 결과 반환 우선: 오류 시 현재까지 결과 반환
 
 ## Git 규칙
+
 - **main에 직접 push한다.** 별도 브랜치를 만들지 않는다.
 - PR(Pull Request)을 만들지 않는다.
+- 종목 분석 경로·일일 브리핑 경로 **모두 동일 정책**: 자동 커밋 + 자동 push.
+
 ```bash
 git checkout main
 git add knowledge-base/ knowledge-db/
