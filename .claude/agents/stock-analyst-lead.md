@@ -163,13 +163,23 @@ reports/   ← 최종 산출물만 (사용자가 보는 파일)
 
 ### Git 커밋 + 푸시 (Phase 4 완료 직후, 1회만 실행)
 
+⚠️ **별도 브랜치를 만들지 않는다. main에 직접 push한다.**
+
 ```bash
+# 1. main 브랜치로 전환 (다른 브랜치에 있을 수 있으므로)
+git checkout main
+
+# 2. reports/ 폴더만 커밋
 git add reports/
 git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
+
+# 3. 충돌 방지 후 직접 push
 git pull --rebase origin main
 git push origin main
 ```
 
+### Git 규칙
+- **별도 브랜치 생성 금지.** PR(Pull Request)을 만들지 않는다. main에 직접 커밋한다.
 - analysis/ 폴더는 git add하지 않는다
 - reports/ 폴더만 커밋한다
 - 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
