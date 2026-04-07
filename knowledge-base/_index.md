@@ -10,7 +10,7 @@ updated: 2026-04-07
 |------|----------|---------|------------|
 | 반도체 | 삼성전자, SK하이닉스, 마이크론 | `semiconductor.md` | 미중관계, 금리 |
 | AI 인프라 | NVIDIA, AMD, TSMC | `industry/ai_infrastructure.md` | 금리, 기술규제 |
-| 에너지 | 에코프로, XLE, 한국전력 | `industry/energy.md` | 유가, 지정학 |
+| 에너지 | SK이노베이션, GS칼텍스, S-Oil, 한국전력, 두산에너빌리티, 한화솔루션 | `industry/energy.md` | 유가, 지정학, 탄소중립 |
 | 2차전지 | LG에너지솔루션, CATL | `industry/battery.md` | 리튬가격, EV정책 |
 | 바이오 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | FDA, 환율 |
 | 자동차 | 현대차, 기아, 토요타, BYD, 테슬라 | `industry/auto.md` | IRA, 관세, 리튬가격, EV정책 |
@@ -40,3 +40,5 @@ updated: 2026-04-07
 | 2026-04-07 | `macro/geopolitics.md` | 신규 생성 — 지정학 KB 전면 갱신 (미중·대만·중동·북한·유럽·공급망) |
 | 2026-04-07 | `macro/global_risk_factors.md` | 신규 생성 — 글로벌 Top5 리스크, 시장심리, 원자재 현황 |
 | 2026-04-07 | `knowledge-db/geopolitics_2026.jsonl` | 신규 생성 — 지정학 DB 31건 축적 |
+| 2026-04-07 | `industry/energy.md` | 신규 생성 — 에너지 섹터 KB 최초 구축 (DB 40건 기반) |
+| 2026-04-07 | `knowledge-db/energy_2026.jsonl` | 신규 생성 — 에너지 DB 40건 축적 |
