@@ -15,6 +15,7 @@ updated: 2026-04-07
 | 2차전지 | LG에너지솔루션, CATL | `industry/battery.md` | 리튬가격, EV정책 |
 | 바이오 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | FDA, 환율 |
 | 자동차 | 현대차, 기아, 토요타, BYD, 테슬라 | `industry/auto.md` | IRA, 관세, 리튬가격, EV정책 |
+| 과학기술 (메타) | 양자/바이오/우주/로봇/SMR/6G/EDA/디스플레이 | `industry/science_tech.md` | 미중 디커플링, R&D 정책, 인재 |
 
 ## 매크로 KB
 
@@ -87,4 +88,5 @@ updated: 2026-04-07
 | 2026-04-07 | `knowledge-db/energy_2026.jsonl` | 신규 생성 — 에너지 DB 40건 축적 |
 | 2026-04-07 | `industry/ai.md` | 신규 생성 — AI 섹터 KB 최초 구축 (DB 53건 기반, 전 분야 커버) |
 | 2026-04-07 | `knowledge-db/ai_2026.jsonl` | 신규 생성 — AI DB 53건 축적 |
-
+| 2026-04-07 | `industry/science_tech.md` | 신규 생성 — 과학기술 메타 섹터 KB 최초 구축 (DB 45건, 양자·바이오·우주·로봇·SMR·6G·EDA 등) |
+| 2026-04-07 | `knowledge-db/science_tech_2026.jsonl` | 신규 생성 — 과학기술 DB 45건 축적 |
