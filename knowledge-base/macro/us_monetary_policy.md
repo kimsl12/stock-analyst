@@ -9,6 +9,10 @@ last_synced_from_db: 2026-04-07
 
 # 미국 통화정책 Knowledge Base
 
+> **쓰기 권한:** kb-updater
+> **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
+> **갱신 빈도:** 주간 (FOMC 직후 + 정기 갱신)
+
 ## ★ CURRENT (에이전트는 이 섹션만 사용) ★
 
 ### Fed 기준금리

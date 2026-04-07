@@ -7,7 +7,7 @@ type: static
 # 거물 투자자 추적 대상 8인 (Guru Watchlist)
 
 > **성격:** 변경 드문 정적 명단. 포지션 데이터는 `knowledge-base/market/guru_positions.md` 참조.
-> **읽기 권한:** market-data-collector, briefing-lead, briefing-report-generator
+> **읽기 권한:** market-data-collector, briefing-lead, briefing-report-generator, global-macro-analyst
 > **데이터 소스:** Dataroma, Gurufocus, ValueInvestorsClub, SEC EDGAR 13F
 
 ## 추적 대상 8인 (상시 모니터링)

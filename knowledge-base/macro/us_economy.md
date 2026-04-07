@@ -11,6 +11,10 @@ note: "인터넷 직접 접근 불가 환경 — 모델 학습 데이터(기준:
 
 # 미국 경제 Knowledge Base
 
+> **쓰기 권한:** kb-updater
+> **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
+> **갱신 빈도:** 주간 (kb-updater 정기 갱신)
+
 ## ★ CURRENT (에이전트는 이 파일의 데이터를 그대로 사용) ★
 
 ---

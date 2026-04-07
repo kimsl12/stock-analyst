@@ -12,7 +12,7 @@ last_synced_from_db: 2026-04-07
 > **커버리지:** 주요국 정치 일정 + 정책 변화 → 섹터별 규제·보조금·세제 임팩트
 > **갱신 주기:** 주간 (kb-updater 주기 갱신)
 > **쓰기 권한:** kb-updater
-> **읽기 권한:** briefing-lead, global-macro-analyst, 기존 종목분석 에이전트 10개
+> **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
 
 ## ★ CURRENT (에이전트는 이 섹션만 사용) ★
 

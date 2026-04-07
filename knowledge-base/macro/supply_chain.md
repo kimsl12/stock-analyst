@@ -12,7 +12,7 @@ last_synced_from_db: 2026-04-07
 > **커버리지:** 반도체·배터리·의약품·희토류·식량 — 공급망 재편 경로 + 핵심 취약점
 > **갱신 주기:** 주간 (kb-updater 주기 갱신)
 > **쓰기 권한:** kb-updater
-> **읽기 권한:** briefing-lead, global-macro-analyst, 기존 종목분석 에이전트 10개
+> **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
 > **연계:** G-1(지정학 파워맵)의 하위 프레임. 공급망 재편의 근본 동인은 지정학.
 
 ## ★ CURRENT ★
