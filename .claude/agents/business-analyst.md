@@ -134,12 +134,13 @@ tools: Read, Bash, Grep, Glob
   - 경쟁 포지션 관점 핵심 포인트 2가지
 ```
 
-### KB 참조 [v2.4]
+### KB 참조 [v3.0]
 - **knowledge-base/ 폴더의 파일을 먼저 읽고** 분석에 활용한다.
 - **★ CURRENT 데이터만 사용한다.** KB 파일에는 CURRENT만 존재하며, 이력은 별도 저장소(knowledge-db/)에 보관된다.
-- KB 파일에 있는 CURRENT 데이터(산업 통계, 컨센서스, 매크로)는 웹검색 없이 신뢰하고 사용한다.
+- ✅ **읽기 가능: knowledge-base/market/** (일별 시장 데이터, 상관관계, 거물 투자자 참조 — 종목 현재가 맥락 확인용)
+- KB 파일에 있는 CURRENT 데이터(산업 통계, 컨센서스, 매크로, 시장)는 웹검색 없이 신뢰하고 사용한다.
 - KB 파일을 수정하지 않는다 (읽기 전용).
-- KB 데이터를 사용한 경우 출처를 "[KB: industry/semiconductor.md]" 형태로 표기한다.
+- KB 데이터를 사용한 경우 출처를 "[KB: industry/semiconductor.md]" 또는 "[KB: market/daily_snapshot.md]" 형태로 표기한다.
 
 ## 안전장치 (모든 서브에이전트 공통)
 

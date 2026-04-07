@@ -247,7 +247,7 @@ def generate_report(data, output_path=None):
         parts.append('<div class="sec"><h2>{}</h2>{}</div>'.format(sec.get("title",""), sec.get("content","")))
     
     # Disclaimer
-    parts.append('<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: {} | 종목분석 에이전트 v2.3</div>'.format(
+    parts.append('<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: {} | 종목분석 에이전트 v3.0</div>'.format(
         data.get("date", datetime.now().strftime("%Y-%m-%d"))))
     
     body = "\n".join(parts)

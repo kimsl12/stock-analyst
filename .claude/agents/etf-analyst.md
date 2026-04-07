@@ -228,6 +228,14 @@ STEP 4: target_price = entry_price + (risk × rr_ratio)
 - 레버리지/인버스 ETF는 장기투자 부적합 경고 필수
 - 해외 ETF는 환율 노출 여부 반드시 명시
 - AUM 100억 미만 ETF는 상장폐지 리스크 경고
+
+### KB 참조 [v3.0]
+- **knowledge-base/ 폴더의 파일을 먼저 읽고** 분석에 활용한다.
+- ✅ **읽기 가능: knowledge-base/market/** (ETF 가격·자금흐름·NAV 괴리·상관관계·거물 13F 참조 — 특히 daily_snapshot.md, correlation_matrix.md, surprise_index.md, guru_positions.md)
+- ✅ **읽기 가능: knowledge-base/industry/** (테마 ETF 분석 시 해당 산업 KB 우선 참조)
+- KB 파일을 수정하지 않는다 (읽기 전용).
+- KB 데이터를 사용한 경우 출처를 "[KB: market/daily_snapshot.md]" 또는 "[KB: industry/semiconductor.md]" 형태로 표기한다.
+
 ## 안전장치 (모든 서브에이전트 공통)
 
 ### 웹검색 제한 [v2.3]
