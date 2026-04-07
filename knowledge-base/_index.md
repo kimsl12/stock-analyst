@@ -22,7 +22,7 @@ updated: 2026-04-07
 |------|---------|------------|
 | `macro/us_monetary_policy.md` | Fed 금리, QT, 인플레이션 | — |
 | `macro/geopolitics.md` | 미중 관세·기술전쟁, 대만, 중동, 북한, 유럽, 공급망 | 2026-04-07 |
-| `macro/korea_economy.md` | 한국 GDP, 환율, 수출, 금리 | — |
+| `macro/korea_economy.md` | 한국 GDP, 환율, 수출, 금리, 산업별 동향, 정책·규제 | 2026-04-07 |
 | `macro/global_risk_factors.md` | 글로벌 Top 5 리스크, 시장 심리 지표, 원자재 가격 | 2026-04-07 |
 
 ## 레거시 파일 (macro/ 하위로 이전됨)
@@ -31,11 +31,15 @@ updated: 2026-04-07
 |------|---------|---------|
 | `geopolitics.md` (루트) | knowledge-base/ | macro/geopolitics.md |
 | `global_risk_factors.md` (루트) | knowledge-base/ | macro/global_risk_factors.md |
+| `korea_economy.md` (루트) | knowledge-base/ | macro/korea_economy.md (요약본 루트 유지) |
 
 ## 업데이트 이력
 
 | 날짜 | 파일 | 변경 내용 |
 |------|------|----------|
+| 2026-04-07 | `macro/korea_economy.md` | 신규 생성 — 한국 경제 KB 전면 구축 (DB 38건 기반, GDP·금리·환율·수출·산업·정책 전 항목) |
+| 2026-04-07 | `korea_economy.md` (루트) | 전면 갱신 — 미수집 해소, macro/korea_economy.md 요약본으로 전환 |
+| 2026-04-07 | `knowledge-db/macro_2026.jsonl` | 신규 생성 — 한국 매크로 DB 38건 축적 |
 | 2026-04-07 | `semiconductor.md` | 전면 갱신 — DB 49건 기반, 전 항목 최신화 (미수집 0건) |
 | 2026-04-07 | `industry/auto.md` | 신규 생성 — 자동차 섹터 KB 최초 구축 (DB 45건 기반) |
 | 2026-04-07 | `macro/geopolitics.md` | 신규 생성 — 지정학 KB 전면 갱신 (미중·대만·중동·북한·유럽·공급망) |
