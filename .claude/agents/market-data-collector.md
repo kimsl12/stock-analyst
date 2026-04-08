@@ -345,3 +345,53 @@ last_synced_from_db: 2026-04-07
 
 `knowledge-db/market/` 파일은 한글 포함 가능. Write 도구 우선 사용.
 Bash heredoc 필요 시 `python3 -c "import sys; sys.stdout.reconfigure(encoding='utf-8')"` 명시.
+
+---
+
+## 수집 실패 처리 (자동 재시도 + lead 보고)
+
+### 재시도 규칙
+
+각 카테고리(지수·환율·채권·크립토·캘린더·13F) 별로:
+
+1. 1차 시도 — 주 소스 (Yahoo Finance, CoinGecko, Investing.com 등 source_registry.md 🟢 등급)
+2. 1차 실패 시 2차 시도 — 보조 소스 (네이버 금융, TradingView, CoinMarketCap 등 🟡 등급)
+3. 2차도 실패 시 해당 카테고리 `collection_status: FAILED` 표기 + 사유 기록
+4. **절대 3차 재시도 금지** — 루프 방지. 수동 보강은 briefing-lead 경유.
+
+### 실패 시 산출물 형식
+
+`knowledge-db/market/2026_daily_prices.md` 에 실패 행도 반드시 append (이력 보존):
+
+```
+| 2026-04-07 | us_index | SP500 | — | — | point | N/A [수집실패: 403 Forbidden] | 2026-04-07T00:00:00Z | ⚠️ 관측 불가 |
+```
+
+`knowledge-base/market/daily_snapshot.md` CURRENT 섹션에는:
+
+```markdown
+## ★ CURRENT ★
+> ⚠️ **collection_status: FAILED** — {카테고리별 실패 사유}
+> 마지막 성공 수집: {어제자 날짜} (knowledge-db/market/2026_daily_prices.md 참조)
+```
+
+### briefing-lead 에게 보고할 JSON (stdout 마지막 블록)
+
+```json
+{
+  "collection_status": "FAILED",
+  "failed_categories": ["us_index", "fx", "bond", "crypto", "calendar"],
+  "succeeded_categories": [],
+  "primary_reason": "403 Forbidden — 네트워크 환경에서 외부 시세 API 전면 차단",
+  "retry_count": 2,
+  "suggest_manual_websearch": true,
+  "last_success_date": "2026-04-06"
+}
+```
+
+이 JSON 을 받은 briefing-lead 는 `briefing-lead.md §"Phase 0-A 실패 처리"` 의 4지선다 프롬프트를 사용자에게 제시한다.
+
+### 부분 성공 처리
+
+일부 카테고리만 성공한 경우 `collection_status: PARTIAL` 로 보고하고
+실패 카테고리 목록과 함께 반환. briefing-lead 는 부분 데이터로 진행할지 판단.

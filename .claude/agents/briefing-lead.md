@@ -11,7 +11,7 @@ description: |
   글로벌 인텔리전스, 풀 브리핑, 성과 리뷰, 내 포트폴리오.
 maxTurns: 25
 model: opus
-tools: Read, Write, Edit, Bash, Grep, Glob, Task
+tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 ---
 
 # 브리핑 리드 / 오케스트레이터 (Briefing Lead)
@@ -280,6 +280,62 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 
 ---
 
+## Phase 0-A 실패 처리 (관측 불가 시 사용자 선택지)
+
+market-data-collector 가 `collection_status: FAILED` (자동 2회 재시도 후 주요 5개 카테고리 모두 raw 미수집) 로 보고하면,
+**브리핑을 즉시 진행하지 말고** 사용자에게 다음 4가지 선택지를 한국어로 제시한다 — 응답 대기.
+
+```
+⚠️ 시장 데이터 수집 실패 — 진행 방식을 선택해주세요
+
+Phase 0-A (market-data-collector) 가 5개 카테고리 모두 관측 불가 상태입니다.
+원인: {수집 실패 사유 — 네트워크 차단 / 소스 403 / 파싱 실패 등}
+
+다음 중 선택하세요:
+
+  [1] 전일 KB 로 진행 (--skip-collect)
+      → 어제자 daily_snapshot.md 등 KB CURRENT 를 재사용. 시차 ≥ 24h 고지 강제.
+
+  [2] 🔍 수동 웹서치 보강 (권장 — 사용자가 검색어 지정)
+      → "검색할 카테고리·소스·키워드를 지정해주세요" 예시:
+        "SP500 VIX 종가 Bloomberg", "USDKRW 종가 네이버 금융",
+        "BTC ETH 종가 CoinMarketCap", "Warren Buffett 13F 2025 Q4"
+      → briefing-lead 가 WebSearch/WebFetch 로 직접 수집하여 KB market/ 에 기록 후 진행.
+
+  [3] 부분 스킵 (관측 가능한 섹션만으로 압축 브리핑)
+      → 매크로 + 거물(분기 전 데이터) 중심으로 "관측 불가" 표기 브리핑 생성.
+      → /모닝브리핑 본래 의도와 다르므로 산출물에 경고 배너 삽입.
+
+  [4] 중단
+      → 산출물 없이 작업 종료. 상황 개선 후 재실행 권장.
+```
+
+선택지 응답 처리:
+
+| 입력 | 동작 |
+|---|---|
+| `1` | 현 Phase 0-A 산출물 무시, 전일 KB(CURRENT) 로 Phase 0-B 진행 |
+| `2` 또는 `웹서치` | 하기 "수동 웹서치 보강 모드" 진입 |
+| `3` 또는 `부분` | 관측 불가 섹션을 `[관측 불가 — 사유]` 로 표기하고 Phase 0-B 진행 |
+| `4` 또는 `중단` | 즉시 종료. `analysis/briefing/` 의 부분 산출물도 삭제하지 않고 보존 |
+
+### 수동 웹서치 보강 모드 (선택지 2)
+
+사용자가 검색어·소스·카테고리를 자유 형식으로 입력하면:
+
+1. **파싱**: 사용자 입력에서 (category, keyword, preferred_source) tuple 추출
+2. **WebSearch 실행**: briefing-lead 가 직접 (하위 에이전트 경유 없이) WebSearch 호출
+3. **결과 적재**:
+   - 성공한 항목 → `knowledge-base/market/daily_snapshot.md` CURRENT 섹션 갱신
+   - `knowledge-db/market/2026_daily_prices.md` 에 `source=Manual[웹서치]` 로 append
+4. **재시도 루프**: 사용자에게 "추가 카테고리 있으면 입력, 없으면 '진행'" 안내
+5. "진행" 입력 시 Phase 0-B 로 진입
+
+> 수동 웹서치 모드는 **briefing-lead 직접 실행** 이 허용되는 유일한 웹검색 경로다 (평시에는 market-data-collector 전용).
+> 수집한 raw 데이터의 출처·시각은 반드시 기록하여 추후 품질 추적 가능하도록 한다.
+
+---
+
 ## 자동 commit/push (필수, Bash 직접 실행)
 
 모든 명령 종결 시점에 다음 Bash 블록 실행 (생략·요약 금지):
@@ -307,12 +363,35 @@ Push 실패 시 사용자에게 즉시 보고하고 작업은 완료로 간주.
 
 마지막 응답 메시지에 **반드시** 다음 형식으로 출력 ("완료했습니다" 같은 빈 응답 금지):
 
+### 다운로드 링크 생성 방식 (필수)
+
+보고 메시지 작성 **직전** 다음 Bash 블록을 실행하여 절대경로·파일 크기를 수집한다:
+
+```bash
+REPO=$(git rev-parse --show-toplevel)
+HTML="$REPO/reports/briefing/{type}_{YYYYMMDD}.html"
+MD="$REPO/analysis/briefing/lead_{type}_{YYYYMMDD}.md"
+HTML_SIZE=$(du -h "$HTML" 2>/dev/null | cut -f1)
+MD_SIZE=$(du -h "$MD" 2>/dev/null | cut -f1)
+# Windows 경로면 file:/// 접두사 + 백슬래시→슬래시 변환, POSIX 면 file://
+case "$HTML" in
+  /c/*|/d/*) HTML_URL="file:///${HTML#/}" ;; # Git Bash
+  *) HTML_URL="file://$HTML" ;;
+esac
+echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
+```
+
+보고 메시지의 산출물 섹션은 **Markdown 링크 형식** `[표시명](file://...)` 으로 출력해야 하며, 평문 상대경로만 제시하는 것은 금지 (사용자가 클릭할 수 없기 때문).
+
 ```
 ✅ {모듈명} 완료 — {YYYY-MM-DD}
 
 📄 산출물 (클릭하여 다운로드):
-- HTML: reports/briefing/{type}_{YYYYMMDD}.html
-- (Markdown 중간 산출물: analysis/briefing/lead_{type}_{YYYYMMDD}.md)
+- 📘 **HTML 리포트**: [morning_{YYYYMMDD}.html]({HTML_URL}) ({HTML_SIZE})
+- 📝 Markdown 노트: [lead_morning_{YYYYMMDD}.md]({MD_URL}) ({MD_SIZE})
+
+> 링크가 열리지 않으면 절대경로를 브라우저 주소창에 직접 붙여넣으세요:
+> `{HTML 절대경로}`
 
 🔥 핵심 논쟁 (debate-card)
 {1줄 요약}
