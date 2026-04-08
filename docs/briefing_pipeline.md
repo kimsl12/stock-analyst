@@ -231,15 +231,21 @@ briefing-lead 산출물의 **"심층 분석 권장 종목"** 슬롯에서 특정
 ## 7. 장애 대응
 
 ### Phase 0-A 실패 (market-data-collector)
-- 파이프라인 일시 중단
-- market-data-collector 가 `collection_status: FAILED` JSON 을 briefing-lead 에 보고
-- briefing-lead 는 사용자에게 **4지선다** 프롬프트 제시 (상세는 `.claude/agents/briefing-lead.md` §"Phase 0-A 실패 처리"):
-  1. `[1]` 전일 KB 로 진행 (`--skip-collect`, 시차 ≥24h 고지 강제)
-  2. `[2]` 🔍 수동 웹서치 보강 — 사용자가 카테고리·검색어·소스 지정, briefing-lead 가 WebSearch/WebFetch 직접 실행
-  3. `[3]` 부분 스킵 — 관측 불가 섹션 `[관측 불가 — 사유]` 표기 후 진행
-  4. `[4]` 중단
-- 선택지 2 는 briefing-lead 가 직접 웹검색하는 **유일한** 경로 (평시에는 market-data-collector 전용)
-- 어떤 선택지든 사용자 응답 없이 자동 진행 금지
+
+**원칙: 자동 파이프라인을 블로킹하지 않는다.** 수집이 실패/부분성공해도 일단 브리핑을 생성하고,
+사용자가 원할 때만 수동 웹서치로 보강 후 리포트를 덮어쓴다.
+
+- market-data-collector 가 `collection_status: {SUCCESS|PARTIAL|FAILED}` JSON 을 briefing-lead 에 보고
+- briefing-lead 의 분기 (상세는 `.claude/agents/briefing-lead.md` §"Phase 0-A 실패 처리"):
+  - `SUCCESS` → 평소대로 Phase 0-B
+  - `PARTIAL` → 실패 카테고리만 `[관측 불가 — 사유]` 표기 후 **자동 진행**
+  - `FAILED` → 경고 배너 + 매크로 중심 압축 브리핑으로 **자동 진행**
+- 산출물(MD/HTML) 최상단에 ⚠️ 배너 고정 삽입 (PARTIAL/FAILED 일 때)
+- 사용자 보고 메시지 말미에 **조건부 수동 웹서치 프롬프트** (PARTIAL/FAILED 일 때만):
+  - "실패 카테고리: {...}, 지시 예시: 'SP500 VIX 종가 Bloomberg'"
+  - 사용자가 검색어 입력 시 briefing-lead 가 직접 WebSearch → KB/DB 업데이트 → 리포트 재생성 → 재커밋·push
+  - 사용자가 무응답/"그대로" 시 작업 종료
+- 수동 웹서치는 briefing-lead 가 직접 웹검색하는 **유일한** 경로 (평시에는 market-data-collector 전용)
 
 ### Phase 0-B 실패 (global-macro-analyst 또는 correlation-monitor)
 - 누락된 분석가만 1회 재호출 (같은 mode)

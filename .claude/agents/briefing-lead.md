@@ -280,59 +280,68 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 
 ---
 
-## Phase 0-A 실패 처리 (관측 불가 시 사용자 선택지)
+## Phase 0-A 실패 처리 (자동 진행 + 사후 보강 프롬프트)
 
-market-data-collector 가 `collection_status: FAILED` (자동 2회 재시도 후 주요 5개 카테고리 모두 raw 미수집) 로 보고하면,
-**브리핑을 즉시 진행하지 말고** 사용자에게 다음 4가지 선택지를 한국어로 제시한다 — 응답 대기.
+**원칙:** 수집이 실패하거나 부분 성공하더라도 **사용자 응답을 기다리지 않고 자동 진행** 한다.
+브리핑 산출물이 일단 나온 뒤, 사용자가 원하면 수동 웹서치로 보강 후 리포트를 재생성할 수 있다.
+자동 파이프라인을 절대 블로킹하지 않는 것이 핵심 원칙.
 
-```
-⚠️ 시장 데이터 수집 실패 — 진행 방식을 선택해주세요
+### Phase 0-A 결과별 동작
 
-Phase 0-A (market-data-collector) 가 5개 카테고리 모두 관측 불가 상태입니다.
-원인: {수집 실패 사유 — 네트워크 차단 / 소스 403 / 파싱 실패 등}
-
-다음 중 선택하세요:
-
-  [1] 전일 KB 로 진행 (--skip-collect)
-      → 어제자 daily_snapshot.md 등 KB CURRENT 를 재사용. 시차 ≥ 24h 고지 강제.
-
-  [2] 🔍 수동 웹서치 보강 (권장 — 사용자가 검색어 지정)
-      → "검색할 카테고리·소스·키워드를 지정해주세요" 예시:
-        "SP500 VIX 종가 Bloomberg", "USDKRW 종가 네이버 금융",
-        "BTC ETH 종가 CoinMarketCap", "Warren Buffett 13F 2025 Q4"
-      → briefing-lead 가 WebSearch/WebFetch 로 직접 수집하여 KB market/ 에 기록 후 진행.
-
-  [3] 부분 스킵 (관측 가능한 섹션만으로 압축 브리핑)
-      → 매크로 + 거물(분기 전 데이터) 중심으로 "관측 불가" 표기 브리핑 생성.
-      → /모닝브리핑 본래 의도와 다르므로 산출물에 경고 배너 삽입.
-
-  [4] 중단
-      → 산출물 없이 작업 종료. 상황 개선 후 재실행 권장.
-```
-
-선택지 응답 처리:
-
-| 입력 | 동작 |
+| market-data-collector 반환 | 동작 |
 |---|---|
-| `1` | 현 Phase 0-A 산출물 무시, 전일 KB(CURRENT) 로 Phase 0-B 진행 |
-| `2` 또는 `웹서치` | 하기 "수동 웹서치 보강 모드" 진입 |
-| `3` 또는 `부분` | 관측 불가 섹션을 `[관측 불가 — 사유]` 로 표기하고 Phase 0-B 진행 |
-| `4` 또는 `중단` | 즉시 종료. `analysis/briefing/` 의 부분 산출물도 삭제하지 않고 보존 |
+| `SUCCESS` (전부 수집) | 평소대로 Phase 0-B 진행 |
+| `PARTIAL` (1~N개 실패) | 실패 카테고리만 `[관측 불가 — 사유]` 표기 후 **자동 진행** |
+| `FAILED` (모든 카테고리 실패) | 경고 배너 삽입 + 매크로 중심 압축 브리핑으로 **자동 진행** |
 
-### 수동 웹서치 보강 모드 (선택지 2)
+### PARTIAL/FAILED 시 산출물 경고 배너
+
+`analysis/briefing/lead_{type}_{YYYYMMDD}.md` 및 HTML 리포트 최상단에 고정 블록 삽입:
+
+```markdown
+> ⚠️ **시장 데이터 수집 미완료** — {PARTIAL/FAILED}
+> 실패 카테고리: {us_index, fx, bond, crypto, ...}
+> 원인: {네트워크 차단 / 403 / 파싱 실패 등}
+> 매크로·거물(분기) 데이터는 유효하나, 오늘 시장 종가는 "관측 불가"로 표기됨.
+> **수동 웹서치 보강**을 원하면 응답 말미 프롬프트에 검색어를 입력하세요.
+```
+
+### 보고 메시지 말미 조건부 프롬프트 (PARTIAL/FAILED 일 때만)
+
+평소의 다운로드 링크 블록 아래에 추가:
+
+```
+---
+⚠️ **수집 미완료 — 수동 웹서치로 보강하시겠습니까?**
+
+실패 카테고리: {us_index, fx, bond, crypto}
+
+지시 예시:
+  "SP500 VIX 종가 Bloomberg"
+  "USDKRW 종가 네이버 금융"
+  "BTC ETH 종가 CoinMarketCap"
+
+보강을 원하면 위와 같이 카테고리·키워드·소스를 한 줄로 입력하세요.
+보강이 불필요하면 "그대로" 또는 무응답으로 종료됩니다.
+```
+
+### 수동 웹서치 보강 모드 (사용자가 검색어 지시 시에만 발동)
 
 사용자가 검색어·소스·카테고리를 자유 형식으로 입력하면:
 
-1. **파싱**: 사용자 입력에서 (category, keyword, preferred_source) tuple 추출
-2. **WebSearch 실행**: briefing-lead 가 직접 (하위 에이전트 경유 없이) WebSearch 호출
+1. **파싱**: 입력에서 (category, keyword, preferred_source) tuple 추출
+2. **WebSearch/WebFetch 실행**: briefing-lead 가 직접 (하위 에이전트 경유 없이) 호출
 3. **결과 적재**:
-   - 성공한 항목 → `knowledge-base/market/daily_snapshot.md` CURRENT 섹션 갱신
+   - 성공 항목 → `knowledge-base/market/daily_snapshot.md` CURRENT 섹션 갱신
    - `knowledge-db/market/2026_daily_prices.md` 에 `source=Manual[웹서치]` 로 append
-4. **재시도 루프**: 사용자에게 "추가 카테고리 있으면 입력, 없으면 '진행'" 안내
-5. "진행" 입력 시 Phase 0-B 로 진입
+4. **리포트 재생성**: `briefing-report-generator` 재호출 → `reports/briefing/{type}_{YYYYMMDD}.html` **덮어쓰기** (경고 배너는 보강된 카테고리를 제외하고 갱신)
+5. **재커밋**: `feat(briefing): {모듈명} {YYYY-MM-DD} — 수동 웹서치 보강 (+{N}건)` 메시지로 추가 커밋·push
+6. **사용자에게 보고**: 갱신된 다운로드 링크 + 보강 내역 표
+7. **루프**: "추가 보강 원하면 입력, 없으면 '그대로'" 안내 반복
 
-> 수동 웹서치 모드는 **briefing-lead 직접 실행** 이 허용되는 유일한 웹검색 경로다 (평시에는 market-data-collector 전용).
+> 수동 웹서치 모드는 **briefing-lead 가 직접 WebSearch 하는 유일한 경로**다 (평시에는 market-data-collector 전용).
 > 수집한 raw 데이터의 출처·시각은 반드시 기록하여 추후 품질 추적 가능하도록 한다.
+> 자동 파이프라인을 절대 블로킹하지 않으며, 사후 옵션으로만 작동한다.
 
 ---
 
