@@ -266,6 +266,54 @@ git push origin main
 - 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
 - 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
 
+---
+
+## 사용자 보고 (다운로드 가능 링크 포함 — 필수)
+
+Phase 4 + Git push 완료 후 **반드시** 다음 형식으로 사용자에게 최종 보고한다.
+Executive Summary 를 출력하면서 **산출물 링크를 평문 상대경로로만 제시하는 것은 금지** — 사용자가 클릭할 수 없기 때문.
+
+### 링크 생성 Bash 블록 (보고 메시지 작성 직전 실행)
+
+```bash
+REPO=$(git rev-parse --show-toplevel)
+HTML="$REPO/reports/{종목코드}_{종목명}_{YYYYMMDD}.html"
+HTML_SIZE=$(du -h "$HTML" 2>/dev/null | cut -f1)
+SHORT_SHA=$(git rev-parse --short HEAD)
+# Windows/Git Bash 경로는 file:///c/... 형식으로 변환
+case "$HTML" in
+  /c/*|/d/*|/e/*) HTML_URL="file:///${HTML#/}" ;;
+  *) HTML_URL="file://$HTML" ;;
+esac
+echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE  SHA=$SHORT_SHA"
+```
+
+### 보고 메시지 필수 블록 (Executive Summary 뒤에 추가)
+
+```markdown
+---
+
+📁 **산출물 (클릭하여 다운로드)**
+
+- 📘 **HTML 리포트**: [{종목코드}_{종목명}_{YYYYMMDD}.html]({HTML_URL}) ({HTML_SIZE})
+- 📝 중간 분석 파일: `analysis/{종목코드}_{종목명}_*.{json,md}` (gitignored)
+
+> 링크가 열리지 않으면 절대경로를 브라우저 주소창에 직접 붙여넣으세요:
+> `{HTML 절대경로}`
+
+🔗 **Git**: commit `{SHORT_SHA}` → main push 완료 ✅
+```
+
+이 블록은 **"완료되면 링크 보내드리겠습니다"** 같은 예고 대신 **실제 링크**를 포함해야 한다.
+평문 상대경로(`reports/...`) 만 출력하면 사용자가 클릭할 수 없으므로 간주되지 않는다.
+
+### 실패 케이스
+
+- HTML 파일이 존재하지 않으면 (`$HTML_SIZE` 가 비어있음) → 보고에 "⚠️ HTML 생성 실패 — reports/ 폴더 확인 필요" 명시
+- Git push 실패 시 → "⚠️ Git 푸시 실패 — 로컬에만 저장됨, 수동 push 필요" + 로컬 절대경로는 그대로 제시
+
+---
+
 ## 서브에이전트 호출 지침 [v2.3 개편]
 
 ### 핵심 원칙: data-collector만 웹검색, 나머지는 파일 읽기만
