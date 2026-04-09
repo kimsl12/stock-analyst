@@ -297,9 +297,20 @@ def generate_report(data, output_path=None):
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
-    
-    size = os.path.getsize(output_path)
-    print("리포트 생성 완료: {} ({:,} bytes)".format(output_path, size))
+
+    abs_path = os.path.abspath(output_path)
+    size = os.path.getsize(abs_path)
+    size_h = "{:.1f}KB".format(size / 1024) if size < 1024 * 1024 else "{:.1f}MB".format(size / (1024 * 1024))
+    file_url = "file://{}".format(abs_path)
+
+    print("리포트 생성 완료: {} ({})".format(output_path, size_h))
+    print("")
+    print("REPORT_LINK_START")
+    print("REPORT_ABS_PATH={}".format(abs_path))
+    print("REPORT_FILE_URL={}".format(file_url))
+    print("REPORT_FILE_NAME={}".format(os.path.basename(abs_path)))
+    print("REPORT_SIZE={}".format(size_h))
+    print("REPORT_LINK_END")
     return output_path
 
 
