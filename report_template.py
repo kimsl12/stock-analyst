@@ -60,6 +60,11 @@ tr:hover{background:rgba(255,255,255,0.02)}
 .rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
 .rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
 .disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+@media print{.dl-bar{display:none}}
 @media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
 """
 
@@ -249,8 +254,33 @@ def generate_report(data, output_path=None):
     # Disclaimer
     parts.append('<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: {} | 종목분석 에이전트 v3.0</div>'.format(
         data.get("date", datetime.now().strftime("%Y-%m-%d"))))
-    
-    body = "\n".join(parts)
+
+    # Download bar (sticky top)
+    fname = os.path.basename(output_path) if output_path else "report.html"
+    dl_bar = (
+        '<div class="dl-bar">'
+        '<button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드">'
+        '<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>'
+        '다운로드'
+        '</button>'
+        '<button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄">'
+        '<svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>'
+        'PDF'
+        '</button>'
+        '</div>'
+    )
+    dl_script = (
+        '<script>'
+        'function downloadReport(){{'
+        'var a=document.createElement("a");'
+        'a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);'
+        'a.download="{}";'
+        'a.click();'
+        '}}'
+        '</script>'
+    ).format(fname)
+
+    body = dl_bar + "\n" + "\n".join(parts) + "\n" + dl_script
     
     html = """<!DOCTYPE html>
 <html lang="ko">
