@@ -268,49 +268,60 @@ git push origin main
 
 ---
 
-## 사용자 보고 (다운로드 가능 링크 포함 — 필수)
+## 사용자 보고 (HTML 열람 링크 — 최우선 필수)
 
-Phase 4 + Git push 완료 후 **반드시** 다음 형식으로 사용자에게 최종 보고한다.
-Executive Summary 를 출력하면서 **산출물 링크를 평문 상대경로로만 제시하는 것은 금지** — 사용자가 클릭할 수 없기 때문.
+> **⚠️ 이 섹션은 Phase 4 완료 후 반드시 실행해야 하는 최우선 규칙이다.**
+> **이 블록 없이 응답을 종료하면 미완료로 간주한다.**
 
-### 링크 생성 Bash 블록 (보고 메시지 작성 직전 실행)
+Phase 4 + Git push 완료 후, Executive Summary 출력 마지막에 **반드시** 아래 절차를 수행한다.
 
-```bash
-REPO=$(git rev-parse --show-toplevel)
-HTML="$REPO/reports/{종목코드}_{종목명}_{YYYYMMDD}.html"
-HTML_SIZE=$(du -h "$HTML" 2>/dev/null | cut -f1)
-SHORT_SHA=$(git rev-parse --short HEAD)
-# Windows/Git Bash 경로는 file:///c/... 형식으로 변환
-case "$HTML" in
-  /c/*|/d/*|/e/*) HTML_URL="file:///${HTML#/}" ;;
-  *) HTML_URL="file://$HTML" ;;
-esac
-echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE  SHA=$SHORT_SHA"
+### Step 1: report_template.py 출력에서 링크 정보 파싱
+
+`generate_report()` 실행 시 stdout에 아래 형식이 출력된다:
+```
+REPORT_LINK_START
+REPORT_FILE_NAME=AAPL_Apple_20260406.html
+REPORT_SIZE=25.0KB
+REPORT_ABS_PATH=/home/user/stock-analyst/reports/AAPL_Apple_20260406.html
+REPORT_PREVIEW_URL=https://kimsl12.github.io/stock-analyst/reports/AAPL_Apple_20260406.html
+REPORT_LINK_END
 ```
 
-### 보고 메시지 필수 블록 (Executive Summary 뒤에 추가)
+> `report_template.py`가 gh-pages 브랜치에 자동 배포 + GitHub Pages URL을 생성한다.
+
+⚠️ `REPORT_PREVIEW_URL`이 없으면 직접 구성한다:
+```bash
+HTML_FILE=$(ls -t reports/*.html | head -1 | xargs basename)
+echo "https://kimsl12.github.io/stock-analyst/reports/$HTML_FILE"
+```
+
+### Step 2: 대화창에 클릭 가능한 GitHub Pages 링크 출력 (필수)
+
+Executive Summary 출력이 끝나면, 마지막에 **반드시** 아래 형식을 그대로 출력한다:
 
 ```markdown
 ---
-
-📁 **산출물 (클릭하여 다운로드)**
-
-- 📘 **HTML 리포트**: [{종목코드}_{종목명}_{YYYYMMDD}.html]({HTML_URL}) ({HTML_SIZE})
-- 📝 중간 분석 파일: `analysis/{종목코드}_{종목명}_*.{json,md}` (gitignored)
-
-> 링크가 열리지 않으면 절대경로를 브라우저 주소창에 직접 붙여넣으세요:
-> `{HTML 절대경로}`
-
-🔗 **Git**: commit `{SHORT_SHA}` → main push 완료 ✅
+📘 **[{파일명} 리포트 열기]({REPORT_PREVIEW_URL})** ({파일크기})
 ```
 
-이 블록은 **"완료되면 링크 보내드리겠습니다"** 같은 예고 대신 **실제 링크**를 포함해야 한다.
-평문 상대경로(`reports/...`) 만 출력하면 사용자가 클릭할 수 없으므로 간주되지 않는다.
+예시:
+```markdown
+---
+📘 **[AAPL_Apple_20260406.html 리포트 열기](https://kimsl12.github.io/stock-analyst/reports/AAPL_Apple_20260406.html)** (25.0KB)
+```
+
+> 이 링크는 GitHub Pages (gh-pages 브랜치)를 통해 브라우저에서 바로 렌더링된다.
+> `report_template.py`가 generate_report() 시 gh-pages 배포까지 자동 수행한다.
+
+### 금지 사항
+- ❌ `reports/XXX.html` 같은 상대경로만 출력 (클릭 불가)
+- ❌ `file://` 프로토콜 링크 (원격 환경에서 동작 안 함)
+- ❌ "링크를 보내드리겠습니다" 같은 예고만 하고 실제 링크 누락
+- ❌ 링크 없이 테이블에 경로만 나열
 
 ### 실패 케이스
-
-- HTML 파일이 존재하지 않으면 (`$HTML_SIZE` 가 비어있음) → 보고에 "⚠️ HTML 생성 실패 — reports/ 폴더 확인 필요" 명시
-- Git push 실패 시 → "⚠️ Git 푸시 실패 — 로컬에만 저장됨, 수동 push 필요" + 로컬 절대경로는 그대로 제시
+- HTML 파일 없음 → "HTML 생성 실패 — reports/ 폴더 확인 필요"
+- Git push 실패 → "Git 푸시 실패 — 로컬에만 저장됨, push 후 링크 사용 가능"
 
 ---
 

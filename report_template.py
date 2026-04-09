@@ -60,6 +60,11 @@ tr:hover{background:rgba(255,255,255,0.02)}
 .rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
 .rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
 .disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+@media print{.dl-bar{display:none}}
 @media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
 """
 
@@ -249,8 +254,33 @@ def generate_report(data, output_path=None):
     # Disclaimer
     parts.append('<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: {} | 종목분석 에이전트 v3.0</div>'.format(
         data.get("date", datetime.now().strftime("%Y-%m-%d"))))
-    
-    body = "\n".join(parts)
+
+    # Download bar (sticky top)
+    fname = os.path.basename(output_path) if output_path else "report.html"
+    dl_bar = (
+        '<div class="dl-bar">'
+        '<button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드">'
+        '<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>'
+        '다운로드'
+        '</button>'
+        '<button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄">'
+        '<svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>'
+        'PDF'
+        '</button>'
+        '</div>'
+    )
+    dl_script = (
+        '<script>'
+        'function downloadReport(){{'
+        'var a=document.createElement("a");'
+        'a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);'
+        'a.download="{}";'
+        'a.click();'
+        '}}'
+        '</script>'
+    ).format(fname)
+
+    body = dl_bar + "\n" + "\n".join(parts) + "\n" + dl_script
     
     html = """<!DOCTYPE html>
 <html lang="ko">
@@ -267,9 +297,76 @@ def generate_report(data, output_path=None):
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
-    
-    size = os.path.getsize(output_path)
-    print("리포트 생성 완료: {} ({:,} bytes)".format(output_path, size))
+
+    import subprocess
+
+    abs_path = os.path.abspath(output_path)
+    size = os.path.getsize(abs_path)
+    size_h = "{:.1f}KB".format(size / 1024) if size < 1024 * 1024 else "{:.1f}MB".format(size / (1024 * 1024))
+    fname = os.path.basename(abs_path)
+
+    # GitHub Pages 링크 생성 (gh-pages 브랜치 기반)
+    preview_url = ""
+    try:
+        remote = subprocess.check_output(["git", "remote", "get-url", "origin"], stderr=subprocess.DEVNULL).decode().strip()
+        repo_root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], stderr=subprocess.DEVNULL).decode().strip()
+        rel_path = os.path.relpath(abs_path, repo_root)
+
+        # remote URL → owner/repo 추출
+        owner_repo = ""
+        if "github.com" in remote:
+            if remote.startswith("http"):
+                parts = remote.rstrip("/").replace(".git", "").split("github.com/")
+                if len(parts) > 1:
+                    owner_repo = parts[1]
+            elif remote.startswith("git@"):
+                owner_repo = remote.split(":")[-1].replace(".git", "")
+        elif "/" in remote:
+            segments = remote.rstrip("/").replace(".git", "").split("/")
+            if len(segments) >= 2:
+                owner_repo = "/".join(segments[-2:])
+
+        if owner_repo:
+            owner = owner_repo.split("/")[0]
+            repo = owner_repo.split("/")[1] if "/" in owner_repo else ""
+            preview_url = "https://{}.github.io/{}/{}".format(owner, repo, rel_path)
+
+            # gh-pages 브랜치에 자동 배포 (파일 내용을 먼저 읽어둔 뒤 브랜치 전환)
+            cur_branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
+            with open(abs_path, "r", encoding="utf-8") as rf:
+                html_content = rf.read()
+            try:
+                subprocess.check_call(["git", "stash", "--include-untracked"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+                subprocess.check_call(["git", "checkout", "gh-pages"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+                dest = os.path.join(repo_root, rel_path)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with open(dest, "w", encoding="utf-8") as wf:
+                    wf.write(html_content)
+                subprocess.check_call(["git", "add", rel_path], cwd=repo_root, stderr=subprocess.DEVNULL)
+                ret = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=repo_root, stderr=subprocess.DEVNULL)
+                if ret != 0:
+                    subprocess.check_call(["git", "commit", "-m", "deploy: {}".format(fname)], cwd=repo_root, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+                    subprocess.check_call(["git", "push", "origin", "gh-pages"], cwd=repo_root, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+                    print("gh-pages 배포 완료")
+                else:
+                    print("gh-pages 변경 없음 (이미 최신)")
+            except Exception as e:
+                print("gh-pages 자동 배포 실패: {}".format(e))
+            finally:
+                subprocess.call(["git", "checkout", cur_branch], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+                subprocess.call(["git", "stash", "pop"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+    except Exception:
+        pass
+
+    print("리포트 생성 완료: {} ({})".format(output_path, size_h))
+    print("")
+    print("REPORT_LINK_START")
+    print("REPORT_FILE_NAME={}".format(fname))
+    print("REPORT_SIZE={}".format(size_h))
+    print("REPORT_ABS_PATH={}".format(abs_path))
+    if preview_url:
+        print("REPORT_PREVIEW_URL={}".format(preview_url))
+    print("REPORT_LINK_END")
     return output_path
 
 
