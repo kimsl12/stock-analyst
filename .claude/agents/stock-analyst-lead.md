@@ -280,42 +280,48 @@ Phase 4 + Git push 완료 후, Executive Summary 출력 마지막에 **반드시
 `generate_report()` 실행 시 stdout에 아래 형식이 출력된다:
 ```
 REPORT_LINK_START
-REPORT_ABS_PATH=/home/user/stock-analyst/reports/AAPL_Apple_20260406.html
-REPORT_FILE_URL=file:///home/user/stock-analyst/reports/AAPL_Apple_20260406.html
 REPORT_FILE_NAME=AAPL_Apple_20260406.html
 REPORT_SIZE=25.0KB
+REPORT_ABS_PATH=/home/user/stock-analyst/reports/AAPL_Apple_20260406.html
+REPORT_PREVIEW_URL=https://htmlpreview.github.io/?https://github.com/{owner}/{repo}/blob/{branch}/reports/AAPL_Apple_20260406.html
 REPORT_LINK_END
 ```
 
-이 정보가 없으면 직접 Bash로 계산한다:
+⚠️ `REPORT_PREVIEW_URL`이 없으면 직접 구성한다:
 ```bash
-HTML=$(ls -t reports/*.html | head -1)
-echo "ABS=$(realpath $HTML)  SIZE=$(du -h $HTML | cut -f1)"
+OWNER_REPO=$(git remote get-url origin | sed 's|.*github.com[:/]||;s|\.git$||')
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+HTML_FILE=$(ls -t reports/*.html | head -1 | xargs basename)
+echo "https://htmlpreview.github.io/?https://github.com/$OWNER_REPO/blob/$BRANCH/reports/$HTML_FILE"
 ```
 
-### Step 2: 대화창에 클릭 가능한 링크 출력 (필수)
+### Step 2: 대화창에 클릭 가능한 GitHub 링크 출력 (필수)
 
 Executive Summary 출력이 끝나면, 마지막에 **반드시** 아래 형식을 그대로 출력한다:
 
 ```markdown
 ---
-**[{파일명}]({file:// 절대경로})** ({파일크기})
+📘 **[{파일명} 리포트 열기]({REPORT_PREVIEW_URL})** ({파일크기})
 ```
 
 예시:
 ```markdown
 ---
-**[AAPL_Apple_20260406.html](file:///home/user/stock-analyst/reports/AAPL_Apple_20260406.html)** (25.0KB)
+📘 **[AAPL_Apple_20260406.html 리포트 열기](https://htmlpreview.github.io/?https://github.com/kimsl12/stock-analyst/blob/main/reports/AAPL_Apple_20260406.html)** (25.0KB)
 ```
+
+> 이 링크는 htmlpreview.github.io를 통해 GitHub에 푸시된 HTML을 브라우저에서 바로 렌더링한다.
+> **반드시 git push 완료 후에 링크를 출력해야 한다** (푸시 전에는 404).
 
 ### 금지 사항
 - ❌ `reports/XXX.html` 같은 상대경로만 출력 (클릭 불가)
+- ❌ `file://` 프로토콜 링크 (원격 환경에서 동작 안 함)
 - ❌ "링크를 보내드리겠습니다" 같은 예고만 하고 실제 링크 누락
 - ❌ 링크 없이 테이블에 경로만 나열
 
 ### 실패 케이스
 - HTML 파일 없음 → "HTML 생성 실패 — reports/ 폴더 확인 필요"
-- Git push 실패 → "Git 푸시 실패 — 로컬에만 저장됨" + file:// 링크는 그대로 제시
+- Git push 실패 → "Git 푸시 실패 — 로컬에만 저장됨, push 후 링크 사용 가능"
 
 ---
 

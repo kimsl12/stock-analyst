@@ -298,18 +298,51 @@ def generate_report(data, output_path=None):
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
 
+    import subprocess
+
     abs_path = os.path.abspath(output_path)
     size = os.path.getsize(abs_path)
     size_h = "{:.1f}KB".format(size / 1024) if size < 1024 * 1024 else "{:.1f}MB".format(size / (1024 * 1024))
-    file_url = "file://{}".format(abs_path)
+    fname = os.path.basename(abs_path)
+
+    # Git 정보로 GitHub 열람 링크 생성
+    preview_url = ""
+    try:
+        remote = subprocess.check_output(["git", "remote", "get-url", "origin"], stderr=subprocess.DEVNULL).decode().strip()
+        branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
+        repo_root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], stderr=subprocess.DEVNULL).decode().strip()
+        rel_path = os.path.relpath(abs_path, repo_root)
+
+        # remote URL → owner/repo 추출
+        owner_repo = ""
+        if "github.com" in remote:
+            # https://github.com/owner/repo.git 또는 git@github.com:owner/repo.git
+            if remote.startswith("http"):
+                parts = remote.rstrip("/").replace(".git", "").split("github.com/")
+                if len(parts) > 1:
+                    owner_repo = parts[1]
+            elif remote.startswith("git@"):
+                owner_repo = remote.split(":")[-1].replace(".git", "")
+        elif "/" in remote:
+            # 로컬 프록시 등 — 마지막 2단계를 owner/repo로 추정
+            segments = remote.rstrip("/").replace(".git", "").split("/")
+            if len(segments) >= 2:
+                owner_repo = "/".join(segments[-2:])
+
+        if owner_repo:
+            raw_url = "https://raw.githubusercontent.com/{}/{}/{}".format(owner_repo, branch, rel_path)
+            preview_url = "https://htmlpreview.github.io/?https://github.com/{}/blob/{}/{}".format(owner_repo, branch, rel_path)
+    except Exception:
+        pass
 
     print("리포트 생성 완료: {} ({})".format(output_path, size_h))
     print("")
     print("REPORT_LINK_START")
-    print("REPORT_ABS_PATH={}".format(abs_path))
-    print("REPORT_FILE_URL={}".format(file_url))
-    print("REPORT_FILE_NAME={}".format(os.path.basename(abs_path)))
+    print("REPORT_FILE_NAME={}".format(fname))
     print("REPORT_SIZE={}".format(size_h))
+    print("REPORT_ABS_PATH={}".format(abs_path))
+    if preview_url:
+        print("REPORT_PREVIEW_URL={}".format(preview_url))
     print("REPORT_LINK_END")
     return output_path
 
