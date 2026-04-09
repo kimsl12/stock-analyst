@@ -50,10 +50,10 @@
 │
 ├── (브리핑 5개, v3.0 신규 — 사용자 결정으로 전부 Opus)
 │   ├── briefing-lead.md                       ← 오케스트레이터 (opus) — 10 명령 진입점, debate/contrarian-card, 자동 commit/push
-│   ├── market-data-collector.md               ← 시장 데이터 수집 (opus, 검색15~20회)
+│   ├── market-data-collector.md               ← 시장 데이터 수집 (sonnet, 검색15~20회)
 │   ├── global-macro-analyst.md                ← G-1~G-8 매크로 4축 (opus)
-│   ├── correlation-monitor.md                 ← 6 페어 Z-score + 서프라이즈 (opus, 검색금지)
-│   └── briefing-report-generator.md           ← HTML 다크 테마 리포트 (opus)
+│   ├── correlation-monitor.md                 ← 6 페어 Z-score + 서프라이즈 (sonnet, 검색금지)
+│   └── briefing-report-generator.md           ← HTML 다크 테마 리포트 (sonnet)
 │
 ├── (공용 1개)
 │   └── kb-updater.md                          ← KB macro/ + industry/ 갱신 (sonnet, 양쪽 파이프라인 사용)
@@ -79,10 +79,10 @@
 | `etf-analyst` | **opus** | 5회 | ETF 단독 (KB market/ + industry/ 읽기 v3.0) |
 | `report-generator` | sonnet | 금지 | HTML 리포트 |
 | `briefing-lead` ⭐ | **opus** | 판단 | 브리핑 오케스트레이터 (v3.0 신규) |
-| `market-data-collector` ⭐ | **opus** | 15~20회 | 시장 데이터 수집 (v3.0 신규) |
+| `market-data-collector` ⭐ | sonnet | 15~20회 | 시장 데이터 수집 (v3.0 신규) |
 | `global-macro-analyst` ⭐ | **opus** | 1~5회 | G-1~G-8 4축 분석 (v3.0 신규) |
-| `correlation-monitor` ⭐ | **opus** | 금지 | 6 페어 + 서프라이즈 (v3.0 신규) |
-| `briefing-report-generator` ⭐ | **opus** | 금지 | HTML 다크 테마 (v3.0 신규) |
+| `correlation-monitor` ⭐ | sonnet | 금지 | 6 페어 + 서프라이즈 (v3.0 신규) |
+| `briefing-report-generator` ⭐ | sonnet | 금지 | HTML 다크 테마 (v3.0 신규) |
 | `kb-updater` | sonnet | O | macro/ + industry/ 갱신 (양쪽 공용) |
 | `stop-loss-rules` | (.md SSOT) | — | ATR 시스템 문서 |
 

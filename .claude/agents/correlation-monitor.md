@@ -9,7 +9,7 @@ description: |
   briefing-lead 가 /이브닝, /주간, /크립토 호출 시 위임.
   Triggers: 상관관계 모니터, 자산 상관계수, 경제 서프라이즈, Beat Miss, Z-score Alert, 페어 분석.
 maxTurns: 15
-model: opus
+model: sonnet
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 

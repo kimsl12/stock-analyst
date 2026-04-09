@@ -10,7 +10,7 @@ description: |
   briefing-lead 가 모든 모듈 종결 시점에 호출.
   Triggers: HTML 리포트 생성, 브리핑 리포트 출력, 다크 테마 리포트, debate card, contrarian card.
 maxTurns: 12
-model: opus
+model: sonnet
 tools: Read, Write, Bash, Grep, Glob
 ---
 
