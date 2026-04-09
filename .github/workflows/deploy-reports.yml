@@ -61,7 +61,7 @@ jobs:
 
           # 종목분석 리포트 목록
           echo '<h2>종목 분석</h2>' >> index.html
-          for f in $(ls -t reports/*.html 2>/dev/null); do
+          for f in $(ls reports/*.html 2>/dev/null | sed -E 's|.*_([0-9]{8})\.html|\1 &|' | sort -k1,1rn -k2,2 | awk '{print $2}'); do
             fname=$(basename "$f")
             echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$fname</a></div>" >> index.html
           done
@@ -69,7 +69,7 @@ jobs:
           # 브리핑 리포트 목록
           if ls reports/briefing/*.html 1>/dev/null 2>&1; then
             echo '<h2>브리핑</h2>' >> index.html
-            for f in $(ls -t reports/briefing/*.html 2>/dev/null); do
+            for f in $(ls reports/briefing/*.html 2>/dev/null | sed -E 's|.*_([0-9]{8})\.html|\1 &|' | sort -k1,1rn -k2,2 | awk '{print $2}'); do
               fname=$(basename "$f")
               echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$fname</a></div>" >> index.html
             done
