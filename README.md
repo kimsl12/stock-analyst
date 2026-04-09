@@ -1,12 +1,25 @@
-# 종목분석 AI 에이전트 v3.0 (브리핑 시스템 통합)
+# 종목분석 AI 에이전트 v3.1 (GitHub Pages 리포트 배포)
 
 > 이 README는 `.claude/agents/` 디렉토리 안내용. 시스템 전체 README 는 저장소 루트의 `README.md` 참조.
+
+## 리포트 열람
+
+생성된 분석 리포트는 GitHub Pages로 자동 배포됩니다:
+
+📘 **[리포트 목록 보기](https://kimsl12.github.io/stock-analyst/)**
+
+최근 리포트:
+- [Anthropic (엔트로픽) 종합 분석](https://kimsl12.github.io/stock-analyst/reports/ANTHROPIC_Anthropic_20260409.html) — 2026-04-09
+- [삼성전자 (005930)](https://kimsl12.github.io/stock-analyst/reports/005930_삼성전자_20260408.html) — 2026-04-08
+- [Apple (AAPL)](https://kimsl12.github.io/stock-analyst/reports/AAPL_Apple_20260406.html) — 2026-04-06
+- [SCHD ETF](https://kimsl12.github.io/stock-analyst/reports/SCHD_SchwabDividend_20260406.html) — 2026-04-06
 
 ## 변경 이력
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.0** | **2026-04-07** | **검수 결과 18 FAIL 정정 — 명세대로 5 브리핑 에이전트 + 10 명령 + KB 헤더 + performance KB 재구현 (PR #17 + hotfix)** |
+| **v3.1** | **2026-04-09** | **GitHub Pages 자동 배포 + 리포트 열람 링크 시스템 + 비상장 기업 분석 지원** |
+| v3.0 | 2026-04-07 | 검수 결과 18 FAIL 정정 — 명세대로 5 브리핑 에이전트 + 10 명령 + KB 헤더 + performance KB 재구현 (PR #17 + hotfix) |
 | v2.4 | 2026-04-07 | 브리핑 시스템 v3.4 통합 1차 시도 (명세 미부합 — v3.0 으로 재구현됨) |
 | v2.3 | 2026-04-06 | 데이터 흐름 전면 개편 + 차트 템플릿 + 해외 종목 지원 + 가격 검증 |
 | v2.2 | 2026-04-05 | ETF 분석 + 모델 최적화 + 장애 대응 |
@@ -163,7 +176,11 @@ Phase 3: scorecard-strategist (10항목 종합)
     ↓
 Phase 4: report-generator (chart_templates.py → reports/에 HTML)
     ↓
+gh-pages 자동 배포: report_template.py가 gh-pages 브랜치에 HTML push
+    ↓
 Git: add reports/ → commit → pull --rebase → push
+    ↓
+사용자 보고: GitHub Pages 링크 출력 (https://kimsl12.github.io/stock-analyst/reports/...)
 ```
 
 ### ETF
@@ -243,6 +260,29 @@ Phase 0: data-collector → Phase 1: etf-analyst (단독, 검색5회) → Phase 
 | Phase 0-B 일부 실패 (브리핑) | 해당 분석가만 1회 재호출 → 2회 연속 실패 시 중단 |
 | Phase 0-D HTML 실패 (브리핑) | `analysis/briefing/lead_*.md` 보존 + 사용자에게 경고 + git/push 진행 |
 | /풀브리핑 토큰 한도 | weekly → crypto → evening → morning 순서로 폴백 |
+
+---
+
+## GitHub Pages 배포 (v3.1)
+
+리포트 HTML은 `gh-pages` 브랜치를 통해 GitHub Pages로 자동 배포된다.
+
+- **URL**: `https://kimsl12.github.io/stock-analyst/reports/{파일명}.html`
+- **자동 배포**: `report_template.py`의 `generate_report()`가 완료 시 gh-pages에 자동 commit+push
+- **GitHub Actions**: `.github/workflows/deploy-reports.yml` — main/feature 브랜치에 reports/ 변경 시 gh-pages에 자동 동기화
+
+### 배포 흐름
+```
+generate_report() 호출
+  → reports/에 HTML 저장
+  → gh-pages 브랜치로 전환 → 파일 복사 → commit → push → 원래 브랜치 복귀
+  → GitHub Pages에서 즉시 접근 가능 (1~2분 딜레이)
+```
+
+### GitHub Actions 자동 동기화
+main 또는 feature 브랜치에서 `reports/**/*.html`이 변경되면,
+GitHub Actions가 자동으로 gh-pages 브랜치에 동기화한다.
+`report_template.py`의 자동 배포가 실패해도 Actions가 백업으로 동작.
 
 ---
 

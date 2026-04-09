@@ -1,0 +1,88 @@
+name: Deploy Reports to GitHub Pages
+
+on:
+  push:
+    paths:
+      - 'reports/**/*.html'
+    branches:
+      - main
+      - 'claude/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout source branch
+        uses: actions/checkout@v4
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Sync reports to gh-pages
+        run: |
+          # reports/ 폴더의 HTML 파일을 gh-pages에 복사
+          mkdir -p gh-pages/reports gh-pages/reports/briefing
+          cp -f reports/*.html gh-pages/reports/ 2>/dev/null || true
+          cp -f reports/briefing/*.html gh-pages/reports/briefing/ 2>/dev/null || true
+
+          # index.html 자동 생성 (리포트 목록)
+          cd gh-pages
+          cat > index.html << 'INDEXEOF'
+          <!DOCTYPE html>
+          <html lang="ko">
+          <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1.0">
+          <title>Stock Analyst Reports</title>
+          <style>
+          :root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--blue:#42A5F5;--border:#2D3A45}
+          *{margin:0;padding:0;box-sizing:border-box}
+          body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:32px;max-width:700px;margin:0 auto}
+          h1{font-size:24px;margin-bottom:8px}
+          .sub{color:var(--sub);font-size:14px;margin-bottom:24px}
+          a{color:var(--blue);text-decoration:none}
+          a:hover{text-decoration:underline}
+          .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+          .card .name{font-size:16px;font-weight:600}
+          .card .date{color:var(--sub);font-size:13px;margin-top:4px}
+          h2{font-size:18px;margin:24px 0 12px;color:var(--sub)}
+          </style>
+          </head>
+          <body>
+          <h1>Stock Analyst Reports</h1>
+          <p class="sub">AI 종합 분석 리포트 — 자동 업데이트</p>
+          INDEXEOF
+
+          # 종목분석 리포트 목록
+          echo '<h2>종목 분석</h2>' >> index.html
+          for f in $(ls -t reports/*.html 2>/dev/null); do
+            fname=$(basename "$f")
+            echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$fname</a></div>" >> index.html
+          done
+
+          # 브리핑 리포트 목록
+          if ls reports/briefing/*.html 1>/dev/null 2>&1; then
+            echo '<h2>브리핑</h2>' >> index.html
+            for f in $(ls -t reports/briefing/*.html 2>/dev/null); do
+              fname=$(basename "$f")
+              echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$fname</a></div>" >> index.html
+            done
+          fi
+
+          echo '</body></html>' >> index.html
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "auto-deploy: sync reports from ${{ github.ref_name }}"
+          git push origin gh-pages
