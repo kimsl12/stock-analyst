@@ -36,3 +36,16 @@
 - **`미·규제`**: FCC는 2026-03-27 등 관련 NPRM·정책을 통해 스펙·주파수 접근성 계획을 진행 중 — 출처: https://www.fcc.gov/space. **신뢰도**: 높음(규제 문건).
 
 노트: 위 항목들은 회사 공식 페이지·보도자료·규제문서 기준으로 교차검증한 공개자료입니다. 시장규모나 전망치(Grand View, BryceTech, Euroconsult 등)는 많은 경우 유료보고서에 기반하므로, 정확한 수치가 필요하면 특정 보고서 구매 또는 요약(신뢰할 수 있는 2차 출처) 추가 수집을 권장합니다.
+
+## 추가 교차검증된 핵심치 (공개자료 B-심층 크로스체크)
+
+- **`SpaceX Starship height`**: 123 m — 출처: https://www.spacex.com/vehicles/starship. **신뢰도**: 높음(회사 표기).
+- **`SpaceX Starship diameter`**: 9 m — 출처: https://www.spacex.com/vehicles/starship. **신뢰도**: 높음(회사 표기).
+- **`Starlink constellation size`**: 8,000+ 위성(회사 업데이트 기준). **신뢰도**: 중간(회사 표기/업데이트).
+- **`Starlink Direct-to-Cell satellites`**: 600+ (first-generation 배치) — 출처: SpaceX 업데이트. **신뢰도**: 중간(회사 주장).
+- **`Starlink Direct-to-Cell users`**: 약 6,000,000명 (회사 주장). **신뢰도**: 중간(회사 주장).
+- **`Starlink production/launch 기록`**: 생산능력 최대 45대/주(회사 표기), 한 달에 최대 240대 발사 기록(회사 기록). **신뢰도**: 중간(회사 표기/운용 기록).
+- **`Telesat Lightspeed(생산)`**: 첫 두 대의 생산 위성은 2026년 12월 발사 계획(회사 보도자료). **신뢰도**: 높음(회사 발표).
+- **`FCC(2026-04-08)`**: 'Poised to Empower Super-Fast, Space-Based Broadband' 공문(2026-04-08) — 규제·주파수·접근성 관련 주요 문건. **신뢰도**: 높음(규제 기관).
+- **`Eutelsat Investor Presentation (Mar 2026)`**: 투자자 프레젠테이션 PDF(2026-03) 다운로드 가능 — 출처: https://www.eutelsat.com/. **신뢰도**: 높음(회사 자료).
+- **`Gigabay (SpaceX, Florida)`**: Gigabay 시설(Florida) — 높이 약 380 ft, 약 46.5M cu ft 작업공간, 최대 81 m 높이 차량 지원(회사 업데이트). **신뢰도**: 중간(회사 설명).
