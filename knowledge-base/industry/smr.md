@@ -7,3 +7,7 @@
   - 핵융합은 ITER 중심의 국제 협력과 민간 파일럿(Private fusion) 동시 전개
   - 공급망: 모듈 제조, 연료(연료봉·연료주기), 정밀가공·복합재, 계측·제어·소프트웨어, 시험·검증 설비
 - **권장 작업:** 문서(기업 IR, 규제 가이드, 계약 공고) 수집 → PDF/IR 텍스트 추출 → 레코드 검증·정규화 → KB에 append 및 changelog 등록
+
+### SMR collector snapshot (2026-04-10)
+- Parsed: IAEA (topic page), ITER (site), World Nuclear (home).
+- Notes: DOE NE URL returned 404; several company pages require headless-browser or JS execution to fetch news/IR pages. Proceed with headless collection for company IR and PDF extraction.
