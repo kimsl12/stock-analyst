@@ -11,3 +11,9 @@
 ### SMR collector snapshot (2026-04-10)
 - Parsed: IAEA (topic page), ITER (site), World Nuclear (home).
 - Notes: DOE NE URL returned 404; several company pages require headless-browser or JS execution to fetch news/IR pages. Proceed with headless collection for company IR and PDF extraction.
+
+### Playwright collection run (2026-04-10 16:36)
+- Artifacts: 17 files (HTML + PDF) downloaded by `scripts/collect_smr_playwright.py`.
+- Results JSON: [artifacts/smr_playwright_20260410_163618/smr_playwright_results.json](artifacts/smr_playwright_20260410_163618/smr_playwright_results.json)
+- Blocked: 2 sources (see JSON); Manual downloads: 1 suggested (see `manual_downloads` field).
+- Next: 검토 → 핵심 PDF/IR에서 정량·정성 정보 추출 → `knowledge-db/smr_2026.jsonl` 에 검증된 레코드 추가.
