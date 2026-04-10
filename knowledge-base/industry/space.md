@@ -24,3 +24,15 @@
   - https://spacenews.com/
 
 노트: 이 파일은 `knowledge-db/space_2026.jsonl`의 요약(CURRENT)으로 생성됨. 세부 수치(시장규모 등)는 유료보고서에 의존하므로 필요시 보고서 구매 권장.
+
+## 교차검증된 핵심치 (공개자료 기준)
+
+- **`SpaceX Starship payload`**: 100–150 t (fully reusable); 250 t (expendable) — 출처: https://www.spacex.com/vehicles/starship (회사 사양). **신뢰도**: 높음(회사 표기).
+- **`Starfactory 생산능력(회사 주장)`**: Starfactory는 연간 최대 1,000대 수준의 생산 능력으로 설계됨 — 출처: https://www.spacex.com/vehicles/starship. **신뢰도**: 중간(회사 주장, 실운용 미확인).
+- **`Starlink 가용성·성능`**: 150+개국 가용, 평균 가동률 >99.9%, 소비자 속도 사례 400+ Mbps — 출처: https://www.starlink.com/. **신뢰도**: 높음(회사 표기).
+- **`Starlink Roam (한국)`**: 요금 시작가 예시 ₩72,000/월(로밍 플랜) — 출처: https://www.starlink.com/. **신뢰도**: 높음(회사 표기).
+- **`Telesat Lightspeed 초기 위성수`**: 초기 구성 156대(회사 보도자료), 군용 Ka-band 500MHz 추가 발표 — 출처: https://www.telesat.com/press/. **신뢰도**: 높음(회사 발표).
+- **`Eutelsat + OneWeb`**: GEO 플릿과 OneWeb LEO 결합한 멀티오빗 네트워크 제공(제품/투자자 페이지) — 출처: https://www.eutelsat.com/. **신뢰도**: 높음(회사 설명).
+- **`미·규제`**: FCC는 2026-03-27 등 관련 NPRM·정책을 통해 스펙·주파수 접근성 계획을 진행 중 — 출처: https://www.fcc.gov/space. **신뢰도**: 높음(규제 문건).
+
+노트: 위 항목들은 회사 공식 페이지·보도자료·규제문서 기준으로 교차검증한 공개자료입니다. 시장규모나 전망치(Grand View, BryceTech, Euroconsult 등)는 많은 경우 유료보고서에 기반하므로, 정확한 수치가 필요하면 특정 보고서 구매 또는 요약(신뢰할 수 있는 2차 출처) 추가 수집을 권장합니다.
