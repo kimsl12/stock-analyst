@@ -17,3 +17,19 @@
 - Results JSON: [artifacts/smr_playwright_20260410_163618/smr_playwright_results.json](artifacts/smr_playwright_20260410_163618/smr_playwright_results.json)
 - Blocked: 2 sources (see JSON); Manual downloads: 1 suggested (see `manual_downloads` field).
 - Next: 검토 → 핵심 PDF/IR에서 정량·정성 정보 추출 → `knowledge-db/smr_2026.jsonl` 에 검증된 레코드 추가.
+
+### Auto-extracted records (artifact parser)
+- **https_www_nuscalepower_com_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_rolls_royce_com_media_files_r_rolls_royce_documents_contact_**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_rolls_royce_com_media_press_releases**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_terrestrialenergy_com_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_x_energy_com_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_cfs_energy_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_tae_com_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_helionenergy_com_news**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_energy_gov_ne_nuclear_reactor_technologies_small_modular_rea**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_nrc_gov_reactors_advanced_small_modular_reactors_html**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_admin_govexec_com_media_army_nukes_pdf**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_oecd_nea_org_upload_docs_application_pdf_2025_09_web_smr_das**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_world_nuclear_org_information_library_nuclear_fuel_cycle_nuc**: added from artifacts in artifacts\smr_playwright_20260410_163618
+- **https_www_iter_org_newsline**: added from artifacts in artifacts\smr_playwright_20260410_163618
