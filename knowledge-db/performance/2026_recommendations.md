@@ -61,6 +61,9 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-13 | evening | 자산군 | Gold (GLD/IAU) | Bull (구조적 상승) | 중기~장기 | 높음 | Gold-DXY 역상관 약화 Z+1.8sigma + 중앙은행 연 1,000톤+ 매수 + 미 재정적자 GDP -6.5~-7.0% [us_economy.md §8, global_risk_factors.md §4] | reports/briefing/evening_20260413.html | 진행중 |
 | 2026-04-13 | evening | 시나리오 | 30일 매크로 베이스: 봉쇄 2~4주 지속 + 부분 완화 (위험등급 5) | Bear (확률 45%) | 단기 | 중간 | WTI $100~115 유지, S&P -3~5%, VIX 25~30, 원/달러 1,500+ [Bloomberg, CNBC] | reports/briefing/evening_20260413.html | 진행중 |
 | 2026-04-13 | evening | 이벤트 | 4/14(월) 아시아 개장 갭다운 | Bear (KOSPI -2~4% 예상) | 단기(1일) | 높음 | 호르무즈 봉쇄 주말 발표 미반영 + 에너지 수입국 직격 + 원/달러 1,500 돌파 위험 [CNBC, Bloomberg] | reports/briefing/evening_20260413.html | 진행중 |
+| 2026-04-13 | weekly | 종목 | NVDA | Bull (AI 추론 수요 폭발) | 중기 | 중간 | AI 추론 비용 280x 하락->수요 폭증 + TSMC CoWoS 13만wpm 확장 + 2nm GAA 수혜 [tech_breakthrough.md, Gartner] | reports/briefing/weekly_20260413.html | 진행중 |
+| 2026-04-13 | weekly | ETF | SHY (iShares 1-3Y Treasury) | 방어적 Bull | 단기~중기 | 높음 | 금리 3.81% 확보 + 듀레이션 리스크 최소 + 봉쇄 장기화 시 안전지대 [us_monetary_policy.md, CNBC] | reports/briefing/weekly_20260413.html | 진행중 |
+| 2026-04-13 | weekly | 시나리오 | KOSPI "코리아 프리미엄" 반전 리스크 | Bear (조건부) | 중기 | 중간 | 원/달러 1,500+ 시 외국인 이탈 + 경상수지 적자 전환 + BOK 인하 후퇴 [korea_economy.md, contrarian-card] | reports/briefing/weekly_20260413.html | 진행중 |
 
 ---
 
