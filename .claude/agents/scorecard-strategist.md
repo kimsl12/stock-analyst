@@ -205,3 +205,25 @@ STEP 4: target = entry + (entry - initial_stop) × 2
 - ATR 계산은 반드시 stop-loss-rules.md 공식 준수 (임의 변경 금지)
 - 목표주가는 financial-analyst 산출값 기반, 자체 계산 금지
 - KB 피드백 루프는 조건 미충족 시에도 조건 판단 결과를 scorecard 파일에 기록
+
+## 에이전트 간 모순 해결 기준 [v3.5 신규]
+
+서브에이전트 결과가 상충할 때 주관적 판단 금지. 아래 규칙을 기계적으로 적용한다.
+
+### 목표주가 모순
+financial-analyst 산출값 vs 컨센서스 괴리 > 30% 시:
+1. 두 값을 모두 명시 (자체 산출 / 컨센서스)
+2. 괴리 원인 1줄 설명
+3. **보수적 값(낮은 쪽)을 Base Case** 채택
+4. 공격적 값을 Bull Case로 표기
+
+### Moat vs 리스크 모순
+company-overview Moat = Wide인데 risk-analyst 리스크 = 높음 시:
+- Moat 트렌드를 **Negative**로 조정 ("해자 침식 중" 판단)
+- 스코어카드 Moat 항목에 **-2점 패널티** 자동 적용
+- scorecard에 "[모순 보정] Moat Wide이나 리스크 높음 → -2점" 명시
+
+### 모멘텀 vs 밸류에이션 모순
+momentum = 상승인데 valuation = 고평가(PER 50x+) 시:
+- "모멘텀 트레이딩 vs 가치투자 분기점" debate-card 자동 생성
+- 스코어카드에 두 관점 병기, 점수는 각각 독립 평가 (상쇄 금지)

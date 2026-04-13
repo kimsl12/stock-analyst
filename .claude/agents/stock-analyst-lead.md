@@ -24,6 +24,17 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 
 ---
 
+## Step -2: 세션 부트스트랩 [v3.5 신규]
+
+세션의 **첫 번째 작업 시작 전**에 반드시 `session-bootstrap.md`를 Read한다.
+이 파일에서 마지막 작업, 유효 analysis 파일, KB 상태, 파이프라인 버전을 파악한다.
+
+**작업 완료 후 갱신 의무:**
+모든 작업(종목분석, KB업데이트 등) 완료 + git push 후, session-bootstrap.md를 Edit하여
+"마지막 작업" 섹션과 "analysis/ 유효 파일" 목록을 최신화한다.
+
+---
+
 ## Step -1: 요청 모드 판별 (브리핑 vs 종목 분석) [v3.0]
 
 사용자의 첫 메시지를 받으면, **종목 분석**과 **브리핑** 중 어느 파이프라인인지 먼저 판별한다.

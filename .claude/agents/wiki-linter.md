@@ -83,6 +83,12 @@ Step 8: lint_report 생성 및 사용자 보고
 자동 조치:
   - _index.md "교차 참조 맵" 상태 컬럼 갱신
   - 고아 파일 발견 시 _index.md에 추가 (행 append)
+
+  5. analysis/ 폴더 아카이브 [v3.5 신규]
+     - 30일 초과 파일 → archive/{YYYY-MM}/ 이동
+     - 90일 초과 파일 → 삭제 (scorecard 70점+ 제외)
+     - scorecard 70점+ → wiki/analysis/에 영구 보관 후 analysis/에서 삭제
+     - session-bootstrap.md "analysis/ 유효 파일" 목록 갱신
 ```
 
 ### P2 — 모니터링 (참고용)

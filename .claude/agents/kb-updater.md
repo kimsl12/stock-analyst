@@ -120,6 +120,25 @@ scorecard-strategist가 KB 갱신 요청을 보낼 경우:
 KB는 **CURRENT만** 포함 (HISTORY 없음, knowledge-db/에 보관).
 시작 시 `last_synced_from_db` vs knowledge-db/ 최신 date 비교 → 불일치 시 자동 재생성.
 
+### 신뢰도 티어 분리 규칙 [v3.5 신규]
+
+knowledge-db/ 레코드의 `source` 필드로 신뢰도를 구분한다:
+
+```
+[Tier 1 — high] web_search, user
+  → KB CURRENT 핵심 수치로 사용
+  → 교차검증된 1차 소스 데이터
+
+[Tier 2 — medium] scorecard-feedback
+  → KB CURRENT "참고" 섹션에만 표기 (핵심 수치에 사용 금지)
+  → LLM 해석 기반 — 검증 없이 핵심 수치로 승격 금지
+
+[충돌 시] 동일 항목에 Tier 1 + Tier 2 존재
+  → Tier 1 우선, Tier 2는 각주 처리
+```
+
+이 규칙으로 LLM 해석이 KB를 오염시키는 순환 오류를 방지한다.
+
 ### KB 파일 헤더
 
 ```markdown
@@ -136,6 +155,16 @@ last_synced_from_db: {오늘}
 ```
 
 ---
+
+## 단일 진실 소스(SSOT) 규칙 [v3.5 신규]
+
+루트와 macro/ 하위에 동일 토픽 파일이 있을 경우 **macro/ 파일이 SSOT**.
+루트 파일은 포인터(redirect)로만 유지하며 갱신 대상 아님.
+
+```
+SSOT:     knowledge-base/macro/us_monetary_policy.md  ← 이것만 갱신
+포인터:   knowledge-base/us_monetary_policy.md        ← 갱신 금지 (redirect)
+```
 
 ## 매크로 KB 갱신 (knowledge-base/macro/ 7개)
 

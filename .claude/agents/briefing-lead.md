@@ -230,12 +230,25 @@ trigger: {브리핑 모드} 시작
 인자: 1w / 2w / 1m / 3m (기본 1m)
 1. knowledge-db/performance/2026_recommendations.md 읽기 (대상 기간)
 2. market-data-collector (--quick — 검증용 가격)
-3. briefing-lead 적중률 계산:
-   - 적중: 방향 일치 + 변동률 > 1%
-   - 오류: 부호 반대 + 변동률 > 1%
-   - 진행중: 변동률 ≤ 1% 또는 시간축 미도래
+3. 적중률 자동 계산 (공식 고정, 주관 판단 금지) [v3.5]:
+   ```
+   target_date = 제시일 + 시간축(단기=60일, 중기=180일, 장기=365일)
+   actual_return = (현재가 - 제시일 종가) / 제시일 종가
+
+   if target_date > 오늘:
+       status = "진행중"
+   elif abs(actual_return) < 0.01:
+       status = "만료"        # 방향성 없음
+   elif 방향 일치 AND actual_return > 0.01:
+       status = "적중"
+   else:
+       status = "오류"
+
+   # briefing-lead가 "사실상 맞는 방향이었는데..." 재해석 금지
+   # 공식 결과가 곧 평가. 예외 없음.
+   ```
 4. knowledge-db/performance/2026_hit_rate.md append (모듈/카테고리/시간축 분해)
-5. briefing-lead 교훈 노트 3~5개 작성
+5. 교훈 노트 3~5개 (적중/오류 패턴 분석 — 평가 결과 변경 금지)
 6. briefing-report-generator (template=performance_review, 적중률 도넛 + 모듈 분해 차트)
 7. commit/push
 ```
