@@ -181,7 +181,7 @@ last_synced_from_db: {오늘}
 - 사이클 완료 후 해당 검색 결과를 잊어도 무관 (파일에 확정됨)
 
 ```
-[미니사이클 구조]
+[미니사이클 구조 v3.4]
 
 Step 1: Read(기존 KB 파일) — 1회만
 
@@ -191,25 +191,44 @@ Step 1: Read(기존 KB 파일) — 1회만
   Step 4a: Edit(knowledge-base/ §서브섹터A 섹션 갱신)
 
 서브섹터 B 사이클:
-  Step 2b: WebSearch(서브섹터B, 3~4회)
-  Step 3b: Bash(knowledge-db/ jsonl append)
-  Step 4b: Edit(knowledge-base/ §서브섹터B 섹션 갱신)
+  Step 2b~4b: 동일 패턴
 
 ... (서브섹터 수만큼 반복) ...
 
-마무리:
-  Step 5: changelog append (1회)
-  Step 6: _index.md 이력 갱신 (1회)
-  Step 7: 사용자 보고
+★ 마지막 서브섹터 사이클 (N번째):
+  Step 2n: WebSearch(서브섹터N, 3~4회)
+  Step 3n: Bash(knowledge-db/ jsonl append + changelog 1행 append)  ← 통합!
+  Step 4n: Edit(knowledge-base/ §서브섹터N + 프론트매터 sources/updated 갱신)  ← 통합!
+
+  ↑ changelog와 프론트매터를 마지막 사이클에 병합.
+    별도 마무리 턴이 필요 없다.
 ```
+
+### ★ 마무리 통합 규칙 [v3.4]
+
+마지막 미니사이클의 Step 3n과 Step 4n에서 마무리 작업을 함께 수행한다:
+
+```
+Step 3n (Bash): 
+  echo '{"date":"...","sector":"..."}' >> jsonl     ← 서브섹터N 데이터
+  echo '{"date":"...","type":"kb_update",...}' >> changelog  ← changelog 통합
+
+Step 4n (Edit):
+  §서브섹터N 섹션 본문 갱신                          ← 원래 하던 것
+  + 프론트매터 updated/sources 갱신                  ← 추가 (같은 Edit에서)
+```
+
+이렇게 하면 마무리에 별도 턴을 쓰지 않는다.
+"~합니다"(미래형)로 끝나는 턴 소진 패턴이 해결된다.
 
 ### 턴 배분 기준
 
 ```
 서브섹터 1개당: 검색 3~4회 + jsonl 1회 + Edit 1회 = 5~6턴
 서브섹터 4개: 5~6 × 4 = 20~24턴
-초기 Read + 마무리: 3~4턴
-합계: 23~28턴 (maxTurns 30 이내)
+초기 Read: 1턴
+마무리: 0턴 (마지막 사이클에 통합)
+합계: 21~25턴 (maxTurns 30 대비 5~9턴 여유)
 ```
 
 ### git은 리드가 처리
