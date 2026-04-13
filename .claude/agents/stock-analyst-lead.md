@@ -109,13 +109,37 @@ ETF 판별 기준 (하나라도 해당하면 ETF):
   NVIDIA → sector: "AI반도체", sub_sectors: ["GPU", "데이터센터"], macro_tags: ["AI capex", "금리"]
 ```
 
-### Phase 0-B: 데이터 수집 (KB 갱신 후 실행)
-- **data-collector** 에이전트 호출
-  - KB를 먼저 읽고, 없는 데이터만 웹검색으로 수집
-  - DART 공시 데이터 파싱 (재무제표, 사업보고서, 주요사항보고서)
-  - 수집된 데이터를 구조화하여 다른 에이전트에 전달
+### Phase 0-B: 실시간 주가 수집 (fetch_price.py) [v3.1 신규]
 
-### Phase 0-C: 파일 스캐폴딩 (서브에이전트 호출 전 필수) [v2.5 신규]
+서브에이전트 호출 전, 리드가 실시간 주가 + ATR(14)을 수집한다.
+WebSearch는 캐시된 과거 데이터를 반환하므로, **정확한 현재가를 위해 반드시 스크립트 실행**.
+
+```bash
+# 한국 종목 (6자리 숫자)
+python scripts/fetch_price.py {종목코드}
+# 예: python scripts/fetch_price.py 010120
+
+# 미국 종목 (알파벳 티커)
+python scripts/fetch_price.py {TICKER}
+# 예: python scripts/fetch_price.py SNDK
+```
+
+출력 JSON에서 추출할 핵심 데이터:
+- `current_price`: 실시간 현재가
+- `market_cap` / `market_cap_str`: 시가총액
+- `high_52w` / `low_52w`: 52주 고저
+- `atr_14`: ATR(14) → 손절/목표가 산출에 사용
+- `stop_loss_2atr`: 2×ATR 손절가
+- `target_3atr`: 3×ATR 목표가
+
+이 데이터를 data.md 상단에 반영한다. WebSearch 주가와 불일치 시 **fetch_price.py 결과를 우선**한다.
+
+### Phase 0-C: 웹검색 데이터 수집
+- 리드가 WebSearch로 실적, 컨센서스, 뉴스, 수급 등 정성 데이터 수집
+- 주가/시총/ATR은 fetch_price.py 결과 사용 (WebSearch 주가 무시)
+- 수집 결과를 analysis/{종목코드}_{종목명}/data.md에 통합 저장
+
+### Phase 0-D: 파일 스캐폴딩 (서브에이전트 호출 전 필수) [v2.5]
 
 서브에이전트 호출 전, 리드가 빈 파일을 미리 생성한다.
 이렇게 하면 서브에이전트가 Read → Write 순서로 정상 저장할 수 있다.
