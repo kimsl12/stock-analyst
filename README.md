@@ -10,8 +10,8 @@
 - [LS ELECTRIC (010120)](https://kimsl12.github.io/stock-analyst/reports/010120_LSELECTRIC_20260413.html) — 2026-04-13
 - [SanDisk (SNDK)](https://kimsl12.github.io/stock-analyst/reports/SNDK_Sandisk_20260413.html) — 2026-04-13
 - [두산에너빌리티 (034020)](https://kimsl12.github.io/stock-analyst/reports/034020_두산에너빌리티_20260413.html) — 2026-04-13
+- [현대자동차 (005380)](https://kimsl12.github.io/stock-analyst/reports/005380_현대자동차_20260410.html) — 2026-04-10
 - [SK하이닉스 (000660)](https://kimsl12.github.io/stock-analyst/reports/000660_SK하이닉스_20260410.html) — 2026-04-10
-- [Anthropic (엔트로픽)](https://kimsl12.github.io/stock-analyst/reports/ANTHROPIC_Anthropic_20260409.html) — 2026-04-09
 
 ## 변경 이력
 
@@ -223,11 +223,13 @@ knowledge-base/                  ← CURRENT만 (SSOT)
 
 knowledge-db/                    ← 영구 축적 (append-only)
 ├── semiconductor_2026.jsonl (71행), ai_2026.jsonl (88행)
+├── auto_2026.jsonl (46행), energy_2026.jsonl (42행)
+├── geopolitics_2026.jsonl (32행), bio_pharma_2026.jsonl (34행)
 ├── science_tech_2026.jsonl (143행) — quantum/space/smr subtag
 ├── banking_capital_2026.jsonl (38행), telecom_next_2026.jsonl (28행)
 ├── battery_2026.jsonl (40행), advanced_materials_2026.jsonl (35행)
 ├── infrastructure_2026.jsonl (23행), macro_2026.jsonl (133행)
-└── changelog_2026.jsonl
+└── changelog_2026.jsonl (23행)
 ```
 
 ---

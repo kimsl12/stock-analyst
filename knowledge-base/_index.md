@@ -1,7 +1,9 @@
 ---
 updated: 2026-04-13
-version: v3.1
+version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
+lint_last_run: 2026-04-13
+lint_mode: full
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -15,21 +17,24 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 ## 🚨 P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
+> **최종 갱신: 2026-04-13 (wiki-linter full)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| `market/daily_snapshot.md` | ⛔ FAILED (04-07) | A-1, B-2, B-3 | `/시장데이터수집` 재실행 |
-| `market/economic_calendar.md` | ⛔ FAILED (04-07) | A-4, B-1, C-6 | `/시장데이터수집` 재실행 |
-| `market/correlation_matrix.md` | ⛔ FAILED (04-07) | B-5 | `/시장데이터수집` 재실행 |
-| `market/guru_positions.md` | ⛔ FAILED (04-07) | A-5, B-7, C-4 | `/시장데이터수집 13F` 재실행 |
-| `market/surprise_index.md` | ⛔ FAILED (04-07) | B-4 | `/시장데이터수집` 재실행 |
-| `macro/political_cycle.md` | ✅ 갱신 완료 (04-13) | G-2, C-3 | — |
-| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-13) | G-3, C-3.5 | — |
-| `macro/supply_chain.md` | ✅ 갱신 완료 (04-13) | G-1, C-3 | — |
-| `portfolio/model_portfolios.md` | ⚠️ 전 항목 미수집 | F-2~F-5 | `/모델포트폴리오` 실행 |
-| `portfolio/user_portfolio.md` | ✅ 등록 완료 (04-13) | /내포트폴리오 | — |
+| `market/daily_snapshot.md` | ✅ SUCCESS (04-13) valid_until 04-14 | A-1, B-2, B-3 | 내일 재수집 필요 |
+| `market/economic_calendar.md` | ⛔ FAILED + confidence:none | A-4, B-1, C-6 | `/시장데이터수집` 재실행 |
+| `market/correlation_matrix.md` | ⛔ FAILED + confidence:none | B-5 | `/시장데이터수집` 재실행 |
+| `market/surprise_index.md` | ⛔ FAILED + 만료 (valid_until 04-08) | B-4 | `/시장데이터수집` 재실행 |
+| `market/guru_positions.md` | ⛔ FAILED + confidence:none | A-5, B-7, C-4 | `/시장데이터수집 13F` 재실행 |
+| `macro/political_cycle.md` | ✅ 갱신 완료 (04-13) confidence:high | G-2, C-3 | — |
+| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-13) confidence:high | G-3, C-3.5 | — |
+| `macro/supply_chain.md` | ✅ 갱신 완료 (04-13) confidence:high | G-1, C-3 | — |
+| `portfolio/model_portfolios.md` | ⚠️ confidence:low 미수집 | F-2~F-5 | `/모델포트폴리오` 실행 |
+| `portfolio/user_portfolio.md` | ✅ 등록 완료 (04-13) confidence:high | /내포트폴리오 | — |
+| `us_monetary_policy.md` (루트) | ⚠️ confidence:redirect — SSOT 아님 | 교차참조 | `macro/us_monetary_policy.md` 사용 |
 
-> ✅ 네트워크 허용 환경 확인됨 (2026-04-13). 위 FAILED 항목 재수집 가능.
+> ✅ 네트워크 허용 환경 확인됨 (2026-04-13). FAILED 4건 재수집 가능.
+> ⚠️ P1: industry/ 고아 파일 8개 — quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure (_index.md Industry 테이블 미등재)
 
 ---
 
@@ -63,8 +68,17 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 | `energy.md` | WTI $68~72, Brent $72~76, JKM LNG $12~14 | OPEC+ 감산 유지. 두산에너빌리티 체코 기자재 2026 발주 기대 | 04-07 | 05-07 | medium |
 | `science_tech.md` | 한국 R&D/GDP 4.9%(세계 1위), 정부 R&D 29.6조 | AI↔에너지 결합 메가트렌드. Tesla Optimus 2026 양산 개시 | 04-07 | 05-07 | medium |
 | `bio_pharma.md` | GLP-1 시장 700~800억달러 | 삼성바이오 4공장 풀가동, CDMO Top 4 | 04-07 | 05-07 | medium |
+| `quantum.md` | 양자컴퓨팅/통신/PQC/센서 | IBM Nighthawk·Google Willow 로드맵. NIST PQC 표준 확정 | 04-13 | 05-13 | medium |
+| `space.md` | 우주경제·LEO위성·발사체 | SpaceX Falcon9 최고 발사율. AST SpaceMobile 위성직접통신 | 04-13 | 05-13 | medium |
+| `smr.md` | SMR·핵융합 에너지 | NuScale 취소 후 Kairos·TerraPower·두산에너빌리티 수혜 | 04-13 | 05-13 | medium |
+| `telecom_next.md` | 6G·위성통신·보안 | 삼성 6G 2030 목표. 위성직접통신 2026 상용화 | 04-13 | 05-13 | medium |
+| `banking_capital.md` | 4대 금융지주 합산 순이익 18.4조(+11.4%) | KB·신한·하나·우리 사상 최대 실적. PE/VC 환경 개선 기대 | 04-13 | 05-13 | medium |
+| `advanced_materials.md` | 마이크로LED 시장 0.5~1.1B USD, EDA 시장 | MicroLED CAGR 52~77%. EDA Synopsys·Cadence 과점 | 04-13 | 05-13 | medium |
+| `battery.md` | 리튬 가격 동북아 $18,050/ton (Q1 2026) | 리튬 급등 후 조정. LFP 점유 확대 vs NCM 고성능 분화 | 04-13 | 05-13 | medium |
+| `infrastructure.md` | 글로벌 건설 17.26조달러(+4.9%), 한국 수주 231.2조 | 현대건설·삼성물산 SMR EPC 추진. 데이터센터 전력망 수혜 | 04-13 | 05-13 | medium |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
+> [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
 
 ---
 
@@ -73,27 +87,28 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 | 파일 | 핵심 수치 | 핵심 리스크 | 갱신일 | 신뢰도 |
 |------|---------|-----------|-------|-------|
 | `us_economy.md` | GDP +2.7%(2025), +2.0%(2026E), Core CPI +3.1%, 침체확률 25~40% | 관세발 스태그플레이션. AI 투자(+0.3~0.5%p GDP 기여)가 부분 상쇄 | 04-07 | medium |
-| `us_monetary_policy.md` | 금리 4.25~4.50%(루트). `macro/us_monetary_policy.md`는 3.50~3.75% | ⚠️ 두 파일 간 금리 수치 불일치 — `/KB업데이트 us_monetary_policy` 필요 | 04-07 | high |
+| `us_monetary_policy.md` | SSOT: `macro/us_monetary_policy.md` 참조 (루트 파일 = redirect 포인터) | 루트 파일 confidence:redirect — 수치 직접 참조 금지 | 04-13 | redirect |
 | `geopolitics.md` | 관세 미→중 145%, 중→미 125%. HBM3E 이상 대중 금지 | 대만 충돌(저확률·극고영향). 희토류 전면금지(저확률·고영향) | 04-07 | high |
 | `korea_economy.md` | GDP +1.9%(2026E), 금리 2.75%, 원화 1,410원 | 대미 관세 + 대중 수출 이중 타격. 가계부채 GDP 92~95% | 04-07 | medium |
 | `global_risk_factors.md` | VIX 27~32(불안), F&G 25~35(Fear), 금 $2,900~3,100 | Top5 리스크: 미중·대만·부채·중동·기후 | 04-07 | high |
-| `political_cycle.md` | ⚠️ **전 항목 미수집** | G-2 모듈 실행 불가 | 04-07 | ❌ low |
-| `tech_breakthrough.md` | ⚠️ **전 항목 미수집** | G-3 모듈 실행 불가 | 04-07 | ❌ low |
-| `supply_chain.md` | ⚠️ **전 항목 미수집** | G-1 공급망 모듈 실행 불가 | 04-07 | ❌ low |
+| `political_cycle.md` | 주요국 정치 일정·정책 변화·섹터 임팩트 | G-2 모듈 정상 운영 가능 | 04-13 | ✅ high |
+| `tech_breakthrough.md` | AI·반도체·양자·바이오·에너지·로봇 기술 단계 판정 | G-3 모듈 정상 운영 가능 | 04-13 | ✅ high |
+| `supply_chain.md` | 물류/운임·핵심광물·리쇼어링 현황 | G-1 공급망 모듈 정상 운영 가능 | 04-13 | ✅ high |
 
 ---
 
-## 📊 Market KB (`knowledge-base/market/`) — 전 항목 재수집 필요
+## 📊 Market KB (`knowledge-base/market/`) — 부분 재수집 필요
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ⛔ FAILED | 매 거래일 | A-1, B-2, B-3 | `/시장데이터수집` |
-| `economic_calendar.md` | ⛔ FAILED | 주 1회 | A-4, B-1, C-6 | `/시장데이터수집` |
-| `surprise_index.md` | ⛔ FAILED | 매일 | B-4 | `/시장데이터수집` |
-| `correlation_matrix.md` | ⛔ FAILED | 주 1회 | B-5 | `/시장데이터수집` |
-| `guru_positions.md` | ⛔ FAILED | 분기 1회 | A-5, B-7, C-4 | `/시장데이터수집 13F` |
+| `daily_snapshot.md` | ✅ SUCCESS (04-13) valid_until 04-14 | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
+| `economic_calendar.md` | ⛔ FAILED + confidence:none | 주 1회 | A-4, B-1, C-6 | `/시장데이터수집` |
+| `surprise_index.md` | ⛔ FAILED + 만료 (04-08) | 매일 | B-4 | `/시장데이터수집` |
+| `correlation_matrix.md` | ⛔ FAILED + confidence:none | 주 1회 | B-5 | `/시장데이터수집` |
+| `guru_positions.md` | ⛔ FAILED + confidence:none valid_until 07-07 | 분기 1회 | A-5, B-7, C-4 | `/시장데이터수집 13F` |
 
-> **재수집 순서 권장:** daily_snapshot → economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
+> **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
+> daily_snapshot은 fetch_price.py --market --save로 매일 자동 갱신
 
 ---
 
@@ -122,14 +137,20 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 | 파일 | 레코드 수 | 갱신 주체 |
 |------|---------|---------|
 | `semiconductor_2026.jsonl` | 71건 | kb-updater |
-| `ai_2026.jsonl` | 87건 (Anthropic 34건 포함) | kb-updater |
-| `auto_2026.jsonl` | 45건 | kb-updater |
-| `energy_2026.jsonl` | 40건 | kb-updater |
-| `geopolitics_2026.jsonl` | 31건 | kb-updater |
-| `science_tech_2026.jsonl` | 45건 | kb-updater |
-| `bio_pharma_2026.jsonl` | — | kb-updater |
-| `macro_2026.jsonl` | 72건 | kb-updater |
-| `market/2026_daily_prices.md` | 22항목 (전부 N/A) | market-data-collector |
+| `ai_2026.jsonl` | 88건 (Anthropic 34건 포함) | kb-updater |
+| `auto_2026.jsonl` | 46건 | kb-updater |
+| `energy_2026.jsonl` | 42건 | kb-updater |
+| `geopolitics_2026.jsonl` | 32건 | kb-updater |
+| `science_tech_2026.jsonl` | 143건 (quantum/space/smr subtag 포함) | kb-updater |
+| `bio_pharma_2026.jsonl` | 34건 | kb-updater |
+| `macro_2026.jsonl` | 133건 | kb-updater |
+| `telecom_next_2026.jsonl` | 28건 | kb-updater |
+| `banking_capital_2026.jsonl` | 38건 | kb-updater |
+| `advanced_materials_2026.jsonl` | 35건 | kb-updater |
+| `battery_2026.jsonl` | 40건 | kb-updater |
+| `infrastructure_2026.jsonl` | 23건 | kb-updater |
+| `changelog_2026.jsonl` | 23건 | kb-updater |
+| `market/2026_daily_prices.md` | — (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
 | `market/2026_guru_changes.md` | — (FAILED) | market-data-collector |
 | `market/2026_correlation_log.md` | 0건 | correlation-monitor |
@@ -152,7 +173,7 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): 4.25~4.50% | `macro/us_monetary_policy.md`: 3.50~3.75% | 04-13 | ⚠️ 불일치 — 재수집 필요 |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: SSOT — 해당 파일 참조 | 04-13 | ✅ 구조 정리 완료 (루트→redirect 전환) |
 | VIX | `global_risk_factors.md`: 27~32 | `us_economy.md §9`: 27~32 | 04-07 | ✅ 일치 |
 | DXY | `global_risk_factors.md`: 101~104 | `us_economy.md §9`: 101~104 | 04-07 | ✅ 일치 |
 | WTI | `energy.md §1`: $68~72 | `geopolitics.md §6`: $68~72 | 04-07 | ✅ 일치 |
@@ -182,6 +203,7 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-13 | `_index.md` | **v3.2 wiki-linter full** — P0 갱신 + Industry 고아파일 8개 등재 + Macro 3개 갱신 확인 + Market 상태 정정 + 교차참조 맵 갱신 | — |
 | 2026-04-13 | `_index.md` | **v3.1 완전 재작성** — Wiki Index 전환 (LLM Wiki 원칙 적용) | — |
 | 2026-04-09 | `industry/ai_anthropic.md` | **신규 생성** — Anthropic 개별기업 KB (34건) | +34 |
 | 2026-04-09 | `knowledge-db/ai_2026.jsonl` | Anthropic 데이터 추가 (53→87건) | +34 |
