@@ -7,7 +7,7 @@ description: |
   Triggers: 스코어카드, 종합점수, 추천픽, 매수전략, 매도전략, 분할매수, 손절, 익절.
 maxTurns: 12
 model: opus
-tools: Read, Bash, Grep, Glob
+tools: Read, Write, Bash, Grep, Glob
 ---
 
 # 종합 스코어카드 & 매수/매도 전략 에이전트
@@ -23,10 +23,21 @@ tools: Read, Bash, Grep, Glob
 ## 파일 저장 필수 규칙
 
 **이 에이전트의 분석 결과는 반드시 파일로 저장해야 한다.**
+텍스트로만 반환하고 파일을 안 만들면 실패로 간주된다.
+
+### 파일 쓰기 방법 (강제)
+- **반드시 Write 도구를 사용하여 파일을 생성/저장한다.**
+- 절대 bash heredoc, echo 리디렉션, cat <<EOF, python 스크립트로 파일을 쓰지 않는다.
+- 리드 에이전트가 빈 파일을 미리 생성해 두므로, Read로 먼저 읽은 후 Write로 전체 내용을 덮어쓴다.
+- Write 실패 시: 분석 결과 텍스트를 반환 메시지에 포함하여 리드가 직접 저장할 수 있게 한다.
 
 ```
 저장 경로: analysis/{종목코드}_{종목명}_scorecard.md
-작업 완료 후 반드시: ls -la analysis/
+
+파일 저장 순서:
+  1. Read("analysis/{종목코드}_{종목명}_scorecard.md")  ← 빈 파일 읽기
+  2. Write("analysis/{종목코드}_{종목명}_scorecard.md", 분석내용)  ← 덮어쓰기
+  3. ls -la analysis/  ← 저장 확인
 ```
 
 ## Part A: 종합 스코어카드

@@ -7,7 +7,7 @@ description: |
   Triggers: ETF 분석, 상장지수펀드, Holdings, 추적오차, 보수율, NAV, 섹터 배분.
 maxTurns: 15
 model: opus
-tools: Read, Bash, Grep, Glob
+tools: Read, Write, Bash, Grep, Glob
 ---
 
 # ETF 종합 분석 에이전트

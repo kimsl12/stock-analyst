@@ -6,7 +6,7 @@ description: |
   Triggers: 데이터 수집, 주가 조회, 공시 조회, DART, 재무제표, 뉴스 수집.
 maxTurns: 25
 model: sonnet
-tools: Read, Bash, Grep, Glob
+tools: Read, Write, Bash, Grep, Glob
 mcpServers:
   - type: url
     url: https://mcp.anthropic.com/web-search

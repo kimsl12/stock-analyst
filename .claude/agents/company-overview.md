@@ -7,7 +7,7 @@ description: |
   Triggers: 기업개요, 해자 분석, moat, 경쟁력, 사업구조, 지배구조.
 maxTurns: 10
 model: sonnet
-tools: Read, Bash, Grep, Glob
+tools: Read, Write, Bash, Grep, Glob
 ---
 
 # 기업개요 & 경쟁력(Moat) 분석 에이전트
@@ -24,13 +24,21 @@ tools: Read, Bash, Grep, Glob
 **이 에이전트의 분석 결과는 반드시 파일로 저장해야 한다.**
 텍스트로만 반환하고 파일을 안 만들면 실패로 간주된다.
 
+### 파일 쓰기 방법 (강제)
+- **반드시 Write 도구를 사용하여 파일을 생성/저장한다.**
+- 절대 bash heredoc, echo 리디렉션, cat <<EOF, python 스크립트로 파일을 쓰지 않는다.
+- 리드 에이전트가 빈 파일을 미리 생성해 두므로, Read로 먼저 읽은 후 Write로 전체 내용을 덮어쓴다.
+- Write 실패 시: 분석 결과 텍스트를 반환 메시지에 포함하여 리드가 직접 저장할 수 있게 한다.
+
 ```
 저장 경로: analysis/{종목코드}_{종목명}_company.md
 예시: analysis/NVDA_NVIDIA_company.md
       analysis/005930_삼성전자_company.md
 
-작업 완료 후 반드시 실행:
-  ls -la analysis/
+파일 저장 순서:
+  1. Read("analysis/{종목코드}_{종목명}_company.md")  ← 빈 파일 읽기
+  2. Write("analysis/{종목코드}_{종목명}_company.md", 분석내용)  ← 덮어쓰기
+  3. ls -la analysis/  ← 저장 확인
 ```
 
 ## 분석 프레임워크
