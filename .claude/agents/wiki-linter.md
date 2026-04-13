@@ -42,7 +42,8 @@ Step 4: P1 점검 — 7일 이내 만료 / 고아 파일 / KB 간 모순
 Step 5: P2 점검 — 30일 미갱신 / confidence:low 과다 인용
 Step 6: 자동 수정 실행 (허용 범위 내)
 Step 7: knowledge-base/_index.md P0 섹션 갱신
-Step 8: lint_report 생성 및 사용자 보고
+Step 8: README.md 갱신 [v3.5 신규]
+Step 9: lint_report 생성 및 사용자 보고
 ```
 
 ---
@@ -139,6 +140,7 @@ if discrepancy > tolerance:
   - knowledge-base/_index.md "교차 참조 맵" 상태 컬럼 갱신
   - knowledge-base/_index.md "업데이트 이력" 최신 10건 유지 (오래된 항목 trim)
   - KB 파일 헤더의 valid_until 만료 표시
+  - README.md 갱신 (/KB점검 full 모드 시) [v3.5 신규]
 
 ❌ 자동 수정 금지 (사용자 확인 필요):
   - knowledge-base/ 파일 내 데이터 수정
@@ -183,6 +185,27 @@ if discrepancy > tolerance:
 ### 2. `knowledge-base/_index.md` P0 섹션 갱신 (Edit)
 
 자동으로 knowledge-base/_index.md의 "P0 — 즉시 조치 필요" 섹션을 현재 상태로 갱신한다.
+
+### 3. `README.md` 갱신 (mode=full 시) [v3.5 신규]
+
+/KB점검 full 모드 실행 시, README.md의 다음 섹션을 현재 상태에 맞게 갱신한다:
+
+```
+갱신 대상 섹션:
+  1. "최근 리포트" — reports/ 폴더에서 최신 5개 HTML 파일명+날짜 추출
+  2. "모델 배정" 테이블 — .claude/agents/*.md frontmatter에서 model/maxTurns 추출
+  3. "Knowledge Base 구조" — knowledge-base/ 실제 파일 목록과 동기화
+  4. "knowledge-db/" — 각 jsonl 파일 행 수 갱신
+
+갱신 방법:
+  - README.md를 Read → 해당 섹션만 Edit (나머지 구조/맥락 유지)
+  - 버전 번호, 변경 이력, 설명 텍스트는 수정하지 않음
+  - 수치/파일명/모델명 등 팩트만 최신화
+
+갱신 불가 시:
+  - lint_report에 "README 갱신 실패: {사유}" 기록
+  - 사용자에게 수동 갱신 권장
+```
 
 ---
 
