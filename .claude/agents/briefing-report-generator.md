@@ -103,6 +103,12 @@ extras: {
   --highlight:#58a6ff;
   --warning:#d29922;
   --debate:#8b5cf6;
+}
+/* 라이트 모드 [v3.5] */
+[data-theme="light"]{
+  --bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666;
+  --border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--neutral:#888;
+  --highlight:#1976D2;--warning:#E65100;--debate:#7C3AED;
   --contrarian:#d29922;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -252,6 +258,13 @@ tr:hover{background:rgba(255,255,255,0.02)}
 </head>
 <body>
 
+<!-- 테마 토글 (상단 고정) [v3.5] -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer">
+    <span id="theme-label">라이트</span>
+  </button>
+</div>
+
 <div class="header">
   <h1>{이모지} {모듈명} — {YYYY-MM-DD}</h1>
   <div class="meta">briefing-lead 작성 | {KST 시각}</div>
@@ -340,6 +353,40 @@ tr:hover{background:rgba(255,255,255,0.02)}
     <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
   </ul>
 </div>
+
+<!-- 명령어 가이드 [v3.5] -->
+<div class="footer" style="margin-top:20px">
+<h3>명령어 가이드</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px">
+  <div><code>/종목분석</code> 종목 심층 분석</div>
+  <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+  <div><code>/비교분석</code> 두 종목 비교</div>
+  <div><code>/모닝브리핑</code> 오전 시장</div>
+  <div><code>/이브닝브리핑</code> 저녁 시장</div>
+  <div><code>/주간리포트</code> 주간 종합</div>
+  <div><code>/크립토브리핑</code> 크립토</div>
+  <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+  <div><code>/모델포트폴리오</code> 4종 모델</div>
+  <div><code>/내포트폴리오</code> 내 자산</div>
+  <div><code>/리밸런싱</code> 포트 조정</div>
+  <div><code>/성과리뷰</code> 적중률</div>
+  <div><code>/풀브리핑</code> A+B+C+E</div>
+  <div><code>/KB업데이트</code> KB 갱신</div>
+  <div><code>/KB점검</code> KB 건강 점검</div>
+  <div><code>/손절계산</code> ATR 계산</div>
+  <div><code>/리포트</code> HTML 재생성</div>
+</div>
+</div>
+
+<script>
+function toggleTheme(){
+  var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";
+  if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}
+  else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}
+  localStorage.setItem("theme",t);
+}
+(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();
+</script>
 
 </body>
 </html>
