@@ -56,6 +56,11 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-07 | morning | 종목 | SK하이닉스 (055930.KS) | Bull (HBM·Tier 1 수혜 구조) | 중기 | 중간 | HBM3E+ 대중 全禁 + Tier 1 한국 무제한 + 2026 한국 반도체 수출 +10~15% YoY 전망 [geopolitics.md §1-2, korea_economy.md §5-1] | reports/briefing/morning_20260407.html | 진행중 |
 | 2026-04-07 | morning | 자산군 | 한국 방산 (한화에어로·LIG넥스원·KAI) | Bull (지정학 다중 수혜) | 장기 | 높음 | 우크라이나 재건 + 유럽 방위비 GDP 3% + 북한 도발 [geopolitics.md §4·§5·§8] | reports/briefing/morning_20260407.html | 진행중 |
 | 2026-04-07 | morning | 시나리오 | 30일 매크로 베이스 시나리오 (위험등급 4 유지) | 중립 (확률 ~55%) | 단기 | 중간 | 4월 FOMC 동결 + 관세 유지 + 브렌트 70~78 박스 + 원/달러 1,410~1,460 [macro_20260407.md §3] | reports/briefing/morning_20260407.html | 진행중 |
+| 2026-04-13 | evening | ETF | Energy Select Sector SPDR (XLE) | Bull (호르무즈 봉쇄 수혜) | 단기~중기 | 높음 | 호르무즈 봉쇄 -> WTI $105+ + SPR 방출 한계 + OPEC 감산 유지 [Bloomberg 보도, CNBC] | reports/briefing/evening_20260413.html | 진행중 |
+| 2026-04-13 | evening | 종목 | 한화에어로스페이스 (012450.KS) | Bull (방산 구조적 상승) | 장기 | 높음 | 중동 분쟁 장기화 + 유럽 NATO GDP 3% + 한국 방산 수출 파이프라인 [geopolitics.md §4, §5] | reports/briefing/evening_20260413.html | 진행중 |
+| 2026-04-13 | evening | 자산군 | Gold (GLD/IAU) | Bull (구조적 상승) | 중기~장기 | 높음 | Gold-DXY 역상관 약화 Z+1.8sigma + 중앙은행 연 1,000톤+ 매수 + 미 재정적자 GDP -6.5~-7.0% [us_economy.md §8, global_risk_factors.md §4] | reports/briefing/evening_20260413.html | 진행중 |
+| 2026-04-13 | evening | 시나리오 | 30일 매크로 베이스: 봉쇄 2~4주 지속 + 부분 완화 (위험등급 5) | Bear (확률 45%) | 단기 | 중간 | WTI $100~115 유지, S&P -3~5%, VIX 25~30, 원/달러 1,500+ [Bloomberg, CNBC] | reports/briefing/evening_20260413.html | 진행중 |
+| 2026-04-13 | evening | 이벤트 | 4/14(월) 아시아 개장 갭다운 | Bear (KOSPI -2~4% 예상) | 단기(1일) | 높음 | 호르무즈 봉쇄 주말 발표 미반영 + 에너지 수입국 직격 + 원/달러 1,500 돌파 위험 [CNBC, Bloomberg] | reports/briefing/evening_20260413.html | 진행중 |
 
 ---
 
