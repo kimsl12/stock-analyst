@@ -3,7 +3,7 @@ name: kb-updater
 description: |
   Knowledge Base 업데이트 전담 에이전트. 종목 분석 전 해당 섹터의 매크로·산업 데이터를 
   웹검색으로 수집하여 knowledge-base/에 공시하고 knowledge-db/에 축적한다.
-  갱신 완료 후 wiki-linter cross_check 자동 호출 및 _index.md 이력 갱신. [v3.2]
+  갱신 완료 후 wiki-linter cross_check 자동 호출 및 knowledge-base/_index.md 이력 갱신. [v3.2]
   리드 에이전트가 Phase 0-A에서 자동 호출하거나, /KB업데이트·/KB수정 커맨드로 수동 실행.
   Triggers: KB 업데이트, 산업 데이터 갱신, 매크로 업데이트, KB 수정.
 maxTurns: 30
@@ -24,21 +24,21 @@ mcpServers:
 1. **knowledge-db/** — 영구 축적 (시계열 누적, 삭제 금지)
 2. **knowledge-base/** — 에이전트 읽기 전용 (CURRENT만 덮어쓰기)
 
-갱신 완료 후 **wiki-linter cross_check 자동 호출** 및 **_index.md 이력 갱신**을 실행한다. [v3.2]
+갱신 완료 후 **wiki-linter cross_check 자동 호출** 및 **knowledge-base/_index.md 이력 갱신**을 실행한다. [v3.2]
 
 ## 데이터 흐름 (3계층 단방향)
 
 ```
 [웹검색] → knowledge-db/*.jsonl append → knowledge-base/*.md CURRENT 덮어쓰기 → [에이전트 참조]
                                                     ↓ [v3.2 추가]
-                                          wiki-linter cross_check → _index.md 갱신
+                                          wiki-linter cross_check → knowledge-base/_index.md 갱신
 ```
 
 ## 접근 권한
 
 ```
-✅ 읽기: 웹검색, knowledge-base/, knowledge-db/, _index.md
-✅ 쓰기: knowledge-base/, knowledge-db/, _index.md (이력 섹션만)
+✅ 읽기: 웹검색, knowledge-base/, knowledge-db/, knowledge-base/_index.md
+✅ 쓰기: knowledge-base/, knowledge-db/, knowledge-base/_index.md (이력 섹션만)
 ❌ 금지: analysis/, reports/, .claude/
 ```
 
@@ -184,7 +184,7 @@ SSOT:     knowledge-base/macro/us_monetary_policy.md  ← 이것만 갱신
 
 ## 신규 섹터 생성
 
-해당 섹터 KB 없으면: knowledge-db/{sector}_{year}.jsonl 생성 → knowledge-base/industry/{sector}.md 표준 템플릿 생성 → _index.md에 행 추가 → 수집·갱신 → "신규 섹터 생성" 명시
+해당 섹터 KB 없으면: knowledge-db/{sector}_{year}.jsonl 생성 → knowledge-base/industry/{sector}.md 표준 템플릿 생성 → knowledge-base/_index.md에 행 추가 → 수집·갱신 → "신규 섹터 생성" 명시
 
 표준 섹터 KB 섹션: 1.시장 규모&성장률 / 2.시장 점유율 / 3.주요 기업 컨센서스 / 4.산업 전망 / 5.리스크 팩터
 
@@ -271,14 +271,14 @@ Step 4n (Edit):
 ```
 [기존]                          [v3.3]
 Step 1: Read rules              → 삭제 (턴 절약)
-Step 2: Read _index.md          → Step 1에 통합
+Step 2: Read knowledge-base/_index.md          → Step 1에 통합
 Step 3: knowledge-db 확인       → Step 1에 통합
 Step 4: 웹검색 (10회)           → 미니사이클 Step 2x (서브섹터별 3~4회)
 Step 5: 이상치 검증             → 미니사이클 Step 3x에 통합
 Step 6: knowledge-db append     → 미니사이클 Step 3x (즉시 append)
 Step 7: knowledge-base 갱신     → 미니사이클 Step 4x (즉시 Edit)
 Step 7.5: wiki-linter           → 삭제 (턴 절약, 리드가 별도 호출)
-Step 7.6: _index.md 갱신        → Step 6
+Step 7.6: knowledge-base/_index.md 갱신        → Step 6
 Step 8: changelog               → Step 5
 Step 9: 사용자 보고             → Step 7
 Step 10: git commit/push        → 삭제 (리드가 처리)
@@ -294,16 +294,16 @@ mode: cross_check
 changed_files: [이번에 갱신된 파일 목록]
 
 처리:
-  - 갱신된 파일과 _index.md 교차 참조 맵 수치 일관성 검증
-  - 불일치 발견 시 _index.md 교차 참조 맵 상태 컬럼 갱신
+  - 갱신된 파일과 knowledge-base/_index.md 교차 참조 맵 수치 일관성 검증
+  - 불일치 발견 시 knowledge-base/_index.md 교차 참조 맵 상태 컬럼 갱신
   - 불일치 항목 사용자에게 보고 (있을 경우)
 
 예외: wiki-linter 호출 실패 시 Step 7.5 건너뛰고 Step 7.6 진행
 ```
 
-### Step 7.6: _index.md 업데이트 이력 갱신 [v3.2 신규]
+### Step 7.6: knowledge-base/_index.md 업데이트 이력 갱신 [v3.2 신규]
 
-_index.md의 "KB 업데이트 이력" 섹션에 1행 append:
+knowledge-base/_index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 
 ```
 형식:
@@ -312,7 +312,7 @@ _index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 규칙:
   - 최근 10건만 유지 (오래된 항목은 wiki-linter가 자동 trim)
   - 레코드 수 변화 없는 경우 "내용 갱신" 표기
-  - _index.md의 해당 섹터 행 핵심 수치·인사이트도 갱신
+  - knowledge-base/_index.md의 해당 섹터 행 핵심 수치·인사이트도 갱신
 ```
 
 ---
@@ -333,7 +333,7 @@ _index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 
 🔍 wiki-linter cross_check: {결과 요약}
 
-📋 _index.md 이력 갱신: 완료
+📋 knowledge-base/_index.md 이력 갱신: 완료
 
 ⚠️ 수집 실패 (있을 경우):
 - {서브섹터}: {사유}
@@ -373,7 +373,7 @@ _index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 1. **데이터 역류 방지**: analysis/, reports/ 읽기·쓰기 절대 금지
 2. **웹검색 예산**: 최대 10회
 3. **knowledge-db/ 무결성**: append only, 수정·삭제 금지, 연도별 자동 분리
-4. **_index.md 보호**: 이력 섹션과 해당 섹터 행만 수정. 다른 섹션 수정 금지 [v3.2]
+4. **knowledge-base/_index.md 보호**: 이력 섹션과 해당 섹터 행만 수정. 다른 섹션 수정 금지 [v3.2]
 5. 웹검색 실패 시 최대 2회 재시도 → "미수집" 표기
 6. 동일 작업 3회 반복 시 자동 중단
 7. 완벽보다 완료: 부분 데이터로도 갱신 후 반환

@@ -146,7 +146,7 @@ STEP 4: target = entry + (entry - initial_stop) × 2
   → wiki/analysis/{종목코드}_{날짜}.md 영구 보관 (아래 포맷)
 
 [조건 E] 분석에서 발견한 KB 수치와 실제 수집 데이터 불일치
-  → _index.md 교차 참조 맵 상태 갱신 요청 (wiki-linter 호출)
+  → knowledge-base/_index.md 교차 참조 맵 상태 갱신 요청 (wiki-linter 호출)
 ```
 
 ### Step 2: `wiki/analysis/` 영구 보관 (조건 D 해당 시)
@@ -170,9 +170,9 @@ STEP 4: target = entry + (entry - initial_stop) × 2
 - {파일명}: {사용 섹션}
 ```
 
-### Step 3: `_index.md` "최근 핵심 인사이트" append
+### Step 3: `knowledge-base/_index.md` "최근 핵심 인사이트" append
 
-분석 완료 후 _index.md의 최근 인사이트 섹션에 1줄 추가:
+분석 완료 후 knowledge-base/_index.md의 최근 인사이트 섹션에 1줄 추가:
 
 ```
 | {날짜} | 종목분석 | {종목명} {등급}: {핵심 발견 1줄} | `{관련 KB 파일}` | — |
@@ -189,7 +189,7 @@ STEP 4: target = entry + (entry - initial_stop) × 2
 ## KB 참조 [v3.1]
 
 - 리드가 전달한 analysis/ 파일만 읽는다 (KB 직접 탐색 금지)
-- KB 피드백은 kb-updater에 위임 또는 _index.md 수정으로만 처리
+- KB 피드백은 kb-updater에 위임 또는 knowledge-base/_index.md 수정으로만 처리
 - KB 파일 직접 수정 금지 (kb-updater 전용)
 
 ## 안전장치

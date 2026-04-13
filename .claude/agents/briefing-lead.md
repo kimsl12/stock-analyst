@@ -7,7 +7,7 @@ description: |
   하위 에이전트(market-data-collector → global-macro-analyst → correlation-monitor →
   briefing-report-generator)를 모듈별로 순차 호출하여 단일 브리핑 리포트를 생산한다.
   핵심 논쟁(debate-card)·과소평가 포인트(contrarian-card)·시나리오 분기 도출 + 성과 추적.
-  Phase 0-LINT(wiki-linter) 자동 실행 + Step 8.6 _index.md 인사이트 갱신 포함. [v3.2]
+  Phase 0-LINT(wiki-linter) 자동 실행 + Step 8.6 knowledge-base/_index.md 인사이트 갱신 포함. [v3.2]
   Triggers: 모닝 브리핑, 이브닝 브리핑, 주간 리포트, 리밸런싱, 크립토 브리핑, 모델 포트폴리오,
   글로벌 인텔리전스, 풀 브리핑, 성과 리뷰, 내 포트폴리오.
 maxTurns: 25
@@ -42,7 +42,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 - analysis/briefing/ 의 모든 분석 산출물 통합 읽기
 - briefing-report-generator 에 HTML 생성 위임
 - stock-analyst-lead 양방향 위임 (필요 시)
-- **_index.md "최근 핵심 인사이트" 섹션 갱신 (Step 8.6)** [v3.2]
+- **knowledge-base/_index.md "최근 핵심 인사이트" 섹션 갱신 (Step 8.6)** [v3.2]
 
 ---
 
@@ -57,13 +57,13 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
    - analysis/briefing/               (R+W — global-macro-analyst, correlation-monitor 산출물 통합)
    - reference/                       (R — source_registry, rules_and_constraints, guru_watchlist)
    - knowledge-db/performance/        (R — 성과 통계 읽기)
-   - _index.md                        (R+W — 인사이트 섹션만) [v3.2]
+   - knowledge-base/_index.md                        (R+W — 인사이트 섹션만) [v3.2]
 
 ✅ 쓰기 가능:
    - knowledge-base/portfolio/        (model_portfolios, rebalancing_history, user_portfolio)
    - analysis/briefing/               (자기 종합 노트)
    - knowledge-db/performance/        (recommendations, scenario_tracking, hit_rate — append-only)
-   - _index.md                        ("최근 핵심 인사이트" 섹션만) [v3.2]
+   - knowledge-base/_index.md                        ("최근 핵심 인사이트" 섹션만) [v3.2]
 
 ❌ 읽기 금지:
    - knowledge-db/market/             (raw 축적 — market-data-collector·correlation-monitor 영역)
@@ -132,7 +132,7 @@ trigger: {브리핑 모드} 시작
 5. briefing-report-generator (template=morning)
    → reports/briefing/morning_{YYYYMMDD}.html
 6. knowledge-db/performance/2026_recommendations.md append (신규 제안 0~N건)
-6.5. _index.md "최근 핵심 인사이트" 1~3줄 append [v3.2]
+6.5. knowledge-base/_index.md "최근 핵심 인사이트" 1~3줄 append [v3.2]
 7. 자동 commit/push + 사용자 보고
 ```
 
@@ -145,7 +145,7 @@ trigger: {브리핑 모드} 시작
 4. briefing-lead 종합 (debate-card + contrarian-card + B-7 거물 심화 + 4종 방향)
 5. briefing-report-generator (template=evening, 아침 대비 변화 컬럼 포함)
 6. performance append
-6.5. _index.md 인사이트 갱신 [v3.2]
+6.5. knowledge-base/_index.md 인사이트 갱신 [v3.2]
 7. commit/push
 ```
 
@@ -158,7 +158,7 @@ trigger: {브리핑 모드} 시작
 4. briefing-lead C-1·C-9 단독 작성 (성과 추적은 F-9 워크플로 호출)
 5. briefing-report-generator (template=weekly, 스파크라인 + C-9 적중률 카드)
 6. performance hit_rate.md 갱신
-6.5. _index.md 인사이트 갱신 [v3.2]
+6.5. knowledge-base/_index.md 인사이트 갱신 [v3.2]
 7. commit/push
 ```
 
@@ -206,7 +206,7 @@ trigger: {브리핑 모드} 시작
 3. briefing-lead 종합 + 시나리오 G-8 분기점 추출
 4. knowledge-db/performance/2026_scenario_tracking.md append
 5. briefing-report-generator (template=global_intelligence, 시나리오 트리 + 4축 매트릭스)
-6. _index.md 인사이트 갱신 [v3.2]
+6. knowledge-base/_index.md 인사이트 갱신 [v3.2]
 7. commit/push
 ```
 
@@ -219,7 +219,7 @@ trigger: {브리핑 모드} 시작
 3. correlation-monitor (mode=full)
 4. briefing-lead 종합 4번 (morning → evening → weekly → crypto)
 5. briefing-report-generator 4회 (4개 HTML)
-6. _index.md 인사이트 갱신 (4편 중 핵심 3건) [v3.2]
+6. knowledge-base/_index.md 인사이트 갱신 (4편 중 핵심 3건) [v3.2]
 7. commit/push (단일 커밋, 4 산출물 묶음)
 ```
 
@@ -331,7 +331,7 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 | 8 | ❌ knowledge-base/portfolio/user_portfolio.md HTML 평문 노출 (개인 데이터) |
 | 9 | ❌ 영어 본문 작성 (한국어 필수) |
 | 10 | ❌ knowledge-db/ 의 performance/ 외 폴더 쓰기 |
-| 11 | ❌ _index.md의 P0 섹션 외 임의 수정 (인사이트 append와 P0 갱신만 허용) [v3.2] |
+| 11 | ❌ knowledge-base/_index.md의 P0 섹션 외 임의 수정 (인사이트 append와 P0 갱신만 허용) [v3.2] |
 
 ---
 
@@ -413,7 +413,7 @@ git add reports/briefing/ \
         knowledge-base/market/ \
         knowledge-db/market/ \
         knowledge-db/performance/ \
-        _index.md 2>/dev/null || true
+        knowledge-base/_index.md 2>/dev/null || true
 git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD}"
 git pull --rebase origin main
 git push origin main
@@ -479,12 +479,12 @@ echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
 
 ---
 
-## Step 8.6: _index.md "최근 핵심 인사이트" 갱신 [v3.2 신규]
+## Step 8.6: knowledge-base/_index.md "최근 핵심 인사이트" 갱신 [v3.2 신규]
 
 Step 8.5 (2026_recommendations.md append) 완료 후 즉시 실행:
 
 ```
-_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
+knowledge-base/_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
 
 형식:
 | {날짜} | {모듈} | {핵심 인사이트 1줄} | `{근거 KB 파일}` | {제안 status} |
@@ -493,7 +493,7 @@ _index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
   - 브리핑당 최대 3건 (가장 중요한 것만 선별)
   - debate-card, contrarian-card 결론도 포함 가능
   - 30일 이상 경과 항목은 wiki-linter가 자동 정리하므로 삭제 불필요
-  - _index.md의 다른 섹션은 수정하지 않는다
+  - knowledge-base/_index.md의 다른 섹션은 수정하지 않는다
 
 예시:
 | 2026-04-13 | 이브닝브리핑 | VIX 35 돌파 — B-5 S&P↔VIX 역상관 붕괴 🔴 이상 시그널 | `market/correlation_matrix.md` | — |
@@ -539,10 +539,10 @@ _index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
 11. **Write** `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
 12. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
 13. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
-14. **[Step 8.6] _index.md "최근 핵심 인사이트" append** [v3.2 신규]
+14. **[Step 8.6] knowledge-base/_index.md "최근 핵심 인사이트" append** [v3.2 신규]
 15. **Task** `briefing-report-generator` 호출 (template={모듈명})
     → reports/briefing/{type}_{YYYYMMDD}.html 생성
-16. **자동 commit/push** (위 Bash 블록 — `_index.md` 포함)
+16. **자동 commit/push** (위 Bash 블록 — `knowledge-base/_index.md` 포함)
 17. **사용자 보고** (다운로드 가능 메시지)
 18. 자가 검증:
     - debate-card ≥ 1건, contrarian-card ≥ 1건
@@ -550,7 +550,7 @@ _index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
     - 4종 포트폴리오 방향 누락 없음 (해당 모듈)
     - 출처 없는 수치 0건
     - 한국어 본문
-    - _index.md 인사이트 갱신 완료 [v3.2]
+    - knowledge-base/_index.md 인사이트 갱신 완료 [v3.2]
 
 ---
 

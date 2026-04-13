@@ -23,11 +23,11 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 | `market/correlation_matrix.md` | ⛔ FAILED (04-07) | B-5 | `/시장데이터수집` 재실행 |
 | `market/guru_positions.md` | ⛔ FAILED (04-07) | A-5, B-7, C-4 | `/시장데이터수집 13F` 재실행 |
 | `market/surprise_index.md` | ⛔ FAILED (04-07) | B-4 | `/시장데이터수집` 재실행 |
-| `macro/political_cycle.md` | ⚠️ 미수집 (confidence: low) | G-2, C-3 | `/KB업데이트 political_cycle` |
-| `macro/tech_breakthrough.md` | ⚠️ 미수집 (confidence: low) | G-3, C-3.5 | `/KB업데이트 tech_breakthrough` |
-| `macro/supply_chain.md` | ⚠️ 미수집 (confidence: low) | G-1, C-3 | `/KB업데이트 supply_chain` |
+| `macro/political_cycle.md` | ✅ 갱신 완료 (04-13) | G-2, C-3 | — |
+| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-13) | G-3, C-3.5 | — |
+| `macro/supply_chain.md` | ✅ 갱신 완료 (04-13) | G-1, C-3 | — |
 | `portfolio/model_portfolios.md` | ⚠️ 전 항목 미수집 | F-2~F-5 | `/모델포트폴리오` 실행 |
-| `portfolio/user_portfolio.md` | ⚠️ 미등록 | /내포트폴리오 | `/내포트폴리오` 실행 |
+| `portfolio/user_portfolio.md` | ✅ 등록 완료 (04-13) | /내포트폴리오 | — |
 
 > ✅ 네트워크 허용 환경 확인됨 (2026-04-13). 위 FAILED 항목 재수집 가능.
 
@@ -37,6 +37,9 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-04-13 | 이브닝브리핑 | 호르무즈 봉쇄 선언 — WTI $105 급등, 4/14 아시아 갭다운 -2~4% 경고. 위험등급 4→5 상향 | `market/daily_snapshot.md` | 진행중 |
+| 2026-04-13 | 이브닝브리핑 | Gold-DXY 역상관 약화 Z+1.8σ — Gold $4,724 구조적 Bull. 중앙은행 매수+재정적자=탈달러 수요 | `macro/global_risk_factors.md §4` | 진행중 |
+| 2026-04-13 | 이브닝브리핑 | WTI-인플레기대 동조화 Z+2.3σ — Core CPI 전이 2~3개월 시차. Fed 6월 인하 소멸 가능 | `macro/us_monetary_policy.md` | 진행중 |
 | 2026-04-09 | ai_anthropic.md 신규 | Anthropic ARR $30B — OpenAI 최초 추월. 엔터프라이즈 LLM 점유율 40% | `industry/ai_anthropic.md` | — |
 | 2026-04-07 | 모닝브리핑 | Gold Bull 중기 — 기축통화 균열 프리미엄, 중앙은행 매수 급증 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-07 | 모닝브리핑 | SK하이닉스 Bull — HBM3E 대중 전면금지 → Tier1 한국 무제한 수혜 | `semiconductor.md §1 HBM` | 진행중 |

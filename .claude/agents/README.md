@@ -18,7 +18,7 @@
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.2** | **2026-04-13** | **LLM Wiki 전환 — wiki-linter 신설 + _index.md Wiki Index 재작성 + KB 피드백 루프 (scorecard-strategist) + Phase 0-LINT + /KB점검 명령어** |
+| **v3.2** | **2026-04-13** | **LLM Wiki 전환 — wiki-linter 신설 + knowledge-base/_index.md Wiki Index 재작성 + KB 피드백 루프 (scorecard-strategist) + Phase 0-LINT + /KB점검 명령어** |
 | v3.1 | 2026-04-09 | GitHub Pages 자동 배포 + 리포트 열람 링크 시스템 + 비상장 기업 분석 지원 |
 | v3.0 | 2026-04-07 | 검수 결과 18 FAIL 정정 — 명세대로 5 브리핑 에이전트 + 10 명령 + KB 헤더 + performance KB 재구현 |
 | v2.4 | 2026-04-07 | 브리핑 시스템 v3.4 통합 1차 시도 (명세 미부합 — v3.0 으로 재구현됨) |
@@ -52,7 +52,7 @@ knowledge-base/ 강화  ← 복리 지식 누적
 |---|---|---|
 | `raw/` 불변 원본 | `knowledge-db/` append-only | ✅ 기존 |
 | `wiki/` LLM 소유 | `knowledge-base/` CURRENT | ✅ 기존 |
-| `index.md` 카탈로그 | `_index.md` Wiki Index | ✅ v3.2 재작성 |
+| `index.md` 카탈로그 | `knowledge-base/_index.md` Wiki Index | ✅ v3.2 재작성 |
 | Lint 작업 | `wiki-linter` 에이전트 | ✅ v3.2 신규 |
 | Query→Wiki 피드백 | `scorecard-strategist` KB 루프 | ✅ v3.2 신규 |
 
@@ -142,7 +142,7 @@ knowledge-base/ 강화  ← 복리 지식 누적
 | 명령어 | 사용 예시 | 에이전트 | 설명 |
 |---|---|---|---|
 | `/KB업데이트` | `/KB업데이트 semiconductor` | kb-updater | 지정 섹터·토픽 웹검색으로 갱신 |
-| `/KB점검` | `/KB점검` | wiki-linter | **전체 KB 건강 점검. P0~P2 탐지 + 자동 수정 + _index.md 갱신** [v3.2 신규] |
+| `/KB점검` | `/KB점검` | wiki-linter | **전체 KB 건강 점검. P0~P2 탐지 + 자동 수정 + knowledge-base/_index.md 갱신** [v3.2 신규] |
 
 ### 종목 분석 (5개)
 
@@ -237,7 +237,7 @@ Phase 0: data-collector → Phase 1: etf-analyst (단독, 검색5회) → Phase 
    ↓
 [Phase 0-A] market-data-collector (--skip-collect 시 생략)
    → knowledge-base/market/ + knowledge-db/market/ 연도별 .md
-   → 수집 완료 후 _index.md P0 섹션 자동 갱신 [v3.2]
+   → 수집 완료 후 knowledge-base/_index.md P0 섹션 자동 갱신 [v3.2]
    ↓
 [Phase 0-B] global-macro-analyst + correlation-monitor (병렬)
    → analysis/briefing/{global_macro,correlation}_*.md
@@ -250,7 +250,7 @@ Phase 0: data-collector → Phase 1: etf-analyst (단독, 검색5회) → Phase 
    → analysis/briefing/lead_{type}_*.md
    ↓
 [Step 8.5] 2026_recommendations.md append
-[Step 8.6] _index.md "최근 핵심 인사이트" 갱신 ← v3.2 신규
+[Step 8.6] knowledge-base/_index.md "최근 핵심 인사이트" 갱신 ← v3.2 신규
    ↓
 [Phase 0-D] briefing-report-generator → reports/briefing/{type}_*.html
    ↓

@@ -2,7 +2,7 @@
 name: wiki-linter
 description: |
   Knowledge Base 건강 점검 전담 에이전트. 주간 자동 실행 또는 수동 호출로
-  _index.md 기반 전체 KB를 스캔하여 만료·실패·모순·미수집·고아 파일을 탐지하고
+  knowledge-base/_index.md 기반 전체 KB를 스캔하여 만료·실패·모순·미수집·고아 파일을 탐지하고
   우선순위별 액션 리스트와 자동 수정을 수행한다.
   briefing-lead가 /주간리포트, /풀브리핑 Phase 0-A 전 자동 호출.
   Triggers: /KB점검, wiki lint, KB 건강검진, 주간리포트 Phase 0-A 전 자동.
@@ -26,7 +26,7 @@ Karpathy LLM Wiki의 Lint 작업에 해당하는 전담 에이전트.
 
 | mode | 호출 | 범위 |
 |------|------|------|
-| `quick` | 주간리포트·풀브리핑 Phase 0-A 전 자동 | P0 항목만 탐지 + _index.md 상태 갱신 |
+| `quick` | 주간리포트·풀브리핑 Phase 0-A 전 자동 | P0 항목만 탐지 + knowledge-base/_index.md 상태 갱신 |
 | `full` | `/KB점검` 수동 호출 | P0~P2 전체 + 교차 검증 + 자동 수정 |
 | `cross_check` | kb-updater 갱신 완료 후 자동 | 수치 불일치 교차 검증만 |
 
@@ -36,12 +36,12 @@ Karpathy LLM Wiki의 Lint 작업에 해당하는 전담 에이전트.
 
 ```
 Step 1: Read reference/rules_and_constraints.md
-Step 2: Read _index.md (현재 상태 파악)
+Step 2: Read knowledge-base/_index.md (현재 상태 파악)
 Step 3: P0 점검 — FAILED / 만료 / confidence:none 탐지
 Step 4: P1 점검 — 7일 이내 만료 / 고아 파일 / KB 간 모순
 Step 5: P2 점검 — 30일 미갱신 / confidence:low 과다 인용
 Step 6: 자동 수정 실행 (허용 범위 내)
-Step 7: _index.md P0 섹션 갱신
+Step 7: knowledge-base/_index.md P0 섹션 갱신
 Step 8: lint_report 생성 및 사용자 보고
 ```
 
@@ -59,7 +59,7 @@ Step 8: lint_report 생성 및 사용자 보고
   4. 빈 테이블 (전 행이 N/A 또는 *(미수집)*)
 
 자동 조치:
-  - _index.md "P0 — 즉시 조치 필요" 섹션 갱신
+  - knowledge-base/_index.md "P0 — 즉시 조치 필요" 섹션 갱신
   - 브리핑 시작 전 사용자에게 경고 출력
 
 수동 조치 필요 (사용자에게 보고):
@@ -72,17 +72,17 @@ Step 8: lint_report 생성 및 사용자 보고
 ```
 탐지 조건:
   1. valid_until이 오늘부터 7일 이내
-  2. _index.md에 등재되지 않은 KB 파일 (고아 파일)
+  2. knowledge-base/_index.md에 등재되지 않은 KB 파일 (고아 파일)
   3. KB 파일 간 수치 모순
 
 모순 탐지 규칙:
   - 동일 수치가 두 파일에서 ±20% 이상 차이 → 경고
   - 동일 방향이 두 파일에서 상반 → 경고
-  - 교차 참조 맵 (_index.md §교차참조) 기준으로 검증
+  - 교차 참조 맵 (knowledge-base/_index.md §교차참조) 기준으로 검증
 
 자동 조치:
-  - _index.md "교차 참조 맵" 상태 컬럼 갱신
-  - 고아 파일 발견 시 _index.md에 추가 (행 append)
+  - knowledge-base/_index.md "교차 참조 맵" 상태 컬럼 갱신
+  - 고아 파일 발견 시 knowledge-base/_index.md에 추가 (행 append)
 
   5. analysis/ 폴더 아카이브 [v3.5 신규]
      - 30일 초과 파일 → archive/{YYYY-MM}/ 이동
@@ -109,7 +109,7 @@ Step 8: lint_report 생성 및 사용자 보고
 
 ## KB 교차 검증 규칙
 
-> _index.md "KB 간 교차 참조 맵" 기준으로 수치 일관성 검증.
+> knowledge-base/_index.md "KB 간 교차 참조 맵" 기준으로 수치 일관성 검증.
 
 ```python
 # 검증 쌍 (파일A §섹션, 파일B §섹션, 허용 오차)
@@ -134,10 +134,10 @@ if discrepancy > tolerance:
 
 ```
 ✅ 자동 수정 가능:
-  - _index.md P0 섹션 갱신 (FAILED 파일 목록)
-  - _index.md "최근 핵심 인사이트" 만료 항목 제거 (30일 초과)
-  - _index.md "교차 참조 맵" 상태 컬럼 갱신
-  - _index.md "업데이트 이력" 최신 10건 유지 (오래된 항목 trim)
+  - knowledge-base/_index.md P0 섹션 갱신 (FAILED 파일 목록)
+  - knowledge-base/_index.md "최근 핵심 인사이트" 만료 항목 제거 (30일 초과)
+  - knowledge-base/_index.md "교차 참조 맵" 상태 컬럼 갱신
+  - knowledge-base/_index.md "업데이트 이력" 최신 10건 유지 (오래된 항목 trim)
   - KB 파일 헤더의 valid_until 만료 표시
 
 ❌ 자동 수정 금지 (사용자 확인 필요):
@@ -180,9 +180,9 @@ if discrepancy > tolerance:
 ## 다음 점검 예정: {날짜}
 ```
 
-### 2. `_index.md` P0 섹션 갱신 (Edit)
+### 2. `knowledge-base/_index.md` P0 섹션 갱신 (Edit)
 
-자동으로 _index.md의 "P0 — 즉시 조치 필요" 섹션을 현재 상태로 갱신한다.
+자동으로 knowledge-base/_index.md의 "P0 — 즉시 조치 필요" 섹션을 현재 상태로 갱신한다.
 
 ---
 
@@ -200,7 +200,7 @@ if discrepancy > tolerance:
 📋 P2 (모니터링): {N}건
 
 ✅ 자동 수정: {N}건
-  → _index.md P0 섹션 갱신
+  → knowledge-base/_index.md P0 섹션 갱신
   → 교차 참조 맵 {N}건 상태 갱신
 
 📄 상세 리포트: wiki/lint_report_{YYYYMMDD}.md

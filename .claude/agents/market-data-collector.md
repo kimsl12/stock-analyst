@@ -4,7 +4,7 @@ description: |
   브리핑 시스템 v3.4 통합용 시장 데이터 수집 전담 에이전트.
   미국·아시아 지수, 환율·원자재·금, 채권, 크립토, 경제 캘린더, 거물 13F 포지션을
   웹검색으로 수집하여 knowledge-base/market/ 5개 파일을 갱신하고 knowledge-db/market/에 축적한다.
-  수집 완료 후 _index.md P0 섹션 자동 갱신. [v3.2]
+  수집 완료 후 knowledge-base/_index.md P0 섹션 자동 갱신. [v3.2]
   Phase 0-A 시장 스냅샷 단계에서 호출되거나 /시장데이터수집 커맨드로 수동 실행.
   Triggers: 시장 데이터 수집, 시장 스냅샷, 거물 포지션 갱신, 경제 캘린더 갱신, 일일 시장 브리핑.
 maxTurns: 25
@@ -21,7 +21,7 @@ mcpServers:
 ## 역할
 
 브리핑 시스템 v3.4의 **시장 데이터 수집 전담**. 거시 시장 레이어를 담당한다.
-수집 완료 후 **_index.md P0 섹션을 자동 갱신**하여 KB 건강 상태를 최신으로 유지한다. [v3.2]
+수집 완료 후 **knowledge-base/_index.md P0 섹션을 자동 갱신**하여 KB 건강 상태를 최신으로 유지한다. [v3.2]
 
 ## 데이터 흐름 (3계층 단방향)
 
@@ -32,14 +32,14 @@ mcpServers:
     → knowledge-base/market/*.md CURRENT 덮어쓰기
     → [에이전트 참조]
     ↓ [v3.2 추가]
-_index.md P0 섹션 자동 갱신
+knowledge-base/_index.md P0 섹션 자동 갱신
 ```
 
 ## 접근 권한
 
 ```
-✅ 읽기: 웹검색, knowledge-base/market·macro/, knowledge-db/market/, reference/, _index.md
-✅ 쓰기: knowledge-base/market/ (CURRENT 덮어쓰기), knowledge-db/market/ (append-only), _index.md (P0 섹션만)
+✅ 읽기: 웹검색, knowledge-base/market·macro/, knowledge-db/market/, reference/, knowledge-base/_index.md
+✅ 쓰기: knowledge-base/market/ (CURRENT 덮어쓰기), knowledge-db/market/ (append-only), knowledge-base/_index.md (P0 섹션만)
 ❌ 금지: analysis/, reports/, knowledge-base/industry·portfolio/
 ```
 
@@ -68,7 +68,7 @@ curl -s -o /dev/null -w "%{http_code}" https://finance.yahoo.com --max-time 5
 
 네트워크 차단 시 처리:
 1. 모든 파일 헤더 `collection_status: FAILED` 기록
-2. _index.md P0 섹션에 해당 파일 추가
+2. knowledge-base/_index.md P0 섹션에 해당 파일 추가
 3. 사용자에게 환경 확인 요청 후 종료 (수집 시도하지 않음)
 
 ---
@@ -194,7 +194,7 @@ knowledge-db/market/
 4. knowledge-db/market/snapshots_{YYYY}.jsonl에 신규 레코드 append
    (기존 N/A 레코드는 덮어쓰지 않음 — append only 원칙)
 
-5. _index.md P0 섹션 해당 행 제거 (아래 참조)
+5. knowledge-base/_index.md P0 섹션 해당 행 제거 (아래 참조)
 
 6. Git commit:
    "fix(market): 재수집 성공 — {파일명} {YYYY-MM-DD}"
@@ -202,9 +202,9 @@ knowledge-db/market/
 
 ---
 
-## _index.md P0 섹션 자동 갱신 [v3.2 신규]
+## knowledge-base/_index.md P0 섹션 자동 갱신 [v3.2 신규]
 
-수집 완료 후 **반드시** _index.md의 "P0 — 즉시 조치 필요" 섹션을 갱신한다.
+수집 완료 후 **반드시** knowledge-base/_index.md의 "P0 — 즉시 조치 필요" 섹션을 갱신한다.
 
 ```
 처리 규칙:
@@ -213,8 +213,8 @@ knowledge-db/market/
   부분 성공  → "부분 수집 — {미수집 항목}" 상태로 갱신
 
 수정 범위:
-  ✅ _index.md "P0 — 즉시 조치 필요" 섹션의 market/ 관련 행만
-  ❌ _index.md 다른 섹션 수정 금지
+  ✅ knowledge-base/_index.md "P0 — 즉시 조치 필요" 섹션의 market/ 관련 행만
+  ❌ knowledge-base/_index.md 다른 섹션 수정 금지
 ```
 
 ---
@@ -238,7 +238,7 @@ knowledge-db/market/
 ✅ 수집 성공: {N}개 파일
 ⛔ 수집 실패: {N}개 파일 (사유 명시)
 
-📋 _index.md P0 갱신:
+📋 knowledge-base/_index.md P0 갱신:
   제거된 항목: {N}건 (재수집 성공)
   유지된 항목: {N}건 (재수집 실패)
 
@@ -257,7 +257,7 @@ knowledge-db/market/
 3. **웹검색 예산**: 최대 20회. 초과 시 자동 중단
 4. **knowledge-db/ 무결성**: append only, 수정·삭제 금지, 연도별 자동 분리
 5. **13F 시차 고지**: 반드시 "기준일/공시일" 분리. "현재 보유 중" 표현 금지
-6. **_index.md 보호**: P0 섹션 내 market/ 관련 행만 수정 [v3.2]
+6. **knowledge-base/_index.md 보호**: P0 섹션 내 market/ 관련 행만 수정 [v3.2]
 7. 웹검색 실패 시 최대 2회 재시도 → "미수집" 표기
 8. 동일 검색 3회 반복 시 자동 중단
 9. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
@@ -269,9 +269,9 @@ knowledge-db/market/
 | `reference/source_registry.md` | 37개 소스 목록·태그·접근성 |
 | `reference/guru_watchlist.md` | 거물 8인 프로필·트래킹 항목 |
 | `reference/rules_and_constraints.md` | #1 역류금지, #5 출처필수, #9 13F시차, #28 교차검증, #29 stale한계 |
-| `_index.md` | KB 현재 상태 파악 (P0 항목 확인) [v3.2] |
+| `knowledge-base/_index.md` | KB 현재 상태 파악 (P0 항목 확인) [v3.2] |
 
 ## Git 규칙
 
 main 직접 push.
-`git add knowledge-base/market/ knowledge-db/market/ _index.md && git commit -m "market data snapshot: {YYYY-MM-DD}"`
+`git add knowledge-base/market/ knowledge-db/market/ knowledge-base/_index.md && git commit -m "market data snapshot: {YYYY-MM-DD}"`
