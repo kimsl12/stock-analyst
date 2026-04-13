@@ -5,7 +5,7 @@ description: |
   including earnings trends, profitability metrics, valuation, target price calculation 
   (DCF, relative valuation, SOTP), and scenario analysis. 
   Triggers: 재무분석, 실적추이, 수익성, 밸류에이션, 목표주가, PER, PBR, ROE, DCF.
-maxTurns: 12
+maxTurns: 15
 model: opus
 tools: Read, Write, Bash, Grep, Glob
 ---
@@ -24,11 +24,12 @@ tools: Read, Write, Bash, Grep, Glob
 **이 에이전트의 분석 결과는 반드시 파일로 저장해야 한다.**
 텍스트로만 반환하고 파일을 안 만들면 실패로 간주된다.
 
-### 파일 쓰기 방법 (강제)
-- **반드시 Write 도구를 사용하여 파일을 생성/저장한다.**
-- 절대 bash heredoc, echo 리디렉션, cat <<EOF, python 스크립트로 파일을 쓰지 않는다.
+### 파일 쓰기 방법 (강제) [v2.6]
+- **Write 도구를 최우선으로 즉시 사용한다.** bash heredoc, echo, cat, python 시도 자체를 금지.
+- 분석이 완료되면 다른 작업 없이 곧바로 Write를 실행한다 (턴 소진 방지).
 - 리드 에이전트가 빈 파일을 미리 생성해 두므로, Read로 먼저 읽은 후 Write로 전체 내용을 덮어쓴다.
-- Write 실패 시: 분석 결과 텍스트를 반환 메시지에 포함하여 리드가 직접 저장할 수 있게 한다.
+- **턴 배분 규칙**: 전체 턴의 마지막 3턴은 반드시 파일 저장(Read→Write→확인)에 예약한다.
+- Write 실패 시: 분석 결과 텍스트를 반환 메시지에 전문 포함하여 리드가 직접 저장할 수 있게 한다.
 
 ```
 저장 경로: analysis/{종목코드}_{종목명}_financial.md
@@ -236,13 +237,11 @@ tools: Read, Write, Bash, Grep, Glob
 - "이 성장률이 달성된 과거 사례가 있는가?" (동종업종 포함)
 - "달성 실패 시 밸류에이션 영향" (Bear Case에 반영)
 
-### KB 참조 [v3.0]
-- **knowledge-base/ 폴더의 파일을 먼저 읽고** 분석에 활용한다.
-- **★ CURRENT 데이터만 사용한다.** KB 파일에는 CURRENT만 존재하며, 이력은 별도 저장소(knowledge-db/)에 보관된다.
-- ✅ **읽기 가능: knowledge-base/market/** (일별 시장 데이터, 상관관계, 거물 투자자 참조 — 종목 현재가 맥락 확인용)
-- KB 파일에 있는 CURRENT 데이터(산업 통계, 컨센서스, 매크로, 시장)는 웹검색 없이 신뢰하고 사용한다.
+### KB 참조 [v3.1]
+- **KB 직접 탐색 금지.** knowledge-base/ 폴더를 직접 Glob/Read하지 않는다 (턴 낭비 방지).
+- 리드 에이전트가 프롬프트에 전달한 데이터 파일(analysis/ 내)만 읽고 분석한다.
+- 리드가 KB 데이터를 data.md에 미리 통합해 두므로, 별도 KB 조회 불필요.
 - KB 파일을 수정하지 않는다 (읽기 전용).
-- KB 데이터를 사용한 경우 출처를 "[KB: industry/semiconductor.md]" 또는 "[KB: market/daily_snapshot.md]" 형태로 표기한다.
 
 ## 안전장치 (모든 서브에이전트 공통)
 
