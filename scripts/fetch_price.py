@@ -213,13 +213,154 @@ def generate_price_md(data: dict) -> str:
     return "\n".join(line for line in lines if line is not None)
 
 
+# === 시장 지수 일괄 수집 (--market 모드) [v1.1] ===
+
+MARKET_TICKERS = {
+    # 미국 지수
+    "^GSPC": "S&P 500",
+    "^IXIC": "NASDAQ",
+    "^DJI": "Dow Jones",
+    "^VIX": "VIX",
+    # 아시아 지수
+    "^KS11": "KOSPI",
+    "^KQ11": "KOSDAQ",
+    "^N225": "Nikkei 225",
+    "^HSI": "Hang Seng",
+    # 환율/원자재/금
+    "DX-Y.NYB": "DXY (Dollar Index)",
+    "GC=F": "Gold Futures",
+    "CL=F": "WTI Crude Oil",
+    "BTC-USD": "Bitcoin",
+    "ETH-USD": "Ethereum",
+    # 채권
+    "^TNX": "US 10Y Yield",
+    "^TYX": "US 30Y Yield",
+    # 환율
+    "KRW=X": "USD/KRW",
+    "JPY=X": "USD/JPY",
+    "CNY=X": "USD/CNY",
+}
+
+
+def fetch_market_snapshot() -> list:
+    """시장 지수 일괄 수집 → daily_snapshot.md 갱신용"""
+    import yfinance as yf
+
+    results = []
+    for ticker, name in MARKET_TICKERS.items():
+        try:
+            stock = yf.Ticker(ticker)
+            hist = stock.history(period="5d")
+            if hist.empty:
+                results.append({"ticker": ticker, "name": name, "error": "No data"})
+                continue
+
+            latest = hist.iloc[-1]
+            prev = hist.iloc[-2] if len(hist) >= 2 else None
+            price = round(float(latest["Close"]), 2)
+            change = round((price / float(prev["Close"]) - 1) * 100, 2) if prev is not None else None
+
+            results.append({
+                "ticker": ticker,
+                "name": name,
+                "price": price,
+                "change_pct": change,
+                "date": hist.index[-1].strftime("%Y-%m-%d"),
+            })
+        except Exception as e:
+            results.append({"ticker": ticker, "name": name, "error": str(e)})
+
+    return results
+
+
+def generate_snapshot_md(results: list) -> str:
+    """시장 스냅샷을 daily_snapshot.md 형식으로 변환"""
+    today = datetime.now().strftime("%Y-%m-%d")
+    lines = [
+        "---",
+        f"updated: {today}",
+        f"valid_until: {(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')}",
+        "category: market",
+        "collection_status: SUCCESS",
+        "confidence: high",
+        f"last_synced_from_db: {today}",
+        "---",
+        "",
+        "# Daily Market Snapshot",
+        "",
+        f"## CURRENT ({today})",
+        "",
+        "### 미국 지수",
+        "| 지수 | 종가 | 등락률 | 기준일 |",
+        "|------|------|--------|--------|",
+    ]
+
+    sections = {
+        "미국 지수": ["^GSPC", "^IXIC", "^DJI", "^VIX"],
+        "아시아 지수": ["^KS11", "^KQ11", "^N225", "^HSI"],
+        "환율": ["DX-Y.NYB", "KRW=X", "JPY=X", "CNY=X"],
+        "원자재/금": ["GC=F", "CL=F"],
+        "채권 수익률": ["^TNX", "^TYX"],
+        "크립토": ["BTC-USD", "ETH-USD"],
+    }
+
+    lookup = {r["ticker"]: r for r in results}
+    first_section = True
+
+    for section_name, tickers in sections.items():
+        if not first_section:
+            lines.append(f"\n### {section_name}")
+            lines.append("| 항목 | 종가 | 등락률 | 기준일 |")
+            lines.append("|------|------|--------|--------|")
+        first_section = False
+
+        for t in tickers:
+            r = lookup.get(t, {})
+            if "error" in r:
+                lines.append(f"| {r.get('name', t)} | N/A | N/A | N/A |")
+            else:
+                chg = f"{r['change_pct']:+.2f}%" if r.get("change_pct") is not None else "N/A"
+                lines.append(f"| {r['name']} | {r['price']:,.2f} | {chg} | {r.get('date', 'N/A')} |")
+
+    return "\n".join(lines)
+
+
 def main():
     if len(sys.argv) < 2:
-        print("사용법: python scripts/fetch_price.py <ticker> [<ticker2> ...]")
-        print("예시:   python scripts/fetch_price.py 010120 SNDK 000660")
+        print("사용법:")
+        print("  python scripts/fetch_price.py <ticker> [<ticker2> ...]  # 개별 종목")
+        print("  python scripts/fetch_price.py --market                  # 시장 지수 일괄")
+        print("  python scripts/fetch_price.py --market --save           # 시장 지수 + KB 저장")
         sys.exit(1)
 
-    tickers = sys.argv[1:]
+    # --market 모드: 시장 지수 일괄 수집
+    if "--market" in sys.argv:
+        print("Fetching market snapshot...")
+        results = fetch_market_snapshot()
+
+        success = sum(1 for r in results if "error" not in r)
+        fail = sum(1 for r in results if "error" in r)
+        print(f"\nCollected: {success}/{len(results)} (failed: {fail})")
+
+        md_content = generate_snapshot_md(results)
+        print(f"\n{md_content}")
+
+        if "--save" in sys.argv:
+            import os
+            kb_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                                   "knowledge-base", "market", "daily_snapshot.md")
+            with open(kb_path, "w", encoding="utf-8") as f:
+                f.write(md_content)
+            print(f"\nSaved to {kb_path}")
+
+        print(f"\n{'='*50}")
+        print("JSON_OUTPUT_START")
+        print(json.dumps(results, ensure_ascii=False, indent=2))
+        print("JSON_OUTPUT_END")
+        return
+
+    # 개별 종목 모드
+    tickers = [t for t in sys.argv[1:] if not t.startswith("--")]
     results = []
 
     for ticker in tickers:
@@ -236,7 +377,6 @@ def main():
             results.append(error_data)
             print(f"\n[ERROR] {ticker}: {e}", file=sys.stderr)
 
-    # JSON 출력 (파이프라인 연동용)
     print(f"\n{'='*50}")
     print("JSON_OUTPUT_START")
     print(json.dumps(results, ensure_ascii=False, indent=2))

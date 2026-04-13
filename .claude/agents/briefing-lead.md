@@ -116,6 +116,36 @@ trigger: {브리핑 모드} 시작
 
 ---
 
+## 서브에이전트 스캐폴딩 + 검증 [v3.5 신규]
+
+### 스캐폴딩 (서브에이전트 호출 전)
+
+서브에이전트(global-macro-analyst, correlation-monitor) 호출 전에
+빈 산출물 파일을 미리 생성한다:
+
+```bash
+touch analysis/briefing/global_macro_{YYYYMMDD}.md
+touch analysis/briefing/correlation_{YYYYMMDD}.md
+```
+
+### 검증 (서브에이전트 완료 후)
+
+서브에이전트 완료 후 파일 크기를 확인한다:
+
+```
+파일 > 0 bytes → 정상 (서브에이전트 Write 성공)
+파일 = 0 bytes → 실패 → 서브에이전트 반환 메시지에서 분석 추출하여 리드가 Write
+반환 메시지에도 분석 없음 → 리드가 KB 기반으로 직접 작성
+```
+
+### 시장 데이터 선행 수집
+
+`/모닝브리핑`, `/주간리포트` 실행 시 market-data-collector 호출 전에
+`python scripts/fetch_price.py --market --save`를 먼저 실행하여
+daily_snapshot.md를 최신화한다 (FAILED 방지).
+
+---
+
 ## 명령별 호출 순서 (절대 준수)
 
 ### `/모닝브리핑` — MODULE A
