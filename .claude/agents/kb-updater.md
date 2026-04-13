@@ -6,7 +6,7 @@ description: |
   갱신 완료 후 wiki-linter cross_check 자동 호출 및 _index.md 이력 갱신. [v3.2]
   리드 에이전트가 Phase 0-A에서 자동 호출하거나, /KB업데이트·/KB수정 커맨드로 수동 실행.
   Triggers: KB 업데이트, 산업 데이터 갱신, 매크로 업데이트, KB 수정.
-maxTurns: 15
+maxTurns: 30
 model: opus
 tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
 mcpServers:
@@ -168,21 +168,72 @@ last_synced_from_db: {오늘}
 
 ---
 
-## 워크플로 (v3.2)
+## 워크플로 (v3.3)
+
+### ★ 서브섹터별 미니사이클 패턴 [v3.3 핵심 변경]
+
+서브섹터가 여러 개일 때, 전체를 검색한 뒤 마지막에 일괄 저장하지 **않는다**.
+**각 서브섹터를 검색 → 즉시 저장하는 미니사이클**로 처리한다.
+
+이유:
+- 검색 15회 후 일괄 Write 시, 초반 검색 데이터가 컨텍스트에서 밀려 품질 저하
+- 미니사이클은 데이터가 신선할 때 확정 → 환각/누락 방지
+- 사이클 완료 후 해당 검색 결과를 잊어도 무관 (파일에 확정됨)
 
 ```
-Step 1: Read reference/rules_and_constraints.md
-Step 2: Read _index.md (KB 현재 상태 파악)        ← v3.2 추가
-Step 3: knowledge-db/ 기존값 확인
-Step 4: 웹검색 수집 (최대 10회)
-Step 5: 이상치 검증
-Step 6: knowledge-db/ append
-Step 7: knowledge-base/ CURRENT 갱신
-Step 7.5: wiki-linter cross_check 호출 [v3.2 신규]
-Step 7.6: _index.md 업데이트 이력 갱신 [v3.2 신규]
-Step 8: changelog append
-Step 9: 사용자 보고
-Step 10: git commit/push
+[미니사이클 구조]
+
+Step 1: Read(기존 KB 파일) — 1회만
+
+서브섹터 A 사이클:
+  Step 2a: WebSearch(서브섹터A, 3~4회)
+  Step 3a: Bash(knowledge-db/ jsonl append — 서브섹터A 결과)
+  Step 4a: Edit(knowledge-base/ §서브섹터A 섹션 갱신)
+
+서브섹터 B 사이클:
+  Step 2b: WebSearch(서브섹터B, 3~4회)
+  Step 3b: Bash(knowledge-db/ jsonl append)
+  Step 4b: Edit(knowledge-base/ §서브섹터B 섹션 갱신)
+
+... (서브섹터 수만큼 반복) ...
+
+마무리:
+  Step 5: changelog append (1회)
+  Step 6: _index.md 이력 갱신 (1회)
+  Step 7: 사용자 보고
+```
+
+### 턴 배분 기준
+
+```
+서브섹터 1개당: 검색 3~4회 + jsonl 1회 + Edit 1회 = 5~6턴
+서브섹터 4개: 5~6 × 4 = 20~24턴
+초기 Read + 마무리: 3~4턴
+합계: 23~28턴 (maxTurns 30 이내)
+```
+
+### git은 리드가 처리
+
+이 에이전트는 git commit/push를 실행하지 **않는다**.
+파일 저장까지만 수행하고, 리드 에이전트(또는 /KB업데이트 커맨드 호출자)가
+완료 후 git add → commit → push를 실행한다.
+
+### 기존 Step 매핑 (참조용)
+
+```
+[기존]                          [v3.3]
+Step 1: Read rules              → 삭제 (턴 절약)
+Step 2: Read _index.md          → Step 1에 통합
+Step 3: knowledge-db 확인       → Step 1에 통합
+Step 4: 웹검색 (10회)           → 미니사이클 Step 2x (서브섹터별 3~4회)
+Step 5: 이상치 검증             → 미니사이클 Step 3x에 통합
+Step 6: knowledge-db append     → 미니사이클 Step 3x (즉시 append)
+Step 7: knowledge-base 갱신     → 미니사이클 Step 4x (즉시 Edit)
+Step 7.5: wiki-linter           → 삭제 (턴 절약, 리드가 별도 호출)
+Step 7.6: _index.md 갱신        → Step 6
+Step 8: changelog               → Step 5
+Step 9: 사용자 보고             → Step 7
+Step 10: git commit/push        → 삭제 (리드가 처리)
 ```
 
 ### Step 7.5: wiki-linter cross_check 자동 호출 [v3.2 신규]
@@ -250,13 +301,15 @@ _index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 
 ## 검색 전략
 
-### 예산: 최대 10회
+### 예산: 서브섹터당 3~4회, 총 최대 16회
 
 ```
-산업 KB: 5~7회 | 매크로 KB: 3~5회 | 검증: 1~2회
+미니사이클당: 3~4회 (서브섹터 1개)
+서브섹터 4개: 12~16회
+매크로 KB (서브섹터 없음): 8~10회
 ```
 
-이벤트 몰린 날 매크로 7회까지 허용 (산업 줄여 총 10회 유지).
+서브섹터가 1~2개면 각 4~5회까지 허용 (총 10회 유지).
 
 ### 원칙
 
@@ -277,7 +330,8 @@ _index.md의 "KB 업데이트 이력" 섹션에 1행 append:
 6. 동일 작업 3회 반복 시 자동 중단
 7. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
 
-## Git 규칙
+## Git 규칙 [v3.3]
 
-main 직접 push. PR 만들지 않음.
-`git add knowledge-base/ knowledge-db/ _index.md && git commit -m "KB 업데이트: {섹터명} - {YYYY-MM-DD}"`
+**이 에이전트는 git commit/push를 실행하지 않는다.**
+파일 저장(Write/Edit/Bash append)까지만 수행하고 종료한다.
+git은 리드 에이전트 또는 /KB업데이트 커맨드 호출자가 처리한다.
