@@ -1,4 +1,4 @@
-# 종목분석 AI 에이전트 v3.1 (GitHub Pages 리포트 배포)
+# 종목분석 AI 에이전트 v3.2 (LLM Wiki 전환)
 
 > 이 README는 `.claude/agents/` 디렉토리 안내용. 시스템 전체 README 는 저장소 루트의 `README.md` 참조.
 
@@ -18,14 +18,43 @@
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.1** | **2026-04-09** | **GitHub Pages 자동 배포 + 리포트 열람 링크 시스템 + 비상장 기업 분석 지원** |
-| v3.0 | 2026-04-07 | 검수 결과 18 FAIL 정정 — 명세대로 5 브리핑 에이전트 + 10 명령 + KB 헤더 + performance KB 재구현 (PR #17 + hotfix) |
+| **v3.2** | **2026-04-13** | **LLM Wiki 전환 — wiki-linter 신설 + _index.md Wiki Index 재작성 + KB 피드백 루프 (scorecard-strategist) + Phase 0-LINT + /KB점검 명령어** |
+| v3.1 | 2026-04-09 | GitHub Pages 자동 배포 + 리포트 열람 링크 시스템 + 비상장 기업 분석 지원 |
+| v3.0 | 2026-04-07 | 검수 결과 18 FAIL 정정 — 명세대로 5 브리핑 에이전트 + 10 명령 + KB 헤더 + performance KB 재구현 |
 | v2.4 | 2026-04-07 | 브리핑 시스템 v3.4 통합 1차 시도 (명세 미부합 — v3.0 으로 재구현됨) |
 | v2.3 | 2026-04-06 | 데이터 흐름 전면 개편 + 차트 템플릿 + 해외 종목 지원 + 가격 검증 |
 | v2.2 | 2026-04-05 | ETF 분석 + 모델 최적화 + 장애 대응 |
 | v2.1 | 2026-04-05 | ATR 손절/목표가 + 가중 스코어카드 + 슬래시 명령어 |
 | v2.0 | 2026-04-05 | 9개 에이전트 체계 + DART API |
 | v1.0 | 2026-04-05 | 초기 6개 에이전트 |
+
+---
+
+## v3.2 핵심 — LLM Wiki 원칙 적용
+
+이 시스템은 Andrej Karpathy의 LLM Wiki 패턴을 멀티에이전트 투자분석 시스템에 적용한다.
+
+### 3계층 단방향 데이터 흐름
+
+```
+knowledge-db/         ← raw/ (불변 원본, append-only)
+      ↓ kb-updater 컴파일
+knowledge-base/       ← wiki/ (LLM이 소유·갱신, CURRENT만 유지)
+      ↓ 에이전트가 읽음
+analysis/ + reports/  ← 질의 결과
+      ↓ scorecard-strategist KB 피드백 루프 [v3.2 신규]
+knowledge-base/ 강화  ← 복리 지식 누적
+```
+
+### LLM Wiki 매핑
+
+| Karpathy 원칙 | 이 시스템 구현 | v3.2 상태 |
+|---|---|---|
+| `raw/` 불변 원본 | `knowledge-db/` append-only | ✅ 기존 |
+| `wiki/` LLM 소유 | `knowledge-base/` CURRENT | ✅ 기존 |
+| `index.md` 카탈로그 | `_index.md` Wiki Index | ✅ v3.2 재작성 |
+| Lint 작업 | `wiki-linter` 에이전트 | ✅ v3.2 신규 |
+| Query→Wiki 피드백 | `scorecard-strategist` KB 루프 | ✅ v3.2 신규 |
 
 ---
 
@@ -38,14 +67,14 @@
 
 ### 🅱️ 브리핑 파이프라인 (v3.0 신규)
 글로벌 매크로·크로스에셋 브리핑 자동 생성. 매수·매도 추천 없이 **관찰·해석·시나리오만**.
-10개 슬래시 명령으로 모듈별 실행. `briefing-lead` 가 오케스트레이터.
+슬래시 명령으로 모듈별 실행. `briefing-lead` 가 오케스트레이터.
 
 ---
 
 ## 디렉토리 구조
 
 ```
-.claude/agents/                                ← 16개 에이전트 (종목 9 + 리드 1 + 브리핑 5 + 공용 1)
+.claude/agents/                                ← 17개 에이전트 (종목 9 + 리드 1 + 브리핑 5 + 공용 2)
 ├── README.md                                  ← 본 파일
 │
 ├── stock-analyst-lead.md                      ← 양 파이프라인 분기 리드 (opus)
@@ -57,19 +86,20 @@
 │   ├── business-analyst.md                    ← 산업·경쟁 (sonnet, 검색금지)
 │   ├── momentum-analyst.md                    ← 가격 모멘텀 (sonnet, 검색금지)
 │   ├── risk-analyst.md                        ← Devil's advocate (sonnet, 검색금지)
-│   ├── scorecard-strategist.md                ← 10항목 종합 평점 (opus, 검색금지)
+│   ├── scorecard-strategist.md                ← 10항목 종합 평점 + KB 피드백 루프 (opus) [v3.2]
 │   ├── etf-analyst.md                         ← ETF 단독 분석 (opus, 검색5회)
 │   └── report-generator.md                    ← HTML 리포트 (sonnet, 검색금지)
 │
-├── (브리핑 5개, v3.0 신규 — 사용자 결정으로 전부 Opus)
-│   ├── briefing-lead.md                       ← 오케스트레이터 (opus) — 10 명령 진입점, debate/contrarian-card, 자동 commit/push
-│   ├── market-data-collector.md               ← 시장 데이터 수집 (sonnet, 검색15~20회)
+├── (브리핑 5개, v3.0 신규 — 전부 Opus)
+│   ├── briefing-lead.md                       ← 오케스트레이터 (opus) — Phase 0-LINT 포함 [v3.2]
+│   ├── market-data-collector.md               ← 시장 데이터 수집 (sonnet, 검색15~20회) [v3.2]
 │   ├── global-macro-analyst.md                ← G-1~G-8 매크로 4축 (opus)
 │   ├── correlation-monitor.md                 ← 6 페어 Z-score + 서프라이즈 (sonnet, 검색금지)
 │   └── briefing-report-generator.md           ← HTML 다크 테마 리포트 (sonnet)
 │
-├── (공용 1개)
-│   └── kb-updater.md                          ← KB macro/ + industry/ 갱신 (sonnet, 양쪽 파이프라인 사용)
+├── (공용 2개) [v3.2: wiki-linter 추가]
+│   ├── kb-updater.md                          ← KB macro/ + industry/ 갱신 (sonnet) [v3.2]
+│   └── wiki-linter.md                         ← KB 건강 점검 전담 (sonnet) [v3.2 신규]
 │
 └── (보조 1개, .md 문서)
     └── stop-loss-rules.md                     ← ATR 손절/목표가 SSOT
@@ -77,33 +107,41 @@
 
 ---
 
-## 모델 배정 (v3.0)
+## 모델 배정 (v3.2)
 
 | 에이전트 | 모델 | 웹검색 | 비고 |
 |---|---|---|---|
 | `stock-analyst-lead` | **opus** | 판단 | 양 파이프라인 분기 리드 |
-| `data-collector` | sonnet | 12회 | 종목 데이터 수집 (KB market/ 읽기 v3.0) |
-| `company-overview` | sonnet | 금지 | 기업개요 + Moat (KB market/ 읽기 v3.0) |
+| `data-collector` | sonnet | 12회 | 종목 데이터 수집 |
+| `company-overview` | sonnet | 금지 | 기업개요 + Moat |
 | `financial-analyst` | **opus** | 금지 | DCF 등 재무 심층 |
 | `business-analyst` | sonnet | 금지 | 산업·경쟁 |
 | `momentum-analyst` | sonnet | 금지 | 가격 모멘텀 |
 | `risk-analyst` | sonnet | 금지 | Devil's advocate |
-| `scorecard-strategist` | **opus** | 금지 | 10항목 종합 평점 |
-| `etf-analyst` | **opus** | 5회 | ETF 단독 (KB market/ + industry/ 읽기 v3.0) |
+| `scorecard-strategist` | **opus** | 금지 | 10항목 종합 평점 + **KB 피드백 루프** [v3.2] |
+| `etf-analyst` | **opus** | 5회 | ETF 단독 분석 |
 | `report-generator` | sonnet | 금지 | HTML 리포트 |
-| `briefing-lead` ⭐ | **opus** | 판단 | 브리핑 오케스트레이터 (v3.0 신규) |
-| `market-data-collector` ⭐ | sonnet | 15~20회 | 시장 데이터 수집 (v3.0 신규) |
-| `global-macro-analyst` ⭐ | **opus** | 1~5회 | G-1~G-8 4축 분석 (v3.0 신규) |
-| `correlation-monitor` ⭐ | sonnet | 금지 | 6 페어 + 서프라이즈 (v3.0 신규) |
-| `briefing-report-generator` ⭐ | sonnet | 금지 | HTML 다크 테마 (v3.0 신규) |
-| `kb-updater` | sonnet | O | macro/ + industry/ 갱신 (양쪽 공용) |
+| `briefing-lead` ⭐ | **opus** | 판단 | 브리핑 오케스트레이터. **Phase 0-LINT 포함** [v3.2] |
+| `market-data-collector` ⭐ | sonnet | 15~20회 | 시장 데이터 수집. **FAILED 재수집 처리** [v3.2] |
+| `global-macro-analyst` ⭐ | **opus** | 1~5회 | G-1~G-8 4축 분석 |
+| `correlation-monitor` ⭐ | sonnet | 금지 | 6 페어 + 서프라이즈 |
+| `briefing-report-generator` ⭐ | sonnet | 금지 | HTML 다크 테마 |
+| `kb-updater` | sonnet | O | macro/ + industry/ 갱신. **Step 7.5~7.6 추가** [v3.2] |
+| `wiki-linter` 🆕 | sonnet | 금지 | **KB 건강 점검 전담. Phase 0-LINT 자동 실행** [v3.2 신규] |
 | `stop-loss-rules` | (.md SSOT) | — | ATR 시스템 문서 |
 
-> ⭐ = v3.0 신규. 명세는 mixed Opus/Sonnet 였으나 **사용자 결정으로 5개 모두 Opus 통일**.
+> ⭐ = v3.0 신규 / 🆕 = v3.2 신규
 
 ---
 
-## 슬래시 명령어 (총 15개)
+## 슬래시 명령어 (총 17개)
+
+### KB 갱신 (2개) [v3.2: /KB점검 추가]
+
+| 명령어 | 사용 예시 | 에이전트 | 설명 |
+|---|---|---|---|
+| `/KB업데이트` | `/KB업데이트 semiconductor` | kb-updater | 지정 섹터·토픽 웹검색으로 갱신 |
+| `/KB점검` | `/KB점검` | wiki-linter | **전체 KB 건강 점검. P0~P2 탐지 + 자동 수정 + _index.md 갱신** [v3.2 신규] |
 
 ### 종목 분석 (5개)
 
@@ -138,9 +176,8 @@
 삼성전자 분석해줘            → A 파이프라인
 오늘 모닝 브리핑              → B 파이프라인 (briefing-lead)
 글로벌 매크로 4축 분석해줘    → B 파이프라인 (briefing-lead → global-macro-analyst)
+KB 점검해줘                   → wiki-linter (full mode)
 ```
-
-stock-analyst-lead.md 의 Step -1 에서 키워드 감지 → 자동 분기.
 
 ---
 
@@ -166,21 +203,19 @@ stock-analyst-lead.md 의 Step -1 에서 키워드 감지 → 자동 분기.
 ```
 Phase 0-A: kb-updater (섹터·매크로 KB 최신화)
     ↓
-Phase 0-B: data-collector (웹검색 12회 → analysis/에 JSON, KB market/ 읽기 추가)
+Phase 0-B: data-collector (웹검색 12회 → analysis/에 JSON)
     ↓
 Phase 1: company-overview + financial-analyst + momentum-analyst (병렬, 검색0)
     ↓
 Phase 2: business-analyst + risk-analyst (순차, 검색0)
     ↓
-Phase 3: scorecard-strategist (10항목 종합)
+Phase 3: scorecard-strategist (10항목 종합 + KB 피드백 루프) [v3.2]
     ↓
 Phase 4: report-generator (chart_templates.py → reports/에 HTML)
     ↓
-gh-pages 자동 배포: report_template.py가 gh-pages 브랜치에 HTML push
+gh-pages 자동 배포 → GitHub Pages 링크 출력
     ↓
 Git: add reports/ → commit → pull --rebase → push
-    ↓
-사용자 보고: GitHub Pages 링크 출력 (https://kimsl12.github.io/stock-analyst/reports/...)
 ```
 
 ### ETF
@@ -191,30 +226,34 @@ Phase 0: data-collector → Phase 1: etf-analyst (단독, 검색5회) → Phase 
 
 ---
 
-## 브리핑 흐름 (v3.0)
+## 브리핑 흐름 (v3.2)
 
 ```
 사용자 → /{모듈명} → briefing-lead (오케스트레이터)
    ↓
+[Phase 0-LINT] wiki-linter (quick) ← v3.2 신규
+   → P0 경고 확인 → 계속 / 재수집 후 진행 / 중단
+   ↓
 [Phase 0-A] market-data-collector (--skip-collect 시 생략)
    → knowledge-base/market/ + knowledge-db/market/ 연도별 .md
+   → 수집 완료 후 _index.md P0 섹션 자동 갱신 [v3.2]
    ↓
-[Phase 0-B] global-macro-analyst + correlation-monitor (병렬, mode 차)
+[Phase 0-B] global-macro-analyst + correlation-monitor (병렬)
    → analysis/briefing/{global_macro,correlation}_*.md
    ↓
-[Phase 0-C] briefing-lead 종합 (직렬)
-   - debate-card 1건 이상 (보라)
-   - contrarian-card 1건 이상 (주황)
-   - 4종 모델 포트폴리오 방향 (해당 모듈)
-   - 13F 시차 경고 (거물 인용 시)
-   - 🔬 심층 분석 권장 종목 슬롯 (양방향 연계)
+[Phase 0-C] briefing-lead 종합
+   - debate-card / contrarian-card
+   - 4종 모델 포트폴리오 방향
+   - 13F 시차 경고
+   - 🔬 심층 분석 권장 종목 슬롯
    → analysis/briefing/lead_{type}_*.md
-   - knowledge-db/performance/2026_recommendations.md append
    ↓
-[Phase 0-D] briefing-report-generator
-   → reports/briefing/{type}_*.html (다크 테마)
+[Step 8.5] 2026_recommendations.md append
+[Step 8.6] _index.md "최근 핵심 인사이트" 갱신 ← v3.2 신규
    ↓
-[Phase 0-E] 자동 commit/push + 사용자 보고 (다운로드 가능 경로)
+[Phase 0-D] briefing-report-generator → reports/briefing/{type}_*.html
+   ↓
+[Phase 0-E] 자동 commit/push + 사용자 보고
 ```
 
 상세: `docs/briefing_pipeline.md`
@@ -252,42 +291,29 @@ Phase 0: data-collector → Phase 1: etf-analyst (단독, 검색5회) → Phase 
 
 | 상황 | 동작 |
 |---|---|
+| wiki-linter P0 감지 (브리핑 시작 전) | 사용자에게 경고 + 선택지 (재수집/강행/중단) [v3.2] |
 | 서브에이전트 실패 | 1회 재시도 → 포기 → 리드 직접 수행 |
 | 토큰 한도 | 전체 중단 → 수집 데이터로 축소 리포트 |
 | 2개+ 연속 실패 | 사용자에게 현황 보고 + 선택지(A/B/C) |
 | HTML 생성 실패 (종목) | 차트 없는 텍스트 HTML → .md만 저장 |
 | Phase 0-A 실패 (브리핑) | 파이프라인 중단 → 전일 KB 진행 여부 확인 |
 | Phase 0-B 일부 실패 (브리핑) | 해당 분석가만 1회 재호출 → 2회 연속 실패 시 중단 |
-| Phase 0-D HTML 실패 (브리핑) | `analysis/briefing/lead_*.md` 보존 + 사용자에게 경고 + git/push 진행 |
+| Phase 0-D HTML 실패 (브리핑) | `analysis/briefing/lead_*.md` 보존 + 경고 + git/push 진행 |
 | /풀브리핑 토큰 한도 | weekly → crypto → evening → morning 순서로 폴백 |
+| market KB FAILED (네트워크 차단) | P0 경고 기록 → 해당 브리핑 섹션 N/A 처리 → 재수집 유도 |
 
 ---
 
 ## GitHub Pages 배포 (v3.1)
 
-리포트 HTML은 `gh-pages` 브랜치를 통해 GitHub Pages로 자동 배포된다.
-
 - **URL**: `https://kimsl12.github.io/stock-analyst/reports/{파일명}.html`
 - **자동 배포**: `report_template.py`의 `generate_report()`가 완료 시 gh-pages에 자동 commit+push
-- **GitHub Actions**: `.github/workflows/deploy-reports.yml` — main/feature 브랜치에 reports/ 변경 시 gh-pages에 자동 동기화
-
-### 배포 흐름
-```
-generate_report() 호출
-  → reports/에 HTML 저장
-  → gh-pages 브랜치로 전환 → 파일 복사 → commit → push → 원래 브랜치 복귀
-  → GitHub Pages에서 즉시 접근 가능 (1~2분 딜레이)
-```
-
-### GitHub Actions 자동 동기화
-main 또는 feature 브랜치에서 `reports/**/*.html`이 변경되면,
-GitHub Actions가 자동으로 gh-pages 브랜치에 동기화한다.
-`report_template.py`의 자동 배포가 실패해도 Actions가 백업으로 동작.
+- **GitHub Actions**: `.github/workflows/deploy-reports.yml` — main/feature 브랜치 reports/ 변경 시 gh-pages 자동 동기화
 
 ---
 
 ## DART API
 
-- 인증키: `.claude/settings.json` (단일 위치 — `claude-settings.json` 중복은 v3.0 에서 제거)
+- 인증키: `.claude/settings.json`
 - 일일 한도: 10,000건
-- 해외 종목: Yahoo Finance / Investing.com / Macrotrends 로 대체
+- 해외 종목: Yahoo Finance / Investing.com / Macrotrends 대체

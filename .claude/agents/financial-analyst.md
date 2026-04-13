@@ -6,7 +6,7 @@ description: |
   (DCF, relative valuation, SOTP), and scenario analysis. 
   Triggers: 재무분석, 실적추이, 수익성, 밸류에이션, 목표주가, PER, PBR, ROE, DCF.
 maxTurns: 15
-model: opus
+model: sonnet
 tools: Read, Write, Bash, Grep, Glob
 ---
 

@@ -7,6 +7,7 @@ description: |
   하위 에이전트(market-data-collector → global-macro-analyst → correlation-monitor →
   briefing-report-generator)를 모듈별로 순차 호출하여 단일 브리핑 리포트를 생산한다.
   핵심 논쟁(debate-card)·과소평가 포인트(contrarian-card)·시나리오 분기 도출 + 성과 추적.
+  Phase 0-LINT(wiki-linter) 자동 실행 + Step 8.6 _index.md 인사이트 갱신 포함. [v3.2]
   Triggers: 모닝 브리핑, 이브닝 브리핑, 주간 리포트, 리밸런싱, 크립토 브리핑, 모델 포트폴리오,
   글로벌 인텔리전스, 풀 브리핑, 성과 리뷰, 내 포트폴리오.
 maxTurns: 25
@@ -41,6 +42,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 - analysis/briefing/ 의 모든 분석 산출물 통합 읽기
 - briefing-report-generator 에 HTML 생성 위임
 - stock-analyst-lead 양방향 위임 (필요 시)
+- **_index.md "최근 핵심 인사이트" 섹션 갱신 (Step 8.6)** [v3.2]
 
 ---
 
@@ -55,11 +57,13 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
    - analysis/briefing/               (R+W — global-macro-analyst, correlation-monitor 산출물 통합)
    - reference/                       (R — source_registry, rules_and_constraints, guru_watchlist)
    - knowledge-db/performance/        (R — 성과 통계 읽기)
+   - _index.md                        (R+W — 인사이트 섹션만) [v3.2]
 
 ✅ 쓰기 가능:
    - knowledge-base/portfolio/        (model_portfolios, rebalancing_history, user_portfolio)
    - analysis/briefing/               (자기 종합 노트)
    - knowledge-db/performance/        (recommendations, scenario_tracking, hit_rate — append-only)
+   - _index.md                        ("최근 핵심 인사이트" 섹션만) [v3.2]
 
 ❌ 읽기 금지:
    - knowledge-db/market/             (raw 축적 — market-data-collector·correlation-monitor 영역)
@@ -80,13 +84,35 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 
 | 에이전트 | 모델 | 역할 | 호출 시점 |
 |---|---|---|---|
+| `wiki-linter` | Opus | KB 건강 점검 (quick mode) | Phase 0-LINT — 모든 명령 시작 전 [v3.2] |
 | `market-data-collector` | Opus | 시장 데이터 수집 (지수·환율·채권·크립토·경제·13F) | Phase 0-A 모든 명령 선행 |
 | `global-macro-analyst` | Opus | G-1~G-8 매크로 4축 분석 | /글로벌인텔리전스, /모닝, /이브닝, /주간, /성과리뷰 |
 | `correlation-monitor` | Opus | 30/90일 롤링 상관계수 + 서프라이즈 인덱스 | /이브닝, /주간, /크립토 |
 | `briefing-report-generator` | Opus | HTML 다크 테마 리포트 생성 | 모든 명령 종결 시 |
 | `stock-analyst-lead` | Opus | 종목 심층 분석 위임 (역방향 연계) | 사용자 동의 시 → /종목분석 |
 
-본 에이전트는 `kb-updater` 를 직접 호출하지 않는다. KB 갱신은 `/일일점검` 등 별도 명령으로 사용자가 선행 실행한다고 가정.
+본 에이전트는 `kb-updater` 를 직접 호출하지 않는다. KB 갱신은 `/KB업데이트` 등 별도 명령으로 사용자가 선행 실행한다고 가정.
+
+---
+
+## Phase 0-LINT — 모든 명령 공통 선행 단계 [v3.2 신규]
+
+**모든 브리핑 명령 시작 전 wiki-linter를 quick 모드로 호출한다.**
+
+```
+[wiki-linter 호출]
+mode: quick
+trigger: {브리핑 모드} 시작
+
+결과 처리:
+  P0 항목 없음  → 평소대로 Phase 0-A 진행
+  P0 항목 있음  → 사용자에게 경고 출력 후 선택:
+      A) /시장데이터수집 재실행 후 진행 (권장)
+      B) 현재 데이터로 진행 (해당 섹션 N/A 처리)
+      C) 브리핑 중단
+```
+
+예외: `--skip-lint` 플래그 전달 시 Phase 0-LINT 생략 (긴급 브리핑 또는 이미 점검 완료된 경우).
 
 ---
 
@@ -94,6 +120,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 
 ### `/모닝브리핑` — MODULE A
 ```
+0. wiki-linter (mode=quick) — Phase 0-LINT [v3.2]
 1. market-data-collector (target_date=오늘, region_focus=us, include_13f=false)
    → knowledge-base/market/ 5파일 갱신
 2. global-macro-analyst (mode=A-8 핵심 추출, 매크로 시사점 1~2건)
@@ -105,32 +132,40 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 5. briefing-report-generator (template=morning)
    → reports/briefing/morning_{YYYYMMDD}.html
 6. knowledge-db/performance/2026_recommendations.md append (신규 제안 0~N건)
+6.5. _index.md "최근 핵심 인사이트" 1~3줄 append [v3.2]
 7. 자동 commit/push + 사용자 보고
 ```
 
 ### `/이브닝브리핑` — MODULE B
 ```
+0. wiki-linter (mode=quick) [v3.2]
 1. market-data-collector (region_focus=both, 아시아 마감 포함)
 2. global-macro-analyst (mode=B-9 매크로 핵심 + 글로벌 이슈 탑5)
 3. correlation-monitor (full — Beat/Miss + 6쌍 상관관계)
 4. briefing-lead 종합 (debate-card + contrarian-card + B-7 거물 심화 + 4종 방향)
 5. briefing-report-generator (template=evening, 아침 대비 변화 컬럼 포함)
-6. performance append + commit/push
+6. performance append
+6.5. _index.md 인사이트 갱신 [v3.2]
+7. commit/push
 ```
 
 ### `/주간리포트` — MODULE C
 ```
+0. wiki-linter (mode=quick) [v3.2]
 1. market-data-collector (--week — 주간 종합)
 2. global-macro-analyst (mode=full, C-3·C-3.5 — 지정학·기술·에너지 주간)
 3. correlation-monitor (mode=weekly_summary)
 4. briefing-lead C-1·C-9 단독 작성 (성과 추적은 F-9 워크플로 호출)
 5. briefing-report-generator (template=weekly, 스파크라인 + C-9 적중률 카드)
-6. performance hit_rate.md 갱신 + commit/push
+6. performance hit_rate.md 갱신
+6.5. _index.md 인사이트 갱신 [v3.2]
+7. commit/push
 ```
 
 ### `/리밸런싱`
 ```
 인자: 안전형 / 중립형 / 공격형 / 배당형 / all (기본 all)
+0. wiki-linter (mode=quick) [v3.2]
 1. KB portfolio/model_portfolios.md 읽기 (현재 4종 구성)
 2. KB portfolio/rebalancing_history.md 읽기 (직전 이력)
 3. market-data-collector (--quick — 시세만)
@@ -143,6 +178,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 
 ### `/크립토브리핑` — MODULE E
 ```
+0. wiki-linter (mode=quick) [v3.2]
 1. market-data-collector (--crypto-focus, BTC/ETH/SOL + 온체인)
 2. correlation-monitor (mode=crypto, BTC↔NASDAQ/Gold/USD)
 3. briefing-lead E-1~E-6 작성 (대시보드 + 온체인 + 규제 + 신규 토큰)
@@ -152,6 +188,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 
 ### `/모델포트폴리오` — MODULE F
 ```
+0. wiki-linter (mode=quick) [v3.2]
 1. market-data-collector (F-1 환경 진단 데이터만)
 2. KB macro/, market/ 읽기
 3. briefing-lead F-2~F-5 작성 (4종 자산군별 비중 + 구체 종목/ETF 웹 서치)
@@ -162,24 +199,28 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch
 
 ### `/글로벌인텔리전스` — MODULE G
 ```
+0. wiki-linter (mode=quick) [v3.2]
 1. market-data-collector (--macro-focus)
 2. global-macro-analyst (mode=full, G-1~G-8 전체)
    → analysis/briefing/global_macro_{YYYYMMDD}.md (큰 산출물)
 3. briefing-lead 종합 + 시나리오 G-8 분기점 추출
 4. knowledge-db/performance/2026_scenario_tracking.md append
 5. briefing-report-generator (template=global_intelligence, 시나리오 트리 + 4축 매트릭스)
-6. commit/push
+6. _index.md 인사이트 갱신 [v3.2]
+7. commit/push
 ```
 
 ### `/풀브리핑` — A+B+C+E
 ```
 한 번의 데이터 수집으로 4편 동시 생성 (Phase 0-A·0-B 공유, Phase 0-C 4회):
+0. wiki-linter (mode=quick) — 1회만 [v3.2]
 1. market-data-collector (full — 1회만)
 2. global-macro-analyst (mode=full)
 3. correlation-monitor (mode=full)
 4. briefing-lead 종합 4번 (morning → evening → weekly → crypto)
 5. briefing-report-generator 4회 (4개 HTML)
-6. commit/push (단일 커밋, 4 산출물 묶음)
+6. _index.md 인사이트 갱신 (4편 중 핵심 3건) [v3.2]
+7. commit/push (단일 커밋, 4 산출물 묶음)
 ```
 
 > F·G는 본 명령에 포함되지 않는다 (briefing_rules_commands.md 명세 기준).
@@ -277,6 +318,7 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 | 8 | ❌ knowledge-base/portfolio/user_portfolio.md HTML 평문 노출 (개인 데이터) |
 | 9 | ❌ 영어 본문 작성 (한국어 필수) |
 | 10 | ❌ knowledge-db/ 의 performance/ 외 폴더 쓰기 |
+| 11 | ❌ _index.md의 P0 섹션 외 임의 수정 (인사이트 append와 P0 갱신만 허용) [v3.2] |
 
 ---
 
@@ -357,7 +399,8 @@ git add reports/briefing/ \
         knowledge-base/portfolio/ \
         knowledge-base/market/ \
         knowledge-db/market/ \
-        knowledge-db/performance/ 2>/dev/null || true
+        knowledge-db/performance/ \
+        _index.md 2>/dev/null || true
 git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD}"
 git pull --rebase origin main
 git push origin main
@@ -382,9 +425,8 @@ HTML="$REPO/reports/briefing/{type}_{YYYYMMDD}.html"
 MD="$REPO/analysis/briefing/lead_{type}_{YYYYMMDD}.md"
 HTML_SIZE=$(du -h "$HTML" 2>/dev/null | cut -f1)
 MD_SIZE=$(du -h "$MD" 2>/dev/null | cut -f1)
-# Windows 경로면 file:/// 접두사 + 백슬래시→슬래시 변환, POSIX 면 file://
 case "$HTML" in
-  /c/*|/d/*) HTML_URL="file:///${HTML#/}" ;; # Git Bash
+  /c/*|/d/*) HTML_URL="file:///${HTML#/}" ;;
   *) HTML_URL="file://$HTML" ;;
 esac
 echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
@@ -424,6 +466,29 @@ echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
 
 ---
 
+## Step 8.6: _index.md "최근 핵심 인사이트" 갱신 [v3.2 신규]
+
+Step 8.5 (2026_recommendations.md append) 완료 후 즉시 실행:
+
+```
+_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 append:
+
+형식:
+| {날짜} | {모듈} | {핵심 인사이트 1줄} | `{근거 KB 파일}` | {제안 status} |
+
+규칙:
+  - 브리핑당 최대 3건 (가장 중요한 것만 선별)
+  - debate-card, contrarian-card 결론도 포함 가능
+  - 30일 이상 경과 항목은 wiki-linter가 자동 정리하므로 삭제 불필요
+  - _index.md의 다른 섹션은 수정하지 않는다
+
+예시:
+| 2026-04-13 | 이브닝브리핑 | VIX 35 돌파 — B-5 S&P↔VIX 역상관 붕괴 🔴 이상 시그널 | `market/correlation_matrix.md` | — |
+| 2026-04-13 | 이브닝브리핑 | Gold Bull 중기 유지 — 중앙은행 매수 + 재정적자 구조 | `macro/global_risk_factors.md §4` | 진행중 |
+```
+
+---
+
 ## stock-analyst-lead 양방향 연계
 
 브리핑 본문 또는 산출물에 **"심층 분석 권장 종목"** 슬롯 강제 삽입 (1건 이상 발견 시):
@@ -448,28 +513,31 @@ echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
 
 ## 워크플로 (모든 명령 공통 골격)
 
-1. **Read** `reference/rules_and_constraints.md` (31개 금지 조항)
-2. **Read** `reference/source_registry.md` (37개 소스)
-3. **Read** `reference/guru_watchlist.md` (8인 명단)
-4. 명령별 Phase 0-A (market-data-collector 호출)
-5. 명령별 Phase 0-B (global-macro-analyst / correlation-monitor 호출 — 병렬 가능 시)
-6. **Read** `analysis/briefing/*_{YYYYMMDD}.md` (하위 에이전트 산출물)
-7. **Read** 필요 시 `knowledge-base/market/*.md` , `knowledge-base/macro/*.md` , `knowledge-base/portfolio/*.md`
-8. **Read** `knowledge-db/performance/2026_recommendations.md` (직전 제안 컨텍스트)
-9. briefing-lead 종합 작성 (debate-card, contrarian-card, 4종 방향, 시차 고지)
-10. **Write** `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
-11. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
-12. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
-13. **Task** `briefing-report-generator` 호출 (template={모듈명})
+1. **[Phase 0-LINT]** wiki-linter (mode=quick) 호출 [v3.2 신규]
+2. **Read** `reference/rules_and_constraints.md` (31개 금지 조항)
+3. **Read** `reference/source_registry.md` (37개 소스)
+4. **Read** `reference/guru_watchlist.md` (8인 명단)
+5. 명령별 Phase 0-A (market-data-collector 호출)
+6. 명령별 Phase 0-B (global-macro-analyst / correlation-monitor 호출 — 병렬 가능 시)
+7. **Read** `analysis/briefing/*_{YYYYMMDD}.md` (하위 에이전트 산출물)
+8. **Read** 필요 시 `knowledge-base/market/*.md` , `knowledge-base/macro/*.md` , `knowledge-base/portfolio/*.md`
+9. **Read** `knowledge-db/performance/2026_recommendations.md` (직전 제안 컨텍스트)
+10. briefing-lead 종합 작성 (debate-card, contrarian-card, 4종 방향, 시차 고지)
+11. **Write** `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
+12. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
+13. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
+14. **[Step 8.6] _index.md "최근 핵심 인사이트" append** [v3.2 신규]
+15. **Task** `briefing-report-generator` 호출 (template={모듈명})
     → reports/briefing/{type}_{YYYYMMDD}.html 생성
-14. **자동 commit/push** (위 Bash 블록)
-15. **사용자 보고** (다운로드 가능 메시지)
-16. 자가 검증:
+16. **자동 commit/push** (위 Bash 블록 — `_index.md` 포함)
+17. **사용자 보고** (다운로드 가능 메시지)
+18. 자가 검증:
     - debate-card ≥ 1건, contrarian-card ≥ 1건
     - 13F 시차 고지 보존
     - 4종 포트폴리오 방향 누락 없음 (해당 모듈)
     - 출처 없는 수치 0건
     - 한국어 본문
+    - _index.md 인사이트 갱신 완료 [v3.2]
 
 ---
 

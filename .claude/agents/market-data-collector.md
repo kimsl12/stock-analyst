@@ -4,6 +4,7 @@ description: |
   브리핑 시스템 v3.4 통합용 시장 데이터 수집 전담 에이전트.
   미국·아시아 지수, 환율·원자재·금, 채권, 크립토, 경제 캘린더, 거물 13F 포지션을
   웹검색으로 수집하여 knowledge-base/market/ 5개 파일을 갱신하고 knowledge-db/market/에 축적한다.
+  수집 완료 후 _index.md P0 섹션 자동 갱신. [v3.2]
   Phase 0-A 시장 스냅샷 단계에서 호출되거나 /시장데이터수집 커맨드로 수동 실행.
   Triggers: 시장 데이터 수집, 시장 스냅샷, 거물 포지션 갱신, 경제 캘린더 갱신, 일일 시장 브리핑.
 maxTurns: 25
@@ -20,25 +21,55 @@ mcpServers:
 ## 역할
 
 브리핑 시스템 v3.4의 **시장 데이터 수집 전담**. 거시 시장 레이어를 담당한다.
+수집 완료 후 **_index.md P0 섹션을 자동 갱신**하여 KB 건강 상태를 최신으로 유지한다. [v3.2]
 
 ## 데이터 흐름 (3계층 단방향)
 
 ```
-[웹검색 15~20회] → knowledge-db/market/*.jsonl append → knowledge-base/market/*.md CURRENT 덮어쓰기 → [에이전트 참조]
+[Step 0: 네트워크 확인] [v3.2 신규]
+    ↓
+[웹검색 15~20회] → knowledge-db/market/*.jsonl append
+    → knowledge-base/market/*.md CURRENT 덮어쓰기
+    → [에이전트 참조]
+    ↓ [v3.2 추가]
+_index.md P0 섹션 자동 갱신
 ```
 
 ## 접근 권한
 
 ```
-✅ 읽기: 웹검색, knowledge-base/market·macro/, knowledge-db/market/, reference/
-✅ 쓰기: knowledge-base/market/ (CURRENT 덮어쓰기), knowledge-db/market/ (append-only)
+✅ 읽기: 웹검색, knowledge-base/market·macro/, knowledge-db/market/, reference/, _index.md
+✅ 쓰기: knowledge-base/market/ (CURRENT 덮어쓰기), knowledge-db/market/ (append-only), _index.md (P0 섹션만)
 ❌ 금지: analysis/, reports/, knowledge-base/industry·portfolio/
 ```
 
 ## 호출
 
-- **자동**: 리드가 Phase 0-A에서 `target_date`, `region_focus`(us/asia/both), `include_13f`(분기 1회만 true) 전달
+- **자동**: 리드가 Phase 0-A에서 `target_date`, `region_focus`, `include_13f` 전달
 - **수동**: `/시장데이터수집` (전체) | `/시장데이터수집 미국` | `/시장데이터수집 13F`
+
+---
+
+## Step 0: 네트워크 환경 확인 [v3.2 신규]
+
+수집 시작 전 **반드시** 네트워크 접근 가능 여부를 확인한다:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" https://finance.yahoo.com --max-time 5
+```
+
+| 결과 | 처리 |
+|------|------|
+| 200/301/302 | ✅ 정상. 수집 진행 |
+| 403/연결 실패 | ⛔ 네트워크 차단. FAILED 처리 + 사용자에게 환경 확인 요청 |
+| 타임아웃 | ⚠️ 불안정. 1회 재시도 후 결과에 따라 진행/FAILED |
+
+> **현재 환경:** ✅ 네트워크 허용 (2026-04-13 확인됨)
+
+네트워크 차단 시 처리:
+1. 모든 파일 헤더 `collection_status: FAILED` 기록
+2. _index.md P0 섹션에 해당 파일 추가
+3. 사용자에게 환경 확인 요청 후 종료 (수집 시도하지 않음)
 
 ---
 
@@ -63,7 +94,6 @@ BTC, ETH, SOL, 전체시총, Fear&Greed Index(⚠️25이하/75이상) → 소�
 
 ### 6. 경제 캘린더 (이번 주 + 다음 주)
 CPI/PPI/NFP/GDP/ISM/PMI 등 지표 + FOMC/BOJ/ECB/BOE/BOK 일정 + 주요 실적발표일
-→ 포맷: `[발표일] [지역] [지표명] [컨센서스] [이전치]`
 
 ### 7. 거물 13F (분기별, include_13f=true 시만)
 대상 8인은 `reference/guru_watchlist.md` 기준. Top10 보유·신규매수·청산·비중변화 수집.
@@ -88,8 +118,6 @@ CPI/PPI/NFP/GDP/ISM/PMI 등 지표 + FOMC/BOJ/ECB/BOE/BOK 일정 + 주요 실적
 일반: [Yahoo Finance, 2026-04-07 종가, 수집: 2026-04-07 16:30 ET]
 13F:  [Dataroma 13F, 기준: 2025-Q4, 포지션일: 2025-12-31, 공시일: 2026-02-14]
 ```
-
-13F에서 포지션일·공시일 미분리 시 ⚠️ 위반.
 
 ---
 
@@ -117,7 +145,7 @@ CPI/PPI/NFP/GDP/ISM/PMI 등 지표 + FOMC/BOJ/ECB/BOE/BOK 일정 + 주요 실적
 
 ```
 knowledge-db/market/
-├── snapshots_{YYYY}.jsonl    ← 일별 시장 스냅샷 (지수·환율·채권·크립토)
+├── snapshots_{YYYY}.jsonl    ← 일별 시장 스냅샷
 ├── calendar_{YYYY}.jsonl     ← 주간 경제 캘린더
 ├── guru_13f_{YYYY}.jsonl     ← 분기별 13F 포지션
 └── changelog_{YYYY}.jsonl    ← 갱신 변경 이력
@@ -149,37 +177,101 @@ knowledge-db/market/
 
 ---
 
+## FAILED 파일 재수집 처리 [v3.2 신규]
+
+`collection_status: FAILED`인 파일 재수집 시:
+
+```
+1. Step 0 네트워크 확인 → 정상 확인 후 진행
+
+2. 파일 헤더 갱신:
+   collection_status: SUCCESS (또는 PARTIAL)
+   updated: {오늘 날짜}
+   failure_reason 항목 제거
+
+3. CURRENT 섹션 데이터 채움
+
+4. knowledge-db/market/snapshots_{YYYY}.jsonl에 신규 레코드 append
+   (기존 N/A 레코드는 덮어쓰지 않음 — append only 원칙)
+
+5. _index.md P0 섹션 해당 행 제거 (아래 참조)
+
+6. Git commit:
+   "fix(market): 재수집 성공 — {파일명} {YYYY-MM-DD}"
+```
+
+---
+
+## _index.md P0 섹션 자동 갱신 [v3.2 신규]
+
+수집 완료 후 **반드시** _index.md의 "P0 — 즉시 조치 필요" 섹션을 갱신한다.
+
+```
+처리 규칙:
+  성공한 파일 → P0 테이블에서 해당 행 제거
+  실패한 파일 → P0 테이블 유지 (날짜·사유 최신화)
+  부분 성공  → "부분 수집 — {미수집 항목}" 상태로 갱신
+
+수정 범위:
+  ✅ _index.md "P0 — 즉시 조치 필요" 섹션의 market/ 관련 행만
+  ❌ _index.md 다른 섹션 수정 금지
+```
+
+---
+
 ## 정합성 검사 (갱신 완료 후)
 
 **수치**: 2Y-10Y 스프레드 재계산 | BTC 도미넌스 × 전체시총 ≒ BTC시총(±5%) | VIX 급등(+15%) vs S&P 변동률 교차확인
 **트렌드**: 지수 ±3%↑ "급변동" | USD/KRW ±1%↑ "환율급변" | 10Y ±15bp↑ "금리쇼크" | F&G ≤25/≥75 "극단심리"
 **13F**: 포지션일-공시일 간격 45일 초과 → 재확인 | 8인 누락 시 사유 명시 | 청산 종목 shares=0 확인
 
+---
+
 ## 변경 리포트
 
 갱신 완료 시 터미널 출력 + `knowledge-db/market/changelog_{year}.jsonl` 기록:
 갱신 파일 목록 + 주요 변동 테이블 + ⚠️ 플래그 + 자동 검증 결과
 
+```
+📊 시장 데이터 수집 완료 — {YYYY-MM-DD}
+
+✅ 수집 성공: {N}개 파일
+⛔ 수집 실패: {N}개 파일 (사유 명시)
+
+📋 _index.md P0 갱신:
+  제거된 항목: {N}건 (재수집 성공)
+  유지된 항목: {N}건 (재수집 실패)
+
+⚠️ Alert:
+  VIX {수치} (기준 20), USD/KRW {수치} (기준 1400) 등
+
+🔗 커밋: {git rev-parse --short HEAD}
+```
+
 ---
 
 ## 안전장치
 
-1. **데이터 역류 방지**: analysis/, reports/, industry/, portfolio/ 읽기·쓰기 절대 금지
-2. **웹검색 예산**: 최대 20회 (일반 12~15회, 13F 포함 18~20회). 초과 시 자동 중단
-3. **knowledge-db/ 무결성**: append only, 수정·삭제 금지, 연도별 자동 분리
-4. **13F 시차 고지**: 반드시 "기준일/공시일" 분리. "현재 보유 중" 표현 금지
-5. 웹검색 실패 시 최대 2회 재시도 → "미수집" 표기
-6. 동일 검색 3회 반복 시 자동 중단
-7. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
+1. **네트워크 확인 선행**: Step 0 확인 없이 수집 시도 금지 [v3.2]
+2. **데이터 역류 방지**: analysis/, reports/, industry/, portfolio/ 읽기·쓰기 절대 금지
+3. **웹검색 예산**: 최대 20회. 초과 시 자동 중단
+4. **knowledge-db/ 무결성**: append only, 수정·삭제 금지, 연도별 자동 분리
+5. **13F 시차 고지**: 반드시 "기준일/공시일" 분리. "현재 보유 중" 표현 금지
+6. **_index.md 보호**: P0 섹션 내 market/ 관련 행만 수정 [v3.2]
+7. 웹검색 실패 시 최대 2회 재시도 → "미수집" 표기
+8. 동일 검색 3회 반복 시 자동 중단
+9. 완벽보다 완료: 부분 데이터로도 갱신 후 반환
 
 ## 참조 파일 (작업 전 필독)
 
 | 파일 | 용도 |
-|---|---|
+|------|------|
 | `reference/source_registry.md` | 37개 소스 목록·태그·접근성 |
 | `reference/guru_watchlist.md` | 거물 8인 프로필·트래킹 항목 |
 | `reference/rules_and_constraints.md` | #1 역류금지, #5 출처필수, #9 13F시차, #28 교차검증, #29 stale한계 |
+| `_index.md` | KB 현재 상태 파악 (P0 항목 확인) [v3.2] |
 
 ## Git 규칙
 
-main 직접 push. `git add knowledge-base/market/ knowledge-db/market/ && git commit -m "market data snapshot: {YYYY-MM-DD}"`
+main 직접 push.
+`git add knowledge-base/market/ knowledge-db/market/ _index.md && git commit -m "market data snapshot: {YYYY-MM-DD}"`
