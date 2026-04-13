@@ -68,10 +68,13 @@ jobs:
           <h2>종목 분석</h2>
           INDEXEOF
 
-          # 종목분석 리포트 (왼쪽 컬럼)
-          for f in $(ls reports/*.html 2>/dev/null | sed -E 's|.*_([0-9]{8})\.html|\1 &|' | sort -k1,1rn -k2,2 | awk '{print $2}'); do
+          # 종목분석 리포트 (왼쪽 컬럼) — 날짜 내림차순 (최신순)
+          for f in $(ls reports/*.html 2>/dev/null | while read fp; do
+            d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
+            echo "${d:-00000000} $fp"
+          done | sort -k1,1rn | awk '{print $2}'); do
             fname=$(basename "$f")
-            fdate=$(echo "$fname" | grep -oP '[0-9]{8}' | head -1)
+            fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
             dispdate=""
             if [ -n "$fdate" ]; then
               dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
@@ -82,11 +85,14 @@ jobs:
 
           echo '</div><div class="col col-brief"><h2>브리핑</h2>' >> index.html
 
-          # 브리핑 리포트 (오른쪽 컬럼)
+          # 브리핑 리포트 (오른쪽 컬럼) — 날짜 내림차순 (최신순)
           if ls reports/briefing/*.html 1>/dev/null 2>&1; then
-            for f in $(ls reports/briefing/*.html 2>/dev/null | sed -E 's|.*_([0-9]{8})\.html|\1 &|' | sort -k1,1rn -k2,2 | awk '{print $2}'); do
+            for f in $(ls reports/briefing/*.html 2>/dev/null | while read fp; do
+              d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
+              echo "${d:-00000000} $fp"
+            done | sort -k1,1rn | awk '{print $2}'); do
               fname=$(basename "$f")
-              fdate=$(echo "$fname" | grep -oP '[0-9]{8}' | head -1)
+              fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
               dispdate=""
               if [ -n "$fdate" ]; then
                 dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
