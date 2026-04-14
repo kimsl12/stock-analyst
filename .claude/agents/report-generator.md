@@ -183,12 +183,32 @@ data = {
 generate_report(data, "reports/AAPL_Apple_20260406.html")
 ```
 
-### Step 3: 실행
+### Step 3: 실행 및 링크 출력
 
 ```bash
 python3 generate_{종목코드}.py
-ls -la reports/
 ```
+
+실행 결과에서 `REPORT_LINK_START` ~ `REPORT_LINK_END` 블록을 파싱하여 **REPORT_PREVIEW_URL** 값을 추출한다.
+
+리드에게 반환 시 반드시 아래 형식으로 클릭 가능한 링크를 포함한다:
+
+```
+리포트 생성 완료: {종목명} ({티커})
+- 크기: {SIZE}
+- 링크: [{파일명}]({REPORT_PREVIEW_URL})
+```
+
+**링크 규칙:**
+- REPORT_PREVIEW_URL이 있으면 → 해당 URL 사용 (GitHub Pages https:// URL)
+- REPORT_PREVIEW_URL이 없으면 → 평문 경로 제시 금지, 아래 Python으로 file:// URL 생성:
+  ```bash
+  python3 -c "
+  import urllib.parse, os
+  p = os.path.abspath('reports/{종목코드}_{종목명}_{YYYYMMDD}.html').replace('\\\\','/')
+  print('file:///' + urllib.parse.quote(p.lstrip('/'), safe='/:'))
+  "
+  ```
 
 **끝.** 이 3단계가 전부다.
 

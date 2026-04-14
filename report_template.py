@@ -385,7 +385,7 @@ def generate_report(data, output_path=None):
     try:
         remote = subprocess.check_output(["git", "remote", "get-url", "origin"], stderr=subprocess.DEVNULL).decode().strip()
         repo_root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"], stderr=subprocess.DEVNULL).decode().strip()
-        rel_path = os.path.relpath(abs_path, repo_root)
+        rel_path = os.path.relpath(abs_path, repo_root).replace("\\", "/")
 
         # remote URL → owner/repo 추출
         owner_repo = ""

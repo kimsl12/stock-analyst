@@ -468,10 +468,19 @@ HTML="$REPO/reports/briefing/{type}_{YYYYMMDD}.html"
 MD="$REPO/analysis/briefing/lead_{type}_{YYYYMMDD}.md"
 HTML_SIZE=$(du -h "$HTML" 2>/dev/null | cut -f1)
 MD_SIZE=$(du -h "$MD" 2>/dev/null | cut -f1)
-case "$HTML" in
-  /c/*|/d/*) HTML_URL="file:///${HTML#/}" ;;
-  *) HTML_URL="file://$HTML" ;;
-esac
+# ★ Python으로 URL 인코딩 — 한글 경로 포함 시 case/sed 방식은 깨짐
+HTML_URL=$(python3 -c "
+import urllib.parse, sys
+p = sys.argv[1].replace('\\\\', '/')
+url = 'file:///' + urllib.parse.quote(p.lstrip('/'), safe='/:')
+print(url)
+" "$HTML")
+MD_URL=$(python3 -c "
+import urllib.parse, sys
+p = sys.argv[1].replace('\\\\', '/')
+url = 'file:///' + urllib.parse.quote(p.lstrip('/'), safe='/:')
+print(url)
+" "$MD")
 echo "HTML_URL=$HTML_URL  SIZE=$HTML_SIZE"
 ```
 
