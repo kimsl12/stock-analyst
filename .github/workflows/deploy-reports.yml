@@ -75,12 +75,14 @@ jobs:
             echo "${d:-00000000} $fp"
           done | sort -k1,1rn | awk '{print $2}'); do
             fname=$(basename "$f")
+            # 날짜: 파일명에서 추출 (Actions 타임스탬프 아님)
             fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
             dispdate=""
             if [ -n "$fdate" ]; then
               dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
             fi
-            dispname=$(echo "$fname" | sed 's/_[0-9]\{8\}\.html//' | sed 's/\.html//' | sed 's/_/ /g')
+            # 파일명 그대로 표시 (.html 제거만)
+            dispname=$(echo "$fname" | sed 's/\.html$//')
             echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a><span class=\"date\">$dispdate</span></div>" >> index.html
           done
 
