@@ -71,6 +71,10 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-14 | global | 시나리오 | 비료-식량 인플레 2차 파동 (숨은 테마) | Bear (CPI +0.3~0.5%p 추가) | 중기 | 중간 | 비료 +172% YoY + 한국 호르무즈 경유 38.4% + FAO 식품지수 128.5pt. 2~3개월 시차 전이 [supply_chain.md, FAO] | reports/briefing/global_intelligence_20260414.html | 진행중 |
 | 2026-04-14 | global | 자산군 | Gold (GLD/IAU) 구조적 Bull 강화 | Bull ($5,000+ 전망) | 중기~장기 | 높음 | DXY 98.34+재정적자+중앙은행 매수 확산+지정학 삼중 지지. JPM $5,055(4Q26E) [J.P. Morgan, World Gold Council, SSGA] | reports/briefing/global_intelligence_20260414.html | 진행중 |
 | 2026-04-14 | global | 자산군 | SMR/원자력 인프라 | Bull (AI 전력 수요 구조적 수혜) | 장기 | 중간 | Southern Co $26.5B 원자력 대출+EU SMR 17~53GW 목표+데이터센터 전력 직접 연계 [ASME, EU Commission] | reports/briefing/global_intelligence_20260414.html | 진행중 |
+| 2026-04-14 | evening | 종목 | 한화에어로스페이스 (012450.KS) | Bull (3중 구조적 수혜) | 장기 | 높음 | KOSPI 6,000 주도+유럽 ReArm EUR 800B+호르무즈/북한 3중 모멘텀. 방산 수출 파이프라인 가속 [geopolitics.md §4~8, 세계일보] | reports/briefing/evening_20260414.html | 진행중 |
+| 2026-04-14 | evening | 종목 | S-Oil (010950.KS) / SK이노베이션 | Bull (정제마진 서프라이즈) | 단기~중기 | 중간 | WTI $97+정제마진 $18(역대급)+재고평가이익. Q1~Q2 실적 서프라이즈 가능. 봉쇄 해소 시 반락 리스크 [energy.md §1, geopolitics.md §9] | reports/briefing/evening_20260414.html | 진행중 |
+| 2026-04-14 | evening | 시나리오 | KOSPI 6,000 안착 조건 | Bull (조건부) | 단기~중기 | 중간 | 장중 6,026 터치 후 5,968 마감. 안착 조건: (1) 호르무즈 해소 또는 (2) Q2 반도체 실적 확인. 미충족 시 5,800~6,000 박스 [세계일보, 헤럴드경제] | reports/briefing/evening_20260414.html | 진행중 |
+| 2026-04-14 | evening | 이벤트 | IEA/WB/IMF "빠른 정상화 불가" -- 2차 인플레 리스크 | Bear (인플레 상방) | 중기 | 중간 | 3개 국제기관 동시 경고. 비료+연료 가격 구조적 고착. War Risk Premium+IRGC 기뢰(21건). 식품 CPI +0.3~0.5%p 추가 가능 [NBC News, supply_chain.md, FAO] | reports/briefing/evening_20260414.html | 진행중 |
 
 ---
 
