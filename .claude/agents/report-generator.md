@@ -25,33 +25,23 @@ tools: Read, Bash, Grep, Glob, Write
 작업 완료 후 반드시: ls -la reports/
 ```
 
-## 핵심 원칙 — report_template.py만 사용
+## ⛔ 핵심 원칙 — 파일 생성 도구 규칙
 
 ```
 ❌ 금지: HTML을 Write 도구로 직접 작성
-❌ 금지: Bash heredoc으로 HTML 작성
+❌ 금지: Bash heredoc으로 HTML 작성  (cat > file.html << 'EOF' 형태)
+❌ 금지: Bash heredoc으로 Python 작성 (cat > file.py  << 'EOF' 형태)
 ❌ 금지: CSS/SVG를 직접 코딩
-✅ 유일한 방법: Python 스크립트에서 report_template.py의 generate_report() 호출
+✅ 유일한 방법: Write 도구로 Python 스크립트(.py) 생성 → Bash로 실행
 ```
+
+**Python 파일 생성은 반드시 Write 도구만 사용한다.**
+Bash heredoc으로 Python 코드를 쓰면 f-string `{}`, `$` 등 특수문자 이스케이프 오류가 발생한다.
+Write 도구는 이스케이프 없이 Python 코드를 그대로 저장한다.
 
 ## 작업 순서 (이 순서를 정확히 따른다)
 
-### Step 1: analysis/ 파일 읽기
-
-```bash
-ls -la analysis/
-cat analysis/{종목코드}_{종목명}_data.json
-cat analysis/{종목코드}_{종목명}_company.md
-cat analysis/{종목코드}_{종목명}_financial.md
-cat analysis/{종목코드}_{종목명}_momentum.md
-cat analysis/{종목코드}_{종목명}_business.md
-cat analysis/{종목코드}_{종목명}_risk.md
-cat analysis/{종목코드}_{종목명}_scorecard.md
-```
-
-없는 파일은 건너뛴다.
-
-### Step 0: 환경 사전 확인 [v3.6 신규]
+### Step 0: 환경 사전 확인 [v3.6]
 
 스크립트 생성 전, 반드시 아래를 확인한다:
 
@@ -69,13 +59,30 @@ ls -la report_template.py
  main 브랜치에서 실행해야 합니다. 리드에게 브랜치 복구를 요청합니다."
 ```
 
-### Step 2: 데이터 딕셔너리 작성 → Python 스크립트 생성
+### Step 1: analysis/ 파일 읽기
+
+```bash
+ls -la analysis/
+cat analysis/{종목코드}_{종목명}_data.json
+cat analysis/{종목코드}_{종목명}_company.md
+cat analysis/{종목코드}_{종목명}_financial.md
+cat analysis/{종목코드}_{종목명}_momentum.md
+cat analysis/{종목코드}_{종목명}_business.md
+cat analysis/{종목코드}_{종목명}_risk.md
+cat analysis/{종목코드}_{종목명}_scorecard.md
+```
+
+없는 파일은 건너뛴다.
+
+### Step 2: 데이터 딕셔너리 작성 → Python 스크립트 생성 [Write 도구 필수]
 
 analysis/ 파일들에서 데이터를 추출하여 Python 딕셔너리로 정리한 뒤,
-generate_report()를 호출하는 짧은 Python 스크립트를 Write로 생성한다.
+generate_report()를 호출하는 짧은 Python 스크립트를 **Write 도구**로 생성한다.
+
+**Bash heredoc(cat > file.py << 'EOF')은 절대 금지** — Write 도구만 사용한다.
 
 ```python
-# generate_{종목코드}.py — Write로 이 파일만 생성하면 된다
+# generate_{종목코드}.py — Write 도구로 이 파일을 생성한다 (Bash heredoc 금지)
 import sys, os
 
 # ★ 절대경로 기반 import — gh-pages 등 환경 오염에도 안전
