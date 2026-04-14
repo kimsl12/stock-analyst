@@ -64,6 +64,9 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-13 | weekly | 종목 | NVDA | Bull (AI 추론 수요 폭발) | 중기 | 중간 | AI 추론 비용 280x 하락->수요 폭증 + TSMC CoWoS 13만wpm 확장 + 2nm GAA 수혜 [tech_breakthrough.md, Gartner] | reports/briefing/weekly_20260413.html | 진행중 |
 | 2026-04-13 | weekly | ETF | SHY (iShares 1-3Y Treasury) | 방어적 Bull | 단기~중기 | 높음 | 금리 3.81% 확보 + 듀레이션 리스크 최소 + 봉쇄 장기화 시 안전지대 [us_monetary_policy.md, CNBC] | reports/briefing/weekly_20260413.html | 진행중 |
 | 2026-04-13 | weekly | 시나리오 | KOSPI "코리아 프리미엄" 반전 리스크 | Bear (조건부) | 중기 | 중간 | 원/달러 1,500+ 시 외국인 이탈 + 경상수지 적자 전환 + BOK 인하 후퇴 [korea_economy.md, contrarian-card] | reports/briefing/weekly_20260413.html | 진행중 |
+| 2026-04-14 | morning | 이벤트 | VIX "거짓 안정" — 4~6주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간 | 소비심리 47.6(역대최저) vs VIX 19.12 괴리. 2022 우크라이나 패턴 반복. Q2 실적쇼크 수렴 가능 [Michigan Survey, CBOE 과거데이터] | reports/briefing/morning_20260414.html | 진행중 |
+| 2026-04-14 | morning | 이벤트 | 오늘 PPI — Core PPI +3.2% 상회 시 스태그플레이션 확률 상승 | Bear (인플레 상방) | 단기 | 중간 | CPI 3.3% 에너지 +10.9%의 도매단 전이 여부 확인. Core PPI Miss 시 Fed 6월 인하 완전 소멸 [BLS, Kiplinger] | reports/briefing/morning_20260414.html | 진행중 |
+| 2026-04-14 | morning | 자산군 | DXY 구조적 약세 — 98.34, 3년래 최저 | Bear (달러 하방) | 중기 | 중간 | 재정적자 GDP -6.5~-7.0% + 중앙은행 Gold 매수(달러 대체) + 글로벌 탈달러 [FRED, global_risk_factors.md] | reports/briefing/morning_20260414.html | 진행중 |
 
 ---
 
