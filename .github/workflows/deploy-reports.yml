@@ -85,20 +85,15 @@ jobs:
 
           echo '</div><div class="col col-brief"><h2>브리핑</h2>' >> index.html
 
-          # 브리핑 리포트 (오른쪽 컬럼) — 파일명 YYYYMMDD 내림차순
+          # 브리핑 리포트 (오른쪽 컬럼) — 파일명 YYYYMMDD 내림차순, 파일명 그대로 표시
           if ls reports/briefing/*.html 1>/dev/null 2>&1; then
             for f in $(ls reports/briefing/*.html 2>/dev/null | while read fp; do
               d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
               echo "${d:-00000000} $fp"
             done | sort -k1,1rn | awk '{print $2}'); do
               fname=$(basename "$f")
-              fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
-              dispdate=""
-              if [ -n "$fdate" ]; then
-                dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
-              fi
-              dispname=$(echo "$fname" | sed 's/_[0-9]\{8\}\.html//' | sed 's/\.html//' | sed 's/_/ /g')
-              echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a><span class=\"date\">$dispdate</span></div>" >> index.html
+              dispname=$(echo "$fname" | sed 's/\.html//' | sed 's/_/ /g')
+              echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a></div>" >> index.html
             done
           else
             echo '<p style="color:var(--sub);font-size:13px">브리핑 리포트가 없습니다.</p>' >> index.html
