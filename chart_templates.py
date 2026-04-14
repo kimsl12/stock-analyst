@@ -9,7 +9,8 @@ report-generator가 이 파일을 import하여 데이터를 넘기면 SVG 문자
 """
 import math
 
-C = {"bg":"#1A2733","border":"#2D3A45","text":"#E8EAED","sub":"#9AA0A6","buy":"#26A69A","sell":"#EF5350","blue":"#42A5F5","warn":"#FFA726","grid":"#21262d"}
+# CSS variable references — SVG attributes support var() in inline HTML
+C = {"bg":"var(--card)","border":"var(--border)","text":"var(--text)","sub":"var(--sub)","buy":"var(--buy)","sell":"var(--sell)","blue":"var(--blue)","warn":"var(--warn)","grid":"var(--border)"}
 SECTOR_COLORS = ["#42A5F5","#26A69A","#FFA726","#EF5350","#AB47BC","#66BB6A","#FF7043","#5C6BC0","#FFCA28","#78909C","#EC407A","#8D6E63"]
 
 def radar_chart(scores, size=280):
@@ -34,7 +35,7 @@ def radar_chart(scores, size=280):
         axes += '<text x="{:.1f}" y="{:.1f}" fill="{}" font-size="11" text-anchor="{}" dominant-baseline="middle">{}</text>'.format(lx,ly,C["sub"],anc,label)
         sx,sy = polar(i,s)
         axes += '<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="{}"/>'.format(sx,sy,C["buy"])
-    return '<svg viewBox="0 0 {} {}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:{}px;">{}<polygon points="{}" fill="none" stroke="{}" stroke-width="1"/><polygon points="{}" fill="rgba(38,166,154,0.25)" stroke="{}" stroke-width="2"/>{}</svg>'.format(size,size+20,size,guides,outer,C["border"],inner,C["buy"],axes)
+    return '<svg viewBox="0 0 {} {}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:{}px;">{}<polygon points="{}" fill="none" stroke="{}" stroke-width="1"/><polygon class="radar-fill" points="{}" fill="rgba(38,166,154,0.22)" stroke="{}" stroke-width="2"/>{}</svg>'.format(size,size+20,size,guides,outer,C["border"],inner,C["buy"],axes)
 
 def bar_chart(years, revenue, op_income, unit="조원", estimates_from=None):
     w,h = 400,200
@@ -104,7 +105,13 @@ def line_chart(years, series, labels=None, colors=None):
 
 def risk_heatmap(risks):
     w,h = 320,280
-    gc = {("저","저"):"rgba(63,185,80,0.15)",("저","중"):"rgba(63,185,80,0.1)",("저","고"):"rgba(210,153,34,0.15)",("중","저"):"rgba(63,185,80,0.1)",("중","중"):"rgba(210,153,34,0.15)",("중","고"):"rgba(248,81,73,0.15)",("고","저"):"rgba(210,153,34,0.15)",("고","중"):"rgba(248,81,73,0.15)",("고","고"):"rgba(248,81,73,0.25)"}
+    # 셀 위험도 → CSS 클래스 (테마별 색상은 report_template.py CSS에서 정의)
+    def _cell_cls(lk, ik):
+        score = (lk=="고") + (ik=="고")
+        if score == 2: return "hm-hh"
+        if score == 1: return "hm-mh"
+        if lk=="중" or ik=="중": return "hm-mm"
+        return "hm-ll"
     lm = {"저":0,"중":1,"고":2}
     cw,ch = 80,70
     ox,oy = 60,30
@@ -113,7 +120,7 @@ def risk_heatmap(risks):
         for ii in range(3):
             lk,ik = ["저","중","고"][li],["저","중","고"][ii]
             x,y = ox+li*cw, oy+(2-ii)*ch
-            cells += '<rect x="{}" y="{}" width="{}" height="{}" fill="{}" stroke="{}" stroke-width="0.5"/>'.format(x,y,cw,ch,gc[(lk,ik)],C["grid"])
+            cells += '<rect class="{}" x="{}" y="{}" width="{}" height="{}" stroke="{}" stroke-width="0.5"/>'.format(_cell_cls(lk,ik),x,y,cw,ch,C["border"])
     placed = {}
     for name,lk,imp in risks:
         li,ii = lm.get(lk,1),lm.get(imp,1)
