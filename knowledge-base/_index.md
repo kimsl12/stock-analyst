@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-13
+updated: 2026-04-14
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-13
@@ -57,6 +57,8 @@ lint_mode: full
 | 2026-04-14 | 모닝브리핑 | VIX 19.12 "거짓 안정" — 소비심리 47.6(역대최저) vs VIX 괴리. 4~6주 내 25~30 재상승 경고 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | DXY 98.34 구조적 약세 3년래 최저 — 재정적자+탈달러+Gold $4,781. 달러 표시 자산 실질가치 하락 | `macro/global_risk_factors.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
+| 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
+| 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
 
 ---
 
@@ -120,8 +122,8 @@ lint_mode: full
 | 파일 | 상태 | 갱신 주체 | 비고 |
 |------|------|---------|------|
 | `model_portfolios.md` | ⚠️ 전 항목 미수집 | briefing-lead | `/모델포트폴리오` 실행 필요 |
-| `rebalancing_history.md` | ⚠️ 이력 없음 | briefing-lead | 첫 `/리밸런싱` 실행 후 자동 누적 |
-| `user_portfolio.md` | ⚠️ 미등록 | briefing-lead | `/내포트폴리오` 실행 필요 |
+| `rebalancing_history.md` | ✅ 첫 이력 등록 (04-14) | briefing-lead | 미국주식 87.8%→72%(6개월 목표) |
+| `user_portfolio.md` | ✅ 갱신 완료 (04-14) confidence:high | briefing-lead | 총 2,820만원, 미국주식 87.8% |
 
 ---
 
