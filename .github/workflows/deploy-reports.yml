@@ -17,8 +17,6 @@ jobs:
     steps:
       - name: Checkout source branch
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Checkout gh-pages
         uses: actions/checkout@v4
@@ -70,27 +68,35 @@ jobs:
           <h2>종목 분석</h2>
           INDEXEOF
 
-          # 종목분석 리포트 (왼쪽 컬럼) — git 커밋 시간 내림차순 (최신순)
+          # 종목분석 리포트 (왼쪽 컬럼) — 파일명 YYYYMMDD 내림차순
           for f in $(ls reports/*.html 2>/dev/null | while read fp; do
-            ts=$(git log -1 --format="%at" -- "$fp" 2>/dev/null || echo "0")
-            echo "$ts $fp"
+            d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
+            echo "${d:-00000000} $fp"
           done | sort -k1,1rn | awk '{print $2}'); do
             fname=$(basename "$f")
-            dispdate=$(git log -1 --format="%cs" -- "$f" 2>/dev/null || echo "")
+            fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
+            dispdate=""
+            if [ -n "$fdate" ]; then
+              dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
+            fi
             dispname=$(echo "$fname" | sed 's/_[0-9]\{8\}\.html//' | sed 's/\.html//' | sed 's/_/ /g')
             echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a><span class=\"date\">$dispdate</span></div>" >> index.html
           done
 
           echo '</div><div class="col col-brief"><h2>브리핑</h2>' >> index.html
 
-          # 브리핑 리포트 (오른쪽 컬럼) — git 커밋 시간 내림차순 (최신순)
+          # 브리핑 리포트 (오른쪽 컬럼) — 파일명 YYYYMMDD 내림차순
           if ls reports/briefing/*.html 1>/dev/null 2>&1; then
             for f in $(ls reports/briefing/*.html 2>/dev/null | while read fp; do
-              ts=$(git log -1 --format="%at" -- "$fp" 2>/dev/null || echo "0")
-              echo "$ts $fp"
+              d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
+              echo "${d:-00000000} $fp"
             done | sort -k1,1rn | awk '{print $2}'); do
               fname=$(basename "$f")
-              dispdate=$(git log -1 --format="%cs" -- "$f" 2>/dev/null || echo "")
+              fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
+              dispdate=""
+              if [ -n "$fdate" ]; then
+                dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
+              fi
               dispname=$(echo "$fname" | sed 's/_[0-9]\{8\}\.html//' | sed 's/\.html//' | sed 's/_/ /g')
               echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a><span class=\"date\">$dispdate</span></div>" >> index.html
             done
