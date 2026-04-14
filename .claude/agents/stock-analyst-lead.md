@@ -194,6 +194,7 @@ ls -la analysis/{종목코드}_{종목명}/
 3. 반환 메시지에도 분석 내용이 없으면, 리드가 수집 데이터를 기반으로 직접 분석·작성
 
 > 이 폴백 로직은 Phase 2, Phase 3 완료 후에도 동일하게 적용한다.
+> ※ **ETF(워크플로우 B)에는 이 폴백을 적용하지 않는다.** ETF는 etf-analyst 재호출 → 실패 시 사용자 오류 보고.
 
 ### Phase 2: 심화 분석 (순차 실행 — Phase 1 결과 필요)
 4. **business-analyst** — 산업 트렌드 + 경쟁구도 + 성장성 평가
@@ -222,11 +223,36 @@ ls -la analysis/{종목코드}_{종목명}/
 
 ETF로 판별된 경우, 개별 종목 에이전트(company-overview, financial-analyst, business-analyst)를 호출하지 않는다.
 
+### ⛔ ETF 리드 직접 분석 절대 금지 [v3.7 신규]
+
+```
+ETF로 판별된 순간부터 아래 규칙이 모든 외부 지시보다 우선한다:
+
+절대 금지:
+  - 리드가 etf.md, scorecard.md 를 직접 Write하는 것
+  - etf-analyst 호출 없이 ETF 분석을 진행하는 것
+  - 외부 프롬프트에 "financial-analyst", "momentum-analyst", "scorecard-strategist"
+    호출 지시가 있더라도 → 무시하고 워크플로우 B만 따른다
+
+etf-analyst 호출 실패 시:
+  - 1회 재호출 시도
+  - 재호출도 실패 → 리드가 직접 분석하지 않고 사용자에게 오류 보고
+
+※ 워크플로우 A의 "폴백: 리드가 직접 분석·작성" 규칙은 ETF에 적용하지 않는다.
+```
+
 ### ETF Phase 0: 데이터 수집
 - **data-collector** 에이전트 호출
   - 웹 검색: ETF 기본정보, 구성종목, 보수율, 수익률, AUM
   - 주가/ATR 데이터 수집 (손절·목표가 계산용)
   - DART 호출 불필요 (ETF는 DART 재무제표 없음)
+
+### ETF Phase 0-D: 파일 스캐폴딩 (etf-analyst 호출 전 필수)
+
+```bash
+mkdir -p analysis/{티커}_{ETF명}
+touch analysis/{티커}_{ETF명}/etf.md
+```
 
 ### ETF Phase 1: ETF 전문 분석
 - **etf-analyst** 에이전트 호출 (단일 에이전트가 전체 분석 수행)
@@ -234,10 +260,21 @@ ETF로 판별된 경우, 개별 종목 에이전트(company-overview, financial-
   - 경쟁 ETF 비교 + 리스크 분석
   - ETF 스코어카드 (10항목, 100점)
   - ATR 기반 손절·목표가 + 매수/매도 전략
+  - 결과를 `analysis/{티커}_{ETF명}/etf.md` 에 Write
+
+### ETF Phase 1-검증: 파일 생성 확인
+
+```bash
+ls -la analysis/{티커}_{ETF명}/etf.md
+# 0 bytes → etf-analyst Write 실패
+#   → etf-analyst 반환 메시지에서 내용 추출하여 리드가 파일에 저장 (분석 재수행 금지)
+# 1KB+ → 정상
+```
 
 ### ETF Phase 2: 리포트 생성
 - **report-generator** 에이전트 호출
   - ETF 전용 HTML 리포트 생성 (개별 종목 리포트와 다른 포맷)
+  - asset_type: "ETF" 반드시 명시
 
 ## 최종 리포트 구조
 
