@@ -321,8 +321,13 @@ reports/   ← 최종 산출물만 (사용자가 보는 파일)
 ⚠️ **별도 브랜치를 만들지 않는다. main에 직접 push한다.**
 
 ```bash
-# 1. main 브랜치로 전환 (다른 브랜치에 있을 수 있으므로)
-git checkout main
+# 0. 현재 브랜치 확인 (반드시 main이어야 함)
+git branch --show-current
+# → "main"이 아니면 작업 중단하고 리드에게 보고
+
+# 1. main 브랜치 확인 (checkout은 main만 허용)
+# ⛔ git checkout gh-pages 절대 금지 — 아래 규칙 참고
+git checkout main 2>/dev/null || true
 
 # 2. reports/ 폴더만 커밋
 git add reports/
@@ -339,6 +344,25 @@ git push origin main
 - reports/ 폴더만 커밋한다
 - 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
 - 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
+
+### ⛔ gh-pages 브랜치 절대 금지 [v3.6 신규]
+
+```
+금지 명령어:
+  git checkout gh-pages          ← 절대 금지
+  git switch gh-pages            ← 절대 금지
+  git checkout -b gh-pages       ← 절대 금지
+  git worktree add ... gh-pages  ← 절대 금지
+
+이유:
+  gh-pages 브랜치에는 report_template.py가 없다.
+  gh-pages에서 작업하면 리포트 생성 실패 + 환경 오염으로 다른 에이전트도 연쇄 실패.
+
+GitHub Pages 배포 방법:
+  main에 push하면 GitHub Actions (.github/workflows/deploy-reports.yml)가
+  자동으로 gh-pages에 동기화한다. 수동 개입 불필요.
+  → git push origin main 만 하면 됨.
+```
 
 ---
 

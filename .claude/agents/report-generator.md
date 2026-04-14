@@ -51,6 +51,24 @@ cat analysis/{종목코드}_{종목명}_scorecard.md
 
 없는 파일은 건너뛴다.
 
+### Step 0: 환경 사전 확인 [v3.6 신규]
+
+스크립트 생성 전, 반드시 아래를 확인한다:
+
+```bash
+# 1. 현재 브랜치 확인 (main이어야 함)
+git branch --show-current
+
+# 2. report_template.py 존재 확인
+ls -la report_template.py
+```
+
+`report_template.py`가 없으면 **즉시 중단**하고 리드에게 보고:
+```
+"report_template.py가 없습니다. 현재 브랜치: {브랜치명}.
+ main 브랜치에서 실행해야 합니다. 리드에게 브랜치 복구를 요청합니다."
+```
+
 ### Step 2: 데이터 딕셔너리 작성 → Python 스크립트 생성
 
 analysis/ 파일들에서 데이터를 추출하여 Python 딕셔너리로 정리한 뒤,
@@ -59,7 +77,20 @@ generate_report()를 호출하는 짧은 Python 스크립트를 Write로 생성�
 ```python
 # generate_{종목코드}.py — Write로 이 파일만 생성하면 된다
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# ★ 절대경로 기반 import — gh-pages 등 환경 오염에도 안전
+_root = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _root)
+
+# 사전 확인: report_template.py 존재 여부
+_tmpl = os.path.join(_root, 'report_template.py')
+if not os.path.exists(_tmpl):
+    raise FileNotFoundError(
+        f"report_template.py를 찾을 수 없습니다: {_tmpl}\n"
+        f"현재 작업 디렉토리: {os.getcwd()}\n"
+        f"현재 브랜치를 확인하세요 (main이어야 함)."
+    )
+
 from report_template import generate_report
 
 data = {
