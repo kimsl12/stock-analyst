@@ -26,8 +26,8 @@ lint_mode: full
 | `market/correlation_matrix.md` | ⛔ FAILED + confidence:none | B-5 | `/시장데이터수집` 재실행 |
 | `market/surprise_index.md` | ⛔ FAILED + 만료 (valid_until 04-08) | B-4 | `/시장데이터수집` 재실행 |
 | `market/guru_positions.md` | ⛔ FAILED + confidence:none | A-5, B-7, C-4 | `/시장데이터수집 13F` 재실행 |
-| `macro/political_cycle.md` | ✅ 갱신 완료 (04-13) confidence:high | G-2, C-3 | — |
-| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-13) confidence:high | G-3, C-3.5 | — |
+| `macro/political_cycle.md` | ✅ 갱신 완료 (04-14) confidence:high | G-2, C-3 | — |
+| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-14) confidence:high | G-3, C-3.5 | — |
 | `macro/supply_chain.md` | ✅ 갱신 완료 (04-13) confidence:high | G-1, C-3 | — |
 | `portfolio/model_portfolios.md` | ⚠️ confidence:low 미수집 | F-2~F-5 | `/모델포트폴리오` 실행 |
 | `portfolio/user_portfolio.md` | ✅ 등록 완료 (04-13) confidence:high | /내포트폴리오 | — |
@@ -73,8 +73,8 @@ lint_mode: full
 | `ai.md` | 글로벌 AI 시장 3,300~3,800억달러, CapEx 합산 2,950~3,200억 | DeepSeek 쇼크 후 CapEx 오히려 상향. 추론(Inference) 60%+ 비중 전환 | 04-07 | 05-07 | medium |
 | `ai_anthropic.md` | ARR $300억, 밸류 $3,800억, IPO 2026 Q4 목표 | OpenAI ARR 최초 추월. 엔터프라이즈 40% 점유. Pentagon 갈등 리스크 | 04-09 | 05-09 | high |
 | `auto.md` | HMG 750만대(글로벌 3위), 미국 관세 25% 발효 | 조지아 30만대로 부분 완충. 관세로 연간 이익 1.5~2.5조 감소 우려 | 04-07 | 05-07 | medium |
-| `energy.md` | WTI $68~72, Brent $72~76, JKM LNG $12~14 | OPEC+ 감산 유지. 두산에너빌리티 체코 기자재 2026 발주 기대 | 04-07 | 05-07 | medium |
-| `science_tech.md` | 한국 R&D/GDP 4.9%(세계 1위), 정부 R&D 29.6조 | AI↔에너지 결합 메가트렌드. Tesla Optimus 2026 양산 개시 | 04-07 | 05-07 | medium |
+| `energy.md` | WTI $97~100, Brent $96~103, JKM LNG $17~18.75 | 호르무즈 봉쇄 유가 +40% 급등. 정제마진 $18 역대급. SPR 26일분. OPEC+ 206K 증산. 석화 나프타 $1,000 위기 | 04-14 | 05-14 | high |
+| `science_tech.md` | 한국 R&D/GDP **5.1%**(세계 1위), 글로벌 R&D 3.8조달러, 정부 R&D 29.6조 | IonQ 99.99% 양자기록. Optimus Gen3 여름양산. Starlink 10K기. CHIPS Act 생산시대 | 04-14 | 05-14 | high |
 | `bio_pharma.md` | GLP-1 시장 700~800억달러 | 삼성바이오 4공장 풀가동, CDMO Top 4 | 04-07 | 05-07 | medium |
 | `quantum.md` | 양자컴퓨팅/통신/PQC/센서 | IBM Nighthawk·Google Willow 로드맵. NIST PQC 표준 확정 | 04-13 | 05-13 | medium |
 | `space.md` | 우주경제·LEO위성·발사체 | SpaceX Falcon9 최고 발사율. AST SpaceMobile 위성직접통신 | 04-13 | 05-13 | medium |
@@ -96,11 +96,11 @@ lint_mode: full
 |------|---------|-----------|-------|-------|
 | `us_economy.md` | GDP +2.7%(2025), +2.0%(2026E), Core CPI +3.1%, 침체확률 25~40% | 관세발 스태그플레이션. AI 투자(+0.3~0.5%p GDP 기여)가 부분 상쇄 | 04-07 | medium |
 | `us_monetary_policy.md` | SSOT: `macro/us_monetary_policy.md` 참조 (루트 파일 = redirect 포인터) | 루트 파일 confidence:redirect — 수치 직접 참조 금지 | 04-13 | redirect |
-| `geopolitics.md` | 관세 미→중 145%, 중→미 125%. HBM3E 이상 대중 금지 | 대만 충돌(저확률·극고영향). 희토류 전면금지(저확률·고영향) | 04-07 | high |
+| `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI $97, Brent $102. Gold $4,762. 리스크 5/5 | **이란전쟁·호르무즈 봉쇄**(극고). Section 301·50% 위협. 희토류 1년 유예 | 04-14 | ✅ high |
 | `korea_economy.md` | GDP +1.9%(2026E), 금리 2.75%, 원화 1,410원 | 대미 관세 + 대중 수출 이중 타격. 가계부채 GDP 92~95% | 04-07 | medium |
-| `global_risk_factors.md` | VIX 27~32(불안), F&G 25~35(Fear), 금 $2,900~3,100 | Top5 리스크: 미중·대만·부채·중동·기후 | 04-07 | high |
-| `political_cycle.md` | 주요국 정치 일정·정책 변화·섹터 임팩트 | G-2 모듈 정상 운영 가능 | 04-13 | ✅ high |
-| `tech_breakthrough.md` | AI·반도체·양자·바이오·에너지·로봇 기술 단계 판정 | G-3 모듈 정상 운영 가능 | 04-13 | ✅ high |
+| `global_risk_factors.md` | VIX 19.12, F&G 41(Fear), DXY 98.39, 금 $4,761, 브렌트 $98 | Top5: 호르무즈봉쇄·미중디커플링·스태그플레이션·대만·부채 | 04-14 | ✅ high |
+| `political_cycle.md` | Section 122 글로벌10% 관세(07.24만료), 추경26.2조, 6개국 정치사이클 | 관세 법적 불확실성(Section 122 한시). 반도체 25% 관세 7월 확대 검토 | 04-14 | ✅ high |
+| `tech_breakthrough.md` | AI·반도체·양자·바이오·에너지·로봇·우주·신소재 8개 분야 기술 단계 판정. 양자: QEC 돌파·IonQ $130M. 로봇: Atlas 양산·Waymo 50만회/주. 우주: Starlink 10K위성·1,000만 가입자. 신소재: 페로브스카이트 28%·SiC $52B | G-3 모듈 정상 운영 가능. 4개 미수집 분야 전면 데이터 채움 | 04-14 | ✅ high |
 | `supply_chain.md` | 물류/운임·핵심광물·리쇼어링 현황 | G-1 공급망 모듈 정상 운영 가능 | 04-13 | ✅ high |
 
 ---
@@ -147,9 +147,9 @@ lint_mode: full
 | `semiconductor_2026.jsonl` | 71건 | kb-updater |
 | `ai_2026.jsonl` | 88건 (Anthropic 34건 포함) | kb-updater |
 | `auto_2026.jsonl` | 46건 | kb-updater |
-| `energy_2026.jsonl` | 42건 | kb-updater |
+| `energy_2026.jsonl` | 76건 | kb-updater |
 | `geopolitics_2026.jsonl` | 32건 | kb-updater |
-| `science_tech_2026.jsonl` | 143건 (quantum/space/smr subtag 포함) | kb-updater |
+| `science_tech_2026.jsonl` | 194건 (quantum/space/smr subtag 포함) | kb-updater |
 | `bio_pharma_2026.jsonl` | 34건 | kb-updater |
 | `macro_2026.jsonl` | 133건 | kb-updater |
 | `telecom_next_2026.jsonl` | 28건 | kb-updater |
@@ -157,7 +157,7 @@ lint_mode: full
 | `advanced_materials_2026.jsonl` | 35건 | kb-updater |
 | `battery_2026.jsonl` | 40건 | kb-updater |
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
-| `changelog_2026.jsonl` | 23건 | kb-updater |
+| `changelog_2026.jsonl` | 25건 | kb-updater |
 | `market/2026_daily_prices.md` | — (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
 | `market/2026_guru_changes.md` | — (FAILED) | market-data-collector |
@@ -182,11 +182,11 @@ lint_mode: full
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
 | 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: SSOT — 해당 파일 참조 | 04-13 | ✅ 구조 정리 완료 (루트→redirect 전환) |
-| VIX | `global_risk_factors.md`: 27~32 | `us_economy.md §9`: 27~32 | 04-07 | ✅ 일치 |
-| DXY | `global_risk_factors.md`: 101~104 | `us_economy.md §9`: 101~104 | 04-07 | ✅ 일치 |
-| WTI | `energy.md §1`: $68~72 | `geopolitics.md §6`: $68~72 | 04-07 | ✅ 일치 |
-| 원/달러 | `korea_economy.md`: 1,410원 | `global_risk_factors.md §2`: 1,420~1,460 | 04-07 | ⚠️ 범위 불일치 (허용 범위 내) |
-| HBM3E 대중 수출 | `geopolitics.md §1-2`: 전면금지 | `semiconductor.md §5`: HBM3E 이상 금지 | 04-07 | ✅ 일치 |
+| VIX | `global_risk_factors.md`: 19.12 | `us_economy.md §9`: 27~32 (미갱신) | 04-14 | ⚠️ 불일치 (global_risk 갱신, us_economy 미갱신) |
+| DXY | `global_risk_factors.md`: 98.39 | `us_economy.md §9`: 101~104 (미갱신) | 04-14 | ⚠️ 불일치 (global_risk 갱신, us_economy 미갱신) |
+| WTI | `energy.md §1`: $97~100 | `geopolitics.md §6`: $97.22 | 04-14 | ✅ 일치 (양쪽 호르무즈 급등 반영) |
+| 원/달러 | `korea_economy.md`: 1,410원 (미갱신) | `global_risk_factors.md §2`: 1,485 | 04-14 | ⚠️ 불일치 확대 (korea_economy 미갱신, 갭 +75원) |
+| HBM3E 대중 수출 | `geopolitics.md §1-2`: HBM3E·HBM4 금지 (3.3GB/s/mm² 기준) | `semiconductor.md §5`: HBM3E 이상 금지 | 04-14 | ✅ 일치 (기준 구체화) |
 
 ---
 
@@ -211,17 +211,17 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-14 | `industry/science_tech.md` | **전면 갱신** -- 15개 섹션 최신화: 양자(IonQ 99.99%/IQM Shor 2048bit), 6G(3GPP 60%/삼성 TSG RAN 의장), 사이버보안(Wiz $320억/SGNL $7.4억), 로봇(Optimus Gen3/Figure AI $390억), 우주(Starlink 10K기/SpaceX $7,500억), 바이오(경구 GLP-1/CRISPR 359사), SMR(Kairos 2026/Meta-TerraPower 8기), R&D(OECD 3.8T/한국 5.1%), CHIPS Act(Intel 18A 양산/트럼프 지분), EDA(Synopsys L4), 특허(370만건) | +51 |
+| 2026-04-14 | `macro/tech_breakthrough.md` | **미수집 4분야 전면 채움** — 양자컴퓨팅(QEC·IonQ $130M·Quantinuum 48논리큐빗·Infleqtion IPO), 로봇(Atlas 양산·Optimus Gen3·Agibot 1만대·Waymo 10도시·Tesla 로보택시), 우주(Starlink 10K위성·1,000만 가입자·SpaceX IPO $1.5T·KASA 1.12조), 신소재(그래핀 EUV·초전도 151K·페로브스카이트 28%·SiC $52B). Disruption Map +5행 | +25 |
+| 2026-04-14 | `macro/political_cycle.md` | **갱신** — 미국 관세 IEEPA→Section 122 전환, 반도체 25% 관세, 한국 추경 26.2조+상법3차 확정, 중국·EU·일본·인도 4개국 신규, 리스크캘린더 7건 추가 | +12 |
+| 2026-04-14 | `macro/geopolitics.md` | **전면 갱신** — IEEPA 위헌·부산합의 반영(실효 34.7%), 이란전쟁·호르무즈 봉쇄, WTI $97/Brent $102, Gold $4,762, 리스크 5/5 상향, 북한 3일 무기시험, OPEC+ 증산, 희토류 유예 | +20 |
+| 2026-04-14 | `macro/global_risk_factors.md` | **전면 갱신** — IMF WEO 4월(3.3%), 호르무즈 봉쇄 1위, VIX 19.12, DXY 98.39, 금 $4,761, 브렌트 $98, IEEPA 관세 무효화, 소비자심리 47.6 역대최저 | +22 |
 | 2026-04-13 | `_index.md` | **v3.2 wiki-linter full** — P0 갱신 + Industry 고아파일 8개 등재 + Macro 3개 갱신 확인 + Market 상태 정정 + 교차참조 맵 갱신 | — |
 | 2026-04-13 | `_index.md` | **v3.1 완전 재작성** — Wiki Index 전환 (LLM Wiki 원칙 적용) | — |
 | 2026-04-09 | `industry/ai_anthropic.md` | **신규 생성** — Anthropic 개별기업 KB (34건) | +34 |
 | 2026-04-09 | `knowledge-db/ai_2026.jsonl` | Anthropic 데이터 추가 (53→87건) | +34 |
 | 2026-04-08 | `_index.md` (구버전) | F-07 처리 — performance KB + market KB 권한 컬럼 | — |
 | 2026-04-07 | `macro/us_economy.md` | 신규 생성 — 미국 경제 KB 전면 구축 (33건) | +33 |
-| 2026-04-07 | `macro/korea_economy.md` | 신규 생성 — 한국 경제 KB 전면 구축 (38건) | +38 |
-| 2026-04-07 | `semiconductor.md` | 2차 갱신 — DB 71건(+22건), 관세 영향·HBM4 추가 | +22 |
-| 2026-04-07 | `macro/geopolitics.md` | 신규 생성 — 지정학 KB 전면 갱신 | +31 |
-| 2026-04-07 | `macro/global_risk_factors.md` | 신규 생성 — 글로벌 Top5 리스크 | — |
-| 2026-04-07 | `industry/ai.md` | 신규 생성 — AI 섹터 KB (53건) | +53 |
 
 ---
 
