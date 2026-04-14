@@ -7,7 +7,7 @@ report-generator가 데이터 딕셔너리를 넘기면 HTML 파일을 생성한
   from report_template import generate_report
   generate_report(data, output_path="reports/AAPL_Apple_20260406.html")
 """
-import os, sys, json
+import os, sys, json, re
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -116,6 +116,19 @@ COMMAND_GUIDE = """
 </div>
 """
 
+def _md_to_html(text: str) -> str:
+    """마크다운 패턴을 HTML로 변환한다.
+    etf-analyst 등이 출력하는 **bold**, - bullet, 줄바꿈을 HTML로 렌더링한다."""
+    if not text:
+        return text
+    # **text** → <strong>text</strong>
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    # 줄 시작의 - bullet → <br>&bull; (문장 중간 하이픈은 건드리지 않음)
+    text = re.sub(r'\n\s*-\s+', '<br>&bull; ', text)
+    # 나머지 줄바꿈 → <br>
+    text = text.replace('\n', '<br>')
+    return text
+
 def _tbl(headers, rows):
     h = "".join("<th>{}</th>".format(x) for x in headers)
     b = ""
@@ -184,7 +197,7 @@ def generate_report(data, output_path=None):
     parts.append('<div class="sec"><h2>핵심 지표</h2><div class="kg">{}</div></div>'.format("".join(kpis)))
     
     # Executive Summary
-    es = data.get("executive_summary","")
+    es = _md_to_html(data.get("executive_summary",""))
     if es:
         parts.append('<div class="sec"><h2>Executive Summary</h2><p>{}</p></div>'.format(es))
     
@@ -215,18 +228,18 @@ def generate_report(data, output_path=None):
             chart, _tbl(["항목","점수","만점"], rows), data.get("score","N/A")))
     
     # Company Overview
-    ov = data.get("company_overview","")
+    ov = _md_to_html(data.get("company_overview",""))
     moat = data.get("moat_rating","")
     if ov or moat:
         mc = "mw" if "Wide" in str(moat) else "mn"
         mb = '<span class="{}">{}</span>'.format(mc, moat) if moat else ""
-        md = data.get("moat_details","")
+        md = _md_to_html(data.get("moat_details",""))
         parts.append('<div class="sec"><h2>기업개요 & Moat {}</h2><p>{}</p>{}</div>'.format(
             mb, ov, "<h3>Moat 상세</h3><p>{}</p>".format(md) if md else ""))
     
     # Financials
     ft = data.get("financials_table")
-    fa = data.get("financial_analysis","")
+    fa = _md_to_html(data.get("financial_analysis",""))
     if ft or fa:
         tbl = _tbl(ft["headers"], ft["rows"]) if ft else ""
         chart = ""
@@ -235,23 +248,23 @@ def generate_report(data, output_path=None):
             except: pass
         parts.append('<div class="sec"><h2>재무분석</h2>{}{}{}</div>'.format(
             chart, tbl, "<h3>분석</h3><p>{}</p>".format(fa) if fa else ""))
-    
+
     # Valuation
     vt = data.get("valuation_table")
-    va = data.get("valuation","")
+    va = _md_to_html(data.get("valuation",""))
     if vt or va:
         tbl = _tbl(vt["headers"], vt["rows"]) if vt else ""
         parts.append('<div class="sec"><h2>밸류에이션</h2>{}{}</div>'.format(tbl, "<p>{}</p>".format(va) if va else ""))
-    
+
     # Momentum
-    mm = data.get("momentum","")
+    mm = _md_to_html(data.get("momentum",""))
     ct = data.get("consensus_table")
     if mm or ct:
         tbl = _tbl(ct["headers"], ct["rows"]) if ct else ""
         parts.append('<div class="sec"><h2>모멘텀 & 컨센서스</h2>{}{}</div>'.format("<p>{}</p>".format(mm) if mm else "", tbl))
-    
+
     # Business
-    ba = data.get("business_analysis","")
+    ba = _md_to_html(data.get("business_analysis",""))
     bt = data.get("competition_table")
     if ba or bt:
         tbl = _tbl(bt["headers"], bt["rows"]) if bt else ""
@@ -271,7 +284,7 @@ def generate_report(data, output_path=None):
     
     # Risks
     risks = data.get("risks", [])
-    rs = data.get("risk_summary","")
+    rs = _md_to_html(data.get("risk_summary",""))
     if risks or rs:
         ritems = ""
         rtuples = []
@@ -291,7 +304,7 @@ def generate_report(data, output_path=None):
             "<p>{}</p>".format(rs) if rs else "", chart, ritems))
     
     # Strategy
-    st = data.get("strategy","")
+    st = _md_to_html(data.get("strategy",""))
     if st:
         parts.append('<div class="sec"><h2>매매 전략</h2><p>{}</p></div>'.format(st))
     

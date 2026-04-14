@@ -223,6 +223,7 @@ STEP 4: target_price = entry_price + (risk × rr_ratio)
 
 ## 분석 원칙
 
+- **etf.md 텍스트 작성 시 마크다운을 사용하지 않는다.** report-generator가 HTML로 변환하므로 `**bold**`, `- bullet` 형태 대신 일반 문장으로 작성한다. 예: `**운용사:** BlackRock` → `운용사: BlackRock`
 - 개별 종목 분석 항목(매출, 영업이익, ROE, Moat 등)을 ETF에 절대 적용하지 않는다
 - 반드시 동종 카테고리 ETF와 상대 비교
 - 레버리지/인버스 ETF는 장기투자 부적합 경고 필수
