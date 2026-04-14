@@ -67,6 +67,10 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-14 | morning | 이벤트 | VIX "거짓 안정" — 4~6주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간 | 소비심리 47.6(역대최저) vs VIX 19.12 괴리. 2022 우크라이나 패턴 반복. Q2 실적쇼크 수렴 가능 [Michigan Survey, CBOE 과거데이터] | reports/briefing/morning_20260414.html | 진행중 |
 | 2026-04-14 | morning | 이벤트 | 오늘 PPI — Core PPI +3.2% 상회 시 스태그플레이션 확률 상승 | Bear (인플레 상방) | 단기 | 중간 | CPI 3.3% 에너지 +10.9%의 도매단 전이 여부 확인. Core PPI Miss 시 Fed 6월 인하 완전 소멸 [BLS, Kiplinger] | reports/briefing/morning_20260414.html | 진행중 |
 | 2026-04-14 | morning | 자산군 | DXY 구조적 약세 — 98.34, 3년래 최저 | Bear (달러 하방) | 중기 | 중간 | 재정적자 GDP -6.5~-7.0% + 중앙은행 Gold 매수(달러 대체) + 글로벌 탈달러 [FRED, global_risk_factors.md] | reports/briefing/morning_20260414.html | 진행중 |
+| 2026-04-14 | global | 시나리오 | 호르무즈 봉쇄 베이스: 장기 대치 2~4개월 (시나리오 B) | Bear (S&P -3~7%, WTI $90~110) | 중기 | 중간 | 미 해군 봉쇄 발효+파키스탄 회담 결렬. 비이란 통항 보장이 완충. 확률 45% [CNN, NPR, CNBC] | reports/briefing/global_intelligence_20260414.html | 진행중 |
+| 2026-04-14 | global | 시나리오 | 비료-식량 인플레 2차 파동 (숨은 테마) | Bear (CPI +0.3~0.5%p 추가) | 중기 | 중간 | 비료 +172% YoY + 한국 호르무즈 경유 38.4% + FAO 식품지수 128.5pt. 2~3개월 시차 전이 [supply_chain.md, FAO] | reports/briefing/global_intelligence_20260414.html | 진행중 |
+| 2026-04-14 | global | 자산군 | Gold (GLD/IAU) 구조적 Bull 강화 | Bull ($5,000+ 전망) | 중기~장기 | 높음 | DXY 98.34+재정적자+중앙은행 매수 확산+지정학 삼중 지지. JPM $5,055(4Q26E) [J.P. Morgan, World Gold Council, SSGA] | reports/briefing/global_intelligence_20260414.html | 진행중 |
+| 2026-04-14 | global | 자산군 | SMR/원자력 인프라 | Bull (AI 전력 수요 구조적 수혜) | 장기 | 중간 | Southern Co $26.5B 원자력 대출+EU SMR 17~53GW 목표+데이터센터 전력 직접 연계 [ASME, EU Commission] | reports/briefing/global_intelligence_20260414.html | 진행중 |
 
 ---
 
