@@ -316,11 +316,9 @@ reports/   ← 최종 산출물만 (사용자가 보는 파일)
 - **reports/ 폴더:** 최종 리포트만. Git에 커밋 + 푸시
 - 각 분석 에이전트에게 호출 시 "결과를 analysis/{종목코드}_{종목명}_{용도}.md에 저장하라"고 지시
 
-### Git 커밋 (Phase 4 완료 직후, 1회만 실행)
+### Git 커밋 + 푸시 (Phase 4 완료 직후, 1회만 실행)
 
-⚠️ **커밋만 한다. push는 하지 않는다.**
-병렬 분석 시 각 에이전트가 개별 push하면 GitHub 어뷰징 감지 시스템에 걸린다.
-push는 모든 분석이 끝난 후 상위 오케스트레이터 또는 사용자가 1회만 실행한다.
+⚠️ **별도 브랜치를 만들지 않는다. main에 직접 push한다.**
 
 ```bash
 # 0. 현재 브랜치 확인 (반드시 main이어야 함)
@@ -331,10 +329,13 @@ git branch --show-current
 # ⛔ git checkout gh-pages 절대 금지 — 아래 규칙 참고
 git checkout main 2>/dev/null || true
 
-# 2. reports/ 폴더만 커밋 (push는 하지 않음)
+# 2. reports/ 폴더만 커밋
 git add reports/
 git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
-# ⛔ git push 금지 — 배치 완료 후 상위에서 1회만 push
+
+# 3. 충돌 방지 후 직접 push
+git pull --rebase origin main
+git push origin main
 ```
 
 ### Git 규칙
@@ -342,8 +343,7 @@ git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
 - analysis/ 폴더는 git add하지 않는다
 - reports/ 폴더만 커밋한다
 - 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
-- **push는 절대 하지 않는다** — 배치 분석 시 다수의 push가 GitHub 어뷰징 감지를 유발함
-- 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 커밋 실패 — 로컬에만 저장됨" 안내
+- 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
 
 ### ⛔ gh-pages 브랜치 절대 금지 [v3.6 신규]
 
