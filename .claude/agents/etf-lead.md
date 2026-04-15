@@ -84,7 +84,7 @@ ls -la analysis/{티커}_{ETF명}/etf.md
 - 리포트 저장 경로: `reports/{티커}_{ETF명}_{YYYYMMDD}.html`
 - asset_type: "ETF" (필수)
 
-### Step 4: Git 커밋 & 푸시
+### Step 4: Git 커밋 (push 제외)
 
 ```bash
 # 브랜치 확인 (반드시 main이어야 함)
@@ -93,7 +93,7 @@ git branch --show-current
 # 스테이징 및 커밋 (reports/만, analysis/ 제외)
 git add reports/{티커}_{ETF명}_{YYYYMMDD}.html
 git commit -m "분석 리포트: {ETF명} ({티커}) - {YYYY-MM-DD}"
-git push origin main
+# ⛔ git push 금지 — 배치 완료 후 상위에서 1회만 push
 ```
 
 ---
