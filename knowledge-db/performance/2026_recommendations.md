@@ -75,6 +75,11 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-14 | evening | 종목 | S-Oil (010950.KS) / SK이노베이션 | Bull (정제마진 서프라이즈) | 단기~중기 | 중간 | WTI $97+정제마진 $18(역대급)+재고평가이익. Q1~Q2 실적 서프라이즈 가능. 봉쇄 해소 시 반락 리스크 [energy.md §1, geopolitics.md §9] | reports/briefing/evening_20260414.html | 진행중 |
 | 2026-04-14 | evening | 시나리오 | KOSPI 6,000 안착 조건 | Bull (조건부) | 단기~중기 | 중간 | 장중 6,026 터치 후 5,968 마감. 안착 조건: (1) 호르무즈 해소 또는 (2) Q2 반도체 실적 확인. 미충족 시 5,800~6,000 박스 [세계일보, 헤럴드경제] | reports/briefing/evening_20260414.html | 진행중 |
 | 2026-04-14 | evening | 이벤트 | IEA/WB/IMF "빠른 정상화 불가" -- 2차 인플레 리스크 | Bear (인플레 상방) | 중기 | 중간 | 3개 국제기관 동시 경고. 비료+연료 가격 구조적 고착. War Risk Premium+IRGC 기뢰(21건). 식품 CPI +0.3~0.5%p 추가 가능 [NBC News, supply_chain.md, FAO] | reports/briefing/evening_20260414.html | 진행중 |
+| 2026-04-15 | evening | ETF | GLD (SPDR Gold Shares) / IAU | Bull (구조적 탈달러) | 중기~장기 | 높음 | Gold $4,869 (+2.67%) 신고가 — WTI 급락에도 단절적 강세. DXY 98.13 3년최저 + 중앙은행 매수 + Gold-DXY/Oil 상관관계 붕괴 [daily_snapshot, global_risk_factors §4, J.P. Morgan 보도] | reports/briefing/evening_20260415.html | 진행중 |
+| 2026-04-15 | evening | 종목 | 삼성전자 (005930.KS) | Bull (KOSPI 6,141 안착 주도) | 중기 | 중간 | 반도체 수출 3월 $18.7B(+163.9%) + HBM4 H2 양산 + HBM3E 대중 금지 Tier1 한국 수혜 + 외국인 매수 복귀 [산업부, semiconductor.md §1, geopolitics §1-2] | reports/briefing/evening_20260415.html | 진행중 |
+| 2026-04-15 | evening | 시나리오 | 호르무즈 완화 1단계 진입 — WTI $85~95 박스 | 중립→Bull (유가 하방) | 단기 | 중간 | 트럼프 재협상 시그널 + 파키스탄 중재 + 비이란 통항 보장 반영. 그러나 IEA/WB/IMF "빠른 정상화 불가" 유효 [daily_snapshot, supply_chain §1-2] | reports/briefing/evening_20260415.html | 진행중 |
+| 2026-04-15 | evening | 자산군 | BTC "디지털 금" 내러티브 균열 가능성 | Bear (탈달러 수요 Gold 쏠림) | 단기~중기 | 중간 | NASDAQ +1.96% 리스크온에도 BTC +0.23% 정체. Gold +2.67% vs BTC +0.23% = 탈달러 수요가 BTC 우회. NASDAQ-BTC 동조화 약화 [CoinGecko, Yahoo Finance] | reports/briefing/evening_20260415.html | 진행중 |
+| 2026-04-15 | evening | 이벤트 | VIX 18.36 vs 소비심리 47.6 괴리 극대화 — 2~4주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간 | 전일 4~6주 경고에서 단축 갱신. "완화 랠리 소멸 이벤트"(PPI 상방, 호르무즈 재격화, 5월 미중 결렬) 시 반등 폭 확대 [global_risk_factors §2] | reports/briefing/evening_20260415.html | 진행중 |
 
 ---
 
