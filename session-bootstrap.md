@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | Tesla (TSLA) — 2026-04-15, 중립 56.1점 (리드 직접 수행) |
+| 마지막 종목분석 | 삼성전기 (009150) — 2026-04-15, 매수 74.75점 |
 | 마지막 브리핑 | 이브닝브리핑 — 2026-04-13 |
 | 마지막 KB 업데이트 | infrastructure — 2026-04-13 |
 | 진행 중 작업 | 없음 |
@@ -19,8 +19,7 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| TSLA_Tesla | 2026-04-15 | 56.1 Hold | 유효 |
-| COIN_Coinbase | 2026-04-15 | 62.5 Hold | 유효 |
+| 009150_삼성전기 | 2026-04-15 | 74.75 Buy | 유효 |
 | META_Meta | 2026-04-14 | 80.1 Strong Buy | 유효 |
 | PLTR_Palantir | 2026-04-14 | 61.5 Hold | 유효 |
 | 010120_LSELECTRIC | 2026-04-13 | 76.5 Buy | 유효 |
@@ -31,7 +30,7 @@
 ## 현재 KB 상태 요약
 
 - **P0 항목**: market/ 전체 FAILED (재수집 필요), us_monetary 중복 해결 예정
-- **정상 Industry KB**: 12개 (semiconductor, ai, auto, energy, quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure)
+- **정상 Industry KB**: 12개 (semiconductor 부재 — advanced_materials·ai 대체 사용)
 - **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
 - **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
 - **마지막 KB 갱신**: infrastructure 2026-04-13
