@@ -80,6 +80,11 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-15 | evening | 시나리오 | 호르무즈 완화 1단계 진입 — WTI $85~95 박스 | 중립→Bull (유가 하방) | 단기 | 중간 | 트럼프 재협상 시그널 + 파키스탄 중재 + 비이란 통항 보장 반영. 그러나 IEA/WB/IMF "빠른 정상화 불가" 유효 [daily_snapshot, supply_chain §1-2] | reports/briefing/evening_20260415.html | 진행중 |
 | 2026-04-15 | evening | 자산군 | BTC "디지털 금" 내러티브 균열 가능성 | Bear (탈달러 수요 Gold 쏠림) | 단기~중기 | 중간 | NASDAQ +1.96% 리스크온에도 BTC +0.23% 정체. Gold +2.67% vs BTC +0.23% = 탈달러 수요가 BTC 우회. NASDAQ-BTC 동조화 약화 [CoinGecko, Yahoo Finance] | reports/briefing/evening_20260415.html | 진행중 |
 | 2026-04-15 | evening | 이벤트 | VIX 18.36 vs 소비심리 47.6 괴리 극대화 — 2~4주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간 | 전일 4~6주 경고에서 단축 갱신. "완화 랠리 소멸 이벤트"(PPI 상방, 호르무즈 재격화, 5월 미중 결렬) 시 반등 폭 확대 [global_risk_factors §2] | reports/briefing/evening_20260415.html | 진행중 |
+| 2026-04-16 | morning | 시나리오 | S&P 7,000·NASDAQ 24,000 돌파 후 "후반 사이클 정점" 리스크 | Bear (확률 40% 상향) | 단기~중기 | 중간~높음 | Dow -0.15% 단독 약세 + 10Y 4.28% 반등 + VIX-MOVE 괴리 + BTC 정체 = breadth 쇠퇴 4중 시그널. 2000Q1·2007Q3·2021Q4 유사 패턴 [Yahoo Finance, global_risk_factors §2] | reports/briefing/morning_20260416.html | 진행중 |
+| 2026-04-16 | morning | 자산군 | 10Y 국채 금리 4.30% 돌파 시 TLT 추가 하방 | Bear (장기국채) | 중기 | 중간 | 4/15 4.26→4.28 반등. "WTI 급락 = 디스인플레" 서사에 균열. Core CPI/ISM가격 78.3 지속. 5/13 4월 CPI 체크포인트 [us_economy §3, daily_snapshot] | reports/briefing/morning_20260416.html | 진행중 |
+| 2026-04-16 | morning | ETF | GLD/IAU 구조적 Bull 3일 연속 확인 | Bull (탈달러 구조) | 중기~장기 | 높음 | Gold $4,844 신고가 근접 유지 + DXY 98.01 3년최저 갱신. 리스크온 랠리에도 환매되지 않는 탈달러 수요 3일 연속 [daily_snapshot, global_risk_factors §4, J.P. Morgan 보도] | reports/briefing/morning_20260416.html | 진행중 |
+| 2026-04-16 | morning | 이벤트 | Q1 실적 시즌(4/20주~) — Mag7 Beat 지속 여부가 NASDAQ 24K 방어 핵심 | 중립 (분기점) | 단기 | 중간 | JPM/BAC → MSFT/GOOGL/META/AAPL 순. Beat 지속 시 완화 랠리 3단계, Miss 1건 시 -3~7% 민감. Breadth 쇠퇴 구도에서 실적 서프라이즈 가중치 극대화 [us_economy §2, market consensus] | reports/briefing/morning_20260416.html | 진행중 |
+| 2026-04-16 | morning | 종목 | 삼성전자 (005930.KS) | Bull (KOSPI 6,150 재도전 주도) | 중기 | 중간 | NASDAQ 24,000 + 반도체 랠리 동조 + 외국인 매수 지속 + HBM4 H2 양산. 원/달러 1,474 안정 [산업부, semiconductor.md, korea_economy §5-1] | reports/briefing/morning_20260416.html | 진행중 |
 
 ---
 
