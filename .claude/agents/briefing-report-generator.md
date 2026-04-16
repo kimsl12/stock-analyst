@@ -259,9 +259,9 @@ tr:hover{background:rgba(255,255,255,0.02)}
 <body>
 
 <!-- 테마 토글 (상단 고정) [v3.5] -->
-<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px">
-  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer">
-    <span id="theme-label">라이트</span>
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
   </button>
 </div>
 
@@ -379,13 +379,13 @@ tr:hover{background:rgba(255,255,255,0.02)}
 </div>
 
 <script>
-function toggleTheme(){
-  var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";
-  if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}
-  else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}
-  localStorage.setItem("theme",t);
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
 }
-(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
 </script>
 
 </body>
