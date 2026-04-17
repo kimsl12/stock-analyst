@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | NVDA (NVIDIA Corporation) - 2026-04-17, Strong Buy 81.6점 |
+| 마지막 종목분석 | LLY (Eli Lilly) - 2026-04-17, Strong Buy 82.4점 |
 | 마지막 브리핑 | 모닝브리핑 - 2026-04-17 |
 | 마지막 KB 업데이트 | infrastructure - 2026-04-13 |
 | 진행 중 작업 | 없음 |
@@ -19,6 +19,7 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| LLY_EliLilly | 2026-04-17 | 82.4 Strong Buy | 유효 |
 | NVDA_NVIDIA | 2026-04-17 | 81.6 Strong Buy | 유효 |
 | BA_Boeing | 2026-04-16 | 74.9 Buy | 유효 |
 | KTOS_KratosDefense | 2026-04-16 | 64.0 Weak Buy | 유효 |
