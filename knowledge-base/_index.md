@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-14
+updated: 2026-04-17
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-13
@@ -22,10 +22,10 @@ lint_mode: full
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
 | `market/daily_snapshot.md` | ✅ SUCCESS (04-14) valid_until 04-15 | A-1, B-2, B-3 | -- |
-| `market/economic_calendar.md` | ⛔ FAILED + confidence:none | A-4, B-1, C-6 | `/시장데이터수집` 재실행 |
-| `market/correlation_matrix.md` | ⛔ FAILED + confidence:none | B-5 | `/시장데이터수집` 재실행 |
-| `market/surprise_index.md` | ⛔ FAILED + 만료 (valid_until 04-08) | B-4 | `/시장데이터수집` 재실행 |
-| `market/guru_positions.md` | ⛔ FAILED + confidence:none | A-5, B-7, C-4 | `/시장데이터수집 13F` 재실행 |
+| `market/economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | A-4, B-1, C-6 | — |
+| `market/correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-5 | 정량 필요 시 `/시장데이터수집` |
+| `market/surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-4 | 정량 필요 시 `/시장데이터수집` |
+| `market/guru_positions.md` | ⚠️ PARTIAL (04-17) confidence:low — 코멘트 기반 | A-5, B-7, C-4 | 13F 필요 시 `/시장데이터수집 13F` |
 | `macro/political_cycle.md` | ✅ 갱신 완료 (04-14) confidence:high | G-2, C-3 | — |
 | `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-14) confidence:high | G-3, C-3.5 | — |
 | `macro/supply_chain.md` | ✅ 갱신 완료 (04-14) confidence:high | G-1, C-3 | — |
@@ -77,6 +77,10 @@ lint_mode: full
 | 2026-04-17 | 모닝브리핑 | Dow +0.24% 반등 — 어제 "단독 약세 4중 시그널" 1건 **1일 만에 리버스**. 3대 지수 동시 신고가. 그러나 VIX 17.94(18선 붕괴, 4단계 극단) + 10Y 4.31%(4일 연속 반등) + Gold $4,813(첫 조정) + USD/KRW 1,481(재진입) **4건 대체 부상** — 경계 근거가 이동했을 뿐 총량은 증가 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-17 | 모닝브리핑 | 10Y 4.31% 4거래일 연속 반등 추세 확정 — 4.35% 돌파선 임박. "WTI 급락 디스인플레" 노이즈 해석 불가, **채권 시장의 구조적 메시지**. 5/13 CPI 단일 최대 이벤트. TLT 추가 하방 가속 | `macro/us_economy.md §3·§4` | 진행중 |
 | 2026-04-17 | 모닝브리핑 | Gold $4,813 4일 Bull 후 첫 조정 — **48시간 구조 vs 노이즈 판별**. $4,800 지지 유지 시 $4,850→$5,000 유효. $4,780 이탈 시 단기 모멘텀 약화. DXY 98.21 되돌림 2주 지속 시 재평가 | `macro/global_risk_factors.md §4` | 진행중 |
+| 2026-04-17 | 이브닝브리핑 | 이란 "재협상 의지" 공식 표명 → WTI $104→$93.74 3일 -10% 급락. 호르무즈 통항 3척/일 미해제. **4/21 휴전 만료 D-4 단일 최대 분기점**. 시나리오 A/B 35%/35% 균등화 | `macro/geopolitics.md §2-1, macro/supply_chain.md` | 진행중 |
+| 2026-04-17 | 이브닝브리핑 | 트럼프 파월 해임 위협 **신규 부상** — 05/15 임기 만료 후 이사직 해임 경고. DXY 98.19 + 10Y 4.31% 교차 "달러 신뢰 균열 + 구조적 인플레" 메시지 강화. Fed 독립성 리스크 | `macro/us_economy.md §3, macro/global_risk_factors.md` | 진행중 |
+| 2026-04-17 | 이브닝브리핑 | BTC $75K **+5.9% 급등** + Gold ~$4,800 첫 조정 동시 발생 — "탈달러 자산 내 순환(Gold→BTC)" 가설. $75K 1일+ 유지 시 독립 강세 확정. 3일 탈동조화 박스 탈출 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
+| 2026-04-17 | 이브닝브리핑 | VIX 17.94 **18선 붕괴 = 거짓 안정 4단계 극단** (4일 연속). S&P↔10Y 동반 상승 Z+1.8~2.2σ 🔴. 경계 근거 "이동했을 뿐 총량은 증가" — Dow 약세 1건 해소 vs 대체 경고 4건 부상 | `market/correlation_matrix.md, macro/global_risk_factors.md §2` | 진행중 |
 
 ---
 
@@ -124,11 +128,11 @@ lint_mode: full
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (04-13) valid_until 04-14 | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
-| `economic_calendar.md` | ⛔ FAILED + confidence:none | 주 1회 | A-4, B-1, C-6 | `/시장데이터수집` |
-| `surprise_index.md` | ⛔ FAILED + 만료 (04-08) | 매일 | B-4 | `/시장데이터수집` |
-| `correlation_matrix.md` | ⛔ FAILED + confidence:none | 주 1회 | B-5 | `/시장데이터수집` |
-| `guru_positions.md` | ⛔ FAILED + confidence:none valid_until 07-07 | 분기 1회 | A-5, B-7, C-4 | `/시장데이터수집 13F` |
+| `daily_snapshot.md` | ✅ SUCCESS (04-17) valid_until 04-18 | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
+| `economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
+| `surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 매일 | B-4 | 정량 시 `/시장데이터수집` |
+| `correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 주 1회 | B-5 | 정량 시 `/시장데이터수집` |
+| `guru_positions.md` | ⚠️ PARTIAL (04-17) valid_until 07-07 | 분기 1회 | A-5, B-7, C-4 | `/시장데이터수집 13F` |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
 > daily_snapshot은 fetch_price.py --market --save로 매일 자동 갱신
