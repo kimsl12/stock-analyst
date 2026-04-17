@@ -4,7 +4,7 @@ description: |
   브리핑 시스템 v3.4 통합 파이프라인의 **HTML 리포트 생성 전담**.
   briefing-lead 가 작성한 analysis/briefing/lead_*.md 산출물과 KB market/, portfolio/ 를 읽어
   reports/briefing/{type}_{YYYYMMDD}.html 다크 테마 리포트를 생성한다.
-  CSS: .up/.down/.neutral/.highlight/.warning + .debate-card(보라) + .contrarian-card(주황).
+  CSS: .up/.down/.neutral/.highlight/.warning + .debate-card(보라) + .contrarian-card(주황). 다크/라이트 테마 토글 필수 포함 [v3.6].
   시그널 바, 히트맵, 프로그레스 바, 시나리오 트리, 연쇄 효과 플로우 자동 변환.
   푸터(명령어 가이드) + 주의사항 블록(F-7, G-9) 자동 삽입.
   briefing-lead 가 모든 모듈 종결 시점에 호출.
@@ -104,13 +104,28 @@ extras: {
   --warning:#d29922;
   --debate:#8b5cf6;
 }
-/* 라이트 모드 [v3.5] */
+/* 라이트 모드 [v3.6] */
 [data-theme="light"]{
-  --bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666;
-  --border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--neutral:#888;
-  --highlight:#1976D2;--warning:#E65100;--debate:#7C3AED;
-  --contrarian:#d29922;
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
 }
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .warning-13f{background:#fff8c5 !important;color:#9a6700;border-color:#9a6700}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .scenario-tree .root{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .portfolio-card{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
 
