@@ -114,7 +114,7 @@ lint_mode: full
 | 파일 | 핵심 수치 | 핵심 리스크 | 갱신일 | 신뢰도 |
 |------|---------|-----------|-------|-------|
 | `us_economy.md` | **CPI 3.3%(에너지 주도), Core CPI 2.6%, GDPNow Q1 +1.3%, Fed 3.50~3.75%, 침체확률 30~49%** | 2중 인플레(에너지+파이프라인). ISM가격 78.3. 소비심리 47.6(역대최저). 6월 인하 소멸 | 04-14 | ✅ high |
-| `us_monetary_policy.md` | SSOT: `macro/us_monetary_policy.md` 참조 (루트 파일 = redirect 포인터) | 루트 파일 confidence:redirect — 수치 직접 참조 금지 | 04-13 | redirect |
+| `us_monetary_policy.md` | **Fed 3.50~3.75%(2연속 동결), CPI 3.3%(에너지 주도), Core CPI 2.6%, Core PCE 3.0%, QT 종료, 대차대조표 $6.7T, 10Y 4.31%, DXY 97.70, 침체확률 30~35%** | 트럼프 파월 05/15 해임 위협. 이란전쟁 에너지 인플레. 인하 하반기 후반 전망. Fed 독립성 리스크 | 04-18 | ✅ high |
 | `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI $97, Brent $102. Gold $4,762. 리스크 5/5 | **이란전쟁·호르무즈 봉쇄**(극고). Section 301·50% 위협. 희토류 1년 유예 | 04-14 | ✅ high |
 | `korea_economy.md` | **수출 3월 $86.1B(+48.3%), 반도체 $18.7B(+163.9%), KOSPI 5,778(+141% YoY), 금리 2.50%(7연속 동결), 원화 1,485원, 추경 26.2조** | 이란전쟁 공급충격+관세 이중 타격. 원화 약세 1,485원. 외국인 3월 $365억 순유출. 가계부채 1.5% 한도 | 04-14 | ✅ high |
 | `global_risk_factors.md` | VIX 19.12, F&G 41(Fear), DXY 98.39, 금 $4,761, 브렌트 $98 | Top5: 호르무즈봉쇄·미중디커플링·스태그플레이션·대만·부채 | 04-14 | ✅ high |
@@ -200,7 +200,7 @@ lint_mode: full
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: SSOT — 해당 파일 참조 | 04-13 | ✅ 구조 정리 완료 (루트→redirect 전환) |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-18 | ✅ SSOT 일치 |
 | VIX | `global_risk_factors.md`: 19.12 | `us_economy.md §9`: 19.15 | 04-14 | ✅ 일치 (시점차 0.03) |
 | DXY | `global_risk_factors.md`: 98.39 | `us_economy.md §9`: 98.65~99.05 | 04-14 | ✅ 일치 (시점차) |
 | WTI | `energy.md §1`: $97~100 | `geopolitics.md §6`: $97.22 | 04-14 | ✅ 일치 (양쪽 호르무즈 급등 반영) |
@@ -230,6 +230,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-18 | `macro/us_monetary_policy.md` | **전면 갱신** -- 3월 CPI 3.3%(에너지 주도 급등, 가솔린 +21.2%), Core CPI 2.6%, Core PCE 3.0%(2월), QT 공식 종료(2025-12, $2.2T 축소), 대차대조표 $6.7T, 10Y 4.31%(4일 연속 반등), DXY 97.70(6주 저점), 트럼프 파월 해임 위협(05/15), Warsh 인준+DOJ 조사, 침체확률 30~35%, 인하 하반기 후반 전망, 투자 시사점 추가 | +42 |
 | 2026-04-14 | `macro/supply_chain.md` | **주간 갱신** -- 호르무즈 미군 봉쇄 개시(04/14), 운임 반등(WCI $2,309/SCFI 1707~1827), WTI $104/Brent $98(EIA 연평균 $96), 요소비료 $750(+56%), 구리 $12,630(Triple Demand), HBM sold-out, TSMC 3nm 타이트, Section 122 15% 7/24만료, Section 232 반도체 25%, MATCH법안, 사이버공격 +61%, 희토류 Phase2 유예(~11/10) | +20 |
 | 2026-04-14 | `macro/korea_economy.md` | **전면 갱신** -- 기준금리 2.75%→2.50% 정정(7연속 동결), 수출 3월 $86.1B 사상최대(+48.3%), 반도체 $18.7B(+163.9%), KOSPI 5,778(+141% YoY, 기존 2,500 대비 대폭 정정), 원/달러 1,485원, 추경 26.2조 국회통과, 가계부채 관리방안, 이창용→신현송 총재교체, 경상수지 $1,500억 전망 | +22 |
 | 2026-04-14 | `industry/science_tech.md` | **전면 갱신** -- 15개 섹션 최신화: 양자(IonQ 99.99%/IQM Shor 2048bit), 6G(3GPP 60%/삼성 TSG RAN 의장), 사이버보안(Wiz $320억/SGNL $7.4억), 로봇(Optimus Gen3/Figure AI $390억), 우주(Starlink 10K기/SpaceX $7,500억), 바이오(경구 GLP-1/CRISPR 359사), SMR(Kairos 2026/Meta-TerraPower 8기), R&D(OECD 3.8T/한국 5.1%), CHIPS Act(Intel 18A 양산/트럼프 지분), EDA(Synopsys L4), 특허(370만건) | +51 |
@@ -239,7 +240,6 @@ lint_mode: full
 | 2026-04-14 | `macro/global_risk_factors.md` | **전면 갱신** — IMF WEO 4월(3.3%), 호르무즈 봉쇄 1위, VIX 19.12, DXY 98.39, 금 $4,761, 브렌트 $98, IEEPA 관세 무효화, 소비자심리 47.6 역대최저 | +22 |
 | 2026-04-13 | `_index.md` | **v3.2 wiki-linter full** — P0 갱신 + Industry 고아파일 8개 등재 + Macro 3개 갱신 확인 + Market 상태 정정 + 교차참조 맵 갱신 | — |
 | 2026-04-13 | `_index.md` | **v3.1 완전 재작성** — Wiki Index 전환 (LLM Wiki 원칙 적용) | — |
-| 2026-04-09 | `industry/ai_anthropic.md` | **신규 생성** — Anthropic 개별기업 KB (34건) | +34 |
 ---
 
 ## 🤖 에이전트 활용 가이드
