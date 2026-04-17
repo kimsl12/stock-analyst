@@ -62,9 +62,42 @@
   .change-up { color: var(--accent-green); }
   .change-down { color: var(--accent-red); }
   .change-neutral { color: var(--accent-yellow); }
+  [data-theme="light"] {
+    --bg: #f5f7fa; --card: #ffffff; --border: #d0d7de; --text: #24292f;
+    --text-bright: #1f2328; --accent-blue: #0969da; --accent-green: #1a7f37;
+    --accent-red: #cf222e; --accent-yellow: #9a6700; --accent-purple: #6639ba; --accent-orange: #bc4c00;
+  }
+  [data-theme="light"] body { background: #f5f7fa; }
+  [data-theme="light"] th { background: #eaeef2 !important; color: #1f2328; }
+  [data-theme="light"] td { background: #ffffff; color: #24292f; }
+  [data-theme="light"] tr:nth-child(even) td { background: #f6f8fa !important; }
+  [data-theme="light"] tr:hover td { background: #ddf4ff !important; }
+  [data-theme="light"] .top-banner { background: linear-gradient(135deg, #ddf4ff, #f1efff) !important; border-color: #0969da; }
+  [data-theme="light"] .top-banner h2 { color: #0969da; }
+  [data-theme="light"] .exec-summary { background: linear-gradient(135deg, #dafbe1, #f1efff) !important; border-color: #6639ba; }
+  [data-theme="light"] .exec-summary h3 { color: #6639ba; }
+  [data-theme="light"] .warning-banner { background: #fff8c5 !important; border-left-color: #9a6700; }
+  [data-theme="light"] .warning-banner strong { color: #9a6700; }
+  [data-theme="light"] .debate-card { background: #f1efff !important; border-left-color: #6639ba; }
+  [data-theme="light"] .contrarian-card { background: #fff1e5 !important; border-left-color: #bc4c00; }
+  [data-theme="light"] .tag-bull { background: #dafbe1 !important; color: #1a7f37 !important; border-color: #1a7f37 !important; }
+  [data-theme="light"] .tag-bear { background: #ffebe9 !important; color: #cf222e !important; border-color: #cf222e !important; }
+  [data-theme="light"] .tag-caution { background: #fff8c5 !important; color: #9a6700 !important; border-color: #9a6700 !important; }
+  [data-theme="light"] .tag-alert { background: #ffebe9 !important; color: #a40000 !important; border-color: #cf222e !important; }
+  [data-theme="light"] .card { background: #ffffff; border-color: #d0d7de; }
+  [data-theme="light"] .footer { color: #57606a; border-top-color: #d0d7de; }
+  [data-theme="light"] .source-tag { color: #57606a; }
+  [data-theme="light"] .issue-rank { color: #9a6700; }
+  [data-theme="light"] h4 { color: #9a6700; }
 </style>
 </head>
 <body>
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
 
 <!-- 최상단 배너 -->
 <div class="top-banner">
@@ -292,5 +325,14 @@
   <p><code>/종목분석 {티커}</code> - 개별 종목 심층 분석 | <code>/리밸런싱</code> - 포트폴리오 재조정 | <code>/내포트폴리오</code> - 개인 포트폴리오 관리</p>
 </div>
 
+<script>
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
+</script>
 </body>
 </html>
