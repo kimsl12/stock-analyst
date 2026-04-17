@@ -69,9 +69,28 @@
   .change-flat { color: var(--accent-yellow); }
   .exec-summary { background: linear-gradient(135deg, #0a2818, #1a0828); border: 1px solid var(--accent-purple); border-radius: 8px; padding: 22px; margin: 20px 0; }
   .exec-summary h3 { color: var(--accent-purple); margin-top: 0; }
+  [data-theme="light"] {
+    --bg: #f5f5f5; --card: #ffffff; --border: #e0e0e0; --text: #1a1a1a;
+    --text-bright: #000000; --accent-blue: #1976D2; --accent-green: #0D7C66;
+    --accent-red: #D32F2F; --accent-yellow: #E65100; --accent-purple: #7C3AED; --accent-orange: #E65100;
+  }
+  [data-theme="light"] th { background: #f0f0f0; }
+  [data-theme="light"] tr:nth-child(even) { background: #fafafa; }
+  [data-theme="light"] tr:hover { background: #f0f4ff; }
+  [data-theme="light"] .top-banner { background: linear-gradient(135deg, #e8f0fe, #f3e8ff); }
+  [data-theme="light"] .exec-summary { background: linear-gradient(135deg, #e8f8f0, #f3e8ff); }
+  [data-theme="light"] .debate-card { background: #f8f4ff; }
+  [data-theme="light"] .contrarian-card { background: #fff8f0; }
+  [data-theme="light"] .warning-banner { background: #fff8e1; }
 </style>
 </head>
 <body>
+
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
 
 <!-- ===== 상단 배너 ===== -->
 <div class="top-banner">
@@ -674,5 +693,14 @@ Generated: 2026-04-17 | briefing-lead + briefing-report-generator | v3.5 Morning
 </p>
 </div>
 
+<script>
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
+</script>
 </body>
 </html>
