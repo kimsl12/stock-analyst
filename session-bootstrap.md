@@ -1,8 +1,8 @@
-# Session Bootstrap — 세션 시작 시 1회 Read
+# Session Bootstrap
 
 > **갱신 주체:** stock-analyst-lead (매 작업 완료 후 자동 갱신)
 > **읽기 시점:** 모든 세션의 첫 번째 행동으로 Read
-> **목적:** 세션 간 연속성 확보 — 마지막 작업, 유효 파일, KB 상태를 1파일로 압축
+> **목적:** 세션 간 연속성 확보
 
 ---
 
@@ -10,15 +10,16 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | BA (Boeing Company) — 2026-04-16, Buy 74.9점 |
-| 마지막 브리핑 | 이브닝브리핑 — 2026-04-13 |
-| 마지막 KB 업데이트 | infrastructure — 2026-04-13 |
+| 마지막 종목분석 | NVDA (NVIDIA Corporation) - 2026-04-17, Strong Buy 81.6점 |
+| 마지막 브리핑 | 모닝브리핑 - 2026-04-17 |
+| 마지막 KB 업데이트 | infrastructure - 2026-04-13 |
 | 진행 중 작업 | 없음 |
 
 ## analysis/ 유효 파일 (최근 30일)
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| NVDA_NVIDIA | 2026-04-17 | 81.6 Strong Buy | 유효 |
 | BA_Boeing | 2026-04-16 | 74.9 Buy | 유효 |
 | KTOS_KratosDefense | 2026-04-16 | 64.0 Weak Buy | 유효 |
 | 035720_카카오 | 2026-04-16 | 64.5 Hold | 유효 |
@@ -33,7 +34,7 @@
 ## 현재 KB 상태 요약
 
 - **P0 항목**: market/ 전체 FAILED (재수집 필요), us_monetary 중복 해결 예정
-- **정상 Industry KB**: 12개 (semiconductor 부재 — advanced_materials·ai 대체 사용)
+- **정상 Industry KB**: 12개 (semiconductor 부재 - advanced_materials, ai 대체 사용)
 - **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
 - **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
 - **마지막 KB 갱신**: infrastructure 2026-04-13
