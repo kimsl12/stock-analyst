@@ -25,7 +25,7 @@ lint_mode: full
 | `market/economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | A-4, B-1, C-6 | — |
 | `market/correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-5 | 정량 필요 시 `/시장데이터수집` |
 | `market/surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-4 | 정량 필요 시 `/시장데이터수집` |
-| `market/guru_positions.md` | ⚠️ PARTIAL (04-17) confidence:low — 코멘트 기반 | A-5, B-7, C-4 | 13F 필요 시 `/시장데이터수집 13F` |
+| `market/guru_positions.md` | ✅ SUCCESS (04-18) confidence:high — Q4 2025 13F 전면 수집 | A-5, B-7, C-4 | 완료. Q1 2026은 05-15 이후 |
 | `macro/political_cycle.md` | ✅ 갱신 완료 (04-14) confidence:high | G-2, C-3 | — |
 | `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-14) confidence:high | G-3, C-3.5 | — |
 | `macro/supply_chain.md` | ✅ 갱신 완료 (04-14) confidence:high | G-1, C-3 | — |
@@ -132,7 +132,7 @@ lint_mode: full
 | `economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
 | `surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 매일 | B-4 | 정량 시 `/시장데이터수집` |
 | `correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 주 1회 | B-5 | 정량 시 `/시장데이터수집` |
-| `guru_positions.md` | ⚠️ PARTIAL (04-17) valid_until 07-07 | 분기 1회 | A-5, B-7, C-4 | `/시장데이터수집 13F` |
+| `guru_positions.md` | ✅ SUCCESS (04-18) valid_until 07-18 confidence:high | 분기 1회 | A-5, B-7, C-4 | Q1 2026은 05-15 이후 |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
 > daily_snapshot은 fetch_price.py --market --save로 매일 자동 갱신
@@ -176,10 +176,10 @@ lint_mode: full
 | `advanced_materials_2026.jsonl` | 35건 | kb-updater |
 | `battery_2026.jsonl` | 40건 | kb-updater |
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
-| `changelog_2026.jsonl` | 32건 | kb-updater |
+| `changelog_2026.jsonl` | 33건 | kb-updater |
 | `market/2026_daily_prices.md` | — (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
-| `market/2026_guru_changes.md` | — (FAILED) | market-data-collector |
+| `market/2026_guru_changes.md` | 60건 (Q4 2025 13F 8인 수집) | kb-updater |
 | `market/2026_correlation_log.md` | 0건 | correlation-monitor |
 
 ---
@@ -230,6 +230,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-18 | `market/guru_positions.md` | **Q4 2025 13F 전면 수집** -- 7인 13F 포지션(Burry 해산) + 2026 코멘트. 12개 소스 교차검증. Buffett $274B, Dalio $27.4B, Wood $15B, Druckenmiller $4.5B, Marks $7B, Tepper $6.9B, Ackman $15.5B. 컨버전스 7건(AMZN 3인, META/GOOGL/MU 2인, Gold 2인, 에너지 3인). confidence:low→high 승격 | +60 |
 | 2026-04-18 | `macro/us_monetary_policy.md` | **전면 갱신** -- 3월 CPI 3.3%(에너지 주도 급등, 가솔린 +21.2%), Core CPI 2.6%, Core PCE 3.0%(2월), QT 공식 종료(2025-12, $2.2T 축소), 대차대조표 $6.7T, 10Y 4.31%(4일 연속 반등), DXY 97.70(6주 저점), 트럼프 파월 해임 위협(05/15), Warsh 인준+DOJ 조사, 침체확률 30~35%, 인하 하반기 후반 전망, 투자 시사점 추가 | +42 |
 | 2026-04-14 | `macro/supply_chain.md` | **주간 갱신** -- 호르무즈 미군 봉쇄 개시(04/14), 운임 반등(WCI $2,309/SCFI 1707~1827), WTI $104/Brent $98(EIA 연평균 $96), 요소비료 $750(+56%), 구리 $12,630(Triple Demand), HBM sold-out, TSMC 3nm 타이트, Section 122 15% 7/24만료, Section 232 반도체 25%, MATCH법안, 사이버공격 +61%, 희토류 Phase2 유예(~11/10) | +20 |
 | 2026-04-14 | `macro/korea_economy.md` | **전면 갱신** -- 기준금리 2.75%→2.50% 정정(7연속 동결), 수출 3월 $86.1B 사상최대(+48.3%), 반도체 $18.7B(+163.9%), KOSPI 5,778(+141% YoY, 기존 2,500 대비 대폭 정정), 원/달러 1,485원, 추경 26.2조 국회통과, 가계부채 관리방안, 이창용→신현송 총재교체, 경상수지 $1,500억 전망 | +22 |
