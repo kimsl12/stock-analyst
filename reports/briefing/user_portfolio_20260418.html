@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내 포트폴리오 분석 | 2026-04-18</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-red: #f85149;
+    --accent-orange: #d29922;
+    --accent-purple: #8b5cf6;
+    --accent-gold: #f0c040;
+    --accent-cyan: #39d2c0;
+    --accent-yellow: #f0c040;
+  }
+
+  [data-theme="light"] {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eaeef2;
+    --border: #d0d7de;
+    --text-primary: #1f2328;
+    --text-secondary: #57606a;
+    --text-muted: #8c959f;
+    --accent-blue: #0969da;
+    --accent-green: #1a7f37;
+    --accent-red: #cf222e;
+    --accent-orange: #bc4c00;
+    --accent-purple: #6639ba;
+    --accent-gold: #9a6700;
+    --accent-cyan: #1b7c83;
+    --accent-yellow: #9a6700;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* sticky theme toggle */
+  .theme-toggle-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    margin: -20px -20px 20px -20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+  }
+  .theme-toggle-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.15s;
+  }
+  .theme-toggle-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+  }
+
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 2px solid var(--accent-blue);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 1.9rem;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+  }
+  .header .subtitle { color: var(--text-secondary); font-size: 0.95rem; }
+  .header .date-badge {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--accent-blue);
+    border-radius: 20px;
+    padding: 6px 16px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+  }
+
+  .privacy-banner {
+    background: var(--bg-tertiary);
+    border: 1px dashed var(--accent-orange);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 0 0 24px 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  .section h2 {
+    color: var(--accent-blue);
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h3 { color: var(--text-primary); font-size: 1.05rem; margin: 18px 0 10px; }
+  .section p { margin: 8px 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9rem; }
+  th { background: var(--bg-tertiary); color: var(--accent-blue); padding: 9px 12px; text-align: left; border: 1px solid var(--border); font-weight: 600; }
+  td { padding: 9px 12px; border: 1px solid var(--border); color: var(--text-primary); background: var(--bg-secondary); }
+  tr:nth-child(even) td { background: var(--bg-tertiary); }
+
+  .change-up   { color: var(--accent-green); font-weight: 600; }
+  .change-down { color: var(--accent-red);   font-weight: 600; }
+  .change-flat { color: var(--accent-yellow); font-weight: 600; }
+
+  /* highlight cards */
+  .change-card {
+    background: var(--bg-tertiary);
+    border-left: 4px solid var(--accent-purple);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .change-card.add    { border-left-color: var(--accent-green); }
+  .change-card.remove { border-left-color: var(--accent-red); }
+  .change-card.boost  { border-left-color: var(--accent-orange); }
+  .change-card .label { font-weight: 700; color: var(--accent-blue); margin-right: 8px; }
+  .change-card.add .label    { color: var(--accent-green); }
+  .change-card.remove .label { color: var(--accent-red); }
+  .change-card.boost .label  { color: var(--accent-orange); }
+
+  /* progress bar (weight visualization) */
+  .pbar { width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; height: 14px; overflow: hidden; }
+  .pbar > span { display: block; height: 100%; background: var(--accent-blue); transition: width 0.3s; }
+  .pbar.warn > span { background: var(--accent-red); }
+  .pbar.mid  > span { background: var(--accent-orange); }
+  .pbar.ok   > span { background: var(--accent-green); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    body { padding: 12px; }
+    .theme-toggle-bar { margin: -12px -12px 16px -12px; }
+  }
+
+  .signal-bar { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .signal-bull   { background: var(--accent-green); }
+  .signal-bear   { background: var(--accent-red); }
+  .signal-neutral{ background: var(--accent-yellow); }
+  .signal-alert  { background: var(--accent-orange); }
+
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78rem; margin-right: 4px;
+  }
+  .tag-bull    { background: rgba(63,185,80,0.18);  color: var(--accent-green); }
+  .tag-bear    { background: rgba(248,81,73,0.18);  color: var(--accent-red); }
+  .tag-caution { background: rgba(210,153,34,0.20); color: var(--accent-orange); }
+  .tag-info    { background: rgba(88,166,255,0.18); color: var(--accent-blue); }
+
+  .source-tag { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
+
+  ul, ol { margin-left: 22px; }
+  li { margin: 4px 0; }
+
+  .footer {
+    margin-top: 36px;
+    padding: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .heatmap-cell { text-align: center; font-weight: 600; }
+  .grade-extreme { background: rgba(248,81,73,0.30); color: var(--accent-red); }
+  .grade-warn    { background: rgba(210,153,34,0.25); color: var(--accent-orange); }
+  .grade-mid     { background: rgba(240,192,64,0.20); color: var(--accent-yellow); }
+  .grade-ok      { background: rgba(63,185,80,0.20);  color: var(--accent-green); }
+</style>
+</head>
+<body>
+
+<div class="theme-toggle-bar">
+  <span style="color: var(--text-secondary); font-size: 0.85rem;">Theme</span>
+  <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">Light Mode</button>
+</div>
+
+<div class="header">
+  <h1>내 포트폴리오 분석</h1>
+  <p class="subtitle">크립토 청산 + VIG 신규 + QQQ 추가 매수 — 4일간 3중 리밸런싱 진단</p>
+  <span class="date-badge">2026-04-18 (Saturday)</span>
+</div>
+
+<div class="privacy-banner">
+  본 리포트는 사용자 1인의 개인 데이터 기반입니다. 절대금액·계좌정보는 비공개 처리되며, 자산군 비중(%)과 변동률만 노출됩니다.
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: Executive Summary -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>1. 핵심 한 줄 요약</h2>
+  <p style="font-size: 1.05rem; line-height: 1.7;">
+    <strong style="color: var(--accent-purple);">"투기적 베타(크립토)를 시장 베타(빅테크)로 교체했다."</strong>
+    변동성은 줄였지만 <strong style="color: var(--accent-red);">단일 시장(미국)·단일 통화(USD)·단일 자산군(주식)</strong> 의존도가 오히려 심화됐습니다.
+    매크로 환경(VIX 거짓 안정 5단계·금 강세·달러 약세·지정학 잠복)은 헤지 자산 편입을 권유하는 신호를 다수 보내고 있습니다.
+  </p>
+  <p class="source-tag">근거: knowledge-base/portfolio/user_portfolio.md (2026-04-18) | knowledge-base/macro/global_risk_factors.md (2026-04-14) | knowledge-base/market/daily_snapshot.md (2026-04-18)</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: 4일간 변경 사항 하이라이트 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>2. 4일간 리밸런싱 변경 사항 (04-14 → 04-18)</h2>
+
+  <div class="change-card remove">
+    <p><span class="label">CLOSED</span> 크립토 전량 청산 (BTC / ETH / SOL / XRP)</p>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">변동성 자산 비중 → <strong>0%</strong>. 포트폴리오 베타 대폭 감소. 사용자 등록 프로파일("중립")과의 정합성 회복.</p>
+  </div>
+
+  <div class="change-card add">
+    <p><span class="label">NEW</span> VIG (Vanguard Dividend Appreciation ETF) 신규 편입</p>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">배당 성장 노출 신설 → 비중 약 <strong>2.1%</strong>. 안정성 + 인플레 헤지 의도. 다만 의미있는 현금흐름 기여 미달 수준.</p>
+  </div>
+
+  <div class="change-card boost">
+    <p><span class="label">ADDED</span> QQQ (NASDAQ 100 ETF) 추가 매수</p>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">보유 약 <strong>+70%</strong> 증가 → 비중 <strong>4.6%</strong>. 빅테크/AI 노출 확대.</p>
+  </div>
+
+  <div class="change-card remove">
+    <p><span class="label">DEPLETED</span> 달러 현금 거의 소진</p>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">현금 비중 → <strong>0.0%</strong>. 추가 매수 여력 부재. 변동성 충격 시 평단 낮추기 불가.</p>
+  </div>
+
+  <div class="change-card add">
+    <p><span class="label">EQUITY +6.8%</span> 해외주식 평가금 증가</p>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">NASDAQ 13연승·S&P 신고가 효과로 평가 상승. <span class="source-tag">[daily_snapshot.md]</span></p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: 현재 보유 비중 (마스킹 처리 — 비중%만 노출) -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>3. 현재 자산군 비중 (2026-04-18 기준)</h2>
+  <p class="source-tag">절대금액 비공개 — 비중(%)·수익률·자산군만 표기</p>
+
+  <table>
+    <tr>
+      <th style="width: 18%;">티커</th>
+      <th style="width: 32%;">자산군 / 분류</th>
+      <th style="width: 12%;">비중</th>
+      <th style="width: 28%;">비중 시각화</th>
+      <th style="width: 10%;">수익률</th>
+    </tr>
+    <tr>
+      <td><strong>VOO</strong></td>
+      <td>미국 S&P 500 인덱스 ETF</td>
+      <td><strong>91.5%</strong></td>
+      <td><div class="pbar warn"><span style="width: 91.5%"></span></div></td>
+      <td class="change-up">+7.1%</td>
+    </tr>
+    <tr>
+      <td><strong>QQQ</strong></td>
+      <td>미국 NASDAQ 100 ETF</td>
+      <td><strong>4.6%</strong></td>
+      <td><div class="pbar mid"><span style="width: 4.6%"></span></div></td>
+      <td class="change-up">+6.5%</td>
+    </tr>
+    <tr>
+      <td><strong>VIG</strong></td>
+      <td>미국 배당 성장 ETF</td>
+      <td><strong>2.1%</strong></td>
+      <td><div class="pbar"><span style="width: 2.1%"></span></div></td>
+      <td class="change-up">+0.4%</td>
+    </tr>
+    <tr>
+      <td><strong>AGG</strong></td>
+      <td>미국 종합 채권 ETF</td>
+      <td><strong>1.7%</strong></td>
+      <td><div class="pbar"><span style="width: 1.7%"></span></div></td>
+      <td class="change-up">+0.8%</td>
+    </tr>
+    <tr>
+      <td><strong>SCHD</strong></td>
+      <td>미국 배당 ETF</td>
+      <td><strong>0.1%</strong></td>
+      <td><div class="pbar"><span style="width: 0.5%"></span></div></td>
+      <td class="change-up">+13.9%</td>
+    </tr>
+    <tr>
+      <td><strong>GLD</strong></td>
+      <td>금 (Gold) ETF</td>
+      <td><strong>0.004%</strong></td>
+      <td><div class="pbar"><span style="width: 0.5%"></span></div></td>
+      <td class="change-down">-1.8%</td>
+    </tr>
+    <tr>
+      <td>(현금)</td>
+      <td>달러 / 원화 현금</td>
+      <td><strong>~0.0%</strong></td>
+      <td><div class="pbar"><span style="width: 0.5%"></span></div></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>(크립토)</td>
+      <td>BTC / ETH / SOL / XRP</td>
+      <td><strong>0.0%</strong></td>
+      <td>청산 완료</td>
+      <td>—</td>
+    </tr>
+  </table>
+
+  <h3>자산군 집계</h3>
+  <table>
+    <tr><th>자산군</th><th>현재 비중</th><th>구성</th></tr>
+    <tr><td>미국 주식 (성장 + 배당)</td><td><strong style="color: var(--accent-red);">98.3%</strong></td><td>VOO 91.5% + QQQ 4.6% + VIG 2.1% + SCHD 0.1%</td></tr>
+    <tr><td>채권</td><td>1.7%</td><td>AGG</td></tr>
+    <tr><td>금/원자재</td><td>0.004%</td><td>GLD (사실상 부재)</td></tr>
+    <tr><td>크립토</td><td>0.0%</td><td>(청산)</td></tr>
+    <tr><td>현금</td><td>~0.0%</td><td>(소진)</td></tr>
+    <tr><td>국내 주식 (KOSPI)</td><td>0.0%</td><td>(미보유)</td></tr>
+    <tr><td>이머징/글로벌 테마</td><td>0.0%</td><td>(미보유)</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: 4종 모델 포트폴리오 매핑 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>4. 4종 모델 포트폴리오 비교 — 가장 가까운 유형은?</h2>
+
+  <p>사용자 등록 프로파일은 <strong>중립형</strong>이지만, 실제 보유 구성은 <strong style="color: var(--accent-orange);">공격형의 변종(Hybrid)</strong>에 가장 가깝습니다 — 빅테크 코어 비중이 공격형 1번 항목과 정합. 단, 크립토·이머징·국내 성장주가 0%이고 대신 배당+채권이 약간 끼어 있는 구조입니다.</p>
+
+  <h3>매칭도 평가</h3>
+  <table>
+    <tr><th>모델</th><th>대표 자산</th><th>매칭도</th><th>차이점</th></tr>
+    <tr>
+      <td>🛡️ <strong>안전형</strong></td>
+      <td>S&P 20~30% / 채권 15~25% / 금 5~10% / KOSPI 25~35%</td>
+      <td class="heatmap-cell grade-extreme">매우 낮음</td>
+      <td>국내·채권·금 모두 부족</td>
+    </tr>
+    <tr>
+      <td>⚖️ <strong>중립형</strong></td>
+      <td>미국 성장 20~30% / KOSPI 20~30% / 채권 10~20% / 크립토 0~8%</td>
+      <td class="heatmap-cell grade-extreme">매우 낮음</td>
+      <td>미국 비중이 모델 범위 대비 약 3배 초과</td>
+    </tr>
+    <tr>
+      <td>🔥 <strong>공격형</strong></td>
+      <td>빅테크 25~35% / 국내 성장 15~25% / 글로벌 테마 10~20% / 크립토 10~20%</td>
+      <td class="heatmap-cell grade-warn">⭐ 가장 가까움</td>
+      <td>빅테크 코어는 일치, 크립토/이머징은 정반대(0%)</td>
+    </tr>
+    <tr>
+      <td>💰 <strong>배당형</strong></td>
+      <td>미국 배당 ETF 20~30% / 국내 고배당 15~25% / 리츠 10~20%</td>
+      <td class="heatmap-cell grade-extreme">매우 낮음</td>
+      <td>VIG+SCHD 합산 2.2%로 배당 코어 미달</td>
+    </tr>
+  </table>
+
+  <h3>중립형 기준 자산군 괴리</h3>
+  <table>
+    <tr><th>자산군</th><th>현재</th><th>중립형 목표</th><th>괴리(%p)</th><th>등급</th></tr>
+    <tr><td>미국 대형 성장주</td><td>96.1%</td><td>20~30%</td><td>+66 ~ +76</td><td class="heatmap-cell grade-extreme">극단 초과</td></tr>
+    <tr><td>국내 주식 (KOSPI)</td><td>0.0%</td><td>20~30%</td><td>−20 ~ −30</td><td class="heatmap-cell grade-extreme">완전 부재</td></tr>
+    <tr><td>채권 (AGG)</td><td>1.7%</td><td>10~20%</td><td>−8 ~ −18</td><td class="heatmap-cell grade-extreme">극도 부족</td></tr>
+    <tr><td>배당주 (VIG+SCHD)</td><td>2.2%</td><td>5~15%</td><td>−3 ~ −13</td><td class="heatmap-cell grade-warn">부족 (신규 진행)</td></tr>
+    <tr><td>금/원자재 (GLD)</td><td>0.004%</td><td>3~8%</td><td>−3 ~ −8</td><td class="heatmap-cell grade-extreme">사실상 부재</td></tr>
+    <tr><td>크립토</td><td>0.0%</td><td>0~8%</td><td>청산</td><td class="heatmap-cell grade-ok">범위 내(하단)</td></tr>
+    <tr><td>글로벌 섹터/테마</td><td>0.0%</td><td>5~15%</td><td>−5 ~ −15</td><td class="heatmap-cell grade-extreme">부재</td></tr>
+    <tr><td>현금</td><td>0.0%</td><td>3~10%</td><td>−3 ~ −10</td><td class="heatmap-cell grade-extreme">무방비</td></tr>
+  </table>
+  <p class="source-tag">출처: knowledge-base/portfolio/model_portfolios.md (비중 범위만 사용 — 추천 비중은 미수집 상태)</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: 매크로 환경 적합성 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>5. 매크로 환경 적합성 평가</h2>
+
+  <table>
+    <tr><th>환경 변수</th><th>현재 상태</th><th>사용자 적합성</th></tr>
+    <tr>
+      <td>호르무즈 봉쇄 → 완전 개방 (04-17)</td>
+      <td>WTI $104→$90.79 급락</td>
+      <td><span class="signal-bar signal-neutral"></span> 중립 (에너지 자산 무보유)</td>
+    </tr>
+    <tr>
+      <td>NASDAQ 13연승 / S&P 신고가</td>
+      <td>NASDAQ +5.20%/주</td>
+      <td><span class="signal-bar signal-bull"></span> 단기 수혜 (VOO+QQQ 96%)</td>
+    </tr>
+    <tr>
+      <td>VIX 17.48 "거짓 안정 5단계"</td>
+      <td>소비심리 47.6과 30pt 괴리</td>
+      <td><span class="signal-bar signal-bear"></span> <strong>위험</strong> — VIX 정상화 시 충격 100% 노출</td>
+    </tr>
+    <tr>
+      <td>DXY 98.21 (3년래 최저권)</td>
+      <td>탈달러 구조적 약세</td>
+      <td><span class="signal-bar signal-neutral"></span> 양면 (자산 USD 표시)</td>
+    </tr>
+    <tr>
+      <td>Gold $4,831 (4연속 주간 상승)</td>
+      <td>중앙은행 매수 + 재정적자 구조</td>
+      <td><span class="signal-bar signal-bear"></span> <strong>미참여</strong> — GLD 0.004%</td>
+    </tr>
+    <tr>
+      <td>10Y 4.26%, MOVE 안정</td>
+      <td>채권 변동성 정상화</td>
+      <td><span class="signal-bar signal-alert"></span> 미흡 — AGG 1.7%만</td>
+    </tr>
+    <tr>
+      <td>호르무즈/대만/미중 지정학 잠복</td>
+      <td>Top1 리스크 "현재진행"</td>
+      <td><span class="signal-bar signal-bear"></span> <strong>무방비</strong> — 헤지 합산 1.7%</td>
+    </tr>
+  </table>
+  <p class="source-tag">[daily_snapshot.md, global_risk_factors.md §1 §2 §4]</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: 자산군 수준 권장 조정 방향 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>6. 자산군 수준 권장 조정 방향</h2>
+  <p class="source-tag">⚠️ 본 섹션은 자산군 비중 방향성만 제시합니다. 매수/매도/익절/목표가 등 개별 액션 추천은 정책상 금지(브리핑 규칙 #1).</p>
+
+  <h3>6-1. 즉시 점검 권장</h3>
+  <table>
+    <tr><th>우선순위</th><th>자산군</th><th>현재 비중</th><th>방향</th><th>매크로 근거</th></tr>
+    <tr>
+      <td><span class="tag tag-bear">1</span></td>
+      <td>현금</td>
+      <td>0.0%</td>
+      <td><strong style="color: var(--accent-red);">확보 필요</strong></td>
+      <td>적립식 외 추가 매수 여력 0. VIX 거짓 안정 충격 시 평단 낮추기 불가</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-bear">2</span></td>
+      <td>금/안전자산</td>
+      <td>0.004%</td>
+      <td><strong style="color: var(--accent-red);">편입 검토</strong></td>
+      <td>Gold 4연속 주간 상승 + 중앙은행 매수 + DXY 약세</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-caution">3</span></td>
+      <td>채권 (중기 국채)</td>
+      <td>1.7%</td>
+      <td><strong style="color: var(--accent-orange);">확대 검토</strong></td>
+      <td>10Y 4.26% + MOVE 안정. Fed 동결+인플레 완화 시 캐리+가격 동시</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-caution">4</span></td>
+      <td>미국 대형 성장주 (VOO+QQQ)</td>
+      <td>96.1%</td>
+      <td><strong style="color: var(--accent-orange);">추가 비중 신중</strong></td>
+      <td>NASDAQ 13연승 + VIX 17.48 = 단기 과열 신호</td>
+    </tr>
+  </table>
+
+  <h3>6-2. 중장기 검토</h3>
+  <table>
+    <tr><th>자산군</th><th>현재</th><th>검토 사유</th></tr>
+    <tr>
+      <td>국내 KOSPI</td>
+      <td>0%</td>
+      <td>KOSPI 6,191 (+3.76%/주, 1개월 최고). 외국인 SK하이닉스 2.87조 + 삼성전자 1.96조 순매수. 환위험 헤지 효과 동반</td>
+    </tr>
+    <tr>
+      <td>글로벌 섹터/테마</td>
+      <td>0%</td>
+      <td>미국 단일 국가 의존 위험. 인도 +6.3% 성장(IMF) 같은 대안 시장 존재</td>
+    </tr>
+    <tr>
+      <td>배당주 (VIG+SCHD)</td>
+      <td>2.2%</td>
+      <td>VIG 신규 편입 방향 자체는 매크로(배당 성장+인플레 헤지)와 정합. 현재 비중은 의미있는 현금흐름 기여 미달</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: 크립토 청산 자금 운용 의견 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>7. 크립토 청산 자금 운용 의견</h2>
+
+  <p>BTC/ETH/SOL/XRP 전량 매도 자금이 <strong>VOO·QQQ·VIG로 회전</strong>된 것으로 보입니다 (현금 잔액 ~0 = 전부 ETF로 전환).</p>
+
+  <div class="grid-2">
+    <div class="change-card add">
+      <p><span class="label">합리적</span> 변동성 감축 측면</p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">BTC $77,319 + Fear&Greed 26(Fear) 환경에서 크립토 익스포저 제거는 방어적 선택. 사용자 등록 프로파일("중립")과의 정합성 회복.</p>
+    </div>
+    <div class="change-card boost">
+      <p><span class="label">불균형</span> 회전 방향이 균형 결여</p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">청산 자금 100%가 미국 주식 ETF로만 회전 → "변동성 자산을 다른 변동성 자산으로 교체". 채권·금·현금 일부 분산이 헤지 효과를 키웠을 가능성.</p>
+    </div>
+    <div class="change-card remove">
+      <p><span class="label">동시 위험</span> 현금 0% 위험 발생</p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">크립토 청산의 방어적 의도가 "현금 소진"이라는 또 다른 리스크와 상쇄됨. 적립식 신규 자금 외에는 시장 충격 시 평단 낮출 여력 부재.</p>
+    </div>
+    <div class="change-card add">
+      <p><span class="label">방향성</span> 다음 적립금 활용</p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">미국 ETF 외 자산군(채권·금·국내·현금)에 분산 배치하는 흐름이 매크로 환경(VIX 거짓 안정·금 강세·채권 안정)과 더 정합.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: 시나리오 민감도 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>8. 시나리오별 사용자 포트폴리오 민감도</h2>
+
+  <table>
+    <tr><th>시나리오</th><th>발생 시 영향</th><th>회복 탄력성</th></tr>
+    <tr>
+      <td>VIX 정상화 (17→25~30)</td>
+      <td>VOO+QQQ 96% → 즉시 5~10% 손실 가능</td>
+      <td><span class="signal-bar signal-bear"></span> 낮음 (현금·헤지 1.7%만)</td>
+    </tr>
+    <tr>
+      <td>호르무즈 재봉쇄</td>
+      <td>WTI 재상승 → 인플레 우려 → 성장주 PER 압박</td>
+      <td><span class="signal-bar signal-neutral"></span> 중립 (간접 영향)</td>
+    </tr>
+    <tr>
+      <td>Fed 깜짝 매파 발언</td>
+      <td>빅테크(QQQ) 듀레이션 부담 → 단기 -3~-7%</td>
+      <td><span class="signal-bar signal-neutral"></span> 중립</td>
+    </tr>
+    <tr>
+      <td>달러 추가 약세 (DXY 95↓)</td>
+      <td>USD 표시 자산 평가금 변동, 원화 환산 손실 가능</td>
+      <td><span class="signal-bar signal-neutral"></span> 중립 (환헤지 부재)</td>
+    </tr>
+    <tr>
+      <td>금 추가 강세 ($5,500+)</td>
+      <td>미참여로 기회손실</td>
+      <td><span class="signal-bar signal-bear"></span> 0% 노출</td>
+    </tr>
+    <tr>
+      <td>KOSPI 7,000 돌파</td>
+      <td>미참여로 기회손실</td>
+      <td><span class="signal-bar signal-bear"></span> 0% 노출</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: 4종 포트폴리오 방향 (참고) -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>9. 4종 포트폴리오 방향 (참고)</h2>
+  <table>
+    <tr><th>유형</th><th>방향</th><th>1줄 시사점</th></tr>
+    <tr><td>🛡️ 안전형</td><td><span class="tag tag-info">유지</span></td><td>채권·금·현금 코어 비중 보존. VIX 거짓 안정 환경에서 추격 불요</td></tr>
+    <tr><td>⚖️ 중립형</td><td><span class="tag tag-caution">조정</span></td><td>미국 편중 줄이고 KOSPI·금·채권으로 균형 회복 검토</td></tr>
+    <tr><td>🔥 공격형</td><td><span class="tag tag-bear">경계</span></td><td>NASDAQ 13연승 = 단기 과열 신호. 신규 자금은 분할 진입</td></tr>
+    <tr><td>💰 배당형</td><td><span class="tag tag-info">유지</span></td><td>VIG·SCHD 코어 보존. 함정 배당 종목 회피 (규칙 #19)</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: 데이터 시차 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>10. 데이터 시차 / 출처</h2>
+  <ul>
+    <li>포트폴리오 데이터: 2026-04-18 사용자 직접 입력 (토스증권 스크린샷 기반)</li>
+    <li>시장 종가: 2026-04-18 Friday close 기준</li>
+    <li>매크로 KB: knowledge-base/macro/global_risk_factors.md (2026-04-14 갱신, valid_until 2026-05-14)</li>
+    <li>모델 포트폴리오: knowledge-base/portfolio/model_portfolios.md (2026-04-07 — 추천 비중은 미수집 상태, 비중 범위만 비교 사용)</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER + 사용법 -->
+<!-- ============================================================ -->
+<div class="section">
+  <h2>리포트 사용법 (다음 명령)</h2>
+  <ul>
+    <li><code>/내포트폴리오</code> — 포트폴리오 갱신·재분석</li>
+    <li><code>/리밸런싱</code> — 4종 모델 기반 자산군 비중 변화 제안</li>
+    <li><code>/모델포트폴리오</code> — 4종 모델 추천 비중 갱신 (현재 비중 범위 외 추천치 미수집)</li>
+    <li><code>/모닝브리핑</code> 또는 <code>/이브닝브리핑</code> — 매크로·시장 일일 브리핑</li>
+    <li><code>/종목분석 {티커}</code> — VOO/QQQ/VIG/AGG/GLD/SCHD 등 보유 종목 심층 분석</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Powered by briefing-lead | 본 자료는 정보 제공 목적이며, 투자 권유가 아닙니다.<br>
+  생성: 2026-04-18 | 모드: user_portfolio (private)
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    btn.textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
+    try { localStorage.setItem('briefingTheme', next); } catch(e) {}
+  }
+  // 저장된 테마 복원
+  try {
+    const saved = localStorage.getItem('briefingTheme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      document.getElementById('themeBtn').textContent = saved === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+  } catch(e) {}
+</script>
+
+</body>
+</html>
