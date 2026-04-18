@@ -65,6 +65,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 갱신일 | A 확률 | B 확률 | C 확률 | D 확률 | 변화 이유 | 출처 |
 |---|---|---|---|---|---|---|
 | 2026-04-14 | 25% | 45% | 20% | 10% | 초기 설정. 파키스탄 회담 결렬+미 해군 봉쇄 개시. 트럼프 "이란이 딜 원해" 발언은 A 가능성 유지 | CNN, NPR, Al Jazeera, CNBC |
+| 2026-04-18 | 55% | 25% | 5% | 15% | 호르무즈 "완전 개방" 선언(4/17). WTI $104→$84(-19%). 이스라엘-레바논 10일 휴전. 단 물리적 정상화 미완(기뢰 21건, 이란 항구 봉쇄 유지). 4/21 휴전 만료가 A vs B 최종 분기점 | CNBC, Bloomberg, Al Jazeera, InsuranceJournal |
 
 ---
 
@@ -84,6 +85,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 갱신일 | A 확률 | B 확률 | C 확률 | 변화 이유 | 출처 |
 |---|---|---|---|---|---|
 | 2026-04-14 | 30% | 50% | 20% | 초기 설정. 트럼프 50% 관세 위협+이란 무기수출 보도. 회담 자체는 예정대로 진행 중 | CNBC, US News, PIIE |
+| 2026-04-18 | 35% | 45% | 20% | 호르무즈 해소가 외교 환경 개선. 이란 무기수출 쟁점 완화 가능. Section 301 조사 진행 중이나 회담 예정대로 | CNBC, supply_chain.md |
 
 ---
 
@@ -103,6 +105,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 갱신일 | A 확률 | B 확률 | C 확률 | 변화 이유 | 출처 |
 |---|---|---|---|---|---|
 | 2026-04-14 | 20% | 60% | 20% | 초기 설정. CPI 3.3%+WTI $96+비료 인플레 -> 인하 여건 악화. 침체확률 50%가 비둘기 압력 | us_monetary_policy.md, ainvest.com |
+| 2026-04-18 | 15% | 55% | 30% | 호르무즈 개방 → 에너지 인플레 완화 기대 → 비둘기 공간 소폭 확대. Core CPI 2.6% + ISM 70.7 = 인하 명분 부족. 파월 해임 위협은 커뮤니케이션 복잡성 증가 | us_monetary_policy.md, CNBC |
 
 ---
 

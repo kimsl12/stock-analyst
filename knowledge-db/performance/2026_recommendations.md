@@ -104,6 +104,12 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-18 | morning | 시나리오 | 호르무즈 이후 시나리오 A "실적 랠리" 확률 50%(상향) | Bull (S&P 7,200~7,300) | 단기~중기 | 중간 | 호르무즈 해소+금융 실적 Beat+NASDAQ 13일 연승. 10일 휴전 연장+TSLA Beat 조건부. 시나리오 B 35%(하향), C 15%(신규-재봉쇄) [daily_snapshot 04-18, 역사 통계] | reports/briefing/morning_20260418.html | 진행중 |
 | 2026-04-18 | morning | 자산군 | 에너지주(XLE/XOM/CVX) 급락 후 역발상 — WTI $80~90 Cash Flow 여전히 건재 | Bull (역발상, 조건부) | 단기~중기 | 중간 | WTI $84(-19%) 급락으로 에너지주 XOM -3.7% CVX -2.2% 과매도. 그러나 이란 항구 봉쇄 유지+기뢰 미제거+OPEC 감산=WTI $80 하방 지지. Buffett CVX/OXY+Marks EXE/VNOM 거물 포지션 유지 [daily_snapshot, guru_positions Q4 2025] | reports/briefing/morning_20260418.html | 진행중 |
 
+| 2026-04-18 | weekly | ETF | GLD/IAU — Gold $4,878 신고가, 탈달러 구조적 Bull S등급 | Bull (구조적) | 중기~장기 | 높음 | Gold $4,878 신고가. DXY 98.23 호르무즈 해소에도 반등 없음=구조적. Dalio $5,000 전망+JPM $5,055(4Q26E). 중앙은행 매수+재정적자 [daily_snapshot, guru_positions, J.P. Morgan] | reports/briefing/weekly_20260418.html | 진행중 |
+| 2026-04-18 | weekly | 종목 | NVDA — 거물 컨버전스+AI 추론 수요 폭발 A등급 | Bull | 중기 | 중간~높음 | Dalio +54%, Druckenmiller 신규. TSMC N2 수혜. CapEx 5사 $660-690B. 밸류에이션 40x+ 리스크 [guru_positions, capex.md, tech_breakthrough.md] | reports/briefing/weekly_20260418.html | 진행중 |
+| 2026-04-18 | weekly | 시나리오 | 시나리오 A "실적 랠리" 확률 50%(상향) — 호르무즈 해소+실적 Beat | Bull (S&P 7,200~7,300) | 단기~중기 | 중간 | 호르무즈 완전 개방+금융 2연속 Beat+NASDAQ 13일 연승. TSLA Beat+휴전 연장 조건부. B 35% C 15% [daily_snapshot 04-18, 역사 통계] | reports/briefing/weekly_20260418.html | 진행중 |
+| 2026-04-18 | weekly | 이벤트 | VIX "거짓 안정 5단계" — 2~3주 내 25~30 재상승 C-8 리스크 | Bear (VIX 상방) | 단기 | 중간~높음 | VIX 17.48 vs 소비심리 47.6 괴리 30pt(역대급). 2018.02 VIXpocalypse 유사 숏볼 극단. 4/23 TSLA+4/28 FOMC 트리거 [CBOE, U.Michigan, 역사 통계] | reports/briefing/weekly_20260418.html | 진행중 |
+| 2026-04-18 | weekly | 자산군 | DXY 구조적 약세 — 호르무즈 해소에도 반등 없음 contrarian | Bear (달러) | 중기 | 중간~높음 | DXY 98.23 3년최저 고착. 재정적자 GDP -6.5~7.0%+중앙은행 Gold 매수+파월 해임 위협. Fed 독립성 훼손 시 DXY 95~96 [global_risk_factors §4, FRED, fortune] | reports/briefing/weekly_20260418.html | 진행중 |
+
 ---
 
 ## 자동 append 절차 (briefing-lead Step 8.5 — 워크플로 통합)

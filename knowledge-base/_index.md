@@ -2,8 +2,8 @@
 updated: 2026-04-19
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-04-13
-lint_mode: full
+lint_last_run: 2026-04-18
+lint_mode: quick
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -14,27 +14,31 @@ lint_mode: full
 
 ---
 
-## 🚨 P0 — 즉시 조치 필요 (FAILED / 만료)
+## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-13 (wiki-linter full)**
+> **최종 갱신: 2026-04-18 (wiki-linter quick — 주간리포트 Phase 0-A 전)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| `market/daily_snapshot.md` | ✅ SUCCESS (04-14) valid_until 04-15 | A-1, B-2, B-3 | -- |
-| `market/economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | A-4, B-1, C-6 | — |
-| `market/correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-5 | 정량 필요 시 `/시장데이터수집` |
-| `market/surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-4 | 정량 필요 시 `/시장데이터수집` |
-| `market/guru_positions.md` | ✅ SUCCESS (04-18) confidence:high — Q4 2025 13F 전면 수집 | A-5, B-7, C-4 | 완료. Q1 2026은 05-15 이후 |
-| `macro/political_cycle.md` | ✅ 갱신 완료 (04-14) confidence:high | G-2, C-3 | — |
-| `macro/tech_breakthrough.md` | ✅ 갱신 완료 (04-14) confidence:high | G-3, C-3.5 | — |
-| `macro/supply_chain.md` | ✅ 갱신 완료 (04-18) confidence:high | G-1, C-3 | — |
-| `portfolio/model_portfolios.md` | ⚠️ confidence:low 미수집 | F-2~F-5 | `/모델포트폴리오` 실행 |
-| `portfolio/user_portfolio.md` | ✅ 등록 완료 (04-13) confidence:high | /내포트폴리오 | — |
-| `us_monetary_policy.md` (루트) | ⚠️ confidence:redirect — SSOT 아님 | 교차참조 | `macro/us_monetary_policy.md` 사용 |
+| `market/daily_snapshot.md` | [WARN] valid_until 04-19 (내일 만료) confidence:medium | A-1, B-2, B-3 | 04-19(일) 수집 필요. 주말 휴장으로 금요일 데이터 유효 |
+| `market/economic_calendar.md` | SUCCESS (04-17) valid_until 04-25 confidence:medium | A-4, B-1, C-6 | — |
+| `market/correlation_matrix.md` | QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-5 | 정량 수치 미가용. 브리핑 사용 가능하나 정량 한계 명시 필요 |
+| `market/surprise_index.md` | QUALITATIVE_RECOVERY (04-17) confidence:low-medium | B-4 | 동일. 정량 복구는 `/시장데이터수집` 필요 |
+| `market/guru_positions.md` | SUCCESS (04-18) valid_until 07-18 confidence:high | A-5, B-7, C-4 | Q4 2025 13F 완료. Q1 2026은 05-15 이후 |
+| `macro/political_cycle.md` | SUCCESS (04-14) valid_until 05-14 confidence:high | G-2, C-3 | — |
+| `macro/tech_breakthrough.md` | SUCCESS (04-14) valid_until 05-14 confidence:high | G-3, C-3.5 | — |
+| `macro/supply_chain.md` | SUCCESS (04-18) valid_until 05-18 confidence:high | G-1, C-3 | — |
+| `portfolio/model_portfolios.md` | [P0] confidence:low 미수집 — 전 항목 N/A | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
+| `portfolio/user_portfolio.md` | SUCCESS (04-14) valid_until 12-31 confidence:high | /내포트폴리오 | — |
+| `us_monetary_policy.md` (루트) | redirect — SSOT 아님 (valid_until 05-07, 내용 구버전) | 교차참조 | `macro/us_monetary_policy.md` 사용 |
+| `industry/bio_pharma.md` | [P1-ORPHAN] _index.md 등재 누락 — 파일 실제 없음 | C-2 | bio_pharma는 루트에 없음. industry/ 아래 생성 필요 또는 index 수정 |
+| `knowledge-base/semiconductor.md` (루트) | SUCCESS (04-07) valid_until 05-07 — industry/ 이동 미완 | C-1 | 루트 파일만 존재. industry/semiconductor.md 부재 상태 |
 
-> ✅ 네트워크 허용 환경 확인됨 (2026-04-13). FAILED 4건 재수집 가능.
-> ⚠️ P1: industry/ 고아 파일 8개 — quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure (_index.md Industry 테이블 미등재)
+> [INFO] P0 실질 긴급: portfolio/model_portfolios.md (전 항목 미수집). 나머지는 WARN 또는 P1 수준.
+> [INFO] market/daily_snapshot.md는 내일(04-19) 만료이나 주말(토요일)이므로 브리핑 실행에는 영향 없음.
+> [P1] industry/bio_pharma.md 파일 미존재 — _index.md Industry 테이블에 등재되어 있으나 실제 파일 없음.
+> [P1] industry/ 고아 파일 없음 (quantum/space/smr/telecom_next/banking_capital/advanced_materials/battery/infrastructure 모두 04-13 이후 index 등재 완료).
 
 ---
 
@@ -84,6 +88,9 @@ lint_mode: full
 | 2026-04-18 | 모닝브리핑 | 호르무즈 해협 **"완전 개방"** + 이스라엘-레바논 10일 휴전 — WTI $104→$84(-19% 4일). S&P 7,126 신고가. NASDAQ 13일 연승(1992년 이후 최장). **'전쟁 디스카운트' 완전 소멸**. 단, 이란 항구 봉쇄 유지+핵 미합의+10일 한시 = 꼬리 리스크 제거이나 기저 리스크 잔존 | `market/daily_snapshot.md, macro/geopolitics.md §2-1` | 진행중 |
 | 2026-04-18 | 모닝브리핑 | Gold $4,849 **48시간 판별 결과: 구조적 Bull 재확정**. 첫 조정($4,813) 후 +1.34% 즉시 반등. DXY 98.23 호르무즈 해소에도 반등 없음 = 탈달러 구조적 약세 확인. BTC $77K 2일 연속 상회 = 크립토 독립 강세 구간 확정 | `market/daily_snapshot.md, macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-18 | 모닝브리핑 | VIX 17.48 **"거짓 안정 5단계"** 극단화. 소비심리 47.6 대비 **괴리 30pt(역대급)**. 호르무즈 해소로 "모든 리스크 소멸" 착각이 가격에 반영 중. 4/23 TSLA + 4/28 FOMC + 5/15 파월 만료 = 새로운 체크포인트 부상 | `market/correlation_matrix.md, macro/global_risk_factors.md §2` | 진행중 |
+| 2026-04-18 | 주간리포트 | **NASDAQ 13일 연승 vs VIX 거짓 안정 5단계** — 시나리오 A "실적 랠리" 50%(상향). S&P 7,126 신고가이나 소비심리 47.6 괴리 역대급. 4/23 TSLA + 4/28 FOMC가 "진짜 시험". 조건부 환호 | `market/daily_snapshot.md` | 진행중 |
+| 2026-04-18 | 주간리포트 | **DXY 98.23 구조적 약세 확정** — 호르무즈 해소에도 달러 반등 없음. 재정적자+파월 해임 위협+중앙은행 Gold 매수=탈달러 불가역. Gold $4,878 S등급·BTC $77K 독립 강세. contrarian-card 핵심 | `macro/global_risk_factors.md §4, market/daily_snapshot.md` | 진행중 |
+| 2026-04-18 | 주간리포트 | 잠정 적중률 **83%**(5/6, 표본 부족). Gold Bull·SK하이닉스·방산 순항. KOSPI 갭다운 오류(지정학 시장 내성 과소평가). 테일 리스크 시점 보수화 교훈 | `performance/2026_recommendations.md` | -- |
 
 ---
 
@@ -132,7 +139,7 @@ lint_mode: full
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (04-17) valid_until 04-18 | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
+| `daily_snapshot.md` | ✅ SUCCESS (04-18) valid_until 04-19 confidence:medium | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
 | `economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
 | `surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 매일 | B-4 | 정량 시 `/시장데이터수집` |
 | `correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 주 1회 | B-5 | 정량 시 `/시장데이터수집` |
@@ -205,13 +212,13 @@ lint_mode: full
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-18 | ✅ SSOT 일치 |
-| VIX | `global_risk_factors.md`: 19.12 (04-14) | `us_economy.md §9`: 17.94 (04-17) | 04-18 | ✅ 일치 (us_economy 최신, 시점차) |
-| DXY | `global_risk_factors.md`: 98.39 (04-14) | `us_economy.md §9`: 97.70 (04-17) | 04-18 | ✅ 일치 (us_economy 최신, 시점차) |
-| WTI | `energy.md §1`: $97~100 | `geopolitics.md §6`: $97.22 | 04-14 | ✅ 일치 (양쪽 호르무즈 급등 반영) |
-| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,485 (04-14) | 04-18 | ✅ 일치 (korea_economy 최신, 시점차 -10원) |
-| HBM3E 대중 수출 | `geopolitics.md §1-2`: HBM3E·HBM4 금지 (3.3GB/s/mm² 기준) | `semiconductor.md §5`: HBM3E 이상 금지 | 04-14 | ✅ 일치 (기준 구체화) |
-| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `daily_snapshot.md`: 04-17 기준 | 04-18 | ✅ 일치 |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-18 | SSOT 일치 |
+| VIX | `global_risk_factors.md`: 19.12 (04-14) | `us_economy.md §9`: 17.94 (04-17) | 04-18 | 일치 (us_economy 최신, 시점차) |
+| DXY | `global_risk_factors.md`: 98.39 (04-14) | `us_economy.md §9`: 97.70 (04-17) | 04-18 | 일치 (us_economy 최신, 시점차 -0.7%) |
+| WTI | `energy.md §1`: $97~100 (04-14) | `supply_chain.md §2-1`: $83~84 (04-18) | 04-18 | [P1-WARN] 시점차 -$14. energy.md 갱신 4일 경과 — 호르무즈 개방 반영 안됨. geopolitics.md: $97.22 (04-14) 동일 구버전 |
+| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,485원 (04-14) | 04-18 | 일치 (korea_economy 최신, 시점차 -10원, 허용범위) |
+| HBM3E 대중 수출 | `geopolitics.md §1-2`: HBM3E·HBM4 금지 (3.3GB/s/mm² 기준) | `semiconductor.md §5`: HBM3E 이상 금지 | 04-14 | 일치 (기준 구체화) |
+| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `daily_snapshot.md`: 04-17 US 종가 기준 | 04-18 | 일치 |
 
 ---
 
