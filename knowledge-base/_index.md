@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-18
+updated: 2026-04-19
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-13
@@ -98,14 +98,15 @@ lint_mode: full
 | `energy.md` | WTI $97~100, Brent $96~103, JKM LNG $17~18.75 | 호르무즈 봉쇄 유가 +40% 급등. 정제마진 $18 역대급. SPR 26일분. OPEC+ 206K 증산. 석화 나프타 $1,000 위기 | 04-14 | 05-14 | high |
 | `science_tech.md` | 한국 R&D/GDP **5.1%**(세계 1위), 글로벌 R&D 3.8조달러, 정부 R&D 29.6조 | IonQ 99.99% 양자기록. Optimus Gen3 여름양산. Starlink 10K기. CHIPS Act 생산시대 | 04-14 | 05-14 | high |
 | `bio_pharma.md` | GLP-1 시장 700~800억달러 | 삼성바이오 4공장 풀가동, CDMO Top 4 | 04-07 | 05-07 | medium |
-| `quantum.md` | 양자컴퓨팅/통신/PQC/센서 | IBM Nighthawk·Google Willow 로드맵. NIST PQC 표준 확정 | 04-13 | 05-13 | medium |
-| `space.md` | 우주경제·LEO위성·발사체 | SpaceX Falcon9 최고 발사율. AST SpaceMobile 위성직접통신 | 04-13 | 05-13 | medium |
-| `smr.md` | SMR·핵융합 에너지 | NuScale 취소 후 Kairos·TerraPower·두산에너빌리티 수혜 | 04-13 | 05-13 | medium |
-| `telecom_next.md` | 6G·위성통신·보안 | 삼성 6G 2030 목표. 위성직접통신 2026 상용화 | 04-13 | 05-13 | medium |
+| `quantum.md` | IonQ FY2026 $225-245M, 양자센서 $984M, 양자주 3일 랠리 | NVIDIA Ising QEC AI 모델. IonQ $35-40(RPO $370M). D-Wave $24.6M(+179%). Meta PQC 전환. 양자센서 TRL7-8 | 04-19 | 05-19 | high |
+| `space.md` | 우주경제 $468-626B, Starlink 10K기/1000만, RKLB $602M, 우주군 $26.3B+$13.8B | SpaceX F9 46회(4/15)+Starship V3 5월. Blue Origin NG-3 부스터 재사용. Amazon Kuiper 베타(4/8, 1500기). AST BlueBird 7 4/19 $1B계약. RKLB Neutron Q4. 한국 차세대발사체 5.6조. confidence medium->high 승격 | 04-19 | 05-19 | high |
+| `smr.md` | TerraPower NRC 건설허가(03/04), Kairos Hermes 2 착공(04/17), CFS SPARC first plasma 2026, 두산 수주 14.3조, 빅테크 원자력 DC MS 2GW/Google 500MW/Amazon 5GW/Meta 6.6GW | TerraPower 비경수로 최초 NRC 건설허가. Kairos Gen IV 최초 착공. RR-SMR UK 정식 계약(04/13). Helion 1.5억도. 체코 26조. confidence medium->high 승격 | 04-19 | 05-19 | high |
+| `telecom_next.md` | Starlink 1000만+/DTC 650기/T-Mobile DTC 300만+, Gartner 보안 $240B, PANW FY2026 $11.3B, CRWD ARR $5.25B | 3GPP Rel-20 Stage-2 2026.06/Rel-21 6G 2027.03. 5G Advanced 상용화. Starlink DTC 22국. AST BlueBird6 3배크기. Amazon Leo Globalstar $1.57B 인수. Gartner AI보안 2029 $160B. 인력부족 480만. confidence medium->high 승격 | 04-19 | 05-19 | high |
 | `banking_capital.md` | 4대 금융지주 합산 순이익 18.4조(+11.4%) | KB·신한·하나·우리 사상 최대 실적. PE/VC 환경 개선 기대 | 04-13 | 05-13 | medium |
-| `advanced_materials.md` | 마이크로LED 시장 0.5~1.1B USD, EDA 시장 | MicroLED CAGR 52~77%. EDA Synopsys·Cadence 과점 | 04-13 | 05-13 | medium |
+| `advanced_materials.md` | MicroLED 2026E 0.56~6.37B, Synopsys FY2026 $9.56~9.66B, GaN 4.83B, CoWoS 4배 증설 | Wolfspeed 파산. Synopsys Ansys 통합 +66%. Cadence ChipStack AI. STMicro SiC 200mm 수율75%. 페로브스카이트 탠덤 34.85% | 04-19 | 05-19 | medium |
 | `battery.md` | 리튬 가격 동북아 $18,050/ton (Q1 2026) | 리튬 급등 후 조정. LFP 점유 확대 vs NCM 고성능 분화 | 04-13 | 05-13 | medium |
 | `infrastructure.md` | 글로벌 건설 17.26조달러(+4.9%), 한국 수주 231.2조 | 현대건설·삼성물산 SMR EPC 추진. 데이터센터 전력망 수혜 | 04-13 | 05-13 | medium |
+| `capex.md` | 하이퍼스케일러 5사 합산 $660-690B(2026E), 반도체 $200B, 에너지 $3.3T, 국방 $2.63T | 빅테크 AI CapEx 슈퍼사이클. TSMC $52-56B(+27-40%). 한국 장비투자 $29.7B 세계2위. 통신 -2% 정체. 배터리 한국3사 가동률 50% | 04-19 | 05-19 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
@@ -171,15 +172,16 @@ lint_mode: full
 | `auto_2026.jsonl` | 46건 | kb-updater |
 | `energy_2026.jsonl` | 76건 | kb-updater |
 | `geopolitics_2026.jsonl` | 32건 | kb-updater |
-| `science_tech_2026.jsonl` | 194건 (quantum/space/smr subtag 포함) | kb-updater |
+| `science_tech_2026.jsonl` | 268건 (quantum/space/smr subtag 포함) | kb-updater |
 | `bio_pharma_2026.jsonl` | 34건 | kb-updater |
 | `macro_2026.jsonl` | 398건 | kb-updater |
-| `telecom_next_2026.jsonl` | 28건 | kb-updater |
+| `telecom_next_2026.jsonl` | 62건 | kb-updater |
 | `banking_capital_2026.jsonl` | 38건 | kb-updater |
-| `advanced_materials_2026.jsonl` | 35건 | kb-updater |
+| `advanced_materials_2026.jsonl` | 83건 | kb-updater |
 | `battery_2026.jsonl` | 40건 | kb-updater |
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
-| `changelog_2026.jsonl` | 37건 | kb-updater |
+| `capex_2026.jsonl` | 20건 | kb-updater |
+| `changelog_2026.jsonl` | 43건 | kb-updater |
 | `market/2026_daily_prices.md` | — (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
 | `market/2026_guru_changes.md` | 60건 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -223,10 +225,12 @@ lint_mode: full
 | 현대차, 기아 | `industry/auto.md §3-2` | `macro/geopolitics.md §1-1` (관세) |
 | LG에너지솔루션, 삼성SDI, SK온 | `industry/auto.md §6` | `macro/korea_economy.md §5-3` |
 | 한화에어로, LIG넥스원, KAI | `macro/geopolitics.md §4, §5, §8` | `macro/political_cycle.md` (미수집) |
-| 두산에너빌리티, 한수원 | `industry/energy.md §7` | `industry/science_tech.md §6` |
+| 두산에너빌리티, 한수원 | `industry/smr.md §2, §4` | `industry/energy.md §7` |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
 | Gold, TLT, IAU | `macro/global_risk_factors.md §4` | `macro/us_monetary_policy.md` |
 | BTC, ETH, SOL | `market/daily_snapshot.md` (FAILED) | `macro/global_risk_factors.md §2` |
+| NuScale, Oklo, BWXT | `industry/smr.md §2` | `macro/tech_breakthrough.md §5` |
+| 빅테크 CapEx, TSMC, ASML | `industry/capex.md §1, §2` | `industry/ai.md §3`, `semiconductor.md` |
 
 ---
 
@@ -234,16 +238,17 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-19 | `industry/capex.md` | **신규 생성** -- 글로벌 설비투자 트래커. 빅테크AI 5사 합산 $660-690B(Amazon $200B/Alphabet $175-185B/Meta $115-135B/MS $120B+/Oracle $50B). 반도체 총 $200B(TSMC $52-56B/Samsung ~$40B/Micron $20B). 장비시장 $139-145B(ASML EUR36-40B 상향). 에너지 $3.3T(클린 $2.2T/화석 $1.1T). 국방 $2.63T(NATO 5%GDP 2035목표, 유럽+20%). CHIPS Act $31B+민간$400B. 통신 -2%(AT&T $23-24B). 한국 반도체 $29.7B(+27%, 세계2위). 배터리 누적 $300B(한국3사 가동률50%). 원자력 SMR 2030 $25B | +20 |
+| 2026-04-19 | `industry/advanced_materials.md` | **전면 갱신** -- MicroLED: 2026 시장추정 0.56~6.37B(기관간 극편차), 삼성 6모델/LG 3모델 RGB TV 상용화, TCL 163인치 $110K 가성비, Apple Watch취소->AR전환, ams-Osram 팹 해체, 전사수율 25%(2024). EDA: Synopsys FY2026 $9.56~9.66B(Q1 $2.409B/+66%/Ansys $886M), Cadence FY2026 $5.9~6.0B, ChipStack AI Agent/Chiplet 에코시스템. 소재: Wolfspeed 파산(01월)+300mm 시연, STMicro 200mm수율75%, Infineon 200mm 출하, GaN 4.83B(CAGR17%), CoWoS 4배 130~150K/월($56B CapEx), 희토류 수출통제 11월 유예(미일 선별제한 지속), 페로브스카이트 탠덤 34.85% 기록/Oxford PV 상업생산 | +48 |
+| 2026-04-19 | `industry/telecom_next.md` | **전면 갱신** -- 6G: 3GPP Rel-20 Stage-2 2026.06/Rel-21 6G normative 2027.03, 5G Advanced(Rel-18) 2026 상용화(2030 75% 업그레이드), 삼성 AI-RAN 상용망 검증+vRAN-NVIDIA MWC데모, Nokia NVIDIA 포팅 필드트라이얼, sub-THz 실내P2P 축소 확정, SKT 2029 대규모투자. 위성: Starlink 1000만+/DTC 650기/22국/FCC 15000기 승인, T-Mobile DTC 300만+, AST BlueBird6(3배크기/45-60기 목표), Amazon Leo Globalstar $1.57B 인수/엔터프라이즈 베타(4/8), Iridium NTN Direct 세계최초 3GPP NB-IoT D2D, NTN 핸드셋 1.5억대. 보안: Gartner $240B(+13%)/AI보안 2029 $160B/클라우드보안 +28.8%, PANW FY2026 $11.3B(+23%)/NGS ARR $6.3B, CRWD ARR $5.25B/Q3 재가속 +73%, 인력부족 480만, 랜섬웨어 핵심인프라 +34%, SKT HSS 침해. confidence medium->high 승격 | +33 |
+| 2026-04-19 | `industry/smr.md` | **전면 갱신** -- TerraPower NRC 건설허가(03/04, 비경수로 최초), Kairos Hermes 2 착공(04/17, Gen IV 최초), RR-SMR UK 정식 계약(04/13, Wylfa 3기 1.4GWe), NuScale DOE 대출 지원 시사+Ebara 파트너십, Oklo NSDA 승인+Meta 1.2GW, BWXT 수주잔고 $7.4B, X-energy TRISO-X 2026.05E, CFS SPARC first plasma 2026+ARC 400MWe+펀딩 $3B, Helion 1.5억도+Orion 착공, TAE-TMTG $6B 합병, KSTAR 300초 목표, 빅테크 원자력 DC(MS 2GW/Google 500MW/Amazon 5GW/Meta 6.6GW), 두산 수주 14.3조+SMR공장 착공, 체코 26조 본계약. confidence medium->high 승격 | +16 |
+| 2026-04-19 | `industry/space.md` | **전면 갱신** -- SpaceX F9 46회(4/15)+Starship V3 IFT-12 5월 연기, Blue Origin NG-3 4/19 부스터 재사용 최초, Rocket Lab FY2025 $602M(+38%)/백로그 $1.85B/Neutron Q4 2026, Relativity Terran R H2 2026 첫 비행, Starlink 10K기+1000만 가입자, Amazon Kuiper 엔터프라이즈 베타 4/8(1500기+), AST BlueBird 7 4/19 발사($1B계약), 우주경제 $468-626B, 미 우주군 $26.3B+Golden Dome $13.8B, SDA Tranche 3 $3.5B+(72기), 한국 차세대발사체 5.6조, Astroscale ELSA-M 2026 발사. confidence medium->high 승격 | +13 |
+| 2026-04-19 | `industry/quantum.md` | **전면 갱신** -- NVIDIA Ising QEC AI 모델(04/14), IonQ FY2026 가이던스 $225-245M(RPO $370M), D-Wave FY2025 $24.6M(+179%)/현금 $884.5M, Rigetti C-DAC $8.4M 108큐빗, PsiQuantum $1B+ Series E/시카고 착공, Meta PQC 프레임워크 공개(04/16), NSS CNSA 2.0 2027.01 시한, 양자센서 $984M(TRL7-8), Qubitrium CubeSat QKD 페이로드, 한국 양자산업펀드 2026 조성, 양자주 3일 랠리(4/14-16). confidence medium->high 승격 | +13 |
 | 2026-04-18 | `macro/supply_chain.md` | **전면 갱신** -- 호르무즈 완전개방 선언(04/17, 실제 통항 90% 미만), WCI $2,246(-3% 6주 랠리 종료), WTI $83(-19% 4일)/Brent $96, EIA Q2 $115->하반기 정상화, GS Brent $83, IEA SPR 400M bbl 방출(32개국), 구리 $12,630(Section 232 50% 상향), 요소비료 $640(-18%), TSMC 2nm 양산+3nm 20만장, HBM 전량매진+HBM4 양산, MATCH법안 발의(4/2+4/8), Section 232 확대(구리50%/제약100%), 리쇼어링 중소기업 96% 보류, 사이버공격 2배 전망 | +30 |
 | 2026-04-18 | `macro/us_economy.md` | **전면 갱신** -- 4개 서브섹터(CPI/고용/소비/Fed) 16회 웹검색 교차검증. ISM 서비스가격 70.7(신규, 2022.10 이후 최고) 추가 -> 3중 인플레 파이프라인. 3월 NFP +178K/실업률 4.3%/ADP +62K/JOLTS 6.9M/주간청구 207K. 소매판매 3월 4/21 발표 예정. 트럼프 파월 해임 위협 4/15 공식화+DOJ 수사+Warsh 인준 지연. Waller 4/17 연설. S&P 7,022(신고가), VIX 17.94(거짓 안정 4단계), 10Y 4.26%, DXY 97.70. 침체확률 30~49% 재확인. Fed 리더십 전환 리스크 섹션 신설 | +35 |
 | 2026-04-18 | `macro/korea_economy.md` | **전면 갱신** -- 4개 서브섹터(수출/환율/금리/산업동향) 17회 웹검색 교차검증. 수출: 4월초순 $25.2B(+36.7%), 경상수지 2월 $23.2B 사상최대. 환율: 1,475원(WGBI 4/1 편입, 2주 7.7조 외국인 국채매수), 외국인 3월 54.4조 순유출, 경상흑자-원화약세 패러독스(NPS 70%). 금리: 2.50% 7연속동결, 신현송 4/21 취임(매파 성향, 인상 가능성), Bloomberg 30명중 26명 동결. 산업: KOSPI 6,226(PBR 1.4배, KB 연말 7,500), 삼성 Q1 OP 57.2조(역대최대의 3배), SK하이닉스 순익1위(27년만), HBM 점유 SK63%/삼성24%, 메모리시장 $633B(+193%). 현대기아 25% 관세(연간 5조+), 조선 빅3 39척 $66.7B. 추경 753조 확정(+11.8%) | +35
 | 2026-04-18 | `market/guru_positions.md` | **Q4 2025 13F 전면 수집** -- 7인 13F 포지션(Burry 해산) + 2026 코멘트. 12개 소스 교차검증. Buffett $274B, Dalio $27.4B, Wood $15B, Druckenmiller $4.5B, Marks $7B, Tepper $6.9B, Ackman $15.5B. 컨버전스 7건(AMZN 3인, META/GOOGL/MU 2인, Gold 2인, 에너지 3인). confidence:low→high 승격 | +60 |
 | 2026-04-18 | `macro/us_monetary_policy.md` | **전면 갱신** -- 3월 CPI 3.3%(에너지 주도 급등, 가솔린 +21.2%), Core CPI 2.6%, Core PCE 3.0%(2월), QT 공식 종료(2025-12, $2.2T 축소), 대차대조표 $6.7T, 10Y 4.31%(4일 연속 반등), DXY 97.70(6주 저점), 트럼프 파월 해임 위협(05/15), Warsh 인준+DOJ 조사, 침체확률 30~35%, 인하 하반기 후반 전망, 투자 시사점 추가 | +42 |
-| 2026-04-14 | `macro/supply_chain.md` | **주간 갱신** -- 호르무즈 미군 봉쇄 개시(04/14), 운임 반등(WCI $2,309/SCFI 1707~1827), WTI $104/Brent $98(EIA 연평균 $96), 요소비료 $750(+56%), 구리 $12,630(Triple Demand), HBM sold-out, TSMC 3nm 타이트, Section 122 15% 7/24만료, Section 232 반도체 25%, MATCH법안, 사이버공격 +61%, 희토류 Phase2 유예(~11/10) | +20 |
-| 2026-04-14 | `macro/korea_economy.md` | **전면 갱신** -- 기준금리 2.75%→2.50% 정정(7연속 동결), 수출 3월 $86.1B 사상최대(+48.3%), 반도체 $18.7B(+163.9%), KOSPI 5,778(+141% YoY, 기존 2,500 대비 대폭 정정), 원/달러 1,485원, 추경 26.2조 국회통과, 가계부채 관리방안, 이창용→신현송 총재교체, 경상수지 $1,500억 전망 | +22 |
-| 2026-04-14 | `industry/science_tech.md` | **전면 갱신** -- 15개 섹션 최신화: 양자(IonQ 99.99%/IQM Shor 2048bit), 6G(3GPP 60%/삼성 TSG RAN 의장), 사이버보안(Wiz $320억/SGNL $7.4억), 로봇(Optimus Gen3/Figure AI $390억), 우주(Starlink 10K기/SpaceX $7,500억), 바이오(경구 GLP-1/CRISPR 359사), SMR(Kairos 2026/Meta-TerraPower 8기), R&D(OECD 3.8T/한국 5.1%), CHIPS Act(Intel 18A 양산/트럼프 지분), EDA(Synopsys L4), 특허(370만건) | +51 |
-| 2026-04-14 | `macro/tech_breakthrough.md` | **미수집 4분야 전면 채움** — 양자컴퓨팅(QEC·IonQ $130M·Quantinuum 48논리큐빗·Infleqtion IPO), 로봇(Atlas 양산·Optimus Gen3·Agibot 1만대·Waymo 10도시·Tesla 로보택시), 우주(Starlink 10K위성·1,000만 가입자·SpaceX IPO $1.5T·KASA 1.12조), 신소재(그래핀 EUV·초전도 151K·페로브스카이트 28%·SiC $52B). Disruption Map +5행 | +25 |
-| 2026-04-14 | `macro/political_cycle.md` | **갱신** — 미국 관세 IEEPA→Section 122 전환, 반도체 25% 관세, 한국 추경 26.2조+상법3차 확정, 중국·EU·일본·인도 4개국 신규, 리스크캘린더 7건 추가 | +12 |
 ---
 
 ## 🤖 에이전트 활용 가이드
@@ -260,6 +265,9 @@ lint_mode: full
 "한국 방산 투자?" → macro/geopolitics.md §4, §5, §8
 "지정학 리스크?" → macro/global_risk_factors.md §1 Top5
 "포트폴리오 구성?" → portfolio/model_portfolios.md ⚠️ 현재 미수집
+"SMR/원자력 투자?" → industry/smr.md §2 기업현황, §5 빅테크 DC
+"두산에너빌리티?" → industry/smr.md §4 한국 관련
+"설비투자/CapEx?" → industry/capex.md §1 빅테크, §2 반도체, §7 한국
 ```
 
 > **에이전트 원칙:** 이 인덱스로 대상 파일 특정 → 해당 파일만 Read → 분석 완료 후 인사이트를 "최근 핵심 인사이트" 섹션에 1줄 append (briefing-lead만).
