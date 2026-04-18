@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-17
+updated: 2026-04-18
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-13
@@ -81,6 +81,9 @@ lint_mode: full
 | 2026-04-17 | 이브닝브리핑 | 트럼프 파월 해임 위협 **신규 부상** — 05/15 임기 만료 후 이사직 해임 경고. DXY 98.19 + 10Y 4.31% 교차 "달러 신뢰 균열 + 구조적 인플레" 메시지 강화. Fed 독립성 리스크 | `macro/us_economy.md §3, macro/global_risk_factors.md` | 진행중 |
 | 2026-04-17 | 이브닝브리핑 | BTC $75K **+5.9% 급등** + Gold ~$4,800 첫 조정 동시 발생 — "탈달러 자산 내 순환(Gold→BTC)" 가설. $75K 1일+ 유지 시 독립 강세 확정. 3일 탈동조화 박스 탈출 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
 | 2026-04-17 | 이브닝브리핑 | VIX 17.94 **18선 붕괴 = 거짓 안정 4단계 극단** (4일 연속). S&P↔10Y 동반 상승 Z+1.8~2.2σ 🔴. 경계 근거 "이동했을 뿐 총량은 증가" — Dow 약세 1건 해소 vs 대체 경고 4건 부상 | `market/correlation_matrix.md, macro/global_risk_factors.md §2` | 진행중 |
+| 2026-04-18 | 모닝브리핑 | 호르무즈 해협 **"완전 개방"** + 이스라엘-레바논 10일 휴전 — WTI $104→$84(-19% 4일). S&P 7,126 신고가. NASDAQ 13일 연승(1992년 이후 최장). **'전쟁 디스카운트' 완전 소멸**. 단, 이란 항구 봉쇄 유지+핵 미합의+10일 한시 = 꼬리 리스크 제거이나 기저 리스크 잔존 | `market/daily_snapshot.md, macro/geopolitics.md §2-1` | 진행중 |
+| 2026-04-18 | 모닝브리핑 | Gold $4,849 **48시간 판별 결과: 구조적 Bull 재확정**. 첫 조정($4,813) 후 +1.34% 즉시 반등. DXY 98.23 호르무즈 해소에도 반등 없음 = 탈달러 구조적 약세 확인. BTC $77K 2일 연속 상회 = 크립토 독립 강세 구간 확정 | `market/daily_snapshot.md, macro/global_risk_factors.md §4` | 진행중 |
+| 2026-04-18 | 모닝브리핑 | VIX 17.48 **"거짓 안정 5단계"** 극단화. 소비심리 47.6 대비 **괴리 30pt(역대급)**. 호르무즈 해소로 "모든 리스크 소멸" 착각이 가격에 반영 중. 4/23 TSLA + 4/28 FOMC + 5/15 파월 만료 = 새로운 체크포인트 부상 | `market/correlation_matrix.md, macro/global_risk_factors.md §2` | 진행중 |
 
 ---
 
@@ -113,7 +116,7 @@ lint_mode: full
 
 | 파일 | 핵심 수치 | 핵심 리스크 | 갱신일 | 신뢰도 |
 |------|---------|-----------|-------|-------|
-| `us_economy.md` | **CPI 3.3%(에너지 주도), Core CPI 2.6%, GDPNow Q1 +1.3%, Fed 3.50~3.75%, 침체확률 30~49%** | 2중 인플레(에너지+파이프라인). ISM가격 78.3. 소비심리 47.6(역대최저). 6월 인하 소멸 | 04-14 | ✅ high |
+| `us_economy.md` | **CPI 3.3%(에너지 주도), Core CPI 2.6%, ISM제조가격 78.3+서비스가격 70.7(양채널 극단), GDPNow Q1 +1.3%, Fed 3.50~3.75%, 10Y 4.26%, DXY 97.70, S&P 7,022(신고가), VIX 17.94, 침체확률 30~49%** | 3중 인플레 파이프라인(에너지+제조+서비스). 소비심리 47.6(역대최저) vs VIX 17.94 괴리. 트럼프 파월 해임 위협(4/15). 6월 인하 소멸(89.2%). Fed 리더십 전환 리스크(5/15) | 04-18 | ✅ high |
 | `us_monetary_policy.md` | **Fed 3.50~3.75%(2연속 동결), CPI 3.3%(에너지 주도), Core CPI 2.6%, Core PCE 3.0%, QT 종료, 대차대조표 $6.7T, 10Y 4.31%, DXY 97.70, 침체확률 30~35%** | 트럼프 파월 05/15 해임 위협. 이란전쟁 에너지 인플레. 인하 하반기 후반 전망. Fed 독립성 리스크 | 04-18 | ✅ high |
 | `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI $97, Brent $102. Gold $4,762. 리스크 5/5 | **이란전쟁·호르무즈 봉쇄**(극고). Section 301·50% 위협. 희토류 1년 유예 | 04-14 | ✅ high |
 | `korea_economy.md` | **수출 3월 $86.1B(+48.3%), 반도체 $18.7B(+163.9%), KOSPI 5,778(+141% YoY), 금리 2.50%(7연속 동결), 원화 1,485원, 추경 26.2조** | 이란전쟁 공급충격+관세 이중 타격. 원화 약세 1,485원. 외국인 3월 $365억 순유출. 가계부채 1.5% 한도 | 04-14 | ✅ high |
@@ -170,13 +173,13 @@ lint_mode: full
 | `geopolitics_2026.jsonl` | 32건 | kb-updater |
 | `science_tech_2026.jsonl` | 194건 (quantum/space/smr subtag 포함) | kb-updater |
 | `bio_pharma_2026.jsonl` | 34건 | kb-updater |
-| `macro_2026.jsonl` | 248건 | kb-updater |
+| `macro_2026.jsonl` | 333건 | kb-updater |
 | `telecom_next_2026.jsonl` | 28건 | kb-updater |
 | `banking_capital_2026.jsonl` | 38건 | kb-updater |
 | `advanced_materials_2026.jsonl` | 35건 | kb-updater |
 | `battery_2026.jsonl` | 40건 | kb-updater |
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
-| `changelog_2026.jsonl` | 33건 | kb-updater |
+| `changelog_2026.jsonl` | 35건 | kb-updater |
 | `market/2026_daily_prices.md` | — (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
 | `market/2026_guru_changes.md` | 60건 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -201,11 +204,12 @@ lint_mode: full
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
 | 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-18 | ✅ SSOT 일치 |
-| VIX | `global_risk_factors.md`: 19.12 | `us_economy.md §9`: 19.15 | 04-14 | ✅ 일치 (시점차 0.03) |
-| DXY | `global_risk_factors.md`: 98.39 | `us_economy.md §9`: 98.65~99.05 | 04-14 | ✅ 일치 (시점차) |
+| VIX | `global_risk_factors.md`: 19.12 (04-14) | `us_economy.md §9`: 17.94 (04-17) | 04-18 | ✅ 일치 (us_economy 최신, 시점차) |
+| DXY | `global_risk_factors.md`: 98.39 (04-14) | `us_economy.md §9`: 97.70 (04-17) | 04-18 | ✅ 일치 (us_economy 최신, 시점차) |
 | WTI | `energy.md §1`: $97~100 | `geopolitics.md §6`: $97.22 | 04-14 | ✅ 일치 (양쪽 호르무즈 급등 반영) |
 | 원/달러 | `korea_economy.md`: 1,485원 | `global_risk_factors.md §2`: 1,485 | 04-14 | ✅ 일치 (korea_economy 갱신 완료) |
 | HBM3E 대중 수출 | `geopolitics.md §1-2`: HBM3E·HBM4 금지 (3.3GB/s/mm² 기준) | `semiconductor.md §5`: HBM3E 이상 금지 | 04-14 | ✅ 일치 (기준 구체화) |
+| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `daily_snapshot.md`: 04-17 기준 | 04-18 | ✅ 일치 |
 
 ---
 
@@ -230,6 +234,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-18 | `macro/us_economy.md` | **전면 갱신** -- 4개 서브섹터(CPI/고용/소비/Fed) 16회 웹검색 교차검증. ISM 서비스가격 70.7(신규, 2022.10 이후 최고) 추가 -> 3중 인플레 파이프라인. 3월 NFP +178K/실업률 4.3%/ADP +62K/JOLTS 6.9M/주간청구 207K. 소매판매 3월 4/21 발표 예정. 트럼프 파월 해임 위협 4/15 공식화+DOJ 수사+Warsh 인준 지연. Waller 4/17 연설. S&P 7,022(신고가), VIX 17.94(거짓 안정 4단계), 10Y 4.26%, DXY 97.70. 침체확률 30~49% 재확인. Fed 리더십 전환 리스크 섹션 신설 | +35 |
 | 2026-04-18 | `market/guru_positions.md` | **Q4 2025 13F 전면 수집** -- 7인 13F 포지션(Burry 해산) + 2026 코멘트. 12개 소스 교차검증. Buffett $274B, Dalio $27.4B, Wood $15B, Druckenmiller $4.5B, Marks $7B, Tepper $6.9B, Ackman $15.5B. 컨버전스 7건(AMZN 3인, META/GOOGL/MU 2인, Gold 2인, 에너지 3인). confidence:low→high 승격 | +60 |
 | 2026-04-18 | `macro/us_monetary_policy.md` | **전면 갱신** -- 3월 CPI 3.3%(에너지 주도 급등, 가솔린 +21.2%), Core CPI 2.6%, Core PCE 3.0%(2월), QT 공식 종료(2025-12, $2.2T 축소), 대차대조표 $6.7T, 10Y 4.31%(4일 연속 반등), DXY 97.70(6주 저점), 트럼프 파월 해임 위협(05/15), Warsh 인준+DOJ 조사, 침체확률 30~35%, 인하 하반기 후반 전망, 투자 시사점 추가 | +42 |
 | 2026-04-14 | `macro/supply_chain.md` | **주간 갱신** -- 호르무즈 미군 봉쇄 개시(04/14), 운임 반등(WCI $2,309/SCFI 1707~1827), WTI $104/Brent $98(EIA 연평균 $96), 요소비료 $750(+56%), 구리 $12,630(Triple Demand), HBM sold-out, TSMC 3nm 타이트, Section 122 15% 7/24만료, Section 232 반도체 25%, MATCH법안, 사이버공격 +61%, 희토류 Phase2 유예(~11/10) | +20 |
@@ -239,8 +244,6 @@ lint_mode: full
 | 2026-04-14 | `macro/political_cycle.md` | **갱신** — 미국 관세 IEEPA→Section 122 전환, 반도체 25% 관세, 한국 추경 26.2조+상법3차 확정, 중국·EU·일본·인도 4개국 신규, 리스크캘린더 7건 추가 | +12 |
 | 2026-04-14 | `macro/geopolitics.md` | **전면 갱신** — IEEPA 위헌·부산합의 반영(실효 34.7%), 이란전쟁·호르무즈 봉쇄, WTI $97/Brent $102, Gold $4,762, 리스크 5/5 상향, 북한 3일 무기시험, OPEC+ 증산, 희토류 유예 | +20 |
 | 2026-04-14 | `macro/global_risk_factors.md` | **전면 갱신** — IMF WEO 4월(3.3%), 호르무즈 봉쇄 1위, VIX 19.12, DXY 98.39, 금 $4,761, 브렌트 $98, IEEPA 관세 무효화, 소비자심리 47.6 역대최저 | +22 |
-| 2026-04-13 | `_index.md` | **v3.2 wiki-linter full** — P0 갱신 + Industry 고아파일 8개 등재 + Macro 3개 갱신 확인 + Market 상태 정정 + 교차참조 맵 갱신 | — |
-| 2026-04-13 | `_index.md` | **v3.1 완전 재작성** — Wiki Index 전환 (LLM Wiki 원칙 적용) | — |
 ---
 
 ## 🤖 에이전트 활용 가이드
