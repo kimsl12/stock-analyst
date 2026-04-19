@@ -1,16 +1,19 @@
 ---
-updated: 2026-04-18
+updated: 2026-04-19
 valid_until: 2026-04-25
 file: economic_calendar
 sources:
-  - "Federal Reserve FOMC Calendar [2026-04-18]"
-  - "CME FedWatch Tool [2026-04-18]"
-  - "EarningSpike / MarketBeat / WallStreetZen [Tesla Q1 2026]"
+  - "Federal Reserve FOMC Calendar [2026-04-19]"
+  - "CME FedWatch Tool [2026-04-19]"
+  - "EarningSpike / MarketBeat / IG / TradingKey [Tesla Q1 2026 — April 22]"
   - "StockMarketNerd / Yahoo Finance Earnings Calendar [Netflix Q1 2026]"
-  - "Investing.com / Reuters [2026-04-18 주간 데이터]"
-  - "BEA Release Schedule / FRED [GDP Q1 Advance]"
-confidence: medium
-last_synced_from_db: 2026-04-18
+  - "ECB Official Calendar / Morningstar [2026-04-19 — ECB 4/30 수정]"
+  - "Atlanta Fed GDPNow [Q1 2026 +1.3%]"
+  - "BEA Release Schedule / FRED [GDP Q1 Advance April 25]"
+  - "US Census Bureau [Retail Sales March — April 21 발표]"
+  - "BLS Schedule [Jobless Claims April 24]"
+confidence: medium-high
+last_synced_from_db: 2026-04-19
 collection_status: SUCCESS
 ---
 
@@ -19,7 +22,7 @@ collection_status: SUCCESS
 > **쓰기 권한:** market-data-collector
 > **읽기 권한:** briefing-lead, global-macro-analyst, correlation-monitor, briefing-report-generator, 종목분석 9개 에이전트
 > **갱신 빈도:** 주 1회 (월요일 또는 주말 갱신)
-> **갱신 이력:** 2026-04-07 FAILED → 2026-04-17 SUCCESS(부분) → 2026-04-18 SUCCESS(주간 전면)
+> **갱신 이력:** 2026-04-07 FAILED → 2026-04-17 SUCCESS(부분) → 2026-04-18 SUCCESS(주간 전면) → 2026-04-19 갱신 (ECB 일정 오류 수정, 소매판매 발표일 확정, 다음 주 보강)
 
 ---
 
@@ -31,18 +34,18 @@ collection_status: SUCCESS
 
 | 날짜 | 시간(ET) | 국가 | 지표 | 컨센서스 | 실제 | 평가 | 출처 |
 |------|---------|------|------|---------|------|------|------|
-| 2026-04-14 | 장전 | 미국 | Morgan Stanley Q1 EPS | $3.02 | $3.43 | ✅ Beat +13.6% | [CNBC, 2026-04-15] |
-| 2026-04-14 | 장전 | 미국 | Bank of America Q1 EPS | $1.01 | $1.11 | ✅ Beat +9.9% | [Bloomberg 보도, 2026-04-17] |
-| 2026-04-15 | 08:30 ET | 중국 | 3월 수출 | +8% YoY | +12% YoY | ✅ Beat | [Reuters 보도] |
-| 2026-04-16 | — | 중국 | Q1 GDP | +4.8% | **+5.0%** | ✅ 서프라이즈 | [Invezz / CNBC Asia] |
-| 2026-04-16 | — | 중국 | 3월 PMI | 50.3 | 51.2 | ✅ Beat | [Trading Economics 보도] |
-| 2026-04-17 | — | 미-이란 | 호르무즈 해협 완전 개방 선언 | — | 개방 | ⚠️ 시장 급등 트리거 | [Reuters, 2026-04-17] |
+| 2026-04-14 | 장전 | 미국 | Morgan Stanley Q1 EPS | $3.02 | $3.43 | Beat +13.6% | [CNBC, 2026-04-15] |
+| 2026-04-14 | 장전 | 미국 | Bank of America Q1 EPS | $1.01 | $1.11 | Beat +9.9% | [Bloomberg 보도] |
+| 2026-04-15 | — | 중국 | 3월 수출 YoY | +8% | +12% | Beat | [Reuters 보도] |
+| 2026-04-16 | — | 중국 | Q1 GDP | +4.8% | **+5.0%** | 서프라이즈 | [Invezz / CNBC Asia] |
+| 2026-04-16 | — | 중국 | 3월 PMI | 50.3 | 51.2 | Beat | [Trading Economics] |
+| 2026-04-17 | — | 지정학 | 호르무즈 해협 완전 개방 선언 | — | 개방 | 시장 급등 트리거 | [Reuters, 2026-04-17] |
 
-### 이번 주 미수집 / 확인 필요
+### 이번 주 미수집 / 연기 항목
 
 | 날짜 | 지표 | 상태 | 비고 |
 |------|------|------|------|
-| 2026-04-16 | 미국 소매판매 3월 (Advance) | 미수집 | 4/21 발표로 연기 가능성 |
+| 2026-04-16 | 미국 소매판매 3월 (Advance) | **→ 4/21 발표로 연기** | 세금환급 효과로 +0.4% MoM 추정 |
 | 2026-04-16 | 미국 주간 신규 실업수당 청구 | 미수집 | 전주 207K 수준 안정 추정 |
 | 2026-04-16 | 미국 산업생산 3월 | 미수집 | — |
 | 2026-04-17 | 미국 주택착공 Housing Starts | 미수집 | — |
@@ -56,21 +59,22 @@ collection_status: SUCCESS
 | 날짜 | 시간(ET) | 국가/기업 | 이벤트 | 컨센서스 | 중요도 | 출처 |
 |------|---------|---------|-------|--------|-------|------|
 | 2026-04-21 (월) | — | 한국 | **신현승 한은 총재 취임** | 매파 성향 | ★★★ | [DigitalToday / KoreaHerald] |
-| 2026-04-21 (월) | — | 지정학 | **파키스탄-인도 휴전 만료** | 연장 or 결렬 | ★★★ | [Reuters 보도] |
+| 2026-04-21 (월) | 08:30 ET | 미국 | **소매판매 3월** (4/16 연기분) | **+0.4% MoM** | ★★★ | [US Census Bureau] |
+| 2026-04-21 (월) | — | 미국 | 산업생산 3월 | — | ★★ | — |
 | 2026-04-21 (월) | 장후 | Netflix (NFLX) | Q1 2026 실적 | 구독자 성장 확인 | ★★ | [StockMarketNerd] |
-| 2026-04-21 (월) | — | 미국 | 소매판매 3월 (연기분 가능) | — | ★★ | [BLS Schedule] |
-| 2026-04-22 (화) | 장후 | **Tesla (TSLA)** | Q1 2026 실적 | **EPS $0.39** | ★★★ | [EarningSpike / MarketBeat] |
-| 2026-04-22 (화) | 장전 | **ASML** | Q1 2026 실적 | — | ★★★ | [Yahoo Finance 추정] |
-| 2026-04-23 (수) | — | 한국 | 한국 GDP Q1 (추정) | — | ★★ | — |
+| 2026-04-22 (화) | 장후 | **Tesla (TSLA)** | Q1 2026 실적 | **EPS $0.36~$0.40 / Rev $21.9~$23.1B** | ★★★ | [EarningSpike / IG / TradingKey] |
+| 2026-04-22 (화) | 장전 | **ASML** | Q1 2026 실적 | — | ★★★ | [Yahoo Finance] |
+| 2026-04-22 (수) | — | 미국 | FOMC 의사록 (3월 회의) | — | ★★ | [Federal Reserve] |
+| 2026-04-23 (목) | 08:30 ET | 미국 | **주간 실업수당 청구** | ~210K | ★★ | [BLS] |
+| 2026-04-23 (목) | — | 한국 | 한국 Q1 GDP 속보 | — | ★★ | [BOK] |
 | 2026-04-24 (목) | 09:45 ET | 미국 | S&P Global Flash PMI 4월 | — | ★★ | [S&P Global] |
-| 2026-04-24 (목) | — | 유럽 | **ECB 통화정책 회의** | 25bp 인하 컨센서스 | ★★★ | [ECB Calendar] |
 | 2026-04-25 (금) | 08:30 ET | 미국 | **Advance GDP Q1 2026** | GDPNow **+1.3%** | ★★★ | [Atlanta Fed GDPNow / BEA] |
-| 2026-04-25 (금) | 08:30 ET | 미국 | Core PCE 2월 (발표 예정) | ~3.0% | ★★★ | [BEA Schedule] |
+| 2026-04-25 (금) | 08:30 ET | 미국 | **Core PCE 3월** | ~3.0% | ★★★ | [BEA Schedule] |
 
 > ⚠️ **"트리플 체크포인트 집중" 주의:**
-> 1. TSLA Q1 실적 (4/22) — EPS $0.39 컨센서스. EV 수요 + Optimus 로봇 가이던스가 NASDAQ + ARK 방향 결정. Miss 시 기술주 섹터 전반 연쇄 하락 가능
-> 2. ECB 금리 결정 (4/24) — 25bp 인하 컨센서스. 인하 시 달러 약세(DXY 97 이하) 가속, 유로 강세 → Gold 추가 지지
-> 3. Advance GDP Q1 (4/25) — GDPNow +1.3%. +1.5% 초과 시 침체 우려 완화, 하회 시 스태그플레이션 내러티브 강화
+> 1. **소매판매 3월 (4/21)** — 4/16에서 연기된 발표. 세금환급 효과로 +0.4% MoM 기대. 소비심리 47.6 역대최저 속 실수요 확인 분기점
+> 2. **TSLA Q1 실적 (4/22)** — EPS 컨센 $0.36~$0.40. Q1 배송 358K(기대 미달). EV 수요 침체 vs Optimus 로봇 가이던스가 NASDAQ + ARK 방향 결정. Miss 시 기술주 섹터 연쇄 조정 가능
+> 3. **Advance GDP Q1 (4/25)** — GDPNow +1.3%. +1.5% 초과 시 침체 우려 완화, 하회 시 스태그플레이션 내러티브 강화
 
 ---
 
@@ -79,36 +83,39 @@ collection_status: SUCCESS
 | 중앙은행 | 다음 회의 일자 | 현 기준금리 | 시장 예상 | 비고 |
 |---------|-------------|-----------|---------|------|
 | **Fed (FOMC)** | **2026-04-28~29** | 3.50~3.75% | **동결 85% 컨센서스** | 파월 임기 5/15 만료. 성명 문구 주목 |
-| **BOK (한국은행)** | 2026-05 (추정) | **2.50%** | 동결 (7연속). 신현승 매파 가능성 | 신현승 4/21 취임 |
-| **ECB** | **2026-04-24** | — | **25bp 인하** 컨센서스 | DXY 추가 하방 압력 |
-| **BOJ** | 2026-05 (추정) | 미수집 | — | USD/JPY 158~160 유지 |
+| **BOK (한국은행)** | 2026-05 (추정) | **2.50%** | 동결 (Bloomberg 30명중 26명 동결). 신현승 매파 가능성 | 신현승 4/21 취임 |
+| **ECB** | **2026-04-30** | ~2.40% | **25bp 인하** 컨센서스 | [주의: 기존 파일의 "4/24" 오류 수정. 실제 4/30. 호르무즈 에너지 리스크 변수] |
+| **BOJ** | 2026-05 (추정) | 미수집 | — | USD/JPY ~159 유지 |
+
+> ⚠️ **ECB 일정 수정:** 기존 파일의 "4/24" 오류. ECB 공식 캘린더 기준 4/30 결정. 인하 여부는 호르무즈 후 에너지 가격 안정(WTI $84) + 유로존 인플레 경로가 핵심 변수.
 
 ---
 
-## 향후 2~4주 주요 이벤트 (시나리오 분기점)
+## 향후 3~4주 주요 이벤트 (시나리오 분기점)
 
 | 날짜 | 이벤트 | 시나리오 A (낙관) | 시나리오 B (비관) |
 |------|--------|----------------|----------------|
-| 4/22 | TSLA Q1 실적 | EPS Beat + Optimus 가이던스 → NASDAQ 추가 상승 | EPS Miss → NASDAQ -3~5% |
-| 4/24 | ECB 인하 | DXY 하락 + Gold $4,900+ | ECB 동결 서프라이즈 → EUR 급락 |
-| 4/25 | GDP Q1 | +1.5% 이상 → 침체 기우 해소 | +0.5% 이하 → 스태그 내러티브 |
+| 4/21 | 소매판매 3월 | +0.6%+ → 소비 건재 | -0.2% 이하 → 스태그플레이션 공포 |
+| 4/22 | TSLA Q1 실적 | EPS Beat + Optimus 가이던스 → NASDAQ 추가 상승 | EPS Miss (-30%↓) → NASDAQ -3~5% |
+| 4/25 | GDP Q1 Advance | +1.5%+ → 침체 기우 완화 | +0.5% 이하 → 스태그 내러티브 강화 |
 | 4/28-29 | FOMC | 성명 "데이터 의존" + 6월 인하 문 열어둠 | 매파적 동결 → 10Y 4.4%+ |
+| 4/30 | ECB | 25bp 인하 → DXY 97 이하, Gold 추가 지지 | ECB 동결 서프라이즈 → EUR 급락 |
 | 5/13 | 4월 CPI | Core 2.4% 이하 → 6월 인하 재점화 | Core 2.8%+ → 연내 인하 소멸 |
 | 5/15 | 파월 임기 만료 | Warsh 인준 완료 → Fed 연속성 유지 | 트럼프 직접 해임 → 달러 신뢰 균열 |
 
 ---
 
-## Q1 2026 실적 시즌 현황 (04-18 기준)
+## Q1 2026 실적 시즌 현황 (04-19 기준)
 
 | 기업 | 발표일 | 컨센서스 EPS | 실제 EPS | 서프라이즈 | 시장 반응 |
 |------|-------|------------|---------|---------|---------|
 | Morgan Stanley | 04-14 | $3.02 | $3.43 | **+13.6%** | 금융주 강세 |
 | Bank of America | 04-14 | $1.01 | $1.11 | **+9.9%** | 섹터 2연속 Beat |
-| Tesla | 04-22 | $0.39 | TBD | — | 주간 최대 분기점 |
-| ASML | 04-22 | — | TBD | — | 반도체 장비 수요 |
 | Netflix | 04-21 | — | TBD | — | 스트리밍 구독 |
+| ASML | 04-22 | — | TBD | — | 반도체 장비 수요 |
+| Tesla (TSLA) | 04-22 | $0.36~$0.40 / Rev $21.9~$23.1B | TBD | — | NASDAQ + ARK 방향 결정. 주간 최대 분기점 |
 
-> **Q1 실적 시즌 총평 (부분):** 금융권 2연속 강력 Beat로 긍정 개막. 단, 테크 대형주 실적은 다음 주 집중. "실적 Beat + 소비심리 47.6 극Miss" 구조적 비대칭 지속.
+> **TSLA Q1 2026 추가 컨텍스트:** Q1 실제 배송 358K (기대 365K 하회). 8주 주가 하락 후 반등. "EV 회사 vs AI 인프라 플레이" 프레이밍이 관건. Refinitiv Smart Estimate $0.30 (더 보수적).
 
 ---
 
@@ -119,3 +126,4 @@ collection_status: SUCCESS
 | 2026-04-07 | market-data-collector | 수집 시도 — 전 항목 네트워크 차단(TCP 403). 미수집. |
 | 2026-04-17 | market-data-collector | 이브닝 재수집 — MCP 웹검색. 이번 주 결과 + 다음 주 일정 부분 복구. |
 | 2026-04-18 | market-data-collector | 주간 전면 갱신 — 중국 GDP Q1(+5.0%), 호르무즈 개방, TSLA/Netflix/ASML 실적 일정, FOMC 4/28-29 확정, ECB 4/24 추가. collection_status SUCCESS |
+| 2026-04-19 | market-data-collector | 주말 갱신 — ECB 일정 오류 수정(4/24→4/30 공식 확인). 소매판매 발표일 확정(4/21). TSLA Q1 컨센서스 범위 보강. FOMC 의사록 4/22 추가. Core PCE 4/25 추가. confidence medium→medium-high 승격 |

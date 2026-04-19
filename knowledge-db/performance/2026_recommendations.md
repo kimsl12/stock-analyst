@@ -109,6 +109,11 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-18 | weekly | 시나리오 | 시나리오 A "실적 랠리" 확률 50%(상향) — 호르무즈 해소+실적 Beat | Bull (S&P 7,200~7,300) | 단기~중기 | 중간 | 호르무즈 완전 개방+금융 2연속 Beat+NASDAQ 13일 연승. TSLA Beat+휴전 연장 조건부. B 35% C 15% [daily_snapshot 04-18, 역사 통계] | reports/briefing/weekly_20260418.html | 진행중 |
 | 2026-04-18 | weekly | 이벤트 | VIX "거짓 안정 5단계" — 2~3주 내 25~30 재상승 C-8 리스크 | Bear (VIX 상방) | 단기 | 중간~높음 | VIX 17.48 vs 소비심리 47.6 괴리 30pt(역대급). 2018.02 VIXpocalypse 유사 숏볼 극단. 4/23 TSLA+4/28 FOMC 트리거 [CBOE, U.Michigan, 역사 통계] | reports/briefing/weekly_20260418.html | 진행중 |
 | 2026-04-18 | weekly | 자산군 | DXY 구조적 약세 — 호르무즈 해소에도 반등 없음 contrarian | Bear (달러) | 중기 | 중간~높음 | DXY 98.23 3년최저 고착. 재정적자 GDP -6.5~7.0%+중앙은행 Gold 매수+파월 해임 위협. Fed 독립성 훼손 시 DXY 95~96 [global_risk_factors §4, FRED, fortune] | reports/briefing/weekly_20260418.html | 진행중 |
+| 2026-04-19 | morning | 이벤트 | 4/21 호르무즈 휴전 만료 — 30일 매크로 최대 분기점 | 분기점 (Bear 가중) | 단기 | 높음 | 선언적 개방 vs 물리적 미완(기뢰 21건). 연장 시 WTI $80 안착, 결렬 시 $100+ 재급등. 4축 메가 교차의 전제조건 [supply_chain, global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
+| 2026-04-19 | morning | 이벤트 | 4/22 Tesla Q1 — VIX 갭 반등 트리거 최유력 | 분기점 (Bear 55% 조건부) | 단기 | 중간~높음 | EPS $0.36~$0.40 컨센. 배송 358K(기대 미달). VIX 17.48 숏볼 극단에서 Miss 시 NASDAQ -3~5% + VIX 22~30 [economic_calendar, global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
+| 2026-04-19 | morning | ETF | GLD/IAU — Gold $4,878 구조적 Bull 확정 | Bull (탈달러 구조) | 중기~장기 | 높음 | 48시간 판별 통과(04-17 조정→04-18 반등). DXY 호르무즈 해소에도 반등 없음=구조적. Dalio/Druckenmiller/Buffett 3인 컨버전스. JPM $5,055(4Q26E) [correlation_matrix, guru_positions] | reports/briefing/morning_20260419.html | 진행중 |
+| 2026-04-19 | morning | 이벤트 | VIX 17.48 "거짓 안정 5단계" — 2~3주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간~높음 | VIX vs 소비심리 47.6 괴리 30pt 역대급. 숏볼 극단 누적. 4/22 TSLA + 4/25 GDP + 4/28 FOMC 트리플 트리거 [correlation_20260419, global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
+| 2026-04-19 | morning | 시나리오 | 30일 시나리오: A(낙관) 40% / B(조정) 40% / C(위기) 20% | 중립 (분기점 집중) | 단기~중기 | 중간 | 호르무즈 4/21 + TSLA 4/22 + GDP 4/25 + FOMC 4/28 4중 분기점. B→A 전환 조건: 3건 중 2건 Pass [global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
 
 ---
 
