@@ -2,8 +2,8 @@
 updated: 2026-04-19
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-04-18
-lint_mode: quick
+lint_last_run: 2026-04-19
+lint_mode: full
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -17,28 +17,38 @@ lint_mode: quick
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-19 (모닝브리핑 Phase 0-A 후)**
+> **최종 갱신: 2026-04-19 (wiki-linter full mode)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| `market/daily_snapshot.md` | SUCCESS (04-19) valid_until 04-21 confidence:medium-high | A-1, B-2, B-3 | 04-21(월) 미국장 종가 기준 갱신 필요 |
-| `market/economic_calendar.md` | SUCCESS (04-19) valid_until 04-25 confidence:medium-high | A-4, B-1, C-6 | ECB 일정 오류 수정(4/24→4/30). 다음 주 완비 |
-| `market/correlation_matrix.md` | SUCCESS (04-19) confidence:medium | B-5 | 6쌍 정성 Z-score 갱신 완료. 🔴 3건 🟡 2건 |
-| `market/surprise_index.md` | SUCCESS (04-19) confidence:medium | B-4 | Beat/Miss 누적 갱신. 글로벌 +0.51 Beat 우세 |
-| `market/guru_positions.md` | SUCCESS (04-18) valid_until 07-18 confidence:high | A-5, B-7, C-4 | Q4 2025 13F 완료. Q1 2026은 05-15 이후 |
-| `macro/political_cycle.md` | SUCCESS (04-19) valid_until 05-19 confidence:high | G-2, C-3 | Section 301 대체전략, 파월 해임(5/15), 미중 정상회담(5/14), NATO 5%, 미인도 관세합의 |
-| `macro/tech_breakthrough.md` | SUCCESS (04-19) valid_until 05-19 confidence:high | G-3, C-3.5 | 8개 서브섹터 주간 갱신. Claude Opus 4.7, Agentic AI 대중화 승격, EU AI Act 연기, TSMC N2 수율 65%, NG-3 재사용 |
-| `macro/supply_chain.md` | SUCCESS (04-18) valid_until 05-18 confidence:high | G-1, C-3 | — |
-| `portfolio/model_portfolios.md` | [P0] confidence:low 미수집 — 전 항목 N/A | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
-| `portfolio/user_portfolio.md` | SUCCESS (04-14) valid_until 12-31 confidence:high | /내포트폴리오 | — |
-| `us_monetary_policy.md` (루트) | redirect — SSOT 아님 (valid_until 05-07, 내용 구버전) | 교차참조 | `macro/us_monetary_policy.md` 사용 |
-| `industry/bio_pharma.md` | [P1-ORPHAN] _index.md 등재 누락 — 파일 실제 없음 | C-2 | bio_pharma는 루트에 없음. industry/ 아래 생성 필요 또는 index 수정 |
-| `knowledge-base/semiconductor.md` (루트) | SUCCESS (04-07) valid_until 05-07 — industry/ 이동 미완 | C-1 | 루트 파일만 존재. industry/semiconductor.md 부재 상태 |
+| `portfolio/model_portfolios.md` | [P0] confidence:low — 전 항목 *(미수집)* N/A. 빈 테이블 | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
+| `market/daily_snapshot.md` | SUCCESS (04-19) valid_until 04-21 — 월요일(04-21) 미국장 종가 후 즉시 만료 | A-1, B-2, B-3 | 04-21(월) 종가 후 갱신 (`/시장데이터수집`) |
 
-> [INFO] P0 실질 긴급: portfolio/model_portfolios.md (전 항목 미수집). 나머지는 WARN 또는 P1 수준.
-> [INFO] market/daily_snapshot.md는 내일(04-19) 만료이나 주말(토요일)이므로 브리핑 실행에는 영향 없음.
-> [P1] industry/bio_pharma.md 파일 미존재 — _index.md Industry 테이블에 등재되어 있으나 실제 파일 없음.
-> [P1] industry/ 고아 파일 없음 (quantum/space/smr/telecom_next/banking_capital/advanced_materials/battery/infrastructure 모두 04-13 이후 index 등재 완료).
+> [P0 실질 긴급] portfolio/model_portfolios.md: confidence:low + 전 항목 미수집 상태 지속 (2026-04-07 이후 미갱신 12일). `/모델포트폴리오` 실행 필요.
+> [P0 주의] market/daily_snapshot.md: valid_until 04-21(월). 04-21 미국장 종료 후 브리핑 전 반드시 갱신.
+> [INFO] 나머지 Market/Macro/Industry KB 전체 P1 이하 — 실행 가능 상태.
+
+---
+
+## P1 — 이번 주 조치 (탐지: 2026-04-19 full)
+
+> wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
+
+| 파일 | 문제 | 심각도 | 권장 조치 |
+|------|------|-------|---------|
+| `industry/bio_pharma.md` | 파일 미존재 — industry/ 폴더에 없음. _index.md 테이블에는 등재. | HIGH | industry/bio_pharma.md 신규 생성 또는 index 등재 제거 |
+| `semiconductor.md` (루트) | industry/semiconductor.md 미존재 — 루트 파일만 있음. index는 둘 다 언급. | MEDIUM | 루트→industry/ 이동 또는 industry/ 신규 생성 결정 필요 |
+| `geopolitics.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/geopolitics.md(04-19) 사용 확인. 루트 파일 redirect 표시 갱신 |
+| `global_risk_factors.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/global_risk_factors.md(04-19) 사용 확인 |
+| `market/daily_snapshot.md` | valid_until 04-21 — 7일 이내 만료 (D-2) | MEDIUM | 04-21 갱신 계획 수립 |
+| `industry/ai.md` | valid_until 05-07 (갱신일 04-07) — 12일 미갱신. Anthropic 상황 변화 반영 필요 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
+| `industry/auto.md` | valid_until 05-07 (갱신일 04-07) — 12일 미갱신. 관세 25% 영향 업데이트 필요 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
+| `semiconductor.md` (루트) | valid_until 05-07 (갱신일 04-07) — 12일 미갱신 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
+
+> [P1 고아파일] industry/bio_pharma.md — 파일 없음 확인. index에 등재된 내용(GLP-1 시장 700~800억달러, 삼성바이오 4공장)만 존재.
+> [P1 구조] 루트 파일 중 redirect 파일(geopolitics.md, global_risk_factors.md, us_monetary_policy.md)은 구 데이터 잔존 상태이나 브리핑에는 macro/ SSOT 사용.
+> [P1 정상] industry/ 전체 고아 파일 없음 (15개 파일 모두 _index.md 등재 확인).
+> [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
 
 ---
 
@@ -194,11 +204,12 @@ lint_mode: quick
 | `battery_2026.jsonl` | 40건 | kb-updater |
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
 | `capex_2026.jsonl` | 20건 | kb-updater |
+| `telecom_next_2026.jsonl` | 62건 | kb-updater |
 | `changelog_2026.jsonl` | 48건 | kb-updater |
-| `market/2026_daily_prices.md` | — (archive) | market-data-collector |
-| `market/2026_economic_indicators.md` | — (FAILED) | market-data-collector |
-| `market/2026_guru_changes.md` | 60건 (Q4 2025 13F 8인 수집) | kb-updater |
-| `market/2026_correlation_log.md` | 0건 | correlation-monitor |
+| `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
+| `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
+| `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
+| `market/2026_correlation_log.md` | 36줄 | correlation-monitor |
 
 ---
 
@@ -218,13 +229,13 @@ lint_mode: quick
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-18 | SSOT 일치 |
-| VIX | `global_risk_factors.md`: 19.12 (04-14) | `us_economy.md §9`: 17.94 (04-17) | 04-18 | 일치 (us_economy 최신, 시점차) |
-| VIX | `global_risk_factors.md`: 17.48 (04-19) | `us_economy.md §9`: 17.94 (04-17) | 04-19 | 일치 (global_risk 최신, 시점차 -0.46) |
-| DXY | `global_risk_factors.md`: 97.70 (04-19) | `us_economy.md §9`: 97.70 (04-17) | 04-19 | 일치 (동일 수치) |
-| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,485원 (04-14) | 04-18 | 일치 (korea_economy 최신, 시점차 -10원, 허용범위) |
-| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,460원 (04-19) | 04-19 | 일치 (global_risk 최신, 시점차 -15원, 허용범위) |
-| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `daily_snapshot.md`: 04-17 US 종가 기준 | 04-18 | 일치 |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-19 | SSOT 일치 |
+| VIX | `global_risk_factors.md`: 17.48 (04-19) | `us_economy.md §9`: 17.94 (04-17) | 04-19 | ✅ 일치 (global_risk 최신, 시점차 -0.46, 허용범위) |
+| DXY | `global_risk_factors.md`: 97.70 (04-19) | `us_economy.md §9`: 97.70 (04-17) | 04-19 | ✅ 일치 (동일 수치) |
+| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,460원 (04-19) | 04-19 | ✅ 일치 (global_risk 최신, 시점차 -15원, 허용범위 2%) |
+| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `market/daily_snapshot.md`: 04-19 기준 | 04-19 | ✅ 일치 (daily_snapshot 최신) |
+| WTI | `industry/energy.md`: $84~94 (04-19) | `macro/geopolitics.md`: $83.85/bbl (04-17 종가) | 04-19 | ✅ 일치 (energy 최신, 범위 내 포함) |
+| Gold | `macro/global_risk_factors.md §4`: $4,867 (04-19) | `market/daily_snapshot.md`: $4,878 (04-19) | 04-19 | ✅ 일치 (daily_snapshot 최신, 시점차 +11, 허용범위) |
 
 ---
 
