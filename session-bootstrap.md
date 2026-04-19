@@ -10,15 +10,16 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | LLY (Eli Lilly) - 2026-04-17, Strong Buy 82.4점 |
+| 마지막 종목분석 | 466100 (클로봇) - 2026-04-19, Buy 73.5점, 목표가 W58,000 |
 | 마지막 브리핑 | 모닝브리핑 - 2026-04-17 |
 | 마지막 KB 업데이트 | infrastructure - 2026-04-13 |
-| 진행 중 작업 | 없음 |
+| 진행 중 작업 | Git push 보류 (로컬 .git HEAD 손상 — 사용자 복구 필요) |
 
 ## analysis/ 유효 파일 (최근 30일)
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| 466100_클로봇 | 2026-04-19 | 73.5 Buy | 유효 (NEW) |
 | LLY_EliLilly | 2026-04-17 | 82.4 Strong Buy | 유효 |
 | NVDA_NVIDIA | 2026-04-17 | 81.6 Strong Buy | 유효 |
 | BA_Boeing | 2026-04-16 | 74.9 Buy | 유효 |
@@ -36,6 +37,7 @@
 
 - **P0 항목**: market/ 전체 FAILED (재수집 필요), us_monetary 중복 해결 예정
 - **정상 Industry KB**: 12개 (semiconductor 부재 - advanced_materials, ai 대체 사용)
+- **로봇 KB 부재** — 클로봇 분석은 ai.md + auto.md 참조 + 웹검색 보완으로 대체 (신규 robotics.md 구축 권장)
 - **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
 - **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
 - **마지막 KB 갱신**: infrastructure 2026-04-13
@@ -45,6 +47,13 @@
 - 종목분석: v3.0 (Write 3턴 규칙 + 시스템 오버라이드 + 폴백 마커)
 - KB 업데이트: v3.4 (미니사이클 + 마지막 사이클 통합 + git 리드 위임)
 - fetch_price.py: 활성 (pykrx + yfinance)
+
+## ⚠️ 환경 경고 (2026-04-19)
+
+- `.git` 저장소 HEAD sha1 pointer 손상 (`2c7d5de...` invalid)
+- `git status` / `git log` 실행 불가 상태
+- 종목분석 결과물은 파일시스템에 정상 저장되었으나 **Git push 보류**
+- 복구 방법: `git fetch origin && git reset --hard origin/main` 또는 저장소 재-clone
 
 ---
 
