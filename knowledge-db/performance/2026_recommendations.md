@@ -114,6 +114,11 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-19 | morning | ETF | GLD/IAU — Gold $4,878 구조적 Bull 확정 | Bull (탈달러 구조) | 중기~장기 | 높음 | 48시간 판별 통과(04-17 조정→04-18 반등). DXY 호르무즈 해소에도 반등 없음=구조적. Dalio/Druckenmiller/Buffett 3인 컨버전스. JPM $5,055(4Q26E) [correlation_matrix, guru_positions] | reports/briefing/morning_20260419.html | 진행중 |
 | 2026-04-19 | morning | 이벤트 | VIX 17.48 "거짓 안정 5단계" — 2~3주 내 25~30 재상승 | Bear (VIX 상방) | 단기 | 중간~높음 | VIX vs 소비심리 47.6 괴리 30pt 역대급. 숏볼 극단 누적. 4/22 TSLA + 4/25 GDP + 4/28 FOMC 트리플 트리거 [correlation_20260419, global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
 | 2026-04-19 | morning | 시나리오 | 30일 시나리오: A(낙관) 40% / B(조정) 40% / C(위기) 20% | 중립 (분기점 집중) | 단기~중기 | 중간 | 호르무즈 4/21 + TSLA 4/22 + GDP 4/25 + FOMC 4/28 4중 분기점. B→A 전환 조건: 3건 중 2건 Pass [global_macro_20260419] | reports/briefing/morning_20260419.html | 진행중 |
+| 2026-04-19 | evening | 이벤트 | 호르무즈 24시간 번복(개방->재봉쇄) -- 4/21 휴전 만료 최대 분기점 | 분기점 (Bear 가중) | 단기 | 높음 | 4/17 개방 후 4/18 재봉쇄. 시장 미반영(주말 휴장). 4/21 WTI +/-$10 양방향. 재봉쇄 팩트 + 기뢰 21건 미제거 [geopolitics.md §2-1, supply_chain.md §1-2] | reports/briefing/evening_20260419.html | 진행중 |
+| 2026-04-19 | evening | 이벤트 | 4/22 TSLA Q1 -- VIX 갭 반등 트리거 (Bear 55% 조건부) | 분기점 (Bear 55%) | 단기 | 중간~높음 | EPS $0.36~$0.40 컨센. 배송 358K 하회. VIX 17.48 숏볼 극단. Miss 시 NASDAQ -3~5% + ARK 환매 연쇄. Beat 시 +2~3% 비대칭 [economic_calendar, CBOE] | reports/briefing/evening_20260419.html | 진행중 |
+| 2026-04-19 | evening | 종목 | ASML -- 4/22 실적 전 선행 관찰 | Bull (조건부) | 중기 | 중간 | TSMC N2 양산 가속 + 빅테크 CapEx $660-690B + imec High-NA EUV Q4 인증. 7월 반도체 관세 확대 리스크 [capex.md, tech_breakthrough.md] | reports/briefing/evening_20260419.html | 진행중 |
+| 2026-04-19 | evening | ETF | AGG -- 방어적 채권 배분 | 중립~Bull | 중기 | 중간 | 10Y 4.27% 쿠폰 확보 + VIX 극단 시 비상 완충 + Fed 인하 시 가격 상승. Core CPI 재상승 리스크 잔존 [us_monetary_policy.md, rebalancing_history.md] | reports/briefing/evening_20260419.html | 진행중 |
+| 2026-04-19 | evening | 시나리오 | 30일 시나리오 갱신: A 38%(-2%) / B 42%(+2%) / C 20% | 중립 (B 우세 전환) | 단기~중기 | 중간 | 호르무즈 24시간 번복으로 A -2%, B +2%. 시장 "개방 할인" 조기 반영 -> 재봉쇄 되돌림 폭 확대 [geopolitics.md, lead_evening_20260419.md] | reports/briefing/evening_20260419.html | 진행중 |
 
 ---
 
