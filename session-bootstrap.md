@@ -10,16 +10,17 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | 466100 (클로봇) - 2026-04-19, Buy 73.5점, 목표가 W58,000 |
+| 마지막 종목분석 | TQQQ (ProShares UltraPro QQQ) ETF - 2026-04-20, Buy 67.0점(조건부), 목표가 $67.63, 손절 $53.57 |
 | 마지막 브리핑 | 모닝브리핑 - 2026-04-17 |
 | 마지막 KB 업데이트 | infrastructure - 2026-04-13 |
-| 진행 중 작업 | Git push 보류 (로컬 .git HEAD 손상 — 사용자 복구 필요) |
+| 진행 중 작업 | 없음 (clean state) |
 
 ## analysis/ 유효 파일 (최근 30일)
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| 466100_클로봇 | 2026-04-19 | 73.5 Buy | 유효 (NEW) |
+| TQQQ_ProSharesUltraProQQQ | 2026-04-20 | 67.0 Buy (조건부, 단기 전용) | 유효 (NEW, ETF) |
+| 466100_클로봇 | 2026-04-19 | 73.5 Buy | 유효 |
 | LLY_EliLilly | 2026-04-17 | 82.4 Strong Buy | 유효 |
 | NVDA_NVIDIA | 2026-04-17 | 81.6 Strong Buy | 유효 |
 | BA_Boeing | 2026-04-16 | 74.9 Buy | 유효 |
@@ -48,12 +49,22 @@
 - KB 업데이트: v3.4 (미니사이클 + 마지막 사이클 통합 + git 리드 위임)
 - fetch_price.py: 활성 (pykrx + yfinance)
 
-## ⚠️ 환경 경고 (2026-04-19)
+## ⚠️ 환경 상태 (2026-04-20)
 
-- `.git` 저장소 HEAD sha1 pointer 손상 (`2c7d5de...` invalid)
-- `git status` / `git log` 실행 불가 상태
-- 종목분석 결과물은 파일시스템에 정상 저장되었으나 **Git push 보류**
-- 복구 방법: `git fetch origin && git reset --hard origin/main` 또는 저장소 재-clone
+- `.git` HEAD 복구 완료 (HEAD=501b515, origin/main 동기화 정상)
+- GitHub Actions 계정 단위 비활성화 상태(GitHub Support 티켓 #4287825 심사 중) — Pages 자동 배포 중단, push는 정상
+- **Agent 도구(sub-agent 호출권) 환경별 가변**: 본 세션(TQQQ)에서는 Task 도구 부재로 리드 직접 수행 모드 적용
+- TQQQ 세션은 `af0de677659b6fc0f` 중단 재개 완료
+
+## TQQQ ETF 분석 핵심 결과
+
+- 스코어 67.0 (Buy 조건부)
+- 목표가 $67.63 (+15.4%, RR 1.8)
+- 손절가 $53.57 (−8.6%, 2x ATR)
+- 30일 EV −4.59% (A:38% +15.2% / B:42% −10.4% / C:20% −30.0%)
+- 최대 보유 60일 (Volatility Decay 연 14.8% 수학적 필연)
+- Total Cost of Carry 6.5%/년 (보수 0.84 + 롤오버 1.5 + 스왑금리 4.2)
+- High-Risk 이벤트: 4/22 TSLA, 4/24 GOOGL, 4/29 FOMC, 4/30 MSFT+META, 5/1 AAPL+AMZN
 
 ---
 
