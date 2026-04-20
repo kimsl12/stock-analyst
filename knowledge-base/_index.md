@@ -138,6 +138,7 @@ lint_mode: full
 | `battery.md` | 리튬 가격 동북아 $18,050/ton (Q1 2026) | 리튬 급등 후 조정. LFP 점유 확대 vs NCM 고성능 분화 | 04-13 | 05-13 | medium |
 | `infrastructure.md` | 글로벌 건설 17.26조달러(+4.9%), 한국 수주 231.2조 | 현대건설·삼성물산 SMR EPC 추진. 데이터센터 전력망 수혜 | 04-13 | 05-13 | medium |
 | `capex.md` | 하이퍼스케일러 5사 합산 $660-690B(2026E), 반도체 $200B, 에너지 $3.3T, 국방 $2.63T | 빅테크 AI CapEx 슈퍼사이클. TSMC $52-56B(+27-40%). 한국 장비투자 $29.7B 세계2위. 통신 -2% 정체. 배터리 한국3사 가동률 50% | 04-19 | 05-19 | high |
+| `robotics.md` | 휴머노이드 2030E $4~39B 편차. Figure $39B밸류·BotQ 12K→50K대/년. Tesla Optimus Gen3 H2 양산+Shanghai 1M/년. Agility Digit 상업수익(GXO 100K totes). Harmonic Drive 85%. Jetson Thor 2,070 FP4 TFLOPS | 삼성(레인보우 35%)·현대(BD 80% $880M)·LG(Atlas비전+Axium)·두산로보·클로봇 생태계. EU AI Act 고위험 2026.08 발효. 클로봇 Q3 매출 +38.9%/레인보우 +117.6% | 04-19 | 05-20 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
@@ -212,7 +213,8 @@ lint_mode: full
 | `infrastructure_2026.jsonl` | 23건 | kb-updater |
 | `capex_2026.jsonl` | 20건 | kb-updater |
 | `telecom_next_2026.jsonl` | 62건 | kb-updater |
-| `changelog_2026.jsonl` | 48건 | kb-updater |
+| `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
+| `changelog_2026.jsonl` | 49건 | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -257,6 +259,7 @@ lint_mode: full
 | LG에너지솔루션, 삼성SDI, SK온 | `industry/auto.md §6` | `macro/korea_economy.md §5-3` |
 | 한화에어로, LIG넥스원, KAI | `macro/geopolitics.md §4, §5, §8` | `macro/political_cycle.md` (미수집) |
 | 두산에너빌리티, 한수원 | `industry/smr.md §2, §4` | `industry/energy.md §7` |
+| 클로봇, 레인보우로보틱스, 두산로보틱스, Figure AI, Tesla Optimus, Agility, 1X | `industry/robotics.md §2, §4` | `industry/ai.md §2` (NVIDIA Jetson), `macro/korea_economy.md` (정부지원) |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
 | Gold, TLT, IAU | `macro/global_risk_factors.md §4` | `macro/us_monetary_policy.md` |
 | BTC, ETH, SOL | `market/daily_snapshot.md` (FAILED) | `macro/global_risk_factors.md §2` |
@@ -269,6 +272,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-19 | `industry/robotics.md` | **신규 생성** -- 로봇 섹터 KB. Physical AI(Figure $39B·BotQ 12K대, Tesla Optimus Gen3 Shanghai 1M/년, Agility Digit GXO 100K totes 상업수익, 1X EQT 10K대, Unitree 2026 물량 완판). 시장 $4~39B 편차(2030). 4강 FANUC 17%·ABB 13%·Yaskawa 12%·KUKA Top5. 한국: 클로봇(466100) 삼성(레인보우35%)·현대(BD $880M)·LG Atlas비전+Axium·두산로보. Harmonic Drive 85% 과점. Jetson Thor 2,070 TFLOPS. 4차 지능형로봇 기본계획 2024-28 3조원·100만대 | +29 |
 | 2026-04-19 | `industry/science_tech.md` | **주간 갱신** -- 한국 정부R&D 35.3조 확정(+21.4%). 경구 Wegovy FDA승인(월$149)+Lilly orforglipron Q2. IonQ 포토닉 인터커넥트(양자네트워킹 최초). 빅테크 CapEx $7000억(+60%). PANW-CyberArk $250억. Synopsys AgentEngineer vs Cadence ChipStack AI 에이전트전쟁. Optimus Gen3 자율보행+상하이 양산. WIPO PCT 2025 한국 28년 연속 성장. 반도체+디지털통신 +6.1% 최고 성장 | +35 |
 | 2026-04-19 | `macro/tech_breakthrough.md` | **주간 갱신** -- AI: Claude Opus 4.7(4/16), Agentic AI 97% 기업 배포(대중화 승격), EU AI Act Digital Omnibus 고위험 2027.12 연기. 반도체: TSMC N2 수율 65%·N2P H2 양산, imec High-NA Q4 인증, ASML 패키징 진출, Alphabet TPU CoWoS 병목. 에너지: CFS $863M 추가 펀딩, Samsung SDI 전고체 파일럿 프로토타입 납품. 양자: NVIDIA Ising QEC AI, QuEra Tsim. 로봇: Figure 03 BotQ 12K대/년. 우주: Blue Origin NG-3 부스터 재사용(4/19), Starship V3 지연. 바이오: 소형 CRISPR(NIH). 신소재: 그래핀-페로브스카이트 3,670h 안정성(Science), 유연 페로브스카이트 25.09% 기록 | +27 |
 | 2026-04-19 | `macro/geopolitics.md` | **주간 갱신** -- 호르무즈 4.17개방→4.18재봉쇄(24시간 번복). 4.22 휴전만료 D-3 최대분기점. WTI $97→$84 급락. Section 301 4.28공청회 개시(한국 반박 의견서 제출). 북한 4월 3차 시험(구축함+탄도미사일). NATO GDP 5% 목표 합의. TSMC $1,650억 투자확대. 이스라엘-레바논 10일 휴전 | +14 |

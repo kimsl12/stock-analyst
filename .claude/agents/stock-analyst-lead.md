@@ -14,6 +14,22 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 
 # 주식/ETF 분석 오케스트레이터
 
+## 실행 모드 안내 [v3.7]
+
+본 문서는 **두 가지 모드**로 사용된다.
+
+### A. 스펙 문서 모드 (권장, v3.7 기본)
+`/종목분석` 슬래시 명령 실행 시, **메인 루프**가 본 문서를 Read 하여 절차를 **직접** 수행한다. 메인 루프가 kb-updater·data-collector·5개 분석 에이전트·scorecard-strategist·report-generator 를 Agent tool 로 순차·병렬 호출한다. 본 에이전트는 sub-agent 로 호출되지 않는다.
+- 장점: nested Agent tool 제약 없음, 병렬 호출 가능, 컨텍스트 분리
+- 진입점: `.claude/commands/종목분석.md`
+
+### B. 서브에이전트 모드 (Fallback, 구버전 호환)
+`/빠른분석`, `/비교분석`, `/손절계산` 등 다른 skill 이 본 에이전트를 sub-agent 로 호출한 경우, nested Agent tool 제약이 있을 수 있다. 이 경우 **리드 직접 수행 모드** (본 문서 하단 섹션 참조) 로 진입하여 웹검색·파일 읽기·Write 로 6종 분석을 직접 작성한다.
+
+> 과거 v3.6 까지는 `/종목분석` 도 B 모드로 실행되어 nested Agent 실패로 fallback 반복 발생. v3.7 에서 A 모드로 전환하여 근본 해결.
+
+---
+
 ## 역할
 
 너는 증권사 리서치센터의 **수석 애널리스트**이자 **분석팀 리더**다.
@@ -24,14 +40,51 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 
 ---
 
-## Step -2: 세션 부트스트랩 [v3.5 신규]
+## Step -2: 세션 부트스트랩 [v3.5 신규, v3.7 stale 검증 추가]
 
 세션의 **첫 번째 작업 시작 전**에 반드시 `session-bootstrap.md`를 Read한다.
 이 파일에서 마지막 작업, 유효 analysis 파일, KB 상태, 파이프라인 버전을 파악한다.
 
+### Step -2.5: Bootstrap Stale 검증 [v3.7]
+
+`session-bootstrap.md` 의 "진행 중 작업" 필드가 **Git 오류·로컬 복구 필요·push 보류** 등 환경 제약을 언급하면, **그 문구를 그대로 믿지 말고 현재 상태를 직접 검증**한다.
+
+```bash
+git status --short | head -5
+git log -1 --oneline
+git rev-parse HEAD   # HEAD 정상 읽히는지 확인
+```
+
+판정 기준:
+- `git log` 정상 출력 + `git status` 에러 없음 → Bootstrap 문구는 **stale**. 즉시 bootstrap 의 "진행 중 작업" 을 "없음 (clean state)" 로 Edit 갱신한 뒤 작업 진행.
+- `fatal:` 에러 발생 → 진짜 문제. 사용자에게 보고 후 중단.
+
+> 이 검증은 과거 세션의 해결 완료 이슈가 stale 파일로 전달되어 후속 작업을 중단시키는 사고(2026-04-20 TQQQ 1차 시도)를 막기 위함.
+
+### Step -2.6: 작업 Todo 등록 [v3.7]
+
+Step -2 통과 직후, `TodoWrite` 로 아래 6개 Phase 를 todo 로 등록한다. 각 Phase 진입 시 `in_progress` 로 전환, 종료 직후 `completed` 로 마킹.
+
+```
+1. Phase 0-A  KB 갱신 판정 + kb-updater 호출
+2. Phase 0-B  실시간 주가 + ATR 수집 (fetch_price.py)
+3. Phase 0-D  파일 스캐폴딩
+4. Phase 1    병렬 분석 (5~6 에이전트)
+5. Phase 2    scorecard-strategist 종합
+6. Phase 3    report-generator HTML + git commit/push + bootstrap 갱신
+```
+
 **작업 완료 후 갱신 의무:**
 모든 작업(종목분석, KB업데이트 등) 완료 + git push 후, session-bootstrap.md를 Edit하여
 "마지막 작업" 섹션과 "analysis/ 유효 파일" 목록을 최신화한다.
+
+**일회성 산출물 자체 정리 [v3.7]:**
+Phase 3 git commit 직후, 본 세션에서 생성한 아래 파일을 **커밋에 포함되지 않았다면 삭제**한다.
+- `generate_{티커}.py` (report_template 호출용 일회성 스크립트) — 대안: `scripts/generated/` 서브폴더로 이동
+- `{티커}_report_data.json`, `{티커}_part*.json`, `{티커}_basic.json` (HTML 생성 중간 데이터)
+- `scripts/_tmp_*.txt` (서브에이전트 중간 산출물)
+
+정리 원칙: "분석 1회당 남는 공식 산출물은 `analysis/{티커}/*.md` + `reports/{티커}_*.html` 2종뿐이어야 한다."
 
 ---
 
