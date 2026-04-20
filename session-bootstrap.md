@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | MSTR (Strategy Inc) - 2026-04-20, Underweight 49.8점(D등급), 가중 목표 $335, 손절 $148.42 |
+| 마지막 종목분석 | ORCL (Oracle Corporation) - 2026-04-20, Buy 68.0점(B등급), 가중 목표 $230, 손절 $158.17 |
 | 마지막 브리핑 | 모닝브리핑 - 2026-04-20 |
 | 마지막 KB 업데이트 | crypto_bitcoin - 2026-04-20 (신규) |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,7 +19,8 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| MSTR_Strategy | 2026-04-20 | 49.8 Underweight (D, BTC treasury) | 유효 (NEW) |
+| ORCL_Oracle | 2026-04-20 | 68.0 Buy (B등급, 조건부) | 유효 (갱신, 4/14 대체) |
+| MSTR_Strategy | 2026-04-20 | 49.8 Underweight (D, BTC treasury) | 유효 |
 | TQQQ_ProSharesUltraProQQQ | 2026-04-20 | 67.0 Buy (조건부, 단기 전용) | 유효 (ETF) |
 | 466100_클로봇 | 2026-04-19 | 73.5 Buy | 유효 |
 | LLY_EliLilly | 2026-04-17 | 82.4 Strong Buy | 유효 |
