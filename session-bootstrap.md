@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | 035420 NAVER - 2026-04-20, Buy 70.4점(B등급), 목표 263,000원, 손절 198,014원 |
+| 마지막 종목분석 | 012450 한화에어로스페이스 - 2026-04-20, Strong Buy 81.1점(조건부), 목표 1,600,000원, 손절 1,269,142원 |
 | 마지막 브리핑 | 모닝브리핑 - 2026-04-20 |
 | 마지막 KB 업데이트 | crypto_bitcoin - 2026-04-20 (신규) |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,7 +19,8 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| 035420_NAVER | 2026-04-20 | 70.4 Buy (B등급, 복합형) | 유효 (신규) |
+| 012450_한화에어로스페이스 | 2026-04-20 | 81.1 Strong Buy (조건부, K-방산 슈퍼사이클) | 유효 (신규) |
+| 035420_NAVER | 2026-04-20 | 70.4 Buy (B등급, 복합형) | 유효 |
 | ORCL_Oracle | 2026-04-20 | 68.0 Buy (B등급, 조건부) | 유효 (갱신, 4/14 대체) |
 | MSTR_Strategy | 2026-04-20 | 49.8 Underweight (D, BTC treasury) | 유효 |
 | TQQQ_ProSharesUltraProQQQ | 2026-04-20 | 67.0 Buy (조건부, 단기 전용) | 유효 (ETF) |
@@ -45,6 +46,7 @@
 - **crypto_bitcoin.md 신규 확보** (2026-04-20, valid_until 2026-05-20, confidence high)
 - **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
 - **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
+- **방산(defense) 전용 KB 부재 확인** (2026-04-20 012450 분석 시) — space.md + geopolitics.md 간접 활용. 향후 kb-updater에서 defense_industry.md 신규 확보 권장
 - **마지막 KB 갱신**: infrastructure 2026-04-13
 
 ## 파이프라인 버전
@@ -55,10 +57,21 @@
 
 ## ⚠️ 환경 상태 (2026-04-20)
 
-- `.git` HEAD 복구 완료 (HEAD=501b515, origin/main 동기화 정상)
+- `.git` HEAD 복구 완료 (HEAD=6ae9cb3, origin/main 동기화 정상)
 - GitHub Actions 계정 단위 비활성화 상태(GitHub Support 티켓 #4287825 심사 중) — Pages 자동 배포 중단, push는 정상
-- **Agent 도구(sub-agent 호출권) 환경별 가변**: 본 세션(TQQQ)에서는 Task 도구 부재로 리드 직접 수행 모드 적용
+- **Agent 도구(sub-agent 호출권) 환경별 가변**: 본 세션(012450)에서는 Task 도구 부재로 리드 직접 수행 모드 적용
 - TQQQ 세션은 `af0de677659b6fc0f` 중단 재개 완료
+
+## 012450 한화에어로스페이스 분석 핵심 결과
+
+- 스코어 81.1 (Strong Buy 조건부)
+- 목표가 ₩1,600,000 (+12.3%, Bull ₩2,000,000 +40.4%)
+- 손절가 ₩1,269,142 (-10.94%, 2x ATR)
+- 현재가 ₩1,425,000, 시총 73.2조원, 1Y +92.7%
+- 핵심 투자포인트: K9 세계 1위(55%) + Redback 호주 승리 + OPM 20%+ + 미국 진출 옵션
+- 단기 촉매: 4/28 Q1 실적, 5~6월 UAE+폴란드3차, 9월 XM30 Phase 2
+- 리스크: 우크라 종전(30%), 미 XM30 탈락(45%), 부채비율 220%
+- 컨센서스 평균 목표가 ₩1,858,000 (+30.4%), BUY 6/6
 
 ## TQQQ ETF 분석 핵심 결과
 
