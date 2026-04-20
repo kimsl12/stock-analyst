@@ -91,3 +91,10 @@ type: time_series
 | 2026-04-19 | crypto | SOL | 86.57 | -3.29% | USD | CoinGabbar / OKX [2026-04-19 주말] | 2026-04-19T10:00:00+09:00 | — |
 | 2026-04-19 | crypto | TotalMarketCap | ~2.70T | +2.8% | USD | CoinGabbar [2026-04-19 주말] | 2026-04-19T10:00:00+09:00 | BTC 도미넌스 ~57% |
 | 2026-04-19 | crypto | FearAndGreedIndex | 21 | — | index | alternative.me [2026-04-19] | 2026-04-19T10:00:00+09:00 | Extreme Fear 근접 (기준선 25). 개선 중(전주 15→21) |
+| 2026-04-20 | crypto | BTC | 77162 | +3.00% | USD | CoinGecko [2026-04-20 일요일 현재] | 2026-04-20T09:00:00+09:00 | $77K대 주말 유지. 독립 강세 4일 연속. 7일 +5.5% |
+| 2026-04-20 | crypto | ETH | ~2370 | — | USD | CoinGecko 비율 추정 (SOL/ETH=0.03767) [2026-04-20] | 2026-04-20T09:00:00+09:00 | BTC 대비 소폭 약세 추정 |
+| 2026-04-20 | crypto | SOL | ~85.02 | -4.8%(vs ETH) | USD | Investing.com / CoinMarketCap [2026-04-20] | 2026-04-20T09:00:00+09:00 | Drift 익스플로잇 여파 지속 |
+| 2026-04-20 | crypto | TotalMarketCap | ~2.69T | — | USD | CoinGecko [2026-04-20] | 2026-04-20T09:00:00+09:00 | BTC 도미넌스 57.4% |
+| 2026-04-20 | crypto | FearAndGreedIndex | 27 | — | index | alternative.me [2026-04-19~20] | 2026-04-20T09:00:00+09:00 | Fear 구간. 04-19 21에서 소폭 개선. 25(Extreme Fear) 기준선 상회 |
+| 2026-04-20 | futures | SP500_Futures | 7103 | -0.32% | point | Investing.com [2026-04-20 일요일 프리마켓] | 2026-04-20T09:00:00+09:00 | 호르무즈 재봉쇄 + 나포 + 협상 결렬 초기 반영. 04-21 갭다운 예고 |
+| 2026-04-20 | news | Hormuz_Status | CLOSED | — | — | CNN/NPR/Al Jazeera [2026-04-18~19] | 2026-04-20T09:00:00+09:00 | 04-17 개방→04-18 재봉쇄. 04-19 미 USS Spruance 이란 투스카 나포. 4/22 휴전 만료 D-2. 이란 2차 협상 거부 |
