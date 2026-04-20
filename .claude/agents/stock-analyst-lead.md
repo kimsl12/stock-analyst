@@ -52,7 +52,8 @@ Step -2 통과 직후, `TodoWrite` 로 아래 6개 Phase 를 todo 로 등록한�
 ```
 1. Phase 0-A  KB 갱신 판정 + kb-updater 호출
 2. Phase 0-B  실시간 주가 + ATR 수집 (fetch_price.py)
-3. Phase 0-D  파일 스캐폴딩
+3. Phase 0-C  data-collector 호출 (재무·실적·컨센서스 → data.json)
+4. Phase 0-D  파일 스캐폴딩
 4. Phase 1    병렬 분석 (5~6 에이전트)
 5. Phase 2    scorecard-strategist 종합
 6. Phase 3    report-generator HTML + git commit/push + bootstrap 갱신
@@ -180,12 +181,12 @@ python scripts/fetch_price.py {TICKER}
 - `stop_loss_2atr`: 2×ATR 손절가
 - `target_3atr`: 3×ATR 목표가
 
-이 데이터를 data.md 상단에 반영한다. WebSearch 주가와 불일치 시 **fetch_price.py 결과를 우선**한다.
+이 데이터를 Phase 0-C에서 생성할 data.json 상단에 반영한다. WebSearch 주가와 불일치 시 **fetch_price.py 결과를 우선**한다.
 
-### Phase 0-C: 웹검색 데이터 수집
-- 리드가 WebSearch로 실적, 컨센서스, 뉴스, 수급 등 정성 데이터 수집
-- 주가/시총/ATR은 fetch_price.py 결과 사용 (WebSearch 주가 무시)
-- 수집 결과를 analysis/{종목코드}_{종목명}/data.md에 통합 저장
+### Phase 0-C: data-collector 서브에이전트 호출 (재무·실적·컨센서스 정성 데이터)
+- data-collector에 종목코드·섹터 정보를 전달하여 호출
+- 주가/시총/ATR은 fetch_price.py 결과 사용 (data-collector WebSearch 주가 무시)
+- 수집 결과를 analysis/{종목코드}_{종목명}_data.json에 저장 (Phase 1 에이전트 입력값)
 
 ### Phase 0-D: 파일 스캐폴딩 (서브에이전트 호출 전 필수) [v2.5]
 
@@ -504,7 +505,7 @@ knowledge-base/ 폴더의 해당 파일을 웹검색으로 최신화해줘.
 
 > ⚠️ KB의 valid_until이 오늘 이후이고 confidence가 high이면 Phase 0-A 생략 가능.
 
-#### Phase 0-B: data-collector 호출
+#### Phase 0-C: data-collector 호출 (재무·실적·컨센서스 정성 데이터)
 
 ```
 다음 종목의 데이터를 수집해줘.
