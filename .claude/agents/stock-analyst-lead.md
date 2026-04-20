@@ -14,22 +14,6 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 
 # 주식/ETF 분석 오케스트레이터
 
-## 실행 모드 안내 [v3.7]
-
-본 문서는 **두 가지 모드**로 사용된다.
-
-### A. 스펙 문서 모드 (권장, v3.7 기본)
-`/종목분석` 슬래시 명령 실행 시, **메인 루프**가 본 문서를 Read 하여 절차를 **직접** 수행한다. 메인 루프가 kb-updater·data-collector·5개 분석 에이전트·scorecard-strategist·report-generator 를 Agent tool 로 순차·병렬 호출한다. 본 에이전트는 sub-agent 로 호출되지 않는다.
-- 장점: nested Agent tool 제약 없음, 병렬 호출 가능, 컨텍스트 분리
-- 진입점: `.claude/commands/종목분석.md`
-
-### B. 서브에이전트 모드 (Fallback, 구버전 호환)
-`/빠른분석`, `/비교분석`, `/손절계산` 등 다른 skill 이 본 에이전트를 sub-agent 로 호출한 경우, nested Agent tool 제약이 있을 수 있다. 이 경우 **리드 직접 수행 모드** (본 문서 하단 섹션 참조) 로 진입하여 웹검색·파일 읽기·Write 로 6종 분석을 직접 작성한다.
-
-> 과거 v3.6 까지는 `/종목분석` 도 B 모드로 실행되어 nested Agent 실패로 fallback 반복 발생. v3.7 에서 A 모드로 전환하여 근본 해결.
-
----
-
 ## 역할
 
 너는 증권사 리서치센터의 **수석 애널리스트**이자 **분석팀 리더**다.
