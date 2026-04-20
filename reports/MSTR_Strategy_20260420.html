@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Strategy Inc (MSTR) 종합 분석</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Strategy Inc (MSTR)</h1><div class="meta">주식 종합 분석 리포트 | 2026-04-20</div><div style="margin-top:8px"><span class="badge b-hold">Underweight</span> <span class="badge b-score">49.8/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$166.52</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$57.7B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (BTC 손익 지배)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$104.17~$457.22</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$9.05 (5.43%)</div></div><div class="ki"><div class="kl">mNAV</div><div class="kv">0.985x</div></div><div class="ki"><div class="kl">BTC 보유</div><div class="kv">780,897 BTC</div></div><div class="ki"><div class="kl">BTC 평균가</div><div class="kv">$75,577</div></div><div class="ki"><div class="kl">BI 매출</div><div class="kv">~$460M/년</div></div><div class="ki"><div class="kl">배당 부담</div><div class="kv">$1.89B/년</div></div><div class="ki"><div class="kl">CB 잔액</div><div class="kv">$8.2B</div></div><div class="ki"><div class="kl">레버리지 베타</div><div class="kv">~5x vs BTC</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>Strategy Inc(MSTR)</strong>는 780,897 BTC(전체 유통량 3.9%)를 보유한 세계 최대 상장 Bitcoin Treasury Vehicle이다. 현재 mNAV 0.985x는 역사적 최저 수준으로 역사 평균(1.5~2.0x) 대비 50% 할인 상태이나, 이는 단순 저평가가 아닌 IBIT 경쟁 심화 + 우선주 배당 $1.89B/년 + CB 만기 클러스터의 구조적 취약성을 반영한 '함정 디스카운트' 가능성이 공존한다. <strong>종합 점수 49.8점(D등급)</strong>: 밸류에이션 매력도 8.0/10이나 재무건전성 2.5/10 + 리스크관리 1.5/10의 극단적 감점이 Underweight 투자의견을 결정한다. 가중평균 목표주가 $335 (+101%) vs 1차 손절가 $148.42 (-10.87%)의 Risk/Reward = 9.3:1로 매력적이나, Worst Case -70~80%($33~50) 꼬리 리스크 감안 시 포지션 5% 이내(공격적 투자자 한정)으로 제한해야 한다. <strong>최우선 단기 분기점</strong>: 4/28 FOMC + 5월 초 Q1 실적 공시(Bitcoin Yield + mNAV). BTC $65K 이탈 시 즉시 연동 손절 필수.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$148.42</div><div class="dn" style="font-size:13px">-10.9%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$193.66</div><div class="up" style="font-size:13px">+16.3%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="70" y="30" width="41" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="70" y1="26" x2="70" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="70" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$148</text><line x1="87" y1="24" x2="87" y2="52" stroke="var(--text)" stroke-width="3"/><text x="87" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$167</text><line x1="111" y1="26" x2="111" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="111" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$194</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $104</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $457</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $9.05 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,90.0 154.7,129.8 216.1,125.3 192.3,167.0 157.6,174.3 140.0,220.0 103.6,200.2 87.7,167.0 125.7,145.4 122.4,125.7" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">Moat/경쟁력</text><circle cx="140.0" cy="90.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="154.7" cy="129.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="216.1" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="192.3" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">사업안정성</text><circle cx="157.6" cy="174.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">산업매력도</text><circle cx="140.0" cy="220.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀</text><circle cx="103.6" cy="200.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스/수급</text><circle cx="87.7" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크관리</text><circle cx="125.7" cy="145.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="122.4" cy="125.7" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>Moat/경쟁력</td><td>6.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>2.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>8.0</td><td>/10</td></tr><tr><td>성장성</td><td>5.5</td><td>/10</td></tr><tr><td>사업안정성</td><td>3.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>7.0</td><td>/10</td></tr><tr><td>모멘텀</td><td>6.2</td><td>/10</td></tr><tr><td>컨센서스/수급</td><td>5.5</td><td>/10</td></tr><tr><td>리스크관리</td><td>1.5</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>3.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 49.8/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">Narrow Moat (약화 중)</span></h2><p>Strategy Inc(전 MicroStrategy, 2025.02 사명 변경)는 NASDAQ 상장 BI 소프트웨어 기업에서 레버리지드 Bitcoin Treasury Vehicle로 정체성을 전환한 독특한 상장사다. <strong>이중 사업구조</strong>: BI SW 매출 ~$460M/년(가치 기여 1~2%)과 BTC 보유 $58.57B(가치 기여 98%+)으로 구성. <strong>지배구조</strong>: CEO Phong Le + Executive Chairman Michael Saylor(경제적 지분 9.9%, 의결권 구조적 과반). Saylor 브랜드는 자본조달(2025년 $25.3B, 미국 최대 주식발행자 2년 연속)의 핵심 엔진이나 Key-Person 리스크 동반. <strong>BTC 레버리지 구조</strong>: 전환사채 $8.2B(쿠폰 0.421%) + STRK/STRF/STRD 우선주 ATM이 BTC 매수 재원.</p><h3>Moat 상세</h3><p><strong>핵심 Moat</strong>: BTC 780,897개(3.9%) 집중 보유 + 전환사채 0.421% 조달 비용 우위(복제 불가). 2025년 $25.3B 자본조달 실적이 입증하는 자본시장 접근성 = Strong Cost Advantage. <strong>Moat 약화 요인</strong>: BlackRock IBIT가 동등 규모(~782K BTC, AUM $70.6B)를 0.25% 보수 무레버리지로 제공하며 '기관 BTC 채널 독점' 근거 붕괴. 전환사채 만기(2025~2032) 도래 시 저금리 우위 소멸(재조달 4.3~4.5% 예상). mNAV < 1.0x 구간에서 자본조달 루프 역전 위험 — Moat 트렌드 Negative.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>항목</th><th>FY2023</th><th>FY2024E</th><th>FY2025E</th><th>FY2026E</th></tr></thead><tbody><tr><td>BI SW 매출</td><td>$496M</td><td>~$470M</td><td>~$460M</td><td>~$450M</td></tr><tr><td>YoY 성장률</td><td>-</td><td>-3~4%</td><td>-2~3%</td><td>-2~3%</td></tr><tr><td>BTC 보유량</td><td>174,530 BTC</td><td>447,470 BTC</td><td>528,185 BTC</td><td>780,897 BTC</td></tr><tr><td>BTC 평균 취득가</td><td>~$27K</td><td>~$43K</td><td>-</td><td>$75,577</td></tr><tr><td>미실현 손익</td><td>N/A</td><td>N/A</td><td>-</td><td>-$14.46B (Q1)</td></tr><tr><td>이연세금 혜택</td><td>N/A</td><td>N/A</td><td>-</td><td>+$2.42B (Q1)</td></tr></tbody></table><h3>분석</h3><p><strong>BI SW 사업</strong>: 매출 플래토~역성장($496M→$460M), 시총($57.7B) 대비 기여 가치 1~2%. <strong>BTC Treasury</strong>: 총 취득 원가 $59.02B vs 현재 BTC 시가 $58.57B — 사실상 손익분기점. <strong>이자 커버리지</strong>: BI EBITDA ~$50M / 배당 의무 $1,890M = 0.037x(극단적 취약). 배당 지급 소스는 순전히 자본시장(ATM 발행) 의존 → mNAV > 1.0x 유지 필수 조건. <strong>ASC 820 도입(2025.01)</strong>: BTC 미실현 손익이 P&L 직반영 → GAAP 변동성 구조적 확대. Q1 2026 GAAP 순손실 추정 ~-$12B(BTC 평가손 지배). <strong>전환사채</strong>: $8.2B, 만기 2025~2032 클러스터, 가중평균 쿠폰 0.421%(역사적 저금리 유산, 재조달 시 우위 소멸 위험).</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>시나리오</th><th>BTC 가격</th><th>mNAV</th><th>목표주가</th><th>가중치</th><th>기대수익률</th></tr></thead><tbody><tr><td>Bull (A)</td><td>$120,000</td><td>2.0x</td><td>$541</td><td>38%</td><td>+225%</td></tr><tr><td>Base (B)</td><td>$95,000</td><td>1.2x</td><td>$257</td><td>42%</td><td>+54%</td></tr><tr><td>Bear (C)</td><td>$60,000</td><td>0.8x</td><td>$108</td><td>20%</td><td>-35%</td></tr><tr><td>가중평균</td><td>-</td><td>-</td><td>$335</td><td>100%</td><td>+101%</td></tr><tr><td>최종(2방법론)</td><td>-</td><td>-</td><td>$311</td><td>-</td><td>+87%</td></tr><tr><td>Worst Case</td><td>$35~50K</td><td>0.4~0.5x</td><td>$33~50</td><td>8~12%</td><td>-70~80%</td></tr></tbody></table><p><strong>적용 방법론</strong>: 전통 PER/PBR 부적용(GAAP EPS가 BTC 손익 지배). mNAV(시총/BTC NAV) 기반 시나리오 밸류에이션 적용. <strong>현재 mNAV 0.985x</strong>: 역사적 최저. 역사 평균 1.5~2.0x 대비 50% 할인. 2024 Q4 최고 3.5x 대비 72% 하락. <strong>가중평균 목표주가 $335</strong>: mNAV 시나리오($335 × 70%) + 피어 mNAV 회귀($253 × 30%) = <strong>최종 $311</strong>. <strong>Risk/Reward</strong>: 1차 손절(-10.87%) vs 가중목표(+101%) = <strong>9.3:1</strong> (매우 매력적). 단, Worst Case(-75%) 확률 8~12% 감안 기대값 +80% — 포지션 5% 이내 사이징 필수. <strong>mNAV 임계 BTC 가격</strong>: $73,881 (현재 $75K 대비 -1.5%). 극소의 추가 하락으로 자본조달 루프 역전 가능.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>모멘텀 종합 스코어</strong>: 6.2/10. <strong>1D +11.80%</strong> 강한 단발 반등. 52주 레인지 하단 17.6% 구간(역배열 추세 내 반등). <strong>BTC 동조 레버리지</strong>: 상관계수 0.85~0.92, 베타 ~4.5~5.5x. BTC +10% → MSTR 추정 +45~55%. <strong>기술적 상태</strong>: 이동평균 역배열(200MA >> 100MA >> 50MA >> 현재가). RSI 35~45 추정(과매도 탈출 시도). MACD 데드크로스 후 수렴 중. <strong>변동성</strong>: ATR(14) $9.05(5.43%), IV 연환산 80~130% 추정. <strong>지지/저항</strong>: 1차 지지 $148.42(2×ATR) | 1차 저항 $200(심리적) | 2차 저항 $250~257(Base Case) | 3차 $335~541(12M 목표). <strong>Short Squeeze 잠재</strong>: MSTR 역사적 공매도 잔고 상당 수준. BTC 급등 시 숏커버링 → 추가 급등 촉매. <strong>분할 매수 권장</strong>: 현재 추세 전환 미확인 상태로 단번 진입 위험. 3단계 분할 매수($166.52 / $157 / $148.42) 권장.</p><table><thead><tr><th>항목</th><th>내용</th><th>비고</th></tr></thead><tbody><tr><td>Wall St. 매수 의견</td><td>~70~80%</td><td>ATH 시점 기준, 하향 조정 사이클 중</td></tr><tr><td>컨센서스 평균 목표가</td><td>$350~450</td><td>현재가 대비 크게 하향 조정 필요</td></tr><tr><td>최종 목표주가 (2방법론)</td><td>$311</td><td>mNAV 시나리오 × 70% + 피어 회귀 × 30%</td></tr><tr><td>가중평균 기대수익률</td><td>+101%</td><td>Bull +225% / Base +54% / Bear -35%</td></tr><tr><td>Worst Case</td><td>-70~80%</td><td>$33~50, 확률 8~12%</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>산업 정체성</strong>: Strategy Inc는 2020년 BTC Treasury Strategy 최초 채택으로 'Bitcoin Treasury Vehicle' 카테고리를 창시. <strong>산업 매력도</strong>: Porter 5 Forces 17.5/25 = 7/10. TAM $1.5T → $3.0T (CAGR 25~30%). <strong>IBIT 위협 HIGH</strong>: BlackRock IBIT AUM $70.6B(~782K BTC)로 MSTR과 동등 규모. '기관 BTC 채널 독점' 근거 붕괴. <strong>신규 진입자 위협 HIGH</strong>: Semler Scientific, Metaplanet, 잠재적 Tesla 재개 등 BTC treasury 기업 증가. <strong>긍정 메가트렌드</strong>: Trump 행정부 친크립토 정책(Crypto Task Force, SEC Paul Atkins). BTC Spot ETF Q1 순유입 $18.7B. <strong>부정 요인</strong>: BTC 채굴사 Q1 32K BTC 매도(생산비 $79,995/BTC BEP 이하). 구조적 공급 압박 지속. <strong>BI SW 사업</strong>: 플래토~역성장($460M). Tableau/Power BI 대비 점유율 열위. 전략적 매각/분리 논의 가능성.</p><table><thead><tr><th>대안 수단</th><th>BTC 접근성</th><th>비용</th><th>MSTR 대비</th></tr></thead><tbody><tr><td>MSTR 주식</td><td>레버리지 BTC ~5x 베타</td><td>증권사 수수료</td><td>기준 (레버리지 있음)</td></tr><tr><td>BlackRock IBIT</td><td>순수 BTC 1:1</td><td>운용보수 0.25%/년</td><td>레버리지 없음, 신용도 높음</td></tr><tr><td>Fidelity FBTC</td><td>순수 BTC 1:1</td><td>운용보수 0.25%/년</td><td>IBIT 대안</td></tr><tr><td>BTC 직접 보유</td><td>완전 노출</td><td>거래소 수수료</td><td>세금 처리 복잡</td></tr><tr><td>Metaplanet (日)</td><td>BTC treasury 소규모</td><td>-</td><td>엔화 노출, 규모 작음</td></tr><tr><td>합성 레버리지</td><td>IBIT + 콜옵션</td><td>옵션 프리미엄</td><td>IV 80~130%에서 비쌈</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><strong>종합 리스크 등급: ★★★★★ (5/5, EXTREME)</strong>. Top 5 리스크 모두 RED/ORANGE 등급. Worst Case -70~80% ($33~50) 꼬리 리스크. BTC 가격 방향성에 대한 강한 확신 없으면 투자 불가 판정. 현재 mNAV 0.985x는 1.0x 임계선 바로 아래 — BTC -1.5%만으로 자본조달 루프 역전 가능.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="260" cy="50" r="5" fill="var(--sell)"/><text x="269" y="54" fill="var(--text)" font-size="10">mNAV < 1.0x 구조적 악순환</text><circle cx="260" cy="68" r="5" fill="var(--sell)"/><text x="269" y="72" fill="var(--text)" font-size="10">우선주 배당 $1.89B/년</text><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">BTC 급락 ($40~50K)</text><circle cx="100" cy="50" r="5" fill="var(--sell)"/><text x="109" y="54" fill="var(--text)" font-size="10">Saylor Key-Person 리스크</text><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">전환사채 만기 클러스터</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">IBIT 대체 가속</text><circle cx="100" cy="68" r="5" fill="var(--sell)"/><text x="109" y="72" fill="var(--text)" font-size="10">SEC 투자회사법 재분류</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>mNAV < 1.0x 구조적 악순환</strong> (발생: 고, 영향: 고)<br><span style="color:var(--sub);font-size:13px">현재 0.985x — 임계점 이하. BTC -1.5%($73,881)면 악순환 가속. 자본조달 루프 역전.</span></div><div class="ri rh"><strong>우선주 배당 $1.89B/년</strong> (발생: 고, 영향: 고)<br><span style="color:var(--sub);font-size:13px">BI EBITDA ~$50M으로 커버 0.037x. mNAV < 1.0x 시 ATM 발행 = BTC-per-share 희석.</span></div><div class="ri rh"><strong>BTC 급락 ($40~50K)</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">2022년 -75% 선례. GAAP 추가 손실 $20~27B. mNAV 0.4~0.5x 붕괴.</span></div><div class="ri rh"><strong>Saylor Key-Person 리스크</strong> (발생: 저, 영향: 고)<br><span style="color:var(--sub);font-size:13px">개인 BTC 17,732개 담보 대출 추정. 이탈/건강/규제 시 mNAV 프리미엄 즉시 소멸.</span></div><div class="ri rm"><strong>전환사채 만기 클러스터</strong> (발생: 중, 영향: 대)<br><span style="color:var(--sub);font-size:13px">$8.2B, 2025~2032 만기. 재조달 시 0.421% → 4.3~4.5% 금리 급등 위험.</span></div><div class="ri rh"><strong>IBIT 대체 가속</strong> (발생: 고, 영향: 중)<br><span style="color:var(--sub);font-size:13px">AUM $70.6B(~782K BTC). 레버리지 금지 기관 자금이 IBIT로 독점 이동.</span></div><div class="ri rh"><strong>SEC 투자회사법 재분류</strong> (발생: 저, 영향: 고)<br><span style="color:var(--sub);font-size:13px">Investment Company Act 1940 적용 시 BTC 보유 강제 청산 위험.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>최종 투자의견: Underweight (포지션 5% 이내, 공격적 투자자 한정)</strong>. 종합 점수 49.8점(D등급). 리스크 1.5/10 + 재무건전성 2.5/10의 극단적 감점이 밸류에이션 8.0/10을 압도. <strong>1차 목표</strong>: $193.66 (3×ATR, +16.3%) | <strong>가중 목표</strong>: $335 (+101%) | <strong>1차 손절</strong>: $148.42 (2×ATR, -10.87%). <strong>R/R</strong>: 1차 1.5:1 / 가중 9.3:1. <strong>분할 매수</strong>: 30% @ $166.52 + 30% @ $157 + 40% @ $148.42. <strong>분할 매도</strong>: 25% @ $193.66 / $250 / $350 / $450+. <strong>절대 준수</strong>: BTC $65K 주간 종가 연동 손절. STRK 배당 불이행 시 즉시 청산. Saylor 지분 1%+ 매도 시 즉시 청산.</p></div>
+<div class="sec"><h2>Bitcoin Treasury 핵심 지표 & 자본구조 분석</h2>
+<h3>Bitcoin Treasury 핵심 지표</h3>
+<table>
+<thead><tr><th>항목</th><th>값</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td><strong>mNAV</strong></td><td style="color:#EF5350;font-weight:700">0.985x</td><td>역사적 최저 — 자본조달 임계점</td></tr>
+<tr><td>BTC 보유량</td><td><strong>780,897 BTC</strong></td><td>전체 유통량의 3.9%</td></tr>
+<tr><td>BTC 평균 취득가</td><td>$75,577</td><td>현재 BTC $75,000과 손익분기 근접</td></tr>
+<tr><td>총 취득 원가</td><td>$59.02B</td><td>vs BTC 시가 $58.57B</td></tr>
+<tr><td>BTC 시가 보유가치</td><td>$58.57B</td><td>시총 $57.7B 대비 +1.5%</td></tr>
+<tr><td>Q1 2026 미실현 손실</td><td style="color:#EF5350">-$14.46B</td><td>BTC Q1 -23.8% ASC 820 반영</td></tr>
+<tr><td>이연세금 혜택</td><td style="color:#26A69A">+$2.42B</td><td>손실 대응 세금 혜택</td></tr>
+<tr><td>Bitcoin Yield (2025 YTD)</td><td>+30~50%</td><td>임계점 진입 (mNAV 1.0x 하회)</td></tr>
+</tbody>
+</table>
+
+<h3>자본구조 스트레스 테스트</h3>
+<table>
+<thead><tr><th>증권</th><th>규모</th><th>배당/쿠폰</th><th>연간 부담</th></tr></thead>
+<tbody>
+<tr><td>전환사채 (CB)</td><td>$8.2B</td><td>0.421% 가중평균</td><td>~$34M</td></tr>
+<tr><td>STRK 우선주</td><td>$21B ATM</td><td>8% 누적</td><td>최대 $1,680M</td></tr>
+<tr><td>STRF 우선주</td><td>$2.1B ATM</td><td>10% 누적</td><td>최대 $210M</td></tr>
+<tr><td>STRD 우선주</td><td>-</td><td>10% <em>비누적</em></td><td>배당 스킵 가능</td></tr>
+<tr><td colspan="2"><strong>연간 총 배당 의무</strong></td><td colspan="2" style="color:#EF5350;font-weight:700">최대 $1,890M/년</td></tr>
+<tr><td colspan="2">BI SW 추정 EBITDA</td><td colspan="2">~$46~70M</td></tr>
+<tr><td colspan="2"><strong>이자 커버리지 비율</strong></td><td colspan="2" style="color:#EF5350;font-weight:700">0.037x (극단적 취약)</td></tr>
+</tbody>
+</table>
+
+<h3>mNAV 역사적 맥락</h3>
+<table>
+<thead><tr><th>시기</th><th>BTC 가격</th><th>mNAV</th><th>MSTR 주가</th></tr></thead>
+<tbody>
+<tr><td>2020 BTC 전략 도입</td><td>~$11K</td><td>1.0~1.2x</td><td>~$130</td></tr>
+<tr><td>2021 BTC 고점</td><td>~$60K</td><td>3.0~4.0x</td><td>~$900 (분할전)</td></tr>
+<tr><td>2022 크립토 윈터</td><td>~$17~20K</td><td>0.5~0.8x</td><td>~$130~150</td></tr>
+<tr><td>2024 Q4 ATH</td><td>$126,210</td><td style="color:#26A69A"><strong>3.5x</strong></td><td>~$457</td></tr>
+<tr><td><strong>2026 Q1 현재</strong></td><td>$75,000</td><td style="color:#EF5350"><strong>0.985x</strong></td><td><strong>$166.52</strong></td></tr>
+</tbody>
+</table>
+</div>
+<div class="sec"><h2>BTC 가격 × mNAV 민감도 테이블</h2>
+<p style="color:var(--sub);font-size:13px;margin-bottom:10px">발행주식수 346M주 고정 기준 | 목표주가 단위: $/주</p>
+<table>
+<thead><tr>
+<th>mNAV</th>
+<th>BTC $50K</th>
+<th>BTC $75K</th>
+<th>BTC $95K</th>
+<th>BTC $120K</th>
+<th>BTC $150K</th>
+</tr></thead>
+<tbody>
+<tr><td>0.6x</td><td>$68</td><td>$102</td><td>$129</td><td>$163</td><td>$204</td></tr>
+<tr><td>0.8x</td><td>$91</td><td>$136</td><td>$172</td><td>$218</td><td>$272</td></tr>
+<tr style="background:rgba(239,83,80,0.1)"><td><strong>1.0x ← 현재</strong></td><td>$113</td><td style="color:#FFA726;font-weight:700">$170</td><td>$215</td><td>$272</td><td>$340</td></tr>
+<tr><td>1.2x</td><td>$136</td><td>$204</td><td style="color:#26A69A;font-weight:700">$257 (Base)</td><td>$326</td><td>$408</td></tr>
+<tr><td>1.5x</td><td>$170</td><td>$254</td><td>$322</td><td>$407</td><td>$509</td></tr>
+<tr><td>2.0x</td><td>$226</td><td>$339</td><td>$429</td><td style="color:#26A69A;font-weight:700">$541 (Bull)</td><td>$678</td></tr>
+<tr><td>2.5x</td><td>$283</td><td>$424</td><td>$537</td><td>$678</td><td>$847</td></tr>
+</tbody>
+</table>
+<p style="color:var(--sub);font-size:12px;margin-top:8px">계산식: 목표주가 = (780,897 BTC × BTC 가격 × mNAV) / 346,000,000주<br>현재 위치: BTC $75K / mNAV 0.985x → ~$170 (현재가 $166.52와 일치)</p>
+</div>
+<div class="sec"><h2>Debate Cards & Contrarian View</h2>
+<style>
+.debate-card{background:rgba(156,39,176,0.08);border:1px solid rgba(156,39,176,0.4);border-radius:10px;padding:16px;margin:10px 0}
+.debate-title{color:#CE93D8;font-size:15px;font-weight:700;margin-bottom:10px}
+.debate-bull{background:rgba(38,166,154,0.08);border-left:3px solid #26A69A;padding:8px 12px;border-radius:4px;margin:6px 0;font-size:14px}
+.debate-bear{background:rgba(239,83,80,0.08);border-left:3px solid #EF5350;padding:8px 12px;border-radius:4px;margin:6px 0;font-size:14px}
+.debate-judge{background:rgba(66,165,245,0.08);border-left:3px solid #42A5F5;padding:8px 12px;border-radius:4px;margin:6px 0;font-size:13px;color:var(--sub)}
+.contrarian-card{background:rgba(255,152,0,0.08);border:1px solid rgba(255,152,0,0.4);border-radius:10px;padding:16px;margin:10px 0}
+.contrarian-title{color:#FFB74D;font-size:15px;font-weight:700;margin-bottom:10px}
+</style>
+
+<div class="debate-card">
+<div class="debate-title">Debate #1: "mNAV 0.985x = 매수 기회인가, 구조적 함정인가?"</div>
+<div class="debate-bull"><strong>Bull:</strong> mNAV 0.985x는 역사 평균(1.5~2.0x) 대비 50% 할인. BTC $75K에서 mNAV 1.5x만 회복해도 주가 $254 (+52.5%). 2022 크립토 윈터 mNAV 0.5x에서 2024 Q4 3.5x로 회복한 선례 존재.</div>
+<div class="debate-bear"><strong>Bear:</strong> 현재 디스카운트는 단순 저평가가 아닌 "구조적 프리미엄 소멸" 반영. IBIT 동등 보유로 기관 BTC 채널 독점 근거 붕괴. 전환사채 저금리 우위도 만기 도래 시 소멸.</div>
+<div class="debate-judge"><strong>결정 기준:</strong> BTC $85K+ 회복 시 Bull 우세 | BTC $70~75K 횡보 시 Bear 우세. IBIT 대비 MSTR 레버리지 프리미엄 필요 판단 여부로 결정.</div>
+</div>
+
+<div class="debate-card">
+<div class="debate-title">Debate #2: "IBIT vs MSTR — 레버리지 프리미엄은 여전히 유효한가?"</div>
+<div class="debate-bull"><strong>MSTR 레버리지 옹호:</strong> BTC +10% → MSTR 추정 +45~55% (베타 ~5x). Bull Case $541 달성 시 +225% vs IBIT +60%. Saylor 자본조달 엔진($25.3B/년)은 타 treasury 복제 불가.</div>
+<div class="debate-bear"><strong>IBIT 옹호:</strong> 동등 BTC 보유를 0.25% 보수, 무레버리지, 최고 신용도로 제공. 연기금/보험사 등 레버리지 금지 기관 자금이 IBIT 독점. BTC 횡보·하락 시 MSTR은 우선주 배당 부담으로 초과 손실.</div>
+<div class="debate-judge"><strong>결정 기준:</strong> BTC 단기 급등 확신 → MSTR | BTC 장기 상승 + 변동성 회피 → IBIT | 권장 혼합: IBIT 70% + MSTR 30%</div>
+</div>
+
+<div class="debate-card">
+<div class="debate-title">Debate #3: "우선주 배당 $1.89B/년 — ATM 발행으로 영구 순환 가능한가?"</div>
+<div class="debate-bull"><strong>Saylor 엔진 옹호:</strong> 2025년 $25.3B 자본조달은 미국 최대 주식발행자 2년 연속. CB 0.421% + 주식 ATM + 우선주 ATM의 3중 조달 스택은 Saylor 없이 구축 불가. BTC 강세장에서 Bitcoin Yield +50%/년 유지 가능.</div>
+<div class="debate-bear"><strong>배당 폭탄 경고:</strong> STRK 8% × $21B + STRF 10% × $2.1B = 연 $1.89B. BI SW EBITDA $50M으로 커버 비율 0.037x. mNAV &lt; 1.0x 구간에서는 ATM 발행이 Bitcoin Yield 희석 → 역순환.</div>
+<div class="debate-judge"><strong>결정 기준:</strong> FOMC 비둘기 + BTC $80K+ → 엔진 재가동 기대 | 현 상태(mNAV 0.985x) 유지 → 배당 폭탄 시한 임박 | Q1 실적(5월 초)이 공식 확인 이정표.</div>
+</div>
+
+<div class="contrarian-card">
+<div class="contrarian-title">Contrarian Card: "IBIT에 없는 MSTR만의 가치 — Bitcoin Yield KPI와 자본조달 레버리지 루프"</div>
+<p style="font-size:14px;margin-bottom:8px">시장은 현재 MSTR을 "IBIT의 고비용 열위 대체품"으로만 인식하나, IBIT가 제공할 수 없는 3가지 고유 가치가 존재한다.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px">
+<div style="background:rgba(255,152,0,0.06);padding:10px;border-radius:8px;font-size:13px">
+<strong style="color:#FFB74D">1. 레버리지 베타 ~5x</strong><br>BTC +30% 시 IBIT +30% vs MSTR +100~150% 기대. 레버리지 비용(우선주 배당)은 "콜옵션 프리미엄"과 유사.
+</div>
+<div style="background:rgba(255,152,0,0.06);padding:10px;border-radius:8px;font-size:13px">
+<strong style="color:#FFB74D">2. 자본조달 속도</strong><br>mNAV &gt; 1.0x 구간에서 ATM 발행 → BTC 추가 매수 → 주당 BTC 증대. IBIT가 구조적으로 제공 불가한 "시간당 BTC 증가율".
+</div>
+<div style="background:rgba(255,152,0,0.06);padding:10px;border-radius:8px;font-size:13px">
+<strong style="color:#FFB74D">3. 구조적 콜옵션</strong><br>Bull +225% / Bear -35%의 비대칭 R/R 구조는 실질적으로 "BTC 장기 콜옵션". IV 80~130% 환경에서 직접 보유가 옵션 프리미엄보다 저렴.
+</div>
+</div>
+<p style="font-size:12px;color:var(--sub);margin-top:10px">⚠ 이 Contrarian 주장은 <strong>BTC 장기 상승 확신이 있는 투자자에게만 유효</strong>하다. BTC $75K 횡보 지속 시 우선주 배당 부담이 MSTR을 잠식하므로 이 가치는 소멸한다.</p>
+</div>
+</div>
+<div class="sec"><h2>매매 전략 상세 & 매크로 맥락</h2>
+<style>
+.warning-card{background:rgba(239,83,80,0.06);border:1px solid rgba(239,83,80,0.35);border-radius:10px;padding:16px;margin:10px 0}
+.warning-title{color:#EF5350;font-weight:700;font-size:15px;margin-bottom:10px}
+.macro-event{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px}
+.macro-date{color:var(--blue);font-weight:600;min-width:90px}
+.star-high{color:#EF5350}
+</style>
+
+<h3>매크로 맥락 (2026-04-20 기준)</h3>
+<div style="background:rgba(66,165,245,0.05);border:1px solid rgba(66,165,245,0.3);border-radius:10px;padding:14px;margin-bottom:14px">
+<div class="macro-event"><span class="macro-date">2026-04-21</span><span>호르무즈 휴전 만료 (재봉쇄 리스크 잔존)</span><span class="star-high">★★★</span></div>
+<div class="macro-event"><span class="macro-date">2026-04-22</span><span>TSLA Q1 실적 (VIX 갭 트리거)</span><span class="star-high">★★★</span></div>
+<div class="macro-event"><span class="macro-date" style="color:#EF5350;font-weight:700">2026-04-28</span><span><strong>FOMC 금리 결정 ★최우선 단기 분기점★</strong></span><span class="star-high">★★★★★</span></div>
+<div class="macro-event"><span class="macro-date">2026-05 초</span><span>MSTR Q1 2026 실적 (mNAV + Bitcoin Yield 공시)</span><span class="star-high">★★★★</span></div>
+<div style="margin-top:10px;font-size:13px;color:var(--sub)">
+VIX 17.48 "거짓 안정" | 30일 시나리오: A 38% / <strong>B 42% 우세</strong> / C 20%<br>
+BTC Spot ETF 누적 AUM $128B+ | Q1 순유입 $18.7B
+</div>
+</div>
+
+<h3>3단계 분할 매수 플랜 (공격적 투자자 한정)</h3>
+<table>
+<thead><tr><th>차수</th><th>진입 가격</th><th>비중</th><th>조건/근거</th></tr></thead>
+<tbody>
+<tr><td>1차</td><td>$166.52 (현재가)</td><td>30%</td><td>역사적 mNAV 디스카운트 구간 첫 진입</td></tr>
+<tr><td>2차</td><td>$157 (-5.7%)</td><td>30%</td><td>1×ATR 추가 하락 또는 FOMC 4/28 전 대기</td></tr>
+<tr><td>3차</td><td>$148.42 (2×ATR 바닥)</td><td>40%</td><td>최종 손절 가격대 — 진입 후 즉각 손절 재설정</td></tr>
+<tr style="background:rgba(38,166,154,0.08)"><td colspan="2"><strong>전량 진입 완료 시 평단가</strong></td><td colspan="2"><strong>$156.43</strong> (현재가 대비 -6.05% 개선)</td></tr>
+</tbody>
+</table>
+
+<h3>4단계 분할 매도 플랜</h3>
+<table>
+<thead><tr><th>차수</th><th>목표가</th><th>비중</th><th>상승률</th><th>전제조건</th></tr></thead>
+<tbody>
+<tr><td>1차</td><td style="color:#26A69A;font-weight:700">$193.66</td><td>25%</td><td>+16.3%</td><td>3×ATR 단기 반등 + 심리적 $200 근접</td></tr>
+<tr><td>2차</td><td style="color:#26A69A;font-weight:700">$250</td><td>25%</td><td>+50.1%</td><td>Base Case mNAV 1.2x 진입</td></tr>
+<tr><td>3차</td><td style="color:#26A69A;font-weight:700">$350</td><td>25%</td><td>+110.2%</td><td>Bull 전환, BTC $100~110K + mNAV 1.5x</td></tr>
+<tr><td>4차</td><td style="color:#26A69A;font-weight:700">$450+</td><td>25%</td><td>+170.2%</td><td>Bull Case $541 근접, BTC $120K + mNAV 2.0x</td></tr>
+</tbody>
+</table>
+
+<h3>관망 전환 트리거 (이 중 하나라도 발생 시 전량 진입 중단)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">BTC $72K 이하 주간 종가 마감</div>
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">VIX 25+ 돌파</div>
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">FOMC 4/28 매파 서프라이즈</div>
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">STRK 또는 STRF 배당 불이행 공시</div>
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">Saylor 지분 1% 이상 매도 Form 4 공시</div>
+<div style="background:rgba(239,83,80,0.06);padding:10px;border-radius:8px;font-size:13px">BTC $65K 이하 주간 종가 마감</div>
+</div>
+
+<div class="warning-card" style="margin-top:16px">
+<div class="warning-title">주의사항 — 투자자 프로파일별 권고</div>
+<table>
+<thead><tr><th>투자자 유형</th><th>권고</th><th>포지션 한도</th></tr></thead>
+<tbody>
+<tr><td>공격적 투자자</td><td style="color:#26A69A">분할 매수 + 엄격한 손절 관리</td><td>최대 5% 이내</td></tr>
+<tr><td>중립 투자자</td><td style="color:#FFA726">포지션 3% 이내 또는 관망</td><td>최대 3% 이내</td></tr>
+<tr><td style="color:#EF5350">보수적/배당형</td><td style="color:#EF5350"><strong>투자 금지</strong></td><td>0%</td></tr>
+</tbody>
+</table>
+<p style="font-size:13px;margin-top:10px;color:var(--sub)">
+⚠ <strong>BTC $65K 이탈 시 즉시 재평가</strong> — MSTR 주가 무관하게 리스크 재평가 강제<br>
+⚠ <strong>Saylor Key-Person 리스크 상시 모니터링</strong> — 지분 매도 1% 이상 공시 시 즉시 전량 청산
+</p>
+</div>
+</div>
+<div class="sec"><h2>30일 모니터링 체크리스트</h2>
+<h3>즉시 대응 트리거 (1일 내 포지션 조정)</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+<div style="background:rgba(239,83,80,0.06);border:1px solid rgba(239,83,80,0.3);border-radius:8px;padding:12px">
+<div style="color:#EF5350;font-weight:700;margin-bottom:8px">매도(손절) 트리거</div>
+<div style="font-size:13px;line-height:1.8">
+✗ MSTR 종가 $148.42 이하 → 포지션 50% 즉시 축소<br>
+✗ MSTR 종가 $104.17 이하 → 전량 손절<br>
+✗ BTC 주간 종가 $65K 이하 → 연동 손절<br>
+✗ STRK/STRF 배당 불이행 공시 → 즉시 전량 청산<br>
+✗ Saylor Form 4 지분 1%+ 매도 → 즉시 전량 청산<br>
+✗ SEC 투자회사법 관련 공문 공시 → 즉시 전량 청산
+</div>
+</div>
+<div style="background:rgba(38,166,154,0.06);border:1px solid rgba(38,166,154,0.3);border-radius:8px;padding:12px">
+<div style="color:#26A69A;font-weight:700;margin-bottom:8px">매수 확대 트리거</div>
+<div style="font-size:13px;line-height:1.8">
+✓ BTC 주간 종가 $85K+ 안착 → 2차 포지션 추가<br>
+✓ mNAV 1.05x+ 회복 확인 → 3차 포지션 추가<br>
+✓ FOMC 4/28 비둘기 + VIX 15 이하 → 2차 추가<br>
+✓ Q1 실적 Bitcoin Yield 양수 + BTC 추가 매입 → 3차 추가
+</div>
+</div>
+</div>
+
+<h3>주간 필수 체크리스트</h3>
+<table>
+<thead><tr><th>체크 항목</th><th>기준값</th><th>위험 임계</th></tr></thead>
+<tbody>
+<tr><td>mNAV (시총 / BTC NAV)</td><td>1.0x 회복 여부</td><td>0.90x 이하 → 구조적 위기 경고</td></tr>
+<tr><td>BTC 가격 지지선</td><td>$75K 유지</td><td>$72K 이하 → 관망 전환</td></tr>
+<tr><td>BTC Spot ETF 순유입</td><td>$1.1B/주 기준</td><td>순유출 전환 → 수요 약화 신호</td></tr>
+<tr><td>STRK/STRF 배당 공시</td><td>정상 지급</td><td>불이행 → 즉시 위험 Alert</td></tr>
+<tr><td>Saylor 지분 변동</td><td>변동 없음</td><td>1%+ 매도 → 즉시 전량 관망</td></tr>
+<tr><td>CB 재조달 금리</td><td>현행 0.421%</td><td>5%+ 상승 → 비용 우위 Moat 소멸</td></tr>
+</tbody>
+</table>
+
+<h3>30일 시나리오 확률 분포</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px">
+<div style="background:rgba(38,166,154,0.08);border:1px solid rgba(38,166,154,0.3);border-radius:8px;padding:12px;text-align:center">
+<div style="font-size:22px;font-weight:700;color:#26A69A">38%</div>
+<div style="font-weight:600;margin:4px 0">시나리오 A: 상승 전환</div>
+<div style="font-size:12px;color:var(--sub)">BTC $78~90K 돌파<br>mNAV 1.05~1.3x 회복<br>MSTR $200~250 도달</div>
+</div>
+<div style="background:rgba(255,167,38,0.08);border:1px solid rgba(255,167,38,0.3);border-radius:8px;padding:12px;text-align:center">
+<div style="font-size:22px;font-weight:700;color:#FFA726">42%</div>
+<div style="font-weight:600;margin:4px 0">시나리오 B: 횡보 (우세)</div>
+<div style="font-size:12px;color:var(--sub)">BTC $72~78K 레인지<br>mNAV 0.92~1.02x 등락<br>MSTR $150~180 박스권</div>
+</div>
+<div style="background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.3);border-radius:8px;padding:12px;text-align:center">
+<div style="font-size:22px;font-weight:700;color:#EF5350">20%</div>
+<div style="font-weight:600;margin:4px 0">시나리오 C: 하락</div>
+<div style="font-size:12px;color:var(--sub)">BTC $65~72K 하락<br>mNAV 0.85~0.95x 고착<br>MSTR $120~150 저점</div>
+</div>
+</div>
+</div>
+<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-04-20 | 종목분석 에이전트 v3.5</div>
+
+<div class="cmd-guide">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="MSTR_Strategy_20260420.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
