@@ -139,6 +139,7 @@ lint_mode: full
 | `infrastructure.md` | 글로벌 건설 17.26조달러(+4.9%), 한국 수주 231.2조 | 현대건설·삼성물산 SMR EPC 추진. 데이터센터 전력망 수혜 | 04-13 | 05-13 | medium |
 | `capex.md` | 하이퍼스케일러 5사 합산 $660-690B(2026E), 반도체 $200B, 에너지 $3.3T, 국방 $2.63T | 빅테크 AI CapEx 슈퍼사이클. TSMC $52-56B(+27-40%). 한국 장비투자 $29.7B 세계2위. 통신 -2% 정체. 배터리 한국3사 가동률 50% | 04-19 | 05-19 | high |
 | `robotics.md` | 휴머노이드 2030E $4~39B 편차. Figure $39B밸류·BotQ 12K→50K대/년. Tesla Optimus Gen3 H2 양산+Shanghai 1M/년. Agility Digit 상업수익(GXO 100K totes). Harmonic Drive 85%. Jetson Thor 2,070 FP4 TFLOPS | 삼성(레인보우 35%)·현대(BD 80% $880M)·LG(Atlas비전+Axium)·두산로보·클로봇 생태계. EU AI Act 고위험 2026.08 발효. 클로봇 Q3 매출 +38.9%/레인보우 +117.6% | 04-19 | 05-20 | high |
+| `crypto_bitcoin.md` | BTC $74,800~75,574, 시총 $1.51~1.54T, ATH $126,210(2025-10, -39%), Q1 -23.8%, 해시레이트 1.084 ZH/s, MSTR 780,897 BTC(3.9% 공급)·평균$75,577·전환사채$8.2B, IBIT AUM $70.6B, 스팟 BTC ETF Q1 유입 $18.7B, 스테이블코인 $320B+ | MSTR STRK $21B/STRF $2.1B/STRD 우선주 구조. Bitcoin Yield KPI = BTC-per-share. 채굴사 Q1 32K BTC 매도(BEP 이하). SEC Atkins Project Crypto·GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 진전 | 04-20 | 05-20 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
@@ -214,7 +215,8 @@ lint_mode: full
 | `capex_2026.jsonl` | 20건 | kb-updater |
 | `telecom_next_2026.jsonl` | 62건 | kb-updater |
 | `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
-| `changelog_2026.jsonl` | 49건 | kb-updater |
+| `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
+| `changelog_2026.jsonl` | 50건 | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -262,7 +264,8 @@ lint_mode: full
 | 클로봇, 레인보우로보틱스, 두산로보틱스, Figure AI, Tesla Optimus, Agility, 1X | `industry/robotics.md §2, §4` | `industry/ai.md §2` (NVIDIA Jetson), `macro/korea_economy.md` (정부지원) |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
 | Gold, TLT, IAU | `macro/global_risk_factors.md §4` | `macro/us_monetary_policy.md` |
-| BTC, ETH, SOL | `market/daily_snapshot.md` (FAILED) | `macro/global_risk_factors.md §2` |
+| BTC, ETH, SOL | `industry/crypto_bitcoin.md §1, §6` | `macro/global_risk_factors.md §2`, `market/daily_snapshot.md` |
+| MSTR (Strategy), COIN, HOOD, MARA, RIOT, CLSK | `industry/crypto_bitcoin.md §2, §4, §8` | `industry/ai.md` (MARA AI DC 피벗), `macro/us_monetary_policy.md` |
 | NuScale, Oklo, BWXT | `industry/smr.md §2` | `macro/tech_breakthrough.md §5` |
 | 빅테크 CapEx, TSMC, ASML | `industry/capex.md §1, §2` | `industry/ai.md §3`, `semiconductor.md` |
 
@@ -272,6 +275,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-20 | `industry/crypto_bitcoin.md` | **신규 생성** -- 크립토/비트코인 섹터 KB. MSTR 종목분석 지원. BTC $74,800·시총 $1.51T·ATH $126,210(2025-10, -39%)·Q1 -23.8%(2018 이후 최악). 네트워크 해시레이트 1.084 ZH/s, 난이도 135.59T. MSTR 780,897 BTC(공급 3.9%)·평균$75,577·총코스트 $59B·전환사채 $8.2B(쿠폰 0.421%)·Q1 미실현 -$14.46B. 우선주 4계층(STRK $21B ATM 8%/STRF $2.1B 10%/STRD 비누적). Bitcoin Yield KPI(BTC-per-share). BlackRock IBIT ~782K BTC·AUM $70.6B·일거래 $16~18B(Binance 경쟁). Q1 스팟 BTC ETF 유입 $18.7B, 총 AUM $128B+. 공개채굴사 Q1 32K BTC 매도($2.4B), 평균 생산비 $80K(BEP 이하). ETH $2,361 +8.6%, SOL $93, DeFi TVL $95.4B(ETH 68%). 스테이블코인 $320B+(USDT $185B/USDC $79B). SEC Atkins Project Crypto, SEC-CFTC MOU 3/11, GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 국회 진전. LTH 78%+ 역사최고 | +48 |
 | 2026-04-19 | `industry/robotics.md` | **신규 생성** -- 로봇 섹터 KB. Physical AI(Figure $39B·BotQ 12K대, Tesla Optimus Gen3 Shanghai 1M/년, Agility Digit GXO 100K totes 상업수익, 1X EQT 10K대, Unitree 2026 물량 완판). 시장 $4~39B 편차(2030). 4강 FANUC 17%·ABB 13%·Yaskawa 12%·KUKA Top5. 한국: 클로봇(466100) 삼성(레인보우35%)·현대(BD $880M)·LG Atlas비전+Axium·두산로보. Harmonic Drive 85% 과점. Jetson Thor 2,070 TFLOPS. 4차 지능형로봇 기본계획 2024-28 3조원·100만대 | +29 |
 | 2026-04-19 | `industry/science_tech.md` | **주간 갱신** -- 한국 정부R&D 35.3조 확정(+21.4%). 경구 Wegovy FDA승인(월$149)+Lilly orforglipron Q2. IonQ 포토닉 인터커넥트(양자네트워킹 최초). 빅테크 CapEx $7000억(+60%). PANW-CyberArk $250억. Synopsys AgentEngineer vs Cadence ChipStack AI 에이전트전쟁. Optimus Gen3 자율보행+상하이 양산. WIPO PCT 2025 한국 28년 연속 성장. 반도체+디지털통신 +6.1% 최고 성장 | +35 |
 | 2026-04-19 | `macro/tech_breakthrough.md` | **주간 갱신** -- AI: Claude Opus 4.7(4/16), Agentic AI 97% 기업 배포(대중화 승격), EU AI Act Digital Omnibus 고위험 2027.12 연기. 반도체: TSMC N2 수율 65%·N2P H2 양산, imec High-NA Q4 인증, ASML 패키징 진출, Alphabet TPU CoWoS 병목. 에너지: CFS $863M 추가 펀딩, Samsung SDI 전고체 파일럿 프로토타입 납품. 양자: NVIDIA Ising QEC AI, QuEra Tsim. 로봇: Figure 03 BotQ 12K대/년. 우주: Blue Origin NG-3 부스터 재사용(4/19), Starship V3 지연. 바이오: 소형 CRISPR(NIH). 신소재: 그래핀-페로브스카이트 3,670h 안정성(Science), 유연 페로브스카이트 25.09% 기록 | +27 |
