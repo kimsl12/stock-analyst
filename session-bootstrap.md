@@ -10,16 +10,17 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | TQQQ (ProShares UltraPro QQQ) ETF - 2026-04-20, Buy 67.0점(조건부), 목표가 $67.63, 손절 $53.57 |
-| 마지막 브리핑 | 모닝브리핑 - 2026-04-17 |
-| 마지막 KB 업데이트 | infrastructure - 2026-04-13 |
+| 마지막 종목분석 | MSTR (Strategy Inc) - 2026-04-20, Underweight 49.8점(D등급), 가중 목표 $335, 손절 $148.42 |
+| 마지막 브리핑 | 모닝브리핑 - 2026-04-20 |
+| 마지막 KB 업데이트 | crypto_bitcoin - 2026-04-20 (신규) |
 | 진행 중 작업 | 없음 (clean state) |
 
 ## analysis/ 유효 파일 (최근 30일)
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| TQQQ_ProSharesUltraProQQQ | 2026-04-20 | 67.0 Buy (조건부, 단기 전용) | 유효 (NEW, ETF) |
+| MSTR_Strategy | 2026-04-20 | 49.8 Underweight (D, BTC treasury) | 유효 (NEW) |
+| TQQQ_ProSharesUltraProQQQ | 2026-04-20 | 67.0 Buy (조건부, 단기 전용) | 유효 (ETF) |
 | 466100_클로봇 | 2026-04-19 | 73.5 Buy | 유효 |
 | LLY_EliLilly | 2026-04-17 | 82.4 Strong Buy | 유효 |
 | NVDA_NVIDIA | 2026-04-17 | 81.6 Strong Buy | 유효 |
@@ -38,7 +39,8 @@
 
 - **P0 항목**: market/ 전체 FAILED (재수집 필요), us_monetary 중복 해결 예정
 - **정상 Industry KB**: 12개 (semiconductor 부재 - advanced_materials, ai 대체 사용)
-- **로봇 KB 부재** — 클로봇 분석은 ai.md + auto.md 참조 + 웹검색 보완으로 대체 (신규 robotics.md 구축 권장)
+- **robotics.md 신규 확보** (2026-04-19, valid_until 2026-05-20, confidence high)
+- **crypto_bitcoin.md 신규 확보** (2026-04-20, valid_until 2026-05-20, confidence high)
 - **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
 - **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
 - **마지막 KB 갱신**: infrastructure 2026-04-13
