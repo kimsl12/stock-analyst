@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>이브닝 브리핑 (MODULE B) — 2026-04-21</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .warning-13f{background:#fff8c5 !important;color:#9a6700;border-color:#9a6700}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .scenario-tree .root{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .portfolio-card{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:6px}
+.header .meta{color:var(--sub);font-size:14px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+.debate-color{color:var(--debate)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
+.sec h4{font-size:14px;color:var(--warning);margin:12px 0 6px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+/* debate-card */
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:15px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .consensus{color:var(--neutral);margin-top:6px;font-style:italic}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
+
+/* contrarian-card */
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:15px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3)}
+
+/* 시그널 바 */
+.sig-row{display:flex;align-items:center;gap:10px;margin:7px 0}
+.sig-label{font-size:13px;color:var(--sub);min-width:130px}
+.sig-track{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.sig-fill{height:100%;border-radius:4px}
+.sig-fill.up{background:linear-gradient(90deg,var(--up),#2ea043)}
+.sig-fill.down{background:linear-gradient(90deg,var(--down),#da3633)}
+.sig-fill.warn{background:linear-gradient(90deg,var(--warning),#b07d10)}
+.sig-fill.hl{background:linear-gradient(90deg,var(--highlight),#2060cc)}
+.sig-val{font-size:13px;font-weight:600;min-width:90px;text-align:right}
+
+/* 히트맵 6셀 */
+.heatmap{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+@media(min-width:600px){.heatmap{grid-template-columns:repeat(6,1fr)}}
+.heatmap .cell{padding:10px 6px;border-radius:6px;text-align:center;font-size:12px;line-height:1.4}
+.heatmap .cell .pair{font-weight:700;font-size:11px;margin-bottom:3px}
+.heatmap .cell .zscore{font-size:13px;font-weight:700}
+.heatmap .green{background:rgba(63,185,80,0.15);color:var(--up)}
+.heatmap .yellow{background:rgba(210,153,34,0.15);color:var(--warning)}
+.heatmap .red{background:rgba(248,81,73,0.15);color:var(--down)}
+
+/* 시나리오 트리 */
+.scenario-tree{margin:14px 0}
+.scenario-tree .root{text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;margin-bottom:14px;border:1px solid var(--border)}
+.scenario-tree .branches{display:flex;gap:12px}
+.scenario-tree .branch{flex:1;padding:14px;border-radius:8px}
+.scenario-tree .branch.a{background:rgba(63,185,80,0.06);border:1px solid var(--up)}
+.scenario-tree .branch.b{background:rgba(248,81,73,0.06);border:1px solid var(--down)}
+.scenario-tree .branch.c{background:rgba(210,153,34,0.06);border:1px solid var(--warning)}
+.scenario-tree .prob-bar{width:100%;background:rgba(255,255,255,0.04);height:6px;border-radius:3px;margin-top:8px}
+.scenario-tree .prob-fill{height:6px;border-radius:3px}
+
+/* 13F 경고 */
+.warning-13f{
+  background:rgba(210,153,34,0.10);
+  border:1px solid var(--warning);
+  border-radius:8px;
+  padding:12px 16px;
+  margin:14px 0;
+  color:var(--warning);
+  font-size:14px;
+}
+.warning-13f::before{content:"⚠️ "}
+
+/* 뱃지 */
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:600;margin-left:6px}
+.badge-up{background:rgba(63,185,80,0.15);color:var(--up)}
+.badge-down{background:rgba(248,81,73,0.15);color:var(--down)}
+.badge-warn{background:rgba(210,153,34,0.15);color:var(--warning)}
+.badge-hl{background:rgba(88,166,255,0.15);color:var(--highlight)}
+.badge-debate{background:rgba(139,92,246,0.15);color:var(--debate)}
+
+/* 체크포인트 박스 */
+.checkpoint-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+@media(max-width:600px){.checkpoint-grid{grid-template-columns:1fr}}
+.cp-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:12px}
+.cp-box .cp-date{font-size:12px;color:var(--sub);margin-bottom:4px}
+.cp-box .cp-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.cp-box .cp-note{font-size:12px;color:var(--sub)}
+
+/* 인용 섹션 */
+.cite{font-size:12px;color:var(--sub);margin:4px 0;padding-left:8px;border-left:2px solid var(--border)}
+
+/* 푸터 */
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+.disclaimer ul{padding-left:16px}
+.disclaimer li{margin-bottom:4px}
+
+/* 모바일 */
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:22px}
+  .scenario-tree .branches{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🌙 이브닝 브리핑 (MODULE B) — 2026-04-21</h1>
+  <div class="meta">briefing-lead 작성 | 데이터 기준: 2026-04-21 이브닝 KST 20:00 | 미국장 04-21 종가 확정</div>
+</div>
+
+<!-- 0. 핵심 요약 -->
+<div class="sec">
+  <h2>0. 핵심 요약 (Executive Summary)</h2>
+  <p>
+    호르무즈 재봉쇄 72시간 번복(WTI +6.4%, $87.88) + 미 해군 이란 선박 나포 + 트럼프 "4/23 휴전 연장 가능성 매우 낮음" 발언이 맞물려 <strong class="warning">시나리오 B(조정, 47%)</strong>가 우세를 심화했다.
+    NASDAQ 13일 연승이 종료되고 VIX가 18.98(+8.58%)로 반등하며 "거짓 안정 해제 1일차"에 진입했다.
+    한편, 애플 팀 쿡 퇴임·존 터너스 CEO 승계 발표($4T 기업 전환점)와 소매판매 3월 +0.7% Beat가 단기 혼조를 형성하고 있으며, <strong class="highlight">4/22 TSLA 실적 + 4/23 호르무즈 만료</strong>가 시장 방향의 단일 최대 이중 트리거로 작동한다.
+  </p>
+</div>
+
+<!-- B-1. 글로벌 이슈 탑 5 -->
+<div class="sec">
+  <h2>B-1. 글로벌 이슈 탑 5</h2>
+
+  <h3>1. 호르무즈 재봉쇄 + 미 해군 이란 선박 나포 — 에스컬레이션 재점화 <span class="badge badge-down">DEEP DIVE</span></h3>
+  <p>
+    4/17 "완전 개방" 선언이 72시간 만에 번복됐다. 4/18 재봉쇄 + 4/19 이란 2차 협상 거부 + 4/20 미 해군 이란 화물선 나포(투스카호, 걸프 오만) + CMA CGM 선박 경고 사격.
+    <strong class="down">WTI +6.4% $87.88</strong>, <strong class="down">브렌트 +6.5% $96.25</strong>.
+  </p>
+  <p><strong>2차 효과:</strong> 금요일 "개방 할인"으로 S&P 7,126 신고가를 끌어올린 시장이 재봉쇄를 반영하지 못한 채 월요일 개장. S&P -0.24%(7,109), NASDAQ -0.26%(24,404) — NASDAQ 13일 연승 종료(1992년 이후 최장 기록). 트럼프 "휴전 수요일(4/23) 종료, 연장 가능성 매우 낮음(highly unlikely)" 발언 = 4/23이 신규 데드라인으로 확정.</p>
+  <p><strong>역사적 유사 사례:</strong> 2019년 호르무즈 위기(이란 드론 사우디 아람코 공격) 시 WTI 1일 +15% 후 2주 내 원위치. 차이점: 당시 단발 공격 vs 현재 지속적 봉쇄+해군 대치 = 구조적 상황.</p>
+  <p class="cite">[Al Jazeera, PBS News, France 24, CNN, CNBC, Yahoo Finance]</p>
+
+  <h3>2. 팀 쿡 CEO 퇴임 + 존 터너스 후임 — 빅테크 시대 전환 포인트</h3>
+  <p>
+    4/20(일) 애플 공식 발표. 팀 쿡이 15년 만에 9/1부터 경영이사회 의장으로 전환. 하드웨어 수석부사장 <strong class="highlight">존 터너스(John Ternus)</strong>가 신임 CEO.
+    AAPL은 Buffett 최대 보유 TOP1(22.6%, ~$62B).
+  </p>
+  <p><strong>2차 효과:</strong> 하드웨어 출신 CEO = Vision Pro / Apple Car / AR-VR 전략 가속 기대. 단, Buffett Q4 2025 AAPL -4.3% 축소(이미 $2.8B 매도)와 맞물려 후계자 리스크 프리미엄 단기 발생 가능. $4T 기업 CEO 교체 = FAANG 밸류에이션 재평가 촉매.</p>
+  <p class="cite">[Fortune, NPR, CNBC, Apple Newsroom]</p>
+
+  <h3>3. S&P -0.24% + NASDAQ 연승 종료 — "거짓 안정 해제" 1일차</h3>
+  <p>
+    4/21(월) <strong class="down">S&P 7,109.14(-0.24%)</strong>, <strong class="down">NASDAQ 24,404.39(-0.26%)</strong>, Dow 49,442.56(-0.01%). NASDAQ 13일 연승 종료.
+    <strong class="down">VIX 18.98(+8.58%)</strong> 반등 시작.
+  </p>
+  <p><strong>2차 효과:</strong> VIX 17.48→18.98 1일 +8.58% = "거짓 안정 5단계"에서 해제 진입. 역사적으로 VIX 극단 저위에서 첫 반등 이후 2~3거래일 내 추가 +30~50% 확대가 빈번. 4/22 TSLA 실적이 VIX 확대의 2차 트리거.</p>
+  <p class="cite">[CNBC, Yahoo Finance, CBOE]</p>
+
+  <h3>4. 미국 소매판매 3월 +0.7% — 소비 건강 확인, 그러나 "과거형 데이터"</h3>
+  <p>
+    4/21 08:30ET 발표. 소매판매 전월 대비 <strong class="up">+0.7%</strong>(컨센서스 +0.4% 상회). Core(차량+주유소 제외) +0.4% MoM, YoY +7.05%. 세금 환급 효과.
+  </p>
+  <p><strong>2차 효과:</strong> 소매판매 Beat이지만 미시간 소비심리 47.6(역대 최저)과 충돌 = "행동은 아직 괜찮지만 심리는 이미 붕괴" 시간차 비대칭 확인. 관세 사전 구매(front-loading) 효과 포함. Q2 소비 둔화 선행 지표로 해석 가능.</p>
+  <p class="cite">[US Census Bureau, Just-Style, Coresight Research]</p>
+
+  <h3>5. 신현승 한국은행 총재 공식 취임 — 매파 한은 시대 개막</h3>
+  <p>
+    4/21 한은 총재 공식 취임. 청문보고서 "성장보다 물가안정" 원칙 재확인. 현 기준금리 <strong class="highlight">2.50%(7연속 동결)</strong>. 첫 금통위 5월.
+  </p>
+  <p><strong>2차 효과:</strong> 매파 신호가 원화 지지(USD/KRW ~1,486 안정). 에너지 비용(WTI $88) · 가계부채 · 환율 3변수에서 인상은 아닌 "장기 동결" 시나리오 가장 유력. KOSPI 밸류에이션 상한 제약 요인.</p>
+  <p class="cite">[한국은행, 서울경제]</p>
+</div>
+
+<!-- B-1.5 핵심 논쟁 교차점 -->
+<div class="sec">
+  <h2>B-1.5. 핵심 논쟁 교차점</h2>
+  <p><strong class="debate-color">교차점: "호르무즈 재봉쇄 + VIX 해제 + TSLA 실적"</strong></p>
+  <p>3개 이슈가 4/22~23에 동시 수렴 — 호르무즈 휴전 만료(4/23 저녁) + TSLA Q1 실적(4/22 장후) + VIX 18.98 첫 반등</p>
+  <p><strong>핵심 질문:</strong> 시장은 호르무즈 "개방 할인"을 이미 4/18 신고가에 반영했는데, 재봉쇄 "되돌림 비용"을 어떻게 매길 것인가?</p>
+
+  <div class="debate-card">
+    <div class="card-title">💜 핵심 논쟁 — 호르무즈 4/23 이후: 시장은 재봉쇄를 이미 반영했는가?</div>
+    <div class="bull"><strong>Bull 측:</strong> (1) 4/20 S&P -0.24%에서 이미 1차 소화. (2) 트럼프 딜 타결 의지 반복 — "they want to talk" 발언. (3) 미 해군 나포는 협상 레버리지이지 전면전 의도가 아님.</div>
+    <div class="bear"><strong>Bear 측:</strong> (1) "개방 할인"으로 S&P +2.28%(주간) 상승한 것 대비 되돌림은 -0.24%뿐 = 비대칭 리스크 잔존. (2) 이란 "2차 협상 거부" + IRGC "미 봉쇄 해제까지 호르무즈 폐쇄" = 구조적 대치. (3) CMA CGM 선박 경고 사격 = 상업 통항 위험 현실화.</div>
+    <div class="consensus"><strong>현재 시장 컨센서스:</strong> Bear 우세 (호르무즈 결렬 확률 55% 이상)</div>
+    <div class="verdict"><strong>briefing-lead 판단:</strong> Bear 시나리오 확률 55%. 4/23 이후 WTI $90~100 재진입 가능성이 시나리오 B 트리거. 트럼프 "연장 unlikely"가 협상 압박용이라면 A 시나리오 부활 가능하나, 이란 측 2차 협상 거부가 구조적.</div>
+  </div>
+</div>
+
+<!-- B-2. 아시아 시장 마감 -->
+<div class="sec">
+  <h2>B-2. 아시아 시장 마감</h2>
+  <table>
+    <tr>
+      <th>지수</th><th>종가</th><th>등락률</th><th>주요 동인</th>
+    </tr>
+    <tr>
+      <td><strong>KOSPI</strong></td>
+      <td><strong>6,219.09</strong></td>
+      <td class="up"><strong>+0.44%</strong></td>
+      <td>신현승 취임 안도 + 반도체 외인 매수 지속 + WTI 상승 정유주 수혜</td>
+    </tr>
+    <tr>
+      <td><strong>Nikkei 225</strong></td>
+      <td><strong>58,825</strong></td>
+      <td class="up"><strong>+0.60%</strong></td>
+      <td>AI주 강세 반등 + 엔화 약세 수혜. 호르무즈 리스크 일부 소화</td>
+    </tr>
+    <tr>
+      <td>Hang Seng</td>
+      <td>~25,900</td>
+      <td class="down">[소폭 하락 추정]</td>
+      <td>미중 무역 우려 재부각</td>
+    </tr>
+    <tr>
+      <td>SSE Composite</td>
+      <td>~4,050</td>
+      <td class="neutral">[보합 추정]</td>
+      <td>중국 GDP +5.0% 서프라이즈 후 차익실현 지속</td>
+    </tr>
+  </table>
+  <p style="font-size:14px;color:var(--sub);margin-top:8px">
+    <strong>아시아 종합:</strong> KOSPI +0.44%로 6,219 회복 — 신현승 취임에 따른 불확실성 해소 + 외인 반도체 매수 유지. Nikkei +0.60% AI주 반등. 아시아 전반 호르무즈 재봉쇄 리스크를 "제한적 반영" 상태. 미국장 4/21 하락(-0.24%)의 아시아 전이 제한적.
+  </p>
+  <p class="cite">[CNBC Asia, Trading Economics, Yahoo Finance]</p>
+</div>
+
+<!-- B-3. 투자 방향 신호판 -->
+<div class="sec">
+  <h2>B-3. 투자 방향 신호판 (Signal Dashboard)</h2>
+
+  <table>
+    <tr>
+      <th>신호</th><th>현재</th><th>방향</th><th>아침 대비 변화</th><th>Alert</th>
+    </tr>
+    <tr class="bg-down">
+      <td><strong>S&P 500</strong></td>
+      <td><strong>7,109.14</strong></td>
+      <td class="down">하락 전환 (-0.24%)</td>
+      <td class="neutral">7,126 → 7,109</td>
+      <td class="down">13일 연승 종료</td>
+    </tr>
+    <tr class="bg-warning">
+      <td><strong>VIX</strong></td>
+      <td><strong>18.98</strong></td>
+      <td class="warning"><strong>반등 시작 (+8.58%)</strong></td>
+      <td class="warning">17.48 → 18.98</td>
+      <td class="warning">"거짓 안정" 5단계 → 해제</td>
+    </tr>
+    <tr>
+      <td><strong>DXY</strong></td>
+      <td><strong>~98.19</strong></td>
+      <td class="neutral">보합~소폭 하락</td>
+      <td class="neutral">98.21 → ~98.19</td>
+      <td class="neutral">구조적 약세 유지</td>
+    </tr>
+    <tr class="bg-down">
+      <td><strong>WTI</strong></td>
+      <td><strong>$87.88</strong></td>
+      <td class="down"><strong>급등 (+6.4%)</strong></td>
+      <td class="down">$83.85 → $87.88</td>
+      <td class="down">호르무즈 재봉쇄 반영</td>
+    </tr>
+    <tr>
+      <td><strong>Gold</strong></td>
+      <td><strong>$4,809</strong></td>
+      <td class="neutral">소폭 하락 (-0.51%)</td>
+      <td class="neutral">$4,878 → $4,809</td>
+      <td class="up">구조적 Bull 유지 / 단기 숨고르기</td>
+    </tr>
+    <tr class="bg-warning">
+      <td><strong>BTC</strong></td>
+      <td><strong>$75,242</strong></td>
+      <td class="down">-2.7% (24h)</td>
+      <td class="down">$77,305 → $75,242</td>
+      <td class="warning">호르무즈 리스크온 축소 하방 압력</td>
+    </tr>
+  </table>
+
+  <!-- 시그널 바 시각화 -->
+  <h3 style="margin-top:16px">시그널 강도 (정성 기반)</h3>
+
+  <div class="sig-row">
+    <span class="sig-label">WTI 에너지 리스크</span>
+    <div class="sig-track"><div class="sig-fill down" style="width:88%"></div></div>
+    <span class="sig-val down">+6.4% $87.88</span>
+  </div>
+  <div class="sig-row">
+    <span class="sig-label">VIX 변동성 반등</span>
+    <div class="sig-track"><div class="sig-fill warn" style="width:62%"></div></div>
+    <span class="sig-val warning">+8.58% / 18.98</span>
+  </div>
+  <div class="sig-row">
+    <span class="sig-label">S&P 500 하락</span>
+    <div class="sig-track"><div class="sig-fill down" style="width:24%"></div></div>
+    <span class="sig-val down">-0.24% / 7,109</span>
+  </div>
+  <div class="sig-row">
+    <span class="sig-label">Gold 구조적 Bull</span>
+    <div class="sig-track"><div class="sig-fill up" style="width:80%"></div></div>
+    <span class="sig-val up">$4,809 / $4.8K대</span>
+  </div>
+  <div class="sig-row">
+    <span class="sig-label">DXY 달러 약세</span>
+    <div class="sig-track"><div class="sig-fill down" style="width:55%"></div></div>
+    <span class="sig-val down">~98.19 구조적 약세</span>
+  </div>
+  <div class="sig-row">
+    <span class="sig-label">KOSPI 아시아 안정</span>
+    <div class="sig-track"><div class="sig-fill up" style="width:44%"></div></div>
+    <span class="sig-val up">+0.44% / 6,219</span>
+  </div>
+
+  <p style="margin-top:12px;font-size:14px"><strong>종합 판단:</strong> <span class="warning">"거짓 안정 해제 + 호르무즈 재봉쇄 + NASDAQ 연승 종료"</span> = 3중 전환 신호. 리스크온에서 리스크오프로의 전환 1일차. S&P -0.24%는 패닉이 아닌 "경계적 조정" 수준. 4/22 TSLA 실적이 전환 깊이를 결정할 단일 최대 트리거.</p>
+</div>
+
+<!-- B-4. 경제 서프라이즈 인덱스 -->
+<div class="sec">
+  <h2>B-4. 경제 서프라이즈 인덱스</h2>
+  <h3>최근 30일 Beat/Miss 누적 — 04-21 갱신</h3>
+
+  <table>
+    <tr>
+      <th>지역</th><th>Beat</th><th>Miss</th><th>중립</th><th>누적 스코어</th><th>방향성</th>
+    </tr>
+    <tr>
+      <td><strong>미국</strong></td>
+      <td class="up"><strong>9</strong></td>
+      <td class="down">2</td>
+      <td class="neutral">4</td>
+      <td class="up"><strong>+0.47</strong></td>
+      <td><span class="badge badge-warn">혼조 지속</span> 소매판매 +0.7% Beat ↑ / 소비심리 47.6 극Miss 병존</td>
+    </tr>
+    <tr>
+      <td><strong>유로존</strong></td>
+      <td class="neutral">1</td>
+      <td class="neutral">1</td>
+      <td class="neutral">3</td>
+      <td class="neutral"><strong>0.00</strong></td>
+      <td><span class="badge badge-hl">중립</span> ECB 4/30 결정 대기</td>
+    </tr>
+    <tr class="bg-up">
+      <td><strong>중국</strong></td>
+      <td class="up"><strong>4</strong></td>
+      <td>0</td>
+      <td class="neutral">1</td>
+      <td class="up"><strong>+0.80</strong></td>
+      <td><span class="badge badge-up">강력 Beat</span> GDP +5.0% / PMI 51.2 / 수출 +12%</td>
+    </tr>
+    <tr class="bg-up">
+      <td><strong>한국</strong></td>
+      <td class="up"><strong>4</strong></td>
+      <td>0</td>
+      <td class="neutral">1</td>
+      <td class="up"><strong>+0.80</strong></td>
+      <td><span class="badge badge-up">극Beat</span> 수출 $86.1B +48.3% / 반도체 +163.9%</td>
+    </tr>
+  </table>
+
+  <p style="font-size:14px;margin:8px 0"><strong>글로벌 가중 종합 스코어: <span class="up">+0.54 (Beat 우세)</span></strong> — 전일 +0.52 대비 소폭 상승. 미국 소매판매 +0.7% MoM Beat(컨센 +0.4% 상회) 추가 반영.</p>
+
+  <h3>구조적 비대칭 — 시간차 디커플링</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0">
+    <div style="background:rgba(63,185,80,0.06);border:1px solid var(--up);border-radius:8px;padding:12px">
+      <p style="color:var(--up);font-weight:700;font-size:13px;margin-bottom:6px">현재 데이터 (Beat — 과거형)</p>
+      <p style="font-size:13px">소매판매 +0.7% / MS EPS +13.6% / BAC +9.9% / 한국 수출 $86.1B / Netflix Rev $12.25B Beat</p>
+    </div>
+    <div style="background:rgba(248,81,73,0.06);border:1px solid var(--down);border-radius:8px;padding:12px">
+      <p style="color:var(--down);font-weight:700;font-size:13px;margin-bottom:6px">선행 데이터 (Miss — 미래형)</p>
+      <p style="font-size:13px">미시간 소비심리 47.6 역대 최저 / 1Y 인플레 기대 4.8%(+1.0%p) / TSLA 배송 358K(-12K) / Netflix Q2 가이던스 약세(AH -9%)</p>
+    </div>
+  </div>
+  <p style="font-size:14px"><strong>판단:</strong> 현재까지의 Beat는 "과거 수익성"이며, 소비심리 Miss는 "미래 수요 선행". Q2~Q3 기업 실적에 소비 위축이 반영될 시간차 구간에 진입.</p>
+  <p class="cite">[BLS, University of Michigan, Census Bureau, Coresight Research]</p>
+</div>
+
+<!-- B-5. 자산 간 상관관계 변화 모니터 -->
+<div class="sec">
+  <h2>B-5. 자산 간 상관관계 변화 모니터 (6쌍 Z-score)</h2>
+
+  <!-- 히트맵 6셀 -->
+  <div class="heatmap">
+    <div class="cell red">
+      <div class="pair">S&P↔10Y</div>
+      <div class="zscore">+1.5~2.0σ</div>
+      <div style="font-size:11px;margin-top:3px">이상 유지</div>
+    </div>
+    <div class="cell green">
+      <div class="pair">NASDAQ↔BTC</div>
+      <div class="zscore">+0.5~1.0σ</div>
+      <div style="font-size:11px;margin-top:3px">정상화 진입</div>
+    </div>
+    <div class="cell green">
+      <div class="pair">KRW↔KOSPI</div>
+      <div class="zscore">±0.5σ</div>
+      <div style="font-size:11px;margin-top:3px">정상</div>
+    </div>
+    <div class="cell red">
+      <div class="pair">Gold↔DXY</div>
+      <div class="zscore">+1.5~2.0σ</div>
+      <div style="font-size:11px;margin-top:3px">이상 유지</div>
+    </div>
+    <div class="cell yellow">
+      <div class="pair">VIX↔S&P</div>
+      <div class="zscore">+1.5~2.0σ</div>
+      <div style="font-size:11px;margin-top:3px">이상→주의</div>
+    </div>
+    <div class="cell yellow">
+      <div class="pair">WTI↔BEI</div>
+      <div class="zscore">+1.0~1.5σ</div>
+      <div style="font-size:11px;margin-top:3px">주의 유지</div>
+    </div>
+  </div>
+
+  <table style="margin-top:14px">
+    <tr>
+      <th>#</th><th>페어</th><th>정상 방향</th><th>04-21 실측</th><th>연속 추세</th><th>Z-score</th><th>Alert</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>S&P 500 ↔ 10Y 국채금리</td>
+      <td>약한 음의 상관</td>
+      <td>S&P -0.24% / 10Y ~4.25% 보합</td>
+      <td>디커플링 6일</td>
+      <td class="down"><strong>+1.5~2.0σ</strong></td>
+      <td class="down">이상 유지</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>NASDAQ ↔ BTC</td>
+      <td>양의 상관</td>
+      <td>NASDAQ -0.26% / BTC -2.7% 동반 하락</td>
+      <td>동조화 복귀 1일</td>
+      <td class="up"><strong>+0.5~1.0σ</strong></td>
+      <td class="up">정상화 진입</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>USD/KRW ↔ KOSPI</td>
+      <td>음의 상관</td>
+      <td>KRW 1,486 소폭 약세 / KOSPI +0.44%</td>
+      <td>역상관 정상</td>
+      <td class="up"><strong>±0.5σ</strong></td>
+      <td class="up">정상</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Gold ↔ DXY</td>
+      <td>음의 상관</td>
+      <td>Gold -0.51%($4,809) / DXY ~98.19 보합</td>
+      <td>숨고르기 4일째</td>
+      <td class="down"><strong>+1.5~2.0σ</strong></td>
+      <td class="warning">이상 유지 (구조적 Bull 유효)</td>
+    </tr>
+    <tr class="bg-warning">
+      <td>5</td>
+      <td>VIX ↔ S&P 500</td>
+      <td>강한 음의 상관</td>
+      <td>VIX +8.58% / S&P -0.24% 역상관 복귀</td>
+      <td><strong>괴리 축소 1일차</strong></td>
+      <td class="warning"><strong>+1.5~2.0σ</strong></td>
+      <td class="warning">이상→주의 하향</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>WTI ↔ 인플레기대(BEI)</td>
+      <td>양의 상관</td>
+      <td>WTI +6.4% / BEI 상승 추정</td>
+      <td>동조화 재복귀 2일</td>
+      <td class="warning"><strong>+1.0~1.5σ</strong></td>
+      <td class="warning">주의 유지</td>
+    </tr>
+  </table>
+
+  <h3>핵심 변화 요약</h3>
+  <ul style="font-size:14px;padding-left:18px;line-height:1.8">
+    <li><strong class="warning">#5 VIX↔S&P: 이상 해제 1일차.</strong> VIX 17.48→18.98(+8.58%) 반등 시작 = "거짓 안정 5단계" 공식 종료. Z+2.3~2.9에서 Z+1.5~2.0으로 축소. 그러나 아직 정상 범위(±0.5) 미도달 = 추가 VIX 상승 여지.</li>
+    <li><strong class="up">#2 NASDAQ↔BTC: 동조화 복귀.</strong> 둘 다 하락(-0.26%, -2.7%) = 리스크오프 동시 반응. 전주의 "BTC 독립 강세" 테제가 호르무즈 재봉쇄로 약화. BTC $75,242는 $77K 안착 실패.</li>
+    <li><strong class="up">#4 Gold↔DXY: 구조적 Bull 기조 변화 없음.</strong> Gold $4,809(-0.51%)은 기술적 숨고르기. $4,800 지지선 유지. DXY 구조적 약세 변화 없음.</li>
+  </ul>
+  <p class="cite">[CBOE, Yahoo Finance, CoinGecko, Trading Economics]</p>
+</div>
+
+<!-- B-6. 신규 투자 아이디어 -->
+<div class="sec">
+  <h2>B-6. 신규 투자 아이디어</h2>
+
+  <h3>아이디어 1: AAPL — 팀 쿡 → 존 터너스 전환, "하드웨어 르네상스" 테마</h3>
+  <table>
+    <tr><th>항목</th><th>내용</th></tr>
+    <tr><td>대상</td><td><strong>Apple Inc. (AAPL)</strong></td></tr>
+    <tr><td>방향</td><td><span class="neutral">중립</span> → <span class="up">Bull</span> (6~12개월, 전환 이후)</td></tr>
+    <tr><td>확신</td><td class="warning">중간</td></tr>
+    <tr><td>근거</td><td>존 터너스(하드웨어 수석부사장)는 Apple Silicon M시리즈 + Vision Pro + 웨어러블 주도. 하드웨어 출신 CEO = 제품 혁신 사이클 가속 기대. 단, Buffett Q4 2025 AAPL -4.3% 축소 + 중국 제조 리스크 + AI 전략 불확실성 = 단기 프리미엄 변동. 9/1 정식 취임까지 6월 WWDC가 "터너스 비전" 공개 첫 무대.</td></tr>
+    <tr><td>다음 단계</td><td><code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 AAPL</code></td></tr>
+  </table>
+  <p class="highlight" style="font-size:14px;margin-top:6px">→ <code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 AAPL</code> 명령으로 심층 분석 가능</p>
+
+  <h3>아이디어 2: VIX 헤지 — VXX/VIXY 숏볼 해제 2단계 대비</h3>
+  <table>
+    <tr><th>항목</th><th>내용</th></tr>
+    <tr><td>대상</td><td><strong>VXX / VIXY</strong> (VIX 선물 ETN)</td></tr>
+    <tr><td>방향</td><td><span class="up">Bull</span> (VIX 22~28 반등 대비)</td></tr>
+    <tr><td>확신</td><td class="warning">중간~높음</td></tr>
+    <tr><td>근거</td><td>VIX 17.48→18.98(+8.58%) 1일 반등 = 숏볼 해제 1단계 시작. 2018.02 볼마게돈 사례에서 VIX 10→37 폭등은 "극단 저위 3주+ 누적 → 트리거 1건" 패턴. 현재 6일 극단 후 첫 반등 = 2단계(22~28) 진입 확률 65%+. 4/22 TSLA Miss 시 NASDAQ -3~5% + VIX 25+ 갭 반등 가능.</td></tr>
+  </table>
+  <p class="cite">[Apple Newsroom, Fortune, Seeking Alpha, CBOE, guru_positions Q4 2025 기반]</p>
+</div>
+
+<!-- B-7. 거물 투자자 동향 심화 -->
+<div class="sec">
+  <h2>B-7. 거물 투자자 동향 심화 (8인 대비표)</h2>
+
+  <div class="warning-13f">
+    13F 시차 경고: 아래 포지션 데이터는 Q4 2025 기준 (포지션일 2025-12-31, 공시일 2026-02-17). 현재 포지션이 아닌 "3.5개월 전 시점"이다. "현재 보유" 표현 금지. [Dataroma 13F 기준]
+  </div>
+
+  <table>
+    <tr>
+      <th>투자자</th><th>핵심 포지션 (Q4 2025)</th><th>최신 코멘트 (2026)</th><th>금일 시사점</th>
+    </tr>
+    <tr>
+      <td><strong>Buffett</strong></td>
+      <td>AAPL TOP1(-4.3%), 현금 $300B+ 역대 최고, CVX/OXY 에너지 유지, AMZN -77%, NYT 신규</td>
+      <td>그레그 에이벌 CEO 후임 확정</td>
+      <td><span class="warning">현금 $300B = "역사상 가장 방어적". AAPL CEO 교체 + 축소 = 후계자 리스크 이미 반영한 듯</span></td>
+    </tr>
+    <tr>
+      <td><strong>Dalio</strong></td>
+      <td>SPY+IVV 21.5% ETF 중심, NVDA +54%, ORCL +361%, AMZN +73%, GOOGL -40%</td>
+      <td>"자본전쟁 벼랑 위." <strong class="up">Gold $5,000 전망</strong>. 15% Gold 추천</td>
+      <td><span class="up">Gold $4,809 = $5,000까지 3.8%. Dalio 테제 접근 중</span></td>
+    </tr>
+    <tr>
+      <td><strong>Druckenmiller</strong></td>
+      <td>XLF+RSP 신규, NTRA -22%, TSM -29%, AMZN +69%, GOOGL +277%</td>
+      <td>"내러티브 버블 2026 최대 리스크." AI 8회말. 달러 약세 long, 금/구리 long, 채권 short</td>
+      <td><span class="highlight">RSP $238M 신규 = Mag7 집중도 헤지. breadth 확대 포지셔닝</span></td>
+    </tr>
+    <tr>
+      <td><strong>Wood</strong></td>
+      <td>TSLA TOP1(-18.8% 이익실현), CRWV +311%, COIN 추가, CRSP 추가</td>
+      <td>ARK 파괴적 혁신 유지</td>
+      <td><span class="down">4/22 TSLA Miss 시 ARK 환매 연쇄 리스크. TSLA TOP1 유지이나 축소 진행 중</span></td>
+    </tr>
+    <tr>
+      <td><strong>Marks</strong></td>
+      <td>에너지 TOP(EXE, VNOM, TLN), 금광(AU, B) 유지, CORZ +30.5%</td>
+      <td>크레딧/리스크 관리 전문</td>
+      <td><span class="up">에너지 + 금광 + BTC 마이닝(CORZ) = "실물+디지털 자산" 바벨 전략. WTI $88 재확인</span></td>
+    </tr>
+    <tr>
+      <td><strong>Tepper</strong></td>
+      <td>MU +200%(최대 단일), META +62%, EWY(한국ETF) $286M 신규</td>
+      <td>중국→AI 반도체 피벗 완료</td>
+      <td><span class="up">MU 3배 = HBM 슈퍼사이클 최대 확신. EWY = SK하이닉스 간접 베팅</span></td>
+    </tr>
+    <tr>
+      <td><strong>Ackman</strong></td>
+      <td>META 신규 $1.76B, AMZN +65%, CMG 완전 매도</td>
+      <td>Pershing Square IPO 로드쇼 시작(04-13)</td>
+      <td><span class="highlight">META+AMZN = AI 인프라+광고 듀얼 베팅</span></td>
+    </tr>
+    <tr>
+      <td><strong>Burry</strong></td>
+      <td>Scion 해산(2025-11). 마지막: PLTR/NVDA 풋 96.7%</td>
+      <td>"더 좋은 일(better things)" 암시</td>
+      <td><span class="neutral">AI 풋 포지션 결과 확인 불가 — 펀드 해산으로 추적 종료</span></td>
+    </tr>
+  </table>
+
+  <h3>컨버전스 시그널 — 금일 관련</h3>
+  <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:14px">
+    <p style="margin-bottom:8px"><strong>1. AMZN 3인 동시 대폭 추가</strong> (Ackman +65% + Druckenmiller +69% + Dalio +73%) <strong class="down">vs</strong> <strong>Buffett -77%</strong> = 방향성 불일치. 다수 기관 vs 최고 확신 투자자의 대립.</p>
+    <p style="margin-bottom:8px"><strong>2. Gold/탈달러 3인 컨버전스</strong> — Dalio $5,000 전망 + Druckenmiller 금/구리 long + Marks 금광 유지. <span class="up">Gold $4,809 = $5,000까지 3.8%.</span></p>
+    <p><strong>3. 에너지 현금 창출 3인 컨버전스</strong> — Buffett CVX/OXY + Marks EXE/VNOM + Druckenmiller BE. <span class="warning">호르무즈 재봉쇄로 에너지 포지션 재부각.</span></p>
+  </div>
+  <p class="cite">[Dataroma 13F, 기준: Q4 2025, 포지션일: 2025-12-31, 공시일: 2026-02-17]</p>
+</div>
+
+<!-- B-8. 모델 포트폴리오 4종 방향 -->
+<div class="sec">
+  <h2>B-8. 모델 포트폴리오 4종 방향 (아침 대비 변화 포함)</h2>
+
+  <table>
+    <tr>
+      <th>유형</th><th>시사점</th><th>방향</th><th>아침 대비</th><th>참고 자산군</th>
+    </tr>
+    <tr class="bg-warning">
+      <td>🛡️ <strong>안전형</strong></td>
+      <td>호르무즈 재봉쇄 + VIX 반등 = 방어 자산 비중 확대 환경</td>
+      <td class="warning"><strong>경계</strong></td>
+      <td class="warning">유지 → 경계 상향</td>
+      <td>Gold(GLD), 단기국채(SHY), 배당성장(VIG)</td>
+    </tr>
+    <tr>
+      <td>⚖️ <strong>중립형</strong></td>
+      <td>S&P -0.24% 첫 조정이나 패닉 수준 아님. TSLA/GDP 대기</td>
+      <td class="neutral"><strong>유지</strong></td>
+      <td class="neutral">유지</td>
+      <td>S&P(VOO), 이퀄웨이트(RSP), 채권(AGG), Gold(IAU)</td>
+    </tr>
+    <tr class="bg-warning">
+      <td>🔥 <strong>공격형</strong></td>
+      <td>NASDAQ 연승 종료 + VIX 반등 = 신규 진입 시점 아님. 관망</td>
+      <td class="warning"><strong>경계</strong></td>
+      <td class="warning">유지 → 경계 상향</td>
+      <td>기존 보유 유지, 신규 매수 대기. TSLA 결과 확인 후 재평가</td>
+    </tr>
+    <tr>
+      <td>💰 <strong>배당형</strong></td>
+      <td>WTI $88 재상승 = 에너지 배당주(XOM, CVX) 현금흐름 재확인</td>
+      <td class="neutral"><strong>유지</strong></td>
+      <td class="neutral">유지</td>
+      <td>XOM, CVX, KO, 리츠(VNQ), 커버드콜(JEPI)</td>
+    </tr>
+  </table>
+</div>
+
+<!-- B-9. 글로벌 매크로 핵심 시사점 + 30일 시나리오 -->
+<div class="sec">
+  <h2>B-9. 글로벌 매크로 핵심 시사점 + 30일 시나리오</h2>
+
+  <h3>30일 시나리오 갱신 (04-21 이브닝 기준)</h3>
+
+  <!-- 시나리오 트리 -->
+  <div class="scenario-tree">
+    <div class="root">
+      <strong>분기점: 4/22 TSLA 실적 + 4/23 호르무즈 휴전 만료</strong>
+      <div style="font-size:13px;color:var(--sub);margin-top:4px">트럼프 "연장 가능성 매우 낮음(highly unlikely)" 발언 — 4/23이 신규 데드라인</div>
+    </div>
+    <div class="branches">
+      <div class="branch a">
+        <div style="color:var(--up);font-weight:700;font-size:14px;margin-bottom:6px">A. 낙관 (실적 랠리) — <strong>33%</strong></div>
+        <div style="font-size:13px">호르무즈 4/23 연장 + TSLA Beat + GDP +1.5%+</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:33%;background:var(--up)"></div></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px">전일 36% → 33% (하향 — 트럼프 "연장 unlikely" 발언으로)</div>
+      </div>
+      <div class="branch b" style="flex:1.4">
+        <div style="color:var(--down);font-weight:700;font-size:14px;margin-bottom:6px">B. 조정 (후반 사이클 정점) — <strong>47%</strong> ★우세</div>
+        <div style="font-size:13px">호르무즈 결렬 또는 TSLA Miss 중 1건 이상</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:47%;background:var(--down)"></div></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px">전일 44% → 47% (상향 심화)</div>
+      </div>
+      <div class="branch c">
+        <div style="color:var(--warning);font-weight:700;font-size:14px;margin-bottom:6px">C. 위기 (스태그플레이션) — <strong>20%</strong></div>
+        <div style="font-size:13px">호르무즈 무기한 봉쇄 + WTI $100+ + CPI 재상승</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:20%;background:var(--warning)"></div></div>
+        <div style="font-size:12px;color:var(--sub);margin-top:6px">전일 20% 유지</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>시나리오 B 우세 심화 근거</h3>
+  <ol style="font-size:14px;padding-left:20px;line-height:1.9">
+    <li>트럼프 "연장 가능성 매우 낮음(highly unlikely)" — A 시나리오 전제 약화 [CNN]</li>
+    <li>미 해군 이란 선박 나포 = 에스컬레이션 단계 상승 [Al Jazeera]</li>
+    <li>VIX 18.98 첫 반등 = "거짓 안정" 해제 시작 [CBOE]</li>
+    <li>NASDAQ 13일 연승 종료 = 모멘텀 소진 신호 [CNBC]</li>
+  </ol>
+
+  <h3>4중 체크포인트 임박 (4/22~4/29)</h3>
+  <div class="checkpoint-grid">
+    <div class="cp-box" style="border-left:3px solid var(--down)">
+      <div class="cp-date">4/22 (화)</div>
+      <div class="cp-title">TSLA Q1 실적 (장후) + ASML Q1 (장전)</div>
+      <div class="cp-note">EPS 컨센 $0.37~$0.40 / 이중 실적 데이. NASDAQ + VIX + ARK 방향 결정</div>
+    </div>
+    <div class="cp-box" style="border-left:3px solid var(--warning)">
+      <div class="cp-date">4/23 (수) 저녁</div>
+      <div class="cp-title">호르무즈 휴전 만료</div>
+      <div class="cp-note">트럼프 "연장 unlikely" 발언 — WTI $90~$100+ vs $80~$85 분기점</div>
+    </div>
+    <div class="cp-box" style="border-left:3px solid var(--highlight)">
+      <div class="cp-date">4/25 (금)</div>
+      <div class="cp-title">GDP Q1 Advance + Core PCE 3월</div>
+      <div class="cp-note">GDPNow +1.3% / Core PCE ~3.0% 예상. 침체 vs 연착륙 최종 판별</div>
+    </div>
+    <div class="cp-box" style="border-left:3px solid var(--neutral)">
+      <div class="cp-date">4/28~29</div>
+      <div class="cp-title">FOMC + 파월 성명</div>
+      <div class="cp-note">동결 85% 컨센서스. 파월 발언 톤이 시장 반응 결정</div>
+    </div>
+  </div>
+</div>
+
+<!-- contrarian-card -->
+<div class="sec">
+  <h2>핵심 카드</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">🟠 과소평가 포인트 — 소매판매 Beat는 함정인가? 소비심리 47.6 vs 실제 소비의 시간차</div>
+    <div class="assumption"><strong>시장의 일반 가정:</strong> 3월 소매판매 +0.7% = 소비 건강. 미시간 소비심리는 "감정"이고 실제 지출은 "행동"이므로 행동이 우선.</div>
+    <div class="signal">
+      <strong>반대 시그널:</strong>
+      <ul style="padding-left:16px;margin-top:6px;font-size:14px">
+        <li>세금 환급 효과 (일시적 — 5월 소멸)</li>
+        <li>관세 사전 구매(front-loading) = Q2 수요 선차입</li>
+        <li>1Y 인플레 기대 4.8%(+1.0%p 급등) = 소비자가 "지금 사지 않으면 비싸진다"는 공포 구매</li>
+        <li>역사적으로 소비심리 50 이하 2분기 연속 시 소매판매 역전 확률 70%+</li>
+      </ul>
+      <p style="font-size:14px;margin-top:8px"><strong>만약 반대 시그널이 맞다면:</strong> Q2 소매판매 반전(-0.2~-0.5% MoM) → 소비주(XLY) -5~8% 조정 → GDP Q2 하향 → Fed 인하 압력 복귀 → 장기채 Rally(TLT +3~5%)</p>
+    </div>
+    <div class="probability"><strong>확률 (briefing-lead 추정):</strong> 중간 (소비심리가 2분기 연속 50 이하 유지 시 높음으로 상향)</div>
+  </div>
+</div>
+
+<!-- 심층 분석 권장 -->
+<div class="sec" style="background:rgba(88,166,255,0.04);border-color:rgba(88,166,255,0.3)">
+  <h2>심층 분석 권장 (다음 단계)</h2>
+  <table>
+    <tr><th>#</th><th>티커</th><th>권장 사유</th><th>다음 단계</th></tr>
+    <tr>
+      <td>1</td>
+      <td><strong class="highlight">AAPL</strong></td>
+      <td>팀 쿡→존 터너스 CEO 교체 + Buffett 축소 = 밸류에이션 재평가 트리거</td>
+      <td><code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 AAPL</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong class="highlight">TSLA</strong></td>
+      <td>4/22 Q1 실적 발표 = NASDAQ + VIX + ARK 방향 단일 최대 이벤트</td>
+      <td><code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 TSLA</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong class="highlight">XLE</strong></td>
+      <td>호르무즈 재봉쇄 WTI $88 + 거물 3인 에너지 컨버전스(Buffett/Marks/Druckenmiller)</td>
+      <td><code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 XLE</code></td>
+    </tr>
+  </table>
+  <p class="highlight" style="font-size:14px;margin-top:4px">→ 각 티커에 <code style="background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)">/종목분석 {티커}</code> 명령으로 심층 분석 가능</p>
+</div>
+
+<!-- 시차 고지 + 인용 -->
+<div class="sec">
+  <h2>시차 고지 및 인용</h2>
+  <h3>시차 고지</h3>
+  <ul style="font-size:14px;padding-left:16px;line-height:1.9">
+    <li><strong>시장:</strong> 04-21(월) 미국장 종가 확정 기준. 04-21 아시아장 종가 확정 기준.</li>
+    <li><strong>매크로:</strong> knowledge-base/macro/ valid_until 기준 (대부분 05-07~05-19)</li>
+    <li><strong>13F:</strong> Q4 2025 기준 (포지션일 2025-12-31, 공시일 2026-02-17). <strong class="warning">최대 3.5개월 시차.</strong></li>
+    <li><strong>크립토:</strong> 04-20~21 장중 ET 기준 (BTC $75,242, ETH $2,309)</li>
+  </ul>
+
+  <h3>인용</h3>
+  <div style="font-size:12px;line-height:1.9;color:var(--sub)">
+    <p class="cite">[CNBC, S&P 7,109.14 / NASDAQ 24,404.39 / Dow 49,442.56 / VIX 18.98, April 20-21 2026]</p>
+    <p class="cite">[Yahoo Finance, stock market today April 20 2026, NASDAQ 13-day streak ends]</p>
+    <p class="cite">[Al Jazeera, oil prices surge amid mixed signals on US-Iran peace talks, April 20 2026]</p>
+    <p class="cite">[PBS News, oil prices spike again following latest standoff in Strait of Hormuz]</p>
+    <p class="cite">[France 24, Trump says US seized Iranian ship in Gulf of Oman, April 19-20 2026]</p>
+    <p class="cite">[CNN, Trump says ceasefire ends Wednesday evening, extension highly unlikely, April 20 2026]</p>
+    <p class="cite">[Fortune, Apple CEO Tim Cook stepping down, John Ternus new CEO, April 20 2026]</p>
+    <p class="cite">[NPR, Tim Cook letter describing 15 years at Apple, April 20 2026]</p>
+    <p class="cite">[CNBC, Apple names John Ternus CEO replacing Tim Cook, April 20 2026]</p>
+    <p class="cite">[US Census Bureau, Advance Monthly Sales March 2026, released April 21 2026]</p>
+    <p class="cite">[Just-Style, US retail sales March 2026 tax refunds, April 21 2026]</p>
+    <p class="cite">[Coresight Research, March 2026 US retail sales outlook]</p>
+    <p class="cite">[Trading Economics, KOSPI 6,219.09 / VIX 18.98, April 20-21 2026]</p>
+    <p class="cite">[CNBC Asia, Nikkei 225 58,825 +0.60%, April 21 2026]</p>
+    <p class="cite">[Dataroma 13F, Q4 2025, 포지션일 2025-12-31, 공시일 2026-02-17]</p>
+    <p class="cite">[CoinGecko / Fortune, BTC $75,242 / ETH $2,309, April 20-21 2026]</p>
+    <p class="cite">[Variety / CNBC, Netflix Q1 2026 revenue $12.25B +16%, EPS $1.23 Beat, AH -9%]</p>
+    <p class="cite">[Electrek, Tesla Q1 2026 deliveries 358,023, missing estimates by 12,000 units]</p>
+  </div>
+</div>
+
+<!-- 푸터 — 명령어 가이드 -->
+<div class="footer">
+  <h3>다른 브리핑도 확인해보세요</h3>
+  <table>
+    <tr><td><code>/모닝브리핑</code></td><td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td></tr>
+    <tr><td><code>/이브닝브리핑</code></td><td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td></tr>
+    <tr><td><code>/주간리포트</code></td><td>→ 한 주 심층 + 성과 추적(C-9)</td></tr>
+    <tr><td><code>/리밸런싱</code></td><td>→ 4종 모델 포트폴리오 재조정</td></tr>
+    <tr><td><code>/크립토브리핑</code></td><td>→ BTC/ETH/SOL + 온체인 + 규제</td></tr>
+    <tr><td><code>/모델포트폴리오</code></td><td>→ 4종 현재 구성 + 구체 종목·ETF</td></tr>
+    <tr><td><code>/글로벌인텔리전스</code></td><td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td></tr>
+    <tr><td><code>/풀브리핑</code></td><td>→ A+B+C+E 4편 동시</td></tr>
+    <tr><td><code>/성과리뷰</code></td><td>→ 1주/2주/1개월/3개월 적중률</td></tr>
+    <tr><td><code>/내포트폴리오</code></td><td>→ 사용자 보유 자산 (개인 데이터 격리)</td></tr>
+  </table>
+</div>
+
+<div class="footer" style="margin-top:16px">
+  <h3>명령어 가이드</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px">
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+    <div><code>/비교분석</code> 두 종목 비교</div>
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 크립토</div>
+    <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/내포트폴리오</code> 내 자산</div>
+    <div><code>/리밸런싱</code> 포트 조정</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/풀브리핑</code> A+B+C+E</div>
+    <div><code>/KB업데이트</code> KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
+    <div><code>/손절계산</code> ATR 계산</div>
+    <div><code>/리포트</code> HTML 재생성</div>
+  </div>
+</div>
+
+<!-- 주의사항 -->
+<div class="disclaimer">
+  <h4>⚠️ 주의사항</h4>
+  <ul>
+    <li>본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도 추천이 아닙니다.</li>
+    <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+    <li>13F 데이터는 분기말 기준 최대 45일 시차가 있습니다. 현재 포지션과 다를 수 있습니다.</li>
+    <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+    <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+    <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+    <li>시나리오 확률 수치는 briefing-lead의 정성적 추정치이며 통계적 확률이 아닙니다.</li>
+    <li>VIX ETN(VXX/VIXY)은 장기 보유 시 컨탱고 비용(롤 비용)이 발생하는 단기 매매 도구입니다.</li>
+  </ul>
+  <p style="margin-top:8px">데이터 기준: 미국장 2026-04-21 종가, 아시아장 2026-04-21 종가, 크립토 2026-04-20~21 장중. 13F: Q4 2025 (2025-12-31 포지션, 2026-02-17 공시).</p>
+</div>
+
+<script>
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
+</script>
+
+</body>
+</html>
