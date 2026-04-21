@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | **BABA 알리바바 - 2026-04-21**, Buy 74.6점 (B등급, 복합형, 중국 빅테크 Deep Value + Cloud Growth), 목표 $175 (+24.9%), 손절 $131.83 (2xATR, -5.9%), R:R 4.22 |
+| 마지막 종목분석 | **ADBE Adobe - 2026-04-21**, Buy 76.35점 (B등급 상단, 복합형 Deep Value+Quality SaaS), 목표 $310 (+24.7%), 손절 $230.85 (2xATR, -7.2%), R:R 3.43 |
 | 마지막 브리핑 | **모델포트폴리오 F - 2026-04-21** (이브닝 20260421 포함) |
 | 마지막 KB 업데이트 | **semiconductor(루트→industry/ 이동+전면갱신) + ai + auto + bio_pharma(신규) 4건 병렬 - 2026-04-21** |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,9 +19,10 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
-| BABA_Alibaba | **2026-04-21** | **74.6 Buy** (B등급, 복합형, 중국 Deep Value + Qwen3 Cloud) | 유효 (신규) |
+| ADBE_Adobe | **2026-04-21** | **76.35 Buy** (B등급 상단, 복합형, Deep Value SaaS) | 유효 (신규) |
+| BABA_Alibaba | 2026-04-21 | 74.6 Buy (B등급, 복합형, 중국 Deep Value + Qwen3 Cloud) | 유효 |
 | 329180_HD현대중공업 | 2026-04-20 | 76.2 Buy (B등급, 복합형, 조선 슈퍼사이클) | 유효 |
-| 012450_한화에어로스페이스 | **2026-04-21 v2** | **79.2 Buy** (v1 81.1 Strong Buy → XM30 탈락 확정 반영 강등) | 유효 (갱신) |
+| 012450_한화에어로스페이스 | 2026-04-21 v2 | 79.2 Buy (v1 81.1 Strong Buy → XM30 탈락 확정 반영 강등) | 유효 (갱신) |
 | 035420_NAVER | 2026-04-20 | 70.4 Buy (B등급, 복합형) | 유효 |
 | ORCL_Oracle | 2026-04-20 | 68.0 Buy (B등급, 조건부) | 유효 (갱신, 4/14 대체) |
 | MSTR_Strategy | 2026-04-20 | 49.8 Underweight (D, BTC treasury) | 유효 |
@@ -56,44 +57,32 @@
 
 ## 파이프라인 버전
 
-- 종목분석: v3.0 (Write 3턴 규칙 + 시스템 오버라이드 + 폴백 마커)
+- 종목분석: v3.8 (일회성 산출물 정리 규칙 + bootstrap stale 검증 + Todo 의무화)
 - KB 업데이트: v3.4 (미니사이클 + 마지막 사이클 통합 + git 리드 위임)
 - fetch_price.py: 활성 (pykrx + yfinance)
 
 ## ⚠️ 환경 상태 (2026-04-21)
 
-- **CRLF 재발 차단 완료**: 2026-04-21 커밋 `6bd498c` — `.gitattributes`(eol=lf) 도입 + `core.autocrlf=false` 고정 + 기존 인덱스 CRLF 오염 97개 파일 정규화. 진단 근거: 워킹트리 422 파일 M 표시, `git diff -w --shortstat` 0바이트(순수 CRLF 변환).
+- **CRLF 재발 차단 완료**: 2026-04-21 커밋 `6bd498c` — `.gitattributes`(eol=lf) 도입 + `core.autocrlf=false` 고정 + 기존 인덱스 CRLF 오염 97개 파일 정규화
 - GitHub Actions 계정 단위 비활성화 상태(GitHub Support 티켓 #4287825 심사 중) — Pages 자동 배포 중단, push는 정상
-- **Agent 도구(sub-agent 호출권) 복구**: 2026-04-21 본 세션에서 Task 도구 정상 동작 확인 (market-data-collector + kb-updater 병렬 실행 성공)
-- origin/main 대비 미푸시 커밋 존재 (6bd498c 등) — 수동 push 필요 시 `git push`
+- **Agent 도구(sub-agent 호출권) 복구**: 2026-04-21 세션 Task 도구 정상 동작 확인
+- **v3.8 정리 규칙 작동 테스트 통과 (ADBE 세션, 2026-04-21)**: generate_ADBE.py 생성→커밋 전 삭제 검증 완료
 
-## 012450 한화에어로스페이스 v2 재평가 결과 (2026-04-21)
+## ADBE Adobe 분석 결과 (2026-04-21, 신규)
 
-- **스코어 81.1 → 79.2 (-1.9)**, **Strong Buy → Buy 강등** (80점 경계 -0.8점 미달)
-- **목표가 ₩1,600,000 → ₩1,550,000** (-3.1%), Bull ₩2.0M → ₩1.9M
-- 손절가 ₩1,269,142 **유지** (ATR 기반, 펀더멘털 무관)
-- 재평가 트리거: defense_industry KB 신규 확보 시 **XM30 Phase 2 탈락 100% 확정** 확인 (v1 "45% 확률" 오판)
-- 9월 최종 결정은 Rheinmetall KF-41 Lynx vs GDLS Griffin III 2파이널. 한화 배제 확정
-- 대체 미국 진출 경로 정량평가: 루마니아 €5B+ 80% 현지화 (45~55%) / 캐나다 IFV (25~35%) / 미 해병 AAV (15~25%). 최소 1개 성공 72%
-- 리스크 Top 재정렬: 부채비율 220% #5 → **#2** 상향, XM30은 Tail Risk에서 Base Case로 이동
-- 유지 파일: company/business/financial/momentum/data.md (v1 그대로)
-- 갱신 파일: risk.md v2 (+46%, 10903 bytes), scorecard.md v2 (+54%, 13480 bytes)
-- 신규 리포트: `reports/012450_한화에어로스페이스_20260421.html` (32.3KB)
-
-## BABA 알리바바 분석 결과 (2026-04-21, 신규)
-
-- **스코어 74.6 (Buy, B등급)**, 조정 73.6 (중국 리스크 -4 + Qwen3 프리미엄 +3)
-- **목표가 $175** (+24.9%, 가중 평균: DCF $190 50% + SOTP $150 30% + 컨센 $172 20%)
-- **손절가 $131.83** (2×ATR, -5.9%), Risk-Reward **4.22** (매우 우수)
-- 현재가 $140.17 (2026-04-20 NYSE 종가), 시총 $335.3B, ATR 2.97%
-- FY25 매출 $138.5B (+7%), OP $20.5B (+31%), EPS $9.62, 순현금 $59.8B
-- FY26E 매출 $150.8B (+8.8%), OP $23.1B, EPS $10.45, 컨센서스 22명 Buy 82%
-- 세그먼트 (FY26 Q3): TTG 51% (OPM 46%) / AIDC 16% (+32%) / **Cloud 14% (+33%, Qwen3 견인)** / Cainiao 10% / Local 7%
-- 핵심 매수 논거: Qwen3-Max 2T 국가 AI 5대 모델 / PER 14.6x 미국 Big7 대비 49% 디스카운트 / Cainiao+Freshippo+Ant 밸류 언록 트리거
-- 핵심 리스크: VIE+PCAOB 재강화(2026.03 SEC 재확인, 35%) / 중국 정부 재개입(30%) / Trump 관세 34.7%+Section 301 4.28
-- 최대 Swing Factor: **2026.05.14~15 Trump-Xi 베이징 정상회담** (±20%)
-- 포지션 사이징: 전체 포트 5% 이내 (Moderate, 중국 테마 리스크 감안)
-- HTML 리포트: `reports/BABA_Alibaba_20260421.html` (33.7KB), commit **a12e997**
+- **스코어 76.35 (Buy, B등급 상단, Strong Buy 경계 -3.65점)**
+- **목표가 $310** (+24.7%, 가중 평균 $381 - AI 리스크 -15% - 가이던스 -5%)
+- **손절가 $230.85** (2×ATR, -7.2%), Risk-Reward **3.43** (우수)
+- 현재가 $248.63 (2026-04-20 NASDAQ 종가), 52W 고점 $422.95 대비 **-41.2%** (딥 조정)
+- 시총 $101.4B, ATR $8.89 (3.58%)
+- FY25 매출 $22.61B (+10.7%), OPM 46.5%, EPS $19.84, FCF $9.2B, 순현금 +$1.8B
+- FY26E 매출 $24.05B (+6.4%, 둔화), EPS $20.60, 컨센 45명 중 Buy/OW 62%, 중앙값 $340 (+36.7%)
+- 세그먼트: Digital Media 74% (Creative 60% + Document 14%, OPM 51%) / Digital Experience 25% (OPM 32%) / 기타 1%
+- 핵심 매수 논거: **Deep Value at Quality** (PER 12x = 역사적 -63%, peer -56%) / Firefly 5 + Safe Use indemnification 엔터프라이즈 독점 / 자사주 매입 $25B 승인 (연 9%+ EPS 견인)
+- 핵심 리스크: **AI 직접 경쟁 Critical** (OpenAI GPT-image·Google Imagen 4·Midjourney v7·Runway Gen-4) / Canva 저가 침투 (DAU 240M+, ARR +40%) / Firefly 저작권 소송 3건 진행
+- 이벤트 catalyst: FY26 Q2 실적(2026-06-17), Adobe MAX 2026(2026-10)
+- 포지션 사이징: 전체 포트 5~7% (Moderate, SaaS 테마 총합 25% 이내)
+- HTML 리포트: `reports/ADBE_Adobe_20260421.html` (33.6KB)
 
 ## 모델 포트폴리오 2026-04-21 핵심
 
@@ -101,16 +90,6 @@
 - 상세: `knowledge-base/portfolio/model_portfolios.md` (15.2KB, confidence:high)
 - HTML: `reports/briefing/model_portfolio_20260421.html`
 - 주요 반영: 호르무즈 4/22 D-1 / VIX 거짓안정 해제 / Anthropic 추월 / NAND 역전 / LLY Bull / K-방산 수출 20B
-
-## TQQQ ETF 분석 핵심 결과
-
-- 스코어 67.0 (Buy 조건부)
-- 목표가 $67.63 (+15.4%, RR 1.8)
-- 손절가 $53.57 (−8.6%, 2x ATR)
-- 30일 EV −4.59% (A:38% +15.2% / B:42% −10.4% / C:20% −30.0%)
-- 최대 보유 60일 (Volatility Decay 연 14.8% 수학적 필연)
-- Total Cost of Carry 6.5%/년 (보수 0.84 + 롤오버 1.5 + 스왑금리 4.2)
-- High-Risk 이벤트: 4/22 TSLA, 4/24 GOOGL, 4/29 FOMC, 4/30 MSFT+META, 5/1 AAPL+AMZN
 
 ---
 
