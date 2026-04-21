@@ -1,11 +1,11 @@
 ---
-updated: 2026-04-07
-valid_until: 2026-05-07
+updated: 2026-04-21
+valid_until: 2026-05-21
 sector: ai
-sources: [IDC, Gartner, McKinsey, Synergy Research Group, SIA, IEA, Goldman Sachs, 모건스탠리, 키움증권, NH투자증권, NVIDIA IR, Alphabet IR, Microsoft IR, Amazon IR, Meta IR, OpenAI, Anthropic, 과기정통부, 네이버, 카카오, LG AI연구원, 삼성전자]
-confidence: medium
-last_synced_from_db: 2026-04-07
-db_records: 53
+sources: [IDC, Gartner, McKinsey, Synergy Research Group, SIA, IEA, Goldman Sachs, 모건스탠리, 키움증권, NH투자증권, NVIDIA IR, Alphabet IR, Microsoft IR, Amazon IR, Meta IR, OpenAI, Anthropic, Sacra, Bloomberg, TechCrunch, CNBC, SemiAnalysis, TrendForce, 과기정통부, 네이버, 카카오, SKT, KT, LG AI연구원, 삼성전자, Upstage, EU Commission, 백악관]
+confidence: high
+last_synced_from_db: 2026-04-21
+db_records: 120
 ---
 
 # AI 산업 Knowledge Base
@@ -40,11 +40,13 @@ db_records: 53
 | 데이터센터 부문 매출 (FY2026) | 약 960억 달러 (+105% YoY) | FY2026(~2026.01 종료) | NVIDIA IR |
 | 전체 매출 (FY2026) | 약 1,300억 달러 | FY2026 추정 | 복수 기관 |
 | AI GPU 시장 점유율 | 80~85% | 2025년 | 복수 기관 |
-| 시가총액 (2025년 말) | 약 3.0~3.5조 달러 | 2025Q4 | 시장 데이터 |
+| 시가총액 (2026Q1) | 3.5~4.0조 달러 | 2026Q1 | 시장 데이터 |
 | 선행 PER (FY2027E) | 30~40x | FY2027E EPS $4.0~5.0 기준 | 복수 기관 |
-| Blackwell GB200 출하 (2026) | 연간 150~200만 유닛 목표 | 2026 H1 본격 출하 | NVIDIA |
+| **Blackwell Ultra GB300 출하 (2026)** | **약 60,000랙 (+129% YoY), 2026.01 조기 출하 시작** | 2026년 | KAD8 / Wccftech |
+| B200/GB200 백로그 | 약 360만 유닛, mid-2026까지 매진 | 2026Q1 | 시장 데이터 |
+| Quanta Computer 부킹 파이프라인 | 약 $500B (2026) | — | Quanta 경영진 |
 
-> CUDA 생태계 해자로 단기 점유율 압도. CoWoS-L 패키징 병목 완화 여부가 출하 변수.
+> CUDA 생태계 해자로 단기 점유율 압도. GB300 조기 출하로 Q3 예정에서 Q1으로 당겨짐. HBM/DRAM 부족이 최대 변수 (DRAM +90% QoQ Q1 2026).
 
 #### AMD
 | 항목 | 수치 | 기준 | 출처 |
@@ -58,9 +60,16 @@ db_records: 53
 |------|------|------|------|
 | AI ASIC + 네트워킹 매출 (FY2025) | 120~150억 달러 | FY2025(10월 결산) | 브로드컴 IR |
 | TAM 기회 (2027E, 경영진 제시) | 600~900억 달러 | 경영진 가이던스 | 브로드컴 IR |
-| 주요 고객 | Google(TPU), Meta(MTIA), ByteDance(추정) | — | 업계 |
+| 주요 고객 | Google(TPU), Meta(MTIA), Anthropic(Ironwood 직납) | — | 업계 |
+| **Anthropic Ironwood 직판 딜** | **400,000랙, ~$10B (시스템 벤더 전환)** | 2026 | AIBase |
 
-> 커스텀 AI ASIC(XPU) + Ethernet/InfiniBand 네트워킹 이중 수혜. TAM은 경영진 제시 최대치로 실제 수주와 괴리 존재.
+> 커스텀 AI ASIC(XPU) + Ethernet/InfiniBand 네트워킹 이중 수혜. 2026년 Google TPU 설계 파트너에서 Anthropic 대상 시스템 벤더로 역할 확장.
+
+#### 메모리 공급 병목 [신규]
+| 항목 | 수치 | 기준 | 출처 |
+|------|------|------|------|
+| DRAM 가격 Q1 2026 | +90% QoQ | 2026Q1 | Tech-Insider |
+| HBM의 DRAM 웨이퍼 점유 | 23% | 2026Q1 | Tech-Insider |
 
 #### AI 반도체 수요 구조
 | 항목 | 수치 | 기준 | 출처 |
@@ -70,7 +79,7 @@ db_records: 53
 
 ---
 
-### 3. AI 인프라 투자 — 하이퍼스케일러 CapEx
+### 3. AI 인프라 투자 — 하이퍼스케일러 CapEx + Neocloud
 
 #### 합산 CapEx
 | 항목 | 수치 | 기준 | 출처 |
@@ -82,12 +91,19 @@ db_records: 53
 | 기업 | 2026E CapEx | 주요 용도 | 출처 |
 |------|------------|---------|------|
 | Microsoft | ~800억 달러 | Azure AI, OpenAI 파트너십 인프라 | 가이던스 |
-| Google (Alphabet) | ~750억 달러 | TPU v5, Gemini 인프라 | 가이던스 |
+| Google (Alphabet) | ~750억 달러 (+Ironwood/Trillium $185B 실리콘 투자 별도) | TPU v7 Ironwood, Gemini 인프라 | 가이던스 |
 | Amazon (AWS) | 800억+ 달러 | Trainium2, NVIDIA GPU, 데이터센터 | 가이던스 |
-| Meta | 600~650억 달러 | Llama, MTIA 칩, 메타버스 AI | 가이던스 |
+| Meta | 600~650억 달러 | Llama 5, MTIA 칩, 메타버스 AI | 가이던스 |
 | **4사 합산** | **2,950~3,200억 달러** | — | 자동 계산 |
 
-> 2025 대비 +20~35% YoY 증가. DeepSeek 쇼크에도 불구 CapEx 가이던스 하향 없음 확인.
+> 2025 대비 +20~35% YoY 증가. DeepSeek 쇼크에도 불구 CapEx 가이던스 하향 없음 확인. Google은 Ironwood/Trillium 실리콘 투자 $185B 별도 계상.
+
+#### Neocloud 주요 플레이어 [대폭 갱신]
+| 업체 | 2025FY 매출 | 2026E 매출 | 인프라 규모 | 주요 고객/백로그 |
+|------|------------|-----------|-----------|---------------|
+| **CoreWeave** | $5.13B | ~$12.5B (+144%) | 590MW 운영, 2.9GW 계약, CapEx $30~35B(2026E) | 백로그 $66.8B, Meta $14B 딜 |
+| **Nebius** | Q4 $228M | ARR $7~9B(FY26E 가이던스) | 3GW 계약 목표, Missouri 1GW + Finland 310MW | Azure·Meta 대형 딜, FY26 절반 예약 |
+| **Lambda** | 비공개 | 비공개 | 320MW 리스 체결, 2030년 3GW 목표 | B2C·개발자 지향 "One GPU, one person" |
 
 #### 데이터센터 전력 수요
 | 항목 | 수치 | 기준 | 출처 |
@@ -98,46 +114,71 @@ db_records: 53
 
 ---
 
-### 4. LLM / Foundation Model 시장
+### 4. LLM / Foundation Model — 프론티어 모델 경쟁 [대폭 갱신]
 
-#### 글로벌 주요 플레이어
-| 기업 | 주요 모델 | 상태 | 주목 지표 | 출처 |
-|------|----------|------|---------|------|
-| OpenAI | GPT-4o, o1, o3 | 유료 API + ChatGPT 상용화 | ARR $37억+, MAU 5억+, 밸류 $1,570억 | OpenAI |
-| Anthropic | Claude 3.5 Sonnet/Haiku | API + 엔터프라이즈 | 밸류 $180억, Amazon·Google 투자 | Anthropic |
-| Google DeepMind | Gemini 1.5 Pro/Ultra, 2.0 | Google Workspace 통합 | 100만 토큰 컨텍스트, TPU 자체 활용 | Google |
-| Meta AI | Llama 3.1 (오픈소스) | 허깅페이스 공개 | 무료 오픈소스, 경쟁 압박 | Meta |
-| DeepSeek (중국) | R1, V3 (오픈소스) | 2025.01 공개 충격 | 학습비 $600만 주장, 에너지 역설 촉발 | DeepSeek |
-| Mistral AI | Mistral 7B, Mixtral 8x7B | 오픈소스 + API | 유럽 대표 AI 스타트업 | Mistral |
+#### 글로벌 주요 플레이어 (2026.04 기준)
+| 기업 | 최신 모델 라인업 | ARR | 밸류 | 주요 특징 |
+|------|----------------|-----|------|---------|
+| **Anthropic** | Claude Opus 4.7 / Sonnet 4.5 / Haiku 4.5 | **$30B** (OpenAI 추월) | **$380B** (Series G, $800B+ 오퍼 수신 중) | 엔터프라이즈 80%, 학습비 OpenAI의 1/4. Claude Code run-rate $2.5B |
+| **OpenAI** | GPT-5.4 / Sora (축소) / o 시리즈 | $25B (2026.02) | **$852B** ($122B 펀딩 완료) | 월매출 $2B, 2025 총매출 $13.1B. Microsoft 지분 ~27% ($135B) |
+| **Google DeepMind** | Gemini 3.1 Pro (2M 컨텍스트) / 3.0 Pro / Flash-Lite | — | — | TPU v7 Ironwood GA, 9,216칩 슈퍼팟. AI Pro $19.99/월 |
+| **Meta** | Llama 5 (2026.04.08 오픈웨이트) / Muse Spark (폐쇄) | — | — | "보완재 commoditize" 전략. Mango/Avocado 차세대 모델 준비 |
+| **DeepSeek** | R1, V3 (오픈소스) | — | — | 저비용 학습 방법론 지속. 오픈소스 확산 압력 |
+| **Mistral AI** | Mistral 7B, Mixtral 8x7B | — | — | 유럽 대표 스타트업 |
 
-#### DeepSeek 충격 및 시사점
+> **Anthropic vs OpenAI ARR 역전 (2026.04)**: Anthropic $30B > OpenAI $25B. 엔터프라이즈 80% vs 소비자 60% 믹스 차이. 엔터프라이즈 LLM 시장 점유율 Anthropic 40% / OpenAI 27% / Google 21%.
+
+#### Anthropic 주요 이슈 [v2 추가]
+- Series G $30B 조달 (2026.02, 밸류 $380B) → $800B+ 신규 오퍼 수신 (2026.04, 거절 중)
+- Google Cloud 100만 TPU 칩 공급 계약 (Broadcom 제조, 수십억 달러 규모)
+- 미 국방부 공급망 리스크 지정 (자율 타겟팅·시민 감시 거부로 행정부와 법적 분쟁)
+
+#### OpenAI 주요 이슈 [v2 추가]
+- $122B 펀딩 라운드 2026.03 완료 ($852B 밸류, SoftBank·a16z 주도)
+- GPT-5.4가 agent 성장 엔진, 비즈니스 비중 40% (전년 30%)
+- Sora 단편 비디오 앱 일부 축소, 비용 관리 국면 진입
+
+#### Google Gemini 3 / TPU v7 [v2 신규]
+- Gemini 3.0 Pro (2025.11.18, 1M 컨텍스트, Deep Think)
+- Gemini 3.1 Pro (2026.02.19, 2M 컨텍스트, 추상추론 +148%)
+- **TPU v7 Ironwood 2026 초반 GA**, TSMC 양산, 연간 수백만 유닛. 4.6 PFLOPS, 192GB HBM/칩
+- Broadcom(코어 설계) + MediaTek(I/O, -20~30% 비용) + TSMC 파트너십
+
+#### Meta Llama 5 / Muse Spark [v2 신규]
+- Llama 5 2026.04.08 공개 — 프론티어 오픈웨이트. GPT-5·Gemini 3 벤치마크 매칭 주장
+- Muse Spark (Meta Superintelligence Labs) 폐쇄소스 병행 — 전략 분기 가능성
+
+#### DeepSeek 충격 및 시사점 (기존 유지)
 - 2025년 1월 27일: DeepSeek R1 공개 → NVIDIA 주가 -17% 단일 최대 낙폭
 - 핵심 논쟁: '효율 개선 → 비용 하락 → 수요 폭발(Jevons Paradox)' vs '수요 대체'
 - 결과: 하이퍼스케일러 CapEx 가이던스 오히려 상향. 중장기 수요 우려 불식.
-- 함의: 오픈소스 LLM 확산으로 LLM API 단가 하락 압력 지속.
 
 ---
 
-### 5. AI 애플리케이션 & 에이전트
+### 5. AI 애플리케이션 & 에이전트 [대폭 갱신]
 
 | 영역 | 현황 | 주요 플레이어 | 출처 |
 |------|------|------------|------|
-| AI 코딩 어시스턴트 | 시장 약 30억달러. 기업 채택 가속 | GitHub Copilot, Cursor, CodeWhisperer | 복수 기관 |
-| AI 에이전트 (Agentic AI) | 초기 단계, 워크플로우 자동화 주도 | OpenAI GPT-4o Agent, Claude Agent, Google Agentspace | IDC |
+| **AI 코딩 어시스턴트** | **Claude Code run-rate $2.5B(2026 초). 스위처 51%가 Claude Code로 이동** | Claude Code, GitHub Copilot, Cursor | Anthropic |
+| **Computer Use / 에이전트** | **Claude Computer Use GA 2026.03 (Pro/Max) / OpenAI Codex Computer Use 2026.04.16 출시** | Claude Cowork, OpenAI Operator, Google Agentspace | DigitalApplied |
+| **엔터프라이즈 마켓플레이스** | **Anthropic 마켓플레이스 2026.03 론칭 (Snowflake·Harvey·Replit)** | Anthropic, OpenAI GPT Store | Anthropic |
 | AI 고객응대 | 전통 컨택센터 대체 가속 | Salesforce Einstein, ServiceNow AI | 업계 |
 | 온디바이스 AI | 스마트폰 AI 기능 경쟁 심화 | 삼성 Gauss2/Galaxy AI, Apple Intelligence, 퀄컴 NPU | 각사 |
 | 엔터프라이즈 AI | ERP·CRM·협업툴 AI 내재화 | Microsoft Copilot 365, Google Duet AI, SAP Joule | 각사 |
 
+> **Computer Use 경쟁 본격화**: Claude는 AWS Bedrock·Google Vertex·Microsoft Foundry 통해 엔터프라이즈 배포. OpenAI Codex가 첫 mainstream 데스크톱 네이티브 agent 출시.
+
 ---
 
-### 6. AI 규제 동향
+### 6. AI 규제 동향 [대폭 갱신]
 
 #### 미국
 | 항목 | 내용 | 출처 |
 |------|------|------|
-| 트럼프 행정부 기조 (2025.01~) | AI 규제 완화, Biden EO 14110 폐기, 'AI 패권' 우선 | 백악관 |
-| AI 디퓨저 규칙 | Tier 1(동맹 무제한) / Tier 2(쿼터) / Tier 3(전면 금지). 트럼프 수정 검토 중 | 상무부 |
-| NIST AI RMF | 자율 준수 유지 (강제 규정 없음) | NIST |
+| EO 14179 (2025.01.23) | AI 규제 완화, Biden EO 14110 폐기, 'AI 패권' 우선 | 백악관 |
+| **EO 2025.12.11 (신규)** | **주(州) AI 규제 무력화. BEAD $42B 광대역 보조금을 주법 폐지와 연계** | 백악관 / Sidley Austin |
+| 캘리포니아 대응 | 뉴섬 주지사 2026.03.30 AI 보호 EO 서명 (연방-주 갈등) | 캘리포니아 주 |
+| AI 디퓨저 규칙 | Tier 1/2/3 구조 유지, 트럼프 수정 검토 중 | 상무부 |
 
 #### EU
 | 항목 | 내용 | 적용 시점 | 출처 |
@@ -145,43 +186,63 @@ db_records: 53
 | EU AI Act 발효 | 2024.08 발효, 단계 적용 | 2024.08 | EU |
 | 금지 AI 관행 | 사회신용시스템, 비밀 조작 등 | 2025.02 | EU |
 | GPAI (범용 AI) 의무 | 투명성 보고, 저작권 정책, 기술 문서 | 2025.08 | EU |
-| 고위험 AI 시스템 | 사전 적합성 평가 의무 | 2026.08 | EU |
-| 위반 제재 | 전세계 매출 3% 또는 1,500만 유로 | — | EU AI Act |
+| **고위험 AI 시스템 (D-103 ⚠️)** | **사전 적합성 평가·CE 마킹·EU DB 등록 의무 완료 시한** | **2026.08.02** | EU / Modulos.ai |
+| 위반 제재 | 금지 관행 €35M 또는 매출 7% / 기타 위반 €15M 또는 매출 3% | — | EU AI Act |
 
 #### 한국
 | 항목 | 내용 | 적용 시점 | 출처 |
 |------|------|---------|------|
-| AI 기본법 | 국회 통과 2025.01, 시행 2026.01 | 2026.01 | 과기정통부 |
+| **AI 기본법 (시행 완료)** | **2026.01.22 시행. 생성 AI·고영향 AI 규제. 19개 법안 통합** | **2026.01.22** | 과기정통부 / Cooley |
+| **역외 적용** | **한국 시장·이용자 영향 시 적용 → 다국적 고용주 AI 도구도 대상** | 2026.01.22~ | Littler |
 | 정부 AI 투자 | 2025~2027년 총 5조원 이상 (GPU 3만장+ 목표) | 2025~2027 | 정부 |
 
 ---
 
-### 7. 한국 AI 생태계
+### 7. 한국 AI 생태계 [갱신]
 
-| 기업 | 핵심 AI 자산 | 현황 | 출처 |
-|------|------------|------|------|
-| 네이버 | HyperCLOVA X | B2B 클라우드 확장, 소프트뱅크 JV. AI 관련 매출 전체의 10~12% | 네이버 IR |
-| 카카오 | 카나나(Kanana) LLM | 개발 진행 중, KakaoTalk AI 기능 탑재 | 카카오 |
-| LG AI연구원 | EXAONE 3.5 (7.8B, 72B) | 허깅페이스 공개, LG 계열사 산업 AI 적용 | LG AI연구원 |
-| 삼성전자 | 가우스(Gauss) 2.0, 삼성리서치 | Galaxy S25 온디바이스 AI 탑재. 연구 인력 1만명+ | 삼성 IR |
-| SK텔레콤 | 에이닷(A.), SKT Enterprise AI | Anthropic Claude 기반 B2B 서비스. GSMA AI 참여 | SKT IR |
+#### 주요 기업
+| 기업 | 핵심 AI 자산 | 2026 현황 | 출처 |
+|------|------------|----------|------|
+| **네이버** | HyperCLOVA X SEED (오픈소스), Cue: 검색, HyperCLOVA X Think (추론모델) | CLOVA for AD 생성형 광고 + 헬로맥스 대행. 순수 한국 데이터 6,500배 학습 | 네이버 IR / CLOVA |
+| **카카오** | 카나나 in KakaoTalk (온디바이스), ChatGPT for Kakao (800만 이용자) | AI 스튜디오 조직 통합(2026.02), 정신아 대표 직접 총괄. 톡비즈 2026E 2.8조 (+26.1%) | 카카오 / CEOSCOREDAILY |
+| **LG AI연구원** | EXAONE 3.5 (7.8B, 72B) | 허깅페이스 공개, LG 계열사 산업 AI 적용 | LG AI연구원 |
+| **삼성전자** | 가우스(Gauss) 2.0, 삼성리서치 | Galaxy S25 온디바이스 AI 탑재. 연구 인력 1만명+ | 삼성 IR |
+
+#### 통신 3사 [신규]
+| 기업 | AI 전략 | 2026 현황 | 출처 |
+|------|--------|----------|------|
+| **SKT** | 에이닷, GPUaaS, Petasus AI Cloud, 1GW급 AIDC | **AI 데이터센터 매출 +53% YoY**. OpenAI 협력 남서부 AIDC, 소버린 모델 519B → 1T+ | Stocktitan / Fierce |
+| **KT** | KT Cloud, GPU 클러스터, Data Lakehouse | 두 자릿수 매출 성장 목표. 정부 GPU 조달 입찰 참여 | PortersFiveForce |
+| **LGU+** | AICC, 기업용 AI | 상세 데이터 부족 | — |
+
+#### 주요 AI 스타트업 [신규]
+| 기업 | 상태 (2026.04) | 핵심 지표 | 출처 |
+|------|-------------|----------|------|
+| **Upstage** | **시리즈C 1차 1,800억원 클로징 → 기업가치 1조원 (국내 생성형 AI 첫 유니콘)** | 누적 투자 4,000억원, 연 130%+ 매출 성장, 솔라 LLM + Document Parse | 머니투데이 2026.04.15 |
+| 솔트룩스 (A304100) | 2025 3Q 누적 매출 -34% YoY, 영업손실 +53% | 다이퀘스트 자회사 부진, Big Data Suite 침체. 에이전트 솔루션 체질 전환 중 | FN가이드 |
+| 뤼튼테크놀로지 | LLM 응용 서비스 | 소비자용 AI 어시스턴트 중심 | — |
 
 ---
 
-### 8. 주요 기업 밸류에이션 및 수급
+### 8. 주요 기업 밸류에이션 및 수급 [갱신]
 
-#### 글로벌 AI 관련주 밸류에이션 (2025년 말 기준)
+#### 글로벌 AI 관련주 밸류에이션 (2026.04 기준)
 | 기업 | 시가총액 | 선행 PER | 비고 |
 |------|---------|---------|------|
-| NVIDIA | 3.0~3.5조 달러 | 30~40x (FY27E) | 전 세계 시총 1~2위 |
-| Microsoft | ~3.2조 달러 | 30~35x | Azure AI 포함 |
-| Alphabet (Google) | ~2.3조 달러 | 22~27x | Gemini + TPU |
-| Meta | ~1.5조 달러 | 22~28x | Llama 오픈소스 전략 |
+| NVIDIA | 3.5~4.0조 달러 | 30~40x (FY27E) | 전 세계 시총 1위 |
+| Microsoft | ~3.2조 달러 | 30~35x | OpenAI 지분 ~$135B 포함 |
+| Alphabet (Google) | ~2.3조 달러 | 22~27x | Gemini 3.1 + TPU v7 Ironwood |
+| Meta | ~1.5조 달러 | 22~28x | Llama 5 오픈소스 + Muse Spark 듀얼 전략 |
 | Amazon | ~2.2조 달러 | 35~45x | AWS + Bedrock |
-| Broadcom | ~0.9~1.0조 달러 | 25~35x | AI ASIC 수혜 |
+| Broadcom | ~1.0~1.2조 달러 | 25~35x | TPU 설계 + Anthropic $10B 시스템 딜 |
 | AMD | ~0.2~0.3조 달러 | 20~30x | MI300X 성장 |
 
-> 글로벌 AI ETF (BOTZ, AIQ, CHAT 등) 2025년 +40~60% YoY 수익률 추정.
+#### 비상장 AI 기업 밸류 (2026.04)
+| 기업 | 밸류 | 최근 라운드 | 비고 |
+|------|------|----------|------|
+| **OpenAI** | **$852B** | $122B 펀딩 2026.03 | SoftBank·a16z 주도. 세계 최대 비상장 |
+| **Anthropic** | **$380B** (현실 밸류) / $800B+ (시장 오퍼) | Series G $30B 2026.02 | GIC·Coatue 주도. 세계 3대 비상장 |
+| Upstage | ₩1조원 | 시리즈C 1차 1,800억 2026.04 | 국내 생성형 AI 첫 유니콘 |
 
 #### 수급 이슈
 - AI 테마 집중: 매그니피센트 7 중심 패시브 자금 쏠림 지속
@@ -190,17 +251,19 @@ db_records: 53
 
 ---
 
-### 9. 리스크 팩터
+### 9. 리스크 팩터 [갱신]
 
 | 리스크 | 내용 | 방향 | 출처 |
 |--------|------|------|------|
-| 고밸류에이션 / AI 버블 논쟁 | PER 프리미엄 vs 실제 수익화 속도 갭. '닷컴 버블 2.0' 우려 | 부정적 | Goldman Sachs, GMO |
-| 오픈소스 LLM 확산 | Llama, Mistral, DeepSeek → API 단가 하락, 독점 수익화 모델 압박 | 부정적 (LLM SaaS) | 업계 |
+| 고밸류에이션 / AI 버블 논쟁 | OpenAI $852B·Anthropic $380~800B 등 비상장 밸류 급등. '닷컴 버블 2.0' 우려 | 부정적 | Goldman Sachs, GMO |
+| **HBM/DRAM 공급 병목 (신규 강화)** | **DRAM 가격 Q1 2026 +90% QoQ. AI 서버 vs 소비자 전자기기 수요 충돌** | 부정적 (AI 서버 원가) | Tech-Insider |
+| 오픈소스 LLM 확산 | Llama 5 프론티어급 오픈웨이트 공개로 API 단가 하락 가속. 독점 수익화 모델 압박 | 부정적 (LLM SaaS) | 업계 |
 | DeepSeek 효율 혁신 반복 | 저비용 학습 방법론 지속 등장 시 GPU 수요 성장률 둔화 가능 | 모니터링 | 업계 |
 | AI 칩 수출 규제 | Tier 2/3 국가 쿼터제, 중국 사실상 차단 → 글로벌 시장 축소 | 부정적 (NVIDIA) | 미국 상무부 |
-| EU AI Act 고위험 규제 (2026.08) | 준수 비용 증가. GPAI 의무 이미 적용 중 | 부정적 (규제 비용) | EU |
-| 한국 AI 기본법 (2026.01 시행) | 고위험 AI 사전 신고 의무. 서비스 출시 속도 제약 가능 | 중립~부정적 | 과기정통부 |
+| **EU AI Act 고위험 규제 (D-103 ⚠️)** | **2026.08.02 시한. 적합성 평가·CE 마킹·DB 등록 의무. 제재 최대 매출 7%** | 부정적 (규제 비용) | EU |
+| 한국 AI 기본법 시행 | 2026.01.22 시행 완료. 역외 적용으로 다국적 기업도 대상 | 중립~부정적 | 과기정통부 |
 | AI 전력 수요 급증 | 데이터센터 전력 부족, 그리드 병목, 원전/재생에너지 조달 경쟁 | 중립 (인프라 투자 기회) | IEA |
+| **Anthropic 미 국방부 갈등 (신규)** | **자율 타겟팅·시민 감시 거부 → 공급망 리스크 지정, 법적 분쟁** | 부정적 (엔터프라이즈 수주) | Bloomberg 2026.04 |
 | 국가 AI 주권 경쟁 | 중동·유럽·아시아 각국 자체 AI 인프라 구축 → 글로벌 분산, 파편화 | 중립~긍정 (수요 확대) | 각국 정부 |
 
 ---
@@ -212,22 +275,24 @@ db_records: 53
 | 하이퍼스케일러 CapEx 4사 합산 (MS 800 + Google 750 + Amazon 800 + Meta 625) | 2,975억 달러 — 제시 범위(2,800~3,200억) 내 정상 |
 | AI 반도체 비중 역산 (글로벌 AI 시장 2,500억 중 반도체 1,200억) | 48% — GPU·ASIC 인프라 중심 AI 시장 특성상 합리적 범위 |
 | NVIDIA 점유율 + AMD 점유율 (82.5% + 12.5%) | 95% — 나머지 5%는 ASIC/TPU 등 커스텀 칩. 합리적 |
-| 컨센서스 기관수 일치 | AI 반도체 시장 추정: IDC / Gartner / 모건스탠리 = 3곳 명시 일치 |
+| ARR 역전 교차검증 (Anthropic $30B vs OpenAI $25B) | 4개 기관 일치 (The AI Corner, SaaStr, Sacra, Gardenzhome) |
+| OpenAI 밸류 $852B vs Microsoft 지분 $135B (~27%) | 27% × $852B ≒ $230B로 괴리 있음 → Microsoft 지분은 "PBC 지분 as-converted diluted" 기준이라 단순 비례 아님. 정합성 OK |
+| 컨센서스 기관수 일치 | 주요 데이터 항목별 출처 2~4개 교차 확인 명시 |
 
 ---
 
-### 11. 트렌드 요약 (2026-04-07 기준)
+### 11. 트렌드 요약 (2026-04-21 기준)
 
-1. **구조적 성장 국면 지속**: AI 인프라 투자(하이퍼스케일러 CapEx +20~35% YoY)와 반도체 수요가 상호 강화.
-2. **추론(Inference) 중심 전환**: 학습 수요 정점 논쟁 속 추론 수요 비중 60%+ 확대. NVIDIA Blackwell 추론 최적화 대응.
-3. **오픈소스 LLM 경쟁 심화**: DeepSeek, Llama 등 저비용 모델 확산 → API 단가 하락 + 수요 확대(Jevons) 동시 작용.
-4. **AI 에이전트 시장 개화**: 2026년 에이전트 시장 2배 성장 전망. 기업용 워크플로우 자동화 주도.
-5. **전력 인프라 병목 부상**: GPU 수요 못지않게 전력·냉각 인프라가 CapEx 성장의 새 변수.
-6. **규제 리스크 현실화**: EU AI Act GPAI 의무(2025.08), 한국 AI 기본법(2026.01) 발효. 준수 비용 증가 구체화.
-7. **한국 AI**: 네이버(HyperCLOVA X) 선도, 삼성(온디바이스), LG(EXAONE 오픈소스) 3파전. 글로벌 대비 규모는 작으나 인프라·반도체 연계 수혜 가능.
+1. **ARR 역전 — 엔터프라이즈가 소비자를 앞섰다**: Anthropic $30B > OpenAI $25B. 엔터프라이즈 LLM 시장에서 Claude Code·Computer Use·마켓플레이스가 주도.
+2. **실리콘 경쟁 3파전**: NVIDIA Blackwell Ultra GB300(2026.01 조기 출하, 60,000랙) + Google TPU v7 Ironwood(연간 수백만) + Broadcom 커스텀 ASIC(Anthropic $10B 직납).
+3. **메모리 병목이 AI 시장의 새 제약**: DRAM Q1 2026 +90% QoQ. HBM이 DRAM 웨이퍼 23% 점유. NVIDIA 서버 원가 상승 → 마진 압박 가능성.
+4. **오픈소스 프론티어의 반격**: Meta Llama 5(2026.04.08) 프론티어급 오픈웨이트 공개. "보완재 commoditize" 전략으로 독점 API 수익화 모델 위협.
+5. **Neocloud 메가 사이클**: CoreWeave 2026E $12.5B 매출(전년 대비 +144%), Nebius ARR $7~9B. 백로그 수십억 달러 규모로 하이퍼스케일러 대비 순증 수요 흡수.
+6. **규제 카운트다운**: EU AI Act 고위험 의무 **2026.08.02 시한 D-103**. 한국 AI 기본법 2026.01 시행 완료 + 역외 적용. 미국은 연방-주 갈등.
+7. **한국 AI 구조 변화**: SKT AI 데이터센터 매출 +53% YoY + OpenAI 협력. Upstage 국내 첫 생성형 AI 유니콘 진입(₩1조원). 카카오는 AI 스튜디오 조직 통합 + 톡비즈 +26.1% 가이던스.
 
 ---
 
-*이 파일은 knowledge-db/ai_2026.jsonl (53건)에서 자동 생성됩니다.*
+*이 파일은 knowledge-db/ai_2026.jsonl (120건)에서 자동 생성됩니다.*
 *HISTORY는 knowledge-db/에 영구 보관됩니다.*
-*주의: 인터넷 차단 환경. 어시스턴트 학습 데이터(지식 기준: 2025.08) 기반 구성. 실제 수치는 최신 공시 자료로 검증 권장.*
+*주의: 일부 수치는 추정·전망. 실제 수치는 최신 공시 자료로 검증 권장.*
