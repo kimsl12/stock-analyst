@@ -119,6 +119,13 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-19 | evening | 종목 | ASML -- 4/22 실적 전 선행 관찰 | Bull (조건부) | 중기 | 중간 | TSMC N2 양산 가속 + 빅테크 CapEx $660-690B + imec High-NA EUV Q4 인증. 7월 반도체 관세 확대 리스크 [capex.md, tech_breakthrough.md] | reports/briefing/evening_20260419.html | 진행중 |
 | 2026-04-19 | evening | ETF | AGG -- 방어적 채권 배분 | 중립~Bull | 중기 | 중간 | 10Y 4.27% 쿠폰 확보 + VIX 극단 시 비상 완충 + Fed 인하 시 가격 상승. Core CPI 재상승 리스크 잔존 [us_monetary_policy.md, rebalancing_history.md] | reports/briefing/evening_20260419.html | 진행중 |
 | 2026-04-19 | evening | 시나리오 | 30일 시나리오 갱신: A 38%(-2%) / B 42%(+2%) / C 20% | 중립 (B 우세 전환) | 단기~중기 | 중간 | 호르무즈 24시간 번복으로 A -2%, B +2%. 시장 "개방 할인" 조기 반영 -> 재봉쇄 되돌림 폭 확대 [geopolitics.md, lead_evening_20260419.md] | reports/briefing/evening_20260419.html | 진행중 |
+| 2026-04-21 | morning | 이벤트 | 4/22 호르무즈 휴전 만료 — "개방 할인 되돌림 비대칭 하방" | Bear (S&P -2~4%, VIX 22~25) | 단기 | 높음 | 트럼프 "연장 극히 비개연적"+이란 "재협상 없음". 금요일 +1.20% 상승분 전액 되돌림 가능. ES1 -0.3% vs WTI +5% 과소반응 [CNN Live 4/20, CNBC 4/19~20] | reports/briefing/morning_20260421.html | 진행중 |
+| 2026-04-21 | morning | 시나리오 | 30일 시나리오 갱신: A 35%(-3%) / B 45%(+3%) / C 20% | Bear (B 우세 강화) | 단기~중기 | 중간 | 트럼프 비연장 발언+이란 불참 = 결렬 기본시나리오화. A→B 확률 이전 [lead_morning_20260421.md] | reports/briefing/morning_20260421.html | 진행중 |
+| 2026-04-21 | morning | ETF | GLD/IAU — Gold 호르무즈 재봉쇄+Warsh 불확실성 = 추가 상방 촉매 | Bull (구조적) | 중기~장기 | 높음 | Gold $4,878 신고가권. 재봉쇄→에너지 인플레→실질금리 하방→Gold 지지. Warsh 인준 지연 시 Fed 공백→DXY 추가 약세→Gold 가속 [daily_snapshot, global_risk_factors §4] | reports/briefing/morning_20260421.html | 진행중 |
+| 2026-04-21 | evening | 이벤트 | VIX 18.98 "거짓 안정 해제 1단계" -- 2단계 22~28 진입 확률 65%+ | Bear (VIX 상방) | 단기 | 중간~높음 | VIX 17.48->18.98(+8.58%) 첫 반등. 6일 극단 누적 후 해제 시작. 2018.02 볼마게돈 유사 구도. 4/22 TSLA Miss 시 VIX 25+ 갭 반등 [CBOE, correlation_matrix.md] | reports/briefing/evening_20260421.html | 진행중 |
+| 2026-04-21 | evening | 종목 | AAPL -- 팀 쿡->존 터너스 CEO 교체 "하드웨어 르네상스" | 중립->Bull (전환 후) | 중기 | 중간 | 하드웨어 출신 CEO = Apple Silicon+Vision Pro 가속. 단, Buffett -4.3% 축소 + 중국 리스크. 9/1 취임, 6월 WWDC 첫 무대 [Apple Newsroom, Fortune, guru_positions Q4 2025] | reports/briefing/evening_20260421.html | 진행중 |
+| 2026-04-21 | evening | 시나리오 | 30일 시나리오 갱신: A 33%(-2%) / B 47%(+2%) / C 20% | Bear (B 우세 심화) | 단기~중기 | 중간~높음 | 트럼프 "연장 unlikely"+이란 재협상 거부+미 나포 에스컬레이션. VIX 첫 반등+NASDAQ 연승 종료 = B 전환 가속 [CNN, Al Jazeera, CNBC] | reports/briefing/evening_20260421.html | 진행중 |
+| 2026-04-21 | evening | 이벤트 | 소매판매 Beat +0.4% vs 소비심리 47.6 "시간차 함정" | Bear (Q2 소비 둔화 선행) | 중기 | 중간 | 세금환급+관세 사전구매 = 일시효과. 소비심리 50 이하 2분기 연속 시 소매판매 역전 확률 70%+ [Census Bureau, U.Michigan, Coresight] | reports/briefing/evening_20260421.html | 진행중 |
 
 ---
 
