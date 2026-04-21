@@ -50,7 +50,7 @@ lint_mode: full
 | 2026-04-13 | 이브닝브리핑 | 호르무즈 봉쇄 선언 — WTI $105 급등, 4/14 아시아 갭다운 -2~4% 경고. 위험등급 4→5 상향 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-13 | 이브닝브리핑 | Gold-DXY 역상관 약화 Z+1.8σ — Gold $4,724 구조적 Bull. 중앙은행 매수+재정적자=탈달러 수요 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-13 | 이브닝브리핑 | WTI-인플레기대 동조화 Z+2.3σ — Core CPI 전이 2~3개월 시차. Fed 6월 인하 소멸 가능 | `macro/us_monetary_policy.md` | 진행중 |
-| 2026-04-09 | ai_anthropic.md 신규 | Anthropic ARR $30B — OpenAI 최초 추월. 엔터프라이즈 LLM 점유율 40% | `industry/ai_anthropic.md` | — |
+| 2026-04-09 | ai_anthropic.md 신규 → ai.md 흡수(2026-04-21) | Anthropic ARR $30B — OpenAI 최초 추월. 엔터프라이즈 LLM 점유율 40% | `industry/ai.md §4` | — |
 | 2026-04-07 | 모닝브리핑 | Gold Bull 중기 — 기축통화 균열 프리미엄, 중앙은행 매수 급증 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-07 | 모닝브리핑 | SK하이닉스 Bull — HBM3E 대중 전면금지 → Tier1 한국 무제한 수혜 | `semiconductor.md §1 HBM` | 진행중 |
 | 2026-04-07 | 모닝브리핑 | 한국 방산 Bull 장기 — 유럽 GDP 3% 방위비 + 우크라이나 재건 | `macro/geopolitics.md §5` | 진행중 |
@@ -121,7 +121,6 @@ lint_mode: full
 |------|---------|------------|-------|---------|-------|
 | `industry/semiconductor.md` | HBM 점유 SK하이닉스 62% + Micron 21% > Samsung 17%(첫 역전). NAND **+70~75% QoQ 폭등** 2026 사전 완판(기존 "약세" 예측 전면 역전). HBM4 SK 세계 최초 2025-09 양산. NVIDIA Blackwell Ultra GB300 2026.01 조기 출하 | TSMC N2 2nm 수율 65%, 2026 capex $52-56B+애리조나 Phase 2/3. 삼성 파운드리 3nm 수율 60% 미만 지속. 하이퍼스케일러 CapEx $660-690B(기존 $420-480B 대폭 상향). MS Azure $80B 전력 병목. Huawei Ascend 910C 600K. 트럼프 Section 232 25% 칩 관세 | 04-21 | 05-21 | high |
 | `ai.md` | **Anthropic ARR $30B로 OpenAI $25B 최초 추월**, 밸류 $380B→$800B 오퍼, Claude 4.7/Code $2.5B run-rate. OpenAI $852B 펀딩(SoftBank 주도, MS 지분 $135B). Gemini 3.1+TPU v7 Ironwood GA. Meta Llama 5(4/8) 프론티어 오픈 | NVIDIA Blackwell Ultra GB300 2026.01 조기 출하(60K랙, +129% YoY). DRAM Q1 +90% 메모리 병목. EU AI Act 2026.08.02 고위험 D-103. Computer Use/Operator 실전 전환. Upstage 유니콘, SKT AIDC +53% | 04-21 | 05-21 | high |
-| `ai_anthropic.md` | ARR $300억, 밸류 $3,800억, IPO 2026 Q4 목표 | OpenAI ARR 최초 추월. 엔터프라이즈 40% 점유. Pentagon 갈등 리스크 | 04-09 | 05-09 | high |
 | `auto.md` | **한국 관세 15% 유지**(2025.11 인하, 트럼프 2026.04 25% 재인상 압박 중). HMG 관세비용 7.4조(15% 기준), 재인상 시 11조. HMGMA 포함 미국 현지 100만대 체제. Tesla Q1 + Robotaxi 무인 개시(2026.04.18 Dallas·Houston) | Apollo Go 주당 30만회·20개 도시·RT6 $30K. K-배터리 3사 가동률 50% 초반, 글로벌 점유 12%, 합산 적자 -3.2조. 삼성SDI 적자전환, LG엔솔만 OP +83%. 전고체 Solid Power/QuantumScape 상용화 지연 | 04-21 | 05-21 | high |
 | `energy.md` | WTI $84~94, Brent $90~96, JKM $16~19.2, 정제마진 $20 | 호르무즈 24시간 번복(4/17개방->4/18재봉쇄). 유가 극심 변동성. 정유4사 비축 4월말 한계. 석화 가동률 50~60%(5월 중순 셧다운 위기). OPEC+ 5월 206K 추가 증산. SPR 7,648만bbl(116일분). 원전 14GW(30년 최대) | 04-19 | 05-19 | high |
 | `science_tech.md` | 한국 R&D/GDP **5.1%**(세계 1위), 글로벌 R&D 3.8조달러, 정부 R&D **35.3조**(+21.4%) | IonQ 포토닉 인터커넥트(양자네트워킹). 경구 Wegovy FDA승인. 빅테크 CapEx $7000억. PANW-CyberArk $250억. EDA AI에이전트전쟁. Optimus Gen3 자율보행. WIPO PCT 반도체+6.1% | 04-19 | 05-19 | high |
@@ -130,10 +129,10 @@ lint_mode: full
 | `space.md` | 우주경제 $468-626B, Starlink 10K기/1000만, RKLB $602M, 우주군 $26.3B+$13.8B | SpaceX F9 46회(4/15)+Starship V3 5월. Blue Origin NG-3 부스터 재사용. Amazon Kuiper 베타(4/8, 1500기). AST BlueBird 7 4/19 $1B계약. RKLB Neutron Q4. 한국 차세대발사체 5.6조. confidence medium->high 승격 | 04-19 | 05-19 | high |
 | `smr.md` | TerraPower NRC 건설허가(03/04), Kairos Hermes 2 착공(04/17), CFS SPARC first plasma 2026, 두산 수주 14.3조, 빅테크 원자력 DC MS 2GW/Google 500MW/Amazon 5GW/Meta 6.6GW | TerraPower 비경수로 최초 NRC 건설허가. Kairos Gen IV 최초 착공. RR-SMR UK 정식 계약(04/13). Helion 1.5억도. 체코 26조. confidence medium->high 승격 | 04-19 | 05-19 | high |
 | `telecom_next.md` | Starlink 1000만+/DTC 650기/T-Mobile DTC 300만+, Gartner 보안 $240B, PANW FY2026 $11.3B, CRWD ARR $5.25B | 3GPP Rel-20 Stage-2 2026.06/Rel-21 6G 2027.03. 5G Advanced 상용화. Starlink DTC 22국. AST BlueBird6 3배크기. Amazon Leo Globalstar $1.57B 인수. Gartner AI보안 2029 $160B. 인력부족 480만. confidence medium->high 승격 | 04-19 | 05-19 | high |
-| `banking_capital.md` | 4대 금융지주 합산 순이익 18.4조(+11.4%) | KB·신한·하나·우리 사상 최대 실적. PE/VC 환경 개선 기대 | 04-13 | 05-13 | medium |
+| `banking_capital.md` | **1Q26 한국 4대 금융 컨센 5.238조(+6.3% YoY, 역대 최대)** — KB 1.79조(역대최대)·신한 1.54조(+9.1%)·하나 1.13조·우리 0.78조. KB PBR 1.00 최초 돌파. BLK AUM $13.89T 사상최대 | JPM $16.5B(+13%)·C $24.6B(10년 최고, +42%)·WFC·BAC 모두 비트. GS/MS IB Renaissance(Advisory GS +89%/MS +74%). BLK Private credit $40B→$111B. BOK 2.50% 7연속 동결, 신현송 총재 4/15 취임(매파 완화). 가계부채 관리방안 4/1, 미 CRE $539B 만기, Basel III 최종안 2026 초 | 04-21 | 05-21 | high |
 | `advanced_materials.md` | MicroLED 2026E 0.56~6.37B, Synopsys FY2026 $9.56~9.66B, GaN 4.83B, CoWoS 4배 증설 | Wolfspeed 파산. Synopsys Ansys 통합 +66%. Cadence ChipStack AI. STMicro SiC 200mm 수율75%. 페로브스카이트 탠덤 34.85% | 04-19 | 05-19 | medium |
-| `battery.md` | 리튬 가격 동북아 $18,050/ton (Q1 2026) | 리튬 급등 후 조정. LFP 점유 확대 vs NCM 고성능 분화 | 04-13 | 05-13 | medium |
-| `infrastructure.md` | 글로벌 건설 17.26조달러(+4.9%), 한국 수주 231.2조 | 현대건설·삼성물산 SMR EPC 추진. 데이터센터 전력망 수혜 | 04-13 | 05-13 | medium |
+| `battery.md` | **리튬 $20,684/ton CIF(2026-04-01, +66.7% in 3M)** — 2026.01 $26,278 고점 후 조정. **K-3사 합산 OP -3.2조**(LGES +83%, SDI 적자전환 -1.42조, SK온 -0.49조), 가동률 50%초, 글로벌 점유 **15% 붕괴**(SNE Jan-Feb: CATL 42.1%/BYD 13.4%/LGES 8.7%/SK 3.8%/SDI 2.5%). **auto.md 정합 100%** | Ford BlueOval 해산 Tennessee 67GWh 단독. CATL 헝가리·인도네시아 가동, Qilin 2nd Gen. BYD Blade 2.0(3/5). LFP 2026E 65% 도달. 전고체 Toyota 2027~28 첫 EV. 코발트 $56,290(+67% YoY). AI DC ESS 2030 $6B | 04-21 | 05-21 | high |
+| `infrastructure.md` | **현대건설 Q1 OP 1,734억 + 홀텍 SMR EPC 4~5조**, 대우 18조/GS 17.8조/DL 12.5조, 삼성물산 EPC 10조+·평택 P5 착공. **변압기 납기 128~144주(DC 50%+ 지연)** — 효성중공업 13.85조·HD현대일렉 12.48조 수주잔고, Vertiv $15B·Eaton $12B | 우크라이나 재건 $523.6B·NEOM 재조정·중동 재건 $140B·CHIPS 팹 1.5조 달러. smr/capex/defense/banking_capital 정합 확인 (SMR 두산 14.3조·DC CAPEX $660-690B·방위력 19.97조·PF 금리 6.1%) | 04-21 | 05-21 | high |
 | `capex.md` | 하이퍼스케일러 5사 합산 $660-690B(2026E), 반도체 $200B, 에너지 $3.3T, 국방 $2.63T | 빅테크 AI CapEx 슈퍼사이클. TSMC $52-56B(+27-40%). 한국 장비투자 $29.7B 세계2위. 통신 -2% 정체. 배터리 한국3사 가동률 50% | 04-19 | 05-19 | high |
 | `robotics.md` | 휴머노이드 2030E $4~39B 편차. Figure $39B밸류·BotQ 12K→50K대/년. Tesla Optimus Gen3 H2 양산+Shanghai 1M/년. Agility Digit 상업수익(GXO 100K totes). Harmonic Drive 85%. Jetson Thor 2,070 FP4 TFLOPS | 삼성(레인보우 35%)·현대(BD 80% $880M)·LG(Atlas비전+Axium)·두산로보·클로봇 생태계. EU AI Act 고위험 2026.08 발효. 클로봇 Q3 매출 +38.9%/레인보우 +117.6% | 04-19 | 05-20 | high |
 | `crypto_bitcoin.md` | BTC $74,800~75,574, 시총 $1.51~1.54T, ATH $126,210(2025-10, -39%), Q1 -23.8%, 해시레이트 1.084 ZH/s, MSTR 780,897 BTC(3.9% 공급)·평균$75,577·전환사채$8.2B, IBIT AUM $70.6B, 스팟 BTC ETF Q1 유입 $18.7B, 스테이블코인 $320B+ | MSTR STRK $21B/STRF $2.1B/STRD 우선주 구조. Bitcoin Yield KPI = BTC-per-share. 채굴사 Q1 32K BTC 매도(BEP 이하). SEC Atkins Project Crypto·GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 진전 | 04-20 | 05-20 | high |
@@ -141,6 +140,7 @@ lint_mode: full
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
+> [v3.6 재정비 — 04-21]: ai/auto/semiconductor/bio_pharma/defense_industry 5건 오전 + banking_capital/battery/infrastructure 3건 오후 갱신. ai_anthropic.md ai.md 흡수 삭제. 루트 redirect 3종 포맷 통일.
 
 ---
 
@@ -206,16 +206,16 @@ lint_mode: full
 | `science_tech_2026.jsonl` | 330건 (quantum/space/smr subtag 포함) | kb-updater |
 | `bio_pharma_2026.jsonl` | 72건 (+38 @2026-04-21) | kb-updater |
 | `macro_2026.jsonl` | 436건 | kb-updater |
-| `banking_capital_2026.jsonl` | 38건 | kb-updater |
+| `banking_capital_2026.jsonl` | 70건 (+32 @2026-04-21) | kb-updater |
 | `advanced_materials_2026.jsonl` | 83건 | kb-updater |
-| `battery_2026.jsonl` | 40건 | kb-updater |
-| `infrastructure_2026.jsonl` | 23건 | kb-updater |
+| `battery_2026.jsonl` | 110건 (+70 @2026-04-21) | kb-updater |
+| `infrastructure_2026.jsonl` | 62건 (+39 @2026-04-21) | kb-updater |
 | `capex_2026.jsonl` | 20건 | kb-updater |
 | `telecom_next_2026.jsonl` | 62건 | kb-updater |
 | `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
 | `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
 | `defense_2026.jsonl` | 25건 (신규 생성 2026-04-21) | kb-updater |
-| `changelog_2026.jsonl` | 54건 (+4 @2026-04-21) | kb-updater |
+| `changelog_2026.jsonl` | 57건 (+3 @2026-04-21 오후: banking_capital/battery/infrastructure) | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -255,7 +255,7 @@ lint_mode: full
 |---------|-------|-------------|
 | 삼성전자, SK하이닉스, 한미반도체 | `industry/semiconductor.md` | `macro/geopolitics.md §1`, `macro/korea_economy.md §5-1` |
 | NVIDIA, AMD, 브로드컴 | `industry/ai.md §2` | `industry/semiconductor.md §3` |
-| Anthropic, OpenAI, Google AI | `industry/ai_anthropic.md`, `industry/ai.md §4` | `macro/geopolitics.md §1-2` |
+| Anthropic, OpenAI, Google AI, Meta AI | `industry/ai.md §4` (Anthropic 섹션 포함) | `macro/geopolitics.md §1-2` |
 | 현대차, 기아 | `industry/auto.md §3-2` | `macro/geopolitics.md §1-1` (관세) |
 | LG에너지솔루션, 삼성SDI, SK온 | `industry/auto.md §6` | `macro/korea_economy.md §5-3` |
 | 한화에어로(012450), 현대로템(064350), LIG넥스원(079550), KAI(047810) | `industry/defense_industry.md §2` | `macro/geopolitics.md §4, §5, §8`, `industry/space.md` |
@@ -276,6 +276,11 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-21 오후 | `industry/ai_anthropic.md` | **삭제** — ai.md 2026-04-21 갱신 시 Anthropic 핵심 변화(ARR $30B OpenAI 추월, $800B 오퍼, Claude 4.7, Pentagon 갈등)가 모두 흡수됨. 중복 해소. 상장 시 별도 종목 KB로 재생성 예정. _index.md 참조 4곳 정리(Industry 테이블 제거 / 섹터-종목 매핑 통합 / 에이전트 가이드 경로 수정) | -1 파일 |
+| 2026-04-21 오후 | `industry/banking_capital.md` | **전면 갱신** (8일 미갱신 해소, confidence medium→high). **한국 4대 금융 1Q26 컨센 5.238조(+6.3% YoY, 역대 최대)** — KB 1.79조·신한 1.54조·하나 1.13조·우리 0.78조. **KB PBR 1.00 최초 돌파**. JPM $16.5B(+13%)·C $24.6B(10년 최고)·WFC/BAC 비트. GS/MS IB Renaissance. BLK AUM $13.89T 사상최대·Private credit $111B. BOK 2.50% 7연속 동결, 신현송 총재 4/15 취임(매파 완화). 미 CRE $539B 만기, Basel III 최종안 2026 초 | +32 (38→70) |
+| 2026-04-21 오후 | `industry/battery.md` | **전면 갱신** (8일 미갱신 + auto.md 정합 해소, confidence medium→high). **auto.md와 K-3사 수치 100% 일치**: LGES 2025 매출 17.53조·OP +1.47조(+83%), SDI 매출 9.41조·OP -1.42조(적자전환), SK온 -4,905억, 3사 합산 -3.2조. **리튬 $20,684/ton CIF(2026-04-01, +66.7% in 3M)**. 2026.01 $26,278 고점 후 조정. 글로벌 점유 SNE Jan-Feb: CATL 42.1%/BYD 13.4%/LGES 8.7%/SK 3.8%/SDI 2.5%. Ford BlueOval 해산→Tennessee 67GWh 단독, CATL 헝가리·인도네시아 가동, BYD Blade 2.0. LFP 2026E 65%, 코발트 $56,290(+67% YoY) | +70 (40→110) |
+| 2026-04-21 오후 | `industry/infrastructure.md` | **전면 갱신** (8일 미갱신 해소, confidence medium→high). **현대건설 Q1 OP 1,734억 + 홀텍 SMR EPC 4~5조**, 대우 18조/GS 17.8조/DL 12.5조, 삼성물산 EPC 10조+·평택 P5 착공. **변압기 납기 128~144주(DC 50%+ 지연)** — 효성중공업 13.85조·HD현대일렉 12.48조. Vertiv $15B·Eaton $12B. 우크라이나 재건 $523.6B·NEOM 재조정·중동 재건 $140B·CHIPS 팹 1.5조. smr/capex/defense/banking_capital 전부 정합 확인 | +39 (23→62) |
+| 2026-04-21 오후 | `industry/auto.md` | **리튬 가격 수정** (battery.md 정합). $10,500→$20,684 (Q1 실제 가격), 2026 전망 $10-12K→$18-25K, 코발트 $24-26K→$56,290(+67% YoY), 리스크 #7 "약세 지속"→"급등 진행 중 ASP 래깅 부담" | 패치 |
 | 2026-04-21 | `industry/semiconductor.md` | **루트→industry/ 이동 + 전면 갱신**. NAND 전망 **역전**(기존 "약세" → +70~75% QoQ, 2026 사전 완판). HBM 순위 역전(Micron 21% > Samsung 17%, SK하이닉스 62% 유지). HBM4 SK 세계 최초 2025-09 양산. NVIDIA Blackwell Ultra GB300 2026.01 조기 출하. 하이퍼스케일러 CapEx $660-690B(기존 $420-480B 대폭 상향). MS Azure $80B 전력 병목. Huawei Ascend 910C 600K. 트럼프 Section 232 25% 칩 관세 | +36 (71→107) |
 | 2026-04-21 | `industry/ai.md` | **전면 갱신**. **Anthropic ARR $30B로 OpenAI $25B 최초 추월**, 밸류 $380B→$800B 오퍼, Claude 4.7/Code $2.5B run-rate. OpenAI $852B 펀딩(SoftBank 주도, MS 지분 $135B). Gemini 3.1+TPU v7 Ironwood GA. Meta Llama 5(4/8) 프론티어 오픈. NVIDIA GB300 60K랙 +129% YoY. EU AI Act 2026.08.02 고위험 D-103. Computer Use/Operator 실전. Upstage 유니콘·SKT AIDC +53%·카카오 톡비즈 | +26 (88→120) |
 | 2026-04-21 | `industry/auto.md` | **전면 갱신**. 한국 관세 15% 유지(2025.11 인하), 트럼프 2026.04 25% 재인상 압박. HMG 관세비용 현 7.4조(15%)→재인상 시 11조. HMGMA 포함 미국 현지 100만대 체제. Tesla Robotaxi 2026.04.18 Dallas·Houston 무인 개시. Apollo Go 주당 30만회·RT6 $30K. K-배터리 3사 가동률 50% 초반·점유 12%·합산 -3.2조 적자(삼성SDI 적자전환, LG엔솔 +83%). 전고체 상용화 지연 | +32 (46→78) |
@@ -305,7 +310,7 @@ lint_mode: full
 "오늘 시장 상황?" → market/daily_snapshot.md ✅ 2026-04-21 갱신
 "미중 관세 영향?" → macro/geopolitics.md §1-1
 "AI 투자 동향?" → industry/ai.md §3 CapEx
-"Anthropic 현황?" → industry/ai_anthropic.md §3 ARR, §6 IPO
+"Anthropic 현황?" → industry/ai.md §4 Anthropic (ai_anthropic.md는 2026-04-21 ai.md로 흡수 삭제)
 "한국 방산 투자?" → macro/geopolitics.md §4, §5, §8
 "지정학 리스크?" → macro/global_risk_factors.md §1 Top5
 "포트폴리오 구성?" → portfolio/model_portfolios.md ⚠️ 현재 미수집
