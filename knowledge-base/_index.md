@@ -34,12 +34,10 @@ lint_mode: full
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `geopolitics.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/geopolitics.md(04-19) 사용 확인. 루트 파일 redirect 표시 갱신 |
-| `global_risk_factors.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/global_risk_factors.md(04-19) 사용 확인 |
 | `market/daily_snapshot.md` | valid_until 04-23 — 04-21 갱신 완료 (D-2) | LOW | 04-23 재실행 |
 
-> [P1 해결완료 2026-04-21] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
-> [P1 구조] 루트 파일 중 redirect 파일(geopolitics.md, global_risk_factors.md, us_monetary_policy.md)은 구 데이터 잔존 상태이나 브리핑에는 macro/ SSOT 사용.
+> [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
+> [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
 > [P1 정상] industry/ 전체 고아 파일 없음 (18개 파일 모두 _index.md 등재 확인). defense_industry.md(04-21) + semiconductor.md(04-21) + bio_pharma.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 포함.
 > [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
 
