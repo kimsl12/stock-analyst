@@ -38,7 +38,7 @@ lint_mode: full
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
-> [P1 정상] industry/ 전체 고아 파일 없음 (18개 파일 모두 _index.md 등재 확인). defense_industry.md(04-21) + semiconductor.md(04-21) + bio_pharma.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 포함.
+> [P1 정상] industry/ 전체 고아 파일 없음 (**19개** 파일 모두 _index.md 등재 확인). luxury.md(04-21 야간) + defense_industry.md(04-21) + semiconductor.md(04-21) + bio_pharma.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 포함.
 > [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
 
 ---
@@ -137,10 +137,12 @@ lint_mode: full
 | `robotics.md` | 휴머노이드 2030E $4~39B 편차. Figure $39B밸류·BotQ 12K→50K대/년. Tesla Optimus Gen3 H2 양산+Shanghai 1M/년. Agility Digit 상업수익(GXO 100K totes). Harmonic Drive 85%. Jetson Thor 2,070 FP4 TFLOPS | 삼성(레인보우 35%)·현대(BD 80% $880M)·LG(Atlas비전+Axium)·두산로보·클로봇 생태계. EU AI Act 고위험 2026.08 발효. 클로봇 Q3 매출 +38.9%/레인보우 +117.6% | 04-19 | 05-20 | high |
 | `crypto_bitcoin.md` | BTC $74,800~75,574, 시총 $1.51~1.54T, ATH $126,210(2025-10, -39%), Q1 -23.8%, 해시레이트 1.084 ZH/s, MSTR 780,897 BTC(3.9% 공급)·평균$75,577·전환사채$8.2B, IBIT AUM $70.6B, 스팟 BTC ETF Q1 유입 $18.7B, 스테이블코인 $320B+ | MSTR STRK $21B/STRF $2.1B/STRD 우선주 구조. Bitcoin Yield KPI = BTC-per-share. 채굴사 Q1 32K BTC 매도(BEP 이하). SEC Atkins Project Crypto·GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 진전 | 04-20 | 05-20 | high |
 | `defense_industry.md` | **NDAA FY2026 $901B**(상원통과), 미 primes 백로그 합산 $1조+(LMT $194B/RTX $268B/NOC $95.7B/GD $118B/BA $545B+), K-방산 수출 2025 $15.4B→2026 $20B목표, 한국 방위력개선비 19.97조(+11.9%) | 한화에어로 Redback **XM30 Phase 2 탈락 확정**(Rheinmetall vs GDLS 2파이널 9월 결정). 현대로템 폴란드 K2 2차 9조+선수금 3조 조기수령. LIG넥스원 수주잔고 23.5조(중동 천궁-II 10.6조). KAI 2026 가이던스 매출 5.73조(+58%)·수주 10.44조(+63%) KF-21 인니 16대 MoU. Rheinmetall Lynx KF-41 €10B 확장. BAE Eurofighter GCAP까지 가득참. Dassault Rafale €46.6B 백로그 | 04-21 | 05-21 | high |
+| `luxury.md` | **2026 K자 양극화 고착**: Gucci 2025 -26%(로고 15년래 최대 축소)·Burberry -17% vs **Hermès +6% CER·Cucinelli +10%·Bottega Q1 +17.9%**. LVMH Q1 €19.1B(-6%)·F&L 유기 -2%. Trump 15% 관세 재부과 위협(EU €93B 보복), 2026-02 IEEPA 불법 판결. 한국 면세 따이공→FIT 전환 확정, 춘제 면세 +90% YoY | **한국 수혜 순위**: 1순위 현대백화점(069960, TP 110K), 2순위 호텔신라(008770, TP 58K, DF1 철수 OP +800억), 3순위 아모레(090430). 회피: LG생활건강(051900, 더후 부진 장기화). Quiet Luxury 승자(Hermès·Cucinelli·Bottega)·패자(Gucci·Burberry) 구조 고착 | 04-21 | 05-21 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
 > [v3.6 재정비 — 04-21]: ai/auto/semiconductor/bio_pharma/defense_industry 5건 오전 + banking_capital/battery/infrastructure 3건 오후 갱신. ai_anthropic.md ai.md 흡수 삭제. 루트 redirect 3종 포맷 통일.
+> [v3.7 신규 — 04-21 야간]: luxury.md 신규 (명품·면세 섹터 공백 해소). 총 industry KB 19개 체제.
 
 ---
 
@@ -215,7 +217,8 @@ lint_mode: full
 | `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
 | `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
 | `defense_2026.jsonl` | 25건 (신규 생성 2026-04-21) | kb-updater |
-| `changelog_2026.jsonl` | 57건 (+3 @2026-04-21 오후: banking_capital/battery/infrastructure) | kb-updater |
+| `luxury_2026.jsonl` | 52건 (신규 생성 2026-04-21 야간) | kb-updater |
+| `changelog_2026.jsonl` | 58건 (+1 @2026-04-21 야간: luxury 신규) | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
@@ -263,6 +266,9 @@ lint_mode: full
 | Rheinmetall, BAE Systems, Dassault, Leonardo | `industry/defense_industry.md §4` | `macro/geopolitics.md` (NATO 3%) |
 | 두산에너빌리티, 한수원 | `industry/smr.md §2, §4` | `industry/energy.md §7` |
 | 클로봇, 레인보우로보틱스, 두산로보틱스, Figure AI, Tesla Optimus, Agility, 1X | `industry/robotics.md §2, §4` | `industry/ai.md §2` (NVIDIA Jetson), `macro/korea_economy.md` (정부지원) |
+| LVMH, Kering, Hermès, Richemont, Burberry | `industry/luxury.md §2, §3` | `macro/us_economy.md §1` (소비), `macro/geopolitics.md §1-2` (중국/관세) |
+| 호텔신라(008770), 롯데쇼핑(023530), 현대백화점(069960), 신세계(004170), 신세계인터(031430), 아모레퍼시픽(090430), LG생활건강(051900) | `industry/luxury.md §4` | `macro/korea_economy.md §5-4` (내수·관광) |
+| Estée Lauder(EL), Tapestry(TPR), Capri(CPRI), Ralph Lauren(RL), 시세이도(4911.T) | `industry/luxury.md §3, §5` | `macro/us_economy.md §1` |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
 | Gold, TLT, IAU | `macro/global_risk_factors.md §4` | `macro/us_monetary_policy.md` |
 | BTC, ETH, SOL | `industry/crypto_bitcoin.md §1, §6` | `macro/global_risk_factors.md §2`, `market/daily_snapshot.md` |
@@ -276,6 +282,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-21 야간 | `industry/luxury.md` | **신규 생성** — 명품·프리미엄 소비·면세 섹터 KB 공백 해소. 301줄 22.7KB. 글로벌 4대(LVMH/Kering/Hermès/Richemont)+미국(EL/TPR/CPRI/RL/PVH)+한국 명품·백화점·면세(008770/023530/069960/004170/031430/090430/051900) 19종 커버. **K자 양극화 고착**: Gucci 2025 -26%·Burberry -17% vs Hermès +6%·Cucinelli +10%·Bottega Q1 +17.9%. LVMH Q1 €19.1B(-6%). Trump 15% 관세 재부과 위협 + 2026-02 IEEPA 불법 판결 + EU €93B 보복 준비. 한국 면세 따이공→FIT 전환 확정·춘제 +90% YoY. 수혜: 현대백화점(TP 110K)·호텔신라(DF1 철수 OP +800억) / 회피: LG생활건강(더후 부진). Quiet Luxury 승자·패자 분화 | +52 |
 | 2026-04-21 오후 | `industry/ai_anthropic.md` | **삭제** — ai.md 2026-04-21 갱신 시 Anthropic 핵심 변화(ARR $30B OpenAI 추월, $800B 오퍼, Claude 4.7, Pentagon 갈등)가 모두 흡수됨. 중복 해소. 상장 시 별도 종목 KB로 재생성 예정. _index.md 참조 4곳 정리(Industry 테이블 제거 / 섹터-종목 매핑 통합 / 에이전트 가이드 경로 수정) | -1 파일 |
 | 2026-04-21 오후 | `industry/banking_capital.md` | **전면 갱신** (8일 미갱신 해소, confidence medium→high). **한국 4대 금융 1Q26 컨센 5.238조(+6.3% YoY, 역대 최대)** — KB 1.79조·신한 1.54조·하나 1.13조·우리 0.78조. **KB PBR 1.00 최초 돌파**. JPM $16.5B(+13%)·C $24.6B(10년 최고)·WFC/BAC 비트. GS/MS IB Renaissance. BLK AUM $13.89T 사상최대·Private credit $111B. BOK 2.50% 7연속 동결, 신현송 총재 4/15 취임(매파 완화). 미 CRE $539B 만기, Basel III 최종안 2026 초 | +32 (38→70) |
 | 2026-04-21 오후 | `industry/battery.md` | **전면 갱신** (8일 미갱신 + auto.md 정합 해소, confidence medium→high). **auto.md와 K-3사 수치 100% 일치**: LGES 2025 매출 17.53조·OP +1.47조(+83%), SDI 매출 9.41조·OP -1.42조(적자전환), SK온 -4,905억, 3사 합산 -3.2조. **리튬 $20,684/ton CIF(2026-04-01, +66.7% in 3M)**. 2026.01 $26,278 고점 후 조정. 글로벌 점유 SNE Jan-Feb: CATL 42.1%/BYD 13.4%/LGES 8.7%/SK 3.8%/SDI 2.5%. Ford BlueOval 해산→Tennessee 67GWh 단독, CATL 헝가리·인도네시아 가동, BYD Blade 2.0. LFP 2026E 65%, 코발트 $56,290(+67% YoY) | +70 (40→110) |
@@ -317,6 +324,8 @@ lint_mode: full
 "SMR/원자력 투자?" → industry/smr.md §2 기업현황, §5 빅테크 DC
 "두산에너빌리티?" → industry/smr.md §4 한국 관련
 "설비투자/CapEx?" → industry/capex.md §1 빅테크, §2 반도체, §7 한국
+"명품·면세 투자?" → industry/luxury.md §2 글로벌 4대, §4 한국 면세 (008770/069960 수혜)
+"중국 소비 둔화 영향?" → industry/luxury.md §5 중국 (LVMH/Kering 타격 vs Hermès 방어), §6 메가트렌드
 ```
 
 > **에이전트 원칙:** 이 인덱스로 대상 파일 특정 → 해당 파일만 Read → 분석 완료 후 인사이트를 "최근 핵심 인사이트" 섹션에 1줄 append (briefing-lead만).
