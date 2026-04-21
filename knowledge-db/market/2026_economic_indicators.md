@@ -24,3 +24,7 @@ type: time_series
 | 2026-04-16 | CN | 중국 3월 PMI | 50.3 | 51.2 | Beat +0.9pt | 제조업 개선 확인 | [Trading Economics, 2026-04-16] |
 | 2026-04-17 | GEO | 호르무즈 해협 완전 개방 선언 | — | 개방 | 시장 급등 트리거 | WTI -8%+, S&P +1.2%, NASDAQ +1.5%. 에너지 인플레 완화 기대 | [Reuters / AP, 2026-04-17] |
 | 2026-04-18 | US | GDPNow Q1 2026 (최신 추정) | — | +1.3% | — | 침체 경계. 4/25 Advance GDP 분기점 | [Atlanta Fed GDPNow, 2026-04-19] |
+| 2026-04-21 | US | 소매판매 3월 MoM (Advance) | +0.4% | **+0.7%** | **Beat +0.3%p** | S&P 소폭 지지. 소비심리 47.6 vs 실지출 괴리 3개월째 | [US Census Bureau / NRF, 2026-04-21] |
+| 2026-04-21 | US | Core 소매판매 3월 (차+주유소 제외) | — | +0.4% MoM / +7.05% YoY | Beat | 소비 기반 확인 | [Census Bureau, 2026-04-21] |
+| 2026-04-21 | US | Netflix Q1 2026 Revenue | $12.18B | $12.25B (+16% YoY) | Beat (+0.6%) | AH -9% (Q2 가이던스 약세. WBD $2.8B 일회성 포함 주의) | [Variety / CNBC / Investing.com, 2026-04-21] |
+| 2026-04-21 | US | Netflix Q1 2026 EPS | ~$0.76 | $1.23 | Beat (일회성 포함) | AH -9%. "Beat+Guidance Miss" 패턴 부상 | [Investing.com, 2026-04-21] |

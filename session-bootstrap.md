@@ -11,8 +11,8 @@
 | 항목 | 값 |
 |------|-----|
 | 마지막 종목분석 | 329180 HD현대중공업 - 2026-04-20, Buy 76.2점, 목표 620,000원, 손절 474,392원 |
-| 마지막 브리핑 | 모닝브리핑 - 2026-04-20 |
-| 마지막 KB 업데이트 | crypto_bitcoin - 2026-04-20 (신규) |
+| 마지막 브리핑 | 이브닝브리핑 - 2026-04-21 |
+| 마지막 KB 업데이트 | market/ 4종 재수집 + defense_industry 신규 - 2026-04-21 |
 | 진행 중 작업 | 없음 (clean state) |
 
 ## analysis/ 유효 파일 (최근 30일)
@@ -39,16 +39,16 @@
 | SNDK_Sandisk | 2026-04-13 | 69.0 Buy | 유효 |
 | 034020_두산에너빌리티 | 2026-04-13 | 68.0 Buy | 유효 |
 
-## 현재 KB 상태 요약
+## 현재 KB 상태 요약 (2026-04-21 기준)
 
-- **P0 항목**: market/ 전체 FAILED (재수집 필요), us_monetary 중복 해결 예정
-- **정상 Industry KB**: 12개 (semiconductor 부재 - advanced_materials, ai 대체 사용)
-- **robotics.md 신규 확보** (2026-04-19, valid_until 2026-05-20, confidence high)
-- **crypto_bitcoin.md 신규 확보** (2026-04-20, valid_until 2026-05-20, confidence high)
-- **정상 Macro KB**: 4개 (us_economy, korea_economy, geopolitics, global_risk_factors)
-- **미수집 Macro**: 3개 (political_cycle, tech_breakthrough, supply_chain)
-- **방산(defense) 전용 KB 부재 확인** (2026-04-20 012450 분석 시) — space.md + geopolitics.md 간접 활용. 향후 kb-updater에서 defense_industry.md 신규 확보 권장
-- **마지막 KB 갱신**: infrastructure 2026-04-13
+- **P0 항목**: `portfolio/model_portfolios.md` 전 항목 미수집 (confidence:low, 2026-04-07 이후 미갱신 14일) — `/모델포트폴리오` 실행 필요
+- **Market KB**: **5개 전부 최신** (daily_snapshot/economic_calendar/correlation_matrix/surprise_index: 2026-04-21 / guru_positions: 2026-04-18, 13F 분기 단위라 정상)
+- **Macro KB**: **7개 전부 확보** (us_economy/korea_economy/geopolitics/global_risk_factors/political_cycle/tech_breakthrough/supply_chain/us_monetary_policy)
+- **Industry KB**: **16개 확보** (advanced_materials/ai/ai_anthropic/auto/banking_capital/battery/capex/crypto_bitcoin/energy/infrastructure/quantum/robotics/science_tech/smr/space/telecom_next). 2026-04-21 **defense_industry 신규 추가**
+- **robotics.md** (2026-04-19, valid_until 2026-05-20, confidence high)
+- **crypto_bitcoin.md** (2026-04-20, valid_until 2026-05-20, confidence high)
+- **defense_industry.md 신규 확보** (2026-04-21, valid_until 2026-05-21, confidence high) — 012450 분석 시 공백 해소
+- **마지막 KB 갱신**: market/ + defense_industry 2026-04-21
 
 ## 파이프라인 버전
 
@@ -56,12 +56,12 @@
 - KB 업데이트: v3.4 (미니사이클 + 마지막 사이클 통합 + git 리드 위임)
 - fetch_price.py: 활성 (pykrx + yfinance)
 
-## ⚠️ 환경 상태 (2026-04-20)
+## ⚠️ 환경 상태 (2026-04-21)
 
-- `.git` HEAD 복구 완료 (HEAD=6ae9cb3, origin/main 동기화 정상)
+- **CRLF 재발 차단 완료**: 2026-04-21 커밋 `6bd498c` — `.gitattributes`(eol=lf) 도입 + `core.autocrlf=false` 고정 + 기존 인덱스 CRLF 오염 97개 파일 정규화. 진단 근거: 워킹트리 422 파일 M 표시, `git diff -w --shortstat` 0바이트(순수 CRLF 변환).
 - GitHub Actions 계정 단위 비활성화 상태(GitHub Support 티켓 #4287825 심사 중) — Pages 자동 배포 중단, push는 정상
-- **Agent 도구(sub-agent 호출권) 환경별 가변**: 본 세션(012450)에서는 Task 도구 부재로 리드 직접 수행 모드 적용
-- TQQQ 세션은 `af0de677659b6fc0f` 중단 재개 완료
+- **Agent 도구(sub-agent 호출권) 복구**: 2026-04-21 본 세션에서 Task 도구 정상 동작 확인 (market-data-collector + kb-updater 병렬 실행 성공)
+- origin/main 대비 미푸시 커밋 존재 (6bd498c 등) — 수동 push 필요 시 `git push`
 
 ## 012450 한화에어로스페이스 분석 핵심 결과
 
@@ -70,9 +70,11 @@
 - 손절가 ₩1,269,142 (-10.94%, 2x ATR)
 - 현재가 ₩1,425,000, 시총 73.2조원, 1Y +92.7%
 - 핵심 투자포인트: K9 세계 1위(55%) + Redback 호주 승리 + OPM 20%+ + 미국 진출 옵션
-- 단기 촉매: 4/28 Q1 실적, 5~6월 UAE+폴란드3차, 9월 XM30 Phase 2
+- 단기 촉매: 4/28 Q1 실적, 5~6월 UAE+폴란드3차, 9월 XM30 Phase 2 (아래 ⚠️ 참조)
 - 리스크: 우크라 종전(30%), 미 XM30 탈락(45%), 부채비율 220%
 - 컨센서스 평균 목표가 ₩1,858,000 (+30.4%), BUY 6/6
+
+> ⚠️ **[2026-04-21 리스크 재평가 필요]** — defense_industry KB 확보 과정에서 **한화에어로 Redback의 미 XM30 Phase 2 탈락이 100% 확정**으로 확인됨(원 분석 "45% 리스크"가 아님). 9월 최종 결정은 Rheinmetall KF-41 Lynx vs GDLS Griffin III 2파이널. 대체 미국 진출 경로: 캐나다 IFV / 루마니아 €5B+ 패키지 / 미 해병 AAV 후속. 스코어 81.1 재산정 시 Opportunity 항목 감점 필요. 다음 012450 재분석 시 반영.
 
 ## TQQQ ETF 분석 핵심 결과
 

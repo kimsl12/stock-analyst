@@ -1,8 +1,8 @@
 ---
-updated: 2026-04-19
+updated: 2026-04-21
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-04-19
+lint_last_run: 2026-04-21
 lint_mode: full
 ---
 
@@ -17,20 +17,18 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-19 (wiki-linter full mode)**
+> **최종 갱신: 2026-04-21 (market-data-collector)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
 | `portfolio/model_portfolios.md` | [P0] confidence:low — 전 항목 *(미수집)* N/A. 빈 테이블 | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
-| `market/daily_snapshot.md` | SUCCESS (04-19) valid_until 04-21 — 월요일(04-21) 미국장 종가 후 즉시 만료 | A-1, B-2, B-3 | 04-21(월) 종가 후 갱신 (`/시장데이터수집`) |
 
 > [P0 실질 긴급] portfolio/model_portfolios.md: confidence:low + 전 항목 미수집 상태 지속 (2026-04-07 이후 미갱신 12일). `/모델포트폴리오` 실행 필요.
-> [P0 주의] market/daily_snapshot.md: valid_until 04-21(월). 04-21 미국장 종료 후 브리핑 전 반드시 갱신.
 > [INFO] 나머지 Market/Macro/Industry KB 전체 P1 이하 — 실행 가능 상태.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-04-19 full)
+## P1 — 이번 주 조치 (탐지: 2026-04-21 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
@@ -40,14 +38,14 @@ lint_mode: full
 | `semiconductor.md` (루트) | industry/semiconductor.md 미존재 — 루트 파일만 있음. index는 둘 다 언급. | MEDIUM | 루트→industry/ 이동 또는 industry/ 신규 생성 결정 필요 |
 | `geopolitics.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/geopolitics.md(04-19) 사용 확인. 루트 파일 redirect 표시 갱신 |
 | `global_risk_factors.md` (루트) | valid_until 05-07 (갱신일 04-07) — redirect 파일이나 구 데이터 잔존 | LOW | macro/global_risk_factors.md(04-19) 사용 확인 |
-| `market/daily_snapshot.md` | valid_until 04-21 — 7일 이내 만료 (D-2) | MEDIUM | 04-21 갱신 계획 수립 |
+| `market/daily_snapshot.md` | valid_until 04-23 — 04-21 갱신 완료 (D-2) | LOW | 04-23 재실행 |
 | `industry/ai.md` | valid_until 05-07 (갱신일 04-07) — 12일 미갱신. Anthropic 상황 변화 반영 필요 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
 | `industry/auto.md` | valid_until 05-07 (갱신일 04-07) — 12일 미갱신. 관세 25% 영향 업데이트 필요 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
 | `semiconductor.md` (루트) | valid_until 05-07 (갱신일 04-07) — 12일 미갱신 | MEDIUM | 다음 kb-updater 사이클에 갱신 요청 |
 
 > [P1 고아파일] industry/bio_pharma.md — 파일 없음 확인. index에 등재된 내용(GLP-1 시장 700~800억달러, 삼성바이오 4공장)만 존재.
 > [P1 구조] 루트 파일 중 redirect 파일(geopolitics.md, global_risk_factors.md, us_monetary_policy.md)은 구 데이터 잔존 상태이나 브리핑에는 macro/ SSOT 사용.
-> [P1 정상] industry/ 전체 고아 파일 없음 (15개 파일 모두 _index.md 등재 확인).
+> [P1 정상] industry/ 전체 고아 파일 없음 (17개 파일 모두 _index.md 등재 확인). defense_industry.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 신규 포함.
 > [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
 
 ---
@@ -85,7 +83,7 @@ lint_mode: full
 | 2026-04-16 | 모닝브리핑 | S&P 7,022·NASDAQ 24,016 동시 신고가 — 그러나 Dow -0.15% 홀로 약세 + 10Y 4.28% 반등 + VIX-MOVE 괴리 = **breadth 쇠퇴 4중 시그널**. 2000Q1·2007Q3·2021Q4 유사 "후반 사이클 정점" 패턴 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-16 | 모닝브리핑 | Gold $4,844 신고가 근접 유지 (3일 연속) — DXY 98.01 3년최저 갱신 + 리스크온 랠리에도 환매되지 않는 탈달러 수요. Dalio/Buffett현금/Druckenmiller 3인 "Gold/탈달러 컨버전스" 강화 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-16 | 모닝브리핑 | 10Y 4.28% 반등 + S&P 신고가 동시 발생 = 리스크-프리미엄 수수께끼 재점화. 5/13 Core CPI + 4/20주 Q1 실적 **더블 체크포인트** 3~4주 시한. Core 인플레는 여전 | `macro/us_economy.md §3` | 진행중 |
-| 2026-04-16 | 이브닝브리핑 | VIX 경고 승격 🟡→🔴 — VIX 18.17 vs 미시간 소비심리 47.6 역대급 괴리 + Dow 단독 약세 이브닝까지 지속 = 2018.02 VIXpocalypse 유사 구도. 예상 시점 2~4주→**2~3주 추가 단축**. 숏볼 극단 집중으로 서프라이즈 1건에 VIX 25~30 점프 갭 반등 리스크 | `market/correlation_matrix.md` (FAILED) + `global_risk_factors.md §2` | 진행중 |
+| 2026-04-16 | 이브닝브리핑 | VIX 경고 승격 🟡→🔴 — VIX 18.17 vs 미시간 소비심리 47.6 역대급 괴리 + Dow 단독 약세 이브닝까지 지속 = 2018.02 VIXpocalypse 유사 구도. 예상 시점 2~4주→**2~3주 추가 단축**. 숏볼 극단 집중으로 서프라이즈 1건에 VIX 25~30 점프 갭 반등 리스크 | `market/correlation_matrix.md` + `global_risk_factors.md §2` | 진행중 |
 | 2026-04-16 | 이브닝브리핑 | 트리플 체크포인트 2~3주 집중 — JPM/BAC Q1(4/20) + 파키스탄 휴전 만료(4/21) + 4월 CPI(5/13). 시나리오 B(조정) 확률 모닝 40%→이브닝 **45%로 추가 상향**. 1건 실패 -3~7% 조정, 2건 실패 -10~15% 민감 | `macro/us_economy.md §3, macro/geopolitics.md §2-1` | 진행중 |
 | 2026-04-16 | 이브닝브리핑 | Gold-DXY 역상관 **구조화 완성** (3일 연속) — Dalio + Buffett 현금 $347B + Druckenmiller 추정 "탈달러 3인 컨버전스 4일 연속 강화". Gold $4,844 + DXY 98.01 유지. BTC는 정체 2일째로 "탈달러 수요 Gold로만 쏠림" 재확인 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-17 | 모닝브리핑 | Dow +0.24% 반등 — 어제 "단독 약세 4중 시그널" 1건 **1일 만에 리버스**. 3대 지수 동시 신고가. 그러나 VIX 17.94(18선 붕괴, 4단계 극단) + 10Y 4.31%(4일 연속 반등) + Gold $4,813(첫 조정) + USD/KRW 1,481(재진입) **4건 대체 부상** — 경계 근거가 이동했을 뿐 총량은 증가 | `market/daily_snapshot.md` | 진행중 |
@@ -146,6 +144,7 @@ lint_mode: full
 | `capex.md` | 하이퍼스케일러 5사 합산 $660-690B(2026E), 반도체 $200B, 에너지 $3.3T, 국방 $2.63T | 빅테크 AI CapEx 슈퍼사이클. TSMC $52-56B(+27-40%). 한국 장비투자 $29.7B 세계2위. 통신 -2% 정체. 배터리 한국3사 가동률 50% | 04-19 | 05-19 | high |
 | `robotics.md` | 휴머노이드 2030E $4~39B 편차. Figure $39B밸류·BotQ 12K→50K대/년. Tesla Optimus Gen3 H2 양산+Shanghai 1M/년. Agility Digit 상업수익(GXO 100K totes). Harmonic Drive 85%. Jetson Thor 2,070 FP4 TFLOPS | 삼성(레인보우 35%)·현대(BD 80% $880M)·LG(Atlas비전+Axium)·두산로보·클로봇 생태계. EU AI Act 고위험 2026.08 발효. 클로봇 Q3 매출 +38.9%/레인보우 +117.6% | 04-19 | 05-20 | high |
 | `crypto_bitcoin.md` | BTC $74,800~75,574, 시총 $1.51~1.54T, ATH $126,210(2025-10, -39%), Q1 -23.8%, 해시레이트 1.084 ZH/s, MSTR 780,897 BTC(3.9% 공급)·평균$75,577·전환사채$8.2B, IBIT AUM $70.6B, 스팟 BTC ETF Q1 유입 $18.7B, 스테이블코인 $320B+ | MSTR STRK $21B/STRF $2.1B/STRD 우선주 구조. Bitcoin Yield KPI = BTC-per-share. 채굴사 Q1 32K BTC 매도(BEP 이하). SEC Atkins Project Crypto·GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 진전 | 04-20 | 05-20 | high |
+| `defense_industry.md` | **NDAA FY2026 $901B**(상원통과), 미 primes 백로그 합산 $1조+(LMT $194B/RTX $268B/NOC $95.7B/GD $118B/BA $545B+), K-방산 수출 2025 $15.4B→2026 $20B목표, 한국 방위력개선비 19.97조(+11.9%) | 한화에어로 Redback **XM30 Phase 2 탈락 확정**(Rheinmetall vs GDLS 2파이널 9월 결정). 현대로템 폴란드 K2 2차 9조+선수금 3조 조기수령. LIG넥스원 수주잔고 23.5조(중동 천궁-II 10.6조). KAI 2026 가이던스 매출 5.73조(+58%)·수주 10.44조(+63%) KF-21 인니 16대 MoU. Rheinmetall Lynx KF-41 €10B 확장. BAE Eurofighter GCAP까지 가득참. Dassault Rafale €46.6B 백로그 | 04-21 | 05-21 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
@@ -171,10 +170,10 @@ lint_mode: full
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (04-18) valid_until 04-19 confidence:medium | 매 거래일 | A-1, B-2, B-3 | 내일 재실행 |
-| `economic_calendar.md` | ✅ SUCCESS (04-17) confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
-| `surprise_index.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 매일 | B-4 | 정량 시 `/시장데이터수집` |
-| `correlation_matrix.md` | ⚠️ QUALITATIVE_RECOVERY (04-17) | 주 1회 | B-5 | 정량 시 `/시장데이터수집` |
+| `daily_snapshot.md` | ✅ SUCCESS (04-21) valid_until 04-23 confidence:medium-high | 매 거래일 | A-1, B-2, B-3 | 04-23 재실행 |
+| `economic_calendar.md` | ✅ SUCCESS (04-21) valid_until 04-28 confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
+| `surprise_index.md` | ✅ SUCCESS (04-21) valid_until 04-28 | 매일 | B-4 | — |
+| `correlation_matrix.md` | ✅ SUCCESS (04-21) valid_until 04-28 | 주 1회 | B-5 | — |
 | `guru_positions.md` | ✅ SUCCESS (04-18) valid_until 07-18 confidence:high | 분기 1회 | A-5, B-7, C-4 | Q1 2026은 05-15 이후 |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
@@ -222,6 +221,7 @@ lint_mode: full
 | `telecom_next_2026.jsonl` | 62건 | kb-updater |
 | `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
 | `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
+| `defense_2026.jsonl` | 25건 (신규 생성 2026-04-21) | kb-updater |
 | `changelog_2026.jsonl` | 50건 | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
@@ -247,7 +247,7 @@ lint_mode: full
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
 | 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-19 | SSOT 일치 |
-| VIX | `global_risk_factors.md`: 17.48 (04-19) | `us_economy.md §9`: 17.94 (04-17) | 04-19 | ✅ 일치 (global_risk 최신, 시점차 -0.46, 허용범위) |
+| VIX | `global_risk_factors.md`: 17.48 (04-19) | `market/daily_snapshot.md`: 18.98 (04-21) | 04-21 | ✅ 일치 (daily_snapshot 최신, 시점차 +1.50, 허용범위 — 거짓안정 해제 반영) |
 | DXY | `global_risk_factors.md`: 97.70 (04-19) | `us_economy.md §9`: 97.70 (04-17) | 04-19 | ✅ 일치 (동일 수치) |
 | 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,460원 (04-19) | 04-19 | ✅ 일치 (global_risk 최신, 시점차 -15원, 허용범위 2%) |
 | S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `market/daily_snapshot.md`: 04-19 기준 | 04-19 | ✅ 일치 (daily_snapshot 최신) |
@@ -265,7 +265,9 @@ lint_mode: full
 | Anthropic, OpenAI, Google AI | `industry/ai_anthropic.md`, `industry/ai.md §4` | `macro/geopolitics.md §1-2` |
 | 현대차, 기아 | `industry/auto.md §3-2` | `macro/geopolitics.md §1-1` (관세) |
 | LG에너지솔루션, 삼성SDI, SK온 | `industry/auto.md §6` | `macro/korea_economy.md §5-3` |
-| 한화에어로, LIG넥스원, KAI | `macro/geopolitics.md §4, §5, §8` | `macro/political_cycle.md` (미수집) |
+| 한화에어로(012450), 현대로템(064350), LIG넥스원(079550), KAI(047810) | `industry/defense_industry.md §2` | `macro/geopolitics.md §4, §5, §8`, `industry/space.md` |
+| LMT, RTX, NOC, GD, BA, KTOS | `industry/defense_industry.md §3` | `macro/political_cycle.md`, `macro/geopolitics.md` |
+| Rheinmetall, BAE Systems, Dassault, Leonardo | `industry/defense_industry.md §4` | `macro/geopolitics.md` (NATO 3%) |
 | 두산에너빌리티, 한수원 | `industry/smr.md §2, §4` | `industry/energy.md §7` |
 | 클로봇, 레인보우로보틱스, 두산로보틱스, Figure AI, Tesla Optimus, Agility, 1X | `industry/robotics.md §2, §4` | `industry/ai.md §2` (NVIDIA Jetson), `macro/korea_economy.md` (정부지원) |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
@@ -281,6 +283,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-21 | `industry/defense_industry.md` | **신규 생성** -- 국방·방산 산업 KB (012450 한화에어로 등 K-방산 4사 + 미 primes 6사 + EU 3사 종목분석 지원). K-방산 수출 2025 $15.4B→2026 $20B 목표. 미 primes 백로그 합산 $1조+. NDAA FY2026 $901B(상원 12/17). 한국 방위력개선비 19.97조(+11.9%). 한화 Redback **XM30 Phase 2 탈락 확정**(원 요청 45%가 아닌 100%, Rheinmetall vs GDLS 2파이널). 현대로템 폴란드 K2 2차 9조+선수금 3조 조기수령. LIG넥스원 중동 천궁-II 10.6조(UAE 2.6+사우디 4.25+이라크 3.7). KAI 2026 가이던스 매출 5.73조(+58%)·수주 10.44조(+63%) KF-21 인니 16대 MoU. Rheinmetall €12-13B 2026 매출·155mm 리투아니아 2026중반·Lynx KF-41 €10B 확장. BAE £84B 백로그 Eurofighter GCAP까지. Dassault Rafale €46.6B·2026 28대. ITA/XAR/PPA 연환산 16.66/18.33/18.20%. 우크라 종전 30%·한화 부채 220% 리스크 | +25 |
 | 2026-04-20 | `industry/crypto_bitcoin.md` | **신규 생성** -- 크립토/비트코인 섹터 KB. MSTR 종목분석 지원. BTC $74,800·시총 $1.51T·ATH $126,210(2025-10, -39%)·Q1 -23.8%(2018 이후 최악). 네트워크 해시레이트 1.084 ZH/s, 난이도 135.59T. MSTR 780,897 BTC(공급 3.9%)·평균$75,577·총코스트 $59B·전환사채 $8.2B(쿠폰 0.421%)·Q1 미실현 -$14.46B. 우선주 4계층(STRK $21B ATM 8%/STRF $2.1B 10%/STRD 비누적). Bitcoin Yield KPI(BTC-per-share). BlackRock IBIT ~782K BTC·AUM $70.6B·일거래 $16~18B(Binance 경쟁). Q1 스팟 BTC ETF 유입 $18.7B, 총 AUM $128B+. 공개채굴사 Q1 32K BTC 매도($2.4B), 평균 생산비 $80K(BEP 이하). ETH $2,361 +8.6%, SOL $93, DeFi TVL $95.4B(ETH 68%). 스테이블코인 $320B+(USDT $185B/USDC $79B). SEC Atkins Project Crypto, SEC-CFTC MOU 3/11, GENIUS Act(2025.07). EU MiCA 2026-07-01 전면집행. 한국 디지털자산기본법 4/8 국회 진전. LTH 78%+ 역사최고 | +48 |
 | 2026-04-19 | `industry/robotics.md` | **신규 생성** -- 로봇 섹터 KB. Physical AI(Figure $39B·BotQ 12K대, Tesla Optimus Gen3 Shanghai 1M/년, Agility Digit GXO 100K totes 상업수익, 1X EQT 10K대, Unitree 2026 물량 완판). 시장 $4~39B 편차(2030). 4강 FANUC 17%·ABB 13%·Yaskawa 12%·KUKA Top5. 한국: 클로봇(466100) 삼성(레인보우35%)·현대(BD $880M)·LG Atlas비전+Axium·두산로보. Harmonic Drive 85% 과점. Jetson Thor 2,070 TFLOPS. 4차 지능형로봇 기본계획 2024-28 3조원·100만대 | +29 |
 | 2026-04-19 | `industry/science_tech.md` | **주간 갱신** -- 한국 정부R&D 35.3조 확정(+21.4%). 경구 Wegovy FDA승인(월$149)+Lilly orforglipron Q2. IonQ 포토닉 인터커넥트(양자네트워킹 최초). 빅테크 CapEx $7000억(+60%). PANW-CyberArk $250억. Synopsys AgentEngineer vs Cadence ChipStack AI 에이전트전쟁. Optimus Gen3 자율보행+상하이 양산. WIPO PCT 2025 한국 28년 연속 성장. 반도체+디지털통신 +6.1% 최고 성장 | +35 |
