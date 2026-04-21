@@ -63,13 +63,23 @@ Step -2 통과 직후, `TodoWrite` 로 아래 6개 Phase 를 todo 로 등록한�
 모든 작업(종목분석, KB업데이트 등) 완료 + git push 후, session-bootstrap.md를 Edit하여
 "마지막 작업" 섹션과 "analysis/ 유효 파일" 목록을 최신화한다.
 
-**일회성 산출물 자체 정리 [v3.7]:**
-Phase 3 git commit 직후, 본 세션에서 생성한 아래 파일을 **커밋에 포함되지 않았다면 삭제**한다.
-- `generate_{티커}.py` (report_template 호출용 일회성 스크립트) — 대안: `scripts/generated/` 서브폴더로 이동
+**일회성 산출물 자체 정리 [v3.8]:**
+Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커밋 여부와 관계없이 무조건 삭제**한다.
+- `generate_{티커}.py` (report_template 호출용 일회성 스크립트)
 - `{티커}_report_data.json`, `{티커}_part*.json`, `{티커}_basic.json` (HTML 생성 중간 데이터)
 - `scripts/_tmp_*.txt` (서브에이전트 중간 산출물)
+- `analysis/{티커}/_report_data.json`, `analysis/{티커}/report_data_part*.json` 등 분석 폴더 내 임시 데이터
 
-정리 원칙: "분석 1회당 남는 공식 산출물은 `analysis/{티커}/*.md` + `reports/{티커}_*.html` 2종뿐이어야 한다."
+삭제 방법:
+- 미커밋 파일: `rm {파일}`
+- 기커밋 파일: `git rm {파일}` (정리 안 된 레거시 발견 시)
+
+이중 안전망 ([.gitignore](../../.gitignore) 추가됨, 2026-04-21):
+- 루트 한정 패턴 `/generate_*.py`, `/*_report_data.json`, `/*_part*.json`, `/*_basic.json` 이 git 추적 차단
+- 실수로 스테이징해도 git이 자동 무시 — 2026-04 이전 레거시 파일 누적 재발 불가
+- 단, analysis/{티커}/ 하위 임시파일은 .gitignore로 막을 수 없으므로 에이전트가 명시적으로 삭제해야 함 (예외 차단 규칙 때문)
+
+정리 원칙: "분석 1회당 남는 공식 산출물은 `analysis/{티커}/*.md` (+선택적 data.json) + `reports/{티커}_*.html` 2종뿐이어야 한다."
 
 ---
 
