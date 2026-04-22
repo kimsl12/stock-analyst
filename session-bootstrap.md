@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | **IWM iShares Russell 2000 ETF - 2026-04-22**, Buy 80.9 (B+등급 Strong Buy 경계, ETF 소형주 2000개, Mag7 0%, Zombie 40% 금리인하 레버리지 4x, AUM $77.2B), 목표 $305 (+11.1%), 손절 $265.16 (2xATR, -3.4%), R:R 3.26 — 관세 리쇼어링 순수 플레이 + 역사적 할인 -25.7% / 사용자 중립형 5% 보완 (RSP 77 우선) |
+| 마지막 종목분석 | **XOM ExxonMobil - 2026-04-22**, Strong Buy 86.2 (A-등급, 배당주+가치주 복합, 세계 최대 Super-Major, Guyana 45% + Permian 1위 Wide Moat, 배당 Aristocrat 41년 + 자사주 $20B → 환원율 92%, Net Debt/EBITDA 0.24 최강 재무력), 목표 $170 (+14.6%), 손절 $137.05 (2×ATR, -7.7%), R:R 4.03 — 호르무즈 시나리오 6M 기대값 +11.5%p / 사용자 VOO 91.5% 편중 완화 5% 편입 권고 (XOM 3% + XLE 2%) |
 | 마지막 브리핑 | **리밸런싱 (사용자 포트) - 2026-04-21** (VOO 91.5% → 35% 재편안) |
 | 마지막 KB 업데이트 | **semiconductor(루트→industry/ 이동+전면갱신) + ai + auto + bio_pharma(신규) 4건 병렬 - 2026-04-21** |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,6 +19,7 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| **XOM_ExxonMobil** | **2026-04-22** | **86.2 Strong Buy** (A-등급, 배당주+가치주 복합, 세계 최대 Super-Major 시총 $616.7B, Guyana Stabroek 45% + Permian Pioneer 통합 1위, 배당 Aristocrat 41년 + 자사주 $20B 환원율 92%, Net Debt/EBITDA 0.24 업계최저, 호르무즈 Base 시나리오 기대값 +11.5%p) | 유효 (신규) |
 | **IWM_iSharesRussell2000** | **2026-04-22** | **80.9 Buy** (B+등급 Strong Buy 경계 -4.1점, ETF 소형주 Russell 2000, AUM $77.2B / Mag7 0% / Zombie 40% / Fwd P/E 16.2x = Russell 1000 대비 -25.7% 역사적 할인, 금리인하 레버리지 4x vs VOO, 관세 리쇼어링 순수 플레이) | 유효 (신규, ETF) |
 | **USMV_iShares** | **2026-04-21** | **72.5 Buy** (B등급, ETF 저변동 Factor Min Vol, Beta 0.70 / Mag7 1.1% / Healthcare+Staples+Utilities 38.5%, AUM $28.7B, 조정 국면 outperform 기대) | 유효 (신규, ETF) |
 | **TIP_iSharesTIPS** | **2026-04-21** | **77.3 Buy** (B등급, ETF, 10Y BEI 2.25% 과소평가, 관세+파월+디플레 헷지, SCHP 대체권고) | 유효 (신규, ETF) |
