@@ -1,23 +1,34 @@
-# 종목분석 AI 에이전트 v3.5
+# 종목분석 AI 에이전트 v3.8
 
-> 멀티에이전트 투자분석 시스템. Claude Code + 18개 에이전트 + 17개 슬래시 명령어.
+> 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 17개 슬래시 명령어.
 
 ## 리포트 열람
 
 📘 **[리포트 목록 보기](https://kimsl12.github.io/stock-analyst/)**
 
-최근 리포트:
-- [LS ELECTRIC (010120)](https://kimsl12.github.io/stock-analyst/reports/010120_LSELECTRIC_20260413.html) — 2026-04-13
-- [SanDisk (SNDK)](https://kimsl12.github.io/stock-analyst/reports/SNDK_Sandisk_20260413.html) — 2026-04-13
-- [두산에너빌리티 (034020)](https://kimsl12.github.io/stock-analyst/reports/034020_두산에너빌리티_20260413.html) — 2026-04-13
-- [현대자동차 (005380)](https://kimsl12.github.io/stock-analyst/reports/005380_현대자동차_20260410.html) — 2026-04-10
-- [SK하이닉스 (000660)](https://kimsl12.github.io/stock-analyst/reports/000660_SK하이닉스_20260410.html) — 2026-04-10
+최근 리포트 (2026-04-22 기준):
+- [Costco Wholesale (COST)](https://kimsl12.github.io/stock-analyst/reports/COST_Costco_20260422.html) — 2026-04-22, Buy 81.0
+- [ExxonMobil (XOM)](https://kimsl12.github.io/stock-analyst/reports/XOM_ExxonMobil_20260422.html) — 2026-04-22, **Strong Buy 86.2**
+- [iShares Russell 2000 (IWM)](https://kimsl12.github.io/stock-analyst/reports/IWM_iSharesRussell2000_20260422.html) — 2026-04-22, Buy 80.9 (ETF)
+- [iShares Min Vol (USMV)](https://kimsl12.github.io/stock-analyst/reports/USMV_iSharesMinVol_20260421.html) — 2026-04-21, Buy 72.5 (ETF)
+- [iShares TIPS (TIP)](https://kimsl12.github.io/stock-analyst/reports/TIP_iSharesTIPS_20260421.html) — 2026-04-21, Buy 77.3 (ETF)
+- [Invesco S&P500 Equal Weight (RSP)](https://kimsl12.github.io/stock-analyst/reports/RSP_InvescoSP500EqualWeight_20260421.html) — 2026-04-21, Buy 77 (ETF)
+- [Micron Technology (MU)](https://kimsl12.github.io/stock-analyst/reports/MU_Micron_20260421.html) — 2026-04-21, **Strong Buy 경계 83.0**
+- [Adobe (ADBE)](https://kimsl12.github.io/stock-analyst/reports/ADBE_Adobe_20260421.html) — 2026-04-21, Buy 76.35
+- [Alibaba (BABA)](https://kimsl12.github.io/stock-analyst/reports/BABA_Alibaba_20260421.html) — 2026-04-21, Buy 74.6
+
+최근 브리핑:
+- [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안
+- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260423.html) — 2026-04-23
 
 ## 변경 이력
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.5** | **2026-04-13** | **session-bootstrap + KB 신뢰도 티어 + analysis 아카이브 + 에이전트 모순 해결 + 성과 공식 고정 + fetch_price.py 시장지수 + 서브에이전트 Write v3.0 + 브리핑 스캐폴딩** |
+| **v3.8** | **2026-04-21** | **일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단** |
+| v3.7 | 2026-04-20 | luxury KB 신규 + 에너지/방산 industry 재편 + 루트 redirect 파일 SSOT 정리 |
+| v3.6 | 2026-04-19 | `etf-lead` 에이전트 분리 (stock 파이프라인에서 ETF 전용 브랜치 분기) + 다크/라이트 테마 토글 |
+| v3.5 | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + analysis 아카이브 + 에이전트 모순 해결 + fetch_price.py 시장지수 + 브리핑 스캐폴딩 |
 | v3.2 | 2026-04-13 | LLM Wiki 전환 — wiki-linter + KB 피드백 루프 + Phase 0-LINT |
 | v3.1 | 2026-04-09 | GitHub Pages 자동 배포 + 비상장 기업 분석 |
 | v3.0 | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어 |
@@ -26,24 +37,37 @@
 
 ---
 
-## v3.5 핵심 — 구조적 안정화
+## v3.8 핵심 — 산출물 정리 & 환경 안정화
 
-### 세션 연속성
-- `session-bootstrap.md`: 매 세션 시작 시 Read → 마지막 작업/KB 상태/유효 파일 즉시 파악
-- stock-analyst-lead가 매 작업 완료 후 자동 갱신
+### 일회성 산출물 자체 정리 규칙 (`stock-analyst-lead`)
+Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커밋 여부와 관계없이 무조건 삭제**:
+- `generate_{티커}.py`
+- `{티커}_report_data.json`, `{티커}_part*.json`, `{티커}_basic.json`
+- `scripts/_tmp_*.txt`, `analysis/{티커}/_report_data.json`
 
-### 서브에이전트 Write 안정화 (v3.0)
-- 시스템 오버라이드: analysis/ 폴더 .md Write는 시스템 규칙 예외로 명시
-- 3턴 Write: Read→Read→Write 강제 순서
-- 폴백 마커: Write 실패 시 ===ANALYSIS_START/END=== 반환
+### `.gitignore` 2중 방어
+루트 한정 패턴으로 실수 커밋 시에도 자동 배제 (공용 모듈 `chart_templates.py`·`report_template.py`와 이름 충돌 없음):
+```
+/generate_*.py
+/*_report_data.json
+/*_part*.json
+/*_basic.json
+```
 
-### KB 신뢰도 티어 분리
-- Tier 1 (high): web_search, user → CURRENT 핵심 수치
-- Tier 2 (medium): scorecard-feedback → "참고" 섹션만 (핵심 수치 승격 금지)
+### `.gitattributes` CRLF 영구 차단 (2026-04-21 커밋 `6bd498c`)
+외장 SSD 환경에서 재발한 CRLF 대량 "modification" 사태 해결:
+- `* text=auto eol=lf` 전역 규칙
+- `core.autocrlf=false` 고정
+- 기존 인덱스 CRLF 오염 97개 파일 `git add --renormalize .`
 
-### 실시간 주가 수집
-- `scripts/fetch_price.py`: pykrx(한국) + yfinance(미국)
-- `--market` 모드: 18개 시장 지수 일괄 수집 + daily_snapshot.md 자동 갱신
+### Bootstrap Stale 검증
+매 세션 시작 시 `session-bootstrap.md` Read → 마지막 작업·KB 상태·유효 파일 즉시 파악. 작업 완료 시 `stock-analyst-lead`가 자동 갱신.
+
+### Todo 의무화
+다단계 작업에서 TodoWrite로 진행 상황 추적 (토큰 관리 + 중단 복구).
+
+### Agent 도구 복구 (2026-04-21 확인)
+이전 Task 도구 비활성화 이슈 해소 — sub-agent 호출권 정상 동작.
 
 ---
 
@@ -53,6 +77,7 @@
 
 ### 🅰️ 종목 분석 파이프라인
 개별 종목·ETF 한 건 심층 분석 → HTML 리포트 생성. 매수·매도 추천 + 목표가/손절가 포함.
+**v3.6부터 ETF는 `etf-lead` 하위 오케스트레이터로 분기** (data-collector → etf-analyst → report-generator 3단계).
 
 ### 🅱️ 브리핑 파이프라인
 글로벌 매크로·크로스에셋 브리핑 자동 생성. **신규 투자 아이디어 적극 제안** — 매크로 분석 기반
@@ -64,64 +89,42 @@ Bull/Bear 시나리오, 섹터·종목 아이디어, 진입 근거·리스크 �
 ## 디렉토리 구조
 
 ```
-.claude/agents/                              ← 18개 에이전트
+.claude/agents/                              ← 19개 에이전트
 ├── stock-analyst-lead.md                    ← 양 파이프라인 분기 리드 (opus)
 │
-├── (종목 분석 9개)
+├── (종목 분석 10개)
 │   ├── data-collector.md                    ← 종목 데이터 수집 (sonnet)
-│   ├── company-overview.md                  ← 기업개요+Moat (sonnet, maxTurns 15)
-│   ├── financial-analyst.md                 ← 재무 심층 (sonnet, maxTurns 15) [v3.5 opus→sonnet]
-│   ├── business-analyst.md                  ← 산업·경쟁 (sonnet, maxTurns 15)
-│   ├── momentum-analyst.md                  ← 가격 모멘텀 (sonnet, maxTurns 15)
-│   ├── risk-analyst.md                      ← Devil's advocate (sonnet, maxTurns 15)
-│   ├── scorecard-strategist.md              ← 10항목 종합 + KB 피드백 + 모순 해결 (opus, maxTurns 20)
+│   ├── company-overview.md                  ← 기업개요+Moat (sonnet)
+│   ├── financial-analyst.md                 ← 재무 심층 (sonnet)
+│   ├── business-analyst.md                  ← 산업·경쟁 (sonnet)
+│   ├── momentum-analyst.md                  ← 가격 모멘텀 (sonnet)
+│   ├── risk-analyst.md                      ← Devil's advocate (sonnet)
+│   ├── scorecard-strategist.md              ← 10항목 종합 + KB 피드백 (opus)
+│   ├── etf-lead.md                          ← ETF 전용 오케스트레이터 (opus) [v3.6 신규]
 │   ├── etf-analyst.md                       ← ETF 단독 분석 (opus)
 │   └── report-generator.md                  ← HTML 리포트 (sonnet)
 │
 ├── (브리핑 5개)
-│   ├── briefing-lead.md                     ← 오케스트레이터 (opus) + 스캐폴딩/검증
+│   ├── briefing-lead.md                     ← 오케스트레이터 (opus)
 │   ├── market-data-collector.md             ← 시장 데이터 수집 (sonnet)
-│   ├── global-macro-analyst.md              ← G-1~G-8 매크로 4축 (opus) [v3.5 Write 강화]
-│   ├── correlation-monitor.md               ← 6 페어 Z-score (sonnet) [v3.5 Write 강화]
+│   ├── global-macro-analyst.md              ← G-1~G-8 매크로 4축 (opus)
+│   ├── correlation-monitor.md               ← 6 페어 Z-score (sonnet)
 │   └── briefing-report-generator.md         ← HTML 다크 테마 (sonnet)
 │
 ├── (공용 2개)
 │   ├── kb-updater.md                        ← KB 갱신 (opus, v3.4 미니사이클)
-│   └── wiki-linter.md                       ← KB 건강 점검 + README 갱신 (sonnet)
+│   └── wiki-linter.md                       ← KB 건강 점검 (sonnet)
 │
 └── stop-loss-rules.md                       ← ATR 손절/목표가 SSOT
 
 scripts/
-├── fetch_price.py                           ← 실시간 주가 + 시장 지수 수집 [v3.5]
+├── fetch_price.py                           ← 실시간 주가 + 시장 지수 수집
 └── ...
 
-session-bootstrap.md                         ← 세션 간 연속성 확보 [v3.5]
+session-bootstrap.md                         ← 세션 간 연속성 확보
 knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 SSOT)
+.gitattributes                               ← CRLF 영구 차단 [v3.8 신규]
 ```
-
----
-
-## 모델 배정 (v3.5)
-
-| 에이전트 | 모델 | maxTurns | 웹검색 | 비고 |
-|---|---|---|---|---|
-| `stock-analyst-lead` | **opus** | 40 | 판단 | 양 파이프라인 분기 + session-bootstrap |
-| `data-collector` | sonnet | 25 | 12회 | 종목 데이터 수집 |
-| `company-overview` | sonnet | **15** | 금지 | 기업개요 + Moat. v3.0 Write |
-| `financial-analyst` | **sonnet** | **15** | 금지 | 재무 심층. **v3.5 opus→sonnet** |
-| `business-analyst` | sonnet | **15** | 금지 | 산업·경쟁. 턴 절약 규칙 |
-| `momentum-analyst` | sonnet | **15** | 금지 | 가격 모멘텀. v3.0 Write |
-| `risk-analyst` | sonnet | **15** | 금지 | Devil's advocate. 턴 절약 규칙 |
-| `scorecard-strategist` | **opus** | **20** | 금지 | 종합 + KB 루프 + **모순 해결 규칙** |
-| `etf-analyst` | **opus** | 15 | 5회 | ETF 단독 분석 |
-| `report-generator` | sonnet | — | 금지 | HTML 리포트 |
-| `briefing-lead` | **opus** | — | 판단 | 브리핑 오케스트레이터 + **스캐폴딩/검증** |
-| `market-data-collector` | sonnet | — | 15~20회 | 시장 데이터 수집 |
-| `global-macro-analyst` | **opus** | 20 | 1~5회 | G-1~G-8. **v3.5 Write 강화** |
-| `correlation-monitor` | sonnet | 15 | 금지 | 6 페어. **v3.5 Write 강화** |
-| `briefing-report-generator` | sonnet | — | 금지 | HTML 다크 테마 |
-| `kb-updater` | **opus** | **30** | O | KB 갱신. **v3.4 미니사이클** |
-| `wiki-linter` | sonnet | 20 | 금지 | KB 점검 + **README 갱신** |
 
 ---
 
@@ -131,14 +134,14 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 | 명령어 | 사용 예시 | 에이전트 | 설명 |
 |---|---|---|---|
-| `/KB업데이트` | `/KB업데이트 semiconductor` | kb-updater | 섹터·토픽 웹검색 갱신 (v3.4 미니사이클) |
-| `/KB점검` | `/KB점검` | wiki-linter | P0~P2 탐지 + 자동 수정 + README 갱신 |
+| `/KB업데이트` | `/KB업데이트 luxury` | kb-updater | 섹터·토픽 웹검색 갱신 (v3.4 미니사이클) |
+| `/KB점검` | `/KB점검` | wiki-linter | P0~P2 탐지 + 자동 수정 |
 
 ### 종목 분석 (5개)
 
 | 명령어 | 사용 예시 | 설명 |
 |---|---|---|
-| `/종목분석` | `/종목분석 삼성전자`, `/종목분석 VOO` | 전체 분석 (개별 종목 / ETF 자동 판별) |
+| `/종목분석` | `/종목분석 삼성전자`, `/종목분석 IWM` | 전체 분석 (개별 종목 / ETF 자동 판별) |
 | `/비교분석` | `/비교분석 삼성전자 SK하이닉스` | 두 종목 비교 |
 | `/빠른분석` | `/빠른분석 네이버` | 핵심 지표 + ATR (5분 이내) |
 | `/손절계산` | `/손절계산 삼성전자 80000` | ATR 손절/목표 계산 |
@@ -161,21 +164,25 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 ---
 
-## 종목 분석 흐름
+## 종목 분석 흐름 (v3.8)
 
 ```
-Phase 0-B: fetch_price.py (실시간 주가+ATR)
+Phase 0-A: kb-updater (섹터 KB valid_until 초과 시만)
+Phase 0-B: fetch_price.py (실시간 주가 + ATR)
 Phase 0-C: WebSearch (실적, 컨센서스, 뉴스)
 Phase 0-D: 스캐폴딩 (빈 파일 사전 생성)
     ↓
-Phase 1: company-overview + financial-analyst + momentum-analyst (병렬)
+Phase 1: company-overview + financial-analyst + business-analyst
+        + momentum-analyst + risk-analyst (5개 병렬)
 Phase 1-검증: 파일 크기 확인 → 0이면 폴백
     ↓
-Phase 2: business-analyst + risk-analyst
+Phase 2: scorecard-strategist (10항목 + 모순 해결 + KB 피드백)
     ↓
-Phase 3: scorecard-strategist (10항목 + 모순 해결 + KB 피드백)
+Phase 3-cleanup: generate_*.py / *_report_data.json 전량 삭제 [v3.8]
     ↓
-Phase 4: report-generator → HTML → git push
+Phase 3: report-generator → HTML → git commit & push
+    ↓
+session-bootstrap.md 자동 갱신
 ```
 
 ## 브리핑 흐름
@@ -199,38 +206,34 @@ fetch_price.py --market --save (daily_snapshot 선행 갱신)
 
 ---
 
-## Knowledge Base 구조
+## Knowledge Base 구조 (2026-04-22 기준)
 
 ```
 knowledge-base/                  ← CURRENT만 (SSOT)
 ├── _index.md                    ← 마스터 인덱스 (단일 SSOT)
-├── industry/                    ← 12개 섹터 KB
-│   ├── semiconductor.md, ai.md, auto.md, energy.md, bio_pharma.md
-│   ├── quantum.md, space.md, smr.md                    [v3.5 신규]
-│   ├── telecom_next.md, banking_capital.md              [v3.5 신규]
-│   ├── advanced_materials.md, battery.md                [v3.5 신규]
-│   └── infrastructure.md                                [v3.5 신규]
-├── macro/                       ← 7개 매크로 KB
+├── industry/                    ← 19개 섹터 KB
+│   ├── (핵심) semiconductor.md, ai.md, auto.md, bio_pharma.md
+│   ├── (에너지) energy.md, battery.md, smr.md
+│   ├── (방산·우주) defense_industry.md, space.md, quantum.md
+│   ├── (소비·금융) luxury.md [v3.7 신규], banking_capital.md
+│   ├── (인프라) advanced_materials.md, infrastructure.md
+│   ├── (통신·로봇) telecom_next.md, robotics.md
+│   ├── (자본지출) capex.md
+│   ├── (크립토) crypto_bitcoin.md
+│   └── (기타) science_tech.md
+├── macro/                       ← 8개 매크로 KB
 │   ├── us_economy.md, us_monetary_policy.md (SSOT)
 │   ├── korea_economy.md, geopolitics.md, global_risk_factors.md
-│   └── political_cycle.md, tech_breakthrough.md, supply_chain.md  [v3.5 신규]
-├── market/                      ← 5개 시장 데이터
-│   ├── daily_snapshot.md        ← fetch_price.py --market --save로 갱신
-│   └── economic_calendar.md, correlation_matrix.md, guru_positions.md, surprise_index.md
+│   ├── political_cycle.md, tech_breakthrough.md, supply_chain.md
 └── portfolio/                   ← 개인 데이터
-    ├── model_portfolios.md
-    └── user_portfolio.md        ← 등록 완료 (중립형, VOO 83%)
+    ├── model_portfolios.md      ← 4종 (안전/중립/공격/배당)
+    └── user_portfolio.md        ← 등록 완료 (중립형, VOO 91.5% 편중 진단)
 
-knowledge-db/                    ← 영구 축적 (append-only)
-├── semiconductor_2026.jsonl (71행), ai_2026.jsonl (88행)
-├── auto_2026.jsonl (46행), energy_2026.jsonl (42행)
-├── geopolitics_2026.jsonl (32행), bio_pharma_2026.jsonl (34행)
-├── science_tech_2026.jsonl (143행) — quantum/space/smr subtag
-├── banking_capital_2026.jsonl (38행), telecom_next_2026.jsonl (28행)
-├── battery_2026.jsonl (40행), advanced_materials_2026.jsonl (35행)
-├── infrastructure_2026.jsonl (23행), macro_2026.jsonl (133행)
-└── changelog_2026.jsonl (23행)
+knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
 ```
+
+**주의**: 루트 `geopolitics.md`, `global_risk_factors.md`, `us_monetary_policy.md`는
+`macro/` 폴더의 SSOT로 redirect하는 포인터 파일로 유지 (기능 무결).
 
 ---
 
@@ -266,3 +269,10 @@ knowledge-db/                    ← 영구 축적 (append-only)
 - **URL**: `https://kimsl12.github.io/stock-analyst/reports/{파일명}.html`
 - **GitHub Actions**: `.github/workflows/deploy-reports.yml`
 - **레이아웃**: 2컬럼 (좌: 종목분석 / 우: 브리핑)
+
+### ⚠️ 현재 상태 (2026-04-22)
+
+GitHub Actions **계정 단위 비활성화 중** (GitHub Support 티켓 #4287825 심사 진행).
+- `main` push는 정상 동작
+- gh-pages 자동 배포는 Actions 복구 시까지 지연
+- 로컬 HTML 리포트는 `reports/` 폴더에서 직접 열람 가능
