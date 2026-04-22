@@ -17,7 +17,7 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-21 (market-data-collector)**
+> **최종 갱신: 2026-04-22 (market-data-collector)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
@@ -34,7 +34,7 @@ lint_mode: full
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `market/daily_snapshot.md` | valid_until 04-23 — 04-21 갱신 완료 (D-2) | LOW | 04-23 재실행 |
+| `market/daily_snapshot.md` | valid_until 04-24 — 04-22 갱신 완료 (D-2) | LOW | 04-24 재실행 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
@@ -112,6 +112,9 @@ lint_mode: full
 | 2026-04-21 | 이브닝브리핑 | VIX 17.48->**18.98(+8.58%) "거짓 안정 해제 1단계"** 공식 시작. NASDAQ 13일 연승 종료. 트럼프 "연장 unlikely"+이란 나포 에스컬레이션. 시나리오 B(조정) 47% 우세 심화 | `market/correlation_matrix.md, macro/geopolitics.md` | 진행중 |
 | 2026-04-21 | 이브닝브리핑 | AAPL 팀 쿡->**존 터너스 CEO 교체**(9/1). 하드웨어 출신 = Vision Pro/Apple Silicon 가속. Buffett AAPL -4.3% 축소 이미 반영. $4T 기업 리더십 전환 | `market/guru_positions.md` | 진행중 |
 | 2026-04-21 | 이브닝브리핑 | 소매판매 +0.4% Beat이나 **"시간차 함정"** -- 세금환급+관세 사전구매 일시효과. 소비심리 47.6이 Q2 소매판매 역전 선행. 행동(OK) vs 심리(붕괴) 디커플링 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
+| 2026-04-22 | 모닝브리핑 | **이란 무기한 휴전 연장**(Trump 04-21 장후 발표) — "30일 최대 분기점" 낙관 해소. WTI $87.88→$86. VIX 18.98→17.48 "거짓 안정 5단계" **재귀적 복귀**. 리스크 봉인이지 소멸 아님(IRGC 기뢰 21건 미해제) | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-22 | 모닝브리핑 | KOSPI **6,388.47 사상 최고 종가 신기록**(+2.72%). SK하이닉스 **120만원 돌파**(+4.97%). JPMorgan KOSPI 목표 8,500. Tepper EWY $286M 한국 베팅 수익 확인 | `market/daily_snapshot.md, market/guru_positions.md` | 진행중 |
+| 2026-04-22 | 모닝브리핑 | Gold **$4,782 — $4,800 지지선 이탈**. 호르무즈 완화 반사 하락이나 DXY 98.3 구조적 약세 불변 → 탈달러 수요 손상 없음. 48시간 $4,800 재탈환 시 구조적 Bull 재확정. contrarian: 매수 기회 | `macro/global_risk_factors.md §4, market/correlation_matrix.md` | 진행중 |
 
 ---
 
