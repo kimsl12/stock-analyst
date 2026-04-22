@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | **MU 마이크론 - 2026-04-21**, Buy 83.0점 (B+등급 Strong Buy 경계, 복합형 AI/메모리 슈퍼사이클+턴어라운드), 목표 $540 (+20.2%), 손절 $399.81 (2xATR, -11.0%), R:R 1.84 |
+| 마지막 종목분석 | **RSP InvescoSP500EqualWeight ETF - 2026-04-21**, Buy 77/100 (B등급 상단 조건부 Strong Buy, 이쿨웨이트 breadth-hedge), 목표 $222.81 (+10%), 손절 $192.42 (-5% 고정), R:R 1:2 — Druckenmiller $238M Top3 신규 시그널 |
 | 마지막 브리핑 | **모델포트폴리오 F - 2026-04-21** (이브닝 20260421 포함) |
 | 마지막 KB 업데이트 | **semiconductor(루트→industry/ 이동+전면갱신) + ai + auto + bio_pharma(신규) 4건 병렬 - 2026-04-21** |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,6 +19,8 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| **TIP_iSharesTIPS** | **2026-04-21** | **77.3 Buy** (B등급, ETF, 10Y BEI 2.25% 과소평가, 관세+파월+디플레 헷지, SCHP 대체권고) | 유효 (신규, ETF) |
+| **RSP_InvescoSP500EqualWeight** | **2026-04-21** | **77 Buy** (B등급 상단 조건부 Strong Buy, ETF 이쿨웨이트 breadth-hedge, Druckenmiller $238M Top3 신규) | 유효 (ETF 신규) |
 | **MU_Micron** | **2026-04-21** | **83.0 Buy** (B+등급 Strong Buy 경계, 복합형, HBM Samsung 추월+NAND +70% QoQ+CHIPS Act Wide Moat) | 유효 (신규) |
 | COIN_Coinbase | **2026-04-21** | **71.68 Buy** (B등급 중단, 크립토 공격주, 규제·커스터디·USDC·Base 복합 Moat) | 유효 (갱신, 4/15 대체) |
 | DIA_SPDRDJIA | 2026-04-21 | 70.5 Buy (B등급, ETF 월배당 방어형 위성, 다우30 가격가중) | 유효 (ETF) |
