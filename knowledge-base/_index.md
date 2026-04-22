@@ -17,7 +17,7 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-21 (market-data-collector)**
+> **최종 갱신: 2026-04-22 (market-data-collector)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
@@ -34,7 +34,7 @@ lint_mode: full
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `market/daily_snapshot.md` | valid_until 04-23 — 04-21 갱신 완료 (D-2) | LOW | 04-23 재실행 |
+| `market/daily_snapshot.md` | valid_until 04-24 — 04-22 갱신 완료 (D-2) | LOW | 04-24 재실행 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).

@@ -119,3 +119,26 @@ type: time_series
 | 2026-04-21 | crypto | SOL | 85.51 | 소폭변동 | USD | Coinbase [2026-04-21] | 2026-04-21T09:00:00+09:00 | — |
 | 2026-04-21 | crypto | TotalMarketCap | ~2.60T | -3.5% | USD | 추정 [2026-04-20~21] | 2026-04-21T09:00:00+09:00 | BTC 도미넌스 57.4% |
 | 2026-04-21 | crypto | FearAndGreedIndex | 54 | — | index | CMC Fear&Greed [2026-04-21] | 2026-04-21T09:00:00+09:00 | Greed 전환. 극공포(21)→탐욕(54) 급전환. 신뢰도 낮음 |
+| 2026-04-22 | us_index | SP500 | 7064.01 | -0.63% | point | Schwab Market Update / Yahoo Finance [2026-04-21 close] | 2026-04-22T09:00:00+09:00 | Warsh 청문+Apple CEO+이란 불확실 3중 압박. 장 후 Trump 무기한 휴전 연장 발표 |
+| 2026-04-22 | us_index | NASDAQ | 24259.96 | -0.59% | point | Schwab Market Update / Yahoo Finance [2026-04-21 close] | 2026-04-22T09:00:00+09:00 | 동반 하락. 야간 선물(NQ1) +0.4% 반등 |
+| 2026-04-22 | us_index | DJIA | 49149.38 | -0.59% | point | Schwab Market Update [2026-04-21 close] | 2026-04-22T09:00:00+09:00 | -293pt |
+| 2026-04-22 | us_index | VIX | 17.48 | -7.9%(추정) | index | CNBC / TheStreet [2026-04-21 close 추정] | 2026-04-22T09:00:00+09:00 | 이란 무기한 휴전 연장으로 재하락. 18.98→17.48 |
+| 2026-04-22 | asia_index | KOSPI | 6388.47 | +2.72% | point | CNBC Asia / IBTimes [2026-04-21 KST close] | 2026-04-22T09:00:00+09:00 | ⚠️ 사상 최고 종가 신기록. 전고점 6307.27(2026-02-26) 돌파. SK하이닉스 +4.97% 120만원 |
+| 2026-04-22 | asia_index | Nikkei225 | 59349.17 | +0.89% | point | CNBC Asia [2026-04-21 JST close] | 2026-04-22T09:00:00+09:00 | AI주 강세. Topix -0.18% (섹터 차별화) |
+| 2026-04-22 | asia_index | HangSeng | ~25991 | +0.35%(잠정) | point | CNBC Asia [2026-04-21 HKT 막판] | 2026-04-22T09:00:00+09:00 | 장 막판 소폭 상승 |
+| 2026-04-22 | asia_index | ShanghaiCSI300 | 4768 | +0.22% | point | CNBC Asia [2026-04-21 CST close] | 2026-04-22T09:00:00+09:00 | GDP +5.0% 서프라이즈 여진 |
+| 2026-04-22 | fx | USDKRW | 1477.8 | -0.39% | KRW | PoundSterlingLive / Bloomberg [2026-04-21] | 2026-04-22T09:00:00+09:00 | 원화 강세. KOSPI 신기록+외인 매수 복합 |
+| 2026-04-22 | fx | DXY | 98.3 | +0.11pt | index | Investing.com / TradingEconomics [2026-04-21] | 2026-04-22T09:00:00+09:00 | 소폭 회복. 구조적 약세 기조 유지 |
+| 2026-04-22 | commodity | WTI | 86.18 | -1.9%(추정) | USD/barrel | Investing.com [2026-04-22 아시아 장중] | 2026-04-22T09:00:00+09:00 | 이란 무기한 휴전 연장 반영. $87.88→$86 |
+| 2026-04-22 | commodity | Gold | 4782.14 | -0.81% | USD/oz | TradingEconomics [2026-04-21] | 2026-04-22T09:00:00+09:00 | $4800 지지선 이탈. 단기 숨고르기 지속 |
+| 2026-04-22 | bond | US10Y | ~4.25 | 0bp | percent | CNBC / TradingEconomics [2026-04-21] | 2026-04-22T09:00:00+09:00 | Warsh 독립성 발언 후 안정 |
+| 2026-04-22 | bond | US2Y | ~3.81 | — | percent | 추정 | 2026-04-22T09:00:00+09:00 | — |
+| 2026-04-22 | bond | Spread2Y10Y | ~+44 | — | bp | 계산값 | 2026-04-22T09:00:00+09:00 | 정상 구간 유지 |
+| 2026-04-22 | crypto | BTC | 75900 | +0.9%(04-21 9AM ET) | USD | Fortune / LatestLY [2026-04-21] | 2026-04-22T09:00:00+09:00 | $76K 저항선 재도전 중 |
+| 2026-04-22 | crypto | ETH | 2309 | 보합 | USD | CoinGecko 추정 | 2026-04-22T09:00:00+09:00 | — |
+| 2026-04-22 | crypto | SOL | 85.51 | 보합 | USD | CoinGecko 추정 | 2026-04-22T09:00:00+09:00 | — |
+| 2026-04-22 | crypto | FearAndGreedIndex | 33 | -21pt(54→33) | index | feargreedmeter.com / CoinMarketCap [2026-04-22] | 2026-04-22T09:00:00+09:00 | ⚠️ Greed→Fear 급전환. 1일 -21pt = 크립토 심리 급속 훼손 |
+| 2026-04-22 | news | Apple_CEO | Tim_Cook_Retire | — | — | Apple Newsroom / TechCrunch [2026-04-20] | 2026-04-22T09:00:00+09:00 | Tim Cook 9/1 Executive Chairman 전환. John Ternus(하드웨어 엔지니어링 SVP) CEO 내정. AAPL AI 전략 불확실 단기 압박 |
+| 2026-04-22 | news | Iran_Ceasefire | INDEFINITE_EXTENDED | — | — | Yahoo Finance / TheStreet [2026-04-21 AH] | 2026-04-22T09:00:00+09:00 | Trump 이란 무기한 휴전 연장 발표(장 후). 이란 내부 분열로 협상 시간 필요. WTI 하락. ES1 +0.2% |
+| 2026-04-22 | news | Warsh_Hearing | COMPLETED_INDEPENDENT | — | — | CNBC / CNN / PBS [2026-04-21] | 2026-04-22T09:00:00+09:00 | "독립성 필수"·"꼭두각시 아님". Tillis 반대(DOJ Powell수사 연계)로 인준 지연. 시장 안도 |
+| 2026-04-22 | calendar | TSLA_Q1 | TBD | — | — | Benzinga / Electrek [예정] | 2026-04-22T09:00:00+09:00 | 04-22 장 후 발표. EPS 컨센 $0.33~$0.37. 인도 358K(컨센 miss). VIX 방향 결정자 |
