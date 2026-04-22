@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | **COST Costco Wholesale - 2026-04-22**, Buy 81.0 (A-등급 Strong Buy 경계 -1점, Quality Compounder 복합형, Wide Moat 4중 복합 [재가입률 92.5%+매장당매출 $283M+공급사 역협상+Switching Cost], 회원비 $5.15B 영업이익 51% 기여 SaaS-like, ROIC 25.3% FAANG급, Net Cash +$6.7B + FCF $8.5B, Kirkland PB $80B S&P Top 60 규모), 목표 $1,060 (+5.4%), 손절 $967.27 (2×ATR, -3.83%), R:R 1.41 Marginal — **PER 54x Critical Risk** (역사 36x +50%, Peer +96%) / 사용자 VOO 91.5% 극단 편중 해소 5% 편입 권고 (Consumer Staples 0%→5%, 분할매수 3개월) |
+| 마지막 종목분석 | **AVGO Broadcom v2 재분석 - 2026-04-22**, Strong Buy 82.07 (v1 83.2 → **-1.13점**, Strong Buy 유지 하단 경계, 성장주+SaaS 복합, 시총 **$2.00T** 반도체 3위, Fwd PER 44.5x → **49.4x 재레이팅**, 컨센 목표가 $430→$465 +8%, EPS FY26E $8.56→$8.75 +2.2%), 목표 **$465 (+10.0%)** v1 +15.5% 대비 축소, 손절 $397.14 (2×ATR, -6.03%), R:R Base 1.67 (v1 2.42 악화) / Bull 6.17 (v1 5.72 개선), 기대값 +4.8% (v1 +9.8% 축소) — **핵심 변화**: Anthropic ARR $30B > OpenAI $25B 추월 (2026-04-21) → AWS Trainium 수혜 직접, 하이퍼스케일러 CapEx $6,800억 확정 (+127%), 5대 하이퍼스케일러 전부 AVGO 파트너십 완성 / **리스크**: RSI 72+ 과열 + 52주 신고가 ($423.20) + 중국 125% 관세 / **NVDA vs AVGO**: 상관 0.65, 사용자 Balanced 프로파일 → **NVDA 6% + AVGO 5% 동시 편입 권고** (AI 인프라 블록 11%) / 사용자 포트폴리오 5% 편입 권고, 분할매수 1차 15% 축소 (v1 주가 $380.78 → v2 $422.65, +11.0%) |
 | 마지막 브리핑 | **리밸런싱 (사용자 포트) - 2026-04-21** (VOO 91.5% → 35% 재편안) |
 | 마지막 KB 업데이트 | **semiconductor(루트→industry/ 이동+전면갱신) + ai + auto + bio_pharma(신규) 4건 병렬 - 2026-04-21** |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,6 +19,7 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| **AVGO_Broadcom_v2** | **2026-04-22** | **82.07 Strong Buy** (A-등급 재분석, v1 83.2 대비 -1.13점 Strong Buy 유지, 성장주+SaaS 복합, 시총 $2.00T, Fwd PER 49.4x 재레이팅, Anthropic $30B ARR 추월 수혜, 5대 하이퍼스케일러 전부 파트너십, 목표가 $465 +10%, NVDA 6%+AVGO 5% 동시 편입 권고) | 유효 (재분석 v2) |
 | **COST_Costco** | **2026-04-22** | **81.0 Buy** (A-등급 Strong Buy 경계 -1점, 복합형 Quality Compounder, Wide Moat 4중 복합, 시총 $446B, ROIC 25.3% FAANG급, 회원비 SaaS-like $5.15B, Kirkland PB $80B, PER 54x Critical Risk +50% 프리미엄, 관세환경 WMT 대비 구조적 우위, 사용자 5% 편입 권고) | 유효 (신규) |
 | **XOM_ExxonMobil** | **2026-04-22** | **86.2 Strong Buy** (A-등급, 배당주+가치주 복합, 세계 최대 Super-Major 시총 $616.7B, Guyana Stabroek 45% + Permian Pioneer 통합 1위, 배당 Aristocrat 41년 + 자사주 $20B 환원율 92%, Net Debt/EBITDA 0.24 업계최저, 호르무즈 Base 시나리오 기대값 +11.5%p) | 유효 (신규) |
 | **IWM_iSharesRussell2000** | **2026-04-22** | **80.9 Buy** (B+등급 Strong Buy 경계 -4.1점, ETF 소형주 Russell 2000, AUM $77.2B / Mag7 0% / Zombie 40% / Fwd P/E 16.2x = Russell 1000 대비 -25.7% 역사적 할인, 금리인하 레버리지 4x vs VOO, 관세 리쇼어링 순수 플레이) | 유효 (신규, ETF) |
@@ -43,7 +44,7 @@
 | KTOS_KratosDefense | 2026-04-16 | 64.0 Weak Buy | 유효 |
 | 035720_카카오 | 2026-04-16 | 64.5 Hold | 유효 |
 | 009150_삼성전기 | 2026-04-15 | 74.75 Buy | 유효 |
-| AVGO_Broadcom | 2026-04-15 | 83.2 Strong Buy | 유효 |
+| AVGO_Broadcom (v1) | 2026-04-15 | 83.2 Strong Buy | 유효 (v2로 대체됨, 델타 비교용 보존) |
 | META_Meta | 2026-04-14 | 80.1 Strong Buy | 유효 |
 | PLTR_Palantir | 2026-04-14 | 61.5 Hold | 유효 |
 | 010120_LSELECTRIC | 2026-04-13 | 76.5 Buy | 유효 |
