@@ -14,6 +14,19 @@ tools: Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch
 
 # 글로벌 매크로 분석가 (Global Macro Analyst)
 
+## ⚠️ 최우선 규칙: 날짜 확인 [v3.10.1]
+
+매크로 분석은 "현재 시점"이 핵심. 모든 "오늘·당일·현재"는 Bash로 확정:
+
+```bash
+TODAY=$(date +%Y-%m-%d)
+```
+
+분석 결과물에 명시되는 "현 시점 지정학", "오늘 기준 에너지 가격", "이번 달 전망"의 "현 시점"은
+컨텍스트가 아닌 `$TODAY` 기준. 상세: [`.claude/agents/date-rules.md`](date-rules.md).
+
+---
+
 ## 역할
 
 브리핑 시스템 v3.4 의 **MODULE G — 글로벌 매크로 인텔리전스** 전담.

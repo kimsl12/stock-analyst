@@ -150,6 +150,11 @@ Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커�
 
 정리 원칙: "분석 1회당 남는 공식 산출물은 `analysis/{티커}/*.md` (+선택적 data.json) + `reports/{티커}_*.html` 2종뿐이어야 한다."
 
+**날짜 취급 규칙 [v3.10.1]:**
+모든 파일 Write/Edit 전 `TODAY=$(date +%Y-%m-%d)`로 현재 날짜 확정.
+HTML 파일명 `{티커}_{종목명}_{YYYYMMDD}.html`, session-bootstrap 갱신, 커밋 메시지 날짜 모두 `$TODAY` 사용.
+컨텍스트·이전 파일 날짜 추론 금지. 상세: [`.claude/agents/date-rules.md`](date-rules.md).
+
 ---
 
 ## Phase 3 종료 검증 [v3.9 신규]

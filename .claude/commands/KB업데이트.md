@@ -67,7 +67,8 @@ sector: {첫 번째 인자 — 위 매핑 표 토픽 키}
 sub_sectors: {괄호 안 텍스트를 콤마로 분리한 리스트 — 없으면 빈 배열}
 macro_tags: {해당 매핑 표의 tag/subtag — 없으면 빈 배열}
 ticker: null
-target_year: {오늘 연도 KST}
+target_date: {오늘 YYYY-MM-DD — 반드시 Bash `date +%Y-%m-%d` 결과값 삽입 [v3.10.1]}
+target_year: {오늘 연도 = target_date 앞 4자리}
 search_depth: deep   # 15~20회 웹검색
 output_targets:
   - knowledge-db/{topic}_{YYYY}.jsonl  (append, subtag 포함)
@@ -77,7 +78,11 @@ required_quality:
   - 모든 수치·팩트에 [소스] 태그 필수
   - 최소 2개 소스 교차 검증
   - 미수집 항목은 "N/A [사유]" 로 명시
+  - **모든 메타 날짜 필드(updated, date, last_synced_from_db)는 target_date로 통일** [v3.10.1]
+  - 날짜 상세 규칙: `.claude/agents/date-rules.md` 참조
 ```
+
+**호출 직전 검증 (리드가 수행)**: `TODAY=$(date +%Y-%m-%d)` 실행 후 위 프롬프트의 `target_date`에 `$TODAY` 값을 실제로 주입해 전달. 추론·컨텍스트 기반 날짜 금지.
 
 ## 워크플로 (kb-updater)
 

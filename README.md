@@ -1,4 +1,4 @@
-# 종목분석 AI 에이전트 v3.10
+# 종목분석 AI 에이전트 v3.10.1
 
 > 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 18개 슬래시 명령어.
 
@@ -25,7 +25,8 @@
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.10** | **2026-04-23** | **재분석 Stale 자동 경고 시스템 (14일+ 세션 시작 배너 + 섹터 KB 갱신 매크로 트리거 7일+ 예외) + `/재분석점검` 슬래시 명령 신규 (18개 명령어)** |
+| **v3.10.1** | **2026-04-24** | **날짜 추론 오기 재발 방지 패치 — `date-rules.md` SSOT 신설 + 5개 에이전트(kb-updater, briefing-lead, global-macro-analyst, market-data-collector, stock-analyst-lead) 최우선 규칙 삽입 + `/KB업데이트` `target_date` 필드 강제. 원인: kb-updater가 2026-04-22 날짜로 64개 메타 필드 오기록 (실제 2026-04-24)** |
+| v3.10 | 2026-04-23 | 재분석 Stale 자동 경고 시스템 (14일+ 세션 시작 배너 + 섹터 KB 갱신 매크로 트리거 7일+ 예외) + `/재분석점검` 슬래시 명령 신규 (18개 명령어) |
 | v3.9 | 2026-04-23 | Phase 3 종료 검증(HTML+commit+bootstrap 3단계) + 파일별 명시적 git add (병렬 경합 방지) + 버전 관리 명명 규칙 통일 (`_v2` 폴더 접미사·HTML은 날짜만) + R:R<1.5 진입 보류 자동 태깅 + 컨센서스 초과 경고 블록 자동 삽입 |
 | v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단 |
 | v3.7 | 2026-04-20 | luxury KB 신규 + 에너지/방산 industry 재편 + 루트 redirect 파일 SSOT 정리 |

@@ -18,6 +18,23 @@ mcpServers:
 
 # 시장 데이터 수집 에이전트 (Market Data Collector)
 
+## ⚠️ 최우선 규칙: 날짜 확인 [v3.10.1]
+
+시장 데이터는 **수집 시점 = 오늘**. 모든 jsonl/md 메타 날짜는 Bash로 확정:
+
+```bash
+TODAY=$(date +%Y-%m-%d)
+```
+
+- `knowledge-base/market/daily_snapshot.md`의 `updated:` → `$TODAY`
+- jsonl `date:` 필드 → `$TODAY`
+- changelog 날짜 → `$TODAY`
+
+단, **데이터 원본 안에 명시된 발표일**(예: "Fed FOMC 2026-03-18")은 원본 그대로 유지.
+상세: [`.claude/agents/date-rules.md`](date-rules.md).
+
+---
+
 ## 역할
 
 브리핑 시스템 v3.4의 **시장 데이터 수집 전담**. 거시 시장 레이어를 담당한다.

@@ -17,6 +17,21 @@ mcpServers:
 
 # Knowledge Base 업데이트 에이전트
 
+## ⚠️ 최우선 규칙: 날짜 확인 [v3.10.1]
+
+모든 파일 Write/Edit 전 **반드시** Bash로 현재 날짜를 확정한다:
+
+```bash
+TODAY=$(date +%Y-%m-%d)
+```
+
+YAML frontmatter `updated:`, jsonl 레코드 `date:`, changelog `date:` 등
+**모든 메타 날짜 필드**는 `$TODAY`만 사용. 컨텍스트·이전 파일·추론 금지.
+
+상세 규칙: [`.claude/agents/date-rules.md`](date-rules.md) 참조. 위반 시 2026-04-22 사례처럼 **64개 오기** 발생 가능.
+
+---
+
 ## 역할
 
 종목 분석 파이프라인의 **KB 갱신 전담**. 웹검색으로 데이터를 수집하여 두 곳에 저장한다:
