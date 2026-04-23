@@ -142,11 +142,14 @@ lint_mode: full
 | `defense_industry.md` | **NDAA FY2026 $901B**(상원통과), 미 primes 백로그 합산 $1조+(LMT $194B/RTX $268B/NOC $95.7B/GD $118B/BA $545B+), K-방산 수출 2025 $15.4B→2026 $20B목표, 한국 방위력개선비 19.97조(+11.9%) | 한화에어로 Redback **XM30 Phase 2 탈락 확정**(Rheinmetall vs GDLS 2파이널 9월 결정). 현대로템 폴란드 K2 2차 9조+선수금 3조 조기수령. LIG넥스원 수주잔고 23.5조(중동 천궁-II 10.6조). KAI 2026 가이던스 매출 5.73조(+58%)·수주 10.44조(+63%) KF-21 인니 16대 MoU. Rheinmetall Lynx KF-41 €10B 확장. BAE Eurofighter GCAP까지 가득참. Dassault Rafale €46.6B 백로그 | 04-21 | 05-21 | high |
 | `luxury.md` | **2026 K자 양극화 고착**: Gucci 2025 -26%(로고 15년래 최대 축소)·Burberry -17% vs **Hermès +6% CER·Cucinelli +10%·Bottega Q1 +17.9%**. LVMH Q1 €19.1B(-6%)·F&L 유기 -2%. Trump 15% 관세 재부과 위협(EU €93B 보복), 2026-02 IEEPA 불법 판결. 한국 면세 따이공→FIT 전환 확정, 춘제 면세 +90% YoY | **한국 수혜 순위**: 1순위 현대백화점(069960, TP 110K), 2순위 호텔신라(008770, TP 58K, DF1 철수 OP +800억), 3순위 아모레(090430). 회피: LG생활건강(051900, 더후 부진 장기화). Quiet Luxury 승자(Hermès·Cucinelli·Bottega)·패자(Gucci·Burberry) 구조 고착 | 04-21 | 05-21 | high |
 | `consumer_retail.md` | **미국 Core PCE 3.0%·CB Consumer Confidence 91.8(Expectations 70.9↓)·UMich 54.0(YoY-20%)·소매판매 MoM 0.1%(관세직격)·한국 CPI 2.2%. WMT Q4 FY26 US comp +4.6%·e-comm +24%·매출 $700B 첫 돌파. COST Executive 39.7M(+9.1% YoY, 매출 74.3% 기여)·Kirkland $90B. 이마트 2025 OP 3,225억(+584.8%). 쿠팡 2025 49.12조(+14%)·Wow 15M·Q4 OP-97%(개인정보 유출)** | CU(BGF) 2026 Q2 GS25 매출 역전(BGF 상장 이래 최초), 18,711개/8.88조. K-뷰티 Q1 $31억(+19%), 미국 $6.2억(+40.9% 3년 1위). K-Food+ $33.5억, 라면 $4.35억(+26.4%). Trump 중국관세 145%+de minimis 폐지→Temu 미 직배송 중단·로컬셀러 전환, Shein 터키·멕시코·브라질 공장. 미 PB $283B(Great Value 86% 침투). Quick Commerce 2029E $55.5B. **Costco(COST) 2026-04-22 Buy 81.0 분석 완료** | 04-22 | 05-22 | high |
+| `logistics.md` | **SCFI 1,826.77p(W13)·Drewry WCI $2,246/40ft(-3%)·BDI 2,523p·호르무즈 VLCC $87,711/d·보험료 1% hull(4배)·Long Beach 2026E 9M TEU·부산 24.4M·CJ대한통운 2025 OP 5,081억→2026E 5,630억(+14%, 쿠팡 반사)·HMM 2025 OP 1.46조(SCFI YoY-37% 방어), 2026 공급과잉 SCFI 1,000~1,500·팬오션 2026E OP 5,260억·Symbotic Backlog $22.5B·FedEx Q1 FY26 $22.2B(+3%)·UPS Amazon-50%·UNP/CSX Q1 upcycle·창고자동화 $34.17B** | 2M 해체→Gemini(Maersk+HL)/Ocean(CMA CGM+Evergreen+COSCO 9.5M TEU)/Premier(ONE+HMM+YM 3.8M)/MSC 독자. ILA 2030-09-30까지 임금 +61.5% 타결. 파나마 Gatun 수위 회복 but 32 slots(pre-drought 36-38 미복구), NOAA El Niño Watch 4월 재가뭄 리스크. 수에즈 Houthi 봉쇄 지속. 트럼프 관세 컨테이너 中→美 -16%, Laredo 국경 트럭 +14% YoY, 멕시코 FDI 2026E $40-45B(Kearney 19위 승격). IMO 2030 -40% CO2·암모니아 2037 경제적·최종 가이드 2026-05. 콜드체인 Healthcare 3PL $49.49B·Biopharma CAGR 10.98% | 04-24 | 05-24 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
 > [v3.6 재정비 — 04-21]: ai/auto/semiconductor/bio_pharma/defense_industry 5건 오전 + banking_capital/battery/infrastructure 3건 오후 갱신. ai_anthropic.md ai.md 흡수 삭제. 루트 redirect 3종 포맷 통일.
 > [v3.7 신규 — 04-21 야간]: luxury.md 신규 (명품·면세 섹터 공백 해소). 총 industry KB 19개 체제.
+> [v3.8 신규 — 04-22]: consumer_retail.md 신규 (소비재·유통·이커머스·편의점·K-뷰티·K-Food 공백 해소). 총 industry KB 20개 체제.
+> [v3.9 신규 — 04-24]: logistics.md 신규 (해운·항만·물류자동화·콜드체인·트럭킹 공백 해소). 총 industry KB 21개 체제.
 
 ---
 
@@ -222,6 +225,8 @@ lint_mode: full
 | `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
 | `defense_2026.jsonl` | 25건 (신규 생성 2026-04-21) | kb-updater |
 | `luxury_2026.jsonl` | 52건 (신규 생성 2026-04-21 야간) | kb-updater |
+| `consumer_retail_2026.jsonl` | 31건 (신규 생성 2026-04-22) | kb-updater |
+| `logistics_2026.jsonl` | 29건 (신규 생성 2026-04-24) | kb-updater |
 | `changelog_2026.jsonl` | 58건 (+1 @2026-04-21 야간: luxury 신규) | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
@@ -278,6 +283,10 @@ lint_mode: full
 | BGF리테일(282330, CU), GS리테일(007070, GS25), 세븐일레븐, 이마트24 | `industry/consumer_retail.md §6` | `macro/korea_economy.md §5-4` |
 | 쿠팡(CPNG), Shein, Temu(PDD), Alibaba 알리익스프레스 | `industry/consumer_retail.md §5` | `macro/geopolitics.md §1` (중국 관세 145%) |
 | 코스알엑스, VT, 아누아, 파우더룸 (K-뷰티), LG생활건강(051900), 아모레(090430) | `industry/consumer_retail.md §7.1` | `industry/luxury.md §4`, `macro/korea_economy.md §5-4` |
+| HMM(011200), 팬오션(028670), 대한해운(005880) | `industry/logistics.md §1.4` | `macro/supply_chain.md`, `industry/energy.md`, `macro/geopolitics.md` (호르무즈) |
+| CJ대한통운(000120), 한진(002320), 대한항공 화물(003490) | `industry/logistics.md §6, §9` | `industry/consumer_retail.md §5` (쿠팡), `macro/korea_economy.md §5` |
+| Symbotic(SYM), KION Group, Daifuku(6383.JP), Amazon Robotics | `industry/logistics.md §5` | `industry/robotics.md`, `industry/ai.md` |
+| FedEx(FDX), UPS, DHL, Union Pacific(UNP), CSX, NSC, ODFL, JBHT, XPO | `industry/logistics.md §3, §4, §7` | `macro/political_cycle.md` (관세), `macro/supply_chain.md` |
 | 삼성바이오, 셀트리온 | `industry/bio_pharma.md` | `macro/korea_economy.md §5-5` |
 | Gold, TLT, IAU | `macro/global_risk_factors.md §4` | `macro/us_monetary_policy.md` |
 | BTC, ETH, SOL | `industry/crypto_bitcoin.md §1, §6` | `macro/global_risk_factors.md §2`, `market/daily_snapshot.md` |
@@ -291,6 +300,7 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-24 | `industry/logistics.md` | **신규 생성** — 물류·해운·항만·창고자동화·콜드체인 섹터 KB 공백 해소. 해운(SCFI 1,826.77p·WCI $2,246·BDI 2,523p·VLCC $87,711/d 호르무즈 premium 1% hull) + 항만·운하(LB 9M TEU 목표·부산 24.4M·ILA 2030-09-30 타결·파나마 32 slots 미복구·수에즈 Houthi 봉쇄) + 한국 3PL(CJ대한통운 2026E OP 5,630억+14%·HMM 2025 OP 1.46조·팬오션 5.43조) + 물류자동화(Symbotic Backlog $22.5B·시장 $34.17B·KION/Daifuku 증설) + 미국 택배(FedEx FY26 +4~6%·UPS Amazon-50% 전략) + 북미 철도(UNP/CSX Q1 upcycle OP +20%) + 트럭킹(ODFL/JBHT·Cass -7.2%) + 콜드체인($49.49B) + 트럼프 관세 컨테이너 -16%·니어쇼어링 멕시코 FDI $40-45B·IMO 2030 -40% CO2·2M→Gemini/Ocean/Premier 얼라이언스 재편. **얼라이언스 최대 Ocean Alliance 9.5M TEU / Premier(HMM포함) 3.8M / CMA CGM 4M 돌파**. 2M Alliance 해체 후 3+1 재편 구조 확정 | +29 |
 | 2026-04-22 | `industry/consumer_retail.md` | **신규 생성** — 소비재·유통·이커머스·편의점·K-뷰티·K-Food 섹터 KB 공백 해소. 미국/한국 매크로 소비지표 + 미국 대형주(WMT/TGT/PG/KO/AMZN) + 한국 유통·식음료(이마트·롯데쇼핑·신세계·CJ제일제당·농심·삼양) + 편의점 3대장(CU/GS25/세븐일레븐) + 이커머스(쿠팡·Shein·Temu) + K-뷰티·K-Food 수출 + 중국 관세 125/145% de minimis 폐지 영향 + PB·Executive·퀵커머스 트렌드. **핵심 변화**: WMT Q4 FY26 US comp +4.6%·매출 $700B 첫 돌파 / COST Executive 39.7M(+9.1%) 매출 74.3% 기여 / 이마트 2025 OP +584.8% 턴어라운드 / CU 2026 Q2 GS25 역전 / K-뷰티 Q1 $31억(+19%) 미국 +40.9% / Temu 미 직배송 중단→로컬셀러 피벗 / 쿠팡 개인정보 유출 Q4 OP-97% / 미 PB $283B. **Costco(COST) 2026-04-22 Buy 81.0 분석 완료** 연동 | +31 |
 | 2026-04-21 야간 | `industry/luxury.md` | **신규 생성** — 명품·프리미엄 소비·면세 섹터 KB 공백 해소. 301줄 22.7KB. 글로벌 4대(LVMH/Kering/Hermès/Richemont)+미국(EL/TPR/CPRI/RL/PVH)+한국 명품·백화점·면세(008770/023530/069960/004170/031430/090430/051900) 19종 커버. **K자 양극화 고착**: Gucci 2025 -26%·Burberry -17% vs Hermès +6%·Cucinelli +10%·Bottega Q1 +17.9%. LVMH Q1 €19.1B(-6%). Trump 15% 관세 재부과 위협 + 2026-02 IEEPA 불법 판결 + EU €93B 보복 준비. 한국 면세 따이공→FIT 전환 확정·춘제 +90% YoY. 수혜: 현대백화점(TP 110K)·호텔신라(DF1 철수 OP +800억) / 회피: LG생활건강(더후 부진). Quiet Luxury 승자·패자 분화 | +52 |
 | 2026-04-21 오후 | `industry/ai_anthropic.md` | **삭제** — ai.md 2026-04-21 갱신 시 Anthropic 핵심 변화(ARR $30B OpenAI 추월, $800B 오퍼, Claude 4.7, Pentagon 갈등)가 모두 흡수됨. 중복 해소. 상장 시 별도 종목 KB로 재생성 예정. _index.md 참조 4곳 정리(Industry 테이블 제거 / 섹터-종목 매핑 통합 / 에이전트 가이드 경로 수정) | -1 파일 |
