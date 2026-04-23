@@ -28,3 +28,8 @@ type: time_series
 | 2026-04-21 | US | Core 소매판매 3월 (차+주유소 제외) | — | +0.4% MoM / +7.05% YoY | Beat | 소비 기반 확인 | [Census Bureau, 2026-04-21] |
 | 2026-04-21 | US | Netflix Q1 2026 Revenue | $12.18B | $12.25B (+16% YoY) | Beat (+0.6%) | AH -9% (Q2 가이던스 약세. WBD $2.8B 일회성 포함 주의) | [Variety / CNBC / Investing.com, 2026-04-21] |
 | 2026-04-21 | US | Netflix Q1 2026 EPS | ~$0.76 | $1.23 | Beat (일회성 포함) | AH -9%. "Beat+Guidance Miss" 패턴 부상 | [Investing.com, 2026-04-21] |
+| 2026-04-22 | US | Tesla Q1 2026 EPS | $0.37 | $0.41 | Beat +10.8% | AH 초기 +4% → Capex $25B 가이던스 발표 후 +0.4% 수렴. 마진 21.1% (+478bp YoY) | [Electrek / CNBC / Investing.com, 2026-04-22] |
+| 2026-04-22 | US | Tesla Q1 2026 Revenue | $21.92B | $22.387B | Beat | AH +0.4% 마감 | [Electrek / CNBC, 2026-04-22] |
+| 2026-04-22 | US | Tesla Q1 2026 Gross Margin | ~18% 예상 | 21.1% | Beat (+478bp YoY) | 실적 사이클 저점 통과 시사 | [Electrek, 2026-04-22] |
+| 2026-04-22 | US | Tesla 2026 Capex 가이던스 | $20B | $25B | $5B 초과 | AH 랠리 소멸 원인. Optimus 공장 투자 선행 지출 | [CNBC / Electrek, 2026-04-22] |
+| 2026-04-22 | GEO | 이란 호르무즈 선박 나포 | 봉쇄 해제 기대 | 2척 나포 — 봉쇄 지속 | 부정적 서프라이즈 | WTI $92.96(+3%), Brent $101.91(+3%) 급등. 스태그 우려 재가속 | [NBC News / CNBC / Al Jazeera, 2026-04-22] |

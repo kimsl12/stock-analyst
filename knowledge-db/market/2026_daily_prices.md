@@ -142,3 +142,28 @@ type: time_series
 | 2026-04-22 | news | Iran_Ceasefire | INDEFINITE_EXTENDED | — | — | Yahoo Finance / TheStreet [2026-04-21 AH] | 2026-04-22T09:00:00+09:00 | Trump 이란 무기한 휴전 연장 발표(장 후). 이란 내부 분열로 협상 시간 필요. WTI 하락. ES1 +0.2% |
 | 2026-04-22 | news | Warsh_Hearing | COMPLETED_INDEPENDENT | — | — | CNBC / CNN / PBS [2026-04-21] | 2026-04-22T09:00:00+09:00 | "독립성 필수"·"꼭두각시 아님". Tillis 반대(DOJ Powell수사 연계)로 인준 지연. 시장 안도 |
 | 2026-04-22 | calendar | TSLA_Q1 | TBD | — | — | Benzinga / Electrek [예정] | 2026-04-22T09:00:00+09:00 | 04-22 장 후 발표. EPS 컨센 $0.33~$0.37. 인도 358K(컨센 miss). VIX 방향 결정자 |
+| 2026-04-23 | us_index | SP500 | 7137.90 | +1.05% | point | Yahoo Finance / TheStreet [2026-04-22 close 확정] | 2026-04-23T09:00:00+09:00 | 사상 최고치 경신. 이란 휴전 연장 + TSLA Beat 기대. 반도체 주도 |
+| 2026-04-23 | us_index | NASDAQ | 24657.57 | +1.64% | point | Yahoo Finance / TheStreet [2026-04-22 close 확정] | 2026-04-23T09:00:00+09:00 | 사상 최고치 경신. 반도체 섹터 주도 |
+| 2026-04-23 | us_index | DJIA | 49490.03 | +0.69% | point | Yahoo Finance / TheStreet [2026-04-22 close 확정] | 2026-04-23T09:00:00+09:00 | +340.65pt |
+| 2026-04-23 | us_index | Russell2000 | 미확인 | +0.82% | point | 24/7 Wall St. [2026-04-22] | 2026-04-23T09:00:00+09:00 | 소형주 리스크온 동참 |
+| 2026-04-23 | us_index | VIX | ~20 | 소폭상승 추정 | index | 추정 [2026-04-22] | 2026-04-23T09:00:00+09:00 | WTI $92.96 급등 → 인플레 우려 반영. 정확 수치 미수집 |
+| 2026-04-23 | asia_index | KOSPI | 6374.46 | -0.22% | point | CNBC Asia / FreePressJournal [2026-04-22 KST close] | 2026-04-23T09:00:00+09:00 | 전일 사상 최고(6388.47) 후 차익실현 |
+| 2026-04-23 | asia_index | KOSDAQ | 미확인 | +0.18% | point | CNBC Asia [2026-04-22] | 2026-04-23T09:00:00+09:00 | 소폭 반등 |
+| 2026-04-23 | asia_index | Nikkei225 | 59653.56 | +0.50% | point | CNBC Asia / FreePressJournal [2026-04-22 JST close] | 2026-04-23T09:00:00+09:00 | 미국 선물 강세 반영 |
+| 2026-04-23 | asia_index | HangSeng | 미확인 | -1.19% | point | CNBC Asia [2026-04-22 HKT close] | 2026-04-23T09:00:00+09:00 | 유가 급등 인플레 우려 |
+| 2026-04-23 | asia_index | ShanghaiCSI300 | 4799.62 | +0.66% | point | CNBC Asia [2026-04-22 CST close] | 2026-04-23T09:00:00+09:00 | 중국 내수 회복 기대 지속 |
+| 2026-04-23 | fx | USDKRW | 1479.36 | -0.23% | KRW | PoundSterlingLive / Bloomberg [2026-04-22] | 2026-04-23T09:00:00+09:00 | 소폭 원화 강세. 1400 초과 지속 |
+| 2026-04-23 | fx | DXY | ~98~99 추정 | 소폭상승추정 | index | 미수집 (추정) | 2026-04-23T09:00:00+09:00 | 유가 급등 + 미국 지수 신고가 복합. 정확 수치 미수집 |
+| 2026-04-23 | commodity | WTI | 92.96 | +5.78(추정+3%+) | USD/barrel | Fortune / CNBC [2026-04-22 close 확정] | 2026-04-23T09:00:00+09:00 | ⚠️ 이란 호르무즈 선박 2척 나포 — 봉쇄 지속. $86→$92.96 급등 |
+| 2026-04-23 | commodity | Brent | 101.91 | +3%+ | USD/barrel | CNBC / Oneindia [2026-04-22 close 확정] | 2026-04-23T09:00:00+09:00 | ⚠️ $100 돌파. 역사상 최대 공급 붕괴 지속 |
+| 2026-04-23 | commodity | Gold | 4752.76 | +0.68% | USD/oz | RoboForex / Investing.com [2026-04-22] | 2026-04-23T09:00:00+09:00 | 이란 불확실 + 탈달러 수요 구조적 지지 |
+| 2026-04-23 | bond | US10Y | ~4.30 | +5bp | percent | TradingEconomics / CNBC [2026-04-22] | 2026-04-23T09:00:00+09:00 | 유가 급등 → 인플레 기대 재상승. 4.25%→4.30% |
+| 2026-04-23 | bond | US2Y | ~3.80 | — | percent | 추정 | 2026-04-23T09:00:00+09:00 | — |
+| 2026-04-23 | bond | Spread2Y10Y | ~+50 | — | bp | 계산값 (4.30%-3.80%) | 2026-04-23T09:00:00+09:00 | 정상 구간(비역전) |
+| 2026-04-23 | crypto | BTC | ~75640~78597 | 소폭변동 | USD | SpotedCrypto / CoinMarketCap [2026-04-22] | 2026-04-23T09:00:00+09:00 | $76K 저항선 구간 유지. 소스별 편차 |
+| 2026-04-23 | crypto | ETH | ~2300 | 보합 추정 | USD | 추정 | 2026-04-23T09:00:00+09:00 | — |
+| 2026-04-23 | crypto | SOL | ~80 | 소폭하락 추정 | USD | 추정 | 2026-04-23T09:00:00+09:00 | — |
+| 2026-04-23 | crypto | TotalMarketCap | ~2.63T | — | USD | CoinMarketCap [2026-04-22] | 2026-04-23T09:00:00+09:00 | BTC 도미넌스 ~57.5% |
+| 2026-04-23 | crypto | FearAndGreedIndex | 33 | 보합 | index | SpotedCrypto [2026-04-22] | 2026-04-23T09:00:00+09:00 | Fear 구간 안착. 59일 극단공포 탈출 후 Fear 구간 |
+| 2026-04-23 | news | TSLA_Q1_Result | EPS_0.41_Beat | — | — | Electrek / CNBC / Investing.com [2026-04-22 AH] | 2026-04-23T09:00:00+09:00 | EPS $0.41(컨센 $0.37 Beat +10.8%), Rev $22.387B Beat, 마진 21.1%(+478bp). AH 초기+4%→Capex $25B 가이던스 후 +0.4% 수렴 |
+| 2026-04-23 | news | Iran_Hormuz_Seizure | SHIPS_SEIZED_BLOCKADE_CONTINUES | — | — | NBC News / CNBC / Al Jazeera [2026-04-22] | 2026-04-23T09:00:00+09:00 | 이란 호르무즈 선박 2척 추가 나포. 휴전 연장에도 봉쇄 사실상 지속. WTI $92.96 급등 트리거 |
