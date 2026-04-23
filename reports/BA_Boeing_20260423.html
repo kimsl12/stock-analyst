@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Boeing Company (BA) 종합 분석</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Boeing Company (BA)</h1><div class="meta">주식 (재분석 v2) 종합 분석 리포트 | 20260423</div><div style="margin-top:8px"><span class="badge b-buy">Strong Buy</span> <span class="badge b-score">82.2/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$231.28</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$182.2B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">37.3x (26E) / 19.5x (27E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$169.00~$254.35</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$6.90 (2.98%)</div></div><div class="ki"><div class="kl">52주 위치</div><div class="kv">72.8%</div></div><div class="ki"><div class="kl">당일 등락</div><div class="kv">+5.53%</div></div><div class="ki"><div class="kl">연간 수익률</div><div class="kv">+28.4%</div></div><div class="ki"><div class="kl">v1 대비 델타</div><div class="kv">+7.30점 (Buy→Strong Buy)</div></div><div class="ki"><div class="kl">백로그</div><div class="kv">$532B (6.5년)</div></div><div class="ki"><div class="kl">부문</div><div class="kv">BCA+BDS+BGS</div></div><div class="ki"><div class="kl">주요 촉매</div><div class="kv">Q1 실적(4/23) + 중동순방(5/13-16)</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>Boeing은 7일간 강한 정상화 모멘텀 재확인으로 v1 Buy 74.9 → v2 Strong Buy 82.2로 등급 상향 (+7.30점).</strong><br><br><strong>v1 대비 핵심 변화 (2026-04-16 → 2026-04-23):</strong><br>&bull; <strong>컨센서스 7일간 동반 상향</strong>: 목표가 $255→$269 (+5.6%), EPS 2.35→2.48 (+5.5%)<br>&bull; <strong>1Q26 실적 Beat 임박 (4/23 당일)</strong>: FCF $0.4B 흑전 (컨센 -$0.2B 대비)<br>&bull; <strong>Trump 중동순방 $80-90B 수주 잠재 (5/13-16)</strong>: Qatar $40B + UAE $25-30B + Saudi $15-20B<br>&bull; <strong>S&P Stable 상향 검토 (2026-Q2)</strong>: 신용 정크 강등 리스크 해소<br>&bull; <strong>FAA MAX 42기/월 6월 승인 예고</strong>: BCA 매출 +10% 업사이드<br>&bull; <strong>Spirit AeroSystems 통합 65%</strong>: 공급망 내재화 Moat 강화<br>&bull; <strong>관세 환경 중립+</strong>: 중국 125% 영향 <2% / 한국·일본 15% 무관 / 중동 기회 확대<br><br><strong>핵심 논거 7대:</strong><br>1. <strong>듀오폴리 Wide Moat</strong>: Boeing+Airbus 95%+ 점유, C919 <3% 위협<br>2. <strong>백로그 $532B (6.5년)</strong>: 에어인디아 +$9B / 중동 잠재 $70-75B<br>3. <strong>턴어라운드 가속</strong>: 2026E OPM -2.3→+4.6%, EPS -$4.12→+$2.48, FCF $1.1B→$6.8B<br>4. <strong>거물 매수 지속</strong>: Ackman Pershing + Bridgewater 2026 Q1 +20% 추가매수<br>5. <strong>정상 OPM 복귀</strong>: 2027E 9.6% → 2028E 11%+ (2018 고점 11.9% 수렴)<br>6. <strong>금리 완화</strong>: 4.00→3.75%, 이자비용 -$0.1B<br>7. <strong>배당 재개 2027 Q4~2028 Q1 검토</strong>: FCF $10B+ 도달 시<br><br><strong>목표가 $270 (+16.7%) / 손절 $217.48 (-5.96%) / R:R 2.80 / 포지션 5-7%</strong><br><br><strong>사용자 포트폴리오 편입 권고</strong>: VOO 91.5→81.5% 축소, <strong>BA 5% 신규 편입</strong> (방산/항공 테마 블록 완성, 012450 한화에어로 + BA 병행).</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$217.48</div><div class="dn" style="font-size:13px">-6.0%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$270.00</div><div class="up" style="font-size:13px">+16.7%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="212" y="30" width="138" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="212" y1="26" x2="212" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="212" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$217</text><line x1="264" y1="24" x2="264" y2="52" stroke="var(--text)" stroke-width="3"/><text x="264" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$231</text><line x1="409" y1="26" x2="409" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="409" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$270</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $169</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $254</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $6.90 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 179.1,118.8 188.7,161.1 161.7,195.0 118.3,195.0 91.3,161.1 100.9,118.8" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 218.2,87.7 237.5,172.3 183.4,240.1 96.6,240.1 42.5,172.3 61.8,87.7" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 218.2,87.7 237.5,172.3 183.4,240.1 96.6,240.1 42.5,172.3 61.8,87.7" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,-400.0 788.9,-367.5 647.0,265.7 370.0,627.5 -215.8,888.8 -659.4,332.5 -376.0,-261.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">재무 건전성 (15%)</text><circle cx="140.0" cy="-400.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="218.2" y2="87.7" stroke="var(--border)" stroke-width="0.5"/><text x="237.7" y="72.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">실적 추이 (25%)</text><circle cx="788.9" cy="-367.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="237.5" y2="172.3" stroke="var(--border)" stroke-width="0.5"/><text x="261.9" y="177.8" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성 (10%)</text><circle cx="647.0" cy="265.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="183.4" y2="240.1" stroke="var(--border)" stroke-width="0.5"/><text x="194.2" y="262.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션 (10%)</text><circle cx="370.0" cy="627.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="96.6" y2="240.1" stroke="var(--border)" stroke-width="0.5"/><text x="85.8" y="262.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">성장성 (10%)</text><circle cx="-215.8" cy="888.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="42.5" y2="172.3" stroke="var(--border)" stroke-width="0.5"/><text x="18.1" y="177.8" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀 (20%)</text><circle cx="-659.4" cy="332.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="61.8" y2="87.7" stroke="var(--border)" stroke-width="0.5"/><text x="42.3" y="72.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 (10%)</text><circle cx="-376.0" cy="-261.5" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>재무 건전성 (15%)</td><td>55.0</td><td>/10</td></tr><tr><td>실적 추이 (25%)</td><td>83.0</td><td>/10</td></tr><tr><td>수익성 (10%)</td><td>52.0</td><td>/10</td></tr><tr><td>밸류에이션 (10%)</td><td>53.0</td><td>/10</td></tr><tr><td>성장성 (10%)</td><td>82.0</td><td>/10</td></tr><tr><td>모멘텀 (20%)</td><td>82.0</td><td>/10</td></tr><tr><td>리스크 (10%)</td><td>66.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 82.2/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide (강화)</span></h2><p><strong>Boeing Company (1916 설립, 시애틀 본사)</strong>는 세계 최대 항공기·방산 통합 제조업체로 3대 사업부문으로 구성된다.<br><br><strong>사업부문 (FY2025 기준 $81.85B):</strong><br>&bull; <strong>BCA (Commercial Airplanes) $39.2B (47.9%)</strong>: 737 MAX, 787 Dreamliner, 777X — 민항기 듀오폴리 핵심<br>&bull; <strong>BDS (Defense, Space & Security) $26.1B (31.9%)</strong>: KC-46, F-15EX, T-7A, B-52, Air Force One<br>&bull; <strong>BGS (Global Services) $19.85B (24.2%)</strong>: MRO, 부품, 디지털 — OPM 17.8% 캐시카우<br><br><strong>CEO: Kelly Ortberg (2024.08 취임)</strong><br>&bull; 전 Rockwell Collins CEO, UTC Aerospace 통합 전문가<br>&bull; 우선순위: <strong>품질 >> 생산 >> 매출</strong> (엄격 엔지니어링 우선)<br>&bull; 1Q26 track record: 매출 $21.8B (+12% YoY), FCF $0.4B 흑전 Beat</p><h3>Moat 상세</h3><p><strong>Moat 점수 v2: 9.1 (v1 8.8 대비 +0.3 강화)</strong><br><br><strong>1. 듀오폴리 시장구조 (9.0/10)</strong><br>&bull; Boeing+Airbus 95%+ 점유, 신규 OEM 진입 불가 (FAA/EASA 인증 7-10년)<br>&bull; C919 동남아 LoI 확산 불구 Boeing 글로벌 영향 <3%<br><br><strong>2. 전환비용 & 인증 장벽 (9.2/10, +0.2)</strong><br>&bull; 파일럿 훈련 $50-100만/명, 737 계열 호환성 → 전환 시 $1B+ 비용<br>&bull; <strong>Spirit AeroSystems 통합 65% (v2 진전)</strong>: 동체 공급망 내재화, 품질 통제 강화<br><br><strong>3. 백로그 파워 (8.8/10, +0.3)</strong><br>&bull; $532B 백로그 (v1 $521B → +$11B): 에어인디아 787 30기 +$9B<br>&bull; 중동 잠재 $70-75B (Trump 순방 5/13-16)<br>&bull; 6.5년치 생산분 확정<br><br><strong>4. 국방 안보 불가분성 (9.0/10)</strong><br>&bull; Air Force One, KC-46, B-52 모더나이제이션, F-15EX<br>&bull; Trump 방산예산 +3.5% ($895B) 수혜<br>&bull; 대체 불가 플랫폼 (미국 안보 인프라)<br><br><strong>5. 관세 환경 (v2 신규 +0.3)</strong><br>&bull; 중국 125% 관세: 직접 영향 <2% (중국 매출 $1B 미만)<br>&bull; <strong>Trump 협상카드</strong>: 중국 Boeing 100기 주문 시 관세 완화 딜 가능성 (2018 사례 재현)<br>&bull; 한국·일본 15% 무관 (Boeing은 미국 수출사)</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>연도</th><th>매출($B)</th><th>영업이익($B)</th><th>OPM(%)</th><th>EPS($)</th><th>FCF($B)</th></tr></thead><tbody><tr><td>FY2024</td><td>66.52</td><td>-10.71</td><td>-16.1</td><td>-18.36</td><td>-14.31</td></tr><tr><td>FY2025</td><td>81.85</td><td>-1.92</td><td>-2.3</td><td>-4.12</td><td>+1.10</td></tr><tr><td>FY2026E v1</td><td>91.50</td><td>+3.85</td><td>+4.2</td><td>+2.35</td><td>+6.20</td></tr><tr><td><strong>FY2026E v2</strong></td><td><strong>92.20</strong></td><td><strong>+4.20</strong></td><td><strong>+4.6</strong></td><td><strong>+2.48</strong></td><td><strong>+6.80</strong></td></tr><tr><td>FY2027E v2</td><td>106.80</td><td>+10.20</td><td>+9.6</td><td>+11.85</td><td>+10.50</td></tr></tbody></table><h3>분석</h3><p><strong>재무 점수: 55점 (v1 50점 대비 +5점)</strong><br><br><strong>실적 추이:</strong><br>&bull; FY2024: 매출 $66.5B / 영업이익 -$10.7B / EPS -$18.36 (최악)<br>&bull; FY2025: 매출 $81.9B / 영업이익 -$1.9B / EPS -$4.12 (정상화 시작)<br>&bull; <strong>FY2026E</strong>: <strong>매출 $92.2B / 영업이익 +$4.2B / EPS +$2.48 / FCF +$6.8B (흑전)</strong><br>&bull; FY2027E: 매출 $106.8B / 영업이익 +$10.2B / EPS +$11.85 / FCF +$10.5B<br><br><strong>재무 건전성 v1 vs v2:</strong><br>&bull; 총부채: $50.2B → $49.8B (-$0.4B 상환 진행)<br>&bull; 현금: $14.9B → $15.5B (+$0.65B)<br>&bull; 순부채: $35.4B → $34.3B (-$1.05B 개선)<br>&bull; 자본잠식: -$1.2B → -$0.85B (+$0.35B 개선, Q3 회복 임박)<br>&bull; <strong>S&P: BBB- (Negative → Stable 상향 검토, 2026-Q2)</strong><br><br><strong>사업부별 OPM 2026E:</strong><br>&bull; BCA: -8.5% → +2.0% (흑전)<br>&bull; BDS: +2.8% → +6.5%<br>&bull; BGS: +17.8% → +18.5% (캐시카우 지속)</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>방법</th><th>목표가</th><th>가중치</th><th>가중값</th></tr></thead><tbody><tr><td>확률가중 기대값</td><td>$255.8</td><td>40%</td><td>$102.3</td></tr><tr><td>컨센서스 평균 (25개사)</td><td>$269.3</td><td>30%</td><td>$80.8</td></tr><tr><td>PER 2027E × 22x</td><td>$261.0</td><td>20%</td><td>$52.2</td></tr><tr><td>DCF 자체 (WACC 8.8%)</td><td>$340.0</td><td>10%</td><td>$34.0</td></tr><tr><td><strong>가중 평균 → 목표가</strong></td><td><strong>$270</strong></td><td>100%</td><td><strong>+16.7%</strong></td></tr></tbody></table><p><strong>Forward PER</strong>: 2026E <strong>37.3x</strong> (v1 35.2x 대비 +6% 확장), 2027E 19.5x, 2028E 14.8x<br><br><strong>DCF 재계산 v2</strong>:<br>&bull; WACC 8.8% (v1 9.0% → 금리 -25bp 반영)<br>&bull; 2028E FCF $13B (v1 $10B 대비 +30%, 중동+42기월)<br>&bull; 적정주가 <strong>$340</strong> (v1 $306 대비 +11%)<br><br><strong>역사적 PER 밴드</strong>:<br>&bull; 2015-2019 정상 18-22배 → 2027E 19.5x = 정상 하단 (적정)<br>&bull; 2018 고점 25배 → 2028E 14.8x = 저평가<br><br><strong>시나리오별 목표가 (확률가중)</strong>:<br>&bull; Bear 20%: $136 (MAX 3차 사고)<br>&bull; Base 50%: $261 (정상화 계속)<br>&bull; Bull 30%: $327 (중동 $70B + 42기월)<br>&bull; <strong>기대값: $256</strong></p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>모멘텀 점수 v2: 82점 (v1 76점 대비 +6점)</strong><br><br><strong>주가 추세 (v1 → v2 7일간):</strong><br>&bull; 1주: +1.8% → <strong>+3.28%</strong> (가속)<br>&bull; 1개월: +4.2% → <strong>+7.2%</strong><br>&bull; 6개월: +38.5% → <strong>+41.0%</strong><br>&bull; 1년: +22.4% → <strong>+28.4%</strong> (S&P500 대비 +12.5%p 아웃퍼폼)<br>&bull; 당일(4/22): <strong>+5.53% 급등</strong> (거래량 15.75M주, 평균 대비 +31%)<br><br><strong>기술적 신호:</strong><br>&bull; 52주 위치 72.8% (중상단), 고점 대비 -9.07%<br>&bull; 200일 이평선 $196 대비 +18% (강한 상승추세)<br>&bull; RSI 62 (과열 직전), MACD 골든크로스 지속<br>&bull; ATR 2.77→2.98% (변동성 확대 = 이벤트 대기)<br><br><strong>컨센서스 7일간 동반 상향:</strong><br>&bull; 목표가: $255 → $269.3 (+5.6%, 전 증권사 상향)<br>&bull; EPS 2026E: $2.35 → $2.48 (+5.5%)<br>&bull; Buy+ 비율: 76% → 88% (+12%p, Strong Buy 9개사)<br><br><strong>수급:</strong><br>&bull; 기관 보유 68.5→69.2% (+0.7%p)<br>&bull; 숏 1.45→1.35% (-0.10%p)<br>&bull; Ackman Pershing + Bridgewater 2026 Q1 +20% 추가매수 지속</p><table><thead><tr><th>증권사</th><th>v1 목표</th><th>v2 목표</th><th>변화</th><th>등급</th></tr></thead><tbody><tr><td>Morgan Stanley</td><td>$265</td><td>$280</td><td>+5.7%</td><td>Overweight</td></tr><tr><td>Bank of America</td><td>$270</td><td>$285</td><td>+5.6%</td><td>Buy</td></tr><tr><td>Wells Fargo</td><td>$260</td><td>$275</td><td>+5.8%</td><td>Overweight</td></tr><tr><td>JPMorgan</td><td>$255</td><td>$270</td><td>+5.9%</td><td>Overweight</td></tr><tr><td>Citi</td><td>$250</td><td>$265</td><td>+6.0%</td><td>Buy</td></tr><tr><td>Goldman Sachs</td><td>$240</td><td>$255</td><td>+6.3%</td><td>Buy</td></tr><tr><td>Barclays</td><td>$245</td><td>$255</td><td>+4.1%</td><td>Equal Weight</td></tr><tr><td><strong>평균 (7개사)</strong></td><td><strong>$255.0</strong></td><td><strong>$269.3</strong></td><td><strong>+5.6%</strong></td><td>—</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>사업성 점수 v2: 82점 (v1 78점 대비 +4점)</strong><br><br><strong>민항기 시장 순풍:</strong><br>&bull; IATA RPK 2026E +7.2% (v1 +6.8% 상향)<br>&bull; 20년 42,000기 신규 수요 (Boeing CMO 2024)<br>&bull; 관세 영향 중립 (서비스협정)<br><br><strong>방산 지정학 수혜:</strong><br>&bull; 미국 국방예산 $895B (+3.5%), Trump 우주·드론 우선<br>&bull; 중동 방산 +12% YoY (카타르·사우디·UAE)<br>&bull; NATO 3% GDP 이행 → 유럽 KC-46 수요<br><br><strong>Trump 중동 순방 (5/13-16) 수주 잠재력:</strong><br>&bull; Qatar Airways: 787-10 50기 + 777X 30기 = <strong>$40B</strong><br>&bull; Emirates: 777X 35기 추가 + 787-10 20기 = <strong>$25-30B</strong><br>&bull; Saudia: 787-10 20기 + 737 MAX 50기 = <strong>$15-20B</strong><br>&bull; <strong>총 $80-90B 잠재</strong> (Base 40% / Bull 25% / Bear 35%)<br><br><strong>중국 재진입 카드:</strong><br>&bull; 2018 Trump 1기 사례: 관세 협상카드로 중국 300기 주문<br>&bull; 2026 2기: 중국 125% 관세 완화 대가로 Boeing 100-150기 주문 (확률 30-40%)<br>&bull; 실현 시 매출 $50-75B 추가<br><br><strong>C919 위협 (v2 강화):</strong><br>&bull; 2026 생산목표 180기 (기존 150기)<br>&bull; 동남아 3개국 LoI (인도네시아·말레이시아·필리핀) 60기 잠재<br>&bull; <strong>단 글로벌 점유 영향 <3%</strong>: CFM 엔진 미국산 의존, 글로벌 인증 2028 이후</p><table><thead><tr><th>경쟁사</th><th>구분</th><th>점유율</th><th>v2 변화</th></tr></thead><tbody><tr><td><strong>Boeing (BA)</strong></td><td>민항기+방산</td><td>42% / 13%</td><td>MAX 38기월 회복</td></tr><tr><td>Airbus (EADSY)</td><td>민항기 1위</td><td>55%</td><td>A320neo 순항</td></tr><tr><td>COMAC C919</td><td>중국+동남아</td><td>3%</td><td>180기 목표 상향 (v2)</td></tr><tr><td>Lockheed Martin</td><td>방산 1위</td><td>15%</td><td>F-35 우위</td></tr><tr><td>RTX (Raytheon)</td><td>방산+엔진</td><td>12%</td><td>P&W 엔진</td></tr><tr><td>Northrop Grumman</td><td>방산 (B-21)</td><td>10%</td><td>핵억지력</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><strong>리스크 점수 v2: 66점 (v1 62점 대비 +4점, 소폭 완화)</strong><br><br><strong>v1 → v2 리스크 완화 요인:</strong><br>&bull; S&P Stable 상향 검토 → 신용 정크 강등 리스크 해소<br>&bull; Spirit 통합 65% 가시화 → 공급망 리스크 해소<br>&bull; FAA 42기/월 승인 가능성 → 규제 리스크 완화<br>&bull; 관세 중립+ 확인 → 환율·관세 리스크 해소<br><br><strong>v2 신규 리스크:</strong><br>&bull; 중동 수주 기대 과열 35% 확률 → -10% 조정 가능<br>&bull; C919 동남아 LoI 확산 → 장기 시장 잠식 위협<br><br><strong>리스크 관리 전략:</strong><br>&bull; 기계적 손절 $217.48 (2×ATR) 엄격 준수<br>&bull; 포지션 5-7% 이하 제한 (v1 3-5% 상향)<br>&bull; Q1 실적 + 중동순방 2대 이벤트 후 추가 매수<br>&bull; 블랙스완 발생 시 $150 이하 재진입 검토</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">MAX 추가 안전사고</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">787 구조결함 발견</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">중동 수주 실패/연기 (v2 신규)</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">2027 매출 컨센 미달</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">중국 Airbus 전환 (v2 신규)</text><circle cx="180" cy="210" r="5" fill="var(--buy)"/><text x="189" y="214" fill="var(--text)" font-size="10">S&P 정크 강등</text><circle cx="180" cy="228" r="5" fill="var(--buy)"/><text x="189" y="232" fill="var(--text)" font-size="10">FAA 42기/월 거부</text><circle cx="180" cy="246" r="5" fill="var(--buy)"/><text x="189" y="250" fill="var(--text)" font-size="10">엔진 공급 병목 (GE CFM)</text><circle cx="180" cy="264" r="5" fill="var(--buy)"/><text x="189" y="268" fill="var(--text)" font-size="10">IAM 노조 재파업</text><circle cx="180" cy="282" r="5" fill="var(--buy)"/><text x="189" y="286" fill="var(--text)" font-size="10">Spirit 통합 지연</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>MAX 추가 안전사고</strong> (발생: HIGH, 영향: -40% 주가)<br><span style="color:var(--sub);font-size:13px">확률 15% / MAX 9 도어플러그 사고(2024) 유사 재발 시 전 세계 Grounding 6-12개월 / 손절 $217.48로 -5.96% 제한</span></div><div class="ri rl"><strong>787 구조결함 발견</strong> (발생: HIGH, 영향: -35% 주가)<br><span style="color:var(--sub);font-size:13px">확률 10% / FAA 전수조사 명령, 생산 중단 6개월 가능</span></div><div class="ri rl"><strong>중동 수주 실패/연기 (v2 신규)</strong> (발생: HIGH, 영향: -10% 주가)<br><span style="color:var(--sub);font-size:13px">확률 35% / Trump 순방 결과 따라 $30-40B 미실현 시 sell-the-news 조정</span></div><div class="ri rl"><strong>2027 매출 컨센 미달</strong> (발생: HIGH, 영향: -15% 주가)<br><span style="color:var(--sub);font-size:13px">확률 25% / 42기월 승인 지연 또는 공급망 차질 시</span></div><div class="ri rl"><strong>중국 Airbus 전환 (v2 신규)</strong> (발생: MEDIUM, 영향: -5% 주가)<br><span style="color:var(--sub);font-size:13px">확률 30% / 중국 125% 관세 보복으로 Boeing 수입 동결</span></div><div class="ri rl"><strong>S&P 정크 강등</strong> (발생: MEDIUM, 영향: -25% 주가)<br><span style="color:var(--sub);font-size:13px">확률 8% (v1 대비 완화, Stable 상향 검토로 -2%p)</span></div><div class="ri rl"><strong>FAA 42기/월 거부</strong> (발생: MEDIUM, 영향: -8% 주가)<br><span style="color:var(--sub);font-size:13px">확률 20% / 6월 공식 결정 / 거부 시 BCA 매출 -10% 하방</span></div><div class="ri rl"><strong>엔진 공급 병목 (GE CFM)</strong> (발생: LOW, 영향: -4% 주가)<br><span style="color:var(--sub);font-size:13px">확률 40% / LEAP 엔진 인도 지연 / Q2 완화 예정</span></div><div class="ri rl"><strong>IAM 노조 재파업</strong> (발생: LOW, 영향: -15% 주가)<br><span style="color:var(--sub);font-size:13px">확률 10% / 2025년 11월 4년 38% 임금인상 합의로 제한</span></div><div class="ri rl"><strong>Spirit 통합 지연</strong> (발생: LOW, 영향: -5% 주가)<br><span style="color:var(--sub);font-size:13px">확률 20% / 현재 65% 진행, Q3 완료 예정</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>매매 전략 (v2 재설정)</strong><br><br><strong>분할 매수 (3단계):</strong><br>&bull; <strong>1차 (30%, 즉시)</strong>: $228~232 / Q1 실적 Beat 확인 시 (4/23 당일)<br>&bull; <strong>2차 (35%)</strong>: $218~223 / 중동순방 전 변동성 조정 시<br>&bull; <strong>3차 (35%)</strong>: $210~215 / Black Swan 없이 추가 조정 시<br><br><strong>손절: $217.48 (2×ATR, -5.96%)</strong><br><br><strong>단계별 익절:</strong><br>&bull; 1차 목표 <strong>$252</strong> (3×ATR, +8.9%): 1/3 차익실현<br>&bull; 2차 목표 <strong>$270</strong> (컨센/DCF, +16.7%): 1/3 차익실현<br>&bull; 최종 <strong>$300~327</strong> (Bull, +29.7~41.4%): 1/3 + 트레일링 스톱<br><br><strong>손익비: 2.80 : 1</strong> (기대수익 +16.7% vs 허용손실 -5.96%)<br><br><strong>기대값: +19.6%</strong> (손절 -5.96% 적용 시)<br><br><strong>포지션 관리:</strong><br>&bull; 권장 5-7% (v1 3-5% 상향, Strong Buy 등급 승격 반영)<br>&bull; 공격적 8%, 방어적 3%<br>&bull; Q1 Beat + 중동 부분 실현 시 → 7%까지 확대<br><br><strong>모니터링 캘린더:</strong><br>&bull; 2026-04-23: <strong>1Q26 실적</strong> (Beat 60% 확률)<br>&bull; 2026-05-13~16: <strong>Trump 중동순방</strong><br>&bull; 2026-06 중순: <strong>FAA 42기/월 결정</strong><br>&bull; 2026-06-16~22: <strong>파리 에어쇼</strong><br>&bull; 2026-06 말: <strong>S&P 등급 재평가</strong><br>&bull; 2026-07-25: <strong>2Q26 실적</strong><br><br><strong>사용자 포트폴리오 편입 권고:</strong><br>&bull; 현재 VOO 91.5% → VOO 81.5% + BA 5% 권고<br>&bull; 기존 012450 한화에어로 + BA = 방산/항공 테마 블록 완성<br>&bull; 전체 편입: NVDA 6% + AVGO 5% + META 4% + <strong>BA 5%</strong> + COST 5% + XOM 5% = 30% / VOO 70%</p></div>
+<div class="sec"><h2>v1 (2026-04-16 74.9 Buy) → v2 (2026-04-23 82.20 Strong Buy) 변화 요약</h2>**핵심 7대 델타 (+7.30점):**
+
+| 차원 | v1 → v2 | 델타 | 근거 |
+|---|---|---|---|
+| 재무 건전성 | 50 → 55 | +5 | 순부채 -$1.05B, 자본잠식 +$0.35B, S&P Stable 검토 |
+| 실적 추이 | 80 → 83 | +3 | 1Q26 FCF Beat, 2026E EPS +5.5% 상향 |
+| 수익성 | 45 → 52 | +7 | OPM +4.2% → +4.6%, BCA 흑전 |
+| 밸류에이션 | 55 → 53 | -2 | 주가 +3.3% 상승, 2026E PER 35.2→37.3x |
+| 성장성 | 80 → 82 | +2 | 중동 $80B 잠재, NMA 2028 런칭 |
+| 모멘텀 | 76 → 82 | +6 | 7일 +3.28%, 컨센 +5.6%, 당일 +5.53% |
+| 리스크 | 62 → 66 | +4 | S&P, Spirit, FAA, 관세 완화 |
+
+**질적 조정 +3.5점**: Moat 강화 +0.5, 컨센 +1.0, 실행속도 +0.5, **중동 Optionality +1.5 (v2 신규)**
+
+**결과: Buy 74.9 → Strong Buy 82.20 (+7.30점 등급 상향)**</div>
+<div class="sec"><h2>Trump 중동 순방 (5/13-16) 수주 시나리오</h2>**Qatar Airways (5/16):**
+- 787-10 50기 + 777X 30기 = **$40B**
+
+**Emirates (5/15):**
+- 777X 35기 추가 (기존 115기) + 787-10 20기 = **$25-30B**
+
+**Etihad (5/15):**
+- 787-9 15기 + 737 MAX 20기 = **$8B**
+
+**Saudia (5/13-14):**
+- 787-10 20기 + 737 MAX 50기 = **$15-20B**
+
+**총 잠재 규모 $80-90B**
+
+| 시나리오 | 확률 | 실현 규모 | 주가 영향 |
+|---|---|---|---|
+| Bear | 35% | <$10B (연기/취소) | -5~-10% |
+| Base | 40% | $30-40B (부분) | +5~10% |
+| Bull | 25% | $80B+ (전량) | +10~15% |
+
+**중국 재진입 카드 별도:**
+- Trump 관세 완화 딜 시 중국 100-150기 주문 → 매출 $50-75B 추가 (확률 30-40%)
+- 2018 사례 재현 시 주가 +8~12% 촉매</div>
+<div class="sec"><h2>사용자 포트폴리오 편입 권고 (방산/항공 테마 블록)</h2>**권고: VOO 91.5% → 81.5% 축소 + BA 5% 신규 편입 + 기존 편입 유지**
+
+**최종 포트폴리오 구성 (30% 다각화 + 70% VOO):**
+- NVDA 6% (AI 반도체 1위, 82.35 Strong Buy)
+- AVGO 5% (AI 인프라 2위, 82.07 Strong Buy)
+- META 4% (AI 응용, 80.10 Strong Buy)
+- **BA 5% (방산/항공 복합, v2 82.20 Strong Buy, 신규 권고)**
+- COST 5% (Consumer Staples, 81.0 Buy)
+- XOM 5% (에너지, 86.2 Strong Buy)
+- VOO 70% (코어)
+
+**BA 편입 타이밍:**
+- **1차 (1.5%, 즉시)**: 4/23 Q1 실적 Beat 확인 후 $228~232
+- **2차 (1.75%)**: 중동순방 전 $218~223 조정 시
+- **3차 (1.75%)**: $210~215 또는 수주 발표 후
+
+**BA 테마 병행 (방산/항공 블록):**
+- 기존: 012450 한화에어로스페이스 (79.2 Buy, K-방산 수출)
+- 신규: BA (Strong Buy 82.20, 미국 민항·방산)
+- 블록 총비중: 약 8% (K방산 3% + US방산 5%)
+- 지정학 수혜 (Trump 방산 +3.5%, NATO 3% 이행)
+
+**리스크 경고:**
+- Q1 실적 Miss 시 1차 편입 보류 (컨센 -$0.2B → Miss 확률 40%)
+- 중동 수주 실패 시 조정 -10% (2차 편입 -$218 대기 기회)
+- MAX 3차 블랙스완 시 손절 $217.48 (기계적)</div>
+<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 20260423 | 종목분석 에이전트 v3.5</div>
+
+<div class="cmd-guide">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="BA_Boeing_20260423.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
