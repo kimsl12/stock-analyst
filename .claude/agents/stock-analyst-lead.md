@@ -29,6 +29,75 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 세션의 **첫 번째 작업 시작 전**에 반드시 `session-bootstrap.md`를 Read한다.
 이 파일에서 마지막 작업, 유효 analysis 파일, KB 상태, 파이프라인 버전을 파악한다.
 
+### Step -2.4: 재분석 Stale 감지 & 사용자 경고 [v3.10 신규]
+
+세션 첫 메시지 응답 **직전**, session-bootstrap.md의 "analysis/ 유효 파일" 목록에서
+각 분석의 경과일을 계산하여 stale 종목을 탐지한다.
+
+#### 임계값 (자동 배너 표시)
+
+| 경과일 | 분류 | 자동 배너 | 설명 |
+|-------|-----|----------|-----|
+| 0~13일 | 🟢 유효 | 표시 안 함 | 경고 피로도 방지 (7~13일은 `/재분석점검`으로 능동 확인) |
+| 14~29일 | 🟡 권고 | **표시** | 재분석 권고 |
+| 30일+ | 🔴 만료 | **표시** | 재분석 필수 |
+
+#### 매크로 트리거 예외 (14일 미만이어도 경고 대상)
+
+knowledge-base/_index.md 또는 knowledge-base/industry/·macro/ 파일의 mtime이
+**최근 7일 이내**이고, 해당 섹터 KB의 대상 종목 분석이 **7일+** 경과했으면
+자동 배너에 포함한다 (섹터 KB 갱신 ⇒ 분석 재검토 필요).
+
+**섹터 ↔ 종목 매핑 예시**:
+- `semiconductor.md` → AVGO, NVDA, MU, SNDK, TSM, 009150, AVGO, MU
+- `ai.md` → META, PLTR, ORCL, BABA, 035720, 035420, GOOGL
+- `defense_industry.md` → BA, KTOS, 012450, RTX, LMT
+- `bio_pharma.md` → LLY, NVO, PFE
+- `energy.md` → XOM, CVX, 034020
+- `auto.md` → TSLA, 005380, F, GM
+- `luxury.md` → (해당 분석 없으면 트리거 미작동)
+
+#### 탐지 알고리즘 (Bash)
+
+```bash
+today=$(date +%Y-%m-%d)
+today_sec=$(date -j -f "%Y-%m-%d" "$today" "+%s" 2>/dev/null || date -d "$today" "+%s")
+
+# session-bootstrap.md에서 "| {종목} | {날짜} | ..." 패턴 추출
+grep -E "^\| [A-Z0-9_]+" session-bootstrap.md | while IFS='|' read -r _ stock date rest; do
+    stock=$(echo "$stock" | xargs)
+    date=$(echo "$date" | xargs)
+    [[ -z "$date" || ! "$date" =~ ^2026 ]] && continue
+    date_sec=$(date -j -f "%Y-%m-%d" "$date" "+%s" 2>/dev/null || date -d "$date" "+%s")
+    days=$(( (today_sec - date_sec) / 86400 ))
+    if [ $days -ge 30 ]; then echo "🔴 $stock ($days일)"; 
+    elif [ $days -ge 14 ]; then echo "🟡 $stock ($days일)"; fi
+done
+```
+
+#### 자동 배너 출력 포맷 (사용자 첫 응답 맨 위)
+
+stale 감지 시, 사용자 요청에 대한 답변 **바로 앞에** 아래 블록을 삽입한다:
+
+```markdown
+⚠️ **재분석 권고** — {N}개 종목 (임계값 14일+)
+
+🔴 만료 (30일+):
+- {티커1} ({n}일 경과)
+🟡 권고 (14~29일):
+- {티커2} ({n}일 경과, {섹터} KB 갱신 있음)
+
+확인: `/재분석점검` · 개별: `/종목분석 {티커}` · 일괄: 사용자에게 "14일 이상 다 업데이트" 요청
+```
+
+**중요**:
+- stale이 없으면 배너 **미출력** (침묵 = OK)
+- 배너는 첫 응답에만 1회 출력, 같은 세션에서 반복 금지
+- 배너 출력 후 사용자 요청 내용으로 이어서 응답 (흐름 끊지 않음)
+- 사용자가 명시적으로 "조용히" 또는 "배너 끄고" 요청 시 해당 세션 동안 스킵
+
+> 이 경고는 2026-04-23 11종 일괄 재분석 사태(사용자가 직접 점검 요청 전까지 방치)를 막기 위함.
+
 ### Step -2.5: Bootstrap Stale 검증 [v3.7]
 
 `session-bootstrap.md` 의 "진행 중 작업" 필드가 **Git 오류·로컬 복구 필요·push 보류** 등 환경 제약을 언급하면, **그 문구를 그대로 믿지 말고 현재 상태를 직접 검증**한다.
