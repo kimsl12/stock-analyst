@@ -1,4 +1,4 @@
-# 종목분석 AI 에이전트 v3.8
+# 종목분석 AI 에이전트 v3.9
 
 > 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 17개 슬래시 명령어.
 
@@ -25,7 +25,8 @@
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.8** | **2026-04-21** | **일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단** |
+| **v3.9** | **2026-04-23** | **Phase 3 종료 검증(HTML+commit+bootstrap 3단계) + 파일별 명시적 git add (병렬 경합 방지) + 버전 관리 명명 규칙 통일 (`_v2` 폴더 접미사·HTML은 날짜만) + R:R<1.5 진입 보류 자동 태깅 + 컨센서스 초과 경고 블록 자동 삽입** |
+| v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단 |
 | v3.7 | 2026-04-20 | luxury KB 신규 + 에너지/방산 industry 재편 + 루트 redirect 파일 SSOT 정리 |
 | v3.6 | 2026-04-19 | `etf-lead` 에이전트 분리 (stock 파이프라인에서 ETF 전용 브랜치 분기) + 다크/라이트 테마 토글 |
 | v3.5 | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + analysis 아카이브 + 에이전트 모순 해결 + fetch_price.py 시장지수 + 브리핑 스캐폴딩 |
@@ -34,6 +35,53 @@
 | v3.0 | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어 |
 | v2.3 | 2026-04-06 | 데이터 흐름 개편 + 해외 종목 + 가격 검증 |
 | v2.0 | 2026-04-05 | 9개 에이전트 체계 + DART API |
+
+---
+
+## v3.9 핵심 — 재분석 프로세스 안정화 & 진입 리스크 경고
+
+2026-04-23 11종 재분석 과정에서 발견된 5가지 이슈를 구조적으로 해결.
+
+### 이슈 1: Phase 3 종료 검증 의무화 (stock-analyst-lead / etf-lead)
+서브에이전트 Executive Summary 반환 전 **3단계 검증 Bash 실행**:
+- HTML 파일 존재 (`ls reports/{파일}`)
+- git log 커밋 확인 (`git log | grep {티커}`)
+- session-bootstrap.md 갱신 확인
+
+실패 시: HTML 누락 → 재호출 / 커밋 누락 → 리드 직접 처리 / bootstrap 누락 → Edit.
+
+### 이슈 2: 파일별 명시적 git add (병렬 경합 방지)
+```
+❌ git add reports/           (폴더 전체 — 다른 병렬 에이전트 산출물 섞임)
+✅ git add reports/{특정파일}  (본 세션 파일만)
+```
+사례: 2026-04-23 두산에너빌리티 HTML이 카카오 커밋에 섞인 사고.
+
+### 이슈 3: 버전 관리 명명 규칙 통일
+```
+analysis/{티커}_{종목명}_v2/          (폴더는 버전 접미사 필수)
+analysis/{티커}_{종목명}_v1/          (재분석 시 기존 폴더 리네임 보존)
+reports/{티커}_{종목명}_{YYYYMMDD}.html  (HTML은 날짜만, 버전 접미사 금지)
+```
+기존 reports HTML 삭제·덮어쓰기 금지 (델타 비교 보존 의무).
+
+### 이슈 4: R:R < 1.5 진입 보류 자동 태깅 (scorecard-strategist)
+| R:R | 태그 |
+|-----|-----|
+| ≥ 2.0 | (태그 없음) |
+| 1.5~1.99 | 🟡 Acceptable |
+| 1.0~1.49 | 🟠 **⚠️ 진입 보류 권고** |
+| < 1.0 | 🔴 **⛔ 진입 금지 — 조정 대기 권고** |
+
+스코어 72.4 Buy라도 R:R 0.41이면 "진입 보류" 태그가 스코어보다 우선 표시.
+
+### 이슈 5: 컨센서스 초과 자동 경고 (report_template.py)
+현재가 > 증권사 평균 목표가인 경우, HTML 리포트 **최상단에 노란색 경고 블록 자동 삽입**:
+```
+⚠️ 컨센서스 초과 경고
+현재가가 증권사 평균 목표가 $X를 +X.X% 초과 — 업사이드 소진
+```
+scorecard에서 `consensus_warning`·`entry_warning` 필드로 전달.
 
 ---
 

@@ -196,6 +196,32 @@ def generate_report(data, output_path=None):
         kpis.append(_kpi(label, val))
     parts.append('<div class="sec"><h2>핵심 지표</h2><div class="kg">{}</div></div>'.format("".join(kpis)))
     
+    # Entry Warning Blocks [v3.9] — R:R Poor/Marginal 또는 컨센 초과 시 최상단 경고
+    entry_warn = data.get("entry_warning", "").strip()
+    cons_warn = data.get("consensus_warning", False)
+    cons_avg = data.get("consensus_avg")
+    cons_pct = data.get("current_vs_consensus_pct")
+    if cons_warn and cons_avg is not None and cons_pct is not None:
+        parts.append(
+            '<div class="sec" style="background:#2a2010;border-left:4px solid #f5a623;padding:14px 18px;margin-bottom:14px">'
+            '<h2 style="margin:0 0 6px 0;color:#f5a623">⚠️ 컨센서스 초과 경고</h2>'
+            '<p style="margin:0;color:var(--txt);font-size:14px">'
+            '현재가가 증권사 평균 목표가 <b>{}{:,.2f}</b>를 <b>+{:.1f}%</b> 초과했습니다. '
+            '업사이드 소진 — 신규 매수보다 <b>보유 또는 조정 대기</b> 권고.'
+            '</p></div>'.format(cur, cons_avg, cons_pct)
+        )
+    if entry_warn:
+        # 🔴 진입 금지는 빨강, 🟠 Marginal은 주황
+        is_poor = "⛔" in entry_warn or "진입 금지" in entry_warn
+        color = "#d0021b" if is_poor else "#f5a623"
+        bg = "#2a1010" if is_poor else "#2a2010"
+        parts.append(
+            '<div class="sec" style="background:{};border-left:4px solid {};padding:14px 18px;margin-bottom:14px">'
+            '<p style="margin:0;color:{};font-weight:700;font-size:15px">{}</p></div>'.format(
+                bg, color, color, entry_warn
+            )
+        )
+
     # Executive Summary
     es = _md_to_html(data.get("executive_summary",""))
     if es:

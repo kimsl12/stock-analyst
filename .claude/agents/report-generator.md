@@ -163,6 +163,15 @@ data = {
         {"name": "AI 경쟁 심화", "level": "중", "impact": "중", "desc": "Google/Samsung"},
     ],
     
+    # 경고 플래그 [v3.9 신규]
+    # scorecard-strategist가 R:R < 1.5 또는 현재가 > 컨센 평균 판정 시 전달
+    "entry_warning": "",                  # 예: "⚠️ 진입 보류 권고 (R:R 1.43 Marginal)" — 비면 미표시
+    "consensus_warning": False,           # 현재가가 컨센 평균 초과하면 True
+    "consensus_avg": None,                # float, 컨센 평균 목표가 (optional)
+    "current_vs_consensus_pct": None,     # float, +X.X% 괴리율 (optional)
+    # → Executive Summary 맨 첫줄에 entry_warning 문자열 삽입
+    # → consensus_warning=True면 리포트 최상단에 노란 경고 블록 자동 렌더링
+    
     # 실적 바차트 데이터 (선택)
     "fin_years": ["FY22", "FY23", "FY24", "FY25E"],
     "revenue_data": [394, 383, 391, 420],

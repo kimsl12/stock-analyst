@@ -74,7 +74,7 @@
 
 ## 파이프라인 버전
 
-- 종목분석: v3.8 (일회성 산출물 정리 규칙 + bootstrap stale 검증 + Todo 의무화)
+- 종목분석: v3.9 (Phase 3 종료 검증 3단계 + 파일별 명시적 git add + 버전 명명 규칙 + R:R<1.5 진입 보류 태깅 + 컨센 초과 경고 블록)
 - KB 업데이트: v3.4 (미니사이클 + 마지막 사이클 통합 + git 리드 위임)
 - fetch_price.py: 활성 (pykrx + yfinance)
 

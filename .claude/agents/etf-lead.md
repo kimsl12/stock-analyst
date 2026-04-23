@@ -90,12 +90,45 @@ ls -la analysis/{티커}_{ETF명}/etf.md
 # 브랜치 확인 (반드시 main이어야 함)
 git branch --show-current
 
-# 스테이징 및 커밋 (reports/만, analysis/ 제외)
+# 파일별 명시적 add [v3.9] — 폴더 전체 add 금지 (병렬 경합 방지)
 git add reports/{티커}_{ETF명}_{YYYYMMDD}.html
-git commit -m "분석 리포트: {ETF명} ({티커}) - {YYYY-MM-DD}"
+git commit -m "analysis({티커}): {ETF명} ETF 분석 {등급} {스코어}"
 git pull --rebase origin main
 git push origin main
 ```
+
+### Step 5: Phase 종료 검증 [v3.9 신규]
+
+stock-analyst-lead의 "Phase 3 종료 검증"과 동일한 3단계를 ETF 파이프라인에도 적용:
+
+```bash
+# 검증 1: HTML 파일 존재
+ls -la reports/{티커}_{ETF명}_{YYYYMMDD}.html
+
+# 검증 2: git log에 커밋 존재
+git log --oneline -5 | grep -i "{티커}"
+
+# 검증 3: session-bootstrap.md 갱신
+grep "{티커}" session-bootstrap.md
+```
+
+검증 실패 시 stock-analyst-lead.md의 "Phase 3 종료 검증 → 검증 실패 시 대응" 테이블 따름.
+
+### 버전 관리 명명 규칙 [v3.9]
+
+재분석(v2/v3) 시 stock-analyst-lead.md의 "버전 관리 명명 규칙" 규칙을 그대로 적용:
+- `analysis/{티커}_{ETF명}_v2/` (폴더는 버전 접미사)
+- `reports/{티커}_{ETF명}_{YYYYMMDD}.html` (HTML은 날짜만)
+- 기존 HTML 보존 의무 (삭제·덮어쓰기 금지)
+
+### R:R·컨센 경고 전달 [v3.9]
+
+etf-analyst가 R:R 계산 + 컨센 초과 판정 시, report-generator에 아래 필드를 전달:
+- `entry_warning`: R:R < 1.5이면 "⚠️ 진입 보류 권고 (R:R X.XX)" 문자열
+- `consensus_warning`: 현재가 > 컨센 평균이면 True
+- `consensus_avg`, `current_vs_consensus_pct`
+
+상세는 scorecard-strategist.md "R:R 기반 진입 보류 자동 태깅" + "컨센서스 초과 자동 경고" 섹션 참조.
 
 ---
 

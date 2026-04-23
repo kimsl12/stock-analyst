@@ -83,6 +83,67 @@ Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커�
 
 ---
 
+## Phase 3 종료 검증 [v3.9 신규]
+
+서브에이전트의 Executive Summary 반환 전, 리드는 아래 **3가지를 반드시 Bash로 검증**한다.
+검증 스킵 금지.
+
+```bash
+# 검증 1: HTML 파일 존재
+ls -la reports/{티커}_{종목명}_{YYYYMMDD}.html
+
+# 검증 2: git log에 커밋 존재
+git log --oneline -5 | grep -i "{티커}"
+
+# 검증 3: session-bootstrap.md 갱신 확인
+grep "{티커}" session-bootstrap.md
+```
+
+### 검증 실패 시 대응
+
+| 실패 항목 | 복구 액션 |
+|----------|----------|
+| HTML 파일 없음 | report-generator 재호출 (scaffolding + Write 강제) |
+| 커밋 누락 | 리드가 직접 `git add reports/{특정파일.html}` + commit + push 수행 |
+| bootstrap 누락 | 리드가 직접 Edit로 "마지막 종목분석" + "analysis/ 유효 파일" 행 추가 |
+
+**검증 통과 후에만** Executive Summary 출력 허용.
+
+---
+
+## 버전 관리 명명 규칙 [v3.9 신규]
+
+재분석(v2/v3 등) 시 아래 규칙을 **강제 준수**한다.
+
+### 규칙 1: analysis 폴더는 버전 접미사 필수
+
+```
+✅ analysis/AVGO_Broadcom_v2/     (재분석 v2 폴더)
+✅ analysis/AVGO_Broadcom_v1/     (v1 리네임 보존 — 재분석 시점에 수행)
+❌ analysis/AVGO_Broadcom/         (v1 덮어쓰기 금지 — 델타 비교 불가)
+```
+
+**재분석 실행 절차**:
+1. 기존 `analysis/{티커}_{종목명}/` → `analysis/{티커}_{종목명}_v1/` 리네임 (최초 재분석 시)
+2. 신규 분석은 `analysis/{티커}_{종목명}_v2/`에 작성
+3. 3차 재분석은 `_v3`, 4차는 `_v4` 순차 증가
+
+### 규칙 2: reports HTML은 날짜만으로 구분
+
+```
+✅ reports/AVGO_Broadcom_20260422.html  (v2 분석의 산출물, 버전 접미사 금지)
+❌ reports/AVGO_Broadcom_v2_20260422.html
+❌ reports/AVGO_Broadcom_v2.html
+```
+
+### 규칙 3: 기존 reports HTML 보존 의무
+
+- `reports/{티커}_{종목명}_{구날짜}.html` 절대 **삭제·덮어쓰기 금지**
+- 델타 비교용 + 과거 판단 근거 보존
+- 검증: `ls reports/{티커}_* | wc -l` — 재분석 후 파일 수가 이전보다 감소했으면 복구 필요
+
+---
+
 ## Step -1: 요청 모드 판별 (브리핑 vs 종목 분석) [v3.0]
 
 사용자의 첫 메시지를 받으면, **종목 분석**과 **브리핑** 중 어느 파이프라인인지 먼저 판별한다.
@@ -377,9 +438,11 @@ git branch --show-current
 # ⛔ git checkout gh-pages 절대 금지 — 아래 규칙 참고
 git checkout main 2>/dev/null || true
 
-# 2. reports/ 폴더만 커밋
-git add reports/
-git commit -m "분석 리포트: {종목명} ({종목코드}) - {YYYY-MM-DD}"
+# 2. 본 세션에서 생성한 특정 파일만 명시적으로 add [v3.9]
+#    ❌ git add reports/  (폴더 전체 add 금지 — 병렬 실행 시 다른 에이전트 산출물이 섞임)
+#    ✅ 생성한 HTML만 파일명 지정
+git add reports/{종목코드}_{종목명}_{YYYYMMDD}.html
+git commit -m "analysis({티커}): {종목명} 분석 {등급} {스코어}"
 
 # 3. 충돌 방지 후 직접 push
 git pull --rebase origin main
@@ -389,7 +452,7 @@ git push origin main
 ### Git 규칙
 - **별도 브랜치 생성 금지.** PR(Pull Request)을 만들지 않는다. main에 직접 커밋한다.
 - analysis/ 폴더는 git add하지 않는다
-- reports/ 폴더만 커밋한다
+- **파일별 명시적 add** [v3.9] — `git add reports/` 같은 폴더 전체 add 금지. 병렬 실행 시 다른 에이전트 산출물이 같은 커밋에 섞이는 사고 방지 (2026-04-23 두산 HTML이 카카오 커밋에 섞인 사례).
 - 커밋은 모든 분석 완료 후 1회만 실행한다 (중간 커밋 금지)
 - 커밋 실패 시 1회 재시도, 그래도 실패하면 "Git 푸시 실패 — 로컬에만 저장됨" 안내
 
