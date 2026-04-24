@@ -128,6 +128,10 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-21 | evening | 종목 | AAPL -- 팀 쿡->존 터너스 CEO 교체 "하드웨어 르네상스" | 중립->Bull (전환 후) | 중기 | 중간 | 하드웨어 출신 CEO = Apple Silicon+Vision Pro 가속. 단, Buffett -4.3% 축소 + 중국 리스크. 9/1 취임, 6월 WWDC 첫 무대 [Apple Newsroom, Fortune, guru_positions Q4 2025] | reports/briefing/evening_20260421.html | 진행중 |
 | 2026-04-21 | evening | 시나리오 | 30일 시나리오 갱신: A 33%(-2%) / B 47%(+2%) / C 20% | Bear (B 우세 심화) | 단기~중기 | 중간~높음 | 트럼프 "연장 unlikely"+이란 재협상 거부+미 나포 에스컬레이션. VIX 첫 반등+NASDAQ 연승 종료 = B 전환 가속 [CNN, Al Jazeera, CNBC] | reports/briefing/evening_20260421.html | 진행중 |
 | 2026-04-21 | evening | 이벤트 | 소매판매 Beat +0.4% vs 소비심리 47.6 "시간차 함정" | Bear (Q2 소비 둔화 선행) | 중기 | 중간 | 세금환급+관세 사전구매 = 일시효과. 소비심리 50 이하 2분기 연속 시 소매판매 역전 확률 70%+ [Census Bureau, U.Michigan, Coresight] | reports/briefing/evening_20260421.html | 진행중 |
+| 2026-04-24 | evening | 종목 | Intel (INTC) | Bull (데이터센터 AI 수요 확인) | 단기~중기 | 중간 | Q1 EPS $0.29(컨센 $0.01, +2,800%). 매출 $13.58B(컨센 $12.42B). 데이터센터 +22% YoY. Q2 가이던스 $13.8~14.8B 대폭 상회. AH +20% [CNBC, GuruFocus] | reports/briefing/evening_20260424.html | 진행중 |
+| 2026-04-24 | evening | 이벤트 | 트럼프 호르무즈 기뢰 격침 명령 -- 에스컬레이션 단계 격상 | Bear (에너지 인플레 상방) | 단기~중기 | 중간 | WTI $96.07(5일 연속), Brent $105.63. 격침 명령+소해작전 3배. 호르무즈 장기 교착 확률 상승 [CNN, NPR, Al Jazeera] | reports/briefing/evening_20260424.html | 진행중 |
+| 2026-04-24 | evening | 시나리오 | 반도체 AI 슈퍼사이클 7회 초~중반 판정 | Bull (반도체) | 중기 | 중간 | TI +10% + Intel +20% AH = 2일 연속 대형 Beat. CPU/아날로그/GPU/메모리 전분야 확인. CapEx $660~690B 초기 [CNBC, MarketScreener] | reports/briefing/evening_20260424.html | 진행중 |
+| 2026-04-24 | evening | 이벤트 | Fed 인하 완전 소멸 시나리오 -- Core PCE 3.2%+ 시 | Bear (Fed 인하 0회) | 단기~중기 | 중간 | WTI $96 5일 연속. 에너지 CPI 전이 시차 2~3개월. 4/25 Core PCE >3.2% 시 연내 인하 소멸+10Y 4.40~4.60% [BLS, IMF WEO] | reports/briefing/evening_20260424.html | 진행중 |
 
 ---
 

@@ -64,6 +64,9 @@ lint_mode: full
 | 2026-04-14 | 모닝브리핑 | DXY 98.34 구조적 약세 3년래 최저 — 재정적자+탈달러+Gold $4,781. 달러 표시 자산 실질가치 하락 | `macro/global_risk_factors.md` | 진행중 |
 | 2026-04-24 | 모닝브리핑 | 소프트웨어 AI 검은 목요일 — IBM Beat에도 -10.3%, ServiceNow -18%. TI +10% 반도체 분열 → AI 인프라 vs SaaS 구조적 재편 시작 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-24 | 모닝브리핑 | 한국 Q1 GDP +1.7% q/q 대형 서프라이즈(5.5년 최고, 컨센 +0.9% 두 배) — 반도체 수출+설비투자 동반. KOSPI PER 디스카운트 재평가 여지 | `market/economic_calendar.md` | 진행중 |
+| 2026-04-24 | 이브닝브리핑 | Intel Q1 EPS +2,800% 서프라이즈(AH +20%) + TI +10% = 반도체 2일 연속 대형 Beat. AI 인프라 슈퍼사이클 "7회 초~중반" 판정. 소프트웨어 AI 공포와 극명 대비 | `market/daily_snapshot.md, market/economic_calendar.md` | 진행중 |
+| 2026-04-24 | 이브닝브리핑 | 트럼프 호르무즈 기뢰 격침 명령 + 이스라엘-레바논 휴전 3주 연장 = "에스컬레이션+휴전 병존" 모순. WTI $96/Brent $105(5일 연속). 4/25 Core PCE 최대 리스크 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-24 | 이브닝브리핑 | WTI↔BEI 이상 Z+2.0sigma 승격 -- 에너지 CPI 전이 시차 2~3개월. Fed 인하 완전 소멸 시나리오 확률 35~40%. Core PCE >3.2% 시 연내 인하 0회 | `market/correlation_matrix.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
