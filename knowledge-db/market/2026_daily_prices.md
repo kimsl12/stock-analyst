@@ -167,3 +167,32 @@ type: time_series
 | 2026-04-23 | crypto | FearAndGreedIndex | 33 | 보합 | index | SpotedCrypto [2026-04-22] | 2026-04-23T09:00:00+09:00 | Fear 구간 안착. 59일 극단공포 탈출 후 Fear 구간 |
 | 2026-04-23 | news | TSLA_Q1_Result | EPS_0.41_Beat | — | — | Electrek / CNBC / Investing.com [2026-04-22 AH] | 2026-04-23T09:00:00+09:00 | EPS $0.41(컨센 $0.37 Beat +10.8%), Rev $22.387B Beat, 마진 21.1%(+478bp). AH 초기+4%→Capex $25B 가이던스 후 +0.4% 수렴 |
 | 2026-04-23 | news | Iran_Hormuz_Seizure | SHIPS_SEIZED_BLOCKADE_CONTINUES | — | — | NBC News / CNBC / Al Jazeera [2026-04-22] | 2026-04-23T09:00:00+09:00 | 이란 호르무즈 선박 2척 추가 나포. 휴전 연장에도 봉쇄 사실상 지속. WTI $92.96 급등 트리거 |
+| 2026-04-24 | us_index | SP500 | 7108.40 | -0.41% | point | TheStreet / Yahoo Finance [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | 소프트웨어 AI 충격(IBM -10.3%, ServiceNow -18%) 주도 조정. 사상 최고(7137.90) 대비 -0.41% |
+| 2026-04-24 | us_index | NASDAQ | 24438.50 | -0.89% | point | TheStreet / Yahoo Finance [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | 소프트웨어 섹터 전면 매도. TI +10% 반도체는 반등 |
+| 2026-04-24 | us_index | DJIA | 49310.32 | -0.36% | point | TheStreet / Yahoo Finance [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | -179.71pt |
+| 2026-04-24 | us_index | Russell2000 | 미확인 | -0.98% | point | Investrade.com [2026-04-23] | 2026-04-24T09:00:00+09:00 | 소형주 낙폭 확대 |
+| 2026-04-24 | us_index | VIX | ~20 | 소폭상승 | index | CNBC / Investrade [2026-04-23 추정] | 2026-04-24T09:00:00+09:00 | ⚠️ 20선 재근접. 소프트웨어 AI 불안 + 유가 상승 복합 |
+| 2026-04-24 | asia_index | KOSPI | 6475.81 | +0.90% | point | TradingView / CNBC Asia [2026-04-23 KST close] | 2026-04-24T09:00:00+09:00 | 아시아 최강세. 반도체 + Q1 GDP 서프라이즈 기대 |
+| 2026-04-24 | asia_index | KOSDAQ | 1174.31 | -0.58% | point | CNBC Asia [2026-04-23 KST close] | 2026-04-24T09:00:00+09:00 | 소형주 약세. KOSPI와 대비 |
+| 2026-04-24 | asia_index | Nikkei225 | 59140.23 | -0.75% | point | CNBC Asia [2026-04-23 JST close] | 2026-04-24T09:00:00+09:00 | 소프트웨어 충격 반영 |
+| 2026-04-24 | asia_index | HangSeng | 25915.20 | -0.95% | point | CNBC Asia / SCMP [2026-04-23 HKT close] | 2026-04-24T09:00:00+09:00 | 지정학 + 소프트웨어 이중 악재 |
+| 2026-04-24 | asia_index | ShanghaiCSI300 | 4786.33 | -0.28% | point | SCMP / CNBC Asia [2026-04-23 CST close] | 2026-04-24T09:00:00+09:00 | 상대적 방어 |
+| 2026-04-24 | fx | USDKRW | 1480.51 | +0.12% | KRW | PoundSterlingLive / TradingEconomics [2026-04-23] | 2026-04-24T09:00:00+09:00 | 소폭 원화 약세. 1400 초과 지속 |
+| 2026-04-24 | fx | DXY | 98.725 | 소폭강세 | index | TradingEconomics / Gurufocus [2026-04-23] | 2026-04-24T09:00:00+09:00 | 이란 교착 → 안전자산 달러. 1주일래 고점 |
+| 2026-04-24 | fx | EURUSD | 1.1698 | -0.06% | USD | PoundSterlingLive / TradingEconomics [2026-04-23] | 2026-04-24T09:00:00+09:00 | 달러 소폭 강세에 유로 약세 |
+| 2026-04-24 | fx | USDJPY | 159.721 | +0.23% | JPY | PoundSterlingLive [2026-04-23] | 2026-04-24T09:00:00+09:00 | ⚠️ 엔화 약세 지속. BOJ 불확실 |
+| 2026-04-24 | commodity | WTI | 94.14 | +1.26% | USD/barrel | TradingEconomics / FXDailyReport [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | ⚠️ 4연속 상승. 이란 협상 교착. $95 근접 |
+| 2026-04-24 | commodity | Brent | 103.38 | +1.44% | USD/barrel | Oneindia / Angle360ng [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | ⚠️ $103 유지. 공급 위기 구조화 |
+| 2026-04-24 | commodity | Gold | 4738.53 | -0.02% | USD/oz | Investing.com / Babypips [2026-04-23 close] | 2026-04-24T09:00:00+09:00 | 소폭 조정. DXY 98.7 강세에 단기 역풍. 구조적 Bull 유지 |
+| 2026-04-24 | bond | US10Y | 4.30 | 0bp | percent | Federal Reserve H.15 / TradingEconomics [2026-04-23] | 2026-04-24T09:00:00+09:00 | 보합. 소프트웨어 충격 → 채권 안전자산 수요 상쇄 |
+| 2026-04-24 | bond | US2Y | ~3.81 | +0bp | percent | TradingEconomics / FRED DGS2 [2026-04-22~23 추정] | 2026-04-24T09:00:00+09:00 | 04-22 3.81% 기준 |
+| 2026-04-24 | bond | Spread2Y10Y | +49 | 계산값 | bp | 계산값 (4.30%-3.81%) | 2026-04-24T09:00:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-04-24 | crypto | BTC | ~77900 | 보합~소폭상승 | USD | BlockchainMagazine / SpotedCrypto [2026-04-23] | 2026-04-24T09:00:00+09:00 | $77K 안착. 소프트웨어 충격에도 탈동조화 |
+| 2026-04-24 | crypto | ETH | 2399 | +3.83% | USD | SpotedCrypto [2026-04-23] | 2026-04-24T09:00:00+09:00 | 알트코인 반등 선도 |
+| 2026-04-24 | crypto | SOL | 미확인 | 소폭조정 | USD | 미수집 [KelpDAO 해킹 영향] | 2026-04-24T09:00:00+09:00 | $292M KelpDAO 해킹(북한 Lazarus) — SOL DeFi 리스크 부각 |
+| 2026-04-24 | crypto | TotalMarketCap | ~2.71T | 소폭상승 | USD | SpotedCrypto / CoinMarketCap [2026-04-23] | 2026-04-24T09:00:00+09:00 | BTC 도미넌스 58.1% |
+| 2026-04-24 | crypto | FearAndGreedIndex | 32~46 | 소폭개선 | index | 소스별 차이 [2026-04-23] | 2026-04-24T09:00:00+09:00 | Fear 구간 유지. 기관 ETF 수요가 하방 지지 |
+| 2026-04-24 | crypto | BTC_ETF_Inflow_Daily | 335.8M | — | USD | TheBlock / CoinReporter [2026-04-23] | 2026-04-24T09:00:00+09:00 | 7거래일 연속 순유입. IBIT ~809,870 BTC(62% 점유). 7일 누계 $1.9B |
+| 2026-04-24 | news | IBM_Q1_Result | EPS_1.91_Beat_Stock-10pct | — | — | CNBC / Benzinga [2026-04-23 AH] | 2026-04-24T09:00:00+09:00 | EPS $1.91(컨센 $1.81 Beat), Rev $15.92B(+9% YoY Beat). AI 성장 둔화 우려 → 주가 -10.3%. AI 불안 소프트웨어 섹터 매도 트리거 |
+| 2026-04-24 | news | ServiceNow_Selloff | STOCK-18pct_AI_FEAR | — | — | CNBC / Yahoo Finance [2026-04-23] | 2026-04-24T09:00:00+09:00 | Beat에도 AI 대체 공포 + 이란 가이던스 → -18% 역대 최대. Salesforce -9.4%, Oracle -6%, Workday -9%, Adobe -7.4% 동반 |
+| 2026-04-24 | news | Korea_Q1_GDP | PLUS1.7pct_5yr_HIGH | — | — | Korea Times / CNBC / RTTNews [2026-04-24 BOK 발표] | 2026-04-24T09:00:00+09:00 | +1.7% q/q (컨센 +0.9% 대비 +0.8%p 서프라이즈). 5.5년래 최고. 반도체 수출 +5.1% q/q 주도. YoY +3.6% |

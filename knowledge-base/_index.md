@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-21
+updated: 2026-04-24
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-21
@@ -17,13 +17,13 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-22 (market-data-collector)**
+> **최종 갱신: 2026-04-24 (market-data-collector)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
 | `portfolio/model_portfolios.md` | [P0] confidence:low — 전 항목 *(미수집)* N/A. 빈 테이블 | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
 
-> [P0 실질 긴급] portfolio/model_portfolios.md: confidence:low + 전 항목 미수집 상태 지속 (2026-04-07 이후 미갱신 12일). `/모델포트폴리오` 실행 필요.
+> [P0 실질 긴급] portfolio/model_portfolios.md: confidence:low + 전 항목 미수집 상태 지속 (2026-04-07 이후 미갱신 17일). `/모델포트폴리오` 실행 필요.
 > [INFO] 나머지 Market/Macro/Industry KB 전체 P1 이하 — 실행 가능 상태.
 
 ---
@@ -34,12 +34,13 @@ lint_mode: full
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `market/daily_snapshot.md` | valid_until 04-24 — 04-22 갱신 완료 (D-2) | LOW | 04-24 재실행 |
+
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
 > [P1 정상] industry/ 전체 고아 파일 없음 (**19개** 파일 모두 _index.md 등재 확인). luxury.md(04-21 야간) + defense_industry.md(04-21) + semiconductor.md(04-21) + bio_pharma.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 포함.
 > [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
+> [P1 해결완료 2026-04-24] market/daily_snapshot.md 04-24 갱신 완료 (valid_until→04-26). economic_calendar.md FOMC 의사록 오류 정정 + 04-23 결과 반영. IBM/ServiceNow/TI Q1, 한국 Q1 GDP +1.7% 반영.
 
 ---
 
@@ -61,6 +62,8 @@ lint_mode: full
 | 2026-04-13 | 주간리포트 | 적중률 잠정 50%(3건 중 1.5건) — Gold Bull 적중, CPI 부분 적중, 시나리오 수정. 테일 리스크 가중치 상향 필요 | `performance/2026_recommendations.md` | -- |
 | 2026-04-14 | 모닝브리핑 | VIX 19.12 "거짓 안정" — 소비심리 47.6(역대최저) vs VIX 괴리. 4~6주 내 25~30 재상승 경고 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | DXY 98.34 구조적 약세 3년래 최저 — 재정적자+탈달러+Gold $4,781. 달러 표시 자산 실질가치 하락 | `macro/global_risk_factors.md` | 진행중 |
+| 2026-04-24 | 모닝브리핑 | 소프트웨어 AI 검은 목요일 — IBM Beat에도 -10.3%, ServiceNow -18%. TI +10% 반도체 분열 → AI 인프라 vs SaaS 구조적 재편 시작 | `market/daily_snapshot.md` | 진행중 |
+| 2026-04-24 | 모닝브리핑 | 한국 Q1 GDP +1.7% q/q 대형 서프라이즈(5.5년 최고, 컨센 +0.9% 두 배) — 반도체 수출+설비투자 동반. KOSPI PER 디스카운트 재평가 여지 | `market/economic_calendar.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
