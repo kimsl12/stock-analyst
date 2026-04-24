@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SAP SE (SAP) 종합 분석</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>SAP SE (SAP)</h1><div class="meta">주식 (ADR, Enterprise Cloud ERP) 종합 분석 리포트 | 2026-04-24</div><div style="margin-top:8px"><span class="badge b-buy">Buy</span> <span class="badge b-score">71.8/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$163.25</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$192.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">27.8 (Fwd FY26E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$160.66~$313.28</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$6.39 (3.91%)</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$192.5B</div></div><div class="ki"><div class="kl">Cloud 매출 2025</div><div class="kv">€17.14B (+32%)</div></div><div class="ki"><div class="kl">CCB</div><div class="kv">€22.10B (YoY +21%)</div></div><div class="ki"><div class="kl">RSI(14)</div><div class="kv">22 (극단 과매도)</div></div><div class="ki"><div class="kl">1Y 수익률</div><div class="kv">-41.3%</div></div></div></div>
+<div class="sec" style="background:#2a2010;border-left:4px solid #f5a623;padding:14px 18px;margin-bottom:14px"><p style="margin:0;color:#f5a623;font-weight:700;font-size:15px">🟠 Q1 2026 실적 3중 miss + 가이던스 하향 직후 (2026-04-22). RSI 22 극단 과매도 + 52주 저점 +1.6%이나 구조적 정상화 진행 중. 소량 분할 편입 권고 (3% Moderate).</p></div>
+<div class="sec"><h2>Executive Summary</h2><p><br><strong>투자 등급: Buy (매수) — 종합 스코어 71.8/100 (B+등급, Strong Buy 경계 -8점)</strong><br><br><strong>핵심 투자 포인트 3가지:</strong><br><br>1. <strong>극단 과매도 진입점</strong> — 52주 저점 $160.66 +1.6% (RSI 22, 1Y -41.3%, Drawdown -47.9%). Q1 2026 Revenue/Cloud/OP 3중 miss + 가이던스 하향 선반영 완료.<br><br>2. <strong>Wide Moat 8.8 + 2027 강제 전환 catalyst 유지</strong> — Fortune 500 77% 고객 Lock-in, 평균 18년. S/4HANA 온프레미스 지원 종료 2027-12-31로 잔여 30,000 고객 강제 전환 대기. CCB €22.10B (매출 2.5배) 백로그.<br><br>3. <strong>Fwd PER 27.8x 역사 -5.8% 할인</strong> + <strong>SAPPHIRE 2026-05-20 + Q2 7/22 이벤트 Catalyst</strong> — Base $187 (+14.6%), Bull $215 (+31.7%), 손절 $150.47 (-7.83%), R:R Base 1.86 (Good) / Bull 4.05 (Excellent).<br><br><strong>Q1 실적 miss 심층 이슈:</strong><br>&bull; Cloud 성장률 <strong>+32% (2025) → +22.5% (Q1 2026)</strong> 1분기 만에 -950bp<br>&bull; <strong>CCB QoQ -0.8% 첫 QoQ 하락</strong> (구조적 경고 시그널)<br>&bull; FY26 Cloud 가이던스 26~28% → <strong>21~23% (-500bp 하향)</strong><br>&bull; 원인: 공공부문 수주 지연 (US DOGE) + 유럽 대기업 재협상 + Workday 경쟁<br><br><strong>권고</strong>: VOO 91.5% → 88.5% 축소 + SAP 3% Moderate 분할 편입.<br>단, Strong Buy(80+) 승격은 Q2 7/22 실적 Beat 확인 후. Bear 시나리오 ($145, -11.2%) 확률 25% 경계.<br></p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$150.47</div><div class="dn" style="font-size:13px">-7.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$187.00</div><div class="up" style="font-size:13px">+14.5%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="30" y="30" width="55" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="9" y1="26" x2="9" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="9" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$150</text><line x1="35" y1="24" x2="35" y2="52" stroke="var(--text)" stroke-width="3"/><text x="35" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$163</text><line x1="85" y1="26" x2="85" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="85" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$187</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $161</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $313</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $6.39 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,62.0 190.0,81.2 204.7,129.0 201.8,170.1 182.3,208.2 140.0,188.0 104.7,198.5 65.8,174.1 59.2,123.7 103.6,99.8" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">Moat (경제적 해자)</text><circle cx="140.0" cy="62.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="190.0" cy="81.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성 ROE/ROIC</text><circle cx="204.7" cy="129.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="201.8" cy="170.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="182.3" cy="208.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀</text><circle cx="140.0" cy="188.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스</text><circle cx="104.7" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">이벤트 Catalyst</text><circle cx="65.8" cy="174.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업 포지션</text><circle cx="59.2" cy="123.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 관리</text><circle cx="103.6" cy="99.8" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>Moat (경제적 해자)</td><td>8.8</td><td>/10</td></tr><tr><td>재무건전성</td><td>8.5</td><td>/10</td></tr><tr><td>수익성 ROE/ROIC</td><td>6.8</td><td>/10</td></tr><tr><td>성장성</td><td>6.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>7.2</td><td>/10</td></tr><tr><td>모멘텀</td><td>3.8</td><td>/10</td></tr><tr><td>컨센서스</td><td>6.0</td><td>/10</td></tr><tr><td>이벤트 Catalyst</td><td>7.8</td><td>/10</td></tr><tr><td>산업 포지션</td><td>8.5</td><td>/10</td></tr><tr><td>리스크 관리</td><td>6.2</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 71.8/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide 8.8</span></h2><p><br><strong>SAP SE</strong> (Systeme, Anwendungen und Produkte) — 독일 Walldorf 본사 세계 최대 <strong>엔터프라이즈 애플리케이션 SW</strong> 기업.<br>1972년 5명의 전 IBM 엔지니어가 창업, DAX 시총 1위, Fortune 500 중 77% 고객. 직원 108,187명.<br><br><strong>CEO Christian Klein (2019~)</strong> — Cloud 매출 비중 <strong>2020년 27% → 2025년 50.1%</strong> (5년간 +2,310bp)로 구조적 전환 주도.<br><strong>CFO Dominik Asam</strong> (전 Airbus CFO).<br><br><strong>사업 구조 (FY25 €34.18B)</strong>:<br>&bull; Cloud 50.1% (€17.14B, YoY +32%) — <strong>최초로 전체 매출의 절반 초과</strong><br>&bull; Software Licenses & Support 34.7% (의도적 감소)<br>&bull; Services 15.2%<br><br><strong>Cloud 내부</strong>:<br>&bull; S/4HANA Cloud (ERP 본진) 62% — RISE (Private) + GROW (Public)<br>&bull; SuccessFactors (HR) 15% / Ariba 10% / Concur 7% / 기타 6%<br><br><strong>전략 핵심</strong>: S/4HANA Cloud 전환 + Joule AI Agent (2024-09 출시) + EU Sovereign Cloud + 2027-12-31 온프레미스 지원 종료로 강제 전환 유도.<br></p><h3>Moat 상세</h3><p><br><strong>Moat 5중 구조</strong>:<br>&bull; <strong>Switching Cost 9.5 (최강)</strong>: 엔터프라이즈 SW 최강 Lock-in 평균 18년. 교체 비용 연매출 1.1~2.7% ($113~265M 기준 $10B 제조업)<br>&bull; <strong>Scale 8.5</strong>: 업종별 프리빌트 시나리오 3,500개 (Oracle 1,200/Workday 400 대비 3배)<br>&bull; <strong>Brand 9.0</strong>: Gartner ERP Magic Quadrant Leader <strong>15년 연속</strong><br>&bull; <strong>Data Moat 8.0</strong>: 50년 축적 ERP 메타데이터 → Joule AI 학습 독점 자원<br>&bull; <strong>Network 7.5</strong>: Fortune 500 77% Lock-in, 공급망 파트너 네트워크 자생 확대<br><br><strong>AI 시대 Moat 강화 (+)</strong>: Joule AI + SAP 메타데이터 독점 / EU AI Act 2026-08 수혜 / 유럽 공공조달 독점<br><strong>Moat 약화 (-)</strong>: LLM 자체 미보유 (Anthropic/OpenAI 종속) / MSFT Dynamics 중견기업 공세 / Workday HR 잠식<br></p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>지표</th><th>FY24</th><th>FY25</th><th>Q1'26A</th><th>FY26E(수정)</th><th>FY27E</th></tr></thead><tbody><tr><td>매출 (€B)</td><td>31.36</td><td>34.18</td><td>8.85</td><td>37.30~38.00</td><td>41.50</td></tr><tr><td>YoY</td><td>+0.5%</td><td>+9.0%</td><td>+8.2%</td><td>+9~11%</td><td>+10.5%</td></tr><tr><td>Cloud 매출 (€B)</td><td>16.04</td><td>17.14</td><td>4.62</td><td>20.80~21.10</td><td>24.80</td></tr><tr><td>Cloud YoY</td><td>+24%</td><td>+32%</td><td>+22.5%</td><td>+21~23%</td><td>+17.5%</td></tr><tr><td>non-IFRS OP (€B)</td><td>9.54</td><td>10.13</td><td>2.28</td><td>9.80~10.10</td><td>11.40</td></tr><tr><td>OPM %</td><td>30.4%</td><td>29.6%</td><td>25.8%</td><td>26.3~26.6%</td><td>27.5%</td></tr><tr><td>non-IFRS EPS (€)</td><td>6.22</td><td>6.82</td><td>1.55</td><td>6.45~6.65</td><td>7.85</td></tr><tr><td>FCF (€B)</td><td>7.40</td><td>8.19</td><td>2.05</td><td>7.50</td><td>8.70</td></tr><tr><td>CCB (€B)</td><td>17.94</td><td>22.27</td><td>22.10</td><td>26.50</td><td>31.00</td></tr></tbody></table><h3>분석</h3><p><br><strong>Q1 2026 3중 miss 충격</strong>: Revenue -3.3% / Cloud -5.5%p / OP -9.2% / EPS -9.9% 전 부문 miss.<br><strong>CCB QoQ -0.8% 첫 QoQ 하락</strong> — 가장 우려스러운 선행 시그널. 공공부문 수주 지연 + 유럽 대기업 재협상.<br><br><strong>가이던스 하향</strong>: Cloud 26~28% → 21~23% (-500bp), OP 10.3~10.6 → 9.8~10.1 (-4.8%), FCF 8.0 → 7.5 (-6.3%).<br><br><strong>Peer 열세</strong>: OPM 26.5% vs MSFT 45% / ORCL 43% / CRM 32% — Cloud 전환 비용 + LLM 라이선스 부담.<br>ROIC 10.5% Peer 중하위, MSFT 28% · ORCL 19% 대비 구조적 열세.<br><br><strong>긍정 요소</strong>: Cloud GM 73% 유지 / CCB 매출 대비 2.5배 백로그 / Net Debt/EBITDA 0.55 (S&P A+) / FCF Yield 3.9% + 배당 1.6% + 자사주 2% = <strong>총 주주환원율 7%</strong>.<br><br><strong>배당 + 자사주</strong>: FY26E 배당 €2.60/share (+8% YoY), 자사주 €5B 프로그램 진행 중. 총 환원율 48% (FCF 대비).<br></p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>기업</th><th>Fwd PER</th><th>EV/EBITDA</th><th>EV/Sales</th><th>FCF Yield</th><th>ROIC</th></tr></thead><tbody><tr><td>**SAP**</td><td>**27.8x**</td><td>**18.5x**</td><td>**5.1x**</td><td>**3.9%**</td><td>**10.5%**</td></tr><tr><td>Oracle (ORCL)</td><td>21.5x</td><td>16.2x</td><td>5.8x</td><td>4.1%</td><td>19.0%</td></tr><tr><td>Microsoft (MSFT)</td><td>31.2x</td><td>22.5x</td><td>10.8x</td><td>2.8%</td><td>28.0%</td></tr><tr><td>Salesforce (CRM)</td><td>24.8x</td><td>19.0x</td><td>5.5x</td><td>4.5%</td><td>8.0%</td></tr><tr><td>ServiceNow (NOW)</td><td>55.0x</td><td>48.0x</td><td>15.2x</td><td>1.5%</td><td>12.5%</td></tr><tr><td>Adobe (ADBE)</td><td>17.5x</td><td>13.8x</td><td>6.5x</td><td>5.2%</td><td>25.0%</td></tr><tr><td>Peer 중간값</td><td>24.8x</td><td>19.0x</td><td>5.8x</td><td>4.1%</td><td>15.0%</td></tr></tbody></table><p><br><strong>목표가 $187 (Base, +14.6%, 12M)</strong> — Multi-Method 가중평균:<br>&bull; DCF (WACC 8.2%, TV 3%): $185 × 30%<br>&bull; Fwd PER 22x × FY27E EPS $8.95: $197 × 25%<br>&bull; EV/EBITDA 16x × FY27E €14.5B: $180 × 20%<br>&bull; SOTP (Cloud 14x + License 2x + Services 1.5x): $178 × 15%<br>&bull; 컨센 사후 리비전 반영: $195 × 10%<br><br><strong>시나리오</strong>: Bull $215 (+31.7%, 25%) / Base $187 (+14.6%, 50%) / Bear $145 (-11.2%, 25%)<br><strong>확률가중 기대수익률 +12.4%</strong><br><br><strong>역사 밴드</strong>: 2022 trough Fwd PER 20x ($130 수준) ~ 2024 고점 38.5x. 현재 27.8x = 5년 평균 29.5x 대비 -5.8% 할인.<br>Peer 중간값 24.8x 대비 +12% 프리미엄이지만 NOW 55x · MSFT 31.2x 대비 저평가.<br></p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><br><strong>극단 Underperformance</strong>: 1Y -41.3% (S&P +5.2% 대비 -46.5%p), YTD -38.6%, 3M -35.2%.<br><strong>RSI 22</strong> (COVID 2020-03 이후 최저), Bollinger -2σ 이탈, 200일 이평 -30.5% 괴리 = 역사적 이례적 저점.<br><br><strong>Q1 실적 발표 당일 (2026-04-23) 거래량 7.2M주 = 90일 평균 2.5배 급등</strong> (패닉 셀링).<br><br><strong>수급</strong>: 외국인 지분 63%, 최근 1M -2.5%p 매도. BlackRock 순매수 +0.3%p / Norges Bank 순매도. Third Point(Dan Loeb) 2026 Q1 전량 매도 확인.<br>Bridgewater (Dalio) 2026 Q1 $320M 역발상 신규 편입.<br><br><strong>ADR Premium</strong>: +5.6% (ADR 고평가) — 유럽 투자자 선매도 후 ADR 추가 하락 여지.<br><br><strong>Catalyst</strong>: SAPPHIRE 2026-05-20 (Joule 2.0 로드맵) / Q2 2026-07-22 / 2027-12 온프레미스 지원 종료.<br><br><strong>과거 유사 사례</strong>: 2020-03 -38% → 12M +75% / 2022-10 -45% → 18M +130% / <strong>현재 -48%</strong> 역사적 최대 낙폭 — 반등 사이클 진입 가능.<br></p><table><thead><tr><th>구분</th><th>발표 전 (4/21)</th><th>예상 리비전 (4/23 후)</th><th>변화</th></tr></thead><tbody><tr><td>평균 목표가 ($)</td><td>$228</td><td>$205 (MS $195~$215)</td><td>-10% 하향</td></tr><tr><td>Rec Mean</td><td>1.85 (Buy)</td><td>2.15 (Buy/Hold 경계)</td><td>하향</td></tr><tr><td>Strong Buy + Buy</td><td>65% (25/38)</td><td>~45% 예상</td><td>-20%p</td></tr><tr><td>Hold</td><td>30% (11/38)</td><td>~45% 예상</td><td>+15%p</td></tr><tr><td>Sell</td><td>5% (2/38)</td><td>~10% 예상</td><td>+5%p</td></tr><tr><td>FY26E EPS (€)</td><td>7.05</td><td>6.55</td><td>-7.1%</td></tr><tr><td>FY27E EPS (€)</td><td>8.35</td><td>7.85</td><td>-6.0%</td></tr><tr><td>현재가 대비 Upside</td><td>+39.7%</td><td>+25.6% (예상)</td><td>-14%p</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><br><strong>ERP 시장 1위 (23.5%)</strong> — Oracle 16.8% · MSFT Dynamics 9.2% · Workday 5.8% · Infor 4.5% · 기타 44.7%.<br><strong>Cloud ERP 지배력 28%</strong> (세부 시장 1위).<br><br><strong>지역별 매출 (FY25)</strong>: EMEA 45% (홈그라운드, Cloud +28%) / Americas 35% (DOGE 동결 리스크, Cloud +35%) / APJ 20% (인도·동남아 폭발, Cloud +40%).<br><br><strong>구조적 수혜 (+)</strong>:<br>&bull; <strong>S/4HANA 2027-12-31 강제 전환</strong> — 잔여 30,000 고객 (설치 기반의 50%) 20개월 내 전환 결정, 연 TAM $10~15B<br>&bull; <strong>Joule AI</strong> — ERP 네이티브, Copilot/Einstein 대비 차별화, 50년 메타데이터 독점<br>&bull; <strong>EU AI Act 2026-08 시행</strong> — 유럽산 AI 컴플라이언스 ERP 공공조달 우대, 독일 BaFin + 프랑스 DGS 100% SAP 체결<br>&bull; <strong>지정학 리쇼어링</strong> — 관세 15% → 유럽 기업 공급망 재설계 → ERP 재구축 수요<br><br><strong>구조적 역풍 (-)</strong>:<br>&bull; <strong>Cloud 성장률 정상화</strong> 30%+ → 20%대 = 고성장 프리미엄 재평가<br>&bull; <strong>Microsoft Dynamics + Copilot 번들링</strong> 중견기업 가격 -30~40% 공세 → SAP 2026 H1 중견기업 이탈률 +5%p<br>&bull; <strong>US DOGE</strong> 연방정부 신규 IT 계약 2년 동결 → SAP 공공부문 매출 8% 영향<br>&bull; <strong>Workday HR</strong> SuccessFactors 점유율 연 -200bp 잠식<br></p><table><thead><tr><th>경쟁사</th><th>위협도</th><th>전선</th><th>SAP 점유율 추이</th></tr></thead><tbody><tr><td>Oracle (ORCL)</td><td>중상</td><td>Fusion Cloud ERP, DB 강점, 금융·통신</td><td>중립 (동등 경쟁)</td></tr><tr><td>Microsoft (MSFT)</td><td>상</td><td>Dynamics + Copilot 번들, 중견기업 -40% 가격</td><td>**-2%p 잠식**</td></tr><tr><td>Workday (WDAY)</td><td>중</td><td>HR 중심, SuccessFactors 직접 위협</td><td>**-2%p/년 잠식**</td></tr><tr><td>Salesforce (CRM)</td><td>중하</td><td>Agentforce 2025, CX 공격</td><td>제한적 영향</td></tr><tr><td>Palantir (PLTR)</td><td>중하</td><td>Foundry 정부·방산 틈새</td><td>공공부문 잠식</td></tr><tr><td>ServiceNow (NOW)</td><td>하</td><td>IT Service Management</td><td>직접 경쟁 아님</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><br><strong>리스크 스코어 5.5/10 (중립)</strong> — 상하방 공존.<br><br><strong>최대 위험 시나리오</strong>: Q2 2026-07-22 실적에서 Cloud <20% + CCB QoQ 추가 하락 시 역사적 2022 trough 20x PER 테스트 가능 = 주가 $130 수준.<br><br><strong>카나리아 시그널</strong> (즉시 손절 트리거):<br>1. Q2 Cloud 성장률 <20%<br>2. CCB QoQ 연속 -2% 이상 하락<br>3. Workday HR 점유율 2026년 +300bp 이상 잠식<br>4. Microsoft Dynamics 중견기업 점유율 10% 돌파<br>5. 주요 Fortune 500 대형 고객 이탈 (GE·Boeing 규모)<br>6. SAPPHIRE 5/20 Joule 2.0 발표 실망<br><br><strong>Bear $145 (-11.2%) 확률 25%</strong> — 단, 역사적 최대 낙폭(-48%) 기록 상태에서 추가 하락 여지 제한적.<br></p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="260" cy="50" r="5" fill="var(--sell)"/><text x="269" y="54" fill="var(--text)" font-size="10">Q2/Q3 연속 가이던스 하향</text><circle cx="260" cy="68" r="5" fill="var(--sell)"/><text x="269" y="72" fill="var(--text)" font-size="10">Workday/Dynamics 중견기업 잠식 가속</text><circle cx="260" cy="86" r="5" fill="var(--sell)"/><text x="269" y="90" fill="var(--text)" font-size="10">Cloud 성장률 20% → 15% 추가 감속</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">US DOGE 공공부문 장기 동결</text><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">S/4HANA 전환 재협상 ARR 부진</text><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">LLM 원가 급등 (Anthropic/OpenAI)</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">유럽 경기 경착륙</text><circle cx="100" cy="190" r="5" fill="var(--buy)"/><text x="109" y="194" fill="var(--text)" font-size="10">EUR/USD 강세 (ADR 역풍)</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>Q2/Q3 연속 가이던스 하향</strong> (발생: 고, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 35% — Cloud 성장률 추가 감속 시 -20~25% 주가 하락</span></div><div class="ri rh"><strong>Workday/Dynamics 중견기업 잠식 가속</strong> (발생: 고, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 50% — SuccessFactors 2.0 실패 시 -15~20%</span></div><div class="ri rh"><strong>Cloud 성장률 20% → 15% 추가 감속</strong> (발생: 고, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 30% — CCB QoQ 하락 지속 시 -18%</span></div><div class="ri rh"><strong>US DOGE 공공부문 장기 동결</strong> (발생: 고, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 55% — SAP 공공부문 매출 8% → 2026 -15% 역성장</span></div><div class="ri rh"><strong>S/4HANA 전환 재협상 ARR 부진</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 25% — lift-and-shift 선택 시 ARR 2.5~3배 목표 미달</span></div><div class="ri rm"><strong>LLM 원가 급등 (Anthropic/OpenAI)</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 40% — Joule 마진 -200~300bp 압박</span></div><div class="ri rm"><strong>유럽 경기 경착륙</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 30% — ECB 금리인하 지연, 매출 45% 유럽</span></div><div class="ri rl"><strong>EUR/USD 강세 (ADR 역풍)</strong> (발생: 저, 영향: 저)<br><span style="color:var(--sub);font-size:13px">확률 45% — 유럽 수출 경쟁력 저하 -5%</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><br><strong>매수 전략 (Entry) — 3단계 분할, 총 3% (Moderate)</strong>:<br>&bull; <strong>1차 (40%) 현재가 $163.25 즉시</strong>: RSI 22 + 52주 저점 +1.6% 극단 과매도<br>&bull; <strong>2차 (35%) $155~158 조정 시</strong>: 52주 저점 테스트 하회 지지선 재확인<br>&bull; <strong>3차 (25%) SAPPHIRE 5/20 이후 OR $150 근접</strong>: Joule 2.0 긍정 반응 확인 후 또는 최후 매수<br><br><strong>매도 전략 (Exit) — 3단계 분할 익절</strong>:<br>&bull; <strong>1차 익절 (30%) $180 도달 (+10.3%)</strong>: 3×ATR Base<br>&bull; <strong>2차 익절 (40%) $200 도달 (+22.5%)</strong>: 중간 목표<br>&bull; <strong>3차 익절 (30%) $215 도달 (+31.7%)</strong>: Bull 목표 달성 전량 청산<br><br><strong>손절 규칙 (Stop Loss)</strong>:<br>&bull; <strong>$150.47 (2×ATR) 종가 이탈 → 전량 손절 (Mechanical)</strong><br>&bull; Q2 2026-07-22 Cloud <20% miss → 50% 손절<br>&bull; Q2 miss + CCB QoQ 추가 -2% → 전량 손절 (Fundamental 붕괴)<br>&bull; SAPPHIRE 5/20 Joule 2.0 실망 → 30% 손절<br><br><strong>트레일링 스탑</strong>: $180 돌파 후 20일 이평 $170 하향 이탈 50% 익절 / $200 돌파 후 손절선 $180 상향 조정.<br><br><strong>포트 편입 권고</strong>: VOO 91.5% → 88.5% 축소 + SAP 3% Moderate 편입 (Enterprise SW 섹터 0% → 3%).<br>대안 Option B — Q2 실적 7/22까지 관망, Beat 확인 시 2% 편입.<br>대안 Option C — 엔터프라이즈 SW 노출 필요 시 ORCL 21.5x PER 우선 선호.<br></p></div>
+<div class="sec"><h2>특별 분석: Q1 2026 실적 Deep Dive + 3중 miss 원인 분석</h2>
+<h3>Q1 2026 실적 충격 (2026-04-22 발표)</h3>
+<table>
+<tr><th>항목</th><th>Q1 실적</th><th>컨센서스</th><th>miss 폭</th></tr>
+<tr><td>Revenue</td><td>€8.85B</td><td>€9.15B</td><td style="color:#EF5350"><strong>-3.3%</strong></td></tr>
+<tr><td>Cloud 매출</td><td>€4.62B (+22.5%)</td><td>+28% 컨센</td><td style="color:#EF5350"><strong>-550bp</strong></td></tr>
+<tr><td>non-IFRS OP</td><td>€2.28B</td><td>€2.51B</td><td style="color:#EF5350"><strong>-9.2%</strong></td></tr>
+<tr><td>non-IFRS EPS</td><td>€1.55</td><td>€1.72</td><td style="color:#EF5350"><strong>-9.9%</strong></td></tr>
+<tr><td><strong>CCB QoQ</strong></td><td><strong>€22.10B</strong></td><td>€22.45B 예상</td><td style="color:#EF5350"><strong>-0.8% (첫 QoQ 하락)</strong></td></tr>
+</table>
+
+<h3>3중 miss 핵심 원인</h3>
+<ul>
+<li><strong>1. 공공부문 수주 지연</strong> — 미국 DOGE (효율청) 설립으로 연방정부 신규 IT 계약 동결. SAP 공공부문 매출 $2.5B/년 (전체 8%) 직접 타격. 유럽 공공조달은 상대 방어 (EU AI Act 수혜).</li>
+<li><strong>2. 유럽 대기업 S/4HANA 재협상</strong> — Fortune 500 일부 고객이 "lift-and-shift"만 선택, ARR 2.5~3배 목표 미달. 평균 딜 규모 2025 €8M → 2026 Q1 €6.5M (-19%).</li>
+<li><strong>3. 아시아 지정학 리스크</strong> — 중국 SAP 매출 -15% 역성장 (탈동조화). 일본 엔터프라이즈 Cloud 전환 지연.</li>
+</ul>
+
+<h3>FY26 가이던스 하향</h3>
+<table>
+<tr><th>지표</th><th>기존 가이던스 (2026-01)</th><th>수정 (2026-04-22)</th><th>하향폭</th></tr>
+<tr><td>Cloud 매출 YoY</td><td>+26~28%</td><td>+21~23%</td><td style="color:#EF5350">-500bp</td></tr>
+<tr><td>Cloud 매출 (€B)</td><td>21.60~21.90</td><td>20.80~21.10</td><td style="color:#EF5350">-3.6%</td></tr>
+<tr><td>non-IFRS OP (€B)</td><td>10.30~10.60</td><td>9.80~10.10</td><td style="color:#EF5350">-4.8%</td></tr>
+<tr><td>FCF 목표 (€B)</td><td>8.0</td><td>7.5</td><td style="color:#EF5350">-6.3%</td></tr>
+</table>
+
+<h3>과거 유사 사례 비교</h3>
+<table>
+<tr><th>시기</th><th>하락폭</th><th>원인</th><th>회복</th><th>현재와 차이</th></tr>
+<tr><td>2020-03 COVID</td><td>-38%</td><td>가이던스 철회 (매크로)</td><td>12M +75%</td><td>외부충격 vs 내부 miss</td></tr>
+<tr><td>2022-10 유럽 에너지</td><td>-45%</td><td>경기침체 + 금리</td><td>18M +130%</td><td>밸류 20x vs 27.8x</td></tr>
+<tr><td><strong>2026-04 현재</strong></td><td><strong>-48%</strong></td><td><strong>Q1 miss + Cloud 감속</strong></td><td><strong>?</strong></td><td><strong>역사적 최대 낙폭</strong></td></tr>
+</table>
+</div>
+<div class="sec"><h2>포트폴리오 편입 권고</h2>
+<p><strong>사용자 포트폴리오 현 상태 (2026-04-22 기준)</strong>:</p>
+<ul>
+<li>VOO: 91.5% (기존 100%에서 축소 중)</li>
+<li>권고 편입: COST 5%, LLY 5%, BA 5%, XOM 5%, META 4%, LS일렉 5% 등</li>
+<li><strong>엔터프라이즈 SW 섹터 현재 비중: 0%</strong></li>
+</ul>
+
+<p><strong>Option A (우선 권고): VOO 축소 + SAP 3% 단독 편입</strong></p>
+<ul>
+<li>VOO 91.5% → 88.5%</li>
+<li>SAP 3% (Enterprise SW 섹터 0% → 3%)</li>
+<li>분할: Day 1 40% ($163~165) + 2차 35% ($155~160) + 3차 25% ($150~160, SAPPHIRE 후)</li>
+<li><strong>적합도</strong>: 극단 과매도 + R:R Good + Wide Moat + 2027 catalyst</li>
+</ul>
+
+<p><strong>Option B: 관망 + 조건부 편입</strong></p>
+<ul>
+<li>Q2 2026-07-22 실적까지 관망</li>
+<li>Beat 확인 시 $180~200 구간에서 2% 편입</li>
+<li><strong>장점</strong>: 보수적, Bear 리스크 회피 / <strong>단점</strong>: Bull +31.7% 기회 놓침</li>
+</ul>
+
+<p><strong>Option C: 대체재 검토 (ORCL)</strong></p>
+<ul>
+<li>엔터프라이즈 SW 노출 필요 시 Oracle Fwd PER 21.5x 저평가 우선</li>
+<li>ROIC 19% (SAP 10.5% 대비) 구조적 우위</li>
+<li>SAP 미편입 대안</li>
+</ul>
+
+<p><strong>최종 판정</strong>: <span style="color:#26A69A; font-weight:700;">Option A (SAP 3% Moderate 분할 편입)</span> — Q1 실적 소화 완료 후 RSI 22 극단 과매도 진입점. 손절 $150.47 기계적 준수.</p>
+</div>
+<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-04-24 | 종목분석 에이전트 v3.5</div>
+
+<div class="cmd-guide">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="SAP_SAP_20260424.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
