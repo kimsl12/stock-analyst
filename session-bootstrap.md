@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 |------|-----|
-| 마지막 종목분석 | **7종 배치 분석 (WMT·JPM·BRKB·V·JNJ·BAC·MA) - 2026-04-24** — 대형 블루칩 금융·결제·소비재·헬스케어 크로스섹터 / 이전: 5종 배치 (GE·GS·STX·LVMUY·TLT) 2026-04-23 | 카카오 035720 v2 재분석 - 2026-04-23**, Hold **63.8** (v1 2026-04-16 64.5 Hold → **-0.7p 매수 경계 65점 이탈 Hold 유지**, 턴어라운드, 시총 21.3조원, **Fwd PER 52.7x 2026E** (v1 55.6x -5.2% 완화, NAVER 22.3x 대비 2.4배 프리미엄), 현재가 ₩48,400 (7일 -4.3%, 52주 25.1% 저점 접근 -32.4% Drawdown, 1Y -21.0% NAVER -15% 열세), ATR ₩1,446 (2.99% v1 3.75% -23.7% 변동성 완화), 목표 **₩62,000 (+28.1% Base)** Bull ₩66,000 (+36.4%), 손절 ₩45,507 (2×ATR -6.0%), **R:R 중기 4.68 매우 우수** (v1 1.49 → +214% 개선 ATR 축소 효과) / 단기 1.50 / 장기 6.07, 기대수익률 **+14.2%** (v1 +9.6% +4.6%p 개선) — **핵심 델타**: (-) **Anthropic ARR $30B OpenAI $25B 추월 (2026-04-21)** 한국어 Claude B2B 침투 가속 Moat 75→70 (-5) / (-) **공정위 플랫폼법 5월 재상정 검토 (2026-04-15)** 통과 확률 40→45% 산업 60→55 (-5) / (-) **카카오페이 마이데이터 과징금 150억 확정 예정 (2026-04-08)** + 카카오T 공정위 3년차 조사 리스크 55→48 (-7) / (+) **Fwd PER 55.6→52.7 -5.2%** Upside +22.8→+28.4% (+5.6%p) 밸류 45→52 (+7) / (+) **ATR -23.7% 변동성 완화** 52주 저점 접근 기관 저점 매수 시작 외국인 매도 강도 완화 모멘텀 55→57 (+2) / (~) **SoTP 자회사 지분가치 14.67조 (시총 68.8%)** 카카오뱅크 4.02조 + 카카오엔터 5.76조E IPO 추진 + 페이 1.98조, 본업 6.65조 Fwd PER 약 44x — **NAVER v1 70.4 Buy 대비 전방위 열세** (OPM 6.5 vs 15.2% 2.3배, 순부채 -2,000억 vs 순현금 +1.4조, Fwd PER 2.4배 프리미엄, AI 2년 격차 확정 HyperCLOVA X 3세대 상용 vs Kanana Q4 출시 예정), Kakao 차별화는 카톡 Wide Moat (97% 독점) + 52주 저점 RR 4.68 뿐 — **사용자 포트 편입 비권고** (NAVER 우선 Core 5%, Kakao 잉여 자금 2~3% 한정 조건부: 1Q 2026 실적 영업익 150억 이상 + 플랫폼법 재상정 연기 + 평균단가 ₩46,500 이하), 분할: 관망 20% (₩48,400) + 실적 후 30% (₩46,950 -1ATR) + 저점 30% (₩45,507 -2ATR) + Stress 20% (₩42,000 52주 저점) |
+| 마지막 종목분석 | **32종 대형 배치 분석 (7배치) - 2026-04-24** — 반도체장비(ASML·LRCX·AMAT·TXN) / Healthcare(ABBV·AZN·MRK·NVS·NVO) / Banking·AM(MS·C·HSBC·MUFG·BLK) / Energy·Mining(CVX·SHEL·TTE·BHP) / Consumer(HD·PG·KO·PEP·PM) / Industrial(CAT·UNP·TM) / Tech·Telecom·Media(IBM·SAP·TMUS·VZ·T·DIS) / 이전: 7종 배치 (WMT·JPM·BRKB·V·JNJ·BAC·MA) | 카카오 035720 v2 재분석 - 2026-04-23**, Hold **63.8** (v1 2026-04-16 64.5 Hold → **-0.7p 매수 경계 65점 이탈 Hold 유지**, 턴어라운드, 시총 21.3조원, **Fwd PER 52.7x 2026E** (v1 55.6x -5.2% 완화, NAVER 22.3x 대비 2.4배 프리미엄), 현재가 ₩48,400 (7일 -4.3%, 52주 25.1% 저점 접근 -32.4% Drawdown, 1Y -21.0% NAVER -15% 열세), ATR ₩1,446 (2.99% v1 3.75% -23.7% 변동성 완화), 목표 **₩62,000 (+28.1% Base)** Bull ₩66,000 (+36.4%), 손절 ₩45,507 (2×ATR -6.0%), **R:R 중기 4.68 매우 우수** (v1 1.49 → +214% 개선 ATR 축소 효과) / 단기 1.50 / 장기 6.07, 기대수익률 **+14.2%** (v1 +9.6% +4.6%p 개선) — **핵심 델타**: (-) **Anthropic ARR $30B OpenAI $25B 추월 (2026-04-21)** 한국어 Claude B2B 침투 가속 Moat 75→70 (-5) / (-) **공정위 플랫폼법 5월 재상정 검토 (2026-04-15)** 통과 확률 40→45% 산업 60→55 (-5) / (-) **카카오페이 마이데이터 과징금 150억 확정 예정 (2026-04-08)** + 카카오T 공정위 3년차 조사 리스크 55→48 (-7) / (+) **Fwd PER 55.6→52.7 -5.2%** Upside +22.8→+28.4% (+5.6%p) 밸류 45→52 (+7) / (+) **ATR -23.7% 변동성 완화** 52주 저점 접근 기관 저점 매수 시작 외국인 매도 강도 완화 모멘텀 55→57 (+2) / (~) **SoTP 자회사 지분가치 14.67조 (시총 68.8%)** 카카오뱅크 4.02조 + 카카오엔터 5.76조E IPO 추진 + 페이 1.98조, 본업 6.65조 Fwd PER 약 44x — **NAVER v1 70.4 Buy 대비 전방위 열세** (OPM 6.5 vs 15.2% 2.3배, 순부채 -2,000억 vs 순현금 +1.4조, Fwd PER 2.4배 프리미엄, AI 2년 격차 확정 HyperCLOVA X 3세대 상용 vs Kanana Q4 출시 예정), Kakao 차별화는 카톡 Wide Moat (97% 독점) + 52주 저점 RR 4.68 뿐 — **사용자 포트 편입 비권고** (NAVER 우선 Core 5%, Kakao 잉여 자금 2~3% 한정 조건부: 1Q 2026 실적 영업익 150억 이상 + 플랫폼법 재상정 연기 + 평균단가 ₩46,500 이하), 분할: 관망 20% (₩48,400) + 실적 후 30% (₩46,950 -1ATR) + 저점 30% (₩45,507 -2ATR) + Stress 20% (₩42,000 52주 저점) |
 | 마지막 브리핑 | **리밸런싱 (사용자 포트) - 2026-04-21** (VOO 91.5% → 35% 재편안) |
 | 마지막 KB 업데이트 | **semiconductor(루트→industry/ 이동+전면갱신) + ai + auto + bio_pharma(신규) 4건 병렬 - 2026-04-21** |
 | 진행 중 작업 | 없음 (clean state) |
@@ -19,6 +19,39 @@
 
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| **32종 배치 (2026-04-24) 간이 요약** | 2026-04-24 | — | 상세는 `analysis/{티커}_*/scorecard.md` 또는 `reports/{티커}_*_20260424.html` 참조 |
+| **BLK_BlackRock** | 2026-04-24 | **85.8 Strong Buy A** ($1,210 +14.9%, AUM $13.9T Record, Private Markets 확장) | 유효 |
+| **MUFG_Mitsubishi** | 2026-04-24 | **85.6 Strong Buy A** ($19.74 +14.6%, BoJ 인상 수혜 + MS 21% $45B) | 유효 |
+| **AMAT_AppliedMaterials** | 2026-04-24 | **84.0 Strong Buy A-** ($450 +11.4%, UBS Top Pick, WFE 1위 ROE 45.2%) | 유효 |
+| **SHEL_Shell** | 2026-04-24 | **83.5 Strong Buy A-** ($95 +6.4%, LNG 1위 20%, FCF Yield 15.6%) | 유효 |
+| **MS_MorganStanley** | 2026-04-24 | **82.65 Strong Buy A- (하단)** ($200 +6.0%, Wealth $8.1T NNA Q1 $94B Record) | 유효 |
+| **PM_PhilipMorris** | 2026-04-24 | **81.9 Buy A- (SB 경계)** ($185.25 +9.5%, Zyn 슈퍼사이클+IQOS FDA 2026 H2) | 유효 |
+| **UNP_UnionPacific** | 2026-04-24 | **81.76 Strong Buy A-** ($295 +8.7%, NSC $85B M&A Optionality, ROE 45.5%) | 유효 |
+| **KO_CocaCola** | 2026-04-24 | **81.74 Strong Buy 하단** ($78 +2.3%, Buffett Top 4 9.3%, Dividend King 64년) | 유효 |
+| **NVS_Novartis** | 2026-04-24 | **81.2 Strong Buy A-** ($157 +6.5%, Pluvicto 95% 독점+Kisqali) | 유효 |
+| **TMUS_TMobile** | 2026-04-24 | **79.5 Buy B+ (SB 경계)** ($225 +15.9%, 5G+FWA 1위, PEG 1.18) | 유효 |
+| **BHP_BHPGroup** | 2026-04-24 | **79.4 Buy B+ (SB 경계)** ($87 +9.0%, 구리 AI 수혜, 배당 5.2%, 1Y +77.9%) | 유효 |
+| **CVX_Chevron** | 2026-04-24 | **79.0 Buy B+** ($200 +6.6%, Buffett Top 5, 배당 Aristocrat 38년, XOM 대비 열위) | 유효 |
+| **DIS_Disney** | 2026-04-24 | **78.35 Buy B+ (SB 경계)** ($125 +20.6%, 턴어라운드 R:R 5.10, Loeb $400M 재진입, CEO 승계 Q4) | 유효 |
+| **ASML_ASML** | 2026-04-24 | **78.5 Buy B+ (SB 경계)** ($1,560 +10.0%, EUV 100% 독점 Wide Moat 9.5, 중국 서비스 중단 리스크) | 유효 |
+| **TTE_TotalEnergies** | 2026-04-24 | **78.1 Buy B+** ($89 -1.6% ⚠️ 컨센 초과 +9.7%, 배당 5.05% 40년, LNG 2위) | 유효 |
+| **ABBV_AbbVie** | 2026-04-24 | **77.85 Buy B+** ($215 +7.0%, Skyrizi+Rinvoq $31B, Fwd PE 14.7x 최저) | 유효 |
+| **PG_PG** | 2026-04-24 | **77.8 Buy B+** ($160 +9.8%, Dividend King 68년 FMCG 최장) | 유효 |
+| **LRCX_LamResearch** | 2026-04-24 | **77.75 Buy B+ (SB 경계)** ($285 +10.2%, 식각 50% + NAND 65% 독점) | 유효 |
+| **HSBC_HSBC** | 2026-04-24 | **77.4 Buy B+** ($95 +6.0% + 배당 5.8%, 아시아 54%) | 유효 |
+| **AZN_AstraZeneca** | 2026-04-24 | **76.75 Buy B+** ($215 +11.8%, Enhertu ADC 리더 50% 독점) | 유효 |
+| **PEP_PepsiCo** | 2026-04-24 | **76.75 Buy B+** ($172.50 +10.8%, Dividend Aristocrat 53년 Yield 3.66%) | 유효 |
+| **C_Citigroup** | 2026-04-24 | **76.3 Buy B+** ($145 +12.8%, PBR 0.92x 4대 최저, Turnaround) | 유효 |
+| **T_ATT** | 2026-04-24 | **76.3 Buy B+** ($29.50 +10.9%, Fiber 1위, 부채 -34% 감축) | 유효 |
+| **CAT_Caterpillar** | 2026-04-24 | **75.0 Buy B+** ($840 +0.6% ⚠️ R:R 0.10 매우 나쁨, AI DC 발전기 60% 독점) | 유효 (진입 보류) |
+| **HD_HomeDepot** | 2026-04-24 | **75.0 Buy B+** ($385 +13.2%, Wide Moat 9.0 ROIC 35%, Pro 50%) | 유효 |
+| **TM_Toyota** | 2026-04-24 | **73.4 Buy B+** ($215 +9.7%, HEV 반사수혜 vs Tesla/GM/Ford EV 둔화) | 유효 |
+| **VZ_Verizon** | 2026-04-24 | **72.5 Buy B+** ($50 +5.9% + 배당 6.4%, Fwd PER 9.2x 최저) | 유효 |
+| **SAP_SAP** | 2026-04-24 | **71.8 Buy B+** ($187 +14.6%, RSI 22 극단 과매도, S/4HANA 2027 강제 전환) | 유효 |
+| **NVO_NovoNordisk** | 2026-04-24 | **68.5 Buy B (Hold 경계)** ($48 +24.6%, -50% Drawdown Deep Value, LLY Category King 이탈 확정) | 유효 |
+| **MRK_Merck** | 2026-04-24 | **68.4 Buy B (Hold 경계)** ($130 +13.4%, Keytruda 2028 LOC 절벽 $29B) | 유효 |
+| **TXN_TexasInstruments** | 2026-04-24 | **67.0 Buy B (Hold 경계) ⛔ 진입 보류 R:R -0.40** ($275 -2.56%, Q1 +19.4% 급등 후 컨센 초과) | 유효 |
+| **IBM_IBM** | 2026-04-24 | **64.5 Hold+** ($250 +8.2%, watsonx Tier-3 Niche Anthropic 1/10, Q1 -8.25% 반응) | 유효 |
 | **MA_Mastercard** | **2026-04-24** | **83.5 Strong Buy** (A-등급, 결제 듀오폴리 2위 MA 25%+Visa 50%, 시총 $457.2B, Fwd PER 30.5x PEG 1.93 V보다 저평가, ROIC 55% FAANG급, OPM 58% Quality Compounder, 해외 68%·Cross-border 30% 관세 수혜 V 53% 대비 +15%p, Q1 2026 D-6 (4/30) 컨센 EPS $4.00 Beat 기대, VAS +25% Track B2B 2026H2 수익화, Visa v 대비 PEG·Cross-border 우위, 목표 $580 +15.4% Bull $640 +27.4%, R:R 3.99 Excellent / Bull 7.08, 포트 편입 VOO -5% + MA 5% 권고) | 유효 (신규) |
 | **BAC_BankOfAmerica** | **2026-04-24** | **81.5 Buy** (A-등급 Strong Buy 경계 -1.5점, Quality Compounder+Defensive Cyclical 복합, 시총 $374.1B, Fwd PER 13.2x JPM 13.9x 할인, **NII 가이던스 6대 은행 유일 상향** +5~6→+6~8% Deposit Beta 35% 최저 금리인하기 방어 우위, PBR 1.35x vs JPM 2.25x **-40% 할인**, RoTCE 14% vs JPM 21%, **Buffett 매도 종료 2025 Q4** + 2026 Q1 유지 심리 전환점, 6/18 Basel III Endgame 의견수렴 + 6/26 CCAR + 7/15 Q2 실적 3중 Catalyst 클러스터, CRE 익스포저 7% JPM 9% 대비 낮음, HTM 미실현 -$98B Peak -$131B 회복, 목표 $57.50 +9.6% Bull $62.00 +18.2%, R:R 2.18 Good / Bull 3.55, 포트 편입 BAC 4% 핵심 + GS 3% 위성 = Financials 7% VOO -4%) | 유효 (신규) |
 | **JNJ_JohnsonJohnson** | **2026-04-24** | **80.45 Buy** (A-등급, Dividend King 62년 세계 최장 + AAA 신용 MSFT·JNJ 2개뿐, Kenvue 분사(2023) 후 Pharma+MedTech 2부문, 시총 $555.2B, Fwd PER 21.5x LLY 35.4x 대비 -39% 할인, ROIC 19.5% Net Debt/EBITDA 0.61x, Wide Moat 9.0, 2026-Q2 Dual Catalyst icotrokinra FDA 승인(6월)+Q2 실적(7/15), Darzalex +18.8%·Carvykti +119%·Shockwave 독점, Stelara LOC 누적 $10B 상실 2024-2028 바이오시밀러 6社 진입, IRA Part D Stelara -66%/Xarelto -62% 2026-01 확정, 제약 100% 관세 2026-07-31 발효(MFN 미확정), Talc 소송 58,000건 추가 $3~5B, GLP-1 메가트렌드 미참여 구조적 소외, 목표 $240 +4.1% Bull $275 +19.2%, R:R 1.47 Marginal, Total Return 1Y +6.4%(배당 2.25% 포함), LLY v2 86.9 대비 스코어 -6.45 R:R 3.1배 열세 → **Option A LLY 5% 단일 유지 JNJ 비편입** 권고 / Option B LLY 3%+JNJ 2%=5% 분산 / Watchlist Q3 $210-215 재검토) | 유효 (신규) |
