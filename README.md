@@ -6,20 +6,42 @@
 
 📘 **[리포트 목록 보기](https://kimsl12.github.io/stock-analyst/)**
 
-최근 리포트 (2026-04-22 기준):
-- [Costco Wholesale (COST)](https://kimsl12.github.io/stock-analyst/reports/COST_Costco_20260422.html) — 2026-04-22, Buy 81.0
-- [ExxonMobil (XOM)](https://kimsl12.github.io/stock-analyst/reports/XOM_ExxonMobil_20260422.html) — 2026-04-22, **Strong Buy 86.2**
-- [iShares Russell 2000 (IWM)](https://kimsl12.github.io/stock-analyst/reports/IWM_iSharesRussell2000_20260422.html) — 2026-04-22, Buy 80.9 (ETF)
-- [iShares Min Vol (USMV)](https://kimsl12.github.io/stock-analyst/reports/USMV_iSharesMinVol_20260421.html) — 2026-04-21, Buy 72.5 (ETF)
-- [iShares TIPS (TIP)](https://kimsl12.github.io/stock-analyst/reports/TIP_iSharesTIPS_20260421.html) — 2026-04-21, Buy 77.3 (ETF)
-- [Invesco S&P500 Equal Weight (RSP)](https://kimsl12.github.io/stock-analyst/reports/RSP_InvescoSP500EqualWeight_20260421.html) — 2026-04-21, Buy 77 (ETF)
-- [Micron Technology (MU)](https://kimsl12.github.io/stock-analyst/reports/MU_Micron_20260421.html) — 2026-04-21, **Strong Buy 경계 83.0**
-- [Adobe (ADBE)](https://kimsl12.github.io/stock-analyst/reports/ADBE_Adobe_20260421.html) — 2026-04-21, Buy 76.35
-- [Alibaba (BABA)](https://kimsl12.github.io/stock-analyst/reports/BABA_Alibaba_20260421.html) — 2026-04-21, Buy 74.6
+### 2026-04-24 대형 배치 분석 — 39종 (32 신규 + 7종)
 
-최근 브리핑:
+**Strong Buy Top 10** (스코어 순):
+- [BlackRock (BLK)](https://kimsl12.github.io/stock-analyst/reports/BLK_BlackRock_20260424.html) — **85.8 Strong Buy A** (AUM $13.9T Record, Private Markets)
+- [Mitsubishi UFJ (MUFG)](https://kimsl12.github.io/stock-analyst/reports/MUFG_Mitsubishi_20260424.html) — **85.6 Strong Buy A** (BoJ 인상 수혜, MS 21% $45B)
+- [Applied Materials (AMAT)](https://kimsl12.github.io/stock-analyst/reports/AMAT_AppliedMaterials_20260424.html) — **84.0 Strong Buy A-** (UBS Top Pick, WFE 1위)
+- [Mastercard (MA)](https://kimsl12.github.io/stock-analyst/reports/MA_Mastercard_20260424.html) — **83.5 Strong Buy A-** (결제 듀오폴리 2위, ROIC 55%)
+- [Shell (SHEL)](https://kimsl12.github.io/stock-analyst/reports/SHEL_Shell_20260424.html) — **83.5 Strong Buy A-** (LNG 1위 20%, FCF Yield 15.6%)
+- [Morgan Stanley (MS)](https://kimsl12.github.io/stock-analyst/reports/MS_MorganStanley_20260424.html) — **82.65 Strong Buy A-** (Wealth $8.1T NNA Record)
+- [Visa (V)](https://kimsl12.github.io/stock-analyst/reports/V_Visa_20260424.html) — **82.0 Strong Buy A-** (결제 듀오폴리 1위, Moat 9.5)
+- [Philip Morris (PM)](https://kimsl12.github.io/stock-analyst/reports/PM_PhilipMorris_20260424.html) — **81.9 Buy A- SB 경계** (Zyn+IQOS)
+- [Union Pacific (UNP)](https://kimsl12.github.io/stock-analyst/reports/UNP_UnionPacific_20260424.html) — **81.76 Strong Buy A-** (NSC $85B M&A Optionality)
+- [JPMorgan (JPM)](https://kimsl12.github.io/stock-analyst/reports/JPM_JPMorgan_20260424.html) — **81.7 Buy A- SB 하단** (6개 영업 Top 3, Fortress)
+
+**⚠️ 진입 보류 태깅** (R:R 기준):
+- [Texas Instruments (TXN)](https://kimsl12.github.io/stock-analyst/reports/TXN_TexasInstruments_20260424.html) — 67.0 Buy (B) ⛔ R:R -0.40 컨센 초과
+- [Caterpillar (CAT)](https://kimsl12.github.io/stock-analyst/reports/CAT_Caterpillar_20260424.html) — 75.0 Buy (B+) ⚠️ R:R 0.10 업사이드 소진
+- [Walmart (WMT)](https://kimsl12.github.io/stock-analyst/reports/WMT_Walmart_20260424.html) — 76.3 Buy (B+ Hold 편향) ⛔ R:R -0.24 Fwd PE 47.5x 과열
+
+### 2026-04-23 배치 & 재분석 11종
+- [Eli Lilly v2 (LLY)](https://kimsl12.github.io/stock-analyst/reports/LLY_EliLilly_20260423.html) — **86.9 Strong Buy A** (v1 82.4 → +4.5p, GLP-1 Category King)
+- [LS ELECTRIC v2 (010120)](https://kimsl12.github.io/stock-analyst/reports/010120_LSELECTRIC_20260423.html) — **84.3 Strong Buy A-** (Buy → Strong Buy 승급)
+- [Goldman Sachs (GS)](https://kimsl12.github.io/stock-analyst/reports/GS_GoldmanSachs_20260423.html) — **83.9 Buy A** (IB Renaissance)
+- [GE Aerospace (GE)](https://kimsl12.github.io/stock-analyst/reports/GE_GEAerospace_20260423.html) — **82.7 Strong Buy A-** (BA LEAP-1B 100% 독점)
+- [NVIDIA v2 (NVDA)](https://kimsl12.github.io/stock-analyst/reports/NVDA_NVIDIA_20260423.html) — **82.35 Strong Buy A** (Moat 9.0 유지)
+- [Boeing v2 (BA)](https://kimsl12.github.io/stock-analyst/reports/BA_Boeing_20260423.html) — **82.20 Strong Buy A-** (v1 74.9 → +7.3p 승급)
+
+### 2026-04-22 이전 (유효)
+- [Costco (COST)](https://kimsl12.github.io/stock-analyst/reports/COST_Costco_20260422.html) — 81.0 Buy
+- [ExxonMobil (XOM)](https://kimsl12.github.io/stock-analyst/reports/XOM_ExxonMobil_20260422.html) — **86.2 Strong Buy**
+- [Micron (MU)](https://kimsl12.github.io/stock-analyst/reports/MU_Micron_20260421.html) — 83.0 Strong Buy 경계
+
+### 최근 브리핑
+- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260424.html) — 2026-04-24
+- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260424.html) — 2026-04-24, 소프트웨어 AI 검은 목요일 + 한국 GDP +1.7% 서프라이즈
 - [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안
-- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260423.html) — 2026-04-23
 
 ## 변경 이력
 
@@ -215,7 +237,7 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 ---
 
-## 슬래시 명령어 (총 17개)
+## 슬래시 명령어 (총 18개)
 
 ### KB 관리 (2개)
 
@@ -294,17 +316,22 @@ fetch_price.py --market --save (daily_snapshot 선행 갱신)
 
 ---
 
-## Knowledge Base 구조 (2026-04-22 기준)
+## Knowledge Base 구조 (2026-04-24 기준)
 
 ```
 knowledge-base/                  ← CURRENT만 (SSOT)
 ├── _index.md                    ← 마스터 인덱스 (단일 SSOT)
-├── industry/                    ← 19개 섹터 KB
+├── industry/                    ← 26개 섹터 KB
 │   ├── (핵심) semiconductor.md, ai.md, auto.md, bio_pharma.md
 │   ├── (에너지) energy.md, battery.md, smr.md
 │   ├── (방산·우주) defense_industry.md, space.md, quantum.md
-│   ├── (소비·금융) luxury.md [v3.7 신규], banking_capital.md
-│   ├── (인프라) advanced_materials.md, infrastructure.md
+│   ├── (소비) luxury.md [v3.7], consumer_retail.md [04-24 신규]
+│   ├── (금융) banking_capital.md [04-24 갱신], insurance.md [04-24 신규]
+│   ├── (인프라·물류) advanced_materials.md, infrastructure.md,
+│   │                 logistics.md [04-24 신규], real_estate.md [04-24 신규]
+│   ├── (헬스케어) healthcare_service.md [04-24 신규]
+│   ├── (필수소비) food_agriculture.md [04-24 신규]
+│   ├── (교육) education.md [04-24 신규]
 │   ├── (통신·로봇) telecom_next.md, robotics.md
 │   ├── (자본지출) capex.md
 │   ├── (크립토) crypto_bitcoin.md
@@ -313,12 +340,18 @@ knowledge-base/                  ← CURRENT만 (SSOT)
 │   ├── us_economy.md, us_monetary_policy.md (SSOT)
 │   ├── korea_economy.md, geopolitics.md, global_risk_factors.md
 │   ├── political_cycle.md, tech_breakthrough.md, supply_chain.md
+├── market/                      ← 시장 데이터 상시 갱신
+│   └── correlation_matrix.md    [04-24 6 페어 30/90일 롤링 갱신]
 └── portfolio/                   ← 개인 데이터
     ├── model_portfolios.md      ← 4종 (안전/중립/공격/배당)
     └── user_portfolio.md        ← 등록 완료 (중립형, VOO 91.5% 편중 진단)
 
 knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
 ```
+
+**2026-04-24 KB 집중 갱신** (7종 신규 + 2종 갱신):
+real_estate · consumer_retail · logistics · healthcare_service · food_agriculture · education · insurance (신규)
+banking_capital · correlation_matrix (갱신)
 
 **주의**: 루트 `geopolitics.md`, `global_risk_factors.md`, `us_monetary_policy.md`는
 `macro/` 폴더의 SSOT로 redirect하는 포인터 파일로 유지 (기능 무결).
@@ -358,9 +391,10 @@ knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
 - **GitHub Actions**: `.github/workflows/deploy-reports.yml`
 - **레이아웃**: 2컬럼 (좌: 종목분석 / 우: 브리핑)
 
-### ⚠️ 현재 상태 (2026-04-22)
+### ⚠️ 현재 상태 (2026-04-24)
 
-GitHub Actions **계정 단위 비활성화 중** (GitHub Support 티켓 #4287825 심사 진행).
+GitHub Actions **계정 단위 비활성화 지속** (GitHub Support 티켓 #4287825 심사 진행).
 - `main` push는 정상 동작
 - gh-pages 자동 배포는 Actions 복구 시까지 지연
 - 로컬 HTML 리포트는 `reports/` 폴더에서 직접 열람 가능
+- 2026-04-24 기준 reports/ 누적: 분석 HTML 100+종, 브리핑 HTML 20+건
