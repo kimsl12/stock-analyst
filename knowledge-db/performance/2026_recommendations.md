@@ -132,6 +132,9 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-24 | evening | 이벤트 | 트럼프 호르무즈 기뢰 격침 명령 -- 에스컬레이션 단계 격상 | Bear (에너지 인플레 상방) | 단기~중기 | 중간 | WTI $96.07(5일 연속), Brent $105.63. 격침 명령+소해작전 3배. 호르무즈 장기 교착 확률 상승 [CNN, NPR, Al Jazeera] | reports/briefing/evening_20260424.html | 진행중 |
 | 2026-04-24 | evening | 시나리오 | 반도체 AI 슈퍼사이클 7회 초~중반 판정 | Bull (반도체) | 중기 | 중간 | TI +10% + Intel +20% AH = 2일 연속 대형 Beat. CPU/아날로그/GPU/메모리 전분야 확인. CapEx $660~690B 초기 [CNBC, MarketScreener] | reports/briefing/evening_20260424.html | 진행중 |
 | 2026-04-24 | evening | 이벤트 | Fed 인하 완전 소멸 시나리오 -- Core PCE 3.2%+ 시 | Bear (Fed 인하 0회) | 단기~중기 | 중간 | WTI $96 5일 연속. 에너지 CPI 전이 시차 2~3개월. 4/25 Core PCE >3.2% 시 연내 인하 소멸+10Y 4.40~4.60% [BLS, IMF WEO] | reports/briefing/evening_20260424.html | 진행중 |
+| 2026-04-25 | evening | 종목 | X-Energy (XE) | Bull (원자력 르네상스 IPO) | 중기~장기 | 중간 | 04-25 IPO $23→$30.11. $10B+ 원자력 역대최대. AI DC 전력 수요 SMR 선두. Marks(TLN)/Druckenmiller(BE) 테마 일치 [CNBC, Motley Fool] | reports/briefing/evening_20260425.html | 진행중 |
+| 2026-04-25 | evening | 이벤��� | FOMC 4/28-29 "매파적 동결" 리스크 -- 10Y 4.35%+ 트리거 | Bear (S&P -3~5%) | 단기 | 중간 | PMI 입력비용 2022년 이후 최대 + WTI $96+ + ISM 78.3 동시. 파월 "closely monitoring" 톤 변화 확률 40%. 6월 인하 기대 소멸 가능 [CME FedWatch, NBC News] | reports/briefing/evening_20260425.html | 진행중 |
+| 2026-04-25 | evening | 시나리오 | 30일 시나리오: A(실적 랠리) 40% / B(이중 충격 조정) 42% / C(위기) 18% | 중립 (A+B 근접) | 단기~중기 | 중간 | Intel +23% 포함 실적 81% Beat + S&P/NASDAQ 신고가 = A 상향. WTI $96+ 에너지 = B 유지. 이스라엘-레바논 3주 연장 = C 하향 [lead_evening_20260425.md] | reports/briefing/evening_20260425.html | 진행중 |
 
 ---
 

@@ -70,6 +70,9 @@ lint_mode: full
 | 2026-04-25 | 모닝브리핑 | Intel Q1 EPS +2,800% 서프라이즈(+24%) → AI 인프라 슈퍼사이클 레거시 확산 확인. Philly Sox 18거래일 연승(역대 최장). "AI 가위"(인프라↑ vs SaaS↓) 구도 선명 | `market/daily_snapshot.md, market/economic_calendar.md` | 진행중 |
 | 2026-04-25 | 모닝브리핑 | PMI 입력비용 2022년 이후 최대 + WTI $96(5연속) — 4/30 GDP+PCE 동시 발표 최대 분기점. 스태그플레이션 내러티브 점검 구간 | `market/surprise_index.md, macro/us_economy.md` | 진행중 |
 | 2026-04-25 | 모닝브리핑 | GDP Q1 Advance + Core PCE 3월 발표일 정정: 4/25 → **4/30** (BEA 공식 일정 확인). 기존 캘린더 오류 수정 | `market/economic_calendar.md` | — |
+| 2026-04-25 | 이브닝브리핑 | S&P 7,165.08 확정 신고가(모닝 7,121 대비 +44pt) — 반도체가 S&P 12.8% 랠리의 40% 기여. 1990년대 인터넷 초기 유사 섹터 집중도. breadth 리스크 극대화 | `market/daily_snapshot.md` | 진행중 |
+| 2026-04-25 | 이브닝브리핑 | WTI↔BEI Z+2.0sigma 재확인 + PMI 입력비용 + ISM 78.3 = 2022년 3월 이후 최초 동시 발생. FOMC 4/28-29 "closely monitoring" 톤 변화 확률 40% | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
+| 2026-04-25 | 이브닝브리핑 | X-Energy(XE) IPO $23→$30.11(원자력 역대최대 $10B+) — AI DC 전력 수요 구조적 수혜 SMR 신규 테마. Marks/Druckenmiller 에너지전환 컨버전스 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
