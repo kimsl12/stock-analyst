@@ -196,3 +196,31 @@ type: time_series
 | 2026-04-24 | news | IBM_Q1_Result | EPS_1.91_Beat_Stock-10pct | — | — | CNBC / Benzinga [2026-04-23 AH] | 2026-04-24T09:00:00+09:00 | EPS $1.91(컨센 $1.81 Beat), Rev $15.92B(+9% YoY Beat). AI 성장 둔화 우려 → 주가 -10.3%. AI 불안 소프트웨어 섹터 매도 트리거 |
 | 2026-04-24 | news | ServiceNow_Selloff | STOCK-18pct_AI_FEAR | — | — | CNBC / Yahoo Finance [2026-04-23] | 2026-04-24T09:00:00+09:00 | Beat에도 AI 대체 공포 + 이란 가이던스 → -18% 역대 최대. Salesforce -9.4%, Oracle -6%, Workday -9%, Adobe -7.4% 동반 |
 | 2026-04-24 | news | Korea_Q1_GDP | PLUS1.7pct_5yr_HIGH | — | — | Korea Times / CNBC / RTTNews [2026-04-24 BOK 발표] | 2026-04-24T09:00:00+09:00 | +1.7% q/q (컨센 +0.9% 대비 +0.8%p 서프라이즈). 5.5년래 최고. 반도체 수출 +5.1% q/q 주도. YoY +3.6% |
+| 2026-04-25 | us_index | SP500 | 7121 | +0.18% | point | Yahoo Finance / TheStreet [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 신고가 경신. 반도체 AI 인프라 랠리(Intel Q1 +2800%) |
+| 2026-04-25 | us_index | NASDAQ | ~24837 | +1.60% | point | Yahoo Finance [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 신고가. Nvidia $5조 재탈환. Philly Sox 18일 연승(역대 최장) |
+| 2026-04-25 | us_index | DJIA | 49230.71 | -0.16% | point | StockMarketWatch [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | -79.61pt. 반도체 집중도 낮은 전통 섹터 약세 |
+| 2026-04-25 | us_index | Russell2000 | 미확인 | +0.65%추정 | point | Yahoo Finance 추정 [2026-04-24] | 2026-04-25T09:00:00+09:00 | 소형주 반등. 정확값 미수집 |
+| 2026-04-25 | us_index | VIX | 18.63 | -3.52% | index | Yahoo Finance [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 공포 완화. 단 18선 = 완전 안정 아님. FOMC 4/28-29 대기 |
+| 2026-04-25 | asia_index | KOSPI | 6475.63 | flat | point | CNBC Asia [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 전일 +0.90% 강세 후 숨고르기 |
+| 2026-04-25 | asia_index | KOSDAQ | 1203.84 | +2.51% | point | CNBC Asia [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 급반등. 바이오·소형기술주 강세 전환 |
+| 2026-04-25 | asia_index | Nikkei225 | 59435 | +0.50% | point | TradingEconomics [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 반도체 랠리 + 엔화 약세 방어막 |
+| 2026-04-25 | asia_index | HangSeng | 미확인 | -0.16% | point | CNBC Asia [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 소폭 하락. 이란 리스크 + 중국 모멘텀 부재 |
+| 2026-04-25 | asia_index | CSI300 | 4769.37 | -0.35% | point | CNBC Asia [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | 중국 경기 모멘텀 단기 약화 |
+| 2026-04-25 | fx | DXY | ~98.8 | 소폭강세 | index | TradingEconomics [2026-04-24] | 2026-04-25T09:00:00+09:00 | 이란 교착 안전자산 달러 수요. 주간 3주 만에 첫 상승 |
+| 2026-04-25 | fx | USDKRW | 1475.19 | -0.44% | KRW | TradingEconomics [2026-04-24] | 2026-04-25T09:00:00+09:00 | 원화 강세. 한국 Q1 GDP 서프라이즈 + 반도체 수출 호조 반영 |
+| 2026-04-25 | fx | USDJPY | 159.815 | +0.07% | JPY | TradingEconomics [2026-04-24] | 2026-04-25T09:00:00+09:00 | 엔화 약세 지속. BOJ 정책 불확실 |
+| 2026-04-25 | commodity | WTI | 96.07 | 추정+2.05% | USD/barrel | Oneindia / Fortune [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | ⚠️ 5연속 상승. 트럼프 기뢰 격침 명령 + 이란 기뢰 미해제. $95 돌파 |
+| 2026-04-25 | commodity | Brent | 105.63 | 추정+2.17% | USD/barrel | Oneindia [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | ⚠️ $105 돌파. 공급 리스크 구조화 |
+| 2026-04-25 | commodity | Gold | 4723.60 | +0.54% | USD/oz | TradingEconomics [2026-04-24 close] | 2026-04-25T09:00:00+09:00 | $4,700 지지 재확인. 탈달러 구조적 수요 유지 |
+| 2026-04-25 | bond | US10Y | 4.31 | +1bp | percent | Advisor Perspectives / TradingEconomics [2026-04-24] | 2026-04-25T09:00:00+09:00 | PMI Beat + 유가 상승 인플레 우려 소폭 반영 |
+| 2026-04-25 | bond | US2Y | 3.78 | -3bp | percent | Advisor Perspectives / TradingEconomics [2026-04-24] | 2026-04-25T09:00:00+09:00 | 단기 인하 기대 소폭 유지 |
+| 2026-04-25 | bond | Spread2Y10Y | +53 | — | bp | 계산값(4.31%-3.78%) | 2026-04-25T09:00:00+09:00 | 정상 구간(비역전) 유지. 전일 +49bp 대비 확대 |
+| 2026-04-25 | crypto | BTC | ~78126 | 소폭상승 | USD | Yahoo Finance / CoinDesk [2026-04-24] | 2026-04-25T09:00:00+09:00 | $78K 안착. ETF 8일 연속 순유입. 탈동조화 유지 |
+| 2026-04-25 | crypto | ETH | ~2352 | — | USD | Yahoo Finance [2026-04-24] | 2026-04-25T09:00:00+09:00 | $2,300선 지지 확인 |
+| 2026-04-25 | crypto | SOL | ~85.95 | — | USD | Coinbase / Yahoo Finance [2026-04-24] | 2026-04-25T09:00:00+09:00 | KelpDAO 해킹 후 회복세 |
+| 2026-04-25 | crypto | BTC_ETF_Monthly | 2.43B | — | USD | Invezz / CoinDesk [2026-04-24] | 2026-04-25T09:00:00+09:00 | 4월 누계 $2.43B(8일 연속). 3월 $1.32B 대비 +84%. IBIT 809,870 BTC |
+| 2026-04-25 | crypto | FearAndGreedIndex | 39~60 | — | index | 소스별 차이 [2026-04-24] | 2026-04-25T09:00:00+09:00 | Fear→Neutral 전환 구간. 소스별 방법론 차이 |
+| 2026-04-25 | calendar | USFlashPMI_Apr | Composite_52.0 | — | index | S&P Global [2026-04-24 발표] | 2026-04-25T09:00:00+09:00 | Beat 컨센 50.6. Mfg 54.0 / Svcs 51.3. Q2 모멘텀 확인. 단 입력비용 인플레 가속 경고 |
+| 2026-04-25 | calendar | JoblessClaims_Apr18wk | 214000 | +6K | count | US DOL [2026-04-24 발표] | 2026-04-25T09:00:00+09:00 | 주간종료 4/18. 컨센 212K 소폭 상회. 계속청구 1,821K(+12K). 구조적 저실업 유지 |
+| 2026-04-25 | news | Intel_Q1_Result | EPS_0.29_Beat2800pct | — | — | BusinessWire / Yahoo Finance [2026-04-23 AH] | 2026-04-25T09:00:00+09:00 | EPS $0.29(컨센 $0.01 대비 +2,800%). Rev $13.58B(컨센 $12.42B). INTC +24% $82.57. Philly Sox 18일 연승(역대 최장) |
+| 2026-04-25 | news | GDP_Q1_Advance_Schedule | PENDING_APR30 | — | — | BEA.gov [공식 일정] | 2026-04-25T09:00:00+09:00 | GDP Q1 Advance + Core PCE 3월 모두 4/30 발표 예정. 4/25 발표 없음(당초 예상 오류 정정) |
