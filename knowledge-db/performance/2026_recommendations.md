@@ -152,6 +152,10 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
            초기 status 는 항상 "진행중".
 ```
 
+| 2026-04-25 | morning | 종목 | Intel (INTC) | Bull (AI 인프라 확산 수혜 — 레거시 칩메이커 부활) | 단기~중기 | 중간 | Q1 EPS $0.29(컨센 $0.01 대비 +2,800%). 파운드리 +16%, DC+AI +22%. AI CapEx 레거시 확산 확인 [Yahoo Finance, Motley Fool] | reports/briefing/morning_20260425.html | 진행중 |
+| 2026-04-25 | morning | 이벤트 | PMI 입력비용 인플레 — 4/30 Core PCE 상방 리스크 | Bear (인플레 상방) | 단기 | 중간 | Flash PMI 입력비용 2022년 이후 최대 월간 상승. WTI $96+ 5연속. Core PCE 3.2%+ 시 Fed 연내 인하 0회 [S&P Global PMI, BEA] | reports/briefing/morning_20260425.html | 진행중 |
+| 2026-04-25 | morning | 시나리오 | "AI 가위" — AI 인프라(반도체)↑ vs 전통 소프트웨어↓ 구조적 분열 | Bull (반도체) / Bear (SaaS) | 중기 | 높음 | Intel +24% + TI +10% + Philly Sox 18일 연승 vs ServiceNow -18% + IBM -10.3%. PSR 프리미엄 체제 전환 시작 [daily_snapshot, global_macro_20260425.md] | reports/briefing/morning_20260425.html | 진행중 |
+
 ---
 
 ## 검수 결과 F-03 — 본 파일은 기존 부재 상태에서 신규 생성됨.
