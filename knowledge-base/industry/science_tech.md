@@ -1,11 +1,11 @@
 ---
-updated: 2026-04-19
-valid_until: 2026-05-19
+updated: 2026-04-25
+valid_until: 2026-05-25
 sector: science_tech
-sources: [OECD, UNESCO, NSF, KISTEP, 과기정통부, KASA, IDC, McKinsey, BCG, Goldman Sachs, Morgan Stanley, Gartner, Grand View Research, Stanford AI Index, WIPO, IFR, Space Foundation, BryceTech, SNE Research, Omdia, Fusion Industry Association, IEA, NEA, Riverlane, 3GPP, TrendForce, PitchBook, CNBC, Futurum, Spaceflight Now, IonQ, Novo Nordisk, FDA, CRISPR Medicine News, Cadence, Synopsys]
+sources: [OECD, UNESCO, NSF, KISTEP, 과기정통부, KASA, IDC, McKinsey, BCG, Goldman Sachs, Morgan Stanley, Gartner, Grand View Research, Stanford AI Index, WIPO, IFR, Space Foundation, BryceTech, SNE Research, Omdia, Fusion Industry Association, IEA, NEA, Riverlane, 3GPP, TrendForce, PitchBook, CNBC, Futurum, Spaceflight Now, IonQ, Novo Nordisk, FDA, CRISPR Medicine News, Cadence, Synopsys, CISA, Quantinuum, HPCwire, Motley Fool, SandboxAQ, Entrust/Ponemon, SpaceNews, Orbital Radar, Novaspace, WEF, ARK Invest, Blue Origin, NASA, Astroscale, ClearSpace, Eutelsat, Airbus, Intuitive Machines, AST SpaceMobile, TerraPower, NuScale, Holtec, GE Vernova, Rolls-Royce SMR, X-energy, Kairos Power, Oklo, Helion, TAE Technologies, Tokamak Energy, NRC, DOE, ARPA-E, ITER, CFS, KFE]
 confidence: high
-last_synced_from_db: 2026-04-19
-db_records: 330
+last_synced_from_db: 2026-04-25
+db_records: 405
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -42,21 +42,25 @@ db_records: 330
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 양자컴퓨팅 시장 (2025FY) | 약 15~20억 달러 | 2025년 | IDC/McKinsey |
-| 글로벌 양자컴퓨팅 시장 (2030E) | 80~120억 달러 | 2030E | BCG/McKinsey |
-| IonQ 양자 충실도 신기록 | **99.99%** (세계 최고), 256큐빗 시스템 2026 시연 예정 | 2026 | IonQ |
-| **IonQ 포토닉 인터커넥트** | 두 독립 트랩이온 양자시스템 **광자 연결 최초 시연** -- 상용 양자컴퓨터 간 원거리 양자얽힘 (04-14) | 2026.04.14 | IonQ |
-| **IonQ FY2025 매출** | **$1.3억** (GAAP 사상 최초 $1억 돌파, **+202% YoY**) | 2025FY | IonQ 2026.02.25 |
-| **IonQ-UMD QLab 확장** | $750만 파트너십 확대, SiV 양자메모리 노드 배치, 양자네트워킹 | 2026.04 | IonQ/UMD |
-| IQM Shor 알고리즘 마일스톤 | 2048비트 RSA 키 게이트레벨 컴파일 최초 달성 (04-05) | 2026.04.05 | IQM/Fraunhofer FOKUS |
-| QuEra Tsim 시뮬레이터 | 85큐빗 회로, 600ns/shot GPU 가속 오픈소스 (04-02) | 2026.04.02 | QuEra Computing |
-| **NVIDIA Ising QEC AI** | 세계 최초 오픈소스 양자 교정/에러정정 AI 모델. 교정 수일->수시간, 디코딩 2.5배 빠름/3배 정확. IonQ/IQM/Fermilab/ORNL 채택 | 2026.04 | NVIDIA |
-| Google Willow (2024.12) | 105큐빗, 표면코드 에러정정 결정적 진전 | 2024.12 | Google |
-| 한국 양자전략 | 2035년까지 3조원 투자, 국산 양자컴퓨터 개발/양자 활용기업 육성 확대 | 2024~2026 | 과기정통부 |
+| 글로벌 양자컴퓨팅 시장 (2025FY) | $1.44B ~ $3.52B (정의 범위 차이) | 2025년 | Precedence/MarketsandMarkets |
+| 글로벌 양자컴퓨팅 시장 (2030E) | $4.2B ~ $20.2B (중위 $7~10B) | 2030E | Grand View/BCC/M&M |
+| **IonQ SkyWater $1.8B 인수** | 양자업계 최초 **수직통합 풀스택** 플랫폼. 파운드리 확보. 2028 **200K 물리큐빗 QPU** 테스트 목표. Q2-Q3 마감 예상 | 2026.01.26 | IonQ IR / Futurum |
+| IonQ FY2026 가이던스 | **$225~245M** (중위 $235M, **+81% YoY**). RPO $370M. Q1 가이던스 $48~51M. 실적 **5/6** 발표 | 2026 | IonQ IR |
+| IonQ 포토닉 인터커넥트 | 두 독립 상용 이온트랩 간 **원거리 양자얽힘 최초 시연**(04-14). DARPA HARQ 선정. 양자 네트워킹 핵심 | 2026.04.14 | IonQ / HPCwire |
+| **Quantinuum IPO S-1 제출** | 02-17 SEC 비공개 제출, **Honeywell 04-22 공식 확인**. 전통 IPO. $10B -> **$20B+** 목표. Helios: 48논리큐빗, 99.921% 2큐빗 게이트 | 2026 | HPCwire / Bloomberg |
+| IBM Kookaburra | **1,386큐빗** 멀티칩(3칩 **4,158큐빗**). qLDPC 메모리+LPU 최초 통합. 2026말 양자우위 목표 | 2026 | IBM Quantum |
+| **QuEra 2:1 QEC** | 중성원자 QEC **2:1 물리-논리큐빗 비율 달성**(04-20, Harvard/MIT). Teraquop 에러율 범위 | 2026.04.20 | QuEra / Nature |
+| Google 중성원자 듀얼트랙 | 초전도(Willow)+중성원자 병행. qLDPC FT 블루프린트 2건 공개(04-03) | 2026.04.03 | HPCwire |
+| NVIDIA Ising QEC AI | 세계 최초 양자 교정/에러정정 AI 모델. 교정 수일->수시간, 디코딩 2.5x/3x. IonQ/IQM 등 채택 | 2026.04.14 | NVIDIA |
+| **양자주 7거래일 랠리** | IonQ **+72%**, D-Wave +56%, Rigetti +37% (4/9~4/20). 단 P/S 경고: IonQ 106x, Rigetti 870x | 2026.04.24 | Motley Fool / 247WallSt |
+| **CISA PQC 연방 조달 의무화** | 연방기관 양자저항 제품만 조달 의무(01-30). Google PQC **2029** 전환. Meta 6단계 프레임워크(04-16) | 2026 | CISA / Google / Meta |
+| 한국 양자전략 | 2035까지 3조원+ 투자. **양자클러스터 공모 개시**(04-17). 양자산업 육성법 시행 | 2026 | 과기정통부 |
 
-> **2026.04 핵심 변화**: IonQ "양자네트워킹" 시대 개막 -- 포토닉 인터커넥트로 상용 양자컴퓨터 간 원거리 얽힘 최초 시연.
-> IonQ FY2025 매출 $1.3억(+202%) = 양자컴퓨팅 최초 $1억 돌파 기업.
-> NVIDIA Ising = 양자 교정/QEC의 AI 자동화 시대 개시. 업계 광범위 채택 진행 중.
+> **2026.04.25 핵심 변화**: IonQ SkyWater $1.8B 인수 = 양자 최초 수직통합(파운드리). 2028 200K 큐빗 QPU 목표.
+> Quantinuum IPO S-1 Honeywell 공식 확인(04-22) = $20B+ 양자 최대 IPO 임박.
+> CISA PQC 연방 조달 의무화 + Google 2029 + Meta 프레임워크 = PQC 전환 불가역.
+> QuEra 2:1 QEC(04-20) + Google 중성원자 듀얼트랙 = 중성원자 방식 부상.
+> 양자주 7거래일 IonQ +72% -- 단 P/S 100~870x 버블 경고.
 > 전문 세부: `industry/quantum.md` 참조.
 
 ---
@@ -91,19 +95,25 @@ db_records: 330
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 우주경제 (2025) | 6,300~6,500억 달러 | 2025년 | Space Foundation/MS |
-| 2040E 우주경제 | 1.0~1.5조 달러 | 2040E | 모건스탠리 |
-| **Starlink 위성 군집** | **10,209기 궤도 (10,191기 운용)**, 2026년 1,000번째 위성 4/14 발사 | 2026.04.14 | Spaceflight Now |
-| SpaceX 밸류에이션 | **7,500억 달러** (IPO 논의 중, Starlink+xAI 포함) | 2026 | tech-insider |
-| **Starship V3** | 2026.04 데뷔 발사 목표 -- 추력/페이로드/재사용성 대폭 업그레이드 | 2026.04E | KeepTrack |
-| 글로벌 위성 발사 (2025) | 약 2,800~3,000기 | 2025년 | BryceTech |
-| 한국 KASA 2026 계획 | 저비용/고빈도 발사 역량, 산업진흥, 국제협력 3대 방향 | 2026 | KASA |
-| 한국 아르테미스 2호 | 아르테미스 2호에 한국 큐브위성 탑재 예정 (2026.04) | 2026.04 | KASA |
-| CAS500-2 위성 | SpaceX 라이드셰어 탑재 (2026.05 예정), 0.5m 해상도 | 2026.05E | Space.com |
-| 한국 KASA 예산 (2026E) | 약 9,600억 원 | 2026 본예산 | 과기정통부 |
+| 글로벌 우주경제 (2025) | **$626B** (상업 78% / 정부 22%) | 2025년 | SpaceNews/Orbital Radar |
+| 장기 전망 | **$1T by 2032~34** (CAGR 12%), **$1.8T by 2035** | 2035E | McKinsey/WEF/Novaspace |
+| **Starlink 위성 군집** | 발사 누적 **11,856기**, 궤도 **10,202기**(운용 10,193기) | 2026.04.17 | CompareInternet/HighSpeedInternet |
+| **Starlink 가입자** | **1,000만+** (2024.09 400만 -> 2025.12 900만) | 2026 초 | idemest/Wikipedia |
+| **SpaceX IPO** | **$1.75T 밸류** 목표 (2026 여름). xAI 합병 완료($250B). $2T+ 관심 | 2026 | ARK Invest/Teslarati |
+| **Starship V3 (IFT-12)** | **5월 초중순 발사 목표**. V3 첫 비행. LEO 100t+ 페이로드. IFT-13 6월 | 2026.05E | Space.com/Basenor |
+| Falcon 9 발사 (2026, 4/23) | **49회** (연간 목표 140~145회, 누적 650+회) | 2026.04.23 | SpaceXNow |
+| **Artemis II 완료** | **4/1~4/11 성공** -- 50년 만에 유인 달 비행. 4인. Artemis IV 2028 첫 착륙 | 2026.04 | NASA |
+| **Blue Origin NG-3** | 부스터 재사용 **최초 성공**, 그러나 **BlueBird 7 궤도 이탈**(BE-3U 추력 이상). FAA 비행정지 | 2026.04.19 | Blue Origin/SpaceNews |
+| **Amazon Leo 베타** | 4/8 엔터프라이즈 베타 개시. 궤도 **241기** (FCC 의무 1,618기 미달, 2년 연장 신청) | 2026.04 | AboutAmazon/TNW |
+| RKLB Q1 가이던스 | **$185~200M** (+57% YoY). 백로그 $1.85B. SDA $816M. Neutron Q4 데뷔 | 2026 | Rocket Lab IR |
+| 한국 KASA R&D | **9,495억원**. 누리호 5차 상반기. 차세대발사체 예비설계 1,204억원 | 2026 | KASA/과기정통부 |
+| **우주 방위 (Golden Dome)** | 우주군 $26B + Golden Dome **최대 $40B**. 3년 $175~185B. 12개사 $3.2B 인터셉터(4/24) | 2026 | SpaceNews/BreakingDefense |
 
-> **2026.04 갱신**: Starlink 10,209기 궤도(10,191기 운용) -- 2026년만 1,000기+ 발사(4/14 기준).
-> Starship V3 2026.04 데뷔 발사 목표 -- 차세대 페이로드 역량 대폭 확대.
+> **2026.04.25 갱신**: Starlink 11,856기 발사/10,202기 궤도 + 1,000만 가입자 -- SpaceX $1.75T IPO 여름 예상.
+> **Artemis II 성공** (4/1~4/11) = 50년 만에 유인 달 비행 복귀. Artemis IV 2028 첫 착륙 확정.
+> Blue Origin NG-3 부스터 재사용 성공이나 **BlueBird 7 위성 궤도 이탈**(AST -$2B 시총). FAA 비행정지.
+> Amazon Leo 241기 vs FCC 1,618기 의무 -- **미달 확정, 2년 연장 신청**. 소비자 서비스 2026 하반기.
+> Golden Dome 3년 $175~185B + $3.2B 인터셉터 12개사 계약(4/24) = 우주 방위 예산 급증.
 > 전문 세부: `industry/space.md` 참조.
 
 ---
@@ -131,22 +141,58 @@ db_records: 330
 
 ### 6. 첨단 에너지 -- SMR / 핵융합
 
+#### 6-A. SMR (소형모듈원자로)
+
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 SMR 시장 (2030E) | 약 720억 달러 | 2030E | NEA/IEA |
-| 글로벌 SMR 시장 (2050E) | 3,000억+ 달러 | 2050E | NEA |
-| NuScale-TVA 6GW | NuScale/ENTRA1/TVA **6GW SMR 배치 프로그램** (2025.09 발표) | 2025.09 | NuScale |
-| Kairos Power 2026 가동 | 35MW(열) Hermes 시범 원자로 2026 가동 예정, NRC 허가 **2026 H1 결정** | 2026 H1E | Energy for Growth Hub |
-| TerraPower Natrium | Kemmerer WY 건설, NRC **2026 H1 허가 결정**, Meta 8기 계약. HALEU 연료 공급 이슈로 **2030+ 지연 가능** | 2026 H1E | ABA/ConstructConnect |
-| 빅테크-원전 PPA 확대 | **Google-Kairos 500MW**(2035), **Meta-TerraPower 8기**, Amazon-X-energy, MS-Helion 50MW | 2024~2026 | WWT |
-| 한국 i-SMR 표준설계 인가 | 2028 목표, 2030년대 첫 상업운영 | 2028~2030E | 한수원 |
-| 핵융합 민간 누적 투자 | 70억+ 달러 | 2025 누적 | Fusion Industry Assoc |
-| Commonwealth Fusion SPARC | 2027 가동 목표 | 2027E | CFS |
-| KSTAR 100M 운전 | 48초 (2024) | 2024 | NFRI |
+| 글로벌 SMR 시장 (2024) | **$6.0B** | 2024년 | MarketsandMarkets |
+| 글로벌 SMR 시장 (2030E) | **$7.14B** (CAGR 3.0%) ~ **$10.69B** (CAGR 6.8%, Grand View by 2033) | 2030E | MarketsandMarkets/Grand View |
+| 글로벌 SMR 용량 | 312.5MW(2025) -> 912.5MW(2030E), CAGR 23.9% | 2025~2030E | Mordor Intelligence |
+| **TerraPower Natrium NRC 건설허가** | NRC 승인 **2026.03.04** -- 최초 상업규모 첨단원자로 건설허가. 345MWe 나트륨냉각 고속로. 심사 조기 완료(예산 -11%). **착공 2026.04.23**. 2030 완공 목표 | 2026.03~04 | TerraPower/DOE/ANS/PowerMag |
+| NuScale 77MWe NRC SDA | 두 번째 NRC 설계 승인(2025.05). VOYGR-12 추가 심사 진행. FY2025 매출 **$31.5M**. ENTRA1/TVA **6GW** 배치 프로그램 | 2025~2026 | NuScale/NRC/Nasdaq |
+| NuScale 루마니아 RoPower | FEED Phase 2 완료. FID **2026 중반~2027 초로 지연**. 가동 2030년대 초 | 2026~2030E | NuScale/Balkan Green Energy News |
+| **Holtec SMR-300 NRC 신청** | Palisades 2기(Pioneer 1&2) 부분건설허가 제출(2025.12). NRC 수리(2026.02.13). 안전평가 **2027 중반 완료** 예상. UK GDA Step 2 통과 | 2026 | Holtec/ANS/NRC |
+| GE Hitachi BWRX-300 | 캐나다 OPG Darlington **세계 최초 건설 진행**(2020년대 말 완공). 4기 배치 승인. UK GDA Step 2 완료(역대 최단). AFRY MSA 체결 | 2026 | GE Vernova/ONR/WNN |
+| **Rolls-Royce SMR** | UK GDA **Step 3 진입**(유일). 470MW PWR. **Wylfa(웨일스) 3기 건설 확정**. 영국 정부 SMR 경쟁 승자 | 2026 | WNN/UK 정부 |
+| X-energy Xe-100 | NRC 18개월 심사 진행. **2026년 말 건설허가 가능**. TRISO-X 연료공장 NRC 허가 취득. Dow Chemical 텍사스 프로젝트. Talen Energy LOI(GW급 PJM 배치) | 2026 | X-energy/NRC/Utility Dive |
+| Kairos Power Hermes | DOE HALEU 연료 계약 확정(2026.01). 35MWt FHR 시범로 Oak Ridge 건설. 운영허가 신청 준비 | 2026 | Kairos/ANS/DOE |
+| Oklo Aurora | 이전 NRC 신청 거부(without prejudice). NRC 사전심사 준비 완료. DOE NSDA 승인(Idaho+Texas). 재신청 준비 | 2026 | Oklo/NRC/ANS |
+| **두산에너빌리티 SMR** | FY2025 신규수주 **14.7조원**(+106.5% YoY). 창원 SMR 전용공장 착공(2026.03, **8,068억원**, 연 20기). X-energy 16기분+NuScale 초도분 2026H2 생산. **2030 누적 70기+ SMR 수주 목표** | 2026 | 한경/뉴시스/미래에셋 |
+| 한국 i-SMR | 2028 표준설계 인가 목표. 2030년대 첫 상업운영. 탈원전 공식 철회(8년7개월 만). 2038까지 대형원전 2기+SMR 1기 건설 | 2028~2038E | 한수원/과기정통부 |
+| **빅테크 원전 PPA** | Google-Kairos **500MW**(2035) / Microsoft-TMI 재가동 **835MW** / Meta-TerraPower **8기** / Amazon-X-energy **5GW**(2039) / Southern Co **$26.5B** 대출(6GW) | 2024~2039 | WWT/Mintz/DOE |
+| 미 군사 SMR 의무화 | 군사기지·DOE 시설 SMR 배치 **2028 의무화**. UK 4개사 SMR 협상 진입(GEH/Holtec/RR/Westinghouse) | 2028E | DOE/ABA |
 
-> **2026.04 갱신**: TerraPower HALEU 연료 공급 이슈로 2030+ 지연 가능성 추가. Kairos NRC 허가 2026 H1 결정 유지.
-> 빅테크 4사 원전 PPA 확대 지속 -- AI 데이터센터 전력 수요 직결.
-> 전문 세부: `industry/smr.md` 참조.
+#### 6-B. 핵융합 (Fusion Energy)
+
+| 항목 | 수치 | 기준 | 출처 |
+|------|------|------|------|
+| 민간 핵융합 누적 투자 | **$10B+** (FIA). 연간 $2.64B(2024.07~2025.07). 정부 투자 +84% YoY(~$800M). 12개+ 기업 $100M+ 조달 | 2025~2026 | FIA/TechCrunch |
+| **CFS SPARC 자석 설치** | 18기 HTS 초전도자석 중 첫 번째 설치(CES 2026). **2026 여름 전체 설치 완료**. First plasma **2026년 내** 목표. Q>1 **2027** 시연 목표. 50~100MW 설계 | 2026 | Fortune/TechCrunch/CFS |
+| CFS ARC 상업 발전소 | 400MWe, 버지니아 리치먼드 인근. Eni **$1B+** PPA. **2030년대 초** 계통 연결. Siemens-NVIDIA 디지털트윈, Google 200MW PPA | 2030E | CFS/ANS/Fortune |
+| **Helion Polaris 1.5억 도** | **1.5억℃** 달성(2026.02). 최초 민간 **D-T 핵융합** 시연(2026.01). 궁극 목표 2억℃ | 2026.02 | TechCrunch/GeekWire/Fortune |
+| Helion Orion 발전소 | 50MWe, 워싱턴주 Chelan County. **2028 Microsoft 전력 공급** 계약. 건설 중 | 2028E | TechCrunch/Helion |
+| **TAE-TMTG $6B 합병** | 2025.12 발표, **2026 중반 마감** 예상. TMTG $200M+$100M 투입. 최초 상장 핵융합 기업. 50MWe 발전소 부지 선정·착공 2026 목표 | 2026 | TAE/ANS/WNN/PowerMag |
+| Tokamak Energy | ST40 **$52M 업그레이드** 진행(DOE+UK DESNZ). UK STEP 자석시스템 파트너(**L70M** 계약). HTS 자석 선두 | 2026 | Tokamak Energy/PPPL |
+| **ITER 대폭 지연** | First plasma **2033-34**(원래 2025). D-T 운전 **2039**. 추가 비용 **E5B** 초과. COVID+품질문제+낙관 | 2033~2039E | Science\|Business/ITER/WNN |
+| **KSTAR 102초 달성** | 1억℃ 플라즈마 **102초** 유지(기존 48초의 2배+). 2026 목표 **300초**. 상업 핵융합 수백초 필요 | 2025~2026 | Euronews/ScienceAlert/CNN |
+| **중국 EAST 1,066초** | 1억℃ 플라즈마 **1,066초**(2025.01.20). 기존 403초의 2.6배. 2026년 전자밀도 1.3~1.65 달성 | 2025~2026 | Physics World/CAS |
+| ARPA-E 핵융합 | **$135M** 투자 -- 역대 최대 핵융합 단일 투자. FIA $10B 연방 투자 요청 | 2026 | ARPA-E/FIA |
+| 주요 펀딩 | CFS ~$3B / Helion $1B+ / Pacific Fusion $900M(Series A) / Inertia $450M / Proxima, Marvel, First Light, Xcimer 등 $100M+ | 2025~2026 | TechCrunch/PitchBook |
+
+> **2026.04.25 핵심 변화 (SMR)**:
+> **TerraPower Natrium NRC 건설허가 승인(03.04) + 착공(04.23)** = 최초 상업규모 첨단원자로. 2030 완공 목표. 역사적 이정표.
+> Holtec SMR-300 Palisades 2기 NRC 수리(02.13) + Rolls-Royce UK GDA Step 3 유일 진입 = SMR 인허가 파이프라인 본격 가동.
+> 두산에너빌리티 FY2025 수주 14.7조(+107%), 창원 SMR 전용공장 착공(8,068억원, 연 20기), 2030 누적 70기+ 목표.
+> 빅테크 4사+Southern Co 원전 PPA 총 10GW+ 규모 -- AI 데이터센터 전력수요 직결.
+> 미 군사기지 SMR 2028 의무화 = 국방 수요 추가.
+>
+> **2026.04.25 핵심 변화 (핵융합)**:
+> CFS SPARC 자석 설치 시작 -> 2026 여름 완료 -> **2026년 내 first plasma** 목표. 핵융합 역사 최대 이정표 임박.
+> Helion **최초 민간 D-T 핵융합 시연**(01월) + 1.5억℃(02월). Orion 2028 Microsoft 전력 공급.
+> TAE-TMTG $6B 합병 = 최초 상장 핵융합 기업 탄생 임박.
+> 민간 핵융합 누적 $10B+ -- 연간 $2.64B 투자. 12개+ 기업 $100M+ 돌파.
+> KSTAR 102초(2배+) + EAST 1,066초 = 공공 토카막도 대폭 진전. 그러나 ITER 2033-34 지연.
+> 전문 세부: `industry/smr.md` 참조 (생성 시).
 
 ---
 
@@ -298,7 +344,7 @@ db_records: 330
 | 셀트리온/삼성바이오 | 바이오시밀러/CDMO | -- | CDMO Top 4 |
 | 한미반도체 | 반도체 후공정 | -- | HBM TC 본더 독점 |
 | 에코프로 | 양극재 | -- | 배터리 소재 |
-| 두산에너빌리티 | SMR/발전 | -- | i-SMR 주관 |
+| 두산에너빌리티 | SMR/발전 | -- | i-SMR 주관, SMR 전용공장 착공(2026.03) |
 | 레인보우로보틱스 | 휴머노이드 | -- | 삼성 전략 투자 |
 
 ---
@@ -336,21 +382,26 @@ db_records: 330
 | **빅테크 CapEx FCF 악화** | $7,000억 CapEx -> Amazon/Meta FCF 대규모 적자. AI ROI 검증 2~3년 필요 | 모니터링 | Morgan Stanley |
 | Agentic AI 보안 위협 | 자율 AI 에이전트 해킹/프롬프트 인젝션 -- 새로운 공격 벡터 | 부정적 | Palo Alto |
 | 기술 윤리/규제 확산 | EU AI Act, GDPR, 한국 AI 기본법 등 컴플라이언스 비용 증가 | 부정적 | 각국 |
+| **Blue Origin 발사 신뢰성** | NG-3 BE-3U 2단 추력 이상 -> AST BlueBird 7 손실. FAA 비행정지 | 부정적 | SpaceNews |
+| **Amazon Kuiper FCC 미달** | 241기 vs 1,618기 의무(7/30). 2년 연장 신청. Starlink 독점 심화 요인 | 모니터링 | FCC/AboutAmazon |
+| **HALEU 연료 공급 병목** | SMR 다수가 HALEU 의존. 미 DOE 공급망 구축 중이나 러시아 의존도 잔존. 상업화 지연 요인 | 모니터링 | DOE/ANS |
 
 ---
 
-### 16. 트렌드 요약 (2026-04-19 기준)
+### 16. 트렌드 요약 (2026-04-25 기준)
 
 1. **빅테크 AI CapEx $7,000억 슈퍼사이클**: 4사 합산 +60% YoY. AI 인프라 75%($4,500억). FCF 대규모 악화에도 "군비경쟁" 불가역. Amazon $2,000억 최대.
 2. **경구 GLP-1 시대 본격 개막**: Wegovy 정제 FDA 승인(월 $149) + Lilly orforglipron Q2 결정 대기. 트럼프 가격 합의(월 $245) + Medicare 커버 = 대중화 가속.
-3. **양자 네트워킹 시대 개시**: IonQ 포토닉 인터커넥트(상용 QC 간 원거리 얽힘 최초). NVIDIA Ising QEC AI. IonQ FY2025 $1.3억(+202%, 최초 $1억 돌파).
+3. **양자 산업 변곡점**: IonQ SkyWater $1.8B 수직통합 + Quantinuum $20B+ IPO 임박 + 양자주 7거래일 IonQ +72%(단 P/S 100~870x). CISA PQC 연방 의무화 + Google 2029 마이그레이션. QuEra 2:1 QEC 달성.
 4. **EDA "AI 에이전트 전쟁"**: Synopsys AgentEngineer(5x) vs Cadence ChipStack(10x). Synopsys-Ansys $350억 합병 완료. AI+EDA 자동화 변곡점.
 5. **사이버보안 M&A 슈퍼사이클**: PANW-CyberArk $250억 + Google-Wiz $320억. 월 38건 M&A. CrowdStrike-Anthropic AI 독점.
 6. **Optimus Gen 3 자율보행 + 상하이 양산**: 04월 공식 공개 예정. 상하이 기가팩토리 대량생산 거점 확정. Goldman 2026 출하 5.1만대.
-7. **AI 신약개발 $26억 + CRISPR 250건**: 15~20개 pivotal 시험 진입. 2027 최초 정식승인 60%. FDA 개인맞춤 유전자편집 가이던스.
-8. **한국 R&D 35.3조 확정 + PCT 28년 연속 성장**: 정부 R&D +21.4%. 과기정통부 23.7조(AI 5.1조). PCT 25,016건(+4.9%).
-9. **Starlink 10,209기 + Starship V3**: 2026년만 1,000기+ 발사(4/14). Starship V3 04월 데뷔 목표.
-10. **WIPO PCT 반도체+디지털통신 최고 성장**: 양 분야 +6.1%. 중국 글로벌 특허 49.1%. 6G 3GPP Rel-21 06월 확정.
+7. **SMR 인허가 파이프라인 본격 가동**: TerraPower Natrium NRC 건설허가(03.04)+착공(04.23) = 최초 상업 첨단원자로. Holtec NRC 수리, Rolls-Royce GDA Step 3. 두산 SMR 전용공장 착공. 빅테크 원전 PPA 10GW+.
+8. **핵융합 "시연의 해"**: CFS SPARC 2026 first plasma 목표. Helion 최초 민간 D-T 핵융합+1.5억℃. TAE-TMTG $6B 합병(최초 상장). 민간 누적 $10B+. KSTAR 102초, EAST 1,066초.
+9. **AI 신약개발 $26억 + CRISPR 250건**: 15~20개 pivotal 시험 진입. 2027 최초 정식승인 60%. FDA 개인맞춤 유전자편집 가이던스.
+10. **한국 R&D 35.3조 확정 + PCT 28년 연속 성장**: 정부 R&D +21.4%. 과기정통부 23.7조(AI 5.1조). PCT 25,016건(+4.9%).
+11. **우주 산업 대형 이벤트 집중**: Artemis II 성공(50년 만에 유인 달 비행) + SpaceX $1.75T IPO 여름 + Starlink 11,856기/1,000만 가입자. Blue Origin NG-3 부스터 재사용 성공이나 BlueBird 7 손실. Golden Dome $175~185B(3년) 우주 방위 급증.
+12. **WIPO PCT 반도체+디지털통신 최고 성장**: 양 분야 +6.1%. 중국 글로벌 특허 49.1%. 6G 3GPP Rel-21 06월 확정.
 
 ---
 
@@ -363,15 +414,25 @@ db_records: 330
 | 미국 R&D $1.0조 + 중국 PPP $1.0조 = $2.0조 | 글로벌 $3.8조 중 53% -- 합리적 (양강 PPP 동등) |
 | 글로벌 특허 370만건 중 중국 180만건 = 49.1% | WIPO 발표와 일치 |
 | PCT 275,900건 중 중국 73,718건 = 26.7% | 합리적 (PCT는 국제출원, 국내 비중과 다름) |
-| Starlink 10,209기 = 전체 활성 위성 약 65% | 약 15,700기 활성 위성 추정 -- 합리적 |
+| Starlink 11,856기 발사 중 10,202기 궤도 = 86% | 나머지 14%는 디오빗/폐기/실패 -- 합리적 |
 | 사이버보안 $2,550억(2025) -> $5,800억(2031E) CAGR | 14.68% 계산 일치 |
 | 하이퍼스케일러 4사 $7,000억 CapEx, AI 75% = $4,500억~ | 계산 일치 ($5,250억이나 나머지 포함 시 합리적) |
 | AI 신약개발 $19억(2025) -> $26억(2026) = +37% | 27% CAGR 제시치 대비 단년도 더 높으나 초기 시장 변동성 내 |
 | IonQ FY2025 $1.3억, +202% YoY | FY2024 약 $4,300만 추정 -- 합리적 |
+| IonQ FY2026 가이던스 $235M(+81%) vs FY2025 $130M | $130M x 1.81 = $235M -- 계산 일치 |
+| Quantinuum IPO $10B -> $20B+ | 6개월 만에 2x 밸류 상승 -- 양자 버블 가능성 모니터링 |
+| SpaceX $1.75T IPO vs Starlink $15.9~24B 매출 | P/S 73~110x -- 높으나 성장성+Starship+xAI 포함. 모니터링 |
+| Amazon Leo 241기 vs FCC 1,618기 의무 | 달성률 15% -- 2년 연장 불가피 |
+| 우주경제 $626B CAGR 12% -> 2034 $1T | $626B x (1.12)^9 = ~$1.74T -- 기존 McKinsey $1.8T(2035)와 정합 |
+| SMR 시장 $6.0B(2024) -> $7.14B(2030) CAGR 3.0% | $6.0B x (1.03)^6 = $7.16B -- 계산 일치 |
+| CFS SPARC 18기 자석 2026 여름 완료 -> first plasma 2026 | 기술적으로 자석 설치 후 극저온+통합 시험 필요 -- 2026 말 first plasma 합리적 |
+| 민간 핵융합 $10B+ 누적 vs 12개 기업 $100M+ | CFS $3B + Helion $1B + Pacific $900M + TAE/Inertia 등 = $10B+ 합리적 |
+| TerraPower NRC 심사 27개월 예상 -> 조기 완료 | 2024.03 제출 -> 2025.12 심사 완료 = 21개월. 예산 -11% 절감 -- 합리적 |
+| 두산에너빌리티 FY2025 수주 14.7조(+106.5%) | 기존 2024 약 7.1조 대비 2배+ -- 원전 수주 슈퍼사이클 반영 합리적 |
 
 ---
 
-*이 파일은 knowledge-db/science_tech_2026.jsonl (330건)에서 자동 생성됩니다.*
+*이 파일은 knowledge-db/science_tech_2026.jsonl (405건)에서 자동 생성됩니다.*
 *HISTORY는 knowledge-db/에 영구 보관됩니다.*
 *상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md*
-*전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md*
+*전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md (생성 시) / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md*

@@ -1,206 +1,358 @@
 ---
-updated: 2026-04-19
-valid_until: 2026-05-19
+updated: 2026-04-25
+valid_until: 2026-05-25
 category: industry
-sub_category: materials_tech
+sub_category: advanced_materials
 topic: advanced_materials
-sources: [Mordor Intelligence, Precedence Research, Research Nester, Grand View Research, Technavio, UBI Research, Global Growth Insights, Futurum Group, Seeking Alpha, Investing.com, 24/7 Wall St, DevX, KoalaGains, Cadence IR, DataM Intelligence, Fortune Business Insights, Electronics360, SemiWiki, TrendForce, IEA, CSIS, Clark Hill PLC, Fluxim, PV Magazine, EBN뉴스, 전자신문, 시사저널e, ZDNet Korea, 머니투데이, FlatpanelsHD]
-confidence: medium
-last_synced_from_db: 2026-04-19
-db_records: 83
+sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners]
+confidence: high
+last_synced_from_db: 2026-04-25
+db_records: 141
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
 
 ## CURRENT (에이전트는 이 파일의 데이터를 그대로 사용)
 
-> 본 KB는 디스플레이(마이크로LED), EDA, 첨단소재(반도체 소재/신소재) 3개 서브섹터를 횡단한다.
-> 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md` 참조.
+> 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전), 희토류/핵심광물, 첨단소재 정책 6개 서브섹터를 다룬다.
+> 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
 
 ---
 
-### 1. 디스플레이 / 마이크로LED (Micro LED)
+### 1. 탄소나노튜브 (CNT)
 
 #### 1-1. 시장 규모 & 성장률
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 마이크로LED 시장 (2026E) | 0.56~6.37B USD | 2026E | Mordor 0.56B / Research Nester 2.4B / Precedence 3.22~6.37B |
-| 글로벌 마이크로LED 시장 (2030E) | 9.9~125B USD | 2030E | Technavio 9.94B / GVR 25.65B / GGI 125B |
-| 글로벌 마이크로LED 시장 (2031E) | 2.17B USD | 2031E | Mordor Intelligence (CAGR 31.12%) |
-| 글로벌 마이크로LED 시장 (2034E) | 195.3B USD | 2034E | Precedence Research (CAGR ~60%) |
-| CAGR (2024-2030) | 31~77% | 2024-2030 | Mordor 31.1% / Technavio 52.5% / GVR 77.4% |
-| 마이크로LED 디스플레이 매출 (2025->2026) | 52.4M -> 105.4M USD (약 2배) | 2025-2026 | UBI Research |
-| 마이크로LED TV 가격대 | 100K~300K USD | 55~300+인치 | Mordor Intelligence, MicroLED-Info |
+| 글로벌 CNT 시장 (2025) | 4.25~6.89B USD | 2025 | Precedence 4.25B / Mordor 6.89B |
+| 글로벌 CNT 시장 (2026E) | 4.85~8.8B USD | 2026E | Precedence 4.85B / Mordor ~7.5B / IMARC 2.7B |
+| 글로벌 CNT 시장 (2030E) | 7.4~17.38B USD | 2030E | GVR 8.15B / Mordor 17.38B / IMARC 7.4B(2033) |
+| 글로벌 CNT 시장 (2034E) | 13.88~24.53B USD | 2034E | Precedence 13.88B / Fortune BI 24.53B |
+| CAGR (2025-2030) | 13.7~20.1% | 2025-2030 | Precedence 13.7% / GVR 14.1% / Mordor 20.1% |
 
-> 시장 규모 추정치가 조사기관마다 극도로 상이 (Mordor 0.56B vs Precedence 6.37B for 2026). 정의 범위(순수 마이크로LED 칩 vs 디스플레이 모듈 vs 백라이트 포함)에 따른 차이. 순수 마이크로LED 디스플레이 매출은 UBI 기준 2026년 약 1억달러 규모로 아직 초기 시장.
+> 시장 규모 추정치 편차가 크다(IMARC 2.7B vs Mordor 6.89B for 2025). 순수 CNT 소재 vs CNT 활용 제품 포함 여부, MWCNT/SWCNT 구분 기준 차이에 기인.
 
-#### 1-2. 주요 기업 & 경쟁구도
+#### 1-2. 제품 세그먼트 & 응용
+
+| 세그먼트 | 점유율/특성 | 출처 |
+|----------|------------|------|
+| MWCNT(다중벽) | 시장의 68~93.6% 점유(2024). 비용 효율적, 산업 범용 | GVR, GM Insights |
+| SWCNT(단일벽) | 최고속 성장 세그먼트. EV 배터리·반도체·고성능 에너지저장 | GVR |
+| 전자·반도체 응용 | 2026년 약 26% 시장점유율. 열관리·PCB·메모리 | GM Insights |
+| 배터리 도전재 | 리튬이온 배터리 핵심 응용. 양극/음극 도전재·구조 안정화 | IDTechEx, M&M |
+
+#### 1-3. 주요 기업 & 경쟁구도
 
 | 기업 | 포지션 | 비고 |
 |------|--------|------|
-| 삼성전자/삼성디스플레이 | **55/66/75/85/100/130인치** 총 6개 마이크로 RGB TV 모델 (CES 2026) | eMagin 인수(2023)로 마이크로OLED/AR 기술 확보. CES 2025 마이크로LED 스마트워치 컨셉 4,000nits |
-| LG전자/LG디스플레이 | **75/86/100인치** 마이크로 RGB TV, 2026 상반기 상용화 | CES 2026 발표, LCD 사업 완전 철수 |
-| TCL | 163인치 마이크로LED TV 약 **$110K** (CES 2026) | 중국 가성비 전략으로 시장 공략 |
-| AUO + PlayNitride | 6인치 마이크로LED 생산라인 (2,150만달러 투자) | Garmin Fenix 8 Pro 양산 (1.4" 454x454, 4,500nits) |
-| Apple | Watch용 마이크로LED 프로젝트 취소 (2024 초) | **near-eye AR 글래스**로 R&D 전환 (Santa Clara). ams-Osram Kulim 2 팹 해체 |
-| Tianma Micro | 중국 샤먼 풀 프로세스 통합 생산라인 (2024.12) | 중국 내 마이크로LED 양산 선도 |
+| **OCSiAl** (러시아) | SWCNT 시장점유율 90%+ | Molicel(배터리셀), Shanshan(음극재), Nantero(NRAM 반도체) 파트너십 |
+| **LG화학** | 대산 4공장 가동(2025), 생산능력 2,900t -> 6,100t | 글로벌 MWCNT 대량 공급 확대 |
+| **금호석유화학** | 아산 120t -> 율촌 360t 확대 예정 | CNT 도전재 시장 진출 |
+| Nanocyl (벨기에) | MWCNT 전문 | 유럽 시장 주도 |
+| Arkema (프랑스) | CNT 복합소재 | 탄소나노튜브 기반 복합재료 |
+| Cabot Corporation | 전도성 첨가제 | CNT+카본블랙 하이브리드 |
 
-> 한국 OLED 시장점유율: 83.7% (삼성디스플레이 54.3% + LG디스플레이 29.4%). 중국 BOE/EDO 추격 중 (13.9%).
+#### 1-4. 투자 포인트
 
-#### 1-3. 기술 동향
+- 배터리 도전재 시장 확대: 글로벌 EV 배터리 수요 증가로 CNT 도전재 구조적 성장
+- LG화학 생산능력 2배 확대(6,100t)로 규모의 경제 확보 → 단가 인하 → 시장 확대 선순환
+- SWCNT 고부가 시장 급성장: EV 배터리, 반도체 열관리, NRAM 메모리 응용 확대
+- 전자·반도체 응용 26% 점유로 비배터리 수요처 다변화
 
-- **전사(Mass Transfer) 수율**: 양산 전사 수율 25%(2024, 2020년 9%에서 상승). 5인치 이하 패널 수율 7%(2021)->23%(2024). 소비자 경제성 요구치 99.99%와 큰 격차 존재
-- **비용 절감**: 대만/한국 생산시설에서 2024년 기준 원가 **38% 절감** 달성. 2026년까지 스마트워치용 1.5인치 제조원가 현재의 1/10 수준 전망
-- **RGB Mini-LED**: CES 2026에서 삼성/LG 모두 RGB Mini-LED를 시연에서 양산 단계로 전환
-- **응용 확대**: 대형 TV(55~300인치), 스마트워치(4,000nits), AR 글래스, 자동차 HUD
-- **칩 비용**: 재료비의 40~50%를 칩 비용이 차지, 원가 절감의 핵심 병목
+#### 1-5. 리스크
 
-#### 1-4. 한국 관련
-
-- 삼성디스플레이: eMagin 인수로 마이크로OLED 기술 확보, 스마트안경용 마이크로LED 개발
-- LG디스플레이: LCD 사업 완전 철수(중국 광저우 공장 매각), OLED+마이크로LED 집중
-- 한국 디스플레이 글로벌 점유율: LCD 13.5%(2022, 하락), OLED 83.7%(독점적 우위)
-- 마이크로LED는 중국(Tianma, BOE, TCL)의 빠른 추격이 리스크
-- 삼성전자 55인치 소형화 진입 + LG 상반기 상용화로 한국 기업 시장 선점 시도
-
-#### 1-5. 투자 포인트
-
-- 마이크로LED TV가 55인치까지 소형화 진입 -> 수요 저변 확대 기대
-- UBI 기준 2025->2026 매출 2배 성장, 초기 시장 고성장 구간 진입
-- Apple의 AR 글래스 전환으로 마이크로LED 새 응용처 확보 가능성
-- 삼성/LG의 RGB Mini-LED 양산 전환으로 중간 단계 시장 형성
-
-#### 1-6. 리스크
-
-- Apple의 Watch 마이크로LED 포기 + ams-Osram 팹 해체가 업계 투자 심리 위축
-- 양산 전사 수율 25% vs 경제성 요구 99.99% -- 격차 여전히 큼
-- 시장 규모 추정치 편차가 극심 (0.56B~6.37B for 2026)하여 실현 속도 예측 곤란
-- TCL 등 중국 업체의 가격 공세 ($110K/163인치)
+- OCSiAl의 SWCNT 독점(90%+)으로 공급 집중 리스크
+- MWCNT 시장은 진입장벽 낮아 중국 업체 가격 경쟁 심화 가능
+- 금호석유화학 규모(360t) vs LG화학(6,100t) 격차 현저
+- CNT 나노 입자 환경·건강 규제 강화 가능성
 
 ---
 
-### 2. EDA (Electronic Design Automation)
+### 2. 그래핀
 
 #### 2-1. 시장 규모 & 성장률
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 EDA 시장 (2026E) | 20.78B USD | 2026E | Mordor Intelligence |
-| 글로벌 EDA 시장 (2031E) | 30.67B USD | 2031E | Mordor Intelligence (CAGR 8.1%) |
-| 글로벌 EDA 시장 (2035E) | 34.7~42.9B USD | 2035E | Precedence 34.71B / SNS 42.85B |
-| Cloud EDA 시장 (2026E) | 4.15B USD | 2026E | Mordor Intelligence |
-| Cloud EDA 시장 (2031E) | 6.13B USD | 2031E | Mordor Intelligence (CAGR 8.11%) |
+| 글로벌 그래핀 시장 (2025) | 0.94~1.6B USD | 2025 | Fortune BI 0.94B / GlobeNewsWire 1.6B |
+| 글로벌 그래핀 시장 (2026E) | 1.96~2.91B USD | 2026E | GlobeNewsWire 1.96B / Mordor 2.91B |
+| 글로벌 그래핀 시장 (2030E) | 3.99B USD | 2030E | GlobeNewsWire (CAGR 19.5%) |
+| 글로벌 그래핀 시장 (2034E) | 15.20B USD | 2034E | Fortune BI (CAGR 36.6%) |
+| 그래핀 반도체칩 시장 (2030E) | 1,257.5M USD | 2030E | NextMSC (CAGR 27.2%, 2023 기준 234.6M) |
+| CAGR | 19.5~39.2% | 2025-2031 | GlobeNewsWire 19.5% / Mordor 39.18% |
 
-> EDA 시장은 반도체 설계 복잡도 증가(2nm/GAA)와 AI 가속으로 안정적 성장. Synopsys-Ansys 합병으로 시장 재편.
+> 2025년이 그래핀 상용화 변곡점(inflection point). $185M+ 펀딩(2025.10까지 공개분). CVD 기술로 웨이퍼급 반도체 그레이드 필름 달성.
 
-#### 2-2. 주요 기업 & 시장점유율
+#### 2-2. 핵심 기술 동향
 
-| 기업 | 점유율 | 매출 | 비고 |
-|------|--------|------|------|
-| Synopsys | 31% (Ansys 합산 시 46%) | **FY2026E $9.56~9.66B** (Q1 $2.409B, +66% YoY) | Ansys $35B 인수 완료(2025.07). Ansys Q1 기여 $886M(37%). 부채 $13.5B |
-| Cadence | ~30% | **FY2026E $5.9~6.0B** (FY2025 $5.297B, +14%) | ChipStack AI Super Agent 출시. Chiplet 에코시스템 |
-| Siemens EDA | ~13% | - | Mentor Graphics 계승 |
-| 기타 | ~26% | - | Keysight, Altium 등 |
+| 기술 | 현황 | 출처 |
+|------|------|------|
+| **Georgia Tech 그래핀 반도체** | 세계 최초 기능성 그래핀 FET 시연. 전자이동도 5,000+ cm2/Vs(Si의 10배). on/off비 10,000:1 | Georgia Tech, IEEE Spectrum |
+| 300mm 그래핀-on-SiC 웨이퍼 | 파일럿 시연 2026년말 목표. 국방/항공우주 소량생산 후속 | EE Times, Georgia Tech |
+| 테라헤르츠 컴퓨팅 잠재력 | Si 한계 5~6GHz vs 그래핀 수백GHz~저THz 가능. 6G/7G, 기후모델, 신약 시뮬레이션 | Tom's Hardware |
+| NanoXplore 대량 건식 공정 | 생산비용 50% 절감 목표(2023 출시) | GM Insights |
+| 에너지저장 응용 | 시장 최대 점유율 23% (EV + 재생에너지) | GVR |
 
-> 상위 3사(Synopsys+Cadence+Siemens)가 시장의 74%를 과점. Synopsys FY2026 매출이 Ansys 통합으로 전년 대비 +66% 급증, **36% 성장 목표** 제시.
+#### 2-3. 한국 기업 & 관련 동향
 
-#### 2-3. 기술 동향
+| 기업 | 내용 | 출처 |
+|------|------|------|
+| **그래핀스퀘어** | EUV 펠리클용 그래핀. 2026년 투과도 96%+, 2027년 양산공정 적용 목표 | 네이트뉴스 |
+| **그래핀올** | GrapheneTex 기능성 섬유 2025 매출 30억원, 2026 100억원 전망. 반도체 컴파운드·방탄복 신사업 확대 | 공학저널 |
 
-- **Synopsys AgentEngineer (2026 초)**: AI 에이전트 기반 자율 DRC(Design Rule Check) 자동화, 2나노 칩 개발주기 12개월 단축
-- **Cadence ChipStack AI Super Agent**: 프론트엔드 칩 설계/검증 전체를 자동화하는 agentic AI 워크플로 (코딩, 테스트벤치, 디버깅)
-- **Cadence Chiplet Ecosystem (2026.01)**: Chiplet Spec-to-Packaged Parts 에코시스템, Physical AI/DC/HPC 타겟
-- **Multiphysics-Fusion**: 전압강하/열/전자기 결합 이슈를 설계 초기에 해결, PPA 최적화
-- **2나노/앙스트롬 시대**: 배선 극미세화로 물리효과를 설계 중 실시간 최적화 필수
-- **NVIDIA-Synopsys 협력**: NVIDIA 20억달러 Synopsys 지분 투자, GPU 가속 EDA 도구 공동 개발
+#### 2-4. 투자 포인트
 
-#### 2-4. 한국 관련
+- 그래핀 반도체: post-silicon 후보. Georgia Tech FET 시연으로 기술적 타당성 입증
+- EUV 펠리클: 그래핀스퀘어의 2027 양산 적용 시 반도체 공정 핵심 소재로 부상
+- 에너지저장 23% 최대 응용 시장: EV+재생에너지 구조적 성장과 동행
+- 2025-2026 상용화 변곡점: 연구 단계에서 상업적 산업으로 전환 시작
 
-- 한국 EDA 기업 극소수 (바움, 알세미 등), 글로벌 경쟁력 부족
-- 중국 EDA 기업 약 300개사, 상위 10개사 일정 수준 기술 자립 달성 vs 한국 열위
-- 한국 반도체 소재 국산화율 약 30%, 장비 국산화율 10% 미만
-- 삼성파운드리 2나노 GAA 공정 EDA 도구 의존도 높음 (Synopsys/Cadence)
-- AI 기반 EDA 도구(AgentEngineer, ChipStack)로 설계 혁신 가속
+#### 2-5. 리스크
 
-#### 2-5. 투자 포인트
-
-- Synopsys FY2026 매출 $9.56~9.66B (Ansys 통합 효과, +66% YoY) -- 대형 소프트웨어 기업 중 최고 성장률
-- Cadence FY2026 $5.9~6.0B 가이던스, AI 칩 설계 수요 폭증이 매출 직결
-- 두 기업 모두 Agentic AI 기반 자동화 도구 출시 -> EDA 시장 자체의 TAM 확대
-- 2나노/GAA 전환기에 EDA 도구 업그레이드 필수 -> 매출 성장 가속
-- 반도체 지정학(미중 갈등)으로 각국 자체 설계 역량 확보 필요 -> EDA 수요 확대
-
-#### 2-6. 리스크
-
-- Synopsys 부채 $13.5B (Ansys 인수 부담), 통합 실행 리스크
-- Synopsys-Cadence 과점 구조로 가격 교섭력 약화 (사용자 입장)
-- 중국 EDA 자립 성공 시 시장 분리(decoupling) 가능성
-- 한국 EDA 자립 부재로 반도체 설계 주권 위험
-- 미국 수출통제 강화 시 중국향 EDA 라이선스 매출 감소 리스크
+- 300mm 웨이퍼 양산까지 최소 수년 소요, 상용 반도체 적용은 2030년 이후 전망
+- 한국 그래핀 기업 규모 영세(매출 수십~수백억원 수준)
+- 시장 규모 추정치 편차 큼(0.94B~2.91B for 2026) — 정의 범위 차이
+- 그래핀 품질 균일성·대면적 양산 기술 미성숙
 
 ---
 
-### 3. 첨단소재 (반도체/전력반도체 소재)
+### 3. 초전도체
 
 #### 3-1. 시장 규모 & 성장률
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 SiC 반도체 시장 (2025FY) | 5.80B USD | 2025 | DataM Intelligence |
-| 글로벌 SiC 반도체 시장 (2036E) | 11.24B USD (CAGR 6.2%) | 2036E | DataM Intelligence |
-| SiC 디바이스 CAGR (2026-2034) | 17.72% | 2026-2034 | Fortune Business Insights |
-| GaN 반도체 디바이스 시장 (2026E) | **4.83B USD** | 2026E | Mordor Intelligence |
-| GaN 반도체 디바이스 시장 (2031E) | 10.55B USD (CAGR 16.92%) | 2031E | Mordor Intelligence |
-| GaN CAGR (2026-2030) | 29.5% | 2026-2030 | Technavio |
-| 2.5D/3D 반도체 패키징 시장 (2024) | 4.2B USD | 2024 | Industry Report |
-| 2.5D/3D 반도체 패키징 시장 (2032E) | 14.8B USD (CAGR 18.6%) | 2032E | Industry Report |
-| EUV 포토레지스트 시장 | 50M USD(2021) -> 200M USD(2025E) | 2021-2025 | EBN뉴스 |
-| 포토리소 소재 매출 (2030E) | 6,650M USD+ (CAGR 5.4%) | 2030E | Techcet |
+| 글로벌 초전도체 시장 (2025) | 9.4B USD | 2025 | Fortune BI |
+| 글로벌 초전도체 시장 (2026E) | 8.16~10.6B USD | 2026E | Market Growth Reports 8.16B / GM Insights 10.6B |
+| 글로벌 초전도체 시장 (2030E) | 16.4B USD | 2030E | BCC Research (CAGR 11.8%) |
+| 글로벌 초전도체 시장 (2035E) | 13.28~32.3B USD | 2035E | Market Growth Reports 13.28B / GM Insights 32.3B |
+| CAGR | 5.4~13.2% | 2026-2035 | MGR 5.4% / GM Insights 13.2% |
 
-> SiC 시장 CAGR 6.2~17.7%로 편차 존재 (디바이스 vs 웨이퍼 기준 차이). GaN은 전력변환 효율 우수로 CAGR 17~30% 고성장. 첨단 패키징은 AI 칩렛 수요로 CAGR 18.6%.
+#### 3-2. 소재별 시장 구조
 
-#### 3-2. 주요 기업 & 경쟁구도
+| 소재 | 점유율/특성 | 출처 |
+|------|------------|------|
+| **LTS(저온)**: NbTi, Nb3Sn | 82.4% 점유율(2025). 성숙 공급망, MRI·입자가속기 | GM Insights |
+| **HTS(고온)**: REBCO/YBCO, Bi, MgB2 | CAGR 9.9% 최고속 성장. 핵융합 자석, 고자장 연구, 전력망 | GM Insights, BCC |
+| 핵융합 HTS 테이프 수요 | 2030년까지 30만km 소요 전망 (ITER, SPARC 등) | Fortune BI, BCC |
 
-| 소재 분야 | 주요 기업 | 비고 |
-|-----------|----------|------|
-| SiC 웨이퍼/디바이스 | **Wolfspeed** (파산 신청 2026.01), Infineon, STMicro, Coherent, ROHM, onsemi | Wolfspeed 300mm 불(boule) 시연 (다이 2.25배). STMicro 200mm 수율 75%. Infineon 200mm 출하(2025.02, Villach) |
-| GaN 파워 | Infineon, Navitas, EPC, Transphorm, Qorvo | GaN-on-Si로 원가 경쟁력. CAGR 17~30% |
-| EUV 포토레지스트 | JSR(ENEOS 인수), 도쿄오카공업, 신에츠화학, Fujifilm | 일본 3사 독과점 |
-| 한국 PR | **동진쎄미켐** (국내 유일 EUV PR), 삼양엔씨켐 | SK하이닉스와 EUV PR 국산화 협력 |
-| 첨단 패키징 | TSMC (CoWoS), Intel (EMIB), ASE | TSMC CoWoS 월 130~150K 웨이퍼(2026말, 4배 증설) |
-| 희토류 | 중국(글로벌 채굴 70%, 정제 70%+, 영구자석 94%) | 수출통제 2026.11.10까지 유예 |
-| 페로브스카이트 | LONGi, Oxford PV | 탠덤 34.85%(NREL 인증), Oxford PV 상업 생산 |
+#### 3-3. 상온 초전도체 연구 현황
 
-> SiC: **Wolfspeed 파산**이 시장 재편 신호. EV 수요 둔화+중국 가격 경쟁이 원인. Infineon/STMicro가 200mm 전환으로 주도권 확보 시도.
-
-#### 3-3. 기술 동향
-
-- **SiC 200mm -> 300mm 전환**: Wolfspeed 300mm 불 시연(2026.01, 다이 수 2.25배), STMicro 200mm 수율 75% 달성, Infineon Villach 팹 200mm 출하 개시
-- **GaN-on-Si**: 실리콘 기판 위 GaN 성장 기술로 원가 경쟁력 확보, 600V+ 파워 디바이스 상용화. 미국 CAGR 27.5%로 최대 성장 시장
-- **TSMC CoWoS 대규모 증설**: 월 35K(2024말) -> 130~150K(2026말), CapEx $56B. NVIDIA Rubin 대응. 주요 고객이 85%+ 선점
-- **High-NA EUV 도입**: 2nm 이하 공정에 High-NA EUV 적용 확대, 포토레지스트 요구 사양 급변
-- **페로브스카이트 태양전지**: 탠덤 효율 34.85%(LONGi), 단일접합 26%+. Oxford PV 독일에서 세계 최초 상업 생산(26.9% 모듈). 다만 안정성(1,000시간 vs 25년 보증)과 납 규제가 상업화 장벽
+| 항목 | 현황 | 출처 |
+|------|------|------|
+| **LK-99** | 반박 확정. Chemistry of Materials(2025) 게재. 부분 부양 = 강자성 불순물(CuS). 초전도 아님 | Wikipedia, Monash Lens |
+| 최고 확인 Tc(상압) | 135K (-138C), 큐프레이트 | PatSnap |
+| 수소화물 고압 | 550K+ 달성, but 100~200+ GPa 필요 (상용화 불가) | Tom's Hardware |
+| PNAS 2026.03 로드맵 | 다기관 공동 "상온 초전도 체계적 추진" 논문. 물리적 한계는 없음 - 공학/재료과학 과제 | PNAS |
+| Penn State 젠트로피 이론 | 전자구조로 초전도 예측 프레임워크(2025.10). 후보물질 전산 스크리닝 | PatSnap |
 
 #### 3-4. 한국 관련
 
-- **EUV PR 국산화**: SK하이닉스-동진쎄미켐 EUV 포토레지스트 국산화 협력. 동진쎄미켐은 국내 유일 ArF/KrF/EUV PR 제조사. KrF PR 세계일류상품 선정(2025)
-- **삼양엔씨켐**: 신한투자증권 "2026년 최주목 Post-IPO 기업". 메모리 업황 개선 수혜
-- **소재 국산화율**: 반도체 소재 약 30%, 장비 약 10% 미만 (일본/미국 의존 심각)
-- **희토류 리스크**: 중국 수출통제 유예(2026.11.10까지) 중이나 미국/일본 향 선별 제한 지속. 유예 종료 시 한국 직접 영향
-- **첨단 패키징**: 삼성전자/SK하이닉스 HBM 패키징 역량 확대. TSMC CoWoS 의존도 관리 필요
+| 항목 | 내용 | 출처 |
+|------|------|------|
+| 핵융합 초전도체 로드맵 | 과기정통부 2035년 자립화 로드맵(2026.02). 초전도자석·냉각계 국산화 100% 목표 | 인사이트N파워, 이투데이 |
+| 고온초전도자석 투자 | 5년간 464억원(2022-2026) | 이투데이 |
+| 16T 시험시설 | 한국에너지공대 내 구축, 2026.06 완공 예정 (스위스 SULTAN 12T 대비 우위) | 이투데이, 신문고 |
+| LS머트리얼즈 | 미국 핵융합 프로젝트에 울트라캐패시터 첫 공급 | 더퍼블릭 |
+| 초전도 양자컴퓨터 | 150억원 예산 투자(2023) | 나무위키 |
 
 #### 3-5. 투자 포인트
 
-- **SiC/GaN 파워반도체**: EV + AI 데이터센터 전력효율 수요. Wolfspeed 파산으로 Infineon/STMicro 수혜 가능
-- **첨단 패키징**: TSMC CoWoS 4배 증설로 공급 병목 해소 전망. 2.5D/3D 패키징 CAGR 18.6%
-- **EUV PR 국산화**: 동진쎄미켐 국내 유일 포지션. EUV 공정 확대 시 구조적 수혜
-- **GaN 시장**: 2026년 4.83B로 급성장, Mordor 기준 CAGR 16.9%. 서버 전원/EV 온보드 차저 확대
-- **페로브스카이트**: 상업 생산 시작(Oxford PV), 효율 한계 돌파 시 태양광 패러다임 전환
+- 핵융합 에너지 투자 급증: ITER, SPARC, CFS 등으로 HTS 테이프 수요 폭발(30만km by 2030)
+- 한국 16T 시험시설 세계 최고 수준: 핵융합 초전도체 기술 자립 기반 마련
+- MRI/양자컴퓨터 안정적 LTS 수요 + HTS 고성장 이중 구조
+- 상온 초전도 달성 시 혁명적 영향(전력망, 교통, 컴퓨팅) - 장기 옵션 가치
 
 #### 3-6. 리스크
 
-- **Wolfspeed 파산 여파**: SiC 공급망 재편 불확실성. 300mm 전환 지연 가능
-- **중국 희토류**: 유예 종료(2026.11) 후 통제 재개 시 공급망 교란. 대형 유럽 기업 80%+가 중국 REE 3단계 내 연결
-- **SiC 공급 과잉**: Infineon/STMicro/onsemi 동시 대규모 증설 + EV 수요 둔화 = 가격 경쟁 심화
-- **EUV PR 국산화 격차**: 동진쎄미켐 vs 일본 3사 기술 격차 수년. High-NA EUV 대응 미검증
-- **페로브스카이트 안정성**: 최장 운용 1,000시간 vs 보증 요구 25년. 납 규제 확대 가능성
+- 상온 초전도: 물리적 원리상 불가능하지 않으나 실현 시점 예측 불가
+- LK-99 실패로 투자 심리 위축, 단기 과열 경계 필요
+- HTS 테이프 제조 비용 여전히 높음, 핵융합 상용화 일정 불확실
+- 한국 초전도 기업 생태계 미성숙 (LS머트리얼즈 외 제한적)
+
+---
+
+### 4. 첨단 세라믹 / 화합물 반도체 (SiC, GaN, 압전세라믹)
+
+#### 4-1. SiC(탄화규소) 시장
+
+| 항목 | 수치 | 기준 | 출처 |
+|------|------|------|------|
+| 글로벌 SiC 반도체 시장 (2025) | 4.82B USD | 2025 | Mordor Intelligence |
+| 글로벌 SiC 반도체 시장 (2026E) | 5.32~6.16B USD | 2026E | Mordor 5.32B / DataM 6.16B |
+| 글로벌 SiC 반도체 시장 (2031E) | 8.75B USD | 2031E | Mordor (CAGR ~10.4%) |
+| SiC 디바이스 CAGR (2026-2034) | 17.72% | 2026-2034 | Fortune BI |
+
+**Wolfspeed 파산 & 시장 재편:**
+- Wolfspeed 파산 신청(2026.01). 원인: EV 수요 둔화 + 중국 가격 공세 + 과잉 확장
+- 6인치 SiC 웨이퍼 가격: 과거 $1,500 -> 중국 업체 $500 이하로 급락
+- Wolfspeed 300mm SiC 불(boule) 시연(2026.01, 다이 수 2.25배) -- 파산에도 기술 자산 가치 존재
+
+**주요 기업 200mm 전환:**
+
+| 기업 | 현황 | 출처 |
+|------|------|------|
+| Infineon | 200mm SiC 출하(2025초, Villach). 오스트리아 프론트엔드 + 말레이시아 백엔드 | Electronics360 |
+| STMicro | 4세대 SiC MOSFET 출시(2024). 200mm 수율 75% | Fortune BI |
+| Bosch | 캘리포니아 200mm 팹 2026 자동차향 가동 | Manufacturing Dive |
+| VW, BMW, Stellantis | 다년 장기 공급 계약(offtake) 체결 | Electronics360 |
+
+#### 4-2. GaN(질화갈륨) 시장
+
+| 항목 | 수치 | 기준 | 출처 |
+|------|------|------|------|
+| GaN 파워 반도체 시장 (2026E) | 0.92B USD (파워만) / 4.83B(Mordor) / 13.95B(전체 GaN 디바이스) | 2026E | Yole / Mordor / GlobeNewsWire |
+| GaN 파워 시장 (2030E) | ~3B USD (파워만) / 24.53B (전체) | 2030E | Infineon-Yole / GlobeNewsWire |
+| 파워 GaN CAGR | 44% (2025-2030) | 파워반도체만 | Yole |
+| 전체 GaN CAGR | 15.2~16.9% | 2026-2030 | GlobeNewsWire / Mordor |
+
+> GaN 시장 수치 편차 주의: Yole/Infineon은 **파워 GaN만** $0.92B->$3B으로 정의, GlobeNewsWire는 RF+파워+LED 전체 GaN 디바이스 포함 $13.95B->$24.53B.
+
+**주요 기업:**
+
+| 기업 | 현황 | 출처 |
+|------|------|------|
+| **Infineon** | GaN Systems 인수(2023.10). 8인치(200mm) GaN-on-Si 전환(2025), 원가 대폭 절감 | Electronics Media |
+| **Navitas** | GaNSafe 플랫폼. Q1 2026 매출 YoY +58%, AI 서버 전력 수요 견인 | Verified Market Research |
+| EPC | GaN FET 선도, 서버·자동차 전력변환 | GlobeNewsWire |
+| Transphorm, Qorvo | GaN 파워 전문 | Coherent MI |
+
+#### 4-3. 압전 세라믹
+
+| 항목 | 수치 | 기준 | 출처 |
+|------|------|------|------|
+| 압전세라믹 시장 (2026E) | 1.75~1.84B USD | 2026E | GM Insights 1.75B / Research Nester 1.84B |
+| CAGR | 4.78% | 2025-2034 | GM Insights |
+| 반도체장비용 점유율 | 33.5% (전자·반도체 세그먼트, 2024) | 2024 | GM Insights |
+| 아태 지역 점유율 | 48.1% | 2024 | GM Insights |
+
+> PZT(지르콘산납티탄산), 바륨티타네이트, 석영 등이 주요 소재. 반도체 장비(리소그래피 스테이지, 웨이퍼 정렬 등)에서 핵심 역할.
+
+#### 4-4. 투자 포인트
+
+- **SiC**: Wolfspeed 파산으로 Infineon/STMicro/onsemi 시장 재편 수혜. 200mm 전환 원가 절감
+- **GaN 파워**: CAGR 44%(파워만)로 화합물 반도체 최고 성장. AI 서버 전력 수요 폭발
+- Infineon의 GaN Systems 인수 + 8인치 전환으로 GaN 시장 지배력 강화
+- Navitas Q1 +58% 성장: AI 데이터센터 전력효율 테마 직접 수혜
+
+#### 4-5. 리스크
+
+- SiC 공급 과잉: Infineon/STMicro/onsemi/Bosch 동시 대규모 증설 + EV 수요 둔화
+- 중국 SiC 웨이퍼 가격 $500 이하 덤핑으로 비중국 업체 수익성 압박
+- GaN 시장 정의에 따라 규모 10배+ 차이 -- 투자 판단 시 세그먼트 구분 필수
+- Wolfspeed 파산 여파: 300mm SiC 전환 지연, 특허·기술 자산 매각 불확실성
+- CHIPS Act 48D 세액공제 2026년 만료 예정 -- 미국 내 투자 인센티브 축소
+
+---
+
+### 5. 희토류 / 핵심광물
+
+#### 5-1. 시장 구조 & 중국 지배력
+
+| 항목 | 수치 | 출처 |
+|------|------|------|
+| 중국 희토류 정제 점유율 | ~90% | IEA, GQG Partners |
+| 중국 텅스텐 점유율 | ~80% | IEA |
+| 중국 안티몬 점유율 | ~60% | IEA |
+| 20대 전략광물 중 최대 정제국 | 19/20개 (평균 70%) | SFA Oxford |
+| 중국 영구자석 점유율 | ~94% | 기존 KB |
+
+#### 5-2. 중국 수출통제 타임라인 (2025-2026)
+
+| 일자 | 조치 | 출처 |
+|------|------|------|
+| 2025.04.04 | 중희토류 7원소 수출통제 즉시 발효 (중국산 제품) | IEA, Al Jazeera |
+| 2025.10.09 | 추가 5원소(Ho, Er, Tm, Eu, Yb) + 장비·기술·역외적용 확대 (제61·62호 공고) | 지평법률, Lexology |
+| 2025.11.08 | 상기 강화 조치 1년 유예 발표 (~2026.11.10) | 법률신문, China Briefing |
+| 2025.12.01 | 원래 역외적용 조항 발효 예정이었으나 유예로 정지 | EP Think Tank |
+
+> 유예 기간(~2026.11.10) 종료 시 재시행 여부가 최대 변수. 유예 중에도 미국/일본 향 선별적 라이선스 거부 지속.
+
+#### 5-3. 가격 동향 (2026.03~04)
+
+| 원소 | 중국 내 가격 | FOB 수출가 | 프리미엄 | 출처 |
+|------|------------|-----------|---------|------|
+| 네오디뮴(Nd) 산화물 | $113/kg | $184/kg | 63% | Rare Earth Mining |
+| 디스프로슘(Dy) 산화물 | $190/kg | $317/kg | 67% | Rare Earth Mining |
+| 네오디뮴 메탈 | 1,095,000 CNY/t (2026.04.21) | - | 전월비 +10.6%, YoY +106.6% | Trading Economics |
+
+> 중국 외 가격 최대 6배 급등(2025-2026 수출통제 영향). 유럽 기업 라이선스 승인율 일부 섹터 25% 미만. [European Parliament, SFA Oxford]
+
+#### 5-4. 서방 대응 & 공급망 다변화
+
+| 주체 | 조치 | 출처 |
+|------|------|------|
+| **미국 DoD** | MP Materials에 $400M 투자 (Mountain Pass 정제 + 국내 자석공장) | Crux Investor |
+| **Apple** | MP Materials와 $500M 재활용 희토류 자석 계약 (2027~) | Investing News |
+| **미국 DPA** | 핵심광물 예산 FY2026 $21B -> $304B 대폭 확대 | 한국경제 |
+| **IRA 핵심광물** | FTA국/북미 재활용 비율 2025년 60% -> 2026년 70% -> 2027년 80% | 글로벌이코노믹 |
+| **EU RESourceEU** | 핵심원자재 공동구매·비축 이니셔티브(2025.12). 영구자석 순환성 강화 | EC, Consilium |
+| **서방 공급망** | 2026.03 최초 중국 외 상업적 희토류 공급망 가동 (자석, 중희토류 분리, 다운스트림) | Rare Earth Mining |
+
+#### 5-5. 투자 포인트
+
+- 희토류 공급 위기 = 가격 급등: Nd YoY +107%, Dy FOB 프리미엄 67%
+- 서방 공급망 자립 투자 확대: MP Materials(DoD $400M + Apple $500M), EU RESourceEU
+- 2026.03 중국 외 첫 상업적 공급망 가동 -- 탈중국 공급망 밸류체인 수혜 기업 주목
+- IRA 핵심광물 비율 2026년 70%로 상향 -> 북미 광물 정제·리사이클링 기업 수혜
+- 한국: 중국 유예 종료(2026.11) 대비 선제적 대응 필요, 리사이클링 기업 관심
+
+#### 5-6. 리스크
+
+- 중국 유예 종료(2026.11.10): 재시행 시 글로벌 공급망 대혼란 불가피
+- 유럽 대기업 80%+ 중국 REE 3단계 내 연결 -- 유럽 산업 직격탄 가능
+- 서방 대체 공급망 아직 초기 단계, 규모·비용 면에서 중국 대체 불충분
+- 가격 변동성 극심 (Nd 전월비 +10.6%, YoY +107%)
+- 한국 희토류 자체 매장량 미미, 중국 의존도 높음
+
+---
+
+### 6. 첨단소재 정책 (미국 / EU / 한국)
+
+#### 6-1. 미국: CHIPS & Science Act
+
+| 항목 | 내용 | 출처 |
+|------|------|------|
+| 총 규모 | $280B 인가, $52.7B 세출 | SIA, PwC |
+| 소재 관련 | 화합물 반도체(SiC/GaN), 고순도 폴리실리콘 포함 | Congress.gov |
+| Hemlock Semiconductor | $325M (고순도 반도체급 폴리실리콘 신규 시설) | Manufacturing Dive |
+| Bosch | 200mm SiC 캘리포니아 팹 2026 가동 | Manufacturing Dive |
+| **48D 세액공제** | 첨단제조 투자세액공제 2026년 만료 예정 -- 연장 여부 불확실 | Congress.gov |
+
+#### 6-2. EU: CRM Act & Advanced Materials Act
+
+| 항목 | 내용 | 출처 |
+|------|------|------|
+| EU CRM Act (2024.05 발효) | 2030 목표: 채굴 10%, 정제 40%, 재활용 25%, 단일국 의존 65% 이하 | EC, Consilium, IEA |
+| RESourceEU (2025.12) | 핵심원자재 공동구매·비축, 영구자석 순환성, CRM Act 개정 제안 | EC |
+| 이사회 입장 (2026.03) | 공급 리스크 통보·완화 조치 권한 명확화 | Consilium |
+| **Advanced Materials Act** | 2026년 입법 예정. 첨단소재 전략 프레임워크(연구·규제·생산역량·순환성) | EC R&I |
+
+#### 6-3. 한국: 소재부품장비(소부장) 전략
+
+| 항목 | 내용 | 출처 |
+|------|------|------|
+| 소부장 특화단지 종합계획(2026-2030) | 광주 첨단패키징, 부산 전력반도체, 구미 소재부품 | 정책브리핑 |
+| 국산화율 현황 | 반도체 소재 ~30%, 장비 ~10% 미만 (2025) | 다음뉴스 |
+| 2030 목표 | 공급망 자립화율 50%, 1조원 매출 소부장 기업 10개 육성 | 정책브리핑 |
+| 바이오 소부장 | 1,600억원 투자 | 법률신문 |
+| 항공엔진 소재·부품 | ~9,000억원 투자 | 법률신문 |
+| AI 반도체(NPU) | 수요산업 연계 개발, 국가 1호 상생 파운드리, Arm 공동 설계인력 양성 | 포스코 뉴스룸 |
+
+#### 6-4. 정책 시사점
+
+- **미국**: CHIPS Act로 반도체 소재 onshoring 가속. 단, 48D 세액공제 만료 시 투자 인센티브 약화
+- **EU**: CRM Act + Advanced Materials Act 이중 입법으로 원자재~첨단소재 전주기 전략 수립
+- **한국**: 소재 국산화율 30%로 여전히 취약. 2030 자립화 50% 달성 위해 투자 확대 필요
+- 3대 경제권 모두 "소재 주권" 확보 경쟁 가속 -- 소재 기업 장기 구조적 수혜
+
+---
+
+### [참고] 기존 KB에서 이관된 서브섹터 안내
+
+이전 버전(2026-04-19)에서 다루던 디스플레이/마이크로LED, EDA, 반도체 소재(SiC/GaN/패키징/EUV PR/페로브스카이트) 중:
+- **SiC/GaN**: 본 KB 섹션 4에 최신화하여 포함
+- **디스플레이/마이크로LED**: 별도 KB 분리 권장 (`display.md`)
+- **EDA**: 별도 KB 분리 권장 (`eda.md`)
+- **EUV PR/첨단패키징/페로브스카이트**: `semiconductor.md` 또는 전용 KB 참조
