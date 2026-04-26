@@ -1,8 +1,8 @@
 ---
-updated: 2026-04-25
+updated: 2026-04-26
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-04-21
+lint_last_run: 2026-04-26
 lint_mode: full
 ---
 
@@ -17,23 +17,26 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-26 (market-data-collector + briefing-lead)**
+> **최종 갱신: 2026-04-26 (wiki-linter full)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| `portfolio/model_portfolios.md` | [P0] confidence:low — 전 항목 *(미수집)* N/A. 빈 테이블 | F-2~F-5 | `/모델포트폴리오` 실행 필요 |
 
-> [P0 실질 긴급] portfolio/model_portfolios.md: confidence:low + 전 항목 미수집 상태 지속 (2026-04-07 이후 미갱신 17일). `/모델포트폴리오` 실행 필요.
-> [INFO] 나머지 Market/Macro/Industry KB 전체 P1 이하 — 실행 가능 상태.
+> [INFO] P0 해제 — portfolio/model_portfolios.md 2026-04-21 갱신 완료 (confidence:high, F-1~F-7 전면 작성). 현재 전체 KB P0 항목 없음.
+> [INFO] 전체 KB P1 이하 — 브리핑 실행 가능 상태. 상세 P1 항목은 아래 P1 섹션 참조.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-04-21 full)
+## P1 — 이번 주 조치 (탐지: 2026-04-26 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
+| `korea_economy.md` (루트) | 레거시 파일 2026-04-07 데이터 — 원/달러 1,410원 등 최신치(1,476원) 대비 구버전. valid_until 2026-05-07 | 중간 | `macro/korea_economy.md` SSOT 참조 유지. 루트 파일 수치 갱신 또는 redirect 포인터로 교체 권장 |
+| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 필요 |
+| `_index.md` 교차참조 맵 | 수치가 04-19 기준으로 구버전 (VIX 17.48→19.31, DXY 97.70→98.52, Gold $4,867→$4,709, 원달러 1,460→1,476) | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
+| `industry/real_estate.md` | _index.md Industry KB 테이블 미등재 (고아 파일) | 낮음 | _index.md Industry KB 표에 추가 (아래 갱신 완료) |
 
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
@@ -165,6 +168,7 @@ lint_mode: full
 | `food_agriculture.md` | **USDA WASDE 2026-04-09 옥수수 $4.15/bu·대두 $10.30/bu·밀 $5.00/bu 모두 상향·CBOT 밀 YoY+9.8%·옥수수 <$4.5/bu 4주최저. Cocoa 2024-12 $12,646/ton peak→2026E -6%·Arabica -13%·Sugar 공급과잉. Deere Q1 FY26 EPS $2.42(컨센 $1.92 beat, YoY-24%)·장비매출 $8B(+17.5%)·FY26 net income $4.5-5B 상향·관세 $1.2B·'사이클 바닥' 선언. CNH 2025 순익 $505M(-60%)·AGCO 상반기 underproduction. CF Q1 2026 EPS $2.08(상향)·MOS 브라질 EBITDA +190%·NTR potash 세계 1위. CTVA 2026 EPS $3.45-3.70·Bayer $610M 종자합의 면화진출. Bayer Roundup $7.25B 합의(21년 분할, 61K건 계류, 2026-04 대법원). Tyson Q1 FY26 $14.3B(+5.1%)·EPS $0.97 miss. GIS Q1 FY26 -7%·KHC -2.4% 가이던스 하향. K-Food 2025 수출 $12.3B 사상최고(+21.4% YoY, 라면 $1.38B)·삼양식품 3Q 누적 OP 3,850억 사상최대·농심 2.63조·라면 수출 60% 삼양. 한국 곡물자급률 19.5% 20% 마지노선 붕괴·밀 0.5%/옥수수 0.7%/대두 6.6%. 미중 2026-2028 대두 연 2,500만톤 구매 합의(10% 관세 유지)** | 2025 1~8월 미국→중국 대두 -78%·옥수수 -99% 붕괴. 브라질 대두 85Mt+ 중국 90% 점유. 인도 4년 밀 수출금지 해제(2026-02, 원밀 250만톤+제품 50만톤+설탕 50만톤). ENSO 2026-05~07 엘니뇨 61% 확률(IRI 70%)→인도 몬순 약화 리스크. 정밀농업 2031E $17.29B(CAGR 10.5%)·자율농기계 CAGR 15%+·DE LEAP 배터리전기 자율트랙터 2026 배치. 수직농장 2025 파산 14건·Plenty($1B) Ch11→2025-05 exit·Bowery($700M) 셧다운. BYND 2025 -15.6% $275.5M·자본잠식 -$784M·Nasdaq 상장폐지 경고 vs Oatly 첫 흑자 $862.5M. IPCC 농업 GHG 22%·No-tillage CO2 -47%·ICVCM 지속가능농업 탄소크레딧 첫 승인. FDA MAHA 2026 UPF 통일 정의·Front-of-pack 영양표시 의무화→GIS/KHC/MDLZ 규제압박. USDA 2026 net farm income $153.4B(-0.7% YoY). USDA 농산물 수출 2026E -$9B 적자 | 04-24 | 05-24 | high |
 | `education.md` | **글로벌 에듀테크 2026 $404B·CAGR 16.3%(HolonIQ)·북미 38%/APAC 32%·K-12 40%·AI교육 +42% 최속. DUOL Q4 2025 $1.04B(+39%)·DAU 52.7M(+30%)·Paid 12.2M(+28%)·FY26 $1.20~1.22B(+15~18% 둔화)·2026 DAU 최우선 피벗 $50M 감수·1월 -20% 폭락. COUR Q1 2026 신규 7.6M 신기록 but FY26 $805~815M 재확인 주가 급락. CHGG 2025 매출 -36.7%·Q1 2025 subscribers -31%·2025-10 45%(388명) 감원·주가 2021 대비 -99%·$1 미만. LRN Q1 FY26 $620.9M(+13%)·Adj EPS $1.52(+39.4%)·FY26 $2.480~2.555B. 웅진씽크빅 2025 7,973억(-8.1%)·OP -104억 적자전환·2026 스마트올 AI+북스토리 B2G. 메가스터디 2026 매출·OP 회복·고등온라인 ASP 상승** | Trump 하버드 $2.3B 동결 2025-09 위법판결·세금면제 위협. 교육부 해체 EO 2025-03-20·학생대출 $1.7T 재무부 이관·SAVE plan 종료 7.5M 2026-07-01 90일내 RAP 전환·PSLF 해체. ChatGPT Edu 35+ 공립대·70만 라이선스·Cal State $17M·CU $2M·대학생 1/3 정기사용. Khanmigo GPT-4·Claude for Education·Gemini×Classroom 2026-02. 2U 2024-07 Ch11 파산 $800M edX+Trilogy 부채·OPM 약세·Coursera+Udemy 합병 2026H2. 한국 학령인구 47만·지방대 6:1 미만·등록금 190교 중 125교(65.8%) 인상 사립 80.8% vs 국공립 7.7%·의대 지역인재 강제. 패스트캠퍼스 기업출강 60% AI교육. Wiley Q3 FY26 EPS $0.97 beat·AI 매출 YTD $42M 전년초과·Pearson×AWS 2026-04-13. 엔터프라이즈 Upskilling Big3: LinkedIn Learning(21K 강좌) vs Coursera+Udemy 통합(2026H2) | 04-24 | 05-24 | high |
 | `insurance.md` | **TRV Q1 2026 Beat(Core EPS $7.71 vs $7.07·CR 88.6%·Core ROE 19.7%·$2.2B 환원·배당 14% 인상 22년 연속)·PGR Q1 EPS $4.80(+10%)·CR 86.4%·Chubb Core EPS $6.82·CR 84%·TBVPS +21.5%·NA Casualty 가격 +9.6%. MET Q1 컨센 $2.21(+12.8%) 5/6 발표·PRU $3.34+1.5% 5/5 발표·POJ 사건 -$300~350M FY26 영향. 삼성화재(000810) 2025FY 2조183억 1위·Q1 2026 6,090억·CSM 14.33조·2028 주주환원율 50% 목표·DPS 19,000원 수익률 4.38%. DB Q1 4,027억(-28.4%, LA 산불)·현대해상 1,759억(-66.9%)·KB손보 CSM 9.4조 K-ICS 188%. 삼성생명 2025FY 2조3,028억(+9.3%, 역대최대)·보유CSM 13.2조·신계약 건강보험 75%(2024 58%→). Munich Re €13.7B(-7.8%)·Swiss Re P&C Re $15.3B(+6%) 소프트닝 사이클. Cat bond 2025 FY $25.6B(+45%) 사상최고·2025말 outstanding $61.3B·Q1 2026 $6.7B·UCITS펀드 $20B+. Cyber 2026E $16.4B(Swiss Re)~$23B(S&P)·CAGR 10%+ 2030. LMND Q1 4/29·FY26 IFP +30%·Adj EBITDA 흑자 Q4 목표·OSCR Q1 $850M+11%·MLR 82.5%** | **캘리포니아 산불 $30B+ 보험손실**(Palisades·Altadena)·State Farm $5B 지급·신규 중단·FAIR Plan $5~10K. 플로리다 4개사 축소. **NOAA/CSU 2026 대서양 허리케인 평균 이하**(13/6/2, El Niño 지배)→2027 재보험 추가 완화 가능. **1/1 갱신 소프트닝** Munich Re 가격 -2.5%·Swiss Re Net -4.6%, 4/1 추가 하락. **Trump ACA Marketplace Integrity Rule: 1.8M 커버리지 상실·2026 +3.4M/2027 +7.5M/2028 +8.7M 무보험자·2027 catastrophic coverage 본인부담 $27K 제안·2M 추가 포기**. **한국 기본자본 K-ICS 2026 도입**(EU Sol II/CA LICAT 50% 유력)·손해율 가이드라인 2026 Q2. Swiss Re sigma: Global premium 2026E +2.3%·Non-life +1.7%·Life +2.5%. Chubb CEO "dumb property softening" Casualty 하드닝 +9.6% vs Property -2.6% 분화. Korean Re(003690) 시총 $1.48B·목표 12,300원·1년 수익률 +65% | 04-24 | 05-24 | high |
+| `real_estate.md` | **미국 Case-Shiller 20-City YoY +1.2%(2026-01, 2023-07 이후 최약세), 30Y FRM 6.30%, 기존주택 414만호(-2.4%), 신규착공 150만호(+11.2%), 공실률 오피스 22.5%(역대최고)/물류 8.2%(역대최고). 한국 BOK 2.50%(7연속동결), 서울아파트 +0.05%(17주 연속↑), PF연체율 4.25%(역대최고)·자기자본비율 7.1%, WGBI편입 채권유입** | 미국 CRE $1.5조 2026 만기(Wall). 오피스 공실 장기구조화 + AI 원격근무. 한국 PF 1차 옥석가리기→2차 지방부실 잔존. 고금리 장기화 → 거래절벽 지속. 서울 DSR·대출규제 vs WGBI 유입 | 04-22 | 05-22 | high |
 
 > 상세 드릴다운: 각 파일의 § 섹션 번호 참조. 에이전트는 이 표로 파일 선택 후 해당 파일만 Read.
 > [v3.5 신규 등재 — 04-13 wiki-linter]: quantum, space, smr, telecom_next, banking_capital, advanced_materials, battery, infrastructure
@@ -176,6 +180,7 @@ lint_mode: full
 > [v3.10.1 신규 — 04-24]: food_agriculture.md 신규 (곡물·비료·농기계·AgTech·식품가공·식량안보 공백 해소). 총 industry KB 23개 체제.
 > [2026-04-24 신규]: education.md 신규 (에듀테크·온라인교육·대학·직업훈련·AI교육·교육출판 공백 해소). Industry KB 24 → 25개 체제.
 > [2026-04-24 신규]: insurance.md 신규 (생명·손해·재보험·인슈어테크·Cat bond·Cyber·Trump ACA 공백 해소). Industry KB 25 → 26개 체제.
+> [2026-04-26 wiki-linter]: real_estate.md 고아→등재 (부동산·REITs·PF·모기지). Industry KB 26 → 27개 체제.
 
 ---
 
@@ -213,7 +218,7 @@ lint_mode: full
 
 | 파일 | 상태 | 갱신 주체 | 비고 |
 |------|------|---------|------|
-| `model_portfolios.md` | ⚠️ 전 항목 미수집 | briefing-lead | `/모델포트폴리오` 실행 필요 |
+| `model_portfolios.md` | ✅ 갱신 완료 (04-21) confidence:high | briefing-lead | F-1 환경진단+F-2~F-5 비중·종목+F-6 비교표+F-7 면책 전면 작성. 다음 갱신: `/주간리포트` 실행 시 |
 | `rebalancing_history.md` | ✅ 첫 이력 등록 (04-14) | briefing-lead | 미국주식 87.8%→72%(6개월 목표) |
 | `user_portfolio.md` | ✅ 갱신 완료 (04-14) confidence:high | briefing-lead | 총 2,820만원, 미국주식 87.8% |
 
@@ -280,13 +285,13 @@ lint_mode: full
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-19 | SSOT 일치 |
-| VIX | `global_risk_factors.md`: 17.48 (04-19) | `market/daily_snapshot.md`: 18.98 (04-21) | 04-21 | ✅ 일치 (daily_snapshot 최신, 시점차 +1.50, 허용범위 — 거짓안정 해제 반영) |
-| DXY | `global_risk_factors.md`: 97.70 (04-19) | `us_economy.md §9`: 97.70 (04-17) | 04-19 | ✅ 일치 (동일 수치) |
-| 원/달러 | `korea_economy.md`: 1,475원 (04-18) | `global_risk_factors.md §2`: 1,460원 (04-19) | 04-19 | ✅ 일치 (global_risk 최신, 시점차 -15원, 허용범위 2%) |
-| S&P 500 | `us_economy.md §9`: 7,022 (04-17 신고가) | `market/daily_snapshot.md`: 04-19 기준 | 04-19 | ✅ 일치 (daily_snapshot 최신) |
-| WTI | `industry/energy.md`: $84~94 (04-19) | `macro/geopolitics.md`: $83.85/bbl (04-17 종가) | 04-19 | ✅ 일치 (energy 최신, 범위 내 포함) |
-| Gold | `macro/global_risk_factors.md §4`: $4,867 (04-19) | `market/daily_snapshot.md`: $4,878 (04-19) | 04-19 | ✅ 일치 (daily_snapshot 최신, 시점차 +11, 허용범위) |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-26 | SSOT 일치 |
+| VIX | `macro/global_risk_factors.md`: 19.31 (04-26 갱신) | `market/daily_snapshot.md`: ~18.71 (04-25 기준) | 04-26 | ✅ 일치 (시점차 허용범위 — daily_snapshot 04-25, global_risk 04-24 기준) |
+| DXY | `macro/global_risk_factors.md`: 98.52 (04-26 갱신) | `market/daily_snapshot.md`: ~98.51 (04-25 기준) | 04-26 | ✅ 일치 (차이 0.01, 허용범위 이내) |
+| 원/달러 | `macro/korea_economy.md`: 1,480~1,486원 (04-25) | `macro/global_risk_factors.md §2`: 1,476원 (04-26) | 04-26 | ✅ 일치 (시점차 허용범위 이내) |
+| S&P 500 | `macro/us_economy.md`: 7,165(신고가, 04-25) | `market/daily_snapshot.md`: 7,165.08 (04-25 확정) | 04-26 | ✅ 일치 (동일 수치) |
+| WTI | `industry/energy.md`: $94.88 (04-26 갱신) | `macro/geopolitics.md`: $97 (04-26 주간 최고) | 04-26 | ✅ 일치 (daily_snapshot 04-25 기준 $94.88, 범위 내) |
+| Gold | `macro/global_risk_factors.md §4`: $4,709 (04-26 갱신) | `market/daily_snapshot.md`: ~$4,708.8 (04-25 기준) | 04-26 | ✅ 일치 (차이 $0.2, 허용범위 이내) |
 
 ---
 
