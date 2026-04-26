@@ -169,3 +169,5 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 ---
 
 ## 검수 결과 F-03 — 본 파일은 기존 부재 상태에서 신규 생성됨.
+| 2026-04-26 | evening | 종목 | SMR (NuScale Power) | Bull (SMR 원자력 AI DC 전력 테마 + X-Energy IPO 시장 검증) | 중기 | 중간 | Marks/Druckenmiller 에너지전환 컨버전스 + X-Energy IPO $23→$30.11(원자력 역대최대 $10B+). AI DC 전력 수요 구조적 수혜 [daily_snapshot.md, guru_positions.md] | reports/briefing/evening_20260426.html | 진행중 |
+| 2026-04-26 | evening | 종목 | SK하이닉스 (000660.KS) | Bull (HBM 슈퍼사이클 + 한국 Q1 GDP 서프라이즈) | 중기 | 중간~높음 | Tepper MU +200% HBM 컨버전스 + 한국 Q1 GDP +1.7%(5.5년 최고). 반도체 수출 +182.5%. KOSPI PER ~11x 디스카운트 재평가 [guru_positions.md, market/economic_calendar.md] | reports/briefing/evening_20260426.html | 진행중 |

@@ -82,6 +82,9 @@ lint_mode: full
 | 2026-04-26 | 모닝브리핑 | 트럼프 이란 특사 파견 취소(4/25 저녁) — 대면→전화 전환. 금요일 "평화회담 기대" 서사 번복. WTI $94.88 유지이나 월요일 반등 리스크. 오만 무스카트 대안 중재지 부상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | 4/29~30 "48시간 결정전" — FOMC(파월 톤 40%) + 빅테크 4건(MSFT/META/AMZN/GOOGL AI CapEx) + GDP Q1(GDPNow 1.24%) + Core PCE + ECB + AAPL. 골디락스 vs 스태그 분기 | `market/economic_calendar.md` | 진행중 |
+| 2026-04-26 | 이브닝브리핑 | 이란 평화회담 파키스탄→오만 이동, 대면 채널 격하 확정. 이란 "봉쇄 해제 전 협상 불가" 공식화. 호르무즈 기뢰 6개월 구조적 유가 충격 연말 고착 가능성 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-26 | 이브닝브리핑 | 4/29 빅테크 슈퍼 수요일 — 거물 3인(Ackman META $1.76B / Druckenmiller AMZN +69% / Tepper MU +200%) 대형 베팅 직접 검증. AI CapEx 가이던스 "유지/확대" vs "에너지 비용 부담" 분기 | `market/economic_calendar.md, market/guru_positions.md` | 진행중 |
+| 2026-04-26 | 이브닝브리핑 | VIX 18선 "거짓 안정 최종 단계" 경고 — F&G 70 vs 소비심리 49.8 괴리 + 4/29~30 이벤트 6개 집중 + 숏볼 극단. VIX 22~25 스파이크 확률 35~40% | `market/correlation_matrix.md, macro/global_risk_factors.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
