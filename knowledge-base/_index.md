@@ -85,6 +85,11 @@ lint_mode: full
 | 2026-04-26 | 이브닝브리핑 | 이란 평화회담 파키스탄→오만 이동, 대면 채널 격하 확정. 이란 "봉쇄 해제 전 협상 불가" 공식화. 호르무즈 기뢰 6개월 구조적 유가 충격 연말 고착 가능성 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 이브닝브리핑 | 4/29 빅테크 슈퍼 수요일 — 거물 3인(Ackman META $1.76B / Druckenmiller AMZN +69% / Tepper MU +200%) 대형 베팅 직접 검증. AI CapEx 가이던스 "유지/확대" vs "에너지 비용 부담" 분기 | `market/economic_calendar.md, market/guru_positions.md` | 진행중 |
 | 2026-04-26 | 이브닝브리핑 | VIX 18선 "거짓 안정 최종 단계" 경고 — F&G 70 vs 소비심리 49.8 괴리 + 4/29~30 이벤트 6개 집중 + 숏볼 극단. VIX 22~25 스파이크 확률 35~40% | `market/correlation_matrix.md, macro/global_risk_factors.md` | 진행중 |
+| 2026-04-26 | 글로벌인텔리전스 | 4축 동인 판정 갱신: 단기 "지정학 ≥ 기술" (격차 축소). "AI 가위" 공식화(SOX 18일/Intel +2,800% vs SaaS -18%)로 기술 축 영향력 상향. 중기 이후 기술 > 정치 ≥ 지정학 | `lead_global_intelligence_20260426.md` | 진행중 |
+| 2026-04-26 | 글로벌인텔리전스 | 숨은 테마 ★ "서비스 인플레 고착" — WTI 하락에도 10Y 상승 최초 포착. 에너지→서비스 인플레 동력 구조 전환. ISM 서비스가격 70.7(2022.10 이후 최고). 4/30 Core PCE 최종 판별자 | `lead_global_intelligence_20260426.md, market/correlation_matrix.md` | 진행중 |
+| 2026-04-26 | 글로벌인텔리전스 | 숨은 테마 ★ "SMR-AI DC 전력 수렴" — X-Energy IPO $10B+(원자력 역대최대). Marks/Druckenmiller 에너지전환 컨버전스. 빅테크 5사 직접 SMR 발주(MS 2GW/Google 500MW/Amazon 5GW/Meta 6.6GW). 변압기 128~144주 납기→SMR 직결 | `lead_global_intelligence_20260426.md, macro/tech_breakthrough.md` | 진행중 |
+| 2026-04-26 | 글로벌인텔리전스 | 시나리오 #6 신규 등록: "4/30 트리플 폭탄"(GDP+PCE+빅테크). 골디락스 30%/혼조 45%/스태그 25%. Fed 리더십 갈림길 해소(DOJ 종료)로 교체. 호르무즈+스태그 동시 시 S&P -10~15% | `knowledge-db/performance/2026_scenario_tracking.md` | 진행중 |
+| 2026-04-26 | 글로벌인텔리전스 | 대만 리스크 🟡→🟠 격상 — 랴오닝 해협 통과(4/20), 라이칭더 영공차단(역사상 첫), 17명 군간첩 적발, 봉쇄돌파훈련. 일본 이카즈치 통과+살상무기 규제 완화. "다축 에스컬레이션" | `macro/geopolitics.md, lead_global_intelligence_20260426.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |

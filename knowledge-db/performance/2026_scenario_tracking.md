@@ -67,6 +67,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 2026-04-14 | 25% | 45% | 20% | 10% | 초기 설정. 파키스탄 회담 결렬+미 해군 봉쇄 개시. 트럼프 "이란이 딜 원해" 발언은 A 가능성 유지 | CNN, NPR, Al Jazeera, CNBC |
 | 2026-04-18 | 55% | 25% | 5% | 15% | 호르무즈 "완전 개방" 선언(4/17). WTI $104→$84(-19%). 이스라엘-레바논 10일 휴전. 단 물리적 정상화 미완(기뢰 21건, 이란 항구 봉쇄 유지). 4/21 휴전 만료가 A vs B 최종 분기점 | CNBC, Bloomberg, Al Jazeera, InsuranceJournal |
 | 2026-04-19 | 35% | 40% | 25% | 0% | 4/18 이란 호르무즈 재봉쇄(24시간 번복). IRGC 탱커 공격. A 확률 대폭 하향(55→35%). C 확률 상향(5→25%). D 시나리오 소멸(이중 완화 비현실화). 4/22 휴전 만료 D-3이 최종 분기점 | geopolitics.md 04-19, CNBC, Al Jazeera |
+| 2026-04-26 | 25% | 50% | 25% | 0% | 무기한 휴전이나 실질 해군 대치 지속. 4/24 트럼프 기뢰 부설 선박 격침 명령. 4/25 특사 파키스탄행 취소(대면→전화 격하). 펜타곤 기뢰 제거 6개월 추정. 나포 31척. 통항 8척/일(전쟁 전 100+의 8%). A 하향(35→25%, 특사 취소). B 상향(40→50%, 교착 장기화 확정적) | geopolitics.md 04-26, lead_global_intelligence_20260426.md |
 
 ---
 
@@ -88,6 +89,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 2026-04-14 | 30% | 50% | 20% | 초기 설정. 트럼프 50% 관세 위협+이란 무기수출 보도. 회담 자체는 예정대로 진행 중 | CNBC, US News, PIIE |
 | 2026-04-18 | 35% | 45% | 20% | 호르무즈 해소가 외교 환경 개선. 이란 무기수출 쟁점 완화 가능. Section 301 조사 진행 중이나 회담 예정대로 | CNBC, supply_chain.md |
 | 2026-04-19 | 30% | 50% | 20% | 호르무즈 재봉쇄로 외교 환경 재악화. 이란 무기수출 쟁점 재부상(트럼프 50% 관세 위협). Section 301 4/28 공청회 임박으로 B 확률 상향 | political_cycle.md 04-19 |
+| 2026-04-26 | 25% | 55% | 20% | Daines 초당파 사절단 5/1 방중. 5/14~15 정상회담 확정. 그러나 호르무즈 기뢰전 장기화+특사 취소로 외교 환경 비우호적. Bessent "7월 IEEPA 수준 관세 복원" 발언으로 B(무성과) 상향. A 하향(대규모 타결 기대 낮음 공식화) | political_cycle.md 04-26, geopolitics.md 04-26 |
 
 ---
 
@@ -109,6 +111,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 2026-04-14 | 20% | 60% | 20% | 초기 설정. CPI 3.3%+WTI $96+비료 인플레 -> 인하 여건 악화. 침체확률 50%가 비둘기 압력 | us_monetary_policy.md, ainvest.com |
 | 2026-04-18 | 15% | 55% | 30% | 호르무즈 개방 → 에너지 인플레 완화 기대 → 비둘기 공간 소폭 확대. Core CPI 2.6% + ISM 70.7 = 인하 명분 부족. 파월 해임 위협은 커뮤니케이션 복잡성 증가 | us_monetary_policy.md, CNBC |
 | 2026-04-19 | 10% | 60% | 30% | 호르무즈 재봉쇄로 에너지 인플레 완화 기대 후퇴. WTI $84 재반등 압력. Core PCE 3.0% 확인(4/30). 파월 해임 위협 지속(5/15). A(인하) 확률 추가 하락 | us_monetary_policy.md 04-18, global_risk_factors.md 04-19 |
+| 2026-04-26 | 5% | 65% | 30% | WTI $97(+17%w). ISM 제조가격 78.3+서비스가격 70.7 양채널 극단. "서비스 인플레 고착" 구조 전환 최초 포착(WTI 하락해도 10Y 상승). 4/30 Core PCE 3.1~3.2% 상방 리스크. A(인하) 추가 하락(10→5%). B(매파 동결) 상향(60→65%). 파월 해임 시나리오 대폭 하락(DOJ 종료)이나 인플레 데이터가 매파 유지 | us_economy.md 04-25, global_risk_factors.md 04-26, correlation_matrix.md 04-26 |
 
 ---
 
@@ -128,6 +131,7 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 갱신일 | A 확률 | B 확률 | C 확률 | 변화 이유 | 출처 |
 |---|---|---|---|---|---|
 | 2026-04-19 | 50% | 35% | 15% | 초기 설정. 트럼프 4/15 해임 위협 공식화. DOJ 수사 진행. Warsh 인준 Tillis 보류. 법적 제한(for cause) 존재. 공화당 내부 반발 | us_monetary_policy.md 04-18, political_cycle.md 04-19 |
+| 2026-04-26 | 65% | 25% | 10% | DOJ 수사 종료(4/24) — Warsh 인준 최대 장애물 제거. 상원은행위 통과 예상. 해임 시나리오 대폭 하락. A 상향(50→65%). B 하향(35→25%). C 하향(15→10%). 순조로운 전환 기대 상승 | political_cycle.md 04-26, lead_global_intelligence_20260426.md |
 
 ---
 
@@ -147,6 +151,26 @@ read_owners: [briefing-lead, global-macro-analyst, briefing-report-generator]
 | 갱신일 | A 확률 | B 확률 | C 확률 | 변화 이유 | 출처 |
 |---|---|---|---|---|---|
 | 2026-04-19 | 30% | 45% | 25% | 초기 설정. Section 301 4/28 공청회 개시. 가속 타임라인 5개월. 한국 정부 반박 의견서 제출(4/16). 의회 연장 미발의 | political_cycle.md 04-19, supply_chain.md 04-18 |
+| 2026-04-26 | 30% | 45% | 25% | 변화 없음(±5%p 미만). 4/28 강제노동 공청회 당일. 5/5 과잉설비 공청회 예정. Bessent "7월 IEEPA 수준 관세 복원" 발언으로 B 유지. 한국 반박 효과 미지수 유지 | political_cycle.md 04-26, supply_chain.md 04-25 |
+
+---
+
+### 시나리오 #6 -- 4/30 트리플 폭탄 (GDP+PCE+빅테크)
+
+| 항목 | 값 |
+|---|---|
+| 갈림길 | 4/30 GDP Q1 Advance + Core PCE 3월 + 빅테크 AI CapEx 동시 발표 결과 |
+| 설정일 | 2026-04-26 |
+| 결과 시점 | 2026-05-15 (데이터 발표 후 시장 소화) |
+| 시나리오 A | 골디락스: GDP >2.0% + Core PCE <3.0%. 하반기 1회 인하 유지. S&P 7,300~7,500 |
+| 시나리오 B | 혼조: GDP 1.0~2.0% + Core PCE 3.0~3.2%. "data dependent" 유지. S&P 7,000~7,200 레인지 |
+| 시나리오 C | 스태그: GDP <1.0% + Core PCE >3.2%. 스태그플레이션 내러티브 공식화. S&P -3~5% |
+
+#### 확률 추이
+
+| 갱신일 | A 확률 | B 확률 | C 확률 | 변화 이유 | 출처 |
+|---|---|---|---|---|---|
+| 2026-04-26 | 30% | 45% | 25% | 초기 설정. GDPNow Q1 1.24%(C 방향). ISM 양채널 극단(제조 78.3+서비스 70.7). WTI $97 에너지 CPI 전이. "서비스 인플레 고착" 최초 포착. 소비심리 49.8(역대최저). 4/29 빅테크 4건(MSFT/META/AMZN/GOOGL) AI CapEx 가이던스가 추가 변수 | us_economy.md 04-25, global_risk_factors.md 04-26, lead_global_intelligence_20260426.md |
 
 ---
 
