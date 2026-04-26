@@ -17,7 +17,7 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-25 (market-data-collector)**
+> **최종 갱신: 2026-04-26 (market-data-collector + briefing-lead)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
@@ -76,6 +76,9 @@ lint_mode: full
 | 2026-04-25 | 주간리포트 | "AI 가위" 주간 종합 — Philly Sox 18일 연승(역대 최장) + Intel +2,800% vs ServiceNow -18%/IBM -10.3%. AI 인프라↑/전통SaaS↓ 구조적 분열 공식화. PSR 프리미엄 체제 전환 시작 | `market/daily_snapshot.md, lead_weekly_20260425.md C-3.5` | 진행중 |
 | 2026-04-25 | 주간리포트 | 4/30 "트리플 폭탄" 분기점 — GDP Q1 Advance(GDPNow 1.24%) + Core PCE 3월 + MSFT/META Q1 동시 발표. Bear 55% 가중: 선행(소비심리 49.8/WTI $96)이 후행(실적 81% Beat)을 4~8주 잠식 확률 우세 | `macro/us_economy.md, lead_weekly_20260425.md C-7` | 진행중 |
 | 2026-04-25 | 주간리포트 | Gold $4,724 주간 -2% 조정 = 구조적 Bull 내 매수 기회(contrarian). Gold-실질금리 상관 붕괴(+0.18 vs 전통 -0.45) 4주째 지속. 중앙은행 1,000톤+/년 + JPM $5,055(4Q26E) | `macro/global_risk_factors.md §4, market/correlation_matrix.md` | 진행중 |
+| 2026-04-26 | 모닝브리핑 | 트럼프 이란 특사 파견 취소(4/25 저녁) — 대면→전화 전환. 금요일 "평화회담 기대" 서사 번복. WTI $94.88 유지이나 월요일 반등 리스크. 오만 무스카트 대안 중재지 부상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
+| 2026-04-26 | 모닝브리핑 | 4/29~30 "48시간 결정전" — FOMC(파월 톤 40%) + 빅테크 4건(MSFT/META/AMZN/GOOGL AI CapEx) + GDP Q1(GDPNow 1.24%) + Core PCE + ECB + AAPL. 골디락스 vs 스태그 분기 | `market/economic_calendar.md` | 진행중 |
 | 2026-04-14 | 모닝브리핑 | 호르무즈 봉쇄 Day 1 제한적 적용 — CENTCOM 비이란 통항 보장. 시장 "봉쇄 내성" 확인하나 2차효과 과소평가 | `macro/supply_chain.md` | 진행중 |
 | 2026-04-14 | 내포트폴리오 | 미국주식 87.8% 극편중 진단 — 중립형 프로파일 vs 초공격형 실제. 채권1.1%/금0% 방어력 전무. 6개월 재조정 플랜 제시 | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-04-14 | 리밸런싱 | 달러현금 $705 즉시 활용(AGG $400+GLD $300) + 월적립 방향 전환. 6개월 목표: 미국72%/채권8%/금5%/크립토9% | `portfolio/rebalancing_history.md` | 진행중 |
@@ -182,9 +185,9 @@ lint_mode: full
 |------|---------|-----------|-------|-------|
 | `us_economy.md` | **CPI 3.3%(에너지 주도), Core CPI 2.6%, ISM제조가격 78.3+서비스가격 70.7(양채널 극단), GDPNow Q1 +1.24%(추가하향), Fed 3.50~3.75%, 10Y 4.30%, DXY 98.53, S&P 7,165(신고가), VIX 18.53, 침체확률 30~49%, 소매판매3월 +1.7%, 미시간심리 49.8(최종/역대최저)** | 3중 인플레 파이프라인 지속. DOJ 파월수사 종료(4/24)+Warsh 인준 경로 개통. WTI $97+ 재급등(호르무즈 이중봉쇄). 4/30 Core PCE+GDP 더블이벤트. 소비심리 49.8 vs VIX 18.53 괴리 지속 | 04-25 | ✅ high |
 | `us_monetary_policy.md` | **Fed 3.50~3.75%(2연속 동결), CPI 3.3%(에너지 주도), Core CPI 2.6%, Core PCE 3.0%, QT 종료, 대차대조표 $6.7T, 10Y 4.31%, DXY 97.70, 침체확률 30~35%** | 트럼프 파월 05/15 해임 위협. 이란전쟁 에너지 인플레. 인하 하반기 후반 전망. Fed 독립성 리스크 | 04-18 | ✅ high |
-| `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI $84, Brent $86~90. Gold $4,878. 리스크 5/5. **4.22 휴전 만료 D-3** | **이란전쟁·호르무즈 이중봉쇄**(극고). Section 301 4.28공청회. 북한 4월 3차 시험. NATO 5% 목표 | 04-19 | ✅ high |
+| `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI $97, Brent $105. Gold $4,700. 리스크 5/5. **무기한 휴전이나 나포전+기뢰 6개월** | **이란전쟁·호르무즈 봉쇄 장기화**(극고). 4.28 Section 301 공청회 당일. 북한 4월 4회(7번째). 대만 다축 에스컬레이션. 5.14~15 미중 정상회담 | 04-26 | ✅ high |
 | `korea_economy.md` | **Q1 GDP +1.7%(5.5년최고 서프라이즈, YoY +3.6%), GDI +7.5%(38년최고), 4월1-20일 수출 $50.4B(+49.4% 역대최대), 반도체 $18.3B(+182.5%), 경상수지 2월 $23.2B(사상최대)+3월 초과 전망, KOSPI 6,481(4월+20%), 금리 2.50%(7연속동결), 신현송 4/21 취임(매파 유연), 원화 1,480~1,486, WGBI 3주 8.5조 유입, 삼성 Q1 OP 57.2조+SK하이닉스 37.6조(OPM 72%), 외국인 4월 순매수전환(5.8조), 현대+기아 Q1 관세부담 1.62조, KTB 10Y 3.816%** | 신현송 매파 전환(ING 7월 인상 가능). 원화약세 패러독스(경상흑자에도 NPS 해외투자). 외국인 3월 40.35조 순매도→4월 반전. 자동차 25% 관세(부품 4/30 발효). 반도체 관세 7월 확대 검토 | 04-25 | ✅ high |
-| `global_risk_factors.md` | **VIX 17.48(거짓안정5단계), F&G 62(Greed), DXY 97.70(3년최저), Gold $4,867(구조적Bull), Brent $90, WTI $84, 원달러 1,460, 소비심리 47.6(역대최저), IMF 3.1%(하향), 침체확률 30~49%** | 호르무즈 24시간 번복(개방->재봉쇄). 4/22 휴전만료. 미중 50% 추가위협. Gold-DXY 역상관 구조 이탈. 4중 체크포인트(4/23~5/15) | 04-19 | ✅ high |
+| `global_risk_factors.md` | **VIX 19.31(거짓안정 일부해소), F&G 70(Greed심화), DXY 98.52(반등), Gold $4,709(구조적Bull 조정), Brent $105, WTI $97(+15%w), 원달러 1,476, 소비심리 49.8(최종/역대최저), IMF 3.1%(하향), 침체확률 27~35%(하향), 10Y 4.32%, SOX 18일연승(역대최장), BTC $78K** | 호르무즈 기뢰전 격상(나포31척+격침명령+펜타곤6개월). 4/30 트리플폭탄(GDP+PCE+MSFT/META). Section 301 공청회 4/28. 대만 다축에스컬레이션. 사이버리스크 히트맵 추가 | 04-26 | ✅ high |
 | `political_cycle.md` | **Section 122 10%(07.24만료)+Section 301 대체 가속(4/28공청회), OBBB 시행, 파월 해임(5/15), 미중 정상회담(5/14~15), ECB 2.0%(4/29), NATO 5% 2035, 다카이치 122.3조엔, 미-인도 50→18%, 한국 대미$350B 특별법, AI규제(EU/US/한국), CHIPS Act 생산시대** | Section 301→국가·섹터별 차등관세 전환 리스크. 파월 해임 시 Fed 독립성·달러 시스템 리스크. 미중 정상회담 결과. ECB 인상 전환 가능성 | 04-19 | ✅ high |
 | `tech_breakthrough.md` | **AI: Claude Opus 4.7(4/16), Agentic AI 97% 기업 배포(대중화 승격), EU AI Act 고위험 2027.12 연기. 반도체: TSMC N2 수율 65%·N2P H2, imec High-NA Q4 인증, Alphabet TPU CoWoS 병목. 에너지: CFS $863M 추가, Samsung SDI 전고체 파일럿. 양자: NVIDIA Ising QEC. 우주: NG-3 부스터 재사용. 바이오: 소형 CRISPR. 신소재: 그래핀-페로브스카이트 3,670h 안정성** | G-3 모듈 정상 운영. 8개 서브섹터 주간 갱신 완료 | 04-19 | ✅ high |
 | `supply_chain.md` | **WCI $2,232(-1%), WTI $97(주간+17%)/Brent $105, 구리 $13,200(관세50%), DDR5 +63%/NAND +75%(Q2), HBM4양산+VeraRubin독점, 요소비료 $702(재봉쇄반등YTD+82%), Gartner 반도체 $1.3T(+26%), MATCH법안 외교위통과(4/22), Section 301 대체구도(7/24 전 완료), 제약100%** | **호르무즈 이중봉쇄 해군대치(4/17~23, 이란 선박나포, 통항 8척/일)**. 삼중 인플레 재강화. Section 301 공청회 4/28. 사이버공격 5년4배. 한국 요소비축방출+핵심광물기금 2,500억 | 04-25 | ✅ high |
@@ -195,10 +198,10 @@ lint_mode: full
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (04-21) valid_until 04-23 confidence:medium-high | 매 거래일 | A-1, B-2, B-3 | 04-23 재실행 |
-| `economic_calendar.md` | ✅ SUCCESS (04-21) valid_until 04-28 confidence:medium | 주 1회 | A-4, B-1, C-6 | — |
-| `surprise_index.md` | ✅ SUCCESS (04-21) valid_until 04-28 | 매일 | B-4 | — |
-| `correlation_matrix.md` | ✅ SUCCESS (04-21) valid_until 04-28 | 주 1회 | B-5 | — |
+| `daily_snapshot.md` | ✅ SUCCESS (04-26) valid_until 04-28 confidence:high | 매 거래일 | A-1, B-2, B-3 | 04-28 재실행 |
+| `economic_calendar.md` | ✅ SUCCESS (04-26) valid_until 05-02 confidence:high | 주 1회 | A-4, B-1, C-6 | — |
+| `surprise_index.md` | ✅ SUCCESS (04-26) valid_until 05-26 | 매일 | B-4 | — |
+| `correlation_matrix.md` | ✅ SUCCESS (04-26) valid_until 05-26 | 주 1회 | B-5 | — |
 | `guru_positions.md` | ✅ SUCCESS (04-18) valid_until 07-18 confidence:high | 분기 1회 | A-5, B-7, C-4 | Q1 2026은 05-15 이후 |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
@@ -234,7 +237,7 @@ lint_mode: full
 | `ai_2026.jsonl` | 120건 (+26 @2026-04-21) | kb-updater |
 | `auto_2026.jsonl` | 78건 (+32 @2026-04-21) | kb-updater |
 | `energy_2026.jsonl` | 106건 | kb-updater |
-| `geopolitics_2026.jsonl` | 66건 | kb-updater |
+| `geopolitics_2026.jsonl` | 91건 (+25 @2026-04-26) | kb-updater |
 | `science_tech_2026.jsonl` | 358건 (quantum/space/smr subtag 포함, +28 @2026-04-25 quantum deep) | kb-updater |
 | `bio_pharma_2026.jsonl` | 72건 (+38 @2026-04-21) | kb-updater |
 | `macro_2026.jsonl` | 436건 | kb-updater |
@@ -337,6 +340,8 @@ lint_mode: full
 
 | 날짜 | 파일 | 변경 | 레코드 |
 |------|------|------|-------|
+| 2026-04-26 | `macro/global_risk_factors.md` | **글로벌 리스크 맵 주간 deep 갱신** -- 호르무즈 기뢰전 격상(나포31척+격침명령+6개월장기화). WTI $97/Brent $105(+15~17%w). VIX 19.31(거짓안정 일부해소). F&G 70(탐욕심화). 소비심리 49.8 최종(역대최저). DXY 98.52. 원달러 1,476. 10Y 4.32%(5일연속상승). Gold $4,709(-3.2%w, 구조적Bull, 3대IB $5K+). BTC $78K. GDPNow 1.24%. 침체확률 하향(27~35%). SOX 18일연승(역대최장). Intel +24%. 대만 다축에스컬레이션. 사이버리스크 히트맵 추가. 4/30 트리플폭탄 분기점 | +24 |
+| 2026-04-26 | `macro/geopolitics.md` | **4개 서브섹터 deep 갱신**(미중관세/대만/중동/북한) -- 4.21 무기한 휴전 연장이나 4.22 나포전+4.24 기뢰 격침 명령. WTI $97(+17%w)/Brent $105(+16%w). 펜타곤 기뢰 제거 6개월. IEEPA 환급 CAPE 4.20 가동. Section 122 합헌성 4.10 심리. 4.28 강제노동 공청회 당일. Bessent 7월 IEEPA 수준 301 복원 발언. 5.14~15 미중 정상회담 확정. 랴오닝 4.20 대만해협 통과+라이칭더 영공차단(역사상 첫)+간첩17명+봉쇄돌파훈련+일본 살상무기 규제완화. TSMC Q1 $35.9B(+40.6%)+CapEx $56B. 북한 4월 4회(2026 7번째) 집속탄+EMP+구축함. 러 파병 15K. 김주애 후계자 시그널. 리스크 5/5 극고 유지 | +19 |
 | 2026-04-25 | `industry/capex.md` | **5개 서브섹터 deep 갱신**(빅테크AI/반도체/통신/에너지유틸리티/한국대기업+CapEx사이클) -- 하이퍼스케일러4사 $635-665B(+67~74%, 기존 5사 $660-690B 유지). MSFT FY26 $110-150B(Q2 $37.5B, Azure+39%, CRPO $625B+110%, 미이행$80B). GOOGL $175-185B(Cloud백로그$240B, +50%+). META $115-135B(미국$600B/2028, FCF-90%). TSMC Q1 $35.9B 실적(GM66.2%/OPM58.1%/순익+58%) CapEx $56B상단. Intel 18A HVM진입 $15B백로그+Tesla Terafab+CHIPS $8.9B+Q1 EPS+2800%. SK하이닉스 19조패키징(+30%)+HBM4 70%. 삼성 110조+(TSMC초과)+HBM50%증산. 한국4대그룹 800조 공약. 유틸리티$1.4T(+27%). DC전력 신규50%. GS AI ROI $1T필요 vs $450B컨센. 부채$1.5T. DC지연24-72개월 | +19 |
 | 2026-04-25 | `industry/advanced_materials.md` | **6개 서브섹터 전면 재구성**(CNT/그래핀/초전도체/SiC-GaN-세라믹/희토류/첨단소재정책) -- 기존 MicroLED/EDA/반도체소재 구조에서 탈피. CNT 시장 4.85~8.8B(LG화학 6,100t/금호 360t/OCSiAl SWCNT 90%). 그래핀 1.96~2.91B(Georgia Tech FET 전자이동도 Si 10배/그래핀스퀘어 EUV 펠리클 2027). 초전도체 8.16~10.6B(LK-99 반박 확정/핵융합 HTS 30만km/한국 16T 시험시설 2026.06). SiC 5.32~6.16B(Wolfspeed 파산·중국 $500 덤핑/Infineon 200mm). GaN파워 CAGR 44%(Infineon 8" 전환/Navitas Q1+58%). 희토류 Nd YoY+107%·Dy FOB+67%(중국 12원소 통제 유예~2026.11/MP Materials DoD $400M+Apple $500M/EU RESourceEU). 정책: CHIPS Act 48D 만료예정/EU CRM Act+Advanced Materials Act 2026/한국 소부장 2030 자립 50% | +58 |
 | 2026-04-25 | `industry/telecom_next.md` | **6개 서브섹터 deep 갱신**(6G/5G Advanced/Open RAN/위성통신-NTN/AI-RAN/한국통신사투자) -- ITU IMT-2030 TPR 20개 확정(2026.02), 3GPP Rel-21 2026.06 타임라인 결정점, Starlink Mobile 리브랜딩(월 1000만/연말 2500만), AST BlueBird7 궤도실패(04.19 New Glenn), Amazon Leo 엔터프라이즈 베타(04.08) FCC 1618기 의무 미달(~241기), AI-RAN $3.81B 시장(CAGR 29%), NVIDIA Aerial 오픈소스+AI-RAN Alliance 100+사(MWC2026 33개 데모 26개 NVIDIA), Open RAN 5%->28%(2029) AT&T-Ericsson $14B+Samsung-Vodafone 53K사이트, 5G SA 의무화+주파수 재할당 3.1조, SKT-삼성 AI-RAN 공동연구+SKT AI 네이티브 선언+SKT-도코모 백서, 한국 6G 예산 1067억 증액+K-OTIC 인증체계, Nokia QKD 인수, 6G 표준 fork 리스크 현실화(중국 vs 서방), Deutsche Telekom Starlink Mobile 유럽 10국 계약 | +62 |
@@ -345,8 +350,6 @@ lint_mode: full
 | 2026-04-25 | `industry/space.md`, `industry/science_tech.md` | **우주 산업 4개 서브섹터 deep 갱신** -- Artemis II 성공(4/1~11, 50년 만에 유인 달 비행 복귀). SpaceX $1.75T IPO 여름 목표(xAI 합병 완료). Starlink 11,856기/10,202기 궤도/1,000만 가입자. Falcon 9 49회(4/23). Starship V3 IFT-12 5월 목표. Blue Origin NG-3 부스터 재사용 성공이나 BlueBird 7 궤도이탈(AST -$2B, FAA 비행정지). Amazon Leo 엔터프라이즈 베타(4/8) 241기 vs FCC 1,618기 의무 미달(2년 연장). OneWeb Gen2 440기 Airbus 발주(EU2.2B). RKLB Q1 $185~200M/Neutron Q4. Golden Dome 3년 $175~185B+12개사 $3.2B(4/24)+우주군 $26~40B. 누리호 5차 상반기+KASA R&D 9,495억. Astroscale ELSA-M 2026 발사. 우주경제 $626B->CAGR12% $1.8T(2035). science_tech.md 섹션4 전면 갱신+정합성 검증 추가 | +22 |
 | 2026-04-25 | `macro/supply_chain.md` | **전면 갱신** -- 호르무즈 개방→재봉쇄→해군대치(4/17~23, 이란선박나포+상선공격, 통항8척/일). WCI $2,232(-1% 2주연속). WTI $97(주간+17%)/Brent $105. 요소비료 $702(재봉쇄반등, YTD+82%). 구리 $6/lb(~$13,200). DDR5 +63%/NAND +75%(Q2). MATCH법안 4/22 하원외교위 통과. Section 301 대체구도(16+60개국, 공청회4/28). 제약관세 100% 상세화(한국15%). Gartner 반도체 $1.3T(+26%). HBM4양산+VeraRubin독점. 삼성HBM +50%용량. 사이버공격 5년4배(Group-IB). 한국 요소비축4월말방출+핵심광물기금2,500억+3국수직통합 | +22 |
 | 2026-04-25 | `macro/us_economy.md` | **주간 갱신** -- 미시간심리 최종치 49.8(역대최저, 예비 47.6 대비 +2.2pt). 소매판매 3월 +1.7%(예상 +1.4% 상회, 가솔린 +15.5% 왜곡). GDPNow 1.24%(추가하향). DOJ 파월수사 4/24 종료+Warsh 4/21 청문회 완료→인준 경로 개통. FOMC 4/28~29 동결 99.5%. S&P 7,165(신고가)+Intel +23% AH. WTI $97+(주간 +17%, 호르무즈 이중봉쇄). Gold $4,700 하회(주간 -3%). 주간청구 214K 안정. ADP 주간 54,750명(최고). 인플레기대 4.7%(최종). DXY 98.53. 10Y 4.30% | +21 |
-| 2026-04-25 | `macro/korea_economy.md` | **주간 갱신** -- Q1 GDP +1.7%(5.5년최고, 컨센 0.9%의 2배)+GDI +7.5%(38년최고). 4월1-20일 수출 $50.4B(+49.4% 역대최대), 반도체 $18.3B(+182.5%). SK하이닉스 Q1 OP 37.6조(OPM 72% 창사최고, TSMC 추월). KOSPI 6,481(4월+20%+), 외국인 순매수 전환(현물5.8조). 신현송 4/21 취임(신중하고 유연한 통화정책, 매파 기울기). 원달러 1,480~1,486. WGBI 편입 후 3주 국채 8.5조 유입. KTB 10Y 3.816%/3Y 3.495%. 현대+기아 Q1 관세 1.62조(연간 최대 6조). 경상수지 3월 사상최대 전망 | +23 |
-| 2026-04-24 | `industry/insurance.md` | **신규 생성** — 보험 섹터 KB 공백 해소. 미국 생명보험(MET/PRU Q1 5/5~6 발표 예정·삼성생명 2025FY 2조3,028억+9.3% 역대최대·보유CSM 13.2조·건강보험 75%·PRU POJ 사건 -$300~350M) + 미국 손해보험(**TRV Q1 2026 Beat** Core EPS $7.71·CR 88.6%·Core ROE 19.7%·$2.2B 환원·22년 연속 배당 인상·PGR EPS $4.80+10% CR 86.4%·ALL 2025 Auto CR 85% -10pt·**Chubb Core EPS $6.82·CR 84%·TBVPS +21.5%·NA Casualty +9.6% vs Property -2.6%**) + 한국 손해보험(삼성화재 2025FY 2조183억 1위/Q1 6,090억 CSM 14.33조·DB Q1 -28.4% LA산불·현대해상 -66.9%·KB손보 CSM 9.4조/K-ICS 188%·5사 합산 6조5755억 -11%) + 재보험(Munich Re €13.7B -7.8% 가격 -2.5%·Swiss Re Net -4.6%·4/1 P&C Re $15.3B+6%·Munich Re FY26 €6.3B ROE 18%+·Korean Re 003690 목표 12,300원 +65%) + Cat bond(2025 FY $25.6B +45% 사상최고·outstanding $61.3B·Q1 2026 $6.7B·UCITS펀드 $20B+) + 인슈어테크(LMND FY26 IFP +30%·Q4 흑자 목표·OSCR Q1 $850M+11% MLR 82.5%-1.5pt·Root Q1 -$5.4M 손실 재발) + Cyber 보험(2026E $16.4B Swiss Re·$23B S&P·CAGR 10%+ 2030) + 매크로(**캘리포니아 산불 $30B+**·State Farm/Allstate 신규 중단·FAIR Plan $5~10K·**NOAA/CSU 2026 허리케인 평균 이하 13/6/2**·**Trump ACA Rule: 1.8M 커버리지 상실·2028 +8.7M 무보험·2027 $27K 본인부담 제안**·한국 기본자본 K-ICS 2026 도입·Swiss Re sigma 2026E +2.3% 둔화). **선호**: TRV/CB/PGR 견조한 CR, 삼성화재 2028 환원율 50%. **회피**: 현대해상 Q1 -66.9%, OSCR Trump ACA 규제, State Farm CA 문제. **총 industry KB 25개 체제** | +72 |
 
 ## 🤖 에이전트 활용 가이드
 

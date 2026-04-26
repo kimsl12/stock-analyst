@@ -224,3 +224,35 @@ type: time_series
 | 2026-04-25 | calendar | JoblessClaims_Apr18wk | 214000 | +6K | count | US DOL [2026-04-24 발표] | 2026-04-25T09:00:00+09:00 | 주간종료 4/18. 컨센 212K 소폭 상회. 계속청구 1,821K(+12K). 구조적 저실업 유지 |
 | 2026-04-25 | news | Intel_Q1_Result | EPS_0.29_Beat2800pct | — | — | BusinessWire / Yahoo Finance [2026-04-23 AH] | 2026-04-25T09:00:00+09:00 | EPS $0.29(컨센 $0.01 대비 +2,800%). Rev $13.58B(컨센 $12.42B). INTC +24% $82.57. Philly Sox 18일 연승(역대 최장) |
 | 2026-04-25 | news | GDP_Q1_Advance_Schedule | PENDING_APR30 | — | — | BEA.gov [공식 일정] | 2026-04-25T09:00:00+09:00 | GDP Q1 Advance + Core PCE 3월 모두 4/30 발표 예정. 4/25 발표 없음(당초 예상 오류 정정) |
+| 2026-04-26 | us_index | SP500 | 7165.08 | +0.80% | point | NewsTribune / Jefferson City News-Tribune [2026-04-25 close] | 2026-04-26T09:00:00+09:00 | 신고가 재경신. 이란 평화회담 파키스탄 중재 기대 + 반도체 랠리 지속 |
+| 2026-04-26 | us_index | NASDAQ | 24836.60 | +1.63% | point | NewsTribune [2026-04-25 close] | 2026-04-26T09:00:00+09:00 | 신고가. 주간 +1.5% |
+| 2026-04-26 | us_index | DJIA | 49231 | +0.00% | point | NewsTribune [2026-04-25 close] | 2026-04-26T09:00:00+09:00 | 보합. 비기술 섹터 횡보. 주간 -0.4% |
+| 2026-04-26 | us_index | Russell2000 | 2787 | +0.43% | point | Yahoo Finance [2026-04-24 close — 04-25 동기준] | 2026-04-26T09:00:00+09:00 | 소형주 동반 상승. 리스크온 |
+| 2026-04-26 | us_index | VIX | ~18.71 | 소폭상승 | index | Yahoo Finance [2026-04-25 추정] | 2026-04-26T09:00:00+09:00 | ⚠️ 18선 대. FOMC 4/28-29 + GDP/PCE 4/30 이중 이벤트 대기 |
+| 2026-04-26 | asia_index | KOSPI | ~6476 | 보합 | point | Korea Times / Seoul Economic Daily [2026-04-25] | 2026-04-26T09:00:00+09:00 | 소매투자자 KOSDAQ ETF→KOSPI 전환 흐름 |
+| 2026-04-26 | asia_index | KOSDAQ | ~1204 | 고점권 | point | Seoul Economic Daily [2026-04-25] | 2026-04-26T09:00:00+09:00 | 2000년 8월 이후 최고. 닷컴버블 피크 1238.80 근접 |
+| 2026-04-26 | asia_index | Nikkei225 | 59716 | +0.97% | point | CNBC Asia [2026-04-24 close] | 2026-04-26T09:00:00+09:00 | 반도체 랠리 + 엔화 약세 방어막. 60,000 목전 |
+| 2026-04-26 | asia_index | HangSeng | 25978 | +0.24% | point | CNBC Asia [2026-04-24 close] | 2026-04-26T09:00:00+09:00 | 이란 협상 기대 소폭 반등 |
+| 2026-04-26 | asia_index | ShanghaiComposite | ~4074 | -0.45% | point | CNBC Asia [2026-04-24 close] | 2026-04-26T09:00:00+09:00 | 중국 내수 모멘텀 단기 약화 |
+| 2026-04-26 | fx | DXY | ~98.51 | 소폭약세 | index | TradingEconomics [2026-04-25] | 2026-04-26T09:00:00+09:00 | 이란 협상 기대 안전자산 수요 소폭 감소 |
+| 2026-04-26 | fx | USDKRW | ~1476.67 | +1.48원 | KRW | PoundSterlingLive [2026-04-25] | 2026-04-26T09:00:00+09:00 | ⚠️ 1,400 초과. 1,475~1,480 구간 |
+| 2026-04-26 | fx | EURUSD | ~1.1813 | 소폭강세 | USD | forex.com [2026-04-25] | 2026-04-26T09:00:00+09:00 | DXY 약세 반영. 주요 기술적 피벗 |
+| 2026-04-26 | fx | USDJPY | ~159~160 | 횡보 | JPY | forex.com [2026-04-25] | 2026-04-26T09:00:00+09:00 | ⚠️ 엔화 약세 지속. 160 재진입 여부 관전 |
+| 2026-04-26 | commodity | WTI | 94.88 | -1.24% | USD/barrel | Angle360ng / FXStreet [2026-04-25] | 2026-04-26T09:00:00+09:00 | ⚠️ 이란 평화회담 기대 하락. $96.07→$94.88. 주간 +14%. 협상 타결 시 $80~85 |
+| 2026-04-26 | commodity | Brent | ~104.4 | 소폭하락 | USD/barrel | CNBC [2026-04-25] | 2026-04-26T09:00:00+09:00 | ⚠️ $104 유지. 협상 기대 반영 하락 |
+| 2026-04-26 | commodity | Gold | ~4708.8 | -0.33% | USD/oz | Vietnam.vn / Barchart [2026-04-25 주말 기준] | 2026-04-26T09:00:00+09:00 | $4,700 지지선 재테스트. 주간 -2% 조정. 구조적 Bull 유지 |
+| 2026-04-26 | commodity | Copper | ~5.61 | — | USD/lbs | CME Group [2026-04-25] | 2026-04-26T09:00:00+09:00 | -7.4% MoM. 글로벌 성장 우려 + 거래소 재고 증가 |
+| 2026-04-26 | commodity | NaturalGas | ~2.52~2.56 | -3.6% | USD/MMBtu | TradingEconomics [2026-04-25] | 2026-04-26T09:00:00+09:00 | 2024년 10월 이후 최저. 온화한 날씨 + 저장 강건 |
+| 2026-04-26 | bond | US10Y | ~4.33 | +2bp | percent | TradingEconomics / CNBC [2026-04-25] | 2026-04-26T09:00:00+09:00 | 리스크온 → 채권 소폭 매도. 4.35% 분기점 |
+| 2026-04-26 | bond | US2Y | ~3.79 | +1bp | percent | TradingEconomics [2026-04-25] | 2026-04-26T09:00:00+09:00 | 보합~소폭 상승 |
+| 2026-04-26 | bond | Spread2Y10Y | ~+54 | — | bp | 계산값(4.33%-3.79%) | 2026-04-26T09:00:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-04-26 | crypto | BTC | ~77510~77779 | -0.57% | USD | CoinCodex [2026-04-25 주말] | 2026-04-26T09:00:00+09:00 | 주말 소폭 조정. 고래 270K BTC 월간 누적(2013년 이후 최대). 거래소 7년래 최저 |
+| 2026-04-26 | crypto | ETH | 추정~2330~2350 | 소폭조정 | USD | 추정 [2026-04-25] | 2026-04-26T09:00:00+09:00 | $2,300선 지지 확인 |
+| 2026-04-26 | crypto | SOL | 추정~85~86 | 보합 | USD | 추정 [2026-04-25] | 2026-04-26T09:00:00+09:00 | KelpDAO 해킹 후 회복세 유지 |
+| 2026-04-26 | crypto | TotalMarketCap | ~2.58T | -0.07% | USD | CoinCodex [2026-04-25] | 2026-04-26T09:00:00+09:00 | BTC 도미넌스 ~58% |
+| 2026-04-26 | news | Iran_PeaceTalks_Pakistan | ISLAMABAD_DIPLOMACY | — | — | CNBC / NewsTribune [2026-04-25] | 2026-04-26T09:00:00+09:00 | 이란 외교장관 아라그치 이슬라마바드 방문. 트럼프 특사 위트코프·쿠슈너 토요일 출발. WTI 리스크 프리미엄 소폭 해소 |
+| 2026-04-26 | calendar | FOMC_Apr28-29 | HOLD_100pct | — | — | CME FedWatch / Kraken Blog [2026-04-25] | 2026-04-26T09:00:00+09:00 | 동결 100% 컨센서스. 파월 성명 톤 변화(closely monitoring) 여부 40% 확률이 핵심 |
+| 2026-04-26 | calendar | BigTech_Earnings_Apr29 | MSFT_META_AMZN_GOOGL_QCOM | — | — | CNBC / Schwab [2026-04-25] | 2026-04-26T09:00:00+09:00 | 4/29 수요일 장후 동시 발표. MSFT EPS 컨센 $4.05(+17%)/Rev $81.37B. META EPS 컨센 $6.65/Rev $55.5B |
+| 2026-04-26 | calendar | GDP_CorePCE_Apr30 | PENDING_08:30ET | — | — | BEA / TradingEconomics [2026-04-25] | 2026-04-26T09:00:00+09:00 | GDP Q1 Advance GDPNow +1.24%(04-21). Core PCE 3월 컨센 ~3.0%. 4/30 08:30 ET |
+| 2026-04-26 | calendar | ECB_Apr30 | 25bp_CUT_CONSENSUS | — | — | CMC Markets [2026-04-25] | 2026-04-26T09:00:00+09:00 | 4/30 ECB 25bp 인하 컨센서스. Brent $104+ 에너지 인플레 변수 잔존 |
+| 2026-04-26 | calendar | Apple_Earnings_Apr30 | AAPL_Q2FY26_PLUS_LLY_CAT | — | — | Schwab / CNBC [2026-04-25] | 2026-04-26T09:00:00+09:00 | 4/30 장후 AAPL Q2 FY26(Tim Cook 마지막 주요 발표). AI 전략 가이던스 관전 |

@@ -1,19 +1,19 @@
 ---
-updated: 2026-04-24
-valid_until: 2026-05-24
+updated: 2026-04-26
+valid_until: 2026-05-26
 file: surprise_index
 category: market
 confidence: medium
 collection_status: PARTIAL
 sources:
-  - "knowledge-db/market/2026_daily_prices.md [2026-04-22 미국장 확정 종가 + 04-23 아시아장]"
+  - "knowledge-db/market/2026_daily_prices.md [2026-04-25 미국장 확정 종가 + 04-26 수집]"
   - "Electrek / CNBC / Investing.com [TSLA Q1 EPS $0.41 Beat +10.8% — 2026-04-22 AH 확정]"
-  - "Reuters / Investing.com [소매판매 3월 +0.7% Beat — 2026-04-21]"
-  - "CNBC / Reuters [Netflix Q1 EPS $1.23 Beat / ASML Q1 Rev Beat — 2026-04-22~23]"
-  - "Invezz / CNBC Asia [중국 GDP Q1 +5.0% Beat — 2026-04-16]"
-  - "GurFocus / Sherwood News [Boeing Q1 EPS Beat — 2026-04-22]"
-  - "analysis/briefing/market_data_20260423.md"
-note: "04-24 정기 갱신. 04-22 미국장 확정 종가 기준 최신 데이터 반영. IBM Q1 / 04-23 실업청구 결과 미수집 상태 유지. VIX 04-22 종가 ~20 추정 포함. 컨센서스 수치는 공개 보도 기반 추정 포함."
+  - "S&P Global [Flash PMI 4월 Composite 52.0 Beat — 2026-04-24 발표]"
+  - "BusinessWire / Yahoo Finance [Intel Q1 EPS $0.29 Beat — 2026-04-24 AH 확정]"
+  - "Korea Times / CNBC [한국 Q1 GDP +1.7% Beat — 2026-04-24 BOK 발표]"
+  - "US DOL [주간 실업청구 214K — 2026-04-24 발표, 중립 처리]"
+  - "analysis/briefing/correlation_evening_20260425.md"
+note: "04-26 모닝 갱신. 04-25 미국장 종가 기준. PMI Beat(04-24) + Intel Beat(04-24 AH) + 한국 Q1 GDP Beat(04-24) 신규 반영. 실업청구 214K 중립 처리(±1σ 이내). 컨센서스 수치는 공개 보도 기반 추정 포함."
 판정_공식: "누적 스코어 = (Beat × +1 + Miss × -1) / 총 건수. 스코어 > +0.3 = Beat 우세."
 ---
 
