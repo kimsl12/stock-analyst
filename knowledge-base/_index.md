@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-26
+updated: 2026-04-27
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-26
@@ -82,6 +82,11 @@ lint_mode: full
 | 2026-04-26 | 모닝브리핑 | 트럼프 이란 특사 파견 취소(4/25 저녁) — 대면→전화 전환. 금요일 "평화회담 기대" 서사 번복. WTI $94.88 유지이나 월요일 반등 리스크. 오만 무스카트 대안 중재지 부상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | 4/29~30 "48시간 결정전" — FOMC(파월 톤 40%) + 빅테크 4건(MSFT/META/AMZN/GOOGL AI CapEx) + GDP Q1(GDPNow 1.24%) + Core PCE + ECB + AAPL. 골디락스 vs 스태그 분기 | `market/economic_calendar.md` | 진행중 |
+| 2026-04-27 | 이브닝브리핑 | 이란 "순환 교착" 구조화 — 신제안(호르무즈+핵 분리) 미국 수용 불투명 + 아라그치 모스크바(러시아 개입). 유가 $90~100 연말 고착 베이스 시나리오 격상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-27 | 이브닝브리핑 | 아시아 "동시 신고가 러시" — 닛케이 60,537(역대 60K 최초) + KOSPI 6,615(+2.15%). "아시아 반도체 슈퍼사이클" 글로벌 확산. 에너지 수입국이 반도체로 유가 충격 흡수 | `market/daily_snapshot.md` | 진행중 |
+| 2026-04-27 | 이브닝브리핑 | 매크로 위험등급 3→4(위험) 상향 — 이란 순환 교착 + Brent $107+(2022.06 이후 최고) + 쿼드러플 이벤트 직전 + 협상 채널 3원화 | `macro/global_risk_factors.md` | 진행중 |
+| 2026-04-27 | 이브닝브리핑 | "서비스 인플레 잠복기 후반" 판정 — ISM 서비스 가격 70.7 = 에너지→서비스 비용 전이 초기 진입. WTI 하락만으로 인플레 자동 해소 불가. 4/30 Core PCE 최종 판별 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
+| 2026-04-27 | 이브닝브리핑 | AMZN 거물 컨버전스 4인(Ackman 신규 + Wood $71.5M + Druckenmiller + Dalio) — 4/29 빅테크 슈퍼 수요일 직접 검증 | `market/guru_positions.md` | 진행중 |
 | 2026-04-26 | 이브닝브리핑 | 이란 평화회담 파키스탄→오만 이동, 대면 채널 격하 확정. 이란 "봉쇄 해제 전 협상 불가" 공식화. 호르무즈 기뢰 6개월 구조적 유가 충격 연말 고착 가능성 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 이브닝브리핑 | 4/29 빅테크 슈퍼 수요일 — 거물 3인(Ackman META $1.76B / Druckenmiller AMZN +69% / Tepper MU +200%) 대형 베팅 직접 검증. AI CapEx 가이던스 "유지/확대" vs "에너지 비용 부담" 분기 | `market/economic_calendar.md, market/guru_positions.md` | 진행중 |
 | 2026-04-26 | 이브닝브리핑 | VIX 18선 "거짓 안정 최종 단계" 경고 — F&G 70 vs 소비심리 49.8 괴리 + 4/29~30 이벤트 6개 집중 + 숏볼 극단. VIX 22~25 스파이크 확률 35~40% | `market/correlation_matrix.md, macro/global_risk_factors.md` | 진행중 |
