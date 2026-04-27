@@ -256,3 +256,36 @@ type: time_series
 | 2026-04-26 | calendar | GDP_CorePCE_Apr30 | PENDING_08:30ET | — | — | BEA / TradingEconomics [2026-04-25] | 2026-04-26T09:00:00+09:00 | GDP Q1 Advance GDPNow +1.24%(04-21). Core PCE 3월 컨센 ~3.0%. 4/30 08:30 ET |
 | 2026-04-26 | calendar | ECB_Apr30 | 25bp_CUT_CONSENSUS | — | — | CMC Markets [2026-04-25] | 2026-04-26T09:00:00+09:00 | 4/30 ECB 25bp 인하 컨센서스. Brent $104+ 에너지 인플레 변수 잔존 |
 | 2026-04-26 | calendar | Apple_Earnings_Apr30 | AAPL_Q2FY26_PLUS_LLY_CAT | — | — | Schwab / CNBC [2026-04-25] | 2026-04-26T09:00:00+09:00 | 4/30 장후 AAPL Q2 FY26(Tim Cook 마지막 주요 발표). AI 전략 가이던스 관전 |
+| 2026-04-27 | us_index | SP500_close_Apr25 | 7165.8 | +0.80% | point | CNBC / TheStreet [2026-04-25 close 확정] | 2026-04-27T09:00:00+09:00 | 신고가 재경신. 이란 협상 기대(취소 전) + Intel +24% + SOX 18일 연승 |
+| 2026-04-27 | us_index | NASDAQ_close_Apr25 | 24837 | +1.60% | point | CNBC / TheStreet [2026-04-25 close 확정] | 2026-04-27T09:00:00+09:00 | 신고가. 반도체·기술주 주도. 주간 +1.5% |
+| 2026-04-27 | us_index | DJIA_close_Apr25 | 49231 | -0.20% | point | CNBC / TheStreet [2026-04-25 close 확정] | 2026-04-27T09:00:00+09:00 | 보합~소폭 하락. 주간 -0.4% |
+| 2026-04-27 | us_index | Russell2000_close_Apr25 | 2787 | +0.43% | point | Yahoo Finance [2026-04-25] | 2026-04-27T09:00:00+09:00 | 소형주 동반 상승 |
+| 2026-04-27 | us_index | SOX_close_Apr24 | 10513.66 | +4.32% | point | Gurufocus / jianshiapp [2026-04-24 close] | 2026-04-27T09:00:00+09:00 | SOX 18거래일 연속 상승 역대 최장(1992년 이후). 200일선 편차 2000년 6월 이후 최고 = 단기 과매수 |
+| 2026-04-27 | us_index | VIX_close_Apr25 | 18.71 | 소폭상승 | index | Yahoo Finance / CBOE [2026-04-25] | 2026-04-27T09:00:00+09:00 | ⚠️ 18선 대. FOMC 4/28-29 + GDP/PCE 4/30 이중 이벤트 대기 |
+| 2026-04-27 | asia_index | Nikkei225 | 60537 | +1.38% | point | CNBC Asia [2026-04-27 종가] | 2026-04-27T16:00:00+09:00 | 역대 신고가. 60,000선 돌파 확인. 반도체·기술주 주도 |
+| 2026-04-27 | asia_index | KOSPI | 6615.03 | +2.15% | point | CNBC Asia [2026-04-27 종가] | 2026-04-27T16:00:00+09:00 | 신고가 재경신. 반도체·방산 외인 매수 강세. 4월 글로벌 최강 수익률 |
+| 2026-04-27 | asia_index | KOSDAQ_Apr25 | 1203.84 | +2.51% | point | AsiaBusinessDaily / CNBC Asia [2026-04-25 close] | 2026-04-27T09:00:00+09:00 | 25년래 최고. 2000년 닷컴버블 피크 1,238.80 근접 |
+| 2026-04-27 | asia_index | HangSeng | 미확인 | -0.24% | point | CNBC Asia [2026-04-27 막판] | 2026-04-27T16:30:00+08:00 | 이란 협상 불확실 + 중국 모멘텀 부재 소폭 하락 |
+| 2026-04-27 | asia_index | CSI300 | 4770.95 | 보합 | point | CNBC Asia [2026-04-27] | 2026-04-27T16:00:00+08:00 | 보합 |
+| 2026-04-27 | asia_index | SENSEX | 79664 | +639(+0.82%) | point | Business Standard [2026-04-27 종가] | 2026-04-27T16:00:00+05:30 | 이란 신제안(호르무즈 재개방 조건) 기대 반등. 전일 76,664(-1.3%) 회복 |
+| 2026-04-27 | fx | DXY | ~98.8 | 소폭강세 | index | AhaSignals / CNBC [2026-04-25 / 04-27] | 2026-04-27T09:00:00+09:00 | 이란 협상 결렬 → 안전자산 달러 소폭 반등. 구조적 약세 기조 유지 |
+| 2026-04-27 | fx | USDKRW | ~1476.67 | 소폭변동 | KRW | PoundSterlingLive [2026-04-25] | 2026-04-27T09:00:00+09:00 | ⚠️ 1,400 초과 지속. KOSPI 신고가 → 외인 매수 → 1,470 방향 압력 |
+| 2026-04-27 | fx | EURUSD | ~1.1729 | 소폭약세 | USD | Goodreturns / forex.com [2026-04-27] | 2026-04-27T09:00:00+09:00 | DXY 소폭 강세에 유로 약세 |
+| 2026-04-27 | commodity | WTI | ~95~96 | 재급등+1~2% | USD/barrel | FXDailyReport / TheStreet [2026-04-27] | 2026-04-27T09:00:00+09:00 | ⚠️ 이란 협상 결렬(트럼프 위트코프·쿠슈너 방문 취소) → 재급등. 이란 신제안 보도로 $86→$95~96 변동성 |
+| 2026-04-27 | commodity | Brent | ~107 | +3%이상 | USD/barrel | CNBC / Bloomberg [2026-04-27] | 2026-04-27T09:00:00+09:00 | ⚠️ $107 돌파. IEA "역대 최대 에너지 공급 충격" 경고 |
+| 2026-04-27 | commodity | Gold | 4726.11 | +0.4%추정 | USD/oz | GoodReturns / BullionVault [2026-04-27 03:55 ET] | 2026-04-27T09:00:00+09:00 | $4,700선 회복. 이란 불확실 안전자산 수요 |
+| 2026-04-27 | commodity | Silver | 76.47 | 소폭상승 | USD/oz | TradingEconomics [2026-04-27] | 2026-04-27T09:00:00+09:00 | $76선 회복. Gold 동조 |
+| 2026-04-27 | bond | US10Y_Apr25 | 4.33 | +2bp | percent | Fed H.15 / TradingEconomics [2026-04-25] | 2026-04-27T09:00:00+09:00 | 5연속 상승. 이란 결렬 시 4.35%+ 가능 |
+| 2026-04-27 | bond | US2Y_Apr22 | 3.789 | 참조 | percent | Fed H.15 [2026-04-22] | 2026-04-27T09:00:00+09:00 | 최신 확정값 04-22 기준 |
+| 2026-04-27 | bond | US30Y_Apr22 | 4.927 | 참조 | percent | Fed H.15 [2026-04-22] | 2026-04-27T09:00:00+09:00 | 최신 확정값 04-22 기준 |
+| 2026-04-27 | bond | Spread2Y10Y | ~+54 | — | bp | 계산값(4.33%-3.789%) | 2026-04-27T09:00:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-04-27 | crypto | BTC | 79123.77 | +2.04% | USD | CoinGabbar [2026-04-27] | 2026-04-27T09:00:00+09:00 | $79K 돌파. 이란 재불확실에도 독립 강세 유지. ETF 연속 순유입 |
+| 2026-04-27 | crypto | ETH | 2388.39 | +3.04% | USD | CoinGabbar [2026-04-27] | 2026-04-27T09:00:00+09:00 | $2,400 재도전 중 |
+| 2026-04-27 | crypto | SOL | 87 | +1.96% | USD | CoinGabbar [2026-04-27] | 2026-04-27T09:00:00+09:00 | KelpDAO 해킹 여파 회복 완료 |
+| 2026-04-27 | crypto | TotalMarketCap | 2.71T | +1.7% | USD | CoinGabbar [2026-04-27] | 2026-04-27T09:00:00+09:00 | BTC 도미넌스 58.2% / ETH 10.6% |
+| 2026-04-27 | crypto | FearAndGreedIndex | 47 | +14pt(33→47) | index | alternative.me / CoinGabbar [2026-04-27] | 2026-04-27T09:00:00+09:00 | Neutral 전환. Fear→Neutral 2일 만에 회복. 주간 29→47 큰 폭 개선 |
+| 2026-04-27 | news | Iran_Talks_STALLED | TRUMP_CANCELS_PAKISTAN | — | — | WashingtonPost / Bloomberg / NPR [2026-04-25] | 2026-04-27T09:00:00+09:00 | 트럼프 Truth Social: "위트코프·쿠슈너 방문 취소. 원하면 전화해라." WTI $94.88→$95~96+ 재급등 트리거 |
+| 2026-04-27 | news | Iran_New_Proposal | HORMUZ_REOPEN_CONDITIONAL | — | — | Al Jazeera / CNBC [2026-04-27] | 2026-04-27T09:00:00+09:00 | 이란, 파키스탄 경유 신제안: 호르무즈 재개방 + 핵협상 지연(미 봉쇄 해제 선행). WTI $86→$95~96 재등락 |
+| 2026-04-27 | news | CathieWood_Trade | AMD_SELL_AMZN_BUY | — | — | Gurufocus / TheStreet / TipRanks [2026-04-26] | 2026-04-27T09:00:00+09:00 | AMD 215,643주($75M) 매도(+25% 급등 차익실현). AMZN 280,450주($71.5M) 매수(빅테크 실적 전). 핵IPO(XE) 추가 |
+| 2026-04-27 | news | Ackman_AMZN | PERSHING_AMZN_INITIATED | — | — | Nasdaq / InsiderMonkey [2026-04-27] | 2026-04-27T09:00:00+09:00 | Ackman AMZN 신규 포지션. P/E 27배 저평가 진입. Buffett·Wood와 공동 보유 |
+| 2026-04-27 | news | Druckenmiller | ALPHABET_ADD_SANDISK_EXIT | — | — | InsiderMonkey [2026-04-27] | 2026-04-27T09:00:00+09:00 | Alphabet 비중 확대 + Sandisk 청산. AI 플랫폼 전략 집중 |
