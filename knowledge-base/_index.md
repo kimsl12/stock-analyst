@@ -1,5 +1,5 @@
 ---
-updated: 2026-04-27
+updated: 2026-04-28
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-04-26
@@ -82,6 +82,10 @@ lint_mode: full
 | 2026-04-26 | 모닝브리핑 | 트럼프 이란 특사 파견 취소(4/25 저녁) — 대면→전화 전환. 금요일 "평화회담 기대" 서사 번복. WTI $94.88 유지이나 월요일 반등 리스크. 오만 무스카트 대안 중재지 부상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | 4/29~30 "48시간 결정전" — FOMC(파월 톤 40%) + 빅테크 4건(MSFT/META/AMZN/GOOGL AI CapEx) + GDP Q1(GDPNow 1.24%) + Core PCE + ECB + AAPL. 골디락스 vs 스태그 분기 | `market/economic_calendar.md` | 진행중 |
+| 2026-04-28 | 이브닝브리핑 | WTI 장중 $100.10 터치(2022.06 이후 최초) — 종가 $98.97. Brent $111.57. 이란 교착 시 $100~110 레인지 연말 고착. Core PCE 3.2%+ 시 연내 인하 완전 소멸 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-04-28 | 이브닝브리핑 | "Beat but No Raise" 패턴 — GE Aerospace EPS +16.3% Beat에도 -4%(가이던스 동결). 빅테크 4/29 실적에 확산 시 P/E 멀티플 구조적 상한 제한 | `market/economic_calendar.md` | 진행중 |
+| 2026-04-28 | 이브닝브리핑 | S&P↔10Y 동반 변동 14일(역대 2위) — 2022.3~4 15일 후 동반 급락 전환 전례. 4/30 Core PCE가 구조 해소 vs 붕괴 최종 판별 | `market/correlation_matrix.md` | 진행중 |
+| 2026-04-28 | 이브닝브리핑 | KOSPI 6,666(+0.77% 신고가) vs KOSDAQ -1.40% — 대형/소형 분열 시작. 닷컴 피크(1,238.80) 근접 후 KOSDAQ 차익실현 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-27 | 이브닝브리핑 | 이란 "순환 교착" 구조화 — 신제안(호르무즈+핵 분리) 미국 수용 불투명 + 아라그치 모스크바(러시아 개입). 유가 $90~100 연말 고착 베이스 시나리오 격상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-28 | 모닝브리핑 | 파월 마지막 FOMC 주재 — Warsh 후임 확정 임박. 성명문 "upside risks" 등장 시 연내 인하 완전 소멸. 유산 메시지 + 정책 전환 시그널 동시 관전 | `macro/us_monetary_policy.md` | 진행중 |
 | 2026-04-28 | 모닝브리핑 | 트럼프 이란 신제안 "much better" 평가이나 핵 포기 요구 불변 — 부분 합의 확률 미세 상향(20~25%). 아라그치 모스크바(러시아 중재 공식화) | `macro/geopolitics.md, market/daily_snapshot.md` | 진행중 |
