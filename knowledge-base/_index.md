@@ -83,6 +83,9 @@ lint_mode: full
 | 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | 4/29~30 "48시간 결정전" — FOMC(파월 톤 40%) + 빅테크 4건(MSFT/META/AMZN/GOOGL AI CapEx) + GDP Q1(GDPNow 1.24%) + Core PCE + ECB + AAPL. 골디락스 vs 스태그 분기 | `market/economic_calendar.md` | 진행중 |
 | 2026-04-27 | 이브닝브리핑 | 이란 "순환 교착" 구조화 — 신제안(호르무즈+핵 분리) 미국 수용 불투명 + 아라그치 모스크바(러시아 개입). 유가 $90~100 연말 고착 베이스 시나리오 격상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
+| 2026-04-28 | 모닝브리핑 | 파월 마지막 FOMC 주재 — Warsh 후임 확정 임박. 성명문 "upside risks" 등장 시 연내 인하 완전 소멸. 유산 메시지 + 정책 전환 시그널 동시 관전 | `macro/us_monetary_policy.md` | 진행중 |
+| 2026-04-28 | 모닝브리핑 | 트럼프 이란 신제안 "much better" 평가이나 핵 포기 요구 불변 — 부분 합의 확률 미세 상향(20~25%). 아라그치 모스크바(러시아 중재 공식화) | `macro/geopolitics.md, market/daily_snapshot.md` | 진행중 |
+| 2026-04-28 | 모닝브리핑 | S&P 7,174+10Y 4.34% 동반 상승 14일 연속(2022.3~4 이후 최장) — VIX 18 "거짓 안정 4주째". 4/30 Core PCE가 구조 해소 vs 역전 최종 판별 | `market/correlation_matrix.md` | 진행중 |
 | 2026-04-27 | 이브닝브리핑 | 아시아 "동시 신고가 러시" — 닛케이 60,537(역대 60K 최초) + KOSPI 6,615(+2.15%). "아시아 반도체 슈퍼사이클" 글로벌 확산. 에너지 수입국이 반도체로 유가 충격 흡수 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-27 | 이브닝브리핑 | 매크로 위험등급 3→4(위험) 상향 — 이란 순환 교착 + Brent $107+(2022.06 이후 최고) + 쿼드러플 이벤트 직전 + 협상 채널 3원화 | `macro/global_risk_factors.md` | 진행중 |
 | 2026-04-27 | 이브닝브리핑 | "서비스 인플레 잠복기 후반" 판정 — ISM 서비스 가격 70.7 = 에너지→서비스 비용 전이 초기 진입. WTI 하락만으로 인플레 자동 해소 불가. 4/30 Core PCE 최종 판별 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
