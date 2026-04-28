@@ -1,25 +1,45 @@
 ---
-updated: 2026-04-18
+updated: 2026-04-28
 valid_until: 2026-07-18
 file: guru_positions
-sources: ["13radar", "stockcircle", "gainify", "valuesider", "seekingalpha", "hedgefundalpha", "yahoo_finance", "motleyfool", "reuters", "fortune", "cnbc", "acquirersmultiple"]
+sources: ["13radar", "stockcircle", "gainify", "valuesider", "seekingalpha", "hedgefundalpha", "yahoo_finance", "motleyfool", "reuters", "fortune", "cnbc", "acquirersmultiple", "gurufocus", "thestreet", "tipranks", "insidermonkey", "nasdaq"]
 confidence: high
-last_synced_from_db: 2026-04-18
+last_synced_from_db: 2026-04-28
 collection_status: SUCCESS
-data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
+data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17) + 주간 동향 2026-04-28"
 ---
 
 # 거물 투자자 포지션 (Guru Positions)
 
 > **쓰기 권한:** market-data-collector
 > **읽기 권한:** briefing-lead, briefing-report-generator, 종목분석 9개 에이전트
-> **갱신 빈도:** 분기 1회 (13F 공시 후)
+> **갱신 빈도:** 분기 1회 (13F 공시 후) + 주간 동향 수시 반영
 > **명단 정본:** `reference/guru_watchlist.md` 참조
 >
 > **중요 고지:** 13F 포지션 데이터는 분기 종료 후 최대 45일 시차 존재.
 > 현재 포지션이 아닌 "기준 분기 마감 시점 포지션"임을 반드시 인지.
 >
-> **2026-04-18 상태:** Q4 2025 13F 전원 수집 완료 (Burry 제외 -- Scion 해산). 12개 소스 교차검증. confidence: high.
+> **2026-04-28 상태:** Q4 2025 13F 전원 수집 완료 (Burry 제외 -- Scion 해산). 주간 동향 04-28 반영. Q1 2026 13F 공시 대기 중 (5/15 마감).
+
+---
+
+## 주간 동향 (2026-04-25~28) -- 최신
+
+| 투자자 | 기관 | 행동 | 세부 내용 | 출처 |
+|--------|------|------|---------|------|
+| **Cathie Wood** | ARK Invest | **AMD $75M 매도 + AMZN $71.5M 매수** | 4/25-26: AMD 215,643주($75M) 차익실현(AMD +25% 급등 후). AMZN 280,450주($71.5M) 신규 추가. 핵 IPO (XE) 포지션 구축 | Gurufocus / TheStreet / TipRanks [2026-04-26] |
+| **Bill Ackman** | Pershing Square | **Amazon 추가 포지션** | P/E 27배 저평가 구간 진입 코멘트. Buffett·Wood와 공동 AMZN 보유 | Nasdaq / InsiderMonkey [2026-04-27] |
+| **Stanley Druckenmiller** | Duquesne | **Alphabet 비중 확대 + Sandisk 청산** | AI 플랫폼 전략 집중. 스토리지→검색AI 전환 | InsiderMonkey [2026-04-27] |
+| Warren Buffett | Berkshire | Q1 2026 포지션 변화 미공시 | 다음 13F 공시 기준일 3/31 → 5/15 공시 예정 | Acquirer's Multiple [2026-03] |
+| Ray Dalio | Bridgewater | 04-25~28 특이 동향 미확인 | — | — |
+| Howard Marks | Oaktree | 04-25~28 특이 동향 미확인 | — | — |
+| David Tepper | Appaloosa | 04-25~28 특이 동향 미확인 | — | — |
+| Soros Fund | Soros Fund Mgmt | 04-25~28 특이 동향 미확인 | — | — |
+
+> **주간 핵심 시그널:**
+> - Cathie Wood: AMD 고점 차익실현 → AMZN 빅테크 실적(4/29) 직전 포지션 구축 = 강한 AMZN 확신 시그널
+> - Ackman + Buffett(Q4 13F) + Wood = AMZN 3거물 보유 컨버전스 유지
+> - Druckenmiller: GOOGL 추가 확대 (Q4 13F +277% 이후 계속 추가) = AI 검색 확신
 
 ---
 
@@ -116,6 +136,8 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 
 **전략 해석:** 파괴적 혁신(Disruptive Innovation) 테마 유지. TSLA Top1 유지하나 이익실현. AI인프라(CRWV), 유전체(CRSP), 크립토(COIN) 확대. [13radar, seekingalpha]
 
+**2026-04-26 추가 동향:** AMD 215,643주 $75M 매도(차익실현) + AMZN 280,450주 $71.5M 매수. 빅테크 실적 전날 AMZN 포지션 구축 = 강한 확신 시그널. [Gurufocus/TheStreet/TipRanks 2026-04-26]
+
 ---
 
 ### 5. Stanley Druckenmiller (Duquesne Family Office) -- $4.49B, 62종목
@@ -141,6 +163,8 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 - 대폭 축소: TEVA (-64.6%), INSM (-38.9%), TSM (-29.0%), NTRA (-21.9%)
 
 **2026 최신 코멘트:** "내러티브 버블이 2026 최대 리스크." AI 연계 주식 '불안할 정도로 과열.' 현재 8회말(8th inning). 달러 약세 long, 금/구리 long, 채권 short. "정보 15~20%로도 결정적 행동 필요." [acquirersmultiple, yahoo, 2026-03]
+
+**2026-04-27 추가 동향:** Alphabet 비중 추가 확대 + Sandisk 청산. AI 플랫폼으로 자원 집중. [InsiderMonkey 2026-04-27]
 
 ---
 
@@ -217,6 +241,8 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 
 **2026 최신:** Pershing Square IPO 로드쇼 시작 (2026-04-13). $5~10B 규모 목표. Universal Music Group $64B 인수 제안. Berkshire 스타일 장기 복리 모델 지향. [reuters, hedgeweek, economictimes, motleyfool, 2026-04]
 
+**2026-04-27 추가 동향:** Amazon P/E 27배 저평가 구간 진입 코멘트 — 빅테크 실적(4/29) 앞두고 AMZN 보유 강조. [Nasdaq/InsiderMonkey 2026-04-27]
+
 ---
 
 ## 컨버전스 시그널 (2인 이상 동일 분기 동일 방향 -- Q4 2025 13F 확인)
@@ -236,7 +262,7 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 - 2인 이상이 **동일 분기**에 동일 종목을 같은 방향(매수/매도)으로 움직인 경우만 포착
 - 13F 시차 특성상 "이미 지난 신호"임을 반드시 명시
 - 단순 보유 중복은 컨버전스 아님 -- **변동(델타)** 일치만 유효
-- Q4 2025 기준 (2025-12-31 포지션). 현재 시점과 최대 3.5개월 시차.
+- Q4 2025 기준 (2025-12-31 포지션). 현재 시점과 최대 4개월 시차.
 
 ---
 
@@ -245,9 +271,9 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 | 종목 | Buffett | Dalio | Burry | Wood | Druckenmiller | Marks | Tepper | Ackman |
 |------|---------|-------|-------|------|---------------|-------|--------|--------|
 | AAPL | TOP1 (-4%) | -- | -- | -- | -- | -- | -- | -- |
-| AMZN | -77% | +73% | -- | -- | +69% | -- | -13% | **+65%** |
+| AMZN | -77% | +73% | -- | **+AMZN(주간)** | +69% | -- | -13% | **+65%** |
 | META | -- | -46% | -- | -- | -- | -- | **+62%** | **NEW $1.76B** |
-| GOOGL | HOLD | -40% | -- | -- | **+277%** | -- | **+29%** | -86% (A) |
+| GOOGL | HOLD | -40% | -- | -- | **+277%+주간추가** | -- | **+29%** | -86% (A) |
 | NVDA | -- | +54% | PUTS(해산) | -- | -- | -- | -11% | -- |
 | MU | -- | 대폭추가 | -- | -- | -- | -- | **+200%** | -- |
 | TSLA | -- | -- | -- | TOP1(-19%) | -- | -- | -- | -- |
@@ -270,11 +296,12 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 
 ## 투자 시사점 요약
 
-1. **AI 인프라 베팅 심화:** AMZN(Ackman/Druckenmiller/Dalio), META(Ackman/Tepper), MU(Tepper/Dalio) -- 대형 기관들이 AI 수혜주에 대규모 자금 집중
-2. **탈달러/Gold 구조적:** Dalio Gold 15%, Marks 금광주 유지, Druckenmiller 달러 약세 long -- 탈달러 테마 지속
-3. **에너지 현금 창출:** Buffett(CVX/OXY), Marks(EXE/VNOM/TLN), Druckenmiller(BE) -- 에너지 cash generation 과소평가 공감대
+1. **AI 인프라 베팅 심화:** AMZN(Ackman/Druckenmiller/Dalio+Wood주간), META(Ackman/Tepper), MU(Tepper/Dalio) -- 대형 기관들이 AI 수혜주에 대규모 자금 집중
+2. **탈달러/Gold 구조적:** Dalio Gold 15%, Marks 금광주 유지, Druckenmiller 달러 약세 long -- 탈달러 테마 지속. Gold $4,702 현재.
+3. **에너지 현금 창출:** Buffett(CVX/OXY), Marks(EXE/VNOM/TLN), Druckenmiller(BE) -- 에너지 cash generation 과소평가 공감대. WTI $99 근접 = 에너지 포지션 수혜
 4. **Burry AI 숏 vs 시장:** Burry의 마지막 베팅은 PLTR/NVDA 풋 96.7% 집중 -> 해산. AI 버블 경고 vs 나머지의 AI 매수 극명 대비
-5. **한국 주목:** Tepper EWY $286M 신규 -- 한국 반도체 수혜 간접 베팅으로 해석
+5. **한국 주목:** Tepper EWY $286M 신규 -- 한국 반도체 수혜 간접 베팅. KOSPI 6,666 신고가 랠리 진행 중.
+6. **내일(4/29) AMZN 컨빅션:** Wood(주간 매수) + Ackman(P/E 27배 저평가 코멘트) + Druckenmiller(Q4+주간 추가) = 빅테크 실적 앞두고 AMZN 3거물 집중
 
 ---
 
@@ -285,3 +312,4 @@ data_basis: "Q4 2025 13F (포지션일 2025-12-31, 공시 2026-02-17)"
 | 2026-04-07 | market-data-collector | 수집 시도 -- 전 항목 네트워크 차단. 2회 재시도 후 N/A 처리. |
 | 2026-04-17 | market-data-collector | 이브닝 재수집 -- MCP 웹검색으로 최근 코멘트/방향성 부분 수집. PARTIAL. confidence:low. |
 | 2026-04-18 | kb-updater | **Q4 2025 13F 전면 수집 완료.** 7인 13F 포지션 + Burry 해산 확인. 12개 소스 교차검증. 컨버전스 시그널 7건 도출. confidence:low->high 승격. |
+| **2026-04-28** | **market-data-collector** | **이브닝 갱신 (주간 동향 반영)** -- Cathie Wood AMD $75M 매도+AMZN $71.5M 매수(4/26). Ackman AMZN P/E 27배 저평가 코멘트(4/27). Druckenmiller GOOGL 추가+Sandisk 청산(4/27). Q1 2026 13F 공시 대기(5/15). 투자 시사점 6번 추가. |

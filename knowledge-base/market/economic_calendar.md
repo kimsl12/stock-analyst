@@ -1,18 +1,18 @@
 ---
-updated: 2026-04-27
+updated: 2026-04-28
 valid_until: 2026-05-02
 file: economic_calendar
 sources:
   - "Federal Reserve FOMC Calendar [2026-04-27 확인]"
-  - "CME FedWatch Tool [2026-04-27]"
-  - "CNBC / TheStreet [2026-04-27 — stock market today week ahead]"
-  - "Kraken Blog [2026-04-22 — FOMC decision, GDP, PCE, Big Tech earnings]"
-  - "Motley Fool / Seeking Alpha [2026-04-26 — Meta, Google, Amazon, Microsoft April 29]"
+  - "CME FedWatch Tool [2026-04-28]"
+  - "CNBC / TheStreet [2026-04-28 — stock market today, earnings results]"
+  - "StockTitan / CNBC / TradingKey / Yahoo Finance [2026-04-28 — UPS/GM/GE/HON/KO 실적]"
+  - "Business Standard [2026-04-28 — SENSEX FOMC 앞두고 하락]"
+  - "Motley Fool / Seeking Alpha [2026-04-26-27 — Meta, Google, Amazon, Microsoft April 29]"
   - "BEA Release Schedule [GDP Q1 Advance + Core PCE April 30]"
-  - "Bloomberg / NPR / WashingtonPost [2026-04-25-27 — Iran peace talks stall]"
-  - "Gurufocus / TheStreet / TipRanks [2026-04-26-27 — Cathie Wood AMD/AMZN / Druckenmiller]"
+  - "Invezz / AlphaStreet [2026-04-27 — KO, Hilton 실적 preview]"
 confidence: high
-last_synced_from_db: 2026-04-27
+last_synced_from_db: 2026-04-28
 collection_status: SUCCESS
 ---
 
@@ -21,7 +21,7 @@ collection_status: SUCCESS
 > **쓰기 권한:** market-data-collector
 > **읽기 권한:** briefing-lead, global-macro-analyst, correlation-monitor, briefing-report-generator, 종목분석 9개 에이전트
 > **갱신 빈도:** 주 1회 (월요일 또는 주말 갱신) + 주요 이벤트 발생 시 수시 반영
-> **갱신 이력:** 2026-04-07 FAILED → 2026-04-17 SUCCESS(부분) → 2026-04-18 SUCCESS(주간 전면) → 2026-04-19 갱신 (ECB 오류 수정) → 2026-04-21 갱신 (이번 주 결과 반영 + 다음 주 보강) → 2026-04-23 갱신 (TSLA Q1 결과 반영 + 호르무즈 선박 나포) → 2026-04-24 갱신 (IBM/ServiceNow/TI Q1 결과 반영 + FOMC 의사록 오류 정정 + 한국 Q1 GDP +1.7%) → 2026-04-26 갱신 (이번 주 결과 전면 반영 + 빅테크 실적 일자 정정 + 4/28 주 전면 갱신 + 이란 평화회담 반영) → **2026-04-27 갱신** (이란 협상 전격 결렬 반영 — 트럼프 위트코프·쿠슈너 파키스탄 방문 취소 / WTI 재급등 / 4/27 아시아 신고가 / 크립토 반등 / 거물 투자자 동향 추가 / 빅테크 컨센서스 상세화)
+> **갱신 이력:** 2026-04-07 FAILED → 2026-04-17 SUCCESS(부분) → 2026-04-18 SUCCESS(주간 전면) → 2026-04-19 갱신 (ECB 오류 수정) → 2026-04-21 갱신 (이번 주 결과 반영 + 다음 주 보강) → 2026-04-23 갱신 (TSLA Q1 결과 반영 + 호르무즈 선박 나포) → 2026-04-24 갱신 (IBM/ServiceNow/TI Q1 결과 반영 + FOMC 의사록 오류 정정 + 한국 Q1 GDP +1.7%) → 2026-04-26 갱신 (이번 주 결과 전면 반영 + 빅테크 실적 일자 정정 + 4/28 주 전면 갱신 + 이란 평화회담 반영) → 2026-04-27 갱신 (이란 협상 전격 결렬 반영 — WTI $96+ 재급등 / 아시아 신고가 / 크립토 반등) → **2026-04-28 갱신** (이브닝 브리핑 — 04-28 실적 결과 반영 UPS/GM/GE/HON / CB 컨슈머 컨피던스 하락 / FOMC 2일차 시작 / 이란 신제안 + WTI $99 직전)
 
 ---
 
@@ -50,9 +50,31 @@ collection_status: SUCCESS
 
 ---
 
-## CURRENT — 이번 주 (2026-04-28 ~ 2026-05-02) 예정
+## CURRENT — 이번 주 (2026-04-28 ~ 2026-05-02) 진행 중
 
-### 핵심 이벤트 캘린더
+### 04-28 (화) 발표 결과 (확정/부분)
+
+| 날짜 | 시간(ET) | 국가/기업 | 이벤트 | 컨센서스 | 실제 | 판정 | 출처 |
+|------|---------|---------|-------|--------|------|------|------|
+| 2026-04-28 (화) | — | 미국 | **FOMC 회의 시작 (1일차)** | — | 진행 중 | ★★★ | Fed |
+| 2026-04-28 (화) | 10:00 ET | 미국 | CB 소비자신뢰 4월 | 전월 91.8 (3월) | **하락** (Michigan 49.8 사상 최저 연동) | ⚠️ 하락 | [Conference Board / Bloomberg] |
+| 2026-04-28 (화) | 장전 | **UPS** | Q1 2026 실적 | EPS $1.06 / Rev $21.08B | **EPS $1.07 / Rev $21.2B** | **Beat (EPS+Rev)** | [UPS IR / CNBC] |
+| 2026-04-28 (화) | 장전 | **GM** | Q1 2026 실적 | EPS ~$2.62 / Rev $43.67B | Rev $43.6B / EBIT $4.3B | **인라인. EBIT 가이던스 +$0.5B 상향** | [StockTitan / CNBC] |
+| 2026-04-28 (화) | 장전 | **GE Aerospace** | Q1 2026 실적 | EPS $1.60 | **EPS $1.86 (+16.3%)**, 주문 +87% | **강력 Beat / 주가 -4% (가이던스 유지 실망)** | [TradingKey / TradingView] |
+| 2026-04-28 (화) | 장전 | **Honeywell (HON)** | Q1 2026 실적 | EPS $2.32 / Rev $9.29B | EPS $2.45 (+5.5%) / Rev $9.14B | **EPS Beat / Rev Miss → 주가 하락** | [Yahoo Finance / SeekingAlpha / TIKR] |
+| 2026-04-28 (화) | 장전 | **Coca-Cola (KO)** | Q1 2026 실적 | EPS $0.81 / Rev $12.3B | 미수집 | 미확인 | [BusinessWire — 발표 확인] |
+| 2026-04-28 (화) | 장전 | **Hilton (HLT)** | Q1 2026 실적 | EPS $1.96 / Rev $2.98B | 미수집 | 미확인 | [MSN / Yahoo Finance] |
+| 2026-04-28 (화) | 장후 | **Robinhood (HOOD)** | Q1 2026 실적 | — | 미발표 (장후) | 미확인 | [StockTitan] |
+
+> ⚠️ **04-28 시황 노트:**
+> - S&P 500 +1.05% (7,137.90), Russell 2000 +0.74% (2,785.38), VIX -2.97% (18.92) — FOMC 앞두고 위험 선호 반등
+> - KOSPI +0.77% (6,666.21) 신고가 랠리 지속. KOSDAQ -1.40% (1,208.83) 차익 실현
+> - WTI $98.97 (+2.69%) — $100 직전. Brent $111.57 = 3월래 최고. 이란 신제안 제출 보도
+> - UPS/GM: 실적 Beat + 가이던스 유지 → 경기 연착륙 시그널. GE Aerospace: EPS +16% 서프라이즈에도 가이던스 동결로 실망 매도
+
+---
+
+### 04-29~05-02 예정 (핵심 이벤트)
 
 > ⚠️ **[중요 확인] 빅테크 실적 일자 (04-27 재확인)**
 > - MSFT / META / AMZN / GOOGL / QCOM: **4월 29일(수) 장후** 발표
@@ -61,9 +83,6 @@ collection_status: SUCCESS
 
 | 날짜 | 시간(ET) | 국가/기업 | 이벤트 | 컨센서스 | 중요도 |
 |------|---------|---------|-------|--------|-------|
-| 2026-04-28 (화) | — | 미국 | **FOMC 회의 시작** | — | ★★★ |
-| 2026-04-28 (화) | 10:00 ET | 미국 | 컨퍼런스보드 소비자신뢰 4월 | 전월 92.9 기준 | ★★★ |
-| 2026-04-28 (화) | — | 미국 | FHFA 주택가격 지수 + S&P Case-Shiller | — | ★★ |
 | 2026-04-29 (수) | **14:00 ET** | 미국 | **FOMC 금리결정 (발표)** | **3.50~3.75% 동결 (100%)** | ★★★★★ |
 | 2026-04-29 (수) | **14:30 ET** | 미국 | **파월 Fed 의장 기자회견** | 파월 성명 톤 변화 여부 핵심 | ★★★★★ |
 | 2026-04-29 (수) | 08:30 ET | 미국 | 내구재 주문 3월 (Advance) | — | ★★ |
@@ -73,7 +92,7 @@ collection_status: SUCCESS
 | **2026-04-29 (수)** | **장후** | **Alphabet (GOOGL)** | **Q1 2026 실적** | **EPS $2.64 / Rev $92.2B(+20.6% YoY)** | ★★★★★ |
 | 2026-04-29 (수) | 장후 | Qualcomm (QCOM) | Q2 FY2026 실적 | — | ★★★ |
 | 2026-04-30 (목) | **08:30 ET** | 미국 | **GDP Q1 2026 Advance** | **GDPNow +1.24% (04-21 기준)** | ★★★★★ |
-| 2026-04-30 (목) | **08:30 ET** | 미국 | **Core PCE 3월** | **~3.0% (WTI $95+ 상방 리스크 ↑)** | ★★★★★ |
+| 2026-04-30 (목) | **08:30 ET** | 미국 | **Core PCE 3월** | **~3.0% (WTI $99 환경 = 상방 리스크 ↑↑)** | ★★★★★ |
 | 2026-04-30 (목) | 08:30 ET | 미국 | Employment Cost Index Q1 | — | ★★★ |
 | 2026-04-30 (목) | 08:30 ET | 미국 | 개인소득 / 개인지출 3월 | — | ★★ |
 | **2026-04-30 (목)** | **— ET** | **유럽 (ECB)** | **ECB 통화정책 결정** | **25bp 인하 컨센서스** | ★★★★ |
@@ -87,30 +106,32 @@ collection_status: SUCCESS
 | 2026-05-01 (금) | 08:30 ET | 미국 | 실업률 4월 | ~3.5~3.6% | ★★★ |
 | 2026-05-01 (금) | 10:00 ET | 미국 | ISM 서비스업 PMI 4월 | — | ★★★ |
 
-> ⚠️ **FOMC 4/29 (2일차 결정) — 핵심 변수 업데이트:**
-> - 동결 100% 컨센서스. 이란 협상 결렬로 WTI $95~96+ 재급등 = Core PCE 3.2%+ 상방 리스크 부각
+> ⚠️ **FOMC 4/29 (2일차 결정) — 04-28 업데이트:**
+> - 동결 100% 컨센서스 유지. WTI $98.97 → $100 직전 = Core PCE 상방 리스크 최고조
+> - CB 소비자신뢰 4월 하락 확인 (Michigan 49.8 사상 최저 연동) — 소비자 심리 악화
 > - 파월 성명 톤 시나리오:
 >   - "closely monitoring inflation" 표현 → 6월 인하 소멸. 10Y 4.4%+ / 달러 강세
 >   - "data dependent, patient" 유지 → 6월 인하 30~40% 유지. 리스크온 지속
 > - 파월 임기 5/15 만료 → "라스트 코멘트" 효과 극대화
 >
-> ⚠️ **4/29 "빅테크 슈퍼 수요일" — 이란 결렬로 불확실성 추가:**
+> ⚠️ **4/29 "빅테크 슈퍼 수요일" — GE Aerospace 선례 주목:**
+> - GE: EPS +16% 강력 Beat에도 가이던스 유지 → -4%. "Beat but No Raise" 패턴 가능성
+> - UPS: Rev Beat + 가이던스 유지 → 안도. GM: Rev 인라인 + 가이던스 상향 → 지지
 > - MSFT 컨센: EPS $4.05(+17%) / Rev $81.37B(+16%)
 > - META 컨센: EPS $6.65 / Rev $55.5B(+32% YoY)
 > - GOOGL 컨센: EPS $2.64 / Rev $92.2B(+20.6% YoY)
 > - AMZN 컨센: Rev 가이던스 $173.5~178.5B / AWS 성장 + AI 수요 확인
-> - AI CapEx 가이던스가 관건: TI/Intel 선례 확산(인프라 강세) vs IBM/ServiceNow 재연(소프트웨어 공포)
-> - 이란 가이던스 불확실성 언급 여부: ServiceNow는 이란 관련 가이던스 하향이 -18%의 주요 원인
 >
-> ⚠️ **4/30 "쿼드러플 폭탄" — WTI $95+ 환경에서 Core PCE 상방 위험 높아짐:**
+> ⚠️ **4/30 "쿼드러플 폭탄" — WTI $99 환경에서 Core PCE 상방 위험 최고조:**
 > - GDP +1.5%+ AND Core PCE <3.0% AND ECB 25bp → "골디락스". VIX 15~16 가능
 > - GDP +0.8% 이하 OR Core PCE +3.2%+ → 스태그플레이션 내러티브. VIX 22~25
 > - AAPL Q2: 서비스 $26.7B 컨센. Tim Cook 마지막 주요 발표 (9/1 John Ternus CEO 교체)
 >
-> ⚠️ **이란 변수 — 주간 내내 오버행:**
-> - 협상 타결(호르무즈 재개방) 시: WTI $80~85 → Core PCE 하방 → 6월 인하 재점화 → S&P 7,300+
+> ⚠️ **이란 변수 — 04-28 업데이트:**
+> - WTI $98.97, Brent $111.57 (3월래 최고) — 이란 신제안 제출 보도(오만 경유)
+> - 인도 SENSEX -416p: "지정학 긴장 + FOMC + FII 이탈" 삼중 압박
+> - 협상 타결(호르무즈 재개방) 시: WTI $80~85 → Core PCE 하방 → 6월 인하 재점화
 > - 완전 결렬 시: WTI $100+ → Core PCE 3.5%+ → 연내 인하 소멸 → VIX 25+
-> - 4/27 현재: 이란 오만 경유 + 러시아 중재 접촉 지속. 미국 "전화 협상" 제안. 교착 지속
 
 ---
 
@@ -118,10 +139,10 @@ collection_status: SUCCESS
 
 | 중앙은행 | 다음 회의 일자 | 현 기준금리 | 시장 예상 | 비고 |
 |---------|-------------|-----------|---------|------|
-| **Fed (FOMC)** | **2026-04-28~29** | 3.50~3.75% | **동결 컨센서스 100%** | 파월 임기 5/15 만료. Warsh 인준 지연. WTI $95+ = Core PCE 상방 → 파월 톤 변화 주목 |
-| **BOK (한국은행)** | 2026-05 (추정) | **2.50%** | 동결 강화 | Q1 GDP +1.7% 서프라이즈 → 인하 명분 추가 약화. 신현승 총재 매파 기조 |
-| **ECB** | **2026-04-30** | ~2.40% | **25bp 인하** 컨센서스 | Brent $107+ = 에너지 인플레 변수. 이란 결렬 후 동결 리스크 소폭 상승 |
-| **BOJ** | 2026-05 (추정) | 0.50% (추정) | 동결 우세 | 닛케이 60,537 신고가 = 엔화 약세 수혜 구간. 이란 협상 전개 주시 |
+| **Fed (FOMC)** | **2026-04-28~29 (진행 중)** | 3.50~3.75% | **동결 컨센서스 100%** | 파월 임기 5/15 만료. WTI $99 = Core PCE 상방 → 파월 톤 변화 최대 이벤트 |
+| **BOK (한국은행)** | 2026-05 (추정) | **2.50%** | 동결 강화 | Q1 GDP +1.7% 서프라이즈 → 인하 명분 추가 약화 |
+| **ECB** | **2026-04-30** | ~2.40% | **25bp 인하** 컨센서스 | Brent $111.57 = 에너지 인플레 변수. 동결 리스크 소폭 상존 |
+| **BOJ** | 2026-05 (추정) | 0.50% (추정) | 동결 우세 | Nikkei 60,035 (-0.83%). 엔화 FOMC 전 관망 |
 
 ---
 
@@ -129,20 +150,20 @@ collection_status: SUCCESS
 
 | 날짜 | 이벤트 | 시나리오 A (낙관) | 시나리오 B (비관) |
 |------|--------|----------------|----------------|
-| 4/28-29 | FOMC | "데이터 의존" + 6월 인하 문 유지 | 매파적 동결 → 10Y 4.4%+, NASDAQ -3% |
+| 4/29 | FOMC | "데이터 의존" + 6월 인하 문 유지 | 매파적 동결 → 10Y 4.4%+, NASDAQ -3% |
 | 4/29 | 빅테크 AI CapEx (MSFT/META/AMZN/GOOGL) | AI CapEx 확대 확인 → AI 인프라 랠리 지속 | AI CapEx 경직 또는 이란 가이던스 하향 → NASDAQ -3~5% |
 | 4/30 | GDP Q1 Advance | +1.5%+ → 침체 기우 완화 | +0.8% 이하 → 스태그 내러티브 강화 |
-| 4/30 | Core PCE 3월 | +2.8% 이하 → 6월 인하 재점화 | **+3.2%+** (WTI $95+ 환경 = 가능성 높아짐) → 연내 인하 소멸 |
+| 4/30 | Core PCE 3월 | +2.8% 이하 → 6월 인하 재점화 | **+3.2%+** (WTI $99 환경 = 가능성 매우 높음) → 연내 인하 소멸 |
 | 4/30 | ECB | 25bp 인하 → DXY 97 이하, Gold 추가 지지 | ECB 동결 서프라이즈 → EUR 급락 |
 | 4/30 | AAPL Q2 FY26 | AI 전략 + 서비스 $26.7B + Ternus 연속성 확인 → Dow 50K | 가이던스 하향 또는 이란 리스크 언급 → Tech 전반 -2% |
 | 5/1 | NFP 4월 | +185K+ → 연착륙 확인 | +120K 이하 → 경기침체 우려 재점화 |
-| **이란 협상** | **파키스탄→오만→러시아 중재** | **타결 → WTI $80~85, VIX 15~16, S&P 7,300+** | **완전 결렬 → WTI $100+, Core PCE 3.5%+, 연내 인하 소멸** |
+| **이란 협상** | **오만 경유 신제안 + 러시아 중재** | **타결 → WTI $80~85, VIX 15~16, S&P 7,300+** | **완전 결렬 → WTI $100+, Core PCE 3.5%+, 연내 인하 소멸** |
 | 5/13 | 4월 CPI | Core 2.4% 이하 → 6월 인하 재점화 | Core 2.8%+ → 연내 인하 소멸 |
 | 5/15 | 파월 임기 만료 | Warsh 인준 완료 → Fed 연속성 유지 | 공백 지속 / 트럼프 직접 개입 → 달러 신뢰 균열 |
 
 ---
 
-## Q1 2026 실적 시즌 현황 (04-27 기준)
+## Q1 2026 실적 시즌 현황 (04-28 기준)
 
 > **[확인] 빅테크 실적 일자:** MSFT/META/AMZN/GOOGL = **4/29(수) 장후**, AAPL = **4/30(목) 장후**
 
@@ -157,21 +178,25 @@ collection_status: SUCCESS
 | **ServiceNow** | **04-23 장후** | — | Beat | — | **-18% 역대 최대. AI 대체 공포 + 이란 가이던스** |
 | **Texas Instruments** | **04-23 장후** | — | Beat | — | **+10% 데이터센터 수요 강건** |
 | **Intel (INTC)** | **04-24 장후** | **$0.01** | **$0.29 (+2,800%)** | **역대 최대 서프라이즈** | **+24% ($82.57). SOX 18일 연승** |
+| **UPS** | **04-28 장전** | EPS $1.06 / Rev $21.08B | **EPS $1.07 / Rev $21.2B** | **Beat** | 가이던스 유지 — 안도 |
+| **GM** | **04-28 장전** | Rev $43.67B | Rev $43.6B / EBIT $4.3B | **인라인 + 가이던스 상향** | EBIT+$0.5B — 긍정 |
+| **GE Aerospace** | **04-28 장전** | EPS $1.60 | **EPS $1.86 (+16.3%)** | **강력 Beat** | **-4% (가이던스 동결 실망)** |
+| **Honeywell (HON)** | **04-28 장전** | EPS $2.32 / Rev $9.29B | EPS $2.45 / Rev $9.14B | **EPS Beat / Rev Miss** | 하락 |
+| **Coca-Cola (KO)** | **04-28 장전** | EPS $0.81 / Rev $12.3B | 미수집 | — | — |
 | **Microsoft (MSFT)** | **04-29 장후** | **$4.05(+17%) / Rev $81.37B** | TBD | — | AI CapEx 가이던스 최대 이벤트 |
 | **Meta (META)** | **04-29 장후** | **$6.65 / Rev $55.5B(+32%)** | TBD | — | 광고+AI 성장 확인 |
 | **Amazon (AMZN)** | **04-29 장후** | **Rev $173.5~178.5B** | TBD | — | AWS 성장 + AI 수요 |
 | **Alphabet (GOOGL)** | **04-29 장후** | **$2.64 / Rev $92.2B(+20.6%)** | TBD | — | 검색+클라우드 AI |
 | **Apple (AAPL)** | **04-30 장후** | **서비스 ~$26.7B** | TBD | — | Tim Cook 마지막 주요 발표 (9/1 Ternus CEO 교체 전) |
 
-> **S&P 500 Q1 2026 실적 시즌 현황 (04-27 기준):**
-> - EPS Beat 비율: **81%** (장기 평균 ~75%)
-> - Rev Beat 비율: **76%** (장기 평균 ~64%)
-> - 핵심 구도: AI 인프라(반도체·하드웨어) 강세 vs 전통 SaaS/소프트웨어 AI 대체 공포 "AI 가위" 이분화 심화
-> - **이란 변수 추가:** ServiceNow의 이란 가이던스 하향(-18%)이 전례 → 빅테크 4/29 실적 발표에서 이란 언급 여부 주시
+> **S&P 500 Q1 2026 실적 시즌 현황 (04-28 기준):**
+> - EPS Beat 비율: **~81%** (장기 평균 ~75%) — UPS/GM/GE 추가로 유지
+> - Rev Beat 비율: **~76%** (장기 평균 ~64%) — HON Rev Miss로 소폭 하방 압력
+> - **04-28 패턴:** "Beat but No Raise" 현상 — GE Aerospace EPS +16% 서프라이즈에도 -4%. 시장의 가이던스 상향 요구 강도 높아짐
 
 ---
 
-## 거물 투자자 동향 (04-25~27 주간)
+## 거물 투자자 동향 (04-28 이브닝 기준)
 
 | 투자자 | 기관 | 행동 | 세부 내용 | 출처 |
 |--------|------|------|---------|------|
@@ -179,14 +204,16 @@ collection_status: SUCCESS
 | **Bill Ackman** | Pershing Square | **Amazon 신규 포지션** | P/E 27배 저평가 구간 진입. Buffett·Wood와 공동 AMZN 보유 | Nasdaq / InsiderMonkey [2026-04-27] |
 | **Stanley Druckenmiller** | Duquesne | **Alphabet 비중 확대 + Sandisk 청산** | AI 플랫폼 전략 집중. 스토리지→검색AI 전환 | InsiderMonkey [2026-04-27] |
 | Warren Buffett | Berkshire | Q1 2026 포지션 변화 미공시 | 다음 13F 공시 기준일 3/31 → 5월 중 공개 예정 | Acquirer's Multiple [2026-03] |
-| Ray Dalio | Bridgewater | 최근 1주 특이 동향 미확인 | — | — |
-| Howard Marks | Oaktree | 최근 1주 특이 동향 미확인 | — | — |
-| David Tepper | Appaloosa | 최근 1주 특이 동향 미확인 | — | — |
-| Soros Fund | Soros Fund Mgmt | 최근 1주 특이 동향 미확인 | — | — |
+| Ray Dalio | Bridgewater | 04-28 특이 동향 미확인 | — | — |
+| Howard Marks | Oaktree | 04-28 특이 동향 미확인 | — | — |
+| David Tepper | Appaloosa | 04-28 특이 동향 미확인 | — | — |
+| Soros Fund | Soros Fund Mgmt | 04-28 특이 동향 미확인 | — | — |
 
-> **주목 포인트:**
+> **주목 포인트 (04-28 추가):**
 > - Cathie Wood: AMD 고점 매도(차익실현) + AMZN 실적 발표 전 포지션 구축 → 빅테크 4/29 실적에 대한 확신 시그널
-> - Ackman + Buffett + Wood 모두 AMZN 보유 = 세 거물의 컨빅션 주식 확인
+> - Ackman + Buffett + Wood 모두 AMZN 보유 = 세 거물의 컨빅션 주식
+> - GM EBIT 가이던스 상향 → Buffett 보유 종목(Berkshire-GM 노출 없음)이나 경기 지표로 활용
+> - **내일(4/29) 빅테크 실적 + FOMC = 역대급 이벤트 밀집도**
 
 ---
 
@@ -202,4 +229,5 @@ collection_status: SUCCESS
 | 2026-04-23 | market-data-collector | 04-22 발표 결과 반영 — TSLA Q1 EPS $0.41 Beat. 이란 호르무즈 선박 2척 나포. WTI $92.96/Brent $101.91 급등. |
 | 2026-04-24 | market-data-collector | 04-23 결과 반영 — IBM/ServiceNow/TI Q1. FOMC 의사록 오류 정정. 한국 Q1 GDP +1.7% 서프라이즈. |
 | 2026-04-26 | market-data-collector | 주말 전면 갱신 — 04-24 Intel Q1 EPS +2,800% 서프라이즈 반영. 빅테크 실적 일자 정정(MSFT/META/AMZN/GOOGL 4/29, AAPL 4/30). 이란 평화회담 파키스탄 중재 반영(WTI $94.88). 4/30 "쿼드러플 폭탄" 상세화. |
-| **2026-04-27** | **market-data-collector** | **이브닝 전면 갱신** — **이란 협상 전격 결렬** 반영(트럼프 위트코프·쿠슈너 파키스탄 방문 취소 4/25). **WTI $95~96+ 재급등** / Brent $107+. **4/27 아시아 신고가**: 닛케이 60,537(역대) / KOSPI 6,615. SENSEX +639p 반등(이란 신제안). **크립토 반등**: BTC $79,124(+2.04%) / ETH $2,388(+3.04%) / F&G 47 Neutral. **Gold $4,726 / Silver $76.47** 회복. **거물 투자자 동향**: Cathie Wood AMD $75M 매도+AMZN $71.5M 매수 / Ackman AMZN 신규 / Druckenmiller Alphabet 확대. **빅테크 컨센서스 상세화**: GOOGL $2.64EPS/$92.2B / AMZN Rev $173.5~178.5B. **Core PCE 상방 리스크 경고 강화**(WTI $95+ 환경). |
+| 2026-04-27 | market-data-collector | 이브닝 전면 갱신 — 이란 협상 전격 결렬 반영. WTI $95~96+ 재급등. 아시아 신고가: 닛케이 60,537 / KOSPI 6,615. 크립토 반등: BTC $79,124 / F&G 47 Neutral. 거물 투자자 동향 추가. |
+| **2026-04-28** | **market-data-collector** | **이브닝 갱신** — **04-28 실적 결과 반영**: UPS(Beat), GM(인라인+가이던스상향), GE Aerospace(강력Beat/-4% 가이던스실망), Honeywell(EPSBeat/RevMiss). **FOMC 1일차 시작**. **WTI $98.97 / Brent $111.57** (이란 신제안). **CB 소비자신뢰 4월 하락 확인**. **S&P +1.05% / KOSPI 6,666 신고가**. |
