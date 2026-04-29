@@ -352,6 +352,21 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
   - 사용자 보유 평가금 ↔ 매수 권고 가격 불일치 시 → 분석 중단·재수집
   - 가격 미수집 종목으로 강력 권고 작성 금지 (자동 제외)
 
+  ★ JSON_OUTPUT 블록 파싱 의무 [v3.13]
+  - stdout 에서 `JSON_OUTPUT_START` ~ `JSON_OUTPUT_END` 사이 블록만 파싱
+    실행 예: python3 scripts/fetch_price.py VOO QQQ 012450 000660 \
+              | awk '/JSON_OUTPUT_START/{flag=1;next}/JSON_OUTPUT_END/{flag=0}flag'
+  - 블록 외 stdout 출력(경고·로그·진단 메시지)은 **전부 무시**
+  - 특히 다음 메시지를 "미설치"로 오독 절대 금지:
+    "KRX 로그인 실패: KRX_ID 또는 KRX_PW 환경 변수가 설정되지 않았습니다"
+    → 이는 단순 경고. pykrx 자체는 정상 작동. 한국 종목은 JSON 블록에 포함됨.
+  - 거짓 fetch 실패 사유 작성 절대 금지:
+    ❌ "pykrx 미설치", "yfinance 환경 오류", "Python 환경 누락"
+    ❌ stdout 경고 메시지를 미설치 사유로 오독한 일체의 표현
+  - 한국 종목 fetch 결과 판단 = **JSON 블록 출력 결과로만 판단**.
+    사전 추측·환경 메시지 해석은 절대 근거가 될 수 없음.
+  - JSON 블록에서 누락된 종목 → 사유는 "JSON 블록 미포함" 으로만 표기
+
   ★ Graceful fail (Phase 1.5 실패 시):
   - fetch_price.py 실행 실패 (Python 환경·네트워크) → fallback 모드
     → 강력 매수/매도 권고 섹션 SKIP + 상단에 "가격 데이터 미수집" 경고 박스
