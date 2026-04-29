@@ -333,7 +333,31 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
   - analysis/briefing/lead_morning_*.md (최근 7일치)
   - analysis/briefing/lead_evening_*.md (최근 7일치)
   - analysis/briefing/lead_weekly_*.md (최근 1건)
-  - KB market/* (현재가·ATR·지수 스냅샷)
+  - KB market/* (지수·환율·원자재 스냅샷 — 개별 종목 가격 X)
+
+[Phase 1.5] ★ 추천 후보 + 보유 종목 실시간 가격 수집 (필수, hallucination 차단)
+  - 트리거: Phase 2-1 후보 풀 추출 직후, Phase 2-4 강력 권고 작성 직전
+  - 대상 티커 모음: 사용자 보유 종목 + Phase 2-1 후보 풀 (총 12~15개)
+  - 실행:
+      python scripts/fetch_price.py {ticker1} {ticker2} ... {tickerN}
+    * 미국: 알파벳 티커 → yfinance (GLD, SOXX, XLE, AMZN 등)
+    * 한국: 6자리 숫자 → pykrx (012450, 000660 등)
+  - 산출: stdout JSON 파싱 → analysis/briefing/user_portfolio_prices_{YYYYMMDD}.json
+    각 티커별 {current_price, atr_14, high_52w, low_52w, name}
+
+  ★ 가격 인용 절대 룰 (모든 강력 권고 작성 시):
+  - fetch_price.py 출력 외 가격 인용 금지
+  - "daily_snapshot 기준", "KB market 기준" 등 거짓 출처 인용 금지
+  - ETF 가격을 spot 가격에서 임의 환산 금지 (예: GLD ≈ Gold ÷ 17 ← 절대 금지)
+  - 사용자 보유 평가금 ↔ 매수 권고 가격 불일치 시 → 분석 중단·재수집
+  - 가격 미수집 종목으로 강력 권고 작성 금지 (자동 제외)
+
+  ★ Graceful fail (Phase 1.5 실패 시):
+  - fetch_price.py 실행 실패 (Python 환경·네트워크) → fallback 모드
+    → 강력 매수/매도 권고 섹션 SKIP + 상단에 "가격 데이터 미수집" 경고 박스
+    → 자산군 비교 + 매크로 요약 + 종목 풀 (가격 없이 점수만) 만 진행
+  - 일부 종목만 실패 → 해당 종목만 추천 풀에서 제외 + 표기
+  - 보유 종목 fetch 결과 vs user_portfolio.md 평가금 차이 5% 초과 시 → 경고 박스 (사용자 갱신 권고)
 
 [Phase 2] 처리
 
