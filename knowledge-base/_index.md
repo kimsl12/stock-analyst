@@ -78,6 +78,9 @@ lint_mode: full
 | 2026-04-25 | 이브닝브리핑 | X-Energy(XE) IPO $23→$30.11(원자력 역대최대 $10B+) — AI DC 전력 수요 구조적 수혜 SMR 신규 테마. Marks/Druckenmiller 에너지전환 컨버전스 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-25 | 주간리포트 | "AI 가위" 주간 종합 — Philly Sox 18일 연승(역대 최장) + Intel +2,800% vs ServiceNow -18%/IBM -10.3%. AI 인프라↑/전통SaaS↓ 구조적 분열 공식화. PSR 프리미엄 체제 전환 시작 | `market/daily_snapshot.md, lead_weekly_20260425.md C-3.5` | 진행중 |
 | 2026-04-25 | 주간리포트 | 4/30 "트리플 폭탄" 분기점 — GDP Q1 Advance(GDPNow 1.24%) + Core PCE 3월 + MSFT/META Q1 동시 발표. Bear 55% 가중: 선행(소비심리 49.8/WTI $96)이 후행(실적 81% Beat)을 4~8주 잠식 확률 우세 | `macro/us_economy.md, lead_weekly_20260425.md C-7` | 진행중 |
+| 2026-04-29 | 이브닝브리핑 | FOMC "risks of higher inflation persist" 신규 삽입 = 3월 대비 매파 시프트. 6월 인하 20~25%로 축소. WTI $99+UAE OPEC 탈퇴+Core PCE 3.0%+ 시 연내 인하 0회 가능 | `macro/us_monetary_policy.md, market/economic_calendar.md` | 진행중 |
+| 2026-04-29 | 이브닝브리핑 | 빅테크 "80초의 심판" D-Day — MSFT/META/AMZN/GOOGL 장후 동시. AI CapEx $600~645B 정당성 최대 검증. OpenAI 미스 직후라 가이던스가 핵심. AMZN 4거물 컨버전스 실시간 검증 | `market/economic_calendar.md, market/guru_positions.md` | 진행중 |
+| 2026-04-29 | 이브닝브리핑 | Gold $4,577 구조적 Bull 내 최적 매수 구간(contrarian) — 중앙은행 585톤/분기+JPM $5,200+Dalio/Druckenmiller/Marks 3거물 확신 vs 실질금리 단기 상승 | `macro/global_risk_factors.md §4, market/correlation_matrix.md` | 진행중 |
 | 2026-04-25 | 주간리포트 | Gold $4,724 주간 -2% 조정 = 구조적 Bull 내 매수 기회(contrarian). Gold-실질금리 상관 붕괴(+0.18 vs 전통 -0.45) 4주째 지속. 중앙은행 1,000톤+/년 + JPM $5,055(4Q26E) | `macro/global_risk_factors.md §4, market/correlation_matrix.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | 트럼프 이란 특사 파견 취소(4/25 저녁) — 대면→전화 전환. 금요일 "평화회담 기대" 서사 번복. WTI $94.88 유지이나 월요일 반등 리스크. 오만 무스카트 대안 중재지 부상 | `macro/geopolitics.md §2-1, market/daily_snapshot.md` | 진행중 |
 | 2026-04-26 | 모닝브리핑 | WTI↔BEI "서비스 인플레 고착" 구조 전환 최초 포착 — WTI 하락(-1.24%)에도 10Y 상승(+2bp). 에너지→서비스 인플레 동력 이동 시사. 4/30 Core PCE 최종 판별자 | `market/correlation_matrix.md, macro/us_economy.md` | 진행중 |
