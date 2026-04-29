@@ -231,6 +231,51 @@ tr:hover{background:rgba(255,255,255,0.02)}
 .portfolio-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px;border:1px solid var(--border)}
 .portfolio-card h4{font-size:15px;margin-bottom:10px}
 
+/* user_portfolio_v2 전용 시각 요소 (04-14 양식 [v3.12]) */
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:16px 0}
+.metric-card{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.metric-card .label{color:var(--text-secondary);font-size:0.8rem;margin-bottom:8px;text-transform:uppercase}
+.metric-card .value{font-size:1.5rem;font-weight:700}
+.metric-card .change{font-size:0.85rem;margin-top:4px}
+
+.donut-container{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;margin:20px 0}
+.donut-chart{position:relative;width:200px;height:200px}
+.donut-chart svg{transform:rotate(-90deg)}
+.donut-chart .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:0.85rem;color:var(--text-secondary)}
+.donut-chart .center-text .amount{font-size:1.1rem;font-weight:700;color:var(--text-primary);display:block}
+.legend{display:flex;flex-direction:column;gap:10px}
+.legend-item{display:flex;align-items:center;gap:10px;font-size:0.9rem}
+.legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+.bar-chart{margin:16px 0}
+.bar-row{display:flex;align-items:center;margin:8px 0;gap:12px}
+.bar-label{width:120px;font-size:0.85rem;color:var(--text-secondary);flex-shrink:0}
+.bar-track{flex:1;height:24px;background:var(--bg-tertiary);border-radius:4px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .5s ease;display:flex;align-items:center;padding-left:8px;font-size:0.75rem;font-weight:600;color:#fff}
+.bar-target{position:absolute;top:0;height:100%;width:2px;background:var(--accent-gold)}
+.bar-target-label{position:absolute;top:-18px;font-size:0.65rem;color:var(--accent-gold);white-space:nowrap;transform:translateX(-50%)}
+
+.alert-box{border-left:4px solid var(--accent-red);background:rgba(248,81,73,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
+.alert-box.warn{border-left-color:var(--accent-orange);background:rgba(210,153,34,0.08)}
+.alert-box.success{border-left-color:var(--accent-green);background:rgba(63,185,80,0.08)}
+.alert-box.info-box{border-left-color:var(--accent-blue);background:rgba(88,166,255,0.08)}
+
+.action-card{border:2px solid var(--accent-green);background:rgba(63,185,80,0.05);border-radius:8px;padding:20px;margin:16px 0}
+.action-card h3{color:var(--accent-green);margin-bottom:12px}
+
+.timeline{border-left:3px solid var(--accent-blue);margin:16px 0;padding-left:24px}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-30px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent-blue);border:2px solid var(--bg-secondary)}
+.timeline-item .time{color:var(--accent-blue);font-weight:600;font-size:0.9rem}
+.timeline-item .content{color:var(--text-secondary);font-size:0.9rem;margin-top:4px}
+
+.risk-meter{display:flex;align-items:center;gap:8px;margin:8px 0}
+.risk-level{display:flex;gap:3px}
+.risk-bar{width:20px;height:10px;border-radius:2px;background:var(--bg-tertiary)}
+.risk-bar.active-low{background:var(--accent-green)}
+.risk-bar.active-mid{background:var(--accent-orange)}
+.risk-bar.active-high{background:var(--accent-red)}
+
 /* 강력 매수/매도 권고 카드 (template=user_portfolio_v2 전용) */
 .strong-buy{
   background:rgba(248,81,73,0.08);
@@ -461,6 +506,106 @@ function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="li
 | performance_review | 📈 | 적중률 도넛 + 모듈 분해 차트 + 교훈 노트 | ❌ | ❌ | ❌ |
 | user_portfolio | 👤 | 사용자 보유 자산 vs 4종 모델 비교 (v1, deprecated) | ✅ | ❌ | ❌ |
 | user_portfolio_v2 | 👤 | 9개 섹션: 프로파일·자산군·매크로요약·등장종목풀·갭분석·🔴강력매수·🔵강력매도·모니터링·4종비교 | ✅ | ❌ | ❌ |
+
+---
+
+## ★ user_portfolio_v2 전용 표준 양식 (강제 — 2026-04-14 양식 채택 [v3.12])
+
+이 템플릿은 **2026-04-14 user_portfolio HTML 양식**을 정식 표준으로 채택. 모든 `/내포트폴리오 --html` 출력은 본 양식을 강제로 따른다.
+
+### 강제 시각 요소 (반드시 포함)
+
+| 요소 | CSS 클래스 | 사용 섹션 |
+|---|---|---|
+| 메트릭 카드 그리드 | `.metric-grid` + `.metric-card` (label / value / change) | §1 프로파일, §10 시장 데이터 |
+| 도넛 차트 (자산 배분) | `.donut-chart` + `<svg>` 인라인 | §2 자산군 현황 |
+| 바 차트 (현재 vs 목표) | `.bar-chart` + `.bar-row` + `.bar-fill` + `.bar-target` | §2 자산군 갭, §5 갭 분석 |
+| 알림 박스 (위험·정보·성공·경고) | `.alert-box` + `.warn` / `.success` / `.info-box` (하단 변형) | §3 매크로 요약, §5 갭 분석 |
+| 강력 매수 카드 | `.strong-buy` + `.ticker-head` + `.what` + `.why` + `.how` + `.score` | §6 강력 매수 (필수 5종) |
+| 강력 매도 카드 | `.strong-sell` + 동일 구조 | §7 강력 매도 |
+| 타임라인 | `.timeline` + `.timeline-item` (`.time` + `.content`) | §8 모니터링 포인트 |
+| 위험 미터 | `.risk-meter` + `.risk-level` + `.risk-bar.active-low/mid/high` | §5 갭 분석 (선택) |
+| 액션 카드 | `.action-card` (녹색 테두리, 즉시 실행 권고용) | §6 매수 권고 보조 |
+
+### 강제 헤더 구조
+
+```html
+<div class="header">
+  <h1>내 포트폴리오 — 강력 처방 v2</h1>
+  <div class="subtitle">{한 줄 요약 — 자산 배분 핵심 + 환경}</div>
+  <div class="date-badge">{YYYY-MM-DD} ({요일}) | 환율 $1 = {KRW}원</div>
+</div>
+```
+
+### 강제 푸터 (모닝/이브닝 정식 표준 .cmd-grid 채택)
+
+```html
+<div class="footer">
+  <h3>명령어 가이드</h3>
+  <div class="cmd-grid">
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 암호화폐</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/리밸런싱</code> 비중 재조정</div>
+    <div><code>/글로벌인텔리전스</code> 매크로</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/내포트폴리오</code> 개인 처방</div>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:var(--sub)">
+    생성: briefing-report-generator | 모드: user_portfolio_v2 (private) |
+    데이터 기준: fetch_price.py {YYYY-MM-DD} {HH:MM} KST
+  </p>
+</div>
+```
+
+### 강제 9개 섹션 (순서·번호 고정)
+
+```
+1. 투자자 프로파일       — .metric-grid (총 자산 / 보유 USD / 보유 KRW / 프로파일)
+2. 보유 종목 + 자산군 현황 — .donut-chart + .bar-chart (현재 vs 모델 목표)
+3. 이번주 매크로 요약     — 3줄 ol + .alert-box (Bear/위험 시)
+4. 이번주 등장 종목 풀     — 적합도 점수표 (절대매력·갭매칭·빈도·최근성·합산)
+5. 포트 갭 분석          — .bar-chart + .alert-box (자산군·섹터·지역)
+6. 🔴 강력 매수 권고      — .strong-buy 5종 (4요소 의무 — 무엇/왜/어떻게/적합도)
+7. 🔵 강력 매도/축소 권고  — .strong-sell N종 (4요소 의무)
+8. 다음주 모니터링 포인트  — .timeline (트리거 일자별)
+9. 4종 모델 포트폴리오 비교 — table (안전/중립/공격/배당 vs 사용자 변경 후)
+```
+
+### 색상 팔레트 (CSS 변수 — 강제)
+
+```css
+:root {
+  --bg-primary: #0d1117;       /* 본문 배경 */
+  --bg-secondary: #161b22;     /* 섹션 배경 */
+  --bg-tertiary: #21262d;      /* 카드 배경 */
+  --border: #30363d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --accent-blue: #58a6ff;      /* 정보·매도 */
+  --accent-green: #3fb950;     /* 성공·상승 */
+  --accent-red: #f85149;       /* 매수·경고 */
+  --accent-orange: #d29922;    /* 주의 */
+  --accent-purple: #8b5cf6;    /* 채권·debate */
+  --accent-gold: #f0c040;      /* 금·목표선 */
+  --accent-cyan: #39d2c0;      /* 보조 */
+}
+```
+라이트 테마 토글은 `[data-theme="light"]` 분기로 전체 변수 재정의 (모닝/이브닝과 동일 패턴).
+
+### 면책 처리 (v2 정책 — 절대 금지)
+
+- ❌ Disclaimer 박스 삽입 금지 (`.disclaimer` 클래스 사용 X)
+- ❌ "투자 권유 아님", "정보 제공 목적" 등 면책 문구 삽입 금지
+- ❌ G-9, F-7 다중 사용자용 면책 일체 금지
+- ✅ 푸터 하단 `생성: briefing-report-generator | 모드: user_portfolio_v2 (private)` 라인만 허용
+
+### briefing-lead 직접 HTML 작성 금지
+
+본 템플릿은 **반드시 briefing-report-generator 가 렌더링**한다. briefing-lead 가 자체 HTML 골격을 작성하면 양식 위반 → 즉시 폐기·재생성. 검증 단계에서 footer 시그니처(`Generated by briefing-lead`) 발견 시 분석 중단.
 
 ---
 
