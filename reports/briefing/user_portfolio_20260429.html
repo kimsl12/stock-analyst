@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내 포트폴리오 강력 처방 | 2026-04-29</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-red: #f85149;
+    --accent-orange: #d29922;
+    --accent-purple: #8b5cf6;
+    --accent-gold: #f0c040;
+    --accent-cyan: #39d2c0;
+  }
+  [data-theme="light"] {
+    --bg-primary: #f5f7fa; --bg-secondary: #ffffff; --bg-tertiary: #eaeef2;
+    --border: #d0d7de; --text-primary: #1f2328; --text-secondary: #57606a;
+    --text-muted: #8c959f; --accent-blue: #0969da; --accent-green: #1a7f37;
+    --accent-red: #cf222e; --accent-orange: #bc4c00; --accent-purple: #6639ba;
+    --accent-gold: #9a6700; --accent-cyan: #1b7c83;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg-primary); color: var(--text-primary); line-height: 1.6;
+    padding: 20px; max-width: 1200px; margin: 0 auto;
+    transition: background 0.2s, color 0.2s;
+  }
+  .theme-toggle-bar {
+    position: sticky; top: 0; z-index: 100; background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border); padding: 10px 16px;
+    margin: -20px -20px 20px -20px; display: flex; justify-content: flex-end; align-items: center; gap: 12px;
+  }
+  .theme-toggle-btn {
+    background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border);
+    border-radius: 20px; padding: 6px 14px; cursor: pointer; font-size: 0.85rem;
+  }
+  .theme-toggle-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+
+  .header {
+    text-align: center; padding: 30px 20px;
+    border-bottom: 2px solid var(--accent-red); margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2.0rem; color: var(--accent-red); margin-bottom: 10px; }
+  .header .subtitle { color: var(--text-secondary); font-size: 0.95rem; }
+  .header .date-badge {
+    display: inline-block; background: var(--bg-tertiary); border: 1px solid var(--accent-red);
+    border-radius: 20px; padding: 6px 16px; margin-top: 12px; font-size: 0.9rem; color: var(--accent-red);
+  }
+
+  .privacy-banner {
+    background: var(--bg-tertiary); border: 1px dashed var(--accent-orange);
+    border-radius: 6px; padding: 10px 14px; margin: 0 0 24px 0;
+    color: var(--text-secondary); font-size: 0.85rem; text-align: center;
+  }
+
+  .section {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 8px; padding: 22px 24px; margin-bottom: 22px;
+  }
+  .section h2 {
+    color: var(--accent-blue); font-size: 1.3rem; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .section h3 { color: var(--text-primary); font-size: 1.08rem; margin: 18px 0 10px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9rem; }
+  th { background: var(--bg-tertiary); color: var(--accent-blue); padding: 9px 12px; text-align: left; border: 1px solid var(--border); font-weight: 600; }
+  td { padding: 9px 12px; border: 1px solid var(--border); color: var(--text-primary); background: var(--bg-secondary); }
+  tr:nth-child(even) td { background: var(--bg-tertiary); }
+
+  .change-up   { color: var(--accent-green); font-weight: 600; }
+  .change-down { color: var(--accent-red);   font-weight: 600; }
+  .change-flat { color: var(--accent-gold);  font-weight: 600; }
+
+  .strong-buy {
+    background: var(--bg-tertiary);
+    border-left: 6px solid var(--accent-red);
+    border-radius: 6px; padding: 16px 20px; margin: 14px 0;
+  }
+  .strong-buy h4 { color: var(--accent-red); font-size: 1.1rem; margin-bottom: 8px; }
+  .strong-sell {
+    background: var(--bg-tertiary);
+    border-left: 6px solid var(--accent-blue);
+    border-radius: 6px; padding: 16px 20px; margin: 14px 0;
+  }
+  .strong-sell h4 { color: var(--accent-blue); font-size: 1.1rem; margin-bottom: 8px; }
+
+  .four-elem { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; margin: 8px 0; font-size: 0.92rem; }
+  .four-elem .k { color: var(--text-secondary); font-weight: 600; }
+  .four-elem .v { color: var(--text-primary); }
+
+  .pbar { width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 4px; height: 14px; overflow: hidden; }
+  .pbar > span { display: block; height: 100%; background: var(--accent-blue); }
+  .pbar.warn > span { background: var(--accent-red); }
+  .pbar.mid  > span { background: var(--accent-orange); }
+  .pbar.ok   > span { background: var(--accent-green); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } body { padding: 12px; } .theme-toggle-bar { margin: -12px -12px 16px -12px; } .four-elem { grid-template-columns: 90px 1fr; } }
+
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78rem; margin-right: 4px; }
+  .tag-bull    { background: rgba(63,185,80,0.18);  color: var(--accent-green); }
+  .tag-bear    { background: rgba(248,81,73,0.18);  color: var(--accent-red); }
+  .tag-caution { background: rgba(210,153,34,0.20); color: var(--accent-orange); }
+  .tag-info    { background: rgba(88,166,255,0.18); color: var(--accent-blue); }
+  .tag-strong  { background: rgba(248,81,73,0.30);  color: var(--accent-red); font-weight: 700; }
+
+  ul, ol { margin-left: 22px; } li { margin: 4px 0; }
+  .footer { margin-top: 36px; padding: 18px; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.82rem; text-align: center; }
+  .source-tag { color: var(--text-muted); font-size: 0.8rem; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="theme-toggle-bar">
+  <button class="theme-toggle-btn" onclick="toggleTheme()">🌓 다크/라이트</button>
+</div>
+
+<div class="header">
+  <h1>내 포트폴리오 강력 처방</h1>
+  <div class="subtitle">v2 단정 톤 · 4요소 처방 · 16개월 정상화 로드맵</div>
+  <div class="date-badge">2026-04-29 (수) | briefing-lead</div>
+</div>
+
+<div class="privacy-banner">
+  ⚠️ 사용자 1인의 개인 데이터입니다. 외부 공유·캡처 금지.
+</div>
+
+<!-- 1. Profile -->
+<div class="section">
+  <h2>1. 투자자 프로파일</h2>
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td>투자 성향</td><td>중립 (Balanced)</td></tr>
+    <tr><td>매월 적립 가능액</td><td>200만원 (≈ $1,353, USD/KRW 1,478)</td></tr>
+    <tr><td>투자 기간</td><td>5년+ (장기)</td></tr>
+    <tr><td>관심 테마</td><td>없음 (인덱스 중심)</td></tr>
+    <tr><td>등록일 / 갱신</td><td>2026-04-13 / 2026-04-29</td></tr>
+  </table>
+</div>
+
+<!-- 2. Holdings -->
+<div class="section">
+  <h2>2. 보유 종목 + 자산군 현황 (2026-04-29 기준)</h2>
+  <h3>보유 종목</h3>
+  <table>
+    <tr><th>티커</th><th>종목</th><th>수량</th><th>평가금</th><th>비중</th><th>수익률</th></tr>
+    <tr><td>VOO</td><td>Vanguard S&amp;P 500</td><td>24.4697</td><td>$15,987.16</td><td><strong>91.4%</strong></td><td class="change-up">+7.4%</td></tr>
+    <tr><td>QQQ</td><td>Invesco NASDAQ 100</td><td>1.2485</td><td>$821.59</td><td>4.7%</td><td class="change-up">+8.2%</td></tr>
+    <tr><td>VIG</td><td>Vanguard Dividend Appreciation</td><td>1.6196</td><td>$364.20</td><td>2.1%</td><td class="change-down">-0.4%</td></tr>
+    <tr><td>AGG</td><td>iShares Core US Agg Bond</td><td>3.0000</td><td>$297.30</td><td>1.7%</td><td class="change-up">+0.2%</td></tr>
+    <tr><td>SCHD</td><td>Schwab US Dividend Equity</td><td>0.4345</td><td>$13.58</td><td>0.1%</td><td class="change-up">+14.8%</td></tr>
+    <tr><td>GLD</td><td>SPDR Gold Shares</td><td>0.0015</td><td>$0.61</td><td>0.003%</td><td class="change-down">-7.7%</td></tr>
+    <tr><td>현금</td><td>USD</td><td>—</td><td>$0.01</td><td>0.0%</td><td>—</td></tr>
+    <tr><td colspan="3"><strong>총자산</strong></td><td><strong>$17,484.47</strong></td><td>100%</td><td class="change-up">+7.1%</td></tr>
+  </table>
+
+  <h3>자산군 갭 (중립형 모델 vs 현재)</h3>
+  <table>
+    <tr><th>자산군</th><th>현재</th><th>목표</th><th>갭(%p)</th><th>시각화</th><th>상태</th></tr>
+    <tr><td>미국 주식</td><td>98.3%</td><td>45%</td><td class="change-up">+53.3</td><td><div class="pbar warn"><span style="width:100%"></span></div></td><td><span class="tag tag-bear">극단 편중</span></td></tr>
+    <tr><td>한국 주식</td><td>0.0%</td><td>17%</td><td class="change-down">-17.0</td><td><div class="pbar"><span style="width:0%"></span></div></td><td><span class="tag tag-bear">완전 부재</span></td></tr>
+    <tr><td>채권</td><td>1.7%</td><td>15%</td><td class="change-down">-13.3</td><td><div class="pbar"><span style="width:11%"></span></div></td><td><span class="tag tag-bear">극도 부족</span></td></tr>
+    <tr><td>금/원자재</td><td>0.003%</td><td>8%</td><td class="change-down">-8.0</td><td><div class="pbar"><span style="width:0%"></span></div></td><td><span class="tag tag-bear">사실상 부재</span></td></tr>
+    <tr><td>반도체+방산+크립토</td><td>0.0%</td><td>16%</td><td class="change-down">-16.0</td><td><div class="pbar"><span style="width:0%"></span></div></td><td><span class="tag tag-bear">미보유</span></td></tr>
+    <tr><td>현금/MMF</td><td>0.0%</td><td>6%</td><td class="change-down">-6.0</td><td><div class="pbar"><span style="width:0%"></span></div></td><td><span class="tag tag-bear">고갈</span></td></tr>
+  </table>
+  <p><strong>핵심 진단:</strong> 사실상 <span class="tag tag-strong">VOO 단일 베팅 91.4%</span>. 4/30 GDP+Core PCE+빅테크 4건 동시 이벤트의 S&amp;P 충격이 곧 포트 전체 충격으로 직결. 분산 시급도 <strong>최상위</strong>.</p>
+</div>
+
+<!-- 3. Macro -->
+<div class="section">
+  <h2>3. 이번주 매크로 요약 (3줄)</h2>
+  <ol>
+    <li><strong>AI 가위 — 인프라 Bull / 전통 SaaS Bear.</strong> Intel +2,800% Beat, SOX 18연승(역대 최장), ServiceNow -18%·IBM -10.3%. NVDA 시총 $5조 재탈환. <span class="source-tag">[lead_weekly_20260425 §C-3.5]</span></li>
+    <li><strong>호르무즈 순환 교착 + UAE OPEC 탈퇴(5/1 발효).</strong> WTI $99~103, Brent $111+. 4월 평균 유가가 5~6월 CPI 에너지에 시차 전이 → Core PCE 3.0%+ 고착 시 연내 인하 0회 시나리오 50%+. <span class="source-tag">[lead_evening_20260427·20260429]</span></li>
+    <li><strong>FOMC 동결 + "risks of higher inflation persist" 매파 시프트 + 파월 5/15 만료 → Warsh 전환.</strong> 6월 인하 확률 20~25% 축소. 채권 듀레이션 확장 불리. <span class="source-tag">[lead_evening_20260429 §B-1]</span></li>
+  </ol>
+</div>
+
+<!-- 4. Candidate Pool -->
+<div class="section">
+  <h2>4. 이번주 등장 종목 풀 (적합도 점수표)</h2>
+  <p style="color:var(--text-secondary); font-size:0.88rem;">적합도 = 절대매력도(0.35) + 갭매칭(0.30) + 등장빈도(0.20) + 최근성(0.15)</p>
+  <table>
+    <tr><th>#</th><th>티커</th><th>종목</th><th>절대매력</th><th>갭매칭</th><th>빈도</th><th>최근성</th><th>점수</th><th>핵심 출처</th></tr>
+    <tr><td>1</td><td><strong>GLD</strong></td><td>SPDR Gold</td><td>88</td><td>95</td><td>90</td><td>100</td><td><strong class="change-up">92.7</strong></td><td>weekly C-5, evening 4/28~29 contrarian</td></tr>
+    <tr><td>2</td><td><strong>SOXX</strong></td><td>iShares Semiconductor</td><td>92</td><td>92</td><td>85</td><td>95</td><td><strong class="change-up">91.0</strong></td><td>weekly C-5 등급 S, evening 4/27</td></tr>
+    <tr><td>3</td><td><strong>AMZN</strong></td><td>Amazon</td><td>90</td><td>70</td><td>95</td><td>100</td><td><strong class="change-up">86.5</strong></td><td>morning 4/29 4거물 컨버전스</td></tr>
+    <tr><td>4</td><td><strong>SK하이닉스(000660)</strong></td><td>SK Hynix</td><td>90</td><td>85</td><td>80</td><td>90</td><td><strong class="change-up">86.5</strong></td><td>weekly C-5 등급 A, evening 4/27</td></tr>
+    <tr><td>5</td><td><strong>한화에어로(012450)</strong></td><td>한화에어로스페이스</td><td>88</td><td>85</td><td>75</td><td>90</td><td><strong class="change-up">84.8</strong></td><td>weekly C-5, evening 4/27 §B-6</td></tr>
+    <tr><td>6</td><td><strong>XLE</strong></td><td>SPDR Energy</td><td>82</td><td>80</td><td>70</td><td>95</td><td><strong class="change-up">81.2</strong></td><td>weekly C-5 등급 A, evening 4/27 배당형</td></tr>
+    <tr><td>7</td><td>CVX</td><td>Chevron</td><td>78</td><td>75</td><td>75</td><td>85</td><td>77.6</td><td>evening 4/27~29, Buffett 5위</td></tr>
+    <tr><td>8</td><td>IEF</td><td>iShares 7-10Y Treasury</td><td>75</td><td>90</td><td>60</td><td>70</td><td>75.0</td><td>중립형 채권 15% 핵심</td></tr>
+  </table>
+  <p style="margin-top:10px;"><strong>Top 5 처방 대상:</strong> GLD · SOXX · 한화에어로(012450) · XLE · AMZN</p>
+</div>
+
+<!-- 5. Gap analysis -->
+<div class="section">
+  <h2>5. 포트 갭 분석 — 자산군별 매수 배분</h2>
+  <table>
+    <tr><th>자산군</th><th>갭(%p)</th><th>갭 USD</th><th>월 적립 200만원 배분</th></tr>
+    <tr><td>한국 주식</td><td class="change-down">-17.0</td><td>-$2,972</td><td>$400 (≈ 59만원)</td></tr>
+    <tr><td>채권 (중기)</td><td class="change-down">-13.3</td><td>-$2,325</td><td>$250 (≈ 37만원)</td></tr>
+    <tr><td>금/원자재</td><td class="change-down">-8.0</td><td>-$1,399</td><td>$300 (≈ 44만원)</td></tr>
+    <tr><td>반도체+방산</td><td class="change-down">-12.0</td><td>-$2,098</td><td>$250 (≈ 37만원)</td></tr>
+    <tr><td>현금/MMF</td><td class="change-down">-6.0</td><td>-$1,049</td><td>$150 (≈ 22만원)</td></tr>
+    <tr><td>미국 주식 (VOO)</td><td class="change-up">+53.3</td><td>+$9,319</td><td><strong class="change-down">신규 적립 0 (잠금)</strong></td></tr>
+    <tr><td colspan="3"><strong>합계</strong></td><td><strong>$1,350 (200만원)</strong></td></tr>
+  </table>
+  <p style="margin-top:10px;">VOO는 신규 매수 즉시 정지. <strong>월 적립 전액을 부족 자산군 5종에 배분.</strong> 16개월 유지 시 미국 편중 50%대로 정상화.</p>
+</div>
+
+<!-- 6. Strong Buy -->
+<div class="section">
+  <h2>6. <span style="color:var(--accent-red);">🔴 강력 매수 권고</span> (Top 5)</h2>
+
+  <div class="strong-buy">
+    <h4>매수 1. GLD — SPDR Gold Shares (NYSE) <span class="tag tag-strong">점수 92.7</span></h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>GLD 7주 매수</strong> (≈ $1,862, 비중 +9.7%p)</div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_evening_20260429.md > contrarian-card</em> "Gold $4,577 급락이 2026 최적 매수 구간". 중앙은행 분기 585톤 매수 + JPM $5,200~5,300 / GS $5,400 / UBS $6,200 4Q26E 컨센. (b) 사용자 GLD 0.001주 = 사실상 부재, 갭 -8.0%p. (c) Gold-DXY 역상관 붕괴 3주 = "기축통화 대안" 역할 전환 — 단기 실질금리 상승에 덜 민감.</div>
+      <div class="k">③ 어떻게</div><div class="v">진입가 <strong>$255~268</strong> (Gold spot $4,500~4,720). 손절 <strong>$245</strong> (Gold $4,300, ATR 2σ). 12M 목표 <strong>$295</strong> (Gold $5,100, IB 컨센 중간값). 4주 분할: 2+2+2+1주.</div>
+      <div class="k">④ 적합도</div><div class="v">갭 매칭 95 / 절대매력 88 / <strong>점수 92.7 (Top 1)</strong></div>
+    </div>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 2. SOXX — iShares Semiconductor ETF (NASDAQ) <span class="tag tag-strong">점수 91.0</span></h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>SOXX 1주 매수</strong> (≈ $290, 비중 +1.6%p) — 첫 진입</div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_weekly_20260425.md > C-5</em> 등급 S Bull "Philly Sox 18일 연승, Intel +2,800%, AI CapEx $2,000억+/년 슈퍼사이클 7회 초~중반". (b) 사용자 QQQ 4.7% 보유 — 반도체 순수 노출 0. 빅테크 광범위 ETF 안 반도체 비중 ~7%로 슈퍼사이클 직접 수혜 누수. (c) 거물 컨버전스: Tepper MU +200%, Dalio NVDA +54%.</div>
+      <div class="k">③ 어떻게</div><div class="v">진입가 <strong>$278~295</strong>. 손절 <strong>$258</strong> (-7%, 200일 이평). 12M 목표 <strong>$355</strong> (+22%, AI CapEx $700B 정당성 검증 시). 첫 1주 즉시, 2주차 추가 1주 검토.</div>
+      <div class="k">④ 적합도</div><div class="v">절대매력 92 / 갭 92 / <strong>점수 91.0 (Top 2)</strong></div>
+    </div>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 3. 한화에어로스페이스 (012450.KS) <span class="tag tag-strong">점수 84.8</span></h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>한화에어로 5주 매수</strong> (≈ 60만원 / $406, 비중 +2.3%p) — 한국 첫 진입</div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_weekly_20260425.md > C-5</em> 등급 A Bull "유럽 ReArm + 중동 + 북한 3중 수혜, K-방산 $20B 목표, NDAA $901B". 직전 분석 Strong Buy 81.1점. (b) 한국 비중 0% — 갭 -17%p. KOSPI 6,476→6,690 신고가 행진. (c) PBR 디스카운트 + 밸류업 정책 동시 작동.</div>
+      <div class="k">③ 어떻게</div><div class="v">진입가 <strong>115,000~125,000원</strong> (4/29 종가 ~12만원대). 손절 <strong>103,000원</strong> (-14%, 50일 이평 -1ATR). 12M 목표 <strong>160,000원</strong> (+33%, 수출 22조 목표 베이스).</div>
+      <div class="k">④ 적합도</div><div class="v">갭 매칭 85 / 절대매력 88 / <strong>점수 84.8 (Top 3)</strong></div>
+    </div>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 4. XLE — Energy Select Sector SPDR (NYSE) <span class="tag tag-strong">점수 81.2</span></h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>XLE 4주 매수</strong> (≈ $384, 비중 +2.1%p)</div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_evening_20260427.md > B-8</em> 배당형 강화 "WTI $99~103, UAE OPEC 탈퇴 5/1, 호르무즈 기뢰 6개월 = 유가 충격 연말 지속, 정유 마진 역대급". (b) Buffett(CVX/OXY) + Marks(EXE/VNOM/TLN) + Druckenmiller(BE) 3거물 컨버전스. (c) 인플레 헤지·에너지 노출 0 → 인플레 재발 시 보호막 부재.</div>
+      <div class="k">③ 어떻게</div><div class="v">진입가 <strong>$94~99</strong> (4/29 ~$96대). 손절 <strong>$87</strong> (이란 합의 시 $80 시나리오 -ATR). 12M 목표 <strong>$115</strong> (+20%, WTI $95~105 + 배당 3.2%).</div>
+      <div class="k">④ 적합도</div><div class="v">절대매력 82 / 갭 80 / <strong>점수 81.2 (Top 4)</strong></div>
+    </div>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 5. AMZN — Amazon (NASDAQ) <span class="tag tag-strong">점수 86.5 (조건부)</span></h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>AMZN 1주 매수</strong> (≈ $215, 비중 +1.2%p) — <strong style="color:var(--accent-orange);">4/30 새벽 실적 결과 후 진입</strong></div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_morning_20260429.md > A-5</em> "AMZN 4거물 컨버전스 (Ackman 신규 + Wood +$71.5M 4/26 + Druckenmiller +69% + Dalio +73%)" — Q4 13F 이후 가장 강력한 단일 종목 컨버전스. (b) Ackman "P/E 27배 저평가". AWS 성장률 +20% 가이던스. (c) QQQ 안 AMZN ~8% 노출되어 있으나 컨버전스 강도 대비 부족.</div>
+      <div class="k">③ 어떻게</div><div class="v">진입가 <strong>$205~225</strong> (실적 결과 후). 손절 <strong>$185</strong> (가이던스 Miss → -10%). 12M 목표 <strong>$255</strong> (+18%, AWS 25% + 광고 +20% 베이스). Beat 시 1주, Miss 시 $190 대기.</div>
+      <div class="k">④ 적합도</div><div class="v">절대매력 90 / 갭 70 / <strong>점수 86.5</strong></div>
+    </div>
+  </div>
+
+  <h3>매수 합계</h3>
+  <table>
+    <tr><th>항목</th><th>USD</th><th>KRW</th></tr>
+    <tr><td>GLD 7주</td><td>$1,862</td><td>2,752,000원</td></tr>
+    <tr><td>SOXX 1주</td><td>$290</td><td>428,000원</td></tr>
+    <tr><td>한화에어로 5주</td><td>$406</td><td>600,000원</td></tr>
+    <tr><td>XLE 4주</td><td>$384</td><td>567,000원</td></tr>
+    <tr><td>AMZN 1주 (조건부)</td><td>$215</td><td>318,000원</td></tr>
+    <tr><td><strong>소계</strong></td><td><strong>$3,157</strong></td><td><strong>4,665,000원</strong></td></tr>
+  </table>
+  <p style="margin-top:10px;"><strong>이번 달 우선순위 (200만원 내):</strong> GLD 7주 → 한화에어로 5주 → XLE 4주. SOXX·AMZN은 5월 적립분에서. <strong>16개월 적립 로드맵으로 5종 모두 구축.</strong></p>
+</div>
+
+<!-- 7. Strong Sell -->
+<div class="section">
+  <h2>7. <span style="color:var(--accent-blue);">🔵 강력 매도/축소 권고</span></h2>
+
+  <div class="strong-sell">
+    <h4>매도 1. VOO — 신규 매수 정지 + 일부 익절</h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>VOO 4주 매도, 잔여 20.47주 보유</strong> (매도 ≈ $2,612, 비중 91.4% → 76.4%)</div>
+      <div class="k">② 왜</div><div class="v">(a) <em>lead_evening_20260429.md > B-5</em> "S&amp;P↔10Y 15일 연속 동반 변동, 2022.3~4월 유사 후 5월 -4.3% 조정 선례". (b) S&amp;P Fwd PER 22.5x = 10년 평균 +2σ 근접. (c) <strong>단일 자산 91.4% = 분산 원칙 본질적 위배</strong>. 4/30 결과 Bear 시 -5~7% 충격이 곧 포트 -5% 손실.</div>
+      <div class="k">③ 어떻게</div><div class="v">매도 가격 <strong>$650~660</strong> (4/28 종가 $653 부근, 신고가 -1% 내). 매도 자금은 GLD/한화에어로/XLE에 재배분. +7.4% 수익 일부 익절 + 갭 정리 동시 효과. 4/30 Bear 확정 시 추가 4주 매도 검토.</div>
+      <div class="k">④ 적합도</div><div class="v">갭 정리 100 / 차익실현 70 / <strong>점수 88</strong></div>
+    </div>
+  </div>
+
+  <div class="strong-sell">
+    <h4>매도 2. QQQ — 부분 환매 (반도체 ETF로 교체)</h4>
+    <div class="four-elem">
+      <div class="k">① 무엇</div><div class="v"><strong>QQQ 1.0주 매도, 잔여 0.25주 보유</strong> (매도 ≈ $658, 비중 4.7% → 0.9%)</div>
+      <div class="k">② 왜</div><div class="v">(a) "AI 가위" 구도 — QQQ 안 SaaS 비중(MSFT/NOW 등) -10~-18% 충격 노출. (b) VOO와 빅테크 중복 — 분산 효과 미미. (c) 매도 자금으로 SOXX 매수 시 반도체 순수 노출 전환 → 슈퍼사이클 직접 수혜.</div>
+      <div class="k">③ 어떻게</div><div class="v">매도 가격 <strong>$655~665</strong>. 매도 자금 → SOXX 2주 추가 매수. +8.2% 수익 익절 후 재배치.</div>
+      <div class="k">④ 적합도</div><div class="v">절대매력 78 / 갭매칭 85 / <strong>점수 81</strong></div>
+    </div>
+  </div>
+
+  <h3>매도 합계</h3>
+  <table>
+    <tr><th>항목</th><th>USD</th></tr>
+    <tr><td>VOO 4주</td><td>$2,612</td></tr>
+    <tr><td>QQQ 1주</td><td>$658</td></tr>
+    <tr><td><strong>소계</strong></td><td><strong>$3,270</strong></td></tr>
+  </table>
+  <p style="margin-top:10px;">매도 자금 $3,270 + 4월 적립분 $1,353 = <strong>$4,623</strong>가 갭 자산군(GLD·한화에어로·XLE·SOXX)에 즉시 투입 가능.</p>
+</div>
+
+<!-- 8. Monitoring -->
+<div class="section">
+  <h2>8. 다음 주 모니터링 포인트 (4/30 ~ 5/15)</h2>
+  <table>
+    <tr><th>일자</th><th>트리거</th><th>액션</th></tr>
+    <tr><td><strong>4/30 03:00 ET</strong></td><td>FOMC 결정 · 파월 마지막 기자회견</td><td>매파 톤 강화 → AGG 매수 일시 보류, GLD 가속</td></tr>
+    <tr><td><strong>4/30 05:00 ET~</strong></td><td>MSFT/META/AMZN/GOOGL Q1 동시</td><td>4건 모두 Beat + AI CapEx 유지 → SOXX 즉시 1주 매수. 1건+ Miss → AMZN 보류 ($190~200 대기)</td></tr>
+    <tr><td><strong>4/30 08:30 ET</strong></td><td>GDP Q1 Advance + Core PCE 3월</td><td>PCE &gt; 3.2% → GLD 가속 (+2주). GDP &lt; 1.0% → IEF 진입</td></tr>
+    <tr><td>5/1</td><td>UAE OPEC 탈퇴 발효</td><td>WTI $105 돌파 시 XLE 1주 추가. WTI $90 하회 시 XLE 보류</td></tr>
+    <tr><td>5/8</td><td>4월 NFP</td><td>실업률 4.4% 상회 시 → 한화에어로 추가 3주</td></tr>
+    <tr><td>5/12</td><td>4월 CPI (에너지 2차 전이)</td><td>Core CPI &gt; 3.5% → GLD 8주까지 확대</td></tr>
+    <tr><td><strong>5/15</strong></td><td>파월 임기 만료 / Q1 13F 공시</td><td>Warsh 인준 + Q1 거물 포지션 확인. AMZN 컨버전스 유지 시 1주 추가</td></tr>
+  </table>
+</div>
+
+<!-- 9. Model portfolio comparison -->
+<div class="section">
+  <h2>9. 4종 모델 포트폴리오 비교 (사용자 매칭: ⚖️ 중립형)</h2>
+  <table>
+    <tr><th>자산군</th><th>🛡️ 안전형</th><th>⚖️ 중립형 (권장)</th><th>🔥 공격형</th><th>💰 배당형</th></tr>
+    <tr><td>미국 주식</td><td>15%</td><td><strong class="change-up">45%</strong></td><td>66%</td><td>49%</td></tr>
+    <tr><td>한국 주식</td><td>12%</td><td><strong class="change-up">17%</strong></td><td>16%</td><td>22%</td></tr>
+    <tr><td>채권</td><td>37%</td><td><strong class="change-up">15%</strong></td><td>0%</td><td>10%</td></tr>
+    <tr><td>금</td><td>13%</td><td><strong class="change-up">8%</strong></td><td>6%</td><td>4%</td></tr>
+    <tr><td>크립토</td><td>0%</td><td><strong class="change-up">4%</strong></td><td>10%</td><td>0%</td></tr>
+    <tr><td>현금/MMF</td><td>18%</td><td><strong class="change-up">6%</strong></td><td>2%</td><td>6%</td></tr>
+    <tr><td>예상수익</td><td>5~8%</td><td><strong>8~12%</strong></td><td>15~25%</td><td>6~10%</td></tr>
+    <tr><td>최대손실</td><td>-10~-15%</td><td><strong>-18~-25%</strong></td><td>-30~-45%</td><td>-12~-20%</td></tr>
+  </table>
+  <p style="margin-top:10px;">사용자 매칭 모델: <strong>중립형 (Balanced)</strong> — 매월 200만원 5년+ 적립 + 인덱스 중심 + 중립 성향과 정합. 갭: 미국 +53.3%p / 한국 -17%p / 채권 -13.3%p / 금 -8%p / 반도체·방산 -12%p / 현금 -6%p.</p>
+</div>
+
+<!-- 10. Summary -->
+<div class="section">
+  <h2>10. 종합 처방 (3줄)</h2>
+  <ol style="font-size:1.05rem; line-height:1.9;">
+    <li><strong style="color:var(--accent-red);">이번달 200만원 전액을 GLD 7주 + 한화에어로 5주 + XLE 4주에 배분.</strong> VOO·QQQ 추가 매수 즉시 정지.</li>
+    <li><strong style="color:var(--accent-blue);">VOO 4주 + QQQ 1주 익절</strong> ($3,270 회수) → SOXX 1주 + 추가 GLD/한화에어로 분할 매수에 재투입.</li>
+    <li><strong style="color:var(--accent-orange);">4/30 빅테크 4건 + GDP/PCE 결과 후 AMZN 1주 진입.</strong> Bear 시 $190~200까지 대기. 16개월 로드맵으로 미국 편중 91% → 50%, 한국 0% → 17%, 금 0% → 8% 단계적 정상화.</li>
+  </ol>
+</div>
+
+<div class="footer">
+  생성: briefing-lead · 2026-04-29 · v2 강력 처방 모드 · 사용자 1인 사적 콘텐츠
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+}
+</script>
+</body>
+</html>
