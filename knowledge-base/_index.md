@@ -51,6 +51,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-04-30 | 모닝브리핑 | FOMC 8-4 분열(1992년 이후 최다) + UAE OPEC+ 탈퇴(5/1 발효) = "이중 쇼크". WTI $106.88(+6.96%), 10Y 4.42%(+7bp). 4/30 Core PCE 3.2%+ 시 연내 인하 0회 확정 | `market/daily_snapshot.md, macro/us_monetary_policy.md` | 진행중 |
+| 2026-04-30 | 모닝브리핑 | 빅테크 4사 AH: AMZN +69%/GOOGL +94% Beat 강세, META -7%(CapEx $125~145B 상향 실망), MSFT 혼조. "AI 가위" 구도 심화 — 인프라 수혜 극도 집중, SaaS 파괴 가속 | `market/economic_calendar.md, market/daily_snapshot.md` | 진행중 |
+| 2026-04-30 | 모닝브리핑 | 매크로 위험등급 4/5 유지 — 지정학(이란+UAE) 5등급, 통화정책+미국경제 4등급. 30일 시나리오: Bull 15%/Base 50%/Bear 35%. Bear 확률 기존 18%→35% 대폭 상향 | `macro/global_risk_factors.md` | 진행중 |
 | 2026-04-13 | 이브닝브리핑 | 호르무즈 봉쇄 선언 — WTI $105 급등, 4/14 아시아 갭다운 -2~4% 경고. 위험등급 4→5 상향 | `market/daily_snapshot.md` | 진행중 |
 | 2026-04-13 | 이브닝브리핑 | Gold-DXY 역상관 약화 Z+1.8σ — Gold $4,724 구조적 Bull. 중앙은행 매수+재정적자=탈달러 수요 | `macro/global_risk_factors.md §4` | 진행중 |
 | 2026-04-13 | 이브닝브리핑 | WTI-인플레기대 동조화 Z+2.3σ — Core CPI 전이 2~3개월 시차. Fed 6월 인하 소멸 가능 | `macro/us_monetary_policy.md` | 진행중 |

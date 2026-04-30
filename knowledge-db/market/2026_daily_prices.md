@@ -289,3 +289,54 @@ type: time_series
 | 2026-04-27 | news | CathieWood_Trade | AMD_SELL_AMZN_BUY | — | — | Gurufocus / TheStreet / TipRanks [2026-04-26] | 2026-04-27T09:00:00+09:00 | AMD 215,643주($75M) 매도(+25% 급등 차익실현). AMZN 280,450주($71.5M) 매수(빅테크 실적 전). 핵IPO(XE) 추가 |
 | 2026-04-27 | news | Ackman_AMZN | PERSHING_AMZN_INITIATED | — | — | Nasdaq / InsiderMonkey [2026-04-27] | 2026-04-27T09:00:00+09:00 | Ackman AMZN 신규 포지션. P/E 27배 저평가 진입. Buffett·Wood와 공동 보유 |
 | 2026-04-27 | news | Druckenmiller | ALPHABET_ADD_SANDISK_EXIT | — | — | InsiderMonkey [2026-04-27] | 2026-04-27T09:00:00+09:00 | Alphabet 비중 확대 + Sandisk 청산. AI 플랫폼 전략 집중 |
+| 2026-04-28 | us_index | SP500 | 7137.90 | +1.05% | point | CNBC / TheStreet [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | FOMC 1일차 시작. UPS/GM/GE Aerospace/HON 실적 Beat + 리스크온. WTI $98.97 = Core PCE 상방 압박 |
+| 2026-04-28 | us_index | NASDAQ | 24663.80 | +0.90% | point | TheStreet [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | — |
+| 2026-04-28 | us_index | DJIA | 49141.93 | -0.05% | point | TheStreet [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | 보합. 방산·물류 섹터 소폭 지지 |
+| 2026-04-28 | us_index | Russell2000 | 2785.38 | +0.74% | point | TheStreet [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | 소형주 강세 유지 |
+| 2026-04-28 | us_index | VIX | 18.92 | -2.97% | index | CNBC / Yahoo Finance [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | ⚠️ 19선 대. FOMC + 빅테크 4/29 앞두고 공포 완화 중 |
+| 2026-04-28 | asia_index | KOSPI | 6690.90 | +0.75% | point | CNBC Asia [2026-04-29 KST close] | 2026-04-29T15:30:00+09:00 | 신고가 랠리 지속 |
+| 2026-04-28 | asia_index | KOSDAQ | 1220.26 | +0.39% | point | CNBC Asia [2026-04-29 KST close] | 2026-04-29T15:30:00+09:00 | 2000년 닷컴 피크 1,238.80 근접 |
+| 2026-04-28 | asia_index | Nikkei225 | 59917.46 | -1.02% | point | CNBC Asia [2026-04-29 JST close] | 2026-04-29T15:30:00+09:00 | 일본 공휴일 연휴 앞두고 차익실현 |
+| 2026-04-28 | asia_index | HangSeng | 26111.84 | +1.68% | point | CNBC Asia [2026-04-29 HKT close] | 2026-04-29T16:30:00+08:00 | 홍콩 반등. 중국 내수 기대 |
+| 2026-04-28 | fx | DXY | 98.70 | +0.08% | index | Investing.com / CNBC [2026-04-28] | 2026-04-28T21:00:00-04:00 | FOMC 앞 달러 소폭 강세 |
+| 2026-04-28 | fx | USDKRW | 1478.28 | +0.36% | KRW | PoundSterlingLive [2026-04-28] | 2026-04-28T21:00:00-04:00 | ⚠️ 1,400 초과 지속 |
+| 2026-04-28 | fx | USDJPY | 159.79 | +0.27% | JPY | TradingEconomics [2026-04-28] | 2026-04-28T21:00:00-04:00 | ⚠️ 엔화 약세 지속. BOJ 관망 |
+| 2026-04-28 | commodity | WTI | 98.97 | +2.69% | USD/barrel | CNBC / Fortune [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | ⚠️ $100 직전. 이란 신제안 제출(오만 경유). UAE OPEC 탈퇴 임박 조짐 |
+| 2026-04-28 | commodity | Brent | 111.57 | +3.2% | USD/barrel | CNBC [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | ⚠️ 3월래 최고. WTI-Brent 스프레드 확대 |
+| 2026-04-28 | commodity | Gold | 4578.30 | -0.29% | USD/oz | Investing.com [2026-04-28 close] | 2026-04-28T21:00:00-04:00 | 소폭 조정. 구조적 Bull 유지 |
+| 2026-04-28 | bond | US10Y | 4.35 | +0.32% | percent | CNBC / Fed H.15 [2026-04-28] | 2026-04-28T21:00:00-04:00 | ⚠️ 4.35% 분기점 접근. FOMC + 유가 상승 인플레 반영 |
+| 2026-04-28 | bond | US30Y | 4.94 | -0.04% | percent | Fed H.15 [2026-04-28] | 2026-04-28T21:00:00-04:00 | — |
+| 2026-04-28 | crypto | BTC | 77631.68 | +1.68% | USD | CoinGabbar [2026-04-28] | 2026-04-28T21:00:00-04:00 | $77K대 안착. ETF 순유입 지속 |
+| 2026-04-28 | crypto | ETH | 2332.32 | +1.87% | USD | CoinGabbar [2026-04-28] | 2026-04-28T21:00:00-04:00 | $2,300선 지지 확인 |
+| 2026-04-28 | news | FOMC_Day1 | HOLD_EXPECTED | — | — | Fed / CNBC [2026-04-28] | 2026-04-28T21:00:00-04:00 | FOMC 1일차 시작. 동결 100% 컨센서스. 파월 임기 5/15 만료 — 라스트 코멘트 효과 극대화 |
+| 2026-04-28 | news | CB_Consumer_Confidence_Apr | DECLINED | — | — | Conference Board / Bloomberg [2026-04-28 10:00 ET] | 2026-04-28T21:00:00-04:00 | 4월 소비자신뢰 하락 확인. Michigan 49.8(사상 최저) 연동. 소비자 심리 악화 구조화 |
+| 2026-04-29 | us_index | SP500 | 7135.95 | -0.04% | point | CNBC / TheStreet [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | FOMC 동결(8-4 분열) + UAE OPEC 탈퇴 쇼크 상쇄. 빅테크 AH 혼조. Dow 부진 |
+| 2026-04-29 | us_index | NASDAQ | 24673.24 | +0.04% | point | CNBC [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | 보합. 빅테크 AH 낙폭이 장중 반영 전 |
+| 2026-04-29 | us_index | DJIA | 48861.81 | -0.57% | point | CNBC [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | -280.12pt. 유가 급등 + 산업재 부진 |
+| 2026-04-29 | us_index | Russell2000 | 미확인 | -1.15% | point | TheStreet [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | 최대 낙폭. 소형주 리스크오프 |
+| 2026-04-29 | us_index | VIX | 미확인 | 소폭변동 | index | 추정 [2026-04-29] | 2026-04-29T21:00:00-04:00 | FOMC 동결 후 일시 완화. 빅테크 AH 반응 반영 전 |
+| 2026-04-29 | asia_index | KOSPI | 6690.90 | +0.75% | point | CNBC Asia [2026-04-29 KST close] | 2026-04-29T15:30:00+09:00 | 신고가 지속. 반도체·방산 외인 매수 |
+| 2026-04-29 | asia_index | KOSDAQ | 1220.26 | +0.39% | point | CNBC Asia [2026-04-29 KST close] | 2026-04-29T15:30:00+09:00 | — |
+| 2026-04-29 | asia_index | Nikkei225 | CLOSED | — | point | CNBC Asia [2026-04-29] | 2026-04-29T09:00:00+09:00 | 일본 공휴일(Showa Day). 30일까지 휴장 |
+| 2026-04-29 | asia_index | HangSeng | 26111.84 | +1.2% | point | CNBC Asia [2026-04-29 HKT close] | 2026-04-29T16:30:00+08:00 | CSI300 +1.1% 동반 강세. 4,810.35 |
+| 2026-04-29 | fx | DXY | 98.86 | +0.23% | index | TradingEconomics [2026-04-29] | 2026-04-29T21:00:00-04:00 | FOMC 매파 신호 + 지정학 안전자산 달러 소폭 강세 |
+| 2026-04-29 | fx | USDKRW | 미확인 | 소폭변동 | KRW | 미수집 [2026-04-29] | 2026-04-29T21:00:00-04:00 | ⚠️ 1,400 초과 기조 유지 추정 |
+| 2026-04-29 | fx | USDJPY | 159.82 | +0.12% | JPY | TradingEconomics [2026-04-29] | 2026-04-29T21:00:00-04:00 | BOJ 동결 4회 연속. 엔화 약세 지속 |
+| 2026-04-29 | commodity | WTI | 106.88 | +6.96% | USD/barrel | TradingEconomics / Fortune [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | ⚠️ UAE OPEC 탈퇴 쇼크. $100 돌파. Brent $120 근접(6월 2022 이후 최고) |
+| 2026-04-29 | commodity | Brent | ~120 | +7%+ | USD/barrel | Euronews / CNBC [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | ⚠️ UAE OPEC 탈퇴 + 이란 봉쇄 복합 공급 쇼크. OPEC 글로벌 점유율 30% 하회 |
+| 2026-04-29 | commodity | Gold | 4522.97 | -1.59% | USD/oz | TradingEconomics [2026-04-29 close] | 2026-04-29T21:00:00-04:00 | 달러 강세 역풍. 구조적 Bull 기조 유지 |
+| 2026-04-29 | bond | US10Y | 4.42 | +7bp | percent | CNBC / Fed H.15 [2026-04-29] | 2026-04-29T21:00:00-04:00 | ⚠️ FOMC 매파 분열(8-4) + UAE 쇼크 → 인플레 기대 급등. 4.40%+ 돌파 |
+| 2026-04-29 | bond | US2Y | 3.95 | +bp | percent | CNBC [2026-04-29] | 2026-04-29T21:00:00-04:00 | ⚠️ 3.95% 상회. FOMC 매파 분열 반영 |
+| 2026-04-29 | bond | Spread2Y10Y | +47 | — | bp | 계산값(4.42%-3.95%) | 2026-04-29T21:00:00-04:00 | 정상 구간(비역전) 유지. 전일 대비 축소 |
+| 2026-04-29 | crypto | BTC | 76224 | -1.80% | USD | CoinGecko / SpotedCrypto [2026-04-29] | 2026-04-29T21:00:00-04:00 | 리스크오프 + ETF -$263M 순유출(9일 연속 순유입 종료). Fidelity FBTC -$150M |
+| 2026-04-29 | crypto | ETH | 2285 | -2.0%(추정) | USD | CoinGecko [2026-04-29] | 2026-04-29T21:00:00-04:00 | BTC 동반 조정 |
+| 2026-04-29 | crypto | TotalMarketCap | 2.63T | — | USD | CoinGecko [2026-04-29] | 2026-04-29T21:00:00-04:00 | BTC 도미넌스 58% |
+| 2026-04-29 | crypto | FearAndGreedIndex | 33 | -14pt(47→33) | index | SpotedCrypto / CoinMarketCap [2026-04-29] | 2026-04-29T21:00:00-04:00 | ⚠️ Fear 재진입. UAE OPEC 탈퇴 + FOMC 매파 분열 + ETF 유출 복합 |
+| 2026-04-29 | news | FOMC_Apr29_Decision | HOLD_8-4_SPLIT | — | — | CNBC / CNN / PBS [2026-04-29 14:00 ET] | 2026-04-29T21:00:00-04:00 | 3.50~3.75% 동결. 찬성 8명, 반대 4명(1992년 이후 최다 이견). Miran 25bp 인하 지지, 나머지 3인 완화 편향 성명 반대. "Iran 전쟁 등 4대 공급 쇼크" 명시 |
+| 2026-04-29 | news | Powell_FinalPressConf | STAY_AS_GOVERNOR | — | — | CNN / PBS / CNBC [2026-04-29 14:30 ET] | 2026-04-29T21:00:00-04:00 | 파월: "이것이 마지막 기자회견". 의장 임기 5/15 만료 후 Fed 이사로 잔류(이사 임기 2028-01까지). "법적 공격이 Fed 기관을 훼손할 위험" 발언 |
+| 2026-04-29 | news | UAE_OPEC_Exit | SHOCK_OIL_SUPPLY | — | — | Al Jazeera / CNBC / Fortune [2026-04-28~29] | 2026-04-29T21:00:00-04:00 | UAE 4/28 OPEC+ 탈퇴 공식 발표(발효 5/1). OPEC 글로벌 점유율 30% 하회(최초). WTI +$7 / Brent $120 근접. 중동 공급 구조 재편 |
+| 2026-04-29 | news | MSFT_Q3FY26 | EPS_4.27_BEAT | — | — | CNBC / Gurufocus / Shacknews [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | EPS $4.27(컨센 $4.06 Beat+5.2%). Rev $82.9B(컨센 $81.39B Beat). Azure +40%(컨센 +37% 상회). AI 연환산매출 $37B(+123%). Copilot 2천만 유료 시트. Q4 가이던스 소폭 하회 → AH 혼조 |
+| 2026-04-29 | news | META_Q1 | EPS_7.31_CAPEX_UP | — | — | StockTitan / CNBC / SeekingAlpha [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | Rev $56.31B(컨센 $55.45B Beat, +33% YoY). EPS $7.31(컨센 $6.65 Beat). Q2 가이던스 $58~61B. CapEx $125~145B(기존 $115~135B 상향). AH -7% (CapEx 급등 실망) |
+| 2026-04-29 | news | AMZN_Q1 | REV_181B_AWS_28PCT | — | — | StockTitan / CNBC [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | Rev $181.5B(컨센 $177.3B Beat, +17% YoY). EPS $2.78(컨센 $1.64 대폭 Beat). AWS $37.6B(+28% YoY, 컨센 +26% 상회). 광고 $17.24B(+24%). CapEx $43.2B(분기). AH 강세 |
+| 2026-04-29 | news | GOOGL_Q1 | REV_109B_CLOUD_63PCT | — | — | 9to5Google / Yahoo Finance / CNBC [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | Rev $109.9B(+22% YoY). EPS $5.11(컨센 $2.62 대폭 Beat). Cloud $20.03B(+63%, 컨센 $18.4B 대폭 상회). CapEx $180~190B(기존 $175~185B 상향). Pichai: "수요 대비 컴퓨팅 부족". AH +4% |
+| 2026-04-29 | news | Druckenmiller_META_Exit | SOLD_META_BOUGHT_AMZN_GOOGL | — | — | Motley Fool / Yahoo Finance [2026-04-24] | 2026-04-29T09:00:00-04:00 | Druckenmiller, META 전량 청산 + AMZN·GOOGL 대폭 추가. "클라우드 AI 자기강화 시스템" 논리. Q1 2026 13F 기준(3/31 포지션일, 공시 5/15) |
