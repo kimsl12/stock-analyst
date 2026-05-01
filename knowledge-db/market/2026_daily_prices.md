@@ -340,3 +340,38 @@ type: time_series
 | 2026-04-29 | news | AMZN_Q1 | REV_181B_AWS_28PCT | — | — | StockTitan / CNBC [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | Rev $181.5B(컨센 $177.3B Beat, +17% YoY). EPS $2.78(컨센 $1.64 대폭 Beat). AWS $37.6B(+28% YoY, 컨센 +26% 상회). 광고 $17.24B(+24%). CapEx $43.2B(분기). AH 강세 |
 | 2026-04-29 | news | GOOGL_Q1 | REV_109B_CLOUD_63PCT | — | — | 9to5Google / Yahoo Finance / CNBC [2026-04-29 AH] | 2026-04-29T22:00:00-04:00 | Rev $109.9B(+22% YoY). EPS $5.11(컨센 $2.62 대폭 Beat). Cloud $20.03B(+63%, 컨센 $18.4B 대폭 상회). CapEx $180~190B(기존 $175~185B 상향). Pichai: "수요 대비 컴퓨팅 부족". AH +4% |
 | 2026-04-29 | news | Druckenmiller_META_Exit | SOLD_META_BOUGHT_AMZN_GOOGL | — | — | Motley Fool / Yahoo Finance [2026-04-24] | 2026-04-29T09:00:00-04:00 | Druckenmiller, META 전량 청산 + AMZN·GOOGL 대폭 추가. "클라우드 AI 자기강화 시스템" 논리. Q1 2026 13F 기준(3/31 포지션일, 공시 5/15) |
+| 2026-04-30 | us_index | SP500 | 7209.01 | +1.02% | point | CNBC / TheStreet [2026-04-30 close 확정] | 2026-05-01T09:00:00+09:00 | 신고가. 7,200선 최초 돌파 종가. 4월 최강 월간 수익률(+9.3%) |
+| 2026-04-30 | us_index | NASDAQ | 24892.31 | +0.89% | point | CNBC / TheStreet [2026-04-30 close 확정] | 2026-05-01T09:00:00+09:00 | 신고가 경신 |
+| 2026-04-30 | us_index | DJIA | 49652.14 | +1.62% | point | CNBC / TheStreet [2026-04-30 close 확정] | 2026-05-01T09:00:00+09:00 | +790.33pt. LLY +9% + CAT +10% + GOOGL +9% 주도 |
+| 2026-04-30 | us_index | VIX | 16.89 | -10.21% | index | CNBC / CBOE [2026-04-30 close 확정] | 2026-05-01T09:00:00+09:00 | AAPL·LLY·CAT Beat + 리스크온. 빠른 공포 해소 |
+| 2026-04-30 | us_index | AAPL | 282.86 | — | USD | MarketBeat / Yahoo Finance [2026-04-30 정규장] | 2026-05-01T09:00:00+09:00 | 정규장 $267.78~$284.88 변동. Q2 FY26 AH +3% 추가 |
+| 2026-04-30 | asia_index | KOSPI | 6598.87 | -1.38% | point | CNBC Asia [2026-04-30 KST close 확정] | 2026-05-01T09:00:00+09:00 | 장중 ATH 6,750 달성 후 급반전 종가. 차익실현 |
+| 2026-04-30 | asia_index | KOSDAQ | 1192.35 | -2.29% | point | CNBC Asia [2026-04-30 KST close 확정] | 2026-05-01T09:00:00+09:00 | 소형주 차익실현 가속 |
+| 2026-04-30 | asia_index | Nikkei225 | 59284.92 | -1.06% | point | CNBC Asia [2026-04-30 JST close 확정] | 2026-05-01T09:00:00+09:00 | 연휴(4/29 Showa Day) 복귀 후 차익실현 |
+| 2026-04-30 | asia_index | HangSeng | 26112.00 | +1.68% | point | CNBC Asia [2026-04-30 HKT close 확정] | 2026-05-01T09:00:00+09:00 | 중국 기술주 반등 |
+| 2026-04-30 | asia_index | CSI300 | 4108.00 | +0.71% | point | CNBC Asia [2026-04-30 CST close 확정] | 2026-05-01T09:00:00+09:00 | 노동절 연휴 전 소폭 강세 |
+| 2026-04-30 | fx | DXY | 98.96 | +0.37% | index | TradingEconomics / AhaSignals [2026-04-30 close] | 2026-05-01T09:00:00+09:00 | FOMC 매파 분열 + ECB 동결 이중 매파. 3주 고점 |
+| 2026-04-30 | fx | USDKRW | 1474.91 | — | KRW | PoundSterlingLive / Investing.com [2026-04-29~30] | 2026-05-01T09:00:00+09:00 | ⚠️ 1,400 초과 지속. 4/29 고점 1,486.95 |
+| 2026-04-30 | fx | EURUSD | ~1.17 | — | USD | 추정 [ECB 동결 반영] | 2026-05-01T09:00:00+09:00 | ECB 동결(컨센 인하 뒤집음) 이후 약세 |
+| 2026-04-30 | commodity | WTI | 109.41 | 급등 | USD/barrel | FXDailyReport / TradingEconomics [2026-04-30] | 2026-05-01T09:00:00+09:00 | ⚠️ UAE OPEC 탈퇴 5/1 발효 + 이란 봉쇄. $110 직전 |
+| 2026-04-30 | commodity | Brent | ~120 | 유지 | USD/barrel | CNBC [2026-04-30] | 2026-05-01T09:00:00+09:00 | ⚠️ 이란 봉쇄 구조화 |
+| 2026-04-30 | commodity | Gold | 4550.00 | -0.79% | USD/oz | TradingEconomics [2026-04-30] | 2026-05-01T09:00:00+09:00 | DXY 강세 역풍. 구조적 Bull 기조 유지 |
+| 2026-04-30 | bond | US10Y | 4.43 | +8bp | percent | CNBC / Fed H.15 [2026-04-30] | 2026-05-01T09:00:00+09:00 | ⚠️ Core PCE 0.0% 둔화에도 UAE 쇼크 + FOMC 매파로 고착 |
+| 2026-04-30 | bond | US2Y | 3.95 | 유지 | percent | CNBC [2026-04-30] | 2026-05-01T09:00:00+09:00 | FOMC 매파 반영 |
+| 2026-04-30 | bond | US30Y | ~5.0 | 추정 | percent | 추정 [2026-04-30] | 2026-05-01T09:00:00+09:00 | — |
+| 2026-04-30 | bond | Spread2Y10Y | +48 | — | bp | 계산값(4.43%-3.95%) | 2026-05-01T09:00:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-04-30 | crypto | BTC | 76967.00 | 보합 | USD | Binance / CoinGecko [2026-04-29~30] | 2026-05-01T09:00:00+09:00 | ETF -$263M 순유출(4/29). 리스크오프 영향 |
+| 2026-04-30 | crypto | ETH | 2313.00 | 보합 | USD | CoinGecko [2026-04-30] | 2026-05-01T09:00:00+09:00 | $2,300 지지선 확인 |
+| 2026-04-30 | crypto | TotalMarketCap | 2.65T | — | USD | CoinGecko [2026-04-30] | 2026-05-01T09:00:00+09:00 | BTC 도미넌스 58.1% / ETH 10.5% |
+| 2026-04-30 | crypto | FearAndGreedIndex | 26 | -7pt(33→26) | index | alternative.me / SpotedCrypto [2026-04-30] | 2026-05-01T09:00:00+09:00 | ⚠️ Extreme Fear(25) 1포인트 전. UAE+FOMC+ETF유출 복합 |
+| 2026-04-30 | news | AAPL_Q2FY26 | EPS_2.01_Rev_111B_Beat | — | — | Apple Newsroom / 9to5Mac / GuruFocus [2026-04-30 AH] | 2026-05-01T09:00:00+09:00 | EPS $2.01(컨센 $1.94 Beat). Rev $111.18B(컨센 $109.66B Beat). iPhone $57B(+22%, 소폭 Miss). Services $30.98B(사상 최고). Greater China $20.5B(+28%). AH +3% |
+| 2026-04-30 | news | AAPL_CEO_Transition | Cook_ExecChairman_Ternus_CEO | — | — | Apple Newsroom [2026-04-30] | 2026-05-01T09:00:00+09:00 | Tim Cook 9/1 Executive Chairman 전환 공식 확인. John Ternus CEO 내정. $100B 자사주 매입 + 배당 인상 + 순현금중립 목표 폐기 |
+| 2026-04-30 | calendar | ECB_Apr30 | HOLD_2pct_Hawkish_Surprise | — | — | ECB / CNBC [2026-04-30 14:15 ET] | 2026-05-01T09:00:00+09:00 | 컨센 25bp 인하 뒤집고 2.0% 동결. 매파 서프라이즈. EUR/USD 약세 |
+| 2026-04-30 | calendar | GDP_Q1_Advance | PLUS_2.3pct_Beat | — | — | BEA [2026-04-30 08:30 ET] | 2026-05-01T09:00:00+09:00 | 컨센 2.1%(GDPNow 1.2%) 대폭 상회. 침체 우려 후퇴 |
+| 2026-04-30 | calendar | CorePCE_March | YoY_2.6pct_MoM_0.0pct | — | — | BEA [2026-04-30 08:30 ET] | 2026-05-01T09:00:00+09:00 | YoY 2.6%(컨센 3.0% 대폭 하회). MoM 0.0%(컨센 0.3% 급감). 골디락스 신호 |
+| 2026-05-01 | asia_index | KOSPI_open | 6533.60 | -1.0%(추정) | point | Investing.com / TradingEconomics [2026-05-01 개장] | 2026-05-01T09:30:00+09:00 | 4/30 -1.38% 연속 조정. AAPL AH +3% 긍정 상쇄 |
+| 2026-05-01 | fx | USDKRW_morning | 1474.91 | — | KRW | PoundSterlingLive [2026-04-29~30 참조] | 2026-05-01T09:30:00+09:00 | ⚠️ 5/1 아침 기준. 정확 수치 미수집 — 4/29 고점 1,486.95 참조 |
+| 2026-05-01 | calendar | NFP_April | NOT_RELEASED | — | — | BLS [공식 일정] | 2026-05-01T09:00:00+09:00 | 4월 NFP는 2026-05-08(첫째 주 금요일) 발표 예정. 오늘 미발표. 3월 NFP +178K(4/3 발표) |
+| 2026-05-01 | calendar | ISM_Mfg_PMI_April | PENDING_10AM_ET | — | — | ISM [예정 2026-05-01 10:00 ET] | 2026-05-01T09:00:00+09:00 | S&P Global Flash PMI 4월 54.0(강세 선행 지표). ISM 컨센 ~52.5. 3월 ISM 52.7 |
+| 2026-05-01 | news | Ackman_PSUS_IPO | PSUS_IPO_FIRST_DAY_40.90 | — | — | CNBC [2026-04-29] | 2026-05-01T09:00:00+09:00 | PSUS 상장 첫날 $40.90(-18%, IPO가 $50 하회). $5B 모집(목표 $5~10B 하단). Berkshire 모델 추구. AMZN 비중 14% |
+| 2026-05-01 | news | Buffett_vs_Ackman | AMZN_OPPOSITE_DIRECTION | — | — | Motley Fool [2026-04-27] | 2026-05-01T09:00:00+09:00 | Buffett AMZN 77% 감축(포트 0.1%). Ackman AMZN 65% 증량(포트 14%). 동일 종목 정반대 방향 |
