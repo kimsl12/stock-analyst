@@ -1,13 +1,13 @@
 ---
-updated: 2026-04-25
-valid_until: 2026-05-25
+updated: 2026-05-02
+valid_until: 2026-06-02
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
-sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners]
+sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners, Benchmark Minerals, S&P Global, Charged EVs, GrapheneUses, Phys.org, FactMR, Kavout, UPI, ITIF, Seeking Alpha, MarketsandMarkets]
 confidence: high
-last_synced_from_db: 2026-04-25
-db_records: 141
+last_synced_from_db: 2026-05-02
+db_records: 185
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -25,13 +25,15 @@ db_records: 141
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 CNT 시장 (2025) | 4.25~6.89B USD | 2025 | Precedence 4.25B / Mordor 6.89B |
-| 글로벌 CNT 시장 (2026E) | 4.85~8.8B USD | 2026E | Precedence 4.85B / Mordor ~7.5B / IMARC 2.7B |
+| 글로벌 CNT 시장 (2025) | 4.25~7.75B USD | 2025 | Precedence 4.25B / Fortune BI 7.75B / Mordor 6.89B |
+| 글로벌 CNT 시장 (2026E) | 4.85~8.8B USD | 2026E | Precedence 4.85B / Fortune BI 8.8B / IMARC 2.7B |
 | 글로벌 CNT 시장 (2030E) | 7.4~17.38B USD | 2030E | GVR 8.15B / Mordor 17.38B / IMARC 7.4B(2033) |
 | 글로벌 CNT 시장 (2034E) | 13.88~24.53B USD | 2034E | Precedence 13.88B / Fortune BI 24.53B |
 | CAGR (2025-2030) | 13.7~20.1% | 2025-2030 | Precedence 13.7% / GVR 14.1% / Mordor 20.1% |
+| 글로벌 생산량 (2025) | 약 11,479톤, 평균가 $61,136/톤 | 2025 | Business Research Company |
+| CNT 배터리 도전재 분산액 시장 | 0.81B USD (2026), CAGR 12.0% (2026-2036) | 2026 | FactMR |
 
-> 시장 규모 추정치 편차가 크다(IMARC 2.7B vs Mordor 6.89B for 2025). 순수 CNT 소재 vs CNT 활용 제품 포함 여부, MWCNT/SWCNT 구분 기준 차이에 기인.
+> 시장 규모 추정치 편차가 크다(IMARC 2.7B vs Fortune BI 7.75B for 2025). 순수 CNT 소재 vs CNT 활용 제품 포함 여부, MWCNT/SWCNT 구분 기준 차이에 기인.
 
 #### 1-2. 제품 세그먼트 & 응용
 
@@ -41,24 +43,28 @@ db_records: 141
 | SWCNT(단일벽) | 최고속 성장 세그먼트. EV 배터리·반도체·고성능 에너지저장 | GVR |
 | 전자·반도체 응용 | 2026년 약 26% 시장점유율. 열관리·PCB·메모리 | GM Insights |
 | 배터리 도전재 | 리튬이온 배터리 핵심 응용. 양극/음극 도전재·구조 안정화 | IDTechEx, M&M |
+| 아시아태평양 | 2025년 39% 시장점유율로 지역 최대 | Fortune BI |
+
+> 2026년 트렌드: 원료 CNT에서 마스터배치·분산액·배터리급 서스펜션 등 **응용 솔루션 판매**로 제품 포맷 전환 가속. CVD·연속흐름반응기·바이오 원료로 2020년 대비 약 40% 비용 절감.
 
 #### 1-3. 주요 기업 & 경쟁구도
 
 | 기업 | 포지션 | 비고 |
 |------|--------|------|
-| **OCSiAl** (러시아) | SWCNT 시장점유율 90%+ | Molicel(배터리셀), Shanshan(음극재), Nantero(NRAM 반도체) 파트너십 |
-| **LG화학** | 대산 4공장 가동(2025), 생산능력 2,900t -> 6,100t | 글로벌 MWCNT 대량 공급 확대 |
-| **금호석유화학** | 아산 120t -> 율촌 360t 확대 예정 | CNT 도전재 시장 진출 |
+| **OCSiAl** (러시아) | SWCNT 시장점유율 90%+ | **2026년 2번째 합성유닛 가동→생산 2배, 이후 1년 내 4배 확대. 룩셈부르크 프로젝트 포함 SWCNT 총 1,000톤 목표.** TUBALL 분산액 포트폴리오: 실리콘 음극·고에너지 양극·전고체 배터리 화학 타겟 |
+| **LG화학** | 대산 4공장 가동(2025), 생산능력 2,900t→6,100t | 자체 개발 유동층 반응기 단일라인 연간 600톤 — 세계 최대 규모 |
+| **금호석유화학** | 아산 120t→율촌 360t 확대 예정 | CNT 도전재, 2차전지 업체 평가 진행 |
 | Nanocyl (벨기에) | MWCNT 전문 | 유럽 시장 주도 |
-| Arkema (프랑스) | CNT 복합소재 | 탄소나노튜브 기반 복합재료 |
-| Cabot Corporation | 전도성 첨가제 | CNT+카본블랙 하이브리드 |
+| Arkema (프랑스) | CNT 복합소재 | 2025.12 도전성 CNT 분산액 생산 확대 |
+| 미쓰비시케미칼·도레이 | 도전성 CNT 분산액 | 2025.12 글로벌 생산능력 확대 발표 |
 
 #### 1-4. 투자 포인트
 
-- 배터리 도전재 시장 확대: 글로벌 EV 배터리 수요 증가로 CNT 도전재 구조적 성장
-- LG화학 생산능력 2배 확대(6,100t)로 규모의 경제 확보 → 단가 인하 → 시장 확대 선순환
+- 배터리 도전재 시장 확대: CNT 도전성 분산액 시장 $0.81B(2026), CAGR 12% -- 글로벌 EV+전고체 배터리 수요 구조적 성장
+- LG화학 생산능력 2배 확대(6,100t) + 단일라인 600t 세계 최대 규모 → 규모의 경제 확보
+- OCSiAl SWCNT 1,000톤 목표: 실리콘 음극·전고체 배터리 신규 시장 개척
 - SWCNT 고부가 시장 급성장: EV 배터리, 반도체 열관리, NRAM 메모리 응용 확대
-- 전자·반도체 응용 26% 점유로 비배터리 수요처 다변화
+- 제품 포맷 전환(원료→솔루션)으로 부가가치 상승
 
 #### 1-5. 리스크
 
@@ -75,20 +81,24 @@ db_records: 141
 
 | 항목 | 수치 | 기준 | 출처 |
 |------|------|------|------|
-| 글로벌 그래핀 시장 (2025) | 0.94~1.6B USD | 2025 | Fortune BI 0.94B / GlobeNewsWire 1.6B |
+| 글로벌 그래핀 시장 (2025) | 0.94~1.6B USD | 2025 | Fortune BI 0.94B / GlobeNewsWire 1.6B / M&M 1.22B |
 | 글로벌 그래핀 시장 (2026E) | 1.96~2.91B USD | 2026E | GlobeNewsWire 1.96B / Mordor 2.91B |
-| 글로벌 그래핀 시장 (2030E) | 3.99B USD | 2030E | GlobeNewsWire (CAGR 19.5%) |
+| 글로벌 그래핀 시장 (2030E) | 3.58~3.99B USD | 2030E | M&M 3.58B / GlobeNewsWire 3.99B |
 | 글로벌 그래핀 시장 (2034E) | 15.20B USD | 2034E | Fortune BI (CAGR 36.6%) |
+| 그래핀 전자기기 시장 (2030E) | 6.39B USD | 2030E | GlobeNewsWire (2026.04.27) |
 | 그래핀 반도체칩 시장 (2030E) | 1,257.5M USD | 2030E | NextMSC (CAGR 27.2%, 2023 기준 234.6M) |
-| CAGR | 19.5~39.2% | 2025-2031 | GlobeNewsWire 19.5% / Mordor 39.18% |
+| CAGR | 19.5~39.2% | 2025-2031 | GlobeNewsWire 19.5% / M&M 24.0% / Mordor 39.18% |
+| 산업 펀딩 | $1.2B+ (2025.10까지 공개분) | 2025 | ResearchAndMarkets |
 
-> 2025년이 그래핀 상용화 변곡점(inflection point). $185M+ 펀딩(2025.10까지 공개분). CVD 기술로 웨이퍼급 반도체 그레이드 필름 달성.
+> 2025-2026이 그래핀 상용화 변곡점(inflection point). 연구 중심에서 상업적 산업으로 전환 시작.
 
 #### 2-2. 핵심 기술 동향
 
 | 기술 | 현황 | 출처 |
 |------|------|------|
 | **Georgia Tech 그래핀 반도체** | 세계 최초 기능성 그래핀 FET 시연. 전자이동도 5,000+ cm2/Vs(Si의 10배). on/off비 10,000:1 | Georgia Tech, IEEE Spectrum |
+| **Adisyn 저온 그래핀 인터커넥트** | 2026.04.20 산업용 ALD로 1cm2 쿠폰에 450C 미만 연속 그래핀 층 시연. 구리 대체 반도체 인터커넥트 후보 (TEM/Raman 확인) | GrapheneUses, Kalkine |
+| **Paragraf 6인치 웨이퍼** | 영국 Huntingdon 신규 시설에서 최초 6인치 그래핀 웨이퍼 상업 생산. 센서/전자소자 | GrapheneUses |
 | 300mm 그래핀-on-SiC 웨이퍼 | 파일럿 시연 2026년말 목표. 국방/항공우주 소량생산 후속 | EE Times, Georgia Tech |
 | 테라헤르츠 컴퓨팅 잠재력 | Si 한계 5~6GHz vs 그래핀 수백GHz~저THz 가능. 6G/7G, 기후모델, 신약 시뮬레이션 | Tom's Hardware |
 | NanoXplore 대량 건식 공정 | 생산비용 50% 절감 목표(2023 출시) | GM Insights |
@@ -98,21 +108,23 @@ db_records: 141
 
 | 기업 | 내용 | 출처 |
 |------|------|------|
-| **그래핀스퀘어** | EUV 펠리클용 그래핀. 2026년 투과도 96%+, 2027년 양산공정 적용 목표 | 네이트뉴스 |
+| **그래핀스퀘어** | **2025.11.18 세계최초 CVD그래핀 양산공장 준공(포항)**. EUV 펠리클 투과도 94.4% 달성, 2026년 96%+, 2027년 양산공정 적용 목표 | 이데일리, 인터넷조은뉴스 |
 | **그래핀올** | GrapheneTex 기능성 섬유 2025 매출 30억원, 2026 100억원 전망. 반도체 컴파운드·방탄복 신사업 확대 | 공학저널 |
 
 #### 2-4. 투자 포인트
 
-- 그래핀 반도체: post-silicon 후보. Georgia Tech FET 시연으로 기술적 타당성 입증
-- EUV 펠리클: 그래핀스퀘어의 2027 양산 적용 시 반도체 공정 핵심 소재로 부상
+- 그래핀 반도체: post-silicon 후보. Georgia Tech FET + Adisyn 저온 인터커넥트 시연으로 기술 경로 다변화
+- Paragraf 6인치 웨이퍼 상업 생산: 그래핀 센서/전자소자 상용화 가속
+- EUV 펠리클: 그래핀스퀘어 세계최초 CVD 양산공장 + 2027 양산 적용 시 반도체 공정 핵심 소재
 - 에너지저장 23% 최대 응용 시장: EV+재생에너지 구조적 성장과 동행
-- 2025-2026 상용화 변곡점: 연구 단계에서 상업적 산업으로 전환 시작
+- 산업 펀딩 $1.2B+ 돌파: 상업적 전환 자금 확보
 
 #### 2-5. 리스크
 
 - 300mm 웨이퍼 양산까지 최소 수년 소요, 상용 반도체 적용은 2030년 이후 전망
+- Adisyn 인터커넥트: 웨이퍼 스케일 균일성·결함제어·공정수율·디바이스 신뢰성 미검증
 - 한국 그래핀 기업 규모 영세(매출 수십~수백억원 수준)
-- 시장 규모 추정치 편차 큼(0.94B~2.91B for 2026) — 정의 범위 차이
+- 시장 규모 추정치 편차 큼(0.94B~2.91B for 2026) -- 정의 범위 차이
 - 그래핀 품질 균일성·대면적 양산 기술 미성숙
 
 ---
@@ -136,39 +148,43 @@ db_records: 141
 | **LTS(저온)**: NbTi, Nb3Sn | 82.4% 점유율(2025). 성숙 공급망, MRI·입자가속기 | GM Insights |
 | **HTS(고온)**: REBCO/YBCO, Bi, MgB2 | CAGR 9.9% 최고속 성장. 핵융합 자석, 고자장 연구, 전력망 | GM Insights, BCC |
 | 핵융합 HTS 테이프 수요 | 2030년까지 30만km 소요 전망 (ITER, SPARC 등) | Fortune BI, BCC |
+| **REBCO 테이프 생산** | **2026년 글로벌 생산량 3배 증가, 그러나 CFS·Tokamak Energy 등 수요가 공급 초과** | IEEE Spectrum, EditorialGE |
 
 #### 3-3. 상온 초전도체 연구 현황
 
 | 항목 | 현황 | 출처 |
 |------|------|------|
 | **LK-99** | 반박 확정. Chemistry of Materials(2025) 게재. 부분 부양 = 강자성 불순물(CuS). 초전도 아님 | Wikipedia, Monash Lens |
-| 최고 확인 Tc(상압) | 135K (-138C), 큐프레이트 | PatSnap |
+| **상압 Tc 신기록** | **151K(-122C) 달성 -- 휴스턴대 Texas Center for Superconductivity (2026.03). 기존 기록 135K 경신** | Phys.org |
 | 수소화물 고압 | 550K+ 달성, but 100~200+ GPa 필요 (상용화 불가) | Tom's Hardware |
 | PNAS 2026.03 로드맵 | 다기관 공동 "상온 초전도 체계적 추진" 논문. 물리적 한계는 없음 - 공학/재료과학 과제 | PNAS |
 | Penn State 젠트로피 이론 | 전자구조로 초전도 예측 프레임워크(2025.10). 후보물질 전산 스크리닝 | PatSnap |
 
-#### 3-4. 한국 관련
+#### 3-4. 핵융합 & 응용 동향
 
 | 항목 | 내용 | 출처 |
 |------|------|------|
-| 핵융합 초전도체 로드맵 | 과기정통부 2035년 자립화 로드맵(2026.02). 초전도자석·냉각계 국산화 100% 목표 | 인사이트N파워, 이투데이 |
-| 고온초전도자석 투자 | 5년간 464억원(2022-2026) | 이투데이 |
+| **CFS SPARC** | **HTS 자석 기반 최초 설계 핵융합로. 2027년 first plasma 목표. HTS 덕분에 기존 대비 10~40배 소형화** | IEEE Spectrum, CFS, MIT News |
+| 트리튬 육종 블랭킷 | 2026년 리튬 기반 블랭킷 배치 본격화, 핵융합 연료 자급 핵심 | EditorialGE |
+| 한국 핵융합 초전도체 로드맵 | 과기정통부 2035년 자립화. 고온초전도자석 5년간 464억원 투자. **2026년 21.5억원 투입** | 인사이트N파워, 이투데이, 이데일리 |
 | 16T 시험시설 | 한국에너지공대 내 구축, 2026.06 완공 예정 (스위스 SULTAN 12T 대비 우위) | 이투데이, 신문고 |
+| **한국-CERN 공동연구** | **한국핵융합에너지연구원-CERN 초전도 선재 공동연구 착수** | 사이언스타임즈 |
 | LS머트리얼즈 | 미국 핵융합 프로젝트에 울트라캐패시터 첫 공급 | 더퍼블릭 |
-| 초전도 양자컴퓨터 | 150억원 예산 투자(2023) | 나무위키 |
 
 #### 3-5. 투자 포인트
 
-- 핵융합 에너지 투자 급증: ITER, SPARC, CFS 등으로 HTS 테이프 수요 폭발(30만km by 2030)
-- 한국 16T 시험시설 세계 최고 수준: 핵융합 초전도체 기술 자립 기반 마련
+- 핵융합 에너지 투자 급증: SPARC 2027 first plasma, REBCO 테이프 생산 3배 but 수요 초과 -- 공급 병목 = 관련 기업 수혜
+- **상압 Tc 151K 신기록**: 기존 135K에서 16K 상승, 상온 초전도 연구 모멘텀 지속
+- 한국 16T 시험시설 세계 최고 수준 + CERN 공동연구: 핵융합 초전도체 기술 자립 기반 마련
 - MRI/양자컴퓨터 안정적 LTS 수요 + HTS 고성장 이중 구조
-- 상온 초전도 달성 시 혁명적 영향(전력망, 교통, 컴퓨팅) - 장기 옵션 가치
+- 상온 초전도 달성 시 혁명적 영향(전력망, 교통, 컴퓨팅) -- 장기 옵션 가치
 
 #### 3-6. 리스크
 
 - 상온 초전도: 물리적 원리상 불가능하지 않으나 실현 시점 예측 불가
 - LK-99 실패로 투자 심리 위축, 단기 과열 경계 필요
 - HTS 테이프 제조 비용 여전히 높음, 핵융합 상용화 일정 불확실
+- REBCO 테이프 공급 부족: 생산 3배 증가에도 수요 미충족
 - 한국 초전도 기업 생태계 미성숙 (LS머트리얼즈 외 제한적)
 
 ---
@@ -183,19 +199,24 @@ db_records: 141
 | 글로벌 SiC 반도체 시장 (2026E) | 5.32~6.16B USD | 2026E | Mordor 5.32B / DataM 6.16B |
 | 글로벌 SiC 반도체 시장 (2031E) | 8.75B USD | 2031E | Mordor (CAGR ~10.4%) |
 | SiC 디바이스 CAGR (2026-2034) | 17.72% | 2026-2034 | Fortune BI |
+| **SiC 모듈 시장** | **$1,263M(2026)→$9,817M(2034), CAGR 29.20%** | 2026-2034 | Fortune BI |
 
-**Wolfspeed 파산 & 시장 재편:**
-- Wolfspeed 파산 신청(2026.01). 원인: EV 수요 둔화 + 중국 가격 공세 + 과잉 확장
-- 6인치 SiC 웨이퍼 가격: 과거 $1,500 -> 중국 업체 $500 이하로 급락
-- Wolfspeed 300mm SiC 불(boule) 시연(2026.01, 다이 수 2.25배) -- 파산에도 기술 자산 가치 존재
+**Wolfspeed 파산 & 재기:**
+- Wolfspeed 파산 신청(2025.09) -- 91일 prepack으로 **2025.09.29 Ch11 탈출**
+- **부채 $4.6B 제거(70% 감축), 현금이자비용 60% 감소**
+- FQ2 2026 유동성 $1.3B, 매출 $168M(QoQ -14.6%, YoY -6.9%) 실적 미스
+- **EV 넘어 AI 데이터센터·국방/항공우주·에너지 인프라로 시장 다변화 전략**
+- 300mm SiC 불(boule) 시연(2026.01, 다이 수 2.25배) -- 기술 자산 가치 존재
+- SiC 웨이퍼 가격 2024년 30% 하락, 중국 SICC·TanKeBlue 저가 공세 지속
 
 **주요 기업 200mm 전환:**
 
 | 기업 | 현황 | 출처 |
 |------|------|------|
-| Infineon | 200mm SiC 출하(2025초, Villach). 오스트리아 프론트엔드 + 말레이시아 백엔드 | Electronics360 |
+| Infineon | 200mm SiC 출하(2025초, Villach). 2030 SiC 시장점유율 30% 목표 | Electronics360, DataM |
 | STMicro | 4세대 SiC MOSFET 출시(2024). 200mm 수율 75% | Fortune BI |
 | Bosch | 캘리포니아 200mm 팹 2026 자동차향 가동 | Manufacturing Dive |
+| **onsemi** | **Qorvo SiC JFET 사업부(United Silicon Carbide) $115M 인수 완료. 2026년 SiC 생산능력 5배 확대 목표** | Evertiq, Middletown Life |
 | VW, BMW, Stellantis | 다년 장기 공급 계약(offtake) 체결 | Electronics360 |
 
 #### 4-2. GaN(질화갈륨) 시장
@@ -213,8 +234,8 @@ db_records: 141
 
 | 기업 | 현황 | 출처 |
 |------|------|------|
-| **Infineon** | GaN Systems 인수(2023.10). 8인치(200mm) GaN-on-Si 전환(2025), 원가 대폭 절감 | Electronics Media |
-| **Navitas** | GaNSafe 플랫폼. Q1 2026 매출 YoY +58%, AI 서버 전력 수요 견인 | Verified Market Research |
+| **Infineon** | GaN Systems 인수(2023.10). **8인치(200mm) GaN-on-Si 전환(2025), 650V 대역 가격 경쟁력 압도적**. 2026 GaN Insights eBook 발간 | Electronics Media, Semiconductor Today |
+| **Navitas** | GaNSafe 플랫폼. Q1 2026 매출 YoY +58%. **GTC 2026에서 800V DC-DC GaNFast 전력 공급 보드 공개 -- 차세대 AI 팩토리 직접 지원**. 2026E ~$38M, 2027E ~$65M, 2028E ~$122M | Seeking Alpha, TIKR, 24/7 Wall St |
 | EPC | GaN FET 선도, 서버·자동차 전력변환 | GlobeNewsWire |
 | Transphorm, Qorvo | GaN 파워 전문 | Coherent MI |
 
@@ -231,18 +252,19 @@ db_records: 141
 
 #### 4-4. 투자 포인트
 
-- **SiC**: Wolfspeed 파산으로 Infineon/STMicro/onsemi 시장 재편 수혜. 200mm 전환 원가 절감
+- **SiC**: Wolfspeed Ch11 탈출 후 재기 + onsemi SiC JFET 인수 $115M -- 시장 재편 지속. SiC 모듈 CAGR 29.2%
 - **GaN 파워**: CAGR 44%(파워만)로 화합물 반도체 최고 성장. AI 서버 전력 수요 폭발
-- Infineon의 GaN Systems 인수 + 8인치 전환으로 GaN 시장 지배력 강화
-- Navitas Q1 +58% 성장: AI 데이터센터 전력효율 테마 직접 수혜
+- Infineon 8인치 GaN-on-Si 전환으로 650V 대역 가격 압도 -- GaN 시장 지배력 강화
+- Navitas GTC 2026 800V DC-DC: AI 데이터센터 전력효율 테마 직접 수혜. 2026-2028 매출 3배+ 성장 전망
+- 800V EV 아키텍처 전환 + 데이터센터 냉각비용 25~40% 절감 수요
 
 #### 4-5. 리스크
 
 - SiC 공급 과잉: Infineon/STMicro/onsemi/Bosch 동시 대규모 증설 + EV 수요 둔화
-- 중국 SiC 웨이퍼 가격 $500 이하 덤핑으로 비중국 업체 수익성 압박
+- 중국 SiC 웨이퍼 가격 2024년 30% 하락, $500 이하 덤핑으로 비중국 업체 수익성 압박
+- Wolfspeed 재기 불확실: FQ2 매출 미스, AI/국방 피벗 성과 미검증
 - GaN 시장 정의에 따라 규모 10배+ 차이 -- 투자 판단 시 세그먼트 구분 필수
-- Wolfspeed 파산 여파: 300mm SiC 전환 지연, 특허·기술 자산 매각 불확실성
-- CHIPS Act 48D 세액공제 2026년 만료 예정 -- 미국 내 투자 인센티브 축소
+- CHIPS Act 48D 세액공제 2026.12.31 시작 기한 -- 연장 입법(BASIC Act) 불확실
 
 ---
 
@@ -267,43 +289,51 @@ db_records: 141
 | 2025.11.08 | 상기 강화 조치 1년 유예 발표 (~2026.11.10) | 법률신문, China Briefing |
 | 2025.12.01 | 원래 역외적용 조항 발효 예정이었으나 유예로 정지 | EP Think Tank |
 
-> 유예 기간(~2026.11.10) 종료 시 재시행 여부가 최대 변수. 유예 중에도 미국/일본 향 선별적 라이선스 거부 지속.
+> 유예 기간(~2026.11.10) 종료 시 재시행 여부가 최대 변수. 유예 중에도 미국/일본 향 선별적 라이선스 거부 지속. 이중용도품목 목록에 여전히 포함.
 
-#### 5-3. 가격 동향 (2026.03~04)
+#### 5-3. 가격 동향 (2026 Q1)
 
-| 원소 | 중국 내 가격 | FOB 수출가 | 프리미엄 | 출처 |
-|------|------------|-----------|---------|------|
-| 네오디뮴(Nd) 산화물 | $113/kg | $184/kg | 63% | Rare Earth Mining |
-| 디스프로슘(Dy) 산화물 | $190/kg | $317/kg | 67% | Rare Earth Mining |
-| 네오디뮴 메탈 | 1,095,000 CNY/t (2026.04.21) | - | 전월비 +10.6%, YoY +106.6% | Trading Economics |
+| 원소 | 가격 | 변동 | 출처 |
+|------|------|------|------|
+| **네오디뮴(Nd)** | **~$215/kg** | **YTD +45%** | Benchmark Minerals Q1 2026 |
+| **프라세오디뮴(Pr)** | **~$210/kg** | **YTD +45%** | Benchmark Minerals Q1 2026 |
+| **디스프로슘(Dy)** | **중국 내 ~$931/kg, 중국 외 $1,200~1,500/kg** | **YTD +100%+** | Benchmark Minerals, INN |
+| 네오디뮴 메탈 | 1,095,000 CNY/t (2026.04.21) | 전월비 +10.6%, YoY +106.6% | Trading Economics |
 
-> 중국 외 가격 최대 6배 급등(2025-2026 수출통제 영향). 유럽 기업 라이선스 승인율 일부 섹터 25% 미만. [European Parliament, SFA Oxford]
+> Q1 2026 기준: 공급 제한·중국 정책·일본 공격적 매수·항공우주 수요가 가격 상승 주도. 중국 외 Dy 가격 중국 내 대비 최대 1.6배.
 
 #### 5-4. 서방 대응 & 공급망 다변화
 
 | 주체 | 조치 | 출처 |
 |------|------|------|
-| **미국 DoD** | MP Materials에 $400M 투자 (Mountain Pass 정제 + 국내 자석공장) | Crux Investor |
-| **Apple** | MP Materials와 $500M 재활용 희토류 자석 계약 (2027~) | Investing News |
-| **미국 DPA** | 핵심광물 예산 FY2026 $21B -> $304B 대폭 확대 | 한국경제 |
-| **IRA 핵심광물** | FTA국/북미 재활용 비율 2025년 60% -> 2026년 70% -> 2027년 80% | 글로벌이코노믹 |
+| **미국 DoD** | MP Materials에 $400M 투자 + **최대주주**. 가격 하한선 보장 | Crux Investor, 한국일보 |
+| **MP Materials** | Mountain Pass 재가동, NdPr 1,300t(2024). **Fort Worth 자석공장 NdFeB 1,000t/y. 네바다 HREE 정제시설 2026 후반 가동** | Rare Earth Mining, UPI |
+| **Apple** | MP Materials와 $500M 재활용 희토류 자석 계약 (2025.07~) | Investing News |
+| **Lynas** | 글로벌 NdPr 5,000~6,000t/y. **텍사스 시설 '중대 불확실성'(폐수처리). 말레이시아 2nd HREE시설 2028 완공 목표** | Argus, UPI, Time |
+| **미-호주** | **희토류 공급망 재건 협력 가속 (2026.04.27)** | UPI |
+| **미국 DPA** | 핵심광물 예산 FY2026 $21B→$304B 대폭 확대 | 한국경제 |
+| **IRA 핵심광물** | FTA국/북미 재활용 비율 2025년 60%→2026년 70%→2027년 80% | 글로벌이코노믹 |
+| **Cyclic Materials** | **캐나다 C$31M+ 정부지원. 온타리오·애리조나·사우스캐롤라이나 상업 리사이클링 시설 계획** | S&P Global (2026.04) |
+| **Neo Performance** | EU 유일 상업 분리시설(에스토니아 Silmet). Narva 자석공장 2,000t/y. 미-EU 공급 연결 | Rare Earth Mining |
+| **Phoenix Refining** | 중국 외 유일 HREE 상업 생산자 자처 | Phoenix Refining |
 | **EU RESourceEU** | 핵심원자재 공동구매·비축 이니셔티브(2025.12). 영구자석 순환성 강화 | EC, Consilium |
-| **서방 공급망** | 2026.03 최초 중국 외 상업적 희토류 공급망 가동 (자석, 중희토류 분리, 다운스트림) | Rare Earth Mining |
+| 서방 공급망 | 2026.03 최초 중국 외 상업적 희토류 공급망 가동 | Rare Earth Mining |
 
 #### 5-5. 투자 포인트
 
-- 희토류 공급 위기 = 가격 급등: Nd YoY +107%, Dy FOB 프리미엄 67%
-- 서방 공급망 자립 투자 확대: MP Materials(DoD $400M + Apple $500M), EU RESourceEU
-- 2026.03 중국 외 첫 상업적 공급망 가동 -- 탈중국 공급망 밸류체인 수혜 기업 주목
-- IRA 핵심광물 비율 2026년 70%로 상향 -> 북미 광물 정제·리사이클링 기업 수혜
-- 한국: 중국 유예 종료(2026.11) 대비 선제적 대응 필요, 리사이클링 기업 관심
+- 희토류 공급 위기 = 가격 급등: Nd YTD +45%($215/kg), Dy YTD +100%+($931/kg), 중국 외 Dy $1,200~1,500/kg
+- 서방 공급망 자립 투자 확대: MP Materials(DoD 최대주주 + Apple $500M + 네바다 HREE)
+- Cyclic Materials 등 리사이클링 부상: 정부 지원 + 상업 시설 건설 가속
+- 미-호주 공급망 재건 + EU Neo Performance 자석공장: 탈중국 밸류체인 구체화
+- IRA 핵심광물 비율 2026년 70%로 상향→북미 광물 정제·리사이클링 기업 수혜
 
 #### 5-6. 리스크
 
 - 중국 유예 종료(2026.11.10): 재시행 시 글로벌 공급망 대혼란 불가피
+- Lynas 텍사스 시설 불확실성: 서방 HREE 공급 핵심 프로젝트 지연
 - 유럽 대기업 80%+ 중국 REE 3단계 내 연결 -- 유럽 산업 직격탄 가능
 - 서방 대체 공급망 아직 초기 단계, 규모·비용 면에서 중국 대체 불충분
-- 가격 변동성 극심 (Nd 전월비 +10.6%, YoY +107%)
+- 가격 변동성 극심 (Nd YTD +45%, Dy +100%+)
 - 한국 희토류 자체 매장량 미미, 중국 의존도 높음
 
 ---
@@ -318,7 +348,8 @@ db_records: 141
 | 소재 관련 | 화합물 반도체(SiC/GaN), 고순도 폴리실리콘 포함 | Congress.gov |
 | Hemlock Semiconductor | $325M (고순도 반도체급 폴리실리콘 신규 시설) | Manufacturing Dive |
 | Bosch | 200mm SiC 캘리포니아 팹 2026 가동 | Manufacturing Dive |
-| **48D 세액공제** | 첨단제조 투자세액공제 2026년 만료 예정 -- 연장 여부 불확실 | Congress.gov |
+| **48D 세액공제** | **25%→35%로 인상 (One Big Beautiful Bill Act)**. 2026.12.31 시작 기한 유지 | ITIF, Baker Tilly |
+| **BASIC Act** | **48D를 2020년대 말까지 연장 + 35% 인상 제안. 초당파 공동발의 (Tenney R-NY, Mannion D-NY)** | ITIF, Tenney House.gov |
 
 #### 6-2. EU: CRM Act & Advanced Materials Act
 
@@ -326,8 +357,9 @@ db_records: 141
 |------|------|------|
 | EU CRM Act (2024.05 발효) | 2030 목표: 채굴 10%, 정제 40%, 재활용 25%, 단일국 의존 65% 이하 | EC, Consilium, IEA |
 | RESourceEU (2025.12) | 핵심원자재 공동구매·비축, 영구자석 순환성, CRM Act 개정 제안 | EC |
-| 이사회 입장 (2026.03) | 공급 리스크 통보·완화 조치 권한 명확화 | Consilium |
-| **Advanced Materials Act** | 2026년 입법 예정. 첨단소재 전략 프레임워크(연구·규제·생산역량·순환성) | EC R&I |
+| **유럽 CRM 센터** | **2026년 초 설립. 시장인텔리전스·전략프로젝트 재원·공동구매·비축 포트폴리오 관리** | EC RESourceEU |
+| 이사회 입장 (2026.03.04) | 공급 리스크 통보·완화 조치 권한 명확화 | Consilium |
+| **Advanced Materials Act** | **Q4 2026 제안 예정 (기존 '2026년 입법 예정' 구체화)** | EC R&I |
 
 #### 6-3. 한국: 소재부품장비(소부장) 전략
 
@@ -336,15 +368,16 @@ db_records: 141
 | 소부장 특화단지 종합계획(2026-2030) | 광주 첨단패키징, 부산 전력반도체, 구미 소재부품 | 정책브리핑 |
 | 국산화율 현황 | 반도체 소재 ~30%, 장비 ~10% 미만 (2025) | 다음뉴스 |
 | 2030 목표 | 공급망 자립화율 50%, 1조원 매출 소부장 기업 10개 육성 | 정책브리핑 |
+| **K-Chips Act** | **대기업 반도체 시설투자 세액공제 15% + 증분투자 10% 추가 = 최대 25%** | PIIE, The Diplomat |
 | 바이오 소부장 | 1,600억원 투자 | 법률신문 |
 | 항공엔진 소재·부품 | ~9,000억원 투자 | 법률신문 |
 | AI 반도체(NPU) | 수요산업 연계 개발, 국가 1호 상생 파운드리, Arm 공동 설계인력 양성 | 포스코 뉴스룸 |
 
 #### 6-4. 정책 시사점
 
-- **미국**: CHIPS Act로 반도체 소재 onshoring 가속. 단, 48D 세액공제 만료 시 투자 인센티브 약화
-- **EU**: CRM Act + Advanced Materials Act 이중 입법으로 원자재~첨단소재 전주기 전략 수립
-- **한국**: 소재 국산화율 30%로 여전히 취약. 2030 자립화 50% 달성 위해 투자 확대 필요
+- **미국**: CHIPS Act 48D 세액공제 25%→35% 인상으로 투자 인센티브 강화. BASIC Act로 연장 추진 중
+- **EU**: CRM Act + RESourceEU + Advanced Materials Act(Q4 2026) 3중 입법으로 원자재~첨단소재 전주기 전략 수립. CRM 센터 설립으로 실행력 확보
+- **한국**: 소재 국산화율 30%로 여전히 취약. K-Chips Act 최대 25% 세액공제. 2030 자립화 50% 달성 위해 투자 확대 필요
 - 3대 경제권 모두 "소재 주권" 확보 경쟁 가속 -- 소재 기업 장기 구조적 수혜
 
 ---
