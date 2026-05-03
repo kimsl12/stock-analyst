@@ -1,8 +1,8 @@
 ---
-updated: 2026-04-28
+updated: 2026-05-03
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-04-26
+lint_last_run: 2026-05-03
 lint_mode: full
 ---
 
@@ -17,33 +17,34 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-04-26 (wiki-linter full)**
+> **최종 갱신: 2026-05-03 (wiki-linter full)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
 
-> [INFO] P0 해제 — portfolio/model_portfolios.md 2026-04-21 갱신 완료 (confidence:high, F-1~F-7 전면 작성). 현재 전체 KB P0 항목 없음.
-> [INFO] 전체 KB P1 이하 — 브리핑 실행 가능 상태. 상세 P1 항목은 아래 P1 섹션 참조.
+> [INFO] P0 항목 없음 — 2026-05-03 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
+> [INFO] 단, market/daily_snapshot.md valid_until 2026-05-05 (토요일) — 주말 휴장 기간. 다음 거래일(월요일) 재수집 필요.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-04-26 full)
+## P1 — 이번 주 조치 (탐지: 2026-05-03 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `korea_economy.md` (루트) | 레거시 파일 2026-04-07 데이터 — 원/달러 1,410원 등 최신치(1,476원) 대비 구버전. valid_until 2026-05-07 | 중간 | `macro/korea_economy.md` SSOT 참조 유지. 루트 파일 수치 갱신 또는 redirect 포인터로 교체 권장 |
-| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 필요 |
-| `_index.md` 교차참조 맵 | 수치가 04-19 기준으로 구버전 (VIX 17.48→19.31, DXY 97.70→98.52, Gold $4,867→$4,709, 원달러 1,460→1,476) | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
-| `industry/real_estate.md` | _index.md Industry KB 테이블 미등재 (고아 파일) | 낮음 | _index.md Industry KB 표에 추가 (아래 갱신 완료) |
-
+| `macro/us_monetary_policy.md` | 2026-04-18 갱신 — 4/29 FOMC(4인 반대, 역사적 분열) + Warsh 5/15 취임 반영 안됨. valid_until 05-18이나 핵심 수치(Core PCE 3.0%→4.3%, 동결 확률 갱신 필요) 구버전 | 중간 | kb-updater에 재수집 위임. FOMC 4/29 결과·Core PCE 4.3%·Warsh 5/15 취임 반영 |
+| `korea_economy.md` (루트) | 2026-04-07 데이터 — valid_until 2026-05-07(4일 후 만료 예정). 원/달러 1,410원 등 최신치 대비 구버전 | 중간 | `macro/korea_economy.md` SSOT 유지. 루트 파일 redirect 포인터 교체 또는 삭제 권장 |
+| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-02이나 완전 수집 미달 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
+| `knowledge-db/` 미등재 파일 3종 | `quantum_2026.jsonl`(17건), `real_estate_2026.jsonl`(26건), `healthcare_service_2026.jsonl`(47건) — _index.md 시계열 DB 표 미등재 | 낮음 | _index.md 시계열 DB 섹션에 추가 (아래 갱신 완료) |
+| `knowledge-db/` 레코드 수 불일치 5종 | `science_tech_2026.jsonl`(표기 435→실제 492, +57), `macro_2026.jsonl`(713→733, +20), `telecom_next_2026.jsonl`(147→158, +11), `insurance_2026.jsonl`(72→73, +1), `changelog_2026.jsonl`(92→95, +3) | 낮음 | _index.md 레코드 수 현행화 (아래 갱신 완료) |
+| `_index.md` 교차참조 맵 | VIX(19.31→16.89), Gold($4,709→$4,612.50), 원달러 (~04-26 기준→05-02 1,476원) 수치 구버전. daily_snapshot(05-03) 갱신으로 불일치 발생 | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
+| `market/daily_snapshot.md` | valid_until 2026-05-05 (토) — 주말 적용, 다음 거래일(05-05 월) 개장 전 재수집 필요 | 낮음 | 05-05 (월) 재수집 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
-> [P1 정상] industry/ 전체 고아 파일 없음 (**19개** 파일 모두 _index.md 등재 확인). luxury.md(04-21 야간) + defense_industry.md(04-21) + semiconductor.md(04-21) + bio_pharma.md(04-21) + crypto_bitcoin.md(04-20) + robotics.md(04-19) 포함.
-> [P1 정상] knowledge-db/ SSOT-only 파일 추가 확인 없음.
-> [P1 해결완료 2026-04-24] market/daily_snapshot.md 04-24 갱신 완료 (valid_until→04-26). economic_calendar.md FOMC 의사록 오류 정정 + 04-23 결과 반영. IBM/ServiceNow/TI Q1, 한국 Q1 GDP +1.7% 반영.
+> [P1 정상] industry/ 전체 고아 파일 없음 (**27개** 파일 모두 _index.md 등재 확인). real_estate.md(04-26 등재) 포함.
+> [P1 해결완료 2026-05-03] knowledge-db/ 미등재 파일 3종 + 레코드 불일치 5종 갱신 완료 (wiki-linter full).
 
 ---
 
@@ -225,15 +226,15 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 ---
 
-## 📊 Market KB (`knowledge-base/market/`) — 2026-04-21 전면 갱신 완료
+## 📊 Market KB (`knowledge-base/market/`) — 2026-05-03 최신
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (04-26) valid_until 04-28 confidence:high | 매 거래일 | A-1, B-2, B-3 | 04-28 재실행 |
-| `economic_calendar.md` | ✅ SUCCESS (04-26) valid_until 05-02 confidence:high | 주 1회 | A-4, B-1, C-6 | — |
-| `surprise_index.md` | ✅ SUCCESS (04-26) valid_until 05-26 | 매일 | B-4 | — |
-| `correlation_matrix.md` | ✅ SUCCESS (04-26) valid_until 05-26 | 주 1회 | B-5 | — |
-| `guru_positions.md` | ✅ SUCCESS (04-18) valid_until 07-18 confidence:high | 분기 1회 | A-5, B-7, C-4 | Q1 2026은 05-15 이후 |
+| `daily_snapshot.md` | ✅ SUCCESS (05-03) valid_until 05-05 confidence:high | 매 거래일 | A-1, B-2, B-3 | 05-05 재실행 (월요일) |
+| `economic_calendar.md` | ✅ SUCCESS (05-02) valid_until 05-09 confidence:high | 주 1회 | A-4, B-1, C-6 | — |
+| `surprise_index.md` | ⚠️ PARTIAL (05-02) valid_until 05-31 confidence:medium | 매일 | B-4 | 완전 수집 목표 |
+| `correlation_matrix.md` | ✅ SUCCESS (05-03) valid_until 05-31 confidence:medium | 주 1회 | B-5 | — |
+| `guru_positions.md` | ✅ SUCCESS (04-28) valid_until 07-18 confidence:high | 분기 1회 | A-5, B-7, C-4 | Q1 2026은 05-15 이후 |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
 > daily_snapshot은 fetch_price.py --market --save로 매일 자동 갱신
@@ -269,16 +270,16 @@ SUPPLY_CHAIN_PLACEHOLDER
 | `auto_2026.jsonl` | 78건 (+32 @2026-04-21) | kb-updater |
 | `energy_2026.jsonl` | 156건 (+24 @2026-05-03) | kb-updater |
 | `geopolitics_2026.jsonl` | 117건 (+26 @2026-05-03) | kb-updater |
-| `science_tech_2026.jsonl` | 435건 (quantum/space/smr/biotech/eda/cybersecurity subtag 포함, +18 @2026-04-26 deep) | kb-updater |
+| `science_tech_2026.jsonl` | 492건 (quantum/space/smr/biotech/eda/cybersecurity subtag 포함, +57 @2026-05-03 갱신) | kb-updater |
 | `bio_pharma_2026.jsonl` | 72건 (+38 @2026-04-21) | kb-updater |
-| `macro_2026.jsonl` | 713건 (+16 @2026-05-03 political_cycle) | kb-updater |
+| `macro_2026.jsonl` | 733건 (+20 @2026-05-03) | kb-updater |
 | `banking_capital_2026.jsonl` | 95건 (+31 @2026-04-24, Q1 2026 실적 반영) | kb-updater |
 | `advanced_materials_2026.jsonl` | 185건 (+43 @2026-05-02 주간 갱신) | kb-updater |
 | `battery_2026.jsonl` | 110건 (+70 @2026-04-21) | kb-updater |
-| `infrastructure_2026.jsonl` | 62건 (+39 @2026-04-21) | kb-updater |
+| `infrastructure_2026.jsonl` | 63건 (+39 @2026-04-21) | kb-updater |
 | `capex_2026.jsonl` | 54건 (+14 @2026-05-02 Q1 실적 갱신) | kb-updater |
 | `smr_2026.jsonl` | 45건 (+45 @2026-05-02 신규 생성) | kb-updater |
-| `telecom_next_2026.jsonl` | 147건 (+22 @2026-05-02 주간 갱신) | kb-updater |
+| `telecom_next_2026.jsonl` | 158건 (+22 @2026-05-02 주간 갱신) | kb-updater |
 | `robotics_2026.jsonl` | 29건 (신규 생성 2026-04-19) | kb-updater |
 | `crypto_bitcoin_2026.jsonl` | 48건 (신규 생성 2026-04-20) | kb-updater |
 | `defense_2026.jsonl` | 25건 (신규 생성 2026-04-21) | kb-updater |
@@ -286,9 +287,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 | `consumer_retail_2026.jsonl` | 31건 (신규 생성 2026-04-22) | kb-updater |
 | `logistics_2026.jsonl` | 29건 (신규 생성 2026-04-24) | kb-updater |
 | `food_agriculture_2026.jsonl` | 57건 (신규 생성 2026-04-24) | kb-updater |
-| `insurance_2026.jsonl` | 72건 (신규 생성 2026-04-24) | kb-updater |
+| `insurance_2026.jsonl` | 73건 (신규 생성 2026-04-24) | kb-updater |
 | `education_2026.jsonl` | 42건 (신규 생성 2026-04-24) | kb-updater |
-| `changelog_2026.jsonl` | 92건 (+1 @2026-05-03 political_cycle 갱신) | kb-updater |
+| `changelog_2026.jsonl` | 95건 (+3 @2026-05-03) | kb-updater |
+| `quantum_2026.jsonl` | 17건 (신규 등재 2026-05-03, industry/quantum.md SSOT) | kb-updater |
+| `real_estate_2026.jsonl` | 26건 (신규 등재 2026-05-03, industry/real_estate.md SSOT) | kb-updater |
+| `healthcare_service_2026.jsonl` | 47건 (신규 등재 2026-05-03, industry/healthcare_service.md SSOT) | kb-updater |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
