@@ -52,6 +52,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-03 | 이브닝브리핑 | 이란 14개조 평화안 트럼프 거부 — 호르무즈 교착 구조화 확정. WTI $101.94(-3.26%) 차익실현이나 $100 지지선. 기뢰 6개월(펜타곤). ISM 가격 84.6%+WTI 4월 $105=5/12 CPI 헤드라인 3.5~3.8% Base Case | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-03 | 이브닝브리핑 | ISM 고용지수 46.4%(2026년 최저) + 가격 84.6%(4년 최고) 동시 발생 — "비용 상승+고용 축소" 구조는 AI/자동화 대체 가속 첫 사이클 가능성. 2022년 이후 첫 동시 발생 | `market/surprise_index.md` | 진행중 |
+| 2026-05-03 | 이브닝브리핑 | 버크셔 $397.4B 현금 역대 최고 + Abel 첫 CEO 주재. "단기 고평가 경고 / 중기 기회 대기" 이중 해석. S&P Fwd PER 22.5x(+2σ). 5/15 Q1 13F 공시가 방향 확인 | `market/guru_positions.md` | 진행중 |
 | 2026-04-30 | 모닝브리핑 | FOMC 8-4 분열(1992년 이후 최다) + UAE OPEC+ 탈퇴(5/1 발효) = "이중 쇼크". WTI $106.88(+6.96%), 10Y 4.42%(+7bp). 4/30 Core PCE 3.2%+ 시 연내 인하 0회 확정 | `market/daily_snapshot.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-04-30 | 모닝브리핑 | 빅테크 4사 AH: AMZN +69%/GOOGL +94% Beat 강세, META -7%(CapEx $125~145B 상향 실망), MSFT 혼조. "AI 가위" 구도 심화 — 인프라 수혜 극도 집중, SaaS 파괴 가속 | `market/economic_calendar.md, market/daily_snapshot.md` | 진행중 |
 | 2026-04-30 | 모닝브리핑 | 매크로 위험등급 4/5 유지 — 지정학(이란+UAE) 5등급, 통화정책+미국경제 4등급. 30일 시나리오: Bull 15%/Base 50%/Bear 35%. Bear 확률 기존 18%→35% 대폭 상향 | `macro/global_risk_factors.md` | 진행중 |
