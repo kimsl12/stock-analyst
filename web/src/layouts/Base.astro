@@ -1,0 +1,223 @@
+---
+interface Props {
+  title: string;
+  lede?: string;
+  active?: 'home' | 'morning' | 'evening' | 'weekly' | 'crypto' | 'stocks' | 'portfolio' | null;
+}
+const { title, lede, active = null } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{title} · 종목분석 에이전트</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/">📊 종목분석 에이전트</a>
+        <nav class="nav">
+          <a href="/" class:list={[active === 'home' && 'active']}>전체</a>
+          <a href="/briefing/morning" class:list={[active === 'morning' && 'active']}>모닝</a>
+          <a href="/briefing/evening" class:list={[active === 'evening' && 'active']}>이브닝</a>
+          <a href="/briefing/weekly" class:list={[active === 'weekly' && 'active']}>주간</a>
+          <a href="/briefing/crypto" class:list={[active === 'crypto' && 'active']}>크립토</a>
+          <a href="/stocks" class:list={[active === 'stocks' && 'active']}>종목</a>
+          <a href="/portfolio" class:list={[active === 'portfolio' && 'active']}>포트폴리오</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <header class="page-head">
+        <h1>{title}</h1>
+        {lede && <p class="lede">{lede}</p>}
+      </header>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span>v0.1 · Day 4 (인덱스 + 카드 그리드 + 카테고리 라우팅)</span>
+        <span class="dim">Astro on Vercel · Supabase</span>
+      </div>
+    </footer>
+
+    <style is:global>
+      :root {
+        color-scheme: dark;
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --surface-2: #273449;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --dim: #64748b;
+        --accent: #3b82f6;
+        --accent-2: #60a5fa;
+        --border: #334155;
+        --up: #10b981;
+        --down: #ef4444;
+        --warn: #f59e0b;
+
+        /* type별 배지 색상 (briefing-report-generator 팔레트와 정합) */
+        --t-morning: #fbbf24;
+        --t-evening: #fb923c;
+        --t-weekly: #60a5fa;
+        --t-crypto: #a78bfa;
+        --t-user_portfolio: #f472b6;
+        --t-stock_analysis: #34d399;
+        --t-etf: #2dd4bf;
+        --t-global_intelligence: #c084fc;
+        --t-model_portfolio: #818cf8;
+        --t-rebalancing: #fb7185;
+        --t-daily_briefing: #cbd5e1;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Noto Sans KR', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a { color: var(--accent-2); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+
+      /* TOPBAR */
+      .topbar {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .topbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .brand { color: var(--text); font-weight: 700; font-size: 1.05rem; }
+      .brand:hover { text-decoration: none; color: var(--accent-2); }
+      .nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+      .nav a {
+        color: var(--muted);
+        padding: 0.4rem 0.7rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .nav a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+      .nav a.active { background: var(--accent); color: #fff; }
+
+      /* PAGE HEAD */
+      main.container { flex: 1; padding-top: 1.75rem; padding-bottom: 2.5rem; }
+      .page-head { margin-bottom: 1.5rem; }
+      .page-head h1 { margin: 0 0 .35rem; font-size: 1.65rem; font-weight: 700; }
+      .page-head .lede { margin: 0; color: var(--muted); font-size: .95rem; }
+
+      /* FOOTER */
+      .footer {
+        margin-top: auto;
+        padding: 1.25rem 0;
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        font-size: .8rem;
+      }
+      .footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+      .footer .dim { color: var(--dim); }
+
+      /* GRID */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 0.85rem;
+      }
+
+      /* BADGE (type별) */
+      .badge {
+        display: inline-block;
+        padding: 0.15rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        background: rgba(148,163,184,.14);
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .badge.t-morning { background: rgba(251,191,36,.14); color: var(--t-morning); }
+      .badge.t-evening { background: rgba(251,146,60,.14); color: var(--t-evening); }
+      .badge.t-weekly { background: rgba(96,165,250,.14); color: var(--t-weekly); }
+      .badge.t-crypto { background: rgba(167,139,250,.14); color: var(--t-crypto); }
+      .badge.t-user_portfolio { background: rgba(244,114,182,.14); color: var(--t-user_portfolio); }
+      .badge.t-stock_analysis { background: rgba(52,211,153,.14); color: var(--t-stock_analysis); }
+      .badge.t-etf { background: rgba(45,212,191,.14); color: var(--t-etf); }
+      .badge.t-global_intelligence { background: rgba(192,132,252,.14); color: var(--t-global_intelligence); }
+      .badge.t-model_portfolio { background: rgba(129,140,248,.14); color: var(--t-model_portfolio); }
+      .badge.t-rebalancing { background: rgba(251,113,133,.14); color: var(--t-rebalancing); }
+      .badge.t-daily_briefing { background: rgba(203,213,225,.14); color: var(--t-daily_briefing); }
+
+      /* TABLE */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th, td {
+        text-align: left;
+        padding: 0.6rem 0.85rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+      th {
+        background: var(--surface-2);
+        color: var(--muted);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+      }
+      tbody tr:last-child td { border-bottom: none; }
+      td.num { font-variant-numeric: tabular-nums; }
+
+      /* COLOR HELPERS */
+      .up { color: var(--up); }
+      .down { color: var(--down); }
+      .muted { color: var(--muted); }
+      .warn { color: var(--warn); }
+
+      /* MOBILE */
+      @media (max-width: 600px) {
+        .grid { grid-template-columns: 1fr; }
+        .topbar-inner { padding: 0.6rem 1rem; }
+        .nav a { padding: 0.35rem 0.5rem; font-size: 0.82rem; }
+        .page-head h1 { font-size: 1.35rem; }
+        th, td { padding: 0.5rem 0.6rem; font-size: 0.85rem; }
+      }
+    </style>
+  </body>
+</html>

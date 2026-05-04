@@ -1,0 +1,106 @@
+---
+import Base from '../../layouts/Base.astro';
+import manifest from '../../data/manifest.json';
+
+// ticker별 그룹화 (stock_analysis + etf)
+type Item = (typeof manifest.items)[number];
+const stockItems = manifest.items.filter(
+  (it) => (it.type === 'stock_analysis' || it.type === 'etf') && it.ticker,
+);
+
+const groups = new Map<string, { ticker: string; name: string | null; type: string; count: number; latest: Item }>();
+for (const it of stockItems) {
+  const key = it.ticker as string;
+  const existing = groups.get(key);
+  if (!existing) {
+    groups.set(key, { ticker: key, name: it.name, type: it.type, count: 1, latest: it });
+  } else {
+    existing.count += 1;
+    if (it.date > existing.latest.date) existing.latest = it;
+  }
+}
+
+const sorted = [...groups.values()].sort((a, b) => {
+  if (a.type !== b.type) return a.type === 'etf' ? 1 : -1; // 종목 먼저, ETF 뒤
+  return a.ticker.localeCompare(b.ticker);
+});
+---
+<Base title="종목 / ETF" lede={`${sorted.length}개 종목 · 총 ${stockItems.length}건의 리포트 (티커별 묶음)`} active="stocks">
+  <section class="ticker-grid">
+    {sorted.map((g) => (
+      <a href={`/stocks/${g.ticker}`} class="ticker-card">
+        <div class="ticker-head">
+          <span class:list={['badge', `t-${g.type}`]}>{g.type === 'etf' ? 'ETF' : '주식'}</span>
+          <span class="count">{g.count}건</span>
+        </div>
+        <div class="ticker-symbol">{g.ticker}</div>
+        <div class="ticker-name">{g.name ?? '-'}</div>
+        <div class="ticker-foot">
+          <span class="muted">최신:</span>
+          <span>{g.latest.date}</span>
+        </div>
+      </a>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .ticker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.7rem;
+  }
+  .ticker-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.85rem 0.95rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .15s, background .15s, transform .15s;
+  }
+  .ticker-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .ticker-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .count {
+    font-size: .72rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .ticker-symbol {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  .ticker-name {
+    color: var(--muted);
+    font-size: .85rem;
+    line-height: 1.3;
+    /* 2-line clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ticker-foot {
+    margin-top: auto;
+    display: flex;
+    gap: .35rem;
+    font-size: .78rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .muted { color: var(--muted); }
+</style>

@@ -1,0 +1,143 @@
+---
+import Base from '../../layouts/Base.astro';
+import manifest from '../../data/manifest.json';
+
+export function getStaticPaths() {
+  type Item = (typeof manifest.items)[number];
+  const stockItems = manifest.items.filter(
+    (it: Item) => (it.type === 'stock_analysis' || it.type === 'etf') && it.ticker,
+  );
+  const tickers = [...new Set(stockItems.map((it: Item) => it.ticker as string))];
+  return tickers.map((ticker) => ({ params: { ticker } }));
+}
+
+const { ticker } = Astro.params;
+const reports = manifest.items
+  .filter((it) => it.ticker === ticker)
+  .sort((a, b) => (a.date < b.date ? 1 : -1));
+const latest = reports[0];
+const history = reports.slice(1);
+const name = latest?.name ?? '';
+const isEtf = latest?.type === 'etf';
+---
+<Base
+  title={`${ticker} · ${name}`}
+  lede={`${isEtf ? 'ETF' : '주식'} · 최신 ${latest?.date} · 총 ${reports.length}건의 분석 리포트`}
+  active="stocks"
+>
+  {latest ? (
+    <>
+      <section class="actions">
+        <a class="btn" href={latest.url_path} target="_blank" rel="noopener">새 탭에서 열기 ↗</a>
+        {history.length > 0 && (
+          <a class="btn ghost" href="#history">과거 분석 {history.length}건 ↓</a>
+        )}
+      </section>
+
+      <section class="frame-wrap">
+        <iframe
+          src={latest.url_path}
+          title={`${ticker} 분석 리포트`}
+          loading="lazy"
+        />
+      </section>
+
+      {history.length > 0 && (
+        <section id="history" class="history">
+          <h2>과거 분석 ({history.length}건)</h2>
+          <ul class="history-list">
+            {history.map((r) => (
+              <li>
+                <a href={r.url_path}>
+                  <span class="hist-date">{r.date}</span>
+                  <span class="hist-title">{r.title ?? r.filename}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </>
+  ) : (
+    <p class="empty">분석 리포트 없음</p>
+  )}
+</Base>
+
+<style>
+  .actions {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: .45rem 0.85rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--accent-2); text-decoration: none; }
+  .btn.ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
+
+  .frame-wrap {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 80vh;
+    min-height: 600px;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .history { margin-top: 2rem; }
+  .history h2 { font-size: 1rem; color: var(--muted); margin: 0 0 .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+  .history-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .35rem; }
+  .history-list li a {
+    display: flex;
+    gap: .85rem;
+    padding: .55rem .85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: none;
+    align-items: center;
+  }
+  .history-list li a:hover { border-color: var(--accent); background: var(--surface-2); text-decoration: none; }
+  .hist-date {
+    color: var(--muted);
+    font-size: .82rem;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    min-width: 90px;
+  }
+  .hist-title {
+    color: var(--text);
+    font-size: .9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .empty { padding: 3rem; text-align: center; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .frame-wrap { height: 70vh; min-height: 500px; }
+    .hist-date { min-width: 75px; font-size: .75rem; }
+    .hist-title { font-size: .82rem; }
+  }
+</style>

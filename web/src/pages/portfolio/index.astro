@@ -1,0 +1,175 @@
+---
+import Base from '../../layouts/Base.astro';
+import { createServerClient, type Portfolio, type Holding } from '../../lib/supabase.ts';
+
+// 빌드 시점 SSG: service_role 키로 RLS 우회 → portfolios + holdings 읽기
+const sb = createServerClient();
+
+let portfolio: Portfolio | null = null;
+let holdings: Holding[] = [];
+let error: string | null = null;
+
+if (!sb) {
+  error = 'Supabase 환경변수 미설정 (PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_KEY)';
+} else {
+  try {
+    const { data: pData, error: pErr } = await sb
+      .from('portfolios')
+      .select('*')
+      .order('updated_at', { ascending: false })
+      .limit(1);
+    if (pErr) throw pErr;
+    portfolio = (pData?.[0] as Portfolio | undefined) ?? null;
+
+    if (portfolio) {
+      const { data: hData, error: hErr } = await sb
+        .from('holdings')
+        .select('*')
+        .eq('portfolio_id', portfolio.id)
+        .order('weight_pct', { ascending: false, nullsFirst: false });
+      if (hErr) throw hErr;
+      holdings = (hData as Holding[]) ?? [];
+    }
+  } catch (e) {
+    error = `Supabase 조회 실패: ${(e as Error).message}`;
+  }
+}
+
+const fmtMoney = (v: number | null, currency: 'USD' | 'KRW' = 'USD') => {
+  if (v == null) return '—';
+  const opts: Intl.NumberFormatOptions = currency === 'USD'
+    ? { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }
+    : { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 };
+  return new Intl.NumberFormat('en-US', opts).format(v);
+};
+const fmtPct = (v: number | null) => (v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`);
+const fmtQty = (v: number | null) => (v == null ? '—' : v.toLocaleString('en-US', { maximumFractionDigits: 6 }));
+const updatedAt = portfolio?.updated_at?.slice(0, 19).replace('T', ' ');
+---
+<Base
+  title="내 포트폴리오"
+  lede={portfolio
+    ? `최종 갱신: ${updatedAt} (UTC) · ${holdings.length}개 보유 종목`
+    : '데이터 없음 — /내포트폴리오 명령으로 동기화 후 다시 방문'}
+  active="portfolio"
+>
+  {error && <div class="err">{error}</div>}
+
+  {portfolio && (
+    <>
+      <section class="totals">
+        <div class="metric">
+          <div class="metric-label">총액 (USD)</div>
+          <div class="metric-value">{fmtMoney(portfolio.total_value_usd, 'USD')}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">총액 (KRW)</div>
+          <div class="metric-value">{fmtMoney(portfolio.total_value_krw, 'KRW')}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">환율</div>
+          <div class="metric-value">{portfolio.exchange_rate ? `${portfolio.exchange_rate.toFixed(2)}원` : '—'}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">출처</div>
+          <div class="metric-value">{portfolio.source}</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>투자자 프로파일</h2>
+        <table class="profile">
+          <tbody>
+            {Object.entries(portfolio.profile ?? {}).map(([k, v]) => (
+              <tr><th>{k}</th><td>{v}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>보유 종목 ({holdings.length}건)</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>티커</th>
+                <th>이름</th>
+                <th>유형</th>
+                <th class="num">수량</th>
+                <th class="num">평가금</th>
+                <th class="num">비중</th>
+                <th class="num">수익률</th>
+              </tr>
+            </thead>
+            <tbody>
+              {holdings.map((h) => (
+                <tr>
+                  <td><strong>{h.ticker}</strong></td>
+                  <td>{h.name}</td>
+                  <td><span class="muted">{h.asset_type ?? '—'}</span></td>
+                  <td class="num">{fmtQty(h.quantity)}</td>
+                  <td class="num">{fmtMoney(h.current_value_usd, 'USD')}</td>
+                  <td class="num">{h.weight_pct == null ? '—' : `${h.weight_pct.toFixed(2)}%`}</td>
+                  <td class:list={['num', h.return_pct != null && (h.return_pct >= 0 ? 'up' : 'down')]}>
+                    {fmtPct(h.return_pct)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  )}
+</Base>
+
+<style>
+  .err {
+    padding: 1rem 1.25rem;
+    background: rgba(239,68,68,.1);
+    border: 1px solid rgba(239,68,68,.4);
+    border-radius: 8px;
+    color: #fca5a5;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+  }
+  .totals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+  .metric {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+  }
+  .metric-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .metric-value {
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h2 {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  table.profile { max-width: 640px; }
+  table.profile th { width: 40%; }
+
+  .table-wrap { overflow-x: auto; }
+</style>

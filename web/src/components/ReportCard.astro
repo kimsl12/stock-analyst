@@ -1,0 +1,83 @@
+---
+interface Props {
+  title?: string | null;
+  type: string;
+  date: string;
+  url_path: string;
+  ticker?: string | null;
+  name?: string | null;
+  size_bytes: number;
+  filename: string;
+}
+const { title, type, date, url_path, ticker, name, size_bytes, filename } = Astro.props;
+const sizeKB = Math.round(size_bytes / 1024);
+const display = title || (ticker ? `${ticker} · ${name ?? ''}`.trim() : filename);
+---
+<a class="report-card" href={url_path}>
+  <div class="report-card-meta">
+    <span class:list={['badge', `t-${type}`]}>{type.replace(/_/g, ' ')}</span>
+    {ticker && <span class="ticker">{ticker}</span>}
+  </div>
+  <h3 class="report-card-title">{display}</h3>
+  <div class="report-card-foot">
+    <span>{date}</span>
+    <span class="dim">{sizeKB} KB</span>
+  </div>
+</a>
+
+<style>
+  .report-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0.95rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color .15s, transform .15s, background .15s;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+  }
+  .report-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .report-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .ticker {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .report-card-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+    /* 2-line clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .report-card-foot {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .dim { color: var(--dim); }
+</style>

@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReportCard from '../../components/ReportCard.astro';
+import manifest from '../../data/manifest.json';
+
+export function getStaticPaths() {
+  // briefing/* 라우트는 모든 type에 대해 prerender (종목분석/etf는 stocks/로 별도)
+  const briefingTypes = [
+    'morning', 'evening', 'weekly', 'crypto',
+    'user_portfolio', 'global_intelligence',
+    'model_portfolio', 'rebalancing', 'daily_briefing',
+  ];
+  return briefingTypes.map((type) => ({ params: { type } }));
+}
+
+const { type } = Astro.params;
+const items = manifest.items.filter((it) => it.type === type);
+
+const labels: Record<string, string> = {
+  morning: '모닝 브리핑',
+  evening: '이브닝 브리핑',
+  weekly: '주간 리포트',
+  crypto: '크립토 브리핑',
+  user_portfolio: '내 포트폴리오 (HTML 리포트)',
+  global_intelligence: '글로벌 인텔리전스',
+  model_portfolio: '모델 포트폴리오',
+  rebalancing: '리밸런싱',
+  daily_briefing: '데일리 브리핑 (legacy)',
+};
+const title = labels[type as string] ?? type;
+const navActive = ['morning', 'evening', 'weekly', 'crypto'].includes(type as string)
+  ? (type as 'morning' | 'evening' | 'weekly' | 'crypto')
+  : null;
+---
+<Base title={title} lede={`총 ${items.length}건 · 최신순`} active={navActive}>
+  {items.length === 0 ? (
+    <p class="empty">아직 인덱싱된 리포트가 없습니다.</p>
+  ) : (
+    <section class="grid">
+      {items.map((item) => <ReportCard {...item} />)}
+    </section>
+  )}
+</Base>
+
+<style>
+  .empty {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+  }
+</style>
