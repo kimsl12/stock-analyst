@@ -62,17 +62,22 @@ cp .env.example .env.local
 
 **③ verify.sql** (새 query 탭에서)
 1. `web/db/verify.sql` 전체 복사 → 붙여넣기 → **RUN**
-2. 결과 5개 섹션을 차례로 확인:
+2. 단일 결과셋 8행이 표시됨. **status 컬럼이 모두 `OK`이면 통과.**
 
-| 섹션 | 기대 결과 |
-|---|---|
-| ① 테이블 4개 | `holdings`, `model_portfolios`, `portfolios`, `reports` |
-| ② RLS 활성화 | 4행 모두 `rowsecurity = true` |
-| ③ 정책 5개 | `own_portfolio_read`, `own_portfolio_write`, `own_holdings_read`, `auth_reports_read`, `auth_models_read` |
-| ④ 인덱스 2개 | `idx_reports_type_date`, `idx_reports_ticker`, (자동 생성된 PK 인덱스도 함께 보일 수 있음) |
-| ⑤ row 카운트 | 4행 모두 `n = 0` |
+| check_name | expected | 의미 |
+|---|---|---|
+| `tables_exist` | 4 | public 스키마에 4개 테이블 존재 |
+| `rls_enabled` | 4 | 4개 테이블 모두 RLS 활성화 |
+| `policies_count` | 5 | RLS 정책 5개 (`own_portfolio_read/write`, `own_holdings_read`, `auth_reports_read`, `auth_models_read`) |
+| `indexes_count` | 2 | `idx_reports_type_date`, `idx_reports_ticker` |
+| `rows_portfolios` | 0 | 빈 테이블 |
+| `rows_holdings` | 0 | 빈 테이블 |
+| `rows_model_portfolios` | 0 | 빈 테이블 |
+| `rows_reports` | 0 | 빈 테이블 |
 
-기대 결과와 다르면 → 사용자에게 알리고 작업 중단.
+`FAIL` 행이 하나라도 있으면 → verify.sql 하단 주석의 항목별 복구 방법 참조 또는 사용자에게 알림.
+
+> **참고:** Supabase SQL Editor는 여러 SELECT를 한 번에 실행하면 **마지막 결과만 UI에 표시**합니다. verify.sql은 단일 결과셋으로 통합되어 있어 이 동작과 무관하게 모든 검증이 한 화면에 보입니다.
 
 ---
 
