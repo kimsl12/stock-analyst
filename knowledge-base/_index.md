@@ -23,7 +23,7 @@ lint_mode: full
 |------|------|----------|------|
 
 > [INFO] P0 항목 없음 — 2026-05-03 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
-> [INFO] 단, market/daily_snapshot.md valid_until 2026-05-05 (토요일) — 주말 휴장 기간. 다음 거래일(월요일) 재수집 필요.
+> [INFO] market/daily_snapshot.md 2026-05-04 이브닝 수집 완료 — KOSPI 6,936.99(+5.12%) 사상최고가, 이란 교전 보도 반영. valid_until 2026-05-05. 5/5(화) 미국 현물 개장 후 재수집 필요.
 
 ---
 
@@ -52,6 +52,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-04 | 이브닝브리핑 | KOSPI 5/4 재개장 6,936.99(+5.12%) 사상 최고가 — SK하이닉스 +12.52% 시총 1000조 돌파. 외인 3.0조+기관 1.9조 순매수. 빅테크 AI 실적 연휴 소화 후 폭발적 매수. KOSPI 7,000 저항선 목전 | `market/daily_snapshot.md` | 진행중 |
+| 2026-05-04 | 이브닝브리핑 | 이란 교전 보도 급출현(5/4 야간) — 이란 미디어 "美 순찰선 피격+US warship 호르무즈 회항" → S&P선물 -0.1%/WTI +2.87%(.90)/Brent +3.35%(.79). 미 당국 부인. 5/5 미국 개장 변동성 최대 촉매 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-04 | 이브닝브리핑 | BTC F&G 지수 정정 — 39(Fear). 기존 "Daily Greed 진입" 표현 수정. 26(5/1)→39(5/4) 개선 중이나 아직 Fear 구간. BTC ,190/ETH ,302. 도미넌스 58.5% 60% 저항 테스트 | `market/daily_snapshot.md` | 정정 |
 | 2026-05-04 | 모닝브리핑 | Trump "Project Freedom" 호르무즈 구출작전 5/4 개시 — 미 해군 억류 선박(~2만 명) 안내. 이란 의회 "휴전 위반" 경고. 시나리오 B(제한적 대응+교착) 40% 가장 유력. WTI $100~115 변동성 극대화. 5/4 선물 개장가가 분기 첫 신호 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-04 | 모닝브리핑 | Trump-Xi 베이징 정상회담 5/14 확정(8년만 첫 방중) — 5/12 CPI가 정상회담 결과 간접 결정. CPI 3.5%+ 시 관세 인하 카드 제한. Section 301 공청회(5/5)가 선행 이벤트 | `market/economic_calendar.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-04 | 모닝브리핑 | BTC F&G Fear 26→Greed 급반전 + 선물 OI $61B(수개월 최고) + 4월 ETF 순유입 $1.6B. 기관 축적 구조 재확인. $80K 돌파+ETF 재가속=NASDAQ↔BTC 재동조화 트리거 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
