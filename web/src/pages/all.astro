@@ -1,56 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import ReportCard from '../components/ReportCard.astro';
+import SearchBox from '../components/SearchBox.astro';
+import FilterBar from '../components/FilterBar.astro';
 import manifest from '../data/manifest.json';
 
 const items = manifest.items;
-const byType = manifest.by_type as Record<string, number>;
-const typeOrder = [
-  'morning', 'evening', 'weekly', 'crypto',
-  'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing',
-  'stock_analysis', 'etf', 'daily_briefing',
-];
-const typeLabels: Record<string, string> = {
-  morning: '모닝', evening: '이브닝', weekly: '주간', crypto: '크립토',
-  user_portfolio: '내 포트폴리오', global_intelligence: '글로벌 인텔리전스',
-  model_portfolio: '모델 포트폴리오', rebalancing: '리밸런싱',
-  stock_analysis: '종목 분석', etf: 'ETF', daily_briefing: '데일리(legacy)',
-};
-const sortedTypes = typeOrder.filter((t) => byType[t]);
 ---
-<Base title="전체 인덱스" lede={`총 ${manifest.count}건의 리포트 · 최신순 정렬`}>
-  <section class="type-summary">
-    {sortedTypes.map((t) => {
-      const slug = (t === 'stock_analysis' || t === 'etf') ? '/stocks' : `/briefing/${t}`;
-      return (
-        <a href={slug} class="type-pill">
-          <span class:list={['badge', `t-${t}`]}>{typeLabels[t] ?? t}</span>
-          <span class="count">{byType[t]}</span>
-        </a>
-      );
-    })}
-  </section>
+<Base title="전체 인덱스" lede={`총 ${manifest.count}건 · 검색 + 3축 필터 (종류 / 기간 / 종목)`} active="all">
+  <SearchBox />
+  <FilterBar />
 
   <section class="grid">
     {items.map((item) => <ReportCard {...item} />)}
   </section>
 </Base>
-
-<style>
-  .type-summary { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
-  .type-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem 0.65rem 0.3rem 0.4rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: inherit;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: border-color .15s, background .15s;
-  }
-  .type-pill:hover { border-color: var(--accent); background: var(--surface-2); text-decoration: none; }
-  .type-pill .count { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
-</style>

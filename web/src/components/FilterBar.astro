@@ -1,0 +1,257 @@
+---
+import manifest from '../data/manifest.json';
+
+const typeOrder = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing', 'stock_analysis', 'etf', 'daily_briefing'];
+const typeLabels: Record<string, string> = {
+  morning: '모닝', evening: '이브닝', weekly: '주간', crypto: '크립토',
+  user_portfolio: '내포트', global_intelligence: '글로벌인텔', model_portfolio: '모델포트',
+  rebalancing: '리밸런싱', stock_analysis: '종목', etf: 'ETF', daily_briefing: '데일리',
+};
+const byType = manifest.by_type as Record<string, number>;
+const types = typeOrder.filter((t) => byType[t]);
+const tickers = [
+  ...new Set(manifest.items.filter((it) => it.ticker).map((it) => it.ticker as string)),
+].sort();
+---
+<aside class="filter-bar">
+  <div class="filter-row">
+    <label class="filter-label">종류</label>
+    <div class="chips" id="filter-types">
+      {types.map((t) => (
+        <button type="button" class:list={['chip', `t-${t}`]} data-type={t}>
+          {typeLabels[t] ?? t} <span class="cnt">{byType[t]}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <label class="filter-label">기간</label>
+    <div class="radios" id="filter-days">
+      {[['7', '7일'], ['30', '30일'], ['90', '90일'], ['365', '1년'], ['', '전체']].map(([v, label]) => (
+        <button type="button" class="radio" data-days={v}>{label}</button>
+      ))}
+    </div>
+  </div>
+
+  <div class="filter-row">
+    <label class="filter-label" for="filter-ticker">종목</label>
+    <input
+      id="filter-ticker"
+      type="text"
+      list="filter-ticker-list"
+      placeholder="티커 검색 (예: AAPL, 005930)"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <datalist id="filter-ticker-list">
+      {tickers.map((t) => <option value={t} />)}
+    </datalist>
+  </div>
+
+  <div class="filter-row meta-row">
+    <span class="result-count">
+      <strong id="result-count">{manifest.count}</strong>건 표시 / 전체 {manifest.count}건
+    </span>
+    <button type="button" id="filter-reset" class="reset">초기화</button>
+  </div>
+</aside>
+
+<script>
+  function getCardContainers() {
+    return Array.from(document.querySelectorAll<HTMLAnchorElement>('.report-card'));
+  }
+
+  function readState() {
+    const params = new URLSearchParams(location.search);
+    return {
+      types: (params.get('type') || '').split(',').filter(Boolean),
+      days: parseInt(params.get('days') || '0', 10) || 0,
+      ticker: (params.get('ticker') || '').trim().toUpperCase(),
+    };
+  }
+
+  function writeState(state: { types: string[]; days: number; ticker: string }) {
+    const params = new URLSearchParams();
+    if (state.types.length) params.set('type', state.types.join(','));
+    if (state.days) params.set('days', String(state.days));
+    if (state.ticker) params.set('ticker', state.ticker);
+    const qs = params.toString();
+    history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+  }
+
+  function applyFilters() {
+    const { types, days, ticker } = readState();
+    const cutoff = days > 0
+      ? new Date(Date.now() - days * 86400000).toISOString().slice(0, 10)
+      : '';
+    let visible = 0;
+    for (const card of getCardContainers()) {
+      const t = card.dataset.type ?? '';
+      const d = card.dataset.date ?? '';
+      const tk = (card.dataset.ticker ?? '').toUpperCase();
+      const okType = types.length === 0 || types.includes(t);
+      const okDate = !cutoff || d >= cutoff;
+      const okTicker = !ticker || tk.includes(ticker);
+      if (okType && okDate && okTicker) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    }
+    const cnt = document.getElementById('result-count');
+    if (cnt) cnt.textContent = visible.toString();
+  }
+
+  function syncUI() {
+    const { types, days, ticker } = readState();
+    document.querySelectorAll<HTMLButtonElement>('#filter-types .chip').forEach((b) => {
+      b.classList.toggle('active', types.includes(b.dataset.type ?? ''));
+    });
+    document.querySelectorAll<HTMLButtonElement>('#filter-days .radio').forEach((b) => {
+      const v = parseInt(b.dataset.days ?? '0', 10) || 0;
+      b.classList.toggle('active', v === days);
+    });
+    const tickerInput = document.getElementById('filter-ticker') as HTMLInputElement | null;
+    if (tickerInput) tickerInput.value = ticker;
+  }
+
+  // 이벤트 바인딩
+  document.querySelectorAll<HTMLButtonElement>('#filter-types .chip').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const state = readState();
+      const t = btn.dataset.type ?? '';
+      const idx = state.types.indexOf(t);
+      if (idx >= 0) state.types.splice(idx, 1);
+      else state.types.push(t);
+      writeState(state);
+      syncUI();
+      applyFilters();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>('#filter-days .radio').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const state = readState();
+      const v = parseInt(btn.dataset.days ?? '0', 10) || 0;
+      state.days = state.days === v ? 0 : v;
+      writeState(state);
+      syncUI();
+      applyFilters();
+    });
+  });
+  const tickerInput = document.getElementById('filter-ticker') as HTMLInputElement | null;
+  if (tickerInput) {
+    let timer: number | null = null;
+    tickerInput.addEventListener('input', () => {
+      if (timer) window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const state = readState();
+        state.ticker = tickerInput.value.trim().toUpperCase();
+        writeState(state);
+        applyFilters();
+      }, 150);
+    });
+  }
+  document.getElementById('filter-reset')?.addEventListener('click', () => {
+    history.replaceState(null, '', location.pathname);
+    syncUI();
+    applyFilters();
+  });
+
+  // 초기 로드
+  syncUI();
+  applyFilters();
+</script>
+
+<style>
+  .filter-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 36px;
+  }
+  .chips, .radios { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .chip, .radio {
+    background: var(--surface-2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+    font-family: inherit;
+  }
+  .chip:hover, .radio:hover { background: var(--bg); color: var(--text); }
+  .chip.active, .radio.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chip .cnt {
+    color: var(--dim);
+    margin-left: 0.25rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.7rem;
+  }
+  .chip.active .cnt { color: rgba(255,255,255,0.8); }
+
+  #filter-ticker {
+    flex: 1;
+    min-width: 180px;
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+  }
+  #filter-ticker:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .meta-row {
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    margin-top: 0.2rem;
+    justify-content: space-between;
+  }
+  .result-count {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .result-count strong { color: var(--text); font-weight: 700; }
+  .reset {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .reset:hover { color: var(--text); border-color: var(--accent); }
+</style>

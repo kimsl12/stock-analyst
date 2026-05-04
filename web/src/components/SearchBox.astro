@@ -1,0 +1,241 @@
+---
+// PLAN.md §10.2 본문 검색.
+// FlexSearch는 esm.sh CDN으로 lazy load (첫 입력 시점).
+// 본문 데이터(/search-data.json)도 lazy load. 760KB raw, gzip ~150KB.
+---
+<div class="search-box">
+  <div class="search-input-wrap">
+    <span class="search-icon">🔎</span>
+    <input
+      id="search-input"
+      type="search"
+      placeholder="본문 검색 (예: AAPL Q2 실적, 호르무즈, FOMC) — 첫 입력 시 인덱스 로드"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <span class="search-status" id="search-status"></span>
+  </div>
+  <div id="search-results" class="search-results" hidden></div>
+</div>
+
+<script>
+  const FLEX_CDN = 'https://esm.sh/flexsearch@0.7.43';
+  const DATA_URL = '/search-data.json';
+
+  type Doc = {
+    id: string;
+    title: string;
+    type: string;
+    date: string;
+    ticker: string | null;
+    url: string;
+    body: string;
+  };
+
+  let indexPromise: Promise<{ idx: any; docs: Doc[] }> | null = null;
+
+  async function getIndex() {
+    if (indexPromise) return indexPromise;
+    setStatus('인덱스 로드 중…');
+    indexPromise = (async () => {
+      const [{ default: FlexSearch }, dataRes] = await Promise.all([
+        import(/* @vite-ignore */ FLEX_CDN),
+        fetch(DATA_URL),
+      ]);
+      const data = await dataRes.json();
+      const idx = new FlexSearch.Document({
+        document: {
+          id: 'id',
+          index: ['title', 'body'],
+          store: ['title', 'url', 'date', 'type', 'ticker', 'body'],
+        },
+        tokenize: 'forward',
+      });
+      const docs: Doc[] = data.documents;
+      for (const d of docs) idx.add(d);
+      setStatus(`${docs.length}건 인덱싱 완료`);
+      return { idx, docs };
+    })();
+    return indexPromise;
+  }
+
+  function setStatus(msg: string) {
+    const el = document.getElementById('search-status');
+    if (el) el.textContent = msg;
+  }
+
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+  }
+
+  function makeSnippet(body: string, query: string): string {
+    if (!body) return '';
+    const lower = body.toLowerCase();
+    const q = query.toLowerCase().split(/\s+/).filter((s) => s.length >= 2)[0] ?? query.toLowerCase();
+    const pos = lower.indexOf(q);
+    if (pos < 0) return escapeHtml(body.slice(0, 200)) + (body.length > 200 ? '…' : '');
+    const start = Math.max(0, pos - 80);
+    const end = Math.min(body.length, pos + 120);
+    const before = (start > 0 ? '…' : '') + escapeHtml(body.slice(start, pos));
+    const match = `<mark>${escapeHtml(body.slice(pos, pos + q.length))}</mark>`;
+    const after = escapeHtml(body.slice(pos + q.length, end)) + (end < body.length ? '…' : '');
+    return before + match + after;
+  }
+
+  async function runSearch(q: string) {
+    const resultsEl = document.getElementById('search-results') as HTMLElement | null;
+    if (!resultsEl) return;
+    if (q.trim().length < 2) {
+      resultsEl.hidden = true;
+      resultsEl.innerHTML = '';
+      setStatus('');
+      return;
+    }
+    const { idx, docs } = await getIndex();
+    // FlexSearch Document.search 결과: [{ field, result: [...ids or {id, doc}] }]
+    const raw = idx.search(q, { limit: 12, enrich: true });
+    const seen = new Set<string>();
+    const merged: Doc[] = [];
+    for (const fieldRes of raw) {
+      for (const r of fieldRes.result) {
+        const doc = (r.doc ?? docs.find((d) => d.id === r)) as Doc | undefined;
+        if (!doc || seen.has(doc.id)) continue;
+        seen.add(doc.id);
+        merged.push(doc);
+        if (merged.length >= 10) break;
+      }
+      if (merged.length >= 10) break;
+    }
+    if (merged.length === 0) {
+      resultsEl.hidden = false;
+      resultsEl.innerHTML = '<div class="empty">매칭 없음</div>';
+      setStatus(`"${q}" 0건`);
+      return;
+    }
+    resultsEl.hidden = false;
+    resultsEl.innerHTML = merged
+      .map(
+        (d) => `
+        <a class="result" href="${escapeHtml(d.url)}">
+          <div class="r-meta">
+            <span class="badge t-${escapeHtml(d.type)}">${escapeHtml(d.type.replace(/_/g, ' '))}</span>
+            <span class="r-date">${escapeHtml(d.date)}</span>
+            ${d.ticker ? `<span class="r-ticker">${escapeHtml(d.ticker)}</span>` : ''}
+          </div>
+          <div class="r-title">${escapeHtml(d.title)}</div>
+          <div class="r-snippet">${makeSnippet(d.body, q)}</div>
+        </a>`,
+      )
+      .join('');
+    setStatus(`"${q}" ${merged.length}건`);
+  }
+
+  const input = document.getElementById('search-input') as HTMLInputElement | null;
+  if (input) {
+    let timer: number | null = null;
+    input.addEventListener('input', () => {
+      if (timer) window.clearTimeout(timer);
+      timer = window.setTimeout(() => runSearch(input.value), 180);
+    });
+    input.addEventListener('focus', () => {
+      // 사전 인덱스 로드 (첫 포커스 시)
+      getIndex().catch(() => setStatus('인덱스 로드 실패'));
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        input.value = '';
+        runSearch('');
+        input.blur();
+      }
+    });
+  }
+  // 외부 클릭 시 결과 닫기
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.search-box')) {
+      const r = document.getElementById('search-results');
+      if (r) r.hidden = true;
+    }
+  });
+</script>
+
+<style>
+  .search-box {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .search-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.55rem 0.85rem;
+  }
+  .search-input-wrap:focus-within {
+    border-color: var(--accent);
+  }
+  .search-icon { font-size: 1rem; opacity: .7; flex-shrink: 0; }
+  #search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 0.92rem;
+    font-family: inherit;
+    outline: none;
+  }
+  #search-input::placeholder { color: var(--dim); }
+  .search-status {
+    color: var(--muted);
+    font-size: 0.74rem;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .search-results {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0; right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 50;
+  }
+  .search-results .empty { padding: 1.5rem; text-align: center; color: var(--muted); }
+  :global(.search-results .result) {
+    display: block;
+    padding: 0.7rem 0.95rem;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+    transition: background .12s;
+  }
+  :global(.search-results .result:last-child) { border-bottom: none; }
+  :global(.search-results .result:hover) { background: var(--surface-2); text-decoration: none; }
+  :global(.search-results .r-meta) { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem; flex-wrap: wrap; }
+  :global(.search-results .r-date) { color: var(--muted); font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+  :global(.search-results .r-ticker) {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    color: var(--accent-2); font-size: 0.74rem; font-weight: 600;
+  }
+  :global(.search-results .r-title) {
+    font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  :global(.search-results .r-snippet) {
+    color: var(--muted); font-size: 0.8rem; line-height: 1.45;
+  }
+  :global(.search-results mark) {
+    background: rgba(251,191,36,0.25);
+    color: var(--text);
+    padding: 0 0.1rem;
+    border-radius: 2px;
+  }
+</style>
