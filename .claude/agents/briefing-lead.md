@@ -455,6 +455,15 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 
   interactive=true 시 사용자 입력 → user_portfolio.md 갱신
   commit/push (단, user_portfolio.md 자체는 별도 .gitignore 검토 — 현재는 git 추적)
+
+[Phase 4-후] Supabase 동기화 (graceful fail, 비차단) — web/PLAN.md §7.2
+  Bash: .venv/bin/python scripts/sync_portfolio_to_supabase.py
+    - 성공 (exit 0, stdout "OK: portfolio synced (id=..., N holdings)"): 정상
+    - 환경변수 미설정/supabase-py 미설치: 자동 SKIP (exit 0, stderr 경고)
+    - 실패 (exit 1, stderr "WARN: ..."): 무시 — 분석 결과·user_portfolio.md는 영향 없음
+  목적: 로컬 md(SSoT)를 Supabase 미러로 push → 웹(stock-analyst.vercel.app)에서 read-only 조회 가능
+  최초 1회 (.venv 없을 때):
+    uv venv .venv --python 3.14 && uv pip install -r scripts/requirements.txt
 ```
 
 ---
