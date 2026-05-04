@@ -1,0 +1,51 @@
+---
+import manifest from '../../data/manifest.json';
+
+const byType = manifest.by_type as Record<string, number>;
+const order = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing', 'stock_analysis', 'etf', 'daily_briefing'];
+const labels: Record<string, string> = {
+  morning: '모닝', evening: '이브닝', weekly: '주간', crypto: '크립토',
+  user_portfolio: '내 포트폴리오', global_intelligence: '글로벌 인텔', model_portfolio: '모델 포트',
+  rebalancing: '리밸런싱', stock_analysis: '종목 분석', etf: 'ETF', daily_briefing: '데일리(legacy)',
+};
+const types = order.filter((t) => byType[t]);
+---
+<section class="card">
+  <header class="card-head">
+    <h2>카테고리별</h2>
+    <span class="dim">총 {manifest.count}건</span>
+  </header>
+  <div class="pills">
+    {types.map((t) => {
+      const slug = (t === 'stock_analysis' || t === 'etf') ? '/stocks' : `/briefing/${t}`;
+      return (
+        <a href={slug} class="pill">
+          <span class:list={['badge', `t-${t}`]}>{labels[t] ?? t}</span>
+          <span class="cnt">{byType[t]}</span>
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.55rem 0.3rem 0.4rem;
+    background: var(--surface-2);
+    border-radius: 999px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: background .15s;
+  }
+  .pill:hover { background: rgba(59,130,246,.1); text-decoration: none; }
+  .cnt { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text); }
+</style>

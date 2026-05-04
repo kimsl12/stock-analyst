@@ -1,0 +1,89 @@
+---
+import type { Holding } from '../../lib/supabase.ts';
+interface Props {
+  holdings: Holding[];
+}
+const { holdings } = Astro.props;
+// ticker 비중 (cash 제외)
+const slices = holdings
+  .filter((h) => (h.weight_pct ?? 0) > 0.05 && h.asset_type !== 'CASH')
+  .map((h) => ({ label: h.ticker, value: Number(h.weight_pct ?? 0) }))
+  .sort((a, b) => b.value - a.value);
+
+const PALETTE = ['#3b82f6', '#10b981', '#f59e0b', '#a78bfa', '#ec4899', '#06b6d4', '#fb923c', '#84cc16', '#f43f5e', '#22d3ee'];
+
+// SVG 도넛 직접 (외부 lib 없이 — 가벼움)
+const RADIUS = 70;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+const total = slices.reduce((s, it) => s + it.value, 0) || 1;
+let offset = 0;
+const segments = slices.map((s, i) => {
+  const ratio = s.value / total;
+  const len = CIRCUMFERENCE * ratio;
+  const seg = { ...s, color: PALETTE[i % PALETTE.length], dash: len, offset };
+  offset += len;
+  return seg;
+});
+---
+<section class="card">
+  <header class="card-head">
+    <h2>보유 종목 비중</h2>
+    <span class="dim">{slices.length}개 종목</span>
+  </header>
+
+  {slices.length === 0 ? (
+    <p class="empty">보유 종목 없음</p>
+  ) : (
+    <div class="donut-wrap">
+      <svg viewBox="0 0 180 180" class="donut">
+        <circle cx="90" cy="90" r={RADIUS} fill="none" stroke="var(--surface-2)" stroke-width="22" />
+        {segments.map((s) => (
+          <circle
+            cx="90" cy="90" r={RADIUS}
+            fill="none"
+            stroke={s.color}
+            stroke-width="22"
+            stroke-dasharray={`${s.dash} ${CIRCUMFERENCE - s.dash}`}
+            stroke-dashoffset={-s.offset}
+            transform="rotate(-90 90 90)"
+          />
+        ))}
+        <text x="90" y="86" text-anchor="middle" class="donut-center-label">총합</text>
+        <text x="90" y="103" text-anchor="middle" class="donut-center-value">{total.toFixed(1)}%</text>
+      </svg>
+      <ul class="legend">
+        {segments.map((s) => (
+          <li>
+            <span class="dot" style={`background:${s.color}`}></span>
+            <span class="legend-label">{s.label}</span>
+            <span class="legend-value">{s.value.toFixed(1)}%</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.85rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .empty { color: var(--muted); margin: 1rem 0; text-align: center; font-size: 0.85rem; }
+
+  .donut-wrap { display: grid; grid-template-columns: 180px 1fr; gap: 1rem; align-items: center; }
+  .donut { width: 180px; height: 180px; }
+  .donut-center-label { fill: var(--muted); font-size: 11px; }
+  .donut-center-value { fill: var(--text); font-size: 18px; font-weight: 700; }
+
+  .legend { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; max-height: 180px; overflow-y: auto; }
+  .legend li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; }
+  .dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+  .legend-label { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 0.78rem; flex: 1; }
+  .legend-value { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
+
+  @media (max-width: 500px) {
+    .donut-wrap { grid-template-columns: 1fr; }
+    .donut { margin: 0 auto; }
+  }
+</style>

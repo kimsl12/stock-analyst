@@ -1,66 +1,124 @@
 ---
 import Base from '../layouts/Base.astro';
-import ReportCard from '../components/ReportCard.astro';
-import manifest from '../data/manifest.json';
+import StatCard from '../components/widgets/StatCard.astro';
+import MarketSnapshot from '../components/widgets/MarketSnapshot.astro';
+import HoldingsDonut from '../components/widgets/HoldingsDonut.astro';
+import RecentReports from '../components/widgets/RecentReports.astro';
+import TypeCounts from '../components/widgets/TypeCounts.astro';
+import TopHoldings from '../components/widgets/TopHoldings.astro';
+import EconomicCalendar from '../components/widgets/EconomicCalendar.astro';
+import RecommendCloud from '../components/widgets/RecommendCloud.astro';
+import PerformanceDonut from '../components/widgets/PerformanceDonut.astro';
+import RecentlyViewed from '../components/widgets/RecentlyViewed.astro';
 
-const items = manifest.items;
-const byType = manifest.by_type as Record<string, number>;
-const typeOrder = [
-  'morning', 'evening', 'weekly', 'crypto',
-  'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing',
-  'stock_analysis', 'etf', 'daily_briefing',
-];
-const typeLabels: Record<string, string> = {
-  morning: '모닝', evening: '이브닝', weekly: '주간', crypto: '크립토',
-  user_portfolio: '내 포트폴리오', global_intelligence: '글로벌 인텔리전스',
-  model_portfolio: '모델 포트폴리오', rebalancing: '리밸런싱',
-  stock_analysis: '종목 분석', etf: 'ETF', daily_briefing: '데일리(legacy)',
-};
-const sortedTypes = typeOrder.filter((t) => byType[t]);
+import manifest from '../data/manifest.json';
+import kb from '../data/kb.json';
+import { createServerClient, type Portfolio, type Holding } from '../lib/supabase.ts';
+
+// --- 포트폴리오 (A1, A2, A3 데이터) ---
+const sb = createServerClient();
+let portfolio: Portfolio | null = null;
+let holdings: Holding[] = [];
+if (sb) {
+  try {
+    const { data: p } = await sb.from('portfolios').select('*').order('updated_at', { ascending: false }).limit(1);
+    portfolio = (p?.[0] as Portfolio | undefined) ?? null;
+    if (portfolio) {
+      const { data: h } = await sb
+        .from('holdings').select('*')
+        .eq('portfolio_id', portfolio.id)
+        .order('weight_pct', { ascending: false, nullsFirst: false });
+      holdings = (h as Holding[]) ?? [];
+    }
+  } catch {
+    /* graceful */
+  }
+}
+
+// --- F1: 마지막 브리핑 시각 / 활동성 ---
+const briefingTypes = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing'];
+const briefingItems = manifest.items.filter((it) => briefingTypes.includes(it.type));
+const latestBriefing = briefingItems[0];
+const lastBriefingDate = latestBriefing?.date;
+const today = new Date().toISOString().slice(0, 10);
+const daysSince = lastBriefingDate ? Math.floor((Date.parse(today) - Date.parse(lastBriefingDate)) / 86400000) : null;
+const sinceLabel = daysSince == null ? '—' : daysSince === 0 ? '오늘' : daysSince === 1 ? '어제' : `${daysSince}일 전`;
+
+// --- F2: KB 건강 ---
+const { p0, p1, last_lint } = kb.kb_health;
+const kbTone = p0 > 0 ? 'down' : p1 > 5 ? 'warn' : 'up';
+const kbValue = p0 > 0 ? `P0 ${p0}건 🚨` : p1 > 0 ? `P1 ${p1}건` : '정상';
+
+// --- A1: 포트폴리오 총액 ---
+const totalUsd = portfolio?.total_value_usd;
+const totalKrw = portfolio?.total_value_krw;
+const fx = portfolio?.exchange_rate;
+const updatedAt = portfolio?.updated_at?.slice(0, 10);
+const totalUsdFmt = totalUsd != null ? `$${totalUsd.toLocaleString('en-US', { maximumFractionDigits: 2 })}` : '—';
+const totalKrwFmt = totalKrw != null ? `₩${totalKrw.toLocaleString('en-US', { maximumFractionDigits: 0 })}` : '—';
 ---
-<Base title="전체 인덱스" lede={`총 ${manifest.count}건의 리포트 · 최신순 정렬`} active="home">
-  <section class="type-summary">
-    {sortedTypes.map((t) => (
-      <a href={`/briefing/${t}`} class="type-pill">
-        <span class:list={['badge', `t-${t}`]}>{typeLabels[t] ?? t}</span>
-        <span class="count">{byType[t]}</span>
-      </a>
-    ))}
+<Base title="대시보드" lede={`Astro+Supabase 통합 뷰 · ${manifest.count}건 인덱스`} active="home">
+  <!-- 상단: 4개 StatCard 그리드 -->
+  <section class="row stats">
+    <StatCard
+      label="포트폴리오 총액 (USD)"
+      value={totalUsdFmt}
+      sub={totalKrwFmt + (fx ? ` · ${fx.toFixed(2)}원` : '')}
+      href="/portfolio"
+    />
+    <StatCard
+      label="포트폴리오 갱신"
+      value={updatedAt ?? '—'}
+      sub={portfolio ? `source: ${portfolio.source}` : '데이터 없음'}
+    />
+    <StatCard
+      label="마지막 브리핑"
+      value={sinceLabel}
+      sub={latestBriefing ? `${latestBriefing.type} · ${lastBriefingDate}` : '없음'}
+      href={latestBriefing?.url_path}
+    />
+    <StatCard
+      label="KB 건강 상태"
+      value={kbValue}
+      sub={last_lint ? `last lint: ${last_lint}` : 'wiki-linter 미실행'}
+      tone={kbTone as 'up' | 'down' | 'warn'}
+    />
   </section>
 
-  <section class="grid">
-    {items.map((item) => <ReportCard {...item} />)}
+  <!-- 중단 좌: 시장 스냅샷 / 우: 보유 도넛 -->
+  <section class="row two-col">
+    <MarketSnapshot />
+    <HoldingsDonut holdings={holdings} />
+  </section>
+
+  <!-- 활동: 최근 리포트 + 카테고리 + 상위 보유 -->
+  <section class="row three-col">
+    <RecentReports />
+    <TypeCounts />
+    <TopHoldings holdings={holdings} />
+  </section>
+
+  <!-- 추가: 캘린더 + 추천 클라우드 + 적중률 -->
+  <section class="row three-col">
+    <EconomicCalendar />
+    <RecommendCloud />
+    <PerformanceDonut />
+  </section>
+
+  <!-- 클라이언트 액션: 최근 본 리포트 -->
+  <section class="row">
+    <RecentlyViewed />
   </section>
 </Base>
 
 <style>
-  .type-summary {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
-  }
-  .type-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem 0.65rem 0.3rem 0.4rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: inherit;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: border-color .15s, background .15s;
-  }
-  .type-pill:hover {
-    border-color: var(--accent);
-    background: var(--surface-2);
-    text-decoration: none;
-  }
-  .type-pill .count {
-    font-variant-numeric: tabular-nums;
-    font-weight: 600;
-    color: var(--text);
+  .row { margin-bottom: 1rem; }
+  .row.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; }
+  .row.two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0.75rem; }
+  .row.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+
+  @media (max-width: 900px) {
+    .row.two-col { grid-template-columns: 1fr; }
+    .row.three-col { grid-template-columns: 1fr; }
   }
 </style>

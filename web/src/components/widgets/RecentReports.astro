@@ -1,0 +1,44 @@
+---
+import manifest from '../../data/manifest.json';
+const items = manifest.items.slice(0, 5);
+---
+<section class="card">
+  <header class="card-head">
+    <h2>최근 리포트</h2>
+    <a href="/all" class="link-all">전체 보기 →</a>
+  </header>
+  <ul class="list">
+    {items.map((it) => (
+      <li>
+        <a href={it.url_path}>
+          <span class:list={['badge', `t-${it.type}`]}>{it.type.replace(/_/g, ' ')}</span>
+          <span class="title">{it.title ?? it.filename}</span>
+          <span class="date">{it.date}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .link-all { color: var(--accent-2); font-size: 0.8rem; }
+  .list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .list li a {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    background: var(--surface-2);
+    color: inherit;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .list li a:hover { background: rgba(59,130,246,.1); text-decoration: none; }
+  .title { font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .date { color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+</style>

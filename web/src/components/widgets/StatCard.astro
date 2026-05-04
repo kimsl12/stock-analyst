@@ -1,0 +1,57 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  sub?: string;
+  tone?: 'default' | 'up' | 'down' | 'warn';
+  href?: string;
+}
+const { label, value, sub, tone = 'default', href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+<Tag class:list={['stat-card', `tone-${tone}`, href && 'is-link']} href={href}>
+  <div class="stat-label">{label}</div>
+  <div class="stat-value">{value}</div>
+  {sub && <div class="stat-sub">{sub}</div>}
+</Tag>
+
+<style>
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.95rem 1.05rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .15s, background .15s;
+  }
+  .stat-card.is-link:hover {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    text-decoration: none;
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .stat-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+  .stat-sub {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    margin-top: 0.1rem;
+  }
+  .tone-up .stat-value { color: var(--up); }
+  .tone-down .stat-value { color: var(--down); }
+  .tone-warn .stat-value { color: var(--warn); }
+</style>

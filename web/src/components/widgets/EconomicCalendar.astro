@@ -1,0 +1,49 @@
+---
+import kb from '../../data/kb.json';
+
+type Event = (typeof kb.upcoming_events)[number];
+const events: Event[] = kb.upcoming_events.slice(0, 8);
+---
+<section class="card">
+  <header class="card-head">
+    <h2>경제 캘린더 (다가오는)</h2>
+    <span class="dim">{events.length}건</span>
+  </header>
+  {events.length === 0 ? (
+    <p class="empty">예정 이벤트 없음</p>
+  ) : (
+    <ul class="list">
+      {events.map((e) => (
+        <li>
+          <span class="evt-date">{e.date}</span>
+          {e.time && <span class="evt-time">{e.time}</span>}
+          <span class="evt-country">{e.country}</span>
+          <span class="evt-ind">{e.indicator}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .empty { color: var(--muted); margin: 1rem 0; text-align: center; font-size: 0.85rem; }
+  .list { list-style: none; padding: 0; margin: 0; }
+  .list li {
+    display: grid;
+    grid-template-columns: max-content max-content max-content 1fr;
+    gap: 0.6rem;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem;
+  }
+  .list li:last-child { border-bottom: none; }
+  .evt-date { color: var(--accent-2); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .evt-time { color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+  .evt-country { color: var(--text); font-weight: 500; }
+  .evt-ind { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+</style>

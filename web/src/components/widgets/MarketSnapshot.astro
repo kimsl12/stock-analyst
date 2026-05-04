@@ -1,0 +1,79 @@
+---
+import kb from '../../data/kb.json';
+
+type SnapItem = (typeof kb.market_snapshot.items)[number];
+const items: SnapItem[] = kb.market_snapshot.items;
+const updated = kb.market_snapshot.updated;
+const order = ['S&P 500', 'NASDAQ', 'KOSPI', 'USD/KRW', 'WTI', 'Gold', 'BTC', 'VIX'];
+const sorted = [...items].sort((a, b) => order.indexOf(a.label) - order.indexOf(b.label));
+---
+<section class="card">
+  <header class="card-head">
+    <h2>시장 스냅샷</h2>
+    <span class="dim">기준: {updated ?? '—'}</span>
+  </header>
+  {sorted.length === 0 ? (
+    <p class="empty">daily_snapshot.md 데이터 없음</p>
+  ) : (
+    <div class="snap-grid">
+      {sorted.map((it) => {
+        const isUp = it.change_pct != null && it.change_pct > 0;
+        const isDown = it.change_pct != null && it.change_pct < 0;
+        return (
+          <div class="snap-cell">
+            <div class="snap-label">{it.label}</div>
+            <div class="snap-value">{it.value_fmt}</div>
+            <div class:list={['snap-change', isUp && 'up', isDown && 'down']}>
+              {it.change_fmt || '—'}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  )}
+</section>
+
+<style>
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.85rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .empty { color: var(--muted); margin: 1rem 0; text-align: center; font-size: 0.85rem; }
+  .snap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 0.55rem;
+  }
+  .snap-cell {
+    background: var(--surface-2);
+    padding: 0.55rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .snap-label {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+  .snap-value {
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .snap-change {
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .snap-change.up { color: var(--up); }
+  .snap-change.down { color: var(--down); }
+</style>

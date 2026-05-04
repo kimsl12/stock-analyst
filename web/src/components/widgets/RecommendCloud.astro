@@ -1,0 +1,51 @@
+---
+import kb from '../../data/kb.json';
+const recs = kb.recommendations as Array<{ text: string; count: number }>;
+---
+<section class="card">
+  <header class="card-head">
+    <h2>최근 7일 추천 클라우드</h2>
+    <span class="dim">{recs.length}건</span>
+  </header>
+  {recs.length === 0 ? (
+    <p class="empty">
+      <strong>데이터 없음.</strong><br />
+      briefing-report-generator의 <code>.strong-buy</code> 클래스가 실제 markup에<br />
+      일관되게 적용되지 않아 추출 불가. <br />
+      <span class="dim">→ Day 14 마감 후 디자인 일관성 점검에서 활성화 예정 (memory 등록됨)</span>
+    </p>
+  ) : (
+    <div class="cloud">
+      {recs.map((r) => (
+        <span class="tag" style={`font-size:${0.8 + Math.min(r.count, 5) * 0.1}rem`}>
+          {r.text} <span class="count">{r.count}</span>
+        </span>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .empty {
+    color: var(--muted);
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .empty code { background: var(--surface-2); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.78rem; }
+  .cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; padding: 0.5rem 0; }
+  .tag {
+    background: rgba(59,130,246,.1);
+    color: var(--accent-2);
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+  }
+  .count { color: var(--muted); font-size: 0.7rem; margin-left: 0.25rem; }
+</style>

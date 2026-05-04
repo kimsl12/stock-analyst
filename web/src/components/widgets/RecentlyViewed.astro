@@ -1,0 +1,74 @@
+---
+// E2: 클라이언트 LocalStorage 기반 최근 본 리포트.
+// SSG 빌드 시 빈 placeholder, 클라이언트 hydrate 시 LocalStorage에서 채워짐.
+---
+<section class="card">
+  <header class="card-head">
+    <h2>최근 본 리포트</h2>
+    <button id="rv-clear" class="link-all" type="button">초기화</button>
+  </header>
+  <ul id="rv-list" class="list">
+    <li class="empty">아직 본 리포트가 없습니다.</li>
+  </ul>
+</section>
+
+<script>
+  import { getRecent, clearRecent } from '../../lib/recently-viewed.ts';
+
+  function render() {
+    const list = document.getElementById('rv-list');
+    if (!list) return;
+    const items = getRecent(5);
+    if (items.length === 0) {
+      list.innerHTML = '<li class="empty">아직 본 리포트가 없습니다.</li>';
+      return;
+    }
+    list.innerHTML = items
+      .map((it) => {
+        const date = it.date ?? new Date(it.ts).toISOString().slice(0, 10);
+        const type = it.type ?? 'report';
+        const title = (it.title ?? it.url).replace(/[<>&"]/g, '');
+        const url = it.url.replace(/"/g, '');
+        return `
+          <li>
+            <a href="${url}">
+              <span class="badge t-${type}">${type.replace(/_/g, ' ')}</span>
+              <span class="title">${title}</span>
+              <span class="date">${date}</span>
+            </a>
+          </li>`;
+      })
+      .join('');
+  }
+  render();
+  document.getElementById('rv-clear')?.addEventListener('click', () => {
+    if (confirm('최근 본 리포트 기록을 비울까요?')) {
+      clearRecent();
+      render();
+    }
+  });
+</script>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .link-all { background: none; border: none; color: var(--accent-2); font-size: 0.8rem; cursor: pointer; padding: 0; }
+  .link-all:hover { text-decoration: underline; }
+  .list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .empty { color: var(--muted); text-align: center; padding: 1.5rem 0; font-size: 0.85rem; }
+  :global(#rv-list li a) {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    background: var(--surface-2);
+    color: inherit;
+    text-decoration: none;
+  }
+  :global(#rv-list li a:hover) { background: rgba(59,130,246,.1); }
+  :global(#rv-list .title) { font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  :global(#rv-list .date) { color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+</style>

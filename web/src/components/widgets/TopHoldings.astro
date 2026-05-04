@@ -1,0 +1,59 @@
+---
+import type { Holding } from '../../lib/supabase.ts';
+interface Props {
+  holdings: Holding[];
+}
+const { holdings } = Astro.props;
+const top = holdings
+  .filter((h) => h.asset_type !== 'CASH')
+  .slice(0, 5);
+---
+<section class="card">
+  <header class="card-head">
+    <h2>상위 5건 보유</h2>
+    <a href="/portfolio" class="link-all">상세 →</a>
+  </header>
+  {top.length === 0 ? (
+    <p class="empty">보유 종목 없음 — /내포트폴리오 명령으로 동기화</p>
+  ) : (
+    <ul class="list">
+      {top.map((h) => {
+        const ret = h.return_pct;
+        const tone = ret == null ? '' : ret >= 0 ? 'up' : 'down';
+        return (
+          <li>
+            <span class="ticker">{h.ticker}</span>
+            <span class="name">{h.name}</span>
+            <span class="weight">{h.weight_pct != null ? `${h.weight_pct.toFixed(1)}%` : '—'}</span>
+            <span class:list={['ret', tone]}>{ret == null ? '—' : `${ret >= 0 ? '+' : ''}${ret.toFixed(1)}%`}</span>
+          </li>
+        );
+      })}
+    </ul>
+  )}
+</section>
+
+<style>
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .link-all { color: var(--accent-2); font-size: 0.8rem; }
+  .empty { color: var(--muted); margin: 1rem 0; text-align: center; font-size: 0.85rem; }
+  .list { list-style: none; padding: 0; margin: 0; }
+  .list li {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content max-content;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .list li:last-child { border-bottom: none; }
+  .ticker { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-weight: 700; }
+  .name { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .weight { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 600; }
+  .ret { font-variant-numeric: tabular-nums; }
+  .ret.up { color: var(--up); }
+  .ret.down { color: var(--down); }
+</style>
