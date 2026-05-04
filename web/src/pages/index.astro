@@ -1,0 +1,85 @@
+---
+// Day 3 placeholder — Day 4에서 ReportCard 그리드/카테고리 라우팅으로 교체
+import manifest from '../data/manifest.json';
+
+const recent = manifest.items.slice(0, 15);
+const byType = manifest.items.reduce<Record<string, number>>((acc, item) => {
+  acc[item.type] = (acc[item.type] ?? 0) + 1;
+  return acc;
+}, {});
+---
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>종목분석 에이전트</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #3b82f6;
+        --border: #334155;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+      h1 { margin: 0 0 .5rem; font-size: 1.75rem; }
+      .lede { color: var(--muted); margin: 0 0 2rem; }
+      .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+      .stat { background: var(--surface); border: 1px solid var(--border); padding: .85rem 1rem; border-radius: 8px; }
+      .stat-label { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+      .stat-value { font-size: 1.4rem; font-weight: 600; margin-top: .25rem; }
+      h2 { font-size: 1.1rem; margin: 0 0 1rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+      ul.list { list-style: none; padding: 0; margin: 0; }
+      ul.list li { background: var(--surface); border: 1px solid var(--border); padding: .75rem 1rem; border-radius: 6px; margin-bottom: .5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+      a { color: var(--accent); text-decoration: none; font-weight: 500; }
+      a:hover { text-decoration: underline; }
+      .meta { color: var(--muted); font-size: .8rem; }
+      .badge { background: rgba(59,130,246,.15); color: var(--accent); padding: .15rem .5rem; border-radius: 4px; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+      footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>종목분석 에이전트</h1>
+      <p class="lede">웹 플랫폼 v0.1 — Day 3 셋업 (Astro + Supabase + Vercel) · 인덱스 {manifest.count}건</p>
+
+      <div class="stats">
+        {Object.entries(byType).map(([type, count]) => (
+          <div class="stat">
+            <div class="stat-label">{type}</div>
+            <div class="stat-value">{count}</div>
+          </div>
+        ))}
+      </div>
+
+      <h2>최근 리포트 (15건)</h2>
+      <ul class="list">
+        {recent.map((item) => (
+          <li>
+            <a href={item.url_path}>{item.title ?? item.filename}</a>
+            <span class="meta">
+              <span class="badge">{item.type}</span>
+              <span style="margin-left: .5rem;">{item.date}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <footer>
+        Day 4부터 카드 그리드 + 3축 필터 + 본문 검색이 추가됩니다. · generated_at: {manifest.generated_at}
+      </footer>
+    </div>
+  </body>
+</html>
