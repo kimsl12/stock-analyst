@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>모닝브리핑 — 2026-05-04</title>
+<style>
+:root {
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d97706;
+}
+[data-theme="light"] {
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] body { background:#f5f7fa; }
+[data-theme="light"] th { background:#eaeef2 !important; color:#1f2328 !important; }
+[data-theme="light"] td { background:#ffffff; color:#24292f; border-bottom-color:#d0d7de !important; }
+[data-theme="light"] tr:nth-child(even) td { background:#f6f8fa !important; }
+[data-theme="light"] tr:hover { background:#ddf4ff !important; }
+[data-theme="light"] .sec { background:#ffffff; border-color:#d0d7de; }
+[data-theme="light"] .debate-card { background:rgba(102,57,186,0.08) !important; }
+[data-theme="light"] .contrarian-card { background:rgba(188,76,0,0.08) !important; }
+[data-theme="light"] .warning-13f { background:#fff8c5 !important; color:#9a6700; border-color:#9a6700; }
+[data-theme="light"] .signal-bar { background:rgba(0,0,0,0.08) !important; }
+[data-theme="light"] .scenario-card { background:#f6f8fa !important; }
+[data-theme="light"] .cascade .first { background:#f6f8fa; }
+[data-theme="light"] .footer { background:#f6f8fa; border-color:#d0d7de; }
+[data-theme="light"] .footer code { background:rgba(0,0,0,0.06); color:#9a6700; }
+[data-theme="light"] .disclaimer { border-top-color:#d0d7de; color:#57606a; }
+[data-theme="light"] .heatmap .green { background:rgba(26,127,55,0.15); color:#1a7f37; }
+[data-theme="light"] .heatmap .yellow { background:rgba(154,103,0,0.15); color:#9a6700; }
+[data-theme="light"] .heatmap .red { background:rgba(207,34,46,0.15); color:#cf222e; }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif; padding:16px; max-width:960px; margin:0 auto; font-size:16px; line-height:1.7; }
+
+.theme-bar { position:sticky; top:0; z-index:99; background:var(--card); border-bottom:1px solid var(--border); padding:8px 16px; display:flex; justify-content:flex-end; }
+.theme-bar button { background:var(--border); color:var(--text); border:none; padding:6px 16px; border-radius:8px; font-size:13px; cursor:pointer; font-family:inherit; }
+
+.header { text-align:center; padding:24px 0; border-bottom:2px solid var(--border); margin-bottom:24px; }
+.header h1 { font-size:28px; margin-bottom:6px; color:var(--highlight); }
+.header .meta { color:var(--sub); font-size:14px; margin-top:4px; }
+
+.up { color:var(--up); }
+.down { color:var(--down); }
+.neutral { color:var(--neutral); }
+.highlight { color:var(--highlight); }
+.warning-text { color:var(--warning); }
+
+.bg-up { background:rgba(63,185,80,0.10); }
+.bg-down { background:rgba(248,81,73,0.10); }
+.bg-warning { background:rgba(210,153,34,0.10); }
+.bg-highlight { background:rgba(88,166,255,0.08); }
+
+.sec { background:var(--card); border-radius:12px; padding:20px; margin-bottom:18px; border:1px solid var(--border); }
+.sec h2 { font-size:20px; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--highlight); }
+.sec h3 { font-size:16px; color:var(--highlight); margin:16px 0 10px; }
+.sec p { margin-bottom:10px; }
+
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px; }
+th { background:rgba(255,255,255,0.04); padding:10px 8px; text-align:left; font-weight:600; border-bottom:2px solid var(--border); color:var(--text); }
+td { padding:9px 8px; border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:top; }
+tr:hover { background:rgba(255,255,255,0.02); }
+
+/* 시그널 바 */
+.signal-row { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; }
+.signal-item { flex:1; min-width:130px; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 14px; }
+.signal-item .label { font-size:11px; color:var(--sub); text-transform:uppercase; margin-bottom:4px; }
+.signal-item .val { font-size:17px; font-weight:700; }
+.signal-item .chg { font-size:12px; margin-top:2px; }
+.signal-item.s-up { border-left:4px solid var(--up); }
+.signal-item.s-down { border-left:4px solid var(--down); }
+.signal-item.s-warn { border-left:4px solid var(--warning); }
+.signal-item.s-neutral { border-left:4px solid var(--neutral); }
+
+/* debate-card */
+.debate-card { background:rgba(139,92,246,0.06); border-left:4px solid var(--debate); border-radius:0 10px 10px 0; padding:16px 20px; margin:16px 0; }
+.debate-card .card-title { color:var(--debate); font-weight:700; font-size:16px; margin-bottom:12px; }
+.debate-card .bull { color:var(--up); margin-top:8px; padding:10px 14px; background:rgba(63,185,80,0.06); border-radius:6px; }
+.debate-card .bear { color:var(--down); margin-top:8px; padding:10px 14px; background:rgba(248,81,73,0.06); border-radius:6px; }
+.debate-card .verdict { margin-top:12px; padding:10px 14px; background:rgba(139,92,246,0.08); border-radius:6px; border-top:1px dashed rgba(139,92,246,0.4); }
+.debate-card .verdict strong { color:var(--debate); }
+.bull-label { color:var(--up); font-weight:700; font-size:13px; margin-bottom:4px; }
+.bear-label { color:var(--down); font-weight:700; font-size:13px; margin-bottom:4px; }
+.bull-item, .bear-item { margin:4px 0; font-size:14px; line-height:1.6; }
+
+/* contrarian-card */
+.contrarian-card { background:rgba(217,119,6,0.06); border-left:4px solid var(--contrarian); border-radius:0 10px 10px 0; padding:16px 20px; margin:16px 0; }
+.contrarian-card .card-title { color:var(--contrarian); font-weight:700; font-size:16px; margin-bottom:12px; }
+.contrarian-card .consensus { color:var(--sub); font-style:italic; padding:10px 14px; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:10px; font-size:14px; }
+.contrarian-card .signal { margin:8px 0; padding:10px 14px; background:rgba(217,119,6,0.06); border-radius:6px; font-size:14px; }
+.contrarian-card .risk-note { margin-top:12px; padding:10px 14px; background:rgba(248,81,73,0.06); border-radius:6px; border-top:1px dashed rgba(217,119,6,0.4); font-size:14px; }
+.contrarian-card .risk-note strong { color:var(--warning); }
+
+/* 히트맵 */
+.heatmap { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0; }
+.heatmap .cell { padding:12px 10px; border-radius:8px; font-size:13px; }
+.heatmap .cell .pair { font-weight:700; margin-bottom:4px; }
+.heatmap .cell .status { font-size:12px; }
+.heatmap .green { background:rgba(63,185,80,0.15); color:var(--up); }
+.heatmap .yellow { background:rgba(210,153,34,0.15); color:var(--warning); }
+.heatmap .red { background:rgba(248,81,73,0.15); color:var(--down); }
+
+/* 시나리오 트리 */
+.scenario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0; }
+.scenario-card { border-radius:10px; padding:16px; border-top:4px solid; }
+.scenario-card.bull { background:rgba(63,185,80,0.06); border-top-color:var(--up); border:1px solid rgba(63,185,80,0.3); border-top:4px solid var(--up); }
+.scenario-card.base { background:rgba(210,153,34,0.06); border-top-color:var(--warning); border:1px solid rgba(210,153,34,0.3); border-top:4px solid var(--warning); }
+.scenario-card.bear { background:rgba(248,81,73,0.06); border-top-color:var(--down); border:1px solid rgba(248,81,73,0.3); border-top:4px solid var(--down); }
+.scenario-card .prob { font-size:2em; font-weight:700; margin-bottom:8px; }
+.scenario-card .s-label { font-size:13px; font-weight:700; text-transform:uppercase; margin-bottom:8px; }
+.scenario-card .condition { font-size:12px; color:var(--sub); margin-bottom:10px; }
+.scenario-card .targets { font-size:13px; line-height:1.8; }
+.scenario-card .targets span { display:block; }
+.scenario-card.bull .prob { color:var(--up); }
+.scenario-card.bull .s-label { color:var(--up); }
+.scenario-card.base .prob { color:var(--warning); }
+.scenario-card.base .s-label { color:var(--warning); }
+.scenario-card.bear .prob { color:var(--down); }
+.scenario-card.bear .s-label { color:var(--down); }
+
+/* 연쇄 효과 플로우 (cascade) */
+.cascade { margin:14px 0; }
+.cascade .step { padding:12px 16px; border-radius:0 8px 8px 0; margin:8px 0; font-size:14px; }
+.cascade .first { background:rgba(255,255,255,0.04); border-left:3px solid var(--neutral); }
+.cascade .second { background:rgba(88,166,255,0.08); border-left:3px solid var(--highlight); }
+.cascade .third { background:rgba(210,153,34,0.08); border-left:3px solid var(--warning); }
+.cascade .step strong { display:block; margin-bottom:4px; }
+.cascade-arrow { text-align:center; color:var(--sub); font-size:18px; margin:2px 0; }
+
+/* 13F 경고 */
+.warning-13f { background:rgba(210,153,34,0.10); border:1px solid var(--warning); border-radius:8px; padding:12px 16px; margin:14px 0; color:var(--warning); font-size:14px; }
+.warning-13f::before { content:"⚠️ "; }
+
+/* alert-box */
+.alert-box { padding:12px 16px; border-radius:8px; margin:12px 0; font-size:14px; }
+.alert-box.warn { background:rgba(210,153,34,0.08); border-left:4px solid var(--warning); }
+.alert-box.danger { background:rgba(248,81,73,0.08); border-left:4px solid var(--down); }
+.alert-box.info { background:rgba(88,166,255,0.08); border-left:4px solid var(--highlight); }
+
+/* 4종 방향 판정 배지 */
+.badge-maintain { color:var(--neutral); font-weight:700; }
+.badge-alert { color:var(--warning); font-weight:700; }
+.badge-strong { color:var(--up); font-weight:700; }
+
+/* 심층분석 권장 */
+.ticker-code { background:rgba(88,166,255,0.12); color:var(--highlight); padding:2px 8px; border-radius:4px; font-family:monospace; font-size:13px; }
+.ticker-link { color:var(--highlight); font-style:normal; }
+.deep-note { color:var(--highlight); font-size:13px; margin-top:6px; }
+
+/* 푸터 */
+.footer { margin-top:32px; padding:20px; background:var(--card); border-radius:10px; border:1px solid var(--border); }
+.footer h3 { color:var(--highlight); margin-bottom:12px; font-size:16px; }
+.footer table { font-size:13px; }
+.footer code { background:rgba(255,255,255,0.06); padding:2px 8px; border-radius:4px; color:var(--warning); }
+.cmd-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:13px; }
+.cmd-grid div { padding:4px 0; }
+.cmd-grid code { background:rgba(255,255,255,0.06); padding:2px 8px; border-radius:4px; color:var(--warning); }
+
+/* 주의사항 */
+.disclaimer { margin-top:24px; padding:16px; border-top:1px solid var(--border); color:var(--sub); font-size:12px; line-height:1.8; }
+.disclaimer h4 { color:var(--warning); margin-bottom:8px; font-size:13px; }
+.disclaimer ul { padding-left:18px; }
+.disclaimer li { margin-bottom:4px; }
+
+/* 4종 포트폴리오 카드 */
+.portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:16px 0; }
+.portfolio-card { background:rgba(255,255,255,0.03); padding:16px; border-radius:10px; border:1px solid var(--border); }
+.portfolio-card h4 { font-size:15px; margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:8px; }
+.portfolio-card .direction { font-size:18px; font-weight:700; margin:8px 0; }
+.portfolio-card .note { font-size:13px; color:var(--sub); line-height:1.6; }
+
+/* ul/li 기본 스타일 */
+ul.list, ol.list { padding-left:20px; margin:10px 0; }
+ul.list li, ol.list li { margin:6px 0; font-size:14px; line-height:1.7; }
+
+@media(max-width:600px) {
+  body { padding:12px; font-size:15px; }
+  .header h1 { font-size:22px; }
+  .heatmap { grid-template-columns:repeat(2,1fr); }
+  .scenario-grid { grid-template-columns:1fr; }
+  .portfolio-grid { grid-template-columns:1fr; }
+  .signal-row { gap:8px; }
+  .signal-item { min-width:110px; }
+  .cmd-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div class="theme-bar">
+  <button onclick="toggleTheme()">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<!-- 헤더 -->
+<div class="header">
+  <h1>🌅 모닝브리핑 — 2026-05-04 (월)</h1>
+  <div class="meta">briefing-lead 작성 | 데이터 기준: 2026-05-01(금) 미국 확정 종가 + 05-02~03 주말 이벤트 | KST 기준</div>
+</div>
+
+<!-- 시그널 바 -->
+<div class="sec">
+  <h2>시장 시그널 한눈에 보기</h2>
+  <div class="signal-row">
+    <div class="signal-item s-up">
+      <div class="label">S&amp;P 500</div>
+      <div class="val up">7,230.12</div>
+      <div class="chg up">+0.29% 일간 / +10.4% 월간</div>
+    </div>
+    <div class="signal-item s-up">
+      <div class="label">NASDAQ</div>
+      <div class="val up">25,114.44</div>
+      <div class="chg up">+0.89% 일간 / +15.3% 월간</div>
+    </div>
+    <div class="signal-item s-down">
+      <div class="label">Dow Jones</div>
+      <div class="val down">49,499.27</div>
+      <div class="chg down">-0.31% 일간</div>
+    </div>
+    <div class="signal-item s-neutral">
+      <div class="label">VIX</div>
+      <div class="val neutral">16.99</div>
+      <div class="chg neutral">20 미만 안정 구간</div>
+    </div>
+    <div class="signal-item s-warn">
+      <div class="label">WTI</div>
+      <div class="val warning-text">$101.94</div>
+      <div class="chg down">-3.26% / ⚠️ $100 구조</div>
+    </div>
+    <div class="signal-item s-up">
+      <div class="label">Gold</div>
+      <div class="val up">$4,612</div>
+      <div class="chg neutral">-0.22% / 구조적 Bull</div>
+    </div>
+    <div class="signal-item s-neutral">
+      <div class="label">US 10Y</div>
+      <div class="val neutral">4.39%</div>
+      <div class="chg up">✅ 4.5% 이하</div>
+    </div>
+    <div class="signal-item s-warn">
+      <div class="label">USD/KRW</div>
+      <div class="val warning-text">1,471</div>
+      <div class="chg down">⚠️ 1,400 초과 지속</div>
+    </div>
+    <div class="signal-item s-up">
+      <div class="label">BTC</div>
+      <div class="val up">$78,803</div>
+      <div class="chg up">+2.3% 주말 / F&amp;G Greed</div>
+    </div>
+    <div class="signal-item s-neutral">
+      <div class="label">DXY</div>
+      <div class="val neutral">98.21</div>
+      <div class="chg neutral">+0.17% / 구조적 약세</div>
+    </div>
+  </div>
+</div>
+
+<!-- A-1. 미국 시장 마감 핵심 -->
+<div class="sec">
+  <h2>A-1. 미국 시장 마감 핵심</h2>
+
+  <h3>지수 · VIX</h3>
+  <table>
+    <thead>
+      <tr><th>지수</th><th>종가 (5/1)</th><th>일간</th><th>주간</th><th>4월 월간</th><th>YTD</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>S&amp;P 500</td>
+        <td class="up">7,230.12</td>
+        <td class="up">+0.29%</td>
+        <td class="up">+0.54%</td>
+        <td class="up"><strong>+10.4%</strong></td>
+        <td class="up">+11.2%</td>
+      </tr>
+      <tr>
+        <td>NASDAQ</td>
+        <td class="up">25,114.44</td>
+        <td class="up">+0.89%</td>
+        <td class="up">+0.69%</td>
+        <td class="up"><strong>+15.3%</strong></td>
+        <td class="up">+16%+</td>
+      </tr>
+      <tr>
+        <td>Dow Jones</td>
+        <td class="down">49,499.27</td>
+        <td class="down">-0.31%</td>
+        <td class="up">+0.37%</td>
+        <td class="up">+7.1%</td>
+        <td class="up">+8%+</td>
+      </tr>
+      <tr>
+        <td>Russell 2000</td>
+        <td class="up">2,812.82</td>
+        <td class="up">+0.46%</td>
+        <td class="up">+2.21%</td>
+        <td class="neutral">—</td>
+        <td class="neutral">—</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>VIX</td>
+        <td class="warning-text">16.99</td>
+        <td class="warning-text">+0.59%</td>
+        <td class="neutral">—</td>
+        <td class="neutral">—</td>
+        <td class="neutral">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert-box info">
+    <strong>실적 시즌 성적표:</strong> 6주 연속 주간 상승. 4월 S&amp;P +10.4%는 2020년 11월 이후 최대 월간 상승률. Q1 실적: EPS Beat 83% / Rev Beat 78% / 집계 EPS YoY +27.8%. VIX 16.99 — 20 이하 안정 구간이나 ISM 가격 84.6%(4년 최고)와의 괴리가 "거짓 안정" 상태.
+  </div>
+
+  <h3>금리 · 환율 · 원자재 · 크립토</h3>
+  <table>
+    <thead>
+      <tr><th>항목</th><th>수치</th><th>변동</th><th>Alert</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>US 10Y</td>
+        <td class="up">4.39%</td>
+        <td class="neutral">유지</td>
+        <td class="up">✅ 4.5% 기준선 이하</td>
+      </tr>
+      <tr class="bg-up">
+        <td>US 2Y</td>
+        <td class="up">3.88%</td>
+        <td class="neutral">유지</td>
+        <td class="up">2s10s +51bp 정상</td>
+      </tr>
+      <tr>
+        <td>DXY</td>
+        <td class="neutral">98.21</td>
+        <td class="up">+0.17%</td>
+        <td class="up">✅ 구조적 약세 지속</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>USD/KRW</td>
+        <td class="warning-text">1,471</td>
+        <td class="up">-0.21%</td>
+        <td class="warning-text">⚠️ 1,400 초과 지속</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>WTI</td>
+        <td class="warning-text">$101.94</td>
+        <td class="down">-3.26% (5/1)</td>
+        <td class="warning-text">⚠️ $100 지지선 + "Project Freedom" 에스컬레이션 리스크</td>
+      </tr>
+      <tr>
+        <td>Gold</td>
+        <td class="up">$4,612</td>
+        <td class="down">-0.22%</td>
+        <td class="up">구조적 Bull 유지. 지정학 헤지 수요 상방</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>BTC</strong></td>
+        <td class="up"><strong>$78,803</strong></td>
+        <td class="up"><strong>+2.3% (주말)</strong></td>
+        <td class="up"><strong>F&amp;G Greed 전환</strong> (05-01 Fear 26 → 05-03 Greed)</td>
+      </tr>
+      <tr>
+        <td>ETH</td>
+        <td class="neutral">~$2,280</td>
+        <td class="neutral">—</td>
+        <td class="neutral">$2,300 지지선 테스트</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert-box warn">
+    <strong>주말 핵심 변동 2건:</strong><br>
+    1. BTC F&amp;G 지수 Fear 26 → Greed 급반전 — 빅테크 실적 호조 센티먼트 반영. BTC 선물 OI $61B(수개월 최고). 4월 BTC ETF 순유입 $1.6B.<br>
+    2. WTI $101.94 유지이나, <strong>"Project Freedom" 발표(5/3)로 5/4 선물 개장 시 변동성 극대화 예상.</strong>
+  </div>
+</div>
+
+<!-- A-2. 주말 주요 뉴스 5건 -->
+<div class="sec">
+  <h2>A-2. 주말 주요 뉴스 5건</h2>
+
+  <h3>1. "Project Freedom" — 호르무즈 구출작전 5/4 개시 <span class="down">[영향도 ★★★★★]</span></h3>
+  <div class="alert-box danger">
+    5/3 트럼프 발표: 미 해군이 5/4(월)부터 호르무즈 해협 억류 선박(~20,000명 선원) 안내 개시. <strong>구출작전(coordination framework)이지 봉쇄 해소가 아님.</strong> 미 해군·정부·보험사·해운사 공동 상선 통항 지원.<br><br>
+    이란 의회 국가안보위원장: <strong>"호르무즈에 대한 미국 개입은 휴전 위반으로 간주"</strong> — IRGC "전쟁 재개 대비 완료" 기존 입장 유지. 트럼프(5/2): "비군사 경로 선호" — 전면전 의지는 낮으나 이란 물리 대응 시 교전 불가피.<br><br>
+    <strong>영향 방향:</strong> WTI $100~115 변동성 극대화. 시나리오 B(이란 제한적 대응+교착) 확률 40% 가장 유력. 한국 원유 95% 호르무즈 경유 — 직격 노출.<br>
+    <span class="neutral" style="font-size:12px">[Axios, CNBC, CNN, WashPost, Al Jazeera, CBS, 2026-05-03]</span>
+  </div>
+
+  <h3>2. Trump-Xi 베이징 정상회담 5/14 확정 — 8년 만 첫 방중 <span class="up">[영향도 ★★★★★]</span></h3>
+  <p>트럼프 8년 만에 첫 베이징 방문. 희토류·대두·펜타닐 패키지 논의. Section 301 과잉생산 공청회(5/5) = 정상회담 직전 관세 레버리지 구축 이벤트.</p>
+  <div class="alert-box info">
+    <strong>영향 방향:</strong> 5/12 CPI 결과가 정상회담 카드를 결정 — CPI 3.5%+ 시 관세 인하 여력 축소(인플레 정치 부담). CPI 3.0% 이하 시 유연성 확보. 한국 반도체·소재주 변동성 확대.<br>
+    <span class="neutral" style="font-size:12px">[EconoTimes, US News, CNBC, 2026-05-03~04]</span>
+  </div>
+
+  <h3>3. Warsh Fed 의장 인준 — 본회의 5/11주 확정 경로 <span class="warning-text">[영향도 ★★★★]</span></h3>
+  <p>4/29 상원위 <strong>13-11 완전 당파 투표</strong> 통과 — Fed 의장 역사상 최초. Fetterman(D-PA) 본회의 찬성 의향 → 인준 확실시. 파월 5/15 임기 만료 전 처리 가능.</p>
+  <p>파월 이사직 잔류 선언(1948년 이후 최초) → <strong>Warsh(의장)+파월(이사, 투표권 보유) 이원 권력 구조 사상 최초 출현</strong></p>
+  <div class="alert-box warn">
+    <strong>영향 방향:</strong> Fed 초당적 정당성 훼손 → 정책 불확실성 프리미엄 → DXY 추가 약세 + Gold 구조적 Bull 가속. 6/16-17 첫 Warsh 의장 FOMC까지 "공백 불확실성".<br>
+    <span class="neutral" style="font-size:12px">[Al Jazeera, CNBC, PBS, Fortune, 2026-04-29~05-03]</span>
+  </div>
+
+  <h3>4. BTC Fear &amp; Greed Greed 전환 — 기관 축적 단계 재확인 <span class="up">[영향도 ★★★]</span></h3>
+  <p>F&amp;G 26(Fear 경계) → Greed 급반전. BTC $78,803(+2.3% 주말). 선물 OI $61B(수개월 최고). 4월 BTC ETF 순유입 $1.6B. BlackRock IBIT AUM $60B+ 유지. 고래 27만 BTC 누적 + 거래소 잔고 6년 최저 = 기관 축적 구조 지속.</p>
+  <div class="alert-box info">
+    <strong>영향 방향:</strong> $80K 돌파 + ETF 순유입 재가속 = NASDAQ↔BTC 재동조화 트리거. 단 "Project Freedom" 에스컬레이션 시 리스크오프 → $72K 재하향 리스크 병존.<br>
+    <span class="neutral" style="font-size:12px">[Milk Road, alternative.me, Fortune, SpotedCrypto, 2026-05-03]</span>
+  </div>
+
+  <h3>5. 5/5~14 슈퍼위크 — 10일 연속 대형 이벤트 체인 <span class="warning-text">[영향도 ★★★★★]</span></h3>
+  <table>
+    <thead>
+      <tr><th>날짜</th><th>이벤트</th><th>핵심 포인트</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="warning-text"><strong>5/5</strong></td><td>ISM 서비스 + Section 301 공청회 + AMD 실적</td><td>컨센 ~53% / 한국 포함 16개국 / EPS $1.29(+34.4%)</td></tr>
+      <tr><td class="warning-text"><strong>5/6</strong></td><td>ARM + NVIDIA 실적 ⚠️</td><td>NVIDIA 일정 불확실(5/6 vs 5/20)</td></tr>
+      <tr><td><strong>5/8</strong></td><td>NFP 4월</td><td>컨센 ~190K / 주간 실업수당 189K(57년 최저)</td></tr>
+      <tr><td class="down"><strong>5/12</strong></td><td>4월 CPI</td><td>ISM 가격 84.6% 연동 시 3.5%+ 상방 리스크</td></tr>
+      <tr><td class="up"><strong>5/14</strong></td><td>Trump-Xi 베이징 정상회담</td><td>CPI 결과가 관세 협상 카드 결정</td></tr>
+    </tbody>
+  </table>
+  <div class="alert-box warn">
+    <strong>연쇄 반응 구조:</strong> CPI가 정상회담 결과를 간접 결정. ISM 서비스가 CPI 선행 지표. NFP가 Fed 경로 확정자. <strong>모든 이벤트가 연쇄 반응 구조.</strong>
+  </div>
+</div>
+
+<!-- A-3. 오늘 아시아 시장 전망 -->
+<div class="sec">
+  <h2>A-3. 오늘 아시아 시장 전망</h2>
+
+  <h3>05-04(월) KOSPI 재개장 — 핵심 포인트</h3>
+  <div class="alert-box info">
+    KOSPI는 5/1(노동절) 휴장 후 2거래일 만에 재개장. 해외 4거래일 이벤트를 한꺼번에 반영.
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;">
+    <div style="background:rgba(63,185,80,0.06);border:1px solid rgba(63,185,80,0.3);border-radius:8px;padding:14px;">
+      <div style="color:var(--up);font-weight:700;margin-bottom:8px;">강세 요인</div>
+      <ul class="list" style="margin:0;">
+        <li>AAPL +3.24% → NASDAQ 25,114 신고가 → 반도체·부품주 호재</li>
+        <li>4월 S&amp;P +10.4% 역사적 대랠리 → 글로벌 위험선호 확산</li>
+        <li>WTI -3.26%(5/1, $101.94) → 에너지 수입 부담 일시 완화</li>
+        <li>주간 실업수당 189K(57년 최저) → 미국 경기 연착륙 재확인</li>
+        <li>Q1 GDP +1.7%(서프라이즈) → KOSPI 밸류에이션 재평가 여지</li>
+      </ul>
+    </div>
+    <div style="background:rgba(248,81,73,0.06);border:1px solid rgba(248,81,73,0.3);border-radius:8px;padding:14px;">
+      <div style="color:var(--down);font-weight:700;margin-bottom:8px;">약세 요인</div>
+      <ul class="list" style="margin:0;">
+        <li>4/30 KOSPI -1.38%(6,598.87) 차익실현으로 마감. 장중 ATH 6,750 도달 후 반전</li>
+        <li><strong>"Project Freedom" 에스컬레이션 리스크</strong> → WTI 변동성 → 에너지 수입국 직격</li>
+        <li>USD/KRW 1,471 고착 → 외국인 환차손 부담 지속</li>
+        <li>ISM 가격 84.6% + Core PCE 3.2% → 글로벌 인플레 재가속 우려</li>
+        <li>Section 301 공청회(5/5) — 한국 포함 16개국 대상, 반도체·철강·조선 관세 리스크</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-box warn">
+    <strong>예상 밴드:</strong> KOSPI 6,500~6,700<br>
+    갭업 출발 가능(AAPL Beat + NASDAQ 신고가), 그러나 "Project Freedom" 불확실성 + 차익실현 연장으로 상단 제한.<br>
+    <strong>핵심 관전:</strong> WTI 5/4 선물 개장가. $105+ 시 에너지 수입국 리스크 부각 → KOSPI 상단 6,600으로 축소.
+  </div>
+
+  <h3>기타 아시아</h3>
+  <table>
+    <thead>
+      <tr><th>시장</th><th>최근 종가</th><th>재개장</th><th>전망</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>닛케이 225</td>
+        <td class="neutral">59,284.92 (4/28)</td>
+        <td class="warning-text">5/7(목) 재개장</td>
+        <td>황금연휴 계속. 미국 4월 대랠리 미반영 → 5/7 갭업 기대</td>
+      </tr>
+      <tr>
+        <td>항셍 / 상해</td>
+        <td class="neutral">26,112 / CSI300 4,758</td>
+        <td class="warning-text">5/6(수) 재개장</td>
+        <td>노동절 연휴 종료. Trump-Xi 5/14 기대감. 4월 서비스 PMI 반응 주목</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- A-4. 오늘의 체크포인트 -->
+<div class="sec">
+  <h2>A-4. 오늘의 체크포인트</h2>
+
+  <h3>주시 (Action Required)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>이벤트</th><th>일정</th><th>왜 중요한가</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td>1</td>
+        <td><strong class="down">"Project Freedom" 첫날 — WTI 선물 개장</strong></td>
+        <td>5/4(월) 일요일 저녁~월요일 ET</td>
+        <td>이란 대응 방향 첫 신호. WTI $105+ = 시나리오 B(제한적 충돌), $98 이탈 = 시나리오 A(묵인)</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>2</td>
+        <td><strong>KOSPI 재개장 반응</strong></td>
+        <td>5/4(월) KST 09:00</td>
+        <td>AAPL Beat + NASDAQ 신고가 + WTI 불확실성 복합 반영. 6,700 재탈환 vs 6,500 지지선</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>ISM 서비스 PMI 4월</td>
+        <td>5/5(월) 10:00 ET</td>
+        <td>컨센 ~53%. 서비스 가격지수가 CPI 선행 지표. 3월 70.7 이후 추이 확인</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Section 301 공청회</td>
+        <td>5/5(월) ET</td>
+        <td>16개국 대상(한국 포함). Trump-Xi 5/14 직전 관세 레버리지 구축. 반도체·철강 영향</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>AMD 실적</td>
+        <td>5/5(월) 장후</td>
+        <td>EPS $1.29(+34.4%). AI GPU 경쟁(vs NVIDIA). EPYC 데이터센터 수요 확인</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>주의 (Monitor)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>이벤트</th><th>일정</th><th>비고</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>6</td>
+        <td><span class="warning-text">⚠️ <strong>NVIDIA 실적 일정 불확실</strong></span></td>
+        <td>5/6(화) vs 5/20(화)</td>
+        <td>일부 캘린더 5/6 기재, NVIDIA IR 및 복수 매체 5/20 유력. FY27 Q1(2~4월) 실적. 확정 시 즉시 반영</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>NFP 4월 D-4</td>
+        <td>5/8(금) 08:30 ET</td>
+        <td>컨센 ~190K. 주간 실업수당 189K 기반 강세 기대</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Warsh 본회의 인준</td>
+        <td>5/11주</td>
+        <td>인준 확실시(Fetterman 찬성 의향). Fed 이원 구조 공식화</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>무시 (Noise)</h3>
+  <ul class="list">
+    <li>주말 크립토 소폭 변동 (BTC $78,324→$78,803): F&amp;G 전환은 의미 있으나 가격 자체는 +0.6% 저유동성 노이즈</li>
+    <li>중국 노동절 연휴 뉴스: 5/5 재개장까지 시장 반영 불가</li>
+    <li>Berkshire 연차총회 후속 뉴스: 주요 시사점은 5/3 브리핑에서 이미 반영 완료</li>
+  </ul>
+</div>
+
+<!-- A-5. 거물 투자자 동향 스냅샷 -->
+<div class="sec">
+  <h2>A-5. 거물 투자자 동향 스냅샷</h2>
+
+  <div class="warning-13f">
+    13F 시차 경고: 현재 포지션 데이터는 Q4 2025 13F(기준일 2025-12-31, 공시 2026-02-17) 기반. Q1 2026 13F 공시 예정일: 2026-05-15 (D-11). "이미 지난 신호"이며, 현재 보유 여부 불확실. 최대 45일 시차 존재.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>투자자</th><th>최근 동향 (04-25~05-03)</th><th>시그널</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Warren Buffett</strong></td>
+        <td>버크셔 연차총회 05-02. 현금 <strong class="warning-text">$397.4B 역대 최고</strong>. Abel: "AI 가치 창출 중심 활용." 대규모 인수 없음</td>
+        <td class="neutral">방어적 — 현금 쌓기 지속. 시장 조정 시 대규모 매수 준비</td>
+      </tr>
+      <tr>
+        <td><strong>Cathie Wood</strong></td>
+        <td>AMD $75M 매도(+25% 급등 후 차익실현) + AMZN $71.5M 매수. <strong>핵 IPO(XE) 포지션 구축</strong></td>
+        <td class="up">AMZN 확신 + 핵에너지(SMR) 신규 테마 진입</td>
+      </tr>
+      <tr>
+        <td><strong>Bill Ackman</strong></td>
+        <td>PSUS IPO $5B 상장(-18% 첫날). AMZN 비중 14%. "P/E 27배 저평가" 코멘트</td>
+        <td class="up">AMZN 3거물 컨버전스(Buffett·Wood·Ackman)</td>
+      </tr>
+      <tr>
+        <td><strong>Stanley Druckenmiller</strong></td>
+        <td>Alphabet 비중 확대 + Sandisk 청산. AI 플랫폼 전략 집중</td>
+        <td class="up">GOOGL Cloud +63% Beat 선반영. AI 검색 확신</td>
+      </tr>
+      <tr>
+        <td><strong>Ray Dalio</strong></td>
+        <td>SPY +73.7% 대폭 확대(Q4 13F). 주간 특이 동향 없음</td>
+        <td class="neutral">인덱스 확대 = 베타 노출 증가</td>
+      </tr>
+      <tr>
+        <td>Howard Marks</td>
+        <td>주간 특이 동향 없음</td>
+        <td class="neutral">—</td>
+      </tr>
+      <tr>
+        <td>David Tepper</td>
+        <td>주간 특이 동향 없음</td>
+        <td class="neutral">—</td>
+      </tr>
+      <tr>
+        <td>Soros Fund</td>
+        <td>주간 특이 동향 없음</td>
+        <td class="neutral">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>컨버전스 시그널</h3>
+  <div class="alert-box info">
+    <strong>AMZN 3거물 보유:</strong> Buffett(Q4 축소이나 보유 유지) + Wood(신규 매수) + Ackman(비중 14%). 방향 불일치이나 3인 모두 보유 중.<br>
+    <strong>GOOGL 2거물:</strong> Buffett(보유) + Druckenmiller(확대). Cloud +63% Beat 배경.<br>
+    <strong>에너지/핵:</strong> Wood XE IPO 진입 + Buffett CVX/OXY 유지 + Druckenmiller 에너지전환. 에너지 컨버전스.
+  </div>
+
+  <div class="warning-13f">
+    13F 시차 경고 반복: Q1 2026 13F 5/15 공시가 방향 확인의 핵심. Buffett Q4 AMZN -77% 축소 후 Q1 추가 동향 불명. 13F는 "지난 분기 말 스냅샷"이지 현재 보유가 아님.
+  </div>
+</div>
+
+<!-- A-6. 4종 모델 포트폴리오 방향 -->
+<div class="sec">
+  <h2>A-6. 모델 포트폴리오 4종 방향 체크</h2>
+
+  <p style="color:var(--sub);font-size:13px;">모델 포트폴리오 상세는 <code>/모델포트폴리오</code> (MODULE F) 참조. 최종 갱신: 2026-04-21.</p>
+
+  <h3>금주 환경 변화 vs 포트폴리오 시사점</h3>
+  <table>
+    <thead>
+      <tr><th>변화</th><th>안전형</th><th>중립형</th><th>공격형</th><th>배당형</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>"Project Freedom" 에스컬레이션</strong></td>
+        <td class="up">Gold 13% 방어 역할 ✅</td>
+        <td class="up">금+원자재 8% 방어 ✅</td>
+        <td class="up">에너지 6% 상방 수혜 가능</td>
+        <td class="warning-text">Gold 4% 제한적 방어 ⚠️</td>
+      </tr>
+      <tr>
+        <td><strong>NASDAQ 25,114 신고가</strong></td>
+        <td class="neutral">비중 없음 (설계대로)</td>
+        <td class="up">AI/반도체 7% 수혜 ✅</td>
+        <td class="up">빅테크 30%+반도체 12% 최대 수혜</td>
+        <td class="warning-text">커버드콜(JEPQ) 수혜 제한 ⚠️</td>
+      </tr>
+      <tr>
+        <td><strong>ISM 가격 84.6% 인플레</strong></td>
+        <td class="down">채권 37% 인플레 경고 ⚠️</td>
+        <td class="warning-text">채권 15% 경계</td>
+        <td class="up">채권 0% 면역 ✅</td>
+        <td class="warning-text">IG+HY 10% 경계 ⚠️</td>
+      </tr>
+      <tr>
+        <td><strong>Trump-Xi 5/14</strong></td>
+        <td class="up">방어 자산 중심 → 낮은 노출 ✅</td>
+        <td class="warning-text">반도체 7% 변동성 ⚠️</td>
+        <td class="warning-text">빅테크 30% 관세 리스크 ⚠️</td>
+        <td class="warning-text">글로벌 리츠 환율 노출 ⚠️</td>
+      </tr>
+      <tr>
+        <td><strong>BTC F&amp;G Greed 전환</strong></td>
+        <td class="neutral">BTC 0% 면역</td>
+        <td class="up">BTC 3% 소폭 수혜</td>
+        <td class="up">크립토 10% 수혜</td>
+        <td class="neutral">BTC 0% 면역</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4종 방향 판정</h3>
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <h4>🛡️ 안전형</h4>
+      <div class="direction neutral">유지 (경계 강화)</div>
+      <div class="note">Gold 13%가 "Project Freedom" 지정학 헤지. 채권 37%에 인플레 경고 — 5/12 CPI 3.6%+ 시 듀레이션 축소 검토</div>
+    </div>
+    <div class="portfolio-card">
+      <h4>⚖️ 중립형</h4>
+      <div class="direction up">유지</div>
+      <div class="note">AI/반도체 + Gold/BTC 균형. Section 301 공청회(5/5) 반도체 관세 리스크 모니터</div>
+    </div>
+    <div class="portfolio-card">
+      <h4>🔥 공격형</h4>
+      <div class="direction up">유지 (강세이나 지정학 경계)</div>
+      <div class="note">빅테크 30%+반도체 12% NASDAQ 신고가 최대 수혜. "Project Freedom" 에스컬레이션 시 일시 조정 리스크</div>
+    </div>
+    <div class="portfolio-card">
+      <h4>💰 배당형</h4>
+      <div class="direction up">유지</div>
+      <div class="note">배당 성장 안정. 커버드콜 VIX 17 환경 프리미엄 양호. 에너지 배당주(CVX 등) WTI 상방 추가 수혜 가능</div>
+    </div>
+  </div>
+
+  <div class="alert-box warn">
+    <strong>리밸런싱 체크포인트:</strong><br>
+    (1) 5/12 CPI 3.6%+ 시 안전형/중립형 채권 비중 축소 + 단기채 전환 검토.<br>
+    (2) WTI $110+ 지속 시 에너지 배당주 비중 확대 vs 인플레 채권 축소 교차 판단.<br>
+    (3) 5/14 Trump-Xi 결과에 따라 반도체 비중 조정 필요 가능.
+  </div>
+</div>
+
+<!-- A-7. 글로벌 매크로 핵심 시사점 -->
+<div class="sec">
+  <h2>A-7. 글로벌 매크로 핵심 시사점</h2>
+
+  <h3>시사점 1: "Project Freedom이 5월 시장의 첫 번째 판정 구간"</h3>
+  <p>"Project Freedom"은 호르무즈 봉쇄 해소가 아니라 <strong>인도주의 구출작전</strong>입니다. 그러나 이란은 이를 "휴전 위반"으로 규정하고 IRGC 물리적 대응 가능성을 열어둔 상태입니다. 5/4~6 이내 이란 반응이 나올 것이며, 이것이 5월 전체 시장 방향의 첫 번째 분기점입니다.</p>
+
+  <!-- Project Freedom 연쇄 효과 플로우 -->
+  <h3>"Project Freedom" 에스컬레이션 연쇄 효과</h3>
+  <div class="cascade">
+    <div class="step first">
+      <strong>1차 효과: WTI 선물 개장가 방향 결정 (5/4)</strong>
+      미 해군 호르무즈 상선 안내 개시 → 이란 언어적 경고 vs 물리적 대응 선택. $105+ = 시나리오 B 진입 신호.
+    </div>
+    <div class="cascade-arrow">↓</div>
+    <div class="step second">
+      <strong>2차 효과: 글로벌 자산 가격 재편 (5/4~5/8)</strong>
+      WTI 방향에 따라 Gold 지정학 프리미엄 재가산 / VIX 19~22 확대 / KOSPI 에너지 수입국 할인 재반영. ISM 서비스(5/5) CPI 선행 지표 확인.
+    </div>
+    <div class="cascade-arrow">↓</div>
+    <div class="step third">
+      <strong>3차 효과: CPI → 정상회담 → 반도체 방향 결정 (5/12~5/14)</strong>
+      WTI $108+ 구조화 시 5/12 CPI 3.5%+ 상방 확정 → 트럼프 관세 인하 여력 소멸 → 5/14 Trump-Xi 합의 범위 축소 → 한국 반도체·소재주 추가 조정. 반대 시나리오(이란 묵인+WTI 하락) = Bull 경로.
+    </div>
+  </div>
+
+  <h3>시사점 2: "5/5~14 슈퍼위크 — CPI가 정상회담을 결정한다"</h3>
+  <p>5/5 ISM 서비스 → 5/5 Section 301 → 5/5 AMD → 5/8 NFP → 5/12 CPI → 5/14 Trump-Xi. 10일간 대형 이벤트가 연쇄합니다. 이 중 <strong>5/12 CPI가 5/14 정상회담의 결과를 간접 결정</strong>합니다.</p>
+  <p>CPI 3.5%+ 시 인플레 정치 부담으로 트럼프의 관세 인하 카드가 제한 → 정상회담 합의 범위 축소. 반대로 CPI 3.0% 이하 시 "관세 인하=물가 안정" 내러티브로 유연한 양보 가능.</p>
+  <div class="alert-box warn">
+    <strong>투자 시사점:</strong> CPI → 정상회담 → 관세 방향 → 반도체·소재·AI 밸류에이션 연쇄 반응. 한국 KOSPI의 5월 방향은 미국 CPI에 의해 결정됩니다.
+  </div>
+</div>
+
+<!-- Debate Card -->
+<div class="debate-card">
+  <div class="card-title">💜 핵심 논쟁 — "Project Freedom"은 호르무즈 해소의 시작인가, 에스컬레이션의 촉매인가?</div>
+
+  <div class="bull">
+    <div class="bull-label">Bull 측 (해소 시작론)</div>
+    <div class="bull-item">1. <strong>인도주의 프레이밍:</strong> "구출작전"이지 "군사작전"이 아님. 트럼프 "비군사 경로 선호" 명시(5/2)</div>
+    <div class="bull-item">2. <strong>정치적 인센티브:</strong> 트럼프에게 전쟁 재개는 지지율 하락 요인. 2028 중간선거 의식. 인도주의 프레임은 국내 정치 최적 해법</div>
+    <div class="bull-item">3. <strong>이란의 제한:</strong> 이란도 기뢰 6개월(펜타곤 평가) 동안 경제 타격 누적. 전면 교전 시 미 해군 화력 우위 자명. 합리적 선택은 묵인</div>
+    <div class="bull-item">4. <strong>역사 선례:</strong> 이란은 과거에도 레토릭 격앙 후 실제 행동 자제한 사례 다수(2020 솔레이마니 이후 제한적 보복)</div>
+  </div>
+
+  <div class="bear">
+    <div class="bear-label">Bear 측 (에스컬레이션 촉매론)</div>
+    <div class="bull-item" style="color:var(--text);">1. <strong>"휴전 위반" 공식 규정:</strong> 이란 의회 국가안보위원장이 미국 개입을 공식적으로 휴전 위반으로 선언. 국내 정치적으로 무대응이 약점 노출</div>
+    <div class="bull-item" style="color:var(--text);">2. <strong>IRGC 자율성:</strong> IRGC는 정부와 별개 의사결정 체계. 의회·대통령 결정과 무관하게 물리적 대응 가능</div>
+    <div class="bull-item" style="color:var(--text);">3. <strong>기뢰의 역할:</strong> 기뢰가 6개월 제거 소요라면, 미 해군 호위가 없으면 상선 통항 자체가 불가. 이란은 기뢰를 추가 부설해 기존 구조 유지 가능</div>
+    <div class="bull-item" style="color:var(--text);">4. <strong>WTI 레버리지:</strong> 이란에게 WTI $100+은 협상 레버리지. 봉쇄 완화 시 레버리지 소멸. 합리적 선택은 긴장 유지</div>
+  </div>
+
+  <div class="verdict">
+    <strong>briefing-lead 판정 (Base Case 55%):</strong> 시나리오 B — 이란 언어적 격앙 + 제한적 물리 행동(쾌속정 접근/경고사격) → 소수 상선 통과하나 전면 개방 아님 → WTI $105~112 구간 안착 → 교착 장기화. "해소도 아니고 전면전도 아닌" 중간 상태가 가장 높은 확률.
+  </div>
+</div>
+
+<!-- Contrarian Card -->
+<div class="contrarian-card">
+  <div class="card-title">🟠 과소평가 포인트 — ISM 가격 84.6% + Core PCE 0.0% — 역사적 괴리가 숨긴 기회</div>
+
+  <div class="consensus">
+    <strong>시장의 일반 가정:</strong> "ISM 가격 84.6%(4년 최고) → CPI 헤드라인 3.5%+ → 인플레 재가속 → 연내 인하 소멸 → 주식 하방 압력."
+  </div>
+
+  <div class="signal">
+    <strong>역발상 논거 1:</strong> Core PCE MoM 0.0%와 ISM 가격 84.6%의 동시 발생은 역사적으로 2번만 선례(2008 Q3, 2015 Q1). 두 번 모두 6개월 내 에너지 가격 급락 → 헤드라인 인플레 자연 소멸. 즉 ISM 가격은 WTI 수준에 기계적으로 반응하는 "에너지 거울"이지, 구조적 인플레 시그널이 아닐 수 있음.
+  </div>
+  <div class="signal">
+    <strong>역발상 논거 2:</strong> Core vs Headline 괴리 = Fed는 Core 중시. FOMC 의사록 "core inflation is the key metric" 반복. Core PCE 0.0%(서비스 디스인플레이션) 확인 → Fed는 현행 동결 유지 → 실질 긴축은 이미 완화 중.
+  </div>
+  <div class="signal">
+    <strong>역발상 논거 3:</strong> "Beat but No Raise" 패턴이 인플레 자체를 억제. 기업들이 가격 전가 여력 축소 인정(GM 가이던스 유지, GE -4% 가이던스 동결). ISM 가격 84.6%는 투입 비용이지 소비자 가격 전가가 아닐 수 있음.
+  </div>
+  <div class="signal">
+    <strong>역발상 논거 4:</strong> 이란 협상 진전 시 WTI 급락 → ISM 가격 급락 → CPI 자연 둔화. 에너지 비용의 ISM 전이는 2~3개월 시차. 5~6월 WTI $85 하락 시 7~8월 ISM 가격 급감 + 8~9월 CPI 자연 둔화.
+  </div>
+  <div class="signal" style="background:rgba(139,92,246,0.08);">
+    <strong>과소평가 포인트:</strong> 시장은 "ISM 가격 84.6% = 인플레 재가속"으로 단순 해석하지만, <strong>Core PCE 0.0%가 서비스 디스인플레이션의 구조적 전환을 시사</strong>할 가능성을 무시하고 있습니다. AI/자동화의 서비스 비용 절감 효과가 처음으로 매크로 데이터에 나타난 것일 수 있음(ISM 고용지수 46.4% — 제조업 AI 대체 가속 첫 사이클).
+  </div>
+
+  <div class="risk-note">
+    <strong>리스크:</strong> "Project Freedom" 에스컬레이션 → WTI $120+ → ISM 가격 90%+ → Core까지 전이 시 이 역발상은 완전히 무효화. 에너지 인플레가 서비스로 전파되는 "2차 효과"가 3~6개월 후 발생하면, 현재의 Core 0.0%는 일시적 착시에 불과.
+  </div>
+</div>
+
+<!-- 시나리오 트리 -->
+<div class="sec">
+  <h2>시나리오 분기 (30일 전망: 5/4 ~ 6/3)</h2>
+
+  <div class="scenario-grid">
+    <div class="scenario-card bull">
+      <div class="s-label">Bull 시나리오</div>
+      <div class="prob">25%</div>
+      <div class="condition">이란 묵인 + CPI 3.2%↓ + Trump-Xi 합의 + NFP 180K+</div>
+      <div class="targets">
+        <span>S&amp;P 500: <strong class="up">7,400~7,600</strong></span>
+        <span>KOSPI: <strong class="up">7,000+</strong></span>
+        <span>WTI: <strong class="up">$85~95</strong></span>
+        <span>Gold: <strong class="neutral">$4,400</strong></span>
+        <span>BTC: <strong class="up">$85K+</strong></span>
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="s-label">Base 시나리오</div>
+      <div class="prob">45%</div>
+      <div class="condition">이란 교착(시나리오B) + CPI 3.3~3.5% + 소규모 합의</div>
+      <div class="targets">
+        <span>S&amp;P 500: <strong class="warning-text">7,000~7,300</strong></span>
+        <span>KOSPI: <strong class="warning-text">6,400~6,800</strong></span>
+        <span>WTI: <strong class="warning-text">$100~110</strong></span>
+        <span>Gold: <strong class="up">$4,600~5,000</strong></span>
+        <span>BTC: <strong class="warning-text">$75K~85K</strong></span>
+      </div>
+    </div>
+    <div class="scenario-card bear">
+      <div class="s-label">Bear 시나리오</div>
+      <div class="prob">30%</div>
+      <div class="condition">이란 충돌 + CPI 3.8%++ + Trump-Xi 결렬</div>
+      <div class="targets">
+        <span>S&amp;P 500: <strong class="down">6,500~6,800</strong></span>
+        <span>KOSPI: <strong class="down">5,800~6,200</strong></span>
+        <span>WTI: <strong class="down">$115~150</strong></span>
+        <span>Gold: <strong class="up">$5,000+</strong></span>
+        <span>BTC: <strong class="down">$55K~65K</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-box info">
+    <strong>확률 변동 근거 (직전 5/3 대비):</strong><br>
+    Bull +5%p: Core PCE 0.0% 골디락스 데이터 + 트럼프 "비군사 선호" 발언 + Trump-Xi 5/14 확정(협상 의지 확인)<br>
+    Base -10%p: "Project Freedom" 변수 투입으로 시나리오 분산 확대<br>
+    Bear +5%p: "Project Freedom" 이란 보복 리스크 + ISM 가격 84.6% → CPI 상방 구조화
+  </div>
+</div>
+
+<!-- 상관관계 Alert 히트맵 -->
+<div class="sec">
+  <h2>상관관계 Alert 요약</h2>
+
+  <div class="heatmap">
+    <div class="cell yellow">
+      <div class="pair">S&amp;P500 ↔ 10Y</div>
+      <div class="status">🟡 주의 (Z +0.5~1.0σ)</div>
+      <div style="font-size:11px;margin-top:4px;">"Project Freedom" + NFP 5/8</div>
+    </div>
+    <div class="cell yellow">
+      <div class="pair">NASDAQ ↔ BTC</div>
+      <div class="status">🟡 주의 (개선 방향)</div>
+      <div style="font-size:11px;margin-top:4px;">BTC F&amp;G Greed 전환. $80K 돌파 여부</div>
+    </div>
+    <div class="cell yellow">
+      <div class="pair">USD/KRW ↔ KOSPI</div>
+      <div class="status">🟡 주의 (데이터 제한)</div>
+      <div style="font-size:11px;margin-top:4px;">KOSPI 5/4 재개장 + Trump-Xi 5/14</div>
+    </div>
+    <div class="cell green">
+      <div class="pair">Gold ↔ DXY</div>
+      <div class="status">🟢 정상</div>
+      <div style="font-size:11px;margin-top:4px;">지정학 헤지 수요 배경 유지</div>
+    </div>
+    <div class="cell green">
+      <div class="pair">VIX ↔ S&amp;P500</div>
+      <div class="status">🟢 정상</div>
+      <div style="font-size:11px;margin-top:4px;">"Project Freedom" 이란 보복 시 VIX 반등</div>
+    </div>
+    <div class="cell red">
+      <div class="pair">WTI ↔ BEI</div>
+      <div class="status">🔴 이상 완화 진행 (재악화 리스크)</div>
+      <div style="font-size:11px;margin-top:4px;"><strong>가장 취약한 페어.</strong> 에스컬레이션 시 Z +2.0~2.5σ 재강화</div>
+    </div>
+  </div>
+</div>
+
+<!-- 심층 분석 권장 -->
+<div class="sec" style="border:1px solid rgba(88,166,255,0.3);">
+  <h2>심층 분석 권장 종목 (다음 단계)</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>티커</th><th>권장 사유</th><th>긴급도</th><th>다음 단계</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><span class="ticker-code">AMD</span></td>
+        <td>5/5 실적(EPS $1.29, +34.4%). AI GPU 경쟁 구도 확인. NVIDIA 실적 전 선행 지표</td>
+        <td class="down"><strong>높음</strong></td>
+        <td class="deep-note">→ <code>/종목분석 AMD</code></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="ticker-code">GLD / IAU</span></td>
+        <td>"Project Freedom" 지정학 + Fed 이원 구조 + 탈달러. 3대 IB Gold $5,000+ 컨센서스</td>
+        <td class="down"><strong>높음</strong></td>
+        <td class="deep-note">→ <code>/종목분석 GLD</code></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="ticker-code">XLE / CVX</span></td>
+        <td>WTI $100+ 구조화. "Project Freedom" 시나리오 B 시 $110+ → 정유마진 확대</td>
+        <td class="warning-text">중간</td>
+        <td class="deep-note">→ <code>/종목분석 CVX</code></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="ticker-code">IBIT</span></td>
+        <td>F&amp;G Greed 전환 + 고래 축적 + 거래소 잔고 최저. $80K 돌파 시 $90K+ 경로</td>
+        <td class="warning-text">중간</td>
+        <td class="deep-note">→ <code>/크립토브리핑</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <h3>다른 브리핑도 확인해보세요</h3>
+  <div class="cmd-grid">
+    <div><code>/모닝브리핑</code> 어젯밤 미국 시장 + 거물 + 4종 방향</div>
+    <div><code>/이브닝브리핑</code> 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</div>
+    <div><code>/주간리포트</code> 한 주 심층 + 성과 추적</div>
+    <div><code>/리밸런싱</code> 4종 모델 포트폴리오 재조정</div>
+    <div><code>/크립토브리핑</code> BTC/ETH/SOL + 온체인 + 규제</div>
+    <div><code>/모델포트폴리오</code> 4종 현재 구성 + 구체 종목·ETF</div>
+    <div><code>/글로벌인텔리전스</code> G-1~G-8 4축 교차 + 시나리오 플래닝</div>
+    <div><code>/풀브리핑</code> A+B+C+E 4편 동시</div>
+    <div><code>/성과리뷰</code> 1주/2주/1개월/3개월 적중률</div>
+    <div><code>/내포트폴리오</code> 사용자 보유 자산 (개인 데이터 격리)</div>
+  </div>
+</div>
+
+<!-- 주의사항 -->
+<div class="disclaimer">
+  <h4>주의사항</h4>
+  <ul>
+    <li>본 자료는 교육·참고 목적의 공개 브리핑이며, 개인 맞춤 투자 조언이 아닙니다.</li>
+    <li>특정 종목·ETF 언급은 카테고리 예시이며 매수·매도 추천이 아닙니다.</li>
+    <li><strong>13F 시차 경고:</strong> 거물 포지션 데이터는 Q4 2025 13F(기준일 2025-12-31) 기반이며 최대 45일 시차 존재. Q1 2026 13F 공시 예정: 2026-05-15. "현재 보유"로 해석 금지.</li>
+    <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+    <li>투자 결정은 각자의 재무 상황·목표·리스크 허용도에 따라 본인이 책임집니다.</li>
+    <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+    <li><strong>데이터 기준일:</strong> 미국 시장 2026-05-01(금) 확정 종가 + 05-02~03 주말 이벤트. BTC/크립토 2026-05-03 기준.</li>
+  </ul>
+</div>
+
+<script>
+function applyTheme(light) {
+  if (light) {
+    document.body.setAttribute("data-theme", "light");
+    document.getElementById("theme-icon").textContent = "🌙";
+    document.getElementById("theme-label").textContent = "다크 모드";
+  } else {
+    document.body.removeAttribute("data-theme");
+    document.getElementById("theme-icon").textContent = "☀️";
+    document.getElementById("theme-label").textContent = "라이트 모드";
+  }
+  localStorage.setItem("theme", light ? "light" : "dark");
+}
+function toggleTheme() {
+  applyTheme(document.body.getAttribute("data-theme") !== "light");
+}
+(function () { applyTheme(localStorage.getItem("theme") === "light"); })();
+</script>
+
+</body>
+</html>

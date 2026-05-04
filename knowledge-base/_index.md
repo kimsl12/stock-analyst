@@ -52,6 +52,10 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-04 | 모닝브리핑 | Trump "Project Freedom" 호르무즈 구출작전 5/4 개시 — 미 해군 억류 선박(~2만 명) 안내. 이란 의회 "휴전 위반" 경고. 시나리오 B(제한적 대응+교착) 40% 가장 유력. WTI $100~115 변동성 극대화. 5/4 선물 개장가가 분기 첫 신호 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-04 | 모닝브리핑 | Trump-Xi 베이징 정상회담 5/14 확정(8년만 첫 방중) — 5/12 CPI가 정상회담 결과 간접 결정. CPI 3.5%+ 시 관세 인하 카드 제한. Section 301 공청회(5/5)가 선행 이벤트 | `market/economic_calendar.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-04 | 모닝브리핑 | BTC F&G Fear 26→Greed 급반전 + 선물 OI $61B(수개월 최고) + 4월 ETF 순유입 $1.6B. 기관 축적 구조 재확인. $80K 돌파+ETF 재가속=NASDAQ↔BTC 재동조화 트리거 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
+| 2026-05-04 | 모닝브리핑 | ISM 가격 84.6%+Core PCE 0.0% 역사적 괴리 contrarian — 선례 2회(2008 Q3, 2015 Q1) 모두 6개월 내 에너지 급락→헤드라인 자연 소멸. ISM 고용 46.4%는 AI/자동화 대체 가속 첫 사이클 가능성 | `market/surprise_index.md, macro/us_economy.md` | 진행중 |
 | 2026-05-03 | 이브닝브리핑 | 이란 14개조 평화안 트럼프 거부 — 호르무즈 교착 구조화 확정. WTI $101.94(-3.26%) 차익실현이나 $100 지지선. 기뢰 6개월(펜타곤). ISM 가격 84.6%+WTI 4월 $105=5/12 CPI 헤드라인 3.5~3.8% Base Case | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-03 | 이브닝브리핑 | ISM 고용지수 46.4%(2026년 최저) + 가격 84.6%(4년 최고) 동시 발생 — "비용 상승+고용 축소" 구조는 AI/자동화 대체 가속 첫 사이클 가능성. 2022년 이후 첫 동시 발생 | `market/surprise_index.md` | 진행중 |
 | 2026-05-03 | 이브닝브리핑 | 버크셔 $397.4B 현금 역대 최고 + Abel 첫 CEO 주재. "단기 고평가 경고 / 중기 기회 대기" 이중 해석. S&P Fwd PER 22.5x(+2σ). 5/15 Q1 13F 공시가 방향 확인 | `market/guru_positions.md` | 진행중 |
