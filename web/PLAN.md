@@ -67,7 +67,7 @@ GitHub 의존도 분산 + 사용성 개선을 위한 웹 플랫폼 구축:
 |---|---|---|---|
 | 1 | user_portfolio 저장 전략 | **3중 동기화** (로컬 md 유지 + GitHub 유지 + Supabase 신규 추가) | 2026-04-30 |
 | 2 | 인증 방식 | **Magic Link** (Supabase Auth, 이메일 1개만 등록) | 2026-04-30 |
-| 3 | 도메인 | **`stock-analyst.vercel.app`** 무료 서브도메인 | 2026-04-30 |
+| 3 | 도메인 | **`stock-analyst-jungwon1.vercel.app`** 무료 서브도메인 (원안 `stock-analyst-jungwon1.vercel.app`은 타 사용자가 점유 — 2026-05-04 변경, Vercel 자동 alias 그대로 채택) | 2026-04-30 / 2026-05-04 |
 | 4 | 빌드 트리거 | 매 push 자동 빌드 (Vercel 기본) | 2026-04-30 |
 | 5 | 호스팅 | **Vercel** (사용자 지정) | 2026-04-30 |
 | 6 | DB | **Supabase** (사용자 지정) | 2026-04-30 |
@@ -436,7 +436,7 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 ### 9.1 흐름도
 
 ```
-1. 사용자가 stock-analyst.vercel.app 접속
+1. 사용자가 stock-analyst-jungwon1.vercel.app 접속
 2. 미인증 → /login 자동 리다이렉트
 3. 이메일 입력 (jungwon9402@gmail.com 외 차단)
 4. Supabase 매직 링크 발송
@@ -616,7 +616,7 @@ UI:
 - [ ] Astro 빌드 hook에 통합 (`prebuild` script)
 - [ ] Vercel 프로젝트 생성 + GitHub repo 연결
 - [ ] 환경변수 등록 (Vercel 대시보드)
-- [ ] 첫 배포 → `stock-analyst.vercel.app` 활성화 (빈 페이지라도)
+- [ ] 첫 배포 → `stock-analyst-jungwon1.vercel.app` 활성화 (빈 페이지라도)
 
 **검증:**
 - [ ] `manifest.json` 생성됨 (60+ 항목)
@@ -730,7 +730,7 @@ UI:
 - [ ] Rate limit (분당 60회)
 
 **검증:**
-- [ ] `curl https://stock-analyst.vercel.app/api/price/MRVL` → JSON
+- [ ] `curl https://stock-analyst-jungwon1.vercel.app/api/price/MRVL` → JSON
 - [ ] 한국 종목 (`/api/price/012450`) 정상
 - [ ] 캐시 hit 시 응답 속도 < 100ms
 

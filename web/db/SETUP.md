@@ -151,7 +151,7 @@ cp .env.example .env.local
 지금은 placeholder만 설정하고, Day 3에서 Vercel 배포 URL이 확정되면 갱신합니다.
 
 대시보드 좌측 → **Authentication** → **URL Configuration**:
-- **Site URL**: `http://localhost:4321` (Astro 개발 서버 기본 포트 — Day 3에서 `https://stock-analyst.vercel.app`으로 갱신)
+- **Site URL**: `http://localhost:4321` (Astro 개발 서버 기본 포트 — Day 3에서 `https://stock-analyst-jungwon1.vercel.app`으로 갱신)
 - **Redirect URLs**: 비워둠 (Day 6에서 추가)
 
 ---
