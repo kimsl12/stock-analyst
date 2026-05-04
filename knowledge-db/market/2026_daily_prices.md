@@ -375,3 +375,10 @@ type: time_series
 | 2026-05-01 | calendar | ISM_Mfg_PMI_April | PENDING_10AM_ET | — | — | ISM [예정 2026-05-01 10:00 ET] | 2026-05-01T09:00:00+09:00 | S&P Global Flash PMI 4월 54.0(강세 선행 지표). ISM 컨센 ~52.5. 3월 ISM 52.7 |
 | 2026-05-01 | news | Ackman_PSUS_IPO | PSUS_IPO_FIRST_DAY_40.90 | — | — | CNBC [2026-04-29] | 2026-05-01T09:00:00+09:00 | PSUS 상장 첫날 $40.90(-18%, IPO가 $50 하회). $5B 모집(목표 $5~10B 하단). Berkshire 모델 추구. AMZN 비중 14% |
 | 2026-05-01 | news | Buffett_vs_Ackman | AMZN_OPPOSITE_DIRECTION | — | — | Motley Fool [2026-04-27] | 2026-05-01T09:00:00+09:00 | Buffett AMZN 77% 감축(포트 0.1%). Ackman AMZN 65% 증량(포트 14%). 동일 종목 정반대 방향 |
+| 2026-05-03 | crypto | BTC | 78803 | +0.6%± | USD | Fortune / SpotedCrypto [2026-05-03 EDT 기준] | 2026-05-04T09:00:00+09:00 | $76K~$79K 구간 횡보. $80K 저항 테스트 중. RSI 강세 다이버전스. BTC OI $61B(수개월 최고) |
+| 2026-05-03 | crypto | FearAndGreedIndex | Greed | 개선 | index | Milk Road [2026-05-03] | 2026-05-04T09:00:00+09:00 | ✅ 5/3 Daily Greed 진입. 직전 5/1 기준 26(Fear) → 빅테크 실적 호조 촉매로 심리 급반전 |
+| 2026-05-03 | crypto | BTC_ETF_Inflow_Monthly | 1600M | — | USD | Milk Road / BanklessTimes [2026-05-03] | 2026-05-04T09:00:00+09:00 | 4월 BTC ETF 순유입 $1.6B. 5월 $3B 목표 상향 가능성. BTC 선물 OI $61B |
+| 2026-05-03 | crypto | TotalMarketCap | ~2.65T | — | USD | CoinGecko 추정 [2026-05-03] | 2026-05-04T09:00:00+09:00 | BTC 도미넌스 ~57.5%. ETH 시총 ~$233B |
+| 2026-05-03 | news | Iran_ProjectFreedom | SHIPS_ESCORT_ANNOUNCED | — | — | CNBC / Washington Post / CNN [2026-05-03] | 2026-05-04T09:00:00+09:00 | Trump "Project Freedom" 발표 — 5/4(월)부터 억류 선박 안내 개시. 봉쇄 해소 아닌 구출 목적. 이란 의회 "휴전 위반 간주" 경고. WTI 5/4 선물 변동성 촉매 |
+| 2026-05-03 | news | Warsh_Senate_Committee | APPROVED_13_11 | — | — | Al Jazeera / Yahoo Finance / CNBC [2026-04-29 확정] | 2026-05-04T09:00:00+09:00 | 상원 금융위원회 통과(13-11 당파표결 — 사상 첫 완전 당파). 5/11주 본회의 표결 예정. Fetterman(D-PA) 찬성 의향. 파월 5/15 만료 전 인준 가능 |
+| 2026-05-04 | news | TrumpXi_Summit | BEIJING_MAY14_CONFIRMED | — | — | EconoTimes / US News / CNBC [2026-05-04 확인] | 2026-05-04T09:00:00+09:00 | Trump 5/14 베이징 방문 확정(8년만 첫 방중). 6차 파리 협상 "건설적". 희토류·대두·펜타닐 패키지. Section 301 공청회 5/5 겹침 — 관세 완화 vs 유지 분기점 |
