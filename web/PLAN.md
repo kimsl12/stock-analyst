@@ -196,8 +196,8 @@ v2 (Phase 3): 양방향 동기화 (웹에서 수정 → Supabase write → 로�
 │   │   └── styles/
 │   │       └── global.css                  # 다크/라이트 변수
 │   └── scripts/
-│       ├── build_manifest.py               # reports/ → manifest.json
-│       └── build_search_index.py           # 본문 → FlexSearch 인덱스
+│       ├── build_manifest.mjs              # reports/ → manifest.json (Node, Vercel zero-config)
+│       └── build_search_index.mjs          # 본문 → FlexSearch 인덱스 (Node, Day 5)
 └── ...
 ```
 
