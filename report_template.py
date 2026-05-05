@@ -455,31 +455,9 @@ def generate_report(data, output_path=None):
             owner = owner_repo.split("/")[0]
             repo = owner_repo.split("/")[1] if "/" in owner_repo else ""
             preview_url = "https://{}.github.io/{}/{}".format(owner, repo, rel_path)
-
-            # gh-pages 브랜치에 자동 배포 (파일 내용을 먼저 읽어둔 뒤 브랜치 전환)
-            cur_branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
-            with open(abs_path, "r", encoding="utf-8") as rf:
-                html_content = rf.read()
-            try:
-                subprocess.check_call(["git", "stash", "--include-untracked"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
-                subprocess.check_call(["git", "checkout", "gh-pages"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
-                dest = os.path.join(repo_root, rel_path)
-                os.makedirs(os.path.dirname(dest), exist_ok=True)
-                with open(dest, "w", encoding="utf-8") as wf:
-                    wf.write(html_content)
-                subprocess.check_call(["git", "add", rel_path], cwd=repo_root, stderr=subprocess.DEVNULL)
-                ret = subprocess.call(["git", "diff", "--cached", "--quiet"], cwd=repo_root, stderr=subprocess.DEVNULL)
-                if ret != 0:
-                    subprocess.check_call(["git", "commit", "-m", "deploy: {}".format(fname)], cwd=repo_root, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
-                    subprocess.check_call(["git", "push", "origin", "gh-pages"], cwd=repo_root, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
-                    print("gh-pages 배포 완료")
-                else:
-                    print("gh-pages 변경 없음 (이미 최신)")
-            except Exception as e:
-                print("gh-pages 자동 배포 실패: {}".format(e))
-            finally:
-                subprocess.call(["git", "checkout", cur_branch], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
-                subprocess.call(["git", "stash", "pop"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+            # 배포는 .github/workflows/deploy-reports.yml 이 main push 시 자동 처리.
+            # (이전 인라인 git checkout gh-pages 로직은 post-checkout hook과 충돌하여
+            #  main↔gh-pages 사이클 14회·untracked 손실 위험을 발생시켜 2026-05-05 제거.)
     except Exception:
         pass
 

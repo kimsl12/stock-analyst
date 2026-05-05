@@ -558,19 +558,71 @@ UI:
 
 ---
 
-## 12. Phase 3 계획 (이번 작업 외 — 메모)
+## 12. Phase 3 백로그 (Phase 2 완료 후 회고 + 다음 작업)
 
-| 기능 | 예상 소요 | 의존 |
-|---|---|---|
-| 개인 메모 | 2일 | Supabase memos 테이블 추가 |
-| 추천 vs 실제 매수 트래킹 | 4-5일 | Supabase trade_log + Edge Function 손익 계산 |
-| TradingView 위젯 통합 | 2일 | 무료 위젯 임베드 (`tradingview.com/widget`) |
-| PWA (오프라인 + 푸시) | 3-4일 | Service Worker + Web Push API |
-| 새 리포트 알림 | 2일 | Supabase Realtime + 브라우저 알림 |
-| 양방향 동기화 | 5일 | 충돌 해결 정책 + Supabase webhook |
-| 가족 공유 | 3일 | Auth 화이트리스트 확장 + RLS 조정 |
+### 12.1 Phase 2 회고 (2026-05-05 작성)
 
-본 작업에서는 **스키마·라우팅·UI 슬롯만 미리 예약**해두고 구현은 다음 작업에서.
+**완료한 것 (Day 1-14):**
+- Day 1-9 MVP — Supabase Auth + 인덱스/필터/검색 + 대시보드 (10 위젯)
+- Day 10-11 Edge Function — `/api/price/[ticker]` (yfinance, 한국 .KS/.KQ 폴백, 5분 캐시, 60/분 rate limit)
+- Day 12-13 시간 머신 — 1주/1개월/3개월 추천 ticker × `?at=` 수익률
+- Day 14 종목 비교 + PerformanceDonut — `/compare?a=&b=` + KB 누적 적중률 도넛 (83%, 56건 누적)
+
+**과정에서 학습된 것 (Phase 2 디버그 인사이트):**
+1. **Vercel CLI deploy 시 cwd가 root** — web/에서 link하면 `../knowledge-base/` 접근 불가 → kb=0 빌드. monorepo root link 필수.
+2. **Functions는 root/api/ 만 자동 인식** — 하위 디렉토리(web/api)는 `vercel.json functions` 명시해도 안 됨. Day 14에서 root로 이동하여 해결.
+3. **GitHub 자동 배포 미연결 상태** — git push만으로 안 됨. 매번 `vercel --prod --yes` 수동.
+4. **prebuild 의존성** — `build_kb.mjs`가 `knowledge-base/`, `build_manifest.mjs`가 `reports/`를 읽음. 이 둘은 deploy zip에 포함되어야 함.
+5. **briefing-lead 에이전트 50% 실패율 (Phase B 보류 메모리 참조)** — LLM 위임 시 일관성 보장이 어려움. 명시적 검증 단계 필수.
+
+### 12.2 우선순위 분류
+
+**P0 — 다음 작업 시 즉시 (반복 마찰 제거):**
+| 기능 | 예상 | 의존 | 비고 |
+|---|---|---|---|
+| GitHub 자동 배포 webhook 연결 | 30분 | 사용자 1회 셋업 | 매 push 후 수동 `vercel --prod` 제거. Vercel 대시보드 → Project Settings → Git |
+| main↔gh-pages 자동 사이클 원인 조사 + 차단 | 1-2h | reflog 분석 + report_template.py 점검 | 현재 reflog 14회 자동 checkout 흔적. 외장 SSD 작업 안정성 |
+| Day 6/7 사용자 측 검증 가이드 보강 | 1h | 운영 매뉴얼 | `web/docs/SETUP_USER.md` 신규: Vercel env, Supabase URL Config, JWT expiry, Lighthouse 측정 단계별 안내 |
+
+**P1 — 사용자 가치 직결:**
+| 기능 | 예상 | 의존 | 비고 |
+|---|---|---|---|
+| 개인 메모 | 2일 | Supabase memos 테이블 + RLS | 종목 페이지 하단 + 대시보드 위젯 (최근 5개) |
+| 새 리포트 알림 | 2일 | Supabase Realtime + Web Push API | 모닝/이브닝 자동 생성 시 브라우저 알림 |
+| 추천 vs 실제 매수 트래킹 | 4-5일 | Supabase trade_log + Edge Function 손익 계산 | 사용자 매수가 입력 → /api/price 현재가 → 누적 손익 + PerformanceDonut 보강 |
+| `/api/price` 확장: ?period=1y 차트 | 0.5일 | 기존 endpoint | timemachine·compare에서 인라인 sparkline 가능 |
+
+**P2 — 시각화·확장 기능:**
+| 기능 | 예상 | 의존 | 비고 |
+|---|---|---|---|
+| TradingView 위젯 통합 | 2일 | 무료 위젯 임베드 | `/stocks/[ticker]` + `/compare`에 차트 |
+| PWA (오프라인 + 푸시) | 3-4일 | Service Worker + Web Push | 매니페스트 캐시 + 알림 |
+| 가족 공유 | 3일 | Auth 화이트리스트 확장 + RLS | `PUBLIC_ALLOWED_EMAIL` → `PUBLIC_ALLOWED_EMAILS` (csv) |
+| 양방향 동기화 (web→로컬 md write) | 5일 | 충돌 해결 정책 + Supabase webhook | 현재 SSoT는 로컬 md, 웹에서 메모만 추가 가능 (write back 불가) |
+
+**P3 — 코드 품질·검색 강화:**
+| 기능 | 예상 | 의존 | 비고 |
+|---|---|---|---|
+| 한글 형태소 검색 (FlexSearch tokenizer) | 1일 | esm.sh `flexsearch-ko` | 현재 단순 매칭 → "삼성전자" "삼전" 동시 매칭 |
+| 다크/라이트 외 추가 테마 | 0.5일 | CSS 변수 추가 | 시스템 prefers-contrast 대응 |
+| Phase B 디자인 표준화 (보류) | 1일 | Phase A 자연 교체 + 잔여 누적 산출물 일괄 | (memory project_briefing_design_audit 참조) |
+| `/timemachine` 슬라이더 → 임의 날짜 입력 | 1일 | 기존 ?at= API | 1주/1개월/3개월 외에 사용자 지정 |
+| `/compare` 다중 비교 (3종목 이상) | 1일 | 셀렉터 N개로 확장 | URL `?tickers=A,B,C` |
+
+### 12.3 운영 결정 필요 (사용자 입력 대기)
+
+- [ ] GitHub Actions 자동 배포 활성화 여부 (P0 1번 채택 시)
+- [ ] Vercel Hobby tier 한계 도달 시 Pro 업그레이드 시점
+- [ ] PWA 도입 시점 — 모바일 대응 우선순위
+- [ ] 가족 공유 도입 여부 — 화이트리스트 확장 정책
+- [ ] Phase B 디자인 표준화 재시동 여부 (현재 보류 결정)
+
+### 12.4 본 작업 (Phase 2)에서 의도적으로 미구현
+
+스키마·라우팅·UI 슬롯만 미리 예약해두고 구현은 Phase 3에서:
+- `memos`, `trade_log`, `notifications` 테이블 (§6.4 미생성)
+- `/memos` 라우트 (Phase 3에서 추가)
+- 모바일 alert/notification 권한 요청 플로우
 
 ---
 
