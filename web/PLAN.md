@@ -424,10 +424,11 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 
 ### 8.3 매니페스트 기반 정적 라우팅
 
-빌드 타임:
-1. `scripts/build_manifest.py` 실행 → `reports/` 스캔 → `web/src/data/manifest.json` 생성
-2. Astro 빌드 시 manifest 로드 → 동적 라우트 prerender
-3. FlexSearch 인덱스 빌드 → `web/public/search-index.json`
+빌드 타임 (`web/scripts/*.mjs` Node 스크립트, prebuild 훅):
+1. `build_manifest.mjs` → `reports/` 스캔 → `web/src/data/manifest.json` 생성
+2. `build_kb.mjs` → KB market/_index 파싱 → `web/src/data/kb.json`
+3. `build_search_index.mjs` → 본문 추출 → `web/public/search-data.json`
+4. Astro 빌드 시 위 JSON 로드 → 동적 라우트 prerender + FlexSearch lazy load
 
 ---
 
@@ -580,92 +581,92 @@ UI:
 #### Day 1: Supabase 셋업
 
 **작업:**
-- [ ] Supabase 프로젝트 생성 (`stock-analyst` 또는 사용자 지정)
-- [ ] Postgres 스키마 적용 (§6.1 SQL 실행)
-- [ ] RLS 정책 적용 (§6.2)
-- [ ] Auth → Email 템플릿 한국어 적용
-- [ ] Magic Link 활성화 + 화이트리스트 이메일 등록 (`jungwon9402@gmail.com`)
-- [ ] Service Role 키 발급 + 안전 보관
-- [ ] `web/.env.example` 작성
+- [x] Supabase 프로젝트 생성 (web/이 정상 작동 → 연결 확인)
+- [x] Postgres 스키마 적용 (§6.1 SQL 실행, portfolios/holdings 테이블 가동)
+- [x] RLS 정책 적용 (§6.2, service_role 키로 SSG 우회 동작)
+- [x] Auth → Email 템플릿 한국어 적용 (사용자 측)
+- [x] Magic Link 활성화 + 화이트리스트 이메일 등록 (`jungwon9402@gmail.com`)
+- [x] Service Role 키 발급 + 안전 보관 (Vercel env 등록)
+- [x] `web/.env.example` 작성 (PUBLIC_SUPABASE_URL/ANON, SUPABASE_SERVICE_KEY, PUBLIC_ALLOWED_EMAIL)
 
 **검증:**
-- [ ] Supabase 대시보드에서 SQL Editor로 `select * from portfolios` 실행 → 빈 테이블 확인
-- [ ] 매직 링크 테스트 (이메일 받기)
+- [x] `select * from portfolios` 실행 가능 (web/portfolio 페이지 렌더 확인)
+- [ ] 매직 링크 테스트 (사용자 측 실제 메일 수신 확인 필요)
 
 **Commit:** `feat(web): Supabase 프로젝트 셋업 + 스키마 적용`
 
 #### Day 2: 포트폴리오 동기화 스크립트
 
 **작업:**
-- [ ] `scripts/sync_portfolio_to_supabase.py` 작성
-- [ ] `requirements.txt`에 `supabase-py` 추가 (또는 별도 환경)
-- [ ] user_portfolio.md 파서 작성 (CURRENT 섹션 표 추출)
-- [ ] graceful fail 로직
-- [ ] briefing-lead.md `/내포트폴리오` Phase 4-후에 호출 추가
-- [ ] 1회 수동 실행 테스트 → Supabase에 데이터 들어감 확인
+- [x] `scripts/sync_portfolio_to_supabase.py` 작성
+- [x] `requirements.txt`에 `supabase-py` 추가
+- [x] user_portfolio.md 파서 작성 (CURRENT 섹션 표 추출)
+- [x] graceful fail 로직
+- [x] briefing-lead.md `/내포트폴리오` Phase 4-후에 호출 추가
+- [x] 1회 수동 실행 테스트 → Supabase에 데이터 들어감
 
 **검증:**
-- [ ] `select * from portfolios` → 1행 (사용자 데이터)
-- [ ] `select * from holdings` → 보유 종목 6~7개
-- [ ] 환경변수 미설정 시 graceful skip 확인
+- [x] `select * from portfolios` → 1행 (web/portfolio 페이지 렌더 확인)
+- [x] `select * from holdings` → 보유 종목 (web/portfolio 표 렌더 확인)
+- [x] 환경변수 미설정 시 graceful skip (코드 측 분기 확인)
 
 **Commit:** `feat(web): user_portfolio Supabase 동기화 스크립트`
 
 #### Day 3: Astro 프로젝트 + 매니페스트 빌더
 
 **작업:**
-- [ ] `cd web && npm create astro@latest .` (TypeScript, strict, no integrations)
-- [ ] Vercel 어댑터 설치 (`@astrojs/vercel`)
-- [ ] `scripts/build_manifest.py` 작성 — `reports/` 스캔 → `web/src/data/manifest.json`
+- [x] Astro 프로젝트 (TypeScript, strict, output: 'static') 셋업
+- [ ] Vercel 어댑터 설치 (`@astrojs/vercel`) — Day 11 Edge Function 도입 시 추가 예정
+- [x] `web/scripts/build_manifest.mjs` 작성 (Node, Vercel zero-config) — reports/ 스캔 → `manifest.json`
   - 파일명 패턴 → type, ticker, date 추출
   - 파일 메타데이터 (size, mtime)
   - title 추출 (HTML `<title>`)
-- [ ] Astro 빌드 hook에 통합 (`prebuild` script)
-- [ ] Vercel 프로젝트 생성 + GitHub repo 연결
-- [ ] 환경변수 등록 (Vercel 대시보드)
-- [ ] 첫 배포 → `stock-analyst-jungwon1.vercel.app` 활성화 (빈 페이지라도)
+- [x] Astro 빌드 hook 통합 (`prebuild` script — manifest + kb + search-index)
+- [x] Vercel 프로젝트 생성 + GitHub repo 연결
+- [x] 환경변수 등록 (Vercel 대시보드)
+- [x] 첫 배포 → `stock-analyst-jungwon1.vercel.app` 가동
 
 **검증:**
-- [ ] `manifest.json` 생성됨 (60+ 항목)
-- [ ] Vercel 빌드 통과
-- [ ] 배포 URL 접속 가능
+- [x] `manifest.json` 생성 (172 items, 173 HTMLs)
+- [x] Vercel 빌드 통과
+- [x] 배포 URL 접속 가능
 
 **Commit:** `feat(web): Astro 프로젝트 + 매니페스트 빌더 + Vercel 배포`
 
 #### Day 4: 인덱스 페이지 + 카드 그리드 + 카테고리 라우팅
 
 **작업:**
-- [ ] `layouts/Base.astro` (다크/라이트 토글, 헤더, 푸터)
-- [ ] `components/ReportCard.astro` (제목, 날짜, 종류, 사이즈)
-- [ ] `pages/index.astro` (모든 리포트 카드 그리드)
-- [ ] `pages/briefing/[type].astro` (동적 라우트, type별 필터)
-- [ ] `pages/stocks/index.astro` + `pages/stocks/[ticker].astro` (HTML iframe 임베드)
-- [ ] `pages/portfolio/index.astro` (Supabase read, 보유 종목 표)
-- [ ] CSS 변수 시스템 (briefing-report-generator와 동일 팔레트)
-- [ ] 모바일 반응형
+- [x] `layouts/Base.astro` (헤더, 푸터, 인증 가드, 테마 토글 슬롯)
+- [x] `components/ReportCard.astro` (제목, 날짜, 종류, 사이즈)
+- [x] `pages/index.astro` — Day 4.5에서 대시보드 통합 홈으로 확장
+- [x] `pages/briefing/[type].astro` (동적 라우트, type별 필터)
+- [x] `pages/stocks/index.astro` + `pages/stocks/[ticker].astro` (HTML iframe 임베드)
+- [x] `pages/portfolio/index.astro` (Supabase read, 보유 종목 표)
+- [x] CSS 변수 시스템 (briefing-report-generator와 동일 팔레트)
+- [x] 모바일 반응형
 
 **검증:**
-- [ ] `/` 접속 → 모든 카드 보임
-- [ ] `/briefing/morning` → 모닝 브리핑만
-- [ ] `/stocks/MRVL` → MRVL 분석 임베드
-- [ ] `/portfolio` → Supabase 데이터 표시
+- [x] `/` 접속 → 대시보드 + 카드 그리드
+- [x] `/briefing/morning` → 모닝 브리핑만
+- [x] `/stocks/[ticker]` → 분석 임베드
+- [x] `/portfolio` → Supabase 데이터 표시
 
 **Commit:** `feat(web): MVP 인덱스 + 카테고리 라우팅 + 포트폴리오 페이지`
 
 #### Day 5: 3축 필터 + 검색 인덱스
 
 **작업:**
-- [ ] `components/FilterBar.astro` (종류·날짜·종목 셀렉터)
-- [ ] 클라이언트 JS 필터링 로직
-- [ ] `scripts/build_search_index.py` 작성 — 본문 텍스트 추출 + FlexSearch 인덱스
-- [ ] `components/SearchBox.astro` (검색 입력 + 결과 드롭다운)
-- [ ] FlexSearch 클라이언트 통합 (lazy load)
-- [ ] 검색 결과: 매칭 리포트 + 200자 스니펫
+- [x] `components/FilterBar.astro` (종류·날짜·종목 셀렉터)
+- [x] 클라이언트 JS 필터링 로직
+- [x] `web/scripts/build_search_index.mjs` — 본문 추출 + FlexSearch 인덱스 (`search-data.json`)
+- [x] `components/SearchBox.astro` (검색 입력 + 결과 드롭다운)
+- [x] FlexSearch 클라이언트 통합 (CDN lazy load)
+- [x] 검색 결과: 매칭 리포트 + 200자 스니펫
 
 **검증:**
-- [ ] 필터 3축 모두 작동
-- [ ] 검색어 입력 → 결과 즉시 표시
-- [ ] 모바일에서 검색 UI 정상
+- [x] 필터 3축 작동
+- [x] 검색어 입력 → 결과 즉시 표시
+- [x] 모바일 검색 UI 정상
 
 **Commit:** `feat(web): 3축 필터 + FlexSearch 본문 검색`
 
@@ -775,7 +776,7 @@ UI:
 
 **Commit:** `feat(web): Phase 2 — 시간 머신`
 
-#### Day 14: 종목 비교 빌더 + 마감
+#### Day 14: 종목 비교 빌더 + PerformanceDonut 활성화 + 마감
 
 **작업:**
 - [ ] `pages/compare.astro` (URL 파라미터 `?a=&b=`)
@@ -783,6 +784,10 @@ UI:
 - [ ] 두 종목 분석 리포트 임베드
 - [ ] 핵심 지표 비교 표 (PER, ATR, 점수 등)
 - [ ] 모바일에서는 상하 분할
+- [ ] **PerformanceDonut 실데이터 도넛 활성화** (Day 8-9 이관)
+  - [ ] `build_kb.mjs`에 `performance_history.md` 표 파서 추가 → kb.json `performance_summary` (적중/오류/진행중/보류 카운트)
+  - [ ] PerformanceDonut SVG 도넛 4개 슬라이스 (HoldingsDonut 패턴 재사용)
+  - [ ] 적중률 % + 누적 N건 표시
 - [ ] 최종 회귀 테스트
 - [ ] README 갱신
 - [ ] Phase 3 백로그 issue 작성 (계획만)
@@ -803,16 +808,18 @@ UI:
 - GitHub `main` push → 자동 빌드 + 배포
 - Preview deployment: feature 브랜치 push 시 별도 URL 생성
 - 빌드 명령: `npm run build` (Astro)
-- prebuild 훅: `python scripts/build_manifest.py && python scripts/build_search_index.py`
+- prebuild 훅: `node scripts/build_manifest.mjs && node scripts/build_kb.mjs && node scripts/build_search_index.mjs`
 
 ### 14.2 환경변수 (Vercel 대시보드)
 
-| 키 | 값 | 노출 |
-|---|---|---|
-| `PUBLIC_SUPABASE_URL` | https://xxx.supabase.co | 클라이언트 |
-| `PUBLIC_SUPABASE_ANON_KEY` | eyJ... | 클라이언트 |
-| `SUPABASE_SERVICE_KEY` | eyJ... | 서버만 |
-| `ALLOWED_EMAIL` | jungwon9402@gmail.com | 서버만 |
+| 키 | 값 | 노출 | 도입 |
+|---|---|---|---|
+| `PUBLIC_SUPABASE_URL` | https://xxx.supabase.co | 클라이언트 | Day 1 |
+| `PUBLIC_SUPABASE_ANON_KEY` | eyJ... | 클라이언트 | Day 1 |
+| `SUPABASE_SERVICE_KEY` | eyJ... | 서버만 (SSG 빌드) | Day 1 |
+| `PUBLIC_ALLOWED_EMAIL` | jungwon9402@gmail.com | 클라이언트 (가드) | Day 6 |
+
+> Day 6: SSG 환경에서 클라이언트 가드용으로 `PUBLIC_ALLOWED_EMAIL` 접두사 채택. 서버 검증은 Supabase RLS + 콜백에서 sign-out으로 이중화.
 
 ### 14.3 .gitignore 추가
 
@@ -822,8 +829,9 @@ web/node_modules/
 web/.astro/
 web/dist/
 web/.env.local
-web/src/data/manifest.json   # 빌드 산출물
-web/public/search-index.json # 빌드 산출물
+web/src/data/manifest.json   # 빌드 산출물 (build_manifest.mjs)
+web/src/data/kb.json         # 빌드 산출물 (build_kb.mjs)
+web/public/search-data.json  # 빌드 산출물 (build_search_index.mjs)
 ```
 
 ---
@@ -888,6 +896,7 @@ cd "/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전�
 | 일자 | 버전 | 변경 | 작성자 |
 |---|---|---|---|
 | 2026-04-30 | v1.0 | 초안 작성 (MVP + Phase 2) | Claude Opus 4.7 + 사용자 |
+| 2026-05-05 | v1.1 | Day 1-9 정합성 갱신 — Day 1-5 체크박스 [x], §14.1 Node 스크립트, §14.2 PUBLIC_ALLOWED_EMAIL, §14.3 search-data.json/kb.json, §8.3 빌드 흐름. Day 14에 PerformanceDonut 활성화 명세 추가. | Claude Opus 4.7 |
 
 ---
 
