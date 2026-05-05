@@ -808,10 +808,19 @@ UI:
 
 ## 14. CI/CD
 
-### 14.1 Vercel 자동 배포
+### 14.1 Vercel 배포
 
-- GitHub `main` push → 자동 빌드 + 배포
-- Preview deployment: feature 브랜치 push 시 별도 URL 생성
+**배포 구조 (Day 14 갱신, 2026-05-05):**
+- 프로젝트 root = **monorepo root** (`/종목분석 에이전트/`), web/ 아님
+- `vercel.json` (root): `buildCommand: cd web && npm install && npm run build`, `outputDirectory: web/dist`
+- `api/price/[ticker].py` (root) — Vercel Python Serverless 자동 인식
+- `requirements.txt` (root) — yfinance
+- `.vercelignore` (root) — node_modules/dist/.git 등 deploy zip 제외
+- 이렇게 두어야 prebuild 훅이 `../knowledge-base/`, `../reports/` 접근 가능 (monorepo 전체 zip 업로드)
+
+**배포 명령:**
+- `cd "/Volumes/.../종목분석 에이전트" && vercel --prod --yes` (CLI 수동, 매 push 후 1회 필요)
+- **GitHub 자동 배포 미연결** — git push만으로는 배포되지 않음. Vercel 대시보드에서 GitHub repo 연결 시 자동 배포 가능 (사용자 1회 셋업)
 - 빌드 명령: `npm run build` (Astro)
 - prebuild 훅: `node scripts/build_manifest.mjs && node scripts/build_kb.mjs && node scripts/build_search_index.mjs`
 
