@@ -23,7 +23,7 @@ lint_mode: full
 |------|------|----------|------|
 
 > [INFO] P0 항목 없음 — 2026-05-03 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
-> [INFO] market/daily_snapshot.md 2026-05-04 이브닝 수집 완료 — KOSPI 6,936.99(+5.12%) 사상최고가, 이란 교전 보도 반영. valid_until 2026-05-05. 5/5(화) 미국 현물 개장 후 재수집 필요.
+> [INFO] market/daily_snapshot.md 2026-05-05 모��� 수집 완료 — 이란 교전(5/4 보트 7척 격침+UAE 피격)→협상 낙관(5/5 Trump 데드라인+이란 30일 제안) 급반전. WTI $106→$92(-7%). S&P +1.2%, NASDAQ +2%. KOSPI 5/5 어린이날 휴장(5/6 재개장). valid_until 2026-05-05 EOD(이브닝 갱신 필요).
 
 ---
 
@@ -52,6 +52,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-05 | 모닝브리핑 | 이란 교전→협상 24시간 급반전: 5/4 미군 보트 7척 격침+UAE 피격(WTI $106) → 5/5 Trump 8pm ET 데드라인+이란 30일 제안(WTI $92, -7%). 시장은 시나리오 A(30%)를 50%+ 과도 선반영. 호르무즈 기뢰 6개월 불변. $80 이하 복귀 2026년 내 구조적 어려움 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-05 | 모닝브리핑 | "스태그플레이션 vs AI 예외론" 5~6월 지배 내러티브 확정 — Fed 4명 분열+Core PCE 3.2%+ISM 가격 84.6 = 스태그플레이션 초기. 유가 급락에도 Q1 데이터 번복 불가(시차 2~3개월). AI CapEx(+8.7%)가 GDP 하방 방어 유일 축. 위험등급 4/5(조건부 하향) | `macro/us_economy.md, macro/us_monetary_policy.md` | 진행중 |
+| 2026-05-05 | 모닝브리핑 | WTI↔BEI 이상 해소 급전환(Z+2.0→+0.5~1.0σ) — 단일일 -13.5% 급락. 그러나 US10Y +3bp(BEI 미반응) = 에너지 디스인플 채권 전달 3~7거래일 시차. ISM 서비스 가격 독립 고착. 협상 결렬 시 재급등 위험 | `market/correlation_matrix.md, market/surprise_index.md` | 진행중 |
 | 2026-05-04 | 이브닝브리핑 | KOSPI 5/4 재개장 6,936.99(+5.12%) 사상 최고가 — SK하이닉스 +12.52% 시총 1000조 돌파. 외인 3.0조+기관 1.9조 순매수. 빅테크 AI 실적 연휴 소화 후 폭발적 매수. KOSPI 7,000 저항선 목전 | `market/daily_snapshot.md` | 진행중 |
 | 2026-05-04 | 이브닝브리핑 | 이란 교전 보도 급출현(5/4 야간) — 이란 미디어 "美 순찰선 피격+US warship 호르무즈 회항" → S&P선물 -0.1%/WTI +2.87%(.90)/Brent +3.35%(.79). 미 당국 부인. 5/5 미국 개장 변동성 최대 촉매 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-04 | 이브닝브리핑 | BTC F&G 지수 정정 — 39(Fear). 기존 "Daily Greed 진입" 표현 수정. 26(5/1)→39(5/4) 개선 중이나 아직 Fear 구간. BTC ,190/ETH ,302. 도미넌스 58.5% 60% 저항 테스트 | `market/daily_snapshot.md` | 정정 |
