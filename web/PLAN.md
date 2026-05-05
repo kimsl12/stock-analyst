@@ -509,15 +509,18 @@ export function isAllowedUser(email: string): boolean {
 
 ## 11. Phase 2 기능 상세
 
-### 11.1 대시보드 홈 (`/dashboard`)
+### 11.1 대시보드 홈 (`/` 메인 통합)
+
+> Day 4.5에서 결정: 별도 `/dashboard` 라우트 추가하지 않고 `/` 를 대시보드 + 인덱스로 통합.
 
 | 위젯 | 데이터 | 시각화 |
 |---|---|---|
-| 누적 카운트 | 매니페스트 집계 | metric-card 그리드 (브리핑 N개, 종목 N개, ETF N개) |
-| 최근 7일 추천 풀 | 매니페스트 + 본문 파싱 | 종목 칩 클라우드 |
-| 매크로 스냅샷 | KB market/daily_snapshot.md | metric-grid (S&P, VIX, Gold, USD/KRW) |
-| 적중률 도넛 | KB performance_history.md | Chart.js 도넛 |
-| 자산군 분포 | Supabase portfolios + holdings | Chart.js 도넛 (사용자 포트) |
+| 누적 카운트 | 매니페스트 집계 | StatCard + TypeCounts (브리핑/종목/ETF 카테고리별 pill) |
+| 최근 7일 추천 풀 | briefing HTML의 `/종목분석 TICKER` 패턴 (D1) | 종목 칩 클라우드 (count 빈도순, font-size 가중) |
+| 매크로 스냅샷 | KB market/daily_snapshot.md | snap-grid (S&P, NASDAQ, KOSPI, USD/KRW, WTI, Gold, BTC, VIX) |
+| 적중률 도넛 | KB performance_history.md (`/성과리뷰` 누적) | placeholder → Day 14 도넛 활성화 |
+| 자산군 분포 | Supabase portfolios + holdings | SVG 도넛 (Chart.js 미사용, 자체 렌더) |
+| 보너스 | 매니페스트 / Supabase / KB / LocalStorage | RecentReports, TopHoldings, EconomicCalendar, RecentlyViewed |
 
 ### 11.2 시간 머신 (`/timemachine`)
 
@@ -718,19 +721,25 @@ UI:
 #### Day 8-9: 대시보드 홈
 
 **작업:**
-- [ ] `pages/dashboard.astro`
-- [ ] 누적 카운트 위젯 (매니페스트 집계)
-- [ ] 최근 7일 추천 종목 풀 (본문 파싱 → 키워드 추출)
-- [ ] 매크로 스냅샷 (KB daily_snapshot.md 빌드 타임 로드)
-- [ ] 자산군 분포 도넛 (Supabase 데이터 + Chart.js)
-- [ ] 적중률 도넛 (KB performance_history.md, 파일 없으면 SKIP)
+- [x] 대시보드 라우트 = `/` (Day 4.5에서 메인 홈으로 통합. 별도 `/dashboard` 라우트 미생성)
+- [x] 누적 카운트 위젯 (StatCard + TypeCounts, 매니페스트 집계)
+- [x] 최근 7일 추천 종목 풀 (RecommendCloud — `/종목분석 TICKER` 패턴 추출, 25건)
+- [x] 매크로 스냅샷 (MarketSnapshot, KB daily_snapshot.md 빌드 타임 로드)
+- [x] 자산군 분포 도넛 (HoldingsDonut, SVG 도넛 — Chart.js 미사용)
+- [x] 적중률 도넛 (PerformanceDonut, KB `performance_history.md` 헤더 신규 — `/성과리뷰` 첫 실행 후 자동 활성화)
+- [x] 보너스 위젯 4종 (RecentReports, TopHoldings, EconomicCalendar, RecentlyViewed)
 
 **검증:**
-- [ ] `/dashboard` → 모든 위젯 렌더
-- [ ] Chart.js 도넛 정상 표시
-- [ ] 모바일 그리드 1열 변환
+- [x] `/` → 10개 위젯 모두 렌더 (dist/index.html 검증)
+- [x] SVG 도넛 정상 표시 (HoldingsDonut, Chart.js 미도입)
+- [x] 모바일 그리드 1열 변환 (`@media(max-width:600px)`)
+- [x] 다크/라이트 토글 시 모든 위젯 var() 색상 정합
 
-**Commit:** `feat(web): Phase 2 — 대시보드 홈`
+**참고:**
+- D-1 RecommendCloud 데이터 패턴: `.strong-buy` 클래스가 실제 markup에 부재 → `/종목분석 TICKER` 코드 블록 패턴으로 전환. 7일 윈도우 11개 briefing에서 25 unique ticker 추출 (AMZN 16, GLD 12, GOOGL 10 등).
+- D-2 PerformanceDonut: `/성과리뷰` 명령이 `knowledge-base/performance_history.md` 표에 1행씩 append (commands/성과리뷰.md 보강 완료). 누적 행 ≥ 1건이면 카운트 표시. Day 14에서 적중/오류/진행중 분류 + 도넛 렌더 활성화.
+
+**Commit:** `feat(web): Day 8-9 — 대시보드 갭 보강 + 성과 추적 KB 명세`
 
 #### Day 10-11: Edge Function (가격 fetch API)
 

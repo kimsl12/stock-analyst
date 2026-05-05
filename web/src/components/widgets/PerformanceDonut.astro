@@ -1,27 +1,53 @@
 ---
-// D2 적중률 도넛 — KB performance_history.md 가 아직 없어 placeholder.
-// 파일이 생성되면 자동으로 데이터 표시.
-import { existsSync } from 'node:fs';
+// D2 적중률 도넛 — knowledge-base/performance_history.md 헤더만 존재 (Day 8-9).
+// /성과리뷰 명령이 본 파일에 행을 누적 append. Day 14에 파싱 로직 활성화.
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '../../../..');
 const PERF_FILE = path.join(PROJECT_ROOT, 'knowledge-base', 'performance_history.md');
-const hasFile = existsSync(PERF_FILE);
+
+// 본문 표 행이 1건 이상이면 활성화 (Day 14 파싱 도입 전 임시 카운트)
+let rowCount = 0;
+if (existsSync(PERF_FILE)) {
+  const text = readFileSync(PERF_FILE, 'utf-8');
+  // 헤더(추천일|종목|...) 다음 separator(---|---|...) 이후의 데이터 행만 카운트
+  const lines = text.split(/\r?\n/);
+  let inTable = false;
+  for (let i = 0; i < lines.length; i++) {
+    if (/^\s*\|\s*추천일\s*\|/.test(lines[i]) && /^\s*\|\s*-+/.test(lines[i + 1] ?? '')) {
+      inTable = true;
+      i += 1;
+      continue;
+    }
+    if (inTable) {
+      if (!/^\s*\|.+\|\s*$/.test(lines[i])) break;
+      // 주석/빈 행 스킵
+      if (/^\s*\|\s*<!--/.test(lines[i])) continue;
+      rowCount += 1;
+    }
+  }
+}
+const hasData = rowCount > 0;
 ---
 <section class="card">
   <header class="card-head">
     <h2>적중률</h2>
-    <span class="dim">{hasFile ? '집계 중' : '준비 중'}</span>
+    <span class="dim">{hasData ? `${rowCount}건 누적` : '준비 중'}</span>
   </header>
   <p class="empty">
-    {hasFile ? (
-      <>performance_history.md 파싱 로직 미구현 (Day 14)</>
+    {hasData ? (
+      <>
+        <strong>{rowCount}건 누적.</strong><br />
+        Day 14에서 적중/오류/진행중 분류 + 도넛 차트 렌더.
+      </>
     ) : (
       <>
-        <strong>knowledge-base/performance_history.md 없음.</strong><br />
-        브리핑 추천의 사후 검증 데이터 누적 시작 후 자동 활성화.
+        <strong>아직 누적 데이터 없음.</strong><br />
+        <code>/성과리뷰</code> 명령 첫 실행 후 자동 활성화<br />
+        <span class="dim">(KB performance_history.md 누적 시작)</span>
       </>
     )}
   </p>
@@ -43,4 +69,5 @@ const hasFile = existsSync(PERF_FILE);
     flex-direction: column;
     justify-content: center;
   }
+  .empty code { background: var(--surface-2); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.78rem; }
 </style>

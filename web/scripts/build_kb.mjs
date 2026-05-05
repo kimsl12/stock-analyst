@@ -220,7 +220,10 @@ async function parseUpcomingEvents() {
 }
 
 // ---------------------------------------------------------------------------
-// 4. recommendations (D1) — briefing HTML에서 .strong-buy 텍스트 추출
+// 4. recommendations (D1) — 최근 7일 briefing HTML에서 추천 종목 추출
+//   - 1순위 패턴: /종목분석 TICKER 코드 블록 (실질 추천 카탈로그)
+//   - 2순위 패턴: class="strong-buy" 텍스트 (legacy 호환)
+//   - 빈도 카운트 → Top 25
 // ---------------------------------------------------------------------------
 async function parseRecommendations() {
   if (!existsSync(REPORTS_BRIEFING)) return [];
@@ -234,19 +237,31 @@ async function parseRecommendations() {
   });
 
   const counts = new Map();
-  // <span/div class="...strong-buy..."> 또는 .strong-buy 클래스 안의 텍스트
+
+  // 1순위: /종목분석 TICKER (한글/영문/숫자 2~10자) — 빈 명령 제외
+  const reCmd = /\/종목분석\s+([A-Z가-힣0-9]{2,10})\b/g;
+  // 2순위: <span/td/.../> class="strong-buy" 안의 텍스트 (legacy)
   const reBuy = /<(?:span|td|div|li|strong|b)[^>]*class=['"][^'"]*strong-buy[^'"]*['"][^>]*>([^<]+)</gi;
+
   for (const fn of files) {
     try {
       const html = await readFile(path.join(REPORTS_BRIEFING, fn), 'utf-8');
+
+      // 1순위: /종목분석 TICKER
       let m;
+      while ((m = reCmd.exec(html)) !== null) {
+        const t = m[1].trim();
+        if (!t) continue;
+        // 일반 키워드 제외 (안전)
+        if (/^(BUY|SELL|HOLD|매수|매도|적정|관망|강력|예시)$/i.test(t)) continue;
+        counts.set(t, (counts.get(t) ?? 0) + 1);
+      }
+
+      // 2순위: legacy .strong-buy
       while ((m = reBuy.exec(html)) !== null) {
-        // 추출 텍스트에서 "강력 매수" 같은 prefix 제거하고 ticker 후보만
         const raw = m[1].replace(/[(),:!?]/g, ' ').trim();
-        // ticker 후보: 1~6자리 대문자+숫자 (한글 종목명도 포함될 수 있음)
         const tokens = raw.split(/\s+/).filter((t) => t.length >= 2 && t.length <= 12);
         for (const t of tokens) {
-          // 너무 일반적인 단어 제외
           if (/^(매수|매도|강력|적정|관망|RECOMMEND|BUY|HOLD|SELL|STRONG)$/i.test(t)) continue;
           counts.set(t, (counts.get(t) ?? 0) + 1);
         }
