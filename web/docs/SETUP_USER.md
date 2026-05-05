@@ -20,28 +20,51 @@
 
 ---
 
-## 1. 첫 비밀번호 설정 (1회만 필요, 2026-05-05 비번 방식 전환)
+## 1. 비밀번호 설정/변경 — Supabase Admin API (메일 없음)
 
-**목적:** 매직링크 방식 폐기 후 일반 비밀번호 로그인 사용. 첫 1회만 메일 받기.
+**목적:** 매직링크/reset 흐름 모두 폐기 (모바일 UX + 즉시 로그인 문제). 비번은 명령 1줄로 직접 설정.
 
-**단계:**
-1. https://stock-analyst-jungwon1.vercel.app/login 접속
-2. 이메일 칸에 `jungwon9402@gmail.com` 입력 (비번 칸은 비워둔 채)
-3. **"비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정"** 링크 클릭
-4. 확인 다이얼로그 → 확인 → 메일 발송 안내
-5. 메일함(스팸함 포함, 1-2분 내) → "Reset password" 링크 클릭
-6. `/auth/callback?mode=recovery` 페이지로 이동 → 새 비밀번호 8자 이상 입력 (2회)
-7. "비밀번호 저장" 클릭 → `/` 자동 이동 + 로그인 완료
-8. **이후로는 메일 받을 필요 없음** — `/login`에서 이메일 + 비번으로 바로 로그인
+### 권장 방법 — Vercel 빌드 시 한 번에 (1줄 명령)
 
-**실패 시:**
-- 메일이 안 옴 → Supabase 대시보드 → Auth → Logs → "Recovery" 항목 확인
-- 콜백 페이지에서 "인증 토큰이 만료되었거나 잘못되었습니다" → 메일이 1시간 이상 지났을 수 있음. 다시 reset 요청
-- "허용되지 않은 이메일입니다" → §2.1 `PUBLIC_ALLOWED_EMAIL` 환경변수 확인 + 재배포
+```bash
+cd "/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트"
+vercel --prod --yes --build-env BUILD_NEW_PASSWORD='<원하는 비번 8자 이상>'
+```
 
-**비밀번호 잊었을 때:** 동일 절차. `/login` → "비밀번호를 잊으셨나요?" → 메일 → 새 비번 설정.
+**동작:**
+- Vercel 빌드 환경에 BUILD_NEW_PASSWORD 임시 주입
+- `web/scripts/set_password.mjs`가 prebuild에서 감지 → Supabase Admin API로 비번 설정
+- 같은 deploy로 코드 + 비번 모두 반영. 한 번 실행 후 끝.
 
-**비밀번호 변경하고 싶을 때 (보안 정책):** 동일 절차로 재설정.
+**이후 일반 deploy** (BUILD_NEW_PASSWORD 없이):
+```bash
+vercel --prod --yes
+```
+→ `set_password.mjs`는 silent skip, 비번은 그대로 유지.
+
+### 대안 — 로컬 직접 실행
+
+`web/.env.local`에 `PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `PUBLIC_ALLOWED_EMAIL`이 채워져 있으면:
+```bash
+cd web
+node scripts/set_password.mjs '<원하는 비번>'
+```
+
+`.env.local` 파일이 없으면 `vercel env pull` 또는 Supabase 대시보드에서 키 복사 필요.
+
+### 로그인
+
+비번 설정 후:
+1. https://stock-analyst-jungwon1.vercel.app/login
+2. 이메일: `jungwon9402@gmail.com`
+3. 비밀번호: 위에서 설정한 값
+4. "로그인" 클릭 → `/` 이동
+
+**다른 기기 로그인:** 동일 비번 사용. 30일 세션 유지 (Supabase JWT expiry 2592000 설정 시).
+
+**비번 변경:** 동일 명령으로 새 비번 입력하면 덮어씀.
+
+**비번 분실:** 동일 명령으로 새 비번 설정 (이전 비번 무시).
 
 ---
 

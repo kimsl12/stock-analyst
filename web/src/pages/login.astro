@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 <Base
   title="로그인"
-  lede="이메일·비밀번호로 로그인합니다 (1인 운영, 화이트리스트 외 차단)"
+  lede="이메일 + 비밀번호 (1인 운영, 화이트리스트 외 차단)"
   active={null}
   noAuth={true}
 >
@@ -29,16 +29,10 @@ import Base from '../layouts/Base.astro';
         required
         minlength="8"
         autocomplete="current-password"
-        placeholder="8자 이상"
+        placeholder="비밀번호"
       />
 
       <button type="submit" id="submit-btn">로그인</button>
-
-      <div class="auxlinks">
-        <button type="button" id="reset-btn" class="link-btn">
-          비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정
-        </button>
-      </div>
 
       <div id="msg" class="msg" role="status" aria-live="polite"></div>
     </form>
@@ -46,7 +40,7 @@ import Base from '../layouts/Base.astro';
 </Base>
 
 <script>
-  import { signInWithPassword, resetPasswordForEmail, getCurrentSession } from '../lib/auth';
+  import { signInWithPassword, getCurrentSession } from '../lib/auth';
 
   // 이미 로그인 상태면 next 또는 홈으로 리다이렉트
   (async () => {
@@ -60,7 +54,6 @@ import Base from '../layouts/Base.astro';
 
   const form = document.getElementById('login-form') as HTMLFormElement | null;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
-  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement | null;
   const msg = document.getElementById('msg') as HTMLDivElement | null;
 
   function show(text: string, kind: 'ok' | 'err' | '' = '') {
@@ -69,7 +62,6 @@ import Base from '../layouts/Base.astro';
     msg.className = `msg ${kind}`;
   }
 
-  // 메인: 비번 로그인
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!btn) return;
@@ -94,42 +86,7 @@ import Base from '../layouts/Base.astro';
       show('✅ 로그인 성공. 이동합니다…', 'ok');
       const url = new URL(window.location.href);
       const next = url.searchParams.get('next') || '/';
-      setTimeout(() => window.location.replace(next), 400);
-    } else {
-      show(`❌ ${result.error}`, 'err');
-    }
-  });
-
-  // 보조: 비번 재설정/첫 설정 (이메일 링크)
-  resetBtn?.addEventListener('click', async () => {
-    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
-    if (!email) {
-      show('이메일을 먼저 입력한 뒤 다시 누르세요.', 'err');
-      return;
-    }
-
-    const ok = window.confirm(
-      `${email} 로 비밀번호 설정/재설정 링크를 보냅니다.\n` +
-      `메일을 클릭하면 새 비밀번호 입력 화면으로 이동합니다.\n계속할까요?`
-    );
-    if (!ok) return;
-
-    if (resetBtn) {
-      resetBtn.disabled = true;
-      resetBtn.textContent = '메일 발송 중…';
-    }
-
-    // recovery 콜백 URL — Supabase가 type=recovery 토큰을 hash로 부착
-    const redirectTo = `${window.location.origin}/auth/callback?mode=recovery`;
-    const result = await resetPasswordForEmail(email, redirectTo);
-
-    if (resetBtn) {
-      resetBtn.disabled = false;
-      resetBtn.textContent = '비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정';
-    }
-
-    if (result.ok) {
-      show('✅ 메일을 발송했습니다. 메일함의 링크를 클릭해 새 비밀번호를 설정하세요. (스팸함 확인)', 'ok');
+      setTimeout(() => window.location.replace(next), 300);
     } else {
       show(`❌ ${result.error}`, 'err');
     }
@@ -176,23 +133,6 @@ import Base from '../layouts/Base.astro';
   }
   button[type="submit"]:hover:not(:disabled) { background: var(--accent-2); }
   button[type="submit"]:disabled { opacity: .55; cursor: wait; }
-
-  .auxlinks {
-    margin-top: .5rem;
-    text-align: center;
-  }
-  .link-btn {
-    background: transparent;
-    border: 0;
-    color: var(--accent-2);
-    font-size: .8rem;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: .25rem .5rem;
-    font-family: inherit;
-  }
-  .link-btn:hover:not(:disabled) { color: var(--accent); }
-  .link-btn:disabled { opacity: .5; cursor: wait; }
 
   .msg { min-height: 1.2em; font-size: .85rem; margin-top: .35rem; line-height: 1.5; }
   .msg.ok { color: var(--up); }

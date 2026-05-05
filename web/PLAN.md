@@ -402,8 +402,8 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 
 | 라우트 | 파일 | 인증 | 설명 |
 |---|---|---|---|
-| `/login` | `pages/login.astro` | ❌ | 이메일 + 비밀번호 (보조: reset 링크) |
-| `/auth/callback` | `pages/auth/callback.astro` | ❌ | reset 링크 토큰 처리 + 새 비번 설정 |
+| `/login` | `pages/login.astro` | ❌ | 이메일 + 비밀번호 (단일 흐름) |
+| ~~`/auth/callback`~~ | (제거됨 2026-05-05) | — | 매직링크/reset 폐기로 불필요 |
 | `/` | `pages/index.astro` | ✅ | 인덱스 (모든 리포트 카드 그리드) |
 | `/briefing/morning` | `pages/briefing/[type].astro` | ✅ | 모닝 브리핑 모음 |
 | `/briefing/evening` | 동일 | ✅ | 이브닝 브리핑 모음 |
@@ -432,14 +432,13 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 
 ---
 
-## 9. 인증 흐름 (이메일 + 비밀번호, 2026-05-05 변경)
+## 9. 인증 흐름 (이메일 + 비밀번호 단일, 2026-05-05 정리)
 
-> **변경 이력**: Magic Link → 비밀번호 (모바일 UX 마찰 + 매번 메일 받기 번거로움 → 사용자 결정).
-> 매직링크는 비밀번호 분실/첫 설정 시 reset 링크로만 잔존 (`resetPasswordForEmail`).
+> **변경 이력**: Magic Link → 비밀번호 (사용자 결정).
+> 매직링크/reset 흐름 모두 폐기. 비번은 Admin API 스크립트로 직접 설정.
 
 ### 9.1 흐름도
 
-**일반 로그인 (메일 불필요):**
 ```
 1. /login 접속 → 이메일 + 비밀번호 입력
 2. signInWithPassword → 화이트리스트(PUBLIC_ALLOWED_EMAIL) 검증
@@ -447,15 +446,13 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 4. 실패: "이메일 또는 비밀번호가 올바르지 않습니다" 표시
 ```
 
-**첫 비번 설정 / 분실 시 (메일 1회):**
-```
-1. /login → "비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정" 클릭
-2. 이메일 입력 → resetPasswordForEmail(redirectTo=/auth/callback?mode=recovery)
-3. 메일함의 reset 링크 클릭 → /auth/callback (recovery 임시 세션)
-4. enforceWhitelist → 비허용이면 sign-out + 거부
-5. 새 비밀번호 8자 이상 입력 (2회 확인) → updatePassword
-6. / 또는 next 이동, 다음부터 비번으로 로그인
-```
+### 9.2 비밀번호 설정/변경
+
+`web/scripts/set_password.mjs` (Supabase Admin API):
+- 로컬: `node scripts/set_password.mjs '<비번>'` (env: PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_KEY, PUBLIC_ALLOWED_EMAIL)
+- Vercel 빌드 통합: `vercel --prod --build-env BUILD_NEW_PASSWORD='<비번>'` — prebuild에 통합되어 자동 설정 + skip 분기
+
+`callback.astro` 페이지는 사용 안 하므로 제거. `/auth/*` 라우트 없음.
 
 **세션:** LocalStorage `sb-stock-analyst-auth`. JWT expiry 30일 (Supabase 대시보드 = 2592000).
 

@@ -66,30 +66,43 @@ vercel --prod                # main 브랜치 → 즉시 배포
 
 GitHub repo flag 상태이므로 Vercel CLI 우회 등록. 자동 alias: `stock-analyst-jungwon1.vercel.app`.
 
-## 인증 (이메일 + 비밀번호, 2026-05-05 변경)
+## 인증 (이메일 + 비밀번호 단일 흐름, 2026-05-05 정리)
 
-기존 매직링크 방식은 **모바일에서 매번 메일 받기 번거로움 + UX 마찰**로 폐기.
-현재는 일반 비밀번호 로그인. 매직링크는 비밀번호 분실/첫 설정 시 **재설정 링크**로만 잔존.
+매직링크/reset 흐름 모두 폐기. 일반 ID/비번만 사용.
 
 ### 흐름
 1. 미인증 → `/` 접근 시 `/login?next=...` 자동 리다이렉트
 2. `/login`에서 이메일 + 비밀번호 입력 → `signInWithPassword` → 화이트리스트 검증 → next 이동
-3. 비밀번호 분실/첫 설정 시: "비밀번호를 잊으셨나요?" 클릭 → reset 링크 메일 → `/auth/callback?mode=recovery`에서 새 비번 설정
 
-### 첫 비밀번호 설정 (1회만 필요)
+### 비밀번호 설정/변경 — Supabase Admin API 스크립트
 
-`/login` → "비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정" 클릭 →
-이메일 입력 → 메일함 확인 → 링크 클릭 → 새 비밀번호 8자 이상 설정 → 자동 로그인.
-**그 후로는 메일 받을 필요 없음** — 비번으로 바로 로그인.
+비번은 **`web/scripts/set_password.mjs`**가 Supabase Admin API로 직접 설정.
+사용자가 메일을 받을 필요 없음.
+
+**옵션 A — 로컬 직접 실행:**
+```bash
+cd web
+# .env.local에 PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_KEY, PUBLIC_ALLOWED_EMAIL 필요
+node scripts/set_password.mjs '<원하는 비번 8자 이상>'
+```
+
+**옵션 B — Vercel 빌드 시 한 번에 (권장):**
+```bash
+cd "/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트"
+vercel --prod --yes --build-env BUILD_NEW_PASSWORD='<원하는 비번>'
+```
+빌드 환경에 BUILD_NEW_PASSWORD 임시 주입 → prebuild의 `set_password.mjs`가 감지 + 실행 + 일반 빌드 진행. 환경변수 미주입이면 silent skip.
+
+**효과:** 한 번 실행 후 `/login`에서 그 비번으로 즉시 로그인 가능. 이후로는 비번 없이 일반 deploy.
 
 ### 세션
 - LocalStorage 키 `sb-stock-analyst-auth`
 - 30일 유지: Supabase 대시보드 → Auth → Sessions → JWT expiry = 2592000
-- 비허용 이메일은 콜백에서 즉시 sign-out (`enforceWhitelist`)
+- 비허용 이메일은 즉시 sign-out (`enforceWhitelist`)
 
 ### Supabase 대시보드 설정 (사용자 1회)
-- Authentication → Providers → **Email** 활성화 (Magic Link 토글은 켜둬도 무방 — reset 메일에 사용)
-- Authentication → URL Configuration → Site URL + Redirect URLs (`/auth/callback`)
+- Authentication → Providers → **Email** 활성화 (Confirm Email 토글 OFF 권장)
+- URL Configuration은 더 이상 매직링크 사용 안 하므로 신경 X
 - Authentication → Sessions → JWT expiry = 2592000 (30일)
 
 ## 테마
