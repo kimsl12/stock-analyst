@@ -697,16 +697,16 @@ UI:
 #### Day 7: MVP 마감 + 다크/라이트 + 검증
 
 **작업:**
-- [ ] `components/ThemeToggle.astro` (다크/라이트 토글, LocalStorage 저장)
-- [ ] CSS 변수 라이트 테마 분기
-- [ ] 모든 페이지 다크/라이트 일관성
-- [ ] Lighthouse 점수 측정 (모바일·데스크탑)
-- [ ] 검증 체크리스트 통과
-- [ ] README.md (web/ 디렉토리)
-- [ ] 배포 URL 사용자 공유
+- [x] `components/ThemeToggle.astro` (다크/라이트 토글, LocalStorage 저장)
+- [x] CSS 변수 라이트 테마 분기 (`html[data-theme='light']` 셀렉터)
+- [x] 모든 페이지 다크/라이트 일관성 (var() 통일, 하드코딩 색상 점검 완료)
+- [x] FOUC 방지 inline 스크립트 (LocalStorage + prefers-color-scheme)
+- [x] README.md (web/ 디렉토리)
+- [ ] Lighthouse 점수 측정 (사용자 측 데스크탑 작업)
+- [ ] 배포 URL 사용자 공유 (이미 stock-analyst-jungwon1.vercel.app)
 
-**검증:**
-- [ ] 다크/라이트 토글 정상
+**검증 (사용자 측):**
+- [ ] 다크/라이트 토글 정상 (UI 시각 확인)
 - [ ] Lighthouse 성능 90+
 - [ ] 모든 페이지 모바일 대응
 - [ ] 60+ 리포트 모두 접근 가능
