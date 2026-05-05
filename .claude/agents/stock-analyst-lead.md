@@ -169,20 +169,33 @@ HTML 파일명 `{티커}_{종목명}_{YYYYMMDD}.html`, session-bootstrap 갱신,
 
 ---
 
-## Phase 3 종료 검증 [v3.9 신규]
+## Phase 3 종료 검증 [v3.9 / v3.13 — 2026-05-04 디자인 표준 검증 추가]
 
-서브에이전트의 Executive Summary 반환 전, 리드는 아래 **3가지를 반드시 Bash로 검증**한다.
+서브에이전트의 Executive Summary 반환 전, 리드는 아래 **4가지를 반드시 Bash로 검증**한다.
 검증 스킵 금지.
 
 ```bash
+HTML="reports/{티커}_{종목명}_{YYYYMMDD}.html"
+
 # 검증 1: HTML 파일 존재
-ls -la reports/{티커}_{종목명}_{YYYYMMDD}.html
+ls -la "$HTML"
 
 # 검증 2: git log에 커밋 존재
 git log --oneline -5 | grep -i "{티커}"
 
 # 검증 3: session-bootstrap.md 갱신 확인
 grep "{티커}" session-bootstrap.md
+
+# 검증 4 [v3.13 신규]: 디자인 표준 6항목 (briefing-report-generator 표준)
+# report_template.py 가 표준 통일됐으므로 새 산출물은 모두 통과해야 함.
+DFAIL=()
+grep -q -- '--debate:'                                "$HTML" || DFAIL+=(--debate)
+grep -q -- '--contrarian:'                            "$HTML" || DFAIL+=(--contrarian)
+grep -q 'class="footer\|class="cmd-guide footer'      "$HTML" || DFAIL+=(.footer)
+grep -q 'class="disclaimer\|class="disc disclaimer'   "$HTML" || DFAIL+=(.disclaimer)
+grep -q 'onclick="toggleTheme\|data-theme'            "$HTML" || DFAIL+=(theme-toggle)
+grep -q '@media(max-width:600px)\|@media\s*(\s*max-width' "$HTML" || DFAIL+=(mobile)
+[ ${#DFAIL[@]} -gt 0 ] && echo "⚠️ 디자인 표준 위반: ${DFAIL[*]}"
 ```
 
 ### 검증 실패 시 대응
@@ -192,6 +205,7 @@ grep "{티커}" session-bootstrap.md
 | HTML 파일 없음 | report-generator 재호출 (scaffolding + Write 강제) |
 | 커밋 누락 | 리드가 직접 `git add reports/{특정파일.html}` + commit + push 수행 |
 | bootstrap 누락 | 리드가 직접 Edit로 "마지막 종목분석" + "analysis/ 유효 파일" 행 추가 |
+| **디자인 표준 위반** [v3.13] | **report_template.py 갱신 누락 또는 의도적 우회** — root에서 `head -50 report_template.py` 로 CSS 변수 확인. 누락 시 표준 변수(--debate/--contrarian/--up/--down 등) 추가 후 report-generator 재호출 |
 
 **검증 통과 후에만** Executive Summary 출력 허용.
 

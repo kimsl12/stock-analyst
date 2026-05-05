@@ -665,12 +665,42 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
    - **단 template=user_portfolio_v2 는 disclaimer 블록 SKIP** (정책: 사용자 1인 사적 콘텐츠, 면책 의도적 제거)
    - 푸터(명령어 가이드)는 user_portfolio_v2 도 유지
 9. **Write** `reports/briefing/{type}_{YYYYMMDD}.html`
-10. 자가 검증:
-    - 푸터 + disclaimer 둘 다 존재
-    - 13F 경고 (해당 시) 존재
-    - debate-card / contrarian-card 시각 변환 완료
-    - 한국어 본문 100%
-11. 파일 크기 + 줄 수 출력 (briefing-lead 가 받음)
+10. 자가 검증 [v3.13 — 2026-05-04 디자인 audit 후 강화]:
+    출력 후 Bash grep 으로 8항목 자체 확인. 핵심 필수 6항목 중 1개라도 실패 시 재생성 (최대 2회).
+
+    ```bash
+    HTML="reports/briefing/{type}_{YYYYMMDD}.html"
+
+    # 필수 6항목 (모든 template) — 1개라도 실패 시 재생성
+    grep -q -- '--debate:'                     "$HTML" || FAIL+=(--debate)
+    grep -q -- '--contrarian:'                 "$HTML" || FAIL+=(--contrarian)
+    grep -q 'class="footer\|class="cmd-guide footer\|class="footer'  "$HTML" || FAIL+=(.footer)
+    grep -q 'class="disclaimer\|class="disc disclaimer'              "$HTML" || FAIL+=(.disclaimer)
+    grep -q 'data-theme.*toggleTheme\|onclick="toggleTheme'           "$HTML" || FAIL+=(theme-toggle)
+    grep -q '@media(max-width:600px)\|@media\s*(\s*max-width'         "$HTML" || FAIL+=(mobile)
+
+    # 푸터 시그니처 (positive)
+    grep -q 'briefing-report-generator'                              "$HTML" || FAIL+=(signature)
+
+    # 한국어 본문 (영문 예외 §[v3.11])
+    # 본문에 한글 글자가 50자 이상 있는지 (영어 only 리포트 방지)
+    KCNT=$(grep -oE '[가-힣]' "$HTML" | wc -l)
+    [ "$KCNT" -lt 50 ] && FAIL+=(korean-body)
+
+    if [ ${#FAIL[@]} -gt 0 ]; then
+      echo "⚠️ 자가 검증 실패: ${FAIL[*]}"
+      # → 누락 항목 명시 + 동일 input 재처리. 2회 실패 시 briefing-lead 보고 후 폐기.
+    fi
+    ```
+
+    조건부 검증 (template 별):
+    - 13F 경고 (template=morning/evening/weekly): `class="warning-13f"` 존재
+    - debate-card / contrarian-card 시각 변환 완료 (lead.md 에 있을 시)
+    - 4종 포트폴리오 표 (template=morning/evening/weekly/rebalancing)
+    - 시나리오 트리 (template=global_intelligence): `class="scenario-tree"` 존재
+    - 9개 섹션 + .strong-buy + .metric-grid (template=user_portfolio_v2)
+
+11. 파일 크기 + 줄 수 + 자가 검증 결과(PASS/FAIL 항목) 출력 (briefing-lead 가 받음)
 
 ## 한글 파일 출력 시 주의
 
