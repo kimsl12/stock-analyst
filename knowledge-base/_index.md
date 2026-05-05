@@ -52,6 +52,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-05 | 이브닝브리핑 | WTI $92→$103 당일 반등으로 "시장의 과도 낙관 선반영" 즉일 검증 — 구조적 $80+ 바닥 확인. 에너지 풋백 매수 기회 유효. 데드라인 불발 시 $110+ 즉시 복귀 리스크 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-05 | 이브닝브리핑 | 5/6 아시아 동시 재개장 galp 가능성 과소평가 — 4~8일 공백(빅테크 Beat+이란 협상+WTI 하락+BTC $80K) 일시 반영. KOSPI 7,000 돌파+항셍 +1~2% 갭업 확률 중간~높음 (이란 타결 시 높음) | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-05 | 이브닝브리핑 | BTC $80,894 — 200DMA($82,228) 돌파 시 7개월 만 첫 추세 전환 시그널. ETF 유입 $1.6B/4월+선물 OI $61B+DXY 98 약세 복합 지지. 리스크온 유지 조건부 $85K~90K 목표 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
 | 2026-05-05 | 모닝브리핑 | 이란 교전→협상 24시간 급반전: 5/4 미군 보트 7척 격침+UAE 피격(WTI $106) → 5/5 Trump 8pm ET 데드라인+이란 30일 제안(WTI $92, -7%). 시장은 시나리오 A(30%)를 50%+ 과도 선반영. 호르무즈 기뢰 6개월 불변. $80 이하 복귀 2026년 내 구조적 어려움 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-05 | 모닝브리핑 | "스태그플레이션 vs AI 예외론" 5~6월 지배 내러티브 확정 — Fed 4명 분열+Core PCE 3.2%+ISM 가격 84.6 = 스태그플레이션 초기. 유가 급락에도 Q1 데이터 번복 불가(시차 2~3개월). AI CapEx(+8.7%)가 GDP 하방 방어 유일 축. 위험등급 4/5(조건부 하향) | `macro/us_economy.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-05 | 모닝브리핑 | WTI↔BEI 이상 해소 급전환(Z+2.0→+0.5~1.0σ) — 단일일 -13.5% 급락. 그러나 US10Y +3bp(BEI 미반응) = 에너지 디스인플 채권 전달 3~7거래일 시차. ISM 서비스 가격 독립 고착. 협상 결렬 시 재급등 위험 | `market/correlation_matrix.md, market/surprise_index.md` | 진행중 |
