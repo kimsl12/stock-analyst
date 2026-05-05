@@ -1,56 +1,83 @@
 ---
-// D2 적중률 도넛 — knowledge-base/performance_history.md 헤더만 존재 (Day 8-9).
-// /성과리뷰 명령이 본 파일에 행을 누적 append. Day 14에 파싱 로직 활성화.
-import { existsSync, readFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+// D2 적중률 도넛 — knowledge-base/performance_history.md 누적 표 → SVG 4-slice 도넛 (Day 14).
+// /성과리뷰 명령이 표에 행을 append. 누적 행 ≥ 1건이면 도넛 활성화.
+import kb from '../../data/kb.json';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PROJECT_ROOT = path.resolve(__dirname, '../../../..');
-const PERF_FILE = path.join(PROJECT_ROOT, 'knowledge-base', 'performance_history.md');
+type Perf = {
+  available: boolean;
+  total: number;
+  hit: number;
+  miss: number;
+  ongoing: number;
+  hold: number;
+  hit_rate_pct: number | null;
+  last_updated: string | null;
+};
+const perf = (kb as { performance?: Perf }).performance ?? {
+  available: false, total: 0, hit: 0, miss: 0, ongoing: 0, hold: 0, hit_rate_pct: null, last_updated: null,
+};
 
-// 본문 표 행이 1건 이상이면 활성화 (Day 14 파싱 도입 전 임시 카운트)
-let rowCount = 0;
-if (existsSync(PERF_FILE)) {
-  const text = readFileSync(PERF_FILE, 'utf-8');
-  // 헤더(추천일|종목|...) 다음 separator(---|---|...) 이후의 데이터 행만 카운트
-  const lines = text.split(/\r?\n/);
-  let inTable = false;
-  for (let i = 0; i < lines.length; i++) {
-    if (/^\s*\|\s*추천일\s*\|/.test(lines[i]) && /^\s*\|\s*-+/.test(lines[i + 1] ?? '')) {
-      inTable = true;
-      i += 1;
-      continue;
-    }
-    if (inTable) {
-      if (!/^\s*\|.+\|\s*$/.test(lines[i])) break;
-      // 주석/빈 행 스킵
-      if (/^\s*\|\s*<!--/.test(lines[i])) continue;
-      rowCount += 1;
-    }
-  }
-}
-const hasData = rowCount > 0;
+const hasData = perf.total > 0;
+
+// SVG 4-slice 도넛
+const RADIUS = 60;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+const slices = [
+  { label: '적중', value: perf.hit, color: 'var(--up)' },
+  { label: '오류', value: perf.miss, color: 'var(--down)' },
+  { label: '진행중', value: perf.ongoing, color: 'var(--warning, #f59e0b)' },
+  { label: '보류', value: perf.hold, color: 'var(--dim)' },
+].filter((s) => s.value > 0);
+
+const total = slices.reduce((s, x) => s + x.value, 0) || 1;
+let offset = 0;
+const segments = slices.map((s) => {
+  const len = CIRCUMFERENCE * (s.value / total);
+  const seg = { ...s, dash: len, offset };
+  offset += len;
+  return seg;
+});
 ---
 <section class="card">
   <header class="card-head">
     <h2>적중률</h2>
-    <span class="dim">{hasData ? `${rowCount}건 누적` : '준비 중'}</span>
+    <span class="dim">{hasData ? `${perf.total}건 누적` : '준비 중'}</span>
   </header>
-  <p class="empty">
-    {hasData ? (
-      <>
-        <strong>{rowCount}건 누적.</strong><br />
-        Day 14에서 적중/오류/진행중 분류 + 도넛 차트 렌더.
-      </>
-    ) : (
-      <>
-        <strong>아직 누적 데이터 없음.</strong><br />
-        <code>/성과리뷰</code> 명령 첫 실행 후 자동 활성화<br />
-        <span class="dim">(KB performance_history.md 누적 시작)</span>
-      </>
-    )}
-  </p>
+
+  {hasData ? (
+    <div class="donut-wrap">
+      <svg viewBox="0 0 160 160" class="donut">
+        <circle cx="80" cy="80" r={RADIUS} fill="none" stroke="var(--surface-2)" stroke-width="20" />
+        {segments.map((s) => (
+          <circle
+            cx="80" cy="80" r={RADIUS}
+            fill="none"
+            stroke={s.color}
+            stroke-width="20"
+            stroke-dasharray={`${s.dash} ${CIRCUMFERENCE - s.dash}`}
+            stroke-dashoffset={-s.offset}
+            transform="rotate(-90 80 80)"
+          />
+        ))}
+        <text x="80" y="74" text-anchor="middle" class="donut-center-label">적중률</text>
+        <text x="80" y="92" text-anchor="middle" class="donut-center-value">
+          {perf.hit_rate_pct == null ? '—' : `${perf.hit_rate_pct}%`}
+        </text>
+      </svg>
+      <ul class="legend">
+        <li><span class="dot" style="background:var(--up)"></span><span class="legend-label">적중</span><span class="legend-value">{perf.hit}</span></li>
+        <li><span class="dot" style="background:var(--down)"></span><span class="legend-label">오류</span><span class="legend-value">{perf.miss}</span></li>
+        <li><span class="dot" style="background:var(--warning, #f59e0b)"></span><span class="legend-label">진행중</span><span class="legend-value">{perf.ongoing}</span></li>
+        <li><span class="dot" style="background:var(--dim)"></span><span class="legend-label">보류</span><span class="legend-value">{perf.hold}</span></li>
+      </ul>
+    </div>
+  ) : (
+    <p class="empty">
+      <strong>아직 누적 데이터 없음.</strong><br />
+      <code>/성과리뷰</code> 명령 첫 실행 후 자동 활성화<br />
+      <span class="dim">(KB performance_history.md 누적 시작)</span>
+    </p>
+  )}
 </section>
 
 <style>
@@ -58,6 +85,7 @@ const hasData = rowCount > 0;
   .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
   h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
   .dim { color: var(--dim); font-size: 0.75rem; }
+
   .empty {
     color: var(--muted);
     margin: auto 0;
@@ -70,4 +98,20 @@ const hasData = rowCount > 0;
     justify-content: center;
   }
   .empty code { background: var(--surface-2); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.78rem; }
+
+  .donut-wrap { display: grid; grid-template-columns: 160px 1fr; gap: 0.85rem; align-items: center; flex: 1; }
+  .donut { width: 160px; height: 160px; }
+  .donut-center-label { fill: var(--muted); font-size: 11px; }
+  .donut-center-value { fill: var(--text); font-size: 18px; font-weight: 700; }
+
+  .legend { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .legend li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; }
+  .dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+  .legend-label { font-size: 0.78rem; flex: 1; color: var(--text); }
+  .legend-value { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.78rem; font-weight: 600; }
+
+  @media (max-width: 500px) {
+    .donut-wrap { grid-template-columns: 1fr; }
+    .donut { margin: 0 auto; }
+  }
 </style>

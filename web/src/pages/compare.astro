@@ -1,0 +1,375 @@
+---
+import Base from '../layouts/Base.astro';
+import manifest from '../data/manifest.json';
+
+type Item = (typeof manifest.items)[number];
+
+// ticker별 최신 분석 리포트만
+const latestByTicker: Record<string, Item> = {};
+for (const it of manifest.items) {
+  if ((it.type !== 'stock_analysis' && it.type !== 'etf') || !it.ticker) continue;
+  const cur = latestByTicker[it.ticker];
+  if (!cur || it.date > cur.date) latestByTicker[it.ticker] = it;
+}
+const stockList = Object.values(latestByTicker).sort((a, b) => a.ticker.localeCompare(b.ticker));
+---
+<Base
+  title="종목 비교"
+  lede="두 종목의 핵심 지표를 나란히 — 분석 리포트 + 실시간 가격/ATR/52주 고저"
+  active="compare"
+>
+  <section class="select-row">
+    <label>
+      <span>종목 A</span>
+      <select id="sel-a">
+        {stockList.map((s) => (
+          <option value={s.ticker}>{s.ticker} · {s.name}</option>
+        ))}
+      </select>
+    </label>
+    <span class="vs">vs</span>
+    <label>
+      <span>종목 B</span>
+      <select id="sel-b">
+        {stockList.map((s) => (
+          <option value={s.ticker}>{s.ticker} · {s.name}</option>
+        ))}
+      </select>
+    </label>
+    <button id="btn-go" type="button">비교하기</button>
+  </section>
+
+  <section class="metrics" id="metrics" hidden>
+    <header class="card-head">
+      <h2>핵심 지표 비교</h2>
+      <span class="dim" id="metrics-status"></span>
+    </header>
+    <div class="metric-grid">
+      <div></div>
+      <div class="metric-col"><strong id="m-a-ticker">—</strong> <span class="dim" id="m-a-name">—</span></div>
+      <div class="metric-col"><strong id="m-b-ticker">—</strong> <span class="dim" id="m-b-name">—</span></div>
+
+      <div class="metric-label">현재가</div>
+      <div class="metric-cell" id="m-a-price">—</div>
+      <div class="metric-cell" id="m-b-price">—</div>
+
+      <div class="metric-label">전일비</div>
+      <div class="metric-cell" id="m-a-change">—</div>
+      <div class="metric-cell" id="m-b-change">—</div>
+
+      <div class="metric-label">52주 고가</div>
+      <div class="metric-cell" id="m-a-high">—</div>
+      <div class="metric-cell" id="m-b-high">—</div>
+
+      <div class="metric-label">52주 저가</div>
+      <div class="metric-cell" id="m-a-low">—</div>
+      <div class="metric-cell" id="m-b-low">—</div>
+
+      <div class="metric-label">시가총액</div>
+      <div class="metric-cell" id="m-a-cap">—</div>
+      <div class="metric-cell" id="m-b-cap">—</div>
+
+      <div class="metric-label">ATR(14)</div>
+      <div class="metric-cell" id="m-a-atr">—</div>
+      <div class="metric-cell" id="m-b-atr">—</div>
+
+      <div class="metric-label">ATR %</div>
+      <div class="metric-cell" id="m-a-atrpct">—</div>
+      <div class="metric-cell" id="m-b-atrpct">—</div>
+
+      <div class="metric-label">손절가 (2x ATR)</div>
+      <div class="metric-cell" id="m-a-stop">—</div>
+      <div class="metric-cell" id="m-b-stop">—</div>
+
+      <div class="metric-label">목표가 (3x ATR)</div>
+      <div class="metric-cell" id="m-a-target">—</div>
+      <div class="metric-cell" id="m-b-target">—</div>
+    </div>
+  </section>
+
+  <section class="reports" id="reports" hidden>
+    <div class="report-col">
+      <header class="card-head"><h2 id="ifr-a-title">—</h2><a id="ifr-a-link" class="link-out" target="_blank">↗ 새 창</a></header>
+      <iframe id="ifr-a" src="about:blank" title="종목 A 분석"></iframe>
+    </div>
+    <div class="report-col">
+      <header class="card-head"><h2 id="ifr-b-title">—</h2><a id="ifr-b-link" class="link-out" target="_blank">↗ 새 창</a></header>
+      <iframe id="ifr-b" src="about:blank" title="종목 B 분석"></iframe>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ stockData: latestByTicker }}>
+  const selA = document.getElementById('sel-a');
+  const selB = document.getElementById('sel-b');
+  const btn = document.getElementById('btn-go');
+  const metrics = document.getElementById('metrics');
+  const reports = document.getElementById('reports');
+  const status = document.getElementById('metrics-status');
+
+  function fmtMoney(n, currency) {
+    if (n == null) return '—';
+    if (currency === 'KRW') return `₩${Number(n).toLocaleString('ko-KR')}`;
+    return `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+  function fmtCap(n, currency) {
+    if (n == null) return '—';
+    const v = Number(n);
+    if (currency === 'KRW') {
+      if (v >= 1e12) return `${(v / 1e12).toFixed(1)}조원`;
+      if (v >= 1e8) return `${(v / 1e8).toFixed(0)}억원`;
+      return `${v.toLocaleString('ko-KR')}원`;
+    }
+    if (v >= 1e12) return `$${(v / 1e12).toFixed(2)}T`;
+    if (v >= 1e9) return `$${(v / 1e9).toFixed(1)}B`;
+    if (v >= 1e6) return `$${(v / 1e6).toFixed(0)}M`;
+    return `$${v.toLocaleString('en-US')}`;
+  }
+  function fmtPct(p) {
+    if (p == null) return '—';
+    return `${p >= 0 ? '+' : ''}${p.toFixed(2)}%`;
+  }
+  function pctClass(p) {
+    if (p == null) return '';
+    return p > 0 ? 'up' : p < 0 ? 'down' : '';
+  }
+
+  async function fetchPrice(ticker) {
+    const res = await fetch(`/api/price/${encodeURIComponent(ticker)}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  function fillCol(prefix, info, data) {
+    document.getElementById(`m-${prefix}-ticker`).textContent = info?.ticker ?? '—';
+    document.getElementById(`m-${prefix}-name`).textContent = info?.name ?? '—';
+    if (!data || data.error) {
+      const msg = data?.error ? `불가 (${data.error})` : '오류';
+      ['price','change','high','low','cap','atr','atrpct','stop','target']
+        .forEach((k) => {
+          const el = document.getElementById(`m-${prefix}-${k}`);
+          if (el) { el.textContent = '—'; el.className = 'metric-cell dim'; }
+        });
+      const e = document.getElementById(`m-${prefix}-price`);
+      if (e) { e.textContent = msg; }
+      return;
+    }
+    const cur = data.currency || 'USD';
+    document.getElementById(`m-${prefix}-price`).textContent = fmtMoney(data.current_price, cur);
+    const chgEl = document.getElementById(`m-${prefix}-change`);
+    chgEl.textContent = fmtPct(data.change_pct);
+    chgEl.className = `metric-cell ${pctClass(data.change_pct)}`;
+    document.getElementById(`m-${prefix}-high`).textContent = fmtMoney(data.high_52w, cur);
+    document.getElementById(`m-${prefix}-low`).textContent = fmtMoney(data.low_52w, cur);
+    document.getElementById(`m-${prefix}-cap`).textContent = fmtCap(data.market_cap, cur);
+    document.getElementById(`m-${prefix}-atr`).textContent = fmtMoney(data.atr_14, cur);
+    document.getElementById(`m-${prefix}-atrpct`).textContent = fmtPct(data.atr_pct);
+    document.getElementById(`m-${prefix}-stop`).textContent = fmtMoney(data.stop_loss_2atr, cur);
+    document.getElementById(`m-${prefix}-target`).textContent = fmtMoney(data.target_3atr, cur);
+  }
+
+  function setReports(infoA, infoB) {
+    const a = document.getElementById('ifr-a');
+    const b = document.getElementById('ifr-b');
+    const aLink = document.getElementById('ifr-a-link');
+    const bLink = document.getElementById('ifr-b-link');
+    document.getElementById('ifr-a-title').textContent = `${infoA.ticker} · ${infoA.name}`;
+    document.getElementById('ifr-b-title').textContent = `${infoB.ticker} · ${infoB.name}`;
+    a.src = infoA.url_path;
+    b.src = infoB.url_path;
+    aLink.href = infoA.url_path;
+    bLink.href = infoB.url_path;
+  }
+
+  async function compare() {
+    const a = selA.value;
+    const b = selB.value;
+    if (!a || !b) return;
+    if (a === b) {
+      alert('서로 다른 종목을 선택해주세요.');
+      return;
+    }
+
+    // URL 동기화
+    const url = new URL(window.location.href);
+    url.searchParams.set('a', a);
+    url.searchParams.set('b', b);
+    history.replaceState(null, '', url.toString());
+
+    const infoA = stockData[a];
+    const infoB = stockData[b];
+    metrics.hidden = false;
+    reports.hidden = false;
+    status.textContent = '가격 가져오는 중…';
+    btn.disabled = true;
+
+    setReports(infoA, infoB);
+
+    try {
+      const [dA, dB] = await Promise.all([
+        fetchPrice(a).catch((e) => ({ error: String(e) })),
+        fetchPrice(b).catch((e) => ({ error: String(e) })),
+      ]);
+      fillCol('a', infoA, dA);
+      fillCol('b', infoB, dB);
+      const nowA = dA?.fetch_time?.slice(11, 19) ?? '';
+      status.textContent = `완료 ${nowA ? `(${nowA} UTC)` : ''}`;
+    } catch (e) {
+      status.textContent = `오류: ${e}`;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  // 초기 URL 파라미터 처리
+  const params = new URLSearchParams(window.location.search);
+  const initA = params.get('a');
+  const initB = params.get('b');
+  if (initA && stockData[initA]) selA.value = initA;
+  if (initB && stockData[initB]) selB.value = initB;
+
+  btn.addEventListener('click', compare);
+  // 페이지 진입 시 두 ticker가 다르면 자동 비교
+  if (selA.value && selB.value && selA.value !== selB.value) compare();
+</script>
+
+<style>
+  .select-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .select-row label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    flex: 1 1 200px;
+    min-width: 200px;
+  }
+  .select-row select {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .vs {
+    color: var(--muted);
+    font-weight: 700;
+    padding-bottom: 0.55rem;
+  }
+  #btn-go {
+    padding: 0.55rem 1.2rem;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  #btn-go:hover:not(:disabled) { background: var(--accent-2); }
+  #btn-go:disabled { opacity: .5; cursor: wait; }
+
+  .metrics, .reports {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.85rem;
+  }
+  h2 {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .link-out {
+    color: var(--accent-2);
+    font-size: 0.78rem;
+    text-decoration: none;
+  }
+  .link-out:hover { text-decoration: underline; }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem 1rem;
+    align-items: baseline;
+  }
+  .metric-col {
+    text-align: right;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .metric-col strong { font-size: 1.05rem; }
+  .metric-label {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .metric-cell {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .metric-cell.up { color: var(--up); }
+  .metric-cell.down { color: var(--down); }
+  .metric-cell.dim { color: var(--dim); }
+
+  .reports {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .report-col {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+  }
+  iframe {
+    width: 100%;
+    flex: 1;
+    border: 0;
+    background: #fff;
+    border-radius: 6px;
+    min-height: 540px;
+  }
+  html[data-theme='dark'] iframe { background: #0d1117; }
+
+  @media (max-width: 800px) {
+    .reports { grid-template-columns: 1fr; }
+    .select-row { flex-direction: column; align-items: stretch; }
+    .vs { text-align: center; padding: 0; }
+    .metric-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 0.4rem 0.6rem; }
+    .metric-cell, .metric-col { font-size: 0.8rem; }
+  }
+</style>

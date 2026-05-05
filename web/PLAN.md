@@ -764,35 +764,38 @@ UI:
 #### Day 12-13: 시간 머신
 
 **작업:**
-- [ ] `pages/timemachine.astro`
-- [ ] 슬라이더 UI (1주/1개월/3개월)
-- [ ] 시점별 추천 종목 추출 (빌드 타임)
-- [ ] 클라이언트에서 `/api/price` 호출 → 현재 가격
-- [ ] 비교 표 (추천 당시 가 → 현재 가 → 수익률)
-- [ ] 정렬 (수익률 순)
+- [x] `pages/timemachine.astro` 신규
+- [x] 라디오 셀렉터 UI (1주/1개월/3개월) — `build_kb.mjs` `parseTimemachine()` 빌드 타임 추출
+- [x] 시점별 추천 종목 추출 (각 ticker별 첫 추천일 + 빈도, Top 20)
+- [x] 클라이언트에서 `/api/price/{ticker}?at={first_date}` 호출 (동시성 4)
+- [x] 비교 표 (당시가 → 현재가 → 수익률 + 추천 빈도)
+- [x] 자동 정렬 (수익률 내림차순)
+- [x] Base.astro 네비게이션에 `시간머신` 추가
 
 **검증:**
-- [ ] `/timemachine` → 슬라이더 작동
-- [ ] 추천 당시 가격 + 현재 가격 표시
-- [ ] 수익률 색상 코딩 (양/음)
+- [x] `/timemachine` 빌드 OK (113→114 페이지)
+- [x] kb.json `timemachine` 60건 (1w 20 / 1m 20 / 3m 20)
+- [x] 로컬 yfinance ?at= 검증: AAPL 2026-04-28 $270.71 → $276.83 +2.26%
+- [x] `.up`/`.down` 색상 코딩 + 모바일 1열
 
 **Commit:** `feat(web): Phase 2 — 시간 머신`
 
 #### Day 14: 종목 비교 빌더 + PerformanceDonut 활성화 + 마감
 
 **작업:**
-- [ ] `pages/compare.astro` (URL 파라미터 `?a=&b=`)
-- [ ] 좌우 분할 레이아웃
-- [ ] 두 종목 분석 리포트 임베드
-- [ ] 핵심 지표 비교 표 (PER, ATR, 점수 등)
-- [ ] 모바일에서는 상하 분할
-- [ ] **PerformanceDonut 실데이터 도넛 활성화** (Day 8-9 이관)
-  - [ ] `build_kb.mjs`에 `performance_history.md` 표 파서 추가 → kb.json `performance_summary` (적중/오류/진행중/보류 카운트)
-  - [ ] PerformanceDonut SVG 도넛 4개 슬라이스 (HoldingsDonut 패턴 재사용)
-  - [ ] 적중률 % + 누적 N건 표시
-- [ ] 최종 회귀 테스트
-- [ ] README 갱신
-- [ ] Phase 3 백로그 issue 작성 (계획만)
+- [x] `pages/compare.astro` (URL 파라미터 `?a=&b=`)
+- [x] 좌우 분할 레이아웃 (모바일은 상하 자동 분할 ≤800px)
+- [x] 두 종목 분석 리포트 iframe 임베드 (manifest의 url_path 활용)
+- [x] 핵심 지표 비교 표 (현재가, 전일비, 52주 고저, 시총, ATR, ATR%, 손절가, 목표가)
+- [x] **PerformanceDonut 실데이터 도넛 활성화** (Day 8-9 이관)
+  - [x] `build_kb.mjs` `parsePerformance()` 추가 → kb.json `performance` (적중/오류/진행중/보류 카운트 + 적중률 %)
+  - [x] PerformanceDonut SVG 4-slice 도넛 (HoldingsDonut 패턴)
+  - [x] 적중률 % 중앙 + legend (적중·오류·진행중·보류) 표시
+  - [x] 더미 5건 검증: 적중2/오류1/진행중1/보류1 → 적중률 66.7% 도넛 4-slice 정상
+- [x] 회귀 테스트 (114 페이지 빌드 OK)
+- [x] Base.astro 네비게이션에 `비교` 추가
+- [x] README 갱신 (timemachine, compare, /api/price 사양, 성과 추적)
+- [ ] Phase 3 백로그 issue 작성 (선택)
 
 **검증:**
 - [ ] `/compare?a=MRVL&b=NVDA` → 비교 표시

@@ -101,7 +101,11 @@ def _calc_atr(hist, period: int = 14):
 # ─────────────────────────────────────────────────────────────────────────
 # 핵심: yfinance fetch
 # ─────────────────────────────────────────────────────────────────────────
-def fetch_price(ticker: str) -> dict:
+def fetch_price(ticker: str, at: str = '') -> dict:
+    """
+    ticker: 사용자 입력 (AAPL, 005930 등)
+    at: 'YYYY-MM-DD' — 해당 날짜 기준 종가 + 그 이후 수익률 계산용 (시간 머신용)
+    """
     import yfinance as yf
 
     symbols = _resolve_symbols(ticker)
@@ -140,6 +144,21 @@ def fetch_price(ticker: str) -> dict:
             change_pct = round((current_price / prev_close - 1) * 100, 3) if prev_close else None
 
             decimals = 0 if currency == 'KRW' else 2
+
+            # ?at= 처리: 해당일 종가 + 수익률 (시간 머신)
+            at_price = None
+            return_since_at_pct = None
+            if at:
+                try:
+                    at_dt = datetime.strptime(at, '%Y-%m-%d')
+                    at_hist = stock.history(start=at_dt.strftime('%Y-%m-%d'),
+                                            end=(at_dt + timedelta(days=10)).strftime('%Y-%m-%d'))
+                    if not at_hist.empty:
+                        at_price = round(float(at_hist.iloc[0]['Close']), 4)
+                        return_since_at_pct = round((current_price / at_price - 1) * 100, 2)
+                except Exception:
+                    pass
+
             return {
                 'ticker': ticker,
                 'symbol': sym,
@@ -158,6 +177,9 @@ def fetch_price(ticker: str) -> dict:
                 'stop_loss_2atr': round(current_price - 2 * atr, decimals) if atr else None,
                 'target_3atr': round(current_price + 3 * atr, decimals) if atr else None,
                 'date': hist.index[-1].strftime('%Y-%m-%d'),
+                'at': at or None,
+                'at_price': round(at_price, decimals) if at_price else None,
+                'return_since_at_pct': return_since_at_pct,
                 'fetch_time': datetime.utcnow().isoformat() + 'Z',
                 'cache_ttl': _CACHE_TTL,
             }
@@ -200,22 +222,21 @@ class handler(BaseHTTPRequestHandler):
             self._send_json(429, {'error': 'rate limit 60/min 초과'}, origin)
             return
 
-        # ticker 추출 (path 변수 → query 보조)
+        # ticker + at 추출
         parsed = urlparse(self.path)
-        # /api/price/AAPL → 마지막 segment
         path_segs = [s for s in parsed.path.split('/') if s]
         ticker = path_segs[-1] if path_segs else ''
-        # path가 [ticker] 그대로 오는 경우 query fallback
+        qs = parse_qs(parsed.query)
         if ticker.startswith('[') or not ticker or ticker == 'price':
-            qs = parse_qs(parsed.query)
             ticker = (qs.get('ticker') or [''])[0]
+        at = (qs.get('at') or [''])[0].strip()
 
         if not ticker:
             self._send_json(400, {'error': 'ticker 미지정'}, origin)
             return
 
-        # 캐시 hit
-        cache_key = ticker.upper()
+        # 캐시 hit (at 포함 키)
+        cache_key = f'{ticker.upper()}|{at}'
         cached = _cache_get(cache_key)
         if cached:
             self._send_json(200, {**cached, 'cached': True}, origin)
@@ -223,7 +244,7 @@ class handler(BaseHTTPRequestHandler):
 
         # fetch
         try:
-            data = fetch_price(ticker)
+            data = fetch_price(ticker, at=at)
             if 'error' not in data:
                 _cache_set(cache_key, data)
             self._send_json(200, {**data, 'cached': False}, origin)

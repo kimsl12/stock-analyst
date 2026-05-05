@@ -1,0 +1,273 @@
+---
+import Base from '../layouts/Base.astro';
+import kb from '../data/kb.json';
+
+type TmEntry = { ticker: string; first_date: string; count: number };
+const tm = (kb.timemachine ?? { '1w': [], '1m': [], '3m': [] }) as Record<'1w'|'1m'|'3m', TmEntry[]>;
+const totals = {
+  '1w': tm['1w'].length,
+  '1m': tm['1m'].length,
+  '3m': tm['3m'].length,
+};
+---
+<Base
+  title="시간 머신"
+  lede="과거 추천의 그 후 — 추천 당시 가격 vs 현재가 + 수익률"
+  active="timemachine"
+>
+  <section class="periods">
+    <fieldset>
+      <legend>기간 선택</legend>
+      <label><input type="radio" name="period" value="1w" /> <span>1주 ({totals['1w']}건)</span></label>
+      <label><input type="radio" name="period" value="1m" checked /> <span>1개월 ({totals['1m']}건)</span></label>
+      <label><input type="radio" name="period" value="3m" /> <span>3개월 ({totals['3m']}건)</span></label>
+    </fieldset>
+    <div class="status">
+      <span id="tm-status" class="dim">대기 중…</span>
+      <button id="tm-refresh" type="button" class="btn-link">↻ 다시 가져오기</button>
+    </div>
+  </section>
+
+  <section class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>첫 추천일</th>
+          <th class="num">당시가</th>
+          <th class="num">현재가</th>
+          <th class="num">수익률</th>
+          <th class="num">빈도</th>
+        </tr>
+      </thead>
+      <tbody id="tm-tbody">
+        <tr><td colspan="6" class="empty">기간을 선택해주세요</td></tr>
+      </tbody>
+    </table>
+  </section>
+</Base>
+
+<script define:vars={{ tm }}>
+  const tbody = document.getElementById('tm-tbody');
+  const status = document.getElementById('tm-status');
+  const refreshBtn = document.getElementById('tm-refresh');
+
+  let inflight = false;
+  let currentPeriod = '1m';
+
+  function fmt(n, currency) {
+    if (n == null) return '—';
+    if (currency === 'KRW') return `₩${Number(n).toLocaleString('ko-KR')}`;
+    return `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+
+  function fmtPct(p) {
+    if (p == null) return '—';
+    return `${p >= 0 ? '+' : ''}${p.toFixed(2)}%`;
+  }
+
+  async function fetchOne(ticker, atDate) {
+    const url = `/api/price/${encodeURIComponent(ticker)}?at=${atDate}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  async function render(period) {
+    if (inflight) return;
+    inflight = true;
+    refreshBtn.disabled = true;
+
+    const items = tm[period] || [];
+    if (items.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="empty">해당 기간 추천 없음</td></tr>';
+      status.textContent = '0건';
+      inflight = false;
+      refreshBtn.disabled = false;
+      return;
+    }
+
+    // 초기 행 렌더 (가격은 placeholder)
+    tbody.innerHTML = items.map((it) => `
+      <tr data-ticker="${it.ticker}">
+        <td><strong>${it.ticker}</strong></td>
+        <td><span class="dim">${it.first_date}</span></td>
+        <td class="num at-price"><span class="loading">…</span></td>
+        <td class="num current-price"><span class="loading">…</span></td>
+        <td class="num return"><span class="loading">…</span></td>
+        <td class="num">${it.count}</td>
+      </tr>
+    `).join('');
+
+    let done = 0, fail = 0;
+    status.textContent = `0/${items.length} 가져오는 중…`;
+
+    // 동시성 제한 4 (Rate limit 60/min 안전선)
+    const queue = [...items];
+    async function worker() {
+      while (queue.length > 0) {
+        const it = queue.shift();
+        if (!it) break;
+        const tr = tbody.querySelector(`tr[data-ticker="${it.ticker}"]`);
+        try {
+          const d = await fetchOne(it.ticker, it.first_date);
+          if (d.error) {
+            tr.querySelector('.at-price').textContent = '—';
+            tr.querySelector('.current-price').textContent = '—';
+            tr.querySelector('.return').innerHTML = `<span class="dim" title="${d.error}">불가</span>`;
+            fail += 1;
+          } else {
+            const cur = d.currency || 'USD';
+            tr.querySelector('.at-price').textContent = fmt(d.at_price, cur);
+            tr.querySelector('.current-price').textContent = fmt(d.current_price, cur);
+            const ret = d.return_since_at_pct;
+            const td = tr.querySelector('.return');
+            td.textContent = fmtPct(ret);
+            td.className = 'num return ' + (ret == null ? '' : ret > 0 ? 'up' : ret < 0 ? 'down' : '');
+          }
+        } catch (e) {
+          tr.querySelector('.at-price').textContent = '—';
+          tr.querySelector('.current-price').textContent = '—';
+          tr.querySelector('.return').innerHTML = '<span class="dim">오류</span>';
+          fail += 1;
+        }
+        done += 1;
+        status.textContent = `${done}/${items.length} 가져오는 중… (실패 ${fail})`;
+      }
+    }
+
+    await Promise.all([worker(), worker(), worker(), worker()]);
+    sortByReturn();
+    status.textContent = `${done}건 완료 (실패 ${fail})`;
+
+    inflight = false;
+    refreshBtn.disabled = false;
+  }
+
+  function sortByReturn() {
+    const rows = [...tbody.querySelectorAll('tr')];
+    rows.sort((a, b) => {
+      const av = parseFloat(a.querySelector('.return')?.textContent?.replace(/[%+]/g, '') || 'NaN');
+      const bv = parseFloat(b.querySelector('.return')?.textContent?.replace(/[%+]/g, '') || 'NaN');
+      if (Number.isNaN(av) && Number.isNaN(bv)) return 0;
+      if (Number.isNaN(av)) return 1;
+      if (Number.isNaN(bv)) return -1;
+      return bv - av;
+    });
+    tbody.innerHTML = '';
+    rows.forEach((r) => tbody.appendChild(r));
+  }
+
+  document.querySelectorAll('input[name="period"]').forEach((el) => {
+    el.addEventListener('change', () => {
+      const target = el;
+      if (target instanceof HTMLInputElement && target.checked) {
+        currentPeriod = target.value;
+        render(currentPeriod);
+      }
+    });
+  });
+
+  refreshBtn.addEventListener('click', () => render(currentPeriod));
+
+  // 초기 렌더
+  render(currentPeriod);
+</script>
+
+<style>
+  .periods {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  legend {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 0;
+    margin-right: 0.5rem;
+  }
+  label {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  input[type="radio"] { accent-color: var(--accent); }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+  }
+  .dim { color: var(--dim); }
+  .btn-link {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-link:hover:not(:disabled) { border-color: var(--accent); }
+  .btn-link:disabled { opacity: 0.4; cursor: wait; }
+
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td {
+    padding: 0.6rem 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  th {
+    background: var(--surface-2);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: 0; }
+  td.empty { text-align: center; color: var(--muted); padding: 2rem 0; }
+  td.up, .up { color: var(--up); }
+  td.down, .down { color: var(--down); }
+  .loading {
+    display: inline-block;
+    color: var(--dim);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .periods { flex-direction: column; align-items: flex-start; }
+    th, td { padding: 0.45rem 0.55rem; font-size: 0.82rem; }
+  }
+</style>

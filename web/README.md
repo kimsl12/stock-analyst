@@ -10,22 +10,22 @@ Astro 4 (정적 SSG) + Supabase (Auth/DB) + Vercel (CDN) 스택.
 web/
 ├── PLAN.md                  # 14일 작업 명세 (단일 진실의 원천)
 ├── astro.config.mjs         # output: 'static'
+├── vercel.json              # Python Serverless 함수 설정 (api/price/[ticker].py)
+├── requirements.txt         # Python deps (yfinance) — Vercel 자동 인식
+├── api/
+│   └── price/[ticker].py    # 가격 fetch Edge Function (Vercel Python)
 ├── db/                      # Supabase 스키마/RLS/검증
-│   ├── schema.sql
-│   ├── rls.sql
-│   ├── verify.sql
-│   └── SETUP.md
 ├── public/                  # 정적 자원 + 매니페스트가 복사한 reports/*.html
 ├── scripts/
-│   ├── build_manifest.mjs   # reports/ 178개 → src/data/manifest.json + public/reports/
-│   ├── build_kb.mjs         # knowledge-base/ → src/data/kb.json
-│   └── build_search_index.mjs  # reports/ HTML → public/search-data.json (FlexSearch용)
+│   ├── build_manifest.mjs   # reports/ → src/data/manifest.json + public/reports/
+│   ├── build_kb.mjs         # KB → src/data/kb.json (market+health+events+recs+timemachine+performance)
+│   └── build_search_index.mjs  # reports/ HTML → public/search-data.json
 └── src/
-    ├── data/                # 빌드 산출물 (manifest.json, kb.json) — gitignore
-    ├── components/          # ReportCard, FilterBar, SearchBox, ThemeToggle, widgets/
-    ├── layouts/             # Base.astro (전역 레이아웃 + 인증/테마 가드), Authenticated.astro
+    ├── data/                # 빌드 산출물 (manifest/kb/search-data) — gitignore
+    ├── components/          # ReportCard, FilterBar, SearchBox, ThemeToggle, widgets/(StatCard, MarketSnapshot, RecommendCloud, PerformanceDonut 등)
+    ├── layouts/             # Base.astro (인증/테마 가드, 네비), Authenticated.astro
     ├── lib/                 # supabase.ts, auth.ts, recently-viewed.ts
-    └── pages/               # index(대시보드), all, briefing/[type], stocks/[ticker], portfolio, login, auth/callback
+    └── pages/               # index(대시보드), all, briefing/[type], stocks/[ticker], portfolio, timemachine, compare, login, auth/callback
 ```
 
 ## 환경변수
@@ -107,8 +107,27 @@ FlexSearch (esm.sh CDN 동적 import). `public/search-data.json` (~700KB)을 laz
 | `/stocks` | 종목 카드 그리드 (날짜 desc) | 필요 |
 | `/stocks/[ticker]` | 종목 상세 + iframe + 과거 분석 | 필요 |
 | `/portfolio` | 포트폴리오 (Supabase) | 필요 |
+| `/timemachine` | 시간 머신 — 1주/1개월/3개월 추천 + 수익률 | 필요 |
+| `/compare?a=&b=` | 두 종목 비교 (지표 + iframe 분할) | 필요 |
 | `/login` | Magic Link 발송 | 미요 |
 | `/auth/callback` | 콜백 + 화이트리스트 | 미요 |
+| `/api/price/[ticker]` | 실시간 가격 + ATR (Vercel Python) — `?at=YYYY-MM-DD`로 과거 시점 비교 | 미요 |
+
+## /api/price 사양
+
+- 메서드: `GET`
+- 파라미터: path 변수 `ticker` (또는 `?ticker=`), 옵션 `?at=YYYY-MM-DD`
+- 반환 (200 JSON): `current_price`, `change_pct`, `high_52w`, `low_52w`, `market_cap`, `atr_14`, `atr_pct`, `stop_loss_2atr`, `target_3atr`, `at_price`, `return_since_at_pct`
+- 한국 종목: 6자리 숫자 입력 시 `.KS` → `.KQ` 순으로 yfinance 자동 폴백
+- 캐시: in-memory 5분 + `Cache-Control: s-maxage=300, stale-while-revalidate=60` (Vercel Edge Cache)
+- Rate limit: per-IP 60/분 (sliding window)
+- CORS allow-list: `stock-analyst-jungwon1.vercel.app`, `localhost:4321`
+
+## 성과 추적 (Day 14)
+
+`/성과리뷰` 명령이 `knowledge-base/performance_history.md`에 행을 누적 append (8컬럼 표).
+빌드 시 `build_kb.mjs`가 본 표를 파싱해 `kb.performance` (적중/오류/진행중/보류 + 적중률)를 생성.
+PerformanceDonut 위젯은 누적 ≥ 1건이면 SVG 4-slice 도넛 + 적중률 % 표시, 0건이면 placeholder.
 
 ## 보안 모델
 

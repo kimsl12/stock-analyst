@@ -278,14 +278,138 @@ async function parseRecommendations() {
 }
 
 // ---------------------------------------------------------------------------
+// 5b. performance — knowledge-base/performance_history.md 누적 표 파싱 (Day 14)
+//   "추천일|종목|방향|진입가|현재가|수익률|결과|출처" 8컬럼 표에서 결과 컬럼 카운트
+//   적중률 = 적중 / (적중 + 오류) — 진행중·보류 제외
+// ---------------------------------------------------------------------------
+async function parsePerformance() {
+  const file = path.join(KB, 'performance_history.md');
+  if (!existsSync(file)) {
+    return { available: false, total: 0, hit: 0, miss: 0, ongoing: 0, hold: 0, hit_rate_pct: null, last_updated: null };
+  }
+  const text = await readFile(file, 'utf-8');
+  const fm = text.match(/^---\s*\n([\s\S]*?)\n---/);
+  const updMatch = fm?.[1]?.match(/updated:\s*([\d-]+)/);
+  const last_updated = updMatch?.[1] ?? null;
+
+  const lines = text.split(/\r?\n/);
+  let inTable = false;
+  const counts = { hit: 0, miss: 0, ongoing: 0, hold: 0, other: 0 };
+
+  for (let i = 0; i < lines.length; i++) {
+    if (/^\s*\|\s*추천일\s*\|/.test(lines[i]) && /^\s*\|\s*-+/.test(lines[i + 1] ?? '')) {
+      inTable = true;
+      i += 1;
+      continue;
+    }
+    if (!inTable) continue;
+    if (!/^\s*\|.+\|\s*$/.test(lines[i])) break;
+    if (/^\s*\|\s*<!--/.test(lines[i])) continue;
+    const cols = lines[i].trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+    if (cols.length < 8) continue;
+    const result = cols[6] ?? '';
+    if (/적중/.test(result)) counts.hit += 1;
+    else if (/오류/.test(result)) counts.miss += 1;
+    else if (/진행중/.test(result)) counts.ongoing += 1;
+    else if (/보류/.test(result)) counts.hold += 1;
+    else counts.other += 1;
+  }
+
+  const total = counts.hit + counts.miss + counts.ongoing + counts.hold + counts.other;
+  const decided = counts.hit + counts.miss;
+  const hit_rate_pct = decided > 0 ? Math.round((counts.hit / decided) * 1000) / 10 : null;
+
+  return {
+    available: true,
+    total,
+    hit: counts.hit,
+    miss: counts.miss,
+    ongoing: counts.ongoing,
+    hold: counts.hold,
+    hit_rate_pct,
+    last_updated,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// 5. timemachine — 1주/1개월/3개월 범위별 첫 추천일 + 빈도 (Day 12-13)
+//   각 범위에서 ticker별 가장 오래된 추천일 = first_date
+//   클라이언트가 /api/price/{ticker}?at={first_date} 호출하여 수익률 계산
+// ---------------------------------------------------------------------------
+async function parseTimemachine() {
+  if (!existsSync(REPORTS_BRIEFING)) return { '1w': [], '1m': [], '3m': [] };
+
+  const reCmd = /\/종목분석\s+([A-Z가-힣0-9]{2,10})\b/g;
+  const periods = { '1w': 7, '1m': 30, '3m': 90 };
+  const result = {};
+
+  const all = await readdir(REPORTS_BRIEFING);
+  for (const [key, days] of Object.entries(periods)) {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - days);
+    const cutoff = cutoffDate.toISOString().slice(0, 10).replace(/-/g, '');
+
+    const files = all.filter((f) => {
+      const m = f.match(/_(\d{8})\.html$/);
+      return m && m[1] >= cutoff;
+    });
+
+    /** ticker → { first: 'YYYYMMDD', count: N } */
+    const seen = new Map();
+
+    for (const fn of files) {
+      const dateMatch = fn.match(/_(\d{8})\.html$/);
+      if (!dateMatch) continue;
+      const fileDate = dateMatch[1];
+
+      try {
+        const html = await readFile(path.join(REPORTS_BRIEFING, fn), 'utf-8');
+        const fileTickers = new Set();
+        let m;
+        while ((m = reCmd.exec(html)) !== null) {
+          const t = m[1].trim();
+          if (!t) continue;
+          if (/^(BUY|SELL|HOLD|매수|매도|적정|관망|강력|예시)$/i.test(t)) continue;
+          fileTickers.add(t);
+        }
+        for (const t of fileTickers) {
+          const cur = seen.get(t);
+          if (!cur) {
+            seen.set(t, { first: fileDate, count: 1 });
+          } else {
+            cur.count += 1;
+            if (fileDate < cur.first) cur.first = fileDate;
+          }
+        }
+      } catch {
+        /* skip */
+      }
+    }
+
+    result[key] = [...seen.entries()]
+      .map(([ticker, v]) => ({
+        ticker,
+        first_date: `${v.first.slice(0, 4)}-${v.first.slice(4, 6)}-${v.first.slice(6, 8)}`,
+        count: v.count,
+      }))
+      .sort((a, b) => b.count - a.count || a.first_date.localeCompare(b.first_date))
+      .slice(0, 20);
+  }
+
+  return result;
+}
+
+// ---------------------------------------------------------------------------
 // 메인
 // ---------------------------------------------------------------------------
 async function main() {
-  const [market_snapshot, kb_health, upcoming_events, recommendations] = await Promise.all([
+  const [market_snapshot, kb_health, upcoming_events, recommendations, timemachine, performance] = await Promise.all([
     parseMarketSnapshot().catch((e) => { console.error('market_snapshot err:', e.message); return { items: [], updated: null }; }),
     parseKbHealth().catch((e) => { console.error('kb_health err:', e.message); return { p0: 0, p1: 0, last_lint: null, available: false }; }),
     parseUpcomingEvents().catch((e) => { console.error('upcoming_events err:', e.message); return []; }),
     parseRecommendations().catch((e) => { console.error('recommendations err:', e.message); return []; }),
+    parseTimemachine().catch((e) => { console.error('timemachine err:', e.message); return { '1w': [], '1m': [], '3m': [] }; }),
+    parsePerformance().catch((e) => { console.error('performance err:', e.message); return { available: false, total: 0, hit: 0, miss: 0, ongoing: 0, hold: 0, hit_rate_pct: null, last_updated: null }; }),
   ]);
 
   await mkdir(path.dirname(OUTPUT_JSON), { recursive: true });
@@ -298,6 +422,8 @@ async function main() {
         kb_health,
         upcoming_events,
         recommendations,
+        timemachine,
+        performance,
       },
       null,
       2,
@@ -306,8 +432,9 @@ async function main() {
   );
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
+  const tmCount = (timemachine['1w']?.length ?? 0) + (timemachine['1m']?.length ?? 0) + (timemachine['3m']?.length ?? 0);
   console.log(
-    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}) → ${rel}`,
+    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}, tm=${tmCount}, perf=${performance.total}/${performance.hit_rate_pct ?? '—'}%) → ${rel}`,
   );
 }
 
