@@ -745,17 +745,19 @@ UI:
 #### Day 10-11: Edge Function (가격 fetch API)
 
 **작업:**
-- [ ] `web/src/pages/api/price/[ticker].ts` Vercel Serverless Function
-- [ ] Python 런타임으로 `scripts/fetch_price.py` 호출
-- [ ] 또는 yfinance/pykrx 직접 호출 (Python serverless)
-- [ ] CORS 허용 (자체 origin만)
-- [ ] 5분 캐시 (Vercel KV 또는 Edge Cache)
-- [ ] Rate limit (분당 60회)
+- [x] `web/api/price/[ticker].py` Vercel Python Serverless Function (Astro `output: 'static'` 유지)
+- [x] yfinance 단독 사용 — 한국 종목은 .KS/.KQ 자동 폴백 (Vercel us-region에서 KRX 직접 접근 불가, pykrx 미사용)
+- [x] CORS 허용 (자체 origin: vercel.app + localhost:4321)
+- [x] 5분 캐시 (in-memory TTL + `Cache-Control: s-maxage=300, stale-while-revalidate=60` Edge Cache)
+- [x] Rate limit (60/분 per IP, sliding window in-memory)
+- [x] `web/requirements.txt` (yfinance) + `web/vercel.json` (memory 1024MB, maxDuration 30s)
+- [x] ATR(14) + 52주 고저 + 시총 + 손절가/목표가 일괄 반환 (analysis 데이터 호환)
 
 **검증:**
-- [ ] `curl https://stock-analyst-jungwon1.vercel.app/api/price/MRVL` → JSON
-- [ ] 한국 종목 (`/api/price/012450`) 정상
-- [ ] 캐시 hit 시 응답 속도 < 100ms
+- [x] 로컬 yfinance fetch: AAPL $276.83 + ATR 6.84 / 005930.KS ₩232,500 + ATR ₩8,000 / 035420.KS ₩209,000 OK
+- [x] 단위 테스트: `_resolve_symbols`, 캐시, rate limit (60→61회 차단) OK
+- [ ] (사용자 측) `curl https://stock-analyst-jungwon1.vercel.app/api/price/AAPL` → JSON 200 (배포 후)
+- [ ] (사용자 측) 캐시 hit 시 응답 속도 < 100ms
 
 **Commit:** `feat(web): Phase 2 — 가격 fetch Edge Function`
 
