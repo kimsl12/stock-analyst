@@ -382,3 +382,29 @@ type: time_series
 | 2026-05-03 | news | Iran_ProjectFreedom | SHIPS_ESCORT_ANNOUNCED | — | — | CNBC / Washington Post / CNN [2026-05-03] | 2026-05-04T09:00:00+09:00 | Trump "Project Freedom" 발표 — 5/4(월)부터 억류 선박 안내 개시. 봉쇄 해소 아닌 구출 목적. 이란 의회 "휴전 위반 간주" 경고. WTI 5/4 선물 변동성 촉매 |
 | 2026-05-03 | news | Warsh_Senate_Committee | APPROVED_13_11 | — | — | Al Jazeera / Yahoo Finance / CNBC [2026-04-29 확정] | 2026-05-04T09:00:00+09:00 | 상원 금융위원회 통과(13-11 당파표결 — 사상 첫 완전 당파). 5/11주 본회의 표결 예정. Fetterman(D-PA) 찬성 의향. 파월 5/15 만료 전 인준 가능 |
 | 2026-05-04 | news | TrumpXi_Summit | BEIJING_MAY14_CONFIRMED | — | — | EconoTimes / US News / CNBC [2026-05-04 확인] | 2026-05-04T09:00:00+09:00 | Trump 5/14 베이징 방문 확정(8년만 첫 방중). 6차 파리 협상 "건설적". 희토류·대두·펜타닐 패키지. Section 301 공청회 5/5 겹침 — 관세 완화 vs 유지 분기점 |
+| 2026-05-04 | us_index | SP500 | 7200.75 | -0.41% | point | TheStreet / BNN Bloomberg [2026-05-04 close 확정] | 2026-05-05T09:00:00+09:00 | ⚠️ 이란-UAE 교전 격화(미군 보트 7척 격침 / UAE 미사일 피격). Dow -1.13%(-557pt). WTI +4.4%($106.42) |
+| 2026-05-04 | us_index | DJIA | 48941.90 | -1.13% | point | TheStreet / BNN Bloomberg [2026-05-04 close 확정] | 2026-05-05T09:00:00+09:00 | -557pt. 이란 교전 격화 최대 낙폭 |
+| 2026-05-04 | asia_index | KOSPI | 6936.99 | +5.12% | point | Korea Herald / Bloomingbit [2026-05-04 종가 확정] | 2026-05-05T09:00:00+09:00 | 사상 최고가 확정. 외인 +3조194억원. 5/5 어린이날 휴장(→ 5/6 재개장) |
+| 2026-05-04 | commodity | WTI | 106.42 | +4.39% | USD/barrel | CNBC / BNN Bloomberg [2026-05-04 close] | 2026-05-05T09:00:00+09:00 | ⚠️ 이란-UAE 교전 재급등. UAE 미사일 피격 + Fujairah 오일 허브 화재 |
+| 2026-05-04 | commodity | Brent | 114.44 | +5.80% | USD/barrel | CNBC / BNN Bloomberg [2026-05-04 close] | 2026-05-05T09:00:00+09:00 | ⚠️ $110 재돌파. 이란-UAE 교전 격화 |
+| 2026-05-05 | us_index | SP500_intraday | ~7286 | ~+1.2%(추정) | point | Yahoo Finance / CNBC [2026-05-05 장중 intraday] | 2026-05-05T14:00:00-04:00 | 이란 협상 낙관론(Trump 8pm ET 데드라인 + 이란 新제안). 전일 -0.41% 회복 중 |
+| 2026-05-05 | us_index | NASDAQ_intraday | — | ~+2.0%(추정) | point | Yahoo Finance [2026-05-05 장중] | 2026-05-05T14:00:00-04:00 | 메가캡 기술주 주도 반등. 이란 협상 낙관 |
+| 2026-05-05 | us_index | DJIA_intraday | — | ~+0.6%(추정) | point | Yahoo Finance [2026-05-05 장중] | 2026-05-05T14:00:00-04:00 | 전일 -1.13% 부분 회복 |
+| 2026-05-05 | commodity | WTI_intraday | ~92 | ~-7%(추정) | USD/barrel | Yahoo Finance / CNBC [2026-05-05 장중] | 2026-05-05T14:00:00-04:00 | ⚠️→완화: 이란 협상 낙관론으로 급락. 오전 $107.42→장중 $92 |
+| 2026-05-05 | commodity | Brent_intraday | ~96 | ~-4%(추정) | USD/barrel | Investing.com [2026-05-05 장중] | 2026-05-05T14:00:00-04:00 | ⚠️→완화: $107.42 오픈 → $96 급락. 이란 협상 기대 |
+| 2026-05-05 | commodity | Brent_open | 107.42 | — | USD/barrel | Investing.com [2026-05-05 오픈] | 2026-05-05T09:30:00-04:00 | 5/5 오전 개장가. 이후 협상 낙관 급락 |
+| 2026-05-05 | commodity | Gold_open | 4644.40 | 보합 | USD/oz | Investing.com [2026-05-05 오픈] | 2026-05-05T09:30:00-04:00 | $4,600선 유지. 이란 협상 낙관 시 헷지 수요 감소 |
+| 2026-05-05 | fx | USDKRW | 1471.32 | 소폭변동 | KRW | TradingEconomics / Investing.com [2026-05-05] | 2026-05-05T09:00:00+09:00 | ⚠️ 1,400 초과. 범위 1,467.90~1,477.18. 이란 협상 타결 시 원화 강세 전환 가능 |
+| 2026-05-05 | fx | DXY | 98.189 | +0.12% | index | TradingEconomics [2026-05-05] | 2026-05-05T09:00:00+09:00 | 98 구간 유지. 이란 협상 낙관 달러 약세 압력 |
+| 2026-05-05 | bond | US10Y | ~4.42 | — | percent | CNBC / TradingEconomics [2026-05-05 추정] | 2026-05-05T09:00:00+09:00 | 4.5% 기준선 이하. 이란 협상 낙관 → 리스크온 → 소폭 상승 가능 |
+| 2026-05-05 | bond | US2Y | 3.927 | — | percent | CNBC [2026-05-05 10:38 AM ET] | 2026-05-05T14:38:00-04:00 | FOMC 동결(3.50~3.75%) 반영 |
+| 2026-05-05 | bond | Spread2Y10Y | ~+49~51 | — | bp | 계산값(추정) | 2026-05-05T09:00:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-05-05 | crypto | BTC | ~79810 | 고가터치 | USD | Finance Magnates / SpotedCrypto [2026-05-04~05] | 2026-05-05T09:00:00+09:00 | 5/4 $80,393 터치(2026년 1/31 이후 최고). 이란 협상 낙관 리스크온 |
+| 2026-05-05 | crypto | ETH | ~2302 | +0.84% | USD | Binance [2026-05-04] | 2026-05-05T09:00:00+09:00 | $2,300 지지선 유지 |
+| 2026-05-05 | crypto | FearAndGreedIndex | 39 | 개선 중 | index | Milkroad.com [2026-05-04] | 2026-05-05T09:00:00+09:00 | Fear 구간. 5/3 Daily Greed 진입 후 조정. 이란 협상 낙관 시 Neutral 전환 가능 |
+| 2026-05-05 | news | Iran_Military_Escalation | BOATS_SUNK_UAE_MISSILE | — | — | CBS News / NPR / CNBC [2026-05-04 확정] | 2026-05-05T09:00:00+09:00 | 5/4: 미군 이란 소형 보트 7척 격침(Admiral Brad Cooper). UAE 미사일 피격 보도 + Fujairah 오일 허브 화재. 최초 공식 교전 격화. |
+| 2026-05-05 | news | Iran_Negotiation_Update | TRUMP_DEADLINE_8PM_ET | — | — | Yahoo Finance / The Hill / CNN [2026-05-05] | 2026-05-05T09:00:00+09:00 | Trump, 이란에 8pm ET 협상 데드라인 설정. 이란 30일 내 전쟁 종결 + 제재 해제 묶음 제안 전달. War Powers Act 60일 시계 논쟁(민주당 vs 백악관). |
+| 2026-05-05 | news | KOSPI_Holiday | CHILDRENS_DAY_CLOSED | — | — | KRX / TradingHours.com [2026-05-05 확인] | 2026-05-05T09:00:00+09:00 | 5/5 어린이날 휴장. 5/6(수) 재개장. 이란 협상 진전 + WTI -7% 반응 예상 |
+| 2026-05-05 | calendar | Section301_Hearing | USTR_EXCESS_CAPACITY_16NATIONS | — | — | USTR / Holland & Knight [2026-05-05] | 2026-05-05T09:00:00+09:00 | USTR, 중국·한국 등 16개국 제조업 과잉생산 조사 공청회. 목표 완료일 2026-07-24. Trump-Xi 5/14 정상회담 선행 이벤트 |
+| 2026-05-05 | calendar | ISM_Services_PMI_April | PENDING_10AM_ET | — | — | ISM / FXStreet [2026-05-05 10:00 ET 발표 예정] | 2026-05-05T09:00:00+09:00 | 컨센 ~53%(3월 54%. 21개월 연속 확장). 결과 미확보 — 이브닝 갱신 필요 |
+| 2026-05-05 | calendar | AMD_Q1_2026 | PENDING_AH_17:00ET | — | — | MarketBeat / StockTitan [2026-05-05 발표 예정] | 2026-05-05T09:00:00+09:00 | 컨센 EPS $1.30(+35% YoY) / Rev $9.84B(+32%). EPYC + Instinct AI GPU. NVIDIA 5/6 선행 지표 |
