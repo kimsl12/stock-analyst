@@ -1,0 +1,22 @@
+---
+/**
+ * 인증 필수 페이지용 래퍼 (PLAN.md §9, Day 6).
+ *
+ * Base.astro를 감싸 noAuth=false를 강제 — 사용자 페이지가 실수로 인증 가드를
+ * 비활성화하지 않도록 보장한다. Base.astro의 inline 가드 스크립트가 실제
+ * 리다이렉트를 수행하며, 이 래퍼는 명시적 의도 표현 + 향후 페이지별 권한
+ * 확장 지점으로 사용된다.
+ */
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  lede?: string;
+  active?: 'home' | 'all' | 'morning' | 'evening' | 'weekly' | 'crypto' | 'stocks' | 'portfolio' | null;
+}
+
+const { title, lede, active = null } = Astro.props;
+---
+<Base title={title} lede={lede} active={active} noAuth={false}>
+  <slot />
+</Base>

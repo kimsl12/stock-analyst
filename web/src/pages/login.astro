@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="로그인"
+  lede="등록된 이메일로 매직 링크를 받아 로그인합니다"
+  active={null}
+  noAuth={true}
+>
+  <section class="login-card">
+    <form id="login-form" novalidate>
+      <label for="email">이메일</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        autocomplete="email"
+        autocapitalize="off"
+        inputmode="email"
+        placeholder="you@example.com"
+      />
+      <button type="submit" id="submit-btn">매직 링크 받기</button>
+      <p class="hint">화이트리스트에 등록된 이메일만 로그인할 수 있습니다.</p>
+      <div id="msg" class="msg" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { signInWithMagicLink, getCurrentSession } from '../lib/auth';
+
+  // 이미 로그인 상태면 next 또는 홈으로 리다이렉트
+  (async () => {
+    const session = await getCurrentSession();
+    if (session) {
+      const url = new URL(window.location.href);
+      const next = url.searchParams.get('next') || '/';
+      window.location.replace(next);
+    }
+  })();
+
+  const form = document.getElementById('login-form') as HTMLFormElement | null;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const msg = document.getElementById('msg') as HTMLDivElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!btn || !msg) return;
+
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    if (!email) {
+      msg.textContent = '이메일을 입력해주세요.';
+      msg.className = 'msg err';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '발송 중…';
+    msg.textContent = '';
+    msg.className = 'msg';
+
+    // next 파라미터를 콜백 URL에 보존
+    const url = new URL(window.location.href);
+    const next = url.searchParams.get('next') || '/';
+    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+
+    const result = await signInWithMagicLink(email, redirectTo);
+    btn.disabled = false;
+    btn.textContent = '매직 링크 받기';
+
+    if (result.ok) {
+      msg.textContent = '✅ 매직 링크를 발송했습니다. 메일함을 확인하세요. (스팸함도 확인)';
+      msg.className = 'msg ok';
+      (form as HTMLFormElement).reset();
+    } else {
+      msg.textContent = `❌ ${result.error}`;
+      msg.className = 'msg err';
+    }
+  });
+</script>
+
+<style>
+  .login-card {
+    max-width: 420px;
+    margin: 1rem auto;
+    padding: 1.75rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  form { display: flex; flex-direction: column; gap: .65rem; }
+  label {
+    font-size: .8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  input {
+    padding: .65rem .8rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: .95rem;
+    font-family: inherit;
+  }
+  input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button {
+    margin-top: .35rem;
+    padding: .7rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: .95rem;
+    cursor: pointer;
+  }
+  button:hover:not(:disabled) { background: var(--accent-2); }
+  button:disabled { opacity: .55; cursor: wait; }
+  .hint { margin: .25rem 0 0; color: var(--dim); font-size: .78rem; }
+  .msg { min-height: 1.2em; font-size: .85rem; margin-top: .35rem; }
+  .msg.ok { color: var(--up); }
+  .msg.err { color: var(--down); }
+</style>

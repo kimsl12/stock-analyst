@@ -3,8 +3,12 @@ interface Props {
   title: string;
   lede?: string;
   active?: 'home' | 'all' | 'morning' | 'evening' | 'weekly' | 'crypto' | 'stocks' | 'portfolio' | null;
+  /** 인증 가드 비활성화 (login, auth/callback 페이지 전용). 기본: false (가드 활성). */
+  noAuth?: boolean;
 }
-const { title, lede, active = null } = Astro.props;
+const { title, lede, active = null, noAuth = false } = Astro.props;
+const supabaseConfigured = !!(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env.PUBLIC_SUPABASE_ANON_KEY);
+const guardEnabled = !noAuth && supabaseConfigured;
 ---
 <!DOCTYPE html>
 <html lang="ko" data-theme="dark">
@@ -14,6 +18,23 @@ const { title, lede, active = null } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>{title} · 종목분석 에이전트</title>
+    {guardEnabled && (
+      <script is:inline>
+        // 즉시 인증 가드: LocalStorage에 Supabase 세션 키가 없으면 화면 표시 전에 /login으로 이동.
+        // (실제 세션 유효성 검증은 hydration 후 module script에서 수행)
+        (function () {
+          try {
+            var raw = window.localStorage.getItem('sb-stock-analyst-auth');
+            if (!raw) {
+              var next = encodeURIComponent(window.location.pathname + window.location.search);
+              window.location.replace('/login?next=' + next);
+              // 본문 렌더링 차단 (가드 리다이렉트 동안 빈 화면 유지)
+              document.documentElement.style.visibility = 'hidden';
+            }
+          } catch (e) { /* LocalStorage 차단 환경: 가드 무시, 후속 module 가드에 위임 */ }
+        })();
+      </script>
+    )}
   </head>
   <body>
     <header class="topbar">
@@ -29,6 +50,12 @@ const { title, lede, active = null } = Astro.props;
           <a href="/stocks" class:list={[active === 'stocks' && 'active']}>종목</a>
           <a href="/portfolio" class:list={[active === 'portfolio' && 'active']}>포트폴리오</a>
         </nav>
+        {!noAuth && (
+          <div class="auth-area" id="auth-area">
+            <span class="auth-email" id="auth-email"></span>
+            <button class="auth-logout" id="auth-logout" type="button" hidden>로그아웃</button>
+          </div>
+        )}
       </div>
     </header>
 
@@ -42,10 +69,41 @@ const { title, lede, active = null } = Astro.props;
 
     <footer class="footer">
       <div class="container">
-        <span>v0.1 · Day 4 (인덱스 + 카드 그리드 + 카테고리 라우팅)</span>
+        <span>v0.1 · Day 6 (Magic Link 인증)</span>
         <span class="dim">Astro on Vercel · Supabase</span>
       </div>
     </footer>
+
+    {!noAuth && (
+      <script>
+        // 깊은 인증 검증 + 로그아웃 핸들러 + 사용자 이메일 표시.
+        // inline 가드가 1차로 LocalStorage 키만 체크했고, 여기서 세션 유효성/화이트리스트를 재검증.
+        import { requireAuth, getCurrentSession, signOut } from '../lib/auth';
+
+        (async () => {
+          const ok = await requireAuth('/login');
+          if (!ok) return; // 리다이렉트 진행 중
+
+          // 인증 완료: 본문 표시 (inline 가드가 hidden 처리했을 수 있음)
+          document.documentElement.style.visibility = '';
+
+          const session = await getCurrentSession();
+          const email = session?.user?.email ?? '';
+          const emailEl = document.getElementById('auth-email');
+          const btnEl = document.getElementById('auth-logout') as HTMLButtonElement | null;
+          if (emailEl) emailEl.textContent = email;
+          if (btnEl) {
+            btnEl.hidden = false;
+            btnEl.addEventListener('click', async () => {
+              btnEl.disabled = true;
+              btnEl.textContent = '…';
+              await signOut();
+              window.location.replace('/login');
+            });
+          }
+        })();
+      </script>
+    )}
 
     <style is:global>
       :root {
@@ -129,6 +187,38 @@ const { title, lede, active = null } = Astro.props;
       }
       .nav a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
       .nav a.active { background: var(--accent); color: #fff; }
+
+      /* AUTH AREA (로그아웃 버튼 + 사용자 이메일) */
+      .auth-area {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .8rem;
+      }
+      .auth-email {
+        color: var(--muted);
+        font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+        font-size: .75rem;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .auth-logout {
+        padding: .3rem .65rem;
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        border-radius: 5px;
+        font-size: .78rem;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .auth-logout:hover:not(:disabled) {
+        border-color: var(--down);
+        color: var(--down);
+      }
+      .auth-logout:disabled { opacity: .55; cursor: wait; }
 
       /* PAGE HEAD */
       main.container { flex: 1; padding-top: 1.75rem; padding-bottom: 2.5rem; }
@@ -218,6 +308,7 @@ const { title, lede, active = null } = Astro.props;
         .nav a { padding: 0.35rem 0.5rem; font-size: 0.82rem; }
         .page-head h1 { font-size: 1.35rem; }
         th, td { padding: 0.5rem 0.6rem; font-size: 0.85rem; }
+        .auth-email { display: none; } /* 모바일은 이메일 숨기고 버튼만 */
       }
     </style>
   </body>

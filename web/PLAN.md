@@ -453,17 +453,21 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_KEY=eyJ...   # 서버 사이드만 (sync 스크립트용)
-ALLOWED_EMAIL=jungwon9402@gmail.com
+PUBLIC_ALLOWED_EMAIL=jungwon9402@gmail.com   # SSG 클라 가드용 (빌드 임베드)
 ```
 
 Vercel 환경변수에도 동일 설정.
+
+> **주의**: `output: 'static'` SSG 환경에서 클라이언트 사이드 화이트리스트 검증을
+> 위해 `PUBLIC_` 접두사가 필요. 이메일 자체는 빌드 산출물에 노출되나, 실제
+> 차단은 Supabase 콜백 거부 + sign-out + RLS의 다중 방어로 처리.
 
 ### 9.3 화이트리스트 강제
 
 ```typescript
 // web/src/lib/auth.ts
 export function isAllowedUser(email: string): boolean {
-  const allowed = import.meta.env.ALLOWED_EMAIL;
+  const allowed = import.meta.env.PUBLIC_ALLOWED_EMAIL;
   return email.toLowerCase() === allowed.toLowerCase();
 }
 ```
@@ -665,19 +669,28 @@ UI:
 #### Day 6: Magic Link 인증 + 화이트리스트
 
 **작업:**
-- [ ] `lib/supabase.ts` (Supabase 클라이언트)
-- [ ] `lib/auth.ts` (세션·화이트리스트 헬퍼)
-- [ ] `pages/login.astro` (이메일 입력 폼)
-- [ ] `pages/auth/callback.astro` (콜백 처리 + 화이트리스트 검증)
-- [ ] `layouts/Authenticated.astro` (인증 보호 래퍼)
-- [ ] 모든 인증 필요 페이지에 적용
-- [ ] 30일 세션 유지 설정
+- [x] `lib/supabase.ts` (Supabase 클라이언트, createBrowserClient 추가)
+- [x] `lib/auth.ts` (세션·화이트리스트 헬퍼: isAllowedUser/signIn/signOut/requireAuth/enforceWhitelist)
+- [x] `pages/login.astro` (이메일 입력 폼)
+- [x] `pages/auth/callback.astro` (콜백 처리 + 화이트리스트 검증)
+- [x] `layouts/Authenticated.astro` (인증 보호 래퍼 — Base.astro thin wrapper)
+- [x] 모든 인증 필요 페이지에 적용 (Base.astro inline + module 이중 가드, noAuth props로 /login·/auth/callback 예외)
+- [x] 30일 세션 유지 설정 (클라이언트 측 persistSession + autoRefreshToken; 실제 만료는 Supabase 대시보드 JWT expiry 설정 필요)
 
-**검증:**
+**검증 (Day 6 후 사용자 측 확인):**
 - [ ] 미인증 상태로 `/` 접속 → `/login` 리다이렉트
 - [ ] `jungwon9402@gmail.com`으로 매직 링크 → 클릭 → 로그인 성공
-- [ ] 다른 이메일 시도 → 거부 + sign out
-- [ ] 30일 후 자동 갱신 확인 (간략한 토큰 만료 테스트)
+- [ ] 다른 이메일 시도 → 콜백에서 즉시 거부 + sign out + 안내
+- [ ] 30일 후 자동 갱신 확인 (Supabase 대시보드 JWT expiry = 2592000초 설정 후)
+
+**사용자 작업 (커밋 후):**
+1. Vercel 환경변수에 `PUBLIC_ALLOWED_EMAIL=jungwon9402@gmail.com` 추가
+2. Supabase 대시보드 → Auth → URL Configuration:
+   - Site URL: `https://stock-analyst-jungwon1.vercel.app`
+   - Redirect URLs: `https://stock-analyst-jungwon1.vercel.app/auth/callback` 추가 (로컬 테스트 시 `http://localhost:4321/auth/callback`도 추가)
+3. Supabase 대시보드 → Auth → Providers → Email: Magic Link 활성화 (기본 활성)
+4. Supabase 대시보드 → Auth → Sessions → JWT expiry: `2592000` (30일)
+5. (선택) Vercel Project Settings → Deployment Protection: 비활성화 (Magic Link 동작 위해 공개 필수)
 
 **Commit:** `feat(web): Magic Link 인증 + 이메일 화이트리스트`
 
