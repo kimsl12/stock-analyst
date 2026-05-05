@@ -66,7 +66,7 @@ GitHub 의존도 분산 + 사용성 개선을 위한 웹 플랫폼 구축:
 | # | 결정 항목 | 결정 | 결정일 |
 |---|---|---|---|
 | 1 | user_portfolio 저장 전략 | **3중 동기화** (로컬 md 유지 + GitHub 유지 + Supabase 신규 추가) | 2026-04-30 |
-| 2 | 인증 방식 | **Magic Link** (Supabase Auth, 이메일 1개만 등록) | 2026-04-30 |
+| 2 | 인증 방식 | **이메일 + 비밀번호** (Supabase Auth, 화이트리스트 1개) — 2026-05-05 매직링크에서 전환 | 2026-05-05 |
 | 3 | 도메인 | **`stock-analyst-jungwon1.vercel.app`** 무료 서브도메인 (원안 `stock-analyst-jungwon1.vercel.app`은 타 사용자가 점유 — 2026-05-04 변경, Vercel 자동 alias 그대로 채택) | 2026-04-30 / 2026-05-04 |
 | 4 | 빌드 트리거 | 매 push 자동 빌드 (Vercel 기본) | 2026-04-30 |
 | 5 | 호스팅 | **Vercel** (사용자 지정) | 2026-04-30 |
@@ -402,8 +402,8 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 
 | 라우트 | 파일 | 인증 | 설명 |
 |---|---|---|---|
-| `/login` | `pages/login.astro` | ❌ | Magic Link 이메일 입력 |
-| `/auth/callback` | `pages/auth/callback.astro` | ❌ | Magic Link 클릭 처리 |
+| `/login` | `pages/login.astro` | ❌ | 이메일 + 비밀번호 (보조: reset 링크) |
+| `/auth/callback` | `pages/auth/callback.astro` | ❌ | reset 링크 토큰 처리 + 새 비번 설정 |
 | `/` | `pages/index.astro` | ✅ | 인덱스 (모든 리포트 카드 그리드) |
 | `/briefing/morning` | `pages/briefing/[type].astro` | ✅ | 모닝 브리핑 모음 |
 | `/briefing/evening` | 동일 | ✅ | 이브닝 브리핑 모음 |
@@ -432,20 +432,32 @@ if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
 
 ---
 
-## 9. 인증 흐름 (Magic Link)
+## 9. 인증 흐름 (이메일 + 비밀번호, 2026-05-05 변경)
+
+> **변경 이력**: Magic Link → 비밀번호 (모바일 UX 마찰 + 매번 메일 받기 번거로움 → 사용자 결정).
+> 매직링크는 비밀번호 분실/첫 설정 시 reset 링크로만 잔존 (`resetPasswordForEmail`).
 
 ### 9.1 흐름도
 
+**일반 로그인 (메일 불필요):**
 ```
-1. 사용자가 stock-analyst-jungwon1.vercel.app 접속
-2. 미인증 → /login 자동 리다이렉트
-3. 이메일 입력 (jungwon9402@gmail.com 외 차단)
-4. Supabase 매직 링크 발송
-5. 이메일에서 링크 클릭 → /auth/callback
-6. 세션 토큰 저장 (브라우저 LocalStorage + httpOnly cookie)
-7. / 인덱스로 리다이렉트
-8. 30일 세션 유지 (자동 갱신)
+1. /login 접속 → 이메일 + 비밀번호 입력
+2. signInWithPassword → 화이트리스트(PUBLIC_ALLOWED_EMAIL) 검증
+3. 성공: LocalStorage 세션 저장 → / 또는 next 이동
+4. 실패: "이메일 또는 비밀번호가 올바르지 않습니다" 표시
 ```
+
+**첫 비번 설정 / 분실 시 (메일 1회):**
+```
+1. /login → "비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정" 클릭
+2. 이메일 입력 → resetPasswordForEmail(redirectTo=/auth/callback?mode=recovery)
+3. 메일함의 reset 링크 클릭 → /auth/callback (recovery 임시 세션)
+4. enforceWhitelist → 비허용이면 sign-out + 거부
+5. 새 비밀번호 8자 이상 입력 (2회 확인) → updatePassword
+6. / 또는 next 이동, 다음부터 비번으로 로그인
+```
+
+**세션:** LocalStorage `sb-stock-analyst-auth`. JWT expiry 30일 (Supabase 대시보드 = 2592000).
 
 ### 9.2 환경변수
 

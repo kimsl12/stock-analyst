@@ -66,14 +66,31 @@ vercel --prod                # main 브랜치 → 즉시 배포
 
 GitHub repo flag 상태이므로 Vercel CLI 우회 등록. 자동 alias: `stock-analyst-jungwon1.vercel.app`.
 
-## 인증 (Magic Link)
+## 인증 (이메일 + 비밀번호, 2026-05-05 변경)
 
+기존 매직링크 방식은 **모바일에서 매번 메일 받기 번거로움 + UX 마찰**로 폐기.
+현재는 일반 비밀번호 로그인. 매직링크는 비밀번호 분실/첫 설정 시 **재설정 링크**로만 잔존.
+
+### 흐름
 1. 미인증 → `/` 접근 시 `/login?next=...` 자동 리다이렉트
-2. 화이트리스트 이메일(`PUBLIC_ALLOWED_EMAIL`) 입력 → Supabase Magic Link 발송
-3. 이메일 링크 클릭 → `/auth/callback` → 화이트리스트 재검증 → next 페이지 이동
-4. 비허용 이메일은 콜백에서 즉시 sign-out
+2. `/login`에서 이메일 + 비밀번호 입력 → `signInWithPassword` → 화이트리스트 검증 → next 이동
+3. 비밀번호 분실/첫 설정 시: "비밀번호를 잊으셨나요?" 클릭 → reset 링크 메일 → `/auth/callback?mode=recovery`에서 새 비번 설정
 
-세션 저장: LocalStorage 키 `sb-stock-analyst-auth`. 30일 유지는 Supabase 대시보드 JWT expiry = 2592000 설정 필요.
+### 첫 비밀번호 설정 (1회만 필요)
+
+`/login` → "비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정" 클릭 →
+이메일 입력 → 메일함 확인 → 링크 클릭 → 새 비밀번호 8자 이상 설정 → 자동 로그인.
+**그 후로는 메일 받을 필요 없음** — 비번으로 바로 로그인.
+
+### 세션
+- LocalStorage 키 `sb-stock-analyst-auth`
+- 30일 유지: Supabase 대시보드 → Auth → Sessions → JWT expiry = 2592000
+- 비허용 이메일은 콜백에서 즉시 sign-out (`enforceWhitelist`)
+
+### Supabase 대시보드 설정 (사용자 1회)
+- Authentication → Providers → **Email** 활성화 (Magic Link 토글은 켜둬도 무방 — reset 메일에 사용)
+- Authentication → URL Configuration → Site URL + Redirect URLs (`/auth/callback`)
+- Authentication → Sessions → JWT expiry = 2592000 (30일)
 
 ## 테마
 

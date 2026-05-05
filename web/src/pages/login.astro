@@ -3,32 +3,50 @@ import Base from '../layouts/Base.astro';
 ---
 <Base
   title="로그인"
-  lede="등록된 이메일로 매직 링크를 받아 로그인합니다"
+  lede="이메일·비밀번호로 로그인합니다 (1인 운영, 화이트리스트 외 차단)"
   active={null}
   noAuth={true}
 >
   <section class="login-card">
-    <form id="login-form" novalidate>
+    <form id="login-form" novalidate autocomplete="on">
       <label for="email">이메일</label>
       <input
         type="email"
         id="email"
         name="email"
         required
-        autocomplete="email"
+        autocomplete="username"
         autocapitalize="off"
         inputmode="email"
         placeholder="you@example.com"
       />
-      <button type="submit" id="submit-btn">매직 링크 받기</button>
-      <p class="hint">화이트리스트에 등록된 이메일만 로그인할 수 있습니다.</p>
+
+      <label for="password">비밀번호</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="8"
+        autocomplete="current-password"
+        placeholder="8자 이상"
+      />
+
+      <button type="submit" id="submit-btn">로그인</button>
+
+      <div class="auxlinks">
+        <button type="button" id="reset-btn" class="link-btn">
+          비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정
+        </button>
+      </div>
+
       <div id="msg" class="msg" role="status" aria-live="polite"></div>
     </form>
   </section>
 </Base>
 
 <script>
-  import { signInWithMagicLink, getCurrentSession } from '../lib/auth';
+  import { signInWithPassword, resetPasswordForEmail, getCurrentSession } from '../lib/auth';
 
   // 이미 로그인 상태면 next 또는 홈으로 리다이렉트
   (async () => {
@@ -42,40 +60,78 @@ import Base from '../layouts/Base.astro';
 
   const form = document.getElementById('login-form') as HTMLFormElement | null;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement | null;
   const msg = document.getElementById('msg') as HTMLDivElement | null;
 
+  function show(text: string, kind: 'ok' | 'err' | '' = '') {
+    if (!msg) return;
+    msg.textContent = text;
+    msg.className = `msg ${kind}`;
+  }
+
+  // 메인: 비번 로그인
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!btn || !msg) return;
+    if (!btn) return;
 
     const email = (document.getElementById('email') as HTMLInputElement).value.trim();
-    if (!email) {
-      msg.textContent = '이메일을 입력해주세요.';
-      msg.className = 'msg err';
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+
+    if (!email || !password) {
+      show('이메일과 비밀번호를 모두 입력해주세요.', 'err');
       return;
     }
 
     btn.disabled = true;
-    btn.textContent = '발송 중…';
-    msg.textContent = '';
-    msg.className = 'msg';
+    btn.textContent = '로그인 중…';
+    show('');
 
-    // next 파라미터를 콜백 URL에 보존
-    const url = new URL(window.location.href);
-    const next = url.searchParams.get('next') || '/';
-    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
-
-    const result = await signInWithMagicLink(email, redirectTo);
+    const result = await signInWithPassword(email, password);
     btn.disabled = false;
-    btn.textContent = '매직 링크 받기';
+    btn.textContent = '로그인';
 
     if (result.ok) {
-      msg.textContent = '✅ 매직 링크를 발송했습니다. 메일함을 확인하세요. (스팸함도 확인)';
-      msg.className = 'msg ok';
-      (form as HTMLFormElement).reset();
+      show('✅ 로그인 성공. 이동합니다…', 'ok');
+      const url = new URL(window.location.href);
+      const next = url.searchParams.get('next') || '/';
+      setTimeout(() => window.location.replace(next), 400);
     } else {
-      msg.textContent = `❌ ${result.error}`;
-      msg.className = 'msg err';
+      show(`❌ ${result.error}`, 'err');
+    }
+  });
+
+  // 보조: 비번 재설정/첫 설정 (이메일 링크)
+  resetBtn?.addEventListener('click', async () => {
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    if (!email) {
+      show('이메일을 먼저 입력한 뒤 다시 누르세요.', 'err');
+      return;
+    }
+
+    const ok = window.confirm(
+      `${email} 로 비밀번호 설정/재설정 링크를 보냅니다.\n` +
+      `메일을 클릭하면 새 비밀번호 입력 화면으로 이동합니다.\n계속할까요?`
+    );
+    if (!ok) return;
+
+    if (resetBtn) {
+      resetBtn.disabled = true;
+      resetBtn.textContent = '메일 발송 중…';
+    }
+
+    // recovery 콜백 URL — Supabase가 type=recovery 토큰을 hash로 부착
+    const redirectTo = `${window.location.origin}/auth/callback?mode=recovery`;
+    const result = await resetPasswordForEmail(email, redirectTo);
+
+    if (resetBtn) {
+      resetBtn.disabled = false;
+      resetBtn.textContent = '비밀번호를 잊으셨나요? / 처음 사용 시 비밀번호 설정';
+    }
+
+    if (result.ok) {
+      show('✅ 메일을 발송했습니다. 메일함의 링크를 클릭해 새 비밀번호를 설정하세요. (스팸함 확인)', 'ok');
+    } else {
+      show(`❌ ${result.error}`, 'err');
     }
   });
 </script>
@@ -106,7 +162,7 @@ import Base from '../layouts/Base.astro';
     font-family: inherit;
   }
   input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-  button {
+  button[type="submit"] {
     margin-top: .35rem;
     padding: .7rem 1rem;
     background: var(--accent);
@@ -116,11 +172,29 @@ import Base from '../layouts/Base.astro';
     font-weight: 600;
     font-size: .95rem;
     cursor: pointer;
+    font-family: inherit;
   }
-  button:hover:not(:disabled) { background: var(--accent-2); }
-  button:disabled { opacity: .55; cursor: wait; }
-  .hint { margin: .25rem 0 0; color: var(--dim); font-size: .78rem; }
-  .msg { min-height: 1.2em; font-size: .85rem; margin-top: .35rem; }
+  button[type="submit"]:hover:not(:disabled) { background: var(--accent-2); }
+  button[type="submit"]:disabled { opacity: .55; cursor: wait; }
+
+  .auxlinks {
+    margin-top: .5rem;
+    text-align: center;
+  }
+  .link-btn {
+    background: transparent;
+    border: 0;
+    color: var(--accent-2);
+    font-size: .8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: .25rem .5rem;
+    font-family: inherit;
+  }
+  .link-btn:hover:not(:disabled) { color: var(--accent); }
+  .link-btn:disabled { opacity: .5; cursor: wait; }
+
+  .msg { min-height: 1.2em; font-size: .85rem; margin-top: .35rem; line-height: 1.5; }
   .msg.ok { color: var(--up); }
   .msg.err { color: var(--down); }
 </style>
