@@ -40,7 +40,8 @@ const briefingTypes = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio
 const briefingItems = manifest.items.filter((it) => briefingTypes.includes(it.type));
 const latestBriefing = briefingItems[0];
 const lastBriefingDate = latestBriefing?.date;
-const today = new Date().toISOString().slice(0, 10);
+// KST 기준 오늘 (한국 새벽 1시면 UTC는 전날 16시 — 날짜 경계 차이 보정)
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const daysSince = lastBriefingDate ? Math.floor((Date.parse(today) - Date.parse(lastBriefingDate)) / 86400000) : null;
 const sinceLabel = daysSince == null ? '—' : daysSince === 0 ? '오늘' : daysSince === 1 ? '어제' : `${daysSince}일 전`;
 

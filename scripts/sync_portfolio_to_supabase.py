@@ -31,7 +31,7 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -290,7 +290,9 @@ def get_user_id(sb: Any, email: str) -> str | None:
 
 def upsert_portfolio(sb: Any, user_id: str, parsed: dict[str, Any]) -> tuple[str, int]:
     """포트폴리오 + 보유 종목을 idempotent하게 upsert. (portfolio_id, holdings_count) 반환."""
-    now_iso = datetime.now(timezone.utc).isoformat()
+    # KST = UTC+9 (한국 시간). Supabase timestamptz는 +09:00 인식.
+    KST = timezone(timedelta(hours=9), name="KST")
+    now_iso = datetime.now(KST).isoformat(timespec="seconds")
     portfolio_payload = {
         "user_id": user_id,
         "profile": parsed["profile"],

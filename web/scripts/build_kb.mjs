@@ -14,6 +14,7 @@ import { readFile, writeFile, readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { nowKstIsoShort, todayKst, kstYmd } from './_kst.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -182,7 +183,7 @@ async function parseUpcomingEvents() {
   // "다음 주" 또는 "예정" 키워드가 들어간 섹션의 표만
   const lines = text.split(/\r?\n/);
   const events = [];
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKst();  // KST 기준 오늘
 
   for (let i = 0; i < lines.length; i++) {
     if (!/^\s*\|.+\|\s*$/.test(lines[i])) continue;
@@ -227,9 +228,7 @@ async function parseUpcomingEvents() {
 // ---------------------------------------------------------------------------
 async function parseRecommendations() {
   if (!existsSync(REPORTS_BRIEFING)) return [];
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-  const cutoff = sevenDaysAgo.toISOString().slice(0, 10).replace(/-/g, '');
+  const cutoff = kstYmd(-7);  // KST 기준 7일 전 YYYYMMDD
 
   const files = (await readdir(REPORTS_BRIEFING)).filter((f) => {
     const m = f.match(/_(\d{8})\.html$/);
@@ -345,9 +344,7 @@ async function parseTimemachine() {
 
   const all = await readdir(REPORTS_BRIEFING);
   for (const [key, days] of Object.entries(periods)) {
-    const cutoffDate = new Date();
-    cutoffDate.setDate(cutoffDate.getDate() - days);
-    const cutoff = cutoffDate.toISOString().slice(0, 10).replace(/-/g, '');
+    const cutoff = kstYmd(-days);  // KST 기준 N일 전 YYYYMMDD
 
     const files = all.filter((f) => {
       const m = f.match(/_(\d{8})\.html$/);
@@ -417,7 +414,8 @@ async function main() {
     OUTPUT_JSON,
     JSON.stringify(
       {
-        generated_at: new Date().toISOString().slice(0, 19),
+        generated_at: nowKstIsoShort(),  // KST
+        generated_tz: 'Asia/Seoul',
         market_snapshot,
         kb_health,
         upcoming_events,

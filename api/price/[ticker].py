@@ -18,7 +18,10 @@ from urllib.parse import urlparse, parse_qs
 import json
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+# KST = UTC+9 (한국 시간). fetch_time, at_price 등 모든 시각은 KST ISO 8601 (+09:00).
+KST = timezone(timedelta(hours=9), name="KST")
 
 # ─────────────────────────────────────────────────────────────────────────
 # CORS allow-list
@@ -180,7 +183,8 @@ def fetch_price(ticker: str, at: str = '') -> dict:
                 'at': at or None,
                 'at_price': round(at_price, decimals) if at_price else None,
                 'return_since_at_pct': return_since_at_pct,
-                'fetch_time': datetime.utcnow().isoformat() + 'Z',
+                'fetch_time': datetime.now(KST).isoformat(timespec='seconds'),
+                'fetch_tz': 'Asia/Seoul',
                 'cache_ttl': _CACHE_TTL,
             }
         except Exception as e:

@@ -44,12 +44,20 @@ const fmtMoney = (v: number | null, currency: 'USD' | 'KRW' = 'USD') => {
 };
 const fmtPct = (v: number | null) => (v == null ? '—' : `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`);
 const fmtQty = (v: number | null) => (v == null ? '—' : v.toLocaleString('en-US', { maximumFractionDigits: 6 }));
-const updatedAt = portfolio?.updated_at?.slice(0, 19).replace('T', ' ');
+// Supabase는 timestamptz를 UTC로 저장하지만, 사용자 표시는 KST 기준으로 변환
+const updatedAt = portfolio?.updated_at
+  ? new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false,
+    }).format(new Date(portfolio.updated_at))
+  : null;
 ---
 <Base
   title="내 포트폴리오"
   lede={portfolio
-    ? `최종 갱신: ${updatedAt} (UTC) · ${holdings.length}개 보유 종목`
+    ? `최종 갱신: ${updatedAt} (KST) · ${holdings.length}개 보유 종목`
     : '데이터 없음 — /내포트폴리오 명령으로 동기화 후 다시 방문'}
   active="portfolio"
 >

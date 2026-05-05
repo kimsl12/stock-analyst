@@ -82,8 +82,9 @@ const tickers = [
 
   function applyFilters() {
     const { types, days, ticker } = readState();
+    // KST 기준 N일 전 (한국 사용자에게 자연스러운 날짜 경계)
     const cutoff = days > 0
-      ? new Date(Date.now() - days * 86400000).toISOString().slice(0, 10)
+      ? new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date(Date.now() - days * 86400000))
       : '';
     let visible = 0;
     for (const card of getCardContainers()) {

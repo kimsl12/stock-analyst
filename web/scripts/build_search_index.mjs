@@ -15,6 +15,7 @@ import { readFile, writeFile, readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { nowKstIsoShort } from './_kst.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -96,7 +97,8 @@ async function main() {
     OUTPUT_JSON,
     JSON.stringify(
       {
-        generated_at: new Date().toISOString().slice(0, 19),
+        generated_at: nowKstIsoShort(),  // KST
+        generated_tz: 'Asia/Seoul',
         count: documents.length,
         documents,
       },

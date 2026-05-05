@@ -14,6 +14,7 @@ import { readdir, readFile, stat, mkdir, writeFile, rm, cp } from 'node:fs/promi
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { nowKstIsoShort } from './_kst.mjs';
 
 // ---------------------------------------------------------------------------
 // 경로
@@ -208,7 +209,8 @@ async function main() {
     OUTPUT_JSON,
     JSON.stringify(
       {
-        generated_at: new Date().toISOString().slice(0, 19),
+        generated_at: nowKstIsoShort(),  // KST
+        generated_tz: 'Asia/Seoul',
         count: items.length,
         by_type: byType,
         items,

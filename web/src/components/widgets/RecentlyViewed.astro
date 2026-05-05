@@ -25,7 +25,8 @@
     }
     list.innerHTML = items
       .map((it) => {
-        const date = it.date ?? new Date(it.ts).toISOString().slice(0, 10);
+        // KST 기준 날짜 (사용자가 본 시점의 한국 시각 기준)
+        const date = it.date ?? new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date(it.ts));
         const type = it.type ?? 'report';
         const title = (it.title ?? it.url).replace(/[<>&"]/g, '');
         const url = it.url.replace(/"/g, '');

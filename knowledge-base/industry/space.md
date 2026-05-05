@@ -57,7 +57,7 @@ last_synced_from_db: 2026-05-02
 | 매출 전망 (2026E) | $22~24B | Starlink $15.9~24B 포함 |
 | **SpaceX IPO** | **$1.75T 밸류, 6월 Nasdaq 상장 목표** | SEC S-1 초안 4/1 제출. $75B+ 조달 목표(사우디 아람코 $29.4B 경신). 6/11 Major Investor Event |
 
-- **Starship V3 (IFT-12)**: **5/12 발사 목표** (UTC 22:30). V3 데뷔. IFT-11 사고조사 + 4/6 RUD 후 FAA 승인 대기. LEO **100t+ 페이로드** (V2 ~35t 대비 약 3배). Raptor 3 엔진
+- **Starship V3 (IFT-12)**: **5/12 발사 목표** (KST 5/13 07:30 / UTC 5/12 22:30). V3 데뷔. IFT-11 사고조사 + 4/6 RUD 후 FAA 승인 대기. LEO **100t+ 페이로드** (V2 ~35t 대비 약 3배). Raptor 3 엔진
 - **IFT-13**: 6월 계획
 - **LC-39A**: Falcon 9 단일 발사 종료, JRTI 드론십 Starship 전용 전환. 2026 하반기 플로리다 첫 Starship 발사 예정
 

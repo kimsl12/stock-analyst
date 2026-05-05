@@ -16,6 +16,7 @@ import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { nowKstIso } from './_kst.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '../..');
@@ -201,7 +202,7 @@ async function getUserId(sb, email) {
 }
 
 async function upsertPortfolio(sb, userId, parsed) {
-  const nowIso = new Date().toISOString();
+  const nowIso = nowKstIso();  // KST (Supabase timestamptz는 +09:00 인식)
   const portfolioPayload = {
     user_id: userId,
     profile: parsed.profile,
