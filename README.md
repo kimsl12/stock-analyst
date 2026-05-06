@@ -1,6 +1,6 @@
-# 종목분석 AI 에이전트 v3.10.1
+# 종목분석 AI 에이전트 v3.15
 
-> 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 18개 슬래시 명령어.
+> 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 18개 슬래시 명령어 + 웹 대시보드(Astro+Supabase+Vercel).
 
 ## 리포트 열람
 
@@ -40,17 +40,24 @@
 
 ### 최근 브리핑
 - [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260506.html) — 2026-05-06, AMD Q1 어닝서프라이즈 + ISM 가격 70.7 + 이란 협상 대화 지속
-- [주간 리포트](https://kimsl12.github.io/stock-analyst/reports/briefing/weekly_20260502.html) — 2026-05-02, 골디락스 표면·스태그플레이션 이면 + 적중률 77.8% 첫 산정
+- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260505.html) — 2026-05-05, 한국 어린이날 휴장 + 미국 프리마켓 (KST 시간대 표준 적용)
 - [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260505.html) — 2026-05-05, 이란 교전→협상 급반전 + WTI $106→$92(-7%)
-- [성과 리뷰 1M](https://kimsl12.github.io/stock-analyst/reports/briefing/performance_review_1m_20260505.html) — 2026-05-05
-- [내 포트폴리오](https://kimsl12.github.io/stock-analyst/reports/briefing/user_portfolio_20260505.html) — 2026-05-05, VOO 91.4% 단일 베팅 → 6축 분산 처방
-- [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안
+- [글로벌 인텔리전스](https://kimsl12.github.io/stock-analyst/reports/briefing/global_intelligence_20260503.html) — 2026-05-03, 4축 교차 메가트렌드 '탈달러+금 Bull' 격상 + 신규 시나리오 #8/#9
+- [주간 리포트](https://kimsl12.github.io/stock-analyst/reports/briefing/weekly_20260502.html) — 2026-05-02, 골디락스 표면·스태그플레이션 이면 + 적중률 77.8% 첫 산정
+- [성과 리뷰 1M](https://kimsl12.github.io/stock-analyst/reports/briefing/performance_review_1m_20260505.html) — 2026-05-05, 첫 1개월 운용 적중률 평가
+- [내 포트폴리오](https://kimsl12.github.io/stock-analyst/reports/briefing/user_portfolio_20260505.html) — 2026-05-05, **VOO 91.5% → 76.6% (4주 매도) + GLD/SCHD 신규 편입**
+- [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안 (1차 실행 완료)
 
 ## 변경 이력
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
-| **v3.10.1** | **2026-04-24** | **날짜 추론 오기 재발 방지 패치 — `date-rules.md` SSOT 신설 + 5개 에이전트(kb-updater, briefing-lead, global-macro-analyst, market-data-collector, stock-analyst-lead) 최우선 규칙 삽입 + `/KB업데이트` `target_date` 필드 강제. 원인: kb-updater가 2026-04-22 날짜로 64개 메타 필드 오기록 (실제 2026-04-24)** |
+| **v3.15** | **2026-05-06** | **Phase 0-D hang 방지 — `report-generator` `run_in_background` 호출 + 후속 커밋 절차 분리. 6분+ 응답 대기로 인한 브리핑 파이프라인 hang 재발 방지** |
+| **v3.14** | **2026-05-05** | **시간대 표현 모순 수정 — KST 발행 시점 ↔ 미국장 상태 매핑 정확화. `briefing-lead` `[v3.14]` + `market-data-collector` `[v3.11]` 시간대 표준 섹션 추가. 모닝/이브닝/주간 슬래시 명령어 시점 표기 정정. 5/5 morning/evening retroactive 재작성** |
+| **v3.13** | **2026-05-05** | **KST/ET 시간대 가이드 신설 — `.claude/_time_guide.md` 7개 섹션 (KST↔ET 매핑, 미국장 시간대, 브리핑 발행 시점↔시장 상태 매핑, 데이터 기준 frontmatter 표준, 금지 표현, 소스 라벨링, ISO 형식). 모든 시간 UTC → GMT+9 (KST) 통일** |
+| **v3.12** | **2026-05-05** | **`wiki-linter` `lint_report` 형식 변경 — 매 .md 파일 폐기, 단일 누적 jsonl로 압축. 5/3 wiki-linter 누락분 복구 + SKILL v3.11 보완 (자기모순·산출물누락 재발 방지)** |
+| **v3.11** | **2026-05-04** | **GitHub Pages main↔gh-pages 자동 사이클 제거 — `report_template.py` 인라인 deploy 코드 삭제 (line 459-481). `.gitignore` `!analysis/briefing/lead_*.md` 화이트리스트 추가 (lead 파일 손실 방지)** |
+| v3.10.1 | 2026-04-24 | 날짜 추론 오기 재발 방지 패치 — `date-rules.md` SSOT 신설 + 5개 에이전트 최우선 규칙 삽입 + `/KB업데이트` `target_date` 필드 강제 |
 | v3.10 | 2026-04-23 | 재분석 Stale 자동 경고 시스템 (14일+ 세션 시작 배너 + 섹터 KB 갱신 매크로 트리거 7일+ 예외) + `/재분석점검` 슬래시 명령 신규 (18개 명령어) |
 | v3.9 | 2026-04-23 | Phase 3 종료 검증(HTML+commit+bootstrap 3단계) + 파일별 명시적 git add (병렬 경합 방지) + 버전 관리 명명 규칙 통일 (`_v2` 폴더 접미사·HTML은 날짜만) + R:R<1.5 진입 보류 자동 태깅 + 컨센서스 초과 경고 블록 자동 삽입 |
 | v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단 |
@@ -319,7 +326,7 @@ fetch_price.py --market --save (daily_snapshot 선행 갱신)
 
 ---
 
-## Knowledge Base 구조 (2026-04-24 기준)
+## Knowledge Base 구조 (2026-05-06 기준)
 
 ```
 knowledge-base/                  ← CURRENT만 (SSOT)
@@ -347,17 +354,26 @@ knowledge-base/                  ← CURRENT만 (SSOT)
 │   └── correlation_matrix.md    [04-24 6 페어 30/90일 롤링 갱신]
 └── portfolio/                   ← 개인 데이터
     ├── model_portfolios.md      ← 4종 (안전/중립/공격/배당)
-    └── user_portfolio.md        ← 등록 완료 (중립형, VOO 91.5% 편중 진단)
+    └── user_portfolio.md        ← 등록 완료 (중립형, 2026-05-05 6축 분산 1차 실행: VOO 76.6%/GLD/SCHD/QQQ/VIG/AGG)
 
 knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
 ```
+
+**2026-05-06 KB 갱신** (wiki-linter P1 후속): `macro/us_monetary_policy.md` (4/29 FOMC 8-4 분열, Core PCE 4.3%, Warsh 5/15 취임), `macro/korea_economy.md` + 루트 redirect (KOSPI 5/6 7,000 돌파, 환율 1,470~1,479원), `market/changelog_2026.jsonl` 시계열 등재.
+
+**2026-05-03 KB 주간 갱신** (6종 글로벌): geopolitics · global_risk_factors · political_cycle · energy · tech_breakthrough · science_tech.
 
 **2026-04-24 KB 집중 갱신** (7종 신규 + 2종 갱신):
 real_estate · consumer_retail · logistics · healthcare_service · food_agriculture · education · insurance (신규)
 banking_capital · correlation_matrix (갱신)
 
-**주의**: 루트 `geopolitics.md`, `global_risk_factors.md`, `us_monetary_policy.md`는
+**주의**: 루트 `geopolitics.md`, `global_risk_factors.md`, `us_monetary_policy.md`, `korea_economy.md`는
 `macro/` 폴더의 SSOT로 redirect하는 포인터 파일로 유지 (기능 무결).
+
+### 시간대 표준 (v3.13~v3.14)
+
+`.claude/_time_guide.md` — 모든 KB·브리핑·에이전트는 **KST (Asia/Seoul, +09:00)** 기준으로 시간 표기.
+미국 정규장 (ET 09:30~16:00) ↔ KST 매핑은 DST/non-DST 분리. 브리핑 발행 시점↔시장 상태 매핑 표 준수.
 
 ---
 
@@ -391,13 +407,28 @@ banking_capital · correlation_matrix (갱신)
 ## GitHub Pages 배포
 
 - **URL**: `https://kimsl12.github.io/stock-analyst/reports/{파일명}.html`
-- **GitHub Actions**: `.github/workflows/deploy-reports.yml`
+- **GitHub Actions**: `pages-build-deployment` (gh-pages 브랜치 push → 자동 빌드)
 - **레이아웃**: 2컬럼 (좌: 종목분석 / 우: 브리핑)
 
-### ⚠️ 현재 상태 (2026-04-24)
+### 현재 상태 (2026-05-06)
 
-GitHub Actions **계정 단위 비활성화 지속** (GitHub Support 티켓 #4287825 심사 진행).
-- `main` push는 정상 동작
-- gh-pages 자동 배포는 Actions 복구 시까지 지연
-- 로컬 HTML 리포트는 `reports/` 폴더에서 직접 열람 가능
-- 2026-04-24 기준 reports/ 누적: 분석 HTML 100+종, 브리핑 HTML 20+건
+- `main` push 정상, gh-pages 빌드 성공 (4/15 마지막 자동 deploy)
+- v3.11 (5/4) 이후 main↔gh-pages 자동 사이클 제거 — `report_template.py` 인라인 deploy 코드 삭제. 사이클 부작용(untracked lead 파일 손실)으로 의도적으로 제거.
+- HTML 리포트는 `reports/` 폴더에서 직접 열람 가능
+- 2026-05-06 기준 reports/ 누적: 분석 HTML 100+종, 브리핑 HTML 30+건
+
+---
+
+## 웹 대시보드 (v3.11+, 진행 중)
+
+`web/` 디렉토리 — Astro 4 SSG + Supabase Auth + Vercel 배포 (모노레포 루트).
+
+| 기능 | 경로 | 비고 |
+|---|---|---|
+| 홈 (검색·종목 클라우드·성과 도넛·홀딩스 도넛) | `/` | RecommendCloud 한국어 매핑 (90+ 티커) |
+| 종목 비교 | `/compare?a={티커1}&b={티커2}` | 모바일 ≤800px 세로 스택 |
+| 시간머신 | `/timemachine` | 1주/1개월/3개월 가격 비교 (yfinance Edge Function) |
+| 로그인 | `/login` | Email + 비밀번호 (Magic Link 폐지, v3.11 이전 변경) |
+| Edge Function | `api/price/[ticker].py` | Vercel Python Serverless, KST 타임스탬프 |
+
+빌드 환경: `BUILD_NEW_PASSWORD` (Supabase Admin API), `SUPABASE_*` 키 — Vercel 빌드 환경변수.

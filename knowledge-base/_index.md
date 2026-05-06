@@ -2,7 +2,7 @@
 updated: 2026-05-06
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-05-03
+lint_last_run: 2026-05-06
 lint_last_post_fix: 2026-05-06
 lint_mode: full
 ---
@@ -18,28 +18,35 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-03 (wiki-linter full)**
+> **최종 갱신: 2026-05-06 (wiki-linter full)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
 
-> [INFO] P0 항목 없음 — 2026-05-03 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
+> [INFO] P0 항목 없음 — 2026-05-06 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
 > [INFO] market/daily_snapshot.md 2026-05-06 모닝 수집 완료 — 5/5 종가 확정: S&P 7,259.22(+0.81%), AMD Q1 어닝서프라이즈(EPS $1.37), ISM 서비스 PMI 53.6(가격 70.7), 이란 협상 대화 지속(데드라인 무사 통과), WTI $102.27(-3.9%). 아시아 5/6 재개장.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-05-03 full)
+## P1 — 이번 주 조치 (탐지: 2026-05-06 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `macro/us_monetary_policy.md` | 2026-04-18 갱신 — 4/29 FOMC(4인 반대, 역사적 분열) + Warsh 5/15 취임 반영 안됨. valid_until 05-18이나 핵심 수치(Core PCE 3.0%→4.3%, 동결 확률 갱신 필요) 구버전 | 중간 | kb-updater에 재수집 위임. FOMC 4/29 결과·Core PCE 4.3%·Warsh 5/15 취임 반영 |
-| `korea_economy.md` (루트) | 2026-04-07 데이터 — valid_until 2026-05-07(4일 후 만료 예정). 원/달러 1,410원 등 최신치 대비 구버전 | 중간 | `macro/korea_economy.md` SSOT 유지. 루트 파일 redirect 포인터 교체 또는 삭제 권장 |
-| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-02이나 완전 수집 미달 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
-| `knowledge-db/` 미등재 파일 3종 | `quantum_2026.jsonl`(17건), `real_estate_2026.jsonl`(26건), `healthcare_service_2026.jsonl`(47건) — _index.md 시계열 DB 표 미등재 | 낮음 | _index.md 시계열 DB 섹션에 추가 ✅ 2026-05-03 완료 |
-| `knowledge-db/` 레코드 수 불일치 5종 | `science_tech_2026.jsonl`(표기 435→실제 492, +57), `macro_2026.jsonl`(713→733, +20), `telecom_next_2026.jsonl`(147→158, +11), `insurance_2026.jsonl`(72→73, +1), `changelog_2026.jsonl`(92→95, +3) | 낮음 | _index.md 레코드 수 현행화 ✅ 2026-05-03 완료 |
-| `market/daily_snapshot.md` | 2026-05-06 모닝 수집 완료. valid_until 2026-05-06 EOD | 없음 | 5/6 이브닝 갱신 권장 |
+| `macro/us_monetary_policy.md` | 2026-04-18 갱신 — 4/29 FOMC(4인 반대, 역사적 분열) + Warsh 5/11 상원 인준·5/15 취임 미반영. valid_until 05-18이나 핵심 수치(Core PCE 3.2%→4.3%, 동결 확률 갱신 필요) 구버전. valid_until까지 12일 남음 | 중간 | kb-updater에 재수집 위임. FOMC 4/29 결과·Core PCE 4.3%·Warsh 5/15 취임·파월 이사직 잔류 반영 |
+| `korea_economy.md` (루트) | 2026-04-07 데이터 — **valid_until 2026-05-07 (내일 만료)**. 원/달러 실제 1,467~1,477원 대비 구버전 수치. redirect 파일이나 valid_until 필드 만료는 P1 경고 발생 | 중간 | `macro/korea_economy.md`(05-02 갱신, 유효)가 SSOT. 루트 파일 valid_until 연장 또는 "permanently redirected" 표시로 교체 권장 |
+| `market/daily_snapshot.md` | valid_until 2026-05-06 EOD — 오늘 자정 만료 예정. 5/6 이브닝 갱신 필요 | 낮음 | 이브닝 브리핑 시 갱신. 5/6 아시아 개장 + 미국장 포함 |
+| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-05이나 완전 수집 미달 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
+| `knowledge-db/market/changelog_2026.jsonl` | 실제 파일 존재(6줄)이나 _index.md 시계열 DB 섹션 미등재 — `market/2026_daily_prices.md` 등 4건은 등재되어 있으나 changelog 누락 | 낮음 | _index.md 시계열 DB 섹션에 추가 ✅ 2026-05-06 완료 |
+| `reference/` 섹션 미동기 | `_time_guide.md` (2026-05-05 추가, .claude/ 내 시간대 표준 가이드)가 reference 섹션 미등재 — 브리핑 에이전트 참조 파일이나 _index.md 참조 파일 표에서 누락 | 낮음 | reference/ 섹션에 `.claude/_time_guide.md` 행 추가 ✅ 2026-05-06 완료 |
+
+> [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
+> [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
+> [P1 정상] industry/ 전체 고아 파일 없음 (**27개** 파일 모두 _index.md 등재 확인). real_estate.md(04-26 등재) 포함.
+> [P1 해결완료 2026-05-03] knowledge-db/ 미등재 파일 3종 + 레코드 불일치 5종 갱신 완료 (wiki-linter full).
+> [P1 해결완료 2026-05-06 후속 복구] 5/3 wiki-linter 누락분 전부 복구 — (1) 교차참조 맵 7행 04-26→05-06 기준 재검증 (VIX 19.31→16.89, Gold $4,709→$4,614, 원달러 1,476→1,473.21, S&P 7,165→7,259.22 등), (2) macro/global_risk_factors.md last_updated 04-26→05-03, (3) Market KB 헤더 05-03→05-06 동기화. lint_last_post_fix 필드 추가.
+> [P1 해결완료 2026-05-06 full] knowledge-db/market/changelog_2026.jsonl 미등재 추가, reference 섹션 _time_guide.md 추가, P1 섹션 현행화 (wiki-linter full).
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
@@ -322,6 +329,7 @@ SUPPLY_CHAIN_PLACEHOLDER
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
 | `market/2026_correlation_log.md` | 36줄 | correlation-monitor |
+| `market/changelog_2026.jsonl` | 6건 (market 서브폴더 전용 changelog, 신규 등재 2026-05-06) | market-data-collector |
 
 ---
 
@@ -332,6 +340,7 @@ SUPPLY_CHAIN_PLACEHOLDER
 | `source_registry.md` | 37개 소스 + 접근성 등급 | data-collector, market-data-collector |
 | `rules_and_constraints.md` | 금지사항 31개 | 모든 에이전트 (세션 시작 시) |
 | `guru_watchlist.md` | 거물 투자자 8인 명단 | market-data-collector (13F 수집 시) |
+| `.claude/_time_guide.md` | KST/ET 시간대 표준 (2026-05-05 추가) — 브리핑 시각 표기 기준 | briefing-lead, market-data-collector, 모든 commands/* |
 
 ---
 
@@ -400,6 +409,7 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 10건)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-05-06 | `macro/korea_economy.md` (SSOT) + `korea_economy.md` (redirect) | **한국경제 deep 갱신(13회 검색)** -- FX 1,470~1,479원(5/6), 5/28 첫 신현송 금통위 매파적 동결+K점도표 상향 컨센, 4월 수출 $85.89B(+48% YoY 역대2위)+무역흑자 $23.77B(역대 4월최대), 누적 1~4월 $305.8B, 반도체 4월 $31.9B(+173.5%/2개월 연속 $30B+), KOSPI 5/6 7,000pt 사상 첫 장중 돌파(5/4 6,936 +5.06%), 외국인 5/4 KOSPI +2.9조원(2000년 이후 3위), 현대-기아 4월 미국 15.92만대(-2.1%, HEV 4.12만 +57.8% 역대최대), 빅3 5/4 1.5조 수주(HD VLGC 5,048+한화 VLAC 5,047+삼성중 LNG-FSRU 4,848억), SK하이닉스 시총 $696B/HBM-DRAM-NAND 2026 사실상 완판/D램 ASP 2026 +33%, 유상대 부총재 "인상 사이클 전환 고민" 시사. 루트 파일 본문 redirect 포인터로 정리 | +17 |
 | 2026-05-03 | `macro/tech_breakthrough.md` | **8개 서브섹터 주간 갱신(18회 검색, +20 DB 레코드)** -- AI: GLM-4.7 NVIDIA 없이 프론티어(중국 독자HW), Blackwell GB200 토큰비용 2센트/M(15x절감), 에이전틱 $10.8B(+42%/Gartner 40%/ROI 171%), EU AI Act 8/2 GPAI 집행 발효. 반도체: TSMC A12/A13(2029) High-NA 미채택(TrendForce 5/1)→ASML 영향, 2nm 2팹 솔드아웃, Samsung SF2 수율50-60%/Exynos2600 양산, Intel 18A 수율55%/18A-P 2026H2. 에너지: Helion 1.5억도C 플라즈마+건설 앞당김, Linglong One 2026H1 상업운전, Samsung SDI+BMW+Solid Power SSB, Donut Lab 400Wh/kg 5분충전. 바이오: Intellia in vivo CRISPR Phase 3 최초 성공(4/27)+FDA 롤링서브미션, CHOP 맞춤형 CRISPR 세계 최초, Foundayo CNPV. 양자: Google Quantum Echoes 13,000x, Quantinuum 94논리큐빗 beyond break-even/S-1 제출, IonQ 원격 광자 인터커넥트 시연. 로봇: Tesla 댈러스·휴스턴 로보택시(56%할인/안드로이드앱), Unitree $610M IPO/335%성장, 중국90%장악. 우주: 2026 1,000번째 Starlink(4/14), FCC D2D 248위성인가, BlueBird 7 궤도미달. 신소재: 탠덤35%+ 파일럿 미국·독일·한국 출하, 유연33.6%(Nature), Wolfspeed 10kV SiC MOSFET(시스템비용30%↓), Cs도핑 26.61%. Disruption Map +3행(중국AI자립, TSMC High-NA 미채택, CRISPR in vivo Phase 3) | +20 |
 | 2026-05-03 | `industry/energy.md` | **에너지 섹터 주간 갱신(16회 검색)** -- Brent 04-30 $126.41(전쟁기간 최고)->05-02 ~$108. WTI $101.94. **UAE OPEC 탈퇴(5/1, 점유율 30% 미만 최초)**. 트럼프 적대행위 종결 선언(호르무즈 90%↓ 지속). GS 연평균 Brent $85(상향). 이란 14개조 평화안 검토. 한화솔루션 Q1 OP 926억(전 사업부 흑자전환 확정). S-Oil Q1 OP 1조+/5/4 사우디 얀부유 90%+ 재가동. KEPCO OP 20조/원전이용률 89%. 두산에너빌리티 수주 14.3조(원자력 5.8조+가스 5.3조). BESS 글로벌 108GW(+40%)/600GWh(2026E). 그린수소 보조금 $1/kg 달성. XLE +45.67%(12M, 유일 양수 섹터) | +24 |
 | 2026-05-03 | `macro/global_risk_factors.md` | **글로벌 리스크 맵 주간 갱신(19회 검색)** -- 호르무즈: 트럼프 5/1 적대행위 종결 선언(War Powers 회피)이나 이란 14개조 불만족+IRGC 재개 경고+통항 90%↓+기뢰 분실. 4/30 Brent $126(역대고)→5/2 WTI $101.94/Brent $108. 스태그플레이션: Core PCE 3.2%(2023.11 최고)+ISM가격 84.6+GDP Q1 +2.0%(컨센↓)+디플레 4.5%. FOMC 4명 반대(1992 이후 최다)+파월 이사직 잔류(의장 5/15 종료). 미중: 5/14~15 정상회담 확정(8년만 방중). 대만: 호르무즈 봉쇄 교훈 학습+라오닝 통과. Gold $4,614(IB 전원 $5K+: JPM $5~6K/GS $5.4K/UBS $5.9K). 희토류 유예 중(2H26 재시행 가능). WEF 사이버 64%. 러-북 2027~31 군사협력. VIX 16.89(거짓 안정 재진입) | +22 |
