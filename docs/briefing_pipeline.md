@@ -258,6 +258,9 @@ briefing-lead 산출물의 **"심층 분석 권장 종목"** 슬롯에서 특정
 ### Phase 0-D 실패 (briefing-report-generator)
 - HTML 생성 실패해도 `analysis/briefing/lead_*.md` 는 보존
 - 사용자 보고에 "HTML 생성 실패: {원인}" 1줄 추가하고 git/push 진행
+- **hang 방지 [v3.15]:** `run_in_background=true` 로 호출하여 부모 세션이 무한 대기하지 않도록 한다.
+  에이전트 완료 통보 수신 시 HTML 후속 커밋. 미수신 시 lead_*.md 만 커밋된 상태로 종료.
+  (상세: `.claude/agents/briefing-lead.md` § Phase 0-D 실패 처리)
 
 ### 토큰 한도 도달
 - 즉시 모든 호출 중단

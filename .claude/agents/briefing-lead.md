@@ -616,6 +616,50 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 
 ---
 
+## Phase 0-D 실패 처리 (서브에이전트 hang 방지) [v3.15 신규]
+
+**원칙:** briefing-report-generator 서브에이전트가 hang/crash 시 부모 세션이 무한 대기하는 것을 방지한다.
+`lead_*.md` 와 KB 데이터는 반드시 보존하고, HTML 생성 실패가 파이프라인을 블로킹하지 않는다.
+
+> 배경: Agent 툴에 timeout 파라미터가 없어, 서브에이전트가 응답하지 않으면
+> 부모 세션이 tool 결과 대기 상태로 영구 정지한다. 컴팩션도 트리거되지 않는다.
+> (2026-05-02 주간리포트 장애: report-generator hang → 87시간 세션 정지)
+
+### 호출 방식
+
+briefing-report-generator 호출 시 **`run_in_background: true`** 를 사용한다:
+
+```
+Agent(
+  subagent_type: "briefing-report-generator",
+  run_in_background: true,
+  ...
+)
+```
+
+### 이후 흐름
+
+```
+1. 백그라운드 에이전트 디스패치
+2. Phase 0-E (commit/push) 즉시 진행 — 에이전트 완료를 기다리지 않음
+3. git add reports/briefing/ → HTML이 이미 생성되었으면 포함, 아니면 skip
+4. lead_*.md + KB 파일 커밋/push 완료
+5. 백그라운드 에이전트 완료 통보 수신 시:
+   → HTML 파일 존재 확인 → 후속 커밋/push (§ 자동 commit/push 후속 커밋 참조)
+6. 통보 미수신 (세션 종료 / 에이전트 hang):
+   → lead_*.md 는 이미 커밋됨 → briefing_pipeline.md §7 Phase 0-D 실패 처리 충족
+```
+
+### 사용자 보고 분기
+
+| 상황 | 보고 |
+|---|---|
+| HTML 정상 생성 (커밋 전 완료) | 평시 보고 (다운로드 링크 포함) |
+| HTML 미생성 (백그라운드 대기중) | "📄 HTML 생성 진행중 — lead_\*.md 먼저 커밋 완료. HTML 완료 시 후속 커밋됩니다." |
+| HTML 생성 실패 (에러 통보) | "⚠️ HTML 생성 실패: {원인} — lead_\*.md 커밋 완료. `--skip-collect` 로 재실행하면 HTML만 재생성됩니다." |
+
+---
+
 ## 자동 commit/push (필수, Bash 직접 실행)
 
 모든 명령 종결 시점에 다음 Bash 블록 실행 (생략·요약 금지):
@@ -637,6 +681,23 @@ git push origin main
 
 Push 실패 시 사용자에게 즉시 보고하고 작업은 완료로 간주.
 충돌 발생 시 `git rebase --abort` 후 사용자 수동 해결 요청.
+
+### 후속 커밋 (Phase 0-D 백그라운드 완료 시) [v3.15]
+
+`run_in_background=true` 로 디스패치한 briefing-report-generator 가 **첫 커밋 이후** 완료 통보를 보내면:
+
+```bash
+cd "$(git rev-parse --show-toplevel)"
+# HTML 생성 확인
+ls reports/briefing/{type}_{YYYYMMDD}.html 2>/dev/null && {
+  git add reports/briefing/{type}_{YYYYMMDD}.html
+  git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD} — HTML 후속 생성"
+  git pull --rebase origin main
+  git push origin main
+}
+```
+
+통보가 오지 않으면 (세션 종료 / hang) 후속 커밋은 생략된다. lead_\*.md 는 이미 보존됨.
 
 ---
 
@@ -765,10 +826,12 @@ knowledge-base/_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 ap
 12. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
 13. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
 14. **[Step 8.6] knowledge-base/_index.md "최근 핵심 인사이트" append** [v3.2 신규]
-15. **Task** `briefing-report-generator` 호출 (template={모듈명})
-    → reports/briefing/{type}_{YYYYMMDD}.html 생성
-16. **자동 commit/push** (위 Bash 블록 — `knowledge-base/_index.md` 포함)
-17. **사용자 보고** (다운로드 가능 메시지)
+15. **Task** `briefing-report-generator` 호출 (template={모듈명}, **run_in_background=true**) [v3.15]
+    → reports/briefing/{type}_{YYYYMMDD}.html 생성 (백그라운드)
+    → 에이전트 완료를 기다리지 않고 step 16 즉시 진행 (§ Phase 0-D 실패 처리 참조)
+16. **자동 commit/push** (위 Bash 블록 — `knowledge-base/_index.md` 포함. HTML 미생성 시에도 진행)
+17. **사용자 보고** (HTML 포함 시 다운로드 링크, 미포함 시 "HTML 생성 진행중" 안내)
+17.5 **백그라운드 에이전트 완료 통보 수신 시** → 후속 커밋 (§ 자동 commit/push 후속 커밋 참조)
 18. 자가 검증:
     - debate-card ≥ 1건, contrarian-card ≥ 1건
     - 13F 시차 고지 보존
