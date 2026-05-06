@@ -23,7 +23,7 @@ lint_mode: full
 |------|------|----------|------|
 
 > [INFO] P0 항목 없음 — 2026-05-03 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
-> [INFO] market/daily_snapshot.md 2026-05-05 모��� 수집 완료 — 이란 교전(5/4 보트 7척 격침+UAE 피격)→협상 낙관(5/5 Trump 데드라인+이란 30일 제안) 급반전. WTI $106→$92(-7%). S&P +1.2%, NASDAQ +2%. KOSPI 5/5 어린이날 휴장(5/6 재개장). valid_until 2026-05-05 EOD(이브닝 갱신 필요).
+> [INFO] market/daily_snapshot.md 2026-05-06 모닝 수집 완료 — 5/5 종가 확정: S&P 7,259.22(+0.81%), AMD Q1 어닝서프라이즈(EPS $1.37), ISM 서비스 PMI 53.6(가격 70.7), 이란 협상 대화 지속(데드라인 무사 통과), WTI $102.27(-3.9%). 아시아 5/6 재개장.
 
 ---
 
@@ -39,7 +39,7 @@ lint_mode: full
 | `knowledge-db/` 미등재 파일 3종 | `quantum_2026.jsonl`(17건), `real_estate_2026.jsonl`(26건), `healthcare_service_2026.jsonl`(47건) — _index.md 시계열 DB 표 미등재 | 낮음 | _index.md 시계열 DB 섹션에 추가 (아래 갱신 완료) |
 | `knowledge-db/` 레코드 수 불일치 5종 | `science_tech_2026.jsonl`(표기 435→실제 492, +57), `macro_2026.jsonl`(713→733, +20), `telecom_next_2026.jsonl`(147→158, +11), `insurance_2026.jsonl`(72→73, +1), `changelog_2026.jsonl`(92→95, +3) | 낮음 | _index.md 레코드 수 현행화 (아래 갱신 완료) |
 | `_index.md` 교차참조 맵 | VIX(19.31→16.89), Gold($4,709→$4,612.50), 원달러 (~04-26 기준→05-02 1,476원) 수치 구버전. daily_snapshot(05-03) 갱신으로 불일치 발생 | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
-| `market/daily_snapshot.md` | valid_until 2026-05-05 (토) — 주말 적용, 다음 거래일(05-05 월) 개장 전 재수집 필요 | 낮음 | 05-05 (월) 재수집 |
+| `market/daily_snapshot.md` | 2026-05-06 모닝 수집 완료. valid_until 2026-05-06 EOD | 없음 | 5/6 이브닝 갱신 권장 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
