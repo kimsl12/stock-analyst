@@ -39,8 +39,11 @@
 - [Micron (MU)](https://kimsl12.github.io/stock-analyst/reports/MU_Micron_20260421.html) — 83.0 Strong Buy 경계
 
 ### 최근 브리핑
-- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260424.html) — 2026-04-24
-- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260424.html) — 2026-04-24, 소프트웨어 AI 검은 목요일 + 한국 GDP +1.7% 서프라이즈
+- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260506.html) — 2026-05-06, AMD Q1 어닝서프라이즈 + ISM 가격 70.7 + 이란 협상 대화 지속
+- [주간 리포트](https://kimsl12.github.io/stock-analyst/reports/briefing/weekly_20260502.html) — 2026-05-02, 골디락스 표면·스태그플레이션 이면 + 적중률 77.8% 첫 산정
+- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260505.html) — 2026-05-05, 이란 교전→협상 급반전 + WTI $106→$92(-7%)
+- [성과 리뷰 1M](https://kimsl12.github.io/stock-analyst/reports/briefing/performance_review_1m_20260505.html) — 2026-05-05
+- [내 포트폴리오](https://kimsl12.github.io/stock-analyst/reports/briefing/user_portfolio_20260505.html) — 2026-05-05, VOO 91.4% 단일 베팅 → 6축 분산 처방
 - [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안
 
 ## 변경 이력

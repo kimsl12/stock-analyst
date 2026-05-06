@@ -1,8 +1,9 @@
 ---
-updated: 2026-05-03
+updated: 2026-05-06
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-05-03
+lint_last_post_fix: 2026-05-06
 lint_mode: full
 ---
 
@@ -36,15 +37,15 @@ lint_mode: full
 | `macro/us_monetary_policy.md` | 2026-04-18 갱신 — 4/29 FOMC(4인 반대, 역사적 분열) + Warsh 5/15 취임 반영 안됨. valid_until 05-18이나 핵심 수치(Core PCE 3.0%→4.3%, 동결 확률 갱신 필요) 구버전 | 중간 | kb-updater에 재수집 위임. FOMC 4/29 결과·Core PCE 4.3%·Warsh 5/15 취임 반영 |
 | `korea_economy.md` (루트) | 2026-04-07 데이터 — valid_until 2026-05-07(4일 후 만료 예정). 원/달러 1,410원 등 최신치 대비 구버전 | 중간 | `macro/korea_economy.md` SSOT 유지. 루트 파일 redirect 포인터 교체 또는 삭제 권장 |
 | `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-02이나 완전 수집 미달 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
-| `knowledge-db/` 미등재 파일 3종 | `quantum_2026.jsonl`(17건), `real_estate_2026.jsonl`(26건), `healthcare_service_2026.jsonl`(47건) — _index.md 시계열 DB 표 미등재 | 낮음 | _index.md 시계열 DB 섹션에 추가 (아래 갱신 완료) |
-| `knowledge-db/` 레코드 수 불일치 5종 | `science_tech_2026.jsonl`(표기 435→실제 492, +57), `macro_2026.jsonl`(713→733, +20), `telecom_next_2026.jsonl`(147→158, +11), `insurance_2026.jsonl`(72→73, +1), `changelog_2026.jsonl`(92→95, +3) | 낮음 | _index.md 레코드 수 현행화 (아래 갱신 완료) |
-| `_index.md` 교차참조 맵 | VIX(19.31→16.89), Gold($4,709→$4,612.50), 원달러 (~04-26 기준→05-02 1,476원) 수치 구버전. daily_snapshot(05-03) 갱신으로 불일치 발생 | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
+| `knowledge-db/` 미등재 파일 3종 | `quantum_2026.jsonl`(17건), `real_estate_2026.jsonl`(26건), `healthcare_service_2026.jsonl`(47건) — _index.md 시계열 DB 표 미등재 | 낮음 | _index.md 시계열 DB 섹션에 추가 ✅ 2026-05-03 완료 |
+| `knowledge-db/` 레코드 수 불일치 5종 | `science_tech_2026.jsonl`(표기 435→실제 492, +57), `macro_2026.jsonl`(713→733, +20), `telecom_next_2026.jsonl`(147→158, +11), `insurance_2026.jsonl`(72→73, +1), `changelog_2026.jsonl`(92→95, +3) | 낮음 | _index.md 레코드 수 현행화 ✅ 2026-05-03 완료 |
 | `market/daily_snapshot.md` | 2026-05-06 모닝 수집 완료. valid_until 2026-05-06 EOD | 없음 | 5/6 이브닝 갱신 권장 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
 > [P1 정상] industry/ 전체 고아 파일 없음 (**27개** 파일 모두 _index.md 등재 확인). real_estate.md(04-26 등재) 포함.
 > [P1 해결완료 2026-05-03] knowledge-db/ 미등재 파일 3종 + 레코드 불일치 5종 갱신 완료 (wiki-linter full).
+> [P1 해결완료 2026-05-06 후속 복구] 5/3 wiki-linter 누락분 전부 복구 — (1) 교차참조 맵 7행 04-26→05-06 기준 재검증 (VIX 19.31→16.89, Gold $4,709→$4,614, 원달러 1,476→1,473.21, S&P 7,165→7,259.22 등), (2) macro/global_risk_factors.md last_updated 04-26→05-03, (3) Market KB 헤더 05-03→05-06 동기화. lint_last_post_fix 필드 추가.
 
 ---
 
@@ -229,6 +230,8 @@ lint_mode: full
 > [2026-04-24 신규]: education.md 신규 (에듀테크·온라인교육·대학·직업훈련·AI교육·교육출판 공백 해소). Industry KB 24 → 25개 체제.
 > [2026-04-24 신규]: insurance.md 신규 (생명·손해·재보험·인슈어테크·Cat bond·Cyber·Trump ACA 공백 해소). Industry KB 25 → 26개 체제.
 > [2026-04-26 wiki-linter]: real_estate.md 고아→등재 (부동산·REITs·PF·모기지). Industry KB 26 → 27개 체제.
+> [2026-05-03 wiki-linter]: KB 건강점검 full 모드. P0 0건 / P1 6건 (us_monetary_policy 구버전 + korea_economy 만료임박 + knowledge-db 미등재 3종 + 레코드 불일치 5종). knowledge-db 표 8행 자동 수정. 교차참조 맵·README·lint_report 미갱신은 2026-05-06 후속 복구.
+> [2026-05-06 후속 복구]: 5/3 wiki-linter 누락분 일관성 복구 — 교차참조 맵 7행 04-26→05-06 기준 재검증, global_risk_factors.md last_updated 04-26→05-03, Market KB 헤더 05-03→05-06 동기화.
 
 ---
 
@@ -240,18 +243,18 @@ lint_mode: full
 | `us_monetary_policy.md` | **Fed 3.50~3.75%(2연속 동결), CPI 3.3%(에너지 주도), Core CPI 2.6%, Core PCE 3.0%, QT 종료, 대차대조표 $6.7T, 10Y 4.31%, DXY 97.70, 침체확률 30~35%** | 트럼프 파월 05/15 해임 위협. 이란전쟁 에너지 인플레. 인하 하반기 후반 전망. Fed 독립성 리스크 | 04-18 | ✅ high |
 | `geopolitics.md` | **IEEPA 위헌→실효 34.7%**. WTI ~$101, Brent ~$108. 리스크 5/5. **트럼프 이란전쟁 종결 선언이나 호르무즈 통항 90%↓ 지속** | **이란 형식 종전·실질 교착**(극고). 5.5 Section 301 과잉생산 공청회 D-2. 5.14~15 미중 베이징 정상회담 D-11. 북한 IAEA 핵능력 강화 경고. 대만 특별국방예산 5.6 협상 | 05-03 | ✅ high |
 | `korea_economy.md` | **Q1 GDP +1.7%(5.5년최고 서프라이즈, YoY +3.6%), GDI +7.5%(38년최고), 4월1-20일 수출 $50.4B(+49.4% 역대최대), 반도체 $18.3B(+182.5%), 경상수지 2월 $23.2B(사상최대)+3월 초과 전망, KOSPI 6,481(4월+20%), 금리 2.50%(7연속동결), 신현송 4/21 취임(매파 유연), 원화 1,480~1,486, WGBI 3주 8.5조 유입, 삼성 Q1 OP 57.2조+SK하이닉스 37.6조(OPM 72%), 외국인 4월 순매수전환(5.8조), 현대+기아 Q1 관세부담 1.62조, KTB 10Y 3.816%** | 신현송 매파 전환(ING 7월 인상 가능). 원화약세 패러독스(경상흑자에도 NPS 해외투자). 외국인 3월 40.35조 순매도→4월 반전. 자동차 25% 관세(부품 4/30 발효). 반도체 관세 7월 확대 검토 | 04-25 | ✅ high |
-| `global_risk_factors.md` | **VIX 19.31(거짓안정 일부해소), F&G 70(Greed심화), DXY 98.52(반등), Gold $4,709(구조적Bull 조정), Brent $105, WTI $97(+15%w), 원달러 1,476, 소비심리 49.8(최종/역대최저), IMF 3.1%(하향), 침체확률 27~35%(하향), 10Y 4.32%, SOX 18일연승(역대최장), BTC $78K** | 호르무즈 기뢰전 격상(나포31척+격침명령+펜타곤6개월). 4/30 트리플폭탄(GDP+PCE+MSFT/META). Section 301 공청회 4/28. 대만 다축에스컬레이션. 사이버리스크 히트맵 추가 | 04-26 | ✅ high |
+| `global_risk_factors.md` | **VIX 16.89(거짓 안정 재진입), F&G 70(Greed심화), DXY ~98(반등), Gold $4,614(IB 전원 $5K+ 목표: JPM $5~6K/GS $5.4K/UBS $5.9K), Brent $108, WTI $101.94, 원달러 1,476, 소비심리 49.8(최종/역대최저), IMF 3.1%(하향), 침체확률 27~35%(하향), 10Y 4.30%, BTC $78K** | 호르무즈: 트럼프 5/1 적대행위 종결 선언이나 이란 14개조 불만족·통항 90%↓·기뢰 분실. 스태그플레이션: Core PCE 3.2% + ISM가격 84.6 + GDP Q1 +2.0%. FOMC 4명 반대(1992 이후 최다). 미중 5/14~15 정상회담. Gold IB 전원 $5K+. 희토류 유예 중 | 05-03 | ✅ high |
 | `political_cycle.md` | **FOMC 4/29 4인 반대(1992년이후최다), FFR 3.50~3.75% 동결, GDP Q1 2.0%/Core PCE 4.3% 스태그플레이션, Warsh 상원위통과+본회의5/11+5/15취임, 파월 이사직잔류, 이란 적대행위종료선언(호르무즈90%↓지속), 중간선거 민주 Generic Ballot +10pp(Emerson), 상원 메인73%/오하이오59%/알래스카67% 민주승리, 한국 지지율64%(갤럽5/1), KOSPI 6598(4월+30.61% 28년최대), 고유가지원금107만명/6094억지급, 지방선거 민주9~13곳, ECB 동결+인플레3.0%+6월인상전망, BOJ 6대3분열+CPI2.8%상향+GDP0.5%반감, 미중5/14~15 사전조율완료, 인도FDI$90B+India-EU FTA체결, NATO 유럽$864B(+14%사상최대)** | Core PCE 4.3%→연내인하0회 기본시나리오. Warsh QT가속→유동성축소. 이란 형식종전·호르무즈실질봉쇄. ��국 민주압승+밸류업→KOSPI 7000 근접. ECB/BOJ 6월 동시인상 가능성. 스태그플레이션 글로벌 확산 | 05-03 | ✅ high |
 | `tech_breakthrough.md` | **AI: GLM-4.7 NVIDIA 없이 프론티어(중국 독자), Blackwell 토큰비용 2센트/M(15x↓), 에이전틱 $10.8B(+42%,Gartner 40%), EU AI Act 8/2 집행 발효. 반도체: TSMC A12/A13 High-NA 미채택(5/1), 2nm 2팹 솔드아웃, Samsung SF2 수율50-60%, Intel 18A 수율55%. 에너지: Helion 1.5억도C 플라즈마, Linglong One 2026H1 상업, Donut Lab SSB 400Wh/kg. 바이오: Intellia in vivo Phase 3 최초 성공(4/27), CHOP 맞춤형 CRISPR. 양자: Google Quantum Echoes 13Kx, Quantinuum 94논리큐빗 beyond break-even. 로봇: Tesla 댈러스·휴스턴 로보택시(56%할인), Unitree $610M IPO, 중국90%. 우주: 2026 1000번째 Starlink(4/14), FCC D2D 248위성. 신소재: 탠덤35%+ 파일럿출하, Wolfspeed 10kV SiC MOSFET** | Disruption Map +3행(중국AI자립, TSMC High-NA 미채택, CRISPR Phase 3). 8개 서브���터 주간 갱신(+20 DB) | 05-03 | ✅ high |
 SUPPLY_CHAIN_PLACEHOLDER
 
 ---
 
-## 📊 Market KB (`knowledge-base/market/`) — 2026-05-03 최신
+## 📊 Market KB (`knowledge-base/market/`) — 2026-05-06 최신
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |
 |------|------|----------|---------------|-----------|
-| `daily_snapshot.md` | ✅ SUCCESS (05-03) valid_until 05-05 confidence:high | 매 거래일 | A-1, B-2, B-3 | 05-05 재실행 (월요일) |
+| `daily_snapshot.md` | ✅ SUCCESS (05-06) valid_until 05-06 EOD confidence:medium-high | 매 거래일 | A-1, B-2, B-3 | 05-07 재실행 |
 | `economic_calendar.md` | ✅ SUCCESS (05-02) valid_until 05-09 confidence:high | 주 1회 | A-4, B-1, C-6 | — |
 | `surprise_index.md` | ⚠️ PARTIAL (05-02) valid_until 05-31 confidence:medium | 매일 | B-4 | 완전 수집 목표 |
 | `correlation_matrix.md` | ✅ SUCCESS (05-03) valid_until 05-31 confidence:medium | 주 1회 | B-5 | — |
@@ -337,13 +340,13 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 | 수치 | 파일 A | 파일 B | 마지막 검증 | 상태 |
 |------|-------|-------|-----------|------|
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신) | 04-26 | SSOT 일치 |
-| VIX | `macro/global_risk_factors.md`: 19.31 (04-26 갱신) | `market/daily_snapshot.md`: ~18.71 (04-25 기준) | 04-26 | ✅ 일치 (시점차 허용범위 — daily_snapshot 04-25, global_risk 04-24 기준) |
-| DXY | `macro/global_risk_factors.md`: 98.52 (04-26 갱신) | `market/daily_snapshot.md`: ~98.51 (04-25 기준) | 04-26 | ✅ 일치 (차이 0.01, 허용범위 이내) |
-| 원/달러 | `macro/korea_economy.md`: 1,480~1,486원 (04-25) | `macro/global_risk_factors.md §2`: 1,476원 (04-26) | 04-26 | ✅ 일치 (시점차 허용범위 이내) |
-| S&P 500 | `macro/us_economy.md`: 7,165(신고가, 04-25) | `market/daily_snapshot.md`: 7,165.08 (04-25 확정) | 04-26 | ✅ 일치 (동일 수치) |
-| WTI | `industry/energy.md`: $101.94 (05-03 갱신, 05-02 종가) | `macro/geopolitics.md`: ~$101 (05-03 갱신, 05-02 종가) | 05-03 | ✅ 일치 (동일 수치, 시점 동기화 완료) |
-| Gold | `macro/global_risk_factors.md §4`: $4,709 (04-26 갱신) | `market/daily_snapshot.md`: ~$4,708.8 (04-25 기준) | 04-26 | ✅ 일치 (차이 $0.2, 허용범위 이내) |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음) | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신, FOMC 4/29 4인 반대 미반영) | 05-06 | ⚠️ macro/us_monetary_policy.md 재수집 권장 (Core PCE 4.3%·Warsh 5/15 취임 미반영) |
+| VIX | `macro/global_risk_factors.md`: 16.89 (05-03 갱신, "거짓 안정 재진입") | `market/daily_snapshot.md`: 미확정 (05-05 종가, 수집 누락) | 05-06 | ⚠️ daily_snapshot.md VIX 수치 미수집 — 다음 갱신 시 보완 |
+| DXY | `macro/global_risk_factors.md`: ~98 (05-03 갱신) | `market/daily_snapshot.md`: ~98 구간 (05-05 ET) | 05-06 | ✅ 일치 (구간 일치, 정확 수치 SSOT 보완 권장) |
+| 원/달러 | `macro/korea_economy.md`: 1,480~1,486원 (04-25, 구버전) | `market/daily_snapshot.md`: 1,473.21 오픈 / 1,467.90~1,477.18 (05-06 KST 오전) | 05-06 | ⚠️ korea_economy.md 갱신 권장 (시점차 11일, 1% 갭) |
+| S&P 500 | `macro/us_economy.md`: 7,165 (04-25 신고가) | `market/daily_snapshot.md`: 7,259.22 (05-05 ET 종가) | 05-06 | ⚠️ us_economy.md 갱신 권장 (10일 시점차, +1.31% 누적) |
+| WTI | `industry/energy.md`: $101.94 (05-03 갱신, 05-02 종가) | `macro/geopolitics.md`: ~$101 (05-03 갱신) / `market/daily_snapshot.md`: $102.27 (05-05 ET 종가, -3.9%) | 05-06 | ✅ 일치 (SSOT 3종 동기화, 다음 갱신 시 5/5 $102.27 반영) |
+| Gold | `macro/global_risk_factors.md §4`: $4,614 (05-03 갱신) | `market/daily_snapshot.md`: $4,518~$4,533 (05-05 종가, 이란 협상 헷지 수요 감소) | 05-06 | ⚠️ -2% 차이 (시점차 — global_risk 05-03, snapshot 05-05) |
 
 ---
 
