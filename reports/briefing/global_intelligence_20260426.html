@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>글로벌 인텔리전스 2026-04-26</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{border-bottom-color:#d0d7de !important;background:#ffffff}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:6px}
+.header .meta{color:var(--sub);font-size:14px}
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:15px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:15px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3);font-weight:600}
+.risk-display{margin:16px 0}
+.risk-label{font-size:14px;color:var(--sub);margin-bottom:6px;display:flex;justify-content:space-between}
+.signal-bar{margin:4px 0;height:12px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:6px}
+.signal-bar.extreme .fill{background:linear-gradient(90deg,var(--warning),var(--down));width:100%}
+.signal-bar.high .fill{background:linear-gradient(90deg,var(--warning),#c05000);width:80%}
+.signal-bar.mid .fill{background:linear-gradient(90deg,var(--highlight),var(--warning));width:60%}
+.signal-bar.low .fill{background:linear-gradient(90deg,var(--up),#2ea043);width:40%}
+.risk-badge{display:inline-block;background:rgba(248,81,73,0.15);color:var(--down);border:1px solid var(--down);border-radius:6px;padding:4px 12px;font-size:13px;font-weight:700;margin-left:8px}
+.scenario-tree{margin:14px 0}
+.scenario-tree .root{text-align:center;padding:14px;background:rgba(255,255,255,0.04);border-radius:8px;margin-bottom:16px;border:1px solid var(--border);font-weight:600}
+.scenario-tree .branches{display:flex;gap:10px;flex-wrap:wrap}
+.scenario-tree .branch{flex:1;min-width:200px;padding:14px;border-radius:8px}
+.scenario-tree .branch.a{background:rgba(63,185,80,0.06);border:1px solid var(--up)}
+.scenario-tree .branch.b{background:rgba(210,153,34,0.06);border:1px solid var(--warning)}
+.scenario-tree .branch.c{background:rgba(248,81,73,0.06);border:1px solid var(--down)}
+.scenario-tree .branch h4{font-size:14px;margin-bottom:8px}
+.scenario-tree .branch .prob{font-size:22px;font-weight:800;margin-bottom:4px}
+.scenario-tree .branch ul{font-size:13px;padding-left:14px;color:var(--sub)}
+.cascade .step{padding:12px 16px;border-radius:0 8px 8px 0;margin:8px 0}
+.cascade .first{background:rgba(255,255,255,0.04);border-left:3px solid var(--neutral)}
+.cascade .second{background:rgba(88,166,255,0.08);border-left:3px solid var(--highlight)}
+.cascade .third{background:rgba(210,153,34,0.08);border-left:3px solid var(--warning)}
+.cascade .step .step-label{font-size:12px;color:var(--sub);font-weight:600;margin-bottom:4px}
+.axis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.axis-cell{padding:14px;border-radius:8px;border:1px solid var(--border)}
+.axis-cell h4{font-size:13px;color:var(--sub);margin-bottom:6px}
+.axis-cell .axis-val{font-size:15px;font-weight:700}
+.stage{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+.stage-mass{background:rgba(63,185,80,0.15);color:var(--up)}
+.stage-comm{background:rgba(88,166,255,0.15);color:var(--highlight)}
+.stage-proto{background:rgba(210,153,34,0.15);color:var(--warning)}
+.stage-reg{background:rgba(248,81,73,0.12);color:var(--down)}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.metric-box{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;border:1px solid var(--border);text-align:center}
+.metric-box .m-label{font-size:12px;color:var(--sub);margin-bottom:4px}
+.metric-box .m-val{font-size:18px;font-weight:800}
+.metric-box .m-chg{font-size:12px;margin-top:2px}
+.risk-extreme{color:var(--down);font-weight:700}
+.cite{font-size:12px;color:var(--sub);margin-top:4px}
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+.disclaimer ol{padding-left:18px}
+.disclaimer ol li{margin-bottom:6px}
+.warning-box{background:rgba(210,153,34,0.10);border:1px solid var(--warning);border-radius:8px;padding:12px 16px;margin:14px 0;color:var(--warning);font-size:14px}
+p{margin:8px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin-bottom:4px}
+strong{font-weight:700}
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:20px}
+  .axis-grid{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .scenario-tree .branches{flex-direction:column}
+}
+.toc{margin:20px 0;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px}
+.toc a{color:var(--highlight);text-decoration:none;display:block;padding:4px 0;font-size:14px}
+.toc a:hover{text-decoration:underline}
+pre{background:rgba(255,255,255,0.04);padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;line-height:1.5}
+</style></head><body>
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;margin:-16px -16px 16px">
+<button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer"><span id="tl">라이트 모드</span></button></div>
+
+<div class="header"><h1>글로벌 인텔리전스 — 2026-04-26</h1>
+<div class="meta">MODULE G | global-macro-analyst(full) + briefing-lead | 위험등급: <span class="risk-extreme">4/5 위험</span></div>
+<div class="risk-display" style="margin-top:12px"><div class="signal-bar high"><div class="fill"></div></div></div>
+<p style="color:var(--sub);font-size:13px;margin-top:8px">호르무즈 기뢰전 장기화 + 4/30 트리플 폭탄 + AI 가위 구조적 분열 | 이전(04-19) 등급 4 → 유지</p>
+</div>
+
+<div class="toc"><strong>목차</strong>
+<a href="#g1">G-1 지정학 파워맵 &amp; 공급망 재편</a>
+<a href="#g2">G-2 정치 사이클 &amp; 정책 변화</a>
+<a href="#g3">G-3 첨단 기술 트래커</a>
+<a href="#g4">G-4 에너지/자원/기후</a>
+<a href="#g5">G-5 4축 교차 메가트렌드</a>
+<a href="#g6">G-6 2차/3차 효과</a>
+<a href="#g7">G-7 글로벌 자본 흐름</a>
+<a href="#g8">G-8 시나리오 플래닝</a>
+<a href="#db">Debate Card</a>
+<a href="#ct">Contrarian Card</a>
+<a href="#rk">위험 등급</a>
+<a href="#g9">G-9 주의사항</a></div>
+
+<!-- ===== G-1 ===== -->
+<div class="sec" id="g1"><h2>G-1. 지정학 파워맵 &amp; 공급망 재편</h2>
+
+<h3>G-1-1. 주요 지정학 축 (5축)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>축</th><th>긴장도</th><th>04-19 대비</th><th>최근 변화</th><th>수혜 자산</th><th>리스크 자산</th></tr></thead><tbody>
+<tr><td>미중 패권경쟁</td><td>🟡 경계</td><td>→ 유지</td><td>CAPE 환급 시스템 4/20 가동. Section 301 강제노동 공청회 <strong>4/28 당일</strong>. 과잉설비 5/5. Bessent "7월 IEEPA 수준 301 복원". Daines 방중 5/1. <strong>5/14~15 정상회담 확정</strong></td><td>방산, Gold, 리쇼어링</td><td>대중 수출기업, 반도체 장비</td></tr>
+<tr class="bg-down"><td><strong>이란-미국/호르무즈</strong></td><td><span class="down">🔴 위험</span></td><td>→ 유지 (기뢰전 격상)</td><td>무기한 휴전이나 <strong>실질 해군 대치</strong>. 4/24 트럼프 기뢰 부설 선박 격침 명령. 4/25 특사 파키스탄행 취소. 펜타곤 기뢰 제거 <strong>6개월 추정</strong>. 나포 31척. 통항 8척/일(전쟁 전 100+척의 8%)</td><td>정유(마진 $44.9), 방산, Gold, LNG</td><td>항공, 해운, 석유화학</td></tr>
+<tr><td>러시아-우크라이나</td><td>🟡 경계</td><td>→ 유지</td><td>전선 교착. NATO 5% 2035 합의 구현 가속(독일 EUR 108.2B)</td><td>유럽 방산, 한국 방산</td><td>유럽 에너지 집약 산업</td></tr>
+<tr class="bg-warning"><td><strong>대만 리스크</strong></td><td><span class="warning">🟠 경계 상향</span></td><td>↑ 격상</td><td><strong>다축 에스컬레이션</strong>: 랴오닝 4/20 해협 통과, 라이칭더 영공차단(역사상 첫), 17명 군간첩 적발, 봉쇄돌파훈련. 일본 이카즈치 해협 통과+살상무기 규제 완화</td><td>삼성 파운드리, Intel</td><td>TSMC, Apple, NVIDIA</td></tr>
+<tr><td>북한/한반도</td><td>🟡 경계</td><td>→ 유지</td><td>4월 4회 미사일 시험(2026년 7번째). 역대급 빈도. 러시아 설계 유사 구축함 순항미사일</td><td>한국 방산</td><td>코리아 디스카운트 민감</td></tr>
+</tbody></table></div>
+
+<h3>G-1-2. 글로벌 공급망 재편 추적 (5대 산업)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>산업</th><th>핵심 이동</th><th>진행 단계</th><th>04-19 대비</th><th>수혜</th></tr></thead><tbody>
+<tr><td>반도체</td><td>대만→미국(TSMC 12팹+4패키징 확장 검토), 한국, 일본</td><td>초기→가속</td><td>TSMC Arizona 12팹 확장. Intel 18A HVM. Samsung 2nm GAA</td><td>Intel, TSMC Arizona, 삼성 Taylor</td></tr>
+<tr><td>에너지</td><td>걸프→미국 셰일, 가이아나, 브라질 + SPR 22.46Mbl 방출</td><td>위기 대응 (장기화)</td><td>WTI $97(+17%w). 기뢰 제거 6개월. SPR 방출 정책 전환</td><td>미국 셰일, LNG, X-Energy</td></tr>
+<tr><td>희토류</td><td>중국 정제 91%→FORGE 54개국</td><td>초기 (유예 중)</td><td>유예 ~2026.11.10 유지</td><td>MP Materials, Lynas</td></tr>
+<tr><td>식량/비료</td><td>걸프 비료→비중동 다변화</td><td>위기 대응</td><td>요소비료 $702(재봉쇄 반등, YTD+82%)</td><td>CF Industries, Nutrien</td></tr>
+<tr><td>방산</td><td>미국 독점→한국/유럽 분산</td><td>가속</td><td>NATO 5% 2035. NDAA $901B. K-방산 $20B 목표</td><td>한화에어로, KAI, Rheinmetall</td></tr>
+</tbody></table></div>
+<p class="cite">[출처: knowledge-base/macro/geopolitics.md, 2026-04-26; knowledge-base/macro/supply_chain.md, 2026-04-25]</p>
+</div>
+
+<!-- ===== G-2 ===== -->
+<div class="sec" id="g2"><h2>G-2. 정치 사이클 &amp; 정책 변화</h2>
+
+<h3>G-2-1. 주요국 정치 상황</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>국가</th><th>정권</th><th>정책 방향</th><th>04-19 대비 변화</th><th>투자 시사점</th></tr></thead><tbody>
+<tr><td>미국</td><td>트럼프 2기</td><td>Section 122→301 전환 가속. Warsh 인준 전진</td><td>Bessent "7월 IEEPA 수준 관세 복원". DOJ 수사 종료(4/24). FOMC 동결 99.5%</td><td>7월 관세 체제 전환. Warsh QT 가속→유동성 축소</td></tr>
+<tr class="bg-up"><td><strong>한국</strong></td><td>이재명 정부</td><td>밸류업 590사. 상법 3차 자사주 소각. 고유가 지원금 4/27</td><td><strong>지지율 65.5%(취임 후 최고). Q1 GDP +1.7% 서프라이즈. KOSPI 6,476</strong></td><td>밸류업+WGBI+반도체 삼중 재평가. 6/3 지방선거 압승</td></tr>
+<tr><td>중국</td><td>시진핑 장기집권</td><td>15차 FYP GDP 4.5~5%. 5/14~15 정상회담 준비</td><td>Daines 방중 5/1. 대규모 타결 기대 낮음</td><td>기술 자립 장기화</td></tr>
+<tr><td>EU/ECB</td><td>집행위+ECB</td><td>ECB 2.0% 동결. 4/29~30 동결 vs 인상 50% 혼조</td><td>NATO 5% 2035 합의 구현. EU-US 협정 trilogue 개시</td><td>ECB 연내 3회 인상 전망. 방산 구조적 수혜</td></tr>
+<tr><td>일본</td><td>다카이치 정부</td><td>FY2026 122.3조엔(역대최대). BOJ 0.75%→7월 1.0%</td><td>IMF 긴축 권고. JGB 2.44%(29년래 최고)</td><td>엔화 약세 구조적. JGB 3% 전망</td></tr>
+<tr><td>인도</td><td>모디 3기</td><td>GDP 6.4%. FDI +22%. 한-인도 $50B</td><td>이재명-모디 4/20 회담. 중국 FDI 재허용</td><td>China+1 수혜 재확인</td></tr>
+</tbody></table></div>
+
+<h3>G-2-2. 정책 → 산업 영향 매핑</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>정책/법안</th><th>국가</th><th>진행</th><th>돈 몰리는 섹터</th><th>돈 빠지는 섹터</th><th>영향 규모</th></tr></thead><tbody>
+<tr class="bg-down"><td><strong>Section 301 이중 조사</strong></td><td>미국</td><td><strong>4/28 공청회 당일</strong>. 5/5 과잉설비. 7월 복원 목표</td><td>미국 내 제조업, 리쇼어링</td><td>한국 포함 16개국</td><td><span class="down">극고</span></td></tr>
+<tr><td>Warsh Fed 의장 인준</td><td>미국</td><td>DOJ 수사 종료(4/24). 상원은행위 통과 예상</td><td>단기국채</td><td>장기국채, 유동성 의존</td><td>고</td></tr>
+<tr><td>밸류업 + 상법 3차</td><td>한국</td><td>590사 공시. 자사주 소각 의무화(1.5년 유예)</td><td>고배당주, 금융지주</td><td>지배주주 경영권 의존</td><td>고</td></tr>
+<tr><td>NATO GDP 5% (2035)</td><td>NATO</td><td>합의 완료</td><td>유럽 방산, 한국 방산</td><td>사회복지 예산 압박</td><td><span class="down">극고</span> (10년 구조적)</td></tr>
+<tr class="bg-warning"><td><strong>FOMC 동결 + 4/30 Core PCE</strong></td><td>미국</td><td>동결 99.5%. Core PCE 3.1~3.2% 상방 리스크</td><td>단기채(동결 확정)</td><td>연내 인하 기대</td><td><span class="down">극고</span></td></tr>
+<tr><td>26.2조 추경 + 고유가 지원금</td><td>한국</td><td>4/27 지급 개시. 3,577만명</td><td>내수 소비재, 지역화폐</td><td>부동산(대출 규제)</td><td>중</td></tr>
+</tbody></table></div>
+
+<h3>G-2-3. 정책 리스크 캘린더 (향후 1~3개월)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>일정</th><th>이벤트</th><th>시장 영향</th></tr></thead><tbody>
+<tr class="bg-warning"><td><strong>4/28 (월)</strong></td><td><strong>Section 301 강제노동 공청회 + FOMC 시작</strong></td><td>관세 체제 방향 + Fed 톤</td></tr>
+<tr class="bg-warning"><td><strong>4/29 (화)</strong></td><td><strong>FOMC 성명서 + MSFT/META/AMZN/GOOGL Q1</strong></td><td>파월 톤(closely monitoring 40%) + 빅테크 AI CapEx 4건 동시</td></tr>
+<tr class="bg-down"><td><strong>4/30 (수)</strong></td><td><strong>★ 트리플 폭탄: GDP Q1 + Core PCE + AAPL/LLY + ECB</strong></td><td>GDPNow 1.24% 대비 실제. Core PCE 3.2%+ 시 인하 0회</td></tr>
+<tr><td>5/1 (목)</td><td>Daines 초당파 사절단 방중</td><td>미중 정상회담 사전 조율</td></tr>
+<tr><td>5/5 (월)</td><td>Section 301 과잉설비 공청회</td><td>한국 포함 16개국 관세 방향</td></tr>
+<tr><td>5/8 (목)</td><td>4월 고용보고서</td><td>침체 vs 연착륙</td></tr>
+<tr class="bg-warning"><td><strong>5/12 (월)</strong></td><td><strong>4월 CPI</strong></td><td>WTI $97 반영 에너지 CPI 재급등 가능</td></tr>
+<tr class="bg-down"><td><strong>5/14~15</strong></td><td><strong>미중 정상회담 (베이징)</strong></td><td>트럼프 2017년 이후 첫 방중. 대규모 타결 기대 낮음</td></tr>
+<tr><td>5/15</td><td>파월 의장직 만료 → Warsh 전환</td><td>순조로운 전환 기대</td></tr>
+<tr><td>6/3</td><td>한국 지방선거</td><td>민주 압승 시 밸류업 추진력 강화</td></tr>
+<tr class="bg-warning"><td><strong>7/24</strong></td><td><strong>Section 122 글로벌 10% 만료</strong></td><td>Section 301 대체(유력) vs 만료</td></tr>
+</tbody></table></div>
+<p class="cite">[출처: knowledge-base/macro/political_cycle.md, 2026-04-26]</p>
+</div>
+
+<!-- ===== G-3 ===== -->
+<div class="sec" id="g3"><h2>G-3. 첨단 기술 &amp; 과학 혁신</h2>
+
+<h3>G-3-1. 기술 트래커 (단계 판정 필수)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>기술</th><th>현재 단계</th><th>04-19 대비</th><th>핵심 진전</th><th>투자 시점</th><th>관련 종목/ETF</th></tr></thead><tbody>
+<tr class="bg-up"><td><strong>프론티어 LLM</strong></td><td><span class="stage stage-mass">🌍 대중화</span></td><td>→ 유지</td><td><strong>GPT-5.5 출시(4/23)</strong> 완전 재훈련 옴니모달. <strong>Claude Mythos Preview</strong> SWE-bench 93.9%</td><td>이미 진입</td><td>MSFT GOOG AMZN NVDA / BOTZ</td></tr>
+<tr><td>Agentic AI</td><td><span class="stage stage-mass">🌍 대중화</span></td><td>→ 유지</td><td>시장 $10.91B(+43%). GPT-5.5 네이티브 에이전트 런타임. ROI 171%</td><td>이미 진입</td><td>MSFT CRM GOOG NOW / BOTZ</td></tr>
+<tr><td>TSMC N2 (2nm GAA)</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>양산, 수율 70%. N2P 2026 양산. A16(1.4nm) Q4 리스크 생산</td><td>2026~2027</td><td>TSM / SOXX SMH</td></tr>
+<tr class="bg-highlight"><td><strong>삼성 SF2 (2nm GAA)</strong></td><td><span class="stage stage-comm">🏭 상용화</span></td><td><strong>↑ 신규</strong></td><td>High-NA EUV 2대 수령. Exynos 2600+Tesla AI칩 생산 예정. 월 2.1만매</td><td>2026~2027</td><td>005930.KS / SOXX</td></tr>
+<tr><td>Intel 18A</td><td><span class="stage stage-proto">🧪→🏭 전환</span></td><td>→ 유지</td><td><strong>Q1 EPS +2,800% 서프라이즈</strong>. High-NA EUV 프로덕션 투입</td><td>2026H2</td><td>INTC / SOXX</td></tr>
+<tr><td>High-NA EUV</td><td><span class="stage stage-proto">🧪→🏭 전환</span></td><td>→ 유지</td><td>2세대 EXE:5200B 수락시험(Intel). Samsung 2대 수령</td><td>2027~2028</td><td>ASML / SOXX</td></tr>
+<tr><td>칩렛/패키징</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>$66.6B→$350.8B(2034). CoWoS 13만wpm(4배)</td><td>2026~</td><td>TSM ASE AMKR / SMH</td></tr>
+<tr><td>핵융합</td><td><span class="stage stage-proto">🧪 시제품</span></td><td>→ 유지</td><td>CFS SPARC 첫 자석 설치. ARC 400MWe Virginia (Google 합의). 민간 $10B+</td><td>2030s~</td><td>DJT / NLR URNM</td></tr>
+<tr class="bg-highlight"><td><strong>SMR</strong></td><td><span class="stage stage-proto">🧪→🏭 전환</span></td><td><strong>↑ 격상 근접</strong></td><td><strong>중국 Linglong One 세계 최초 상업 SMR 임박</strong>. NuScale+TVA 6GW. <strong>X-Energy IPO $23→$30.11</strong></td><td>2026~2030</td><td>SMR BWXT XE / NLR</td></tr>
+<tr><td>전고체 배터리</td><td><span class="stage stage-proto">🧪 시제품</span></td><td>→ 유지</td><td>Samsung SDI S-Line 세계 최대 파일럿. 500Wh/kg, 9분 충전</td><td>2027~2028</td><td>005930.KS / BATT LIT</td></tr>
+<tr><td>GLP-1 경구</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>Lilly Foundayo FDA 승인($149/월). Novo Wegovy 경구 출시</td><td>2026~</td><td>NVO LLY / XLV IBB</td></tr>
+<tr><td>CRISPR in vivo</td><td><span class="stage stage-proto">🧪 시제품</span></td><td>→ 유지</td><td>오사카대 CRISPR-GLP1 돌파 — 1회 투여 만성질환</td><td>2028~2030</td><td>CRSP BEAM NTLA / ARKG</td></tr>
+<tr><td>양자 QEC</td><td><span class="stage stage-proto">🧪 시제품</span></td><td>→ 유지</td><td>QLDPC 코드 2건. IonQ GAAP $130M(+202%). Quantinuum $20B IPO</td><td>2027~2030</td><td>IONQ GOOG IBM / QTUM</td></tr>
+<tr><td>휴머노이드 Atlas</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>2026 전량 출하 확정. 기업가치 $40B. 현대 메타플랜트+DeepMind</td><td>2026~</td><td>005380.KS / BOTZ</td></tr>
+<tr class="bg-highlight"><td><strong>휴머노이드 중국</strong></td><td><span class="stage stage-comm">🏭 상용화</span></td><td><strong>↑ 신규</strong></td><td><strong>2026 생산 +94%</strong>. AgiBot 10,000대. Figure 03 24/7 자율</td><td>2026~</td><td>TSLA / BOTZ ROBO</td></tr>
+<tr><td>로보택시 Waymo</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>10개 도시, 주당 50만+. 도쿄·런던 해외 확장</td><td>2026~</td><td>GOOG / ARKQ</td></tr>
+<tr><td>Starlink</td><td><span class="stage stage-mass">🌍 대중화</span></td><td>→ 유지</td><td>2026 40번째 미션(4/22). V3 Tbps급</td><td>이미 진입</td><td>SpaceX(비상장) / ARKX</td></tr>
+<tr><td>SiC 전력반도체</td><td><span class="stage stage-comm">🏭 상용화</span></td><td>→ 유지</td><td>Wolfspeed 300mm 단결정 최초. CAGR 29%</td><td>2026~</td><td>WOLF ON STM / SOXX</td></tr>
+</tbody></table></div>
+
+<h3>G-3-2. 기술 → 산업 파괴 경로 (핵심 5개)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>신기술</th><th>파괴 대상</th><th>파괴 메커니즘</th><th>창출 산업</th><th>04-26 핵심 변화</th></tr></thead><tbody>
+<tr class="bg-warning"><td><strong>"AI 가위" (인프라↑ vs SaaS↓)</strong></td><td>전통 SaaS 고정가격</td><td>Intel +2,800%·SOX 18일 vs ServiceNow -18%·IBM -10.3%</td><td>AI 인프라 플랫폼, 종량제 SaaS</td><td><strong>04-23~25 공식화. PSR 프리미엄 전환</strong></td></tr>
+<tr><td>Agentic AI (🌍)</td><td>콜센터/BPO/사무</td><td>85% 기업 배포. GPT-5.5 에이전트 OS 통합. ROI 171%</td><td>AI 에이전트 플랫폼</td><td>GPT-5.5 에이전트 런타임</td></tr>
+<tr><td>2nm GAA (🏭)</td><td>7nm+ 레거시 팹</td><td>TSMC N2 수율 70%. 삼성 SF2 High-NA EUV</td><td>선단 파운드리, EDA</td><td>삼성 2nm GAA 가시화</td></tr>
+<tr><td>GLP-1 경구 전환 (🏭)</td><td>다이어트/비만수술</td><td>Foundayo+Wegovy 경구 동시 출시</td><td>경구 GLP-1, 심혈관 확장</td><td>Lilly 경구시장 60%</td></tr>
+<tr><td>SMR 상업운전 (🧪→🏭)</td><td>대형 원전 독점</td><td>Linglong One 최초 상업 SMR. AI DC 전력 가속</td><td>소형모듈원전, DC 전력</td><td><strong>X-Energy IPO $10B+</strong></td></tr>
+</tbody></table></div>
+<p class="cite">[출처: knowledge-base/macro/tech_breakthrough.md, 2026-04-26]</p>
+</div>
+
+<!-- ===== G-4 ===== -->
+<div class="sec" id="g4"><h2>G-4. 에너지/자원/기후</h2>
+
+<h3>G-4-1. 에너지 전환 대시보드</h3>
+<div class="metrics-grid">
+<div class="metric-box"><div class="m-label">WTI</div><div class="m-val down">$97</div><div class="m-chg down">+17% 주간</div></div>
+<div class="metric-box"><div class="m-label">Brent</div><div class="m-val down">$105</div><div class="m-chg neutral">5일 연속</div></div>
+<div class="metric-box"><div class="m-label">구리</div><div class="m-val warning">$13,200</div><div class="m-chg up">+4.4%</div></div>
+<div class="metric-box"><div class="m-label">요소비료</div><div class="m-val down">$702</div><div class="m-chg down">YTD +82%</div></div>
+</div>
+
+<div style="overflow-x:auto"><table><thead><tr><th>에너지원</th><th>현 비중</th><th>방향</th><th>04-26 핵심</th><th>시사점</th></tr></thead><tbody>
+<tr><td>석유</td><td>~31%</td><td>감소 (느림)</td><td>WTI $97, Brent $105. 기뢰 제거 6개월. SPR 22.46Mbl 방출</td><td>유가 충격 연말까지 가능</td></tr>
+<tr><td>천연가스</td><td>~24%</td><td>증가</td><td>Golden Pass LNG 2026 신규 공급. 호르무즈 리스크 상충</td><td>LNG 호르무즈 우회 프리미엄</td></tr>
+<tr><td>재생에너지</td><td>~15%</td><td>급증</td><td>페로브스카이트 30.6% 하이브리드 효율. 그래핀 안정성 3,670시간</td><td>차세대 태양전지 가속</td></tr>
+<tr class="bg-up"><td><strong>원자력/SMR</strong></td><td>~10%</td><td>증가</td><td><strong>X-Energy IPO 역대최대. Linglong One 임박. Marks/Druckenmiller 컨버전스</strong></td><td>AI DC 전력→SMR 가속</td></tr>
+<tr><td>석탄</td><td>~20%</td><td>감소 (가속)</td><td>탄소 규제 강화</td><td>신흥국 일부 의존</td></tr>
+</tbody></table></div>
+
+<h3>G-4-2. 핵심 광물/자원 공급</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>자원</th><th>가격</th><th>공급 리스크</th><th>04-19 대비</th><th>관련 ETF</th></tr></thead><tbody>
+<tr><td>구리</td><td>$13,200/mt (+4.4%)</td><td>Section 232 50%. 구조적 적자 330~400kt</td><td>중국 노동절 전 재고확보 반등</td><td>COPX</td></tr>
+<tr><td>Gold</td><td>$4,709 (-3.2%)</td><td>구조적 Bull. JPM $5,200, GS $5,400, UBS $6,200</td><td>주간 조정이나 3대 IB 전원 $5,000+</td><td>GLD IAU</td></tr>
+<tr><td>리튬</td><td>CNY 173,000/t</td><td>YTD +50%. 유가 급등→EV 기대</td><td>3개월래 최고</td><td>LIT</td></tr>
+<tr><td>희토류</td><td>유예 중 안정</td><td>중국 정제 91%. 유예 ~2026.11.10</td><td>변동 없음</td><td>REMX</td></tr>
+<tr class="bg-down"><td><strong>요소비료</strong></td><td><strong>$702/t</strong></td><td><strong>YTD +82%. 호르무즈 장기화</strong></td><td>재봉쇄 반등. 한국 호르무즈 비료 43.7%</td><td>DBA(간접)</td></tr>
+</tbody></table></div>
+
+<h3>G-4-3. AI 데이터센터 전력 수요 (G-3 ↔ G-4 교차)</h3>
+<ul>
+<li><strong>하이퍼스케일러 CapEx</strong>: $635~665B(4사 합산, +67~74% YoY). 5사 $660~690B</li>
+<li><strong>전력 병목</strong>: 변압기 납기 128~144주(DC 50%+ 지연). Vertiv $15B, Eaton $12B</li>
+<li><strong>X-Energy IPO 연결</strong>: AI DC 전력 수요→SMR 수요 가속. X-Energy $23→$30.11(원자력 역대최대 $10B+)</li>
+<li><strong>구리 Triple Demand</strong>: AI 인프라 110kt + 방산 + 관세 50%</li>
+<li><strong>투자 경로</strong>: 전력 인프라(GE Vernova, Quanta), 냉각(Vertiv), 구리(COPX), SMR(XE, BWXT), 변압기(효성중공업)</li>
+</ul>
+<p class="cite">[출처: knowledge-base/macro/supply_chain.md, 2026-04-25; knowledge-base/macro/tech_breakthrough.md, 2026-04-26]</p>
+</div>
+
+<!-- ===== G-5 ===== -->
+<div class="sec" id="g5"><h2>G-5. ★ 4축 교차 메가트렌드 ★</h2>
+
+<p>4축 = 지정학(G-1) x 정치(G-2) x 기술(G-3) x 에너지(G-4)</p>
+
+<div class="axis-grid">
+<div class="axis-cell" style="border-color:var(--down)"><h4>G-1 지정학</h4><div class="axis-val down">5/5 충격</div><p style="font-size:12px;color:var(--sub)">호르무즈 기뢰전 6개월 + 대만 다축 격상</p></div>
+<div class="axis-cell" style="border-color:var(--warning)"><h4>G-2 정치</h4><div class="axis-val warning">3/5 경계</div><p style="font-size:12px;color:var(--sub)">4/28 Section 301 + 7월 관세 전환</p></div>
+<div class="axis-cell" style="border-color:var(--up)"><h4>G-3 기술</h4><div class="axis-val up">급가속</div><p style="font-size:12px;color:var(--sub)">GPT-5.5 + AI 가위 공식화 + SOX 18일</p></div>
+<div class="axis-cell" style="border-color:var(--down)"><h4>G-4 에너지</h4><div class="axis-val down">4/5 위험</div><p style="font-size:12px;color:var(--sub)">WTI $97 + 비료 $702 + SMR-DC 수렴</p></div>
+</div>
+
+<h3>G-5-1. 4축 교차 테마 도출</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>테마</th><th>교차 축</th><th>인과 경로</th><th>시간축</th><th>확신</th><th>분류</th></tr></thead><tbody>
+<tr class="bg-up"><td><strong>방산 구조적 슈퍼사이클</strong></td><td>G-1 x G-2 x G-3 x G-4</td><td>이란+러우+대만→NATO 5%→유럽 재무장→K-방산 수출→드론/AI→에너지 안보</td><td>중기~장기 (5~10년)</td><td><strong>높음</strong></td><td><strong>메가 테마</strong></td></tr>
+<tr class="bg-up"><td><strong>AI 인프라 슈퍼사이클 "7회 초~중반"</strong></td><td>G-3 x G-4 x G-2</td><td>SOX 18일 연승. Intel +2,800%. CapEx $660B. CoWoS 병목. SMR/전력→정책 지원</td><td>중기 (3~7년)</td><td><strong>높음</strong></td><td><strong>메가 테마</strong></td></tr>
+<tr><td>탈달러 자산 구조적 Bull</td><td>G-1 x G-2 x G-4</td><td>재정적자 $38.4T+Warsh QT+호르무즈→DXY 약세→Gold→중앙은행 585톤/분기</td><td>중기 (1~3년)</td><td><strong>높음</strong></td><td>강화된 테마</td></tr>
+<tr><td>반도체 공급망 이중 분단</td><td>G-1 x G-2 x G-3</td><td>미중 301+대만 다축→CHIPS Act(Intel 18A, TSMC 12팹)→미/한/일 삼극</td><td>중기 (2~5년)</td><td><strong>높음</strong></td><td>강화된 테마</td></tr>
+<tr class="bg-up"><td><strong>한국 4중 재평가</strong></td><td>G-2 x G-3</td><td>밸류업 590사+WGBI $56~70B+Q1 GDP +1.7%+반도체 슈퍼사이클→KOSPI 6,476(4월 +26.4% G20 1위)</td><td>중기 (1~2년)</td><td><strong>높음</strong></td><td>강화된 테마 ↑</td></tr>
+<tr><td>에너지-비료-식량 삼중 인플레</td><td>G-1 x G-4</td><td>호르무즈 기뢰전→WTI $97→비료 $702→식량 CPI→Fed 동결→소비 위축</td><td>단기 (3~6개월)</td><td>중간</td><td>일반 테마</td></tr>
+<tr class="bg-warning"><td>★ <strong>서비스 인플레 고착</strong></td><td>G-1 x G-2 x G-4</td><td><strong>WTI 하락에도 10Y 상승 최초 포착</strong>. 에너지→서비스 동력 이동. ISM 서비스가격 70.7. 4/30 Core PCE 판별자</td><td>단기~중기 (3~12개월)</td><td>중간</td><td><strong>숨은 테마 ★ 신규</strong></td></tr>
+<tr class="bg-warning"><td>★ <strong>SMR-AI DC 전력 수렴</strong></td><td>G-3 x G-4 x G-2</td><td>X-Energy IPO+Marks/Druckenmiller 컨버전스. AI DC 병목→SMR 유일 기저전력→빅테크 5사 직접 발주(MS 2GW/Google 500MW/Amazon 5GW/Meta 6.6GW)</td><td>중기 (2~5년)</td><td><strong>높음</strong></td><td><strong>숨은 테마 ★ 신규</strong></td></tr>
+</tbody></table></div>
+
+<h3>G-5-2. 장기 메가트렌드 진행 상황</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>메가트렌드</th><th>진행도</th><th>최근 변화</th><th>가속/감속</th></tr></thead><tbody>
+<tr><td>인구구조 변화</td><td>중기</td><td>GLP-1 경구 동시 출시</td><td>가속</td></tr>
+<tr><td>탈세계화/블록경제</td><td>중기</td><td>Section 301 이중 조사. 7월 관세 전환 확정적</td><td>가속</td></tr>
+<tr class="bg-up"><td><strong>디지털 전환/AI</strong></td><td>후기</td><td>GPT-5.5+Mythos. "AI 가위" 공식화. CapEx $660B</td><td><strong>급가속</strong></td></tr>
+<tr><td>에너지 전환</td><td>초중기</td><td>X-Energy IPO. SMR 상업운전 임박. 호르무즈→안보 재인식</td><td>가속 (위기가 촉매)</td></tr>
+<tr><td>건강수명 혁명</td><td>초중기</td><td>GLP-1 경구 2종. CRISPR-GLP1 돌파</td><td>가속</td></tr>
+<tr><td>금융 시스템 재편</td><td>초기</td><td>DXY 98.52 구조적 약세. Gold 3대 IB $5,000+. BTC $78K</td><td>가속</td></tr>
+</tbody></table></div>
+<p class="cite">[출처: knowledge-base/macro/ 전체, market/ 전체 교차 분석]</p>
+</div>
+
+<!-- ===== G-6 ===== -->
+<div class="sec" id="g6"><h2>G-6. 2차/3차 효과 분석</h2>
+
+<h3>이벤트 1: 호르무즈 기뢰전 장기화 (펜타곤 6개월)</h3>
+<div class="cascade">
+<div class="step first"><div class="step-label">1차 효과 (완전 반영)</div>WTI $97(주간+17%). 에너지 가격 급등. SPR 22.46Mbl 방출</div>
+<div class="step second"><div class="step-label">2차 효과 (부분 반영)</div>기뢰 제거 6개월→유가 충격 연말 지속. <strong>"서비스 인플레 고착" 구조 전환</strong>(WTI 하락해도 10Y 상승). ISM 양채널 극단(제조 78.3+서비스 70.7). 4/30 Core PCE 3.2%+ 시 연내 인하 0회</div>
+<div class="step third"><div class="step-label">3차 효과 (미반영 — 선행 기회)</div>SPR 역대 최저→에너지 안보 정책 근본 재편(<strong>SMR/핵융합 정책 가속</strong>). 한국 95% 호르무즈 원유 의존→비중동 다변화 국가전략. 이란 핵무장 경로→중동 핵확산 도미노</div>
+</div>
+
+<h3>이벤트 2: "AI 가위" 구조적 분열 (04-23~25)</h3>
+<div class="cascade">
+<div class="step first"><div class="step-label">1차 효과 (완전 반영)</div>Philly Sox 18일 연승. Intel +2,800%. ServiceNow -18%, IBM -10.3%</div>
+<div class="step second"><div class="step-label">2차 효과 (부분 반영)</div>PSR 프리미엄 체제 전환. S&amp;P 랠리 <strong>40%가 반도체 기여</strong>→breadth 극단 쇠퇴. 1990년대 인터넷 초기 유사</div>
+<div class="step third"><div class="step-label">3차 효과 (미반영 — 양방향 리스크)</div>AI 인프라 10년 지속 시→에너지/전력/구리/냉각 "2차 파생 슈퍼사이클". 그러나 <strong>breadth 쇠퇴가 2000Q1·2007Q3·2021Q4 패턴과 유사</strong>→조정 시 반도체 쏠림이 증폭기</div>
+</div>
+
+<h3>이벤트 3: 4/30 "트리플 폭탄" (GDP+PCE+빅테크)</h3>
+<div class="cascade">
+<div class="step first"><div class="step-label">1차 효과 (기대 반영)</div>GDP Q1 Advance(GDPNow 1.24%) + Core PCE 3월(3.1~3.2%) + 빅테크 AI CapEx 동시</div>
+<div class="step second"><div class="step-label">2차 효과 (미반영 — 4일 후)</div>GDP &lt;1.0% + Core PCE &gt;3.2% 동시 시→<strong>스태그플레이션 내러티브 공식화</strong>. 반대로 GDP &gt;2.0% + PCE &lt;3.0%→골디락스 재확인→S&amp;P 7,500</div>
+<div class="step third"><div class="step-label">3차 효과 (미반영 — 시나리오 분기)</div>스태그 시→Fed 딜레마 극대화→DXY 추가 약세→Gold $5,000→채권 자경단. 골디락스→하반기 1회 인하→S&amp;P 7,500+→VIX 15</div>
+</div>
+
+<h3>G-6-2. 과거 유사 사례 비교</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>지금 이벤트</th><th>과거 유사</th><th>유사도</th><th>당시 2/3차 효과</th><th>적용?</th></tr></thead><tbody>
+<tr><td>호르무즈 기뢰전 6개월</td><td>1987~88 이란-이라크 탱커전쟁</td><td>75%</td><td>유가 변동성 18개월. 미 해군 이란 격파. 기뢰 제거 8개월+</td><td>높음. 현재 GPS 원격 기뢰로 난이도 상승</td></tr>
+<tr><td>"AI 가위" 분열</td><td>1999~2000 닷컴/Old Economy</td><td>65%</td><td>나스닥 200% vs 다우 -6%. 이후 버블 붕괴</td><td>부분. AI는 실물 수요이나 쏠림은 유사</td></tr>
+<tr><td>4/30 트리플 이벤트</td><td>2022.06 GDP+PCE+FOMC 주간</td><td>70%</td><td>S&amp;P -20% YTD. Fed 75bp 연속. 바닥 4개월 후</td><td>부분. S&amp;P 신고가에서 접근→하방 더 클 수 있음</td></tr>
+</tbody></table></div>
+<p class="cite">[출처: knowledge-base/macro/ 전체 교차 분석, 과거 사례 연구]</p>
+</div>
+
+<!-- ===== G-7 ===== -->
+<div class="sec" id="g7"><h2>G-7. 글로벌 자본 흐름</h2>
+
+<h3>G-7-1. 자본 흐름 지도</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>흐름 방향</th><th>빠지는 곳</th><th>들어가는 곳</th><th>규모/지표</th><th>핵심 이유</th><th>지속성</th></tr></thead><tbody>
+<tr><td>달러→Gold</td><td>달러 자산 (DXY 98.52)</td><td>Gold $4,709</td><td>3대 IB $5,000+. 중앙은행 585톤/분기</td><td>재정적자+Warsh QT+탈달러 3중</td><td><strong>지속</strong> (구조적)</td></tr>
+<tr><td>달러→BTC</td><td>달러 위험자산</td><td>BTC $78K</td><td>$80K 저항 근접. RSI 62</td><td>NASDAQ 동행 회복+Spot ETF</td><td>중기 지속</td></tr>
+<tr class="bg-up"><td><strong>미국→한국 채권</strong></td><td>미국 국채</td><td>한국 국채 (WGBI)</td><td><strong>3주 8.5조원. 총 $56~70B/18개월</strong></td><td>WGBI 추종 자산 $2.5~3.0조</td><td><strong>지속</strong> (단계적)</td></tr>
+<tr><td>글로벌→AI 반도체</td><td>광범위 성장주</td><td>AI 인프라 집중</td><td>SOX 18일. S&amp;P 랠리 40% 반도체</td><td>AI CapEx $660B. "AI 가위"</td><td>중기 지속 (breadth 리스크)</td></tr>
+<tr class="bg-up"><td><strong>외국인→한국 주식</strong></td><td>해외</td><td>KOSPI</td><td><strong>4월 순매수 전환(5.8조). 3월 40.35조 순매도 반전</strong></td><td>Q1 GDP 서프라이즈+밸류업+반도체</td><td><strong>지속</strong> (구조적 재평가)</td></tr>
+</tbody></table></div>
+
+<h3>G-7-2. 달러 사이클 &amp; 금융 시스템 변화</h3>
+<p><strong>DXY 구조적 약세 — 3중 동인:</strong></p>
+<ul>
+<li><strong>재정적자</strong>: $38.4T(GDP 101%). FY2026 $1.9T. CBO 2036년 120%</li>
+<li><strong>Fed 전환</strong>: Warsh QT 가속 선호. DOJ 수사 종료(4/24). 해임 시나리오 대폭 하락</li>
+<li><strong>탈달러 수요</strong>: Gold $4,709(주간 -3.2% 조정). 중앙은행 585톤/분기. BTC $78K</li>
+</ul>
+<p><strong>Gold 구조적 Bull — 조정 구간:</strong> $4,709/oz(주간 -3.2%). 3대 IB 전원 $5,000+: JPM $5,200~5,300(4Q26), GS $5,400(연말), UBS $6,200. Gold-실질금리 상관 붕괴(+0.18) 5주째</p>
+<p><strong>WGBI 편입 효과:</strong> 3주간 8.5조원 순매수. KTB 10Y 3.816%. 총 유입 $56~70B(18개월). 단계적 가속</p>
+<p class="cite">[출처: knowledge-base/macro/global_risk_factors.md, knowledge-base/market/daily_snapshot.md, correlation_matrix.md]</p>
+</div>
+
+<!-- ===== G-8 ===== -->
+<div class="sec" id="g8"><h2>G-8. ★ 시나리오 플래닝 ★</h2>
+
+<h3>G-8-1. 핵심 갈림길 (3개)</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>갈림길</th><th>시나리오 A</th><th>확률</th><th>시나리오 B</th><th>확률</th><th>시나리오 C</th><th>확률</th><th>04-19 대비</th></tr></thead><tbody>
+<tr><td><strong>1. 호르무즈 기뢰전</strong></td><td>A. 협상 진전+기뢰 제거 시작</td><td>25%</td><td><strong>B. 교착 장기화(현 상태)</strong></td><td><strong>50%</strong></td><td>C. 전면전 재개</td><td>25%</td><td>A 35→25%. B 40→50%</td></tr>
+<tr class="bg-warning"><td><strong>2. 4/30 트리플 폭탄</strong></td><td>A. 골디락스(GDP &gt;2%, PCE &lt;3%)</td><td>30%</td><td><strong>B. 혼조(GDP 1~2%, PCE 3~3.2%)</strong></td><td><strong>45%</strong></td><td>C. 스태그(GDP &lt;1%, PCE &gt;3.2%)</td><td>25%</td><td><strong>신규</strong> (Fed 리더십 교체)</td></tr>
+<tr><td><strong>3. Section 301/관세</strong></td><td>A. 차등 관세(한국 경감)</td><td>30%</td><td>B. 광범위 높은 관세</td><td>45%</td><td>C. Section 122 단순 만료</td><td>25%</td><td>변동 없음</td></tr>
+</tbody></table></div>
+<p style="font-size:13px;color:var(--sub)">04-19 "Fed 리더십" 갈림길 → <span class="up">해소</span>: DOJ 수사 종료(4/24)로 Warsh 인준 장애물 제거. 4/30 "트리플 폭탄"으로 교체.</p>
+
+<h3>G-8-2. 시나리오 트리 — "48시간 결정전" (4/28~30)</h3>
+<div class="scenario-tree">
+<div class="root">2026-04-28~30 "48시간 결정전"</div>
+<div style="margin-bottom:16px">
+<p style="font-size:14px;margin-bottom:8px"><strong>Phase 1: FOMC 4/28~29</strong> (동결 99.5%)</p>
+<div class="branches">
+<div class="branch b" style="flex:2"><h4>파월 "closely monitoring" (40%)</h4><ul><li>채권 변동성 확대</li><li>Gold 소폭 상승</li></ul></div>
+<div class="branch a" style="flex:3"><h4>파월 중립 톤 (60%)</h4><ul><li>시장 무반응</li><li>4/30으로 포커스 이동</li></ul></div>
+</div>
+</div>
+<div style="margin-bottom:16px">
+<p style="font-size:14px;margin-bottom:8px"><strong>Phase 2: 빅테크 4건 4/29 장후</strong> (MSFT/META/AMZN/GOOGL)</p>
+<div class="branches">
+<div class="branch a" style="flex:3"><h4>AI CapEx 유지/상향 (60%)</h4><ul><li>"AI 가위" 지속</li><li>반도체 추가 상승</li><li>SaaS 추가 하방</li></ul></div>
+<div class="branch c" style="flex:2"><h4>AI CapEx 하향 (40%)</h4><ul><li>AI 인프라 사이클 의문</li><li>반도체 -5~10%</li></ul></div>
+</div>
+</div>
+<div>
+<p style="font-size:14px;margin-bottom:8px"><strong>Phase 3: 4/30 트리플 폭탄</strong></p>
+<div class="branches">
+<div class="branch a"><h4>A. 골디락스</h4><div class="prob up">30%</div><ul><li>GDP &gt;2.0% + Core PCE &lt;3.0%</li><li>하반기 1회 인하 유지</li><li>S&amp;P 7,300~7,500</li><li>VIX 16 안착</li></ul></div>
+<div class="branch b"><h4>B. 혼조 ← 베이스</h4><div class="prob warning">45%</div><ul><li>GDP 1.0~2.0% + PCE 3.0~3.2%</li><li>Fed "data dependent" 유지</li><li>S&amp;P 7,000~7,200 레인지</li><li>5월 CPI·고용이 다음 분기점</li></ul></div>
+<div class="branch c"><h4>C. 스태그</h4><div class="prob down">25%</div><ul><li>GDP &lt;1.0% + Core PCE &gt;3.2%</li><li>스태그플레이션 내러티브</li><li>S&amp;P -3~5% (7,000 이탈)</li><li>Gold $4,900+, VIX 25~30</li></ul></div>
+</div>
+</div>
+</div>
+
+<div class="warning-box">⚠️ <strong>복합 리스크</strong>: 호르무즈 기뢰전 6개월 + 스태그(시나리오 C) 동시 시 → S&amp;P -10~15% (June correction), Gold $5,200+, BTC $65K</div>
+
+<h3>G-8-3. 시나리오별 4종 포트폴리오 대응표</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>갈림길</th><th>시나리오</th><th>안전형</th><th>중립형</th><th>공격형</th><th>배당형</th></tr></thead><tbody>
+<tr><td rowspan="3">호르무즈</td><td class="up">A. 협상(25%)</td><td>채권 축소, 주식 확대</td><td>반도체/AI 확대, 에너지 축소</td><td>성장주/EM 공격</td><td>에너지 배당 축소</td></tr>
+<tr><td class="warning">B. 교착(50%)</td><td>Gold 15~20%, 단기채 확대</td><td>현금 20%, 방산/Gold 유지</td><td>방산+Gold+에너지 집중</td><td>에너지 배당 유지</td></tr>
+<tr><td class="down">C. 전면전(25%)</td><td>Gold 25%, 현금 30%</td><td>Gold 20%, 방산 15%, 현금 25%</td><td>Gold+방산+에너지 올인</td><td>배당 중단, 안전자산</td></tr>
+<tr><td rowspan="3">4/30</td><td class="up">A. 골디락스(30%)</td><td>주식 확대, 국채 축소</td><td>AI/반도체 확대, 현금 축소</td><td>레버리지 가능</td><td>배당 성장주 확대</td></tr>
+<tr><td class="warning">B. 혼조(45%)</td><td>변동 없음</td><td>현금 유지, 5월 관망</td><td>선별 진입(Beat 종목만)</td><td>현 비중 유지</td></tr>
+<tr><td class="down">C. 스태그(25%)</td><td>Gold 25%, 현금 30%</td><td>Gold+단기채 30%, 주식 축소</td><td>풋 헤지, VIX 롱</td><td>TLT 축소, Gold 전환</td></tr>
+<tr><td rowspan="3">301</td><td class="up">A. 한국 경감(30%)</td><td>한국 소폭 확대</td><td>한국 반도체/방산 확대</td><td>KOSPI 공격</td><td>한국 배당주 확대</td></tr>
+<tr><td class="warning">B. 광범위(45%)</td><td>미국 내수+Gold</td><td>리쇼어링+인도 EM</td><td>관세 수혜 미국주</td><td>미국 배당주 중심</td></tr>
+<tr><td class="neutral">C. 만료(25%)</td><td>글로벌 분산</td><td>EM+수출주 확대</td><td>한국 수출주 공격</td><td>글로벌 배당 분산</td></tr>
+</tbody></table></div>
+</div>
+
+<!-- ===== Debate Card ===== -->
+<div class="sec" id="db">
+<div class="debate-card">
+<div class="card-title">Debate Card: "4축 중 어느 축이 가장 강한 동인인가" (04-26 갱신)</div>
+
+<div class="bull"><strong>Bull Case — 기술이 최강 동인으로 전환</strong></div>
+<p>"AI 가위"가 시장 구조를 재편. SOX 18일 연승, Intel +2,800%, S&amp;P 랠리 40%가 반도체. AI CapEx $660B는 GDP +0.3~0.5%p. GPT-5.5+Mythos 동시 출시. HBM 전량 매진, 메모리 +700%. 한국 Q1 GDP +1.7%의 55%가 반도체. SMR-AI DC 수렴으로 에너지까지 기술 축 주도.</p>
+<p style="font-size:13px;color:var(--sub)">반론: breadth 극단 쇠퇴(랠리 40% 반도체). 1999~2000 닷컴 유사 쏠림. CapEx 하향 시 즉시 역전.</p>
+
+<div class="bear"><strong>Bear Case — 지정학이 여전히 최강</strong></div>
+<p>호르무즈 기뢰전 6개월은 모든 시나리오 전제를 바꿈. WTI $97→Core PCE 3.2%+→Fed 인하 0회→소비 위축→GDP 하방. "서비스 인플레 고착" 최초 포착: WTI 하락해도 10Y 상승. ISM 양채널(제조 78.3+서비스 70.7) 극단은 2022.03 이후 최초. 특사 취소→협상 교착 심화.</p>
+<p style="font-size:13px;color:var(--sub)">반론: 호르무즈는 "촉매"이지 "구조"가 아님. 합의 시 WTI $80 안착, 시나리오 리셋.</p>
+
+<div class="verdict"><strong>판정 (04-26)</strong><br>
+<strong>단기(1~3개월):</strong> 지정학 ≥ 기술 &gt; 에너지 &gt; 정치 — 4/30 트리플 폭탄이 즉시 방향 결정<br>
+<strong>중기(3~12개월):</strong> 기술 &gt; 정치 ≥ 지정학 &gt; 에너지 — AI 투자 사이클 + Section 301<br>
+<strong>장기(1~5년):</strong> 기술 &gt; 에너지 &gt; 정치 &gt; 지정학 — AI/반도체/SMR 경제 구조 재편<br>
+<span style="font-size:13px;color:var(--sub)">04-19 대비: 단기 "지정학 &gt; 기술"에서 "지정학 ≥ 기술"로 격차 축소. "AI 가위" 공식화가 기술 축 상향.</span></div>
+</div>
+</div>
+
+<!-- ===== Contrarian Card ===== -->
+<div class="sec" id="ct">
+<div class="contrarian-card">
+<div class="card-title">Contrarian Card: "시장이 가격에 반영 안 한 4축 교차점" (04-26)</div>
+
+<div><strong>시장 과낙관 포인트 — "S&amp;P 7,165 신고가의 breadth 함정"</strong></div>
+<div class="assumption">시장은 SOX 18일 연승에 환호. 그러나:</div>
+<div class="signal">
+<ul>
+<li>S&amp;P 랠리 12.8%의 <strong>40%가 반도체 한 섹터</strong>. 1990년대 인터넷 초기 유사 집중도</li>
+<li>F&amp;G 70(Greed) vs 소비심리 49.8(역대최저) 괴리 20pt</li>
+<li>기뢰전 6개월은 "유가 하락→디스인플레" 서사를 두 번 다시 쓸 수 없음을 의미</li>
+<li>4/30 트리플 폭탄 전 과도한 낙관은 VIX 25~30 갭 반등 리스크</li>
+</ul>
+<p><strong>시장이 놓친 것:</strong> WTI 하락에도 10Y 상승하는 <strong>"서비스 인플레 고착"</strong> 구조 전환. 4/30 Core PCE &gt;3.2% 시 연내 인하 0회.</p>
+</div>
+
+<div style="margin-top:16px"><strong>시장 과비관 포인트 — "한국 Q1 GDP +1.7%의 과소평가"</strong></div>
+<div class="signal">
+<ul>
+<li>Q1 GDP +1.7%(컨센의 2배, 5.5년 최고). 실질 GDI +7.5%(38년 최고)</li>
+<li>4월 1~20일 수출 $50.4B(+49.4%, 역대 최대). 반도체 $18.3B(+182.5%)</li>
+<li>WGBI 3주 8.5조 유입. 외국인 4월 순매수 전환(5.8조)</li>
+<li>KOSPI PBR 1.4배(글로벌 3.1배의 45%). <strong>4월 +26.4% G20 1위</strong></li>
+</ul>
+<p><strong>시장이 놓친 것:</strong> 반도체 슈퍼사이클+밸류업+WGBI+GDP 서프라이즈 <strong>"4중 재평가" 구간</strong>. JPMorgan KOSPI 목표 8,500.</p>
+</div>
+</div>
+</div>
+
+<!-- ===== 위험 등급 ===== -->
+<div class="sec" id="rk"><h2>매크로 위험 등급</h2>
+
+<div style="overflow-x:auto"><table><thead><tr><th>항목</th><th>등급</th><th>04-19 대비</th><th>근거</th></tr></thead><tbody>
+<tr><td>미국 통화정책</td><td><span class="warning">3 (경계)</span></td><td>→ 유지</td><td>3.50~3.75% 동결. Warsh 인준 전진. 4/30 Core PCE 분기점</td></tr>
+<tr class="bg-down"><td><strong>지정학</strong></td><td><span class="down"><strong>5 (충격)</strong></span></td><td>→ 유지</td><td>기뢰전 격상. 펜타곤 6개월. 특사 취소. 대만 다축</td></tr>
+<tr><td>정치 사이클</td><td><span class="warning">3 (경계)</span></td><td>→ 유지</td><td>4/28 Section 301. 7월 관세 전환. 한국 6/3 선거</td></tr>
+<tr><td>공급망</td><td><span class="down">4 (위험)</span></td><td>→ 유지</td><td>기뢰 6개월. 희토류 11/10 만료. 비료 $702. 변압기 128~144주</td></tr>
+<tr><td>미국 경제</td><td><span class="warning">3 (경계)</span></td><td>→ 유지</td><td>GDPNow 1.24%. ISM 양채널. 소비심리 49.8. 침체 27~35%</td></tr>
+<tr class="bg-up"><td><strong>한국 경제</strong></td><td><span class="up"><strong>2 (관찰)</strong></span></td><td>→ 유지</td><td>Q1 GDP +1.7%. KOSPI 6,476. 수출 +49.4%. WGBI 유입</td></tr>
+<tr><td>글로벌 리스크</td><td><span class="down">4 (위험)</span></td><td>→ 유지</td><td>F&amp;G 70 vs 소비심리 49.8 괴리. SOX 18일. 4/30 트리플</td></tr>
+</tbody></table></div>
+
+<div class="risk-display" style="margin-top:16px">
+<div class="risk-label"><span>종합 위험등급</span><span class="risk-extreme">4/5 위험 <span class="risk-badge">HIGH</span></span></div>
+<div class="signal-bar high"><div class="fill"></div></div>
+<p style="font-size:13px;color:var(--sub);margin-top:6px">지정학 5 + 공급망 4 + 글로벌 4. 4/30 결과가 3(경계) 하향 vs 5(충격) 상향 분기점</p>
+<p style="font-size:12px;color:var(--sub)">등급 정의: 1 안정 / 2 관찰 / 3 경계 / 4 위험 / 5 충격</p>
+</div>
+</div>
+
+<!-- ===== G-9 ===== -->
+<div class="sec" id="g9"><h2>G-9. ⚠️ MODULE G 주의사항</h2>
+<div class="disclaimer">
+<h4>⚠️ 필수 주의사항 (F-7 / G-9)</h4>
+<ol>
+<li><strong>AI 생성 경고</strong>: 본 분석은 AI(Claude Opus 4.6)가 생성한 것으로, 전문 투자 조언이 아닙니다. 모든 투자 결정은 독자적 판단과 전문가 상담을 거쳐야 합니다.</li>
+<li><strong>KB 데이터 시차</strong>: macro/ 8파일(04-25~04-26), market/ 5파일(04-26 종가 기준). 실시간 데이터와 최대 1일 시차.</li>
+<li><strong>지정학 예측의 본질적 불확실성</strong>: 호르무즈 상황은 24시간 내 완전 반전(4/17~18 사례)될 수 있음. 오만 무스카트 대안 중재 가능성 열려 있음.</li>
+<li><strong>시나리오 확률 주관성</strong>: G-8의 모든 확률은 KB 데이터 기반 주관적 추정치. 시장 내재 확률과 다를 수 있으며, 4/30 결과로 즉시 재조정 필요.</li>
+<li><strong>"AI 가위" 판정의 표본 부족</strong>: 04-23~25 3일간 데이터로 "구조적 분열" 판정. 4/29 빅테크 4건 실적이 확인/부정 결정.</li>
+<li><strong>13F 시차 경고</strong>: guru_positions.md는 2025 Q4 기준(04-18 갱신). 현재 포지션과 최대 4~5개월 시차.</li>
+</ol>
+</div>
+</div>
+
+<!-- ===== 푸터 ===== -->
+<div class="footer">
+<h3>명령어 가이드</h3>
+<table><tbody>
+<tr><td><code>/모닝브리핑</code></td><td>매일 아침 시장 개요 + 당일 이벤트</td></tr>
+<tr><td><code>/이브닝브리핑</code></td><td>장 마감 후 시장 리뷰 + 다음 거래일 전망</td></tr>
+<tr><td><code>/주간리포트</code></td><td>주간 종합 분석 + 시나리오 추적</td></tr>
+<tr><td><code>/글로벌인텔리전스</code></td><td>MODULE G 4축 매크로 분석 (본 리포트)</td></tr>
+<tr><td><code>/크립토브리핑</code></td><td>크립토 시장 전문 분석</td></tr>
+<tr><td><code>/모델포트폴리오</code></td><td>4종 모델 포트폴리오 리밸런싱 제안</td></tr>
+<tr><td><code>/내포트폴리오</code></td><td>사용자 포트폴리오 분석 + 개선 제안</td></tr>
+</tbody></table>
+<p style="margin-top:12px;font-size:12px;color:var(--sub)">
+Briefing System v3.4 | global-macro-analyst(full) + briefing-lead | 2026-04-26 KST<br>
+인용: macro/ 8파일 + market/ 5파일 + industry/ 참조
+</p>
+</div>
+
+<script>
+function toggleTheme(){
+  const h=document.documentElement;
+  const c=h.getAttribute('data-theme')==='light'?'':'light';
+  h.setAttribute('data-theme',c);
+  document.getElementById('tl').textContent=c?'다크 모드':'라이트 모드';
+}
+</script>
+</body></html>

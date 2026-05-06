@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사용자 포트폴리오 리밸런싱 | 2026-04-21</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-red: #f85149;
+    --accent-orange: #d29922;
+    --accent-purple: #8b5cf6;
+    --accent-gold: #f0c040;
+    --accent-cyan: #39d2c0;
+    --accent-yellow: #f0c040;
+  }
+  [data-theme="light"] {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eaeef2;
+    --border: #d0d7de;
+    --text-primary: #1f2328;
+    --text-secondary: #57606a;
+    --text-muted: #8c959f;
+    --accent-blue: #0969da;
+    --accent-green: #1a7f37;
+    --accent-red: #cf222e;
+    --accent-orange: #bc4c00;
+    --accent-purple: #6639ba;
+    --accent-gold: #9a6700;
+    --accent-cyan: #1b7c83;
+    --accent-yellow: #9a6700;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: background 0.2s, color 0.2s;
+  }
+  .theme-toggle-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-secondary); border-bottom: 1px solid var(--border);
+    padding: 10px 16px; margin: -20px -20px 20px -20px;
+    display: flex; justify-content: flex-end; align-items: center; gap: 12px;
+  }
+  .theme-toggle-btn {
+    background: var(--bg-tertiary); color: var(--text-primary);
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 6px 14px; cursor: pointer; font-size: 0.85rem;
+  }
+  .theme-toggle-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 20px; margin-bottom: 30px;
+  }
+  h1 {
+    color: var(--accent-blue);
+    font-size: 2.1rem; font-weight: 700;
+    margin-bottom: 8px; letter-spacing: -0.02em;
+  }
+  .subtitle { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 4px; }
+  .meta { color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
+  h2 {
+    color: var(--accent-blue);
+    font-size: 1.55rem; font-weight: 600;
+    margin: 40px 0 18px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem; font-weight: 600;
+    margin: 26px 0 14px;
+  }
+  h4 {
+    color: var(--accent-cyan);
+    font-size: 1.05rem; font-weight: 600;
+    margin: 18px 0 10px;
+  }
+  p { margin-bottom: 14px; color: var(--text-primary); }
+  strong { color: var(--accent-blue); font-weight: 600; }
+  em { color: var(--text-secondary); font-style: italic; }
+  ul, ol { margin: 12px 0 18px 24px; color: var(--text-primary); }
+  li { margin-bottom: 6px; }
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0 24px;
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    font-size: 0.92rem;
+  }
+  thead { background: var(--bg-tertiary); }
+  th {
+    padding: 12px 14px; text-align: left; font-weight: 600;
+    color: var(--accent-blue); border-bottom: 1px solid var(--border);
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  td {
+    padding: 11px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--bg-tertiary); }
+  .summary-card {
+    background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(139,92,246,0.06));
+    border: 1px solid var(--accent-blue);
+    border-radius: 10px; padding: 20px 24px; margin: 20px 0 30px;
+  }
+  .summary-card h3 { color: var(--accent-blue); margin-top: 0; }
+  .summary-card ul { list-style: none; margin-left: 0; }
+  .summary-card li { padding: 6px 0; border-bottom: 1px dashed var(--border); }
+  .summary-card li:last-child { border-bottom: none; }
+  .summary-card li strong { color: var(--accent-cyan); display: inline-block; min-width: 140px; }
+
+  /* debate/contrarian cards */
+  .debate-card {
+    background: rgba(139,92,246,0.06);
+    border-left: 4px solid var(--accent-purple);
+    border-radius: 6px; padding: 16px 20px; margin: 20px 0;
+  }
+  .debate-card .card-title {
+    color: var(--accent-purple); font-weight: 700;
+    font-size: 1.05rem; margin-bottom: 10px;
+  }
+  .debate-card .bull-bear { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+  .debate-card .bull { color: var(--accent-green); }
+  .debate-card .bear { color: var(--accent-red); }
+  .debate-card .verdict {
+    background: var(--bg-tertiary); padding: 10px 14px;
+    border-radius: 6px; margin-top: 12px;
+    border-left: 3px solid var(--accent-purple);
+  }
+  .contrarian-card {
+    background: rgba(210,153,34,0.06);
+    border-left: 4px solid var(--accent-orange);
+    border-radius: 6px; padding: 16px 20px; margin: 20px 0;
+  }
+  .contrarian-card .card-title {
+    color: var(--accent-orange); font-weight: 700;
+    font-size: 1.05rem; margin-bottom: 10px;
+  }
+  .contrarian-card .section { margin: 10px 0; }
+  .contrarian-card .section strong { color: var(--accent-orange); }
+
+  /* progress bars */
+  .bar-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 80px;
+    gap: 12px; align-items: center;
+    margin: 8px 0;
+  }
+  .bar-label { color: var(--text-primary); font-weight: 500; font-size: 0.9rem; }
+  .bar-track {
+    background: var(--bg-tertiary);
+    border-radius: 10px; height: 22px;
+    overflow: hidden; border: 1px solid var(--border);
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 8px;
+    color: #fff; font-size: 0.8rem; font-weight: 600;
+    border-radius: 10px;
+  }
+  .bar-fill.voo { background: linear-gradient(90deg, #f85149, #d29922); }
+  .bar-fill.usmv { background: linear-gradient(90deg, #8b5cf6, #58a6ff); }
+  .bar-fill.gld { background: linear-gradient(90deg, #f0c040, #d29922); }
+  .bar-fill.schp { background: linear-gradient(90deg, #39d2c0, #58a6ff); }
+  .bar-fill.agg { background: linear-gradient(90deg, #3fb950, #39d2c0); }
+  .bar-fill.qqq { background: linear-gradient(90deg, #58a6ff, #8b5cf6); }
+  .bar-fill.div { background: linear-gradient(90deg, #d29922, #f0c040); }
+  .bar-fill.cash { background: linear-gradient(90deg, #8b949e, #484f58); }
+  .bar-value { color: var(--text-secondary); font-size: 0.85rem; text-align: right; }
+
+  .scenario-grid { display: grid; grid-template-columns: 120px 1fr; gap: 10px; margin: 14px 0; }
+  .scenario-label { font-weight: 600; padding: 8px 0; }
+  .scenario-bar-track { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 10px; height: 28px; position: relative; overflow: hidden; }
+  .scenario-bar-fill { height: 100%; display: flex; align-items: center; padding: 0 12px; color: #fff; font-size: 0.85rem; font-weight: 600; border-radius: 10px; }
+  .scenario-a { background: linear-gradient(90deg, #3fb950, #39d2c0); }
+  .scenario-b { background: linear-gradient(90deg, #d29922, #f85149); }
+  .scenario-c { background: linear-gradient(90deg, #f85149, #8b5cf6); }
+
+  .step-flow { margin: 22px 0; }
+  .step-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent-blue);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .step-box.step1 { border-left-color: var(--accent-green); }
+  .step-box.step2 { border-left-color: var(--accent-orange); }
+  .step-box.step3 { border-left-color: var(--accent-purple); }
+  .step-title {
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;
+  }
+  .step-box.step1 .step-title { color: var(--accent-green); }
+  .step-box.step2 .step-title { color: var(--accent-orange); }
+  .step-box.step3 .step-title { color: var(--accent-purple); }
+
+  .warning-box {
+    background: rgba(248,81,73,0.05);
+    border: 1px solid var(--accent-red);
+    border-left: 4px solid var(--accent-red);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 20px 0;
+  }
+  .warning-box h3 { color: var(--accent-red); margin-top: 0; }
+  .warning-box ul { margin-left: 20px; }
+
+  .notice-box {
+    background: rgba(88,166,255,0.05);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+  .notice-box strong { color: var(--accent-blue); }
+
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0 30px;
+  }
+  .kpi-card {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; text-align: center;
+  }
+  .kpi-label { color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .kpi-value { color: var(--accent-blue); font-size: 1.4rem; font-weight: 700; }
+  .kpi-sub { color: var(--text-muted); font-size: 0.78rem; margin-top: 4px; }
+
+  .positive { color: var(--accent-green); font-weight: 600; }
+  .negative { color: var(--accent-red); font-weight: 600; }
+  .neutral { color: var(--accent-orange); font-weight: 600; }
+
+  footer {
+    margin-top: 60px; padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted); font-size: 0.85rem; text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .debate-card .bull-bear { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 80px 1fr 60px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="theme-toggle-bar">
+  <span style="color: var(--text-secondary); font-size: 0.85rem;">테마:</span>
+  <button class="theme-toggle-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+</div>
+
+<header>
+  <h1>사용자 포트폴리오 리밸런싱</h1>
+  <p class="subtitle">중립 프로파일 복귀 — VOO 91.5% → 35% / 3단계 실행안</p>
+  <p class="meta">작성: briefing-lead · 2026-04-21 · 총 $17,435.88 (약 2,580만원) · 대상: 1인 개인 포트폴리오</p>
+</header>
+
+<!-- Executive Summary -->
+<section>
+  <h2>📌 Executive Summary</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">총 평가액</div>
+      <div class="kpi-value">$17,435.88</div>
+      <div class="kpi-sub">약 ₩25,805,103 @ 1,480</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">VOO 편중도</div>
+      <div class="kpi-value negative">91.5%</div>
+      <div class="kpi-sub">중립 표준 25~35% 대비 +63%p</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">방어 비중</div>
+      <div class="kpi-value negative">1.7%</div>
+      <div class="kpi-sub">채권·금·현금 합계 (목표 30%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">평균 수익률</div>
+      <div class="kpi-value positive">+6.8%</div>
+      <div class="kpi-sub">재편 적기 (수익 실현 중)</div>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <h3>🎯 1단계 — 오늘~2026-04-24 즉시 액션</h3>
+    <ul>
+      <li><strong>매도:</strong> VOO $6,500 (91.5% → 약 55% 1차 축소)</li>
+      <li><strong>매수 신규:</strong> USMV $2,600 / GLD $1,700 / SCHP $1,700</li>
+      <li><strong>현금 확보:</strong> $500 (체크포인트 탄환 1차)</li>
+      <li><strong>세금:</strong> VOO 차익 $462 ≈ 약 68만원 → 연 250만원 공제 한도 내 <span class="positive">비과세</span></li>
+      <li><strong>최종 목표 (6개월 후):</strong> VOO 35 / USMV 15 / GLD 10 / SCHP 10 / AGG 10 / 현금 10 / QQQ 5 / 배당 5</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Section 1: 프로파일 vs 현실 불일치 -->
+<section>
+  <h2>1. 프로파일 vs 현실 불일치</h2>
+
+  <div class="debate-card">
+    <div class="card-title">💜 debate-card — 사용자 프로파일은 중립형인데 실제 포지션은 초공격형</div>
+    <div class="bull-bear">
+      <div class="bull">
+        <strong>🟢 Bull 측 주장 (현상 유지):</strong>
+        VOO는 2017년 이래 연평균 +13.8%. 장기 적립자에게 단순·저비용·광범위 분산. 지난 1년 +7.1% 실현. 5년+ 기간이면 변동성 감내 가능.
+        <br><em style="font-size:0.82rem;">[사용자 평가 2026-04-18]</em>
+      </div>
+      <div class="bear">
+        <strong>🔴 Bear 측 주장 (즉시 재편):</strong>
+        방어 자산 0%에서 VIX 거짓안정 해제 + 4중 체크포인트 진입. 중립 프로파일 표준(주식 60·채권 30·대체 10)에서 +63%p 초과 편중은 성향과의 명백한 불일치.
+        <br><em style="font-size:0.82rem;">[market/correlation_matrix 2026-04-21]</em>
+      </div>
+    </div>
+    <div class="verdict">
+      <strong>현재 시장 컨센서스:</strong> Bear 우세 — Buffett 현금 $347B 역사상 최대, Druckenmiller RSP $238M Top3 신규 (방어·분산 13F 시그널)
+      <br><strong>briefing-lead 판단:</strong> Bear 확률 높게 본다. <em>프로파일은 곧 감내 한도의 선언</em>이며, 한도 초과 상태에서 조정이 오면 '파는 가격'이 아닌 '던지는 가격'이 된다. 지금 재편은 <strong>다음 하락장에서 적립 투자자답게 버티기 위한 기초 공사</strong>.
+    </div>
+  </div>
+
+  <h3>괴리 매트릭스</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>프로파일 중립 표준</th>
+        <th>실제</th>
+        <th>괴리</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>미국주식</td><td>25~35%</td><td class="negative">98.3%</td><td class="negative">+63.3%p</td></tr>
+      <tr><td>채권</td><td>25~35%</td><td class="negative">1.7%</td><td class="negative">-23.3%p</td></tr>
+      <tr><td>금</td><td>3~8%</td><td class="negative">0.004%</td><td class="negative">-5%p</td></tr>
+      <tr><td>국내주식</td><td>5~15%</td><td>0%</td><td class="neutral">-10%p</td></tr>
+      <tr><td>현금</td><td>3~10%</td><td>0%</td><td class="neutral">-5%p</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Section 2: 매크로 컨텍스트 -->
+<section>
+  <h2>2. 매크로 컨텍스트 — 왜 지금 재편하는가</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">🟠 contrarian-card — 시장은 13일 연승을 축포로 보지만 숫자는 경고를 켰다</div>
+    <div class="section">
+      <strong>시장의 일반 가정:</strong> NASDAQ 1992년 이후 최장인 13연승 종료(2026-04-21)는 건전한 기술적 숨고르기. VIX 18은 여전히 낮음. 실적 시즌 양호 → 조정은 짧고 얕을 것.
+    </div>
+    <div class="section">
+      <strong>반대 시그널:</strong>
+      <ul>
+        <li>VIX 17.48 → <strong>18.98 점프 (거짓안정 해제 1일차)</strong> — 역사적으로 해제 후 3주 내 평균 +38% 변동성 확대</li>
+        <li>Buffett 현금 포지션 <strong>$347B 사상 최대</strong> — 2000·2008·2020 전례 재현</li>
+        <li>Druckenmiller <strong>RSP $238M Top3 신규</strong> — 시총가중에서 이쿨웨이트로 이동, "빅테크 쏠림 붕괴" 베팅</li>
+        <li>Gold $4,878 구조 Bull + DXY 97.70 (3년 최저) — 달러·주식 동시 약화 시나리오 진행 중</li>
+      </ul>
+    </div>
+    <div class="section">
+      <strong>만약 반대 시그널이 맞다면:</strong> VOO 91.5% 포지션은 S&P 조정 15% 시 전체 포트 <span class="negative">-13.7%</span> 직격. 방어 30% 구성 시 같은 조정을 <span class="neutral">-10%</span> 수준으로 완충.
+    </div>
+    <div class="section">
+      <strong>확률 (briefing-lead 추정):</strong> <span class="neutral">중간~높음</span>
+    </div>
+  </div>
+
+  <h3>시나리오 확률 (30일 전망)</h3>
+  <div class="scenario-grid">
+    <div class="scenario-label" style="color: var(--accent-green);">A 완화</div>
+    <div class="scenario-bar-track"><div class="scenario-bar-fill scenario-a" style="width: 38%;">38% · VIX 15 하향, S&P 신고가</div></div>
+
+    <div class="scenario-label" style="color: var(--accent-orange);">B 조정 ⭐</div>
+    <div class="scenario-bar-track"><div class="scenario-bar-fill scenario-b" style="width: 47%;">47% (기준) · VIX 22+, S&P -5~10%</div></div>
+
+    <div class="scenario-label" style="color: var(--accent-red);">C 위기</div>
+    <div class="scenario-bar-track"><div class="scenario-bar-fill scenario-c" style="width: 15%;">15% · VIX 25+, S&P -15% 이상</div></div>
+  </div>
+
+  <h3>4중 체크포인트 (30일 이내)</h3>
+  <table>
+    <thead>
+      <tr><th>날짜</th><th>이벤트</th><th>주요 영향</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>2026-04-22 (D-1)</strong></td><td>TSLA 실적 + 호르무즈 해협 긴장 만기</td><td>로보택시 가이던스 + 유가</td></tr>
+      <tr><td><strong>2026-04-29 (D+8)</strong></td><td>FOMC (5월 회의 프리뷰)</td><td>금리 경로 재조정</td></tr>
+      <tr><td><strong>2026-05-13 (D+22)</strong></td><td>CPI 발표 (4월 수치)</td><td>디스인플레 지속 여부</td></tr>
+      <tr><td><strong>2026-05-15 (D+24)</strong></td><td>파월 의장 임기 만료</td><td>차기 의장 인선 노이즈</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Section 3: 현재 vs 목표 -->
+<section>
+  <h2>3. 현재 vs 목표 포트폴리오</h2>
+
+  <h3>현재 비중 (2026-04-18)</h3>
+  <div class="bar-row"><div class="bar-label">VOO</div><div class="bar-track"><div class="bar-fill voo" style="width: 91.5%;">91.5%</div></div><div class="bar-value">$15,946</div></div>
+  <div class="bar-row"><div class="bar-label">QQQ</div><div class="bar-track"><div class="bar-fill qqq" style="width: 4.6%;">4.6%</div></div><div class="bar-value">$808</div></div>
+  <div class="bar-row"><div class="bar-label">VIG</div><div class="bar-track"><div class="bar-fill div" style="width: 2.1%;">2.1%</div></div><div class="bar-value">$367</div></div>
+  <div class="bar-row"><div class="bar-label">AGG</div><div class="bar-track"><div class="bar-fill agg" style="width: 1.7%;">1.7%</div></div><div class="bar-value">$298</div></div>
+  <div class="bar-row"><div class="bar-label">SCHD</div><div class="bar-track"><div class="bar-fill div" style="width: 0.1%;">0.1%</div></div><div class="bar-value">$13</div></div>
+  <div class="bar-row"><div class="bar-label">GLD</div><div class="bar-track"><div class="bar-fill gld" style="width: 0.5%;">0.004%</div></div><div class="bar-value">$0.65</div></div>
+  <div class="bar-row"><div class="bar-label">현금</div><div class="bar-track"><div class="bar-fill cash" style="width: 0.5%;">0%</div></div><div class="bar-value">$0.01</div></div>
+
+  <h3>목표 비중 (6개월 내 달성)</h3>
+  <div class="bar-row"><div class="bar-label">VOO</div><div class="bar-track"><div class="bar-fill voo" style="width: 35%;">35%</div></div><div class="bar-value">$6,100</div></div>
+  <div class="bar-row"><div class="bar-label">USMV ✨</div><div class="bar-track"><div class="bar-fill usmv" style="width: 15%;">15%</div></div><div class="bar-value">$2,620</div></div>
+  <div class="bar-row"><div class="bar-label">GLD ✨</div><div class="bar-track"><div class="bar-fill gld" style="width: 10%;">10%</div></div><div class="bar-value">$1,740</div></div>
+  <div class="bar-row"><div class="bar-label">SCHP ✨</div><div class="bar-track"><div class="bar-fill schp" style="width: 10%;">10%</div></div><div class="bar-value">$1,740</div></div>
+  <div class="bar-row"><div class="bar-label">AGG</div><div class="bar-track"><div class="bar-fill agg" style="width: 10%;">10%</div></div><div class="bar-value">$1,740</div></div>
+  <div class="bar-row"><div class="bar-label">현금</div><div class="bar-track"><div class="bar-fill cash" style="width: 10%;">10%</div></div><div class="bar-value">$1,740</div></div>
+  <div class="bar-row"><div class="bar-label">QQQ</div><div class="bar-track"><div class="bar-fill qqq" style="width: 5%;">5%</div></div><div class="bar-value">$870</div></div>
+  <div class="bar-row"><div class="bar-label">SCHD+VIG</div><div class="bar-track"><div class="bar-fill div" style="width: 5%;">5%</div></div><div class="bar-value">$870</div></div>
+
+  <h3>액션 매핑</h3>
+  <table>
+    <thead>
+      <tr><th>자산</th><th>현재$</th><th>현재%</th><th>목표%</th><th>목표$</th><th>액션</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>VOO</td><td>15,946</td><td>91.5%</td><td>35%</td><td>6,100</td><td class="negative"><strong>매도 -9,850</strong></td></tr>
+      <tr><td>USMV</td><td>0</td><td>0%</td><td>15%</td><td>2,620</td><td class="positive"><strong>신규</strong></td></tr>
+      <tr><td>GLD</td><td>0.65</td><td>0.004%</td><td>10%</td><td>1,740</td><td class="positive"><strong>신규</strong></td></tr>
+      <tr><td>SCHP</td><td>0</td><td>0%</td><td>10%</td><td>1,740</td><td class="positive"><strong>신규</strong></td></tr>
+      <tr><td>AGG</td><td>298</td><td>1.7%</td><td>10%</td><td>1,740</td><td class="positive">증액 +1,442</td></tr>
+      <tr><td>QQQ</td><td>808</td><td>4.6%</td><td>5%</td><td>870</td><td>유지</td></tr>
+      <tr><td>SCHD+VIG</td><td>380</td><td>2.2%</td><td>5%</td><td>870</td><td>소폭 증액</td></tr>
+      <tr><td>현금</td><td>0</td><td>0%</td><td>10%</td><td>1,740</td><td class="positive">확보</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice-box">
+    <strong>자산군 요약:</strong>
+    미국주식 98.3% → 60% (-38.3%p) · 채권 1.7% → 20% (+18.3%p) · 대체(금) 0% → 10% (+10%p) · 현금 0% → 10% (+10%p)
+  </div>
+</section>
+
+<!-- Section 4: 실행 3단계 -->
+<section>
+  <h2>4. 실행 3단계 플로우</h2>
+
+  <div class="step-flow">
+    <div class="step-box step1">
+      <div class="step-title">🎯 1단계 — 오늘 ~ 2026-04-24 (3거래일 내)</div>
+      <table style="margin-top: 8px;">
+        <thead><tr><th>액션</th><th>티커</th><th>금액($)</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td class="negative">매도</td><td><strong>VOO</strong></td><td>-6,500</td><td>비중 91.5% → 약 55% 1차 축소</td></tr>
+          <tr><td class="positive">매수</td><td><strong>USMV</strong></td><td>+2,600</td><td>저변동 Factor 신규, Beta 0.70</td></tr>
+          <tr><td class="positive">매수</td><td><strong>GLD</strong></td><td>+1,700</td><td>금 신규 (목표 10% 중 1차)</td></tr>
+          <tr><td class="positive">매수</td><td><strong>SCHP</strong></td><td>+1,700</td><td>TIPS 신규 (보수 0.03%, TIP 대비 -16bp)</td></tr>
+          <tr><td>확보</td><td>현금</td><td>+500</td><td>체크포인트 탄환 1차</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">
+        <strong style="color: var(--accent-green);">세금 체크:</strong> VOO 매도 차익 $462 × 환율 1,480 = 약 68만원 → 연 250만원 공제 한도 내 <span class="positive">비과세</span> ✅
+      </p>
+    </div>
+
+    <div class="step-box step2">
+      <div class="step-title">🔀 2단계 — 2026-04-29 FOMC 이후 분기 실행</div>
+      <table style="margin-top: 8px;">
+        <thead><tr><th>시나리오</th><th>확률</th><th>액션</th></tr></thead>
+        <tbody>
+          <tr><td class="positive"><strong>A. 완화 (비둘기)</strong></td><td>38%</td><td>매도 없음 — 월 적립 분에서 현금 비중 확보만 진행</td></tr>
+          <tr><td class="neutral"><strong>B. 조정 (매파/중립) ⭐</strong></td><td><strong>47% (기준)</strong></td><td>VOO 추가 $3,000 매도 → AGG +$1,400 / 현금 +$1,600</td></tr>
+          <tr><td class="negative"><strong>C. 위기 (VIX 25+)</strong></td><td>15%</td><td>VOO 매도 보류 (반등 대기) / 현금으로 GLD·SCHP 추가 매수</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="step-box step3">
+      <div class="step-title">🔄 3단계 — 월 200만원 적립 전환 (5~10월, 6개월)</div>
+      <p style="margin-top: 6px; margin-bottom: 10px; color: var(--text-secondary);">
+        <strong>목표:</strong> 매도 없이 적립 투자만으로 목표 비중 자연 도달
+      </p>
+      <table>
+        <thead><tr><th>기간</th><th>VOO</th><th>USMV</th><th>SCHP</th><th>GLD</th><th>AGG</th><th>현금</th><th>합</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1~3개월 (5·6·7월)</strong></td><td class="negative">0 (중단)</td><td>40만</td><td>40만</td><td>30만</td><td>40만</td><td>50만</td><td><strong>200만</strong></td></tr>
+          <tr><td><strong>4~6개월 (8·9·10월)</strong></td><td>50만 재개</td><td>40만</td><td>30만</td><td>20만</td><td>30만</td><td>30만</td><td><strong>200만</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">
+        <strong>11월 이후 정상 모드:</strong> 목표 비중 달성 시 비례 적립 (VOO 70만·USMV 30만·SCHP 20만·GLD 20만·AGG 20만·현금 40만)
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: 제외·변경 근거 -->
+<section>
+  <h2>5. 제외·변경 근거</h2>
+
+  <div class="debate-card">
+    <div class="card-title">💜 debate-card — 후보 자산 취사선택 논리</div>
+
+    <h4>RSP (Druckenmiller 13F 편입) 제외</h4>
+    <div class="bull-bear">
+      <div class="bull"><strong>Bull:</strong> 이쿨웨이트는 빅테크 쏠림 해소, 브레드스 회복 시 아웃퍼폼</div>
+      <div class="bear"><strong>Bear:</strong> VOO와 보유 종목 중첩률 100% (S&P 500 동일), Factor 분산 효과는 USMV가 더 큼</div>
+    </div>
+    <div class="verdict">
+      <strong>판단:</strong> USMV 채택. RSP는 VOO 축소 효과가 부분적이지만, USMV는 저변동·Low Beta Factor로 <strong>독립 노출</strong> 확보
+    </div>
+
+    <h4 style="margin-top: 20px;">국내주식(KOSPI ETF) 제외</h4>
+    <div class="bull-bear">
+      <div class="bull"><strong>Bull:</strong> 통화 분산, 방산·조선 슈퍼사이클, XM30 탈락 반영 후 한화에어로 조정 구간</div>
+      <div class="bear"><strong>Bear:</strong> 총액 $17k 규모에서 원화·달러 분리 관리 부담이 분산 효과보다 큼. 환율 변동성이 추가 노이즈</div>
+    </div>
+    <div class="verdict">
+      <strong>판단:</strong> 총액 $30k+ 시점 재검토 (적립 2년 후). 지금은 USD 단일 통화 집중 관리
+    </div>
+
+    <h4 style="margin-top: 20px;">TIP 대신 SCHP</h4>
+    <div class="bull-bear">
+      <div class="bull"><strong>동일점:</strong> 동일 기초자산(미국 TIPS), 동일 듀레이션 곡선</div>
+      <div class="bear"><strong>결정 요인:</strong> TIP 0.19% vs SCHP 0.03% → 연 16bp, 10년 누적 1.6%p</div>
+    </div>
+    <div class="verdict"><strong>판단:</strong> SCHP 일방 우위, 예외 없음</div>
+
+    <h4 style="margin-top: 20px;">현금 10% 유지 근거</h4>
+    <ul style="margin-left: 20px;">
+      <li>4중 체크포인트(4/22·4/29·5/13·5/15) 대응 탄환 $1,740</li>
+      <li>시나리오 C(위기) 발동 시 GLD·SCHP 저가 매수 여력</li>
+      <li>평시엔 MMF 또는 단기 Treasury로 운용 (연 4%+ 수익)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Section 6: 세금 체크리스트 -->
+<section>
+  <h2>6. 세금 체크리스트 (해외주식 양도소득세)</h2>
+  <table>
+    <thead><tr><th>항목</th><th>값</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>연 기본 공제</td><td><strong>250만원</strong></td><td>1인 연간 한도</td></tr>
+      <tr><td>과세 구간</td><td>공제 초과분 × <strong>22%</strong></td><td>지방세 포함</td></tr>
+      <tr><td>신고 시기</td><td>매년 <strong>5월 1~31일</strong></td><td>전년도 실현 차익 대상</td></tr>
+      <tr><td>2026년 현재 실현 차익 누적</td><td>$0</td><td>청산 내역 없음 (크립토는 기타소득 22% 별도)</td></tr>
+      <tr><td><strong>1단계 VOO 매도 예상 차익</strong></td><td class="positive"><strong>약 68만원</strong></td><td>연 250만 중 약 27% 사용</td></tr>
+      <tr><td>2단계 VOO 추가 매도 예상</td><td class="neutral">약 31만원</td><td>누적 약 99만원, 여유 151만원</td></tr>
+      <tr><td>연말 추가 차익 실현 여력</td><td class="positive">약 151만원</td><td>2026년 내 추가 리밸런싱 세부담 0 가능</td></tr>
+    </tbody>
+  </table>
+  <div class="notice-box">
+    <strong>지침:</strong> 12월 20일 전 연간 실현 차익 합계 재점검. 250만원 근접 시 추가 매도 이월.
+  </div>
+</section>
+
+<!-- Section 7: 4종 포트폴리오 방향 -->
+<section>
+  <h2>7. 4종 포트폴리오 방향 (참고)</h2>
+  <div class="notice-box">
+    <strong>ℹ️ 본 리포트는 사용자 1인 개인 포트폴리오 특화 산출물</strong>입니다. 4종 모델 포트폴리오 표준 방향은 <code>model_portfolio_20260421.html</code> 참조. 본 사용자는 <strong>중립형</strong> 유형 기준.
+  </div>
+  <table>
+    <thead><tr><th>포트폴리오 유형</th><th>시사점 (1줄)</th><th>방향</th><th>참고 자산군</th></tr></thead>
+    <tbody>
+      <tr><td>🛡️ 안전형</td><td>SCHP·AGG·현금 중심, 재편 효과 즉시 반영</td><td class="positive">유지</td><td>SCHP, AGG, GLD</td></tr>
+      <tr style="background: rgba(88,166,255,0.04);"><td>⚖️ <strong>중립형 (본 사용자)</strong></td><td>VOO 편중 해소 단계적 진행 중</td><td class="neutral"><strong>조정</strong></td><td>USMV, SCHP, GLD, AGG</td></tr>
+      <tr><td>🔥 공격형</td><td>QQQ 유지 + USMV는 공격형도 저변동 Factor 유용</td><td class="positive">유지</td><td>QQQ, VOO, USMV</td></tr>
+      <tr><td>💰 배당형</td><td>SCHD·VIG 소폭 증액 권고</td><td class="positive">유지</td><td>SCHD, VIG</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Section 8: 위험 경고 -->
+<section>
+  <h2>8. 위험 경고</h2>
+  <div class="warning-box">
+    <h3>⚠️ 반드시 숙지할 제약 사항</h3>
+    <ul>
+      <li><strong>본 문서는 개인 맞춤 조언이 아니라 데이터 기반 재편안 예시</strong>입니다. 최종 매매 결정과 책임은 사용자 본인에게 있습니다.</li>
+      <li>매도·매수 시점은 <strong>시장가 체결 리스크</strong>를 고려해 분할 실행 권장 (VOO $6,500 → 2~3회 분할).</li>
+      <li>환율 1,480원 기준 계산이며 환율 변동 시 원화 환산 금액이 달라집니다.</li>
+      <li>시나리오 확률(A 38% / B 47% / C 15%)은 briefing-lead 추정치로, 실제 결과와 다를 수 있습니다.</li>
+      <li>4중 체크포인트는 예측 불가 이벤트 발생 시 사실상 무효화될 수 있습니다 (지정학 급변 등).</li>
+    </ul>
+  </div>
+
+  <div class="notice-box" style="border-left-color: var(--accent-orange); background: rgba(210,153,34,0.05);">
+    <strong style="color: var(--accent-orange);">⚠️ 13F 시차 경고:</strong>
+    Buffett $347B 현금, Druckenmiller RSP $238M 신규 편입 수치는 <strong>2026 Q1 분기말 기준</strong>이며, <strong>최대 45일 시차</strong>가 있습니다. "현재 보유"로 해석 불가. 2026 Q2 13F는 2026년 8월 15일경 공시 예정.
+  </div>
+</section>
+
+<!-- Section 9: 다음 단계 -->
+<section>
+  <h2>9. 심층 분석 권장 (다음 단계)</h2>
+  <table>
+    <thead><tr><th>#</th><th>티커</th><th>권장 사유</th><th>다음 단계</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>USMV</strong></td><td>신규 편입 핵심 ETF, 세부 구성·리스크 재확인</td><td><code>/종목분석 USMV</code> <em>(완료: 2026-04-21, 72.5 Buy)</em></td></tr>
+      <tr><td>2</td><td><strong>SCHP</strong></td><td>신규 편입, TIPS 듀레이션·실질금리 감응도</td><td><code>/종목분석 SCHP</code></td></tr>
+      <tr><td>3</td><td><strong>GLD</strong></td><td>신규 편입, 중앙은행 매수 구조 재확인</td><td><code>/종목분석 GLD</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p>본 리포트는 briefing-lead v3.4가 자동 생성한 <strong>사용자 1인 개인 포트폴리오 리밸런싱 문서</strong>입니다.</p>
+  <p>데이터 시차 — 시장: 2026-04-18 / 매크로: 2026-04-21 / 13F: 2026-Q1 분기말 (최대 45일)</p>
+  <p style="margin-top: 10px; color: var(--text-muted);">End of Report — briefing-lead 2026-04-21</p>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const newTheme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = newTheme;
+    localStorage.setItem('theme', newTheme);
+  }
+  // restore
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.dataset.theme = saved;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>iShares 20+ Year Treasury Bond (TLT) 종합 분석</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>iShares 20+ Year Treasury Bond (TLT)</h1><div class="meta">ETF 종합 분석 리포트 | 2026-04-23</div><div style="margin-top:8px"><span class="badge b-buy">Buy</span> <span class="badge b-score">79.0/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$86.97</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$9.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (ETF)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$79.98~$90.20</div></div><div class="ki"><div class="kl">AUM</div><div class="kv">$50B+</div></div><div class="ki"><div class="kl">보수율 (TER)</div><div class="kv">0.15%</div></div><div class="ki"><div class="kl">Duration</div><div class="kv">16.5년</div></div><div class="ki"><div class="kl">YTM</div><div class="kv">4.85%</div></div><div class="ki"><div class="kl">SEC 30-day Yield</div><div class="kv">4.55%</div></div><div class="ki"><div class="kl">평균 잔존만기</div><div class="kv">약 26년</div></div><div class="ki"><div class="kl">신용등급</div><div class="kv">100% AA+ (미국채)</div></div><div class="ki"><div class="kl">분배 주기</div><div class="kv">월배당</div></div><div class="ki"><div class="kl">추적오차</div><div class="kv">0.05%/년</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$0.59 (0.68%)</div></div><div class="ki"><div class="kl">일거래량</div><div class="kv">$1.7B</div></div><div class="ki"><div class="kl">NAV 괴리율</div><div class="kv">±0.02%</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p>TLT는 20년+ 만기 미 재무부 채권 전용 ETF로, 듀레이션 16.5년의 초장기 금리 민감 자산이다. Fed 인하 사이클 개시 기대(6월 48%, 연내 25bp 1회)와 경기 둔화 시 flight-to-quality 수혜를 받지만, CPI 3.3% + 관세發 인플레 재가속 + Fed 독립성 훼손(파월 5/15 임기 만료) 위험이 양면성을 제공한다. 시나리오 가중 기대수익률 +3.20% (12M)로 TIP(+4.58%)보다는 열위이나, 극단 침체(S5)·디스인플레(S3) 시 +18~22% 폭발적 수익으로 포트 분산 효과가 독보적이다. 스코어 79.0 Buy, 목표가 $91.50 (+5.2%), 손절 $85.79 (-1.36%, 2×ATR 타이트). TIP 77.3 Buy와는 보완 관계 — 디스인플레+인하 조합 시 TLT 우위, 관세+인플레 재가속 시 TIP 우위. 사용자 포트폴리오(VOO 91.5% + AGG 1.7%)에 TLT 4% + LTPZ 1% (총 5% 채권 블록 확대, VOO 86.5%로 축소) 권장.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$85.79</div><div class="dn" style="font-size:13px">-1.4%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$91.50</div><div class="up" style="font-size:13px">+5.2%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="212" y="30" width="138" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="212" y1="26" x2="212" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="212" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$86</text><line x1="249" y1="24" x2="249" y2="52" stroke="var(--text)" stroke-width="3"/><text x="249" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$87</text><line x1="391" y1="26" x2="391" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="391" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$92</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $80</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $90</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $0.59 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,50.0 190.0,81.2 233.2,119.7 227.5,178.4 178.2,202.6 140.0,195.0 98.9,206.6 68.7,173.2 59.2,123.7 87.1,77.2" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">Holdings 품질</text><circle cx="140.0" cy="50.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">보수율</text><circle cx="190.0" cy="81.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">유동성</text><circle cx="233.2" cy="119.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">추적 오차</text><circle cx="227.5" cy="178.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">매크로 fit (현 국면)</text><circle cx="178.2" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">하방 보호</text><circle cx="140.0" cy="195.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">수익률 모멘텀</text><circle cx="98.9" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">대안 대비 우위</text><circle cx="68.7" cy="173.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">이벤트 catalyst</text><circle cx="59.2" cy="123.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">분산 효과</text><circle cx="87.1" cy="77.2" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>Holdings 품질</td><td>10.0</td><td>/10</td></tr><tr><td>보수율</td><td>8.5</td><td>/10</td></tr><tr><td>유동성</td><td>9.8</td><td>/10</td></tr><tr><td>추적 오차</td><td>9.2</td><td>/10</td></tr><tr><td>매크로 fit (현 국면)</td><td>6.5</td><td>/10</td></tr><tr><td>하방 보호</td><td>4.5</td><td>/10</td></tr><tr><td>수익률 모멘텀</td><td>7.0</td><td>/10</td></tr><tr><td>대안 대비 우위</td><td>7.5</td><td>/10</td></tr><tr><td>이벤트 catalyst</td><td>8.5</td><td>/10</td></tr><tr><td>분산 효과</td><td>9.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 79.0/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide (Liquidity Moat + Scale)</span></h2><p>TLT (iShares 20+ Year Treasury Bond ETF)는 BlackRock/iShares가 운용하는 미국 최대의 장기 국채 ETF다. 2002년 설정, 23년 트랙레코드, AUM $50B+로 동종 카테고리에서 압도적 1위이며, ICE U.S. Treasury 20+ Year Bond Index를 추적한다. 100% 미 재무부 채권(20년 이상 만기)으로 구성되어 신용위험 0% (AA+ 최고등급), 패시브 운용으로 0.15% 저보수를 유지한다. 일거래량 $1.7B, 스프레드 0.01%로 초대형 유동성을 자랑하며, 옵션 시장도 매우 활발하다 (행사가 $60~$120 전 범위 OI 수백만 계약). 월배당으로 현재 SEC 30-day Yield 4.55% 지급 중이다.</p><h3>Moat 상세</h3><p>TLT는 ETF로서 개별 종목의 경쟁 우위(Moat)가 아닌 Structural Moat를 보유한다. (1) Scale Moat: $50B+ AUM으로 장기 국채 ETF 카테고리 시장점유율 1위. (2) Liquidity Moat: 일 $1.7B 거래대금으로 기관투자자 대규모 진출입 가능. (3) Cost Moat: 0.15% 보수는 iShares·Vanguard·State Street 3대 운용사 중 최저권 (VGLT 0.04% 예외). (4) Brand Moat: iShares 플랫폼 통합 운용 편의성. 단, 초장기 Duration 16.5년으로 금리 상승 시 극단적 손실 노출 (2022년 -31.2% 경험). 이는 TLT의 구조적 약점이며, Moat가 이 방향성 리스크를 상쇄하지 못한다.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>지표</th><th>TLT</th><th>TLH (10-20Y)</th><th>IEF (7-10Y)</th><th>SHY (1-3Y)</th><th>TIP (TIPS)</th><th>AGG (종합)</th></tr></thead><tbody><tr><td>Duration</td><td>16.5년</td><td>14.0년</td><td>7.5년</td><td>1.9년</td><td>7.2년</td><td>6.1년</td></tr><tr><td>AUM</td><td>$50B+</td><td>$2.8B</td><td>$30B</td><td>$25B</td><td>$13B</td><td>$120B</td></tr><tr><td>보수율</td><td>0.15%</td><td>0.15%</td><td>0.15%</td><td>0.15%</td><td>0.19%</td><td>0.03%</td></tr><tr><td>YTM</td><td>4.85%</td><td>4.70%</td><td>4.20%</td><td>3.80%</td><td>3.40%</td><td>4.10%</td></tr><tr><td>YTD 수익률</td><td>+3.1%</td><td>+2.5%</td><td>+2.2%</td><td>+1.5%</td><td>+3.8%</td><td>+1.9%</td></tr><tr><td>1Y 수익률</td><td>+4.8%</td><td>+4.0%</td><td>+3.8%</td><td>+3.2%</td><td>+6.5%</td><td>+3.5%</td></tr><tr><td>최대낙폭 (2022)</td><td>-31.2%</td><td>-24.5%</td><td>-15.3%</td><td>-5.8%</td><td>-8.9%</td><td>-13.0%</td></tr><tr><td>신용 리스크</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>일부 (IG 회사채 25%)</td></tr></tbody></table><h3>분석</h3><p>TLT는 듀레이션 16.5년으로 동종 카테고리에서 가장 긴 금리 민감도를 제공한다. 30Y 금리 1%p 변동 시 가격 ±15~17% 변동 (convexity 감안). 2022년 Fed 급속 인상 기간 -31.2% 역대 최대 낙폭 기록, 반면 2008 금융위기 +33.7%로 주식의 완벽한 헷지 역할. 현재 YTM 4.85%는 역사적 평균(약 3.0%) 대비 높아 상대적 매력도 개선. 단, TIP의 YTD +3.8% 대비 TLT +3.1%는 인플레 환경에서 TIPS가 우위를 보이는 것을 반증.</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>30Y 금리 시나리오</th><th>금리 변화</th><th>TLT 예상가</th><th>가격 변동</th></tr></thead><tbody><tr><td>Bear Bull (침체 극단)</td><td>-100bp (3.91%)</td><td>$101.7</td><td>+17.0%</td></tr><tr><td>Bull (인하 가속)</td><td>-50bp (4.41%)</td><td>$94.3</td><td>+8.4%</td></tr><tr><td>Base (25bp 인하 1회)</td><td>-25bp (4.66%)</td><td>$91.5</td><td>+5.2%</td></tr><tr><td>Neutral (동결 유지)</td><td>0bp (4.91%)</td><td>$86.97</td><td>0.0%</td></tr><tr><td>Bear (인플레 반등)</td><td>+25bp (5.16%)</td><td>$83.1</td><td>-4.4%</td></tr><tr><td>Bear (관세+인플레)</td><td>+50bp (5.41%)</td><td>$79.8 (52W 저점)</td><td>-8.2%</td></tr><tr><td>Critical (Fed 위기)</td><td>+100bp (5.91%)</td><td>$72.8</td><td>-16.3%</td></tr></tbody></table><p>TLT의 밸류에이션은 30Y 국채 금리 방향성에 거의 전적으로 의존한다. 현재 30Y 4.91%에서 Fed dot plot 중앙값(연말 3.4%, -25bp)을 반영한 Base 시나리오에서 TLT는 $91.5 (+5.2%). 침체 시나리오 시 $101+ (+17%) 극단 상승 가능, 인플레 재가속 시 $79.8 52주 저점 재터치 가능. 확률 가중 기대값: Base 25% + Bull 25% + Neutral 20% + Bear 20% + Critical 10% = <strong>+3.2%</strong> (12M). 유사 카테고리 대비 Duration 레버리지가 가장 크므로 방향성 확신 시 가장 효율적인 도구.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>TLT는 4월 반등 구간에 진입해 YTD +3.1% 기록 중이다. 52주 고점 $90.20 대비 -3.58%, 52주 저점 $79.98 대비 +8.74%로 중간 구간에 위치. 최근 4거래일 10Y 금리 반등(4.25% → 4.31%)으로 상승폭이 제한된 상태. 기술적으로 $85.50 강력 지지 (200일 이동평균 + 2024-12 저점), $90.50 1차 저항. RSI(14) 55 중립, MACD 반등 시작 초입. 풋/콜 레이쇼 1.1로 약간의 방어 포지션 누적. 4/28-29 FOMC → 4/30 PCE → 5/13 CPI → 5/15 파월 임기 → 6/10-11 FOMC로 이벤트 밀집 구간 진입. 채권 ETF로는 드문 고변동성 예상 (ATR 0.68%, 일반 채권 ETF 0.2~0.3% 대비 2~3배).</p><table><thead><tr><th>소스</th><th>타겟가</th><th>업사이드</th><th>비고</th></tr></thead><tbody><tr><td>리드 Base (2026-04-23)</td><td>$91.50</td><td>+5.2%</td><td>Fed 1회 인하 + 쿠폰</td></tr><tr><td>리드 Bull (2026-04-23)</td><td>$94.00</td><td>+8.1%</td><td>디스인플레 조합</td></tr><tr><td>리드 Bear (2026-04-23)</td><td>$83.50</td><td>-4.0%</td><td>관세 + 인플레 재가속</td></tr><tr><td>시장 컨센 (중간값)</td><td>$92.50</td><td>+6.4%</td><td>증권사 12M 목표</td></tr><tr><td>Goldman Sachs</td><td>$93.00</td><td>+6.9%</td><td>2Q 인하 반영</td></tr><tr><td>JP Morgan</td><td>$91.00</td><td>+4.6%</td><td>dot plot 중립</td></tr><tr><td>Morgan Stanley</td><td>$94.50</td><td>+8.7%</td><td>Bull 시나리오</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>TLT와 주요 경쟁 ETF 간 Duration·비용·성과 비교는 듀레이션 축(단기 SHY → TLT) 및 자산 유형 축(명목 TLT → TIP/SCHP 물가연동 → LQD/HYG 신용채)에서 명확한 차별점을 드러낸다. 사용자 포트폴리오 현황(VOO 91.5% + AGG 1.7%)과 관련: AGG는 TLT 대비 Duration 1/3 수준으로 방향성 베팅 도구가 아닌 '안정화 완충'. TLT는 <strong>Fed 인하 레버리지 + 극단 침체 헷지</strong>라는 AGG가 제공하지 못하는 기능을 보완. TIP와는 시나리오 역상관 (인플레 재가속 시 TIP, 디스인플레+인하 시 TLT). LTPZ(15+ Year TIPS)는 TLT+TIP 하이브리드로 20% 혼합 시 양면성 커버.</p><table><thead><tr><th>ETF</th><th>카테고리</th><th>Duration</th><th>AUM</th><th>보수</th><th>12M 기대수익</th><th>승리 시나리오</th></tr></thead><tbody><tr><td>TLT</td><td>20Y+ 명목 국채</td><td>16.5년</td><td>$50B</td><td>0.15%</td><td>+3.2%</td><td>디스인플레+인하 (S3/S5)</td></tr><tr><td>TIP</td><td>전만기 TIPS</td><td>7.2년</td><td>$13B</td><td>0.19%</td><td>+4.6%</td><td>인플레 재가속 (S1/S2/S6)</td></tr><tr><td>SCHP</td><td>전만기 TIPS (TIP 대체)</td><td>7.1년</td><td>$28B</td><td>0.03%</td><td>+4.6%</td><td>TIP와 동일, 16bp 우위</td></tr><tr><td>AGG</td><td>종합 채권 (IG 25% 포함)</td><td>6.1년</td><td>$120B</td><td>0.03%</td><td>+2.7%</td><td>안정+저비용 (모든 시나리오 중간)</td></tr><tr><td>VGLT</td><td>Long-Term Treasury (TLT 대체)</td><td>16.0년</td><td>$8B</td><td>0.04%</td><td>+3.2%</td><td>TLT와 동일, 11bp 우위</td></tr><tr><td>LTPZ</td><td>15Y+ TIPS (TLT+TIP 하이브리드)</td><td>19.0년</td><td>$0.3B</td><td>0.20%</td><td>+5.5%</td><td>양면 커버 최강</td></tr><tr><td>HYG</td><td>하이일드 회사채</td><td>3.4년</td><td>$17B</td><td>0.49%</td><td>+5~7%</td><td>경기 호황 (경기 채권)</td></tr><tr><td>LQD</td><td>IG 회사채</td><td>8.5년</td><td>$32B</td><td>0.14%</td><td>+3.5%</td><td>디스인플레+안정</td></tr></tbody></table></div>
+<div class="sec"><h2>섹터 배분</h2><div class="cb"><svg viewBox="0 0 390 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:390px;"><path d="M130.0,30.0 A100,100 0 0,1 160.9,225.1 L153.2,201.3 A75,75 0 0,0 130.0,55.0 Z" fill="#42A5F5" stroke="var(--card)" stroke-width="1"/><path d="M160.9,225.1 A100,100 0 0,1 99.1,34.9 L106.8,58.7 A75,75 0 0,0 153.2,201.3 Z" fill="#26A69A" stroke="var(--card)" stroke-width="1"/><path d="M99.1,34.9 A100,100 0 0,1 130.0,30.0 L130.0,55.0 A75,75 0 0,0 106.8,58.7 Z" fill="#FFA726" stroke="var(--card)" stroke-width="1"/><rect x="270" y="20" width="10" height="10" fill="#42A5F5" rx="2"/><text x="284" y="29" fill="var(--sub)" font-size="11">20-25년 만기 45.0%</text><rect x="270" y="38" width="10" height="10" fill="#26A69A" rx="2"/><text x="284" y="47" fill="var(--sub)" font-size="11">25-30년 만기 50.0%</text><rect x="270" y="56" width="10" height="10" fill="#FFA726" rx="2"/><text x="284" y="65" fill="var(--sub)" font-size="11">30년 초과 5.0%</text></svg></div></div>
+<div class="sec"><h2>수익률 비교</h2><div class="cb"><svg viewBox="0 0 380 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="45" y="5" width="10" height="10" fill="var(--blue)" rx="2"/><text x="59" y="14" fill="var(--sub)" font-size="10">TLT</text><rect x="145" y="5" width="10" height="10" fill="var(--buy)" rx="2"/><text x="159" y="14" fill="var(--sub)" font-size="10">ICE 20+Y Treasury</text><rect x="60" y="134" width="21" height="36" fill="var(--blue)" rx="2" opacity="0.85"/><text x="70" y="130" fill="var(--blue)" font-size="9" text-anchor="middle">2.1%</text><rect x="82" y="136" width="21" height="34" fill="var(--buy)" rx="2" opacity="0.85"/><text x="92" y="132" fill="var(--buy)" font-size="9" text-anchor="middle">2.0%</text><text x="71" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">1M</text><rect x="113" y="139" width="21" height="31" fill="var(--blue)" rx="2" opacity="0.85"/><text x="123" y="135" fill="var(--blue)" font-size="9" text-anchor="middle">1.8%</text><rect x="135" y="141" width="21" height="29" fill="var(--buy)" rx="2" opacity="0.85"/><text x="145" y="137" fill="var(--buy)" font-size="9" text-anchor="middle">1.7%</text><text x="124" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">3M</text><rect x="165" y="117" width="21" height="53" fill="var(--blue)" rx="2" opacity="0.85"/><text x="175" y="113" fill="var(--blue)" font-size="9" text-anchor="middle">3.1%</text><rect x="187" y="119" width="21" height="51" fill="var(--buy)" rx="2" opacity="0.85"/><text x="197" y="115" fill="var(--buy)" font-size="9" text-anchor="middle">3.0%</text><text x="176" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">YTD</text><rect x="218" y="88" width="21" height="82" fill="var(--blue)" rx="2" opacity="0.85"/><text x="228" y="84" fill="var(--blue)" font-size="9" text-anchor="middle">4.8%</text><rect x="240" y="90" width="21" height="80" fill="var(--buy)" rx="2" opacity="0.85"/><text x="250" y="86" fill="var(--buy)" font-size="9" text-anchor="middle">4.7%</text><text x="229" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">1Y</text><rect x="270" y="170" width="21" height="106" fill="var(--blue)" rx="2" opacity="0.85"/><text x="280" y="166" fill="var(--blue)" font-size="9" text-anchor="middle">-6.2%</text><rect x="292" y="170" width="21" height="108" fill="var(--buy)" rx="2" opacity="0.85"/><text x="302" y="166" fill="var(--buy)" font-size="9" text-anchor="middle">-6.3%</text><text x="281" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">3Y 연환산</text><rect x="323" y="170" width="21" height="70" fill="var(--blue)" rx="2" opacity="0.85"/><text x="333" y="166" fill="var(--blue)" font-size="9" text-anchor="middle">-4.1%</text><rect x="345" y="170" width="21" height="72" fill="var(--buy)" rx="2" opacity="0.85"/><text x="355" y="166" fill="var(--buy)" font-size="9" text-anchor="middle">-4.2%</text><text x="334" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">5Y 연환산</text></svg></div></div>
+<div class="sec"><h2>리스크 분석</h2><p>TLT의 리스크는 대칭적이다. 극단 침체/디스인플레 시 +20%+, 인플레 재가속+Fed 위기 시 -10%+. 방향성 확신이 없다면 포지션 축소 또는 TIP/LTPZ 혼합이 합리적. <strong>2022년 -31.2%의 역사적 교훈</strong>: Duration Risk는 채권 ETF의 가장 큰 함정. 사용자는 TLT 5% 이상 과편입 시 포트 전체 변동성 증가를 주의해야 한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">Duration Risk (금리 상승)</text><circle cx="180" cy="68" r="5" fill="var(--sell)"/><text x="189" y="72" fill="var(--text)" font-size="10">인플레 재가속</text><circle cx="180" cy="86" r="5" fill="var(--sell)"/><text x="189" y="90" fill="var(--text)" font-size="10">Fed 독립성 훼손</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">재정적자 + 국채 공급 과잉</text><circle cx="180" cy="104" r="5" fill="var(--sell)"/><text x="189" y="108" fill="var(--text)" font-size="10">Stagflation Scenario</text><circle cx="100" cy="120" r="5" fill="var(--warn)"/><text x="109" y="124" fill="var(--text)" font-size="10">호르무즈 봉쇄 극단</text><circle cx="100" cy="138" r="5" fill="var(--warn)"/><text x="109" y="142" fill="var(--text)" font-size="10">외국 중앙은행 매도</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>Duration Risk (금리 상승)</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">30Y 금리 +1%p = TLT -15~17% (2022년 실제 -31% 경험). 관세 전면화 + Fed 해임 시 현실화. 최대 리스크.</span></div><div class="ri rh"><strong>인플레 재가속</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">Core PCE 3%+ 고착 시 인하 완전 소멸 → TLT 하방. CPI 3.3%, 관세 + 에너지 전이 대기.</span></div><div class="ri rh"><strong>Fed 독립성 훼손</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">5/15 파월 임기 만료 + 트럼프 해임 위협 + Warsh 인준. 장기 인플레 기대 프리미엄 +50~100bp → TLT -7~10%.</span></div><div class="ri rh"><strong>재정적자 + 국채 공급 과잉</strong> (발생: 고, 영향: 중)<br><span style="color:var(--sub);font-size:13px">2026 연방 적자 7.5% GDP, 10Y 순발행 $1.8T+. Term premium 상승 압력 +30~50bp 지속.</span></div><div class="ri rh"><strong>Stagflation Scenario</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">2022 재현: 인플레+긴축 동반 → 주식·채권 동반 하락. TLT의 safe haven 역할 훼손.</span></div><div class="ri rl"><strong>호르무즈 봉쇄 극단</strong> (발생: 저, 영향: 중)<br><span style="color:var(--sub);font-size:13px">WTI $120+ 돌파 시 단기 하락 후 경기 침체 우려로 반등. Gold·스위스프랑에 수요 분산.</span></div><div class="ri rl"><strong>외국 중앙은행 매도</strong> (발생: 저, 영향: 중)<br><span style="color:var(--sub);font-size:13px">중국 $775B + 일본 $1.1T 보유. 달러 약세 시 평가손 확대 → 매도 압력.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>포트폴리오 권고 (사용자 2026-04-21 포트 기준)</strong>: VOO 91.5% → 86.5% 축소, TLT 4% + LTPZ 1% 신규 편입 (AGG 1.7% 유지). 총 채권 블록 1.7% → 6.7%. 인하 사이클 레버리지 + 극단 침체 헷지 + 인플레 부분 보호 3중 커버.<br><br><strong>분할매수 플랜 (TLT 4%)</strong>: <br>1차 (50%): 현재가 $86.97 매수 (2026-04-25 월요일)<br>2차 (30%): $85.00 (-2.3%, 4/30 PCE 이후 조정 시)<br>3차 (20%): $83.00 (-4.6%, 5/13 CPI 서프라이즈 상방 시) 또는 $88.50 돌파 시 추격매수<br><br><strong>매도·재평가 트리거</strong>: <br>익절: $91.50 도달 시 1/3 매도, $94.00 돌파 시 추가 1/3 매도<br>손절: $83.50 (-4.0%) 이탈 + 30Y 금리 5.20%+ 재돌파 동반 시 전량 매도<br>조건부 재평가: 5/15 파월 해임 실행 시 즉시 포지션 50% 매도 후 상황 관측<br><br><strong>이벤트 대응 캘린더</strong>: 4/28-29 FOMC → 4/30 PCE → 5/13 CPI → 5/15 파월 → 6/10-11 FOMC. 밀집 구간 진입 전 1차 매수 완료 권장.</p></div>
+<div class="sec"><h2>TIP vs TLT vs AGG 시나리오 매트릭스 (핵심)</h2>
+<p style="margin-bottom:14px"><strong>시나리오별 6가지 케이스 비교 (12개월 기대수익)</strong></p>
+<table style="width:100%;border-collapse:collapse;font-size:13px">
+<thead><tr style="background:rgba(255,255,255,0.05)">
+<th style="padding:8px 10px;text-align:left">시나리오</th>
+<th style="padding:8px 10px">확률</th>
+<th style="padding:8px 10px;text-align:right">TLT</th>
+<th style="padding:8px 10px;text-align:right">TIP</th>
+<th style="padding:8px 10px;text-align:right">AGG</th>
+<th style="padding:8px 10px;text-align:left">승자</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S1 인플레 재가속 (관세+호르무즈)</td>
+<td style="padding:7px 10px;text-align:center">20%</td>
+<td style="padding:7px 10px;text-align:right;color:#EF5350">-9.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+3.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#EF5350">-3.0%</td>
+<td style="padding:7px 10px">TIP</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S2 스태그플레이션</td>
+<td style="padding:7px 10px;text-align:center">20%</td>
+<td style="padding:7px 10px;text-align:right">0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+4.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+2.0%</td>
+<td style="padding:7px 10px">TIP &gt; AGG</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S3 디스인플레+인하</td>
+<td style="padding:7px 10px;text-align:center">25%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A"><strong>+11.5%</strong></td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+5.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+5.0%</td>
+<td style="padding:7px 10px"><strong>TLT 압승</strong></td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S4 Goldilocks</td>
+<td style="padding:7px 10px;text-align:center">20%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+4.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+4.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+3.5%</td>
+<td style="padding:7px 10px">동률</td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S5 경기 침체 (GDP &lt;0)</td>
+<td style="padding:7px 10px;text-align:center">10%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A"><strong>+20.0%</strong></td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+8.5%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+10.0%</td>
+<td style="padding:7px 10px"><strong>TLT 압승</strong></td></tr>
+<tr><td style="padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)">S6 Fed 해임+독립성 붕괴</td>
+<td style="padding:7px 10px;text-align:center">5%</td>
+<td style="padding:7px 10px;text-align:right;color:#EF5350">-8.0%</td>
+<td style="padding:7px 10px;text-align:right;color:#26A69A">+6.5%</td>
+<td style="padding:7px 10px;text-align:right;color:#EF5350">-4.0%</td>
+<td style="padding:7px 10px">TIP</td></tr>
+<tr style="background:rgba(66,165,245,0.08);font-weight:700">
+<td style="padding:10px">확률 가중 기대값</td>
+<td style="padding:10px;text-align:center">100%</td>
+<td style="padding:10px;text-align:right;color:#42A5F5">+3.20%</td>
+<td style="padding:10px;text-align:right;color:#26A69A">+4.58%</td>
+<td style="padding:10px;text-align:right">+2.73%</td>
+<td style="padding:10px">TIP &gt; TLT &gt; AGG</td></tr>
+</tbody></table>
+<p style="margin-top:14px;color:var(--sub);font-size:13px">
+<strong>해석</strong>: 순수 기대값은 TIP 우위이나 TLT는 <strong>S3·S5 극단 시나리오의 폭발적 수익</strong>(+11~20%)으로 포트 분산 효과가 압도적이다.
+두 ETF는 <strong>보완 관계</strong>이며, TLT 4% + LTPZ 1% 혼합 편입이 인플레-인하 양면을 커버하는 최적해다.
+</p>
+</div>
+<div class="sec"><h2>30Y 금리 민감도 표 (1차 결정변수)</h2>
+<p style="margin-bottom:14px">TLT의 가격은 30Y 금리 변화에 거의 전적으로 결정된다. 주요 시나리오별 예상 가격:</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px">
+<thead><tr style="background:rgba(255,255,255,0.05)">
+<th style="padding:8px 10px;text-align:left">30Y 금리 변화</th>
+<th style="padding:8px 10px;text-align:right">절대 수준</th>
+<th style="padding:8px 10px;text-align:right">TLT 예상가</th>
+<th style="padding:8px 10px;text-align:right">가격 변동</th>
+<th style="padding:8px 10px">시나리오</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:8px 10px">-100bp</td><td style="padding:8px 10px;text-align:right">3.91%</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A">$101.7</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A"><strong>+17.0%</strong></td>
+<td style="padding:8px 10px">경기 침체 (S5)</td></tr>
+<tr><td style="padding:8px 10px">-50bp</td><td style="padding:8px 10px;text-align:right">4.41%</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A">$94.3</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A">+8.4%</td>
+<td style="padding:8px 10px">인하 가속 (S3)</td></tr>
+<tr><td style="padding:8px 10px">-25bp</td><td style="padding:8px 10px;text-align:right">4.66%</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A">$91.5</td>
+<td style="padding:8px 10px;text-align:right;color:#26A69A">+5.2%</td>
+<td style="padding:8px 10px"><strong>Base (타겟)</strong></td></tr>
+<tr><td style="padding:8px 10px">0bp (동결)</td><td style="padding:8px 10px;text-align:right">4.91%</td>
+<td style="padding:8px 10px;text-align:right">$86.97</td>
+<td style="padding:8px 10px;text-align:right">0.0%</td>
+<td style="padding:8px 10px">현재 (Neutral)</td></tr>
+<tr><td style="padding:8px 10px">+25bp</td><td style="padding:8px 10px;text-align:right">5.16%</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350">$83.1</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350">-4.4%</td>
+<td style="padding:8px 10px">인플레 반등</td></tr>
+<tr><td style="padding:8px 10px">+50bp</td><td style="padding:8px 10px;text-align:right">5.41%</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350">$79.8</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350">-8.2%</td>
+<td style="padding:8px 10px">관세+인플레 (S1)</td></tr>
+<tr><td style="padding:8px 10px">+100bp</td><td style="padding:8px 10px;text-align:right">5.91%</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350">$72.8</td>
+<td style="padding:8px 10px;text-align:right;color:#EF5350"><strong>-16.3%</strong></td>
+<td style="padding:8px 10px">Fed 위기 (Critical)</td></tr>
+</tbody></table>
+</div>
+<div class="sec"><h2>포트폴리오 편입 권고 (사용자 VOO 91.5% + AGG 1.7% 기준)</h2>
+<p style="margin-bottom:10px">현재 사용자 포트폴리오에 TLT 편입 시 4가지 시나리오별 효과:</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px">
+<thead><tr style="background:rgba(255,255,255,0.05)">
+<th style="padding:8px 10px;text-align:left">편입 비중</th>
+<th style="padding:8px 10px;text-align:left">권장 조건</th>
+<th style="padding:8px 10px;text-align:left">예상 효과</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:8px 10px"><strong>0% (미편입)</strong></td>
+<td style="padding:8px 10px">인하 확신 부재 + VOO 집중 전략 유지</td>
+<td style="padding:8px 10px">현상 유지 (비권고)</td></tr>
+<tr><td style="padding:8px 10px">2~3% (소폭)</td>
+<td style="padding:8px 10px">AGG 1.7% + TLT 2~3% = 채권 4~5%</td>
+<td style="padding:8px 10px">분산 효과 소폭, 큰 의미 제한</td></tr>
+<tr style="background:rgba(38,166,154,0.08)">
+<td style="padding:10px"><strong>5% ★ 권장</strong></td>
+<td style="padding:10px">AGG 1.7% 유지 + <strong>TLT 4% + LTPZ 1% 혼합</strong> + VOO 86.5%로 축소</td>
+<td style="padding:10px;color:#26A69A">인하 레버리지 + 극단 침체 헷지 + 인플레 부분 보호 (3중 커버)</td></tr>
+<tr><td style="padding:8px 10px">7~8% (공격적)</td>
+<td style="padding:8px 10px">AGG 유지 + TLT 5% + LTPZ 2~3% = 채권 10%</td>
+<td style="padding:8px 10px">본격적 60/40 전환 (vs VOO 100%)</td></tr>
+</tbody></table>
+<p style="margin-top:14px;color:var(--sub);font-size:13px">
+<strong>최종 권고</strong>: TLT 4% + LTPZ 1% 혼합 = 총 채권 블록 6.7%. 예상 포트 개선: <strong>최대낙폭 -3.5%p 완화, 기대수익률 -0.3%p</strong> (리스크 대비 개선).
+</p>
+</div>
+<div class="disc">이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-04-23 | 종목분석 에이전트 v3.5</div>
+
+<div class="cmd-guide">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="TLT_iSharesTreasury_20260423.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
