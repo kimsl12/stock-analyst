@@ -52,6 +52,11 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-06 | 주간리포트 | "골디락스 표면, 스태그플레이션 이면" — GDP +2.3% Beat + Core PCE MoM 0.0% vs FOMC 8-4 분열 + ISM 가격 84.6%(4년 최고). 이중 구조 고착. 5/12 CPI가 최종 판별자 | `market/daily_snapshot.md, macro/us_economy.md` | 진행중 |
+| 2026-05-06 | 주간리포트 | 적중률 77.8%(7/9) 첫 산정 — TLT Bear·SK하이닉스 Bull·반도체 ETF Bull·IGV Bear 적중. VIX 단기 예측·트리플 폭탄 Bear 오류. 중기 구조적 판단 > 단기 이벤트 예측 교훈 | `performance/2026_hit_rate.md` | — |
+| 2026-05-06 | 주간리포트 | 시나리오 #6(트리플 폭탄) 종결: A(골디락스) 실현(확률 30% 과소평가 → 오류 판정). 신규 #7(5/12 CPI) 설정: A 25%/B 50%/C 25%. ISM 84.6% 선행 경고 | `performance/2026_scenario_tracking.md` | — |
+| 2026-05-06 | 주간리포트 | UAE OPEC 탈퇴(5/1) 3차 효과 미반영 — 호르무즈 정상화+UAE 증산 동시 시 Brent $70대 급락 시나리오. 에너지 수입국(한국/일본) 교역조건 극적 개선 가능 | `macro/supply_chain.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-06 | 주간리포트 | Fed 이원 권력 구조 확정 — 파월 이사직 잔류(2028)+Warsh 5/11 인준. FOMC마다 정책 서프라이즈 확률 구조적 상승. 국채 변동성 확대 리스크 | `macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-05 | 이브닝브리핑 | WTI $92→$103 당일 반등으로 "시장의 과도 낙관 선반영" 즉일 검증 — 구조적 $80+ 바닥 확인. 에너지 풋백 매수 기회 유효. 데드라인 불발 시 $110+ 즉시 복귀 리스크 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-05 | 이브닝브리핑 | 5/6 아시아 동시 재개장 galp 가능성 과소평가 — 4~8일 공백(빅테크 Beat+이란 협상+WTI 하락+BTC $80K) 일시 반영. KOSPI 7,000 돌파+항셍 +1~2% 갭업 확률 중간~높음 (이란 타결 시 높음) | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-05 | 이브닝브리핑 | BTC $80,894 — 200DMA($82,228) 돌파 시 7개월 만 첫 추세 전환 시그널. ETF 유입 $1.6B/4월+선물 OI $61B+DXY 98 약세 복합 지지. 리스크온 유지 조건부 $85K~90K 목표 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
