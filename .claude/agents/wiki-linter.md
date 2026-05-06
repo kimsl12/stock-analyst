@@ -45,13 +45,19 @@ Step 7: knowledge-base/_index.md P0 섹션 갱신
 Step 8: README.md 갱신 [v3.5 신규]
 Step 8.5: 자기 검증 — 모든 자동 수정 결과 grep으로 잔존 확인 [v3.11 신규, 5/3 사고 방지]
 Step 9 (필수 산출물):
-  9-A: wiki/lint_report_{YYYYMMDD}.md 파일 생성 (Write 호출 필수)
+  9-A: knowledge-db/_lint_history.jsonl에 1행 append (Edit 호출 필수, append-only) [v3.12 변경]
   9-B: README.md 최신화 (mode=full만, Edit 호출 필수)
 Step 10: 사용자 콘솔 보고 — 단, Step 9가 모두 완료된 경우에만 "완료" 표기
 ```
 
 > **Step 9 필수성:** Step 9-A 또는 9-B를 미수행 상태로 Step 10에서 "완료" 보고하면 금지.
 > Step 10에서는 "Step 9-A 미수행" 등 정직한 상태를 출력해야 한다 (5/3 사고 재발 방지).
+>
+> **Step 9-A 작성 절차 [v3.12]:**
+> 1. `knowledge-db/_lint_history.jsonl` Read (마지막 행 확인, 중복 방지)
+> 2. 새 jsonl 한 줄을 파일 끝에 append (Edit tool: 마지막 행 끝 `\n` 위치에 새 행 추가)
+> 3. `_meta` 레코드(첫 줄)는 절대 수정 금지
+> 4. 같은 날짜 중복 append 금지 (이미 오늘 행 있으면 skip 또는 mode=manual_fix로 별도 행)
 
 ---
 
@@ -237,33 +243,51 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 
 ## 산출물
 
-### 1. `wiki/lint_report_{YYYYMMDD}.md` (생성)
+### 1. `knowledge-db/_lint_history.jsonl` (단일 누적 append, 영구 보존) [v3.12 변경]
 
-```markdown
-# KB Lint Report — {YYYY-MM-DD}
+> **⚠️ 시스템 메타 파일 — 일회성 산출물 아님. 매주 1행 자동 append. 절대 삭제·수정·재생성 금지.**
+> 2026-05-06 정책 변경: 매번 새 .md 파일 생성(`wiki/lint_report_{YYYYMMDD}.md`) 방식 폐기 →
+> 단일 jsonl 누적 방식으로 전환 (디렉토리 비대화 방지, knowledge-db append-only 원칙 일치).
 
-## 실행 모드: {quick|full|cross_check}
-## 점검 범위: {파일 수}개 파일, {소요 시간}초
+#### 첫 줄 `_meta` 레코드 (절대 수정 금지, 반드시 첫 줄 유지)
 
----
+```json
+{"_meta":true,"type":"lint_history","schema_version":"1.0","policy":"append-only-weekly","retention":"permanent","maintainer":"wiki-linter","created":"2026-05-03","trigger":"매주 일요일 12:00 KST /KB점검 자동 + 수동 /KB점검 호출","note":"⚠️ 시스템 메타 파일 — 일회성 산출물 아님. 매주 1행 자동 append. 절대 삭제·수정·재생성 금지. _meta 레코드는 반드시 첫 줄에 유지."}
+```
 
-## P0 — 즉시 조치 필요 ({N}건)
-| 파일 | 문제 | 영향 모듈 | 권장 조치 |
-|------|------|----------|---------|
+#### 매주 append 레코드 스키마 (1줄 jsonl)
 
-## P1 — 이번 주 조치 ({N}건)
-| 파일 | 문제 | 심각도 | 권장 조치 |
-|------|------|-------|---------|
+```json
+{
+  "date": "YYYY-MM-DD",
+  "mode": "full|quick|cross_check|manual_fix",
+  "trigger": "scheduled|manual|user_audit",
+  "p0": <int>,
+  "p1": <int>,
+  "p2": <int>,
+  "auto_fixed": <int>,
+  "missed": ["<누락 작업1>", "<누락 작업2>"],
+  "recovered_at": "YYYY-MM-DD (있을 경우)",
+  "recovered_by": "manual|wiki-linter (있을 경우)",
+  "notes": "<자유 텍스트 한 줄 요약 — P1 핵심·자동수정 내용·이슈>"
+}
+```
 
-## P2 — 모니터링 ({N}건)
-| 파일 | 항목 | 비고 |
-|------|------|------|
+#### 작성 시 주의사항
 
-## 자동 수정 완료 ({N}건)
-| 파일 | 수정 내용 |
-|------|---------|
+1. **append-only**: 기존 행 수정·삭제 절대 금지. 잘못 적었으면 다음 행에 정정 메모 추가
+2. **한 줄 jsonl**: 각 레코드는 정확히 한 줄. 줄바꿈 금지
+3. **첫 줄 보호**: `_meta` 레코드 위치 변경 또는 수정 금지
+4. **escape**: notes 안 따옴표는 `\"`로 escape
 
-## 다음 점검 예정: {날짜}
+#### 콘솔 보고 (사용자 즉시 확인용 — Step 10에서 출력)
+
+별도 .md 파일 생성하지 않음. 콘솔 출력으로 충분:
+
+```
+🔍 KB Lint 완료 — {YYYY-MM-DD}
+⛔ P0: {N}건  ⚠️ P1: {N}건  📋 P2: {N}건  ✅ 자동수정: {N}건
+📦 _lint_history.jsonl에 1행 append 완료 (총 {N}행 / _meta 포함)
 ```
 
 ### 2. `knowledge-base/_index.md` P0 섹션 갱신 (Edit)
@@ -293,10 +317,10 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 
 ---
 
-## 사용자 보고 형식
+## 사용자 보고 형식 [v3.12]
 
 ```
-🔍 KB Lint 완료 — {YYYY-MM-DD}
+🔍 KB Lint 완료 — {YYYY-MM-DD} ({mode})
 
 ⛔ P0 (즉시 조치): {N}건
   → [파일명]: {문제} — 권장: {조치}
@@ -307,10 +331,11 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 📋 P2 (모니터링): {N}건
 
 ✅ 자동 수정: {N}건
-  → knowledge-base/_index.md P0 섹션 갱신
+  → knowledge-base/_index.md {수정 영역} 갱신
   → 교차 참조 맵 {N}건 상태 갱신
 
-📄 상세 리포트: wiki/lint_report_{YYYYMMDD}.md
+📦 영구 기록: knowledge-db/_lint_history.jsonl 1행 append 완료 (총 {N}행)
+📄 README.md "최근 브리핑" 섹션 갱신 ({mode=full 시})
 ```
 
 ---
@@ -323,7 +348,8 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 4. **무한 루프 금지:** 같은 파일 3회 이상 Read 시 중단
 5. **완벽보다 완료:** P0 처리 완료 시 P1 미완료여도 보고 후 반환
 6. **거짓 자기보고 금지 [v3.11]:** _index.md P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)" 등 자기 행동 선언 텍스트 작성 금지. 실제 Edit 완료 후에만 lint_report·해결완료 노트에 표기. (2026-05-03 사고 직접 원인)
-7. **Step 9 산출물 의무 [v3.11]:** mode=full 실행 시 wiki/lint_report_{YYYYMMDD}.md Write 호출과 README.md Edit 호출 둘 다 미수행하면 Step 10에서 "미완료"로 보고. 산출물 누락 상태로 "완료" 보고 금지.
+7. **Step 9 산출물 의무 [v3.12]:** mode=full 실행 시 `knowledge-db/_lint_history.jsonl` append + README.md Edit 둘 다 미수행하면 Step 10에서 "미완료"로 보고. 산출물 누락 상태로 "완료" 보고 금지.
+8. **`_lint_history.jsonl` 보호 [v3.12]:** 시스템 메타 파일 — 일회성 산출물 아님. 절대 삭제·재생성 금지. 첫 줄 `_meta` 레코드 수정 금지. append-only 원칙 준수 (기존 행 수정 시 다음 행에 정정 메모로 처리).
 
 ## 스케줄
 

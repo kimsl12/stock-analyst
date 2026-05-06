@@ -317,6 +317,7 @@ SUPPLY_CHAIN_PLACEHOLDER
 | `quantum_2026.jsonl` | 17건 (신규 등재 2026-05-03, industry/quantum.md SSOT) | kb-updater |
 | `real_estate_2026.jsonl` | 26건 (신규 등재 2026-05-03, industry/real_estate.md SSOT) | kb-updater |
 | `healthcare_service_2026.jsonl` | 47건 (신규 등재 2026-05-03, industry/healthcare_service.md SSOT) | kb-updater |
+| `_lint_history.jsonl` ⚠️ 시스템 메타 | 2건 + _meta 1건 (영구 누적, 매주 +1행 / **일회성 ❌, 절대 삭제 금지**) | wiki-linter (매주 자동 append) |
 | `market/2026_daily_prices.md` | 93줄 (archive) | market-data-collector |
 | `market/2026_economic_indicators.md` | 26줄 (부분 수집) | market-data-collector |
 | `market/2026_guru_changes.md` | 95줄 (Q4 2025 13F 8인 수집) | kb-updater |
