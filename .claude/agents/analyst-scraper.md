@@ -24,7 +24,21 @@ tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
 1. **저작권 안전 패턴**: 미디어/IB 공식 콘텐츠는 헤드라인+본문 일부 발췌+본인 정리 요약+출처 링크. 한국 증권사 무료 공개 PDF는 다운로드 가능 (license_note=public_official). 사용자 입수 PDF (license_note=user_upload). 출처 URL 필수.
 2. **메타 스키마**: `reports/analyst/_schema.md` 의 meta.json 스키마 그대로 따른다. 필수: item_id, source, date, target, title.
 3. **item_id 명명**: `{YYYYMMDD}_{Source}_{Target}[_{Slug}]`. 영문/숫자/언더스코어만. 한국 증권사명은 영문화 (`Samsung`, `KIWoom`, `MiraeAsset`, `Hanwha`, `KB`, `Shinhan`, `Hana` 등).
-4. **한글 번역 우선**: title / summary_bullets / source.html 본문 모두 의미가 변질되지 않는 선에서 한글 번역. 영문 원문은 source.html 의 출처 링크로만 노출. 한글 표현이 어려운 핵심 영문 용어 (Bull case, Overweight 등) 는 한글 풀어쓰기 + 괄호로 영문 병기.
+4. **한글 번역 우선 [강화 2026-05-07]**: title / summary_bullets / source.html 본문 / **ai_assessment 4 필드 모두 한글로 작성**. 영어 단어 사용 최소화 — 가독성 떨어짐. 한국어 풀어쓰기가 가능한 영어 단어는 모두 한글로 변환:
+   - Bull case → 강세 시나리오, Bear case → 약세 시나리오
+   - Mid-cycle → 경기 중반, Late-cycle → 경기 후반, Early-cycle → 경기 초반
+   - Out-of-consensus → 시장 컨센서스와 다른
+   - Logic chain → 논리 흐름, Thesis → 논거, Catalyst → 촉매
+   - Tactical view → 단기 시각, Strategic view → 장기 시각
+   - Sell-side → 증권사, Bullish/Bearish → 강세/약세
+   - Overweight/Underweight → 비중확대/비중축소
+   - Small-cap/Large-cap → 소형주/대형주
+   - 12M → 12개월, EOY → 연말, YoY → 전년 동기 대비
+   - Multiple expansion → PER 확대, Divergence → 충돌, Convergence → 수렴
+   - Driver → 동인, Vehicle → 투자 수단, Anchor → 기준점
+
+   유지 OK (한글 대체 부담 큰 약어): EPS, PER, AI, HBM, FOMC, Fed, EPS, ROE, P/E, KOSPI, S&P 500, NASDAQ, BTC, ETH, NVDA 등 종목 티커 / 수치 단위.
+   영문 원문은 source.html 의 출처 링크로만 노출 (저작권 안전 패턴).
 5. **summary_bullets**: 5개. 각 30~80자. 핵심 메시지 + 목표가/권고 변동 + 핵심 논거 + 핵심 위험 + 핵심 결론.
 6. **target_kind**: stock | etf | sector | macro | crypto 중 하나.
 7. **ai_assessment 필수**: `reports/analyst/_schema.md` 의 ai_assessment 4 필드 (context / agreement / divergence / key_insight) 모두 채울 것. 빈 값 또는 일반론 금지. KB 매크로 + 사용자 종목 v2 분석 + 직전 모닝/이브닝 브리핑 인용 필수.
