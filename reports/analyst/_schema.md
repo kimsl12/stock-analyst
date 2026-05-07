@@ -43,24 +43,55 @@ reports/analyst/
   "target": "NVDA",
   "target_name": "NVIDIA",
   "target_kind": "stock | etf | sector | macro | crypto",
-  "title": "NVIDIA — Maintain Buy after Q1 print",
+  "title": "NVIDIA — 1분기 실적 후 매수 유지 (한글 번역 권장, 영문 fallback OK)",
   "rating": "Buy | Hold | Sell | Overweight | Equal Weight | Underweight | N/A",
   "target_price": 1450,
   "target_currency": "USD",
   "prior_target_price": 1380,
   "period": "12M | 6M | EOY | N/A",
   "source_url": "https://...",
-  "language": "en | ko",
+  "language": "ko",
   "summary_bullets": [
-    "Q1 EPS beat consensus +12%",
-    "Data center 매출 +85% YoY",
-    "..."
+    "1분기 EPS 컨센서스 +12% 상회 (한글 번역 우선, 의미 변질 없는 선)",
+    "데이터센터 매출 전년比 +85%",
+    "5개 bullet 권장 (각 30~80자, 핵심 메시지 + 목표가 변동 + 핵심 논거 + 핵심 위험 + 결론)"
   ],
   "tags": ["semis", "ai", "datacenter"],
   "has_pdf": true,
   "has_full_html": false,
   "collected_at": "2026-05-07T13:30:00+09:00",
-  "license_note": "user_upload | public_official | media_quote_only"
+  "license_note": "user_upload | public_official | media_quote_only",
+  "ai_assessment": {
+    "context": "수집 시점 시장/매크로 컨텍스트 (S&P/VIX/Fed/주요 이벤트 — knowledge-base/market 참고). 1~2 문장.",
+    "agreement": "본 리포트의 어느 부분이 우리 분석/매크로 view 와 정합하는가? (구체 종목 v2 분석·브리핑 인용 권장)",
+    "divergence": "어느 부분이 어긋나는가? 어느 위험을 간과하는가? 우리 view 와 충돌하면 어떤 근거로?",
+    "key_insight": "투자 판단에 가장 의미 있는 한 줄 — 사용자가 이 리포트를 어떻게 활용하면 좋은지.",
+    "assessed_at": "YYYY-MM-DD"
+  },
+  "outcome": null
+}
+```
+
+### ai_assessment 작성 가이드
+
+**필수 4 필드**: context, agreement, divergence, key_insight. 각 1~3 문장.
+- **context**: KB 매크로 (`knowledge-base/market/`, `knowledge-base/macro/`) 와 직전 모닝/이브닝 브리핑 참조. 수집 시점의 지수·VIX·Fed·이벤트.
+- **agreement**: 우리 종목 v2 분석 / 브리핑과 정합하는 부분. 구체 evidence 포함 (예: "5/6 IWM v2 78.0과 일치").
+- **divergence**: 충돌하는 부분 + 그 이유. 단순 반대 X, 매크로 환경·정책 mismatch 등 구체 근거.
+- **key_insight**: 한 줄. 사용자가 어떻게 활용? "tactical bull case" / "logic chain 참고" / "진입 보류" 등.
+
+### outcome (사후 평가용)
+
+발행일로부터 충분한 시간 경과 후 (목표 기간의 50%+) 채움. 데이터 누적 시 /analyst/scoreboard 가 활용.
+
+```json
+"outcome": {
+  "evaluated_at": "2026-08-07",
+  "actual_price": 7820,
+  "hit": true,
+  "error_pct": 0.26,
+  "notes": "12M target 7,800 → 실제 8월 7,820 도달, +0.26% 오차 적중.",
+  "thesis_validity": "logic_chain_correct | logic_chain_partial | logic_chain_incorrect"
 }
 ```
 

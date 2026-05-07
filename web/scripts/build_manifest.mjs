@@ -222,6 +222,7 @@ async function main() {
           period: meta.period,
           target_kind: meta.target_kind,
           summary_bullets: meta.summary_bullets,
+          outcome: meta.outcome ?? null,
         });
       } catch (e) {
         warnings.push(`analyst meta 파싱 실패: ${sub.name} (${e.message})`);

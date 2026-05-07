@@ -98,7 +98,7 @@ _SUMMARY_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{title} — {source_full}</title>
 <style>
-:root{{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--blue:#42A5F5;--buy:#26A69A;--sell:#EF5350;--hold:#FFA726;--border:#2D3A45;--accent:#7C4DFF}}
+:root{{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--blue:#42A5F5;--buy:#26A69A;--sell:#EF5350;--hold:#FFA726;--border:#2D3A45;--accent:#7C4DFF;--ai:#FFB74D}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:24px;max-width:880px;margin:0 auto;line-height:1.55}}
 .back{{display:inline-block;color:var(--blue);font-size:13px;margin-bottom:12px;text-decoration:none}}
@@ -123,6 +123,19 @@ h2{{font-size:15px;color:var(--blue);margin-bottom:10px;padding-bottom:6px;borde
 ul{{padding-left:20px}}
 ul li{{margin-bottom:8px;font-size:14px}}
 .bullets li::marker{{color:var(--blue)}}
+/* AI 해석 섹션 */
+.ai-block{{background:linear-gradient(135deg,rgba(255,183,77,0.06),rgba(124,77,255,0.04));border:1px solid var(--border);border-left:3px solid var(--ai);padding:14px 18px;border-radius:6px;margin-bottom:24px}}
+.ai-block h2{{color:var(--ai);border-bottom:none;padding-bottom:0;margin-bottom:12px;display:flex;align-items:center;gap:6px}}
+.ai-block h2::before{{content:"🤖";font-size:16px}}
+.ai-block .ai-row{{margin-bottom:10px;font-size:14px;line-height:1.6}}
+.ai-block .ai-row:last-child{{margin-bottom:0}}
+.ai-block .ai-label{{display:inline-block;font-weight:700;color:var(--text);min-width:88px;padding-right:8px;font-size:13px}}
+.ai-block .ai-row.context .ai-label{{color:var(--blue)}}
+.ai-block .ai-row.agreement .ai-label{{color:var(--buy)}}
+.ai-block .ai-row.divergence .ai-label{{color:var(--hold)}}
+.ai-block .ai-row.insight{{padding-top:10px;margin-top:10px;border-top:1px dashed var(--border);font-style:italic;color:var(--text)}}
+.ai-block .ai-row.insight .ai-label{{color:var(--ai);font-style:normal}}
+.ai-disclaimer{{font-size:11px;color:var(--sub);margin-top:10px;padding-top:8px;border-top:1px dashed var(--border)}}
 .notice{{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:10px 14px;border-radius:4px;font-size:12px;color:var(--sub);margin:14px 0}}
 .notice b{{color:var(--text)}}
 .source-link{{display:inline-block;margin-top:6px;font-size:13px;color:var(--blue);text-decoration:none}}
@@ -131,7 +144,7 @@ ul li{{margin-bottom:8px;font-size:14px}}
 .full-link:hover{{border-color:var(--blue);color:var(--blue)}}
 .pdf-frame{{width:100%;height:75vh;border:1px solid var(--border);border-radius:6px;margin-top:12px;background:#fff}}
 footer{{margin-top:30px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--sub);font-family:ui-monospace,Menlo,monospace}}
-@media(max-width:700px){{body{{padding:12px}}}}
+@media(max-width:700px){{body{{padding:12px}}.ai-block .ai-label{{display:block;min-width:auto;margin-bottom:2px}}}}
 </style>
 </head>
 <body>
@@ -154,6 +167,8 @@ footer{{margin-top:30px;padding-top:14px;border-top:1px solid var(--border);font
     {bullets_html}
   </ul>
 </section>
+
+{ai_section}
 
 {original_section}
 
@@ -196,6 +211,51 @@ def _priceline_block(meta: dict) -> str:
     if not pieces:
         return ""
     return f'<div class="priceline">{"".join(pieces)}</div>'
+
+
+def _ai_section(meta: dict) -> str:
+    """AI 해석 섹션 — meta.ai_assessment 가 있으면 렌더, 없으면 빈 문자열."""
+    aa = meta.get("ai_assessment")
+    if not aa or not isinstance(aa, dict):
+        return ""
+    rows: list[str] = []
+    if aa.get("context"):
+        rows.append(
+            f'<div class="ai-row context"><span class="ai-label">시장 컨텍스트</span>'
+            f'{html.escape(aa["context"])}</div>'
+        )
+    if aa.get("agreement"):
+        rows.append(
+            f'<div class="ai-row agreement"><span class="ai-label">동의 / 타당</span>'
+            f'{html.escape(aa["agreement"])}</div>'
+        )
+    if aa.get("divergence"):
+        rows.append(
+            f'<div class="ai-row divergence"><span class="ai-label">이견 / 위험</span>'
+            f'{html.escape(aa["divergence"])}</div>'
+        )
+    if aa.get("key_insight"):
+        rows.append(
+            f'<div class="ai-row insight"><span class="ai-label">핵심 시사점</span>'
+            f'{html.escape(aa["key_insight"])}</div>'
+        )
+    if not rows:
+        return ""
+    body = "\n".join(rows)
+    assessed_at = aa.get("assessed_at", "")
+    disclaimer_extra = (
+        f' · 평가 시점 {html.escape(assessed_at)}' if assessed_at else ""
+    )
+    return (
+        '<section class="ai-block">'
+        '<h2>AI 해석 / 의견</h2>'
+        f'{body}'
+        '<div class="ai-disclaimer">'
+        '※ 이 평가는 분석 에이전트가 KB 매크로/시장 데이터 + 사용자 분석 누적을 참고하여 작성한 것이며, '
+        f'원 발행처 의견과 다를 수 있습니다. 투자 판단은 본인 책임{disclaimer_extra}.'
+        '</div>'
+        '</section>'
+    )
 
 
 def _original_section(item_dir: Path, meta: dict) -> str:
@@ -256,6 +316,7 @@ def render_summary_html(item_dir: Path, meta: dict) -> None:
         rating_tag=rating_tag,
         priceline=_priceline_block(meta),
         bullets_html=bullets_html,
+        ai_section=_ai_section(meta),
         original_section=_original_section(item_dir, meta),
         source_link_html=source_link_html,
         item_id=html.escape(meta.get("item_id", "")),

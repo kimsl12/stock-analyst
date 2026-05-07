@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import manifest from '../../data/manifest.json';
+
+interface Outcome {
+  evaluated_at?: string;
+  actual_price?: number;
+  hit?: boolean;
+  error_pct?: number;
+  thesis_validity?: 'logic_chain_correct' | 'logic_chain_partial' | 'logic_chain_incorrect';
+  notes?: string;
+}
+
+interface AnalystItem {
+  type: string;
+  date: string;
+  url_path: string;
+  source?: string;
+  source_type?: string;
+  analyst_name?: string;
+  rating?: string;
+  target_price?: number | null;
+  target_currency?: string;
+  period?: string;
+  target?: string | null;
+  target_name?: string | null;
+  outcome?: Outcome | null;
+}
+
+const all = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+const evaluated = all.filter((it) => it.outcome && it.outcome.evaluated_at);
+const pending = all.length - evaluated.length;
+
+const ACTIVATION_THRESHOLD = 5;
+const isActive = evaluated.length >= ACTIVATION_THRESHOLD;
+
+// 분석가별 집계
+type Agg = {
+  key: string;
+  display_name: string;
+  source: string | null;
+  count: number;
+  hits: number;
+  avg_error_pct: number;
+  thesis_score: number;
+};
+
+function aggregate(items: AnalystItem[]): Agg[] {
+  const groups = new Map<string, AnalystItem[]>();
+  for (const it of items) {
+    const key = it.analyst_name || it.source || 'unknown';
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(it);
+  }
+  const aggs: Agg[] = [];
+  for (const [key, list] of groups) {
+    const count = list.length;
+    const hits = list.filter((it) => it.outcome?.hit).length;
+    const errors = list
+      .map((it) => it.outcome?.error_pct)
+      .filter((e): e is number => typeof e === 'number');
+    const avg_error = errors.length
+      ? errors.reduce((a, b) => a + Math.abs(b), 0) / errors.length
+      : 0;
+    const thesis_pts = list.reduce((sum, it) => {
+      const tv = it.outcome?.thesis_validity;
+      if (tv === 'logic_chain_correct') return sum + 1;
+      if (tv === 'logic_chain_partial') return sum + 0.5;
+      return sum;
+    }, 0);
+    aggs.push({
+      key,
+      display_name: key,
+      source: list[0].source ?? null,
+      count,
+      hits,
+      avg_error_pct: avg_error,
+      thesis_score: count ? thesis_pts / count : 0,
+    });
+  }
+  return aggs;
+}
+
+const aggs = aggregate(evaluated);
+
+// composite_score = 0.5 * hit_rate + 0.3 * (1 - error_pct/100 capped 0~1) + 0.2 * thesis
+function composite(a: Agg): number {
+  const hit_rate = a.count ? a.hits / a.count : 0;
+  const error_norm = Math.max(0, 1 - a.avg_error_pct / 100);
+  return 0.5 * hit_rate + 0.3 * error_norm + 0.2 * a.thesis_score;
+}
+
+const ranked = aggs
+  .map((a) => ({ ...a, composite: composite(a) }))
+  .sort((a, b) => b.composite - a.composite);
+
+const fmtPct = (n: number) => `${(n * 100).toFixed(1)}%`;
+---
+<Base title="애널리스트 순위·평가" lede={`누적 ${all.length}건 · 평가 완료 ${evaluated.length}건 · 활성 임계 ${ACTIVATION_THRESHOLD}건`} active="analyst">
+
+  {!isActive ? (
+    <section class="collecting">
+      <div class="ico">📊</div>
+      <h2>데이터 누적 중</h2>
+      <p class="msg">
+        애널리스트별 적중률·정확도 순위는 평가 완료된 리포트 <b>{ACTIVATION_THRESHOLD}건 이상</b> 누적 시 활성화됩니다.
+      </p>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" style={`width: ${Math.min(100, (evaluated.length / ACTIVATION_THRESHOLD) * 100)}%`}></div>
+        </div>
+        <div class="progress-meta">
+          <span>{evaluated.length} / {ACTIVATION_THRESHOLD} 평가됨</span>
+          <span class="dim">남음 {Math.max(0, ACTIVATION_THRESHOLD - evaluated.length)}건</span>
+        </div>
+      </div>
+
+      <h3>평가 진행 상황</h3>
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-label">총 수집</div>
+          <div class="status-val">{all.length}<span class="unit">건</span></div>
+        </div>
+        <div class="status-card">
+          <div class="status-label">평가 완료</div>
+          <div class="status-val">{evaluated.length}<span class="unit">건</span></div>
+        </div>
+        <div class="status-card">
+          <div class="status-label">평가 대기</div>
+          <div class="status-val">{pending}<span class="unit">건</span></div>
+        </div>
+      </div>
+
+      <h3>평가 기준</h3>
+      <ul class="criteria">
+        <li><b>적중률 (가중 0.5)</b> — 목표가 도달 여부 (방향 + ±10% 범위)</li>
+        <li><b>정확도 (가중 0.3)</b> — 실제 가격 대비 목표가 오차 % (낮을수록 우수)</li>
+        <li><b>논리 점수 (가중 0.2)</b> — 사후 검증된 thesis 타당성 (correct 1.0 / partial 0.5 / incorrect 0)</li>
+        <li><b>평가 시점</b> — 발행일로부터 목표 기간의 50% 경과 시</li>
+      </ul>
+
+      <p class="how">
+        평가 항목은 <code>reports/analyst/items/{`{id}`}/meta.json</code> 의 <code>outcome</code> 필드에 기입됩니다.
+        분석 에이전트가 주기적으로 발행 후 충분한 시간이 지난 항목을 자동 평가합니다.
+      </p>
+    </section>
+  ) : (
+    <section class="ranked">
+      <table class="rank-table">
+        <thead>
+          <tr>
+            <th class="rank-col">#</th>
+            <th>애널리스트</th>
+            <th>Source</th>
+            <th class="num">평가</th>
+            <th class="num">적중률</th>
+            <th class="num">평균 오차</th>
+            <th class="num">논리</th>
+            <th class="num composite">종합</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ranked.map((a, i) => (
+            <tr>
+              <td class="rank-col"><span class:list={['rank-badge', i < 3 && 'top']}>{i + 1}</span></td>
+              <td><b>{a.display_name}</b></td>
+              <td><span class="badge t-analyst">{a.source ?? '-'}</span></td>
+              <td class="num">{a.count}</td>
+              <td class="num">{fmtPct(a.hits / Math.max(1, a.count))}</td>
+              <td class="num">{a.avg_error_pct.toFixed(1)}%</td>
+              <td class="num">{(a.thesis_score * 100).toFixed(0)}</td>
+              <td class="num composite">{(a.composite * 100).toFixed(1)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {pending > 0 && (
+        <p class="dim small">※ 추가로 {pending} 건이 평가 대기 중입니다 (목표 기간 미도달).</p>
+      )}
+    </section>
+  )}
+
+</Base>
+
+<style>
+  .collecting {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .collecting .ico { font-size: 2.5rem; margin-bottom: 0.4rem; }
+  .collecting h2 { font-size: 1.3rem; margin: 0 0 0.6rem; color: var(--text); font-weight: 700; }
+  .collecting .msg { color: var(--muted); font-size: 0.95rem; margin: 0 auto 1.5rem; max-width: 540px; line-height: 1.6; }
+  .collecting .msg b { color: var(--accent); font-weight: 700; }
+
+  .progress-wrap { max-width: 480px; margin: 0 auto 2rem; }
+  .progress-track {
+    height: 14px;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--t-analyst, #c084fc), var(--accent));
+    transition: width 0.4s ease;
+  }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .collecting h3 {
+    margin: 1.5rem 0 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .status-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+  .status-label { font-size: 0.75rem; color: var(--muted); }
+  .status-val {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .status-val .unit { font-size: 0.85rem; color: var(--muted); margin-left: 4px; }
+
+  .criteria {
+    text-align: left;
+    max-width: 640px;
+    margin: 0 auto;
+    padding-left: 1.4rem;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .criteria b { color: var(--accent); }
+
+  .how {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+  .how code {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    background: var(--surface-2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+  }
+
+  .ranked .rank-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ranked th, .ranked td {
+    padding: 0.7rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: 0.88rem;
+  }
+  .ranked th {
+    background: var(--surface-2);
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .ranked .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .ranked .composite { font-weight: 700; color: var(--accent); }
+  .rank-col { width: 48px; text-align: center; }
+  .rank-badge {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--muted);
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .rank-badge.top {
+    background: linear-gradient(135deg, #fbbf24, #fb923c);
+    color: #0F1923;
+  }
+
+  .badge.t-analyst {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgba(192, 132, 252, 0.14);
+    color: var(--t-analyst, #c084fc);
+    font-weight: 600;
+  }
+  .small { font-size: 0.78rem; margin-top: 1rem; }
+</style>

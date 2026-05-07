@@ -1,15 +1,12 @@
 ---
-import Base from '../layouts/Base.astro';
-import manifest from '../data/manifest.json';
+import manifest from '../../data/manifest.json';
 
 interface AnalystItem {
   type: string;
   ticker: string | null;
   name: string | null;
   date: string;
-  filename: string;
   url_path: string;
-  size_bytes: number;
   title: string | null;
   source?: string;
   source_type?: string;
@@ -18,20 +15,13 @@ interface AnalystItem {
   target_price?: number | null;
   target_currency?: string;
   period?: string;
-  target_kind?: string;
   summary_bullets?: string[];
 }
 
-const items = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
-
-// Source-type별 그룹 (필터링 용)
-const sourceTypes = {
-  ib_official: 'IB 공식',
-  media: '미디어 인용',
-  korea_brokerage: '한국 증권사',
-  youtube: 'YouTube',
-  user_upload: '사용자 입수',
-};
+const LIMIT = 6;
+const allAnalyst = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+const items = allAnalyst.slice(0, LIMIT);
+const total = allAnalyst.length;
 
 const ratingClass = (r?: string): string => {
   if (!r) return 'neutral';
@@ -41,16 +31,27 @@ const ratingClass = (r?: string): string => {
   if (['hold', 'equal weight', 'neutral'].some((k) => rl.includes(k))) return 'hold';
   return 'neutral';
 };
+
+const sourceTypeLabel: Record<string, string> = {
+  ib_official: '🏛️ IB 공식',
+  media: '📰 미디어',
+  korea_brokerage: '🇰🇷 한국 증권사',
+  youtube: '📺 YouTube',
+  user_upload: '📄 직접 입수',
+};
 ---
-<Base title="애널리스트 리포트" lede={`총 ${items.length}건 · 본인 정리 요약 + 출처 링크 + AI 해석 패턴`} active="analyst">
-  <nav class="sub-nav">
-    <a href="/analyst" class="active">전체 리포트</a>
-    <a href="/analyst/scoreboard">순위·평가 →</a>
-  </nav>
+<section class="card analyst-spotlight">
+  <header class="card-head">
+    <h2><span class="dot" /> 애널리스트 리포트</h2>
+    <div class="head-right">
+      <span class="dim">총 {total}건</span>
+      <a href="/analyst" class="link-all">전체 보기 →</a>
+    </div>
+  </header>
   {items.length === 0 ? (
-    <p class="empty">아직 인덱싱된 애널리스트 리포트가 없습니다. <code>/애널리스트스크랩</code> 또는 <code>reports/analyst/incoming/</code> 에 PDF 드롭으로 추가하세요.</p>
+    <p class="empty">아직 인덱싱된 애널리스트 리포트가 없습니다.</p>
   ) : (
-    <section class="grid">
+    <div class="grid">
       {items.map((it) => (
         <a class="ac" href={it.url_path}>
           <div class="row1">
@@ -67,61 +68,60 @@ const ratingClass = (r?: string): string => {
           )}
           <div class="foot">
             {it.target_price != null ? (
-              <span class="tp">TP {it.target_currency ?? ''}{it.target_price}{it.period ? ` · ${it.period}` : ''}</span>
+              <span class="tp">목표가 {it.target_currency ?? ''}{it.target_price.toLocaleString()}{it.period ? ` · ${it.period}` : ''}</span>
             ) : <span class="tp dim">목표가 N/A</span>}
-            {it.analyst_name && <span class="dim">{it.analyst_name}</span>}
+            {it.source_type && <span class="src-tag">{sourceTypeLabel[it.source_type] ?? it.source_type}</span>}
           </div>
         </a>
       ))}
-    </section>
+    </div>
   )}
-</Base>
+</section>
 
 <style>
-  .sub-nav {
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.1rem; }
+  .card-head {
     display: flex;
-    gap: 1.2rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
-  .sub-nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 0.2rem 0;
-    border-bottom: 2px solid transparent;
-    transition: color .15s, border-color .15s;
-  }
-  .sub-nav a:hover { color: var(--text); }
-  .sub-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  .empty {
-    padding: 3rem 1rem;
-    text-align: center;
-    color: var(--muted);
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-  }
-  .empty code {
-    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+  .card-head h2 {
+    margin: 0;
     font-size: 0.85rem;
-    background: var(--surface-2);
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
+  .card-head .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--t-analyst, #c084fc);
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .head-right { display: flex; align-items: center; gap: 0.7rem; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .link-all { color: var(--accent); font-size: 0.78rem; text-decoration: none; }
+  .link-all:hover { text-decoration: underline; }
+  .empty { color: var(--muted); font-size: 0.85rem; padding: 1rem; }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.7rem;
   }
   .ac {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 14px;
-    background: var(--surface);
+    padding: 12px 14px;
+    background: var(--surface-2);
     border: 1px solid var(--border);
     border-radius: 8px;
     color: inherit;
@@ -130,8 +130,7 @@ const ratingClass = (r?: string): string => {
     height: 100%;
   }
   .ac:hover {
-    border-color: var(--accent);
-    background: var(--surface-2);
+    border-color: var(--t-analyst, #c084fc);
     transform: translateY(-1px);
     text-decoration: none;
   }
@@ -139,34 +138,41 @@ const ratingClass = (r?: string): string => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
   }
   .row1 .date { font-variant-numeric: tabular-nums; }
+  .badge.t-analyst {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgba(192, 132, 252, 0.14);
+    color: var(--t-analyst, #c084fc);
+    font-weight: 600;
+  }
   .row2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2px;
   }
   .target {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text);
   }
   .rating {
-    font-size: 11px;
-    padding: 2px 9px;
-    border-radius: 10px;
-    background: var(--surface-2);
+    font-size: 10.5px;
+    padding: 1px 8px;
+    border-radius: 9px;
+    background: var(--surface);
     color: var(--muted);
   }
   .rating.buy { background: rgba(16,185,129,.18); color: var(--up); }
   .rating.sell { background: rgba(239,68,68,.18); color: var(--down); }
   .rating.hold { background: rgba(245,158,11,.18); color: var(--warn); }
   .title {
-    margin: 6px 0 4px;
-    font-size: 13.5px;
+    margin: 4px 0 2px;
+    font-size: 12.5px;
     line-height: 1.4;
     font-weight: 500;
     color: var(--text);
@@ -177,8 +183,8 @@ const ratingClass = (r?: string): string => {
   }
   .lead {
     margin: 0;
-    font-size: 12.5px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    line-height: 1.45;
     color: var(--muted);
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -187,14 +193,16 @@ const ratingClass = (r?: string): string => {
   }
   .foot {
     margin-top: auto;
-    padding-top: 8px;
+    padding-top: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11.5px;
+    font-size: 10.5px;
+    flex-wrap: wrap;
+    gap: 4px;
     font-variant-numeric: tabular-nums;
   }
   .tp { color: var(--text); font-weight: 600; }
   .tp.dim { color: var(--dim); font-weight: 400; }
-  .dim { color: var(--dim); }
+  .src-tag { color: var(--dim); font-size: 10px; }
 </style>
