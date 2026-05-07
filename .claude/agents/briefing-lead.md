@@ -202,6 +202,8 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
    → analysis/briefing/macro_{YYYYMMDD}.md
 3. correlation-monitor (mode=quick, B-5 상관관계 모니터만)
    → knowledge-base/market/correlation_matrix.md, surprise_index.md
+3.5. ★ 인사이더 시그널 읽기 [v3.5 신규] — knowledge-base/portfolio/insider_signals.json
+   → 본문 "인사이더 시그널" 섹션에 cluster_buys Top 5 자동 인용 (아래 형식)
 4. briefing-lead 종합 (debate-card + contrarian-card 각 1건 + 4종 포트폴리오 방향)
    → analysis/briefing/lead_morning_{YYYYMMDD}.md
 5. briefing-report-generator (template=morning)
@@ -217,6 +219,8 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 1. market-data-collector (region_focus=both, 아시아 마감 포함)
 2. global-macro-analyst (mode=B-9 매크로 핵심 + 글로벌 이슈 탑5)
 3. correlation-monitor (full — Beat/Miss + 6쌍 상관관계)
+3.5. ★ 인사이더 시그널 읽기 [v3.5 신규] — knowledge-base/portfolio/insider_signals.json
+   → cluster_buys Top 5 자동 인용 (B-7 거물 심화 섹션 아래 위치)
 4. briefing-lead 종합 (debate-card + contrarian-card + B-7 거물 심화 + 4종 방향)
 5. briefing-report-generator (template=evening, 아침 대비 변화 컬럼 포함)
 6. performance append
@@ -530,6 +534,39 @@ CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 13F 데이터를 인용할 때마다 헤더에 다음 1줄 강제:
 
 > ⚠️ **13F 시차 경고:** 분기말 기준, 최대 45일 시차. "현재 보유" 표현 금지.
+
+### 5. 인사이더 클러스터 매수 Top 5 [v3.5 신규, 2026-05-07]
+
+`/모닝브리핑` 과 `/이브닝브리핑` 본문에 **반드시 1개 섹션** 추가 — 13F 의 단점(45일 시차)을 시차 0일 데이터로 보완.
+
+**소스:** `knowledge-base/portfolio/insider_signals.json` (Vercel prebuild 단계 자동 갱신, openinsider.com).
+
+**섹션 형식 (본문 표 그대로 인용):**
+
+```markdown
+### 📊 인사이더 클러스터 매수 — Form 4 시차 0일
+
+> 3명 이상 인사이더가 동시에 자사주 매수 — 13F (45일 시차) 보완 단기 시그널.
+
+| 거래일 | 티커 | 회사 | 인원 | 금액 | 지분Δ | 1주↑ | 산업 |
+|--------|------|------|------|------|-------|------|------|
+| {trade_date} | **{ticker}** | {company} | {insider_count}명 | {value_fmt} | {delta_own_pct} | {r_1w} | {industry} |
+| ... (Top 5 까지) |
+
+**해석 (briefing-lead 작성):**
+- 강한 시그널 (필요 시 1줄): 인원 4+ 또는 금액 $5M+ 종목에 별표
+- 섹터 편중 감지: 같은 산업 3건 이상 시 "{산업} 인사이더 매수 집중" 명시
+- 분석 종목과 일치 시: 본문에서 강조 ("우리가 추적하는 {ticker} 에 클러스터 매수 출현")
+
+**필터링 규칙:**
+- `cluster_buys` 배열 첫 5건 그대로 사용 (이미 거래일 내림차순 정렬)
+- 지난 7일 내 거래만 — 7일 초과 항목 자동 제외
+- 데이터 0건 또는 미수집 시 섹션 자체 생략 + "최근 7일 클러스터 매수 없음" 1줄
+```
+
+**해당 명령:** `/모닝브리핑`, `/이브닝브리핑` (필수). `/주간리포트` 는 주간 누적 표(Top 10) 옵션.
+**위치:** B-7 거물 심화 섹션 다음, 4종 포트폴리오 방향 직전.
+**출처 표기:** `[openinsider.com, {filing_date}]`
 
 ---
 

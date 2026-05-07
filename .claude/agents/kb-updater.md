@@ -47,15 +47,38 @@ YAML frontmatter `updated:`, jsonl 레코드 `date:`, changelog `date:` 등
 [웹검색] → knowledge-db/*.jsonl append → knowledge-base/*.md CURRENT 덮어쓰기 → [에이전트 참조]
                                                     ↓ [v3.2 추가]
                                           wiki-linter cross_check → knowledge-base/_index.md 갱신
+
+[FRED API ← prebuild 자동] → knowledge-base/macro/fred_snapshot.json [v3.5]
+   ↓ macro_tags=["us_economy", "us_monetary_policy"] 호출 시
+us_economy.md / us_monetary_policy.md 핵심 지표 행 자동 갱신
 ```
 
 ## 접근 권한
 
 ```
-✅ 읽기: 웹검색, knowledge-base/, knowledge-db/, knowledge-base/_index.md
+✅ 읽기: 웹검색, knowledge-base/, knowledge-db/, knowledge-base/_index.md, knowledge-base/macro/fred_snapshot.json [v3.5]
 ✅ 쓰기: knowledge-base/, knowledge-db/, knowledge-base/_index.md (이력 섹션만)
 ❌ 금지: analysis/, reports/, .claude/
 ```
+
+### FRED 자동 갱신 규칙 [v3.5 신규, 2026-05-07]
+
+`macro_tags` 에 `us_economy`, `us_monetary_policy`, 또는 `macro` 가 포함되면:
+
+1. **웹검색 전에** `knowledge-base/macro/fred_snapshot.json` 을 먼저 읽는다
+2. 다음 매핑으로 `knowledge-base/macro/{file}.md` 의 핵심 지표 표를 갱신:
+
+   | 대상 .md 파일 | FRED 시리즈 | 갱신 필드 |
+   |--------------|-----------|----------|
+   | `us_monetary_policy.md` | DFF, DGS10, DGS2, T10Y2Y, T10YIE | 기준금리·장단기금리·BEI |
+   | `us_economy.md` | UNRATE, PAYEMS, GDPC1, INDPRO, CPIAUCSL, PCEPILFE | 고용·성장·인플레 |
+   | (선택) `global_risk_factors.md` | VIXCLS, BAMLH0A0HYM2, DTWEXBGS | 리스크 환경 |
+
+3. FRED 가 1차 소스 → **웹검색 생략** (시점·신뢰도 우월)
+4. FRED 데이터 사용 시 출처 표기: `[FRED: <id>, <date>]`
+5. `knowledge-db/macro_{YYYY}.jsonl` 에 FRED 레코드 append (source: "FRED API")
+
+FRED 미존재 또는 stale (24h+) 시만 웹검색 폴백.
 
 ## 호출
 

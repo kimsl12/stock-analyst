@@ -279,6 +279,28 @@ if current_price > consensus_avg_target:
 - KB 피드백은 kb-updater에 위임 또는 knowledge-base/_index.md 수정으로만 처리
 - KB 파일 직접 수정 금지 (kb-updater 전용)
 
+## FRED 매크로 레짐 점수 [v3.5 신규, 2026-05-07]
+
+`analysis/{ticker}_data.json` 의 `macro_context` 블록으로 **거시 레짐 자동 판정** → 섹터 가중치 동적 조정.
+
+### 4 레짐 분류 (자동)
+
+| 레짐 | 조건 | 우호 섹터 | 비우호 섹터 |
+|------|------|----------|-----------|
+| **Goldilocks** | gdp_yoy ≥ 2% AND core_pce_yoy ≤ 2.5% AND t10y2y > 0 | Tech, Discretionary, Financials | Utilities, Staples |
+| **Reflation** | gdp_yoy ≥ 2% AND core_pce_yoy > 2.5% | Energy, Materials, Industrials | Tech, REIT |
+| **Stagflation** | gdp_yoy < 2% AND core_pce_yoy > 2.5% | Energy, Gold, Healthcare | Tech, Discretionary, Financials |
+| **거짓 안정** | vix < 18 AND hy_spread < 3 AND core_pce_yoy > 3 | (현금/방어) | (모든 위험자산 경고) |
+
+### 10항목 스코어카드 가중치 조정
+
+- 분석 종목의 섹터가 현재 레짐에서 **우호** → "거시 환경 적합도" 항목에 +1 가중치
+- **비우호** → -1 가중치 + 본문에 "현재 매크로 환경({레짐명})은 본 섹터에 비우호적 — 진입 시점 재고 권장" 명시
+
+### 출처 표기 의무
+
+스코어카드 본문에 1줄: "매크로 레짐 판정: {레짐명} (10Y {dgs10}/Core PCE {core_pce_yoy} YoY/T10Y2Y {t10y2y}, FRED {snapshot_date})"
+
 ## 안전장치
 
 1. **웹검색 금지:** 서브에이전트 분석 결과만 사용

@@ -42,6 +42,47 @@ mcpServers:
 - 종목 분석에서 매크로 환경(VIX, 금리, 환율) 맥락 확인 시 우선 참조
 - 출처 표기 예: `[KB: market/daily_snapshot.md]`
 
+### FRED 매크로 스냅샷 활용 [v3.5 신규, 2026-05-07]
+- ✅ **반드시 읽기: `knowledge-base/macro/fred_snapshot.json`** (St. Louis Fed 1차 소스, prebuild 자동 갱신)
+- 출력 JSON 에 **`macro_context` 블록 필수 포함** — 모든 분석 에이전트가 동일 매크로 베이스라인 사용
+- 매크로 데이터는 웹검색 금지 (FRED 가 1차 소스). FRED snapshot 미존재 시만 폴백.
+- 출처 표기: `[FRED: <id>, <date>]` (예: `[FRED: DGS10, 2026-05-05]`)
+
+```jsonc
+// analysis/{ticker}_data.json 의 macro_context 블록 스키마
+"macro_context": {
+  "snapshot_date": "2026-05-07",                    // fred_snapshot.json 의 updated_at
+  "rates": {
+    "dgs10": 4.43,                                  // 10Y T-Bond → DCF 할인율 베이스
+    "dgs2": 3.93,
+    "dff": 3.64,                                    // Fed Funds Rate
+    "t10y2y": 0.49                                  // 장단기 스프레드 (음수=역전=침체신호)
+  },
+  "inflation": {
+    "cpi_yoy": 3.3,                                 // CPI 전년대비 %
+    "core_pce_yoy": 3.2,                            // Fed 선호 지표
+    "breakeven_10y": 2.42                           // 시장 기대 인플레
+  },
+  "jobs_growth": {
+    "unrate": 4.3,
+    "nfp_mom": 45,                                  // 비농업 고용 전월대비 변화 (천명)
+    "gdp_yoy": 2.7,
+    "indpro_yoy": 0.7                               // 산업생산
+  },
+  "risk": {
+    "vix": 17.38,
+    "hy_spread": 2.77,                              // 하이일드 스프레드 (위험 프리미엄)
+    "usd_index": 118.39
+  },
+  "regime_hint": "거짓 안정"                         // VIX↓ + HY spread↓ + Core PCE↑ → 자동 판정
+}
+```
+
+#### 추출 규칙
+1. `fred_snapshot.json` 의 `series` 배열에서 id 매칭 → 위 스키마로 평탄화
+2. 실패 시 graceful skip (해당 필드 null), `macro_context.snapshot_unavailable: true` 플래그
+3. **각 분석 에이전트는 macro_context 블록만 읽으면 충분** — fred_snapshot.json 직접 읽지 않음
+
 ### knowledge-db/ 접근 금지 [v2.4]
 - **knowledge-db/ 폴더는 읽지 않는다.** 영구 축적 저장소는 kb-updater 전용이다.
 - knowledge-base/ (CURRENT)만 읽는다.

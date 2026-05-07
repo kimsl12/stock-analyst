@@ -259,6 +259,26 @@ Write가 어떤 이유로든 실패하면, **반환 메시지에 분석 전문�
 - 리드가 KB 데이터를 data.md에 미리 통합해 두므로, 별도 KB 조회 불필요.
 - KB 파일을 수정하지 않는다 (읽기 전용).
 
+### FRED 매크로 활용 [v3.5 신규, 2026-05-07]
+data-collector 가 채워준 `analysis/{ticker}_data.json` 의 `macro_context` 블록을 **반드시 읽고 활용**한다.
+
+**DCF 할인율 자동 산출** (가장 큰 효용):
+```
+WACC 베이스 = macro_context.rates.dgs10 (10Y T-Bond)
+ERP 추정    = macro_context.rates.dgs10 + 5.5% (기본) — Damodaran ERP 미사용 시
+              또는 macro_context.inflation.breakeven_10y 활용한 실질금리 기반 산출
+DCF 할인율  = 베이스 × (1 - 세율) + ERP × β
+```
+
+**리포트 표기 의무**:
+- DCF 결과를 제시할 때 반드시 `[FRED: DGS10, {snapshot_date}]` 출처 명시
+- 추정이 아닌 1차 소스 사용을 본문에 강조 ("10Y T-Bond 4.43% 기준")
+- macro_context 미존재 시 명시: "FRED 스냅샷 미수집 — 수기 추정 4.5% 사용"
+
+**실적 전망 검증**:
+- macro_context.inflation.core_pce_yoy 가 3% 초과 시 → 매출 성장률 인플레 보정 명시
+- macro_context.jobs_growth.gdp_yoy 가 2% 미만 시 → 시클리컬 종목 경고 추가
+
 ## 안전장치 (모든 서브에이전트 공통)
 
 ### 웹검색 금지 [v2.3]

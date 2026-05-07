@@ -1,35 +1,34 @@
 ---
-// 클릭 시 finviz S&P 500 히트맵 모달로 표시
-// finviz 는 X-Frame-Options 헤더가 없어서 iframe 임베드 가능 (2026-05 확인).
-// 차단 시 fallback: 새 탭 외부 링크.
+// TradingView Stock Heatmap 위젯 — 클릭 시 모달로 확대
+// finviz iframe 임베드 차단 사례 발생 → TradingView 공식 임베드 위젯으로 교체 (2026-05-07).
+//
+// 위젯은 모달 안에 마운트. 처음 열 때만 스크립트 로드, 닫아도 DOM 유지(상태 보존).
 ---
 <section class="hm-card">
   <header class="hm-head">
     <h2><span class="dot"></span>S&P 500 히트맵</h2>
-    <span class="dim">finviz 실시간 맵 · 클릭하여 확대</span>
+    <span class="dim">TradingView 위젯 · 클릭하여 확대</span>
   </header>
 
-  <div class="hm-tiles">
-    <button type="button" class="hm-tile" data-period="sec">
-      <span class="hm-period">실시간</span>
-      <span class="hm-desc">현재 등락률</span>
-      <span class="hm-icon">▤</span>
-    </button>
-    <button type="button" class="hm-tile" data-period="sec_1w">
-      <span class="hm-period">1주</span>
-      <span class="hm-desc">5일 누적</span>
-      <span class="hm-icon">▥</span>
-    </button>
-    <button type="button" class="hm-tile" data-period="sec&st=ytd">
-      <span class="hm-period">YTD</span>
-      <span class="hm-desc">연초 대비</span>
-      <span class="hm-icon">▦</span>
-    </button>
-    <button type="button" class="hm-tile" data-period="sec&st=y1">
-      <span class="hm-period">1년</span>
-      <span class="hm-desc">52주 누적</span>
-      <span class="hm-icon">▧</span>
-    </button>
+  <button type="button" class="hm-trigger" id="hm-trigger" aria-label="S&P 500 히트맵 열기">
+    <div class="hm-preview">
+      <div class="hm-preview-grid">
+        <span class="b b-up b-l"></span><span class="b b-up b-l"></span><span class="b b-up"></span>
+        <span class="b b-up b-l"></span><span class="b b-down"></span><span class="b b-up"></span>
+        <span class="b b-up"></span><span class="b b-down"></span><span class="b b-down b-l"></span>
+        <span class="b b-up b-l"></span><span class="b b-up"></span><span class="b b-down"></span>
+      </div>
+    </div>
+    <div class="hm-cta">
+      <span class="hm-cta-title">전체화면 히트맵 열기 →</span>
+      <span class="hm-cta-sub">시간대 토글: 1일 / 1주 / 1개월 / YTD / 1년 (위젯 내부 컨트롤)</span>
+    </div>
+  </button>
+
+  <div class="hm-links">
+    <a href="https://www.tradingview.com/heatmap/stock/?color=change&dataset=SPX500&group=sector&size=market_cap_basic" target="_blank" rel="noopener">TradingView 새 탭 ↗</a>
+    <span class="sep">·</span>
+    <a href="https://finviz.com/map.ashx?t=sec" target="_blank" rel="noopener">finviz 새 탭 ↗</a>
   </div>
 </section>
 
@@ -38,22 +37,15 @@
   <div class="hm-modal-backdrop" data-close="1"></div>
   <div class="hm-modal-frame" role="dialog" aria-modal="true" aria-label="S&P 500 히트맵">
     <header class="hm-modal-head">
-      <div class="hm-tabs">
-        <button type="button" class="hm-tab" data-period="sec">실시간</button>
-        <button type="button" class="hm-tab" data-period="sec_1w">1주</button>
-        <button type="button" class="hm-tab" data-period="sec&st=ytd">YTD</button>
-        <button type="button" class="hm-tab" data-period="sec&st=y1">1년</button>
-      </div>
+      <span class="hm-modal-title">S&P 500 섹터·종목 히트맵 — TradingView</span>
       <div class="hm-modal-actions">
-        <a id="hm-external" href="https://finviz.com/map.ashx?t=sec" target="_blank" rel="noopener" class="hm-ext">finviz 새 탭 ↗</a>
+        <a href="https://www.tradingview.com/heatmap/stock/?color=change&dataset=SPX500&group=sector&size=market_cap_basic" target="_blank" rel="noopener" class="hm-ext">새 탭 ↗</a>
         <button type="button" class="hm-close" data-close="1" aria-label="닫기">✕</button>
       </div>
     </header>
     <div class="hm-iframe-wrap">
-      <iframe id="hm-iframe" title="S&P 500 Map" loading="lazy" referrerpolicy="no-referrer"></iframe>
-      <div id="hm-fallback" class="hm-fallback" hidden>
-        <p>finviz 임베드가 차단된 환경입니다.</p>
-        <a id="hm-fallback-link" href="https://finviz.com/map.ashx?t=sec" target="_blank" rel="noopener">새 탭에서 열기 →</a>
+      <div class="tradingview-widget-container" id="hm-tv-container">
+        <div class="tradingview-widget-container__widget"></div>
       </div>
     </div>
   </div>
@@ -62,54 +54,49 @@
 <script is:inline>
   (function () {
     const modal = document.getElementById('hm-modal');
-    const iframe = document.getElementById('hm-iframe');
-    const ext = document.getElementById('hm-external');
-    const fbLink = document.getElementById('hm-fallback-link');
-    const fallback = document.getElementById('hm-fallback');
+    const trigger = document.getElementById('hm-trigger');
+    const tvContainer = document.getElementById('hm-tv-container');
+    let mounted = false;
 
-    function setPeriod(p) {
-      const url = `https://finviz.com/map.ashx?t=${p}`;
-      iframe.src = url;
-      ext.href = url;
-      fbLink.href = url;
-      fallback.hidden = true;
-
-      document.querySelectorAll('.hm-tab').forEach((b) => {
-        b.classList.toggle('active', b.getAttribute('data-period') === p);
+    function mountWidget() {
+      if (mounted) return;
+      const inner = tvContainer.querySelector('.tradingview-widget-container__widget');
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js';
+      script.text = JSON.stringify({
+        exchanges: [],
+        dataSource: 'SPX500',
+        grouping: 'sector',
+        blockSize: 'market_cap_basic',
+        blockColor: 'change',
+        locale: 'kr',
+        symbolUrl: '',
+        colorTheme: 'dark',
+        hasTopBar: true,
+        isDataSetEnabled: false,
+        isZoomEnabled: true,
+        hasSymbolTooltip: true,
+        isMonoSize: false,
+        width: '100%',
+        height: '100%',
       });
-
-      // iframe 차단 감지 — 5초 안에 load 이벤트 없으면 fallback
-      const guard = setTimeout(() => {
-        try {
-          // cross-origin 이라 contentDocument 접근 불가능 — 정상 케이스
-        } catch (e) {
-          /* expected */
-        }
-      }, 5000);
-      iframe.onload = () => clearTimeout(guard);
-      iframe.onerror = () => {
-        clearTimeout(guard);
-        fallback.hidden = false;
-      };
+      tvContainer.appendChild(script);
+      mounted = true;
     }
 
-    function open(p) {
+    function open() {
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
-      setPeriod(p);
+      mountWidget();
     }
     function close() {
       modal.hidden = true;
       document.body.style.overflow = '';
-      iframe.src = 'about:blank';
     }
 
-    document.querySelectorAll('.hm-tile').forEach((b) => {
-      b.addEventListener('click', () => open(b.getAttribute('data-period')));
-    });
-    document.querySelectorAll('.hm-tab').forEach((b) => {
-      b.addEventListener('click', () => setPeriod(b.getAttribute('data-period')));
-    });
+    trigger.addEventListener('click', open);
     modal.querySelectorAll('[data-close]').forEach((el) => {
       el.addEventListener('click', close);
     });
@@ -124,7 +111,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 0.95rem 1.1rem 0.95rem;
+    padding: 0.95rem 1.1rem 0.85rem;
   }
   .hm-head {
     display: flex;
@@ -153,46 +140,78 @@
   }
   .dim { color: var(--dim); font-size: 0.75rem; }
 
-  .hm-tiles {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-  }
-  .hm-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
-    padding: 0.65rem 0.4rem 0.55rem;
+  .hm-trigger {
+    width: 100%;
     background: var(--surface-2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    color: var(--text);
+    padding: 0.7rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
     cursor: pointer;
     transition: border-color .15s, background .15s, transform .12s;
     font-family: inherit;
+    color: var(--text);
+    text-align: left;
   }
-  .hm-tile:hover {
+  .hm-trigger:hover {
     border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.07);
+    background: rgba(239, 68, 68, 0.06);
     transform: translateY(-1px);
   }
-  .hm-period {
-    font-size: 0.85rem;
-    font-weight: 700;
+  .hm-preview {
+    flex-shrink: 0;
+    width: 78px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+  .hm-preview-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1.5px;
+  }
+  .b { display: block; }
+  .b-up { background: #1a8754; }
+  .b-up.b-l { background: #2eb872; }
+  .b-down { background: #b1453d; }
+  .b-down.b-l { background: #d65a52; }
+  .hm-cta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .hm-cta-title {
+    font-size: 0.95rem;
+    font-weight: 600;
     color: var(--text);
   }
-  .hm-desc {
-    font-size: 0.7rem;
+  .hm-cta-sub {
+    font-size: 0.74rem;
     color: var(--muted);
+    line-height: 1.35;
   }
-  .hm-icon {
-    margin-top: 0.15rem;
-    font-size: 1.05rem;
-    color: #ef4444;
-    opacity: 0.8;
-    line-height: 1;
+  .hm-links {
+    margin-top: 0.55rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--dim);
   }
+  .hm-links a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .hm-links a:hover { text-decoration: underline; }
+  .hm-links .sep { color: var(--dim); }
 
   /* 모달 */
   .hm-modal {
@@ -232,23 +251,10 @@
     border-bottom: 1px solid var(--border);
     background: var(--surface-2);
   }
-  .hm-tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .hm-tab {
-    padding: 0.4rem 0.75rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 6px;
+  .hm-modal-title {
+    font-size: 0.85rem;
     color: var(--muted);
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-family: inherit;
-    transition: color .12s, border-color .12s, background .12s;
-  }
-  .hm-tab:hover { color: var(--text); border-color: var(--accent); }
-  .hm-tab.active {
-    color: #fff;
-    background: #ef4444;
-    border-color: #ef4444;
+    font-weight: 600;
   }
   .hm-modal-actions { display: flex; align-items: center; gap: 0.5rem; }
   .hm-ext { color: var(--accent); font-size: 0.78rem; text-decoration: none; }
@@ -268,37 +274,15 @@
   .hm-iframe-wrap {
     flex: 1;
     position: relative;
-    background: #000;
+    background: #131722;
   }
-  .hm-iframe-wrap iframe {
+  .tradingview-widget-container,
+  .tradingview-widget-container__widget {
     width: 100%;
     height: 100%;
-    border: none;
-    background: #fff; /* finviz 는 흰 배경 */
   }
-  .hm-fallback {
-    position: absolute;
-    inset: 0;
-    background: var(--surface);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
-    color: var(--muted);
-  }
-  .hm-fallback a {
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid var(--accent);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-  }
-  .hm-fallback a:hover { background: var(--accent); color: #fff; }
 
   @media (max-width: 700px) {
-    .hm-tiles { grid-template-columns: repeat(2, 1fr); }
     .hm-modal { padding: 0.6rem; }
     .hm-modal-frame { height: 92vh; }
   }
