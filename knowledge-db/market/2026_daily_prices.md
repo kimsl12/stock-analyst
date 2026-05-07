@@ -430,3 +430,22 @@ type: time_series
 | 2026-05-06 | news | Iran_MOU_Negotiation | US_EPIC_FURY_CONCLUDED | — | — | Axios / CNN / Al Jazeera [2026-05-06] | 2026-05-07T05:00:00+09:00 | Rubio: Operation Epic Fury 종결. 14개항 MOU 협상 중. WTI -10.5% 급락 배경 |
 | 2026-05-06 | calendar | ISM_Services_PMI_April | 53.6 | -0.4pp vs 3월 | index | ISM / prnewswire [2026-05-05] | 2026-05-07T05:00:00+09:00 | 22개월 연속 확장. 물가지수 70.7(2022 이후 최고). 고용 48.0(수축) |
 | 2026-05-06 | calendar | ADP_Private_Payrolls_April | 109000 | +10K vs 컨센 99K | jobs | CNBC / prnewswire [2026-05-06] | 2026-05-07T05:00:00+09:00 | 1월 2025 이후 최강. 3월 62K로 하향 조정 |
+| 2026-05-07 | us_index | SP500_futures | 7394.25 | +0.06% | point | Investing.com [2026-05-07 프리마켓 KST 오전] | 2026-05-07T04:00:00-04:00 | S&P 500 선물. 5/7 미국 정규장 개장 전 |
+| 2026-05-07 | us_index | NASDAQ_futures | 28712.75 | -0.01% | point | Investing.com [2026-05-07 프리마켓 KST 오전] | 2026-05-07T04:00:00-04:00 | 혼조 출발. AMD·ARM 호재 소화 완료 |
+| 2026-05-07 | asia_index | Nikkei225 | 62915.87 | +5.75% | point | CNBC / Reuters [2026-05-07 JST 종가] | 2026-05-07T15:30:00+09:00 | ⚠️ 사상 최고가. 황금연휴(4/29~5/6) 8거래일 공백 한꺼번에 반영. SoftBank +16.5% / Ibiden +17% / Tokyo Electron +9.2% / Advantest +7.8%. AI 랠리 캐치업 |
+| 2026-05-07 | asia_index | KOSPI | ~7360 | -0.33% 추정 | point | CNBC / Seoul Economic Daily [2026-05-07 KST 장중] | 2026-05-07T15:30:00+09:00 | 오픈 7,499.07(+1.55%). 장중 차익실현. 5/6 종가 7,384.56 대비 소폭 조정. 2026 YTD +75% 세계 최강 수익률 |
+| 2026-05-07 | asia_index | HangSeng | ~26597 | +1.47% | point | CNBC / SCMP [2026-05-07 HKT 장중/종가] | 2026-05-07T16:00:00+08:00 | 26,500선 회복. 중동 긴장 완화 + AI 기술주 반등 동조 |
+| 2026-05-07 | fx | DXY | 98.03 | -0.01% | index | TradingEconomics [2026-05-07] | 2026-05-07T06:00:00-04:00 | 달러 약세 구조 지속. 이란 협상 진전 반영 |
+| 2026-05-07 | fx | USDKRW | ~1440~1452 구간 | 소폭변동 | KRW | Investing.com / PoundSterlingLive [2026-05-06~07] | 2026-05-07T15:00:00+09:00 | ⚠️ 1,400 초과. 5/6 일중 저점 1,440.30(주간 최저). 이란 협상 + KOSPI 외인 유입 |
+| 2026-05-07 | commodity | WTI | 95.66 | +4.50% (5/6 $91.54 대비) | USD/barrel | TradingEconomics [2026-05-07 장중] | 2026-05-07T10:00:00-04:00 | ⚠️ 5/6 협상 낙관 급락($91.54) 후 5/7 반등. 이란 협상 불확실 재확대. 48시간 내 응답 대기 |
+| 2026-05-07 | commodity | Gold | 4710.76 | +0.28% 추정 | USD/oz | GoldPrice.org / TradingEconomics [2026-05-07 장중] | 2026-05-07T10:00:00-04:00 | 지정학 불확실에도 구조적 Bull 기조 유지. $4,700선 안착 |
+| 2026-05-07 | bond | US10Y | ~4.42 | 유지 추정 | percent | 5/6 종가 기준 유지 (5/7 공식값 ET 장중 미수집) | 2026-05-07T15:56:00+09:00 | 5/6 ET 16:00 종가 4.42% 기준. 5/7 공식 종가 미수집 (ET 미마감) |
+| 2026-05-07 | bond | US2Y | ~3.93 | 유지 추정 | percent | 추정 [5/6~7 연속성] | 2026-05-07T15:56:00+09:00 | — |
+| 2026-05-07 | bond | Spread2Y10Y | ~+49 | — | bp | 계산값 (4.42%-3.93%) | 2026-05-07T15:56:00+09:00 | 정상 구간(비역전) 유지 |
+| 2026-05-07 | crypto | BTC | ~82305 | 5/6 참조 | USD | Yahoo Finance [2026-05-06 ET 07:03 참조] | 2026-05-07T15:56:00+09:00 | 1월 31일 이후 최고. 이란 리스크온 + 크립토 법제화 기대 |
+| 2026-05-07 | crypto | ETH | ~2412 | 5/6 참조 | USD | Yahoo Finance [2026-05-06 ET 07:03 참조] | 2026-05-07T15:56:00+09:00 | 4월 27일 이후 최고 |
+| 2026-05-07 | news | Shell_Q1_2026 | ADJ_EARNINGS_6.9B | — | — | Shell IR / GlobeNewswire / StockTitan [2026-05-07 장전] | 2026-05-07T08:00:00-04:00 | 조정이익 $6.9B. CFFO $17.2B. 배당 5% 인상 $0.3906. $3B 자사주 매입. ARC Resources 인수(370 kboe/d 추가, 생산 CAGR +4%). 운전자본 유출 $11.2B (원자재 변동성 반영) |
+| 2026-05-07 | news | McDonalds_Q1_2026 | PENDING_PREMARKET | — | — | CNBC / MarketBeat [2026-05-07 장전 예정] | 2026-05-07T15:56:00+09:00 | 컨센 EPS $2.75 / Rev $6.47B / SSS +3.7%. KST 15:56 수집 시점 공식 결과 미확인. Polymarket 77% Beat 예상 |
+| 2026-05-07 | news | Jobless_Claims_Weekly | PENDING_08:30ET | — | — | DOL / Investing.com [2026-05-07 08:30 ET 예정] | 2026-05-07T15:56:00+09:00 | 컨센 ~205K (전주 189K 57년 최저). KST 15:56 = ET 07:56 — 발표 전. 실제 결과 미수집 |
+| 2026-05-07 | news | Iran_Negotiations | ONE_PAGE_MOU_NEAR | — | — | Axios / Times of Israel / CNBC [2026-05-06~07] | 2026-05-07T09:00:00-04:00 | 미국, 이란 one-page MOU 초안 근접. 핵 모라토리엄 기간 12~15년 협상 중(미 20년 요구/이란 5년). 이란 고농축 우라늄 국외 반출 + IAEA 사찰 논의. 48시간 내 응답 대기. Trump 합의 불발 시 "훨씬 강도 높은 폭격" 재경고 |
+| 2026-05-07 | news | Nikkei_Record_High | ATH_62915 | — | — | CNBC / Reuters [2026-05-07] | 2026-05-07T15:30:00+09:00 | 닛케이 사상 최고가 62,915.87. 황금연휴(4/29~5/6) 복귀 캐치업. SoftBank 비전펀드 AI 투자 재평가 + 반도체 전 종목 급등 |
