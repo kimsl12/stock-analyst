@@ -12,14 +12,21 @@ cd "$REPO_ROOT"
 DEPLOY_DIR="/tmp/cf-deploy"
 PROJECT_NAME="stock-analyst"
 
+# venv 우선, 없으면 시스템 python3
+PYTHON="$REPO_ROOT/.venv/bin/python"
+if [ ! -x "$PYTHON" ]; then
+  PYTHON=$(command -v python3)
+fi
+
 echo "==> Cloudflare Pages 배포 시작"
 echo "    repo:       $REPO_ROOT"
 echo "    deploy_dir: $DEPLOY_DIR"
 echo "    project:    $PROJECT_NAME"
+echo "    python:     $PYTHON"
 
 # 1. 임시 디렉토리 초기화
 rm -rf "$DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR/reports" "$DEPLOY_DIR/reports/briefing"
+mkdir -p "$DEPLOY_DIR/reports" "$DEPLOY_DIR/reports/briefing" "$DEPLOY_DIR/reports/analyst/items"
 
 # 2. HTML 복사 (nullglob 으로 빈 디렉토리 대응)
 shopt -s nullglob
@@ -34,86 +41,37 @@ if [ ${#brief_files[@]} -gt 0 ]; then
   cp -f "${brief_files[@]}" "$DEPLOY_DIR/reports/briefing/"
 fi
 
+# 2.5 애널리스트 리포트 복사 (있을 때만)
+if [ -d "reports/analyst/items" ]; then
+  # items/{id}/* 모두 복사 (PDF, source.html, summary.html, meta.json)
+  cp -r reports/analyst/items/. "$DEPLOY_DIR/reports/analyst/items/" 2>/dev/null || true
+fi
+if [ -f "reports/analyst/_schema.md" ]; then
+  cp -f reports/analyst/_schema.md "$DEPLOY_DIR/reports/analyst/" 2>/dev/null || true
+fi
+
 # 3. 테스트 파일 정리
 rm -f "$DEPLOY_DIR"/reports/*_test.html 2>/dev/null || true
 
-# 4. .nojekyll (호환성)
+# 4. .nojekyll
 touch "$DEPLOY_DIR/.nojekyll"
 
-# 5. index.html 생성
-cd "$DEPLOY_DIR"
-cat > index.html <<'INDEXEOF'
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Stock Analyst Reports</title>
-<style>
-:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--blue:#42A5F5;--buy:#26A69A;--border:#2D3A45}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:24px;max-width:1100px;margin:0 auto}
-h1{font-size:24px;margin-bottom:4px}
-.sub{color:var(--sub);font-size:14px;margin-bottom:20px}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline;opacity:0.85}
-.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
-.col h2{font-size:16px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);color:var(--sub)}
-.col-stock h2{color:var(--blue)}
-.col-brief h2{color:var(--buy)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;transition:border-color 0.2s}
-.card:hover{border-color:var(--blue)}
-.card .name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .date{color:var(--sub);font-size:12px;flex-shrink:0;margin-left:8px}
-.count{color:var(--sub);font-size:13px;margin-left:8px}
-@media(max-width:700px){.columns{grid-template-columns:1fr}body{padding:12px}}
-</style>
-</head>
-<body>
-<h1>Stock Analyst Reports</h1>
-<p class="sub">AI 종합 분석 리포트 — Cloudflare Pages 자동 배포</p>
-<div class="columns">
-<div class="col col-stock">
-<h2>종목 분석</h2>
-INDEXEOF
-
-# 종목 카드 (날짜 내림차순)
-for f in $(ls reports/*.html 2>/dev/null | while read fp; do
-  d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
-  echo "${d:-00000000} $fp"
-done | sort -k1,1rn | awk '{print $2}'); do
-  fname=$(basename "$f")
-  fdate=$(echo "$fname" | grep -oE '[0-9]{8}' | head -1)
-  dispdate=""
-  if [ -n "$fdate" ]; then
-    dispdate="${fdate:0:4}-${fdate:4:2}-${fdate:6:2}"
-  fi
-  dispname=$(echo "$fname" | sed 's/\.html$//')
-  echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a><span class=\"date\">$dispdate</span></div>" >> index.html
-done
-
-echo '</div><div class="col col-brief"><h2>브리핑</h2>' >> index.html
-
-# 브리핑 카드
-if ls reports/briefing/*.html 1>/dev/null 2>&1; then
-  for f in $(ls reports/briefing/*.html 2>/dev/null | while read fp; do
-    d=$(basename "$fp" | grep -oE '[0-9]{8}' | head -1)
-    echo "${d:-00000000} $fp"
-  done | sort -k1,1rn | awk '{print $2}'); do
-    fname=$(basename "$f")
-    dispname=$(echo "$fname" | sed 's/\.html//' | sed 's/_/ /g')
-    echo "<div class=\"card\"><a class=\"name\" href=\"$f\">$dispname</a></div>" >> index.html
-  done
-else
-  echo '<p style="color:var(--sub);font-size:13px">브리핑 리포트가 없습니다.</p>' >> index.html
+# 5. 인덱스 갱신 (Python 스크립트로 분리)
+echo "==> 애널리스트 인덱스 갱신"
+"$PYTHON" "$SCRIPT_DIR/build_analyst_index.py"
+# build_analyst_index 가 reports/analyst/index.html 을 갱신하므로 deploy_dir 에도 복사
+if [ -f "reports/analyst/index.html" ]; then
+  cp -f reports/analyst/index.html "$DEPLOY_DIR/reports/analyst/" 2>/dev/null || true
 fi
 
-echo '</div></div></body></html>' >> index.html
+echo "==> 메인 인덱스 생성 (3컬럼)"
+"$PYTHON" "$SCRIPT_DIR/build_main_index.py" "$DEPLOY_DIR"
 
-# 6. 통계 출력
-stock_count=$(ls reports/*.html 2>/dev/null | wc -l | tr -d ' ')
-brief_count=$(ls reports/briefing/*.html 2>/dev/null | wc -l | tr -d ' ')
-echo "==> 패키지 준비 완료: 종목 ${stock_count}개 + 브리핑 ${brief_count}개"
+# 6. 통계
+stock_count=$(find "$DEPLOY_DIR/reports" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
+brief_count=$(find "$DEPLOY_DIR/reports/briefing" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
+analyst_count=$(find "$DEPLOY_DIR/reports/analyst/items" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+echo "==> 패키지 준비 완료: 종목 ${stock_count}개 + 브리핑 ${brief_count}개 + 애널리스트 ${analyst_count}건"
 
 # 7. wrangler 배포
 cd "$REPO_ROOT"
