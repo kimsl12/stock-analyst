@@ -66,15 +66,23 @@ async function fetchCnn() {
 }
 
 async function fetchCrypto() {
-  const res = await fetchWithTimeout('https://api.alternative.me/fng/?limit=1');
+  // limit=370 → 오늘 + 369일 전까지 확보 (1년 비교 + 여유분)
+  const res = await fetchWithTimeout('https://api.alternative.me/fng/?limit=370');
   if (!res.ok) throw new Error(`Crypto HTTP ${res.status}`);
   const j = await res.json();
-  const d = j?.data?.[0];
-  if (!d) throw new Error('Crypto payload 형식 오류');
+  const data = j?.data;
+  if (!data || data.length === 0) throw new Error('Crypto payload 형식 오류');
+  // data[0] = 오늘, data[1] = 어제, data[7] = 1주 전, data[30] = 1개월 전, data[365] = 1년 전
+  const at = (i) => (data[i] ? Number(data[i].value) : null);
+  const cur = data[0];
   return {
-    score: Number(d.value),
-    rating: (d.value_classification || '').toLowerCase(), // "Extreme Fear" / "Fear" / "Neutral" / "Greed" / "Extreme Greed"
-    source_ts: d.timestamp ? new Date(Number(d.timestamp) * 1000).toISOString() : null,
+    score: Number(cur.value),
+    rating: (cur.value_classification || '').toLowerCase(),
+    prev_close: at(1),
+    prev_1w: at(7),
+    prev_1m: at(30),
+    prev_1y: at(365),
+    source_ts: cur.timestamp ? new Date(Number(cur.timestamp) * 1000).toISOString() : null,
   };
 }
 
