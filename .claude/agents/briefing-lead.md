@@ -189,6 +189,24 @@ touch analysis/briefing/correlation_{YYYYMMDD}.md
 `python scripts/fetch_price.py --market --save`를 먼저 실행하여
 daily_snapshot.md를 최신화한다 (FAILED 방지).
 
+### FRED 매크로 스냅샷 선행 갱신 [v3.5 신규, 2026-05-07]
+
+매크로 데이터를 다루는 모든 명령(`/모닝`, `/이브닝`, `/주간`, `/글로벌인텔리전스`) 실행 시
+market-data-collector / global-macro-analyst 호출 전에 다음을 먼저 실행:
+
+```bash
+node web/scripts/fetch_fred.mjs    # FRED 15개 시리즈 갱신 (FRED_API_KEY 필요)
+```
+
+→ `knowledge-base/macro/fred_snapshot.json` 갱신 → **하위 에이전트 모두 동일 베이스라인 사용**.
+
+이렇게 하면:
+- market-data-collector: 채권·VIX·DXY·인플레·고용 웹검색 5~8회 절감
+- global-macro-analyst: G-2 정책·G-7 자본흐름 매크로 수치 검색 5~7회 절감
+- briefing-lead 본인: FRED 1차 데이터로 본문에 직접 인용 가능 (출처 일관성)
+
+FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 + 본문에 stale 표시.
+
 ---
 
 ## 명령별 호출 순서 (절대 준수)
@@ -196,8 +214,10 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 ### `/모닝브리핑` — MODULE A
 ```
 0. wiki-linter (mode=quick) — Phase 0-LINT [v3.2]
+0.5. ★ FRED 페치 [v3.5] — node web/scripts/fetch_fred.mjs
+   → knowledge-base/macro/fred_snapshot.json 갱신 (15시리즈)
 1. market-data-collector (target_date=오늘, region_focus=us, include_13f=false)
-   → knowledge-base/market/ 5파일 갱신
+   → knowledge-base/market/ 5파일 갱신 (FRED 우선, 매크로 웹검색 0회)
 2. global-macro-analyst (mode=A-8 핵심 추출, 매크로 시사점 1~2건)
    → analysis/briefing/macro_{YYYYMMDD}.md
 3. correlation-monitor (mode=quick, B-5 상관관계 모니터만)
@@ -216,8 +236,9 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 ### `/이브닝브리핑` — MODULE B
 ```
 0. wiki-linter (mode=quick) [v3.2]
-1. market-data-collector (region_focus=both, 아시아 마감 포함)
-2. global-macro-analyst (mode=B-9 매크로 핵심 + 글로벌 이슈 탑5)
+0.5. ★ FRED 페치 [v3.5] — node web/scripts/fetch_fred.mjs
+1. market-data-collector (region_focus=both, 아시아 마감 포함, FRED 우선)
+2. global-macro-analyst (mode=B-9 매크로 핵심 + 글로벌 이슈 탑5, FRED 흡수)
 3. correlation-monitor (full — Beat/Miss + 6쌍 상관관계)
 3.5. ★ 인사이더 시그널 읽기 [v3.5 신규] — knowledge-base/portfolio/insider_signals.json
    → cluster_buys Top 5 자동 인용 (B-7 거물 심화 섹션 아래 위치)
@@ -231,8 +252,9 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 ### `/주간리포트` — MODULE C
 ```
 0. wiki-linter (mode=quick) [v3.2]
-1. market-data-collector (--week — 주간 종합)
-2. global-macro-analyst (mode=full, C-3·C-3.5 — 지정학·기술·에너지 주간)
+0.5. ★ FRED 페치 [v3.5] — node web/scripts/fetch_fred.mjs
+1. market-data-collector (--week — 주간 종합, FRED 우선)
+2. global-macro-analyst (mode=full, C-3·C-3.5 — 지정학·기술·에너지 주간, FRED 흡수)
 3. correlation-monitor (mode=weekly_summary)
 4. briefing-lead C-1·C-9 단독 작성 (성과 추적은 F-9 워크플로 호출)
 5. briefing-report-generator (template=weekly, 스파크라인 + C-9 적중률 카드)
@@ -279,8 +301,9 @@ daily_snapshot.md를 최신화한다 (FAILED 방지).
 ### `/글로벌인텔리전스` — MODULE G
 ```
 0. wiki-linter (mode=quick) [v3.2]
-1. market-data-collector (--macro-focus)
-2. global-macro-analyst (mode=full, G-1~G-8 전체)
+0.5. ★ FRED 페치 [v3.5] — node web/scripts/fetch_fred.mjs
+1. market-data-collector (--macro-focus, FRED 우선)
+2. global-macro-analyst (mode=full, G-1~G-8 전체, FRED 흡수)
    → analysis/briefing/global_macro_{YYYYMMDD}.md (큰 산출물)
 3. briefing-lead 종합 + 시나리오 G-8 분기점 추출
 4. knowledge-db/performance/2026_scenario_tracking.md append

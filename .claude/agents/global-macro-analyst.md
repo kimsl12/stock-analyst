@@ -83,6 +83,7 @@ analysis/briefing/global_macro_{YYYYMMDD}.md
        · tech_breakthrough.md     (Phase 1 신규)
        · supply_chain.md          (Phase 1 신규)
        · us_economy.md
+       · fred_snapshot.json       (FRED 1차 매크로 — Vercel prebuild 자동 갱신) [v3.5]
    - knowledge-base/market/                      (시장 반응 확인용 — 명세 매트릭스 ✅읽기)
    - reference/source_registry.md
    - reference/rules_and_constraints.md
@@ -112,6 +113,47 @@ analysis/briefing/global_macro_{YYYYMMDD}.md
 | `weekly` | /주간리포트 | C-3 + C-3.5 (지정학·기술·에너지 주간 인사이트) |
 | `full` | /글로벌인텔리전스 | G-1 ~ G-8 전체 (큰 산출물) |
 | `scenario` | /성과리뷰 | G-8 시나리오 분기점만 재추정 |
+
+---
+
+## 분석 시작 전 필수 단계 — FRED 매크로 흡수 [v3.5 신규, 2026-05-07]
+
+**모든 모드 진입 시 첫 작업으로 `knowledge-base/macro/fred_snapshot.json` 을 읽는다.**
+
+이 스냅샷은 St. Louis Fed 1차 데이터 (Vercel prebuild 자동 갱신) → G-2 정책 분석·G-7 자본흐름·G-8 시나리오 트리거의 객관적 베이스라인.
+
+### FRED → Module G 매핑
+
+| FRED 시리즈 | Module G 활용처 | 활용 방식 |
+|------------|---------------|---------|
+| DFF, DGS10, DGS2, T10Y2Y | **G-2 정책** Fed 정책 사이클 판정 | 금리 인하/동결/인상 단계 자동 판정 |
+| T10Y2Y < 0 | **G-8 시나리오** 침체 트리거 | 역전 지속 일수 기반 시나리오 가중 |
+| T10YIE | **G-2** 시장의 Fed 신뢰도 | 2.5% 초과 시 "Fed 신뢰 균열" 경고 |
+| CPIAUCSL, PCEPILFE | **G-2 정책 / G-4 에너지** 인플레 압력 | 끈적함 판정 (3% 초과 지속 N개월) |
+| UNRATE, PAYEMS | **G-2 정책** 노동시장 판단 | 4.5% 초과 + NFP 둔화 → 침체 시그널 |
+| INDPRO, GDPC1 | **G-2** 실물경제 추세 | 산업생산 < 1% YoY → 시클리컬 약세 |
+| DTWEXBGS (USD) | **G-7 자본 흐름** 강달러/약달러 | 1개월 변화 > +3% → EM 자본 유출 압력 |
+| VIXCLS, BAMLH0A0HYM2 | **G-1 지정학 / 거짓 안정** | VIX < 18 + HY < 3 + 인플레 끈적 = 거짓 안정 자동 경고 |
+| M2SL | **G-2** 유동성 환경 | YoY 변화 → 양적완화/긴축 단계 |
+
+### 출처 표기 의무
+
+FRED 데이터를 인용할 때마다: `[FRED: <id>, <date>]`. 예:
+- `Fed Funds Rate 3.64% [FRED: DFF, 2026-05-05]`
+- `2Y-10Y 스프레드 +0.49%p [FRED: T10Y2Y, 2026-05-06] — 역전 회복`
+- `Core PCE +3.2% YoY [FRED: PCEPILFE, 2026-03] — 끈적함 지속`
+
+### 웹검색 절감
+
+**FRED 가 다루는 항목은 웹검색 금지** — 시점/신뢰도 우월. G-2/G-3/G-4 의 정성 분석(정책 의도, 기술 단계, 에너지 전환)에만 웹검색 사용.
+
+| 기존 | FRED 통합 후 |
+|------|------------|
+| 매크로 수치 검색 5~7회 | 0회 (FRED 흡수) |
+| G-3/G-4/G-2 정성 분석 4~6회 | 4~6회 (유지) |
+| **합계 9~13회** | **합계 4~6회** |
+
+FRED 미존재 또는 stale (24h+) 시만 폴백.
 
 ---
 

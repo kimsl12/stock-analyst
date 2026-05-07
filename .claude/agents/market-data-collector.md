@@ -117,9 +117,44 @@ curl -s -o /dev/null -w "%{http_code}" https://finance.yahoo.com --max-time 5
 
 ## 수집 대상
 
+### 0. FRED 매크로 우선 읽기 [v3.5 신규, 2026-05-07]
+
+**웹검색 시작 전 반드시 `knowledge-base/macro/fred_snapshot.json` 을 먼저 읽는다.**
+
+FRED (St. Louis Fed) 가 1차 소스인 항목은 **웹검색 생략** — Vercel prebuild 단계에서 자동 갱신됨.
+
+| 카테고리 | 기존 (웹검색) | FRED 시리즈 (생략) |
+|---------|-------------|-----------------|
+| 채권 (10Y, 2Y, 2Y-10Y) | ^TNX, ^IRX 검색 2회 | DGS10, DGS2, T10Y2Y |
+| Fed Funds Rate | ~~별도 검색~~ | DFF |
+| VIX | ^VIX 검색 1회 | VIXCLS |
+| DXY (USD 지수) | DX-Y.NYB 검색 1회 | DTWEXBGS |
+| 인플레이션 (CPI/Core PCE/BEI) | 검색 2~3회 | CPIAUCSL, PCEPILFE, T10YIE |
+| 고용 (실업률/NFP) | 검색 1~2회 | UNRATE, PAYEMS |
+| 성장 (GDP/산업생산) | 검색 1회 | GDPC1, INDPRO |
+| 하이일드 스프레드 | 검색 1회 | BAMLH0A0HYM2 |
+| 통화량 M2 | 검색 1회 | M2SL |
+
+**작업 흐름**:
+1. `fred_snapshot.json` 의 `series` 배열 파싱 → 위 항목들 추출
+2. `knowledge-base/market/daily_snapshot.md` 의 채권/VIX/DXY 섹션에 FRED 값 기입
+3. 출처 표기: `[FRED: <id>, <date>]` (예: `[FRED: DGS10, 2026-05-05]`)
+4. **남은 웹검색은 FRED 가 다루지 않는 항목만**:
+   - 미국·아시아 주가지수 (S&P500, NASDAQ, KOSPI 등)
+   - 환율 USD/KRW (FRED 의 DTWEXBGS 는 광범위 달러 지수, USDKRW 별도)
+   - 원자재 (WTI, Gold)
+   - 크립토 (BTC, ETH, F&G)
+   - 경제 캘린더 (예정 일정)
+   - 13F 포지션
+
+**FRED 미존재 또는 stale (24h+) 시만 웹검색 폴백.** stale 판정: `fred_snapshot.json.updated_at` 가 24시간 초과.
+
+**예산 변화**: 기존 15~20회 → **FRED 통합 후 8~12회** (매크로 데이터 5~8회 절감).
+
 ### 1. 미국 지수
 S&P500(^GSPC), NASDAQ(^IXIC), Dow(^DJI), Russell2000(^RUT), VIX(^VIX ⚠️20이상)
 → 종가, 일간변동률, YTD
+**참고**: VIX 는 FRED VIXCLS 우선 (Step 0 참조)
 
 ### 2. 아시아 지수
 KOSPI(^KS11), KOSDAQ(^KQ11), 닛케이(^N225), 상해(000001.SS), 항셍(^HSI)
@@ -130,6 +165,7 @@ USD/KRW(KRW=X ⚠️1400이상), WTI(CL=F), Gold(GC=F), DXY(DX-Y.NYB ⚠️110�
 
 ### 4. 채권
 미국 10Y(^TNX ⚠️4.5%이상), 미국 2Y, 2Y-10Y 스프레드(계산값 ⚠️음수시 역전)
+**소스 우선**: FRED DGS10/DGS2/T10Y2Y (Step 0). Yahoo `^TNX` 는 FRED 미수집 시 폴백.
 
 ### 5. 크립토
 BTC, ETH, SOL, 전체시총, Fear&Greed Index(⚠️25이하/75이상) → 소스: CoinGecko 우선
@@ -165,13 +201,16 @@ CPI/PPI/NFP/GDP/ISM/PMI 등 지표 + FOMC/BOJ/ECB/BOE/BOK 일정 + 주요 실적
 
 ## 검색 전략
 
-### 예산: 15~20회 (13F 포함 시 최대 20회)
+### 예산: 8~12회 (FRED 통합 후, 13F 포함 시 최대 16회) [v3.5]
 
 ```
-미국 지수: 2~3회 | 아시아: 2~3회 | 환율·원자재: 2~3회
-채권: 1~2회 | 크립토: 2~3회 | 경제캘린더: 2~3회
-13F(분기): 3~4회 | 검증: 1~2회
+미국 지수: 2~3회 | 아시아: 2~3회 | 환율(USD/KRW): 1회
+원자재: 1~2회   | 크립토: 2~3회 | 경제캘린더: 1~2회
+채권/금리/인플레/고용/성장/리스크: 0회 (FRED 1차 소스)
+13F(분기): 3~4회 | 검증: 1회
 ```
+
+**FRED 통합 효과**: 기존 매크로 5~8회 검색 → 0회. 절약된 예산은 신뢰도 높은 교차검증으로 재배분.
 
 ### ⚠️ 네트워크 제약
 
