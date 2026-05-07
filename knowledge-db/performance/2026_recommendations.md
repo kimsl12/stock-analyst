@@ -135,6 +135,10 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-04-25 | evening | 종목 | X-Energy (XE) | Bull (원자력 르네상스 IPO) | 중기~장기 | 중간 | 04-25 IPO $23→$30.11. $10B+ 원자력 역대최대. AI DC 전력 수요 SMR 선두. Marks(TLN)/Druckenmiller(BE) 테마 일치 [CNBC, Motley Fool] | reports/briefing/evening_20260425.html | 진행중 |
 | 2026-04-25 | evening | 이벤��� | FOMC 4/28-29 "매파적 동결" 리스크 -- 10Y 4.35%+ 트리거 | Bear (S&P -3~5%) | 단기 | 중간 | PMI 입력비용 2022년 이후 최대 + WTI $96+ + ISM 78.3 동시. 파월 "closely monitoring" 톤 변화 확률 40%. 6월 인하 기대 소멸 가능 [CME FedWatch, NBC News] | reports/briefing/evening_20260425.html | 진행중 |
 | 2026-04-25 | evening | 시나리오 | 30일 시나리오: A(실적 랠리) 40% / B(이중 충격 조정) 42% / C(위기) 18% | 중립 (A+B 근접) | 단기~중기 | 중간 | Intel +23% 포함 실적 81% Beat + S&P/NASDAQ 신고가 = A 상향. WTI $96+ 에너지 = B 유지. 이스라엘-레바논 3주 연장 = C 하향 [lead_evening_20260425.md] | reports/briefing/evening_20260425.html | 진행중 |
+| 2026-05-07 | evening | ETF | EWJ / DXJ (일본 수출주 ETF) | Bull (이란 합의+엔저 이중 수혜) | 단기 | 중간 | 닛케이 +5.60% 역대 최대 상승. 이란 핵 합의 → 에너지 비용 감소 + USD/JPY 146 엔저 → 수출기업 이익 극대화. 합의 이행 확인 전 관망 우세 [Reuters, Bloomberg 보도] | reports/briefing/evening_20260507.html | 진행중 |
+| 2026-05-07 | evening | 종목 | AMD | Bull (데이터센터 GPU +42% YoY) | 중기 | 중간~높음 | Q1 EPS $0.96 Beat (컨센 $0.93). MI300X 수요 강세. AI capex 사이클 지속하는 한 구조적 수혜 [Seeking Alpha] | reports/briefing/evening_20260507.html | 진행중 |
+| 2026-05-07 | evening | 이벤트 | 이란 핵 합의 — 발표 vs 이행 간극 40% 불발 확률 | 분기점 (Bear 40%) | 단기~중기 | 중간 | Trump 일방 발표, 이란측 미확인. 합의 불발 시 WTI $100+ 급등 + 시장 급락. 호르무즈 기뢰 제거 최소 6개월 [Reuters, geopolitics.md] | reports/briefing/evening_20260507.html | 진행중 |
+| 2026-05-07 | evening | 이벤트 | ISM 서비스 가격 70.7% — 에너지와 무관한 Core 인플레 시한폭탄 | Bear (인플레 상방) | 단기~중기 | 중간 | 2022년 이후 최고. 에너지 CPI 하락이 헤드라인을 가리겠으나 Core PCE 3.2%는 쉽게 내려오지 않을 것. 5/14 CPI 체크포인트 [us_economy.md, FRED] | reports/briefing/evening_20260507.html | 진행중 |
 
 ---
 

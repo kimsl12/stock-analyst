@@ -60,6 +60,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-07 | 이브닝브리핑 | 이란 핵 포기 선언 — Trump 발표, 이란측 미확인. 닛케이 +5.60%(역대 최대), KOSPI 7,490 재신고가, WTI $93.46(-$2.20). "발표 vs 이행" 간극 40% 불발 확률 — 시장 과도 선반영 주의 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
+| 2026-05-07 | 이브닝브리핑 | ISM 서비스 가격 70.7%(2022년 이후 최고) — 이란 합의와 독립된 Core 인플레 시한폭탄. 에너지 CPI 하락이 헤드라인 가리겠으나 Core PCE 3.2%는 쉽게 하락 불가. 5/14 CPI 체크포인트 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
+| 2026-05-07 | 이브닝브리핑 | AMD Q1 Beat (EPS $0.96, 데이터센터 +42% YoY) + ARM Beat + 실업수당 189K(56년 최저) — 미국 서프라이즈 +0.72 상향. 반도체 AI capex 사이클 지속 확인. McDonald's Miss로 K자형 양극화 | `market/surprise_index.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-06 | 이브닝브리핑 | KOSPI 7,384(+6.45%) 사상 첫 7,000 돌파 — 삼성 $1T+SK하이닉스 시총 6,000조. 6,000→7,000 2개월. 코리아 디스카운트 해소 원년. Tepper EWY $286M 적중. KOSDAQ -0.29% 대형주 쏠림 경고 | `market/daily_snapshot.md` | 진행중 |
 | 2026-05-06 | 이브닝브리핑 | WTI $89.74(-12.25%) $90 이탈 + Gold $4,731(+3.86%) + DXY 97.63(-0.86%) 3년최저 — 에너지 인플레 해소+달러 위기 이중 전환. Gold 급등은 이란 완화에도 상승 = 달러 구조적 약세 순수 반영. 5/12 CPI 상방 리스크 대폭 완화 가능 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
 | 2026-05-06 | 이브닝브리핑 | BTC $82,445 200DMA 돌파 확정 — 7개월 만 추세 전환 시그널. NASDAQ 동조 유지+DXY 약세+ETF 유입 구조. $85K~$90K 목표 경로 활성화 | `market/daily_snapshot.md, market/correlation_matrix.md` | 진행중 |
