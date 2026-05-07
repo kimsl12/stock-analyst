@@ -1,13 +1,14 @@
 ---
 name: analyst-scraper
 description: |
-  애널리스트 리포트 수집·정리·게시 전담 에이전트.
-  두 가지 모드 지원:
+  애널리스트 리포트 수집·정리·게시 + 사후 평가 전담 에이전트.
+  세 가지 모드 지원:
    1) PDF 모드 — reports/analyst/incoming/ 의 사용자 입수 PDF 처리
    2) 웹 모드 — IB 공식 / 미디어 인용 / 한국 증권사 PDF / YouTube 자동 스크랩
-  공통: items/{id}/{meta.json, source.pdf|html, summary.html} 생성 + 인덱스 갱신.
-  /애널리스트PDF, /애널리스트스크랩 슬래시 커맨드가 호출.
-  Triggers: 애널리스트 리포트, IB 리포트, 증권사 리포트, 리포트 스크랩, PDF 처리.
+   3) outcome_eval 모드 — 기존 항목 중 평가 시점 도달분 사후 평가 (hit/miss/thesis_validity)
+  공통: items/{id}/{meta.json, source.pdf|html, summary.html} 생성/갱신 + 인덱스.
+  /애널리스트PDF, /애널리스트스크랩, /성과리뷰 슬래시 커맨드가 호출.
+  Triggers: 애널리스트 리포트, IB 리포트, 증권사 리포트, 리포트 스크랩, PDF 처리, 사후 평가, outcome 평가.
 maxTurns: 40
 model: sonnet
 tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
@@ -57,6 +58,48 @@ tools: Read, Write, Bash, Grep, Glob, WebSearch, WebFetch
               --item-id {id} --pdf reports/analyst/incoming/<pdf>
 3. 모두 처리 후 사용자에게 요약 보고 (item_id 리스트 + 핵심 메시지 1줄씩)
 ```
+
+## 도구 호출 순서 (outcome_eval 모드 — /성과리뷰 호출)
+
+```
+1. 인자: period (1w | 2w | 1m | 3m | lifetime), reference_date (기본 오늘 KST)
+2. Glob reports/analyst/items/*/meta.json
+3. 각 항목 outcome 평가 가능 여부 판정:
+   - 이미 outcome 있고 evaluated_at 충분히 최근(7일 이내)이면 skip
+   - period(target.period: EOY|12M|6M|N/A) + 발행일(date) 기준 50% 경과 도달 여부 계산
+   - 단기 콜 (period=N/A or EOY 1~3개월): 발행 후 30일 이상 경과 시 평가
+   - 12M/EOY: 발행일 + 목표 기간의 50% 경과 시
+4. 평가 가능 항목 (per call <= 20건 한도):
+   a. 가격 조회:
+      - 미국 macro (SP500, NDX, DJIA): knowledge-db/market/2026_daily_prices.md 또는 직전 모닝브리핑 KB
+      - 미국 종목 (NVDA, AMD 등): WebSearch site:cnbc.com / site:bloomberg.com 1회
+      - 한국 종목 (005930, 000660 등): WebSearch + KOSPI 환경 정성 평가 보강
+      - 크립토: knowledge-db/market 또는 WebSearch
+   b. outcome 작성:
+      - actual_price (수치 or null)
+      - hit: target_price 도달 / 방향 일치 / progress >80% 등 판정
+      - error_pct: |actual - target_price| / target_price * 100 (target_price 있을 때만)
+      - thesis_validity: logic_chain_correct | logic_chain_partial | logic_chain_incorrect
+      - notes: 평가 근거 한글 (3~6 문장)
+      - evaluated_at: 오늘 KST
+   c. Edit reports/analyst/items/{id}/meta.json 의 outcome 필드 갱신
+   d. Bash: .venv/bin/python scripts/process_analyst_web.py commit --item-id {id} (summary 재렌더)
+5. 모두 처리 후 보고:
+   - 평가 N건 (hit M / miss K / progress L)
+   - 분석가별 신규 점수 (예: Tom Lee 80% → 75% 하향 등)
+   - skip 사유별 카운트
+6. 평가 결과는 호출자(/성과리뷰의 briefing-lead 또는 메인)가 performance_review HTML 에 별도 섹션으로 통합
+```
+
+## 평가 판정 기준
+
+- **hit=true**: 목표가 도달 (TP 기준 ±5% 이내) OR 방향성 view 의 시장 추세 적중 (예: bullish + S&P 신고가)
+- **hit=false**: 목표가 미도달 + 방향 반대 OR 시점 콜 명확히 빗나감
+- **hit=null + progress 기록**: 목표 기간 절반 경과했지만 진행 중 (notes 에 "진행 X.X%")
+
+- **thesis_validity=correct**: 논리 흐름 + 가격 모두 적중
+- **thesis_validity=partial**: 논리 일부 (sector·timing·magnitude 중 일부) 적중
+- **thesis_validity=incorrect**: 핵심 논거 자체가 시장 반응으로 부정됨
 
 ## 도구 호출 순서 (웹 모드)
 
