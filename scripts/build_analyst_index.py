@@ -71,6 +71,19 @@ def fmt_price(meta: dict) -> str:
     return "".join(pieces)
 
 
+RATING_KO = {
+    "Buy": "매수", "Strong Buy": "적극 매수", "Hold": "보유",
+    "Sell": "매도", "Strong Sell": "적극 매도",
+    "Overweight": "비중확대", "Underweight": "비중축소",
+    "Equal Weight": "중립", "Neutral": "중립",
+    "Bullish": "강세", "Bearish": "약세", "N/A": "평가 없음",
+}
+
+
+def rating_ko(rating: str) -> str:
+    return RATING_KO.get(rating, rating) if rating else ""
+
+
 def render_card(meta: dict) -> str:
     item_dir = meta["_dir"]
     summary_href = f"items/{item_dir}/summary.html"
@@ -80,14 +93,14 @@ def render_card(meta: dict) -> str:
     rating = meta.get("rating") or ""
     rating_class = ""
     rl = rating.lower()
-    if rl in ("buy", "overweight", "strong buy"):
+    if rl in ("buy", "overweight", "strong buy", "bullish"):
         rating_class = "buy"
-    elif rl in ("sell", "underweight", "strong sell"):
+    elif rl in ("sell", "underweight", "strong sell", "bearish"):
         rating_class = "sell"
     elif rl in ("hold", "equal weight", "neutral"):
         rating_class = "hold"
     rating_html = (
-        f'<span class="rating {rating_class}">{html.escape(rating)}</span>'
+        f'<span class="rating {rating_class}">{html.escape(rating_ko(rating))}</span>'
         if rating else ""
     )
     target_html = fmt_target(meta)

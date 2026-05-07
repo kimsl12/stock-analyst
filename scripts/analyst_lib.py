@@ -123,6 +123,20 @@ h2{{font-size:15px;color:var(--blue);margin-bottom:10px;padding-bottom:6px;borde
 ul{{padding-left:20px}}
 ul li{{margin-bottom:8px;font-size:14px}}
 .bullets li::marker{{color:var(--blue)}}
+/* 사후 평가 섹션 */
+.oc-block{{background:rgba(66,165,245,0.04);border:1px solid var(--border);border-left:3px solid var(--blue);padding:14px 18px;border-radius:6px;margin-bottom:24px}}
+.oc-block h2{{color:var(--blue);border-bottom:none;padding-bottom:0;margin-bottom:12px;display:flex;align-items:center;gap:6px;font-size:15px}}
+.oc-row{{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px;flex-wrap:wrap}}
+.oc-label{{display:inline-block;color:var(--sub);font-size:12.5px;min-width:140px}}
+.oc-badge{{display:inline-block;padding:2px 12px;border-radius:10px;font-size:12px;font-weight:700}}
+.oc-badge.hit{{background:rgba(38,166,154,0.22);color:var(--buy)}}
+.oc-badge.miss{{background:rgba(239,83,80,0.22);color:var(--sell)}}
+.oc-badge.progress{{background:rgba(255,167,38,0.22);color:var(--hold)}}
+.oc-thesis{{font-size:12px;padding:2px 9px;border-radius:9px;background:#2D3A45;color:var(--sub)}}
+.oc-thesis.thesis-correct{{background:rgba(38,166,154,0.16);color:var(--buy)}}
+.oc-thesis.thesis-partial{{background:rgba(255,167,38,0.16);color:var(--hold)}}
+.oc-thesis.thesis-incorrect{{background:rgba(239,83,80,0.16);color:var(--sell)}}
+.oc-notes{{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:13px;line-height:1.6;color:var(--text)}}
 /* AI 해석 섹션 */
 .ai-block{{background:linear-gradient(135deg,rgba(255,183,77,0.06),rgba(124,77,255,0.04));border:1px solid var(--border);border-left:3px solid var(--ai);padding:14px 18px;border-radius:6px;margin-bottom:24px}}
 .ai-block h2{{color:var(--ai);border-bottom:none;padding-bottom:0;margin-bottom:12px;display:flex;align-items:center;gap:6px}}
@@ -168,6 +182,8 @@ footer{{margin-top:30px;padding-top:14px;border-top:1px solid var(--border);font
   </ul>
 </section>
 
+{outcome_section}
+
 {ai_section}
 
 {original_section}
@@ -211,6 +227,96 @@ def _priceline_block(meta: dict) -> str:
     if not pieces:
         return ""
     return f'<div class="priceline">{"".join(pieces)}</div>'
+
+
+# 평가 등급 → 한글 매핑 (표시용. 메타 스키마 보존)
+RATING_KO = {
+    "Buy": "매수",
+    "Strong Buy": "적극 매수",
+    "Hold": "보유",
+    "Sell": "매도",
+    "Strong Sell": "적극 매도",
+    "Overweight": "비중확대",
+    "Underweight": "비중축소",
+    "Equal Weight": "중립",
+    "Neutral": "중립",
+    "Bullish": "강세",
+    "Bearish": "약세",
+    "N/A": "평가 없음",
+}
+
+
+def rating_korean(rating: str | None) -> str:
+    if not rating:
+        return ""
+    return RATING_KO.get(rating, rating)
+
+
+def _outcome_section(meta: dict) -> str:
+    """사후 평가 섹션 — meta.outcome 이 있으면 렌더, 없으면 빈 문자열."""
+    oc = meta.get("outcome")
+    if not oc or not isinstance(oc, dict):
+        return ""
+    if not oc.get("evaluated_at"):
+        return ""
+
+    hit = oc.get("hit")
+    if hit is True:
+        hit_badge = '<span class="oc-badge hit">적중</span>'
+    elif hit is False:
+        hit_badge = '<span class="oc-badge miss">미적중</span>'
+    else:
+        hit_badge = '<span class="oc-badge progress">진행 중</span>'
+
+    thesis = oc.get("thesis_validity", "")
+    thesis_label = {
+        "logic_chain_correct": "논리 정확",
+        "logic_chain_partial": "논리 부분 적중",
+        "logic_chain_incorrect": "논리 부정확",
+    }.get(thesis, thesis or "—")
+    thesis_class = (
+        "thesis-correct" if thesis == "logic_chain_correct"
+        else "thesis-partial" if thesis == "logic_chain_partial"
+        else "thesis-incorrect" if thesis == "logic_chain_incorrect"
+        else ""
+    )
+
+    actual = oc.get("actual_price")
+    actual_str = ""
+    cur = meta.get("target_currency") or ""
+    if actual is not None:
+        actual_str = f"{cur}{actual:,}" if isinstance(actual, (int, float)) else str(actual)
+    error = oc.get("error_pct")
+    error_str = f"{error:+.2f}%" if isinstance(error, (int, float)) else "—"
+
+    notes = oc.get("notes", "")
+    evaluated_at = oc.get("evaluated_at", "")
+
+    rows = [
+        f'<div class="oc-row"><span class="oc-label">판정</span>{hit_badge}'
+        f'<span class="oc-thesis {thesis_class}">{html.escape(thesis_label)}</span></div>',
+    ]
+    if actual_str:
+        rows.append(
+            f'<div class="oc-row"><span class="oc-label">실제 가격 ({html.escape(evaluated_at)})</span>'
+            f'<b>{html.escape(actual_str)}</b></div>'
+        )
+    if isinstance(error, (int, float)):
+        rows.append(
+            f'<div class="oc-row"><span class="oc-label">목표가 대비 오차</span>'
+            f'<b>{html.escape(error_str)}</b></div>'
+        )
+    if notes:
+        rows.append(
+            f'<div class="oc-notes">{html.escape(notes)}</div>'
+        )
+
+    return (
+        '<section class="oc-block">'
+        '<h2>📊 사후 평가</h2>'
+        + "".join(rows) +
+        '</section>'
+    )
 
 
 def _ai_section(meta: dict) -> str:
@@ -285,14 +391,15 @@ def render_summary_html(item_dir: Path, meta: dict) -> None:
     rating = meta.get("rating") or ""
     rating_class = ""
     rl = rating.lower()
-    if rl in ("buy", "overweight", "strong buy"):
+    if rl in ("buy", "overweight", "strong buy", "bullish"):
         rating_class = "buy"
-    elif rl in ("sell", "underweight", "strong sell"):
+    elif rl in ("sell", "underweight", "strong sell", "bearish"):
         rating_class = "sell"
     elif rl in ("hold", "equal weight", "neutral"):
         rating_class = "hold"
+    rating_ko = rating_korean(rating)
     rating_tag = (
-        f'<span class="tag rating {rating_class}">{html.escape(rating)}</span>'
+        f'<span class="tag rating {rating_class}">{html.escape(rating_ko)}</span>'
         if rating else ""
     )
 
@@ -316,6 +423,7 @@ def render_summary_html(item_dir: Path, meta: dict) -> None:
         rating_tag=rating_tag,
         priceline=_priceline_block(meta),
         bullets_html=bullets_html,
+        outcome_section=_outcome_section(meta),
         ai_section=_ai_section(meta),
         original_section=_original_section(item_dir, meta),
         source_link_html=source_link_html,

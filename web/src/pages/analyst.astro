@@ -41,6 +41,15 @@ const ratingClass = (r?: string): string => {
   if (['hold', 'equal weight', 'neutral'].some((k) => rl.includes(k))) return 'hold';
   return 'neutral';
 };
+
+const RATING_KO: Record<string, string> = {
+  'Buy': '매수', 'Strong Buy': '적극 매수', 'Hold': '보유',
+  'Sell': '매도', 'Strong Sell': '적극 매도',
+  'Overweight': '비중확대', 'Underweight': '비중축소',
+  'Equal Weight': '중립', 'Neutral': '중립',
+  'Bullish': '강세', 'Bearish': '약세', 'N/A': '평가 없음',
+};
+const ratingKo = (r?: string) => (r ? (RATING_KO[r] ?? r) : '');
 ---
 <Base title="애널리스트 리포트" lede={`총 ${items.length}건 · 본인 정리 요약 + 출처 링크 + AI 해석 패턴`} active="analyst">
   <nav class="sub-nav">
@@ -59,7 +68,7 @@ const ratingClass = (r?: string): string => {
           </div>
           <div class="row2">
             <span class="target">{it.name}</span>
-            {it.rating && <span class:list={['rating', ratingClass(it.rating)]}>{it.rating}</span>}
+            {it.rating && <span class:list={['rating', ratingClass(it.rating)]}>{ratingKo(it.rating)}</span>}
           </div>
           {it.title && <h3 class="title">{it.title}</h3>}
           {it.summary_bullets && it.summary_bullets[0] && (

@@ -108,6 +108,15 @@ def render_brief_column(rows: list[tuple[str, str]]) -> str:
     return "\n".join(pieces)
 
 
+RATING_KO = {
+    "Buy": "매수", "Strong Buy": "적극 매수", "Hold": "보유",
+    "Sell": "매도", "Strong Sell": "적극 매도",
+    "Overweight": "비중확대", "Underweight": "비중축소",
+    "Equal Weight": "중립", "Neutral": "중립",
+    "Bullish": "강세", "Bearish": "약세", "N/A": "평가 없음",
+}
+
+
 def render_analyst_column(items: list[dict], total: int) -> str:
     if not items:
         return (
@@ -122,16 +131,17 @@ def render_analyst_column(items: list[dict], total: int) -> str:
         target = m.get("target_name") or m.get("target") or ""
         date = m.get("date") or ""
         rating = m.get("rating") or ""
+        rating_ko = RATING_KO.get(rating, rating)
         rating_cls = ""
         rl = rating.lower()
-        if rl in ("buy", "overweight", "strong buy"):
+        if rl in ("buy", "overweight", "strong buy", "bullish"):
             rating_cls = " buy"
-        elif rl in ("sell", "underweight", "strong sell"):
+        elif rl in ("sell", "underweight", "strong sell", "bearish"):
             rating_cls = " sell"
         elif rl in ("hold", "equal weight", "neutral"):
             rating_cls = " hold"
         rating_html = (
-            f'<span class="rating{rating_cls}">{html.escape(rating)}</span>' if rating else ""
+            f'<span class="rating{rating_cls}">{html.escape(rating_ko)}</span>' if rating else ""
         )
         pieces.append(
             '<div class="card">'
