@@ -1,10 +1,10 @@
 ---
-updated: 2026-04-07
+updated: 2026-05-07
 category: reference
 type: static
 ---
 
-# 소스 레지스트리 (Source Registry) — 37개
+# 소스 레지스트리 (Source Registry) — 39개
 
 > **성격:** 변경 드문 정적 데이터. 에이전트가 소스 태그 작성 시 참조.
 > **갱신:** 새로운 소스 추가 또는 접근성 등급 변경 시만 수동 업데이트
@@ -99,6 +99,15 @@ type: static
 | 36 | The Verge | theverge.com | 글로벌 테크 트렌드 속보 | 🟢 |
 | 37 | 전자신문 | etnews.com | 국내 IT·반도체·산업 동향 | 🟢 |
 
+### ■ 시장 심리 지표 (Fear & Greed Index)
+
+| # | 소스 | API 엔드포인트 | 용도 | 접근성 |
+|---|------|---------------|------|-------|
+| 38 | **CNN Fear & Greed** (주식) | `production.dataviz.cnn.io/index/fearandgreed/graphdata` | 미국 주식 7지표 종합 (S&P 모멘텀, 풋콜 비율, 정크본드 스프레드 등) | 🟢 |
+| 39 | **Alternative.me Crypto F&G** | `api.alternative.me/fng/?limit=1` | 크립토 변동성·거래량·SNS·도미넌스·검색트렌드 | 🟢 |
+
+> 자동 페치: [`web/scripts/fetch_fear_greed.mjs`](../web/scripts/fetch_fear_greed.mjs) (Vercel 빌드 prebuild 단계). 출력: `knowledge-base/market/fear_greed.json`. 대시보드 최상단 위젯에서 표시.
+
 ---
 
 ## 접근성 등급
@@ -111,7 +120,7 @@ type: static
 
 ### 🟢 직접 접근 가능 목록
 
-Yahoo Finance, Investing.com, Finviz, CoinGecko, DeFiLlama, Macrotrends, Barchart, Reuters, GeekNews, The Verge, 전자신문, ScienceDaily, Seeking Alpha (일부), TradingView (일부), CSIS, Brookings, PIIE, Wired
+Yahoo Finance, Investing.com, Finviz, CoinGecko, DeFiLlama, Macrotrends, Barchart, Reuters, GeekNews, The Verge, 전자신문, ScienceDaily, Seeking Alpha (일부), TradingView (일부), CSIS, Brookings, PIIE, Wired, **CNN Fear & Greed**, **Alternative.me Crypto F&G**
 
 ### 🟡 간접 접근 목록
 

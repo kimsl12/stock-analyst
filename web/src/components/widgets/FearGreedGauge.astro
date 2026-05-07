@@ -1,0 +1,346 @@
+---
+import kb from '../../data/kb.json';
+
+interface FgPoint {
+  score: number;
+  rating: string;
+  prev_close?: number;
+  prev_1w?: number;
+  prev_1m?: number;
+  prev_1y?: number;
+  source_ts?: string | null;
+  _stale?: boolean;
+}
+
+const fg = kb.fear_greed ?? { available: false, cnn: null, crypto: null, updated_at: null };
+const cnn: FgPoint | null = fg.cnn;
+const crypto: FgPoint | null = fg.crypto;
+const updated = fg.updated_at;
+
+// 0-100 점수 → 라벨/색
+const RATING_KO: Record<string, string> = {
+  'extreme fear': '극도의 공포',
+  fear: '공포',
+  neutral: '중립',
+  greed: '탐욕',
+  'extreme greed': '극도의 탐욕',
+};
+
+function classify(score: number): { key: string; label: string; tone: string } {
+  if (score < 25) return { key: 'extreme-fear', label: '극도의 공포', tone: 'ef' };
+  if (score < 45) return { key: 'fear', label: '공포', tone: 'f' };
+  if (score < 55) return { key: 'neutral', label: '중립', tone: 'n' };
+  if (score < 75) return { key: 'greed', label: '탐욕', tone: 'g' };
+  return { key: 'extreme-greed', label: '극도의 탐욕', tone: 'eg' };
+}
+
+function deltaTxt(cur: number | undefined, prev: number | undefined): string {
+  if (cur == null || prev == null) return '—';
+  const d = Math.round((cur - prev) * 10) / 10;
+  if (d === 0) return '±0.0';
+  const sign = d > 0 ? '+' : '';
+  return `${sign}${d.toFixed(1)}`;
+}
+
+const cnnView = cnn
+  ? {
+      score: cnn.score,
+      rating: classify(cnn.score),
+      d_1d: deltaTxt(cnn.score, cnn.prev_close),
+      d_1w: deltaTxt(cnn.score, cnn.prev_1w),
+      d_1m: deltaTxt(cnn.score, cnn.prev_1m),
+      d_1y: deltaTxt(cnn.score, cnn.prev_1y),
+      stale: !!cnn._stale,
+    }
+  : null;
+
+const cryptoView = crypto
+  ? {
+      score: crypto.score,
+      rating: classify(crypto.score),
+      stale: !!crypto._stale,
+    }
+  : null;
+
+// SVG 게이지 — 0-100 → 반원형(180도) 위 점
+const W = 220, H = 110, R = 90, CX = W / 2, CY = H;
+function arcPath(): string {
+  return `M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`;
+}
+function pointer(score: number) {
+  const angle = Math.PI - (score / 100) * Math.PI; // 0=좌, 100=우
+  const x = CX + R * Math.cos(angle);
+  const y = CY - R * Math.sin(angle);
+  return { x, y };
+}
+const cnnPt = cnnView ? pointer(cnnView.score) : null;
+const cryptoPt = cryptoView ? pointer(cryptoView.score) : null;
+
+// 5단계 띠 색상 (0-25-45-55-75-100)
+const ZONES = [
+  { from: 0, to: 25, color: 'var(--fg-ef)' },
+  { from: 25, to: 45, color: 'var(--fg-f)' },
+  { from: 45, to: 55, color: 'var(--fg-n)' },
+  { from: 55, to: 75, color: 'var(--fg-g)' },
+  { from: 75, to: 100, color: 'var(--fg-eg)' },
+];
+function zoneArc(from: number, to: number): string {
+  const a1 = Math.PI - (from / 100) * Math.PI;
+  const a2 = Math.PI - (to / 100) * Math.PI;
+  const x1 = CX + R * Math.cos(a1);
+  const y1 = CY - R * Math.sin(a1);
+  const x2 = CX + R * Math.cos(a2);
+  const y2 = CY - R * Math.sin(a2);
+  return `M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`;
+}
+---
+<section class="fg-card">
+  <header class="fg-head">
+    <h2><span class="dot"></span>Fear &amp; Greed Index</h2>
+    <span class="dim">{updated ? `갱신: ${updated.slice(0, 16).replace('T', ' ')}` : '데이터 없음'}</span>
+  </header>
+
+  {(!cnnView && !cryptoView) ? (
+    <p class="empty">데이터를 가져올 수 없습니다. <code>node web/scripts/fetch_fear_greed.mjs</code> 로 수동 갱신하세요.</p>
+  ) : (
+    <div class="fg-grid">
+      <!-- CNN (주식) -->
+      <div class="fg-pane">
+        <div class="fg-pane-head">
+          <span class="src">CNN <em>주식 (S&P500 7지표)</em></span>
+          {cnnView?.stale && <span class="stale">⚠️ stale</span>}
+        </div>
+        {cnnView ? (
+          <>
+            <svg class="gauge" viewBox={`0 0 ${W} ${H + 22}`} role="img" aria-label={`CNN F&G ${cnnView.score}`}>
+              {/* 배경 5색 띠 */}
+              {ZONES.map((z) => (
+                <path d={zoneArc(z.from, z.to)} stroke={z.color} stroke-width="14" fill="none" stroke-linecap="butt" />
+              ))}
+              {/* 포인터 */}
+              {cnnPt && (
+                <>
+                  <line x1={CX} y1={CY} x2={cnnPt.x} y2={cnnPt.y} stroke="var(--text)" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx={cnnPt.x} cy={cnnPt.y} r="5.5" fill="var(--text)" stroke="var(--surface)" stroke-width="2" />
+                </>
+              )}
+              {/* 눈금 */}
+              <text x="8" y={H + 16} class="g-tick">0</text>
+              <text x={CX} y={H + 16} text-anchor="middle" class="g-tick">50</text>
+              <text x={W - 8} y={H + 16} text-anchor="end" class="g-tick">100</text>
+            </svg>
+            <div class="fg-score">
+              <span class="score-num" data-tone={cnnView.rating.tone}>{cnnView.score}</span>
+              <span class="score-label" data-tone={cnnView.rating.tone}>{cnnView.rating.label}</span>
+            </div>
+            <div class="fg-delta">
+              <div><span class="dlabel">전일</span><span class="dval">{cnnView.d_1d}</span></div>
+              <div><span class="dlabel">1주</span><span class="dval">{cnnView.d_1w}</span></div>
+              <div><span class="dlabel">1개월</span><span class="dval">{cnnView.d_1m}</span></div>
+              <div><span class="dlabel">1년</span><span class="dval">{cnnView.d_1y}</span></div>
+            </div>
+          </>
+        ) : (
+          <p class="empty">CNN 데이터 없음</p>
+        )}
+      </div>
+
+      <!-- Crypto -->
+      <div class="fg-pane">
+        <div class="fg-pane-head">
+          <span class="src">Alternative.me <em>크립토 (BTC 변동성·SNS)</em></span>
+          {cryptoView?.stale && <span class="stale">⚠️ stale</span>}
+        </div>
+        {cryptoView ? (
+          <>
+            <svg class="gauge" viewBox={`0 0 ${W} ${H + 22}`} role="img" aria-label={`Crypto F&G ${cryptoView.score}`}>
+              {ZONES.map((z) => (
+                <path d={zoneArc(z.from, z.to)} stroke={z.color} stroke-width="14" fill="none" stroke-linecap="butt" />
+              ))}
+              {cryptoPt && (
+                <>
+                  <line x1={CX} y1={CY} x2={cryptoPt.x} y2={cryptoPt.y} stroke="var(--text)" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx={cryptoPt.x} cy={cryptoPt.y} r="5.5" fill="var(--text)" stroke="var(--surface)" stroke-width="2" />
+                </>
+              )}
+              <text x="8" y={H + 16} class="g-tick">0</text>
+              <text x={CX} y={H + 16} text-anchor="middle" class="g-tick">50</text>
+              <text x={W - 8} y={H + 16} text-anchor="end" class="g-tick">100</text>
+            </svg>
+            <div class="fg-score">
+              <span class="score-num" data-tone={cryptoView.rating.tone}>{cryptoView.score}</span>
+              <span class="score-label" data-tone={cryptoView.rating.tone}>{cryptoView.rating.label}</span>
+            </div>
+            <div class="fg-delta">
+              <div class="single">일별 갱신</div>
+            </div>
+          </>
+        ) : (
+          <p class="empty">Crypto 데이터 없음</p>
+        )}
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  .fg-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1.1rem 0.85rem;
+    --fg-ef: #d62728;  /* extreme fear */
+    --fg-f:  #ff8c42;  /* fear */
+    --fg-n:  #cccccc;  /* neutral */
+    --fg-g:  #66c266;  /* greed */
+    --fg-eg: #2ca02c;  /* extreme greed */
+  }
+  .fg-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .fg-head h2 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .fg-head .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--fg-g);
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .empty { color: var(--muted); font-size: 0.85rem; padding: 1rem; text-align: center; }
+  .empty code {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.78rem;
+    background: var(--surface-2);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+
+  .fg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  .fg-pane {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .fg-pane-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .fg-pane-head .src {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .fg-pane-head .src em {
+    font-style: normal;
+    color: var(--dim);
+    font-weight: 400;
+    margin-left: 0.3rem;
+    font-size: 0.72rem;
+  }
+  .fg-pane-head .stale {
+    font-size: 0.7rem;
+    color: var(--warn);
+  }
+
+  .gauge {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+  }
+  .g-tick {
+    fill: var(--dim);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fg-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+    line-height: 1;
+  }
+  .score-num {
+    font-size: 2.1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .score-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .score-num[data-tone='ef'], .score-label[data-tone='ef'] { color: var(--fg-ef); }
+  .score-num[data-tone='f'],  .score-label[data-tone='f']  { color: var(--fg-f); }
+  .score-num[data-tone='n'],  .score-label[data-tone='n']  { color: var(--text); }
+  .score-num[data-tone='g'],  .score-label[data-tone='g']  { color: var(--fg-g); }
+  .score-num[data-tone='eg'], .score-label[data-tone='eg'] { color: var(--fg-eg); }
+
+  .fg-delta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.3rem;
+    width: 100%;
+    margin-top: 0.2rem;
+  }
+  .fg-delta > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+    padding: 0.3rem 0.2rem;
+    background: var(--surface);
+    border-radius: 5px;
+    border: 1px solid var(--border);
+  }
+  .fg-delta .single {
+    grid-column: 1 / -1;
+    color: var(--dim);
+    font-size: 0.72rem;
+    text-align: center;
+    padding: 0.45rem;
+  }
+  .fg-delta .dlabel {
+    color: var(--dim);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .fg-delta .dval {
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+
+  @media (max-width: 700px) {
+    .fg-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -397,16 +397,37 @@ async function parseTimemachine() {
 }
 
 // ---------------------------------------------------------------------------
+// 6. fear_greed — knowledge-base/market/fear_greed.json (fetch_fear_greed.mjs 출력)
+// ---------------------------------------------------------------------------
+async function parseFearGreed() {
+  const file = path.join(KB, 'market', 'fear_greed.json');
+  if (!existsSync(file)) return { available: false, cnn: null, crypto: null, updated_at: null };
+  try {
+    const j = JSON.parse(await readFile(file, 'utf-8'));
+    return {
+      available: !!(j.cnn || j.crypto),
+      cnn: j.cnn ?? null,
+      crypto: j.crypto ?? null,
+      updated_at: j.updated_at ?? null,
+    };
+  } catch (e) {
+    console.error('fear_greed parse err:', e.message);
+    return { available: false, cnn: null, crypto: null, updated_at: null };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // 메인
 // ---------------------------------------------------------------------------
 async function main() {
-  const [market_snapshot, kb_health, upcoming_events, recommendations, timemachine, performance] = await Promise.all([
+  const [market_snapshot, kb_health, upcoming_events, recommendations, timemachine, performance, fear_greed] = await Promise.all([
     parseMarketSnapshot().catch((e) => { console.error('market_snapshot err:', e.message); return { items: [], updated: null }; }),
     parseKbHealth().catch((e) => { console.error('kb_health err:', e.message); return { p0: 0, p1: 0, last_lint: null, available: false }; }),
     parseUpcomingEvents().catch((e) => { console.error('upcoming_events err:', e.message); return []; }),
     parseRecommendations().catch((e) => { console.error('recommendations err:', e.message); return []; }),
     parseTimemachine().catch((e) => { console.error('timemachine err:', e.message); return { '1w': [], '1m': [], '3m': [] }; }),
     parsePerformance().catch((e) => { console.error('performance err:', e.message); return { available: false, total: 0, hit: 0, miss: 0, ongoing: 0, hold: 0, hit_rate_pct: null, last_updated: null }; }),
+    parseFearGreed().catch((e) => { console.error('fear_greed err:', e.message); return { available: false, cnn: null, crypto: null, updated_at: null }; }),
   ]);
 
   await mkdir(path.dirname(OUTPUT_JSON), { recursive: true });
@@ -422,6 +443,7 @@ async function main() {
         recommendations,
         timemachine,
         performance,
+        fear_greed,
       },
       null,
       2,
@@ -431,8 +453,11 @@ async function main() {
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
   const tmCount = (timemachine['1w']?.length ?? 0) + (timemachine['1m']?.length ?? 0) + (timemachine['3m']?.length ?? 0);
+  const fgTxt = fear_greed.available
+    ? `cnn=${fear_greed.cnn?.score ?? '—'}/crypto=${fear_greed.crypto?.score ?? '—'}`
+    : 'n/a';
   console.log(
-    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}, tm=${tmCount}, perf=${performance.total}/${performance.hit_rate_pct ?? '—'}%) → ${rel}`,
+    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}, tm=${tmCount}, perf=${performance.total}/${performance.hit_rate_pct ?? '—'}%, fg=${fgTxt}) → ${rel}`,
   );
 }
 
