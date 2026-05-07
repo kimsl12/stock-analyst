@@ -230,9 +230,27 @@ async function main() {
     }
   }
 
-  // 정렬: date desc → filename desc
+  // 정렬: date desc → 같은 날짜 안에선 브리핑 타입의 시간 흐름 순 (큰 rank = 더 최신)
+  // 예: 2026-05-07 morning < global_intelligence < evening (저녁 = 가장 최신)
+  // [v3.7 수정] 기존 filename DESC 알파벳 정렬은 m > g > e 순서로 morning 이 위에 와서
+  // 대시보드 "마지막 브리핑" 카드가 evening 대신 morning 을 표시하던 버그.
+  const TYPE_TIME_RANK = {
+    morning: 1,
+    weekly: 2,
+    model_portfolio: 3,
+    rebalancing: 4,
+    user_portfolio: 5,
+    global_intelligence: 6,
+    crypto: 7,
+    evening: 8,            // 저녁이 가장 늦은 시점
+    daily_briefing: 0,     // legacy
+  };
   items.sort((a, b) => {
     if (a.date !== b.date) return b.date.localeCompare(a.date);
+    // 같은 날짜: 브리핑 타입 시간 순서 DESC (evening 이 morning 보다 위)
+    const ra = TYPE_TIME_RANK[a.type] ?? -1;
+    const rb = TYPE_TIME_RANK[b.type] ?? -1;
+    if (ra !== rb) return rb - ra;
     return b.filename.localeCompare(a.filename);
   });
 
