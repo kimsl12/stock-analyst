@@ -408,3 +408,25 @@ type: time_series
 | 2026-05-05 | calendar | Section301_Hearing | USTR_EXCESS_CAPACITY_16NATIONS | — | — | USTR / Holland & Knight [2026-05-05] | 2026-05-05T09:00:00+09:00 | USTR, 중국·한국 등 16개국 제조업 과잉생산 조사 공청회. 목표 완료일 2026-07-24. Trump-Xi 5/14 정상회담 선행 이벤트 |
 | 2026-05-05 | calendar | ISM_Services_PMI_April | PENDING_10AM_ET | — | — | ISM / FXStreet [2026-05-05 10:00 ET 발표 예정] | 2026-05-05T09:00:00+09:00 | 컨센 ~53%(3월 54%. 21개월 연속 확장). 결과 미확보 — 이브닝 갱신 필요 |
 | 2026-05-05 | calendar | AMD_Q1_2026 | PENDING_AH_17:00ET | — | — | MarketBeat / StockTitan [2026-05-05 발표 예정] | 2026-05-05T09:00:00+09:00 | 컨센 EPS $1.30(+35% YoY) / Rev $9.84B(+32%). EPYC + Instinct AI GPU. NVIDIA 5/6 선행 지표 |
+| 2026-05-06 | us_index | SP500 | 7365.12 | +1.46% | point | Yahoo Finance / TheStreet [2026-05-06 ET 16:00 종가] | 2026-05-07T05:00:00+09:00 | 신고가 경신. AMD 실적 호재 + 이란 협상 낙관 + WTI 급락 |
+| 2026-05-06 | us_index | NASDAQ | 25838.94 | +2.02% | point | Yahoo Finance / TheStreet [2026-05-06 ET 16:00 종가] | 2026-05-07T05:00:00+09:00 | 신고가 경신. 반도체 섹터 주도 |
+| 2026-05-06 | us_index | DJIA | 49910.59 | +1.24% | point | Yahoo Finance [2026-05-06 ET 16:00 종가] | 2026-05-07T05:00:00+09:00 | |
+| 2026-05-06 | us_index | Russell2000 | 2886.77 | +1.47% | point | Yahoo Finance / TheStreet [2026-05-06 ET 16:00 종가] | 2026-05-07T05:00:00+09:00 | 신고가 경신 |
+| 2026-05-06 | us_index | VIX | 17.39 | +0.06% | index | 247wallst.com [2026-05-06 ET 종가] | 2026-05-07T05:00:00+09:00 | 정상 구간 유지 |
+| 2026-05-06 | asia_index | KOSPI | 7384.56 | +6.45% | point | ASIAE / KRX [2026-05-06 KST 종가] | 2026-05-06T15:30:00+09:00 | 사상 첫 7,000 돌파. 어린이날(5/5) 휴장 후 재개장 |
+| 2026-05-06 | asia_index | KOSDAQ | 1210.17 | -0.29% | point | Investing.com [2026-05-06 KST 종가] | 2026-05-06T15:30:00+09:00 | |
+| 2026-05-06 | asia_index | HangSeng | 26213.78 | +1.22% | point | Yahoo Finance [2026-05-06 HKT 종가] | 2026-05-06T16:00:00+08:00 | |
+| 2026-05-06 | fx | USDKRW | 1451.71 | -1.17% | KRW | Trading Economics [2026-05-06 종가] | 2026-05-07T05:00:00+09:00 | ⚠️ 1,400 초과 유지. 이란 협상 진전 원화 강세 |
+| 2026-05-06 | fx | USDJPY | 156.38 | -0.95% | JPY | Trading Economics [2026-05-06 종가] | 2026-05-07T05:00:00+09:00 | |
+| 2026-05-06 | commodity | WTI | 91.54 | -10.5% | USD/barrel | Yahoo Finance / TheStreet [2026-05-06 ET 종가] | 2026-05-07T05:00:00+09:00 | ⚠️ 이란 MOU 협상 낙관 급락. 5/5 ~$102 → 5/6 $91.54 |
+| 2026-05-06 | commodity | Brent | 102.22 | -6.96% | USD/barrel | Trading Economics [2026-05-06] | 2026-05-07T05:00:00+09:00 | ⚠️ 이란 협상 낙관 동반 급락 |
+| 2026-05-06 | commodity | Gold | 4697.48 | +3.11% | USD/oz | Fortune.com [2026-05-06 종가] | 2026-05-07T05:00:00+09:00 | 중동 완화 우려 경감에도 금 강세 유지 |
+| 2026-05-06 | bond | US10Y | 4.38 | -4bp | percent | Trading Economics [2026-05-06 ET 종가] | 2026-05-07T05:00:00+09:00 | |
+| 2026-05-06 | crypto | BTC | 82320 | — | USD | Yahoo Finance [2026-05-06 ET 08:45 참조] | 2026-05-07T05:00:00+09:00 | 1월 이후 최고 수준 유지 |
+| 2026-05-06 | crypto | ETH | 2407 | — | USD | Yahoo Finance [2026-05-06 ET 08:45 참조] | 2026-05-07T05:00:00+09:00 | |
+| 2026-05-06 | news | AMD_Q1_FY2026 | REV_10.25B_EPS_1.37_BEAT | — | — | Shacknews / Seeking Alpha [2026-05-05 장후] | 2026-05-07T05:00:00+09:00 | Rev $10.25B(+38% YoY) vs $9.89B 컨센. EPS $1.37 vs $1.29. 주가 +16% |
+| 2026-05-06 | news | ARM_Q4_FY2026 | REV_1.49B_EPS_0.60_BEAT | — | — | Shacknews / Investing.com [2026-05-06 장후] | 2026-05-07T05:00:00+09:00 | Rev $1.49B vs $1.47B 컨센. EPS $0.60 vs $0.58. 데이터센터 로열티 YoY 2배 |
+| 2026-05-06 | news | NVIDIA_Earnings_Date | 20260520_AH | — | — | investor.nvidia.com / MarketBeat [확인] | 2026-05-07T05:00:00+09:00 | FY27 Q1 실적: 2026-05-20 장후 발표. 5/6 자체 발표 없음 (AMD 호재 동반 +5.5%) |
+| 2026-05-06 | news | Iran_MOU_Negotiation | US_EPIC_FURY_CONCLUDED | — | — | Axios / CNN / Al Jazeera [2026-05-06] | 2026-05-07T05:00:00+09:00 | Rubio: Operation Epic Fury 종결. 14개항 MOU 협상 중. WTI -10.5% 급락 배경 |
+| 2026-05-06 | calendar | ISM_Services_PMI_April | 53.6 | -0.4pp vs 3월 | index | ISM / prnewswire [2026-05-05] | 2026-05-07T05:00:00+09:00 | 22개월 연속 확장. 물가지수 70.7(2022 이후 최고). 고용 48.0(수축) |
+| 2026-05-06 | calendar | ADP_Private_Payrolls_April | 109000 | +10K vs 컨센 99K | jobs | CNBC / prnewswire [2026-05-06] | 2026-05-07T05:00:00+09:00 | 1월 2025 이후 최강. 3월 62K로 하향 조정 |
