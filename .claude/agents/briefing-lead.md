@@ -238,6 +238,55 @@ budget_override: 5                              # 검색 예산 5회로 제한
 parent_call_id: {1차 호출의 결과 파일명}         # 컨텍스트 추적
 ```
 
+### 산출물 게이트 [v3.7 신규, 2026-05-07] — 작성 시작 전 강제 검증
+
+**Phase 4 (lead_*.md 작성) 진입 전 다음 게이트를 통과해야 한다. 통과 못 하면 작성 시작 금지.**
+
+```python
+# 의사코드
+def phase_4_gate():
+    market_md = f"analysis/briefing/market_data_{YYYYMMDD}.md"
+    macro_md  = f"analysis/briefing/macro_{YYYYMMDD}.md"
+    corr_md   = f"analysis/briefing/correlation_{YYYYMMDD}.md"
+
+    if not exists(market_md) or filesize(market_md) == 0:
+        # market-data-collector 산출물 부재 → Task 강제 호출 후 처음으로 다시
+        Task(subagent_type="market-data-collector", ...)
+        return RETRY
+
+    if not exists(macro_md) or filesize(macro_md) == 0:
+        Task(subagent_type="global-macro-analyst", mode="quick", ...)
+        return RETRY
+
+    if not exists(corr_md) or filesize(corr_md) == 0:
+        Task(subagent_type="correlation-monitor", mode="quick", ...)
+        return RETRY
+
+    # 3개 모두 존재 시만 lead_*.md 작성 시작
+    return PROCEED
+```
+
+**핵심 원칙:**
+- 메인 스레드(슬래시 커맨드 실행자)가 KB 데이터를 사전 주입했더라도 **산출물 파일이 없으면 작성 못 함**
+- 사전 주입된 데이터는 "참고 정보" 일 뿐, 산출물은 서브에이전트가 만들어야 정당
+- 게이트는 Phase 4 시작 전 1회만 평가 — 무한 루프 위험 없음 (재호출 캡 1회와 결합)
+
+### 메인 스레드 (슬래시 커맨드 실행자) 가이드 [v3.7 신규]
+
+**briefing-lead 호출 시 메인 스레드가 지켜야 할 룰:**
+
+❌ **금지:**
+- KB 파일을 미리 읽어서 briefing-lead 프롬프트에 dump 하기
+- "현재 KB 상태 요약" 같은 사전 주입 컨텍스트
+- "이미 데이터를 확인했으니 종합만 해라" 같은 단축 지시
+
+✅ **허용 / 권장:**
+- briefing-lead 에 단순 컨텍스트만 전달 (mode, target_date, sections 등)
+- 슬래시 커맨드의 ` ``` ` 코드 블록 안에 명시된 인자만 사용
+- 데이터 수집/분석은 briefing-lead 가 본인 .md 워크플로 따라 알아서
+
+**왜 중요한가:** 사전 주입 = briefing-lead 가 "데이터 다 있네, Task 호출 안 해도 되겠다" 판단 → 3계층 아키텍처 무력화. 2026-05-07 이브닝 27분 사건의 진짜 원인. v3.6 (도구 제거) + v3.7 (산출물 게이트) 가 함께 작동해야 차단 완성.
+
 ### 스캐폴딩 (서브에이전트 호출 전)
 
 서브에이전트(global-macro-analyst, correlation-monitor) 호출 전에

@@ -2,14 +2,15 @@
 import kb from '../../data/kb.json';
 
 type SnapItem = (typeof kb.market_snapshot.items)[number];
-const items: SnapItem[] = kb.market_snapshot.items;
+// VIX 는 FRED 매크로 카드(MacroIndicators) 가 단독 소스. 시장 스냅샷에서 제외.
+const items: SnapItem[] = kb.market_snapshot.items.filter((it) => it.label !== 'VIX');
 const updated = kb.market_snapshot.updated;
-const order = ['S&P 500', 'NASDAQ', 'KOSPI', 'USD/KRW', 'WTI', 'Gold', 'BTC', 'VIX'];
+const order = ['S&P 500', 'NASDAQ', 'KOSPI', 'USD/KRW', 'WTI', 'Gold', 'BTC'];
 const sorted = [...items].sort((a, b) => order.indexOf(a.label) - order.indexOf(b.label));
 ---
-<section class="card">
+<section class="card" style="--dot-color: #34d399;">
   <header class="card-head">
-    <h2>시장 스냅샷</h2>
+    <h2><span class="dot"></span>시장 스냅샷</h2>
     <span class="dim">기준: {updated ?? '—'}</span>
   </header>
   {sorted.length === 0 ? (
@@ -34,16 +35,6 @@ const sorted = [...items].sort((a, b) => order.indexOf(a.label) - order.indexOf(
 </section>
 
 <style>
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.1rem;
-  }
-  .card-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.85rem; }
-  h2 { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
-  .dim { color: var(--dim); font-size: 0.75rem; }
-  .empty { color: var(--muted); margin: 1rem 0; text-align: center; font-size: 0.85rem; }
   .snap-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
