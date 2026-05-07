@@ -2,11 +2,11 @@
 import manifest from '../../data/manifest.json';
 
 const byType = manifest.by_type as Record<string, number>;
-const order = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing', 'stock_analysis', 'etf', 'daily_briefing'];
+const order = ['morning', 'evening', 'weekly', 'crypto', 'user_portfolio', 'global_intelligence', 'model_portfolio', 'rebalancing', 'stock_analysis', 'etf', 'analyst', 'daily_briefing'];
 const labels: Record<string, string> = {
   morning: '모닝', evening: '이브닝', weekly: '주간', crypto: '크립토',
   user_portfolio: '내 포트폴리오', global_intelligence: '글로벌 인텔', model_portfolio: '모델 포트',
-  rebalancing: '리밸런싱', stock_analysis: '종목 분석', etf: 'ETF', daily_briefing: '데일리(legacy)',
+  rebalancing: '리밸런싱', stock_analysis: '종목 분석', etf: 'ETF', analyst: '애널리스트', daily_briefing: '데일리(legacy)',
 };
 const types = order.filter((t) => byType[t]);
 ---
@@ -17,7 +17,7 @@ const types = order.filter((t) => byType[t]);
   </header>
   <div class="pills">
     {types.map((t) => {
-      const slug = (t === 'stock_analysis' || t === 'etf') ? '/stocks' : `/briefing/${t}`;
+      const slug = (t === 'stock_analysis' || t === 'etf') ? '/stocks' : (t === 'analyst' ? '/analyst' : `/briefing/${t}`);
       return (
         <a href={slug} class="pill">
           <span class:list={['badge', `t-${t}`]}>{labels[t] ?? t}</span>

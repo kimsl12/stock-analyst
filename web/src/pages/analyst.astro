@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import manifest from '../data/manifest.json';
+
+interface AnalystItem {
+  type: string;
+  ticker: string | null;
+  name: string | null;
+  date: string;
+  filename: string;
+  url_path: string;
+  size_bytes: number;
+  title: string | null;
+  source?: string;
+  source_type?: string;
+  analyst_name?: string;
+  rating?: string;
+  target_price?: number | null;
+  target_currency?: string;
+  period?: string;
+  target_kind?: string;
+  summary_bullets?: string[];
+}
+
+const items = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+
+// Source-type별 그룹 (필터링 용)
+const sourceTypes = {
+  ib_official: 'IB 공식',
+  media: '미디어 인용',
+  korea_brokerage: '한국 증권사',
+  youtube: 'YouTube',
+  user_upload: '사용자 입수',
+};
+
+const ratingClass = (r?: string): string => {
+  if (!r) return 'neutral';
+  const rl = r.toLowerCase();
+  if (['buy', 'overweight', 'strong buy', 'bullish'].some((k) => rl.includes(k))) return 'buy';
+  if (['sell', 'underweight', 'strong sell', 'bearish'].some((k) => rl.includes(k))) return 'sell';
+  if (['hold', 'equal weight', 'neutral'].some((k) => rl.includes(k))) return 'hold';
+  return 'neutral';
+};
+---
+<Base title="애널리스트 리포트" lede={`총 ${items.length}건 · 본인 정리 요약 + 출처 링크 패턴`} active="analyst">
+  {items.length === 0 ? (
+    <p class="empty">아직 인덱싱된 애널리스트 리포트가 없습니다. <code>/애널리스트스크랩</code> 또는 <code>reports/analyst/incoming/</code> 에 PDF 드롭으로 추가하세요.</p>
+  ) : (
+    <section class="grid">
+      {items.map((it) => (
+        <a class="ac" href={it.url_path}>
+          <div class="row1">
+            <span class="badge t-analyst">{it.source ?? it.ticker ?? 'analyst'}</span>
+            <span class="date">{it.date}</span>
+          </div>
+          <div class="row2">
+            <span class="target">{it.name}</span>
+            {it.rating && <span class:list={['rating', ratingClass(it.rating)]}>{it.rating}</span>}
+          </div>
+          {it.title && <h3 class="title">{it.title}</h3>}
+          {it.summary_bullets && it.summary_bullets[0] && (
+            <p class="lead">{it.summary_bullets[0]}</p>
+          )}
+          <div class="foot">
+            {it.target_price != null ? (
+              <span class="tp">TP {it.target_currency ?? ''}{it.target_price}{it.period ? ` · ${it.period}` : ''}</span>
+            ) : <span class="tp dim">목표가 N/A</span>}
+            {it.analyst_name && <span class="dim">{it.analyst_name}</span>}
+          </div>
+        </a>
+      ))}
+    </section>
+  )}
+</Base>
+
+<style>
+  .empty {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+  }
+  .empty code {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.85rem;
+    background: var(--surface-2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .ac {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color .15s, transform .15s, background .15s;
+    height: 100%;
+  }
+  .ac:hover {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .row1 .date { font-variant-numeric: tabular-nums; }
+  .row2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+  }
+  .target {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .rating {
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--muted);
+  }
+  .rating.buy { background: rgba(16,185,129,.18); color: var(--up); }
+  .rating.sell { background: rgba(239,68,68,.18); color: var(--down); }
+  .rating.hold { background: rgba(245,158,11,.18); color: var(--warn); }
+  .title {
+    margin: 6px 0 4px;
+    font-size: 13.5px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .lead {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .foot {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .tp { color: var(--text); font-weight: 600; }
+  .tp.dim { color: var(--dim); font-weight: 400; }
+  .dim { color: var(--dim); }
+</style>

@@ -191,6 +191,44 @@ async function main() {
     });
   }
 
+  // 3. reports/analyst/items/{id}/meta.json (애널리스트 리포트)
+  const ANALYST_DIR = path.join(REPORTS_DIR, 'analyst', 'items');
+  if (existsSync(ANALYST_DIR)) {
+    const subdirs = (await readdir(ANALYST_DIR, { withFileTypes: true }))
+      .filter((e) => e.isDirectory());
+    for (const sub of subdirs) {
+      const metaPath = path.join(ANALYST_DIR, sub.name, 'meta.json');
+      const summaryPath = path.join(ANALYST_DIR, sub.name, 'summary.html');
+      if (!existsSync(metaPath)) continue;
+      try {
+        const meta = JSON.parse(await readFile(metaPath, 'utf-8'));
+        const st = existsSync(summaryPath) ? await stat(summaryPath) : { size: 0 };
+        items.push({
+          type: 'analyst',
+          ticker: meta.source || null, // MS / GS / CNBC / LS 등 (UI 의 ticker 슬롯에 source 표시)
+          name: meta.target_name || meta.target || null,
+          date: meta.date,
+          filename: 'summary.html',
+          url_path: `/reports/analyst/items/${sub.name}/summary.html`,
+          size_bytes: st.size,
+          title: meta.title,
+          // analyst 전용 메타 (Astro 페이지에서 사용)
+          source: meta.source_full || meta.source,
+          source_type: meta.source_type,
+          analyst_name: meta.analyst,
+          rating: meta.rating,
+          target_price: meta.target_price,
+          target_currency: meta.target_currency,
+          period: meta.period,
+          target_kind: meta.target_kind,
+          summary_bullets: meta.summary_bullets,
+        });
+      } catch (e) {
+        warnings.push(`analyst meta 파싱 실패: ${sub.name} (${e.message})`);
+      }
+    }
+  }
+
   // 정렬: date desc → filename desc
   items.sort((a, b) => {
     if (a.date !== b.date) return b.date.localeCompare(a.date);
