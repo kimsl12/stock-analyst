@@ -397,6 +397,48 @@ async function parseTimemachine() {
 }
 
 // ---------------------------------------------------------------------------
+// 7. fred — knowledge-base/macro/fred_snapshot.json (fetch_fred.mjs 출력)
+// ---------------------------------------------------------------------------
+async function parseFred() {
+  const file = path.join(KB, 'macro', 'fred_snapshot.json');
+  if (!existsSync(file)) {
+    return { available: false, api_key_required: true, series: [], updated_at: null };
+  }
+  try {
+    const j = JSON.parse(await readFile(file, 'utf-8'));
+    return {
+      available: !j.api_key_required && (j.series?.length ?? 0) > 0,
+      api_key_required: !!j.api_key_required,
+      series: j.series ?? [],
+      updated_at: j.updated_at ?? null,
+    };
+  } catch (e) {
+    console.error('fred parse err:', e.message);
+    return { available: false, api_key_required: true, series: [], updated_at: null };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 8. insider — knowledge-base/portfolio/insider_signals.json (fetch_openinsider.mjs 출력)
+// ---------------------------------------------------------------------------
+async function parseInsider() {
+  const file = path.join(KB, 'portfolio', 'insider_signals.json');
+  if (!existsSync(file)) return { available: false, cluster_buys: [], purchases: [], updated_at: null };
+  try {
+    const j = JSON.parse(await readFile(file, 'utf-8'));
+    return {
+      available: (j.cluster_buys?.length ?? 0) > 0,
+      cluster_buys: j.cluster_buys ?? [],
+      purchases: j.purchases ?? [],
+      updated_at: j.updated_at ?? null,
+    };
+  } catch (e) {
+    console.error('insider parse err:', e.message);
+    return { available: false, cluster_buys: [], purchases: [], updated_at: null };
+  }
+}
+
+// ---------------------------------------------------------------------------
 // 6. fear_greed — knowledge-base/market/fear_greed.json (fetch_fear_greed.mjs 출력)
 // ---------------------------------------------------------------------------
 async function parseFearGreed() {
@@ -420,7 +462,7 @@ async function parseFearGreed() {
 // 메인
 // ---------------------------------------------------------------------------
 async function main() {
-  const [market_snapshot, kb_health, upcoming_events, recommendations, timemachine, performance, fear_greed] = await Promise.all([
+  const [market_snapshot, kb_health, upcoming_events, recommendations, timemachine, performance, fear_greed, fred, insider] = await Promise.all([
     parseMarketSnapshot().catch((e) => { console.error('market_snapshot err:', e.message); return { items: [], updated: null }; }),
     parseKbHealth().catch((e) => { console.error('kb_health err:', e.message); return { p0: 0, p1: 0, last_lint: null, available: false }; }),
     parseUpcomingEvents().catch((e) => { console.error('upcoming_events err:', e.message); return []; }),
@@ -428,6 +470,8 @@ async function main() {
     parseTimemachine().catch((e) => { console.error('timemachine err:', e.message); return { '1w': [], '1m': [], '3m': [] }; }),
     parsePerformance().catch((e) => { console.error('performance err:', e.message); return { available: false, total: 0, hit: 0, miss: 0, ongoing: 0, hold: 0, hit_rate_pct: null, last_updated: null }; }),
     parseFearGreed().catch((e) => { console.error('fear_greed err:', e.message); return { available: false, cnn: null, crypto: null, updated_at: null }; }),
+    parseFred().catch((e) => { console.error('fred err:', e.message); return { available: false, api_key_required: true, series: [], updated_at: null }; }),
+    parseInsider().catch((e) => { console.error('insider err:', e.message); return { available: false, cluster_buys: [], purchases: [], updated_at: null }; }),
   ]);
 
   await mkdir(path.dirname(OUTPUT_JSON), { recursive: true });
@@ -444,6 +488,8 @@ async function main() {
         timemachine,
         performance,
         fear_greed,
+        fred,
+        insider,
       },
       null,
       2,
@@ -456,8 +502,10 @@ async function main() {
   const fgTxt = fear_greed.available
     ? `cnn=${fear_greed.cnn?.score ?? '—'}/crypto=${fear_greed.crypto?.score ?? '—'}`
     : 'n/a';
+  const fredTxt = fred.available ? `${fred.series.length}series` : fred.api_key_required ? 'no-key' : 'n/a';
+  const insTxt = insider.available ? `${insider.cluster_buys.length}cluster` : 'n/a';
   console.log(
-    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}, tm=${tmCount}, perf=${performance.total}/${performance.hit_rate_pct ?? '—'}%, fg=${fgTxt}) → ${rel}`,
+    `OK: kb 데이터 생성 (market=${market_snapshot.items.length}, p0=${kb_health.p0}, p1=${kb_health.p1}, events=${upcoming_events.length}, recs=${recommendations.length}, tm=${tmCount}, perf=${performance.total}/${performance.hit_rate_pct ?? '—'}%, fg=${fgTxt}, fred=${fredTxt}, ins=${insTxt}) → ${rel}`,
   );
 }
 

@@ -1,0 +1,175 @@
+---
+import kb from '../../data/kb.json';
+
+interface Signal {
+  filing_date: string;
+  trade_date: string;
+  ticker: string;
+  company: string;
+  industry: string;
+  insider_count: number | null;
+  price: number | null;
+  qty: number | null;
+  delta_own_pct: string;
+  value_usd: number | null;
+  value_fmt: string;
+  r_1d?: string | null;
+  r_1w?: string | null;
+  r_1m?: string | null;
+}
+
+const insiderAny = (kb as any).insider;
+const insider = insiderAny ?? { cluster_buys: [], purchases: [], updated_at: null };
+const cluster: Signal[] = (insider.cluster_buys ?? []).slice(0, 8);
+const updated = insider.updated_at;
+
+function returnTone(s: string | null | undefined): 'up' | 'down' | 'flat' {
+  if (!s) return 'flat';
+  const m = s.match(/(-?\d+(?:\.\d+)?)/);
+  if (!m) return 'flat';
+  const n = Number(m[1]);
+  return n > 0 ? 'up' : n < 0 ? 'down' : 'flat';
+}
+---
+<section class="ins-card">
+  <header class="card-head">
+    <h2><span class="dot"></span>인사이더 클러스터 매수 — Form 4</h2>
+    <div class="head-right">
+      <span class="dim">{updated ? `갱신: ${updated.slice(0, 16).replace('T', ' ')}` : '없음'}</span>
+      <a href="http://openinsider.com/latest-cluster-buys" target="_blank" rel="noopener" class="src-link">openinsider →</a>
+    </div>
+  </header>
+
+  {cluster.length === 0 ? (
+    <p class="empty">데이터 없음. <code>node web/scripts/fetch_openinsider.mjs</code> 로 페치.</p>
+  ) : (
+    <>
+      <p class="lede">3명 이상 인사이더가 동시에 자사주 매수 — 가장 강한 단기 시그널 (시차 0일).</p>
+      <div class="ins-table-wrap">
+        <table class="ins-table">
+          <thead>
+            <tr>
+              <th>거래일</th>
+              <th>티커</th>
+              <th>회사</th>
+              <th class="num">인원</th>
+              <th class="num">금액</th>
+              <th class="num">지분Δ</th>
+              <th class="num">1주↑</th>
+              <th class="num">1개월↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cluster.map((s) => (
+              <tr>
+                <td class="dim">{s.trade_date}</td>
+                <td><span class="ticker">{s.ticker}</span></td>
+                <td class="company" title={s.company}>{s.company}</td>
+                <td class="num"><span class="ins-count">{s.insider_count}</span></td>
+                <td class="num val">{s.value_fmt}</td>
+                <td class="num delta-own">{s.delta_own_pct}</td>
+                <td class:list={['num', 'ret', returnTone(s.r_1w)]}>{s.r_1w || '—'}</td>
+                <td class:list={['num', 'ret', returnTone(s.r_1m)]}>{s.r_1m || '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )}
+</section>
+
+<style>
+  .ins-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1.1rem 0.85rem;
+  }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .card-head h2 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .card-head .dot {
+    width: 8px;
+    height: 8px;
+    background: #fbbf24;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .head-right { display: flex; align-items: center; gap: 0.7rem; }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .src-link { color: var(--accent); font-size: 0.78rem; text-decoration: none; }
+  .src-link:hover { text-decoration: underline; }
+  .empty { color: var(--muted); padding: 1rem; text-align: center; font-size: 0.85rem; }
+  .empty code { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 0.78rem; background: var(--surface-2); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .lede { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.78rem; }
+
+  .ins-table-wrap { overflow-x: auto; }
+  .ins-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .ins-table th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .ins-table th.num, .ins-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .ins-table td {
+    padding: 0.45rem 0.5rem;
+    border-bottom: 1px dashed var(--border);
+    vertical-align: baseline;
+  }
+  .ins-table tr:last-child td { border-bottom: none; }
+  .ticker {
+    font-family: ui-monospace, Menlo, monospace;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .company {
+    color: var(--text);
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ins-count {
+    background: rgba(251, 191, 36, 0.18);
+    color: #fbbf24;
+    padding: 0.1rem 0.45rem;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  .val { color: var(--up); font-weight: 600; }
+  .delta-own { color: var(--up); }
+  .ret.up { color: var(--up); }
+  .ret.down { color: var(--down); }
+  .ret.flat { color: var(--dim); }
+
+  @media (max-width: 700px) {
+    .company { max-width: 110px; }
+  }
+</style>

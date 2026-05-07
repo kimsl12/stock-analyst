@@ -4,7 +4,7 @@ category: reference
 type: static
 ---
 
-# 소스 레지스트리 (Source Registry) — 39개
+# 소스 레지스트리 (Source Registry) — 42개
 
 > **성격:** 변경 드문 정적 데이터. 에이전트가 소스 태그 작성 시 참조.
 > **갱신:** 새로운 소스 추가 또는 접근성 등급 변경 시만 수동 업데이트
@@ -104,9 +104,32 @@ type: static
 | # | 소스 | API 엔드포인트 | 용도 | 접근성 |
 |---|------|---------------|------|-------|
 | 38 | **CNN Fear & Greed** (주식) | `production.dataviz.cnn.io/index/fearandgreed/graphdata` | 미국 주식 7지표 종합 (S&P 모멘텀, 풋콜 비율, 정크본드 스프레드 등) | 🟢 |
-| 39 | **Alternative.me Crypto F&G** | `api.alternative.me/fng/?limit=1` | 크립토 변동성·거래량·SNS·도미넌스·검색트렌드 | 🟢 |
+| 39 | **Alternative.me Crypto F&G** | `api.alternative.me/fng/?limit=N` | 크립토 변동성·거래량·SNS·도미넌스·검색트렌드 | 🟢 |
 
 > 자동 페치: [`web/scripts/fetch_fear_greed.mjs`](../web/scripts/fetch_fear_greed.mjs) (Vercel 빌드 prebuild 단계). 출력: `knowledge-base/market/fear_greed.json`. 대시보드 최상단 위젯에서 표시.
+
+### ■ 매크로 1차 소스 + 인사이더 시그널 + 시각화
+
+| # | 소스 | API/URL | 용도 | 접근성 |
+|---|------|---------|------|-------|
+| 40 | **FRED** (St. Louis Fed) | `api.stlouisfed.org/fred/series/observations` | 80만+ 매크로 시계열 (10Y T-bond, Core PCE, NFP, M2, VIX, 하이일드 스프레드, 2Y-10Y 등). DCF 할인율·레짐 판정·KB macro 자동 갱신의 1차 소스 | 🟢 (무료 API key) |
+| 41 | **openinsider.com** | `openinsider.com/latest-cluster-buys` (HTML) | SEC Form 4 인사이더 매수 시그널 — Cluster Buys (3+ 인사이더 동시 매수) 시차 0일. Dataroma 13F (45일 시차) 보완 | 🟢 |
+| 42 | **finviz S&P 500 Map** | `finviz.com/map.ashx?t=sec[&st=ytd|y1]` | S&P 500 섹터·종목 히트맵 (실시간/1주/YTD/1년) — 대시보드 클릭 모달 임베드 | 🟢 |
+
+> FRED 자동 페치: [`web/scripts/fetch_fred.mjs`](../web/scripts/fetch_fred.mjs). 환경변수 `FRED_API_KEY` 필요. 키 미설정 시 위젯이 등록 가이드 표시.
+> openinsider 자동 페치: [`web/scripts/fetch_openinsider.mjs`](../web/scripts/fetch_openinsider.mjs). HTML 파싱, API 없음.
+> finviz: 클라이언트 iframe 임베드 (백엔드 호출 없음). X-Frame-Options 헤더 없음 확인 (2026-05-07).
+
+### 종목 분석 시스템에서 FRED 활용 매핑 (v3.4 신규)
+
+| 에이전트 | 사용 시리즈 | 효용 |
+|---------|------------|------|
+| financial-analyst | DGS10, T10YIE | DCF 할인율·ERP 일관성 |
+| risk-analyst | T10Y2Y, UNRATE, BAMLH0A0HYM2, VIXCLS | 침체 확률·리스크 프리미엄 정량화 |
+| business-analyst | INDPRO, GDPC1, CPIAUCSL | 산업 사이클·수요 측 동향 |
+| momentum-analyst | DTWEXBGS (USD), M2SL | 매크로 모멘텀 컨텍스트 |
+| scorecard-strategist | 전체 카테고리 | 거시 레짐 점수 → 섹터 가중치 동적 조정 |
+| kb-updater | 전체 (자동) | macro/*.md 8개 파일 자동 갱신 |
 
 ---
 
@@ -120,7 +143,7 @@ type: static
 
 ### 🟢 직접 접근 가능 목록
 
-Yahoo Finance, Investing.com, Finviz, CoinGecko, DeFiLlama, Macrotrends, Barchart, Reuters, GeekNews, The Verge, 전자신문, ScienceDaily, Seeking Alpha (일부), TradingView (일부), CSIS, Brookings, PIIE, Wired, **CNN Fear & Greed**, **Alternative.me Crypto F&G**
+Yahoo Finance, Investing.com, Finviz, CoinGecko, DeFiLlama, Macrotrends, Barchart, Reuters, GeekNews, The Verge, 전자신문, ScienceDaily, Seeking Alpha (일부), TradingView (일부), CSIS, Brookings, PIIE, Wired, **CNN Fear & Greed**, **Alternative.me Crypto F&G**, **FRED API (key 필요)**, **openinsider.com**, **finviz S&P 500 Map**
 
 ### 🟡 간접 접근 목록
 

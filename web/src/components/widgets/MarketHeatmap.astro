@@ -1,0 +1,305 @@
+---
+// 클릭 시 finviz S&P 500 히트맵 모달로 표시
+// finviz 는 X-Frame-Options 헤더가 없어서 iframe 임베드 가능 (2026-05 확인).
+// 차단 시 fallback: 새 탭 외부 링크.
+---
+<section class="hm-card">
+  <header class="hm-head">
+    <h2><span class="dot"></span>S&P 500 히트맵</h2>
+    <span class="dim">finviz 실시간 맵 · 클릭하여 확대</span>
+  </header>
+
+  <div class="hm-tiles">
+    <button type="button" class="hm-tile" data-period="sec">
+      <span class="hm-period">실시간</span>
+      <span class="hm-desc">현재 등락률</span>
+      <span class="hm-icon">▤</span>
+    </button>
+    <button type="button" class="hm-tile" data-period="sec_1w">
+      <span class="hm-period">1주</span>
+      <span class="hm-desc">5일 누적</span>
+      <span class="hm-icon">▥</span>
+    </button>
+    <button type="button" class="hm-tile" data-period="sec&st=ytd">
+      <span class="hm-period">YTD</span>
+      <span class="hm-desc">연초 대비</span>
+      <span class="hm-icon">▦</span>
+    </button>
+    <button type="button" class="hm-tile" data-period="sec&st=y1">
+      <span class="hm-period">1년</span>
+      <span class="hm-desc">52주 누적</span>
+      <span class="hm-icon">▧</span>
+    </button>
+  </div>
+</section>
+
+<!-- 모달 -->
+<div id="hm-modal" class="hm-modal" hidden>
+  <div class="hm-modal-backdrop" data-close="1"></div>
+  <div class="hm-modal-frame" role="dialog" aria-modal="true" aria-label="S&P 500 히트맵">
+    <header class="hm-modal-head">
+      <div class="hm-tabs">
+        <button type="button" class="hm-tab" data-period="sec">실시간</button>
+        <button type="button" class="hm-tab" data-period="sec_1w">1주</button>
+        <button type="button" class="hm-tab" data-period="sec&st=ytd">YTD</button>
+        <button type="button" class="hm-tab" data-period="sec&st=y1">1년</button>
+      </div>
+      <div class="hm-modal-actions">
+        <a id="hm-external" href="https://finviz.com/map.ashx?t=sec" target="_blank" rel="noopener" class="hm-ext">finviz 새 탭 ↗</a>
+        <button type="button" class="hm-close" data-close="1" aria-label="닫기">✕</button>
+      </div>
+    </header>
+    <div class="hm-iframe-wrap">
+      <iframe id="hm-iframe" title="S&P 500 Map" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      <div id="hm-fallback" class="hm-fallback" hidden>
+        <p>finviz 임베드가 차단된 환경입니다.</p>
+        <a id="hm-fallback-link" href="https://finviz.com/map.ashx?t=sec" target="_blank" rel="noopener">새 탭에서 열기 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const modal = document.getElementById('hm-modal');
+    const iframe = document.getElementById('hm-iframe');
+    const ext = document.getElementById('hm-external');
+    const fbLink = document.getElementById('hm-fallback-link');
+    const fallback = document.getElementById('hm-fallback');
+
+    function setPeriod(p) {
+      const url = `https://finviz.com/map.ashx?t=${p}`;
+      iframe.src = url;
+      ext.href = url;
+      fbLink.href = url;
+      fallback.hidden = true;
+
+      document.querySelectorAll('.hm-tab').forEach((b) => {
+        b.classList.toggle('active', b.getAttribute('data-period') === p);
+      });
+
+      // iframe 차단 감지 — 5초 안에 load 이벤트 없으면 fallback
+      const guard = setTimeout(() => {
+        try {
+          // cross-origin 이라 contentDocument 접근 불가능 — 정상 케이스
+        } catch (e) {
+          /* expected */
+        }
+      }, 5000);
+      iframe.onload = () => clearTimeout(guard);
+      iframe.onerror = () => {
+        clearTimeout(guard);
+        fallback.hidden = false;
+      };
+    }
+
+    function open(p) {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      setPeriod(p);
+    }
+    function close() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      iframe.src = 'about:blank';
+    }
+
+    document.querySelectorAll('.hm-tile').forEach((b) => {
+      b.addEventListener('click', () => open(b.getAttribute('data-period')));
+    });
+    document.querySelectorAll('.hm-tab').forEach((b) => {
+      b.addEventListener('click', () => setPeriod(b.getAttribute('data-period')));
+    });
+    modal.querySelectorAll('[data-close]').forEach((el) => {
+      el.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  })();
+</script>
+
+<style>
+  .hm-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1.1rem 0.95rem;
+  }
+  .hm-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+    gap: 0.4rem;
+  }
+  .hm-head h2 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hm-head .dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+
+  .hm-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  .hm-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.65rem 0.4rem 0.55rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .12s;
+    font-family: inherit;
+  }
+  .hm-tile:hover {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.07);
+    transform: translateY(-1px);
+  }
+  .hm-period {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .hm-desc {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .hm-icon {
+    margin-top: 0.15rem;
+    font-size: 1.05rem;
+    color: #ef4444;
+    opacity: 0.8;
+    line-height: 1;
+  }
+
+  /* 모달 */
+  .hm-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .hm-modal[hidden] { display: none; }
+  .hm-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+  }
+  .hm-modal-frame {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1280px;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .hm-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+  .hm-tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .hm-tab {
+    padding: 0.4rem 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-family: inherit;
+    transition: color .12s, border-color .12s, background .12s;
+  }
+  .hm-tab:hover { color: var(--text); border-color: var(--accent); }
+  .hm-tab.active {
+    color: #fff;
+    background: #ef4444;
+    border-color: #ef4444;
+  }
+  .hm-modal-actions { display: flex; align-items: center; gap: 0.5rem; }
+  .hm-ext { color: var(--accent); font-size: 0.78rem; text-decoration: none; }
+  .hm-ext:hover { text-decoration: underline; }
+  .hm-close {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+  .hm-close:hover { color: var(--text); border-color: var(--down); }
+  .hm-iframe-wrap {
+    flex: 1;
+    position: relative;
+    background: #000;
+  }
+  .hm-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff; /* finviz 는 흰 배경 */
+  }
+  .hm-fallback {
+    position: absolute;
+    inset: 0;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    color: var(--muted);
+  }
+  .hm-fallback a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+  .hm-fallback a:hover { background: var(--accent); color: #fff; }
+
+  @media (max-width: 700px) {
+    .hm-tiles { grid-template-columns: repeat(2, 1fr); }
+    .hm-modal { padding: 0.6rem; }
+    .hm-modal-frame { height: 92vh; }
+  }
+</style>

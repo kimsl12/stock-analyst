@@ -1,0 +1,215 @@
+---
+import kb from '../../data/kb.json';
+
+interface Series {
+  id: string;
+  label: string;
+  unit: string;
+  cat: string;
+  desc: string;
+  date: string;
+  value: number;
+  prev_1w?: number | null;
+  prev_1m?: number | null;
+  prev_1y?: number | null;
+  yoy_pct?: number | null;
+  diff_1m?: number | null;
+}
+
+const fredAny = (kb as any).fred;
+const fred = fredAny ?? { available: false, series: [], updated_at: null, api_key_required: true };
+const series: Series[] = fred.series ?? [];
+const updated = fred.updated_at;
+
+// 카테고리 순서
+const CAT_ORDER = ['rates', 'inflation', 'jobs', 'growth', 'fx', 'risk'];
+const CAT_LABEL: Record<string, string> = {
+  rates: '금리·통화',
+  inflation: '인플레이션',
+  jobs: '고용',
+  growth: '경제성장',
+  fx: '환율',
+  risk: '리스크',
+};
+
+const grouped = new Map<string, Series[]>();
+for (const cat of CAT_ORDER) grouped.set(cat, []);
+for (const s of series) {
+  if (!grouped.has(s.cat)) grouped.set(s.cat, []);
+  grouped.get(s.cat)!.push(s);
+}
+
+function fmtVal(s: Series): string {
+  const v = s.value;
+  if (s.id === 'M2SL') return `$${(v / 1000).toFixed(2)}T`; // billions → trillions
+  if (s.id === 'PAYEMS') return `${v.toLocaleString('en-US', { maximumFractionDigits: 0 })}K`;
+  if (s.unit === '%' || s.unit === '%p') return `${v.toFixed(2)}%`;
+  if (s.unit === 'pt') return v.toFixed(2);
+  if (s.unit === 'YoY%' && s.yoy_pct != null) return `${s.yoy_pct >= 0 ? '+' : ''}${s.yoy_pct.toFixed(1)}%`;
+  if (s.unit === 'K' && s.diff_1m != null) return `${s.diff_1m >= 0 ? '+' : ''}${s.diff_1m}K`;
+  return v.toFixed(2);
+}
+
+function fmtDelta(s: Series): { txt: string; tone: 'up' | 'down' | 'flat' } {
+  // 일반 시리즈: 1주 변화
+  if (s.prev_1w != null && s.prev_1w !== 0) {
+    const d = s.value - s.prev_1w;
+    const dPct = (d / Math.abs(s.prev_1w)) * 100;
+    const tone = Math.abs(dPct) < 0.5 ? 'flat' : dPct > 0 ? 'up' : 'down';
+    return { txt: `${d >= 0 ? '+' : ''}${d.toFixed(2)}`, tone };
+  }
+  return { txt: '—', tone: 'flat' };
+}
+---
+<section class="macro-card">
+  <header class="card-head">
+    <h2><span class="dot"></span>매크로 지표 — FRED</h2>
+    <span class="dim">
+      {fred.api_key_required ? (
+        <span class="warn-msg">API 키 미설정</span>
+      ) : (
+        updated ? `갱신: ${updated.slice(0, 16).replace('T', ' ')}` : '데이터 없음'
+      )}
+    </span>
+  </header>
+
+  {fred.api_key_required ? (
+    <div class="setup">
+      <p>
+        <strong>FRED API 키 필요</strong> (무료, 2분 가입). St. Louis Fed 가 제공하는 80만+ 매크로 시계열의 1차 소스입니다.
+      </p>
+      <ol>
+        <li><a href="https://fredaccount.stlouisfed.org/login/secure/" target="_blank" rel="noopener">FRED 계정 생성 →</a></li>
+        <li>대시보드에서 <strong>API Keys</strong> 메뉴 → 새 키 발급</li>
+        <li><code>web/.env</code> 또는 환경변수에 <code>FRED_API_KEY=발급받은키</code> 추가</li>
+        <li>다음 빌드부터 자동으로 데이터 흐름</li>
+      </ol>
+    </div>
+  ) : series.length === 0 ? (
+    <p class="empty">FRED 데이터 없음. <code>node web/scripts/fetch_fred.mjs</code> 로 페치하세요.</p>
+  ) : (
+    <div class="cats">
+      {Array.from(grouped.entries()).filter(([, items]) => items.length > 0).map(([cat, items]) => (
+        <div class="cat">
+          <h3>{CAT_LABEL[cat] ?? cat}</h3>
+          <div class="rows">
+            {items.map((s: Series) => {
+              const delta = fmtDelta(s);
+              return (
+                <div class="row" title={s.desc}>
+                  <div class="row-label">
+                    <span class="ser-label">{s.label}</span>
+                    <span class="ser-id">{s.id}</span>
+                  </div>
+                  <div class="row-vals">
+                    <span class="ser-value">{fmtVal(s)}</span>
+                    <span class:list={['ser-delta', delta.tone]}>{delta.txt}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .macro-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1.1rem 0.85rem;
+  }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .card-head h2 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .card-head .dot {
+    width: 8px;
+    height: 8px;
+    background: #38bdf8;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .dim { color: var(--dim); font-size: 0.75rem; }
+  .warn-msg { color: var(--warn); }
+  .empty { color: var(--muted); padding: 1rem; text-align: center; font-size: 0.85rem; }
+  .empty code { font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 0.78rem; background: var(--surface-2); padding: 0.1rem 0.35rem; border-radius: 4px; }
+
+  .setup {
+    background: var(--surface-2);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .setup ol { margin: 0.6rem 0 0 1.2rem; padding: 0; }
+  .setup li { margin-bottom: 0.25rem; }
+  .setup a { color: var(--accent); }
+  .setup code {
+    font-family: 'SF Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.78rem;
+    background: var(--surface);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .cats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.7rem;
+  }
+  .cat {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.55rem 0.7rem 0.7rem;
+  }
+  .cat h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .rows { display: flex; flex-direction: column; gap: 0.25rem; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.8rem;
+  }
+  .row:last-child { border-bottom: none; }
+  .row-label { display: flex; align-items: baseline; gap: 0.35rem; min-width: 0; }
+  .ser-label { color: var(--text); font-weight: 500; }
+  .ser-id { color: var(--dim); font-size: 0.65rem; font-family: ui-monospace, Menlo, monospace; }
+  .row-vals { display: flex; align-items: baseline; gap: 0.4rem; flex-shrink: 0; }
+  .ser-value { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); }
+  .ser-delta { font-size: 0.7rem; font-variant-numeric: tabular-nums; }
+  .ser-delta.up { color: var(--up); }
+  .ser-delta.down { color: var(--down); }
+  .ser-delta.flat { color: var(--dim); }
+</style>
