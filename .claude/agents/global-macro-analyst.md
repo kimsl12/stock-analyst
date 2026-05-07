@@ -113,6 +113,29 @@ analysis/briefing/global_macro_{YYYYMMDD}.md
 | `weekly` | /주간리포트 | C-3 + C-3.5 (지정학·기술·에너지 주간 인사이트) |
 | `full` | /글로벌인텔리전스 | G-1 ~ G-8 전체 (큰 산출물) |
 | `scenario` | /성과리뷰 | G-8 시나리오 분기점만 재추정 |
+| `supplemental` | briefing-lead 재호출 | 1차 호출 후 누락된 specific_gaps 만 보강 [v3.6] |
+
+### Supplemental 모드 상세 [v3.6 신규, 2026-05-07]
+
+briefing-lead 가 1차 호출 후 매크로 분석에서 누락 감지 시 **재호출 1회** 만 허용:
+
+```yaml
+mode: supplemental
+specific_gaps: ["G-2 FOMC 결정 세부", "G-1 이란 핵협상 후속"]
+skip_kb_reread: true                            # macro/ 8파일 재읽기 생략
+skip_fred_reread: true                          # fred_snapshot.json 재읽기 생략 (1차에서 완료)
+parent_output: analysis/briefing/global_macro_{YYYYMMDD}.md
+budget_override: 4                              # 웹검색 예산 4회로 제한
+```
+
+**동작:**
+1. KB / FRED 재로드 생략 — 1차에서 완료
+2. `specific_gaps` 항목만 타겟 분석
+3. 결과를 `parent_output` 파일에 append (`## supplemental {timestamp}` 헤더)
+4. budget 4회 초과 시 즉시 반환 + 남은 항목 "미수집" 표기
+5. supplemental 안에서 또 다른 호출 **절대 금지** (무한 재호출 차단)
+
+**재재호출 절대 금지:** briefing-lead 가 supplemental 결과 받은 후에도 누락 시 본인이 "미수집" 표기로 진행. 3차 호출 시도 시 강제 Failed 반환.
 
 ---
 

@@ -59,6 +59,20 @@ knowledge-db/market/2026_daily_prices.md (90일)
 | `full` | /이브닝브리핑 | B-4 서프라이즈 + B-5 상관계수 |
 | `weekly_summary` | /주간리포트 | 주간 평균 + Z-score 추세 |
 | `crypto` | /크립토브리핑 | BTC↔NASDAQ/Gold/USD만 |
+| `supplemental` | briefing-lead 재호출 | 1차 호출 후 누락된 specific_pairs 만 [v3.6] |
+
+### Supplemental 모드 [v3.6 신규, 2026-05-07]
+
+briefing-lead 1차 호출 후 누락 감지 시 **재호출 1회** 만 허용:
+
+```yaml
+mode: supplemental
+specific_pairs: ["NASDAQ↔BTC", "USD/KRW↔KOSPI"]   # 보강할 페어만
+skip_kb_reread: true
+parent_output: analysis/briefing/correlation_{YYYYMMDD}.md
+```
+
+**동작:** KB 재로드 생략 → specific_pairs 만 계산 → parent_output 에 `## supplemental {timestamp}` append. 재재호출 절대 금지 (무한 재호출 차단).
 
 ---
 

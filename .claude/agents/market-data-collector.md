@@ -90,6 +90,28 @@ knowledge-base/_index.md P0 섹션 자동 갱신
 - **자동**: 리드가 Phase 0-A에서 `target_date`, `region_focus`, `include_13f` 전달
 - **수동**: `/시장데이터수집` (전체) | `/시장데이터수집 미국` | `/시장데이터수집 13F`
 
+### Supplemental 모드 [v3.6 신규, 2026-05-07]
+
+briefing-lead 가 1차 호출 후 데이터 누락을 감지하면 **재호출 1회** 만 허용. 재호출 시 다음 파라미터 셋 전달:
+
+```yaml
+mode: supplemental
+specific_gaps: ["SP500 close", "10Y T-Bond"]   # 보강할 항목만 명시
+skip_kb_reread: true                            # KB·reference/* 재읽기 생략
+skip_step0_network: true                        # Step 0 네트워크 확인 생략
+budget_override: 5                              # 웹검색 예산 5회로 강제
+parent_call_id: market_data_{YYYYMMDD}          # 1차 호출 결과 파일명
+```
+
+**supplemental 모드 동작:**
+1. KB 재읽기 / Step 0 네트워크 확인 / FRED 우선 처리 **모두 생략** (1차에서 완료)
+2. `specific_gaps` 항목만 타겟 검색
+3. 결과를 1차 산출물 파일에 **append** (덮어쓰기 금지) — 헤더 `## supplemental {timestamp}`
+4. budget 5회 초과 시 즉시 반환 (남은 항목은 "재시도 한계 — 미수집" 표기)
+5. supplemental 호출 안에서 또 다른 supplemental 트리거 **절대 금지** (무한 반복 차단)
+
+**재재호출 (3차 호출) 절대 금지:** briefing-lead 가 supplemental 받은 후에도 누락 발견 시 본인이 "미수집" 표기로 진행해야 함. 호출 막히면 Failed 반환 → briefing-lead 가 본문에 명시 후 진행.
+
 ---
 
 ## Step 0: 네트워크 환경 확인 [v3.2 신규]
