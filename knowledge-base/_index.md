@@ -60,6 +60,8 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-08 | 모닝브리핑 | NFP D-Day: 실업수당 189K(56년 최저) vs ISM 고용 46.4%(2026 최저) 이중성 해소. 제조업 AI 대체 가속 첫 사이클 여부 확인. S&P 7,337(-0.38%), WTI $96.94(+1.96%) 이란 반등 | `market/daily_snapshot.md, market/surprise_index.md` | 진행중 |
+| 2026-05-08 | 모닝브리핑 | 이란 합의 "발표 vs 이행" 간극 — WTI $93→$97 반등으로 시장 40% 불발 가격 반영 확인. ISM 서비스 가격 70.7%가 에너지와 독립적 Core 인플레 고착 시사. 5/12 CPI Core가 진짜 판별자 | `macro/geopolitics.md, macro/us_economy.md` | 진행중 |
 | 2026-05-07 | 이브닝브리핑 | 이란 핵 포기 선언 — Trump 발표, 이란측 미확인. 닛케이 +5.60%(역대 최대), KOSPI 7,490 재신고가, WTI $93.46(-$2.20). "발표 vs 이행" 간극 40% 불발 확률 — 시장 과도 선반영 주의 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-07 | 이브닝브리핑 | ISM 서비스 가격 70.7%(2022년 이후 최고) — 이란 합의와 독립된 Core 인플레 시한폭탄. 에너지 CPI 하락이 헤드라인 가리겠으나 Core PCE 3.2%는 쉽게 하락 불가. 5/14 CPI 체크포인트 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
 | 2026-05-07 | 이브닝브리핑 | AMD Q1 Beat (EPS $0.96, 데이터센터 +42% YoY) + ARM Beat + 실업수당 189K(56년 최저) — 미국 서프라이즈 +0.72 상향. 반도체 AI capex 사이클 지속 확인. McDonald's Miss로 K자형 양극화 | `market/surprise_index.md, market/daily_snapshot.md` | 진행중 |
