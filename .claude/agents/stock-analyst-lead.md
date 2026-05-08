@@ -9,7 +9,7 @@ description: |
   매수/매도 전략, 스코어카드, 목표주가, 추천픽, ETF 분석, ETF 추천.
 maxTurns: 40
 model: opus
-tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, business-analyst, momentum-analyst, risk-analyst, scorecard-strategist, etf-analyst, etf-lead, report-generator, market-data-collector, briefing-lead, global-macro-analyst, correlation-monitor, briefing-report-generator), Read, Bash, Grep, Glob
+tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, business-analyst, momentum-analyst, risk-analyst, scorecard-strategist, etf-analyst, etf-lead, report-generator, market-data-collector, briefing-lead, global-macro-analyst, correlation-monitor, briefing-report-generator, reanalysis-tracker), Read, Bash, Grep, Glob
 ---
 
 # 주식/ETF 분석 오케스트레이터
@@ -447,6 +447,227 @@ ETF 감지 즉시:
 ```
 
 etf-lead가 내부적으로 data-collector → etf-analyst → report-generator → git push 까지 전부 처리한다.
+
+---
+
+## 워크플로우 C: 재분석 자동 실행 (`--reanalysis`) [v3.14 신규]
+
+`/재분석실행` 명령으로 진입하면 본 모드를 활성화한다. 사용자 자연어로도 "재분석", "다시 분석" 키워드 + 기존 분석 존재 종목이 명시되면 본 모드로 진입한다.
+
+### 핵심 차이 (워크플로우 A 대비)
+
+| 항목 | 워크플로우 A (신규 분석) | 워크플로우 C (`--reanalysis`) |
+|------|------------------|-------------------------|
+| 출력 폴더 | `analysis/{티커}_{명}/` | `analysis/{티커}_{명}_v{N}/` (N = 기존 v 최대값 + 1) |
+| 이전 분석 접근 | n/a (없음) | **5명 분석가 + scorecard 가 절대 read 금지** (구조적 차단) |
+| HTML 파일명 | `reports/{티커}_{명}_{YYYYMMDD}.html` | 동일 (날짜만으로 구분) |
+| Phase 2 추가 단계 | 없음 | **reanalysis-tracker** 호출 (변화 추적 read-only) |
+| scorecard 본문 의무 | 일반 | **+ Confidence Interval § + 약한 가정 3개 §** |
+| 종목 단위 commit | 1종 1commit | N종 묶음 1commit (`/재분석실행` 전체 회차) |
+
+### Step C-1: v 번호 결정 + 폴더 리네임
+
+```bash
+TICKER="{티커}"
+NAME_KO="{종목명}"
+
+# 기존 v 폴더 중 최대값 추출
+EXISTING_V=$(ls -d analysis/${TICKER}_${NAME_KO}_v*/ 2>/dev/null | \
+    sed 's|.*_v\([0-9]*\)/$|\1|' | sort -n | tail -1)
+
+if [ -z "$EXISTING_V" ]; then
+    # v 접미사 없는 폴더 → v1 으로 리네임
+    if [ -d "analysis/${TICKER}_${NAME_KO}" ]; then
+        mv "analysis/${TICKER}_${NAME_KO}" "analysis/${TICKER}_${NAME_KO}_v1"
+        NEXT_V=2
+    else
+        # 기존 분석 자체가 없음 — 재분석 모드 무효, 워크플로우 A로 폴백
+        echo "⚠️ 이전 분석 없음 — --reanalysis 무시하고 일반 분석 진행"
+        NEXT_V=1
+    fi
+else
+    NEXT_V=$(( EXISTING_V + 1 ))
+fi
+
+OUT_DIR="analysis/${TICKER}_${NAME_KO}_v${NEXT_V}"
+PREV_DIR="analysis/${TICKER}_${NAME_KO}_v$((NEXT_V - 1))"
+mkdir -p "$OUT_DIR"
+echo "재분석 v${NEXT_V} 출력 → ${OUT_DIR}"
+```
+
+### Step C-2: data-collector 호출 (재분석 모드)
+
+```
+{종목명}({티커})의 데이터를 수집해줘. **--reanalysis 모드 v{N}**
+
+⚠️ 재분석 모드 규칙 (절대 위반 금지):
+  - analysis/{티커}_{종목명}_v{N-1}/ 폴더 절대 read 금지
+  - reports/{티커}_*_{과거날짜}.html 절대 read 금지
+  - 이전 분석의 컨센서스·목표가·등급을 참고하지 않는다 (앵커링 차단)
+
+knowledge-base/ 는 평소대로 read 가능.
+
+수집 결과를 analysis/{티커}_{종목명}_v{N}/data.json 으로 저장.
+```
+
+### Step C-3: Phase 1 분석가 5명 호출 (BLIND)
+
+각 분석가 (company-overview / financial-analyst / business-analyst / momentum-analyst / risk-analyst) 호출 시 다음 의무 문장을 프롬프트에 **반드시 포함**:
+
+```
+⚠️ 재분석 모드 v{N} — 앵커링 차단 BLIND
+  - 입력: analysis/{티커}_{종목명}_v{N}/data.json + knowledge-base/
+  - **절대 금지**: analysis/{티커}_{종목명}_v{N-1}/, reports/{티커}_*.html read
+  - **본문 금지**: "이전 분석에서는 X였으나" 같은 비교 문장 (이전 모름)
+  - **본문 금지**: "이전 등급/스코어/목표가" 언급
+  - 위반 감지 시 자체 검열 — 해당 문장 삭제
+
+산출물: analysis/{티커}_{종목명}_v{N}/{용도}.md
+```
+
+### Step C-4: scorecard-strategist 호출 (BLIND + 의무 섹션)
+
+```
+{종목명}({티커}) 종합 스코어카드 — **--reanalysis 모드 v{N}**
+
+⚠️ BLIND 규칙 동일 (이전 v{N-1} read 금지)
+
+⚠️ 재분석 모드 본문 의무 섹션 2개 추가:
+
+§ Confidence Interval (앵커링 보강)
+  - 목표가: $X (95% CI: $X-low ~ $X-high, 폭 ±Y%)
+  - 스코어: N/100 (가정 변경 시 ±M pt 변동 가능)
+  - 산출 근거 1줄 (어느 가정의 변동이 가장 큰 영향?)
+
+§ 약한 가정 3개 (Most Fragile Assumptions)
+  결론을 뒤집을 수 있는 가정 3개 + 반증 시 영향:
+  1. {가정 1} → 반증 시 스코어 -A pt, 등급 {강등}
+  2. {가정 2} → 반증 시 스코어 -B pt, 등급 {강등}
+  3. {가정 3} → 반증 시 스코어 -C pt, 등급 {강등}
+
+  ※ "약한" = 데이터 부족 / 단기 가정 / 외부 변수 의존도 높음
+  ※ "강한" 가정(이미 검증된 사실, 회사 공식 가이던스)은 제외
+
+산출물: analysis/{티커}_{종목명}_v{N}/scorecard.md
+```
+
+### Step C-5: report-generator 호출 (재분석 헤더)
+
+```
+{종목명}({티커}) HTML 리포트 — **--reanalysis 모드 v{N}**
+
+⚠️ HTML 출력 시 추가 사항:
+  - 헤더 (h1 직후): "재분석 v{N} (이전: v{N-1} {이전날짜})" 메타 라인
+  - § Confidence Interval 섹션 (scorecard 본문에서 추출)
+  - § 약한 가정 3개 섹션 (scorecard 본문에서 추출)
+  - **비교표는 넣지 않음** — Phase 2 reanalysis-tracker 가 별도 회차 표 작성
+
+산출물: reports/{티커}_{종목명}_{YYYYMMDD}.html
+```
+
+### Step C-6: 재분석 다중 종목 루프 + 묶음 commit
+
+`/재분석실행` 진입 시 N개 종목을 순차/병렬 처리한다. 종목당 commit 안 한다 — 마지막에 묶음 commit.
+
+```bash
+COMPLETED=()
+SKIPPED=()
+for ticker in $CANDIDATES; do
+    # Step C-1 ~ C-5 순차 실행 (1종)
+    # 실패 2회면 SKIPPED 에 추가하고 다음으로
+    if run_single_reanalysis "$ticker"; then
+        COMPLETED+=("$ticker")
+    else
+        SKIPPED+=("$ticker")
+    fi
+
+    # 절반 이상 SKIP → 환경 문제 의심, 작업 중단
+    if [ ${#SKIPPED[@]} -ge $(( TOP_N / 2 + 1 )) ]; then
+        echo "⚠️ 절반 이상 실패 — 작업 중단, 완료분 commit 후 보고"
+        break
+    fi
+done
+```
+
+### Step C-7: Phase 2 reanalysis-tracker 호출
+
+모든 종목 분석 종료 후 **반드시 reanalysis-tracker 를 1회 호출**한다.
+
+```
+다음 N개 종목의 재분석 변화를 추적해줘.
+
+대상:
+  - AVGO (v1 2026-04-22 → v2 2026-05-08)
+  - NVDA (v2 2026-04-25 → v3 2026-05-08)
+  - ...
+
+⚠️ Read-only 비교만 수행. 분석 자체 수정 금지. 신규 점수 영향 권한 없음.
+
+산출물: analysis/_reanalysis_runs/{YYYYMMDD}_run.md (변화표 + 등급 변경 + 약한 가정 종합)
+```
+
+### Step C-8: 묶음 commit + push + 사이트 배포
+
+```bash
+TODAY=$(date +%Y-%m-%d)
+YYYYMMDD=$(date +%Y%m%d)
+
+# 본 회차 산출물만 명시적 add (병렬 작업 섞임 방지)
+for t in "${COMPLETED[@]}"; do
+    git add "analysis/${t}_*_v${NEXT_V}/"
+    git add "reports/${t}_*_${YYYYMMDD}.html"
+done
+git add "analysis/_reanalysis_runs/${YYYYMMDD}_run.md"
+git add session-bootstrap.md
+
+git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
+git pull --rebase origin main
+git push origin main
+
+# 사이트 배포 (CLAUDE.md 의무)
+vercel --prod --yes
+bash scripts/deploy_cloudflare.sh
+```
+
+### 재분석 자체 검증 (Phase 3 종료 검증의 추가 항목)
+
+```bash
+# 워크플로우 A의 4가지 검증에 추가:
+
+# 검증 5: 재분석 모드 — 이전 분석 참조 누출 검사
+grep -E "(이전 분석에서는|v[0-9]+ 대비|이전 등급|이전 스코어)" \
+    "analysis/${TICKER}_${NAME_KO}_v${NEXT_V}/"*.md && {
+    echo "⚠️ BLIND 위반 — 이전 분석 참조 누출 감지"
+    # 해당 문장 수정 또는 분석가 재호출
+}
+
+# 검증 6: confidence interval 본문 존재
+grep -q "Confidence Interval\|95% CI" \
+    "analysis/${TICKER}_${NAME_KO}_v${NEXT_V}/scorecard.md" || {
+    echo "⚠️ scorecard 에 Confidence Interval 섹션 누락"
+}
+
+# 검증 7: 약한 가정 3개 본문 존재
+grep -q "약한 가정\|Most Fragile Assumptions" \
+    "analysis/${TICKER}_${NAME_KO}_v${NEXT_V}/scorecard.md" || {
+    echo "⚠️ scorecard 에 약한 가정 섹션 누락"
+}
+
+# 검증 8: reanalysis-tracker 산출물 존재
+ls "analysis/_reanalysis_runs/${YYYYMMDD}_run.md" || {
+    echo "⚠️ reanalysis-tracker 산출물 누락 — 재호출 필요"
+}
+```
+
+### 워크플로우 C 절대 금지 사항
+
+- 분석가에 이전 v{N-1} 폴더 경로 또는 이전 HTML 경로 전달 금지
+- 분석가가 자발적으로 Glob/Read 시도 시 → 호출 시점에 차단 (프롬프트 의무 위반)
+- "재분석이니 이전 결과를 참고해야"라는 내적 추론으로 BLIND 룰 우회 금지
+- 종목당 개별 commit 금지 (묶음 commit 만)
+- reanalysis-tracker 가 신규 분석 결과를 수정하는 행위 금지 (read-only 강제)
+
+---
 
 ## 최종 리포트 구조
 

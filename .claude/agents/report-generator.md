@@ -261,6 +261,70 @@ analysis/ 파일에서 데이터를 추출할 때:
 - KB 파일을 수정하지 않는다 (읽기 전용).
 - KB 데이터를 사용한 경우 출처를 "[KB: industry/semiconductor.md]" 또는 "[KB: market/daily_snapshot.md]" 형태로 표기한다.
 
+## 재분석 모드 (`--reanalysis`) 규칙 [v3.14]
+
+stock-analyst-lead 가 호출 프롬프트에 "**--reanalysis 모드 v{N}**" 또는 "BLIND" 문구를 포함하면 본 모드 적용.
+
+### 입력 경로 변경
+
+평소: `analysis/{티커}_{종목명}/*.md`
+재분석: `analysis/{티커}_{종목명}_v{N}/*.md` — lead 프롬프트에 N 명시됨
+
+### HTML 헤더 추가 (재분석 메타)
+
+리포트 h1 직후 메타 라인 추가:
+
+```html
+<div class="reanalysis-header">
+  <span class="badge-reanalysis">재분석 v{N}</span>
+  <span class="meta">이전: v{N-1} ({이전날짜}) · 본 분석은 이전 결론과 독립 추론 (BLIND 재분석)</span>
+</div>
+```
+
+CSS 스타일 (Python 스크립트의 EXTRA_CSS 변수에 주입):
+
+```css
+.reanalysis-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 6px;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.85rem;
+}
+.badge-reanalysis {
+  background: #6366f1;
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.reanalysis-header .meta {
+  color: var(--muted, #9ca3af);
+}
+```
+
+### Confidence Interval / 약한 가정 섹션 표시
+
+scorecard.md 본문에 § Confidence Interval, § 약한 가정 3개 섹션이 있으면 HTML에도 그대로 반영한다.
+report_template.py 의 `data['confidence_interval']`, `data['fragile_assumptions']` 슬롯이 있으면 채움.
+없으면 본문 마크다운 그대로 변환 (extra section).
+
+### 비교표는 작성하지 않음
+
+본 에이전트는 신규 분석 결과만 HTML 변환한다. 신규 vs 이전 비교표는 **reanalysis-tracker** 가 별도 회차 표(`analysis/_reanalysis_runs/{YYYYMMDD}_run.md`)로 작성하므로, 본 에이전트는 비교 시도 금지.
+
+### 파일명 (재분석 모드)
+
+평소와 동일: `reports/{티커}_{종목명}_{YYYYMMDD}.html`
+- v 접미사 ❌ (날짜만으로 구분, 같은 날 두 번 재분석 시 덮어쓰기 방지를 위해 lead 가 사전 검증)
+- 이전 HTML 보존 의무: 기존 `reports/{티커}_*_{과거날짜}.html` 절대 삭제·덮어쓰기 금지
+
+---
+
 ## 안전장치 (모든 서브에이전트 공통)
 
 ### 웹검색 금지 [v2.3]

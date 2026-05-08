@@ -87,6 +87,34 @@ mcpServers:
 - **knowledge-db/ 폴더는 읽지 않는다.** 영구 축적 저장소는 kb-updater 전용이다.
 - knowledge-base/ (CURRENT)만 읽는다.
 
+### 재분석 모드 (`--reanalysis`) [v3.14 신규]
+
+stock-analyst-lead 가 프롬프트에 "**--reanalysis 모드 v{N}**" 문구를 포함하면 본 모드 적용.
+
+#### 절대 금지 (앵커링 차단)
+
+- ❌ `analysis/{티커}_{종목명}_v{N-1}/` 또는 그 이전 v 폴더 read 금지
+- ❌ `reports/{티커}_*_{과거날짜}.html` read 금지
+- ❌ 이전 분석의 컨센서스·목표가·등급·스코어를 데이터로 가져오지 않음
+- ❌ Glob/Grep 으로 이전 v 폴더 내용 탐색 금지
+
+#### 출력 경로 변경
+
+- 평소: `analysis/{티커}_{종목명}/data.json` (또는 `_data.json`)
+- 재분석: `analysis/{티커}_{종목명}_v{N}/data.json` (lead 가 프롬프트로 N 전달)
+
+#### 데이터 수집 범위는 동일
+
+- 신규 데이터 (현재가, 최근 실적, 컨센서스, 뉴스) 평소대로 수집
+- KB 참조도 평소대로 (knowledge-base/ 는 read OK)
+- FRED snapshot 도 평소대로
+
+#### 위반 감지 시
+
+이전 v 폴더를 read 하려 시도한 사실을 자체 검열:
+1. 호출 직후 `ls -la analysis/${TICKER}_*_v*/` 출력 안에 본 세션에서 read 한 흔적이 있다면 — 그 데이터를 data.json 에서 제거
+2. 의심 시 lead 에 즉시 보고 후 재호출 받기
+
 ### KB 데이터 신뢰도 판단
 ```
 KB의 valid_until이 오늘 이후 → 신뢰, 웹검색 생략 가능
