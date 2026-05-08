@@ -606,6 +606,21 @@ done
 산출물: analysis/_reanalysis_runs/{YYYYMMDD}_run.md (변화표 + 등급 변경 + 약한 가정 종합)
 ```
 
+### Step C-7.5: 누적 정리 [v3.14]
+
+Phase 2 reanalysis-tracker 종료 후, 묶음 commit **직전** 본 회차 종목 한정 cleanup:
+
+```bash
+TICKERS_CSV=$(IFS=,; echo "${COMPLETED[*]}")
+node web/scripts/cleanup_reanalysis.mjs --apply --tickers "${TICKERS_CSV}"
+```
+
+효과:
+- v{N-2} 이하 옛 폴더 → `analysis/_archive/{티커}_*_{YYYYMMDD}.tar.gz` 압축
+- 종목당 옛 reports HTML → `reports/_archive/{filename}.html.gz` 압축
+- `analysis/_history/{티커}_{종목명}_timeline.json` 신규 v 메타 누적
+- active 유지: `analysis/{티커}_*_v{N-1}/`, `analysis/{티커}_*_v{N}/`, `reports/{티커}_*_{최신날짜}.html`
+
 ### Step C-8: 묶음 commit + push + 사이트 배포
 
 ```bash
@@ -615,10 +630,13 @@ YYYYMMDD=$(date +%Y%m%d)
 # 본 회차 산출물만 명시적 add (병렬 작업 섞임 방지)
 for t in "${COMPLETED[@]}"; do
     git add "analysis/${t}_*_v${NEXT_V}/"
+    git add "analysis/${t}_*_v$((NEXT_V - 1))/"     # active v{N-1} (옛것은 cleanup 으로 이미 archive)
     git add "reports/${t}_*_${YYYYMMDD}.html"
 done
 git add "analysis/_reanalysis_runs/${YYYYMMDD}_run.md"
+git add "analysis/_history/"                        # timeline.json 갱신분
 git add session-bootstrap.md
+# analysis/_archive/, reports/_archive/ 는 .gitignore (로컬만 유지)
 
 git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
 git pull --rebase origin main

@@ -124,6 +124,7 @@ async function copyReports() {
       if (name.startsWith('._')) return false;
       if (name.endsWith('.md')) return false;
       if (name.endsWith('.json')) return false;
+      if (name === '_archive') return false; // [v3.14] reports/_archive/ 미러링 제외
       return true;
     },
   });
@@ -254,6 +255,26 @@ async function main() {
     return b.filename.localeCompare(a.filename);
   });
 
+  // [v3.14] 같은 (type, ticker, name) stock_analysis/etf 는 최신 1개만 manifest 등재
+  // reports/_archive/ 가 cp filter 에서 제외되긴 하지만, archive 안 한 중복 reports 가 있을 때 안전망.
+  // briefing/analyst 는 영향 없음 (ticker 가 type 이거나 source 라 식별자 다름)
+  const DEDUPE_TYPES = new Set(['stock_analysis', 'etf']);
+  const seenStock = new Set();
+  const dedupedItems = [];
+  for (const it of items) {
+    if (!DEDUPE_TYPES.has(it.type)) {
+      dedupedItems.push(it);
+      continue;
+    }
+    const key = `${it.type}|${it.ticker}|${it.name}`;
+    if (seenStock.has(key)) continue; // 이미 더 최신이 등재됨 (정렬 desc)
+    seenStock.add(key);
+    dedupedItems.push(it);
+  }
+  const dropped = items.length - dedupedItems.length;
+  items.length = 0;
+  items.push(...dedupedItems);
+
   // 복사
   const copied = await copyReports();
 
@@ -279,7 +300,7 @@ async function main() {
   );
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
-  console.log(`OK: manifest 생성 (${items.length} items, ${copied} HTMLs copied) → ${rel}`);
+  console.log(`OK: manifest 생성 (${items.length} items${dropped > 0 ? `, dedupe -${dropped}` : ''}, ${copied} HTMLs copied) → ${rel}`);
   if (warnings.length) {
     console.error(`  (${warnings.length} warnings)`);
     for (const w of warnings.slice(0, 10)) console.error(`  WARN: ${w}`);
