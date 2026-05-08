@@ -61,6 +61,9 @@ lint_mode: full
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
 | 2026-05-08 | 내포트폴리오 | 사용자 현금 비중 11.5% (입금 +$2,335) → 채권 갭 -13.5%p / 방산 갭 -12%p 즉시 해소 처방. AGG 25주($2,474) + GLD 1주 + ITA 5주 + SGOV 5주 + VOO -4주 / VIG 전량 매도. 처방 후 채권 15.6%·방산 5.5% 모델 진입, 미국 78.4%→63.6% (-14.8%p 개선). 한국 -17%p 미해결 (5/14 정상회담 후 EWY 검토) | `portfolio/user_portfolio.md` | 진행중 |
+| 2026-05-08 | 이브닝브리핑 | NFP "호실적=악재" 역설 — NFP 200K+ 시 Fed 인하 소멸→S&P Fwd PER 22.5x 압축 -2~3%. ISM 고용 46.4% vs 실업수당 189K 괴리 해소가 5/8 최대 촉매 | `market/surprise_index.md, market/economic_calendar.md` | 진행중 |
+| 2026-05-08 | 이브닝브리핑 | USD/KRW 1,465(+1.46%) KOSPI 디커플링 경고 — KOSPI 7,498 신고가이나 원화 약세 가속. 1,480 돌파 시 외국인 이탈 임계점. 5/14 Trump-Xi 무위 시 트리거. 인사이더 SRAD 7명/$9.2M 클러스터 매수 주목 | `market/daily_snapshot.md, portfolio/insider_signals.json` | 진행중 |
+| 2026-05-08 | 이브닝브리핑 | 30일 시나리오 B(혼조 Base) 45% 유지 — ISM 가격 70.7% Core 고착이 A(골디락스) 상한 제약. 이란 MOU→이행 갭 40% 불발 가능. WTI $95.19 에너지 인플레 재가속 리스크 상존 | `macro/geopolitics.md, macro/us_economy.md` | 진행중 |
 | 2026-05-08 | 모닝브리핑 | NFP D-Day: 실업수당 189K(56년 최저) vs ISM 고용 46.4%(2026 최저) 이중성 해소. 제조업 AI 대체 가속 첫 사이클 여부 확인. S&P 7,337(-0.38%), WTI $96.94(+1.96%) 이란 반등 | `market/daily_snapshot.md, market/surprise_index.md` | 진행중 |
 | 2026-05-08 | 모닝브리핑 | 이란 합의 "발표 vs 이행" 간극 — WTI $93→$97 반등으로 시장 40% 불발 가격 반영 확인. ISM 서비스 가격 70.7%가 에너지와 독립적 Core 인플레 고착 시사. 5/12 CPI Core가 진짜 판별자 | `macro/geopolitics.md, macro/us_economy.md` | 진행중 |
 | 2026-05-07 | 이브닝브리핑 | 이란 핵 포기 선언 — Trump 발표, 이란측 미확인. 닛케이 +5.60%(역대 최대), KOSPI 7,490 재신고가, WTI $93.46(-$2.20). "발표 vs 이행" 간극 40% 불발 확률 — 시장 과도 선반영 주의 | `market/daily_snapshot.md, macro/geopolitics.md` | 진행중 |
