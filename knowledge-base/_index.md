@@ -60,6 +60,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-09 | 이브닝브리핑 | NFP 골디락스 확정: +115K(예상 62K 상회) + 임금 +3.6%(예상 3.8% 하회). K자형 공식화 — 의료/운송 호조 vs 정보/연방정부/제조 감소. AI 대체 첫 사이클 구조적 전환 진행 | `macro/us_economy.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-09 | 이브닝브리핑 | S&P↔10Y 19일 연속 동방향 이상이 NFP 계기로 정상 복귀(주의→정상). USD/KRW↔KOSPI 주의 승격 — KOSPI 7,498+원/달러 1,461 통상 역상관 붕괴 조짐. 1,470 상회 시 외국인 매도 전환 분기점 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-09 | 이브닝브리핑 | 5/12 CPI D-3: Core 3.0~3.2%(55%) Base. Core 3.2%+ 시 인하 0회+PER 22.5x 압축. 미시간 인플레 기대 1Y 4.5%(4.7%에서 하락) 소폭 안정 신호. Warsh 인준 D-2 — Fed 이원 구조 확정 임박 | `macro/us_economy.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | NFP 골디락스 착지: S&P 7,399 신고가 + 10Y 4.36%(-3bp) 동시 발생. K자형 노동시장(ISM 고용 양부문 수축 46.4/48.0 vs 실업수당 189K) 구조 공식화. AI 대체 첫 사이클 가능성 | `market/daily_snapshot.md, macro/us_economy.md` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | 5/12 CPI Core 3.2%+ 시 Fed 연내 인하 0회 부상(30~40%). ISM 제조 가격 84.6 + 서비스 가격 70.7 = 에너지 독립적 Core 고착. 저축률 3.6%(2008년래 최저) 소비 엔진 연료 바닥 경고 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | SRAD 인사이더 7명/$9.2M 역대급 클러스터 매수 + SPGI 4명/$3.6M. 전통 서비스업 인사이더 저평가 판단 집중. Warsh 인준 D-2(5/11주), Fed 이원 권력 구조 확정 임박 | `portfolio/insider_signals.json, macro/us_monetary_policy.md` | 진행중 |
