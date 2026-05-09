@@ -60,6 +60,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-09 | 모닝브리핑 | NFP 골디락스 착지: S&P 7,399 신고가 + 10Y 4.36%(-3bp) 동시 발생. K자형 노동시장(ISM 고용 양부문 수축 46.4/48.0 vs 실업수당 189K) 구조 공식화. AI 대체 첫 사이클 가능성 | `market/daily_snapshot.md, macro/us_economy.md` | 진행중 |
+| 2026-05-09 | 모닝브리핑 | 5/12 CPI Core 3.2%+ 시 Fed 연내 인하 0회 부상(30~40%). ISM 제조 가격 84.6 + 서비스 가격 70.7 = 에너지 독립적 Core 고착. 저축률 3.6%(2008년래 최저) 소비 엔진 연료 바닥 경고 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
+| 2026-05-09 | 모닝브리핑 | SRAD 인사이더 7명/$9.2M 역대급 클러스터 매수 + SPGI 4명/$3.6M. 전통 서비스업 인사이더 저평가 판단 집중. Warsh 인준 D-2(5/11주), Fed 이원 권력 구조 확정 임박 | `portfolio/insider_signals.json, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-08 | 내포트폴리오 | 사용자 현금 비중 11.5% (입금 +$2,335) → 채권 갭 -13.5%p / 방산 갭 -12%p 즉시 해소 처방. AGG 25주($2,474) + GLD 1주 + ITA 5주 + SGOV 5주 + VOO -4주 / VIG 전량 매도. 처방 후 채권 15.6%·방산 5.5% 모델 진입, 미국 78.4%→63.6% (-14.8%p 개선). 한국 -17%p 미해결 (5/14 정상회담 후 EWY 검토) | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-05-08 | 이브닝브리핑 | NFP "호실적=악재" 역설 — NFP 200K+ 시 Fed 인하 소멸→S&P Fwd PER 22.5x 압축 -2~3%. ISM 고용 46.4% vs 실업수당 189K 괴리 해소가 5/8 최대 촉매 | `market/surprise_index.md, market/economic_calendar.md` | 진행중 |
 | 2026-05-08 | 이브닝브리핑 | USD/KRW 1,465(+1.46%) KOSPI 디커플링 경고 — KOSPI 7,498 신고가이나 원화 약세 가속. 1,480 돌파 시 외국인 이탈 임계점. 5/14 Trump-Xi 무위 시 트리거. 인사이더 SRAD 7명/$9.2M 클러스터 매수 주목 | `market/daily_snapshot.md, portfolio/insider_signals.json` | 진행중 |
