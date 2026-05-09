@@ -107,7 +107,13 @@ function cleanQty(s) {
 function cleanPct(s) {
   const t = stripBold(s);
   if (!t || t === '—' || t === '-') return null;
-  const v = t.replace(/[%+\s]/g, '');
+  // 첫 % 직전의 숫자(부호 포함) 추출 — "+10.7% (+$1,337.21)" 같은 부수정보 무시
+  const m = t.match(/(-?\+?-?\d+(?:\.\d+)?)\s*%/);
+  if (m) {
+    const n = Number(m[1].replace(/^\+/, ''));
+    return Number.isFinite(n) ? n : null;
+  }
+  const v = t.replace(/[%+\s,]/g, '');
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
 }
@@ -138,9 +144,18 @@ function parseHoldings(lines) {
   const t = findTableAfter(lines, /^###\s+보유\s*종목/);
   if (!t) throw new Error('보유 종목 표 미발견');
   const out = [];
+  // 헤더 컬럼 수 확인 (8컬럼 legacy: 티커|종목명|유형|시장|수량|평가금|비중|수익률,
+  //                    9컬럼 v3.16+: 티커|종목명|유형|시장|수량|현재가|평가금|비중|수익률)
+  const ncol = t.header.length;
   for (const row of t.rows) {
     if (row.length < 8) continue;
-    const [ticker, name, assetType, market, qty, valueUsd, weight, ret] = row;
+    let ticker, name, assetType, market, qty, priceUsd, valueUsd, weight, ret;
+    if (ncol >= 9) {
+      [ticker, name, assetType, market, qty, priceUsd, valueUsd, weight, ret] = row;
+    } else {
+      [ticker, name, assetType, market, qty, valueUsd, weight, ret] = row;
+      priceUsd = null;
+    }
     if (!ticker || ticker.startsWith('---')) continue;
     const isCash = /현금/.test(assetType) || /현금/.test(ticker);
     const normType = isCash ? 'CASH' : (assetType && assetType !== '—' ? assetType.toUpperCase() : null);
@@ -150,7 +165,8 @@ function parseHoldings(lines) {
     const wVal = cleanPct(weight);
     const rVal = cleanPct(ret);
     if (qVal == null) continue;
-    const currentPrice = qVal > 0 && vVal != null ? vVal / qVal : null;
+    const pVal = cleanMoney(priceUsd);
+    const currentPrice = pVal != null ? pVal : (qVal > 0 && vVal != null ? vVal / qVal : null);
     out.push({
       ticker,
       name: name || ticker,
