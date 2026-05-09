@@ -216,6 +216,17 @@ async function main() {
   let gitHits = 0;
   let gitMisses = 0;
 
+  // [v3.16 — Vercel 우회] git log 사용 불가 + commit된 manifest 존재 시 그대로 사용.
+  //   Vercel 빌드 컨테이너는 source-only 로 .git 미포함 → git log 항상 실패.
+  //   이 경우 fallback (filename YYYYMMDD + 12:00 UTC) 만으로 정렬하면 같은 날 모두 동률 →
+  //   기존 type rank 정렬과 동일하게 떨어져 시간순 의미가 사라짐.
+  //   대신 로컬에서 commit한 manifest 를 그대로 쓰고, reports/ 복사만 수행.
+  if (gitTimes.size === 0 && existsSync(OUTPUT_JSON)) {
+    const copied = await copyReports();
+    console.log(`OK: git log 사용 불가 (Vercel 등) — committed manifest 그대로 사용, ${copied} HTMLs copied`);
+    return;
+  }
+
   // 1. reports/briefing/*.html
   const briefingDir = path.join(REPORTS_DIR, 'briefing');
   for (const fn of await listHtml(briefingDir)) {
