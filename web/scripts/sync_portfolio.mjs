@@ -22,6 +22,7 @@ import {
   parseProfile,
   parseHoldings,
   parseTotals,
+  parseCashFromTotals,
   validateParsed,
   checkSchemaContract,
 } from './lib/portfolio_parser.mjs';
@@ -158,11 +159,14 @@ let parsed;
 try {
   const current = extractCurrentSection(md);
   const lines = current.split(/\r?\n/);
+  const stockHoldings = parseHoldings(lines);
+  const cashHoldings = parseCashFromTotals(lines); // 자동: 포트폴리오 총액 표 → CASH rows
   parsed = {
     profile: parseProfile(lines),
-    holdings: parseHoldings(lines),
+    holdings: [...stockHoldings, ...cashHoldings],
     ...parseTotals(lines),
   };
+  info(`파싱 완료 (보유 종목 ${stockHoldings.length} + 현금 ${cashHoldings.length} = ${parsed.holdings.length}건)`);
 } catch (e) {
   fail(`파싱 실패: ${e.message}`);
   if (!STRICT) process.exit(0);

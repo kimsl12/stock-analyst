@@ -16,6 +16,7 @@ import {
   parseProfile,
   parseHoldings,
   parseTotals,
+  parseCashFromTotals,
   validateParsed,
   extractFrontmatter,
   checkSchemaContract,
@@ -128,6 +129,80 @@ test('parseHoldings: 9컬럼 파싱 — VOO weight=67.7%, return=10.7%, price=$6
   assert.equal(voo.current_price, 672.54);
   assert.equal(voo.current_value_usd, 13788.91);
   assert.equal(voo.asset_type, 'ETF');
+});
+
+test('parseCashFromTotals: 포트폴리오 총액 표에서 현금 자동 추출', () => {
+  const cashFixture = `
+## ★ CURRENT ★
+
+### 보유 종목
+
+| 티커 | 종목명 | 유형 | 시장 | 보유 수량 | 현재가 (USD) | 평가금 (USD) | 비중 | 수익률 |
+|------|-------|------|------|----------|-----------|-----------|------|--------|
+| VOO | Vanguard | ETF | NYSE | 20주 | $670 | $13,400 | 67.7% | +10% |
+
+### 포트폴리오 총액
+
+| 항목 | 금액 (USD) | 비중 |
+|------|----------|------|
+| 해외주식 (ETF) | $13,400 | 67.7% |
+| 달러 현금 | $1,359.52 | 6.68% |
+| 원화 현금 환산 | $984.91 | 4.84% |
+| **총액** | **$15,744.43** | **100%** |
+
+---
+`;
+  const lines = extractCurrentSection(cashFixture).split(/\r?\n/);
+  const cash = parseCashFromTotals(lines);
+  assert.equal(cash.length, 2);
+  const usd = cash.find((c) => c.ticker === 'USD_CASH');
+  assert.ok(usd);
+  assert.equal(usd.asset_type, 'CASH');
+  assert.equal(usd.current_value_usd, 1359.52);
+  assert.equal(usd.weight_pct, 6.68);
+  const krw = cash.find((c) => c.ticker === 'KRW_CASH');
+  assert.ok(krw);
+  assert.equal(krw.current_value_usd, 984.91);
+  assert.equal(krw.weight_pct, 4.84);
+});
+
+test('parseCashFromTotals: 현금 0 또는 누락 시 빈 배열', () => {
+  const noCashFixture = `
+## ★ CURRENT ★
+
+### 포트폴리오 총액
+
+| 항목 | 금액 (USD) | 비중 |
+|------|----------|------|
+| 해외주식 (ETF) | $20,000 | 100% |
+| **총액** | **$20,000** | **100%** |
+
+---
+`;
+  const lines = extractCurrentSection(noCashFixture).split(/\r?\n/);
+  const cash = parseCashFromTotals(lines);
+  assert.equal(cash.length, 0);
+});
+
+test('parseCashFromTotals: "총액" 라벨에 "현금" 없으면 잘못 매칭 안 함', () => {
+  const tricky = `
+## ★ CURRENT ★
+
+### 포트폴리오 총액
+
+| 항목 | 금액 (USD) | 비중 |
+|------|----------|------|
+| 현금 소계 | $1,000 | 5% |
+| 달러 현금 | $1,359.52 | 6.68% |
+| **총액** | **$20,000** | **100%** |
+
+---
+`;
+  const lines = extractCurrentSection(tricky).split(/\r?\n/);
+  const cash = parseCashFromTotals(lines);
+  // 소계는 제외, 달러 현금만
+  assert.equal(cash.length, 1);
+  assert.equal(cash[0].ticker, 'USD_CASH');
 });
 
 test('parseTotals: 총액 + 환율 추출', () => {

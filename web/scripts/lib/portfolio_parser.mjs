@@ -177,6 +177,41 @@ export function parseHoldings(lines) {
   return out;
 }
 
+/**
+ * 포트폴리오 총액 표에서 현금 행을 자동 추출 (CASH holdings 로 변환).
+ * 표 형식:  | 달러 현금 | $1,359.52 | 6.68% |
+ *           | 원화 현금 환산 | $984.91 | 4.84% |
+ * 사용자가 보유 종목 표에 현금 행을 따로 추가할 필요 없음.
+ */
+export function parseCashFromTotals(lines) {
+  const t = findTableAfter(lines, /^###\s+포트폴리오\s*총액/);
+  if (!t) return [];
+  const out = [];
+  for (const row of t.rows) {
+    if (row.length < 3) continue;
+    const label = stripBold(row[0]);
+    if (!/현금/.test(label)) continue;
+    if (/총액|소계/.test(label)) continue;
+    const value = cleanMoney(row[1]);
+    const weight = cleanPct(row[2]);
+    if (value == null || value <= 0) continue;
+    const isUsd = /달러|USD/i.test(label);
+    out.push({
+      ticker: isUsd ? 'USD_CASH' : 'KRW_CASH',
+      name: label,
+      asset_type: 'CASH',
+      market: null,
+      quantity: 0,
+      avg_buy_price: null,
+      current_price: null,
+      current_value_usd: value,
+      weight_pct: weight,
+      return_pct: null,
+    });
+  }
+  return out;
+}
+
 export function parseTotals(lines) {
   const t = findTableAfter(lines, /^###\s+포트폴리오\s*총액/);
   let totalUsd = null;
