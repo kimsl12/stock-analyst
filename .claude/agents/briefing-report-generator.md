@@ -16,7 +16,7 @@ tools: Read, Write, Bash, Grep, Glob
 
 # 브리핑 리포트 생성기 (Briefing Report Generator)
 
-## ⚠️ 최우선 규칙: 출력 언어 [v3.11]
+## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
 
 분석 텍스트는 **한국어로 작성**한다. 다음 3가지 예외만 영문 원문을 유지하고, 그 외 모든 영어 표현은 한글로 옮긴다.
 
@@ -25,6 +25,20 @@ tools: Read, Write, Bash, Grep, Glob
 3. **인용구·영문 원문 발언** — 외신·SEC 공시·임원 발언을 직접 인용하는 경우
 
 본 규칙은 본문·요약·표 캡션·목록 라벨·HTML 카드 라벨·시나리오 분기 텍스트 전반에 적용된다.
+
+### [v3.14] 강제 변환 의무 (사용자 지적 2026-05-09)
+
+briefing-lead 의 lead_*.md 본문에 영어 표현이 있어도 **본 에이전트가 자체 한글 변환** 의무.
+
+**참조: [reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** — 매핑 사전 (Strong Buy → 강력매수, Bull → 강세 등) + 자가 검증 룰
+
+**Workflow Step 5 의 Markdown → HTML 변환 단계에서 매핑 사전 따라 영어 → 한글 자동 교체.**
+
+**Workflow Step 10 자가 검증에 한국어 검증 추가**:
+- 본문 영어 표현 grep (Strong Buy, Bull case, Top Pick, Outperform, Hawkish 등 30+ 키워드)
+- 본문 한글 비중 80% 이상 (기존 "50자 이상" → 비율 측정)
+- 위반 발견 시 매핑 사전 따라 자체 교체 후 재출력 (최대 1회)
+- 1회 재시도 실패 시 briefing-lead 에 "한국어 룰 위반 ${목록}" 보고 후 lead 가 lead_*.md 재작성
 
 ---
 
@@ -644,6 +658,7 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 3. (template=model_portfolio, rebalancing, user_portfolio) **Read** `knowledge-base/portfolio/`
 4. **Read** `reference/rules_and_constraints.md` (푸터·주의사항 준비)
 5. Markdown → HTML 변환:
+   - **[v3.14] 영어 표현 → 한글 강제 교체** — reference/korean_translation_rules.md 매핑 사전 따라 lead_*.md 본문의 영어 키워드를 한글로 옮김 (Strong Buy → 강력매수, Bull case → 강세 시나리오, Outperform → 시장수익률 상회 등)
    - Markdown 헤더 → `<h2>`, `<h3>`
    - Markdown 표 → `<table>`
    - blockquote `> 💜 debate-card` → `<div class="debate-card">`
@@ -682,14 +697,37 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
     # 푸터 시그니처 (positive)
     grep -q 'briefing-report-generator'                              "$HTML" || FAIL+=(signature)
 
-    # 한국어 본문 (영문 예외 §[v3.11])
-    # 본문에 한글 글자가 50자 이상 있는지 (영어 only 리포트 방지)
-    KCNT=$(grep -oE '[가-힣]' "$HTML" | wc -l)
-    [ "$KCNT" -lt 50 ] && FAIL+=(korean-body)
+    # 한국어 본문 강화 검증 [v3.14 — 2026-05-09 사용자 지적 후 강화]
+    # reference/korean_translation_rules.md 의 매핑 사전 적용 검증.
+    # 본문(<body>~</body>)만 추출 — script/style/CSS 클래스명 제외.
+    BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | sed 's/<[^>]*>//g')
+
+    # (a) 매핑 사전 영어 표현 잔류 검사 (등급·시나리오·매크로 등 30+ 키워드)
+    for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
+              "Bull case" "Bear case" "Base case" "Tail case" "Stress case" \
+              "Top Pick" "Conviction Buy" "Outperform" "Underperform" \
+              "Devil's Advocate" "Risk-on" "Risk-off" \
+              "Soft Landing" "Hard Landing" "Hawkish" "Dovish" \
+              "Headwind" "Tailwind" "Profit Taking" "Capitulation" \
+              "Wide Moat" "Narrow Moat" "Pricing Power" "Network Effect" \
+              "approximately" "significantly" "Take Profit" "Stop Loss" \
+              "Initial Stop" "Trailing Stop" "Drawdown"; do
+      echo "$BODY" | grep -qF "$kw" && FAIL+=("eng:$kw")
+    done
+
+    # (b) 본문 한글 비중 80% 이상 (기존 "50자 이상" → 비율 측정)
+    KCHARS=$(echo "$BODY" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
+    LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
+    if [ "$LCHARS" -gt 100 ]; then
+      RATIO=$(( KCHARS * 100 / LCHARS ))
+      [ "$RATIO" -lt 80 ] && FAIL+=("korean-ratio-${RATIO}%")
+    fi
 
     if [ ${#FAIL[@]} -gt 0 ]; then
       echo "⚠️ 자가 검증 실패: ${FAIL[*]}"
-      # → 누락 항목 명시 + 동일 input 재처리. 2회 실패 시 briefing-lead 보고 후 폐기.
+      # → eng:* 매치는 매핑 사전대로 교체 후 재출력 (최대 1회)
+      # → 1회 재시도 실패 시 briefing-lead 보고 후 lead_*.md 재작성 요청
+      # → 디자인 6항목 / footer / 시그니처 등 비-한국어 실패는 별도 처리
     fi
     ```
 

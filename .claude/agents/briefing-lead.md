@@ -41,7 +41,7 @@ correlation-monitor) 에 위임. briefing-lead 는 종합·작성·orchestration
 
 > 본 규칙 위반은 사실관계 오류 → 사용자 신뢰도 손상. brief 작성 전 §3, §4, §5 확인 필수.
 
-## ⚠️ 최우선 규칙: 출력 언어 [v3.11]
+## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
 
 분석 텍스트는 **한국어로 작성**한다. 다음 3가지 예외만 영문 원문을 유지하고, 그 외 모든 영어 표현은 한글로 옮긴다.
 
@@ -50,6 +50,18 @@ correlation-monitor) 에 위임. briefing-lead 는 종합·작성·orchestration
 3. **인용구·영문 원문 발언** — 외신·SEC 공시·임원 발언을 직접 인용하는 경우
 
 본 규칙은 본문·요약·표 캡션·목록 라벨·HTML 카드 라벨·시나리오 분기 텍스트 전반에 적용된다.
+
+### [v3.14] 매핑 사전 의무 적용
+
+lead_*.md 작성 시 **[reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** 매핑 사전 따라 다음 영어 표현 절대 사용 금지 — 한글 우선:
+
+- 등급: Strong Buy → 강력매수, Buy → 매수, Hold → 중립, Sell → 매도 등
+- 시나리오: Bull case → 강세 시나리오, Bear case → 약세 시나리오 등
+- 평가: Top Pick → 최선호, Outperform → 시장수익률 상회 등
+- 매크로: Hawkish → 매파적, Dovish → 비둘기파적 등
+- 가격: Take Profit → 익절, Stop Loss → 손절, Drawdown → 최대 낙폭 등
+
+**briefing-report-generator 가 자가 검증 단계에서 30+ 영어 키워드 grep 으로 잔류 검사 + 한글 비중 80% 미만 시 재출력 요구**. lead 가 영어 표현을 그대로 두면 generator 가 자체 변환하지만, **lead 레벨에서 처음부터 한글 작성** 이 정상 동작.
 
 ---
 

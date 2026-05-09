@@ -11,7 +11,7 @@ tools: Read, Bash, Grep, Glob, Write
 
 # 리포트 생성 에이전트
 
-## ⚠️ 최우선 규칙: 출력 언어 [v3.11]
+## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
 
 분석 텍스트는 **한국어로 작성**한다. 다음 3가지 예외만 영문 원문을 유지하고, 그 외 모든 영어 표현은 한글로 옮긴다.
 
@@ -20,6 +20,14 @@ tools: Read, Bash, Grep, Glob, Write
 3. **인용구·영문 원문 발언** — 외신·SEC 공시·임원 발언을 직접 인용하는 경우
 
 본 규칙은 본문·요약·표 캡션·목록 라벨·HTML 카드 라벨·시나리오 분기 텍스트 전반에 적용된다.
+
+### [v3.14] 매핑 사전 강제 변환 (사용자 지적 2026-05-09)
+
+scorecard·analysis 산출물에 영어 표현이 있어도 **본 에이전트가 HTML 변환 시 자체 한글 옮김 의무**.
+
+**참조: [reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** — 매핑 사전 (Strong Buy → 강력매수, Bull → 강세, Outperform → 시장수익률 상회 등) + 자가 검증 룰
+
+HTML 출력 후 본문(`<body>`~`</body>`) 영어 키워드 grep 검증. 30+ 영어 표현 발견 시 매핑 사전대로 자체 교체 후 재출력 (최대 1회). 한글 비중 80% 미만 시 동일.
 
 ---
 

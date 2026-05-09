@@ -14,7 +14,7 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 
 # 주식/ETF 분석 오케스트레이터
 
-## ⚠️ 최우선 규칙: 출력 언어 [v3.11]
+## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
 
 분석 텍스트는 **한국어로 작성**한다. 다음 3가지 예외만 영문 원문을 유지하고, 그 외 모든 영어 표현은 한글로 옮긴다.
 
@@ -23,6 +23,10 @@ tools: Agent(kb-updater, data-collector, company-overview, financial-analyst, bu
 3. **인용구·영문 원문 발언** — 외신·SEC 공시·임원 발언을 직접 인용하는 경우
 
 본 규칙은 본문·요약·표 캡션·목록 라벨·HTML 카드 라벨·시나리오 분기 텍스트 전반에 적용된다.
+
+### [v3.14] 매핑 사전 의무 (사용자 지적 2026-05-09)
+
+scorecard·분석가 산출물 작성 시 **[reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** 매핑 사전 따라 영어 표현 한글 우선. report-generator 가 Phase 3 종료 검증에서 본문 영어 표현 grep + 한글 비중 80% 검증.
 
 ---
 
@@ -196,6 +200,25 @@ grep -q 'class="disclaimer\|class="disc disclaimer'   "$HTML" || DFAIL+=(.discla
 grep -q 'onclick="toggleTheme\|data-theme'            "$HTML" || DFAIL+=(theme-toggle)
 grep -q '@media(max-width:600px)\|@media\s*(\s*max-width' "$HTML" || DFAIL+=(mobile)
 [ ${#DFAIL[@]} -gt 0 ] && echo "⚠️ 디자인 표준 위반: ${DFAIL[*]}"
+
+# 검증 5 [v3.14]: 한국어 강제 검증 (사용자 지적 2026-05-09)
+# 본문(<body>~</body>)만 추출. reference/korean_translation_rules.md 매핑 사전 따라.
+KFAIL=()
+BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | sed 's/<[^>]*>//g')
+for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
+          "Bull case" "Bear case" "Base case" "Top Pick" \
+          "Outperform" "Underperform" "Hawkish" "Dovish" \
+          "Soft Landing" "Hard Landing" "Headwind" "Tailwind" \
+          "Wide Moat" "Narrow Moat" "Take Profit" "Stop Loss"; do
+  echo "$BODY" | grep -qF "$kw" && KFAIL+=("eng:$kw")
+done
+KCHARS=$(echo "$BODY" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
+LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
+[ "$LCHARS" -gt 100 ] && {
+  RATIO=$(( KCHARS * 100 / LCHARS ))
+  [ "$RATIO" -lt 80 ] && KFAIL+=("korean-ratio-${RATIO}%")
+}
+[ ${#KFAIL[@]} -gt 0 ] && echo "⚠️ 한국어 검증 실패: ${KFAIL[*]} → 매핑 사전대로 본문 교체 후 report-generator 재호출"
 ```
 
 ### 검증 실패 시 대응
