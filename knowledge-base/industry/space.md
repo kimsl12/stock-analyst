@@ -1,28 +1,28 @@
 ---
-updated: 2026-05-02
-valid_until: 2026-06-02
+updated: 2026-05-09
+valid_until: 2026-06-09
 category: industry
 sub_category: science_tech
 topic: space
 sources:
-  - SpaceXNow / Spaceflight Now (Falcon 9 launch count 51회)
-  - Basenor / Teslarati / NewSpaceTracker / NextSpaceFlight (Starship V3 IFT-12)
-  - TechStackIPO / Techi / Motley Fool / Yahoo Finance (SpaceX IPO SEC S-1)
+  - SpaceXNow / Spaceflight Now / Wikipedia (Falcon 9 launch count 55회, 5/6 기준)
+  - Basenor / Teslarati / NextSpaceFlight / RocketLaunch.Live / MSN (Starship V3 IFT-12 5/15)
+  - TechStackIPO / Techi / Motley Fool / Yahoo Finance / NewsBytesApp (SpaceX IPO $1.75T, 6월 로드쇼)
   - Wikipedia Starlink / Basenor / DishyTech / SatNxt (Starlink 10M 가입자)
-  - TechCrunch / TheRegister / SatNews / Engadget / Space.com (Blue Origin FAA)
-  - MarketBeat / SeekingAlpha / StockTitan (Rocket Lab Q1 2026)
+  - TechCrunch / TheRegister / SatNews / Space.com / HanfordSentinel (Blue Origin FAA 비행정지 지속)
+  - StockTitan / CNBC / SeekingAlpha / Investing.com / MarketBeat (Rocket Lab Q1 $200.3M)
   - NASASpaceFlight / Relativity Space (Terran R 2026 H2)
-  - Wikipedia Amazon Leo / DataCenterDynamics / GeekWire (Amazon Leo 302기)
-  - AST SpaceMobile IR / BusinessWire / SatelliteToday (BlueBird 생산)
+  - Wikipedia Amazon Leo / KeepTrack / DCD / BroadbandBreakfast (Amazon Leo 302기, FCC 미결)
+  - StockTwits / RollingOut / ForeignPolicyJournal (AST SpaceMobile BB 8~10 Falcon 9)
   - SatelliteInternet.com / DishyTech / USMobile / T-Mobile (Starlink Mobile DTC)
-  - BreakingDefense / DefenseOne / DefenseScoop / CNBC (Golden Dome SBI)
+  - BreakingDefense / DefenseScoop / AirAndSpaceForces / CNBC (Golden Dome SBI $3.2B)
   - NASA.gov / Space.com (Artemis III 2027 지연)
-  - KASA.go.kr / 뉴스스페이스 / 서울경제 (누리호 5차)
+  - KASA.go.kr / 정책브리핑 / 서울경제 / 이포커스 (누리호 5차, KASA 1조원 예산)
   - Intuitive Machines IR / Nasdaq / KeyBanc (LUNR Lanteris 인수)
   - Airbus / Eutelsat / SpaceNews (OneWeb Gen 2)
   - Astroscale / ClearSpace / SpaceNews (ADR)
 confidence: high
-last_synced_from_db: 2026-05-02
+last_synced_from_db: 2026-05-09
 ---
 # Space (우주산업) Knowledge Base
 
@@ -43,7 +43,7 @@ last_synced_from_db: 2026-05-02
 | Direct-to-Satellite 시장 (2026E) | $4.15B | CAGR 14.7%, 2033년 $10.84B |
 | Satellite-to-Cell 시장 (2026E) | $4.49B | CAGR 16.2%, 2030년 $8.1B |
 
-> **2026.05.02 갱신**: 우주경제 $626B 확정 유지. $1T(2032~34) -> $1.8T(2035) 수렴. 다수 IB(Morgan Stanley/BoA/Space Foundation) $1T by 2030 전망도 병존.
+> **2026.05.09 갱신**: 시장 규모 전망 유지. SpaceX IPO ($1.75T) + Rocket Lab Q1 호실적으로 우주산업 투자 심리 강세.
 
 ### 2. 우주발사체
 
@@ -52,12 +52,13 @@ last_synced_from_db: 2026-05-02
 | 항목 | 수치 | 비고 |
 |------|------|------|
 | 상업 발사 글로벌 점유율 (2025) | 82% | 독보적 1위 |
-| **Falcon 9 발사 (2026, 4/30 기준)** | **51회** | 연간 목표 140~145회 (Shotwell). +FH 1회 |
-| Falcon 9 누적 발사 | 645회 | 642회 성공. 부스터 600번째 착륙(4/19) |
-| 매출 전망 (2026E) | $22~24B | Starlink $15.9~24B 포함 |
-| **SpaceX IPO** | **$1.75T 밸류, 6월 Nasdaq 상장 목표** | SEC S-1 초안 4/1 제출. $75B+ 조달 목표(사우디 아람코 $29.4B 경신). 6/11 Major Investor Event |
+| **Falcon 9 발사 (2026, 5/6 기준)** | **55회** | F9 54 + FH 1. 연간 목표 140~145회 (Shotwell) |
+| Falcon 9 누적 발사 | **648회** | 645회 성공 |
+| 2025 매출 | **$18.67B** | 확정 |
+| 2026E 매출 | **$20B** | Starlink 포함 |
+| **SpaceX IPO** | **$1.75T 밸류, 6/8 로드쇼, 6월 말~7월 초 Nasdaq 상장** | S-1 4월 제출. $75B+ 조달 (사우디 아람코 경신, 역대 최대 IPO). ~$525~530/주. 리테일 30% 배정 |
 
-- **Starship V3 (IFT-12)**: **5/12 발사 목표** (KST 5/13 07:30 / UTC 5/12 22:30). V3 데뷔. IFT-11 사고조사 + 4/6 RUD 후 FAA 승인 대기. LEO **100t+ 페이로드** (V2 ~35t 대비 약 3배). Raptor 3 엔진
+- **Starship V3 (IFT-12)**: **5/15 발사 목표** (기존 5/12에서 지연). Pad 2 첫 사용 (Starbase). B19+S39, Raptor 3. LEO **100t+ 페이로드** (V2 ~35t 대비 약 3배). 408ft 높이. **서브궤도 비행, 부스터+상단 모두 splashdown** (타워 캐치 미시도 -- V3 아키텍처 검증 우선)
 - **IFT-13**: 6월 계획
 - **LC-39A**: Falcon 9 단일 발사 종료, JRTI 드론십 Starship 전용 전환. 2026 하반기 플로리다 첫 Starship 발사 예정
 
@@ -67,26 +68,29 @@ last_synced_from_db: 2026-05-02
 |------|------|------|
 | **NG-3 발사 (4/19)** | 부스터 재사용 **최초 성공** | 착륙 9분20초 |
 | NG-3 페이로드 이상 | AST BlueBird 7 **잘못된 궤도 배치** | BE-3U 2단 추력 부족 |
-| FAA 상태 | **New Glenn 비행정지 지속** | Blue Origin 주도 조사 + FAA 감독 |
+| FAA 상태 | **New Glenn 비행정지 지속 (5월 현재)** | 복귀일 미정. FAA 최종보고서+시정조치 승인 필요 |
 
 - NG-3: 부스터 재사용 성공이나, 2단 BE-3U 추력 부족으로 페이로드 궤도 이탈. Dave Limp CEO "상단 엔진 추력 미달" 확인
 - AST SpaceMobile BlueBird 7 위성 손실 (보험 적용)
-- **FAA 최종보고서 + 시정조치 승인 전까지 비행 불가** -- 2026년 12회 발사 계획 차질
+- **FAA 최종보고서 + 시정조치 승인 전까지 비행 불가** -- 2026년 12회 발사 계획 대폭 차질
+- **Blue Moon Mk1 "Endurance"** 무인 달 착륙선 준비 중이나 NG 비행정지로 일정 불확실
 - Vandenberg 발사장 건설 진행 중 (서해안 확장)
 
-#### Rocket Lab (RKLB)
+#### Rocket Lab (RKLB) -- Q1 2026 실적 발표 (5/7)
 
 | 항목 | 수치 | 비고 |
 |------|------|------|
-| FY2025 매출 | $602M | +38% YoY, 연간 최고 |
-| Q4 2025 매출 | $180M | 분기 최고 |
-| Q1 2026 가이던스 | **$185~200M** | +57% YoY (중간값) |
-| Q1 2026 GAAP GM | 34~36% | non-GAAP 39~41% |
-| 백로그 | $1.85B | +73% YoY |
-| 최대 계약 | SDA Tranche III $816M | 18기 우주선 프라임 수주 |
-| Q1 2026 실적 발표 | **5/7** | Stifel TP $105 |
+| **Q1 2026 매출** | **$200.3M (+63.5% YoY)** | 가이던스 $185~200M 상단 초과. 분기 역대 최고 |
+| Q1 Space Systems | $136.7M | FactSet $132.1M 상회 |
+| Q1 Launch | $63.7M | FactSet $59M 상회 |
+| Q1 GAAP GM | **38.2%** | 가이던스 34~36% 상회 |
+| Q1 non-GAAP GM | **43%** | 가이던스 39~41% 상회 |
+| **백로그** | **$2.2B (+2x YoY)** | 기존 $1.85B에서 증가 |
+| **Q2 2026 가이던스** | **$225~240M** | GAAP GM 33~35%, non-GAAP GM 38~40% |
+| 최대 수주 | **기밀 Neutron+Electron 다중발사 (2029까지)** | + $190M 극초음속 시험비행 20회 |
+| 주가 반응 | **+34% (역대 최대 일일 상승)** | 5/7~8 |
 
-- **Neutron**: Q4 2026 데뷔 목표 유지. 1단 탱크 파열 → AFP(자동화 섬유배치) 전환 완료 + 설계 미세 조정. FAA 발사허가 7/1~12/31 창 신청
+- **Neutron**: Q4 2026 데뷔 목표 유지. 1단 탱크 파열 -> AFP(자동화 섬유배치) 전환 완료 + 설계 미세 조정. FAA 발사허가 7/1~12/31 창 신청
 - **신규 인수**: Optical Support Inc + Precision Components Ltd (광학/기계가공 역량 강화, 공급망 리스크 절감)
 - **신제품**: 우주용 실리콘 태양전지 어레이 + 하이브리드 어레이 ($/W 저감)
 
@@ -124,8 +128,8 @@ last_synced_from_db: 2026-05-02
 | 항목 | 수치 | 비고 |
 |------|------|------|
 | 투자 규모 | $10B+ | 인프라 투자 |
-| **궤도 위성 수 (2026.04)** | **302기** | 기존 241기 → 302기 증가 |
-| **FCC 의무 기한** | **2026.07.30** | 1,618기 의무 -- **미달 확정적** |
+| **궤도 위성 수 (2026.04)** | **302기** | 7월 말 ~700기 예상 |
+| **FCC 의무 기한** | **2026.07.30** | 1,618기 의무 -- **미달 확정** |
 | **FCC 연장 신청** | 24개월 연장 요청 (2026.01) | 발사체 부족 사유. **FCC 미결정** |
 | 목표 컨스텔레이션 | 3,236기 | 590~630km 궤도 |
 | 속도 | 최대 1 Gbps | 엔터프라이즈 터미널 |
@@ -170,11 +174,12 @@ last_synced_from_db: 2026-05-02
 | 항목 | 수치 | 비고 |
 |------|------|------|
 | **FY2026 매출 가이던스** | **$150~200M** | FY2025 $70.9M 대비 +111~182% |
-| 계약 매출 (backlog) | $1B+ | SATELLITE 2026 컨퍼런스 공개 |
+| 계약 매출 (backlog) | **$1.2B+** | 기존 $1B+ 대비 상향 |
 | **BlueBird 7 손실** | 4/19 NG-3 궤도 이탈 | BE-3U 추력 부족. 보험 적용 |
+| **BlueBird 8~10** | **6월 중순 Falcon 9 발사 예정** | NG-3 실패 후 발사체 전환 |
 | **BlueBird 생산 현황** | **BlueBird 32까지 생산 중** | BB 8~10 약 30일 내 출하 |
-| 2026 배치 목표 | **45기** | 45일 간격 발사 계획 유지 |
-| 시총 영향 | **-$2B** (BlueBird 7 뉴스) | 4/20 하락 |
+| 2026 배치 목표 | **45~60기** | 기존 45기에서 상향 |
+| **Q1 2026 실적** | **5/11 발표 예정** | 매출 $40M(E), EPS -$0.17(E) |
 | 파트너 | AT&T | LTE/5G 직접 스마트폰 연결 |
 
 ### 5. 우주 탐사
@@ -202,7 +207,7 @@ last_synced_from_db: 2026-05-02
 | **Lanteris 인수** | **$800M** (현금 $450M + 주식 $350M) | Q1 2026 완료. 구 Maxar Space Systems |
 | FY2026 가이던스 | **$900M~$1B** | Adj EBITDA 흑자 전환 |
 | $175M 에쿼티 투자 | 기관투자자 주도 | 매출 확대 + 기술 투자 지원 |
-| IM-3 | 2026 H2 발사 | Nova-C, Reiner Gamma 탐사 |
+| IM-3 | 2026 H2 발사 | Nova-C, Reiner Gamma 탐사. JPL 로버 3대 탑재 |
 | 5th CLPS 수주 | $180.4M (2026.03) | Nova-D 대형 착륙선, 남극 7개 페이로드 |
 | 총 CLPS 계약 | 5건 | |
 | KeyBanc TP | **$27** (4/29) | 주가 1년간 +270% |
@@ -211,8 +216,7 @@ last_synced_from_db: 2026-05-02
 
 #### 누리호 (KSLV-II)
 - 4차 발사 성공 (2025.11.27)
-- **5차 발사: 2026 상반기 예정** -- 비행모델 5호기 단 조립 착수 검토회의 완료
-- 초소형군집위성 5기(2~6호) **다중사출 실증** + 큐브위성 7기 부탑재 공모
+- **5차 발사: 2026 상반기 예정** -- 초소형군집위성 5기(2~6호) **다중사출 실증** + 큐브위성 7기 부탑재 공모
 - **고도화사업 1,253억원** 투입 (반복 운용 신뢰성 + 민간 기술 이전)
 - 6차(최종): 2027년
 - 한화에어로스페이스 체계종합기업
@@ -225,12 +229,13 @@ last_synced_from_db: 2026-05-02
 - 2032년 완료 목표
 
 #### KASA 2026 계획
-- **R&D 예산 9,495억원**
+- **R&D 예산: 최초 1조원 시대** (기존 9,495억원에서 상향)
 - **3대 정책방향**: 저비용·고빈도 발사 역량, 산업진흥, 국제협력 강화
 - **K-SSA(우주상황인식)**: 2026~2030, 40억원 배정
 - CSA(캐나다)와 MOU 체결 (4월, Colorado Springs)
 - 저궤도 통신위성 2기 2030년까지 발사 계획 (6G 인프라)
 - KPS 8기 위성 2035 완전가동 목표
+- **재사용발사체 개발 착수** (글로벌 경쟁력 확보)
 
 ### 7. 우주 방위산업
 
@@ -242,12 +247,13 @@ last_synced_from_db: 2026-05-02
 | **Golden Dome 총액 (수정)** | **$185B** | 3월 $10B 상향 (우주 역량 추가) |
 | **12개사 SBI 계약** | **$3.2B** (4/24) | 우주 기반 인터셉터 |
 | **True Anomaly** | **$650M 조달** (4/28) | Golden Dome SBI 지원 스타트업 |
+| **SBI 프로토타입 시연** | **2028년 목표** | Golden Dome 아키텍처 통합 |
 | SDA Tranche 3 추적층 | $3.5B+ | 72기 위성 (LM/RKLB/NG/L3Harris) |
 | SDA Transport 추가 | $500M 추가 | 의회 복원 |
 | SDA 발사 예산 FY26 | $648M (7회) | FY25 $357M (4회) 대비 증가 |
 
 - SBI 12개사: Anduril, Booz Allen, General Dynamics, GITAI, LM, NG, Quindar, Raytheon, Sci-Tec, SpaceX, True Anomaly, Turion Space
-- **SBI 비용 논란**: Golden Dome 책임자 "비용이 금지적이면 양산 안 함" 발언 -- 최종 아키텍처 불확실
+- **SBI 비용 논란 지속**: Gen. Guetlein "비용이 금지적이면 양산 안 함" -- 최종 아키텍처 불확실
 - 초기능력 2028, 완전 아키텍처 2030s 중반
 - **Space Data Network**: SDA Transport Layer -> SDN 'backbone' 전환 (4월 발표)
 
@@ -264,11 +270,11 @@ last_synced_from_db: 2026-05-02
 ### 9. 리스크 팩터
 
 1. **SpaceX 독점 심화**: 상업 발사 82% + Starlink 10,020기+ + DTC 선두 + $1.75T IPO vs 규제/반독점 리스크
-2. **Starship V3 일정**: IFT-12 5/12 목표. IFT-11 사고+4/6 RUD로 FAA 승인 대기. 성공 시 100t LEO 게임체인저
-3. **Blue Origin NG-3 실패 후속**: BE-3U 추력 부족 FAA 조사 진행. 비행정지 장기화 시 12회 발사 계획 전면 차질
-4. **Amazon Kuiper FCC 데드라인**: 2026.07.30 절반 배치 의무 (302기 vs 1,618기 필요) -- **미달 확정, 24개월 연장 FCC 미결정**
-5. **AST SpaceMobile BlueBird 7 손실**: NG-3 궤도 이탈로 위성 상실. BB 8~10 30일 내 출하 대기. 45기 목표 유지하나 발사 제공자 리스크
-6. **Neutron 지연 리스크**: Rocket Lab Q4 2026 첫 비행 유지. 1단 탱크 파열→AFP 전환 완료. FAA 허가 대기
+2. **Starship V3 일정**: IFT-12 **5/15 목표** (5/12에서 지연). IFT-11 사고+4/6 RUD로 FAA 승인 대기. 성공 시 100t LEO 게임체인저. 서브궤도+splashdown으로 보수적 접근
+3. **Blue Origin NG-3 비행정지 장기화**: BE-3U 추력 부족 FAA 조사 진행. **복귀일 미정**. Blue Moon 달 착륙선 일정 불확실. 12회 발사 계획 대폭 차질
+4. **Amazon Kuiper FCC 데드라인**: 2026.07.30 절반 배치 의무 (302기 vs 1,618기 필요, **7월 말 ~700기 예상**) -- **미달 확정, 24개월 연장 FCC 미결정**
+5. **AST SpaceMobile 발사체 리스크 전환**: BlueBird 7 NG-3 손실 후 BB 8~10 **Falcon 9로 전환** (6월 중순). 45~60기 목표 상향이나 발사체 확보가 관건
+6. **Neutron 지연 리스크**: Rocket Lab Q4 2026 첫 비행 유지. AFP 전환 완료. FAA 허가 대기
 7. **우주 잔해 급증**: 12,000기+ LEO 위성 -> 궤도 혼잡, Kessler Syndrome 장기 리스크
 8. **한국 차세대 발사체**: 총 비용 5.6조원, 2026 예비설계 착수. 기술 선택 리스크
 9. **DTC 주파수 간섭 및 규제 불확실성**: 다수 사업자 경쟁 -> 스펙트럼 갈등
