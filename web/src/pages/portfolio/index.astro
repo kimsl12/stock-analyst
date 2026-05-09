@@ -2,6 +2,16 @@
 import Base from '../../layouts/Base.astro';
 import { createServerClient, type Portfolio, type Holding } from '../../lib/supabase.ts';
 
+// P2-6: 빌드 시점 health.json 읽기 (없으면 status='unknown')
+let health: { status: string; reason: string | null; checked_at: string; checks: Array<{ name: string; ok: boolean; detail: string }> } = {
+  status: 'unknown', reason: null, checked_at: '', checks: [],
+};
+try {
+  health = (await import('../../data/health.json')).default as typeof health;
+} catch {
+  /* graceful — health.json 없을 수 있음 (첫 빌드) */
+}
+
 // 빌드 시점 SSG: service_role 키로 RLS 우회 → portfolios + holdings 읽기
 const sb = createServerClient();
 
@@ -62,6 +72,13 @@ const updatedAt = portfolio?.updated_at
   active="portfolio"
 >
   {error && <div class="err">{error}</div>}
+
+  <div class={`health-badge health-${health.status}`} title={health.reason ?? '데이터 검증 통과'}>
+    {health.status === 'healthy' && <>✅ 데이터 검증 통과 ({health.checks.filter((c) => c.ok).length}/{health.checks.length})</>}
+    {health.status === 'unhealthy' && <>⚠️ 데이터 무결성 경고 — {health.reason}</>}
+    {health.status === 'unknown' && <>ℹ️ 헬스체크 미실행 (로컬 빌드 또는 환경변수 미설정)</>}
+    <span class="checked-at"> · {health.checked_at ? new Date(health.checked_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false }) : '—'} (KST)</span>
+  </div>
 
   {portfolio && (
     <>
@@ -141,6 +158,35 @@ const updatedAt = portfolio?.updated_at
     color: var(--down);
     margin-bottom: 1.25rem;
     font-size: 0.9rem;
+  }
+  .health-badge {
+    padding: 0.55rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .health-healthy {
+    background: rgba(16,185,129,.10);
+    border: 1px solid rgba(16,185,129,.35);
+    color: #10b981;
+  }
+  .health-unhealthy {
+    background: rgba(245,158,11,.10);
+    border: 1px solid rgba(245,158,11,.45);
+    color: #f59e0b;
+  }
+  .health-unknown {
+    background: rgba(156,163,175,.10);
+    border: 1px solid rgba(156,163,175,.30);
+    color: var(--muted);
+  }
+  .checked-at {
+    color: var(--muted);
+    font-size: 0.72rem;
   }
   .totals {
     display: grid;

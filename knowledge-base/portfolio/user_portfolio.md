@@ -4,7 +4,14 @@ valid_until: 2026-12-31
 category: portfolio
 sources: [사용자 직접 입력 (2026-04-18), 토스증권 스크린샷 (2026-04-29 / 2026-05-08 / 2026-05-09), 사용자 채팅 입력 (2026-05-05 GLD·SCHD·VOO 매매), fetch_price.py (2026-05-09 21:17 KST 실시간), 사용자 채팅 (2026-05-09 프로파일 변경: 중립 → 배당형)]
 confidence: high
+schema_version: 9col-v3.16
+holdings_table_columns: [티커, 종목명, 유형, 시장, 보유 수량, 현재가, 평가금, 비중, 수익률]
 ---
+
+<!-- ⚠️ 표 형식 변경 시 frontmatter holdings_table_columns 도 같이 갱신.
+     web/scripts/lib/portfolio_parser.mjs 가 컬럼 명세를 검증함.
+     불일치 시 prebuild 단계에서 빌드 차단 (silent drift 방지). -->
+
 
 # 사용자 포트폴리오 (User Portfolio)
 

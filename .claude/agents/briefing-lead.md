@@ -689,14 +689,42 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
   interactive=true 시 사용자 입력 → user_portfolio.md 갱신
   commit/push (단, user_portfolio.md 자체는 별도 .gitignore 검토 — 현재는 git 추적)
 
-[Phase 4-후] Supabase 동기화 (graceful fail, 비차단) — web/PLAN.md §7.2
-  Bash: .venv/bin/python scripts/sync_portfolio_to_supabase.py
-    - 성공 (exit 0, stdout "OK: portfolio synced (id=..., N holdings)"): 정상
-    - 환경변수 미설정/supabase-py 미설치: 자동 SKIP (exit 0, stderr 경고)
-    - 실패 (exit 1, stderr "WARN: ..."): 무시 — 분석 결과·user_portfolio.md는 영향 없음
-  목적: 로컬 md(SSoT)를 Supabase 미러로 push → 웹(stock-analyst-jungwon1.vercel.app)에서 read-only 조회 가능
-  최초 1회 (.venv 없을 때):
-    uv venv .venv --python 3.14 && uv pip install -r scripts/requirements.txt
+[Phase 4-후] Supabase 동기화 + 헬스체크 (v3.16: STRICT 모드 + 검증 게이트, P2-5)
+  ──────────────────────────────────────────────────────────────────
+  목적: 로컬 md(SSoT) → Supabase → 웹(stock-analyst-jungwon1.vercel.app) 일관성 보장.
+       2026-05-09 9컬럼 사일런트 드리프트 사고 (weight_pct=NULL → "보유 종목 0개" 표시) 재발 방지.
+
+  1) 스키마 컨트랙트 검증 (P1-4):
+     user_portfolio.md frontmatter 의 holdings_table_columns 가 실제 표 헤더와 일치해야 함.
+     표 컬럼 늘릴 때 frontmatter 도 같이 갱신 — 없으면 sync_portfolio 가 차단.
+
+  2) Node 동기화 + 검증 게이트 (P0-1, P0-2, P1-3):
+     Bash (cwd=web): SYNC_STRICT=1 node scripts/sync_portfolio.mjs
+       - 통과: stdout 에 "schema contract 검증 통과" + "사전 검증 통과" + "read-back 검증 통과" + "OK: portfolio synced"
+       - 실패 (exit 1): 사용자에게 즉시 보고:
+         * "❌ Supabase 동기화 검증 실패. 사이트가 stale 상태로 표시될 수 있음."
+         * stderr 마지막 검증 실패 메시지 인용 (예: "weight_pct 추출률 0%")
+         * "knowledge-base/portfolio/user_portfolio.md 표 형식 점검 필요"
+         * 빌드/배포 중단
+
+     Bash (cwd=web): SYNC_STRICT=1 node scripts/health_check.mjs
+       - 통과: web/src/data/health.json status='healthy' 기록
+       - 실패 (exit 1): unhealthy 기록 + 사용자 알림. 사이트의 헬스 배지가 ⚠️ 로 표시됨.
+
+  3) 환경변수 미설정 (로컬 .env.local 없음):
+     SYNC_STRICT 없이 sync_portfolio 만 호출 (graceful skip).
+     사용자에게: "ℹ️ 로컬 환경 — Supabase 동기화 스킵. md 파일 + 분석 결과는 정상 저장됨."
+
+  4) 사용자 보고 (필수, /내포트폴리오 응답 마지막):
+     ✅ md 갱신: knowledge-base/portfolio/user_portfolio.md
+     ✅ 분석 리포트: reports/briefing/user_portfolio_{YYYYMMDD}.html
+     ✅ Supabase 동기화: {portfolio_id} ({N} holdings, total=$X)
+     ✅ 헬스체크: healthy ({M}/{T} 검증 통과)
+     ✅ 사이트 반영: https://stock-analyst-jungwon1.vercel.app/portfolio/
+        (※ 다음 vercel deploy 까지 캐시 유지될 수 있음 — 반드시 prebuild + deploy 후 확인)
+
+  ※ Python sync_portfolio_to_supabase.py 는 deprecated (2026-05-09).
+    Node 포팅 (web/scripts/sync_portfolio.mjs) 으로 단일화 — prebuild 와 동일 코드 경로.
 ```
 
 ---

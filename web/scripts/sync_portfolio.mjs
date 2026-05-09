@@ -17,6 +17,14 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nowKstIso } from './_kst.mjs';
+import {
+  extractCurrentSection,
+  parseProfile,
+  parseHoldings,
+  parseTotals,
+  validateParsed,
+  checkSchemaContract,
+} from './lib/portfolio_parser.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '../..');
@@ -48,6 +56,24 @@ const EMAIL = (process.env.ALLOWED_EMAIL || process.env.PUBLIC_ALLOWED_EMAIL || 
 
 function info(msg) { console.log(`[sync_portfolio] ${msg}`); }
 function warn(msg) { console.warn(`[sync_portfolio] WARN: ${msg}`); }
+function err(msg) { console.error(`[sync_portfolio] ERROR: ${msg}`); }
+
+// STRICT 모드: 검증 실패 시 exit 1 (Vercel/CI/prod 빌드 차단)
+// LENIENT 모드: 검증 실패 시 warn 만 (로컬 빌드는 깨지지 않게)
+const STRICT = String(process.env.SYNC_STRICT ?? process.env.VERCEL ?? '').toLowerCase() === '1'
+  || String(process.env.SYNC_STRICT ?? '').toLowerCase() === 'true'
+  || process.env.VERCEL === '1';
+
+function fail(msg) {
+  err(msg);
+  if (STRICT) {
+    err(`STRICT 모드 — 빌드 중단 (production 데이터 오염 방지)`);
+    process.exit(1);
+  }
+  warn(`LENIENT 모드 — 경고만 출력하고 진행 (로컬 환경)`);
+}
+
+// 파서/검증 함수는 ./lib/portfolio_parser.mjs 모듈에서 import (단위 테스트 가능)
 
 // ────────────────────────────────────────────────────────────────────────
 // graceful skip 분기
@@ -59,152 +85,6 @@ if (!existsSync(PORTFOLIO_MD)) {
 if (!URL || !KEY || !EMAIL) {
   info(`env 미설정 (URL=${URL ? 'OK' : 'MISSING'}, KEY=${KEY ? 'OK' : 'MISSING'}, EMAIL=${EMAIL ? 'OK' : 'MISSING'}) — skip`);
   process.exit(0);
-}
-
-// ────────────────────────────────────────────────────────────────────────
-// 마크다운 파서 유틸
-// ────────────────────────────────────────────────────────────────────────
-const RE_TABLE = /^\s*\|.+\|\s*$/;
-const RE_SEP = /^\s*\|[\s\-:|]+\|\s*$/;
-
-function splitRow(line) {
-  return line.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
-}
-
-function findTableAfter(lines, headingRe) {
-  for (let i = 0; i < lines.length; i++) {
-    if (!headingRe.test(lines[i])) continue;
-    for (let j = i + 1; j < Math.min(i + 30, lines.length); j++) {
-      if (RE_TABLE.test(lines[j]) && RE_SEP.test(lines[j + 1] ?? '')) {
-        const header = splitRow(lines[j]);
-        const rows = [];
-        for (let k = j + 2; k < lines.length; k++) {
-          if (!RE_TABLE.test(lines[k]) || RE_SEP.test(lines[k])) break;
-          rows.push(splitRow(lines[k]));
-        }
-        return { header, rows };
-      }
-    }
-  }
-  return null;
-}
-
-function stripBold(s) { return (s ?? '').replace(/\*\*/g, '').trim(); }
-function cleanMoney(s) {
-  const t = stripBold(s);
-  if (!t || t === '—' || t === '-') return null;
-  const v = t.replace(/[$,원\s]/g, '');
-  const n = Number(v);
-  return Number.isFinite(n) ? n : null;
-}
-function cleanQty(s) {
-  const t = stripBold(s);
-  if (!t || t === '—' || t === '-') return null;
-  const v = t.replace(/[주,\s]/g, '');
-  const n = Number(v);
-  return Number.isFinite(n) ? n : null;
-}
-function cleanPct(s) {
-  const t = stripBold(s);
-  if (!t || t === '—' || t === '-') return null;
-  // 첫 % 직전의 숫자(부호 포함) 추출 — "+10.7% (+$1,337.21)" 같은 부수정보 무시
-  const m = t.match(/(-?\+?-?\d+(?:\.\d+)?)\s*%/);
-  if (m) {
-    const n = Number(m[1].replace(/^\+/, ''));
-    return Number.isFinite(n) ? n : null;
-  }
-  const v = t.replace(/[%+\s,]/g, '');
-  const n = Number(v);
-  return Number.isFinite(n) ? n : null;
-}
-
-// ────────────────────────────────────────────────────────────────────────
-// user_portfolio.md 파싱
-// ────────────────────────────────────────────────────────────────────────
-function extractCurrentSection(md) {
-  const m = md.match(/##\s*★\s*CURRENT\s*★\s*$([\s\S]*?)(?=^---\s*$|^##\s+\S)/m);
-  if (!m) throw new Error('★ CURRENT ★ 섹션을 찾을 수 없음');
-  return m[1];
-}
-
-function parseProfile(lines) {
-  const t = findTableAfter(lines, /^###\s+투자자\s*프로파일/);
-  if (!t) throw new Error('투자자 프로파일 표 미발견');
-  const profile = {};
-  for (const row of t.rows) {
-    if (row.length < 2) continue;
-    const k = row[0].trim();
-    const v = stripBold(row[1]);
-    if (k) profile[k] = v;
-  }
-  return profile;
-}
-
-function parseHoldings(lines) {
-  const t = findTableAfter(lines, /^###\s+보유\s*종목/);
-  if (!t) throw new Error('보유 종목 표 미발견');
-  const out = [];
-  // 헤더 컬럼 수 확인 (8컬럼 legacy: 티커|종목명|유형|시장|수량|평가금|비중|수익률,
-  //                    9컬럼 v3.16+: 티커|종목명|유형|시장|수량|현재가|평가금|비중|수익률)
-  const ncol = t.header.length;
-  for (const row of t.rows) {
-    if (row.length < 8) continue;
-    let ticker, name, assetType, market, qty, priceUsd, valueUsd, weight, ret;
-    if (ncol >= 9) {
-      [ticker, name, assetType, market, qty, priceUsd, valueUsd, weight, ret] = row;
-    } else {
-      [ticker, name, assetType, market, qty, valueUsd, weight, ret] = row;
-      priceUsd = null;
-    }
-    if (!ticker || ticker.startsWith('---')) continue;
-    const isCash = /현금/.test(assetType) || /현금/.test(ticker);
-    const normType = isCash ? 'CASH' : (assetType && assetType !== '—' ? assetType.toUpperCase() : null);
-    const normMarket = market && market !== '—' ? market : null;
-    const qVal = cleanQty(qty) ?? (isCash ? 0 : null);
-    const vVal = cleanMoney(valueUsd);
-    const wVal = cleanPct(weight);
-    const rVal = cleanPct(ret);
-    if (qVal == null) continue;
-    const pVal = cleanMoney(priceUsd);
-    const currentPrice = pVal != null ? pVal : (qVal > 0 && vVal != null ? vVal / qVal : null);
-    out.push({
-      ticker,
-      name: name || ticker,
-      asset_type: normType,
-      market: normMarket,
-      quantity: qVal,
-      avg_buy_price: null,
-      current_price: currentPrice,
-      current_value_usd: vVal,
-      weight_pct: wVal,
-      return_pct: rVal,
-    });
-  }
-  return out;
-}
-
-function parseTotals(lines) {
-  const t = findTableAfter(lines, /^###\s+포트폴리오\s*총액/);
-  let totalUsd = null;
-  if (t) {
-    for (const row of t.rows) {
-      if (row.length < 2) continue;
-      const label = stripBold(row[0]);
-      if (/총액/.test(label)) {
-        totalUsd = cleanMoney(row[1]);
-        break;
-      }
-    }
-  }
-  let fx = null;
-  for (const line of lines) {
-    if (/환율/.test(line) && /원/.test(line)) {
-      const m = line.match(/([\d,]+\.\d+)\s*원/);
-      if (m) { fx = cleanMoney(m[1]); break; }
-    }
-  }
-  const totalKrw = totalUsd && fx ? totalUsd * fx : null;
-  return { total_value_usd: totalUsd, exchange_rate: fx, total_value_krw: totalKrw };
 }
 
 // ────────────────────────────────────────────────────────────────────────
@@ -264,6 +144,16 @@ async function upsertPortfolio(sb, userId, parsed) {
 // 메인
 // ────────────────────────────────────────────────────────────────────────
 const md = await readFile(PORTFOLIO_MD, 'utf-8');
+
+// schema contract: frontmatter holdings_table_columns vs 실제 표 헤더 비교 (P1-4)
+const schemaErr = checkSchemaContract(md);
+if (schemaErr) {
+  fail(`schema contract 위반: ${schemaErr}`);
+  if (!STRICT) process.exit(0);
+} else {
+  info(`schema contract 검증 통과 (frontmatter ↔ 표 헤더 일치)`);
+}
+
 let parsed;
 try {
   const current = extractCurrentSection(md);
@@ -274,9 +164,19 @@ try {
     ...parseTotals(lines),
   };
 } catch (e) {
-  warn(`파싱 실패: ${e.message}`);
-  process.exit(0); // graceful (빌드 깨지 않음)
+  fail(`파싱 실패: ${e.message}`);
+  if (!STRICT) process.exit(0);
 }
+
+// 사전 검증 게이트 (parsed 데이터 무결성)
+const failures = validateParsed(parsed);
+if (failures.length > 0) {
+  err(`사전 검증 실패 ${failures.length}건:`);
+  for (const f of failures) err(`  - ${f}`);
+  fail(`parsed 데이터 무결성 검증 실패 — supabase 갱신 차단`);
+  if (!STRICT) process.exit(0);
+}
+info(`사전 검증 통과 (holdings=${parsed.holdings.length}, total=$${parsed.total_value_usd})`);
 
 let createClient;
 try {
@@ -289,10 +189,32 @@ try {
 const sb = createClient(URL, KEY, { auth: { persistSession: false, autoRefreshToken: false } });
 try {
   const userId = await getUserId(sb, EMAIL);
-  if (!userId) { warn(`Supabase에 사용자 ${EMAIL} 미등록 — skip`); process.exit(0); }
+  if (!userId) {
+    fail(`Supabase에 사용자 ${EMAIL} 미등록`);
+    if (!STRICT) process.exit(0);
+  }
   const { portfolioId, n } = await upsertPortfolio(sb, userId, parsed);
+  info(`upsert OK (id=${portfolioId.slice(0, 8)}…, ${n} holdings, total=$${parsed.total_value_usd ?? '?'})`);
+
+  // 사후 검증: read-back 으로 supabase 실제 데이터 검사
+  const { data: rb, error: rbErr } = await sb
+    .from('holdings')
+    .select('ticker, weight_pct, return_pct, asset_type')
+    .eq('portfolio_id', portfolioId);
+  if (rbErr) {
+    fail(`read-back 실패: ${rbErr.message}`);
+    if (!STRICT) process.exit(0);
+  }
+  const rbNonCash = (rb ?? []).filter((h) => h.asset_type !== 'CASH');
+  const rbWOk = rbNonCash.filter((h) => h.weight_pct != null && h.weight_pct > 0).length;
+  const rbWRate = rbNonCash.length > 0 ? rbWOk / rbNonCash.length : 0;
+  if (rbNonCash.length === 0 || rbWRate < 0.8) {
+    fail(`read-back 검증 실패: holdings ${rbNonCash.length}건, weight_pct 추출률 ${(rbWRate * 100).toFixed(0)}% — supabase 데이터 무결성 깨짐`);
+    if (!STRICT) process.exit(0);
+  }
+  info(`read-back 검증 통과 (${rbNonCash.length} holdings, weight_pct ${(rbWRate * 100).toFixed(0)}% 커버)`);
   info(`OK: portfolio synced (id=${portfolioId.slice(0, 8)}…, ${n} holdings, total=$${parsed.total_value_usd ?? '?'})`);
 } catch (e) {
-  warn(`Supabase 호출 실패: ${e.message}`);
-  process.exit(0); // graceful — 빌드는 계속
+  fail(`Supabase 호출 실패: ${e.message}`);
+  if (!STRICT) process.exit(0);
 }

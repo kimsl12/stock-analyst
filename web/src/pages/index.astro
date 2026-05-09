@@ -19,6 +19,15 @@ import manifest from '../data/manifest.json';
 import kb from '../data/kb.json';
 import { createServerClient, type Portfolio, type Holding } from '../lib/supabase.ts';
 
+// P2-6: portfolio 헬스체크 결과 (build 시점 prebuild 가 생성)
+type HealthPayload = { status: 'healthy' | 'unhealthy' | 'unknown'; reason: string | null; checked_at: string; checks?: Array<{ name: string; ok: boolean; detail: string }> };
+let health: HealthPayload = { status: 'unknown', reason: null, checked_at: '', checks: [] };
+try {
+  health = (await import('../data/health.json')).default as HealthPayload;
+} catch {
+  /* graceful */
+}
+
 // --- 포트폴리오 (A1, A2, A3 데이터) ---
 const sb = createServerClient();
 let portfolio: Portfolio | null = null;
@@ -98,6 +107,13 @@ const totalKrwFmt = totalKrw != null ? `₩${totalKrw.toLocaleString('en-US', { 
       value={kbValue}
       sub={last_lint ? `last lint: ${last_lint}` : 'wiki-linter 미실행'}
       tone={kbTone as 'up' | 'down' | 'warn'}
+    />
+    <StatCard
+      label="포트폴리오 데이터 헬스"
+      value={health.status === 'healthy' ? '정상' : health.status === 'unhealthy' ? '경고' : '미확인'}
+      sub={health.status === 'unhealthy' ? (health.reason ?? '검증 실패') : (health.checks ? `${health.checks.filter((c) => c.ok).length}/${health.checks.length} 통과` : '미실행')}
+      tone={(health.status === 'healthy' ? 'up' : health.status === 'unhealthy' ? 'warn' : 'warn') as 'up' | 'down' | 'warn'}
+      href="/portfolio"
     />
   </section>
 
