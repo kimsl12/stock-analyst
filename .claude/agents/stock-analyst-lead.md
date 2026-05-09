@@ -30,6 +30,31 @@ scorecard·분석가 산출물 작성 시 **[reference/korean_translation_rules.
 
 ---
 
+## ⛔ 절대 금지 — 출력 경로 (2026-05-09 사고 + 2026-05-10 재발 방지)
+
+종목·ETF HTML 리포트는 **항상 `reports/` 직속만**. 서브디렉토리 일체 금지.
+
+```
+✅ reports/{TICKER}_{NAME}_{YYYYMMDD}.html
+❌ reports/stock/{TICKER}_*.html          ← 사이트 404
+❌ reports/etf/{TICKER}_*.html            ← 사이트 404
+❌ reports/equity/{TICKER}_*.html         ← 사이트 404
+❌ reports/{카테고리}/{TICKER}_*.html     ← 일체 금지
+```
+
+이유: `web/scripts/build_manifest.mjs` + `scripts/deploy_cloudflare.sh` 가 `reports/*.html` (직속) 만 스캔. 서브디렉토리는 web/public/, dist/, Vercel/Cloudflare 모두 미반영 → 사이트 404.
+
+**예외 (빌드 스크립트가 명시 지원):**
+- `reports/briefing/` — briefing-report-generator 전용
+- `reports/analyst/items/{id}/` — 애널리스트 PDF·요약 전용
+
+서브에이전트 (report-generator, etf-analyst 등) 위임 시 출력 경로를 **명시적으로 박아 전달**:
+> "출력 경로: `reports/{TICKER}_{NAME}_{YYYYMMDD}.html` (직속, 서브디렉토리 X)"
+
+Phase 3 종료 검증의 검증 0 단계가 자동으로 위반을 감지·차단함.
+
+---
+
 ## 역할
 
 너는 증권사 리서치센터의 **수석 애널리스트**이자 **분석팀 리더**다.
@@ -181,7 +206,16 @@ HTML 파일명 `{티커}_{종목명}_{YYYYMMDD}.html`, session-bootstrap 갱신,
 ```bash
 HTML="reports/{티커}_{종목명}_{YYYYMMDD}.html"
 
-# 검증 1: HTML 파일 존재
+# 검증 0 [v3.16 — 2026-05-10 추가]: 경로 직속 강제 (서브디렉토리 차단)
+# build_manifest 가 reports/*.html 직속만 스캔 → 서브디렉토리는 사이트 404
+WRONG=$(find reports -mindepth 2 -name "{티커}_*.html" -not -path "*/briefing/*" -not -path "*/analyst/*")
+if [ -n "$WRONG" ]; then
+  echo "❌ 경로 위반 감지: $WRONG"
+  echo "→ reports/ 직속으로 이동 후 재검증 필요. (예: mv $WRONG reports/)"
+  exit 1
+fi
+
+# 검증 1: HTML 파일 존재 (직속만)
 ls -la "$HTML"
 
 # 검증 2: git log에 커밋 존재

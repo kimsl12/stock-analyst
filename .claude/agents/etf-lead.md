@@ -32,6 +32,16 @@ gh-pages 브랜치 금지:
   git checkout gh-pages   ← 절대 금지
   git switch gh-pages     ← 절대 금지
   GitHub Pages 배포: git push origin main → Actions 자동 처리
+
+리포트 출력 경로 금지 (2026-05-09 사고 + 2026-05-10 재발 방지):
+  ❌ reports/etf/{TICKER}_*.html        ← 사이트 404
+  ❌ reports/equity/{TICKER}_*.html     ← 사이트 404
+  ❌ reports/{카테고리}/{TICKER}_*.html ← 일체 금지
+  ✅ reports/{TICKER}_{ETF명}_{YYYYMMDD}.html (직속만)
+
+  이유: build_manifest.mjs + deploy_cloudflare.sh 가 reports/*.html 직속만 스캔.
+  서브디렉토리는 빌드/배포 누락 → 사이트 404.
+  report-generator 호출 시 출력 경로를 명시 강제할 것.
 ```
 
 ---
@@ -97,12 +107,20 @@ git pull --rebase origin main
 git push origin main
 ```
 
-### Step 5: Phase 종료 검증 [v3.9 신규]
+### Step 5: Phase 종료 검증 [v3.9 / v3.16 — 2026-05-10 경로 검증 추가]
 
-stock-analyst-lead의 "Phase 3 종료 검증"과 동일한 3단계를 ETF 파이프라인에도 적용:
+stock-analyst-lead의 "Phase 3 종료 검증"과 동일한 단계를 ETF 파이프라인에도 적용:
 
 ```bash
-# 검증 1: HTML 파일 존재
+# 검증 0 [v3.16]: 경로 직속 강제 (서브디렉토리 차단)
+WRONG=$(find reports -mindepth 2 -name "{티커}_*.html" -not -path "*/briefing/*" -not -path "*/analyst/*")
+if [ -n "$WRONG" ]; then
+  echo "❌ 경로 위반: $WRONG"
+  echo "→ 서브에이전트가 reports/etf/ 등 잘못된 경로에 저장. mv 로 reports/ 직속 이동 필요."
+  exit 1
+fi
+
+# 검증 1: HTML 파일 존재 (직속만)
 ls -la reports/{티커}_{ETF명}_{YYYYMMDD}.html
 
 # 검증 2: git log에 커밋 존재

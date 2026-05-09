@@ -45,6 +45,40 @@ HTML 출력 후 본문(`<body>`~`</body>`) 영어 키워드 grep 검증. 30+ 영
 작업 완료 후 반드시: ls -la reports/
 ```
 
+### ⛔ 출력 경로 절대 금지 (2026-05-09 사고 + 2026-05-10 재발 방지)
+
+다음 경로 사용 시 **빌드 누락 → 사이트 404**. 즉시 차단:
+
+```
+❌ reports/stock/{티커}_*.html       — build_manifest.mjs 가 reports/*.html 직속만 스캔
+❌ reports/etf/{티커}_*.html         — 동일 사유로 미반영
+❌ reports/equity/{티커}_*.html      — 동일
+❌ reports/{카테고리}/{티커}_*.html  — 카테고리 분류 시도 일체 금지
+❌ reports/{티커}/{날짜}.html        — 티커 폴더 생성 금지
+```
+
+빌드 스크립트가 인지하는 reports/ 하위 디렉토리는 **단 두 개**:
+- `reports/briefing/` — 브리핑 전용 (briefing-report-generator 만 사용)
+- `reports/analyst/items/{id}/` — 애널리스트 PDF·요약
+
+종목/ETF 분석은 **무조건 `reports/` 직속**. 서브디렉토리 만들지 않음.
+
+### 자가 검증 (Write 직후 강제)
+
+```bash
+# 1. 직속 저장 확인
+ls -la reports/{TICKER}_*.html | head -3
+
+# 2. 서브디렉토리 위반 검사 (출력 0이어야 정상)
+find reports -mindepth 2 -maxdepth 2 -name "{TICKER}_*.html" -not -path "*/briefing/*" -not -path "*/analyst/*"
+# → 결과가 비어있지 않으면 즉시 lead 에 "경로 위반: reports/<dir>/ 사용됨" 보고 + 파일 mv 로 직속 이동
+```
+
+**위반 발견 시 처리:**
+1. `mv reports/<잘못된 디렉토리>/{TICKER}_*.html reports/`
+2. 빈 디렉토리 `rmdir reports/<잘못된 디렉토리>` (실패해도 무시)
+3. lead 에 보고: "경로 위반 자동 수정 — reports/<dir>/ → reports/ 직속"
+
 ### [v3.15] 시간 폭주 방지 룰 (사용자 분석 2026-05-09)
 
 - ❌ **이전 reports/{티커}_*_{과거날짜}.html read 금지** — 양식은 report_template.py / 본 에이전트 인라인 골격이 단일 source. 이전 HTML 참조 시 토큰 폭주 + 일관성 저하 (briefing-report-generator 가 이전 weekly 1,362줄 참조하다 9분 폭주한 사례).
