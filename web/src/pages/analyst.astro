@@ -22,7 +22,12 @@ interface AnalystItem {
   summary_bullets?: string[];
 }
 
-const items = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+// analyst 카드는 manifest 전역 sort_key (commit time) 대신 meta.date DESC 로 별도 정렬.
+// [v3.16 — 2026-05-10] 32건이 5/7 한 commit 으로 묶여 sort_key 동일 →
+// filename ('summary.html') 모두 같아 tie-breaker 가 디렉토리 순회 순(알파벳=날짜 ASC)으로
+// 떨어져 오래된 리포트가 위로 보이는 문제. /analyst 페이지에선 발행일 DESC 가 의미상 맞음.
+const items = (manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[])
+  .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 
 // Source-type별 그룹 (필터링 용)
 const sourceTypes = {

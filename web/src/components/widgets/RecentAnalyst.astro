@@ -19,7 +19,10 @@ interface AnalystItem {
 }
 
 const LIMIT = 6;
-const allAnalyst = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+// [v3.16] manifest 전역 sort_key (commit time) 대신 발행일 DESC 로 정렬.
+// analyst 32건이 한 commit 으로 묶여 sort_key 동일 → tie-breaker 가 디렉토리 순회순으로 떨어지는 문제.
+const allAnalyst = (manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[])
+  .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 const items = allAnalyst.slice(0, LIMIT);
 const total = allAnalyst.length;
 
