@@ -253,6 +253,18 @@ LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
   [ "$RATIO" -lt 80 ] && KFAIL+=("korean-ratio-${RATIO}%")
 }
 [ ${#KFAIL[@]} -gt 0 ] && echo "⚠️ 한국어 검증 실패: ${KFAIL[*]} → 매핑 사전대로 본문 교체 후 report-generator 재호출"
+
+# 검증 6 [v3.16 — 2026-05-10 추가]: manifest staleness (push 직전 안전망)
+# reports/ 변경이 staged 됐는데 web/src/data/manifest.json 이 함께 staged 되지 않으면 차단.
+# Vercel 빌드는 .git 미포함이라 manifest 가 commit 된 snapshot 이어야 시간순 정렬 반영됨.
+if git diff --cached --name-only | grep -qE '^reports/.*\.html$'; then
+  if ! git diff --cached --name-only | grep -q '^web/src/data/manifest\.json$'; then
+    echo "❌ manifest 누락 — reports/ 변경 staged 됐으나 web/src/data/manifest.json 미동기화"
+    echo "→ 다음 명령으로 동기화 후 재검증:"
+    echo "    (cd web && node scripts/build_manifest.mjs) && git add web/src/data/manifest.json"
+    exit 1
+  fi
+fi
 ```
 
 ### 검증 실패 시 대응
@@ -263,6 +275,7 @@ LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
 | 커밋 누락 | 리드가 직접 `git add reports/{특정파일.html}` + commit + push 수행 |
 | bootstrap 누락 | 리드가 직접 Edit로 "마지막 종목분석" + "analysis/ 유효 파일" 행 추가 |
 | **디자인 표준 위반** [v3.13] | **report_template.py 갱신 누락 또는 의도적 우회** — root에서 `head -50 report_template.py` 로 CSS 변수 확인. 누락 시 표준 변수(--debate/--contrarian/--up/--down 등) 추가 후 report-generator 재호출 |
+| **manifest 누락** [v3.16] | `(cd web && node scripts/build_manifest.mjs) && git add web/src/data/manifest.json` 실행 후 commit 다시 시도 |
 
 **검증 통과 후에만** Executive Summary 출력 허용.
 
@@ -708,6 +721,12 @@ git add "analysis/_history/"                        # timeline.json 갱신분
 git add session-bootstrap.md
 # analysis/_archive/, reports/_archive/ 는 .gitignore (로컬만 유지)
 
+# manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
+#   Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
+#   manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
+(cd web && node scripts/build_manifest.mjs)
+git add web/src/data/manifest.json
+
 git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
 git pull --rebase origin main
 git push origin main
@@ -851,6 +870,14 @@ git checkout main 2>/dev/null || true
 #    ❌ git add reports/  (폴더 전체 add 금지 — 병렬 실행 시 다른 에이전트 산출물이 섞임)
 #    ✅ 생성한 HTML만 파일명 지정
 git add reports/{종목코드}_{종목명}_{YYYYMMDD}.html
+
+# 2.5 manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
+#    Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
+#    manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
+#    이 단계 누락 시 본서버 카드 시간순 정렬에 새 분석 안 보임 (5/10 사고 재발 방지).
+(cd web && node scripts/build_manifest.mjs)
+git add web/src/data/manifest.json
+
 git commit -m "analysis({티커}): {종목명} 분석 {등급} {스코어}"
 
 # 3. 충돌 방지 후 직접 push
