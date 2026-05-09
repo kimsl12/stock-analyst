@@ -12,6 +12,7 @@
  */
 import { readdir, readFile, stat, mkdir, writeFile, rm, cp } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nowKstIsoShort } from './_kst.mjs';
@@ -56,6 +57,61 @@ const RE_STOCK = /^([0-9A-Z][0-9A-Za-z]*)_(.+)_(\d{8})\.html$/;
 const RE_TITLE = /<title[^>]*>([\s\S]*?)<\/title>/i;
 
 const fmtDate = (s) => `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`;
+
+// ---------------------------------------------------------------------------
+// sort_key (commit time 기반, 시간순 정렬용)  [v3.16 — 2026-05-10]
+// ---------------------------------------------------------------------------
+// reports/ 하위 모든 파일의 가장 최근 commit unix time 을 일괄 추출.
+// shallow clone (Vercel 기본) 에서 history 부족 시 빈 Map 반환 → fallback chain 작동.
+export function getCommitTimes(repoRoot = PROJECT_ROOT) {
+  const map = new Map();
+  let raw = '';
+  try {
+    raw = execSync(
+      `git log --name-only --pretty=format:'__C__|%ct' --diff-filter=AM -- 'reports/*.html' 'reports/briefing/*.html' 'reports/analyst/items/*'`,
+      {
+        cwd: repoRoot,
+        encoding: 'utf-8',
+        maxBuffer: 50 * 1024 * 1024,
+        stdio: ['ignore', 'pipe', 'pipe'],
+      },
+    );
+  } catch (e) {
+    console.error(`WARN: git log 실패 — fallback 사용 (${e.message.split('\n')[0]})`);
+    return map;
+  }
+  let currentTs = null;
+  for (const line of raw.split('\n')) {
+    const t = line.trim();
+    if (!t) continue;
+    if (t.startsWith('__C__|')) {
+      currentTs = Number(t.slice(6));
+      if (!Number.isFinite(currentTs)) currentTs = null;
+    } else if (currentTs && t.startsWith('reports/')) {
+      // git log 는 최신 → 과거 순 출력. 첫 번째만 저장 = 가장 최근 commit time.
+      if (!map.has(t)) map.set(t, currentTs);
+    }
+  }
+  return map;
+}
+
+// 파일경로 → unix sort_key. fallback chain:
+//   1. git commit time (최신)
+//   2. filename YYYYMMDD + 12:00 UTC
+//   3. 0 (가장 아래)
+export function deriveSortKey(relPath, gitTimes) {
+  const ts = gitTimes.get(relPath);
+  if (ts) return ts;
+  const m = /(\d{8})/.exec(path.basename(relPath));
+  if (m) {
+    const y = m[1].slice(0, 4);
+    const mo = m[1].slice(4, 6);
+    const d = m[1].slice(6, 8);
+    const epoch = Math.floor(new Date(`${y}-${mo}-${d}T12:00:00Z`).getTime() / 1000);
+    if (Number.isFinite(epoch)) return epoch;
+  }
+  return 0;
+}
 
 function parseBriefing(filename) {
   const m = RE_BRIEFING.exec(filename);
@@ -155,6 +211,11 @@ async function main() {
   const items = [];
   const warnings = [];
 
+  // [v3.16] 모든 reports/ 파일의 git commit time 일괄 추출
+  const gitTimes = getCommitTimes(PROJECT_ROOT);
+  let gitHits = 0;
+  let gitMisses = 0;
+
   // 1. reports/briefing/*.html
   const briefingDir = path.join(REPORTS_DIR, 'briefing');
   for (const fn of await listHtml(briefingDir)) {
@@ -165,12 +226,16 @@ async function main() {
     }
     const filepath = path.join(briefingDir, fn);
     const st = await stat(filepath);
+    const relPath = `reports/briefing/${fn}`;
+    const sortKey = deriveSortKey(relPath, gitTimes);
+    if (gitTimes.has(relPath)) gitHits++; else gitMisses++;
     items.push({
       ...meta,
       filename: fn,
       url_path: `/reports/briefing/${fn}`,
       size_bytes: st.size,
       title: await extractTitle(filepath),
+      sort_key: sortKey,
     });
   }
 
@@ -183,12 +248,16 @@ async function main() {
     }
     const filepath = path.join(REPORTS_DIR, fn);
     const st = await stat(filepath);
+    const relPath = `reports/${fn}`;
+    const sortKey = deriveSortKey(relPath, gitTimes);
+    if (gitTimes.has(relPath)) gitHits++; else gitMisses++;
     items.push({
       ...meta,
       filename: fn,
       url_path: `/reports/${fn}`,
       size_bytes: st.size,
       title: await extractTitle(filepath),
+      sort_key: sortKey,
     });
   }
 
@@ -204,6 +273,14 @@ async function main() {
       try {
         const meta = JSON.parse(await readFile(metaPath, 'utf-8'));
         const st = existsSync(summaryPath) ? await stat(summaryPath) : { size: 0 };
+        // analyst 는 summary.html 의 commit time 우선, 없으면 meta.json
+        const summaryRel = `reports/analyst/items/${sub.name}/summary.html`;
+        const metaRel = `reports/analyst/items/${sub.name}/meta.json`;
+        const candidatePath = gitTimes.has(summaryRel) ? summaryRel : metaRel;
+        const sortKey = deriveSortKey(candidatePath, gitTimes) ||
+          // fallback to meta.date YYYY-MM-DD + 12:00 UTC
+          (meta.date ? Math.floor(new Date(`${meta.date}T12:00:00Z`).getTime() / 1000) : 0);
+        if (gitTimes.has(summaryRel) || gitTimes.has(metaRel)) gitHits++; else gitMisses++;
         items.push({
           type: 'analyst',
           ticker: meta.source || null, // MS / GS / CNBC / LS 등 (UI 의 ticker 슬롯에 source 표시)
@@ -213,6 +290,7 @@ async function main() {
           url_path: `/reports/analyst/items/${sub.name}/summary.html`,
           size_bytes: st.size,
           title: meta.title,
+          sort_key: sortKey,
           // analyst 전용 메타 (Astro 페이지에서 사용)
           source: meta.source_full || meta.source,
           source_type: meta.source_type,
@@ -231,10 +309,16 @@ async function main() {
     }
   }
 
-  // 정렬: date desc → 같은 날짜 안에선 브리핑 타입의 시간 흐름 순 (큰 rank = 더 최신)
-  // 예: 2026-05-07 morning < global_intelligence < evening (저녁 = 가장 최신)
-  // [v3.7 수정] 기존 filename DESC 알파벳 정렬은 m > g > e 순서로 morning 이 위에 와서
-  // 대시보드 "마지막 브리핑" 카드가 evening 대신 morning 을 표시하던 버그.
+  // 정렬 [v3.16 — 2026-05-10]: sort_key (commit time) DESC → type rank DESC → filename ASC
+  //
+  // 이전 (v3.7): date DESC → type rank DESC → filename DESC
+  //   문제: 종목분석/etf/analyst 는 type rank 미등록 → 항상 브리핑 묶음 다음에 처박힘.
+  //         예) 5/9 새벽 모닝브리핑이 5/9 낮 종목분석보다 위에 표시됨 (시간역행).
+  //
+  // 변경 (v3.16): commit time 기반 시간순 섞기. 브리핑/종목 type 무관 만든 시각 DESC.
+  //   - sort_key = git commit unix time (없으면 filename YYYYMMDD 자정)
+  //   - 같은 sort_key (= 같은 commit, 묶음분석): type rank DESC (evening > morning) 로 안정화
+  //   - 그래도 동일하면 filename ASC (티커 알파벳)
   const TYPE_TIME_RANK = {
     morning: 1,
     weekly: 2,
@@ -247,12 +331,13 @@ async function main() {
     daily_briefing: 0,     // legacy
   };
   items.sort((a, b) => {
-    if (a.date !== b.date) return b.date.localeCompare(a.date);
-    // 같은 날짜: 브리핑 타입 시간 순서 DESC (evening 이 morning 보다 위)
+    const sa = a.sort_key ?? 0;
+    const sb = b.sort_key ?? 0;
+    if (sa !== sb) return sb - sa;                    // 1차: commit time DESC
     const ra = TYPE_TIME_RANK[a.type] ?? -1;
     const rb = TYPE_TIME_RANK[b.type] ?? -1;
-    if (ra !== rb) return rb - ra;
-    return b.filename.localeCompare(a.filename);
+    if (ra !== rb) return rb - ra;                    // 2차: type rank DESC
+    return a.filename.localeCompare(b.filename);      // 3차: filename ASC (안정 tie-breaker)
   });
 
   // [v3.14] 같은 (type, ticker, name) stock_analysis/etf 는 최신 1개만 manifest 등재
@@ -301,6 +386,7 @@ async function main() {
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
   console.log(`OK: manifest 생성 (${items.length} items${dropped > 0 ? `, dedupe -${dropped}` : ''}, ${copied} HTMLs copied) → ${rel}`);
+  console.log(`  sort_key: git ${gitHits} hits / ${gitMisses} fallback (filename YYYYMMDD)`);
   if (warnings.length) {
     console.error(`  (${warnings.length} warnings)`);
     for (const w of warnings.slice(0, 10)) console.error(`  WARN: ${w}`);
@@ -308,7 +394,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error('ERR:', err);
-  process.exit(1);
-});
+// CLI 실행 가드 (단위 테스트에서 import 시 main() 자동 실행 방지)
+// 한글 경로/공백 등 URL encoding 차이로 직접 비교가 실패할 수 있어 fileURLToPath 로 정규화.
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  main().catch((err) => {
+    console.error('ERR:', err);
+    process.exit(1);
+  });
+}
