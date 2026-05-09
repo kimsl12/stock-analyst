@@ -447,7 +447,20 @@ ls -la analysis/{종목코드}_{종목명}/
 6. **scorecard-strategist** — 종목 유형 + 가중치 적용 스코어카드 + ATR 기반 손절/목표가 + 매수/매도 전략
 
 ### Phase 4: 리포트 생성
-7. **report-generator** — 전체 분석 결과를 HTML/PDF 리포트로 자동 생성
+7. **report-generator** — 전체 분석 결과를 HTML 리포트로 자동 생성
+   - **[v3.15] Write 1회 atomic 강제** — Edit 분할 금지. 부분 출력 후 점진 작성 시 토큰 폭주 + 일관성 저하
+   - **[v3.15] 이전 HTML 참조 금지** — `reports/{티커}_*_{과거날짜}.html` read 금지. 양식은 report_template.py / report-generator.md 인라인이 단일 source. 시계열 비교 데이터는 lead 가 lead.md 또는 reanalysis-tracker 산출물에서 read
+   - **[v3.15] 1회 자가 검증 실패 시 lead 가 새 호출** — generator 내부 재시도 금지, 이전 컨텍스트 폐기 후 깨끗한 상태로 재호출
+
+### Phase 4 종료 후 체크포인트 의무 [v3.15]
+
+```
+TodoWrite: Phase 4 completed
+session-bootstrap.md "마지막 종목분석" 행 갱신 (티커·날짜·등급·스코어·HTML 경로)
+session-bootstrap.md "진행 중 작업" → "없음 (clean state)" 마킹
+```
+
+compact 발생해도 즉시 진척 파악 가능 → 중복 실행 방지 (사용자 분석 2026-05-09).
 
 ---
 

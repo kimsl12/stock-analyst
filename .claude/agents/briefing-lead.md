@@ -145,6 +145,46 @@ TODAY_COMPACT=$(date +%Y%m%d)   # reports/briefing/{type}_{YYYYMMDD}.html 용
 
 ---
 
+## ⚠️ 메인 스레드 KB Read 분리 [v3.15, 2026-05-09 — 시간 폭주 방지]
+
+**배경**: 주간리포트 1회 작업 45분 소요 (정상 15~20분). KB 10개+ 직접 Read 가 컨텍스트 폭주 → compact 14분 손실 + 중복 실행 5분 (사용자 분석 2026-05-09).
+
+**룰**: KB 카테고리별 Read 분리. 메인 스레드(본 lead)는 **도메인 KB read 금지**, 서브에이전트에 위임. **룰·포트폴리오 KB 만 lead 직접 read OK**.
+
+| KB 경로 | 처리 주체 | 비고 |
+|---------|---------|-----|
+| `knowledge-base/market/` | **market-data-collector 위임** | 메인 lead Read ❌ |
+| `knowledge-base/macro/` | **global-macro-analyst 위임** | 메인 lead Read ❌ |
+| `knowledge-base/industry/` | **global-macro-analyst 위임** (해당 모듈만) | 메인 lead Read ❌ |
+| `knowledge-base/_index.md` | **wiki-linter 위임** (Phase 0-LINT) | 메인 lead Read ❌ (중복) |
+| `knowledge-base/portfolio/model_portfolios.md` | **lead 직접 Read OK** | 4종 방향 작성 시 권장 비중 참조 (작은 파일) |
+| `knowledge-base/portfolio/user_portfolio.md` | **lead 직접 Read OK** | `/내포트폴리오` 만 |
+| `knowledge-base/portfolio/insider_signals.json` | **lead 직접 Read OK** | 거물 인용 시 |
+| `reference/rules_and_constraints.md` | **lead 직접 Read OK** | 룰 자체 |
+| `reference/guru_watchlist.md` | **lead 직접 Read OK** | 거물 8인 |
+| `reference/korean_translation_rules.md` | **lead 직접 Read OK** | 매핑 사전 |
+| `reference/source_registry.md` | **lead 직접 Read OK** | 소스 등록부 |
+| `knowledge-db/performance/` | **lead 직접 Read OK (R+W)** | 성과 추적 누적 |
+
+**위반 감지**: Phase 0~3 진행 중 메인 lead 가 도메인 KB (market/macro/industry/_index) 를 Read 시도 → 즉시 중단, 해당 서브에이전트에 위임.
+
+---
+
+## 시계열 비교 데이터 lead 책임 [v3.15]
+
+이전 주 대비 변화·시나리오 적중률·성과 추적 등 시계열 비교는 **lead 가 누적 파일에서 직접 read** 후 lead_*.md 에 기록. **briefing-report-generator 는 변환만**.
+
+| 누적 파일 | 용도 |
+|---------|-----|
+| `knowledge-db/performance/scenario_tracking.md` | 시나리오 적중·미적중 추적 |
+| `knowledge-db/performance/2026_recommendations.md` | 추천 종목 성과 |
+| `knowledge-db/performance/2026_hit_rate.md` | 적중률 누적 |
+| `analysis/briefing/lead_*_{이전날짜}.md` | 직전 회차 lead 본문 (양식 참고 X, 시계열 비교 데이터만) |
+
+**briefing-report-generator 는 이전 reports/briefing/*.html 절대 read 금지** (양식은 generator.md 인라인 CSS 표준이 source). 시계열 비교 데이터는 lead 가 lead_*.md 에 미리 기록 후 generator 가 변환.
+
+---
+
 ## 호출 가능한 하위 에이전트
 
 | 에이전트 | 모델 | 역할 | 호출 시점 |
@@ -1022,27 +1062,37 @@ knowledge-base/_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 ap
 
 ## 워크플로 (모든 명령 공통 골격)
 
-1. **[Phase 0-LINT]** wiki-linter (mode=quick) 호출 [v3.2 신규]
-2. **Read** `reference/rules_and_constraints.md` (31개 금지 조항)
-3. **Read** `reference/source_registry.md` (37개 소스)
-4. **Read** `reference/guru_watchlist.md` (8인 명단)
-5. 명령별 Phase 0-A (market-data-collector 호출)
-6. 명령별 Phase 0-B (global-macro-analyst / correlation-monitor 호출 — 병렬 가능 시)
-7. **Read** `analysis/briefing/*_{YYYYMMDD}.md` (하위 에이전트 산출물)
-8. **Read** 필요 시 `knowledge-base/market/*.md` , `knowledge-base/macro/*.md` , `knowledge-base/portfolio/*.md`
-9. **Read** `knowledge-db/performance/2026_recommendations.md` (직전 제안 컨텍스트)
-10. briefing-lead 종합 작성 (debate-card, contrarian-card, 4종 방향, 시차 고지)
-11. **Write** `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
-12. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
-13. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
-14. **[Step 8.6] knowledge-base/_index.md "최근 핵심 인사이트" append** [v3.2 신규]
-15. **Task** `briefing-report-generator` 호출 (template={모듈명}, **run_in_background=true**) [v3.15]
+> **[v3.15 체크포인트 의무]** 각 Phase 완료 시 **TodoWrite 갱신** + **session-bootstrap.md "진행 중 작업" 행 갱신** 강제. compact 발생 시 즉시 어디까지 됐는지 파악 가능 → 중복 실행 방지. 사용자 분석(2026-05-09) 에서 "compact 후 5분 중복 실행" 손실 확인.
+
+1. **[Phase 0-LINT]** wiki-linter (mode=quick) 호출 [v3.2]
+   ↳ 완료 후 TodoWrite: Phase 0-LINT completed
+2. **Read** `reference/rules_and_constraints.md` + `reference/source_registry.md` + `reference/guru_watchlist.md` + `reference/korean_translation_rules.md` (룰 4종 일괄)
+   ↳ 도메인 KB(market/macro/industry/_index) Read 금지 — 서브에이전트 위임 전제 [v3.15]
+3. **Phase 0-A**: market-data-collector 호출 (시장 데이터 + 도메인 KB market/ 처리)
+   ↳ 완료 후 TodoWrite: Phase 0-A completed + bootstrap 갱신
+4. **Phase 0-B**: global-macro-analyst / correlation-monitor 병렬 호출 (해당 모듈) — 도메인 KB macro/, industry/ 처리
+   ↳ 완료 후 TodoWrite: Phase 0-B completed + bootstrap 갱신
+5. **Read** `analysis/briefing/*_{YYYYMMDD}.md` (하위 에이전트 산출물 — 위에서 위임한 도메인 해석)
+6. **Read** `knowledge-base/portfolio/*.md` (model_portfolios, user_portfolio — 작은 룰 파일, 메인 직접 OK [v3.15])
+7. **Read** `knowledge-db/performance/2026_recommendations.md` + `scenario_tracking.md` (직전 제안 + 시계열 비교 데이터 [v3.15])
+8. **briefing-lead 종합 작성** (debate-card, contrarian-card, 4종 방향, 시차 고지, 시계열 비교 데이터 lead.md 에 명시 기록 — generator 가 이전 HTML 안 봐도 변환 가능하도록)
+   ↳ 완료 후 TodoWrite: lead.md 작성 completed + bootstrap 갱신
+9. **Write** `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
+10. **(`/리밸런싱`, `/모델포트폴리오`, `/내포트폴리오`):** KB portfolio/ 갱신
+11. **knowledge-db/performance/2026_recommendations.md append** (신규 제안 1행씩)
+12. **[Step 8.6] knowledge-base/_index.md "최근 핵심 인사이트" append** [v3.2]
+13. **Task** `briefing-report-generator` 호출 (template={모듈명}, **run_in_background=true**) [v3.15]
     → reports/briefing/{type}_{YYYYMMDD}.html 생성 (백그라운드)
-    → 에이전트 완료를 기다리지 않고 step 16 즉시 진행 (§ Phase 0-D 실패 처리 참조)
-16. **자동 commit/push** (위 Bash 블록 — `knowledge-base/_index.md` 포함. HTML 미생성 시에도 진행)
-17. **사용자 보고** (HTML 포함 시 다운로드 링크, 미포함 시 "HTML 생성 진행중" 안내)
-17.5 **백그라운드 에이전트 완료 통보 수신 시** → 후속 커밋 (§ 자동 commit/push 후속 커밋 참조)
-18. 자가 검증:
+    → **Write 1회 강제** (Edit 분할 금지 — 71KB HTML 한 번에 [v3.15])
+    → **이전 HTML 참조 금지** — generator 는 lead.md + KB market/portfolio + reference 만 [v3.15]
+    → 1회 자가 검증 실패 시 lead 가 generator **새로 호출** (이전 컨텍스트 폐기, 동일 input)
+    → 에이전트 완료를 기다리지 않고 step 14 즉시 진행
+14. **자동 commit/push** (위 Bash 블록 — `knowledge-base/_index.md` 포함. HTML 미생성 시에도 진행)
+    ↳ 완료 후 TodoWrite: commit completed + bootstrap "마지막 브리핑" 행 갱신
+15. **사용자 보고** (HTML 포함 시 다운로드 링크, 미포함 시 "HTML 생성 진행중" 안내)
+    → 링크는 Vercel 본서버 URL 사용 (stock-analyst-jungwon1.vercel.app — Cloudflare 미러는 stale 시 fallback)
+15.5 **백그라운드 에이전트 완료 통보 수신 시** → 후속 커밋
+16. 자가 검증:
     - debate-card ≥ 1건, contrarian-card ≥ 1건
     - 13F 시차 고지 보존
     - 4종 포트폴리오 방향 누락 없음 (해당 모듈)

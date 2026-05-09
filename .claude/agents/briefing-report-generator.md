@@ -76,10 +76,12 @@ reports/briefing/{type}_{YYYYMMDD}.html
 
 ```
 ✅ 읽기 가능:
-   - analysis/briefing/                  (briefing-lead 의 모든 lead_*.md + 하위 분석가 산출물)
+   - analysis/briefing/lead_{type}_{YYYYMMDD}.md  (briefing-lead 의 본 회차 산출물)
+   - analysis/briefing/{하위 분석가 산출물}        (해당 회차)
    - knowledge-base/market/              (수치 표 인용)
    - knowledge-base/portfolio/           (4종 포트폴리오 비중)
    - reference/rules_and_constraints.md  (푸터 주의사항)
+   - reference/korean_translation_rules.md (영어→한글 매핑 사전 [v3.14])
 
 ✅ 쓰기 가능:
    - reports/briefing/{type}_{YYYYMMDD}.html
@@ -88,10 +90,21 @@ reports/briefing/{type}_{YYYYMMDD}.html
    - knowledge-base/macro/, industry/    (해석은 briefing-lead 가 lead_*.md 에 이미 압축)
    - knowledge-db/                       (raw 데이터 접근 불가)
    - .claude/
+   - **reports/briefing/{type}_{과거날짜}.html  [v3.15 신규]** (양식은 본 프롬프트 인라인 CSS 가 표준 — 이전 HTML 1,362줄 참조하면 9분 폭주, 사용자 분석 2026-05-09)
+   - **reports/{티커}_*.html  [v3.15]** (양식·시계열 비교 데이터는 모두 lead 가 lead_*.md 에 미리 기록)
 
 ❌ 쓰기 금지:
    - 위 ✅ 외 전체
 ```
+
+### [v3.15] 이전 HTML 참조 금지 — 시간 폭주 방지
+
+**배경**: 사용자 분석 (2026-05-09) — briefing-report-generator 가 이전 weekly HTML 1,362줄 참조하며 새 콘텐츠 매핑 시도 → 543초 (9분) 소요. 71KB HTML 1회 출력에 정상 시간은 3~4분.
+
+**룰**:
+- **이전 reports/briefing/*.html 절대 read 금지** — 양식 일관성은 본 프롬프트의 CSS·HTML 골격 인라인이 단일 source
+- **시계열 비교 데이터** (지난주 대비, 적중률, 변화 추적) 는 briefing-lead 가 누적 파일에서 read 후 lead_*.md 에 기록 → 본 에이전트는 변환만
+- 양식 의심스러우면 본 프롬프트의 § CSS 골격 / § HTML 골격 / § 모듈별 템플릿 차이 표 참조
 
 ---
 
@@ -648,6 +661,9 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 | 7 | ❌ knowledge-base/portfolio/user_portfolio.md 의 개인 데이터를 평문 노출 (template=user_portfolio, user_portfolio_v2 외) |
 | 8 | ❌ 영어 본문 |
 | 9 | ❌ 별도 .py 템플릿 파일 생성 (CSS·HTML 골격은 본 프롬프트 안에 포함) |
+| 10 | ❌ **이전 reports/briefing/*.html read [v3.15]** — 양식은 본 프롬프트 인라인 CSS 가 표준 |
+| 11 | ❌ **HTML 출력 시 Edit 분할 [v3.15]** — Write 1회 atomic 강제. Edit 으로 점진 작성 시 컨텍스트 누적 → 토큰 폭주 + 일관성 저하 |
+| 12 | ❌ **자가 검증 1회 실패 후 자체 재시도 [v3.15]** — 1회 자가 검증 실패 시 briefing-lead 에 보고 후 종료. lead 가 새 generator 재호출 (이전 컨텍스트 폐기, 동일 input → 깨끗한 출력) |
 
 ---
 
@@ -679,7 +695,7 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 8. 푸터(명령어 가이드) + 주의사항(disclaimer) 자동 삽입
    - **단 template=user_portfolio_v2 는 disclaimer 블록 SKIP** (정책: 사용자 1인 사적 콘텐츠, 면책 의도적 제거)
    - 푸터(명령어 가이드)는 user_portfolio_v2 도 유지
-9. **Write** `reports/briefing/{type}_{YYYYMMDD}.html`
+9. **Write** `reports/briefing/{type}_{YYYYMMDD}.html` — **단일 Write 1회 atomic [v3.15]**. Edit 분할 금지. 부분 출력 후 추가 Edit 시도 시 즉시 중단.
 10. 자가 검증 [v3.13 — 2026-05-04 디자인 audit 후 강화]:
     출력 후 Bash grep 으로 8항목 자체 확인. 핵심 필수 6항목 중 1개라도 실패 시 재생성 (최대 2회).
 

@@ -45,6 +45,13 @@ HTML 출력 후 본문(`<body>`~`</body>`) 영어 키워드 grep 검증. 30+ 영
 작업 완료 후 반드시: ls -la reports/
 ```
 
+### [v3.15] 시간 폭주 방지 룰 (사용자 분석 2026-05-09)
+
+- ❌ **이전 reports/{티커}_*_{과거날짜}.html read 금지** — 양식은 report_template.py / 본 에이전트 인라인 골격이 단일 source. 이전 HTML 참조 시 토큰 폭주 + 일관성 저하 (briefing-report-generator 가 이전 weekly 1,362줄 참조하다 9분 폭주한 사례).
+- ❌ **HTML Write 1회 atomic 강제** — Edit 분할 금지. 부분 출력 후 점진 작성 시 컨텍스트 누적·토큰 폭주.
+- ❌ **자가 검증 1회 실패 시 자체 재시도 금지** — 즉시 lead 에 보고 후 종료. lead 가 새 호출 (이전 컨텍스트 폐기, 깨끗한 상태로 재시작).
+- ✅ **시계열 비교 데이터는 lead.md 또는 reanalysis-tracker 산출물에서 read OK** (이전 HTML 과 다른 source).
+
 ## ⛔ 핵심 원칙 — 파일 생성 도구 규칙
 
 ```
