@@ -254,18 +254,27 @@ LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
 }
 [ ${#KFAIL[@]} -gt 0 ] && echo "⚠️ 한국어 검증 실패: ${KFAIL[*]} → 매핑 사전대로 본문 교체 후 report-generator 재호출"
 
-# 검증 6 [v3.16 — 2026-05-10 추가]: manifest staleness (push 직전 안전망)
-# reports/ 변경이 staged 됐는데 web/src/data/manifest.json 이 함께 staged 되지 않으면 차단.
-# Vercel 빌드는 .git 미포함이라 manifest 가 commit 된 snapshot 이어야 시간순 정렬 반영됨.
+# 검증 6 [v3.16 — 2026-05-10 추가]: manifest staleness 자동 복구 (push 직전 안전망)
+# reports/ 변경이 staged 됐는데 manifest 미동기화면 → 자동으로 build_manifest 실행 + add.
+# 차단(exit 1) 이 아니라 자동 복구 — LLM 에이전트가 "검증 실패" 로 종료하는 사고 방지.
+# build_manifest 자체가 실패한 경우에만 exit 1 (수동 개입 필요한 진짜 장애).
 if git diff --cached --name-only | grep -qE '^reports/.*\.html$'; then
   if ! git diff --cached --name-only | grep -q '^web/src/data/manifest\.json$'; then
-    echo "❌ manifest 누락 — reports/ 변경 staged 됐으나 web/src/data/manifest.json 미동기화"
-    echo "→ 다음 명령으로 동기화 후 재검증:"
-    echo "    (cd web && node scripts/build_manifest.mjs) && git add web/src/data/manifest.json"
-    exit 1
+    echo "⚠️ manifest 누락 감지 — 자동 복구 시도..."
+    if (cd web && node scripts/build_manifest.mjs); then
+      git add web/src/data/manifest.json
+      echo "✅ manifest 자동 동기화 완료 — commit 진행"
+    else
+      echo "❌ build_manifest 자체가 실패 — 수동 복구 필요 (web/ 디렉토리 또는 node 환경 확인)"
+      exit 1
+    fi
   fi
 fi
 ```
+
+> **자동 복구 원칙 [v3.16]**: 검증 단계에서 누락이 감지되면 **차단보다 자동 복구**.
+> exit 1 은 LLM 에이전트가 "에러 발생 → 작업 종료" 로 갈 위험이 큼. 수정 가능한 누락은
+> 그 자리에서 복구하고 commit 으로 진행. 진짜 장애(build 자체 실패)일 때만 차단.
 
 ### 검증 실패 시 대응
 
@@ -724,8 +733,12 @@ git add session-bootstrap.md
 # manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
 #   Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
 #   manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
-(cd web && node scripts/build_manifest.mjs)
-git add web/src/data/manifest.json
+#   build 실패해도 commit 진행 — Phase 3 검증 6 자동 복구가 한 번 더 시도.
+if (cd web && node scripts/build_manifest.mjs); then
+  git add web/src/data/manifest.json
+else
+  echo "⚠️ build_manifest 실패 — 검증 6 가 자동 재시도 후 차단"
+fi
 
 git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
 git pull --rebase origin main
@@ -875,8 +888,12 @@ git add reports/{종목코드}_{종목명}_{YYYYMMDD}.html
 #    Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
 #    manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
 #    이 단계 누락 시 본서버 카드 시간순 정렬에 새 분석 안 보임 (5/10 사고 재발 방지).
-(cd web && node scripts/build_manifest.mjs)
-git add web/src/data/manifest.json
+#    build 실패해도 commit 진행 — Phase 3 검증 6 자동 복구가 한 번 더 시도.
+if (cd web && node scripts/build_manifest.mjs); then
+  git add web/src/data/manifest.json
+else
+  echo "⚠️ build_manifest 실패 — 검증 6 가 자동 재시도"
+fi
 
 git commit -m "analysis({티커}): {종목명} 분석 {등급} {스코어}"
 

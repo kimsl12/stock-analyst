@@ -957,8 +957,11 @@ git add reports/briefing/ \
 #   Vercel 빌드 컨테이너에 .git 미포함 → manifest.json 의 sort_key (시간순 정렬) 가
 #   commit 된 snapshot 이어야 본서버에 반영됨. 누락 시 본서버 카드에 새 브리핑 안 보임.
 if git diff --cached --name-only | grep -qE '^reports/briefing/.*\.html$'; then
-  (cd web && node scripts/build_manifest.mjs)
-  git add web/src/data/manifest.json
+  if (cd web && node scripts/build_manifest.mjs); then
+    git add web/src/data/manifest.json
+  else
+    echo "⚠️ build_manifest 실패 — manifest 미동기화 상태로 commit 진행 (수동 복구 필요)"
+  fi
 fi
 
 git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD}"
