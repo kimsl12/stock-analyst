@@ -103,17 +103,19 @@ git branch --show-current
 # 파일별 명시적 add [v3.9] — 폴더 전체 add 금지 (병렬 경합 방지)
 git add reports/{티커}_{ETF명}_{YYYYMMDD}.html
 
-# manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
-#   Vercel 빌드 컨테이너에 .git 미포함 → manifest.json 의 sort_key (시간순 정렬) 가
-#   commit 된 snapshot 이어야 본서버에 반영됨. 누락 시 본서버 카드에 새 ETF 안 보임.
-#   build 실패해도 commit 진행 — Step 5 검증 4 자동 복구가 한 번 더 시도.
+git commit -m "analysis({티커}): {ETF명} ETF 분석 {등급} {스코어}"
+
+# manifest 동기화 [v3.16 — 2026-05-10] — HTML commit 후 호출 (정확한 sort_key)
+#   commit 전 호출 시 fallback (12:00 UTC) 로 떨어져 시간순 정렬 부정확. commit 후 호출 필수.
 if (cd web && node scripts/build_manifest.mjs); then
-  git add web/src/data/manifest.json
+  if ! git diff --quiet web/src/data/manifest.json; then
+    git add web/src/data/manifest.json
+    git commit -m "chore(manifest): {티커} 동기화"
+  fi
 else
-  echo "⚠️ build_manifest 실패 — 검증 4 가 자동 재시도"
+  echo "⚠️ build_manifest 실패 — manifest 미동기화 (수동 복구 필요)"
 fi
 
-git commit -m "analysis({티커}): {ETF명} ETF 분석 {등급} {스코어}"
 git pull --rebase origin main
 git push origin main
 ```
@@ -141,18 +143,15 @@ git log --oneline -5 | grep -i "{티커}"
 grep "{티커}" session-bootstrap.md
 
 # 검증 4 [v3.16 — 2026-05-10]: manifest staleness 자동 복구 (push 직전 안전망)
-# 차단(exit 1) 이 아니라 자동 복구 — LLM 에이전트가 "검증 실패" 로 종료하는 사고 방지.
-if git diff --cached --name-only | grep -qE '^reports/.*\.html$'; then
-  if ! git diff --cached --name-only | grep -q '^web/src/data/manifest\.json$'; then
-    echo "⚠️ manifest 누락 감지 — 자동 복구 시도..."
-    if (cd web && node scripts/build_manifest.mjs); then
-      git add web/src/data/manifest.json
-      echo "✅ manifest 자동 동기화 완료"
-    else
-      echo "❌ build_manifest 실패 — 수동 복구 필요 (web/ 또는 node 환경 확인)"
-      exit 1
-    fi
+# Step 4 push step 이 누락된 경우 한 번 더 build_manifest 호출 → diff 있으면 commit.
+if (cd web && node scripts/build_manifest.mjs); then
+  if ! git diff --quiet web/src/data/manifest.json; then
+    echo "⚠️ manifest staleness 감지 — Step 4 누락 자동 복구"
+    git add web/src/data/manifest.json
+    git commit -m "chore(manifest): {티커} 동기화 (Step 5 안전망)"
   fi
+else
+  echo "⚠️ build_manifest 실패 — manifest 미동기화 (수동 복구 필요, push 진행)"
 fi
 ```
 

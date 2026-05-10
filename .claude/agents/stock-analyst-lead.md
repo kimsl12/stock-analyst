@@ -254,27 +254,26 @@ LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
 }
 [ ${#KFAIL[@]} -gt 0 ] && echo "⚠️ 한국어 검증 실패: ${KFAIL[*]} → 매핑 사전대로 본문 교체 후 report-generator 재호출"
 
-# 검증 6 [v3.16 — 2026-05-10 추가]: manifest staleness 자동 복구 (push 직전 안전망)
-# reports/ 변경이 staged 됐는데 manifest 미동기화면 → 자동으로 build_manifest 실행 + add.
-# 차단(exit 1) 이 아니라 자동 복구 — LLM 에이전트가 "검증 실패" 로 종료하는 사고 방지.
-# build_manifest 자체가 실패한 경우에만 exit 1 (수동 개입 필요한 진짜 장애).
-if git diff --cached --name-only | grep -qE '^reports/.*\.html$'; then
-  if ! git diff --cached --name-only | grep -q '^web/src/data/manifest\.json$'; then
-    echo "⚠️ manifest 누락 감지 — 자동 복구 시도..."
-    if (cd web && node scripts/build_manifest.mjs); then
-      git add web/src/data/manifest.json
-      echo "✅ manifest 자동 동기화 완료 — commit 진행"
-    else
-      echo "❌ build_manifest 자체가 실패 — 수동 복구 필요 (web/ 디렉토리 또는 node 환경 확인)"
-      exit 1
-    fi
+# 검증 6 [v3.16 — 2026-05-10]: manifest staleness 자동 복구 (push 직전 안전망)
+# push step 이 누락된 경우를 대비해 한 번 더 build_manifest 호출 + diff 있으면 commit.
+# 새 패턴 (commit 후 build_manifest 순서) 가 잘 작동하면 여기서 diff 없음 → no-op.
+# 1차 누락 시 여기서 자동 복구 — LLM 에이전트가 "검증 실패" 로 종료하는 사고 방지.
+if (cd web && node scripts/build_manifest.mjs); then
+  if ! git diff --quiet web/src/data/manifest.json; then
+    echo "⚠️ manifest staleness 감지 — push step 누락 자동 복구"
+    git add web/src/data/manifest.json
+    git commit -m "chore(manifest): 동기화 (Phase 3 검증 안전망)"
+    echo "✅ manifest 자동 commit 완료 — push 진행"
   fi
+else
+  echo "⚠️ build_manifest 실패 — manifest 미동기화 상태 (수동 복구 필요, push 는 진행)"
 fi
 ```
 
 > **자동 복구 원칙 [v3.16]**: 검증 단계에서 누락이 감지되면 **차단보다 자동 복구**.
 > exit 1 은 LLM 에이전트가 "에러 발생 → 작업 종료" 로 갈 위험이 큼. 수정 가능한 누락은
-> 그 자리에서 복구하고 commit 으로 진행. 진짜 장애(build 자체 실패)일 때만 차단.
+> 그 자리에서 복구하고 push 으로 진행. build 자체 실패는 경고만 남기고 진행 (사이트는
+> 카드 표시되되 sort_key 가 직전 snapshot 사용).
 
 ### 검증 실패 시 대응
 
@@ -730,17 +729,20 @@ git add "analysis/_history/"                        # timeline.json 갱신분
 git add session-bootstrap.md
 # analysis/_archive/, reports/_archive/ 는 .gitignore (로컬만 유지)
 
-# manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
-#   Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
-#   manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
-#   build 실패해도 commit 진행 — Phase 3 검증 6 자동 복구가 한 번 더 시도.
+git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
+
+# manifest 동기화 [v3.16 — 2026-05-10] — HTML commit 후 호출 (정확한 sort_key 추출)
+#   commit 후 호출해야 build_manifest 의 git log 가 정확한 commit time 잡음.
+#   commit 전 호출 시 fallback (12:00 UTC) 로 떨어져 시간순 정렬 부정확.
 if (cd web && node scripts/build_manifest.mjs); then
-  git add web/src/data/manifest.json
+  if ! git diff --quiet web/src/data/manifest.json; then
+    git add web/src/data/manifest.json
+    git commit -m "chore(manifest): ${TODAY} 재분석 동기화"
+  fi
 else
-  echo "⚠️ build_manifest 실패 — 검증 6 가 자동 재시도 후 차단"
+  echo "⚠️ build_manifest 실패 — manifest 미동기화 (수동 복구 필요)"
 fi
 
-git commit -m "analysis(reanalysis): ${TODAY} 재분석 ${#COMPLETED[@]}종 (스킵 ${#SKIPPED[@]}종)"
 git pull --rebase origin main
 git push origin main
 
@@ -884,18 +886,21 @@ git checkout main 2>/dev/null || true
 #    ✅ 생성한 HTML만 파일명 지정
 git add reports/{종목코드}_{종목명}_{YYYYMMDD}.html
 
-# 2.5 manifest 동기화 [v3.16 — 2026-05-10] — 누락 절대 금지
-#    Vercel 빌드 컨테이너에 .git 미포함 → git log 못 씀 →
-#    manifest.json 의 sort_key (시간순 정렬) 가 commit 된 snapshot 이어야 본서버에 반영됨.
-#    이 단계 누락 시 본서버 카드 시간순 정렬에 새 분석 안 보임 (5/10 사고 재발 방지).
-#    build 실패해도 commit 진행 — Phase 3 검증 6 자동 복구가 한 번 더 시도.
-if (cd web && node scripts/build_manifest.mjs); then
-  git add web/src/data/manifest.json
-else
-  echo "⚠️ build_manifest 실패 — 검증 6 가 자동 재시도"
-fi
-
 git commit -m "analysis({티커}): {종목명} 분석 {등급} {스코어}"
+
+# 2.5 manifest 동기화 [v3.16 — 2026-05-10] — HTML commit 후 호출 (정확한 sort_key)
+#    이전 버그 (5/10 사고): commit 직전 호출 시 HTML 이 git history 에 없어 git log 미스 →
+#    sort_key 가 fallback (12:00 UTC) 로 떨어져 시간순 정렬 부정확.
+#    해결: HTML commit 직후 build_manifest 호출 → git log 로 정확한 commit time 추출.
+#    Vercel 컨테이너에 .git 미포함이라 manifest.json 은 반드시 commit 된 snapshot 이어야 함.
+if (cd web && node scripts/build_manifest.mjs); then
+  if ! git diff --quiet web/src/data/manifest.json; then
+    git add web/src/data/manifest.json
+    git commit -m "chore(manifest): {티커} 동기화 (sort_key 정확 반영)"
+  fi
+else
+  echo "⚠️ build_manifest 실패 — manifest 미동기화 상태 (수동 복구 필요)"
+fi
 
 # 3. 충돌 방지 후 직접 push
 git pull --rebase origin main

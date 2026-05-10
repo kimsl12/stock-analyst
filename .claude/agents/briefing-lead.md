@@ -956,15 +956,18 @@ git add reports/briefing/ \
 # manifest 동기화 [v3.16 — 2026-05-10] — reports/briefing/ 변경 시 누락 절대 금지
 #   Vercel 빌드 컨테이너에 .git 미포함 → manifest.json 의 sort_key (시간순 정렬) 가
 #   commit 된 snapshot 이어야 본서버에 반영됨. 누락 시 본서버 카드에 새 브리핑 안 보임.
-if git diff --cached --name-only | grep -qE '^reports/briefing/.*\.html$'; then
-  if (cd web && node scripts/build_manifest.mjs); then
+git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD}"
+
+# manifest 동기화 [v3.16 — 2026-05-10] — commit 후 호출 (정확한 sort_key 추출)
+#   reports/briefing/ 변경이 첫 commit 에 들어갔다면 build_manifest 가 git log 로
+#   정확한 commit time 잡음. 이 단계가 누락되거나 직전 commit 이 reports 변경 없으면 no-op.
+if (cd web && node scripts/build_manifest.mjs); then
+  if ! git diff --quiet web/src/data/manifest.json; then
     git add web/src/data/manifest.json
-  else
-    echo "⚠️ build_manifest 실패 — manifest 미동기화 상태로 commit 진행 (수동 복구 필요)"
+    git commit -m "chore(manifest): {모듈명} {YYYY-MM-DD} 동기화"
   fi
 fi
 
-git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD}"
 git pull --rebase origin main
 git push origin main
 ```
@@ -981,10 +984,16 @@ cd "$(git rev-parse --show-toplevel)"
 # HTML 생성 확인
 ls reports/briefing/{type}_{YYYYMMDD}.html 2>/dev/null && {
   git add reports/briefing/{type}_{YYYYMMDD}.html
-  # manifest 동기화 [v3.16] — HTML 후속 생성도 동일 규칙
-  (cd web && node scripts/build_manifest.mjs)
-  git add web/src/data/manifest.json
   git diff --cached --quiet || git commit -m "feat(briefing): {모듈명} {YYYY-MM-DD} — HTML 후속 생성"
+
+  # manifest 동기화 [v3.16 — 2026-05-10] — HTML commit 후 호출 (정확한 sort_key)
+  if (cd web && node scripts/build_manifest.mjs); then
+    if ! git diff --quiet web/src/data/manifest.json; then
+      git add web/src/data/manifest.json
+      git commit -m "chore(manifest): {모듈명} HTML 후속 동기화"
+    fi
+  fi
+
   git pull --rebase origin main
   git push origin main
 }
