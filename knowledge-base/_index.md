@@ -2,8 +2,8 @@
 updated: 2026-05-10
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-05-06
-lint_last_post_fix: 2026-05-06
+lint_last_run: 2026-05-10
+lint_last_post_fix: 2026-05-10
 lint_mode: full
 ---
 
@@ -18,28 +18,28 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-06 (wiki-linter full)**
+> **최종 갱신: 2026-05-10 (wiki-linter full)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
+| `market/economic_calendar.md` | valid_until 2026-05-09 — 어제 만료. 이번 주(5/11~17) 이벤트 미반영 (Warsh 인준 표결·5/12 CPI·5/14 Trump-Xi 정상회담·5/15 파월 퇴임) | 브리핑 MODULE C, 경제지표 캘린더 | kb-updater에 즉시 재수집 위임. 5/11~17 주요 이벤트 전면 갱신 필요 |
 
-> [INFO] P0 항목 없음 — 2026-05-06 wiki-linter full 점검 결과 FAILED/만료/confidence:none/빈 테이블 탐지 없음. 브리핑 실행 가능.
-> [INFO] market/daily_snapshot.md 2026-05-06 모닝 수집 완료 — 5/5 종가 확정: S&P 7,259.22(+0.81%), AMD Q1 어닝서프라이즈(EPS $1.37), ISM 서비스 PMI 53.6(가격 70.7), 이란 협상 대화 지속(데드라인 무사 통과), WTI $102.27(-3.9%). 아시아 5/6 재개장.
+> [P0 경고] market/economic_calendar.md valid_until 2026-05-09 만료 — 2026-05-10 wiki-linter full 점검. 5/11주 핵심 이벤트(Warsh 인준·CPI 4월·Trump-Xi·파월 퇴임) 모두 미반영. kb-updater 재수집 즉시 권장.
+> [INFO] market/daily_snapshot.md 2026-05-10 최신 (valid_until 05-11). 브리핑 실행 가능하나 economic_calendar 재수집 후 MODULE C 보완 권장.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-05-06 full)
+## P1 — 이번 주 조치 (탐지: 2026-05-10 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `macro/us_monetary_policy.md` | 2026-04-18 갱신 — 4/29 FOMC(4인 반대, 역사적 분열) + Warsh 5/11 상원 인준·5/15 취임 미반영. valid_until 05-18이나 핵심 수치(Core PCE 3.2%→4.3%, 동결 확률 갱신 필요) 구버전. valid_until까지 12일 남음 | 중간 | kb-updater에 재수집 위임. FOMC 4/29 결과·Core PCE 4.3%·Warsh 5/15 취임·파월 이사직 잔류 반영 |
-| `korea_economy.md` (루트) | redirect 파일. `macro/korea_economy.md`(05-09 갱신, 유효)가 SSOT | 낮음 | SSOT 파일 05-09 갱신 완료. 루트 파일은 redirect 포인터로 유지 |
-| `market/daily_snapshot.md` | valid_until 2026-05-06 EOD — 오늘 자정 만료 예정. 5/6 이브닝 갱신 필요 | 낮음 | 이브닝 브리핑 시 갱신. 5/6 아시아 개장 + 미국장 포함 |
-| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-05이나 완전 수집 미달 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
-| `knowledge-db/market/changelog_2026.jsonl` | 실제 파일 존재(6줄)이나 _index.md 시계열 DB 섹션 미등재 — `market/2026_daily_prices.md` 등 4건은 등재되어 있으나 changelog 누락 | 낮음 | _index.md 시계열 DB 섹션에 추가 ✅ 2026-05-06 완료 |
-| `reference/` 섹션 미동기 | `_time_guide.md` (2026-05-05 추가, .claude/ 내 시간대 표준 가이드)가 reference 섹션 미등재 — 브리핑 에이전트 참조 파일이나 _index.md 참조 파일 표에서 누락 | 낮음 | reference/ 섹션에 `.claude/_time_guide.md` 행 추가 ✅ 2026-05-06 완료 |
+| `macro/us_monetary_policy.md` | 2026-05-06 갱신. 4/29 FOMC 반영(3.50~3.75%, 3연속 동결, 4인 반대). Warsh 5/11 인준 표결·5/15 취임 미반영 — valid_until 06-06. 핵심 수치(Core PCE 4.3% Q1 SAAR)는 반영됨. Warsh 취임 후 forward guidance 폐지 가능성 구조 변화 예고 | 중간 | Warsh 5/11 인준 확정 후 kb-updater 재수집 위임. Fed 이원 구조(파월 이사직+Warsh 의장) 반영 |
+| `market/economic_calendar.md` | valid_until 2026-05-09 만료 (P0 격상). 5/11~17 주요 이벤트 전면 미반영 | 높음 | kb-updater 즉시 재수집 (P0 조치 참조) |
+| `market/daily_snapshot.md` | valid_until 2026-05-11 — 내일 만료. 5/10 US 장 마감값 갱신 필요 | 낮음 | 이브닝 브리핑 또는 모닝 수집 시 갱신. 5/10 S&P 종가 확정 포함 |
+| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-05. 완전 수집 미달 상태 지속 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
+| `industry/ai.md`, `industry/auto.md`, `industry/battery.md`, `industry/bio_pharma.md`, `industry/defense_industry.md`, `industry/infrastructure.md`, `industry/luxury.md` | valid_until 2026-05-21 — 11일 내 만료. updated 04-21 | 낮음 | 다음 주(5/18 이전) kb-updater 일괄 재수집 권장 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
@@ -47,12 +47,6 @@ lint_mode: full
 > [P1 해결완료 2026-05-03] knowledge-db/ 미등재 파일 3종 + 레코드 불일치 5종 갱신 완료 (wiki-linter full).
 > [P1 해결완료 2026-05-06 후속 복구] 5/3 wiki-linter 누락분 전부 복구 — (1) 교차참조 맵 7행 04-26→05-06 기준 재검증 (VIX 19.31→16.89, Gold $4,709→$4,614, 원달러 1,476→1,473.21, S&P 7,165→7,259.22 등), (2) macro/global_risk_factors.md last_updated 04-26→05-03, (3) Market KB 헤더 05-03→05-06 동기화. lint_last_post_fix 필드 추가.
 > [P1 해결완료 2026-05-06 full] knowledge-db/market/changelog_2026.jsonl 미등재 추가, reference 섹션 _time_guide.md 추가, P1 섹션 현행화 (wiki-linter full).
-
-> [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
-> [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
-> [P1 정상] industry/ 전체 고아 파일 없음 (**27개** 파일 모두 _index.md 등재 확인). real_estate.md(04-26 등재) 포함.
-> [P1 해결완료 2026-05-03] knowledge-db/ 미등재 파일 3종 + 레코드 불일치 5종 갱신 완료 (wiki-linter full).
-> [P1 해결완료 2026-05-06 후속 복구] 5/3 wiki-linter 누락분 전부 복구 — (1) 교차참조 맵 7행 04-26→05-06 기준 재검증 (VIX 19.31→16.89, Gold $4,709→$4,614, 원달러 1,476→1,473.21, S&P 7,165→7,259.22 등), (2) macro/global_risk_factors.md last_updated 04-26→05-03, (3) Market KB 헤더 05-03→05-06 동기화. lint_last_post_fix 필드 추가.
 
 ---
 
