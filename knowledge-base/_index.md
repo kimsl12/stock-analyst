@@ -65,6 +65,9 @@ lint_mode: full
 | 2026-05-09 | 이브닝브리핑 | 5/12 CPI D-3: Core 3.0~3.2%(55%) Base. Core 3.2%+ 시 인하 0회+PER 22.5x 압축. 미시간 인플레 기대 1Y 4.5%(4.7%에서 하락) 소폭 안정 신호. Warsh 인준 D-2 — Fed 이원 구조 확정 임박 | `macro/us_economy.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | NFP 골디락스 착지: S&P 7,399 신고가 + 10Y 4.36%(-3bp) 동시 발생. K자형 노동시장(ISM 고용 양부문 수축 46.4/48.0 vs 실업수당 189K) 구조 공식화. AI 대체 첫 사이클 가능성 | `market/daily_snapshot.md, macro/us_economy.md` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | 5/12 CPI Core 3.2%+ 시 Fed 연내 인하 0회 부상(30~40%). ISM 제조 가격 84.6 + 서비스 가격 70.7 = 에너지 독립적 Core 고착. 저축률 3.6%(2008년래 최저) 소비 엔진 연료 바닥 경고 | `macro/us_economy.md, market/surprise_index.md` | 진행중 |
+| 2026-05-10 | 모닝브리핑 | S&P 7,399 사상 최고가 5주 연속 상승 마감. 5/12 CPI Core 3.2%+ 시 Fed 인하 0회 부상(30~40%) — ISM 가격 84.6%(4년 최고)가 에너지 독립적 Core 고착 시사. 시장 골디락스 합의에 꼬리 위험 과소평가 | `market/daily_snapshot.md, macro/us_economy.md` | 진행중 |
+| 2026-05-10 | 모닝브리핑 | Warsh Fed 의장 인준 D-1(5/11주)+파월 임기 만료 5/15. forward guidance 폐지/양적 긴축 가속 예고 → FOMC 불확실성 프리미엄 구조적 상승. 시장 아직 미할인 | `macro/us_monetary_policy.md` | 진행중 |
+| 2026-05-10 | 모닝브리핑 | SRAD 7명/$11.3M+GEHC 5명/$5.6M+POOL 4명/$5.8M 클러스터 매수 집중. 헬스케어 인사이더 3건 편중 — K자형 노동시장 의료 호조와 일치 | `portfolio/insider_signals.json` | 진행중 |
 | 2026-05-09 | 모닝브리핑 | SRAD 인사이더 7명/$9.2M 역대급 클러스터 매수 + SPGI 4명/$3.6M. 전통 서비스업 인사이더 저평가 판단 집중. Warsh 인준 D-2(5/11주), Fed 이원 권력 구조 확정 임박 | `portfolio/insider_signals.json, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-08 | 내포트폴리오 | 사용자 현금 비중 11.5% (입금 +$2,335) → 채권 갭 -13.5%p / 방산 갭 -12%p 즉시 해소 처방. AGG 25주($2,474) + GLD 1주 + ITA 5주 + SGOV 5주 + VOO -4주 / VIG 전량 매도. 처방 후 채권 15.6%·방산 5.5% 모델 진입, 미국 78.4%→63.6% (-14.8%p 개선). 한국 -17%p 미해결 (5/14 정상회담 후 EWY 검토) | `portfolio/user_portfolio.md` | 진행중 |
 | 2026-05-08 | 이브닝브리핑 | NFP "호실적=악재" 역설 — NFP 200K+ 시 Fed 인하 소멸→S&P Fwd PER 22.5x 압축 -2~3%. ISM 고용 46.4% vs 실업수당 189K 괴리 해소가 5/8 최대 촉매 | `market/surprise_index.md, market/economic_calendar.md` | 진행중 |
