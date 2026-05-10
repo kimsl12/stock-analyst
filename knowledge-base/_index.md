@@ -1,5 +1,5 @@
 ---
-updated: 2026-05-06
+updated: 2026-05-10
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-05-06
