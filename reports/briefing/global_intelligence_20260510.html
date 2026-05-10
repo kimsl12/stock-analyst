@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>글로벌 인텔리전스 — 2026-05-10</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .warning-13f{background:#fff8c5 !important;color:#9a6700;border-color:#9a6700}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .scenario-tree .root{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:6px}
+.header .meta{color:var(--sub);font-size:14px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
+
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3)}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
+.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
+.signal-bar.warning .fill{background:linear-gradient(90deg,var(--warning),#b08800)}
+
+.risk-row{display:flex;align-items:center;gap:12px;margin:6px 0}
+.risk-label{width:160px;font-size:13px;flex-shrink:0}
+.risk-score{width:36px;font-size:13px;font-weight:700;flex-shrink:0;text-align:right}
+
+.scenario-tree{margin:14px 0}
+.scenario-tree .root{text-align:center;padding:14px;background:rgba(255,255,255,0.04);border-radius:10px;margin-bottom:16px;border:1px solid var(--border)}
+.scenario-tree .root .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;font-size:13px}
+.scenario-tree .root .price-item{text-align:center}
+.scenario-tree .root .price-item .label{color:var(--sub);font-size:11px}
+.scenario-tree .root .price-item .val{font-weight:700;font-size:15px}
+.scenario-tree .branches{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+.scenario-tree .branches4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.scenario-tree .branch{padding:14px;border-radius:8px}
+.scenario-tree .branch.a{background:rgba(63,185,80,0.06);border:1px solid var(--up)}
+.scenario-tree .branch.b{background:rgba(88,166,255,0.06);border:1px solid var(--highlight)}
+.scenario-tree .branch.c{background:rgba(248,81,73,0.06);border:1px solid var(--down)}
+.scenario-tree .branch.d{background:rgba(139,92,246,0.06);border:1px solid var(--debate)}
+.scenario-tree .branch .branch-title{font-weight:700;margin-bottom:6px;font-size:14px}
+.scenario-tree .branch .branch-prob{font-size:12px;color:var(--sub);margin-bottom:8px}
+.scenario-tree .branch .branch-detail{font-size:12px;line-height:1.5}
+.scenario-tree .prob-bar{width:100%;background:rgba(255,255,255,0.04);height:6px;border-radius:3px;margin-top:8px}
+.scenario-tree .prob-bar .fill{height:6px;border-radius:3px}
+
+.cascade{margin:14px 0}
+.cascade .step{padding:12px 16px;border-radius:0 8px 8px 0;margin:8px 0}
+.cascade .first{background:rgba(255,255,255,0.04);border-left:3px solid var(--neutral)}
+.cascade .second{background:rgba(88,166,255,0.08);border-left:3px solid var(--highlight)}
+.cascade .third{background:rgba(210,153,34,0.08);border-left:3px solid var(--warning)}
+.cascade .danger{background:rgba(248,81,73,0.08);border-left:3px solid var(--down)}
+
+.tech-stage{display:flex;align-items:center;gap:6px;font-size:13px}
+.tech-stage .stage-badge{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.stage-research{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid #8b5cf6}
+.stage-prototype{background:rgba(210,153,34,0.15);color:var(--warning);border:1px solid var(--warning)}
+.stage-commercial{background:rgba(63,185,80,0.15);color:var(--up);border:1px solid var(--up)}
+.stage-mass{background:rgba(88,166,255,0.15);color:var(--highlight);border:1px solid var(--highlight)}
+
+.four-axis-matrix{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.axis-card{padding:14px;border-radius:10px;border:1px solid var(--border)}
+.axis-card.axis1{background:rgba(248,81,73,0.05);border-color:rgba(248,81,73,0.3)}
+.axis-card.axis2{background:rgba(88,166,255,0.05);border-color:rgba(88,166,255,0.3)}
+.axis-card.axis3{background:rgba(210,153,34,0.05);border-color:rgba(210,153,34,0.3)}
+.axis-card.axis4{background:rgba(63,185,80,0.05);border-color:rgba(63,185,80,0.3)}
+.axis-card .axis-title{font-weight:700;font-size:14px;margin-bottom:6px}
+.axis-card .axis-desc{font-size:13px;color:var(--sub);line-height:1.5}
+.axis-card .axis-strength{font-size:12px;margin-top:6px;font-weight:600}
+
+.mega-trend-box{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.4);border-radius:10px;padding:16px;margin:14px 0}
+.mega-trend-box .mt-title{color:var(--debate);font-weight:700;font-size:15px;margin-bottom:8px}
+.mega-trend-box .mt-chain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;margin-bottom:8px}
+.mega-trend-box .mt-chain .arrow{color:var(--sub)}
+.mega-trend-box .mt-chain .node{background:rgba(255,255,255,0.06);padding:4px 10px;border-radius:6px}
+.mega-trend-box .mt-conclusion{font-size:13px;color:var(--text);line-height:1.6;padding-top:8px;border-top:1px solid rgba(139,92,246,0.2)}
+
+.calendar-table tr.highlight-row td{background:rgba(88,166,255,0.08)}
+.calendar-table tr.danger-row td{background:rgba(248,81,73,0.08)}
+
+.event-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-left:6px}
+.ev-critical{background:rgba(248,81,73,0.2);color:var(--down)}
+.ev-important{background:rgba(210,153,34,0.2);color:var(--warning)}
+.ev-normal{background:rgba(88,166,255,0.15);color:var(--highlight)}
+
+.hidden-theme-box{background:rgba(63,185,80,0.05);border:1px solid rgba(63,185,80,0.3);border-radius:10px;padding:16px;margin:14px 0}
+.hidden-theme-box .ht-title{color:var(--up);font-weight:700;margin-bottom:8px}
+
+.cross-analysis-item{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 16px;margin:8px 0;border-left:3px solid var(--border)}
+.cross-analysis-item.two-axis{border-left-color:var(--highlight)}
+.cross-analysis-item.three-axis{border-left-color:var(--warning)}
+.cross-analysis-item.four-axis{border-left-color:var(--debate)}
+.cross-analysis-item .ca-label{font-weight:700;font-size:13px;color:var(--sub);margin-bottom:4px}
+.cross-analysis-item .ca-text{font-size:14px;line-height:1.6}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+.portfolio-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px;border:1px solid var(--border)}
+.portfolio-card h4{font-size:15px;margin-bottom:10px}
+.portfolio-card .direction{font-weight:700;padding:3px 12px;border-radius:6px;display:inline-block;font-size:13px}
+.dir-caution{background:rgba(248,81,73,0.15);color:var(--down)}
+.dir-hold{background:rgba(88,166,255,0.12);color:var(--highlight)}
+.dir-wait{background:rgba(210,153,34,0.12);color:var(--warning)}
+
+.deep-analysis-table tr td:first-child{font-weight:700;color:var(--highlight)}
+.deep-analysis-table code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning);font-size:12px}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+.g9-warning-list{list-style:none;padding:0}
+.g9-warning-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;line-height:1.6}
+.g9-warning-list li:last-child{border-bottom:none}
+.g9-warning-list li::before{content:"⚠️ ";margin-right:4px}
+
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.summary-item{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;border:1px solid var(--border);text-align:center}
+.summary-item .s-label{font-size:11px;color:var(--sub);margin-bottom:4px}
+.summary-item .s-val{font-size:18px;font-weight:700}
+.summary-item .s-change{font-size:12px;margin-top:2px}
+
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:22px}
+  .scenario-tree .branches4{grid-template-columns:repeat(2,1fr)}
+  .four-axis-matrix{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🌐 글로벌 인텔리전스 — 2026-05-10</h1>
+  <div class="meta">briefing-lead 작성 | KST 22:30 | 데이터 기준: 미국 정규장 5/8(목) 종가 · 한국 정규장 5/9(금) 종가</div>
+</div>
+
+<!-- 핵심 요약 -->
+<div class="sec">
+  <h2>0. 핵심 요약</h2>
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="s-label">S&amp;P 500</div>
+      <div class="s-val highlight">7,399</div>
+      <div class="s-change up">신고가</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">WTI</div>
+      <div class="s-val warning">$95.42</div>
+      <div class="s-change down">-6% (주간)</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">Gold</div>
+      <div class="s-val up">$4,720</div>
+      <div class="s-change up">구조적 강세</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">DXY</div>
+      <div class="s-val down">97.84</div>
+      <div class="s-change down">3년래 최저</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">VIX</div>
+      <div class="s-val highlight">17.19</div>
+      <div class="s-change warning">거짓 안정 경고</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">BTC</div>
+      <div class="s-val">$80,653</div>
+      <div class="s-change neutral">보합</div>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--text)">
+    <strong>이번 주 핵심:</strong> 5/11~15 이벤트 4연속 주간 진입 — Warsh 인준(5/11), CPI(5/12), 미중 정상회담(5/14~15), 파월 임기 만료(5/15). 이란 MOU 교착 지속 (위험도 4/5). 4축 교차 결과가 2026 하반기 전체 자산 방향을 결정하는 분기점. <span class="down">단일 이벤트 결렬 시 VIX 25+</span> 경고 유효.
+  </p>
+</div>
+
+<!-- G-1. 지정학 파워맵 -->
+<div class="sec">
+  <h2>G-1. 지정학 파워맵 + 공급망 재편</h2>
+  <h3>5축 지정학 현황</h3>
+  <table>
+    <thead>
+      <tr><th>축</th><th>현재 상태</th><th>위험도</th><th>전주 대비</th><th>핵심 변수</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>미-이란 (호르무즈)</strong></td>
+        <td>MOU 14개항 미서명 + 교전 병존</td>
+        <td><span class="down"><strong>4/5</strong></span></td>
+        <td class="down">↓ 0.5</td>
+        <td>핵농축 모라토리엄 기간(5년 vs 20년) 절충안 12~15년 교착</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>미-중 (무역/기술)</strong></td>
+        <td>정상회담 D-4 (5/14~15), Section 301 공청회 완료</td>
+        <td><span class="warning"><strong>3.5/5</strong></span></td>
+        <td class="up">↑ 0.5</td>
+        <td>보잉 500대+농산물 구매 vs Section 301 차등관세 7/24</td>
+      </tr>
+      <tr>
+        <td><strong>러-우크라</strong></td>
+        <td>3일 휴전(5/9~11) + 포로교환 1,000명</td>
+        <td><span class="neutral"><strong>3/5</strong></span></td>
+        <td class="down">↓ 0.5</td>
+        <td>장기 협상 전환점 여부 미지수. 유럽 가스 구조적 불안</td>
+      </tr>
+      <tr>
+        <td><strong>대만 해협</strong></td>
+        <td>NT$780B 특별국방예산 통과 + 미 무기판매</td>
+        <td><span class="neutral"><strong>2.5/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>정상회담 분위기 저해 변수이나 직접 충돌 가능성 낮음</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>한반도</strong></td>
+        <td>북한 155mm 자주포(서울권 60km+ 타격) 전방 배치 예고</td>
+        <td><span class="warning"><strong>3/5</strong></span></td>
+        <td class="up">↑ 0.5</td>
+        <td>최현 구축함 중순 실전 배치. K-방산 수출 $20B 목표 가속</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>5산업 공급망 영향</h3>
+  <table>
+    <thead>
+      <tr><th>산업</th><th>공급망 상태</th><th>핵심 리스크</th><th>수혜 기업/ETF</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>에너지</strong></td>
+        <td>호르무즈 통항 0건(5/4 이후), 1,600척 억류</td>
+        <td>카타르 LNG 시설 수리 5년(IEA). JKM +51%</td>
+        <td>XLE, 에너지 메이저</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>반도체</strong></td>
+        <td>TSMC 2nm 5팹 동시 양산. 수율 70%</td>
+        <td>Apple·Intel·Samsung 대안 파운드리 검토</td>
+        <td>SOXX, SMH, SK하이닉스</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>비료/농업</strong></td>
+        <td>한국 비축 소진(4월 말). 요소비료 $700/mt(+45%)</td>
+        <td>호르무즈 경유 38.4%. 식품 CPI 전이 시차 3~6개월</td>
+        <td>CF Industries, Nutrien</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>구리/광물</strong></td>
+        <td>COMEX $6.24. Section 232 50%+칠레 황산+AI DC</td>
+        <td>삼중 수요+공급 차질 ("삼중 충격")</td>
+        <td>FCX, COPX, SCCO</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>방산</strong></td>
+        <td>NDAA $901B + K-방산 $20B + 유럽 재무장 $864B</td>
+        <td>생산능력 병목(한화 증설 2년)</td>
+        <td>ITA, XAR, 한화에어로, LIG넥스원</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:8px">출처: knowledge-base/macro/geopolitics.md [2026-05-10], knowledge-base/macro/supply_chain.md [2026-05-09], Reuters [2026-05-10]</p>
+</div>
+
+<!-- G-2. 정치 사이클 -->
+<div class="sec">
+  <h2>G-2. 정치 사이클 + 정책 → 산업 매핑 + 캘린더</h2>
+
+  <h3>정치 사이클 현황</h3>
+  <div style="background:rgba(248,81,73,0.06);border-left:3px solid var(--down);border-radius:0 8px 8px 0;padding:14px 18px;margin:10px 0">
+    <strong style="color:var(--down)">미국 — Warsh 취임 D-5 (이원 권력 구조 확정)</strong>
+    <p style="font-size:14px;margin-top:6px;line-height:1.6">Warsh 5/11 봉쇄종결 투표 → 인준 확정 (공화 53+Fetterman). 5/15 파월 임기 만료 → Warsh 취임. 역사상 최초 100% 당파 Fed 의장 인준 (위원회 13-11). 파월 이사직 잔류(2028까지, 1948년 Eccles 이후 최초). <strong>"이원 권력 구조"</strong> 확정.</p>
+  </div>
+  <div style="background:rgba(210,153,34,0.06);border-left:3px solid var(--warning);border-radius:0 8px 8px 0;padding:14px 18px;margin:10px 0">
+    <strong style="color:var(--warning)">중간선거 (11/3) — 소비심리 48.2 역대 최저</strong>
+    <p style="font-size:14px;margin-top:6px;line-height:1.6">미시간 소비심리 48.2 (역대 최저). 응답자 1/3이 휘발유, 30%가 관세 우려. 소비심리 vs S&amp;P 신고가 괴리가 정치 불만으로 전환될 가능성. 관세 롤백 또는 추가 재정 부양 압력.</p>
+  </div>
+  <div style="background:rgba(88,166,255,0.06);border-left:3px solid var(--highlight);border-radius:0 8px 8px 0;padding:14px 18px;margin:10px 0">
+    <strong style="color:var(--highlight)">중국 — 정상회담 D-4 (5/14~15)</strong>
+    <p style="font-size:14px;margin-top:6px;line-height:1.6">Board of Trade 메커니즘 + 보잉 500대 + 농산물 대규모 구매 예상. 실질 관세 합의(Section 301 차등관세)나 반도체 수출규제 완화는 기대 난망 [Brookings, 2026-05-10].</p>
+  </div>
+
+  <h3>정책 → 산업 매핑</h3>
+  <table>
+    <thead>
+      <tr><th>정책</th><th>산업 영향</th><th>시간축</th><th>확신도</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td><strong>Warsh Fed 취임 (매파 단기/비둘기파 장기)</strong></td>
+        <td>채권: 기간 프리미엄 확대. 은행: NIM 개선. 테크: 할인율 불확실성</td>
+        <td>1~3개월</td>
+        <td><span class="warning">중간</span></td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>Section 301 차등관세 (7/24)</strong></td>
+        <td>한국 수출기업 직격(자동차/반도체). 동남아 재편 가속</td>
+        <td>3~6개월</td>
+        <td><span class="down">높음</span></td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>제약 관세 100% (7/31)</strong></td>
+        <td>글로벌 제약 공급망 재편. 한국 CDMO 반사수혜</td>
+        <td>2~6개월</td>
+        <td><span class="warning">중간</span></td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>한국 추경 26.2조</strong></td>
+        <td>농업 보조, SOC, 방위력 강화</td>
+        <td>즉시~3개월</td>
+        <td><span class="up">높음</span></td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>ECB 6월 인상 (25bp)</strong></td>
+        <td>유로 강세, DXY 추가 하락. 유럽 은행 수혜, 성장주 압력</td>
+        <td>1~2개월</td>
+        <td><span class="up">높음</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>핵심 캘린더 (5/11~5/31)</h3>
+  <table class="calendar-table">
+    <thead>
+      <tr><th>일자</th><th>이벤트</th><th>핵심 임팩트</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>5/11 (월)</td>
+        <td>Warsh 봉쇄종결 투표 <span class="event-badge ev-important">중요</span></td>
+        <td>Fed 리더십 전환 확정</td>
+      </tr>
+      <tr class="bg-down">
+        <td>5/12 (월)</td>
+        <td><strong>4월 CPI 발표</strong> <span class="event-badge ev-critical">핵심</span></td>
+        <td>ISM 가격 84.6 반영 → 헤드라인 3.5~3.7% 추정</td>
+      </tr>
+      <tr class="bg-down">
+        <td>5/14~15</td>
+        <td><strong>트럼프-시진핑 정상회담</strong> <span class="event-badge ev-critical">핵심</span></td>
+        <td>이란/관세/대만/희토류 4축 동시</td>
+      </tr>
+      <tr class="bg-down">
+        <td>5/15 (목)</td>
+        <td>파월 의장직 만료 / Warsh 취임 <span class="event-badge ev-critical">핵심</span></td>
+        <td>78년 만의 의장→이사 잔류</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>5/15 (목)</td>
+        <td>13F 마감 (Q1 2026) <span class="event-badge ev-important">중요</span></td>
+        <td>거물 8인 포지션 변화 공개</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>5/22 (목)</td>
+        <td>NVIDIA Q1 실적 <span class="event-badge ev-important">중요</span></td>
+        <td>AI 자본지출 건전성 최종 검증</td>
+      </tr>
+      <tr>
+        <td>5/28 (수)</td>
+        <td>한국은행 금통위</td>
+        <td>8연속 동결 유력, K-dotplot 상향 가능</td>
+      </tr>
+      <tr>
+        <td>6/4 (목)</td>
+        <td>ECB 통화정책 결정</td>
+        <td>25bp 인상 전망 부상</td>
+      </tr>
+      <tr class="bg-highlight">
+        <td>6/16~17</td>
+        <td>FOMC (Warsh 첫 회의) <span class="event-badge ev-important">중요</span></td>
+        <td>동결 유력(96%). 성명서 톤 변화 주목</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:8px">출처: knowledge-base/macro/political_cycle.md [2026-05-10], knowledge-base/macro/us_monetary_policy.md [2026-05-06]</p>
+</div>
+
+<!-- G-3. 첨단 기술 트래커 -->
+<div class="sec">
+  <h2>G-3. 첨단 기술 트래커</h2>
+  <p style="font-size:13px;color:var(--sub);margin-bottom:12px">단계 범례: 🔬 연구 → 🧪 시제품 → 🏭 상용화 → 🌍 대중화</p>
+  <table>
+    <thead>
+      <tr><th>기술 분야</th><th>핵심 진전</th><th>현재 단계</th><th>투자 시사점</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td><strong>AI GPU (데이터센터)</strong></td>
+        <td>AMD Q1 DC 매출 +57%, 주가 +18%. NVIDIA DC $193B(FY25). 글로벌 AI 자본지출 $660~690B</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-commercial">🏭 상용화</span></span></td>
+        <td>AI 인프라 자본지출 지속. SOXX/SMH 핵심</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>TSMC 2nm</strong></td>
+        <td>5개 팹 동시 양산(사상 최초). 2026 전량 예약. 수율 70%</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-commercial">🏭 상용화</span></span></td>
+        <td>파운드리 최상단 독점 강화. TSM 프리미엄 유지</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>글로벌 반도체 시장</strong></td>
+        <td>Gartner $1.32T+(+64%). "Memflation": DRAM +125%, NAND +234% YoY</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-mass">🌍 대중화 전환</span></span></td>
+        <td>메모리 슈퍼사이클. SK하이닉스 OPM 72% 창사 최고</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>AI 에이전트 (기업 자동화)</strong></td>
+        <td>Anthropic ARR $30B &gt; OpenAI $25B. 엔터프라이즈 AI 에이전트 확산</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-prototype">🧪→🏭 전환</span></span></td>
+        <td>SaaS 대체 파도 시작. ServiceNow, Salesforce 위협/기회</td>
+      </tr>
+      <tr>
+        <td><strong>소형 모듈 원자로 (SMR)</strong></td>
+        <td>AI DC 전력 수요 → 원자력 르네상스. NRC 인허가 진행</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-prototype">🧪 시제품</span></span></td>
+        <td>NuScale 등 순수 플레이. 상용화 2028~2030</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>GLP-1 비만치료제</strong></td>
+        <td>LLY orforglipron 경구형 런칭 임박. 2026E $80~83B 시장</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-commercial">🏭 상용화</span></span></td>
+        <td>LLY 독주. NVO 추격. XBI 구조적 수혜</td>
+      </tr>
+      <tr>
+        <td><strong>양자컴퓨팅</strong></td>
+        <td>IBM 1000+ 큐비트, Google Willow. 오류 정정 진전</td>
+        <td><span class="tech-stage"><span class="stage-badge stage-research">🔬→🧪 전환</span></span></td>
+        <td>투자 시기상조이나 장기 모니터링 필수. IONQ, GOOG</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:14px;margin-top:12px;border:1px solid var(--border)">
+    <strong style="color:var(--highlight)">기술 단계 판정 종합 — 투자 자금 배분 원칙</strong>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;text-align:center;font-size:13px">
+      <div style="background:rgba(63,185,80,0.08);border-radius:8px;padding:10px;border:1px solid rgba(63,185,80,0.3)">
+        <div style="font-size:20px">🏭</div>
+        <div style="color:var(--up);font-weight:700;font-size:16px">80%</div>
+        <div style="color:var(--sub)">상용화 단계</div>
+        <div style="font-size:11px;color:var(--sub);margin-top:4px">AI GPU, TSMC 2nm, 반도체, GLP-1</div>
+      </div>
+      <div style="background:rgba(210,153,34,0.08);border-radius:8px;padding:10px;border:1px solid rgba(210,153,34,0.3)">
+        <div style="font-size:20px">🧪</div>
+        <div style="color:var(--warning);font-weight:700;font-size:16px">15%</div>
+        <div style="color:var(--sub)">시제품 단계</div>
+        <div style="font-size:11px;color:var(--sub);margin-top:4px">AI 에이전트, SMR</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.08);border-radius:8px;padding:10px;border:1px solid rgba(139,92,246,0.3)">
+        <div style="font-size:20px">🔬</div>
+        <div style="color:#a78bfa;font-weight:700;font-size:16px">5% 이하</div>
+        <div style="color:var(--sub)">연구 단계</div>
+        <div style="font-size:11px;color:var(--sub);margin-top:4px">양자컴퓨팅</div>
+      </div>
+      <div style="background:rgba(88,166,255,0.08);border-radius:8px;padding:10px;border:1px solid rgba(88,166,255,0.3)">
+        <div style="font-size:20px">🌍</div>
+        <div style="color:var(--highlight);font-weight:700;font-size:16px">모니터링</div>
+        <div style="color:var(--sub)">대중화 전환</div>
+        <div style="font-size:11px;color:var(--sub);margin-top:4px">반도체 메모리</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- G-4. 에너지 전환 -->
+<div class="sec">
+  <h2>G-4. 에너지 전환 + 핵심 광물 + AI 데이터센터 전력</h2>
+
+  <h3>에너지 현황</h3>
+  <table>
+    <thead>
+      <tr><th>항목</th><th>현재</th><th>주간 변화</th><th>전망</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td><strong>WTI</strong></td>
+        <td class="warning"><strong>$95.42</strong></td>
+        <td class="down">-6% (MOU 낙관 + 교전 줄다리기)</td>
+        <td>MOU 합의 시 $80~90, 결렬 시 $120~150</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>Brent</strong></td>
+        <td class="warning"><strong>$101.29</strong></td>
+        <td class="down">-5.8%</td>
+        <td>WTI+$6 프리미엄 유지</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>JKM (아시아 LNG)</strong></td>
+        <td class="down"><strong>+51%</strong></td>
+        <td>소폭 하락</td>
+        <td>카타르 LNG 수리 5년 → 구조적 상방</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>구리 COMEX</strong></td>
+        <td class="up"><strong>$6.24/lb</strong></td>
+        <td class="up">+2.3%</td>
+        <td>삼중 충격: Section 232+칠레+AI DC</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>AI 데이터센터 전력 병목</h3>
+  <div class="cascade">
+    <div class="step first">
+      <strong>신규 구리 수요:</strong> 110kt (+80%) — 데이터센터 배선·변압기·냉각 시스템 [BloombergNEF]
+    </div>
+    <div class="step second">
+      <strong>순환 구조 (피드백 루프):</strong> AI가 에너지 가격을 올리고 → 에너지 가격이 AI 운영비를 올림
+    </div>
+    <div class="step third">
+      <strong>SMR 대안:</strong> NuScale 등 소형 원자로가 2028~2030 DC 전용 전력으로 부상. 인허가 2~3년 필요
+    </div>
+    <div class="step danger">
+      <strong>AI 자본지출의 실질 상한선:</strong> 전력 확보 불가 시 DC 신설 지연 → 자본지출 증가율 둔화
+    </div>
+  </div>
+
+  <h3>핵심 광물 위기</h3>
+  <table>
+    <thead>
+      <tr><th>광물</th><th>위기 요인</th><th>가격 동향</th><th>수혜</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>구리</strong></td>
+        <td>Section 232 50% + 칠레 황산 차질 + AI DC</td>
+        <td class="up">COMEX $6.24 (+20% YTD)</td>
+        <td>FCX, SCCO, COPX</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>희토류</strong></td>
+        <td>중국 수출통제. 정상회담 "유예 연장" 교환카드 가능</td>
+        <td class="up">네오디뮴 +15% YTD</td>
+        <td>MP Materials, Lynas</td>
+      </tr>
+      <tr>
+        <td><strong>리튬</strong></td>
+        <td>과잉공급 조정 중. 2027 수급 반전 전망</td>
+        <td class="neutral">탄산리튬 하락 안정</td>
+        <td>ALB, SQM (저점 매수 관찰)</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>요소비료</strong></td>
+        <td>한국 비축 소진. $700/mt (+45% YTD)</td>
+        <td class="down">구조적 상승</td>
+        <td>CF, NTR</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:8px">출처: knowledge-base/macro/supply_chain.md [2026-05-09], IEA, BloombergNEF</p>
+</div>
+
+<!-- G-5. 4축 교차 메가트렌드 -->
+<div class="sec">
+  <h2>G-5. 4축 교차 메가트렌드</h2>
+
+  <h3>4축 정의</h3>
+  <div class="four-axis-matrix">
+    <div class="axis-card axis1">
+      <div class="axis-title" style="color:var(--down)">축 1: 지정학/정치</div>
+      <div class="axis-desc">이란 MOU + 정상회담 + Warsh 인준</div>
+      <div class="axis-strength" style="color:var(--down)">강도: 극고 (4연속 이벤트 주간 5/11~15)</div>
+      <div class="signal-bar down" style="margin-top:8px"><div class="fill" style="width:90%"></div></div>
+    </div>
+    <div class="axis-card axis2">
+      <div class="axis-title" style="color:var(--highlight)">축 2: 기술/에너지</div>
+      <div class="axis-desc">AI GPU 호황 + TSMC 2nm + 에너지 인플레 구조화</div>
+      <div class="axis-strength" style="color:var(--highlight)">강도: 고</div>
+      <div class="signal-bar up" style="margin-top:8px"><div class="fill" style="width:75%"></div></div>
+    </div>
+    <div class="axis-card axis3">
+      <div class="axis-title" style="color:var(--warning)">축 3: 통화정책</div>
+      <div class="axis-desc">FOMC 동결 + Warsh 전환 + ECB/BOJ 인상</div>
+      <div class="axis-strength" style="color:var(--warning)">강도: 고</div>
+      <div class="signal-bar warning" style="margin-top:8px"><div class="fill" style="width:75%"></div></div>
+    </div>
+    <div class="axis-card axis4">
+      <div class="axis-title" style="color:var(--up)">축 4: 무역</div>
+      <div class="axis-desc">Section 301 전환 + 정상회담 + 7/24 관세 대전환</div>
+      <div class="axis-strength" style="color:var(--up)">강도: 중고</div>
+      <div class="signal-bar up" style="margin-top:8px"><div class="fill" style="width:60%"></div></div>
+    </div>
+  </div>
+
+  <h3>교차 분석 — 2축 교차 (일반)</h3>
+  <div class="cross-analysis-item two-axis">
+    <div class="ca-label">축1 × 축2 (지정학 × 기술)</div>
+    <div class="ca-text">호르무즈 봉쇄 → 에너지 인플레 → AI DC 전력 비용 상승 → AI 자본지출 실질 상한선</div>
+  </div>
+  <div class="cross-analysis-item two-axis">
+    <div class="ca-label">축1 × 축3 (지정학 × 통화)</div>
+    <div class="ca-text">이란 MOU 성패 → 에너지 CPI → Fed 인하/동결 경로 결정</div>
+  </div>
+  <div class="cross-analysis-item two-axis">
+    <div class="ca-label">축2 × 축4 (기술 × 무역)</div>
+    <div class="ca-text">반도체 수출규제 vs AI 수요 → TSMC/삼성 팹 입지 변화. 제약 100% 관세 → CDMO 재편</div>
+  </div>
+  <div class="cross-analysis-item two-axis">
+    <div class="ca-label">축3 × 축4 (통화 × 무역)</div>
+    <div class="ca-text">DXY 약세 구조 + ECB/BOJ 인상 → 7/24 관세 전환 시 수출국 통화 강세 vs 관세 효과 상쇄</div>
+  </div>
+
+  <h3>3축 교차 (강화)</h3>
+  <div class="cross-analysis-item three-axis">
+    <div class="ca-label">축1 × 축2 × 축3 (지정학 × 기술 × 통화)</div>
+    <div class="ca-text"><strong>"이란 합의 → 에너지 디스인플레이션 → Fed 인하 부활 → AI 밸류에이션 재확장"</strong> 경로. 반대로 결렬 시 "에너지 급등 → 스태그플레이션 확인 → VIX 30+"로 연쇄. 확률 분기가 모든 자산 방향 결정.</div>
+  </div>
+  <div class="cross-analysis-item three-axis">
+    <div class="ca-label">축1 × 축3 × 축4 (지정학 × 통화 × 무역)</div>
+    <div class="ca-text">정상회담(5/14) + Warsh 취임(5/15) + 관세 전환(7/24)이 겹치면서 "달러 약세 가속 + 관세 강화"라는 모순 조합 가능. 달러 약세는 수출에 유리하나 관세가 상쇄.</div>
+  </div>
+
+  <h3>4축 교차 (메가)</h3>
+  <div class="mega-trend-box">
+    <div class="mt-title">메가트렌드: "AI 에너지-통화-무역 삼중나선"</div>
+    <div class="mt-chain">
+      <div class="node">AI 자본지출 (축2)</div>
+      <div class="arrow">→</div>
+      <div class="node">전력/구리 수요 (축4)</div>
+      <div class="arrow">→</div>
+      <div class="node">에너지 인플레 (축1)</div>
+      <div class="arrow">→</div>
+      <div class="node">통화정책 경직 (축3)</div>
+      <div class="arrow">→</div>
+      <div class="node">AI 비용 상승</div>
+      <div class="arrow">→</div>
+      <div class="node"><strong>원자력 전환</strong></div>
+    </div>
+    <div class="mt-conclusion">
+      <strong>핵심 결론:</strong> AI 성장의 진짜 병목은 GPU가 아니라 <strong>전력</strong>. 2026~2028 구간에서 전력 확보 능력이 AI 기업의 경쟁우위를 결정. 자체 전력 확보 전략(Microsoft 원자력 계약, Amazon 풍력)이 있는 기업 vs 없는 기업의 밸류에이션 격차 확대 전망.
+    </div>
+  </div>
+
+  <h3>숨은 테마 (시장 미반영)</h3>
+  <div class="hidden-theme-box">
+    <div class="ht-title">칠레 황산-구리 슈퍼사이클</div>
+    <p style="font-size:14px;line-height:1.6">이란전쟁 2차 효과로 중국 황산 수출 제한 → 칠레 구리 정제 차질(황산 50% 의존) + AI DC 구리 110kt 신규 수요 + Section 232 50% 관세 = <strong>삼중 충격</strong>. 구리는 이미 COMEX $6.24 (+20% YTD)이나 시장은 아직 구조적 공급 차질을 완전 반영하지 않음. 2022년 니켈 슈퍼사이클과 유사한 패턴.</p>
+  </div>
+</div>
+
+<!-- G-6. 2차/3차 효과 -->
+<div class="sec">
+  <h2>G-6. 2차/3차 효과 + 과거 유사 사례</h2>
+  <h3>이란 MOU 결과별 연쇄 효과 체인</h3>
+
+  <div style="margin-bottom:14px">
+    <div style="background:rgba(63,185,80,0.06);border:1px solid rgba(63,185,80,0.3);border-radius:10px;padding:14px;margin-bottom:10px">
+      <div style="color:var(--up);font-weight:700;margin-bottom:8px">경로 A: MOU 합의 — 확률 25%</div>
+      <div class="cascade" style="margin:0">
+        <div class="step second">1차: WTI $80~90 → 에너지 CPI 하락</div>
+        <div class="step second">2차: Core PCE 둔화 가속 → Fed 하반기 인하 1회 부활</div>
+        <div class="step second">3차: 위험 선호 → EM 자금 유입 + DXY 95 이하 + Gold 조정($4,500~4,600) → 한국 원/달러 1,380~1,420 → KOSPI 7,800+ 시도</div>
+        <div class="step first"><em>단서: 기뢰 제거 6개월 + LNG 시설 수리 5년 → 보험료 정상화 지연 → Core PCE 둔화 속도 제한</em></div>
+      </div>
+    </div>
+
+    <div style="background:rgba(210,153,34,0.06);border:1px solid rgba(210,153,34,0.3);border-radius:10px;padding:14px;margin-bottom:10px">
+      <div style="color:var(--warning);font-weight:700;margin-bottom:8px">경로 B: 교착 지속 — 확률 45%</div>
+      <div class="cascade" style="margin:0">
+        <div class="step first">1차: WTI $90~105 레인지 → Core PCE 3%+ 고착</div>
+        <div class="step first">2차: Fed/ECB/BOJ 모두 동결 연장 → 시장 레인지 바운드</div>
+        <div class="step third">3차: "거짓 안정" 장기화 → VIX 15~20 범위이나 꼬리 위험 축적 → 7/24 관세 전환이 다음 변동성 트리거 (2003년 이라크전 교착기와 유사)</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(248,81,73,0.06);border:1px solid rgba(248,81,73,0.3);border-radius:10px;padding:14px">
+      <div style="color:var(--down);font-weight:700;margin-bottom:8px">경로 C: MOU 결렬 + 폭격 재개 — 확률 30%</div>
+      <div class="cascade" style="margin:0">
+        <div class="step danger">1차: WTI $120~150 → 에너지 쇼크</div>
+        <div class="step danger">2차: 스태그플레이션 확정 → VIX 30+ → S&amp;P -10~15% 조정</div>
+        <div class="step danger">3차: 안전자산 급등(Gold $5,000+, 단기채) → EM 자금 이탈 → 원/달러 1,550+ → 한국 비료 위기 2.0 현실화(요소비료 $800+) → 식품 CPI +7%</div>
+        <div class="step first"><em>1979년 이란혁명 + 제2차 오일쇼크와 구조적 유사. 당시 S&P -17%, Gold +130%</em></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>과거 유사 사례</h3>
+  <table>
+    <thead>
+      <tr><th>사례</th><th>유사점</th><th>차이점</th><th>교훈</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>1979 이란혁명/오일쇼크</strong></td>
+        <td>호르무즈 봉쇄, 에너지 인플레, Fed 딜레마</td>
+        <td>당시 Volcker 금리 20%까지. 현재 3.50~3.75%</td>
+        <td>에너지 쇼크 장기화 시 Fed는 결국 인플레를 택한다</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>2003 이라크전 교착</strong></td>
+        <td>유가 레인지, 시장 관망, 정치 불확실성</td>
+        <td>당시 미국 단독. 현재 미중 양강 + 이란 핵</td>
+        <td>교착 해소 방향(합의/결렬)이 향후 6개월 방향 결정</td>
+      </tr>
+      <tr>
+        <td><strong>2022 러시아 에너지 쇼크</strong></td>
+        <td>천연가스 가격 급등, 유럽 인플레</td>
+        <td>당시 대체 경로 존재(LNG). 현재 호르무즈 대체 불가</td>
+        <td>공급 차질은 시장 예상보다 오래 지속됨</td>
+      </tr>
+      <tr>
+        <td><strong>1948 Eccles 사례</strong></td>
+        <td>Fed 의장 → 이사 잔류</td>
+        <td>당시 정치적 배경 다름 (트루먼 갈등)</td>
+        <td>"이원 권력 구조"는 단기 혼란 후 신임 의장 주도로 수렴</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- G-7. 글로벌 자본 흐름 -->
+<div class="sec">
+  <h2>G-7. 글로벌 자본 흐름 + 달러 사이클</h2>
+
+  <h3>달러 사이클 현황</h3>
+  <table>
+    <thead>
+      <tr><th>지표</th><th>현재</th><th>전주 대비</th><th>추세</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>DXY</strong></td>
+        <td class="down"><strong>97.84</strong></td>
+        <td class="down">-0.42%</td>
+        <td>3년래 최저. 구조적 약세 가속</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>FRED USD 지수(DTWEXBGS)</strong></td>
+        <td class="down"><strong>118.39</strong></td>
+        <td class="down">-0.28%</td>
+        <td>12개월 전 123.14 대비 -3.9%</td>
+      </tr>
+      <tr>
+        <td><strong>10Y 손익분기 인플레이션(T10YIE)</strong></td>
+        <td><strong>2.42%</strong></td>
+        <td class="down">-1.6%p (전주 2.46%)</td>
+        <td>인플레 기대 소폭 안정화</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>하이일드 스프레드</strong></td>
+        <td class="up"><strong>2.77%</strong></td>
+        <td class="down">-2.8%p (전주 2.85%)</td>
+        <td>축소 추세 지속. 위험 선호</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>DXY 구조적 약세 5개 동인</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>동인</th><th>설명</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>탈달러 가속</strong></td>
+        <td>중앙은행 금 매입 3년 연속 1,000톤+. 위안/루블/루피 결제 확대</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>재정 지배력</strong></td>
+        <td>미국 부채 $36T+. 이자비용 GDP 대비 3.5%+ → 실질 금리 하방 압력</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>ECB+BOJ 동시 인상 시나리오</strong></td>
+        <td>DXY 95 이하 가속 변수 (동시 인상 확률 40%)</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>미중 정상회담 "합의 분위기"</strong></td>
+        <td>위안 강세 허용 → DXY 추가 하락</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>이란 합의 시 에너지 달러 수요 감소</strong></td>
+        <td>석유 결제 다변화 가속</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>자본 흐름 방향</h3>
+  <table>
+    <thead>
+      <tr><th>흐름</th><th>방향</th><th>규모 추정</th><th>시사점</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td><strong>미국 주식</strong></td>
+        <td class="up">유입 지속</td>
+        <td>AI 테마 중심 +$8B/주</td>
+        <td>S&amp;P 신고가 지속 동력</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>EM 주식</strong></td>
+        <td class="up">유입 전환</td>
+        <td>인도/한국 중심 +$3~4B/주</td>
+        <td>DXY 약세 + 캐리 트레이드 유리</td>
+      </tr>
+      <tr>
+        <td><strong>미국 채권</strong></td>
+        <td class="neutral">유입 (단기 중심)</td>
+        <td>단기채 중심</td>
+        <td>Fed 동결 장기화 캐리</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>Gold</strong></td>
+        <td class="up">구조적 유입</td>
+        <td>중앙은행 + ETF + 개인</td>
+        <td>$4,720 → $5,000 경로</td>
+      </tr>
+      <tr>
+        <td><strong>BTC/크립토</strong></td>
+        <td class="neutral">소폭 유입</td>
+        <td>기관 ETF 중심</td>
+        <td>$80,653. 탈달러 내러티브</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:8px">출처: FRED (DTWEXBGS, DGS10, BAMLH0A0HYM2), BofA Securities, Goldman Sachs</p>
+
+  <h3>CNN 공포/탐욕 지수 vs FRED 위험 지표 교차</h3>
+  <table>
+    <thead>
+      <tr><th>지표</th><th>값</th><th>시사점</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td><strong>CNN 공포/탐욕 지수</strong></td>
+        <td class="warning"><strong>66.9 (탐욕)</strong></td>
+        <td>전주 71.2에서 소폭 하락. 과열 해소 중이나 여전히 탐욕 영역</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>크립토 공포/탐욕 지수</strong></td>
+        <td class="down"><strong>38 (공포)</strong></td>
+        <td>전주 39 보합. BTC $80K 지지이나 심리 개선 더딤</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>VIX</strong></td>
+        <td class="warning"><strong>17.19</strong></td>
+        <td>역사적 저위. "거짓 안정" 경고</td>
+      </tr>
+      <tr>
+        <td><strong>하이일드 스프레드</strong></td>
+        <td><strong>2.77%</strong></td>
+        <td>1년 전 3.60% → 축소. 크레딧 위험 과소평가</td>
+      </tr>
+      <tr class="bg-down" style="font-weight:700">
+        <td><strong>종합 진단</strong></td>
+        <td colspan="2" class="down">"주식 탐욕 + 크립토 공포 + VIX 거짓 안정 + 하이일드 축소 = 이중 괴리"</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- G-8. 시나리오 플래닝 -->
+<div class="sec">
+  <h2>G-8. 시나리오 플래닝 (3~6개월 갈림길)</h2>
+
+  <h3>G-8-1. 갈림길 #1: 이란 MOU 합의 여부</h3>
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>확률</th><th>전회 대비</th><th>WTI</th><th>S&amp;P</th><th>Gold</th><th>DXY</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td><strong>A: MOU 합의 + 30일 재개</strong></td>
+        <td class="up"><strong>30%</strong></td>
+        <td class="up">+5%p</td>
+        <td class="neutral">$80~90</td>
+        <td class="up">+5~8%</td>
+        <td class="down">$4,500~4,600</td>
+        <td class="neutral">96~97</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>B: 교착 지속</strong></td>
+        <td class="warning"><strong>35%</strong></td>
+        <td class="neutral">유지</td>
+        <td class="warning">$90~105</td>
+        <td class="neutral">±2%</td>
+        <td class="up">$4,700~4,900</td>
+        <td class="neutral">96~98</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>C: MOU 결렬 + 폭격 재개</strong></td>
+        <td class="down"><strong>15%</strong></td>
+        <td class="neutral">유지</td>
+        <td class="down">$120~150</td>
+        <td class="down">-10~15%</td>
+        <td class="up">$5,000+</td>
+        <td class="down">93~95</td>
+      </tr>
+      <tr class="bg-highlight">
+        <td><strong>D: 이중완화 (이란+미중)</strong></td>
+        <td class="highlight"><strong>20%</strong></td>
+        <td class="neutral">유지</td>
+        <td class="up">$65~75</td>
+        <td class="up">+10~15%</td>
+        <td class="down">$4,300~4,500</td>
+        <td class="neutral">95~96</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>G-8-1. 갈림길 #2: 5/12 CPI가 스태그플레이션을 확인하는가</h3>
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>확률</th><th>전회 대비</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td><strong>A: CPI 3.0~3.3% (골디락스 지속)</strong></td>
+        <td class="up"><strong>30%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>B: CPI 3.3~3.6% (부분 전이)</strong></td>
+        <td class="warning"><strong>45%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>C: CPI 3.6%+ (스태그플레이션 확인)</strong></td>
+        <td class="down"><strong>25%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>G-8-1. 갈림길 #3: ECB+BOJ 동시 인상이 DXY를 95 이하로 밀어내는가</h3>
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>확률</th><th>전회 대비</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td><strong>A: 동시 인상 → DXY 95 이하</strong></td>
+        <td class="warning"><strong>40%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>B: 단면 인상 (ECB만) → DXY 96~97</strong></td>
+        <td class="up"><strong>45%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+      <tr>
+        <td><strong>C: 양쪽 동결 → DXY 100+</strong></td>
+        <td class="neutral"><strong>15%</strong></td>
+        <td class="neutral">유지</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>G-8-2. 시나리오 트리</h3>
+  <div class="scenario-tree">
+    <div class="root">
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">현재 시점 (2026-05-10)</div>
+      <div class="price-grid">
+        <div class="price-item"><div class="label">S&amp;P 500</div><div class="val highlight">7,399</div></div>
+        <div class="price-item"><div class="label">VIX</div><div class="val warning">17.19</div></div>
+        <div class="price-item"><div class="label">WTI</div><div class="val warning">$95</div></div>
+        <div class="price-item"><div class="label">Gold</div><div class="val up">$4,720</div></div>
+        <div class="price-item"><div class="label">DXY</div><div class="val down">97.84</div></div>
+        <div class="price-item"><div class="label">BTC</div><div class="val">$80,653</div></div>
+      </div>
+    </div>
+    <div class="branches4">
+      <div class="branch a">
+        <div class="branch-title" style="color:var(--up)">이란 합의 (30%)</div>
+        <div class="branch-detail">
+          WTI: <span class="neutral">$85</span><br>
+          S&amp;P: <span class="up">+5~8%</span><br>
+          Gold: <span class="down">$4,500~4,600</span><br>
+          DXY: <span class="neutral">96~97</span>
+        </div>
+        <div class="prob-bar"><div class="fill" style="width:30%;background:var(--up)"></div></div>
+      </div>
+      <div class="branch b">
+        <div class="branch-title" style="color:var(--highlight)">교착 지속 (35%)</div>
+        <div class="branch-detail">
+          WTI: <span class="warning">$95~105</span><br>
+          S&amp;P: <span class="neutral">±2%</span><br>
+          Gold: <span class="up">$4,700~4,900</span><br>
+          DXY: <span class="neutral">96~98</span>
+        </div>
+        <div class="prob-bar"><div class="fill" style="width:35%;background:var(--highlight)"></div></div>
+      </div>
+      <div class="branch c">
+        <div class="branch-title" style="color:var(--down)">결렬+폭격 (15%)</div>
+        <div class="branch-detail">
+          WTI: <span class="down">$120~150</span><br>
+          S&amp;P: <span class="down">-10~15%</span><br>
+          Gold: <span class="up">$5,000+</span><br>
+          VIX: <span class="down">30+</span>
+        </div>
+        <div class="prob-bar"><div class="fill" style="width:15%;background:var(--down)"></div></div>
+      </div>
+      <div class="branch d">
+        <div class="branch-title" style="color:#a78bfa">이중완화 (20%)</div>
+        <div class="branch-detail">
+          WTI: <span class="up">$65~75</span><br>
+          S&amp;P: <span class="up">+10~15%</span><br>
+          Gold: <span class="down">$4,300~4,500</span><br>
+          DXY: <span class="neutral">95~96</span>
+        </div>
+        <div class="prob-bar"><div class="fill" style="width:20%;background:#8b5cf6"></div></div>
+      </div>
+    </div>
+
+    <!-- 2단 분기: CPI 결과 -->
+    <div style="text-align:center;font-size:13px;color:var(--sub);margin:8px 0 10px">↓ 각 경로에서 5/12 CPI 결과가 추가 분기</div>
+    <div class="branches" style="grid-template-columns:repeat(3,1fr)">
+      <div class="branch a" style="padding:12px">
+        <div class="branch-title" style="color:var(--up);font-size:13px">CPI 3.0~3.3% (30%)</div>
+        <div class="branch-detail">골디락스 지속<br><span class="up">Fed 인하</span><br>S&amp;P: 7,800</div>
+        <div class="prob-bar"><div class="fill" style="width:30%;background:var(--up)"></div></div>
+      </div>
+      <div class="branch b" style="padding:12px">
+        <div class="branch-title" style="color:var(--highlight);font-size:13px">CPI 3.3~3.6% (45%)</div>
+        <div class="branch-detail">부분 전이<br><span class="neutral">Fed 동결</span><br>S&amp;P: 7,200~7,400</div>
+        <div class="prob-bar"><div class="fill" style="width:45%;background:var(--highlight)"></div></div>
+      </div>
+      <div class="branch c" style="padding:12px">
+        <div class="branch-title" style="color:var(--down);font-size:13px">CPI 3.6%+ (25%)</div>
+        <div class="branch-detail">스태그플레이션<br><span class="down">Fed 딜레마</span><br>S&amp;P: 6,800 / Gold: $5,000+</div>
+        <div class="prob-bar"><div class="fill" style="width:25%;background:var(--down)"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>G-8-3. 4종 포트폴리오 대응</h3>
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <h4>🛡️ 안전형</h4>
+      <div class="direction dir-caution" style="margin-bottom:8px">경계</div>
+      <p style="font-size:13px;color:var(--sub);line-height:1.5">4연속 이벤트 주간(5/11~15) 앞에서 현금+채권 비중 유지. Gold 구조적 강세 포지션 확대 고려.</p>
+      <p style="font-size:12px;color:var(--sub);margin-top:8px">Gold 13%→15%, SGOV 18% 유지, IEF 25% 유지</p>
+    </div>
+    <div class="portfolio-card">
+      <h4>⚖️ 중립형</h4>
+      <div class="direction dir-hold" style="margin-bottom:8px">유지</div>
+      <p style="font-size:13px;color:var(--sub);line-height:1.5">이벤트 주간 위험을 AI 실적 모멘텀으로 상쇄. 반도체/방산 유지하되 신규 진입 자제.</p>
+      <p style="font-size:12px;color:var(--sub);margin-top:8px">SOXX 7%, ITA 5% 유지. 현금 6% 유지</p>
+    </div>
+    <div class="portfolio-card">
+      <h4>🔥 공격형</h4>
+      <div class="direction dir-wait" style="margin-bottom:8px">조정 대기</div>
+      <p style="font-size:13px;color:var(--sub);line-height:1.5">CPI 결과에 따라 에너지 롱 확대 또는 축소 결정. AI 테크 핵심 포지션 유지.</p>
+      <p style="font-size:12px;color:var(--sub);margin-top:8px">NVDA 8% 유지, XLE 6% → CPI 3.6%+ 시 8% 확대 고려</p>
+    </div>
+    <div class="portfolio-card">
+      <h4>💰 배당형</h4>
+      <div class="direction dir-hold" style="margin-bottom:8px">유지</div>
+      <p style="font-size:13px;color:var(--sub);line-height:1.5">금리 동결 장기화에 따른 배당주 프리미엄 유지. 커버드콜 VIX 17.19 저위에서 수익성 주시.</p>
+      <p style="font-size:12px;color:var(--sub);margin-top:8px">SCHD 25%, JEPI 8% 유지. VIX 25+ 시 JEPI 프리미엄 확대 기대</p>
+    </div>
+  </div>
+
+  <h3>G-8-4. 시나리오 추적 갱신 요약</h3>
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>주요 변화</th><th>갱신 사유</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>#1 호르무즈</strong></td><td class="neutral">변화 없음 (5/9 갱신이 최신, ±5%p 미만)</td><td>토요일 데이터 미발생</td></tr>
+      <tr><td><strong>#2 미중 정상회담</strong></td><td class="neutral">변화 없음 (D-4, 5/9 갱신 유지)</td><td>공청회 완료, 회담 대기</td></tr>
+      <tr><td><strong>#3 Fed 6월 FOMC</strong></td><td class="neutral">변화 없음 (동결 96% 유지)</td><td>5/12 CPI가 다음 분기점</td></tr>
+      <tr><td><strong>#4 Fed 리더십</strong></td><td class="neutral">변화 없음 (A 85%, 사실상 확정)</td><td>5/11 봉쇄종결 투표 대기</td></tr>
+      <tr><td><strong>#5 Section 301 관세</strong></td><td class="neutral">변화 없음 (B 55% 유지)</td><td>정상회담 결과가 최종 분기점</td></tr>
+      <tr><td><strong>#7 5/12 CPI</strong></td><td class="neutral">변화 없음 (5/9 갱신 유지)</td><td>5/12 발표 D-2</td></tr>
+      <tr><td><strong>#8 ECB+BOJ 동시 인상</strong></td><td class="neutral">변화 없음 (A 40%/B 45% 유지)</td><td>6월 회의 대기</td></tr>
+      <tr><td><strong>#9 한국 요소 위기</strong></td><td class="neutral">변화 없음 (5/9 갱신 유지)</td><td>이란 합의 성패에 연동</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--sub);margin-top:8px;background:rgba(255,255,255,0.03);padding:10px;border-radius:6px">토요일 발행으로 활성 시나리오 전체 ±5%p 미만 변동. 5/11~15 이벤트 4연속 주간 이후 대폭 갱신 예정.</p>
+</div>
+
+<!-- Debate Card -->
+<div class="debate-card">
+  <div class="card-title">💜 핵심 논쟁 — 4축 중 어느 축이 가장 강한 동인인가?</div>
+  <div class="bull">
+    <strong>에너지/지정학 축 주장:</strong> 이란 MOU 한 건이 WTI → CPI → Fed → EM 자금흐름 전체를 관통. 합의/결렬 여부가 2026 하반기 글로벌 자산 방향 결정. 1979년 오일쇼크 전례 — 에너지가 모든 변수의 상위 동인 [Reuters, IEA]
+  </div>
+  <div class="bear">
+    <strong>기술 축 주장:</strong> AI 자본지출 $660~690B가 구리/전력/반도체/국가 패권을 규정. 에너지 위기는 일시적이나 AI 전환은 비가역적. TSMC 2nm 5팹 동시 양산이 향후 5년 반도체 공급 결정 [Gartner, TSMC]
+  </div>
+  <div style="margin-top:8px;font-size:13px;color:var(--sub)">
+    <strong>현재 시장 컨센서스:</strong> 기술 축 우세 — S&amp;P/NASDAQ 신고가가 AI 주도
+  </div>
+  <div class="verdict">
+    <strong>briefing-lead 판단:</strong> <span class="up">단기(1~6개월) 에너지/지정학, 장기(1~5년) 기술</span>. 교차점 "AI 에너지 병목 → 원자력 르네상스"가 두 축을 통합하는 최고 확신 메가 테마. 확신 강도: <strong class="down">높음</strong>.
+  </div>
+</div>
+
+<!-- Contrarian Card -->
+<div class="contrarian-card">
+  <div class="card-title">🟠 과소평가 포인트 — 시장이 가격에 반영하지 않은 4축 교차점</div>
+  <div class="assumption">
+    <strong>시장의 일반 가정:</strong> 이란 MOU 합의 → 에너지 인플레 해소 → Fed 인하 재점화 → 위험 선호 지속. S&amp;P 7,399 신고가가 이 내러티브를 반영.
+  </div>
+  <div class="signal">
+    <strong>반대 시그널:</strong>
+    <ol style="margin:8px 0 0 18px;font-size:14px;line-height:1.7">
+      <li>MOU 합의해도 기뢰 제거 6개월 → 호르무즈 완전 정상화 4분기26 이후 [knowledge-base/macro/geopolitics.md]</li>
+      <li>카타르 LNG 시설 수리 5년(IEA) → JKM 구조적 상방. 한국 LNG 30% 호르무즈 경유 [IEA]</li>
+      <li>비료→식량 인플레 경로 미해소. 요소비료 $700/mt 고착 → Core PCE 둔화 속도 시장 기대보다 느림 [knowledge-base/macro/supply_chain.md]</li>
+    </ol>
+  </div>
+  <div style="margin-top:8px;font-size:13px;color:var(--text);background:rgba(210,153,34,0.06);border-radius:6px;padding:10px">
+    <strong>만약 반대 시그널이 맞다면:</strong> Core PCE 3%+ 고착 기간이 3분기~4분기까지 연장 → Fed 연내 인하 0회 → 성장주 밸류에이션 압축 5~10% + Gold $5,000+ 도달 + TIPS 과소 반영 교정
+  </div>
+  <div class="probability">
+    <strong>확률 (briefing-lead 추정):</strong> <span class="warning">중간 (40~50%)</span>
+  </div>
+</div>
+
+<!-- 위험 등급 종합 -->
+<div class="sec">
+  <h2>위험 등급 종합</h2>
+  <table>
+    <thead>
+      <tr><th>항목</th><th>등급</th><th>전회(5/7) 대비</th><th>시그널 바</th><th>비고</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-down">
+        <td><strong>미국 통화정책</strong></td>
+        <td><span class="down"><strong>4/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar down"><div class="fill" style="width:80%"></div></div>
+        </td>
+        <td>Warsh 취임 D-5. 정책 불확실성 최고조</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>지정학</strong></td>
+        <td><span class="warning"><strong>3.5/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar warning"><div class="fill" style="width:70%"></div></div>
+        </td>
+        <td>이란 MOU 미서명이나 합의 방향 유지</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>정치 사이클</strong></td>
+        <td><span class="warning"><strong>3.5/5</strong></span></td>
+        <td class="up">↑ 0.5</td>
+        <td>
+          <div class="signal-bar warning"><div class="fill" style="width:70%"></div></div>
+        </td>
+        <td>4연속 이벤트 주간(5/11~15) 진입</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>공급망</strong></td>
+        <td><span class="down"><strong>4/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar down"><div class="fill" style="width:80%"></div></div>
+        </td>
+        <td>구리 삼중충격 + 비료 위기</td>
+      </tr>
+      <tr class="bg-down">
+        <td><strong>미국 경제</strong></td>
+        <td><span class="down"><strong>4/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar down"><div class="fill" style="width:80%"></div></div>
+        </td>
+        <td>소비심리 48.2 역대 최저 vs S&amp;P 신고가</td>
+      </tr>
+      <tr>
+        <td><strong>한국 경제</strong></td>
+        <td><span class="neutral"><strong>3/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar warning"><div class="fill" style="width:60%"></div></div>
+        </td>
+        <td>KOSPI 7,498 신고가이나 원/달러 1,461</td>
+      </tr>
+      <tr>
+        <td><strong>글로벌 위험</strong></td>
+        <td><span class="down"><strong>4/5</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar down"><div class="fill" style="width:80%"></div></div>
+        </td>
+        <td>"거짓 안정" 경고 영역</td>
+      </tr>
+      <tr class="bg-down" style="font-weight:700">
+        <td><strong>종합</strong></td>
+        <td><span class="down"><strong>4/5 (위험)</strong></span></td>
+        <td class="neutral">= 유지</td>
+        <td>
+          <div class="signal-bar down"><div class="fill" style="width:80%"></div></div>
+        </td>
+        <td>4연속 이벤트 주간이 방향 결정. 단일 결렬 시 VIX 25+</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 심층 분석 권장 -->
+<div class="sec" style="border-color:rgba(88,166,255,0.3)">
+  <h2>🔬 심층 분석 권장 (다음 단계)</h2>
+  <table class="deep-analysis-table">
+    <thead>
+      <tr><th>#</th><th>티커</th><th>권장 사유</th><th>다음 단계</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong style="color:var(--highlight)">SMR (NuScale Power)</strong></td>
+        <td>AI DC 전력 → 원자력 르네상스 메가 테마. 4축 교차 최상위</td>
+        <td><code>/종목분석 SMR</code></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong style="color:var(--highlight)">FCX (Freeport-McMoRan)</strong></td>
+        <td>구리 삼중충격(Section 232+칠레+AI DC). 숨은 테마 핵심</td>
+        <td><code>/종목분석 FCX</code></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong style="color:var(--highlight)">012450 (한화에어로스페이스)</strong></td>
+        <td>K-방산 $20B + NDAA $901B + 유럽 $864B. 5중 모멘텀 지속</td>
+        <td><code>/종목분석 012450</code></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong style="color:var(--highlight)">000660 (SK하이닉스)</strong></td>
+        <td>HBM 점유율 62%. OPM 72% 창사 최고. Memflation 핵심</td>
+        <td><code>/종목분석 000660</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="highlight" style="font-size:13px;margin-top:10px">→ 각 종목은 <code>/종목분석 {티커}</code> 명령으로 심층 분석 가능</p>
+</div>
+
+<!-- G-9. 주의사항 -->
+<div class="sec" style="border-color:rgba(210,153,34,0.3)">
+  <h2>G-9. MODULE G 주의사항</h2>
+  <ul class="g9-warning-list">
+    <li><strong>시간 범위와 불확실성:</strong> 3~6개월 시나리오는 조건부 전망이며 확률은 현 시점 추정치. 새 정보에 따라 급변 가능.</li>
+    <li><strong>지정학 위험의 비선형성:</strong> 이란 MOU, 정상회담 등 정치 이벤트는 이진적(합의/결렬) 특성. 점진적 변화를 가정하면 안 됨.</li>
+    <li><strong>2차/3차 효과의 시차:</strong> 에너지 → 인플레 전이(1~3개월), 통화정책 → 실물경제(6~12개월). 즉각적 효과와 지연 효과를 혼동하지 말 것.</li>
+    <li><strong>숨은 테마의 한계:</strong> 구리 슈퍼사이클, 요소 위기 2.0 등은 시장 미반영 테마이나 그만큼 타이밍 불확실성이 높음.</li>
+    <li><strong>공개 시장 정보 목적:</strong> 본 리포트는 다수 구독자 공유용 시장 정보이며 개인 맞춤 투자 조언이 아님. 모든 투자 결정은 각자의 판단과 책임 하에 이루어져야 함.</li>
+  </ul>
+  <p style="font-size:12px;color:var(--sub);margin-top:10px">
+    출처: knowledge-base/macro/geopolitics.md [2026-05-10], knowledge-base/macro/political_cycle.md [2026-05-10], knowledge-base/macro/us_monetary_policy.md [2026-05-06], knowledge-base/macro/us_economy.md [2026-05-09], knowledge-base/macro/supply_chain.md [2026-05-09], knowledge-base/macro/tech_breakthrough.md [2026-05-10], knowledge-base/macro/global_risk_factors.md [2026-05-10], FRED (DFF, DGS10, T10Y2Y, PCEPILFE, VIXCLS, BAMLH0A0HYM2, DTWEXBGS, T10YIE)
+  </p>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <h3>📌 다른 브리핑도 확인해보세요</h3>
+  <table>
+    <tr><td><code>/모닝브리핑</code></td><td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td></tr>
+    <tr><td><code>/이브닝브리핑</code></td><td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td></tr>
+    <tr><td><code>/주간리포트</code></td><td>→ 한 주 심층 + 성과 추적</td></tr>
+    <tr><td><code>/리밸런싱</code></td><td>→ 4종 모델 포트폴리오 재조정</td></tr>
+    <tr><td><code>/크립토브리핑</code></td><td>→ BTC/ETH/SOL + 온체인 + 규제</td></tr>
+    <tr><td><code>/모델포트폴리오</code></td><td>→ 4종 현재 구성 + 구체 종목·ETF</td></tr>
+    <tr><td><code>/글로벌인텔리전스</code></td><td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td></tr>
+    <tr><td><code>/풀브리핑</code></td><td>→ A+B+C+E 4편 동시</td></tr>
+    <tr><td><code>/성과리뷰</code></td><td>→ 1주/2주/1개월/3개월 적중률</td></tr>
+    <tr><td><code>/내포트폴리오</code></td><td>→ 사용자 보유 자산 (개인 데이터 격리)</td></tr>
+  </table>
+</div>
+
+<!-- 명령어 가이드 -->
+<div class="footer" style="margin-top:16px">
+  <h3>명령어 가이드</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px">
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+    <div><code>/비교분석</code> 두 종목 비교</div>
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 크립토</div>
+    <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/내포트폴리오</code> 내 자산</div>
+    <div><code>/리밸런싱</code> 포트 조정</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/풀브리핑</code> A+B+C+E</div>
+    <div><code>/KB업데이트</code> KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
+    <div><code>/손절계산</code> ATR 계산</div>
+    <div><code>/리포트</code> HTML 재생성</div>
+  </div>
+</div>
+
+<!-- 주의사항 -->
+<div class="disclaimer">
+  <h4>⚠️ 주의사항</h4>
+  <ul style="padding-left:18px">
+    <li>본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도 추천이 아닙니다.</li>
+    <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+    <li>13F 데이터는 분기말 기준 최대 45일 시차가 있습니다.</li>
+    <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+    <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+    <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+    <li>시나리오 확률은 briefing-lead 의 현 시점 추정치이며 급변할 수 있습니다.</li>
+  </ul>
+  <p style="margin-top:10px">생성: briefing-report-generator | 모드: global_intelligence | 데이터 기준: 2026-05-10 KST 22:30</p>
+</div>
+
+<script>
+function applyTheme(light){
+  if(light){
+    document.body.setAttribute("data-theme","light");
+    document.getElementById("theme-icon").textContent="🌙";
+    document.getElementById("theme-label").textContent="다크 모드";
+  } else {
+    document.body.removeAttribute("data-theme");
+    document.getElementById("theme-icon").textContent="☀️";
+    document.getElementById("theme-label").textContent="라이트 모드";
+  }
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){
+  applyTheme(document.body.getAttribute("data-theme")!=="light");
+}
+(function(){
+  applyTheme(localStorage.getItem("theme")==="light");
+})();
+</script>
+
+</body>
+</html>
