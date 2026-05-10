@@ -18,14 +18,14 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-10 (wiki-linter full)**
+> **최종 갱신: 2026-05-10 (market-data-collector 이브닝 재수집)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| `market/economic_calendar.md` | valid_until 2026-05-09 — 어제 만료. 이번 주(5/11~17) 이벤트 미반영 (Warsh 인준 표결·5/12 CPI·5/14 Trump-Xi 정상회담·5/15 파월 퇴임) | 브리핑 MODULE C, 경제지표 캘린더 | kb-updater에 즉시 재수집 위임. 5/11~17 주요 이벤트 전면 갱신 필요 |
+| — | P0 해소 | — | — |
 
-> [P0 경고] market/economic_calendar.md valid_until 2026-05-09 만료 — 2026-05-10 wiki-linter full 점검. 5/11주 핵심 이벤트(Warsh 인준·CPI 4월·Trump-Xi·파월 퇴임) 모두 미반영. kb-updater 재수집 즉시 권장.
-> [INFO] market/daily_snapshot.md 2026-05-10 최신 (valid_until 05-11). 브리핑 실행 가능하나 economic_calendar 재수집 후 MODULE C 보완 권장.
+> [P0 해소 2026-05-10 20:00 KST] market/economic_calendar.md 재수집 완료 — valid_until 2026-05-17 갱신. 5/11~17 핵심 이벤트(Warsh 인준 표결·4월 CPI·Trump-Xi 정상회담·파월 퇴임·13F 공시) 전면 반영. market-data-collector 이브닝 브리핑 수집.
+> [INFO] market/daily_snapshot.md 5/9 종가 기준 갱신 완료. daily_snapshot valid_until 2026-05-11.
 
 ---
 
@@ -54,6 +54,9 @@ lint_mode: full
 
 | 날짜 | 출처 | 인사이트 | 관련 KB | 제안 상태 |
 |------|------|---------|--------|---------|
+| 2026-05-10 | 이브닝브리핑 | VIX↔S&P 상관관계 +5.80σ 극단 이상 — 역상관 완전 붕괴. 전체 피어슨 0.0, 최근3 양(+) 방향. 옵션시장 구조적 이상. 5/11~15 4연속 이벤트(Warsh·CPI·정상회담·파월 퇴임) 충격 시 급격한 VIX 스파이크 조건 형성 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-10 | 이브닝브리핑 | 미시간 소비심리 48.2 역대 최저 vs S&P 7,399·KOSPI 7,498·NASDAQ 26,247 동시 사상 최고 — 소비 체감과 자산시장 괴리 역대 극대화. "자산 보유자 vs 비보유자" 양극화 구조 심화 신호 | `macro/global_risk_factors.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-10 | 이브닝브리핑 | 이란 MOU 3축 시나리오: 합의(25%, WTI $80~90)→인플레 둔화, 교착(45%, $90~105)→고착, 결렬(30%, $120~150)→스태그플레이션. 호르무즈 통항 0건+교전 병존 비정상 상태 지속 | `macro/geopolitics.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-09 | 이브닝브리핑 | NFP 골디락스 확정: +115K(예상 62K 상회) + 임금 +3.6%(예상 3.8% 하회). K자형 공식화 — 의료/운송 호조 vs 정보/연방정부/제조 감소. AI 대체 첫 사이클 구조적 전환 진행 | `macro/us_economy.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-09 | 이브닝브리핑 | S&P↔10Y 19일 연속 동방향 이상이 NFP 계기로 정상 복귀(주의→정상). USD/KRW↔KOSPI 주의 승격 — KOSPI 7,498+원/달러 1,461 통상 역상관 붕괴 조짐. 1,470 상회 시 외국인 매도 전환 분기점 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-09 | 이브닝브리핑 | 5/12 CPI D-3: Core 3.0~3.2%(55%) Base. Core 3.2%+ 시 인하 0회+PER 22.5x 압축. 미시간 인플레 기대 1Y 4.5%(4.7%에서 하락) 소폭 안정 신호. Warsh 인준 D-2 — Fed 이원 구조 확정 임박 | `macro/us_economy.md, macro/us_monetary_policy.md` | 진행중 |

@@ -469,3 +469,13 @@ type: time_series
 | 2026-05-09 | crypto | BTC | 80263.61 | +0.10% | USD | Yahoo Finance [2026-05-09 KST 수집] | 2026-05-09T10:00:00+09:00 | — |
 | 2026-05-09 | crypto | ETH | 2313.26 | +0.27% | USD | Yahoo Finance [2026-05-09 KST 수집] | 2026-05-09T10:00:00+09:00 | — |
 | 2026-05-09 | macro | NFP_April2026 | 115000 | — | jobs | BLS [2026-05-09 08:30 ET 발표] | 2026-05-09T10:00:00+09:00 | 컨센 +65K 대폭 상회. 실업률 4.3% 유지. 헬스케어·운송·소매 주도. 골디락스 해석 |
+| 2026-05-09 | us_index | VIX_corrected | 17.08 | -1.78% | index | Alain Guillot / TheStreet [2026-05-08 ET 16:00 종가] | 2026-05-10T20:00:00+09:00 | 5/9 이전 기록(17.19)은 5/8 중간값. 5/8 ET 16:00 공식 종가 17.08. 20 미만 안정 구간 |
+| 2026-05-09 | asia_index | HangSeng | 26626.28 | +1.57% | point | Yahoo Finance [2026-05-09 HKT 16:00 종가] | 2026-05-10T20:00:00+09:00 | 이란 협상 낙관 + 중국 기술주 강세 |
+| 2026-05-09 | asia_index | ShanghaiComposite | 4180.09 | +0.48% | point | Yahoo Finance [2026-05-09 CST 15:00 종가] | 2026-05-10T20:00:00+09:00 | 중국 경기 모멘텀 소폭 강화 |
+| 2026-05-09 | asia_index | SENSEX | 77344 | -0.64% | point | Goodreturns [2026-05-09 IST 15:30 종가] | 2026-05-10T20:00:00+09:00 | Bajaj Finance(-1.88%) / HDFC Bank(-1.86%) / Axis Bank(-1.76%) 주도 하락. Titan Company(+4.86%) 강세 |
+| 2026-05-09 | bond | US2Y | 3.90 | — | percent | ETF Trends / Advisor Perspectives [2026-05-08 ET 종가] | 2026-05-10T20:00:00+09:00 | 5/8 ET 종가. NFP 강건에도 소폭 하락 — 임금 +0.2% 하회 반영 |
+| 2026-05-09 | bond | Spread2Y10Y | +48 | — | bp | 계산값(4.38%-3.90%) | 2026-05-10T20:00:00+09:00 | 정상 구간(비역전) 유지. 장단기 스프레드 안정 |
+| 2026-05-09 | commodity | Gold_corrected | 4715.85 | +0.63% | USD/oz | Trading Economics [2026-05-08 ET 종가] | 2026-05-10T20:00:00+09:00 | 5/8 ET 16:00 공식 종가. $4,700선 안착 |
+| 2026-05-09 | crypto | FearAndGreedIndex | 49 | — | index | Milkroad [2026-05-09] | 2026-05-10T20:00:00+09:00 | Fear 구간(50 미만). 직전 38(Fear). 암호화폐 심리 소폭 개선 중 |
+| 2026-05-09 | crypto | BTC_ETF_Monthly | 2440M | — | USD | Yahoo Finance [2026-05 누계] | 2026-05-10T20:00:00+09:00 | 미국 spot BTC ETF 4월 유입 $2.44B — 10월 2025 이후 최대. 기관 수요 재확인 |
+| 2026-05-09 | macro | NFP_April_Breakdown | Health37K_Transport30K_Retail22K | — | jobs | BLS [2026-05-08 08:30 ET] | 2026-05-10T20:00:00+09:00 | 업종별: 헬스케어 +37K / 운송·창고 +30K / 소매 +22K. 연방정부 -9K / 정보 -13K / 제조 -2K. K자형 노동시장 공식화 |
