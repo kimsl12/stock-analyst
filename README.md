@@ -1,6 +1,6 @@
-# 종목분석 AI 에이전트 v3.15
+# 종목분석 AI 에이전트 v3.17
 
-> 멀티에이전트 투자분석 시스템. Claude Code + 19개 에이전트 + 18개 슬래시 명령어 + 웹 대시보드(Astro+Supabase+Vercel).
+> 멀티에이전트 투자분석 시스템. Claude Code + 20개 에이전트 + 19개 슬래시 명령어 + 웹 대시보드(Astro+Supabase+Vercel).
 
 ## 리포트 열람
 
@@ -52,6 +52,8 @@
 
 | 버전 | 날짜 | 내용 |
 |------|------|------|
+| **v3.17** | **2026-05-12** | **Research KB 시스템 신설 — 5섹터(반도체·에너지·매크로·바이오·핀테크) × 4소스군(학술·씽크탱크·컨퍼런스·규제) 1차 자료 3-레이어 (L1 주간/L2 월간/L3 분기) 큐레이션. `research-curator` 에이전트 + `/리서치업데이트` 명령 + 4종 분석 에이전트 + briefing-lead + stock-analyst-lead 인용 통합. debate/contrarian-card 근거를 뉴스 → 학술·정책 1차 자료로 격상** |
+| **v3.16** | **2026-05-10** | **manifest sort_key git commit time 도입 — 카드 시간순 혼합 정렬 (briefing↔stock 섞임), 폴백 체인 3단(git→filename→0) + Vercel 빌드 컨테이너 .git 미포함 우회 (committed manifest 그대로 사용) + 4-layer 매니페스트 sync 자동 강제 (push 단계 + 검증 단계 + Vercel bypass)** |
 | **v3.15** | **2026-05-06** | **Phase 0-D hang 방지 — `report-generator` `run_in_background` 호출 + 후속 커밋 절차 분리. 6분+ 응답 대기로 인한 브리핑 파이프라인 hang 재발 방지** |
 | **v3.14** | **2026-05-05** | **시간대 표현 모순 수정 — KST 발행 시점 ↔ 미국장 상태 매핑 정확화. `briefing-lead` `[v3.14]` + `market-data-collector` `[v3.11]` 시간대 표준 섹션 추가. 모닝/이브닝/주간 슬래시 명령어 시점 표기 정정. 5/5 morning/evening retroactive 재작성** |
 | **v3.13** | **2026-05-05** | **KST/ET 시간대 가이드 신설 — `.claude/_time_guide.md` 7개 섹션 (KST↔ET 매핑, 미국장 시간대, 브리핑 발행 시점↔시장 상태 매핑, 데이터 기준 frontmatter 표준, 금지 표현, 소스 라벨링, ISO 형식). 모든 시간 UTC → GMT+9 (KST) 통일** |
@@ -69,6 +71,60 @@
 | v3.0 | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어 |
 | v2.3 | 2026-04-06 | 데이터 흐름 개편 + 해외 종목 + 가격 검증 |
 | v2.0 | 2026-04-05 | 9개 에이전트 체계 + DART API |
+
+---
+
+## v3.17 핵심 — Research KB (학술·정책 1차 자료 큐레이션)
+
+기존 분석 데이터 소스가 뉴스 + 증권사 리포트 위주(컨센서스 추종 + 표면적)였던 문제 해결. 5개 섹터의 학술·씽크탱크·컨퍼런스/백서·규제 1차 자료를 깊이별 3-레이어로 축적하고, debate-card / contrarian-card 의 근거에 자동 인용.
+
+### 3-레이어 구조
+
+| 레이어 | 주기 | 산출물 | 인용 활용 |
+|---|---|---|---|
+| **L1** 헤드라인 인덱스 | 주간 | `knowledge-base/research/_index.md` (12주 슬라이딩) | 즉시 발췌 가능 |
+| **L2** 한국어 요약본 | 월간 | `knowledge-base/research/{sector}/{topic}_{YYYYMM}.md` | 분석 에이전트 인용 |
+| **L3** 분기 Deep Dive | 분기 | `reports/research/{sector}_{YYYY}Q{N}.html` | 사용자 참조 + thesis 재정비 |
+
+### 5섹터 × 4소스군 매트릭스
+
+|  | 학술 | 씽크탱크 | 컨퍼런스/백서 | 규제 |
+|---|---|---|---|---|
+| **반도체** | arXiv, SSRN | McKinsey, BCG, SEMI, CSIS | ISSCC, VLSI, HotChips, IEDM | BIS CHIPS, 한국 산업부, METI |
+| **에너지** | NBER, SSRN, arXiv | IEA, McKinsey, CSIS, RFF | IEA WEO, BP Outlook, ANS | DOE, NRC, EPA, FERC |
+| **매크로** | NBER, BIS WP, Fed FEDS | IMF, BIS, IIF, Brookings | Jackson Hole, BIS AER, IMF Annual | Fed, ECB, BOJ, BOK |
+| **바이오** | Nature, NEJM, Lancet, bioRxiv | McKinsey Pharma, BCG Health | ASCO, ASH, AHA, JPM Healthcare | FDA, EMA, 식약처, CMS |
+| **핀테크** | SSRN, BIS WP, NBER | BIS Innovation Hub, BoE | Money 20/20, WEF, FedNow | SEC, OCC, CFTC, 금융위 |
+
+### 자동 호출 (briefing-lead Phase 0-RESEARCH)
+
+| 명령 | 자동 호출 | 사유 |
+|---|---|---|
+| `/주간리포트`, `/글로벌인텔리전스`, `/모델포트폴리오`, `/풀브리핑` | ✅ 일요일 + 조건 매칭 시 | 무거운 분석, 깊이 가치 |
+| `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` | ❌ 자동 호출 X | 시간 폭주 방지 |
+| `/리서치업데이트` | ✅ 수동 명령 즉시 | 즉시 갱신용 |
+
+### 인용 형식 8 유형
+
+`[Working Paper]` `[Journal]` `[Preprint]` `[Conference]` `[White Paper]` `[Think Tank]` `[Policy]` `[Filing]`
+
+```
+📄 [Working Paper] BIS WP #1247 (2026-03) — "Sticky Service Inflation" §4 → 끈적함 24M 시 Fed +75bp 가능
+📄 [Conference] ISSCC 2026 — Samsung 36GB HBM4 12-Hi → 3.3 TB/s, Rubin 요건 충족
+📄 [Policy] FDA Press Release (2026-04) — "Foundayo (orforglipron) 비만 승인" → LLY 경구 GLP-1 시장 확대
+```
+
+### 환각 방지
+
+- WebFetch 실제 확인한 출처만 인용 (페이지/저자/날짜 임의 생성 금지)
+- KB 직접 탐색 금지 룰 유지 (lead 가 발췌 → 프롬프트 첨부 패턴)
+- 분기 1회 인용 검증 모드 (verify) — URL 404 + 의심 인용 자동 검출
+
+### 첫 발행 예정
+
+- L1 첫 수집 완료: **2026-05-12** (21건 헤드라인)
+- L2 첫 월간 수집: 2026-06 첫째 주 (반도체·에너지·매크로 우선)
+- L3 첫 Deep Dive: **2026 Q3 (2026-07 첫 일요일)** — 반도체 Q3 Deep Dive
 
 ---
 
@@ -208,31 +264,32 @@ Bull/Bear 시나리오, 섹터·종목 아이디어, 진입 근거·리스크 �
 ## 디렉토리 구조
 
 ```
-.claude/agents/                              ← 19개 에이전트
+.claude/agents/                              ← 20개 에이전트
 ├── stock-analyst-lead.md                    ← 양 파이프라인 분기 리드 (opus)
 │
 ├── (종목 분석 10개)
 │   ├── data-collector.md                    ← 종목 데이터 수집 (sonnet)
 │   ├── company-overview.md                  ← 기업개요+Moat (sonnet)
 │   ├── financial-analyst.md                 ← 재무 심층 (sonnet)
-│   ├── business-analyst.md                  ← 산업·경쟁 (sonnet)
-│   ├── momentum-analyst.md                  ← 가격 모멘텀 (sonnet)
-│   ├── risk-analyst.md                      ← Devil's advocate (sonnet)
+│   ├── business-analyst.md                  ← 산업·경쟁 + research KB 인용 [v3.17] (sonnet)
+│   ├── momentum-analyst.md                  ← 가격 모멘텀 + 컨센서스 vs 학술 시그널 [v3.17] (sonnet)
+│   ├── risk-analyst.md                      ← Devil's advocate + BIS/NBER 시스템 리스크 [v3.17] (sonnet)
 │   ├── scorecard-strategist.md              ← 10항목 종합 + KB 피드백 (opus)
 │   ├── etf-lead.md                          ← ETF 전용 오케스트레이터 (opus) [v3.6 신규]
 │   ├── etf-analyst.md                       ← ETF 단독 분석 (opus)
 │   └── report-generator.md                  ← HTML 리포트 (sonnet)
 │
 ├── (브리핑 5개)
-│   ├── briefing-lead.md                     ← 오케스트레이터 (opus)
+│   ├── briefing-lead.md                     ← 오케스트레이터 + Phase 0-RESEARCH 자동 호출 [v3.17] (opus)
 │   ├── market-data-collector.md             ← 시장 데이터 수집 (sonnet)
-│   ├── global-macro-analyst.md              ← G-1~G-8 매크로 4축 (opus)
+│   ├── global-macro-analyst.md              ← G-1~G-8 매크로 + research/macro 직접 read [v3.17] (opus)
 │   ├── correlation-monitor.md               ← 6 페어 Z-score (sonnet)
 │   └── briefing-report-generator.md         ← HTML 다크 테마 (sonnet)
 │
-├── (공용 2개)
+├── (공용 3개)
 │   ├── kb-updater.md                        ← KB 갱신 (opus, v3.4 미니사이클)
-│   └── wiki-linter.md                       ← KB 건강 점검 (sonnet)
+│   ├── wiki-linter.md                       ← KB 건강 점검 (sonnet)
+│   └── research-curator.md                  ← 5섹터 × 4소스군 1차 자료 큐레이션 [v3.17 신규] (opus)
 │
 └── stop-loss-rules.md                       ← ATR 손절/목표가 SSOT
 
@@ -247,14 +304,15 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 ---
 
-## 슬래시 명령어 (총 18개)
+## 슬래시 명령어 (총 19개)
 
-### KB 관리 (2개)
+### KB 관리 (3개)
 
 | 명령어 | 사용 예시 | 에이전트 | 설명 |
 |---|---|---|---|
 | `/KB업데이트` | `/KB업데이트 luxury` | kb-updater | 섹터·토픽 웹검색 갱신 (v3.4 미니사이클) |
 | `/KB점검` | `/KB점검` | wiki-linter | P0~P2 탐지 + 자동 수정 |
+| `/리서치업데이트` | `/리서치업데이트 주간`, `/리서치업데이트 월간 반도체`, `/리서치업데이트 분기 에너지` | research-curator | **[v3.17 신규]** 5섹터 × 4소스군 1차 자료 큐레이션 (주간/월간/분기/검증) |
 
 ### 종목 분석 (6개)
 
@@ -352,11 +410,21 @@ knowledge-base/                  ← CURRENT만 (SSOT)
 │   ├── political_cycle.md, tech_breakthrough.md, supply_chain.md
 ├── market/                      ← 시장 데이터 상시 갱신
 │   └── correlation_matrix.md    [04-24 6 페어 30/90일 롤링 갱신]
+├── research/                    ← 1차 자료 3-레이어 큐레이션 [v3.17 신규]
+│   ├── _index.md                ← L1 주간 헤드라인 (5섹터 × 4유형)
+│   ├── _sources.md              ← 20셀 소스 레지스트리
+│   ├── _citation_format.md      ← 8 유형 인용 표준
+│   ├── semiconductor/_meta.md   ← 반도체 thesis + Key Uncertainties
+│   ├── energy/_meta.md          ← 에너지 (DC 전력·SMR)
+│   ├── macro/_meta.md           ← 매크로 (BIS/NBER/IMF)
+│   ├── biotech/_meta.md         ← 바이오 (NEJM·FDA)
+│   └── fintech/_meta.md         ← 핀테크 (BIS·SEC)
 └── portfolio/                   ← 개인 데이터
     ├── model_portfolios.md      ← 4종 (안전/중립/공격/배당)
-    └── user_portfolio.md        ← 등록 완료 (중립형, 2026-05-05 6축 분산 1차 실행: VOO 76.6%/GLD/SCHD/QQQ/VIG/AGG)
+    └── user_portfolio.md        ← 등록 완료 (균형형 Balanced+, 2026-05-12 v3 갱신)
 
 knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
+reports/research/                ← L3 분기 Deep Dive HTML [v3.17 — 첫 발행 2026 Q3]
 ```
 
 **2026-05-06 KB 갱신** (wiki-linter P1 후속): `macro/us_monetary_policy.md` (4/29 FOMC 8-4 분열, Core PCE 4.3%, Warsh 5/15 취임), `macro/korea_economy.md` + 루트 redirect (KOSPI 5/6 7,000 돌파, 환율 1,470~1,479원), `market/changelog_2026.jsonl` 시계열 등재.
