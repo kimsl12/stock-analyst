@@ -2,14 +2,14 @@
 sector: macro
 created: 2026-05-12
 last_updated: 2026-05-12
-status: bootstrapped
+status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
   - knowledge-base/macro/us_monetary_policy.md
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
 l1_index_count: 7
-l2_summary_count: 0
+l2_summary_count: 4
 l3_deep_dive_count: 0
 deep_dive_priority: 3
 ---
@@ -20,9 +20,10 @@ deep_dive_priority: 3
 
 ## 현재 thesis
 
-- **중앙은행 동시 동결 사이클**: Fed (4/29, 3.5~3.75%) + ECB (4/30, MRO 2.15%) + BOK (4/10, 2.5%) — 3회 연속 동결, 중동 분쟁發 에너지 가격 상방 + 인플레 재가속(유로존 3%, 한국 2.6%)이 인하 경로 차단. Fed dissent 8-4 (1992년 10월 이후 최대).
-- **IMF WEO 글로벌 성장 하향**: 2026년 3.1%·2027년 3.2% (4/14 발표), EM 3.9% (1월 4.2%→). "Global Economy in the Shadow of War" — 다운사이드 리스크 우세.
-- **시장 로테이션 가속**: BIS QR 3월 — 달러 약세, M7·고모멘텀 테크 → 밸류/시클리컬, EME 강세 + 일본·호주 장기금리 급등.
+- **Fed 내 컨센서스 붕괴 + Powell 마지막 회의 가능성**: 4/29 FOMC 8-4 양방향 dissent (1992년 10월 이후 최대) — Miran 인하·Hammack/Kashkari/Logan 매파. 시장-Fed 정책 경로 괴리 격상. Powell 임기 만료 가능성으로 6/16-17이 후임 의장 첫 회의 가능. (L2: fomc_8_4_dissent_april)
+- **IMF WEO 글로벌 성장 하향 + adverse 2.0% 시나리오**: 2026년 3.1%·2027년 3.2% (4/14), EM -0.3%p. "Global Economy in the Shadow of War" — adverse 2.5%·인플레 5.4%, severe 2.0%·인플레 6%+. EM·developing 피해는 advanced 2배. (L2: imf_weo_shadow_of_war)
+- **시장 로테이션 가속 (M7 → 밸류·시클리컬)**: BIS QR 3월 "Markets recalibrate amid shifting currents" — 달러 약세 + M7·고모멘텀 테크 → 밸류/시클리컬, EME 강세 + 일본·호주 장기금리 급등. AI 단일 동력 thesis 첫 균열 신호. (L2: bis_qr_market_rotation)
+- **인플레 vs 포용 정책 트레이드오프 학술 정량화**: NBER #34894 Alves & Violante — 매파 Fed가 저소득·소수자 노동시장 회복을 유의하게 지연. Fed dual mandate 해석에 학술 근거 + 차기 의장 인선 정당화 인용 가능성. (L2: nber_34894_inflation_inclusion)
 
 ## Key Uncertainties
 
@@ -54,7 +55,10 @@ deep_dive_priority: 3
 
 ## L2 월간 요약 목록
 
-(Phase 3 부터 작성)
+- 2026-04 `fomc_8_4_dissent_april_202604.md` — FOMC 4/29 8-4 dissent + Powell 마지막 회의 가능성
+- 2026-04 `imf_weo_shadow_of_war_202604.md` — IMF WEO 4/14 글로벌 3.1% + adverse 2.0%
+- 2026-03 `bis_qr_market_rotation_202603.md` — BIS QR 'Markets recalibrate' M7→밸류 로테이션
+- 2026-04 `nber_34894_inflation_inclusion_202604.md` — NBER #34894 Alves & Violante 인플레 vs 포용
 
 ## L3 분기 Deep Dive 이력
 

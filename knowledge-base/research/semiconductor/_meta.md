@@ -2,12 +2,12 @@
 sector: semiconductor
 created: 2026-05-12
 last_updated: 2026-05-12
-status: bootstrapped
+status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
 l1_index_count: 6
-l2_summary_count: 0
+l2_summary_count: 5
 l3_deep_dive_count: 0
 deep_dive_priority: 1
 ---
@@ -18,9 +18,10 @@ deep_dive_priority: 1
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-- **HBM4 양산 가시성 ↑**: ISSCC 2026 Samsung 36GB/SK hynix 48GB HBM4 데모 — 핀당 13Gb/s·1V 이하 동작으로 NVIDIA Rubin 요건 충족, 2027 Q1 양산 시나리오 유효.
-- **시장 규모 thesis 보강**: McKinsey 4/2 발표 — 2030년 $1.6T (2024년 $775B 대비 CAGR 13%), 컴퓨팅·스토리지가 성장의 55%. SK하이닉스 강력매수 thesis 외생 변수와 정합.
-- **지정학 리스크 격상**: 미 MATCH Act 입법 + 중국 산업망·공급망 안전 통합 법령(4월) + EU 데이터센터 3배 확장 플랜(5월) — 동맹 다자 통제 + 자체 캐파 자립 흐름 강화.
+- **HBM4 양산 가시성 ↑ + 경쟁 격화**: ISSCC 2026에서 Samsung 36GB HBM4 12-Hi 3.3 TB/s·핀당 13Gb/s 양산급 시연 + SK hynix 16-Hi 48GB HBM4 11.7Gbps·2TB/s CES 첫 공개. NVIDIA Vera Rubin 타깃. SK하이닉스 단독 우위 시나리오에 Samsung이 직접 도전 — 단가 압력 vs 시장 확대 양면 변수. (L2: hbm4_samsung_isscc / hbm4_skhynix_isscc_ces)
+- **시장 규모 thesis 보강**: McKinsey 4/2 — 2030년 $1.6T (CAGR 13%), 컴퓨팅·스토리지가 성장의 55%($460B). 메모리·로직 3강 (SK하이닉스·Samsung·Micron + NVIDIA·AMD·AVGO) 직접 베타. (L2: mckinsey_chip_boom_1_6t)
+- **지정학 리스크 격상 (입법 단계 진입)**: 미 MATCH Act 입법 + 중국 산업망·공급망 안전 통합 법령(4월 시행) + EU 데이터센터 3배 확장 플랜(5월). 행정 명령에서 양국 법체계 격돌로 격상 — 정권 교체 후퇴 가능성 ↓. (L2: match_act_china_industrial_chain)
+- **차세대 메모리 아키텍처 학술 신호**: arXiv:2511.12286 Sangam — Chiplet-DRAM-PIM + CXL이 LLM 추론에서 H100 대비 디코딩 10.3×·쿼리지연 4.22×. GPU 단일 의존 thesis에 학술 도전 (2028~2030 양산 가능성). (L2: sangam_chiplet_pim_cxl)
 
 ## Key Uncertainties (지속 추적)
 
@@ -52,7 +53,11 @@ deep_dive_priority: 1
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
-(Phase 3 부터 작성)
+- 2026-05 `hbm4_samsung_isscc_202605.md` — Samsung 36GB HBM4 12-Hi 3.3 TB/s (ISSCC 2026)
+- 2026-05 `hbm4_skhynix_isscc_ces_202605.md` — SK hynix 48GB HBM4 16-Hi + SOCAMM2 + LPDDR6 (CES 2026 + ISSCC 2026)
+- 2026-04 `mckinsey_chip_boom_1_6t_202604.md` — McKinsey 2030년 $1.6T (CAGR 13%)
+- 2026-04 `match_act_china_industrial_chain_202604.md` — MATCH Act + 중국 산업망 법령
+- 2026-04 `sangam_chiplet_pim_cxl_202604.md` — arXiv Sangam Chiplet-PIM-CXL LLM 추론
 
 ## L3 분기 Deep Dive 이력
 

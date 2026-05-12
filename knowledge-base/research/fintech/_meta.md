@@ -2,12 +2,12 @@
 sector: fintech
 created: 2026-05-12
 last_updated: 2026-05-12
-status: bootstrapped
+status: active
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
 l1_index_count: 5
-l2_summary_count: 0
+l2_summary_count: 4
 l3_deep_dive_count: 0
 deep_dive_priority: 5
 ---
@@ -18,9 +18,9 @@ deep_dive_priority: 5
 
 ## 현재 thesis
 
-- **SEC 가이드 명확화 전환점**: 3/17 SEC+CFTC 공동 암호자산 연방증권법 해석 (token taxonomy: commodities·collectibles·tools·stablecoins·securities) + 4/13 셀프 호스팅 지갑 broker 미해당 — Atkins 의장 체제 하 진입 장벽 완화 + 분류 명확성 ↑.
-- **스테이블코인 시스템 리스크 모니터링 강화**: BIS WP #1340 (FX 스필오버) + BIS Papers #170 (5/5, EMDE 통화주권 침식 우려) — "사운드 머니" 미달성 + 분절적 규제 위험. 글로벌 규제 진전 둔화 (4/20 BIS 협력 촉구).
-- **암호자산 시장 규제 차익 리스크**: 미국 적극 명확화 vs 글로벌 합의 둔화 → 규제 차익 우려 동시 진행.
+- **SEC 가이드 명확화 전환점 (Atkins '10년 불확실성 해소')**: 3/17 SEC+CFTC 공동 5분류 token taxonomy (digital commodities/collectibles/tools/stablecoins/securities) + 4/13 셀프 호스팅 지갑 broker 미해당. 미국 등록 거래소 (COIN·Kraken) 우위 + 디지털 상품 spot ETF 추가 트랙 가시화. (L2: sec_cftc_token_taxonomy)
+- **스테이블코인 시스템 리스크 BIS 공식 정량화**: BIS Papers #170 (5/5, Aldasoro·Frost·Ito) — 98% 달러 표시, 디지털 달러화 EMDE 통화주권 침식, 3 시나리오 (니치·달러화·통합). BIS WP #1340 — FX 스필오버 통계적 유의 (EM 통화 변동성). 거시 시장 변수 격상. (L2: stablecoin_bis_papers_170 / bis_wp_1340_stablecoin_fx)
+- **글로벌 규제 단편화 + 차익 위험**: BIS Briefing 4/20 — 미국 GENIUS Act·EU MiCA·UK FCA·홍콩 HKMA·싱가포르 MAS 각각 진행되나 통합 표준 부재. 발행국·운영국·환매국 분절 시 cross-border 리스크 격상. (L2: bis_briefing_global_stablecoin_slowdown)
 
 ## Key Uncertainties
 
@@ -50,7 +50,10 @@ deep_dive_priority: 5
 
 ## L2 월간 요약 목록
 
-(Phase 3 부터 작성)
+- 2026-05 `stablecoin_bis_papers_170_202605.md` — BIS Papers #170 EMDE 통화주권 침식 3 시나리오
+- 2026-03 `bis_wp_1340_stablecoin_fx_202603.md` — BIS WP #1340 스테이블코인 FX 스필오버
+- 2026-03 `sec_cftc_token_taxonomy_202603.md` — SEC+CFTC 5분류 token taxonomy
+- 2026-04 `bis_briefing_global_stablecoin_slowdown_202604.md` — BIS Briefing 4/20 단편화 위험
 
 ## L3 분기 Deep Dive 이력
 

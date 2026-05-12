@@ -2,12 +2,12 @@
 sector: energy
 created: 2026-05-12
 last_updated: 2026-05-12
-status: bootstrapped
+status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
 l1_index_count: 5
-l2_summary_count: 0
+l2_summary_count: 4
 l3_deep_dive_count: 0
 deep_dive_priority: 2
 ---
@@ -18,9 +18,10 @@ deep_dive_priority: 2
 
 ## 현재 thesis
 
-- **DC 전력 수요 thesis 격상**: IEA Electricity 2026 (4월) — DC 전력 2030년 2배·AI DC 3배, 2025년 미국 전력 수요 증가의 약 50%가 DC. 하이퍼스케일러 CapEx $400B → 2026년 +75% 추가.
-- **NRC 라이선싱 패러다임 전환**: Part 53 발효(4/29) — 제조지 연료 주입·운반·고밀도 입지 허용. SMR/AP1000 양산 일정 단축 시나리오 가능성 ↑.
-- **DOE 자금 트랙**: 에너지 장관 의회 증언(4월) — 첫 5~10기 신규 원전 DOE 대출 거의 확정. SMR·VST·CEG 자금 조달 리스크 완화.
+- **DC 전력 수요 thesis 격상**: IEA Electricity 2026 (4월) — DC 전력 2030년 2배·AI DC 3배, 2025년 미국 전력 수요 증가의 약 50%가 DC. 하이퍼스케일러 CapEx $400B → 2026년 +75% 추가. (L2: dc_power_iea_electricity)
+- **NRC 라이선싱 패러다임 전환**: Part 53 발효(4/29) — PRA·SRE 기반 + 25,000명+ 고밀도 입지 + 제조지 연료 주입·운반·GLRO 신설. SMR/AP1000 양산 일정 2년 단축 시나리오 가능. (L2: nrc_part53_smr_licensing)
+- **DOE 자금 트랙 가시화 + 마이크로원자로 별도 룰**: 에너지 장관 의회 증언(4월) — 첫 5~10기 신규 원전 DOE LPO 대출 거의 확정. SMR·CEG·VST·BWXT 자금 리스크 완화. 5/1 Federal Register 마이크로원자로 라이선싱 룰 별도 게재. (L2: doe_loan_5_10_new_reactors)
+- **SMR 연료 공급망 첫 가시화**: NRC TRISO-X X-energy 연료 시설 5월 내 최종 라이선스 예상 — HALEU/TRISO 미국 자체 양산급 첫 사례, SMR 양산 단일 최대 병목 해소. (L2: triso_x_xenergy_fuel_facility)
 
 ## Key Uncertainties
 
@@ -50,7 +51,10 @@ deep_dive_priority: 2
 
 ## L2 월간 요약 목록
 
-(Phase 3 부터 작성)
+- 2026-04 `dc_power_iea_electricity_202604.md` — IEA Electricity 2026 DC 전력 2배·AI DC 3배
+- 2026-04 `nrc_part53_smr_licensing_202604.md` — NRC Part 53 발효 (Risk-Informed Technology-Inclusive)
+- 2026-04 `doe_loan_5_10_new_reactors_202604.md` — DOE LPO 5~10기 신규 원전 대출
+- 2026-05 `triso_x_xenergy_fuel_facility_202605.md` — NRC TRISO-X X-energy 연료 시설
 
 ## L3 분기 Deep Dive 이력
 

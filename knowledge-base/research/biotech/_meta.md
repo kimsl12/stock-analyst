@@ -2,12 +2,12 @@
 sector: biotech
 created: 2026-05-12
 last_updated: 2026-05-12
-status: bootstrapped
+status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
 l1_index_count: 7
-l2_summary_count: 0
+l2_summary_count: 4
 l3_deep_dive_count: 0
 deep_dive_priority: 4
 ---
@@ -18,9 +18,9 @@ deep_dive_priority: 4
 
 ## 현재 thesis
 
-- **GLP-1 시장 구조 재편**: NEJM ATTAIN-1 + SURMOUNT-5 + FDA Foundayo(orforglipron) 4/1 승인 — LLY 경구 GLP-1 처방채널·복약순응도 확장, tirzepatide가 semaglutide 대비 우월. 비만 시장 LLY 우위 강화.
-- **종양학 신모달리티 약진**: FDA Veppanu (vepdegestrant) 5/1 ESR1m ER+/HER2- 진행성 유방암 승인 — 경구 PROTAC 분해제 종양학 첫 승인 (Arvinas/Pfizer). ASCO 2026 RASolute 302 (daraxonrasib PDAC) plenary 예정.
-- **IRA 3차 협상 본격화**: CMS 4/20 Selected Drug List + Maximum Fair Prices 공개, 15개 약물 (Part B/D), 2028-01-01 가격 효력. 4월 환자·임상 공청회 진행 중.
+- **GLP-1 시장 구조 재편 + LLY 압도적 지배력**: FDA Foundayo (orforglipron) 4/1 승인 — 경구 GLP-1 first-in-class, 식음 제약 없음, ATTAIN-1 72주 -12.4% (-27.3 lbs). NEJM SURMOUNT-5에서 tirzepatide가 semaglutide head-to-head 우월. LLY 비만 시장 압도적 지배력 격상. (L2: orforglipron_foundayo_fda / surmount_5_tirzepatide_semaglutide)
+- **종양학 PROTAC 신모달리티 약진**: FDA Veppanu (vepdegestrant) 5/1 ESR1m ER+/HER2- 진행성 유방암 승인 — 경구 PROTAC 분해제 종양학 첫 승인 (Arvinas/Pfizer). TPD 모달리티 전체 임상 검증 첫 사례. (L2: veppanu_vepdegestrant_fda)
+- **IRA 3차 협상 본격화**: CMS 4/20 — 15개 약물 (Part B + Part D), 2028-01-01 가격 효력. Part B 약물 첫 포함. 대형 제약사 (LLY·NVO·MRK·BMS·ABBV) 2028 P&L 침식 가능. (L2: cms_ira_3rd_negotiation)
 
 ## Key Uncertainties
 
@@ -51,7 +51,10 @@ deep_dive_priority: 4
 
 ## L2 월간 요약 목록
 
-(Phase 3 부터 작성)
+- 2026-04 `orforglipron_foundayo_fda_202604.md` — FDA Foundayo (orforglipron) 4/1 승인
+- 2026-04 `surmount_5_tirzepatide_semaglutide_202604.md` — NEJM SURMOUNT-5 head-to-head
+- 2026-05 `veppanu_vepdegestrant_fda_202605.md` — FDA Veppanu (vepdegestrant) PROTAC 첫
+- 2026-04 `cms_ira_3rd_negotiation_202604.md` — CMS IRA 3차 협상 15개 약물
 
 ## L3 분기 Deep Dive 이력
 
