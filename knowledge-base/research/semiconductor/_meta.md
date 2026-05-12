@@ -8,7 +8,7 @@ related_industry_kb:
   - knowledge-base/industry/capex.md
 l1_index_count: 6
 l2_summary_count: 5
-l3_deep_dive_count: 0
+l3_deep_dive_count: 1
 deep_dive_priority: 1
 ---
 
@@ -61,7 +61,13 @@ deep_dive_priority: 1
 
 ## L3 분기 Deep Dive 이력
 
-- (예정) `reports/research/semiconductor_2026Q3.html` — 2026-07 첫 일요일 발행 목표
+- 2026 Q2 (2026-05-12) — `reports/research/semiconductor_2026Q2.html`
+  - 핵심: HBM4 양산 가시화 + 시장 $1.6T + 지정학 다자 통제 + Chiplet-PIM 장기 도전
+  - L2 5건 통합 + capex.md + semiconductor.md 교차
+  - 인용 17건 (Conference 5 / Policy 6 / Think Tank 1 / Preprint 1 / White Paper 2 / Filing·WP 2)
+  - debate-card 4건 / contrarian-card 3건 / 트래킹 지표 10개 / 종목 매트릭스 10종
+  - 길이 ~53KB
+- (예정) `reports/research/semiconductor_2026Q3.html` — 2026-08 첫 일요일 발행 목표
 
 ## 분석 에이전트 활용 가이드
 

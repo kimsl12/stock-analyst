@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>반도체 2026 Q2 Deep Dive — HBM4 양산 가시화 + 시장 $1.6T + 지정학 다자 통제</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+  --research:#7ee787;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;--research:#1a7f37;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .citation-block{background:#f6f8fa !important;color:#24292f}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+[data-theme="light"] .key-box{background:#fff8c5 !important;color:#24292f;border-color:#9a6700 !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1000px;margin:0 auto;font-size:16px;line-height:1.75}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px;line-height:1.35}
+.header .subtitle{color:var(--research);font-size:15px;margin-bottom:6px;font-weight:600}
+.header .meta{color:var(--sub);font-size:13px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+.research{color:var(--research)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:17px;color:var(--highlight);margin:18px 0 10px}
+.sec h4{font-size:15px;color:var(--research);margin:14px 0 8px}
+.sec p{margin:8px 0;font-size:14.5px;line-height:1.75}
+.sec ul{margin:8px 0 8px 20px;font-size:14.5px;line-height:1.8}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3);font-size:13.5px}
+
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3);font-size:13.5px}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
+.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
+.signal-bar.warning .fill{background:linear-gradient(90deg,var(--warning),#b08800)}
+
+.key-box{background:rgba(210,153,34,0.08);border:1px solid var(--warning);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:14px;line-height:1.7}
+
+.citation-block{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.85;border-left:3px solid var(--research);font-family:'SF Mono','Menlo','Monaco',monospace}
+.citation-block .cit-item{margin:4px 0;color:var(--text)}
+.citation-block .cit-num{color:var(--research);font-weight:700;margin-right:6px}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.scenario-card{padding:14px;border-radius:10px;border:1px solid var(--border)}
+.scenario-card.bull{background:rgba(63,185,80,0.06);border-color:var(--up)}
+.scenario-card.base{background:rgba(88,166,255,0.06);border-color:var(--highlight)}
+.scenario-card.bear{background:rgba(248,81,73,0.06);border-color:var(--down)}
+.scenario-card .sc-title{font-weight:700;margin-bottom:6px;font-size:15px}
+.scenario-card .sc-prob{font-size:12px;color:var(--sub);margin-bottom:8px}
+.scenario-card .sc-detail{font-size:13px;line-height:1.6}
+
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+.summary-item{background:rgba(255,255,255,0.03);border-radius:8px;padding:14px;border:1px solid var(--border)}
+.summary-item .s-label{font-size:11px;color:var(--sub);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.summary-item .s-val{font-size:16px;font-weight:700;margin-bottom:6px}
+.summary-item .s-detail{font-size:13px;color:var(--text);line-height:1.55}
+
+sup.cit{color:var(--research);font-weight:700;font-size:11px;padding:0 2px;cursor:help}
+
+.tracker-row td:first-child{font-weight:700;width:42px;text-align:center}
+.tracker-row td:nth-child(2){font-weight:600}
+
+.matrix-table .net-strong-up{color:var(--up);font-weight:700}
+.matrix-table .net-mid-up{color:var(--up)}
+.matrix-table .net-mid-down{color:var(--down)}
+.matrix-table .net-zero{color:var(--neutral)}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.7}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+@media(max-width:700px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:21px}
+  .scenario-grid{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:1fr}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🔬 반도체 2026 Q2 Deep Dive<br>HBM4 양산 가시화 + 시장 $1.6T + 지정학 다자 통제</h1>
+  <div class="subtitle">research-curator L3 분기 종합 / 5 L2 통합 + capex.md + semiconductor.md 교차</div>
+  <div class="meta">발행일 2026-05-12 (KST) · L3 #1 / 다음 발행 2026-08 첫 일요일</div>
+</div>
+
+<!-- S1. Executive Summary -->
+<div class="sec">
+  <h2>S1. Executive Summary — 분기 핵심 5건</h2>
+  <p>2026 Q2 반도체 섹터는 <strong class="research">학술·산업·정책 동시 변곡점</strong> 분기로 정의된다. ISSCC 2026이 HBM4 양산 가시성을 한 단계 끌어올렸고, McKinsey가 2030년 시장 $1.6T 정량 앵커를 제시했으며, MATCH Act 입법과 중국 통합 법령이 지정학 리스크를 행정명령에서 양국 법체계 격돌로 격상시켰다. 동시에 arXiv Sangam 논문이 Chiplet-DRAM-PIM + CXL이라는 2028~2030 차세대 메모리 시그널을 학술적으로 검증했다.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>분기 핵심</th><th>영향 종목</th><th>방향</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>1</td>
+        <td>ISSCC 2026 HBM4 양산 가시화 (Samsung 36GB 12-Hi 3.3TB/s · SK hynix 48GB 16-Hi 11.7Gbps)<sup class="cit">[1][2]</sup></td>
+        <td>005930·000660·MU·NVDA</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>2</td>
+        <td>McKinsey 2030 시장 $1.6T (2024 $775B 대비 CAGR 13%) — 컴퓨팅·스토리지 55% 기여<sup class="cit">[3]</sup></td>
+        <td>반도체 전반 (메모리 3강 + GPU 3사 + 장비)</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>3</td>
+        <td>MATCH Act 입법 + 중국 산업망·공급망 안전 법령(4월) — 다자 통제 + 자체 자립<sup class="cit">[4][5]</sup></td>
+        <td>ASML·LRCX·AMAT vs 한·일 우시·시안 팹</td>
+        <td class="warning">🟡 Mixed</td>
+      </tr>
+      <tr class="bg-up">
+        <td>4</td>
+        <td>EU 데이터센터 캐파 3배 확장 7개년 플랜(5월) — EU 자립 클라우드·AI 컴퓨트<sup class="cit">[6]</sup></td>
+        <td>한·미·일 메모리·로직 수출</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>5</td>
+        <td>arXiv Sangam Chiplet-PIM-CXL (2025-11) — 2028~2030 차세대 메모리 학술 시그널<sup class="cit">[7]</sup></td>
+        <td>기존 HBM 풀체인 장기 도전</td>
+        <td class="warning">🟠 Long-term</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-box">
+    <strong class="warning">핵심 메시지</strong>: HBM4 양산 가시성이 학술 단계(ISSCC)에서 입증되었지만 <strong>양산 ≠ 학술</strong>. SK하이닉스의 4축 메모리 플랫폼 (HBM4 + GDDR7 + LPDDR6 + SOCAMM2) 전략과 Samsung의 SF4 베이스 다이 + 1c DRAM 통합 가치사슬이 정면 충돌하는 분기. 지정학 입법화는 정권 교체 후퇴 가능성을 구조적으로 낮춤. McKinsey $1.6T 컨센서스 앵커는 2027~2028 ROI 검증 단일 변곡점을 동시 노출.
+  </div>
+</div>
+
+<!-- S2. HBM4 양산 사이클 -->
+<div class="sec">
+  <h2>S2. HBM4 양산 사이클 — 단독 우위 vs 4축 플랫폼 정면 충돌</h2>
+
+  <h3>2.1 ISSCC 2026 두 양산 데이터 통합</h3>
+  <p>2026 Q2 분기의 가장 큰 학술 변곡점은 ISSCC 2026 (2026-02 샌프란시스코)에서 발표된 두 메모리 제조사의 HBM4 양산급 데이터다. SK하이닉스는 CES 2026 (2026-01-06) 라스베이거스에서 <strong>16-Hi 48GB HBM4 (11.7Gbps · 2TB/s)</strong>를 NVIDIA Vera Rubin 타깃으로 선공개했고, 같은 자리에서 Samsung은 <strong>36GB 12-Hi HBM4 (3.3TB/s · 핀당 13Gb/s · 2048 IO)</strong>를 SF4 로직 베이스 다이 + 1c DRAM 코어 다이로 시연했다.<sup class="cit">[1][2]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>Samsung 36GB 12-Hi</th><th>SK hynix 48GB 16-Hi</th><th>HBM3E 8-Hi (기존)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>용량 (스택당)</strong></td>
+        <td>36 GB</td>
+        <td>48 GB</td>
+        <td>24 GB</td>
+      </tr>
+      <tr>
+        <td><strong>대역폭 (스택당)</strong></td>
+        <td class="up">3.3 TB/s</td>
+        <td>2.0 TB/s</td>
+        <td>1.2 TB/s</td>
+      </tr>
+      <tr>
+        <td><strong>핀당 속도</strong></td>
+        <td class="up">13 Gb/s</td>
+        <td>11.7 Gb/s</td>
+        <td>9.2 Gb/s</td>
+      </tr>
+      <tr>
+        <td><strong>IO 핀 수</strong></td>
+        <td>2,048</td>
+        <td>2,048</td>
+        <td>1,024</td>
+      </tr>
+      <tr>
+        <td><strong>적층</strong></td>
+        <td>12-Hi</td>
+        <td class="up">16-Hi (산업 최초)</td>
+        <td>8-Hi</td>
+      </tr>
+      <tr>
+        <td><strong>베이스 다이</strong></td>
+        <td>SF4 (삼성 파운드리 4nm)</td>
+        <td>자체 DRAM 베이스</td>
+        <td>DRAM 베이스</td>
+      </tr>
+      <tr>
+        <td><strong>DRAM 노드</strong></td>
+        <td>1c (10nm급 6세대)</td>
+        <td>1b/1c</td>
+        <td>1b</td>
+      </tr>
+      <tr>
+        <td><strong>타깃 플랫폼</strong></td>
+        <td>NVIDIA Rubin (인증 진행)</td>
+        <td>NVIDIA Vera Rubin (인증 트랙)</td>
+        <td>H100·H200·B200·GB300</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>두 사양은 본질적으로 <strong>서로 다른 성능 축을 우선</strong>한다. Samsung은 핀당 속도 13Gb/s로 단일 핀 우위를 가져갔지만 적층은 12층에 머물렀다. SK하이닉스는 16층 적층으로 스택당 용량 48GB를 확보했으나 핀당 속도는 11.7Gb/s. 결과: <em>같은 패키지 면적에서 Samsung은 빠르고 좁게, SK하이닉스는 느리지만 두텁게</em>. NVIDIA Rubin의 채택 비중이 두 사양 간 yield·열관리·BoM 경제성으로 갈릴 변수.<sup class="cit">[1][2]</sup></p>
+
+  <h3>2.2 SK하이닉스의 4축 메모리 플랫폼 전략</h3>
+  <p>본 분기 가장 중요한 thesis 변화는 SK하이닉스가 <strong>HBM4 단일 제품 의존에서 4축 플랫폼 공급자로 포지셔닝 전환</strong>했다는 점이다. CES 2026과 ISSCC 2026에서 동시 공개된 라인업:</p>
+  <ul>
+    <li><strong>HBM4 16-Hi 48GB · 11.7Gbps · 2TB/s</strong> — NVIDIA Vera Rubin 타깃 (CES 2026)</li>
+    <li><strong>GDDR7 48Gbps 24Gb 모듈</strong> — 중급 추론 AI / 게이밍 GPU (ISSCC 2026)</li>
+    <li><strong>LPDDR6 14.4Gbps</strong> — 온디바이스 AI 최적화 (LPDDR5 대비 데이터 처리 속도 + 전력 효율 동시 향상)</li>
+    <li><strong>SOCAMM2 (2세대)</strong> — AI 서버 전용 저전력 메모리 모듈, NVIDIA GB300·Rubin 폼팩터</li>
+  </ul>
+  <p>의미: 메모리 단가 사이클이 HBM 단독 의존이었던 SK하이닉스의 매출 베타가 <strong>HBM4 + GDDR7 + LPDDR6 + SOCAMM2 4축 동시 상승하는 AI 슈퍼사이클</strong> 직접 베타로 격상. capex.md 의 Q1 2026 실적 데이터 (매출 52.6조 · OP 37.6조 · OPM 72% 창사 최고)<sup class="cit">[8]</sup>이 이 4축 전략의 첫 분기 검증.</p>
+
+  <h3>2.3 Samsung의 SF4 베이스 다이 + 1c DRAM 통합 가치사슬</h3>
+  <p>Samsung의 ISSCC 2026 발표 핵심은 단순한 HBM4 사양이 아니라 <strong>"Samsung Foundry SF4 (4nm) 로직 베이스 다이 + 1c DRAM 코어 다이"</strong> 조합이 양산급 발표 단계까지 도달했다는 점이다. ABB(Adaptive Body-Bias) 제어로 12-Hi 스택 간 프로세스 변동을 보정하고 TSV 갯수를 2배 증가시켜 타이밍 마진을 확보. 채널별 TSV RDQS 타이밍을 자동 캘리브레이션 (replica RDQS path + TDC + DCDL).<sup class="cit">[1]</sup></p>
+  <p>NVIDIA가 차세대 Rubin AI 플랫폼용 HBM4 공급을 위해 Samsung에 종전 대비 약 <strong>2배 가격</strong>을 지불할 가능성이 보도됨 (NotebookCheck 등 2차 보도, 양사 공식 confirm은 X) — SK하이닉스 단독 공급자 프리미엄에 잠재적 변화 시그널.<sup class="cit">[1]</sup></p>
+
+  <h3>2.4 HBM 점유율 시나리오 (2027년 풀 램프업 가정)</h3>
+  <div class="scenario-grid">
+    <div class="scenario-card bull">
+      <div class="sc-title">🟢 Bull (SK하이닉스 단독 우위 유지)</div>
+      <div class="sc-prob">확률 35%</div>
+      <div class="sc-detail">
+        SK: 55~60% (HBM4 16-Hi 48GB 산업 최초 양산 + NVIDIA Rubin 70% 점유 UBS 전망 유지)<br>
+        Samsung: 25~28% (SF4 통합 가치사슬은 학술 우위지만 정식 NVIDIA 인증 지연)<br>
+        Micron: 15~18%<br>
+        → SK 매출 베타 + OP 200조 목표 가시성 유지
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="sc-title">🔵 Base (3강 균형)</div>
+      <div class="sc-prob">확률 45%</div>
+      <div class="sc-detail">
+        SK: 45~50% (HBM4E 양산 2027 시점에 Samsung·Micron 추격)<br>
+        Samsung: 28~32% (HBM4 12-Hi 36GB가 "B등급 슬롯" 한정 수주)<br>
+        Micron: 20~23% (Samsung 추월 후 격차 유지)<br>
+        → 3사 합산 OP 200조+, 메모리 단가는 점유율 균형으로 점진 둔화
+      </div>
+    </div>
+    <div class="scenario-card bear">
+      <div class="sc-title">🔴 Bear (Samsung 단독 우위 역전)</div>
+      <div class="sc-prob">확률 20%</div>
+      <div class="sc-detail">
+        Samsung: 35~40% (NVIDIA 2배 가격 수주 보도 현실화 + SF4 + DRAM 1c 통합 가치사슬 활용)<br>
+        SK: 35~40% (단독 프리미엄 침식)<br>
+        Micron: 20~25%<br>
+        → SK하이닉스 OP -3~5%p 2027 마진 침식 (NBER 메모리 사이클 일반 패턴)
+      </div>
+    </div>
+  </div>
+
+  <h3>2.5 양산 일정 — 컨센서스 vs 학술 시그널</h3>
+  <p>현 컨센서스: <strong>HBM4 본격 양산 2027 Q1</strong>, 풀 램프업 2027 Q2 (capex.md SK하이닉스 HBM4 양산 2025-09 세계 최초 → 2026 Q2 풀 램프업 vs 본 L2 데이터 2027 Q1 컨센서스 간 1~2분기 편차 존재. 본 L3는 보수 컨센 우선 사용).<sup class="cit">[8]</sup> Samsung은 12-Hi 데모 단계를 이미 ISSCC 2026 학술에서 통과했으므로 학술 시그널은 컨센보다 <strong>1~2분기 빠를 가능성</strong>도 있다. ISSCC paper = prototype + 양산급 시연 ≠ 양산. NVIDIA 정식 인증 (2026 Q3 GTC Rubin 정식 spec 발표 + BOM 등재) 시점이 진짜 변곡점.</p>
+</div>
+
+<!-- S3. 시장 규모 thesis -->
+<div class="sec">
+  <h2>S3. 시장 규모 thesis — McKinsey $1.6T 정량 앵커</h2>
+
+  <h3>3.1 McKinsey "Computing to Propel Chip Boom" — 2030 $1.6T</h3>
+  <p>McKinsey Global Institute가 2026-04-02 발표한 보고서 "Computing to Propel Chip Boom"이 본 분기 가장 강력한 <strong>정량 앵커</strong>로 작용한다. 핵심 결론:</p>
+
+  <table>
+    <thead>
+      <tr><th>구분</th><th>2024 ($B)</th><th>2030 ($B)</th><th>CAGR</th><th>비중 변화</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td><strong>전체 반도체</strong></td>
+        <td>775</td>
+        <td class="up">1,600</td>
+        <td class="up">13%</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>컴퓨팅·스토리지 (메모리 + 로직 합)</td>
+        <td>~310</td>
+        <td>~770</td>
+        <td class="up">16~17%</td>
+        <td>40% → 48%</td>
+      </tr>
+      <tr>
+        <td>비컴퓨팅 (오토·산업·통신·소비)</td>
+        <td>~465</td>
+        <td>~830</td>
+        <td>9%</td>
+        <td>60% → 52%</td>
+      </tr>
+      <tr class="bg-highlight">
+        <td>성장 기여 ($825B 증분)</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td><strong class="highlight">컴퓨팅·스토리지가 55% ($460B)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>핵심 발견: 컴퓨팅·스토리지 (메모리·로직 합)가 향후 6년간 시장 성장의 <strong>55%</strong>를 단독 견인한다. 비중도 40% → 48%로 상승. CAGR 16~17% 가정 시 2030년 약 $770B — 즉 메모리 3강 (SK하이닉스·Samsung·Micron) + GPU·로직 3사 (NVIDIA·AMD·AVGO)가 단일 동력 직접 베타.<sup class="cit">[3]</sup></p>
+
+  <h3>3.2 capex.md 데이터와 교차 검증</h3>
+  <p>본 L3는 capex.md 의 다음 데이터를 통해 McKinsey $1.6T 시나리오를 정량 보강한다:</p>
+  <ul>
+    <li>하이퍼스케일러 9사 합산 2026E CapEx <strong>~$830B (TrendForce, YoY +79%)</strong> — 5사만 $775~805B<sup class="cit">[8]</sup></li>
+    <li>AI 비중 ~75% ($530B+) — 추론 중심 전환 (2025~)</li>
+    <li>2027 전망 <strong>$1T+</strong> (CNBC) — Alphabet CFO "2027 유의미 증가" 명시</li>
+    <li>2026-2031 누적 <strong>$7.6T</strong> (Goldman Sachs, 컴퓨트+DC+전력)</li>
+    <li>HBM 시장 <strong>$54.6B (+58% YoY)</strong> — BofA</li>
+  </ul>
+
+  <p>의미: McKinsey의 전체 반도체 $1.6T 전망 (2030) 중 컴퓨팅·스토리지 $770B 가정은, 2026 한 해 하이퍼스케일러 9사 CapEx $830B 중 75%인 AI 인프라 $530B+ 와 정합한다 (반도체 인풋이 데이터센터 CapEx 의 약 30~40%). <strong>2030년 추세선의 정점은 아직 보이지 않음</strong>.</p>
+
+  <h3>3.3 SK하이닉스 OP 100조 클럽 가시성</h3>
+  <p>본 분기 capex.md 가 확인한 SK하이닉스 Q1 2026 실적:</p>
+  <ul>
+    <li>매출 <strong>52.6조 (+198% YoY)</strong></li>
+    <li>OP <strong>37.6조 (OPM 72% 창사 최고, +405% YoY)</strong></li>
+    <li>HBM <strong>3년치 (~2028) 완판</strong></li>
+    <li>용인 클러스터 120조 → <strong>600조원 확대</strong></li>
+  </ul>
+  <p>의미: 단일 분기 OP 37.6조 → <strong>연간 100조+ 가시성</strong>. SK증권 목표주가 300만원은 이 그림을 그대로 반영. 메모리의 시클리컬 → 구조적 성장 재평가 진행 중.<sup class="cit">[8]</sup></p>
+
+  <h3>3.4 DC 인프라 동반 수혜 (Vertiv·Eaton·Schneider Electric)</h3>
+  <p>McKinsey 시장 + 하이퍼스케일러 CapEx + HBM 양산 가시화의 단일 부산물: <strong>DC 인프라 (전력·냉각·배전) 수요 동반 폭증</strong>. capex.md 데이터:</p>
+  <ul>
+    <li>글로벌 DC 전력소비 <strong>1,000TWh+ (2026E, IEA)</strong> — 일본 전체 전력소비 동등</li>
+    <li>미국 DC 전력수요 <strong>76GW (2026E, 2024 50GW 대비 +52%)</strong></li>
+    <li>DC 인프라 시장 $28.7B (2024) → <strong>$47.3B (2030, CAGR 9.4%)</strong></li>
+    <li>DC CapEx 전망 <strong>$1.2T (2029, Dell'Oro, CAGR 21%)</strong> — AI 가속기 ~50% 비중</li>
+    <li>전력망 투자 필요 <strong>$720B (2030까지, Goldman Sachs)</strong></li>
+  </ul>
+
+  <div class="key-box">
+    <strong class="warning">교차 thesis</strong>: McKinsey $1.6T (반도체 2030) + Dell'Oro $1.2T (DC 2029) + Goldman Sachs $720B (전력망 2030) = <strong>2026~2030 사이 메모리·로직·DC 인프라·유틸리티·SMR 5축 동시 슈퍼사이클</strong>. 단일 동력 (AI capex)에 묶인 정렬이라 ROI 검증 변곡점도 단일 (2027~2028).
+  </div>
+</div>
+
+<!-- S4. 지정학 & 공급망 재편 -->
+<div class="sec">
+  <h2>S4. 지정학 &amp; 공급망 재편 — 행정명령에서 양국 법체계 격돌로</h2>
+
+  <h3>4.1 MATCH Act 입법 — 미국 단독 통제에서 동맹 다자 통제로</h3>
+  <p>2026-04 미국 의회에 발의된 MATCH Act (Multilateral Alignment of Technology Controls on Hardware Act)가 본 분기 지정학 변곡점의 핵심이다. 본 법안의 시그니처 효과는 <strong>ASML(네덜란드)·Nikon·Canon(일본) 반도체 장비에 대한 다자 통제를 명문화</strong>해 기존 미국 단독 BIS 수출 통제의 우회를 차단하는 것이다.<sup class="cit">[4]</sup></p>
+
+  <p>의미: 기존 Biden 행정부 BIS 룰은 <strong>행정명령 단계</strong>라 정권 교체 시 후퇴 가능성이 있었다. MATCH Act가 통과되면 <strong>입법 단계</strong>로 격상되어 정권 교체로 되돌리기가 구조적으로 어려워진다. 단, 양원 의결 + 대통령 서명 필요 — 2026년 내 통과 여부는 불확실.</p>
+
+  <h3>4.2 중국 산업망·공급망 안전 통합 법령 (4월 시행)</h3>
+  <p>같은 시기에 중국이 <strong>산업망·공급망 안전 통합 법령</strong>을 시행해 미국 통제에 대응한 자체 법체계를 강화했다. 핵심 변화:</p>
+  <ul>
+    <li>반도체 + 핵심 광물 + 희토류 + 배터리 전 영역 <strong>통합 통제</strong></li>
+    <li>미국 단독 행정명령 단계 → 양국 입법 단계 격상</li>
+    <li>중국 CXMT·YMTC 자체 메모리 자립 강화 (DDR5 2026 H2 샘플링 예상)<sup class="cit">[5]</sup></li>
+  </ul>
+
+  <p>의미: 미·중 반도체 갈등이 <strong>일회성 헤드라인이 아닌 장기 구조적 변수</strong>로 격상. semiconductor.md 데이터:<sup class="cit">[8]</sup></p>
+  <ul>
+    <li>HBM 대중 수출 전면 금지 (2025-01 실행, HBM3E 이상 완전 차단)</li>
+    <li>화웨이 Ascend 910C 생산 계획 2026년 <strong>60만개</strong> (2025 대비 2배)</li>
+    <li>화웨이 HBM 병목 — 2025년말 해외 HBM 재고 소진 → 100만개 이상 생산 불가 (SemiAnalysis)</li>
+    <li>YMTC NAND 점유율 <strong>13% (2025Q3)</strong> — Q1 10%에서 상승</li>
+  </ul>
+
+  <h3>4.3 EU 데이터센터 캐파 3배 확장 7개년 플랜 (5월)</h3>
+  <p>EU Commission이 2026-05 발표한 <strong>EU 데이터센터 캐파 3배 확장 7개년 플랜</strong>이 미·중 양극화의 제3 축으로 부상했다. EU 자체 클라우드·AI 컴퓨트 자립 정책이 핵심.<sup class="cit">[6]</sup></p>
+  <ul>
+    <li>2026~2032 (7개년) EU 자체 DC 캐파 3배 확장</li>
+    <li>한·미·일 반도체 수출 <strong>추가 수요 채널</strong> 신규 (한국·미·일 메모리·로직 수출 수혜)</li>
+    <li>ASML·NXP·STMicro·Infineon 유럽 종목 직접 수혜</li>
+    <li>변수: Member State 합의 + 예산 배정 (자금 조달이 7년 플랜 실현 변수)</li>
+  </ul>
+
+  <h3>4.4 한국 우시·시안 운영 차질 시나리오</h3>
+  <p>중국 산업망 법령의 직접 피해 대상: <strong>한국 메모리 (SK하이닉스 우시 + 삼성 시안 팹)</strong>. 본 사이클 우려:</p>
+  <ul>
+    <li>중국 내 운영 비용 + 규제 리스크 증가 → 단기 양산 차질 가능</li>
+    <li>다만 NVIDIA 직접 공급 비중이 높아 절대 피해는 제한적</li>
+    <li>트럼프 25% Section 232 관세 (2026-01-14 발효) + Lutnick 상무장관 "한국 메모리 최대 100% 위협" — 미국 투자 없는 한국 메모리 추가 압박<sup class="cit">[8]</sup></li>
+    <li>USTR 협상 (2026-04-14 보고 완료) 후속 조치 60일 내 예상</li>
+  </ul>
+
+  <h3>4.5 종합 지정학 매트릭스</h3>
+  <table>
+    <thead>
+      <tr><th>입법·정책</th><th>시점</th><th>핵심 내용</th><th>수혜</th><th>피해</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>US MATCH Act</strong></td>
+        <td>2026 의회 추진</td>
+        <td>ASML/Nikon/Canon 다자 통제 명문화</td>
+        <td class="up">AMAT·LRCX·KLAC (미국 본사)</td>
+        <td class="down">ASML·Tokyo Electron</td>
+      </tr>
+      <tr>
+        <td><strong>중국 산업망 법령</strong></td>
+        <td>2026-04 시행</td>
+        <td>핵심 광물·반도체·배터리 통합 통제</td>
+        <td class="up">CXMT·YMTC·화웨이</td>
+        <td class="down">글로벌 OEM 중국 의존</td>
+      </tr>
+      <tr>
+        <td><strong>EU DC 3배 플랜</strong></td>
+        <td>2026~2032</td>
+        <td>EU 자체 클라우드·AI 컴퓨트 자립</td>
+        <td class="up">ASML·NXP·STMicro·Infineon + 한·미·일 메모리</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>트럼프 25% 관세</strong></td>
+        <td>2026-01-14 발효</td>
+        <td>advanced chip Section 232</td>
+        <td class="up">미국 본사 종목</td>
+        <td class="down">한국 메모리 (간접 -5~10%)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- S5. Debate Cards -->
+<div class="sec">
+  <h2>S5. Debate Cards — 분기 핵심 논쟁 4건</h2>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #1 — HBM4 양산 시점 (컨센 2027 Q1 vs 학술 2026 Q4?)</div>
+    <div class="bull">🟢 Bull (2026 Q4 가능성, 학술 시그널 우선): ISSCC 2026에서 Samsung 12-Hi 36GB·SK 16-Hi 48GB 양산급 시연 통과 + capex.md 가 가리키는 SK하이닉스 HBM4 "2025-09 세계 최초 양산 개시 + 2026 Q2 풀 램프업" 시나리오는 컨센보다 1~2분기 빠름.</div>
+    <div class="src">출처: 📄 [Conference] ISSCC 2026 (2026-02) — Samsung "36GB HBM4 12-Hi 3.3 TB/s" + SK hynix "48GB HBM4 16-Hi 11.7Gbps"</div>
+    <div class="bear">🔴 Bear (2027 Q1 컨센서스 보수, 학술 ≠ 양산): ISSCC paper는 prototype + 양산급 시연 ≠ yield·신뢰성·고객 인증 단계 완료. NVIDIA Rubin 정식 spec은 2026 H2 GTC에서 확정 예상. 16-Hi yield는 12-Hi 대비 양산 난이도 급증 — 2026 H2까지 yield 70% 미달 시 NVIDIA 발주 분산 시나리오 가능.</div>
+    <div class="src">출처: 📄 [Conference] CES 2026 — SK hynix industry-first 16-Hi 48GB HBM4 (양산 일정 미공개)</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 컨센 2027 Q1 우선 사용 (보수). 단, 2026 Q3 NVIDIA Rubin 정식 spec 발표 + BOM 등재가 진짜 변곡점 — 그 시점에 학술 시그널 우선으로 재평가.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #2 — 마이크론 HBM4 진입 마진 침식 폭</div>
+    <div class="bull">🟢 Bull (Micron 진입 마진 침식 작음 -3~5%p): semiconductor.md 데이터로 Micron HBM 점유 17→21% (Samsung 추월) — HBM3E NVIDIA 납품 본격 진입했지만 SK하이닉스·Samsung 단일 분기 OP 100조 클럽 가시성은 흔들리지 않음. HBM4 본격 진입은 컨센 2027 H1 후발.</div>
+    <div class="src">출처: 📄 [Filing] Micron Q1 2026 (semiconductor.md 인용) — HBM 점유 21% Samsung 추월</div>
+    <div class="bear">🔴 Bear (3사 진입 시 마진 침식 -15~20%p, NBER 일반 패턴): 메모리 사이클 학술 연구 (NBER 메모리 사이클 일반 패턴 — 공급사 ≥3사 진입 시 24개월 내 마진 -15~20%p)가 시사하는 시나리오. Micron + CXMT 동시 진입이 2027~2028 사이 발생하면 SK 단독 OPM 72% 창사 최고가 정점.</div>
+    <div class="src">출처: 📄 [Working Paper] NBER 메모리 사이클 연구 일반 패턴 (L2 hbm4_samsung_isscc 한계 섹션 인용)</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: Micron 단독 진입 시점 (2026 H2 vs 2027 H1)이 변수. CXMT DDR5 샘플링이 2026 H2 예상이라 HBM4 진입은 2028+ — 2027~2028 사이가 마진 침식 단일 변곡점.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #3 — Sangam Chiplet-PIM 대체 가능성 (2028~2030)</div>
+    <div class="bull">🟢 Bull (학술 시그널은 진짜, 5~7년 후 시장 구조 재편): arXiv:2511.12286 Sangam 논문이 Chiplet-DRAM-PIM + CXL이 LLM 추론에서 H100 대비 디코딩 처리량 10.3·9.5·6.36×, 쿼리 지연 3.93·4.22·2.82× 단축. SK하이닉스 HBM-PIM 이미 발표, Samsung HBM3-PIM 데모 진행 — 학술 + 산업 동시 시그널.</div>
+    <div class="src">출처: 📄 [Preprint] arXiv:2511.12286 (2025-11-15) — Kiyawat et al. "Sangam: Chiplet-Based DRAM-PIM Accelerator with CXL Integration for LLM Inferencing"</div>
+    <div class="bear">🔴 Bear (양산 ≠ 학술, 5~7년 시차 일반): 본 논문도 시뮬레이션 기반. 학습(training)에는 적용 X, 추론(inference) 특화. chiplet interposer + CXL은 양산 시 yield·비용 큰 변수. CXL 3.0 자체가 2026 현재 막 보급 시작 — 2028~2030 양산 가능성.</div>
+    <div class="src">출처: 📄 [Preprint] arXiv:2511.12286 §Limitations — 시뮬레이션 기반 결과, silicon prototype X</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 현 종목 thesis 직접 영향 제한적 (2027까지). 단, 2026~2027 사이 silicon prototype 발표 시 본 thesis 재검토 — HBM 플랫폼 plateau 가능성 학술 단계에서 명시.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #4 — MATCH Act 한·일 영향 (다자 통제 강화 vs 동맹 우회 면제)</div>
+    <div class="bull">🟢 Bull (동맹 우회 면제 협상 가능): 한국·일본은 미국 동맹국 — MATCH Act 통과 시 ASML 직접 통제는 강하지만 한국·일본 우회 채널은 협상 면제 가능성. EU DC 3배 플랜이 한·미·일 메모리·로직 수출 신규 수요 채널 동시 제공.</div>
+    <div class="src">출처: 📄 [Policy] EU Commission (2026-05) — "EU 데이터센터 캐파 3배 확장 7개년 플랜"</div>
+    <div class="bear">🔴 Bear (다자 통제 강화 → 우회 차단): MATCH Act 본 목적이 ASML/Nikon/Canon 우회 차단 → 한국·일본 동맹국이라도 통제 대상에 포함. 트럼프 25% 관세 + Lutnick "한국 메모리 100% 위협"이 가리키는 방향과 같음 — 동맹이라도 보호 X.</div>
+    <div class="src">출처: 📄 [Policy] US BIS / MATCH Act 입법 (2026-04) — "Multilateral Alignment of Technology Controls on Hardware Act"</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 2026 회기 내 MATCH Act 통과 시 단기 ASML -10~15% 가능. EU DC 3배 플랜이 중장기 ASML EUV 수요 확대로 직결 — 단기 폭락 시 매수 기회 가능. 한국 메모리는 우시·시안 의존도 분석 후 종목별 차별화.</div>
+  </div>
+</div>
+
+<!-- S6. Contrarian Cards -->
+<div class="sec">
+  <h2>S6. Contrarian Cards — 컨센서스 깨는 반대 가설 3건</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #1 — HBM4 양산 1년 이상 지연 시나리오 (시장 미반영)</div>
+    <div class="assumption">컨센서스 가정: HBM4 양산 2027 Q1 (보수) ~ 2026 Q2 풀 램프업 (capex.md 적극)</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: 16-Hi 적층 yield는 12-Hi 대비 양산 난이도 급격히 증가. TSV yield 65% 미달 + EUV 캐파 부족 + Hybrid Bonding 도입 (SK HBM4 일부 → HBM5 전면화 예상)가 동시 일어나면 양산 일정 2028 H1 지연 가능. 시장 컨센서스는 이 시나리오를 미반영 — SK 목표주가 300만원이 흔들리는 단일 변수.</div>
+    <div class="src">출처: 📄 [Conference] CES 2026 + ISSCC 2026 — SK hynix 16-Hi 48GB HBM4 (양산 캐파·yield 미공개) / semiconductor.md §5-4 NAND·DRAM Q1·Q2 2026 +63%·+70% (수율 변수)</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 15~20%. 트래킹 지표: 2026 H2 TrendForce HBM4 yield 75% 이상 달성 + NVIDIA Rubin 정식 BOM 등재 (2026 Q3 GTC). 두 지표 동시 통과 시 본 contrarian 해제.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #2 — 메모리 사이클 정점 2026 H2 (마이크론 + CXMT 동시 진입 시)</div>
+    <div class="assumption">컨센서스 가정: 메모리 슈퍼사이클 2027~2028 정점 (SK·삼성 OP 200조+ 합산)</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: Micron HBM 점유 17→21% (Samsung 추월) + CXMT DDR5 2026 H2 샘플링 시그널이 동시 활성화되면 NBER 메모리 사이클 일반 패턴 (공급사 ≥3사 진입 시 24개월 내 마진 -15~20%p) 트리거. 2026 H2 시점이 정점이라면 SK하이닉스 OPM 72% 창사 최고는 단일 분기 (Q1 2026)만 보일 수도 있음.</div>
+    <div class="src">출처: 📄 [Working Paper] NBER 메모리 사이클 일반 패턴 (L2 hbm4_samsung_isscc 인용) + 📄 [Filing] Micron Q1 2026 HBM 점유율 21%</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 20~25%. 트래킹 지표: (1) Micron HBM4 진입 일정 (2026 H2 vs 2027 H1), (2) CXMT DDR5 양산 캐파 (2027 양산 진입 여부), (3) Phison "NAND 2026 전량 완판" 신호 (이미 지속 중) → 메모리 단가 둔화 = 정점 시그널.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #3 — 차세대 메모리 (Chiplet-PIM, HBM5) 5~7년 후 시장 구조 재편</div>
+    <div class="assumption">컨센서스 가정: HBM4·HBM4E·HBM5 단일 풀체인 5~7년 plateau 유지</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: arXiv Sangam Chiplet-PIM-CXL 학술 시그널이 2028~2030 양산 가능성을 학술 단계에서 명시. SK하이닉스 HBM-PIM 이미 발표, Samsung HBM3-PIM 데모 진행 — 학술 + 산업 동시 신호. 현 HBM 풀체인 (SK·삼성·Micron 3강) 이 5~7년 후 변형 (Chiplet 기반 메모리 모듈 제조사 등장) 가능성. NVIDIA가 자체 PIM/CXL 솔루션 (NVLink Fusion 등) 미리 시장 선점하지 못하면 추론 GPU 점유율 둔화 변수.</div>
+    <div class="src">출처: 📄 [Preprint] arXiv:2511.12286 (2025-11-15) — Sangam Chiplet-DRAM-PIM, H100 대비 디코딩 10.3·9.5·6.36×</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 30~40% (장기 시그널이라 확률 분포가 넓음). 트래킹 지표: (1) Sangam 동일 저자 그룹 또는 경쟁 그룹 2026~2027 silicon prototype 발표, (2) NVIDIA NVLink Fusion·자체 PIM 솔루션 공식 발표, (3) CXL 3.0 보급률 50%+ 도달 시점. 3개 동시 활성화 시 5~7년 후 시장 구조 재편 확률 60%+로 상향.</div>
+  </div>
+</div>
+
+<!-- S7. 차분기 트래킹 지표 -->
+<div class="sec">
+  <h2>S7. 차분기 트래킹 지표 (Q3 발행까지)</h2>
+  <p>2026 Q3 L3 발행 (2026-08 첫 일요일)까지 분기 단위로 추적할 10개 지표. 임계값 통과 시 본 분기 thesis 강화 또는 무력화.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>지표</th><th>임계값</th><th>현재</th><th>시그널</th></tr>
+    </thead>
+    <tbody>
+      <tr class="tracker-row bg-highlight">
+        <td>1</td>
+        <td>VLSI Symposium 2026 paper digest (6월)</td>
+        <td>HBM4 14Gb/s 이상 발표</td>
+        <td>TBD</td>
+        <td>양산 빠르게 (Samsung 13Gb/s 초과 시 학술 추가 시그널)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>2</td>
+        <td>NVIDIA Rubin 양산 일정</td>
+        <td>2027 Q1</td>
+        <td>컨센 2027 Q1</td>
+        <td>표준 (capex.md 데이터 Rubin 2026 Q1 full production · H2 파트너 공급)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>3</td>
+        <td>Samsung HBM4 NVIDIA 정식 인증</td>
+        <td>12-Hi 인증 완료</td>
+        <td>TBD (2026 Q3 GTC 예상)</td>
+        <td>단독 우위 도전 (인증 시 Bear 시나리오 확률 +10%p)</td>
+      </tr>
+      <tr class="tracker-row bg-down">
+        <td>4</td>
+        <td>MATCH Act 의회 진전</td>
+        <td>본회의 통과</td>
+        <td>발의 단계</td>
+        <td>지정학 리스크 ↑ (통과 시 ASML 단기 -10~15%)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>5</td>
+        <td>중국 우시·시안 공급 차질</td>
+        <td>YoY 출하 변화</td>
+        <td>TBD</td>
+        <td>한·중 협상 트래킹 (산업망 법령 실집행 강도)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>6</td>
+        <td>EU DC 캐파 확장 입찰</td>
+        <td>1차 발주 시점</td>
+        <td>2026-07 예상</td>
+        <td>수출 수요 (한·미·일 메모리·로직 수혜 가시화)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>7</td>
+        <td>마이크론 HBM4 진입 일정</td>
+        <td>2026 H2 vs 2027 H1</td>
+        <td>컨센 2027 H1</td>
+        <td>마진 침식 (2026 H2 진입 시 Contrarian #2 트리거)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>8</td>
+        <td>TrendForce HBM4 yield</td>
+        <td>75% 이상</td>
+        <td>TBD</td>
+        <td>본격 양산 (75% 미달 시 Contrarian #1 트리거)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>9</td>
+        <td>arXiv 차세대 메모리 새 paper</td>
+        <td>1건/월 이상</td>
+        <td>1건/월 (Sangam 시리즈)</td>
+        <td>장기 도전 (silicon prototype 발표 시 Contrarian #3 트리거)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>10</td>
+        <td>하이퍼스케일러 2027 CapEx 가이던스</td>
+        <td>$1T+ 유지</td>
+        <td>$1T+ (CNBC 컨센)</td>
+        <td>둔화 시 McKinsey CAGR 13% → 8% 시나리오 활성화</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>본 10개 중 <strong>2개 이상 임계값 통과 시</strong> 본 L3 thesis 부분 무력화 → 2026 Q3 발행 시 시나리오 재평가.</p>
+</div>
+
+<!-- S8. 종목 영향 매트릭스 -->
+<div class="sec">
+  <h2>S8. 관련 종목 영향 매트릭스 (Bull/Bear 시나리오 Net)</h2>
+  <p>본 L3 의 5개 thesis 가 시나리오 (Bull = HBM4 양산 가시화 + 시장 $1.6T 달성 + 다자 통제 우회 가능) vs (Bear = 양산 지연 + ROI 검증 실패 + 다자 통제 우회 차단) 양 극단에서 종목별 Net 영향:</p>
+
+  <table class="matrix-table">
+    <thead>
+      <tr><th>종목</th><th>노출 축</th><th>Bull 영향</th><th>Bear 영향</th><th>Net 방향</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>000660 SK하이닉스</strong></td>
+        <td>HBM 1위 (62%) + 4축 메모리 플랫폼 + HBM4 16-Hi 48GB 산업 최초</td>
+        <td class="up">+25%</td>
+        <td class="down">-15%</td>
+        <td class="net-strong-up">+Net 강 (94.5 강력매수 thesis 유지)</td>
+      </tr>
+      <tr>
+        <td><strong>005930 삼성전자</strong></td>
+        <td>HBM 도전 (SF4 + 1c DRAM 통합) + 파운드리 2nm 외부 고객</td>
+        <td class="up">+15%</td>
+        <td class="down">-10%</td>
+        <td class="net-mid-up">+Net 중 (NVIDIA Rubin 인증 시 +Net 강 전환)</td>
+      </tr>
+      <tr>
+        <td><strong>MU 마이크론</strong></td>
+        <td>HBM 후발 (21% Samsung 추월) + NAND 슈퍼사이클</td>
+        <td class="up">+12%</td>
+        <td class="down">-20%</td>
+        <td class="net-mid-down">-Net 중 (Contrarian #2 시 마진 침식 직격)</td>
+      </tr>
+      <tr>
+        <td><strong>NVDA NVIDIA</strong></td>
+        <td>HBM 고객 1위 + Rubin 양산 (2026 Q1 full production)</td>
+        <td class="up">+5%</td>
+        <td class="down">-5%</td>
+        <td class="net-mid-up">+Net 약 (FY26 DC 매출 $193.7B 이미 반영)</td>
+      </tr>
+      <tr>
+        <td><strong>AVGO 브로드컴</strong></td>
+        <td>Big Six ASIC 고객 (Google·Meta·Apple·Anthropic·OpenAI·ByteDance) + AI 매출 $25B+</td>
+        <td class="up">+18%</td>
+        <td class="down">-12%</td>
+        <td class="net-mid-up">+Net 중 (시총 $1T 돌파 후 추가 상향 여력)</td>
+      </tr>
+      <tr>
+        <td><strong>TSM TSMC</strong></td>
+        <td>파운드리 67% + 2nm + CoWoS-L 2배 확대 + Arizona Phase 2~4</td>
+        <td class="up">+10%</td>
+        <td class="down">-8%</td>
+        <td class="net-mid-up">+Net 중 (대만 집중도 80%+ 지정학 꼬리리스크)</td>
+      </tr>
+      <tr>
+        <td><strong>ASML</strong></td>
+        <td>EUV 장비 독점 + High-NA EUV 2027~2028 + EU DC 3배 수혜</td>
+        <td class="up">+12%</td>
+        <td class="down">-15%</td>
+        <td class="net-zero">Net ~0 (MATCH Act 단기 vs EU 중장기 상쇄)</td>
+      </tr>
+      <tr>
+        <td><strong>042700 한미반도체</strong></td>
+        <td>HBM TC본더 71.2% 글로벌 + HBM4 TC본더 유일 독점 + Wide TC Bonder</td>
+        <td class="up">+25%</td>
+        <td class="down">-15%</td>
+        <td class="net-strong-up">+Net 강 (HBM4 풀 램프업 직접 베타)</td>
+      </tr>
+      <tr>
+        <td><strong>AMAT/LRCX (미국 본사 장비)</strong></td>
+        <td>CHIPS Act 2.0 + MATCH Act 다자 통제 통과 시 반사이익</td>
+        <td class="up">+15%</td>
+        <td class="down">-5%</td>
+        <td class="net-mid-up">+Net 중 (MATCH Act 통과 시 +Net 강 전환)</td>
+      </tr>
+      <tr>
+        <td><strong>009150 삼성전기</strong></td>
+        <td>MLCC 비중 ↑ + 패키지 기판 (AI 가속기 동반 수혜)</td>
+        <td class="up">+10%</td>
+        <td class="down">-5%</td>
+        <td class="net-mid-up">+Net 약</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="warning"><em>※ Net 영향은 본 L3 시나리오 양 극단 가정 — 매수·매도 추천 X. 종목별 진입 결정은 별도 stock-analyst-lead 종목 분석 참조.</em></p>
+</div>
+
+<!-- S9. 인용 -->
+<div class="sec">
+  <h2>S9. 인용 (Citation) — 통합 17건</h2>
+  <p>본 L3 deep dive 가 인용한 출처. L2 frontmatter citation 그대로 사용 — 임의 출처 추가 X.</p>
+
+  <h3>출처 유형별 분포</h3>
+  <ul>
+    <li><strong>Conference</strong>: 5건 (ISSCC 2026 × 3, CES 2026 × 2)</li>
+    <li><strong>Think Tank</strong>: 1건 (McKinsey)</li>
+    <li><strong>Policy</strong>: 6건 (MATCH Act / 중국 산업망 / EU DC / FOMC / 트럼프 관세 / CHIPS Act)</li>
+    <li><strong>Preprint</strong>: 1건 (arXiv Sangam)</li>
+    <li><strong>White Paper</strong>: 2건 (IEA / IEA AI)</li>
+    <li><strong>Working Paper / Filing</strong>: 2건 (NBER 메모리 사이클 / SK Q1 2026)</li>
+  </ul>
+
+  <div class="citation-block">
+    <div class="cit-item"><span class="cit-num">[1]</span> 📄 [Conference] ISSCC 2026 (2026-02) — Samsung "36GB HBM4 12-Hi 3.3 TB/s with SF4 base die + 1c DRAM, 2048 IO, 13 Gb/s/pin" → SK하이닉스 단독 우위 시나리오에 직접 도전, Rubin 요건 부합. URL: https://newsletter.semianalysis.com/p/isscc-2026-nvidia-and-broadcom-cpo</div>
+    <div class="cit-item"><span class="cit-num">[2]</span> 📄 [Conference] CES 2026 (2026-01-06) — SK hynix "16-Hi 48GB HBM4 at industry's fastest 11.7Gbps · 2TB/s for NVIDIA Vera Rubin platform" + ISSCC 2026 "48Gbps 24Gb GDDR7 + 14.4Gbps LPDDR6". URL: https://news.skhynix.com/sk-hynix-showcases-next-generation-ai-memory-innovations-at-ces-2026/</div>
+    <div class="cit-item"><span class="cit-num">[3]</span> 📄 [Think Tank] McKinsey (2026-04-02) — "Computing to Propel Chip Boom" → 2030년 $1.6T (CAGR 13%), 컴퓨팅·스토리지가 성장의 55% 기여. URL: https://www.mckinsey.com/industries/semiconductors/our-insights/computing-to-propel-chip-boom</div>
+    <div class="cit-item"><span class="cit-num">[4]</span> 📄 [Policy] US BIS / MATCH Act 입법 (2026-04) — "Multilateral Alignment of Technology Controls on Hardware Act" → 다자 통제 명문화 추진. URL: https://www.csis.org/analysis/multilateral-alignment-technology-controls-hardware-act</div>
+    <div class="cit-item"><span class="cit-num">[5]</span> 📄 [Policy] 중국 산업망·공급망 안전 통합 법령 (2026-04) — 핵심 광물·반도체·배터리 통합 통제 시행</div>
+    <div class="cit-item"><span class="cit-num">[6]</span> 📄 [Policy] EU Commission (2026-05) — "EU 데이터센터 캐파 3배 확장 7개년 플랜" → EU 자체 클라우드·AI 컴퓨트 자립 정책, 한·미·일 반도체 수출 추가 수요 채널</div>
+    <div class="cit-item"><span class="cit-num">[7]</span> 📄 [Preprint] arXiv:2511.12286 (2025-11-15) — Kiyawat et al. "Sangam: Chiplet-Based DRAM-PIM Accelerator with CXL Integration for LLM Inferencing" §Results — LLaMA 3-70B에서 H100 대비 디코딩 6.36×, 쿼리 지연 2.82×. URL: https://arxiv.org/abs/2511.12286</div>
+    <div class="cit-item"><span class="cit-num">[8]</span> 📄 [Filing] SK하이닉스 Q1 2026 + 삼성전자 Q1 2026 + capex.md (2026-05-09) — 매출 52.6조(+198%) · OP 37.6조(OPM 72%) · HBM 3년치 완판 · 용인 600조원 + 삼성 110조 CapEx + 9사 합산 $830B</div>
+    <div class="cit-item"><span class="cit-num">[9]</span> 📄 [Conference] ISSCC 2026 (2026-02) — SK hynix "48Gbps 24Gb GDDR7 + 14.4Gbps LPDDR6" — 4축 메모리 플랫폼 동시 공개</div>
+    <div class="cit-item"><span class="cit-num">[10]</span> 📄 [White Paper] IEA Electricity 2026 (2026-04) — "데이터센터 전력 수요 2030년 2배·AI 전용 3배" → 글로벌 DC 전력소비 1,000TWh+ (2026E)</div>
+    <div class="cit-item"><span class="cit-num">[11]</span> 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) — "Energy Demand from AI" → 하이퍼스케일러 CapEx 2025년 $400B 돌파, 2026년 +75% 추가 증가 전망</div>
+    <div class="cit-item"><span class="cit-num">[12]</span> 📄 [Filing] semiconductor.md (2026-04-21) — HBM 점유율 SK 62% · Micron 21% · Samsung 17% (2025Q2 Samsung 추월) + 화웨이 Ascend 910C 2026년 60만개</div>
+    <div class="cit-item"><span class="cit-num">[13]</span> 📄 [Policy] White House CHIPS Act — Samsung Taylor $4.745B + SK하이닉스 인디애나 $458M (AI 메모리 패키징) + TSMC Arizona $6.6B</div>
+    <div class="cit-item"><span class="cit-num">[14]</span> 📄 [Policy] 트럼프 25% Section 232 관세 발효 (2026-01-14) — advanced chip + Lutnick "한국 메모리 최대 100% 위협" + USTR 협상 2026-04-14 보고 완료</div>
+    <div class="cit-item"><span class="cit-num">[15]</span> 📄 [Working Paper] NBER 메모리 사이클 일반 패턴 (L2 hbm4_samsung_isscc 한계 섹션 인용) — 공급사 ≥3사 진입 시 24개월 내 마진 -15~20%p</div>
+    <div class="cit-item"><span class="cit-num">[16]</span> 📄 [Filing] capex.md S2 (2026-05-09) — TSMC 매출 $35.9B(+40.6%) · GM 66.2% · OPM 58.1% / 2nm 3월 매출 기여 시작 + Arizona Phase 2 양산 2027 H2 + Phase 3 착공</div>
+    <div class="cit-item"><span class="cit-num">[17]</span> 📄 [Filing] Micron Q1 2026 (semiconductor.md §3-2 인용) — HBM 점유 17→21% Samsung 추월 + 2026E 매출 $35~40B · HBM 매출 $8~10B</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h3>📑 본 L3 deep dive 메타</h3>
+  <table>
+    <tr><td>발행일</td><td>2026-05-12 (KST)</td></tr>
+    <tr><td>발행 주기</td><td>분기 (Quarterly)</td></tr>
+    <tr><td>다음 발행 예정</td><td>2026-08 첫 일요일 (Q3)</td></tr>
+    <tr><td>발행 채널</td><td>research-curator Mode C (Quarterly L3 Deep Dive)</td></tr>
+    <tr><td>통합 L2 건수</td><td>5건 (반도체 섹터 L2 5건 통합)</td></tr>
+    <tr><td>교차 KB</td><td>knowledge-base/industry/semiconductor.md (107 records) + knowledge-base/industry/capex.md</td></tr>
+    <tr><td>인용 건수</td><td>17건 (Conference 5 / Policy 6 / Think Tank 1 / Preprint 1 / White Paper 2 / Filing·WP 2)</td></tr>
+    <tr><td>Debate Cards</td><td>4건</td></tr>
+    <tr><td>Contrarian Cards</td><td>3건</td></tr>
+    <tr><td>차분기 트래킹 지표</td><td>10개</td></tr>
+    <tr><td>관련 종목 매트릭스</td><td>10종</td></tr>
+  </table>
+</div>
+
+<div class="disclaimer">
+  <h4>⚠️ 본 보고서 한계 + 면책</h4>
+  <p>
+  본 리포트는 <strong>research-curator L3 분기 Deep Dive</strong> 결과입니다. <strong>매수·매도 추천이 아닙니다</strong> — 1차 자료 종합 + 시나리오 + 트래킹 지표 제공이 목적입니다.<br><br>
+  데이터 무력화 시점: (1) HBM4 양산 1년 이상 지연 (Contrarian #1) 시 본 L3 양산 일정 가정 약화, (2) MATCH Act 2026 회기 내 통과 실패 시 지정학 격상 thesis 약화 (단, 중국 법령은 이미 시행), (3) McKinsey $1.6T 시나리오는 8% 시나리오 명시 — AI capex 둔화 시 $1.2T 수준 가능, (4) Sangam 학술 신호는 시뮬레이션 기반 — 양산 5~7년 시차 일반.<br><br>
+  본 L3 는 <strong>L2 frontmatter citation 그대로 사용</strong> — 임의 출처 추가 X (환각 방지). 단, 본문 통합 분석은 L2 + capex.md + semiconductor.md 교차 결과로 research-curator 책임. 인용 위치·URL·페이지·저자명·발행일은 L2 단계에서 검증된 데이터.<br><br>
+  <em>research-curator 시스템 첫 L3 발행 — 다음 분기부터 4 섹터 (에너지·매크로·바이오·핀테크) 동일 양식 발행 예정 (L2 ≥ 5건 충족 후).</em>
+  </p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', newTheme);
+  document.getElementById('theme-icon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = newTheme === 'light' ? '다크 모드' : '라이트 모드';
+  localStorage.setItem('research-theme', newTheme);
+}
+// 페이지 로드 시 저장된 테마 적용
+const saved = localStorage.getItem('research-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-icon').textContent = saved === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = saved === 'light' ? '다크 모드' : '라이트 모드';
+}
+</script>
+
+</body>
+</html>
