@@ -26,12 +26,13 @@ echo "    python:     $PYTHON"
 
 # 1. 임시 디렉토리 초기화
 rm -rf "$DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR/reports" "$DEPLOY_DIR/reports/briefing" "$DEPLOY_DIR/reports/analyst/items"
+mkdir -p "$DEPLOY_DIR/reports" "$DEPLOY_DIR/reports/briefing" "$DEPLOY_DIR/reports/research" "$DEPLOY_DIR/reports/analyst/items"
 
 # 2. HTML 복사 (nullglob 으로 빈 디렉토리 대응)
 shopt -s nullglob
 stock_files=(reports/*.html)
 brief_files=(reports/briefing/*.html)
+research_files=(reports/research/*.html)
 shopt -u nullglob
 
 if [ ${#stock_files[@]} -gt 0 ]; then
@@ -39,6 +40,10 @@ if [ ${#stock_files[@]} -gt 0 ]; then
 fi
 if [ ${#brief_files[@]} -gt 0 ]; then
   cp -f "${brief_files[@]}" "$DEPLOY_DIR/reports/briefing/"
+fi
+# 2.3 research L3 분기 Deep Dive (있을 때만) [v3.17 — 2026-05-12]
+if [ ${#research_files[@]} -gt 0 ]; then
+  cp -f "${research_files[@]}" "$DEPLOY_DIR/reports/research/"
 fi
 
 # 2.5 애널리스트 리포트 복사 (있을 때만)
@@ -70,8 +75,9 @@ echo "==> 메인 인덱스 생성 (3컬럼)"
 # 6. 통계
 stock_count=$(find "$DEPLOY_DIR/reports" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
 brief_count=$(find "$DEPLOY_DIR/reports/briefing" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
+research_count=$(find "$DEPLOY_DIR/reports/research" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
 analyst_count=$(find "$DEPLOY_DIR/reports/analyst/items" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
-echo "==> 패키지 준비 완료: 종목 ${stock_count}개 + 브리핑 ${brief_count}개 + 애널리스트 ${analyst_count}건"
+echo "==> 패키지 준비 완료: 종목 ${stock_count}개 + 브리핑 ${brief_count}개 + 리서치 ${research_count}건 + 애널리스트 ${analyst_count}건"
 
 # 7. wrangler 배포
 cd "$REPO_ROOT"

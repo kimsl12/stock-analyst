@@ -280,6 +280,38 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 ---
 
+## 📑 Research KB (`knowledge-base/research/`) — 2026-05-12 신규 도입
+
+> 5개 섹터(반도체·에너지·매크로·바이오·핀테크) × 4개 소스군(학술·씽크탱크·컨퍼런스·규제) 의 1차 자료를 깊이별 3-레이어 (L1 주간 헤드라인 / L2 월간 요약 / L3 분기 Deep Dive) 로 축적. **research-curator** 가 주간/월간/분기 모드로 갱신.
+
+| 파일 | 역할 | 갱신 주기 | 상태 | 갱신일 |
+|------|------|----------|------|--------|
+| `_index.md` | L1 주간 헤드라인 인덱스 (5섹터 × 4유형) | 주간 | scaffolded (0건) | 05-12 |
+| `_sources.md` | 5×4 소스 레지스트리 (URL + 키워드) | 신규 등록 시 | active | 05-12 |
+| `_citation_format.md` | 인용 표준 형식 (8 유형 분류) | 거의 정적 | active | 05-12 |
+| `semiconductor/_meta.md` | 반도체 섹터 메타 (thesis + uncertainties) | 월간 | scaffolded | 05-12 |
+| `energy/_meta.md` | 에너지 섹터 메타 | 월간 | scaffolded | 05-12 |
+| `macro/_meta.md` | 매크로 섹터 메타 | 월간 | scaffolded | 05-12 |
+| `biotech/_meta.md` | 바이오 섹터 메타 | 월간 | scaffolded | 05-12 |
+| `fintech/_meta.md` | 핀테크 섹터 메타 | 월간 | scaffolded | 05-12 |
+
+### 분기 Deep Dive (L3) 위치
+- 산출 파일: `reports/research/{sector}_{YYYY}Q{N}.html`
+- 발행 조건: Phase 1~4 완료 + L2 ≥ 5건 누적 (memory: `project_research_kb_phase5`)
+- 발행 우선순위: 반도체 → 에너지 → 매크로 → 바이오 → 핀테크
+- 첫 발행 예정: **2026 Q3 (2026-07 첫 일요일)** — 반도체부터
+
+### 분석 에이전트 통합
+- business-analyst / momentum-analyst / risk-analyst — stock-analyst-lead 가 호출 시 발췌 인용 전달
+- global-macro-analyst — `research/macro/`, `research/{관련섹터}/` 직접 read 권한
+- briefing-lead — debate-card / contrarian-card 생성 시 research KB 우선 검색
+
+### 자동 호출 (briefing-lead Phase 0-A)
+- `/주간리포트` + `/글로벌인텔리전스` + `/모델포트폴리오` + `/풀브리핑` 에서만 자동 호출
+- `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` 은 자동 제외 (시간 폭주 방지)
+
+---
+
 ## 📊 Market KB (`knowledge-base/market/`) — 2026-05-06 최신
 
 | 파일 | 상태 | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령 |

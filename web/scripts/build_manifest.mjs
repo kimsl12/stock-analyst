@@ -49,11 +49,22 @@ const BRIEFING_TYPE = {
   daily_briefing: 'daily_briefing', // legacy
 };
 
+// [v3.17 — 2026-05-12] research/ L3 분기 Deep Dive 섹터 한국어 라벨
+const RESEARCH_SECTOR_LABELS = {
+  semiconductor: '반도체',
+  energy: '에너지',
+  macro: '매크로',
+  biotech: '바이오',
+  fintech: '핀테크',
+};
+
 // ---------------------------------------------------------------------------
 // 파일명 파서
 // ---------------------------------------------------------------------------
 const RE_BRIEFING = /^([a-z_]+)_(\d{8})\.html$/;
 const RE_STOCK = /^([0-9A-Z][0-9A-Za-z]*)_(.+)_(\d{8})\.html$/;
+// [v3.17] research/{sector}_{YYYY}Q{N}.html (분기 단위 Deep Dive)
+const RE_RESEARCH = /^([a-z]+)_(\d{4})Q([1-4])\.html$/;
 const RE_TITLE = /<title[^>]*>([\s\S]*?)<\/title>/i;
 
 const fmtDate = (s) => `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`;
@@ -68,7 +79,7 @@ export function getCommitTimes(repoRoot = PROJECT_ROOT) {
   let raw = '';
   try {
     raw = execSync(
-      `git log --name-only --pretty=format:'__C__|%ct' --diff-filter=AM -- 'reports/*.html' 'reports/briefing/*.html' 'reports/analyst/items/*'`,
+      `git log --name-only --pretty=format:'__C__|%ct' --diff-filter=AM -- 'reports/*.html' 'reports/briefing/*.html' 'reports/research/*.html' 'reports/analyst/items/*'`,
       {
         cwd: repoRoot,
         encoding: 'utf-8',
@@ -132,6 +143,25 @@ function parseStock(filename) {
     ticker,
     name,
     date: fmtDate(dateStr),
+  };
+}
+
+// [v3.17] research L3 분기 Deep Dive 파일명 파서
+// 예: semiconductor_2026Q3.html → sector=semiconductor, year=2026, quarter=3
+// date 는 분기 시작월 1일로 매핑 (Q1=01-01 / Q2=04-01 / Q3=07-01 / Q4=10-01)
+function parseResearch(filename) {
+  const m = RE_RESEARCH.exec(filename);
+  if (!m) return null;
+  const [, sector, year, q] = m;
+  if (!RESEARCH_SECTOR_LABELS[sector]) return null; // 등록된 5섹터 외 거부
+  const month = String(((Number(q) - 1) * 3) + 1).padStart(2, '0');
+  return {
+    type: 'research',
+    ticker: RESEARCH_SECTOR_LABELS[sector], // 한국어 섹터명 (UI ticker 슬롯)
+    name: `${year} Q${q} Deep Dive`,
+    date: `${year}-${month}-01`,
+    sector,
+    quarter: `${year}Q${q}`,
   };
 }
 
@@ -250,6 +280,29 @@ async function main() {
     });
   }
 
+  // 1.5. reports/research/*.html (L3 분기 Deep Dive) [v3.17 — 2026-05-12]
+  const researchDir = path.join(REPORTS_DIR, 'research');
+  for (const fn of await listHtml(researchDir)) {
+    const meta = parseResearch(fn);
+    if (!meta) {
+      warnings.push(`미인식 research 파일명: ${fn}`);
+      continue;
+    }
+    const filepath = path.join(researchDir, fn);
+    const st = await stat(filepath);
+    const relPath = `reports/research/${fn}`;
+    const sortKey = deriveSortKey(relPath, gitTimes);
+    if (gitTimes.has(relPath)) gitHits++; else gitMisses++;
+    items.push({
+      ...meta,
+      filename: fn,
+      url_path: `/reports/research/${fn}`,
+      size_bytes: st.size,
+      title: await extractTitle(filepath),
+      sort_key: sortKey,
+    });
+  }
+
   // 2. reports/*.html (루트 = 종목분석/ETF)
   for (const fn of await listHtml(REPORTS_DIR)) {
     const meta = parseStock(fn);
@@ -339,6 +392,7 @@ async function main() {
     global_intelligence: 6,
     crypto: 7,
     evening: 8,            // 저녁이 가장 늦은 시점
+    research: 10,          // [v3.17] L3 분기 Deep Dive — 같은 commit 시 briefing 위 (영구 가치)
     daily_briefing: 0,     // legacy
   };
   items.sort((a, b) => {
