@@ -4,73 +4,61 @@
 
 ## 리포트 열람
 
-📘 **[리포트 목록 보기](https://kimsl12.github.io/stock-analyst/)**
+📘 **[전체 목록 — Vercel 본서버](https://stock-analyst-jungwon1.vercel.app/)** · [미러 — Cloudflare](https://stock-analyst.pages.dev/)
 
-### 2026-04-24 대형 배치 분석 — 39종 (32 신규 + 7종)
+### 2026-05-11 — CapEx 슈퍼사이클 19종 신규 분석 ⭐
 
-**Strong Buy Top 10** (스코어 순):
-- [BlackRock (BLK)](https://kimsl12.github.io/stock-analyst/reports/BLK_BlackRock_20260424.html) — **85.8 Strong Buy A** (AUM $13.9T Record, Private Markets)
-- [Mitsubishi UFJ (MUFG)](https://kimsl12.github.io/stock-analyst/reports/MUFG_Mitsubishi_20260424.html) — **85.6 Strong Buy A** (BoJ 인상 수혜, MS 21% $45B)
-- [Applied Materials (AMAT)](https://kimsl12.github.io/stock-analyst/reports/AMAT_AppliedMaterials_20260424.html) — **84.0 Strong Buy A-** (UBS Top Pick, WFE 1위)
-- [Mastercard (MA)](https://kimsl12.github.io/stock-analyst/reports/MA_Mastercard_20260424.html) — **83.5 Strong Buy A-** (결제 듀오폴리 2위, ROIC 55%)
-- [Shell (SHEL)](https://kimsl12.github.io/stock-analyst/reports/SHEL_Shell_20260424.html) — **83.5 Strong Buy A-** (LNG 1위 20%, FCF Yield 15.6%)
-- [Morgan Stanley (MS)](https://kimsl12.github.io/stock-analyst/reports/MS_MorganStanley_20260424.html) — **82.65 Strong Buy A-** (Wealth $8.1T NNA Record)
-- [Visa (V)](https://kimsl12.github.io/stock-analyst/reports/V_Visa_20260424.html) — **82.0 Strong Buy A-** (결제 듀오폴리 1위, Moat 9.5)
-- [Philip Morris (PM)](https://kimsl12.github.io/stock-analyst/reports/PM_PhilipMorris_20260424.html) — **81.9 Buy A- SB 경계** (Zyn+IQOS)
-- [Union Pacific (UNP)](https://kimsl12.github.io/stock-analyst/reports/UNP_UnionPacific_20260424.html) — **81.76 Strong Buy A-** (NSC $85B M&A Optionality)
-- [JPMorgan (JPM)](https://kimsl12.github.io/stock-analyst/reports/JPM_JPMorgan_20260424.html) — **81.7 Buy A- SB 하단** (6개 영업 Top 3, Fortress)
+Tier 1~5 전체 (DC인프라 5 + 원자력/SMR 6 + 유틸 3 + 한국 미분석 3 + CHIPS 건설 2). 평균 스코어 80.3, 강력매수 8 / 매수 9 / 중립 2.
 
-**⚠️ 진입 보류 태깅** (R:R 기준):
-- [Texas Instruments (TXN)](https://kimsl12.github.io/stock-analyst/reports/TXN_TexasInstruments_20260424.html) — 67.0 Buy (B) ⛔ R:R -0.40 컨센 초과
-- [Caterpillar (CAT)](https://kimsl12.github.io/stock-analyst/reports/CAT_Caterpillar_20260424.html) — 75.0 Buy (B+) ⚠️ R:R 0.10 업사이드 소진
-- [Walmart (WMT)](https://kimsl12.github.io/stock-analyst/reports/WMT_Walmart_20260424.html) — 76.3 Buy (B+ Hold 편향) ⛔ R:R -0.24 Fwd PE 47.5x 과열
+**Top 5** (스코어 순):
+- [SK하이닉스 (000660)](https://stock-analyst-jungwon1.vercel.app/reports/000660_SK하이닉스_20260511.html) — **94.5 강력매수** ⭐ 19종 최고 (OP 100조 클럽, HBM4 풀체인)
+- [Arista Networks (ANET)](https://stock-analyst-jungwon1.vercel.app/reports/ANET_AristaNetworks_20260511.html) — **85.0 강력매수** (DC 네트워킹 1위)
+- [Vistra (VST)](https://stock-analyst-jungwon1.vercel.app/reports/VST_VistraCorp_20260511.html) — **83.8 강력매수** (원자력 PPA + 데이터센터)
+- [Vertiv (VRT)](https://stock-analyst-jungwon1.vercel.app/reports/VRT_VertivHoldings_20260511.html) — **83.4 강력매수** (DC 인프라 직접 베타)
+- [Eaton (ETN)](https://stock-analyst-jungwon1.vercel.app/reports/ETN_Eaton_20260511.html) — **83.0 강력매수** (전력관리 + 그리드 CapEx)
 
-### 2026-04-23 배치 & 재분석 11종
-- [Eli Lilly v2 (LLY)](https://kimsl12.github.io/stock-analyst/reports/LLY_EliLilly_20260423.html) — **86.9 Strong Buy A** (v1 82.4 → +4.5p, GLP-1 Category King)
-- [LS ELECTRIC v2 (010120)](https://kimsl12.github.io/stock-analyst/reports/010120_LSELECTRIC_20260423.html) — **84.3 Strong Buy A-** (Buy → Strong Buy 승급)
-- [Goldman Sachs (GS)](https://kimsl12.github.io/stock-analyst/reports/GS_GoldmanSachs_20260423.html) — **83.9 Buy A** (IB Renaissance)
-- [GE Aerospace (GE)](https://kimsl12.github.io/stock-analyst/reports/GE_GEAerospace_20260423.html) — **82.7 Strong Buy A-** (BA LEAP-1B 100% 독점)
-- [NVIDIA v2 (NVDA)](https://kimsl12.github.io/stock-analyst/reports/NVDA_NVIDIA_20260423.html) — **82.35 Strong Buy A** (Moat 9.0 유지)
-- [Boeing v2 (BA)](https://kimsl12.github.io/stock-analyst/reports/BA_Boeing_20260423.html) — **82.20 Strong Buy A-** (v1 74.9 → +7.3p 승급)
+### 2026-05-06 ~ 2026-05-09 재분석 23종
 
-### 2026-04-22 이전 (유효)
-- [Costco (COST)](https://kimsl12.github.io/stock-analyst/reports/COST_Costco_20260422.html) — 81.0 Buy
-- [ExxonMobil (XOM)](https://kimsl12.github.io/stock-analyst/reports/XOM_ExxonMobil_20260422.html) — **86.2 Strong Buy**
-- [Micron (MU)](https://kimsl12.github.io/stock-analyst/reports/MU_Micron_20260421.html) — 83.0 Strong Buy 경계
+ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → Tier 2 11 (defense·biotech·finance·tech 핵심). 자동 BLIND 모드 + 변화 추적 timeline 영구 보존.
 
-### 최근 브리핑
-- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260506.html) — 2026-05-06, AMD Q1 어닝서프라이즈 + ISM 가격 70.7 + 이란 협상 대화 지속
-- [이브닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/evening_20260505.html) — 2026-05-05, 한국 어린이날 휴장 + 미국 프리마켓 (KST 시간대 표준 적용)
-- [모닝 브리핑](https://kimsl12.github.io/stock-analyst/reports/briefing/morning_20260505.html) — 2026-05-05, 이란 교전→협상 급반전 + WTI $106→$92(-7%)
-- [글로벌 인텔리전스](https://kimsl12.github.io/stock-analyst/reports/briefing/global_intelligence_20260503.html) — 2026-05-03, 4축 교차 메가트렌드 '탈달러+금 Bull' 격상 + 신규 시나리오 #8/#9
-- [주간 리포트](https://kimsl12.github.io/stock-analyst/reports/briefing/weekly_20260502.html) — 2026-05-02, 골디락스 표면·스태그플레이션 이면 + 적중률 77.8% 첫 산정
-- [성과 리뷰 1M](https://kimsl12.github.io/stock-analyst/reports/briefing/performance_review_1m_20260505.html) — 2026-05-05, 첫 1개월 운용 적중률 평가
-- [내 포트폴리오](https://kimsl12.github.io/stock-analyst/reports/briefing/user_portfolio_20260505.html) — 2026-05-05, **VOO 91.5% → 76.6% (4주 매도) + GLD/SCHD 신규 편입**
-- [리밸런싱 (사용자)](https://kimsl12.github.io/stock-analyst/reports/briefing/rebalancing_user_20260421.html) — 2026-04-21, VOO 91.5% → 35% 재편안 (1차 실행 완료)
+### 최근 브리핑 (지난 일주일)
+
+- [내 포트폴리오 v3 균형형](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260512.html) — 2026-05-12, **A- (84/100)** 균형형 전환 + ISA 전략 처방
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260512.html) — 2026-05-12
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260511.html) — 2026-05-11
+- [글로벌 인텔리전스](https://stock-analyst-jungwon1.vercel.app/reports/briefing/global_intelligence_20260510.html) — 2026-05-10, 4축 메가트렌드
+- [주간 리포트](https://stock-analyst-jungwon1.vercel.app/reports/briefing/weekly_20260509.html) — 2026-05-09
+- [성과 리뷰 1M](https://stock-analyst-jungwon1.vercel.app/reports/briefing/performance_review_1m_20260509.html) — 2026-05-09
+- [내 포트폴리오](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260509.html) — 2026-05-09 (v3 전환 전 상태)
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260506.html) — 2026-05-06
+
+### 누적 (2026-05-12)
+
+종목·ETF **131건** + 브리핑 **77건** + 애널리스트 **32건** = 총 **240건**
 
 ## 변경 이력
 
-| 버전 | 날짜 | 내용 |
+| 버전 | 날짜 | 핵심 |
 |------|------|------|
-| **v3.17** | **2026-05-12** | **Research KB 시스템 신설 — 5섹터(반도체·에너지·매크로·바이오·핀테크) × 4소스군(학술·씽크탱크·컨퍼런스·규제) 1차 자료 3-레이어 (L1 주간/L2 월간/L3 분기) 큐레이션. `research-curator` 에이전트 + `/리서치업데이트` 명령 + 4종 분석 에이전트 + briefing-lead + stock-analyst-lead 인용 통합. debate/contrarian-card 근거를 뉴스 → 학술·정책 1차 자료로 격상** |
-| **v3.16** | **2026-05-10** | **manifest sort_key git commit time 도입 — 카드 시간순 혼합 정렬 (briefing↔stock 섞임), 폴백 체인 3단(git→filename→0) + Vercel 빌드 컨테이너 .git 미포함 우회 (committed manifest 그대로 사용) + 4-layer 매니페스트 sync 자동 강제 (push 단계 + 검증 단계 + Vercel bypass)** |
-| **v3.15** | **2026-05-06** | **Phase 0-D hang 방지 — `report-generator` `run_in_background` 호출 + 후속 커밋 절차 분리. 6분+ 응답 대기로 인한 브리핑 파이프라인 hang 재발 방지** |
-| **v3.14** | **2026-05-05** | **시간대 표현 모순 수정 — KST 발행 시점 ↔ 미국장 상태 매핑 정확화. `briefing-lead` `[v3.14]` + `market-data-collector` `[v3.11]` 시간대 표준 섹션 추가. 모닝/이브닝/주간 슬래시 명령어 시점 표기 정정. 5/5 morning/evening retroactive 재작성** |
-| **v3.13** | **2026-05-05** | **KST/ET 시간대 가이드 신설 — `.claude/_time_guide.md` 7개 섹션 (KST↔ET 매핑, 미국장 시간대, 브리핑 발행 시점↔시장 상태 매핑, 데이터 기준 frontmatter 표준, 금지 표현, 소스 라벨링, ISO 형식). 모든 시간 UTC → GMT+9 (KST) 통일** |
-| **v3.12** | **2026-05-05** | **`wiki-linter` `lint_report` 형식 변경 — 매 .md 파일 폐기, 단일 누적 jsonl로 압축. 5/3 wiki-linter 누락분 복구 + SKILL v3.11 보완 (자기모순·산출물누락 재발 방지)** |
-| **v3.11** | **2026-05-04** | **GitHub Pages main↔gh-pages 자동 사이클 제거 — `report_template.py` 인라인 deploy 코드 삭제 (line 459-481). `.gitignore` `!analysis/briefing/lead_*.md` 화이트리스트 추가 (lead 파일 손실 방지)** |
-| v3.10.1 | 2026-04-24 | 날짜 추론 오기 재발 방지 패치 — `date-rules.md` SSOT 신설 + 5개 에이전트 최우선 규칙 삽입 + `/KB업데이트` `target_date` 필드 강제 |
-| v3.10 | 2026-04-23 | 재분석 Stale 자동 경고 시스템 (14일+ 세션 시작 배너 + 섹터 KB 갱신 매크로 트리거 7일+ 예외) + `/재분석점검` 슬래시 명령 신규 (18개 명령어) |
-| v3.9 | 2026-04-23 | Phase 3 종료 검증(HTML+commit+bootstrap 3단계) + 파일별 명시적 git add (병렬 경합 방지) + 버전 관리 명명 규칙 통일 (`_v2` 폴더 접미사·HTML은 날짜만) + R:R<1.5 진입 보류 자동 태깅 + 컨센서스 초과 경고 블록 자동 삽입 |
-| v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 규칙 (`generate_*.py`, `*_report_data.json` 커밋 전 무조건 삭제) + `.gitignore` 2중 방어 + bootstrap stale 검증 + Todo 의무화 + `.gitattributes` CRLF 영구 차단 |
-| v3.7 | 2026-04-20 | luxury KB 신규 + 에너지/방산 industry 재편 + 루트 redirect 파일 SSOT 정리 |
-| v3.6 | 2026-04-19 | `etf-lead` 에이전트 분리 (stock 파이프라인에서 ETF 전용 브랜치 분기) + 다크/라이트 테마 토글 |
-| v3.5 | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + analysis 아카이브 + 에이전트 모순 해결 + fetch_price.py 시장지수 + 브리핑 스캐폴딩 |
-| v3.2 | 2026-04-13 | LLM Wiki 전환 — wiki-linter + KB 피드백 루프 + Phase 0-LINT |
+| v3.17 | 2026-05-12 | Research KB 큐레이션 (5섹터 × 4소스군 3-레이어) + research-curator + /리서치업데이트 |
+| v3.16 | 2026-05-10 | manifest sort_key git commit time + Vercel 빌드 .git 우회 + 4-layer sync 강제 |
+| v3.15 | 2026-05-06 | Phase 0-D hang 방지 (run_in_background) + 시간 폭주 5룰 |
+| v3.14 | 2026-05-05 | KST↔ET 시간대 표현 모순 수정 + 발행 시점 표준 |
+| v3.13 | 2026-05-05 | KST 시간대 가이드 신설 (_time_guide.md) |
+| v3.12 | 2026-05-05 | wiki-linter lint_report jsonl 압축 |
+| v3.11 | 2026-05-04 | GitHub Pages main↔gh-pages 자동 사이클 제거 + lead 화이트리스트 |
+| v3.10.1 | 2026-04-24 | 날짜 추론 오기 방지 (date-rules.md SSOT + target_date 강제) |
+| v3.10 | 2026-04-23 | 재분석 Stale 자동 경고 (14일+ 배너 + 매크로 트리거) + /재분석점검 |
+| v3.9 | 2026-04-23 | Phase 3 종료 검증 + R:R<1.5 진입 보류 태깅 + 컨센서스 초과 경고 |
+| v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 + .gitattributes CRLF 차단 + Todo 의무화 |
+| v3.7 | 2026-04-20 | luxury KB + 에너지/방산 재편 + 루트 redirect SSOT |
+| v3.6 | 2026-04-19 | etf-lead 분기 + 다크/라이트 테마 토글 |
+| v3.5 | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + 브리핑 스캐폴딩 |
+| v3.2 | 2026-04-13 | LLM Wiki 전환 (wiki-linter + Phase 0-LINT) |
 | v3.1 | 2026-04-09 | GitHub Pages 자동 배포 + 비상장 기업 분석 |
 | v3.0 | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어 |
 | v2.3 | 2026-04-06 | 데이터 흐름 개편 + 해외 종목 + 가격 검증 |
-| v2.0 | 2026-04-05 | 9개 에이전트 체계 + DART API |
+| v2.0 | 2026-04-05 | 9개 에이전트 + DART API |
 
 ---
 
@@ -342,23 +330,25 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 ---
 
-## 종목 분석 흐름 (v3.8)
+## 종목 분석 흐름 (v3.17)
 
 ```
 Phase 0-A: kb-updater (섹터 KB valid_until 초과 시만)
 Phase 0-B: fetch_price.py (실시간 주가 + ATR)
-Phase 0-C: WebSearch (실적, 컨센서스, 뉴스)
-Phase 0-D: 스캐폴딩 (빈 파일 사전 생성)
+Phase 0-C: data-collector (재무·실적·컨센서스·뉴스 → data.json)
+Phase 0-D: Research KB 발췌 [v3.17] (해당 섹터 L2 ≥ 1건 시 research_kb_excerpts 블록 작성)
     ↓
 Phase 1: company-overview + financial-analyst + business-analyst
-        + momentum-analyst + risk-analyst (5개 병렬)
+        + momentum-analyst + risk-analyst (5개 병렬, research excerpts 첨부)
 Phase 1-검증: 파일 크기 확인 → 0이면 폴백
     ↓
 Phase 2: scorecard-strategist (10항목 + 모순 해결 + KB 피드백)
     ↓
 Phase 3-cleanup: generate_*.py / *_report_data.json 전량 삭제 [v3.8]
     ↓
-Phase 3: report-generator → HTML → git commit & push
+Phase 3: report-generator → HTML → git commit + manifest sync + push [v3.16]
+    ↓
+Vercel + Cloudflare 자동 배포 (HTML 변경 시) [v3.16]
     ↓
 session-bootstrap.md 자동 갱신
 ```
@@ -370,16 +360,22 @@ fetch_price.py --market --save (daily_snapshot 선행 갱신)
     ↓
 [Phase 0-LINT] wiki-linter (quick)
     ↓
+[Phase 0-RESEARCH] research-curator 조건부 자동 [v3.17]
+    → /주간, /글로벌인텔리전스, /모델포트폴리오, /풀브리핑 + 일요일 조건 매칭 시
+    → 일반 일요일=weekly / 월 첫 주=+monthly / 분기 첫 주=+quarterly
+    ↓
 [Phase 0-A] market-data-collector → 스캐폴딩 (빈 파일 생성)
     ↓
-[Phase 0-B] global-macro-analyst + correlation-monitor (병렬)
+[Phase 0-B] global-macro-analyst + correlation-monitor (병렬, research/macro 직접 read)
     → 검증: 파일 크기 확인 → 0이면 반환 메시지에서 추출
     ↓
-[Phase 0-C] briefing-lead 종합 (debate/contrarian/포트폴리오)
+[Phase 0-C] briefing-lead 종합 (debate/contrarian-card 에 research KB 우선 인용)
     ↓
 [Step 8.6] knowledge-base/_index.md 인사이트 append
     ↓
-[Phase 0-D] briefing-report-generator → HTML → git push
+[Phase 0-D] briefing-report-generator → HTML → git push (run_in_background) [v3.15]
+    ↓
+Vercel + Cloudflare 자동 배포
 ```
 
 ---
@@ -427,7 +423,11 @@ knowledge-db/                    ← 영구 축적 (append-only, 자동 번영)
 reports/research/                ← L3 분기 Deep Dive HTML [v3.17 — 첫 발행 2026 Q3]
 ```
 
-**2026-05-06 KB 갱신** (wiki-linter P1 후속): `macro/us_monetary_policy.md` (4/29 FOMC 8-4 분열, Core PCE 4.3%, Warsh 5/15 취임), `macro/korea_economy.md` + 루트 redirect (KOSPI 5/6 7,000 돌파, 환율 1,470~1,479원), `market/changelog_2026.jsonl` 시계열 등재.
+**2026-05-12 Research KB L1 첫 수집** [v3.17]: 5섹터 × 4유형 = 21건 헤드라인. 주목 — ISSCC 2026 HBM4 36GB·48GB 양산 가시화, IEA Electricity 2026 DC 전력 2030 2배, FOMC 4/29 8-4 dissent (1992 이후 최대) Powell 마지막 회의 가능성.
+
+**2026-05-09 KB 갱신** (wiki-linter P1 후속): `industry/capex.md` 글로벌 CapEx 트래커 ($775~830B + GS $7.6T 2031 누적), `industry/semiconductor.md` HBM4 양산 일정 갱신.
+
+**2026-05-06 KB 갱신**: `macro/us_monetary_policy.md` (4/29 FOMC 8-4 분열, Core PCE 4.3%, Warsh 5/15 취임), `macro/korea_economy.md` (KOSPI 5/6 7,000 돌파, 환율 1,470~1,479원).
 
 **2026-05-03 KB 주간 갱신** (6종 글로벌): geopolitics · global_risk_factors · political_cycle · energy · tech_breakthrough · science_tech.
 
@@ -472,24 +472,27 @@ banking_capital · correlation_matrix (갱신)
 
 ---
 
-## GitHub Pages 배포
+## 배포 (Vercel 본 + Cloudflare 미러)
 
-- **URL**: `https://kimsl12.github.io/stock-analyst/reports/{파일명}.html`
-- **GitHub Actions**: `pages-build-deployment` (gh-pages 브랜치 push → 자동 빌드)
-- **레이아웃**: 2컬럼 (좌: 종목분석 / 우: 브리핑)
+GitHub Actions 차단 (Ticket 4287825, 2026-04-15) 이후 수동 CLI 운영. main push 자체로는 사이트 갱신 안 됨 — `reports/**/*.html` 변경 push 직후 양쪽 채널 모두 실행 필수 (`CLAUDE.md` 룰).
 
-### 현재 상태 (2026-05-06)
+| 채널 | URL | 갱신 명령 | 시간 |
+|---|---|---|---|
+| **Vercel (본)** | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes` | ~45초 |
+| Cloudflare (미러) | https://stock-analyst.pages.dev/ | `bash scripts/deploy_cloudflare.sh` | ~5초 |
 
-- `main` push 정상, gh-pages 빌드 성공 (4/15 마지막 자동 deploy)
-- v3.11 (5/4) 이후 main↔gh-pages 자동 사이클 제거 — `report_template.py` 인라인 deploy 코드 삭제. 사이클 부작용(untracked lead 파일 손실)으로 의도적으로 제거.
-- HTML 리포트는 `reports/` 폴더에서 직접 열람 가능
-- 2026-05-06 기준 reports/ 누적: 분석 HTML 100+종, 브리핑 HTML 30+건
+### 현재 상태 (2026-05-12)
+
+- 양쪽 채널 모두 액세스 OK, 240건 리포트 (분석 131 + 브리핑 77 + 애널리스트 32) 카드 시간순 정렬 [v3.16]
+- Astro+Supabase 풀 대시보드 (검색·종목 클라우드·성과 도넛·홀딩스 도넛·시간머신) — Vercel
+- 정적 미러 — Cloudflare
+- GitHub Pages 자동 사이클은 v3.11 (5/4) 제거. `kimsl12.github.io/stock-analyst/` 링크는 deprecated.
 
 ---
 
-## 웹 대시보드 (v3.11+, 진행 중)
+## 웹 대시보드 (v3.16 — Vercel 본서버 운영)
 
-`web/` 디렉토리 — Astro 4 SSG + Supabase Auth + Vercel 배포 (모노레포 루트).
+`web/` 디렉토리 — Astro 4 SSG + Supabase Auth + Vercel 배포 (모노레포 루트). 카드 시간순 혼합 정렬 [v3.16].
 
 | 기능 | 경로 | 비고 |
 |---|---|---|
