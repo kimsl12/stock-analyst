@@ -2,13 +2,13 @@
 sector: macro
 created: 2026-05-12
 last_updated: 2026-05-12
-status: scaffolded
+status: bootstrapped
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
   - knowledge-base/macro/us_monetary_policy.md
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
-l1_index_count: 0
+l1_index_count: 7
 l2_summary_count: 0
 l3_deep_dive_count: 0
 deep_dive_priority: 3
@@ -20,7 +20,9 @@ deep_dive_priority: 3
 
 ## 현재 thesis
 
-(Phase 2 첫 수집 후 채워짐)
+- **중앙은행 동시 동결 사이클**: Fed (4/29, 3.5~3.75%) + ECB (4/30, MRO 2.15%) + BOK (4/10, 2.5%) — 3회 연속 동결, 중동 분쟁發 에너지 가격 상방 + 인플레 재가속(유로존 3%, 한국 2.6%)이 인하 경로 차단. Fed dissent 8-4 (1992년 10월 이후 최대).
+- **IMF WEO 글로벌 성장 하향**: 2026년 3.1%·2027년 3.2% (4/14 발표), EM 3.9% (1월 4.2%→). "Global Economy in the Shadow of War" — 다운사이드 리스크 우세.
+- **시장 로테이션 가속**: BIS QR 3월 — 달러 약세, M7·고모멘텀 테크 → 밸류/시클리컬, EME 강세 + 일본·호주 장기금리 급등.
 
 ## Key Uncertainties
 
@@ -45,10 +47,10 @@ deep_dive_priority: 3
 
 ## L1 인덱스 카운트
 
-- 학술: 0
-- 씽크탱크: 0
+- 학술: 2
+- 씽크탱크: 2
 - 컨퍼런스: 0
-- 규제: 0
+- 규제: 3
 
 ## L2 월간 요약 목록
 

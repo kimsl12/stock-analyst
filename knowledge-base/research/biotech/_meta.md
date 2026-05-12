@@ -2,11 +2,11 @@
 sector: biotech
 created: 2026-05-12
 last_updated: 2026-05-12
-status: scaffolded
+status: bootstrapped
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
-l1_index_count: 0
+l1_index_count: 7
 l2_summary_count: 0
 l3_deep_dive_count: 0
 deep_dive_priority: 4
@@ -18,7 +18,9 @@ deep_dive_priority: 4
 
 ## 현재 thesis
 
-(Phase 2 첫 수집 후 채워짐)
+- **GLP-1 시장 구조 재편**: NEJM ATTAIN-1 + SURMOUNT-5 + FDA Foundayo(orforglipron) 4/1 승인 — LLY 경구 GLP-1 처방채널·복약순응도 확장, tirzepatide가 semaglutide 대비 우월. 비만 시장 LLY 우위 강화.
+- **종양학 신모달리티 약진**: FDA Veppanu (vepdegestrant) 5/1 ESR1m ER+/HER2- 진행성 유방암 승인 — 경구 PROTAC 분해제 종양학 첫 승인 (Arvinas/Pfizer). ASCO 2026 RASolute 302 (daraxonrasib PDAC) plenary 예정.
+- **IRA 3차 협상 본격화**: CMS 4/20 Selected Drug List + Maximum Fair Prices 공개, 15개 약물 (Part B/D), 2028-01-01 가격 효력. 4월 환자·임상 공청회 진행 중.
 
 ## Key Uncertainties
 
@@ -42,10 +44,10 @@ deep_dive_priority: 4
 
 ## L1 인덱스 카운트
 
-- 학술: 0
+- 학술: 2
 - 씽크탱크: 0
-- 컨퍼런스: 0
-- 규제: 0
+- 컨퍼런스: 1
+- 규제: 4
 
 ## L2 월간 요약 목록
 

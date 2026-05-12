@@ -2,11 +2,11 @@
 sector: fintech
 created: 2026-05-12
 last_updated: 2026-05-12
-status: scaffolded
+status: bootstrapped
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
-l1_index_count: 0
+l1_index_count: 5
 l2_summary_count: 0
 l3_deep_dive_count: 0
 deep_dive_priority: 5
@@ -18,7 +18,9 @@ deep_dive_priority: 5
 
 ## 현재 thesis
 
-(Phase 2 첫 수집 후 채워짐)
+- **SEC 가이드 명확화 전환점**: 3/17 SEC+CFTC 공동 암호자산 연방증권법 해석 (token taxonomy: commodities·collectibles·tools·stablecoins·securities) + 4/13 셀프 호스팅 지갑 broker 미해당 — Atkins 의장 체제 하 진입 장벽 완화 + 분류 명확성 ↑.
+- **스테이블코인 시스템 리스크 모니터링 강화**: BIS WP #1340 (FX 스필오버) + BIS Papers #170 (5/5, EMDE 통화주권 침식 우려) — "사운드 머니" 미달성 + 분절적 규제 위험. 글로벌 규제 진전 둔화 (4/20 BIS 협력 촉구).
+- **암호자산 시장 규제 차익 리스크**: 미국 적극 명확화 vs 글로벌 합의 둔화 → 규제 차익 우려 동시 진행.
 
 ## Key Uncertainties
 
@@ -41,10 +43,10 @@ deep_dive_priority: 5
 
 ## L1 인덱스 카운트
 
-- 학술: 0
-- 씽크탱크: 0
+- 학술: 2
+- 씽크탱크: 1
 - 컨퍼런스: 0
-- 규제: 0
+- 규제: 2
 
 ## L2 월간 요약 목록
 

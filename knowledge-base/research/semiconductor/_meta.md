@@ -2,11 +2,11 @@
 sector: semiconductor
 created: 2026-05-12
 last_updated: 2026-05-12
-status: scaffolded
+status: bootstrapped
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
-l1_index_count: 0
+l1_index_count: 6
 l2_summary_count: 0
 l3_deep_dive_count: 0
 deep_dive_priority: 1
@@ -18,7 +18,9 @@ deep_dive_priority: 1
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-(Phase 2 첫 수집 후 채워짐)
+- **HBM4 양산 가시성 ↑**: ISSCC 2026 Samsung 36GB/SK hynix 48GB HBM4 데모 — 핀당 13Gb/s·1V 이하 동작으로 NVIDIA Rubin 요건 충족, 2027 Q1 양산 시나리오 유효.
+- **시장 규모 thesis 보강**: McKinsey 4/2 발표 — 2030년 $1.6T (2024년 $775B 대비 CAGR 13%), 컴퓨팅·스토리지가 성장의 55%. SK하이닉스 강력매수 thesis 외생 변수와 정합.
+- **지정학 리스크 격상**: 미 MATCH Act 입법 + 중국 산업망·공급망 안전 통합 법령(4월) + EU 데이터센터 3배 확장 플랜(5월) — 동맹 다자 통제 + 자체 캐파 자립 흐름 강화.
 
 ## Key Uncertainties (지속 추적)
 
@@ -43,10 +45,10 @@ deep_dive_priority: 1
 
 ## L1 인덱스 카운트 (현재)
 
-- 학술: 0
-- 씽크탱크: 0
-- 컨퍼런스: 0
-- 규제: 0
+- 학술: 1
+- 씽크탱크: 2
+- 컨퍼런스: 2
+- 규제: 2
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
