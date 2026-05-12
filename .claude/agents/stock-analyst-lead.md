@@ -1066,6 +1066,45 @@ KB에 없는 데이터만 웹검색으로 수집해.
 파일이 정상 생성되었는지 ls -la로 확인해.
 ```
 
+#### Phase 0-D: Research KB 발췌 (조건부) [v3.17 신규, 2026-05-12]
+
+종목의 섹터를 식별하고, 해당 섹터의 research KB L2 요약을 1~3건 발췌해서 후속 분석 에이전트 5종 + scorecard 의 프롬프트에 첨부한다. 분석 에이전트들은 KB 직접 탐색이 금지되어 있으므로 리드가 발췌해야 한다.
+
+**섹터 매핑 (5섹터)**:
+
+| 섹터 | 종목 예시 |
+|---|---|
+| `semiconductor` | 005930 삼성전자 / 000660 SK하이닉스 / NVDA / AVGO / TSM / MU / ASML / AMAT / LRCX / KLAC / ANET / AMD / MRVL |
+| `energy` | CEG / VST / SMR / OKLO / CCJ / BWXT / DUK / SO / NEE / XOM / CVX / FSLR / 052690 한전기술 |
+| `biotech` | LLY / NVO / REGN / VRTX / JNJ / MRK / ABBV / GILD / BIIB / 한미약품 / 셀트리온 |
+| `fintech` | V / MA / PYPL / SQ / COIN / NU / SOFI / IBIT / 055550 신한지주 / 086790 하나금융 |
+| `macro` (제외) | 종목 단위 분석 시 매크로 단독 인용 X (global-macro-analyst 가 별도 처리) |
+
+**워크플로**:
+1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 5섹터 매핑 결정
+2. 섹터 결정 시 Bash:
+   ```bash
+   ls -1t knowledge-base/research/{sector}/*.md 2>/dev/null | head -3
+   ```
+3. 최근 3건 Read → 각 파일의 frontmatter `citation` + `key_finding` 추출
+4. 프롬프트 첨부 블록 작성:
+   ```
+   research_kb_excerpts:
+     - 📄 [Conference] ISSCC 2026 — "HBM4 16-Hi TSV" → yield 78%, 2027 Q1 양산 가시
+     - 📄 [Working Paper] BIS WP #1183 (2026-03) → 메모리 공급사 3+ 진입 시 24M 내 마진 -15~20%p
+     - 📄 [Think Tank] McKinsey GI (2026-03) → HBM 시장 2030 $185B (CAGR 38%)
+   ```
+5. 5섹터 매핑 안 됨 또는 L2 부재 → 블록 첨부 생략 (분석 에이전트는 "research KB 부재" 1줄 명시 후 평소 진행)
+
+**조건부 스킵 케이스**:
+- 종목 섹터가 매크로 단독 또는 5섹터 외 (예: 소비재·소재·운송 등) → Phase 0-D 스킵
+- `knowledge-base/research/{sector}/` 에 L2 요약본 0건 → 스킵
+- ETF 분석 (etf-lead 경유) → Phase 0-D 스킵 (ETF 는 다중 섹터 노출)
+
+**시간 예산**: 최대 3분. data-collector ~ Phase 1 사이 짧은 추가 단계로 끼움.
+
+**환각 방지**: research-curator 가 작성하지 않은 출처는 절대 인용 X. Glob 결과 파일만 사용. frontmatter 의 citation 필드 그대로 발췌 (재해석 X).
+
 #### Phase 1: 분석 에이전트 3개 병렬 호출 (각각 별도 프롬프트)
 
 **company-overview 호출:**
@@ -1074,6 +1113,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 파일에 없는 데이터는 "데이터 미수집"으로 표기해.
 
@@ -1087,6 +1127,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_financial.md 파일로 저장해.
@@ -1099,6 +1140,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_momentum.md 파일로 저장해.
@@ -1113,6 +1155,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 웹검색은 절대 하지 마.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_business.md 파일로 저장해.
@@ -1125,6 +1168,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 웹검색은 절대 하지 마.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_risk.md 파일로 저장해.
@@ -1144,6 +1188,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
   - analysis/{종목코드}_{종목명}_business.md
   - analysis/{종목코드}_{종목명}_risk.md
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
 
 웹검색은 절대 하지 마.
 

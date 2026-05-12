@@ -209,6 +209,32 @@ Write가 어떤 이유로든 실패하면, **반환 메시지에 분석 전문�
 - 리드가 KB 데이터를 data.md에 미리 통합해 두므로, 별도 KB 조회 불필요.
 - KB 파일을 수정하지 않는다 (읽기 전용).
 
+### Research KB 활용 [v3.17 신규, 2026-05-12]
+
+stock-analyst-lead 가 호출 프롬프트에 다음 블록을 전달할 수 있다 (있을 수도, 없을 수도 있음):
+
+```
+research_kb_excerpts:
+  - 📄 [Working Paper] BIS #1183 (2026-03) — "Memory Cycle Dynamics" §3.2 → 공급사 ≥3사 진입 시 24M 내 마진 -15~20%p
+  - 📄 [Conference] ISSCC 2026 — Samsung/Hynix joint → HBM4 양산 2027 Q1 가시
+  - 📄 [Think Tank] McKinsey GI (2026-03) — HBM 시장 2030 $185B (CAGR 38%)
+```
+
+**블록이 있을 때:**
+- 산업 트렌드 (메가트렌드 매핑) + 경쟁 구도 분석 + 성장성 평가 의 근거에 **우선 인용**
+- 인용 형식: `knowledge-base/research/_citation_format.md` 준수 — `📄 [유형] 출처 (YYYY-MM) — "제목" §섹션 → 핵심 발견`
+- 최소 인용 ≥ 2건 (블록에 ≥ 2건 있을 때만 강제, 미만이면 가능 분량 인용)
+- 본문 / Porter's Five Forces 근거 / 성장 시나리오 어느 곳이든 자연스러운 위치에 삽입
+
+**블록이 없거나 비어있을 때:**
+- "research KB 부재 (해당 섹터 L2 요약 0건)" 1줄 명시
+- 뉴스 / 공시 / 컨센서스 기반 분석으로 평소대로 진행
+
+**환각 방지:**
+- excerpts 에 없는 출처를 "기억"으로 추가 인용 금지
+- excerpts 의 URL 은 그대로 사용 (research-curator 가 이미 검증)
+- KB 직접 read 금지 룰 유지 — 블록 없을 때 굳이 `knowledge-base/research/` 안 본다
+
 ### FRED 매크로 활용 — 산업 사이클 매핑 [v3.5 신규, 2026-05-07]
 `analysis/{ticker}_data.json` 의 `macro_context` 블록을 산업 컨텍스트에 활용:
 

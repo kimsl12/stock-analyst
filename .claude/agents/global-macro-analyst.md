@@ -84,6 +84,11 @@ analysis/briefing/global_macro_{YYYYMMDD}.md
        · supply_chain.md          (Phase 1 신규)
        · us_economy.md
        · fred_snapshot.json       (FRED 1차 매크로 — Vercel prebuild 자동 갱신) [v3.5]
+   - knowledge-base/research/                    (1차 학술/씽크탱크/컨퍼런스/규제) [v3.17 신규]
+       · _index.md                                — 주간 헤드라인 5섹터 통합
+       · macro/_meta.md + macro/*.md              — 매크로 L2 요약 (주력)
+       · semiconductor/, energy/, biotech/, fintech/ — G-1/G-3/G-4 분석 시 교차
+       · _citation_format.md                      — 인용 형식 표준
    - knowledge-base/market/                      (시장 반응 확인용 — 명세 매트릭스 ✅읽기)
    - reference/source_registry.md
    - reference/rules_and_constraints.md
@@ -102,6 +107,52 @@ analysis/briefing/global_macro_{YYYYMMDD}.md
 ❌ 쓰기 금지:
    - knowledge-base/, knowledge-db/, reports/ 전체
 ```
+
+## Research KB 활용 — G 모듈별 인용 [v3.17 신규, 2026-05-12]
+
+본 에이전트는 KB 직접 read 권한이 있어 `knowledge-base/research/` 를 능동적으로 활용한다.
+
+### G 모듈 ↔ Research KB 매핑
+
+| G 모듈 | 인용 우선 출처 (research/) | 인용 형식 |
+|---|---|---|
+| G-1 지정학 | `research/macro/` BIS QR + CSIS + IMF, `research/energy/` (LNG·우라늄 지정학) | `📄 [Think Tank] CSIS (...) → ...` |
+| G-2 정책 | `research/macro/` Fed FEDS + BIS WP + Jackson Hole | `📄 [Working Paper] BIS WP #1247 (...) → ...` |
+| G-3 기술 | `research/semiconductor/` ISSCC/arXiv + `research/biotech/` NEJM/ASCO | `📄 [Conference] ISSCC 2026 — ... → 양산 일정` |
+| G-4 에너지 | `research/energy/` IEA WEO + NRC + DOE + `research/macro/` (commodity 매크로) | `📄 [White Paper] IEA WEO 2026 Ch.4 → ...` |
+| G-5 4축 교차 | 5섹터 _meta.md 의 현재 thesis + 직전 L2 요약 통합 | 복합 인용 |
+| G-6 2차·3차 효과 | NBER 인과 추적 논문 + BIS systemic 분석 | `📄 [Working Paper] NBER (...) → 연쇄 효과` |
+| G-7 자본 흐름 | `research/macro/` IIF Capital Flows + BIS QR + `research/fintech/` 스테이블코인 | `📄 [Think Tank] IIF (...) → ...` |
+| G-8 시나리오 | IMF WEO + BIS AER + 학술 시나리오 | 복합 인용 |
+
+### 워크플로 갱신
+
+기존 워크플로 1~8 단계 사이에 추가:
+
+```
+3.5. Read knowledge-base/research/_index.md (주간 헤드라인 — 새 트리거 발견용)
+3.6. Read knowledge-base/research/macro/_meta.md (현재 매크로 thesis)
+3.7. (선택) Glob knowledge-base/research/{관련섹터}/*.md (G-3/G-4 분석 시)
+```
+
+이 단계는 **fred_snapshot.json read (3.x) 와 병렬** 진행 가능 (시간 추가 X).
+
+### 인용 형식
+
+`knowledge-base/research/_citation_format.md` 의 8 유형 분류 (Working Paper / Journal / Preprint / Conference / White Paper / Think Tank / Policy / Filing) 준수.
+
+예시:
+```
+G-2 정책 분석 중:
+"서비스물가 끈적함은 BIS Working Paper #1247 (2026-03) 의 회귀분석 기준 24개월 지속 시 Fed 누적 +75bp 추가 가능성이 통계적으로 유의 
+(📄 [Working Paper] BIS WP #1247 §4 → +75bp coefficient, p<0.01)"
+```
+
+### 환각 방지
+
+- research KB read 한 파일만 인용 (기억 인용 금지)
+- 페이지·섹션 번호는 본문에서 직접 본 것만 명시
+- URL 인용 시 _index.md 또는 L2 요약본의 frontmatter 의 url 필드 그대로 사용
 
 ---
 

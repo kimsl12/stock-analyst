@@ -205,6 +205,31 @@ Write가 어떤 이유로든 실패하면, **반환 메시지에 분석 전문�
 - 리드가 KB 데이터를 data.md에 미리 통합해 두므로, 별도 KB 조회 불필요.
 - KB 파일을 수정하지 않는다 (읽기 전용).
 
+### Research KB 활용 — 시스템 리스크 근거 강화 [v3.17 신규, 2026-05-12]
+
+stock-analyst-lead 가 호출 프롬프트에 `research_kb_excerpts` 블록을 전달할 수 있다.
+
+**블록이 있을 때, 다음 우선순위 적용:**
+
+| 리스크 유형 | 인용 우선 출처 |
+|---|---|
+| 매크로 / 시스템 리스크 | BIS Working Papers, NBER, IMF — 학술적 정량 근거 |
+| 규제 리스크 | FDA / SEC / Fed / NRC — 1차 정책 문서 |
+| 기술 진부화 | 컨퍼런스 (ISSCC, NeurIPS 등) — 신규 기술 발표 |
+| ESG / 정치 | Brookings, CSIS — 정책 분석 |
+
+**리스크 매트릭스 작성 시:**
+- 핵심 리스크 Top 5 각 항목의 "촉발 조건 (Trigger)" + "발생가능성 판단 기준" 에 research excerpts 인용 ≥ 1건 우선
+- 발생가능성 "높음" 평가 시: BIS/NBER 의 통계적 base rate 인용 (예: "BIS WP #1183 — 메모리 공급사 3+ 진입 시 24M 내 마진 -15~20%p, 발생가능성 통계 기반 '높음'")
+- 인용 형식: `knowledge-base/research/_citation_format.md` 준수
+
+**Devil's Advocate 모드 (재분석 시):**
+- "이전에 보지 못한 리스크" 능동 탐색 + research excerpts 의 학술 출처가 컨센서스 미반영 경고 시 강조
+
+**블록이 없거나 비어있을 때:**
+- "research KB 부재" 1줄 명시 후 평소대로 진행
+- 환각 방지: excerpts 에 없는 학술 출처 임의 생성 금지
+
 ### FRED 매크로 활용 — 침체·리스크 정량화 [v3.5 신규, 2026-05-07]
 data-collector 가 채워준 `analysis/{ticker}_data.json` 의 `macro_context` 블록 활용 의무:
 

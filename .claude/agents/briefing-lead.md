@@ -190,6 +190,7 @@ TODAY_COMPACT=$(date +%Y%m%d)   # reports/briefing/{type}_{YYYYMMDD}.html 용
 | 에이전트 | 모델 | 역할 | 호출 시점 |
 |---|---|---|---|
 | `wiki-linter` | Opus | KB 건강 점검 (quick mode) | Phase 0-LINT — 모든 명령 시작 전 [v3.2] |
+| `research-curator` | Opus | 5섹터 학술/씽크탱크/컨퍼런스/규제 1차 자료 수집 + L1/L2/L3 큐레이션 | Phase 0-RESEARCH — /주간, /글로벌인텔리전스, /모델포트폴리오, /풀브리핑 한정 + 일요일 조건 매칭 시 [v3.17] |
 | `market-data-collector` | Opus | 시장 데이터 수집 (지수·환율·채권·크립토·경제·13F) | Phase 0-A 모든 명령 선행 |
 | `global-macro-analyst` | Opus | G-1~G-8 매크로 4축 분석 | /글로벌인텔리전스, /모닝, /이브닝, /주간, /성과리뷰 |
 | `correlation-monitor` | Opus | 30/90일 롤링 상관계수 + 서프라이즈 인덱스 | /이브닝, /주간, /크립토 |
@@ -1118,6 +1119,18 @@ knowledge-base/_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 ap
 
 1. **[Phase 0-LINT]** wiki-linter (mode=quick) 호출 [v3.2]
    ↳ 완료 후 TodoWrite: Phase 0-LINT completed
+1.5 **[Phase 0-RESEARCH]** research-curator 조건부 자동 호출 [v3.17 신규, 2026-05-12]
+   ↳ **대상 명령 한정**: `/주간리포트`, `/글로벌인텔리전스`, `/모델포트폴리오`, `/풀브리핑` 만 자동 호출
+   ↳ **자동 호출 X**: `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` — 시간 폭주 방지
+   ↳ **모드 자동 결정**:
+     - Bash `TODAY=$(date +%Y-%m-%d); DOW=$(date +%u); DAY=$(date +%d)`
+     - DOW=7 (일요일) + 1·4·7·10월 + DAY ≤ 7 → mode=`quarterly,monthly,weekly`
+     - DOW=7 + DAY ≤ 7 (분기 외) → mode=`monthly,weekly`
+     - DOW=7 (일반 일요일) → mode=`weekly`
+     - 일요일 아님 (DOW≠7) → 스킵 (다음 일요일 재시도)
+   ↳ 호출 인자: `mode={위 결과}, today=$TODAY, sectors=[전체 5섹터]`
+   ↳ 완료 후 TodoWrite: Phase 0-RESEARCH completed (또는 "스킵 — 일요일 아님" 기록)
+   ↳ 실패해도 Phase 0-A 진행 (블로킹 X — research KB 부재 마커로 fallback)
 2. **Read** `reference/rules_and_constraints.md` + `reference/source_registry.md` + `reference/guru_watchlist.md` + `reference/korean_translation_rules.md` (룰 4종 일괄)
    ↳ 도메인 KB(market/macro/industry/_index) Read 금지 — 서브에이전트 위임 전제 [v3.15]
 3. **Phase 0-A**: market-data-collector 호출 (시장 데이터 + 도메인 KB market/ 처리)
@@ -1151,6 +1164,49 @@ knowledge-base/_index.md의 "⚡ 최근 핵심 인사이트" 섹션에 1~3줄 ap
     - 출처 없는 수치 0건
     - 한국어 본문
     - knowledge-base/_index.md 인사이트 갱신 완료 [v3.2]
+    - **research KB 인용** (해당 모듈 + research/ 의 L2 ≥ 1건 있을 때): debate/contrarian-card 의 근거에 `📄 [유형] 출처` 형식 ≥ 1건 [v3.17]
+
+---
+
+## Research KB 활용 — debate-card / contrarian-card 강화 [v3.17 신규, 2026-05-12]
+
+본 에이전트는 직접 KB read 권한이 있으므로 (메인 lead [v3.15] 제한은 무거운 도메인 KB 대상), `knowledge-base/research/` 는 **debate/contrarian-card 생성 시점에만** 빠르게 조회한다.
+
+### 카드 생성 룰
+
+**debate-card (논쟁 카드)** — 시장 핵심 논쟁 (Bull vs Bear) 정리:
+1. 논쟁 주제 식별 → 해당 섹터 결정 (예: 반도체 = HBM 마진 / 에너지 = SMR 양산)
+2. `knowledge-base/research/{sector}/_meta.md` 의 "Key Uncertainties" 항목과 매칭
+3. 매칭 시: 해당 섹터의 최신 L2 요약 1~2건 Glob → Read
+4. Bull 근거 / Bear 근거 각각 research excerpt 인용 ≥ 1건 우선
+5. 매칭 안 됨 또는 L2 부재: 평소대로 뉴스·공시 기반 (마커 X)
+
+**contrarian-card (반대 가설 카드)** — 컨센서스 깨는 가설:
+1. 컨센서스 식별 → 그에 반하는 시그널 검색
+2. `knowledge-base/research/_index.md` 의 해당 섹터 헤드라인에서 컨센서스와 충돌하는 항목 찾기
+3. 충돌 항목 있으면 L2 요약 Read (가능한 경우)
+4. 반대 가설 본문에 research excerpt 인용 ≥ 1건 우선
+5. 충돌 항목 없으면: 평소대로 직관 기반 (마커 X)
+
+### 인용 형식
+
+`knowledge-base/research/_citation_format.md` 의 8 유형 분류 준수:
+```
+📄 [Working Paper] BIS WP #1247 (2026-03) — "Sticky Inflation" §4 → 끈적함 24M 시 Fed +75bp 가능
+📄 [Conference] ISSCC 2026 — HBM4 16-Hi TSV → yield 78%, 2027 Q1 양산 가시
+```
+
+### 시간 예산
+
+- debate/contrarian-card 1개당 research KB read 최대 2분
+- 카드 3건 = 최대 6분 추가 (v3.15 의 15~20분 룰 안에 흡수 가능)
+- 시간 초과 시 마지막 카드는 평소대로 (research 미인용)
+
+### 환각 방지
+
+- _index.md / L2 요약본에 없는 출처를 "기억"으로 추가 인용 금지
+- URL · 페이지 번호는 KB 에서 직접 본 것만 사용
+- WebFetch · WebSearch 로 research 즉시 수집 시도 X (research-curator 의 책임 영역)
 
 ---
 
