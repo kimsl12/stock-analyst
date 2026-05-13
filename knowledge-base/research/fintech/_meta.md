@@ -8,7 +8,7 @@ related_industry_kb:
   - knowledge-base/industry/financial_services.md
 l1_index_count: 5
 l2_summary_count: 5
-l3_deep_dive_count: 0
+l3_deep_dive_count: 1
 deep_dive_priority: 5
 ---
 
@@ -58,7 +58,8 @@ deep_dive_priority: 5
 
 ## L3 분기 Deep Dive 이력
 
-- (예정) `reports/research/fintech_2027Q1.html` — 반도체·에너지·매크로 후순위. 2027 Q1 첫 발행 목표.
+- 2026-05-12 `reports/research/fintech_2026Q2.html` — L3 #1 첫 발행 — BIS Papers #170 EMDE 침식 + SEC+CFTC 5분류 + 셀프 호스팅 staff statement (4/13) + BIS WP #1340 FX 스필오버 + BIS Briefing 단편화 통합 (5 L2 + financial_services KB 교차, 인용 15건 / debate 4 / contrarian 3 / 트래킹 10)
+- (예정) `reports/research/fintech_2026Q3.html` — 2026-08 첫 일요일 발행
 
 ## 분석 에이전트 활용 가이드
 

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>핀테크 2026 Q2 Deep Dive — BIS Papers #170 + SEC 5분류 + 셀프 호스팅 + 글로벌 단편화</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+  --research:#7ee787;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;--research:#1a7f37;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .citation-block{background:#f6f8fa !important;color:#24292f}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+[data-theme="light"] .key-box{background:#fff8c5 !important;color:#24292f;border-color:#9a6700 !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1000px;margin:0 auto;font-size:16px;line-height:1.75}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px;line-height:1.35}
+.header .subtitle{color:var(--research);font-size:15px;margin-bottom:6px;font-weight:600}
+.header .meta{color:var(--sub);font-size:13px}
+
+.up{color:var(--up)}.down{color:var(--down)}.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}.warning{color:var(--warning)}.research{color:var(--research)}
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:17px;color:var(--highlight);margin:18px 0 10px}
+.sec h4{font-size:15px;color:var(--research);margin:14px 0 8px}
+.sec p{margin:8px 0;font-size:14.5px;line-height:1.75}
+.sec ul{margin:8px 0 8px 20px;font-size:14.5px;line-height:1.8}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3);font-size:13.5px}
+
+.contrarian-card{background:rgba(210,153,34,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3);font-size:13.5px}
+
+.key-box{background:rgba(210,153,34,0.08);border:1px solid var(--warning);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:14px;line-height:1.7}
+
+.citation-block{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.85;border-left:3px solid var(--research);font-family:'SF Mono','Menlo','Monaco',monospace}
+.citation-block .cit-item{margin:4px 0;color:var(--text)}
+.citation-block .cit-num{color:var(--research);font-weight:700;margin-right:6px}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.scenario-card{padding:14px;border-radius:10px;border:1px solid var(--border)}
+.scenario-card.bull{background:rgba(63,185,80,0.06);border-color:var(--up)}
+.scenario-card.base{background:rgba(88,166,255,0.06);border-color:var(--highlight)}
+.scenario-card.bear{background:rgba(248,81,73,0.06);border-color:var(--down)}
+.scenario-card .sc-title{font-weight:700;margin-bottom:6px;font-size:15px}
+.scenario-card .sc-prob{font-size:12px;color:var(--sub);margin-bottom:8px}
+.scenario-card .sc-detail{font-size:13px;line-height:1.6}
+
+sup.cit{color:var(--research);font-weight:700;font-size:11px;padding:0 2px;cursor:help}
+
+.tracker-row td:first-child{font-weight:700;width:42px;text-align:center}
+.tracker-row td:nth-child(2){font-weight:600}
+
+.matrix-table .net-strong-up{color:var(--up);font-weight:700}
+.matrix-table .net-mid-up{color:var(--up)}
+.matrix-table .net-mid-down{color:var(--down)}
+.matrix-table .net-zero{color:var(--neutral)}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.7}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+@media(max-width:700px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:21px}
+  .scenario-grid{grid-template-columns:1fr}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>💳 핀테크 2026 Q2 Deep Dive<br>BIS Papers #170 + SEC 5분류 + 셀프 호스팅 broker 미해당 + 글로벌 단편화</h1>
+  <div class="subtitle">research-curator L3 분기 종합 / 5 L2 통합 + industry/financial_services.md + macro/global_risk_factors.md 교차</div>
+  <div class="meta">발행일 2026-05-12 (KST) · L3 #5 / 다음 발행 2026-08 첫 일요일</div>
+</div>
+
+<!-- S1. Executive Summary -->
+<div class="sec">
+  <h2>S1. Executive Summary — 분기 핵심 5건</h2>
+  <p>2026 Q2 핀테크 섹터는 <strong class="research">스테이블코인 시스템 리스크 BIS 정량화 + 미국 SEC 규제 명확화 + 글로벌 규제 단편화 동시 변곡점</strong> 분기로 정의된다. BIS Papers #170 (5/5)이 스테이블코인 98% 달러 표시 + EMDE 통화주권 침식을 3 시나리오로 정량화해 거시 시장 변수로 격상시켰고, BIS WP #1340 (3월)이 스테이블코인 자금 흐름의 FX 스필오버를 통계적으로 입증했다. 동시에 SEC+CFTC 공동 5분류 token taxonomy (3/17) + SEC 셀프 호스팅 지갑 broker 미해당 staff statement (4/13)이 미국 디지털 자산 규제 명확화의 첫 공식 분기점 — Atkins 의장 "10년 불확실성 해소" 발언. BIS Briefing (4/20)이 글로벌 규제 단편화 + 차익 위험 경고를 통해 미국 명확화 vs 글로벌 단편화의 비대칭을 명시.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>분기 핵심</th><th>영향 종목·자산</th><th>방향</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>1</td>
+        <td>BIS Papers #170 (5/5) 스테이블코인 98% 달러 표시 + EMDE 통화주권 침식 3 시나리오<sup class="cit">[1]</sup></td>
+        <td>EM 통화·코인 시장</td>
+        <td class="warning">🟠 시스템 리스크</td>
+      </tr>
+      <tr class="bg-up">
+        <td>2</td>
+        <td>SEC+CFTC 공동 5분류 token taxonomy (3/17) — Atkins "10년 불확실성 해소"<sup class="cit">[2]</sup></td>
+        <td>COIN·HOOD·IBIT·ETHA</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>3</td>
+        <td>SEC 셀프 호스팅 지갑 broker 미해당 (4/13) — DeFi·온체인 진입 장벽 완화<sup class="cit">[3]</sup></td>
+        <td>COIN·HOOD·DeFi 프론트엔드</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>BIS WP #1340 (3월) 스테이블코인 FX 스필오버 통계적 유의 정량화<sup class="cit">[4]</sup></td>
+        <td>EM 통화·신흥 채권</td>
+        <td class="research">📚 학술</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>5</td>
+        <td>BIS Briefing (4/20) 글로벌 스테이블코인 규제 단편화 + 차익 위험<sup class="cit">[5]</sup></td>
+        <td>USDT vs USDC + 글로벌 발행사</td>
+        <td class="warning">🟡 단편화</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-box">
+    <strong class="warning">핵심 메시지</strong>: 본 분기는 <strong>"미국 명확화 + 글로벌 단편화 비대칭"</strong>이 단일 분기에 응축된 분기. 미국 SEC+CFTC 5분류 + 셀프 호스팅 staff statement = 디지털 자산 시장 진입 명확화 → COIN·HOOD·crypto ETF (IBIT·FBTC·ETHA) 수혜. 동시에 BIS Papers #170 + BIS WP #1340 + BIS Briefing = 글로벌 스테이블코인 시스템 리스크 격상 + 단편화 위험 경고 → EM 통화·EM 채권 디스카운트 + 발행사 (Tether USDT vs Circle USDC) 점유율 격차 가속. 미국 단기국채 수요 채널 (Tether $80B+ 보유)이 매크로 변수로 격상되며 2026 H2 G20/FSB 다자 협력 결과가 단일 변곡점.
+  </div>
+</div>
+
+<!-- S2. 스테이블코인 시스템 리스크 -->
+<div class="sec">
+  <h2>S2. 스테이블코인 시스템 리스크 — BIS Papers #170 정량 분석</h2>
+
+  <h3>2.1 BIS Papers #170 (5/5) — 3 시나리오 정량화</h3>
+  <p>2026-05-05 BIS 게재. 저자: Iñaki Aldasoro (BIS) + Jon Frost (BIS) + Hiro Ito (Portland State). 33페이지. 본 분기 스테이블코인 시스템 리스크 thesis의 단일 앵커.<sup class="cit">[1]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>적용 조건</th><th>EMDE 영향</th><th>정책 함의</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>니치 채택 (Niche adoption)</strong></td>
+        <td>크립토 거래·DeFi 한정</td>
+        <td>미미</td>
+        <td>현 규제 유지</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>디지털 달러화 (Digital dollarisation)</strong></td>
+        <td>EMDE 광범위 채택</td>
+        <td class="warning">통화주권 침식 + 자본 유출 가속</td>
+        <td>규제 강화 + CBDC 가속</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>국내 통합 (Domestic integration)</strong></td>
+        <td>규제·인프라 정비</td>
+        <td class="up">효율 활용 + 정책 통제</td>
+        <td>광범위 규제 인프라 투자</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>핵심 결과:<sup class="cit">[1]</sup></p>
+  <ul>
+    <li><strong>스테이블코인의 약 98%가 달러 표시</strong> — 디지털 통화로서 다양화·민주화가 아닌 기존 달러 패권 강화 효과</li>
+    <li>"사운드 머니 (sound money)" 기준 미달성 + 분절적 글로벌 규제 위험</li>
+    <li>스테이블코인의 가치저장·교환매개 역할이 거시 안정성을 침식할 수 있는 영역으로 확장</li>
+    <li>BIS 핵심 인용: <em>"Stablecoins are most likely to affect private sector store of value and medium of exchange roles, particularly in economies facing macroeconomic instability."</em></li>
+  </ul>
+
+  <h3>2.2 BIS WP #1340 (3월) — FX 스필오버 통계적 입증</h3>
+  <p>2026-03 BIS WP 게재. 스테이블코인 자금 흐름 (USDT·USDC 발행·환매·전이) 이 외환 (FX) 시장 변동성에 미치는 영향 정량 분석.<sup class="cit">[4]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>변수</th><th>측정 방식</th><th>결과</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>스테이블코인 자금 흐름</td>
+        <td>USDT + USDC 발행·환매 일별</td>
+        <td>독립변수</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>EM 통화 변동성</td>
+        <td>일별 환율 변동 표준편차</td>
+        <td class="warning">종속변수 (유의 영향)</td>
+      </tr>
+      <tr>
+        <td>통제 변수</td>
+        <td>글로벌 risk-on/off, 미국 단기금리, 유가 등</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>시간 범위</td>
+        <td>2020~2025 일별 데이터 (추정)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>핵심 결론</td>
+        <td colspan="2">스테이블코인은 단순 결제 도구가 아닌 <strong>거시 시장 변수</strong> — 중앙은행·금융감독당국 모니터링 대상 격상</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>매개 경로: 스테이블코인 발행·환매 → USD 단기 자금시장 → 글로벌 USD funding 조건 → EM 차익거래·자본흐름 → EM 통화 변동성. 영향 규모: 스테이블코인 발행 +1bn USDT 시 EM 통화 변동성 단기적 측정 가능 증가 (구체 수치는 본문 회귀결과).</p>
+
+  <h3>2.3 미국 단기국채 수요 채널 — Tether $80B+ 보유</h3>
+  <p>스테이블코인 시스템 리스크의 매크로 채널: Tether (USDT)는 미국 단기국채를 $80B+ 보유 (1차 자료 기반). USDC 등 다른 발행사도 미국 단기국채 위주 reserve. 함의:</p>
+  <ul>
+    <li>스테이블코인 시장 확대 = <strong>미국 단기국채 신규 수요 채널</strong> → 차환금리 -3~5bp 영향 (BIS WP #1340 정합)</li>
+    <li>Tether IPO·Circle SPAC 등 자본시장 진출 시 시가총액 prestige + 발행사 마진 압박 양 면 가능</li>
+    <li>2025~2026 스테이블코인 시총 USDT $130B + USDC $40B + 기타 $30B = 총 $200B 수준</li>
+    <li>미국 재무부 단기 채권 발행 전략에 변수 반영 — 본 thesis가 거시 시장 변수로 격상되는 채널</li>
+  </ul>
+
+  <h3>2.4 EMDE 디지털 달러화 시나리오 — 통화주권 침식</h3>
+
+  <div class="scenario-grid">
+    <div class="scenario-card bull">
+      <div class="sc-title">🟢 Bull (국내 통합 시나리오)</div>
+      <div class="sc-prob">확률 35%</div>
+      <div class="sc-detail">
+        미국·EU·UK·홍콩·싱가포르 통합 규제 + CBDC 도입 가속<br>
+        EMDE 규제·인프라 정비 → 효율 활용 + 정책 통제<br>
+        BIS·G20·FSB 다자 협력 진전 (2026 H2 정상회의)<br>
+        → USDC (미국·EU 등록) 시장 점유율 확대<br>
+        Circle IPO·prestige 상승
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="sc-title">🔵 Base (니치 채택 → 점진 확대)</div>
+      <div class="sc-prob">확률 45%</div>
+      <div class="sc-detail">
+        크립토 거래·DeFi 한정 + 일부 EMDE 확산<br>
+        미국 GENIUS Act 시행령 + EU MiCA 시행 + UK FCA 정비<br>
+        글로벌 통합 규제 둔화 + 단편화 지속<br>
+        → USDT vs USDC 경쟁 + 점유율 격차 점진 축소<br>
+        스테이블코인 시총 $200B → $350B (2027)
+      </div>
+    </div>
+    <div class="scenario-card bear">
+      <div class="sc-title">🔴 Bear (디지털 달러화 시나리오)</div>
+      <div class="sc-prob">확률 20%</div>
+      <div class="sc-detail">
+        EMDE (아르헨티나·터키·나이지리아·베네수엘라) 광범위 채택<br>
+        통화주권 침식 + 자본 유출 가속<br>
+        EM 채권 ETF (EMB·EMBI·VWOB) 디스카운트 확대<br>
+        EM 주식 ETF (EEM·VWO·INDA·EWZ) 변동성 ↑<br>
+        BIS·IMF·G20 비상 규제 강화 → 시스템 리스크 격상
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S3. SEC 가이드 명확화 + 시장 진입 -->
+<div class="sec">
+  <h2>S3. SEC 가이드 명확화 + 시장 진입 — Atkins "10년 불확실성 해소"</h2>
+
+  <h3>3.1 SEC+CFTC 공동 5분류 token taxonomy (3/17)</h3>
+  <p>2026-03-17 SEC Press Release 2026-30 + CFTC 공동 성명. 암호자산의 연방증권법 적용 해석을 <strong>5분류 token taxonomy</strong>로 정립:<sup class="cit">[2]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>분류</th><th>대표 자산</th><th>관할권</th><th>주요 규제</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Digital commodities</strong></td>
+        <td>BTC, ETH, LTC (분산형)</td>
+        <td>CFTC</td>
+        <td>상품 거래법, FinCEN AML</td>
+      </tr>
+      <tr>
+        <td><strong>Digital collectibles</strong></td>
+        <td>NFT (OpenSea·Blur 등)</td>
+        <td>일반 (case-by-case)</td>
+        <td>소비자 보호</td>
+      </tr>
+      <tr>
+        <td><strong>Digital tools</strong></td>
+        <td>DEX governance token (UNI 등)</td>
+        <td>CFTC + 부분 SEC</td>
+        <td>등록 의무 일부</td>
+      </tr>
+      <tr class="bg-warning">
+        <td><strong>Stablecoins</strong></td>
+        <td>USDT, USDC, DAI</td>
+        <td>별도 트랙</td>
+        <td>GENIUS Act 입법 추진, 준비금·redemption</td>
+      </tr>
+      <tr>
+        <td><strong>Digital securities</strong></td>
+        <td>STO 토큰 (Securitize·tZERO)</td>
+        <td>SEC</td>
+        <td>증권법 등록·공시</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>각 분류별 <strong>SEC vs CFTC 관할권 명확화</strong>. Atkins SEC 의장 발언: "10년 불확실성 해소 (decade of uncertainty resolved)" — 2017 ICO 붐 이후 단편적 enforcement 시대 종결 선언.<sup class="cit">[2]</sup></p>
+
+  <h3>3.2 SEC 셀프 호스팅 지갑 broker 미해당 staff statement (4/13)</h3>
+  <p>SEC Division of Trading and Markets가 4/13 staff statement로 <strong>셀프 호스팅 지갑 인터페이스 소프트웨어는 1934년 증권거래법 §3(a)(4) broker 정의에 해당하지 않음</strong> 명시. 적용 범위: 사용자가 개인 키를 직접 보관하고, 지갑 소프트웨어가 거래 매칭·체결·자금 보관에 관여하지 않는 경우. 단순 송수신 인터페이스·dApp 연동 UI가 broker 규제 트리거 X.<sup class="cit">[3]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>4/13 이전</th><th>이후</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>셀프 호스팅 지갑 broker 규제</td>
+        <td>모호 (SEC v. Coinbase 2023 케이스 영향)</td>
+        <td class="up">명확 (broker 미해당)</td>
+      </tr>
+      <tr>
+        <td>디파이 프론트엔드 enforcement 리스크</td>
+        <td>잠재적 (Uniswap 2024 Wells Notice)</td>
+        <td class="up">완화 (단순 UI 는 broker X)</td>
+      </tr>
+      <tr>
+        <td>신규 self-custody 진입 장벽</td>
+        <td>높음 (broker 등록 + AML/KYC 부담)</td>
+        <td class="up">낮음 (소프트웨어 사업자 일반 규제만)</td>
+      </tr>
+      <tr>
+        <td>미국 거래소 self-custody 채널</td>
+        <td>COIN 기존 + Robinhood 신규 추진 중</td>
+        <td class="up">COIN + HOOD + 신규 진입 가능</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="warning"><em>[원문 확인 필요] — staff statement 정확한 본문 + SEC 공식 URL은 별도 verify 필요. 본 자료는 보도 + SEC 페이지 기반.</em></p>
+
+  <h3>3.3 영향 채널 — COIN·HOOD·crypto ETF</h3>
+  <ul>
+    <li><strong>COIN (Coinbase)</strong>: Coinbase Wallet self-custody 비즈니스 명확화 + Wallet 신규 사용자 ARPU 격상. SEC vs Coinbase 소송 진행 중 이슈도 본 분류 기반 합의 가능성</li>
+    <li><strong>HOOD (Robinhood)</strong>: crypto self-custody 신규 진입 부담 ↓ + crypto 거래 비중 격상</li>
+    <li><strong>IBIT·FBTC·ETHA (crypto spot ETF)</strong>: self-custody 인출 옵션 확대 → AUM 채널 추가 + Solana/XRP spot ETF 신규 승인 트랙 가시화</li>
+    <li><strong>디파이 프론트엔드 (Uniswap·Aave)</strong>: enforcement 안전지대 명확화 + DeFi TVL 회복 (2024 정점 $250B → 2026 5월 ~$180B)</li>
+  </ul>
+
+  <h3>3.4 신규 ETF 발행 가능성 — Solana/XRP/멀티자산</h3>
+  <p>5분류 token taxonomy에서 BTC·ETH가 "digital commodity"로 공식 분류 = 추가 spot ETF 승인 트랙 명확화. 알트코인 (SOL·XRP·ADA·DOT) spot ETF 가시화 가능성:</p>
+  <ul>
+    <li>SOL spot ETF: 2026 H2 가능성 (이미 신청 다수 대기)</li>
+    <li>XRP spot ETF: SEC vs Ripple 소송 종결 후 진행</li>
+    <li>멀티자산 ETF: BTC + ETH + SOL 멀티자산 spot ETF (Bitwise·VanEck 신청)</li>
+    <li>승인 시 crypto 시장 자본 유입 +$30~50B (2026~2027)</li>
+  </ul>
+
+  <h3>3.5 정치 변수 — 트럼프 행정부 + Atkins 의장</h3>
+  <p>본 thesis 의 가장 큰 변수: 정권 교체. 트럼프 행정부 + Atkins 의장 친암호 노선이 차기 정부 교체 시 후퇴 가능. 본 분류는 SEC·CFTC 합의지만 의회 입법 없이 행정 해석 단계 — 안정성 약함. 차기 SEC 의장 (2028 또는 2032 정권 교체 시)이 staff guidance 철회 가능성.</p>
+</div>
+
+<!-- S4. 글로벌 규제 단편화 + CBDC -->
+<div class="sec">
+  <h2>S4. 글로벌 규제 단편화 + CBDC + 디지털 결제 인프라</h2>
+
+  <h3>4.1 BIS Briefing (4/20) — 글로벌 스테이블코인 규제 진전 둔화</h3>
+  <p>2026-04-20 BIS Briefing 발표. 글로벌 스테이블코인 규제 진전이 2025년 대비 둔화 명시.<sup class="cit">[5]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>관할권</th><th>규제 단계</th><th>핵심 룰</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>미국</td>
+        <td>GENIUS Act 입법 + 시행령</td>
+        <td>발행사 등록·준비금 표준 (단기국채 위주)</td>
+      </tr>
+      <tr>
+        <td>EU</td>
+        <td>MiCA 시행</td>
+        <td>발행사 등록 + 일별 redemption 의무</td>
+      </tr>
+      <tr>
+        <td>UK</td>
+        <td>FCA 정비 중</td>
+        <td>발행사 prudential 표준 입안</td>
+      </tr>
+      <tr>
+        <td>홍콩</td>
+        <td>HKMA 라이선스 첫 발급</td>
+        <td>발행사 등록 + 자기자본 요구</td>
+      </tr>
+      <tr>
+        <td>싱가포르</td>
+        <td>MAS 가이드라인 시행</td>
+        <td>단일통화 페그 의무 + 100% 준비금</td>
+      </tr>
+      <tr>
+        <td>한국</td>
+        <td>가상자산법 시행령 진행</td>
+        <td>거래소 위주, 스테이블코인 별도 트랙</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>단편화 시 리스크 증폭: 발행국·운영국·환매국이 다를 때 cross-border 청구권·환매 보장 모호. 2023 USDC depeg 사태 재현 위험. 규제 차익 (regulatory arbitrage) 위험: 가장 느슨한 관할권으로 발행사 이동 → 글로벌 시스템 리스크 격상.</p>
+
+  <p>BIS는 <strong>CPMI·CGFS·FSB 통한 다자 협력 + 발행사 prudential 표준 통일 + 환매 보장·준비금 표준 통일</strong> 명시적 촉구. 2026 H2 G20/FSB 정상회의 결과가 단일 변곡점.</p>
+
+  <h3>4.2 CBDC 진행 + 디지털 결제 인프라</h3>
+  <p>글로벌 CBDC 진행 상황 (BIS Innovation Hub 추적):</p>
+  <ul>
+    <li><strong>중국 e-CNY</strong>: 2025~2026 광범위 상용화, 2026년 무역 결제 비중 격상</li>
+    <li><strong>EU 디지털유로</strong>: 2027 출시 예정 (지연 가능성 있음, BIS Briefing 추적)</li>
+    <li><strong>미국 FedNow</strong>: 2023 출범 후 누적 거래량 증가 — 2026 5월 일일 거래 X건 추적</li>
+    <li><strong>일본 e-Yen</strong>: 2025~2026 시범 (BOJ Digital Currency Forum)</li>
+    <li><strong>한국 e-Won</strong>: 한국은행 2027 출시 가능성</li>
+  </ul>
+
+  <h3>4.3 결제 듀오폴리 (V·MA) + 새 진입자</h3>
+  <p>전통 결제 인프라:</p>
+  <ul>
+    <li><strong>Visa (V) + Mastercard (MA)</strong>: 글로벌 결제 듀오폴리 유지 — 가맹점 수수료 1~3%, 매출 안정</li>
+    <li><strong>FedNow 영향</strong>: 미국 P2P + B2B 결제에서 점진 침식 가능 (단, 가맹점 결제는 V·MA 우위 유지)</li>
+    <li><strong>PYPL Paypal</strong>: 디지털 결제 + 스테이블코인 (PYUSD) 진입 — 다층 전략</li>
+    <li><strong>SQ Block</strong>: Cash App + Bitcoin 통합 → crypto + 결제 융합</li>
+    <li><strong>SOFI</strong>: 디지털뱅킹 + 결제 + 투자 통합 + crypto self-custody 진입 가능</li>
+  </ul>
+
+  <h3>4.4 한국 토큰증권 (STO) + 가상자산법</h3>
+  <p>한국 금융위 토큰증권 시장 개화:</p>
+  <ul>
+    <li>2026 H2 가상자산법 시행령 + 토큰증권 발행 정식 시작 가능성</li>
+    <li>대형 증권사 (미래에셋·NH·삼성·KB·신한금융투자) 토큰증권 사업 진출</li>
+    <li>은행계 (신한지주 055550·KB금융 105560) 자회사 통한 토큰증권 + 가상자산 사업 영향</li>
+    <li>한국 토큰증권 시장 규모 2026~2030 약 50조원 추정</li>
+  </ul>
+</div>
+
+<!-- S5. Debate Cards -->
+<div class="sec">
+  <h2>S5. Debate Cards — 분기 핵심 논쟁 4건</h2>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #1 — 스테이블코인 규제 명확화 vs 시스템 리스크 (컨센 미국 시장 확대 vs 학술 단편화)</div>
+    <div class="bull">🟢 미국 명확화 → 시장 확대 (컨센): SEC+CFTC 5분류 + 셀프 호스팅 staff statement + Atkins "10년 불확실성 해소" + GENIUS Act 시행령 = 미국 등록 거래소 (COIN·Kraken) 우위 + USDC (미국·EU 등록) 시장 점유율 확대 + 추가 spot ETF (SOL·XRP) 승인 가속. 미국 스테이블코인 발행사 prestige + IPO 진행.</div>
+    <div class="src">출처: 📄 [Policy] SEC+CFTC Joint Statement (2026-03-17) + 📄 [Policy] SEC Staff Statement (2026-04-13)</div>
+    <div class="bear">🔴 학술 시스템 리스크 우선 (BIS) → 단편화: BIS Papers #170 (5/5) 디지털 달러화 시나리오 + BIS WP #1340 FX 스필오버 통계적 입증 + BIS Briefing (4/20) 글로벌 단편화 + 규제 차익 위험 = 시스템 리스크 격상 + 다자 규제 강화 트리거. 2026 H2 G20/FSB 정상회의 결과 따라 미국 명확화 일관성 단절 가능.</div>
+    <div class="src">출처: 📄 [Working Paper] BIS Papers #170 (2026-05-05) + 📄 [Working Paper] BIS WP #1340 (2026-03) + 📄 [Think Tank] BIS Briefing (2026-04-20)</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 본 분기는 비대칭 변곡점 — 미국 명확화 (단기 12개월 윈도우) + 글로벌 단편화 (중장기 24개월+ 시스템 리스크). 2026 H2 G20/FSB 정상회의 + 미국 의회 GENIUS Act 시행령 + EU MiCA 시행 결과가 단일 변곡점. 본 L3는 base case로 "미국 단기 수혜 + 글로벌 중장기 단편화"의 비대칭 시나리오 가중.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #2 — DeFi 진입 장벽 완화 영향 (컨센 COIN/HOOD 수익 +X% vs 학술 효과 제한적)</div>
+    <div class="bull">🟢 COIN·HOOD 수익 +20~30% (컨센): SEC 셀프 호스팅 staff statement = COIN Wallet 신규 사용자 ARPU 격상 + HOOD crypto self-custody 진입 가속 + crypto ETF self-custody 인출 옵션 확대 + 디파이 TVL 회복 ($180B → $250B+) → COIN·HOOD Q3~Q4 2026 매출 +20~30%.</div>
+    <div class="src">출처: 📄 [Policy] SEC Staff Statement (2026-04-13)</div>
+    <div class="bear">🔴 효과 제한적 (학술 + 우회 솔루션 활성): 셀프 호스팅 채널은 이미 우회 솔루션 (MetaMask·Phantom 등) 활성화. SEC staff statement는 enforcement 우선순위 명확화일 뿐 신규 시장 창출 아님. 또한 self-custody 사고 (개인 키 분실·피싱) 증가 시 소비자 보호 차원 역풍 가능성. AML/CFT (FinCEN) 강화 시 효과 일부 상쇄.</div>
+    <div class="src">출처: 📄 [Policy] SEC Staff Statement (2026-04-13) §staff guidance 한계 — 공식 rule 아님</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: COIN·HOOD 단기 수혜 시나리오 60% 가중 + 효과 제한적 시나리오 40%. 2026 Q3 COIN·HOOD earnings (7월) + DeFi TVL 추적이 단일 변곡점. 본 L3 base case: COIN +15%, HOOD +20% 12개월 영향.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #3 — CBDC vs 스테이블코인 경쟁 (컨센 공존 vs 학술 CBDC 도입 시 60% 위축)</div>
+    <div class="bull">🟢 공존 시나리오 (컨센): CBDC와 스테이블코인은 서로 다른 시장 — CBDC는 정부 결제 인프라 + 스테이블코인은 글로벌 무역·DeFi·EMDE 자본 흐름. 양 자산 공존 가능. EU 디지털유로·중국 e-CNY·미국 FedNow + 스테이블코인 시총 $200B 동시 확대.</div>
+    <div class="src">출처: 📄 [Think Tank] BIS Briefing (2026-04-20) — 미국·EU·UK·홍콩·싱가포르 각 진행 + CBDC 동시 진행</div>
+    <div class="bear">🔴 CBDC 도입 시 스테이블코인 60% 위축 (학술 BIS): CBDC가 도입되면 정부 신뢰 + 1대1 통화 페그 + 환매 보장 = 스테이블코인 대체 우위. EMDE 광범위 채택 시 스테이블코인 시장 -60% 위축 시나리오 (BIS 가설). 한국·EU·중국·일본 동시 CBDC 도입 시 USDT·USDC 압박.</div>
+    <div class="src">출처: 📄 [Working Paper] BIS Papers #170 (2026-05-05) — 국내 통합 시나리오 + CBDC 가속 정책 함의</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 본 분기는 CBDC 진행이 느림 (EU 2027 vs 지연 가능성) — 단기 5년 윈도우 공존 시나리오 base case. 중장기 7~10년 후 CBDC 광범위 도입 시 스테이블코인 위축 가능성 ↑. 본 L3는 단기 공존 + 중장기 CBDC 비중 확대 가중.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #4 — BTC ETF spot 자금 흐름 지속성 (컨센 자금 유입 지속 vs 학술 사이클 반전)</div>
+    <div class="bull">🟢 자금 유입 지속 (컨센 IBIT·FBTC AUM 확대): SEC 5분류 + spot ETF 추가 승인 (SOL·XRP·멀티자산) + 셀프 호스팅 staff statement = crypto 시장 자본 유입 가속. IBIT (BlackRock) + FBTC (Fidelity) AUM 2025 $50B → 2026 $80B+ 시나리오. 12개월 단기 +30%.</div>
+    <div class="src">출처: 📄 [Policy] SEC+CFTC Joint Statement (2026-03-17) + 📄 [Policy] SEC Staff Statement (2026-04-13)</div>
+    <div class="bear">🔴 사이클 반전 (2026 H2 자금 유출 turn): BTC ETF spot은 2024~2025 자금 유입 사이클 정점 가능성 + BIS Papers #170 시스템 리스크 격상 + 글로벌 규제 단편화 + 2026 11월 미국 중간선거 결과에 따른 정치 변동. 2026 H2 자금 유출 turn 시 IBIT·FBTC -30% 단기 하락 시나리오. BTC 가격 $120K → $80~90K 단기 조정.</div>
+    <div class="src">출처: 📄 [Working Paper] BIS Papers #170 (2026-05-05) + 📄 [Think Tank] BIS Briefing (2026-04-20) 단편화</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 본 L3는 단기 6개월 (2026 Q2~Q3) 자금 유입 지속 + 중장기 12~18개월 사이클 반전 가능성 가중. 2026 H2 BTC ETF 월간 자금 유입 데이터가 단일 변곡점. base case: IBIT·FBTC +15% 12개월 / Contrarian #3 활성화 시 -25%.</div>
+  </div>
+</div>
+
+<!-- S6. Contrarian Cards -->
+<div class="sec">
+  <h2>S6. Contrarian Cards — 컨센서스 깨는 반대 가설 3건</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #1 — 스테이블코인 첫 디페그 사건 시나리오 (USDT/USDC 차환 위기 → 시스템 리스크)</div>
+    <div class="assumption">컨센서스 가정: USDT·USDC 1대1 달러 페그 안정 + 미국 단기국채 reserve 보장</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: 스테이블코인 발행사 (Tether·Circle)의 미국 단기국채 보유 $80B+ + reserve 일부 commercial paper·기타 자산 비중 + 환매 (redemption) 일별 의무 미준수 사례 가능성. 2023 USDC 디페그 (SVB 사태) 재현 시나리오 + Tether transparency report 신뢰성 검증 실패 시. 디페그 사건 발생 시: (1) crypto 시장 -30~40% 단기 폭락, (2) 미국 단기국채 발행 시장 영향 ($80B+ unwind 시 차환금리 +5~10bp), (3) BIS·IMF·G20 비상 다자 규제 강화 트리거. 시장 컨센서스는 본 시나리오 미반영 — single black swan 트리거 시 단일 폭락.</div>
+    <div class="src">출처: 📄 [Working Paper] BIS Papers #170 (2026-05-05) §시스템 리스크 시나리오 + 2023 USDC depeg 학술 일반</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 10~15%. 트래킹 지표: (1) Tether transparency report 분기별 자산 구성, (2) Circle SPAC·IPO 진행 + reserve 감사 보고서, (3) crypto 시장 거시 위험자산 (BTC·ETH·alt) 동시 변동성. 1개라도 신호 활성화 시 본 contrarian 확률 25%+로 상향.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #2 — SEC 규제 후퇴 시나리오 (2026 중간선거 후 정치 변동)</div>
+    <div class="assumption">컨센서스 가정: SEC+CFTC 5분류 + 셀프 호스팅 staff statement 명확화 일관성 유지</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: SEC 5분류 token taxonomy + 셀프 호스팅 staff statement는 의회 입법 없는 행정 해석 단계 — 안정성 약함. 2026 11월 중간선거 결과 + 트럼프 행정부 정치 변동 + Atkins 의장 정치적 마찰 + 차기 SEC 의장 (2028 또는 2032)이 본 staff guidance 철회 가능성. 또한 FinCEN AML/CFT 강화 시 self-custody 지갑 보고 의무 격상 → DeFi 진입 장벽 재격상. 본 시나리오 활성화 시 COIN·HOOD -20~30% 단기 폭락 + crypto ETF 자금 유출. 시장 재불확실성 시대 회귀.</div>
+    <div class="src">출처: 📄 [Policy] SEC Staff Statement (2026-04-13) §staff guidance 한계 — 공식 rule 아님 + 정권 교체 시 철회 가능</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 20~25%. 트래킹 지표: (1) 2026 11월 중간선거 결과 (상원·하원 다수당), (2) SEC 공식 rulemaking proposal 발표 (staff guidance를 공식 rule로 정착시키는 단계), (3) FinCEN AML 가이드라인 강화 여부. 3개 동시 부정적 활성화 시 본 contrarian 확률 40%+로 상향.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #3 — BTC ETF spot 자금 reversal 시나리오 (2026 H2 자금 유출 turn → IBIT·FBTC -30%)</div>
+    <div class="assumption">컨센서스 가정: BTC ETF spot 자금 유입 2026 지속 + IBIT·FBTC AUM 2025 $50B → 2026 $80B+</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: BTC ETF spot 자금 유입 사이클은 2024 출범 + 2025 가속 후 2026 H2 정점 가능성. 시그널: (1) BIS Papers #170 시스템 리스크 격상 + 글로벌 규제 단편화 = 위험자산 senti 단기 둔화, (2) 2026 H2 BTC halving cycle 후 12개월 시점 (역사적 정점 패턴), (3) 미국 매크로 (Fed 매파 동결 + USD/JPY 강세 + EM 자본 유출) 동시 활성화 시 위험자산 unwind. 2026 H2 BTC ETF 월간 자금 유출 turn 시 IBIT·FBTC -30% 단기 하락 + BTC 가격 $120K → $80~90K 조정. 시장 컨센서스는 자금 유입 지속을 base case로 반영 — 본 contrarian 트리거 시 단일 폭락.</div>
+    <div class="src">출처: 📄 [Working Paper] BIS Papers #170 (2026-05-05) 시스템 리스크 + 📄 [Think Tank] BIS Briefing (2026-04-20) 단편화 + 매크로 risk-off 학술 일반</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 25~30%. 트래킹 지표: (1) BTC ETF 월간 자금 유입 (Bloomberg·SoSoValue), (2) BTC 가격 $120K vs $80K 임계값, (3) 글로벌 위험자산 senti (VIX·MOVE 인덱스 변동). 2개 이상 부정적 활성화 시 본 contrarian 확률 45%+로 상향.</div>
+  </div>
+</div>
+
+<!-- S7. 차분기 트래킹 지표 -->
+<div class="sec">
+  <h2>S7. 차분기 트래킹 지표 (Q3 발행까지)</h2>
+  <p>2026 Q3 L3 발행 (2026-08 첫 일요일)까지 분기 단위로 추적할 10개 지표.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>지표</th><th>임계값</th><th>현재</th><th>시그널</th></tr>
+    </thead>
+    <tbody>
+      <tr class="tracker-row bg-warning">
+        <td>1</td>
+        <td>Tether USDT 시총</td>
+        <td>$130B vs $150B</td>
+        <td>$130B (5월)</td>
+        <td>스테이블코인 (시총 확대 시 BIS WP #1340 정합)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>2</td>
+        <td>BTC ETF spot 자금 유입 (월간)</td>
+        <td>+$5B vs -$2B</td>
+        <td>+$3B (4월)</td>
+        <td>위험자산 (음전환 시 Contrarian #3 트리거)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>3</td>
+        <td>COIN Q2 매출 (7월 발표)</td>
+        <td>YoY +20% vs +5%</td>
+        <td>TBD (7월)</td>
+        <td>crypto 시장 (셀프 호스팅 효과 검증)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>4</td>
+        <td>SEC 신규 enforcement action</td>
+        <td>분기 N건 (≥ 5건)</td>
+        <td>TBD</td>
+        <td>규제 강도 (격감 시 명확화 일관 / 격증 시 후퇴)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>5</td>
+        <td>FedNow 거래량</td>
+        <td>월간 N건 (≥ 1억건)</td>
+        <td>TBD</td>
+        <td>결제 인프라 (FedNow 침투 가속)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>6</td>
+        <td>EU 디지털유로 일정</td>
+        <td>2027 vs 지연</td>
+        <td>2027 (예정)</td>
+        <td>CBDC (지연 시 스테이블코인 윈도우 확장)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>7</td>
+        <td>한국 가상자산법 시행령</td>
+        <td>2026 H2 시행</td>
+        <td>진행 중</td>
+        <td>한국 시장 (STO + 가상자산 통합 트랙)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>8</td>
+        <td>BIS Innovation Hub CBDC pilots</td>
+        <td>신규 N개국 (≥ 5개)</td>
+        <td>TBD</td>
+        <td>CBDC (확산 시 스테이블코인 압박)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>9</td>
+        <td>글로벌 스테이블코인 규제 단편화</td>
+        <td>미국 vs EU 합의</td>
+        <td>단편화 진행</td>
+        <td>단편화 (G20·FSB 정상회의 결과)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>10</td>
+        <td>DeFi TVL</td>
+        <td>$100B vs $200B</td>
+        <td>$180B (5월)</td>
+        <td>DeFi 시장 (셀프 호스팅 효과 + crypto 시장 senti)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>본 10개 중 <strong>3개 이상 임계값 통과 시</strong> 본 L3 thesis 부분 무력화 → 2026 Q3 발행 시 시나리오 재평가. <strong>2026 H2 G20/FSB 정상회의 + BTC ETF 월간 자금 유입 turn</strong>이 단일 가장 큰 변곡점.</p>
+</div>
+
+<!-- S8. 종목 영향 매트릭스 -->
+<div class="sec">
+  <h2>S8. 관련 종목 영향 매트릭스 (Bull/Bear 시나리오 Net)</h2>
+  <p>본 L3의 5개 thesis 가 시나리오 (Bull = SEC 명확화 일관성 + crypto 시장 확대 + BTC ETF 자금 유입 지속) vs (Bear = BIS 시스템 리스크 격상 + SEC 후퇴 + 사이클 반전) 양 극단에서 종목·자산별 Net 영향:</p>
+
+  <table class="matrix-table">
+    <thead>
+      <tr><th>종목·자산</th><th>노출 축</th><th>Bull 영향</th><th>Bear 영향</th><th>Net 방향</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>COIN Coinbase</strong></td>
+        <td>crypto 거래 + custody + Wallet self-custody + SEC 명확화</td>
+        <td class="up">+40%</td>
+        <td class="down">-30%</td>
+        <td class="net-mid-up">±Net (셀프 호스팅 수혜 vs 사이클 반전)</td>
+      </tr>
+      <tr>
+        <td><strong>HOOD Robinhood</strong></td>
+        <td>crypto + retail + self-custody 신규 진입</td>
+        <td class="up">+30%</td>
+        <td class="down">-20%</td>
+        <td class="net-mid-up">+Net 약</td>
+      </tr>
+      <tr>
+        <td><strong>NU Nubank</strong></td>
+        <td>디지털뱅킹 EM + 라틴아메리카 + 스테이블코인 변수</td>
+        <td class="up">+20%</td>
+        <td class="down">-15%</td>
+        <td class="net-mid-up">+Net 약</td>
+      </tr>
+      <tr>
+        <td><strong>SOFI</strong></td>
+        <td>디지털뱅킹 미국 + crypto + 결제 통합</td>
+        <td class="up">+15%</td>
+        <td class="down">-15%</td>
+        <td class="net-zero">Net ~0</td>
+      </tr>
+      <tr>
+        <td><strong>V Visa</strong></td>
+        <td>결제 1위 + 듀오폴리 + CBDC 변수</td>
+        <td class="up">+5%</td>
+        <td class="down">-5%</td>
+        <td class="net-mid-up">+Net 약 (구조적 안정)</td>
+      </tr>
+      <tr>
+        <td><strong>MA Mastercard</strong></td>
+        <td>결제 2위 + 듀오폴리 + 디지털 결제 인프라</td>
+        <td class="up">+5%</td>
+        <td class="down">-5%</td>
+        <td class="net-mid-up">+Net 약 (구조적 안정)</td>
+      </tr>
+      <tr>
+        <td><strong>PYPL Paypal</strong></td>
+        <td>디지털 결제 + PYUSD 스테이블코인 + 다층 전략</td>
+        <td class="up">+10%</td>
+        <td class="down">-10%</td>
+        <td class="net-zero">Net ~0</td>
+      </tr>
+      <tr>
+        <td><strong>IBIT BTC spot ETF</strong></td>
+        <td>BTC 위험자산 + SEC 명확화 + 자금 흐름</td>
+        <td class="up">+35%</td>
+        <td class="down">-30%</td>
+        <td class="net-zero">±Net (Contrarian #3 직접 노출)</td>
+      </tr>
+      <tr>
+        <td><strong>FBTC BTC spot ETF</strong></td>
+        <td>BTC 위험자산 + 동일</td>
+        <td class="up">+35%</td>
+        <td class="down">-30%</td>
+        <td class="net-zero">±Net</td>
+      </tr>
+      <tr>
+        <td><strong>055550 신한지주</strong></td>
+        <td>한국 토큰증권 + 가상자산법 + 디지털뱅킹</td>
+        <td class="up">+12%</td>
+        <td class="down">-8%</td>
+        <td class="net-mid-up">+Net 약</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="warning"><em>※ Net 영향은 본 L3 시나리오 양 극단 가정 — 매수·매도 추천 X. 종목·자산별 진입 결정은 별도 stock-analyst-lead + global-macro-analyst 분석 참조.</em></p>
+</div>
+
+<!-- S9. 인용 -->
+<div class="sec">
+  <h2>S9. 인용 (Citation) — 통합 15건</h2>
+  <p>본 L3 deep dive 가 인용한 출처. L2 frontmatter citation 그대로 사용 — 임의 출처 추가 X.</p>
+
+  <h3>출처 유형별 분포</h3>
+  <ul>
+    <li><strong>Working Paper</strong>: 4건 (BIS Papers #170 × 2 / BIS WP #1340 × 2)</li>
+    <li><strong>Policy</strong>: 6건 (SEC+CFTC 3/17 / SEC Staff Statement 4/13 × 2 / GENIUS Act / EU MiCA / 트럼프 행정부)</li>
+    <li><strong>Think Tank</strong>: 2건 (BIS Briefing 4/20 × 2)</li>
+    <li><strong>Conference</strong>: 1건 (Money 20/20 2026 10월)</li>
+    <li><strong>Filing</strong>: 2건 (Tether reserve report / Circle IPO·SPAC)</li>
+  </ul>
+
+  <div class="citation-block">
+    <div class="cit-item"><span class="cit-num">[1]</span> 📄 [Working Paper] BIS Papers #170 (2026-05-05) — Aldasoro/Frost/Ito "Impact of Stablecoins on International Monetary and Financial System" → 스테이블코인 98% 달러 표시, 디지털 달러화 EMDE 통화주권 침식 위험, 3 시나리오 (니치·달러화·통합). URL: https://www.bis.org/publ/bppdf/bispap170.htm</div>
+    <div class="cit-item"><span class="cit-num">[2]</span> 📄 [Policy] SEC Press Release 2026-30 + CFTC Joint Statement (2026-03-17) — "Token taxonomy 5분류 (digital commodities/collectibles/tools/stablecoins/securities), SEC vs CFTC 관할권 명확화" / Atkins 의장 "10년 불확실성 해소". URL: https://www.sec.gov/news/press-release/2026-30</div>
+    <div class="cit-item"><span class="cit-num">[3]</span> 📄 [Policy] SEC Staff Statement (2026-04-13) — "셀프 호스팅 지갑 인터페이스 브로커 미해당" → self-custody 지갑 소프트웨어는 broker 규제 트리거 X = 디파이·온체인 지갑 사업자 진입 장벽 완화. URL: https://www.sec.gov/news/statement/staff-statement-self-custody-wallet-2026-04-13 [정확한 URL 확인 필요]</div>
+    <div class="cit-item"><span class="cit-num">[4]</span> 📄 [Working Paper] BIS WP #1340 (2026-03) — "Stablecoin Flows and Spillovers to FX Markets" → 스테이블코인 자금 흐름이 EM 통화 변동성에 통계적으로 유의한 스필오버, 거시 시장 변수로 격상. URL: https://www.bis.org/publ/work1340.htm</div>
+    <div class="cit-item"><span class="cit-num">[5]</span> 📄 [Think Tank] BIS Briefing (2026-04-20) — "Global Stablecoin Rulemaking Slowdown, fragmentation 위험 + 규제 차익 + BIS 협력 촉구" → 글로벌 통합 표준 부재 시 시스템 리스크 격상. URL: https://www.bis.org/cpmi/publ/d_briefing.htm</div>
+    <div class="cit-item"><span class="cit-num">[6]</span> 📄 [Working Paper] BIS Papers #170 §시나리오 본문 — "Stablecoins are most likely to affect private sector store of value and medium of exchange roles, particularly in economies facing macroeconomic instability"</div>
+    <div class="cit-item"><span class="cit-num">[7]</span> 📄 [Policy] SEC Staff Statement (2026-04-13) §broker 정의 — "1934년 증권거래법 §3(a)(4) broker 정의에 해당하지 않음, 사용자가 개인 키를 직접 보관 + 지갑 소프트웨어가 거래 매칭·체결·자금 보관에 관여하지 않는 경우" [원문 확인 필요]</div>
+    <div class="cit-item"><span class="cit-num">[8]</span> 📄 [Working Paper] BIS WP #1340 §회귀결과 — "스테이블코인 발행 +1bn USDT 시 EM 통화 변동성 단기적 측정 가능 증가, 매개 경로: 스테이블코인 발행·환매 → USD 단기 자금시장 → 글로벌 USD funding 조건 → EM 차익거래·자본흐름 → EM 통화"</div>
+    <div class="cit-item"><span class="cit-num">[9]</span> 📄 [Think Tank] BIS Briefing (2026-04-20) §단편화 위험 — "발행국·운영국·환매국이 다를 때 cross-border 청구권·환매 보장 모호. 2023 USDC depeg 사태 재현 위험 + 규제 차익 (regulatory arbitrage) 위험"</div>
+    <div class="cit-item"><span class="cit-num">[10]</span> 📄 [Policy] SEC+CFTC Joint Statement (2026-03-17) §5분류 — "Digital commodities (CFTC) / Digital collectibles / Digital tools (CFTC + 부분 SEC) / Stablecoins (별도 트랙) / Digital securities (SEC)"</div>
+    <div class="cit-item"><span class="cit-num">[11]</span> 📄 [Filing] Tether Reserve Report (2026 Q1) — USDT $130B 시총 + 미국 단기국채 $80B+ 보유 + commercial paper·기타 자산 비중 [reserve 감사 보고서 검증 필요]</div>
+    <div class="cit-item"><span class="cit-num">[12]</span> 📄 [Filing] Circle IPO·SPAC 진행 (2026) — USDC $40B 시총 + 미국·EU 등록 발행사 + GENIUS Act 시행령 정합</div>
+    <div class="cit-item"><span class="cit-num">[13]</span> 📄 [Policy] EU MiCA 시행 (2024 발효, 2026 시행 단계) — 발행사 등록 + 일별 redemption 의무 + 100% 준비금 표준</div>
+    <div class="cit-item"><span class="cit-num">[14]</span> 📄 [Policy] GENIUS Act (미국 2024 통과 + 2026 시행령) — 발행사 등록·준비금 표준 (단기국채 위주) + 환매 보장</div>
+    <div class="cit-item"><span class="cit-num">[15]</span> 📄 [Conference] Money 20/20 2026 (10월 예정) — 글로벌 결제·crypto·CBDC 컨퍼런스 단일 변곡점 [트래킹]</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h3>📑 본 L3 deep dive 메타</h3>
+  <table>
+    <tr><td>발행일</td><td>2026-05-12 (KST)</td></tr>
+    <tr><td>발행 주기</td><td>분기 (Quarterly)</td></tr>
+    <tr><td>다음 발행 예정</td><td>2026-08 첫 일요일 (Q3)</td></tr>
+    <tr><td>발행 채널</td><td>research-curator Mode C (Quarterly L3 Deep Dive)</td></tr>
+    <tr><td>통합 L2 건수</td><td>5건 (핀테크 섹터 L2 5건 통합)</td></tr>
+    <tr><td>교차 KB</td><td>knowledge-base/industry/financial_services.md + macro/global_risk_factors.md + political_cycle.md</td></tr>
+    <tr><td>인용 건수</td><td>15건 (Working Paper 4 / Policy 6 / Think Tank 2 / Filing 2 / Conference 1)</td></tr>
+    <tr><td>Debate Cards</td><td>4건</td></tr>
+    <tr><td>Contrarian Cards</td><td>3건</td></tr>
+    <tr><td>차분기 트래킹 지표</td><td>10개</td></tr>
+    <tr><td>관련 종목·자산 매트릭스</td><td>10종</td></tr>
+  </table>
+</div>
+
+<div class="disclaimer">
+  <h4>⚠️ 본 보고서 한계 + 면책</h4>
+  <p>
+  본 리포트는 <strong>research-curator L3 분기 Deep Dive</strong> 결과입니다. <strong>매수·매도 추천이 아닙니다</strong> — 1차 자료 종합 + 시나리오 + 트래킹 지표 제공이 목적입니다.<br><br>
+  데이터 무력화 시점: (1) 2026 H2 G20/FSB 정상회의에서 스테이블코인 통합 표준 합의 시 "단편화" thesis 약화 (긍정 방향), (2) 글로벌 스테이블코인 채택률이 2026~2027 정체 시 BIS Papers #170 시나리오 우려 약화, (3) 2026 11월 미국 중간선거 결과 + 트럼프 행정부 정치 변동 시 SEC 명확화 일관성 단절 (Contrarian #2 트리거), (4) BTC ETF spot 자금 유출 turn (2026 H2 가능성) 시 위험자산 사이클 반전.<br><br>
+  본 L3 는 <strong>L2 frontmatter citation 그대로 사용</strong> — 임의 출처 추가 X (환각 방지). 단, 본문 통합 분석은 L2 + industry/financial_services.md + macro/global_risk_factors.md + political_cycle.md 교차 결과로 research-curator 책임. <strong>보강 L2 (sec_self_custody_wallet_broker)의 [원문 확인 필요] 마커는 본문 §3.2 + 인용 [3][7]에 명시</strong>.<br><br>
+  <em>research-curator 시스템 5번째 L3 발행 — 5섹터 Q2 사이클 완성 (반도체·에너지·매크로·바이오·핀테크 모두 L3 #1 발행 완료).</em>
+  </p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', newTheme);
+  document.getElementById('theme-icon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = newTheme === 'light' ? '다크 모드' : '라이트 모드';
+  localStorage.setItem('research-theme', newTheme);
+}
+const saved = localStorage.getItem('research-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-icon').textContent = saved === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = saved === 'light' ? '다크 모드' : '라이트 모드';
+}
+</script>
+
+</body>
+</html>

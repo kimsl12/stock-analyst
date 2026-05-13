@@ -1,7 +1,7 @@
 ---
 sector: macro
 created: 2026-05-12
-last_updated: 2026-05-13
+last_updated: 2026-05-12
 status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
@@ -10,7 +10,7 @@ related_industry_kb:
   - knowledge-base/macro/korea_economy.md
 l1_index_count: 8
 l2_summary_count: 5
-l3_deep_dive_count: 0
+l3_deep_dive_count: 1
 deep_dive_priority: 3
 ---
 
@@ -63,7 +63,8 @@ deep_dive_priority: 3
 
 ## L3 분기 Deep Dive 이력
 
-- (예정) `reports/research/macro_2026Q4.html` — 2026-10 첫 일요일 발행 (반도체·에너지 우선 후 진입)
+- 2026-05-12 `reports/research/macro_2026Q2.html` — L3 #1 첫 발행 — Fed 8-4 dissent + IMF 3.1% + BOJ 매파적 동결 + BIS QR 로테이션 통합 (5 L2 + macro KB 교차, 인용 16건 / debate 4 / contrarian 3 / 트래킹 10)
+- (예정) `reports/research/macro_2026Q3.html` — 2026-08 첫 일요일 발행
 
 ## 분석 에이전트 활용 가이드
 

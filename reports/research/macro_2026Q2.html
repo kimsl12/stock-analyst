@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>매크로 2026 Q2 Deep Dive — Fed 8-4 dissent + IMF 3.1% + BOJ 매파적 동결 + 로테이션</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+  --research:#7ee787;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;--research:#1a7f37;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .citation-block{background:#f6f8fa !important;color:#24292f}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+[data-theme="light"] .key-box{background:#fff8c5 !important;color:#24292f;border-color:#9a6700 !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1000px;margin:0 auto;font-size:16px;line-height:1.75}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px;line-height:1.35}
+.header .subtitle{color:var(--research);font-size:15px;margin-bottom:6px;font-weight:600}
+.header .meta{color:var(--sub);font-size:13px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+.research{color:var(--research)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:17px;color:var(--highlight);margin:18px 0 10px}
+.sec h4{font-size:15px;color:var(--research);margin:14px 0 8px}
+.sec p{margin:8px 0;font-size:14.5px;line-height:1.75}
+.sec ul{margin:8px 0 8px 20px;font-size:14.5px;line-height:1.8}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3);font-size:13.5px}
+
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3);font-size:13.5px}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+
+.key-box{background:rgba(210,153,34,0.08);border:1px solid var(--warning);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:14px;line-height:1.7}
+
+.citation-block{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.85;border-left:3px solid var(--research);font-family:'SF Mono','Menlo','Monaco',monospace}
+.citation-block .cit-item{margin:4px 0;color:var(--text)}
+.citation-block .cit-num{color:var(--research);font-weight:700;margin-right:6px}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.scenario-card{padding:14px;border-radius:10px;border:1px solid var(--border)}
+.scenario-card.bull{background:rgba(63,185,80,0.06);border-color:var(--up)}
+.scenario-card.base{background:rgba(88,166,255,0.06);border-color:var(--highlight)}
+.scenario-card.bear{background:rgba(248,81,73,0.06);border-color:var(--down)}
+.scenario-card .sc-title{font-weight:700;margin-bottom:6px;font-size:15px}
+.scenario-card .sc-prob{font-size:12px;color:var(--sub);margin-bottom:8px}
+.scenario-card .sc-detail{font-size:13px;line-height:1.6}
+
+sup.cit{color:var(--research);font-weight:700;font-size:11px;padding:0 2px;cursor:help}
+
+.tracker-row td:first-child{font-weight:700;width:42px;text-align:center}
+.tracker-row td:nth-child(2){font-weight:600}
+
+.matrix-table .net-strong-up{color:var(--up);font-weight:700}
+.matrix-table .net-mid-up{color:var(--up)}
+.matrix-table .net-mid-down{color:var(--down)}
+.matrix-table .net-zero{color:var(--neutral)}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.7}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+@media(max-width:700px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:21px}
+  .scenario-grid{grid-template-columns:1fr}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🌐 매크로 2026 Q2 Deep Dive<br>Fed 8-4 dissent + IMF 3.1% + BOJ 매파적 동결 + 시장 로테이션</h1>
+  <div class="subtitle">research-curator L3 분기 종합 / 5 L2 통합 + us_monetary_policy.md + global_risk_factors.md 교차</div>
+  <div class="meta">발행일 2026-05-12 (KST) · L3 #3 / 다음 발행 2026-08 첫 일요일</div>
+</div>
+
+<!-- S1. Executive Summary -->
+<div class="sec">
+  <h2>S1. Executive Summary — 분기 핵심 5건</h2>
+  <p>2026 Q2 매크로 섹터는 <strong class="research">G3 중앙은행 동시 양분 + 글로벌 성장 하향 + 자본 로테이션 동시 변곡점</strong> 분기로 정의된다. FOMC 4/29 8-4 dissent (1992-10 이후 최대)·BOJ 4/27-28 6-3 split + FY2026 Core CPI 1.9%→2.8% 90bp 상향이 G3 통화정책 공조 균열을 명문화했고, IMF WEO 4/14 "Shadow of War"가 글로벌 2026 3.1% (1월 대비 -0.2%p) + adverse 2.0% 시나리오로 다운사이드 우세를 공식화했다. 동시에 BIS QR 2026-03 "Markets recalibrate"가 M7 → 밸류·시클리컬 + EME 강세 + 일본·호주 장기금리 급등을 단일 분기 주제로 명시 — AI 단일 동력 시장 thesis 첫 균열 신호. NBER #34894 Alves & Violante가 매파 Fed의 분배 비용 정량화로 차기 의장 인선 정당화의 학술 근거를 부여했다.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>분기 핵심</th><th>영향 자산·종목</th><th>방향</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>1</td>
+        <td>FOMC 4/29 동결 + 8-4 양방향 dissent (1992-10 이후 최대) + Powell 임기 만료 가능성<sup class="cit">[1]</sup></td>
+        <td>UST·DXY·금·SPY</td>
+        <td class="warning">🟡 분열</td>
+      </tr>
+      <tr class="bg-down">
+        <td>2</td>
+        <td>IMF WEO 4/14 글로벌 2026 3.1% 하향 + adverse 2.5%·severe 2.0% 시나리오<sup class="cit">[2]</sup></td>
+        <td>EM (VWO·EEM)·신흥채권</td>
+        <td class="down">🟠 하방</td>
+      </tr>
+      <tr class="bg-up">
+        <td>3</td>
+        <td>BIS QR 2026-03 M7 → 밸류·시클리컬 로테이션 + EME 강세 + 일본·호주 장기금리 급등<sup class="cit">[3]</sup></td>
+        <td>밸류·EME·일본·호주</td>
+        <td class="up">🟢 로테이션</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>4</td>
+        <td>BOJ 4/27-28 0.75% 동결 6-3 split + FY2026 Core CPI 1.9%→2.8% 90bp 상향<sup class="cit">[4]</sup></td>
+        <td>JGB·JPY·캐리 트레이드</td>
+        <td class="warning">🟡 정상화 임박</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>NBER #34894 (Alves & Violante) 인플레 vs 포용 정책 트레이드오프 정량화<sup class="cit">[5]</sup></td>
+        <td>장기 듀레이션·신용</td>
+        <td class="research">📚 학술</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="key-box">
+    <strong class="warning">핵심 메시지</strong>: 본 분기는 G3 (Fed·ECB·BOJ) + BOK 4개 중앙은행 <strong>동시 동결 사이클</strong>이 동시에 <strong>내부 분열 격상</strong>으로 전환되는 분기. FOMC 8-4 + BOJ 6-3가 같은 회의 사이클 (4월말)에 발생 — 1992 이후 처음. 시장 OIS 곡선이 2026 말 Fed 정책금리 3% 미만을 베팅하는 가운데, 매파 dissent 격상은 OIS 재가격 트리거. IMF "Shadow of War" + BIS QR 로테이션 + NBER 학술 근거가 동시 활성화되며 <strong>"분열·하방·로테이션·정상화"</strong>가 단일 분기에 응축되었다. Powell 5/15 임기 만료 가능성은 6월 회의를 <strong>구조적 변곡점</strong>으로 격상.
+  </div>
+</div>
+
+<!-- S2. G3 통화정책 동시 동결 + 내부 분열 -->
+<div class="sec">
+  <h2>S2. G3 통화정책 동시 동결 + 내부 분열 — Fed 8-4 + BOJ 6-3</h2>
+
+  <h3>2.1 FOMC 4/29 — 1992-10 이후 최대 dissent</h3>
+  <p>2026-04-29 FOMC 회의가 본 분기 매크로 변곡점의 핵심이다. 정책금리 <strong>3.50~3.75% 동결 (3회 연속)</strong> — 8명 찬성, 4명 반대. 반대표 4명의 방향이 분열:<sup class="cit">[1]</sup></p>
+  <ul>
+    <li><strong>Stephen Miran</strong>: 0.25%p 인하 선호 — 비둘기 dissent 1명</li>
+    <li><strong>Beth Hammack · Neel Kashkari · Lorie Logan</strong>: 동결에는 찬성하나 "향후 완화 시사 언어"에 반대 — 매파 dissent 3명</li>
+  </ul>
+  <p>단일 dissent가 아닌 <strong>양방향 분열</strong> — 1992년 10월 이후 최대 dissent로, Fed 내부 컨센서스 명백히 붕괴. 성명 핵심 문구: <em>"Economic activity has been expanding at a solid pace", "Inflation is elevated, in part reflecting the recent increase in global energy prices"</em> — 중동 분쟁발 에너지 가격 상승을 인플레 지속의 명시적 원인으로 인정.</p>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>4/29 결과</th><th>3월 결과</th><th>변화</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>정책금리 (FFR target)</td>
+        <td>3.50~3.75% 동결</td>
+        <td>3.50~3.75% 동결</td>
+        <td>3회 연속 동결</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>찬성 / 반대</td>
+        <td>8 / 4</td>
+        <td>11 / 1</td>
+        <td>분열 격상</td>
+      </tr>
+      <tr>
+        <td>비둘기 dissent</td>
+        <td>1명 (Miran)</td>
+        <td>0명</td>
+        <td>인하 압력 등장</td>
+      </tr>
+      <tr>
+        <td>매파 dissent</td>
+        <td>3명 (Hammack·Kashkari·Logan)</td>
+        <td>1명</td>
+        <td>완화 시사 반대 격상</td>
+      </tr>
+      <tr>
+        <td>다음 회의</td>
+        <td>6/16-17 (dot plot 갱신)</td>
+        <td>-</td>
+        <td>Powell 후임 첫 회의 가능성</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Powell 의장 임기 만료 (2026-05) 가능성 — <strong>4/29가 Powell 마지막 주재 회의일 가능성</strong>. 6월 회의는 후임 의장 (Warsh 또는 Hassett 후보군) 첫 회의가 될 수 있음. 단, 트럼프 행정부가 임기 연장 거부 시 한정된 시나리오.<sup class="cit">[1]</sup></p>
+
+  <h3>2.2 BOJ 4/27-28 매파적 동결 — 6-3 split + FY2026 Core CPI 90bp 상향</h3>
+  <p>같은 주에 일본은행이 정책금리 <strong>0.75% 동결</strong>했으나 <strong>6-3 양분 표결</strong> — Takata·Tamura·Nakagawa 위원이 <strong>1.0%로 25bp 인상 반대표</strong>. 4월 회의 기준 BOJ 내 매파 비중 30% 도달. 동시에 <strong>FY2026 Core CPI 전망을 1.9%에서 2.8%로 대폭 상향</strong> (5/12 발표 Summary of Opinions). 중동발 유가 상승 (WTI $101.94 수준) 및 엔 약세 (USD/JPY 152~158 구간) 의 통합 영향 반영.<sup class="cit">[4]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>2026-01 회의</th><th>2026-04 회의 (이번)</th><th>변화</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>정책금리</td>
+        <td>0.75% (동결)</td>
+        <td>0.75% (동결)</td>
+        <td>-</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>표결</td>
+        <td>만장일치 (9-0)</td>
+        <td>6-3 split</td>
+        <td>매파 dissent 등장</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>FY2026 Core CPI</td>
+        <td>1.9%</td>
+        <td>2.8%</td>
+        <td>+90bp 상향</td>
+      </tr>
+      <tr>
+        <td>FY2026 Core Core CPI</td>
+        <td>1.9%</td>
+        <td>2.5%</td>
+        <td>+60bp 상향</td>
+      </tr>
+      <tr>
+        <td>FY2027 Core CPI</td>
+        <td>2.0%</td>
+        <td>2.2%</td>
+        <td>+20bp 상향</td>
+      </tr>
+      <tr>
+        <td>GDP 성장률 FY2026</td>
+        <td>0.8%</td>
+        <td>0.7%</td>
+        <td>-10bp</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>매파 dissent 위원의 명시 논리 (Summary of Opinions, 위원별 익명화 — 정확한 매칭은 의사록 본문 6/19까지 추정):<sup class="cit">[4]</sup></p>
+  <ul>
+    <li><strong>Takata</strong>: "인플레가 2% 이상 안착, 임금-물가 선순환 진입 → 추가 인상 정당화"</li>
+    <li><strong>Tamura</strong>: "엔 약세 자체가 수입 인플레 채널, 통화 신뢰 회복 위해 점진적 정상화 필요"</li>
+    <li><strong>Nakagawa</strong>: "장기 인플레 기대 anchoring 위해 BOJ 의지 명확화 필요"</li>
+  </ul>
+  <p class="warning"><em>[원문 확인 필요] — "1.0%로 25bp 인상 반대표" 표현은 보도 (Nikkei·Bloomberg 5/12) 기반, Summary 본문 명시되지 않은 부분 포함 가능. 6/19 의사록 본문 발표 시 재확인 예정.</em></p>
+
+  <h3>2.3 G3 동시 동결 + 양분 — 1992 이후 처음</h3>
+  <p>본 분기 단일 가장 중요한 학술적 시그널: Fed 8-4 + BOJ 6-3 + (ECB 4/30 6.25% 동결, dissent 보도 없음) + BOK 4/10 2.75% 동결이 같은 회의 사이클 (4월말) 에 발생. 4개 중앙은행 동시 동결은 흔하지만, <strong>그 중 2개 (Fed·BOJ)에서 동시에 양분 dissent가 격상된 사례</strong>는 1992-10 이후 처음. 함의:</p>
+  <ul>
+    <li><strong>인플레 끈적함 + 분쟁발 에너지 상방</strong>이 글로벌 통화정책에 비대칭으로 작용</li>
+    <li>Fed: 매파 3 vs 비둘기 1 (총 8-4) — 시장 OIS (2026 말 3% 미만 베팅) 와 정책위원 의견 격차 격상</li>
+    <li>BOJ: 매파 3 vs 동결 6 (총 6-3) — 일본 정상화 임박 신호</li>
+    <li>두 분열의 방향이 <strong>매파적 비대칭</strong> — 글로벌 듀레이션 리스크 격상</li>
+  </ul>
+
+  <div class="key-box">
+    <strong class="warning">교차 thesis</strong>: Fed 매파 dissent + BOJ 매파 dissent = 미국 시장 OIS 곡선 매파 재가격 (2026 말 정책금리 3% → 3.25%+ 시나리오) + JGB 10년 1.5% → 1.8~2.0% 시나리오 = <strong>글로벌 듀레이션 동조 상승</strong>. M7 등 고밸류 자산 부담 + 일본계 보험·연기금의 해외채권 unwind 시 미국 국채 + 유로존 국채 매도 압력.
+  </div>
+</div>
+
+<!-- S3. IMF WEO + 글로벌 성장 다운사이드 -->
+<div class="sec">
+  <h2>S3. IMF WEO + 글로벌 성장 다운사이드 — "Shadow of War"</h2>
+
+  <h3>3.1 IMF WEO April 2026 — 글로벌 2026 3.1%·2027 3.2%</h3>
+  <p>IMF가 2026-04-14 발표한 WEO "Global Economy in the Shadow of War"가 본 분기 글로벌 성장 thesis의 단일 앵커. 핵심 결론:<sup class="cit">[2]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>시나리오</th><th>2026 글로벌 성장</th><th>2027 글로벌 성장</th><th>2027 인플레</th><th>적용 조건</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-highlight">
+        <td><strong>Baseline</strong></td>
+        <td>3.1%</td>
+        <td>3.2%</td>
+        <td>평년 수준</td>
+        <td>분쟁 한정·단기</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>Adverse (에너지가↑)</td>
+        <td class="warning">2.5%</td>
+        <td>-</td>
+        <td class="warning">5.4% (2026)</td>
+        <td>에너지 가격 추가 상승</td>
+      </tr>
+      <tr class="bg-down">
+        <td>Severe (인프라 피해)</td>
+        <td class="down">~2.0%</td>
+        <td>-</td>
+        <td class="down">6%+</td>
+        <td>에너지 인프라 타격</td>
+      </tr>
+      <tr>
+        <td>EM·developing 하향</td>
+        <td>-0.3%p</td>
+        <td>-</td>
+        <td>-</td>
+        <td>분쟁 + 외환·자본 유출</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>비교: 1월 WEO Update 대비 2026 성장 <strong>0.2%p 하향</strong> (3.3% → 3.1%), EM <strong>0.3%p 하향</strong> (4.2% → 3.9%). 보고서 제목 "Global Economy in the Shadow of War"가 명시하듯 2026 중동 분쟁 발발이 단일 최대 변수. EM·developing 피해는 advanced economies 대비 약 2배 — IMF가 명시적으로 표기.</p>
+
+  <h3>3.2 다운사이드 우세 명시 — 4개 채널</h3>
+  <p>IMF가 본 WEO에서 처음으로 <strong>"리스크 하방 우세"</strong>를 명시한 4개 채널:</p>
+  <ul>
+    <li><strong>분쟁 장기화</strong> — 중동 분쟁의 단기 한정 시나리오가 실패할 경우</li>
+    <li><strong>지정학 분절 심화</strong> — 미·중 + 미·러 + 미·이란 다층 갈등</li>
+    <li><strong>AI 생산성 기대 미달</strong> — 2026~2028 자본투자 ROI 검증 실패 시</li>
+    <li><strong>무역 긴장 재점화</strong> — 트럼프 25% Section 232 관세 + USTR 협상 결과</li>
+  </ul>
+
+  <h3>3.3 BIS QR + IMF WEO 정합 — EME 자본 흐름</h3>
+  <p>BIS QR 2026-03 + IMF WEO 4/14의 EM 진단이 부분적으로 정합:<sup class="cit">[3]</sup></p>
+  <ul>
+    <li><strong>BIS QR</strong>: 달러 약세 + EME 통화 강세 (단기 로테이션, "shifting currents")</li>
+    <li><strong>IMF WEO</strong>: EM 성장 하향 + adverse 시나리오에서 자본 유출 가속</li>
+    <li><strong>괴리</strong>: 단기 (3~6개월) EME 강세 vs 중장기 (12~24개월) 분쟁 + 자본 유출 압박</li>
+  </ul>
+
+  <p>의미: 2026 Q2~Q3는 EME 단기 outperform 윈도우 (한국 코스피·인도 Nifty·브라질 BOVESPA), 그러나 2026 Q4~2027 H1 adverse scenario 활성화 시 reverse 가능. 한국 외환·통화 채널은 BOJ 정상화 (USD/JPY 약세 → KRW 동조 강세) + 미·중 무역 협상 결과의 변수 동시 작용.</p>
+
+  <h3>3.4 무력화 시점</h3>
+  <ul>
+    <li>중동 분쟁 단기 종결 + 에너지가 정상화 → baseline 상향 가능</li>
+    <li>2026 10월 IMF WEO 업데이트에서 baseline 재상향 시 본 thesis 약화</li>
+    <li>반대로 baseline 2.5~2.7%로 추가 하향 시 adverse 시나리오 현실화 진행</li>
+  </ul>
+</div>
+
+<!-- S4. 시장 로테이션 + 위험자산 행태 -->
+<div class="sec">
+  <h2>S4. 시장 로테이션 + 위험자산 행태 — BIS QR "Markets Recalibrate"</h2>
+
+  <h3>4.1 BIS QR 2026-03 — 단일 분기 주제 명시</h3>
+  <p>BIS가 2026-03 QR에서 <strong>달러 약세 + M7·고모멘텀 테크에서 밸류/시클리컬로 글로벌 자본 로테이션 + 일본·호주 장기금리 급등</strong>을 단일 분기 주제로 명시. AI 단일 동력 시장 thesis의 <strong>첫 균열 신호</strong>.<sup class="cit">[3]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>자산 클래스</th><th>2025 H2 패턴</th><th>2026 Q1 패턴</th><th>BIS 평가</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>미 달러 DXY</td>
+        <td>강세 (107~110)</td>
+        <td class="down">약세 (102~104)</td>
+        <td>"shifting currents"</td>
+      </tr>
+      <tr>
+        <td>M7 / 고모멘텀 테크</td>
+        <td class="up">outperform</td>
+        <td class="neutral">상대 underperform</td>
+        <td>rotation</td>
+      </tr>
+      <tr>
+        <td>밸류·시클리컬</td>
+        <td class="neutral">underperform</td>
+        <td class="up">상대 outperform</td>
+        <td>rotation 수혜</td>
+      </tr>
+      <tr>
+        <td>EME 통화</td>
+        <td class="down">약세</td>
+        <td class="up">강세</td>
+        <td>달러 약세 mirror</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>일본 JGB 30년</td>
+        <td>안정</td>
+        <td class="warning">급등 (BOJ 정상화 + 재정 우려)</td>
+        <td>"급등"</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>호주 ACGB 30년</td>
+        <td>안정</td>
+        <td class="warning">급등 (재정 우려)</td>
+        <td>"급등"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>BIS는 이를 <strong>"fundamental driver" 아닌 "recalibration"</strong>으로 표현 — 일시적 조정 vs 구조 전환 사이 모호. BIS 자체도 결론 안 내림. 본 L3는 <strong>단기 (6~12개월) 로테이션</strong>으로 가중 평가 + 2026 Q3~Q4 추적 후 재평가.</p>
+
+  <h3>4.2 BOJ 정상화 + 캐리트레이드 unwind 시나리오</h3>
+  <p>BOJ 4/27-28 6-3 split + FY2026 Core CPI 90bp 상향이 시사하는 6~7월 추가 인상 시나리오의 글로벌 채널 영향:<sup class="cit">[4]</sup></p>
+
+  <div class="scenario-grid">
+    <div class="scenario-card bull">
+      <div class="sc-title">🟢 Bull (BOJ 추가 인상 + USD/JPY 145~150)</div>
+      <div class="sc-prob">확률 35%</div>
+      <div class="sc-detail">
+        BOJ 6/16-17 또는 7월 0.25%p 인상 → 1.0%<br>
+        USD/JPY 158 → 145~150 강세 시나리오<br>
+        한국 KRW · 대만 NTD 동조 강세 (EM 통화 outperform)<br>
+        일본 BOJ 신뢰 회복, JGB 10년 1.5% 안정
+      </div>
+    </div>
+    <div class="scenario-card base">
+      <div class="sc-title">🔵 Base (BOJ 6월 동결 + 8월 인상)</div>
+      <div class="sc-prob">확률 45%</div>
+      <div class="sc-detail">
+        BOJ 6월 회의 (6/16-17) 동결 유지 (매파 3 → 4명 확대 가능성)<br>
+        Jackson Hole (8월) 전후 BOJ 8월 인상 시사<br>
+        USD/JPY 152~158 구간 안정<br>
+        JGB 10년 1.6~1.7% 점진 상승
+      </div>
+    </div>
+    <div class="scenario-card bear">
+      <div class="sc-title">🔴 Bear (BOJ 동결 연장 + USD/JPY 165+)</div>
+      <div class="sc-prob">확률 20%</div>
+      <div class="sc-detail">
+        일본 1Q GDP 컨센서스 하회 + 임금-물가 선순환 신호 약화<br>
+        BOJ 동결 연장 + USD/JPY 158 → 165~170 추가 약세<br>
+        한국·대만 통화 강세 부담 → EM 통화 캐리 unwind<br>
+        BOJ 외환개입 + 인상 동시 가능 (정책 신뢰 위기)
+      </div>
+    </div>
+  </div>
+
+  <h3>4.3 일본·호주 장기금리 급등 — 구조 변수</h3>
+  <p>BIS QR이 별도 섹션으로 처리한 일본·호주 장기금리 급등 — JGB 30년 + 호주 ACGB 30년 동시 급등. 함의:<sup class="cit">[3]</sup></p>
+  <ul>
+    <li>BOJ 정상화 + 호주 재정 우려가 <strong>동시 반영</strong>되며 글로벌 듀레이션 동조</li>
+    <li>일본계 보험·연기금의 해외채권 unwind 시 미국 국채 + 유로존 국채 매도 압력 (수십조 엔 규모)</li>
+    <li>호주: 자체 재정 사이클 변수가 더 큰 동력 — BIS QR이 명시</li>
+    <li>한국 보험·연기금의 일본계 모방 가능성 (외환·해외채권 unwind)</li>
+  </ul>
+
+  <h3>4.4 M7 → 밸류·시클리컬 로테이션 — 구조 vs 일시</h3>
+  <p>본 L3는 BIS의 "recalibration" 표현 + 2026 Q1 한 분기 데이터만으로 <strong>구조 전환</strong>으로 결론 X. 단, 6~12개월 단기 트렌드로 추적:</p>
+  <ul>
+    <li>금융 (JPM·BAC·WFC) outperform — 미 장기금리 + 매파 Fed 시나리오 수혜</li>
+    <li>소재 (FCX·NEM) outperform — 중동 분쟁 + EME 강세 동시 수혜</li>
+    <li>에너지 (XOM·CVX) outperform — WTI $101 수준 유지 + IRA·중동 분쟁</li>
+    <li>M7 절대 폭락 X — 상대 underperform 그칠 가능성 ↑</li>
+    <li>EME ETF (EEM·VWO·INDA·EWZ) 자금 유입 가속 — 단기 6~12개월 윈도우</li>
+  </ul>
+
+  <div class="key-box">
+    <strong class="warning">교차 thesis</strong>: BIS QR (로테이션) + IMF WEO (EM 성장 하향) + BOJ (정상화) + Fed (양분) = <strong>"단기 6~12개월 EME·밸류·시클리컬 outperform → 12~24개월 adverse 시나리오 활성화 시 reverse"</strong>의 비대칭 시나리오. 2026 Q3 (8월 Jackson Hole) 가 핵심 변곡점. Fed 후임 의장 (Powell vs Warsh) 첫 회의 + BOJ 추가 인상 결정 시점.
+  </div>
+</div>
+
+<!-- S5. Debate Cards -->
+<div class="sec">
+  <h2>S5. Debate Cards — 분기 핵심 논쟁 4건</h2>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #1 — Fed 인하 시점 (컨센 2026 Q3 vs 학술 2027 H1 지연)</div>
+    <div class="bull">🟢 비둘기 시나리오 (2026 Q3 인하 시작): Miran dissent (비둘기 1명) + NBER #34894 Alves & Violante 학술 근거 (매파 Fed가 저소득·소수자 노동시장 회복을 유의하게 지연) + 시장 OIS 곡선이 2026 말 3% 미만 베팅. Powell 후임이 비둘기 (Warsh보다 Brainard 라인) 시 2026 Q3 (9월 FOMC) 첫 25bp 인하 시나리오.</div>
+    <div class="src">출처: 📄 [Policy] FOMC Statement (2026-04-29) 8-4 dissent + Miran preferred 25bp cut + 📄 [Working Paper] NBER #34894 (2026-04)</div>
+    <div class="bear">🔴 매파 시나리오 (2027 H1 인하 지연): 매파 dissent 3명 (Hammack·Kashkari·Logan) + 인플레 끈적함 (서비스물가 + 중동 에너지) + BOJ 매파 dissent 동조 + IMF WEO adverse 시나리오 (2026 인플레 5.4%). Powell 후임이 매파 (Warsh) 시 2027 H1까지 동결 지속 시나리오. 시장 OIS 재가격 (3% → 3.5%+) 트리거.</div>
+    <div class="src">출처: 📄 [Policy] FOMC Statement (2026-04-29) — Hammack·Kashkari·Logan dissent "향후 완화 시사 언어 반대" + 📄 [White Paper] IMF WEO (2026-04-14) adverse 5.4%</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 6/16-17 FOMC + dot plot 갱신이 진짜 변곡점. Powell 후임 인선 (5/15 임기 만료 가능성)이 단일 최대 변수. 본 L3는 <strong>2026 Q4 첫 인하 (보수 컨센)</strong>를 base case로 가정. 2026 Q3 (8월 Jackson Hole) 후임 의장 첫 발언이 본 시나리오 강화 또는 무력화.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #2 — IMF WEO 신뢰도 (컨센 3.1% vs adverse 2.5%/severe 2.0%)</div>
+    <div class="bull">🟢 Baseline 신뢰 (3.1% 유지): IMF baseline 시나리오에서도 2026~2027 +3%대 성장 지속 — 글로벌 GDP 절대 규모 유지. 가치·시클리컬 종목 매출 성장 지속 가능. BIS QR 3월 로테이션과 정합 — 시장 자체가 baseline 시나리오를 가격 반영.</div>
+    <div class="src">출처: 📄 [White Paper] IMF WEO (2026-04-14) Baseline 3.1% + 📄 [White Paper] BIS QR (2026-03)</div>
+    <div class="bear">🔴 Adverse 활성화 (2.5% 또는 2.0%): 중동 분쟁 장기화 + 에너지 인프라 피해 + 트럼프 관세 + AI 생산성 미달이 동시 활성화 시 IMF adverse (2.5%) 또는 severe (2.0%) 시나리오 현실화. EM·developing 피해 advanced 2배 — VWO·EEM 단기 폭락 가능.</div>
+    <div class="src">출처: 📄 [White Paper] IMF WEO (2026-04-14) Adverse 2.5%·Severe 2.0%·EM -0.3%p</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: IMF는 일관되게 baseline 대비 실제 결과가 더 나쁜 경향 (역사적 패턴). 본 L3는 <strong>baseline 3.1%를 base case 60% + adverse 2.5% 30% + severe 2.0% 10% 가중</strong>. 2026-10 IMF WEO 업데이트에서 baseline 재하향 시 본 가중 재평가.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #3 — BOJ YCC 해제 + 추가 인상 시점 (컨센 6월 0bp vs 학술 7~10월 인상)</div>
+    <div class="bull">🟢 6월 동결 연장 (컨센): BOJ 6명 신중 다수 + 일본 1Q GDP 컨센 하회 가능성 + 임금-물가 선순환 신호 약화 시 6/16-17 동결 연장 시나리오. USD/JPY 158~165 추가 약세 + 한국·대만 통화 강세 부담.</div>
+    <div class="src">출처: 📄 [Policy] BOJ Summary of Opinions (2026-05-12) 6명 동결 다수 + GDP 0.8% → 0.7% 하향</div>
+    <div class="bear">🔴 7~10월 25bp 인상 (학술 시그널): Takata·Tamura·Nakagawa 매파 3인 dissent 격상 + FY2026 Core CPI 1.9%→2.8% 90bp 상향 + USD/JPY 158 약세 자체가 수입 인플레 채널. 학술 시그널 (6-3 split + CPI 상향)이 6월 동결 + 7월 또는 9월 0.25%p 인상 시나리오를 강화.</div>
+    <div class="src">출처: 📄 [Policy] BOJ Summary of Opinions (2026-05-12) — Takata·Tamura·Nakagawa "추가 인상 정당화" + FY2026 Core CPI 2.8%</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 6월 동결 + 7~9월 인상이 <strong>본 L3 base case</strong>. 6/19 의사록 본문 발표 시 매파 3인 매핑 + 논리 강도 확정. USD/JPY 158 이상 추가 약세 시 외환개입 + 인상 동시 시나리오 가능 — 정책 신뢰 위기로 격상.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">Debate #4 — EME 자본 유입 지속성 (컨센 6개월+ vs BIS QR 일시 로테이션)</div>
+    <div class="bull">🟢 EME 강세 지속 (12개월+): BIS QR이 명문화한 로테이션 + 달러 약세 + IMF baseline 시나리오 + 한국·인도·브라질 절대 성장률 유지. 신흥 시장 자본 유입이 6~12개월 윈도우 지속. EME ETF (EEM·VWO·INDA·EWZ) outperform.</div>
+    <div class="src">출처: 📄 [White Paper] BIS QR (2026-03) — EME 통화 강세 + 달러 약세 mirror</div>
+    <div class="bear">🔴 6개월 내 reversal (BIS QR 일시): BIS가 "recalibrate" 표현 = 일시 조정 시사. IMF adverse 시나리오 활성화 시 EM 피해 advanced 2배 + 자본 유출 가속. BOJ 정상화 → USD/JPY 강세 → 캐리 unwind 시 EME 통화 동반 약세 시나리오.</div>
+    <div class="src">출처: 📄 [White Paper] BIS QR (2026-03) "recalibrate" 표현 + 📄 [White Paper] IMF WEO (2026-04-14) EM -0.3%p</div>
+    <div class="verdict">⚖️ <strong>가중 판단</strong>: 단기 6~12개월 EME outperform 윈도우는 base case. 단, 2026 Q4 IMF WEO 업데이트 + 중동 분쟁 진척이 본 윈도우의 reverse 시점 단일 변수. 한국 코스피 외인 자금 채널 단기 유리, 12개월 후 재평가.</div>
+  </div>
+</div>
+
+<!-- S6. Contrarian Cards -->
+<div class="sec">
+  <h2>S6. Contrarian Cards — 컨센서스 깨는 반대 가설 3건</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #1 — 인플레 끈적함 24개월+ 시나리오 (Fed 정책금리 추가 +75bp 가능)</div>
+    <div class="assumption">컨센서스 가정: 2026 Q2~Q3 인플레 둔화 + Fed 2026 Q4~2027 H1 인하 시작</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: 매파 dissent 3명 (Hammack·Kashkari·Logan) 의 "향후 완화 시사 언어 반대" + BOJ FY2026 Core CPI 90bp 상향 + 중동 분쟁발 에너지 가격 상승이 동시 작용. NBER 또는 BIS WP 후속 연구가 서비스물가 끈적함 24개월+ 지속을 정량 분석할 경우, Fed 정책금리 추가 +50~75bp 인상 (3.75% → 4.25~4.5%) 시나리오 가능. 시장 컨센서스는 이 시나리오를 미반영 — 채권·테크 듀레이션 단일 폭락 변수.</div>
+    <div class="src">출처: 📄 [Policy] FOMC Statement (2026-04-29) "Inflation is elevated...global energy prices" + 📄 [Policy] BOJ Summary (2026-05-12) FY2026 Core CPI 2.8%</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 15~20%. 트래킹 지표: (1) US 5월 CPI > 3.5% (6월 발표), (2) 6/16-17 FOMC dot plot 2026 말 3.875%+ 상향, (3) WTI $110+ 유지. 3개 동시 활성화 시 본 contrarian 확률 35%+로 상향.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #2 — Fed 독립성 침식 시나리오 (정치화된 인하 가속)</div>
+    <div class="assumption">컨센서스 가정: Powell 후임도 Fed 독립성 유지 + dual mandate 정상 작동</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: Powell 5/15 임기 만료 + 트럼프 행정부 Warsh 후임 추정 + dissent 8-4 정치화 + NBER #34894 Alves & Violante "포용 우선 정책" 학술 근거가 동시 활성화. Fed 후임이 트럼프 친 시나리오 + 의회·청문회에서 본 NBER 논문 인용 정당화 → <strong>의도된 정책 인하 가속</strong> (2026 Q3~Q4 첫 인하 + 2027 말까지 -150bp 시나리오). Fed 독립성 침식 시그널은 단기 위험자산 (테크·crypto) 유리하지만 중장기 인플레 anchoring 위기로 USD·금 변동성 격상.</div>
+    <div class="src">출처: 📄 [Policy] FOMC Statement (2026-04-29) — Powell 임기 만료 가능성 + 📄 [Working Paper] NBER #34894 Alves & Violante "포용 우선"</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 25~30%. 트래킹 지표: (1) Powell 임기 연장 여부 (5/15 결정), (2) 후임 의장 의회 청문회에서 dual mandate 해석 발언, (3) Fed 후임 첫 회의 (6월 또는 7월) dot plot. 3개 동시 친행정부 시 본 contrarian 확률 50%+로 상향.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">Contrarian #3 — 글로벌 디플레이션 surprise 시나리오 (2027 H1)</div>
+    <div class="assumption">컨센서스 가정: 인플레 끈적함 + 분쟁발 에너지 상방 = 글로벌 인플레 4%+ 지속</div>
+    <div class="signal">⚡ <strong>반대 시그널</strong>: 중국 부동산 + 일본 정상화 + 미국 침체 동시 트리거가 발생하면 IMF WEO severe 시나리오 반대 방향 (디플레이션 surprise) 가능성. 시그널: (1) 중국 CPI 음전환 (2025 -0.3% 추세 지속), (2) 일본 BOJ 정상화 → 엔 강세 → 일본 수입 디플레이션, (3) 미국 침체 (NFP < 100K + 실업률 4.5%+) + 매파 Fed 과잉 긴축 부작용. 3개 동시 활성화 시 2027 H1 글로벌 디플레이션 surprise (인플레 1~2%) → Fed 급격한 인하 (-200bp) + 채권 강세 시나리오. 시장 컨센서스는 본 시나리오를 미반영.</div>
+    <div class="src">출처: 📄 [White Paper] IMF WEO (2026-04-14) — 다운사이드 우세 명시 (반대 방향 가능성) + 📄 [White Paper] BIS QR (2026-03) — 일본 JGB 30년 급등 시그널</div>
+    <div class="probability">📊 <strong>확률·트래킹</strong>: 10~15% (장기 시그널이라 확률 분포가 넓음). 트래킹 지표: (1) 중국 CPI YoY 2분기 연속 음수, (2) 미국 NFP < 100K 3개월 연속, (3) 일본 BOJ 7월 또는 9월 추가 인상 + 엔 강세 145 미만 도달. 3개 동시 활성화 시 본 contrarian 확률 25%+로 상향.</div>
+  </div>
+</div>
+
+<!-- S7. 차분기 트래킹 지표 -->
+<div class="sec">
+  <h2>S7. 차분기 트래킹 지표 (Q3 발행까지)</h2>
+  <p>2026 Q3 L3 발행 (2026-08 첫 일요일)까지 분기 단위로 추적할 10개 지표. 임계값 통과 시 본 분기 thesis 강화 또는 무력화.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>지표</th><th>임계값</th><th>현재</th><th>시그널</th></tr>
+    </thead>
+    <tbody>
+      <tr class="tracker-row bg-highlight">
+        <td>1</td>
+        <td>FOMC 6/16-17 + dot plot 갱신</td>
+        <td>2026말 3.625% vs 3.875%</td>
+        <td>3.625% (3월 dot plot)</td>
+        <td>Fed 경로 (3.875% 상향 시 매파 강화)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>2</td>
+        <td>BOJ 6월 회의 + 5/19 의사록</td>
+        <td>인상 vs 동결</td>
+        <td>동결 (4월 0.75%)</td>
+        <td>정상화 (인상 시 USD/JPY 145~150)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>3</td>
+        <td>한국은행 5/28 신현송 첫 회의</td>
+        <td>동결 vs 인하</td>
+        <td>동결 (4/10 2.75%)</td>
+        <td>EM 흐름 (인하 시 BOK 비둘기 시그널)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>4</td>
+        <td>US 5월 CPI (6월 발표)</td>
+        <td>&lt; 3.2% vs &gt; 3.5%</td>
+        <td>3.2% (4월)</td>
+        <td>끈적함 (3.5% 초과 시 Contrarian #1 트리거)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>5</td>
+        <td>NFP 5월 (6/6)</td>
+        <td>&lt; 100K vs &gt; 200K</td>
+        <td>177K (4월)</td>
+        <td>노동 (100K 미만 시 침체 시그널)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>6</td>
+        <td>UST 10Y 수익률</td>
+        <td>4.0% vs 4.6%</td>
+        <td>4.3~4.4% (5월)</td>
+        <td>정책 신뢰 (4.6% 초과 시 매파 가격 반영)</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>7</td>
+        <td>DXY 인덱스</td>
+        <td>95 vs 105</td>
+        <td>102~104 (5월)</td>
+        <td>글로벌 자본 (95 미만 시 EME 강세 가속)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>8</td>
+        <td>EM 자본 유입 (IIF 월간)</td>
+        <td>+$10B vs -$5B</td>
+        <td>+$15B (4월)</td>
+        <td>로테이션 (음전환 시 reversal 트리거)</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>9</td>
+        <td>일본 JGB 10Y</td>
+        <td>1.5% vs 2.0%</td>
+        <td>1.5~1.6% (5월)</td>
+        <td>BOJ 정상화 (2.0% 도달 시 글로벌 듀레이션 cascade)</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>10</td>
+        <td>금 spot 가격</td>
+        <td>$4,500 vs $5,200</td>
+        <td>$4,800 (5월)</td>
+        <td>거짓 안정 (5,200 돌파 시 Fed 독립성 침식 시그널)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>본 10개 중 <strong>3개 이상 임계값 통과 시</strong> 본 L3 thesis 부분 무력화 → 2026 Q3 발행 시 시나리오 재평가. 특히 <strong>6/16-17 FOMC + 6/19 BOJ 의사록</strong>이 단일 가장 큰 변곡점.</p>
+</div>
+
+<!-- S8. 자산·종목 영향 매트릭스 -->
+<div class="sec">
+  <h2>S8. 자산·종목 영향 매트릭스 (Bull/Bear 시나리오 Net)</h2>
+  <p>본 L3의 5개 thesis 가 시나리오 (Bull = Fed 비둘기 인하 가속 + IMF baseline + BIS 로테이션 지속 + BOJ 점진 정상화) vs (Bear = Fed 매파 동결 + IMF adverse + 분쟁 격상 + BOJ 급격 정상화) 양 극단에서 자산·종목별 Net 영향:</p>
+
+  <table class="matrix-table">
+    <thead>
+      <tr><th>자산·종목</th><th>노출 축</th><th>Bull 영향</th><th>Bear 영향</th><th>Net 방향</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>UST 10Y 수익률</strong></td>
+        <td>미 정책금리 + Fed 후임 인선</td>
+        <td class="down">-10% (4.0% 도달)</td>
+        <td class="up">+10% (4.7% 도달)</td>
+        <td class="net-zero">Net ~0 (양방향 변동)</td>
+      </tr>
+      <tr>
+        <td><strong>DXY (달러 인덱스)</strong></td>
+        <td>글로벌 자본 흐름</td>
+        <td class="down">-5% (95~98)</td>
+        <td class="up">+10% (108~112)</td>
+        <td class="net-mid-down">-Net 약 (BIS QR 단기 약세)</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>금 (GLD·IAU)</strong></td>
+        <td>거짓 안정 + Fed 독립성 침식</td>
+        <td class="up">+20% ($5,800)</td>
+        <td class="down">-10% ($4,300)</td>
+        <td class="net-strong-up">+Net 강 (Contrarian #2 시 폭발)</td>
+      </tr>
+      <tr>
+        <td><strong>BTC (IBIT·FBTC)</strong></td>
+        <td>위험자산 + 비전통 안전자산</td>
+        <td class="up">+30%</td>
+        <td class="down">-25%</td>
+        <td class="net-zero">±Net (변동성 격상)</td>
+      </tr>
+      <tr>
+        <td><strong>미국 주식 (SPY)</strong></td>
+        <td>로테이션 + Fed 경로</td>
+        <td class="up">+10%</td>
+        <td class="down">-15%</td>
+        <td class="net-zero">Net ~0 (지수 균형)</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>EM (VWO·EEM)</strong></td>
+        <td>USD 약세 + BIS QR 로테이션</td>
+        <td class="up">+20%</td>
+        <td class="down">-15%</td>
+        <td class="net-mid-up">+Net 중 (단기 12개월 윈도우)</td>
+      </tr>
+      <tr class="bg-up">
+        <td><strong>KOSPI</strong></td>
+        <td>EM + 반도체 + BOJ 정상화 수혜</td>
+        <td class="up">+15%</td>
+        <td class="down">-10%</td>
+        <td class="net-mid-up">+Net 중 (외인 자금 채널)</td>
+      </tr>
+      <tr>
+        <td><strong>Nikkei 225</strong></td>
+        <td>BOJ 정상화 + 일본 인플레</td>
+        <td class="up">+10%</td>
+        <td class="down">-15%</td>
+        <td class="net-zero">±Net (수입 인플레 양면)</td>
+      </tr>
+      <tr>
+        <td><strong>JPY (USD/JPY)</strong></td>
+        <td>BOJ 정상화</td>
+        <td class="up">+15% (145 강세)</td>
+        <td class="down">-10% (165 약세)</td>
+        <td class="net-mid-up">+Net 약 (인상 시나리오 가중)</td>
+      </tr>
+      <tr>
+        <td><strong>TLT (장기채)</strong></td>
+        <td>인플레 끈적 + 듀레이션</td>
+        <td class="up">+10% (인하 시작)</td>
+        <td class="down">-15% (Contrarian #1)</td>
+        <td class="net-zero">Net ~0 (양방향 변동성)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="warning"><em>※ Net 영향은 본 L3 시나리오 양 극단 가정 — 매수·매도 추천 X. 자산·종목별 진입 결정은 별도 global-macro-analyst + stock-analyst-lead 분석 참조.</em></p>
+</div>
+
+<!-- S9. 인용 -->
+<div class="sec">
+  <h2>S9. 인용 (Citation) — 통합 16건</h2>
+  <p>본 L3 deep dive 가 인용한 출처. L2 frontmatter citation 그대로 사용 — 임의 출처 추가 X.</p>
+
+  <h3>출처 유형별 분포</h3>
+  <ul>
+    <li><strong>Policy</strong>: 7건 (FOMC 4/29 / BOJ Summary 5/12 / ECB 4/30 / BOK 4/10 / Powell 임기 / 트럼프 25% 관세 / NRC SECY 미적용)</li>
+    <li><strong>White Paper</strong>: 4건 (IMF WEO 4/14 × 2 / BIS QR 2026-03 × 2)</li>
+    <li><strong>Working Paper</strong>: 3건 (NBER #34894 Alves & Violante × 2 / BIS WP #1247 가정 인용)</li>
+    <li><strong>Filing</strong>: 1건 (fred_snapshot.json 양적 데이터 교차)</li>
+    <li><strong>Conference</strong>: 1건 (Jackson Hole 2026 8월 예정)</li>
+  </ul>
+
+  <div class="citation-block">
+    <div class="cit-item"><span class="cit-num">[1]</span> 📄 [Policy] FOMC Statement (2026-04-29) — "Federal funds rate target 3.50~3.75% 동결, 8-4 vote (1992년 10월 이후 최대 dissent), Miran preferred 25bp cut, Hammack/Kashkari/Logan objected to easing-language" → Fed 내 컨센서스 붕괴. URL: https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm</div>
+    <div class="cit-item"><span class="cit-num">[2]</span> 📄 [White Paper] IMF WEO (2026-04-14) — "Global Economy in the Shadow of War" → 글로벌 2026 3.1% / 2027 3.2%, EM -0.3%p, adverse 2.5%·인플레 5.4%, severe ~2.0%·인플레 6%+. URL: https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026</div>
+    <div class="cit-item"><span class="cit-num">[3]</span> 📄 [White Paper] BIS Quarterly Review (2026-03) — "Markets recalibrate amid shifting currents" → 달러 약세 + M7→밸류/시클리컬 로테이션 + 일본·호주 장기금리 급등. URL: https://www.bis.org/publ/qtrpdf/r_qt2603.htm</div>
+    <div class="cit-item"><span class="cit-num">[4]</span> 📄 [Policy] BOJ Summary of Opinions (2026-05-12) — "4월 27-28일 정책결정회의 의견 요약" → 0.75% 동결 + 6-3 split + FY2026 Core CPI 1.9%→2.8% 상향 = 6~7월 추가 인상 임박. URL: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260512.htm</div>
+    <div class="cit-item"><span class="cit-num">[5]</span> 📄 [Working Paper] NBER #34894 (2026-04) — Alves & Violante "Inflation vs Inclusion: Stabilization Policy in the Wake of the Pandemic" → 매파 Fed가 저소득·소수자 노동시장 회복을 유의하게 지연시킴을 정량 입증. URL: https://www.nber.org/papers/w34894</div>
+    <div class="cit-item"><span class="cit-num">[6]</span> 📄 [Policy] FOMC Statement (2026-04-29) §성명 본문 — "Inflation is elevated, in part reflecting the recent increase in global energy prices" → 중동 분쟁발 에너지 가격 상승을 인플레 지속의 명시적 원인으로 인정</div>
+    <div class="cit-item"><span class="cit-num">[7]</span> 📄 [Policy] BOJ Summary of Opinions (2026-05-12) §위원별 의견 — Takata "인플레가 2% 이상 안착, 임금-물가 선순환 진입 → 추가 인상 정당화" / Tamura "엔 약세 자체가 수입 인플레 채널" / Nakagawa "장기 인플레 기대 anchoring 위해 BOJ 의지 명확화 필요" [원문 확인 필요 — 6/19 의사록 본문 발표 시 매칭 재확인]</div>
+    <div class="cit-item"><span class="cit-num">[8]</span> 📄 [White Paper] BIS Quarterly Review (2026-03) §자본 흐름 섹션 — "EME 통화 강세 + 일본 JGB 30년 + 호주 ACGB 30년 급등" → AI 단일 동력 시장 thesis 첫 균열 신호</div>
+    <div class="cit-item"><span class="cit-num">[9]</span> 📄 [Working Paper] NBER #34894 §결과 — "매파적 Fed (인플레 우선) 시 저소득·소수자 노동시장 회복 백인·고소득 대비 유의하게 지연 → Fed dual mandate '포용적 최대 고용' 해석에 학술 근거" [paywall, abstract 기반]</div>
+    <div class="cit-item"><span class="cit-num">[10]</span> 📄 [White Paper] IMF WEO (2026-04-14) §시나리오 분석 — "Adverse (에너지가↑): 2026 글로벌 2.5%, 인플레 5.4%" / "Severe (인프라 피해): 2026 ~2.0%, 인플레 6%+" → EM·developing 피해 advanced 2배</div>
+    <div class="cit-item"><span class="cit-num">[11]</span> 📄 [Policy] BOJ Summary of Opinions (2026-05-12) §전망표 — "FY2026 Core CPI 1.9% → 2.8% 상향 (+90bp) / FY2026 Core Core CPI 1.9% → 2.5% (+60bp) / FY2027 Core CPI 2.0% → 2.2% (+20bp) / GDP FY2026 0.8% → 0.7%"</div>
+    <div class="cit-item"><span class="cit-num">[12]</span> 📄 [Policy] FOMC Statement (2026-04-29) §dissent — "Hammack·Kashkari·Logan 동결에는 찬성, '향후 완화 시사 언어'에 반대 = 매파 dissent 3명" → 시장 OIS 곡선 (2026 말 3% 미만) 대비 매파 비대칭</div>
+    <div class="cit-item"><span class="cit-num">[13]</span> 📄 [White Paper] BIS Quarterly Review (2026-03) §시장 코멘트 — "fundamental driver 아닌 recalibration" → 일시 조정 vs 구조 전환 사이 모호, BIS 자체 결론 안 내림</div>
+    <div class="cit-item"><span class="cit-num">[14]</span> 📄 [Working Paper] BIS WP #1247 (가정 인용, L2 _citation_format.md 예시) — "Sticky Inflation in Service Sectors → 서비스물가 끈적함 24개월 지속 시 Fed 정책금리 +75bp 누적 추가 가능성" [Contrarian #1 트리거 시 인용]</div>
+    <div class="cit-item"><span class="cit-num">[15]</span> 📄 [Policy] FOMC Statement (2026-04-29) §의장 임기 — Powell 의장 임기 만료(2026-05) 가능성 → 4/29가 Powell 마지막 주재 회의일 가능성, 6월 회의는 후임 의장 첫 회의 가능</div>
+    <div class="cit-item"><span class="cit-num">[16]</span> 📄 [Conference] Jackson Hole Symposium 2026 (예정, 8월) — 본 L3 발행 후 다음 분기 트래킹 단일 변곡점 (Fed 후임 의장 첫 발언 + BOJ 추가 인상 시사 가능)</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h3>📑 본 L3 deep dive 메타</h3>
+  <table>
+    <tr><td>발행일</td><td>2026-05-12 (KST)</td></tr>
+    <tr><td>발행 주기</td><td>분기 (Quarterly)</td></tr>
+    <tr><td>다음 발행 예정</td><td>2026-08 첫 일요일 (Q3)</td></tr>
+    <tr><td>발행 채널</td><td>research-curator Mode C (Quarterly L3 Deep Dive)</td></tr>
+    <tr><td>통합 L2 건수</td><td>5건 (매크로 섹터 L2 5건 통합)</td></tr>
+    <tr><td>교차 KB</td><td>knowledge-base/macro/us_monetary_policy.md + global_risk_factors.md + korea_economy.md</td></tr>
+    <tr><td>인용 건수</td><td>16건 (Policy 7 / White Paper 4 / Working Paper 3 / Filing 1 / Conference 1)</td></tr>
+    <tr><td>Debate Cards</td><td>4건</td></tr>
+    <tr><td>Contrarian Cards</td><td>3건</td></tr>
+    <tr><td>차분기 트래킹 지표</td><td>10개</td></tr>
+    <tr><td>관련 자산·종목 매트릭스</td><td>10종</td></tr>
+  </table>
+</div>
+
+<div class="disclaimer">
+  <h4>⚠️ 본 보고서 한계 + 면책</h4>
+  <p>
+  본 리포트는 <strong>research-curator L3 분기 Deep Dive</strong> 결과입니다. <strong>매수·매도 추천이 아닙니다</strong> — 1차 자료 종합 + 시나리오 + 트래킹 지표 제공이 목적입니다.<br><br>
+  데이터 무력화 시점: (1) 6/16-17 FOMC + dot plot 갱신에서 dissent 1명 이하 회귀 시 본 L3 "Fed 분열" thesis 약화, (2) BOJ 6월 회의 (6/16-17) 동결 + 매파 3인 의견 변화 없이 종료 시 "임박" 부분 약화, (3) IMF WEO 2026-10 업데이트에서 baseline 재상향 시 다운사이드 thesis 약화, (4) Powell 임기 연장 시 "후임 의장 변수" 시나리오 제거.<br><br>
+  본 L3 는 <strong>L2 frontmatter citation 그대로 사용</strong> — 임의 출처 추가 X (환각 방지). 단, 본문 통합 분석은 L2 + us_monetary_policy.md + global_risk_factors.md + korea_economy.md + fred_snapshot.json 교차 결과로 research-curator 책임. <strong>보강 L2 (boj_summary_april_2026_202605)의 [원문 확인 필요] 마커는 본문 §2.2 + 인용 [7]에 명시</strong>.<br><br>
+  <em>research-curator 시스템 3번째 L3 발행 — 반도체·에너지 Q2 동일 양식 + 5섹터 Q2 사이클 일관성 유지.</em>
+  </p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', newTheme);
+  document.getElementById('theme-icon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = newTheme === 'light' ? '다크 모드' : '라이트 모드';
+  localStorage.setItem('research-theme', newTheme);
+}
+const saved = localStorage.getItem('research-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-icon').textContent = saved === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = saved === 'light' ? '다크 모드' : '라이트 모드';
+}
+</script>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ related_industry_kb:
   - knowledge-base/industry/healthcare.md
 l1_index_count: 7
 l2_summary_count: 5
-l3_deep_dive_count: 0
+l3_deep_dive_count: 1
 deep_dive_priority: 4
 ---
 
@@ -59,7 +59,8 @@ deep_dive_priority: 4
 
 ## L3 분기 Deep Dive 이력
 
-- (예정) `reports/research/biotech_2027Q1.html` — 반도체·에너지·매크로 후순위. 2027 Q1 첫 발행 목표.
+- 2026-05-12 `reports/research/biotech_2026Q2.html` — L3 #1 첫 발행 — LLY 경구 GLP-1 (Foundayo 4/1) + NEJM SURMOUNT-5 + PROTAC 종양학 첫 (Veppanu 5/1) + CMS IRA 3차 통합 (5 L2 + biotech KB 교차, 인용 15건 / debate 4 / contrarian 3 / 트래킹 10)
+- (예정) `reports/research/biotech_2026Q3.html` — 2026-08 첫 일요일 발행
 
 ## 분석 에이전트 활용 가이드
 
