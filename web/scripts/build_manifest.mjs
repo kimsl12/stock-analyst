@@ -112,6 +112,43 @@ export function getCommitTimes(repoRoot = PROJECT_ROOT) {
   return map;
 }
 
+// reports/research/*.html 첫 commit time (= 발행일) 추출 [v3.21 — 2026-05-13]
+// parseResearch 의 date 필드용. getCommitTimes 와 달리 --diff-filter=A (Added) + 최초 등장만.
+// Q1=01-01 같은 분기 시작일 매핑 폐기 → 실제 발행 시점 사용 (다른 type 과 일관).
+export function getResearchFirstCommitTimes(repoRoot = PROJECT_ROOT) {
+  const map = new Map();
+  let raw = '';
+  try {
+    raw = execSync(
+      `git log --diff-filter=A --name-only --pretty=format:'__C__|%ct' -- 'reports/research/*.html'`,
+      {
+        cwd: repoRoot,
+        encoding: 'utf-8',
+        maxBuffer: 5 * 1024 * 1024,
+        stdio: ['ignore', 'pipe', 'pipe'],
+      },
+    );
+  } catch (e) {
+    console.error(`WARN: research first-commit git log 실패 — 분기 시작일 fallback (${e.message.split('\n')[0]})`);
+    return map;
+  }
+  let currentTs = null;
+  for (const line of raw.split('\n')) {
+    const t = line.trim();
+    if (!t) continue;
+    if (t.startsWith('__C__|')) {
+      currentTs = Number(t.slice(6));
+      if (!Number.isFinite(currentTs)) currentTs = null;
+    } else if (currentTs && t.startsWith('reports/research/')) {
+      // diff-filter=A 라 파일당 add commit 만. 단 git log 가 최신순이므로
+      // 같은 파일의 add 가 여러 번 있으면 첫 등장만 저장 (= 가장 최근 추가).
+      // 정상 케이스에선 파일당 add 1회.
+      if (!map.has(t)) map.set(t, currentTs);
+    }
+  }
+  return map;
+}
+
 // 파일경로 → unix sort_key. fallback chain:
 //   1. git commit time (최신)
 //   2. filename YYYYMMDD + 12:00 UTC
@@ -152,20 +189,34 @@ function parseStock(filename) {
   };
 }
 
-// [v3.17] research L3 분기 Deep Dive 파일명 파서
+// [v3.17 → v3.21, 2026-05-13] research L3 분기 Deep Dive 파일명 파서
 // 예: semiconductor_2026Q3.html → sector=semiconductor, year=2026, quarter=3
-// date 는 분기 시작월 1일로 매핑 (Q1=01-01 / Q2=04-01 / Q3=07-01 / Q4=10-01)
-function parseResearch(filename) {
+// date 는 git first commit time (= 발행일) 우선, 부재 시 분기 시작월 1일 fallback.
+// 다른 type (stock/briefing/analyst) 과 일관되게 "발행일" 의미로 통일.
+function parseResearch(filename, researchFirstTimes) {
   const m = RE_RESEARCH.exec(filename);
   if (!m) return null;
   const [, sector, year, q] = m;
-  if (!RESEARCH_SECTOR_LABELS[sector]) return null; // 등록된 5섹터 외 거부
-  const month = String(((Number(q) - 1) * 3) + 1).padStart(2, '0');
+  if (!RESEARCH_SECTOR_LABELS[sector]) return null; // 등록된 10섹터 외 거부
+
+  // 1순위: git first commit time (실제 발행일)
+  const relPath = `reports/research/${filename}`;
+  const ts = researchFirstTimes?.get(relPath);
+  let dateStr;
+  if (ts) {
+    const dt = new Date(ts * 1000);
+    dateStr = `${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, '0')}-${String(dt.getUTCDate()).padStart(2, '0')}`;
+  } else {
+    // fallback: 분기 시작월 1일 (Vercel 빌드 컨테이너 등 .git 부재 환경)
+    const month = String(((Number(q) - 1) * 3) + 1).padStart(2, '0');
+    dateStr = `${year}-${month}-01`;
+  }
+
   return {
     type: 'research',
     ticker: RESEARCH_SECTOR_LABELS[sector], // 한국어 섹터명 (UI ticker 슬롯)
     name: `${year} Q${q} Deep Dive`,
-    date: `${year}-${month}-01`,
+    date: dateStr,
     sector,
     quarter: `${year}Q${q}`,
   };
@@ -249,6 +300,8 @@ async function main() {
 
   // [v3.16] 모든 reports/ 파일의 git commit time 일괄 추출
   const gitTimes = getCommitTimes(PROJECT_ROOT);
+  // [v3.21] research L3 first-commit time (= 발행일) 일괄 추출
+  const researchFirstTimes = getResearchFirstCommitTimes(PROJECT_ROOT);
   let gitHits = 0;
   let gitMisses = 0;
 
@@ -286,10 +339,10 @@ async function main() {
     });
   }
 
-  // 1.5. reports/research/*.html (L3 분기 Deep Dive) [v3.17 — 2026-05-12]
+  // 1.5. reports/research/*.html (L3 분기 Deep Dive) [v3.17 — 2026-05-12, v3.21 발행일 매핑]
   const researchDir = path.join(REPORTS_DIR, 'research');
   for (const fn of await listHtml(researchDir)) {
-    const meta = parseResearch(fn);
+    const meta = parseResearch(fn, researchFirstTimes);
     if (!meta) {
       warnings.push(`미인식 research 파일명: ${fn}`);
       continue;
