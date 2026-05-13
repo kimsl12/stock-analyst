@@ -50,12 +50,18 @@ const BRIEFING_TYPE = {
 };
 
 // [v3.17 — 2026-05-12] research/ L3 분기 Deep Dive 섹터 한국어 라벨
+// [v3.18 — 2026-05-12] P1 #6 — 5섹터 추가 (defense·tech_platform·consumer·industrials·auto)
 const RESEARCH_SECTOR_LABELS = {
   semiconductor: '반도체',
   energy: '에너지',
   macro: '매크로',
   biotech: '바이오',
   fintech: '핀테크',
+  defense: '방산',
+  tech_platform: '기술/플랫폼',
+  consumer: '소비재',
+  industrials: '산업재',
+  auto: '자동차',
 };
 
 // ---------------------------------------------------------------------------

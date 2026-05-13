@@ -235,29 +235,58 @@ FY+2 EPS: 3개월 전 ₩X → 현재 ₩X (변화율 ±X%)
 - 리드가 KB 데이터를 data.md에 미리 통합해 두므로, 별도 KB 조회 불필요.
 - KB 파일을 수정하지 않는다 (읽기 전용).
 
-### Research KB 활용 — 컨센서스 vs 학술 시그널 [v3.17 신규, 2026-05-12]
+### Research KB 활용 — 컨센서스 vs 학술 시그널 [v3.18 강화, 2026-05-12]
 
 stock-analyst-lead 가 호출 프롬프트에 `research_kb_excerpts` 블록을 전달할 수 있다.
 
-**블록이 있을 때, 다음 신규 섹션 추가:**
+**블록이 있을 때, 다음 신규 섹션 추가 — 정량 표 의무화:**
 
-```
-[컨센서스 vs 학술 시그널 Divergence]
-- 컨센서스 (증권사 리포트 5개+): X 방향, 평균 목표가 ₩XXX
-- 학술/씽크탱크 시그널: Y 방향, 핵심 근거 📄 [Working Paper] ...
-- Divergence 폭: [없음 / 작음 (0~10%) / 중간 (10~25%) / 큼 (25%↑)]
-- 해석: 컨센서스 선행 vs 학술 선행 [어느 쪽 신뢰?]
+```markdown
+[컨센서스 vs 학술 시그널 정량 표]
+
+| 항목 | 컨센서스 | 학술 시그널 (research_kb_excerpts) | 괴리 | 해석 |
+|---|---|---|---|---|
+| 목표가 | $940 (5개 증권사 평균) | $850 (BIS WP 사이클 base rate 기반 추정) | -9.6% | 학술 보수적 |
+| 핵심 이벤트 시점 | 2027 Q1 (양산) | 2026 Q4 (ISSCC 12-Hi 데모 가속) | -3개월 | 학술 가속 |
+| 시장 점유율 2030 | 65% | 70% (McKinsey $1.6T 시장 규모 보강) | +5%p | 학술 우호 |
+| 리스크 base rate | 25% (default 추정) | 35% (BIS 메모리 사이클 통계) | +10%p | 학술 보수적 |
+
+종합:
+- N_B (Bull 강화 인용): X건
+- N_C (Contrarian/Bear 인용): Y건
+- Divergence 폭: [없음(<5%) / 작음(5~10%) / 중간(10~25%) / 큼(>25%)]
+- scorecard 전달 필드: `research_kb_n_bull = X`, `research_kb_n_contra = Y`, `research_kb_divergence_pct = ±N%`
 ```
 
-**Bull / Bear 논쟁에 인용:**
-- `Bull 측 주장 Top 3` / `Bear 측 주장 Top 3` 각각에 research excerpts 인용 ≥ 1건 우선
+### Bull / Bear 논쟁 인용
+
+`Bull 측 주장 Top 3` / `Bear 측 주장 Top 3` 각각에 research excerpts 인용 ≥ 1건 우선:
 - 인용 형식: `📄 [유형] 출처 (YYYY-MM) → 핵심 발견`
+- 분류 기준 (분석가가 본문에서 부여):
+  - **Bull 강화**: 컨센서스 매수 방향을 통계·구조적으로 보강 (예: ISSCC 양산 가시화, McKinsey 시장 규모)
+  - **Contrarian**: 컨센서스 깨는 가설 (예: BIS 메모리 사이클, MATCH Act, Sangam PIM)
+  - **Bear 시그널**: 학술 base rate 가 컨센과 25% 이상 괴리 + 시점 가까움 (6~12개월)
 
-**블록이 없거나 비어있을 때:**
+### scorecard-strategist 와 연동
+
+본 정량 표의 `N_B`, `N_C`, `divergence_pct` 값이 scorecard-strategist 의 Research KB Alignment 점수 보정 (v3.18) 입력으로 사용됨:
+- `N_C ≥ 2 AND N_C > N_B` → 🟡 Bear 시그널 → 종합 점수 -1~2
+- `N_B ≥ 2 AND N_B > N_C` → 🟢 Bull 강화 → 종합 점수 +1~2
+- `divergence_pct > 25% AND 시점 6~12M` → 🔴 강력 Bear → -2~3
+
+본 momentum-analyst 의 카운트가 정확해야 scorecard 보정이 정직하게 작동한다.
+
+### 블록이 없거나 비어있을 때
+
 - 신규 섹션 생략, 평소 컨센서스 분석으로 진행
-- "research KB 부재" 마커는 컨센서스 종합 섹션 끝에 1줄 명시
+- "research KB 부재 (해당 섹터 L2 요약 0건)" 마커는 컨센서스 종합 섹션 끝에 1줄 명시
+- scorecard 전달: `research_kb_n_bull = null`, `research_kb_n_contra = null`
 
-**환각 방지:** excerpts 에 없는 출처를 "기억"으로 추가 인용 금지.
+### 환각 방지
+
+- excerpts 에 없는 출처를 "기억"으로 추가 인용 금지
+- 정량 표의 학술 시그널 값은 excerpts 에 명시된 수치만 사용 (임의 추정 X)
+- 컨센서스 5개 증권사 미만 시 "샘플 부족" 마커 + 정량 표 행 일부 비움
 
 ### FRED 매크로 활용 — 모멘텀 컨텍스트 [v3.5 신규, 2026-05-07]
 `macro_context` 블록을 종목 모멘텀의 매크로 배경 설명에 활용:

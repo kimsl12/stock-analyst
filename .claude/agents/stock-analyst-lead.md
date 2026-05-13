@@ -1070,15 +1070,24 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 종목의 섹터를 식별하고, 해당 섹터의 research KB L2 요약을 1~3건 발췌해서 후속 분석 에이전트 5종 + scorecard 의 프롬프트에 첨부한다. 분석 에이전트들은 KB 직접 탐색이 금지되어 있으므로 리드가 발췌해야 한다.
 
-**섹터 매핑 (5섹터)**:
+**섹터 매핑 (10섹터)** [v3.18 — 2026-05-12, P1 #6 확장]:
 
 | 섹터 | 종목 예시 |
 |---|---|
-| `semiconductor` | 005930 삼성전자 / 000660 SK하이닉스 / NVDA / AVGO / TSM / MU / ASML / AMAT / LRCX / KLAC / ANET / AMD / MRVL |
+| `semiconductor` | 005930 삼성전자 / 000660 SK하이닉스 / NVDA / AVGO / TSM / MU / ASML / AMAT / LRCX / KLAC / ANET / AMD / MRVL / 009150 삼성전기 |
 | `energy` | CEG / VST / SMR / OKLO / CCJ / BWXT / DUK / SO / NEE / XOM / CVX / FSLR / 052690 한전기술 |
 | `biotech` | LLY / NVO / REGN / VRTX / JNJ / MRK / ABBV / GILD / BIIB / 한미약품 / 셀트리온 |
-| `fintech` | V / MA / PYPL / SQ / COIN / NU / SOFI / IBIT / 055550 신한지주 / 086790 하나금융 |
+| `fintech` | V / MA / PYPL / SQ / COIN / HOOD / NU / SOFI / IBIT / FBTC / BLK / GS / JPM / 055550 신한지주 / 086790 하나금융 |
+| `defense` (신규) | LMT / NOC / RTX / GD / BA / KTOS / HII / LDOS / 012450 한화에어로스페이스 / KAI / 329180 HD현대중공업 / LIG넥스원 |
+| `tech_platform` (신규) | META / GOOGL / AMZN / MSFT / AAPL / ORCL / ADBE / CRM / NOW / IBM / 035420 NAVER / 035720 카카오 |
+| `consumer` (신규) | COST / WMT / KO / PEP / PG / NKE / MCD / SBUX / LVMUY / LULU / BABA / JD |
+| `industrials` (신규) | GE / CAT / DE / HON / UNP / ETN (energy 겸) / PWR / 010120 LSELECTRIC / 034020 두산에너빌리티 / 466100 클로봇 / 000720 현대건설 |
+| `auto` (신규) | TSLA / GM / F / TM / RIVN / 005380 현대차 / 000270 기아 / HMC |
 | `macro` (제외) | 종목 단위 분석 시 매크로 단독 인용 X (global-macro-analyst 가 별도 처리) |
+
+**복수 섹터 매핑 케이스** (예: ETN = 에너지+산업재 겸):
+- 1차 섹터 (주 매핑) 발췌 + 2차 섹터 보조 1~2건 권장
+- 종목 분석 본문에 "주 섹터: X / 부 섹터: Y" 명시
 
 **워크플로**:
 1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 5섹터 매핑 결정

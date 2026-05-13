@@ -285,35 +285,53 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 ---
 
-## 📑 Research KB (`knowledge-base/research/`) — 2026-05-12 신규 도입
+## 📑 Research KB (`knowledge-base/research/`) — 2026-05-12 (v3.18: 10섹터 확장)
 
-> 5개 섹터(반도체·에너지·매크로·바이오·핀테크) × 4개 소스군(학술·씽크탱크·컨퍼런스·규제) 의 1차 자료를 깊이별 3-레이어 (L1 주간 헤드라인 / L2 월간 요약 / L3 분기 Deep Dive) 로 축적. **research-curator** 가 주간/월간/분기 모드로 갱신.
+> **10개 섹터** × 4개 소스군(학술·씽크탱크·컨퍼런스·규제) 의 1차 자료를 깊이별 3-레이어 (L1 주간 헤드라인 / L2 월간 요약 / L3 분기 Deep Dive) 로 축적. **research-curator** 가 주간/월간/분기 모드로 갱신.
 
-| 파일 | 역할 | 갱신 주기 | 상태 | 갱신일 |
-|------|------|----------|------|--------|
-| `_index.md` | L1 주간 헤드라인 인덱스 (5섹터 × 4유형) | 주간 | scaffolded (0건) | 05-12 |
-| `_sources.md` | 5×4 소스 레지스트리 (URL + 키워드) | 신규 등록 시 | active | 05-12 |
-| `_citation_format.md` | 인용 표준 형식 (8 유형 분류) | 거의 정적 | active | 05-12 |
-| `semiconductor/_meta.md` | 반도체 섹터 메타 (thesis + uncertainties) | 월간 | scaffolded | 05-12 |
-| `energy/_meta.md` | 에너지 섹터 메타 | 월간 | scaffolded | 05-12 |
-| `macro/_meta.md` | 매크로 섹터 메타 | 월간 | scaffolded | 05-12 |
-| `biotech/_meta.md` | 바이오 섹터 메타 | 월간 | scaffolded | 05-12 |
-| `fintech/_meta.md` | 핀테크 섹터 메타 | 월간 | scaffolded | 05-12 |
+### Q2 2026 상태 (5섹터 사이클 완성 + 5섹터 신규 scaffolded)
+
+| 섹터 | L1 | L2 | L3 | 상태 | 우선순위 |
+|---|---|---|---|---|---|
+| 반도체 | 6 | 5 | 1 ✅ | active | 1 |
+| 에너지 | 5 | 5 | 1 ✅ | active | 2 |
+| 매크로 | 8 | 5 | 1 ✅ | active | 3 |
+| 바이오 | 7 | 5 | 1 ✅ | active | 4 |
+| 핀테크 | 5 | 5 | 1 ✅ | active | 5 |
+| **방산** (신규) | 0 | 0 | 0 | scaffolded | **6** |
+| **기술/플랫폼** (신규) | 0 | 0 | 0 | scaffolded | **7** |
+| **소비재** (신규) | 0 | 0 | 0 | scaffolded | **8** |
+| **산업재** (신규) | 0 | 0 | 0 | scaffolded | **9** |
+| **자동차** (신규) | 0 | 0 | 0 | scaffolded | **10** |
+
+### 신규 5섹터 종목 매핑 (분석 빈도 高 사각지대 해소)
+
+- **방산**: LMT·NOC·RTX·GD·BA·KTOS·012450 한화에어로·KAI·329180 HD현대중공업
+- **기술/플랫폼**: META·GOOGL·AMZN·MSFT·AAPL·ADBE·035420 NAVER·035720 카카오
+- **소비재**: COST·WMT·KO·PEP·PG·NKE·LVMUY·BABA·SBUX·MCD
+- **산업재**: GE·CAT·DE·HON·UNP·010120 LSELECTRIC·034020 두산에너빌리티·466100 클로봇
+- **자동차**: TSLA·GM·F·TM·RIVN·005380 현대차·000270 기아
 
 ### 분기 Deep Dive (L3) 위치
 - 산출 파일: `reports/research/{sector}_{YYYY}Q{N}.html`
-- 발행 조건: Phase 1~4 완료 + L2 ≥ 5건 누적 (memory: `project_research_kb_phase5`)
-- 발행 우선순위: 반도체 → 에너지 → 매크로 → 바이오 → 핀테크
-- 첫 발행 예정: **2026 Q3 (2026-07 첫 일요일)** — 반도체부터
+- 발행 조건: Phase 1~4 완료 + L2 ≥ 5건 누적
+- 발행 우선순위: 반도체 → 에너지 → 매크로 → 바이오 → 핀테크 → 방산 → 기술플랫폼 → 소비재 → 산업재 → 자동차
+- 다음 발행 예정: **2026 Q3 (2026-07 첫 일요일)** — 기존 5섹터 + 신규 5섹터 (L2 ≥ 5건 충족 시)
 
-### 분석 에이전트 통합
+### 분석 에이전트 통합 [v3.18 — Alignment 점수 보정]
 - business-analyst / momentum-analyst / risk-analyst — stock-analyst-lead 가 호출 시 발췌 인용 전달
+- momentum-analyst — 컨센서스 vs 학술 시그널 **정량 표 의무화** (N_B/N_C 카운트 산출)
+- scorecard-strategist — Research KB Alignment 점수 보정 (±1~3점, ±3 cap)
 - global-macro-analyst — `research/macro/`, `research/{관련섹터}/` 직접 read 권한
 - briefing-lead — debate-card / contrarian-card 생성 시 research KB 우선 검색
 
-### 자동 호출 (briefing-lead Phase 0-A)
+### 자동 호출 (briefing-lead Phase 0-RESEARCH)
 - `/주간리포트` + `/글로벌인텔리전스` + `/모델포트폴리오` + `/풀브리핑` 에서만 자동 호출
 - `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` 은 자동 제외 (시간 폭주 방지)
+
+### 검증 사이클
+- 첫 verify 완료: 2026-05-12 (L2 25건 — PASS 9 / PAYWALL 6 / 404 5 / 보강 처리됨)
+- 다음 verify: 2026-08-01 (Q3 발행 직전)
 
 ---
 

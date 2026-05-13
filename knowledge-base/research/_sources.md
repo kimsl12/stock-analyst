@@ -1,5 +1,5 @@
 ---
-title: Research KB — 소스 레지스트리 (5섹터 × 4소스군)
+title: Research KB — 소스 레지스트리 (10섹터 × 4소스군)
 description: research-curator 가 수집할 소스 목록 + URL + 키워드 + 갱신 주기
 created: 2026-05-12
 last_updated: 2026-05-12
@@ -191,6 +191,188 @@ last_updated: 2026-05-12
 | OCC (Office of the Comptroller) | https://www.occ.gov/news-issuances/news-releases/ | bank-fintech partnerships | 월간 |
 | CFTC | https://www.cftc.gov/PressRoom/PressReleases | crypto derivatives | 월간 |
 | 한국 금융위원회 | https://www.fsc.go.kr/eng/ | 가상자산법, 토큰증권 | 월간 |
+
+---
+
+## 🛡️ Defense (방산·항공)
+
+### 학술
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| RAND Corporation Research | https://www.rand.org/topics/military-and-defense-strategy.html | defense strategy, force structure | 월간 |
+| CSIS Studies | https://www.csis.org/programs/international-security-program | military balance, alliances | 월간 |
+| Atlantic Council Reports | https://www.atlanticcouncil.org/programs/scowcroft-center-for-strategy-and-security/ | strategy, deterrence | 월간 |
+| Royal United Services Institute (RUSI) | https://www.rusi.org/explore-our-research | UK/EU defense, Ukraine war | 월간 |
+
+### 씽크탱크/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| CSIS Defense | https://www.csis.org/programs/defense-and-security | FMS, force planning | 월간 |
+| Brookings Foreign Policy | https://www.brookings.edu/program/foreign-policy/ | geopolitics, defense budget | 월간 |
+| IISS (International Institute for Strategic Studies) | https://www.iiss.org/publications | military balance, arms trade | 분기 |
+| Atlantic Council Forward Defense | https://www.atlanticcouncil.org/programs/scowcroft-center-for-strategy-and-security/forward-defense/ | future warfare | 월간 |
+
+### 컨퍼런스/백서
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| AUSA Annual Meeting | https://meetings.ausa.org/ | (연 1회 10월) US Army modernization | 분기 |
+| Sea-Air-Space | https://www.seaairspace.org/ | (연 1회 4월) US Navy modernization | 분기 |
+| DSEI | https://www.dsei.co.uk/ | (격년 9월) global defense expo | 분기 |
+| 한국 ADEX | https://www.seouladex.com/ | (격년 10월) 한국 방산 전시회 | 분기 |
+| Aero India | https://aeroindia.gov.in/ | (격년 2월) 인도 항공 방산 | 분기 |
+
+### 규제/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| US DoD | https://www.defense.gov/News/Releases/ | contract awards, FY 예산 | 주간 |
+| GAO Defense Reports | https://www.gao.gov/defense | program acquisition oversight | 월간 |
+| DSCA (FMS 승인) | https://www.dsca.mil/press-media/major-arms-sales | Foreign Military Sales | 주간 |
+| 한국 방위사업청 | https://www.dapa.go.kr/ | 한국 방산 계약·수출 | 월간 |
+| 일본 방위성 | https://www.mod.go.jp/en/ | 일본 방위 예산·5개년 계획 | 월간 |
+
+---
+
+## 💻 Tech / Platform (빅테크·SaaS·플랫폼)
+
+### 학술
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| arXiv cs.AI | https://arxiv.org/list/cs.AI/recent | foundation models, LLM, agents | 주간 |
+| arXiv cs.LG | https://arxiv.org/list/cs.LG/recent | machine learning, RLHF | 주간 |
+| arXiv cs.SE | https://arxiv.org/list/cs.SE/recent | software engineering, AI coding | 주간 |
+| NBER Innovation | https://www.nber.org/papers?facet=topics%3AInnovation | tech adoption, productivity | 월간 |
+| SSRN Information Systems | https://www.ssrn.com/index.cfm/en/anrn-information-systems-networks/ | platform economics | 월간 |
+
+### 씽크탱크/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| McKinsey Digital | https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights | AI capex, SaaS | 월간 |
+| BCG Digital | https://www.bcg.com/capabilities/digital-technology-data/overview | digital transformation | 월간 |
+| Brookings TechTank | https://www.brookings.edu/blog/techtank/ | US tech policy | 월간 |
+| Atlantic Council Geotech | https://www.atlanticcouncil.org/programs/geotech-center/ | tech geopolitics | 월간 |
+
+### 컨퍼런스/백서
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NeurIPS | https://neurips.cc/ | (연 1회 12월) AI/ML 최첨단 | 분기 |
+| ICML | https://icml.cc/ | (연 1회 7월) ML 컨퍼런스 | 분기 |
+| Web Summit | https://websummit.com/ | (연 1회 11월) global tech | 분기 |
+| KubeCon + CloudNativeCon | https://www.cncf.io/kubecon-cloudnativecon-events/ | (반년 1회) cloud native | 분기 |
+| AWS re:Invent | https://reinvent.awsevents.com/ | (연 1회 11월) AWS 신규 서비스 | 분기 |
+
+### 규제/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| FTC | https://www.ftc.gov/news-events/news/press-releases | antitrust, consumer protection | 주간 |
+| DOJ Antitrust | https://www.justice.gov/atr/news | GOOGL search·AMZN antitrust | 주간 |
+| EU AI Act 진행 | https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai | GPAI 의무, 8/2 집행 | 월간 |
+| 한국 공정거래위원회 | https://www.ftc.go.kr/eng/ | 플랫폼·망사용료 | 월간 |
+| 일본 공정거래위원회 | https://www.jftc.go.jp/en/ | 일본 플랫폼 규제 | 월간 |
+
+---
+
+## 🛍️ Consumer (소비재·리테일·식음료)
+
+### 학술
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NBER Consumer Studies | https://www.nber.org/papers?facet=topics%3AConsumer+Behavior | consumer behavior, K-shape | 월간 |
+| Journal of Consumer Research | https://academic.oup.com/jcr | brand, premiumization | 월간 |
+| American Economic Review | https://www.aeaweb.org/journals/aer | inflation pass-through | 월간 |
+
+### 씽크탱크/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| McKinsey Consumer | https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights | CPG, retail trends | 월간 |
+| BCG Consumer | https://www.bcg.com/industries/consumer-products-industry/overview | consumer products | 월간 |
+| Bain Retail | https://www.bain.com/industry-expertise/retail/ | retail strategy, luxury | 월간 |
+| Kantar Worldpanel | https://www.kantarworldpanel.com/ | FMCG, market share | 분기 |
+
+### 컨퍼런스/백서
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NRF Big Show | https://nrfbigshow.nrf.com/ | (연 1회 1월) 미국 리테일 어젠다 | 분기 |
+| Cannes Lions | https://www.canneslions.com/ | (연 1회 6월) 광고·브랜드 | 분기 |
+| IBC | https://show.ibc.org/ | (연 1회 9월) 미디어·콘텐츠 | 분기 |
+| China Retail Conference | (분기 industry events) | 중국 소비 트렌드 | 분기 |
+
+### 규제/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| FTC | https://www.ftc.gov/news-events/news/press-releases | M&A, 광고규제 | 주간 |
+| EU Commission (소비자보호) | https://commission.europa.eu/news_en | DMA, 소비자권리 | 월간 |
+| 한국 공정거래위원회 | https://www.ftc.go.kr/eng/ | 유통, 가맹사업 | 월간 |
+| 한국 식약처 | https://www.mfds.go.kr/eng/ | 식품·기능성 | 월간 |
+| 중국 SAMR | https://www.samr.gov.cn/ | 중국 소비자·반독점 | 월간 |
+
+---
+
+## 🏭 Industrials (산업재·인프라·물류)
+
+### 학술
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NBER Productivity | https://www.nber.org/papers?facet=topics%3AProductivity | productivity, automation | 월간 |
+| arXiv cs.RO | https://arxiv.org/list/cs.RO/recent | 로봇·자동화 학술 | 주간 |
+| SSRN Operations | https://www.ssrn.com/index.cfm/en/jel/jel_l.html | operations, supply chain | 월간 |
+
+### 씽크탱크/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| McKinsey Industrials | https://www.mckinsey.com/industries/advanced-electronics/our-insights | manufacturing, automation | 월간 |
+| BCG Industrials | https://www.bcg.com/industries/industrial-goods/overview | industrial goods | 월간 |
+| Boston Consulting Industrial | https://www.bcg.com/industries/engineered-products-infrastructure/overview | infrastructure, capex | 월간 |
+
+### 컨퍼런스/백서
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| Hannover Messe | https://www.hannovermesse.de/en/ | (연 1회 4월) 산업 자동화 | 분기 |
+| IBC (Industrial) | (분기 industry events) | 산업 컨퍼런스 | 분기 |
+| ISM Manufacturing PMI | https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/ | (월간) 제조업 PMI | 월간 |
+
+### 규제/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| FERC | https://www.ferc.gov/ | 그리드 인터커넥션 | 월간 |
+| 한국 산업통상자원부 | https://www.motie.go.kr/ | 한국 산업 정책 | 월간 |
+| 일본 METI | https://www.meti.go.jp/english/ | 일본 산업 정책 | 월간 |
+| 한국 LH (인프라) | https://www.lh.or.kr/ | 한국 인프라 발주 | 월간 |
+| 미국 인프라법 disbursement | https://www.transportation.gov/bipartisan-infrastructure-law | IIJA, IRA 진행 | 월간 |
+
+---
+
+## 🚗 Auto / Mobility (자동차·EV·배터리)
+
+### 학술
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NBER Auto | https://www.nber.org/papers?facet=topics%3ATransportation | auto industry, EV | 월간 |
+| Transportation Research | https://www.journals.elsevier.com/transportation-research-part-a-policy-and-practice | mobility, policy | 월간 |
+| arXiv cs.RO (자율주행) | https://arxiv.org/list/cs.RO/recent | autonomous driving, FSD | 주간 |
+
+### 씽크탱크/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| McKinsey Automotive | https://www.mckinsey.com/industries/automotive-and-assembly/our-insights | EV, autonomy | 월간 |
+| BCG Mobility | https://www.bcg.com/industries/automotive/overview | EV transition | 월간 |
+| EV-volumes / LMC Automotive | https://www.ev-volumes.com/ | EV 판매 통계 | 월간 |
+
+### 컨퍼런스/백서
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| CES | https://www.ces.tech/ | (연 1회 1월) auto·EV 신규 | 분기 |
+| Munich Motor Show (IAA Mobility) | https://www.iaa-mobility.com/ | (격년 9월) 유럽 자동차 | 분기 |
+| Detroit Auto Show | https://naias.com/ | (연 1회) 북미 자동차 | 분기 |
+| EVS (Electric Vehicle Symposium) | https://evs.org/ | (연 1회) EV 학술·산업 | 분기 |
+
+### 규제/정책
+| 소스 | URL | 키워드 | 주기 |
+|---|---|---|---|
+| NHTSA | https://www.nhtsa.gov/laws-regulations | 자율주행 가이드라인·리콜 | 월간 |
+| EPA (배출가스) | https://www.epa.gov/regulations-emissions-vehicles-and-engines | CAFE·CO2 | 월간 |
+| US IRA 변경 사항 | https://www.energy.gov/lpo/inflation-reduction-act-2022 | EV 세액공제 | 월간 |
+| 한국 환경부 | https://eng.me.go.kr/ | EV 보조금·배출 | 월간 |
+| EU CO2 규제 | https://climate.ec.europa.eu/eu-action/transport_en | EU 자동차 배출 | 월간 |
 
 ---
 
