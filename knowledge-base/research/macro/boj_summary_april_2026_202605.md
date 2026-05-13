@@ -4,6 +4,7 @@ sector: macro
 topic: boj_summary_april_2026
 date_published: 2026-05-12
 date_collected: 2026-05-12
+last_updated: 2026-05-12
 source_type: Policy
 source: "Bank of Japan — Summary of Opinions at the April 27-28 MPM"
 url: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260512.htm
@@ -32,12 +33,12 @@ key_finding: "BOJ가 4월 회의에서 정책금리 0.75%를 동결했으나 6-3
 | FY2027 Core CPI | 2.0% | 2.2% | +20bp 상향 |
 | GDP 성장률 FY2026 | 0.8% | 0.7% | -10bp |
 
-매파 dissent 위원의 명시 논리:
-- Takata: "인플레가 2% 이상 안착, 임금-물가 선순환 진입 → 추가 인상 정당화"
-- Tamura: "엔 약세 자체가 수입 인플레 채널, 통화 신뢰 회복 위해 점진적 정상화 필요"
-- Nakagawa: "장기 인플레 기대 anchoring 위해 BOJ 의지 명확화 필요"
+매파 dissent 3인의 1.0% 인상 제안 논리 (BOJ Summary 5/12 본문 익명 발언 + Reuters/CNBC 5/12 매핑):
+- **Takata Hajime**: "물가 안정 목표가 대체로 달성되었고, 일본 물가 리스크는 해외發 2차 효과로 이미 상방으로 기울었다" (price stability target had been more or less achieved; risks already skewed upside)
+- **Tamura Naoki**: "물가 리스크가 상방으로 유의하게 기울고 있어, BOJ는 정책금리를 가능한 한 중립금리에 가깝게 설정해야 한다" (policy rate should be set as close to the neutral rate as possible)
+- **Nakagawa Junko**: "중동 정세가 불확실한 가운데에서도 경제 흐름을 고려할 때, 완화적 금융여건 하에서 물가 리스크가 상방으로 기울고 있다" (risks skewed upside under accommodative financial conditions)
 
-[원문 확인 필요 — Summary of Opinions 영문 원문 의견별 매칭]
+(Reuters Tokyo, 2026-05-12 Summary of Opinions 보도; BOJ 영문 익명 의견 + 후속 매핑)
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 
@@ -47,14 +48,17 @@ key_finding: "BOJ가 4월 회의에서 정책금리 0.75%를 동결했으나 6-3
 
 ## 한계
 
-- 본 Summary of Opinions 는 위원별 매칭이 익명화 — 정확한 매핑은 의사록 본문 (6/19) 까지 추정 영역.
-- "1.0%로 25bp 인상 반대표"는 보도 (Nikkei·Bloomberg 5/12) 기반 — Summary 본문에 명시되지 않은 부분 포함 가능. [원문 확인 필요]
-- FY2026 Core CPI 1.9% → 2.8% 90bp 상향이 일회성 (유가 + 엔 약세) 인지 구조적 (임금-물가 선순환) 인지 5/12 시점 미확정.
+- 본 Summary of Opinions 는 위원별 매칭이 익명화 — 정확한 매핑은 6월 의사록 본문 (다음 회의 후 통상 1~2개월 시차로 공표) 까지 추정 영역. 위 발언 매핑은 Reuters/CNBC 보도 기반 정황 매핑.
+- "1.0%로 25bp 인상" 제안은 BOJ 공식 회의 결정문 (4/28 k260428a.pdf) 에 명시 — Nakagawa·Takata·Tamura 3인 dissent 사실 확정. 단, 발언자별 정확한 인용 매핑은 Summary 본문이 익명 처리되어 보도 매핑 의존.
+- FY2026 Core CPI 1.9% → 2.8% 90bp 상향이 일회성 (Dubai 유가 급등 + 엔 약세 가속) 인지 구조적 (임금-물가 선순환 진입) 인지 5/12 시점 미확정. BOJ Outlook (4월) 본문은 "2.5~3.0% 범위" 로 표현 (정밀 점추정 회피).
+- GDP 성장률 동시 하향 (FY2026 1.0% → 0.5%) — 스태그플레이션 리스크 부분 시그널 (BOJ Outlook 4/28 본문, gor2604a.pdf).
 - 무력화: 6월 회의 (6/16-17) 동결 + 매파 3인 의견 변화 없이 종료 시 본 thesis 의 "임박" 부분 약화. 또는 USD/JPY 158 이상 추가 약세 시 BOJ 외환개입 + 인상 동시 가능.
 
 ## 인용 (Citation)
 
 📄 [Policy] BOJ Summary of Opinions (2026-05-12) — "4월 27-28일 정책결정회의 의견 요약" → 0.75% 동결 + 6-3 split + FY2026 Core CPI 1.9%→2.8% 상향 = 6-7월 추가 인상 임박
 
-URL: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260512.htm
+URL: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/index.htm (Summary 인덱스 — 본 파일 미러 5/12 발행분)
+보조 출처: BOJ Outlook for Economic Activity and Prices, April 2026 (gor2604a.pdf), BOJ k260428a.pdf (4/28 정책결정 statement, 6-3 vote 명시)
+차기 일정: 다음 정책결정회의 **2026-06-15/16** (시장 컨센서스: 1.0% 인상 가능성 50%+, Reuters/Bloomberg 5/12 종합)
 관련: `knowledge-base/research/macro/fomc_8_4_dissent_april_202604.md` (FOMC 4/29 8-4 dissent와 비대칭 정책 경로 비교), `knowledge-base/macro/global_risk_factors.md` (글로벌 듀레이션 리스크), `knowledge-base/macro/korea_economy.md` (USD/JPY → KRW 채널)

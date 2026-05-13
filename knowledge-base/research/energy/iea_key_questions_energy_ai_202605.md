@@ -4,6 +4,7 @@ sector: energy
 topic: iea_key_questions_energy_ai
 date_published: 2026-05-08
 date_collected: 2026-05-12
+last_updated: 2026-05-12
 source_type: White Paper
 source: "IEA (International Energy Agency)"
 url: https://www.iea.org/reports/key-questions-on-energy-and-ai
@@ -15,9 +16,10 @@ key_finding: "IEA가 하이퍼스케일러 CapEx 2025년 $400B+ 돌파, 2026년 
 
 ## 핵심 발견 (5건)
 
-- 하이퍼스케일러 4사 (Microsoft, Google, Meta, Amazon) 통합 CapEx 가 **2025년 $400B를 돌파**, 2026년 가이던스 기준 **+75% 추가 증가** 시나리오 — IEA 가 IEA Electricity 2026 (4월) 의 baseline 가정보다 상방.
-- 본 White Paper 는 "AI 전력 수요"를 **단일 변수가 아닌 3중 변수** (DC 가동률 × 칩 효율 × 그리드 인터커넥션 lead time) 로 분해. 그리드 인터커넥션 lead time 이 가장 큰 단일 병목.
-- 미국 일부 주 (Virginia, Texas, Ohio, Arizona) 에서 **DC 신규 인터커넥션 신청 대기열 7~10년 누적** 으로, "전력 수요"가 "수요 충족 가능 여부"로 thesis 변환.
+- 글로벌 빅테크 통합 CapEx 가 **2025년 $400B+ 돌파**, 2026년 **+75% 추가 증가** 전망 — IEA Key Questions Executive Summary 본문 명시 ("the largest technology companies' capital expenditure exceeded USD 400 billion in 2025 – and is expected to jump by another 75% in 2026").
+- **데이터센터 전력 수요 2030년 정량**: IEA 본문 명시 — 글로벌 DC 전력 **2025년 485 TWh → 2030년 약 950 TWh (대략 2배)**. AI 전용 DC 전력은 동기간 **3배** 증가. 2025년 DC 전력 증가율 +17% (AI 전용 DC +50%).
+- **그리드 인터커넥션 lead time** 글로벌 명시: IEA 본문은 **"5~10년"** 으로 단일 범위 명시 (특정 주별 세부 분포 없음). PJM·ERCOT·SPP 등 미국 주요 RTO 의 인터커넥션 대기열은 IEA 외 별도 EIA·LBNL 자료가 7~10년대 상단 보고.
+- **전력 밀도 폭증**: AI 서버 1랙 단위 전력 밀도 **2020-2025년 11배 증가**, 2027년까지 추가 4배 증가 전망 — 고성능 서버 랙 (대형 냉장고 크기) 1대가 2027년 **65가구 peak 전력 수요**에 상응 (IEA 본문 직접 인용).
 - **DC 비유연성**: AI inferencing 트래픽 패턴은 풍력·태양광의 변동성과 매칭이 어려움 → 결과적으로 **베이스로드 (원자력·가스 + 일부 석탄 연장)** 의존이 시나리오상 유지.
 - **그리드 CapEx 자체가 thesis** — 트랜스포머, HVDC, 변전소 캐파 부족이 DC 신규 진입 자체를 막고 있어, 그리드 인프라 (TPC·SO·DUK·NEE 송전 자산) 가 신규 베타.
 
@@ -25,14 +27,18 @@ key_finding: "IEA가 하이퍼스케일러 CapEx 2025년 $400B+ 돌파, 2026년 
 
 | 항목 | IEA Key Questions (2026-05) | IEA Electricity 2026 (2026-04) |
 |---|---|---|
-| 글로벌 DC 전력 (2030) | 2배 (baseline) ~ 2.5배 (상방) | 2배 |
-| AI 전용 DC 전력 (2030) | 3배 (baseline) ~ 4배 (상방) | 3배 |
-| 하이퍼스케일러 CapEx 2025 | $400B+ | (별도 미공개) |
-| 하이퍼스케일러 CapEx 2026 | +75% (가이던스 기반) | (별도 미공개) |
-| 그리드 인터커넥션 lead time | 7~10년 (미국 주요 주) | 5~7년 (글로벌 평균) |
-| DC 가동률 (peak vs avg) | 70~90% | (별도 미공개) |
+| 글로벌 DC 전력 2025 (TWh) | 485 (확정 보고) | - |
+| 글로벌 DC 전력 2030 (TWh) | ~950 (약 2배 baseline) | 약 2배 |
+| AI 전용 DC 전력 (2030) | 3배 (baseline, IEA 본문) | 3배 |
+| 2025년 DC 전력 증가율 | +17% (AI DC +50%) | (별도 미공개) |
+| 하이퍼스케일러 CapEx 2025 | $400B+ (Executive Summary 명시) | - |
+| 하이퍼스케일러 CapEx 2026 | +75% (Executive Summary 명시) | - |
+| 그리드 인터커넥션 lead time | 5~10년 (IEA 본문 명시, 글로벌 범위) | 5~7년 (글로벌 평균) |
+| 전력 밀도 증가 (서버 랙) | 2020-25 11배 + 2027까지 +4배 | (별도 미공개) |
 
-[원문 확인 필요 — 정확한 페이지·섹션 번호]
+(IEA Key Questions on Energy and AI, Executive Summary, 2026년 발행 — WEO Special Report; IEA 5월 보도자료 "Data centre electricity use surged in 2025")
+
+참고: IEA 본문은 미국 주별 (Virginia/Texas/Ohio/Arizona) 인터커넥션 대기열 세부 분포는 명시하지 않음 — 본 항목은 LBNL Berkeley Lab + EIA 보조 자료 인용. IEA 의 5~10년 명시는 글로벌 범위 단일 수치.
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 
@@ -51,5 +57,6 @@ key_finding: "IEA가 하이퍼스케일러 CapEx 2025년 $400B+ 돌파, 2026년 
 
 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) — "Energy Demand from AI" → 하이퍼스케일러 CapEx 2025년 $400B+ 돌파, 2026년 +75% 추가 + DC 인터커넥션 lead time 7~10년 = 그리드 자체가 thesis
 
-URL: https://www.iea.org/reports/key-questions-on-energy-and-ai
+URL: https://www.iea.org/reports/key-questions-on-energy-and-ai (보고서 본문) — Executive Summary 별 페이지: /executive-summary
+보조 PDF: https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf (WEO Special Report 원본 다운로드)
 관련: `knowledge-base/research/energy/dc_power_iea_electricity_202604.md` (IEA Electricity 2026 baseline), `knowledge-base/industry/capex.md` (그리드 $720B), `knowledge-base/industry/energy.md` (원자력 풀체인)

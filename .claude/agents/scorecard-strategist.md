@@ -396,6 +396,74 @@ if current_price > consensus_avg_target:
 
 스코어카드 본문에 1줄: "매크로 레짐 판정: {레짐명} (10Y {dgs10}/Core PCE {core_pce_yoy} YoY/T10Y2Y {t10y2y}, FRED {snapshot_date})"
 
+## Research KB Alignment 점수 보정 [v3.18 신규, 2026-05-12]
+
+stock-analyst-lead 가 Phase 0-D 에서 `research_kb_excerpts` 블록을 첨부했을 때, 학술·정책 1차 자료가 컨센서스와 정렬되는지 여부에 따라 종합 점수에 **±1~3점 보정**을 자동 적용한다.
+
+### 도입 배경
+
+v3.17 첫 통합 검증 (SK하이닉스 v3) 에서 18건 인용 → 종합 점수 변동 0 발견. research KB 가 "thesis 강화 도구" 로만 작동, "thesis 도전 도구" 로는 작동 X. 본 보정 룰로 학술 시그널이 점수에 직접 반영되도록 한다.
+
+### 보정 룰
+
+| Divergence 방향 | 정의 | 점수 보정 |
+|---|---|---|
+| 🟢 학술이 Bull 강화 | research excerpts 가 컨센서스 매수 의견을 통계적·구조적 baseline 으로 보강 | **+1 ~ +2** |
+| ⚪ Neutral (정렬) | 학술 ≈ 컨센서스 — 같은 방향, divergence 미미 | **0** (기본) |
+| 🟡 학술이 Bear 시그널 | research excerpts 안에 컨센서스 깨는 Contrarian 가설 ≥ 2건 | **-1 ~ -2** |
+| 🔴 학술이 강력 Bear | research base rate 가 컨센과 25% 이상 괴리 + 시점 가까움 (6~12개월) | **-2 ~ -3** |
+
+### 적용 절차
+
+1. **excerpts 블록 분석** (5개 분석가 산출물 통합 시):
+   - 각 excerpt 의 key_finding 추출
+   - business-analyst / risk-analyst / momentum-analyst 의 인용에서 Bull / Bear / Contrarian 분류 (분석가가 본문에서 부여한 분류 우선)
+2. **Divergence 카운트**:
+   - Bull 강화 인용 `N_B`, Contrarian/Bear 인용 `N_C` 산출
+   - `N_C ≥ 2 AND N_C > N_B` → Bear 시그널
+   - `N_B ≥ 2 AND N_B > N_C` → Bull 강화
+   - 그 외 → Neutral
+3. **점수 보정 적용**:
+   - 종합 점수 산정 (10항목 100점) → `research_kb_adjustment` 별도 행 추가
+   - 최종 점수 = 종합 점수 + adjustment (±3점 cap)
+4. **본문 명시**:
+   - scorecard 본문에 "Research KB Alignment: {🟢/⚪/🟡/🔴} N_B Bull / N_C Bear, 보정 {±X}점" 1줄
+   - report-generator 전달 필드: `research_kb_alignment: "Bear 시그널 -2"`, `research_kb_adjustment: -2`
+
+### excerpts 부재 시
+
+블록 첨부 안 됨 (5섹터 외 / ETF / 매크로 단독) → 보정 0 + 본문에 "Research KB 부재 — 보정 N/A" 명시.
+
+### scorecard 출력 형식 (보정 적용 시)
+
+```
+▶ 종합 스코어
+| 항목 | 가중 점수 |
+|------|---------|
+| 10항목 합계 | 94.5 |
+| **Research KB Alignment** | **-1** 🟡 Bear 시그널 (N_C 3 vs N_B 2) |
+| **최종 점수** | **93.5** |
+
+▶ Research KB Alignment 상세
+- 🟢 Bull 강화 인용: ISSCC HBM4 본인 thesis 보강, McKinsey $1.6T 시장 규모
+- 🟡 Contrarian/Bear 인용: Samsung HBM4 도전 (40%), MATCH Act 우시 차질 (35%), Sangam PIM 장기 도전 (30%)
+- 결론: Contrarian 3건 ≥ Bull 2건 → Bear 시그널 -1 보정
+- 등급 영향: 94.5 → 93.5 (강력매수 유지, 임계 80 위)
+```
+
+### 환각 방지
+
+- 보정은 **excerpts 안 N_C/N_B 카운트만으로 결정** — 주관적 판단 X
+- 5개 분석가 산출물에 실제 인용된 카운트만 사용 (메모 임의 추가 X)
+- 보정 폭은 **±3점 cap** (점수 폭주 방지)
+- **등급 변동 임계점 (80/65/50/35) 넘는 보정 시 본문에 강조 명시** + Bull/Bear case 시나리오에 반영
+
+### 재분석 (BLIND) 모드 호환
+
+재분석 시 이전 v 의 research_kb_adjustment 값은 read 금지 (앵커링 차단). 본 회차 신규 카운트만으로 보정 산출.
+
+---
+
 ## 안전장치
 
 1. **웹검색 금지:** 서브에이전트 분석 결과만 사용
@@ -403,6 +471,7 @@ if current_price > consensus_avg_target:
 3. **무한 루프 금지:** KB 피드백 루프는 1회만 실행
 4. **완벽보다 완료:** 10항목 중 데이터 부족 항목은 "데이터 미수집"으로 표기 후 나머지 진행
 5. **자기 정당화 금지:** 리스크 분석가의 부정적 평가를 축소하지 않는다
+6. **Research KB Alignment 카운트 정직:** 분석가 본문의 분류를 그대로 사용, 임의 재분류 금지 [v3.18]
 
 ## 강제 규칙
 
