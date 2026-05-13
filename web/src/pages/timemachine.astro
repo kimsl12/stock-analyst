@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import kb from '../data/kb.json';
+import tickerNames from '../data/ticker_names_kr.json';
 
 type TmEntry = { ticker: string; first_date: string; count: number };
 const tm = (kb.timemachine ?? { '1w': [], '1m': [], '3m': [] }) as Record<'1w'|'1m'|'3m', TmEntry[]>;
@@ -8,6 +9,14 @@ const totals = {
   '1w': tm['1w'].length,
   '1m': tm['1m'].length,
   '3m': tm['3m'].length,
+};
+
+// ticker → 한국어명 통합 매핑 (us_stocks/us_etfs/kr_stocks/crypto 평탄화)
+const krNames: Record<string, string> = {
+  ...(tickerNames.us_stocks ?? {}),
+  ...(tickerNames.us_etfs ?? {}),
+  ...(tickerNames.kr_stocks ?? {}),
+  ...(tickerNames.crypto ?? {}),
 };
 ---
 <Base
@@ -47,13 +56,22 @@ const totals = {
   </section>
 </Base>
 
-<script define:vars={{ tm }}>
+<script define:vars={{ tm, krNames }}>
   const tbody = document.getElementById('tm-tbody');
   const status = document.getElementById('tm-status');
   const refreshBtn = document.getElementById('tm-refresh');
 
   let inflight = false;
   let currentPeriod = '1m';
+
+  // ticker → 표시 라벨 (한국어명 + ticker 부제 / 매핑 없으면 ticker 단독)
+  function labelOf(ticker) {
+    const kr = krNames[ticker];
+    if (kr && kr !== ticker) {
+      return `<strong>${kr}</strong><span class="ticker-code">${ticker}</span>`;
+    }
+    return `<strong>${ticker}</strong>`;
+  }
 
   function fmt(n, currency) {
     if (n == null) return '—';
@@ -90,7 +108,7 @@ const totals = {
     // 초기 행 렌더 (가격은 placeholder)
     tbody.innerHTML = items.map((it) => `
       <tr data-ticker="${it.ticker}">
-        <td><strong>${it.ticker}</strong></td>
+        <td>${labelOf(it.ticker)}</td>
         <td><span class="dim">${it.first_date}</span></td>
         <td class="num at-price"><span class="loading">…</span></td>
         <td class="num current-price"><span class="loading">…</span></td>
@@ -264,6 +282,17 @@ const totals = {
     display: inline-block;
     color: var(--dim);
     font-style: italic;
+  }
+  .ticker-code {
+    margin-left: 0.45rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--surface-2);
+    padding: 0.08rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
   @media (max-width: 600px) {
