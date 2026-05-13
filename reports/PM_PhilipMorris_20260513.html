@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PhilipMorris (PM) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>PhilipMorris (PM)</h1><div class="meta">주식 종합 분석 리포트 | 2026-05-13</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">78.9/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$186.93</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$291.3B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">23.5x (Fwd 26E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$139.58~$190.91</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">2.97%</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$5.22 (2.79%)</div></div><div class="ki"><div class="kl">YoY 매출</div><div class="kv">+10.2% (Q1)</div></div><div class="ki"><div class="kl">Smoke-free 비중</div><div class="kv">42%</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>필립모리스 인터내셔널(PM)</strong>은 글로벌 비미국 담배·니코틴 시장 1위 사업자이자 <strong>smoke-free 전환 1위</strong> 종목이다. 2026 Q1 실적은 매출 +10.2%(CC +13%), Adj EPS +13.5%, smoke-free 매출 비중 42% 달성으로 FY26 가이던스 상향(Adj EPS $7.85~8.05)을 이끌었다.<br><br><strong>투자 등급: 매수 (Buy), 종합 스코어 78.9/100</strong>. 강력매수 임계 80점에 1.1점 미달은 PER 23.5x 프리미엄 valuation에서 안전마진 제한이 원인이다. <strong>Wide Moat 4중 복합</strong> (브랜드+규제 진입장벽 + 니코틴 비탄력 수요 + 규모의 경제 + PMTA·MRTP 인증)이 해자의 본질.<br><br><strong>핵심 캐털리스트 3가지</strong>: (1) ZYN 미국 출하 +35% YoY (Q1), 영국·체코 launch (2026), (2) IQOS ILUMA 미국 본격 재출시 2026 Q3 — 미국 22M smokers 잠재 시장, (3) 4분기 연속 EPS 컨센 상향 + 기관 net buy +104M shares.<br><br><strong>핵심 리스크 3가지</strong>: (1) FDA flavored ZYN 추가 규제 (확률 30~40%), (2) IQOS 미국 launch 실패 (확률 25%), (3) PER 23.5x premium 회귀 (담배 섹터 평균 13x 대비 과도).<br><br><strong>매매 전략</strong>: 현재가 $186.93 부근에서 자본 40% 1차 진입. 손절 $176.49 (2×ATR), 1차 목표 $202.59 (3×ATR), Bull case 12~18개월 $215. 포트폴리오 비중 3~5% 코어 보유 권고.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$176.49</div><div class="dn" style="font-size:13px">-5.6%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$202.59</div><div class="up" style="font-size:13px">+8.4%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="260" y="30" width="90" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="260" y1="26" x2="260" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="260" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$176</text><line x1="325" y1="24" x2="325" y2="52" stroke="var(--text)" stroke-width="3"/><text x="325" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$187</text><line x1="423" y1="26" x2="423" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="423" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$203</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $140</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $191</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $5.22 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,60.0 187.0,85.3 225.6,122.2 220.8,176.3 172.3,194.5 140.0,235.0 93.0,214.7 73.4,171.6 59.2,123.7 101.8,97.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">기업 경쟁력 (Moat)</text><circle cx="140.0" cy="60.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 건전성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="225.6" cy="122.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">사업 다각화</text><circle cx="220.8" cy="176.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="172.3" cy="194.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀</text><circle cx="140.0" cy="235.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스·수급</text><circle cx="93.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 관리</text><circle cx="73.4" cy="171.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진·자본배분</text><circle cx="59.2" cy="123.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG·지배구조</text><circle cx="101.8" cy="97.4" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>기업 경쟁력 (Moat)</td><td>9.0</td><td>/10</td></tr><tr><td>재무 건전성</td><td>8.0</td><td>/10</td></tr><tr><td>성장성</td><td>9.0</td><td>/10</td></tr><tr><td>사업 다각화</td><td>8.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>5.5</td><td>/10</td></tr><tr><td>모멘텀</td><td>8.5</td><td>/10</td></tr><tr><td>컨센서스·수급</td><td>8.0</td><td>/10</td></tr><tr><td>리스크 관리</td><td>7.0</td><td>/10</td></tr><tr><td>경영진·자본배분</td><td>8.5</td><td>/10</td></tr><tr><td>ESG·지배구조</td><td>6.5</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 78.9/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide Moat</span></h2><p><strong>필립모리스 인터내셔널(PM)</strong>은 글로벌 비미국 담배·니코틴 제품 1위 사업자. 2008년 Altria 분사 후 미국 외 시장을 담당하다, <strong>2022년 Swedish Match 인수($16B)</strong>로 ZYN 확보, <strong>2024년 IQOS 미국 권리 회수</strong>까지 더해져 현재 미국 시장도 직접 운영한다.<br><br><strong>사업 구조 (2026E)</strong>:<br>&bull; Combustible (연소형 궐련): 매출 비중 ~58%. Marlboro(미국 외), L&M, Parliament, Chesterfield. 가격 인상 +5%로 volume -2% 상쇄.<br>&bull; <strong>Smoke-free (가열·니코틴파우치·전자담배): 매출 비중 ~42%</strong> (전년 ~40%에서 확대). IQOS (HTP), ZYN (니코틴파우치), VEEV (e-vapor). 2030년 목표 ≥66%.<br><br><strong>지역 mix</strong>: EU(~30%) / SSEA·CIS·MEA(~28%) / EA·AU·PMI DF(~17%) / Americas(~25%, ZYN·미국 IQOS).<br><br><strong>자본배분</strong>: 17년 연속 배당 증가, 연 ~$8.6B 배당 지급, Swedish Match 인수 잔여 부채 $42B 점진 축소.</p><h3>Moat 상세</h3><p><strong>4중 복합 해자 (해자 확대 중·Widening)</strong>:<br>1. <strong>브랜드 + 규제 진입장벽</strong>: Marlboro(국외) 글로벌 프리미엄 No.1. FDA PMTA 승인 평균 3~7년 + 수억 달러 비용 — 신규 진입자 사실상 봉쇄. IQOS는 50+ 시장 HTP 1위. ZYN은 미국 니코틴파우치 시장 점유율 70%+.<br>2. <strong>전환비용 (니코틴 의존성)</strong>: 니코틴은 의학적 입증 의존성. 가격 탄력성 -0.3~-0.5 (일반 소비재 -1.0~-1.5 대비 매우 둔감). 브랜드 전환 비율 5% 미만.<br>3. <strong>비용 우위·규모의 경제</strong>: 글로벌 생산 네트워크 50+ 공장. 단위 생산비 30~50% 우위. IQOS HEET·TEREA stick 제조 기술 격차 2~3년.<br>4. <strong>무형자산 (PMTA·MRTP 인증)</strong>: FDA 인증 자체가 자산. PM은 ZYN MRTP 신청 진행 — 승인 시 marketing 차별화 가능.<br><br><strong>해자 트렌드</strong>: 확대 중. Smoke-free 비중 42%까지 올라가면서 전통 담배보다 규제·기술 진입장벽이 더 높은 카테고리 점유율 우위 강화.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>연도</th><th>매출($B)</th><th>YoY</th><th>OP($B)</th><th>OPM</th><th>Adj EPS</th><th>EPS YoY</th></tr></thead><tbody><tr><td>2022</td><td>31.76</td><td>-0.5%</td><td>11.69</td><td>36.8%</td><td>$6.01</td><td>+9.0%</td></tr><tr><td>2023</td><td>35.17</td><td>+10.7%</td><td>12.96</td><td>36.8%</td><td>$6.23</td><td>+3.7%</td></tr><tr><td>2024</td><td>37.85</td><td>+7.6%</td><td>13.45</td><td>35.5%</td><td>$6.34</td><td>+1.8%</td></tr><tr><td>2025</td><td>37.90</td><td>+0.1%*</td><td>13.91</td><td>36.7%</td><td>$7.06</td><td>+11.4%</td></tr><tr><td>2026E</td><td>42.5</td><td>+12.1%</td><td>16.15</td><td>38.0%</td><td>$7.95</td><td>+12.6%</td></tr><tr><td>2027E</td><td>46.5</td><td>+9.4%</td><td>18.15</td><td>39.0%</td><td>$8.95</td><td>+12.6%</td></tr></tbody></table><h3>분석</h3><p><strong>Q1 2026 실적 (2026-04-22 발표)</strong>:<br>&bull; 매출 $9.30B (+10.2% YoY, CC +13%) — 컨센 $9.05B 상회<br>&bull; Adj EPS $1.95 (+13.5%) — 컨센 $1.85 상회<br>&bull; Smoke-free 매출 비중 42% (전년 39%)<br>&bull; ZYN 미국 출하 약 200M cans (+35% YoY)<br>&bull; FY26 가이던스 상향: Adj EPS $7.85~8.05 (기존 $7.50~7.70)<br><br><strong>수익성</strong>: 영업이익률 36.7% → 38.0% (smoke-free mix 효과). ROIC 26%, FCF 마진 32% — 모두 업종 평균 대비 우수.<br><br><strong>재무 건전성</strong>: Net debt $43.5B, Net debt/EBITDA 2.3x → 2.1x. 이자보상비율 9.5x. Swedish Match 인수 부채는 2026~27 FCF로 점진 축소.<br><br><strong>특수 사항</strong>: 자사주 매입 + 배당 누적으로 <strong>자기자본 음(-$11B)</strong> — 일반 ROE 산식 적용 불가. 대신 ROIC·ROCE 활용. 담배 섹터에서 흔한 구조(MO, BTI 동일).</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>지표</th><th>PM 현재</th><th>5년 평균</th><th>업종 평균</th><th>평가</th></tr></thead><tbody><tr><td>Fwd PER (2026E)</td><td>23.5x</td><td>18.5x</td><td>13.0x</td><td>Premium</td></tr><tr><td>Fwd PER (2027E)</td><td>20.9x</td><td>-</td><td>12.0x</td><td>합리적</td></tr><tr><td>EV/EBITDA Fwd</td><td>17x</td><td>13x</td><td>9x</td><td>Premium</td></tr><tr><td>배당수익률</td><td>2.97%</td><td>5.2%</td><td>6.5%</td><td>평균 미만</td></tr><tr><td>FCF Yield</td><td>4.1%</td><td>6.8%</td><td>6.5%</td><td>평균 미만</td></tr></tbody></table><p><strong>3법 평균 목표가 $192</strong> (현재 $186.93 대비 +2.7%):<br><br>1. <strong>DCF (WACC 7.5%, terminal g 2.5%)</strong>: $193<br>2. <strong>PER 비교</strong>: 2027E EPS $8.95 × 22x = $197<br>3. <strong>배당 할인 (DDM, g 7%/10년)</strong>: $185<br><br><strong>시나리오</strong>:<br>&bull; Bull (확률 25%): $215 (+15%) — IQOS US 대박 + ZYN 영국 흥행<br>&bull; Base (확률 60%): $192 (+3%) — 가이던스 충족<br>&bull; Bear (확률 15%): $145 (-22%) — FDA flavored 규제 + IQOS US 실패<br><br><strong>Expected Return = +3.5%</strong> (12개월 기준).</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>주가 모멘텀 (1년 +33%, S&P 대비 +22pt)</strong>:<br>&bull; 현재가 $186.93 vs 52주 고가 $190.91 — <strong>신고가 대비 -2.1% 근접</strong><br>&bull; 50DMA $175, 200DMA $162 — 골든크로스 3개월 이상 유지<br>&bull; RSI(14) ~67 (과매수 임계 70 근접하나 미돌파)<br>&bull; ATR(14) $5.22 = 2.79% 변동성 (저변동, S&P 평균의 60% — 방어주 특성)<br><br><strong>컨센서스 추이</strong>: 4분기 연속 EPS 상향. Q1 후 60일 내 8건 상향 vs 1건 하향. Citi $210 (Buy), MS $210 (OW), Goldman $195 (Buy 신규).<br><br><strong>수급</strong>: 1Q 13F 기관 net buy +104M shares (1.4B 발행 대비 7.4%). Druckenmiller 신규 진입 (2025 Q3 0.8%). Loeb 1.5% 유지.</p><table><thead><tr><th>항목</th><th>수치</th><th>비고</th></tr></thead><tbody><tr><td>목표가 평균</td><td>$192.5</td><td>20개사 평균</td></tr><tr><td>목표가 High</td><td>$210</td><td>Citi, MS</td></tr><tr><td>목표가 Low</td><td>$165</td><td>Wells Fargo</td></tr><tr><td>Buy / Hold / Sell</td><td>14 / 5 / 1</td><td>bullish skew</td></tr><tr><td>EPS 컨센 (2026E)</td><td>$7.95</td><td>Q1 후 +3.2% 상향</td></tr><tr><td>EPS 컨센 (2027E)</td><td>$8.95</td><td>Q1 후 +2.3% 상향</td></tr><tr><td>기관 보유</td><td>80%</td><td>Vanguard 9.1%, BlackRock 8.5%</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>카테고리 1위 압도 포지셔닝</strong>:<br><br>| 카테고리 | PM 점유율 | 비고 |<br>|----------|----------|------|<br>| HTP 글로벌 | <strong>70%+</strong> (IQOS) | BAT Glo 12%, JT Ploom 7% |<br>| Nicotine pouch (US) | <strong>70%+</strong> (ZYN) | Altria On! 22%, BAT Velo 4% |<br>| Cigarette (미국 외) | ~28% (Marlboro 외) | BAT 14%, JT 10% |<br><br><strong>3대 성장 동력</strong>:<br>1. <strong>IQOS</strong>: 사용자 2025말 30.4M → 2026E 33M. 일본 50%+, 이탈리아 30%+. 미국 ILUMA 2026 Q3 본격 출시 (FDA PMTA 2025-08 승인).<br>2. <strong>ZYN</strong>: 2025 미국 728M cans → 2026E 1B+ cans. Owensboro KY + Aurora CO 신공장 ramp. 영국·체코·남아공 launch 2026.<br>3. <strong>Combustible</strong>: 가격 +5%/yr, volume -2%/yr → 매출 +2~3%/yr 캐시카우.<br><br><strong>FDA 규제 환경</strong>: 2024-12 ZYN PMTA 승인 + 2025-08 IQOS ILUMA PMTA 승인 — 미국 시장 안정 진입 확정. 단, FDA가 flavored ZYN 추가 규제 검토 — 2027~28 규제 확률 30~40%.</p><table><thead><tr><th>기업</th><th>시가총액</th><th>Smoke-free 비중</th><th>주요 brand</th></tr></thead><tbody><tr><td>**PM (Philip Morris)**</td><td>**$291B**</td><td>**42%**</td><td>**IQOS, ZYN, VEEV**</td></tr><tr><td>Altria (MO)</td><td>$95B</td><td>~12%</td><td>On!, NJOY</td></tr><tr><td>British American Tobacco (BTI)</td><td>$92B</td><td>~17%</td><td>Glo, Vuse, Velo</td></tr><tr><td>Japan Tobacco (2914.T)</td><td>$56B</td><td>~8%</td><td>Ploom</td></tr><tr><td>Imperial Brands (IMB.L)</td><td>$22B</td><td>~6%</td><td>blu, Pulze</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><strong>최대 리스크: FDA flavored ZYN 규제 (R1)</strong>. 청소년 사용률 (2025 12.0%, +2pp YoY) 추세로 2027~28 추가 규제 확률 30~40%. PM은 자발적 청소년 marketing 제한 + retailer ID 검증으로 FDA와 협력 중.<br><br><strong>시나리오 분석</strong>:<br>&bull; Base (60%): EPS $7.95→$8.95, 목표가 $192, 기대수익률 +5%<br>&bull; Bull (25%): EPS $9.30, 목표가 $215, +15%<br>&bull; Bear (15%): EPS $7.80, 목표가 $145, -22%<br><br><strong>Devil's Advocate</strong>: (1) 담배는 본질적으로 declining 산업, (2) smoke-free margin이 cigarette보다 낮을 가능성 (공식 disclosure 없음), (3) 음의 자기자본 + 부채 $43B 구조적 취약, (4) ESG 영구 퇴출 위험.<br><br><strong>그럼에도 매수 이유</strong>: Wide Moat + 비탄력 수요 + 17년 배당증가 + 카테고리 1위 압도 (HTP 70%+, ZYN US 70%+) + EPS 컨센 4분기 연속 상향.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">R1: FDA flavored ZYN 규제·금지</text><circle cx="100" cy="50" r="5" fill="var(--sell)"/><text x="109" y="54" fill="var(--text)" font-size="10">R2: FDA nicotine cap (≤0.7mg)</text><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">R3: IQOS 미국 launch 실패</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">R5: 신흥국 환율 (USD 강세)</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">R10: 청소년 nicotine pouch backlash</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>R1: FDA flavored ZYN 규제·금지</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 30~40%. mint·wintergreen 외 flavored 금지 시 ZYN 매출 -25%, PM 전체 -10%. 검증 2027~28.</span></div><div class="ri rh"><strong>R2: FDA nicotine cap (≤0.7mg)</strong> (발생: 저, 영향: 고)<br><span style="color:var(--sub);font-size:13px">확률 10~15%. 도입 시 미국 cigarette 수요 -40%. Trump 행정부에서는 가능성 낮음.</span></div><div class="ri rm"><strong>R3: IQOS 미국 launch 실패</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 25%. 18개월 1M 미만 시 2027 EPS -$0.10~0.15. ILUMA 2.5세대 device + MRTP 신청으로 완화.</span></div><div class="ri rh"><strong>R5: 신흥국 환율 (USD 강세)</strong> (발생: 고, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 60%. -3~5% 환산매출 영향 지속. CC 기준 성장 정상.</span></div><div class="ri rm"><strong>R10: 청소년 nicotine pouch backlash</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">확률 35%. state-level flavored ZYN ban 가능 — 10개 주 시행 시 ZYN 매출 -10%.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>매수 전략 (3단계 분할)</strong>:<br>&bull; <strong>1차</strong>: $186.93 (현재가) — 자본 40%. 신고가 $190.91 돌파 시 트렌드 follow.<br>&bull; <strong>2차</strong>: $178~180 (50DMA 부근, ATR 1× 하락) — 자본 30% 추가.<br>&bull; <strong>3차</strong>: $165~170 (200DMA + 컨센 low) — 자본 30%. bear case 진입선.<br><br><strong>포지션 사이즈</strong>: 포트폴리오 내 PM 비중 <strong>3~5%</strong> (개별 종목 한도). 방어주 + 성장주 균형으로 코어 보유.<br><br><strong>목표가·손절 (ATR 기반)</strong>:<br>&bull; 목표가 1: $193 (현재 +3%, 컨센 평균 + DCF) — 3~6개월<br>&bull; <strong>목표가 2: $202.59 (3×ATR)</strong> — 6~12개월<br>&bull; 목표가 3 (Bull): $215 (+15%) — 12~18개월<br>&bull; <strong>손절가: $176.49 (2×ATR)</strong> — 단기 익절·재진입 라인<br>&bull; 장기 손절: $162 (200DMA 이탈) — 추세 붕괴<br><br><strong>R:R 비율</strong>: 현재 진입 시 base 1:1.5, bull 1:2.7. 신고가 근접해 단기 R:R은 보통.<br><br><strong>Trade timing</strong>:<br>&bull; 빠른 매수 (1주 내): 신고가 $190.91 돌파 + Q2 실적 (7/22) 앞두고 포지션 구축.<br>&bull; 천천히 매수 (1~2개월): $180~185 박스 거래 노리고 분할.<br>&bull; 회피: $190 위 추격매수 (RSI 67 과매수 임계 근접).<br><br><strong>모니터링 변수 3가지</strong>:<br>1. FDA flavored ZYN 정책 발표 (2027 Q1~Q2 예상)<br>2. IQOS US 18개월 사용자 수 (2026 Q4 first sell-through)<br>3. ZYN 영국·체코 launch 데이터 (2026 Q2~Q3)</p></div>
+<div class="sec"><h2>§ Confidence Interval (앵커링 보강)</h2><p><strong>목표가</strong>: <strong>$192</strong> (95% CI: <strong>$168 ~ $215</strong>, 폭 ±12%)</p>
+<p><strong>종합 스코어</strong>: <strong>78.9 / 100</strong> (가정 변경 시 ±4pt 변동 가능, CI 75~83)</p>
+<p style="margin-top:8px;color:var(--sub);font-size:14px"><strong>산출 근거</strong>: 가장 큰 변동 가정은 <strong>IQOS 미국 launch 성공 여부</strong> — bull 시 +5pt, bear 시 -4pt. 다음으로 FDA flavored ZYN 규제 (±3pt).</p></div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2><p style="color:var(--sub);font-size:14px;margin-bottom:10px">결론을 뒤집을 수 있는 가정 3개 + 반증 시 영향:</p>
+
+<h3 style="color:var(--blue)">가정 1: IQOS ILUMA 미국 launch가 18개월 내 2M+ 사용자 확보</h3>
+<ul>
+<li><strong>근거</strong>: 일본 50%·이탈리아 30% 점유 성공 → 미국 22M smokers의 10% 전환 모델</li>
+<li><strong>반증 시</strong> (1M 미만): 2027 EPS $8.95 → $8.40, 목표가 $192 → $175. <strong>스코어 -4pt, 등급 매수 유지 (74.9)</strong></li>
+<li><strong>검증 시점</strong>: 2026 Q4 first sell-through 데이터</li>
+</ul>
+
+<h3 style="color:var(--blue)">가정 2: FDA가 2027~28 mint·wintergreen 외 flavored ZYN 추가 규제 안 함</h3>
+<ul>
+<li><strong>근거</strong>: 2024-12 FDA가 5개 flavor PMTA 승인. 청소년 데이터 안정 시 추가 규제 보류</li>
+<li><strong>반증 시</strong> (mint·wintergreen 외 flavored 금지): ZYN 매출 -25%, PM 전체 -10%. <strong>스코어 -6pt, 등급 중립 강등 (72.9)</strong></li>
+<li><strong>검증 시점</strong>: 2027 Q1~Q2 FDA 발표</li>
+</ul>
+
+<h3 style="color:var(--blue)">가정 3: PER 22~24x 멀티플 유지 (smoke-free 성장 프리미엄)</h3>
+<ul>
+<li><strong>근거</strong>: 4분기 연속 EPS 상향 + Wide Moat narrative 강화</li>
+<li><strong>반증 시</strong> (PER 18x 회귀, 담배 섹터 평균): 목표가 $192 → $160 (-17%). <strong>스코어 -3pt, 등급 매수 유지 (75.9)</strong></li>
+<li><strong>검증 시점</strong>: 2026 Q2~Q3 실적 둔화 시그널 시</li>
+</ul>
+
+<p style="margin-top:10px;color:var(--warn);font-size:14px"><strong>평가</strong>: 3가지 가정 중 2개 이상 동시 반증 시 등급 매도 강등 가능 (스코어 &lt; 65). 단일 반증은 매수 등급 유지 가능.</p></div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-05-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="PM_PhilipMorris_20260513.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
