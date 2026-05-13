@@ -7,7 +7,7 @@ related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
 l1_index_count: 7
-l2_summary_count: 4
+l2_summary_count: 5
 l3_deep_dive_count: 0
 deep_dive_priority: 4
 ---
@@ -51,9 +51,10 @@ deep_dive_priority: 4
 
 ## L2 월간 요약 목록
 
+- 2026-05 `veppanu_vepdegestrant_fda_202605.md` — FDA Veppanu (vepdegestrant) PROTAC 첫
+- 2026-04 `attain_1_orforglipron_phase3_202604.md` — NEJM ATTAIN-1 Phase 3 orforglipron 경구 GLP-1 -12.4% (Foundayo 임상 베이스)
 - 2026-04 `orforglipron_foundayo_fda_202604.md` — FDA Foundayo (orforglipron) 4/1 승인
 - 2026-04 `surmount_5_tirzepatide_semaglutide_202604.md` — NEJM SURMOUNT-5 head-to-head
-- 2026-05 `veppanu_vepdegestrant_fda_202605.md` — FDA Veppanu (vepdegestrant) PROTAC 첫
 - 2026-04 `cms_ira_3rd_negotiation_202604.md` — CMS IRA 3차 협상 15개 약물
 
 ## L3 분기 Deep Dive 이력

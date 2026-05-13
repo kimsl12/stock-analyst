@@ -9,7 +9,7 @@ related_industry_kb:
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
 l1_index_count: 8
-l2_summary_count: 4
+l2_summary_count: 5
 l3_deep_dive_count: 0
 deep_dive_priority: 3
 ---
@@ -55,6 +55,7 @@ deep_dive_priority: 3
 
 ## L2 월간 요약 목록
 
+- 2026-05 `boj_summary_april_2026_202605.md` — BOJ Summary of Opinions (4/27-28) 0.75% 동결 6-3 split + FY2026 Core CPI 1.9%→2.8% 상향
 - 2026-04 `fomc_8_4_dissent_april_202604.md` — FOMC 4/29 8-4 dissent + Powell 마지막 회의 가능성
 - 2026-04 `imf_weo_shadow_of_war_202604.md` — IMF WEO 4/14 글로벌 3.1% + adverse 2.0%
 - 2026-03 `bis_qr_market_rotation_202603.md` — BIS QR 'Markets recalibrate' M7→밸류 로테이션

@@ -7,7 +7,7 @@ related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
 l1_index_count: 5
-l2_summary_count: 4
+l2_summary_count: 5
 l3_deep_dive_count: 0
 deep_dive_priority: 5
 ---
@@ -51,9 +51,10 @@ deep_dive_priority: 5
 ## L2 월간 요약 목록
 
 - 2026-05 `stablecoin_bis_papers_170_202605.md` — BIS Papers #170 EMDE 통화주권 침식 3 시나리오
+- 2026-04 `sec_self_custody_wallet_broker_202604.md` — SEC Staff Statement 4/13 셀프 호스팅 지갑 broker 미해당
+- 2026-04 `bis_briefing_global_stablecoin_slowdown_202604.md` — BIS Briefing 4/20 단편화 위험
 - 2026-03 `bis_wp_1340_stablecoin_fx_202603.md` — BIS WP #1340 스테이블코인 FX 스필오버
 - 2026-03 `sec_cftc_token_taxonomy_202603.md` — SEC+CFTC 5분류 token taxonomy
-- 2026-04 `bis_briefing_global_stablecoin_slowdown_202604.md` — BIS Briefing 4/20 단편화 위험
 
 ## L3 분기 Deep Dive 이력
 

@@ -7,7 +7,7 @@ related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
 l1_index_count: 5
-l2_summary_count: 4
+l2_summary_count: 5
 l3_deep_dive_count: 0
 deep_dive_priority: 2
 ---
@@ -51,10 +51,11 @@ deep_dive_priority: 2
 
 ## L2 월간 요약 목록
 
+- 2026-05 `iea_key_questions_energy_ai_202605.md` — IEA Key Questions on Energy and AI (하이퍼스케일러 CapEx $400B+, +75%, 그리드 lead time 7~10년)
+- 2026-05 `triso_x_xenergy_fuel_facility_202605.md` — NRC TRISO-X X-energy 연료 시설
 - 2026-04 `dc_power_iea_electricity_202604.md` — IEA Electricity 2026 DC 전력 2배·AI DC 3배
 - 2026-04 `nrc_part53_smr_licensing_202604.md` — NRC Part 53 발효 (Risk-Informed Technology-Inclusive)
 - 2026-04 `doe_loan_5_10_new_reactors_202604.md` — DOE LPO 5~10기 신규 원전 대출
-- 2026-05 `triso_x_xenergy_fuel_facility_202605.md` — NRC TRISO-X X-energy 연료 시설
 
 ## L3 분기 Deep Dive 이력
 
