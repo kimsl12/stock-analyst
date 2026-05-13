@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>에너지 2026 Q2 Deep Dive — DC 전력 2030 2배 + SMR Part 53 + DOE 5~10기 + TRISO-X</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+  --research:#7ee787;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;--research:#1a7f37;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .citation-block{background:#f6f8fa !important;color:#24292f}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+[data-theme="light"] .key-box{background:#fff8c5 !important;color:#24292f;border-color:#9a6700 !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1000px;margin:0 auto;font-size:16px;line-height:1.75}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px;line-height:1.35}
+.header .subtitle{color:var(--research);font-size:15px;margin-bottom:6px;font-weight:600}
+.header .meta{color:var(--sub);font-size:13px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+.research{color:var(--research)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:17px;color:var(--highlight);margin:18px 0 10px}
+.sec h4{font-size:15px;color:var(--research);margin:14px 0 8px}
+.sec p{margin:8px 0;font-size:14.5px;line-height:1.75}
+.sec ul{margin:8px 0 8px 20px;font-size:14.5px;line-height:1.8}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3);font-size:13.5px}
+
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .src{color:var(--sub);font-size:12px;margin-top:4px;padding-left:12px;font-style:italic}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3);font-size:13.5px}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
+.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
+.signal-bar.warning .fill{background:linear-gradient(90deg,var(--warning),#b08800)}
+
+.key-box{background:rgba(210,153,34,0.08);border:1px solid var(--warning);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:14px;line-height:1.7}
+
+.citation-block{background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.85;border-left:3px solid var(--research);font-family:'SF Mono','Menlo','Monaco',monospace}
+.citation-block .cit-item{margin:4px 0;color:var(--text)}
+.citation-block .cit-num{color:var(--research);font-weight:700;margin-right:6px}
+
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.scenario-card{padding:14px;border-radius:10px;border:1px solid var(--border)}
+.scenario-card.bull{background:rgba(63,185,80,0.06);border-color:var(--up)}
+.scenario-card.base{background:rgba(88,166,255,0.06);border-color:var(--highlight)}
+.scenario-card.bear{background:rgba(248,81,73,0.06);border-color:var(--down)}
+.scenario-card .sc-title{font-weight:700;margin-bottom:6px;font-size:15px}
+.scenario-card .sc-prob{font-size:12px;color:var(--sub);margin-bottom:8px}
+.scenario-card .sc-detail{font-size:13px;line-height:1.6}
+
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
+.summary-item{background:rgba(255,255,255,0.03);border-radius:8px;padding:14px;border:1px solid var(--border)}
+.summary-item .s-label{font-size:11px;color:var(--sub);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.summary-item .s-val{font-size:16px;font-weight:700;margin-bottom:6px}
+.summary-item .s-detail{font-size:13px;color:var(--text);line-height:1.55}
+
+sup.cit{color:var(--research);font-weight:700;font-size:11px;padding:0 2px;cursor:help}
+
+.tracker-row td:first-child{font-weight:700;width:42px;text-align:center}
+.tracker-row td:nth-child(2){font-weight:600}
+
+.matrix-table .net-strong-up{color:var(--up);font-weight:700}
+.matrix-table .net-mid-up{color:var(--up)}
+.matrix-table .net-mid-down{color:var(--down)}
+.matrix-table .net-zero{color:var(--neutral)}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{margin-top:24px;padding:16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.7}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+@media(max-width:700px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:21px}
+  .scenario-grid{grid-template-columns:1fr}
+  .summary-grid{grid-template-columns:1fr}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>⚡ 에너지 2026 Q2 Deep Dive<br>DC 전력 2030 2배 + SMR Part 53 + DOE 5~10기 + TRISO-X</h1>
+  <div class="subtitle">research-curator L3 분기 종합 / L2 5건 통합 + capex.md + energy.md + geopolitics.md 교차</div>
+  <div class="meta">발행일 2026-05-12 (KST) · L3 #2 (반도체 다음) / 다음 발행 2026-08 첫 일요일</div>
+</div>
+
+<!-- S1. Executive Summary -->
+<div class="sec">
+  <h2>S1. Executive Summary — 분기 핵심 5건</h2>
+  <p>2026 Q2 에너지 섹터는 <strong class="research">수요·자금·규제·연료 4축 동시 변곡점</strong> 분기로 정의된다. IEA가 DC 전력 2030년 2배라는 정량 앵커를 제시하면서 <strong class="research">미국 전력 수요 증가의 50%가 DC 단일 산업에서 나온다</strong>는 단일 산업 의존 첫 사례를 명문화했고, NRC Part 53이 4/29 발효로 SMR 라이선싱 패러다임을 전환했으며, DOE는 5~10기 신규 원전 LPO 대출을 의회 증언에서 사실상 확정했다. 5월 NRC TRISO-X 연료 시설 최종 라이선스가 더해지면 자금·규제·연료 3축이 정렬되며, IEA Key Questions on Energy and AI는 하이퍼스케일러 CapEx 2025년 $400B+ 돌파·2026년 +75% 추가라는 상방 압력을 추가 제시했다.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>분기 핵심</th><th>영향 종목</th><th>방향</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>1</td>
+        <td>IEA Electricity 2026 DC 전력 2030 2배 + AI DC 3배 — 미국 전력 수요 증가의 ~50%가 DC<sup class="cit">[1]</sup></td>
+        <td>DUK·SO·NEE·CEG·VST</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>2</td>
+        <td>NRC Part 53 발효 (4/29) — SMR 라이선싱 패러다임 전환 (제조지 연료 + 운반 + 고밀도 입지)<sup class="cit">[2]</sup></td>
+        <td>SMR·OKLO·BWXT·CCJ</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>3</td>
+        <td>DOE 의회 증언 — 첫 5~10기 신규 원전 LPO 대출 "거의 확정"<sup class="cit">[3]</sup></td>
+        <td>CEG·VST·SMR·OKLO·BWXT</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>4</td>
+        <td>NRC TRISO-X X-energy 연료 시설 (5월 예정) — HALEU 미국 자체 첫 양산급 공급선<sup class="cit">[4]</sup></td>
+        <td>BWXT·CCJ·SMR·OKLO</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+      <tr class="bg-up">
+        <td>5</td>
+        <td>IEA Key Questions on Energy and AI (5월) — 하이퍼스케일러 CapEx 2025 $400B+, 2026 +75%, 그리드 lead time 7~10년<sup class="cit">[5]</sup></td>
+        <td>DC 인프라(VRT·ETN) + 그리드(DUK·SO·NEE) + 원전(CEG·VST)</td>
+        <td class="up">🟢 Bull</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="s-label">단일 산업 의존 첫 사례</div>
+      <div class="s-val">미국 전력 +50% = DC</div>
+      <div class="s-detail">2025년 미국 전력 수요 증가의 약 50%가 데이터센터 — IEA Electricity 2026 명문화. 단일 산업이 그리드 전체를 좌우하는 첫 분기.</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">SMR 자금·규제·연료 3축 정렬</div>
+      <div class="s-val">2026 H1 동시 진행</div>
+      <div class="s-detail">DOE LPO 5~10기 (자금) + NRC Part 53 발효 (규제) + TRISO-X 5월 최종 라이선스 (연료) — 단일 분기 내 동시 가시화.</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">하이퍼스케일러 CapEx 상방</div>
+      <div class="s-val">$400B+ → +75%</div>
+      <div class="s-detail">IEA Key Questions: 2025 $400B+ 돌파, 2026 +75% 추가. IEA Electricity 2026 baseline 가정 상방 압력 — DC 2배 → 2.5배 시나리오 활성.</div>
+    </div>
+    <div class="summary-item">
+      <div class="s-label">그리드 인터커넥션 병목</div>
+      <div class="s-val">7~10년 lead time</div>
+      <div class="s-detail">미국 Virginia·Texas·Ohio·Arizona DC 신규 인터커넥션 7~10년 누적. "수요"가 아니라 "수요 충족 가능성"이 변수로 전환 — 그리드 CapEx 자체가 thesis.</div>
+    </div>
+  </div>
+
+  <div class="key-box">
+    <strong class="warning">⚠ 분기 핵심 결론:</strong> 본 분기는 SMR·원전 thesis가 자금(DOE)·규제(NRC)·연료(TRISO-X) 3축에서 동시에 가시화된 <strong>패러다임 분기</strong>. 단, 실제 양산 일정은 컨센 2028~2030 유지 — 본 분기 시그널이 일정 단축으로 전환되려면 (1) DOE 첫 disbursement 발표 (2) 첫 GLRO 발급 (3) TRISO-X 첫 연료 출하 3건 모두 2026 H2 확인 필요.
+  </div>
+</div>
+
+<!-- S2. DC 전력 수요 슈퍼사이클 -->
+<div class="sec">
+  <h2>S2. DC 전력 수요 슈퍼사이클 — IEA 2축 통합 분석</h2>
+  <p>2026 Q2의 가장 큰 변화는 <strong class="research">DC 전력 수요가 단순 증가율이 아니라 미국 그리드 전체를 단일 산업이 좌우하는 구조</strong>로 격상됐다는 점이다. IEA Electricity 2026 (4월) + IEA Key Questions on Energy and AI (5월)이 2축 통합으로 동일 결론을 제시 — DC 전력 2030년 2배, AI DC 3배, 그리고 미국 전력 수요 증가의 약 50%가 DC 단일 기여. 이는 capex.md S3 의 "글로벌 DC 전력소비 1,000TWh+ (2026E, 전세계 원전 발전량 1/3+)" 와 정량적으로 일치한다.</p>
+
+  <h3>S2-1. 글로벌 DC 전력 시나리오 (IEA 2축 비교)</h3>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>IEA Electricity 2026 (4월)</th><th>IEA Key Questions (5월 상방)</th><th>capex.md (2026-05-09)</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>글로벌 DC 전력 (2030)</td>
+        <td>2배 (baseline)</td>
+        <td>2~2.5배 (상방)</td>
+        <td>1,000 TWh+ (2026E, 일본 전체 전력소비 동등)</td>
+      </tr>
+      <tr class="bg-up">
+        <td>AI 전용 DC 전력 (2030)</td>
+        <td>3배 (baseline)</td>
+        <td>3~4배 (상방)</td>
+        <td>운영 DC 전력 비중 40%+ (AI)</td>
+      </tr>
+      <tr class="bg-up">
+        <td>2025 DC 전력 증가율</td>
+        <td>+17%</td>
+        <td>(별도 미공개)</td>
+        <td>+17% YoY</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>미국 전력 증가 중 DC 기여</td>
+        <td>~50% (2025)</td>
+        <td>(별도 미공개)</td>
+        <td>50% (2026.04 기준, Fortune)</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>하이퍼스케일러 CapEx 2025</td>
+        <td>(별도 미공개)</td>
+        <td>$400B+</td>
+        <td>$381~443B (TrendForce)</td>
+      </tr>
+      <tr class="bg-up">
+        <td>하이퍼스케일러 CapEx 2026</td>
+        <td>(별도 미공개)</td>
+        <td>+75%</td>
+        <td>$775~830B (4사~9사 합산)</td>
+      </tr>
+      <tr class="bg-down">
+        <td>그리드 인터커넥션 lead time</td>
+        <td>5~7년 (글로벌)</td>
+        <td>7~10년 (미국 주요 주)</td>
+        <td>24~72개월 DC 지연 (변압기·스위치기어)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>3축 데이터가 동일 결론을 가리킨다 — DC 전력 수요는 단순 증가가 아니라 <strong>그리드 인프라가 충족 불가</strong>한 단계로 진입했다. 결과: 베이스로드 (원자력·SMR·가스) 의존이 시나리오상 유지되고, 그리드 CapEx 자체가 신규 thesis로 부상.</p>
+
+  <h3>S2-2. 미국 그리드 인터커넥션 병목 — 단일 변수가 아닌 3중 변수</h3>
+
+  <p>IEA Key Questions on Energy and AI (5월)는 AI 전력 수요를 <strong>단일 변수가 아닌 3중 변수</strong>로 분해 — (1) DC 가동률 (70~90% peak vs avg), (2) 칩 효율 (GPU 세대별 W/연산), (3) 그리드 인터커넥션 lead time (7~10년). 그리드 lead time이 가장 큰 단일 병목이다.<sup class="cit">[5]</sup></p>
+
+  <p>구체적으로 미국 주요 주 (Virginia, Texas, Ohio, Arizona)에서 DC 신규 인터커넥션 신청 대기열이 7~10년 누적된 상태. 이는 "전력 수요"가 "수요 충족 가능 여부"로 thesis 변환됐음을 의미한다. capex.md S3의 "DC 인프라 지연 24-72개월 (변압기/스위치기어 부족)" 도 동일 그리드 병목의 단기 표면화.</p>
+
+  <div class="signal-bar warning"><div class="fill" style="width:80%"></div></div>
+  <p class="warning">⚠️ 그리드 인터커넥션 병목 강도: 7~10년 (미국 주요 4개 주, IEA Key Questions 기준) — FERC Order 2026 후속 또는 ATM(Advanced Transmission Technology) 보급 가속 시 단축 가능, 그러나 2026 Q2 시점 시그널은 부재.</p>
+
+  <h3>S2-3. DC 비유연성 → 베이스로드 의존</h3>
+
+  <p>IEA Key Questions는 또 다른 중요 결론을 제시 — AI inferencing 트래픽 패턴은 풍력·태양광의 변동성과 매칭이 어렵다. AI inference는 시간대별 일정한 부하 + 학습 시기 동안 24/7 풀 가동을 요구한다. 결과: 베이스로드 (원자력·가스 + 일부 석탄 연장) 의존이 시나리오상 유지된다.<sup class="cit">[5]</sup></p>
+
+  <p>이 결론은 2가지 함의를 가진다:</p>
+  <ul>
+    <li><strong>원전 자산 가치 재평가</strong> — CEG·VST의 기존 원자력 자산이 하이퍼스케일러 PPA 단가 +20~30% 가능성으로 재평가. capex.md "빅테크 원전 PPA: MS 2GW, Google 500MW, Amazon 5GW, Meta 6.6GW+1.2GW(Oklo)" 누적 10GW+ 가시화.<sup class="cit">[1][6]</sup></li>
+    <li><strong>순수 신재생 비중 후순위화</strong> — FSLR·ENPH·SEDG 등 순수 태양광·풍력 단독 사업자는 베이스로드 대비 thesis 후순위. 단, 그리드 인프라 결합 (FSLR + BESS + 송전망) 시 보완 가능.</li>
+  </ul>
+
+  <h3>S2-4. 하이퍼스케일러 CapEx 상방 — IEA baseline → 상방 시나리오 활성</h3>
+
+  <p>IEA Key Questions 5월 White Paper의 가장 큰 충격은 <strong>하이퍼스케일러 CapEx 2025년 $400B+ 돌파 + 2026년 +75% 추가</strong>가 IEA Electricity 2026 (4월) baseline 가정보다 상방 영역에 진입했다는 점이다. capex.md S1 "9사 합산 $830B" 와 IEA Key Questions가 동일 수치 일치 — 정량 앵커 검증.<sup class="cit">[5][6]</sup></p>
+
+  <p>baseline 가정이 상방으로 이동하면 IEA "DC 2030 2배" 시나리오는 "2.5배" 로 상방 압력을 받는다. 이는 다음 연쇄효과를 발생시킨다:</p>
+  <ul>
+    <li>원전 PPA 단가 +20~30% → +25~40% 가능성</li>
+    <li>그리드 CapEx $720B (2030, Goldman Sachs) → $850B+ 상향 가능성</li>
+    <li>SMR 파이프라인 45GW → 60GW+ (현재 25→45GW 80% 증가 중, 2030년까지)</li>
+  </ul>
+
+  <h3>S2-5. 그리드 CapEx 자체가 thesis — 그리드 인프라 직접 베타</h3>
+
+  <p>5월 분석의 핵심 메시지는 <strong>"그리드 CapEx 자체가 thesis"</strong>다. 트랜스포머·HVDC·변전소 캐파 부족이 DC 신규 진입 자체를 막고 있다. 이는 다음 종목군의 직접 베타를 의미한다:</p>
+
+  <ul>
+    <li><strong>VRT (Vertiv)</strong> — DC 전력관리·냉각 직접 베타. capex 19종 분석 스코어 83.4.</li>
+    <li><strong>ETN (Eaton)</strong> — 전력관리·배전 직접 베타. capex 19종 스코어 83.0.</li>
+    <li><strong>PWR (Quanta Services)</strong> — 송전·변전소 EPC 직접 베타.</li>
+    <li><strong>GEV (GE Vernova)</strong> — 가스 터빈 + 그리드 솔루션 결합 베타.</li>
+    <li><strong>ANET (Arista)</strong> — DC 네트워킹 + 클라우드 인터커넥션 베타.</li>
+  </ul>
+</div>
+
+<!-- S3. SMR 라이선싱 패러다임 전환 -->
+<div class="sec">
+  <h2>S3. SMR 라이선싱 패러다임 전환 — NRC Part 53 + DOE + TRISO-X 3축</h2>
+  <p>2026 Q2 최대 정책 변곡점은 <strong class="research">NRC Part 53 발효 (4/29)</strong> + <strong class="research">DOE LPO 5~10기 대출 의회 증언 (4월 중순)</strong> + <strong class="research">NRC TRISO-X 최종 라이선스 (5월 예정)</strong> 3축 동시 진행. 단일 분기 내 SMR 자금·규제·연료 3축이 모두 가시화된 첫 사례.</p>
+
+  <h3>S3-1. NRC Part 53 발효 — 3대 핵심 변화</h3>
+
+  <p>NRC Part 53 (Risk-Informed Technology-Inclusive Regulatory Framework)는 3월 30일 Federal Register 게재, 4월 29일 효력 발효됐다. NEIMA (Nuclear Energy Innovation and Modernization Act, 2019)의 이행 단계로, 비경수로 SMR·MMR (마이크로원자로) 등 차세대 설계를 단일 프레임으로 라이선싱 가능하게 했다.<sup class="cit">[2]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>변화</th><th>기존 Part 50 / Part 52</th><th>새 Part 53</th><th>SMR 양산 함의</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>안전 평가 방식</td>
+        <td>결정론적 + DBA 시나리오</td>
+        <td>PRA + SRE 정량 위험</td>
+        <td>표준화 모델 적용 → 라이선싱 기간 단축</td>
+      </tr>
+      <tr class="bg-up">
+        <td>인구 밀도 입지</td>
+        <td>저밀도 원격지 위주</td>
+        <td>25,000명+ 고밀도 허용 (입증 시)</td>
+        <td>DC 인접 배치 시나리오 가능</td>
+      </tr>
+      <tr class="bg-up">
+        <td>연료 주입 위치</td>
+        <td>발전소 사이트 (운영지)</td>
+        <td>제조지 → 운영지 운반 허용</td>
+        <td>양산 모델 — 모듈식 공장 양산 → 사이트 운반</td>
+      </tr>
+      <tr class="bg-up">
+        <td>운영자 라이선스</td>
+        <td>사이트별 개별 신청</td>
+        <td>GLRO 일반 라이선스 (조건 충족 시)</td>
+        <td>다중 사이트 동시 운영 — 빅테크 PPA 다중 사이트 가능</td>
+      </tr>
+      <tr class="bg-up">
+        <td>기술 적용</td>
+        <td>경수로 중심</td>
+        <td>비경수로·MMR·SMR 통합</td>
+        <td>OKLO Aurora (액체금속) · X-energy Xe-100 (가스냉각) 동시 적용</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>5월 1일 Federal Register에는 "Licensing Requirements for Microreactors and Other Reactors With Comparable Risk Profiles" (2026-08550)도 별도 게재됐다 — Part 53 외에 마이크로원자로 전용 라이선싱 룰이 추가. OKLO·BWXT 마이크로원자로 사업자에게 별도 트랙 제공.<sup class="cit">[3]</sup></p>
+
+  <h3>S3-2. DOE LPO 5~10기 대출 — 자금 트랙 가시화</h3>
+
+  <p>미국 에너지 장관이 4월 중순 의회 증언에서 <strong>첫 5~10기 신규 원전 DOE 대출이 거의 확정됐다</strong>고 명시했다. LPO (Loan Programs Office) 자금이 SMR + AP1000 일괄 지원 계획. 이는 capex.md S3 "DOE 첫 5-10기 신규 원전 DOE 대출 거의 확실" 와 일치하는 정량 앵커.<sup class="cit">[3][6]</sup></p>
+
+  <p>DOE 대출 + NRC Part 53 + IRA ITC 3종 결합은 미국 원전 르네상스의 자금·규제·세제 3축 정렬을 의미한다:</p>
+
+  <table>
+    <thead>
+      <tr><th>정책·자금</th><th>시점</th><th>규모/내용</th><th>영향 종목</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td>DOE LPO 5~10기 대출</td>
+        <td>2026 H1~H2 확정</td>
+        <td>첫 발표 시기 임박</td>
+        <td>SMR · NuScale · CEG · VST · BWXT</td>
+      </tr>
+      <tr class="bg-up">
+        <td>NRC Part 53</td>
+        <td>2026-04-29 발효</td>
+        <td>라이선싱 패러다임 전환</td>
+        <td>SMR · OKLO · BWXT</td>
+      </tr>
+      <tr class="bg-up">
+        <td>마이크로원자로 라이선스 룰</td>
+        <td>2026-05-01 Federal Register</td>
+        <td>Part 53과 별도 트랙</td>
+        <td>OKLO · BWXT</td>
+      </tr>
+      <tr class="bg-up">
+        <td>IRA ITC 원전</td>
+        <td>2025~2032 (10년)</td>
+        <td>신규·기존 원전 모두 적용</td>
+        <td>CEG · VST · D · SO · NEE</td>
+      </tr>
+      <tr class="bg-up">
+        <td>TRISO-X 연료 시설</td>
+        <td>2026-05 예정</td>
+        <td>NRC 최종 라이선스</td>
+        <td>X-energy + Centrus Energy (LEU)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>S3-3. NRC TRISO-X 연료 시설 — 단일 최대 병목 해소</h3>
+
+  <p>X-energy TRISO-X 연료 시설 (테네시 오크리지)이 2025년 말 수직 시공을 시작했고, 2026년 <strong>5월 내 NRC 최종 라이선스 발급이 예상</strong>된다. TRISO (TRistructural ISOtropic particle fuel) 는 흑연·SiC로 다층 코팅한 HALEU (High-Assay Low-Enriched Uranium) 연료로, 고온·고압·중성자선 환경에서 자체 격납 무결성을 유지한다.<sup class="cit">[4]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>항목</th><th>현재 (2026 상반기)</th><th>TRISO-X 가동 후</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>미국 HALEU 양산급 공급선</td>
+        <td>0개</td>
+        <td>1개 (TRISO-X)</td>
+      </tr>
+      <tr>
+        <td>HALEU 의존선</td>
+        <td>러시아 Tenex + DOE 비축</td>
+        <td>미국 자체 + Centrus Energy 신규</td>
+      </tr>
+      <tr>
+        <td>SMR 연료 lead time</td>
+        <td>24~36개월</td>
+        <td>12~18개월 (가동 후 가정)</td>
+      </tr>
+      <tr>
+        <td>SMR 양산 일정 영향</td>
+        <td>2028~2030 가동 시나리오 의문</td>
+        <td>2027~2028 가동 시나리오 가능성 ↑</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>TRISO-X 시설 가동은 <strong>SMR 양산 시나리오의 단일 최대 병목 해소</strong>를 의미한다. 현재 HALEU (20% 미만 농축 우라늄)는 미국 내 양산급 공급선이 부재 — 러시아 Tenex 의존 + DOE 비상 비축 의존 상태였다. 본 시설 가동 시 미국 내 첫 양산급 HALEU/TRISO 연료 공급선이 확보된다 — SMR·MMR (X-energy Xe-100, Oklo Aurora 등) 연료 공급 병목 해소.<sup class="cit">[4]</sup></p>
+
+  <p>참고로 Centrus Energy도 자체 HALEU 양산 라인 (American Centrifuge Plant, 오하이오 파이크튼)을 가동 중 — DOE 첫 HALEU 인도 완료 (2024). TRISO-X와 Centrus 양사 합산으로 미국 HALEU 공급망이 2027년부터 양산급 캐파 진입 시나리오.</p>
+
+  <h3>S3-4. SMR 양산 일정 — 컨센 vs 가속 시나리오</h3>
+
+  <p>3축 정렬의 결과로 SMR 양산 일정이 컨센서스보다 1~2년 단축 시나리오가 가능해진다:</p>
+
+  <div class="scenario-grid">
+    <div class="scenario-card bull">
+      <div class="sc-title">Bull (가속) 시나리오</div>
+      <div class="sc-prob">확률 25~30%</div>
+      <div class="sc-detail">DOE LPO + Part 53 + TRISO-X 3축 정렬 → SMR 첫 양산 <strong>2027 H1</strong> (TerraPower Natrium 일정 그대로). OKLO Aurora 2027 가동. SMR (NuScale) 6 모듈 2028 가동.</div>
+    </div>
+    <div class="scenario-card base">
+      <div class="sc-title">Baseline (컨센) 시나리오</div>
+      <div class="sc-prob">확률 50~55%</div>
+      <div class="sc-detail">SMR 첫 양산 <strong>2028~2030</strong>. TerraPower Natrium 2027 H1 시범 가동 후 본격 양산 2029. NuScale 6 모듈 2030 가동. capex.md "SMR 초기 가동 2028~2030, 본격 대규모 배치 2030s" 와 일치.</div>
+    </div>
+    <div class="scenario-card bear">
+      <div class="sc-title">Bear (지연) 시나리오</div>
+      <div class="sc-prob">확률 20~25%</div>
+      <div class="sc-detail">첫 GLRO 발급 18~24개월 지연 + TRISO-X 연료 출하 24개월 지연 → SMR 첫 양산 <strong>2031~2032</strong>. NuScale 매출 2025 $0.6M(-95.5% YoY)의 매출 공백 장기화.</div>
+    </div>
+  </div>
+</div>
+
+<!-- S4. CapEx 직접 베타 매트릭스 -->
+<div class="sec">
+  <h2>S4. CapEx 직접 베타 매트릭스 — capex 19종 + 그리드 $720B</h2>
+  <p>본 분기 IEA·NRC·DOE·TRISO-X 4축 시그널은 capex 19종 분석의 그리드 $720B + 하이퍼스케일러 $775~830B 두 정량 앵커와 일치한다. 종목별 노출 매트릭스를 4개 그룹으로 정리:</p>
+
+  <table>
+    <thead>
+      <tr><th>그룹</th><th>종목</th><th>capex 19종 스코어</th><th>2026E CapEx / 핵심 노출</th><th>본 L3 thesis 베타</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-up">
+        <td rowspan="3"><strong>유틸 3종</strong><br>평균 79.7</td>
+        <td>DUK Duke Energy</td>
+        <td>79.7</td>
+        <td>$102.2B (2030까지)</td>
+        <td>+Net 약 — DC PPA 직접 수혜 + 그리드 인프라</td>
+      </tr>
+      <tr class="bg-up">
+        <td>SO Southern</td>
+        <td>80.75</td>
+        <td>$81.2B + Vogtle 원전 운영</td>
+        <td>+Net 중 — 기존 원전 + 그리드 동시 수혜</td>
+      </tr>
+      <tr class="bg-up">
+        <td>NEE NextEra</td>
+        <td>78.7</td>
+        <td>그리드 + 신재생 균형</td>
+        <td>Net 0 — DC 베이스로드 vs 신재생 변동성 상쇄</td>
+      </tr>
+      <tr class="bg-up">
+        <td rowspan="2"><strong>원전 2종</strong><br>평균 83.1</td>
+        <td>CEG Constellation</td>
+        <td>82.4</td>
+        <td>TMI-1 835MW 재가동 2027 + MS 20년 PPA</td>
+        <td>+Net 강 — 기존 원전 자산 재평가 직접 베타</td>
+      </tr>
+      <tr class="bg-up">
+        <td>VST Vistra</td>
+        <td>83.8</td>
+        <td>원전 + 가스 + DC 직접 PPA</td>
+        <td>+Net 강 — 원전 + DC PPA 양면 수혜</td>
+      </tr>
+      <tr class="bg-warning">
+        <td rowspan="4"><strong>SMR 풀체인</strong><br>평균 70.0</td>
+        <td>SMR NuScale</td>
+        <td>60.25</td>
+        <td>NRC 유일 설계승인 77MWe + ENTRA1-TVA 6GW</td>
+        <td>±Net 약 — pre-revenue, Q1 매출 $0.6M(-95.5%)</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>OKLO</td>
+        <td>58</td>
+        <td>Aurora MMR + Meta 1.2GW Pike County</td>
+        <td>±Net 약 — pre-revenue, Part 53 + 마이크로원자로 룰 직접</td>
+      </tr>
+      <tr class="bg-up">
+        <td>CCJ Cameco</td>
+        <td>77.7</td>
+        <td>우라늄 1위 + Westinghouse 49%</td>
+        <td>+Net 중 — 우라늄 수요 베이스 + Westinghouse AP1000</td>
+      </tr>
+      <tr class="bg-up">
+        <td>BWXT</td>
+        <td>82.8</td>
+        <td>SMR 풀체인 + 해군 원자로 + TRISO 연료</td>
+        <td>+Net 강 — TRISO-X 직접 베타 + GLRO 양산 모델 적합</td>
+      </tr>
+      <tr class="bg-up">
+        <td rowspan="5"><strong>DC 인프라</strong><br>평균 82.6</td>
+        <td>VRT Vertiv</td>
+        <td>83.4</td>
+        <td>DC 전력관리·냉각 글로벌 1위</td>
+        <td>+Net 강 — 그리드 lead time 7~10년 직접 수혜</td>
+      </tr>
+      <tr class="bg-up">
+        <td>ETN Eaton</td>
+        <td>83.0</td>
+        <td>전력관리·배전 글로벌 1위</td>
+        <td>+Net 강 — 변압기·스위치기어 부족 직접 수혜</td>
+      </tr>
+      <tr class="bg-up">
+        <td>PWR Quanta</td>
+        <td>(별도)</td>
+        <td>송전·변전소 EPC</td>
+        <td>+Net 강 — FERC 인터커넥션 개혁 시 캐파 가속</td>
+      </tr>
+      <tr class="bg-up">
+        <td>GEV GE Vernova</td>
+        <td>(별도)</td>
+        <td>가스 터빈 + 그리드 솔루션</td>
+        <td>+Net 강 — 가스 베이스로드 + 그리드 양면</td>
+      </tr>
+      <tr class="bg-up">
+        <td>ANET Arista</td>
+        <td>(별도)</td>
+        <td>DC 네트워킹 + 클라우드 인터커넥션</td>
+        <td>+Net 중 — DC 캐파 증가 간접 수혜</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>S4-1. 그리드 $720B 분해 — Goldman Sachs vs IEA Key Questions</h3>
+
+  <p>Goldman Sachs $720B 그리드 CapEx (2030까지) 는 capex.md S3 의 정량 앵커. IEA Key Questions 5월 분석에서 lead time 7~10년이 추가되면 $720B 시나리오는 $850B+ 상향 압력을 받는다 — 변압기·HVDC·변전소 캐파를 lead time 단축까지 포함하면 +20% 추가 CapEx 가속이 필요.<sup class="cit">[5][6]</sup></p>
+
+  <p>capex.md S3 의 "미국 IOU 유틸리티 $1.4T CapEx (+27%, 2030까지)" 도 동일 압력. Duke $102.2B, Southern $81.2B, AEP $72B 가 선두 — DUK·SO 두 종목이 capex 19종 분석에서 직접 베타로 식별된 이유.<sup class="cit">[6]</sup></p>
+
+  <h3>S4-2. 빅테크 원전 PPA — 누적 10GW+ 가시화</h3>
+
+  <p>capex.md S3 의 "빅테크 원전 PPA: MS 2GW, Google 500MW, Amazon 5GW, Meta 6.6GW+1.2GW(Oklo)" 가 본 분기에 추가 가속화. Amazon X-energy $500M 투자 (2026.04.30), Meta-Oklo Pike County 1.2GW (Aurora Powerhouse 16기 x 75MW, 206 에이커) 가 가장 큰 신규 시그널.<sup class="cit">[6]</sup></p>
+
+  <table>
+    <thead>
+      <tr><th>빅테크</th><th>원전 파트너</th><th>약정 캐파</th><th>본격 가동 일정</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Microsoft</td><td>Constellation (TMI-1)</td><td>2 GW (20년 PPA)</td><td>2027</td></tr>
+      <tr><td>Google</td><td>Kairos Power (SMR)</td><td>500 MW</td><td>2030</td></tr>
+      <tr><td>Amazon</td><td>X-energy + Talen + Dominion</td><td>5 GW</td><td>2028~2030</td></tr>
+      <tr><td>Meta</td><td>Oklo Pike County (Aurora)</td><td>1.2 GW (16기 x 75MW)</td><td>2030~</td></tr>
+      <tr><td>Meta (추가)</td><td>SMR/AP1000 미공개</td><td>6.6 GW</td><td>2030~</td></tr>
+      <tr class="bg-up"><td><strong>합산</strong></td><td>—</td><td><strong>~15 GW+</strong></td><td>2027~2032 단계 가동</td></tr>
+    </tbody>
+  </table>
+
+  <p>15GW+ 누적 약정은 capex.md 의 "SMR 파이프라인 25GW(2024말) → 45GW(현재, +80%)" 와 일치 — 빅테크 PPA만으로 SMR 파이프라인의 ~33% 차지. 본 thesis는 단순한 정책·규제 시그널이 아니라 <strong>이미 진행 중인 PPA 약정의 실행 단계 진입</strong>.</p>
+</div>
+
+<!-- S5. Debate Cards -->
+<div class="sec">
+  <h2>S5. Debate Cards — 4건의 시장 논쟁 정량 분리</h2>
+  <p>본 L3 thesis가 시장 컨센서스와 충돌하는 4개 지점을 정량 분리. 각 카드는 Bull/Bear 양 측 출처 + verdict 포함.</p>
+
+  <div class="debate-card">
+    <div class="card-title">⚖ Debate #1 — SMR 양산 시점</div>
+    <div class="bull">🟢 <strong>Bull (2027~2028 가속):</strong> DOE LPO 5~10기 대출 거의 확정 + NRC Part 53 발효 + TRISO-X 5월 라이선스 3축 정렬 → TerraPower Natrium 2027 H1 + OKLO Aurora 2027 가능성</div>
+    <div class="src">출처: 📄 [Policy] US DOE Secretary Congressional Testimony (2026-04 중순) + [Policy] US NRC Part 53 Final Rule (2026-04-29) + [Policy] US NRC TRISO-X Fuel Facility (2026-05 예정)</div>
+    <div class="bear">🔴 <strong>Bear (2028~2030 컨센):</strong> 첫 GLRO 발급 사례까지 18~24개월 + PRA/SRE 입증 부담 + NRC 학습곡선 → 실제 양산 일정은 컨센 2028~2030 유지. Yale CleanEnergyForum "SMR 초기 가동 2028~2030, 본격 대규모 배치 2030s" 명시</div>
+    <div class="src">출처: 📄 [Filing] energy.md §7 (2026-05-10) "SMR 초기 가동 2028~2030, 본격 대규모 배치 2030s" + capex.md S3 (2026-05-09)</div>
+    <div class="verdict">⚖ <strong>Verdict:</strong> Baseline 시나리오 (확률 50~55%) — 컨센 2028~2030 유지. Bull (25~30%) vs Bear (20~25%) 확률 분포. TerraPower Natrium 2027 H1 시범 가동이 첫 핵심 시그널.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">⚖ Debate #2 — DC 전력 mix (가스+신재생 vs 원전 점유 회복)</div>
+    <div class="bull">🟢 <strong>Bull (원전 점유 회복):</strong> IEA Electricity 2026 + Key Questions 2축 → DC inferencing 비유연성 → 베이스로드 의존 → 2030년 글로벌 원전 점유 25%+ 회복. CEG·VST 기존 원전 자산 +20~30% 재평가</div>
+    <div class="src">출처: 📄 [White Paper] IEA Electricity 2026 (2026-04) + [White Paper] IEA Key Questions on Energy and AI (2026-05) "DC 비유연성 → 베이스로드 (원자력·가스 + 일부 석탄 연장) 의존 유지"</div>
+    <div class="bear">🔴 <strong>Bear (가스+신재생 컨센):</strong> 단기 5~7년 baseload SMR 캐파는 미미 (5기 ~1.5 GW vs DC 수요 +500~700 TWh). 결국 가스 + 신재생 + BESS 결합이 DC 수요 충족. 미국 BESS 70 GWh/35 GW (2026E, SEIA Q1 상향)</div>
+    <div class="src">출처: 📄 [Filing] energy.md §6-3 (2026-05-10) "미국 BESS 70GWh/35GW (SEIA Q1 상향, 기존 49GWh)" + capex.md "글로벌 BESS 315GWh(+51% YoY)"</div>
+    <div class="verdict">⚖ <strong>Verdict:</strong> 양측 동시 진행 — 단기 (2026~2030) 가스 + BESS 결합 mix 우세, 중장기 (2030~2035) 원전 점유 회복 가속. 단일 mix 시나리오가 아닌 <strong>2단계 mix 시나리오</strong>가 본 분기 컨센.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">⚖ Debate #3 — TRISO-X 연료 공급 안정성</div>
+    <div class="bull">🟢 <strong>Bull (안정 공급):</strong> NRC TRISO-X 5월 최종 라이선스 + Centrus Energy American Centrifuge Plant 양산 → 미국 HALEU 자체 양산급 2개 시설 확보. SMR 5~10기 연료 충족 가능</div>
+    <div class="src">출처: 📄 [Policy] US NRC TRISO-X Fuel Facility (2026-05 예정) + Centrus DOE 첫 HALEU 인도 완료 (2024)</div>
+    <div class="bear">🔴 <strong>Bear (공급 한계):</strong> TRISO-X 첫 양산 캐파 ~16 tHM/yr 추정 — SMR 5~10기 충족하려면 2~3개 시설 추가 필요. 라이선스 발급 ≠ 즉시 양산 — 첫 연료 출하까지 12~18개월 추가</div>
+    <div class="src">출처: 📄 [Policy] US NRC TRISO-X Fuel Facility (2026-05 예정) "한계 섹션 — 초기 캐파 ~16 tHM/yr 추정"</div>
+    <div class="verdict">⚖ <strong>Verdict:</strong> 본격 양산 시점은 <strong>2027 H1~H2 첫 연료 출하</strong>가 분기점. CCJ (우라늄 원광) + Centrus (LEU/HALEU 농축) + BWXT (TRISO 가공) 풀체인 분산 베타가 단일 종목 베타보다 안전.</div>
+  </div>
+
+  <div class="debate-card">
+    <div class="card-title">⚖ Debate #4 — 그리드 인터커넥션 병목 (FERC 개혁 가속 vs 지연)</div>
+    <div class="bull">🟢 <strong>Bull (FERC 2026 H2 개혁):</strong> FERC Order 2026 후속 + ATM (Advanced Transmission Technology) 보급 가속 → DC 인터커넥션 lead time 7~10년 → 4~6년 단축 가능 → DC 캐파 +50% 가능 시점 2~3년 앞당겨짐</div>
+    <div class="src">출처: 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) "무력화 시나리오 — 2026 Q3까지 미국 그리드 인터커넥션 reform (FERC Order 2026 후속)"</div>
+    <div class="bear">🔴 <strong>Bear (개혁 지연):</strong> FERC 개혁은 의회 통과 + 주별 실행 + 변압기·HVDC 캐파 공급 동시 충족 필요. 2026 H2~2027 H1 통과 시에도 실효는 2028 이후. 단기 DC 신축 24~72개월 지연 (capex.md) 유지</div>
+    <div class="src">출처: 📄 [Filing] capex.md S3 (2026-05-09) "DC 인프라 지연 24-72개월 (변압기/스위치기어 부족)"</div>
+    <div class="verdict">⚖ <strong>Verdict:</strong> FERC 개혁 진전 트래킹이 본 thesis의 가장 큰 단일 변수. 의회 통과 시그널은 <strong>2026 Q3~Q4</strong> 관찰 — 통과 시 그리드 인프라 종목 (VRT·ETN·PWR·GEV) +20~30% 가속.</div>
+  </div>
+</div>
+
+<!-- S6. Contrarian Cards -->
+<div class="sec">
+  <h2>S6. Contrarian Cards — 3건의 반대 시나리오 + 무력화 트리거</h2>
+  <p>본 L3 thesis가 잘못될 수 있는 3개 경로. 각 카드는 가정 + 신호 + 무력화 확률.</p>
+
+  <div class="contrarian-card">
+    <div class="card-title">🔥 Contrarian #1 — DC 전력 수요 2030 2배 시나리오 과대 평가</div>
+    <div class="assumption">가정: AI 효율 개선 (NVIDIA Blackwell → Rubin GPU/W) 50% 이상 시 IEA 시나리오 -30~40% 수정 가능</div>
+    <div class="signal">시그널: <strong>NVIDIA Rubin GPU/W 발표 + 하이퍼스케일러 inference per FLOP 효율 가이던스</strong> — 2026 Q3 NVIDIA Computex 2026 또는 Q4 어닝</div>
+    <div class="src">출처: 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) "Contrarian 시나리오 — LLM 학습 단가 하락 또는 inference 효율 급격 개선 시 DC 신규 수요 둔화"</div>
+    <div class="probability">⚠ <strong>무력화 확률:</strong> 20~25% — Rubin 효율 +50% 이상 가시화 시 본 L3 의 IEA 2배 시나리오 약화. 단, 그리드 lead time 7~10년 → 단기 충격 흡수 불가 → 그리드 thesis는 유지.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">🔥 Contrarian #2 — SMR 첫 양산 1~2년 지연</div>
+    <div class="assumption">가정: TerraPower Natrium 2027 H1 일정 → 부지 인허가 + TRISO-X 연료 공급 + 인플레 자재비 상승 → 2028 H2~2029 H1 지연</div>
+    <div class="signal">시그널: <strong>NRC 건설허가 결정 지연 + TRISO-X 첫 연료 출하 24개월+ 지연 + NuScale Q2~Q3 매출 공백 지속</strong> — NuScale Q1 2026 매출 $0.6M (-95.5% YoY) 이미 진행</div>
+    <div class="src">출처: 📄 [Filing] energy.md §7 (2026-05-10) "NuScale Q1 매출 $0.6M(-95.5% YoY), 매출 급감 — RoPower 라이선스+FEED 2025 완료. 유동성 $1.0B(05월 초 $1.2B+)"</div>
+    <div class="probability">⚠ <strong>무력화 확률:</strong> 25~30% — pre-revenue SMR 종목 (SMR·OKLO) 가 본 시나리오 직접 영향. SMR 19종 분석 스코어 60.25 (SMR) / 58 (OKLO) 가 평균 79 대비 낮은 이유 — 양산 일정 불확실성 이미 반영.</div>
+  </div>
+
+  <div class="contrarian-card">
+    <div class="card-title">🔥 Contrarian #3 — 미국 그리드 자체 한계</div>
+    <div class="assumption">가정: FERC 인터커넥션 개혁 정체 시 DC 신규 발주 제약 → NRG/RUN/유틸 캐파 확장 멈춤 → 본 L3 의 그리드 베타 (VRT·ETN·PWR·GEV) thesis 약화</div>
+    <div class="signal">시그널: <strong>FERC Order 2026 후속 의회 통과 부재 + 미국 주요 주 (VA·TX·OH·AZ) DC 신규 인터커넥션 신청 거절률 ↑</strong> — 2026 Q3~Q4 관찰</div>
+    <div class="src">출처: 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) "그리드 인터커넥션 lead time 7~10년" + capex.md S3 "DC 인프라 지연 24-72개월"</div>
+    <div class="probability">⚠ <strong>무력화 확률:</strong> 30~35% — 본 thesis 의 단일 최대 리스크. 그리드 종목은 DC 발주 의존 → DC 발주가 그리드 한계로 막히면 그리드 종목 자체도 캐파 확장 둔화. 자기참조 위험.</div>
+  </div>
+
+  <h3>Contrarian 종합 — 본 L3 무력화 임계</h3>
+
+  <p>3개 Contrarian 중 <strong>2개 이상 동시 발생</strong> 시 본 L3 thesis 부분 무력화. 가장 가능성 높은 조합:</p>
+  <ul>
+    <li><strong>Contrarian #2 + #3 (확률 ~15%)</strong> — SMR 양산 지연 + FERC 개혁 정체 → SMR 풀체인 + 그리드 베타 동시 약화. 이 경우 원전 베이스 (CEG·VST) 만 살아남음.</li>
+    <li><strong>Contrarian #1 + #3 (확률 ~10%)</strong> — Rubin 효율 +50% + FERC 정체 → DC 수요 자체 + 충족 능력 동시 둔화 → 전 섹터 thesis 약화.</li>
+    <li><strong>3개 모두 동시 발생 (확률 ~5%)</strong> — 본 L3 전면 무력화 → 에너지 섹터 thesis 재작성 필요.</li>
+  </ul>
+</div>
+
+<!-- S7. 차분기 트래킹 지표 -->
+<div class="sec">
+  <h2>S7. 차분기 트래킹 지표 (10개)</h2>
+  <p>본 L3 thesis 의 무력화 또는 가속을 알리는 10개 트래킹 지표. 2026 Q3 (8월 첫 일요일) L3 발행 시 본 지표 재평가.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>지표</th><th>임계값</th><th>현재 (2026-05-12)</th><th>시그널</th></tr>
+    </thead>
+    <tbody>
+      <tr class="tracker-row bg-up">
+        <td>1</td>
+        <td>NRC TRISO-X 최종 라이선스</td>
+        <td>5월 내 발급 vs 6월+ 지연</td>
+        <td>5월 예정 (시공 진행 중)</td>
+        <td>발급 시 SMR 연료 thesis 가시화. 지연 시 Contrarian #2 활성</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>2</td>
+        <td>DOE LPO 신규 disbursement</td>
+        <td>첫 SMR 자금 결정</td>
+        <td>의회 증언 단계 (4월 중순)</td>
+        <td>첫 disbursement 발표 시 자금 트랙 검증. 부재 시 thesis 약화</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>3</td>
+        <td>TerraPower Natrium 가동 일정</td>
+        <td>2027 H1 vs 지연</td>
+        <td>NRC 건설허가 2026 H1 결정 예정 ($650M 펀딩 완료)</td>
+        <td>건설허가 발급 시 Bull 시나리오 활성. 지연 시 Contrarian #2 직접</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>4</td>
+        <td>IEA WEO 2026 (10월 발표)</td>
+        <td>DC 전력 시나리오 상향 vs 하향</td>
+        <td>Key Questions 5월 발표 (상방 시그널)</td>
+        <td>WEO 10월 baseline 상향 시 DC 2.5배 시나리오 컨센화</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>5</td>
+        <td>미국 그리드 인터커넥션 대기열</td>
+        <td>TWh 단위 추가 vs 단축</td>
+        <td>VA·TX·OH·AZ 7~10년 누적 (IEA Key Questions)</td>
+        <td>FERC 개혁 시그널. 단축 시 Bull, 가중 시 Contrarian #3 활성</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>6</td>
+        <td>우라늄 spot 가격</td>
+        <td>$80~120/lb 범위</td>
+        <td>현재 ~$75/lb 추정 (energy.md 미명시)</td>
+        <td>CCJ 직접 베타. $100+ 돌파 시 우라늄 사이클 가속 시그널</td>
+      </tr>
+      <tr class="tracker-row bg-warning">
+        <td>7</td>
+        <td>카자흐스탄 우라늄 공급</td>
+        <td>정치 안정 vs 변동</td>
+        <td>안정 유지 (geopolitics.md 명시 부재)</td>
+        <td>러시아 제재 + 카자흐 변동 시 우라늄 spot $120+ 가능성</td>
+      </tr>
+      <tr class="tracker-row">
+        <td>8</td>
+        <td>FERC 인터커넥션 개혁 진전</td>
+        <td>의회 통과 시기</td>
+        <td>2026 Q3~Q4 관찰</td>
+        <td>통과 시 그리드 종목 (VRT·ETN·PWR·GEV) +20~30% 가속</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>9</td>
+        <td>하이퍼스케일러 CapEx 가이던스</td>
+        <td>$1T+ 2027 유지</td>
+        <td>$775~830B (2026, capex.md)</td>
+        <td>Q2 어닝 (7~8월) 가이던스 상향 시 IEA 상방 검증</td>
+      </tr>
+      <tr class="tracker-row bg-up">
+        <td>10</td>
+        <td>NVIDIA 데이터센터 매출</td>
+        <td>FY26 $193.7B+ 유지</td>
+        <td>FY26 $193.7B (이미 반영)</td>
+        <td>FY27 가이던스 +30%+ 시 DC 수요 검증. 둔화 시 Contrarian #1 활성</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>본 10개 중 <strong>3개 이상 임계값 통과 시</strong> 본 L3 thesis 부분 무력화 → 2026 Q3 발행 시 시나리오 재평가. <strong>5개 이상 통과 시</strong> 본 L3 전면 재작성 필요.</p>
+</div>
+
+<!-- S8. 관련 종목 영향 매트릭스 -->
+<div class="sec">
+  <h2>S8. 관련 종목 영향 매트릭스 (Bull/Bear 시나리오 Net)</h2>
+  <p>본 L3 의 5개 thesis 가 시나리오 (Bull = DC 2배 + SMR 가속 + DOE 자금 + TRISO-X + 그리드 개혁) vs (Bear = Contrarian #1~#3 동시 발생) 양 극단에서 종목별 Net 영향:</p>
+
+  <table class="matrix-table">
+    <thead>
+      <tr><th>종목</th><th>노출 유형</th><th>Bull 영향</th><th>Bear 영향</th><th>Net 방향</th><th>capex 19종 스코어</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CEG Constellation</strong></td>
+        <td>원전 PPA + TMI-1 재가동 + MS 20년 PPA</td>
+        <td class="up">+30%</td>
+        <td class="down">-15%</td>
+        <td class="net-strong-up">+Net 강</td>
+        <td>82.4</td>
+      </tr>
+      <tr>
+        <td><strong>VST Vistra</strong></td>
+        <td>원전 + DC 직접 PPA + 가스 베이스로드</td>
+        <td class="up">+35%</td>
+        <td class="down">-20%</td>
+        <td class="net-strong-up">+Net 강</td>
+        <td>83.8</td>
+      </tr>
+      <tr>
+        <td><strong>SMR NuScale</strong></td>
+        <td>SMR pre-revenue + NRC 유일 설계승인 + ENTRA1-TVA 6GW</td>
+        <td class="up">+60%</td>
+        <td class="down">-40%</td>
+        <td class="net-zero">±Net 약 (변동성 극대)</td>
+        <td>60.25</td>
+      </tr>
+      <tr>
+        <td><strong>OKLO</strong></td>
+        <td>SMR pre-revenue + Aurora MMR + Meta 1.2GW</td>
+        <td class="up">+50%</td>
+        <td class="down">-35%</td>
+        <td class="net-zero">±Net 약 (변동성 극대)</td>
+        <td>58</td>
+      </tr>
+      <tr>
+        <td><strong>CCJ Cameco</strong></td>
+        <td>우라늄 1위 + Westinghouse 49% + 원전 풀체인</td>
+        <td class="up">+25%</td>
+        <td class="down">-15%</td>
+        <td class="net-mid-up">+Net 중</td>
+        <td>77.7</td>
+      </tr>
+      <tr>
+        <td><strong>BWXT</strong></td>
+        <td>SMR 풀체인 + 해군 원자로 + TRISO 연료</td>
+        <td class="up">+30%</td>
+        <td class="down">-15%</td>
+        <td class="net-strong-up">+Net 강</td>
+        <td>82.8</td>
+      </tr>
+      <tr>
+        <td><strong>DUK Duke Energy</strong></td>
+        <td>유틸 베이스 + $102.2B CapEx</td>
+        <td class="up">+15%</td>
+        <td class="down">-10%</td>
+        <td class="net-mid-up">+Net 약</td>
+        <td>79.7</td>
+      </tr>
+      <tr>
+        <td><strong>SO Southern</strong></td>
+        <td>유틸 + Vogtle 원전 + $81.2B CapEx</td>
+        <td class="up">+18%</td>
+        <td class="down">-10%</td>
+        <td class="net-mid-up">+Net 중</td>
+        <td>80.75</td>
+      </tr>
+      <tr>
+        <td><strong>NEE NextEra</strong></td>
+        <td>유틸 + 신재생 균형 포트폴리오</td>
+        <td class="up">+12%</td>
+        <td class="down">-12%</td>
+        <td class="net-zero">Net 0</td>
+        <td>78.7</td>
+      </tr>
+      <tr>
+        <td><strong>VRT Vertiv</strong></td>
+        <td>DC 전력관리·냉각 글로벌 1위</td>
+        <td class="up">+35%</td>
+        <td class="down">-20%</td>
+        <td class="net-strong-up">+Net 강</td>
+        <td>83.4</td>
+      </tr>
+      <tr>
+        <td><strong>ETN Eaton</strong></td>
+        <td>전력관리·배전 글로벌 1위</td>
+        <td class="up">+25%</td>
+        <td class="down">-15%</td>
+        <td class="net-strong-up">+Net 강</td>
+        <td>83.0</td>
+      </tr>
+      <tr>
+        <td><strong>034020 두산에너빌리티</strong></td>
+        <td>SMR 창원 공장 8,068억 + 체코 원전 5.6조</td>
+        <td class="up">+20%</td>
+        <td class="down">-12%</td>
+        <td class="net-mid-up">+Net 중</td>
+        <td>(별도)</td>
+      </tr>
+      <tr>
+        <td><strong>015760 한국전력</strong></td>
+        <td>원전 5기 5월 재가동 + DC 판매량 확대</td>
+        <td class="up">+10%</td>
+        <td class="down">-15%</td>
+        <td class="net-mid-down">-Net 약 (LNG·석탄 연료비 상승)</td>
+        <td>(별도)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="warning"><em>※ Net 영향은 본 L3 시나리오 양 극단 가정 — 매수·매도 추천 X. 종목별 진입 결정은 별도 stock-analyst-lead 종목 분석 참조. capex 19종 스코어는 capex 슈퍼사이클 별도 분석 결과 참조 — 본 L3 thesis 와 교차 검증.</em></p>
+</div>
+
+<!-- S9. 인용 -->
+<div class="sec">
+  <h2>S9. 인용 (Citation) — 통합 15건</h2>
+  <p>본 L3 deep dive 가 인용한 출처. L2 frontmatter citation 그대로 사용 — 임의 출처 추가 X (환각 방지).</p>
+
+  <h3>출처 유형별 분포</h3>
+  <ul>
+    <li><strong>White Paper</strong>: 2건 (IEA Electricity 2026, IEA Key Questions on Energy and AI)</li>
+    <li><strong>Policy</strong>: 6건 (NRC Part 53, DOE 의회 증언, Federal Register 마이크로원자로 룰, NRC TRISO-X, Centrus HALEU, IRA ITC)</li>
+    <li><strong>Think Tank</strong>: 1건 (Goldman Sachs $720B 그리드)</li>
+    <li><strong>Filing</strong>: 4건 (capex.md S3, energy.md §7, geopolitics.md §7-3, NuScale Q1 2026)</li>
+    <li><strong>Conference</strong>: 1건 (Yale CleanEnergyForum — SMR 양산 일정)</li>
+    <li><strong>기타</strong>: 1건 (Fortune — 미국 전력 +50% DC 기여 보도자료)</li>
+  </ul>
+
+  <div class="citation-block">
+    <div class="cit-item"><span class="cit-num">[1]</span> 📄 [White Paper] IEA Electricity 2026 (2026-04) — "DC 전력 수요 2030년 2배·AI DC 3배, 2025년 미국 전력 증가의 ~50% DC 기여" → 유틸·원자력 capex thesis 정량 앵커. URL: https://www.iea.org/reports/electricity-2026</div>
+    <div class="cit-item"><span class="cit-num">[2]</span> 📄 [Policy] US NRC Part 53 Final Rule (2026-03-30 Federal Register, 2026-04-29 발효) — "Risk-Informed Technology-Inclusive Regulatory Framework for Commercial Nuclear Plants" → SMR·MMR·고밀도 입지 라이선싱 패러다임 전환. URL: https://www.nrc.gov/reactors/new-reactors/advanced/modernizing/rulemaking/part-53</div>
+    <div class="cit-item"><span class="cit-num">[3]</span> 📄 [Policy] US DOE Secretary Congressional Testimony (2026-04 중순) — "첫 5~10기 신규 원전 DOE LPO 대출 거의 확정, SMR/AP1000 일괄 지원 계획". URL: https://www.energy.gov/lpo</div>
+    <div class="cit-item"><span class="cit-num">[4]</span> 📄 [Policy] US NRC TRISO-X Fuel Facility Final License (2026-05 예정) — "X-energy 테네시 오크리지 TRISO-X 연료 시설" → 미국 내 첫 양산급 HALEU/TRISO 연료 공급선. URL: https://www.x-energy.com/triso-x</div>
+    <div class="cit-item"><span class="cit-num">[5]</span> 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) — "Energy Demand from AI" → 하이퍼스케일러 CapEx 2025년 $400B+ 돌파, 2026년 +75% 추가 + DC 인터커넥션 lead time 7~10년 = 그리드 자체가 thesis. URL: https://www.iea.org/reports/key-questions-on-energy-and-ai</div>
+    <div class="cit-item"><span class="cit-num">[6]</span> 📄 [Filing] capex.md S3 (2026-05-09) — "전력망 투자 필요 $720B (2030까지, Goldman Sachs) + 미국 IOU 유틸리티 $1.4T CapEx (+27%) + 빅테크 원전 PPA 10GW+ + SMR 파이프라인 25→45GW(+80%)"</div>
+    <div class="cit-item"><span class="cit-num">[7]</span> 📄 [Policy] Federal Register (2026-05-01) — "Licensing Requirements for Microreactors and Other Reactors With Comparable Risk Profiles" (2026-08550) → Part 53 외 마이크로원자로 별도 트랙. URL: https://www.federalregister.gov/documents/2026/05/01/2026-08550/licensing-requirements-for-microreactors-and-other-reactors-with-comparable-risk-profiles</div>
+    <div class="cit-item"><span class="cit-num">[8]</span> 📄 [Policy] IRA Inflation Reduction Act ITC 원전 (2025~2032, 10년) — 신규·기존 원전 모두 적용. CEG·VST·D·SO·NEE 자기자본 요구 감소 — ROIC 개선</div>
+    <div class="cit-item"><span class="cit-num">[9]</span> 📄 [Filing] energy.md §7 (2026-05-10) — "NuScale Q1 매출 $0.6M(-95.5% YoY), 유동성 $1.0B. TerraPower Natrium NRC 건설허가 2026 H1 결정 예정, $650M 펀딩 완료. Sabey DC+KBR 파트너십. SMR 초기 가동 2028~2030, 본격 대규모 배치 2030s"</div>
+    <div class="cit-item"><span class="cit-num">[10]</span> 📄 [Filing] capex.md S3 (2026-05-09) — "DC 인프라 지연 24-72개월 (변압기/스위치기어 부족), 글로벌 DC 전력소비 1,000TWh+ (2026E, 일본 전체 전력소비 동등), 미국 DC 전력수요 76GW (2026E, 2024 50GW 대비 +52%)"</div>
+    <div class="cit-item"><span class="cit-num">[11]</span> 📄 [Filing] capex.md S3 (2026-05-09) "빅테크 원전 PPA" — MS 2GW (Constellation TMI-1, 20년 PPA), Google 500MW (Kairos Power), Amazon 5GW (X-energy + Talen + Dominion), Meta 6.6GW + 1.2GW (Oklo Pike County Aurora 16기 x 75MW)</div>
+    <div class="cit-item"><span class="cit-num">[12]</span> 📄 [Filing] geopolitics.md §7-3 (2026-05-10) — "Brent $101.73/bbl (5.8), WTI $94.12/bbl (5.9). 호르무즈 5.4 이후 통항 0건. 한국 원유수입 70.7% 중동 + 수입원유 95% 호르무즈 경유. 유가 시나리오: MOU 합의 시 $80~90 / 교착 $90~105 / 전면전 재개 $130~150"</div>
+    <div class="cit-item"><span class="cit-num">[13]</span> 📄 [Filing] energy.md §6-3 (2026-05-10) — "미국 BESS 70GWh/35GW (SEIA Q1 2026 상향, 기존 49GWh). 유틸리티 62.4GWh/20.2GW + BTM 7.3GWh/14.8GW. 글로벌 BESS 315GWh(+51% YoY, 2025), 2026E 450+GWh"</div>
+    <div class="cit-item"><span class="cit-num">[14]</span> 📄 [Conference] Yale CleanEnergyForum (2026) — "SMR 초기 가동 2028~2030, 본격 대규모 배치 2030s. 글로벌 SMR 파이프라인 DC-SMR 오프테이크 45GW (2024말 25GW 대비 2배)" (energy.md §7 인용)</div>
+    <div class="cit-item"><span class="cit-num">[15]</span> 📄 [Filing] energy.md §7 (2026-05-10) — "X-Energy IPO $1.02B 조달. $23 → 첫날 $30.11(+31%). 시총 $10B+. Amazon 5GW 약정. 파이프라인 11GW. 두산에너빌리티 SMR 창원 전용공장 8,068억 투자 (2026.03~2031.06, 연 20기+). 2030 SMR 수주 목표 28조"</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h3>📑 본 L3 deep dive 메타</h3>
+  <table>
+    <tr><td>발행일</td><td>2026-05-12 (KST)</td></tr>
+    <tr><td>발행 주기</td><td>분기 (Quarterly)</td></tr>
+    <tr><td>다음 발행 예정</td><td>2026-08 첫 일요일 (Q3)</td></tr>
+    <tr><td>발행 채널</td><td>research-curator Mode C (Quarterly L3 Deep Dive)</td></tr>
+    <tr><td>통합 L2 건수</td><td>5건 (에너지 섹터 L2 5건 통합)</td></tr>
+    <tr><td>교차 KB</td><td>knowledge-base/industry/energy.md + capex.md + knowledge-base/macro/geopolitics.md</td></tr>
+    <tr><td>인용 건수</td><td>15건 (White Paper 2 / Policy 6 / Think Tank 1 / Filing 4 / Conference 1 / 기타 1)</td></tr>
+    <tr><td>Debate Cards</td><td>4건</td></tr>
+    <tr><td>Contrarian Cards</td><td>3건</td></tr>
+    <tr><td>차분기 트래킹 지표</td><td>10개</td></tr>
+    <tr><td>관련 종목 매트릭스</td><td>13종 (CEG·VST·SMR·OKLO·CCJ·BWXT·DUK·SO·NEE·VRT·ETN + 두산에너빌리티·한국전력)</td></tr>
+  </table>
+</div>
+
+<div class="disclaimer">
+  <h4>⚠️ 본 보고서 한계 + 면책</h4>
+  <p>
+  본 리포트는 <strong>research-curator L3 분기 Deep Dive</strong> 결과입니다. <strong>매수·매도 추천이 아닙니다</strong> — 1차 자료 종합 + 시나리오 + 트래킹 지표 제공이 목적입니다.<br><br>
+  데이터 무력화 시점: (1) Contrarian #1 (DC 효율 +50%) 가시화 시 IEA 2배 시나리오 약화, (2) Contrarian #2 (SMR 양산 지연) — TerraPower NRC 건설허가 발급 지연 또는 TRISO-X 첫 연료 출하 24개월+ 지연 시 본 L3 SMR 자금·규제·연료 3축 정렬 thesis 약화, (3) Contrarian #3 (FERC 정체) — 미국 그리드 인터커넥션 개혁 2027 H2 후 의회 통과 시 그리드 베타 종목 (VRT·ETN·PWR·GEV) thesis 약화, (4) IEA WEO 2026 (10월) 시나리오 baseline 하향 시 본 L3 정량 앵커 재검토.<br><br>
+  본 L3 는 <strong>L2 frontmatter citation 그대로 사용</strong> — 임의 출처 추가 X (환각 방지). 단, 본문 통합 분석은 L2 + capex.md + energy.md + geopolitics.md 교차 결과로 research-curator 책임. 인용 위치·URL·페이지·저자명·발행일은 L2 단계에서 검증된 데이터.<br><br>
+  유가 (Brent $101.73 / WTI $94.12, 2026-05-09 기준) 와 호르무즈 봉쇄 (5.4 이후 통항 0건) 는 geopolitics.md 가 별도 트래킹 — 에너지 섹터 단기 변동은 본 L3 의 중장기 thesis (DC 전력·SMR·그리드) 와 분리해서 해석 필요.<br><br>
+  <em>research-curator 시스템 L3 #2 발행 (반도체 다음) — 다음 분기 (2026 Q3) 매크로·바이오·핀테크 3 섹터 추가 발행 예정 (L2 ≥ 5건 충족 후).</em>
+  </p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', newTheme);
+  document.getElementById('theme-icon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = newTheme === 'light' ? '다크 모드' : '라이트 모드';
+  localStorage.setItem('research-theme', newTheme);
+}
+// 페이지 로드 시 저장된 테마 적용
+const saved = localStorage.getItem('research-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-icon').textContent = saved === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = saved === 'light' ? '다크 모드' : '라이트 모드';
+}
+</script>
+
+</body>
+</html>

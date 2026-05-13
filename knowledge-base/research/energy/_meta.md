@@ -8,7 +8,7 @@ related_industry_kb:
   - knowledge-base/industry/capex.md
 l1_index_count: 5
 l2_summary_count: 5
-l3_deep_dive_count: 0
+l3_deep_dive_count: 1
 deep_dive_priority: 2
 ---
 
@@ -59,7 +59,11 @@ deep_dive_priority: 2
 
 ## L3 분기 Deep Dive 이력
 
-- (예정) `reports/research/energy_2026Q3.html` — 2026-07 첫 일요일 발행 목표
+- 2026 Q2 (2026-05-12) — `reports/research/energy_2026Q2.html`
+  - 핵심: DC 전력 2030 2배 + SMR Part 53 + DOE 5~10기 + TRISO-X + CapEx 직접 베타
+  - L2 5건 통합 + capex.md + energy.md + geopolitics.md 교차
+  - 인용 15건 / 길이 61KB / debate-card 4건 / contrarian-card 3건 / 트래킹 지표 10개 / 종목 매트릭스 13종
+- (예정) `reports/research/energy_2026Q3.html` — 2026-08 첫 일요일 발행 목표
 
 ## 분석 에이전트 활용 가이드
 
