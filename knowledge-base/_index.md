@@ -64,6 +64,8 @@ lint_mode: full
 | 2026-05-11 | 이브닝브리핑 | USD/KRW 1,473원 돌파 — KOSPI 외인 매도 전환 임계점 접근. KOSPI 7,822+KRW 약세 동반=Z -1.68 sigma 주의 강화. 1,470~1,480 역사적 외인 이탈 구간. CPI 충격+달러 반등 시 자기강화 루프 리스크 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-10 | 이브닝브리핑 | VIX↔S&P 상관관계 +5.80σ 극단 이상 — 역상관 완전 붕괴. 전체 피어슨 0.0, 최근3 양(+) 방향. 옵션시장 구조적 이상. 5/11~15 4연속 이벤트(Warsh·CPI·정상회담·파월 퇴임) 충격 시 급격한 VIX 스파이크 조건 형성 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-10 | 이브닝브리핑 | 미시간 소비심리 48.2 역대 최저 vs S&P 7,399·KOSPI 7,498·NASDAQ 26,247 동시 사상 최고 — 소비 체감과 자산시장 괴리 역대 극대화. "자산 보유자 vs 비보유자" 양극화 구조 심화 신호 | `macro/global_risk_factors.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-13 | 모닝브리핑 | 30Y 국채 5.03% 돌파 — CPI 충격 없이도 5% 돌파는 수급(재정적자+Warsh QT+탈달러) 주도 구조적 전환 신호. 모기지 7%+ → 주택·소비 둔화 경로. 일시 오버슈팅 vs 뉴노멀 핵심 논쟁 | `market/daily_snapshot.md, macro/us_monetary_policy.md` | 진행중 |
+| 2026-05-13 | 모닝브리핑 | VIX 17.99(-2.12%) "거짓 안심" — CPI 통과에도 VIX↔S&P +4.80σ 극단 유지. 슈퍼위크(정상회담+Warsh+13F) 이벤트 밀집 대비 VIX 과소 반영. 2018 볼마게돈 유사 조건 | `market/correlation_matrix.md` | 진행중 |
 | 2026-05-10 | 이브닝브리핑 | 이란 MOU 3축 시나리오: 합의(25%, WTI $80~90)→인플레 둔화, 교착(45%, $90~105)→고착, 결렬(30%, $120~150)→스태그플레이션. 호르무즈 통항 0건+교전 병존 비정상 상태 지속 | `macro/geopolitics.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-09 | 이브닝브리핑 | NFP 골디락스 확정: +115K(예상 62K 상회) + 임금 +3.6%(예상 3.8% 하회). K자형 공식화 — 의료/운송 호조 vs 정보/연방정부/제조 감소. AI 대체 첫 사이클 구조적 전환 진행 | `macro/us_economy.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-09 | 이브닝브리핑 | S&P↔10Y 19일 연속 동방향 이상이 NFP 계기로 정상 복귀(주의→정상). USD/KRW↔KOSPI 주의 승격 — KOSPI 7,498+원/달러 1,461 통상 역상관 붕괴 조짐. 1,470 상회 시 외국인 매도 전환 분기점 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
