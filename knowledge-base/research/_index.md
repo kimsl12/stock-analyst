@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 5개 섹터(반도체·에너지·매크로·바이오·핀테크) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-05-12
+last_updated: 2026-05-13
 update_cycle: weekly
 status: bootstrapped
-total_headlines: 21
+total_headlines: 22
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -79,6 +79,7 @@ total_headlines: 21
 - (이번 주 신규 없음 — Jackson Hole 8월·BIS AER 6월 예정, NBER SI 2026 Monetary Economics 7월 예정)
 
 ### 규제
+- 📄 [Policy] BOJ Summary of Opinions (2026-05-12) — "4월 27-28일 정책결정회의 의견 요약" → 정책금리 0.75% 동결 (6-3 표결, Takata·Tamura·Nakagawa 1.0% 인상 반대), FY2026 코어 CPI 전망 1.9%→2.8% 상향 (중동發 유가 상승 반영). 의사록 본문은 6/19 예정
 - 📄 [Policy] FOMC Statement (2026-04-29) — "정책금리 3.5~3.75% 동결 (3회 연속)" → 8-4 비반대 표결로 1992년 10월 이후 최대 dissent, Powell 마지막 주재 회의 가능성. 6/16-17 다음 회의서 dot plot 갱신
 - 📄 [Policy] ECB 통화정책결정 (2026-04-30) — "기준금리 동결 (MRO 2.15% / DFR 2.0%)" → 4월 유로존 인플레 3%, 중동 전쟁 에너지가격 상방, 만장일치 동결 + 인상 옵션 토론 — Lagarde 데이터 의존 메시지
 - 📄 [Policy] 한국은행 금통위 (2026-04-10) — "기준금리 2.5% 만장일치 동결 (7회 연속)" → 4월 CPI 2.6%(전월 2.2%→), 중동發 공급충격, 신현송 총재 5/28 첫 회의 예정
