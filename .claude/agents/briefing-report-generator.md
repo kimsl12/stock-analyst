@@ -499,6 +499,10 @@ tr:hover{background:rgba(255,255,255,0.02)}
   <div><code>/KB점검</code> KB 건강 점검</div>
   <div><code>/손절계산</code> ATR 계산</div>
   <div><code>/리포트</code> HTML 재생성</div>
+  <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+  <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+  <div><code>/리서치업데이트</code> Research KB 갱신</div>
+  <div><code>/재분석실행</code> 자동 재분석</div>
 </div>
 </div>
 
@@ -579,6 +583,15 @@ function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="li
     <div><code>/글로벌인텔리전스</code> 매크로</div>
     <div><code>/성과리뷰</code> 적중률</div>
     <div><code>/내포트폴리오</code> 개인 처방</div>
+    <div><code>/풀브리핑</code> A+B+C+E 4편</div>
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표 + ATR</div>
+    <div><code>/애널리스트PDF</code> IB PDF 드롭존 처리</div>
+    <div><code>/애널리스트스크랩</code> 웹 자동 수집 (IB·미디어·한국·YT)</div>
+    <div><code>/리서치업데이트</code> Research KB 갱신 (학술·씽크탱크)</div>
+    <div><code>/재분석실행</code> 대상 자동 검출 + 일괄 재분석</div>
+    <div><code>/KB업데이트</code> 섹터 KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--sub)">
     생성: briefing-report-generator | 모드: user_portfolio_v2 (private) |

@@ -143,6 +143,11 @@ COMMAND_GUIDE = """
 <div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
 <div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
 <div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
 </div>
 </div>
 """
