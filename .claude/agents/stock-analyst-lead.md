@@ -1090,29 +1090,50 @@ KB에 없는 데이터만 웹검색으로 수집해.
 - 종목 분석 본문에 "주 섹터: X / 부 섹터: Y" 명시
 
 **워크플로**:
-1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 5섹터 매핑 결정
-2. 섹터 결정 시 Bash:
+1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 10섹터 매핑 결정
+2. **L2 발췌** — 섹터 결정 시 Bash:
    ```bash
    ls -1t knowledge-base/research/{sector}/*.md 2>/dev/null | head -3
    ```
 3. 최근 3건 Read → 각 파일의 frontmatter `citation` + `key_finding` 추출
-4. 프롬프트 첨부 블록 작성:
+4. **L3 발췌 (v3.19 신규)** — 가장 최근 분기 L3 1건 추가:
+   ```bash
+   ls -1t reports/research/{sector}_*.html 2>/dev/null | head -1
+   ```
+   - 발견 시 Read → **S1 Executive Summary + S8 관련 종목 영향 매트릭스** 두 섹션만 추출 (전체 50~61KB 중 핵심 ~5KB)
+   - S8 에서 해당 종목명이 명시되어 있으면 Bull/Bear 시나리오 1줄씩 직접 발췌 (가장 가치 있는 1차 인용)
+   - 발견 안 됨 → L3 블록 생략 (Phase 1 진행)
+5. 프롬프트 첨부 블록 작성:
    ```
    research_kb_excerpts:
-     - 📄 [Conference] ISSCC 2026 — "HBM4 16-Hi TSV" → yield 78%, 2027 Q1 양산 가시
-     - 📄 [Working Paper] BIS WP #1183 (2026-03) → 메모리 공급사 3+ 진입 시 24M 내 마진 -15~20%p
-     - 📄 [Think Tank] McKinsey GI (2026-03) → HBM 시장 2030 $185B (CAGR 38%)
+     L2_summaries:
+       - 📄 [Conference] ISSCC 2026 — "HBM4 16-Hi TSV" → yield 78%, 2027 Q1 양산 가시
+       - 📄 [Working Paper] BIS WP #1183 (2026-03) → 메모리 공급사 3+ 진입 시 24M 내 마진 -15~20%p
+       - 📄 [Think Tank] McKinsey GI (2026-03) → HBM 시장 2030 $185B (CAGR 38%)
+     L3_quarterly: reports/research/semiconductor_2026Q2.html [Q2 Deep Dive]
+       executive_summary:
+         - 핵심 1: HBM4 양산 사이클 — 단독 우위 vs 4축 플랫폼 정면 충돌
+         - 핵심 2: McKinsey $1.6T 시장 thesis (정량 앵커)
+         - 핵심 3~5: ...
+       impact_on_this_stock:  # S8 매트릭스 직접 매핑 (해당 종목 있을 시만)
+         bull: 본 종목 +X% 시나리오 (요약 1줄)
+         bear: 본 종목 -X% 시나리오 (요약 1줄)
    ```
-5. 5섹터 매핑 안 됨 또는 L2 부재 → 블록 첨부 생략 (분석 에이전트는 "research KB 부재" 1줄 명시 후 평소 진행)
+6. 10섹터 매핑 안 됨 또는 L2/L3 모두 부재 → 블록 첨부 생략 (분석 에이전트는 "research KB 부재" 1줄 명시 후 평소 진행)
 
 **조건부 스킵 케이스**:
-- 종목 섹터가 매크로 단독 또는 5섹터 외 (예: 소비재·소재·운송 등) → Phase 0-D 스킵
-- `knowledge-base/research/{sector}/` 에 L2 요약본 0건 → 스킵
+- 종목 섹터가 매크로 단독 또는 10섹터 외 → Phase 0-D 스킵
+- `knowledge-base/research/{sector}/` 에 L2 요약본 0건 AND `reports/research/{sector}_*.html` 0건 → 스킵
 - ETF 분석 (etf-lead 경유) → Phase 0-D 스킵 (ETF 는 다중 섹터 노출)
 
-**시간 예산**: 최대 3분. data-collector ~ Phase 1 사이 짧은 추가 단계로 끼움.
+**시간 예산**: 최대 4분 (L2 3분 + L3 1분). data-collector ~ Phase 1 사이 짧은 추가 단계로 끼움.
 
-**환각 방지**: research-curator 가 작성하지 않은 출처는 절대 인용 X. Glob 결과 파일만 사용. frontmatter 의 citation 필드 그대로 발췌 (재해석 X).
+**L3 분기 발췌 cap (v3.19)**:
+- 섹터당 가장 최근 분기 L3 **1건만** 발췌 (예: 2026 Q2 발행 후 Q3 발행 전까지는 Q2 L3 사용)
+- 종목 분석 1회당 L3 인용 **최대 3개 bullet** (executive_summary 2 + impact 1)
+- L3 전체 본문 인용 금지 — 위 추출 블록만 sub-agent 전달
+
+**환각 방지**: research-curator 가 작성하지 않은 출처는 절대 인용 X. Glob 결과 파일만 사용. frontmatter 의 citation 필드 그대로 발췌 (재해석 X). L3 발췌도 HTML 원문 텍스트 그대로 인용 (요약 시 의미 왜곡 금지).
 
 #### Phase 1: 분석 에이전트 3개 병렬 호출 (각각 별도 프롬프트)
 
@@ -1122,7 +1143,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 파일에 없는 데이터는 "데이터 미수집"으로 표기해.
 
@@ -1136,7 +1157,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_financial.md 파일로 저장해.
@@ -1149,7 +1170,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 웹검색은 절대 하지 마. 파일에 있는 데이터만 사용해.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_momentum.md 파일로 저장해.
@@ -1164,7 +1185,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 웹검색은 절대 하지 마.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_business.md 파일로 저장해.
@@ -1177,7 +1198,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 입력 데이터: analysis/{종목코드}_{종목명}_data.json 파일을 읽어서 사용해.
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 웹검색은 절대 하지 마.
 
 분석 결과를 반드시 analysis/{종목코드}_{종목명}_risk.md 파일로 저장해.
@@ -1197,7 +1218,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
   - analysis/{종목코드}_{종목명}_business.md
   - analysis/{종목코드}_{종목명}_risk.md
 추가로 knowledge-base/ 폴더의 관련 KB 파일도 참조해. [v2.4]
-첨부된 research_kb_excerpts 블록이 있으면 활용 — 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.17]
+첨부된 research_kb_excerpts 블록이 있으면 활용 — L2_summaries / L3_quarterly 분리되어 있을 시 각각 인용 (L3 분기 Deep Dive 인용 시 본문에 [L3 QN] 마커 부착). impact_on_this_stock 필드는 가장 가치 있는 1차 인용이므로 반드시 본문에 반영. 인용 형식은 knowledge-base/research/_citation_format.md 참조. 블록이 없거나 비어있으면 "research KB 부재" 1줄 명시 후 평소대로 진행. [v3.19]
 
 웹검색은 절대 하지 마.
 

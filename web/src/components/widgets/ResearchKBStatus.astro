@@ -1,0 +1,120 @@
+---
+import kpi from '../../data/research_kpi.json';
+
+const totals = kpi.totals as {
+  l1_total: number; l2_total: number; l3_total: number;
+  active_sectors: number; scaffolded_sectors: number;
+};
+const usage = kpi.usage as {
+  stocks_with_citations: number; total_citations: number; avg_citations_per_stock: number;
+};
+const allInsights = totals.l1_total + totals.l2_total + totals.l3_total;
+const totalSectors = totals.active_sectors + totals.scaffolded_sectors;
+
+// 가장 최근 갱신된 섹터 last_updated 추출
+const sectors = kpi.sectors as Array<{ last_updated: string | null; status: string }>;
+const lastUpdated = sectors
+  .filter((s) => s.last_updated)
+  .map((s) => s.last_updated)
+  .sort()
+  .reverse()[0] ?? '—';
+
+const statusLabel: Record<string, string> = {
+  early: '초기 (활용 5건 미만)',
+  active: '활성',
+  stable: '안정',
+};
+---
+
+<section class="card" style="--dot-color: #7ee787;">
+  <header class="card-head">
+    <h2><span class="dot"></span>📑 Research KB</h2>
+    <a href="/research" class="more">상세 →</a>
+  </header>
+
+  <div class="rkb-grid">
+    <div class="rkb-stat">
+      <div class="rkb-label">총 인사이트</div>
+      <div class="rkb-value">{allInsights}</div>
+      <div class="rkb-sub">L1 {totals.l1_total} · L2 {totals.l2_total} · L3 {totals.l3_total}</div>
+    </div>
+    <div class="rkb-stat">
+      <div class="rkb-label">활성 섹터</div>
+      <div class="rkb-value">{totals.active_sectors} <span class="rkb-frac">/ {totalSectors}</span></div>
+      <div class="rkb-sub">신규 {totals.scaffolded_sectors}섹터 수집 대기</div>
+    </div>
+    <div class="rkb-stat">
+      <div class="rkb-label">인용 적용 종목</div>
+      <div class="rkb-value">{usage.stocks_with_citations}</div>
+      <div class="rkb-sub">평균 {usage.avg_citations_per_stock}건/종목</div>
+    </div>
+    <div class="rkb-stat">
+      <div class="rkb-label">시스템 상태</div>
+      <div class="rkb-value rkb-status" data-status={kpi.kpi_status}>{statusLabel[kpi.kpi_status] ?? kpi.kpi_status}</div>
+      <div class="rkb-sub">최근 갱신 {lastUpdated}</div>
+    </div>
+  </div>
+
+  <div class="rkb-help">
+    학술·씽크탱크·컨퍼런스·규제 1차 자료 → 종목 분석 5개 에이전트가 인용 (L2_summaries / L3_quarterly 마커)
+  </div>
+</section>
+
+<style>
+  .more {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .more:hover { color: var(--accent); }
+  .rkb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+  }
+  @media (max-width: 768px) {
+    .rkb-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .rkb-stat {
+    padding: 0.7rem 0.85rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .rkb-label {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+  .rkb-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .rkb-frac {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .rkb-status { font-size: 0.95rem; }
+  .rkb-status[data-status="early"] { color: #d29922; }
+  .rkb-status[data-status="active"] { color: #58a6ff; }
+  .rkb-status[data-status="stable"] { color: #3fb950; }
+  .rkb-sub {
+    color: var(--muted);
+    font-size: 0.72rem;
+    margin-top: 0.25rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .rkb-help {
+    margin-top: 0.7rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+</style>
