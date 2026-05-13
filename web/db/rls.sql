@@ -42,5 +42,33 @@ create policy "auth_models_read"  on model_portfolios
   for select using (auth.role() = 'authenticated');
 
 -- ===========================================================
+-- [v3.22, 2026-05-14] trade_log + daily_picks_log RLS
+-- 사용자는 본인 데이터만 read (write 는 service_role 전용 — /api/record-buy 가 처리)
+-- ===========================================================
+alter table trade_log        enable row level security;
+alter table daily_picks_log  enable row level security;
+
+drop policy if exists "own_trade_log_read" on trade_log;
+create policy "own_trade_log_read" on trade_log
+  for select using (auth.uid() = user_id);
+
+-- [Astro SSG 환경] 클라이언트가 직접 본인 행 INSERT (anon 키로). service_role 우회 불요.
+drop policy if exists "own_trade_log_insert" on trade_log;
+create policy "own_trade_log_insert" on trade_log
+  for insert with check (auth.uid() = user_id);
+
+-- daily_picks_log 는 본인 액션 추적 행만 read.
+-- user_id NULL 인 행 (= 아직 사용자 액션 전, "오늘의 추천" 자체) 도 인증 사용자면 read 허용.
+drop policy if exists "own_or_open_picks_read" on daily_picks_log;
+create policy "own_or_open_picks_read" on daily_picks_log
+  for select using (
+    auth.role() = 'authenticated'
+    and (user_id is null or user_id = auth.uid())
+  );
+
+-- daily_picks_log INSERT/UPDATE 는 Phase 2 학습 자동화 단계 (현재 미사용 — service_role 만)
+-- 현재 단계는 trade_log 기록만으로 추적. daily_picks_log 활성 시점에 정책 추가 예정.
+
+-- ===========================================================
 -- 완료. 다음: verify.sql 실행
 -- ===========================================================

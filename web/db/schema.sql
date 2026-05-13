@@ -66,7 +66,89 @@ create index if not exists idx_reports_type_date on reports(type, date desc);
 create index if not exists idx_reports_ticker on reports(ticker) where ticker is not null;
 
 -- ===========================================================
--- Phase 3 예약 테이블 (이번 작업에서는 생성하지 않음 — 미래 참고용)
+-- [v3.22, 2026-05-14] holdings UNIQUE constraint (UPSERT 용)
+-- 같은 portfolio + 같은 ticker 는 행 1개만 유지 (수량·평단 누적 갱신)
+-- ===========================================================
+do $$ begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'holdings_portfolio_ticker_unique'
+  ) then
+    alter table holdings add constraint holdings_portfolio_ticker_unique
+      unique (portfolio_id, ticker);
+  end if;
+end $$;
+
+-- ===========================================================
+-- [v3.22] trade_log — 사용자 매수/매도 기록 (DailyPick 모달 입력)
+-- ===========================================================
+create table if not exists trade_log (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id),
+  ticker text not null,
+  name text,
+  action text not null check (action in ('buy', 'sell')),
+  quantity numeric not null check (quantity > 0),
+  price numeric not null check (price > 0),
+  currency text not null default 'USD' check (currency in ('USD', 'KRW')),
+  -- 추천에서 발화된 거래 추적 (선택)
+  pick_id uuid,                                  -- daily_picks_log.id FK (느슨)
+  recommended_price numeric,
+  recommended_score numeric,
+  -- 메모
+  note text,
+  executed_at timestamptz not null default now(),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_trade_log_user_date on trade_log(user_id, executed_at desc);
+create index if not exists idx_trade_log_ticker on trade_log(ticker);
+
+-- ===========================================================
+-- [v3.22] daily_picks_log — 매일 추천 + 사용자 액션 추적
+-- 학습 데이터: 어떤 추천이 실제 매수로 이어졌는지, 시점 신뢰도, 사용자 패턴
+-- ===========================================================
+create table if not exists daily_picks_log (
+  id uuid primary key default gen_random_uuid(),
+  pick_date date not null,
+  ticker text not null,
+  name text,
+  -- 추천 메타 (manifest + scorecard 발췌)
+  score numeric not null,
+  grade text,                                    -- '강력매수' | '매수' | '중립' 등
+  recommended_buy_price numeric,
+  recommended_stop_price numeric,
+  recommended_tp_price numeric,
+  holding_period_days integer,                   -- 예상 보유 기간 (산출 가능 시)
+  reasons jsonb,                                 -- 매수 이유 bullet 배열
+  currency text not null default 'USD',
+  market text,                                   -- 'NASDAQ' | 'NYSE' | 'KRX' 등
+  category text,                                 -- '신규(미보유)' | '리마인드(소량보유)' | '폴백'
+  -- 사용자 액션 추적
+  user_id uuid references auth.users(id),
+  user_action text check (user_action in ('bought', 'dismissed', 'pending')),
+  user_action_at timestamptz,
+  trade_log_id uuid references trade_log(id),
+  created_at timestamptz not null default now(),
+  -- 같은 날 같은 종목 추천은 1행만
+  constraint daily_picks_unique unique (pick_date, ticker)
+);
+
+create index if not exists idx_daily_picks_date on daily_picks_log(pick_date desc);
+create index if not exists idx_daily_picks_user_action on daily_picks_log(user_id, user_action);
+
+-- trade_log → daily_picks_log 의 pick_id FK (느슨, ON DELETE SET NULL)
+-- 위 trade_log 생성 후 daily_picks_log 생성 순서라 alter 로 처리
+do $$ begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'trade_log_pick_fk'
+  ) then
+    alter table trade_log add constraint trade_log_pick_fk
+      foreign key (pick_id) references daily_picks_log(id) on delete set null;
+  end if;
+end $$;
+
+-- ===========================================================
+-- Phase 3 예약 (보류)
 -- ===========================================================
 -- create table memos (
 --   id uuid primary key default gen_random_uuid(),
@@ -74,17 +156,6 @@ create index if not exists idx_reports_ticker on reports(ticker) where ticker is
 --   report_id uuid references reports(id),
 --   content text,
 --   created_at timestamptz default now()
--- );
---
--- create table trade_log (
---   id uuid primary key default gen_random_uuid(),
---   user_id uuid references auth.users(id),
---   ticker text not null,
---   action text not null,                       -- 'buy' | 'sell'
---   quantity numeric,
---   price numeric,
---   recommendation_report_id uuid references reports(id),
---   executed_at timestamptz
 -- );
 
 -- ===========================================================

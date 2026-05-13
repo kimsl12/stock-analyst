@@ -1,0 +1,431 @@
+---
+import pick from '../../data/daily_pick.json';
+
+const p = pick.pick as any | null;
+
+function fmtPrice(value: number | null | undefined, currency: string): string {
+  if (value == null) return '—';
+  if (currency === 'KRW') return `₩${Number(value).toLocaleString('ko-KR')}`;
+  return `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+const reportUrl = p
+  ? `/reports/${p.ticker}_${p.name}${p.version ? '_' + p.version : ''}_${(p.analysis_date ?? '').replace(/-/g, '')}.html`
+  : null;
+---
+
+{p && (
+  <section
+    class="card daily-pick"
+    style="--dot-color: #fbbf24;"
+    id="daily-pick-section"
+    data-pick-date={pick.pick_date}
+    data-ticker={p.ticker}
+  >
+    <header class="card-head">
+      <h2><span class="dot"></span>🎯 오늘의 추천 종목</h2>
+      <div class="pick-actions-head">
+        <span class="pick-date">{pick.pick_date}</span>
+        <button class="dp-close" id="dp-dismiss-btn" type="button" title="오늘은 건너뛰기 (자정 리셋)">×</button>
+      </div>
+    </header>
+
+    <div class="pick-grid">
+      <!-- 좌: 종목 정보 -->
+      <div class="pick-main">
+        <div class="pick-stock">
+          <span class="pick-grade" data-grade={p.grade}>{p.grade}</span>
+          <h3 class="pick-name">{p.name}</h3>
+          <span class="pick-ticker">{p.ticker}</span>
+        </div>
+        <div class="pick-meta">
+          <span class="pick-score">스코어 <strong>{p.score}</strong></span>
+          <span class="pick-market">{p.market === 'KRX' ? '🇰🇷 KRX' : p.market === 'US' ? '🇺🇸 US' : p.market}</span>
+          <span class="pick-analysis-date">분석일 {p.analysis_date}</span>
+        </div>
+
+        {p.reasons && p.reasons.length > 0 && (
+          <ul class="pick-reasons">
+            {p.reasons.slice(0, 3).map((r: string) => <li>{r}</li>)}
+          </ul>
+        )}
+        {(!p.reasons || p.reasons.length === 0) && (
+          <p class="pick-empty-reasons">분석 본문 참조 → <a href={reportUrl}>리포트 열기</a></p>
+        )}
+      </div>
+
+      <!-- 우: 가격 정보 + 액션 -->
+      <div class="pick-prices">
+        <div class="price-row">
+          <span class="price-label">적정 매수가</span>
+          <span class="price-value buy">{fmtPrice(p.buy_price, p.currency)}</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">손절가</span>
+          <span class="price-value stop">{fmtPrice(p.stop_price, p.currency)}</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">익절가</span>
+          <span class="price-value tp">{fmtPrice(p.tp_price, p.currency)}</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label">예상 보유</span>
+          <span class="price-value">
+            {p.holding_period_days ? `${p.holding_period_days}일` : '—'}
+          </span>
+        </div>
+
+        <div class="pick-actions">
+          <button class="btn-buy" id="dp-bought-btn" type="button">매수했어요</button>
+          {reportUrl && <a class="btn-report" href={reportUrl}>리포트 →</a>}
+        </div>
+      </div>
+    </div>
+
+    <!-- 매수 기록 모달 -->
+    <div class="dp-modal" id="dp-modal" hidden>
+      <div class="dp-modal-backdrop" id="dp-modal-backdrop"></div>
+      <div class="dp-modal-content">
+        <header class="dp-modal-head">
+          <h3>{p.name} <span class="dp-ticker-small">{p.ticker}</span> 매수 기록</h3>
+          <button class="dp-close" id="dp-modal-close" type="button">×</button>
+        </header>
+        <form id="dp-buy-form" class="dp-modal-form">
+          <label>
+            <span>매수 수량</span>
+            <input
+              type="number"
+              id="dp-qty"
+              name="qty"
+              min="0.0001"
+              step="any"
+              placeholder="예: 5 (소수점 가능)"
+              required
+            />
+          </label>
+          <label>
+            <span>매수가 ({p.currency})</span>
+            <input
+              type="number"
+              id="dp-price"
+              name="price"
+              min="0.01"
+              step="any"
+              value={p.buy_price ?? ''}
+              required
+            />
+          </label>
+          <label>
+            <span>메모 (선택)</span>
+            <input type="text" id="dp-note" name="note" placeholder="예: 분할 1차, 평단 ..." />
+          </label>
+          <div class="dp-modal-actions">
+            <button type="button" class="btn-cancel" id="dp-modal-cancel">취소</button>
+            <button type="submit" class="btn-submit" id="dp-submit-btn">기록 + 닫기</button>
+          </div>
+          <div class="dp-status" id="dp-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+)}
+
+{!p && (
+  <section class="card daily-pick-empty" style="--dot-color: #94a3b8;">
+    <header class="card-head">
+      <h2><span class="dot"></span>🎯 오늘의 추천 종목</h2>
+    </header>
+    <p class="empty">
+      {pick.candidate_count > 0
+        ? `점수 80+ 후보 ${pick.candidate_count}건 발견됐으나 데이터 추출 실패. 분석 본문 확인 필요.`
+        : '오늘 강력 추천 종목 없음. 점수 80+ 누적 시 자동 표시.'}
+    </p>
+  </section>
+)}
+
+<style>
+  /* === Daily Pick 위젯 === */
+  .daily-pick { border-color: #fbbf24; border-width: 1.5px; }
+  .pick-actions-head { display: flex; align-items: center; gap: 0.5rem; }
+  .pick-date { font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dp-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 0 0.3rem;
+    border-radius: 4px;
+  }
+  .dp-close:hover { background: var(--surface-2); color: var(--text); }
+
+  .pick-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 720px) {
+    .pick-grid { grid-template-columns: 1fr; }
+  }
+
+  .pick-stock { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; margin-bottom: 0.55rem; }
+  .pick-grade {
+    padding: 0.2rem 0.55rem;
+    background: rgba(251,191,36,.18);
+    color: #fbbf24;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  [data-theme="light"] .pick-grade { color: #b45309; }
+  .pick-name { font-size: 1.25rem; margin: 0; font-weight: 700; }
+  .pick-ticker {
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    background: var(--surface-2);
+    padding: 0.12rem 0.45rem;
+    border-radius: 5px;
+  }
+  .pick-meta {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+  }
+  .pick-score strong { color: #fbbf24; font-variant-numeric: tabular-nums; }
+  [data-theme="light"] .pick-score strong { color: #b45309; }
+
+  .pick-reasons {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+  .pick-reasons li { margin-bottom: 0.18rem; }
+  .pick-empty-reasons { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+  .pick-prices {
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 0.8rem 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+  }
+  .price-label { color: var(--muted); }
+  .price-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .price-value.buy { color: var(--accent); }
+  .price-value.stop { color: var(--down); }
+  .price-value.tp { color: var(--up); }
+
+  .pick-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+  .btn-buy {
+    flex: 1;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.55rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-buy:hover { background: var(--accent-2); }
+  .btn-buy:disabled { opacity: 0.5; cursor: wait; }
+  .btn-report {
+    padding: 0.55rem 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .btn-report:hover { border-color: var(--accent); text-decoration: none; }
+
+  /* === Modal === */
+  .dp-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .dp-modal[hidden] { display: none; }
+  .dp-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+  .dp-modal-content {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    width: 100%;
+    max-width: 440px;
+    z-index: 1;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+  .dp-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .dp-modal-head h3 { margin: 0; font-size: 1.05rem; }
+  .dp-ticker-small { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--muted); margin-left: 0.4rem; }
+  .dp-modal-form { display: flex; flex-direction: column; gap: 0.85rem; }
+  .dp-modal-form label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; color: var(--muted); }
+  .dp-modal-form input {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 0.55rem 0.7rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+  .dp-modal-form input:focus { outline: none; border-color: var(--accent); }
+  .dp-modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem; }
+  .btn-cancel {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+  }
+  .btn-submit {
+    padding: 0.5rem 1.1rem;
+    background: var(--up);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 0.85rem;
+  }
+  .btn-submit:hover { filter: brightness(1.1); }
+  .btn-submit:disabled { opacity: 0.5; cursor: wait; }
+  .dp-status { font-size: 0.78rem; min-height: 1rem; }
+  .dp-status.ok { color: var(--up); }
+  .dp-status.err { color: var(--down); }
+
+  /* Empty state */
+  .daily-pick-empty .empty { color: var(--muted); padding: 0.5rem 0; font-size: 0.88rem; text-align: center; }
+</style>
+
+<script>
+  import { createBrowserClient } from '../../lib/supabase';
+  import { getCurrentSession } from '../../lib/auth';
+
+  const section = document.getElementById('daily-pick-section');
+  if (section) {
+    const pickDate = section.getAttribute('data-pick-date') ?? '';
+    const ticker = section.getAttribute('data-ticker') ?? '';
+    const dismissKey = `daily_pick_dismissed_${pickDate}`;
+
+    // dismiss 체크 (매일 자정 자동 리셋 — 키에 날짜 포함이라 다음날 자동 재노출)
+    if (pickDate && localStorage.getItem(dismissKey)) {
+      section.style.display = 'none';
+    }
+
+    // close 버튼 (오늘만 dismiss)
+    document.getElementById('dp-dismiss-btn')?.addEventListener('click', () => {
+      localStorage.setItem(dismissKey, new Date().toISOString());
+      section.style.display = 'none';
+    });
+
+    // "매수했어요" → 모달 열기
+    const modal = document.getElementById('dp-modal') as HTMLDivElement | null;
+    document.getElementById('dp-bought-btn')?.addEventListener('click', () => {
+      if (modal) modal.hidden = false;
+    });
+    const closeModal = () => { if (modal) modal.hidden = true; };
+    document.getElementById('dp-modal-close')?.addEventListener('click', closeModal);
+    document.getElementById('dp-modal-cancel')?.addEventListener('click', closeModal);
+    document.getElementById('dp-modal-backdrop')?.addEventListener('click', closeModal);
+
+    // 매수 기록 제출
+    const form = document.getElementById('dp-buy-form') as HTMLFormElement | null;
+    const statusEl = document.getElementById('dp-status') as HTMLDivElement | null;
+    const submitBtn = document.getElementById('dp-submit-btn') as HTMLButtonElement | null;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn || !statusEl) return;
+      submitBtn.disabled = true;
+      statusEl.textContent = '저장 중…';
+      statusEl.className = 'dp-status';
+
+      const qty = Number((document.getElementById('dp-qty') as HTMLInputElement)?.value);
+      const price = Number((document.getElementById('dp-price') as HTMLInputElement)?.value);
+      const note = (document.getElementById('dp-note') as HTMLInputElement)?.value?.trim() || null;
+
+      if (!Number.isFinite(qty) || qty <= 0 || !Number.isFinite(price) || price <= 0) {
+        statusEl.className = 'dp-status err';
+        statusEl.textContent = '수량과 가격은 양수여야 합니다.';
+        submitBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const sb = createBrowserClient();
+        const session = await getCurrentSession();
+        if (!sb || !session?.user) {
+          throw new Error('로그인 세션이 만료됐습니다. 새로고침 후 다시 시도하세요.');
+        }
+
+        // pick 데이터를 위젯 attribute 에서 추출
+        const data = section.dataset;
+        // 추천 컨텍스트는 daily_pick.json 가 빌드 타임에 한 번 만들어진 값. attribute 에 없으면 fetch.
+        let pickMeta: any = null;
+        try {
+          const r = await fetch('/data/daily_pick.json', { cache: 'no-store' }).catch(() => null);
+          // /data 는 안 노출됐을 수 있음. 시도 실패 시 무시 (currency/score 만 빠짐)
+          if (r && r.ok) pickMeta = await r.json();
+        } catch { /* skip */ }
+        const pm = pickMeta?.pick ?? {};
+
+        const { error: insertError } = await sb.from('trade_log').insert({
+          user_id: session.user.id,
+          ticker,
+          name: pm.name ?? null,
+          action: 'buy',
+          quantity: qty,
+          price,
+          currency: pm.currency ?? 'USD',
+          recommended_price: pm.buy_price ?? null,
+          recommended_score: pm.score ?? null,
+          note,
+        });
+
+        if (insertError) throw insertError;
+
+        statusEl.className = 'dp-status ok';
+        statusEl.textContent = `✅ 기록 완료 — ${qty}주 × ${price} ${pm.currency ?? 'USD'}`;
+
+        // 1.5초 후 모달 닫고 위젯 dismiss
+        setTimeout(() => {
+          closeModal();
+          localStorage.setItem(dismissKey, new Date().toISOString());
+          section.style.display = 'none';
+        }, 1500);
+      } catch (err) {
+        statusEl.className = 'dp-status err';
+        statusEl.textContent = '저장 실패: ' + (err instanceof Error ? err.message : String(err));
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
