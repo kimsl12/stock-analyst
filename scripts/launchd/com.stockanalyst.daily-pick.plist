@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  종목분석 에이전트 — DailyPick 위젯 자동 갱신 launchd 스케줄
+
+  - 매일 KST 00:05 실행 (자정 직후 5분 buffer)
+  - daily_pick.json 재빌드 + commit + push + Vercel/Cloudflare deploy
+  - 출력: scripts/launchd/daily-pick.log
+
+  설치:
+    cp "scripts/launchd/com.stockanalyst.daily-pick.plist" ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.stockanalyst.daily-pick.plist
+
+  즉시 테스트 실행 (스케줄 무시하고 한 번 실행):
+    launchctl start com.stockanalyst.daily-pick
+
+  등록 확인:
+    launchctl list | grep stockanalyst
+
+  제거:
+    launchctl unload ~/Library/LaunchAgents/com.stockanalyst.daily-pick.plist
+    rm ~/Library/LaunchAgents/com.stockanalyst.daily-pick.plist
+
+  주의: 외장 SSD가 마운트되어 있고 PC가 켜져 있어야 동작.
+        Mac이 자정에 sleep 상태면 wake 직후 실행됨 (StartCalendarInterval 동작).
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stockanalyst.daily-pick</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/scripts/daily_pick_update.sh</string>
+    </array>
+
+    <!-- 매일 KST 00:05 실행 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>5</integer>
+    </dict>
+
+    <!-- 부팅 직후 자동 실행하지 않음 -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- PATH 환경 변수 명시 (node, git, vercel, jq, wrangler 경로) -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/kimsl12/.nvm/versions/node/v25.9.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/kimsl12</string>
+    </dict>
+
+    <!-- 작업 디렉토리 -->
+    <key>WorkingDirectory</key>
+    <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트</string>
+
+    <key>StandardOutPath</key>
+    <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/scripts/launchd/daily-pick.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/scripts/launchd/daily-pick.log</string>
+</dict>
+</plist>
