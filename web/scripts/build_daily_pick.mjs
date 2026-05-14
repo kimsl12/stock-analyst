@@ -207,6 +207,14 @@ async function pickToday(candidates) {
 // 메인
 // ---------------------------------------------------------------------------
 async function main() {
+  // [v3.22 Vercel 우회] analysis/ 부재 (.vercelignore 제외) + commit된 daily_pick.json 존재 시
+  // → commit된 결과 그대로 사용 (build_manifest 의 v3.16 git 부재 fallback 패턴과 동일)
+  if (!existsSync(ANALYSIS_DIR) && existsSync(OUTPUT_JSON)) {
+    const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
+    console.log(`OK: analysis/ 부재 (Vercel 빌드 컨테이너 등) — committed ${rel} 그대로 사용`);
+    return;
+  }
+
   const candidates = await parseBootstrap();
   const top = await pickToday(candidates);
 
