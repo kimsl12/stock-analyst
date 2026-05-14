@@ -58,6 +58,9 @@ lint_mode: full
 | 2026-05-10 | 글로벌인텔리전스 | 숨은 테마: 칠레 황산-구리 슈퍼사이클 -- 이란전쟁 2차 효과(중국 황산 수출 제한)+칠레 구리 정제 차질(황산 50%)+AI DC 구리 110kt+Section 232 50% = 삼중충격. COMEX $6.24(+20% YTD) 시장 미완전 반영 | `macro/supply_chain.md, macro/geopolitics.md` | 진행중 |
 | 2026-05-10 | 글로벌인텔리전스 | 5/11~15 "4연속 이벤트 주간" 진입 -- Warsh 인준(5/11)->CPI(5/12)->정상회담(5/14~15)->파월 퇴임+Warsh 취임(5/15)+13F 마감. 단일 결렬 시 VIX 25+ 스파이크. 트리플 네거티브(이란 결렬+CPI 3.6%++정상회담 실패) 확률 ~5% | `macro/political_cycle.md, macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-12 | 이브닝브리핑 | USD/KRW 1,490 돌파 + KOSPI -2.29% 동반 하락 — B-5 상관관계 Z -2.50σ 이상 전환. 외인 자금 구조 전환 초기 신호. 역사적 1,480~1,500 구간 외인 이탈 3/3회 전례. CPI Core 3.2%+ 시 1,500 돌파 → 패닉 셀링 연쇄 리스크 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-14 | 이브닝브리핑 | KOSPI 7,981 V자 반등(+4.43% 2일) — 정상회담 기대 선반영. USD/KRW↔KOSPI Z -2.50σ→-1.60σ 급정상화. 8,000 돌파 시도 임박하나 MOU만 시 선반영분 해소 리스크 | `market/correlation_matrix.md, market/daily_snapshot.md` | 진행중 |
+| 2026-05-14 | 이브닝브리핑 | BTC-NASDAQ 디커플링 3일차(Z +2.30σ). IBIT 유입 둔화 + GLD 유입 가속 = "디지털 Gold → 진짜 Gold" 자금 회전. Warsh QT 가속 시 크립토 불균형 타격 경로 | `market/correlation_matrix.md` | 진행중 |
+| 2026-05-14 | 이브닝브리핑 | 30Y 5.05% 고착 3일차 — Warsh 취임(5/15) 후 강경 선언 시 5.20~5.50%. 기간 프리미엄+재정적자+QT 가속 3중 구조적 요인. "뉴 노멀" 확정 경계 | `macro/us_monetary_policy.md` | 진행중 |
 | 2026-05-14 | 모닝브리핑 | 30Y 5%+ 고착 2일차 — CPI 충격 없이도 5% 유지. 기간 프리미엄+재정적자+Warsh QT 기대 구조적 요인. Warsh 5/15 취임 후 5.20~5.50% 추가 상승 리스크. 모기지 7%+ 고착 → 소비·주택 2차 하방 경로 가속 | `macro/us_monetary_policy.md, market/daily_snapshot.md` | 진행중 |
 | 2026-05-14 | 모닝브리핑 | BTC-NASDAQ 디커플링 2일 연속 — NASDAQ +1.20% vs BTC -1.28%. 30일 상관 0.85→0.42 급락. Gold $4,703이 DXY 반등에도 강세 유지 = 기관의 "디지털 Gold→진짜 Gold" 전환 가능성. BTC $80K 이탈 시 $75K 하방 | `market/correlation_matrix.md, market/crypto_weekly.md` | 진행중 |
 | 2026-05-12 | 이브닝브리핑 | WTI $101.67 재돌파(+3.67%) — 이란 MOU 미확인 지속+호르무즈 긴장 재고조. 에너지 인플레 채널 재가동. B-5 WTI↔BEI Z +1.85σ 주의 강화. 6~7월 CPI 에너지 항목 구조적 상방 압력 | `market/correlation_matrix.md, macro/geopolitics.md` | 진행중 |
