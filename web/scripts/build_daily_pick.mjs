@@ -207,11 +207,19 @@ async function pickToday(candidates) {
 // 메인
 // ---------------------------------------------------------------------------
 async function main() {
-  // [v3.22 Vercel 우회] analysis/ 부재 (.vercelignore 제외) + commit된 daily_pick.json 존재 시
-  // → commit된 결과 그대로 사용 (build_manifest 의 v3.16 git 부재 fallback 패턴과 동일)
+  // [v3.22.2] Vercel 빌드 컨테이너 강제 우회
+  //   원인: Linux 환경의 한글 디렉토리명 NFD/NFC 차이로 findLatestScorecard 실패 → pick=null
+  //   해결: VERCEL=1 환경변수 감지 시 commit된 결과 그대로 사용 (build_manifest v3.16 패턴 모방)
+  //   로컬은 정상 재생성 (매번 최신 analysis/ 기반)
+  if (process.env.VERCEL && existsSync(OUTPUT_JSON)) {
+    const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
+    console.log(`OK: Vercel 빌드 환경 감지 — committed ${rel} 그대로 사용 (로컬 빌드가 갱신 담당)`);
+    return;
+  }
+  // 추가 안전망: analysis/ 부재 시 commit된 결과 그대로
   if (!existsSync(ANALYSIS_DIR) && existsSync(OUTPUT_JSON)) {
     const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
-    console.log(`OK: analysis/ 부재 (Vercel 빌드 컨테이너 등) — committed ${rel} 그대로 사용`);
+    console.log(`OK: analysis/ 부재 — committed ${rel} 그대로 사용`);
     return;
   }
 
