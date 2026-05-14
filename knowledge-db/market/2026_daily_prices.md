@@ -479,3 +479,10 @@ type: time_series
 | 2026-05-09 | crypto | FearAndGreedIndex | 49 | — | index | Milkroad [2026-05-09] | 2026-05-10T20:00:00+09:00 | Fear 구간(50 미만). 직전 38(Fear). 암호화폐 심리 소폭 개선 중 |
 | 2026-05-09 | crypto | BTC_ETF_Monthly | 2440M | — | USD | Yahoo Finance [2026-05 누계] | 2026-05-10T20:00:00+09:00 | 미국 spot BTC ETF 4월 유입 $2.44B — 10월 2025 이후 최대. 기관 수요 재확인 |
 | 2026-05-09 | macro | NFP_April_Breakdown | Health37K_Transport30K_Retail22K | — | jobs | BLS [2026-05-08 08:30 ET] | 2026-05-10T20:00:00+09:00 | 업종별: 헬스케어 +37K / 운송·창고 +30K / 소매 +22K. 연방정부 -9K / 정보 -13K / 제조 -2K. K자형 노동시장 공식화 |
+| 2026-05-14 | crypto | BTC | 81351.38 | +2.62% | USD | yfinance [2026-05-14 KST 수집 / fetch_price.py] | 2026-05-15T05:18:26+09:00 | $81K 재진입. NASDAQ 디커플링 완화 진행 |
+| 2026-05-14 | crypto | ETH | 2294.01 | +1.61% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:27+09:00 | $2,300 임박. BTC 대비 상대 약세 지속 |
+| 2026-05-14 | crypto | SOL | 92.69 | +1.76% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:28+09:00 | 알트 약세 흐름 유지. 52w 저점 $68.69 대비 회복 중 |
+| 2026-05-14 | crypto | BNB | 679.31 | +1.18% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:29+09:00 | 안정 횡보 + MiCA 2.0 대응 |
+| 2026-05-14 | crypto | DOGE | 0.12 | +6.47% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:30+09:00 | 변동성 확대 — 밈 사이클 일시 반등 |
+| 2026-05-14 | crypto | LINK | 10.61 | +3.90% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:32+09:00 | DeFi 모멘텀 안정. CCIP·RWA 내러티브 |
+| 2026-05-14 | crypto | FearAndGreedIndex | 34 | — | index | alternative.me [2026-05-14] | 2026-05-15T05:18:22+09:00 | Fear 구간. 직전 42(Fear), 1주 47(Neutral) → 8p 하락. BTC ETF 유입 둔화 + Warsh 불확실성 반영 |

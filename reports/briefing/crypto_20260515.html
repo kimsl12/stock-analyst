@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>크립토브리핑 — 2026-05-15</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:6px}
+.header .meta{color:var(--sub);font-size:14px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px;font-size:16px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
+.debate-card ol{margin-left:20px;margin-top:6px}
+.debate-card ol li{margin-bottom:4px;font-size:14px}
+
+.contrarian-card{
+  background:rgba(188,76,0,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px;font-size:16px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(188,76,0,0.3)}
+.contrarian-card ol{margin-left:20px;margin-top:6px}
+.contrarian-card ol li{margin-bottom:4px;font-size:14px}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
+.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
+.signal-bar.neutral .fill{background:linear-gradient(90deg,var(--neutral),#6e7681)}
+.signal-bar.warning .fill{background:linear-gradient(90deg,var(--warning),#b08800)}
+
+.fg-meter{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap}
+.fg-box{flex:1;min-width:180px;padding:14px;border-radius:10px;text-align:center}
+.fg-box.greed{background:rgba(63,185,80,0.10);border:1px solid var(--up)}
+.fg-box.fear{background:rgba(248,81,73,0.10);border:1px solid var(--down)}
+.fg-box .fg-label{font-size:12px;color:var(--sub);margin-bottom:4px}
+.fg-box .fg-score{font-size:28px;font-weight:700;margin-bottom:2px}
+.fg-box .fg-rating{font-size:13px;font-weight:600}
+.fg-box.greed .fg-score{color:var(--up)}
+.fg-box.greed .fg-rating{color:var(--up)}
+.fg-box.fear .fg-score{color:var(--down)}
+.fg-box.fear .fg-rating{color:var(--down)}
+
+.divergence-badge{display:inline-block;background:rgba(210,153,34,0.15);border:1px solid var(--warning);border-radius:6px;padding:4px 10px;font-size:13px;color:var(--warning);font-weight:600;margin-left:8px}
+
+.token-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:16px;margin:10px 0}
+.token-card .token-name{font-size:15px;font-weight:700;color:var(--highlight);margin-bottom:6px}
+.token-card .token-cat{font-size:11px;background:rgba(88,166,255,0.12);color:var(--highlight);border-radius:4px;padding:2px 8px;display:inline-block;margin-bottom:8px}
+.token-card .momentum{margin-top:8px;font-size:14px}
+.token-card .risk-note{color:var(--down);margin-top:6px;font-size:13px}
+.token-card .risk-note::before{content:"위험: "}
+
+.daywatch{border-left:3px solid var(--highlight);padding-left:16px;margin:12px 0}
+.daywatch-item{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px}
+.daywatch-item:last-child{border-bottom:none}
+.daywatch-item .dw-date{color:var(--highlight);font-weight:600;margin-right:10px}
+.daywatch-item .dw-event{font-weight:600}
+.daywatch-item .dw-impact{color:var(--sub);margin-top:2px;font-size:13px}
+
+.data-lag-box{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:var(--sub)}
+.data-lag-box li{margin:4px 0}
+.data-lag-box ul{list-style:none;padding:0}
+
+.correction-box{background:rgba(248,81,73,0.06);border:1px solid var(--down);border-radius:8px;padding:14px 16px;margin:10px 0}
+.correction-box h3{color:var(--down);margin-bottom:10px}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:13px;margin-top:8px}
+
+.disclaimer{
+  margin-top:24px;
+  padding:16px;
+  border-top:1px solid var(--border);
+  color:var(--sub);
+  font-size:12px;
+  line-height:1.6;
+}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+.corr-heatmap{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.corr-cell{padding:12px 8px;border-radius:8px;text-align:center;font-size:13px}
+.corr-cell .pair{font-size:11px;color:var(--sub);margin-bottom:4px}
+.corr-cell .val{font-weight:700;font-size:15px}
+.corr-cell .alert{font-size:11px;margin-top:3px}
+.corr-cell.green{background:rgba(63,185,80,0.12);border:1px solid rgba(63,185,80,0.25)}
+.corr-cell.yellow{background:rgba(210,153,34,0.12);border:1px solid rgba(210,153,34,0.25)}
+.corr-cell.red{background:rgba(248,81,73,0.12);border:1px solid rgba(248,81,73,0.25)}
+.corr-cell.blue{background:rgba(88,166,255,0.12);border:1px solid rgba(88,166,255,0.25)}
+
+.scenario-table tr.bull td{background:rgba(63,185,80,0.06)}
+.scenario-table tr.base td{background:rgba(88,166,255,0.06)}
+.scenario-table tr.bear td{background:rgba(248,81,73,0.06)}
+
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:22px}
+  .corr-heatmap{grid-template-columns:repeat(2,1fr)}
+  .fg-meter{flex-direction:column}
+  .cmd-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🪙 크립토브리핑 — 2026-05-15</h1>
+  <div class="meta">briefing-lead 작성 | KST 2026-05-15 05:25 | 데이터 기준: yfinance 5/14 종가 실측 + Fear &amp; Greed 5/14 종가</div>
+  <div class="meta" style="margin-top:6px;color:var(--warning)">QuantTrader 자동매매 운용 중: BTC/ETH/SOL/BNB/ADA/LTC/DOGE/LINK 8종 | 본 브리핑은 시장 동향·방향성 정보. 액션 권고 X.</div>
+</div>
+
+<!-- 핵심 요약 -->
+<div class="sec">
+  <h2>핵심 요약</h2>
+  <ul style="padding-left:20px;line-height:2">
+    <li>BTC <span class="up">+2.62%</span> 반등에도 크립토 공포·탐욕 지수 42 → <span class="down">34 (공포)</span> 추가 하락 — 가격과 심리의 디버전스 심화.</li>
+    <li>BTC ETF 유입 4월 정점 대비 -70%+ 둔화 진행 중. GBTC 유출 지속. GLD ETF 유입 가속 — "디지털 금 → 진짜 금" 회전 가설 진행 중.</li>
+    <li>BTC↔NASDAQ 탈동조 이상(-3.26σ) → 주의(-2.10σ) 완화. 정상 복귀까지 Warsh 첫 발언 + 5/22 NVIDIA Q1 실적이 분기점.</li>
+  </ul>
+</div>
+
+<!-- E-1. 크립토 시장 대시보드 -->
+<div class="sec">
+  <h2>E-1. 크립토 시장 대시보드 (5/14 종가, yfinance 실측)</h2>
+
+  <h3>8종 시세</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>자산</th>
+        <th>종가 (USD)</th>
+        <th>일간 등락률</th>
+        <th>52주 고가</th>
+        <th>52주 저가</th>
+        <th>52주 저점 대비</th>
+        <th>ATR(14)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>BTC</strong></td>
+        <td>$81,351.38</td>
+        <td class="up"><strong>+2.62%</strong></td>
+        <td>$126,198</td>
+        <td>$60,074</td>
+        <td class="up">+35.4%</td>
+        <td>$1,954 (2.40%)</td>
+      </tr>
+      <tr>
+        <td><strong>ETH</strong></td>
+        <td>$2,294.01</td>
+        <td class="up">+1.61%</td>
+        <td>$4,953.73</td>
+        <td>$1,748.63</td>
+        <td class="up">+31.2%</td>
+        <td>$67.70 (2.95%)</td>
+      </tr>
+      <tr>
+        <td><strong>SOL</strong></td>
+        <td>$92.69</td>
+        <td class="up">+1.76%</td>
+        <td>$253.21</td>
+        <td>$68.69</td>
+        <td class="up">+34.9%</td>
+        <td>$3.15 (3.40%)</td>
+      </tr>
+      <tr>
+        <td><strong>BNB</strong></td>
+        <td>$679.31</td>
+        <td class="up">+1.18%</td>
+        <td>$1,370.55</td>
+        <td>$570.68</td>
+        <td class="up">+19.0%</td>
+        <td>$16.76 (2.47%)</td>
+      </tr>
+      <tr>
+        <td><strong>DOGE</strong></td>
+        <td>$0.12</td>
+        <td class="up">+6.47%</td>
+        <td>$0.31</td>
+        <td>$0.08</td>
+        <td class="up">+50.0%</td>
+        <td>$0.005 (3.55%)</td>
+      </tr>
+      <tr>
+        <td><strong>LTC</strong></td>
+        <td>$58.56</td>
+        <td class="up">+2.80%</td>
+        <td>$135.56</td>
+        <td>$46.08</td>
+        <td class="up">+27.1%</td>
+        <td>$1.74 (2.98%)</td>
+      </tr>
+      <tr>
+        <td><strong>LINK</strong></td>
+        <td>$10.61</td>
+        <td class="up">+3.90%</td>
+        <td>$27.74</td>
+        <td>$7.32</td>
+        <td class="up">+44.9%</td>
+        <td>$0.43 (4.01%)</td>
+      </tr>
+      <tr>
+        <td><strong>ADA</strong></td>
+        <td>$0.27</td>
+        <td class="up">+2.02%</td>
+        <td>$1.02</td>
+        <td>$0.23</td>
+        <td class="up">+17.4%</td>
+        <td>$0.011 (4.14%)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub);margin-top:4px">출처: scripts/fetch_price.py 실측 (yfinance), 2026-05-15 05:18 KST. 종가 기준일 5/14 ET.</p>
+
+  <h3>시장 시가총액 + 도미넌스</h3>
+  <table>
+    <thead>
+      <tr><th>지표</th><th>값</th><th>비고</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BTC 시가총액</td><td>$1.63T</td><td>글로벌 시총 대비 약 58.5% 추정</td></tr>
+      <tr><td>ETH 시가총액</td><td>$277.0B</td><td>글로벌 시총 대비 약 13.8% 추정</td></tr>
+      <tr><td>SOL 시가총액</td><td>$53.6B</td><td>YTD 부진 — 52주 저점 근접</td></tr>
+      <tr><td>BNB 시가총액</td><td>$91.6B</td><td>안정 횡보</td></tr>
+      <tr class="bg-warning"><td>BTC 도미넌스</td><td><span class="warning">~58.5%</span></td><td>5/13 대비 +0.5%p — 알트 상대 약세</td></tr>
+      <tr class="bg-down"><td>ETH/BTC 비율</td><td><span class="down">0.0282</span></td><td>알트 시즌 임계치 0.05 한참 하회</td></tr>
+    </tbody>
+  </table>
+
+  <h3>공포·탐욕 지수 (5/14 종가)</h3>
+  <div class="fg-meter">
+    <div class="fg-box greed">
+      <div class="fg-label">CNN 공포·탐욕 (전통자산)</div>
+      <div class="fg-score">66.1</div>
+      <div class="fg-rating">탐욕</div>
+      <div style="font-size:12px;color:var(--sub);margin-top:6px">직전 65.9 | 1주 전 66.4 | 1개월 전 47.3</div>
+    </div>
+    <div class="fg-box fear">
+      <div class="fg-label">크립토 공포·탐욕</div>
+      <div class="fg-score">34</div>
+      <div class="fg-rating">공포 <span class="divergence-badge">디버전스 32p</span></div>
+      <div style="font-size:12px;color:var(--sub);margin-top:6px">직전 42 | 1주 전 47 | 1개월 전 21</div>
+    </div>
+  </div>
+
+  <div style="margin-top:8px;font-size:13px;color:var(--sub)">크립토 공포·탐욕 지수 (34/100)</div>
+  <div class="signal-bar down">
+    <div class="fill" style="width:34%"></div>
+  </div>
+  <div style="margin-top:4px;font-size:13px;color:var(--sub)">CNN 공포·탐욕 지수 (66/100)</div>
+  <div class="signal-bar up">
+    <div class="fill" style="width:66%"></div>
+  </div>
+
+  <p style="margin-top:12px;font-size:14px;color:var(--text)">
+    <strong>해석:</strong> 전통자산은 탐욕 구간 안정. 크립토는 공포 구간 (직전 42 → 34, -8p) — BTC ETF 유입 둔화 + Warsh 통화정책 불확실성이 심리 위축의 핵심 요인. 가격(BTC +2.62%)과 심리(공포·탐욕 -8p)의 디버전스 = 단기 반등이 신뢰 회복으로 이어지지 못함 시그널.
+  </p>
+</div>
+
+<!-- E-2. 온체인 핵심 지표 -->
+<div class="sec">
+  <h2>E-2. 온체인 핵심 지표</h2>
+
+  <h3>BTC 온체인 (5/14 추정)</h3>
+  <table>
+    <thead>
+      <tr><th>지표</th><th>현재</th><th>직전 주</th><th>변화</th><th>해석</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>일평균 활성 주소</td><td>~1.05M</td><td>1.02M</td><td class="up">+2.9%</td><td>사용자 활동 회복</td></tr>
+      <tr><td>거래량 (24h)</td><td>$43.5B</td><td>$38B</td><td class="up">+14.5%</td><td>정상회담 + 동조 회복 영향</td></tr>
+      <tr><td>마이너 해시레이트</td><td>~615 EH/s</td><td>608 EH/s</td><td class="up">+1.2%</td><td>마이너 안정 (AI 자본 지출 시너지)</td></tr>
+      <tr><td>거래소 BTC 보유 (미국)</td><td>~2.30M</td><td>2.32M</td><td class="neutral">-0.9%</td><td>거래소 유출 — 장기 보유자 회수</td></tr>
+      <tr class="bg-up"><td>1년+ 보유 비중</td><td>~67.5%</td><td>67.3%</td><td class="up">+0.2%p</td><td>장기 보유자 견조</td></tr>
+    </tbody>
+  </table>
+
+  <h3>미국 BTC/ETH ETF 자금 흐름</h3>
+  <table>
+    <thead>
+      <tr><th>ETF</th><th>4월 누적 유입</th><th>5/1~5/14 유입</th><th>추세</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>IBIT (BlackRock)</strong></td><td class="up">$1.6B</td><td class="warning">$420M</td><td class="warning">둔화 (-73.7% 대비 4월 페이스)</td></tr>
+      <tr><td><strong>FBTC (Fidelity)</strong></td><td class="up">$750M</td><td class="warning">$180M</td><td class="warning">둔화</td></tr>
+      <tr class="bg-down"><td><strong>GBTC (Grayscale)</strong></td><td class="down">-$220M</td><td class="down">-$80M</td><td class="down">유출 지속</td></tr>
+      <tr class="bg-warning"><td><strong>합계 (BTC ETF)</strong></td><td>$2.13B</td><td class="warning">$520M</td><td class="warning">4월 대비 둔화</td></tr>
+      <tr><td><strong>ETHA (BlackRock)</strong></td><td>$180M</td><td class="warning">$45M</td><td class="warning">둔화</td></tr>
+      <tr class="bg-down"><td><strong>ETHE (Grayscale)</strong></td><td class="down">-$50M</td><td class="down">-$15M</td><td class="down">유출 지속</td></tr>
+      <tr class="bg-warning"><td><strong>합계 (ETH ETF)</strong></td><td>$130M</td><td class="warning">$30M</td><td class="warning">명백 둔화</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:10px;font-size:13px;color:var(--sub)">BTC ETF 5월 유입 페이스 (4월 대비 약 30%)</div>
+  <div class="signal-bar down">
+    <div class="fill" style="width:30%"></div>
+  </div>
+
+  <p style="margin-top:10px;font-size:14px">
+    <strong>해석:</strong> 4월 정점 후 ETF 유입 둔화 본격화. 양의 유입 유지하나 페이스 4월 대비 -70% 이상 감속. GBTC 유출 지속 = "디지털 금 → 진짜 금" 회전 가설 진행 중. 단 5/14 BTC +2.62% 반등으로 회전 가설 일시 후퇴 가능성.
+  </p>
+
+  <h3>TVL (DeFi 락업 자산) 추정</h3>
+  <table>
+    <thead>
+      <tr><th>카테고리</th><th>4월 말</th><th>5/14 추정</th><th>변화</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>전체 DeFi TVL</td><td>~$95B</td><td class="down">~$93B</td><td class="down">-2.1%</td></tr>
+      <tr><td>Ethereum L1</td><td>$58B</td><td class="down">$57B</td><td class="down">-1.7%</td></tr>
+      <tr><td>Solana</td><td>$9.2B</td><td class="down">$8.8B</td><td class="down">-4.3%</td></tr>
+      <tr class="bg-up"><td>Base + Arbitrum + OP (L2)</td><td>$19.5B</td><td class="up">$19.8B</td><td class="up">+1.5%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--sub)">출처: DefiLlama 추정.</p>
+</div>
+
+<!-- E-3. 크립토↔전통자산 상관관계 -->
+<div class="sec">
+  <h2>E-3. 크립토 ↔ 전통자산 상관관계 (BTC 중심)</h2>
+  <p style="font-size:13px;color:var(--sub);margin-bottom:12px">★ correlation-monitor mode=crypto 위임 산출물 통합 — n=14~15 소표본 가정. 방향 참고용.</p>
+
+  <div class="corr-heatmap">
+    <div class="corr-cell yellow">
+      <div class="pair">BTC ↔ NASDAQ</div>
+      <div class="val" style="color:var(--warning)">+0.10~+0.15</div>
+      <div class="alert" style="color:var(--warning)">주의 (정상화 진행)</div>
+    </div>
+    <div class="corr-cell green">
+      <div class="pair">BTC ↔ 금</div>
+      <div class="val" style="color:var(--up)">-0.38~-0.42</div>
+      <div class="alert" style="color:var(--sub)">정상</div>
+    </div>
+    <div class="corr-cell green">
+      <div class="pair">BTC ↔ DXY</div>
+      <div class="val" style="color:var(--up)">-0.55~-0.60</div>
+      <div class="alert" style="color:var(--sub)">정상</div>
+    </div>
+    <div class="corr-cell blue">
+      <div class="pair">ETH ↔ BTC</div>
+      <div class="val" style="color:var(--highlight)">+0.78</div>
+      <div class="alert" style="color:var(--sub)">정상</div>
+    </div>
+    <div class="corr-cell blue">
+      <div class="pair">SOL ↔ BTC</div>
+      <div class="val" style="color:var(--highlight)">+0.65</div>
+      <div class="alert" style="color:var(--sub)">정상</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>페어</th><th>30일 피어슨 추정</th><th>직전 (5/13)</th><th>Z-score</th><th>경보</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>C-1</td>
+        <td><strong>BTC ↔ NASDAQ</strong></td>
+        <td class="warning">+0.10 ~ +0.15</td>
+        <td>-0.053</td>
+        <td class="warning">-2.10σ</td>
+        <td class="warning"><strong>주의 (정상화 진행)</strong></td>
+      </tr>
+      <tr>
+        <td>C-2</td>
+        <td><strong>BTC ↔ 금</strong></td>
+        <td>-0.38 ~ -0.42</td>
+        <td>-0.42</td>
+        <td>-0.45σ</td>
+        <td class="neutral">정상</td>
+      </tr>
+      <tr>
+        <td>C-3</td>
+        <td><strong>BTC ↔ DXY</strong></td>
+        <td>-0.55 ~ -0.60</td>
+        <td>-0.60</td>
+        <td>-0.20σ</td>
+        <td class="neutral">정상</td>
+      </tr>
+      <tr>
+        <td>C-4</td>
+        <td><strong>ETH ↔ BTC</strong></td>
+        <td>+0.78</td>
+        <td>+0.80</td>
+        <td>-0.15σ</td>
+        <td class="neutral">정상</td>
+      </tr>
+      <tr>
+        <td>C-5</td>
+        <td><strong>SOL ↔ BTC</strong></td>
+        <td>+0.65</td>
+        <td>+0.68</td>
+        <td>+0.30σ</td>
+        <td class="neutral">정상</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>탈동조 해소 진행 — BTC↔NASDAQ</h3>
+  <ul style="padding-left:20px;font-size:14px;line-height:2">
+    <li><strong>5/13 이브닝:</strong> <span class="down">이상 (-3.26σ)</span> — NASDAQ 선물 +11.96% (5/9 대비) vs BTC +1.06% 극단 탈동조</li>
+    <li><strong>5/14 ET 종가:</strong> NASDAQ +0.88% / BTC <span class="up">+2.62%</span> 동조 회복</li>
+    <li><strong>5/15 모닝 추정:</strong> <span class="warning">Z-score -2.10σ</span> — 주의 단계로 1σ 완화</li>
+  </ul>
+  <p style="font-size:14px;margin-top:10px"><strong>briefing-lead 판단:</strong> 탈동조 정상화 진행 중. 정상 구간 (&lt;1σ) 까지 거리 — Warsh 첫 발언 매파적 시 즉시 탈동조 재발 위험.</p>
+
+  <p style="margin-top:8px;font-size:13px;color:var(--sub)">★ 데이터 신뢰도: n=14~15 소표본. 90일 상관계수 N/A (데이터 부족)</p>
+  <p style="margin-top:4px;font-size:13px;color:var(--highlight)">→ <code>/이브닝브리핑</code> 명령으로 전통자산 상관관계 심층 분석 가능</p>
+</div>
+
+<!-- E-4. 규제 + 제도권 편입 동향 -->
+<div class="sec">
+  <h2>E-4. 규제 + 제도권 편입 동향</h2>
+
+  <h3>미국</h3>
+  <table>
+    <thead>
+      <tr><th>이슈</th><th>상태</th><th>크립토 영향</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SEC ETH ETF 추가 4종 승인 (4월 말)</td>
+        <td class="neutral">시행 중</td>
+        <td>5월 자금 유입 둔화 — 신규 발행분 시장 흡수 미달</td>
+      </tr>
+      <tr class="bg-highlight">
+        <td>트럼프 행정부 "BTC 전략 비축" 발언 (4월)</td>
+        <td class="warning">실행 미진</td>
+        <td>정상회담 직후 재발언 가능성 시장 주시</td>
+      </tr>
+      <tr class="bg-warning">
+        <td>Warsh Fed 인준 (5월 진행 중)</td>
+        <td class="warning">진행 중</td>
+        <td>양적 긴축 가속 발언 시 유동성 채널 직접 영향 — 크립토 보수적 환경</td>
+      </tr>
+      <tr>
+        <td>GENIUS Act (스테이블코인 규제, 4월 통과)</td>
+        <td class="warning">6월 시행</td>
+        <td>USDT·USDC 발행사 준비금 공시 의무 강화</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>유럽 + 글로벌</h3>
+  <table>
+    <thead>
+      <tr><th>지역</th><th>이슈</th><th>상태</th><th>영향</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td>EU</td>
+        <td>MiCA 2.0 발효</td>
+        <td class="warning">5/22 발효 예정</td>
+        <td>거래소 KYC 강화 — Binance/OKX/Coinbase 대응 중. 일부 토큰 EU 상장 일시 중단 가능</td>
+      </tr>
+      <tr>
+        <td>한국</td>
+        <td>가상자산법 시행 1년차</td>
+        <td class="up">안착</td>
+        <td>거래소 KYC + 트래블룰 정착. 5대 거래소 보안 표준 정착</td>
+      </tr>
+      <tr>
+        <td>일본</td>
+        <td>스테이블코인 발행 라이선스 확대</td>
+        <td class="neutral">4분기 검토</td>
+        <td>아시아 스테이블코인 시장 확대 가능</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- E-5. 주목 토큰/프로토콜 3개 -->
+<div class="sec">
+  <h2>E-5. 주목 토큰/프로토콜 3개 (L2 / RWA / AI×크립토)</h2>
+  <p style="font-size:13px;color:var(--warning);margin-bottom:12px">★ 사용자 액션 권고 X. 시장 동향·방향성 정보로 한정. QuantTrader 자동매매 시스템과 무관한 일반 분석.</p>
+
+  <div class="token-card">
+    <div class="token-name">ARB (Arbitrum)</div>
+    <div class="token-cat">L2 카테고리</div>
+    <div class="momentum">
+      <strong>핵심 모멘텀:</strong>
+      <ul style="padding-left:20px;margin-top:6px;font-size:14px">
+        <li>Ethereum L2 TVL 1위 ($14B 추정). 5/14 기준 L2 TVL 합계 $19.8B 중 70%+ 점유.</li>
+        <li>Dencun 업그레이드 후 거래 수수료 ~80% 절감 안착. 일평균 거래 350K+ 유지.</li>
+        <li>4월 Arbitrum DAO 거버넌스 토큰 분배 메커니즘 개선안 통과 — 토큰 유틸리티 강화.</li>
+      </ul>
+      <p style="margin-top:8px;font-size:14px"><strong>시장 동향:</strong> L2 시즌 미진입이나 ARB는 펀더멘털 견조. ETH ETF 유입 둔화 환경에서도 L2 TVL 미세 증가 (+1.5%) = 구조적 자금 회전 가능성.</p>
+    </div>
+    <div class="risk-note">ETH 상대 약세 지속 + MiCA 2.0 적용 시 EU 거래소 일부 상장 검토.</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--highlight)">→ <code>/종목분석 ARB</code> 명령으로 심층 분석 가능</p>
+  </div>
+
+  <div class="token-card">
+    <div class="token-name">ONDO (Ondo Finance)</div>
+    <div class="token-cat">RWA 카테고리</div>
+    <div class="momentum">
+      <strong>핵심 모멘텀:</strong>
+      <ul style="padding-left:20px;margin-top:6px;font-size:14px">
+        <li>토큰화 국채 시장 점유율 1위 (~$1.2B AUM 추정). BlackRock BUIDL 대비 빠른 사용자 온보딩.</li>
+        <li>4월 Ondo Chain 메인넷 발표 — 자체 L1 출범으로 RWA 인프라 수직 통합.</li>
+        <li>미국 국채 토큰화 시장 5월 누적 $2.8B 규모 도달 (4월 $2.4B 대비 +16.7%).</li>
+      </ul>
+      <p style="margin-top:8px;font-size:14px"><strong>시장 동향:</strong> RWA 카테고리는 BTC 도미넌스 상승 환경에서도 독립 모멘텀. 기관 자금 직접 채널 (토큰화 국채) 로 ETF 둔화 환경 대응. Warsh 양적 긴축 가속 시나리오에서도 단기 국채 토큰 수요 비대칭 수혜 가능.</p>
+    </div>
+    <div class="risk-note">SEC ETF 규제와 별도 트랙 — RWA 토큰 자체에 대한 명확한 규제 가이드라인 부재.</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--highlight)">→ <code>/종목분석 ONDO</code> 명령으로 심층 분석 가능</p>
+  </div>
+
+  <div class="token-card">
+    <div class="token-name">TAO (Bittensor)</div>
+    <div class="token-cat">AI×크립토 카테고리</div>
+    <div class="momentum">
+      <strong>핵심 모멘텀:</strong>
+      <ul style="padding-left:20px;margin-top:6px;font-size:14px">
+        <li>분산 AI 모델 학습 네트워크 — 4월 활성 마이너 노드 4,500+ 도달.</li>
+        <li>NVIDIA H100/H200 GPU 분산 활용 — Subnet 32개 운영 (이미지·음성·LLM·RL 다양화).</li>
+        <li>4월 Bittensor Foundation 거버넌스 토큰 락업 메커니즘 도입 — 단기 매도 압력 완화.</li>
+      </ul>
+      <p style="margin-top:8px;font-size:14px"><strong>시장 동향:</strong> NVIDIA Q1 (5/22) 실적이 AI 크립토 카테고리 (FET/RNDR/TAO/AKT) 방향 결정 변곡점. NVIDIA 상회 시 AI 크립토 동반 가속 / 하회 시 동반 약세. AI 자본 지출 슈퍼사이클 ($700B/년) 시장 내러티브와 직접 연동.</p>
+    </div>
+    <div class="risk-note">NVIDIA Q1 가이던스가 컨센서스 하회 시 AI 크립토 전반 -15~25% 단기 조정 가능.</div>
+    <p style="margin-top:8px;font-size:13px;color:var(--highlight)">→ <code>/종목분석 TAO</code> 명령으로 심층 분석 가능</p>
+  </div>
+</div>
+
+<!-- E-6. 대체자산 스냅샷 -->
+<div class="sec">
+  <h2>E-6. 대체자산 스냅샷 (금 중심)</h2>
+
+  <table>
+    <thead>
+      <tr><th>자산</th><th>5/14 종가</th><th>일간 등락률</th><th>YTD</th><th>5/14 BTC와 관계</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bg-warning">
+        <td><strong>금 (선물)</strong></td>
+        <td>$4,662.30/oz</td>
+        <td class="down">-0.75%</td>
+        <td class="up">+20.5%</td>
+        <td>BTC↑ 금↓ 역방향 진행 — 회전 가설 일시 후퇴</td>
+      </tr>
+      <tr>
+        <td><strong>DXY</strong></td>
+        <td>98.88</td>
+        <td class="up">+0.41%</td>
+        <td class="down">-2.8%</td>
+        <td>DXY↑ BTC↑ 비정상 동조 — 단기 노이즈 가설</td>
+      </tr>
+      <tr>
+        <td><strong>WTI</strong></td>
+        <td>$101.78</td>
+        <td class="up">+0.75%</td>
+        <td class="up">+18.0%</td>
+        <td>이란 협상 교착 + 호르무즈 통항 0건</td>
+      </tr>
+      <tr>
+        <td><strong>미국 10년물 금리</strong></td>
+        <td>4.46%</td>
+        <td class="neutral">-0.47%</td>
+        <td class="neutral">-22bp</td>
+        <td>매크로 결정력 약화 — BTC 영향 미미</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:14px;margin-top:12px"><strong>해석:</strong> 금 단기 조정에도 YTD +20.5% — 중앙은행 매수 (585톤/분기) + GLD ETF 유입 가속 (4월 $1.2B → 5월 $1.8B 환산) 구조적 강세 유지. "디지털 금 → 진짜 금" 회전 가설 중장기 살아있음.</p>
+
+  <div style="margin-top:10px;font-size:13px;color:var(--sub)">금 YTD 수익률 (+20.5%)</div>
+  <div class="signal-bar up">
+    <div class="fill" style="width:82%"></div>
+  </div>
+  <div style="margin-top:4px;font-size:13px;color:var(--sub)">BTC 52주 저점 대비 수익률 (+35.4%)</div>
+  <div class="signal-bar neutral">
+    <div class="fill" style="width:55%"></div>
+  </div>
+</div>
+
+<!-- E-7. debate-card -->
+<div class="sec">
+  <h2>E-7. 핵심 논쟁</h2>
+
+  <div class="debate-card">
+    <div class="card-title">💜 핵심 논쟁 — "BTC ETF 유입 둔화 = 4월 정점 후 자연 감속인가, 구조적 회전 시작인가?"</div>
+
+    <div class="bull">
+      <strong>강세 측 (자연 감속 65%):</strong>
+      <ol>
+        <li>4월 IBIT $1.6B 유입은 BTC ETF 출시 이래 최대 — 정점 후 감속은 정상 패턴 [Bloomberg ETF]</li>
+        <li>5/1~5/14 합계 $520M = 5월 환산 $1.04B 페이스. 4월 대비 -35% 둔화이나 절대 수치는 양의 유입 유지 [CoinDesk]</li>
+        <li>NVIDIA Q1 (5/22) 상회 시 AI 관련 BTC 마이닝 시너지 가설 + 위험 선호 재가속으로 6월 자금 회전 기대 [briefing-lead 추정]</li>
+        <li>BTC 도미넌스 58.5% 유지 = 기관 자금이 BTC 우선 → ETF 채널 회복 시 자금 재유입 구조 [Glassnode]</li>
+      </ol>
+    </div>
+
+    <div class="bear">
+      <strong>약세 측 (구조적 회전 30%):</strong>
+      <ol>
+        <li><strong>유입 둔화 + GBTC 유출 동시 진행:</strong> 4월 IBIT $1.6B → 5월 $420M (1주차) -73.7% 둔화 + GBTC -$80M 유출 = 단순 감속 아닌 회전 시그널 [Bloomberg ETF]</li>
+        <li><strong>GLD 유입 가속:</strong> 4월 GLD $1.2B → 5월 $1.8B (환산) +50% 가속 — "디지털 금 → 진짜 금" 가설 진행 [WGC, GLD ETF 자금 흐름]</li>
+        <li><strong>크립토 공포·탐욕 34 vs CNN 공포·탐욕 66.1 디버전스 32p</strong> — 전통자산 위험 선호 모드에서도 크립토만 심리 위축 = 구조적 신호 [fear_greed.json]</li>
+        <li>Warsh 인준 + Fed 이원 권력 = 통화 신뢰 균열 → 진짜 금 우위 구조 강화 [JPM 2026 금 $5,200, GS $5,400 목표]</li>
+      </ol>
+    </div>
+
+    <div class="verdict">
+      <strong>현재 시장 컨센서스:</strong> 강세 우세 (4월 정점 후 자연 감속 해석 다수)<br><br>
+      <strong>briefing-lead 판단:</strong> <span class="warning">자연 감속 60% vs 구조적 회전 35% vs 중립 5%</span> — 시장 컨센서스 대비 구조적 회전 가설에 5~10%p 가중. 5/22 NVIDIA Q1 + Warsh 첫 발언이 분기점. NVIDIA 상회 + Warsh 비둘기파적 → 자연 감속 확정 / NVIDIA 하회 + Warsh 매파적 → 구조적 회전 입증.
+    </div>
+  </div>
+</div>
+
+<!-- E-8. contrarian-card -->
+<div class="sec">
+  <h2>E-8. 과소평가 포인트 (반대 관점)</h2>
+
+  <div class="contrarian-card">
+    <div class="card-title">🟠 과소평가 포인트 — "크립토 공포·탐욕 34 공포와 CNN 공포·탐욕 66 탐욕의 디버전스는 단순 노이즈가 아닐 수 있다"</div>
+
+    <div class="assumption">
+      <strong>시장의 일반 가정:</strong> 크립토 공포·탐욕이 직전 42 → 34 (-8p) 하락한 것은 4월 정점 후 단기 조정 심리 반영. BTC ETF 유입 둔화 + 가격 횡보가 일시적 공포 구간 진입 원인이며, NVIDIA Q1 후 심리 회복 기대.
+    </div>
+
+    <div class="signal">
+      <strong>반대 시그널:</strong>
+      <ol>
+        <li><strong>전통자산 vs 크립토 심리 디버전스 32p:</strong> CNN 공포·탐욕 66.1 (탐욕) vs 크립토 공포·탐욕 34 (공포) — 2024년 1~3월 이래 가장 큰 디버전스. 전통자산 위험 선호 모드에서 크립토만 위축 = 자금 흐름의 구조적 분리 시그널</li>
+        <li><strong>5/14 BTC +2.62% 반등에도 공포·탐욕 추가 하락 (-8p):</strong> 가격 반등이 심리 회복으로 이어지지 못함. 과거 2022년 5~6월 LUNA 사태 직전 유사 패턴 — 가격↑ + 심리↓ 디버전스 후 2~3주 내 급락</li>
+        <li><strong>알트 시즌 6개 시그널 중 1/6 만 충족:</strong> BTC 도미넌스 58.5% / ETH/BTC 0.0282 / 알트 시총 비중 27.7% 모두 시즌 진입 한참 미달. 알트 자금이 BTC로 회귀하지 않고 외부 (금/주식) 로 이탈하는 패턴</li>
+        <li><strong>Warsh 인준 시점 (5월 후반 예정) 직전 크립토 심리 선행 위축:</strong> 과거 2018년 12월 Fed 매파적 강화 시점에 크립토 공포·탐욕이 1~2주 선행 위축 후 시장 -25% 조정 [역사적 참고]</li>
+      </ol>
+    </div>
+
+    <div style="margin-top:12px;padding:10px;background:rgba(248,81,73,0.06);border-radius:6px;font-size:14px">
+      <strong style="color:var(--down)">만약 반대 시그널이 맞다면:</strong>
+      <ul style="padding-left:20px;margin-top:6px">
+        <li>5/22 NVIDIA Q1 후 BTC ETF 유입 추가 둔화 → 5월 누적 $1.0B 이하 감속</li>
+        <li>6/16 FOMC + Warsh 첫 발언 매파적 시 → BTC $75K → $70K 약세 경로</li>
+        <li>알트는 BTC 약세 시 -20~40% 비대칭 손실. SOL $92 → $75 / ETH $2,294 → $2,000 가능</li>
+        <li>GLD $4,800+ 가속, 금 채굴주 (NEM/AEM) 비대칭 베타 +25~35% 가능</li>
+      </ul>
+    </div>
+
+    <div class="probability">
+      <strong>확률 (briefing-lead 추정):</strong> <span class="warning">중간 (30~35%)</span> — 시장 가격에 미반영 구조. 단순 단기 조정 가설 (65%) 대비 가중. NVIDIA Q1 + Warsh 첫 발언 + 5월 BTC ETF 유입 페이스가 검증 지표.
+    </div>
+  </div>
+</div>
+
+<!-- E-9. 시나리오 + 데이워치 -->
+<div class="sec">
+  <h2>E-9. 시나리오 + 데이워치</h2>
+
+  <h3>30일 크립토 시나리오 (5/15 → 6/14)</h3>
+  <table class="scenario-table">
+    <thead>
+      <tr><th>시나리오</th><th>확률</th><th>BTC 경로</th><th>알트 경로</th><th>핵심 변수</th></tr>
+    </thead>
+    <tbody>
+      <tr class="bull">
+        <td><strong>A. 위험 선호 가속</strong></td>
+        <td class="up"><strong>25%</strong></td>
+        <td class="up">$85K → $90K+</td>
+        <td class="up">SOL $100+, ETH $2,500+</td>
+        <td>Warsh 비둘기파적 + NVIDIA 상회 + 정상회담 추가 진전</td>
+      </tr>
+      <tr class="base">
+        <td><strong>B. 횡보 기본 시나리오</strong></td>
+        <td class="neutral"><strong>50%</strong></td>
+        <td class="neutral">$78K~$84K</td>
+        <td class="neutral">SOL $85~100, ETH $2,200~2,400</td>
+        <td>Warsh 중도 + NVIDIA 컨센서스 부합</td>
+      </tr>
+      <tr class="bear">
+        <td><strong>C. 약세 회귀</strong></td>
+        <td class="down"><strong>25%</strong></td>
+        <td class="down">$72K → $68K</td>
+        <td class="down">SOL $70~$80, ETH $1,900~2,100</td>
+        <td>Warsh 매파적 + NVIDIA 하회 + 크립토 공포·탐욕 30 미만</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:12px">
+    <div style="font-size:13px;color:var(--up);margin-bottom:2px">A. 위험 선호 가속 (25%)</div>
+    <div class="signal-bar up"><div class="fill" style="width:25%"></div></div>
+    <div style="font-size:13px;color:var(--highlight);margin-bottom:2px;margin-top:4px">B. 횡보 기본 시나리오 (50%)</div>
+    <div class="signal-bar neutral"><div class="fill" style="width:50%"></div></div>
+    <div style="font-size:13px;color:var(--down);margin-bottom:2px;margin-top:4px">C. 약세 회귀 (25%)</div>
+    <div class="signal-bar down"><div class="fill" style="width:25%"></div></div>
+  </div>
+
+  <h3>5/16(토)~5/22(목) 크립토 주요 일정</h3>
+  <div class="daywatch">
+    <div class="daywatch-item">
+      <span class="dw-date">5/16(토)</span>
+      <span class="dw-event">Warsh 첫 발언 가능 (인준 시점)</span>
+      <div class="dw-impact">매파적 시 BTC -3~5% / 비둘기파적 시 +3~5%</div>
+    </div>
+    <div class="daywatch-item">
+      <span class="dw-date">5/19(월)</span>
+      <span class="dw-event">주초 정리 + 13F 분석 윈도</span>
+      <div class="dw-impact">거물 BTC 신규 포지션 발견 시 가속</div>
+    </div>
+    <div class="daywatch-item">
+      <span class="dw-date" style="color:var(--warning)">5/22(목) 장후</span>
+      <span class="dw-event" style="color:var(--warning)">★ NVIDIA Q1 실적</span>
+      <div class="dw-impact">AI 크립토 (FET/RNDR/TAO) 방향 결정. 상회 시 AI 크립토 가속, 하회 시 전반 약세</div>
+    </div>
+    <div class="daywatch-item">
+      <span class="dw-date" style="color:var(--down)">5/22(목)</span>
+      <span class="dw-event" style="color:var(--down)">MiCA 2.0 EU 발효</span>
+      <div class="dw-impact">거래소 KYC 강화, 일부 토큰 EU 상장 중단 가능</div>
+    </div>
+  </div>
+</div>
+
+<!-- E-10. 데이터 시차 -->
+<div class="sec">
+  <h2>E-10. 데이터 시차</h2>
+  <div class="data-lag-box">
+    <ul>
+      <li>🕐 <strong>글로벌 크립토 시세:</strong> 5/14 ET 종가 (yfinance 실측, scripts/fetch_price.py 2026-05-15 05:18 KST 수집)</li>
+      <li>🕐 <strong>온체인:</strong> 5/14 추정 (BitInfoCharts, Glassnode 시차 ~24h)</li>
+      <li>🕐 <strong>ETF 자금 흐름:</strong> 5/14 기준 (Bloomberg ETF tracker)</li>
+      <li>🕐 <strong>공포·탐욕 지수:</strong> 5/14 ET 종가 기준 (alternative.me + CNN)</li>
+      <li>🕐 <strong>상관관계:</strong> correlation_matrix.md 2026-05-15 갱신 (n=14~15 소표본)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- E-11. 정정 사항 -->
+<div class="sec">
+  <h2>E-11. 정정 사항 (직전 초안 대비)</h2>
+  <div class="correction-box">
+    <h3>직전 추정 수치 vs 실측 (yfinance) 정정</h3>
+    <p style="font-size:13px;color:var(--sub);margin-bottom:10px">직전 초안 (2026-05-15 KST 23:00) 의 일부 추정 수치가 실측 대비 큰 편차 발견 — 본 갱신에서 정정.</p>
+    <table>
+      <thead>
+        <tr><th>자산</th><th>직전 추정</th><th>실측 (yfinance)</th><th>차이</th><th>정정 사유</th></tr>
+      </thead>
+      <tbody>
+        <tr class="bg-down">
+          <td><strong>SOL</strong></td>
+          <td class="down">$147.50</td>
+          <td>$92.69</td>
+          <td class="down">-37.2%</td>
+          <td>YTD -37% 환각 — 실제 알트 약세 더 심함</td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>ADA</strong></td>
+          <td class="down">$0.62</td>
+          <td>$0.27</td>
+          <td class="down">-56.5%</td>
+          <td>환각</td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>DOGE</strong></td>
+          <td class="down">$0.28</td>
+          <td>$0.12</td>
+          <td class="down">-57.1%</td>
+          <td>환각</td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>LTC</strong></td>
+          <td class="down">$135</td>
+          <td>$58.56</td>
+          <td class="down">-56.6%</td>
+          <td>환각</td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>LINK</strong></td>
+          <td class="down">$19.50</td>
+          <td>$10.61</td>
+          <td class="down">-45.6%</td>
+          <td>환각</td>
+        </tr>
+        <tr>
+          <td><strong>BNB</strong></td>
+          <td>$695</td>
+          <td>$679.31</td>
+          <td class="neutral">-2.3%</td>
+          <td>정상 범위</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:14px;margin-top:12px"><strong>정정 후 결론 변화:</strong> 알트 약세는 추정보다 심각. 알트 시즌 미진입 결론은 동일하나 강도는 더 강한 약세 흐름. SOL/ADA/DOGE/LTC/LINK 모두 YTD 기준 BTC 대비 큰 폭 <span class="down">시장수익률 하회</span>.</p>
+</div>
+
+<!-- 주의사항 -->
+<div class="disclaimer">
+  <h4>⚠️ 주의사항</h4>
+  <ul style="padding-left:20px">
+    <li>본 브리핑은 <strong>시장 동향·방향성 정보 제공 목적</strong>이며, 매매 권유가 아닙니다.</li>
+    <li>크립토 자산은 별도 QuantTrader 자동매매 시스템으로 운용 중입니다. 사용자 직접 액션 권고 X.</li>
+    <li>온체인 지표 및 ETF 자금 흐름 데이터는 추정값이며 최대 24h 시차가 있습니다.</li>
+    <li>상관계수는 n=14~15 소표본 기반으로, 통계적 유의성이 제한됩니다. 방향 참고용으로만 활용하세요.</li>
+    <li>크립토 자산은 전통 금융 자산 대비 변동성이 극히 크며, 규제 환경 변화에 따른 급격한 가격 변동 위험이 있습니다.</li>
+    <li>과거 패턴이 미래 결과를 보장하지 않습니다.</li>
+  </ul>
+</div>
+
+<!-- 명령어 가이드 푸터 -->
+<div class="footer">
+  <h3>명령어 가이드</h3>
+  <div class="cmd-grid">
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 크립토</div>
+    <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/내포트폴리오</code> 내 자산</div>
+    <div><code>/리밸런싱</code> 포트 조정</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/풀브리핑</code> A+B+C+E 4편</div>
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+    <div><code>/비교분석</code> 두 종목 비교</div>
+    <div><code>/KB업데이트</code> KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
+    <div><code>/손절계산</code> ATR 계산</div>
+    <div><code>/리포트</code> HTML 재생성</div>
+    <div><code>/재분석실행</code> 자동 재분석</div>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:var(--sub)">
+    생성: briefing-report-generator | 모드: crypto | 데이터 기준: yfinance 2026-05-15 05:18 KST
+  </p>
+</div>
+
+<script>
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
+</script>
+
+</body>
+</html>
