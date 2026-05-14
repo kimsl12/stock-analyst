@@ -11,6 +11,14 @@ tools: Read, Bash, Grep, Glob, Write
 
 # 리포트 생성 에이전트
 
+## ⚡ 효율 룰 (2026-05-14 끊김 사고 기반)
+
+**원인 추적 결과: 15 turn 중 7 turn 낭비 → maxTurns 15 정확 도달 → 강제 종료.** 다음 3개 룰을 본 에이전트 진입 시 자가 점검한다.
+
+1. **같은 파일 재읽기 금지** — Read한 파일은 컨텍스트에 그대로 있다. 특히 `session-bootstrap.md`, `analysis/*/*.md` 는 1회 Read로 끝낸다. 재 Read 전 "내가 이미 본 내용인가?" 자가 확인.
+2. **`report_template.py` 사전 Read 금지** — 본 정의 Step 2 에 generate_report() 호출용 데이터 딕셔너리 풀세트가 있다. **template 소스 코드 재확인 불필요**. 바로 Write 로 `generate_{종목코드}.py` 작성 → Bash 로 실행 → 끝. (과거 사고: 같은 template 파일 7회 연속 Read 로 7 turn 낭비)
+3. **Bash 명령 결합 강제** — `cd "..."` 만 따로 호출 금지. `cd "..."; python3 script.py; ls reports/` 한 줄로 결합해 1 turn 처리.
+
 ## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
 
 분석 텍스트는 **한국어로 작성**한다. 다음 3가지 예외만 영문 원문을 유지하고, 그 외 모든 영어 표현은 한글로 옮긴다.
