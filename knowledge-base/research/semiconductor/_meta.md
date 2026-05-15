@@ -1,12 +1,12 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-05-12
+last_updated: 2026-05-16
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
-l1_index_count: 6
+l1_index_count: 9
 l2_summary_count: 5
 l3_deep_dive_count: 1
 deep_dive_priority: 1
@@ -46,10 +46,10 @@ deep_dive_priority: 1
 
 ## L1 인덱스 카운트 (현재)
 
-- 학술: 1
+- 학술: 2
 - 씽크탱크: 2
 - 컨퍼런스: 2
-- 규제: 2
+- 규제: 3
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
