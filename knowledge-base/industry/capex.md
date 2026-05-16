@@ -1,16 +1,16 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 sector: capex
 confidence: high
-tags: [capex, 설비투자, AI, 반도체, 에너지, 통신, 데이터센터, 전력, HBM, 원자력]
-sources: [CNBC, Bloomberg, Goldman Sachs, Morgan Stanley, Futurum, IEA, SEMI, ASML, Dell'Oro, TrendForce, Fortune, CreditSights, Invezz, Tech-Insider, Wireless Estimator, 전자신문, 인베스트조선, Yahoo Finance, Benzinga, Motley Fool, DataCenterKnowledge, Evertiq, SK증권, 미래에셋증권, IAEA, Omdia, SC-IQ]
-last_synced_from_db: 2026-05-09
+tags: [capex, 설비투자, AI, 반도체, 에너지, 통신, 데이터센터, 전력, HBM, 원자력, 액냉, EPC]
+sources: [CNBC, Bloomberg, Goldman Sachs, Morgan Stanley, Futurum, IEA, SEMI, ASML, Dell'Oro, TrendForce, Fortune, CreditSights, Invezz, Tech-Insider, Wireless Estimator, 전자신문, 인베스트조선, Yahoo Finance, Benzinga, Motley Fool, DataCenterKnowledge, Evertiq, SK증권, 미래에셋증권, IAEA, Omdia, SC-IQ, Arista, Broadcom, CoolIT, GRC, Quanta Services, EMCOR, MasTec]
+last_synced_from_db: 2026-05-16
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-05-09 | 신뢰도: high | 유효: ~2026-06-09
+> 갱신일: 2026-05-16 | 신뢰도: high | 유효: ~2026-06-16
 
 ---
 
@@ -39,10 +39,20 @@ last_synced_from_db: 2026-05-09
 - **부품비 상승**: MSFT/META 각각 $25B 부품비 추가 반영이 가이던스 상향 주도
 - **수요 백로그**: GOOGL Cloud **$460B+**, MSFT AI ARR **$37B(+123%)**, AWS 커스텀실리콘 ARR **$20B+**, Oracle RPO **$523B**
 
+### 2025 CapEx 가이던스 (비교 기준)
+
+| 기업 | 2025 CapEx 가이던스 | 비고 |
+|------|-------------------|------|
+| **Microsoft** | **$80B** | CY2025 기준 |
+| **Google** | **$75B** | 2025 가이던스 |
+| **Meta** | **$60-65B** | 2025 가이던스 |
+| **Amazon** | **$100B+** | 2025 가이던스 |
+| **합산(4사)** | **$300B+** | 2025년 확정, 2026년 지속 가속 전망 |
+
 ### 투자 방향성
 
 ```
-2024 $256B -> 2025 $381-443B (+49-73%) -> 2026 $775-830B (+75-79%) -> 2027E $1T+
+2024 $256B -> 2025 $300B+ (4사 가이던스) -> 2026 $775-830B (+75-79%) -> 2027E $1T+
 학습 중심 -> 추론 중심 전환 (2025~)
 FCF 악화 -> Amazon -95%, Meta 급감 (2026)
 부품비(메모리/GPU) 상승 -> CapEx 가이던스 $25-50B 추가 상향 (2026 Q1)
@@ -103,6 +113,33 @@ FCF 악화 -> Amazon -95%, Meta 급감 (2026)
 | 전력망 투자 필요 | **$720B** (2030까지) | Goldman Sachs |
 | DC 인프라 지연 | **24-72개월** (변압기/스위치기어 부족) | 복수 |
 | DC CapEx 전망 | **$1.2T**(2029), CAGR 21%, AI가속기 ~50% 비중 | Dell'Oro |
+
+### 데이터센터 건설 현황 (2026.05 업데이트)
+
+- **미국 단독**: 5GW+ 건설 중, 건설 기간 2~3년
+- **글로벌 파이프라인**: 35GW+ DC 용량 계획/건설 중
+- **핵심 허브**: Northern Virginia, Texas, Midwest 집중
+- **병목**: 변압기 리드타임 2~3년 지속, 그리드 인터커넥션 큐 **2,600GW+**
+
+### AI 인프라 하드웨어 (2026.05 업데이트)
+
+| 구분 | 핵심 동향 |
+|------|----------|
+| **GPU/가속기** | NVIDIA GB200/GB300 — 랙 전력 **120kW+** |
+| **네트워킹** | Arista(ANET), Broadcom(AVGO) — AI 패브릭 핵심 |
+| **커스텀 실리콘** | Google TPU, Amazon Trainium — 자체 설계 가속 |
+
+### 냉각 인프라 (2026.05 업데이트)
+
+- **액냉(Liquid Cooling) 침투율**: 신규 빌드 **30%+**
+- **공랭 한계선**: 랙당 **50kW+** 이상 시 공랭 불가 → 액냉 필수
+- **주요 업체**: Vertiv, Schneider Electric, CoolIT, GRC
+
+### EPC/건설 & 공급망 (2026.05 업데이트)
+
+- **EPC 수혜**: Quanta(PWR), EMCOR(EME), MasTec(MTZ) — 기록적 백로그
+- **제약 요인**: 숙련 노동력 부족이 DC 건설 타임라인 최대 제약
+- **공급망 병목**: 구리 와이어, 스위치기어/버스웨이, 광섬유 케이블
 
 ### 미국 유틸리티 CapEx
 
@@ -226,10 +263,20 @@ FCF 악화 -> Amazon -95%, Meta 급감 (2026)
    -> 글로벌 장비시장 $139-145B. ASML 수주잔고 EUR 38.8B
    -> 2026 반도체 CapEx +20% YoY
 
-3. 데이터센터 인프라: Vertiv, Eaton, Schneider Electric
+3. 데이터센터 인프라: Vertiv, Eaton(ETN), Schneider, GE Vernova(GEV)
    -> 전력/냉각/배전 수요 폭증. DC CapEx 2029 $1.2T(Dell'Oro, CAGR 21%)
    -> DC 전력 인프라 $47.3B(2030). 자체발전 30% 신규 트렌드
    -> 글로벌 DC 전력소비 1,000TWh+(2026E, IEA)
+   -> 변압기 리드타임 2~3년 지속. 그리드 큐 2,600GW+
+   -> 액냉 침투율 30%+, 공랭 한계 50kW+/랙. CoolIT, GRC 부상
+
+3b. AI 네트워킹: Arista(ANET), Broadcom(AVGO)
+   -> NVIDIA GB200/GB300 랙 전력 120kW+ → 고대역폭 네트워킹 필수
+   -> Google TPU, Amazon Trainium 커스텀 실리콘 확대
+
+3c. EPC/건설: Quanta(PWR), EMCOR(EME), MasTec(MTZ)
+   -> 기록적 백로그. 미국 5GW+ DC 건설 중, 글로벌 35GW+ 파이프라인
+   -> 숙련 노동력 부족이 타임라인 제약. 구리/스위치기어/광섬유 병목
 
 4. 전력망/유틸리티: Duke Energy, Southern, AEP
    -> 미국 유틸리티 $1.4T(+27%). 전력망 $720B 필요(GS). 전력이 최대 병목
@@ -288,3 +335,14 @@ TSMC          ██████████████████████
 통신          ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -2%
 석유 상류     ▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -6%
 ```
+
+---
+
+## 핵심 변화 요약
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. 빅테크 2025 CapEx 합산 $300B+ 확정 — 2026 가속 지속
+> 2. 미국 5GW+ DC 건설 중, 글로벌 35GW+ 파이프라인
+> 3. 변압기 리드타임 2~3년 지속, 그리드 큐 2,600GW+
+> 4. 액냉 침투율 30%+, 공랭 한계 50kW+/랙
+> 5. EPC 기록적 백로그 vs 숙련 노동력 부족

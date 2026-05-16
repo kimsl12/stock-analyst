@@ -1,6 +1,6 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 category: industry
 sub_category: science_tech
 topic: smr
@@ -24,8 +24,9 @@ sources:
   - NASA / MIT Technology Review
   - NANO Nuclear / Supermicro / StockTitan
   - Meta / GeekWire / Axios
+  - Fluor / Dow Chemical / CEZ Group / Amentum / AWS-Talen Energy
 confidence: high
-last_synced_from_db: 2026-05-09
+last_synced_from_db: 2026-05-16
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
@@ -42,6 +43,7 @@ last_synced_from_db: 2026-05-09
 |------|------|------|
 | 글로벌 SMR 시장 2026E | $6.13~7.06B | Fortune BI / Grand View / Mordor |
 | 글로벌 SMR 시장 2030E | $7.14~10.69B | MarketsandMarkets / Grand View |
+| 글로벌 SMR 시장 2032E | $13.8B | 업계 추정 |
 | 글로벌 SMR 시장 2034E | $8.77~16.13B (CAGR 4.6~8.9%) | Fortune BI / Precedence |
 | SMR 투자 전망 | $5B (현재) -> $25B+ (2030) | IEA |
 | 글로벌 SMR 파이프라인 | 22GW (2024Q1, 2021 대비 +65%) | Wood Mackenzie |
@@ -52,6 +54,7 @@ last_synced_from_db: 2026-05-09
 - 2026년은 "SMR 상용화 원년" -- TerraPower **4/23 착공**, Kairos Hermes 2 착공, X-energy **IPO $1.02B** (원자력 역대 최대)
 - 빅테크 데이터센터 AI 전력 수요가 핵심 성장 드라이버 (DC 전력 2026 1,000TWh 전망)
 - 중국 Linglong One: 하이난성 세계 최초 수냉형 SMR **2026년 가동 예정**
+- SMR 시장 규모: 2025 **$6.9B** → 2032 **$13.8B** (약 2배 성장)
 - 미국 SMR 파이프라인 ~7GW, 폴란드/캐나다 각 ~2GW (상위 5개국이 파이프라인 58%)
 
 ### 핵융합
@@ -113,6 +116,7 @@ last_synced_from_db: 2026-05-09
 - **주가 [업데이트]**: **$30.05** (5/7), IPO 대비 **+30.7%**
 - **TRISO-X 연료시설**: NRC 40년 특수핵물질 라이선스 취득 (2026.02), **NRC 규제승인 2026년 5월 예상**, DOE 추가 $30M long-lead 조달 승인
 - **Dow Chemical 프로젝트**: 텍사스 Seadrift, NRC 18개월 심사 중 (2025.06~), 건설허가 2026말~2027 예상
+- **Fluor EPC 계약 [신규]**: Fluor-X-energy 텍사스 Seadrift 첨단원전 EPC 계약 체결. **4기 Xe-100**, 2026년 착공 → 2020년대 말 완공. Dow Chemical 산업용 증기+전력 공급
 - **Centrica UK 파트너십 [신규]**: 영국 **6GW 배치** 계획, 12기 Xe-100(80MW) 건설, 2026년 풀스케일 개발 착수 목표
 - **Talen Energy LOI**: PJM 지역 GW급 배치 검토 (2026.03)
 - Amazon $500M 투자, 5GW 목표 (2039)
@@ -150,7 +154,10 @@ last_synced_from_db: 2026-05-09
 - **UK 정부 정식 계약 (2026.04.13)**: GBE-N과 계약 체결, 즉시 착수
 - **정부 대출**: National Wealth Fund **£599M** 대출 확보 (GDA + Wylfa + 수출용)
 - **Wylfa 3기**: 웨일스 앵글시 해안, 1.4GWe 출력, **부지 최대 8기 호스팅 가능**
-- **GDA [업데이트]**: 최종 단계(Step 3) 진행 중, **2026년 12월 완료 예상**. 유일하게 최종 평가단계 도달한 SMR 설계
+- **CEZ 체코 Temelin Early Works Contract [신규]**: CEZ Group과 체코 Temelin 부지 SMR 프로그램 Early Works Contract 체결 (2026.04.24). 최대 **3GW** 배치. 체코 첫 SMR, **2030년대 후반 운전** 목표. **유럽 유일 복수 SMR 계약 확보**
+- **영국 Nuclear Justification 승인 [신규]**: 영국 환경장관 RR-SMR Nuclear Justification 승인 (2026.03). **SMR 최초** Nuclear Justification 취득
+- **GDA [업데이트]**: 최종 단계(Step 3) 진행 중, **Step 3 완료 2026년 8월~12월 예상** (소스 혼재). 유일하게 최종 평가단계 도달한 SMR 설계
+- **Wylfa 현장 진척 [신규]**: Wylfa 근처 **첫 견습생 채용 개시** (2026.05.11). **Amentum JV Wylfa 엔지니어링 계약 수주**
 - **최종투자결정(FID)**: **2029년 예상**
 - **일자리**: 현지 3,000명 + 전국 5,000명 = 8,000명
 - **가동 목표**: 2030년대 중반
@@ -279,6 +286,8 @@ last_synced_from_db: 2026-05-09
 | Google | Kairos 개발계약 + CFS PPA | 500MW (2035) + 200MW (ARC) | Kairos Power, CFS | 2030+ |
 | Amazon | X-energy 투자 + 원자력 전용 DC 착공 | 5GW (2039) | X-energy ($500M) | 2039 목표 |
 | Meta | Vistra/Constellation/Oklo/TerraPower | 6.6GW (2035) | Oklo 오하이오 1.2GW | 2026.01 계약 |
+| Meta | **Oklo Pike County 오하이오 1.2GW [상세]** | **16기 Aurora(75MW), 206에이커, Phase1 150MW** | Oklo + Meta-Vistra 300MW SMR 옵션 | 2030 운전 목표 |
+| AWS | **Talen Energy PPA 확대 [신규]** | **1,920MW** (기존 960MW 대비 2배) | Talen Energy | 확대 계약 |
 | Meta | **Clinton Clean Energy Center PPA** | **1.1GW (20년)** | Constellation (일리노이) | 기존 |
 | Meta | **TerraPower 8기 Natrium [신규]** | **최대 4GW (듀얼유닛)** | TerraPower | 2032~2035 |
 | NANO Nuclear | **Supermicro MOU [신규]** | 탐색적 | Supermicro AI DC | 5/6 MOU (비구속적) |
@@ -303,6 +312,8 @@ last_synced_from_db: 2026-05-09
 | TerraPower Natrium | NRC 건설허가 + **4/23 착공** | 2030~2031 완공, 345MW+500MW |
 | **TerraPower-Meta 8기 [신규]** | 미공개 | 2032~2035, 최대 4GW |
 | Kairos-Google 500MW | 미공개 | 첫 미국 기업 SMR 함대 계약 |
+| **Fluor-X-energy Seadrift EPC [신규]** | 미공개 | 4기 Xe-100, 2026 착공, 2020년대 말 완공 |
+| **RR SMR-CEZ 체코 Temelin [신규]** | 미공개 | 최대 3GW, Early Works Contract, 2030년대 후반 |
 | **X-energy-Centrica UK 6GW [신규]** | 미공개 | 12기 Xe-100, 2026 풀스케일 개발 |
 | 두산에너빌리티 수주잔고 | **24.13조원** (+46% YoY) | SMR+원전+가스터빈 |
 | 두산 SMR 공장 | 8,068억원 | 연 20기+ 생산능력 |
@@ -355,4 +366,17 @@ last_synced_from_db: 2026-05-09
 
 ---
 
-*본 KB는 2026-05-09 웹검색 기반 갱신. 다음 갱신 권장: 2026-06-09 이전*
+---
+
+## 핵심 변화 요약
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. Fluor-X-energy Seadrift EPC 계약 — 4기 Xe-100 착공
+> 2. Rolls-Royce CEZ 체코 Temelin Early Works Contract(최대 3GW)
+> 3. 영국 RR-SMR Nuclear Justification 최초 승인
+> 4. Meta-Oklo 1.2GW(16기 Aurora) + AWS-Talen PPA 1,920MW 확대
+> 5. Part 57 연방관보 게재 — 인허가 6~12개월 단축, 함대 일괄승인
+
+---
+
+*본 KB는 2026-05-16 웹검색 기반 갱신. 다음 갱신 권장: 2026-06-16 이전*

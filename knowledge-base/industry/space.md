@@ -1,6 +1,6 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 category: industry
 sub_category: science_tech
 topic: space
@@ -19,10 +19,16 @@ sources:
   - NASA.gov / Space.com (Artemis III 2027 지연)
   - KASA.go.kr / 정책브리핑 / 서울경제 / 이포커스 (누리호 5차, KASA 1조원 예산)
   - Intuitive Machines IR / Nasdaq / KeyBanc (LUNR Lanteris 인수)
+  - Intuitive Machines Q1 2026 IR / Canaccord / SeekingAlpha (LUNR Q1 $186.7M, 흑자전환)
+  - Needham / SeekingAlpha / MarketBeat (RKLB TP $120 상향, 주가 $125.12)
+  - AST SpaceMobile IR / StockTwits / NASASpaceFlight (ASTS BB8~10 6월 발사, FCC 상업 승인)
+  - TechCrunch / TheRegister / Space.com / FAA (Blue Origin NG-3 비행정지 5월 지속)
+  - Wikipedia Starlink / Basenor / SatNxt (Starlink 10,020기+, 10M+ 가입자 5/16 확인)
+  - Wikipedia Amazon Leo / BroadbandBreakfast / FCC (Amazon LEO 241~302기, FCC 의무 미달 확정)
   - Airbus / Eutelsat / SpaceNews (OneWeb Gen 2)
   - Astroscale / ClearSpace / SpaceNews (ADR)
 confidence: high
-last_synced_from_db: 2026-05-09
+last_synced_from_db: 2026-05-16
 ---
 # Space (우주산업) Knowledge Base
 
@@ -44,6 +50,7 @@ last_synced_from_db: 2026-05-09
 | Satellite-to-Cell 시장 (2026E) | $4.49B | CAGR 16.2%, 2030년 $8.1B |
 
 > **2026.05.09 갱신**: 시장 규모 전망 유지. SpaceX IPO ($1.75T) + Rocket Lab Q1 호실적으로 우주산업 투자 심리 강세.
+> **2026.05.16 갱신**: RKLB $125.12(+34% Q1), LUNR 최초 흑자전환($186.7M), ASTS BB8~10 6월 발사 + Starlink 10,020기+/10M+ 가입자로 우주산업 모멘텀 지속.
 
 ### 2. 우주발사체
 
@@ -74,6 +81,8 @@ last_synced_from_db: 2026-05-09
 - AST SpaceMobile BlueBird 7 위성 손실 (보험 적용)
 - **FAA 최종보고서 + 시정조치 승인 전까지 비행 불가** -- 2026년 12회 발사 계획 대폭 차질
 - **Blue Moon Mk1 "Endurance"** 무인 달 착륙선 준비 중이나 NG 비행정지로 일정 불확실
+- **부스터 회수 성공 (4/22)**: NG-3 부스터 해상 착륙 회수 성공
+- **NG-3 비행정지 5월 지속**: BE-3U 추력부족 원인 조사 진행. FAA 최종보고서+시정조치 승인 전 비행 불가. 복귀일 미정
 - Vandenberg 발사장 건설 진행 중 (서해안 확장)
 
 #### Rocket Lab (RKLB) -- Q1 2026 실적 발표 (5/7)
@@ -93,6 +102,9 @@ last_synced_from_db: 2026-05-09
 - **Neutron**: Q4 2026 데뷔 목표 유지. 1단 탱크 파열 -> AFP(자동화 섬유배치) 전환 완료 + 설계 미세 조정. FAA 발사허가 7/1~12/31 창 신청
 - **신규 인수**: Optical Support Inc + Precision Components Ltd (광학/기계가공 역량 강화, 공급망 리스크 절감)
 - **신제품**: 우주용 실리콘 태양전지 어레이 + 하이브리드 어레이 ($/W 저감)
+- **주가 (5/15)**: **$125.12** — Q1 +34% 상승 후 추가 상승 지속
+- **Needham TP**: **$120 (상향)**
+- **Neutron 전용계약**: **5건 확보** — Archimedes 엔진 자격시험 진행, 데뷔 2026 H2 유지
 
 #### Relativity Space
 
@@ -122,6 +134,7 @@ last_synced_from_db: 2026-05-09
 - **V2 DTC 위성 (2027 중반)**: 5G급, Starship 발사. 6개월 내 1,200기 배치 목표
 - **Deutsche Telekom**: 유럽 10개국 Starlink Mobile 2028 계약
 - 12개국 가격 인하 발표 (시장 확대 전략)
+- **5/16 확인**: DTC 위성 650기+, 월 이용자 ~600만(22개국), 가입자 10M+(2026.02), 활성위성 10,020기+, 2026말 2,500만 목표 유지. Starlink Mobile 리브랜딩 완료
 
 #### Amazon Leo (구 Project Kuiper)
 
@@ -140,6 +153,7 @@ last_synced_from_db: 2026-05-09
 - 추가 발사 계약: **SpaceX 10회 + Blue Origin 12회**
 - 일반 소비자 서비스: **2026 중반**
 - "Amazon Leo"로 리브랜딩 (2025.11)
+- **5/16 확인**: 궤도위성 ~241~302기. FCC 2026.07.30 의무 1,618기 대폭 미달 확정. 24개월 연장 FCC 미결정. 발사체 부족 지속
 
 #### OneWeb (Eutelsat Group)
 
@@ -177,9 +191,11 @@ last_synced_from_db: 2026-05-09
 | 계약 매출 (backlog) | **$1.2B+** | 기존 $1B+ 대비 상향 |
 | **BlueBird 7 손실** | 4/19 NG-3 궤도 이탈 | BE-3U 추력 부족. 보험 적용 |
 | **BlueBird 8~10** | **6월 중순 Falcon 9 발사 예정** | NG-3 실패 후 발사체 전환 |
-| **BlueBird 생산 현황** | **BlueBird 32까지 생산 중** | BB 8~10 약 30일 내 출하 |
+| **BlueBird 생산 현황** | **BlueBird 33까지 생산 중** | BB 8~10 약 30일 내 출하 |
+| **Block 2 위성** | PA 2,400 sqft | BB 8~10부터 적용 |
 | 2026 배치 목표 | **45~60기** | 기존 45기에서 상향 |
-| **Q1 2026 실적** | **5/11 발표 예정** | 매출 $40M(E), EPS -$0.17(E) |
+| **FCC 상업 승인** | **취득 완료** | 상업 서비스 개시 가능 |
+| **현금 보유** | **$3.5B** | 충분한 런웨이 |
 | 파트너 | AT&T | LTE/5G 직접 스마트폰 연결 |
 
 ### 5. 우주 탐사
@@ -206,11 +222,18 @@ last_synced_from_db: 2026-05-09
 |------|------|------|
 | **Lanteris 인수** | **$800M** (현금 $450M + 주식 $350M) | Q1 2026 완료. 구 Maxar Space Systems |
 | FY2026 가이던스 | **$900M~$1B** | Adj EBITDA 흑자 전환 |
+| **Q1 2026 매출** | **$186.7M (+199% YoY)** | 분기 역대 최고 |
+| **Q1 adj EBITDA** | **$2.67M** | **최초 흑자전환** |
+| **백로그** | **$1.1B (기록)** | 신규계약 $429M 포함 |
 | $175M 에쿼티 투자 | 기관투자자 주도 | 매출 확대 + 기술 투자 지원 |
-| IM-3 | 2026 H2 발사 | Nova-C, Reiner Gamma 탐사. JPL 로버 3대 탑재 |
+| IM-3 | **Q4 2026 발사** | Nova-C, Reiner Gamma 탐사. JPL 로버 3대 탑재 |
 | 5th CLPS 수주 | $180.4M (2026.03) | Nova-D 대형 착륙선, 남극 7개 페이로드 |
 | 총 CLPS 계약 | 5건 | |
 | KeyBanc TP | **$27** (4/29) | 주가 1년간 +270% |
+| **Canaccord TP** | **$41 (상향)** | Q1 호실적 반영 |
+
+- **LTV(Lunar Terrain Vehicle)**: 여름 수주 예정
+- **촉매**: Andromeda/Golden Dome 방위 프로그램 참여 기대
 
 ### 6. 한국 우주산업
 
@@ -280,6 +303,16 @@ last_synced_from_db: 2026-05-09
 9. **DTC 주파수 간섭 및 규제 불확실성**: 다수 사업자 경쟁 -> 스펙트럼 갈등
 10. **Golden Dome SBI 비용 논란**: $185B 총액 + SBI "비용 금지적이면 양산 안 함" -- 아키텍처 불확실성
 11. **Artemis III 미션 변경**: 달 착륙에서 지구궤도 테스트로 축소. 최초 달 착륙 Artemis IV(2028)로 이연
+
+---
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. RKLB 주가 $125.12 — Needham TP $120 상향
+> 2. LUNR Q1 $186.7M(+199%), 최초 흑자전환, 가이던스 $900M~$1B
+> 3. ASTS BB8~10 6월 중순 발사 예정, 현금 $3.5B
+> 4. Blue Origin NG-3 비행정지 지속(BE-3U 조사)
+> 5. Starlink 활성위성 10,020기+, 가입자 10M+
+> 6. Amazon LEO FCC 의무 1,618기 대폭 미달 확정
 
 ---
 

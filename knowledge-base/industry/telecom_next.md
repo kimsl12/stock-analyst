@@ -1,6 +1,6 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -41,13 +41,24 @@ sources:
   - Android Central
   - 머니투데이
   - 이투데이
+  - AST SpaceMobile IR
+  - Amazon IR
+  - Globalstar
+  - FCC
 confidence: high
-last_synced_from_db: 2026-05-09
+last_synced_from_db: 2026-05-16
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. SpaceX IPO 수개월 내 예정 — 시가총액 $1.75~2T
+> 2. Amazon-Globalstar $11.57B 인수 발표 (DTC 위성 2028 배치)
+> 3. ASTS BB8~10 6월 중순 발사, 계약매출 $1.2B+
+> 4. Amazon LEO 위성군 FCC 2배 확대 승인
+> 5. Starlink 2025 매출 $10.4B 확정, 2026E $18.7B
 
 ---
 
@@ -242,12 +253,13 @@ last_synced_from_db: 2026-05-09
 
 - Direct-to-Device(D2D) 세그먼트가 전체 위성인터넷보다 2배 빠른 성장률 (CAGR 22% vs 14%)
 
-### 4.2 주요 기업/프로젝트 현황 (2026.05.09 갱신)
+### 4.2 주요 기업/프로젝트 현황 (2026.05.16 갱신)
 
 **Starlink (SpaceX):**
 - **2026.04 기준 가입자 약 1,180만(150+개국)** -- 2026.02 1,000만 돌파 후 가속 [SpaceX IPO 초안 prospectus, GuruFocus]
-- **2025년 매출 USD ~12.3B (SpaceX 매출의 ~70%)**, EBITDA 마진 54%, 2025 FCF ~$2B. **2026년 매출 전망 USD 18~19B(+80% YoY)** [Motley Fool, 5GStore]
+- **2025년 매출 USD $10.4B (SpaceX 총매출 $15B의 69%)**, EBITDA 마진 54%, 2025 FCF ~$2B. **2026E 매출 전망 USD $18.7B(+80% YoY, 마진 60%)** [Motley Fool, 5GStore]
 - **SpaceX IPO 초안 prospectus 공개(2026.04.29)**: 가입자 2023~2025 4년간 4배 성장 공식 확인. **IPO 시가총액 $1.25~2T 전망, 2026년 중 IPO 예정**
+- **SpaceX IPO 수개월 내 예정(2026.05.10 보도)**: Musk 전체 기업(SpaceX+X+xAI) 공개 결정. $75B 조달 목표, 시가총액 $1.75~2T. Starlink 2026E 매출 $18.7B(+80% YoY, 마진 60%)
 - **DTC 서비스 'Starlink Mobile' 리브랜딩**: 월 1,000만 활성 사용자, **2026말 2,500만 목표** [SpaceX]
 - DTC 위성 650+기 발사, 22개국 서비스 중, 4억명+ 접근
 - FCC 총 15,000기 Gen2 승인 (2026.01)
@@ -265,6 +277,7 @@ last_synced_from_db: 2026-05-09
 - BlueBird 6 배치 (2025.12.23) -- Block 2 첫 위성, 기존 대비 3배 크기, 상용위성 최대급
 - **BlueBird 7 궤도 진입 실패 (2026.04.19)**: New Glenn 로켓 2단 엔진 추력 부족, 궤도 투입 실패. 위성 분리/전원ON 확인되었으나 고도 부족으로 운용 불가, 궤도이탈 예정. **보험 회수 진행 중** [SpaceNews, AST BusinessWire]
 - **복구 계획(2026.05.06 발표): 6월 중순 SpaceX Falcon 9으로 BlueBird 3기 발사 예정. 위성 안테나 693sq.ft 최대급** [ConvergeDigest]
+- **Q1 2026 실적 발표(5/11)**: BlueBird 8/9/10 Falcon 9으로 6월 중순 발사 예정. 32기 차세대 위성 조립 진행 중. 1~2개월 간격 발사 계획. 계약 매출 $1.2B+. Block 2 안테나 2,400sqft, 120Mbps 피크 [AST SpaceMobile IR]
 - FCC 전체 위성군 승인 획득 -- **주가 5/8 14% 급등(FCC 승인 효과)** [rollingout.com, ts2.tech]
 - 2026 상반기 AT&T/FirstNet 대상 베타 서비스 시작 (초기 6기 위성으로 간헐적 미국 커버리지)
 - 2026말 ~45기 배치 목표 유지하나 **하향 리스크** [Light Reading]
@@ -274,7 +287,8 @@ last_synced_from_db: 2026-05-09
 - **2026.04 기준 302기 발사** (기존 241기에서 증가)
 - **FCC 위기**: 의무 1,618기(2026.07) vs 실제 ~302기 -- **24개월 연장 신청(2026.01.30, 2028.07까지)**, 2026.07 기준 약 700기 도달 전망. **FCC 결정 보류 중** [ITIF, DCD, SatNews]
 - SpaceX Falcon 9 추가 10회 + Blue Origin New Glenn 12회 계약으로 발사 가속
-- Globalstar 인수 $1.57B 완료
+- **Amazon, Globalstar $11.57B 인수 발표(2026.04.14)**: 주당 $90. Apple 20% 지분 보유. DTC 위성 시스템 2028년 배치 예정. 거래 2027년 종결 예상 [Amazon IR, Globalstar]
+- **Amazon, FCC로부터 LEO 위성군 규모 2배 이상 확대 승인 획득**: 기존 3,236기 + 추가 [FCC]
 - 기업 매출 목표 USD 20B
 
 **Eutelsat OneWeb:**
@@ -294,7 +308,7 @@ last_synced_from_db: 2026-05-09
 
 - Starlink 독점화 심화: 1,180만 가입자/72% 점유율/650+ DTC위성/15,000기 승인
 - **AST SpaceMobile BlueBird 7 궤도 실패** -- 배치 일정 타격, New Glenn 신뢰도 의문. **6월 Falcon 9 복구 발사 예정이나 일정 리스크 존재**
-- **Amazon Leo FCC 미달 위기**: 의무 1,618기 vs 302기, 라이선스 24개월 연장 요청 중, FCC 결정 보류
+- **Amazon Leo FCC 미달 위기**: 의무 1,618기 vs 302기, 라이선스 24개월 연장 요청 중, FCC 결정 보류. 다만 FCC LEO 2배 확대 승인 + Globalstar $11.57B 인수로 위성 인프라 대폭 강화
 - 우주 잔해(Space Debris) 증가: 수만 기 LEO 위성 충돌 리스크
 - Direct-to-Cell 수익 모델: 가입자 확보 중이나 ARPU 구조 미확립
 - **LEO 위성군 과잉 경고**: 은행 분석 'too many LEO constellations' [SatNews]
@@ -436,14 +450,14 @@ last_synced_from_db: 2026-05-09
 
 ## 8. 투자 관련 종합
 
-### 8.1 서브섹터별 투자 매력도 (2026.05.09 갱신)
+### 8.1 서브섹터별 투자 매력도 (2026.05.16 갱신)
 
 | 서브섹터 | 성장성 | 투자 시점 | 불확실성 |
 |---|---|---|---|
 | 6G | 높음 (2030+ 본격화) | 중기 (2027~28 진입 적기) | 극대 (시장 규모 예측 10x 편차, 표준 fork 리스크) |
 | 5G Advanced | 중~높음 (현재 진행형) | 지금~단기 (Rel-18 상용화 + SA 전환) | 낮음 (표준 확정, 상용화 중) |
 | Open RAN | 높음 (CAGR 36~42%) | 중기 (순수 Open RAN vs 하이브리드 정립 시) | 높음 (비전 후퇴론 vs 실제 배치 확대 괴리) |
-| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 1,180만/DTC 상용화 확인) | 중간 (Starlink 독점 vs 경쟁, AST 실패, LEO 과잉 경고) |
+| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 1,180만/DTC 상용화 확인, SpaceX IPO 임박) | 중간 (Starlink 독점 vs Amazon-Globalstar $11.57B 경쟁, AST BB7 실패 후 BB8~10 복구, LEO 과잉 경고) |
 | NTN | 높음 (6G 핵심 구성요소) | 중기 (상용화 초기 단계) | 중간 (핸드오버/지연 품질 미검증) |
 | AI-RAN | 매우 높음 (CAGR 29~33%) | 지금~단기 (상용화 초기, 검증 결과 도출) | 중간 (NVIDIA 종속 심화, 비용 구조 미확립) |
 
@@ -466,6 +480,7 @@ last_synced_from_db: 2026-05-09
 - **Open RAN + AI-RAN**: RIC(RAN Intelligent Controller)가 두 영역의 교집합
 - **NVIDIA 자본 투입 확대**: Nokia $1B + Marvell $2B -- AI-RAN 생태계 자본 구도 재편
 - **RAN→AI 서비스 플랫폼**: SoftBank의 AI-RAN 여유 컴퓨팅 활용 데모 -- 통신 인프라의 AI 수익화 경로 제시
+- **위성통신 빅딜 연쇄**: SpaceX IPO $1.75~2T + Amazon-Globalstar $11.57B -- LEO 위성 인프라 자본 구도 대전환. DTC 위성 경쟁 본격화 (Starlink vs Amazon DTC 2028)
 
 ### 8.4 한국 주요 관련 종목 총정리
 

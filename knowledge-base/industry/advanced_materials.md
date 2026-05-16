@@ -1,13 +1,13 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
-sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners, Benchmark Minerals, S&P Global, Charged EVs, GrapheneUses, Phys.org, FactMR, Kavout, UPI, ITIF, Seeking Alpha, MarketsandMarkets, TechCrunch, Fortune, GlobalFoundries, Rare Earth Exchanges, Argus Media, DataM Intelligence, Persistence Market Research, InsightHubDaily, VanEck, RFF, 한화투자증권]
+sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners, Benchmark Minerals, S&P Global, Charged EVs, GrapheneUses, Phys.org, FactMR, Kavout, UPI, ITIF, Seeking Alpha, MarketsandMarkets, TechCrunch, Fortune, GlobalFoundries, Rare Earth Exchanges, Argus Media, DataM Intelligence, Persistence Market Research, InsightHubDaily, VanEck, RFF, 한화투자증권, onsemi IR, Navitas IR, StockTitan, Yahoo Finance, Evertiq, Financial Content, BigGo Finance, OpenPR, ScienceDirect, Schneider Electric]
 confidence: high
-last_synced_from_db: 2026-05-09
-db_records: 214
+last_synced_from_db: 2026-05-16
+db_records: 227
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -16,6 +16,13 @@ db_records: 214
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전), 희토류/핵심광물, 첨단소재 정책 6개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. Wolfspeed FQ3 매출 $150M — 예상 $210M 대비 -28% 미스, 주가 YTD +180%
+> 2. onsemi Q1 $1.513B — 자동차 매출 7분기만에 YoY 성장 전환, GaN $1.5B+ 파이프라인
+> 3. onsemi-GlobalFoundries 650V lateral GaN 협력
+> 4. Navitas Q1 $8.6M — AI 인프라 QoQ +50%, 20kW PDB 공개
+> 5. DC 열관리: 액냉 시장 2036년 $4B+ 전망, 차세대 TIM 기술 가속
 
 ---
 
@@ -223,7 +230,9 @@ db_records: 214
 **Wolfspeed 파산 & 재기:**
 - Wolfspeed 파산 신청(2025.09) -- 91일 prepack으로 **2025.09.29 Ch11 탈출**
 - **부채 $4.6B 제거(70% 감축), 현금이자비용 60% 감소**
-- FQ2 2026 유동성 $1.3B, 매출 $168M(QoQ -14.6%, YoY -6.9%) 실적 미스
+- **FQ3 2026(2026.05.05 발표) 매출 $150M — 예상 $210M 대비 -28% 대폭 미스. EPS -$3.26(예상 -$0.56). 매출총이익률 -27%(조정 -21%). 미가동 비용 $46M**
+- FQ2 2026 매출 $168M(QoQ -14.6%, YoY -6.9%) 실적 미스
+- **주가 2026 YTD +180%. 5/13 애널리스트 업그레이드로 20% 급등 — 파산 탈출 모멘텀은 지속되나 실적 뒷받침 미흡**
 - **EV 넘어 AI 데이터센터·국방/항공우주·에너지 인프라로 시장 다변화 전략**
 - 300mm SiC 불(boule) 시연(2026.01, 다이 수 2.25배) -- 기술 자산 가치 존재
 - SiC 웨이퍼 가격 2024년 30% 하락, 중국 SICC·TanKeBlue 저가 공세 지속
@@ -235,7 +244,7 @@ db_records: 214
 | Infineon | 200mm SiC 출하(2025초, Villach). 2030 SiC 시장점유율 30% 목표. Kulim(말레이시아) 150mm→200mm 전환 중 | Electronics360, DataM |
 | STMicro | 4세대 SiC MOSFET 출시(2024). 200mm 수율 75% | Fortune BI |
 | Bosch | 캘리포니아 200mm 팹 2026 자동차향 가동 | Manufacturing Dive |
-| **onsemi** | **Qorvo SiC JFET 사업부(United Silicon Carbide) $115M 인수 완료. 부천(한국) 200mm SiC 생산 램프업 성공(2026). 150mm→200mm 전환으로 웨이퍼당 칩 수 ~80% 증가. 2026년 SiC 생산능력 5배 확대 목표** | Evertiq, Financial Content |
+| **onsemi** | **Qorvo SiC JFET 사업부(United Silicon Carbide) $115M 인수 완료. 부천(한국) 200mm SiC 생산 램프업 성공(2026). 150mm→200mm 전환으로 웨이퍼당 칩 수 ~80% 증가. Q1 2026 매출 $1.513B(가이던스 상회), 자동차 YoY +5%(7분기만의 성장 전환). 베이징 오토쇼 신모델 SiC 채택률 ~55%** | Evertiq, Financial Content, onsemi IR |
 | VW, BMW, Stellantis | 다년 장기 공급 계약(offtake) 체결 | Electronics360 |
 
 > SiC 웨이퍼 직경별: 6인치 42% 점유(2026E), 8인치(200mm) 최고속 성장 세그먼트.
@@ -257,7 +266,8 @@ db_records: 214
 | 기업 | 현황 | 출처 |
 |------|------|------|
 | **Infineon** | GaN Systems 인수(2023.10). **8인치(200mm) GaN-on-Si 전환(2025), 650V 대역 가격 경쟁력 압도적**. 2026 GaN Insights eBook 발간 | Electronics Media, Semiconductor Today |
-| **Navitas** | GaNSafe 플랫폼. **Q1 2026 매출 YoY +58%**. GTC 2026에서 800V DC-DC GaNFast 전력 공급 보드 공개. **GlobalFoundries와 장기 파트너십 — 미국 Burlington(VT) 팹에서 GaN 설계·제조, 2026년 내 양산 예정. AI 데이터센터·고전력 응용 타겟. TAM $3.5B**. 2026E ~$38M, 2027E ~$65M, 2028E ~$122M | Seeking Alpha, GlobalFoundries, StockTitan |
+| **Navitas** | GaNSafe 플랫폼. **Q1 2026 실적: 매출 $8.6M(QoQ +18%), AI 인프라 매출 QoQ +50%, 매출총이익률 39.0%. Q2 가이던스 $10.0M±$0.5M(QoQ +16%)**. GTC 2026에서 **20kW 800V→6V DC-DC PDB 공개(1단 직접변환, 1MHz, 피크효율 97.5%)**. **GlobalFoundries와 장기 파트너십 — 미국 Burlington(VT) 팹에서 GaN 설계·제조, 2026년 내 양산 예정. TAM $3.5B** | Navitas IR, StockTitan, Yahoo Finance |
+| **onsemi (GaN)** | **GaN 디자인 파이프라인 $1.5B+ 돌파. 700V/1200V 수직형 GaN 샘플링 중(최초 양산 스케일업). 10개 제품 샘플링, 20개 추가 2H 2026 예정. GlobalFoundries와 650V lateral GaN 협력(200mm eMode GaN-on-Si), 2026 H1 샘플링** | onsemi IR, BigGo Finance |
 | EPC | GaN FET 선도, 서버·자동차 전력변환 | GlobeNewsWire |
 | Transphorm, Qorvo | GaN 파워 전문 | Coherent MI |
 
@@ -274,17 +284,30 @@ db_records: 214
 
 #### 4-4. 투자 포인트
 
-- **SiC**: Wolfspeed Ch11 탈출 후 재기 + onsemi SiC JFET 인수 $115M + **부천 200mm 램프업 성공** -- 시장 재편 지속. SiC 모듈 CAGR 29.2%
+- **SiC**: onsemi Q1 2026 자동차 매출 YoY +5%(7분기만의 전환) + 베이징 오토쇼 SiC 채택률 55%. 부천 200mm 램프업 성공. SiC 모듈 CAGR 29.2%
 - **GaN 파워**: CAGR 44%(파워만)로 화합물 반도체 최고 성장. **IEA 전망 데이터센터 2026년 1,000TWh** → GaN 고효율 전력변환 구조적 수혜
-- **Navitas-GlobalFoundries 미국 GaN 제조 파트너십**: AI 데이터센터 전력효율 테마 직접 수혜. 2026-2028 매출 3배+ 성장 전망
+- **onsemi GaN $1.5B+ 디자인 파이프라인**: 수직형 GaN 700V/1200V 최초 양산 + GlobalFoundries 650V lateral GaN 협력
+- **Navitas 20kW PDB 97.5% 효율**: AI DC 고밀도 직접변환 아키텍처. Q1 AI 인프라 매출 QoQ +50%
 - Infineon 8인치 GaN-on-Si 전환으로 650V 대역 가격 압도 -- GaN 시장 지배력 강화
 - 800V EV 아키텍처 전환 + 데이터센터 냉각비용 25~40% 절감 수요
 
-#### 4-5. 리스크
+#### 4-5. AI/DC 열관리 소재 (신규)
+
+| 항목 | 수치/동향 | 출처 |
+|------|----------|------|
+| DC 액냉 컴포넌트 시장 (2036E) | $4B+ | IDTechEx |
+| TIM1 트렌드 | 인듐포일·액체금속이 전통 그리스 대체. 그래핀시트·CNT/구리 구조 10~100배 열전도도. PCM·고성능 겔 차세대 후보 | PatSnap, ScienceDirect, Siemens |
+| 침지냉각 | 유전체 유체로 서버 직접 침수, 랙 전력밀도 극대화. 액냉은 공랭 대비 3,000배 효과 | Schneider Electric, Tom's Hardware |
+| 3M TIM 신규 라인 | 2026.02 고성능 반도체 TIM 출시 | OpenPR |
+| Dow Chemical | 2026.01 DC칩용 열관리 폴리머 증산 | OpenPR |
+
+> AI칩 TDP 700W+(GB200) 시대: 열관리 소재가 AI 반도체 성능의 물리적 병목. CNT·그래핀 기반 고열전도 복합소재, 액체금속 TIM, 침지냉각 유전체가 핵심 성장 영역.
+
+#### 4-6. 리스크
 
 - SiC 공급 과잉: Infineon/STMicro/onsemi/Bosch 동시 대규모 증설 + EV 수요 둔화
 - 중국 SiC 웨이퍼 가격 2024년 30% 하락, $500 이하 덤핑으로 비중국 업체 수익성 압박
-- Wolfspeed 재기 불확실: FQ2 매출 미스, AI/국방 피벗 성과 미검증
+- **Wolfspeed 재기 불확실 심화: FQ3 매출 $150M(-28% 미스), 매출총이익률 -27%. 주가 모멘텀(YTD+180%)과 실적 괴리 확대**
 - GaN 시장 정의에 따라 규모 10배+ 차이 -- 투자 판단 시 세그먼트 구분 필수
 - CHIPS Act 48D 세액공제 2026.12.31 시작 기한 -- 연장 입법(BASIC Act) 불확실
 
@@ -313,27 +336,28 @@ db_records: 214
 
 > **2026.11.10 유예 종료 시 재시행·강화·유지 여부가 최대 변수.** 유예 중에도 이중용도품목 목록에 포함, 중국 금속산업협회가 수출업체 대상 정책 브리핑 실시.
 
-#### 5-3. 가격 동향 (2026 Q2 업데이트)
+#### 5-3. 가격 동향 (2026년 5월 업데이트)
 
 | 원소 | 가격 | 변동 | 출처 |
 |------|------|------|------|
-| **네오디뮴-프라세오디뮴(NdPr) oxide** | **$99.61/kg (4월 말)** | **4월 -21.0% MoM (Q1 +105% 랠리 후 조정). 1월 $53/kg 대비 YTD +88%** | Benchmark Minerals, Rare Earth Mining |
-| **Nd oxide** | **$108.96/kg** | 4월 조정 | Rare Earth Mining |
-| **Pr oxide** | **$109.60/kg** | 4월 조정 | Rare Earth Mining |
-| **디스프로슘(Dy) 메탈** | **$223.08/kg (+1.0% MoM, 보합)** | FOB $292/kg (범위 $265-$319). Q1 기준 소매벤치마크 $930.70/kg | Strategic Metals Invest, Rare Earth Mining |
+| **네오디뮴-프라세오디뮴(NdPr) oxide** | **$99.61/kg (5월 1일)** | **4월 $126.16→$99.61 -21.0% 조정. YTD +40%. 5월 중 14% 주간 반등 신호** | Rare Earth Mining, Trading Economics, Crux Investor |
+| **Nd oxide** | **$108.96/kg** | 4월 조정 후 안정화 | Rare Earth Mining |
+| **Pr oxide** | **$109.60/kg** | 4월 조정 후 안정화 | Rare Earth Mining |
+| **디스프로슘(Dy) oxide** | **$886.7~$895.4/kg (4월)** | 보합. 중국-비중국 가격 괴리 최대 5배 | Rare Earth Mining, Strategic Metals Invest |
+| **테르븀(Tb) oxide** | **$728.6~$757.7/kg (4월)** | 4월 -18.6% 조정 | Rare Earth Mining |
 | 네오디뮴 메탈 | 1,095,000 CNY/t (2026.04.21) | 전월비 +10.6%, YoY +106.6% | Trading Economics |
 
-> **Q1 2026 대비 Q2 가격 조정**: NdPr은 Q1 +105% 폭등 후 4월 -21% 차익실현, 구조적 공급 제한 하에서 $95-115/kg 레인지 안정화 전망. Dy는 영구자석 수요에 구조적으로 연동되어 보합 유지. 중국 내외 가격 괴리(Dy FOB $292 vs 국내 $177/kg) 지속.
+> **5월 동향**: NdPr은 Q1 +105% 폭등 후 4월 -21% 차익실현을 거쳐 5월 중 반등 조짐. 중국 수출통제 공급 긴축이 구조적 지지선. 중국 정제 NdPr 점유율 92%, HREE(Dy·Tb) 98~99% — 중국-비중국 시장 양분화(bifurcation) 심화. Dy는 비중국 시장에서 중국 내 가격의 최대 5배 프리미엄.
 
 #### 5-4. 서방 대응 & 공급망 다변화
 
 | 주체 | 조치 | 출처 |
 |------|------|------|
-| **미국 DoD** | MP Materials에 $400M 투자 + **최대주주**. 가격 하한선 보장 | Crux Investor, 한국일보 |
+| **미국 DoD** | MP Materials에 **$1B 커밋 파이낸싱 + 최대주주**. 미국 유일 통합(채굴→자석) 희토류 생산자 | VanEck, Sustainability Atlas |
 | **MP Materials** | **FY2025 NdPr oxide 2,599MT 생산(YoY +101%)**. Fort Worth NdFeB 자석공장 **3,000t/y로 확대(Apple $32M 선급)**. **Northlake 10X Facility(2번째 텍사스 자석공장) 착공 예정($200M+ 인센티브)**. **Mountain Pass Dy·Tb 분리 시설 2026년 중반 가동 — 비중국 HREE 분리 2번째 소스** | Rare Earth Mining, MP Materials IR |
 | **Apple** | MP Materials와 $500M 재활용 희토류 자석 계약 (2025.07~) | Investing News |
-| **Lynas** | 글로벌 NdPr 5,000~6,000t/y. **분리된 Dy·Tb 최초 계약 출하 달성, 전략적 프리미엄 납품. 생산량 53% 성장 전망**(전력 차질 불구). 말레이시아 2nd HREE시설 2028 완공 목표 | Argus Media, Rare Earth Mining |
-| **미-호주** | 희토류 공급망 재건 협력 가속 (2026.04.27). **호주 정부 Iluka Resources에 $1.65B AUD 대출 지원** | UPI, VanEck |
+| **Lynas** | 글로벌 NdPr 5,000~6,000t/y. **Kalgoorlie 정제시설 12,000t/y로 확대**. **분리된 Dy·Tb 최초 계약 출하 달성, 전략적 프리미엄 납품. 생산량 53% 성장 전망**. 말레이시아 2nd HREE시설 2028 완공 목표 | Argus Media, Rare Earth Mining, Yahoo Finance |
+| **미-호주** | **핵심광물 프레임워크 서명, 양국 $3B+ 공동투자 약속(향후 6개월 내)**. **호주 정부 Iluka Resources에 $1.65B AUD 대출 지원** | AFSA, UPI, VanEck |
 | **미국 DPA** | 핵심광물 예산 FY2026 $21B→$304B 대폭 확대 | 한국경제 |
 | **IRA 핵심광물** | FTA국/북미 재활용 비율 2025년 60%→2026년 70%→2027년 80% | 글로벌이코노믹 |
 | **Cyclic Materials** | 캐나다 C$31M+ 정부지원. 온타리오·애리조나·사우스캐롤라이나 상업 리사이클링 시설 계획 | S&P Global (2026.04) |
@@ -345,11 +369,11 @@ db_records: 214
 
 #### 5-5. 투자 포인트
 
-- 희토류 가격 Q1 폭등 후 Q2 조정 국면: NdPr $99.61/kg(-21% MoM but YTD +88%), Dy 보합 — 구조적 공급 제한 하 안정화 진입
-- **MP Materials 급성장**: NdPr 생산 2,599MT(+101%), 2번째 자석공장 착공, HREE 분리 mid-2026 가동
-- **Lynas Dy·Tb 최초 계약 출하 달성**: 서방 HREE 공급 구체화
-- **호주 Iluka $1.65B AUD 대출**: 비중국 정제 인프라 대규모 투자
-- 서방 공급망 자립 투자 확대: MP Materials(DoD 최대주주 + Apple $500M + Northlake 10X Facility)
+- 희토류 NdPr $99.61/kg(4월 -21% 조정 후 5월 반등 조짐, YTD +40%). 구조적 공급 제한 하 $95~115/kg 레인지 안정화
+- **MP Materials: 펜타곤 최대주주 + $1B 커밋 파이낸싱**. NdPr 2,599MT(+101%), 2번째 자석공장 착공, HREE 분리 mid-2026 가동
+- **Lynas Kalgoorlie 12,000t/y 확대 + Dy·Tb 최초 계약 출하**: 비중국 최대 희토류 생산자 지위 강화
+- **미-호주 핵심광물 프레임워크: $3B+ 공동투자** + Iluka $1.65B AUD 대출
+- 글로벌 핵심광물 투자 2025년 $128B(2023 대비 +62%): 구조적 공급망 재편 가속
 - IRA 핵심광물 비율 2026년 70%로 상향→북미 광물 정제·리사이클링 기업 수혜
 - 한국 범정부 희토류 TF 가동 + 수급대응센터: 정책적 대응 본격화
 
@@ -361,6 +385,44 @@ db_records: 214
 - 유럽 대기업 80%+ 중국 REE 3단계 내 연결 -- 유럽 산업 직격탄 가능
 - 서방 대체 공급망 아직 초기 단계, 규모·비용 면에서 중국 대체 불충분
 - 한국 희토류 자체 매장량 미미, 중국 의존도 높음
+
+---
+
+### 5.5. 배터리 소재 (신규 — 2026-05-16)
+
+#### 5.5-1. 전고체 배터리 소재
+
+| 기업 | 현황 (2026.05) | 출처 |
+|------|---------------|------|
+| **삼성SDI** | InterBattery 2026에서 파우치형 전고체 배터리 공개(로봇·웨어러블). 비가연성·초소형. **2027년 양산 목표, 80% 충전 9분** | to7motor, IDTechEx |
+| **도요타** | 전고체 450~500Wh/kg 에너지밀도 목표. 소규모 생산 2027~2028 계획 | to7motor, Cars.com |
+| **QuantumScape** | Eagle Line 핵심장비 설치 완료(2026.02). Cobra 분리막+고자동화 셀 생산 통합. 400사이클 80% 유지(4C) | eepower, Bonnenbatteries |
+| **중국** | **전고체 배터리 최초 국가 표준 2026년 7월 발표 예정** | to7motor, IDTechEx |
+
+> 2026년 현재: 전고체 배터리는 소규모 파일럿 단계. 업계 로드맵 합의: **2027년이 소량 양산 EV 적용 첫 마일스톤**.
+
+#### 5.5-2. 차세대 양극재
+
+| 기술 | 현황 | 출처 |
+|------|------|------|
+| **LMFP** | 2024~2026 양산 진입. LFP 대비 15~20% 에너지밀도 향상(3.2V→3.7V). **CATL M3P, BYD 차세대 Blade 등 중국 선도** | Xnergy, Chemistry World |
+| **고니켈 단결정 NCM** | 단결정 NCM이 고전압 사이클 수명 극적 개선. 2025~ 신규 고니켈 셀 프로그램 대부분 단결정 채택 | Chemistry World, Xnergy |
+| **CATL Condensed** | **350Wh/kg 달성 — 고니켈 양극+실리콘-탄소 음극** | Charged EVs |
+
+#### 5.5-3. 나트륨이온 배터리
+
+| 항목 | 내용 | 출처 |
+|------|------|------|
+| **CATL Naxtra** | **GWh급 양산화 달성. 2026년 말 풀스케일 양산 목표** | Charged EVs, PatSnap |
+| 양극 3대 패밀리 | 층상 산화물(O3/P2), 프러시안블루 유사체(PBA), NASICON 인산염 | ACS Central Science, PatSnap |
+| 적용 | ESS·저가 EV·이륜차 중심. 리튬 대체 수요 구조적 확대 | PatSnap |
+
+#### 5.5-4. 배터리 소재 투자 포인트
+
+- **전고체**: 2027년 첫 소량 양산 마일스톤 접근. 삼성SDI·도요타·QuantumScape 선도. 중국 국가 표준 제정(2026.07)
+- **LMFP**: LFP의 에너지밀도 한계 극복. 중국 양산 선도, 글로벌 확산 임박
+- **CATL Condensed 350Wh/kg**: 고니켈+실리콘음극 최고 에너지밀도. 단결정 NCM 고전압 수명 혁신
+- **나트륨이온**: CATL GWh급 양산 달성. 리튬 공급리스크 헤지 + ESS 원가 구조 개선
 
 ---
 

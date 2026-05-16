@@ -1,6 +1,6 @@
 ---
-updated: 2026-05-09
-valid_until: 2026-06-09
+updated: 2026-05-16
+valid_until: 2026-06-16
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -40,17 +40,21 @@ sources:
   - 과기정통부 양자클러스터 지정 공모 (2026.04.17, 5개 선정 08월 확정)
   - Quantum KOREA 2026 (07/02~04 DDP)
   - 한국경제, 전자신문, 벤처타임즈, 양자신문, EBN, ZDNet
+  - KISA (PQC 전환 가이드라인 2026)
+  - Infleqtion (Quantum Spectrum 05-13, QuIRC ML 해군 $1M)
+  - Qunnect+Cisco (뉴욕 3노드 양자인터넷 실증)
+  - ScienceDaily (W-상태 즉시 검출, 120km QKD)
   - Riverlane, Iceberg Quantum, Nature, IEEE Spectrum, phys.org
   - ESA (Eagle-1 EuroQCI), Qubitrium (QubitCore CubeSat)
   - Palo Alto Networks, Cloudflare
   - Motley Fool, 247WallSt, Fast Company, Northland, Benzinga, Rosenblatt
 confidence: high
-last_synced_from_db: 2026-05-09
+last_synced_from_db: 2026-05-16
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-05-09)
+## CURRENT (2026-05-16)
 
 ---
 
@@ -172,6 +176,8 @@ last_synced_from_db: 2026-05-09
 | PQC 인증서 | 2026년 최초 발급 예정 (기본값 아님) | [Cloudflare / HashiCorp] |
 | **RSA-2048 위협 시점 -- Q-Day 가속** | **3건 논문 3개월**(TQI 03-31): (1)Gidney 100만큐빗 이하, (2)Iceberg Pinnacle 10만큐빗(qLDPC), (3)**JVG 하이브리드 5,000큐빗 이하**. Oratomic ECC-256 **50만큐빗 수분**. Q-Day 추정 **~2030**(Gartner). **'2026=양자보안의 해'** 선언(FBI/NIST/CISA) | [TQI / Gartner / Iceberg Quantum / Citi Institute] |
 | Harvest Now Decrypt Later | 적대세력 현재 암호문 수집 중. 2035 이후 기밀성 필요 데이터는 **지금** PQC 보호 필수 | [Citi Institute / CISA / stateofsurveillance.org] |
+| **KISA PQC 전환 가이드라인** | 2026년 마련. **공공/금융 시범 적용** 시작. ETRI 격자기반 암호 알고리즘 개발 주력. **하이브리드 암호체계**(기존 PKI+PQC 병행) 구축 | [KISA / ETRI] |
+| **Gartner 2026 사이버보안 트렌드** | PQC **#1 우선순위 재확인**. 완전 PQC 전환보다 **하이브리드 병행 운용** 주류. Google **양자안전 TLS 2026 기본 적용**. **HNDL(Harvest Now Decrypt Later) 위협 현실화** | [Gartner / Google] |
 
 **변화 포인트**: Google+Cloudflare 동시 2029 목표 합류 = 웹 인프라 양대 축 PQC 타임라인 확정. NIST HQC 초안 2026/최종 2027 확정으로 코드기반 KEM 백업 표준 가시화. 한국첨단소재 퀀텀쉴드 L2로 블록체인 양자보안 국산 구현 사례 등장. NIST FIPS 140-2 sunset(09-21) = 기업 운영 차원 마이그레이션 시한. JVG 알고리즘으로 RSA 해독 큐빗 5,000개 수준까지 절감 시나리오 등장 -- Q-Day 위협 현실화 가속.
 
@@ -192,6 +198,9 @@ last_synced_from_db: 2026-05-09
 | **EPB-IonQ 챠타누가** | 양자컴퓨팅+네트워킹 통합 **상용시설 2026 초 운영 개시** | [EPB / IonQ] |
 | 한국 양자통신망 | 800km / 48노드 정부망 (2022 완료), SKT-IDQ 지분 협력 | [InsightKorea / SKT] |
 | 독일 TD.QR | 양자중계기 프로젝트 2026.01 시작 (14개월) | [Innovation News Network] |
+| **Qunnect+Cisco 뉴욕 양자인터넷** | 뉴욕시 **기존 광섬유 3개 노드** 양자인터넷 실증. 대도시 밀집환경에서 노이즈/손실 관리하며 **얽힘 유지 성공** | [Qunnect / Cisco] |
+| **120km 광섬유 QKD (05-08)** | 독일-중국 국제 연구팀: **120km 광섬유 time-bin QKD** 안정적 구현. **온디맨드 텔레콤 반도체 양자점 디바이스** 활용 | [ScienceDaily] |
+| **양자 W-상태 즉시 검출 (05-13)** | 일본 연구팀: 양자 **W-상태 즉시 검출** 돌파. 양자통신/텔레포테이션/컴퓨팅 가속 마일스톤 | [ScienceDaily] |
 
 ---
 
@@ -213,6 +222,8 @@ last_synced_from_db: 2026-05-09
 | **DARPA RoQS** | GPS-denied 관성/타이밍 프로토타입 개발. DIU 지원 항법 경로 비행/헬리콥터 통합 시험 | [Space Insider / DARPA] |
 | 특허 활동 | 2015년 이후 **4배 이상** 증가 | [PatSnap] |
 | 시장 드라이버 | 5G/6G 동기화, 자율주행 양자LiDAR, GPS-denied 국방, 반도체 검사, 드론 PNT | [IDTechEx / GM Insights / GlobeNewsWire] |
+| **Infleqtion Quantum Spectrum (05-13)** | **중성원자 기반 RF 감지** 신제품 출시. 전통 안테나 대비 **광대역 스펙트럼 인식+간섭 내성**. 국방/항공/통신/자율시스템 현장 배치 목표. 양자센서 시장 **2040E $31B** 전망 | [Infleqtion] |
+| **Infleqtion 해군 QuIRC ML $1M 계약** | RF 신호처리 최적화 ML 계약. **DARPA HARQ $2M에 이어 방위계약 연속 수주**. 양자센싱 국방 매출 파이프라인 확대 | [Infleqtion] |
 
 ---
 
@@ -338,3 +349,10 @@ last_synced_from_db: 2026-05-09
 > 6. **Infleqtion 양자센서 강화**: Karl Pendergast 센싱VP 임명, Voyager ISS Tiqker, NASA 양자중력계 ~2030 발사.
 > 7. **주가 갱신(05-06)**: IonQ ~$52.50(YTD +16%), Rigetti ~$19.90(YTD -10%), D-Wave ~$20(YTD -9%). D-Wave 5/12, Rigetti 5/11 실적 예정.
 > 8. **한국**: K-양자산업연합 포럼 05-01 개최. Quantum KOREA 2026 07/02~04 DDP. 양자클러스터 공모 05-18 마감.
+
+> **2026.05.16 핵심 변화 요약**:
+> 1. **Infleqtion Quantum Spectrum RF 센싱 신제품 출시(05-13)** + 해군 QuIRC $1M 계약
+> 2. **뉴욕 3노드 양자인터넷 실증(Qunnect+Cisco)**
+> 3. **120km 광섬유 QKD 안정적 구현(독일-중국)**
+> 4. **일본 W-상태 즉시 검출 돌파(05-13)**
+> 5. **KISA PQC 전환 가이드라인 + 하이브리드 암호체계 주류 전환**
