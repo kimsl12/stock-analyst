@@ -4,17 +4,17 @@ valid_until: 2026-06-16
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
-sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners, Benchmark Minerals, S&P Global, Charged EVs, GrapheneUses, Phys.org, FactMR, Kavout, UPI, ITIF, Seeking Alpha, MarketsandMarkets, TechCrunch, Fortune, GlobalFoundries, Rare Earth Exchanges, Argus Media, DataM Intelligence, Persistence Market Research, InsightHubDaily, VanEck, RFF, 한화투자증권, onsemi IR, Navitas IR, StockTitan, Yahoo Finance, Evertiq, Financial Content, BigGo Finance, OpenPR, ScienceDirect, Schneider Electric]
+sources: [Grand View Research, Mordor Intelligence, Precedence Research, Fortune Business Insights, IMARC, GM Insights, GlobeNewsWire, IDTechEx, Yole Group, BCC Research, IEA, European Commission, Consilium, SIA, PwC, Manufacturing Dive, Crux Investor, Investing News, Rare Earth Mining, Trading Economics, Georgia Tech, IEEE Spectrum, EE Times, Tom's Hardware, PatSnap, Electronics360, Electronics Media, 대한민국 정책브리핑, 포스코 뉴스룸, 한스비즈, LG 미디어, 디일렉, 이투데이, 인사이트N파워, 한국경제, 글로벌이코노믹, 법률신문, 지평법률, Al Jazeera, European Parliament, SFA Oxford, GQG Partners, Benchmark Minerals, S&P Global, Charged EVs, GrapheneUses, Phys.org, FactMR, Kavout, UPI, ITIF, Seeking Alpha, MarketsandMarkets, TechCrunch, Fortune, GlobalFoundries, Rare Earth Exchanges, Argus Media, DataM Intelligence, Persistence Market Research, InsightHubDaily, VanEck, RFF, 한화투자증권, onsemi IR, Navitas IR, Wolfspeed IR, DCD, Gibson Dunn, IRS, ScienceDaily, Sustainability Atlas, AFSA, Cars.com, Chemistry World, Xnergy, Bonnenbatteries, Recharged, Future Markets Inc, Expert Market Research, Lucintel, ExoSwan]
 confidence: high
 last_synced_from_db: 2026-05-16
-db_records: 227
+db_records: 251
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
 
 ## CURRENT (에이전트는 이 파일의 데이터를 그대로 사용)
 
-> 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전), 희토류/핵심광물, 첨단소재 정책 6개 서브섹터를 다룬다.
+> 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 배터리 소재, 항공우주/방산 소재, 첨단소재 정책 8개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
 
 > **2026.05.16 핵심 변화 요약**:
@@ -59,7 +59,7 @@ db_records: 227
 
 | 기업 | 포지션 | 비고 |
 |------|--------|------|
-| **OCSiAl** (러시아) | SWCNT 시장점유율 90%+ | 2026년 2번째 합성유닛 가동 → 생산 2배, 이후 1년 내 4배 확대. 룩셈부르크 프로젝트 포함 SWCNT 총 1,000톤 목표. 세르비아 시설 2026년 120톤 계획. **Molicel과 장기 전략 파트너십 체결 — SWCNT 기반 INR-21700-P50B 파워셀: 260Wh/kg, 5C 초고속충전, 피크 413W(45C), 1,400사이클** |
+| **OCSiAl** (러시아) | SWCNT 시장점유율 90%+ | **세르비아 시설 SWCNT 분산액 3,000t/y 생산 완료**. 룩셈부르크 프로젝트 포함 총 1,000톤 목표. **Molicel(배터리)·Shanshan(급속충전 흑연음극)·Nantero(NRAM 반도체) 다중 상업화 파이프라인**. INR-21700-P50B: 260Wh/kg, 5C 초고속충전, 피크 413W(45C), 1,400사이클 |
 | **LG화학** | 대산 4공장 가동(2025), 생산능력 2,900t→6,100t | 자체 개발 유동층 반응기 단일라인 연간 600톤 — 세계 최대 규모 |
 | **금호석유화학** | 아산 120t→율촌 360t 확대 예정 | CNT 도전재, 2차전지 업체 평가 진행 |
 | Nanocyl (벨기에) | MWCNT 전문 | 유럽 시장 주도 |
@@ -125,7 +125,8 @@ db_records: 227
 
 #### 2-4. 투자 포인트
 
-- 그래핀 반도체: post-silicon 후보. Georgia Tech FET + Adisyn 저온 인터커넥트 + **최초 상용 Hybrid Graphene-Silicon 칩 출시(2026)**
+- 그래핀 반도체: post-silicon 후보. Georgia Tech FET + Adisyn 저온 인터커넥트(Tier 1 반도체 기업 상업 협의 진행) + **최초 상용 Hybrid Graphene-Silicon 칩 출시(2026)**
+- **IBM 그래핀 트랜지스터 2026: 기존 대비 40% 전력소비 감소** + **700도C 내열 그래핀 칩(AI 극한 환경)**
 - **그래핀 반도체 시장 CAGR 23.06%**: $251M(2024)→$1,321M(2032E)
 - Paragraf 6인치 웨이퍼 상업 생산 + GMG 파일럿 생산: 그래핀 센서/전자소자 상용화 가속
 - EUV 펠리클: 그래핀스퀘어 세계최초 CVD 양산공장 + 2026년 96%+ 투과도 + 2027 양산 적용 시 반도체 공정 핵심 소재
@@ -189,7 +190,7 @@ db_records: 227
 
 #### 3-5. 투자 포인트
 
-- **CFS SPARC 첫 자석 설치 완료**: 2026년 말 조립 완료 → 2027년 first plasma. 총 $3B 투자유치(Nvidia·Google 참여). HTS 핵융합 상용화 가시화
+- **CFS SPARC ~65% 조립 완료, DOE 독립 검증 통과($8M 마일스톤)**. 2027년 first plasma. 총 $3B 투자유치(Nvidia·Google). PIT VIPER 케이블 이중 자석 기술 체계 확립
 - REBCO 테이프 생산 3배 증가 but 수요 초과 -- 공급 병목 = 관련 기업 수혜
 - **상압 Tc 151K 신기록**: 기존 135K에서 16K 상승, 상온 초전도 연구 모멘텀 지속
 - 한국 16T 시험시설 세계 최고 수준 + CERN 공동연구: 핵융합 초전도체 기술 자립 기반 마련
@@ -436,7 +437,7 @@ db_records: 227
 | 소재 관련 | 화합물 반도체(SiC/GaN), 고순도 폴리실리콘 포함 | Congress.gov |
 | Hemlock Semiconductor | $325M (고순도 반도체급 폴리실리콘 신규 시설) | Manufacturing Dive |
 | Bosch | 200mm SiC 캘리포니아 팹 2026 가동 | Manufacturing Dive |
-| **48D 세액공제** | **25%→35%로 인상 (One Big Beautiful Bill Act)**. 2026.12.31 시작 기한 유지 | ITIF, Baker Tilly |
+| **48D 세액공제** | **25%→35% 인상 확정 (One Big Beautiful Bill Act, 2025.07.04 서명)**. 하원 215-214(5/22), 상원 50-50 VP 타이브레이킹(6/1). 2026.12.31까지 건설 착수 시 프로젝트 기간 동안 공제 유지 | DCD, Gibson Dunn, IRS |
 | **BASIC Act** | **48D를 2020년대 말까지 연장 + 35% 인상 제안. 초당파 공동발의 (Tenney R-NY, Mannion D-NY)** | ITIF, Tenney House.gov |
 | **CHIPS Act 그래핀** | **$13B+ 연방 자금 중 첨단 반도체 연구에 그래핀 포함** | BCC Research |
 
@@ -466,10 +467,31 @@ db_records: 227
 
 #### 6-4. 정책 시사점
 
-- **미국**: CHIPS Act 48D 세액공제 25%→35% 인상으로 투자 인센티브 강화. BASIC Act로 연장 추진 중. 그래핀 연구에도 연방 자금 배정
+- **미국**: **CHIPS Act 48D 세액공제 35% 확정(One Big Beautiful Bill 서명 완료)**. 2026.12.31까지 건설 착수 시 프로젝트 기간 전체 적용. BASIC Act로 추가 연장 추진 중. 그래핀 연구에도 연방 자금 배정
 - **EU**: CRM Act + RESourceEU + Advanced Materials Act(Q4 2026) 3중 입법으로 원자재~첨단소재 전주기 전략 수립. CRM 센터 설립으로 실행력 확보
 - **한국**: 소재 국산화율 30%로 여전히 취약. K-Chips Act 최대 25% 세액공제. **범정부 희토류 TF + 수급대응센터 가동으로 공급망 리스크 대응 강화**. 포스코 아르헨티나 리튬 상업생산 본격화
 - 3대 경제권 모두 "소재 주권" 확보 경쟁 가속 -- 소재 기업 장기 구조적 수혜
+
+---
+
+### 7. 항공우주/방산 소재 (신규 — 2026-05-16)
+
+| 항목 | 수치 | 출처 |
+|------|------|------|
+| 글로벌 항공우주·방산 소재 시장 (2026) | $30.2B | GlobeNewsWire, Towards Chem |
+| 글로벌 항공우주·방산 소재 시장 (2035E) | $49.1B (CAGR 5.55%) | Econ Market Research |
+| 항공우주 탄소섬유 시장 (2026) | $2.62B→$3.69B(2031E), CAGR 7.06% | Mordor Intelligence |
+| 북미 점유율 | 37.1% (2025) | MarketsandMarkets |
+| 군용기 세그먼트 | 최고속 성장 (경량·고내열·고강도 수요) | Lucintel, Virtue MR |
+
+**핵심 소재 트렌드:**
+- 탄소섬유 복합재(CFRP): 기체 중량 비율 지속 증가. 알루미늄 대체
+- 티타늄 합금: CFRP 접촉 시 부식 안 되는 유일한 구조금속 → CFRP 확대에 연동 수요 증가
+- 알루미늄-리튬 합금: 경량화 + 구조 강도 밸런스
+- 고온 폴리머/세라믹: 극초음속·우주 방어 응용
+- 세라믹 매트릭스 복합체(CMC): 제트엔진 고온 부품
+
+> 군용 항공기·극초음속 무기·우주 방어 프로그램 확대가 구조적 수요 동인. 상용 항공기 백로그(보잉+에어버스 14,000대+)도 장기 수요 지지.
 
 ---
 
