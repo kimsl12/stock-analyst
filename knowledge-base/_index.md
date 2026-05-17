@@ -1,9 +1,9 @@
 ---
-updated: 2026-05-10
+updated: 2026-05-17
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-05-10
-lint_last_post_fix: 2026-05-10
+lint_last_run: 2026-05-17
+lint_last_post_fix: 2026-05-17
 lint_mode: full
 ---
 
@@ -18,28 +18,31 @@ lint_mode: full
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-10 (market-data-collector 이브닝 재수집)**
+> **최종 갱신: 2026-05-17 (wiki-linter full 자동 점검)**
 
 | 파일 | 상태 | 영향 모듈 | 조치 |
 |------|------|----------|------|
-| — | P0 해소 | — | — |
+| `market/economic_calendar.md` | valid_until **2026-05-17 오늘 만료** | 모닝/이브닝/주간 | kb-updater 즉시 재수집 — 5/18~24 핵심 이벤트 반영 필요 |
+| `market/daily_snapshot.md` | valid_until **2026-05-18 내일 만료** | 전 모듈 | 5/17 모닝 브리핑에서 갱신됨(updated 05-17). 5/18까지 유효 — 모닝 수집 시 자동 갱신 예정 |
 
-> [P0 해소 2026-05-10 20:00 KST] market/economic_calendar.md 재수집 완료 — valid_until 2026-05-17 갱신. 5/11~17 핵심 이벤트(Warsh 인준 표결·4월 CPI·Trump-Xi 정상회담·파월 퇴임·13F 공시) 전면 반영. market-data-collector 이브닝 브리핑 수집.
-> [INFO] market/daily_snapshot.md 5/9 종가 기준 갱신 완료. daily_snapshot valid_until 2026-05-11.
+> [P0 2026-05-17] economic_calendar.md valid_until 2026-05-17 도달 — 5/18~24 주간 이벤트 미반영 상태. 다음 브리핑 실행 전 재수집 필수.
+> [INFO] daily_snapshot.md 5/17 종가 기준 갱신 완료 (updated 05-17, valid_until 05-18). 내일 모닝 수집 시 자동 갱신.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-05-10 full)
+## P1 — 이번 주 조치 (탐지: 2026-05-17 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
 | 파일 | 문제 | 심각도 | 권장 조치 |
 |------|------|-------|---------|
-| `macro/us_monetary_policy.md` | 2026-05-06 갱신. 4/29 FOMC 반영(3.50~3.75%, 3연속 동결, 4인 반대). Warsh 5/11 인준 표결·5/15 취임 미반영 — valid_until 06-06. 핵심 수치(Core PCE 4.3% Q1 SAAR)는 반영됨. Warsh 취임 후 forward guidance 폐지 가능성 구조 변화 예고 | 중간 | Warsh 5/11 인준 확정 후 kb-updater 재수집 위임. Fed 이원 구조(파월 이사직+Warsh 의장) 반영 |
-| `market/economic_calendar.md` | valid_until 2026-05-09 만료 (P0 격상). 5/11~17 주요 이벤트 전면 미반영 | 높음 | kb-updater 즉시 재수집 (P0 조치 참조) |
-| `market/daily_snapshot.md` | valid_until 2026-05-11 — 내일 만료. 5/10 US 장 마감값 갱신 필요 | 낮음 | 이브닝 브리핑 또는 모닝 수집 시 갱신. 5/10 S&P 종가 확정 포함 |
-| `market/surprise_index.md` | collection_status: PARTIAL — 일부 지수 미수집. updated 05-05. 완전 수집 미달 상태 지속 | 낮음 | 다음 갱신 시 완전 수집 목표. 브리핑 사용 가능하나 주의 |
-| `industry/ai.md`, `industry/auto.md`, `industry/battery.md`, `industry/bio_pharma.md`, `industry/defense_industry.md`, `industry/infrastructure.md`, `industry/luxury.md` | valid_until 2026-05-21 — 11일 내 만료. updated 04-21 | 낮음 | 다음 주(5/18 이전) kb-updater 일괄 재수집 권장 |
+| `macro/us_monetary_policy.md` | 2026-05-06 갱신 — **11일 경과**. Warsh 5/15 취임·파월 퇴임 확정 이후 미반영. valid_until 06-06이나 구조적 변화(Fed 이원체제 확정·첫 매파 발언·30Y 5.13%) 미갱신 | **높음** | kb-updater 즉시 재수집. Warsh 취임 후 정책 변화 반영 필수 |
+| `industry/crypto_bitcoin.md` | valid_until **2026-05-20 — 3일 내 만료**. updated 04-20 (27일 경과) | 중간 | kb-updater 재수집. BTC-NASDAQ 디커플링·ETF 유입 둔화 등 5월 구조변화 미반영 |
+| `industry/robotics.md` | valid_until **2026-05-20 — 3일 내 만료**. updated 04-19 (28일 경과) | 중간 | kb-updater 재수집 |
+| `industry/ai.md`, `industry/auto.md`, `industry/battery.md`, `industry/bio_pharma.md`, `industry/defense_industry.md`, `industry/infrastructure.md`, `industry/luxury.md`, `industry/semiconductor.md` | valid_until **2026-05-21 — 4일 내 만료**. updated 04-21 (26일 경과) | 중간 | kb-updater 일괄 재수집 권장 (8종 동시) |
+| `industry/consumer_retail.md`, `industry/real_estate.md` | valid_until **2026-05-22 — 5일 내 만료**. updated 04-22 | 낮음 | 다음 주 초 재수집 |
+| `industry/banking_capital.md`, `industry/education.md`, `industry/food_agriculture.md`, `industry/healthcare_service.md`, `industry/insurance.md`, `industry/logistics.md` | valid_until **2026-05-24 — 7일 내 만료**. updated 04-24 | 낮음 | 다음 주 중 재수집 |
+| `portfolio/model_portfolios.md` | valid_until **2026-05-21 — 4일 내 만료**. updated 04-21. confidence:low 이력 존재 (현재 high) | 낮음 | /모델포트폴리오 실행 시 자동 갱신 |
 
 > [P1 해결완료 2026-04-21 오전] industry/bio_pharma.md 신규 생성, industry/semiconductor.md 신규 생성 + 루트 semiconductor.md 삭제(구조 통일), industry/ai.md + industry/auto.md 갱신 (kb-updater 4건 병렬).
 > [P1 해결완료 2026-04-21 오후] 루트 redirect 파일 3종(geopolitics.md, global_risk_factors.md, us_monetary_policy.md) 본문 삭제 + SSOT 포인터 포맷 통일. 구 데이터 잔존 문제 해소 — 실제 브리핑·분석은 모두 macro/ SSOT 사용 중임을 전수 조사로 검증(lead_*.md 0건 루트 참조). wiki-linter 교차참조 맵은 유지(SSOT 대조 용도).
