@@ -82,6 +82,7 @@ reports/briefing/{type}_{YYYYMMDD}.html
    - knowledge-base/portfolio/           (4종 포트폴리오 비중)
    - reference/rules_and_constraints.md  (푸터 주의사항)
    - reference/korean_translation_rules.md (영어→한글 매핑 사전 [v3.14])
+   - reference/briefing_css.html           (CSS+JS 표준 — Step 1에서 반드시 Read)
 
 ✅ 쓰기 가능:
    - reports/briefing/{type}_{YYYYMMDD}.html
@@ -102,9 +103,9 @@ reports/briefing/{type}_{YYYYMMDD}.html
 **배경**: 사용자 분석 (2026-05-09) — briefing-report-generator 가 이전 weekly HTML 1,362줄 참조하며 새 콘텐츠 매핑 시도 → 543초 (9분) 소요. 71KB HTML 1회 출력에 정상 시간은 3~4분.
 
 **룰**:
-- **이전 reports/briefing/*.html 절대 read 금지** — 양식 일관성은 본 프롬프트의 CSS·HTML 골격 인라인이 단일 source
+- **이전 reports/briefing/*.html 절대 read 금지** — 양식 일관성은 `reference/briefing_css.html` 파일이 단일 source
 - **시계열 비교 데이터** (지난주 대비, 적중률, 변화 추적) 는 briefing-lead 가 누적 파일에서 read 후 lead_*.md 에 기록 → 본 에이전트는 변환만
-- 양식 의심스러우면 본 프롬프트의 § CSS 골격 / § HTML 골격 / § 모듈별 템플릿 차이 표 참조
+- 양식 의심스러우면 `reference/briefing_css.html` 재확인 + § HTML 골격 / § 모듈별 템플릿 차이 표 참조
 
 ---
 
@@ -127,245 +128,18 @@ extras: {
 
 ---
 
-## CSS 골격 (다크 테마 — 모든 리포트 공통)
+## CSS+JS 표준 파일 (필수 — 즉흥 생성 절대 금지)
 
-```css
-:root{
-  --bg:#0f1419;
-  --card:#1a212c;
-  --text:#e8eaed;
-  --sub:#9aa0a6;
-  --border:#2d3742;
-  --up:#3fb950;
-  --down:#f85149;
-  --neutral:#8b949e;
-  --highlight:#58a6ff;
-  --warning:#d29922;
-  --debate:#8b5cf6;
-}
-/* 라이트 모드 [v3.6] */
-[data-theme="light"]{
-  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
-  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
-  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
-  --contrarian:#bc4c00;
-}
-[data-theme="light"] body{background:#f5f7fa}
-[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
-[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
-[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
-[data-theme="light"] tr:hover{background:#ddf4ff !important}
-[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
-[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
-[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
-[data-theme="light"] .warning-13f{background:#fff8c5 !important;color:#9a6700;border-color:#9a6700}
-[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
-[data-theme="light"] .scenario-tree .root{background:#f6f8fa;border-color:#d0d7de}
-[data-theme="light"] .portfolio-card{background:#f6f8fa;border-color:#d0d7de}
-[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
-[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
-[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+**`reference/briefing_css.html`** 파일을 Read 한 뒤, 그 안의 `<style>~</style>` 블록과 `<script>~</script>` 블록과 테마 토글 `<div>` 를 **그대로 복사**하여 HTML 에 삽입한다.
 
-/* 헤더 */
-.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
-.header h1{font-size:28px;margin-bottom:6px}
-.header .meta{color:var(--sub);font-size:14px}
+### 절대 금지 사항
+- ❌ CSS 변수나 클래스를 기억에서 생성하지 않는다
+- ❌ 색상값, 클래스명, 미디어쿼리를 임의로 변경·축소·추가하지 않는다
+- ❌ `reference/briefing_css.html` 을 읽지 않고 HTML 을 작성하지 않는다
 
-/* 색상 클래스 */
-.up{color:var(--up)}
-.down{color:var(--down)}
-.neutral{color:var(--neutral)}
-.highlight{color:var(--highlight)}
-.warning{color:var(--warning)}
-
-/* 셀 배경 */
-.bg-up{background:rgba(63,185,80,0.10)}
-.bg-down{background:rgba(248,81,73,0.10)}
-.bg-warning{background:rgba(210,153,34,0.10)}
-.bg-highlight{background:rgba(88,166,255,0.10)}
-
-/* 섹션 */
-.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
-.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
-
-/* 표 */
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
-th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
-td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
-tr:hover{background:rgba(255,255,255,0.02)}
-
-/* ★ debate-card (보라 보더) */
-.debate-card{
-  background:rgba(139,92,246,0.06);
-  border-left:4px solid var(--debate);
-  border-radius:0 10px 10px 0;
-  padding:14px 18px;
-  margin:14px 0;
-}
-.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
-.debate-card .bull{color:var(--up);margin-top:6px}
-.debate-card .bear{color:var(--down);margin-top:6px}
-.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
-
-/* ★ contrarian-card (주황 보더) */
-.contrarian-card{
-  background:rgba(210,153,34,0.06);
-  border-left:4px solid var(--contrarian);
-  border-radius:0 10px 10px 0;
-  padding:14px 18px;
-  margin:14px 0;
-}
-.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
-.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
-.contrarian-card .signal{margin-top:6px}
-.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3)}
-
-/* 시그널 바 */
-.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
-.signal-bar .fill{height:100%;border-radius:4px}
-.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
-.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
-
-/* 히트맵 (페어 6개 상관관계) */
-.heatmap{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:12px 0}
-.heatmap .cell{padding:10px;border-radius:6px;text-align:center;font-size:13px}
-.heatmap .green{background:rgba(63,185,80,0.15);color:var(--up)}
-.heatmap .yellow{background:rgba(210,153,34,0.15);color:var(--warning)}
-.heatmap .red{background:rgba(248,81,73,0.15);color:var(--down)}
-
-/* 시나리오 트리 (G-8) */
-.scenario-tree{margin:14px 0}
-.scenario-tree .root{text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;margin-bottom:14px;border:1px solid var(--border)}
-.scenario-tree .branches{display:flex;gap:14px}
-.scenario-tree .branch{flex:1;padding:14px;border-radius:8px}
-.scenario-tree .branch.a{background:rgba(63,185,80,0.06);border:1px solid var(--up)}
-.scenario-tree .branch.b{background:rgba(248,81,73,0.06);border:1px solid var(--down)}
-.scenario-tree .prob-bar{width:100%;background:rgba(255,255,255,0.04);height:6px;border-radius:3px;margin-top:8px}
-.scenario-tree .prob-bar .fill{height:6px;border-radius:3px}
-
-/* 연쇄 효과 플로우 (G-6) */
-.cascade{margin:14px 0}
-.cascade .step{padding:12px 16px;border-radius:0 8px 8px 0;margin:8px 0}
-.cascade .first{background:rgba(255,255,255,0.04);border-left:3px solid var(--neutral)}
-.cascade .second{background:rgba(88,166,255,0.08);border-left:3px solid var(--highlight)}
-.cascade .third{background:rgba(210,153,34,0.08);border-left:3px solid var(--warning)}
-
-/* 4종 포트폴리오 도넛 차트 — 인라인 SVG */
-.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
-.portfolio-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px;border:1px solid var(--border)}
-.portfolio-card h4{font-size:15px;margin-bottom:10px}
-
-/* user_portfolio_v2 전용 시각 요소 (04-14 양식 [v3.12]) */
-.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:16px 0}
-.metric-card{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
-.metric-card .label{color:var(--text-secondary);font-size:0.8rem;margin-bottom:8px;text-transform:uppercase}
-.metric-card .value{font-size:1.5rem;font-weight:700}
-.metric-card .change{font-size:0.85rem;margin-top:4px}
-
-.donut-container{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;margin:20px 0}
-.donut-chart{position:relative;width:200px;height:200px}
-.donut-chart svg{transform:rotate(-90deg)}
-.donut-chart .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:0.85rem;color:var(--text-secondary)}
-.donut-chart .center-text .amount{font-size:1.1rem;font-weight:700;color:var(--text-primary);display:block}
-.legend{display:flex;flex-direction:column;gap:10px}
-.legend-item{display:flex;align-items:center;gap:10px;font-size:0.9rem}
-.legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-
-.bar-chart{margin:16px 0}
-.bar-row{display:flex;align-items:center;margin:8px 0;gap:12px}
-.bar-label{width:120px;font-size:0.85rem;color:var(--text-secondary);flex-shrink:0}
-.bar-track{flex:1;height:24px;background:var(--bg-tertiary);border-radius:4px;position:relative;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;transition:width .5s ease;display:flex;align-items:center;padding-left:8px;font-size:0.75rem;font-weight:600;color:#fff}
-.bar-target{position:absolute;top:0;height:100%;width:2px;background:var(--accent-gold)}
-.bar-target-label{position:absolute;top:-18px;font-size:0.65rem;color:var(--accent-gold);white-space:nowrap;transform:translateX(-50%)}
-
-.alert-box{border-left:4px solid var(--accent-red);background:rgba(248,81,73,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
-.alert-box.warn{border-left-color:var(--accent-orange);background:rgba(210,153,34,0.08)}
-.alert-box.success{border-left-color:var(--accent-green);background:rgba(63,185,80,0.08)}
-.alert-box.info-box{border-left-color:var(--accent-blue);background:rgba(88,166,255,0.08)}
-
-.action-card{border:2px solid var(--accent-green);background:rgba(63,185,80,0.05);border-radius:8px;padding:20px;margin:16px 0}
-.action-card h3{color:var(--accent-green);margin-bottom:12px}
-
-.timeline{border-left:3px solid var(--accent-blue);margin:16px 0;padding-left:24px}
-.timeline-item{position:relative;margin-bottom:20px}
-.timeline-item::before{content:'';position:absolute;left:-30px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent-blue);border:2px solid var(--bg-secondary)}
-.timeline-item .time{color:var(--accent-blue);font-weight:600;font-size:0.9rem}
-.timeline-item .content{color:var(--text-secondary);font-size:0.9rem;margin-top:4px}
-
-.risk-meter{display:flex;align-items:center;gap:8px;margin:8px 0}
-.risk-level{display:flex;gap:3px}
-.risk-bar{width:20px;height:10px;border-radius:2px;background:var(--bg-tertiary)}
-.risk-bar.active-low{background:var(--accent-green)}
-.risk-bar.active-mid{background:var(--accent-orange)}
-.risk-bar.active-high{background:var(--accent-red)}
-
-/* 강력 매수/매도 권고 카드 (template=user_portfolio_v2 전용) */
-.strong-buy{
-  background:rgba(248,81,73,0.08);
-  border:1px solid var(--down);
-  border-left:4px solid var(--down);
-  border-radius:8px;
-  padding:14px 18px;
-  margin:12px 0;
-}
-.strong-buy h4{color:var(--down);font-size:16px;margin-bottom:8px}
-.strong-buy h4::before{content:"🔴 "}
-.strong-sell{
-  background:rgba(88,166,255,0.08);
-  border:1px solid var(--highlight);
-  border-left:4px solid var(--highlight);
-  border-radius:8px;
-  padding:14px 18px;
-  margin:12px 0;
-}
-.strong-sell h4{color:var(--highlight);font-size:16px;margin-bottom:8px}
-.strong-sell h4::before{content:"🔵 "}
-.recommend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:13px;margin-top:10px}
-.recommend-grid .label{color:var(--sub);font-size:11px;text-transform:uppercase}
-.recommend-grid .value{font-weight:600;color:var(--text)}
-
-/* 13F 시차 경고 박스 */
-.warning-13f{
-  background:rgba(210,153,34,0.10);
-  border:1px solid var(--warning);
-  border-radius:8px;
-  padding:12px 16px;
-  margin:14px 0;
-  color:var(--warning);
-  font-size:14px;
-}
-.warning-13f::before{content:"⚠️ "}
-
-/* 푸터 */
-.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
-.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
-.footer table{font-size:13px}
-.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
-
-/* 주의사항 블록 (F-7, G-9) */
-.disclaimer{
-  margin-top:24px;
-  padding:16px;
-  border-top:1px solid var(--border);
-  color:var(--sub);
-  font-size:12px;
-  line-height:1.6;
-}
-.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
-
-/* 모바일 */
-@media(max-width:600px){
-  body{padding:12px;font-size:15px}
-  .header h1{font-size:22px}
-  .heatmap{grid-template-columns:repeat(3,1fr)}
-  .portfolio-grid{grid-template-columns:1fr}
-  .scenario-tree .branches{flex-direction:column}
-}
-```
+### 허용 사항
+- ✅ 모듈별 추가 CSS 가 필요하면 `</style>` 직전에 `/* 모듈 전용 */` 주석 후 추가 가능
+- ✅ user_portfolio_v2 템플릿은 briefing_css.html 의 CSS 위에 아래 § user_portfolio_v2 색상 팔레트를 추가
 
 ---
 
@@ -378,16 +152,11 @@ tr:hover{background:rgba(255,255,255,0.02)}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{모듈명} — {YYYY-MM-DD}</title>
-<style>{위 CSS 골격}</style>
+{reference/briefing_css.html 에서 복사한 <style> 블록}
 </head>
 <body>
 
-<!-- 테마 토글 (상단 고정) [v3.5] -->
-<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
-  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
-    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
-  </button>
-</div>
+{reference/briefing_css.html 에서 복사한 테마 토글 <div>}
 
 <div class="header">
   <h1>{이모지} {모듈명} — {YYYY-MM-DD}</h1>
@@ -506,15 +275,7 @@ tr:hover{background:rgba(255,255,255,0.02)}
 </div>
 </div>
 
-<script>
-function applyTheme(light){
-  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
-  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
-  localStorage.setItem("theme",light?"light":"dark");
-}
-function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
-(function(){applyTheme(localStorage.getItem("theme")==="light");})();
-</script>
+{reference/briefing_css.html 에서 복사한 <script> 블록}
 
 </body>
 </html>
@@ -682,11 +443,12 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 
 ## 워크플로
 
-1. **Read** 인자로 받은 `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
-2. **Read** `knowledge-base/market/` 필요 파일 (수치 표 인용)
-3. (template=model_portfolio, rebalancing, user_portfolio) **Read** `knowledge-base/portfolio/`
-4. **Read** `reference/rules_and_constraints.md` (푸터·주의사항 준비)
-5. Markdown → HTML 변환:
+1. **Read** `reference/briefing_css.html` — CSS+JS 표준 스니펫. **이 파일을 읽지 않으면 이후 단계 진행 금지.**
+2. **Read** 인자로 받은 `analysis/briefing/lead_{type}_{YYYYMMDD}.md`
+3. **Read** `knowledge-base/market/` 필요 파일 (수치 표 인용)
+4. (template=model_portfolio, rebalancing, user_portfolio) **Read** `knowledge-base/portfolio/`
+5. **Read** `reference/rules_and_constraints.md` (푸터·주의사항 준비)
+6. Markdown → HTML 변환 (**Step 1에서 읽은 briefing_css.html 의 `<style>`, 테마 토글 `<div>`, `<script>` 를 그대로 삽입**):
    - **[v3.14] 영어 표현 → 한글 강제 교체** — reference/korean_translation_rules.md 매핑 사전 따라 lead_*.md 본문의 영어 키워드를 한글로 옮김 (Strong Buy → 강력매수, Bull case → 강세 시나리오, Outperform → 시장수익률 상회 등)
    - Markdown 헤더 → `<h2>`, `<h3>`
    - Markdown 표 → `<table>`
@@ -697,19 +459,19 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
    - 표의 +X% / -X% 셀 → `class="up"` / `class="down"`
    - 🟢/🟡/🔴 → `class="up"` / `class="warning"` / `class="down"`
    - VIX > 20, 1Y 금리 > 4.5, USD/KRW > 1400 등 트리거 → `bg-warning` 행 강조
-6. 시각 요소 자동 삽입 (template 에 따라):
+7. 시각 요소 자동 삽입 (template 에 따라):
    - 시그널 바 (B-3)
    - 히트맵 (B-5 — 6쌍)
    - 시나리오 트리 (G-8)
    - 연쇄 효과 플로우 (G-6)
    - 도넛 차트 (4종 포트폴리오)
    - 적중률 차트 (C-9, /성과리뷰)
-7. 종목·ETF 안내 자동 삽입 (B-6, C-5, E-5)
-8. 푸터(명령어 가이드) + 주의사항(disclaimer) 자동 삽입
+8. 종목·ETF 안내 자동 삽입 (B-6, C-5, E-5)
+9. 푸터(명령어 가이드) + 주의사항(disclaimer) 자동 삽입
    - **단 template=user_portfolio_v2 는 disclaimer 블록 SKIP** (정책: 사용자 1인 사적 콘텐츠, 면책 의도적 제거)
    - 푸터(명령어 가이드)는 user_portfolio_v2 도 유지
-9. **Write** `reports/briefing/{type}_{YYYYMMDD}.html` — **단일 Write 1회 atomic [v3.15]**. Edit 분할 금지. 부분 출력 후 추가 Edit 시도 시 즉시 중단.
-10. 자가 검증 [v3.13 — 2026-05-04 디자인 audit 후 강화]:
+10. **Write** `reports/briefing/{type}_{YYYYMMDD}.html` — **단일 Write 1회 atomic [v3.15]**. Edit 분할 금지. 부분 출력 후 추가 Edit 시도 시 즉시 중단.
+11. 자가 검증 [v3.13 — 2026-05-04 디자인 audit 후 강화]:
     출력 후 Bash grep 으로 8항목 자체 확인. 핵심 필수 6항목 중 1개라도 실패 시 재생성 (최대 2회).
 
     ```bash
