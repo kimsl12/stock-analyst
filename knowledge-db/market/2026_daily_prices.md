@@ -486,3 +486,12 @@ type: time_series
 | 2026-05-14 | crypto | DOGE | 0.12 | +6.47% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:30+09:00 | 변동성 확대 — 밈 사이클 일시 반등 |
 | 2026-05-14 | crypto | LINK | 10.61 | +3.90% | USD | yfinance [2026-05-14 KST 수집] | 2026-05-15T05:18:32+09:00 | DeFi 모멘텀 안정. CCIP·RWA 내러티브 |
 | 2026-05-14 | crypto | FearAndGreedIndex | 34 | — | index | alternative.me [2026-05-14] | 2026-05-15T05:18:22+09:00 | Fear 구간. 직전 42(Fear), 1주 47(Neutral) → 8p 하락. BTC ETF 유입 둔화 + Warsh 불확실성 반영 |
+| 2026-05-18 | us_index | SP500 | 7403.05 | -0.07% | point | TheStreet/CNBC [2026-05-18 ET 16:00 종가] | 2026-05-19T09:00:00+09:00 | 2거래일 연속 하락. 테크섹터 -1.1% 주도. 다우만 +0.32% 방어 |
+| 2026-05-18 | us_index | NASDAQ | 26090.73 | -0.51% | point | TheStreet/CNBC [2026-05-18 ET 16:00 종가] | 2026-05-19T09:00:00+09:00 | Seagate -7% Micron -6% 반도체 급락 |
+| 2026-05-18 | us_index | DJIA | 49686.12 | +0.32% | point | TheStreet/CNBC [2026-05-18 ET 16:00 종가] | 2026-05-19T09:00:00+09:00 | 가치주 방어. 기술주 약세 속 나홀로 상승 |
+| 2026-05-18 | us_index | VIX | 18.43 | -3.31% | index | FRED VIXCLS / Yahoo Finance [2026-05-18] | 2026-05-19T09:00:00+09:00 | 20 미만 유지. 이란 공격 연기 소식으로 점차 완화 |
+| 2026-05-18 | bond | US10Y | 4.63 | +4bp est | % | TheStreet [2026-05-18 ET — "hits highest in a year"] | 2026-05-19T09:00:00+09:00 | ⚠️ 연중 최고. 2025년 이후 1년 만. CPI 3.8%+PPI 상회+이란 에너지 충격 구조화 |
+| 2026-05-18 | bond | US30Y | 5.13 | +2bp est | % | TheStreet [2026-05-18 ET — "highest in nearly a decade"] | 2026-05-19T09:00:00+09:00 | ⚠️ 10년래 최고. 장기 인플레 기대 재점화 |
+| 2026-05-18 | fx | DXY | 99.30 | +0.09% | index | FXStreet/DealPlexus [2026-05-18] | 2026-05-19T09:00:00+09:00 | 이란발 인플레 달러 강세. 월중 최강 수준 |
+| 2026-05-18 | fx | USDJPY | 158.90 | +0.11% | JPY | TradingEconomics [2026-05-18] | 2026-05-19T09:00:00+09:00 | 엔화 약세 지속. BOJ 개입 경계선 160 접근 |
+| 2026-05-18 | commodity | WTI | 106.22 | +0.76% | USD/barrel | TradingEconomics [2026-05-18 ET 종가] | 2026-05-19T09:00:00+09:00 | ⚠️ $100 상단 고착. 이란전쟁 공급 차질 지속 |
