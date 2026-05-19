@@ -285,7 +285,11 @@ node /Volumes/외장SSD/클로드\ AI\ 폴더/작업폴더/종목분석\ 에이�
     └── data/
         ├── macro_regime.json                      # 매크로 레짐 판정
         ├── stock_scores.json                      # 전체 종목 스코어
-        └── earnings_calendar.json                 # 실적 캘린더
+        ├── earnings_calendar.json                 # 실적 캘린더
+        ├── polymarket_alerts.json                 # Polymarket 급변 트리거
+        ├── polymarket_prev.json                   # Polymarket 이전 수집분 (비교용)
+        ├── score_changes.json                     # 스코어 변동 감지
+        └── stock_scores_prev.json                 # 스코어 이전 수집분 (비교용)
 ```
 
 ---
@@ -309,11 +313,86 @@ cat algo-trading/data/stock_scores.json | python3 -c "import sys,json; d=json.lo
 
 ---
 
+### 7. data/polymarket_alerts.json
+
+**경로:** `/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/algo-trading/data/polymarket_alerts.json`
+**갱신:** build_signals.mjs 실행 시
+**역할:** Polymarket 확률 24시간 내 15%p+ 급변 감지 → 레짐 재판정 강제 트리거
+
+**스키마:**
+
+```json
+{
+  "generated_at": "KST 타임스탬프",
+  "threshold_pct": 15,
+  "market_count": "수집된 마켓 수",
+  "alerts": [
+    {
+      "question": "마켓 질문 원문",
+      "prev_pct": 45.0,
+      "current_pct": 62.0,
+      "delta_pct": 17.0,
+      "direction": "UP | DOWN",
+      "action": "REGIME_RECHECK",
+      "severity": "warning (15~24%p) | critical (25%p+)"
+    }
+  ]
+}
+```
+
+**알고 엔진 사용:**
+
+- alerts 배열이 비어있으면 정상 — 추가 동작 불필요
+- alerts가 1건 이상이면 `macro_regime.json`을 재확인하고 Gate 2 필터 재평가
+- severity=critical이면 전 포지션 트레일링 1단계 타이트화 검토
+- `polymarket_prev.json`은 이전 수집분 — 엔진이 직접 읽을 필요 없음 (빌드 내부용)
+
+---
+
+### 8. data/score_changes.json
+
+**경로:** `/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/algo-trading/data/score_changes.json`
+**갱신:** build_signals.mjs 실행 시
+**역할:** 종목 스코어/등급 변동 감지 → 알고 엔진에 진입/청산 시그널 전달
+
+**스키마:**
+
+```json
+{
+  "generated_at": "KST 타임스탬프",
+  "changes": [
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KRX",
+      "prev_score": 94.5,
+      "current_score": 88.0,
+      "score_delta": -6.5,
+      "prev_grade": "A",
+      "current_grade": "A",
+      "direction": "DOWN"
+    }
+  ],
+  "upgrades": ["등급 상향 종목 (D→C, C→B, B→A 등)"],
+  "downgrades": ["등급 하향 종목 (A→B, B→C 등)"],
+  "new_eligible": ["새로 80점+ 진입한 티커 목록"],
+  "lost_eligible": ["80점 미만으로 이탈한 티커 목록"]
+}
+```
+
+**알고 엔진 사용:**
+
+- `new_eligible` — 새 진입 후보. Gate 1 통과 종목 추가
+- `lost_eligible` — DailyPick 탈락 종목. A5 청산 정책 (5거래일 유예) 발동
+- `downgrades`에서 D/F 등급 하향 — 즉시 청산 트리거
+- `upgrades`에서 A 등급 진입 — 진입 후보 상향
+- `stock_scores_prev.json`은 이전 스코어 — 엔진이 직접 읽을 필요 없음 (빌드 내부용)
+
+---
+
 ## 향후 추가 예정
 
-| 기능                          | 상태      | 설명                                     |
-| ----------------------------- | --------- | ---------------------------------------- |
-| Polymarket 급변 트리거        | 미구현    | 24시간 내 15%p+ 급변 시 레짐 재판정 강제 |
-| 스코어 변동 webhook           | 미구현    | 재분석 시 등급 변경 알고 엔진 자동 알림  |
-| stock_scores.json 파싱 정밀화 | 개선 필요 | 일부 종목 스코어 오추출 수정             |
-| 토스증권 API 연동             | 대기      | API 출시 후 주문 집행 연동               |
+| 기능                          | 상태      | 설명                         |
+| ----------------------------- | --------- | ---------------------------- |
+| stock_scores.json 파싱 정밀화 | 개선 필요 | 일부 종목 스코어 오추출 수정 |
+| 토스증권 API 연동             | 대기      | API 출시 후 주문 집행 연동   |

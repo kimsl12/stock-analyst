@@ -288,10 +288,169 @@ function buildEarningsCalendar() {
 }
 
 // ============================================================
+// 4. Polymarket 급변 트리거
+// ============================================================
+function buildPolymarketAlerts() {
+  const pmPath = join(ROOT, 'knowledge-base/market/prediction_markets.md');
+  const prevPath = join(OUT, 'polymarket_prev.json');
+  const result = {
+    generated_at: timestamp,
+    alerts: [],
+    threshold_pct: 15,
+    market_count: 0,
+  };
+
+  if (!existsSync(pmPath)) {
+    const outPath = join(OUT, 'polymarket_alerts.json');
+    writeFileSync(outPath, JSON.stringify(result, null, 2));
+    console.log('OK: polymarket_alerts.json (prediction_markets.md 미존재 — 빈 출력)');
+    return result;
+  }
+
+  const content = readFileSync(pmPath, 'utf8');
+
+  // 테이블에서 질문 + 확률 추출 (| 질문 | 확률% | 형태)
+  const current = {};
+  const tableRows = content.match(/\|[^|]+\|\s*\d+\.?\d*%/g) || [];
+  for (const row of tableRows) {
+    const cells = row.split('|').map(c => c.trim()).filter(Boolean);
+    if (cells.length >= 2) {
+      const question = cells[0];
+      const pctMatch = cells[1].match(/([\d.]+)%/);
+      if (pctMatch && question.length > 5) {
+        current[question] = parseFloat(pctMatch[1]);
+      }
+    }
+  }
+  result.market_count = Object.keys(current).length;
+
+  // 이전 수집분과 비교
+  let prev = {};
+  if (existsSync(prevPath)) {
+    try { prev = JSON.parse(readFileSync(prevPath, 'utf8')); } catch {}
+  }
+
+  for (const [question, pct] of Object.entries(current)) {
+    if (prev[question] != null) {
+      const delta = pct - prev[question];
+      if (Math.abs(delta) >= result.threshold_pct) {
+        result.alerts.push({
+          question,
+          prev_pct: prev[question],
+          current_pct: pct,
+          delta_pct: Math.round(delta * 10) / 10,
+          direction: delta > 0 ? 'UP' : 'DOWN',
+          action: 'REGIME_RECHECK',
+          severity: Math.abs(delta) >= 25 ? 'critical' : 'warning',
+        });
+      }
+    }
+  }
+
+  // 현재값을 다음 비교용으로 저장
+  writeFileSync(prevPath, JSON.stringify(current, null, 2));
+
+  const outPath = join(OUT, 'polymarket_alerts.json');
+  writeFileSync(outPath, JSON.stringify(result, null, 2));
+
+  const alertCount = result.alerts.length;
+  console.log(`OK: polymarket_alerts.json (markets=${result.market_count}, alerts=${alertCount}${alertCount > 0 ? ' — REGIME_RECHECK 필요' : ''})`);
+  return result;
+}
+
+// ============================================================
+// 5. 스코어 변동 감지
+// ============================================================
+function buildScoreChanges(currentScores) {
+  const prevPath = join(OUT, 'stock_scores_prev.json');
+  const result = {
+    generated_at: timestamp,
+    changes: [],
+    upgrades: [],
+    downgrades: [],
+    new_eligible: [],
+    lost_eligible: [],
+  };
+
+  if (!existsSync(prevPath) || !currentScores) {
+    // 첫 실행: 현재를 prev로 저장
+    if (currentScores) {
+      const prevData = {};
+      for (const s of currentScores.stocks) {
+        prevData[s.ticker] = { score: s.score, grade: s.grade, stale: s.stale };
+      }
+      writeFileSync(prevPath, JSON.stringify(prevData, null, 2));
+    }
+    const outPath = join(OUT, 'score_changes.json');
+    writeFileSync(outPath, JSON.stringify(result, null, 2));
+    console.log('OK: score_changes.json (첫 실행 — 기준선 저장)');
+    return result;
+  }
+
+  let prev = {};
+  try { prev = JSON.parse(readFileSync(prevPath, 'utf8')); } catch {}
+
+  const gradeRank = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'F': 1 };
+
+  for (const s of currentScores.stocks) {
+    const p = prev[s.ticker];
+    if (!p) continue;
+
+    const scoreDelta = (s.score ?? 0) - (p.score ?? 0);
+    const prevRank = gradeRank[p.grade] ?? 0;
+    const currRank = gradeRank[s.grade] ?? 0;
+    const gradeChanged = p.grade !== s.grade;
+
+    if (Math.abs(scoreDelta) >= 5 || gradeChanged) {
+      const change = {
+        ticker: s.ticker,
+        name: s.name,
+        market: s.market,
+        prev_score: p.score,
+        current_score: s.score,
+        score_delta: Math.round(scoreDelta * 10) / 10,
+        prev_grade: p.grade,
+        current_grade: s.grade,
+        direction: scoreDelta > 0 ? 'UP' : 'DOWN',
+      };
+      result.changes.push(change);
+
+      if (currRank > prevRank) result.upgrades.push(change);
+      if (currRank < prevRank) result.downgrades.push(change);
+    }
+
+    // eligible 변동 (80점 경계 진입/이탈)
+    const wasEligible = (p.score ?? 0) >= 80 && !p.stale;
+    const isEligible = (s.score ?? 0) >= 80 && !s.stale;
+    if (!wasEligible && isEligible) result.new_eligible.push(s.ticker);
+    if (wasEligible && !isEligible) result.lost_eligible.push(s.ticker);
+  }
+
+  // 현재를 prev로 갱신
+  const prevData = {};
+  for (const s of currentScores.stocks) {
+    prevData[s.ticker] = { score: s.score, grade: s.grade, stale: s.stale };
+  }
+  writeFileSync(prevPath, JSON.stringify(prevData, null, 2));
+
+  const outPath = join(OUT, 'score_changes.json');
+  writeFileSync(outPath, JSON.stringify(result, null, 2));
+
+  const up = result.upgrades.length;
+  const down = result.downgrades.length;
+  const newE = result.new_eligible.length;
+  const lostE = result.lost_eligible.length;
+  console.log(`OK: score_changes.json (upgrades=${up}, downgrades=${down}, new_eligible=${newE}, lost_eligible=${lostE})`);
+  return result;
+}
+
+// ============================================================
 // 실행
 // ============================================================
 console.log('=== algo-trading signal build ===');
 buildMacroRegime();
-buildStockScores();
+const scores = buildStockScores();
 buildEarningsCalendar();
+buildPolymarketAlerts();
+buildScoreChanges(scores);
 console.log('=== done ===');
