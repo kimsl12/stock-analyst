@@ -783,6 +783,46 @@ CSS 클래스: `debate-card` (보라 #8b5cf6 좌측 보더). briefing-report-gen
 
 CSS 클래스: `contrarian-card` (주황 #d29922 좌측 보더).
 
+### 2.5 Polymarket 신뢰 가중치 규칙 [v3.23]
+
+`knowledge-base/market/prediction_markets.md` 에 해당 이벤트의 Polymarket 확률이 있으면 반드시 아래 규칙을 적용한다.
+
+**Polymarket 누적 적중률: 1개월 전 기준 90.4%, 거래량 $100K+ 마켓 84% (공식 Brier 0.0627).**
+실제 돈이 걸린 시장 합의 확률이므로 briefing-lead 의 주관적 추정보다 신뢰도가 높다.
+
+#### 확률 산출 공식
+
+```
+최종 확률 = Polymarket 확률 × 0.7 + briefing-lead 자체 판단 × 0.3
+```
+
+- **Polymarket 가중치 70%** — 시장 합의 확률을 기본 앵커로 사용
+- **briefing-lead 가중치 30%** — KB 데이터 + 맥락 해석으로 보정 (Polymarket 미반영 정보가 있을 때)
+
+#### 적용 범위
+
+| 항목                                  | 적용                                |
+| ------------------------------------- | ----------------------------------- |
+| debate-card "briefing-lead 판단" 확률 | 필수 적용                           |
+| contrarian-card "확률 추정"           | 필수 적용                           |
+| 시나리오 분기 확률 (A/B/C)            | 필수 적용                           |
+| 4종 포트폴리오 방향 판단              | 간접 반영 (확률이 방향 판단에 영향) |
+
+#### 표기 의무
+
+확률을 기재할 때 Polymarket 참조 여부를 반드시 명시:
+
+```markdown
+**briefing-lead 판단:** 약세 62% vs 강세 38%
+[Polymarket: Fed 6월 동결 71% / briefing-lead 보정: +2%p 매파 리스크 반영]
+```
+
+#### 예외
+
+- 해당 이벤트의 Polymarket 마켓이 없으면 briefing-lead 100% 자체 판단 (기존과 동일)
+- Polymarket 거래량 $50K 미만 마켓은 신뢰도 낮으므로 가중치 50:50 으로 하향
+- 마켓 종료 4시간 이내면 Polymarket 96.7% 적중이므로 가중치 90:10 으로 상향
+
 ### 3. 4종 포트폴리오 방향
 
 모든 모닝/이브닝/주간 브리핑에 강제 삽입.
