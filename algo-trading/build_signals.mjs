@@ -185,9 +185,62 @@ function buildStockScores() {
     const name = nameParts.length > 1 ? nameParts[1] : '';
     const version = dir.match(/v(\d+)/)?.[1] ?? '1';
 
-    // 스코어 추출
-    const scoreMatch = content.match(/(\d+\.?\d*)\s*(?:\/\s*100|점)/);
-    const score = scoreMatch ? parseFloat(scoreMatch[1]) : null;
+    // 스코어 추출 (정밀 파싱 v3)
+    let score = null;
+    const lines = content.split('\n');
+    for (const line of lines) {
+      // 패턴 A: "종합 스코어: 85 / 100" 또는 "종합 스코어: **85 / 100**"
+      const pA = line.match(/(?:종합\s*스코어|총점)[:\s]*\*{0,2}(\d+\.?\d*)\s*[/]\s*100/);
+      if (pA) { score = parseFloat(pA[1]); break; }
+
+      // 패턴 B: "### 합계: **83.9 / 100**"
+      const pB = line.match(/합계[:\s]*\*{0,2}(\d+\.?\d*)\s*[/]\s*100/);
+      if (pB) { score = parseFloat(pB[1]); break; }
+
+      // 패턴 C: 표 행 "| **합계** | **100%** | — | **78.5** |"
+      if (/\|\s*\*{0,2}합계\*{0,2}\s*\|/.test(line)) {
+        const cells = line.split('|').map(c => c.replace(/\*/g, '').trim()).filter(Boolean);
+        // "X / 100" 패턴이 셀 안에 있으면 그걸 우선
+        for (const cell of cells) {
+          const inCell = cell.match(/^(\d+\.?\d*)\s*\/\s*100/);
+          if (inCell) { score = parseFloat(inCell[1]); break; }
+        }
+        if (score) break;
+        // 없으면: 100, 100%, —, 빈값, 합계 건너뛰고 소수점 있는 숫자 찾기
+        for (let i = 1; i < cells.length; i++) {
+          const c = cells[i];
+          if (c === '100%' || c === '100' || c === '—' || c === '' || /합계/.test(c)) continue;
+          // "85" 같은 정수도 허용하되, 가중치(100)와 구분 위해 소수점 있거나 <100이면
+          const num = parseFloat(c);
+          if (!isNaN(num) && num > 0 && num < 100) { score = num; break; }
+          // 정확히 "강력매수", "매수" 등 텍스트면 건너뜀
+          if (/매수|매도|보유|Buy|Sell|Hold|등급/i.test(c)) continue;
+        }
+        if (score) break;
+      }
+
+      // 패턴 D: "| **종합 스코어** | **76.35** | **73.50** |" — v2 비교표
+      if (/\|\s*\*{0,2}종합\s*스코어\*{0,2}\s*\|/.test(line)) {
+        const cells = line.split('|').map(c => c.replace(/\*/g, '').trim()).filter(Boolean);
+        // "X / 100" 패턴 우선
+        for (const cell of cells) {
+          const inCell = cell.match(/^(\d+\.?\d*)\s*\/\s*100/);
+          if (inCell) { score = parseFloat(inCell[1]); break; }
+        }
+        if (score) break;
+        for (let i = 1; i < cells.length; i++) {
+          const c = cells[i];
+          if (c === '100%' || c === '100' || c === '—' || c === '' || /종합|스코어/.test(c)) continue;
+          const num = parseFloat(c);
+          if (!isNaN(num) && num > 0 && num < 100) { score = num; break; }
+        }
+        if (score) break;
+      }
+
+      // 패턴 E: "스코어 85.0/100" 또는 "85/100점"
+      const pE = line.match(/스코어\s*(\d+\.?\d*)\s*[/]\s*100/);
+      if (pE) { score = parseFloat(pE[1]); break; }
+    }
 
     // 등급 추출
     const gradeMap = {
