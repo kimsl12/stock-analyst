@@ -49,6 +49,7 @@ stock-analyst-lead 가 호출 프롬프트에 "**--reanalysis 모드 v{N}**" 또
 - ✅ `analysis/{티커}_{종목명}_v{N}/` 안의 5개 분석가 신규 산출물 (company/financial/business/momentum/risk.md)
 - ✅ `analysis/{티커}_{종목명}_v{N}/data.json`
 - ✅ `knowledge-base/`, `stop-loss-rules.md` — 평소대로
+- ✅ `knowledge-base/market/prediction_markets.md` — Polymarket 예측 확률 (매크로 리스크 시나리오 확률 보정)
 
 ### 본문 의무 섹션 2개 (재분석 모드 필수)
 
@@ -59,16 +60,17 @@ stock-analyst-lead 가 호출 프롬프트에 "**--reanalysis 모드 v{N}**" 또
 ```markdown
 ## § Confidence Interval (신뢰 구간)
 
-| 지표 | 점추정 | 95% CI 범위 | 폭 | 변동 핵심 가정 |
-|------|-------|-----------|---|--------------|
-| 종합 스코어 | 76 / 100 | 70 ~ 82 | ±6 pt | AI ASIC 매출 가시성 |
-| 목표주가 | $410 | $370 ~ $445 | ±9% | DCF WACC ±50bp |
-| 1Y 기대수익률 | +18% | +5% ~ +29% | ±12%p | 실적 컨센서스 정확도 |
+| 지표          | 점추정   | 95% CI 범위 | 폭    | 변동 핵심 가정       |
+| ------------- | -------- | ----------- | ----- | -------------------- |
+| 종합 스코어   | 76 / 100 | 70 ~ 82     | ±6 pt | AI ASIC 매출 가시성  |
+| 목표주가      | $410     | $370 ~ $445 | ±9%   | DCF WACC ±50bp       |
+| 1Y 기대수익률 | +18%     | +5% ~ +29%  | ±12%p | 실적 컨센서스 정확도 |
 
 **가장 큰 변동 요인**: {1줄 — 어느 가정의 변동이 가장 큰 영향을 미치는지}
 ```
 
 CI 산출 방법:
+
 - DCF: WACC ±50bp + 영구성장률 ±50bp 시나리오 분기
 - 상대밸류: 동종업계 P/E ±1σ
 - 스코어: 약한 가정 3개 모두 반증 시 vs 모두 유지 시 점수 차
@@ -96,24 +98,29 @@ CI 산출 방법:
 ```
 
 선정 기준 (약한 = 가장 취약한):
+
 - **데이터 부족** — 회사 가이던스 없음 또는 컨센서스 표준편차 큼
 - **단기 가정** — 2~4분기 안에 검증되어야 하는 가정
 - **외부 변수 의존도 높음** — 매크로, 정책, 경쟁사 행동 등 통제 불가
 - **반증 시 영향도 큰** — 등급 강등 또는 목표가 ±10%+ 변동
 
 제외:
+
 - 회사 공식 가이던스 그대로 인용한 가정 (이미 검증됨)
 - "매크로 안정 유지" 같은 막연한 가정 (구체적 수치 없으면 제외)
 
 ### 위반 자체 검열
 
 본문 작성 후 자체 grep:
+
 ```bash
 grep -E "(이전 분석|v[0-9]+ 대비|이전 등급|이전 스코어|이전 목표가|지난 분석)" {scorecard.md}
 ```
+
 매치 발견 시 해당 문장 삭제 또는 "본 분석에서는" 류로 교체.
 
 또한 § Confidence Interval, § 약한 가정 3개 두 섹션 누락 시 자체 추가:
+
 ```bash
 grep -q "Confidence Interval\|95% CI" {scorecard.md} || echo "⚠️ CI 섹션 누락"
 grep -q "약한 가정\|Most Fragile" {scorecard.md} || echo "⚠️ 약한 가정 섹션 누락"
@@ -151,28 +158,28 @@ grep -q "약한 가정\|Most Fragile" {scorecard.md} || echo "⚠️ 약한 가�
 
 ### 10항목 가중 스코어카드
 
-| # | 항목 | 가중치 | 평가 기준 | 데이터 소스 |
-|---|------|--------|---------|-----------|
-| 1 | Moat (경제적 해자) | 15% | Wide/Narrow/None → 10/6/2점 | company-overview |
-| 2 | 수익성 | 12% | OPM, ROE, ROIC vs 피어 | financial-analyst |
-| 3 | 성장성 | 12% | 매출/이익 CAGR, 리비전 방향 | financial-analyst + momentum |
-| 4 | 재무건전성 | 10% | 부채비율, FCF, 이자보상배율 | financial-analyst |
-| 5 | 밸류에이션 | 10% | PER/PBR vs 적정가, 목표주가 괴리 | financial-analyst |
-| 6 | 모멘텀 | 10% | 주가 모멘텀, 컨센서스 방향 | momentum-analyst |
-| 7 | 수급 | 8% | 외국인/기관 순매수, 리비전 | momentum-analyst |
-| 8 | 리스크 | 10% | 발생가능성×영향도 Top3 | risk-analyst |
-| 9 | 산업 매력도 | 8% | Porter 5 Forces, 사이클 | business-analyst |
-| 10 | 경영진 역량 | 5% | CEO 재임, 보상구조, 자본배분 | company-overview |
+| #   | 항목               | 가중치 | 평가 기준                        | 데이터 소스                  |
+| --- | ------------------ | ------ | -------------------------------- | ---------------------------- |
+| 1   | Moat (경제적 해자) | 15%    | Wide/Narrow/None → 10/6/2점      | company-overview             |
+| 2   | 수익성             | 12%    | OPM, ROE, ROIC vs 피어           | financial-analyst            |
+| 3   | 성장성             | 12%    | 매출/이익 CAGR, 리비전 방향      | financial-analyst + momentum |
+| 4   | 재무건전성         | 10%    | 부채비율, FCF, 이자보상배율      | financial-analyst            |
+| 5   | 밸류에이션         | 10%    | PER/PBR vs 적정가, 목표주가 괴리 | financial-analyst            |
+| 6   | 모멘텀             | 10%    | 주가 모멘텀, 컨센서스 방향       | momentum-analyst             |
+| 7   | 수급               | 8%     | 외국인/기관 순매수, 리비전       | momentum-analyst             |
+| 8   | 리스크             | 10%    | 발생가능성×영향도 Top3           | risk-analyst                 |
+| 9   | 산업 매력도        | 8%     | Porter 5 Forces, 사이클          | business-analyst             |
+| 10  | 경영진 역량        | 5%     | CEO 재임, 보상구조, 자본배분     | company-overview             |
 
 ### 종합 등급
 
-| 점수 | 등급 | 투자의견 |
-|------|------|---------|
-| 80~100 | ⭐ A | Strong Buy |
-| 65~79 | 📈 B | Buy |
-| 50~64 | ➖ C | Hold |
-| 35~49 | 📉 D | Underweight |
-| 0~34 | ⛔ F | Sell |
+| 점수   | 등급 | 투자의견    |
+| ------ | ---- | ----------- |
+| 80~100 | ⭐ A | Strong Buy  |
+| 65~79  | 📈 B | Buy         |
+| 50~64  | ➖ C | Hold        |
+| 35~49  | 📉 D | Underweight |
+| 0~34   | ⛔ F | Sell        |
 
 ---
 
@@ -199,6 +206,7 @@ DailyPick 위젯 / 포트폴리오 리밸런싱 / 사용자 자산배분 계획�
 **예상 보유 기간**: {N}일 ({카테고리})
 
 근거:
+
 - 시나리오: {Base / Bull / Bear 중 어느 시나리오 도달까지의 평균 시간}
 - 카탈리스트 도달 시점: {예: NVDA GTC 2026-06-15, Q2 어닝 2026-08-말}
 - 시장 사이클: {예: 반도체 슈퍼사이클 정점 2027 H1 예상}
@@ -207,13 +215,13 @@ DailyPick 위젯 / 포트폴리오 리밸런싱 / 사용자 자산배분 계획�
 
 ### 카테고리 가이드
 
-| 카테고리 | 기간 | 적용 |
-|---------|-----|-----|
-| 초단기 (event-driven) | 7~30일 | 어닝·FOMC·승인 등 단발 이벤트 베팅 |
-| 단기 (positioning) | 30~90일 | 분기 모멘텀 / 컨센서스 변화 / 단기 모멘텀 사이클 |
-| 중기 (cyclical) | 90~270일 | 산업 사이클 1회전 / 정책 효과 흡수 |
-| 장기 (structural) | 270~720일 | 메가트렌드 (AI, 전력, 방산, 인구) |
-| 영구 (compounder) | 720일+ | 복리 머신 (BRK, V, MSFT 등) |
+| 카테고리              | 기간      | 적용                                             |
+| --------------------- | --------- | ------------------------------------------------ |
+| 초단기 (event-driven) | 7~30일    | 어닝·FOMC·승인 등 단발 이벤트 베팅               |
+| 단기 (positioning)    | 30~90일   | 분기 모멘텀 / 컨센서스 변화 / 단기 모멘텀 사이클 |
+| 중기 (cyclical)       | 90~270일  | 산업 사이클 1회전 / 정책 효과 흡수               |
+| 장기 (structural)     | 270~720일 | 메가트렌드 (AI, 전력, 방산, 인구)                |
+| 영구 (compounder)     | 720일+    | 복리 머신 (BRK, V, MSFT 등)                      |
 
 ### 출력 예시
 
@@ -223,6 +231,7 @@ DailyPick 위젯 / 포트폴리오 리밸런싱 / 사용자 자산배분 계획�
 **예상 보유 기간**: 180일 (중기 — cyclical)
 
 근거:
+
 - 시나리오: Base TP $410 도달까지 평균 6개월 (Q3 어닝 + Robotaxi 8월 가시화)
 - 카탈리스트: 2026-08 Q2 어닝 / 2026-10 Robotaxi 무인 누적 데이터 / 2026-11 FY27 가이던스
 - 시장 사이클: AI capex 사이클 2026 H2 정점 후 둔화 — 그 전 익절 권장
@@ -249,13 +258,13 @@ DailyPick 위젯 / 포트폴리오 리밸런싱 / 사용자 자산배분 계획�
 
 ### R:R → 태그 매핑
 
-| R:R (Base) | 태그 | scorecard 상단 표시 | HTML Executive Summary |
-|-----------|-----|-------------------|----------------------|
-| ≥ 3.0 | 🟢 Excellent | (태그 없음) | (태그 없음) |
-| 2.0~2.99 | 🟢 Good | (태그 없음) | (태그 없음) |
-| 1.5~1.99 | 🟡 Acceptable | (태그 없음) | (태그 없음) |
-| 1.0~1.49 | 🟠 Marginal | **⚠️ 진입 보류 권고** | 맨 첫줄 태그 |
-| < 1.0 | 🔴 Poor | **⛔ 진입 금지 — 조정 대기 권고** | 맨 첫줄 태그 |
+| R:R (Base) | 태그          | scorecard 상단 표시               | HTML Executive Summary |
+| ---------- | ------------- | --------------------------------- | ---------------------- |
+| ≥ 3.0      | 🟢 Excellent  | (태그 없음)                       | (태그 없음)            |
+| 2.0~2.99   | 🟢 Good       | (태그 없음)                       | (태그 없음)            |
+| 1.5~1.99   | 🟡 Acceptable | (태그 없음)                       | (태그 없음)            |
+| 1.0~1.49   | 🟠 Marginal   | **⚠️ 진입 보류 권고**             | 맨 첫줄 태그           |
+| < 1.0      | 🔴 Poor       | **⛔ 진입 금지 — 조정 대기 권고** | 맨 첫줄 태그           |
 
 ### 부착 위치 (3곳 필수)
 
@@ -391,24 +400,28 @@ if current_price > consensus_avg_target:
 # {종목명} ({종목코드}) 분석 요약 — {YYYY-MM-DD}
 
 ## 핵심 결론
+
 - 종합 점수: {XX}점 / 등급: {등급}
 - 투자의견: {의견}
 - 손절가: ₩{XXX} / 목표가: ₩{XXX}
 
 ## 핵심 인사이트 (KB 미반영 신규 발견)
+
 - {인사이트 1}
 - {인사이트 2}
 
 ## KB 갱신 필요 항목
+
 - [{파일명}]: {갱신 이유}
 
 ## 참조 KB 파일 (이 분석에 사용됨)
+
 - {파일명}: {사용 섹션}
 ```
 
 ### Step 3: `knowledge-base/_index.md` "최근 핵심 인사이트" append
 
-분석 완료 후 knowledge-base/_index.md의 최근 인사이트 섹션에 1줄 추가:
+분석 완료 후 knowledge-base/\_index.md의 최근 인사이트 섹션에 1줄 추가:
 
 ```
 | {날짜} | 종목분석 | {종목명} {등급}: {핵심 발견 1줄} | `{관련 KB 파일}` | — |
@@ -425,7 +438,7 @@ if current_price > consensus_avg_target:
 ## KB 참조 [v3.1]
 
 - 리드가 전달한 analysis/ 파일만 읽는다 (KB 직접 탐색 금지)
-- KB 피드백은 kb-updater에 위임 또는 knowledge-base/_index.md 수정으로만 처리
+- KB 피드백은 kb-updater에 위임 또는 knowledge-base/\_index.md 수정으로만 처리
 - KB 파일 직접 수정 금지 (kb-updater 전용)
 
 ## FRED 매크로 레짐 점수 [v3.5 신규, 2026-05-07]
@@ -434,12 +447,12 @@ if current_price > consensus_avg_target:
 
 ### 4 레짐 분류 (자동)
 
-| 레짐 | 조건 | 우호 섹터 | 비우호 섹터 |
-|------|------|----------|-----------|
-| **Goldilocks** | gdp_yoy ≥ 2% AND core_pce_yoy ≤ 2.5% AND t10y2y > 0 | Tech, Discretionary, Financials | Utilities, Staples |
-| **Reflation** | gdp_yoy ≥ 2% AND core_pce_yoy > 2.5% | Energy, Materials, Industrials | Tech, REIT |
-| **Stagflation** | gdp_yoy < 2% AND core_pce_yoy > 2.5% | Energy, Gold, Healthcare | Tech, Discretionary, Financials |
-| **거짓 안정** | vix < 18 AND hy_spread < 3 AND core_pce_yoy > 3 | (현금/방어) | (모든 위험자산 경고) |
+| 레짐            | 조건                                                | 우호 섹터                       | 비우호 섹터                     |
+| --------------- | --------------------------------------------------- | ------------------------------- | ------------------------------- |
+| **Goldilocks**  | gdp_yoy ≥ 2% AND core_pce_yoy ≤ 2.5% AND t10y2y > 0 | Tech, Discretionary, Financials | Utilities, Staples              |
+| **Reflation**   | gdp_yoy ≥ 2% AND core_pce_yoy > 2.5%                | Energy, Materials, Industrials  | Tech, REIT                      |
+| **Stagflation** | gdp_yoy < 2% AND core_pce_yoy > 2.5%                | Energy, Gold, Healthcare        | Tech, Discretionary, Financials |
+| **거짓 안정**   | vix < 18 AND hy_spread < 3 AND core_pce_yoy > 3     | (현금/방어)                     | (모든 위험자산 경고)            |
 
 ### 10항목 스코어카드 가중치 조정
 
@@ -460,12 +473,12 @@ v3.17 첫 통합 검증 (SK하이닉스 v3) 에서 18건 인용 → 종합 점�
 
 ### 보정 룰
 
-| Divergence 방향 | 정의 | 점수 보정 |
-|---|---|---|
-| 🟢 학술이 Bull 강화 | research excerpts 가 컨센서스 매수 의견을 통계적·구조적 baseline 으로 보강 | **+1 ~ +2** |
-| ⚪ Neutral (정렬) | 학술 ≈ 컨센서스 — 같은 방향, divergence 미미 | **0** (기본) |
-| 🟡 학술이 Bear 시그널 | research excerpts 안에 컨센서스 깨는 Contrarian 가설 ≥ 2건 | **-1 ~ -2** |
-| 🔴 학술이 강력 Bear | research base rate 가 컨센과 25% 이상 괴리 + 시점 가까움 (6~12개월) | **-2 ~ -3** |
+| Divergence 방향       | 정의                                                                       | 점수 보정    |
+| --------------------- | -------------------------------------------------------------------------- | ------------ |
+| 🟢 학술이 Bull 강화   | research excerpts 가 컨센서스 매수 의견을 통계적·구조적 baseline 으로 보강 | **+1 ~ +2**  |
+| ⚪ Neutral (정렬)     | 학술 ≈ 컨센서스 — 같은 방향, divergence 미미                               | **0** (기본) |
+| 🟡 학술이 Bear 시그널 | research excerpts 안에 컨센서스 깨는 Contrarian 가설 ≥ 2건                 | **-1 ~ -2**  |
+| 🔴 학술이 강력 Bear   | research base rate 가 컨센과 25% 이상 괴리 + 시점 가까움 (6~12개월)        | **-2 ~ -3**  |
 
 ### 적용 절차
 
@@ -538,19 +551,25 @@ v3.17 첫 통합 검증 (SK하이닉스 v3) 에서 18건 인용 → 종합 점�
 서브에이전트 결과가 상충할 때 주관적 판단 금지. 아래 규칙을 기계적으로 적용한다.
 
 ### 목표주가 모순
+
 financial-analyst 산출값 vs 컨센서스 괴리 > 30% 시:
+
 1. 두 값을 모두 명시 (자체 산출 / 컨센서스)
 2. 괴리 원인 1줄 설명
 3. **보수적 값(낮은 쪽)을 Base Case** 채택
 4. 공격적 값을 Bull Case로 표기
 
 ### Moat vs 리스크 모순
+
 company-overview Moat = Wide인데 risk-analyst 리스크 = 높음 시:
+
 - Moat 트렌드를 **Negative**로 조정 ("해자 침식 중" 판단)
 - 스코어카드 Moat 항목에 **-2점 패널티** 자동 적용
 - scorecard에 "[모순 보정] Moat Wide이나 리스크 높음 → -2점" 명시
 
 ### 모멘텀 vs 밸류에이션 모순
+
 momentum = 상승인데 valuation = 고평가(PER 50x+) 시:
+
 - "모멘텀 트레이딩 vs 가치투자 분기점" debate-card 자동 생성
 - 스코어카드에 두 관점 병기, 점수는 각각 독립 평가 (상쇄 금지)

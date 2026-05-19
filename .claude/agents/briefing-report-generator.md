@@ -28,17 +28,18 @@ tools: Read, Write, Bash, Grep, Glob
 
 ### [v3.14] 강제 변환 의무 (사용자 지적 2026-05-09)
 
-briefing-lead 의 lead_*.md 본문에 영어 표현이 있어도 **본 에이전트가 자체 한글 변환** 의무.
+briefing-lead 의 lead\_\*.md 본문에 영어 표현이 있어도 **본 에이전트가 자체 한글 변환** 의무.
 
 **참조: [reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** — 매핑 사전 (Strong Buy → 강력매수, Bull → 강세 등) + 자가 검증 룰
 
 **Workflow Step 5 의 Markdown → HTML 변환 단계에서 매핑 사전 따라 영어 → 한글 자동 교체.**
 
 **Workflow Step 10 자가 검증에 한국어 검증 추가**:
+
 - 본문 영어 표현 grep (Strong Buy, Bull case, Top Pick, Outperform, Hawkish 등 30+ 키워드)
 - 본문 한글 비중 80% 이상 (기존 "50자 이상" → 비율 측정)
 - 위반 발견 시 매핑 사전 따라 자체 교체 후 재출력 (최대 1회)
-- 1회 재시도 실패 시 briefing-lead 에 "한국어 룰 위반 ${목록}" 보고 후 lead 가 lead_*.md 재작성
+- 1회 재시도 실패 시 briefing-lead 에 "한국어 룰 위반 ${목록}" 보고 후 lead 가 lead\_\*.md 재작성
 
 ---
 
@@ -51,6 +52,7 @@ briefing-lead 가 작성한 Markdown 산출물을 다크 테마 HTML 로 변환 
 **별도 briefing_html_template.py 파일은 만들지 않는다.** CSS·HTML 골격은 본 에이전트 프롬프트 안에 포함.
 
 산출물 경로: `reports/briefing/{type}_{YYYYMMDD}.html`
+
 - `type` = morning / evening / weekly / rebalancing / crypto / model_portfolio / global_intelligence / full / performance_review / user_portfolio / user_portfolio_v2
 
 ---
@@ -79,6 +81,7 @@ reports/briefing/{type}_{YYYYMMDD}.html
    - analysis/briefing/lead_{type}_{YYYYMMDD}.md  (briefing-lead 의 본 회차 산출물)
    - analysis/briefing/{하위 분석가 산출물}        (해당 회차)
    - knowledge-base/market/              (수치 표 인용)
+   - knowledge-base/market/prediction_markets.md  (Polymarket 예측 확률 — 예측 시장 섹션 렌더링)
    - knowledge-base/portfolio/           (4종 포트폴리오 비중)
    - reference/rules_and_constraints.md  (푸터 주의사항)
    - reference/korean_translation_rules.md (영어→한글 매핑 사전 [v3.14])
@@ -103,8 +106,9 @@ reports/briefing/{type}_{YYYYMMDD}.html
 **배경**: 사용자 분석 (2026-05-09) — briefing-report-generator 가 이전 weekly HTML 1,362줄 참조하며 새 콘텐츠 매핑 시도 → 543초 (9분) 소요. 71KB HTML 1회 출력에 정상 시간은 3~4분.
 
 **룰**:
-- **이전 reports/briefing/*.html 절대 read 금지** — 양식 일관성은 `reference/briefing_css.html` 파일이 단일 source
-- **시계열 비교 데이터** (지난주 대비, 적중률, 변화 추적) 는 briefing-lead 가 누적 파일에서 read 후 lead_*.md 에 기록 → 본 에이전트는 변환만
+
+- **이전 reports/briefing/\*.html 절대 read 금지** — 양식 일관성은 `reference/briefing_css.html` 파일이 단일 source
+- **시계열 비교 데이터** (지난주 대비, 적중률, 변화 추적) 는 briefing-lead 가 누적 파일에서 read 후 lead\_\*.md 에 기록 → 본 에이전트는 변환만
 - 양식 의심스러우면 `reference/briefing_css.html` 재확인 + § HTML 골격 / § 모듈별 템플릿 차이 표 참조
 
 ---
@@ -133,11 +137,13 @@ extras: {
 **`reference/briefing_css.html`** 파일을 Read 한 뒤, 그 안의 `<style>~</style>` 블록과 `<script>~</script>` 블록과 테마 토글 `<div>` 를 **그대로 복사**하여 HTML 에 삽입한다.
 
 ### 절대 금지 사항
+
 - ❌ CSS 변수나 클래스를 기억에서 생성하지 않는다
 - ❌ 색상값, 클래스명, 미디어쿼리를 임의로 변경·축소·추가하지 않는다
 - ❌ `reference/briefing_css.html` 을 읽지 않고 HTML 을 작성하지 않는다
 
 ### 허용 사항
+
 - ✅ 모듈별 추가 CSS 가 필요하면 `</style>` 직전에 `/* 모듈 전용 */` 주석 후 추가 가능
 - ✅ user_portfolio_v2 템플릿은 briefing_css.html 의 CSS 위에 아래 § user_portfolio_v2 색상 팔레트를 추가
 
@@ -206,6 +212,17 @@ extras: {
     <tr><td>🔥 공격형</td><td>...</td><td class="down">경계</td><td>...</td></tr>
     <tr><td>💰 배당형</td><td>...</td><td class="neutral">유지</td><td>...</td></tr>
   </table>
+</div>
+
+<!-- ★ 예측 시장 (Polymarket) — 해당 템플릿만 (모듈별 템플릿 차이 표 참조) -->
+<div class="sec">
+  <h2>예측 시장 (Polymarket)</h2>
+  <p style="color:var(--sub);font-size:13px;margin-bottom:12px">실제 돈이 걸린 예측 확률 — knowledge-base/market/prediction_markets.md 기반</p>
+  <table>
+    <tr><th>질문</th><th>확률</th><th>24h 변화</th><th>거래량</th><th>신뢰도</th></tr>
+    <tr><td>{question}</td><td class="up">{확률}%</td><td>{+/-}%p</td><td>${volume}</td><td>{높음/중간/참고}</td></tr>
+  </table>
+  <p style="color:var(--sub);font-size:11px;margin-top:8px">출처: Polymarket Gamma API | 거래량 $50K+ 필터 | 스프레드 5%+ 마켓 유동성 주의</p>
 </div>
 
 <!-- 심층 분석 권장 (briefing → 종목분석 위임 슬롯) -->
@@ -285,19 +302,19 @@ extras: {
 
 ## 모듈별 템플릿 차이
 
-| template | 헤더 이모지 | 핵심 섹션 | 4종 방향 | 13F 경고 | 시나리오 트리 |
-|---|---|---|---|---|---|
-| morning | 🌅 | A-1 시장 마감 / A-2 뉴스 / A-5 거물 / A-6 4종 / A-7 매크로 | ✅ | ✅ | ❌ |
-| evening | 🌙 | B-1 글로벌 이슈 / B-3 신호판 / B-4 서프라이즈 / B-5 상관관계 / B-7 거물 / B-8 4종 | ✅ | ✅ | ❌ |
-| weekly | 📊 | C-1~C-10 (스파크라인 + C-9 적중률 카드) | ✅ | ✅ | ❌ |
-| rebalancing | 🔄 | D-1~D-4 (자산군별 변화 화살표) | ✅ (강조) | ❌ | ❌ |
-| crypto | 🪙 | E-1~E-6 (대시보드 + 온체인 + 규제) | ❌ | ❌ | ❌ |
-| model_portfolio | 🧭 | F-1~F-7 (4종 도넛 차트 + F-6 비교표 + F-7 disclaimer) | ✅ (전체) | ❌ | ❌ |
-| global_intelligence | 🌐 | G-1~G-9 (지정학·정치·기술·에너지 + 4축 매트릭스 + 시나리오 트리) | ❌ | ❌ | ✅ |
-| full | 📘 | morning + evening + weekly + crypto 4편 동시 | ✅ | ✅ | ❌ |
-| performance_review | 📈 | 적중률 도넛 + 모듈 분해 차트 + 교훈 노트 | ❌ | ❌ | ❌ |
-| user_portfolio | 👤 | 사용자 보유 자산 vs 4종 모델 비교 (v1, deprecated) | ✅ | ❌ | ❌ |
-| user_portfolio_v2 | 👤 | 9개 섹션: 프로파일·자산군·매크로요약·등장종목풀·갭분석·🔴강력매수·🔵강력매도·모니터링·4종비교 | ✅ | ❌ | ❌ |
+| template            | 헤더 이모지 | 핵심 섹션                                                                                     | 4종 방향  | 13F 경고 | 시나리오 트리 | 예측 시장     |
+| ------------------- | ----------- | --------------------------------------------------------------------------------------------- | --------- | -------- | ------------- | ------------- |
+| morning             | 🌅          | A-1 시장 마감 / A-2 뉴스 / A-5 거물 / A-6 4종 / A-7 매크로                                    | ✅        | ✅       | ❌            | ✅            |
+| evening             | 🌙          | B-1 글로벌 이슈 / B-3 신호판 / B-4 서프라이즈 / B-5 상관관계 / B-7 거물 / B-8 4종             | ✅        | ✅       | ❌            | ✅            |
+| weekly              | 📊          | C-1~C-10 (스파크라인 + C-9 적중률 카드)                                                       | ✅        | ✅       | ❌            | ✅            |
+| rebalancing         | 🔄          | D-1~D-4 (자산군별 변화 화살표)                                                                | ✅ (강조) | ❌       | ❌            | ❌            |
+| crypto              | 🪙          | E-1~E-6 (대시보드 + 온체인 + 규제)                                                            | ❌        | ❌       | ❌            | ✅ (크립토만) |
+| model_portfolio     | 🧭          | F-1~F-7 (4종 도넛 차트 + F-6 비교표 + F-7 disclaimer)                                         | ✅ (전체) | ❌       | ❌            | ❌            |
+| global_intelligence | 🌐          | G-1~G-9 (지정학·정치·기술·에너지 + 4축 매트릭스 + 시나리오 트리)                              | ❌        | ❌       | ✅            | ✅            |
+| full                | 📘          | morning + evening + weekly + crypto 4편 동시                                                  | ✅        | ✅       | ❌            | ✅            |
+| performance_review  | 📈          | 적중률 도넛 + 모듈 분해 차트 + 교훈 노트                                                      | ❌        | ❌       | ❌            | ❌            |
+| user_portfolio      | 👤          | 사용자 보유 자산 vs 4종 모델 비교 (v1, deprecated)                                            | ✅        | ❌       | ❌            | ❌            |
+| user_portfolio_v2   | 👤          | 9개 섹션: 프로파일·자산군·매크로요약·등장종목풀·갭분석·🔴강력매수·🔵강력매도·모니터링·4종비교 | ✅        | ❌       | ❌            |
 
 ---
 
@@ -307,17 +324,17 @@ extras: {
 
 ### 강제 시각 요소 (반드시 포함)
 
-| 요소 | CSS 클래스 | 사용 섹션 |
-|---|---|---|
-| 메트릭 카드 그리드 | `.metric-grid` + `.metric-card` (label / value / change) | §1 프로파일, §10 시장 데이터 |
-| 도넛 차트 (자산 배분) | `.donut-chart` + `<svg>` 인라인 | §2 자산군 현황 |
-| 바 차트 (현재 vs 목표) | `.bar-chart` + `.bar-row` + `.bar-fill` + `.bar-target` | §2 자산군 갭, §5 갭 분석 |
-| 알림 박스 (위험·정보·성공·경고) | `.alert-box` + `.warn` / `.success` / `.info-box` (하단 변형) | §3 매크로 요약, §5 갭 분석 |
-| 강력 매수 카드 | `.strong-buy` + `.ticker-head` + `.what` + `.why` + `.how` + `.score` | §6 강력 매수 (필수 5종) |
-| 강력 매도 카드 | `.strong-sell` + 동일 구조 | §7 강력 매도 |
-| 타임라인 | `.timeline` + `.timeline-item` (`.time` + `.content`) | §8 모니터링 포인트 |
-| 위험 미터 | `.risk-meter` + `.risk-level` + `.risk-bar.active-low/mid/high` | §5 갭 분석 (선택) |
-| 액션 카드 | `.action-card` (녹색 테두리, 즉시 실행 권고용) | §6 매수 권고 보조 |
+| 요소                            | CSS 클래스                                                            | 사용 섹션                    |
+| ------------------------------- | --------------------------------------------------------------------- | ---------------------------- |
+| 메트릭 카드 그리드              | `.metric-grid` + `.metric-card` (label / value / change)              | §1 프로파일, §10 시장 데이터 |
+| 도넛 차트 (자산 배분)           | `.donut-chart` + `<svg>` 인라인                                       | §2 자산군 현황               |
+| 바 차트 (현재 vs 목표)          | `.bar-chart` + `.bar-row` + `.bar-fill` + `.bar-target`               | §2 자산군 갭, §5 갭 분석     |
+| 알림 박스 (위험·정보·성공·경고) | `.alert-box` + `.warn` / `.success` / `.info-box` (하단 변형)         | §3 매크로 요약, §5 갭 분석   |
+| 강력 매수 카드                  | `.strong-buy` + `.ticker-head` + `.what` + `.why` + `.how` + `.score` | §6 강력 매수 (필수 5종)      |
+| 강력 매도 카드                  | `.strong-sell` + 동일 구조                                            | §7 강력 매도                 |
+| 타임라인                        | `.timeline` + `.timeline-item` (`.time` + `.content`)                 | §8 모니터링 포인트           |
+| 위험 미터                       | `.risk-meter` + `.risk-level` + `.risk-bar.active-low/mid/high`       | §5 갭 분석 (선택)            |
+| 액션 카드                       | `.action-card` (녹색 테두리, 즉시 실행 권고용)                        | §6 매수 권고 보조            |
 
 ### 강제 헤더 구조
 
@@ -355,8 +372,8 @@ extras: {
     <div><code>/KB점검</code> KB 건강 점검</div>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--sub)">
-    생성: briefing-report-generator | 모드: user_portfolio_v2 (private) |
-    데이터 기준: fetch_price.py {YYYY-MM-DD} {HH:MM} KST
+    생성: briefing-report-generator | 모드: user_portfolio_v2 (private) | 데이터
+    기준: fetch_price.py {YYYY-MM-DD} {HH:MM} KST
   </p>
 </div>
 ```
@@ -379,22 +396,23 @@ extras: {
 
 ```css
 :root {
-  --bg-primary: #0d1117;       /* 본문 배경 */
-  --bg-secondary: #161b22;     /* 섹션 배경 */
-  --bg-tertiary: #21262d;      /* 카드 배경 */
+  --bg-primary: #0d1117; /* 본문 배경 */
+  --bg-secondary: #161b22; /* 섹션 배경 */
+  --bg-tertiary: #21262d; /* 카드 배경 */
   --border: #30363d;
   --text-primary: #e6edf3;
   --text-secondary: #8b949e;
   --text-muted: #484f58;
-  --accent-blue: #58a6ff;      /* 정보·매도 */
-  --accent-green: #3fb950;     /* 성공·상승 */
-  --accent-red: #f85149;       /* 매수·경고 */
-  --accent-orange: #d29922;    /* 주의 */
-  --accent-purple: #8b5cf6;    /* 채권·debate */
-  --accent-gold: #f0c040;      /* 금·목표선 */
-  --accent-cyan: #39d2c0;      /* 보조 */
+  --accent-blue: #58a6ff; /* 정보·매도 */
+  --accent-green: #3fb950; /* 성공·상승 */
+  --accent-red: #f85149; /* 매수·경고 */
+  --accent-orange: #d29922; /* 주의 */
+  --accent-purple: #8b5cf6; /* 채권·debate */
+  --accent-gold: #f0c040; /* 금·목표선 */
+  --accent-cyan: #39d2c0; /* 보조 */
 }
 ```
+
 라이트 테마 토글은 `[data-theme="light"]` 분기로 전체 변수 재정의 (모닝/이브닝과 동일 패턴).
 
 ### 면책 처리 (v2 정책 — 절대 금지)
@@ -412,7 +430,7 @@ extras: {
 
 ## 종목·ETF 안내 자동 삽입 (B-6, C-5, E-5 섹션)
 
-briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에이전트가 자동으로 다음 텍스트 추가:
+briefing-lead 의 lead\_\*.md 에서 신규 종목·ETF 가 제시되면, 본 에이전트가 자동으로 다음 텍스트 추가:
 
 ```html
 <p class="highlight">→ <code>/종목분석 {티커}</code> 명령으로 심층 분석 가능</p>
@@ -424,20 +442,20 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 
 ## 절대 금지 사항
 
-| # | 금지 |
-|---|---|
-| 1 | ❌ briefing-lead 가 작성하지 않은 새 사실·수치 추가 |
-| 2 | ❌ 매수·매도·목표가·손절가 표현 (briefing-lead 의 텍스트만 변환) — **단 template=user_portfolio_v2 는 예외 (강력 처방 모드, 정책)** |
-| 3 | ❌ 푸터(명령어 가이드) 누락 |
-| 4 | ❌ 주의사항(disclaimer) 누락 — **단 template=user_portfolio_v2 는 예외 (면책 의도적 제거)** |
-| 5 | ❌ 13F 인용 시 경고 박스 누락 |
-| 6 | ❌ debate-card 또는 contrarian-card 시각 변환 누락 (briefing-lead 가 lead_*.md 에 명시했을 경우) |
-| 7 | ❌ knowledge-base/portfolio/user_portfolio.md 의 개인 데이터를 평문 노출 (template=user_portfolio, user_portfolio_v2 외) |
-| 8 | ❌ 영어 본문 |
-| 9 | ❌ 별도 .py 템플릿 파일 생성 (CSS·HTML 골격은 본 프롬프트 안에 포함) |
-| 10 | ❌ **이전 reports/briefing/*.html read [v3.15]** — 양식은 본 프롬프트 인라인 CSS 가 표준 |
-| 11 | ❌ **HTML 출력 시 Edit 분할 [v3.15]** — Write 1회 atomic 강제. Edit 으로 점진 작성 시 컨텍스트 누적 → 토큰 폭주 + 일관성 저하 |
-| 12 | ❌ **자가 검증 1회 실패 후 자체 재시도 [v3.15]** — 1회 자가 검증 실패 시 briefing-lead 에 보고 후 종료. lead 가 새 generator 재호출 (이전 컨텍스트 폐기, 동일 input → 깨끗한 출력) |
+| #   | 금지                                                                                                                                                                               |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | ❌ briefing-lead 가 작성하지 않은 새 사실·수치 추가                                                                                                                                |
+| 2   | ❌ 매수·매도·목표가·손절가 표현 (briefing-lead 의 텍스트만 변환) — **단 template=user_portfolio_v2 는 예외 (강력 처방 모드, 정책)**                                                |
+| 3   | ❌ 푸터(명령어 가이드) 누락                                                                                                                                                        |
+| 4   | ❌ 주의사항(disclaimer) 누락 — **단 template=user_portfolio_v2 는 예외 (면책 의도적 제거)**                                                                                        |
+| 5   | ❌ 13F 인용 시 경고 박스 누락                                                                                                                                                      |
+| 6   | ❌ debate-card 또는 contrarian-card 시각 변환 누락 (briefing-lead 가 lead\_\*.md 에 명시했을 경우)                                                                                 |
+| 7   | ❌ knowledge-base/portfolio/user_portfolio.md 의 개인 데이터를 평문 노출 (template=user_portfolio, user_portfolio_v2 외)                                                           |
+| 8   | ❌ 영어 본문                                                                                                                                                                       |
+| 9   | ❌ 별도 .py 템플릿 파일 생성 (CSS·HTML 골격은 본 프롬프트 안에 포함)                                                                                                               |
+| 10  | ❌ **이전 reports/briefing/\*.html read [v3.15]** — 양식은 본 프롬프트 인라인 CSS 가 표준                                                                                          |
+| 11  | ❌ **HTML 출력 시 Edit 분할 [v3.15]** — Write 1회 atomic 강제. Edit 으로 점진 작성 시 컨텍스트 누적 → 토큰 폭주 + 일관성 저하                                                      |
+| 12  | ❌ **자가 검증 1회 실패 후 자체 재시도 [v3.15]** — 1회 자가 검증 실패 시 briefing-lead 에 보고 후 종료. lead 가 새 generator 재호출 (이전 컨텍스트 폐기, 동일 input → 깨끗한 출력) |
 
 ---
 
@@ -449,7 +467,7 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
 4. (template=model_portfolio, rebalancing, user_portfolio) **Read** `knowledge-base/portfolio/`
 5. **Read** `reference/rules_and_constraints.md` (푸터·주의사항 준비)
 6. Markdown → HTML 변환 (**Step 1에서 읽은 briefing_css.html 의 `<style>`, 테마 토글 `<div>`, `<script>` 를 그대로 삽입**):
-   - **[v3.14] 영어 표현 → 한글 강제 교체** — reference/korean_translation_rules.md 매핑 사전 따라 lead_*.md 본문의 영어 키워드를 한글로 옮김 (Strong Buy → 강력매수, Bull case → 강세 시나리오, Outperform → 시장수익률 상회 등)
+   - **[v3.14] 영어 표현 → 한글 강제 교체** — reference/korean*translation_rules.md 매핑 사전 따라 lead*\*.md 본문의 영어 키워드를 한글로 옮김 (Strong Buy → 강력매수, Bull case → 강세 시나리오, Outperform → 시장수익률 상회 등)
    - Markdown 헤더 → `<h2>`, `<h3>`
    - Markdown 표 → `<table>`
    - blockquote `> 💜 debate-card` → `<div class="debate-card">`
@@ -529,7 +547,7 @@ briefing-lead 의 lead_*.md 에서 신규 종목·ETF 가 제시되면, 본 에�
     - 시나리오 트리 (template=global_intelligence): `class="scenario-tree"` 존재
     - 9개 섹션 + .strong-buy + .metric-grid (template=user_portfolio_v2)
 
-11. 파일 크기 + 줄 수 + 자가 검증 결과(PASS/FAIL 항목) 출력 (briefing-lead 가 받음)
+12. 파일 크기 + 줄 수 + 자가 검증 결과(PASS/FAIL 항목) 출력 (briefing-lead 가 받음)
 
 ## 한글 파일 출력 시 주의
 
