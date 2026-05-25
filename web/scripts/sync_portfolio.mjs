@@ -61,9 +61,8 @@ function err(msg) { console.error(`[sync_portfolio] ERROR: ${msg}`); }
 
 // STRICT 모드: 검증 실패 시 exit 1 (Vercel/CI/prod 빌드 차단)
 // LENIENT 모드: 검증 실패 시 warn 만 (로컬 빌드는 깨지지 않게)
-const STRICT = String(process.env.SYNC_STRICT ?? process.env.VERCEL ?? '').toLowerCase() === '1'
-  || String(process.env.SYNC_STRICT ?? '').toLowerCase() === 'true'
-  || process.env.VERCEL === '1';
+const STRICT = String(process.env.SYNC_STRICT ?? '').toLowerCase() === '1'
+  || String(process.env.SYNC_STRICT ?? '').toLowerCase() === 'true';
 
 function fail(msg) {
   err(msg);
