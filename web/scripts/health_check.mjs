@@ -39,9 +39,8 @@ loadEnv(path.resolve(WEB_DIR, '.env.local'));
 
 const URL = process.env.PUBLIC_SUPABASE_URL;
 const KEY = process.env.SUPABASE_SERVICE_KEY;
-const STRICT = String(process.env.SYNC_STRICT ?? '').toLowerCase() === '1'
-  || String(process.env.SYNC_STRICT ?? '').toLowerCase() === 'true'
-  || process.env.VERCEL === '1';
+const STRICT = String(process.env.HEALTH_STRICT ?? '').toLowerCase() === '1'
+  || String(process.env.HEALTH_STRICT ?? '').toLowerCase() === 'true';
 
 const log = (msg) => console.log(`[health_check] ${msg}`);
 const warn = (msg) => console.warn(`[health_check] WARN: ${msg}`);

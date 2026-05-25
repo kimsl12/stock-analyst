@@ -132,10 +132,14 @@ async function upsertPortfolio(sb, userId, parsed) {
   const { error: dErr } = await sb.from('holdings').delete().eq('portfolio_id', portfolioId);
   if (dErr) throw new Error(`holdings delete: ${dErr.message}`);
 
-  const holdingsPayload = parsed.holdings.map((h) => ({ ...h, portfolio_id: portfolioId, updated_at: nowIso }));
+  const rawPayload = parsed.holdings.map((h) => ({ ...h, portfolio_id: portfolioId, updated_at: nowIso }));
+  // 같은 ticker 중복 제거 (현금 등 — 마지막 항목 우선)
+  const deduped = new Map();
+  for (const h of rawPayload) deduped.set(h.ticker, h);
+  const holdingsPayload = [...deduped.values()];
   if (holdingsPayload.length > 0) {
-    const { error } = await sb.from('holdings').upsert(holdingsPayload, { onConflict: 'portfolio_id,ticker' });
-    if (error) throw new Error(`holdings upsert: ${error.message}`);
+    const { error } = await sb.from('holdings').insert(holdingsPayload);
+    if (error) throw new Error(`holdings insert: ${error.message}`);
   }
   return { portfolioId, n: holdingsPayload.length };
 }
