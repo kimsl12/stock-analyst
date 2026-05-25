@@ -142,6 +142,9 @@ read_owners: [briefing-lead, briefing-report-generator, global-macro-analyst]
 | 2026-05-07 | evening | 종목 | AMD | Bull (데이터센터 GPU +42% YoY) | 중기 | 중간~높음 | Q1 EPS $0.96 Beat (컨센 $0.93). MI300X 수요 강세. AI capex 사이클 지속하는 한 구조적 수혜 [Seeking Alpha] | reports/briefing/evening_20260507.html | 진행중 |
 | 2026-05-07 | evening | 이벤트 | 이란 핵 합의 — 발표 vs 이행 간극 40% 불발 확률 | 분기점 (Bear 40%) | 단기~중기 | 중간 | Trump 일방 발표, 이란측 미확인. 합의 불발 시 WTI $100+ 급등 + 시장 급락. 호르무즈 기뢰 제거 최소 6개월 [Reuters, geopolitics.md] | reports/briefing/evening_20260507.html | 진행중 |
 | 2026-05-07 | evening | 이벤트 | ISM 서비스 가격 70.7% — 에너지와 무관한 Core 인플레 시한폭탄 | Bear (인플레 상방) | 단기~중기 | 중간 | 2022년 이후 최고. 에너지 CPI 하락이 헤드라인을 가리겠으나 Core PCE 3.2%는 쉽게 내려오지 않을 것. 5/14 CPI 체크포인트 [us_economy.md, FRED] | reports/briefing/evening_20260507.html | 진행중 |
+| 2026-05-20 | evening | 이벤트 | FOMC 4월 의사록 — 매파 65% vs 비둘기 서프라이즈 35% | Bear (매파 우세) | 단기 | 중간~높음 | 8-4 분열 내부 토론 공개. 10Y 4.67%(16개월래 최고) + CPI 3.8% 환경. 매파 확정 시 10Y 4.70%+, 비둘기 시 4.55% [economic_calendar.md, TheStreet] | reports/briefing/evening_20260520.html | 진행중 |
+| 2026-05-20 | evening | 이벤트 | NVIDIA Q1 FY27 실적(5/21) — AI CapEx 최종 검증 | 분기점 (Beat 시 Bull) | 단기 | 높음 | 컨센서스 매출 ~$43B(+58% YoY), EPS ~$0.90~0.95. Beat 시 SOXX +5~8%, Miss 시 AI 내러티브 균열 [FactSet, economic_calendar.md] | reports/briefing/evening_20260520.html | 진행중 |
+| 2026-05-20 | evening | 이벤트 | KOSDAQ -5.42% 대참사 — 아시아 소형주 유동성 경색 첫 경보 | Bear (EM 유동성 위기 초기) | 단기 | 중간 | 일일 낙폭 2026년 최대. 금리 급등+신용융자 반대매매. 동남아·대만 확산 시 EM 위기 징후 [KRX] | reports/briefing/evening_20260520.html | 진행중 |
 
 ---
 
