@@ -135,8 +135,8 @@ async function upsertPortfolio(sb, userId, parsed) {
 
   const holdingsPayload = parsed.holdings.map((h) => ({ ...h, portfolio_id: portfolioId, updated_at: nowIso }));
   if (holdingsPayload.length > 0) {
-    const { error } = await sb.from('holdings').insert(holdingsPayload);
-    if (error) throw new Error(`holdings insert: ${error.message}`);
+    const { error } = await sb.from('holdings').upsert(holdingsPayload, { onConflict: 'portfolio_id,ticker' });
+    if (error) throw new Error(`holdings upsert: ${error.message}`);
   }
   return { portfolioId, n: holdingsPayload.length };
 }
