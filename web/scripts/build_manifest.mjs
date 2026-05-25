@@ -442,26 +442,38 @@ async function main() {
   //   - sort_key = git commit unix time (없으면 filename YYYYMMDD 자정)
   //   - 같은 sort_key (= 같은 commit, 묶음분석): type rank DESC (evening > morning) 로 안정화
   //   - 그래도 동일하면 filename ASC (티커 알파벳)
-  const TYPE_TIME_RANK = {
-    morning: 1,
-    weekly: 2,
-    model_portfolio: 3,
-    rebalancing: 4,
-    user_portfolio: 5,
-    global_intelligence: 6,
-    crypto: 7,
-    evening: 8,            // 저녁이 가장 늦은 시점
-    research: 10,          // [v3.17] L3 분기 Deep Dive — 같은 commit 시 briefing 위 (영구 가치)
-    daily_briefing: 0,     // legacy
+  // [v3.25] 브리핑 sort_key 보정: 파일명 날짜 + 타입별 고정 시각 (KST)
+  // 소급 생성 파일의 commit time이 실제 날짜와 다른 문제 해결.
+  // 브리핑은 항상 "해당 날짜의 발행 시각"으로 정렬해야 자연스러움.
+  const TYPE_HOUR_KST = {
+    morning: 9,             // KST 09:00
+    weekly: 12,             // KST 12:00
+    model_portfolio: 14,    // KST 14:00
+    rebalancing: 15,        // KST 15:00
+    user_portfolio: 16,     // KST 16:00
+    performance_review: 17, // KST 17:00
+    global_intelligence: 18,// KST 18:00
+    crypto: 19,             // KST 19:00
+    evening: 20,            // KST 20:00
+    daily_briefing: 8,      // legacy
   };
+  for (const item of items) {
+    const dateMatch = /(\d{8})/.exec(item.filename);
+    const hourKST = TYPE_HOUR_KST[item.type];
+    if (dateMatch && hourKST != null) {
+      const ds = dateMatch[1];
+      const y = ds.slice(0,4), mo = ds.slice(4,6), d = ds.slice(6,8);
+      const utcHour = hourKST - 9;
+      const epoch = Math.floor(new Date(`${y}-${mo}-${d}T${String(utcHour).padStart(2,'0')}:00:00Z`).getTime() / 1000);
+      if (Number.isFinite(epoch)) item.sort_key = epoch;
+    }
+  }
+
   items.sort((a, b) => {
     const sa = a.sort_key ?? 0;
     const sb = b.sort_key ?? 0;
-    if (sa !== sb) return sb - sa;                    // 1차: commit time DESC
-    const ra = TYPE_TIME_RANK[a.type] ?? -1;
-    const rb = TYPE_TIME_RANK[b.type] ?? -1;
-    if (ra !== rb) return rb - ra;                    // 2차: type rank DESC
-    return a.filename.localeCompare(b.filename);      // 3차: filename ASC (안정 tie-breaker)
+    if (sa !== sb) return sb - sa;                    // 1차: 날짜+시각 DESC
+    return a.filename.localeCompare(b.filename);      // 2차: filename ASC
   });
 
   // [v3.14] 같은 (type, ticker, name) stock_analysis/etf 는 최신 1개만 manifest 등재
