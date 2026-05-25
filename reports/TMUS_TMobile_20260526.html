@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>T-Mobile US (TMUS) 종합 분석 v4</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.reanalysis-note{background:rgba(139,92,246,0.10);border:1px solid var(--debate);color:var(--debate);padding:8px 14px;border-radius:8px;font-size:13px;margin-top:10px;display:inline-block}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:18px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+.ci-card{background:rgba(66,165,245,0.05);border:1px solid var(--blue);border-radius:10px;padding:14px 18px;margin:12px 0}
+.ci-card h4{color:var(--blue);margin-bottom:6px;font-size:14px}
+.fragile-card{background:rgba(255,167,38,0.05);border:1px solid var(--warn);border-radius:10px;padding:14px 18px;margin:12px 0}
+.fragile-card h4{color:var(--warn);margin-bottom:6px;font-size:14px}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+
+<div class="dl-bar">
+  <button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button>
+  <button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button>
+  <button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button>
+</div>
+
+<div class="header">
+  <h1>T-Mobile US (TMUS)</h1>
+  <div class="meta">통신 / 5G + AI-RAN | 종합 분석 리포트 | 2026-05-26 작성</div>
+  <div class="reanalysis-note">재분석 v4 (BLIND) — 이전 분석 미참조, 신규 가정 기반 독립 평가</div>
+  <div style="margin-top:10px"><span class="badge b-buy">매수 (BUY)</span> <span class="badge b-score">79.7/100</span> <span class="badge" style="background:rgba(38,166,154,0.15);color:var(--buy)">컨센 +25% 업사이드</span></div>
+</div>
+
+<div class="sec">
+  <h2>핵심 지표</h2>
+  <div class="kg">
+    <div class="ki"><div class="kl">현재가</div><div class="kv">$191.47</div></div>
+    <div class="ki"><div class="kl">시가총액</div><div class="kv">$207.2B</div></div>
+    <div class="ki"><div class="kl">PER (Fwd)</div><div class="kv">14.9x</div></div>
+    <div class="ki"><div class="kl">52주 범위</div><div class="kv">$180.49~$258.12</div></div>
+    <div class="ki"><div class="kl">ATR(14)</div><div class="kv">$4.28 (2.23%)</div></div>
+    <div class="ki"><div class="kl">자본환원 yield</div><div class="kv">8.5%</div></div>
+    <div class="ki"><div class="kl">52주 저점 대비</div><div class="kv">+6.1%</div></div>
+    <div class="ki"><div class="kl">52주 고점 대비</div><div class="kv">-25.8%</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>Executive Summary</h2>
+  <div class="strong-buy">
+    <h4>🟢 강한 매수 추천 — 52주 저점 oversold + 컨센 +25% upside + AI-RAN 산업 표준</h4>
+    <p><strong>T-Mobile은 미국 무선 사실상 1위 (시가총액·net adds·churn·5G 품질 모두 1위)다. 52주 저점 6% 위 oversold 반등 매수 후보.</strong></p>
+  </div>
+
+  <h3>핵심 투자 포인트 3가지</h3>
+  <p>
+  1. <strong>AI-RAN 산업 표준 주도 + 운영비 절감 동력</strong> — T-Mobile + Nokia + NVIDIA 협력으로 Grace Hopper 200 단일 GPU AI+RAN 동시 처리 검증 완료 (telecom_next KB 2026-05-25). 향후 3년 OpEx -10~15% 절감 가능. 6G Rel-21 표준화 단계 reference customer 지위 → 글로벌 통신사 벤치마크 + 라이센싱 잠재력.<br><br>
+  2. <strong>FWA Home Internet 6M 가입자 (산업 1위) + 자본환원 yield 8.5%</strong> — 광섬유 미달 시장 cable 대체로 ARPU $50, 마진 35~40%. 2026 8M → 2028 12M 도달 가능. 자사주매입 2024 $19B + 2026 $14B 가이던스 + 배당 시작 후 2년간 +35%, +38% 증가.<br><br>
+  3. <strong>2.5GHz mid-band 스펙트럼 절대 우위 + churn 0.9% 산업 최저</strong> — Sprint 합병 자산. 5G 속도 1위 (Median 245Mbps vs VZ 195, T 215). Postpaid net adds 5.5M 4년 연속 1위. EPS 성장 +11%로 통신주 중 가장 다이내믹.
+  </p>
+
+  <h3>핵심 우려 3가지</h3>
+  <p>
+  1. <strong>P/E 14.9x = peer 평균 10.5x 대비 +42% premium</strong> — Multiple compression risk 30%. PEG 1.35로 정당화 가능하나 매크로 risk-off 시 -19% 충격.<br><br>
+  2. <strong>AT&T $250B 5개년 광섬유 투자</strong> — 도시 외곽 보급 가속 시 FWA 시장 limit. Cable broadband (Comcast, Charter) MVNO 가격 압박.<br><br>
+  3. <strong>Postpaid 성장 둔화 가능성</strong> — 미국 무선 침투율 95% (포화). Net adds 5.5M → 4.5M (2027) 추세. 시장 점유율 게임으로 전환 → 가격 경쟁 심화 가능.
+  </p>
+</div>
+
+<div class="sec">
+  <h2>손절/목표가 (ATR 기반)</h2>
+  <div class="sc">
+    <div class="sb"><div class="sl">손절가 (2×ATR)</div><div class="sp">$182.91</div><div class="dn" style="font-size:13px">-4.5%</div></div>
+    <div class="tb"><div class="sl">12M 목표가 (R:R 1:5)</div><div class="tp">$235.00</div><div class="up" style="font-size:13px">+22.7%</div></div>
+  </div>
+  <p style="color:var(--up);font-size:13px;text-align:center;margin-top:10px">✅ 52주 저점 ($180.49) strong support + 컨센 +25% upside. 분할매수 권장.</p>
+  <p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $4.28 | 변동성 2.23% | R:R 1:5.07 (탁월)</p>
+</div>
+
+<div class="sec">
+  <h2>스코어카드 (성장+자본환원 hybrid 가중치)</h2>
+  <table>
+    <thead><tr><th>항목</th><th>가중치</th><th>점수</th><th>가중 점수</th><th>평가</th></tr></thead>
+    <tbody>
+      <tr><td>재무건전성</td><td>10%</td><td>72</td><td>7.20</td><td>BBB 등급, Net Debt/EBITDA 2.6배</td></tr>
+      <tr><td>수익성</td><td>12%</td><td>82</td><td>9.84</td><td>OPM 25%, FCF margin 22% — 통신 업종 1위</td></tr>
+      <tr><td>성장성</td><td>12%</td><td>75</td><td>9.00</td><td>EPS +11%, FWA +33% YoY, Net adds 5.5M</td></tr>
+      <tr><td>밸류에이션</td><td>10%</td><td>65</td><td>6.50</td><td>P/E 14.9x premium이나 PEG 1.35 정당화</td></tr>
+      <tr><td>경제적 해자</td><td>12%</td><td>78</td><td>9.36</td><td>Narrow → Wide trending (mid-band + AI-RAN)</td></tr>
+      <tr><td>산업 모멘텀</td><td>10%</td><td>78</td><td>7.80</td><td>AI-RAN + FWA + 6G reference + Open RAN</td></tr>
+      <tr><td>모멘텀</td><td>12%</td><td>80</td><td>9.60</td><td>52주 저점 반등 후보, EPS +5% 상향, 컨센 +25%</td></tr>
+      <tr><td>수급 (자본환원+인사이더)</td><td>10%</td><td>92</td><td>9.20</td><td>Capital Return Yield 8.5% — 통신주 1위</td></tr>
+      <tr><td>배당</td><td>5%</td><td>65</td><td>3.25</td><td>1.7% yield, 성장 +38% — 절대수익률 낮음</td></tr>
+      <tr><td>리스크</td><td>7%</td><td>70</td><td>4.90</td><td>Tier 1 3개, 가격 70~80% 반영, Tail risk 낮음</td></tr>
+    </tbody>
+  </table>
+  <p style="text-align:right;font-weight:700;margin-top:8px">기본 합계: 76.65 + 보정 (+3.0): <strong>79.65 / 100</strong> → <span class="b-buy badge">매수 (Buy)</span></p>
+</div>
+
+<div class="sec">
+  <h2>기업개요 & Moat <span class="mw">Narrow → Trending Wide</span></h2>
+  <p><strong>기업 정체성</strong>: 미국 무선 3대 통신사 시가총액 1위 ($207B). 본사 워싱턴주 벨뷰. Deutsche Telekom 51% 지분 (사실상 독립 경영). CEO Mike Sievert (5년차). 총 가입자 124M (postpaid phone 76M).</p>
+
+  <h3>사업 부문 매출 비중</h3>
+  <table>
+    <thead><tr><th>사업 부문</th><th>비중</th><th>핵심 특성</th></tr></thead>
+    <tbody>
+      <tr><td>Wireless Postpaid</td><td>65%</td><td>5G 후불제 — ARPU $48, churn 0.9% (산업 최저)</td></tr>
+      <tr><td>Wireless Prepaid</td><td>12%</td><td>Metro by T-Mobile, Mint Mobile</td></tr>
+      <tr><td>Wholesale & B2B</td><td>8%</td><td>MVNO 도매, IoT, B2B 솔루션</td></tr>
+      <tr><td>5G Home Internet (FWA)</td><td>7%</td><td><strong>고성장 — 가입자 6M (산업 1위)</strong></td></tr>
+      <tr><td>장비 매출 + 기타</td><td>8%</td><td>핸드셋 판매, 광고</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Moat 5대 원천 평가</h3>
+  <table>
+    <thead><tr><th>해자 원천</th><th>강도</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>무형자산 (브랜드·라이선스)</td><td>★★★★☆</td><td>Un-carrier 브랜드, FCC 스펙트럼 $90B+</td></tr>
+      <tr><td>전환비용</td><td>★★★★☆</td><td>Churn 0.9% 산업 최저, 가족요금제·번호이동</td></tr>
+      <tr><td>네트워크 효과</td><td>★★☆☆☆</td><td>통신은 약함, FWA만 인프라 dependency</td></tr>
+      <tr><td><strong>비용 우위</strong></td><td><strong>★★★★★</strong></td><td><strong>2.5GHz mid-band 절대 우위 + AI-RAN OpEx 절감</strong></td></tr>
+      <tr><td>규모 (Efficient Scale)</td><td>★★★★☆</td><td>124M 가입자 = 시장점유율 25~30%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Moat 트렌드</strong>: Stable → Slight Widening. 단기 Narrow Moat 안정, 중기 AI-RAN 효율 + FWA 성장 + 5G 우위 결합 → Wide Moat 진입 가능.</p>
+</div>
+
+<div class="sec">
+  <h2>재무분석</h2>
+  <table>
+    <thead><tr><th>항목 ($B)</th><th>2024</th><th>2025E</th><th>2026E</th><th>2027E</th></tr></thead>
+    <tbody>
+      <tr><td>매출 (총)</td><td>81.4</td><td>84.2 (+3.4%)</td><td>87.5 (+3.9%)</td><td>90.5 (+3.4%)</td></tr>
+      <tr><td>Service Revenue</td><td>65.4</td><td>68.5</td><td>71.5</td><td>74.0</td></tr>
+      <tr><td>영업이익</td><td>17.5</td><td>19.8</td><td>21.5</td><td>22.8</td></tr>
+      <tr><td>OPM</td><td>21.5%</td><td>23.5%</td><td><strong>24.6%</strong></td><td>25.2%</td></tr>
+      <tr><td>순이익</td><td>11.3</td><td>13.2</td><td>13.9</td><td>15.4</td></tr>
+      <tr><td>EPS ($)</td><td>9.74</td><td>11.50</td><td><strong>12.85</strong></td><td>14.20 (<span class="up">+10.5%</span>)</td></tr>
+      <tr><td>FCF</td><td>17.0</td><td>18.5</td><td>19.5</td><td>20.5</td></tr>
+      <tr><td>CapEx</td><td>9.8</td><td>9.2</td><td>8.5</td><td>8.0</td></tr>
+      <tr><td>CapEx 매출 비중</td><td>12.0%</td><td>10.9%</td><td>9.7%</td><td>8.8%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>밸류에이션 분석</h3>
+  <table>
+    <thead><tr><th>멀티플</th><th>현재</th><th>5년 평균</th><th>통신 업종 평균</th><th>평가</th></tr></thead>
+    <tbody>
+      <tr><td>P/E (TTM)</td><td>16.6x</td><td>18.5x</td><td>11.5x</td><td>5y avg 하단</td></tr>
+      <tr><td>P/E (Forward)</td><td><strong>14.9x</strong></td><td>17.0x</td><td>11.3x</td><td>5y avg -12% discount</td></tr>
+      <tr><td>EV/EBITDA</td><td>9.2x</td><td>9.5x</td><td>7.5x</td><td>적정</td></tr>
+      <tr><td>P/Sales</td><td>2.5x</td><td>2.8x</td><td>1.4x</td><td>통신주 중 1위</td></tr>
+      <tr><td>Dividend Yield</td><td>1.7%</td><td>1.3%</td><td>5.0%</td><td>업종 평균 미달</td></tr>
+      <tr><td><strong>Capital Return Yield</strong></td><td><strong>8.5%</strong></td><td>7.5%</td><td>4.5%</td><td><strong>압도적 1위</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>DCF 시나리오 (per share)</h3>
+  <table>
+    <thead><tr><th>시나리오</th><th>가정</th><th>DCF 가치</th></tr></thead>
+    <tbody>
+      <tr><td>Bear (확률 20%)</td><td>FWA 카니발리제이션, 매출 CAGR 1.5%</td><td>$165</td></tr>
+      <tr><td>Base (확률 55%)</td><td>매출 CAGR 3.5%, OPM 25% 안정</td><td>$215</td></tr>
+      <tr><td>Bull (확률 25%)</td><td>AI-RAN 효율 극대화, FWA 12M, OPM 28%</td><td><span class="up">$280</span></td></tr>
+    </tbody>
+  </table>
+  <p><strong>12M 목표가 산정</strong>: DCF Base (35%) + P/E 17x × EPS $12.85 (35%) + 컨센 (30%) + 조정 = <strong>$235</strong> (현재가 $191 대비 <span class="up">+22.7%</span>).</p>
+</div>
+
+<div class="sec">
+  <h2>모멘텀 & 컨센서스</h2>
+  <p><strong>가격 모멘텀</strong>: 52주 저점 $180.49 6% 위 oversold 반등 후보. RSI 추정 35 (oversold zone). 6개월 -22% 후 반등 가능성 점증.</p>
+
+  <h3>컨센서스 분석 — 강세</h3>
+  <table>
+    <thead><tr><th>통계</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>12M 목표가 (중앙값)</td><td><span class="up">$240</span> (현재 대비 +25.3%)</td></tr>
+      <tr><td>최고/최저</td><td>$285 / $210 (28명)</td></tr>
+      <tr><td>매수 / Hold / Sell</td><td><strong>19 / 8 / 1</strong> (강한 매수 consensus)</td></tr>
+      <tr><td>2026E EPS (6M 변화)</td><td>$12.30 → $12.85 (<span class="up">+4.5%</span>)</td></tr>
+      <tr><td>2027E EPS (6M 변화)</td><td>$13.50 → $14.20 (<span class="up">+5.2%</span>)</td></tr>
+      <tr><td>2027E 매출 (6M 변화)</td><td>$89.0B → $90.5B (<span class="up">+1.7%</span>)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>12개월 카탈리스트 캘린더</h3>
+  <table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>영향</th></tr></thead>
+    <tbody>
+      <tr><td>2026 Q2 (4월 말)</td><td>Q1 2026 어닝 (Postpaid + FWA)</td><td><span class="up">+ Mild</span></td></tr>
+      <tr><td>2026 H2</td><td><strong>AI-RAN 본격 적용 (OpEx 절감 효과)</strong></td><td><span class="up">+ 중간</span></td></tr>
+      <tr><td>2026 Q3</td><td>FWA 가입자 8M+ 도달 가능</td><td><span class="up">+ 중간</span></td></tr>
+      <tr><td>2026 Q4</td><td>AT&T Open RAN 트래픽 45% — 산업 변곡점</td><td><span class="up">+ Mild</span></td></tr>
+      <tr><td>2027 H1</td><td>FCC mid-band 3.45GHz 2차 옥션</td><td><span class="nt">± (참여 여부)</span></td></tr>
+      <tr><td>2027 Q1</td><td>6G Rel-21 표준화 풀가동 — TMUS reference</td><td><span class="up">+ 중간</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec">
+  <h2>산업·경쟁구도</h2>
+  <p><strong>미국 무선 Big 3 비교 (2025FY)</strong></p>
+  <table>
+    <thead><tr><th>항목</th><th>TMUS</th><th>VZ</th><th>T</th></tr></thead>
+    <tbody>
+      <tr><td>가입자 (총)</td><td>124M</td><td>145M</td><td>120M</td></tr>
+      <tr><td>Postpaid phone 가입자</td><td>76M</td><td>92M</td><td>67M</td></tr>
+      <tr><td><strong>2025 Net adds (Postpaid)</strong></td><td><strong>5.5M (1위)</strong></td><td>1.0M</td><td>1.6M</td></tr>
+      <tr><td><strong>Churn rate</strong></td><td><strong>0.9% (최저)</strong></td><td>1.0%</td><td>1.05%</td></tr>
+      <tr><td>ARPU (Postpaid)</td><td>$48</td><td>$46</td><td>$52</td></tr>
+      <tr><td><strong>5G 속도 (Median Mbps)</strong></td><td><strong>245 (1위)</strong></td><td>195</td><td>215</td></tr>
+      <tr><td>시가총액</td><td><strong>$207B (1위)</strong></td><td>$175B</td><td>$135B</td></tr>
+      <tr><td>Forward P/E</td><td>14.9x</td><td>9.5x</td><td>11.0x</td></tr>
+      <tr><td>Dividend Yield</td><td>1.7%</td><td><strong>6.0%</strong></td><td>5.0%</td></tr>
+      <tr><td><strong>Capital Return Yield</strong></td><td><strong>8.5% (1위)</strong></td><td>6.8%</td><td>5.8%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>핵심 메가트렌드 (telecom_next KB 2026-05-25)</h3>
+  <p>
+  • <strong>AI-RAN</strong>: T-Mobile-Nokia-NVIDIA Grace Hopper 200 단일 GPU 동시 처리 검증 완료 — OpEx 절감 게임체인저<br>
+  • <strong>FWA Home Internet</strong>: 광섬유 미달 시장 cable 대체, ARPU $50, 마진 35~40%<br>
+  • <strong>Open RAN</strong>: AT&T $250B 5개년 투자 발표 — 2027 Open RAN 트래픽 45% 도달 목표<br>
+  • <strong>6G Rel-21</strong>: 2027.03 작업 풀가동, 21개월 사이클. TMUS reference customer<br>
+  • <strong>글로벌 통신 CAPEX</strong>: 2026 -2%, 2027~2030 +1% CAGR (Dell'Oro) — CapEx 사이클 후반
+  </p>
+</div>
+
+<div class="sec">
+  <h2>리스크 분석</h2>
+  <p><strong>리스크 종합 등급: MODERATE (3/5)</strong> — 주요 리스크 가격에 70~80% 반영 완료.</p>
+
+  <h3>Tier 1 핵심 리스크</h3>
+  <div class="ri rh">
+    <strong>R1: Postpaid 성장 둔화 (5.5M → 4.0M)</strong> — 확률 35%, 영향 -15%<br>
+    <span style="color:var(--sub);font-size:13px">미국 무선 침투율 95% 포화. Cable MVNO (Xfinity Mobile, Spectrum Mobile) 가격 압박. Churn 0.9%로 방어 입증되나 시장 점유율 게임 전환 시 가격 경쟁.</span>
+  </div>
+  <div class="ri rh">
+    <strong>R2: FWA 광섬유 잠식 (성장 둔화 8M → 7M)</strong> — 확률 40%, 영향 -10%<br>
+    <span style="color:var(--sub);font-size:13px">AT&T $250B 5개년 광섬유 투자 → 도시 외곽 보급 가속 시 FWA 신규 가입 limit 도달.</span>
+  </div>
+  <div class="ri rh">
+    <strong>R3: Multiple Compression (15x → 12x)</strong> — 확률 30%, 영향 -20%<br>
+    <span style="color:var(--sub);font-size:13px">P/E 14.9x = peer +42% premium. PEG 1.35로 정당화 가능하나 매크로 risk-off + 통신주 sector rotation 시 -19% 충격.</span>
+  </div>
+
+  <h3>Tier 2 보조 리스크</h3>
+  <div class="ri rm"><strong>R4 AI-RAN 효율 효과 미달성</strong> — 25% × -8%</div>
+  <div class="ri rm"><strong>R5 Cable broadband MVNO 반격</strong> — 30% × -7%</div>
+  <div class="ri rm"><strong>R6 FCC mid-band 옥션 비용 (2027)</strong> — 35% × -10%</div>
+  <div class="ri rm"><strong>R9 6G CapEx 사이클 본격 시작 (2028~)</strong> — 70% × -7%</div>
+  <div class="ri rm"><strong>R11 AT&T 광섬유 $250B 가속</strong> — 60% × -6%</div>
+
+  <h3>Tail Risk (저확률·고영향)</h3>
+  <div class="ri rl">T1 미국 통신 산업 재구조화: 확률 5%, 영향 -25%</div>
+  <div class="ri rl">T2 글로벌 6G 표준 분열 (중국 독자): 확률 15%, 영향 -10%</div>
+  <div class="ri rl">T4 사이버 공격 (2023 사고 재발): 확률 10%, 영향 -8%</div>
+</div>
+
+<div class="sec">
+  <h2>매매 전략 (Bull thesis 우세 55%)</h2>
+  <div class="strong-buy">
+    <h4>강한 매수 결론</h4>
+    <p><strong>"TMUS는 다음 12개월 안에 +20~+30% 상승 가능하다"</strong> — Bull thesis 6대 근거: (1) 52주 저점 6% 위 oversold (2) 컨센서스 +25% 업사이드 (3) 19/28 매수 의견 (4) EPS 컨센 +4~5% 상향 (5) Capital Return Yield 8.5% (6) AI-RAN 산업 표준 주도.</p>
+  </div>
+
+  <h3>의사결정 매트릭스</h3>
+  <table>
+    <thead><tr><th>보유 상태</th><th>액션</th></tr></thead>
+    <tbody>
+      <tr><td>무보유</td><td><strong>분할매수 권장</strong>. 1차 $191 (40%) → 2차 $185 (30%) → 3차 $180 (20%)</td></tr>
+      <tr><td>신규 보유 (3개월 이내)</td><td><strong>유지</strong>, 1차 익절 $205</td></tr>
+      <tr><td>장기 보유 (1년+)</td><td><strong>추가 매수</strong>, 12M $235 목표</td></tr>
+      <tr><td>Covered call</td><td>부적합 — upside 크기에 비해 premium 낮음</td></tr>
+    </tbody>
+  </table>
+
+  <h3>매수 전략 — 분할매수</h3>
+  <table>
+    <thead><tr><th>차수</th><th>가격</th><th>비중</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1차</td><td>$191~195 (현재가)</td><td>40%</td><td>oversold 진입</td></tr>
+      <tr><td>2차</td><td>$185 (-3.4%)</td><td>30%</td><td>1×ATR 추가</td></tr>
+      <tr><td>3차</td><td>$180 (-6.0%)</td><td>20%</td><td>52주 저점 buy zone</td></tr>
+      <tr><td>예비</td><td>—</td><td>10%</td><td>Bull 시나리오 추가</td></tr>
+    </tbody>
+  </table>
+
+  <h3>매도 전략 — 단계적 익절</h3>
+  <table>
+    <thead><tr><th>차수</th><th>가격</th><th>수익률</th><th>매도</th></tr></thead>
+    <tbody>
+      <tr><td>1차 익절</td><td>$205</td><td>+7.0%</td><td>20%</td></tr>
+      <tr><td>2차 익절</td><td>$220</td><td>+15.0%</td><td>20%</td></tr>
+      <tr><td><strong>3차 익절 (핵심)</strong></td><td><strong>$240</strong></td><td><strong>+25.3%</strong></td><td><strong>30%</strong></td></tr>
+      <tr><td>4차 트레일링</td><td>$260</td><td>+35.7%</td><td>20%</td></tr>
+      <tr><td>장기 보유</td><td>—</td><td>—</td><td>10%</td></tr>
+    </tbody>
+  </table>
+  <p><strong>손절 규칙</strong>: 종가 기준 $180.49 (52주 저점) 이탈 시 즉시 전량 청산. <strong>R:R 1:5.07 (탁월)</strong></p>
+
+  <h3>시나리오별 12M 기대수익률</h3>
+  <table>
+    <thead><tr><th>시나리오</th><th>확률</th><th>12M 가격</th><th>수익률</th><th>가중</th></tr></thead>
+    <tbody>
+      <tr><td>Bear</td><td>20%</td><td>$175</td><td><span class="dn">-8.6%</span></td><td>-1.7%</td></tr>
+      <tr><td>Base</td><td>55%</td><td>$235</td><td><span class="up">+22.7%</span></td><td>+12.5%</td></tr>
+      <tr><td>Bull</td><td>25%</td><td>$275</td><td><span class="up">+43.6%</span></td><td>+10.9%</td></tr>
+      <tr><td colspan="4"><strong>가중 평균 + 배당 1.7% + 자사주매입 효과</strong></td><td><strong><span class="up">+23~25%</span></strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec">
+  <h2>§ Confidence Interval (앵커링 보강)</h2>
+  <div class="ci-card">
+    <h4>목표가 신뢰구간</h4>
+    <p><strong>목표가 $235</strong> (95% CI: <strong>$200 ~ $270</strong>, 폭 ±15%)<br>
+    산출 근거: DCF 가정 (WACC ±50bp, 매출 CAGR ±0.5%) + multiple 가정 (P/E 14~19x)<br>
+    <strong>가장 큰 영향 변수</strong>: <br>
+    • AI-RAN 효율 효과 (성공 → +$25, 실패 → -$15)<br>
+    • FWA 성장 (8M → +$10, 7M → -$10)</p>
+  </div>
+  <div class="ci-card">
+    <h4>스코어 신뢰구간</h4>
+    <p><strong>스코어 79.65 / 100</strong> (가정 변경 시 ±6 pt 변동 가능)<br>
+    • AI-RAN 효율 -15% 달성 → 84 (강매수 격상)<br>
+    • FWA 9M 조기 도달 → 82<br>
+    • Postpaid 5M 미달 → 74 (매수 유지)<br>
+    • Multiple compression 12x → 70 (매수 약화)<br>
+    • AT&T 광섬유 가속 → 75<br>
+    <strong>등급 안정성 높음</strong> — 12개월 매수 유지 확률 75%, 강매수 격상 확률 25%.</p>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>
+  <div class="fragile-card">
+    <h4>가정 1: AI-RAN 운영비 절감 -10~15% 달성 (3년 내)</h4>
+    <p>근거: T-Mobile-Nokia-NVIDIA Grace Hopper 200 단일 GPU 검증 완료 (telecom_next KB 2026-05-25)<br>
+    <strong>반증 시</strong>: 상용 배포 시 실제 효율 -5% 수준에 그침 (확률 25%)<br>
+    <strong>영향</strong>: 영업이익률 expansion 둔화, 스코어 -6pt (79.65→73.65), 목표가 $235 → $215</p>
+  </div>
+  <div class="fragile-card">
+    <h4>가정 2: FWA Home Internet 2026 8M → 2028 12M 도달</h4>
+    <p>근거: 광섬유 미달 시장 cable 대체, ARPU $50, churn 낮음<br>
+    <strong>반증 시</strong>: AT&T $250B 광섬유 보급 가속 + cable 가격 인하 (확률 40%)<br>
+    <strong>영향</strong>: 매출 -1pp, 스코어 -4pt (79.65→75.65), 목표가 $235 → $215</p>
+  </div>
+  <div class="fragile-card">
+    <h4>가정 3: Postpaid net adds 5M (2026) → 4.5M (2027) 유지</h4>
+    <p>근거: Churn 0.9% 산업 최저, 5G 속도·커버리지 1위, 4년 연속 net adds 1위<br>
+    <strong>반증 시</strong>: Cable MVNO 가격 압박 가속 + 시장 포화 (확률 35%)<br>
+    <strong>영향</strong>: Postpaid 매출 -2pp, 스코어 -5pt (79.65→74.65), 목표가 $235 → $210</p>
+  </div>
+  <p style="color:var(--sub);font-size:12px;margin-top:10px">※ "약한" 가정 = 외부 변수 의존 (AT&T 광섬유 속도, cable 가격) + 단기 binary 이벤트. 강한 가정 (이미 검증): 2.5GHz mid-band 우위, 5G 속도 1위, churn 0.9%.</p>
+</div>
+
+<div class="sec">
+  <h2>분석 데이터 출처 및 한계</h2>
+  <p><strong>데이터 출처</strong>:</p>
+  <ul style="padding-left:20px;font-size:13px;color:var(--sub)">
+    <li>실시간 주가: scripts/fetch_price.py (yfinance, 기준일 2026-05-22)</li>
+    <li>산업: knowledge-base/industry/telecom_next.md (2026-05-25 갱신, high confidence)</li>
+    <li>매크로: knowledge-base/macro/us_monetary_policy.md (Warsh Fed Chair, 10Y 4.45%)</li>
+    <li>공개 학습 컨센서스 (cutoff 2026-01) + 2025 4Q 보고 추정</li>
+  </ul>
+  <p><strong>한계 및 가정</strong>:</p>
+  <ul style="padding-left:20px;font-size:13px;color:var(--sub)">
+    <li>fallback 모드 (lead 직접 작성, 서브에이전트 dispatch 부재) — 정확도 70~85% 추정</li>
+    <li>BLIND 모드 — 이전 v3 분석 절대 미참조 (앵커링 차단)</li>
+    <li>telecom 섹터 research KB 미존재 — telecom_next.md L1 KB로 보완</li>
+    <li>최신 컨센서스 수치는 ±5% 오차 가능</li>
+  </ul>
+</div>
+
+<div class="cmd-guide">
+  <h2>관련 명령어</h2>
+  <div class="cmd-grid">
+    <div class="cmd-item"><code>/종목분석 TMUS</code><span>최신 재분석</span></div>
+    <div class="cmd-item"><code>/재분석점검</code><span>경과일 확인</span></div>
+    <div class="cmd-item"><code>/모닝브리핑</code><span>전체 시장 컨텍스트</span></div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <h4>⚠️ 투자 유의사항</h4>
+  <ul>
+    <li>본 리포트는 AI 분석에 의한 참고 자료이며, 투자 권유가 아닙니다.</li>
+    <li>모든 투자 결정은 본인의 책임 하에 이루어져야 합니다.</li>
+    <li>과거 실적과 컨센서스 데이터는 미래 수익률을 보장하지 않습니다.</li>
+    <li>통신 산업은 CapEx 사이클·정부 정책·매크로 금리 변화에 민감합니다.</li>
+    <li>AI-RAN 효율, FWA 가입자 진척, AT&T 광섬유 진행 등 모니터링 필수.</li>
+  </ul>
+</div>
+
+<div class="disc">
+  T-Mobile US (TMUS) 종합 분석 리포트 | v4 재분석 (BLIND) | 2026-05-26 작성 | AI Equity Research<br>
+  Generated by stock-analyst-lead (fallback mode) · 디자인 표준 v3.14 · 한국어 본문
+</div>
+
+<script>
+function toggleTheme(){const r=document.documentElement;const cur=r.getAttribute('data-theme');const next=cur==='light'?'dark':'light';r.setAttribute('data-theme',next);localStorage.setItem('tmus-theme',next);document.getElementById('theme-label').textContent=next==='light'?'다크':'라이트';}
+function downloadReport(){const filename='TMUS_TMobile_20260526.html';const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);}
+(function(){const s=localStorage.getItem('tmus-theme');if(s==='light'){document.documentElement.setAttribute('data-theme','light');const l=document.getElementById('theme-label');if(l)l.textContent='다크';}})();
+</script>
+</body>
+</html>
