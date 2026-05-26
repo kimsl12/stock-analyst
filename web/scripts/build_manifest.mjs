@@ -362,6 +362,18 @@ async function main() {
     });
   }
 
+  // [v3.25] stock_scores.json에서 스코어 맵 로드
+  const scoreMap = new Map();
+  const scoresPath = path.join(PROJECT_ROOT, 'algo-trading', 'data', 'stock_scores.json');
+  if (existsSync(scoresPath)) {
+    try {
+      const sc = JSON.parse(await readFile(scoresPath, 'utf-8'));
+      for (const s of (sc.stocks || [])) {
+        if (s.ticker && s.score != null) scoreMap.set(s.ticker, s.score);
+      }
+    } catch {}
+  }
+
   // 2. reports/*.html (루트 = 종목분석/ETF)
   for (const fn of await listHtml(REPORTS_DIR)) {
     const meta = parseStock(fn);
@@ -381,6 +393,7 @@ async function main() {
       size_bytes: st.size,
       title: await extractTitle(filepath),
       sort_key: sortKey,
+      score: scoreMap.get(meta.ticker) ?? null,
     });
   }
 

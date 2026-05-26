@@ -2,50 +2,126 @@
 import Base from '../../layouts/Base.astro';
 import manifest from '../../data/manifest.json';
 
-// ticker별 그룹화 (stock_analysis + etf)
 type Item = (typeof manifest.items)[number];
 const stockItems = manifest.items.filter(
   (it) => (it.type === 'stock_analysis' || it.type === 'etf') && it.ticker,
 );
 
-const groups = new Map<string, { ticker: string; name: string | null; type: string; count: number; latest: Item }>();
+const groups = new Map<string, { ticker: string; name: string | null; type: string; count: number; latest: Item; score: number | null }>();
 for (const it of stockItems) {
   const key = it.ticker as string;
   const existing = groups.get(key);
+  const score = (it as any).score ?? null;
   if (!existing) {
-    groups.set(key, { ticker: key, name: it.name, type: it.type, count: 1, latest: it });
+    groups.set(key, { ticker: key, name: it.name, type: it.type, count: 1, latest: it, score });
   } else {
     existing.count += 1;
-    if (it.date > existing.latest.date) existing.latest = it;
+    if (it.date > existing.latest.date) {
+      existing.latest = it;
+    }
+    if (score != null && (existing.score == null || score > existing.score)) {
+      existing.score = score;
+    }
   }
 }
 
-// 정렬: 가장 최근 분석된 종목이 위로 (latest.date desc, 동률은 ticker asc)
 const sorted = [...groups.values()].sort((a, b) => {
   if (a.latest.date !== b.latest.date) return b.latest.date.localeCompare(a.latest.date);
   return a.ticker.localeCompare(b.ticker);
 });
+
+function gradeFromScore(s: number | null): string {
+  if (s == null) return '-';
+  if (s >= 80) return 'A';
+  if (s >= 65) return 'B';
+  if (s >= 50) return 'C';
+  if (s >= 35) return 'D';
+  return 'F';
+}
+
+function gradeColor(g: string): string {
+  if (g === 'A') return 'var(--up)';
+  if (g === 'B') return 'var(--accent)';
+  if (g === 'C') return 'var(--muted)';
+  if (g === 'D') return 'var(--warn)';
+  if (g === 'F') return 'var(--down)';
+  return 'var(--muted)';
+}
 ---
-<Base title="종목 / ETF" lede={`${sorted.length}개 종목 · 총 ${stockItems.length}건의 리포트 (티커별 묶음)`} active="stocks">
-  <section class="ticker-grid">
-    {sorted.map((g) => (
-      <a href={`/stocks/${g.ticker}`} class="ticker-card">
-        <div class="ticker-head">
-          <span class:list={['badge', `t-${g.type}`]}>{g.type === 'etf' ? 'ETF' : '주식'}</span>
-          <span class="count">{g.count}건</span>
-        </div>
-        <div class="ticker-symbol">{g.ticker}</div>
-        <div class="ticker-name">{g.name ?? '-'}</div>
-        <div class="ticker-foot">
-          <span class="muted">최신:</span>
-          <span>{g.latest.date}</span>
-        </div>
-      </a>
-    ))}
+<Base title="종목 / ETF" lede={`${sorted.length}개 종목 · 총 ${stockItems.length}건의 리포트`} active="stocks">
+  <div class="sort-bar">
+    <span class="sort-label">정렬</span>
+    <button class="sort-btn active" data-sort="date">최신순</button>
+    <button class="sort-btn" data-sort="score">평가점수순</button>
+    <button class="sort-btn" data-sort="name">이름순</button>
+    <button class="sort-btn" data-sort="ticker">티커순</button>
+  </div>
+
+  <section class="ticker-grid" id="ticker-grid">
+    {sorted.map((g) => {
+      const grade = gradeFromScore(g.score);
+      return (
+        <a href={`/stocks/${g.ticker}`} class="ticker-card"
+           data-date={g.latest.date}
+           data-score={g.score ?? 0}
+           data-name={g.name ?? g.ticker}
+           data-ticker={g.ticker}>
+          <div class="ticker-head">
+            <span class:list={['badge', `t-${g.type}`]}>{g.type === 'etf' ? 'ETF' : '주식'}</span>
+            <div class="head-right">
+              {g.score != null && (
+                <span class="score-badge" style={`color:${gradeColor(grade)}`}>
+                  {grade} {g.score}
+                </span>
+              )}
+              <span class="count">{g.count}건</span>
+            </div>
+          </div>
+          <div class="ticker-symbol">{g.ticker}</div>
+          <div class="ticker-name">{g.name ?? '-'}</div>
+          <div class="ticker-foot">
+            <span class="muted">최신:</span>
+            <span>{g.latest.date}</span>
+          </div>
+        </a>
+      );
+    })}
   </section>
 </Base>
 
 <style>
+  .sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .sort-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-right: 0.3rem;
+  }
+  .sort-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .sort-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .sort-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
   .ticker-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -74,6 +150,16 @@ const sorted = [...groups.values()].sort((a, b) => {
     justify-content: space-between;
     align-items: center;
   }
+  .head-right {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .score-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
   .count {
     font-size: .72rem;
     color: var(--muted);
@@ -89,7 +175,6 @@ const sorted = [...groups.values()].sort((a, b) => {
     color: var(--muted);
     font-size: .85rem;
     line-height: 1.3;
-    /* 2-line clamp */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -105,3 +190,31 @@ const sorted = [...groups.values()].sort((a, b) => {
   }
   .muted { color: var(--muted); }
 </style>
+
+<script>
+  const grid = document.getElementById('ticker-grid');
+  const btns = document.querySelectorAll('.sort-btn');
+  if (grid && btns.length) {
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const mode = btn.getAttribute('data-sort');
+        const cards = [...grid.querySelectorAll('.ticker-card')] as HTMLAnchorElement[];
+        cards.sort((a, b) => {
+          if (mode === 'score') {
+            return (parseFloat(b.dataset.score || '0')) - (parseFloat(a.dataset.score || '0'));
+          }
+          if (mode === 'name') {
+            return (a.dataset.name || '').localeCompare(b.dataset.name || '', 'ko');
+          }
+          if (mode === 'ticker') {
+            return (a.dataset.ticker || '').localeCompare(b.dataset.ticker || '');
+          }
+          return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+        });
+        cards.forEach(c => grid.appendChild(c));
+      });
+    });
+  }
+</script>
