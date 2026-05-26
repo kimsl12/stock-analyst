@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>iShares Russell 2000 ETF (IWM) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>iShares Russell 2000 ETF (IWM)</h1><div class="meta">ETF 종합 분석 리포트 | 2026-05-27</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">74/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$290.02</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">N/A</div></div><div class="ki"><div class="kl">PER</div><div class="kv">17.5x (지수)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$200.51~$290.51</div></div><div class="ki"><div class="kl">AUM</div><div class="kv">$78.5B</div></div><div class="ki"><div class="kl">운용보수</div><div class="kv">0.19%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">1.42%</div></div><div class="ki"><div class="kl">종목 수</div><div class="kv">1,965</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>iShares Russell 2000 ETF (IWM)</strong> — BlackRock 운용 미국 소형주 광범위 분산 패시브 ETF. AUM $78.5B, 1,965 종목 보유. 5월 -2.5% 조정 후 신고가 회복 — 시장이 Fed 인하 사이클 진입을 선반영하는 패턴.<br><br><strong>핵심 결론</strong>: 매수 (74/100점). 12개월 목표가 $300 (+3.4%). S&P 대비 18.5% P/E 디스카운트 (35년 평균 대비 23.5%p 저평가). 그러나 매크로 환경(매파-Hold)이 부정적 — 분할매수 강력 권장. 6월 FOMC 변동성 활용.<br><br><strong>3대 강점</strong>: ① P/E 17.5x 저평가 + EPS +24.5% 모멘텀 ② 운용보수 0.19% + 유동성 ★★★★★ ③ Fed 인하 사이클 진입 시 최대 수혜 자산 (베타 1.25).<br><br><strong>3대 약점</strong>: ① 매파 환경 부정 (스코어 50점) ② 베타 1.25 — 침체 시 -25%+ 다운사이드 ③ 적자기업 30% — EPS 변동성 高.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$279.78</div><div class="dn" style="font-size:13px">-3.5%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$300.00</div><div class="up" style="font-size:13px">+3.4%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="312" y="30" width="38" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="312" y1="26" x2="312" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="312" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$280</text><line x1="348" y1="24" x2="348" y2="52" stroke="var(--text)" stroke-width="3"/><text x="348" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$290</text><line x1="384" y1="26" x2="384" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="384" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$300</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $201</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $291</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $5.12 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,75.0 185.8,86.9 230.4,120.6 214.2,174.1 169.4,190.5 140.0,230.0 84.2,226.9 102.0,162.4 82.9,131.5 110.6,109.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">지수 매력도</text><circle cx="140.0" cy="75.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">운용 효율성</text><circle cx="185.8" cy="86.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">유동성</text><circle cx="230.4" cy="120.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀</text><circle cx="214.2" cy="174.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">매크로 적합도</text><circle cx="169.4" cy="190.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">밸류에이션</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">분산도</text><circle cx="84.2" cy="226.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">다운사이드 보호</text><circle cx="102.0" cy="162.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG</text><circle cx="110.6" cy="109.5" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>지수 매력도</td><td>7.5</td><td>/10</td></tr><tr><td>운용 효율성</td><td>7.8</td><td>/10</td></tr><tr><td>유동성</td><td>9.5</td><td>/10</td></tr><tr><td>모멘텀</td><td>7.8</td><td>/10</td></tr><tr><td>매크로 적합도</td><td>5.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>8.0</td><td>/10</td></tr><tr><td>분산도</td><td>9.5</td><td>/10</td></tr><tr><td>다운사이드 보호</td><td>4.0</td><td>/10</td></tr><tr><td>배당</td><td>6.0</td><td>/10</td></tr><tr><td>ESG</td><td>5.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 74/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide</span></h2><p><strong>iShares Russell 2000 ETF (NYSE: IWM)</strong> — BlackRock 운용 패시브 ETF, 2000-05-22 상장.<br>&bull; 추종 지수: Russell 2000 (미국 시총 1001~3000위, 2,000개 소형주)<br>&bull; AUM $78.5B, 일평균 거래량 25.4M주<br>&bull; 종목 수 1,965개, Top 10 비중 합계 3.4% (★ 극도 분산)<br>&bull; 운용보수 0.19% (소형주 ETF 표준 수준)<br>&bull; 리밸런싱 연 1회 (6월 마지막 금요일)<br><br><strong>대체 ETF</strong>: VB(ER 0.05%), IJR(ER 0.06%, 흑자필터). 장기보유는 VB/SCHA 가 비용 우위. IWM 은 옵션·선물 유동성에서 압도 → trading vehicle 측면 우위.</p><h3>Moat 상세</h3><p>BlackRock iShares 의 유통·시장조성 인프라가 압도적. AUM $78.5B 규모 우위로 추적 오차 0.05~0.10%. CME RTY 선물·옵션 시장 매우 깊음 — 소형주 노출용 ETF 의 사실상 표준.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>항목</th><th>2024</th><th>2025</th><th>2026E</th><th>2027E</th></tr></thead><tbody><tr><td>EPS (지수, $)</td><td>14.2</td><td>13.8</td><td>17.2</td><td>20.3</td></tr><tr><td>YoY (%)</td><td>-3.5</td><td>-2.8</td><td>+24.5</td><td>+18.2</td></tr><tr><td>순이익 마진 (%)</td><td>6.5</td><td>7.2</td><td>8.1</td><td>8.8</td></tr><tr><td>ROE (%)</td><td>11.5</td><td>12.0</td><td>12.8</td><td>13.5</td></tr><tr><td>배당수익률 (%)</td><td>1.45</td><td>1.40</td><td>1.42</td><td>1.45</td></tr></tbody></table><h3>분석</h3><p>2024~2025 EPS -3% 부진 후 2026E +24.5% 회복 컨센서스. 60일간 +3.5% 상향 사이클. 단, Russell 2000 은 적자 기업 30% 보유로 컨센서스 미달 빈도 높음 — 실현 변수.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p><strong>Forward P/E 17.5x — S&P 500 대비 18.5% 디스카운트</strong>. 35년 평균(소형주 대형주 +5% 프리미엄) 대비 23.5%p 저평가 — 2009-Q1 이래 최대 디스카운트 영역. PEG 0.72 (S&P 1.55) — 성장 대비 매력. 그러나 디스카운트 정상화는 'Fed 인하 + 경기 연착륙' 동시 가시화 필요.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>52주 신고가 $290.51 직전. YTD +18.5%, 1년 +28.2% (S&P 대비 +2.1pp, QQQ 대비 -3.4pp). 4주 연속 자금 순유입. RSI 64.8 — 중간상단, 과매수 아님. VIX 16.63 안정 환경 우호. 5월 단기 조정 후 빠른 회복은 시장이 인하 사이클을 선반영하는 강한 시그널.</p><table><thead><tr><th>지표</th><th>값</th></tr></thead><tbody><tr><td>Goldman Sachs 2026 목표</td><td>$310</td></tr><tr><td>Morgan Stanley 2026 목표</td><td>$295</td></tr><tr><td>JP Morgan 2026 목표</td><td>$285</td></tr><tr><td>매도측 평균 목표</td><td>$297</td></tr><tr><td>2026 EPS 60일 변화</td><td>+3.5% 상향</td></tr><tr><td>2027 EPS 60일 변화</td><td>+5.2% 상향</td></tr><tr><td>ETF flow YTD</td><td>+$2.85B 순유입</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>Russell 2000 매크로 노출</strong>: 미국 매출 비중 80%+, 평균 D/E 2.1x (대형주 1.4x 대비), 적자기업 30%. <strong>금리 사이클 의존도 ★★★★★</strong>.<br><br><strong>역사적 패턴</strong>: Fed 인하 초기 6개월 IWM vs SPY +10~15%p outperform. 현재 매파-Hold 환경 → IWM 구조적 unfavor. 다만 KB(us_monetary_policy.md) 의 12월 25bp 인상 확률 15% 시나리오 가시화 시 -10~15% 충격.<br><br><strong>섹터 배분 매크로 민감도</strong>: Industrials 19.2% + Financials 17.5% + Real Estate 6.5% = 43.2% 가 금리·경기 직접 민감. 인하 시 같은 비중이 반등 동력으로 전환.<br><br><strong>카탈리스트</strong>: ① 관세·리쇼어링 — 소형 industrials 직접 수혜 ② AI capex 데이터센터 인프라 하청 (Comfort Systems USA Top 5) ③ 6월 FOMC + Russell 리밸런싱 (변동성).</p><table><thead><tr><th>ETF</th><th>추종</th><th>ER</th><th>AUM</th></tr></thead><tbody><tr><td>IWM</td><td>Russell 2000</td><td>0.19%</td><td>$78.5B</td></tr><tr><td>VB</td><td>CRSP Small Cap</td><td>0.05%</td><td>$58B</td></tr><tr><td>IJR</td><td>S&P 600 (흑자)</td><td>0.06%</td><td>$97B</td></tr><tr><td>SCHA</td><td>DJ US Small Cap</td><td>0.04%</td><td>$20B</td></tr></tbody></table></div>
+<div class="sec"><h2>섹터 배분</h2><div class="cb"><svg viewBox="0 0 390 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:390px;"><path d="M130.0,30.0 A100,100 0 0,1 223.4,94.4 L200.1,103.3 A75,75 0 0,0 130.0,55.0 Z" fill="#42A5F5" stroke="var(--card)" stroke-width="1"/><path d="M223.4,94.4 A100,100 0 0,1 204.2,197.1 L185.6,180.3 A75,75 0 0,0 200.1,103.3 Z" fill="#26A69A" stroke="var(--card)" stroke-width="1"/><path d="M204.2,197.1 A100,100 0 0,1 120.6,229.6 L122.9,204.7 A75,75 0 0,0 185.6,180.3 Z" fill="#FFA726" stroke="var(--card)" stroke-width="1"/><path d="M120.6,229.6 A100,100 0 0,1 52.9,193.7 L72.2,177.8 A75,75 0 0,0 122.9,204.7 Z" fill="#EF5350" stroke="var(--card)" stroke-width="1"/><path d="M52.9,193.7 A100,100 0 0,1 30.1,133.8 L55.1,132.8 A75,75 0 0,0 72.2,177.8 Z" fill="#AB47BC" stroke="var(--card)" stroke-width="1"/><path d="M30.1,133.8 A100,100 0 0,1 37.5,92.0 L60.6,101.5 A75,75 0 0,0 55.1,132.8 Z" fill="#66BB6A" stroke="var(--card)" stroke-width="1"/><path d="M37.5,92.0 A100,100 0 0,1 60.2,58.4 L77.6,76.3 A75,75 0 0,0 60.6,101.5 Z" fill="#FF7043" stroke="var(--card)" stroke-width="1"/><path d="M60.2,58.4 A100,100 0 0,1 82.9,41.8 L94.7,63.8 A75,75 0 0,0 77.6,76.3 Z" fill="#5C6BC0" stroke="var(--card)" stroke-width="1"/><path d="M82.9,41.8 A100,100 0 0,1 101.5,34.1 L108.6,58.1 A75,75 0 0,0 94.7,63.8 Z" fill="#FFCA28" stroke="var(--card)" stroke-width="1"/><path d="M101.5,34.1 A100,100 0 0,1 116.8,30.9 L120.1,55.7 A75,75 0 0,0 108.6,58.1 Z" fill="#78909C" stroke="var(--card)" stroke-width="1"/><path d="M116.8,30.9 A100,100 0 0,1 130.0,30.0 L130.0,55.0 A75,75 0 0,0 120.1,55.7 Z" fill="#EC407A" stroke="var(--card)" stroke-width="1"/><rect x="270" y="20" width="10" height="10" fill="#42A5F5" rx="2"/><text x="284" y="29" fill="var(--sub)" font-size="11">Industrials 19.2%</text><rect x="270" y="38" width="10" height="10" fill="#26A69A" rx="2"/><text x="284" y="47" fill="var(--sub)" font-size="11">Financials 17.5%</text><rect x="270" y="56" width="10" height="10" fill="#FFA726" rx="2"/><text x="284" y="65" fill="var(--sub)" font-size="11">Healthcare 14.8%</text><rect x="270" y="74" width="10" height="10" fill="#EF5350" rx="2"/><text x="284" y="83" fill="var(--sub)" font-size="11">Information Technology 12.5%</text><rect x="270" y="92" width="10" height="10" fill="#AB47BC" rx="2"/><text x="284" y="101" fill="var(--sub)" font-size="11">Consumer Discretionary 10.4%</text><rect x="270" y="110" width="10" height="10" fill="#66BB6A" rx="2"/><text x="284" y="119" fill="var(--sub)" font-size="11">Energy 6.8%</text><rect x="270" y="128" width="10" height="10" fill="#FF7043" rx="2"/><text x="284" y="137" fill="var(--sub)" font-size="11">Real Estate 6.5%</text><rect x="270" y="146" width="10" height="10" fill="#5C6BC0" rx="2"/><text x="284" y="155" fill="var(--sub)" font-size="11">Materials 4.5%</text></svg></div></div>
+<div class="sec"><h2>리스크 분석</h2><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">Fed 인상 재개 / 인하 지연</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">경기 침체 시나리오</text><circle cx="180" cy="156" r="5" fill="var(--warn)"/><text x="189" y="160" fill="var(--text)" font-size="10">신고가 근접 차익실현</text><circle cx="180" cy="174" r="5" fill="var(--warn)"/><text x="189" y="178" fill="var(--text)" font-size="10">적자기업 30% — EPS 변동</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">6월 리밸런싱 변동성</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>Fed 인상 재개 / 인하 지연</strong> (발생: high, 영향: 매우 큼)<br><span style="color:var(--sub);font-size:13px">KB(us_monetary_policy.md): 12월 25bp 인상 확률 15%. 발생 시 IWM 즉시 -10~15% 충격. 부채 D/E 2.1x 평균 소형주 부담 폭증. (최약 가정)</span></div><div class="ri rl"><strong>경기 침체 시나리오</strong> (발생: high, 영향: 매우 큼)<br><span style="color:var(--sub);font-size:13px">베타 1.25 × 시장 -20% = IWM -25% 가능. Industrials 19.2% + Discretionary 10.4% = 30% 가장 큰 타격. 적자기업 30% 부도율 상승 위험.</span></div><div class="ri rl"><strong>신고가 근접 차익실현</strong> (발생: medium, 영향: 중)<br><span style="color:var(--sub);font-size:13px">RSI 64.8 + 4주 연속 유입 → 단기 -3~5% 조정 高. 추세 자체는 훼손되지 않음, 매수 기회.</span></div><div class="ri rl"><strong>적자기업 30% — EPS 변동</strong> (발생: medium, 영향: 중)<br><span style="color:var(--sub);font-size:13px">컨센서스 미달 빈도 높음. 2027E +18.2% 가정 미달 시 디스카운트 지속.</span></div><div class="ri rl"><strong>6월 리밸런싱 변동성</strong> (발생: low, 영향: 낮음)<br><span style="color:var(--sub);font-size:13px">6/26 연 1회 종목 교체. 단기 ±2~3% 변동성, 추적 오차 일시 확대.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>진입 구간 (분할매수 강력 권장)</strong>:<br>&bull; 1차 (조정 후 진입): $275~285 (40% 비중)<br>&bull; 2차 (추가 조정): $258~270 (35%)<br>&bull; 3차 (FOMC dovish surprise): $245 이하 (25%)<br><br><strong>손절 / 목표</strong>:<br>&bull; 손절가 (2×ATR): $279.78 (-3.5%) — ETF 변동성 낮아 손절폭 좁음<br>&bull; 12개월 TP: $300 (+3.4%)<br>&bull; 강세 시나리오 TP: $330 (+13.8%, Fed 인하 2~3회 + 연착륙)<br><br><strong>§ Confidence Interval</strong>: 목표가 $300 (95% CI: $240~$345, 폭 ±15~17%). 스코어 74 (±8pt).<br><br><strong>§ 약한 가정 3개</strong>:<br>1. ★ Fed 인하 사이클 12개월 내 시작 — 인상 재개 시 (확률 ~15%) 스코어 -12pt, 등급 중립~매도 (최약 가정)<br>2. 2027E EPS +18.2% 컨센서스 실현 — Russell 2000 컨센 미달 빈도 高. 반증 시 -6pt<br>3. 경기 연착륙 — 침체 시 베타 1.25 × -20% = -25%. 반증 시 -10pt, 매도</p></div>
+<div class="sec"><h2>재분석 v4 메타</h2>이 분석은 **재분석 v4 (BLIND 모드)** 입니다. 이전 v1~v3 분석을 참조하지 않고 독립적으로 작성됐습니다 (앵커링 차단). 직전 분석일 2026-05-13 → 본 회차 2026-05-27 (14일 경과).<br><br>
+주요 변경 사항은 reanalysis-tracker (analysis/_reanalysis_runs/20260527_run.md) 에서 정리됩니다.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-05-27 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="IWM_iSharesRussell2000_20260527.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
