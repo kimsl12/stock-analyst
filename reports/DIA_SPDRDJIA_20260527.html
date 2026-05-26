@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SPDR DJIA (DIA) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>SPDR DJIA (DIA)</h1><div class="meta">ETF 종합 분석 리포트 | 20260527</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">80/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$505.09</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$40.0B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (ETF)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$412.30~$508.70</div></div><div class="ki"><div class="kl">Expense Ratio</div><div class="kv">0.16%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">1.55% (월배당)</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$5.14 (1.02%)</div></div><div class="ki"><div class="kl">종목수</div><div class="kv">30 (price-weighted)</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>DIA v4 BLIND 재분석</strong> — SPDR Dow Jones Industrial Average ETF Trust ($505.09, 2026-05-26 종가, 52주 신고가 -0.71%).<br><br><strong>핵심 결론</strong>: 매크로 환경 (인플레 sticky + Warsh 매파 + Old Economy reflation) 에 정합한 방어형 인덱스. Financials 21.5% / Healthcare 18.2% / Industrials 13.5% overweight 가 직접 수혜. <strong>종합 80/100, 매수 등급, 목표가 $520.51 (+3.05%), 손절 $494.81 (-2.04%)</strong>.<br><br><strong>3대 매수 근거</strong>: ① 신고가 -0.71% break-out 모멘텀 + Dow 50,579 신고가, ② Tech 17.8% (vs SPY 30%+) — Mag7 거품 우려 시 자동 헷지 + 자금 로테이션 채널, ③ 월배당 1.55% + 0.16% 저비용.<br><br><strong>핵심 우려</strong>: Warsh 5/15 취임 후 매파 톤 가속 시 1차 충격 -2~3%. 5/28 PCE 추가 가속 시 6월 무인하 + 12월 인상 25%+ 가격책정 → -3~4% 압력. Mag7 강세 재개 시 SPY/QQQ 대비 상대 underperform.<br><br><strong>적합 투자자</strong>: 50대+ 안정형, 월배당 수익 필요자, Tech 비중 분산 원하는 SPY 보유자. <strong>부적합</strong>: 30대 미만 장기 적립식 (VTI/QQQ 우월).<br></p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$494.81</div><div class="dn" style="font-size:13px">-2.0%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$520.51</div><div class="up" style="font-size:13px">+3.1%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="304" y="30" width="46" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="304" y1="26" x2="304" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="304" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$495</text><line x1="338" y1="24" x2="338" y2="52" stroke="var(--text)" stroke-width="3"/><text x="338" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$505</text><line x1="389" y1="26" x2="389" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="389" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$521</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $412</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $509</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $5.14 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,55.0 194.1,75.6 211.3,126.8 225.6,177.8 178.2,202.6 140.0,228.0 91.8,216.3 71.5,172.2 63.9,125.3 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">운용사 신뢰도</text><circle cx="140.0" cy="55.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">추적 정확성</text><circle cx="194.1" cy="75.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">Expense Ratio</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">유동성</text><circle cx="225.6" cy="177.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">분산도</text><circle cx="178.2" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">섹터 균형</text><circle cx="140.0" cy="228.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀</text><circle cx="91.8" cy="216.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당 매력</text><circle cx="71.5" cy="172.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">매크로 정합성</text><circle cx="63.9" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">가격 모멘텀</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>운용사 신뢰도</td><td>9.5</td><td>/10</td></tr><tr><td>추적 정확성</td><td>9.2</td><td>/10</td></tr><tr><td>Expense Ratio</td><td>7.5</td><td>/10</td></tr><tr><td>유동성</td><td>9.0</td><td>/10</td></tr><tr><td>분산도</td><td>6.5</td><td>/10</td></tr><tr><td>섹터 균형</td><td>7.8</td><td>/10</td></tr><tr><td>모멘텀</td><td>8.2</td><td>/10</td></tr><tr><td>배당 매력</td><td>7.2</td><td>/10</td></tr><tr><td>매크로 정합성</td><td>8.0</td><td>/10</td></tr><tr><td>가격 모멘텀</td><td>7.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 80/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide</span></h2><p><strong>State Street Global Advisors (SSGA) 운용</strong>, 1998년 1월 상장 28년 트랙. AUM $40B, 일평균 거래량 3.5M주 (유동성 풍부). Dow Jones Industrial Average (DJIA, 30종 가격가중) 추종, Tracking Error < 0.05%.<br><br><strong>Price-Weighted 방법론</strong>: 1896년 이래 유일하게 유지되는 전통 방식. 시가총액 가중 (SPY) 이 아닌 주가 가중 — 고가주 (UNH ~$650, GS ~$580) 1주가 저가주보다 영향력 ↑. 시총 $3T NVDA (분할 후 $130대) 가 시총 $600B UNH 보다 영향 작음.<br><br><strong>섹터 분포</strong> (vs SPY): Financials 21.5% (SPY 13%), Healthcare 18.2% (SPY 12%), <strong>Tech 17.8% (SPY 30%+)</strong>, Industrials 13.5% (SPY 8%), Consumer Disc 12.3%. → "방어적 가치주 ETF + 산업/금융 overweight" 로 해석.<br><br><strong>상위 10종 추정</strong> (price-weighted 기준): GS 8.5%, UNH 7.2%, MSFT 6.8%, HD 5.9%, CAT 5.4%, CRM 4.8%, V 4.5%, AMGN 4.3%, AXP 4.1%, MCD 3.9%.<br></p><h3>Moat 상세</h3><p>ETF 자체의 Moat: ① <strong>선점 효과</strong> — 28년 트랙으로 IRA/401(k) 기본 옵션 위치, ② <strong>State Street 운용 효율</strong> — Tracking Error <0.05% 우수, ③ <strong>유동성 자기강화</strong> — AUM $40B + 일평균 3.5M주 → 스프레드 좁음 → 추가 자금 유입. 단 0.16% Expense Ratio 는 VTI 0.03%/SPY 0.09% 대비 약점.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>가격 모멘텀</strong>: 52W 고점 $508.70 대비 -0.71% (사실상 신고가), 1년 +18.7%, 6개월 +11.4%, 3개월 +5.8%, 1개월 +3.2%. YTD +8.5% (추정).<br><br><strong>상대 성과</strong>: S&P 500 대비 -2.1%p underperform — Tech 빈약 영향. 단 1년 절대 수익률 +18.7% 는 강력. 5년 연환산 +11.8% 장기 컴파운딩.<br><br><strong>기술적 신호</strong>: ATR 1.02% 매우 낮은 변동성 (안정형), 200DMA 상회 추정, VIX 16.63 안정 국면. 52W 고점 -0.71% — overbought 우려 vs break-out 모멘텀 양면 해석 가능.<br><br><strong>수급</strong>: "Boomer ETF" 포지셔닝 — IRA/401(k) 인기 1선. Tech 거품 우려 시 SPY → DIA 로테이션 자금 자연 유입. 월배당 = retiree 자금 안정.<br><br><strong>Dow 절대 수준</strong>: 50,579.70 (5/22) — 사상 최고점. DIA $505.09 는 Dow ≈100분의 1 비례 동기화.<br></p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>2026년 5월 매크로 환경 정합성</strong> (KB 5/6 us_monetary_policy.md + 5/26 daily_snapshot.md):<br><br><strong>① 통화정책 — 핵심 변수</strong>: Fed funds 3.50-3.75%, 4/29 동결 <strong>8-4 분열</strong> (1992 이후 최대). 6월 동결 확률 70-89%, 12월 인상 확률 ~15% 부상. <strong>Powell 5/15 임기 만료, governor 잔류</strong> (1948 Eccles 이후 최초). <strong>Warsh 5/15 취임</strong> — 단기 매파, 100% 당파 인준 (13-11) → Fed 독립성 시험대. → <strong>DIA 영향</strong>: 금융주 21.5% 수혜 (NIM 확대), 산업재 13.5% 인플레 헷지, Tech 부담은 비중 17.8%로 제한.<br><br><strong>② 인플레이션</strong>: Headline PCE 3.5% / Core PCE 3.2% / <strong>분기 SAAR Q1 4.3%</strong> (Q4 2.7% → 1년+ 만 최대 가속). 5/28 4월 PCE 발표 — 추가 가속 시 인하 완전 소멸. → DIA 의 Tech 빈약은 인플레 헷지 자연 형성, 단 10Y 4.56% 부담 시 전 섹터 valuation 압박.<br><br><strong>③ 금리·환율</strong>: <strong>10Y 4.56% / 30Y 5.06%</strong> (5/22). DXY 99.03 (-0.29%), USD/KRW 1,501. 강달러 = 다국적 기업 (PG, KO, MCD) 해외 수익 환산 부담 vs CAT, BA 수출 부담은 글로벌 수요 회복으로 상쇄.<br><br><strong>④ 지정학·에너지</strong>: Iran 호르무즈 5/5 재충돌, 5/26 WTI -4.79% → $91.97. 일시 안정 vs 변동성 극대. WTI ~$110 시 CAT/CVX 수혜, $90대 후퇴 시 충격 완화.<br><br><strong>⑤ 주식 시장</strong>: Dow 50,579 신고가 인접, VIX 16.63 안정. DIA $505.09 = 52W 신고가 -0.71% (사실상 신고가).<br></p><table><thead><tr><th>항목</th><th>DIA</th><th>SPY</th><th>QQQ</th><th>VTI</th></tr></thead><tbody><tr><td>추적 지수</td><td>DJIA 30</td><td>S&P 500</td><td>Nasdaq 100</td><td>Total Market</td></tr><tr><td>Expense</td><td>0.16%</td><td>0.09%</td><td>0.20%</td><td>0.03%</td></tr><tr><td>Tech 비중</td><td>17.8%</td><td>30%+</td><td>60%+</td><td>29%</td></tr><tr><td>변동성 (β)</td><td>~0.95</td><td>1.00</td><td>~1.20</td><td>1.00</td></tr><tr><td>YTD 2026 (추정)</td><td>+8.5%</td><td>+10.6%</td><td>+13~15%</td><td>+10.2%</td></tr><tr><td>배당수익률</td><td>1.55%</td><td>1.30%</td><td>0.55%</td><td>1.40%</td></tr><tr><td>베타 프로파일</td><td>방어</td><td>시장</td><td>공격</td><td>전체</td></tr><tr><td>종목 수</td><td>30</td><td>500</td><td>100</td><td>4,000+</td></tr></tbody></table></div>
+<div class="sec"><h2>섹터 배분</h2><div class="cb"><svg viewBox="0 0 390 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:390px;"><path d="M130.0,30.0 A100,100 0 0,1 227.6,108.2 L203.2,113.6 A75,75 0 0,0 130.0,55.0 Z" fill="#42A5F5" stroke="var(--card)" stroke-width="1"/><path d="M227.6,108.2 A100,100 0 0,1 190.3,209.8 L175.2,189.8 A75,75 0 0,0 203.2,113.6 Z" fill="#26A69A" stroke="var(--card)" stroke-width="1"/><path d="M190.3,209.8 A100,100 0 0,1 84.6,219.1 L96.0,196.8 A75,75 0 0,0 175.2,189.8 Z" fill="#FFA726" stroke="var(--card)" stroke-width="1"/><path d="M84.6,219.1 A100,100 0 0,1 33.1,154.9 L57.4,148.7 A75,75 0 0,0 96.0,196.8 Z" fill="#EF5350" stroke="var(--card)" stroke-width="1"/><path d="M33.1,154.9 A100,100 0 0,1 43.3,80.2 L65.0,92.6 A75,75 0 0,0 57.4,148.7 Z" fill="#AB47BC" stroke="var(--card)" stroke-width="1"/><path d="M43.3,80.2 A100,100 0 0,1 71.7,48.7 L86.3,69.0 A75,75 0 0,0 65.0,92.6 Z" fill="#66BB6A" stroke="var(--card)" stroke-width="1"/><path d="M71.7,48.7 A100,100 0 0,1 89.1,38.7 L99.4,61.5 A75,75 0 0,0 86.3,69.0 Z" fill="#FF7043" stroke="var(--card)" stroke-width="1"/><path d="M89.1,38.7 A100,100 0 0,1 107.0,32.7 L112.7,57.0 A75,75 0 0,0 99.4,61.5 Z" fill="#5C6BC0" stroke="var(--card)" stroke-width="1"/><path d="M107.0,32.7 A100,100 0 0,1 121.8,30.3 L123.9,55.3 A75,75 0 0,0 112.7,57.0 Z" fill="#FFCA28" stroke="var(--card)" stroke-width="1"/><path d="M121.8,30.3 A100,100 0 0,1 130.0,30.0 L130.0,55.0 A75,75 0 0,0 123.9,55.3 Z" fill="#78909C" stroke="var(--card)" stroke-width="1"/><rect x="270" y="20" width="10" height="10" fill="#42A5F5" rx="2"/><text x="284" y="29" fill="var(--sub)" font-size="11">Financials 21.5%</text><rect x="270" y="38" width="10" height="10" fill="#26A69A" rx="2"/><text x="284" y="47" fill="var(--sub)" font-size="11">Healthcare 18.2%</text><rect x="270" y="56" width="10" height="10" fill="#FFA726" rx="2"/><text x="284" y="65" fill="var(--sub)" font-size="11">Tech 17.8%</text><rect x="270" y="74" width="10" height="10" fill="#EF5350" rx="2"/><text x="284" y="83" fill="var(--sub)" font-size="11">Industrials 13.5%</text><rect x="270" y="92" width="10" height="10" fill="#AB47BC" rx="2"/><text x="284" y="101" fill="var(--sub)" font-size="11">Consumer Disc 12.3%</text><rect x="270" y="110" width="10" height="10" fill="#66BB6A" rx="2"/><text x="284" y="119" fill="var(--sub)" font-size="11">Consumer Staples 6.8%</text><rect x="270" y="128" width="10" height="10" fill="#FF7043" rx="2"/><text x="284" y="137" fill="var(--sub)" font-size="11">Energy 3.2%</text><rect x="270" y="146" width="10" height="10" fill="#5C6BC0" rx="2"/><text x="284" y="155" fill="var(--sub)" font-size="11">Communications 3.0%</text></svg></div></div>
+<div class="sec"><h2>수익률 비교</h2><div class="cb"><svg viewBox="0 0 380 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="45" y="5" width="10" height="10" fill="var(--blue)" rx="2"/><text x="59" y="14" fill="var(--sub)" font-size="10">DIA</text><rect x="145" y="5" width="10" height="10" fill="var(--buy)" rx="2"/><text x="159" y="14" fill="var(--sub)" font-size="10">S&P 500 (비교)</text><rect x="60" y="154" width="21" height="16" fill="var(--blue)" rx="2" opacity="0.85"/><text x="70" y="150" fill="var(--blue)" font-size="9" text-anchor="middle">3.2%</text><rect x="82" y="152" width="21" height="18" fill="var(--buy)" rx="2" opacity="0.85"/><text x="92" y="148" fill="var(--buy)" font-size="9" text-anchor="middle">3.5%</text><text x="71" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">1M</text><rect x="113" y="140" width="21" height="30" fill="var(--blue)" rx="2" opacity="0.85"/><text x="123" y="136" fill="var(--blue)" font-size="9" text-anchor="middle">5.8%</text><rect x="135" y="139" width="21" height="31" fill="var(--buy)" rx="2" opacity="0.85"/><text x="145" y="135" fill="var(--buy)" font-size="9" text-anchor="middle">6.0%</text><text x="124" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">3M</text><rect x="165" y="112" width="21" height="58" fill="var(--blue)" rx="2" opacity="0.85"/><text x="175" y="108" fill="var(--blue)" font-size="9" text-anchor="middle">11.4%</text><rect x="187" y="108" width="21" height="62" fill="var(--buy)" rx="2" opacity="0.85"/><text x="197" y="104" fill="var(--buy)" font-size="9" text-anchor="middle">12.0%</text><text x="176" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">6M</text><rect x="218" y="74" width="21" height="96" fill="var(--blue)" rx="2" opacity="0.85"/><text x="228" y="70" fill="var(--blue)" font-size="9" text-anchor="middle">18.7%</text><rect x="240" y="62" width="21" height="108" fill="var(--buy)" rx="2" opacity="0.85"/><text x="250" y="58" fill="var(--buy)" font-size="9" text-anchor="middle">21.0%</text><text x="229" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">1Y</text><rect x="270" y="106" width="21" height="64" fill="var(--blue)" rx="2" opacity="0.85"/><text x="280" y="102" fill="var(--blue)" font-size="9" text-anchor="middle">12.5%</text><rect x="292" y="97" width="21" height="73" fill="var(--buy)" rx="2" opacity="0.85"/><text x="302" y="93" fill="var(--buy)" font-size="9" text-anchor="middle">14.2%</text><text x="281" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">3Y(연환산)</text><rect x="323" y="109" width="21" height="61" fill="var(--blue)" rx="2" opacity="0.85"/><text x="333" y="105" fill="var(--blue)" font-size="9" text-anchor="middle">11.8%</text><rect x="345" y="101" width="21" height="69" fill="var(--buy)" rx="2" opacity="0.85"/><text x="355" y="97" fill="var(--buy)" font-size="9" text-anchor="middle">13.5%</text><text x="334" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">5Y(연환산)</text></svg></div></div>
+<div class="sec"><h2>리스크 분석</h2><p>단일 catastrophic 리스크 부재. 30종 분산 + 우량주 prefilter 로 tail risk 매우 낮음. 핵심 단기 리스크 = Warsh 5/15 취임 후 24시간 + 5/28 PCE + 6/17 FOMC 점도표 3대 이벤트.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">Warsh 매파 톤 가속 (5/15+)</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">6월 FOMC 점도표 무인하 확정</text><circle cx="180" cy="156" r="5" fill="var(--warn)"/><text x="189" y="160" fill="var(--text)" font-size="10">Core PCE 5/28 추가 가속</text><circle cx="100" cy="120" r="5" fill="var(--warn)"/><text x="109" y="124" fill="var(--text)" font-size="10">Iran 호르무즈 재악화 → WTI $120</text><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">Fed 독립성 위기 → 달러 신뢰 균열</text><circle cx="180" cy="190" r="5" fill="var(--warn)"/><text x="189" y="194" fill="var(--text)" font-size="10">Mag7 강세 재개 → 상대 underperform</text><circle cx="180" cy="208" r="5" fill="var(--warn)"/><text x="189" y="212" fill="var(--text)" font-size="10">30대 우량주 중 earnings miss</text><circle cx="100" cy="190" r="5" fill="var(--buy)"/><text x="109" y="194" fill="var(--text)" font-size="10">Price-weighted 액면분할 충격</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rm"><strong>Warsh 매파 톤 가속 (5/15+)</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">5/15 취임 후 첫 발언 변동성. 시장 단기 매파를 일부 가격책정했으나 청문회 톤보다 강경 시 1차 충격 -2~3%.</span></div><div class="ri rl"><strong>6월 FOMC 점도표 무인하 확정</strong> (발생: 높, 영향: 중)<br><span style="color:var(--sub);font-size:13px">70-89% 확률로 가격책정 중. 추가 hawkish surprise (12월 인상 dot 추가) 시 -2~3%.</span></div><div class="ri rm"><strong>Core PCE 5/28 추가 가속</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">분기 SAAR Q1 4.3% 정점 가정 위배 시. 4월 PCE 가속 → 6월 무인하 확정 + 12월 인상 25%+ → DIA -3~4%, 스코어 -10pt.</span></div><div class="ri rl"><strong>Iran 호르무즈 재악화 → WTI $120</strong> (발생: 저, 영향: 중)<br><span style="color:var(--sub);font-size:13px">CAT/CVX 수혜 vs MMM 비용↑ 양면. 5/26 WTI -4.79% = 일시 안정. 재발 시 인플레 2차 파동.</span></div><div class="ri rh"><strong>Fed 독립성 위기 → 달러 신뢰 균열</strong> (발생: 저-중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">Powell governor 잔류 + Warsh 매파 = 정책 이중구조. Gold 헷지 권고.</span></div><div class="ri rm"><strong>Mag7 강세 재개 → 상대 underperform</strong> (발생: 중, 영향: 저)<br><span style="color:var(--sub);font-size:13px">절대 손실 아닌 기회비용. SPY/QQQ 대비 -3~5%/연 가능.</span></div><div class="ri rm"><strong>30대 우량주 중 earnings miss</strong> (발생: 중, 영향: 저)<br><span style="color:var(--sub);font-size:13px">UNH 정치 리스크 / BA 안전 이슈 / 산업주 관세 - 분산 효과로 영향 제한.</span></div><div class="ri rl"><strong>Price-weighted 액면분할 충격</strong> (발생: 저, 영향: 저)<br><span style="color:var(--sub);font-size:13px">구조적 한계. NVDA 2024 분할 후 영향력 -90% 사례.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>매수 전략</strong>:<br>&bull; 1차 매수 $505.00 (현재가) — 40%<br>&bull; 2차 분할매수 $498 (-1.4%, ATR -1.5×) — 30%<br>&bull; 3차 분할매수 $494.81 (손절 직전) — 20%<br>&bull; 예비 cash — 10%<br><br><strong>Time horizon</strong>: 6~12개월 — 6/17 FOMC 점도표 + 7월 earnings season 두 이벤트 통과 핵심.<br><br><strong>매도 전략</strong>:<br>&bull; 손절 $494.81 도달 → 전량 매도, 1주 관망<br>&bull; 목표 1차 $515 → 40% 익절 (Dow 51,000 도달)<br>&bull; 목표 2차 $520.51 → 추가 30% 익절 (ATR 모델)<br>&bull; 목표 3차 $525+ → 잔량 30% trailing stop ($518 setup)<br>&bull; 매크로 변경 (Warsh 매파 가속 → 6월 무인하 + 12월 인상 25%+) → 50% 비중 축소<br><br><strong>대안 시나리오</strong>:<br>&bull; DIA → SPY 일부 전환 (Mag7 로테이션 재개 시) — 7월 후 검토<br>&bull; <strong>DIA + GLD 페어 (Fed 독립성 리스크 헷지)</strong> — DIA 80% + GLD 20% 권장<br><br><strong>위험·보상 비율</strong>: 1.50:1 (수익 +3.05% / 위험 -2.04%)<br></p></div>
+<div class="sec"><h2>§ Confidence Interval (앵커링 보강)</h2>**목표가 $520.51 95% CI: $510 ~ $535 (폭 ±2.4%)**
+- lower bound: Warsh 매파 톤 + Core PCE 가속 → 인덱스 일시 조정 (-1%)
+- upper bound: 6월 FOMC 점도표 dovish surprise + Tech 로테이션 → +6%
+
+**종합 스코어 80 ± 5pt 변동 가능**
+- +5: Warsh 첫 발언 dovish 시 (가능성 낮음)
+- -5: 5/28 PCE 추가 가속 + 6/17 점도표 hawkish 동시 시
+
+**핵심 변동 가정**: 6월 FOMC 점도표 dot 분포 (현 12월 인상 ~15% 가격책정) — 1 dot 추가 hike 시 DIA -2~3% 압력, 1 dot 추가 cut 시 +1.5% upside.
+</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>결론 (매수 80/100, TP $520.51) 을 뒤집을 수 있는 가정 3개:
+
+**1. "Warsh 가 5/15+ 첫 행보에서 단기 매파 일관 유지"** [중요도 최고]
+시장은 단기 매파를 일부 가격책정했으나 청문회 톤보다 강경 시 충격 가능.
+→ **반증 시**: 1차 충격 -2~3%, 스코어 -7pt → 73, 등급 **매수 → 중립 강등**
+→ 검증: 5/15 취임 직후 24시간 발언, 5/28 PCE 후 첫 코멘트
+
+**2. "Core PCE 분기 SAAR 4.3% 가 5월 (4월치 PCE) 정점이고 6월부터 둔화"** [중요도 상]
+Iran/에너지 pass-through 가 일시적이라는 컨센서스.
+→ **반증 시 (4월 PCE 가속)**: 6월 무인하 확정 + 12월 인상 확률 25%+ 부상 → DIA -3~4%, 스코어 -10pt → 70, 등급 **매수 하단 (중립 fence)**
+→ 검증: 2026-05-28 BEA 발표
+
+**3. "30종 우량주 earnings 분산 효과로 단일 종목 충격 제한"** [중요도 중]
+2025 회계연도 30종 중 1-2종 가이던스 컷 가능 (UNH 정치 / BA 안전 / 산업주 관세).
+→ **반증 시 (UNH -7% 또는 BA -10% 시나리오)**: DIA -1~1.5% (price-weighted 영향), 스코어 -3pt → 77, 등급 **매수 유지**
+→ 검증: 2026 Q2 earnings season (7월 중순~)
+</div>
+<div class="sec"><h2>추천 근거 5 / 핵심 우려 3</h2>**매수 근거 5**:
+1. 신고가 -0.71% break-out 모멘텀 — Dow 50,579 신고가
+2. 매크로 정합성 — 인플레 sticky + Warsh 매파 환경에서 Financials 21.5% / Industrials 13.5% / Healthcare 18.2% overweight 직접 수혜
+3. Tech 거품 헷지 — Mag7 valuation 우려 시 자동 자금 로테이션 유입
+4. 월배당 1.55% — retiree 자금 안정 + 컴파운딩
+5. 0.16% 저비용 — 액티브 펀드 대비 절대 우위
+
+**핵심 우려 3**:
+1. Mag7 강세 재개 시 SPY/QQQ 대비 상대 underperform (-3~5%/연)
+2. Warsh 매파 톤 충격 — 5/15 취임 후 첫 발언 변동성
+3. 신고가 valuation reset 리스크 — 50,579 Dow + 10Y 4.56% 괴리 확대
+</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 20260527 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="DIA_SPDRDJIA_20260527.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
