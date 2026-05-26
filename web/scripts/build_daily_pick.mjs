@@ -168,20 +168,39 @@ function guessMarket(ticker) {
 async function pickToday(candidates) {
   if (candidates.length === 0) return null;
 
-  // 정렬: 점수 desc → 발화일 desc (최신 + 최고점)
+  // [v3.26] 로테이션: 최근 추천 이력 → 같은 종목 연속 방지
+  const historyPath = path.join(path.dirname(OUTPUT_JSON), 'daily_pick_history.json');
+  let history = [];
+  if (existsSync(historyPath)) {
+    try { history = JSON.parse(await readFile(historyPath, 'utf-8')); } catch {}
+  }
+
+  // 최근 7일 추천 티커
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 7);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+  const recentTickers = new Set(
+    history.filter(h => h.date >= cutoffStr).map(h => h.ticker)
+  );
+
+  // 정렬: 점수 desc → 발화일 desc
   const sorted = [...candidates].sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
     return b.date.localeCompare(a.date);
   });
 
-  for (const c of sorted) {
+  // 1차: 최근 7일 추천 안 된 종목 우선
+  const fresh = sorted.filter(c => !recentTickers.has(c.ticker));
+  const pool = fresh.length > 0 ? fresh : sorted;
+
+  for (const c of pool) {
     const sc = await findLatestScorecard(c.ticker, c.name);
     if (!sc) continue;
     const meta = await extractScorecardMeta(sc.path);
     const market = guessMarket(c.ticker);
-    // market 기반 currency 강제 (KRX → KRW, US → USD). meta.currency 는 보조용.
     const currency = market === 'KRX' ? 'KRW' : market === 'US' ? 'USD' : meta.currency;
-    return {
+
+    const pick = {
       ticker: c.ticker,
       name: c.name,
       version: c.version,
@@ -198,6 +217,16 @@ async function pickToday(candidates) {
       holding_period_days: meta.holding_period_days,
       reasons: meta.reasons,
     };
+
+    // 이력 갱신 (최근 30일만 보존)
+    const monthAgo = new Date();
+    monthAgo.setDate(monthAgo.getDate() - 30);
+    const monthAgoStr = monthAgo.toISOString().slice(0, 10);
+    history = history.filter(h => h.date >= monthAgoStr);
+    history.push({ date: todayKst(), ticker: c.ticker, score: c.score });
+    await writeFile(historyPath, JSON.stringify(history, null, 2), 'utf-8');
+
+    return pick;
   }
 
   return null;
