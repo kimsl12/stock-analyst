@@ -377,8 +377,20 @@ fence 밖 (수동 영역):
 4. **무한 루프 금지:** 같은 파일 3회 이상 Read 시 중단
 5. **완벽보다 완료:** P0 처리 완료 시 P1 미완료여도 보고 후 반환
 6. **거짓 자기보고 금지 [v3.11]:** \_index.md P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)" 등 자기 행동 선언 텍스트 작성 금지. 실제 Edit 완료 후에만 lint_report·해결완료 노트에 표기. (2026-05-03 사고 직접 원인)
-7. **Step 9 산출물 의무 [v3.12]:** mode=full 실행 시 `knowledge-db/_lint_history.jsonl` append + README.md Edit 둘 다 미수행하면 Step 10에서 "미완료"로 보고. 산출물 누락 상태로 "완료" 보고 금지.
-8. **`_lint_history.jsonl` 보호 [v3.12]:** 시스템 메타 파일 — 일회성 산출물 아님. 절대 삭제·재생성 금지. 첫 줄 `_meta` 레코드 수정 금지. append-only 원칙 준수 (기존 행 수정 시 다음 행에 정정 메모로 처리).
+7. **Step 9 산출물 의무 [v3.12 / v3.22]:** mode=full 실행 시 다음 3종 산출물 모두 처리해야 "완료" 보고 가능:
+   - **Step 9-A**: `knowledge-db/_lint_history.jsonl` append 1행 (mode/p0/p1/p2/auto_fixed/missed 필드 의무)
+   - **Step 9-B**: `node web/scripts/build_readme.mjs --apply` 호출 (README fence 영역 자동 갱신)
+   - **Step 9-C**: `node web/scripts/build_bootstrap.mjs --apply` 호출 (session-bootstrap fence 영역 자동 갱신)
+   - 셋 중 하나라도 미수행 = "미완료" 강제 보고. missed 배열에 누락 항목 명시.
+   - **agent 자기 maxTurns 중단 시도 미수행 시**: 메인 핸드오프가 fallback 으로 3종 직접 실행 의무 (자세한 fallback 절차는 `.claude/commands/KB점검.md` 의 "Fallback — wiki-linter agent maxTurns 중단 시" 섹션 참조)
+8. **`_lint_history.jsonl` 보호 + 실존 검증 [v3.12 / v3.22]:** 시스템 메타 파일 — 일회성 산출물 아님. 절대 삭제·재생성 금지. 첫 줄 `_meta` 레코드 수정 금지. append-only 원칙 준수 (기존 행 수정 시 다음 행에 정정 메모로 처리).
+   - **메인 핸드오프 시 "미존재 convention" 판단 금지** (2026-05-29 사고 직접 원인 — 실존 4행 파일을 "lint history lives in \_index.md P0 notes" 로 잘못 판단 후 skip). 핸드오프 첫 단계 = `ls -la knowledge-db/_lint_history.jsonl` 실존 확인 의무.
+9. **메인 핸드오프 fallback 강제 [v3.22 — 2026-05-29 신규]:** wiki-linter agent maxTurns 도달 후 메인이 이어받은 경우, 메인은 commit 직전 다음을 강제 검증:
+   ```bash
+   git diff --stat | grep -E "(README\.md|_lint_history\.jsonl|session-bootstrap\.md)" | wc -l
+   # 결과 < 3 (3종 모두 변경 안 됨) → commit 보류, 누락분 즉시 보완 후 재검증
+   ```
+   목적: 5/17·5/25·5/29 3회 연속 동일 패턴 (agent maxTurns → 메인 핸드오프 → Step 9 산출물 누락 → "완료" 거짓 보고) 재발 차단.
 
 ## 스케줄
 
