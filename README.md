@@ -11,6 +11,7 @@
 Tier 1~5 전체 (DC인프라 5 + 원자력/SMR 6 + 유틸 3 + 한국 미분석 3 + CHIPS 건설 2). 평균 스코어 80.3, 강력매수 8 / 매수 9 / 중립 2.
 
 **Top 5** (스코어 순):
+
 - [SK하이닉스 (000660)](https://stock-analyst-jungwon1.vercel.app/reports/000660_SK하이닉스_20260511.html) — **94.5 강력매수** ⭐ 19종 최고 (OP 100조 클럽, HBM4 풀체인)
 - [Arista Networks (ANET)](https://stock-analyst-jungwon1.vercel.app/reports/ANET_AristaNetworks_20260511.html) — **85.0 강력매수** (DC 네트워킹 1위)
 - [Vistra (VST)](https://stock-analyst-jungwon1.vercel.app/reports/VST_VistraCorp_20260511.html) — **83.8 강력매수** (원자력 PPA + 데이터센터)
@@ -23,7 +24,14 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
 
 ### 최근 브리핑 (지난 일주일)
 
+<!--
+  ⚠️ 아래 fence 영역 (BEGIN/END AUTOGEN) 은 `web/scripts/build_readme.mjs` 가 자동 관리.
+     수동 편집 금지 — 다음 wiki-linter Step 9-B 실행 시 덮어쓰임.
+     룰 명세: web/scripts/build_readme.mjs 헤더 주석 (Single Source of Truth).
+     7일 cutoff (KST 기준), 날짜 desc, reports/briefing/*.html 스캔.
+-->
 <!-- BEGIN AUTOGEN: recent-briefing -->
+
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260529.html) — 2026-05-29
 - [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260528.html) — 2026-05-28
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260528.html) — 2026-05-28
@@ -45,33 +53,41 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
 
 ### 누적
 
+<!--
+  ⚠️ 아래 fence 영역 (BEGIN/END AUTOGEN) 은 `web/scripts/build_readme.mjs` 가 자동 관리.
+     수동 편집 금지 — 다음 wiki-linter Step 9-B 실행 시 덮어쓰임.
+     룰 명세: web/scripts/build_readme.mjs 헤더 주석 (Single Source of Truth).
+     데이터 소스: reports/*.html (직속) + reports/briefing/*.html + reports/analyst/items/ 디렉토리.
+-->
 <!-- BEGIN AUTOGEN: counts -->
+
 종목·ETF **207건** + 브리핑 **118건** + 애널리스트 **153건** = 총 **478건** (2026-05-29 기준)
+
 <!-- END AUTOGEN: counts -->
 
 ## 변경 이력
 
-| 버전 | 날짜 | 핵심 |
-|------|------|------|
-| v3.17 | 2026-05-12 | Research KB 큐레이션 (5섹터 × 4소스군 3-레이어) + research-curator + /리서치업데이트 |
-| v3.16 | 2026-05-10 | manifest sort_key git commit time + Vercel 빌드 .git 우회 + 4-layer sync 강제 |
-| v3.15 | 2026-05-06 | Phase 0-D hang 방지 (run_in_background) + 시간 폭주 5룰 |
-| v3.14 | 2026-05-05 | KST↔ET 시간대 표현 모순 수정 + 발행 시점 표준 |
-| v3.13 | 2026-05-05 | KST 시간대 가이드 신설 (_time_guide.md) |
-| v3.12 | 2026-05-05 | wiki-linter lint_report jsonl 압축 |
-| v3.11 | 2026-05-04 | GitHub Pages main↔gh-pages 자동 사이클 제거 + lead 화이트리스트 |
-| v3.10.1 | 2026-04-24 | 날짜 추론 오기 방지 (date-rules.md SSOT + target_date 강제) |
-| v3.10 | 2026-04-23 | 재분석 Stale 자동 경고 (14일+ 배너 + 매크로 트리거) + /재분석점검 |
-| v3.9 | 2026-04-23 | Phase 3 종료 검증 + R:R<1.5 진입 보류 태깅 + 컨센서스 초과 경고 |
-| v3.8 | 2026-04-21 | 일회성 산출물 자체 정리 + .gitattributes CRLF 차단 + Todo 의무화 |
-| v3.7 | 2026-04-20 | luxury KB + 에너지/방산 재편 + 루트 redirect SSOT |
-| v3.6 | 2026-04-19 | etf-lead 분기 + 다크/라이트 테마 토글 |
-| v3.5 | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + 브리핑 스캐폴딩 |
-| v3.2 | 2026-04-13 | LLM Wiki 전환 (wiki-linter + Phase 0-LINT) |
-| v3.1 | 2026-04-09 | GitHub Pages 자동 배포 + 비상장 기업 분석 |
-| v3.0 | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어 |
-| v2.3 | 2026-04-06 | 데이터 흐름 개편 + 해외 종목 + 가격 검증 |
-| v2.0 | 2026-04-05 | 9개 에이전트 + DART API |
+| 버전    | 날짜       | 핵심                                                                                 |
+| ------- | ---------- | ------------------------------------------------------------------------------------ |
+| v3.17   | 2026-05-12 | Research KB 큐레이션 (5섹터 × 4소스군 3-레이어) + research-curator + /리서치업데이트 |
+| v3.16   | 2026-05-10 | manifest sort_key git commit time + Vercel 빌드 .git 우회 + 4-layer sync 강제        |
+| v3.15   | 2026-05-06 | Phase 0-D hang 방지 (run_in_background) + 시간 폭주 5룰                              |
+| v3.14   | 2026-05-05 | KST↔ET 시간대 표현 모순 수정 + 발행 시점 표준                                        |
+| v3.13   | 2026-05-05 | KST 시간대 가이드 신설 (\_time_guide.md)                                             |
+| v3.12   | 2026-05-05 | wiki-linter lint_report jsonl 압축                                                   |
+| v3.11   | 2026-05-04 | GitHub Pages main↔gh-pages 자동 사이클 제거 + lead 화이트리스트                      |
+| v3.10.1 | 2026-04-24 | 날짜 추론 오기 방지 (date-rules.md SSOT + target_date 강제)                          |
+| v3.10   | 2026-04-23 | 재분석 Stale 자동 경고 (14일+ 배너 + 매크로 트리거) + /재분석점검                    |
+| v3.9    | 2026-04-23 | Phase 3 종료 검증 + R:R<1.5 진입 보류 태깅 + 컨센서스 초과 경고                      |
+| v3.8    | 2026-04-21 | 일회성 산출물 자체 정리 + .gitattributes CRLF 차단 + Todo 의무화                     |
+| v3.7    | 2026-04-20 | luxury KB + 에너지/방산 재편 + 루트 redirect SSOT                                    |
+| v3.6    | 2026-04-19 | etf-lead 분기 + 다크/라이트 테마 토글                                                |
+| v3.5    | 2026-04-13 | session-bootstrap + KB 신뢰도 티어 + 브리핑 스캐폴딩                                 |
+| v3.2    | 2026-04-13 | LLM Wiki 전환 (wiki-linter + Phase 0-LINT)                                           |
+| v3.1    | 2026-04-09 | GitHub Pages 자동 배포 + 비상장 기업 분석                                            |
+| v3.0    | 2026-04-07 | 브리핑 파이프라인 5 에이전트 + 10 명령어                                             |
+| v2.3    | 2026-04-06 | 데이터 흐름 개편 + 해외 종목 + 가격 검증                                             |
+| v2.0    | 2026-04-05 | 9개 에이전트 + DART API                                                              |
 
 ---
 
@@ -81,29 +97,29 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
 
 ### 3-레이어 구조
 
-| 레이어 | 주기 | 산출물 | 인용 활용 |
-|---|---|---|---|
-| **L1** 헤드라인 인덱스 | 주간 | `knowledge-base/research/_index.md` (12주 슬라이딩) | 즉시 발췌 가능 |
-| **L2** 한국어 요약본 | 월간 | `knowledge-base/research/{sector}/{topic}_{YYYYMM}.md` | 분석 에이전트 인용 |
-| **L3** 분기 Deep Dive | 분기 | `reports/research/{sector}_{YYYY}Q{N}.html` | 사용자 참조 + thesis 재정비 |
+| 레이어                 | 주기 | 산출물                                                 | 인용 활용                   |
+| ---------------------- | ---- | ------------------------------------------------------ | --------------------------- |
+| **L1** 헤드라인 인덱스 | 주간 | `knowledge-base/research/_index.md` (12주 슬라이딩)    | 즉시 발췌 가능              |
+| **L2** 한국어 요약본   | 월간 | `knowledge-base/research/{sector}/{topic}_{YYYYMM}.md` | 분석 에이전트 인용          |
+| **L3** 분기 Deep Dive  | 분기 | `reports/research/{sector}_{YYYY}Q{N}.html`            | 사용자 참조 + thesis 재정비 |
 
 ### 5섹터 × 4소스군 매트릭스
 
-|  | 학술 | 씽크탱크 | 컨퍼런스/백서 | 규제 |
-|---|---|---|---|---|
-| **반도체** | arXiv, SSRN | McKinsey, BCG, SEMI, CSIS | ISSCC, VLSI, HotChips, IEDM | BIS CHIPS, 한국 산업부, METI |
-| **에너지** | NBER, SSRN, arXiv | IEA, McKinsey, CSIS, RFF | IEA WEO, BP Outlook, ANS | DOE, NRC, EPA, FERC |
-| **매크로** | NBER, BIS WP, Fed FEDS | IMF, BIS, IIF, Brookings | Jackson Hole, BIS AER, IMF Annual | Fed, ECB, BOJ, BOK |
-| **바이오** | Nature, NEJM, Lancet, bioRxiv | McKinsey Pharma, BCG Health | ASCO, ASH, AHA, JPM Healthcare | FDA, EMA, 식약처, CMS |
-| **핀테크** | SSRN, BIS WP, NBER | BIS Innovation Hub, BoE | Money 20/20, WEF, FedNow | SEC, OCC, CFTC, 금융위 |
+|            | 학술                          | 씽크탱크                    | 컨퍼런스/백서                     | 규제                         |
+| ---------- | ----------------------------- | --------------------------- | --------------------------------- | ---------------------------- |
+| **반도체** | arXiv, SSRN                   | McKinsey, BCG, SEMI, CSIS   | ISSCC, VLSI, HotChips, IEDM       | BIS CHIPS, 한국 산업부, METI |
+| **에너지** | NBER, SSRN, arXiv             | IEA, McKinsey, CSIS, RFF    | IEA WEO, BP Outlook, ANS          | DOE, NRC, EPA, FERC          |
+| **매크로** | NBER, BIS WP, Fed FEDS        | IMF, BIS, IIF, Brookings    | Jackson Hole, BIS AER, IMF Annual | Fed, ECB, BOJ, BOK           |
+| **바이오** | Nature, NEJM, Lancet, bioRxiv | McKinsey Pharma, BCG Health | ASCO, ASH, AHA, JPM Healthcare    | FDA, EMA, 식약처, CMS        |
+| **핀테크** | SSRN, BIS WP, NBER            | BIS Innovation Hub, BoE     | Money 20/20, WEF, FedNow          | SEC, OCC, CFTC, 금융위       |
 
 ### 자동 호출 (briefing-lead Phase 0-RESEARCH)
 
-| 명령 | 자동 호출 | 사유 |
-|---|---|---|
-| `/주간리포트`, `/글로벌인텔리전스`, `/모델포트폴리오`, `/풀브리핑` | ✅ 일요일 + 조건 매칭 시 | 무거운 분석, 깊이 가치 |
-| `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` | ❌ 자동 호출 X | 시간 폭주 방지 |
-| `/리서치업데이트` | ✅ 수동 명령 즉시 | 즉시 갱신용 |
+| 명령                                                                                       | 자동 호출                | 사유                   |
+| ------------------------------------------------------------------------------------------ | ------------------------ | ---------------------- |
+| `/주간리포트`, `/글로벌인텔리전스`, `/모델포트폴리오`, `/풀브리핑`                         | ✅ 일요일 + 조건 매칭 시 | 무거운 분석, 깊이 가치 |
+| `/모닝브리핑`, `/이브닝브리핑`, `/크립토브리핑`, `/성과리뷰`, `/리밸런싱`, `/내포트폴리오` | ❌ 자동 호출 X           | 시간 폭주 방지         |
+| `/리서치업데이트`                                                                          | ✅ 수동 명령 즉시        | 즉시 갱신용            |
 
 ### 인용 형식 8 유형
 
@@ -138,11 +154,11 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
 
 stock-analyst-lead가 매 세션 첫 응답 직전 session-bootstrap.md stale 감지.
 
-| 경과일 | 분류 | 자동 배너 |
-|-------|-----|---------|
-| 0~13일 | 🟢 유효 | 표시 안 함 (피로도 방지) |
-| 14~29일 | 🟡 권고 | 표시 |
-| 30일+ | 🔴 만료 | 표시 |
+| 경과일  | 분류    | 자동 배너                |
+| ------- | ------- | ------------------------ |
+| 0~13일  | 🟢 유효 | 표시 안 함 (피로도 방지) |
+| 14~29일 | 🟡 권고 | 표시                     |
+| 30일+   | 🔴 만료 | 표시                     |
 
 배너는 첫 응답 1회만 출력, 반복 금지. 사용자가 "조용히" 요청 시 해당 세션 스킵.
 
@@ -171,7 +187,9 @@ knowledge-base/industry/·macro/ mtime이 최근 7일 이내이면, 해당 섹�
 2026-04-23 11종 재분석 과정에서 발견된 5가지 이슈를 구조적으로 해결.
 
 ### 이슈 1: Phase 3 종료 검증 의무화 (stock-analyst-lead / etf-lead)
+
 서브에이전트 Executive Summary 반환 전 **3단계 검증 Bash 실행**:
+
 - HTML 파일 존재 (`ls reports/{파일}`)
 - git log 커밋 확인 (`git log | grep {티커}`)
 - session-bootstrap.md 갱신 확인
@@ -179,36 +197,44 @@ knowledge-base/industry/·macro/ mtime이 최근 7일 이내이면, 해당 섹�
 실패 시: HTML 누락 → 재호출 / 커밋 누락 → 리드 직접 처리 / bootstrap 누락 → Edit.
 
 ### 이슈 2: 파일별 명시적 git add (병렬 경합 방지)
+
 ```
 ❌ git add reports/           (폴더 전체 — 다른 병렬 에이전트 산출물 섞임)
 ✅ git add reports/{특정파일}  (본 세션 파일만)
 ```
+
 사례: 2026-04-23 두산에너빌리티 HTML이 카카오 커밋에 섞인 사고.
 
 ### 이슈 3: 버전 관리 명명 규칙 통일
+
 ```
 analysis/{티커}_{종목명}_v2/          (폴더는 버전 접미사 필수)
 analysis/{티커}_{종목명}_v1/          (재분석 시 기존 폴더 리네임 보존)
 reports/{티커}_{종목명}_{YYYYMMDD}.html  (HTML은 날짜만, 버전 접미사 금지)
 ```
+
 기존 reports HTML 삭제·덮어쓰기 금지 (델타 비교 보존 의무).
 
 ### 이슈 4: R:R < 1.5 진입 보류 자동 태깅 (scorecard-strategist)
-| R:R | 태그 |
-|-----|-----|
-| ≥ 2.0 | (태그 없음) |
-| 1.5~1.99 | 🟡 Acceptable |
-| 1.0~1.49 | 🟠 **⚠️ 진입 보류 권고** |
-| < 1.0 | 🔴 **⛔ 진입 금지 — 조정 대기 권고** |
+
+| R:R      | 태그                                 |
+| -------- | ------------------------------------ |
+| ≥ 2.0    | (태그 없음)                          |
+| 1.5~1.99 | 🟡 Acceptable                        |
+| 1.0~1.49 | 🟠 **⚠️ 진입 보류 권고**             |
+| < 1.0    | 🔴 **⛔ 진입 금지 — 조정 대기 권고** |
 
 스코어 72.4 Buy라도 R:R 0.41이면 "진입 보류" 태그가 스코어보다 우선 표시.
 
 ### 이슈 5: 컨센서스 초과 자동 경고 (report_template.py)
+
 현재가 > 증권사 평균 목표가인 경우, HTML 리포트 **최상단에 노란색 경고 블록 자동 삽입**:
+
 ```
 ⚠️ 컨센서스 초과 경고
 현재가가 증권사 평균 목표가 $X를 +X.X% 초과 — 업사이드 소진
 ```
+
 scorecard에서 `consensus_warning`·`entry_warning` 필드로 전달.
 
 ---
@@ -216,13 +242,17 @@ scorecard에서 `consensus_warning`·`entry_warning` 필드로 전달.
 ## v3.8 핵심 — 산출물 정리 & 환경 안정화
 
 ### 일회성 산출물 자체 정리 규칙 (`stock-analyst-lead`)
+
 Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커밋 여부와 관계없이 무조건 삭제**:
+
 - `generate_{티커}.py`
 - `{티커}_report_data.json`, `{티커}_part*.json`, `{티커}_basic.json`
 - `scripts/_tmp_*.txt`, `analysis/{티커}/_report_data.json`
 
 ### `.gitignore` 2중 방어
+
 루트 한정 패턴으로 실수 커밋 시에도 자동 배제 (공용 모듈 `chart_templates.py`·`report_template.py`와 이름 충돌 없음):
+
 ```
 /generate_*.py
 /*_report_data.json
@@ -231,18 +261,23 @@ Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커�
 ```
 
 ### `.gitattributes` CRLF 영구 차단 (2026-04-21 커밋 `6bd498c`)
+
 외장 SSD 환경에서 재발한 CRLF 대량 "modification" 사태 해결:
+
 - `* text=auto eol=lf` 전역 규칙
 - `core.autocrlf=false` 고정
 - 기존 인덱스 CRLF 오염 97개 파일 `git add --renormalize .`
 
 ### Bootstrap Stale 검증
+
 매 세션 시작 시 `session-bootstrap.md` Read → 마지막 작업·KB 상태·유효 파일 즉시 파악. 작업 완료 시 `stock-analyst-lead`가 자동 갱신.
 
 ### Todo 의무화
+
 다단계 작업에서 TodoWrite로 진행 상황 추적 (토큰 관리 + 중단 복구).
 
 ### Agent 도구 복구 (2026-04-21 확인)
+
 이전 Task 도구 비활성화 이슈 해소 — sub-agent 호출권 정상 동작.
 
 ---
@@ -252,10 +287,12 @@ Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커�
 `stock-analyst-lead` 가 사용자 요청을 키워드로 자동 분기한다 (Step -2 부트스트랩 → Step -1 판별).
 
 ### 🅰️ 종목 분석 파이프라인
+
 개별 종목·ETF 한 건 심층 분석 → HTML 리포트 생성. 매수·매도 추천 + 목표가/손절가 포함.
 **v3.6부터 ETF는 `etf-lead` 하위 오케스트레이터로 분기** (data-collector → etf-analyst → report-generator 3단계).
 
 ### 🅱️ 브리핑 파이프라인
+
 글로벌 매크로·크로스에셋 브리핑 자동 생성. **신규 투자 아이디어 적극 제안** — 매크로 분석 기반
 Bull/Bear 시나리오, 섹터·종목 아이디어, 진입 근거·리스크 병기.
 슬래시 명령으로 모듈별 실행. `briefing-lead` 가 오케스트레이터.
@@ -309,37 +346,37 @@ knowledge-base/_index.md                     ← KB 마스터 인덱스 (단일 
 
 ### KB 관리 (3개)
 
-| 명령어 | 사용 예시 | 에이전트 | 설명 |
-|---|---|---|---|
-| `/KB업데이트` | `/KB업데이트 luxury` | kb-updater | 섹터·토픽 웹검색 갱신 (v3.4 미니사이클) |
-| `/KB점검` | `/KB점검` | wiki-linter | P0~P2 탐지 + 자동 수정 |
+| 명령어            | 사용 예시                                                                            | 에이전트         | 설명                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------ | ---------------- | ------------------------------------------------------------------------ |
+| `/KB업데이트`     | `/KB업데이트 luxury`                                                                 | kb-updater       | 섹터·토픽 웹검색 갱신 (v3.4 미니사이클)                                  |
+| `/KB점검`         | `/KB점검`                                                                            | wiki-linter      | P0~P2 탐지 + 자동 수정                                                   |
 | `/리서치업데이트` | `/리서치업데이트 주간`, `/리서치업데이트 월간 반도체`, `/리서치업데이트 분기 에너지` | research-curator | **[v3.17 신규]** 5섹터 × 4소스군 1차 자료 큐레이션 (주간/월간/분기/검증) |
 
 ### 종목 분석 (6개)
 
-| 명령어 | 사용 예시 | 설명 |
-|---|---|---|
-| `/종목분석` | `/종목분석 삼성전자`, `/종목분석 IWM` | 전체 분석 (개별 종목 / ETF 자동 판별) |
-| `/비교분석` | `/비교분석 삼성전자 SK하이닉스` | 두 종목 비교 |
-| `/빠른분석` | `/빠른분석 네이버` | 핵심 지표 + ATR (5분 이내) |
-| `/손절계산` | `/손절계산 삼성전자 80000` | ATR 손절/목표 계산 |
-| `/리포트` | `/리포트 삼성전자` | 기존 분석 → HTML 재생성 |
-| **`/재분석점검`** | `/재분석점검`, `/재분석점검 7` | **stale 분석 탐지 + 재분석 우선순위 목록 [v3.10]** |
+| 명령어            | 사용 예시                             | 설명                                               |
+| ----------------- | ------------------------------------- | -------------------------------------------------- |
+| `/종목분석`       | `/종목분석 삼성전자`, `/종목분석 IWM` | 전체 분석 (개별 종목 / ETF 자동 판별)              |
+| `/비교분석`       | `/비교분석 삼성전자 SK하이닉스`       | 두 종목 비교                                       |
+| `/빠른분석`       | `/빠른분석 네이버`                    | 핵심 지표 + ATR (5분 이내)                         |
+| `/손절계산`       | `/손절계산 삼성전자 80000`            | ATR 손절/목표 계산                                 |
+| `/리포트`         | `/리포트 삼성전자`                    | 기존 분석 → HTML 재생성                            |
+| **`/재분석점검`** | `/재분석점검`, `/재분석점검 7`        | **stale 분석 탐지 + 재분석 우선순위 목록 [v3.10]** |
 
 ### 브리핑 (10개)
 
-| 명령어 | 모듈 | 산출물 |
-|---|---|---|
-| `/모닝브리핑` | 🌅 A | `morning_{YYYYMMDD}.html` |
-| `/이브닝브리핑` | 🌙 B | `evening_{YYYYMMDD}.html` |
-| `/주간리포트` | 📊 C | `weekly_{YYYYMMDD}.html` |
-| `/리밸런싱` | 🔄 D | `rebalancing_{유형}_{YYYYMMDD}.html` |
-| `/크립토브리핑` | 🪙 E | `crypto_{YYYYMMDD}.html` |
-| `/모델포트폴리오` | 🧭 F | `model_portfolio_{YYYYMMDD}.html` |
-| `/글로벌인텔리전스` | 🌐 G | `global_intelligence_{YYYYMMDD}.html` |
-| `/풀브리핑` | A+B+C+E | 4개 HTML |
-| `/성과리뷰` | C-9 단독 | `performance_review_{기간}_{YYYYMMDD}.html` |
-| `/내포트폴리오` | 개인 데이터 | `user_portfolio_{YYYYMMDD}.html` |
+| 명령어              | 모듈        | 산출물                                      |
+| ------------------- | ----------- | ------------------------------------------- |
+| `/모닝브리핑`       | 🌅 A        | `morning_{YYYYMMDD}.html`                   |
+| `/이브닝브리핑`     | 🌙 B        | `evening_{YYYYMMDD}.html`                   |
+| `/주간리포트`       | 📊 C        | `weekly_{YYYYMMDD}.html`                    |
+| `/리밸런싱`         | 🔄 D        | `rebalancing_{유형}_{YYYYMMDD}.html`        |
+| `/크립토브리핑`     | 🪙 E        | `crypto_{YYYYMMDD}.html`                    |
+| `/모델포트폴리오`   | 🧭 F        | `model_portfolio_{YYYYMMDD}.html`           |
+| `/글로벌인텔리전스` | 🌐 G        | `global_intelligence_{YYYYMMDD}.html`       |
+| `/풀브리핑`         | A+B+C+E     | 4개 HTML                                    |
+| `/성과리뷰`         | C-9 단독    | `performance_review_{기간}_{YYYYMMDD}.html` |
+| `/내포트폴리오`     | 개인 데이터 | `user_portfolio_{YYYYMMDD}.html`            |
 
 ---
 
@@ -489,10 +526,10 @@ banking_capital · correlation_matrix (갱신)
 
 GitHub Actions 차단 (Ticket 4287825, 2026-04-15) 이후 수동 CLI 운영. main push 자체로는 사이트 갱신 안 됨 — `reports/**/*.html` 변경 push 직후 양쪽 채널 모두 실행 필수 (`CLAUDE.md` 룰).
 
-| 채널 | URL | 갱신 명령 | 시간 |
-|---|---|---|---|
-| **Vercel (본)** | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes` | ~45초 |
-| Cloudflare (미러) | https://stock-analyst.pages.dev/ | `bash scripts/deploy_cloudflare.sh` | ~5초 |
+| 채널              | URL                                        | 갱신 명령                           | 시간  |
+| ----------------- | ------------------------------------------ | ----------------------------------- | ----- |
+| **Vercel (본)**   | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes`               | ~45초 |
+| Cloudflare (미러) | https://stock-analyst.pages.dev/           | `bash scripts/deploy_cloudflare.sh` | ~5초  |
 
 ### 현재 상태 (2026-05-12)
 
@@ -507,12 +544,12 @@ GitHub Actions 차단 (Ticket 4287825, 2026-04-15) 이후 수동 CLI 운영. mai
 
 `web/` 디렉토리 — Astro 4 SSG + Supabase Auth + Vercel 배포 (모노레포 루트). 카드 시간순 혼합 정렬 [v3.16].
 
-| 기능 | 경로 | 비고 |
-|---|---|---|
-| 홈 (검색·종목 클라우드·성과 도넛·홀딩스 도넛) | `/` | RecommendCloud 한국어 매핑 (90+ 티커) |
-| 종목 비교 | `/compare?a={티커1}&b={티커2}` | 모바일 ≤800px 세로 스택 |
-| 시간머신 | `/timemachine` | 1주/1개월/3개월 가격 비교 (yfinance Edge Function) |
-| 로그인 | `/login` | Email + 비밀번호 (Magic Link 폐지, v3.11 이전 변경) |
-| Edge Function | `api/price/[ticker].py` | Vercel Python Serverless, KST 타임스탬프 |
+| 기능                                          | 경로                           | 비고                                                |
+| --------------------------------------------- | ------------------------------ | --------------------------------------------------- |
+| 홈 (검색·종목 클라우드·성과 도넛·홀딩스 도넛) | `/`                            | RecommendCloud 한국어 매핑 (90+ 티커)               |
+| 종목 비교                                     | `/compare?a={티커1}&b={티커2}` | 모바일 ≤800px 세로 스택                             |
+| 시간머신                                      | `/timemachine`                 | 1주/1개월/3개월 가격 비교 (yfinance Edge Function)  |
+| 로그인                                        | `/login`                       | Email + 비밀번호 (Magic Link 폐지, v3.11 이전 변경) |
+| Edge Function                                 | `api/price/[ticker].py`        | Vercel Python Serverless, KST 타임스탬프            |
 
 빌드 환경: `BUILD_NEW_PASSWORD` (Supabase Admin API), `SUPABASE_*` 키 — Vercel 빌드 환경변수.

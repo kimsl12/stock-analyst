@@ -2,26 +2,81 @@
 /**
  * build_readme.mjs — README.md 자동 갱신 (fence 영역 한정)
  *
- * 정책 (2026-05-29, build_bootstrap.mjs 와 같은 패턴):
- *   1. fence 영역 (<!-- BEGIN AUTOGEN: {section} --> ~ <!-- END AUTOGEN: {section} -->) 만 교체
- *   2. 수동 큐레이션 영역 (최신 분석 묶음, 변경 이력, 버전별 설명) 절대 미수정
- *   3. wiki-linter mode=full Step 9-B 가 호출하도록 단순화 (1줄: node web/scripts/build_readme.mjs --apply)
+ * ─────────────────────────────────────────────────────────────────────
+ * 수정 룰 (Single Source of Truth — 5/29 v3.21)
+ * ─────────────────────────────────────────────────────────────────────
  *
- * 자동 갱신 fence:
- *   - recent-briefing: reports/briefing/*.html 의 지난 7일 항목 (날짜 desc)
- *   - counts: 종목·ETF + 브리핑 + 애널리스트 누적 카운트 + 갱신일
+ * ## 수정 가능 영역 (fence 2개)
  *
- * 모드:
+ * 1. <!-- BEGIN AUTOGEN: recent-briefing --> ~ <!-- END AUTOGEN: recent-briefing -->
+ *    - 위치: README.md "### 최근 브리핑 (지난 일주일)" 헤더 직후
+ *    - 데이터 소스: reports/briefing/*.html 파일명 (스캔 결과)
+ *    - 필터: KST 기준 today - 파일날짜 ≤ 7일
+ *    - 정렬: 날짜 desc (최신 위)
+ *    - 출력 형식: `- [{label}]({BASE_URL}/briefing/{filename}) — {YYYY-MM-DD}`
+ *    - 7일 cutoff 항목 0건 시 출력: "_지난 7일간 신규 브리핑 없음._"
+ *
+ * 2. <!-- BEGIN AUTOGEN: counts --> ~ <!-- END AUTOGEN: counts -->
+ *    - 위치: README.md "### 누적" 헤더 직후
+ *    - 데이터 소스 3종:
+ *        a. 종목·ETF = reports/*.html (직속만, 서브디렉토리 제외)
+ *        b. 브리핑   = reports/briefing/*.html
+ *        c. 애널리스트 = reports/analyst/items/ 안 디렉토리 개수
+ *    - 출력 형식: "종목·ETF **{N}건** + 브리핑 **{N}건** + 애널리스트 **{N}건** = 총 **{N}건** ({YYYY-MM-DD} 기준)"
+ *    - 기준일: todayKst() = Asia/Seoul YYYY-MM-DD
+ *
+ * ## 절대 미수정 영역 (fence 밖)
+ *
+ *   - 헤더 + 버전 라인 (# 종목분석 AI 에이전트 v3.21)
+ *   - 상단 링크 (Vercel/Cloudflare)
+ *   - 최신 분석 묶음 큐레이션 (### 2026-05-11 — CapEx 슈퍼사이클 19종 등) — 사용자 수동 작성
+ *   - 변경 이력 표 — lead 수동 Edit (버전 추가 시)
+ *   - 버전별 상세 섹션 (v3.21 핵심 / v3.17 / v3.10 / v3.9 …)
+ *
+ * ## 브리핑 타입 매핑 (BRIEFING_TYPE_MAP)
+ *
+ *   파일 prefix              → 표시 라벨
+ *   ─────────────────────────────────────
+ *   morning_                 → 모닝 브리핑
+ *   evening_                 → 이브닝 브리핑
+ *   weekly_                  → 주간 리포트
+ *   global_intelligence_     → 글로벌 인텔리전스
+ *   crypto_                  → 크립토 브리핑
+ *   model_portfolio_         → 모델 포트폴리오
+ *   rebalance_               → 리밸런싱
+ *   performance_review_1m_   → 성과 리뷰 1M
+ *   performance_review_      → 성과 리뷰
+ *   user_portfolio_          → 내 포트폴리오
+ *   full_                    → 풀 브리핑
+ *   (prefix 미매치 = drop, 표시 안 됨)
+ *
+ * ## 안전장치
+ *
+ *   1. fence 미발견 시 ensureFence() 로 자동 삽입 (헤더 직후 ~ 다음 ### 또는 ## 직전 영역 교체)
+ *   2. fence 안 본문이 변경 없으면 readFile = writeFile 동등 → "변경 없음" 보고 후 readFile.md 미수정
+ *   3. apply 안 하면 dry-run (기본) — stdout 만 출력
+ *   4. KST 시각 기준 (Asia/Seoul) — _kst.mjs todayKst() 사용. UTC 슬라이스 금지
+ *
+ * ## 모드
+ *
  *   --dry-run (기본): fence 영역만 stdout 출력
- *   --apply: README.md 의 fence 영역만 in-place 교체
+ *   --apply: README.md 의 fence 영역만 in-place 교체 (fence 밖 무수정)
  *
- * 호출:
+ * ## 호출
+ *
  *   cd 프로젝트루트 && node web/scripts/build_readme.mjs --dry-run
  *   cd 프로젝트루트 && node web/scripts/build_readme.mjs --apply
  *
- * 자동 호출 시점:
- *   - wiki-linter mode=full Step 9-B (기존 Edit 대체)
- *   - /KB점검 명시 호출
+ * ## 자동 호출 시점
+ *
+ *   - wiki-linter mode=full Step 9-B (5/29 v3.21 — agent Edit 대체)
+ *   - /KB점검 명시 호출 시 wiki-linter 가 trigger
+ *   - 메인 핸드오프 fallback (KB점검.md "Fallback" 섹션, v3.22 5/29)
+ *
+ * ## 관련
+ *
+ *   - 자매 스크립트: build_bootstrap.mjs (session-bootstrap.md analyses fence)
+ *   - 룰 문서: .claude/agents/wiki-linter.md Step 9-B + .claude/commands/KB점검.md Fallback
  */
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
