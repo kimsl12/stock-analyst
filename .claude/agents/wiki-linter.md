@@ -24,11 +24,11 @@ Karpathy LLM Wiki의 Lint 작업에 해당하는 전담 에이전트.
 
 ## 실행 모드
 
-| mode | 호출 | 범위 |
-|------|------|------|
-| `quick` | 주간리포트·풀브리핑 Phase 0-A 전 자동 | P0 항목만 탐지 + knowledge-base/_index.md 상태 갱신 |
-| `full` | `/KB점검` 수동 호출 | P0~P2 전체 + 교차 검증 + 자동 수정 |
-| `cross_check` | kb-updater 갱신 완료 후 자동 | 수치 불일치 교차 검증만 |
+| mode          | 호출                                  | 범위                                                 |
+| ------------- | ------------------------------------- | ---------------------------------------------------- |
+| `quick`       | 주간리포트·풀브리핑 Phase 0-A 전 자동 | P0 항목만 탐지 + knowledge-base/\_index.md 상태 갱신 |
+| `full`        | `/KB점검` 수동 호출                   | P0~P2 전체 + 교차 검증 + 자동 수정                   |
+| `cross_check` | kb-updater 갱신 완료 후 자동          | 수치 불일치 교차 검증만                              |
 
 ---
 
@@ -54,6 +54,7 @@ Step 10: 사용자 콘솔 보고 — 단, Step 9가 모두 완료된 경우에�
 > Step 10에서는 "Step 9-A 미수행" 등 정직한 상태를 출력해야 한다 (5/3 사고 재발 방지).
 >
 > **Step 9-A 작성 절차 [v3.12]:**
+>
 > 1. `knowledge-db/_lint_history.jsonl` Read (마지막 행 확인, 중복 방지)
 > 2. 새 jsonl 한 줄을 파일 끝에 append (Edit tool: 마지막 행 끝 `\n` 위치에 새 행 추가)
 > 3. `_meta` 레코드(첫 줄)는 절대 수정 금지
@@ -110,7 +111,7 @@ Step 10: 사용자 콘솔 보고 — 단, Step 9가 모두 완료된 경우에�
 > **2026-05-03 사고 학습:** 기존 P1 표는 "탐지 결과"와 "조치 코멘트(자기보고)"가 한 셀에 섞여
 > 거짓 자기보고("(아래 갱신 완료)") 패턴을 유발. 역할 분리로 재발 방지.
 
-#### _index.md P1 표 (탐지 결과만)
+#### \_index.md P1 표 (탐지 결과만)
 
 ```
 ✅ 허용 칼럼: | 파일 | 문제 | 심각도 | 권장 조치 |
@@ -136,9 +137,10 @@ P1 항목별 상세 분석은 lint_report에만 작성:
 _index.md P1 표는 lint_report 요약 1줄만 인용. 상세는 lint_report 참조.
 ```
 
-#### 기존 _index.md P1 표 마이그레이션
+#### 기존 \_index.md P1 표 마이그레이션
 
 신규 양식 적용 시점:
+
 - **다음 자동 점검(매주 일요일)부터 신규 양식 사용**
 - 기존 P1 표 자체는 점진적 마이그레이션 (즉시 재작성 강요 안 함)
 - 거짓 자기보고 패턴 발견 시에만 즉시 수정 (해결완료 노트로 이동 + 표 셀 정리)
@@ -161,7 +163,7 @@ _index.md P1 표는 lint_report 요약 1줄만 인용. 상세는 lint_report 참
 
 ## KB 교차 검증 규칙
 
-> knowledge-base/_index.md "KB 간 교차 참조 맵" 기준으로 수치 일관성 검증.
+> knowledge-base/\_index.md "KB 간 교차 참조 맵" 기준으로 수치 일관성 검증.
 
 ```python
 # 검증 쌍 (파일A §섹션, 파일B §섹션, 허용 오차)
@@ -207,34 +209,42 @@ if discrepancy > tolerance:
 각 자동 수정 항목 완료 직후 다음을 즉시 수행:
 
 ### 1. Edit 직후 Read로 즉시 재검증
-- 수정한 영역(특히 _index.md 교차참조 맵)을 Edit 호출 직후 다시 Read 해서 의도한 변경이 반영됐는지 확인
+
+- 수정한 영역(특히 \_index.md 교차참조 맵)을 Edit 호출 직후 다시 Read 해서 의도한 변경이 반영됐는지 확인
 - 다중 영역 수정 시 각 영역마다 개별 검증
 
 ### 2. `grep -n` 으로 잔존 표기 탐지
+
 교차참조 맵 갱신 시 필수:
+
 ```bash
 grep -n "{이전 검증일}" knowledge-base/_index.md
 ```
+
 - 남아 있는 라인이 있으면 즉시 추가 Edit
 - "정당한 과거 기록(브리핑 인사이트, 변경이력)인지 vs. 미갱신 누락인지" 구분해서 판단
 
 ### 3. 거짓 자기보고 금지 (선보고 후행동 금지) — 가장 중요
 
 ❌ **금지 패턴 (2026-05-03 사고의 직접 원인):**
+
 ```markdown
 | `_index.md` 교차참조 맵 | 수치 구버전 | 낮음 | 교차참조 맵 수치 현행화 (아래 갱신 완료) |
 ```
+
 P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료)" 등
-**자기 행동을 미리 선언하는 텍스트를 _index.md 본문에 작성하지 말 것.**
+**자기 행동을 미리 선언하는 텍스트를 \_index.md 본문에 작성하지 말 것.**
 
 ✅ **허용 패턴:**
-- _index.md P1 표 "권장 조치" 칼럼 = 1줄 가이드만 ("교차참조 맵 수치 현행화" 등)
+
+- \_index.md P1 표 "권장 조치" 칼럼 = 1줄 가이드만 ("교차참조 맵 수치 현행화" 등)
 - 자동 수정 결과 = `wiki/lint_report_{YYYYMMDD}.md`의 "자동 수정 완료" 섹션에만 "✅ 완료" 표기
-- _index.md "P1 해결완료 {날짜}" 노트 라인 = 실제 Edit 완료된 항목만 추가
+- \_index.md "P1 해결완료 {날짜}" 노트 라인 = 실제 Edit 완료된 항목만 추가
 
 이 규칙을 위반하면 보고와 실제가 분리되어 자기 모순 발생 (5/3 사고 패턴).
 
 ### 4. Step 10 보고 전 산출물 검증
+
 - `ls wiki/lint_report_{YYYYMMDD}.md` 존재 확인
 - `git diff knowledge-base/_index.md` 변경 라인 수 확인
 - README.md 갱신 시점 확인 (mode=full)
@@ -252,7 +262,17 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 #### 첫 줄 `_meta` 레코드 (절대 수정 금지, 반드시 첫 줄 유지)
 
 ```json
-{"_meta":true,"type":"lint_history","schema_version":"1.0","policy":"append-only-weekly","retention":"permanent","maintainer":"wiki-linter","created":"2026-05-03","trigger":"매주 일요일 12:00 KST /KB점검 자동 + 수동 /KB점검 호출","note":"⚠️ 시스템 메타 파일 — 일회성 산출물 아님. 매주 1행 자동 append. 절대 삭제·수정·재생성 금지. _meta 레코드는 반드시 첫 줄에 유지."}
+{
+  "_meta": true,
+  "type": "lint_history",
+  "schema_version": "1.0",
+  "policy": "append-only-weekly",
+  "retention": "permanent",
+  "maintainer": "wiki-linter",
+  "created": "2026-05-03",
+  "trigger": "매주 일요일 12:00 KST /KB점검 자동 + 수동 /KB점검 호출",
+  "note": "⚠️ 시스템 메타 파일 — 일회성 산출물 아님. 매주 1행 자동 append. 절대 삭제·수정·재생성 금지. _meta 레코드는 반드시 첫 줄에 유지."
+}
 ```
 
 #### 매주 append 레코드 스키마 (1줄 jsonl)
@@ -292,28 +312,37 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 
 ### 2. `knowledge-base/_index.md` P0 섹션 갱신 (Edit)
 
-자동으로 knowledge-base/_index.md의 "P0 — 즉시 조치 필요" 섹션을 현재 상태로 갱신한다.
+자동으로 knowledge-base/\_index.md의 "P0 — 즉시 조치 필요" 섹션을 현재 상태로 갱신한다.
 
-### 3. `README.md` 갱신 (mode=full 시) [v3.5 신규]
+### 3. `README.md` 갱신 (mode=full 시) [v3.21 — 2026-05-29 자동화 분리]
 
-/KB점검 full 모드 실행 시, README.md의 다음 섹션을 현재 상태에 맞게 갱신한다:
+mode=full 실행 시 README.md 의 fence 영역만 자동 스크립트로 재생성:
 
+```bash
+node web/scripts/build_readme.mjs --apply
 ```
-갱신 대상 섹션:
-  1. "최근 리포트" — reports/ 폴더에서 최신 5개 HTML 파일명+날짜 추출
-  2. "모델 배정" 테이블 — .claude/agents/*.md frontmatter에서 model/maxTurns 추출
-  3. "Knowledge Base 구조" — knowledge-base/ 실제 파일 목록과 동기화
-  4. "knowledge-db/" — 각 jsonl 파일 행 수 갱신
 
-갱신 방법:
-  - README.md를 Read → 해당 섹션만 Edit (나머지 구조/맥락 유지)
-  - 버전 번호, 변경 이력, 설명 텍스트는 수정하지 않음
-  - 수치/파일명/모델명 등 팩트만 최신화
+자동 갱신 영역 (fence):
 
-갱신 불가 시:
-  - lint_report에 "README 갱신 실패: {사유}" 기록
-  - 사용자에게 수동 갱신 권장
-```
+- `<!-- BEGIN AUTOGEN: recent-briefing -->` — reports/briefing/ 의 지난 7일 항목 (날짜 desc)
+- `<!-- BEGIN AUTOGEN: counts -->` — 종목·ETF + 브리핑 + 애널리스트 누적 카운트 + 기준일
+
+fence 밖 (수동 영역):
+
+- 최신 분석 묶음 큐레이션 (CapEx 19종, 재분석 23종 등) — 사용자 직접 작성
+- 변경 이력 표 — lead 직접 Edit (버전 추가 시)
+- 버전별 상세 섹션 — lead 직접 Edit
+
+이유:
+
+- 이전 룰 (모델 배정 / KB 구조 / knowledge-db 행 수 갱신) 은 README 에 해당 섹션이 없어 stale 룰이었음. 제거.
+- wiki-linter agent turn 부담 분리 (maxTurns 20 한도에서 KB lint 본체 처리하느라 README Edit 누락 사례 5/17, 5/25 두 회).
+- build_readme.mjs 는 build_bootstrap.mjs 와 같은 fence 자동화 패턴.
+
+갱신 실패 시:
+
+- 스크립트 exit code != 0 → lint_report 에 "README 갱신 실패: {stderr}" 기록
+- 사용자에게 수동 호출 권장: `node web/scripts/build_readme.mjs --apply`
 
 ---
 
@@ -347,15 +376,15 @@ P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)", "(처리 완료
 3. **에이전트 파일 보호:** .claude/agents/ 파일 수정 금지
 4. **무한 루프 금지:** 같은 파일 3회 이상 Read 시 중단
 5. **완벽보다 완료:** P0 처리 완료 시 P1 미완료여도 보고 후 반환
-6. **거짓 자기보고 금지 [v3.11]:** _index.md P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)" 등 자기 행동 선언 텍스트 작성 금지. 실제 Edit 완료 후에만 lint_report·해결완료 노트에 표기. (2026-05-03 사고 직접 원인)
+6. **거짓 자기보고 금지 [v3.11]:** \_index.md P1 표 본문에 "(아래 갱신 완료)", "(현행화 완료)" 등 자기 행동 선언 텍스트 작성 금지. 실제 Edit 완료 후에만 lint_report·해결완료 노트에 표기. (2026-05-03 사고 직접 원인)
 7. **Step 9 산출물 의무 [v3.12]:** mode=full 실행 시 `knowledge-db/_lint_history.jsonl` append + README.md Edit 둘 다 미수행하면 Step 10에서 "미완료"로 보고. 산출물 누락 상태로 "완료" 보고 금지.
 8. **`_lint_history.jsonl` 보호 [v3.12]:** 시스템 메타 파일 — 일회성 산출물 아님. 절대 삭제·재생성 금지. 첫 줄 `_meta` 레코드 수정 금지. append-only 원칙 준수 (기존 행 수정 시 다음 행에 정정 메모로 처리).
 
 ## 스케줄
 
-| 트리거 | 실행 모드 | 자동 호출 주체 |
-|--------|---------|-------------|
-| `/주간리포트`, `/풀브리핑` 시작 전 | quick | briefing-lead |
-| `/KB업데이트` 완료 후 | cross_check | kb-updater (Step 7 후) |
-| `/KB점검` 수동 호출 | full | 사용자 직접 |
-| 매주 월요일 00:00 KST | full | briefing-lead (자동 스케줄) |
+| 트리거                             | 실행 모드   | 자동 호출 주체              |
+| ---------------------------------- | ----------- | --------------------------- |
+| `/주간리포트`, `/풀브리핑` 시작 전 | quick       | briefing-lead               |
+| `/KB업데이트` 완료 후              | cross_check | kb-updater (Step 7 후)      |
+| `/KB점검` 수동 호출                | full        | 사용자 직접                 |
+| 매주 월요일 00:00 KST              | full        | briefing-lead (자동 스케줄) |
