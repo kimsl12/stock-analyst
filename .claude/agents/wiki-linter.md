@@ -6,7 +6,7 @@ description: |
   우선순위별 액션 리스트와 자동 수정을 수행한다.
   briefing-lead가 /주간리포트, /풀브리핑 Phase 0-A 전 자동 호출.
   Triggers: /KB점검, wiki lint, KB 건강검진, 주간리포트 Phase 0-A 전 자동.
-maxTurns: 20
+maxTurns: 30
 model: sonnet
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
