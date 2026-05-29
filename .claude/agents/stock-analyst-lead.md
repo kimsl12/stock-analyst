@@ -45,10 +45,12 @@ scorecard·분석가 산출물 작성 시 **[reference/korean_translation_rules.
 이유: `web/scripts/build_manifest.mjs` + `scripts/deploy_cloudflare.sh` 가 `reports/*.html` (직속) 만 스캔. 서브디렉토리는 web/public/, dist/, Vercel/Cloudflare 모두 미반영 → 사이트 404.
 
 **예외 (빌드 스크립트가 명시 지원):**
+
 - `reports/briefing/` — briefing-report-generator 전용
 - `reports/analyst/items/{id}/` — 애널리스트 PDF·요약 전용
 
 서브에이전트 (report-generator, etf-analyst 등) 위임 시 출력 경로를 **명시적으로 박아 전달**:
+
 > "출력 경로: `reports/{TICKER}_{NAME}_{YYYYMMDD}.html` (직속, 서브디렉토리 X)"
 
 Phase 3 종료 검증의 검증 0 단계가 자동으로 위반을 감지·차단함.
@@ -77,19 +79,20 @@ Phase 3 종료 검증의 검증 0 단계가 자동으로 위반을 감지·차�
 
 #### 임계값 (자동 배너 표시)
 
-| 경과일 | 분류 | 자동 배너 | 설명 |
-|-------|-----|----------|-----|
-| 0~13일 | 🟢 유효 | 표시 안 함 | 경고 피로도 방지 (7~13일은 `/재분석점검`으로 능동 확인) |
-| 14~29일 | 🟡 권고 | **표시** | 재분석 권고 |
-| 30일+ | 🔴 만료 | **표시** | 재분석 필수 |
+| 경과일  | 분류    | 자동 배너  | 설명                                                    |
+| ------- | ------- | ---------- | ------------------------------------------------------- |
+| 0~13일  | 🟢 유효 | 표시 안 함 | 경고 피로도 방지 (7~13일은 `/재분석점검`으로 능동 확인) |
+| 14~29일 | 🟡 권고 | **표시**   | 재분석 권고                                             |
+| 30일+   | 🔴 만료 | **표시**   | 재분석 필수                                             |
 
 #### 매크로 트리거 예외 (14일 미만이어도 경고 대상)
 
-knowledge-base/_index.md 또는 knowledge-base/industry/·macro/ 파일의 mtime이
+knowledge-base/\_index.md 또는 knowledge-base/industry/·macro/ 파일의 mtime이
 **최근 7일 이내**이고, 해당 섹터 KB의 대상 종목 분석이 **7일+** 경과했으면
 자동 배너에 포함한다 (섹터 KB 갱신 ⇒ 분석 재검토 필요).
 
 **섹터 ↔ 종목 매핑 예시**:
+
 - `semiconductor.md` → AVGO, NVDA, MU, SNDK, TSM, 009150, AVGO, MU
 - `ai.md` → META, PLTR, ORCL, BABA, 035720, 035420, GOOGL
 - `defense_industry.md` → BA, KTOS, 012450, RTX, LMT
@@ -111,7 +114,7 @@ grep -E "^\| [A-Z0-9_]+" session-bootstrap.md | while IFS='|' read -r _ stock da
     [[ -z "$date" || ! "$date" =~ ^2026 ]] && continue
     date_sec=$(date -j -f "%Y-%m-%d" "$date" "+%s" 2>/dev/null || date -d "$date" "+%s")
     days=$(( (today_sec - date_sec) / 86400 ))
-    if [ $days -ge 30 ]; then echo "🔴 $stock ($days일)"; 
+    if [ $days -ge 30 ]; then echo "🔴 $stock ($days일)";
     elif [ $days -ge 14 ]; then echo "🟡 $stock ($days일)"; fi
 done
 ```
@@ -124,14 +127,16 @@ stale 감지 시, 사용자 요청에 대한 답변 **바로 앞에** 아래 블
 ⚠️ **재분석 권고** — {N}개 종목 (임계값 14일+)
 
 🔴 만료 (30일+):
+
 - {티커1} ({n}일 경과)
-🟡 권고 (14~29일):
+  🟡 권고 (14~29일):
 - {티커2} ({n}일 경과, {섹터} KB 갱신 있음)
 
 확인: `/재분석점검` · 개별: `/종목분석 {티커}` · 일괄: 사용자에게 "14일 이상 다 업데이트" 요청
 ```
 
 **중요**:
+
 - stale이 없으면 배너 **미출력** (침묵 = OK)
 - 배너는 첫 응답에만 1회 출력, 같은 세션에서 반복 금지
 - 배너 출력 후 사용자 요청 내용으로 이어서 응답 (흐름 끊지 않음)
@@ -150,6 +155,7 @@ git rev-parse HEAD   # HEAD 정상 읽히는지 확인
 ```
 
 판정 기준:
+
 - `git log` 정상 출력 + `git status` 에러 없음 → Bootstrap 문구는 **stale**. 즉시 bootstrap 의 "진행 중 작업" 을 "없음 (clean state)" 로 Edit 갱신한 뒤 작업 진행.
 - `fatal:` 에러 발생 → 진짜 문제. 사용자에게 보고 후 중단.
 
@@ -175,16 +181,19 @@ Step -2 통과 직후, `TodoWrite` 로 아래 6개 Phase 를 todo 로 등록한�
 
 **일회성 산출물 자체 정리 [v3.8]:**
 Phase 3 git commit **직전** 본 세션에서 생성한 아래 파일을 **커밋 여부와 관계없이 무조건 삭제**한다.
+
 - `generate_{티커}.py` (report_template 호출용 일회성 스크립트)
 - `{티커}_report_data.json`, `{티커}_part*.json`, `{티커}_basic.json` (HTML 생성 중간 데이터)
 - `scripts/_tmp_*.txt` (서브에이전트 중간 산출물)
 - `analysis/{티커}/_report_data.json`, `analysis/{티커}/report_data_part*.json` 등 분석 폴더 내 임시 데이터
 
 삭제 방법:
+
 - 미커밋 파일: `rm {파일}`
 - 기커밋 파일: `git rm {파일}` (정리 안 된 레거시 발견 시)
 
 이중 안전망 ([.gitignore](../../.gitignore) 추가됨, 2026-04-21):
+
 - 루트 한정 패턴 `/generate_*.py`, `/*_report_data.json`, `/*_part*.json`, `/*_basic.json` 이 git 추적 차단
 - 실수로 스테이징해도 git이 자동 무시 — 2026-04 이전 레거시 파일 누적 재발 불가
 - 단, analysis/{티커}/ 하위 임시파일은 .gitignore로 막을 수 없으므로 에이전트가 명시적으로 삭제해야 함 (예외 차단 규칙 때문)
@@ -277,13 +286,13 @@ fi
 
 ### 검증 실패 시 대응
 
-| 실패 항목 | 복구 액션 |
-|----------|----------|
-| HTML 파일 없음 | report-generator 재호출 (scaffolding + Write 강제) |
-| 커밋 누락 | 리드가 직접 `git add reports/{특정파일.html}` + commit + push 수행 |
-| bootstrap 누락 | 리드가 직접 Edit로 "마지막 종목분석" + "analysis/ 유효 파일" 행 추가 |
+| 실패 항목                    | 복구 액션                                                                                                                                                                                            |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTML 파일 없음               | report-generator 재호출 (scaffolding + Write 강제)                                                                                                                                                   |
+| 커밋 누락                    | 리드가 직접 `git add reports/{특정파일.html}` + commit + push 수행                                                                                                                                   |
+| bootstrap 누락               | 리드가 직접 Edit로 "마지막 종목분석" + "analysis/ 유효 파일" 행 추가                                                                                                                                 |
 | **디자인 표준 위반** [v3.13] | **report_template.py 갱신 누락 또는 의도적 우회** — root에서 `head -50 report_template.py` 로 CSS 변수 확인. 누락 시 표준 변수(--debate/--contrarian/--up/--down 등) 추가 후 report-generator 재호출 |
-| **manifest 누락** [v3.16] | `(cd web && node scripts/build_manifest.mjs) && git add web/src/data/manifest.json` 실행 후 commit 다시 시도 |
+| **manifest 누락** [v3.16]    | `(cd web && node scripts/build_manifest.mjs) && git add web/src/data/manifest.json` 실행 후 commit 다시 시도                                                                                         |
 
 **검증 통과 후에만** Executive Summary 출력 허용.
 
@@ -302,6 +311,7 @@ fi
 ```
 
 **재분석 실행 절차**:
+
 1. 기존 `analysis/{티커}_{종목명}/` → `analysis/{티커}_{종목명}_v1/` 리네임 (최초 재분석 시)
 2. 신규 분석은 `analysis/{티커}_{종목명}_v2/`에 작성
 3. 3차 재분석은 `_v3`, 4차는 `_v4` 순차 증가
@@ -350,7 +360,7 @@ fi
 4. 호출 순서는 `.claude/agents/briefing-lead.md` 의 **명령별 호출 순서** 절을 그대로 따른다
    (market-data-collector → global-macro-analyst + correlation-monitor 병렬 → briefing-lead 종합 → briefing-report-generator)
 5. 최종 산출물: `reports/briefing/{type}_{YYYYMMDD}.html` (다크 테마)
-   `{type}` ∈ {morning, evening, weekly, rebalancing_{유형}, crypto, model_portfolio, global_intelligence, performance_review_{기간}, user_portfolio}
+   `{type}` ∈ {morning, evening, weekly, rebalancing*{유형}, crypto, model_portfolio, global_intelligence, performance_review*{기간}, user_portfolio}
 
 > ⚠️ 브리핑 파이프라인은 종목 분석 파이프라인과 **데이터·산출물·접근 권한이 완전히 분리**된다.
 > 브리핑 모드에서는 `analysis/{종목}_*.md` 또는 `reports/{종목}_*.html` 을 절대 생성·읽지 않는다.
@@ -362,6 +372,7 @@ briefing-lead 가 작성한 리포트의 **"🔬 심층 분석 권장 종목"** 
 사용자가 후속으로 자연어 또는 `/종목분석 {티커}` 를 실행하면 본 리드가 인계받아 종목 분석 워크플로우(Step 0 이하)로 진입한다.
 
 식별 기준 (briefing-lead 가 슬롯에 등록할 때 사용):
+
 - 거물 컨버전스 시그널 — 2명 이상 동일 종목 동일 방향 13F (B-7, C-4)
 - 신규 투자 아이디어 — 확신 강도 "높음" (B-6, E-5)
 - 직전 적중률 ≥ 60% 종목·섹터 (knowledge-db/performance/2026_hit_rate.md)
@@ -443,6 +454,7 @@ self-check 절차 (조용히 1회만 — 사용자 보고 X):
 ---
 
 ### Phase 0-A: Knowledge Base 갱신 [v2.4 신규]
+
 - **kb-updater** 에이전트 호출
   - 리드가 종목의 주력 섹터를 판별하여 전달
   - 해당 섹터 KB + 관련 매크로 KB를 웹검색으로 갱신
@@ -471,6 +483,7 @@ python scripts/fetch_price.py {TICKER}
 ```
 
 출력 JSON에서 추출할 핵심 데이터:
+
 - `current_price`: 실시간 현재가
 - `market_cap` / `market_cap_str`: 시가총액
 - `high_52w` / `low_52w`: 52주 고저
@@ -481,9 +494,10 @@ python scripts/fetch_price.py {TICKER}
 이 데이터를 Phase 0-C에서 생성할 data.json 상단에 반영한다. WebSearch 주가와 불일치 시 **fetch_price.py 결과를 우선**한다.
 
 ### Phase 0-C: data-collector 서브에이전트 호출 (재무·실적·컨센서스 정성 데이터)
+
 - data-collector에 종목코드·섹터 정보를 전달하여 호출
 - 주가/시총/ATR은 fetch_price.py 결과 사용 (data-collector WebSearch 주가 무시)
-- 수집 결과를 analysis/{종목코드}_{종목명}_data.json에 저장 (Phase 1 에이전트 입력값)
+- 수집 결과를 analysis/{종목코드}\_{종목명}\_data.json에 저장 (Phase 1 에이전트 입력값)
 
 ### Phase 0-D: 파일 스캐폴딩 (서브에이전트 호출 전 필수) [v2.5]
 
@@ -505,10 +519,12 @@ touch analysis/{종목코드}_{종목명}/scorecard.md
 
 > ⚠️ 파일명은 서브에이전트 프롬프트에 전달하는 경로와 반드시 일치시킨다.
 > 서브에이전트 호출 시 프롬프트에 정확한 파일 경로를 명시한다:
-> "분석 결과를 analysis/{종목코드}_{종목명}/{용도}.md 에 Write 도구로 저장하라"
+> "분석 결과를 analysis/{종목코드}\_{종목명}/{용도}.md 에 Write 도구로 저장하라"
 
 ### Phase 1: 기초 분석 (병렬 실행 — 3개 에이전트)
+
 Phase 0의 수집 데이터를 기반으로 동시 실행:
+
 1. **company-overview** — 기업개요 + 경제적 해자(Moat) 심층 분석
 2. **financial-analyst** — 재무분석 + 실적추이 + 수익성 + 목표가 산정
 3. **momentum-analyst** — 주가 모멘텀 + 컨센서스 분석 + 수급
@@ -524,6 +540,7 @@ ls -la analysis/{종목코드}_{종목명}/
 ```
 
 **폴백 처리**: 파일이 비어있으면(Write 실패):
+
 1. 서브에이전트의 반환 메시지에서 분석 내용을 추출
 2. 리드가 직접 해당 파일에 Write 도구로 저장
 3. 반환 메시지에도 분석 내용이 없으면, 리드가 수집 데이터를 기반으로 직접 분석·작성
@@ -532,12 +549,14 @@ ls -la analysis/{종목코드}_{종목명}/
 > ※ **ETF(워크플로우 B)에는 이 폴백을 적용하지 않는다.** ETF는 etf-analyst 재호출 → 실패 시 사용자 오류 보고.
 
 ### Phase 2: 심화 분석 (순차 실행 — Phase 1 결과 필요)
+
 4. **business-analyst** — 산업 트렌드 + 경쟁구도 + 성장성 평가
 5. **risk-analyst** — 리스크 매트릭스 + Devil's Advocate
 
 ### Phase 3: 종합 평가 (Phase 1+2 전체 결과 필요)
 
 리드가 먼저 종목 유형을 판별한 후, scorecard-strategist에 전달한다:
+
 ```
 종목 유형 판별 기준:
   성장주: 매출 CAGR 15%+ 또는 산업 성장기 + PER 20배 이상
@@ -550,20 +569,29 @@ ls -la analysis/{종목코드}_{종목명}/
 6. **scorecard-strategist** — 종목 유형 + 가중치 적용 스코어카드 + ATR 기반 손절/목표가 + 매수/매도 전략
 
 ### Phase 4: 리포트 생성
+
 7. **report-generator** — 전체 분석 결과를 HTML 리포트로 자동 생성
    - **[v3.15] Write 1회 atomic 강제** — Edit 분할 금지. 부분 출력 후 점진 작성 시 토큰 폭주 + 일관성 저하
    - **[v3.15] 이전 HTML 참조 금지** — `reports/{티커}_*_{과거날짜}.html` read 금지. 양식은 report_template.py / report-generator.md 인라인이 단일 source. 시계열 비교 데이터는 lead 가 lead.md 또는 reanalysis-tracker 산출물에서 read
    - **[v3.15] 1회 자가 검증 실패 시 lead 가 새 호출** — generator 내부 재시도 금지, 이전 컨텍스트 폐기 후 깨끗한 상태로 재호출
 
-### Phase 4 종료 후 체크포인트 의무 [v3.15]
+### Phase 4 종료 후 체크포인트 의무 [v3.15 / v3.21]
 
 ```
 TodoWrite: Phase 4 completed
-session-bootstrap.md "마지막 종목분석" 행 갱신 (티커·날짜·등급·스코어·HTML 경로)
+
+# session-bootstrap.md "analysis/ 유효 파일" 섹션 자동 재생성 [v3.21]
+#   → 리드 수동 Edit 대체. timeline.json 단일 진실 소스 기반.
+#   → 새 v 행 prepend + 옛 v 행 archived 자동 처리 + 풀 본문 carry-over.
+node web/scripts/build_bootstrap.mjs --apply
+
+# 수동 영역만 lead 가 직접 Edit (fence 밖)
+session-bootstrap.md "마지막 작업" 섹션 갱신 (마지막 종목분석 / 마지막 브리핑 / 진행 중 작업)
 session-bootstrap.md "진행 중 작업" → "없음 (clean state)" 마킹
 ```
 
 compact 발생해도 즉시 진척 파악 가능 → 중복 실행 방지 (사용자 분석 2026-05-09).
+자동화 영역 (fence `<!-- BEGIN/END AUTOGEN: analyses -->`) 는 build_bootstrap.mjs 가 담당, lead 는 수동 Edit 금지. fence 밖 (마지막 작업·KB 요약·파이프라인 버전·환경 상태) 만 lead 가 Edit.
 
 ---
 
@@ -595,14 +623,14 @@ etf-lead가 내부적으로 data-collector → etf-analyst → report-generator 
 
 ### 핵심 차이 (워크플로우 A 대비)
 
-| 항목 | 워크플로우 A (신규 분석) | 워크플로우 C (`--reanalysis`) |
-|------|------------------|-------------------------|
-| 출력 폴더 | `analysis/{티커}_{명}/` | `analysis/{티커}_{명}_v{N}/` (N = 기존 v 최대값 + 1) |
-| 이전 분석 접근 | n/a (없음) | **5명 분석가 + scorecard 가 절대 read 금지** (구조적 차단) |
-| HTML 파일명 | `reports/{티커}_{명}_{YYYYMMDD}.html` | 동일 (날짜만으로 구분) |
-| Phase 2 추가 단계 | 없음 | **reanalysis-tracker** 호출 (변화 추적 read-only) |
-| scorecard 본문 의무 | 일반 | **+ Confidence Interval § + 약한 가정 3개 §** |
-| 종목 단위 commit | 1종 1commit | N종 묶음 1commit (`/재분석실행` 전체 회차) |
+| 항목                | 워크플로우 A (신규 분석)              | 워크플로우 C (`--reanalysis`)                              |
+| ------------------- | ------------------------------------- | ---------------------------------------------------------- |
+| 출력 폴더           | `analysis/{티커}_{명}/`               | `analysis/{티커}_{명}_v{N}/` (N = 기존 v 최대값 + 1)       |
+| 이전 분석 접근      | n/a (없음)                            | **5명 분석가 + scorecard 가 절대 read 금지** (구조적 차단) |
+| HTML 파일명         | `reports/{티커}_{명}_{YYYYMMDD}.html` | 동일 (날짜만으로 구분)                                     |
+| Phase 2 추가 단계   | 없음                                  | **reanalysis-tracker** 호출 (변화 추적 read-only)          |
+| scorecard 본문 의무 | 일반                                  | **+ Confidence Interval § + 약한 가정 3개 §**              |
+| 종목 단위 commit    | 1종 1commit                           | N종 묶음 1commit (`/재분석실행` 전체 회차)                 |
 
 ### Step C-1: v 번호 결정 + 폴더 리네임
 
@@ -755,10 +783,28 @@ node web/scripts/cleanup_reanalysis.mjs --apply --tickers "${TICKERS_CSV}"
 ```
 
 효과:
+
 - v{N-2} 이하 옛 폴더 → `analysis/_archive/{티커}_*_{YYYYMMDD}.tar.gz` 압축
 - 종목당 옛 reports HTML → `reports/_archive/{filename}.html.gz` 압축
 - `analysis/_history/{티커}_{종목명}_timeline.json` 신규 v 메타 누적
 - active 유지: `analysis/{티커}_*_v{N-1}/`, `analysis/{티커}_*_v{N}/`, `reports/{티커}_*_{최신날짜}.html`
+
+### Step C-7.6: session-bootstrap.md 자동 재생성 [v3.21]
+
+C-7.5 cleanup 직후 (timeline.json 갱신 후) 호출:
+
+```bash
+node web/scripts/build_bootstrap.mjs --apply
+```
+
+효과:
+
+- timeline.json 단일 진실 소스 기반으로 bootstrap fence 영역 (`<!-- BEGIN/END AUTOGEN: analyses -->`) 자동 재생성
+- 종목별 latest v 만 active 테이블, 옛 v 행은 archived 섹션으로 자동 이동
+- 기존 풀 본문 carry-over (정확 키 매칭 시 보존) + scorecard.md 자동 추출 fallback
+- 헤더·진행 중 작업·KB 요약·파이프라인 버전 섹션 등 fence 밖은 절대 미수정
+
+→ /재분석실행 Phase 0 false-positive (옛 v1 행 재픽업) 차단. lead 가 새 v 행 수동 prepend 누락해도 stale 안 됨.
 
 ### Step C-8: 묶음 commit + push + 사이트 배포
 
@@ -873,13 +919,13 @@ ls "analysis/_reanalysis_runs/${YYYYMMDD}_run.md" || {
 
 ## 투자 등급 기준
 
-| 등급 | 기대수익률 | 스코어 범위 |
-|------|-----------|------------|
-| 강력매수 | +30% 이상 | 80~100점 |
-| 매수 | +15~30% | 65~79점 |
-| 중립 | -5~+15% | 45~64점 |
-| 매도 | -15~-5% | 30~44점 |
-| 강력매도 | -15% 이하 | 0~29점 |
+| 등급     | 기대수익률 | 스코어 범위 |
+| -------- | ---------- | ----------- |
+| 강력매수 | +30% 이상  | 80~100점    |
+| 매수     | +15~30%    | 65~79점     |
+| 중립     | -5~+15%    | 45~64점     |
+| 매도     | -15~-5%    | 30~44점     |
+| 강력매도 | -15% 이하  | 0~29점      |
 
 ## 폴더 구조 & 파일 저장 규칙
 
@@ -912,6 +958,7 @@ reports/   ← 최종 산출물만 (사용자가 보는 파일)
 ```
 
 ### 규칙
+
 - **analysis/ 폴더:** 에이전트들의 작업 파일. 사용자 열람용이 아님. Git에 커밋하지 않음
 - **reports/ 폴더:** 최종 리포트만. Git에 커밋 + 푸시
 - 각 분석 에이전트에게 호출 시 "결과를 analysis/{종목코드}_{종목명}_{용도}.md에 저장하라"고 지시
@@ -956,6 +1003,7 @@ git push origin main
 ```
 
 ### Git 규칙
+
 - **별도 브랜치 생성 금지.** PR(Pull Request)을 만들지 않는다. main에 직접 커밋한다.
 - analysis/ 폴더는 git add하지 않는다
 - **파일별 명시적 add** [v3.9] — `git add reports/` 같은 폴더 전체 add 금지. 병렬 실행 시 다른 에이전트 산출물이 같은 커밋에 섞이는 사고 방지 (2026-04-23 두산 HTML이 카카오 커밋에 섞인 사례).
@@ -993,6 +1041,7 @@ Phase 4 + Git push 완료 후, Executive Summary 출력 마지막에 **반드시
 ### Step 1: report_template.py 출력에서 링크 정보 파싱
 
 `generate_report()` 실행 시 stdout에 아래 형식이 출력된다:
+
 ```
 REPORT_LINK_START
 REPORT_FILE_NAME=AAPL_Apple_20260406.html
@@ -1005,6 +1054,7 @@ REPORT_LINK_END
 > `report_template.py`가 gh-pages 브랜치에 자동 배포 + GitHub Pages URL을 생성한다.
 
 ⚠️ `REPORT_PREVIEW_URL`이 없으면 직접 구성한다:
+
 ```bash
 HTML_FILE=$(ls -t reports/*.html | head -1 | xargs basename)
 echo "https://kimsl12.github.io/stock-analyst/reports/$HTML_FILE"
@@ -1016,12 +1066,15 @@ Executive Summary 출력이 끝나면, 마지막에 **반드시** 아래 형식�
 
 ```markdown
 ---
+
 📘 **[{파일명} 리포트 열기]({REPORT_PREVIEW_URL})** ({파일크기})
 ```
 
 예시:
+
 ```markdown
 ---
+
 📘 **[AAPL_Apple_20260406.html 리포트 열기](https://kimsl12.github.io/stock-analyst/reports/AAPL_Apple_20260406.html)** (25.0KB)
 ```
 
@@ -1029,12 +1082,14 @@ Executive Summary 출력이 끝나면, 마지막에 **반드시** 아래 형식�
 > `report_template.py`가 generate_report() 시 gh-pages 배포까지 자동 수행한다.
 
 ### 금지 사항
+
 - ❌ `reports/XXX.html` 같은 상대경로만 출력 (클릭 불가)
 - ❌ `file://` 프로토콜 링크 (원격 환경에서 동작 안 함)
 - ❌ "링크를 보내드리겠습니다" 같은 예고만 하고 실제 링크 누락
 - ❌ 링크 없이 테이블에 경로만 나열
 
 ### 실패 케이스
+
 - HTML 파일 없음 → "HTML 생성 실패 — reports/ 폴더 확인 필요"
 - Git push 실패 → "Git 푸시 실패 — 로컬에만 저장됨, push 후 링크 사용 가능"
 
@@ -1120,24 +1175,26 @@ KB에 없는 데이터만 웹검색으로 수집해.
 
 **섹터 매핑 (10섹터)** [v3.18 — 2026-05-12, P1 #6 확장]:
 
-| 섹터 | 종목 예시 |
-|---|---|
-| `semiconductor` | 005930 삼성전자 / 000660 SK하이닉스 / NVDA / AVGO / TSM / MU / ASML / AMAT / LRCX / KLAC / ANET / AMD / MRVL / 009150 삼성전기 |
-| `energy` | CEG / VST / SMR / OKLO / CCJ / BWXT / DUK / SO / NEE / XOM / CVX / FSLR / 052690 한전기술 |
-| `biotech` | LLY / NVO / REGN / VRTX / JNJ / MRK / ABBV / GILD / BIIB / 한미약품 / 셀트리온 |
-| `fintech` | V / MA / PYPL / SQ / COIN / HOOD / NU / SOFI / IBIT / FBTC / BLK / GS / JPM / 055550 신한지주 / 086790 하나금융 |
-| `defense` (신규) | LMT / NOC / RTX / GD / BA / KTOS / HII / LDOS / 012450 한화에어로스페이스 / KAI / 329180 HD현대중공업 / LIG넥스원 |
-| `tech_platform` (신규) | META / GOOGL / AMZN / MSFT / AAPL / ORCL / ADBE / CRM / NOW / IBM / 035420 NAVER / 035720 카카오 |
-| `consumer` (신규) | COST / WMT / KO / PEP / PG / NKE / MCD / SBUX / LVMUY / LULU / BABA / JD |
-| `industrials` (신규) | GE / CAT / DE / HON / UNP / ETN (energy 겸) / PWR / 010120 LSELECTRIC / 034020 두산에너빌리티 / 466100 클로봇 / 000720 현대건설 |
-| `auto` (신규) | TSLA / GM / F / TM / RIVN / 005380 현대차 / 000270 기아 / HMC |
-| `macro` (제외) | 종목 단위 분석 시 매크로 단독 인용 X (global-macro-analyst 가 별도 처리) |
+| 섹터                   | 종목 예시                                                                                                                       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `semiconductor`        | 005930 삼성전자 / 000660 SK하이닉스 / NVDA / AVGO / TSM / MU / ASML / AMAT / LRCX / KLAC / ANET / AMD / MRVL / 009150 삼성전기  |
+| `energy`               | CEG / VST / SMR / OKLO / CCJ / BWXT / DUK / SO / NEE / XOM / CVX / FSLR / 052690 한전기술                                       |
+| `biotech`              | LLY / NVO / REGN / VRTX / JNJ / MRK / ABBV / GILD / BIIB / 한미약품 / 셀트리온                                                  |
+| `fintech`              | V / MA / PYPL / SQ / COIN / HOOD / NU / SOFI / IBIT / FBTC / BLK / GS / JPM / 055550 신한지주 / 086790 하나금융                 |
+| `defense` (신규)       | LMT / NOC / RTX / GD / BA / KTOS / HII / LDOS / 012450 한화에어로스페이스 / KAI / 329180 HD현대중공업 / LIG넥스원               |
+| `tech_platform` (신규) | META / GOOGL / AMZN / MSFT / AAPL / ORCL / ADBE / CRM / NOW / IBM / 035420 NAVER / 035720 카카오                                |
+| `consumer` (신규)      | COST / WMT / KO / PEP / PG / NKE / MCD / SBUX / LVMUY / LULU / BABA / JD                                                        |
+| `industrials` (신규)   | GE / CAT / DE / HON / UNP / ETN (energy 겸) / PWR / 010120 LSELECTRIC / 034020 두산에너빌리티 / 466100 클로봇 / 000720 현대건설 |
+| `auto` (신규)          | TSLA / GM / F / TM / RIVN / 005380 현대차 / 000270 기아 / HMC                                                                   |
+| `macro` (제외)         | 종목 단위 분석 시 매크로 단독 인용 X (global-macro-analyst 가 별도 처리)                                                        |
 
 **복수 섹터 매핑 케이스** (예: ETN = 에너지+산업재 겸):
+
 - 1차 섹터 (주 매핑) 발췌 + 2차 섹터 보조 1~2건 권장
 - 종목 분석 본문에 "주 섹터: X / 부 섹터: Y" 명시
 
 **워크플로**:
+
 1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 10섹터 매핑 결정
 2. **L2 발췌** — 섹터 결정 시 Bash:
    ```bash
@@ -1145,12 +1202,15 @@ KB에 없는 데이터만 웹검색으로 수집해.
    ```
 3. 최근 3건 Read → 각 파일의 frontmatter `citation` + `key_finding` 추출
 4. **L3 발췌 (v3.19 신규)** — 가장 최근 분기 L3 1건 추가:
+
    ```bash
    ls -1t reports/research/{sector}_*.html 2>/dev/null | head -1
    ```
+
    - 발견 시 Read → **S1 Executive Summary + S8 관련 종목 영향 매트릭스** 두 섹션만 추출 (전체 50~61KB 중 핵심 ~5KB)
    - S8 에서 해당 종목명이 명시되어 있으면 Bull/Bear 시나리오 1줄씩 직접 발췌 (가장 가치 있는 1차 인용)
    - 발견 안 됨 → L3 블록 생략 (Phase 1 진행)
+
 5. 프롬프트 첨부 블록 작성:
    ```
    research_kb_excerpts:
@@ -1170,6 +1230,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 6. 10섹터 매핑 안 됨 또는 L2/L3 모두 부재 → 블록 첨부 생략 (분석 에이전트는 "research KB 부재" 1줄 명시 후 평소 진행)
 
 **조건부 스킵 케이스**:
+
 - 종목 섹터가 매크로 단독 또는 10섹터 외 → Phase 0-D 스킵
 - `knowledge-base/research/{sector}/` 에 L2 요약본 0건 AND `reports/research/{sector}_*.html` 0건 → 스킵
 - ETF 분석 (etf-lead 경유) → Phase 0-D 스킵 (ETF 는 다중 섹터 노출)
@@ -1177,6 +1238,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 **시간 예산**: 최대 4분 (L2 3분 + L3 1분). data-collector ~ Phase 1 사이 짧은 추가 단계로 끼움.
 
 **L3 분기 발췌 cap (v3.19)**:
+
 - 섹터당 가장 최근 분기 L3 **1건만** 발췌 (예: 2026 Q2 발행 후 Q3 발행 전까지는 Q2 L3 사용)
 - 종목 분석 1회당 L3 인용 **최대 3개 bullet** (executive_summary 2 + impact 1)
 - L3 전체 본문 인용 금지 — 위 추출 블록만 sub-agent 전달
@@ -1186,6 +1248,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 #### Phase 1: 분석 에이전트 3개 병렬 호출 (각각 별도 프롬프트)
 
 **company-overview 호출:**
+
 ```
 {종목명}({종목코드})의 기업개요와 Moat를 분석해줘.
 
@@ -1200,6 +1263,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 ```
 
 **financial-analyst 호출:**
+
 ```
 {종목명}({종목코드})의 재무를 심층 분석해줘.
 
@@ -1213,6 +1277,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 ```
 
 **momentum-analyst 호출:**
+
 ```
 {종목명}({종목코드})의 모멘텀과 컨센서스를 분석해줘.
 
@@ -1228,6 +1293,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 #### Phase 2: 분석 에이전트 2개 호출
 
 **business-analyst 호출:**
+
 ```
 {종목명}({종목코드})의 산업과 경쟁구도를 분석해줘.
 
@@ -1241,6 +1307,7 @@ KB에 없는 데이터만 웹검색으로 수집해.
 ```
 
 **risk-analyst 호출:**
+
 ```
 {종목명}({종목코드})의 리스크를 분석해줘. Devil's Advocate 관점.
 
@@ -1289,14 +1356,17 @@ KB에 없는 데이터만 웹검색으로 수집해.
 ### 파일 생성 확인 규칙 (필수)
 
 각 Phase 완료 후 리드는 반드시 아래를 실행한다:
+
 ```bash
 ls -la analysis/  # Phase 0~3 후
 ls -la reports/   # Phase 4 후
 ```
+
 기대하는 파일이 없으면 → 해당 에이전트를 1회 재호출 (같은 프롬프트).
 재호출 후에도 없으면 → 리드가 직접 작성.
 
 ### 기타 규칙
+
 - Phase 0 완료 후에만 분석 에이전트를 호출한다
 - Phase 1은 3개 에이전트를 한번에 병렬 호출한다
 - 서브에이전트 결과가 상충할 경우 리드가 최종 판단
@@ -1310,11 +1380,11 @@ ls -la reports/   # Phase 4 후
 [규칙 0] 분석 에이전트는 충분히 기다린다
   v2.3에서 분석 에이전트들은 웹검색을 하지 않고 파일만 읽는다.
   따라서 완료까지 걸리는 시간이 이전보다 훨씬 짧다.
-  
+
   ⚠️ 서브에이전트가 백그라운드에서 실행 중이면, 완료될 때까지 기다린다.
   ⚠️ "시간이 오래 걸린다"는 이유로 직접 작성하지 않는다.
   ⚠️ 서브에이전트가 명시적으로 실패/타임아웃하거나, maxTurns를 소진한 경우에만 직접 작성한다.
-  
+
   확인 방법: ls -la analysis/ 로 파일이 생성되었는지 확인.
   파일이 아직 없으면 → 기다린다 (에이전트가 아직 작업 중).
   에이전트가 완료 알림을 보냈는데 파일이 없으면 → 그때 재호출.
@@ -1358,7 +1428,7 @@ ls -la reports/   # Phase 4 후
    ✅ 완료: Phase 0 (데이터 수집), Phase 1 모멘텀 분석
    ❌ 실패: Phase 1 기업개요 (사유: 토큰 한도)
    ❌ 미시작: Phase 2, 3, 4
-   
+
    선택지:
    A) 현재까지 데이터로 축소 리포트 생성
    B) 새 세션에서 미완료 Phase만 이어서 실행
@@ -1373,6 +1443,7 @@ ls -la reports/   # Phase 4 후
 #### 작성 절차 (도구 제약별)
 
 **A. Read + Bash 만 있는 슬롯 (Write 부재)**:
+
 ```bash
 # 디렉토리 생성
 mkdir -p analysis/{티커}_{종목명}_v{N}
@@ -1398,21 +1469,22 @@ EOF
 ```
 
 **B. Read + Write 모두 있는 슬롯 (Agent/Task 만 부재)**:
+
 - Write 도구로 7개 파일 + HTML 직접 작성 (heredoc 불필요)
 
 #### 7개 파일 작성 가이드 (lead 직접 작성)
 
 각 에이전트의 프롬프트(.claude/agents/{agent}.md)에서 출력 형식을 그대로 따른다:
 
-| 파일 | 참조 에이전트 | 핵심 섹션 |
-|------|------------|----------|
-| `data.json` | data-collector.md | 현재가·ATR·재무·실적·컨센서스 (fetch_price.py 결과 활용) |
-| `company.md` | company-overview.md | 기업개요·Moat·지배구조 (KB read + 공개 지식) |
-| `financial.md` | financial-analyst.md | 재무비율·밸류에이션·DCF/SOTP·시나리오 |
-| `business.md` | business-analyst.md | 산업분석·경쟁구도·TAM/SAM·Porter 5 Forces |
-| `momentum.md` | momentum-analyst.md | 가격모멘텀·컨센서스·수급·카탈리스트 |
-| `risk.md` | risk-analyst.md | 재무·사업·매크로·ESG·tail risk |
-| `scorecard.md` | scorecard-strategist.md | 10항목 가중 스코어카드 + ATR 손절/목표가 + 전략 |
+| 파일           | 참조 에이전트           | 핵심 섹션                                                |
+| -------------- | ----------------------- | -------------------------------------------------------- |
+| `data.json`    | data-collector.md       | 현재가·ATR·재무·실적·컨센서스 (fetch_price.py 결과 활용) |
+| `company.md`   | company-overview.md     | 기업개요·Moat·지배구조 (KB read + 공개 지식)             |
+| `financial.md` | financial-analyst.md    | 재무비율·밸류에이션·DCF/SOTP·시나리오                    |
+| `business.md`  | business-analyst.md     | 산업분석·경쟁구도·TAM/SAM·Porter 5 Forces                |
+| `momentum.md`  | momentum-analyst.md     | 가격모멘텀·컨센서스·수급·카탈리스트                      |
+| `risk.md`      | risk-analyst.md         | 재무·사업·매크로·ESG·tail risk                           |
+| `scorecard.md` | scorecard-strategist.md | 10항목 가중 스코어카드 + ATR 손절/목표가 + 전략          |
 
 #### 데이터 소스 우선순위 (서브에이전트 부재 보완)
 
@@ -1426,6 +1498,7 @@ EOF
 #### 결과 표시
 
 산출물 머리말에 명시:
+
 ```
 > ⚠️ 본 분석은 서브에이전트 dispatch 도구 부재 환경에서 lead 가 직접 작성했습니다.
 > 작성자: stock-analyst-lead (fallback 모드, BLIND)
@@ -1443,6 +1516,7 @@ EOF
 서브에이전트 결과를 그대로 붙여넣지 않는다. 리드는 반드시 아래 검증을 수행한다.
 
 ### 1. 수치 정합성 교차검증
+
 - 시가총액 = 현재가 × 발행주식수 일치 여부
 - 52주 범위가 현재 날짜 기준 52주(365일) 내인지 확인
 - PER = 시가총액 / 순이익 역산 일치 여부
@@ -1451,6 +1525,7 @@ EOF
 - 불일치 발견 시: 해당 수치를 "[검증 필요]"로 표기하고, 가장 신뢰도 높은 소스(DART > 증권사 > 웹검색) 기준으로 채택
 
 ### 1.5. 가격 데이터 정합성 검증 (v2.3 필수)
+
 - **현재가 ∈ 52주 범위**: 현재가가 52주 최저~최고 안에 있는지 확인. 밖이면 데이터 오류
 - **가격 단위 일관성**: 리포트 내 모든 가격이 동일 통화(원 또는 달러)인지 확인
 - **ATR 기준가 = 현재가**: ATR 계산에 사용된 기준가가 현재가와 일치하는지 확인
@@ -1458,16 +1533,19 @@ EOF
 - ❌ 하나라도 불일치 시: data-collector에 가격 데이터 재수집 요청. 재수집 불가 시 리드가 직접 웹 검색으로 정확한 가격 확인 후 보정
 
 ### 2. 논리 모순 검출
+
 - 실적 "폭발적 성장" 전망인데 리스크를 "저"로 평가한 경우 → 리스크 재평가 요구
 - 목표주가가 컨센서스 범위를 벗어난 경우 → 산정 근거 재확인
 - 스코어카드 점수와 투자등급 매핑이 기준표와 불일치 → 자동 보정
 - Moat "Wide"인데 시장점유율 하락 추세 → Moat 트렌드 재검토
 
 ### 3. 시간축 일관성 검증
+
 - 모든 데이터의 기준 시점이 명시되어 있는지
 - 서로 다른 시점의 데이터를 같은 표에 섞지 않았는지
 - 52주 범위, 수익률 기간, 실적 연도가 논리적으로 일관되는지
 
 ### 4. 자체 판단 삽입
+
 - 서브에이전트 간 상충 의견이 있으면, 리드가 "■ 리드 판단" 섹션에서 최종 의견 기술
 - 판단 근거를 명시하고, 어떤 에이전트의 의견을 채택/기각했는지 투명하게 공개
