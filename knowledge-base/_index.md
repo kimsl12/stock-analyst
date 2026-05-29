@@ -1,12 +1,12 @@
 ---
-updated: 2026-05-25
+updated: 2026-05-29
 version: v3.2
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-05-25
-lint_last_post_fix: 2026-05-25
+lint_last_run: 2026-05-29
+lint_last_post_fix: 2026-05-29
 lint_mode: full
-lint_p0_count: 20
-lint_p1_count: 1
+lint_p0_count: 19
+lint_p1_count: 5
 lint_p2_count: 2
 ---
 
@@ -21,42 +21,45 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-25 (wiki-linter full)**
+> **최종 갱신: 2026-05-29 (wiki-linter full)**
 
 | 파일                             | 상태                                                | 영향 모듈              | 조치                   |
 | -------------------------------- | --------------------------------------------------- | ---------------------- | ---------------------- |
-| `market/daily_snapshot.md`       | 만료 (valid_until 05-21, **4일 초과**)              | 모닝·이브닝·전 브리핑  | kb-updater 재수집      |
-| `industry/crypto_bitcoin.md`     | 만료 (valid_until 05-20, **5일 초과**, 35일 미갱신) | 크립토 브리핑·BTC 섹터 | kb-updater 재수집      |
-| `industry/robotics.md`           | 만료 (valid_until 05-20, **5일 초과**, 36일 미갱신) | 로보틱스 섹터          | kb-updater 재수집      |
-| `industry/ai.md`                 | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 종목분석·브리핑 AI섹터 | kb-updater 재수집      |
-| `industry/auto.md`               | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 자동차·EV 섹터         | kb-updater 재수집      |
-| `industry/battery.md`            | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 배터리 섹터            | kb-updater 재수집      |
-| `industry/bio_pharma.md`         | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 바이오파마 섹터        | kb-updater 재수집      |
-| `industry/defense_industry.md`   | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 방산 섹터              | kb-updater 재수집      |
-| `industry/infrastructure.md`     | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 인프라 섹터            | kb-updater 재수집      |
-| `industry/luxury.md`             | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 명품 섹터              | kb-updater 재수집      |
-| `industry/semiconductor.md`      | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 종목분석·반도체 섹터   | kb-updater 재수집      |
-| `portfolio/model_portfolios.md`  | 만료 (valid_until 05-21, **4일 초과**, 34일 미갱신) | 포트폴리오 분석        | /모델포트폴리오 재실행 |
-| `industry/consumer_retail.md`    | 만료 (valid_until 05-22, **3일 초과**, 33일 미갱신) | 소비재 섹터            | kb-updater 재수집      |
-| `industry/real_estate.md`        | 만료 (valid_until 05-22, **3일 초과**, 33일 미갱신) | 부동산 섹터            | kb-updater 재수집      |
-| `industry/banking_capital.md`    | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 금융·은행 섹터         | kb-updater 재수집      |
-| `industry/education.md`          | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 에듀테크 섹터          | kb-updater 재수집      |
-| `industry/food_agriculture.md`   | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 농식품 섹터            | kb-updater 재수집      |
-| `industry/healthcare_service.md` | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 헬스케어 섹터          | kb-updater 재수집      |
-| `industry/insurance.md`          | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 보험 섹터              | kb-updater 재수집      |
-| `industry/logistics.md`          | 만료 (valid_until 05-24, **1일 초과**, 31일 미갱신) | 물류 섹터              | kb-updater 재수집      |
+| `industry/crypto_bitcoin.md`     | 만료 (valid_until 05-20, **9일 초과**, 39일 미갱신) | 크립토 브리핑·BTC 섹터 | kb-updater 재수집      |
+| `industry/robotics.md`           | 만료 (valid_until 05-20, **9일 초과**, 40일 미갱신) | 로보틱스 섹터          | kb-updater 재수집      |
+| `industry/ai.md`                 | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 종목분석·브리핑 AI섹터 | kb-updater 재수집      |
+| `industry/auto.md`               | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 자동차·EV 섹터         | kb-updater 재수집      |
+| `industry/battery.md`            | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 배터리 섹터            | kb-updater 재수집      |
+| `industry/bio_pharma.md`         | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 바이오파마 섹터        | kb-updater 재수집      |
+| `industry/defense_industry.md`   | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 방산 섹터              | kb-updater 재수집      |
+| `industry/infrastructure.md`     | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 인프라 섹터            | kb-updater 재수집      |
+| `industry/luxury.md`             | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 명품 섹터              | kb-updater 재수집      |
+| `industry/semiconductor.md`      | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 종목분석·반도체 섹터   | kb-updater 재수집      |
+| `portfolio/model_portfolios.md`  | 만료 (valid_until 05-21, **8일 초과**, 38일 미갱신) | 포트폴리오 분석        | /모델포트폴리오 재실행 |
+| `industry/consumer_retail.md`    | 만료 (valid_until 05-22, **7일 초과**, 37일 미갱신) | 소비재 섹터            | kb-updater 재수집      |
+| `industry/real_estate.md`        | 만료 (valid_until 05-22, **7일 초과**, 37일 미갱신) | 부동산 섹터            | kb-updater 재수집      |
+| `industry/banking_capital.md`    | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 금융·은행 섹터         | kb-updater 재수집      |
+| `industry/education.md`          | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 에듀테크 섹터          | kb-updater 재수집      |
+| `industry/food_agriculture.md`   | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 농식품 섹터            | kb-updater 재수집      |
+| `industry/healthcare_service.md` | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 헬스케어 섹터          | kb-updater 재수집      |
+| `industry/insurance.md`          | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 보험 섹터              | kb-updater 재수집      |
+| `industry/logistics.md`          | 만료 (valid_until 05-24, **5일 초과**, 35일 미갱신) | 물류 섹터              | kb-updater 재수집      |
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-05-25 full)
+## P1 — 이번 주 조치 (탐지: 2026-05-29 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
-| 파일                          | 문제                                                                                                                                                    | 심각도   | 권장 조치              |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------- |
-| `macro/us_monetary_policy.md` | updated 05-06 — **19일 경과**. valid_until 06-06 미만료이나 Warsh 취임(5/15)+30Y 5.13%→5.19%+미시간 44.8(역대최저)+이란 합의 진전 등 구조적 변화 미반영 | **높음** | kb-updater 즉시 재수집 |
+| 파일                           | 문제                                                                                                                      | 심각도   | 권장 조치              |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------- |
+| `market/daily_snapshot.md`     | valid_until 05-30 (+1일). 매 거래일 갱신 필요                                                                             | **높음** | kb-updater 재수집      |
+| `market/correlation_matrix.md` | valid_until 05-31 (+2일). updated 05-15 — 14일 경과                                                                       | **중간** | kb-updater 재수집      |
+| `market/surprise_index.md`     | valid_until 05-31 (+2일). updated 05-20 — 9일 경과                                                                        | **중간** | kb-updater 재수집      |
+| `market/economic_calendar.md`  | valid_until 06-02 (+4일). updated 05-25 (4일 경과)                                                                        | **낮음** | kb-updater 확인        |
+| `macro/us_monetary_policy.md`  | updated 05-06 — **23일 경과**. valid_until 06-06 미만료이나 Warsh 취임(5/15)+이란 합의 진전+PCE 3%+ 등 구조적 변화 미반영 | **높음** | kb-updater 즉시 재수집 |
 
-> [P1 해결완료 2026-05-25] 기존 P1 항목 18건 전부 만료 → P0 승격 완료. industry/ 13종 + market/daily_snapshot + portfolio/model_portfolios.
+> [P1 해결완료 2026-05-25] 기존 P1 항목 18건 전부 만료 → P0 승격 완료.
 > [P1 이력] 2026-04-21~05-06 해결 완료 항목은 P0 노트 참조.
 
 ---
@@ -403,15 +406,15 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 ---
 
-## 📊 Market KB (`knowledge-base/market/`) — 2026-05-06 최신
+## 📊 Market KB (`knowledge-base/market/`) — 2026-05-29 최신
 
-| 파일                    | 상태                                                            | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령          |
-| ----------------------- | --------------------------------------------------------------- | --------- | ---------------- | -------------------- |
-| `daily_snapshot.md`     | ✅ SUCCESS (05-06) valid_until 05-06 EOD confidence:medium-high | 매 거래일 | A-1, B-2, B-3    | 05-07 재실행         |
-| `economic_calendar.md`  | ✅ SUCCESS (05-02) valid_until 05-09 confidence:high            | 주 1회    | A-4, B-1, C-6    | —                    |
-| `surprise_index.md`     | ⚠️ PARTIAL (05-02) valid_until 05-31 confidence:medium          | 매일      | B-4              | 완전 수집 목표       |
-| `correlation_matrix.md` | ✅ SUCCESS (05-03) valid_until 05-31 confidence:medium          | 주 1회    | B-5              | —                    |
-| `guru_positions.md`     | ✅ SUCCESS (04-28) valid_until 07-18 confidence:high            | 분기 1회  | A-5, B-7, C-4    | Q1 2026은 05-15 이후 |
+| 파일                    | 상태                                                     | 갱신 빈도 | 영향 브리핑 모듈 | 재수집 명령          |
+| ----------------------- | -------------------------------------------------------- | --------- | ---------------- | -------------------- |
+| `daily_snapshot.md`     | ✅ SUCCESS (05-29) valid_until 05-30 EOD confidence:high | 매 거래일 | A-1, B-2, B-3    | 매 거래일 갱신       |
+| `economic_calendar.md`  | ✅ SUCCESS (05-25) valid_until 06-02 confidence:high     | 주 1회    | A-4, B-1, C-6    | —                    |
+| `surprise_index.md`     | ✅ COMPLETE (05-20) valid_until 05-31 confidence:high    | 매일      | B-4              | 05-31 만료 전 재수집 |
+| `correlation_matrix.md` | ✅ SUCCESS (05-15) valid_until 05-31 confidence:medium   | 주 1회    | B-5              | 05-31 만료 전 재수집 |
+| `guru_positions.md`     | ✅ SUCCESS (05-20) valid_until 08-15 confidence:high     | 분기 1회  | A-5, B-7, C-4    | Q1 2026 13F 수집완료 |
 
 > **재수집 순서 권장:** economic_calendar → surprise_index → correlation_matrix → guru_positions (13F)
 > daily_snapshot은 fetch_price.py --market --save로 매일 자동 갱신
@@ -494,15 +497,15 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 > wiki-linter가 주간 점검 시 이 맵 기준으로 수치 일관성 검증.
 
-| 수치          | 파일 A                                                                 | 파일 B                                                                                    | 마지막 검증 | 상태                                                                              |
-| ------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)            | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신, FOMC 4/29 4인 반대 미반영)         | 05-06       | ⚠️ macro/us_monetary_policy.md 재수집 권장 (Core PCE 4.3%·Warsh 5/15 취임 미반영) |
-| VIX           | `macro/global_risk_factors.md`: 16.89 (05-03 갱신, "거짓 안정 재진입") | `market/daily_snapshot.md`: 미확정 (05-05 종가, 수집 누락)                                | 05-06       | ⚠️ daily_snapshot.md VIX 수치 미수집 — 다음 갱신 시 보완                          |
-| DXY           | `macro/global_risk_factors.md`: ~98 (05-03 갱신)                       | `market/daily_snapshot.md`: ~98 구간 (05-05 ET)                                           | 05-06       | ✅ 일치 (구간 일치, 정확 수치 SSOT 보완 권장)                                     |
-| 원/달러       | `macro/korea_economy.md`: 1,500.8원 (05-16 갱신, 5/15 종가)            | `market/daily_snapshot.md`: 1,473.21 오픈 / 1,467.90~1,477.18 (05-06 KST 오전)            | 05-16       | ✅ korea_economy.md 05-16 갱신 완료 (1,500원 돌파 반영)                           |
-| S&P 500       | `macro/us_economy.md`: 7,365.12 (05-07 신고가)                         | `market/daily_snapshot.md`: 7,259.22 (05-05 ET 종가)                                      | 05-07       | ✅ us_economy.md 갱신 완료 (snapshot 05-05 대비 +1.46%)                           |
-| WTI           | `macro/us_economy.md`: $95.66 (05-07 갱신)                             | `industry/energy.md`: **$105.42** (05-17) / `market/daily_snapshot.md`: $105 (05-16 추정) | 05-17       | ✅ energy.md 05-17 갱신 완료. WTI $105.42(+11%주간)                               |
-| Gold          | `macro/global_risk_factors.md §4`: $4,614 (05-03 갱신)                 | `market/daily_snapshot.md`: $4,518~$4,533 (05-05 종가, 이란 협상 헷지 수요 감소)          | 05-06       | ⚠️ -2% 차이 (시점차 — global_risk 05-03, snapshot 05-05)                          |
+| 수치          | 파일 A                                                       | 파일 B                                                                                  | 마지막 검증 | 상태                                                                                          |
+| ------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)  | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신, Warsh 취임·PCE 3%+ 미반영)       | 05-29       | ⚠️ macro/us_monetary_policy.md 재수집 필요 (23일 미갱신, 6월 FOMC 전 Waller 매파 발언 미반영) |
+| VIX           | `macro/global_risk_factors.md`: 16.70 (05-25 갱신)           | `market/daily_snapshot.md`: **15.74** (05-28 종가)                                      | 05-29       | ✅ 일치 (-5.8% 하락, 이란 합의 기대·PCE 인라인 소화)                                          |
+| DXY           | `macro/global_risk_factors.md`: ~97~98 (05-25 갱신)          | `market/daily_snapshot.md`: **98.99** (05-28 ET)                                        | 05-29       | ✅ 일치 (99선 근접, 달러 약세 구조 지속)                                                      |
+| 원/달러       | `macro/korea_economy.md`: 1,520.06원 (05-25 갱신, 5/22 종가) | `market/daily_snapshot.md`: 1,498~1,502 추정 (05-28 기준, 1,500 하향 돌파 진행 중)      | 05-29       | ⚠️ 시점차 — korea_economy 05-22 기준, snapshot 최신. korea_economy 재수집 권장                |
+| S&P 500       | `macro/us_economy.md`: 7,501 (05-16 갱신)                    | `market/daily_snapshot.md`: **7,563.63** (05-28 종가, 신고가)                           | 05-29       | ⚠️ +0.83% 차이 (시점차 — us_economy 05-16, snapshot 05-28). us_economy 재수집 권장            |
+| WTI           | `macro/us_economy.md`: $95.66 (05-16 갱신)                   | `industry/energy.md`: $92 (05-25 갱신) / `market/daily_snapshot.md`: **$88.34** (05-28) | 05-29       | ⚠️ us_economy $95.66 구버전. energy.md $92 기준. snapshot $88.34 최신. us_economy 재수집 필요 |
+| Gold          | `macro/global_risk_factors.md §4`: $4,509 (05-25 갱신)       | `market/daily_snapshot.md`: **$4,524.20** (05-28 종가)                                  | 05-29       | ✅ 일치 (+0.3% 시점차, 허용 범위)                                                             |
 
 ---
 
