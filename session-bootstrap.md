@@ -21,6 +21,7 @@
 <!-- BEGIN AUTOGEN: analyses -->
 | 폴더 | 날짜 | 스코어 | 상태 |
 |------|------|--------|------|
+| **ORCL_Oracle_v3** | **2026-05-31** | 76 매수 — TP $258 | 유효 (자동 생성, 본문 갱신 권장) |
 | **LLY_EliLilly_v5** | **2026-05-29** | **81 강력매수** (Eli Lilly GLP-1 + 항암 + 면역 / 시총 ~$770B / Δ -7.2pt vs v4 88.2 (분기 둔화 시그널 + Wegovy 보험 커버리지 확대 경쟁) / 신규 TP $1,350 중앙값 +7.1% (95% CI $1,250~$1,490) / Mounjaro/Zepbound FY26 매출 $32B (+45%) Orforglipron 경구 GLP-1 2026 PDUFA / §약한 가정: ①Orforglipron 효능 -15% TZP 대비 ②Wegovy 보험 50% 커버 ③매크로 헬스케어 ICER 가격 압박) | 유효 (재분석 v5 BLIND, v3·v4 read 0건, lead fallback heredoc 7파일, /재분석실행 14 10 회차) |
 | **LVMUY_LVMH_v5** | **2026-05-29** | **73 매수** (🟢 +5.4pt vs v4 67.6 — LVMH 럭셔리 75개 메종 Louis Vuitton+Dior+Hennessy / ADR / 현재가 $113 (ADR) 시총 €280B / 신규 TP $142 중앙값 95% CI +25.7% / 중국 수요 회복 시그널 + Q1 매출 +3% YoY (vs 컨센 +1.5%) / Wide Moat 가격결정력 + 70년+ 브랜드 / §약한 가정: ①중국 럭셔리 수요 회복 ②미 럭셔리 관세 100% ③ADR:보통주 비율 — MC.PA 직접 거래 권장 (ADR 일평균 1.8만주 유동성 부족)) | 유효 (재분석 v5 BLIND, v3·v4 read 0건, lead fallback heredoc 7파일, /재분석실행 14 10 회차) |
 | **META_Meta_v5** | **2026-05-29** | **82 강력매수** (Meta Platforms FB+IG+WhatsApp+Reality Labs / 시총 ~$1.5T / Δ -3.1pt (vs v4 85.1, 광고 단가 +18% 가시화 후 추가 멀티플 확장 여력 제한) / 신규 TP $800 중앙값 95% CI / 광고 펀더멘털 견고 OPM 44% ROE 35% Reels 수익화 가속 + Threads 1억 DAU / Llama 4 + Orion AR 카탈리스트 / §약한 가정: ①광고 단가 18% 유지 ②중국 광고주 비중 ③Reality Labs 적자 5년 내 흑전) | 유효 (재분석 v5 BLIND, v3·v4 read 0건, lead fallback heredoc 7파일, /재분석실행 14 10 회차) |
@@ -123,6 +124,7 @@
 | **NVS_Novartis_v4** | **2026-05-25** | 65.2 중립 — TP $134 | 유효 (자동 생성, 본문 갱신 권장) |
 | **SHEL_Shell_v4** | **2026-05-25** | 79 매수 — TP $97 | 유효 (자동 생성, 본문 갱신 권장) |
 | **SOXL_Direxion3xSemiconductor_v3** | **2026-05-25** | 63 중립 — TP $256 | 유효 (자동 생성, 본문 갱신 권장) |
+| **SOXL_DirexionDailySemiconductorBull3X_v1** | **null** | 62 | 유효 (자동 생성, 본문 갱신 권장) |
 | **SOXS_Direxion3xSemiBear_v3** | **2026-05-25** | 30 매도 — TP $4.50 | 유효 (자동 생성, 본문 갱신 권장) |
 | **SPY_SPDR_SP500_v3** | **2026-05-25** | 58.5 중립 — TP $730 | 유효 (자동 생성, 본문 갱신 권장) |
 | **TMUS_TMobile_v4** | **2026-05-25** | 79.65 매수 — TP $235 | 유효 (자동 생성, 본문 갱신 권장) |
@@ -130,8 +132,6 @@
 | **TQQQ_ProSharesUltraProQQQ_v4** | **2026-05-25** | 갱신 필요 — TP $50 | 유효 (자동 생성, 본문 갱신 권장) |
 | **TSM_TSMC_v3** | **2026-05-25** | 86.3 매수 — TP $452 | 유효 (자동 생성, 본문 갱신 권장) |
 | **AGG_iSharesCoreUSAggregateBond_v2** | **2026-05-20** | **77.30 매수** (/재분석실행 BLIND v2 — 이전 v1 read 0건 / lead 직접 수행 fallback 모드 / ETF iShares Core US Agg Bond AUM $130B 운용보수 0.03% / 현재가 $97.75 ATR 0.38% / Duration 6.0년 YTM 4.85% 30D SEC Yield 4.65% AA 평균 / Treasury 45% MBS 26% IG 회사채 24.5% / 매크로 역풍 10Y 4.63% 1년래 최고 + CPI 4월 3.8% + Warsh 5/15 / 스코어 77.30/100 매수 / 목표 $99.50 손절 $93.00 / 6M Total Return +2.0% CI -1.4%~+5.2% / 약한 가정 3개: ①10Y 박스권 ②Warsh 비둘기 ③신용 사이클 / 3분할 매수 권장) | 유효 (v3로 대체됨, 델타 비교용 보존) |
-| **ORCL_Oracle_v2** | **2026-05-18** | **66.9 Buy** (B+등급 Buy 하단 -1.1점, v1 68.0 → -1.1점, $185.35, Cloud/Database/AI Infrastructure, FOMC 8-4 dissents 1992 이후 최대 + Core PCE Q1 SAAR 4.3% + Warsh 5/15 매파 강화 + 6월 동결 70~89% + 5/3 Berkshire $397B 보수적 시그널 + 10Y 4.46% DXY 98.6 — 매크로/금리 리스크 종합 +0.3 반영, AI 인프라 capex 사이클 (NVDA 5/6 실적 + Hyperscaler capex 가이던스 + Oracle Cloud RPO 추세) 핵심 변곡점 임박, 목표 $228 (+23.0%), 손절 $167.16 -9.8%, R:R 2.78, 사용자 포트 미편입 — Phase 2 6종 중 ORCL 점수 최저, 5/6~5/8 NVDA·Cloud Capex 재검토 후 진입 결정 권고) | 유효 (Phase 2 v2 재분석) |
-| **SOXL_DirexionDailySemiconductorBull3X_v1** | **null** | 62 | 유효 (자동 생성, 본문 갱신 권장) |
 
 ### 📦 아카이브 (옛 v — timeline.json 보존, bootstrap 참고용)
 
@@ -212,6 +212,7 @@
 | **GE_GEAerospace_v2** | **2026-05-11** | 갱신 필요 | 아카이브 (v 대체됨) |
 | **GLD_SPDRGoldShares_vnull** | **null** | 갱신 필요 | 아카이브 (v 대체됨) |
 | **PLTR_Palantir_v4** | **2026-05-26** | **58 중립** (재분석 v4 BLIND Wave A — /재분석실행 14 10 회차 2 / lead 직접 fallback heredoc, v1·v2·v3 read 0건 / 엔터프라이즈 AI Ontology 정부 5축 Wide Moat (정부 신뢰 9.5 + Ontology Lock-in 9.0 + AIP Boot Camp 8.5 + Karp 정치 7.5 + 규모·R&D 8.0) / 현재가 $134.20 -1.97% 시총 $321.7B 52W -35.3% 저 +16.7% / **밸류 극단** Fwd PER GAAP 380~420x Fwd PS 75~80x PEG 15~20x 5년치 성장 선반영 / 무차입 + 현금 $5~6B FCF Margin 40~50% Rule of 40 약 60~64 / 매출 2025E $3.3~3.5B +15~22% / 컨센 평균 TP **$105 -22%** Hold/Sell 75% Bull Wedbush $200 Bear Citi/Mizuho $75~85 / 종합 TP $105 (DCF $75 + PS25x $44 + PS50x $88 가중) / 95% CI $80~$145 ±31% / ★최약 가정: Fwd PS 50x 유지 (반증 -10pt 중립→강력매도) / 평단 $84.5 분할 진입 권고: $100 30% / $85 40% / $70 30%) | 유효 (재분석 v4 BLIND, v1·v2·v3 보존, fallback heredoc) |
+| **ORCL_Oracle_v2** | **2026-05-18** | **66.9 Buy** (B+등급 Buy 하단 -1.1점, v1 68.0 → -1.1점, $185.35, Cloud/Database/AI Infrastructure, FOMC 8-4 dissents 1992 이후 최대 + Core PCE Q1 SAAR 4.3% + Warsh 5/15 매파 강화 + 6월 동결 70~89% + 5/3 Berkshire $397B 보수적 시그널 + 10Y 4.46% DXY 98.6 — 매크로/금리 리스크 종합 +0.3 반영, AI 인프라 capex 사이클 (NVDA 5/6 실적 + Hyperscaler capex 가이던스 + Oracle Cloud RPO 추세) 핵심 변곡점 임박, 목표 $228 (+23.0%), 손절 $167.16 -9.8%, R:R 2.78, 사용자 포트 미편입 — Phase 2 6종 중 ORCL 점수 최저, 5/6~5/8 NVDA·Cloud Capex 재검토 후 진입 결정 권고) | 유효 (Phase 2 v2 재분석) |
 | **MA_Mastercard_v3** | **2026-05-13** | 81.4 강력매수 — TP $560 | 아카이브 (v 대체됨) |
 | **META_Meta_v4** | **2026-05-13** | **85.1 강력매수** (fallback v4 BLIND — /재분석실행 14 10 Wave A, AI 광고 + AI 인프라 빅테크 풀스택, Wide Moat 25% 가중, 현재가 추정 $617 (fetch_price.py 부재) 시총 $1.57T, FY26E 매출 +25~32% OPM 38~41% ROE 33%, Fwd PER 20x — 빅테크 4사 최저 FCF Yield 3.8%, Wide Moat DAU 35.5억 Network Effect, -22% 조정 후 저점 매수권 등급 50/60 매수, 컨센 60명 TP $720 (+16.7%), 종합 TP $720 +16.7%, 10항목 85.1/100 강력매수, §CI 95% CI $620~$830 ±15%, §약한 가정 3개: ①AI capex 가속 + Reels 광고 단가 회복 ②Reality Labs 손실 폭 축소 ③EU DMA 추가 제재 無 / 🟢 등급 상향: 이전 v3 매수 72 → v4 강력매수 85.1 (+13.1pt)) | 유효 (재분석 v4 BLIND, v1·v2·v3 보존, Wave A fallback, 등급 상향 🟢) |
 | **MRK_Merck_v3** | **2026-05-13** | 68 매수 — TP $125 | 아카이브 (v 대체됨) |
@@ -243,7 +244,6 @@
 | **NVDA_NVIDIA_v2** | **2026-05-09** | **82.35 Strong Buy** (A등급 Strong Buy 유지 강화, v1 81.60 → +0.75점, 성장주, 시총 $4.92T 세계 반도체 1위, Fwd PER 31.4x AVGO 49.4x 대비 -37% 할인 확대, PEG 0.93, FY28E EPS +12.5% 상향, Moat Wide 9.0 (v1 9.5 -0.5) 네트워킹·추론 약화, Anthropic AWS Trainium 이탈 + ASIC 추론 28% + 중국 관세 125%, 목표 $232 +14.6% R:R 3.22 Excellent, NVDA 6%+AVGO 5% AI 인프라 블록 11% 편입 권고) | 보존 (v3 5/13으로 superseded) |
 | **MSFT_Microsoft_v2** | **2026-05-08** | 79.5 매수 — TP $469 | 아카이브 (v 대체됨) |
 | **MU_Micron_v2** | **2026-05-06** | 갱신 필요 | 아카이브 (v 대체됨) |
-| **ORCL_Oracle_vnull** | **2026-05-06** | 갱신 필요 | 아카이브 (v 대체됨) |
 | **RSP_InvescoSP500EqualWeight_v2** | **2026-05-06** | **79.0 Buy** (B+등급 Buy 상단 Strong Buy 경계 -1점, v1 77.0 → +2.0점, ETF S&P500 동일가중 (Mag7 노출 분산), **5/15 Q1 13F D-9 Catalyst** Berkshire/Buffett 등 거물 컨버전스 + FOMC 8-4 분열 + Berkshire $397B 위험회피 환경에서 빅테크 집중 회피 효과, 목표 **$224 Base (+10.2%)** Bull $235 (+15.6%) 손절 $197 종가, follow-through 3인+ 시 추가 +2~3p 가능, **VOO 76.6% 단일 베팅 분산 대안** — VOO -5%p 자금 일부 RSP 5% 편입 시 Mag7 31% → 1% 노출 -30%p 분산, 매크로: NVDA 5/6 후 동일가중 헤지 매력 강화) | 유효 (Phase 3 v2 재분석) |
 | **MLSS_MilestoneScientific_v1** | **2026-05-05** | 갱신 필요 | 아카이브 (v 대체됨) |
 | **MSFT_Microsoft_v1** | **2026-05-05** | 갱신 필요 | 아카이브 (v 대체됨) |
