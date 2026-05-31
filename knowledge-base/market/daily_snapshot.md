@@ -1,15 +1,15 @@
 ---
-updated: 2026-05-30
-valid_until: 2026-05-31
+updated: 2026-05-31
+valid_until: 2026-06-01
 category: market
 collection_status: SUCCESS
 confidence: high
-last_synced_from_db: 2026-05-30
+last_synced_from_db: 2026-05-31
 ---
 
 # Daily Market Snapshot
 
-## CURRENT (2026-05-30)
+## CURRENT (2026-05-31)
 
 ### 미국 지수
 | 지수 | 종가 | 등락률 | 기준일 |
@@ -50,5 +50,5 @@ last_synced_from_db: 2026-05-30
 ### 크립토
 | 항목 | 종가 | 등락률 | 기준일 |
 |------|------|--------|--------|
-| Bitcoin | 73,492.63 | +0.16% | 2026-05-30 |
-| Ethereum | 2,014.50 | +0.13% | 2026-05-30 |
+| Bitcoin | 73,783.65 | +0.56% | 2026-05-31 |
+| Ethereum | 2,020.01 | +0.40% | 2026-05-31 |
