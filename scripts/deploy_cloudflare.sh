@@ -2,12 +2,28 @@
 # Cloudflare Pages 배포 스크립트
 # GitHub Actions 차단(Ticket 4287825) 대응 — gh-pages 우회
 # 사용: bash scripts/deploy_cloudflare.sh
+#
+# 인증 우선순위 (v3.22 — 2026-06-01):
+#   1. CLOUDFLARE_API_TOKEN 환경변수 (이미 export 됐으면 그대로)
+#   2. .env.local (REPO_ROOT) CLOUDFLARE_API_TOKEN= 한 줄 자동 source
+#   3. wrangler OAuth (브라우저 로그인 — wrangler login 후 ~/.config/.wrangler/)
+#   토큰 발급: https://dash.cloudflare.com/profile/api-tokens
+#   필요 권한: Account → Cloudflare Pages:Edit
 
 set -euo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 REPO_ROOT=$(cd "$SCRIPT_DIR/.." && pwd)
 cd "$REPO_ROOT"
+
+# .env.local 자동 로드 (CLOUDFLARE_API_TOKEN 등 — secret 파일은 외부 read 금지, source 만 수행)
+if [ -f "$REPO_ROOT/.env.local" ] && [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
+  set +u
+  # shellcheck disable=SC1091
+  source "$REPO_ROOT/.env.local"
+  set -u
+  [ -n "${CLOUDFLARE_API_TOKEN:-}" ] && echo "==> .env.local 에서 CLOUDFLARE_API_TOKEN 로드 완료"
+fi
 
 DEPLOY_DIR="/tmp/cf-deploy"
 PROJECT_NAME="stock-analyst"
