@@ -77,6 +77,32 @@ git diff --stat | grep -E "(README\.md|_lint_history\.jsonl|session-bootstrap\.m
 # 3종 모두 변경 표시되지 않으면 위 fallback 누락 — commit 보류 후 즉시 보완
 ```
 
+## P1 본문 stale 자동 갱신 트리거 [v3.22 — 2026-06-01 신규]
+
+wiki-linter 보고 안 P1 항목에 `🚨 [auto-trigger]` 마커 포함된 KB 가 있으면, 메인이 받은 직후 **kb-updater agent 자동 dispatch 의무**.
+
+```bash
+# wiki-linter 보고 받은 후 메인 검증 의무
+AUTO_TRIGGERS=$(echo "$LINT_REPORT" | grep -oE '🚨 \[auto-trigger\] /KB업데이트 \S+' | awk '{print $4}' | sort -u)
+
+for KB_FILE in $AUTO_TRIGGERS; do
+  echo "P1 본문 stale auto-trigger 감지: $KB_FILE"
+  # Agent kb-updater 위임 — KB 본문 재수집 + frontmatter 갱신 + jsonl append
+  # (lead 가 Task/Agent 도구로 kb-updater 호출)
+done
+
+# 트리거 후 git diff 검증 (KB 본문 변경 확인)
+git diff --stat knowledge-base/ | head -5
+```
+
+**사용자 루틴 권장 조합**:
+
+- 매주 일요일 12:00 KST `/KB점검` (현재 사용자 루틴) → 자동 트리거 마커 검출 → kb-updater dispatch
+- 매주 수요일 18:00 KST `/KB업데이트 economic_calendar` (사용자 루틴 직접 추가 권장) → 주간 KB 회전 보강
+- 매일 KST 00:05 launchd `daily_pick_update.sh` (자동) → kb.json past 필터 재계산 + KB 본문 변경 시 deploy 트리거
+
+이유: economic_calendar 등 주간 회전 KB 는 일요일 lint 만으로는 valid_until 가까워질 때 미리 자동 갱신 안 됨. 사용자 수요일 루틴 + 메인 자동 dispatch 둘 다 필요 (재발 방지).
+
 ## 사용자 보고 형식
 
 ```

@@ -42,19 +42,34 @@ if ! git pull --rebase --autostash origin main 2>&1; then
   log "WARN: git pull 실패 — local 그대로 진행"
 fi
 
-# 3. daily_pick.json 재빌드
-log "build_daily_pick.mjs 실행"
+# 3. daily_pick.json + kb.json 재빌드 (past 필터 매일 재계산 — economic_calendar 등)
+log "build_daily_pick.mjs + build_kb.mjs 실행"
 cd web || { log "ERROR: web/ cd 실패"; exit 0; }
 if ! node scripts/build_daily_pick.mjs 2>&1; then
   log "ERROR: build_daily_pick 실패 — deploy 스킵"
   exit 0
 fi
+# kb.json 은 .gitignore (vercel 컨테이너 안 매 deploy 시 재빌드 정상). 로컬 검증용 빌드.
+if ! node scripts/build_kb.mjs 2>&1; then
+  log "WARN: build_kb 실패 — 로컬 kb.json stale 가능성 (본서버는 vercel 빌드 시 재계산)"
+fi
 cd "$PROJECT_ROOT" || exit 0
 
-# 4. 변경 있는지 확인
-if git diff --quiet web/src/data/daily_pick.json; then
-  log "변경 없음 — commit/deploy 스킵 (어제 픽 유지 가능성)"
+# 4. 변경 있는지 확인 (daily_pick.json 또는 KB 본문 신규 변경)
+KB_CHANGED=$(git status --porcelain knowledge-base/market/ 2>/dev/null | wc -l | tr -d ' ')
+if git diff --quiet web/src/data/daily_pick.json && [ "$KB_CHANGED" -eq 0 ]; then
+  log "변경 없음 — commit/deploy 스킵 (어제 픽 유지 + KB 본문 무변경)"
   log "=== 완료 (skip) ==="
+  exit 0
+fi
+if git diff --quiet web/src/data/daily_pick.json && [ "$KB_CHANGED" -gt 0 ]; then
+  log "daily_pick 무변경이나 KB 본문 ${KB_CHANGED}건 변경 감지 — vercel deploy 강제 (본서버 past 필터 재계산용)"
+  # daily_pick commit 없이 deploy 만
+  log "vercel --prod --yes (KB 본문 트리거)"
+  vercel --prod --yes 2>&1 | tail -5
+  log "bash scripts/deploy_cloudflare.sh (KB 본문 트리거)"
+  bash scripts/deploy_cloudflare.sh 2>&1 | tail -3
+  log "=== 완료 (KB-only deploy) ==="
   exit 0
 fi
 

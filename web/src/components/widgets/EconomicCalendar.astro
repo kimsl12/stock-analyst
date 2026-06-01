@@ -2,15 +2,30 @@
 import kb from '../../data/kb.json';
 
 type Event = (typeof kb.upcoming_events)[number];
-const events: Event[] = kb.upcoming_events.slice(0, 8);
+
+const todayKst = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
+const generatedAt = (kb as { generated_at?: string }).generated_at ?? '';
+const generatedDate = generatedAt.slice(0, 10);
+const staleDays = generatedDate
+  ? Math.floor((Date.parse(todayKst + 'T00:00:00+09:00') - Date.parse(generatedDate + 'T00:00:00+09:00')) / 86400000)
+  : null;
+
+const allEvents = kb.upcoming_events as Event[];
+const futureEvents = allEvents.filter((e) => e.date >= todayKst);
+const events = futureEvents.slice(0, 8);
 ---
 <section class="card" style="--dot-color: #fb923c;">
   <header class="card-head">
     <h2><span class="dot"></span>경제 캘린더 (다가오는)</h2>
-    <span class="dim">{events.length}건</span>
+    <span class="dim">{events.length}건 {staleDays !== null && staleDays >= 2 && <span class="stale">· 빌드 {staleDays}일 경과</span>}</span>
   </header>
   {events.length === 0 ? (
-    <p class="empty">예정 이벤트 없음</p>
+    <p class="empty">
+      예정 이벤트 없음
+      {staleDays !== null && staleDays >= 1 && (
+        <><br/><small class="hint">KB 본문이 {staleDays}일 전 빌드. economic_calendar.md 갱신 필요</small></>
+      )}
+    </p>
   ) : (
     <ul class="list">
       {events.map((e) => (
@@ -41,4 +56,6 @@ const events: Event[] = kb.upcoming_events.slice(0, 8);
   .evt-time { color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
   .evt-country { color: var(--text); font-weight: 500; }
   .evt-ind { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .stale { color: #fb923c; font-size: 0.72rem; margin-left: 0.3rem; }
+  .hint { color: var(--muted); font-size: 0.72rem; }
 </style>

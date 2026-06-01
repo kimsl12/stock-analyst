@@ -99,6 +99,13 @@ Step 10: 사용자 콘솔 보고 — 단, Step 9가 모두 완료된 경우에�
   - knowledge-base/_index.md "교차 참조 맵" 상태 컬럼 갱신
   - 고아 파일 발견 시 knowledge-base/_index.md에 추가 (행 append)
 
+  4. P1 본문 stale auto-trigger 권장 [v3.22 — 2026-06-01 신규]
+     - valid_until D-3 이내 + 본문 updated 7일+ stale 동시 충족 시:
+       → P1 표 비고 컬럼에 "🚨 [auto-trigger] /KB업데이트 {파일명}" 자동 추가
+       → 사용자 보고에 "권장 즉시 조치: /KB업데이트 {파일명} (D-{N}일 만료)" 명시
+     - 메인 핸드오프가 받으면 즉시 kb-updater agent dispatch 의무 (KB점검.md Fallback 참조)
+     - 적용 대상: market/* (특히 economic_calendar 주간 재수집 사이클), macro/* (월간 재검토)
+
   5. analysis/ 폴더 아카이브 [v3.5 신규]
      - 30일 초과 파일 → archive/{YYYY-MM}/ 이동
      - 90일 초과 파일 → 삭제 (scorecard 70점+ 제외)
