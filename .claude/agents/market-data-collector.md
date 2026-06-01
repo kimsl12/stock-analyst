@@ -56,7 +56,7 @@ TODAY=$(date +%Y-%m-%d)
 - changelog 날짜 → `$TODAY`
 
 단, **데이터 원본 안에 명시된 발표일**(예: "Fed FOMC 2026-03-18")은 원본 그대로 유지.
-상세: [`.claude/agents/date-rules.md`](date-rules.md).
+상세: [`reference/date-rules.md`](../../reference/date-rules.md).
 
 ---
 

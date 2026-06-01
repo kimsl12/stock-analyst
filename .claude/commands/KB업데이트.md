@@ -79,7 +79,7 @@ required_quality:
   - 최소 2개 소스 교차 검증
   - 미수집 항목은 "N/A [사유]" 로 명시
   - **모든 메타 날짜 필드(updated, date, last_synced_from_db)는 target_date로 통일** [v3.10.1]
-  - 날짜 상세 규칙: `.claude/agents/date-rules.md` 참조
+  - 날짜 상세 규칙: `reference/date-rules.md` 참조
 ```
 
 **호출 직전 검증 (리드가 수행)**: `TODAY=$(date +%Y-%m-%d)` 실행 후 위 프롬프트의 `target_date`에 `$TODAY` 값을 실제로 주입해 전달. 추론·컨텍스트 기반 날짜 금지.

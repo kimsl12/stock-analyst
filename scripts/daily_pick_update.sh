@@ -17,7 +17,7 @@
 #   bash scripts/daily_pick_update.sh
 #
 
-set -u
+set -euo pipefail
 
 PROJECT_ROOT="/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트"
 LOG="$PROJECT_ROOT/scripts/launchd/daily-pick.log"
@@ -36,18 +36,19 @@ fi
 
 cd "$PROJECT_ROOT" || { log "ERROR: cd 실패"; exit 1; }
 
-# 2. 원격 최신화 (unstaged changes 자동 stash 처리)
+# 2. 원격 최신화 (unstaged changes 자동 stash 처리, v3.22 P1-10 fail-fast)
 log "git pull --rebase --autostash origin main"
 if ! git pull --rebase --autostash origin main 2>&1; then
-  log "WARN: git pull 실패 — local 그대로 진행"
+  log "ERROR: git pull 실패 — 누적 충돌 위험 (silent state corruption 방지). deploy 중단."
+  exit 1
 fi
 
 # 3. daily_pick.json + kb.json 재빌드 (past 필터 매일 재계산 — economic_calendar 등)
 log "build_daily_pick.mjs + build_kb.mjs 실행"
 cd web || { log "ERROR: web/ cd 실패"; exit 0; }
 if ! node scripts/build_daily_pick.mjs 2>&1; then
-  log "ERROR: build_daily_pick 실패 — deploy 스킵"
-  exit 0
+  log "ERROR: build_daily_pick 실패 — deploy 중단 (silent corruption 차단)"
+  exit 1
 fi
 # kb.json 은 .gitignore (vercel 컨테이너 안 매 deploy 시 재빌드 정상). 로컬 검증용 빌드.
 if ! node scripts/build_kb.mjs 2>&1; then

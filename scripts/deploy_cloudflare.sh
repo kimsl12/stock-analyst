@@ -95,14 +95,25 @@ research_count=$(find "$DEPLOY_DIR/reports/research" -maxdepth 1 -name "*.html" 
 analyst_count=$(find "$DEPLOY_DIR/reports/analyst/items" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
 echo "==> 패키지 준비 완료: 종목 ${stock_count}개 + 브리핑 ${brief_count}개 + 리서치 ${research_count}건 + 애널리스트 ${analyst_count}건"
 
-# 7. wrangler 배포
+# 7. wrangler 배포 (1차 시도 실패 시 5초 대기 후 1회 재시도 — v3.22 P1-9)
 cd "$REPO_ROOT"
 TIMESTAMP=$(date '+%Y%m%d_%H%M')
 echo "==> wrangler pages deploy 실행 (commit: $TIMESTAMP)"
-wrangler pages deploy "$DEPLOY_DIR" \
+if ! wrangler pages deploy "$DEPLOY_DIR" \
   --project-name="$PROJECT_NAME" \
   --branch=main \
-  --commit-message="manual sync $TIMESTAMP"
+  --commit-message="manual sync $TIMESTAMP"; then
+  echo "==> wrangler 1차 실패 — 5초 대기 후 재시도"
+  sleep 5
+  wrangler pages deploy "$DEPLOY_DIR" \
+    --project-name="$PROJECT_NAME" \
+    --branch=main \
+    --commit-message="manual sync $TIMESTAMP (retry)" || {
+      echo "==> wrangler 2회 모두 실패 — Vercel 본서버는 영향 없음. 수동 재실행 필요:"
+      echo "    bash scripts/deploy_cloudflare.sh"
+      exit 1
+    }
+fi
 
 echo ""
 echo "==> 배포 완료"

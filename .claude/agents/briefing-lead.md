@@ -77,7 +77,7 @@ TODAY_COMPACT=$(date +%Y%m%d)   # reports/briefing/{type}_{YYYYMMDD}.html 용
 - 리포트 헤더·차트 축 레이블의 "현재 날짜" → `$TODAY` 사용
 - session-bootstrap.md "마지막 브리핑" 항목 → `$TODAY`
 
-상세 규칙: [`.claude/agents/date-rules.md`](date-rules.md). 컨텍스트 추론·Claude 내부 지식 사용 금지.
+상세 규칙: [`reference/date-rules.md`](../../reference/date-rules.md). 컨텍스트 추론·Claude 내부 지식 사용 금지.
 
 ---
 

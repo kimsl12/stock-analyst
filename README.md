@@ -31,6 +31,7 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      7일 cutoff (KST 기준), 날짜 desc, reports/briefing/*.html 스캔.
 -->
 <!-- BEGIN AUTOGEN: recent-briefing -->
+
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260531.html) — 2026-05-31
 - [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260530.html) — 2026-05-30
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260530.html) — 2026-05-30
@@ -62,7 +63,9 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      데이터 소스: reports/*.html (직속) + reports/briefing/*.html + reports/analyst/items/ 디렉토리.
 -->
 <!-- BEGIN AUTOGEN: counts -->
+
 종목·ETF **207건** + 브리핑 **125건** + 애널리스트 **153건** = 총 **485건** (2026-05-31 기준)
+
 <!-- END AUTOGEN: counts -->
 
 ## 변경 이력
@@ -328,8 +331,10 @@ Bull/Bear 시나리오, 섹터·종목 아이디어, 진입 근거·리스크 �
 │   ├── kb-updater.md                        ← KB 갱신 (opus, v3.4 미니사이클)
 │   ├── wiki-linter.md                       ← KB 건강 점검 (sonnet)
 │   └── research-curator.md                  ← 5섹터 × 4소스군 1차 자료 큐레이션 [v3.17 신규] (opus)
-│
-└── stop-loss-rules.md                       ← ATR 손절/목표가 SSOT
+
+reference/
+├── date-rules.md                            ← 날짜 표기 SSOT (이동: 2026-06-01)
+└── stop-loss-rules.md                       ← ATR 손절/목표가 SSOT (이동: 2026-06-01)
 
 scripts/
 ├── fetch_price.py                           ← 실시간 주가 + 시장 지수 수집

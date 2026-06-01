@@ -532,9 +532,7 @@ S&P(VOO) 28%, 국채 20%, 배당 15%, 국내 17%, Gold 10%, 현금 10%
 │   ├── manifest.json             # 전체 리포트 목록
 │   └── kb.json                   # KB 데이터 압축본
 │
-├── .claude/agents/
-│   └── stop-loss-rules.md        # 손절/목표가 계산 SSOT
-│
 └── reference/
-    └── source_registry.md        # 데이터 소스 등록부
+    ├── source_registry.md        # 데이터 소스 등록부
+    └── stop-loss-rules.md        # 손절/목표가 계산 SSOT
 ```

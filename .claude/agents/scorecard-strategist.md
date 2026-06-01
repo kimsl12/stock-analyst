@@ -143,7 +143,7 @@ grep -q "약한 가정\|Most Fragile" {scorecard.md} || echo "⚠️ 약한 가�
 
 ```
 턴 1: Read(리드가 지정한 5개 분석 파일)
-턴 2: Read(stop-loss-rules.md) — ATR 계산 공식 확인
+턴 2: Read(reference/stop-loss-rules.md) — ATR 계산 공식 확인
 턴 3: Write(scorecard 파일) — 종합 평가 전문
 턴 4: KB 피드백 루프 실행 [v3.1 신규]
 ```

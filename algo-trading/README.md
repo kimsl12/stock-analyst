@@ -275,7 +275,7 @@ node /Volumes/외장SSD/클로드\ AI\ 폴더/작업폴더/종목분석\ 에이�
 ├── knowledge-base/industry/{sector}.md            # 26개 섹터별 현황
 
 [손절 규칙 — SSOT]
-├── .claude/agents/stop-loss-rules.md              # ATR 래칫 손절 계산 공식
+├── reference/stop-loss-rules.md              # ATR 래칫 손절 계산 공식
 
 [알고 매매 전용]
 └── algo-trading/

@@ -16,24 +16,28 @@ bash scripts/deploy_cloudflare.sh
 
 ### 본서버 / 미러 구조
 
-| 채널 | URL | 갱신 명령 | 자동 빌드 |
-|------|-----|----------|----------|
-| **Vercel (본)** | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes` (root) | ❌ 깨짐 |
-| Cloudflare (미러) | https://stock-analyst.pages.dev/ | `bash scripts/deploy_cloudflare.sh` | ❌ |
+| 채널              | URL                                        | 갱신 명령                           | 자동 빌드 |
+| ----------------- | ------------------------------------------ | ----------------------------------- | --------- |
+| **Vercel (본)**   | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes` (root)        | ❌ 깨짐   |
+| Cloudflare (미러) | https://stock-analyst.pages.dev/           | `bash scripts/deploy_cloudflare.sh` | ❌        |
 
 ### 적용 시점
+
 - 종목 분석 push (개별 / 묶음 / 페이즈 일괄)
 - 브리핑 push (모닝 / 이브닝 / 주간 / 글로벌인텔리전스 / 풀 등)
 - 애널리스트 항목 push (`reports/analyst/items/*/`)
 - 단발성 HTML 추가 / 재생성 push
 
 ### 적용 제외
+
 - `knowledge-base/`, `knowledge-db/`, `analysis/` 만 변경된 push (HTML 없음)
 - 스크립트 / 워크플로 / 메타 파일만 변경된 push
 - KB 갱신 단독 push
 
 ### 왜 둘 다 필요한가
+
 GitHub Actions 계정 차단 (Ticket 4287825, 2026-04-15부터). 부수효과:
+
 - GitHub Pages 자동 배포 차단
 - **Vercel 자동 빌드 webhook 도 트리거 안 됨** (5/6 push 후 21시간 stale 확인)
 - → main push 만으로 사이트 자동 갱신되지 않음. 수동 CLI 호출 필수.
@@ -41,13 +45,31 @@ GitHub Actions 계정 차단 (Ticket 4287825, 2026-04-15부터). 부수효과:
 Cloudflare Pages는 5/7에 우회 채널로 추가. 메인 사용자 트래픽은 Vercel, Cloudflare는 보조 미러.
 
 ### 실행 결과
+
 - Vercel: cloud build (45초), `web/dist/` 출력, deployment URL 반환
 - Cloudflare: 로컬 패키지 + wrangler upload (3~5초), 207~217 파일
 
 ### 실패 시 처리
+
 - 한쪽 deploy 실패해도 다른쪽은 영향 없음. 단독 재실행 가능.
 - Vercel: `vercel --prod --yes` 다시 호출
 - Cloudflare: `bash scripts/deploy_cloudflare.sh` 다시 호출
 
 ### 관련 메모
+
 - `~/.claude/projects/.../memory/project_github_actions_disabled.md` — 사건 전체 이력 + 본서버/미러 운영 가이드
+
+## reports/ 폴더 구조 (허용 위치) [v3.22 — 2026-06-01 신설, P1-18 fix]
+
+build_manifest.mjs 가 스캔하는 4 위치만 허용. 그 외 서브디렉토리 push 시 본서버에 404.
+
+| 위치                           | 용도                                 | 갱신 주기  | 도입       |
+| ------------------------------ | ------------------------------------ | ---------- | ---------- |
+| `reports/*.html`               | 종목 / ETF 분석 (직속)               | 개별 호출  | v3.0       |
+| `reports/briefing/*.html`      | 모닝/이브닝/주간/풀/글로벌 등 브리핑 | 매일~매주  | v3.0       |
+| `reports/analyst/items/{id}/*` | 애널리스트 리포트 (meta+PDF+HTML)    | PDF/스크랩 | v3.5       |
+| `reports/research/*.html`      | L3 분기 Deep Dive (리서치 큐레이션)  | 분기       | v3.17 신규 |
+
+위 외 임의 서브디렉토리 (예: `reports/stock/`, `reports/etf/`, `reports/2026/`) 사용 시 manifest 미등록 → Vercel 본서버 안 보임.
+
+신규 카테고리 추가 시 `web/scripts/build_manifest.mjs` 의 `DEDUPE_TYPES` + `STOCK_DIR` / `BRIEF_DIR` / `RESEARCH_DIR` / `ANALYST_DIR` 상수 동시 갱신 필수.

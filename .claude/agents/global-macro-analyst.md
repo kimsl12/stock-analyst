@@ -35,7 +35,7 @@ TODAY=$(date +%Y-%m-%d)
 ```
 
 분석 결과물에 명시되는 "현 시점 지정학", "오늘 기준 에너지 가격", "이번 달 전망"의 "현 시점"은
-컨텍스트가 아닌 `$TODAY` 기준. 상세: [`.claude/agents/date-rules.md`](date-rules.md).
+컨텍스트가 아닌 `$TODAY` 기준. 상세: [`reference/date-rules.md`](../../reference/date-rules.md).
 
 ---
 

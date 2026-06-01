@@ -28,7 +28,7 @@ TODAY=$(date +%Y-%m-%d)
 YAML frontmatter `updated:`, jsonl 레코드 `date:`, changelog `date:` 등
 **모든 메타 날짜 필드**는 `$TODAY`만 사용. 컨텍스트·이전 파일·추론 금지.
 
-상세 규칙: [`.claude/agents/date-rules.md`](date-rules.md) 참조. 위반 시 2026-04-22 사례처럼 **64개 오기** 발생 가능.
+상세 규칙: [`reference/date-rules.md`](../../reference/date-rules.md) 참조. 위반 시 2026-04-22 사례처럼 **64개 오기** 발생 가능.
 
 ---
 

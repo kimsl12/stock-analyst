@@ -46,11 +46,11 @@ git add \
 
 # ── 커밋 (있으면) ─────────────────────────────────────
 if git diff --cached --quiet; then
-    echo "ℹ️  stage된 변경 없음 → 기존 로컬 커밋만 push 시도"
+    echo "[info] stage된 변경 없음 → 기존 로컬 커밋만 push 시도"
 else
     DATE_FMT="${DATE:0:4}-${DATE:4:2}-${DATE:6:2}"
     git commit -m "feat(briefing): ${TYPE} 브리핑 ${DATE_FMT}"
-    echo "✅ 커밋 완료: $(git rev-parse --short HEAD)"
+    echo "[ok] 커밋 완료: $(git rev-parse --short HEAD)"
 fi
 
 # ── Push 전략: main 직접 시도 → 실패 시 feature branch + PR ─
@@ -59,11 +59,11 @@ CUR_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "$CUR_BRANCH" == "main" ]]; then
     echo "→ 1차: main 직접 push 시도"
     if git push origin main 2>&1 | tee /tmp/briefing-push-main.log; then
-        echo "✅ main push 성공 — $(git rev-parse --short HEAD)"
+        echo "[ok] main push 성공 — $(git rev-parse --short HEAD)"
         exit 0
     fi
 
-    echo "⚠️  main push 실패 → feature branch + PR 폴백"
+    echo "[warn] main push 실패 → feature branch + PR 폴백"
     BRANCH="briefing/${TYPE}-${DATE}"
 
     # 이미 해당 브랜치가 있으면 -N 접미 추가
@@ -103,10 +103,10 @@ main 직접 푸시가 권한 정책으로 차단되어 feature branch + PR 경�
 🤖 Generated via scripts/briefing_commit.sh
 EOF
 )"
-        echo "✅ PR 생성 완료"
+        echo "[ok] PR 생성 완료"
         gh pr view --web 2>/dev/null || true
     else
-        echo "⚠️  gh CLI 없음 — 브랜치만 push됨. PR은 수동 생성 필요:"
+        echo "[warn] gh CLI 없음 — 브랜치만 push됨. PR은 수동 생성 필요:"
         echo "    https://github.com/$(git config --get remote.origin.url | sed -E 's|.*github\.com[:/]([^/]+/[^/.]+).*|\1|')/compare/main...${BRANCH}"
     fi
 
@@ -126,9 +126,9 @@ else
                 --title "feat(briefing): ${TYPE} 브리핑 ${DATE}" \
                 --body "자동 생성된 ${TYPE} 브리핑 리포트 (${DATE})."
         else
-            echo "ℹ️  이미 PR 존재 → 커밋만 추가됨"
+            echo "[info] 이미 PR 존재 → 커밋만 추가됨"
         fi
     fi
 fi
 
-echo "🏁 완료"
+echo "[done] 완료"
