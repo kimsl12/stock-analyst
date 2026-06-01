@@ -256,7 +256,9 @@ for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
   echo "$BODY" | grep -qF "$kw" && KFAIL+=("eng:$kw")
 done
 KCHARS=$(echo "$BODY" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
-LCHARS=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c | tr -d ' ')
+# 분모도 분자와 동일하게 grep -oE | wc -l 로 "문자 수" 카운트.
+# (tr -cd | wc -c 는 바이트 수 → 한글 3바이트로 분모 부풀려져 비율 1/3 왜곡. wc -m 은 로케일 미설정 시 바이트 폴백되므로 사용 금지)
+LCHARS=$(echo "$BODY" | grep -oE '[가-힣A-Za-z]' | wc -l | tr -d ' ')
 [ "$LCHARS" -gt 100 ] && {
   RATIO=$(( KCHARS * 100 / LCHARS ))
   [ "$RATIO" -lt 80 ] && KFAIL+=("korean-ratio-${RATIO}%")

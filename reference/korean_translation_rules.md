@@ -161,7 +161,9 @@ done
 
 # 2. 본문 한글 비중 80% 이상 (기존 50자 → 비율 측정으로 강화)
 KCHARS=$(echo "$BODY" | grep -oE '[가-힣]' | wc -l)
-TOTAL=$(echo "$BODY" | tr -cd '가-힣A-Za-z' | wc -c)
+# 분모도 분자와 동일하게 grep -oE | wc -l 로 "문자 수" 카운트.
+# (tr -cd | wc -c 는 바이트 수 → 한글 3바이트로 분모 부풀려져 비율 1/3 왜곡. wc -m 은 로케일 미설정 시 바이트 폴백되므로 사용 금지)
+TOTAL=$(echo "$BODY" | grep -oE '[가-힣A-Za-z]' | wc -l)
 [ "$TOTAL" -gt 0 ] && {
   RATIO=$(( KCHARS * 100 / TOTAL ))
   [ "$RATIO" -lt 80 ] && FAIL+=("korean-ratio-${RATIO}%")
