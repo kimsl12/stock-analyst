@@ -172,6 +172,82 @@ async function buildFenceContent(timelines) {
   return { content: lines.join('\n'), activeCount: activeRows.length, archivedCount: archivedRows.length };
 }
 
+/**
+ * 일회성 결과 섹션 prune (v3.22 — 2026-06-01).
+ *
+ * 룰:
+ *   - 헤더 패턴 = `^## .* (\d{4}-\d{2}-\d{2}).*$` 또는 `^## .* \d{4}-\d{2}-\d{2}` (날짜 포함)
+ *   - 헤더 안 날짜 vs todayKst 차이 > STALE_DAYS_THRESHOLD 시 섹션 전체 제거 (다음 `^## ` 또는 EOF 까지)
+ *   - 보호 헤더 화이트리스트 (항상 유지, 날짜 매치 무시):
+ *       "## 마지막 작업"
+ *       "## analysis/ 유효 파일"
+ *       "## 파이프라인 버전"
+ *       "## ⚠️ 환경 상태"  (사용자 명시 결정 영역)
+ *       "## 현재 KB 상태 요약"  (lead/wiki-linter 갱신 영역)
+ *   - 일회성 결과 영역 (`## COST Costco 분석 결과 (2026-04-22, 신규)` 등) 만 prune
+ */
+const STALE_DAYS_THRESHOLD = 30;
+const PROTECTED_HEADERS = [
+  '## 마지막 작업',
+  '## analysis/ 유효 파일',
+  '## 파이프라인 버전',
+  '## ⚠️ 환경 상태',
+  '## 현재 KB 상태 요약',
+];
+
+function todayKst() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
+}
+
+function daysBetween(isoA, isoB) {
+  const a = Date.parse(isoA + 'T00:00:00+09:00');
+  const b = Date.parse(isoB + 'T00:00:00+09:00');
+  return Math.round((b - a) / 86400000);
+}
+
+function pruneStaleSections(bootstrap, logFn) {
+  const lines = bootstrap.split('\n');
+  const today = todayKst();
+  const out = [];
+  const removed = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    const headerMatch = line.match(/^## (.+)$/);
+    if (!headerMatch) {
+      out.push(line);
+      i++;
+      continue;
+    }
+    const isProtected = PROTECTED_HEADERS.some(h => line.startsWith(h));
+    const dateMatch = line.match(/(\d{4}-\d{2}-\d{2})/);
+    if (isProtected || !dateMatch) {
+      out.push(line);
+      i++;
+      continue;
+    }
+    const sectionDate = dateMatch[1];
+    const age = daysBetween(sectionDate, today);
+    if (age <= STALE_DAYS_THRESHOLD) {
+      out.push(line);
+      i++;
+      continue;
+    }
+    // 30일+ stale 일회성 섹션 — 다음 `## ` 헤더까지 또는 EOF 까지 제거
+    let j = i + 1;
+    while (j < lines.length && !/^## /.test(lines[j])) j++;
+    removed.push({ header: line, date: sectionDate, age, lineCount: j - i });
+    i = j;
+  }
+  if (removed.length > 0) {
+    logFn(`prune: ${removed.length} stale 섹션 제거 (>${STALE_DAYS_THRESHOLD}일 경과)`);
+    for (const r of removed) {
+      logFn(`  - ${r.header} (${r.age}일 경과, ${r.lineCount}줄)`);
+    }
+  }
+  return out.join('\n');
+}
+
 function replaceFence(bootstrap, newInner) {
   const beginIdx = bootstrap.indexOf(FENCE_BEGIN);
   const endIdx = bootstrap.indexOf(FENCE_END);
@@ -202,7 +278,8 @@ async function main() {
     return;
   }
   const original = await readFile(BOOTSTRAP_PATH, 'utf8');
-  const updated = replaceFence(original, content);
+  let updated = replaceFence(original, content);
+  updated = pruneStaleSections(updated, log);
   if (updated === original) {
     log('변경 없음 — bootstrap 그대로');
     return;
