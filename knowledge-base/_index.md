@@ -1,11 +1,11 @@
 ---
-updated: 2026-05-31
-version: v3.2
+updated: 2026-06-01
+version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-05-31
-lint_last_post_fix: 2026-05-31
+lint_last_run: 2026-06-01
+lint_last_post_fix: 2026-06-01
 lint_mode: full
-lint_p0_count: 21
+lint_p0_count: 0
 lint_p1_count: 2
 lint_p2_count: 2
 ---
@@ -21,31 +21,33 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-05-31 (wiki-linter full)**
+> **최종 갱신: 2026-06-01 (audit v3.22 — KB 21건 일괄 갱신 완료)**
 
-| 파일                             | 상태                                                 | 영향 모듈              | 조치                   |
-| -------------------------------- | ---------------------------------------------------- | ---------------------- | ---------------------- |
-| `industry/crypto_bitcoin.md`     | 만료 (valid_until 05-20, **11일 초과**, 41일 미갱신) | 크립토 브리핑·BTC 섹터 | kb-updater 재수집      |
-| `industry/robotics.md`           | 만료 (valid_until 05-20, **11일 초과**, 42일 미갱신) | 로보틱스 섹터          | kb-updater 재수집      |
-| `industry/ai.md`                 | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 종목분석·브리핑 AI섹터 | kb-updater 재수집      |
-| `industry/auto.md`               | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 자동차·EV 섹터         | kb-updater 재수집      |
-| `industry/battery.md`            | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 배터리 섹터            | kb-updater 재수집      |
-| `industry/bio_pharma.md`         | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 바이오파마 섹터        | kb-updater 재수집      |
-| `industry/defense_industry.md`   | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 방산 섹터              | kb-updater 재수집      |
-| `industry/infrastructure.md`     | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 인프라 섹터            | kb-updater 재수집      |
-| `industry/luxury.md`             | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 명품 섹터              | kb-updater 재수집      |
-| `industry/semiconductor.md`      | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 종목분석·반도체 섹터   | kb-updater 재수집      |
-| `portfolio/model_portfolios.md`  | 만료 (valid_until 05-21, **10일 초과**, 40일 미갱신) | 포트폴리오 분석        | /모델포트폴리오 재실행 |
-| `industry/consumer_retail.md`    | 만료 (valid_until 05-22, **9일 초과**, 39일 미갱신)  | 소비재 섹터            | kb-updater 재수집      |
-| `industry/real_estate.md`        | 만료 (valid_until 05-22, **9일 초과**, 39일 미갱신)  | 부동산 섹터            | kb-updater 재수집      |
-| `industry/banking_capital.md`    | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 금융·은행 섹터         | kb-updater 재수집      |
-| `industry/education.md`          | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 에듀테크 섹터          | kb-updater 재수집      |
-| `industry/food_agriculture.md`   | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 농식품 섹터            | kb-updater 재수집      |
-| `industry/healthcare_service.md` | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 헬스케어 섹터          | kb-updater 재수집      |
-| `industry/insurance.md`          | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 보험 섹터              | kb-updater 재수집      |
-| `industry/logistics.md`          | 만료 (valid_until 05-24, **7일 초과**, 37일 미갱신)  | 물류 섹터              | kb-updater 재수집      |
-| `market/correlation_matrix.md`   | 만료 (valid_until 05-31, **오늘 만료**, 16일 미갱신) | 상관관계·이상탐지 전체 | kb-updater 재수집      |
-| `market/surprise_index.md`       | 만료 (valid_until 05-31, **오늘 만료**, 11일 미갱신) | 서프라이즈 지수·브리핑 | kb-updater 재수집      |
+✅ **P0 0건** — 직전 21건 만료 KB 전수 갱신 (audit 2026-06-01).
+
+| 갱신 완료 KB                     | 신규 valid_until | 핵심 변경                                           |
+| -------------------------------- | ---------------- | --------------------------------------------------- |
+| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)              |
+| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자        |
+| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각     |
+| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                |
+| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기           |
+| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅               |
+| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B             |
+| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%          |
+| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                  |
+| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                    |
+| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B               |
+| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조             |
+| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B          |
+| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                      |
+| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세            |
+| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%            |
+| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K             |
+| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                |
+| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행) |
+| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                  |
+| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규     |
 
 ---
 

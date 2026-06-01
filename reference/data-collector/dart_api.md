@@ -1,14 +1,19 @@
+<!-- TODO 2026-06-01: 사용자 검토 필요 — frontmatter(updated/category/type) 누락. guru_watchlist.md·rules_and_constraints.md 와 동일 포맷으로 통일 검토 -->
+
 # DART OpenAPI 가이드 (전자공시시스템)
 
 Bash를 통해 DART OpenAPI를 호출한다.
 
 ## 환경변수 (사전 설정 완료)
+
 인증키는 환경변수 `DART_API_KEY`로 등록되어 있다.
+
 - 설정 위치: `.claude/settings.json` → `env.DART_API_KEY`
 - 일일 호출 한도: 10,000건 (개인)
 - 키를 코드나 에이전트 파일에 직접 하드코딩하지 않는다.
 
 ## Step 0: 고유번호(corp_code) 조회
+
 DART API는 종목코드(예: 005930)가 아닌 **고유번호(corp_code)**를 사용한다.
 종목코드 → corp_code 변환이 반드시 선행되어야 한다.
 
@@ -35,6 +40,7 @@ for corp in root.findall('list'):
 캐싱: 한번 다운로드한 CORPCODE.xml은 `/tmp/corpcode/`에 보관하여 재사용한다.
 
 ## 주요 엔드포인트
+
 ```bash
 # 기업 개황
 curl -s "https://opendart.fss.or.kr/api/company.json?crtfc_key=${DART_API_KEY}&corp_code=${CORP_CODE}"
@@ -62,14 +68,16 @@ curl -s "https://opendart.fss.or.kr/api/majorstock.json?crtfc_key=${DART_API_KEY
 ```
 
 ## DART reprt_code 참조
-| 코드 | 보고서 |
-|------|--------|
-| 11013 | 1분기보고서 |
-| 11012 | 반기보고서 |
-| 11014 | 3분기보고서 |
+
+| 코드  | 보고서           |
+| ----- | ---------------- |
+| 11013 | 1분기보고서      |
+| 11012 | 반기보고서       |
+| 11014 | 3분기보고서      |
 | 11011 | 사업보고서(연간) |
 
 ## 공개 금융 데이터
+
 ```bash
 # 네이버 금융 (주가/재무 요약) — 웹 스크래핑
 curl -s "https://finance.naver.com/item/main.naver?code=${STOCK_CODE}"

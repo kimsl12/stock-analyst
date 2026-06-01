@@ -1,285 +1,325 @@
 ---
-updated: 2026-04-24
-valid_until: 2026-05-24
+updated: 2026-06-01
+valid_until: 2026-06-08
 sector: food_agriculture
 sources:
-  - https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report
-  - https://www.americanagnetwork.com/2026/04/09/usda-release-april-2026-wasde-report/
-  - https://farmpolicynews.illinois.edu/2026/04/usda-raises-wheat-corn-and-soy-price-estimates/
-  - https://ko.tradingeconomics.com/commodity/wheat
-  - https://ko.tradingeconomics.com/commodity/corn
-  - https://www.krei.re.kr/grain/index.do
-  - https://blogs.worldbank.org/en/opendata/-beverage-prices-moderate-as-coffee-and-cocoa-supply-recover
+  - https://www.usda.gov/oce/commodity/wasde/wasde0526v2.pdf
+  - https://igrownews.com/latest-wasde-report/
+  - https://www.morningagclips.com/may-12-wasde-report-offers-first-look-at-2026-27-ending-stocks/
+  - https://www.hoosieragtoday.com/2026/05/12/wasde-may-2026/
+  - https://www.cmegroup.com/markets/agriculture/grains/corn.quotes.html
+  - https://tradingeconomics.com/commodity/corn
   - https://tradingeconomics.com/commodity/cocoa
   - https://www.foodnavigator.com/Article/2025/12/10/cocoa-coffee-sugar-is-the-commodity-crisis-ending/
+  - https://blogs.worldbank.org/en/opendata/-beverage-prices-moderate-as-coffee-and-cocoa-supply-recover
   - https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml
   - https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/
-  - https://www.kiep.go.kr/aif/issueDetail.es?brdctsNo=353012&mid=a10200000000&systemcode=05
-  - https://seekingalpha.com/news/4563536-cf-industries-mosaic-top-s-and-p-leaderboard-as-iran-war-sends-fertilizer-prices-soaring
-  - https://www.gurufocus.com/news/8699849/mosaic-mos-and-cf-industries-cf-surge-amid-fertilizer-shipment-disruptions
-  - https://www.marketbeat.com/stock-ideas/not-just-oil-3-fertilizer-stocks-boosted-by-hormuz-closure/
-  - https://www.nasdaq.com/articles/deere-earnings-surpass-estimate-q1-sales-increase-y-y
-  - https://www.manufacturingdive.com/news/deere-cnh-agco-brace-low-north-american-sales-2026-outlook-tariff/812961/
-  - https://tractorevolution.com/tractor-news/deere-cnh-and-agco-signal-prolonged-north-american-downcycle-in-2026-equipment-outlook/
-  - https://finance.yahoo.com/news/bull-case-corteva-ctva-could-200948444.html
-  - https://cen.acs.org/environment/pesticides/bayer-roundup-glyphosate-cancer-class-action-lawsuit-settlement/104/web/2026/03
-  - https://farmonaut.com/precision-farming/john-deere-autonomous-tractor-farm-equipment-2026
-  - https://techcrunch.com/2025/03/24/vertical-farming-company-plenty-files-for-bankruptcy-after-raising-nearly-1b/
-  - https://www.fool.com/investing/2026/04/04/this-is-a-date-beyond-meat-shouldnt-have-missed/
-  - https://www.stocktitan.net/news/TSN/tyson-foods-reports-first-quarter-2026-rfoddbphbykt.html
-  - https://www.generalmills.com/news/press-releases/general-mills-reports-fiscal-2026-first-quarter-results-and-reaffirms-full-year-outlook
-  - https://finance.thesmileinfo.com/2026/04/2026-2.html
-  - https://www.sedaily.com/NewsView/2H1X4AVAK9
-  - https://www.khan.co.kr/article/202406281229001
-  - https://www.agrinet.co.kr/news/articleView.html?idxno=304556
-  - https://www.aei.org/research-products/report/evaluating-the-impact-of-tariffs-on-us-agriculture-a-year-after-liberation-day/
-  - https://markets.financialcontent.com/stocks/article/marketminute-2026-3-17-india-reclaims-global-breadbasket-status-lifts-four-year-wheat-export-ban-amid-record-harvest
-  - https://www.ipcc.ch/report/ar4/wg3/agriculture/
-  - https://www.csofutures.com/news/first-sustainable-agriculture-carbon-credit-methodologies-approved-by-icvcm/
-  - https://www.fda.gov/about-fda/human-foods-program/human-foods-program-2026-priority-deliverables
-  - https://www.wiley.law/article-food-industry-braces-for-maha-and-other-challenges-in-2026
+  - https://www.mining.com/web/nitrogen-surge-to-lift-cf-nutrien-earnings-mosaic-faces-headwinds/
+  - https://discoveryalert.com.au/nitrogen-fertilizer-prices-cf-industries-nutrien-earnings/
+  - https://www.fool.com/earnings/call-transcripts/2026/05/21/deere-de-q2-2026-earnings-call-transcript/
+  - https://finance.biggo.com/news/US_DE_2026-05-21
+  - https://www.global-agriculture.com/crop-protection/corteva-posts-4-9-billion-net-sales-as-seed-and-crop-protection-businesses-expand-in-q1-2026/
+  - https://www.stocktitan.net/sec-filings/CTVA/8-k-corteva-inc-reports-material-event-9801591a903c.html
+  - https://seekingalpha.com/article/4902690-tyson-foods-inc-2026-q2-results-earnings-call-presentation
+  - https://www.stocktitan.net/sec-filings/TSN/8-k-tyson-foods-inc-reports-material-event-ad9309fdc09b.html
+  - https://www.cnbc.com/2026/05/18/us-china-announce-deals-after-trump-xi-summit.html
+  - https://farmpolicynews.illinois.edu/2026/05/china-to-buy-17-billion-in-us-farm-goods-annually/
+  - https://www.world-grain.com/articles/22770-white-house-expands-trade-deal-with-china
+  - https://thelensnola.org/2026/05/08/supreme-court-roundup-glyphosate-bayer-lawsuit/
+  - https://cen.acs.org/environment/pesticides/monsanto-durnell-supreme-court-roundup-glyphosate/104/web/2026/04
+  - https://www.bayer.com/en/us/news-stories/us-supreme-court-decision
+  - https://www.greenqueen.com.hk/beyond-meat-stock-delisting-nasdaq-deficiency-letter-share-price/
+  - https://meatingplace.com/beyond-meat-threatened-with-nasdaq-delisting/
+  - https://www.korea.kr/briefing/pressReleaseView.do?newsId=156752670&call_from=rsslink
+  - https://foodnews.news/news/article.html?no=1598949
+  - https://moneyrecipe.blog/26-05-k-food-export-preview/
 confidence: high
-last_synced_from_db: 2026-04-24
+last_synced_from_db: 2026-06-01
 ---
 
 # 식품·농업 Knowledge Base
 
-> **커버리지**: CBOT 곡물 선물(밀·옥수수·대두) / Soft commodity(커피·코코아·설탕) / 종자·비료·농기계(CTVA/NTR/MOS/DE/AGCO) / AgTech(정밀농업·수직농장·대체단백질) / 식품가공 대형(TSN/ADM/BG/GIS/KHC/MDLZ) / 한국 식품(CJ제일제당·농심·오리온·삼양식품) / 식량안보·무역(트럼프 관세·인도 쌀 수출·한국 자급률 21.7%) / 기후·ENSO 영향. **2026-04-24 신규 생성**.
+> **커버리지**: CBOT 곡물 선물(밀·옥수수·대두) / Soft commodity(커피·코코아·설탕) / 종자·비료·농기계(CTVA/NTR/MOS/DE/AGCO) / AgTech(정밀농업·수직농장·대체단백질) / 식품가공 대형(TSN/ADM/BG/GIS/KHC/MDLZ) / 한국 식품(CJ제일제당·농심·오리온·삼양식품) / 식량안보·무역(미·중 정상회담 합의·인도 쌀 수출·한국 자급률 19.5%) / 기후·ENSO 영향. **2026-06-01 7일 단기 갱신** — WASDE 5월·미중 정상합의·Deere Q2·엘니뇨 급상승 반영.
 
 ## ★ CURRENT ★
 
 ## 1. 곡물 가격 (CBOT·USDA WASDE)
 
-### 1.1 USDA WASDE 2026-04-09 (2025/26 season-average farm price)
-- **옥수수 (Corn)**: **$4.15/부셸** (전월 대비 +$0.05 상향) [USDA WASDE Apr 2026]
-- **대두 (Soybean)**: **$10.30/부셸** (+$0.10 상향). 대두박 $310/short ton (+$10), 대두유 59¢/lb (+4¢)
-- **밀 (Wheat)**: **$5.00/부셸** (+$0.05 상향)
-- **해석**: 3대 곡물 모두 3월 대비 소폭 상향. 공급 타이트 + 수요 회복 동시 반영.
+### 1.1 USDA WASDE 2026-05-12 — 2026/27 시즌 첫 전망 [신규]
 
-### 1.2 CBOT 실거래 가격 (2026-04-19 기준)
-| 품목 | 현재가 | MoM | YoY | 주요 동인 |
-|---|---|---|---|---|
-| 밀 (Wheat) | **$591.25¢/bu** | -0.67% | **+9.8%** | 미국 평원 서리 리스크 (밀 생산의 1/3 지역) |
-| 옥수수 (Corn) | **<$4.5/bu** (4주 최저) | 하락 | - | 2026 파종면적 9,530만 에이커 감소 예상 |
-| 대두 (Soybean) | - | - | - | 브라질 대두 역대 최대 생산 (라니냐→중립 전환 효과) |
+- **밀 (Wheat)**: **$6.50/부셸** (전년 대비 **+$1.50** 큰 폭 상향). 미국 밀 생산 **1,561mn 부셸 (-424mn YoY)**, 단수 47.5 부셸/에이커. 가뭄 영향 본격 반영. [USDA WASDE May 2026]
+- **옥수수 (Corn)**: **$4.40/부셸** (+$0.25 상향). 미국 콘 생산 **16.0bn 부셸 (-6% YoY)**, 파종면적 **9,530만 에이커 감소**, 단수 183.0 부셸/에이커
+- **대두 (Soybean)**: **$11.40/부셸** (2025/26 $10.40 → 2026/27 $11.40, **+$1.00**). 대두 생산 4.435bn 부셸 (+173mn, 단수 trend + 수확면적 확대)
+- **해석**: 밀·콘 동반 생산 감소 + 대두만 확장 — 2026/27 글로벌 곡물 재고 **타이트** 전망. 4월 WASDE 대비 **모든 가격 큰 폭 상향** — supply shock 본격화.
 
-### 1.3 Soft Commodities — 2024 랠리 → 2026 하락 전망
-- **Cocoa (코코아)**: 2024-12-18 사상 최고 **$12,646/ton** 기록 (300% 상승). World Bank: **2026 -6% YoY, 2027 -7%** 공급 회복 전망 [World Bank]
-- **Arabica Coffee**: 콜롬비아 생산 회복. **2026 -13% YoY, 2027 -5%** 전망 [World Bank]
-- **Sugar**: 2026 글로벌 **공급과잉 전망** (ISO·Czarnikow). 생산 > 소비.
-- **해석**: 2024~2025 "Ingredient crunch" (기후발 원재료 급등) 국면 종료. 2026은 soft commodity 하락 turn — Mondelez·Hershey·Nestle 원가 부담 완화 호재.
+### 1.2 CBOT 5월말 실거래 — 단기 약세 ★ [신규]
 
-### 1.4 러시아-우크라이나 전쟁 식량 영향
-- **우크라이나**: 세계 밀 수출 **10%**, 옥수수 수출 **15%** [KIEP]
-- **러시아**: 세계 밀 수출 **1위**
-- **흑해곡물협정**: 2023-07 러시아 파기 선언 이후 우크라 수출은 해상 대안 루트로 전쟁 전 수준 일부 회복
-- **2026 영향**: 가격 안정세 전환 중이나, 전쟁 지속 시 재격화 리스크 상존
+| 품목             | 2026-05-28 종가 | 추세                            | 동인                        |
+| ---------------- | --------------- | ------------------------------- | --------------------------- |
+| **옥수수 (7월)** | **~$4.5/bu**    | 3주 저점                        | 무역·지정학 불확실성        |
+| **대두 (7월)**   | **$11.8525/bu** | 6일 중 5일 하락, 5/15 이후 저점 | 미중 합의 후 실제 선적 대기 |
+| **밀 SRW (7월)** | **$6.2250/bu**  | 5일 연속 하락, 5/8 이후 저점    | 글로벌 매도 압박            |
+| **밀 HRW (7월)** | **$6.6975/bu**  | 5일 연속 하락, 3주 저점         |                             |
 
-### 1.5 엘니뇨·라니냐 (ENSO)
-- **2026-04~06**: ENSO 중립 80% 확률 [NOAA CPC]
-- **2026-05~07**: **엘니뇨 발생 61% 확률** (IRI 70%)
-- **영향**: 인도 몬순 약화 → 쌀·밀·설탕 생산 차질 우려. 브라질 대두는 라니냐 종료로 긍정적.
-- **2026~2027 사상 최고 따뜻한 해** 가능성 — 글로벌 곡물 공급망 중대 영향
+- **해석**: WASDE는 강세 (특히 밀 +30% 시즌 가격), 그러나 5월말 선물 실거래는 단기 약세. 매크로 트레이딩과 펀더멘털 괴리 — Q3 수확 차질 확인 시 재반등 가능.
+
+### 1.3 Soft Commodities — 베어리시 지속 ★ [업데이트]
+
+- **Cocoa**: **2026-05-29 $3,923/ton (-4.29% DoD)**. ICE NY 2026-04 초 $3,100~3,360 — 연초 전망 $5,500~7,000 대비 큰 폭 하회. **2026/27까지 잉여 지속** 베어리시. [Trading Economics]
+- **Arabica Coffee**: 2025 +50% 이후 **2026 -13% YoY 전망** 유지, 2027 -5%. 콜롬비아 공급 회복.
+- **Sugar**: **2026 글로벌 잉여** 전망. 단, USDA 식품가격 전망 sugar·sweets 2026 **+6.3%** (4.1~8.4% 신뢰구간) — 원재료와 소매가격 괴리.
+- **해석**: 2024~2025 "Ingredient crunch" 국면 명확히 종료. Mondelez·Hershey·Nestle 원가 완화 호재 본격 — Q2 마진 개선 기대.
+
+### 1.4 러시아-우크라이나 식량 영향
+
+- 우크라이나 세계 밀 수출 **10%**, 옥수수 수출 **15%**. 러시아 세계 밀 수출 **1위**.
+- 흑해 해상 대안 루트 운영으로 수출량 일부 회복 중. 휴전 진전이 주요 변수.
+
+### 1.5 ENSO — 엘니뇨 확률 급상승 ★★ [핵심 업데이트]
+
+- **2026-05 NOAA CPC**: 엘니뇨 **MJJ 82%** (이전 61% → 큰 폭 상승), **12월~2027년 2월 96%**
+- **IRI 플룸 5~7월 98%**, 전체 forecast 구간 **97~98%** — 사상 최고 confidence
+- **물리적 근거**: Niño3.4 +0.9°C 돌파, 다운웰링 켈빈파 +8°C subsurface 확산 중
+- **농업 영향 (5~7월)**:
+  - 남부 북미·중미·캐러비안·유럽·북아프리카 **고온**
+  - 미국 멕시코만·남부 평원 **강우 증가**, 태평양 북서부 **건조**
+  - **인도 몬순 약화** 위험 → 쌀·밀·설탕 생산 차질 우려 (인도 수확 시즌과 직접 충돌)
+  - 브라질 대두는 라니냐 종료 + 다음 시즌 부정적 영향 우려
+- **2026~2027 사상 최고 따뜻한 해 가능성** — 글로벌 곡물·소프트 commodity 가격 변동성 확대
 
 ## 2. 농업 (종자·비료·농기계)
 
-### 2.1 비료 (Fertilizer) — 2026 공급 타이트
-- **시장 환경**: 이란 분쟁 + 호르무즈 해협 공급 차질 + 중국 인산염(phosphate) 수출 **150만톤 감소** → 글로벌 비료 가격 급등. BofA: "Fertilizer rally" 진행 중.
-- **CF Industries (CF)** — 질소 비료 (암모니아·요소)
-  - **Q1 2026 EPS 컨센**: **$2.08** (기존 $1.81 상향) [Seeking Alpha]
-  - 2026-03 초 주가 +13%. Henry Hub 저렴한 미국 천연가스 원가 우위.
-- **Mosaic (MOS)** — 인산·칼륨 비료
-  - **Q1 2026 EBITDA 역풍**: **-$250M YoY** (황 가격 $500/ton vs 기록치 $306)
-  - 브라질 세그먼트 Q3 2025 EBITDA **+190% YoY** — 신흥시장 성장 엔진
-  - PER 14배, 중국 인산염 공급 타이트로 MOS 볼륨 수혜
-- **Nutrien (NTR)** — 세계 최대 **칼륨(potash) 생산자**
-  - Buy 업그레이드 (복수 애널리스트). 캐나다 증산으로 러시아·벨라루스 제재 공백 메꿈.
+### 2.1 비료 — Q1 어닝 호조 ★ [업데이트]
 
-### 2.2 종자·농화학 (Seed & Crop Chemistry)
-- **Corteva (CTVA)** — 종자·작물보호 (2019 DowDuPont 스핀오프)
-  - **2026 operating EPS 가이던스**: **$3.45~3.70**
-  - 2025 매출 **$17.4B**, 순이익 **$1.1B**
-  - **Bayer 합의 (2026)**: $610M 지급으로 종자 freedom-to-operate 확보, **면화 trait 진출** — 강력한 Catalyst
-- **Bayer (BAYN.DE)** — Monsanto Roundup 리스크
-  - **2026-02 Roundup 집단소송 $7.25B 합의 제안** (21년 분할) — 리스크 확정성 개선
-  - 누적 합의 **$11B, 약 10만건 해결**. **61,000건** 추가 계류
-  - **2026-04 대법원 심리**: 연방법의 state-law "failure-to-warn" claim preemption 여부 결정 대기
+- **시장 환경**: 중동 가스 공급 차질 + 중국 인산염 수출 150만톤 감소 → 질소(요소·UAN) 가격 급등 지속
+- **CF Industries + Nutrien Q1 2026 합산 순이익 **$619M** (전년 $388M, **+60% YoY\*\*)
+  - 천연가스 원가 우위 + 글로벌 질소 공급 타이트가 모두 작동
+  - **RBC: "Q2 어닝 효과 더 클 것"** — 가격 상승 lag 반영 본격화 예상
+- **CF Industries (CF)** — 질소 (암모니아·요소)
+  - Q1 2026 EPS 컨센 $2.08 (이전 $1.81 상향). Henry Hub 저원가 미국 가스 활용.
+- **Nutrien (NTR)** — 세계 최대 칼륨 생산자
+  - Q1 어닝 호조. 캐나다 증산으로 러시아·벨라루스 제재 공백 메꿈. Buy 업그레이드 유지.
+- **Mosaic (MOS)** — 인산·칼륨
+  - 5/11 발표. **황·암모니아 비용 마진 압박** 지속, 인산 가격 firm.
+  - 브라질 세그먼트 신흥시장 성장 엔진 유지.
 
-### 2.3 농기계 (Farm Equipment) — 2026 "사이클 바닥"
-- **Deere (DE)** — 프리미엄 농기계·정밀농업 리더
-  - **Q1 FY26 EPS**: **$2.42** (컨센 $1.92 beat, YoY -24%) [Nasdaq]
-  - 장비 매출 **$8B (+17.5% YoY)**
-  - **FY26 가이던스 상향**: 순이익 **$4.5~5B** (기존 $4.0~4.75B)
-  - **관세 비용 $1.2B** (Pain point). "2026 = 사이클 바닥" 명시적 선언
-  - 2030 완전자율 옥수수 생산 시스템 목표 — AI·정밀농업 R&D 지속
-- **CNH Industrial (CNHI)** — 중가 농기계
-  - 2025 순이익 **$505M** (YoY -60%, 2024 $1.26B)
-  - 2026 농기계 매출 **YoY -5%~flat** 전망
-- **AGCO (AGCO)** — 중소형 농기계
-  - 2026 상반기 retail 대비 **deliberate underproduction**
-  - Q1·Q2 **전년 대비 악화** 전망
-- **매크로 역풍**: USDA 2026 미국 net farm income **$153.4B (-0.7% YoY)** — 농가 소득 감소 → 장비 수요 압박
+### 2.2 종자·농화학 — Corteva Q1 호조 + Vylor 분사 ★ [신규]
+
+- **Corteva (CTVA)** — 종자·작물보호
+  - **Q1 2026 매출 $4.90B (+11% YoY, organic +7%)**
+    - Seed +12% (organic +9%, 가격·믹스 +3% 전 지역)
+    - Crop Protection +10% (organic +4%, 가격 -2% 라틴아메리카, 볼륨 +6%)
+  - **FY26 가이던스 유지**: Operating EBITDA **$4.0~4.2B**, Operating EPS **$3.45~3.70**
+  - **★ Vylor 종자·유전 사업 4Q 2026 분사 on track** — 신규 catalyst, 종자 freedom-to-operate 확보 + 면화 trait 진출 후속
+- **Bayer (BAYN.DE)** — Roundup 대법원 ★★ [핵심 업데이트]
+  - **Monsanto v. Durnell** 대법원 구두변론 2026-04~05 진행 완료
+  - **쟁점**: FIFRA가 state-law failure-to-warn 청구를 preempt 하는가
+  - **SCOTUS 분열 양상** (구두변론 보도 기준)
+  - **2026 회기 종료 = 6월 본안 판결 예상** — Bayer 최대 catalyst, 연방 preemption 인정 시 **수만 건 소송 일괄 차단**
+
+### 2.3 농기계 — Deere Q2 강세 + "사이클 바닥" 재확인 ★★ [신규]
+
+- **Deere (DE) Q2 FY26 (2026-05-21)**
+  - 순이익 **$1.773B**, EPS **$6.55** (전년 $1.804B $6.64)
+  - 매출 **$13.369B (+5% YoY)**
+  - 세그먼트:
+    - **Production & Precision Ag**: 매출 -14%, OP -39% (대형 농기계 다운사이클)
+    - **Small Ag & Turf**: +16% OP 마진 개선
+    - **Construction & Forestry**: **+29% $3.79B** — 인프라·데이터센터 수요 폭발
+  - **FY26 가이던스**:
+    - 순이익 **$4.5~5.0B** 유지
+    - 미국·캐나다 대형 농기계 수요 **-15~20%** (downturn 명시)
+    - Small Ag & Turf flat~+5%
+    - **C&F 매출 +20% 상향** (이전 +5~10%)
+  - **CFO Brent Norwood: "Large Ag 2026이 사이클 바닥, 2027 회복"** 명시적 가이던스 ★
+- **CNH (CNHI)·AGCO (AGCO)**: 동반 2026 부진. AGCO 상반기 deliberate underproduction 지속.
+- **매크로**: USDA 2026 미국 net farm income $153.4B (-0.7% YoY) — 농가 소득 약세 농기계 수요 압박 지속
 
 ## 3. 농업테크 (AgTech)
 
-### 3.1 정밀농업 (Precision Agriculture) — 구조적 성장
-- **시장 규모**: 2025 **$9.5B** → 2031 **$17.29B** (CAGR **10.5%**) [Research & Markets]
-- **자율 농기계**: CAGR **>15%** (2025~2033) — 가파른 침투
-- **Big 3 점유율**: Deere+AGCO+CNH 합산 **~60%**, 연매출 **$20B+**
-- **핵심 플랫폼**:
-  - **Climate FieldView** (Bayer 소유, Monsanto Climate Corp 기원) — 북미 수천만 에이커 데이터 표준
-  - **John Deere Operations Center** — 장비 IoT + 농학 데이터 통합
-  - **Trimble agriculture** — GPS·매핑
-- **Deere LEAP 전략**: CES 2026에서 **배터리 전기 자율 트랙터** 프로토타입 공개. 과수원·포도원용 **2026년 배치** 목표. 기술 도입 농가 생산성 **+15~20%**
-- **투자 관점**: DE는 농기계 사이클 바닥이나 정밀농업 ARR은 구조적 성장 동력
+### 3.1 정밀농업 — 구조적 성장 유지
 
-### 3.2 수직농장 (Vertical Farming·CEA) — 2025 대규모 구조조정
-- **업계 충격**: **2025년에만 14건 파산** (수직농장·CEA 관련)
-- **Plenty** (SoftBank/Walmart/Bezos $1B 투자):
-  - 2025-03 Chapter 11, 2025-05-29 exit. DIP financing $20.7M.
-  - Richmond VA 딸기 농장 + Laramie WY R&D 지속
-- **Bowery Farming**: 2024-11 셧다운 (총 모금액 $700M, 2021 peak valuation $2B)
-- **AeroFarms**: 2023 파산 후 재구조화, 2023-09 exit
-- **AppHarvest**: 2023 파산 ($700M 소실)
-- **투자자 누적 손실**: 4개사 합계 **$2.7B** (Plenty $1B + AppHarvest $700M + Bowery $700M + AeroFarms $300M)
-- **2026 생존자 모델**: Gotham Greens, Little Leaf Farms, 80 Acres/Soli Organic — **리테일·푸드서비스 확보 → 생산 확대** 순서 (수요 확정 후 스케일)
-- **구조적 문제**: 에너지 비용 + 프리미엄 가격 수요 약화 + 작물 질병 수율 리스크
+- **시장 규모**: 2025 $9.5B → 2031 **$17.29B** (CAGR **10.5%**)
+- **자율 농기계** CAGR **>15%** (2025~2033)
+- **Big 3 점유율**: Deere+AGCO+CNH 합산 **~60%**, 연매출 $20B+
+- **핵심 플랫폼**: Climate FieldView (Bayer), John Deere Operations Center, Trimble agriculture
+- **Deere**: CES 2026 배터리 전기 자율 트랙터 프로토타입 공개 — 과수원·포도원 2026 배치. 기술 도입 농가 생산성 +15~20%
+- **투자 시사**: Deere 대형 ag 다운사이클이나 정밀농업 ARR + Construction +29%로 헤지
 
-### 3.3 대체 단백질 (Alternative Protein)
-- **Beyond Meat (BYND)** — 구조적 쇠퇴 (High-Risk)
-  - 2025 매출 **$275.5M** (YoY **-15.6%**, IPO 이후 최저)
-  - Q4 GM **2.3%** (vs Oatly 34.5%). 자본잠식 **-$784M**, 부채 $1.2B
-  - **Nasdaq 상장폐지 경고** (주가 $1 미만 30일 초과, 8/31 deadline)
-  - 애널리스트 컨센 목표주가 **$0.70**
-- **Oatly (OTLY)** — 전환 성공 사례
-  - 2025 매출 **$862.5M** (+4.7% YoY)
-  - **첫 full-year positive adjusted EBITDA** 달성. GM ~32%
-  - asset-light 공급망 전환 — 2026 흑자 전환 기대
-- **Cell-cultured meat**: Upside Foods, Eat Just — 규제 관문은 통과했으나 비용·스케일 한계
-- **시장 전망**: 글로벌 비건 식품 2032 **$49.6B** (CAGR 11.8%) — 전체는 성장, 단 **plant-based meat 세부는 secular decline**
+### 3.2 수직농장 — 구조조정 잔존
+
+- 2025년에만 14건 파산. Plenty (Chapter 11 후 5월말 exit), Bowery 셧다운, AeroFarms 재구조화, AppHarvest 청산
+- 누적 투자자 손실 **$2.7B**
+- 생존자: Gotham Greens, Little Leaf Farms, 80 Acres/Soli Organic — 리테일·푸드서비스 수요 확정 후 스케일
+- 구조적 문제: 에너지 비용 + 프리미엄 수요 약화 + 수율 리스크
+
+### 3.3 대체 단백질
+
+- **Beyond Meat (BYND)** ★ [업데이트]
+  - **2026-03-04 Nasdaq 상장폐지 경고서** 수령 ($1 미만 30일 초과)
+  - **180일 = 2026-08-31 deadline**: 최소 10영업일 연속 $1 이상 종가 회복 필요
+  - **Reverse stock split** 검토 발표 — 가능성 점증
+  - 2025 매출 $275.5M (YoY -15.6%), Q4 GM 2.3%, 자본잠식 -$784M
+- **Oatly (OTLY)**: 첫 full-year positive adjusted EBITDA. 2025 매출 $862.5M (+4.7%), GM ~32%. 흑자 전환 기대.
+- **시장**: plant-based meat 세부 secular decline, 전체 비건 식품은 2032 $49.6B (CAGR 11.8%) 성장
 
 ## 4. 식품가공·대형 F&B
 
-### 4.1 미국 곡물 트레이더·육가공 (Grain Traders & Meat)
-- **Tyson Foods (TSN)** — 최대 육가공
-  - Q1 FY2026 매출 **$14.31B (+5.1% YoY)**, GAAP EPS $0.24, Adj EPS **$0.97 miss** (컨센 $1.01)
-  - **치킨 마진 개선**: 옥수수·대두박 사료비 급락 효과
-  - **소고기 부담**: 높은 소 조달 비용 지속
-- **Archer-Daniels-Midland (ADM)** — 곡물 트레이딩·가공
-  - **$750M 비용 절감 프로그램** 발표
-  - **SAF(지속가능항공연료)** 바이오연료로 전략 pivot
-- **Bunge (BG)** — 합병 후 글로벌 확대
-  - 다각화된 글로벌 커버리지로 **원산지 무관 마진** 확보. 섹터 outperform.
+### 4.1 미국 곡물 트레이더·육가공
 
-### 4.2 미국 대형 Packaged Food — 2026 구조적 역풍
-| 기업 | 상황 |
-|---|---|
-| **General Mills (GIS)** | Q1 FY26 매출 $4.5B (**-7% YoY**). 가격 인하 + 광고 + 혁신으로 예산 민감 소비자 타겟. 52주 신저가. |
-| **Kraft Heinz (KHC)** | 오가닉 매출 **-2.4%**, 북미 -2.9% (볼륨 -4.2%). 연간 가이던스 **하향**. |
-| **Mondelez (MDLZ)** | 저소득층 수요 약화 언급. 단, 2026 cocoa 하락은 원가 호재. |
-| **Kellanova (K)** | Mars 인수 (2024 발표 $35.9B) 진행 중. Trump 영양 규제 리스크. |
-| **Campbell, McCormick** | 저소득층 약화로 실적 압박 |
+- **Tyson Foods (TSN) Q2 FY26 (2026-05-11)** ★ [신규]
+  - 매출 **$13.653B (+4.4% YoY)**. 전년 법적 충당 제외 시 +1.8%
+  - GAAP OP **$435M** (+$335M YoY)
+  - **Adj EPS $0.87** (컨센 $0.78 beat **+11.5%**)
+  - 세그먼트:
+    - 치킨 OP **$505M**, OPM **11.8%** (사료비 하락 효과 지속)
+    - Prepared Foods OP $348M, OPM **13.9%**
+  - **FY26 Adj OP 가이던스 $100M 상향 → $2.2~2.4B** ★
+- **ADM**: $750M 비용 절감 + SAF 바이오연료 pivot 진행
+- **Bunge (BG)**: 합병 후 글로벌 다각화로 outperform
 
-- **구조적 배경**: Trump "MAHA(Make America Healthy Again)" 영양 개혁 + GLP-1 체중감량약 수요 전환 + 프리미엄 민감 수요 약화 3중 압박
-- **2026 부분 호재**: Cocoa·Coffee·Sugar 2026 하락 전망 → 원재료 부담 완화. Mondelez·Hershey·Nestle 수혜.
+### 4.2 미국 대형 Packaged Food — 2026 구조적 역풍 지속
 
-### 4.3 한국 식품 — K-Food 수출 사상 최고
-- **K-Food 2025 총 수출**: **$12.3B** 사상 최고치 [식품외식경제]
-  - 1~11월 누적 $10.307B (**+21.4% YoY**)
-  - **라면 $1.382B** — 최대 효자 품목
-- **삼양식품 (003230)** — 라면 수출 절대 강자
-  - 2025 3Q 누적 매출 **1조 7,141억**, 영업이익 **3,850억** (사상 최대)
-  - 전체 라면 수출액의 **~60%** 점유. 불닭볶음면 글로벌 히트 지속.
-- **농심 (004370)** — 글로벌 확장
-  - 2025 3Q 누적 매출 **2조 6,319억**, 영업이익 **1,506억**
-  - 미국 법인 성장 지속. K-브랜드지수 식음료 상장사 **1위**.
-- **CJ제일제당 (097950)** — 만두·가공식품 글로벌
-  - 비비고 만두·햇반 글로벌화 진행. Schwan's 미국 기반.
-- **오리온 (271560)** — 중국·베트남·러시아 현지화
-  - 초코파이·꼬북칩 글로벌 브랜드.
-- **2026 전략**: 농심·오리온·삼양 **오너 3세** 전면 배치로 글로벌 신사업·전략조직 담당. 라면·가공식품 수출 성장이 실적 핵심.
+| 기업                    | 상황                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| **General Mills (GIS)** | Q1 FY26 매출 -7% YoY. 가격 인하·광고로 예산 민감 소비자 타겟. 52주 신저가 권역 유지. |
+| **Kraft Heinz (KHC)**   | 오가닉 매출 -2.4%, 북미 -2.9% 볼륨 -4.2%. 연간 가이던스 하향.                        |
+| **Mondelez (MDLZ)**     | Cocoa $3,923 하락 **원가 호재 본격** — Q2~Q3 마진 개선 catalyst.                     |
+| **Kellanova (K)**       | Mars 인수 진행. Trump MAHA 영양 규제 리스크.                                         |
+| **Campbell·McCormick**  | 저소득층 약화 실적 압박 지속                                                         |
+
+- **구조적 배경**: MAHA 영양 개혁 + GLP-1 수요 전환 + 프리미엄 민감 수요 약화
+- **2026 호재**: Cocoa·Coffee·Sugar 동반 하락 → 베이커리·제과·음료 원재료 부담 완화 본격
+
+### 4.3 한국 식품 — 1분기 +3.5% 안정 성장 ★ [신규]
+
+- **K-Food+ 2026 1분기 수출 $3.35B (+3.5% YoY)** [농식품부]
+  - 농식품(K-Food) **$2.56B (+4.0%)**
+  - **지역별 성장률**:
+    - 중동 GCC **+32.3%** (사우디·UAE 한류 채널 침투)
+    - 중화권 **+14.5%**
+    - 북미 **+6.3%**
+  - **라면 $434.5M (+26.4%)** — 1분기 최대 효자, K-Food 견인 지속
+  - **K-snack** (과자·음료·아이스크림) — 'Healthy Pleasure' (저당·제로·비건) 트렌드 견조 성장
+- **생산 CAPA 확장 ★**
+  - **농심**: 부산 녹산 **연 5억 개 수출전용 공장 2026 완공**
+  - **삼양식품**: 밀양 제2공장 2025-05 가동 → CAPA **19.3억 → 26.2억 개 (+36%)**
+- **2025년 K-Food 총 수출 $12.3B** (사상 최고치, 라면 $1.382B 견인)
+- **종목 시사**:
+  - **삼양식품 (003230)**: 2025 3Q 누적 매출 1조 7,141억, OP 3,850억. 라면 수출 점유 ~60%. 1분기 라면 +26.4%로 모멘텀 지속.
+  - **농심 (004370)**: 2025 3Q 매출 2조 6,319억, OP 1,506억. 부산 신공장 가동 시 수출 capa 큰 폭 증가.
+  - **CJ제일제당 (097950)**: 비비고·햇반 글로벌화.
+  - **오리온 (271560)**: 중국·베트남·러시아 현지화. 초코파이·꼬북칩 글로벌.
+- **2026 전략**: 농심·오리온·삼양 오너 3세 글로벌 신사업 담당. 라면·가공식품 수출 성장 핵심.
 
 ## 5. 식량안보·무역
 
 ### 5.1 한국 식량안보 — 구조적 취약
-- **곡물 자급률**: **19.5%** (2021~2023 3년 평균) — 심리적 20% 마지노선 붕괴 [한국농촌경제연구원]
-- **세계 7위 곡물 수입국**
-- **품목별 자급률** (쌀 제외):
-  - **밀 0.5%** (연 450만톤 수입. Top3: 호주 38.1% / 미국 25.4% / 인도 20.6% = 84.1%)
-  - **옥수수 0.7%** (연 1,160만톤 수입)
-  - **대두 6.6%** (수입 미국·브라질 합산 **93.8%**)
-  - **보리류 7.5%**
-- **리스크**: 3대 수출국 의존 + 해상 운송 의존 + 환율·국제가격 연동 100%
-- **대응**: 수입선 다변화 (싱가포르 170개국 벤치마크), 해외 곡물 유통망 확보 (aT·한국농수산식품유통공사)
 
-### 5.2 Trump 관세·중국 보복 (2026 핵심 변수)
-- **중국 보복관세 10% 유지**: 미국산 대두에 보복관세 존치 (2025 4월 발표)
-- **2025 미국→중국 수출 붕괴**:
-  - 대두 **-78%** (1~8월)
-  - 옥수수 **-99%** 사실상 증발
-- **2025-11-01 미중 합의**:
-  - 중국 2025 말 2개월 **1,200만톤** 대두 구매
-  - **2026~2028 매년 최소 2,500만톤** 구매 약속
-  - 단, **10% 보복관세는 유지**
-- **브라질 수혜**: 2025 중국 수출 사상 최대 **85백만톤+** (중국 수입의 **90%**). 아르헨티나도 확장.
-- **USDA 수출 전망**:
-  - 2025 미국 농산물 수출 -$17B 무역적자
-  - **2026 -$9B 적자** 지속 전망
+- **곡물 자급률**: **19.5%** (2021~2023 3년 평균). 세계 7위 곡물 수입국.
+- 품목별: 밀 0.5% / 옥수수 0.7% / 대두 6.6% / 보리류 7.5%
+- **밀 수입선** Top3: 호주 38.1% / 미국 25.4% / 인도 20.6% = **84.1%**
+- **대두 수입선**: 미국+브라질 합산 **93.8%**
+- 리스크: 3대 수출국 의존 + 해상 운송 의존 + 환율·국제가격 100% 연동
+- 대응: 수입선 다변화, 해외 곡물 유통망 확보 (aT)
 
-### 5.3 인도 수출 정책 (2026 반전)
-- **밀 수출 재개 (2026-02~03)**: 4년간 금지 해제. 원밀 **250만톤** + 밀가루·세몰리나 등 제품 **50만톤** 허용. 2025-26 Rabi 시즌 기록적 수확이 배경.
-- **설탕 쿼터 추가**: **50만톤** 쿼터 방출 (잉여 해소)
-- **쌀 수출 제한 지속**: 2023-07 non-basmati 쌀 수출 금지 영향 계속
-  - 인도는 **글로벌 쌀 수출의 40%** 담당 → 가격·공급 직접 타격
-  - 아프리카 식품 가격 충격. 글로벌 순복지 손실 **$1.7B** (GSIM 시뮬레이션)
+### 5.2 미·중 정상회담 합의 — 2026 핵심 catalyst ★★ [신규]
+
+- **2026-05-17~18 Trump·Xi 베이징 정상회담**:
+  - **중국 2025/26 시즌 미국산 대두 12Mt 구매** (즉시 이행)
+  - **2026~2028 매년 25Mt 미국 대두** 구매 약속 (전년 합의 재확인·확장)
+  - **2028까지 매년 미국 농산물 최소 $17B 구매** (대두 외 추가)
+  - **농산물 관세 인하 합의** — 대두 **-10% 가능** (Reuters 보도)
+  - 중국 미국 소고기 시설 **400+ 재등재** (HPAI 미발생 주 가금류 수입 재개)
+- **시사**:
+  - ADM·BG·CGC 곡물 트레이더 직접 수혜 (CME 수출 spread 정상화)
+  - 단, 관세 인하 **세부 미정** — 실제 선적 모니터링 필수
+  - 브라질 수혜 일부 반납 가능 (2025 중국 수입 90% 점유 → 점진적 정상화)
+- **미국 농산물 무역**: 2025 -$17B 적자 → 2026 -$9B 적자 전망 (합의 효과 반영 시 추가 개선 가능)
+
+### 5.3 인도 수출 정책 — 완화 지속
+
+- 밀 수출 재개 (2026-02~03): 원밀 250만톤 + 제품 50만톤
+- 설탕 쿼터 50만톤 추가 방출
+- 쌀 (non-basmati): 수출 제한 일부 지속 (글로벌 쌀 수출 40% 점유)
 
 ## 6. 기후변화·ESG
 
-### 6.1 IPCC — 농업·식품의 구조적 기후 영향
-- **GHG 배출 기여도**: 농업·임업·토지이용이 글로벌 **22%** [IPCC AR6]
-- **2050 전망**: 개입 없을 시 **+30~40%** 증가 (인구·소득·식단 변화 영향)
-- **완화 수단**: 재조림, 비료 감축, 가축 관리 개선, 재생에너지 전환
+### 6.1 IPCC — 농업·식품의 구조적 영향
 
-### 6.2 재생농업 (Regenerative Agriculture)
-- **수치 증거**:
-  - **No-tillage(무경운)**: CO2 배출 **-47%** 감축
-  - **Crop rotation(작물 윤작)**: N2O 배출 **-23~57%** (관개작물)
-- **탄소 크레딧 시장**:
-  - **Indigo Ag** 2026 5차 US 탄소크레딧 발행, 누적 **2Mt+** CO2 감축. 110만 크레딧 Climate Action Reserve 검증.
-  - **ICVCM 2026 첫 승인**: 지속가능농업 탄소크레딧 방법론 2건 Core Carbon Principles 라벨 획득 (무경운·윤작·최적 비료·개선 방목·관개 관리).
-- **투자 관점**: Cargill, Bayer (Climate FieldView), Corteva 등이 재생농업 프로그램 확장 중. 탄소 크레딧 매출은 10~20년 장기 수익원.
+- GHG 배출 농업·임업·토지이용 글로벌 **22%**
+- 2050 +30~40% 증가 (개입 없을 시)
+- 완화: 재조림, 비료 감축, 가축 관리, 재생에너지
+
+### 6.2 재생농업 — 탄소 크레딧 시장 확장
+
+- 무경운: CO2 **-47%**, 작물 윤작: N2O **-23~57%**
+- Indigo Ag 5차 발행, 누적 **2Mt+ CO2** 감축. 110만 크레딧 CAR 검증.
+- ICVCM 2026 첫 승인 — 지속가능농업 탄소크레딧 방법론 2건 CCP 라벨
+- Cargill, Bayer Climate FieldView, Corteva 재생농업 프로그램 확장
 
 ## 7. 2026 주요 이벤트·리스크
 
-### 7.1 주요 일정
-- **매월 (10일 전후)**: USDA WASDE 보고서 발표 — 곡물 가격 변동 최대 촉매
-- **2026-04**: Bayer Roundup 대법원 preemption 심리 (판결 연내 예상)
-- **2026-05~07**: ENSO 엘니뇨 전환 (61% 확률) — 인도·동남아 곡물 생산 영향
+### 7.1 주요 일정 [업데이트]
+
+- **매월 10일 전후**: USDA WASDE — 차회 2026-06-12 예상
+- **2026-06 (예상)**: SCOTUS Bayer Monsanto v. Durnell **본안 판결** ★★
+- **2026-06~07**: 엘니뇨 본격 발현 — 인도 몬순 모니터링 ★
 - **2026-08-31**: Beyond Meat Nasdaq 상장 유지 deadline
-- **2026-하반기**: FDA UPF(Ultra-Processed Foods) 통일 정의 제안 예정
-- **2026-연간**: 중국 미국산 대두 2,500만톤 구매 약속 이행 추적
+- **2026 4Q**: Corteva Vylor 종자·유전 사업 분사 ★
+- **2026 하반기**: FDA UPF 통일 정의 제안
+- **2026 연간**: 중국 미국산 대두 25Mt + 농산물 $17B 구매 이행 추적 ★
 
-### 7.2 Catalyst 매트릭스
-| 구분 | 호재 | 악재 |
-|---|---|---|
-| **곡물** | 러-우 휴전 기대, 브라질 풍작 | 엘니뇨 전환, 중국 관세 유지 |
-| **비료** | 이란 분쟁·중국 인산염 제한 | 에너지 비용 상승 |
-| **농기계** | 2030 자율농업 ARR, LEAP | $1.2B 관세, 농가 소득 -0.7% |
-| **AgTech** | 정밀농업 CAGR 10.5% | 수직농장 파산 도미노 |
-| **식품가공 미국** | Cocoa 2026 -6% 원가 완화 | MAHA UPF 규제, GLP-1 수요 전환 |
-| **K-Food** | 라면 수출 $1.38B, 3세 경영 | 관세 변수, 환율 |
-| **곡물 트레이더** | ADM SAF·BG 다각화 | 중국 수입선 브라질로 영구 이전 |
+### 7.2 Catalyst 매트릭스 [업데이트]
 
-### 7.3 투자 관점 정리
-- **구조적 수혜**: Deere(정밀농업 ARR), Corteva(종자 licensing 확대), Nutrien(potash 공백), Oatly(흑자 전환)
-- **구조적 역풍**: Beyond Meat(상장폐지 임박), GIS/KHC(MAHA·저소득층), 수직농장 스타트업 전반
-- **변동성 큰 Catalyst 종목**: CF/MOS (fertilizer rally), Tyson (feed cost play), 삼양식품 (K-Food 지속 여부)
-- **매크로 watch**: WASDE 월간, ENSO 엘니뇨 타이밍, 미중 대두 이행률
+| 구분              | 호재                                                  | 악재                                    |
+| ----------------- | ----------------------------------------------------- | --------------------------------------- |
+| **곡물**          | WASDE 강세 (밀 $6.50 +30%), 미중 합의 ($17B 농산물)   | CBOT 5월말 약세, 엘니뇨 인도 차질       |
+| **비료**          | CF+NTR Q1 +60% YoY, 중동 가스 차질 지속               | Mosaic 황·암모니아 마진 압박            |
+| **농기계**        | Deere C&F +29% +20% 상향, "2027 회복" 가이드          | 대형 ag -15~20%, 농가 소득 -0.7%        |
+| **종자·작물보호** | Corteva Vylor 4Q 분사, FY26 EBITDA $4.0~4.2B          | Bayer SCOTUS 판결 양방향                |
+| **AgTech**        | 정밀농업 CAGR 10.5%, Deere 자율 트랙터                | 수직농장 파산 도미노 잔존               |
+| **식품가공 미국** | Cocoa $3,923 하락 원가 완화, Tyson 가이던스 상향      | MAHA UPF, GLP-1 수요 전환, GIS/KHC 부진 |
+| **K-Food**        | 1Q +3.5%, 라면 +26.4%, 농심 부산공장 / 삼양 +36% capa | 환율, 관세 변수                         |
+| **무역**          | 미중 $17B 합의 + 대두 25Mt + 관세 -10%                | 합의 세부 미정, 실제 선적 추적 필요     |
+
+### 7.3 투자 관점 정리 [업데이트]
+
+- **구조적 수혜**:
+  - **Deere (DE)** — Construction +29%로 ag 다운사이클 헤지, 2027 회복 가이드
+  - **Corteva (CTVA)** — Vylor 분사 catalyst, FY26 가이던스 유지
+  - **CF Industries / Nutrien** — Q1 +60% YoY, Q2 추가 효과
+  - **Tyson (TSN)** — 치킨 마진 11.8%, FY26 가이던스 상향
+  - **삼양식품·농심** — K-Food 라면 모멘텀 + CAPA 확장
+- **구조적 역풍**:
+  - **Beyond Meat** — 8/31 deadline, reverse split 가능성
+  - **GIS·KHC** — MAHA·저소득층·52주 신저가 권역
+  - **Mosaic** — 황·암모니아 마진 압박
+- **변동성 큰 Catalyst 종목**:
+  - **Bayer** — SCOTUS 6월 판결 양방향
+  - **ADM·BG** — 미중 합의 이행률
+- **매크로 watch**:
+  - **WASDE 2026-06** (다음 발표)
+  - **엘니뇨 본격 발현 시점·인도 몬순**
+  - **미중 대두 실제 선적**
+  - **SCOTUS Bayer 판결**
 
 ---
 
 ## KB 갱신 메타
-- **갱신 기준일**: 2026-04-24
-- **다음 갱신 권장**: 2026-05-24 (WASDE 5월 보고서 반영)
-- **주요 미수집 항목**: Bayer·Corteva Q1 2026 상세 세그먼트 분기별 (리포트 발표 전)
-- **교차검증 기관**: USDA·WASDE·CBOT·World Bank·NOAA·IRI·KREI·KIEP·IPCC·FDA·각사 IR
+
+- **갱신 기준일**: 2026-06-01 (7일 단기 갱신)
+- **다음 갱신 권장**: 2026-06-08 (또는 WASDE 6월 발표·SCOTUS Bayer 판결 시 즉시)
+- **이번 회차 핵심 변화**:
+  1. WASDE 2026/27 시즌 첫 전망 — 밀 +30% / 콘 +6% / 대두 +10% (큰 폭 상향)
+  2. CBOT 5월말 단기 약세 — 펀더멘털·트레이딩 괴리
+  3. 엘니뇨 확률 61% → **82~98% 급상승** — 인도 몬순 직접 위험
+  4. Deere Q2: Construction +29%, FY26 C&F +20% 상향, "2027 회복" 가이드
+  5. CF+NTR Q1 합산 순이익 +60% YoY
+  6. Corteva Vylor 4Q 분사 신규 catalyst
+  7. Tyson FY26 가이던스 상향
+  8. 미·중 정상회담 $17B 합의 + 대두 25Mt + 관세 -10%
+  9. Cocoa $3,923 큰 폭 하락 — 제과·음료 마진 본격 호재
+  10. BYND 2026-08-31 상장 유지 deadline, reverse split 검토
+  11. K-Food+ 1Q +3.5%, 라면 +26.4%
+- **교차검증 기관**: USDA·WASDE·CBOT·NOAA CPC·IRI·World Bank·농식품부·각사 IR·SCOTUS·Reuters

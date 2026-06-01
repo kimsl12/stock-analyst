@@ -1,6 +1,6 @@
 ---
-updated: 2026-04-24
-valid_until: 2026-05-24
+updated: 2026-06-01
+valid_until: 2026-06-08
 sector: logistics
 sources:
   - https://en.sse.net.cn/indices/scfinew.jsp
@@ -46,8 +46,13 @@ sources:
   - https://globalmaritimeforum.org/insight/imo-policy-measures-ensuring-certainty-for-shippings-energy-transition/
   - https://news.koreanair.com/%EB%8C%80%ED%95%9C%ED%95%AD%EA%B3%B5-2025%EB%85%84-2%EB%B6%84%EA%B8%B0-%EC%8B%A4%EC%A0%81-%EB%B0%9C%ED%91%9C/
   - https://www.freightwaves.com/news/mexico-fdi-ranking-jumps-in-2026-as-nearshoring-boosts-investment
+  - https://tradingeconomics.com/commodity/containerized-freight-index
+  - https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry
+  - https://www.klnews.co.kr/news/articleView.html?idxno=321066
+  - https://www.paxetv.com/news/articleView.html?idxno=272024
+  - https://www.investing.com/news/company-news/symbotic-q2-2026-slides-227b-backlog-drives-growth-amid-earnings-miss-93CH-4666019
 confidence: high
-last_synced_from_db: 2026-04-24
+last_synced_from_db: 2026-06-01
 ---
 
 # 물류·해운·항만·창고자동화 Knowledge Base
@@ -56,25 +61,23 @@ last_synced_from_db: 2026-04-24
 
 ## ★ CURRENT ★
 
-## 1. 해운 — 운임 지수·공급 과잉 구조 (2026 Q2 스냅샷)
+## 1. 해운 — 운임 지수·공급 과잉 구조 (2026 Q2 스냅샷, 2026-06-01 갱신)
 
-### 1.1 컨테이너 운임 지수
+### 1.1 컨테이너 운임 지수 — 5월 강세 반등
 
-- **SCFI (Shanghai Containerized Freight Index) 2026 Week 13**: **1,826.77p** [Shanghai Shipping Exchange]. 2025 연평균 1,581p 대비 +15%p 반등이나 2024 피크 대비 여전히 약세.
-- **Drewry WCI 2026-04-16**: **$2,246/40ft** (-3% WoW, 6주 랠리 종료). 미중 관세 완화·수에즈 미복구 혼재 국면.
-  - Shanghai→New York: **$3,552** (-3%)
-  - Shanghai→Los Angeles: **$2,810** (-3%)
-  - Shanghai→Rotterdam: **$2,229** (-3%)
-  - Shanghai→Genoa: $3,343 (-2%)
-- **Peak Season Surcharge 예고**: 2026-05-01부 캐리어 다수 $2,000/40ft 추가 부과 — Q2 말부터 운임 재상승 가능성.
+- **SCFI 2026-06-01**: **2,571.73p** [TradingEconomics, Shanghai Shipping Exchange]. **MoM +34.55%, YoY +24.08%**. 4월 평균 1,883p 대비 큰 폭 상승 — 5월 들어 Asia-Europe 조기 피크 시즌 수요와 캐리어 PSS 부과가 결합해 운임 반등 가속.
+- **Drewry WCI 2026-05-28**: **$2,800/40ft** (+3% WoW, **4주 연속 상승**) [Drewry]. 5/21 $2,712(+6%)에서 추가 상승.
+  - 동력: Asia–Europe·Transpacific 항로 조기 피크 시즌 수요 + 캐리어 surcharge 도입.
+  - 4월 중순 $2,246 저점 대비 **+25%** 회복 — 6주 만에 추세 반전 완료.
+- **함의**: 4월 KB의 "공급 과잉으로 SCFI 1,000~1,500" 보수 전망 대비 **상방 이탈**. 다만 2024년 피크(SCFI 3,500+) 대비 아직 70% 수준이라 캐리어 단계적 회복 단계로 해석.
 
-### 1.2 벌크 운임 (BDI)
+### 1.2 벌크 운임 (BDI) — 5월 +20% 강한 회복
 
-- **BDI 2026-04-18**: **2,523p** (+39 DoD) [Baltic Exchange via HandyBulk]. 2025 말 대비 상승세.
-  - **Capesize (BCI)**: 4,026p (+62) / 일평균 $33,012 (+$562)
-  - **Panamax (BPI)**: 1,970p (+22) / 일평균 $17,730 (+$202)
-  - **Supramax (BSI)**: 1,398p (+27) / 일평균 $17,669 (+$339)
-- 곡물·철광석 수요 회복 + 호주·브라질 광산 회복으로 Capesize 주도.
+- **BDI 2026-05-29**: **3,224p** (DoD -0.06%, **MoM +20%**) [TradingEconomics, Baltic Exchange]. 4/18 2,523p 대비 +28% 상승.
+  - **Panamax**: 2,343p (+0.5% DoD) — 곡물 수출 시즌 진입.
+  - **Supramax**: 1,569p (변동 없음).
+  - Capesize 세부치 미공개이나 BDI 전체 견인은 Cape 중심 추정.
+- 곡물·철광석 수요 확대 + 중국 인프라 부양 재개로 Cape·Panamax 동반 강세.
 
 ### 1.3 탱커·VLCC (호르무즈 War Premium 반영)
 
@@ -87,8 +90,11 @@ last_synced_from_db: 2026-04-24
 
 #### HMM (011200)
 - **2025 연간**: 매출 **10.8조** / 영업익 **1.46조** (OPM 13.4%). Q4 매출 2.71조·영업익 3,173억 — 해운시황 약세(SCFI YoY -37%)에도 방어. [이코노미톡뉴스]
-- **2026 전망**: SCFI **1,000~1,500** 범위 움직임 예상. 물동량 +2.4% vs 선복량 **+4.6%** → **공급 과잉 구조 지속**. 부산일보/증권사 목표주가 줄하향. [부산일보]
-- **중립 평가**: 수익성 방어력은 입증됐으나 공급 과잉·관세 불확실성으로 2026 상반기 Q1~Q2는 저점 탐색 구간.
+- **2026 Q1 실적 (5/13 발표, 신규)**: 매출 **2.7187조** (전년 2.8547조 대비 -1,360억) / 영업익 **2,691억** (전년 6,139억 대비 **-56%**, -3,448억). **OPM 9.9%** 글로벌 선사 상위권 유지. [팍스경제TV, 인더뉴스]
+  - 1Q SCFI 평균 **1,507p (-14% YoY)**. 미주 서안 운임 **-38%**, 동안 **-37%**.
+  - 중동 사태로 인한 매출 손실 + 유가 톤당 486→530 USD **+9%** 상승이 원가 가중.
+- **2026 후속**: 4월 KB 보수 전망(SCFI 1,000~1,500)을 SCFI 5월 2,571p 반등이 상방 깸. 단 Q1 실적은 SCFI 평균 1,507p 시점이라 약세 결과. **Q2 SCFI 6월초 2,500선 회복 → Q2~Q3 실적 반등 가능성**, 하반기 모멘텀 회복 시나리오 살아남.
+- **중립 평가 수정**: 1Q 저점 통과 후 Q2 운임 강세 반전 — 단기 트레이딩 관점에서 **저점 매수 구간** 진입 신호 (단, 공급 과잉 구조는 여전).
 
 #### 팬오션 (028670)
 - **2025**: 매출 **5.43조** / 영업익 **4,919억** (Q4 1,304억, YoY +18.5%).
@@ -201,10 +207,12 @@ last_synced_from_db: 2026-04-24
 ### 5.2 Symbotic (SYM) — Wide Moat 창고자동화
 
 - **FY2025 (2025-09 종료)**: 매출 **$2,247M** (+26% YoY), 순손실 $91M. [Symbotic IR]
-- **Backlog**: **$22.5B** — 강한 revenue visibility. 기술 매출 Gross Margin 80~85%.
-- **Q1 FY2026 가이던스**: 매출 **$610~630M**, Adj EBITDA $49~53M, YoY 성장률 **+25~29%**.
-- **Q3 FY2026 실적 (2026-08 발표 예정)**: Q3 pre-read에서 **EPS $0.58** (컨센 $0.08 대비 **+625%**) 회자. 수익성 전환 원년.
-- **주요 고객**: Walmart·Target. Amazon은 자체 로봇 개발(경쟁 구도) — Amazon Robotics 내부 활용만.
+- **Q2 FY2026 실적 (2026-05-06 발표, 신규)**: 매출 **$676M** (+22% YoY, 컨센 $662.66M 대비 +2.09% 상회). [Investing.com, SEC 8-K]
+  - **EPS $0.01** — 컨센 $0.12 대비 **-91.67% 미스**. 단, 순이익 **$9M** 흑자전환 (전년 동기 -$10M 손실).
+  - **Backlog $22.7B** — 전분기 $22.5B에서 추가 증가. Walmart·Exol이 대부분.
+  - **70 systems deployed / 52 operational** — deployment 가속화 진행.
+  - 평가: **매출 성장 견조 + 손익분기 통과**, 그러나 시스템 배치 비용 반영 시점 이슈로 단기 EPS 변동성 큼. Backlog 가시성은 더 강화.
+- **주요 고객**: Walmart·Target·Exol. Amazon은 자체 로봇 개발(경쟁 구도) — Amazon Robotics 내부 활용만.
 - **2026 Capex**: $300M 조달로 2번째 미국 공장 + APAC 서비스 허브.
 
 ### 5.3 KION Group (Dematic) & Daifuku (6383.JP)
@@ -220,16 +228,20 @@ last_synced_from_db: 2026-04-24
 
 ## 6. 한국 3PL·택배 — CJ대한통운 2026 턴어라운드
 
-### 6.1 CJ대한통운 (000120) — 쿠팡 반사이익 + 주7일 배송
+### 6.1 CJ대한통운 (000120) — Q1 2026 +7.9% 안정 성장
 
 - **2025 연간**: 매출 **12.28조** (+1.4%) / 영업익 **5,081억** (-4.3% YoY).
 - **Q4 2025**: 매출 3.18조 / 영업익 **1,596억** — **역대 최대** (YoY +3.4%). 글로벌 부문 매출 1.08조·영업익 383억(+37.3%). [한경]
-- **2026E 영업익**: **5,630억** (+14% YoY, 한국투자증권).
-- **Q4 택배 볼륨**: +6% — **2021년 이후 최고** 수준.
+- **2026 Q1 실적 (5/13 발표, 신규)**: 매출 **3.2145조** (+7.4% YoY) / 영업익 **921억** (+7.9% YoY). [물류신문, 이투데이, 뉴스웨이]
+  - **택배 O-NE 부문**: 매출 **9,678억** (+10.5%) — '매일오네' 효과로 고성장 지속. 다만 영업익 **342억** 전년 수준 보합 (재투자 확대·원가 반영 시점).
+  - **글로벌 부문**: 매출 **1조 1,694억** / 영업익 **177억** — **최대 개선 폭**. 동남아·미주 확장 결실.
+  - **계약물류(CL) 부문**: 매출 **8,533억** (+4.9%) / 영업익 **360억 (-9.5%)** — 일부 마진 압박.
+- **2026E 영업익**: **5,630억** (+14% YoY, 한국투자증권). Q1 921억 → 연간 5,630억 목표 진도율 **16.4%** (1Q 비수기 감안 시 trackable).
 - **드라이버**:
-  1. **쿠팡 개인정보 유출 이슈**(2025-11~) → 자체 물류(로켓배송) 신뢰도 타격 → CJ 반사이익.
-  2. **주7일 배송 안정화** — 2025 초 전면 도입 후 수익성 향상 선행.
-- **증권가 목표주가 줄상향** (뉴스1, 조세일보).
+  1. **쿠팡 개인정보 유출 이슈**(2025-11~) → 자체 물류(로켓배송) 신뢰도 타격 → CJ 반사이익 지속.
+  2. **주7일 배송 안정화** + **'매일오네' 신규 서비스 효과**.
+  3. **글로벌 부문 강세** — 동남아 거점 확장이 본격 기여.
+- **증권가**: NH투자증권 1Q는 '숨고르기'로 목표가 일부 하향, 하반기 긍정 전망 유지.
 
 ### 6.2 한진 (002320)
 
@@ -396,3 +408,4 @@ last_synced_from_db: 2026-04-24
 | 날짜 | 내용 |
 |---|---|
 | 2026-04-24 | **신규 생성**. 해운 운임(SCFI/BDI/WCI/VLCC) + 항만·운하 + 얼라이언스 재편 + CJ대한통운·HMM·팬오션 + Symbotic·KION·Daifuku + FedEx·UPS·UNP·CSX + 콜드체인 TAM + 트럼프 관세·니어쇼어링 + IMO 2030 — 섹터 공백 해소. knowledge-db 29건. |
+| 2026-06-01 | **만료 갱신** (valid_until +7d). 해운 운임 5월 강세 반등 (SCFI 2,571.73p MoM +34.55%, Drewry WCI $2,800 4주연속+, BDI 3,224p MoM +20%) + CJ대한통운 Q1 OP 921억(+7.9%) + HMM Q1 OP 2,691억(-56%, 1Q 평균 SCFI 1,507p 약세 반영) + Symbotic Q2 매출 $676M(+22%) Backlog $22.7B. industry_logistics_2026.jsonl 3행 append. |
