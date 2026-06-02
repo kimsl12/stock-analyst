@@ -244,10 +244,15 @@ grep -q 'onclick="toggleTheme\|data-theme'            "$HTML" || DFAIL+=(theme-t
 grep -q '@media(max-width:600px)\|@media\s*(\s*max-width' "$HTML" || DFAIL+=(mobile)
 [ ${#DFAIL[@]} -gt 0 ] && echo "⚠️ 디자인 표준 위반: ${DFAIL[*]}"
 
-# 검증 5 [v3.14]: 한국어 강제 검증 (사용자 지적 2026-05-09)
-# 본문(<body>~</body>)만 추출. reference/korean_translation_rules.md 매핑 사전 따라.
+# 검증 5 [v3.22]: 한국어 강제 검증 (v3.14 후속 — 측정 버그 + 설계 모순 4종 수정)
+# 본문(<body>~</body>) 추출 — script/style/멀티라인 style 속성/모든 태그 제거.
 KFAIL=()
-BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | sed 's/<[^>]*>//g')
+BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | \
+       perl -0pe 's{<script\b[^>]*>.*?</script>}{}gsi' | \
+       perl -0pe 's{<style\b[^>]*>.*?</style>}{}gsi' | \
+       perl -0pe 's/\s+style="[^"]*"//gs' | \
+       perl -0pe 's{<[^>]*>}{}gs' | \
+       sed 's/&lt;[^&]*&gt;//g; s/&[a-z]\+;//g')
 for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
           "Bull case" "Bear case" "Base case" "Top Pick" \
           "Outperform" "Underperform" "Hawkish" "Dovish" \
@@ -255,10 +260,18 @@ for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
           "Wide Moat" "Narrow Moat" "Take Profit" "Stop Loss"; do
   echo "$BODY" | grep -qF "$kw" && KFAIL+=("eng:$kw")
 done
-KCHARS=$(echo "$BODY" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
+# 한글 비중 — 예외 1 (고유명사) + 예외 2 (표준 약어) + 파일 경로/슬러그 제외 후 측정
+ABBR='ETF|PER|PBR|ROE|EPS|ATR|RSI|FCF|DCF|EBITDA|YoY|QoQ|MoM|WoW|GDP|CPI|PCE|FOMC|GPU|ASIC|TAM|SAM|NAV|AUM|TER|NIM|OPM|HBM|NAND|DRAM|CAPEX|PDF|SOTP|MACD|EBIT|ROIC|API|SaaS|IPO|BPS|VIX|NYSE|NASDAQ|WACC|FCFF|FCFE|Moat|MOAT|FX|TIPS|PMI|ISM|JOLTS|WTI|OPEC|EU|UN|NATO|ESG'
+BC=$(echo "$BODY" | \
+  perl -pe 's{\S*/\S*}{}g' | \
+  perl -pe 's{\S+\.(md|html|json|py|mjs|sh|js|css)}{}gi' | \
+  perl -pe 's{\b[a-z]+_[a-z_]+\b}{}gi' | \
+  perl -pe "s/\\b(?:$ABBR)\\b//g" | \
+  perl -pe 's/\b[A-Z][a-zA-Z]+\b//g')
+KCHARS=$(echo "$BC" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
 # 분모도 분자와 동일하게 grep -oE | wc -l 로 "문자 수" 카운트.
 # (tr -cd | wc -c 는 바이트 수 → 한글 3바이트로 분모 부풀려져 비율 1/3 왜곡. wc -m 은 로케일 미설정 시 바이트 폴백되므로 사용 금지)
-LCHARS=$(echo "$BODY" | grep -oE '[가-힣A-Za-z]' | wc -l | tr -d ' ')
+LCHARS=$(echo "$BC" | grep -oE '[가-힣A-Za-z]' | wc -l | tr -d ' ')
 [ "$LCHARS" -gt 100 ] && {
   RATIO=$(( KCHARS * 100 / LCHARS ))
   [ "$RATIO" -lt 80 ] && KFAIL+=("korean-ratio-${RATIO}%")
