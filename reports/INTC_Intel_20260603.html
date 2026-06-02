@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>인텔 (Intel) (INTC) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>인텔 (Intel) (INTC)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-03</div><div style="margin-top:8px"><span class="badge b-hold">중립</span> <span class="badge b-score">58.5/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$106.85</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$537.1B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (파운드리 적자 지속, 정상화 EPS 미확립)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$18.97~$132.75</div></div><div class="ki"><div class="kl">등급</div><div class="kv">중립</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v4 BLIND</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p>Intel(INTC) 현재가 $106.85로 52주 밴드($18.97~$132.75)의 약 83% 지점, 고점권에 근접해 있다. 52주 저점 대비 5~6배 폭등하며 시총 약 $537B까지 재평가됐는데, 이는 시장이 18A 파운드리 턴어라운드 성공·정부 지분/CHIPS 정책 레버리지·AI 사이클 낙수효과를 상당 부분 선반영했음을 의미한다. 핵심 투자 논지는 '18A 외부 고객 확보 + 파운드리 손익분기 도달'이라는 고위험·고보상 베팅이며, 이 가정이 깨지면 밸류에이션 정당성이 빠르게 훼손된다. ATR이 8.1%로 비정상적으로 높아 단기 변동성이 극심하다(2 ATR 손절 $89.57). x86 CPU는 안정적 현금원이나 AMD·ARM 잠식이 진행 중이고, Gaudi AI 가속기는 NVIDIA/AMD 대비 구조적 열위가 명확하다. 고점권 진입·정책 의존도·실적 미검증을 종합하면 추격매수보다 조정 시 분할 접근이 합리적인 중립 등급이다.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$89.57</div><div class="dn" style="font-size:13px">-16.2%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$132.77</div><div class="up" style="font-size:13px">+24.3%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="229" y="30" width="121" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="229" y1="26" x2="229" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="229" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$90</text><line x1="277" y1="24" x2="277" y2="52" stroke="var(--text)" stroke-width="3"/><text x="277" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$107</text><line x1="350" y1="26" x2="350" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="350" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$133</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $19</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $133</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $8.64 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,100.0 169.4,109.5 197.1,131.5 182.8,163.9 178.2,202.6 140.0,220.0 113.5,186.4 106.7,160.8 87.7,133.0 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업 경쟁력 (Moat)</text><circle cx="140.0" cy="100.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 건전성</text><circle cx="169.4" cy="109.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="197.1" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션 매력</text><circle cx="182.8" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/수급</text><circle cx="178.2" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">산업 전망</text><circle cx="140.0" cy="220.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 (역점수, 낮을수록 위험)</text><circle cx="113.5" cy="186.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당/주주환원</text><circle cx="106.7" cy="160.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/지배구조</text><circle cx="87.7" cy="133.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트 가시성</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업 경쟁력 (Moat)</td><td>5.0</td><td>/10</td></tr><tr><td>재무 건전성</td><td>5.0</td><td>/10</td></tr><tr><td>성장성</td><td>6.0</td><td>/10</td></tr><tr><td>밸류에이션 매력</td><td>4.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>6.5</td><td>/10</td></tr><tr><td>산업 전망</td><td>7.0</td><td>/10</td></tr><tr><td>리스크 (역점수, 낮을수록 위험)</td><td>4.5</td><td>/10</td></tr><tr><td>배당/주주환원</td><td>3.5</td><td>/10</td></tr><tr><td>경영진/지배구조</td><td>5.5</td><td>/10</td></tr><tr><td>촉매/이벤트 가시성</td><td>7.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 58.5/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">Narrow (구조적으로 약화 중 — x86 레거시 해자 + 정책/지정학 프리미엄으로 보강)</span></h2><p>Intel(INTC) 현재가 $106.85로 52주 밴드($18.97~$132.75)의 약 83% 지점, 고점권에 근접해 있다. 52주 저점 대비 5~6배 폭등하며 시총 약 $537B까지 재평가됐는데, 이는 시장이 18A 파운드리 턴어라운드 성공·정부 지분/CHIPS 정책 레버리지·AI 사이클 낙수효과를 상당 부분 선반영했음을 의미한다. 핵심 투자 논지는 '18A 외부 고객 확보 + 파운드리 손익분기 도달'이라는 고위험·고보상 베팅이며, 이 가정이 깨지면 밸류에이션 정당성이 빠르게 훼손된다. ATR이 8.1%로 비정상적으로 높아 단기 변동성이 극심하다(2 ATR 손절 $89.57). x86 CPU는 안정적 현금원이나 AMD·ARM 잠식이 진행 중이고, Gaudi AI 가속기는 NVIDIA/AMD 대비 구조적 열위가 명확하다. 고점권 진입·정책 의존도·실적 미검증을 종합하면 추격매수보다 조정 시 분할 접근이 합리적인 중립 등급이다.</p><h3>Moat 상세</h3><p>Intel의 해자는 두 갈래로 분리해 봐야 한다. <strong>(1) x86 CPU 생태계</strong>는 수십 년 누적된 소프트웨어 호환성·서버 점유로 여전히 Narrow moat를 형성하지만, AMD EPYC의 데이터센터 잠식과 ARM 기반 커스텀 실리콘(하이퍼스케일러 자체 칩) 확산으로 <strong>구조적 침식</strong>이 진행 중이다. <strong>(2) 파운드리(IFS)는 사실상 해자 부재</strong>다. 파운드리 글로벌 점유율 약 1%로 TSMC(약 67%)에 절대 열위이며, 첨단 공정 신뢰·수율·PDK 생태계·패키징(CoWoS급) 모두 TSMC에 뒤진다. Intel의 진짜 차별점은 <strong>미국 내 첨단 로직 생산 능력을 보유한 거의 유일한 IDM</strong>이라는 지정학적 위치이며, CHIPS Act 보조금과 정부 지분 참여·국방 물량(secure enclave)이 이 위치에 정책 프리미엄을 부여한다. 즉 현재 시총은 순수 경쟁우위가 아니라 <strong>'미국 반도체 주권'이라는 정책 옵션 가치</strong>를 크게 반영한 것으로, 해자의 질이 경쟁사 대비 낮고 외생 변수 의존도가 높다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>Intel의 재무는 '안정적 제품 부문 + 막대한 파운드리 적자'의 이중 구조다. 제품 부문(CCG 클라이언트 PC + DCAI 데이터센터)은 매출 대부분과 영업 현금흐름을 책임지지만, IFS(파운드리)는 18A 램프업 과정에서 대규모 감가상각과 낮은 가동률로 수십억 달러 단위 영업적자를 지속하는 것으로 추정된다. 막대한 Capex(첨단 팹·EUV·High-NA 장비)로 잉여현금흐름은 압박받아 왔고, 배당은 과거 대폭 삭감 또는 중단 수준으로 축소된 상태다. 재무건전성 측면에서 순부채 부담이 커졌으나, <strong>CHIPS Act 보조금(약 $7.9B)·국방부 물량·정부 지분 참여·전략적 투자 유치</strong>가 자본 조달 압력을 완화하는 핵심 버퍼다. PC 수요 회복과 메모리/부품 가격 급등 환경에서 제품 마진은 개선 여지가 있으나, 파운드리가 손익분기에 도달하기 전까지 통합 수익성은 낮게 유지될 가능성이 높다. 정상화 EPS가 확립되지 않아 PER 기반 밸류는 무의미하며, 시장은 본질적으로 미래 옵션을 보고 있다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>현재가 $106.85·시총 약 $537B는 전통적 멀티플로 정당화하기 어렵다. 파운드리 적자로 통합 PER은 의미가 없고, 시장은 18A·14A 외부 고객 확보 시의 <strong>잠재 파운드리 매출(TSMC 대비 디스카운트 적용)</strong> + 제품 부문 정상화 이익을 SOTP로 합산해 가격을 매기는 구조다. Bull 시나리오는 18A가 복수의 대형 외부 고객(빅테크 커스텀 실리콘·국방)을 확보하고 파운드리가 2027~2028 손익분기에 진입, 미국 생산 프리미엄까지 재평가되는 경우로 $145 내외를 정당화할 수 있다. Base 시나리오는 18A가 자사 제품 위주로 안착하되 외부 수주는 제한적이고 제품 마진만 점진 개선되는 경우로 $108 전후의 현 수준 정체다. Bear 시나리오는 18A 수율·고객 확보가 지연되고 정책 프리미엄이 되돌려지는 경우로 $80 부근(2 ATR 손절선 인근)까지 조정 가능하다. 고점권에서 옵션 가치가 이미 후하게 반영된 만큼 위험·보상 비율이 매력적이지 않다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가 모멘텀은 표면적으로 강력하다. 52주 저점 $18.97 대비 5~6배 상승했고 현재가는 밴드 상단부(약 83% 지점)에 위치한다. 다만 직전 거래일 -2.27% 하락과 ATR 8.1%(2 ATR 손절폭이 현재가의 16% 이상)는 <strong>고변동·고밸류 국면 특유의 불안정성</strong>을 시사한다. 거시 환경은 역풍 쪽이다. 미 10Y 금리 4.51%로 4.5% 돌파, 30Y 5.02% 고착, 6월 인하 기대 소멸·12월 인상 가능성 부상으로 고밸류 성장주·옵션성 성장 스토리에 대한 할인율 압박이 강하다. 이란 긴장 재고조와 NFP(6/5) 등 단기 이벤트 리스크도 변동성을 키운다. 컨센서스는 정책 모멘텀에 힘입어 점진 상향됐을 가능성이 있으나, 펀더멘털(파운드리 적자) 대비 주가가 앞서간 구조라 차익실현·되돌림 압력에 취약하다. 단기적으로는 고점 부근 변동성 확대 국면으로 본다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>증권사 평균 목표가</td><td>$108</td></tr><tr><td>투자의견</td><td>중립 우위 (Hold 다수, 일부 매수)</td></tr><tr><td>12M 컨센 EPS</td><td>$1.20 (정상화 가정, 변동성 큼)</td></tr><tr><td>최근 리비전</td><td>정책 모멘텀 반영 상향 후 거시 역풍에 혼조</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>반도체 산업은 AI 슈퍼사이클 한복판에 있다. 하이퍼스케일러 2026 CapEx 합산이 약 $700B(전년 대비 +77%)로 폭증하고, NVIDIA 데이터센터 매출이 분기 $75B(+92% YoY)에 달하는 등 AI 가속기·HBM·첨단 파운드리·패키징이 수요의 핵심이다. 그러나 이 낙수효과의 1차 수혜는 TSMC(파운드리)·NVIDIA/AMD/Broadcom(가속기)·SK하이닉스/삼성(HBM)에 집중되고, Intel은 <strong>세 전선 모두에서 후발·열위</strong>에 있다. 파운드리는 TSMC N2 양산 개시·CoWoS capa +80%에 맞서 18A로 격차를 좁히려 하지만 점유율 1%에 불과하다. AI 가속기 Gaudi는 NVIDIA CUDA 생태계와 AMD MI350 램프에 밀려 의미 있는 점유 확보에 실패하고 있다. CPU에서도 데이터센터는 AMD EPYC에, 일부 영역은 ARM 커스텀 칩에 잠식당하는 중이다. Intel의 반등 서사는 '시장 점유 확대'가 아니라 <strong>'미국 첨단 제조 능력의 전략적 희소성'이라는 정책·지정학 축</strong>에 크게 의존한다. 따라서 산업 메가트렌드(AI)는 우호적이나, 그 안에서 Intel의 포지셔닝은 상대적으로 불리하다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>Intel의 핵심 리스크는 '검증되지 않은 파운드리 턴어라운드를 고점권에서 선반영했다'는 점에 집약된다. 18A 외부 고객 확보 실패 또는 Gaudi 열위 고착이 확인되면 옵션 가치가 빠르게 소멸하며 등급은 매도(score 40대 후반)로 강등될 수 있다. 반대로 18A 대형 외부 수주가 공식화되면 Bull 재평가로 매수 전환 여지가 있다. 거시(금리·이란) 역풍은 변동성을 키우는 가속 요인이다. 현재로서는 위험·보상 비대칭이 하방에 기울어 중립이 적절하다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">18A/14A 외부 고객 확보 실패</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">AI 가속기(Gaudi) 구조적 경쟁 열위</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">거시 역풍 — 금리·할인율 압박</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">정책 의존·지배구조 변수</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>18A/14A 외부 고객 확보 실패</strong> (발생: 높음, 영향: 파운드리 손익분기 지연 → 밸류 정당성 붕괴)<br><span style="color:var(--sub);font-size:13px">현재 시총은 18A가 자사 제품을 넘어 대형 외부 고객(빅테크 커스텀 실리콘·국방)을 확보한다는 가정을 선반영하고 있다. 수율·PDK 성숙도·고객 인증이 지연되거나 외부 수주가 자사 물량 위주에 그치면 파운드리 적자가 장기화되고, 정책 프리미엄만으로 현 밸류를 지탱하기 어려워진다. TSMC N2 양산 개시로 경쟁 격차도 다시 벌어질 수 있다.</span></div><div class="ri rl"><strong>AI 가속기(Gaudi) 구조적 경쟁 열위</strong> (발생: 높음, 영향: AI CapEx 슈퍼사이클 낙수효과에서 사실상 배제)<br><span style="color:var(--sub);font-size:13px">하이퍼스케일러 CapEx $700B의 1차 수혜는 NVIDIA(DC 분기 $75B)·AMD·Broadcom·HBM 3사에 집중된다. Gaudi는 CUDA 생태계 락인과 AMD MI350 램프에 밀려 의미 있는 점유를 확보하지 못하고 있어, Intel은 산업 최대 성장축에서 소외된다. 이 열위가 고착되면 '제품 부문 성장'이라는 반등 서사의 한 축이 무너진다.</span></div><div class="ri rl"><strong>거시 역풍 — 금리·할인율 압박</strong> (발생: 중간, 영향: 고밸류·옵션성 성장주 디레이팅)<br><span style="color:var(--sub);font-size:13px">10Y 4.51%·30Y 5.02% 고착, 6월 인하 소멸과 12월 인상 가능성 부상으로 먼 미래 이익을 현가화하는 옵션성 스토리(파운드리 흑자전환)의 할인율이 높아졌다. Core PCE 분기 4.3% 충격과 이란발 에너지 인플레까지 겹쳐 고밸류 성장주 전반에 디레이팅 압력이 지속된다.</span></div><div class="ri rl"><strong>정책 의존·지배구조 변수</strong> (발생: 중간, 영향: 정책 프리미엄 되돌림 + 자본구조 희석)<br><span style="color:var(--sub);font-size:13px">현 밸류의 상당 부분이 CHIPS 보조금·국방 물량·정부 지분 참여라는 정책 옵션에 기댄다. 트럼프 행정부의 'CHIPS Act horrible' 기조 변화나 정부 지분 조건, 추가 전략적 투자에 따른 희석 가능성은 주가에 양날의 검이다. 정책 방향이 후퇴하면 프리미엄이 빠르게 되돌려질 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>추격매수는 권하지 않는다. 현재가 $106.85는 52주 밴드 상단부에 위치하고 ATR 8.1%로 변동성이 극심해, 고점 진입 시 단기 되돌림 손실 위험이 크다. <strong>분할 접근 전략</strong>: 1차는 $95~98(약 -8~10% 조정), 2차는 $88~90(2 ATR 손절선 인근 지지 테스트) 구간에서 분할 진입을 검토한다. <strong>손절은 data.json 기준 $89.57(2 ATR) 하향 이탈 시 기계적 청산</strong> — 이 선을 깨면 정책 프리미엄 되돌림·턴어라운드 회의 국면으로 본다. 목표가는 Base $108(현 수준 정체), Bull 트리거 충족 시 $145까지 열어둔다. <strong>상향 트리거</strong>: ① 18A 대형 외부 고객(빅테크/국방) 공식 수주 발표, ② 파운드리 분기 적자 축소·손익분기 로드맵 구체화, ③ 정부 지분/CHIPS 조건의 주주 우호적 확정. 보유기간은 턴어라운드 검증에 시간이 필요하므로 12~24개월 중기 관점. 트리거 전까지는 비중 축소·관망이 합리적이다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $80 ~ $145 (중심 $108, ±22%)
+
+**스코어 ±밴드**: ±7pt
+
+**시나리오 분기**:
+- Bull case: $145
+- Base case: $108
+- Bear case: $80</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. 18A 파운드리가 자사 제품을 넘어 의미 있는 외부 고객을 확보하고 2027~2028 손익분기에 도달한다**
+
+반증 시 영향: 반증 시 파운드리 옵션 가치 소멸 → 스코어 -12pt, 등급 매도 강등 + 목표가 $80대로 하향
+
+**2. 현 시총에 반영된 정부 지분·CHIPS·국방 정책 프리미엄이 유지·강화된다**
+
+반증 시 영향: 정책 후퇴/희석 시 프리미엄 되돌림 → 스코어 -8pt, Base 목표가 $90대로 하향
+
+**3. x86 제품 부문이 AMD/ARM 잠식에도 안정적 현금흐름을 유지해 파운드리 적자를 버틴다**
+
+반증 시 영향: 데이터센터 점유 추가 상실 시 현금원 약화 → 스코어 -6pt, 재무 건전성 항목 하향</div>
+<div class="sec"><h2>재분석 메타 (v4 BLIND)</h2>- **재분석 회차**: v4 (이전 v3, 2026-05-25)
+- **모드**: BLIND (이전 v3 read 0건)
+- **임계 경과**: 9일 (7일 임계 회차)
+- **회차 보고**: `analysis/_reanalysis_runs/20260603_run.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-03 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="INTC_Intel_20260603.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

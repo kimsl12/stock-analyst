@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>인튜이티브 머신스 (IntuitiveMachines) (LUNR) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>인튜이티브 머신스 (IntuitiveMachines) (LUNR)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-03</div><div style="margin-top:8px"><span class="badge b-hold">중립</span> <span class="badge b-score">63.5/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$40.26</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$6.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (적자, 흑자 전환 초기 — Forward EV/Sales 약 6.5x)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$7.78~$46.75</div></div><div class="ki"><div class="kl">등급</div><div class="kv">중립</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v4 BLIND</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p>인튜이티브 머신스(LUNR)는 NASA CLPS 계약 기반 달 착륙선(Nova-C/Nova-D)과 우주 통신·데이터 릴레이 사업을 영위하는 소형 우주 기업이다. 현재가 $40.26으로 52주 밴드 $7.78~$46.75의 상단 86% 부근, 저점 대비 +417%의 가파른 상승 구간에 있다. 최근 분기 매출은 인수 효과로 약 +199% 급증해 분기 사상 최고를 기록하고 첫 조정 EBITDA 흑자에 진입했으며, 백로그 약 $1.1B와 FY2026 가이던스 $900M~$1B로 매출 가시성은 확보됐다. 그러나 시총 ~$6.46B 대비 매출 배수가 매우 높고(EV/Sales 6배 이상), 달 표면 이동체(LTV) 로버 계약을 경쟁사에 빼앗기며 성장 내러티브가 일부 훼손됐다. ATR 13.7%의 극단적 변동성에 더해 10년물 4.51% 베어 스티프닝 환경은 고밸류 미수익 성장주에 할인율 역풍으로 작용한다. 단기는 SpaceX IPO 테마·달 미션 일정에 휘둘리는 모멘텀 장세, 중기는 정부 계약 실행력과 현금소진·희석 통제 여부가 방향을 가른다. 종합적으로 매력적 메가트렌드 노출과 투기적 밸류·실행 리스크가 팽팽히 맞서 중립으로 본다.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$29.24</div><div class="dn" style="font-size:13px">-27.4%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$56.79</div><div class="up" style="font-size:13px">+41.1%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="206" y="30" width="144" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="206" y1="26" x2="206" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="206" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$29</text><line x1="297" y1="24" x2="297" y2="52" stroke="var(--text)" stroke-width="3"/><text x="297" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$40</text><line x1="432" y1="26" x2="432" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="432" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$57</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $8</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $47</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $5.51 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,85.0 169.4,109.5 211.3,126.8 182.8,163.9 181.1,206.6 140.0,230.0 113.5,186.4 121.0,156.2 82.9,131.5 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업 경쟁력 (Moat)</text><circle cx="140.0" cy="85.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 건전성</text><circle cx="169.4" cy="109.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션 매력</text><circle cx="182.8" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/수급</text><circle cx="181.1" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">산업 전망</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 (역점수, 낮을수록 위험)</text><circle cx="113.5" cy="186.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당/주주환원</text><circle cx="121.0" cy="156.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트 가시성</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업 경쟁력 (Moat)</td><td>6.5</td><td>/10</td></tr><tr><td>재무 건전성</td><td>5.0</td><td>/10</td></tr><tr><td>성장성</td><td>7.5</td><td>/10</td></tr><tr><td>밸류에이션 매력</td><td>4.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>7.0</td><td>/10</td></tr><tr><td>산업 전망</td><td>8.0</td><td>/10</td></tr><tr><td>리스크 (역점수, 낮을수록 위험)</td><td>4.5</td><td>/10</td></tr><tr><td>배당/주주환원</td><td>2.0</td><td>/10</td></tr><tr><td>경영진/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트 가시성</td><td>7.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 63.5/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">Narrow</span></h2><p>인튜이티브 머신스(LUNR)는 NASA CLPS 계약 기반 달 착륙선(Nova-C/Nova-D)과 우주 통신·데이터 릴레이 사업을 영위하는 소형 우주 기업이다. 현재가 $40.26으로 52주 밴드 $7.78~$46.75의 상단 86% 부근, 저점 대비 +417%의 가파른 상승 구간에 있다. 최근 분기 매출은 인수 효과로 약 +199% 급증해 분기 사상 최고를 기록하고 첫 조정 EBITDA 흑자에 진입했으며, 백로그 약 $1.1B와 FY2026 가이던스 $900M~$1B로 매출 가시성은 확보됐다. 그러나 시총 ~$6.46B 대비 매출 배수가 매우 높고(EV/Sales 6배 이상), 달 표면 이동체(LTV) 로버 계약을 경쟁사에 빼앗기며 성장 내러티브가 일부 훼손됐다. ATR 13.7%의 극단적 변동성에 더해 10년물 4.51% 베어 스티프닝 환경은 고밸류 미수익 성장주에 할인율 역풍으로 작용한다. 단기는 SpaceX IPO 테마·달 미션 일정에 휘둘리는 모멘텀 장세, 중기는 정부 계약 실행력과 현금소진·희석 통제 여부가 방향을 가른다. 종합적으로 매력적 메가트렌드 노출과 투기적 밸류·실행 리스크가 팽팽히 맞서 중립으로 본다.</p><h3>Moat 상세</h3><p>인튜이티브 머신스의 해자는 <strong>NASA CLPS(상업 달 페이로드 서비스) 프라임 계약자 지위</strong>와 <strong>민간 최초 달 연착륙 실적</strong>에서 나온다. 달 착륙은 진입장벽이 극도로 높은 영역으로, 자체 설계·제작·운용을 수직 통합한 소수 사업자만이 NASA의 다년 계약 풀에 진입할 수 있다. 현재 <strong>총 5건의 CLPS 계약</strong>과 LROC(달 정찰궤도선 카메라) 운용 프라임, Nova-D 대형 착륙선($180.4M) 수주는 기술 신뢰도와 정부 레퍼런스를 반영한다. 또한 <strong>Near Space Network 통신·데이터 릴레이</strong>로 단발 발사 매출을 넘어 반복적 서비스 매출로 확장하려는 전략은 해자를 넓힐 잠재력이 있다. 다만 달 착륙선 시장에는 Firefly, Astrobotic 등 경쟁사가 다수이고, <strong>LTV 로버를 Astrolab/Lunar Outpost에 빼앗긴 사례</strong>는 해자가 독점적이지 않음을 보여준다. 정부 계약 의존도가 높아 NASA 예산·우선순위 변화에 노출된 구조적 한계도 있어 Wide가 아닌 Narrow로 평가한다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>최근 분기 매출은 약 $186.7M으로 전년 동기 대비 약 +199% 급증해 분기 사상 최고를 기록했는데, 이는 통신·인프라 자산(Lanteris) 인수에 따른 외형 확대가 크게 기여한 결과다. 같은 분기 조정 EBITDA는 약 +$2.67M으로 <strong>최초 흑자 전환</strong>에 성공했으나, 이는 GAAP 순이익 흑자가 아니라 조정 기준이라는 점에 유의해야 한다. 백로그는 분기말 약 $1.1B로 향후 매출 가시성을 뒷받침하며, FY2026 매출 가이던스는 $900M~$1B, 연간 조정 EBITDA 흑자 전환을 제시했다. 그러나 달 착륙 사업은 미션 단위로 비용이 선행 집행되고 고정비 부담이 커, 미션 실패나 지연 시 분기 손익이 크게 흔들린다. 핵심 리스크는 여전히 <strong>현금소진과 희석</strong>으로, 미수익 성장 국면에서 운영·개발 투자 자금을 충당하기 위한 추가 주식 발행 가능성이 상존한다. 인수로 외형은 커졌으나 유기적 마진 구조와 잉여현금흐름(FCF)의 지속적 플러스 전환은 아직 입증 단계로, 재무 건전성은 '개선 중이나 취약'으로 본다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>시총 ~$6.46B에 FY2026 가이던스 매출 중간값(~$950M)을 적용하면 <strong>EV/Sales 약 6.5x</strong> 수준으로, GAAP 흑자 부재와 초기 EBITDA 마진을 감안하면 전통적 잣대로는 비싼 밸류다. PER은 적자로 N/A, PEG도 산출 곤란하다. 밸류의 정당성은 ① 백로그 $1.1B의 매출 가시성, ② 정부 계약 기반 반복 매출로의 전환 잠재력, ③ 우주경제 메가트렌드($626B→$1.8T by 2035) 노출이라는 옵션 가치에 의존한다. 애널리스트 목표가는 약 $34~$50 밴드(중앙값 ~$43)에 분포하며, 다수가 LTV 탈락 이전 산정치여서 하향 리비전 여지가 있다. Bull(목표 ~$55)은 IM-3 미션 성공 + Near Space Network 통신 매출 본격화 + SpaceX IPO발 섹터 리레이팅을 가정한다. Base(~$43)는 가이던스 달성과 EBITDA 흑자 안착을 반영한다. Bear(~$28)는 미션 지연/실패 + 추가 희석 + 금리 역풍에 따른 멀티플 압축 시나리오로, 2ATR 손절선($29.24) 부근과 일치한다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가는 52주 저점 $7.78에서 현재 $40.26까지 약 +417% 급등해 고점($46.75) 대비 86% 수준으로, 강한 상승 추세 속 고밸류 구간에 위치한다. 직전 거래일 +5.37%로 단기 탄력이 살아 있으나 ATR 13.7%는 일간 변동폭이 극단적임을 의미해 추세와 무관하게 변동성 그 자체가 리스크다. 모멘텀의 핵심 드라이버는 SpaceX IPO(6월 거래 개시 예정)발 우주 섹터 리레이팅 기대와 NASA 계약 뉴스플로우다. 다만 LTV 로버 계약 탈락은 단기 변동성을 확대시킨 악재였고, 애널리스트 목표가의 상당수가 탈락 이전 산정이라 컨센서스 하향 리비전 가능성이 있다. 수급상 소형 스페이스주는 테마 회전에 따라 급등락하는 경향이 강해, IM-3 일정·SpaceX 상장 후 섹터 심리가 단기 방향을 좌우할 것으로 본다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>증권사 평균 목표가</td><td>약 $43</td></tr><tr><td>투자의견</td><td>매수~중립 혼재 (LTV 탈락 후 신중론 확대)</td></tr><tr><td>12M 컨센 EPS</td><td>약 -$0.10 (조정 흑자 초기, GAAP 적자)</td></tr><tr><td>최근 리비전</td><td>하향 압력 (LTV 탈락 이전 목표가 다수)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>인튜이티브 머신스는 NASA 아르테미스 프로그램의 상업 파트너 생태계 중심에 있다. CLPS는 NASA가 민간 사업자에게 달 표면 페이로드 운송을 위탁하는 구조로, 정부 수요가 다년에 걸쳐 확정돼 있어 매출 가시성이 상대적으로 높다. 우주경제는 2025년 약 $626B에서 2035년 ~$1.8T로 연 12% 성장이 예상되며, 미 우주군 예산(~$26B)과 Golden Dome($24B 배정) 등 정부·방위 수요가 구조적 순풍이다. 경쟁 구도는 달 착륙선에서 Firefly·Astrobotic, 통신·데이터에서 다수 위성 사업자와 맞붙는 형태로, 동사는 착륙선 실적과 통신 인프라 인수를 결합해 <strong>'달 경제 인프라 통합 사업자'</strong>로 포지셔닝하려 한다. IM-3(Nova-C, Reiner Gamma)는 Q4 2026 발사 예정이며, Nova-D 대형 착륙선은 남극 페이로드 운송으로 사업 영역을 확장한다. 다만 SpaceX의 발사 시장 독점(상업 발사 82%)과 Blue Origin 발사장 차질 등 섹터 전반의 발사 인프라 변수가 미션 일정에 간접 영향을 줄 수 있다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 현금소진·희석과 미션 실패/지연이라는 비대칭 하방 요인이다. 고밸류·금리 역풍은 멀티플 압축을 통해 이를 증폭시킨다. IM-3 등 핵심 미션이 실패하거나 대규모 희석성 자본조달이 발생하면 스코어는 -10pt 이상 하락하며 매도 등급 강등이 정당화된다. 반대로 미션 성공 + EBITDA 흑자 안착 + 통신 매출 본격화가 확인되면 매수 상향 여지가 있다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">현금소진 및 주식 희석</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">미션 실패·일정 지연</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">고밸류 + 금리 역풍</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">정부 계약 의존 및 경쟁 심화</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>현금소진 및 주식 희석</strong> (발생: 높음, 영향: 추가 발행 시 주당가치 희석·주가 압박)<br><span style="color:var(--sub);font-size:13px">미수익 성장 국면에서 미션 개발·운영 자금을 충당하기 위한 추가 주식 발행 가능성이 상존한다. 조정 EBITDA 흑자는 진입했으나 지속적 잉여현금흐름 플러스는 미입증으로, 자본조달 이벤트가 발생하면 고밸류 멀티플과 결합해 변동성이 증폭된다.</span></div><div class="ri rl"><strong>미션 실패·일정 지연</strong> (발생: 높음, 영향: 단일 미션 실패 시 평판·손익 동시 타격)<br><span style="color:var(--sub);font-size:13px">달 착륙은 기술적 난이도가 극히 높아 연착륙·운용 단계의 실패 위험이 상존한다. IM-3(Q4 2026 예정) 등 핵심 미션이 지연되거나 실패하면 분기 손익이 크게 흔들리고 정부 계약 신뢰도와 후속 수주 파이프라인에 부정적 영향을 준다.</span></div><div class="ri rl"><strong>고밸류 + 금리 역풍</strong> (발생: 중간, 영향: 할인율 상승 시 멀티플 압축)<br><span style="color:var(--sub);font-size:13px">EV/Sales 6배 이상의 투기적 밸류는 미래 현금흐름의 현재가치에 크게 의존한다. 10년물 4.51% 베어 스티프닝 환경은 미수익 고밸류 성장주의 할인율을 높여 멀티플을 압축하며, 리스크오프 국면에서 소형 스페이스주가 먼저 매도되는 경향이 있다.</span></div><div class="ri rl"><strong>정부 계약 의존 및 경쟁 심화</strong> (발생: 중간, 영향: NASA 예산·경쟁 입찰 결과에 매출 좌우)<br><span style="color:var(--sub);font-size:13px">매출의 상당 부분이 NASA CLPS 등 정부 계약에 묶여 있어 예산 우선순위·정책 변화에 노출된다. LTV 로버를 경쟁사에 빼앗긴 사례처럼 후속 입찰에서의 패배는 성장 내러티브를 직접 훼손하며, Firefly·Astrobotic 등 경쟁 심화로 가격·수주 압박이 커질 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>투기적 고변동 종목이므로 <strong>소액·분할 접근</strong>을 권한다. 신규 진입은 현재가($40.26)가 52주 고점 부근인 점을 고려해 추격 매수보다 <strong>$33~$36 눌림목 분할매수</strong>가 유리하다. 손절은 <strong>2ATR 기준 $29.24를 엄격히 적용</strong>하되, ATR 13.7%의 변동성상 일중 노이즈로 쉽게 닿을 수 있어 포지션 사이즈를 작게 가져가는 것이 핵심이다. Base 목표가는 약 $43, Bull 시나리오 충족 시 $55(3ATR 목표 $56.79 부근)까지 열어둔다. 보유기간은 IM-3 미션(Q4 2026)과 분기 실적·SpaceX IPO 섹터 영향을 추적하는 <strong>6~12개월 이벤트 드리븐</strong> 관점이 적합하다. 핵심 트리거: ① IM-3 발사 성공 여부, ② 조정 EBITDA 흑자 지속·FCF 전환, ③ 추가 희석성 자본조달 발생 여부. <strong>세 번째 트리거가 부정적으로 확인되면 즉시 비중 축소</strong>.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $28 ~ $55 (중심 $43, ±28%)
+
+**스코어 ±밴드**: ±7pt
+
+**시나리오 분기**:
+- Bull case: $55
+- Base case: $43
+- Bear case: $28</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. FY2026 매출 가이던스($900M~$1B)와 조정 EBITDA 흑자가 인수효과를 넘어 유기적으로 지속된다**
+
+반증 시 영향: 유기 마진 미달·인수효과 일회성 판명 시 스코어 -10pt, 등급 매도 강등
+
+**2. IM-3 등 핵심 달 미션이 일정 내 성공해 정부 계약 파이프라인이 유지된다**
+
+반증 시 영향: 미션 실패/지연 시 스코어 -12pt, Base 목표 $43→$30대 초반으로 하향
+
+**3. 대규모 희석성 자본조달 없이 현금 런웨이를 유지한다**
+
+반증 시 영향: 대규모 유상증자/전환사채 발행 시 스코어 -8pt, 멀티플 압축으로 주가 20%+ 하방</div>
+<div class="sec"><h2>재분석 메타 (v4 BLIND)</h2>- **재분석 회차**: v4 (이전 v3, 2026-05-25)
+- **모드**: BLIND (이전 v3 read 0건)
+- **임계 경과**: 9일 (7일 임계 회차)
+- **회차 보고**: `analysis/_reanalysis_runs/20260603_run.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-03 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="LUNR_IntuitiveMachines_20260603.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
