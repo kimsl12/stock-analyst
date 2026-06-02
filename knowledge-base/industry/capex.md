@@ -208,7 +208,7 @@ FCF 악화 -> Amazon -95%(2026 음전환), Oracle -$24.74B, Meta 급감, 전체 
 | **글로벌 2026** | 16GW(140개) | ~5GW      | --        | **~31%**    |
 
 - 그리드 연결 대기시간 **4년+**(주요 시장). 전력 부족이 DC 최대 병목 [Morgan Stanley]
-- **글로벌 DC 프로젝트 ~50%가 올해 전력 공급/그리드 부족으로 지연** [Morgan Stanley, 복수]
+- **글로벌 DC 프로젝트 ~50%가 2026년 전력 공급/그리드 부족으로 지연** [Morgan Stanley, 복수]
 - 미국 DC 건설중 **32GW**(AI 70%) — Eaton Q1 어닝콜 [Eaton IR]
 - DC 전체 백로그 **228GW** = 2025 빌드율 기준 **12년분** (Eaton) [Eaton IR]
 - Morgan Stanley: 미국 **49GW 부족**(2028까지), DC 전력 +126GW(2028까지) [Morgan Stanley]
@@ -277,7 +277,7 @@ FCF 악화 -> Amazon -95%(2026 음전환), Oracle -$24.74B, Meta 급감, 전체 
 - **관세 딜레마**: 25% 철강 관세 + 중국 변압기/배터리 40%+ 의존 = AI인프라 목표와 '근본적 긴장' [CSIS]
 - **미국 자국 생산**: 전력변압기 수요의 **20%만** 국내 제조 [PV-Magazine]
 - **수명 초과**: 미국 배전변압기 **~4,000만 대** 수명 초과 [PV-Magazine]
-- **미국 DC 절반+ 지연**: 변압기 부족으로 올해 계획된 미국 DC 절반 이상 지연 예상 [PV-Magazine, Bloomberg]
+- **미국 DC 절반+ 지연**: 변압기 부족으로 2026년 계획된 미국 DC 절반 이상 지연 예상 [PV-Magazine, Bloomberg]
 - **한국 전력기기**: 빅3 수주잔고 **27조원+**(5년분 일감). 효성중공업 11.9조, HD현대일렉트릭 10-11조, LS일렉트릭 5조. 구매자가 관세까지 부담. 'slot reservation' 전략. 숙련공 양성 10년→공급 제약 장기화 [서울경제, econmingle]
 
 ### 액체냉각 시장 (5/30 업데이트)
@@ -304,7 +304,7 @@ FCF 악화 -> Amazon -95%(2026 음전환), Oracle -$24.74B, Meta 급감, 전체 
 
 - **800G**: Arista에서 **DC 스위치 매출의 35% 점유**(2025 15%에서 1년만에 2배). 2026말 400G 추월 전망. CPO(co-packaged optics) 30-40% 에너지 절감 [AICerts, Mordor Intelligence]
 - **Arista**: Q1 2026 매출 **+35% YoY**, Q2 가이던스 **~$2.8B**. AI 네트워킹 매출 목표 **$3.25B**(2026). 이연매출 **$4B**. 12.8Tbps 모듈+R4 시리즈 800G [AICerts, Converge, SDxCentral]
-- **DC AI 네트워킹 시장**: **내년 ~$20B 근접**(650 Group) [AICerts]
+- **DC AI 네트워킹 시장**: **2027년 ~$20B 근접**(650 Group) [AICerts]
 - **Cisco**: AI인프라 주문 FY2025 **$2B+**(원래 목표 $1B의 2배). N9100 800Gb 스위치 [Cisco]
 - **Broadcom**: Tomahawk 6(100Tbps) + Jericho. 스위치실리콘 지배적. SerDes 200Gbps. AI매출 $8.4B(+106%) [Broadcom IR]
 - 2025-2030 글로벌 DC IT장비 지출 **$4.7T** [Dell'Oro]
@@ -426,7 +426,7 @@ FCF 악화 -> Amazon -95%(2026 음전환), Oracle -$24.74B, Meta 급감, 전체 
    -> 변압기 부족 구조적. GOES Cleveland-Cliffs 단일 의존. 숙련공 양성 10년→장기 공급 제약
 
 9. DC 네트워킹: Arista(Q1 +35%, AI $3.25B 목표, 800G 35% 점유), Cisco(AI주문 $2B+), Broadcom(AI $8.4B +106%)
-   -> DC 네트워킹 $36B→$95B(2032). DC AI 네트워킹 ~$20B 근접(내년). 800G 광모듈 $12B
+   -> DC 네트워킹 $36B→$95B(2032). DC AI 네트워킹 ~$20B 근접(2027년). 800G 광모듈 $12B
    -> Broadcom XPU 급성장(Google/Meta/OpenAI/Anthropic). Tomahawk 6(100Tbps)
 ```
 
