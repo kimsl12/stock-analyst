@@ -1,12 +1,12 @@
 ---
-updated: 2026-06-01
+updated: 2026-06-02
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-06-01
 lint_last_post_fix: 2026-06-01
 lint_mode: full
-lint_p0_count: 0
-lint_p1_count: 2
+lint_p0_count: 1
+lint_p1_count: 1
 lint_p2_count: 2
 ---
 
@@ -21,11 +21,15 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-01 (audit v3.22 — KB 21건 일괄 갱신 완료)**
+> **최종 갱신: 2026-06-02 (market-data-collector — economic_calendar.md 만료 P0 승격)**
 
-✅ **P0 0건** — 직전 21건 만료 KB 전수 갱신 (audit 2026-06-01).
+⚠️ **P0 1건** — market-data-collector 탐지 (2026-06-02).
 
-| 갱신 완료 KB                     | 신규 valid_until | 핵심 변경                                           |
+| 파일 | 만료일 | 문제 | 권장 조치 |
+|---|---|---|---|
+| `market/economic_calendar.md` | 2026-06-02 **오늘 만료** | valid_until 06-02 도래. updated 05-25 (8일 경과) | kb-updater 즉시 재수집 |
+
+| 갱신 완료 KB (참조)                     | 신규 valid_until | 핵심 변경                                           |
 | -------------------------------- | ---------------- | --------------------------------------------------- |
 | `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)              |
 | `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자        |
@@ -57,11 +61,10 @@ lint_p2_count: 2
 
 | 파일                          | 문제                                                                                                                              | 심각도   | 권장 조치              |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------- |
-| `market/economic_calendar.md` | valid_until 06-02 (+2일). updated 05-25 (6일 경과)                                                                                | **낮음** | kb-updater 확인        |
 | `macro/us_monetary_policy.md` | updated 05-06 — **25일 경과**. valid_until 06-06 미만료이나 Warsh 취임(5/15)+이란 합의 진전+PCE 3%++Waller 매파 발언(5/22) 미반영 | **높음** | kb-updater 즉시 재수집 |
 
-> [P0 승격 2026-05-31] 기존 P1 항목 correlation_matrix·surprise_index 오늘 만료 → P0 이동.
-> [P1 이력] 2026-05-29 P1 5건 중 daily_snapshot은 05-31 갱신 완료(정상), 나머지 market 2건 P0 승격.
+> [P0 승격 2026-06-02] P1 항목 economic_calendar.md valid_until 06-02 만료 → P0 이동 (market-data-collector 탐지).
+> [P0 승격 2026-05-31] 기존 P1 항목 correlation_matrix·surprise_index 만료 → P0 이동.
 
 ---
 
