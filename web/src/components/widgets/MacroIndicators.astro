@@ -1,24 +1,11 @@
 ---
-import kb from '../../data/kb.json';
+import kbJson from '../../data/kb.json';
+import type { KbJson, FredData, FredSeries } from '../../types/data';
 
-interface Series {
-  id: string;
-  label: string;
-  unit: string;
-  cat: string;
-  desc: string;
-  date: string;
-  value: number;
-  prev_1w?: number | null;
-  prev_1m?: number | null;
-  prev_1y?: number | null;
-  yoy_pct?: number | null;
-  diff_1m?: number | null;
-}
+const kb = kbJson as unknown as KbJson;
 
-const fredAny = (kb as any).fred;
-const fred = fredAny ?? { available: false, series: [], updated_at: null, api_key_required: true };
-const series: Series[] = fred.series ?? [];
+const fred: FredData = kb.fred ?? { available: false, series: [], updated_at: null, api_key_required: true };
+const series: FredSeries[] = fred.series ?? [];
 const updated = fred.updated_at;
 
 // 카테고리 순서
@@ -32,14 +19,14 @@ const CAT_LABEL: Record<string, string> = {
   risk: '리스크',
 };
 
-const grouped = new Map<string, Series[]>();
+const grouped = new Map<string, FredSeries[]>();
 for (const cat of CAT_ORDER) grouped.set(cat, []);
 for (const s of series) {
   if (!grouped.has(s.cat)) grouped.set(s.cat, []);
   grouped.get(s.cat)!.push(s);
 }
 
-function fmtVal(s: Series): string {
+function fmtVal(s: FredSeries): string {
   const v = s.value;
   if (s.id === 'M2SL') return `$${(v / 1000).toFixed(2)}T`; // billions → trillions
   if (s.id === 'PAYEMS') return `${v.toLocaleString('en-US', { maximumFractionDigits: 0 })}K`;
@@ -50,7 +37,7 @@ function fmtVal(s: Series): string {
   return v.toFixed(2);
 }
 
-function fmtDelta(s: Series): { txt: string; tone: 'up' | 'down' | 'flat' } {
+function fmtDelta(s: FredSeries): { txt: string; tone: 'up' | 'down' | 'flat' } {
   // 일반 시리즈: 1주 변화
   if (s.prev_1w != null && s.prev_1w !== 0) {
     const d = s.value - s.prev_1w;
@@ -93,7 +80,7 @@ function fmtDelta(s: Series): { txt: string; tone: 'up' | 'down' | 'flat' } {
         <div class="cat">
           <h3>{CAT_LABEL[cat] ?? cat}</h3>
           <div class="rows">
-            {items.map((s: Series) => {
+            {items.map((s: FredSeries) => {
               const delta = fmtDelta(s);
               return (
                 <div class="row" title={s.desc}>
