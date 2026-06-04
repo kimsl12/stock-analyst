@@ -32,6 +32,21 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 
 ---
 
+## 호출 컨텍스트 (Phase 위치) [P2-3, 2026-06-02]
+
+본 에이전트는 `stock-analyst-lead` 워크플로우 **Phase 1~4** 단계에서 호출된다.
+
+| Phase | 입력                                                                    | 본 에이전트 책임                                           |
+| ----- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| 1     | 5개 분석가 산출물 (company / financial / business / momentum / risk.md) | 10항목 가중 스코어카드 산출 + FRED 매크로 레짐 점수 보정   |
+| 2     | data.json + ATR 계산 + 보유 기간 의무 필드                              | ATR 기반 손절·목표가 + R:R 분석 + 보유 기간 결정           |
+| 3     | Research KB excerpts (lead 가 Phase 0-D 에서 첨부)                      | Alignment 점수 보정 (±1~3pt) + 모순 보정 (Moat / momentum) |
+| 4     | 최종 등급·전략·KB 피드백                                                | scorecard.md + KB 갱신 항목 + debate-card·contrarian-card  |
+
+재분석 모드(`--reanalysis`)에서는 이전 분석을 read 하지 않고 신규 분석가 산출물만 활용한다 (앵커링 차단).
+
+---
+
 ## 재분석 모드 (`--reanalysis`) 규칙 [v3.14]
 
 stock-analyst-lead 가 호출 프롬프트에 "**--reanalysis 모드 v{N}**" 또는 "BLIND" 문구를 포함하면 본 모드 적용.
