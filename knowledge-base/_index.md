@@ -21,16 +21,14 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-03 (market-data-collector — 이브닝 수집 완료. economic_calendar.md P0 유지)**
+> **최종 갱신: 2026-06-04 (market-data-collector — 모닝 수집 완료. economic_calendar.md P0 해소)**
 
-⚠️ **P0 1건** — market-data-collector 탐지 (2026-06-02). 이브닝 수집(6/3 20:10) 완료 — daily_snapshot.md 갱신됨. economic_calendar.md 별도 재수집 필요.
-
-| 파일                          | 만료일                     | 문제                                                          | 권장 조치              |
-| ----------------------------- | -------------------------- | ------------------------------------------------------------- | ---------------------- |
-| `market/economic_calendar.md` | 2026-06-02 만료 (9일 경과) | valid_until 06-02 도래. updated 05-25. 6/3 이브닝 수집 미포함 | kb-updater 즉시 재수집 |
+✅ **P0 0건** — 모든 market/ P0 항목 해소 (2026-06-04 09:10 KST).
 
 | 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                           |
 | -------------------------------- | ---------------- | --------------------------------------------------- |
+| `market/daily_snapshot.md`       | 2026-06-05       | 6/3 ET 종가 확정. 닛케이 68,402 실측 보정           |
+| `market/economic_calendar.md`    | 2026-06-13       | 6/3 결과(ADP·ISM·AVGO) 반영 + 6/4~6/12 갱신        |
 | `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)              |
 | `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자        |
 | `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각     |
