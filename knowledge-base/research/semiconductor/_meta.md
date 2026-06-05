@@ -1,13 +1,13 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
 l1_index_count: 9
-l2_summary_count: 5
+l2_summary_count: 6
 l3_deep_dive_count: 1
 deep_dive_priority: 1
 ---
@@ -36,13 +36,13 @@ deep_dive_priority: 1
 
 ## 카탈리스트 캘린더 (분기 단위)
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 2026 Q2 | ISSCC paper digest 후속 양산 일정 | Conference |
-| 2026 Q3 | Hot Chips 신규 ASIC 발표 | Conference |
-| 2026 Q4 | IEDM device manufacturing 진전 | Conference |
-| 2026 H2 | 미국 정부 CHIPS Act 2차 disbursement | Policy |
-| 2027 Q1 | HBM4 양산 시작 (가정) | Filing |
+| 분기    | 이벤트                               | 출처 유형  |
+| ------- | ------------------------------------ | ---------- |
+| 2026 Q2 | ISSCC paper digest 후속 양산 일정    | Conference |
+| 2026 Q3 | Hot Chips 신규 ASIC 발표             | Conference |
+| 2026 Q4 | IEDM device manufacturing 진전       | Conference |
+| 2026 H2 | 미국 정부 CHIPS Act 2차 disbursement | Policy     |
+| 2027 Q1 | HBM4 양산 시작 (가정)                | Filing     |
 
 ## L1 인덱스 카운트 (현재)
 
@@ -53,6 +53,7 @@ deep_dive_priority: 1
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-06 `vlsi_symposium_2026_3d_memory_202606.md` — VLSI Symposium 2026 'memory is the bottleneck' + 3D Memory(Flash·HBM) 포커스 세션 + Micron 기조
 - 2026-05 `hbm4_samsung_isscc_202605.md` — Samsung 36GB HBM4 12-Hi 3.3 TB/s (ISSCC 2026)
 - 2026-05 `hbm4_skhynix_isscc_ces_202605.md` — SK hynix 48GB HBM4 16-Hi + SOCAMM2 + LPDDR6 (CES 2026 + ISSCC 2026)
 - 2026-04 `mckinsey_chip_boom_1_6t_202604.md` — McKinsey 2030년 $1.6T (CAGR 13%)
@@ -72,6 +73,7 @@ deep_dive_priority: 1
 ## 분석 에이전트 활용 가이드
 
 분석 에이전트가 본 섹터 L2 요약 인용 시:
+
 - HBM 관련 종목 (000660 SK하이닉스, 005930 삼성전자, MU 마이크론) → HBM4·마진 사이클 L2 우선
 - 장비 종목 (ASML, AMAT, LRCX, KLAC) → CHIPS Act 진행 + 한국·일본 보조금 정책 L2
 - ASIC/GPU 종목 (NVDA, AVGO, MRVL, AMD) → Hot Chips + arXiv cs.AR L2

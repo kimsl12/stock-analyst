@@ -1,14 +1,14 @@
 ---
 sector: industrials
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/capex.md
   - knowledge-base/industry/infrastructure.md
   - knowledge-base/industry/logistics.md
 l1_index_count: 1
-l2_summary_count: 0
+l2_summary_count: 1
 l3_deep_dive_count: 0
 deep_dive_priority: 9
 ---
@@ -23,20 +23,20 @@ deep_dive_priority: 9
 
 ## 종목 매핑 (커버 유니버스)
 
-| 종목 | 카테고리 | 핵심 베타 |
-|---|---|---|
-| GE (GE Aerospace) | 항공·중공업 | 항공엔진·가스터빈 |
-| CAT (Caterpillar) | 건설장비 | 인프라·광산·DC |
-| DE (Deere) | 농기계 | 농업·자동화 |
-| HON (Honeywell) | 산업·자동화 | 에어로·산업 SW |
-| UNP (Union Pacific) | 철도 | 운송·물류·컨테이너 |
-| NSC (Norfolk Southern) | 철도 | 동부 운송 |
-| ETN (Eaton) | 전력관리 | 그리드·DC 전력 |
-| 010120 LSELECTRIC | 한국 전기 | 그리드·DC 전력 |
-| 034020 두산에너빌리티 | 한국 EPC | SMR·원전·풍력 |
-| 466100 클로봇 | 한국 로봇 | 자동화·물류 로봇 |
-| ABB | 자동화 | 산업 로봇·모터 |
-| FANUC | 자동화 | 로봇 (일본) |
+| 종목                   | 카테고리    | 핵심 베타          |
+| ---------------------- | ----------- | ------------------ |
+| GE (GE Aerospace)      | 항공·중공업 | 항공엔진·가스터빈  |
+| CAT (Caterpillar)      | 건설장비    | 인프라·광산·DC     |
+| DE (Deere)             | 농기계      | 농업·자동화        |
+| HON (Honeywell)        | 산업·자동화 | 에어로·산업 SW     |
+| UNP (Union Pacific)    | 철도        | 운송·물류·컨테이너 |
+| NSC (Norfolk Southern) | 철도        | 동부 운송          |
+| ETN (Eaton)            | 전력관리    | 그리드·DC 전력     |
+| 010120 LSELECTRIC      | 한국 전기   | 그리드·DC 전력     |
+| 034020 두산에너빌리티  | 한국 EPC    | SMR·원전·풍력      |
+| 466100 클로봇          | 한국 로봇   | 자동화·물류 로봇   |
+| ABB                    | 자동화      | 산업 로봇·모터     |
+| FANUC                  | 자동화      | 로봇 (일본)        |
 
 ## Key Uncertainties (지속 추적)
 
@@ -52,13 +52,13 @@ deep_dive_priority: 9
 
 ## 카탈리스트 캘린더 (분기 단위)
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 분기 | 산업재 어닝 (GE·CAT·HON) | Filing |
-| 월간 | ISM 제조업 PMI + 가격 지수 | Policy |
-| 연 | FY 국방·인프라 disbursement | Policy |
-| 2026 Q2 | Hannover Messe (4월) | Conference |
-| 분기 | FERC 그리드 인터커넥션 결정 | Policy |
+| 분기    | 이벤트                      | 출처 유형  |
+| ------- | --------------------------- | ---------- |
+| 분기    | 산업재 어닝 (GE·CAT·HON)    | Filing     |
+| 월간    | ISM 제조업 PMI + 가격 지수  | Policy     |
+| 연      | FY 국방·인프라 disbursement | Policy     |
+| 2026 Q2 | Hannover Messe (4월)        | Conference |
+| 분기    | FERC 그리드 인터커넥션 결정 | Policy     |
 
 ## L1 인덱스 카운트 (현재)
 
@@ -69,7 +69,7 @@ deep_dive_priority: 9
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
-- (없음 — 첫 weekly 호출 후 누적)
+- 2026-06 `chips_fab_construction_boom_202606.md` — 미국 반도체 팹 건설 붐 (TSMC AZ 6개월 조기 + Samsung Taylor 재개 + Micron $200B + ITC 25→35% + 건설시장 $58.8B/2030)
 
 ## L3 분기 Deep Dive 이력
 
@@ -78,6 +78,7 @@ deep_dive_priority: 9
 ## 분석 에이전트 활용 가이드
 
 분석 에이전트가 본 섹터 L2 요약 인용 시:
+
 - 항공·중공업 (GE·CAT·UNP) → 미국 운송 데이터 + CHIPS 건설 L2
 - 그리드 (010120 LSELECTRIC·ETN) → DC 전력 + IEA Electricity L2 (energy 교차)
 - 한국 EPC (034020 두산에너빌리티·현대건설) → SMR + 원전 풀체인 L2

@@ -1,13 +1,13 @@
 ---
 sector: tech_platform
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/ai.md
   - knowledge-base/industry/tech_breakthrough.md
 l1_index_count: 2
-l2_summary_count: 0
+l2_summary_count: 1
 l3_deep_dive_count: 0
 deep_dive_priority: 7
 ---
@@ -22,20 +22,20 @@ deep_dive_priority: 7
 
 ## 종목 매핑 (커버 유니버스)
 
-| 종목 | 카테고리 | 핵심 베타 |
-|---|---|---|
-| META (Meta Platforms) | 빅테크 | 광고·AI capex·VR/AR |
-| GOOGL (Alphabet) | 빅테크 | 검색·클라우드·반독점 |
-| AMZN (Amazon) | 빅테크 | AWS·이커머스·광고 |
-| MSFT (Microsoft) | 빅테크 | Azure·OpenAI·M365 |
-| AAPL (Apple) | 빅테크 | 서비스·디바이스·관세 |
-| ORCL (Oracle) | 엔터프라이즈 | 클라우드 OCI·DB |
-| ADBE (Adobe) | SaaS | Creative Cloud·AI |
-| CRM (Salesforce) | SaaS | CRM·Agentforce |
-| NOW (ServiceNow) | SaaS | ITSM·AI 워크플로 |
-| IBM | 엔터프라이즈 | 하이브리드 클라우드·Watson |
-| 035420 NAVER | 한국 플랫폼 | 검색·웹툰·커머스 |
-| 035720 카카오 | 한국 플랫폼 | 메신저·핀테크·콘텐츠 |
+| 종목                  | 카테고리     | 핵심 베타                  |
+| --------------------- | ------------ | -------------------------- |
+| META (Meta Platforms) | 빅테크       | 광고·AI capex·VR/AR        |
+| GOOGL (Alphabet)      | 빅테크       | 검색·클라우드·반독점       |
+| AMZN (Amazon)         | 빅테크       | AWS·이커머스·광고          |
+| MSFT (Microsoft)      | 빅테크       | Azure·OpenAI·M365          |
+| AAPL (Apple)          | 빅테크       | 서비스·디바이스·관세       |
+| ORCL (Oracle)         | 엔터프라이즈 | 클라우드 OCI·DB            |
+| ADBE (Adobe)          | SaaS         | Creative Cloud·AI          |
+| CRM (Salesforce)      | SaaS         | CRM·Agentforce             |
+| NOW (ServiceNow)      | SaaS         | ITSM·AI 워크플로           |
+| IBM                   | 엔터프라이즈 | 하이브리드 클라우드·Watson |
+| 035420 NAVER          | 한국 플랫폼  | 검색·웹툰·커머스           |
+| 035720 카카오         | 한국 플랫폼  | 메신저·핀테크·콘텐츠       |
 
 ## Key Uncertainties (지속 추적)
 
@@ -51,13 +51,13 @@ deep_dive_priority: 7
 
 ## 카탈리스트 캘린더 (분기 단위)
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 분기 | 빅테크 어닝 + capex 가이던스 | Filing |
-| 연 | EU AI Act 단계별 집행 일정 | Policy |
-| 분기 | 미국 의회 청문회 + DOJ 반독점 판결 | Policy |
-| 2026 Q3 | NeurIPS (12월) sub deadline | Conference |
-| 분기 | KubeCon / Web Summit / re:Invent | Conference |
+| 분기    | 이벤트                             | 출처 유형  |
+| ------- | ---------------------------------- | ---------- |
+| 분기    | 빅테크 어닝 + capex 가이던스       | Filing     |
+| 연      | EU AI Act 단계별 집행 일정         | Policy     |
+| 분기    | 미국 의회 청문회 + DOJ 반독점 판결 | Policy     |
+| 2026 Q3 | NeurIPS (12월) sub deadline        | Conference |
+| 분기    | KubeCon / Web Summit / re:Invent   | Conference |
 
 ## L1 인덱스 카운트 (현재)
 
@@ -68,7 +68,7 @@ deep_dive_priority: 7
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
-- (없음 — 첫 weekly 호출 후 누적)
+- 2026-06 `eu_ai_act_omnibus_202606.md` — EU AI Act Omnibus: 독립형 고위험 AI 마감 2027-12-02 연장 + 생성형 AI 투명성 2026-12-02 + nudifier 금지 + 과징금 €35M/매출 7%(금지)·€15M/3%(투명성)
 
 ## L3 분기 Deep Dive 이력
 
@@ -77,6 +77,7 @@ deep_dive_priority: 7
 ## 분석 에이전트 활용 가이드
 
 분석 에이전트가 본 섹터 L2 요약 인용 시:
+
 - AI capex 종목 (META·GOOGL·AMZN·MSFT) → 하이퍼스케일러 CapEx + IEA DC 전력 L2 (energy 교차)
 - SaaS (CRM·NOW·ADBE) → ARR + AI 추가 매출 L2
 - 빅테크 반독점 (META·GOOGL) → 미국·EU 규제 L2 (fintech SEC 패턴 교차)

@@ -1,13 +1,13 @@
 ---
 sector: auto
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/auto.md
   - knowledge-base/industry/battery.md
 l1_index_count: 2
-l2_summary_count: 0
+l2_summary_count: 1
 l3_deep_dive_count: 0
 deep_dive_priority: 10
 ---
@@ -22,20 +22,20 @@ deep_dive_priority: 10
 
 ## 종목 매핑 (커버 유니버스)
 
-| 종목 | 카테고리 | 핵심 베타 |
-|---|---|---|
-| TSLA (Tesla) | EV 리더 | EV·FSD·로보택시 |
+| 종목                | 카테고리    | 핵심 베타         |
+| ------------------- | ----------- | ----------------- |
+| TSLA (Tesla)        | EV 리더     | EV·FSD·로보택시   |
 | GM (General Motors) | 전통 자동차 | EV 전환·미국 SAAR |
-| F (Ford) | 전통 자동차 | F-150·EV·관세 |
-| TM (Toyota) | 일본 자동차 | 하이브리드·글로벌 |
-| RIVN (Rivian) | EV 신생 | 픽업·배달밴 |
-| 005380 현대차 | 한국 자동차 | EV·SUV·미국 수출 |
-| 000270 기아 | 한국 자동차 | EV·SUV·동남아 |
-| HMC (Honda) | 일본 자동차 | 글로벌 OEM |
-| BYDDY (BYD ADR) | 중국 EV | 배터리·EV 통합 |
-| NIO | 중국 EV | 프리미엄 EV |
-| XPEV (XPeng) | 중국 EV | 자율주행·EV |
-| LI (Li Auto) | 중국 EV | EREV·SUV |
+| F (Ford)            | 전통 자동차 | F-150·EV·관세     |
+| TM (Toyota)         | 일본 자동차 | 하이브리드·글로벌 |
+| RIVN (Rivian)       | EV 신생     | 픽업·배달밴       |
+| 005380 현대차       | 한국 자동차 | EV·SUV·미국 수출  |
+| 000270 기아         | 한국 자동차 | EV·SUV·동남아     |
+| HMC (Honda)         | 일본 자동차 | 글로벌 OEM        |
+| BYDDY (BYD ADR)     | 중국 EV     | 배터리·EV 통합    |
+| NIO                 | 중국 EV     | 프리미엄 EV       |
+| XPEV (XPeng)        | 중국 EV     | 자율주행·EV       |
+| LI (Li Auto)        | 중국 EV     | EREV·SUV          |
 
 ## Key Uncertainties (지속 추적)
 
@@ -51,14 +51,14 @@ deep_dive_priority: 10
 
 ## 카탈리스트 캘린더 (분기 단위)
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 월간 | 자동차 판매 (SAAR 미국) | Policy |
-| 분기 | 어닝 (Tesla·GM·현대차) | Filing |
-| 분기 | 중국 EV 수출 통계 (해관총서) | Policy |
-| 2026 Q1 | CES (1월) | Conference |
+| 분기    | 이벤트                       | 출처 유형  |
+| ------- | ---------------------------- | ---------- |
+| 월간    | 자동차 판매 (SAAR 미국)      | Policy     |
+| 분기    | 어닝 (Tesla·GM·현대차)       | Filing     |
+| 분기    | 중국 EV 수출 통계 (해관총서) | Policy     |
+| 2026 Q1 | CES (1월)                    | Conference |
 | 2026 Q3 | Munich Motor Show (9월 격년) | Conference |
-| 분기 | NHTSA 자율주행 가이드라인 | Policy |
+| 분기    | NHTSA 자율주행 가이드라인    | Policy     |
 
 ## L1 인덱스 카운트 (현재)
 
@@ -69,7 +69,7 @@ deep_dive_priority: 10
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
-- (없음 — 첫 weekly 호출 후 누적)
+- 2026-06 `ira_30d_industrial_policy_siepr_202606.md` — IRA 30D 클린비클 크레딧 = 신산업정책, 이원 $3,750 + 북미조립 요건, 미국 EV 제조 리쇼어링 함의 (SIEPR)
 
 ## L3 분기 Deep Dive 이력
 
@@ -78,6 +78,7 @@ deep_dive_priority: 10
 ## 분석 에이전트 활용 가이드
 
 분석 에이전트가 본 섹터 L2 요약 인용 시:
+
 - EV 리더 (TSLA·RIVN) → IRA 정책 + 배터리 가격 L2
 - 전통 자동차 (GM·F·TM·HMC) → SAAR 미국 + EV 전환 속도 L2
 - 한국 자동차 (005380·000270) → IEEPA 관세 + 동남아 수출 L2

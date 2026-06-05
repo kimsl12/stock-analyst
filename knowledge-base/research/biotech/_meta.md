@@ -1,13 +1,13 @@
 ---
 sector: biotech
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
 l1_index_count: 7
-l2_summary_count: 5
+l2_summary_count: 6
 l3_deep_dive_count: 1
 deep_dive_priority: 4
 ---
@@ -33,14 +33,14 @@ deep_dive_priority: 4
 
 ## 카탈리스트 캘린더
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
+| 분기    | 이벤트                                  | 출처 유형  |
+| ------- | --------------------------------------- | ---------- |
 | 2026 Q2 | ASCO Annual Meeting (6월) — 종양학 핵심 | Conference |
-| 2026 Q4 | ASH Annual Meeting (12월) — 혈액학 | Conference |
+| 2026 Q4 | ASH Annual Meeting (12월) — 혈액학      | Conference |
 | 2026 Q4 | AHA Scientific Sessions (11월) — 심혈관 | Conference |
-| 2026 Q3 | JPM Healthcare 일정 발표 | Conference |
-| 분기 | FDA AdCom 일정 | Policy |
-| 2026 H2 | IRA 협상 가격 발표 (2027 적용) | Policy |
+| 2026 Q3 | JPM Healthcare 일정 발표                | Conference |
+| 분기    | FDA AdCom 일정                          | Policy     |
+| 2026 H2 | IRA 협상 가격 발표 (2027 적용)          | Policy     |
 
 ## L1 인덱스 카운트
 
@@ -51,6 +51,7 @@ deep_dive_priority: 4
 
 ## L2 월간 요약 목록
 
+- 2026-06 `rasolute_302_daraxonrasib_asco_202606.md` — ASCO 2026 Plenary RASolute 302 daraxonrasib(범-RAS) 전이성 췌장암 2차 mOS 13.2 vs 6.7개월, HR 0.40 (RVMD)
 - 2026-05 `veppanu_vepdegestrant_fda_202605.md` — FDA Veppanu (vepdegestrant) PROTAC 첫
 - 2026-04 `attain_1_orforglipron_phase3_202604.md` — NEJM ATTAIN-1 Phase 3 orforglipron 경구 GLP-1 -12.4% (Foundayo 임상 베이스)
 - 2026-04 `orforglipron_foundayo_fda_202604.md` — FDA Foundayo (orforglipron) 4/1 승인

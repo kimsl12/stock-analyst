@@ -1,13 +1,13 @@
 ---
 sector: energy
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
 l1_index_count: 5
-l2_summary_count: 5
+l2_summary_count: 6
 l3_deep_dive_count: 1
 deep_dive_priority: 2
 ---
@@ -34,13 +34,13 @@ deep_dive_priority: 2
 
 ## 카탈리스트 캘린더
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 2026 Q2 | NRC SMR licensing reform 결과 | Policy |
-| 2026 Q3 | IEA WEO 2026 발표 (10월) | White Paper |
-| 2026 Q4 | DOE Loan Programs Office disbursement | Policy |
-| 2026 H2 | SMR 5~10기 ESP 결정 | Policy |
-| 2027 H1 | TerraPower Natrium 가동 일정 검증 | Filing |
+| 분기    | 이벤트                                | 출처 유형   |
+| ------- | ------------------------------------- | ----------- |
+| 2026 Q2 | NRC SMR licensing reform 결과         | Policy      |
+| 2026 Q3 | IEA WEO 2026 발표 (10월)              | White Paper |
+| 2026 Q4 | DOE Loan Programs Office disbursement | Policy      |
+| 2026 H2 | SMR 5~10기 ESP 결정                   | Policy      |
+| 2027 H1 | TerraPower Natrium 가동 일정 검증     | Filing      |
 
 ## L1 인덱스 카운트
 
@@ -51,6 +51,7 @@ deep_dive_priority: 2
 
 ## L2 월간 요약 목록
 
+- 2026-06 `oklo_aurora_doe_pilot_criticality_202606.md` — Oklo Aurora DOE Reactor Pilot 7/4/2026 임계 목표 + DOE OTA·NSDA·PDSA + NRC 우회 가속 트랙
 - 2026-05 `iea_key_questions_energy_ai_202605.md` — IEA Key Questions on Energy and AI (하이퍼스케일러 CapEx $400B+, +75%, 그리드 lead time 7~10년)
 - 2026-05 `triso_x_xenergy_fuel_facility_202605.md` — NRC TRISO-X X-energy 연료 시설
 - 2026-04 `dc_power_iea_electricity_202604.md` — IEA Electricity 2026 DC 전력 2배·AI DC 3배

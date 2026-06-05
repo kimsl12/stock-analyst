@@ -1,13 +1,13 @@
 ---
 sector: fintech
 created: 2026-05-12
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 status: active
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
 l1_index_count: 5
-l2_summary_count: 5
+l2_summary_count: 6
 l3_deep_dive_count: 1
 deep_dive_priority: 5
 ---
@@ -33,13 +33,13 @@ deep_dive_priority: 5
 
 ## 카탈리스트 캘린더
 
-| 분기 | 이벤트 | 출처 유형 |
-|---|---|---|
-| 분기 | SEC 가상자산 enforcement actions | Policy |
-| 2026 Q3 | Money 20/20 (10월) | Conference |
-| 분기 | BIS Quarterly Review 핀테크 코너 | White Paper |
-| 분기 | FedNow 누적 거래 통계 | Policy |
-| 분기 | BIS Innovation Hub CBDC pilot updates | Think Tank |
+| 분기    | 이벤트                                | 출처 유형   |
+| ------- | ------------------------------------- | ----------- |
+| 분기    | SEC 가상자산 enforcement actions      | Policy      |
+| 2026 Q3 | Money 20/20 (10월)                    | Conference  |
+| 분기    | BIS Quarterly Review 핀테크 코너      | White Paper |
+| 분기    | FedNow 누적 거래 통계                 | Policy      |
+| 분기    | BIS Innovation Hub CBDC pilot updates | Think Tank  |
 
 ## L1 인덱스 카운트
 
@@ -50,6 +50,7 @@ deep_dive_priority: 5
 
 ## L2 월간 요약 목록
 
+- 2026-06 `genius_act_sec_cftc_mou_custody_202606.md` — GENIUS Act 시행 본격화 (SEC·CFTC MOU 3/11 + 토큰증권 혁신 면제 + FDIC 패스스루 보험 배제 + OCC/Treasury 커스터디 룰, 7/18 데드라인)
 - 2026-05 `stablecoin_bis_papers_170_202605.md` — BIS Papers #170 EMDE 통화주권 침식 3 시나리오
 - 2026-04 `sec_self_custody_wallet_broker_202604.md` — SEC Staff Statement 4/13 셀프 호스팅 지갑 broker 미해당
 - 2026-04 `bis_briefing_global_stablecoin_slowdown_202604.md` — BIS Briefing 4/20 단편화 위험
