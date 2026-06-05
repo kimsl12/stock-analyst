@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Visa (V) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Visa (V)</h1><div class="meta">주식 종합 분석 리포트 | 2026-05-13</div><div style="margin-top:8px"><span class="badge b-buy">강력매수</span> <span class="badge b-score">80/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$326.42</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$620.8B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">28.8 (FY26E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$293.28~$372.57</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">0.74%</div></div><div class="ki"><div class="kl">총주주환원율</div><div class="kv">3.84%</div></div><div class="ki"><div class="kl">자기자본수익률</div><div class="kv">52%</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">67%</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$7.92 (2.43%)</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><br><strong>Visa는 글로벌 결제 인프라의 통행료 사업이다.</strong> 광범위한 경제적 해자가 10년 이상 유지되고, 잉여현금흐름의 100% 이상을 자사주 매입과 배당으로 환원하며, 투자자본이익률(ROIC) 36%로 S&P 500 최상위 품질에 속한다.<br><br><strong>핵심 투자포인트 세 가지</strong>:<br><br>1. <strong>양면 결제 네트워크의 광범위한 해자 10년 이상</strong> — 카드 40억 장 이상과 가맹점 1억 3천만 곳 이상이 연결된 듀오폴리 구조다. 비자와 마스터카드가 글로벌 카드 거래의 80% 가까이 점유한다. 신규 진입이 사실상 불가능하다.<br><br>2. <strong>신성장 채널의 두 자릿수 가속 — 비자 다이렉트와 부가가치 서비스(VAS)</strong> — 비자 다이렉트 거래량 전년 동기 대비 23% 증가, 부가가치 서비스 매출 28% 증가(2026 회계연도 2분기). 핵심 결제 거래량 9.5% 성장에 신성장 채널 가속이 더해진다.<br><br>3. <strong>잉여현금흐름 100% 환원 + 인공지능 결제 표준 선점</strong> — 연간 자사주 매입 190억 달러 이상 + 배당 14년 연속 인상. 2026년 4월 발표한 비자 인텔리전트 커머스와 신뢰 에이전트 프로토콜(Trusted Agent Protocol)로 인공지능 에이전트 결제 표준을 선점했다.<br><br><strong>12개월 기준 시나리오 목표가 378달러 (+15.8%)</strong>. 단기 손절가 310.58달러 (-4.8%). 41개 증권사 컨센서스의 78%가 매수 의견이다.<br></p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$310.58</div><div class="dn" style="font-size:13px">-4.9%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$378.00</div><div class="up" style="font-size:13px">+15.8%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="100" y="30" width="250" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="100" y1="26" x2="100" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="100" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$311</text><line x1="164" y1="24" x2="164" y2="52" stroke="var(--text)" stroke-width="3"/><text x="164" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$326</text><line x1="372" y1="26" x2="372" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="372" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$378</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $293</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $373</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $7.92 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 172.1,111.7 189.2,141.3 183.3,175.0 157.1,197.0 122.9,197.0 96.7,175.0 90.8,141.3 107.9,111.7" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 204.3,73.4 238.5,132.6 226.6,200.0 174.2,244.0 105.8,244.0 53.4,200.0 41.5,132.6 75.7,73.4" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 204.3,73.4 238.5,132.6 226.6,200.0 174.2,244.0 105.8,244.0 53.4,200.0 41.5,132.6 75.7,73.4" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,63.0 191.4,88.7 206.0,138.4 220.5,196.5 167.4,225.2 109.2,234.6 75.0,187.5 78.0,139.1 91.8,92.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">재무건전성</text><circle cx="140.0" cy="63.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="204.3" y2="73.4" stroke="var(--border)" stroke-width="0.5"/><text x="220.3" y="54.2" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성·성장성</text><circle cx="191.4" cy="88.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="238.5" y2="132.6" stroke="var(--border)" stroke-width="0.5"/><text x="263.1" y="128.3" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="206.0" cy="138.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="226.6" y2="200.0" stroke="var(--border)" stroke-width="0.5"/><text x="248.3" y="212.5" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">경제적 해자</text><circle cx="220.5" cy="196.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="174.2" y2="244.0" stroke="var(--border)" stroke-width="0.5"/><text x="182.8" y="267.5" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">산업·시장</text><circle cx="167.4" cy="225.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="105.8" y2="244.0" stroke="var(--border)" stroke-width="0.5"/><text x="97.2" y="267.5" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진·자본배분</text><circle cx="109.2" cy="234.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="53.4" y2="200.0" stroke="var(--border)" stroke-width="0.5"/><text x="31.7" y="212.5" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀·수급</text><circle cx="75.0" cy="187.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="41.5" y2="132.6" stroke="var(--border)" stroke-width="0.5"/><text x="16.9" y="128.3" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 관리</text><circle cx="78.0" cy="139.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="75.7" y2="73.4" stroke="var(--border)" stroke-width="0.5"/><text x="59.7" y="54.2" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">매크로 정합성</text><circle cx="91.8" cy="92.5" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>재무건전성</td><td>8.7</td><td>/10</td></tr><tr><td>수익성·성장성</td><td>8.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.7</td><td>/10</td></tr><tr><td>경제적 해자</td><td>9.3</td><td>/10</td></tr><tr><td>산업·시장</td><td>8.0</td><td>/10</td></tr><tr><td>경영진·자본배분</td><td>9.0</td><td>/10</td></tr><tr><td>모멘텀·수급</td><td>7.5</td><td>/10</td></tr><tr><td>리스크 관리</td><td>6.3</td><td>/10</td></tr><tr><td>매크로 정합성</td><td>7.5</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 80/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">광범위한 해자 (10년 이상)</span></h2><p><br>비자는 글로벌 결제 네트워크 운영사다. 자체 카드를 발급하지 않고 여신도 제공하지 않으며, 거래당 0.10~0.15% 수준의 수수료를 수취한다. 카드 발급은행의 인터체인지 수익은 발급사가 가져간다.<br><br><strong>매출 구성 (2025 회계연도)</strong>: 서비스 수익 44% / 데이터 처리 39% / 국제 거래 31% / 기타 8% / 발급사 인센티브 -22%. 200개 이상의 국가와 160개 통화를 처리하며 초당 6만 5천 건 처리 능력을 보유한다.<br><br><strong>경영진</strong>: 최고경영자 라이언 매키너니(2023년 2월 취임), 최고재무책임자 크리스 서(2023년 12월 취임). 잉여현금흐름의 100% 이상을 주주에게 환원하는 정책을 유지한다. 2025 회계연도 자사주 매입 190억 달러 이상에 배당 45억 달러를 더해 연간 240억 달러 이상을 환원했다.<br></p><h3>Moat 상세</h3><p><br><strong>양면 네트워크 효과 (구조적 해자)</strong>: 카드 40억 장 이상과 가맹점 1억 3천만 곳 이상이 결합되어 네트워크 가치가 카드 수와 가맹점 수의 곱으로 제곱 증가한다. 비자와 마스터카드를 합하면 글로벌 카드 거래의 80%를 점유한다.<br><br><strong>글로벌 인프라 (운영 해자)</strong>: 200개 이상의 국가에서 결제를 처리하며, 토큰화(Tokenization)·EMVCo·3-D 보안 등 결제 보안 표준을 주도한다.<br><br><strong>전환 비용</strong>: 카드 발급은행과 가맹점 모두 결제 브랜드 전환에 수년이 소요된다. 단일 결제 단말에서 비자와 마스터카드를 동시에 처리하므로 어느 한쪽을 제외하면 거래 손실이 발생한다.<br><br><strong>신성장 영역의 해자 확장</strong>: 비자 다이렉트(기업간 송금 +23%), 부가가치 서비스(매출 27억 9천만 달러, +28%), 토큰화 거래량(전년 대비 60% 이상 성장). 2026년 4월 발표된 비자 인텔리전트 커머스와 신뢰 에이전트 프로토콜은 인공지능 에이전트 결제 인증 표준을 선점한 시그널이다.<br><br><strong>위협 요인</strong>: 스테이블코인(미국 달러 표시 USDC·USDT)의 직접 결제(중장기 5~10년 시점), 유럽중앙은행 디지털 유로 도입(2027년 이후), 미국 법무부의 직불 카드 시장 독점 소송(2027~2028년 판결 예상). 현 시점 모트 손상 시그널은 확인되지 않는다.<br></p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>항목</th><th>FY23</th><th>FY24</th><th>FY25</th><th>FY26E</th></tr></thead><tbody><tr><td>매출 ($B)</td><td>32.7</td><td>35.9</td><td>37.7</td><td>41.7</td></tr><tr><td>매출 성장률</td><td>+11%</td><td>+10%</td><td>+10%</td><td>+10.5%</td></tr><tr><td>영업이익 ($B)</td><td>21.5</td><td>24.0</td><td>25.3</td><td>28.1</td></tr><tr><td>영업이익률 (%)</td><td>65.7</td><td>66.9</td><td>67.0</td><td>67.4</td></tr><tr><td>순이익 ($B)</td><td>17.3</td><td>19.7</td><td>19.7*</td><td>22.1</td></tr><tr><td>주당순이익 ($)</td><td>8.28</td><td>9.73</td><td>9.85*</td><td>11.35</td></tr><tr><td>잉여현금흐름 ($B)</td><td>19.7</td><td>18.7</td><td>19.0</td><td>21.5</td></tr><tr><td>자기자본이익률 (%)</td><td>49</td><td>51</td><td>52</td><td>53</td></tr><tr><td>투하자본이익률 (%)</td><td>33</td><td>34</td><td>36</td><td>37</td></tr></tbody></table><h3>분석</h3><p><br><strong>2026 회계연도 2분기 실적 (2026년 4월 29일 발표)</strong>: 매출 101억 6천만 달러(전년 동기 대비 13% 증가), 결제 거래량 3조 9천 3백억 달러(고정환율 기준 +9.5%), 국경간 거래량 +13%, 처리 거래 건수 652억 건(+11%), 비자 다이렉트 거래량 37억 건(+23%), 부가가치 서비스 매출 27억 9천만 달러(+28%), 조정 주당순이익 2.75달러(컨센서스 2.68달러 대비 0.07달러 상회). 인터체인지 소송 충당금 7억 7백만 달러를 미국 회계기준 손익에서 차감했다.<br><br><strong>잉여현금흐름 190억 달러 + 환원 100% 이상</strong>: 순부채 45억 달러 수준으로 자사주 매입에 부채를 일부 활용한다. 잉여현금흐름 190억 달러를 고려하면 부채는 1년 이내 상환 가능하다.<br><br><strong>현금흐름 할인 평가 적정가 387달러</strong> (향후 5년 잉여현금흐름 +11% 성장 후 영구 성장 +5%, 가중평균자본비용 8% 가정). 컨센서스 평균 378달러와 정합한다.<br></p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>지표</th><th>값</th><th>5년 평균</th><th>평가</th></tr></thead><tbody><tr><td>주가수익비율 후행</td><td>31.5배</td><td>32.0배</td><td>평균 수준</td></tr><tr><td>주가수익비율 2026E</td><td>28.8배</td><td>—</td><td>합리적</td></tr><tr><td>주가수익비율 2027E</td><td>25.5배</td><td>—</td><td>2027E 주당순이익 $12.85</td></tr><tr><td>기업가치/상각전이익</td><td>23.5배</td><td>24.5배</td><td>약간 하회</td></tr><tr><td>주가수익성장비율</td><td>2.1</td><td>2.3</td><td>약간 저평가</td></tr><tr><td>잉여현금흐름 수익률</td><td>3.06%</td><td>—</td><td>적정</td></tr><tr><td>배당수익률</td><td>0.74%</td><td>0.70%</td><td>자사주 매입 중심</td></tr><tr><td>자사주 매입 수익률</td><td>3.1%</td><td>3.3%</td><td>환원율 높음</td></tr></tbody></table><p><br><strong>현재 멀티플 (현재가 326.42달러)</strong>: 주가수익비율(PER) 후행 31.5배 / 2026 회계연도 추정 28.8배 / 2027 회계연도 추정 25.5배. 5년 평균 32배 부근으로 합리적 수준이다. 기업가치 대비 상각전영업이익(EV/EBITDA) 23.5배, 주가수익성장비율(PEG) 2.1, 잉여현금흐름 수익률 3.06%.<br><strong>총주주환원율 3.84%</strong> (배당수익률 0.74% + 자사주 매입 수익률 3.1%)<br><br><strong>12개월 시나리오</strong>:<br>&bull; 낙관 시나리오 410달러 (+25.6%): 2026 회계연도 매출 +12%, 주당순이익 +15%, 주가수익비율 30배 유지<br>&bull; <strong>기준 시나리오 378달러 (+15.8%)</strong>: 컨센서스 정합. 매출 +10.5%, 주당순이익 +13.5%, 주가수익비율 28.5배<br>&bull; 비관 시나리오 300달러 (-8.1%): 법무부 패소·유럽 규제 강화 시 매출 +6%, 주가수익비율 23배로 압축<br></p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><br><strong>주가 동향</strong>: 326.42달러 (52주 범위 293.28~372.57달러, 위치 41.7%). 지난 1년간 시장 대비 5~7%포인트 부진했다. 주된 원인은 4월 29일 2분기 실적 발표 시 인터체인지 충당금 7억 7백만 달러 반영, 미국 법무부 독점 소송 진행, 인공지능 매크로 흐름에서 결제주의 상대적 소외다.<br><br><strong>기술적 분석</strong>: 1차 지지선 310달러(200일 이동평균선), 1차 저항선 340달러(50일 이동평균선), 14일 평균 진폭 7.92달러(2.43%, 저변동성).<br><br><strong>컨센서스</strong>: 분석가 41명 / 평균 목표가 378달러 / 중앙값 380달러 / 최고 410달러 / 최저 320달러. 매수 의견 32명(78%) / 보유 8명(20%) / 매도 1명(2%). 2026 회계연도 추정 주당순이익 11.35달러, 2027 회계연도 12.85달러.<br><br><strong>수급 동향</strong>: 비자 본인의 자사주 매입(수익률 3.1%)이 안정적 매수 주체로 작동한다. 기관 지분율은 85% 수준이며 S&P 500, MSCI 월드, 다우존스 지수의 핵심 편입 종목으로 패시브 자금 유입을 자연 수혜한다.<br></p><table><thead><tr><th>지표</th><th>값</th></tr></thead><tbody><tr><td>분석가 수</td><td>41명</td></tr><tr><td>평균 목표가</td><td>$378</td></tr><tr><td>중앙값 목표가</td><td>$380</td></tr><tr><td>최고 목표가</td><td>$410</td></tr><tr><td>최저 목표가</td><td>$320</td></tr><tr><td>현재가 대비 (평균)</td><td>+15.8%</td></tr><tr><td>매수/보유/매도</td><td>32 / 8 / 1</td></tr><tr><td>2026 회계연도 추정 주당순이익</td><td>$11.35</td></tr><tr><td>2027 회계연도 추정 주당순이익</td><td>$12.85</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><br><strong>시장 규모</strong>: 글로벌 디지털 결제 거래액은 2025년 11조 4천억 달러로 2020년 5조 4천억 달러 대비 두 배 이상 성장했다. 글로벌 핀테크 시장은 2025년 3,949억 달러에서 2026년 추정 4,608억 달러로 16.7% 성장 전망이다. 임베디드 금융 매출은 2027년 1,830억 달러 예상된다.<br><br><strong>경쟁구도</strong>: 비자와 마스터카드의 듀오폴리가 글로벌 80%를 점유한다(비자 50%, 마스터카드 30%). 결제 네트워크는 자연 독점적 성격으로 신규 진입이 사실상 불가능하다. 아메리칸 익스프레스 10% (프리미엄 폐쇄 루프), 디스커버 3%, 차이나 유니온페이 8% (중국 본토 한정).<br><br><strong>세 가지 성장축</strong>: (1) 핵심 결제 거래량 3조 9천 3백억 달러로 9.5% 증가, (2) 국경간 거래 13% 증가(마진이 가장 높은 영역), (3) 신규 흐름과 부가가치 서비스 — 비자 다이렉트 +23%, 부가가치 서비스 +28%, 토큰화 거래량 +60% 이상.<br><br><strong>규제 환경</strong>: 미국 법무부 독점 소송(2027~2028년 판결 예상), 인터체인지 소송(2분기 충당금 7억 7백만 달러), 유럽 디지털 시장법과 디지털 유로 도입(2027년 이후), 영국 결제 시스템 규제국의 인터체인지 상한 검토. 인도의 통합 결제 인터페이스(UPI)와 브라질의 PIX 등 신흥국 결제망이 일부 거래를 잠식한다.<br><br><strong>인공지능 결제 표준 선점</strong>: 비자 인텔리전트 커머스와 신뢰 에이전트 프로토콜(2026년 4월 발표)은 차세대 결제 표준 주도 시그널이다.<br></p><table><thead><tr><th>회사</th><th>시가총액</th><th>글로벌 점유율</th><th>미국 점유율</th><th>특징</th></tr></thead><tbody><tr><td>비자 (V)</td><td>$620.8B</td><td>50%</td><td>60%</td><td>양면 네트워크, 글로벌</td></tr><tr><td>마스터카드 (MA)</td><td>$580B</td><td>30%</td><td>25%</td><td>성장 가속, 부가가치 +25%</td></tr><tr><td>아메리칸 익스프레스 (AXP)</td><td>$200B</td><td>10%</td><td>12%</td><td>프리미엄·폐쇄 루프</td></tr><tr><td>페이팔 (PYPL)</td><td>$75B</td><td>—</td><td>—</td><td>디지털 결제, 비자 레일 위</td></tr><tr><td>차이나 유니온페이</td><td>—</td><td>8%</td><td>0%</td><td>중국 본토 한정</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p>단기(1~3개월) 리스크는 낮다(2분기 충당금 7억 7백만 달러 흡수 완료). 중기(3~12개월) 리스크는 중간 수준이다(법무부 소송 진행, 소비 둔화 모니터링 필요). 장기(1~3년) 리스크는 중-높이다(법무부 판결, 유럽 디지털 유로, 스테이블코인 본격화). <strong>리스크 점수 6/10</strong>.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">미국 법무부 독점 소송 (직불 시장)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">인터체인지 소송 추가 충당금</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">유럽 디지털 유로 (중앙은행 디지털 화폐)</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">스테이블코인 우회 결제</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">소비 둔화 (소비자 심리 48.2, 저축률 3.6%)</text><circle cx="180" cy="210" r="5" fill="var(--buy)"/><text x="189" y="214" fill="var(--text)" font-size="10">국경간 거래 감속</text><circle cx="180" cy="228" r="5" fill="var(--buy)"/><text x="189" y="232" fill="var(--text)" font-size="10">인공지능 결제 표준 전쟁 패배</text><circle cx="180" cy="246" r="5" fill="var(--buy)"/><text x="189" y="250" fill="var(--text)" font-size="10">후불결제(BNPL) 잠식 (클라르나·어펌)</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>미국 법무부 독점 소송 (직불 시장)</strong> (발생: 높음, 영향: 매우 큼)<br><span style="color:var(--sub);font-size:13px">2024년 9월 법무부가 비자를 직불 카드 시장 독점 혐의로 제소했다. 판결은 2027~2028년 예상된다. 강제 분할 결정 시 미국 직불 점유율이 60%에서 45~50%로 하락하고 주가는 15~20% 충격이 가능하다. 합의 결말 확률은 50% 수준이다.</span></div><div class="ri rl"><strong>인터체인지 소송 추가 충당금</strong> (발생: 중-높, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">2분기 충당금 7억 7백만 달러는 빙산의 일각일 가능성이 있다. 가맹점 단체와 미국 소비자금융보호국의 압박이 지속된다. 향후 2~3년 추가 10~20억 달러 가능성이 있으며 이 경우 주당순이익에 3~5% 압박이 발생한다.</span></div><div class="ri rl"><strong>유럽 디지털 유로 (중앙은행 디지털 화폐)</strong> (발생: 중간, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">2027년 이후 디지털 유로 도입 시 유럽 결제 점유율은 10~15% 압박 가능성이 있다.</span></div><div class="ri rl"><strong>스테이블코인 우회 결제</strong> (발생: 중-낮, 영향: 매우 큼 (장기))<br><span style="color:var(--sub);font-size:13px">국제결제은행 보고서 170호(2026년 5월 5일)는 스테이블코인의 98%가 미국 달러 표시임을 명시한다. USDC·USDT 직접 결제가 5~10년 시점에 본격화되면 모트 침식이 가능하다. 인공지능 에이전트 결제 표준 채택 여부가 변수다.</span></div><div class="ri rl"><strong>소비 둔화 (소비자 심리 48.2, 저축률 3.6%)</strong> (발생: 중-높, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">미시간 소비자 심리지수 5월 예비치 48.2(역대 최저권)와 저축률 3.6%(2022년 10월 이후 최저) 조합이 2026년 하반기 카드 거래량 감속을 트리거할 수 있다. 매출 컨센서스 +10.5%가 +6~8%로 둔화되면 주가수익비율 압축으로 10~15% 조정이 가능하다.</span></div><div class="ri rl"><strong>국경간 거래 감속</strong> (발생: 중간, 영향: 중-큼)<br><span style="color:var(--sub);font-size:13px">트럼프 관세, 중동 지정학, 미중 갈등 악화 시 글로벌 여행이 감속한다. 국경간 거래는 마진이 가장 높은 영역으로, 매출에 2~3%, 주당순이익에 3~5% 영향이 가능하다.</span></div><div class="ri rl"><strong>인공지능 결제 표준 전쟁 패배</strong> (발생: 낮음, 영향: 큼)<br><span style="color:var(--sub);font-size:13px">신뢰 에이전트 프로토콜 표준화 실패 시 차세대 결제 표준 패배 시나리오다. 2026~2028년 모니터링이 필요하다.</span></div><div class="ri rl"><strong>후불결제(BNPL) 잠식 (클라르나·어펌)</strong> (발생: 낮음, 영향: 낮음)<br><span style="color:var(--sub);font-size:13px">전체 거래의 1~2% 한정 영향이다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><br><strong>매수 전략 (분할 매수 3단계)</strong>:<br>&bull; 1차 326~330달러 (현재가 부근, 비중 40%): 즉시 진입. 컨센서스 평균 대비 +16% 상승여력<br>&bull; 2차 315~320달러 (조정 시, 비중 30%): 50일 이동평균선 지지 활용<br>&bull; 3차 295~305달러 (52주 저점 부근, 비중 30%): 강한 지지선 + 법무부 우려 반영 시<br><br><strong>매도 전략</strong>:<br>&bull; 단기 손절 (14일 평균 진폭의 2배) 310.58달러 (-4.8%): 비중 30% 손절<br>&bull; 비중 축소 1차 370~380달러 (+13~16%): 30% 익절 (기준 시나리오 목표가 부근)<br>&bull; 비중 축소 2차 400~410달러 (+22~26%): 40% 익절 (낙관 시나리오 목표가 부근)<br>&bull; 전량 청산: 법무부 강제 분할 판결 또는 모트 침식 시그널 발생 시<br><br><strong>손절·목표가 요약</strong>:<br>&bull; 현재가 326.42달러 / 단기 손절 310.58달러 (-4.8%) / 14일 진폭 3배 목표 350.18달러 (+7.3%)<br>&bull; <strong>기준 시나리오 12개월 목표가 378달러 (+15.8%)</strong> / 낙관 410달러 (+25.6%) / 비관 300달러 (-8.1%)<br><br><strong>포지션 사이즈 가이드</strong>: 결제·핀테크 섹터의 핵심 코어 위치다. 포트폴리오의 3~6% 권장한다. 14일 진폭 2배 손절은 -4.8% 손실 한계이며, 자본의 1% 손실 한도를 위해 비자 포지션은 자본의 20% 이하로 제한한다.<br></p></div>
+<div class="sec"><h2>신뢰 구간 (재분석 의무 섹션)</h2>
+- **목표가 신뢰 구간**: 378달러 (95% 구간 345~410달러, 폭 ±9%)
+- **종합 점수 신뢰 구간**: 80/100 (가정 변동 시 ±5점 변동 가능)
+- **산출 근거**: 본 분석에서 가장 변동 폭이 큰 가정은 두 가지다. 첫째, 소비 둔화 시나리오 — 소비자 심리 48.2와 저축률 3.6%가 2026년 하반기 실제 거래 둔화로 전이되는지 여부. 둘째, 법무부 독점 소송의 진행 방향 — 합의 대 강제 분할.
+
+| 가정 시나리오 | 목표가 | 점수 | 등급 |
+|--------------|-------|-------|------|
+| 가정 1 반증 — 소비 견조 유지 | $400 (+6%) | 82 | 강력매수 |
+| 가정 1 적중 — 소비 둔화 | $350 (-7%) | 76 | 매수 |
+| 가정 2 합의 결말 | $385 (+2%) | 81 | 강력매수 |
+| 가정 2 강제 분할 | $310 (-18%) | 70 | 중립 |
+</div>
+<div class="sec"><h2>취약 가정 3개 (Most Fragile Assumptions)</h2>
+결론을 뒤집을 수 있는 가정 세 가지 및 반증 시 영향:
+
+**1. 소비 견조 유지 가정** (애틀랜타 연준 2분기 실시간 추정 +3.7%와 4월 비농업 고용 11만 5천 명 골디락스 지속)
+→ 반증 시 (2026년 하반기 소비 급감 및 소비자 심리 추가 악화): **점수 -5점 → 75, 등급 강력매수에서 매수로 강등**. 2026 회계연도 매출 컨센서스 +10.5%에서 +6~7%로 둔화, 주가수익비율 25배로 압축.
+
+**2. 법무부 합의 결말 가정** (강제 분할 회피)
+→ 반증 시 (2027~2028년 강제 직불 분할 판결): **점수 -10점 → 70, 등급 강력매수에서 중립으로 강등**. 미국 직불 점유율 60%에서 45~50%, 매출 -8~10%, 주가수익비율 22배로 압축, 주가 18~22% 충격.
+
+**3. 스테이블코인 모트 침식 부재 가정** (5~10년 점진적, 단기 무영향)
+→ 반증 시 (2027~2028년 인공지능 에이전트 결제가 스테이블코인 결제 채택 가속): **점수 -7점 → 73, 등급 강력매수에서 매수로 강등**. 비자 신뢰 에이전트 프로토콜 표준화 실패 시 모트 침식 시그널, 장기 주가수익비율 -3점 압축.
+
+본 분석은 (1) 소비 견조 유지, (2) 합의 결말, (3) 스테이블코인 점진 채택을 가정한다. 세 가정 모두 반증 시 등급 변화가 가능하다.
+
+강한 가정(비자·마스터카드 80% 듀오폴리, 잉여현금흐름 환원 100% 이상, 투하자본이익률 36%)은 모트 자체에 내재된 구조적 사실로 본 분석 결론에 거의 영향을 주지 않는다.
+</div>
+<div class="sec"><h2>매크로 환경 정합성 (2026년 5월 9일 지식베이스 기준)</h2>
+| 매크로 변수 | 현 수준 | 비자에 미치는 영향 |
+|------------|---------|--------|
+| 애틀랜타 연준 2분기 실시간 추정 | +3.7% (5월 8일 기준) | 소비 견조 → 결제 거래량 우호 |
+| 4월 비농업 고용 | +11만 5천 명 (예상 6만 2천 명 상회) | 고용 견조 → 신용카드 사용 안정 |
+| 가솔린 가격 | $4.55/갤런 (전년 대비 +$1.40) | 결제 평균 거래액 인플레 → 수수료 자연 증가 |
+| 미시간 소비자 심리 5월 | 48.2 (역대 최저권) | 하반기 소비 둔화 시 카드 거래 감속 위험 |
+| 개인 저축률 | 3.6% (2022년 10월 이후 최저) | 가계 완충 자금 소진 → 카드 사용 일시 상승 후 신용 부담 증가 |
+| 연방기금금리 | 3.50~3.75% (4월 29일 동결) | 발급사 신용손실 안정 — 비자는 신용 미보유로 무관 |
+| 근원 개인소비지출 물가지수 | 3.2% (3월) | 인플레 고착 = 결제 거래액 명목 상승 |
+
+**종합 평가**: 소비 견조 + 인플레 고착 = 비자에 단기 우호 환경. 다만 미시간 심리 48.2와 저축률 3.6% 조합이 3분기와 4분기 카드 거래 감속을 트리거할 가능성이 있다.
+</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-05-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="V_Visa_20260513.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

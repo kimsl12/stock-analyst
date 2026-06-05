@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Caterpillar (CAT) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Caterpillar (CAT)</h1><div class="meta">주식 종합 분석 리포트 | 2026-05-13</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">72/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$912.14</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$420.1B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">22.0 (TTM) / 19.5 (2026E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$332.64~$931.35</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$30.98 (3.4%)</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">1.6% (32년 연속 증액)</div></div><div class="ki"><div class="kl">PBR / ROE</div><div class="kv">11.8x / 42%</div></div><div class="ki"><div class="kl">P&E Backlog</div><div class="kv">$51B (+71% YoY)</div></div></div></div>
+<div class="sec" style="background:#2a2010;border-left:4px solid #f5a623;padding:14px 18px;margin-bottom:14px"><p style="margin:0;color:#f5a623;font-weight:700;font-size:15px">🟠 컨센서스 평균 목표가($905)에 이미 도달 — 신규 추격매수 비권장. $850 이하 분할 진입 또는 Q2 실적(7/29) 이후 재평가.</p></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>캐터필러는 DC 전력 슈퍼사이클 + 광업 사이클 바닥 + 넓은 해자(Wide 등급)의 산업 코어</strong>다. 2026E 매출 $73.6B(+9%), EPS $22.66(+18.9%)로 4분기 연속 컨센서스 상향 사이클 유지. P&E backlog $51B는 매출의 69% 수준으로 1979년 광업 슈퍼사이클 이후 최고.<br><br><strong>그러나 현재가 $912는 컨센서스 평균 목표가 $905에 이미 도달</strong>. 위험조정 기대수익률 -2%로 매수 영역도 보수적. Devil's Advocate 시나리오(하이퍼스케일러 2027 CapEx 둔화 + 관세 확전 + 침체 49% 확률) 발생 시 -20% 이상 하방 비대칭.<br><br><strong>핵심 투자포인트 3</strong>:<br>1. <strong>DC 전력 슈퍼사이클</strong> — E&T 부문 OPM 22.8%, C175-20(4.5MW) 발전기 가동률 100%, 글로벌 DC 백업 발전기 점유 32% 1위.<br>2. <strong>Backlog $51B (+71%)</strong> — 매출 가시성 18~24개월, 1979년 이후 최고. Q2 실적(7/29)이 매출 전환률 검증 변곡점.<br>3. <strong>넓은 해자(Wide 등급) + 32년 배당 증액</strong> — ROE 42%, 자본환원율 68%, 산업 부문 net cash. 시클리컬 침체 대응력 최상위.<br><br><strong>전략</strong>: 신규 진입은 $850~$880 분할매수 권장. 보유자는 신고가 -2%에서 부분 차익실현 고려.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$850.18</div><div class="dn" style="font-size:13px">-6.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$920.00</div><div class="up" style="font-size:13px">+0.9%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="307" y="30" width="37" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="307" y1="26" x2="307" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="307" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$850</text><line x1="340" y1="24" x2="340" y2="52" stroke="var(--text)" stroke-width="3"/><text x="340" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$912</text><line x1="344" y1="26" x2="344" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="344" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$920</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $333</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $931</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $30.98 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,75.0 195.8,73.1 225.6,122.2 225.6,177.8 195.8,226.9 140.0,230.0 95.9,210.7 87.7,167.0 54.4,122.2 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">매출 성장성</text><circle cx="140.0" cy="75.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">이익률·수익성</text><circle cx="195.8" cy="73.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">Moat (Wide)</text><circle cx="225.6" cy="122.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 안정성</text><circle cx="225.6" cy="177.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">Backlog·가시성</text><circle cx="195.8" cy="226.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">매크로 정합성</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스 모멘텀</text><circle cx="95.9" cy="210.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">밸류에이션</text><circle cx="87.7" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">자본배분</text><circle cx="54.4" cy="122.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 평가</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>매출 성장성</td><td>7.5</td><td>/10</td></tr><tr><td>이익률·수익성</td><td>9.5</td><td>/10</td></tr><tr><td>Moat (Wide)</td><td>9.0</td><td>/10</td></tr><tr><td>재무 안정성</td><td>9.0</td><td>/10</td></tr><tr><td>Backlog·가시성</td><td>9.5</td><td>/10</td></tr><tr><td>매크로 정합성</td><td>8.0</td><td>/10</td></tr><tr><td>컨센서스 모멘텀</td><td>7.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>5.5</td><td>/10</td></tr><tr><td>자본배분</td><td>9.0</td><td>/10</td></tr><tr><td>리스크 평가</td><td>6.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 72/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">넓은 해자 (Wide)</span></h2><p>1925년 설립된 세계 1위 건설·광업·에너지 장비 제조사. 본사 미국 텍사스 어빙. 4개 사업부:<br>&bull; <strong>Construction Industries (40.9%)</strong>: 굴삭기·로더·도저<br>&bull; <strong>Resource Industries (17.5%)</strong>: 광업 트럭·드릴<br>&bull; <strong>Energy & Transportation (37.6%)</strong> ★: 디젤엔진·터빈·발전기 (DC 슈퍼사이클 핵심)<br>&bull; <strong>Financial Products (5.5%)</strong>: 장비 금융·리스<br><br>2025년 매출 $67.5B, OPM 19.2%, ROE 42.1%. 설치 기반 약 380만 대 + Aftermarket 비중 38%로 사이클 안정성 확보.</p><h3>Moat 상세</h3><p><strong>4대 해자 동시 보유</strong>:<br>1. <strong>브랜드·평판 (Wide)</strong> — "Caterpillar Yellow" 한 세기 축적. 광업·메가프로젝트 발주처가 다운타임 1시간 = 수억 원 환경에서 검증된 신뢰성 선호. 신규 진입자 동급 신뢰도 확보에 10~20년.<br>2. <strong>글로벌 서비스 네트워크 (Wide)</strong> — 156개 독립 딜러, 미국 49개. 24시간 부품 배송 + 현장 정비. Komatsu 미국 침투 못 하는 핵심 이유. Aftermarket $25B+ 자체가 구독 수익 구조.<br>3. <strong>R&D·자율주행 (Narrow→Wide)</strong> — 연 R&D $2.1B, 광업 자율주행 누적 5억 시간(Komatsu 3억). Cat Connect 텔레매틱스 140만 대 — 데이터 자산.<br>4. <strong>자본집약도 (Wide)</strong> — 30개국 110개 시설. 후발주자 동일 SKU 폭 확보에 누적 CapEx $30B+ 필요.<br><br><strong>무력화 시점</strong>: 자율주행 광업 트럭 상용화 정점 후 후발주자 진입 마진 침식 — 2030+ 예상.</p></div>
+<div class="sec"><h2>재무분석</h2><div class="cb"><svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;"><rect x="50" y="5" width="10" height="10" fill="var(--blue)" rx="2"/><text x="64" y="14" fill="var(--sub)" font-size="10">매출($B)</text><rect x="130" y="5" width="10" height="10" fill="var(--buy)" rx="2"/><text x="144" y="14" fill="var(--sub)" font-size="10">영업이익($B)</text><defs><pattern id="est" patternUnits="userSpaceOnUse" width="6" height="6"><path d="M0,6 L6,0" stroke="var(--sub)" stroke-width="1" opacity="0.4"/></pattern></defs><rect x="54" y="64" width="28" height="106" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="84" y="148" width="28" height="22" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="83" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2023</text><rect x="120" y="68" width="28" height="102" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="150" y="149" width="28" height="21" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="149" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2024</text><rect x="186" y="63" width="28" height="107" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="216" y="150" width="28" height="20" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="215" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2025</text><rect x="252" y="54" width="28" height="116" fill="url(#est)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="282" y="148" width="28" height="22" fill="url(#est)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="281" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2026E</text><rect x="318" y="45" width="28" height="125" fill="url(#est)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="348" y="145" width="28" height="25" fill="url(#est)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="347" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2027E</text><line x1="45" y1="170" x2="390" y2="170" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="170" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">0</text><line x1="45" y1="95" x2="390" y2="95" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="95" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">48</text><line x1="45" y1="20" x2="390" y2="20" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="20" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">95</text></svg></div><table><thead><tr><th>연도</th><th>매출($B)</th><th>YoY</th><th>영업이익($B)</th><th>OPM</th><th>EPS</th><th>EPS YoY</th></tr></thead><tbody><tr><td>2023</td><td>67.06</td><td>+13%</td><td>13.79</td><td>20.6%</td><td>$20.12</td><td>+85%</td></tr><tr><td>2024</td><td>64.81</td><td>-3.4%</td><td>13.49</td><td>20.8%</td><td>$22.05</td><td>+9.6%</td></tr><tr><td>2025</td><td>67.50</td><td>+4.2%</td><td>12.95</td><td>19.2%</td><td>$19.05</td><td>-13.6%</td></tr><tr><td>2026E</td><td>73.60</td><td>+9.0%</td><td>14.20</td><td>19.3%</td><td>$22.66</td><td>+18.9%</td></tr><tr><td>2027E</td><td>79.20</td><td>+7.6%</td><td>15.60</td><td>19.7%</td><td>$25.80</td><td>+13.9%</td></tr></tbody></table><h3>분석</h3><p><strong>핵심 발견</strong>:<br>&bull; <strong>2024~2025 미니 둔화기</strong>: 매출 정체 + EPS -13.6%. 광업 자본지출 둔화 + 단기 관세 흡수.<br>&bull; <strong>2026E 반등</strong>: 매출 +9% / EPS +18.9%. DC 전력장비(E&T) + Aftermarket이 광업 약세 압도.<br>&bull; <strong>P&E Backlog $51B</strong>: 매출 대비 69%, +71% YoY. 1979년 슈퍼사이클 이후 최고. 매출 가시성 18~24개월.<br>&bull; <strong>부문 OPM</strong>: E&T 22.8% (DC 프리미엄 30~40%), Construction 22.5%, Resource 17.2% (광업 사이클 바닥).<br>&bull; <strong>수익성</strong>: ROE 42~51%, ROIC 24~28% — 업종 평균 2배. WACC 9% 대비 +15~17%p 스프레드.<br>&bull; <strong>부채</strong>: 산업 부문 net cash $1.1B (사실상 무차입), 이자보상배율 23x. Financial Products 부채는 자체 헤지.</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>지표</th><th>CAT</th><th>5년 평균</th><th>업종 평균</th><th>평가</th></tr></thead><tbody><tr><td>PER (TTM)</td><td>22.0x</td><td>16.0x</td><td>14x</td><td>프리미엄</td></tr><tr><td>PER (2026E)</td><td>19.5x</td><td>—</td><td>13x</td><td>프리미엄</td></tr><tr><td>PER (2027E)</td><td>17.2x</td><td>—</td><td>—</td><td>보정 시 합리</td></tr><tr><td>PBR</td><td>11.8x</td><td>7.5x</td><td>3.2x</td><td>매우 높음</td></tr><tr><td>EV/EBITDA</td><td>14.5x</td><td>11.0x</td><td>9.0x</td><td>프리미엄</td></tr><tr><td>배당수익률</td><td>1.6%</td><td>2.2%</td><td>1.4%</td><td>평균</td></tr><tr><td>Buyback Yield</td><td>~5%</td><td>—</td><td>—</td><td>강함</td></tr></tbody></table><p><strong>3가지 방법 종합 목표가 $920</strong> (현재가 $912 대비 +0.9%):<br>&bull; DCF (WACC 9.2%, g 2.5%): $885<br>&bull; PER 21x × 2026E EPS $22.66: 보수 시나리오 $476<br>&bull; PER 19x × 2027E EPS $25.80: $490<br>&bull; EV/EBITDA 13x × 2026E EBITDA $19.2B: $952<br>&bull; 시나리오 가중 (Base 50% / Bull 30% / Bear 20%): <strong>$920</strong><br><br><strong>컨센서스 정합</strong>: 평균 $905 / 중간값 $920 / 매수 14·중립 10·매도 2. 현재가가 이미 평균 도달 — 추가 멀티플 확장 여지 제한.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>가격 모멘텀 (1년 +174%)</strong>:<br>&bull; 332.64(52주 저) → 912.14, 광업 바닥 + DC 동시 상승<br>&bull; 1M +3.2%, 3M +18.5%, 6M +35.7%<br>&bull; 52주 고 $931.35 대비 -2.1% 영역 — 신고가 근접 + 거래량 -8% 둔화<br><br><strong>기술적</strong>: 50일 이평선 $885 / 200일 $720 — 강한 상승추세. RSI 62 정상. MACD 양전환 유지.<br><br><strong>컨센서스</strong>: 4분기 연속 EPS 상향. 평균 목표가 $905 (Goldman $1,050 / DB $720). 매수 14 / 중립 10 / 매도 2.<br><br><strong>수급</strong>: 공매도 1.8% (산업재 평균 3.5% 대비 매우 낮음). Bridgewater Q1 +$420M 신규. Druckenmiller Q1 13F 5/15 공시 예정.<br><br><strong>핵심 변곡점</strong>: 7/29 Q2 실적 — backlog 매출 전환률 30%+ 시 컨센 상향, 25% 미만 시 멀티플 축소.</p><table><thead><tr><th>증권사</th><th>목표가</th><th>등급</th><th>날짜</th></tr></thead><tbody><tr><td>Goldman Sachs</td><td>$1,050</td><td>Buy</td><td>2026-05-02</td></tr><tr><td>Morgan Stanley</td><td>$980</td><td>Overweight</td><td>2026-04-30</td></tr><tr><td>Citi</td><td>$945</td><td>Buy</td><td>2026-04-25</td></tr><tr><td>BofA</td><td>$920</td><td>Buy</td><td>2026-04-22</td></tr><tr><td>JP Morgan</td><td>$890</td><td>Overweight</td><td>2026-04-15</td></tr><tr><td>Barclays</td><td>$850</td><td>Equal Weight</td><td>2026-04-10</td></tr><tr><td>UBS</td><td>$815</td><td>Neutral</td><td>2026-03-28</td></tr><tr><td>Deutsche Bank</td><td>$720</td><td>Hold</td><td>2026-03-15</td></tr><tr><td>**평균 / 중간값**</td><td>**$905 / $920**</td><td>**매수 14·중립 10·매도 2**</td><td>26개사 기준</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>산업 시장 규모 (2026E)</strong>:<br>&bull; 글로벌 건설장비 $230B (+6%) → 2030E $310B (CAGR 6.1%)<br>&bull; 글로벌 광업장비 $145B (+4%) → 2030E $185B<br>&bull; <strong>DC·산업용 발전기 $48B (+24%)</strong> ★ → 2030E $95B (CAGR 14.5%)<br><br><strong>핵심 매크로 드라이버</strong>:<br>1. <strong>AI/DC CapEx 슈퍼사이클</strong> — 하이퍼스케일러 2026E $775~830B (knowledge-base/industry/capex.md), 미국 DC 전력 76GW (+52% vs 2024)<br>2. <strong>광업 사이클 바닥</strong> — 구리 $4.5/lb (+18% vs 2024), 철광석 $115/t (+28%), BHP·Vale·Rio Tinto 2026 CapEx +12~18% 상향<br>3. <strong>IIJA 만료 2026-09-30</strong> — 재승인 불확실, 단 IRA·CHIPS·민간 DC가 일부 상쇄<br>4. <strong>관세</strong> — 2026 비용 +$9억 (총 $26억). 트럼프-시진핑 5/14~15 정상회담 결과가 변수<br><br><strong>경쟁 (글로벌 점유)</strong>: CAT 18% 1위 / Komatsu 13% / Deere 8% / SANY 7% / Volvo CE 6%. <strong>DC 발전기 부문 CAT 32% 1위 (vs Cummins 22%, mtu 18%)</strong>.</p><table><thead><tr><th>회사</th><th>글로벌 점유</th><th>강점</th><th>약점</th></tr></thead><tbody><tr><td>**CAT**</td><td>**18%**</td><td>미국 1위(35%), 광업·E&T 압도</td><td>유럽 약세</td></tr><tr><td>Komatsu</td><td>13%</td><td>일본·아시아 강세</td><td>미국 침투 한계</td></tr><tr><td>Deere (DE)</td><td>8%</td><td>건설 중소형+농기계</td><td>광업·E&T 미진입</td></tr><tr><td>SANY (중국)</td><td>7%</td><td>가격 경쟁력</td><td>신뢰성 한계</td></tr><tr><td>Volvo CE</td><td>6%</td><td>유럽 강세, 전동화</td><td>미국 5% 미만</td></tr><tr><td>Cummins (CMI)</td><td>5% (엔진)</td><td>DC 발전기 가격경쟁</td><td>완성장비 없음</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><strong>시나리오 종합</strong>:<br>&bull; Bull (25%): DC capex $1T 유지 + 광업 반등 + 관세 동결 → EPS $24, 목표가 $1,050<br>&bull; Base (50%): 컨센서스 유지 → EPS $22.66, 목표가 $920<br>&bull; Bear (20%): DC 둔화 + 관세 확전 → EPS $20.50 (-10%), 목표가 $720<br>&bull; Crash (5%): 침체 동반 → EPS $17.50 (-23%), 목표가 $580<br><br><strong>기대값 = $893</strong> (현재가 $912 대비 -2%). 위험조정 후 무수익. 매크로(침체+관세)·산업(빅테크 capex 둔화) 리스크가 비대칭으로 하방에 누적.<br><br><strong>종합 리스크 등급: 5.8/10 (中)</strong>.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">하이퍼스케일러 CapEx 2027 둔화</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">미국 관세 확전</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">광업 사이클 재침체</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">IIJA 만료 후 재승인 실패</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">미국 침체 (Moody's Zandi 49%)</text><circle cx="180" cy="210" r="5" fill="var(--buy)"/><text x="189" y="214" fill="var(--text)" font-size="10">신고가 -2% + 밸류에이션 정체</text><circle cx="180" cy="228" r="5" fill="var(--buy)"/><text x="189" y="232" fill="var(--text)" font-size="10">Cummins 등 DC 발전기 경쟁</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>하이퍼스케일러 CapEx 2027 둔화</strong> (발생: 高, 영향: 極高)<br><span style="color:var(--sub);font-size:13px">AWS·Alphabet·MSFT 2026 Q4 가이던스 동시 하향 시 E&T 매출 -10~15%, EPS -8~12%, 목표가 -$100~$150. 최대 리스크.</span></div><div class="ri rl"><strong>미국 관세 확전</strong> (발생: 高, 영향: 高)<br><span style="color:var(--sub);font-size:13px">멕시코·인도 부품 30%+ 관세 시 2026 관세비용 $26억 → $40억+, EPS -6%, 목표가 -$50~$80. 5/14~15 정상회담 결과 결정적.</span></div><div class="ri rl"><strong>광업 사이클 재침체</strong> (발생: 中, 영향: 高)<br><span style="color:var(--sub);font-size:13px">구리 $4 이하 + 철광석 $80 이하 지속 시 Resource Industries 매출 -8~12%, 전사 매출 -2%.</span></div><div class="ri rl"><strong>IIJA 만료 후 재승인 실패</strong> (발생: 中, 영향: 中)<br><span style="color:var(--sub);font-size:13px">2026-09-30 만료. 단독주택·교량 발주 -5~10% 가능. IRA·CHIPS 잔여가 일부 상쇄.</span></div><div class="ri rl"><strong>미국 침체 (Moody's Zandi 49%)</strong> (발생: 高, 영향: 極高)<br><span style="color:var(--sub);font-size:13px">Crash 시나리오 시 2026 EPS $17.50 (-23%), 목표가 $580. 확률 5%.</span></div><div class="ri rl"><strong>신고가 -2% + 밸류에이션 정체</strong> (발생: 中, 영향: 中)<br><span style="color:var(--sub);font-size:13px">PER 22배 / PBR 11.8배 프리미엄. Q2 실적 +5% 초과 없으면 박스권 $850~$930.</span></div><div class="ri rl"><strong>Cummins 등 DC 발전기 경쟁</strong> (발생: 中, 영향: 中)<br><span style="color:var(--sub);font-size:13px">Cummins 2026 QSK95-DCS 출시로 가격 경쟁 도전. CAT의 방어는 Aftermarket 네트워크.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>투자 등급: 매수 (Buy, 약함)</strong> | 목표가 $920 | 손절 $850.18 (2x ATR) | 비중 자산 3~5%<br><br><strong>분할매수 전략</strong>:<br>&bull; 1차 $850~$880 (40%) — 2x ATR 직상단 / 50일 이평선 회귀<br>&bull; 2차 $810~$840 (30%) — $850 깨질 시 단기 패닉<br>&bull; 3차 $760~$800 (20%) — 침체·광업 재침체 시<br>&bull; 추격 $930+ (10% only) — Q2 실적 컨센 +5% 초과 확인 시<br><br><strong>차익실현</strong>:<br>&bull; $1,000~$1,050: 30% 차익 (Bull 도달)<br>&bull; $1,050+: 추가 30% (Goldman 목표가 초과)<br>&bull; 손절 $850: 보유분 50% 부분손절<br>&bull; 강손절 $720: 잔량 전량 청산<br><br><strong>핵심 모니터링</strong>:<br>1. AWS·Alphabet·MSFT 분기 CapEx 가이던스 (4·7·10·1월) — 둔화 시 즉시 비중축소<br>2. P&E backlog 분기 공시 — $51B 미만 후퇴 시 매도 신호<br>3. 구리 가격 $4.0/lb 라인<br>4. 미시간 소비심리·ISM 신규주문<br>5. 트럼프 관세 발표<br><br><strong>보유자</strong>: 신고가 -2% 영역에서 1/3 부분 차익실현 + 5/15 13F + Q2 실적 대기.<br><strong>미보유자</strong>: 현 시점 신규 추격매수 비권장. $850 이하 또는 Q2 실적 후 가이던스 상향 확인 시 재진입. 대안: PER 14배 + 광업 비중 큰 DE(Deere) 분산.</p></div>
+<div class="sec"><h2>§ Confidence Interval (앵커링 보강)</h2>**목표가**: $920 (95% CI: $810 ~ $1,030, 폭 ±12%)
+**스코어**: 72/100 (단순 합산 81에서 위험조정 -9pt, 가정 변경 시 ±6pt 추가 변동 가능)
+
+**CI 폭 ±12% 산출 근거**:
+- backlog 매출 전환 속도 (±5%)
+- 2026 관세 추가 확전 (±3%)
+- DC capex guidance 변동 (±4%)
+
+가장 큰 영향 가정: **하이퍼스케일러 2027 CapEx guidance** (CI 폭의 ~40% 점유). 2번째: 미국 침체 발생 여부 (~25%).</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>결론을 뒤집을 수 있는 가정 3개 + 반증 시 영향:
+
+**1. 하이퍼스케일러 CapEx 2027 $1T 유지 가정**
+- 반증: AWS·Alphabet 2026 Q4 가이던스 동시 하향
+- 영향: 스코어 -8pt(→64), 등급 **매수 → 중립** 강등, 목표가 $810
+
+**2. 2026 관세 비용 $26억 상한 가정**
+- 반증: 멕시코·인도 부품 30%+ 관세 확전
+- 영향: 스코어 -5pt(→67), EPS $22.66 → $21.30, 목표가 -$50
+
+**3. 광업 사이클 2026~2027 반등 가정**
+- 반증: 구리 $4/lb 이하 + 철광석 $80/t 이하 지속
+- 영향: 스코어 -4pt(→68), 전사 매출 -2%, 목표가 -$30
+
+**세 가정 동시 반증 시**: 스코어 55(중립), 목표가 $710. 발생 확률 5~7%.
+
+세 가정 모두 외부 변수 의존(빅테크 capex / 미국 무역정책 / 원자재). CAT 자체 통제력 낮음.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-05-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="CAT_Caterpillar_20260513.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

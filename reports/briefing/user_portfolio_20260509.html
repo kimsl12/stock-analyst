@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>내 포트폴리오 — 강력 처방 v2 — 2026-05-09</title>
+<style>
+:root{
+  --bg:#0d1117; --bg-primary:#0d1117; --bg-secondary:#161b22; --bg-tertiary:#21262d;
+  --card:#1a212c; --text:#e6edf3; --text-primary:#e6edf3; --text-secondary:#8b949e;
+  --text-muted:#484f58; --sub:#8b949e; --border:#30363d;
+  --up:#3fb950; --down:#f85149; --neutral:#8b949e;
+  --highlight:#58a6ff; --warning:#d29922; --debate:#8b5cf6;
+  --contrarian:#bc4c00;
+  --accent-blue:#58a6ff; --accent-green:#3fb950; --accent-red:#f85149;
+  --accent-orange:#d29922; --accent-purple:#8b5cf6; --accent-gold:#f0c040;
+  --accent-cyan:#39d2c0;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa; --bg-primary:#f5f7fa; --bg-secondary:#ffffff; --bg-tertiary:#f6f8fa;
+  --card:#ffffff; --text:#24292f; --text-primary:#24292f; --text-secondary:#57606a;
+  --text-muted:#8b949e; --sub:#57606a; --border:#d0d7de;
+  --up:#1a7f37; --down:#cf222e; --neutral:#57606a;
+  --highlight:#0969da; --warning:#9a6700; --debate:#6639ba;
+  --contrarian:#bc4c00;
+  --accent-blue:#0969da; --accent-green:#1a7f37; --accent-red:#cf222e;
+  --accent-orange:#9a6700; --accent-purple:#6639ba; --accent-gold:#bf8700;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .metric-card{background:#f6f8fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1080px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:30px;margin-bottom:8px;color:var(--accent-red)}
+.header .subtitle{color:var(--text-secondary);font-size:15px;margin-top:6px;font-weight:500}
+.header .date-badge{display:inline-block;margin-top:10px;padding:5px 14px;background:var(--bg-tertiary);border-radius:20px;font-size:13px;color:var(--text-secondary);border:1px solid var(--border)}
+
+.up{color:var(--up)} .down{color:var(--down)} .neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)} .warning{color:var(--warning)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:20px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:18px 0 10px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.metric-card{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.metric-card .label{color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.metric-card .value{font-size:1.5rem;font-weight:700;color:var(--text-primary)}
+.metric-card .change{font-size:0.85rem;margin-top:6px;color:var(--text-secondary)}
+
+.donut-container{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap;margin:22px 0}
+.donut-chart{position:relative;width:220px;height:220px}
+.donut-chart svg{transform:rotate(-90deg)}
+.donut-chart .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:0.85rem;color:var(--text-secondary)}
+.donut-chart .center-text .amount{font-size:1.15rem;font-weight:700;color:var(--text-primary);display:block}
+.legend{display:flex;flex-direction:column;gap:9px}
+.legend-item{display:flex;align-items:center;gap:10px;font-size:0.9rem}
+.legend-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0}
+
+.bar-chart{margin:18px 0}
+.bar-row{display:flex;align-items:center;margin:10px 0;gap:14px}
+.bar-label{width:175px;font-size:0.85rem;color:var(--text-secondary);flex-shrink:0}
+.bar-track{flex:1;height:26px;background:var(--bg-tertiary);border-radius:5px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;transition:width .5s ease;display:flex;align-items:center;padding-left:9px;font-size:0.78rem;font-weight:600;color:#fff}
+.bar-target{position:absolute;top:0;height:100%;width:2px;background:var(--accent-gold);z-index:2}
+.bar-target-label{position:absolute;top:-19px;font-size:0.65rem;color:var(--accent-gold);white-space:nowrap;transform:translateX(-50%)}
+
+.alert-box{border-left:4px solid var(--accent-red);background:rgba(248,81,73,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
+.alert-box.warn{border-left-color:var(--accent-orange);background:rgba(210,153,34,0.08)}
+.alert-box.success{border-left-color:var(--accent-green);background:rgba(63,185,80,0.08)}
+.alert-box.info-box{border-left-color:var(--accent-blue);background:rgba(88,166,255,0.08)}
+
+.strong-buy{
+  background:rgba(248,81,73,0.08);
+  border:1px solid var(--down);
+  border-left:5px solid var(--down);
+  border-radius:8px;
+  padding:18px 22px;
+  margin:14px 0;
+}
+.strong-buy h4{color:var(--down);font-size:18px;margin-bottom:12px}
+.strong-buy h4::before{content:"🔴 "}
+.strong-sell{
+  background:rgba(88,166,255,0.08);
+  border:1px solid var(--highlight);
+  border-left:5px solid var(--highlight);
+  border-radius:8px;
+  padding:18px 22px;
+  margin:14px 0;
+}
+.strong-sell h4{color:var(--highlight);font-size:18px;margin-bottom:12px}
+.strong-sell h4::before{content:"🔵 "}
+.ticker-head{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+.what,.why,.how,.score{margin:8px 0;font-size:0.93rem}
+.what strong,.why strong,.how strong,.score strong{color:var(--accent-gold);display:inline-block;min-width:62px}
+.recommend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;font-size:13px;margin-top:14px;padding:12px;background:rgba(255,255,255,0.03);border-radius:6px}
+.recommend-grid .label{color:var(--sub);font-size:11px;text-transform:uppercase;display:block;margin-bottom:4px}
+.recommend-grid .value{font-weight:600;color:var(--text)}
+
+.action-card{border:2px solid var(--accent-green);background:rgba(63,185,80,0.05);border-radius:10px;padding:20px;margin:18px 0}
+.action-card h3{color:var(--accent-green);margin-bottom:12px;font-size:17px}
+
+.timeline{border-left:3px solid var(--accent-blue);margin:18px 0;padding-left:24px}
+.timeline-item{position:relative;margin-bottom:18px}
+.timeline-item::before{content:'';position:absolute;left:-30px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--accent-blue);border:3px solid var(--bg-secondary)}
+.timeline-item .time{color:var(--accent-blue);font-weight:600;font-size:0.93rem}
+.timeline-item .content{color:var(--text-secondary);font-size:0.9rem;margin-top:4px}
+
+.risk-meter{display:flex;align-items:center;gap:8px;margin:8px 0}
+.risk-level{display:flex;gap:3px}
+.risk-bar{width:22px;height:11px;border-radius:2px;background:var(--bg-tertiary)}
+.risk-bar.active-low{background:var(--accent-green)}
+.risk-bar.active-mid{background:var(--accent-orange)}
+.risk-bar.active-high{background:var(--accent-red)}
+
+.footer{margin-top:36px;padding:22px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:14px;font-size:16px}
+.cmd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;font-size:13px}
+.cmd-grid > div{padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:6px;border:1px solid var(--border)}
+.footer code{background:rgba(255,255,255,0.06);padding:3px 8px;border-radius:4px;color:var(--warning);margin-right:6px}
+
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:23px}
+  .donut-container{flex-direction:column;gap:18px}
+  .donut-chart{width:180px;height:180px}
+  .recommend-grid{grid-template-columns:1fr 1fr}
+  .cmd-grid{grid-template-columns:1fr 1fr}
+  .bar-label{width:130px;font-size:0.78rem}
+}
+</style>
+</head>
+<body>
+
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;margin:-16px -16px 16px">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>👤 내 포트폴리오 — 강력 처방 v2</h1>
+  <div class="subtitle">배당형 전환 D-1 — VOO 5주 부분 차익실현 + 5종 신규 매수로 9개 자산군 중 4개 진입</div>
+  <div class="date-badge">2026-05-09 (토) | 환율 $1 = 1,460.08원 | 총 자산 $20,362.32</div>
+</div>
+
+<div class="sec">
+  <h2>1. 투자자 프로파일</h2>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">투자 성향</div>
+      <div class="value" style="color:var(--accent-red);font-size:1.25rem">배당형</div>
+      <div class="change">Dividend Income (5/9 변경)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">총 자산 (USD)</div>
+      <div class="value">$20,362.32</div>
+      <div class="change">≈ 29,732,015원</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">해외주식 평가</div>
+      <div class="value" style="color:var(--up)">$18,017.89</div>
+      <div class="change">+$1,496.89 (+9.0%)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">가용 현금</div>
+      <div class="value" style="color:var(--accent-cyan)">$2,344.43</div>
+      <div class="change">$1,359.52 + 1,438,053원</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">투자 기간</div>
+      <div class="value">5년+</div>
+      <div class="change">매월 200만원 적립</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">관심 테마</div>
+      <div class="value" style="font-size:1.1rem">배당 현금흐름</div>
+      <div class="change">SCHD + 리츠 + 커버드콜</div>
+    </div>
+  </div>
+
+  <div class="alert-box info-box">
+    <strong>프로파일 변경 이력:</strong> 2026-04-13~2026-05-08 중립 (Balanced) → <strong>2026-05-09 배당형 (Dividend Income)</strong>.
+    배당형 모델 9개 자산군 중 7개 부재 → 본 처방은 1차 보강 (4개 자산군 진입).
+    목표: 연 3.5%+ 배당 수익률 + 인플레 상회 성장.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>2. 보유 종목 + 자산군 현황 (5/9 KST 21:17)</h2>
+
+  <h3>2-1. 보유 종목 (6종 ETF)</h3>
+  <table>
+    <tr>
+      <th>티커</th><th>수량</th><th>평균가</th><th>현재가</th><th>평가금</th><th>비중</th><th>수익률</th><th>ATR(14)</th>
+    </tr>
+    <tr><td><strong>VOO</strong></td><td>20.4697</td><td>~$609.37</td><td>$678.04</td><td>$13,788.91</td><td>67.7%</td><td class="up">+10.7%</td><td>$6.49</td></tr>
+    <tr><td><strong>GLD</strong></td><td>4.0015</td><td>~$418.88</td><td>$433.77</td><td>$1,733.76</td><td>8.5%</td><td class="up">+3.4%</td><td>$8.18</td></tr>
+    <tr><td><strong>SCHD</strong></td><td>30.4345</td><td>~$31.92</td><td>$31.62</td><td>$959.50</td><td>4.7%</td><td class="down">-1.2%</td><td>$0.36</td></tr>
+    <tr><td><strong>QQQ</strong></td><td>1.2485</td><td>~$607.62</td><td>$711.23</td><td>$870.44</td><td>4.3%</td><td class="up">+14.6%</td><td>$10.01</td></tr>
+    <tr><td><strong>VIG</strong></td><td>1.6196</td><td>~$226.34</td><td>$228.06</td><td>$368.86</td><td>1.8%</td><td class="up">+0.7%</td><td>$1.87</td></tr>
+    <tr><td><strong>AGG</strong></td><td>3.0000</td><td>~$98.96</td><td>$99.18</td><td>$296.40</td><td>1.5%</td><td class="neutral">0.0%</td><td>$0.35</td></tr>
+  </table>
+
+  <h3>2-2. 자산 배분 도넛 차트</h3>
+  <div class="donut-container">
+    <div class="donut-chart">
+      <svg width="220" height="220" viewBox="0 0 36 36">
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--bg-tertiary)" stroke-width="3"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#58a6ff" stroke-width="3" stroke-dasharray="67.7 32.3" stroke-dashoffset="0"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f0c040" stroke-width="3" stroke-dasharray="8.5 91.5" stroke-dashoffset="-67.7"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#39d2c0" stroke-width="3" stroke-dasharray="6.7 93.3" stroke-dashoffset="-76.2"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#3fb950" stroke-width="3" stroke-dasharray="4.7 95.3" stroke-dashoffset="-82.9"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-dasharray="4.8 95.2" stroke-dashoffset="-87.6"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#d29922" stroke-width="3" stroke-dasharray="4.3 95.7" stroke-dashoffset="-92.4"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#bc4c00" stroke-width="3" stroke-dasharray="1.8 98.2" stroke-dashoffset="-96.7"/>
+        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#8b949e" stroke-width="3" stroke-dasharray="1.5 98.5" stroke-dashoffset="-98.5"/>
+      </svg>
+      <div class="center-text">
+        <span class="amount">$20,362</span>
+        총 자산
+      </div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#58a6ff"></span>VOO 67.7% — $13,789</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#f0c040"></span>GLD 8.5% — $1,734</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#39d2c0"></span>달러 현금 6.7% — $1,360</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#3fb950"></span>SCHD 4.7% — $960</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>원화 현금 4.8% — $985</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#d29922"></span>QQQ 4.3% — $870</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#bc4c00"></span>VIG 1.8% — $369</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#8b949e"></span>AGG 1.5% — $296</div>
+    </div>
+  </div>
+
+  <h3>2-3. 자산군 현황 (배당형 모델 대비)</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">광범위 인덱스</div>
+      <div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--accent-red)">VOO+QQQ 72.0%</div><div class="bar-target" style="left:0%"><span class="bar-target-label">목표 0%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">배당 성장 ETF</div>
+      <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--accent-blue)">SCHD+VIG 6.5%</div><div class="bar-target" style="left:32%"><span class="bar-target-label">목표 24%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">미국 고배당주</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--accent-purple)">0%</div><div class="bar-target" style="left:15%"><span class="bar-target-label">목표 11.5%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">국내 고배당주</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--accent-purple)">0%</div><div class="bar-target" style="left:20%"><span class="bar-target-label">목표 15%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">미국 리츠</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--accent-cyan)">0%</div><div class="bar-target" style="left:17%"><span class="bar-target-label">목표 12.5%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">커버드콜 ETF</div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--accent-orange)">0%</div><div class="bar-target" style="left:10%"><span class="bar-target-label">목표 7.5%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">채권 (IG+HY+PFF)</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2%;background:var(--accent-blue)">AGG 1.5%</div><div class="bar-target" style="left:13%"><span class="bar-target-label">목표 10%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">금 + 달러 쿠션</div>
+      <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--accent-gold)">GLD+달러 15.2%</div><div class="bar-target" style="left:8%"><span class="bar-target-label">목표 6%</span></div></div>
+    </div>
+  </div>
+
+  <div class="alert-box warn">
+    <strong>핵심 진단:</strong> 배당형 모델 9개 자산군 중 <strong>7개 자산군이 0% 부재</strong>. 광범위 인덱스 (VOO+QQQ) 비중 +72.0%p 압도적 과대편향이 가장 큰 숙제.
+    가용 현금 $2,344 + VOO/QQQ 부분 차익실현으로 가용 자금 ~$6,500 확보 가능.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>3. 이번주 매크로 요약</h2>
+
+  <ol style="margin-left:20px;line-height:1.9">
+    <li><strong>NFP 골디락스 확정</strong> (5/8 발표 +115K, 임금 +3.6%): "고용 견조 + 임금 둔화" Fed 가 원하는 골디락스 착지. S&P 7,399 신고가 + 10Y 4.36% (-3bp) + DXY 97.84 삼박자 정합. 9월 인하 확률 50~55% 회복. <em>[BLS 5/8, lead_evening_20260509 § B-1]</em></li>
+    <li><strong>5/12 CPI D-3 진짜 판별자:</strong> ISM 제조 가격 84.6% + 서비스 가격 70.7% (2022 이후 최고) + 4월 WTI 평균 $104 = 헤드라인 CPI 3.5~3.7%, Core 3.0~3.2% 방향. Core 3.2%+ 시 연내 인하 0회 시나리오 부상 (확률 30%) → 10Y 4.40%+ 재상승 + S&P -2~3% 리스크. <em>[ISM, BofA, lead_evening_20260509]</em></li>
+    <li><strong>Gold $4,720 구조적 Bull 유지:</strong> DXY 3년래 최저 + 10Y 하락 = 이중 지지. Dalio (15% 추천), Marks (금광), Druckenmiller (long) 거물 3인 컨버전스. 사용자 GLD 8.5% = 배당형 모델 4~8% 상한 근접. <em>[lead_evening_20260509 § B-7]</em></li>
+  </ol>
+
+  <div class="alert-box warn" style="margin-top:18px">
+    <strong>5/12 CPI 시나리오 분기:</strong>
+    <span class="up">A. Core ≤2.8% (15%)</span> → 골디락스 완성, S&P 7,500+ /
+    <span class="neutral">B. Core 3.0~3.2% (55%)</span> → Base, 본 처방 유지 /
+    <span class="down">C. Core ≥3.2% (30%)</span> → 인플레 재가속, 공격형 축소 + 채권/Gold 확대
+  </div>
+</div>
+
+<div class="sec">
+  <h2>4. 이번주 등장 종목 풀 (적합도 점수)</h2>
+
+  <p style="font-size:14px;color:var(--text-secondary);margin-bottom:10px">
+    적합도 = 절대매력도(0.35) + 갭매칭(0.30) + 등장빈도(0.20) + 최근성(0.15) × 100
+  </p>
+
+  <table>
+    <tr>
+      <th>순위</th><th>티커</th><th>종목명</th><th>절대매력</th><th>갭매칭</th><th>빈도</th><th>최근성</th><th>적합도</th><th>핵심 시그널</th>
+    </tr>
+    <tr style="background:rgba(63,185,80,0.05)">
+      <td><strong>1</strong></td><td><strong>SCHD</strong></td><td>Schwab US Div Equity</td><td>90</td><td>95</td><td>95</td><td>100</td><td class="up"><strong>94.0</strong></td><td>배당 성장 ETF 핵심 축, 갭 -13.5%p, 사용자 -1.2% 보유 (저가매수)</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td><td><strong>VIG</strong></td><td>Vanguard Div Apprec</td><td>80</td><td>75</td><td>90</td><td>100</td><td class="up"><strong>82.0</strong></td><td>사용자 1.8% 보유, 배당 성장 ETF 갭 보강 (SCHD 보완)</td>
+    </tr>
+    <tr style="background:rgba(63,185,80,0.05)">
+      <td><strong>3</strong></td><td><strong>LQD</strong></td><td>iShares IG Bond</td><td>85</td><td>90</td><td>70</td><td>95</td><td class="up"><strong>83.5</strong></td><td>NFP 골디락스 + 10Y -3bp = IG 캐리+캡게인. 채권 갭 -6.5%p 직결</td>
+    </tr>
+    <tr style="background:rgba(63,185,80,0.05)">
+      <td><strong>4</strong></td><td><strong>JEPI</strong></td><td>JPM Equity Premium</td><td>80</td><td>90</td><td>65</td><td>85</td><td class="up"><strong>80.0</strong></td><td>커버드콜 갭 -5.0%p 완전 부재. VIX 17 + Greed = 옵션 프리미엄 환경</td>
+    </tr>
+    <tr style="background:rgba(63,185,80,0.05)">
+      <td><strong>5</strong></td><td><strong>VNQ</strong></td><td>Vanguard Real Estate</td><td>80</td><td>95</td><td>60</td><td>80</td><td class="up"><strong>79.5</strong></td><td>리츠 갭 -10.0%p 완전 부재. 10Y 하락 직접 수혜</td>
+    </tr>
+    <tr style="background:rgba(63,185,80,0.05)">
+      <td><strong>6</strong></td><td><strong>O</strong></td><td>Realty Income</td><td>75</td><td>90</td><td>55</td><td>80</td><td class="up"><strong>75.5</strong></td><td>월배당 5.4% Aristocrat. 52주 -8.1% 위치 = 저가매수</td>
+    </tr>
+    <tr>
+      <td>7</td><td>JEPQ</td><td>JPM Nasdaq Premium</td><td>75</td><td>80</td><td>50</td><td>75</td><td class="neutral">70.5</td><td>NASDAQ 커버드콜. AI 5주 연속 = 프리미엄 효율</td>
+    </tr>
+    <tr>
+      <td>8</td><td>PFF</td><td>iShares Preferred</td><td>70</td><td>85</td><td>50</td><td>70</td><td class="neutral">70.0</td><td>우선주 6%+ 캐리. HY 스프레드 안정 환경</td>
+    </tr>
+    <tr>
+      <td>—</td><td>HYG</td><td>iShares HY Corp</td><td>65</td><td>75</td><td>45</td><td>70</td><td class="neutral">64.0</td><td>후순위 (LQD 우선 진입 후)</td>
+    </tr>
+    <tr>
+      <td>—</td><td>REET</td><td>iShares Global REIT</td><td>65</td><td>80</td><td>35</td><td>60</td><td class="neutral">62.0</td><td>VNQ 우선 진입 후 글로벌 분산 (3차)</td>
+    </tr>
+  </table>
+
+  <div class="alert-box success">
+    <strong>본 처방 1차 보강 대상 5종 (녹색 행):</strong> SCHD, LQD, JEPI, VNQ, O.
+    VIG 는 적합도 82이나 사용자 이미 보유 → SCHD 비중 확대로 동일 효과 + 자금 효율성 우선.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>5. 포트 갭 분석 (배당형 모델 대비)</h2>
+
+  <h3>5-1. 갭 정량화</h3>
+  <table>
+    <tr>
+      <th>자산군</th><th>현재 비중</th><th>목표 중간값</th><th>갭 (%p)</th><th>갭 (USD)</th><th>차수</th>
+    </tr>
+    <tr style="background:rgba(248,81,73,0.06)"><td>광범위 인덱스 (VOO+QQQ)</td><td>72.0%</td><td>0%</td><td class="down">+72.0</td><td>+$14,659</td><td>1차 (-20%p)</td></tr>
+    <tr style="background:rgba(248,81,73,0.06)"><td>배당 성장 ETF</td><td>6.5%</td><td>24%</td><td class="down">-17.5</td><td>-$3,564</td><td><strong>1차 보강</strong></td></tr>
+    <tr><td>미국 고배당 개별주</td><td>0%</td><td>11.5%</td><td class="warning">-11.5</td><td>-$2,342</td><td>3차</td></tr>
+    <tr><td>국내 고배당주</td><td>0%</td><td>15%</td><td class="warning">-15.0</td><td>-$3,054</td><td>2차</td></tr>
+    <tr><td>국내 배당 ETF</td><td>0%</td><td>7.5%</td><td class="warning">-7.5</td><td>-$1,527</td><td>2차</td></tr>
+    <tr style="background:rgba(248,81,73,0.06)"><td>미국 리츠</td><td>0%</td><td>12.5%</td><td class="down">-12.5</td><td>-$2,545</td><td><strong>1차 보강</strong></td></tr>
+    <tr><td>글로벌 리츠</td><td>0%</td><td>5%</td><td class="warning">-5.0</td><td>-$1,018</td><td>3차</td></tr>
+    <tr style="background:rgba(248,81,73,0.06)"><td>커버드콜</td><td>0%</td><td>7.5%</td><td class="down">-7.5</td><td>-$1,527</td><td><strong>1차 보강</strong></td></tr>
+    <tr style="background:rgba(248,81,73,0.06)"><td>채권 (IG+HY+PFF)</td><td>1.5%</td><td>10%</td><td class="down">-8.5</td><td>-$1,731</td><td><strong>1차 보강</strong></td></tr>
+    <tr><td>금 + 달러 쿠션</td><td>15.2%</td><td>6%</td><td class="up">+9.2</td><td>+$1,873</td><td>현금만 축소</td></tr>
+  </table>
+
+  <h3>5-2. 위험 평가</h3>
+  <div class="risk-meter">
+    <span style="font-size:0.9rem;color:var(--text-secondary);min-width:160px">현재 프로파일 미스매치:</span>
+    <div class="risk-level">
+      <span class="risk-bar active-low"></span><span class="risk-bar active-low"></span>
+      <span class="risk-bar active-mid"></span><span class="risk-bar active-mid"></span>
+      <span class="risk-bar active-high"></span><span class="risk-bar active-high"></span>
+      <span class="risk-bar active-high"></span><span class="risk-bar active-high"></span>
+    </div>
+    <span style="font-size:0.85rem;color:var(--accent-red);font-weight:600">8/10 매우 높음</span>
+  </div>
+  <div class="risk-meter">
+    <span style="font-size:0.9rem;color:var(--text-secondary);min-width:160px">본 처방 실행 후:</span>
+    <div class="risk-level">
+      <span class="risk-bar active-low"></span><span class="risk-bar active-low"></span>
+      <span class="risk-bar active-low"></span><span class="risk-bar active-mid"></span>
+      <span class="risk-bar active-mid"></span><span class="risk-bar"></span>
+      <span class="risk-bar"></span><span class="risk-bar"></span>
+    </div>
+    <span style="font-size:0.85rem;color:var(--accent-orange);font-weight:600">5/10 중간 (개선)</span>
+  </div>
+
+  <div class="alert-box info-box" style="margin-top:18px">
+    <strong>본 회차 1차 보강 범위:</strong> 가용 자금 ~$6,075 로 배당 성장 (SCHD), 채권 (LQD), 커버드콜 (JEPI), 미국 리츠 (VNQ+O) 4개 자산군 진입.
+    국내 고배당주·국내 배당 ETF·미국 고배당 개별주·글로벌 리츠는 2~3차 처방 (5/12 CPI + 5/15 13F 후 단계 보강).
+    본 회차 전부 욱여넣지 않는 이유: ① 5/12 CPI 변동성 대비 ② 토스 1주 단위 + 환전 절차 고려 ③ 양도세 분산.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>6. 🔴 강력 매수 권고 (5종)</h2>
+
+  <div class="strong-buy">
+    <h4>매수 1: SCHD — Schwab US Dividend Equity ETF (+30주)</h4>
+    <div class="ticker-head">티커: SCHD (NYSE) | 30주 추가 매수 → 총 60.43주 보유</div>
+    <p class="what"><strong>① 무엇:</strong> Schwab US Dividend Equity ETF. 사용자 기존 30.4주 → 60.4주 (2배 비중 확대)</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> lead_morning_20260509 § A-6 "💰 배당형 — SCHD/VIG 안정적", model_portfolios.md § F-5 "SCHD 배당 3.5%, 성장 10%+ CAGR — 핵심 축".
+      배당 성장 ETF 갭 -17.5%p 가장 큰 부재 영역. SCHD 현재가 $31.62는 52주 최고 $32.13 대비 -1.6% (저가매수). 사용자 평균가 $31.92 대비 -0.9% → 평단가 개선. NFP 골디락스 + 10Y 하락 = 배당주 상대 매력도 개선.
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 진입 $31.40~31.80 / 수량 30주 / 자금 $948 / 비중 +4.7%p (4.7% → 9.4%) / 손절 $30.40 / 12M 목표 $33.50</p>
+    <div class="recommend-grid">
+      <div><span class="label">진입가</span><span class="value">$31.40~$31.80</span></div>
+      <div><span class="label">수량</span><span class="value">30주</span></div>
+      <div><span class="label">손절가</span><span class="value">$30.40</span></div>
+      <div><span class="label">목표가 (12M)</span><span class="value">$33.50 (+6%)</span></div>
+      <div><span class="label">비중 추가</span><span class="value">+4.7%p</span></div>
+      <div><span class="label">자금</span><span class="value">$948</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">94.0 / 100</span> — 갭 매칭 95 + 등장빈도 95 + 절대매력도 90 (배당형 핵심 축, 사용자 이미 보유, 갭 가장 큰 영역, 가격 위치 양호 4중 정합)</p>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 2: LQD — iShares IG Corp Bond ETF (+18주 신규)</h4>
+    <div class="ticker-head">티커: LQD (NYSE) | 신규 진입 18주</div>
+    <p class="what"><strong>① 무엇:</strong> iShares iBoxx $ Investment Grade Corporate Bond ETF. 사용자 보유 0주 → 18주 (신규)</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> lead_evening_20260509 § B-8 "🛡️ 안전형 — 채권 캐리 개선", model_portfolios.md § F-5 "LQD (IG, 5%) — IG 스프레드 안정 + 금리 피크아웃 시 캐리+캡게인".
+      채권 갭 -8.5%p (현재 AGG 1.5% 단일). NFP 골디락스 + 10Y -3bp = IG 캐리+캡게인 환경. HY 스프레드 2.77% 축소 (1주 전 2.85%) = 신용 안정. 5/12 CPI 양방향 헤지: Core ≤2.8% 시 +1~2% / Core ≥3.2% 시 -1% 제한적 (이미 4.36% 선반영).
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 진입 $108.80~$109.40 / 수량 18주 / 자금 $1,966 / 비중 +9.7%p (1.5% → 11.2%, 목표 도달!) / 손절 $107.50 / 12M 목표 $112.00</p>
+    <div class="recommend-grid">
+      <div><span class="label">진입가</span><span class="value">$108.80~$109.40</span></div>
+      <div><span class="label">수량</span><span class="value">18주</span></div>
+      <div><span class="label">손절가</span><span class="value">$107.50</span></div>
+      <div><span class="label">목표가 (12M)</span><span class="value">$112.00 + 배당 4.5%</span></div>
+      <div><span class="label">비중 추가</span><span class="value">+9.7%p</span></div>
+      <div><span class="label">자금</span><span class="value">$1,966</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">83.5 / 100</span> — 갭 매칭 90 + 절대매력도 85 + 매크로 정합 (NFP 골디락스 직접 수혜)</p>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 3: JEPI — JPMorgan Equity Premium Income ETF (+22주 신규)</h4>
+    <div class="ticker-head">티커: JEPI (NYSE) | 신규 진입 22주 | 연 7~8% 분배</div>
+    <p class="what"><strong>① 무엇:</strong> JPMorgan Equity Premium Income ETF. 커버드콜 ETF (콜옵션 매도로 프리미엄 수익 + S&P 500 일부 노출)</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> model_portfolios.md § F-5 "JEPI (JPM Equity Premium, 연 ~8%) — VIX 18.98 해제 국면에서 프리미엄 수익 증대".
+      커버드콜 갭 -7.5%p, 완전 부재. VIX 17 안정 + S&P 신고가 환경에서 옵션 프리미엄 수익 극대 구간. 연 7~8% 분배 + 가격 안정 (ATR $0.36, 0.65%). 5/12 CPI 변동성 대비 효과적 — 횡보·약보합 시에도 분배금 안정.
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 진입 $55.70~$56.20 / 수량 22주 / 자금 $1,231 / 비중 +6.0%p (0% → 6.0%) / 손절 $55.20 / 12M 목표 $57.50</p>
+    <div class="recommend-grid">
+      <div><span class="label">진입가</span><span class="value">$55.70~$56.20</span></div>
+      <div><span class="label">수량</span><span class="value">22주</span></div>
+      <div><span class="label">손절가</span><span class="value">$55.20</span></div>
+      <div><span class="label">목표가 (12M)</span><span class="value">$57.50 + 배당 7.5%</span></div>
+      <div><span class="label">비중 추가</span><span class="value">+6.0%p</span></div>
+      <div><span class="label">자금</span><span class="value">$1,231</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">80.0 / 100</span> — 갭 매칭 90 + 매크로 정합 (VIX 17 + Greed) + 분배금 즉시 수익</p>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 4: VNQ — Vanguard Real Estate ETF (+11주 신규)</h4>
+    <div class="ticker-head">티커: VNQ (NYSE) | 신규 진입 11주 | 미국 리츠 광범위</div>
+    <p class="what"><strong>① 무엇:</strong> Vanguard Real Estate ETF. 헬스케어·산업·데이터센터 리츠 중심 광범위 노출</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> model_portfolios.md § F-5 "VNQ — 헬스케어·산업·데이터센터 리츠 중심", lead_morning_20260509 § A-1 "10Y 4.36% (-3bp)" + lead_evening_20260509 § B-1 "Fed 9월 인하 확률 50~55%".
+      미국 리츠 갭 -10%p, 완전 부재. 금리 하락 시 리츠 직접 수혜. NFP 골디락스로 10Y -3bp + 9월 인하 기대 회복 = 리츠 매력도 개선. AI 데이터센터 + 헬스케어 리츠 비중 = K자형 노동시장 + AI 인프라 수혜 분산 노출.
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 진입 $96.30~$97.00 / 수량 11주 / 자금 $1,063 / 비중 +5.2%p (0% → 5.2%) / 손절 $94.00 / 12M 목표 $103.00</p>
+    <div class="recommend-grid">
+      <div><span class="label">진입가</span><span class="value">$96.30~$97.00</span></div>
+      <div><span class="label">수량</span><span class="value">11주</span></div>
+      <div><span class="label">손절가</span><span class="value">$94.00</span></div>
+      <div><span class="label">목표가 (12M)</span><span class="value">$103.00 (+6.6%) + 배당 4%</span></div>
+      <div><span class="label">비중 추가</span><span class="value">+5.2%p</span></div>
+      <div><span class="label">자금</span><span class="value">$1,063</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">79.5 / 100</span> — 갭 매칭 95 + 매크로 정합 (10Y 하락 직접 수혜)</p>
+  </div>
+
+  <div class="strong-buy">
+    <h4>매수 5: O — Realty Income (+14주 신규)</h4>
+    <div class="ticker-head">티커: O (NYSE) | 신규 진입 14주 | 월배당 5.4% Dividend Aristocrat</div>
+    <p class="what"><strong>① 무엇:</strong> Realty Income Corp. 30년+ 배당 인상 이력. Net Lease 모델 (인플레 헤지 — 임대료 자동 상승)</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> model_portfolios.md § F-5 "O (Realty Income, 월배당 5.5%)", lead_evening_20260507 § B-7 "REITs는 금리 하락 수혜".
+      VNQ (광범위 리츠) 와 결합하여 미국 리츠 갭 추가 보강. O는 단일 종목 + 월배당 + Aristocrat. 현재가 $61.92, 52주 최고 $67.35 대비 -8.1% 위치 = 저가매수 구간. Net Lease = 5/12 CPI Core 3.2%+ 시에도 영향 제한.
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 진입 $61.50~$62.20 / 수량 14주 / 자금 $867 / 비중 +4.3%p (0% → 4.3%) / 손절 $59.90 / 12M 목표 $66.50</p>
+    <div class="recommend-grid">
+      <div><span class="label">진입가</span><span class="value">$61.50~$62.20</span></div>
+      <div><span class="label">수량</span><span class="value">14주</span></div>
+      <div><span class="label">손절가</span><span class="value">$59.90</span></div>
+      <div><span class="label">목표가 (12M)</span><span class="value">$66.50 (+7.4%) + 월배당 5.4%</span></div>
+      <div><span class="label">비중 추가</span><span class="value">+4.3%p</span></div>
+      <div><span class="label">자금</span><span class="value">$867</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">75.5 / 100</span> — 갭 매칭 90 + 절대매력도 75 + 월배당 안정 현금흐름</p>
+  </div>
+
+  <div class="action-card">
+    <h3>매수 처방 종합</h3>
+    <table>
+      <tr>
+        <th>종목</th><th>수량</th><th>자금</th><th>비중 추가</th><th>누적 자금</th>
+      </tr>
+      <tr><td><strong>SCHD</strong></td><td>+30주</td><td>$948</td><td>+4.7%p</td><td>$948</td></tr>
+      <tr><td><strong>LQD</strong></td><td>+18주</td><td>$1,966</td><td>+9.7%p</td><td>$2,914</td></tr>
+      <tr><td><strong>JEPI</strong></td><td>+22주</td><td>$1,231</td><td>+6.0%p</td><td>$4,145</td></tr>
+      <tr><td><strong>VNQ</strong></td><td>+11주</td><td>$1,063</td><td>+5.2%p</td><td>$5,208</td></tr>
+      <tr><td><strong>O</strong></td><td>+14주</td><td>$867</td><td>+4.3%p</td><td><strong>$6,075</strong></td></tr>
+    </table>
+    <p style="margin-top:12px;font-size:0.92rem">
+      <strong>총 매수 자금:</strong> $6,075 |
+      <strong>가용 현금:</strong> $2,344 (달러 $1,360 + 원화 $984) |
+      <strong>부족분 $3,731:</strong> VOO 5주 + QQQ 1주 매도로 조달 ($4,101 확보)
+    </p>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>7. 🔵 강력 매도/축소 권고 (2종)</h2>
+
+  <div class="strong-sell">
+    <h4>매도 1: VOO — Vanguard S&P 500 ETF (-5주, 잔여 15.47주)</h4>
+    <div class="ticker-head">티커: VOO (NYSE) | 5주 부분 매도 → 잔여 15.47주 (75.5% 잔존)</div>
+    <p class="what"><strong>① 무엇:</strong> Vanguard S&P 500 ETF. 보유 20.47주 → 5주 매도 → 잔여 15.47주. 비중 67.7% → 51.0%</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> model_portfolios.md § F-5 "광범위 인덱스 (VOO+QQQ) 0% 권장 — 배당수익률 1.3~1.5% 권장 자산군 아님", user_portfolio.md "VOO+QQQ 72.0% 단계적 차익실현 후 배당 자산 전환 검토".
+      배당형 프로파일 전환 후 광범위 인덱스 +72%p 압도적 과대편향. VOO 미실현 +10.7% ($1,337) — 양도세 250만원 공제 한도 내 분할 매도가 효율적. lead_evening_20260509 § B-1 "5/12 CPI Core 3.2%+ 시 S&P -2~3%" 변동성 직전 비중 일부 축소 = 리스크 관리. 5주 매도 = 양도세 부담 최소 + 배당 자산 매수 자금 ($3,390) 확보 균형점.
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 매도가 $677~$680 (현재 $678.04, 52주 최고 $678.53 근접 = 매도 적기) / 수량 5주 / 자금 회수 $3,390 / 잔여 15.47주 유지</p>
+    <div class="recommend-grid">
+      <div><span class="label">매도가</span><span class="value">$677~$680</span></div>
+      <div><span class="label">매도 수량</span><span class="value">5주</span></div>
+      <div><span class="label">잔여 수량</span><span class="value">15.47주</span></div>
+      <div><span class="label">자금 회수</span><span class="value">$3,390</span></div>
+      <div><span class="label">비중 변화</span><span class="value">67.7% → 51.0%</span></div>
+      <div><span class="label">실현 수익</span><span class="value">+$337 (5주 환산)</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">갭 매칭 95</span> — 광범위 인덱스 +72%p 갭의 17%p 해소. VOO 자체 매력도는 유지, 사용자 프로파일과의 부정합이 매도 핵심 사유 (절대매력도 약화 아님)</p>
+  </div>
+
+  <div class="strong-sell">
+    <h4>매도 2: QQQ — Invesco NASDAQ 100 (-1주, 잔여 0.248주)</h4>
+    <div class="ticker-head">티커: QQQ (NASDAQ) | 1주 매도 → 잔여 0.248주 (보유 일부 유지)</div>
+    <p class="what"><strong>① 무엇:</strong> Invesco NASDAQ 100 ETF. 보유 1.248주 → 1주 매도 → 잔여 0.248주. 비중 4.3% → 0.9%</p>
+    <p class="why"><strong>② 왜:</strong>
+      <em>출처:</em> model_portfolios.md § F-5 — 광범위 NASDAQ 인덱스 배당형 부적합 (배당수익률 0.5%, VOO 보다 낮음).
+      QQQ 미실현 +14.6% ($111) — 보유 6종 중 수익률 최고 = 차익실현 효율 최대. NASDAQ +1.71% (5/8) AI 랠리 5주 연속 = 매도 적기. 5/12 CPI Core 3.2%+ 시 성장주 밸류에이션 압축 -3~5% 직격탄. 잔여 0.248주 ($176) 유지 = AI 모멘텀 일부 노출 (완전 청산 시 모멘텀 포기 부담 분산).
+    </p>
+    <p class="how"><strong>③ 어떻게:</strong> 매도가 $710~$715 (현재 $711.23, 52주 최고 = 매도 적기) / 수량 1주 / 자금 회수 $711 / 잔여 0.248주 유지</p>
+    <div class="recommend-grid">
+      <div><span class="label">매도가</span><span class="value">$710~$715</span></div>
+      <div><span class="label">매도 수량</span><span class="value">1주</span></div>
+      <div><span class="label">잔여 수량</span><span class="value">0.248주</span></div>
+      <div><span class="label">자금 회수</span><span class="value">$711</span></div>
+      <div><span class="label">비중 변화</span><span class="value">4.3% → 0.9%</span></div>
+      <div><span class="label">실현 수익</span><span class="value">+$91 (1주 환산)</span></div>
+    </div>
+    <p class="score" style="margin-top:12px"><strong>④ 적합도:</strong> <span style="color:var(--accent-gold);font-weight:700">갭 매칭 100</span> — 광범위 인덱스 갭 추가 해소 + 미실현 수익 최고 종목 1순위 매도</p>
+  </div>
+
+  <div class="action-card">
+    <h3>매도 처방 종합 + 자금 흐름</h3>
+    <table>
+      <tr><th>구분</th><th>금액</th><th>비고</th></tr>
+      <tr><td>VOO 5주 매도</td><td>$3,390</td><td>잔여 15.47주 / 실현 수익 +$337</td></tr>
+      <tr><td>QQQ 1주 매도</td><td>$711</td><td>잔여 0.248주 / 실현 수익 +$91</td></tr>
+      <tr style="background:rgba(63,185,80,0.08)"><td><strong>매도 회수 합계</strong></td><td><strong>$4,101</strong></td><td>실현 수익 합계 +$428</td></tr>
+      <tr><td>가용 현금 (기존)</td><td>$2,344</td><td>달러 $1,360 + 원화 $984</td></tr>
+      <tr><td>총 가용 자금</td><td>$6,445</td><td>매도 + 현금</td></tr>
+      <tr><td>매수 필요</td><td>$6,075</td><td>SCHD/LQD/JEPI/VNQ/O 5종</td></tr>
+      <tr style="background:rgba(63,185,80,0.08)"><td><strong>실행 후 잔여 현금</strong></td><td><strong>$370 + 환전·수수료 마진</strong></td><td>다음 처방 대비 현금 쿠션</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>8. 다음 주 모니터링 포인트</h2>
+
+  <h3>8-1. 트리거 이벤트 (5/12 CPI 중심)</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time">5/11 (월) — Warsh 인준 표결</div>
+      <div class="content">상원 본회의. 인준 시 forward guidance 폐지 임박 → MOVE 인덱스 확대 → LQD 변동성 모니터링.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/12 (화) KST 21:30 — 4월 CPI 발표 (단일 최대 이벤트)</div>
+      <div class="content">
+        <strong>Core ≤2.8% (확률 15%):</strong> VOO 추가 5주 매도 + SCHD 추가 20주 매수 (배당주 모멘텀 강화)<br>
+        <strong>Core 3.0~3.2% (확률 55%, Base):</strong> 본 처방 유지. 2차 처방은 5/15 13F 후<br>
+        <strong>Core ≥3.2% (확률 30%):</strong> QQQ 잔여 0.248주 전량 매도 + LQD/PFF 추가 비중 (방어 강화)
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/14 (목) — Trump-Xi 베이징 정상회담</div>
+      <div class="content">한국 자산 영향. KOSPI 반응 확인 후 국내 고배당주 (삼성전자우/신한지주/KB금융) 진입 검토 — 2차 처방 트리거.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/15 (금) — 파월 임기 만료 + Q1 13F 공시 마감</div>
+      <div class="content">Buffett 현금 $397B 방향. Berkshire 신규 매수 종목 = 다음 주 후보 풀 핵심. 미국 고배당 개별주 (JNJ/PG/KO) 진입 시점 결정.</div>
+    </div>
+  </div>
+
+  <h3>8-2. 모니터링 지표 (트리거 액션 매트릭스)</h3>
+  <table>
+    <tr><th>지표</th><th>현재</th><th>트리거</th><th>액션</th></tr>
+    <tr><td>10Y 미국채</td><td>4.36%</td><td>4.40%+ 재상승</td><td>LQD 추가 진입 보류</td></tr>
+    <tr><td>DXY</td><td>97.84</td><td>98.50+</td><td>GLD 일부 차익실현 검토</td></tr>
+    <tr><td>VIX</td><td>17.19</td><td>22+</td><td>JEPI 프리미엄 환경 변화, 진입 보류</td></tr>
+    <tr><td>KOSPI</td><td>7,498</td><td>7,300 하회</td><td>국내 고배당주 진입 (2차 처방)</td></tr>
+    <tr><td>USD/KRW</td><td>1,461</td><td>1,470+</td><td>원화 자산 매수 가속 (KRW 자금 활용)</td></tr>
+  </table>
+
+  <h3>8-3. 2~3차 처방 예고 (8월까지 단계 보강)</h3>
+  <ul style="margin-left:20px;line-height:1.85">
+    <li><strong>2차 (5/15~5/30):</strong> 국내 고배당주 (15%p 부재) — 정상회담 + KOSPI 안정 후 / KRW 1,438,053원 활용</li>
+    <li><strong>2차:</strong> 국내 배당 ETF (KODEX 고배당) — 환전 불요</li>
+    <li><strong>3차 (6월):</strong> 미국 고배당 개별주 (JNJ/PG/KO) — 5/15 13F 후 거물 신규 종목 확인 후</li>
+    <li><strong>3차:</strong> 글로벌 리츠 (REET) — VNQ + O 안정화 후 추가 분산</li>
+    <li><strong>3차:</strong> HY 회사채 (HYG) / 우선주 (PFF) — LQD 안정화 후 신용 스펙트럼 확장</li>
+  </ul>
+</div>
+
+<div class="sec">
+  <h2>9. 4종 모델 포트폴리오 비교</h2>
+
+  <h3>9-1. 사용자 vs 배당형 모델 (본 처방 실행 후)</h3>
+  <table>
+    <tr>
+      <th>자산군</th><th>처방 전</th><th>처방 후</th><th>배당형 모델</th><th>갭 (처방 후)</th>
+    </tr>
+    <tr style="background:rgba(248,81,73,0.08)"><td>광범위 인덱스 (VOO+QQQ)</td><td>72.0%</td><td><strong>51.9%</strong></td><td>0%</td><td class="down">+51.9 (2~3차 추가 축소)</td></tr>
+    <tr><td>배당 성장 ETF (SCHD+VIG)</td><td>6.5%</td><td><strong>11.4%</strong></td><td>24%</td><td class="warning">-12.6 (2차 보강)</td></tr>
+    <tr><td>미국 고배당 개별주</td><td>0%</td><td>0%</td><td>11.5%</td><td class="warning">-11.5 (3차)</td></tr>
+    <tr><td>국내 고배당주</td><td>0%</td><td>0%</td><td>15%</td><td class="warning">-15.0 (2차)</td></tr>
+    <tr><td>국내 배당 ETF</td><td>0%</td><td>0%</td><td>7.5%</td><td class="warning">-7.5 (2차)</td></tr>
+    <tr><td>미국 리츠 (VNQ+O)</td><td>0%</td><td><strong>9.4%</strong></td><td>12.5%</td><td class="warning">-3.1 (3차)</td></tr>
+    <tr><td>글로벌 리츠</td><td>0%</td><td>0%</td><td>5%</td><td class="warning">-5.0 (3차)</td></tr>
+    <tr><td>커버드콜 (JEPI)</td><td>0%</td><td><strong>6.0%</strong></td><td>7.5%</td><td class="neutral">-1.5 (3차)</td></tr>
+    <tr style="background:rgba(63,185,80,0.08)"><td>채권 (LQD+AGG)</td><td>1.5%</td><td><strong>11.2%</strong></td><td>10%</td><td class="up"><strong>+1.2 (목표 도달)</strong></td></tr>
+    <tr><td>금 + 달러 쿠션</td><td>15.2%</td><td>15.2%</td><td>6%</td><td class="up">+9.2 (현금만 축소)</td></tr>
+  </table>
+
+  <div class="alert-box success" style="margin-top:18px">
+    <strong>처방 1차 효과:</strong>
+    배당형 모델 9개 자산군 중 <strong>4개 진입</strong> (SCHD/VIG, LQD, VNQ+O, JEPI) /
+    채권 자산군 <strong>목표 도달</strong> (10% 권장 → 11.2%) /
+    광범위 인덱스 비중 <strong>72.0% → 51.9%</strong> (1차 -20%p 축소) /
+    자산군 0% 영역 7개 → 4개 (50% 감축)
+  </div>
+
+  <h3>9-2. 4종 모델 비교</h3>
+  <table>
+    <tr>
+      <th>자산군</th><th>🛡️ 안전형</th><th>⚖️ 중립형</th><th>🔥 공격형</th><th>💰 배당형 (사용자)</th>
+    </tr>
+    <tr><td>미국 주식</td><td>15%</td><td>45%</td><td>66%</td><td><strong>49%</strong> (배당주+리츠+커버드콜)</td></tr>
+    <tr><td>한국 주식</td><td>12%</td><td>17%</td><td>방산·반도체</td><td>22%</td></tr>
+    <tr><td>채권</td><td>37%</td><td>15%</td><td>0%</td><td>10% (IG+HY+PFF)</td></tr>
+    <tr><td>금</td><td>13%</td><td>8%</td><td>6%</td><td>4%</td></tr>
+    <tr><td>크립토</td><td>0%</td><td>4%</td><td>10%</td><td>0%</td></tr>
+    <tr><td>현금/MMF</td><td>18%</td><td>6%</td><td>2%</td><td>2%</td></tr>
+    <tr style="background:rgba(63,185,80,0.05)"><td><strong>예상 수익</strong></td><td>5~8%</td><td>8~12%</td><td>15~25%</td><td><strong>6~10%</strong></td></tr>
+    <tr><td><strong>최대 손실</strong></td><td>-10~-15%</td><td>-18~-25%</td><td>-30~-45%</td><td><strong>-12~-20%</strong></td></tr>
+    <tr><td><strong>변동성</strong></td><td>8~12%</td><td>12~16%</td><td>20~30%</td><td><strong>8~14%</strong></td></tr>
+  </table>
+
+  <div class="alert-box info-box">
+    <strong>본 처방 적합 모델:</strong> 배당형 (Dividend Income).
+    사용자 프로파일 (5년+, 매월 200만원 적립, 배당 현금흐름 테마) ↔ 배당형 모델 정확 일치.
+    본 처방은 1차 보강 (배당형 진입). 8월까지 3차 처방 단계 진행 시 모델 도달 가능.
+  </div>
+</div>
+
+<div class="footer">
+  <h3>명령어 가이드</h3>
+  <div class="cmd-grid">
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 암호화폐</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/리밸런싱</code> 비중 재조정</div>
+    <div><code>/글로벌인텔리전스</code> 매크로</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/내포트폴리오</code> 개인 처방</div>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:var(--sub)">
+    생성: briefing-report-generator | 모드: user_portfolio_v2 (private) |
+    데이터 기준: fetch_price.py 2026-05-09 21:17 KST
+  </p>
+</div>
+
+<script>
+function toggleTheme(){
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'light' ? 'dark' : 'light';
+  if(next === 'dark'){
+    html.removeAttribute('data-theme');
+    document.getElementById('theme-icon').textContent = '☀️';
+    document.getElementById('theme-label').textContent = '라이트 모드';
+  } else {
+    html.setAttribute('data-theme', 'light');
+    document.getElementById('theme-icon').textContent = '🌙';
+    document.getElementById('theme-label').textContent = '다크 모드';
+  }
+  try{ localStorage.setItem('theme', next); }catch(e){}
+}
+(function(){
+  try{
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light'){
+      document.documentElement.setAttribute('data-theme','light');
+      document.getElementById('theme-icon').textContent='🌙';
+      document.getElementById('theme-label').textContent='다크 모드';
+    }
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>

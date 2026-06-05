@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>모닝브리핑 — 2026-05-17</title>
+<style>
+:root{
+  --bg:#0f1419;
+  --card:#1a212c;
+  --text:#e8eaed;
+  --sub:#9aa0a6;
+  --border:#2d3742;
+  --up:#3fb950;
+  --down:#f85149;
+  --neutral:#8b949e;
+  --highlight:#58a6ff;
+  --warning:#d29922;
+  --debate:#8b5cf6;
+  --contrarian:#d29922;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa;--card:#ffffff;--text:#24292f;--sub:#57606a;
+  --border:#d0d7de;--up:#1a7f37;--down:#cf222e;--neutral:#57606a;
+  --highlight:#0969da;--warning:#9a6700;--debate:#6639ba;
+  --contrarian:#bc4c00;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08) !important}
+[data-theme="light"] .contrarian-card{background:rgba(188,76,0,0.08) !important}
+[data-theme="light"] .warning-13f{background:#fff8c5 !important;color:#9a6700;border-color:#9a6700}
+[data-theme="light"] .signal-bar{background:rgba(0,0,0,0.08) !important}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .disclaimer{border-top-color:#d0d7de;color:#57606a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:960px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:6px}
+.header .meta{color:var(--sub);font-size:14px}
+
+.up{color:var(--up)}
+.down{color:var(--down)}
+.neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)}
+.warning{color:var(--warning)}
+
+.bg-up{background:rgba(63,185,80,0.10)}
+.bg-down{background:rgba(248,81,73,0.10)}
+.bg-warning{background:rgba(210,153,34,0.10)}
+.bg-highlight{background:rgba(88,166,255,0.10)}
+
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:18px;border:1px solid var(--border)}
+.sec h2{font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:16px 0 10px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.debate-card{
+  background:rgba(139,92,246,0.06);
+  border-left:4px solid var(--debate);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.debate-card .bull{color:var(--up);margin-top:6px}
+.debate-card .bear{color:var(--down);margin-top:6px}
+.debate-card .verdict{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(139,92,246,0.3)}
+
+.contrarian-card{
+  background:rgba(210,153,34,0.06);
+  border-left:4px solid var(--contrarian);
+  border-radius:0 10px 10px 0;
+  padding:14px 18px;
+  margin:14px 0;
+}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.contrarian-card .assumption{color:var(--neutral);font-style:italic;margin-top:6px}
+.contrarian-card .signal{margin-top:6px}
+.contrarian-card .probability{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(210,153,34,0.3)}
+
+.signal-bar{margin:8px 0;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.signal-bar .fill{height:100%;border-radius:4px}
+.signal-bar.up .fill{background:linear-gradient(90deg,var(--up),#2ea043)}
+.signal-bar.down .fill{background:linear-gradient(90deg,var(--down),#da3633)}
+
+.warning-13f{
+  background:rgba(210,153,34,0.10);
+  border:1px solid var(--warning);
+  border-radius:8px;
+  padding:12px 16px;
+  margin:14px 0;
+  color:var(--warning);
+  font-size:14px;
+}
+.warning-13f::before{content:"⚠️ "}
+
+.footer{margin-top:32px;padding:20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:12px;font-size:16px}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+
+.disclaimer{
+  margin-top:24px;
+  padding:16px;
+  border-top:1px solid var(--border);
+  color:var(--sub);
+  font-size:12px;
+  line-height:1.6;
+}
+.disclaimer h4{color:var(--warning);margin-bottom:8px;font-size:13px}
+
+.scenario-box{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap}
+.scenario-item{flex:1;min-width:200px;padding:14px;border-radius:8px;border:1px solid var(--border)}
+.scenario-item.a{background:rgba(63,185,80,0.06);border-color:var(--up)}
+.scenario-item.b{background:rgba(210,153,34,0.06);border-color:var(--warning)}
+.scenario-item.c{background:rgba(248,81,73,0.06);border-color:var(--down)}
+.scenario-item .prob{font-size:20px;font-weight:700;margin-bottom:4px}
+.scenario-item .label{font-size:13px;color:var(--sub);margin-bottom:8px}
+.scenario-item .range{font-size:13px;margin-bottom:6px}
+.scenario-item .cond{font-size:12px;color:var(--sub);font-style:italic}
+.prob-bar-wrap{background:rgba(255,255,255,0.06);height:6px;border-radius:3px;margin-top:8px}
+.prob-bar-fill{height:6px;border-radius:3px}
+
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px}
+
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:22px}
+  .scenario-box{flex-direction:column}
+  .cmd-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- 테마 토글 -->
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>🌅 모닝브리핑 — 2026-05-17 (토요일)</h1>
+  <div class="meta">briefing-lead 작성 | KST 09:15 | 데이터 기준: 미국 정규장 5/15(금) 종가 · 크립토 5/17 KST 09:09 실시간</div>
+</div>
+
+<!-- 핵심 요약 -->
+<div class="sec">
+  <h2>0. 핵심 요약</h2>
+  <p>
+    5/15(금) 미국 시장은 <strong>디레버리징 3일차</strong>로 주식(-1.24%) · Gold(-2.61%) · BTC(-1.13%) 가 동시 하락한 가운데, <span class="warning"><strong>WTI만 +4.20%로 역행 급등</strong></span>하며 스태그플레이션 초기 징후가 확인됐다.
+    30Y 국채 5.13% 고착 + 미시간 소비심리 역대 최저(48.2) + 기대인플레 3.8%의 삼중 합이 Fed 인하 기대를 완전히 소멸시켰다.
+    주말 핵심 변수는 <strong>13F Q1 공개(Buffett 현금 · Tepper EWY · Dalio Gold)</strong>와 <strong>Warsh 첫 공식 발언</strong> — 5/19(월) 개장 방향을 결정하는 분수령이다.
+  </p>
+
+  <div class="warning-13f">
+    13F 시차 경고: 분기말(3/31) 기준, 최대 45일 시차. "현재 보유" 표현 금지. [Dataroma 13F, 기준: 2026-Q1, 포지션일: 2026-03-31, 공시일: 2026-05-15~19]
+  </div>
+</div>
+
+<!-- A-1. 미국 시장 마감 핵심 -->
+<div class="sec">
+  <h2>A-1. 미국 시장 마감 핵심 — "디레버리징 3일차, WTI $105 독주 속 스태그플레이션 그림자"</h2>
+  <h3>직전 정규장(5/15 금) 종가 정리</h3>
+
+  <table>
+    <tr>
+      <th>항목</th><th>종가</th><th>등락률</th><th>비고</th>
+    </tr>
+    <tr class="bg-down">
+      <td><strong>S&amp;P 500</strong></td>
+      <td><strong>7,408.50</strong></td>
+      <td class="down"><strong>-1.24%</strong></td>
+      <td>7,500 이탈 2일째 유지</td>
+    </tr>
+    <tr>
+      <td>NASDAQ</td>
+      <td>26,225.14</td>
+      <td class="down">-1.54%</td>
+      <td>사상 최고(26,635) 대비 조정</td>
+    </tr>
+    <tr>
+      <td>Dow Jones</td>
+      <td>49,526.17</td>
+      <td class="down">-1.07%</td>
+      <td>50,000 이탈 2일째</td>
+    </tr>
+    <tr class="bg-warning">
+      <td><strong>VIX</strong></td>
+      <td><strong>18.43</strong></td>
+      <td class="warning"><strong>+6.78%</strong></td>
+      <td>3거래일 연속 상승, 20 돌파 임박</td>
+    </tr>
+    <tr class="bg-warning">
+      <td><strong>US 10Y</strong></td>
+      <td><strong>4.59%</strong></td>
+      <td class="warning"><strong>+14bp</strong></td>
+      <td>Warsh 매파 프리미엄 고착</td>
+    </tr>
+    <tr class="bg-warning">
+      <td><strong>US 30Y</strong></td>
+      <td><strong>5.13%</strong></td>
+      <td class="warning"><strong>+12bp</strong></td>
+      <td>5% "뉴 노멀" 고착 확인</td>
+    </tr>
+    <tr>
+      <td>DXY</td>
+      <td>99.27</td>
+      <td class="up">+0.39%</td>
+      <td>99 저항 재도전</td>
+    </tr>
+    <tr class="bg-warning">
+      <td>USD/KRW</td>
+      <td>1,497.76</td>
+      <td class="warning">+0.30%</td>
+      <td>1,500 임계점 직전 교착</td>
+    </tr>
+    <tr class="bg-down">
+      <td><strong>Gold</strong></td>
+      <td><strong>$4,555.80</strong></td>
+      <td class="down"><strong>-2.61%</strong></td>
+      <td>디레버리징 3일차 — $4,700→$4,556</td>
+    </tr>
+    <tr class="bg-up">
+      <td><strong>WTI</strong></td>
+      <td><strong>$105.42</strong></td>
+      <td class="up"><strong>+4.20%</strong></td>
+      <td>유일한 역행 상승 — 이란 교착 + 중동 긴장</td>
+    </tr>
+    <tr>
+      <td>BTC</td>
+      <td>$78,174</td>
+      <td class="down">-1.13%</td>
+      <td>주말 추가 하락, $80K 이탈 고착</td>
+    </tr>
+    <tr>
+      <td>ETH</td>
+      <td>$2,183</td>
+      <td class="down">-1.83%</td>
+      <td>BTC 동조 약세</td>
+    </tr>
+  </table>
+
+  <h3>종합 해석</h3>
+  <p>5/15(금) 시장은 <strong>"디레버리징 3일차 + WTI 독자 급등(+4.20%)"</strong>으로 요약된다.</p>
+  <ol style="margin:10px 0;padding-left:22px;line-height:2">
+    <li><strong>디레버리징 지속:</strong> 주식(-1.24%) + Gold(-2.61%) + BTC(-1.13%) 동시 하락 = 현금화 수요가 여전히 자산 전반을 지배. HY 스프레드 2.77%(FRED 5/5) 안정으로 시스템 리스크까지는 미진입.</li>
+    <li><strong>WTI 독자 상승 = 스태그플레이션 시그널:</strong> Gold·주식 하락 속 원유만 $101→$105(+4.20%)로 역행. 이란 핵협상 교착 + 중동 긴장 재고조가 공급 충격을 주도. "경기 둔화 + 인플레 상방" 동시 진행의 전형적 그림.</li>
+    <li><strong>30Y 5.13% 고착:</strong> Warsh 취임 2일째에도 장기 금리 후퇴 없이 5.13% 유지. 시장은 양적 긴축(QT) 가속 + forward guidance 폐지를 기정사실화 중.</li>
+  </ol>
+
+  <p style="margin-top:12px"><strong>전일(5/16 이브닝) 대비 변화:</strong> 크립토 주말 추가 하락(BTC $79,135→$78,174, -1.2%), 미국·아시아 주말 휴장으로 주식·채권 변동 없음. 핵심 변수는 <strong>주말 13F 공개 + Warsh 첫 발언 시기.</strong></p>
+
+  <h3>시계열 비교 (5/14 → 5/15)</h3>
+  <table>
+    <tr><th>지표</th><th>5/14(목)</th><th>5/15(금)</th><th>변화</th></tr>
+    <tr>
+      <td>S&amp;P 500</td><td>7,501</td>
+      <td class="down">7,408</td>
+      <td class="down">-93pt (-1.24%)</td>
+    </tr>
+    <tr>
+      <td>30Y</td><td>5.01%</td>
+      <td class="warning">5.13%</td>
+      <td class="warning">+12bp</td>
+    </tr>
+    <tr>
+      <td>VIX</td><td>17.32</td>
+      <td class="warning">18.43</td>
+      <td class="warning">+1.11 (+6.4%)</td>
+    </tr>
+    <tr>
+      <td>Gold</td><td>$4,703</td>
+      <td class="down">$4,556</td>
+      <td class="down">-$147 (-3.1% 2일간)</td>
+    </tr>
+    <tr>
+      <td>WTI</td><td>$101.16</td>
+      <td class="up">$105.42</td>
+      <td class="up">+$4.26 (+4.2%)</td>
+    </tr>
+    <tr>
+      <td>BTC</td><td>$81,000</td>
+      <td class="down">$78,174</td>
+      <td class="down">-$2,826 (-3.5% 3일간)</td>
+    </tr>
+  </table>
+</div>
+
+<!-- A-2. 주요 뉴스 -->
+<div class="sec">
+  <h2>A-2. 어젯밤 주요 뉴스 — 5/15~16 핵심 4건</h2>
+
+  <h3>1. 13F Q1 2026 마감 완료 — 주말 순차 공개 대기 [영향도: 극높음]</h3>
+  <div class="warning-13f">
+    13F 분기별 의무 공시 마감이 5/15 17:30 ET에 완료. SEC EDGAR에 주말~5/19(월)부터 순차 공개 예정.
+  </div>
+  <p><strong>1차 효과:</strong> 거물 8인의 Q1(기준 3/31) 포지션이 확정. Buffett/Abel $397B 현금 비중 변화, Tepper EWY 추가 매수 여부, Dalio 금·인프라 포지션, Druckenmiller AI 집중도가 핵심 관전 포인트.</p>
+  <p style="margin-top:6px"><strong>2차 효과:</strong> 컨버전스 시그널 발견 시 5/19(월) 개장 갭업/갭다운 트리거. 특히 2인 이상 동일 방향 → 해당 종목/ETF 3~5% 갭 가능.</p>
+  <p style="margin-top:6px"><strong>3차 효과:</strong> Buffett 현금 추가 축적(확률 50%) 확인 시 "거물 매수 미진입 = 시장 고점 의식" 내러티브 강화 → 디레버리징 4일차 연장 요인.</p>
+
+  <h3>2. WTI $105.42(+4.20%) — 이란 핵협상 교착, 공급 충격 재점화 [영향도: 높음 / 부정(인플레)]</h3>
+  <p>디레버리징으로 모든 자산이 하락하는 가운데 WTI만 $101→$105로 독자 급등. 이란 MOU 교착 + 중동 긴장 재고조가 직접 원인.</p>
+  <p style="margin-top:6px"><strong>투자자 시사점:</strong> 에너지 인플레 채널 재가동. CPI 3.8% 기대인플레에 추가 상방 압력. Fed 인하 지연 고착 → 30Y 5%+ 환경 장기화 확률 상승.</p>
+
+  <h3>3. 미시간 소비심리 48.2 — 역대 최저 + 기대인플레 3.8% [영향도: 높음 / 부정]</h3>
+  <p>5/15 공표된 미시간대 소비심리지수 예비치가 48.2로 역대 최저치를 기록. 동시에 1년 기대인플레이션이 3.8%로 상승.</p>
+  <p style="margin-top:6px"><strong>투자자 시사점:</strong> "소비 위축 + 인플레 기대 상승" = 스태그플레이션 교과서적 조합. 소비재(Consumer Discretionary) 섹터 하방 압력, 필수소비재·에너지·Gold 상대 강세 환경.</p>
+
+  <h3>4. NVIDIA Q1 실적 5/22 D-5 카운트다운 — 컨센서스 $43.5B(+58% YoY) [영향도: 높음 / 보류]</h3>
+  <p>NVIDIA Q1 실적 발표까지 5거래일 남았다. 컨센서스 매출 $43.5B(+58% YoY), Data Center +73% YoY.</p>
+  <p style="margin-top:6px"><strong>투자자 시사점:</strong> 컨센서스 상회 시 NASDAQ 추가 신고가 재도전 가능, 하회 시 AI 거품론 재점화 + SOXX -5%+ 연쇄. 현재 디레버리징 환경에서 컨센서스 상회조차 "매도 뉴스" 리스크 존재.</p>
+  <p class="highlight" style="margin-top:8px">→ <code>/종목분석 NVDA</code> 명령으로 심층 분석 가능</p>
+</div>
+
+<!-- A-3. 월요일 아시아 전망 -->
+<div class="sec">
+  <h2>A-3. 다음 주 월요일(5/19) 아시아 시장 전망 — "KOSPI -6.12% 여진 vs 13F 서프라이즈"</h2>
+  <p style="color:var(--warning);font-size:14px;margin-bottom:14px">⚠️ 5/17(토) 한국·아시아 전역 휴장. 본 섹션은 5/19(월) 개장 시나리오 분석.</p>
+
+  <h3>KOSPI 5/19(월) 3개 시나리오</h3>
+
+  <div class="scenario-box">
+    <div class="scenario-item a">
+      <div class="prob up">40%</div>
+      <div class="label">A. 기술적 반등</div>
+      <div class="range"><span class="up">7,500~7,700 (+0.1~+2.8%)</span></div>
+      <div class="cond">RSI 과매도 + 13F 긍정(Tepper EWY 추가) + Warsh 발언 온건</div>
+      <div class="prob-bar-wrap"><div class="prob-bar-fill" style="width:40%;background:var(--up)"></div></div>
+    </div>
+    <div class="scenario-item b">
+      <div class="prob warning">35%</div>
+      <div class="label">B. 횡보·소화</div>
+      <div class="range"><span class="neutral">7,350~7,500 (-1.9~±0%)</span></div>
+      <div class="cond">13F 중립 + Warsh 침묵 + 기관 포지션 정리 지속</div>
+      <div class="prob-bar-wrap"><div class="prob-bar-fill" style="width:35%;background:var(--warning)"></div></div>
+    </div>
+    <div class="scenario-item c">
+      <div class="prob down">25%</div>
+      <div class="label">C. 추가 하락</div>
+      <div class="range"><span class="down">7,100~7,350 (-5.2~-1.9%)</span></div>
+      <div class="cond">13F 부정(Buffett 한국 노출 청산) + Warsh 매파 극단 발언 + WTI $110+</div>
+      <div class="prob-bar-wrap"><div class="prob-bar-fill" style="width:25%;background:var(--down)"></div></div>
+    </div>
+  </div>
+
+  <p style="margin-top:12px"><strong>핵심 판단:</strong> KOSPI -6.12% 낙폭이 역사적으로 코로나(2020.03) 이후 최대이며, 기술적 과매도 구간 진입. 단기 반등 확률이 약간 높으나(40%), 외부 변수(13F, Warsh)에 따라 추가 하락도 가능. <strong>5/19 개장 첫 30분 외인 수급 방향이 결정적.</strong></p>
+  <p style="margin-top:8px"><strong>USD/KRW:</strong> 1,497.76에서 1,500 돌파 여부가 외인 자금 이탈 분수령. 1,500+ 고착 시 외인 매도 3일차 연장 가능.</p>
+</div>
+
+<!-- A-4. 체크포인트 -->
+<div class="sec">
+  <h2>A-4. 오늘의 체크포인트 — 주시 vs 무시</h2>
+
+  <h3>주시 (주말 동안 모니터링)</h3>
+  <table>
+    <tr><th>#</th><th>이벤트/지표</th><th>시점</th><th>왜 중요한가</th></tr>
+    <tr>
+      <td>1</td>
+      <td><strong>13F Q1 순차 공개</strong></td>
+      <td>5/17~19 SEC EDGAR</td>
+      <td>Buffett 현금, Tepper EWY, Dalio Gold 포지션 확인 → 5/19 개장 갭 방향 결정</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Warsh 첫 공식 발언</strong></td>
+      <td>미정 (주말~5/19)</td>
+      <td>정통 매파적 발언(55%) 확인 시 30Y 5.20%+ → 추가 디레버리징. 온건 시 급반등</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>WTI 주말 선물</strong></td>
+      <td>24시간 (주말에도 전자거래)</td>
+      <td>$105→$110 돌파 시 스태그플레이션 경로 확정. 이란 관련 헤드라인 주시</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>크립토 주말 거래</strong></td>
+      <td>24시간</td>
+      <td>BTC $78K 이탈 시 $75K→$70K 경로. 레버리지 청산 규모 모니터링</td>
+    </tr>
+  </table>
+
+  <h3>무시 (과대 해석 경계)</h3>
+  <table>
+    <tr><th>#</th><th>이벤트/지표</th><th>왜 무시하는가</th></tr>
+    <tr>
+      <td>1</td>
+      <td>한국 주말 뉴스(증시 무관)</td>
+      <td>주식 시장 휴장, 가격 반영 불가. 5/19 개장 후 판단</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>소셜미디어 "폭락 예고"</td>
+      <td>VIX 18.43은 경계 구간이나 패닉 수준(25+) 아님. 노이즈 필터링</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>개별 종목 루머(주말 보도)</td>
+      <td>13F 확정 전 추측성 보도는 포지션 기반 조작 가능성. 공시 확인 후 판단</td>
+    </tr>
+  </table>
+</div>
+
+<!-- A-5. 거물 투자자 동향 -->
+<div class="sec">
+  <h2>A-5. 거물 투자자 동향 스냅샷 — "13F Q1 마감 완료, D-Day 주말"</h2>
+
+  <div class="warning-13f">
+    13F 시차 경고: 분기말(3/31) 기준, 최대 45일 시차. "현재 보유" 표현 금지. [Dataroma 13F, 기준: 2026-Q1, 포지션일: 2026-03-31, 공시일: 2026-05-15~19]
+  </div>
+
+  <table>
+    <tr>
+      <th>투자자</th><th>직전 Q4 핵심</th><th>Q1 관전 포인트</th><th>시장 함의</th>
+    </tr>
+    <tr>
+      <td><strong>Buffett/Abel</strong></td>
+      <td>현금 $397B 역대 최고, AAPL -4.3%, BAC -8.9%</td>
+      <td>현금 $400B+ 추가 축적? 또는 메가딜 집행?</td>
+      <td>축적=시장 고점 의식, 메가딜=선별 비중확대</td>
+    </tr>
+    <tr>
+      <td><strong>Dalio</strong></td>
+      <td>All Weather 전략 유지, 인플레 헤지 확대</td>
+      <td>Gold ETF(GLD/IAU) 비중, 원자재 노출도</td>
+      <td>Gold 추가=인플레 장기화 베팅 확인</td>
+    </tr>
+    <tr>
+      <td><strong>Druckenmiller</strong></td>
+      <td>GOOGL +277%, Sandisk 청산 (AI→검색 전환)</td>
+      <td>AI 집중 유지? 또는 매크로 전환(채권 숏?)</td>
+      <td>AI 축소 시 NASDAQ 하방 시그널</td>
+    </tr>
+    <tr>
+      <td><strong>Cathie Wood</strong></td>
+      <td>AMD $75M 매도→AMZN $71.5M 매수 (4/25~26)</td>
+      <td>TSLA/AMZN/혁신 포지션 변화</td>
+      <td>빅테크 실적 베팅 지속 여부</td>
+    </tr>
+    <tr>
+      <td><strong>Tepper</strong></td>
+      <td>경기순환 포지셔닝, EWY(한국 ETF) 보유</td>
+      <td>EWY 추가 매수? 또는 차익실현?</td>
+      <td>추가=한국 슈퍼사이클 확인, 매도=KOSPI 천장 시그널</td>
+    </tr>
+    <tr>
+      <td><strong>Ackman</strong></td>
+      <td>AMZN PER 27x "저평가" 코멘트</td>
+      <td>Pershing Square 5종 집중 변화</td>
+      <td>AMZN 3거물 컨버전스(Buffett+Wood+Ackman) 유지?</td>
+    </tr>
+    <tr>
+      <td><strong>Howard Marks</strong></td>
+      <td>크레딧·리스크 관리, HY 선별 진입</td>
+      <td>디스트레스 채권 편입 확대?</td>
+      <td>확대=경기 둔화 확신 시그널</td>
+    </tr>
+    <tr>
+      <td><strong>Burry</strong></td>
+      <td>Scion 해산 (Q4 이후 13F 미공시)</td>
+      <td>—</td>
+      <td>추적 불가</td>
+    </tr>
+  </table>
+
+  <p style="margin-top:12px"><strong>주말 핵심 관전:</strong> 5/17~19 SEC EDGAR 순차 공개. <strong>Buffett 현금(추가 축적 50%)</strong> + <strong>Tepper EWY(추가 매수 60%)</strong> + <strong>Dalio Gold(확대 55%)</strong>가 컨버전스 시그널 발생 시 5/19 시장 방향 결정적.</p>
+
+  <div style="margin-top:14px;padding:12px 16px;background:rgba(88,166,255,0.06);border-radius:8px;border-left:3px solid var(--highlight);font-size:14px">
+    <strong>인사이더 클러스터 매수 — Form 4 시차 0일</strong><br>
+    최근 7일 내 클러스터 매수 0건 — 섹션 생략.<br>
+    <span style="color:var(--sub)">13F 마감 주간(5/12~16)은 인사이더 거래 blackout 기간과 겹쳐 클러스터 매수 부재는 정상적 현상.</span>
+  </div>
+</div>
+
+<!-- A-6. 모델 포트폴리오 4종 방향 -->
+<div class="sec">
+  <h2>A-6. 모델 포트폴리오 4종 방향 체크</h2>
+
+  <table>
+    <tr>
+      <th>포트폴리오 유형</th><th>시사점 (1줄)</th><th>방향</th><th>참고 자산군</th>
+    </tr>
+    <tr>
+      <td>🛡️ 안전형</td>
+      <td>디레버리징 3일차 + 30Y 5.13% — 채권+현금 쿠션 정당성 극대화</td>
+      <td class="neutral"><strong>유지</strong></td>
+      <td>국채(IEF) 25% + MMF(SGOV) 18% + Gold(GLD) 13%</td>
+    </tr>
+    <tr>
+      <td>⚖️ 중립형</td>
+      <td>WTI $105 스태그플레이션 시그널 — 에너지(DBC) 비중 소폭 확대 검토</td>
+      <td class="warning"><strong>경계</strong></td>
+      <td>S&amp;P(VOO) 28%→26% 축소, 원자재(DBC) 2%→4% 확대 고려</td>
+    </tr>
+    <tr>
+      <td>🔥 공격형</td>
+      <td>NASDAQ -1.54% + VIX 18.43 상승 — 단기 방어 모드, NVDA Q1 대기</td>
+      <td class="down"><strong>조정</strong></td>
+      <td>빅테크 30%→28% 축소, 현금(SGOV) 2%→4% 확대. 5/22 NVDA 후 재평가</td>
+    </tr>
+    <tr>
+      <td>💰 배당형</td>
+      <td>금리 상방 환경 = 커버드콜 프리미엄 확대 수혜, 리츠 역풍</td>
+      <td class="neutral"><strong>유지</strong></td>
+      <td>JEPI/JEPQ 8% 유지(VIX 상승 수혜), VNQ 12%→10% 축소 검토</td>
+    </tr>
+  </table>
+
+  <p style="margin-top:12px"><strong>공통 방향:</strong> 디레버리징 진행 중 현금 쿠션 확대가 전 유형 공통 테마. 5/19(월) 13F 결과 + Warsh 발언 확인 전까지 신규 진입 자제, 기존 포지션 유지/소폭 방어 전환 권장.</p>
+</div>
+
+<!-- A-7. 글로벌 매크로 핵심 -->
+<div class="sec">
+  <h2>A-7. 글로벌 매크로 핵심 시사점 — MODULE G 연계</h2>
+
+  <h3>시사점 1: Warsh 매파 체제 본격화 — "30Y 5% 뉴 노멀"이 자산 가격 전반을 재편</h3>
+  <p>30Y 국채 5.13%가 취임 2일째에도 후퇴 없이 유지되며, 시장은 Warsh 체제하 <strong>"장기 금리 구조적 상방"</strong>을 기정사실화하고 있다.</p>
+  <ul style="margin:10px 0;padding-left:22px;line-height:2">
+    <li><strong>의미:</strong> S&amp;P 주식위험프리미엄(ERP) 추가 압축 → 선행 PER 22.7x가 과도해 보이는 환경 지속</li>
+    <li><strong>영향:</strong> 주식 디레이팅 + 리츠 역풍 + 모기지 7.30%+ → 주택·소비 둔화 중기 경로 확정</li>
+    <li><strong>확신:</strong> 높음 (30Y 5%+ 3일 연속 유지 = 단기 노이즈 아닌 구조적 전환)</li>
+  </ul>
+  <div class="signal-bar down"><div class="fill" style="width:75%"></div></div>
+  <div style="font-size:12px;color:var(--sub);margin-bottom:8px">매파 체제 고착 강도: 75% (3일 연속 5%+ 유지 기준)</div>
+
+  <h3>시사점 2: 스태그플레이션 초기 징후 — WTI $105 + 미시간 48.2 + CPI 3.8% 삼중합</h3>
+  <p>디레버리징 속 WTI만 역행 급등(+4.20%)하며, 미시간 소비심리 역대 최저(48.2) + 기대인플레 3.8%와 결합해 <strong>스태그플레이션 교과서적 조합</strong>이 확인되고 있다.</p>
+  <ul style="margin:10px 0;padding-left:22px;line-height:2">
+    <li><strong>의미:</strong> Fed 인하 기대 완전 소멸. 6월 FOMC 동결 확정(Fed Funds 3.64% 유지), 연내 인하 0회 가능</li>
+    <li><strong>영향:</strong> 방어 자산(Gold, 필수소비재, 에너지) 상대 강세 / 성장주·소비재·리츠 상대 약세</li>
+    <li><strong>확신:</strong> 중간~높음 (WTI $105가 지속될지 이란 변수에 달림)</li>
+  </ul>
+  <div class="signal-bar down"><div class="fill" style="width:60%"></div></div>
+  <div style="font-size:12px;color:var(--sub)">스태그플레이션 징후 강도: 60% (이란 변수 해소 시 하향 가능)</div>
+</div>
+
+<!-- debate-card -->
+<div class="debate-card">
+  <div class="card-title">💜 핵심 논쟁 — "디레버리징 3일차: 건강한 포지션 정리인가, 구조적 하락 전환인가?"</div>
+  <div class="bull">
+    <strong>강세 측 주장:</strong>
+    <ol style="margin:6px 0;padding-left:20px;line-height:1.9">
+      <li>HY 스프레드 2.77% 안정 — 시스템 리스크 미진입. 디레버리징은 단기 포지션 정리에 불과.</li>
+      <li>KOSPI -6.12% + S&amp;P -3.7%(3일간)는 RSI 과매도 구간 진입 — 기술적 반등 임박.</li>
+      <li>NVIDIA Q1 컨센서스 상회(+58% YoY) 시 AI 내러티브 재점화로 NASDAQ 반등.</li>
+    </ol>
+  </div>
+  <div class="bear">
+    <strong>약세 측 주장:</strong>
+    <ol style="margin:6px 0;padding-left:20px;line-height:1.9">
+      <li>30Y 5.13% "뉴 노멀" = S&amp;P ERP 역사적 저점(1999년 0.30% 수준 접근) — 밸류에이션 정당화 불가.</li>
+      <li>WTI $105 + 미시간 48.2 = 스태그플레이션 초기 확정 — Fed 인하 불가 환경.</li>
+      <li>Buffett 현금 $397B→추가 축적 50% 확률 = 거물도 시장 고점 의식.</li>
+    </ol>
+  </div>
+  <div class="verdict">
+    <strong>현재 시장 컨센서스:</strong> 약세 측 약간 우세 (VIX 18.43 3일 연속 상승이 반영)<br>
+    <strong>briefing-lead 판단:</strong> 약세 측 확률을 55%로 평가. 핵심 근거: 30Y 5.13%가 구조적이라면 ERP 압축이 S&amp;P 선행 PER 22.7x를 지탱할 수 없음. 단, HY 2.77% 안정이 "붕괴"가 아닌 "조정"을 시사하므로 -10% 이상 폭락보다는 -3~5% 추가 조정 후 횡보가 기본 시나리오.
+  </div>
+</div>
+
+<!-- contrarian-card -->
+<div class="contrarian-card">
+  <div class="card-title">🟠 과소평가 포인트 — "WTI $105 급등이 오히려 Fed 인하의 촉매가 될 수 있다"</div>
+  <div class="assumption">
+    <strong>시장의 일반 가정:</strong> WTI $105 = 인플레 상방 압력 = Fed 인하 불가 = 장기 금리 추가 상승. 스태그플레이션 경로에서 Fed는 동결만 가능하다.
+  </div>
+  <div class="signal">
+    <strong>반대 시그널:</strong>
+    <ol style="margin:6px 0;padding-left:20px;line-height:1.9">
+      <li>미시간 소비심리 48.2 역대 최저 — 소비 붕괴가 수요 측 디플레 압력을 만들면 Core CPI가 하락 반전 가능. 에너지 인플레는 "지나가는 바람"으로 분류될 수 있음.</li>
+      <li>Warsh가 정통 매파적이더라도 "고용 최대화" 이중 책무를 무시할 수 없음 — 실업률 4.3%→4.5%+ 진입 시 긴급 인하 가능.</li>
+      <li>2022년 6월 유사 사례: WTI $120 속에서도 Fed는 고용 악화 시 결국 피벗 — 인플레 단독으로 인하를 영구히 차단한 사례는 없음.</li>
+    </ol>
+    <strong>만약 반대 시그널이 맞다면:</strong> 30Y 5.13%→4.80% 급락 + S&amp;P +3~5% 급반등 + Gold $4,800+ 가속(실질금리 하락). 현재 "인플레=인하 불가" 내러티브에 과매도된 채권·성장주가 최대 수혜.
+  </div>
+  <div class="probability">
+    <strong>확률 (briefing-lead 추정):</strong> 낮음~중간 (25~30%). 핵심 트리거: 실업률 4.5%+ (6/6 고용 보고서) 또는 Core PCE 2.8% 이하 반전.
+  </div>
+</div>
+
+<!-- 심층 분석 권장 -->
+<div class="sec" style="border-color:var(--highlight)">
+  <h2>🔬 심층 분석 권장 (다음 단계)</h2>
+  <table>
+    <tr><th>#</th><th>티커</th><th>권장 사유 (1줄)</th><th>다음 단계</th></tr>
+    <tr>
+      <td>1</td>
+      <td><strong>NVDA</strong></td>
+      <td>Q1 실적 5/22 D-5, AI 인프라 슈퍼사이클 최종 검증 + 디레버리징 속 포지셔닝 판단</td>
+      <td><code>/종목분석 NVDA</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>XLE</strong></td>
+      <td>WTI $105 독자 급등, 스태그플레이션 헤지 + 에너지 인플레 채널 구조 확인</td>
+      <td><code>/종목분석 XLE</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>GLD</strong></td>
+      <td>Gold $4,556 디레버리징 3일차 낙폭 → 구조적 강세 환경에서 재진입 구간 평가</td>
+      <td><code>/종목분석 GLD</code></td>
+    </tr>
+  </table>
+  <p class="highlight" style="margin-top:10px;font-size:14px">→ 위 티커는 <code>/종목분석 {티커}</code> 명령으로 심층 분석 가능합니다.</p>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <h3>📌 다른 브리핑도 확인해보세요</h3>
+  <table>
+    <tr><td><code>/모닝브리핑</code></td><td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td></tr>
+    <tr><td><code>/이브닝브리핑</code></td><td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td></tr>
+    <tr><td><code>/주간리포트</code></td><td>→ 한 주 심층 + 성과 추적(C-9)</td></tr>
+    <tr><td><code>/리밸런싱</code></td><td>→ 4종 모델 포트폴리오 재조정</td></tr>
+    <tr><td><code>/크립토브리핑</code></td><td>→ BTC/ETH/SOL + 온체인 + 규제</td></tr>
+    <tr><td><code>/모델포트폴리오</code></td><td>→ 4종 현재 구성 + 구체 종목·ETF</td></tr>
+    <tr><td><code>/글로벌인텔리전스</code></td><td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td></tr>
+    <tr><td><code>/풀브리핑</code></td><td>→ A+B+C+E 4편 동시</td></tr>
+    <tr><td><code>/성과리뷰</code></td><td>→ 1주/2주/1개월/3개월 적중률</td></tr>
+    <tr><td><code>/내포트폴리오</code></td><td>→ 사용자 보유 자산 (개인 데이터 격리)</td></tr>
+  </table>
+</div>
+
+<div class="footer" style="margin-top:16px">
+  <h3>명령어 가이드</h3>
+  <div class="cmd-grid">
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+    <div><code>/비교분석</code> 두 종목 비교</div>
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 크립토</div>
+    <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/내포트폴리오</code> 내 자산</div>
+    <div><code>/리밸런싱</code> 포트 조정</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/풀브리핑</code> A+B+C+E</div>
+    <div><code>/KB업데이트</code> KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
+    <div><code>/손절계산</code> ATR 계산</div>
+    <div><code>/리포트</code> HTML 재생성</div>
+    <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+    <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+    <div><code>/리서치업데이트</code> Research KB 갱신</div>
+    <div><code>/재분석실행</code> 자동 재분석</div>
+  </div>
+  <p style="margin-top:12px;font-size:12px;color:var(--sub)">생성: briefing-report-generator | 모드: morning | 데이터 기준: 2026-05-17 KST 09:15</p>
+</div>
+
+<!-- 주의사항 -->
+<div class="disclaimer">
+  <h4>⚠️ 주의사항</h4>
+  <ul style="padding-left:18px;line-height:1.9">
+    <li>본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도 추천이 아닙니다.</li>
+    <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+    <li>13F 데이터는 분기말 기준 최대 45일 시차가 있습니다.</li>
+    <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+    <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+    <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+  </ul>
+</div>
+
+<script>
+function applyTheme(light){
+  if(light){document.body.setAttribute("data-theme","light");document.getElementById("theme-icon").textContent="🌙";document.getElementById("theme-label").textContent="다크 모드";}
+  else{document.body.removeAttribute("data-theme");document.getElementById("theme-icon").textContent="☀️";document.getElementById("theme-label").textContent="라이트 모드";}
+  localStorage.setItem("theme",light?"light":"dark");
+}
+function toggleTheme(){applyTheme(document.body.getAttribute("data-theme")!=="light");}
+(function(){applyTheme(localStorage.getItem("theme")==="light");})();
+</script>
+
+</body>
+</html>

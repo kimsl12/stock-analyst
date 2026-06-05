@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>코인베이스 (COIN) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>코인베이스 (COIN)</h1><div class="meta">주식 종합 분석 리포트 | 20260605</div><div style="margin-top:8px"><span class="badge b-hold">HOLD (중립)</span> <span class="badge b-score">55/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$165.10</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$43.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (적자)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$139.36~$444.65</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p>코인베이스는 미국 최대 규제 준수형 암호화폐 거래소이자 S&P 500 편입 최초의 크립토 네이티브 기업이다. 2026년 1분기 매출 $1.41B(-31% YoY), 순손실 $394M(EPS -$1.49)로 헤드라인은 부진했으나, <strong>구독·서비스 매출이 순매출의 44%로 사상 최대 비중</strong>을 기록하며 다각화가 진전됐다. USDC 보관 $19B(전체 유통의 25%+)·거래 점유율 8.6%·파생 +169% YoY는 사상 최고 수준이다. 그러나 종목분석 시점은 비트코인 $63K(2월래 최저)·극단 공포·ETF 10일 연속 $30억 유출이라는 <strong>암호화폐 약세장 한복판</strong>으로, 거래 매출과 주가 멀티플이 동시 압박받는다. 현재가 $165는 고점($445) 대비 -63%, 컨센 중앙값($227) 대비 -27% 아래다. <strong>구조적 강점(규제 수혜·다각화·기관 인프라)과 사이클 역풍(거래 매출·매크로)이 정면 충돌하는 HOLD(중립) 구간</strong>으로 판단한다.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$143.97</div><div class="dn" style="font-size:13px">-12.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$196.79</div><div class="up" style="font-size:13px">+19.2%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="35" y="30" width="55" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="35" y1="26" x2="35" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="35" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$144</text><line x1="57" y1="24" x2="57" y2="52" stroke="var(--text)" stroke-width="3"/><text x="57" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$165</text><line x1="90" y1="26" x2="90" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="90" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$197</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $139</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $445</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $10.56 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,80.0 166.5,113.6 201.8,129.9 178.0,162.4 175.3,198.5 140.0,185.0 98.9,206.6 97.2,163.9 78.2,129.9 119.4,121.7" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업모델</text><circle cx="140.0" cy="80.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무</text><circle cx="166.5" cy="113.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장</text><circle cx="201.8" cy="129.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="178.0" cy="162.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="175.3" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀</text><circle cx="140.0" cy="185.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스</text><circle cx="98.9" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="97.2" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">카탈리스트</text><circle cx="78.2" cy="129.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">매크로</text><circle cx="119.4" cy="121.7" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업모델</td><td>7.0</td><td>/10</td></tr><tr><td>재무</td><td>4.5</td><td>/10</td></tr><tr><td>성장</td><td>6.5</td><td>/10</td></tr><tr><td>수익성</td><td>4.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.0</td><td>/10</td></tr><tr><td>모멘텀</td><td>3.5</td><td>/10</td></tr><tr><td>컨센서스</td><td>7.0</td><td>/10</td></tr><tr><td>리스크</td><td>4.5</td><td>/10</td></tr><tr><td>카탈리스트</td><td>6.5</td><td>/10</td></tr><tr><td>매크로</td><td>3.5</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 55/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Narrow Moat (Wide 경계)</span></h2><p>2012년 설립, 2021년 나스닥 직상장. 세계 최대 규모의 규제 준수형 암호화폐 거래소이자 디지털자산 인프라 기업이다. 2025년 5월 19일 S&P 500에 편입된 최초의 크립토 네이티브 기업이다. 사업은 (1) 개인·기관 매매 중개(거래 수수료), (2) 구독·서비스(USDC 스테이블코인 수익·스테이킹·커스터디), (3) 파생상품·국제(Deribit 인수로 글로벌 1위), (4) 자체 레이어2 Base 생태계로 구성된다. '암호화폐 거래소'에서 '모든 것을 거래하는 거래소(everything exchange)'로의 전환을 명시적 전략 목표로 삼아, 선물·옵션·파생·스팟을 단일 플랫폼화하고 암호화폐 가격 의존도를 줄이려 한다.</p><h3>Moat 상세</h3><p>해자의 원천은 <strong>규제 준수·기관 신뢰</strong>다. 미국 최대 규제 준수 거래소로서 진입장벽이 높고, BlackRock IBIT 등 현물 ETF의 커스터디 파트너로 기관 암호화폐 채택의 인프라 위치를 점유한다. USDC 전체 유통의 25%+를 보관한다. 다만 거래 수수료는 경쟁·가격 압력에 노출되고 리테일 전환비용이 낮아 전체적으로 Narrow Moat로 평가한다. 미국 규제 명확화 국면에서 이 해자는 강화 방향이다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p><strong>2026년 1분기(5/7 발표)</strong>: 총 매출 $1.41B(-31% YoY, 컨센 $1.52B 하회), 거래 수수료 $755.8M(-40% YoY), 구독·서비스 $584M(순매출 44%, 사상 최대 비중), 스테이블코인 $305M. GAAP 순손실 $394M, EPS -$1.49(컨센 +$0.27 대규모 미스).<br><br>손익의 본질은 '암호화폐 가격·거래량의 함수'다. 거래 수수료는 강세장 폭발·약세장 급감의 극단 경기순환 매출로, 1Q26 -40% YoY가 이를 그대로 보여준다. 반대축인 다각화 매출은 구독·서비스 44% 비중, 스테이블코인 2025년 연간 $1.35B(총매출의 ~20%), USDC 잔고 $19B 사상 최고로 확대 중이다. 약세장에서는 거래 매출 레버리지가 하방으로 작동해 이익 변동성이 매출 변동성보다 크다. 약 14% 구조조정으로 비용 기반을 축소하며 손익분기를 방어한다. 배당은 없으며, 밸류에이션은 전적으로 미래 거래량·다각화 매출 기대에 의존한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>현재가 $165.10, 시가총액 약 $43.5B. 1Q26 GAAP 적자로 PER은 의미가 없어, 밸류에이션은 매출 멀티플·미래 거래량 시나리오로 판단해야 한다.<br><br>주가는 고점($445, 2025-07) 대비 약 -63%, S&P500 편입가($259, 2025-05) 대비 -25%, 컨센 중앙값($227) 대비 -27% 아래다. 월가 컨센서스는 Buy 유지, 평균·중앙 목표가 $227~$304이나 범위가 $107~$440으로 극단적으로 넓다 — 암호화폐 가격 시나리오에 따라 가치 추정이 발산한다. 현재가가 컨센 하단보다 한참 위라 컨센 초과 경고는 해당 없으며, <strong>컨센 기준으로는 상당한 잠재 업사이드</strong>가 존재하나 그 실현은 암호화폐 가격 안정에 조건부다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>약세 지배</strong>. 6개월 약 -40%, 52주 범위 $139~$445의 하단부, ATR(14) $10.56(6.4%)로 대형주의 3~6배 극단 변동성. 2025-07 $445 정점 → 2025-10-10 플래시 크래시 → 현재 $165로 고점 대비 -63% 조정됐으나 52주 저점($139) 대비 +18% 위에서 횡보 중이다.<br><br>매크로는 전면 역풍: BTC $63K·F&G 극단공포·ETF 10일 연속 $30억 유출·MSTR 매도 루머, Fed 인상 논의 전환(Waller '인상 배제 불가', 6/16~17 Warsh 첫 FOMC), 미국 3대지수 조정·VIX 16대 경계·달러 강세. 컨센서스는 Buy를 유지하나 추세 전환은 BTC $60K 지지 확인 + 거래량 회복이 선행되어야 한다.</p><table><thead><tr><th>소스</th><th>등급</th><th>목표가</th><th>범위</th></tr></thead><tbody><tr><td>28인 컨센</td><td>Buy</td><td>$304.12</td><td>—</td></tr><tr><td>MarketBeat</td><td>—</td><td>$296.72</td><td>—</td></tr><tr><td>51인 컨센</td><td>Bullish</td><td>$227.00 (중앙)</td><td>$120~$420</td></tr><tr><td>별도 집계</td><td>—</td><td>$240.17</td><td>$107~$400</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>산업: 암호화폐 약세장 한복판</strong>. BTC $63K(2월래 최저, 주간 -14%·4주 -21%), F&G 극단공포, 스팟 BTC ETF 10거래일 연속 약 $30억 순유출, MSTR 수년만의 첫 BTC 매도 루머. 거래 수수료 매출에 직접적 역풍이다.<br><br><strong>거래 의존 vs 다각화</strong>가 사업모델의 핵심 축이다. 취약축은 거래 매출(가격 베타 극단), 방어축은 구독·서비스(44%, 가격 둔감), 성장축은 파생(+169%, Deribit 글로벌 1위), 옵션은 Base L2다. Deribit 인수로 선물·옵션·파생·스팟을 단일 플랫폼·글로벌 유동성 풀로 묶는다.<br><br><strong>경쟁</strong>: Binance(글로벌 1위·규제 리스크), Robinhood(다각화 우위), Kraken/Gemini(중견). 코인베이스는 BlackRock IBIT 등 ETF의 커스터디 파트너로 기관 채택의 수혜 위치다.<br><br><strong>규제 순풍</strong>: GENIUS Act(2025-07 발효)로 거래소 활동 기반 USDC 보상 유지, CLARITY Act 2026년 5월 타협안이 보상 프로그램 보존. Bloomberg Intelligence는 신규 규제로 코인베이스 스테이블코인 매출 2~7배 증가 가능 전망. 미국 규제 명확화는 규제 준수 사업자에 진입장벽·신뢰 프리미엄으로 작용한다.</p><table><thead><tr><th>경쟁자</th><th>위치</th><th>차별점</th></tr></thead><tbody><tr><td>Coinbase</td><td>미국 최대, 규제 준수 1위</td><td>기관 신뢰·커스터디·S&P500 편입</td></tr><tr><td>Binance</td><td>글로벌 거래량 1위</td><td>규제 리스크, 미국 제한적</td></tr><tr><td>Robinhood</td><td>리테일 다각화</td><td>크립토를 주식·옵션과 묶음, 약세장 방어력</td></tr><tr><td>Kraken/Gemini</td><td>중견 거래소</td><td>규제 준수 추구</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p>리스크의 본질은 <strong>암호화폐 가격 베타</strong>다. 현 시점은 BTC $63K·극단공포·ETF 투매라는 최악에 가까운 단기 환경으로 거래 매출과 주가가 동시 압박받는다(R1·R2·R3 동시 발현). 여기에 GAAP 적자·고금리 디레이팅이 겹친다. 다만 이 리스크들은 대부분 암호화폐 사이클 변수로, 가격이 안정·반등하면 빠르게 역전될 수 있다. 구조적·돌이킬 수 없는 리스크(규제 금지, 사업모델 붕괴)는 현재 낮다 — 오히려 규제는 순풍이다. 종합 리스크는 <strong>상(단기 변동성 극단, 중기 구조 리스크 제한)</strong>으로 평가한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">암호화폐 가격 약세 지속</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">거래 매출 극단 베타</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">ETF 자금이탈·기관 투매</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">고금리 장기화·밸류 압박</text><circle cx="180" cy="192" r="5" fill="var(--warn)"/><text x="189" y="196" fill="var(--text)" font-size="10">GAAP 적자 지속</text><circle cx="180" cy="210" r="5" fill="var(--warn)"/><text x="189" y="214" fill="var(--text)" font-size="10">규제 불확실성(CLARITY 미통과)</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>암호화폐 가격 약세 지속</strong> (발생: 극상, 영향: 거래 매출 직격)<br><span style="color:var(--sub);font-size:13px">BTC $63K(2월래 최저), F&G 극단공포. $60K 이탈 시 거래량·매출 가속 감소, 적자 분기 연장</span></div><div class="ri rl"><strong>거래 매출 극단 베타</strong> (발생: 상, 영향: 손익 변동성)<br><span style="color:var(--sub);font-size:13px">1Q26 거래수수료 -40% YoY. 약세장 레버리지 하방 작동, 이익 변동성이 매출보다 큼</span></div><div class="ri rl"><strong>ETF 자금이탈·기관 투매</strong> (발생: 상, 영향: 거래량·심리)<br><span style="color:var(--sub);font-size:13px">10일 연속 $30억 ETF 유출, MSTR 매도 루머. 기관 디레버리징 시 거래량 추가 위축</span></div><div class="ri rl"><strong>고금리 장기화·밸류 압박</strong> (발생: 중상, 영향: 멀티플)<br><span style="color:var(--sub);font-size:13px">Fed 인상 논의 전환, 성장주 디레이팅. 단 USDC 이자 수익엔 긍정 양면성</span></div><div class="ri rm"><strong>GAAP 적자 지속</strong> (발생: 중, 영향: 자본·심리)<br><span style="color:var(--sub);font-size:13px">1Q26 -$394M 순손실. 약세장 장기화 시 손실 누적, 14% 구조조정도 비용 압박 방증</span></div><div class="ri rm"><strong>규제 불확실성(CLARITY 미통과)</strong> (발생: 중, 영향: 성장 옵션)<br><span style="color:var(--sub);font-size:13px">CLARITY Act 본회의 60표 통과 불확실. USDC yield 규제 변경 시 스테이블코인 매출 모델 영향</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>HOLD (중립). 종합 55/100.</strong> 현 약세장에서 코인베이스는 '싸지만 칼날'이다. 컨센 대비 저평가·다각화 옵션은 매력적이나 BTC $60K 이탈 시 추가 급락 위험이 크다.<br>&bull; <strong>진입</strong>: $150~$160 분할 (현재가 $165 소폭 하단 대기). 약세장·ATR 6.4% — 추격매수 금지<br>&bull; <strong>손절(-2 ATR)</strong>: $143.97 (-12.8%). 52주 저점 $139 직상단, 이탈 시 추세 훼손<br>&bull; <strong>목표(+3 ATR)</strong>: $196.79 (+19.2%). 직전 $180~$200 저항권. 컨센 중앙값 $227까진 추가 업사이드<br>&bull; <strong>포지션</strong>: 소액·분할만. 극단 변동성 — 풀 포지션 금지, BTC $60K 지지 확인 후 증액<br><br>신규 풀매수는 시기상조. 암호화폐 가격 안정·거래량 회복 + CLARITY Act 통과 가시화가 비중 확대의 트리거다.</p></div>
+<div class="sec"><h2>Confidence Interval</h2>**종합 점수 신뢰구간: 50~60/100 (중심 55)**
+
+- **하단(50)**: BTC $60K 이탈→$50K, 거래 매출 추가 급감, 적자 분기 2~3개 연장, 멀티플 추가 압축, 주가 $139 저점 재시험·이탈
+- **상단(60)**: BTC $60K 지지 후 반등, CLARITY Act 통과 가시화, USDC 매출 구조적 확대 시작, 다각화로 손익분기 개선, 주가 컨센 $227 방향 회복
+- **제약**: 코인베이스 가치는 암호화폐 가격 시나리오에 발산적 의존(목표가 $107~$440). 단일 점수의 본질적 불확실성이 크다</div>
+<div class="sec"><h2>약한 가정 3개</h2>1. **암호화폐 약세장 단기 가정**: BTC $63K가 $50~60K에서 지지될 것으로 암묵 가정. 구조적 하락장(2022형 -70%) 재현 시 점수 50 미만 추가 하향
+2. **다각화 매출의 가격 둔감성 가정**: 구독·서비스 44%가 거래 매출 변동을 평탄화한다 가정했으나, 스테이킹·USDC 잔고도 약세장에서 일부 위축(가격·잔고 연동) — 방어력 과대평가 위험
+3. **규제 수혜 실현 시점 가정**: USDC 매출 2~7배(Bloomberg Intelligence)를 카탈리스트로 반영했으나 CLARITY 본회의 통과·시행 시점 불확실. 2027년 이후 지연 시 카탈리스트 점수(6.5) 과대평가</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 20260605 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="COIN_Coinbase_20260605.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

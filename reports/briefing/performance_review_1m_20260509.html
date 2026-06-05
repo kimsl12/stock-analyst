@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>성과 리뷰 1m — 2026-05-09</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --red: #f85149;
+  --orange: #d29922;
+  --purple: #8b5cf6;
+  --gray: #6e7681;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.65;
+  padding: 32px 16px;
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 32px;
+}
+header h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+header .meta { color: var(--text-muted); font-size: 14px; }
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.section h2 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.section h3 { font-size: 16px; color: var(--accent); margin: 16px 0 8px; }
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.kpi {
+  background: rgba(88, 166, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  text-align: center;
+}
+.kpi .label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.kpi .value { font-size: 22px; font-weight: 700; color: #fff; }
+.kpi.green .value { color: var(--green); }
+.kpi.red .value { color: var(--red); }
+.kpi.orange .value { color: var(--orange); }
+.kpi.gray .value { color: var(--gray); }
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.donut svg { transform: rotate(-90deg); }
+.legend { font-size: 14px; }
+.legend-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.swatch { width: 14px; height: 14px; border-radius: 3px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+th { background: rgba(88, 166, 255, 0.08); color: #fff; font-weight: 600; }
+td.right { text-align: right; }
+.tag-적중 { background: rgba(63, 185, 80, 0.15); color: var(--green); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+.tag-오류 { background: rgba(248, 81, 73, 0.15); color: var(--red); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+.tag-진행중 { background: rgba(210, 153, 34, 0.15); color: var(--orange); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+.tag-보류 { background: rgba(110, 118, 129, 0.15); color: var(--gray); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 13px; }
+.bar-label { width: 120px; color: var(--text-muted); }
+.bar-track { flex: 1; height: 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--green), #2ea043); }
+.bar-fill.warn { background: linear-gradient(90deg, var(--orange), #b67d00); }
+.bar-fill.bad { background: linear-gradient(90deg, var(--red), #c93131); }
+.bar-value { width: 60px; text-align: right; color: #fff; font-weight: 600; font-variant-numeric: tabular-nums; }
+.alert-box {
+  background: rgba(210, 153, 34, 0.08);
+  border-left: 3px solid var(--orange);
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.alert-box.danger { background: rgba(248, 81, 73, 0.08); border-left-color: var(--red); }
+.alert-box.info { background: rgba(88, 166, 255, 0.08); border-left-color: var(--accent); }
+ol.lessons li { margin: 12px 0; padding-left: 8px; }
+ol.lessons strong { color: var(--accent); }
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>성과 리뷰 — 1개월</h1>
+  <div class="meta">
+    기간: 2026-04-09 ~ 2026-05-09 (22영업일) ·
+    작성: briefing-lead ·
+    소스: knowledge-db/performance/2026_recommendations.md + fetch_price.py 5/9 19:03 KST
+  </div>
+</header>
+
+<section class="section">
+  <h2>종합 통계</h2>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">전체 제안</div><div class="value">60건</div></div>
+    <div class="kpi green"><div class="label">적중</div><div class="value">43</div></div>
+    <div class="kpi red"><div class="label">오류</div><div class="value">11</div></div>
+    <div class="kpi orange"><div class="label">진행중</div><div class="value">6</div></div>
+    <div class="kpi gray"><div class="label">만료</div><div class="value">0</div></div>
+  </div>
+
+  <div class="donut-wrap">
+    <div class="donut">
+      <svg width="180" height="180" viewBox="0 0 42 42">
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#0d1117" stroke-width="6"/>
+        <!-- 적중 43/60 = 71.67% -->
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#3fb950" stroke-width="6"
+                stroke-dasharray="71.67 28.33" stroke-dashoffset="0"/>
+        <!-- 오류 11/60 = 18.33% -->
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#f85149" stroke-width="6"
+                stroke-dasharray="18.33 81.67" stroke-dashoffset="-71.67"/>
+        <!-- 진행중 6/60 = 10.00% -->
+        <circle cx="21" cy="21" r="15.915" fill="none" stroke="#d29922" stroke-width="6"
+                stroke-dasharray="10.00 90.00" stroke-dashoffset="-90.00"/>
+        <text x="21" y="22" text-anchor="middle" fill="#fff" font-size="6" transform="rotate(90 21 21)" font-weight="700">79.6%</text>
+      </svg>
+    </div>
+    <div class="legend">
+      <div class="legend-row"><div class="swatch" style="background:#3fb950"></div><span>적중 43건 (71.7%)</span></div>
+      <div class="legend-row"><div class="swatch" style="background:#f85149"></div><span>오류 11건 (18.3%)</span></div>
+      <div class="legend-row"><div class="swatch" style="background:#d29922"></div><span>진행중 6건 (10.0%)</span></div>
+      <div class="legend-row"><div class="swatch" style="background:#6e7681"></div><span>만료 0건</span></div>
+      <hr style="margin:8px 0; border-color:var(--border);">
+      <div style="margin-top:8px;"><strong style="color:var(--green); font-size:18px;">종합 적중률 79.6%</strong></div>
+      <div style="font-size:12px; color:var(--text-muted);">= 43 / (43+11), 진행중·만료 제외</div>
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <strong>직전 대비:</strong> 2026-05-05 산정 86.4% → 2026-05-09 산정 79.6% (<strong style="color:var(--red)">-6.8%p</strong>)
+    <br><span style="font-size:12px; color:var(--text-muted);">±10%p 임계 미만이라 자동 ⚠ 트리거 사유는 아니지만, 단기(1~3M) 카테고리 적중률 73.3% → 68.4% 추가 하락은 다음 주 모니터링 필요.</span>
+  </div>
+
+  <div class="alert-box danger">
+    <strong>윈도우 슬라이딩 효과:</strong> 4/7~4/8 추천(SK하이닉스 +37.8%·한화에어로 +22.1% 등 큰 적중 4건)이 윈도우 외로 빠지고, 5/5~5/7 신규 16건이 추가됨. 그 중 4건(BTC 200DMA Bull·한화에어로 5/5 추격 매수·XLE 5/5 바닥 매수·SMR)이 단기 오류로 분류되어 적중률을 직접 끌어내림.
+  </div>
+</section>
+
+<section class="section">
+  <h2>적중률 분해 — 모듈별</h2>
+  <table>
+    <thead><tr><th>모듈</th><th class="right">제안</th><th class="right">적중</th><th class="right">오류</th><th class="right">진행중</th><th class="right">적중률</th></tr></thead>
+    <tbody>
+      <tr><td>morning</td><td class="right">18</td><td class="right">15</td><td class="right">2</td><td class="right">1</td><td class="right"><strong style="color:var(--green)">88.2%</strong></td></tr>
+      <tr><td>evening</td><td class="right">30</td><td class="right">19</td><td class="right">7</td><td class="right">4</td><td class="right"><strong style="color:var(--orange)">73.1%</strong></td></tr>
+      <tr><td>weekly</td><td class="right">11</td><td class="right">8</td><td class="right">2</td><td class="right">1</td><td class="right"><strong style="color:var(--green)">80.0%</strong></td></tr>
+      <tr><td>global</td><td class="right">1</td><td class="right">1</td><td class="right">0</td><td class="right">0</td><td class="right" style="color:var(--gray)">표본 부족</td></tr>
+      <tr><td>crypto/portfolio/rebalancing</td><td class="right">0</td><td class="right">—</td><td class="right">—</td><td class="right">—</td><td class="right" style="color:var(--gray)">표본 부족</td></tr>
+    </tbody>
+  </table>
+
+  <h3>모듈별 적중률 시각화</h3>
+  <div class="bar-row">
+    <span class="bar-label">morning</span>
+    <div class="bar-track"><div class="bar-fill" style="width:88.2%"></div></div>
+    <span class="bar-value">88.2%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">evening</span>
+    <div class="bar-track"><div class="bar-fill warn" style="width:73.1%"></div></div>
+    <span class="bar-value">73.1%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">weekly</span>
+    <div class="bar-track"><div class="bar-fill" style="width:80.0%"></div></div>
+    <span class="bar-value">80.0%</span>
+  </div>
+  <div class="alert-box info">
+    <strong>역전 패턴:</strong> 직전 산정에서 evening(87.5%)이 morning(81.3%)을 상회했으나 5/9 산정에선 morning(88.2%)이 우위. evening 모듈에서 5월 들어 단기 추격 매수(BTC 200DMA·한화에어로 5/5·XLE 5/5)가 4건 동시 손실 확정 — <strong>신고가권에서 같은 종목 재추천이 evening 모듈에 집중된 영향</strong>.
+  </div>
+</section>
+
+<section class="section">
+  <h2>적중률 분해 — 카테고리별</h2>
+  <table>
+    <thead><tr><th>카테고리</th><th class="right">제안</th><th class="right">적중</th><th class="right">오류</th><th class="right">진행중</th><th class="right">적중률</th></tr></thead>
+    <tbody>
+      <tr><td>종목</td><td class="right">21</td><td class="right">17</td><td class="right">2</td><td class="right">2</td><td class="right"><strong style="color:var(--green)">89.5%</strong></td></tr>
+      <tr><td>ETF</td><td class="right">23</td><td class="right">18</td><td class="right">3</td><td class="right">2</td><td class="right"><strong style="color:var(--green)">85.7%</strong></td></tr>
+      <tr><td>자산군</td><td class="right">13</td><td class="right">7</td><td class="right">5</td><td class="right">1</td><td class="right"><strong style="color:var(--red)">58.3% ⚠</strong></td></tr>
+      <tr><td>토큰</td><td class="right">2</td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right" style="color:var(--gray)">표본 부족</td></tr>
+      <tr><td>이벤트</td><td class="right">1</td><td class="right">1</td><td class="right">0</td><td class="right">0</td><td class="right" style="color:var(--gray)">표본 부족</td></tr>
+      <tr><td>시나리오</td><td class="right">0</td><td class="right">—</td><td class="right">—</td><td class="right">—</td><td class="right" style="color:var(--gray)">표본 부족</td></tr>
+    </tbody>
+  </table>
+
+  <h3>카테고리별 적중률 시각화</h3>
+  <div class="bar-row">
+    <span class="bar-label">종목</span>
+    <div class="bar-track"><div class="bar-fill" style="width:89.5%"></div></div>
+    <span class="bar-value">89.5%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">ETF</span>
+    <div class="bar-track"><div class="bar-fill" style="width:85.7%"></div></div>
+    <span class="bar-value">85.7%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">자산군</span>
+    <div class="bar-track"><div class="bar-fill bad" style="width:58.3%"></div></div>
+    <span class="bar-value">58.3%</span>
+  </div>
+
+  <div class="alert-box danger">
+    <strong>자산군 100% → 58.3% 급락:</strong> 직전 산정에서 100%(4/4)였던 자산군 카테고리가 5/9 산정에서 58.3%(7/12)로 급락. 원인 ① DXY Bear 베팅 2건(4/14·4/18) — 진입 98.21~98.34 → 현재 99.42 +1.1%~1.2% 반등으로 동시 오류. ② BTC vs Gold Bear(4/15) — 상대 베팅을 절대 Bear로 라벨링한 라벨링 정밀도 부족. ③ 5/5 한화에어로/XLE 추격 매수 2건 동시 -10.8%/-6.2%. <strong>비추세 매크로 베팅의 단기 검증이 어려운 한계 노출.</strong>
+  </div>
+</section>
+
+<section class="section">
+  <h2>적중률 분해 — 시간축별</h2>
+  <table>
+    <thead><tr><th>시간축</th><th class="right">제안</th><th class="right">적중</th><th class="right">오류</th><th class="right">진행중</th><th class="right">적중률</th></tr></thead>
+    <tbody>
+      <tr><td>단기 (1~3개월)</td><td class="right">21</td><td class="right">13</td><td class="right">6</td><td class="right">2</td><td class="right"><strong style="color:var(--orange)">68.4%</strong></td></tr>
+      <tr><td>중기 (3~12개월)</td><td class="right">36</td><td class="right">27</td><td class="right">5</td><td class="right">4</td><td class="right"><strong style="color:var(--green)">84.4%</strong></td></tr>
+      <tr><td>장기 (1~5년)</td><td class="right">3</td><td class="right">3</td><td class="right">0</td><td class="right">0</td><td class="right" style="color:var(--green)">100%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>시간축별 적중률 시각화</h3>
+  <div class="bar-row">
+    <span class="bar-label">단기 (1~3M)</span>
+    <div class="bar-track"><div class="bar-fill warn" style="width:68.4%"></div></div>
+    <span class="bar-value">68.4%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">중기 (3~12M)</span>
+    <div class="bar-track"><div class="bar-fill" style="width:84.4%"></div></div>
+    <span class="bar-value">84.4%</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">장기 (1~5Y)</span>
+    <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+    <span class="bar-value">100%</span>
+  </div>
+  <div class="alert-box">
+    <strong>일관 패턴 강화:</strong> 단기 68.4% &lt; 중기 84.4% &lt; 장기 100%. 직전 산정(73.3% &lt; 91.3% &lt; 100%)과 동일 순서이나 단기·중기 모두 -4.9%p, -6.9%p 동반 하락. 시간축이 길수록 적중률 상승 패턴은 본 시스템의 강점이 <strong>구조적 메가 트렌드 식별</strong>(반도체 슈퍼사이클, 한국 방산, Gold 탈달러)이고 약점이 <strong>단기 모멘텀 추격</strong>임을 명확히 시사.
+  </div>
+</section>
+
+<section class="section">
+  <h2>가장 정확했던 판단 (Top 3)</h2>
+  <table>
+    <thead><tr><th style="width:36px;">#</th><th>추천</th><th class="right" style="width:80px;">결과</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>NVDA Bull</strong> (4/13 weekly)</td>
+        <td class="right" style="color:var(--green); font-weight:700">+59.4%</td>
+        <td>$135 → $215.20 (시총 $5.23T). Dalio +54%·Druckenmiller 신규 진입 거물 컨버전스 + AI 추론 비용 280x 하락 → 수요 폭발 + TSMC CoWoS 13만wpm 확장. 13F 거물 컨버전스 + 매크로 펀더멘털(CapEx) + 기술 모멘텀(공정 미세화) 3축 일치.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Intel (INTC) Bull</strong> (4/24 evening, 4/25 morning)</td>
+        <td class="right" style="color:var(--green); font-weight:700">+51.3%</td>
+        <td>$82.57 → $124.92. Q1 EPS $0.29 vs 컨센 $0.01 (+2,800%). 데이터센터 +22% YoY. AH +20% 즉시 반영 + 다음날 morning 재확인. 실적 발표 직후 추격 매수에 대한 의구심을 누른 morning 추천이 핵심.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>SK하이닉스(000660) Bull</strong> (4/25 weekly, 4/26 evening)</td>
+        <td class="right" style="color:var(--green); font-weight:700">+29.7~34.9%</td>
+        <td>1,250,000원 → 1,686,000원. 한국 Q1 GDP +1.7% (5.5년 최고) + 반도체 수출 +182.5% + HBM3E 대중 금지 Tier1 수혜 + KOSPI PER ~11x 디스카운트. 한국 매크로·산업·지정학·밸류에이션 4축 동시 충족.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert-box info" style="margin-top: 12px;">
+    <strong>보너스 적중:</strong> ASML +27.4%, AMD(5/4) +26.3%, Samsung Electronics +34.2%, AAPL +12.8%, KOSPI +15.6%, SOXX +33.4% — <strong>반도체 + 한국 + AI 인프라 테마 일관 적중</strong>.
+  </div>
+</section>
+
+<section class="section">
+  <h2>가장 빗나간 판단 (Top 3)</h2>
+  <table>
+    <thead><tr><th style="width:36px;">#</th><th>추천</th><th class="right" style="width:80px;">결과</th><th>패배 원인</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>한화에어로(012450) 추격 매수</strong> (5/5 evening)</td>
+        <td class="right" style="color:var(--red); font-weight:700">-10.8%</td>
+        <td>1,465,000원 (5/5 신고가) → 1,307,000원. 4/13 진입가 1,200,000원에서 +22.1% 적중 후, 5/5 신고가에서 동일 종목을 다시 Bull로 재추천 → 정점 추격. <strong>같은 종목·같은 방향 30일 내 재추천 시 진입가 격차(+22%) 표기 의무화 필요</strong>.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>S-Oil(010950) Bull</strong> (4/14 evening)</td>
+        <td class="right" style="color:var(--red); font-weight:700">-10.2%</td>
+        <td>130,000원 → 116,800원. WTI $97 + 정제마진 $18 직접 인용했으나 봉쇄 해소 시 즉각 정제마진 정상화 + 재고평가손이라는 양면을 본문 "리스크"로만 명시하고 가중치 미반영. <strong>시나리오 의존성 종목은 시간축을 단기(2~4주)로 더 좁게 잡아야</strong>.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>BTC vs Gold Bear</strong> (4/15 evening)</td>
+        <td class="right" style="color:var(--red); font-weight:700">+8.4% 역방향</td>
+        <td>BTC $74,000 → $80,183 (+8.4% 상승). "BTC가 Gold 대비 underperform"이라는 상대 베팅을 "BTC Bear" 절대 방향으로 잘못 라벨링. 실제 결과는 BTC +8.4%, GLD +8.4% 동률 상승. <strong>상대 가치(BTC/Gold ratio) 베팅과 절대 방향(BTC short) 베팅을 명확히 분리</strong>.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert-box danger" style="margin-top: 12px;">
+    <strong>오류 군집 (8건):</strong> VXX 3건 (4/16·4/17·4/18 모두 -3~-6%, VIX 17~18 박스 미이탈) · DXY Bear 2건 (-1.1~-1.2%, 호르무즈 변수가 달러 약세 일시 중단) · SMR -3.5% · BTC 200DMA 5/6 추격 -2.7% · IGV Bear +1.3% (소프트웨어 약세 베팅이지만 SOXX 동반 강세에 묻힘). <strong>VIX 헤지·DXY 비추세 베팅 + IPO 추격 + 신고가 추격이 오류 4대 패턴</strong>.
+  </div>
+</section>
+
+<section class="section">
+  <h2>교훈 노트 (5개)</h2>
+  <ol class="lessons">
+    <li><strong>시간축 길이가 적중률의 가장 강력한 단일 변수</strong> — 단기 68.4% &lt; 중기 84.4% &lt; 장기 100% (직전 산정과 동일 순서). 단기 추격 매수의 구조적 한계가 데이터로 확인됨. 다음 주부터 단기 추천에 "확신도 ≤ 중간" 기본값 적용 검토.</li>
+    <li><strong>같은 종목 재추천 시 진입가 격차 표기 의무화</strong> — 한화에어로 1,200K → 1,465K (+22%) 재추천 후 -10.8%. 같은 종목·같은 방향을 30일 내 재추천할 때는 "직전 진입가 대비 +X% 상승 후 재진입"을 본문에 명시. 신규 매수자에게는 추격 리스크 X% 경고 박스 필수.</li>
+    <li><strong>상대 베팅 vs 절대 방향 베팅 라벨링 정밀화</strong> — BTC vs Gold Bear → 실제로는 "BTC underperform Gold" 상대 베팅이었으나 절대 Bear로 라벨링 → 적중률 평가 시 오류 분류. 추천 본문에 "상대(A/B 페어)" / "절대(개별 방향)" 명시 추가.</li>
+    <li><strong>VIX 헤지 ETF(VXX) 추천은 시간축 1~2주로 좁힐 것</strong> — 4/16·4/17·4/18 3건 모두 -3~-6% 오류. VIX 17~18 극단의 평균 회귀가 통념(2~3주)보다 느림(4주+). 추천 본문에 "유효 기간 = VIX 다음 21~25 터치 또는 14일 자동 청산" 명기. 헤지 추천을 단순 Bull로 라벨링하지 말 것.</li>
+    <li><strong>거물 컨버전스 + 매크로 + 기술 모멘텀 3축 일치는 확신도 격상</strong> — NVDA, INTC, SK하이닉스 모두 3축 동시 일치 → +35~59% 수익. 확신도 "중간"이 사실상 "높음" 수준 결과로 환산되는 패턴. 다음 주부터 3축 일치 종목은 확신도 "높음"으로 자동 격상 검토.</li>
+  </ol>
+</section>
+
+<section class="section">
+  <h2>본 기간 신규 평가 가능 항목</h2>
+  <p style="margin-bottom: 12px;">본 윈도우(2026-04-09 ~ 2026-05-09)에서 방향성과 실측 수익률이 모두 확정된 항목 (적중·오류 분류 54건):</p>
+  <table>
+    <thead><tr><th>구분</th><th class="right">신규 평가 가능 종목 수</th><th>주요 티커</th></tr></thead>
+    <tbody>
+      <tr><td>미국 종목</td><td class="right">8</td><td>NVDA, INTC, ASML, AAPL, AMD, STX, SMR, ITA</td></tr>
+      <tr><td>한국 종목</td><td class="right">5</td><td>005930, 000660, 012450, 010950, 006400</td></tr>
+      <tr><td>ETF</td><td class="right">10</td><td>GLD, XLE, SOXX, SMH, VXX, ITA, EWJ, AGG, SHY, IGV</td></tr>
+      <tr><td>기타 자산군</td><td class="right">5</td><td>TLT, DXY, KOSPI, BTC, VIX</td></tr>
+    </tbody>
+  </table>
+  <div class="alert-box info">
+    <strong>다음 단계:</strong> analyst-scraper outcome_eval 호출 시 위 항목들을 평가 모수로 사용 가능. 추정 신규 평가 가능 항목 <strong>≈ 19건</strong> (개별 티커 기준 중복 제거).
+  </div>
+</section>
+
+<section class="section">
+  <h2>애널리스트 사후 평가 (analyst-scraper outcome_eval)</h2>
+  <p style="margin-bottom: 12px;"><strong>본 호출(2026-05-09)에서 신규 평가: 0건</strong>. 모든 항목이 평가 시점 미도달 또는 7일 이내 재평가 차단(SKIP_RECENT) 상태입니다.</p>
+  <table>
+    <thead><tr><th>구분</th><th class="right">건수</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>SKIP_RECENT (7일 이내 평가 완료)</td><td class="right">10</td><td>2026-05-07 평가, 7일 룰로 재평가 차단</td></tr>
+      <tr><td>NOT_YET (평가 미도달)</td><td class="right">22</td><td>발행 후 경과일이 6M·12M·EOY 50% 기준 미달</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top: 16px;">분석가별 누적 점수 (직전 평가 2026-05-07, 변동 없음)</h3>
+  <table>
+    <thead><tr><th>순위</th><th>분석가</th><th class="right">적중률</th><th class="right">평가 건수</th></tr></thead>
+    <tbody>
+      <tr><td>Top 1</td><td>Mike Wilson (Morgan Stanley)</td><td class="right">100%</td><td class="right">1</td></tr>
+      <tr><td>Top 2</td><td>Tom Lee (Fundstrat)</td><td class="right">80%</td><td class="right">5</td></tr>
+      <tr><td>Top 3</td><td>(3위 이하 동점, 평가 건수 1건씩)</td><td class="right">—</td><td class="right">—</td></tr>
+      <tr><td>Bottom 1</td><td>Michael Hartnett (BofA)</td><td class="right">0%</td><td class="right">2</td></tr>
+    </tbody>
+  </table>
+  <div class="alert-box info" style="margin-top: 12px;">
+    <strong>다음 평가 가능 시점:</strong> 2026-08-15 (삼성증권 KOSPI EOY, D+98) · 2026-10-14 (하이닉스·삼성 12M target 7건) · 2026-10-16 (Bloomberg/CNBC Hartnett).<br>
+    <strong>연동 링크:</strong> <a href="../analyst/index.html" style="color: var(--accent);">/analyst/scoreboard</a> · <code>reports/analyst/scoreboard.json</code> 신규 생성됨 (22건 pending 포함 전체 현황).
+  </div>
+</section>
+
+<section class="section">
+  <h2>데이터 한계 고지</h2>
+  <ul style="padding-left: 20px; color: var(--text-muted); font-size: 13px;">
+    <li>한국 종목·VIX ETF의 추천 시점 진입가는 추천일 ±1일 종가 기준 추정값. 실제 추천 시점 종가 차이 ±2% 가능.</li>
+    <li>5/9 KST 19:03 fetch 기준. 미국 종목은 5/8 정규장 종가 (5/9 미국장 미개장 — KST 토요일).</li>
+    <li>BTC/ETH는 5/9 19:03 KST 24h spot.</li>
+    <li>진행중 6건 중 BTC 200DMA(5/5)·삼성SDI(4/29)·SHY(4/13)·AGG(4/19)·TLT 4/17 재추천·XE 등은 변동률 ±1% 미만으로 분류 보류.</li>
+    <li>본 통계는 2026_recommendations.md 1m 윈도우(04-09 ~ 05-09) 60건 기준. 동일 자산 반복 추천 포함 (모든 행을 1건으로 카운트). 독립 자산 단위로 환산 시 ~75% 수준이 실제값에 가까움.</li>
+    <li>5/8·5/9 morning/evening 추천(EWJ·AMD 5/7 외)은 시간축 미도래 또는 본 누적 파일 미append로 모수 외 처리.</li>
+    <li>시나리오 미확정 항목(G-8 30일 시나리오 등)은 평가에서 제외.</li>
+  </ul>
+</section>
+
+<footer>
+  Generated by briefing-lead · /성과리뷰 1m · 2026-05-09<br>
+  PerformanceDonut 위젯 데이터 소스: knowledge-base/performance_history.md (60+행 append 완료)
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NVIDIA (NVDA) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>NVIDIA (NVDA)</h1><div class="meta">주식 종합 분석 리포트 | 20260527</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">78/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$213.82</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$5.18T</div></div><div class="ki"><div class="kl">PER</div><div class="kv">30.5x Fwd</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$132.89~$236.54</div></div><div class="ki"><div class="kl">P/S (TTM)</div><div class="kv">약 22x</div></div><div class="ki"><div class="kl">PEG (Fwd)</div><div class="kv">0.5 (저평가)</div></div><div class="ki"><div class="kl">FY26 매출</div><div class="kv">$215~220B (E)</div></div><div class="ki"><div class="kl">FY26 DC 매출</div><div class="kv">$193.7B</div></div><div class="ki"><div class="kl">OPM</div><div class="kv">약 64%</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$8.43 (3.94%)</div></div><div class="ki"><div class="kl">컨센서스 (8개)</div><div class="kv">$243 (+13.7%)</div></div><div class="ki"><div class="kl">Booking pipeline</div><div class="kv">$500B (Blackwell+Rubin)</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p><strong>NVIDIA Corporation (NVDA)</strong> — AI 가속기 시장 75~80% 점유의 압도적 1위. 현재가 $213.82(2026-05-26), 시가총액 $5.18T(세계 1~2위). FY26 매출 $215~220B 추정, DC 매출 $193.7B(+68% YoY).<br><br><strong>핵심 판단</strong>: P/E Fwd 30.5x + 매출 성장 +60%+ = <strong>PEG 0.5 저평가</strong>. Rubin R100 2026Q1 양산 시작, FY27 DC 매출 $250B+ 가시화. 컨센서스 평균 $243 (+13.7% 업사이드), Buy 등급 88%.<br><br><strong>투자 등급: 매수 (78점)</strong> — 분할 매수 권장, 단일 종목 비중 10~15% 한도. $200~210 1차 / $185~195 2차 / $170 이하 3차. <strong>5/28~30 FY27 Q1 실적이 단기 최대 변곡점</strong>, 미스 시 $180까지 조정 가능. 손절 $180(thesis 약화), 익절 $235~250(컨센 도달).</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$196.97</div><div class="dn" style="font-size:13px">-7.9%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$235.00</div><div class="up" style="font-size:13px">+9.9%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="228" y="30" width="117" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="228" y1="26" x2="228" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="228" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$197</text><line x1="280" y1="24" x2="280" y2="52" stroke="var(--text)" stroke-width="3"/><text x="280" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$214</text><line x1="345" y1="26" x2="345" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="345" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$235</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $133</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $237</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $8.43 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,55.0 195.8,73.1 230.4,120.6 225.6,177.8 181.1,206.6 140.0,230.0 90.0,218.8 49.6,179.4 87.7,133.0 90.0,81.2" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">매출 성장 (+60%+)</text><circle cx="140.0" cy="55.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">이익률 (OPM 64%)</text><circle cx="195.8" cy="73.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">경쟁우위 Moat (Wide)</text><circle cx="230.4" cy="120.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">산업 성장성</text><circle cx="225.6" cy="177.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">가치 평가 (PEG 0.5)</text><circle cx="181.1" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">컨센서스 (+14%)</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀 / 카탈리스트</text><circle cx="90.0" cy="218.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">재무 건전성</text><circle cx="49.6" cy="179.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 (ASIC + 천장)</text><circle cx="87.7" cy="133.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">지배구조 (Jensen)</text><circle cx="90.0" cy="81.2" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>매출 성장 (+60%+)</td><td>9.5</td><td>/10</td></tr><tr><td>이익률 (OPM 64%)</td><td>9.5</td><td>/10</td></tr><tr><td>경쟁우위 Moat (Wide)</td><td>9.5</td><td>/10</td></tr><tr><td>산업 성장성</td><td>9.0</td><td>/10</td></tr><tr><td>가치 평가 (PEG 0.5)</td><td>7.0</td><td>/10</td></tr><tr><td>컨센서스 (+14%)</td><td>8.0</td><td>/10</td></tr><tr><td>모멘텀 / 카탈리스트</td><td>8.5</td><td>/10</td></tr><tr><td>재무 건전성</td><td>9.5</td><td>/10</td></tr><tr><td>리스크 (ASIC + 천장)</td><td>5.5</td><td>/10</td></tr><tr><td>지배구조 (Jensen)</td><td>8.5</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 78/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide Moat</span></h2><p>NVIDIA는 1993년 Jensen Huang이 창업한 AI 가속기·GPU 설계 기업. 본사 캘리포니아 산타클라라, NASDAQ 상장(NVDA). FY26 Data Center 매출 $193.7B로 전체 매출의 약 88~90% 차지. FY26 Q3 단일 분기 매출 $57B = 사상 최대.<br><br><strong>제품 세대</strong>: Blackwell Ultra B300 = 현재 핵심 (Blackwell 매출의 2/3, 2026 60,000 racks 출하), Rubin R100 = 2026Q1 full production 시작 (336B 트랜지스터, Blackwell 대비 5배 성능). Booking pipeline 2026말 시점 <strong>$500B</strong> (Blackwell + Rubin 합산).</p><h3>Moat 상세</h3><p><strong>1) CUDA 소프트웨어 생태계 (압도적)</strong> — 15년+ 누적, 글로벌 500만+ 개발자. AI 프레임워크(PyTorch, TensorFlow) 1차 시민 GPU. 경쟁사 따라잡기 5~10년 소요. 마이그레이션 = lock-in.<br><br><strong>2) NVLink + NVSwitch + Networking 통합</strong> — Mellanox InfiniBand 인수로 풀 스택 통합. GB200/GB300 rack = GPU + CPU + Networking + Cooling 일체형. 경쟁사 ASIC + 별도 네트워킹 = 복잡도↑.<br><br><strong>3) HBM 우선 확보권</strong> — SK하이닉스 HBM4 Rubin향 <strong>70%</strong> 공급(UBS 전망). HBM 공급사 = NVIDIA 우선 → 후발주자 부품 부족.<br><br><strong>4) Jensen Huang 비전 + 토큰 경제론</strong> — "AI factory" 컨셉. CEO 신뢰도 단연 1위. 후계 미정 = 양면 리스크.<br><br><strong>결론</strong>: Wide Moat 5년 이상 대체 불가. ASIC 위협은 중기(2027~) 변수.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p><strong>FY26 실적 (KB 기준)</strong><br>&bull; 매출: $215~220B (E) (+65~69% YoY)<br>&bull; Data Center 매출: <strong>$193.7B</strong> (FY25 $115B → +68%)<br>&bull; Q3 단일 분기: $57B (사상 최대)<br>&bull; OPM 추정: ~64% (유지)<br>&bull; Gross Margin: ~75%<br><br><strong>FY27 (2026-02 ~ 2027-01)</strong><br>&bull; DC 매출 컨센서스 <strong>$250B+</strong><br>&bull; 총 매출 추정 <strong>$280~300B</strong><br>&bull; Rubin 본격 출하로 ASP·물량 동시 상승<br><br><strong>밸류에이션 멀티플</strong><br>&bull; P/E Fwd 30.5x = AVGO(28~30x)와 유사<br>&bull; 매출 성장 +60% 감안 → <strong>PEG 0.5 저평가</strong><br><br><strong>확률가중 12개월 목표가</strong><br>= Bull 30% × $315 + Base 50% × $225 + Bear 20% × $138 = <strong>$235</strong><br>기대수익률 <strong>+10%</strong></p></div>
+<div class="sec"><h2>밸류에이션</h2><p><strong>목표가 산정 (확률가중)</strong><br>&bull; Bull (30%): Rubin 흥행 + FY27 DC $300B → <strong>$315</strong> (+47%)<br>&bull; Base (50%): KB 컨센서스 그대로 → <strong>$225</strong> (+5%)<br>&bull; Bear (20%): CapEx 둔화 + ASIC 가속 → <strong>$138</strong> (-35%)<br><br><strong>확률가중 = $235</strong> | <strong>컨센서스 평균 $243</strong> (8개 기관)<br><br>12개월 기대수익률 약 <strong>+10%</strong><br><br>현재가 $213.82 대비:<br>&bull; 컨센서스 +13.7% 업사이드<br>&bull; 확률가중 +10% 업사이드</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p><strong>가격 위치</strong>: $213.82 = 52주 고가 $236.54 대비 -9.6%, 저가 $132.89 대비 +60.9%. 고점 -10% 조정 영역 횡보. ATR 3.94%로 변동성 큼.<br><br><strong>증권사 컨센서스 (2026-04~05)</strong>:<br>&bull; BoA $260, GS $250, MS $245, JPM $240, UBS $235, Citi $230, Wells $225, Wedbush $220<br>&bull; 평균 <strong>$243</strong> (8개 기관)<br>&bull; Buy 등급 88%, Hold 10%, Sell 2%<br><br><strong>EPS 컨센서스</strong>: FY26 $5.5~6.5 / FY27 $6.8~7.8 / FY28 $8.2~9.2 (5년 CAGR +30%+)<br><br><strong>카탈리스트 (3개월)</strong>:<br>&bull; 양(+): <strong>5/28~30 FY27 Q1 실적</strong>, Rubin 첫 양산 출하 (H2), COMPUTEX 6/3~6, 6/16~17 FOMC 비둘기파<br>&bull; 음(-): Q1 미스, Trump 100% 관세, ASIC 추가 도입, FOMC 매파</p><table><thead><tr><th>기관</th><th>목표가</th><th>등급</th><th>시점</th></tr></thead><tbody><tr><td>Bank of America</td><td>$260</td><td>매수</td><td>2026-04</td></tr><tr><td>Goldman Sachs</td><td>$250</td><td>매수</td><td>2026-04</td></tr><tr><td>Morgan Stanley</td><td>$245</td><td>매수</td><td>2026-04</td></tr><tr><td>JPMorgan</td><td>$240</td><td>매수</td><td>2026-03</td></tr><tr><td>UBS</td><td>$235</td><td>매수</td><td>2026-05</td></tr><tr><td>Citi</td><td>$230</td><td>매수</td><td>2026-04</td></tr><tr><td>Wells Fargo</td><td>$225</td><td>매수</td><td>2026-04</td></tr><tr><td>Wedbush</td><td>$220</td><td>매수</td><td>2026-03</td></tr><tr><td>평균</td><td>$243</td><td>매수</td><td>8개 기관</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p><strong>AI 가속기 시장 규모</strong><br>&bull; 2026E: $250~280B<br>&bull; 2027E: $350~400B<br>&bull; 2030E: $700~900B (McKinsey/BCG)<br>&bull; NVDA 점유율 2026E: <strong>75~80%</strong><br><br><strong>Hyperscaler CapEx 2026</strong>: <strong>$660~690B 확정</strong> (이전 $420B 추정 대비 +50%)<br>&bull; Q1: $155~170B / Q2: $165~175B / Q3: $170~180B / Q4: $170~185B<br><br><strong>경쟁구도</strong><br>&bull; NVDA 75~80% / AMD 5% / Custom ASIC 10% / 화웨이 Ascend (중국) 3~5%<br>&bull; ASIC = TPU v6 (Google), Trainium2 (AWS + Anthropic), Maia (MS 2027), MTIA (Meta)<br>&bull; AVGO/MRVL = ASIC 설계 위탁 파트너 (NVDA 매출 10~15% 잠재 잠식)<br><br><strong>핵심 산업 트렌드</strong><br>1. <strong>HBM 100% 선계약 완료</strong> (2026 전체 물량), HBM3E +20% YoY 가격 인상<br>2. <strong>TSMC N3P/N2 의존</strong> — 2026 Capex $52~56B, CoWoS 패키징 capa 월 70~80K wafer<br>3. <strong>Trump 25% Section 232 관세 발효</strong> (2026-01-14), 최대 100% 협박<br>4. <strong>전력 병목</strong> — MS Azure $80B 데이터센터, 인허가 18~24개월 = 2027~2028 CapEx 천장<br>5. <strong>토큰 가격 -50~70% 매년</strong> = 추론량 폭증 (Jevons paradox)</p><table><thead><tr><th>경쟁자</th><th>점유율 (2026E)</th><th>포지션</th></tr></thead><tbody><tr><td>NVIDIA</td><td>75~80%</td><td>압도적 1위 (CUDA+HBM+NVLink Triple Moat)</td></tr><tr><td>AMD</td><td>5%</td><td>후발 2위 (MI300X/MI355X, ROCm 7)</td></tr><tr><td>Custom ASIC</td><td>10%</td><td>Trainium2, TPU v6, Maia 2027, MTIA</td></tr><tr><td>화웨이 Ascend</td><td>3~5%</td><td>중국 한정 60만개 출하 계획</td></tr><tr><td>Intel</td><td>1%</td><td>Gaudi 3 (미미)</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p><strong>최대 위험 = ASIC 가속 + Hyperscaler CapEx 천장</strong>. 2026은 안전, 2027부터 잠재 위협. <strong>5/28~30 FY27 Q1 실적이 단기 최대 변곡점</strong>.<br><br><strong>시나리오별 12개월 수익률</strong><br>&bull; Bull (30%): +47% ($315)<br>&bull; Base (50%): +5% ($225)<br>&bull; Bear (15%): -25% ($160)<br>&bull; Extreme Bear (5%): -40% ($128)<br><br><strong>VaR 분석</strong><br>&bull; 2σ VaR (1년): -25% (Bear)<br>&bull; 3σ VaR (1년): -40~50% (2018/2022 패턴 재현)<br>&bull; 최대 손실 사례: 2022 -67%</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">ASIC 가속 (Trainium2/TPU/Maia)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">Hyperscaler CapEx 2027 둔화</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">FY27 Q1 실적 미스 (5/28~30)</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">전력 병목 → CapEx 천장</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">Trump 100% 관세 부과</text><circle cx="180" cy="210" r="5" fill="var(--buy)"/><text x="189" y="214" fill="var(--text)" font-size="10">시가총액 거품 ($5T)</text><circle cx="180" cy="228" r="5" fill="var(--buy)"/><text x="189" y="232" fill="var(--text)" font-size="10">중국 H20 수출 영구 차단</text><circle cx="180" cy="246" r="5" fill="var(--buy)"/><text x="189" y="250" fill="var(--text)" font-size="10">HBM 가격 추가 인상</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>ASIC 가속 (Trainium2/TPU/Maia)</strong> (발생: 매우 높음, 영향: 성장률 -10~15%pp)<br><span style="color:var(--sub);font-size:13px">4대 하이퍼스케일러 자체 ASIC 보유. 2027 ASIC 점유율 25%+ 시 NVDA 성장 감속.</span></div><div class="ri rl"><strong>Hyperscaler CapEx 2027 둔화</strong> (발생: 매우 높음, 영향: NVDA 매출 -30~40%pp)<br><span style="color:var(--sub);font-size:13px">2026 $660~690B = GDP 2.5% 수준. 추가 +30% 비현실적, 전력 천장.</span></div><div class="ri rl"><strong>FY27 Q1 실적 미스 (5/28~30)</strong> (발생: 매우 높음, 영향: 주가 -8~15%)<br><span style="color:var(--sub);font-size:13px">DC 매출 가이던스 $55~60B 컨센서스. 미스 시 panic.</span></div><div class="ri rl"><strong>전력 병목 → CapEx 천장</strong> (발생: 높음, 영향: 2027~2028 CapEx -20%)<br><span style="color:var(--sub);font-size:13px">MS Azure $80B 데이터센터, 인허가 18~24개월. 전력 부족 현실화.</span></div><div class="ri rl"><strong>Trump 100% 관세 부과</strong> (발생: 매우 높음, 영향: 주가 -10~15%)<br><span style="color:var(--sub);font-size:13px">25% 발효, 100% 협박 진행. 대만/한국 협상 의존.</span></div><div class="ri rl"><strong>시가총액 거품 ($5T)</strong> (발생: 높음, 영향: 주가 -20~30%)<br><span style="color:var(--sub);font-size:13px">P/E 50x TTM = 역사적 평균 2배. 조정 위험.</span></div><div class="ri rl"><strong>중국 H20 수출 영구 차단</strong> (발생: 중간, 영향: 매출 -3~5%)<br><span style="color:var(--sub);font-size:13px">H20 비중 5~7%. 화웨이 Ascend 60만개 출하 계획.</span></div><div class="ri rl"><strong>HBM 가격 추가 인상</strong> (발생: 중간, 영향: GM -1~2pp)<br><span style="color:var(--sub);font-size:13px">HBM3E +20% YoY, HBM4 추가 인상 가능.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>### 매수 전략 (분할)<br>&bull; <strong>1차 매수 $200~210</strong> (현재가 부근): 30% 비중<br>&bull; <strong>2차 매수 $185~195</strong> (Q1 미스 시): 40% 비중<br>&bull; <strong>3차 매수 $170 이하</strong> (Bear case): 30% 비중<br>&bull; 평균 매수 단가 목표: $190<br>&bull; <strong>포지션 한도</strong>: 단일 종목 10~15% 이내 (거품 분산)<br><br>### 매도 / 익절<br>&bull; 1차 익절 $235~240 (전 고점, +10~13%): 30%<br>&bull; 2차 익절 $260~270 (컨센 최고가, +22~26%): 40%<br>&bull; 3차 익절 $300~315 (Bull case, +40~47%): 30%<br><br>### 손절 (ATR 기반)<br>&bull; 1차 손절 $196.97 (2×ATR): 단기 반전<br>&bull; 2차 손절 $180 (-15.8%, thesis 약화)<br>&bull; <strong>3차 손절 $160 (-25%, thesis 폐기)</strong><br><br>### 주의 사항<br>&bull; <strong>5/28~30 Q1 실적 직전 신규 매수 자제</strong> (변동성 큼)<br>&bull; Q1 미스 시 $180 부근 추가 매수 기회<br>&bull; Q1 비트 시 즉시 매수 — 단기 강세 지속</p></div>
+<div class="sec"><h2>Confidence Interval (앵커링 보강)</h2>- **12개월 목표가**: $235 (95% CI: $160 ~ $315, 폭 ±33%)
+- **종합 점수**: 78 / 100 (가정 변경 시 ±10 pt 변동 가능)
+- **확률가중 12개월 수익률**: +10.6%
+- **컨센서스 평균**: $243 (8개 기관)
+
+**산출 근거**: ATR 3.94% + 변동성 ±33% = CI 폭. FY27 Q1 미스 시 점수 -8pt (-> 70 = 매수 약), Rubin 흥행 + CapEx 추가 상향 시 +6pt (-> 84 = 강력매수).</div>
+<div class="sec"><h2>약한 가정 3개 (Most Fragile Assumptions)</h2>### 1. ★ 최약 — FY27 Q1 (5/28~30) DC 매출 가이던스 ≥ $55B
+**반증 시**: 미스 ($50B 이하) → 주가 -8~12% 즉시, 가이던스 약화 → 점수 -8pt (-> 70 = 매수 약), 가격 $190 이하
+
+### 2. Hyperscaler 2027 CapEx 추가 상향 ($660B → $800B+)
+**반증 시**: 2027 CapEx flat 또는 -5% → 점수 -10pt (-> 68 = 매수 약), 가격 $180~200 박스권
+
+### 3. ASIC 점유율 2027 25% 이하 유지
+**반증 시**: ASIC 25%+ 가속 → 점수 -10pt (-> 68 = 매수 약), 가격 $160~180 (Bear case)
+
+★ 최약 표시 사유: 5/28~30 Q1 가 가장 가까운 변곡점 (1~3일 후).</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 20260527 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="NVDA_NVIDIA_20260527.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

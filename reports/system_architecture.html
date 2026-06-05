@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>종목분석 에이전트 — 시스템 아키텍처</title>
+    <style>
+      :root {
+        --bg: #0f1419;
+        --card: #1a212c;
+        --text: #e8eaed;
+        --sub: #9aa0a6;
+        --border: #2d3742;
+        --up: #3fb950;
+        --down: #f85149;
+        --neutral: #8b949e;
+        --highlight: #58a6ff;
+        --warning: #d29922;
+        --accent: #7c3aed;
+      }
+      [data-theme="light"] {
+        --bg: #f5f7fa;
+        --card: #ffffff;
+        --text: #24292f;
+        --sub: #57606a;
+        --border: #d0d7de;
+        --up: #1a7f37;
+        --down: #cf222e;
+        --neutral: #57606a;
+        --highlight: #0969da;
+        --warning: #9a6700;
+        --accent: #6639ba;
+      }
+      [data-theme="light"] body {
+        background: #f5f7fa;
+      }
+      [data-theme="light"] .sec {
+        background: #ffffff;
+        border-color: #d0d7de;
+      }
+      [data-theme="light"] th {
+        background: #eaeef2 !important;
+        color: #1f2328 !important;
+      }
+      [data-theme="light"] td {
+        background: #ffffff;
+        color: #24292f;
+        border-bottom-color: #d0d7de !important;
+      }
+      [data-theme="light"] tr:nth-child(even) td {
+        background: #f6f8fa !important;
+      }
+      [data-theme="light"] .node {
+        background: #ffffff;
+        border-color: #d0d7de;
+      }
+      [data-theme="light"] .node.lead {
+        border-color: #0969da;
+      }
+      [data-theme="light"] .node.data {
+        border-color: #1a7f37;
+      }
+      [data-theme="light"] .node.analysis {
+        border-color: #6639ba;
+      }
+      [data-theme="light"] .node.output {
+        border-color: #cf222e;
+      }
+      [data-theme="light"] .node.infra {
+        border-color: #9a6700;
+      }
+      [data-theme="light"] .layer-title {
+        color: #24292f;
+      }
+      [data-theme="light"] .arrow {
+        color: #57606a;
+      }
+      [data-theme="light"] .stat-num {
+        color: #0969da;
+      }
+      [data-theme="light"] .footer {
+        background: #f6f8fa;
+        border-color: #d0d7de;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+          sans-serif;
+        padding: 16px;
+        max-width: 1100px;
+        margin: 0 auto;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .header {
+        text-align: center;
+        padding: 32px 0;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 28px;
+      }
+      .header h1 {
+        font-size: 26px;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13px;
+      }
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px;
+        margin-bottom: 20px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        color: var(--highlight);
+      }
+      .sec h3 {
+        font-size: 15px;
+        color: var(--accent);
+        margin: 18px 0 10px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13px;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 9px 8px;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 2px solid var(--border);
+      }
+      td {
+        padding: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .layer {
+        margin: 16px 0;
+        padding: 18px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+      }
+      .layer-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .layer-title .badge {
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+      .badge-lead {
+        background: rgba(88, 166, 255, 0.15);
+        color: var(--highlight);
+      }
+      .badge-data {
+        background: rgba(63, 185, 80, 0.15);
+        color: var(--up);
+      }
+      .badge-analysis {
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--accent);
+      }
+      .badge-output {
+        background: rgba(248, 81, 73, 0.15);
+        color: var(--down);
+      }
+      .badge-infra {
+        background: rgba(210, 153, 34, 0.15);
+        color: var(--warning);
+      }
+      .node-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+      }
+      .node {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        font-size: 12px;
+      }
+      .node .name {
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .node .desc {
+        color: var(--sub);
+        line-height: 1.4;
+      }
+      .node.lead {
+        border-left: 3px solid var(--highlight);
+      }
+      .node.data {
+        border-left: 3px solid var(--up);
+      }
+      .node.analysis {
+        border-left: 3px solid var(--accent);
+      }
+      .node.output {
+        border-left: 3px solid var(--down);
+      }
+      .node.infra {
+        border-left: 3px solid var(--warning);
+      }
+      .arrow {
+        text-align: center;
+        color: var(--sub);
+        font-size: 20px;
+        margin: 6px 0;
+        letter-spacing: 4px;
+      }
+      .flow-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+        flex-wrap: wrap;
+      }
+      .flow-item {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .flow-arrow {
+        color: var(--sub);
+        font-size: 16px;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        margin: 12px 0;
+      }
+      .stat-card {
+        text-align: center;
+        padding: 14px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+      }
+      .stat-num {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--highlight);
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-top: 4px;
+      }
+      .kb-tree {
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      .kb-tree .dir {
+        color: var(--highlight);
+        font-weight: 600;
+      }
+      .kb-tree .file {
+        color: var(--sub);
+        margin-left: 20px;
+      }
+      .kb-tree .count {
+        color: var(--warning);
+        font-size: 11px;
+      }
+      .source-table td:first-child {
+        font-weight: 600;
+        white-space: nowrap;
+        color: var(--highlight);
+      }
+      .pipe-step {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        margin: 3px;
+      }
+      .pipe-step.fetch {
+        background: rgba(63, 185, 80, 0.1);
+        border: 1px solid rgba(63, 185, 80, 0.3);
+      }
+      .pipe-step.build {
+        background: rgba(88, 166, 255, 0.1);
+        border: 1px solid rgba(88, 166, 255, 0.3);
+      }
+      .pipe-step.deploy {
+        background: rgba(248, 81, 73, 0.1);
+        border: 1px solid rgba(248, 81, 73, 0.3);
+      }
+      .footer {
+        margin-top: 32px;
+        padding: 16px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font-size: 12px;
+        color: var(--sub);
+        text-align: center;
+      }
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 14px;
+        }
+        .header h1 {
+          font-size: 20px;
+        }
+        .node-grid {
+          grid-template-columns: 1fr;
+        }
+        .stat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .flow-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: var(--border);
+          color: var(--text);
+          border: none;
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">&#9728;&#65039;</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <div class="header">
+      <h1>종목분석 에이전트 시스템 아키텍처</h1>
+      <div class="meta">
+        v3.22 | 2026-05-19 | 에이전트 23종 + 위젯 16종 + KB 26섹터
+      </div>
+    </div>
+
+    <!-- 산출물 현황 -->
+    <div class="sec">
+      <h2>산출물 현황</h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num">135</div>
+          <div class="stat-label">종목/ETF 리포트</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">96</div>
+          <div class="stat-label">브리핑 리포트</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">75</div>
+          <div class="stat-label">애널리스트 항목</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">리서치 Deep Dive</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">23</div>
+          <div class="stat-label">에이전트</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">26</div>
+          <div class="stat-label">섹터 KB</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">16</div>
+          <div class="stat-label">대시보드 위젯</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">배포 채널</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. 오케스트레이터 -->
+    <div class="sec">
+      <h2>1. 오케스트레이터 (Lead 에이전트)</h2>
+      <div class="node-grid">
+        <div class="node lead">
+          <div class="name">stock-analyst-lead</div>
+          <div class="desc">
+            개별 종목/ETF 분석 총괄. 5종 분석 에이전트 병렬 호출 + scorecard
+            통합. ETF 감지 시 etf-lead 위임.
+          </div>
+        </div>
+        <div class="node lead">
+          <div class="name">briefing-lead</div>
+          <div class="desc">
+            브리핑 7종 총괄 (모닝/이브닝/주간/크립토/모델포트/글로벌인텔/풀).
+            16단계 워크플로.
+          </div>
+        </div>
+        <div class="node lead">
+          <div class="name">etf-lead</div>
+          <div class="desc">
+            ETF 전용. data-collector, etf-analyst, report-generator 3단계
+            파이프라인.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 데이터 수집 -->
+    <div class="sec">
+      <h2>2. 데이터 수집 계층</h2>
+      <div class="node-grid">
+        <div class="node data">
+          <div class="name">data-collector</div>
+          <div class="desc">
+            종목 개별 데이터. 주가, 공시, DART, 재무제표, 뉴스, 컨센서스.
+          </div>
+        </div>
+        <div class="node data">
+          <div class="name">market-data-collector</div>
+          <div class="desc">
+            시장 전체 스냅샷. 지수, 환율, 원자재, 채권, 크립토, 경제 캘린더,
+            13F.
+          </div>
+        </div>
+        <div class="node data">
+          <div class="name">kb-updater</div>
+          <div class="desc">
+            섹터별 KB 갱신. 산업 트렌드, 매크로, 규제 변화 웹검색 수집.
+          </div>
+        </div>
+        <div class="node data">
+          <div class="name">research-curator</div>
+          <div class="desc">
+            10섹터 학술/씽크탱크/컨퍼런스/규제 1차 자료. L1주간/L2월간/L3분기.
+          </div>
+        </div>
+        <div class="node data">
+          <div class="name">analyst-scraper</div>
+          <div class="desc">
+            IB/증권사 리포트 자동 수집. PDF 처리 + 웹 스크랩 + YouTube.
+          </div>
+        </div>
+      </div>
+
+      <h3>빌드 타임 데이터 페치 (Vercel prebuild)</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0">
+        <span class="pipe-step fetch"
+          >fetch_fear_greed.mjs (CNN/Crypto F&G)</span
+        >
+        <span class="pipe-step fetch">fetch_fred.mjs (FRED 15개 시리즈)</span>
+        <span class="pipe-step fetch"
+          >fetch_openinsider.mjs (인사이더 클러스터)</span
+        >
+      </div>
+    </div>
+
+    <!-- 3. 분석 에이전트 -->
+    <div class="sec">
+      <h2>3. 분석 에이전트 계층</h2>
+
+      <h3>종목분석 5종 (stock-analyst-lead가 병렬 호출)</h3>
+      <div class="node-grid">
+        <div class="node analysis">
+          <div class="name">company-overview</div>
+          <div class="desc">
+            기업개요, 경쟁력(Moat), 사업구조, 지배구조 분석.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">financial-analyst</div>
+          <div class="desc">
+            재무분석, 실적추이, 밸류에이션, DCF, 목표주가 산출.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">business-analyst</div>
+          <div class="desc">
+            산업 트렌드, 경쟁구도, TAM/SAM, Porter's Five Forces.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">momentum-analyst</div>
+          <div class="desc">
+            모멘텀, 수급, 외국인/기관 흐름, 컨센서스, 이벤트 촉매.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">risk-analyst</div>
+          <div class="desc">
+            리스크 식별/정량화. 재무/사업/규제/매크로/ESG/꼬리 리스크.
+          </div>
+        </div>
+      </div>
+      <div class="arrow">&#8595;</div>
+      <div class="node-grid">
+        <div class="node analysis" style="grid-column: 1/-1; max-width: 400px">
+          <div class="name">scorecard-strategist</div>
+          <div class="desc">
+            5종 통합 -> 10항목 가중 스코어카드 + ATR 손절/목표가 + 투자전략. KB
+            피드백 루프.
+          </div>
+        </div>
+      </div>
+
+      <h3>브리핑 분석 2종 (briefing-lead가 호출)</h3>
+      <div class="node-grid">
+        <div class="node analysis">
+          <div class="name">global-macro-analyst</div>
+          <div class="desc">
+            매크로 4축 교차 (지정학/정치/기술/에너지). 시나리오 플래닝.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">correlation-monitor</div>
+          <div class="desc">
+            6쌍 상관계수 30D/90D + Z-score Alert. 경제 서프라이즈 Beat/Miss.
+          </div>
+        </div>
+      </div>
+
+      <h3>유틸리티</h3>
+      <div class="node-grid">
+        <div class="node analysis">
+          <div class="name">etf-analyst</div>
+          <div class="desc">
+            ETF 전용. Holdings, 보수율, 추적오차, NAV, 섹터 배분.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">reanalysis-tracker</div>
+          <div class="desc">
+            재분석 변화 추적. 신규 vs 직전 스코어카드 BLIND 비교.
+          </div>
+        </div>
+        <div class="node analysis">
+          <div class="name">wiki-linter</div>
+          <div class="desc">
+            KB 건강 점검. 만료/실패/모순/미수집/고아 파일 탐지 + 자동 수정.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Knowledge Base -->
+    <div class="sec">
+      <h2>4. Knowledge Base (2계층)</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+        <div>
+          <h3>knowledge-base/ (CURRENT)</h3>
+          <div class="kb-tree">
+            <div class="dir">market/ <span class="count">(7파일)</span></div>
+            <div class="file">
+              daily_snapshot, correlation_matrix, surprise_index,
+              guru_positions, economic_calendar, fear_greed.json
+            </div>
+            <div class="dir">portfolio/ <span class="count">(4파일)</span></div>
+            <div class="file">
+              model_portfolios, user_portfolio, insider_signals.json,
+              rebalancing_history
+            </div>
+            <div class="dir">macro/ <span class="count">(8파일)</span></div>
+            <div class="file">
+              fred_snapshot.json, us_monetary_policy, geopolitics,
+              global_risk_factors, korea_economy 등
+            </div>
+            <div class="dir">industry/ <span class="count">(26섹터)</span></div>
+            <div class="file">
+              semiconductor, energy, defense, bio_pharma, ai, auto, capex, smr
+              등
+            </div>
+            <div class="dir">research/ <span class="count">(10섹터)</span></div>
+            <div class="file">
+              반도체, 에너지, 바이오, 핀테크, 방산, 기술플랫폼, 소비재, 산업재,
+              자동차, 매크로
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>knowledge-db/ (ARCHIVE)</h3>
+          <div class="kb-tree">
+            <div class="dir">market/ <span class="count">(시계열)</span></div>
+            <div class="file">2026_daily_prices.md (일별 가격 이력)</div>
+            <div class="dir">
+              performance/ <span class="count">(추적)</span>
+            </div>
+            <div class="file">시나리오 추적, 적중률 이력</div>
+            <div class="dir">
+              30+ .jsonl <span class="count">(이벤트 로그)</span>
+            </div>
+            <div class="file">
+              semiconductor_2026, energy_2026, defense_2026, macro_2026,
+              crypto_2026 등 섹터별 시계열 축적
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. HTML 리포트 생성 -->
+    <div class="sec">
+      <h2>5. HTML 리포트 생성</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+        <div class="node output">
+          <div class="name">report-generator (종목분석)</div>
+          <div class="desc">
+            report_template.py + chart_templates.py 호출<br />
+            차트 6종: radar, bar, line, heatmap, price_range, donut<br />
+            출력: reports/*.html (135건)
+          </div>
+        </div>
+        <div class="node output">
+          <div class="name">briefing-report-generator (브리핑)</div>
+          <div class="desc">
+            reference/briefing_css.html CSS 복사 (즉흥 생성 금지)<br />
+            11종 template (morning/evening/weekly/crypto 등)<br />
+            출력: reports/briefing/*.html (96건)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. 빌드 파이프라인 -->
+    <div class="sec">
+      <h2>6. 빌드 파이프라인</h2>
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin: 12px 0;
+          align-items: center;
+        "
+      >
+        <span class="pipe-step fetch">test (34 unit)</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step fetch">F&G / FRED / Insider 페치</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">manifest 빌드</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build"
+          >KB / Research KPI / DailyPick / Search 빌드</span
+        >
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">sync_portfolio + health_check</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">astro build (144 pages)</span>
+      </div>
+    </div>
+
+    <!-- 7. 웹 대시보드 -->
+    <div class="sec">
+      <h2>7. 웹 대시보드 (Astro + Supabase)</h2>
+      <h3>페이지 라우트</h3>
+      <table>
+        <tr>
+          <th>경로</th>
+          <th>내용</th>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>메인 대시보드 (위젯 16종 + DailyPick)</td>
+        </tr>
+        <tr>
+          <td>/stocks</td>
+          <td>전체 종목 카드 목록</td>
+        </tr>
+        <tr>
+          <td>/stocks/[ticker]</td>
+          <td>개별 종목 상세 (리포트 임베드)</td>
+        </tr>
+        <tr>
+          <td>/briefing/[type]</td>
+          <td>브리핑 타입별 목록 (morning/evening/weekly 등 9종)</td>
+        </tr>
+        <tr>
+          <td>/analyst</td>
+          <td>애널리스트 리포트 목록 + 스코어보드</td>
+        </tr>
+        <tr>
+          <td>/portfolio</td>
+          <td>사용자 포트폴리오 (Supabase 연동)</td>
+        </tr>
+        <tr>
+          <td>/research</td>
+          <td>리서치 KB 현황 + KPI</td>
+        </tr>
+        <tr>
+          <td>/compare</td>
+          <td>두 종목 비교 분석</td>
+        </tr>
+        <tr>
+          <td>/timemachine</td>
+          <td>과거 분석 시점 회고</td>
+        </tr>
+        <tr>
+          <td>/all</td>
+          <td>전체 리포트 통합 목록</td>
+        </tr>
+      </table>
+
+      <h3>위젯 16종</h3>
+      <div
+        class="node-grid"
+        style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))"
+      >
+        <div class="node infra">
+          <div class="name">DailyPick</div>
+          <div class="desc">매일 추천 1건 + ATR 실시간 + 매수 모달</div>
+        </div>
+        <div class="node infra">
+          <div class="name">FearGreedGauge</div>
+          <div class="desc">CNN + Crypto F&G 게이지</div>
+        </div>
+        <div class="node infra">
+          <div class="name">MarketSnapshot</div>
+          <div class="desc">주요 지수/환율/채권 현황</div>
+        </div>
+        <div class="node infra">
+          <div class="name">MarketHeatmap</div>
+          <div class="desc">TradingView 히트맵 임베드</div>
+        </div>
+        <div class="node infra">
+          <div class="name">MacroIndicators</div>
+          <div class="desc">FRED 매크로 15종 시리즈</div>
+        </div>
+        <div class="node infra">
+          <div class="name">EconomicCalendar</div>
+          <div class="desc">이번 주 경제 일정</div>
+        </div>
+        <div class="node infra">
+          <div class="name">PerformanceDonut</div>
+          <div class="desc">분석 적중률 도넛 차트</div>
+        </div>
+        <div class="node infra">
+          <div class="name">HoldingsDonut</div>
+          <div class="desc">보유 자산 배분 시각화</div>
+        </div>
+        <div class="node infra">
+          <div class="name">TopHoldings</div>
+          <div class="desc">보유 종목 상위 목록</div>
+        </div>
+        <div class="node infra">
+          <div class="name">RecentReports</div>
+          <div class="desc">최근 종목분석 리포트</div>
+        </div>
+        <div class="node infra">
+          <div class="name">RecentAnalyst</div>
+          <div class="desc">최근 애널리스트 항목</div>
+        </div>
+        <div class="node infra">
+          <div class="name">StatCard</div>
+          <div class="desc">통계 카드 (종목/브리핑/적중률)</div>
+        </div>
+        <div class="node infra">
+          <div class="name">TypeCounts</div>
+          <div class="desc">리포트 유형별 건수</div>
+        </div>
+        <div class="node infra">
+          <div class="name">RecommendCloud</div>
+          <div class="desc">추천 종목 워드클라우드</div>
+        </div>
+        <div class="node infra">
+          <div class="name">ResearchKBStatus</div>
+          <div class="desc">리서치 KB 진행 상황</div>
+        </div>
+        <div class="node infra">
+          <div class="name">RecentlyViewed</div>
+          <div class="desc">최근 열람 기록</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. 데이터 소스 -->
+    <div class="sec">
+      <h2>8. 데이터 소스 현황</h2>
+      <table class="source-table">
+        <tr>
+          <th>소스</th>
+          <th>데이터</th>
+          <th>수집 주체</th>
+          <th>주기</th>
+        </tr>
+        <tr>
+          <td>yfinance</td>
+          <td>주가, 지수, 환율, 원자재, 크립토</td>
+          <td>data-collector, market-data-collector</td>
+          <td>브리핑/분석 시</td>
+        </tr>
+        <tr>
+          <td>DART API</td>
+          <td>공시, 재무제표</td>
+          <td>data-collector</td>
+          <td>종목분석 시</td>
+        </tr>
+        <tr>
+          <td>FRED API</td>
+          <td>매크로 15개 시리즈 (FFR, 10Y, CPI, 실업률 등)</td>
+          <td>fetch_fred.mjs</td>
+          <td>매 빌드</td>
+        </tr>
+        <tr>
+          <td>CNN / Alternative.me</td>
+          <td>Fear & Greed Index (주식 + 크립토)</td>
+          <td>fetch_fear_greed.mjs</td>
+          <td>매 빌드</td>
+        </tr>
+        <tr>
+          <td>openinsider.com</td>
+          <td>인사이더 클러스터 매수 (Form 4)</td>
+          <td>fetch_openinsider.mjs</td>
+          <td>매 빌드</td>
+        </tr>
+        <tr>
+          <td>Dataroma / SEC EDGAR</td>
+          <td>13F 거물 8인 포지션</td>
+          <td>market-data-collector</td>
+          <td>분기별</td>
+        </tr>
+        <tr>
+          <td>IB / 증권사</td>
+          <td>애널리스트 리포트 (PDF + 웹)</td>
+          <td>analyst-scraper</td>
+          <td>수동/스케줄</td>
+        </tr>
+        <tr>
+          <td>학술 / 씽크탱크</td>
+          <td>10섹터 1차 자료 (L1/L2/L3)</td>
+          <td>research-curator</td>
+          <td>주간/월간</td>
+        </tr>
+        <tr>
+          <td>웹검색 종합</td>
+          <td>뉴스, 산업 트렌드, 규제 변화</td>
+          <td>kb-updater, data-collector</td>
+          <td>수시</td>
+        </tr>
+        <tr>
+          <td>Supabase</td>
+          <td>포트폴리오, trade_log, 인증</td>
+          <td>sync_portfolio, DailyPick</td>
+          <td>매 빌드 + 실시간</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 9. 배포 + 자동화 -->
+    <div class="sec">
+      <h2>9. 배포 및 자동화</h2>
+      <h3>배포 2채널</h3>
+      <table>
+        <tr>
+          <th>채널</th>
+          <th>역할</th>
+          <th>URL</th>
+          <th>갱신 방법</th>
+        </tr>
+        <tr>
+          <td style="color: var(--highlight); font-weight: 600">
+            Vercel (본서버)
+          </td>
+          <td>Astro + Supabase 풀 대시보드</td>
+          <td>stock-analyst-jungwon1.vercel.app</td>
+          <td>vercel --prod --yes</td>
+        </tr>
+        <tr>
+          <td style="color: var(--warning); font-weight: 600">
+            Cloudflare (미러)
+          </td>
+          <td>정적 HTML 우회 호스팅</td>
+          <td>stock-analyst.pages.dev</td>
+          <td>bash scripts/deploy_cloudflare.sh</td>
+        </tr>
+      </table>
+
+      <h3>자동화</h3>
+      <table>
+        <tr>
+          <th>작업</th>
+          <th>방식</th>
+          <th>주기</th>
+          <th>상태</th>
+        </tr>
+        <tr>
+          <td>DailyPick 갱신</td>
+          <td>launchd (daily_pick_update.sh)</td>
+          <td>매일 KST 00:05</td>
+          <td style="color: var(--up)">정상</td>
+        </tr>
+        <tr>
+          <td>모닝 브리핑</td>
+          <td>Claude Code 스케줄</td>
+          <td>매일 KST 07~10시</td>
+          <td style="color: var(--up)">정상</td>
+        </tr>
+        <tr>
+          <td>이브닝 브리핑</td>
+          <td>Claude Code 스케줄</td>
+          <td>매일 KST 18~22시</td>
+          <td style="color: var(--up)">정상</td>
+        </tr>
+        <tr>
+          <td>애널리스트 스크랩</td>
+          <td>Claude Code 스케줄</td>
+          <td>비정기</td>
+          <td style="color: var(--up)">정상</td>
+        </tr>
+        <tr>
+          <td>재분석 자동 실행</td>
+          <td>수동 /재분석실행</td>
+          <td>비정기</td>
+          <td style="color: var(--neutral)">수동</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 10. 데이터 흐름 -->
+    <div class="sec">
+      <h2>10. 전체 데이터 흐름</h2>
+
+      <h3>종목분석 파이프라인</h3>
+      <div class="flow-row">
+        <span class="pipe-step fetch">사용자 /종목분석</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">stock-analyst-lead</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step fetch">kb-updater (섹터 KB)</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step fetch">data-collector (종목 데이터)</span>
+      </div>
+      <div class="flow-row">
+        <span class="flow-arrow" style="visibility: hidden">-></span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">5종 분석 에이전트 (병렬)</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">scorecard-strategist</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">report-generator (HTML)</span>
+      </div>
+      <div class="flow-row">
+        <span class="flow-arrow" style="visibility: hidden">-></span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">git commit + push</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">vercel + cloudflare deploy</span>
+      </div>
+
+      <h3>브리핑 파이프라인</h3>
+      <div class="flow-row">
+        <span class="pipe-step fetch">사용자 /이브닝브리핑</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">briefing-lead</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step fetch">market-data-collector</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">global-macro-analyst</span>
+      </div>
+      <div class="flow-row">
+        <span class="flow-arrow" style="visibility: hidden">-></span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">correlation-monitor</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step build">briefing-lead (분석 작성)</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">briefing-report-generator (HTML)</span>
+      </div>
+      <div class="flow-row">
+        <span class="flow-arrow" style="visibility: hidden">-></span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">git commit + push</span>
+        <span class="flow-arrow">-></span>
+        <span class="pipe-step deploy">vercel + cloudflare deploy</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      종목분석 에이전트 시스템 아키텍처 문서 | 생성: 2026-05-19 | Claude Opus
+      4.6
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "\u{1F319}";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>

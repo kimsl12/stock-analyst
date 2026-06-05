@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>모건스탠리 (MorganStanley) (MS) 종합 분석</title>
+<style>
+/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
+[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
+.header h1{font-size:28px;margin-bottom:4px}
+.meta{color:var(--sub);font-size:14px}
+.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
+.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
+.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
+.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
+.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
+.ki .kv{font-size:20px;font-weight:700}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+tr:hover{background:rgba(255,255,255,0.02)}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:14px;border-radius:10px;text-align:center}
+.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
+.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
+.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
+.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
+.sl{font-size:12px;color:var(--sub)}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
+.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
+.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
+.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
+.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
+.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
+.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
+[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
+.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{opacity:0.85}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
+[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
+[data-theme="light"] th{background:rgba(0,0,0,0.05)}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>모건스탠리 (MorganStanley) (MS)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-03</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">71.5/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$216.58</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$341.6B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">16.5</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$123.38~$216.90</div></div><div class="ki"><div class="kl">등급</div><div class="kv">매수</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v5 BLIND</div></div></div></div>
+<div class="sec"><h2>Executive Summary</h2><p>모건스탠리는 글로벌 IB·트레이딩과 자산관리(WM)·투자운용을 결합한 종합 금융사다. 현재가 $216.58은 52주 최고 $216.90에 사실상 맞닿은 신고가권으로, 52주 저점 $123.38 대비 약 75% 급등한 자리다. 핵심 투자포인트는 두 축이다. (1) WM/투자운용이 약 $7조 규모 고객자산에서 안정적 수수료 기반(fee-based)을 창출해 실적 변동성을 낮추고, (2) 자본시장 사이클이 본격 회복(M&A·IPO 르네상스)되며 IB·주식 트레이딩 수익이 큰 폭 반등 중이다. 1분기 IB 매출 +36% YoY, 주식 트레이딩 분기 record 등 사이클 상방을 직접 확인했다. 밸류는 신고가권이라 절대적 저평가는 아니나 Forward P/E 15~17배는 ROE 개선과 환원을 감안하면 과열로 보기 어렵다. 단기는 신고가 부담·금리/이란 매크로 변동성에 민감, 중기는 M&A 파이프라인과 WM 자산 유입이 완만한 추가 상승을 지지할 전망이다.</p></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$207.18</div><div class="dn" style="font-size:13px">-4.3%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$230.68</div><div class="up" style="font-size:13px">+6.5%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="317" y="30" width="33" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="317" y1="26" x2="317" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="317" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$207</text><line x1="349" y1="24" x2="349" y2="52" stroke="var(--text)" stroke-width="3"/><text x="349" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$217</text><line x1="397" y1="26" x2="397" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="397" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$231</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $123</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $217</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $4.70 | R:R 1:2</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,70.0 187.0,85.3 206.6,128.4 192.3,167.0 184.1,210.7 140.0,225.0 104.7,198.5 73.4,171.6 68.7,126.8 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업 경쟁력 (Moat)</text><circle cx="140.0" cy="70.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 건전성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="206.6" cy="128.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션 매력</text><circle cx="192.3" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/수급</text><circle cx="184.1" cy="210.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">산업 전망</text><circle cx="140.0" cy="225.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 (역점수, 낮을수록 위험)</text><circle cx="104.7" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당/주주환원</text><circle cx="73.4" cy="171.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/지배구조</text><circle cx="68.7" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트 가시성</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업 경쟁력 (Moat)</td><td>8.0</td><td>/10</td></tr><tr><td>재무 건전성</td><td>8.0</td><td>/10</td></tr><tr><td>성장성</td><td>7.0</td><td>/10</td></tr><tr><td>밸류에이션 매력</td><td>5.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>7.5</td><td>/10</td></tr><tr><td>산업 전망</td><td>7.5</td><td>/10</td></tr><tr><td>리스크 (역점수, 낮을수록 위험)</td><td>6.0</td><td>/10</td></tr><tr><td>배당/주주환원</td><td>7.0</td><td>/10</td></tr><tr><td>경영진/지배구조</td><td>7.5</td><td>/10</td></tr><tr><td>촉매/이벤트 가시성</td><td>7.0</td><td>/10</td></tr></tbody></table><p style="text-align:right;font-weight:700;margin-top:8px">종합: 71.5/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Narrow~Wide</span></h2><p>모건스탠리는 글로벌 IB·트레이딩과 자산관리(WM)·투자운용을 결합한 종합 금융사다. 현재가 $216.58은 52주 최고 $216.90에 사실상 맞닿은 신고가권으로, 52주 저점 $123.38 대비 약 75% 급등한 자리다. 핵심 투자포인트는 두 축이다. (1) WM/투자운용이 약 $7조 규모 고객자산에서 안정적 수수료 기반(fee-based)을 창출해 실적 변동성을 낮추고, (2) 자본시장 사이클이 본격 회복(M&A·IPO 르네상스)되며 IB·주식 트레이딩 수익이 큰 폭 반등 중이다. 1분기 IB 매출 +36% YoY, 주식 트레이딩 분기 record 등 사이클 상방을 직접 확인했다. 밸류는 신고가권이라 절대적 저평가는 아니나 Forward P/E 15~17배는 ROE 개선과 환원을 감안하면 과열로 보기 어렵다. 단기는 신고가 부담·금리/이란 매크로 변동성에 민감, 중기는 M&A 파이프라인과 WM 자산 유입이 완만한 추가 상승을 지지할 전망이다.</p><h3>Moat 상세</h3><p>모건스탠리의 해자는 <strong>두 개의 구조적으로 다른 프랜차이즈</strong>에서 나온다. 첫째, <strong>자산관리(WM)</strong>는 약 $7조에 달하는 고객자산을 기반으로 한 fee-based 리커링 수익 구조로, 전환비용·브랜드·자문 네트워크·플랫폼(E*TRADE·Eaton Vance 통합) 통합으로 경쟁사가 단기에 복제하기 어렵다. 이 부문은 <strong>자본시장 침체기에도 안정적 현금흐름</strong>을 제공해 IB 변동성을 상쇄한다. 둘째, <strong>IB·기관증권</strong>은 글로벌 M&A 자문 상위권(1분기 어드바이저리 2위, $210B 딜 가치)과 주식 트레이딩 최상위 프랜차이즈로, 대형 딜·기관 고객 관계·리서치·자본력이 결합된 <strong>규모의 해자</strong>다. 다만 IB·트레이딩은 본질적으로 사이클·시장 변동성에 노출되어 해자의 폭이 WM보다 좁다. 종합하면 <strong>안정적 WM(Wide에 가까움) + 사이클성 IB(Narrow)의 결합</strong>으로, 전체적으로 Narrow~Wide 사이로 평가한다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>최근 분기 실적은 자본시장 회복을 직접 반영한다. <strong>기관증권(Institutional Securities) IB 매출 약 $2.1B(+36% YoY)</strong>로 미주 완료 M&A가 견인했고, <strong>주식 트레이딩 약 $5.2B(+25% YoY)로 분기 record</strong>를 기록했다. 이는 1분기 글로벌 M&A 거래액이 약 $1.2조(+42% YoY)로 사상 최대를 찍은 IB 르네상스의 직접 수혜다. 자산관리(WM)는 약 $7조 고객자산을 기반으로 한 안정적 수수료 수익이 분기 실적의 하방을 떠받친다. ROE는 자본시장 회복으로 두 자릿수 중반 수준까지 개선되는 추세로 추정되며, 트레이딩·자문 동반 강세가 이익률을 끌어올린다. 자본건전성은 대형 IB로서 CET1 비율이 규제 요건을 안정적으로 상회하는 것으로 판단되며, 배당과 자사주 매입을 통한 주주환원 여력이 견조하다. 다만 IB·트레이딩 매출은 본질적으로 분기 변동성이 크다는 점, 채권 트레이딩 손익이 금리 방향에 민감하다는 점은 재무 안정성의 구조적 한계다. 전체적으로 <strong>사이클 상방 + WM 하방방어 결합으로 재무 건전성은 상위권</strong>이다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>현재가 $216.58, 시총 약 $342B 기준 Forward P/E는 대략 <strong>15~17배</strong>로 추정된다. 이는 안정적 WM 수익과 사이클 회복기 IB·트레이딩 이익 가속을 감안하면 미국 대형 IB 평균 대비 과도한 프리미엄은 아니다. 사이클 회복 국면에서 EPS가 상향되면 P/E가 추가로 압축될 여지가 있다. <strong>Bull 시나리오($250 내외)</strong>: M&A·IPO 파이프라인이 2026 내내 가속되고 WM 자산 유입이 지속되며 트레이딩 record가 이어지는 경우. <strong>Base 시나리오($232 내외)</strong>: IB 회복이 완만히 지속되나 신고가 부담·매크로 변동성으로 상승폭이 제한되는 경우. <strong>Bear 시나리오($185 내외)</strong>: 증시 조정·금리 급등·M&A 파이프라인 둔화로 사이클 수익이 후퇴하고 신고가 밸류가 되돌려지는 경우. data.json 기준 단기 3ATR 목표 $230.68과 Base가 근접해 합리적 상단으로 본다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가 모멘텀은 강하다. 현재가 $216.58은 52주 최고 $216.90에 사실상 맞닿은 신고가권으로, 52주 저점 $123.38 대비 약 75% 상승했다. 직전 거래일 +2.64%로 상승 탄력이 살아있고, 자본시장 회복 실적이 모멘텀을 뒷받침한다. 매크로 배경은 S&P 500·NASDAQ이 신고가권(NASDAQ 27K 첫 돌파)이라 금융주에 우호적이나, 시장 폭이 협소(대형주 독주)하고 10Y 금리 4.51%·이란 긴장 재부각 등 변동성 요인이 병존한다. 컨센서스는 IB 르네상스 수혜 대표주로서 매수 우위가 유지되는 것으로 판단되며, 1분기 IB·트레이딩 record로 이익 추정 리비전이 상향 기조다. 다만 ATR 2.17%로 일중 변동성이 작지 않고, 신고가권에서는 단기 차익실현·되돌림 압력이 동반될 수 있어 추격매수는 신중해야 한다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>증권사 평균 목표가</td><td>$232</td></tr><tr><td>투자의견</td><td>매수 우위 (Overweight 중심)</td></tr><tr><td>12M 컨센 EPS</td><td>$13.20</td></tr><tr><td>최근 리비전</td><td>상향 (IB·트레이딩 record 반영)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>산업 구도는 <strong>자본시장 사이클의 상승 변곡점</strong>에 있다. 1분기 글로벌 M&A 거래액 약 $1.2조(+42% YoY)는 사상 최대로, 골드만삭스·모건스탠리 등 상위 IB가 'IB 르네상스'에 공식 진입했다. 구조적 동인은 AI 매크로 흐름에 따른 산업 재편, 풍부한 사모·공공 자본(드라이파우더 $4조+), 우호적 규제 기조다. 모건스탠리는 글로벌 M&A 어드바이저리 상위권(1분기 2위)과 최상위 주식 트레이딩 프랜차이즈를 보유해 사이클 회복의 핵심 수혜주다. 경쟁구도에서 IB·트레이딩은 골드만삭스가 직접 라이벌이고, JPM·BAC 등 유니버설 뱅크도 자본시장에서 경쟁한다. 그러나 모건스탠리는 <strong>WM 비중이 동종 대비 높아 이익 안정성에서 차별화</strong>된다. 메가트렌드로는 (1) 부의 세대 이전과 부유층 자산 유입에 따른 WM 구조적 성장, (2) 사모자산·대체투자로의 자금 대이동, (3) M&A·IPO 정상화 사이클이 동시에 우호적이다. 리스크 측면에서는 증시 조정 시 트레이딩·브로커리지 동반 위축, 금리 방향에 따른 채권 손익 변동성이 구조적 노출이다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 자본시장 사이클 둔화로, IB·트레이딩 이익이 본질적으로 사이클 의존적이다. 여기에 신고가권 밸류·금리 변동성이 단기 되돌림 위험을 키운다. 다만 약 $7조 WM 자산의 안정적 수수료가 하방을 방어한다. <strong>증시 급조정 + M&A 파이프라인 둔화가 동시에 진행되면</strong> IB 사이클 가정이 깨지며 등급을 중립으로 하향하게 된다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">신고가권 밸류·되돌림</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">자본시장 사이클 둔화</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">금리·매크로 변동성</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">규제·자본 요건</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>신고가권 밸류·되돌림</strong> (발생: 중간, 영향: 단기 차익실현 시 두 자릿수 조정 가능)<br><span style="color:var(--sub);font-size:13px">현재가가 52주 최고에 맞닿아 있어 좋은 뉴스 상당 부분이 가격에 반영됐다. 실적 서프라이즈 부재나 매크로 충격 시 신고가 밸류가 빠르게 되돌려질 수 있다. ATR 2.17%로 일중 변동성도 작지 않다.</span></div><div class="ri rl"><strong>자본시장 사이클 둔화</strong> (발생: 높음, 영향: IB·트레이딩 매출 급감, EPS 하향)<br><span style="color:var(--sub);font-size:13px">IB·기관증권 매출은 M&A·IPO 파이프라인과 시장 변동성에 직결된다. 증시 조정이나 M&A 모멘텀 둔화 시 1분기 record를 찍은 트레이딩·자문 수익이 빠르게 후퇴할 수 있다. 이익의 사이클 의존도가 본질적 취약점이다.</span></div><div class="ri rl"><strong>금리·매크로 변동성</strong> (발생: 중간, 영향: 채권 트레이딩 손익·할인율 압박)<br><span style="color:var(--sub);font-size:13px">10Y 금리 4.51%로 베어 스티프닝이 재가속되고 Fed 6월 인하 기대가 소멸하며 12월 인상 가능성까지 부상했다. 금리 급등은 채권 트레이딩 손익을 흔들고 고밸류 금융주 할인율을 높인다. 이란 긴장·유가 변동도 리스크오프 트리거다.</span></div><div class="ri rl"><strong>규제·자본 요건</strong> (발생: 낮음, 영향: 환원 여력·수익성 일부 제약)<br><span style="color:var(--sub);font-size:13px">Basel III Endgame 등 자본규제 논의가 진행 중이나 최근 기조는 capital-neutral~완화 방향이라 대형 IB에 비교적 우호적이다. 다만 자본 요건 변화는 자사주·배당 여력과 일부 사업의 수익성에 영향을 줄 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p><strong>WM 하방방어 + IB 사이클 상방을 동시에 노리는 중기 보유 종목</strong>으로 접근한다. 신고가권이므로 추격매수보다 <strong>분할매수</strong>가 합리적이다. 1차 매수는 현재가 $216 부근에서 소량, 추가 매수는 $205~210 되돌림 구간에서 비중을 늘리는 전략이 유효하다. <strong>손절은 data.json 기준 $207.18(2ATR)</strong> 이탈 시 단기 모멘텀 훼손으로 보고 일부 정리, 추세 붕괴 시 $200 하향 이탈을 최종 방어선으로 삼는다. 단기 목표는 3ATR $230.68, 중기 Base 목표 $232 내외다. 보유기간은 6~12개월로 M&A·IPO 사이클 지속을 추적한다. <strong>상향 트리거</strong>는 M&A 파이프라인 추가 확대·WM 순유입 가속·트레이딩 record 지속이고, <strong>하향 트리거</strong>는 증시 급조정·금리 급등·딜 파이프라인 둔화다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $185 ~ $250 (중심 $232, ±15%)
+
+**스코어 ±밴드**: ±6pt
+
+**시나리오 분기**:
+- Bull case: $250
+- Base case: $232
+- Bear case: $185</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. IB·M&A 르네상스 사이클이 2026 내내 지속된다는 가정**
+
+반증 시 영향: 딜 파이프라인 둔화·증시 조정으로 반증 시 스코어 -10pt, 등급 중립 강등
+
+**2. WM 약 $7조 자산이 안정적 수수료로 하방을 방어한다는 가정**
+
+반증 시 영향: 시장 급락·순유출 발생 시 안정성 전제 약화, 스코어 -5pt
+
+**3. 신고가권 Forward P/E 15~17배가 ROE 개선으로 정당화된다는 가정**
+
+반증 시 영향: EPS 추정 하향·멀티플 축소 시 밸류 매력 소멸, 목표가 Bear로 수렴</div>
+<div class="sec"><h2>재분석 메타 (v5 BLIND)</h2>- **재분석 회차**: v5 (이전 v4, 2026-05-25)
+- **모드**: BLIND (이전 v4 read 0건)
+- **임계 경과**: 9일 (7일 임계 회차)
+- **회차 보고**: `analysis/_reanalysis_runs/20260603_run.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-03 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="MS_MorganStanley_20260603.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

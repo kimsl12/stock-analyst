@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내 포트폴리오 분석 — 2026-05-27</title>
+    <!-- ===== 테마 토글 (상단 고정) ===== -->
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: var(--border);
+          color: var(--text);
+          border: none;
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+    <style>
+      :root {
+        --bg: #0f1419;
+        --card: #1a212c;
+        --text: #e8eaed;
+        --sub: #9aa0a6;
+        --border: #2d3742;
+        --up: #3fb950;
+        --down: #f85149;
+        --neutral: #8b949e;
+        --highlight: #58a6ff;
+        --warning: #d29922;
+        --debate: #8b5cf6;
+        --contrarian: #d29922;
+      }
+      [data-theme="light"] {
+        --bg: #f5f7fa;
+        --card: #ffffff;
+        --text: #24292f;
+        --sub: #57606a;
+        --border: #d0d7de;
+        --up: #1a7f37;
+        --down: #cf222e;
+        --neutral: #57606a;
+        --highlight: #0969da;
+        --warning: #9a6700;
+        --debate: #6639ba;
+        --contrarian: #bc4c00;
+      }
+      [data-theme="light"] body {
+        background: #f5f7fa;
+      }
+      [data-theme="light"] th {
+        background: #eaeef2 !important;
+        color: #1f2328 !important;
+      }
+      [data-theme="light"] td {
+        background: #fff;
+        color: #24292f;
+        border-bottom-color: #d0d7de !important;
+      }
+      [data-theme="light"] tr:nth-child(even) td {
+        background: #f6f8fa !important;
+      }
+      [data-theme="light"] .sec {
+        background: #fff;
+        border-color: #d0d7de;
+      }
+      [data-theme="light"] .footer {
+        background: #f6f8fa;
+        border-color: #d0d7de;
+      }
+      [data-theme="light"] .footer code {
+        background: rgba(0, 0, 0, 0.06);
+        color: #9a6700;
+      }
+      [data-theme="light"] .strong-buy {
+        background: rgba(26, 127, 55, 0.06) !important;
+        border-left-color: #1a7f37 !important;
+      }
+      [data-theme="light"] .strong-sell {
+        background: rgba(207, 34, 46, 0.06) !important;
+        border-left-color: #cf222e !important;
+      }
+      [data-theme="light"] .alert-box {
+        background: #fff8c5 !important;
+        color: #9a6700;
+        border-color: #9a6700;
+      }
+      [data-theme="light"] .portfolio-card {
+        background: #f6f8fa;
+        border-color: #d0d7de;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+          sans-serif;
+        padding: 16px;
+        max-width: 960px;
+        margin: 0 auto;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      .header {
+        text-align: center;
+        padding: 24px 0;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 24px;
+      }
+      .header h1 {
+        font-size: 28px;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 14px;
+      }
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 18px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      .sec h3 {
+        font-size: 16px;
+        color: var(--highlight);
+        margin: 16px 0 10px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 10px 8px;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 2px solid var(--border);
+      }
+      td {
+        padding: 9px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      tr:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .strong-buy {
+        background: rgba(63, 185, 80, 0.06);
+        border-left: 4px solid var(--up);
+        border-radius: 0 10px 10px 0;
+        padding: 16px 18px;
+        margin: 14px 0;
+      }
+      .strong-buy .card-title {
+        color: var(--up);
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .strong-sell {
+        background: rgba(248, 81, 73, 0.06);
+        border-left: 4px solid var(--down);
+        border-radius: 0 10px 10px 0;
+        padding: 16px 18px;
+        margin: 14px 0;
+      }
+      .strong-sell .card-title {
+        color: var(--down);
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 14px 0;
+      }
+      .metric-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid var(--border);
+      }
+      .metric-card .label {
+        font-size: 12px;
+        color: var(--sub);
+        margin-bottom: 4px;
+      }
+      .metric-card .value {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .alert-box {
+        background: rgba(210, 153, 34, 0.1);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .gap-bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 4px 0;
+      }
+      .gap-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .portfolio-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin: 16px 0;
+      }
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-green {
+        background: rgba(63, 185, 80, 0.15);
+        color: var(--up);
+      }
+      .tag-red {
+        background: rgba(248, 81, 73, 0.15);
+        color: var(--down);
+      }
+      .tag-yellow {
+        background: rgba(210, 153, 34, 0.15);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: rgba(88, 166, 255, 0.15);
+        color: var(--highlight);
+      }
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer code {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+      .donut-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 16px 0;
+        flex-wrap: wrap;
+      }
+      .donut-item {
+        text-align: center;
+      }
+      .donut-item svg {
+        width: 120px;
+        height: 120px;
+      }
+      .donut-item .donut-label {
+        font-size: 13px;
+        color: var(--sub);
+        margin-top: 6px;
+      }
+      .timeline {
+        margin: 14px 0;
+      }
+      .timeline .event {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 8px 0;
+        font-size: 14px;
+      }
+      .timeline .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-top: 6px;
+        flex-shrink: 0;
+      }
+      .timeline .dot.critical {
+        background: var(--down);
+      }
+      .timeline .dot.high {
+        background: var(--warning);
+      }
+      .timeline .dot.normal {
+        background: var(--highlight);
+      }
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .metric-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .donut-wrap {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>내 포트폴리오 분석</h1>
+      <div class="meta">
+        2026-05-27 | 균형형 (Balanced+) | 데이터 기준: 5/26 정규장 종가
+      </div>
+    </div>
+
+    <!-- 1. 투자자 프로파일 -->
+    <div class="sec">
+      <h2>1. 투자자 프로파일</h2>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="label">투자 성향</div>
+          <div class="value highlight">균형형</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">총 자산</div>
+          <div class="value">$22,256</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">월 적립금</div>
+          <div class="value">200만원</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">투자 기간</div>
+          <div class="value">5년+</div>
+        </div>
+      </div>
+      <table>
+        <tr>
+          <th>항목</th>
+          <th>값</th>
+        </tr>
+        <tr>
+          <td>관심 테마</td>
+          <td>
+            배당 + 성장 + 분산 균형 (ISA 절세 + 일반계좌 팩터 베팅 이원 운용)
+          </td>
+        </tr>
+        <tr>
+          <td>최종 갱신일</td>
+          <td>2026-05-25 (사용자 입력)</td>
+        </tr>
+        <tr>
+          <td>프로파일 변경</td>
+          <td>중립 → 배당형 → <strong>균형형 (v3, 5/12~)</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 2. 보유 종목 + 자산군 현황 -->
+    <div class="sec">
+      <h2>2. 보유 종목 + 자산군 현황</h2>
+      <h3>해외주식 — 토스증권 (5/26 종가 기준)</h3>
+      <table>
+        <tr>
+          <th>티커</th>
+          <th>종목명</th>
+          <th>유형</th>
+          <th>수량</th>
+          <th>현재가</th>
+          <th>평가금</th>
+          <th>비중</th>
+          <th>등락</th>
+        </tr>
+        <tr>
+          <td><strong>VOO</strong></td>
+          <td>Vanguard S&P 500</td>
+          <td>ETF</td>
+          <td>10.47</td>
+          <td>$690.01</td>
+          <td class="up">$7,224</td>
+          <td>32.4%</td>
+          <td class="up">+0.65%</td>
+        </tr>
+        <tr>
+          <td><strong>SCHD</strong></td>
+          <td>Schwab US Dividend Equity</td>
+          <td>ETF</td>
+          <td>60.43</td>
+          <td>$32.67</td>
+          <td>$1,974</td>
+          <td>8.9%</td>
+          <td class="down">-0.49%</td>
+        </tr>
+        <tr>
+          <td><strong>NVDA</strong></td>
+          <td>NVIDIA</td>
+          <td>개별주</td>
+          <td>8.00</td>
+          <td>$214.86</td>
+          <td>$1,719</td>
+          <td>7.7%</td>
+          <td class="down">-0.22%</td>
+        </tr>
+        <tr>
+          <td><strong>GLD</strong></td>
+          <td>SPDR Gold Shares</td>
+          <td>ETF</td>
+          <td>4.00</td>
+          <td>$414.00</td>
+          <td>$1,657</td>
+          <td>7.4%</td>
+          <td class="up">+0.04%</td>
+        </tr>
+        <tr>
+          <td><strong>SGOV</strong></td>
+          <td>iShares 0-3M Treasury</td>
+          <td>ETF</td>
+          <td>10.00</td>
+          <td>$100.64</td>
+          <td>$1,006</td>
+          <td>4.5%</td>
+          <td class="neutral">+0.01%</td>
+        </tr>
+        <tr>
+          <td><strong>RSP</strong></td>
+          <td>Invesco S&P 500 EW</td>
+          <td>ETF</td>
+          <td>2.00</td>
+          <td>$207.64</td>
+          <td>$415</td>
+          <td>1.9%</td>
+          <td class="up">+0.51%</td>
+        </tr>
+        <tr>
+          <td><strong>VIG</strong></td>
+          <td>Vanguard Div Appreciation</td>
+          <td>ETF</td>
+          <td>1.62</td>
+          <td>$233.26</td>
+          <td>$378</td>
+          <td>1.7%</td>
+          <td class="up">+0.07%</td>
+        </tr>
+        <tr>
+          <td><strong>QUAL</strong></td>
+          <td>iShares MSCI Quality</td>
+          <td>ETF</td>
+          <td>1.00</td>
+          <td>$215.79</td>
+          <td>$216</td>
+          <td>1.0%</td>
+          <td class="up">+0.66%</td>
+        </tr>
+        <tr>
+          <td><strong>VEA</strong></td>
+          <td>Vanguard FTSE Dev Markets</td>
+          <td>ETF</td>
+          <td>3.00</td>
+          <td>$71.78</td>
+          <td>$215</td>
+          <td>1.0%</td>
+          <td class="up">+1.87%</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        해외주식 소계: <strong>$14,805</strong> (66.5%) | 출처: fetch_price.py
+        via yfinance, 2026-05-26 종가
+      </p>
+
+      <h3>기타 자산</h3>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="label">BTC (업비트)</div>
+          <div class="value">$949</div>
+          <div style="font-size: 12px; color: var(--sub)">
+            0.0125 BTC | 4.3%
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="label">ISA (삼성증권)</div>
+          <div class="value">$4,864</div>
+          <div style="font-size: 12px; color: var(--sub)">
+            ₩7,305,948 | 21.8%
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="label">현금</div>
+          <div class="value">$636</div>
+          <div style="font-size: 12px; color: var(--sub)">달러+원화 | 2.9%</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">총 자산</div>
+          <div class="value highlight">$22,256</div>
+          <div style="font-size: 12px; color: var(--sub)">≈ ₩33.4M</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 이번 주 매크로 요약 -->
+    <div class="sec">
+      <h2>3. 이번 주 매크로 요약</h2>
+      <div class="alert-box">
+        매크로 레짐:
+        <strong>Late Cycle + 인플레 재가속 위험 + 지정학 완화 전환기</strong>
+      </div>
+      <div style="margin: 12px 0">
+        <p>
+          <strong>1.</strong> S&P 500 사상 최고
+          <span class="up">7,519</span> (5/26) — NVIDIA 수혜 확산 + 이란 합의
+          기대 이중 순풍. Dow <span class="down">-0.23%</span> 괴리 = 기술주
+          쏠림 구조 (좁은 랠리).
+        </p>
+        <p style="margin-top: 8px">
+          <strong>2.</strong>
+          <span class="warning">5/28 Core PCE가 분수령</span> — Core 3.0% 유지
+          시 동결 확정, 3.2%+ 시 인상 논의 부상. 서비스 인플레(주거/의료) 끈적함
+          지속.
+        </p>
+        <p style="margin-top: 8px">
+          <strong>3.</strong> KOSPI 사상 첫
+          <span class="up">8,000 돌파</span> (5/26) — 반도체·방산·바이오 3축.
+          USD/KRW 1,501원 원화 강세 전환.
+        </p>
+      </div>
+      <h3>이번 주 체크포인트</h3>
+      <div class="timeline">
+        <div class="event">
+          <div class="dot high"></div>
+          <div>
+            <strong>5/27(수)</strong> Salesforce/Marvell 실적 — AI CapEx 확인
+          </div>
+        </div>
+        <div class="event">
+          <div class="dot critical"></div>
+          <div>
+            <strong>5/28(목)</strong> Core PCE + GDP 2차 추정 — Fed 경로 결정
+            <span class="tag tag-red">최대 이벤트</span>
+          </div>
+        </div>
+        <div class="event">
+          <div class="dot normal"></div>
+          <div>
+            <strong>5/29(금)</strong> 시카고 PMI + 미시간 소비자심리 최종
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 종목 풀 -->
+    <div class="sec">
+      <h2>4. 이번 주 등장 종목 풀</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        최근 7일 브리핑에서 추천/관심 언급 종목 추출. 가중치: 절대매력도(0.35) +
+        갭매칭(0.30) + 빈도(0.20) + 최근성(0.15)
+      </p>
+      <table>
+        <tr>
+          <th>순위</th>
+          <th>티커</th>
+          <th>종목명</th>
+          <th>등장</th>
+          <th>현재가</th>
+          <th>절대매력</th>
+          <th>갭매칭</th>
+          <th>총점</th>
+        </tr>
+        <tr style="background: rgba(63, 185, 80, 0.06)">
+          <td>1</td>
+          <td><strong>SOXX</strong></td>
+          <td>iShares Semiconductor</td>
+          <td>8회</td>
+          <td>$570.09</td>
+          <td>90</td>
+          <td>85</td>
+          <td class="up"><strong>89</strong></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>MU</strong></td>
+          <td>Micron Technology</td>
+          <td>6회</td>
+          <td>$895.88</td>
+          <td>85</td>
+          <td>80</td>
+          <td><strong>84</strong></td>
+        </tr>
+        <tr style="background: rgba(63, 185, 80, 0.06)">
+          <td>3</td>
+          <td><strong>AMZN</strong></td>
+          <td>Amazon.com</td>
+          <td>5회</td>
+          <td>$265.29</td>
+          <td>88</td>
+          <td>75</td>
+          <td class="up"><strong>83</strong></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>AVGO</strong></td>
+          <td>Broadcom</td>
+          <td>4회</td>
+          <td>$422.01</td>
+          <td>82</td>
+          <td>80</td>
+          <td><strong>75</strong></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>MRVL</strong></td>
+          <td>Marvell Technology</td>
+          <td>4회</td>
+          <td>$208.26</td>
+          <td>78</td>
+          <td>65</td>
+          <td><strong>75</strong></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>IWM</strong></td>
+          <td>iShares Russell 2000</td>
+          <td>3회</td>
+          <td>$290.51</td>
+          <td>70</td>
+          <td>70</td>
+          <td><strong>65</strong></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>CRM</strong></td>
+          <td>Salesforce</td>
+          <td>3회</td>
+          <td>$179.08</td>
+          <td>65</td>
+          <td>55</td>
+          <td><strong>65</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 5. 갭 분석 -->
+    <div class="sec">
+      <h2>5. 포트 갭 분석</h2>
+      <h3>균형형 모델 (F-3) 대비</h3>
+      <table>
+        <tr>
+          <th>자산군</th>
+          <th>현재</th>
+          <th>목표</th>
+          <th>갭</th>
+          <th>평가</th>
+        </tr>
+        <tr>
+          <td>S&P 500 / 전체시장</td>
+          <td>34.3%</td>
+          <td>25~35%</td>
+          <td class="up">적정 (상단)</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+        <tr>
+          <td>글로벌 Quality</td>
+          <td class="down">1.0%</td>
+          <td>8~12%</td>
+          <td class="down"><strong>-9.0%p</strong></td>
+          <td><span class="tag tag-red">심각 부족</span></td>
+        </tr>
+        <tr>
+          <td>국내 대/중형</td>
+          <td class="down">~5%</td>
+          <td>15~20%</td>
+          <td class="down"><strong>-12.0%p</strong></td>
+          <td><span class="tag tag-red">심각 부족</span></td>
+        </tr>
+        <tr>
+          <td>채권 (중기)</td>
+          <td class="down">4.5%</td>
+          <td>12~18%</td>
+          <td class="down"><strong>-10.5%p</strong></td>
+          <td><span class="tag tag-red">심각 부족</span></td>
+        </tr>
+        <tr>
+          <td>금 + 원자재</td>
+          <td>7.4%</td>
+          <td>7~10%</td>
+          <td class="up">적정</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+        <tr>
+          <td>미국 배당</td>
+          <td>10.6%</td>
+          <td>8~15%</td>
+          <td class="up">적정</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+        <tr>
+          <td>AI / 반도체</td>
+          <td>7.7%</td>
+          <td>5~8%</td>
+          <td class="up">적정 (상단)</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+        <tr>
+          <td>방산</td>
+          <td class="down">0.0%</td>
+          <td>3~6%</td>
+          <td class="down"><strong>-4.5%p</strong></td>
+          <td><span class="tag tag-yellow">부족</span></td>
+        </tr>
+        <tr>
+          <td>크립토</td>
+          <td>4.3%</td>
+          <td>3~6%</td>
+          <td class="up">적정</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+        <tr>
+          <td>국제 분산</td>
+          <td class="down">1.0%</td>
+          <td>5~10%</td>
+          <td class="down"><strong>-6.0%p</strong></td>
+          <td><span class="tag tag-yellow">부족</span></td>
+        </tr>
+        <tr>
+          <td>현금/MMF</td>
+          <td>7.4%</td>
+          <td>4~8%</td>
+          <td class="up">적정</td>
+          <td><span class="tag tag-green">적정</span></td>
+        </tr>
+      </table>
+      <div class="alert-box" style="margin-top: 14px">
+        핵심 갭: <strong>Quality -9%p / 채권 -10.5%p / 국내 -12%p</strong> — 3개
+        자산군 심각 부족. ISA 진입 + 적립 분산으로 6개월 내 해소 필요.
+      </div>
+    </div>
+
+    <!-- 6. 강력 매수 -->
+    <div class="sec">
+      <h2>6. 강력 매수 권고</h2>
+
+      <div class="strong-buy">
+        <div class="card-title">
+          매수 1: SOXX — 반도체 2차 수혜 + NVDA 집중 리스크 분산
+        </div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>
+              SOXX | iShares PHLX SOX Semiconductor ETF |
+              <strong>1주 매수</strong> (~$570)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              NVIDIA "비트해도 하락" 3연속이나 SOXX +6.1%(5/26) — 수혜가
+              공급망으로 확산 패턴 확정. 거물 컨버전스: Tepper MU +200%, Dalio
+              추가. <em>[lead_weekly C-5 1위 / lead_morning debate-card]</em>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              진입: $550~$575 | 손절: $524 (-8.1%, 2xATR) | 12M 목표: $640~$700
+              (+12~23%)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>적합도</strong></td>
+            <td>
+              <span class="tag tag-green">갭매칭</span> AI/반도체 + NVDA 분산 |
+              <strong>89점</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="strong-buy">
+        <div class="card-title">
+          매수 2: QUAL — Quality 갭 -9.0%p 해소 (최우선 적립)
+        </div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>
+              QUAL | iShares MSCI USA Quality Factor ETF |
+              <strong>2주 추가</strong> (~$432)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              Quality/Factor 비중 1.0%로 목표 8~12% 대비 최대 부족. Late Cycle
+              국면에서 높은 ROE + 낮은 부채 기업 초과수익 검증.
+              <em>[model_portfolios F-3 / lead_weekly C-4]</em>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              진입: $212~$218 | 손절: $212 (-1.8%) | 12M 목표: $235~$250
+              (+9~16%)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>적합도</strong></td>
+            <td>
+              <span class="tag tag-red">갭매칭</span> Quality -9.0%p 최대 부족
+              해소 | <strong>78점</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="strong-buy">
+        <div class="card-title">매수 3: VEA — 국제 분산 -6.0%p 해소</div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>
+              VEA | Vanguard FTSE Developed Markets ETF |
+              <strong>3주 추가</strong> (~$215)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              비미국 선진시장 구조적 강세 전환 (닛케이 +6.3%, KOSPI 8,000). DXY
+              99.10 달러 약세가 비미국 수익률 끌어올림.
+              <em>[lead_morning A-7 / daily_snapshot DXY]</em>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              진입: $70~$73 | 손절: $69.59 (-3.0%) | 12M 목표: $78~$85 (+9~18%)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>적합도</strong></td>
+            <td>
+              <span class="tag tag-yellow">갭매칭</span> 국제 분산 -6.0%p 해소 |
+              <strong>72점</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="strong-buy">
+        <div class="card-title">
+          매수 4: AMZN — 거물 3인 컨버전스 + AI 플랫폼
+        </div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>AMZN | Amazon.com | <strong>2주 매수</strong> (~$531)</td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              Ackman + Druckenmiller + Dalio 3인 동시 추가 유일 종목. P/E 27x
+              저평가 (Ackman). AWS AI 30%+ 성장. NVDA(하드웨어) 편중을
+              플랫폼으로 보완.
+              <em>[lead_weekly C-5/C-7 컨버전스 / lead_morning A-5]</em>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              진입: $258~$270 | 손절: $253 (-4.6%) | 12M 목표: $310~$340
+              (+17~28%)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>적합도</strong></td>
+            <td>
+              <span class="tag tag-blue">절대매력</span> 거물 3인 컨버전스 최강
+              | <strong>83점</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="strong-buy">
+        <div class="card-title">
+          매수 5: RSP — "좁은 랠리" 헤지 + S&P 동일가중
+        </div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>
+              RSP | Invesco S&P 500 Equal Weight ETF |
+              <strong>1주 추가</strong> (~$208)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              Dow -0.23% vs NASDAQ +1.19% 괴리 = 소수 대형주 쏠림. RSP
+              동일가중으로 편중 헤지. Russell +2.6% 주간 최강이 breadth 확장
+              시사. <em>[lead_weekly C-3 / lead_morning A-7]</em>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              진입: $205~$210 | 손절: $204 (-1.8%) | 12M 목표: $225~$240
+              (+8~16%)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>적합도</strong></td>
+            <td>
+              <span class="tag tag-green">갭매칭</span> S&P 편중 분산 |
+              <strong>70점</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 7. 강력 매도/축소 -->
+    <div class="sec">
+      <h2>7. 강력 매도/축소 권고</h2>
+
+      <div class="strong-sell">
+        <div class="card-title">축소: NVDA — 4주 매도 (잔여 4주 유지)</div>
+        <table>
+          <tr>
+            <td style="width: 80px"><strong>무엇</strong></td>
+            <td>
+              NVDA | 현재 8주 보유 ($1,719, 7.7%) →
+              <strong>4주 매도</strong> (~$860 회수)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>왜</strong></td>
+            <td>
+              "비트해도 하락" 3연속 패턴. 8주 전량은 개별주 집중 리스크 과다.
+              SOXX 1주 전환으로 동일 AI 노출을 ETF 분산으로 대체.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>어떻게</strong></td>
+            <td>
+              $215 이상 지정가 매도 (현재 $214.86). 잔여 4주($860)는 AI 핵심
+              노출 유지.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>사유</strong></td>
+            <td>
+              <span class="tag tag-yellow">리스크 관리</span> 개별주 집중 → ETF
+              분산
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div
+        style="
+          padding: 12px 18px;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 8px;
+          border-left: 3px solid var(--neutral);
+          margin: 14px 0;
+        "
+      >
+        <strong>VOO (10.47주):</strong> 추가 매도 불필요. 매수 5건 실행 시 분모
+        증가로 자연스럽게 32.4% → 28%대 하락. 향후 적립 시 VOO 비중 0% 설정하여
+        상대 축소.
+      </div>
+    </div>
+
+    <!-- 8. 모니터링 포인트 -->
+    <div class="sec">
+      <h2>8. 다음 주 모니터링 포인트</h2>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>트리거</th>
+          <th>조건</th>
+          <th>액션</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>5/28 Core PCE</strong></td>
+          <td class="down">Core > 3.2%</td>
+          <td>NVDA 4주 매도 가속 + SGOV 추가 (방어 강화)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>5/28 Core PCE</strong></td>
+          <td class="up">Core < 2.8%</td>
+          <td>SOXX/AMZN 매수 가속 (성장주 강세 전환)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>5/27 CRM/MRVL</strong></td>
+          <td class="up">동시 Beat</td>
+          <td>SOXX 매수 확인 신호</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>5/27 CRM/MRVL</strong></td>
+          <td class="down">동시 Miss</td>
+          <td>SOXX 매수 보류. AI 과열론 재검토</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>USD/KRW</strong></td>
+          <td>1,500 하향</td>
+          <td>VEA 추가 가속 (비미국 분산)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>VIX</strong></td>
+          <td class="down">20+ 돌파</td>
+          <td>매수 전체 보류. SGOV 비중 확대</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>NVDA</strong></td>
+          <td class="up">$225+ 도달</td>
+          <td>4주 매도 실행 (지정가)</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>BTC</strong></td>
+          <td class="down">$73K 하회</td>
+          <td>추가 매수 금지. $68K 지지 확인까지 관망</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 9. 4종 모델 비교 -->
+    <div class="sec">
+      <h2>9. 4종 모델 포트폴리오 비교</h2>
+      <table>
+        <tr>
+          <th>자산군</th>
+          <th>사용자</th>
+          <th>안전형</th>
+          <th>중립형</th>
+          <th>공격형</th>
+          <th>배당형</th>
+        </tr>
+        <tr>
+          <td>미국 주식</td>
+          <td><strong>43.0%</strong></td>
+          <td>15%</td>
+          <td class="highlight">45%</td>
+          <td>66%</td>
+          <td>49%</td>
+        </tr>
+        <tr>
+          <td>Quality</td>
+          <td class="down">1.0%</td>
+          <td>-</td>
+          <td class="highlight">10%</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>국내</td>
+          <td class="down">~5%</td>
+          <td>12%</td>
+          <td class="highlight">17%</td>
+          <td>-</td>
+          <td>22%</td>
+        </tr>
+        <tr>
+          <td>채권</td>
+          <td class="down">4.5%</td>
+          <td>37%</td>
+          <td class="highlight">15%</td>
+          <td>0%</td>
+          <td>10%</td>
+        </tr>
+        <tr>
+          <td>금</td>
+          <td>7.4%</td>
+          <td>13%</td>
+          <td class="highlight">8%</td>
+          <td>6%</td>
+          <td>4%</td>
+        </tr>
+        <tr>
+          <td>배당</td>
+          <td>10.6%</td>
+          <td>13%</td>
+          <td>-</td>
+          <td>-</td>
+          <td>25%</td>
+        </tr>
+        <tr>
+          <td>AI/반도체</td>
+          <td>7.7%</td>
+          <td>-</td>
+          <td class="highlight">7%</td>
+          <td>12%</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>크립토</td>
+          <td>4.3%</td>
+          <td>0%</td>
+          <td class="highlight">4%</td>
+          <td>10%</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>국제 분산</td>
+          <td class="down">1.0%</td>
+          <td>5%</td>
+          <td>-</td>
+          <td>7%</td>
+          <td>5%</td>
+        </tr>
+        <tr>
+          <td>현금</td>
+          <td>7.4%</td>
+          <td>18%</td>
+          <td class="highlight">6%</td>
+          <td>2%</td>
+          <td>6%</td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px; color: var(--sub); font-size: 13px">
+        가장 가까운 모델: <strong>중립형 (F-3)</strong> | 유사도 60~65%
+      </p>
+
+      <h3>매수 권고 실행 후 예상 변화</h3>
+      <table>
+        <tr>
+          <th>자산군</th>
+          <th>현재</th>
+          <th>실행 후</th>
+          <th>변화</th>
+        </tr>
+        <tr>
+          <td>S&P 500</td>
+          <td>34.3%</td>
+          <td class="up">31.8%</td>
+          <td>-2.5%p (자연 희석)</td>
+        </tr>
+        <tr>
+          <td>Quality</td>
+          <td class="down">1.0%</td>
+          <td>2.7%</td>
+          <td class="up">+1.7%p</td>
+        </tr>
+        <tr>
+          <td>국제 분산</td>
+          <td class="down">1.0%</td>
+          <td>1.8%</td>
+          <td class="up">+0.8%p</td>
+        </tr>
+        <tr>
+          <td>AI/반도체</td>
+          <td>7.7%</td>
+          <td>8.2%</td>
+          <td>+0.5%p</td>
+        </tr>
+        <tr>
+          <td>AMZN (신규)</td>
+          <td>0%</td>
+          <td class="up">2.1%</td>
+          <td>신규 진입</td>
+        </tr>
+        <tr>
+          <td>현금</td>
+          <td>7.4%</td>
+          <td>~4.5%</td>
+          <td>-2.9%p</td>
+        </tr>
+      </table>
+      <p style="margin-top: 8px; font-size: 14px">
+        총 매수 소요: <strong>~$1,956</strong> | 자금 출처: 현금 $636 + NVDA 4주
+        매도 $860 + 적립금 ~$460
+      </p>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+      <h3>데이터 시차 고지</h3>
+      <table>
+        <tr>
+          <th>카테고리</th>
+          <th>기준</th>
+          <th>시차</th>
+        </tr>
+        <tr>
+          <td>보유/후보 종목 가격</td>
+          <td>2026-05-26 정규장 종가</td>
+          <td>당일</td>
+        </tr>
+        <tr>
+          <td>BTC</td>
+          <td>2026-05-27 KST 09:42</td>
+          <td>실시간</td>
+        </tr>
+        <tr>
+          <td>브리핑 데이터</td>
+          <td>lead_weekly + morning + evening (5/23~27)</td>
+          <td>0~4일</td>
+        </tr>
+        <tr>
+          <td>모델 포트폴리오</td>
+          <td>model_portfolios.md 2026-04-21</td>
+          <td>36일 stale</td>
+        </tr>
+        <tr>
+          <td>거물 13F</td>
+          <td>Q1 2026 (포지션일 2026-03-31)</td>
+          <td>최대 57일</td>
+        </tr>
+      </table>
+      <div
+        style="
+          margin-top: 16px;
+          padding-top: 12px;
+          border-top: 1px solid var(--border);
+        "
+      >
+        <div class="cmd-grid">
+          <div><code>/모닝브리핑</code></div>
+          <div><code>/이브닝브리핑</code></div>
+          <div><code>/주간리포트</code></div>
+          <div><code>/내포트폴리오</code></div>
+          <div><code>/모델포트폴리오</code></div>
+          <div><code>/성과리뷰</code></div>
+        </div>
+      </div>
+      <p
+        style="
+          margin-top: 12px;
+          color: var(--sub);
+          font-size: 11px;
+          text-align: center;
+        "
+      >
+        Generated by briefing-report-generator v3.18 | 2026-05-27
+      </p>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>

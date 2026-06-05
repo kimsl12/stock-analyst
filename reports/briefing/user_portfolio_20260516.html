@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>내 포트폴리오 — 스태그플레이션 처방 — 2026-05-16</title>
+<style>
+:root{
+  --bg:#0d1117; --bg-primary:#0d1117; --bg-secondary:#161b22; --bg-tertiary:#21262d;
+  --card:#1a212c; --text:#e6edf3; --text-primary:#e6edf3; --text-secondary:#8b949e;
+  --text-muted:#484f58; --sub:#8b949e; --border:#30363d;
+  --up:#3fb950; --down:#f85149; --neutral:#8b949e;
+  --highlight:#58a6ff; --warning:#d29922; --debate:#8b5cf6;
+  --contrarian:#bc4c00;
+  --accent-blue:#58a6ff; --accent-green:#3fb950; --accent-red:#f85149;
+  --accent-orange:#d29922; --accent-purple:#8b5cf6; --accent-gold:#f0c040;
+  --accent-cyan:#39d2c0;
+}
+[data-theme="light"]{
+  --bg:#f5f7fa; --bg-primary:#f5f7fa; --bg-secondary:#ffffff; --bg-tertiary:#f6f8fa;
+  --card:#ffffff; --text:#24292f; --text-primary:#24292f; --text-secondary:#57606a;
+  --text-muted:#8b949e; --sub:#57606a; --border:#d0d7de;
+  --up:#1a7f37; --down:#cf222e; --neutral:#57606a;
+  --highlight:#0969da; --warning:#9a6700; --debate:#6639ba;
+  --contrarian:#bc4c00;
+  --accent-blue:#0969da; --accent-green:#1a7f37; --accent-red:#cf222e;
+  --accent-orange:#9a6700; --accent-purple:#6639ba; --accent-gold:#bf8700;
+}
+[data-theme="light"] body{background:#f5f7fa}
+[data-theme="light"] th{background:#eaeef2 !important;color:#1f2328 !important}
+[data-theme="light"] td{background:#ffffff;color:#24292f;border-bottom-color:#d0d7de !important}
+[data-theme="light"] tr:nth-child(even) td{background:#f6f8fa !important}
+[data-theme="light"] tr:hover{background:#ddf4ff !important}
+[data-theme="light"] .sec{background:#ffffff;border-color:#d0d7de}
+[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
+[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
+[data-theme="light"] .metric-card{background:#f6f8fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif;padding:16px;max-width:1080px;margin:0 auto;font-size:16px;line-height:1.7}
+
+.header{text-align:center;padding:28px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:30px;margin-bottom:8px;color:var(--accent-purple)}
+.header .subtitle{color:var(--text-secondary);font-size:15px;margin-top:6px;font-weight:500}
+.header .date-badge{display:inline-block;margin-top:10px;padding:5px 14px;background:var(--bg-tertiary);border-radius:20px;font-size:13px;color:var(--text-secondary);border:1px solid var(--border)}
+.header .grade-badge{display:inline-block;margin:8px 6px 0;padding:6px 16px;background:rgba(248,81,73,0.15);border-radius:20px;font-size:14px;color:var(--accent-red);border:1px solid var(--accent-red);font-weight:600}
+
+.up{color:var(--up)} .down{color:var(--down)} .neutral{color:var(--neutral)}
+.highlight{color:var(--highlight)} .warning{color:var(--warning)}
+
+.sec{background:var(--card);border-radius:12px;padding:22px;margin-bottom:20px;border:1px solid var(--border)}
+.sec h2{font-size:21px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.sec h3{font-size:16px;color:var(--highlight);margin:18px 0 10px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:rgba(255,255,255,0.04);padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:hover{background:rgba(255,255,255,0.02)}
+
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.metric-card{background:var(--bg-tertiary);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.metric-card .label{color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.metric-card .value{font-size:1.5rem;font-weight:700;color:var(--text-primary)}
+.metric-card .change{font-size:0.85rem;margin-top:6px;color:var(--text-secondary)}
+
+.donut-container{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap;margin:22px 0}
+.donut-chart{position:relative;width:220px;height:220px}
+.donut-chart svg{transform:rotate(-90deg)}
+.donut-chart .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-size:0.85rem;color:var(--text-secondary)}
+.donut-chart .center-text .amount{font-size:1.15rem;font-weight:700;color:var(--text-primary);display:block}
+.legend{display:flex;flex-direction:column;gap:9px}
+.legend-item{display:flex;align-items:center;gap:10px;font-size:0.9rem}
+.legend-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0}
+
+.bar-chart{margin:18px 0}
+.bar-row{display:flex;align-items:center;margin:10px 0;gap:14px}
+.bar-label{width:175px;font-size:0.85rem;color:var(--text-secondary);flex-shrink:0}
+.bar-track{flex:1;height:26px;background:var(--bg-tertiary);border-radius:5px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;transition:width .5s ease;display:flex;align-items:center;padding-left:9px;font-size:0.78rem;font-weight:600;color:#fff}
+.bar-target{position:absolute;top:0;height:100%;width:2px;background:var(--accent-gold);z-index:2}
+.bar-target-label{position:absolute;top:-19px;font-size:0.65rem;color:var(--accent-gold);white-space:nowrap;transform:translateX(-50%)}
+
+.alert-box{border-left:4px solid var(--accent-red);background:rgba(248,81,73,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
+.alert-box.warn{border-left-color:var(--accent-orange);background:rgba(210,153,34,0.08)}
+.alert-box.success{border-left-color:var(--accent-green);background:rgba(63,185,80,0.08)}
+.alert-box.info-box{border-left-color:var(--accent-blue);background:rgba(88,166,255,0.08)}
+
+.debate-card{border-left:5px solid var(--debate);background:rgba(139,92,246,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
+.debate-card h4{color:var(--debate);font-size:16px;margin-bottom:10px}
+.contrarian-card{border-left:5px solid var(--contrarian);background:rgba(210,153,34,0.08);padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0}
+.contrarian-card h4{color:var(--contrarian);font-size:16px;margin-bottom:10px}
+
+.strong-buy{
+  background:rgba(248,81,73,0.08);
+  border:1px solid var(--down);
+  border-left:5px solid var(--down);
+  border-radius:8px;
+  padding:18px 22px;
+  margin:14px 0;
+}
+.strong-buy h4{color:var(--down);font-size:18px;margin-bottom:12px}
+.strong-buy h4::before{content:"🔴 "}
+.strong-sell{
+  background:rgba(88,166,255,0.08);
+  border:1px solid var(--highlight);
+  border-left:5px solid var(--highlight);
+  border-radius:8px;
+  padding:18px 22px;
+  margin:14px 0;
+}
+.strong-sell h4{color:var(--highlight);font-size:18px;margin-bottom:12px}
+.strong-sell h4::before{content:"🔵 "}
+.ticker-head{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+.what,.why,.how,.score{margin:8px 0;font-size:0.93rem}
+.what strong,.why strong,.how strong,.score strong{color:var(--accent-gold);display:inline-block;min-width:62px}
+.recommend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;font-size:13px;margin-top:14px;padding:12px;background:rgba(255,255,255,0.03);border-radius:6px}
+.recommend-grid .label{color:var(--sub);font-size:11px;text-transform:uppercase;display:block;margin-bottom:4px}
+.recommend-grid .value{font-weight:600;color:var(--text)}
+
+.action-card{border:2px solid var(--accent-green);background:rgba(63,185,80,0.05);border-radius:10px;padding:20px;margin:18px 0}
+.action-card h3{color:var(--accent-green);margin-bottom:12px;font-size:17px}
+
+.timeline{border-left:3px solid var(--accent-blue);margin:18px 0;padding-left:24px}
+.timeline-item{position:relative;margin-bottom:18px}
+.timeline-item::before{content:'';position:absolute;left:-30px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--accent-blue);border:3px solid var(--bg-secondary)}
+.timeline-item .time{color:var(--accent-blue);font-weight:600;font-size:0.93rem}
+.timeline-item .content{color:var(--text-secondary);font-size:0.9rem;margin-top:4px}
+
+.footer{margin-top:36px;padding:22px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:14px;font-size:16px}
+.cmd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0;font-size:13px}
+.cmd-grid > div{padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:6px;border:1px solid var(--border)}
+.footer code{background:rgba(255,255,255,0.06);padding:3px 8px;border-radius:4px;color:var(--warning);margin-right:6px}
+
+@media(max-width:600px){
+  body{padding:12px;font-size:15px}
+  .header h1{font-size:23px}
+  .donut-container{flex-direction:column;gap:18px}
+  .donut-chart{width:180px;height:180px}
+  .recommend-grid{grid-template-columns:1fr 1fr}
+  .cmd-grid{grid-template-columns:1fr 1fr}
+  .bar-label{width:130px;font-size:0.78rem}
+}
+</style>
+</head>
+<body>
+
+<div style="position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;margin:-16px -16px 16px">
+  <button onclick="toggleTheme()" style="background:var(--border);color:var(--text);border:none;padding:6px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit">
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+
+<div class="header">
+  <h1>👤 내 포트폴리오 — 스태그플레이션 처방</h1>
+  <div class="subtitle">"트리플 마일스톤 붕괴 = VOO 분산 신호 + 에너지·Quality 신규 편입의 정당화"</div>
+  <div class="date-badge">2026-05-16 (토) | 총 자산 $20,621.98 ≈ ₩30,478,000</div>
+  <span class="grade-badge">평가: VOO 67% 극단 집중 ⚠ 즉시 분산</span>
+</div>
+
+<!-- ============== 섹션 1. 투자자 프로파일 ============== -->
+<div class="sec">
+  <h2>1. 투자자 프로파일</h2>
+
+  <table>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>투자 성향</td><td><strong style="color:var(--accent-purple)">균형형 (Balanced+) v3</strong> (2026-05-12 전환)</td></tr>
+      <tr><td>월 적립</td><td>200만원 (장기 적립식)</td></tr>
+      <tr><td>투자 기간</td><td>5년+ (장기)</td></tr>
+      <tr><td>핵심 테마</td><td>배당 + 성장 + 분산 균형 — ISA 절세 + 일반계좌 팩터 이원 운용</td></tr>
+      <tr><td>모델 매핑</td><td>F-3 중립형 (핵심) + F-5 배당형 일부</td></tr>
+      <tr><td>총 자산 (5/15 종가 재계산)</td><td><strong>$20,621.98</strong> ≈ ₩30,478,000</td></tr>
+      <tr><td>현금 가용</td><td>$489 (달러) + $974 (원화 환산) = <strong>$1,463</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert-box warn">
+    <strong>★ 이번 회차 핵심:</strong> 5/15 트리플 마일스톤 1일 붕괴 + 30Y 5.13% 뉴 노멀 = <strong>VOO 67.44% 단일 집중 즉시 분산 시작</strong>. 사용자 ISA 의사결정 문서(3.3)의 손익통산 양도세 거의 무비용(₩3.2만) 활용 가능.
+  </div>
+</div>
+
+<!-- ============== 섹션 2. 보유 현황 ============== -->
+<div class="sec">
+  <h2>2. 보유 종목 + 자산군 현황 (5/15 종가)</h2>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">총 자산 (USD)</div>
+      <div class="value">$20,621.98</div>
+      <div class="change">5/15 종가 재계산</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">보유 평가금</div>
+      <div class="value" style="color:var(--up)">$19,158.98</div>
+      <div class="change">ETF 6종 (-1.2% 주간)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">VOO 비중</div>
+      <div class="value" style="color:var(--down)">67.44%</div>
+      <div class="change">⚠ 모델 상한 35% 대비 +32%p</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">현금 (Dry Powder)</div>
+      <div class="value" style="color:var(--accent-cyan)">$1,463</div>
+      <div class="change">$489 + ₩1.44M</div>
+    </div>
+  </div>
+
+  <h3>2-1. 종목별 평가금 (실시간 fetch_price.py 5/15 종가)</h3>
+  <table>
+    <thead>
+      <tr><th>#</th><th>티커</th><th>종목명</th><th>수량</th><th>현재가</th><th>평가금</th><th>비중</th><th>주간 등락</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>VOO</strong></td><td>Vanguard S&P 500</td><td>20.4697주</td><td>$679.44</td><td>$13,907.96</td><td><strong class="down">67.44%</strong></td><td class="down">-1.21%</td></tr>
+      <tr><td>2</td><td><strong>SCHD</strong></td><td>Schwab US Dividend Equity</td><td>60.6주</td><td>$31.72</td><td>$1,922.23</td><td>9.32%</td><td class="down">-0.25%</td></tr>
+      <tr><td>3</td><td><strong>GLD</strong></td><td>SPDR Gold Shares</td><td>4.0015주</td><td>$417.29</td><td>$1,669.78</td><td>8.10%</td><td class="down">-2.32%</td></tr>
+      <tr><td>4</td><td><strong>SGOV</strong></td><td>iShares 0-3M Treasury</td><td>9.88주</td><td>$100.55</td><td>$993.43</td><td>4.82%</td><td class="up">+0.03%</td></tr>
+      <tr><td>5</td><td><strong>VIG</strong></td><td>Vanguard Div Appreciation</td><td>1.6196주</td><td>$229.39</td><td>$371.51</td><td>1.80%</td><td class="down">-0.64%</td></tr>
+      <tr><td>6</td><td><strong>AGG</strong></td><td>iShares Core US Agg Bond</td><td>3.0주</td><td>$98.02</td><td>$294.06</td><td>1.43%</td><td class="down">-0.63%</td></tr>
+      <tr><td>—</td><td>(현금)</td><td>달러 $489 + 원화 환산 $974</td><td>—</td><td>—</td><td>$1,463.00</td><td>7.09%</td><td>—</td></tr>
+      <tr style="background:rgba(63,185,80,0.05)"><td colspan="5"><strong>합계</strong></td><td><strong>$20,621.98</strong></td><td><strong>100%</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2-2. 자산군 매핑 (F-3 중립형 갭 분석)</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">① 미국 시총가중 (VOO)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:67%;background:var(--accent-red)">67.44%</div>
+        <div class="bar-target" style="left:30%"></div>
+        <div class="bar-target-label" style="left:30%">목표 30%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">② Quality / Factor</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:0%;background:var(--accent-red)">0%</div>
+        <div class="bar-target" style="left:10%"></div>
+        <div class="bar-target-label" style="left:10%">목표 10%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">④ 채권 (중기+IG)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:6%;background:var(--accent-orange)">6.25%</div>
+        <div class="bar-target" style="left:15%"></div>
+        <div class="bar-target-label" style="left:15%">목표 15%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">⑤ 금 + 원자재 (GLD)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:8%;background:var(--accent-green)">8.10%</div>
+        <div class="bar-target" style="left:8%"></div>
+        <div class="bar-target-label" style="left:8%">목표 8%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">⑥ AI / 반도체</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:0%;background:var(--accent-red)">0%</div>
+        <div class="bar-target" style="left:7%"></div>
+        <div class="bar-target-label" style="left:7%">목표 7%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">⑧ 에너지 (스태그플 핵심)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:0%;background:var(--accent-red)">0%</div>
+        <div class="bar-target" style="left:5%"></div>
+        <div class="bar-target-label" style="left:5%">목표 5%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">⑨ 미국 배당 (SCHD+VIG)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:11%;background:var(--accent-green)">11.12%</div>
+        <div class="bar-target" style="left:12%"></div>
+        <div class="bar-target-label" style="left:12%">목표 12%</div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">⑩ 현금 / MMF (SGOV+현금)</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:11%;background:var(--accent-green)">11.91%</div>
+        <div class="bar-target" style="left:6%"></div>
+        <div class="bar-target-label" style="left:6%">목표 6%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <strong>🔴 진단:</strong> VOO 단일 67.44% + 자산군 4개(Quality, AI/반도체, 에너지, 방산) 완전 0% = 분산 부재 + 스태그플레이션 핵심 헤지 누락. 5/15 트리플 마일스톤 붕괴 = VOO 신고가 직전 매도 적기.
+  </div>
+</div>
+
+<!-- ============== 섹션 3. 매크로 요약 ============== -->
+<div class="sec">
+  <h2>3. 이번주 매크로 요약 (주간리포트 lead_weekly 추출)</h2>
+
+  <h3>3-1. "트리플 마일스톤에서 트리플 폭락으로" — 5단 전개</h3>
+  <ol style="padding-left:24px;margin:12px 0;line-height:1.9">
+    <li><strong class="warning">5/12(월) CPI 3.8% Beat</strong> — 에너지 +10.9% 주도. 시간 폭탄 시나리오 B(부분 전이) 적중. <span class="up">[실측, BLS]</span></li>
+    <li><strong class="warning">5/13(화) PPI +6.0% YoY</strong> — 도매→소매 2차 전이 확인. 무시됨 (정상회담 집중). <span class="up">[실측]</span></li>
+    <li><strong class="up">5/14(수) 트리플 마일스톤</strong> — S&P 7,501 / Dow 50,138 / NASDAQ 26,635 동시 사상 최고. <span class="up">[실측, yfinance]</span></li>
+    <li><strong class="down">5/15(목) 트리플 붕괴</strong> — 정상회담 반도체·Section 301 미합의 + Warsh 취임 + 미시간 48.2 역대 최저 = S&P -1.24%, KOSPI -6.12% 폭락, USD/KRW 1,500 돌파. <span class="down">[실측]</span></li>
+    <li><strong>5/16(토) 3대 미결 변수</strong> — Warsh 첫 발언 + 13F Q1 공개 + 한은 구두 개입. 5/18 개장 방향 결정.</li>
+  </ol>
+
+  <h3>3-2. 매크로 4축 주간 변화</h3>
+  <table>
+    <thead><tr><th>축</th><th>주요 지표</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>성장</td><td>미시간 48.2 (역대 최저) / GDPNow Q2 +3.99%</td><td class="warning">명목 팽창 + 실질 감속 = 스태그플레이션 초기</td></tr>
+      <tr><td>인플레</td><td>CPI 3.8% + PPI 6.0% + ISM 가격 84.6%</td><td class="down">3중 고착 공식 확인. Fed 6월 동결 96%</td></tr>
+      <tr><td>정책</td><td>Warsh 취임 + 30Y 5.13% (+12bp)</td><td class="down">QT 가속 + Forward Guidance 폐지 선반영. 뉴 노멀</td></tr>
+      <tr><td>지정학</td><td>미중 정상회담 반쪽 + 이란 교착 + WTI +10.48%</td><td class="warning">에너지 인플레 지속. KOSPI 폭락 전이</td></tr>
+    </tbody>
+  </table>
+
+  <div class="debate-card">
+    <h4>💜 debate-card (lead_weekly) — "트리플 마일스톤 1일 붕괴: 건강한 이익 실현인가, 사이클 전환 시작인가?"</h4>
+    <p><strong>강세 (40%):</strong> 주간 등락 +0.13% 미미 + HY 스프레드 2.77% 안정 + 서프라이즈 인덱스 +0.71 = 펀더멘털 훼손 증거 없음. 신고가 후 이익 실현 정상 행동.</p>
+    <p><strong>약세 (60%):</strong> 트리플 마일스톤 1일 붕괴 = 1999/2007/2021 패턴 일치. 30Y 5.13% + 미시간 48.2 + CPI 3.8% = 스태그플레이션 3중 조건 충족.</p>
+    <p><strong>briefing-lead 판단:</strong> 10~15% 조정 후 재상승이 기본 시나리오 (55%). 5/22 NVDA Q1 + Warsh 첫 발언이 분기점.</p>
+  </div>
+
+  <div class="contrarian-card">
+    <h4>🟠 contrarian-card (lead_weekly) — "WTI $105가 진짜 스태그플레이션 신호라면, 에너지 섹터는 아직 과소평가"</h4>
+    <p><strong>일반 가정:</strong> WTI $105 상승은 이란 일시 요인. 합의 시 $80 급락 → 에너지 주식 과대평가.</p>
+    <p><strong>반대 시그널:</strong> 디레버리징 중 WTI <strong>유일 +10.48%</strong> 역행 = 순수 공급 제약. PPI 6.0% = 원가 이미 전이. XLE PER 11.2x (S&P 절반).</p>
+    <p><strong>적용:</strong> XLE 17주 신규 매수의 핵심 논거 (확률 40~45%). 본 처방 매수 1번 정당화.</p>
+  </div>
+</div>
+
+<!-- ============== 섹션 4. 후보 풀 + 점수표 ============== -->
+<div class="sec">
+  <h2>4. 이번주 등장 종목 풀 (적합도 점수표)</h2>
+
+  <p style="color:var(--text-secondary);font-size:14px;margin-bottom:12px">
+    점수 = 절대매력도(0.35) + 갭매칭(0.30) + 등장빈도(0.20) + 최근성(0.15) · 최근 7일 lead_morning/evening 12개 파일 + lead_weekly 1건 기반.
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>순위</th><th>티커</th><th>자산군</th><th>점수</th><th>현재가</th><th>등장 근거</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(248,81,73,0.08)"><td><strong>1</strong></td><td><strong>XLE</strong></td><td>에너지</td><td><strong class="up">81.0</strong></td><td>$59.44</td><td>주간 C-7 신규 + 이브닝 5/16 + contrarian-card</td></tr>
+      <tr style="background:rgba(248,81,73,0.08)"><td><strong>2</strong></td><td><strong>NVDA</strong></td><td>반도체</td><td><strong class="up">78.2</strong></td><td>$225.32</td><td>주간 C-8 5/22 Q1 D-6 + 트리플 마일스톤 분기점</td></tr>
+      <tr style="background:rgba(248,81,73,0.08)"><td><strong>3</strong></td><td><strong>QUAL</strong></td><td>Quality</td><td><strong class="up">77.8</strong></td><td>$210.45</td><td>주간 C-10 중립형 "10%→13% 확대" + 부재 자산군</td></tr>
+      <tr><td>4</td><td>MOAT</td><td>Quality</td><td>75.0</td><td>$99.29</td><td>주간 C-10 명시. QUAL 대안</td></tr>
+      <tr style="background:rgba(248,81,73,0.05)"><td><strong>5</strong></td><td><strong>SGOV</strong></td><td>현금</td><td><strong>74.5</strong></td><td>$100.55</td><td>주간 C-7 + 사용자 이미 보유</td></tr>
+      <tr><td>6</td><td>IEF</td><td>채권</td><td>70.2</td><td>$93.51</td><td>주간 C-10 + 채권 부족 자산군 보강</td></tr>
+      <tr><td>7</td><td>BIL</td><td>현금</td><td>60.5</td><td>$91.53</td><td>SGOV 대체재</td></tr>
+      <tr><td>8</td><td>GLD</td><td>금</td><td>59.2</td><td>$417.29</td><td>주간 C-7 디레버리징 재진입. 사용자 이미 보유</td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert-box info-box">
+    <strong>인사이더 클러스터 제외:</strong> SRAD(58.0) / OPCH(54.5) / GEHC(52.8) / POOL(51.0) / PATK(47.5) — 사용자 균형형 v3 프로파일 부적합 (소형 + 변동성 큼). 단, 헬스케어 (OPCH+GEHC) 편중은 스태그플레이션 환경 정합 — 향후 ISA 진입 후 검토 옵션.
+  </div>
+</div>
+
+<!-- ============== 섹션 5. 갭 분석 ============== -->
+<div class="sec">
+  <h2>5. 포트 갭 분석 (자산군·섹터·지역)</h2>
+
+  <h3>5-1. 핵심 진단 한 줄</h3>
+  <p style="font-size:1.05rem;line-height:1.8;background:rgba(248,81,73,0.05);padding:14px 18px;border-left:4px solid var(--down);border-radius:0 8px 8px 0">
+    <strong>사용자 포트폴리오 = VOO 단일 67.44% + 자산군 5개(Quality / AI·반도체 / 에너지 / 방산 / 채권 부족) 완전 0%.</strong> 균형형 v3 프로파일과 정반대 구조. 5/15 신고가 직전 적기.
+  </p>
+
+  <h3>5-2. 영역별 처방</h3>
+  <table>
+    <thead><tr><th>영역</th><th>갭</th><th>처방</th></tr></thead>
+    <tbody>
+      <tr><td>미국 시총가중 과집중</td><td class="down">+37.44%p</td><td><strong>VOO 3주 매도</strong> ($2,038 회수) — 30% 미만 분산 시작</td></tr>
+      <tr><td>Quality / Factor 부재</td><td class="down">-10.00%p</td><td><strong>QUAL 3주 신규</strong> ($631) — 중립형 모델 10% 목표</td></tr>
+      <tr><td>에너지 부재 (스태그플 핵심)</td><td class="down">-6.00%p</td><td><strong>XLE 17주 신규</strong> ($1,010) — contrarian-card 핵심</td></tr>
+      <tr><td>AI / 반도체 부재</td><td class="down">-7.00%p</td><td><strong>NVDA 1주 시범</strong> ($225) — 5/22 Q1 D-6 분할 진입 1차</td></tr>
+      <tr><td>채권 부족</td><td class="warning">-8.75%p</td><td><strong>SGOV 5주 추가</strong> ($503) — 현금 쿠션 + Warsh QT 대비</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5-3. VOO 매도 정당성 (사용자 ISA 의사결정 문서 정합)</h3>
+  <ul style="padding-left:24px;margin:10px 0;line-height:1.9">
+    <li><strong>손익통산 양도세 거의 무비용:</strong> AGG -₩12,855 + SGOV -₩3,041 손실 통산 후 양도세 약 <strong>₩31,683</strong>(3.2만원) — 사용자 의사결정 문서 3.3 명시. [KB, user_portfolio.md]</li>
+    <li><strong>신고가 직전 출구:</strong> VOO 5/15 종가 $679.44 vs 52주 고점 $689.10 (-1.4%). 트리플 마일스톤 1일 붕괴 패턴(1999/2007/2021) 직후 = 분산 적기. [실측, fetch_price.py]</li>
+    <li><strong>수익률 +15% 실현:</strong> ₩2,008,000 평가이익 — 일부 실현하여 6대 자산군 분산 자금으로 재배분. [KB]</li>
+  </ul>
+</div>
+
+<!-- ============== 섹션 6. 강력 매수 ============== -->
+<div class="sec">
+  <h2>6. 강력 매수 권고 (4요소 명시)</h2>
+
+  <!-- 매수 1: XLE -->
+  <div class="strong-buy">
+    <h4>매수 1. XLE — Energy Select Sector SPDR · 17주 · 진입 $58~60</h4>
+    <p class="ticker-head">티커: XLE | 시장: NYSE | 적합도 81.0점 (1위)</p>
+    <p class="what"><strong>① 무엇:</strong> Energy Select Sector SPDR ETF 17주 신규 매수 = 포트 비중 +4.90%p (0% → 4.90%)</p>
+    <p class="why"><strong>② 왜:</strong> 주간 디레버리징(Gold/주식/BTC 동반 하락) 속 <strong>WTI +10.48% 유일 역행</strong>. PPI +6.0% YoY = 에너지 원가 이미 제조업에 전이 완료. 이란 합의로 WTI $80 되어도 전이된 원가는 되돌아오지 않음. XLE PER <strong>11.2x (S&P 22.5x 절반)</strong>. lead_weekly_20260516 § C-7 신규 아이디어 1번 + contrarian-card 핵심.</p>
+    <p class="how"><strong>③ 어떻게:</strong> 17주 매수 · 진입 <strong>$58~60</strong> (현재 $59.44, 5/15 +2.36% 강세) · 손절 <strong>$56.77</strong> (2 ATR, ATR 2.25%) · 12M 목표 <strong>$72~78</strong> (+20~30%, contrarian 시나리오 가정).</p>
+    <p class="score"><strong>④ 적합도:</strong> 81.0점 — 갭매칭 95 + 절대매력도 90 + 최근성 100 + 등장빈도 30</p>
+    <div class="recommend-grid">
+      <div><span class="label">매수 수량</span><span class="value">17주</span></div>
+      <div><span class="label">예상 비용</span><span class="value">$1,010.48</span></div>
+      <div><span class="label">진입 구간</span><span class="value">$58~60</span></div>
+      <div><span class="label">손절가</span><span class="value">$56.77 (2 ATR)</span></div>
+      <div><span class="label">12M 목표</span><span class="value">$72~78</span></div>
+      <div><span class="label">상승 여력</span><span class="value up">+20~30%</span></div>
+    </div>
+  </div>
+
+  <!-- 매수 2: QUAL -->
+  <div class="strong-buy">
+    <h4>매수 2. QUAL — iShares MSCI USA Quality Factor · 3주 · 진입 $208~212</h4>
+    <p class="ticker-head">티커: QUAL | 시장: NASDAQ | 적합도 77.8점 (3위)</p>
+    <p class="what"><strong>① 무엇:</strong> iShares MSCI USA Quality Factor ETF 3주 신규 매수 = 포트 비중 +3.06%p (0% → 3.06%)</p>
+    <p class="why"><strong>② 왜:</strong> Late Cycle Quality 프리미엄 + 트리플 마일스톤 붕괴 → "신규 진입 한국↓ 미국 Quality↑" 전환. 부채 낮고 ROE 높은 기업 선별 ETF. 52주 고점 $212.78 대비 -1.1% (조정 거의 없음) = 방어력 확인. lead_weekly_20260516 § C-10 중립형 방향 "QUAL/MOAT 10%→13% 확대" 명시.</p>
+    <p class="how"><strong>③ 어떻게:</strong> 3주 매수 · 진입 <strong>$208~212</strong> (현재 $210.45) · 손절 <strong>$206.77</strong> (2 ATR, ATR 0.87%) · 12M 목표 <strong>$230~245</strong> (+9~16%).</p>
+    <p class="score"><strong>④ 적합도:</strong> 77.8점 — 갭매칭 100 (완전 부재) + 절대매력도 85 + 최근성 100</p>
+    <div class="recommend-grid">
+      <div><span class="label">매수 수량</span><span class="value">3주</span></div>
+      <div><span class="label">예상 비용</span><span class="value">$631.35</span></div>
+      <div><span class="label">진입 구간</span><span class="value">$208~212</span></div>
+      <div><span class="label">손절가</span><span class="value">$206.77 (2 ATR)</span></div>
+      <div><span class="label">12M 목표</span><span class="value">$230~245</span></div>
+      <div><span class="label">상승 여력</span><span class="value up">+9~16%</span></div>
+    </div>
+  </div>
+
+  <!-- 매수 3: NVDA -->
+  <div class="strong-buy">
+    <h4>매수 3. NVDA — NVIDIA · 1주 (★ 시범 분할 1차) · 진입 $220~228</h4>
+    <p class="ticker-head">티커: NVDA | 시장: NASDAQ | 적합도 78.2점 (2위)</p>
+    <p class="what"><strong>① 무엇:</strong> NVIDIA Corporation <strong>1주 시범 진입</strong> = 포트 비중 +1.09%p (0% → 1.09%). 5/22 Q1 발표 후 Beat 시 분할 2차 추가.</p>
+    <p class="why"><strong>② 왜:</strong> 5/22(목) Q1 실적 D-6. AI CapEx 사이클 지속 여부 결정 + 트리플 마일스톤 붕괴 후 V자 반등 핵심 트리거. 5/15 -4.42% 큰 폭 하락 = 실적 D-6 가격 조정으로 유리한 시범 진입 구간. lead_weekly_20260516 § C-8 다음주 핵심 일정 "극높음" + 심층 분석 권장 3위.</p>
+    <p class="how"><strong>③ 어떻게:</strong> 1주 매수 (★ 시범, 분할 진입 1차) · 진입 <strong>$220~228</strong> (현재 $225.32, 52주 고점 $236.54 대비 -4.7%) · 손절 <strong>$208.90</strong> (2 ATR, ATR 3.64%) · 12M 목표 <strong>$280~320</strong> (+24~42%). <strong>★ Q1 Beat 시 +1주 추가 / Miss 시 손절 또는 보류</strong> — 단정톤 유지.</p>
+    <p class="score"><strong>④ 적합도:</strong> 78.2점 — 절대매력도 75 + 갭매칭 90 + 최근성 100</p>
+    <div class="recommend-grid">
+      <div><span class="label">매수 수량</span><span class="value">1주 (시범 1차)</span></div>
+      <div><span class="label">예상 비용</span><span class="value">$225.32</span></div>
+      <div><span class="label">진입 구간</span><span class="value">$220~228</span></div>
+      <div><span class="label">손절가</span><span class="value">$208.90 (2 ATR)</span></div>
+      <div><span class="label">12M 목표</span><span class="value">$280~320</span></div>
+      <div><span class="label">추가 매수 트리거</span><span class="value warning">5/22 Q1 Beat → +1주</span></div>
+    </div>
+  </div>
+
+  <!-- 매수 4: SGOV -->
+  <div class="strong-buy">
+    <h4>매수 4. SGOV — iShares 0-3M Treasury · 5주 추가 · 진입 $100.55</h4>
+    <p class="ticker-head">티커: SGOV | 시장: NYSE | 적합도 74.5점 (5위) | 보유 추가</p>
+    <p class="what"><strong>① 무엇:</strong> iShares 0-3M Treasury Bond ETF <strong>5주 추가 매수</strong> (현재 9.88주 → 14.88주) = 포트 비중 +2.44%p (4.82% → 7.26%)</p>
+    <p class="why"><strong>② 왜:</strong> VIX 18.43→20 임박 + 디레버리징 + Warsh 첫 발언 미지수 = dry powder 확보 필수. 수익률 4.6%+ 확보하면서 변동성 회피. 5/18 월요일 개장까지 안전 자산. lead_weekly_20260516 § C-7 신규 아이디어 3번 (확신: 높음) + C-10 안전형 "SGOV/BIL 25%→28% 상향".</p>
+    <p class="how"><strong>③ 어떻게:</strong> 5주 추가 매수 · 진입 <strong>$100.55</strong> (ATR 0.02% — 거의 무변동) · 손절 불필요 (만기 매칭 안전 자산) · 12M 캐리 <strong>+4.6%</strong> (FRR 표면금리, FRED 실측).</p>
+    <p class="score"><strong>④ 적합도:</strong> 74.5점 — 등장빈도 100 (기 보유) + 최근성 100</p>
+    <div class="recommend-grid">
+      <div><span class="label">매수 수량</span><span class="value">5주 추가</span></div>
+      <div><span class="label">예상 비용</span><span class="value">$502.75</span></div>
+      <div><span class="label">진입가</span><span class="value">$100.55</span></div>
+      <div><span class="label">손절가</span><span class="value">불필요 (만기)</span></div>
+      <div><span class="label">12M 캐리</span><span class="value up">+4.6%</span></div>
+      <div><span class="label">변경 후 비중</span><span class="value">7.26%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== 섹션 7. 강력 매도 ============== -->
+<div class="sec">
+  <h2>7. 강력 매도/축소 권고 (4요소 명시)</h2>
+
+  <div class="strong-sell">
+    <h4>매도 1. VOO — 3주 매도, 잔여 17.4697주 보유 (★ 부분 매도)</h4>
+    <p class="ticker-head">티커: VOO | 시장: NYSE | 부분 매도 (14.7% 축소)</p>
+    <p class="what"><strong>① 무엇:</strong> Vanguard S&P 500 ETF <strong>3주 매도, 잔여 17.4697주 보유</strong> = 포트 비중 -14.7%p (67.44% → 52.74%)</p>
+    <p class="why"><strong>② 왜:</strong> VOO 단독 67.44% = F-3 중립형 모델 상한(35%) +32.44%p 극단 과집중. 5/14 트리플 마일스톤 신고가 직후 1일 만에 붕괴 패턴(1999년 NASDAQ 5000 / 2007년 Dow 14000 / 2021년 S&P 4800 유사) = 천장 형성 시그널. lead_weekly_20260516 § C-10 중립형 방향 "한국 축소 + 미국 Quality 확대" 정합 + 사용자 ISA 의사결정 문서 3.3 "VOO 매도세 손익통산 후 양도세 ₩3.2만, 거의 무비용".</p>
+    <p class="how"><strong>③ 어떻게:</strong> 3주 매도, 잔여 17.4697주 보유 · 매도가 <strong>$679~685</strong> (현재 $679.44, 52주 고점 $689.10 직전) · 회수 약 <strong>$2,038</strong> · 활용: XLE 17주 + QUAL 3주 + NVDA 1주 + SGOV 5주 신규 매수 자금 전액 재배분.</p>
+    <p class="score"><strong>④ 사유:</strong> 갭 정리 (시총 과집중 해소) + 신고가 직전 출구 + 손익통산 양도세 거의 무비용</p>
+    <div class="recommend-grid">
+      <div><span class="label">매도 수량</span><span class="value">3주</span></div>
+      <div><span class="label">잔여 수량</span><span class="value">17.4697주</span></div>
+      <div><span class="label">매도가 구간</span><span class="value">$679~685</span></div>
+      <div><span class="label">회수 금액</span><span class="value">$2,038.32</span></div>
+      <div><span class="label">양도세 (손익통산)</span><span class="value">~₩31,683</span></div>
+      <div><span class="label">변경 후 비중</span><span class="value">52.74%</span></div>
+    </div>
+  </div>
+
+  <div class="alert-box warn">
+    <strong>다음 회차 추가 매도 예고:</strong> 본 처방 후에도 VOO 52.74%는 여전히 모델 상한(35%) 대비 +17.7%p. 5/22 NVDA Q1 결과 확인 후 2차 매도 (3~5주) 검토. 사용자 ISA 진입 시 TIGER S&P500 대체로 분산 가속.
+  </div>
+</div>
+
+<!-- ============== 섹션 8. 모니터링 ============== -->
+<div class="sec">
+  <h2>8. 다음 주 모니터링 포인트 (5/17~5/23)</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time">5/17~18 (토~월)</div>
+      <div class="content"><strong>Warsh 첫 공식 발언 (극높음)</strong> — 30Y 방향 결정. <strong>매파 발언</strong> → 5.20%+ → VOO 추가 매도 검토 / SGOV 강화. <strong>비둘기</strong> → 5.00% 복귀, 신규 매수 적극.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/17~19 (주말~월)</div>
+      <div class="content"><strong>13F Q1 거물 8인 공개 (극높음)</strong> — Buffett 현금↓ = 바닥 시그널 / Tepper EWY 추가 = 한국 contrarian / Wood AI 신규.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/18 (월)</div>
+      <div class="content"><strong>한국장 개장</strong> — KOSPI 7,200~7,600 범위 결정. USD/KRW 1,500 재돌파 여부. 한은 구두 개입 시 환차익 헤지.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/21 (수)</div>
+      <div class="content">FOMC 5월 의사록 — Warsh 체제 전 마지막 파월 의사록. 이원 구조 시사점. 매파 시 AGG/IEF 추가 약세.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/22 (목) ★ 핵심</div>
+      <div class="content"><strong>NVDA Q1 실적 (극높음, D-6 트리거)</strong> — <strong>Beat → NVDA +1주 추가 매수 (총 2주)</strong> / <strong>Miss → 손절 $208.90 또는 보류</strong>. AI CapEx 사이클 지속 여부 결정.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">5/23 (금)</div>
+      <div class="content">기존주택매매 4월 — 30Y 5%+ 환경 첫 주택 데이터. 약세 시 침체 가속.</div>
+    </div>
+  </div>
+
+  <div class="action-card">
+    <h3>핵심 분기점 3건</h3>
+    <ol style="padding-left:20px;line-height:1.9;color:var(--text)">
+      <li><strong>Warsh 발언 (5/17~18):</strong> VOO 추가 매도 vs 보류 결정 트리거</li>
+      <li><strong>NVDA Q1 (5/22):</strong> NVDA 추가 매수 vs 손절 결정 트리거</li>
+      <li><strong>13F Q1 (5/17~19):</strong> Buffett 현금 / Tepper EWY / Wood AI 컨버전스 확인 시 추가 권고</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============== 섹션 9. 4종 모델 비교 ============== -->
+<div class="sec">
+  <h2>9. 4종 모델 포트폴리오 비교 (현재 vs 목표)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>자산군</th>
+        <th>현재 (사용자)</th>
+        <th>🛡️ 안전형</th>
+        <th>⚖️ 중립형 ★</th>
+        <th>🔥 공격형</th>
+        <th>💰 배당형</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>미국 시총가중</td><td class="down"><strong>67.44%</strong></td><td>0%</td><td>28%</td><td>30% (빅테크)</td><td>0%</td></tr>
+      <tr><td>Quality / Factor</td><td class="down">0%</td><td>0%</td><td><strong>10%</strong></td><td>0%</td><td>0%</td></tr>
+      <tr><td>채권 (중기+IG)</td><td class="warning">1.43% (AGG)</td><td>37%</td><td><strong>15%</strong></td><td>0%</td><td>10%</td></tr>
+      <tr><td>금 + 원자재</td><td class="up">8.10% (GLD)</td><td>13%</td><td><strong>8%</strong></td><td>6%</td><td>4%</td></tr>
+      <tr><td>에너지</td><td class="down">0%</td><td>0%</td><td>(선택)</td><td>6%</td><td>(선택)</td></tr>
+      <tr><td>반도체 / AI</td><td class="down">0%</td><td>0%</td><td><strong>7%</strong></td><td>12%</td><td>0%</td></tr>
+      <tr><td>미국 배당 (SCHD/VIG)</td><td class="up">11.12%</td><td>13%</td><td>(혼합)</td><td>0%</td><td>25%</td></tr>
+      <tr><td>현금 / SGOV</td><td class="up">11.91%</td><td>18%</td><td>6%</td><td>2%</td><td>2%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>처방 적용 후 예상 비중 (5/18 실행 시)</h3>
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">VOO (시총가중)</div>
+      <div class="value warning">52.74%</div>
+      <div class="change">목표 28% 대비 +24.7%p — 다음 회차 추가 분산</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">QUAL (Quality)</div>
+      <div class="value up">3.06%</div>
+      <div class="change">목표 10% 대비 -7%p — 적립 추가</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">XLE (에너지)</div>
+      <div class="value up">4.90%</div>
+      <div class="change">목표 3~8% 진입 ✅</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">NVDA (반도체)</div>
+      <div class="value up">1.09%</div>
+      <div class="change">목표 7% 대비 -6%p — 분할 1차</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">채권 + 현금</div>
+      <div class="value up">14.35%</div>
+      <div class="change">SGOV 추가로 개선</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">총 자산</div>
+      <div class="value">$20,621.98</div>
+      <div class="change">동일 (포지션 재배분)</div>
+    </div>
+  </div>
+
+  <h3>핵심 액션 요약 (5/18 월 개장 시 실행)</h3>
+  <table>
+    <thead>
+      <tr><th>우선순위</th><th>액션</th><th>수량</th><th>예상 비용/회수</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>VOO 매도</strong></td><td>3주</td><td class="up">-$2,038.32 회수</td></tr>
+      <tr><td>2</td><td><strong>XLE 매수</strong></td><td>17주</td><td class="down">+$1,010.48</td></tr>
+      <tr><td>3</td><td><strong>QUAL 매수</strong></td><td>3주</td><td class="down">+$631.35</td></tr>
+      <tr><td>4</td><td><strong>NVDA 매수</strong> (시범 1차)</td><td>1주</td><td class="down">+$225.32</td></tr>
+      <tr><td>5</td><td><strong>SGOV 매수</strong></td><td>5주</td><td class="down">+$502.75</td></tr>
+      <tr style="background:rgba(63,185,80,0.08)"><td colspan="2"><strong>순 변동 (현금 흡수)</strong></td><td>—</td><td><strong class="up">-$331.62</strong></td></tr>
+      <tr><td colspan="3"><strong>잔여 현금 (5/18 실행 후)</strong></td><td><strong>$1,131.38</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============== Footer ============== -->
+<div class="footer">
+  <h3>📂 참조 데이터 출처</h3>
+  <div class="cmd-grid">
+    <div><code>price</code> fetch_price.py 5/15 종가 (18종)</div>
+    <div><code>kb</code> user_portfolio.md v3 (2026-05-12)</div>
+    <div><code>plan</code> ISA_전략_의사결정_정리.docx 3.3</div>
+    <div><code>model</code> model_portfolios.md § F-3 중립형</div>
+    <div><code>weekly</code> lead_weekly_20260516_v1 (스태그플)</div>
+    <div><code>macro</code> CPI 3.8 / PPI 6.0 / Warsh 취임</div>
+  </div>
+  <p style="margin-top:14px;color:var(--text-secondary);font-size:0.88rem">
+    <strong>다음 단계 트리거:</strong>
+    <code>Warsh 5/17~18</code> 발언 → VOO 추가 매도 결정 ·
+    <code>13F 5/17~19</code> 거물 컨버전스 확인 ·
+    <code>NVDA 5/22</code> Q1 → 분할 2차 추가 매수 vs 손절
+  </p>
+  <p style="margin-top:10px;color:var(--text-muted);font-size:0.78rem;text-align:center">
+    개인 사용자 v3 균형형 처방 — 단정 톤. 다중 사용자용 면책 일체 적용 X.<br>
+    Generated by briefing-report-generator (template=user_portfolio_v2) — 2026-05-16 KST.
+  </p>
+</div>
+
+<script>
+function toggleTheme(){
+  var root = document.documentElement;
+  var current = root.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  if(next === 'dark'){
+    root.removeAttribute('data-theme');
+    document.getElementById('theme-icon').textContent = '☀️';
+    document.getElementById('theme-label').textContent = '라이트 모드';
+  } else {
+    root.setAttribute('data-theme', 'light');
+    document.getElementById('theme-icon').textContent = '🌙';
+    document.getElementById('theme-label').textContent = '다크 모드';
+  }
+  try{localStorage.setItem('theme', next);}catch(e){}
+}
+(function(){
+  try{
+    var saved = localStorage.getItem('theme');
+    if(saved === 'light'){
+      document.documentElement.setAttribute('data-theme','light');
+      document.getElementById('theme-icon').textContent='🌙';
+      document.getElementById('theme-label').textContent='다크 모드';
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
