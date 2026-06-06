@@ -2,12 +2,12 @@
 updated: 2026-06-02
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-06-01
+lint_last_run: 2026-06-06
 lint_last_post_fix: 2026-06-01
-lint_mode: full
-lint_p0_count: 1
+lint_mode: quick
+lint_p0_count: 2
 lint_p1_count: 1
-lint_p2_count: 2
+lint_p2_count: 0
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -21,35 +21,42 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-06 (market-data-collector — 모닝 수집 완료. daily_snapshot 6/5 종가 갱신 — NFP +172K·반도체 SOX -10%·VIX 20.55 급등)**
+> **최종 갱신: 2026-06-06 (wiki-linter quick 모드 — 이브닝 브리핑 Phase 0-LINT)**
 
-✅ **P0 0건** — 모든 market/ P0 항목 해소 (2026-06-06 09:10 KST).
+⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-06 이브닝 브리핑 전).
 
-| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                       |
-| -------------------------------- | ---------------- | --------------------------------------------------------------- |
+| 파일                           | 문제                                                                                              | 영향 모듈                                                       | 권장 조치                         |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------- |
+| `market/prediction_markets.md` | valid_until 2026-06-04 **2일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건) | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임  |
+| `macro/us_monetary_policy.md`  | valid_until **2026-06-06 오늘 만료** (updated 2026-05-06, 31일 경과). 6/17 첫 Warsh FOMC 미반영   | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | kb-updater 재수집 (우선순위 최고) |
+
+> **브리핑 진행 가능 여부:** 두 파일 모두 내용이 완전 소멸은 아님. prediction_markets는 수집 실패이나 이전 데이터 구조는 유지. us_monetary_policy는 만료 당일로 핵심 수치(3.50~3.75%) 자체는 유효. 브리핑은 현재 데이터로 진행하되 해당 섹션 주의 필요.
+
+| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                          |
+| -------------------------------- | ---------------- | ---------------------------------------------------------------------------------- |
 | `market/daily_snapshot.md`       | 2026-06-07       | 6/5 ET 종가: S&P -2.64%/NASDAQ -4.18%/VIX 20.55(⚠️)/NFP +172K Beat/반도체 SOX -10% |
-| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신 |
-| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                          |
-| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                    |
-| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                 |
-| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                            |
-| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                       |
-| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                           |
-| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                         |
-| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                      |
-| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                              |
-| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                |
-| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                           |
-| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                         |
-| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                      |
-| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                  |
-| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                        |
-| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                        |
-| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                         |
-| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                            |
-| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)             |
-| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                              |
-| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                 |
+| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                    |
+| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                             |
+| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                       |
+| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                    |
+| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                                               |
+| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                                          |
+| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                                              |
+| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                                            |
+| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                                         |
+| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                                                 |
+| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                                   |
+| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                                              |
+| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                                            |
+| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                                         |
+| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                                     |
+| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                                           |
+| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                                           |
+| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                                            |
+| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                                               |
+| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)                                |
+| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                                                 |
+| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                                    |
 
 ---
 
@@ -70,6 +77,8 @@ lint_p2_count: 2
 
 | 날짜       | 출처                                          | 인사이트                                                                                                                                                                                                                                                                                                                                                                                                                     | 관련 KB                                                                          | 제안 상태 |
 | ---------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------- |
+| 2026-06-06 | 이브닝브리핑 | **🔴 6/5 5월 NFP +172K(컨센 85K 2배) "좋은 뉴스=나쁜 뉴스" 충격 — Fed 인하 경로 소멸(CME 12월 인상 ~70%), 10Y 4.54%, SOX -10%(2020-03래 최악)·NASDAQ -4.18% 시총 $1조 증발, KOSPI -5.54% 매도사이드카, USD/KRW 1,560 돌파.** Gold 동반 하락 = risk-off 아닌 고듀레이션 자산 재가격. 6/10 CPI→6/16~17 Warsh 첫 FOMC 이중 분기점 | `market/daily_snapshot.md, market/surprise_index.md` | 진행중 |
+| 2026-06-06 | 이브닝브리핑 | **NASDAQ↔BTC -2.72σ 4일 연속 이상 지속 — 크립토 독립 리스크 잔존(BTC ETF 13일 연속 순유출 -$4.4B, F&G 23 극단공포).** 6/5 동방향 하락(NASDAQ -4.18%/BTC -2.3%)으로 표면 완화 조짐이나 미해소. VIX↔S&P·Gold↔DXY는 개선. 4종 포트폴리오 방향 아침과 동일(방어·균형 유지/성장·공격 경계) — 토요일 휴장 신규 데이터 부재 | `market/correlation_matrix.md` | 진행중 |
 | 2026-06-05 | 크립토브리핑                                  | **🔴 BTC -19.5%/ETH -20.6%/SOL -22.9% (5/25 → 6/5 11일 누적) — 명백한 베어 진입.** SOL $66.02로 52주 저점 $66.15 -0.20% 하회 → 신저가 갱신. ETH $1,678.06 (저점 $1,677 +0.05% 마진) 신저가 임박. IBIT $37.00 (저점 $35.30 +4.8% 마진) ETF 매도 가시화. BTC ETF 13거래일 연속 순유출 -$4.4B 누적 = 2024-01 승인 이후 최장. F&G 23 극단공포(5/25 30 대비 -7p) + 디버전스 36p(5/25 28.6p 대비 +7.4p) — 패닉 아닌 포기형 매도    | `market/daily_snapshot.md, market/correlation_matrix.md, market/fear_greed.json` | 진행중    |
 | 2026-06-05 | 크립토브리핑                                  | **NASDAQ↔BTC -3.24σ ★1순위 이상 심화 — "BTC = 리스크온 베타" 정체성 완전 상실.** 6/4 이브닝 -2.50σ → 6/5 모닝 -3.24σ 악화. 5월 중순부터 -3σ권 반복 출몰 (5/13 -3.26σ, 6/3 -3.03σ). NASDAQ 26,830 보합인데 BTC -19.5% = AI 빅테크와 완전 디커플링. 추가로 Gold $4,500+ vs BTC -22% 디버전스 27%p = "디지털 금" 내러티브 파괴, DXY 보합인데 BTC -22% = 달러 외 구조 요인 우위. 4중 부정 환경(NASDAQ/Gold/USD/알트 시즌 모두 X) | `market/correlation_matrix.md, market/daily_snapshot.md`                         | 진행중    |
 | 2026-06-05 | 크립토브리핑                                  | **🟠 contrarian: 장기 보유자 비중 68.5% 신고치 + 거래소 BTC 보유 -2.2% + 마이너 해시레이트 단 -0.8% = 강한 손 축적 시그널.** 시장 컨센서스 Bear 65%이나 contrarian 30% 보존. 8월 STABLE Act/FIT21 입법 재개 + ETF 순유출 소진 + 52w 저점 지지 ($60,074) 시 V자 반등 가능. 단기 모니터링 트리거: BTC $60K 깨지면 약세 확정, $66K 회복 시 단기 반등 확률 상승. 예측 시장 미수집 → lead 100% 자체 판단                          | `market/daily_snapshot.md, market/correlation_matrix.md`                         | 진행중    |
