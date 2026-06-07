@@ -5,7 +5,7 @@ maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-06-07
 lint_last_post_fix: 2026-06-07
 lint_mode: full
-lint_p0_count: 2
+lint_p0_count: 1
 lint_p1_count: 4
 lint_p2_count: 2
 ---
@@ -23,40 +23,40 @@ lint_p2_count: 2
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
 > **최종 갱신: 2026-06-07 (wiki-linter full 점검)**
 
-⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-07 full 점검 기준).
+⚠️ **P0 1건** — 만료 파일 탐지 (2026-06-07 full 점검 기준). `macro/us_monetary_policy.md` 는 점검 직후 kb-updater 본문 재수집 완료로 해소(아래 「갱신 완료 KB」 표 참조).
 
-| 파일                           | 문제                                                                                                                                | 영향 모듈                                                       | 권장 조치                         |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------- |
-| `market/prediction_markets.md` | valid_until 2026-06-04 **3일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건)                                   | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임  |
-| `macro/us_monetary_policy.md`  | valid_until 2026-06-06 **1일 만료** (updated 2026-05-06, **32일 경과**). 6/17 첫 Warsh FOMC·5월 NFP +172K·CME 12월 인상 ~70% 미반영 | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | 🚨 kb-updater 재수집 (최우선순위) |
+| 파일                           | 문제                                                                                              | 영향 모듈                                                       | 권장 조치                        |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------- |
+| `market/prediction_markets.md` | valid_until 2026-06-04 **3일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건) | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임 |
 
-> **브리핑 진행 가능 여부:** 두 파일 모두 내용이 완전 소멸은 아님. prediction_markets는 수집 실패이나 이전 데이터 구조 유지. us_monetary_policy는 32일 만료로 Warsh 체제(6/16~17 첫 FOMC)·인상 베팅 급등 미반영 — 금리·통화정책 판단 시 주의 필수.
+> **브리핑 진행 가능 여부:** prediction_markets 는 수집 실패이나 이전 데이터 구조는 유지 — 예측시장 섹션만 주의. (us_monetary_policy 는 6/7 재수집으로 해소: 기준금리 3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K·10Y 4.55%·DXY 100 반영, valid_until 2026-07-07.)
 
-| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                                    |
-| -------------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
-| `market/daily_snapshot.md`       | 2026-06-08       | 6/7 주말 갱신: 크립토 BTC $61K·F&G 13(극단공포)·주말 뉴스 5건 추가. 미국 6/5 종가 확정 유지. |
-| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                              |
-| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                                       |
-| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                                 |
-| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                              |
-| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                                                         |
-| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                                                    |
-| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                                                        |
-| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                                                      |
-| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                                                   |
-| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                                                           |
-| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                                             |
-| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                                                        |
-| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                                                      |
-| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                                                   |
-| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                                               |
-| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                                                     |
-| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                                                     |
-| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                                                      |
-| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                                                         |
-| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)                                          |
-| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                                                           |
-| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                                              |
+| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                                                                                              |
+| -------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `macro/us_monetary_policy.md`    | 2026-07-07       | **6/7 P0 해소 재수집**: 3.50~3.75% 3연속 동결, 6/16~17 첫 Warsh FOMC(동결 65%·점도표 촉매), 5월 NFP +172K로 CME 12월 인상 ~70% 역전, 10Y 4.55%·DXY 100 |
+| `market/daily_snapshot.md`       | 2026-06-08       | 6/7 주말 갱신: 크립토 BTC $61K·F&G 13(극단공포)·주말 뉴스 5건 추가. 미국 6/5 종가 확정 유지.                                                           |
+| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                                                                                        |
+| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                                                                                                 |
+| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                                                                                           |
+| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                                                                                        |
+| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                                                                                                                   |
+| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                                                                                                              |
+| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                                                                                                                  |
+| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                                                                                                                |
+| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                                                                                                             |
+| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                                                                                                                     |
+| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                                                                                                       |
+| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                                                                                                                  |
+| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                                                                                                                |
+| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                                                                                                             |
+| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                                                                                                         |
+| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                                                                                                               |
+| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                                                                                                               |
+| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                                                                                                                |
+| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                                                                                                                   |
+| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)                                                                                                    |
+| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                                                                                                                     |
+| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                                                                                                        |
 
 ---
 
