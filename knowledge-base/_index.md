@@ -21,20 +21,20 @@ lint_p2_count: 0
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-06 (wiki-linter quick 모드 — 이브닝 브리핑 Phase 0-LINT)**
+> **최종 갱신: 2026-06-07 (market-data-collector — 일요일 모닝 크립토·뉴스 갱신)**
 
-⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-06 이브닝 브리핑 전).
+⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-07 모닝 갱신 시점 유지).
 
 | 파일                           | 문제                                                                                              | 영향 모듈                                                       | 권장 조치                         |
 | ------------------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------- |
 | `market/prediction_markets.md` | valid_until 2026-06-04 **2일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건) | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임  |
-| `macro/us_monetary_policy.md`  | valid_until **2026-06-06 오늘 만료** (updated 2026-05-06, 31일 경과). 6/17 첫 Warsh FOMC 미반영   | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | kb-updater 재수집 (우선순위 최고) |
+| `macro/us_monetary_policy.md`  | valid_until 2026-06-06 **1일 만료** (updated 2026-05-06, 32일 경과). 6/17 첫 Warsh FOMC 미반영    | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | kb-updater 재수집 (우선순위 최고) |
 
 > **브리핑 진행 가능 여부:** 두 파일 모두 내용이 완전 소멸은 아님. prediction_markets는 수집 실패이나 이전 데이터 구조는 유지. us_monetary_policy는 만료 당일로 핵심 수치(3.50~3.75%) 자체는 유효. 브리핑은 현재 데이터로 진행하되 해당 섹션 주의 필요.
 
 | 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                          |
 | -------------------------------- | ---------------- | ---------------------------------------------------------------------------------- |
-| `market/daily_snapshot.md`       | 2026-06-07       | 6/5 ET 종가: S&P -2.64%/NASDAQ -4.18%/VIX 20.55(⚠️)/NFP +172K Beat/반도체 SOX -10% |
+| `market/daily_snapshot.md`       | 2026-06-08       | 6/7 주말 갱신: 크립토 BTC $61K·F&G 13(극단공포)·주말 뉴스 5건 추가. 미국 6/5 종가 확정 유지. |
 | `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                    |
 | `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                             |
 | `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                       |
