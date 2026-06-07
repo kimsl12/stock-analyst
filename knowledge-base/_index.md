@@ -1,13 +1,13 @@
 ---
-updated: 2026-06-02
+updated: 2026-06-07
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-06-06
-lint_last_post_fix: 2026-06-01
-lint_mode: quick
+lint_last_run: 2026-06-07
+lint_last_post_fix: 2026-06-07
+lint_mode: full
 lint_p0_count: 2
-lint_p1_count: 1
-lint_p2_count: 0
+lint_p1_count: 4
+lint_p2_count: 2
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -21,55 +21,69 @@ lint_p2_count: 0
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-07 (market-data-collector — 일요일 모닝 크립토·뉴스 갱신)**
+> **최종 갱신: 2026-06-07 (wiki-linter full 점검)**
 
-⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-07 모닝 갱신 시점 유지).
+⚠️ **P0 2건** — 만료 파일 탐지 (2026-06-07 full 점검 기준).
 
-| 파일                           | 문제                                                                                              | 영향 모듈                                                       | 권장 조치                         |
-| ------------------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------- |
-| `market/prediction_markets.md` | valid_until 2026-06-04 **2일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건) | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임  |
-| `macro/us_monetary_policy.md`  | valid_until 2026-06-06 **1일 만료** (updated 2026-05-06, 32일 경과). 6/17 첫 Warsh FOMC 미반영    | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | kb-updater 재수집 (우선순위 최고) |
+| 파일                           | 문제                                                                                                                                | 영향 모듈                                                       | 권장 조치                         |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------- |
+| `market/prediction_markets.md` | valid_until 2026-06-04 **3일 만료** + collection_status: PARTIAL_FAIL (Polymarket/Kalshi API 0건)                                   | global-macro-analyst, briefing-report-generator (예측시장 섹션) | polymarket-collector 재수집 위임  |
+| `macro/us_monetary_policy.md`  | valid_until 2026-06-06 **1일 만료** (updated 2026-05-06, **32일 경과**). 6/17 첫 Warsh FOMC·5월 NFP +172K·CME 12월 인상 ~70% 미반영 | 모든 브리핑 모듈 (금리·통화정책 판단 기반)                      | 🚨 kb-updater 재수집 (최우선순위) |
 
-> **브리핑 진행 가능 여부:** 두 파일 모두 내용이 완전 소멸은 아님. prediction_markets는 수집 실패이나 이전 데이터 구조는 유지. us_monetary_policy는 만료 당일로 핵심 수치(3.50~3.75%) 자체는 유효. 브리핑은 현재 데이터로 진행하되 해당 섹션 주의 필요.
+> **브리핑 진행 가능 여부:** 두 파일 모두 내용이 완전 소멸은 아님. prediction_markets는 수집 실패이나 이전 데이터 구조 유지. us_monetary_policy는 32일 만료로 Warsh 체제(6/16~17 첫 FOMC)·인상 베팅 급등 미반영 — 금리·통화정책 판단 시 주의 필수.
 
-| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                          |
-| -------------------------------- | ---------------- | ---------------------------------------------------------------------------------- |
+| 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                                    |
+| -------------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
 | `market/daily_snapshot.md`       | 2026-06-08       | 6/7 주말 갱신: 크립토 BTC $61K·F&G 13(극단공포)·주말 뉴스 5건 추가. 미국 6/5 종가 확정 유지. |
-| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                    |
-| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                             |
-| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                       |
-| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                    |
-| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                                               |
-| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                                          |
-| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                                              |
-| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                                            |
-| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                                         |
-| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                                                 |
-| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                                   |
-| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                                              |
-| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                                            |
-| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                                         |
-| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                                     |
-| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                                           |
-| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                                           |
-| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                                            |
-| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                                               |
-| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)                                |
-| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                                                 |
-| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                                    |
+| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                              |
+| `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                                       |
+| `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                                 |
+| `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                              |
+| `industry/battery.md`            | 2026-06-08       | LGES/삼성SDI/SK온 Q1 적자, CATL +52%                                                         |
+| `industry/bio_pharma.md`         | 2026-06-08       | 삼바·셀트리온 Q1 호조, Leqembi 3개월 연기                                                    |
+| `industry/consumer_retail.md`    | 2026-06-08       | WMT/COST/TGT/이마트/롯데쇼핑 5월 빅뱅                                                        |
+| `industry/crypto_bitcoin.md`     | 2026-06-08       | BTC $73K, MSTR +62,841 BTC, ETF -$2.43B                                                      |
+| `industry/defense_industry.md`   | 2026-06-08       | K-방산 빅4 OP 5조 첫 돌파 + KAI 한화 5.09%                                                   |
+| `industry/education.md`          | 2026-06-08       | DUOL Q1 +27%, COUR+UDMY $2.5B 합병                                                           |
+| `industry/food_agriculture.md`   | 2026-06-08       | WASDE 밀 +30%, Cocoa $3,923 폭락                                                             |
+| `industry/healthcare_service.md` | 2026-06-08       | 2027 MA +2.48%, OBBBA Medicaid -$900B                                                        |
+| `industry/infrastructure.md`     | 2026-06-08       | GE Vernova 백로그 $150B, K전력기기 33조                                                      |
+| `industry/insurance.md`          | 2026-06-08       | Florida 6/1 재보험 -15~25%, Cat bond $5.8B                                                   |
+| `industry/logistics.md`          | 2026-06-08       | SCFI +41% 강세, HMM Q1 OP -56%                                                               |
+| `industry/luxury.md`             | 2026-06-08       | Kering "Reconkering" + Trump 50% EU 관세                                                     |
+| `industry/real_estate.md`        | 2026-06-08       | 한국 PF 174.3조, 미국 오피스 CMBS 12.34%                                                     |
+| `industry/robotics.md`           | 2026-06-08       | NVIDIA Isaac GR00T 오픈, 현대 Atlas 25K                                                      |
+| `industry/semiconductor.md`      | 2026-06-08       | SK하이닉스 OPM 72%, NVIDIA Q1 $81.6B                                                         |
+| `market/correlation_matrix.md`   | 2026-06-08       | VIX↔S&P **+7.23σ 역대급 이상치** (Volmageddon 선행)                                          |
+| `market/surprise_index.md`       | 2026-06-08       | 글로벌 +0.45 (직전 +0.59 → -0.14p)                                                           |
+| `portfolio/model_portfolios.md`  | 2026-06-08       | 4종 (방어/균형/성장/공격) 재구성, VIX 헤지 신규                                              |
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-05-31 full)
+## P1 — 이번 주 조치 (탐지: 2026-06-07 full)
 
-> wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
+> wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장. **4건 모두 주간 회전 KB로 다음 정기 실행 시 자연 갱신** (별도 강제 재수집 불필요).
 
-| 파일                          | 문제                                                                                                                              | 심각도   | 권장 조치              |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------- |
-| `macro/us_monetary_policy.md` | updated 05-06 — **25일 경과**. valid_until 06-06 미만료이나 Warsh 취임(5/15)+이란 합의 진전+PCE 3%++Waller 매파 발언(5/22) 미반영 | **높음** | kb-updater 즉시 재수집 |
+| 파일                            | 문제                                                                                                                                                                                                                                                                               | 심각도 | 권장 조치                                         |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------- |
+| `industry/*.md` 18종            | valid_until 2026-06-08 **내일 만료** (ai·auto·banking_capital·battery·bio_pharma·consumer_retail·crypto_bitcoin·defense_industry·education·food_agriculture·healthcare_service·infrastructure·insurance·logistics·luxury·real_estate·robotics·semiconductor). 06-01 갱신 주간 회전 | 중간   | 다음 종목분석/주간리포트 시 자연 갱신 (정상 회전) |
+| `portfolio/model_portfolios.md` | valid_until 2026-06-08 **내일 만료**. 06-01 갱신 (4종 방어/균형/성장/공격 + VIX 헤지)                                                                                                                                                                                              | 중간   | /리밸런싱 또는 /주간리포트 시 갱신                |
+| `market/correlation_matrix.md`  | valid_until 2026-06-13 (6일 후). VIX↔S&P **+7.23σ 역대급 이상치** 추적 중 (Volmageddon 선행 신호)                                                                                                                                                                                  | 중간   | 이브닝브리핑 회전                                 |
+| `market/surprise_index.md`      | valid_until 2026-06-13 (6일 후). 글로벌 +0.45                                                                                                                                                                                                                                      | 낮음   | 이브닝브리핑 회전                                 |
 
-> [P0 승격 2026-06-02] P1 항목 economic_calendar.md valid_until 06-02 만료 → P0 이동 (market-data-collector 탐지).
-> [P0 승격 2026-05-31] 기존 P1 항목 correlation_matrix·surprise_index 만료 → P0 이동.
+> [해소 2026-06-05] P0 승격됐던 economic_calendar.md → 06-05 재갱신(valid_until 06-17)으로 해소.
+> [회귀 2026-06-07] correlation_matrix·surprise_index → 06-06 재갱신 후 7일내 만료 P1 회귀(정상 주기).
+
+---
+
+## P2 — 모니터링 (탐지: 2026-06-07 full)
+
+> 30일+ 미갱신 또는 구조 점검 항목. 즉시 조치 불필요, 추세 관찰만.
+
+| 파일                               | 문제                                                                                                                                                                                 | 권장 조치                                                  |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| `portfolio/rebalancing_history.md` | updated 2026-04-14 **54일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                             | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)              |
+| 루트 레거시 KB 4종                 | `us_monetary_policy.md`·`geopolitics.md`·`korea_economy.md`·`global_risk_factors.md` (루트) 가 교차참조 맵에서 참조되나 데이터는 `macro/` 버전과 분리·구버전(04-13~05-06). 구조 중복 | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후) |
 
 ---
 
@@ -537,15 +551,15 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 > wiki-linter가 주간 점검 시 이 맵 기준으로 수치 일관성 검증.
 
-| 수치          | 파일 A                                                                | 파일 B                                                                                | 마지막 검증 | 상태                                                                                                 |
-| ------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------- |
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)           | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신, Warsh 취임·PCE 3%+ 미반영)     | 05-31       | ⚠️ macro/us_monetary_policy.md 재수집 필요 (25일 미갱신, Waller 매파 발언·6/17 첫 Warsh FOMC 미반영) |
-| VIX           | `macro/global_risk_factors.md`: 15.32 (05-31 갱신)                    | `market/daily_snapshot.md`: **15.74** (05-28 종가 / 05-31 SSOT 최신)                  | 05-31       | ✅ 일치 (±2.7% 시점차, 허용 범위 — global_risk_factors 05-31 갱신 반영)                              |
-| DXY           | `macro/global_risk_factors.md`: 98.97 (05-31 갱신)                    | `market/daily_snapshot.md`: **98.99** (05-28 ET)                                      | 05-31       | ✅ 일치 (99 붕괴 구조화, 허용 범위 내)                                                               |
-| 원/달러       | `macro/korea_economy.md`: 1,506.20원 (05-30 갱신, 5/29 종가)          | `market/daily_snapshot.md`: 1,506원대 (05-29~30 기준)                                 | 05-31       | ✅ 일치 — korea_economy 5/29 종가 반영, snapshot과 정합                                              |
-| S&P 500       | `macro/us_economy.md`: 7,473 (05-25 갱신, 지수는 daily_snapshot 소관) | `market/daily_snapshot.md`: **S&P 7,580 / Dow 51,032 신고가** (05-31 기준)            | 05-31       | ℹ️ 지수 SSOT은 daily_snapshot. us_economy는 매크로(금리/물가) 중심 — 05-30 금리 4.45% 갱신           |
-| WTI           | `macro/us_economy.md`: $96.60 (05-25)                                 | `industry/energy.md`: **~$91~92** (06-07) / `market/daily_snapshot.md`: 갱신 대기 | 06-07       | ℹ️ WTI SSOT은 energy.md/daily_snapshot. 6/5 $87.36->~$91 반등(이란 MOU 미서명 지속) — us_economy는 매크로 영향만 표기  |
-| Gold          | `macro/global_risk_factors.md §4`: $4,541 (05-31 갱신)                | `market/daily_snapshot.md`: **$4,570 신고가** (05-29~30 기준)                         | 05-31       | ✅ 일치 (+0.6% 시점차, 허용 범위 — global_risk_factors 05-31 갱신 반영)                              |
+| 수치          | 파일 A                                                                | 파일 B                                                                            | 마지막 검증 | 상태                                                                                                                  |
+| ------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)           | `macro/us_monetary_policy.md`: 3.50~3.75% (04-18 갱신, Warsh 취임·PCE 3%+ 미반영) | 05-31       | ⚠️ macro/us_monetary_policy.md 재수집 필요 (25일 미갱신, Waller 매파 발언·6/17 첫 Warsh FOMC 미반영)                  |
+| VIX           | `macro/global_risk_factors.md`: 15.32 (05-31 갱신)                    | `market/daily_snapshot.md`: **15.74** (05-28 종가 / 05-31 SSOT 최신)              | 05-31       | ✅ 일치 (±2.7% 시점차, 허용 범위 — global_risk_factors 05-31 갱신 반영)                                               |
+| DXY           | `macro/global_risk_factors.md`: 98.97 (05-31 갱신)                    | `market/daily_snapshot.md`: **98.99** (05-28 ET)                                  | 05-31       | ✅ 일치 (99 붕괴 구조화, 허용 범위 내)                                                                                |
+| 원/달러       | `macro/korea_economy.md`: 1,506.20원 (05-30 갱신, 5/29 종가)          | `market/daily_snapshot.md`: 1,506원대 (05-29~30 기준)                             | 05-31       | ✅ 일치 — korea_economy 5/29 종가 반영, snapshot과 정합                                                               |
+| S&P 500       | `macro/us_economy.md`: 7,473 (05-25 갱신, 지수는 daily_snapshot 소관) | `market/daily_snapshot.md`: **S&P 7,580 / Dow 51,032 신고가** (05-31 기준)        | 05-31       | ℹ️ 지수 SSOT은 daily_snapshot. us_economy는 매크로(금리/물가) 중심 — 05-30 금리 4.45% 갱신                            |
+| WTI           | `macro/us_economy.md`: $96.60 (05-25)                                 | `industry/energy.md`: **~$91~92** (06-07) / `market/daily_snapshot.md`: 갱신 대기 | 06-07       | ℹ️ WTI SSOT은 energy.md/daily_snapshot. 6/5 $87.36->~$91 반등(이란 MOU 미서명 지속) — us_economy는 매크로 영향만 표기 |
+| Gold          | `macro/global_risk_factors.md §4`: $4,541 (05-31 갱신)                | `market/daily_snapshot.md`: **$4,570 신고가** (05-29~30 기준)                     | 05-31       | ✅ 일치 (+0.6% 시점차, 허용 범위 — global_risk_factors 05-31 갱신 반영)                                               |
 
 ---
 
