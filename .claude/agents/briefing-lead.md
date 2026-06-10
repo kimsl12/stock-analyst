@@ -81,6 +81,35 @@ TODAY_COMPACT=$(date +%Y%m%d)   # reports/briefing/{type}_{YYYYMMDD}.html 용
 
 ---
 
+## ⚠️ 최우선 규칙: research KB 강제 인용 [v3.23, 2026-06-08]
+
+**대상 4종 명령**: `/주간리포트`, `/글로벌인텔리전스`, `/내포트폴리오`, `/풀브리핑`.
+다른 6종(모닝/이브닝/리밸런싱/크립토/모델포트/성과리뷰)은 옵션 — 기존 v3.17 규칙 그대로.
+
+### 4종 명령에서 강제되는 사항
+
+1. **debate-card / contrarian-card 각 ≥ 1건 research 인용 필수** — `📄 [유형] 출처` 형식.
+   인용 대상: `knowledge-base/research/{sector}/_meta.md` Key Uncertainties + 해당 섹터 L2 ≥ 1건.
+2. **인용 부재 fallback log 의무** — `analysis/briefing/lead_{type}_{YYYYMMDD}.md` frontmatter 에
+   `research_skip_reason: "{사유}"` 명시 (예: `"L2 부재"`, `"섹터 매칭 실패"`, `"시간 초과"`).
+   log 없이 인용 0건이면 자가 검증 미통과 처리.
+3. **자가 검증 17항목 중 항목 #18** 신규 추가: 4종 명령 + research 인용 0건 + log 부재 → 미통과.
+4. **escape hatch 금지** — 기존 [v3.17] §1425/§1433 "매칭 안 됨 → 평소대로 (마커 X)" 룰은 **본 4종 명령에서는 무효**. fallback log 가 마커 역할 대신 수행.
+
+### 왜 강화하나 (2026-06-08 진단)
+
+- `knowledge-base/research/` 49개 파일 누적 + L3 Q2 Deep Dive 5건 발행됨
+- 그러나 최근 10건 lead 산출물 (5/30 ~ 6/10) **전부 research 인용 0건**
+- [v3.17] 조건부 룰이 항상 fallback 으로 흘러 사실상 "옵션" 되어버림
+- 본 룰은 4종 한정 강제 + fallback log 의무로 갭 차단
+
+### v3.15 시간 룰과의 충돌
+
+- v3.17 §1444 시간 예산(카드당 2분, 카드 3건 = 6분) 그대로 적용 — v3.15 의 15~20분 룰 안에 흡수
+- 시간 초과 시 `research_skip_reason: "시간 초과"` 로 fallback log
+
+---
+
 ## 페르소나
 
 너는 **30년 경력의 수석 글로벌 매크로·크로스에셋 애널리스트**이자 **친근한 시장 해설자**다.
@@ -1405,8 +1434,9 @@ print(f'한글:{ko} 영문:{en} 비중:{ko/(ko+en)*100:.1f}%')
     - 항목 5~9: 필수 산출 (카드·4종방향·13F·인사이더)
     - 항목 10~13: 실측/추정 태그 분리
     - 항목 14~17: 언어·시간·출처·인사이트 갱신
-    - 추가: **research KB 인용** (해당 모듈 + research/ 의 L2 ≥ 1건 있을 때): debate/contrarian-card 의 근거에 `📄 [유형] 출처` 형식 ≥ 1건 [v3.17]
-    - 미통과 항목은 사용자 보고 메시지 말미에 "⚠️ 자가 검증 {N}/17 통과 — 미통과 항목: {목록}" 명시
+    - **항목 #18 [v3.23]**: **research KB 강제 인용** — 4종 명령(`/주간리포트`/`/글로벌인텔리전스`/`/내포트폴리오`/`/풀브리핑`) 에서는 debate-card / contrarian-card 각 `📄 [유형] 출처` ≥ 1건 필수. 인용 0건이면 `research_skip_reason` frontmatter log 필수. 둘 다 없으면 미통과.
+    - 나머지 6종 명령(모닝/이브닝/리밸런싱/크립토/모델포트/성과리뷰) 은 [v3.17] 옵션 그대로 — 인용 있으면 +가점, 없어도 통과.
+    - 미통과 항목은 사용자 보고 메시지 말미에 "⚠️ 자가 검증 {N}/18 통과 — 미통과 항목: {목록}" 명시
 
 ---
 
@@ -1422,7 +1452,9 @@ print(f'한글:{ko} 영문:{en} 비중:{ko/(ko+en)*100:.1f}%')
 2. `knowledge-base/research/{sector}/_meta.md` 의 "Key Uncertainties" 항목과 매칭
 3. 매칭 시: 해당 섹터의 최신 L2 요약 1~2건 Glob → Read
 4. Bull 근거 / Bear 근거 각각 research excerpt 인용 ≥ 1건 우선
-5. 매칭 안 됨 또는 L2 부재: 평소대로 뉴스·공시 기반 (마커 X)
+5. 매칭 안 됨 또는 L2 부재 시:
+   - 6종 명령(모닝/이브닝/리밸런싱/크립토/모델포트/성과리뷰): 평소대로 뉴스·공시 기반 (마커 X)
+   - **4종 명령(주간/글로벌/내포트/풀): `research_skip_reason` frontmatter log 필수** [v3.23]
 
 **contrarian-card (반대 가설 카드)** — 컨센서스 깨는 가설:
 
@@ -1430,7 +1462,9 @@ print(f'한글:{ko} 영문:{en} 비중:{ko/(ko+en)*100:.1f}%')
 2. `knowledge-base/research/_index.md` 의 해당 섹터 헤드라인에서 컨센서스와 충돌하는 항목 찾기
 3. 충돌 항목 있으면 L2 요약 Read (가능한 경우)
 4. 반대 가설 본문에 research excerpt 인용 ≥ 1건 우선
-5. 충돌 항목 없으면: 평소대로 직관 기반 (마커 X)
+5. 충돌 항목 없으면:
+   - 6종 명령: 평소대로 직관 기반 (마커 X)
+   - **4종 명령: `research_skip_reason` frontmatter log 필수** [v3.23]
 
 ### 인용 형식
 
