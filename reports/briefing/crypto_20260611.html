@@ -1,0 +1,1622 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>크립토브리핑 — 2026-06-11</title>
+
+    <!-- ===== 테마 토글 (상단 고정) ===== -->
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      /* 레짐 스트립 [v3.29] */
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      /* 색상 클래스 */
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      /* 셀 배경 */
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      /* 섹션 카드 */
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      /* 표 — 금융 데이터 표준 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      /* debate-card (보라) — 핵심 논쟁 */
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      /* contrarian-card (주황) — 과소평가 포인트 */
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      /* 시그널 바 */
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      /* 히트맵 (6셀) */
+      .heatmap {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .heatmap .cell {
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .heatmap .green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .heatmap .yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .heatmap .red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+
+      /* 시나리오 트리 */
+      .scenario-tree {
+        margin: 14px 0;
+      }
+      .scenario-tree .root {
+        text-align: center;
+        padding: 12px;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-radius: 8px;
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+      }
+      .scenario-tree .branches {
+        display: flex;
+        gap: 14px;
+      }
+      .scenario-tree .branch {
+        flex: 1;
+        padding: 14px;
+        border-radius: 8px;
+      }
+      .scenario-tree .branch.a {
+        background: color-mix(in srgb, var(--up) 6%, transparent);
+        border: 1px solid var(--up);
+      }
+      .scenario-tree .branch.b {
+        background: color-mix(in srgb, var(--down) 6%, transparent);
+        border: 1px solid var(--down);
+      }
+      .scenario-tree .prob-bar {
+        width: 100%;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        height: 6px;
+        border-radius: 3px;
+        margin-top: 8px;
+      }
+      .scenario-tree .prob-bar .fill {
+        height: 6px;
+        border-radius: 3px;
+      }
+
+      /* 태그 시스템 */
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+      .tag-green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .tag-yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+      }
+      .tag-purple {
+        background: color-mix(in srgb, var(--debate) 14%, transparent);
+        color: var(--debate);
+      }
+
+      /* 시그널 아이템 */
+      .signal-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0;
+        font-size: 14px;
+      }
+      .signal-label {
+        width: 160px;
+        flex-shrink: 0;
+        color: var(--sub);
+      }
+      .signal-value {
+        width: 120px;
+        flex-shrink: 0;
+        font-weight: 600;
+      }
+      .signal-bar-wrap {
+        flex: 1;
+      }
+
+      /* 예측 시장 (Polymarket) */
+      .prediction-bar {
+        margin: 6px 0;
+        height: 24px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .prediction-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .prediction-bar .fill.high {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .prediction-bar .fill.mid {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .prediction-bar .fill.low {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .prediction-bar .pct {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      /* F&G 게이지 */
+      .fg-gauge-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 14px 0;
+      }
+      .fg-gauge {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+      }
+      .fg-gauge svg {
+        width: 120px;
+        height: 120px;
+      }
+      .fg-gauge .fg-number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .fg-gauge .fg-score {
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--down);
+        line-height: 1;
+      }
+      .fg-gauge .fg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-top: 2px;
+      }
+      .fg-info {
+        flex: 1;
+      }
+      .fg-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+        font-size: 13.5px;
+      }
+      .fg-row:last-child {
+        border-bottom: none;
+      }
+
+      /* 온체인 지표 방향 표시 */
+      .arrow-up {
+        color: var(--up);
+        font-size: 16px;
+      }
+      .arrow-down {
+        color: var(--down);
+        font-size: 16px;
+      }
+      .arrow-neutral {
+        color: var(--neutral);
+        font-size: 16px;
+      }
+
+      /* 시계열 비교 표 강조 */
+      .change-positive {
+        color: var(--up);
+        font-weight: 600;
+      }
+      .change-negative {
+        color: var(--down);
+        font-weight: 600;
+      }
+      .change-neutral {
+        color: var(--neutral);
+      }
+
+      /* 주의사항 */
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      /* 알림 박스 */
+      .alert-box {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin: 12px 0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .alert-box.warn {
+        background: color-mix(in srgb, var(--down) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--down) 35%, transparent);
+        border-left: 4px solid var(--down);
+      }
+      .alert-box.info {
+        background: color-mix(in srgb, var(--highlight) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--highlight) 35%, transparent);
+        border-left: 4px solid var(--highlight);
+      }
+      .alert-box.warning {
+        background: color-mix(in srgb, var(--warning) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--warning) 35%, transparent);
+        border-left: 4px solid var(--warning);
+      }
+      .alert-box.success {
+        background: color-mix(in srgb, var(--up) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--up) 35%, transparent);
+        border-left: 4px solid var(--up);
+      }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .heatmap {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .scenario-tree .branches {
+          flex-direction: column;
+        }
+        .signal-label {
+          width: 80px;
+        }
+        .signal-value {
+          width: 90px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .fg-gauge-wrap {
+          flex-direction: column;
+        }
+        .fg-gauge {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 테마 토글 (상단 고정) -->
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <!-- 헤더 -->
+    <div class="header">
+      <h1>🪙 크립토브리핑 — 2026-06-11</h1>
+      <div class="meta">
+        briefing-lead 종합 작성 | KST 2026-06-11 16:50 | 데이터 기준:
+        market_data_20260611.md (KST 16:30)
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 전 자산 동반 위험 회피 — 크립토 F&amp;G 9 (극단공포) + 전통자산
+        F&amp;G 29 (공포) 동시 진입
+      </div>
+      <div
+        class="meta"
+        style="
+          margin-top: 6px;
+          padding: 6px 10px;
+          background: color-mix(in srgb, var(--down) 10%, transparent);
+          border-radius: 6px;
+          border: 1px solid color-mix(in srgb, var(--down) 30%, transparent);
+          color: var(--down);
+          font-weight: 600;
+        "
+      >
+        ⚠️ BTC/ETH/SOL 등 크립토 8종은 QuantTrader 자동매매(Mac mini M4 LEAN)
+        별도 운용 중 — 본 브리핑은 시장 동향·방향성 정보, 사용자 직접 액션 권고
+        없음
+      </div>
+    </div>
+
+    <!-- 오늘의 핵심 논지 -->
+    <div class="sec" style="border-left: 4px solid var(--highlight)">
+      <h2>오늘의 핵심 논지</h2>
+      <p>
+        <strong>주장:</strong> 6/5 이후 6일간 크립토 시장의 성격이 전환됐다 —
+        "BTC 단독 정체성 위기"에서 "매크로발 전 자산 동반 위험 회피"로. BTC
+        NASDAQ 재동조(+0.404, Z -0.78σ 정상화)가 핵심 근거. F&amp;G 9 극단공포 +
+        가격 정체의 가격-심리 괴리현상이 반등 트리거 잠재력을 내포하지만,
+        FOMC(6/16~17) 점도표 방향이 최종 판단을 결정한다.
+      </p>
+      <p>
+        <strong>분기 조건:</strong> ① FOMC(6/16~17) 점도표 인상 시사 → 약세
+        확정, ② 점도표 비둘기파적 수정 + BTC $63K 회복 → 반등 확률 상승, ③ ETF
+        순유입 첫 세션 전환 → 매도 소진 신호
+      </p>
+      <p>
+        <strong>방향:</strong> FOMC 전까지 관망 유지. QuantTrader 자동매매
+        환경에서 FOMC 전 포지션 축소 동작 및 박스권 추적 손절가 폭 점검 권장.
+      </p>
+    </div>
+
+    <!-- 핵심 요약 -->
+    <div class="sec">
+      <h2>0. 핵심 요약</h2>
+      <p>
+        직전 회차(6/5) 대비 6일간 BTC -0.3%, ETH/SOL -1.3%로 가격은 사실상
+        정체됐으나, 크립토 F&amp;G는 23 → 9로 급락해 극단공포 구간에 진입했다.
+        가장 큰 구조 변화는 BTC↔NASDAQ 상관이 -3.24σ(이상 이탈) 에서
+        +0.404(정상화)로 재동조됐다는 점으로, 6/10 미국장 패닉(-1.87%) 동반
+        하락이 계기였다. FOMC(6/16~17) 점도표가 이번 국면의 방향을 결정할 핵심
+        변수다.
+      </p>
+      <div class="alert-box warn" style="margin-top: 12px">
+        <strong>극단공포 경보:</strong> 크립토 F&amp;G 9 — 6/5(23) 대비 -14p
+        급락. 직전 종가 8 기록. 전통자산 F&amp;G(CNN)도 29로 동반 붕괴. 6/10
+        미국장 패닉(다우 -1.87%, CPI 4.2% + 이란 긴장)에 전 자산 동반 위험 회피
+        진행 중.
+      </div>
+    </div>
+
+    <!-- E-1 크립토 시장 대시보드 -->
+    <div class="sec">
+      <h2>E-1. 크립토 시장 대시보드</h2>
+
+      <h3>주요 3종 시세 (KST 16:30 실측)</h3>
+      <table>
+        <tr>
+          <th>자산</th>
+          <th>현재가 (USD)</th>
+          <th>시가총액</th>
+          <th>6/5 대비</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><strong>BTC</strong></td>
+          <td>~$61,996</td>
+          <td>$1.25T</td>
+          <td class="neutral"><strong>-0.3%</strong></td>
+          <td>$60K~$63K 박스권 정착. FOMC 6/16~17 대기 관망</td>
+        </tr>
+        <tr>
+          <td><strong>ETH</strong></td>
+          <td>$1,656.02</td>
+          <td>$287.6B</td>
+          <td class="down"><strong>-1.3%</strong></td>
+          <td>6/5 $1,678 → 소폭 추가 하락. 52주 저점권 잔류</td>
+        </tr>
+        <tr>
+          <td><strong>SOL</strong></td>
+          <td>$65.17</td>
+          <td>$48.8B</td>
+          <td class="down"><strong>-1.3%</strong></td>
+          <td>6/5 $66.02 → 신저가권 박스. 알트 약세 가늠자</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 12px; margin-top: 4px">
+        출처: market_data_20260611.md [실측, KST 16:30
+        CoinMarketCap/LatestLY/BitDegree/TradingView Hub]
+      </p>
+      <p style="margin-top: 8px">
+        6/5 대비 6일간 변동폭 ±1.3% 이내 — 급락 국면이 일단 정체(계단식 하락
+        바닥)로 전환된 모습. 단 심리(F&amp;G)는 정반대로 심화.
+      </p>
+
+      <h3>시가총액 및 도미넌스</h3>
+      <table>
+        <tr>
+          <th>지표</th>
+          <th>현재</th>
+          <th>6/5 대비</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td>전체 시가총액</td>
+          <td>$2.23T</td>
+          <td class="neutral">보합권</td>
+          <td>$2T대 방어. 추가 붕괴 없이 횡보</td>
+        </tr>
+        <tr>
+          <td>BTC 시가총액</td>
+          <td>$1.25T</td>
+          <td class="neutral">보합</td>
+          <td>6/5 $1.25T 동일 수준 유지</td>
+        </tr>
+        <tr class="bg-warning">
+          <td><strong>BTC 도미넌스</strong></td>
+          <td><strong>56.23%</strong></td>
+          <td class="down"><strong>-3.3%p</strong></td>
+          <td>6/5 ~59.5% → 56.23%. 알트 상대 강세 반전 흔적</td>
+        </tr>
+        <tr>
+          <td>스테이블코인 시총</td>
+          <td>$312B (14.0%)</td>
+          <td class="up">비중 확대</td>
+          <td>관망 자금 대기 — 6/5 $235B 추정 대비 비중 확대</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 12px; margin-top: 4px">
+        출처: market_data_20260611.md + fear_greed.json [실측, KST 16:30].
+        정합성 검증: BTC 도미넌스 56.23% × 전체 $2.23T = $1.254T ≒ $1.25T ✅
+        (오차 &lt;0.5%)
+      </p>
+
+      <h3>공포·탐욕 지수 대시보드</h3>
+
+      <!-- F&G 게이지 -->
+      <div class="fg-gauge-wrap">
+        <div class="fg-gauge">
+          <svg
+            viewBox="0 0 120 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- 배경 트랙 -->
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              stroke="color-mix(in srgb, var(--text) 7%, transparent)"
+              stroke-width="10"
+              fill="none"
+              stroke-dasharray="251.2 314"
+              stroke-dashoffset="-31.4"
+              transform="rotate(-90 60 60)"
+              opacity="0.3"
+            />
+            <!-- 값 (9/100 → 251.2 * 0.09 = 22.6) -->
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              stroke="#f4576a"
+              stroke-width="10"
+              fill="none"
+              stroke-dasharray="22.6 314"
+              stroke-dashoffset="-31.4"
+              transform="rotate(-90 60 60)"
+              stroke-linecap="round"
+            />
+            <!-- 텍스트는 HTML div 로 -->
+          </svg>
+          <div class="fg-number">
+            <div class="fg-score">9</div>
+            <div class="fg-label">극단공포</div>
+          </div>
+        </div>
+        <div class="fg-info">
+          <div class="fg-row">
+            <span style="color: var(--sub)">크립토 F&amp;G 현재</span
+            ><span class="down"><strong>9 (극단공포)</strong></span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">직전 종가</span
+            ><span class="down">8</span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">1주 전</span
+            ><span class="down">13</span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">1개월 전</span
+            ><span class="neutral">47</span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">1년 전</span
+            ><span class="up">64</span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">전통자산 F&amp;G (CNN)</span
+            ><span class="warning"><strong>29 (공포)</strong></span>
+          </div>
+          <div class="fg-row">
+            <span style="color: var(--sub)">전통자산 F&amp;G 6/5</span
+            ><span class="up">59 (탐욕)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 시그널 바 -->
+      <div style="margin-top: 16px">
+        <div class="signal-item">
+          <span class="signal-label">크립토 F&amp;G</span>
+          <span class="signal-value down">9 / 100</span>
+          <div class="signal-bar-wrap">
+            <div class="signal-bar down">
+              <div class="fill" style="width: 9%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="signal-item">
+          <span class="signal-label">전통자산 F&amp;G (CNN)</span>
+          <span class="signal-value warning">29 / 100</span>
+          <div class="signal-bar-wrap">
+            <div class="signal-bar warning">
+              <div class="fill" style="width: 29%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="signal-item">
+          <span class="signal-label">BTC 도미넌스</span>
+          <span class="signal-value neutral">56.23%</span>
+          <div class="signal-bar-wrap">
+            <div class="signal-bar neutral">
+              <div class="fill" style="width: 56.23%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="signal-item">
+          <span class="signal-label">스테이블코인 비중</span>
+          <span class="signal-value highlight">14.0%</span>
+          <div class="signal-bar-wrap">
+            <div class="signal-bar neutral">
+              <div class="fill" style="width: 14%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert-box info" style="margin-top: 12px">
+        <strong>F&amp;G 디버전스 분석:</strong> 크립토-전통자산 F&amp;G
+        디버전스가 6/5(36p: 크립토 23, 전통 59)에서 6/11(20p: 크립토 9, 전통
+        29)로 -16p 축소. 6/10 미국장 패닉에 두 시장이 동반 공포로 수렴 — "크립토
+        단독 위험 회피"에서 "매크로발 전 자산 위험 회피"로 성격 전환의 핵심
+        증거.
+      </div>
+
+      <p style="color: var(--sub); font-size: 12px; margin-top: 8px">
+        출처: fear_greed.json [실측, KST 16:30, Alternative.me/FearGreedMeter +
+        CNN]
+      </p>
+    </div>
+
+    <!-- E-2 온체인 핵심 지표 -->
+    <div class="sec">
+      <h2>E-2. 온체인 핵심 지표</h2>
+
+      <h3>BTC ETF 자금 흐름 — 13세션 연속 순유출 지속 ★★</h3>
+      <div class="alert-box warn">
+        <strong>13세션 연속 순유출 / -$4.4B 누적</strong> [실측,
+        market_data_20260611.md] — 2024년 1월 승인 이후 최장 연속 순유출 기록.
+        6/5 회차 대비 규모 동일 = 유출 정체 상태 (가속도·종료 신호 모두 없음).
+      </div>
+
+      <!-- ETF 유출 시각화 -->
+      <div class="signal-item" style="margin-top: 12px">
+        <span class="signal-label">ETF 순유출 규모</span>
+        <span class="signal-value down">-$4.4B</span>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar down">
+            <div class="fill" style="width: 100%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">연속 순유출 세션</span>
+        <span class="signal-value down">13세션</span>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar down">
+            <div class="fill" style="width: 65%"></div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 12px">
+        양면 해석: ① 기관 매도가 13세션째 멈추지 않음(약세 지속), ② 13세션에서
+        더 늘지 않음 = 매도 압력이 정점에서 횡보(소진 임박 가능성). 방향은
+        <strong>다음 1~2세션 순유입 전환 여부</strong>가 결정. [추정,
+        briefing-lead 분석]
+      </p>
+
+      <h3>
+        BTC 온체인 방향성 추정 (Glassnode/CryptoQuant 직접 조회 불가 — 방향성만)
+      </h3>
+      <table>
+        <tr>
+          <th>지표</th>
+          <th>추정 방향</th>
+          <th>해석</th>
+        </tr>
+        <tr>
+          <td>거래소 BTC 보유량</td>
+          <td class="up">▲ 추가 유출</td>
+          <td>
+            가격 박스권 + ETF 유출 국면에서 콜드월렛 이동 = HODLer 축적 패턴
+            [추정]
+          </td>
+        </tr>
+        <tr>
+          <td>1년+ 장기보유자 비중</td>
+          <td class="up">▲ 추가 상승</td>
+          <td>
+            6/5 ~68.5% 신고치 → 박스권에서 추가 상승 가능. 강한 손 확신 유지
+            [추정]
+          </td>
+        </tr>
+        <tr>
+          <td>일평균 활성 주소</td>
+          <td class="down">▼ 저조 지속</td>
+          <td>F&amp;G 9 극단공포 = 신규 진입 부재, 거래 활동 위축 [추정]</td>
+        </tr>
+      </table>
+
+      <div class="alert-box warning" style="margin-top: 10px">
+        <strong>온체인 해석:</strong> ETF 순유출(-$4.4B) + 장기보유자 비중 추정
+        상승 동시 진행 = 6/5 회차에서 제기한 재분배 구조(기관 매도 → 장기 보유자
+        흡수)가 6/11에도 유효. 다만 F&amp;G 9 극단공포는 이것이 "강한 손의
+        차분한 축적"인지 "패닉 항복의 바닥"인지 판단을 어렵게 함. [추정]
+      </div>
+    </div>
+
+    <!-- E-3 상관관계 -->
+    <div class="sec">
+      <h2>E-3. 크립토 ↔ 전통자산 상관관계</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 12px">
+        출처: correlation_20260611.md [실측, KST 16:30, 30일 피어슨 실수 계산]
+      </p>
+
+      <table>
+        <tr>
+          <th>#</th>
+          <th>페어</th>
+          <th>30일 피어슨</th>
+          <th>Z-score</th>
+          <th>상태</th>
+        </tr>
+        <tr class="bg-highlight">
+          <td>1</td>
+          <td><strong>BTC ↔ NASDAQ</strong></td>
+          <td class="up"><strong>+0.404</strong></td>
+          <td class="up"><strong>-0.78σ</strong></td>
+          <td class="up"><strong>정상 (탈동조 해소)</strong></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Gold ↔ DXY</td>
+          <td class="down">-0.723</td>
+          <td>-0.69σ</td>
+          <td class="up">정상 (강한 역상관 복원)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>USD/KRW ↔ KOSPI</td>
+          <td class="down">-0.719</td>
+          <td>-0.34σ</td>
+          <td class="up">정상</td>
+        </tr>
+      </table>
+
+      <!-- 히트맵: 상관 방향 시각화 -->
+      <div style="margin-top: 14px">
+        <p style="font-size: 13px; color: var(--sub); margin-bottom: 8px">
+          상관 상태 히트맵 (6/5 vs 6/11)
+        </p>
+        <div class="heatmap">
+          <div class="cell red" style="font-size: 11px">
+            BTC↔NASDAQ<br /><strong>6/5 이상</strong><br />-3.24σ
+          </div>
+          <div class="cell green" style="font-size: 11px">
+            BTC↔NASDAQ<br /><strong>6/11 정상</strong><br />+0.404
+          </div>
+          <div class="cell green" style="font-size: 11px">
+            Gold↔DXY<br /><strong>6/11 정상</strong><br />-0.723
+          </div>
+          <div class="cell green" style="font-size: 11px">
+            USD/KRW<br />↔KOSPI<br />정상
+          </div>
+          <div class="cell red" style="font-size: 11px">
+            크립토<br />F&amp;G<br />9
+          </div>
+          <div class="cell yellow" style="font-size: 11px">
+            전통<br />F&amp;G<br />29
+          </div>
+        </div>
+      </div>
+
+      <h3>BTC ↔ NASDAQ — 탈동조 해소 (이번 회차 핵심 변화)</h3>
+      <p>
+        6/5의 -3.24σ(1순위 이상 이탈) → 6/11 +0.404(Z -0.78σ, 정상 하단 경계)로
+        이상 해소. 6/3 BTC -6%, 6/5 NASDAQ -4.18%, 6/10 미국장 -1.6%대 동반
+        하락이 누적되며 재동조. BTC가 "AI 빅테크와 분리된 별도 자산"에서
+        <strong>다시 위험자산 베타로 복귀</strong> — 단 이론 정상값(+0.60)에는
+        미도달이라 완전 재동조는 미확정. HV6(크립토 탈동조) 명제는
+        <strong>부분 완화 방향</strong>으로 작동. [추정, briefing-lead 분석]
+      </p>
+
+      <h3>Gold ↔ DXY — 역상관 정상화 (BTC 헤지 내러티브 판단 기준)</h3>
+      <p>
+        6/10 Gold -4.8% + DXY +0.8% = 강한 역상관 회복. 6/11 Gold +0.27%
+        반등(DXY -0.18%) 유지. Gold가 순수 달러 반대편 자산으로 작동 중. 6/5의
+        "Gold +5% vs BTC -22%(디지털 금 내러티브 파괴)" 진단과 달리, 이번엔
+        Gold조차 6/10 -4.8% 급락 경험 —
+        <strong
+          >이번 국면은 "BTC만 헤지 실패"가 아니라 Gold조차 단기 청산되는 전방위
+          위험 회피.</strong
+        >
+        [추정, correlation_20260611.md HV5 매핑]
+      </p>
+
+      <h3>USD/KRW ↔ KOSPI — 크립토 간접 연결</h3>
+      <p>
+        30일 r = -0.719 (Z -0.34σ, 정상). KOSPI 7,731 보합 + USD/KRW 1,527.92.
+        원화 약세 속 KOSPI 상대 방어. 크립토 F&amp;G 9(극단공포) vs KOSPI 상대
+        안정 → 아시아 위험 선호 차별화. 한국발 크립토 매수세는 위축 추정. [추정]
+      </p>
+    </div>
+
+    <!-- E-4 규제 및 제도권 편입 -->
+    <div class="sec">
+      <h2>E-4. 규제 &amp; 제도권 편입 동향</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        본 회차 신규 규제 raw 데이터 미수집 → 직전 회차(6/5) 정황 + 6/11 이벤트
+        캘린더 기반 정리. 신규 확정 사실 없음.
+      </p>
+
+      <h3>1. BTC ETF 자금 흐름 — 기관 후퇴 시그널 지속</h3>
+      <p>
+        13세션 연속 순유출 / -$4.4B 누적 [실측]. 6/5 대비 규모 동일 = 기관 진입
+        후퇴 내러티브가 6일째 정지 상태. ETF 순유출이 멈추는 첫 세션이 기관 매도
+        소진의 핵심 트리거. [추정]
+      </p>
+
+      <h3>2. FOMC 6/16~17 — 크립토 최대 변수</h3>
+      <div class="alert-box warning">
+        <strong
+          >FOMC 6/16~17 금리 결정 + 점도표 = 본 회차 최대 결정 변수</strong
+        >
+        [이벤트 캘린더, 결과 미발표]<br />
+        CPI 4.2% + NFP +172K + 이란 에너지 충격(WTI $91.55) 복합 =
+        <strong>매파적 동결 유력</strong>. 점도표가 하반기 인상 시사 시 크립토
+        추가 약세 위험. 비둘기파적 수정 또는 WTI $80 이하 = 위험 회피 해소 조건.
+        [추정, 시장 컨센서스]
+      </div>
+
+      <h3>3. 규제 정황 (6/5 회차 연속 — 신규 확정 없음)</h3>
+      <table>
+        <tr>
+          <th>항목</th>
+          <th>상태</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td>SEC 크립토 태스크포스 자율규제</td>
+          <td class="neutral">협의 진행</td>
+          <td>
+            구체 룰메이킹 하반기 예정 [관측 불가 — 본 회차 신규 사실 미수집]
+          </td>
+        </tr>
+        <tr>
+          <td>STABLE Act / FIT21 후속 입법</td>
+          <td class="neutral">7~8월 재개 예상</td>
+          <td>단기 호재 부재 = 모멘텀 부족 요인 [추정]</td>
+        </tr>
+        <tr>
+          <td>한국 가상자산 ETF</td>
+          <td class="down">보류 지속</td>
+          <td>6/5 회차 정황 유효 [추정]</td>
+        </tr>
+        <tr>
+          <td>EU MiCA 2단계</td>
+          <td class="warning">7월 시행</td>
+          <td>유럽권 크립토 규제 강화 [추정]</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- E-5 주목 토큰/프로토콜 -->
+    <div class="sec">
+      <h2>E-5. 주목 토큰/프로토콜</h2>
+
+      <h3>1. BTC — 박스권 정체 + F&amp;G 한 자릿수 ⚠️ (모니터링 1순위)</h3>
+      <div
+        style="display: flex; align-items: center; gap: 12px; margin: 10px 0"
+      >
+        <span style="font-size: 24px; font-weight: 900">~$61,996</span>
+        <span class="tag tag-yellow">박스권 정착</span>
+        <span class="tag tag-red">F&amp;G 9</span>
+        <span class="tag tag-blue">NASDAQ 재동조</span>
+      </div>
+      <p>
+        급락 국면(5/25~6/5 -19.5%)이 멈추고 $60K~$63K 박스권으로 전환했으나,
+        F&amp;G가 23 → 9로 추가 붕괴 =
+        <strong>가격은 멈췄는데 심리는 계속 악화</strong>하는 비대칭. NASDAQ
+        재동조(+0.404)가 핵심 변수 — NASDAQ이 FOMC 후 반등하면 BTC 동반 반등
+        가능성, NASDAQ 추가 하락 시 BTC도 박스 하단($60K) 이탈 위험.
+        <strong>$60K 지지 확인 vs 이탈</strong>이 다음 방향 결정. [추정]
+      </p>
+      <div style="margin-top: 10px">
+        <div class="signal-item">
+          <span class="signal-label">$60K 지지선</span>
+          <span class="signal-value warning">관찰 중</span>
+          <div class="signal-bar-wrap">
+            <div class="signal-bar warning">
+              <div class="fill" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="highlight" style="margin-top: 6px">
+        → <code>/종목분석 BTC</code> 명령으로 심층 분석 가능
+      </p>
+
+      <h3>2. SOL — 알트 약세 가늠자 잔류 ⚠️ (모니터링 2순위)</h3>
+      <div
+        style="display: flex; align-items: center; gap: 12px; margin: 10px 0"
+      >
+        <span style="font-size: 24px; font-weight: 900">$65.17</span>
+        <span class="tag tag-red">52주 저점권</span>
+        <span class="tag tag-yellow">신저가 박스</span>
+      </div>
+      <p>
+        6/5 52주 신저가($66.02, 저점 $66.15 하회) 갱신 후 박스권 횡보. 절대
+        가격은 약세권이나 BTC 도미넌스 하락(56.23%) 흐름과 결부하면 알트의 추가
+        패닉 매도는 일단 진정. 단 SOL/ETH 모두 52주 저점권이라 "바닥 다지기 vs
+        추가 하락 대기" 판단 보류. [추정]
+      </p>
+      <p class="highlight" style="margin-top: 6px">
+        → <code>/종목분석 SOL</code> 명령으로 심층 분석 가능
+      </p>
+    </div>
+
+    <!-- E-6 대체자산 스냅샷 -->
+    <div class="sec">
+      <h2>E-6. 대체자산 스냅샷</h2>
+      <table>
+        <tr>
+          <th>자산</th>
+          <th>현재가</th>
+          <th>추세</th>
+          <th>크립토 비교</th>
+        </tr>
+        <tr>
+          <td>Gold</td>
+          <td>$4,082.73</td>
+          <td class="up">+0.27% (6/10 -4.8% 후 반등)</td>
+          <td>
+            BTC와 <strong>동반 약세</strong> 경험 — 6/5 헤지 정체성 대결 →
+            이번엔 전방위 청산
+          </td>
+        </tr>
+        <tr>
+          <td>WTI 유가</td>
+          <td>$91.55</td>
+          <td class="up">+1.69% (이란 호르무즈)</td>
+          <td>위험자산 동조 없음 — 에너지 단독 강세. 크립토 약세와 무관</td>
+        </tr>
+        <tr>
+          <td>미국 10년물 금리</td>
+          <td>4.52%</td>
+          <td class="up">-1bp (채권 도피 매수)</td>
+          <td>BTC 무반응 — 금리 영향 약화 지속</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 12px; margin-top: 4px">
+        출처: market_data_20260611.md [실측, KST 16:30]
+      </p>
+      <div class="alert-box info" style="margin-top: 10px">
+        <strong>6/5 vs 6/11 결정적 차이:</strong> 6/5엔 Gold
+        신고가권($4,500+)이었으나 이번엔 Gold도 6/10 -4.8% 급락.
+        <strong
+          >BTC만 헤지 실패가 아니라 전 안전자산이 동시 흔들린 국면.</strong
+        >
+        안전자산 부재 상황에서 6/16~17 FOMC가 유일한 방향 전환 촉매.
+      </div>
+    </div>
+
+    <!-- debate-card -->
+    <div class="sec">
+      <h2>핵심 논쟁 카드</h2>
+      <div class="debate-card">
+        <div class="card-title">
+          💜 핵심 논쟁 — "가격은 멈췄는데 F&amp;G는 9까지 추락 — 바닥 다지기 vs
+          추가 하락 직전?"
+        </div>
+        <div class="bull">
+          <strong>강세 측 주장:</strong><br />
+          BTC 6일간 -0.3% (ETH -1.3%, SOL -1.3%) =
+          <strong>급락 국면 정지, 박스권 전환</strong> [실측]. NASDAQ↔BTC
+          재동조(+0.404, Z -0.78σ 정상화)는 BTC가 다시 위험자산 베타로 복귀 =
+          FOMC 후 NASDAQ 반등 시 BTC 동반 반등 경로 확보 [KB 인용]. BTC 도미넌스
+          56.23%(-3.3%p)는 알트 상대 강세 흔적 = 자금이 위험 선호로 일부 회귀
+          [실측]. ETF 순유출이 13세션째 -$4.4B에서
+          <strong>더 늘지 않음</strong> = 매도 압력 정점 횡보 = 소진 임박 가능성
+          [추정]. F&amp;G 9는 역사적 바닥권 = 역발상 진입 구간 [추정].
+        </div>
+        <div class="bear">
+          <strong>약세 측 주장:</strong><br />
+          크립토 F&amp;G <strong>9 (극단공포)</strong> — 6/5(23) 대비 -14p 급락,
+          직전 8 기록 [실측]. 가격이 멈췄는데 심리만 악화 =
+          <strong>추가 하락 직전 침묵</strong> 패턴 가능성. 전통자산 F&amp;G도
+          29(공포)로 동반 붕괴 + 6/10 미국장 패닉(다우 -1.87%) =
+          <strong>매크로발 전방위 위험 회피</strong> 진행 중 [실측]. ETF 13세션
+          순유출이 <strong>멈추지 않음</strong> = 기관 매도 지속 [실측]. NASDAQ
+          재동조는 양날 — FOMC 매파적 동결 + 점도표 매파적 수정 시 NASDAQ 추가
+          하락 → BTC $60K 박스 하단 이탈 위험 [추정]. Gold조차 6/10 -4.8% 청산 =
+          안전자산 부재 국면 [실측].
+        </div>
+        <div class="verdict">
+          <strong>briefing-lead 판단:</strong> 약세 <strong>58%</strong> vs 강세
+          <strong>42%</strong> [추정, lead 자체 판단 — 예측 시장 해당 마켓 본
+          모드 미수집]. 근거: F&amp;G 9 극단 + 전통자산 동반 공포 = 단기 매크로
+          약세 우위이나, 가격 박스권 정착 + NASDAQ 재동조 + ETF 유출 정체로 6/5
+          회차(약세 65%) 대비 <strong>약세 확신 일부 완화(58%)</strong>.
+          모니터링 트리거: ① BTC $60K 이탈 → 약세 확정, ② FOMC(6/16~17) 점도표
+          비둘기파적 + BTC $63K 회복 → 반등 확률 상승, ③ ETF 순유입 전환 첫 세션
+          → 매도 소진 신호.
+        </div>
+      </div>
+    </div>
+
+    <!-- contrarian-card -->
+    <div class="sec">
+      <h2>과소평가 포인트 카드</h2>
+      <div class="contrarian-card">
+        <div class="card-title">
+          🟠 과소평가 포인트 — "F&amp;G 9 + 가격 정체 = 시장이 놓친 '괴리현상
+          바닥' 신호"
+        </div>
+        <div class="assumption">
+          <strong>시장의 일반 가정:</strong> "F&amp;G 9 극단공포 = 추가 하락
+          임박 = 크립토 약세 지속". 전통자산까지 동반 공포(F&amp;G 29)로
+          떨어지며 약세 확신 강화. ETF 13세션 순유출이 약세를 확정짓는 것으로
+          해석됨.
+        </div>
+        <div class="signal">
+          <strong>반대 시그널:</strong><br />
+          ① <strong>가격-심리 괴리현상:</strong> F&amp;G가 6/5(23) → 6/11(9)로
+          -14p 급락하는 동안 BTC는 단 -0.3%, SOL -1.3% [실측]. 심리는 패닉인데
+          가격은 안 빠짐 = 통상 매도 소진 후 강한 손이 받치는 바닥 신호 [추정,
+          과거 F&amp;G 사이클 비교].<br />
+          ② <strong>BTC 도미넌스 하락(56.23%, -3.3%p):</strong> 6/5의 "알트
+          무시(도미넌스 ~59.5%)" 구조가 반전 = 자금이 알트로 일부 회귀 = 위험
+          선호 미세 회복 [실측].<br />
+          ③ <strong>NASDAQ 재동조(+0.404):</strong> 6/5의 -3.24σ 탈동조 해소 =
+          BTC가 다시 위험자산 베타 = NASDAQ 바닥 형성 시 BTC 동반 반등 경로 [KB
+          인용].<br />
+          ④ <strong>ETF 순유출 정체:</strong> -$4.4B / 13세션이 6/5에서 더 늘지
+          않음 = 매도 압력 정점 횡보 [추정].
+        </div>
+        <div class="probability">
+          <strong>확률 (briefing-lead 추정):</strong>
+          <strong>38%</strong> [추정, lead 자체 판단] — 시장 컨센서스(약세 58%)
+          대비 낮으나 6/5 회차(역발상 30%) 대비 +8%p 상향. 가격-심리 괴리현상 +
+          도미넌스 반전 + NASDAQ 재동조가 6/5엔 없던 신규 바닥 신호. 모니터링
+          트리거: ① BTC가 F&amp;G 추가 하락에도 $60K 사수 → 괴리현상 바닥 확정,
+          ② ETF 순유입 전환 첫 세션, ③ FOMC 후 NASDAQ + BTC 동반 반등.
+        </div>
+      </div>
+    </div>
+
+    <!-- 종합 시계열 비교 -->
+    <div class="sec">
+      <h2>종합 — 6/5 → 6/11 크립토 시장 성격 전환</h2>
+
+      <div class="alert-box info" style="margin-bottom: 14px">
+        6일 사이 크립토 시장은
+        <strong
+          >"단독 정체성 위기"에서 "매크로발 전방위 위험 회피"로 성격이
+          전환</strong
+        >됐다.
+      </div>
+
+      <table>
+        <tr>
+          <th>항목</th>
+          <th>6/5</th>
+          <th>6/11</th>
+          <th>변화</th>
+          <th>평가</th>
+        </tr>
+        <tr>
+          <td>BTC</td>
+          <td>$62,190</td>
+          <td>~$61,996</td>
+          <td class="neutral"><strong>-0.3%</strong></td>
+          <td>급락 멈춤 → 박스권 정체</td>
+        </tr>
+        <tr>
+          <td>ETH</td>
+          <td>$1,678</td>
+          <td>$1,656</td>
+          <td class="down"><strong>-1.3%</strong></td>
+          <td>52주 저점권 잔류</td>
+        </tr>
+        <tr>
+          <td>SOL</td>
+          <td>$66.02</td>
+          <td>$65.17</td>
+          <td class="down"><strong>-1.3%</strong></td>
+          <td>신저가권 박스</td>
+        </tr>
+        <tr>
+          <td>전체 시가총액</td>
+          <td>~$2.0T+</td>
+          <td>$2.23T</td>
+          <td class="neutral">보합권</td>
+          <td>$2T대 방어</td>
+        </tr>
+        <tr class="bg-warning">
+          <td><strong>BTC 도미넌스</strong></td>
+          <td>~59.5%</td>
+          <td>56.23%</td>
+          <td class="down"><strong>-3.3%p</strong></td>
+          <td>알트 상대 강세 반전 흔적</td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>크립토 F&amp;G</strong></td>
+          <td>23</td>
+          <td><strong>9</strong></td>
+          <td class="down"><strong>-14p</strong></td>
+          <td>극단공포 → 한 자릿수 패닉</td>
+        </tr>
+        <tr class="bg-warning">
+          <td><strong>전통자산 F&amp;G</strong></td>
+          <td>59</td>
+          <td>29</td>
+          <td class="down"><strong>-30p</strong></td>
+          <td>탐욕 → 공포 (동반 붕괴)</td>
+        </tr>
+        <tr>
+          <td>F&amp;G 괴리</td>
+          <td>36p</td>
+          <td>20p</td>
+          <td class="up"><strong>-16p</strong></td>
+          <td>크립토 단독 → 전 자산 동반(수렴)</td>
+        </tr>
+        <tr class="bg-highlight">
+          <td><strong>NASDAQ↔BTC</strong></td>
+          <td class="down">-3.24σ★이상</td>
+          <td class="up">+0.404 / -0.78σ</td>
+          <td class="up"><strong>이상 해소</strong></td>
+          <td>탈동조 → 재동조 (위험자산 베타 복귀)</td>
+        </tr>
+        <tr>
+          <td>BTC ETF 순유출</td>
+          <td>-$4.4B/13세션</td>
+          <td>-$4.4B/13세션</td>
+          <td class="neutral">동일</td>
+          <td>유출 정체 (가속도·종료 신호 모두 없음)</td>
+        </tr>
+      </table>
+
+      <h3>추세 결정 5대 변수</h3>
+      <ol style="margin-left: 18px; line-height: 2">
+        <li>
+          <strong>FOMC 6/16~17 점도표</strong> — 최대 변수: 매파적 동결 + 점도표
+          톤이 방향 결정
+        </li>
+        <li>
+          <strong>NASDAQ 동조 방향</strong> — 재동조 후 BTC가 NASDAQ을 따라감
+          (NASDAQ 바닥 = BTC 바닥)
+        </li>
+        <li><strong>BTC $60K 박스 하단 지지 vs 이탈</strong></li>
+        <li>
+          <strong>ETF 순유입 전환 첫 세션</strong> — 13세션 -$4.4B 매도 소진
+          신호
+        </li>
+        <li>
+          <strong>WTI $80 이하 / 이란 긴장 완화</strong> — 매크로 위험 회피 해소
+          조건
+        </li>
+      </ol>
+
+      <div class="alert-box success" style="margin-top: 12px">
+        <strong>QuantTrader 자동매매 운용 관점:</strong>
+        BTC/ETH/SOL/BNB/ADA/LTC/DOGE/LINK 8종 LEAN 자동매매 환경에서, 가격
+        박스권 + F&amp;G 9 극단공포 + NASDAQ 재동조 국면은 변동성 축소(박스권)와
+        매크로 이벤트(FOMC) 직전 대기가 겹치는 구간. LEAN 로그를 통해 ① FOMC 전
+        포지션 사이즈 축소 동작, ② 박스권 추적 손절가 폭, ③ NASDAQ 재동조 후
+        상관 기반 헤지 룰 작동 여부 점검을 권장. [추정, briefing-lead 운영 관점]
+      </div>
+    </div>
+
+    <!-- 예측 시장 -->
+    <div class="sec">
+      <h2>예측 시장 (Polymarket)</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 12px">
+        실제 돈이 걸린 예측 확률 — 본 회차 종합만 모드에서 Polymarket/Kalshi BTC
+        마켓 직접 조회 미수집. briefing-lead 자체 판단으로 대체.
+      </p>
+      <table>
+        <tr>
+          <th>질문</th>
+          <th>briefing-lead 추정 확률</th>
+          <th>근거</th>
+          <th>신뢰도</th>
+        </tr>
+        <tr>
+          <td>BTC 7월 말 $70K 이상?</td>
+          <td class="down"><strong>38%</strong></td>
+          <td>
+            역발상 바닥 신호(NASDAQ 재동조 + F&amp;G 9 + 가격 정체) vs FOMC
+            매파적 위험
+          </td>
+          <td class="warning">참고 (자체 추정)</td>
+        </tr>
+        <tr>
+          <td>BTC FOMC 전 $60K 이탈?</td>
+          <td class="warning"><strong>42%</strong></td>
+          <td>박스권 하단 지지 강도 미확인. 매크로 위험 지속 중</td>
+          <td class="warning">참고 (자체 추정)</td>
+        </tr>
+        <tr>
+          <td>ETF 다음주 순유입 전환?</td>
+          <td class="neutral"><strong>35%</strong></td>
+          <td>13세션 유출 정체 = 소진 임박 가능성, 단 기관 매도 압력 여전</td>
+          <td class="warning">참고 (자체 추정)</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 11px; margin-top: 8px">
+        ⚠️ 위 확률은 Polymarket/Kalshi 실거래 데이터가 아닌 briefing-lead 100%
+        자체 판단임. 예측 시장 실데이터 조회 미수집 회차.
+      </p>
+    </div>
+
+    <!-- 푸터 명령어 가이드 -->
+    <div class="footer">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 크립토</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> A+B+C+E</div>
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표 + ATR</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+        <div><code>/KB업데이트</code> 섹터 KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+      </div>
+      <p style="margin-top: 14px; font-size: 12px; color: var(--sub)">
+        생성: briefing-report-generator | 모드: crypto (2026-06-11) | 데이터
+        기준: market_data_20260611.md KST 16:30
+      </p>
+    </div>
+
+    <!-- 주의사항 -->
+    <div class="disclaimer">
+      <h4>⚠️ 주의사항</h4>
+      <ul style="margin-left: 16px; line-height: 1.8">
+        <li>
+          본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도
+          추천이 아닙니다.
+        </li>
+        <li>
+          BTC/ETH/SOL 등 크립토 8종은 QuantTrader 자동매매(Mac mini M4 LEAN)
+          별도 운용 중 — 본 브리핑은 시장 동향·방향성 정보입니다. 사용자 직접
+          액션 권고 없음.
+        </li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>과거 수익률 및 시뮬레이션 결과가 미래 수익을 보장하지 않습니다.</li>
+        <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+        <li>
+          온체인 추정 지표는 Glassnode/CryptoQuant 직접 조회 불가 — 방향성만
+          [추정] 처리.
+        </li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
