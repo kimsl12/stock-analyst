@@ -1,25 +1,24 @@
 # 종목분석 에이전트 — 작업 자동화 지침
 
-## 사이트 배포 자동화 (필수)
+## 사이트 배포 자동화 (필수) [2026-06-11 webhook 복귀 반영]
 
-`reports/**/*.html` (종목 / 브리핑 / 애널리스트) 변경이 포함된 main push 직후, **반드시 두 채널 모두 자동 실행**:
+`reports/**/*.html` (종목 / 브리핑 / 애널리스트) 변경이 포함된 main push 직후:
 
 ```bash
-# 1. 본서버 (Vercel) — Astro+Supabase 풀 대시보드, 사용자가 실제 보는 곳
-vercel --prod --yes
+# 1. 본서버 (Vercel) — push 가 자동 빌드 트리거 (webhook 재연결 2026-06-11 검증).
+#    push 후 1~2분 내 확인만: vercel ls 최신 행이 방금 push 의 자동 빌드 ● Ready 인지.
+#    자동 빌드 미발생/실패 시에만 수동 fallback: vercel --prod --yes
 
-# 2. 미러 (Cloudflare Pages) — 우회 정적 호스팅, 보조 채널
+# 2. 미러 (Cloudflare Pages) — webhook 없음. 항상 수동 실행:
 bash scripts/deploy_cloudflare.sh
 ```
 
-**Vercel 먼저, Cloudflare 나중**. Vercel 빌드 약 45초, Cloudflare 약 3~5초.
-
 ### 본서버 / 미러 구조
 
-| 채널              | URL                                        | 갱신 명령                           | 자동 빌드 |
-| ----------------- | ------------------------------------------ | ----------------------------------- | --------- |
-| **Vercel (본)**   | https://stock-analyst-jungwon1.vercel.app/ | `vercel --prod --yes` (root)        | ❌ 깨짐   |
-| Cloudflare (미러) | https://stock-analyst.pages.dev/           | `bash scripts/deploy_cloudflare.sh` | ❌        |
+| 채널              | URL                                        | 갱신 명령                                   | 자동 빌드            |
+| ----------------- | ------------------------------------------ | ------------------------------------------- | -------------------- |
+| **Vercel (본)**   | https://stock-analyst-jungwon1.vercel.app/ | push 자동 (fallback: `vercel --prod --yes`) | ✅ 2026-06-11 재연결 |
+| Cloudflare (미러) | https://stock-analyst.pages.dev/           | `bash scripts/deploy_cloudflare.sh`         | ❌                   |
 
 ### 적용 시점
 
@@ -34,13 +33,12 @@ bash scripts/deploy_cloudflare.sh
 - 스크립트 / 워크플로 / 메타 파일만 변경된 push
 - KB 갱신 단독 push
 
-### 왜 둘 다 필요한가
+### 이력 (왜 이런 구조인가)
 
-GitHub Actions 계정 차단 (Ticket 4287825, 2026-04-15부터). 부수효과:
-
-- GitHub Pages 자동 배포 차단
-- **Vercel 자동 빌드 webhook 도 트리거 안 됨** (5/6 push 후 21시간 stale 확인)
-- → main push 만으로 사이트 자동 갱신되지 않음. 수동 CLI 호출 필수.
+GitHub Actions 계정 차단 (Ticket 4287825, 2026-04-15) 부수효과로 Vercel webhook 까지 끊겨
+51일간 양 채널 수동 배포 운용. 2026-06-05 차단 해제 → 2026-06-11 사용자가 Vercel Git 재연결,
+빈 커밋 push 로 자동 빌드 검증 완료 (90초 내 ● Ready). 이후 Vercel 은 확인만, Cloudflare 는 수동 유지.
+`scripts/daily_pick_update.sh` 의 수동 vercel 호출은 심야 무인 런 안전망으로 의도적 존치 (중복 빌드 무해).
 
 Cloudflare Pages는 5/7에 우회 채널로 추가. 메인 사용자 트래픽은 Vercel, Cloudflare는 보조 미러.
 
