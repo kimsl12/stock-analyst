@@ -21,9 +21,14 @@ set -euo pipefail
 
 PROJECT_ROOT="/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트"
 LOG="$PROJECT_ROOT/scripts/launchd/daily-pick.log"
+NOTIFY="$PROJECT_ROOT/scripts/notify.sh"
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
+}
+
+notify_fail() {
+  bash "$NOTIFY" "DailyPick 자동화 실패" "$1" high || true
 }
 
 log "=== daily_pick 자동 갱신 시작 ==="
@@ -40,6 +45,7 @@ cd "$PROJECT_ROOT" || { log "ERROR: cd 실패"; exit 1; }
 log "git pull --rebase --autostash origin main"
 if ! git pull --rebase --autostash origin main 2>&1; then
   log "ERROR: git pull 실패 — 누적 충돌 위험 (silent state corruption 방지). deploy 중단."
+  notify_fail "git pull 실패 — 수동 확인 필요 (daily-pick.log)"
   exit 1
 fi
 
@@ -48,6 +54,7 @@ log "build_daily_pick.mjs + build_kb.mjs 실행"
 cd web || { log "ERROR: web/ cd 실패"; exit 0; }
 if ! node scripts/build_daily_pick.mjs 2>&1; then
   log "ERROR: build_daily_pick 실패 — deploy 중단 (silent corruption 차단)"
+  notify_fail "build_daily_pick.mjs 실패 — 오늘 픽 미갱신"
   exit 1
 fi
 # kb.json 은 .gitignore (vercel 컨테이너 안 매 deploy 시 재빌드 정상). 로컬 검증용 빌드.
@@ -85,12 +92,14 @@ log "갱신 감지: $PICK_DATE / $PICK_TICKER / $PICK_SCORE $PICK_GRADE"
 git add web/src/data/daily_pick.json
 if ! git commit -m "chore(daily_pick): 자동 갱신 ${PICK_DATE} — ${PICK_TICKER} ${PICK_SCORE}점 ${PICK_GRADE} (launchd)"; then
   log "ERROR: git commit 실패"
+  notify_fail "git commit 실패 — 픽은 생성됐으나 미발행"
   exit 0
 fi
 
 log "git push origin main"
 if ! git push origin main 2>&1; then
   log "ERROR: git push 실패 — 다음 회차에 재시도"
+  notify_fail "git push 실패 — 사이트 미반영 (다음 회차 재시도)"
   exit 0
 fi
 
@@ -100,6 +109,7 @@ if vercel --prod --yes 2>&1; then
   log "Vercel 배포 완료"
 else
   log "WARN: Vercel 배포 실패"
+  notify_fail "Vercel 배포 실패 — 본서버 stale 가능성"
 fi
 
 log "bash scripts/deploy_cloudflare.sh"
@@ -107,6 +117,7 @@ if bash scripts/deploy_cloudflare.sh 2>&1; then
   log "Cloudflare 배포 완료"
 else
   log "WARN: Cloudflare 배포 실패"
+  notify_fail "Cloudflare 배포 실패 — 미러 stale (단독 재실행 가능)"
 fi
 
 log "=== 완료 ($PICK_TICKER ${PICK_SCORE}점) ==="
