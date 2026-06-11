@@ -219,6 +219,12 @@ data = {
         "adversarial": "[적대 게이트 통과] 1줄 (Phase 3.5 결과 — 없으면 생략 가능)",
     },
 
+    # ★ 자동 섹션 2종 [v3.29] — 데이터 딕셔너리에 넣지 않는다 (template 이 로컬 파일에서 직접 조회):
+    #   · 보유 포지션 컨텍스트 — holdings_health.json 에서 티커 매칭 (보유 시 논지 직하 자동 표시)
+    #   · 버전 추이 — analysis/_history/{티커}_*_timeline.json (재분석 2회+ 시 스코어카드 직하 자동 표시)
+    # 섹션 순서도 template 고정 [v3.29]: 논지 → 보유 포지션 → 경고 → 핵심 지표 → 손절/목표
+    #   → Executive Summary → 스코어카드 → 버전 추이 → 개요/재무/밸류/모멘텀/산업 → 리스크 → 전략
+
     "financial_analysis": "매출 CAGR 8%, OPM 30%+ 안정...",
     "valuation": "DCF 기반 적정가 $280...",
     "momentum": "52주 고점 대비 -10%, RSI 45...",

@@ -246,6 +246,87 @@ def _fmtcap(val, cur="$"):
     if val >= 1e8: return "{:.1f}억".format(val/1e8)
     return "{}{:,.0f}".format(cur, val)
 
+def _load_json(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def position_block(ticker, data):
+    """[v3.29] 보유 포지션 컨텍스트 — holdings_health.json 자동 조회 (결정적, 에이전트 입력 불필요).
+
+    분석 종목이 보유 중이면 비중·수익률·평가금·손절까지 거리를 논지 직하에 표시.
+    미보유/파일 없음 → 빈 문자열 (graceful)."""
+    root = os.path.dirname(os.path.abspath(__file__))
+    hh = _load_json(os.path.join(root, "web/src/data/holdings_health.json"))
+    if not hh:
+        return ""
+    h = next((x for x in hh.get("holdings", []) if str(x.get("ticker", "")).upper() == str(ticker).upper()), None)
+    if not h:
+        return ""
+    cur = data.get("currency", "$")
+    cells = []
+
+    def cell(label, val, cls=""):
+        cells.append('<div class="ki"><div class="kl">{}</div><div class="kv {}">{}</div></div>'.format(label, cls, val))
+
+    w, r, q, v = h.get("weight_pct"), h.get("return_pct"), h.get("qty"), h.get("value_md")
+    cell("보유 비중", "{:.1f}%".format(w) if w is not None else "—")
+    cell("수익률", "{:+.1f}%".format(r) if r is not None else "—", "up" if (r or 0) >= 0 else "dn")
+    cell("평가금", "{}{:,.0f}".format(cur, v) if v else "—")
+    sl, cp = data.get("stop_loss"), data.get("current_price")
+    if sl and cp:
+        d = (sl / cp - 1) * 100
+        cell("손절까지", "{:+.1f}%".format(d), "dn" if d > -3 else "")
+    else:
+        cell("보유 수량", "{:,.2f}주".format(q) if q else "—")
+    return (
+        '<div class="sec" style="border-left:4px solid var(--warning);padding:16px 20px 12px">'
+        '<div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px;margin-bottom:8px">'
+        "보유 포지션 — 포트폴리오 기준 {}</div>"
+        '<div class="kg">{}</div></div>'
+    ).format(hh.get("portfolio_as_of", "—"), "".join(cells))
+
+
+def version_trail_block(ticker):
+    """[v3.29] 버전 추이 — analysis/_history/{T}_*_timeline.json 자동 조회 (결정적).
+
+    재분석 2회 이상 누적 시 점수·등급·목표가 궤적 표. BLIND 산출의 시계열 대조용."""
+    root = os.path.dirname(os.path.abspath(__file__))
+    hist_dir = os.path.join(root, "analysis/_history")
+    try:
+        files = [f for f in os.listdir(hist_dir) if f.startswith(str(ticker) + "_") and f.endswith("_timeline.json")]
+    except Exception:
+        return ""
+    if not files:
+        return ""
+    tl = _load_json(os.path.join(hist_dir, files[0]))
+    hist = (tl or {}).get("history") or []
+    if len(hist) < 2:
+        return ""
+    rows = []
+    for h in hist[-5:]:
+        tp = h.get("target_price")
+        # 구버전 timeline 의 추출 오류 값("8" 등) 차단 — 통화 기호 있는 값만 표시
+        tp = tp if isinstance(tp, str) and tp[:1] in ("$", "₩") else "—"
+        rows.append([
+            "v{}".format(h.get("v", "?")), h.get("date") or "—",
+            "{}".format(h.get("score")) if h.get("score") is not None else "—",
+            h.get("grade") or "—", tp,
+        ])
+    scores = [h.get("score") for h in hist if h.get("score") is not None]
+    delta = ""
+    if len(scores) >= 2:
+        d = scores[-1] - scores[-2]
+        delta = ' <span class="{}">{}{:.0f}pt (직전 대비)</span>'.format("up" if d >= 0 else "dn", "+" if d >= 0 else "", d)
+    return (
+        '<div class="sec"><h2>버전 추이</h2>{}'
+        '<p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 {}개 버전{} — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>'
+    ).format(_tbl(["버전", "분석일", "점수", "등급", "목표가"], rows), len(rows), delta)
+
+
 def generate_report(data, output_path=None):
     """
     data keys:
@@ -283,22 +364,19 @@ def generate_report(data, output_path=None):
     parts.append('<div class="header"><h1>{} ({})</h1><div class="meta">{} 종합 분석 리포트 | {}</div><div style="margin-top:8px"><span class="badge {}">{}</span> <span class="badge b-score">{}/100</span></div></div>'.format(
         data.get("name",""), data.get("ticker",""), data.get("asset_type","주식"), data.get("date",""), gc, grade, data.get("score","N/A")))
 
+    # ── 섹션 순서 [v3.29]: 판단(논지) → 내 포지션 → 경고 → 현황(KPI) → 행동(손절/목표)
+    #    → 요약 → 평가(스코어카드+버전추이) → 근거(개요·재무·밸류·모멘텀·산업) → 반론(리스크) → 전략
+
     # [v3.27] 투자 논지 히어로 — 첫 화면의 본체 (데이터보다 먼저)
     tb = thesis_block(data.get("thesis"), cur)
     if tb:
         parts.append(tb)
 
-    # KPI
-    kpis = [
-        _kpi("현재가", _fmtprice(data.get("current_price"), cur)),
-        _kpi("시가총액", _fmtcap(data.get("market_cap"), cur)),
-        _kpi("PER", str(data.get("per","N/A"))),
-        _kpi("52주 범위", "{}~{}".format(_fmtprice(data.get("low52"), cur), _fmtprice(data.get("high52"), cur))),
-    ]
-    for label, val in data.get("extra_kpis", []):
-        kpis.append(_kpi(label, val))
-    parts.append('<div class="sec"><h2>핵심 지표</h2><div class="kg">{}</div></div>'.format("".join(kpis)))
-    
+    # [v3.29] 보유 포지션 컨텍스트 — 논지 직하 (분석과 내 계좌의 연결)
+    pb = position_block(data.get("ticker", ""), data)
+    if pb:
+        parts.append(pb)
+
     # Entry Warning Blocks [v3.9] — R:R Poor/Marginal 또는 컨센 초과 시 최상단 경고
     entry_warn = data.get("entry_warning", "").strip()
     cons_warn = data.get("consensus_warning", False)
@@ -325,12 +403,18 @@ def generate_report(data, output_path=None):
             )
         )
 
-    # Executive Summary
-    es = _md_to_html(data.get("executive_summary",""))
-    if es:
-        parts.append('<div class="sec"><h2>Executive Summary</h2><p>{}</p></div>'.format(es))
-    
-    # Stop Loss
+    # KPI — 현황 스냅샷 (경고 확인 후)
+    kpis = [
+        _kpi("현재가", _fmtprice(data.get("current_price"), cur)),
+        _kpi("시가총액", _fmtcap(data.get("market_cap"), cur)),
+        _kpi("PER", str(data.get("per","N/A"))),
+        _kpi("52주 범위", "{}~{}".format(_fmtprice(data.get("low52"), cur), _fmtprice(data.get("high52"), cur))),
+    ]
+    for label, val in data.get("extra_kpis", []):
+        kpis.append(_kpi(label, val))
+    parts.append('<div class="sec"><h2>핵심 지표</h2><div class="kg">{}</div></div>'.format("".join(kpis)))
+
+    # Stop Loss — 행동 파라미터 (요약 서사보다 먼저)
     sl = data.get("stop_loss")
     tg = data.get("target_price")
     cp = data.get("current_price", 0)
@@ -344,7 +428,12 @@ def generate_report(data, output_path=None):
             except: pass
         parts.append('<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">{}{:,.2f}</div><div class="dn" style="font-size:13px">{:+.1f}%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">{}{:,.2f}</div><div class="up" style="font-size:13px">{:+.1f}%</div></div></div>{}<p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): {}{} | R:R 1:2</p></div>'.format(
             cur, sl, slp, cur, tg, tgp, chart, cur, "{:.2f}".format(atr) if atr else "N/A"))
-    
+
+    # Executive Summary — 요약 서사 (행동 파라미터 다음, 근거 섹션들의 도입)
+    es = _md_to_html(data.get("executive_summary",""))
+    if es:
+        parts.append('<div class="sec"><h2>Executive Summary</h2><p>{}</p></div>'.format(es))
+
     # Scorecard
     sc_items = data.get("scorecard_items", [])
     if sc_items:
@@ -355,7 +444,12 @@ def generate_report(data, output_path=None):
         rows = [[n, "{:.1f}".format(s), "/10"] for n, s in sc_items]
         parts.append('<div class="sec"><h2>스코어카드</h2>{}{}<p style="text-align:right;font-weight:700;margin-top:8px">종합: {}/100</p></div>'.format(
             chart, _tbl(["항목","점수","만점"], rows), data.get("score","N/A")))
-    
+
+    # [v3.29] 버전 추이 — 스코어카드 직하 (평가의 시계열 맥락)
+    vt_block = version_trail_block(data.get("ticker", ""))
+    if vt_block:
+        parts.append(vt_block)
+
     # Company Overview
     ov = _md_to_html(data.get("company_overview",""))
     moat = data.get("moat_rating","")

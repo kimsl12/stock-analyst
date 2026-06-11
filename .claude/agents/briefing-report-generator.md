@@ -164,11 +164,17 @@ extras: {
 
 {reference/briefing_css.html 에서 복사한 테마 토글 <div>}
 
+<!-- ★ 권장 섹션 순서 [v3.29] — 판단 → 견해 갱신 → 데이터 순:
+     헤더(레짐+스트립) → 오늘의 핵심 논지 → 0.핵심 요약 → 하우스 뷰 점검 → 시장 데이터/본문 모듈
+     → debate-card/contrarian-card → 시나리오 분기 → 4종 포트폴리오 방향 → 푸터/면책 -->
+
 <div class="header">
   <h1>{이모지} {모듈명} — {YYYY-MM-DD}</h1>
   <div class="meta">briefing-lead 작성 | {KST 시각}</div>
   <!-- 레짐 헤더 [v3.28 의무] — lead 가 regime.json summary_ko 전달 -->
   <div class="meta" style="margin-top:4px">레짐: {regime.json summary_ko 1줄}</div>
+  <!-- 레짐 스트립 [v3.29] — regime.json 의 strip_html 값을 "그대로" 붙여넣기 (직접 생성 금지, 없으면 생략) -->
+  {regime.json strip_html}
 </div>
 
 <!-- 0.5 오늘의 핵심 논지 [v3.27 의무 / v3.28 타입별 성격] — 데이터 요약이 아니라 "판단"이 첫 화면 -->

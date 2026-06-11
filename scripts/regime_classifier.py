@@ -166,6 +166,21 @@ def main() -> None:
             hist[-1]["risk_regime"] = r["risk_regime"]
         HISTORY.parent.mkdir(parents=True, exist_ok=True)
         HISTORY.write_text(json.dumps(hist[-90:], ensure_ascii=False, indent=1))
+
+        # [v3.29] 레짐 스트립 HTML — 브리핑 헤더용 (generator 가 그대로 붙여넣기)
+        color_map = {"리스크온": "var(--up)", "리스크오프": "var(--down)"}
+        cells = "".join(
+            '<span class="rg-cell" style="background:{}" title="{} {}"></span>'.format(
+                color_map.get(h.get("risk_regime"), "var(--neutral)"), h.get("date"), h.get("risk_regime")
+            )
+            for h in hist[-30:]
+        )
+        r["strip_html"] = (
+            '<div class="regime-strip">{}<span class="rg-label">레짐 최근 {}일</span></div>'.format(
+                cells, min(len(hist), 30)
+            )
+        )
+
         OUT_JSON.write_text(json.dumps(r, ensure_ascii=False, indent=2) + "\n")
         print(f"[regime] 저장: {OUT_JSON.relative_to(ROOT)}")
         if changed:
