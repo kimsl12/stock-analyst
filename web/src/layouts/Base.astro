@@ -19,7 +19,20 @@ const guardEnabled = !noAuth && supabaseConfigured;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0f1419" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>{title} · 종목분석 에이전트</title>
+    <script is:inline>
+      // PWA 서비스 워커 등록 (홈 화면 설치 + 오프라인 폴백)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+    </script>
     <script is:inline>
       // FOUC 방지: head에서 즉시 LocalStorage/시스템 prefers-color-scheme를 읽어 data-theme 적용.
       (function () {
