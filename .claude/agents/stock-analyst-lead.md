@@ -299,6 +299,18 @@ fi
 > 그 자리에서 복구하고 push 으로 진행. build 자체 실패는 경고만 남기고 진행 (사이트는
 > 카드 표시되되 sort_key 가 직전 snapshot 사용).
 
+```bash
+# 검증 7 [v3.27 — 2026-06-11]: 투자 논지 (Thesis) 존재 검증
+# scorecard.md 최상단 § 투자 논지 3행 (핵심 주장 / 컨센서스 vs 우리 / 반증 조건) 의무.
+# "데이터 읊기" 차단 — 논지 없는 분석은 미완성.
+SC="analysis/{폴더}/scorecard.md"
+grep -q "§ 투자 논지" "$SC" && grep -q "반증 조건" "$SC" \
+  || echo "❌ 검증 7 실패: 투자 논지 블록 누락 — scorecard-strategist 재호출 (논지 블록만 보강)"
+# 백분위 표기 검증 (등급 쿼터 — scoreboard.py 실행 증거)
+grep -qE "유니버스 상위 [0-9.]+%" "$SC" \
+  || echo "⚠️ 검증 7 경고: 등급 백분위 미표기 — python3 scripts/scoreboard.py {점수} --exclude {티커} 후 등급 재확인"
+```
+
 ### 검증 실패 시 대응
 
 | 실패 항목                    | 복구 액션                                                                                                                                                                                            |
@@ -582,6 +594,27 @@ ls -la analysis/{종목코드}_{종목명}/
 ```
 
 6. **scorecard-strategist** — 종목 유형 + 가중치 적용 스코어카드 + ATR 기반 손절/목표가 + 매수/매도 전략
+
+### Phase 3.5: 적대적 생존 게이트 [v3.27, 2026-06-11 신설] — 매수 이상 등급만
+
+> 매수 등급 = "공격을 살아남은 논지" 보장. 편향 차단은 프롬프트가 아니라 **권한 박탈(구조적 분리)**.
+
+발동 조건: scorecard.md 등급이 **매수 또는 강력매수**일 때만 (중립/매도는 스킵 — 비용 절약).
+
+```
+6.5 risk-analyst 재호출 (--adversarial 모드):
+    전달 입력 = scorecard.md 의 § 투자 논지 3행 + 티커 + 현재가 "만" 프롬프트에 직접 인라인.
+    ⚠️ analysis/ 파일 경로를 알려주지 않는다 — 지지 분석 접근 차단 (BLIND, 앵커링 방지).
+    산출물: analysis/{폴더}/adversarial.md
+```
+
+판정 처리 (lead 책임):
+
+- adversarial.md 의 verdict 가 **HIT** (공격이 반증 조건의 전제를 현재 데이터로 실질 타격)
+  → lead 가 scorecard.md 의 등급 행에 Edit 로 강등 명기:
+  `등급: 중립 (매수에서 강등 — [적대 게이트] {공격 요지 1줄})` + report-generator 에 최종 등급 전달
+- verdict 가 **MISS** → scorecard.md 에 `[적대 게이트 통과]` 1줄 추가 (생존 증명)
+- adversarial.md 미생성/형식 불량 → 1회 재호출, 재실패 시 `[적대 게이트 미수행]` 명기하고 진행 (차단 금지)
 
 ### Phase 4: 리포트 생성
 

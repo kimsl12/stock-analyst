@@ -16,7 +16,7 @@ tools: Read, Bash, Grep, Glob, Write
 **원인 추적 결과: 15 turn 중 7 turn 낭비 → maxTurns 15 정확 도달 → 강제 종료.** 다음 3개 룰을 본 에이전트 진입 시 자가 점검한다.
 
 1. **같은 파일 재읽기 금지** — Read한 파일은 컨텍스트에 그대로 있다. 특히 `session-bootstrap.md`, `analysis/*/*.md` 는 1회 Read로 끝낸다. 재 Read 전 "내가 이미 본 내용인가?" 자가 확인.
-2. **`report_template.py` 사전 Read 금지** — 본 정의 Step 2 에 generate_report() 호출용 데이터 딕셔너리 풀세트가 있다. **template 소스 코드 재확인 불필요**. 바로 Write 로 `generate_{종목코드}.py` 작성 → Bash 로 실행 → 끝. (과거 사고: 같은 template 파일 7회 연속 Read 로 7 turn 낭비)
+2. **`report_template.py` 사전 Read 금지** — 본 정의 Step 2 에 generate*report() 호출용 데이터 딕셔너리 풀세트가 있다. **template 소스 코드 재확인 불필요**. 바로 Write 로 `generate*{종목코드}.py` 작성 → Bash 로 실행 → 끝. (과거 사고: 같은 template 파일 7회 연속 Read 로 7 turn 낭비)
 3. **Bash 명령 결합 강제** — `cd "..."` 만 따로 호출 금지. `cd "..."; python3 script.py; ls reports/` 한 줄로 결합해 1 turn 처리.
 
 ## ⚠️ 최우선 규칙: 출력 언어 [v3.11 → v3.14 강화]
@@ -66,6 +66,7 @@ HTML 출력 후 본문(`<body>`~`</body>`) 영어 키워드 grep 검증. 30+ 영
 ```
 
 빌드 스크립트가 인지하는 reports/ 하위 디렉토리는 **단 두 개**:
+
 - `reports/briefing/` — 브리핑 전용 (briefing-report-generator 만 사용)
 - `reports/analyst/items/{id}/` — 애널리스트 PDF·요약
 
@@ -83,13 +84,14 @@ find reports -mindepth 2 -maxdepth 2 -name "{TICKER}_*.html" -not -path "*/brief
 ```
 
 **위반 발견 시 처리:**
+
 1. `mv reports/<잘못된 디렉토리>/{TICKER}_*.html reports/`
 2. 빈 디렉토리 `rmdir reports/<잘못된 디렉토리>` (실패해도 무시)
 3. lead 에 보고: "경로 위반 자동 수정 — reports/<dir>/ → reports/ 직속"
 
 ### [v3.15] 시간 폭주 방지 룰 (사용자 분석 2026-05-09)
 
-- ❌ **이전 reports/{티커}_*_{과거날짜}.html read 금지** — 양식은 report_template.py / 본 에이전트 인라인 골격이 단일 source. 이전 HTML 참조 시 토큰 폭주 + 일관성 저하 (briefing-report-generator 가 이전 weekly 1,362줄 참조하다 9분 폭주한 사례).
+- ❌ **이전 reports/{티커}_\*_{과거날짜}.html read 금지** — 양식은 report_template.py / 본 에이전트 인라인 골격이 단일 source. 이전 HTML 참조 시 토큰 폭주 + 일관성 저하 (briefing-report-generator 가 이전 weekly 1,362줄 참조하다 9분 폭주한 사례).
 - ❌ **HTML Write 1회 atomic 강제** — Edit 분할 금지. 부분 출력 후 점진 작성 시 컨텍스트 누적·토큰 폭주.
 - ❌ **자가 검증 1회 실패 시 자체 재시도 금지** — 즉시 lead 에 보고 후 종료. lead 가 새 호출 (이전 컨텍스트 폐기, 깨끗한 상태로 재시작).
 - ✅ **시계열 비교 데이터는 lead.md 또는 reanalysis-tracker 산출물에서 read OK** (이전 HTML 과 다른 source).
@@ -123,6 +125,7 @@ ls -la report_template.py
 ```
 
 `report_template.py`가 없으면 **즉시 중단**하고 리드에게 보고:
+
 ```
 "report_template.py가 없습니다. 현재 브랜치: {브랜치명}.
  main 브랜치에서 실행해야 합니다. 리드에게 브랜치 복구를 요청합니다."
@@ -179,37 +182,50 @@ data = {
     "grade": "Buy",
     "current_price": 234.50,
     "currency": "$",  # 또는 "₩"
-    
+
     # KPI
     "market_cap": 3.57e12,
     "per": "33.2x",
     "low52": 169.21,
     "high52": 260.10,
     "extra_kpis": [("OPM", "30.5%"), ("ROE", "157%")],
-    
+
     # 손절/목표
     "stop_loss": 215.30,
     "target_price": 272.90,
     "atr": 9.60,
-    
+
     # 스코어카드 (10항목, 0~10점)
     "scorecard_items": [
         ("Moat", 8), ("수익성", 9), ("성장성", 6), ("재무", 9), ("밸류", 5),
         ("모멘텀", 7), ("배당", 4), ("리스크", 8), ("산업", 7), ("경영", 9)
     ],
-    
+
     # 텍스트 섹션
     "executive_summary": "Apple은 서비스 고성장 + AI 전략...",
     "company_overview": "Apple Inc.는 글로벌 테크...",
     "moat_rating": "Wide Moat",
     "moat_details": "브랜드 + 생태계 전환비용...",
+
+    # ★ 투자 논지 [v3.27 의무] — scorecard.md 의 § 투자 논지에서 그대로 옮긴다.
+    # 첫 화면 히어로 블록으로 렌더 (KPI 보다 먼저). claim 누락 시 블록 미표시 → 검증 7 경고.
+    "thesis": {
+        "claim": "핵심 주장 1문장",
+        "consensus": "시장 컨센서스 (애널리스트 아카이브 TP 중앙값 인용)",
+        "variant": "우리 견해 + 차이의 근거 (차이 없으면 '차이 없음 — 엣지 없음')",
+        "falsifier": "반증 조건 — 수치+기한 (예: Q2 DC 매출 QoQ -5% 또는 10Y 5.0% 돌파 시 중립 강등)",
+        "action": "행동 1줄 (보유/진입 조건/축소)",
+        "grade_line": "매수 (76점, 유니버스 상위 14% — 13/85위)",
+        "adversarial": "[적대 게이트 통과] 1줄 (Phase 3.5 결과 — 없으면 생략 가능)",
+    },
+
     "financial_analysis": "매출 CAGR 8%, OPM 30%+ 안정...",
     "valuation": "DCF 기반 적정가 $280...",
     "momentum": "52주 고점 대비 -10%, RSI 45...",
     "business_analysis": "스마트폰 시장 성숙기, 서비스가 성장 동력...",
     "risk_summary": "중국 매출 비중 19%가 최대 리스크...",
     "strategy": "현재가 기준 Hold. $220 이하 매수 매력.",
-    
+
     # 테이블 (선택)
     "financials_table": {
         "headers": ["항목", "FY23", "FY24", "FY25", "FY26E"],
@@ -225,13 +241,13 @@ data = {
             ["Morgan Stanley", "Overweight", "$275"],
         ]
     },
-    
+
     # 리스크 (히트맵용)
     "risks": [
         {"name": "중국 매출 의존", "level": "중", "impact": "고", "desc": "매출 19%"},
         {"name": "AI 경쟁 심화", "level": "중", "impact": "중", "desc": "Google/Samsung"},
     ],
-    
+
     # 경고 플래그 [v3.9 신규]
     # scorecard-strategist가 R:R < 1.5 또는 현재가 > 컨센 평균 판정 시 전달
     "entry_warning": "",                  # 예: "⚠️ 진입 보류 권고 (R:R 1.43 Marginal)" — 비면 미표시
@@ -240,14 +256,14 @@ data = {
     "current_vs_consensus_pct": None,     # float, +X.X% 괴리율 (optional)
     # → Executive Summary 맨 첫줄에 entry_warning 문자열 삽입
     # → consensus_warning=True면 리포트 최상단에 노란 경고 블록 자동 렌더링
-    
+
     # 실적 바차트 데이터 (선택)
     "fin_years": ["FY22", "FY23", "FY24", "FY25E"],
     "revenue_data": [394, 383, 391, 420],
     "op_income_data": [119, 114, 119, 131],
     "fin_unit": "B",
     "estimates_from": 3,
-    
+
     # ETF 전용 (asset_type이 "ETF"일 때)
     # "sectors": [("기술", 33), ("금융", 12), ...],
     # "etf_performance": {
@@ -278,6 +294,7 @@ python3 generate_{종목코드}.py
 ```
 
 **링크 규칙:**
+
 - REPORT_PREVIEW_URL이 있으면 → 해당 URL 사용 (GitHub Pages https:// URL)
 - REPORT_PREVIEW_URL이 없으면 → 평문 경로 제시 금지, 아래 Python으로 file:// URL 생성:
   ```bash
@@ -294,23 +311,23 @@ python3 generate_{종목코드}.py
 
 analysis/ 파일에서 데이터를 추출할 때:
 
-| 데이터 | 추출 소스 |
-|--------|----------|
-| ticker, name, current_price | _data.json |
-| score, grade | _scorecard.md |
-| stop_loss, target_price, atr | _scorecard.md |
-| scorecard_items | _scorecard.md의 10항목 점수 |
-| executive_summary | _scorecard.md 또는 리드 지시 |
-| company_overview, moat | _company.md |
-| financial_analysis | _financial.md |
-| momentum, consensus | _momentum.md |
-| business_analysis | _business.md |
-| risks | _risk.md |
+| 데이터                       | 추출 소스                     |
+| ---------------------------- | ----------------------------- |
+| ticker, name, current_price  | \_data.json                   |
+| score, grade                 | \_scorecard.md                |
+| stop_loss, target_price, atr | \_scorecard.md                |
+| scorecard_items              | \_scorecard.md의 10항목 점수  |
+| executive_summary            | \_scorecard.md 또는 리드 지시 |
+| company_overview, moat       | \_company.md                  |
+| financial_analysis           | \_financial.md                |
+| momentum, consensus          | \_momentum.md                 |
+| business_analysis            | \_business.md                 |
+| risks                        | \_risk.md                     |
 
 파일이 없는 섹션은 data 딕셔너리에서 빈 문자열("")로 두면 해당 섹션이 자동으로 생략된다.
 
-
 ### KB 참조 [v3.0]
+
 - **knowledge-base/ 폴더의 파일을 먼저 읽고** 분석에 활용한다.
 - **★ CURRENT 데이터만 사용한다.** KB 파일에는 CURRENT만 존재하며, 이력은 별도 저장소(knowledge-db/)에 보관된다.
 - ✅ **읽기 가능: knowledge-base/market/** (일별 시장 데이터, 상관관계, 거물 투자자 참조 — 종목 현재가 맥락 확인용)
@@ -334,7 +351,10 @@ stock-analyst-lead 가 호출 프롬프트에 "**--reanalysis 모드 v{N}**" 또
 ```html
 <div class="reanalysis-header">
   <span class="badge-reanalysis">재분석 v{N}</span>
-  <span class="meta">이전: v{N-1} ({이전날짜}) · 본 분석은 이전 결론과 독립 추론 (BLIND 재분석)</span>
+  <span class="meta"
+    >이전: v{N-1} ({이전날짜}) · 본 분석은 이전 결론과 독립 추론 (BLIND
+    재분석)</span
+  >
 </div>
 ```
 
@@ -377,6 +397,7 @@ report_template.py 의 `data['confidence_interval']`, `data['fragile_assumptions
 ### 파일명 (재분석 모드)
 
 평소와 동일: `reports/{티커}_{종목명}_{YYYYMMDD}.html`
+
 - v 접미사 ❌ (날짜만으로 구분, 같은 날 두 번 재분석 시 덮어쓰기 방지를 위해 lead 가 사전 검증)
 - 이전 HTML 보존 의무: 기존 `reports/{티커}_*_{과거날짜}.html` 절대 삭제·덮어쓰기 금지
 
@@ -385,13 +406,16 @@ report_template.py 의 `data['confidence_interval']`, `data['fragile_assumptions
 ## 안전장치 (모든 서브에이전트 공통)
 
 ### 웹검색 금지 [v2.3]
+
 - **이 에이전트는 웹검색을 하지 않는다.** analysis/ 폴더의 분석 결과를 읽고 HTML 리포트를 생성한다.
 
 ### 항목 우선순위 [v2.3]
+
 - 모든 analysis/ 파일이 있으면 전체 데이터를 사용.
 - 일부 파일이 없으면 있는 데이터만으로 리포트 생성. 빈 섹션은 자동 생략.
 
 ### 기존 규칙 (유지)
+
 1. 무한 루프 금지: 같은 작업을 3회 이상 반복 금지
 2. 완벽보다 완료: 일부 데이터가 없어도 리포트를 생성하고 반환
 3. 결과 반환 우선: 오류 시 현재까지 결과를 리드에게 반환

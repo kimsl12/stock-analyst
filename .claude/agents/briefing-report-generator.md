@@ -169,6 +169,15 @@ extras: {
   <div class="meta">briefing-lead 작성 | {KST 시각}</div>
 </div>
 
+<!-- 0.5 오늘의 핵심 논지 [v3.27 의무] — 데이터 요약이 아니라 "판단"이 첫 화면 -->
+<!-- lead_*.md 의 debate-card 1순위 논쟁을 3행으로: 단정이 아닌 분기 조건 명시 -->
+<div class="sec" style="border-left:4px solid var(--highlight)">
+  <h2>오늘의 핵심 논지</h2>
+  <p><strong>주장:</strong> {오늘 시장의 단일 핵심 판단 1문장}</p>
+  <p><strong>분기 조건:</strong> {수치+기한 — 예: "6/17 FOMC 점도표 중간값 1회 인상 이상이면 시나리오 B"}</p>
+  <p><strong>행동:</strong> {포트폴리오 4종 공통 함의 1줄}</p>
+</div>
+
 <!-- 1. Executive Summary -->
 <div class="sec">
   <h2>0. 핵심 요약</h2>

@@ -170,7 +170,57 @@ def _tbl(headers, rows):
     b = ""
     for r in rows:
         b += "<tr>" + "".join("<td>{}</td>".format(c) for c in r) + "</tr>"
-    return "<table><thead><tr>{}</tr></thead><tbody>{}</tbody></table>".format(h, b)
+    table = "<table><thead><tr>{}</tr></thead><tbody>{}</tbody></table>".format(h, b)
+    # [v3.27] 데이터 부록화 — 6행 초과 표는 접기 (첫 화면 = 논지·행동 중심, 데이터는 펼쳐서)
+    if len(rows) > 6:
+        return (
+            '<details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);'
+            'font-size:13px;padding:4px 0">상세 데이터 표 펼치기 ({}행)</summary>{}</details>'.format(len(rows), table)
+        )
+    return table
+
+
+def thesis_block(thesis, cur="$"):
+    """[v3.27] 투자 논지 히어로 블록 — 리포트 첫 화면의 본체.
+
+    thesis keys:
+      claim          핵심 주장 1문장 (필수)
+      consensus      시장 컨센서스 요약 (애널리스트 아카이브 목표가 중앙값 등)
+      variant        우리 견해 + 차이의 근거 ("차이 없음 — 엣지 없음" 허용)
+      falsifier      반증 조건 — 수치+기한 (필수)
+      action         행동 1줄 (예: "보유. $X 이하 + CPI 통과 시 분할 매수")
+      grade_line     등급 + 백분위 (예: "매수 (76점, 유니버스 상위 14%)")
+      adversarial    적대 게이트 결과 1줄 (통과/강등 사유, 선택)
+    """
+    if not thesis or not thesis.get("claim"):
+        return ""
+    rows_html = []
+    def _row(label, value, color=None):
+        if not value:
+            return
+        style = ' style="color:{}"'.format(color) if color else ""
+        rows_html.append(
+            '<div style="display:flex;gap:10px;margin:7px 0;align-items:baseline">'
+            '<div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">{}</div>'
+            '<div style="font-size:14px"{}>{}</div></div>'.format(label, style, _md_to_html(str(value)))
+        )
+    _row("컨센서스", thesis.get("consensus"))
+    _row("우리 견해", thesis.get("variant"))
+    _row("반증 조건", thesis.get("falsifier"), color="#f5a623")
+    _row("행동", thesis.get("action"), color="#7ed321")
+    _row("적대 게이트", thesis.get("adversarial"))
+    grade_line = thesis.get("grade_line", "")
+    return (
+        '<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px">'
+        '<div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div>'
+        '<div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">{}</div>'
+        "{}{}"
+        "</div>".format(
+            _md_to_html(thesis["claim"]),
+            "".join(rows_html),
+            '<div style="margin-top:8px;font-size:13px;color:var(--sub)">{}</div>'.format(grade_line) if grade_line else "",
+        )
+    )
 
 def _kpi(label, value):
     return '<div class="ki"><div class="kl">{}</div><div class="kv">{}</div></div>'.format(label, value)
@@ -201,6 +251,8 @@ def generate_report(data, output_path=None):
       산업: business_analysis, competition_table={headers,rows}
       리스크: risks=[{name,level,impact,desc},...], risk_summary
       전략: strategy
+      논지[v3.27 의무]: thesis={claim,consensus,variant,falsifier,action,grade_line,adversarial}
+           → 첫 화면 히어로 블록. 누락 시 stock-analyst-lead 검증 7 경고.
       ETF: asset_type="ETF", sectors=[(name,pct),...], etf_performance={periods,etf,index,etf_name,index_name}
       커스텀: custom_sections=[{title,content},...]
     """
@@ -220,7 +272,12 @@ def generate_report(data, output_path=None):
     gc = "b-buy" if "buy" in str(grade).lower() or "매수" in str(grade) else ("b-sell" if "sell" in str(grade).lower() or "매도" in str(grade) else "b-hold")
     parts.append('<div class="header"><h1>{} ({})</h1><div class="meta">{} 종합 분석 리포트 | {}</div><div style="margin-top:8px"><span class="badge {}">{}</span> <span class="badge b-score">{}/100</span></div></div>'.format(
         data.get("name",""), data.get("ticker",""), data.get("asset_type","주식"), data.get("date",""), gc, grade, data.get("score","N/A")))
-    
+
+    # [v3.27] 투자 논지 히어로 — 첫 화면의 본체 (데이터보다 먼저)
+    tb = thesis_block(data.get("thesis"), cur)
+    if tb:
+        parts.append(tb)
+
     # KPI
     kpis = [
         _kpi("현재가", _fmtprice(data.get("current_price"), cur)),

@@ -68,9 +68,13 @@ Phase 0  A: kb-updater(섹터 KB) → B: fetch_price.py(리드 직접 Bash)
 Phase 1  병렬 3: company-overview ∥ financial-analyst ∥ momentum-analyst
          → 파일 생성 검증 + 폴백 (0 byte면 리드가 반환 메시지로 직접 Write)
 Phase 2  순차 2: business-analyst → risk-analyst
-Phase 3  scorecard-strategist (리드가 종목 유형 판별값 전달)
-Phase 4  report-generator (Write 1회 atomic / 이전 HTML read 금지 / 실패 시 재호출 1회)
-종료     검증 0~6 → commit → build_manifest → push → 배포
+Phase 3    scorecard-strategist — § 투자 논지(주장/컨센서스 대비/반증 조건) 최상단 의무 [v3.27]
+           + 등급 쿼터: scoreboard.py {점수} --exclude {티커} (강력매수 상위 5% / 매수 25%)
+Phase 3.5  적대 게이트 [v3.27] — 매수 이상만. risk-analyst --adversarial (논지 3행만 인라인,
+           파일 접근 차단 BLIND) → verdict HIT 면 lead 가 1단계 강등 명기
+Phase 4    report-generator (Write 1회 atomic / 이전 HTML read 금지 / 실패 시 재호출 1회)
+           thesis 히어로 블록 첫 화면 + 6행 초과 표 자동 접힘 (report_template v3.27)
+종료       검증 0~7 → commit → build_manifest → push → 배포
 ```
 
 산출물 계약: `analysis/{종목코드}_{종목명}_v{N}/` (company.md, financial.md, business.md,
@@ -127,6 +131,7 @@ Phase 0-A     market-data-collector ∥ polymarket-collector (병렬 Task)
 | 검증 0     | 출력 경로 직속 강제 — `reports/*.html` 직속 + briefing/ + analyst/items/ + research/ 4곳만 (그 외 서브디렉토리 = 본서버 404)         |
 | 검증 1~3   | HTML 존재 / git commit 존재 / session-bootstrap 갱신                                                                                 |
 | 검증 4     | 디자인 표준 6항목 (다크·라이트 토글 포함, briefing-report-generator 표준)                                                            |
+| 검증 7     | [v3.27] 투자 논지 블록 존재 (`§ 투자 논지` + `반증 조건` grep) + 등급 백분위 표기 — "데이터 읊기" 차단                               |
 | 검증 5     | 한국어 검증 — `reference/korean_translation_rules.md` (매핑 사전 + 한글 비중 80%). **리포트 본문 한정, KB 데이터 파일 제외**         |
 | 검증 6     | manifest staleness 자동 복구 (push 직전 build_manifest 재실행 + diff 시 commit)                                                      |
 | 포트폴리오 | schema contract + 단위 테스트 34종(`web/scripts/__tests__/`) + sync 사전·사후 검증 + health_check.mjs (Vercel=STRICT / 로컬=LENIENT) |
@@ -151,7 +156,8 @@ gh-pages 는 GitHub Actions 복원(2026-06-05) 후 자동 3채널째. KB·analys
 | `scripts/automation_watchdog.sh`        | launchd 06:40·10:30  | daily_pick 신선도 + 미푸시 커밋 + holdings_health 재생성 + portfolio_watch 호출                                                                 |
 | `scripts/portfolio_watch.py`            | watchdog 경유        | 손절/목표가 도달·접근(2%) + 목표 비중 드리프트(`scripts/portfolio_targets.json`, 기본 5%p) 알림. KST 일별 디듀프                                |
 | `web/scripts/build_holdings_health.mjs` | prebuild + watchdog  | 보유종목 × 최신 scorecard(손절·목표·등급) → `holdings_health.json` (git tracked — Vercel 컨테이너엔 analysis/ 없음)                             |
-| `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss — LLM 산수 배제)                                                        |
+| `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss + 모듈×카테고리×확신도 분해·캘리브레이션 경고 — LLM 산수 배제)          |
+| `scripts/scoreboard.py`                 | scorecard Phase 3    | 유니버스 백분위 + 등급 쿼터 판정 (`--exclude {티커}` 필수 — BLIND). 강력매수 상위 5% / 매수 25% / 하위 15% 매도 검토                            |
 | `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
 | `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |
 | `scripts/measure_turns.mjs`             | 수동/진단            | subagent jsonl 에서 에이전트별 사용 턴 vs maxTurns 근접도 측정                                                                                  |

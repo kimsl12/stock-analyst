@@ -182,6 +182,36 @@ def main() -> None:
     hits = sum(1 for x in classified if x["verdict"] == "hit")
     misses = sum(1 for x in classified if x["verdict"] == "miss")
 
+    def bucket(key: str) -> dict:
+        """모듈/카테고리/확신도별 적중률 분해 — 캘리브레이션 점검용 [v3.27]."""
+        out = {}
+        for x in classified:
+            k = x[key].strip() or "(미상)"
+            b = out.setdefault(k, {"n": 0, "hit": 0, "miss": 0, "flat": 0})
+            b["n"] += 1
+            b[x["verdict"]] += 1
+        for b in out.values():
+            d = b["hit"] + b["miss"]
+            b["hit_rate_pct"] = round(b["hit"] / d * 100, 1) if d else None
+        return out
+
+    breakdown = {
+        "by_module": bucket("module"),
+        "by_category": bucket("category"),
+        "by_confidence": bucket("confidence"),
+    }
+    # 캘리브레이션 경고: "확신 높음" 적중률이 "중간" 보다 낮으면 확신 표기 남발 신호
+    conf = breakdown["by_confidence"]
+    hi = next((v for k, v in conf.items() if k.startswith("높음")), None)
+    mid = next((v for k, v in conf.items() if k.startswith("중간")), None)
+    calibration_warning = None
+    if hi and mid and hi.get("hit_rate_pct") is not None and mid.get("hit_rate_pct") is not None:
+        if hi["hit_rate_pct"] < mid["hit_rate_pct"]:
+            calibration_warning = (
+                f"확신 '높음' 적중률 {hi['hit_rate_pct']}% < '중간' {mid['hit_rate_pct']}% — "
+                "확신 표기 기준 강화 검토 (briefing-lead 제안 기록 룰)"
+            )
+
     payload = {
         "generated_at": datetime.now(KST).strftime("%Y-%m-%dT%H:%M:%S+09:00"),
         "doc": "결정적 자동 채점 — 기준가=제안일 이후 첫 거래일 종가, 임계 ±3%, 시간축 최소 경과(30/90/180일) 미달은 early. 해석·교훈 도출은 /성과리뷰 에이전트 책임.",
@@ -195,6 +225,8 @@ def main() -> None:
             "early": sum(1 for x in results if x["verdict"] == "early"),
             "hit_rate_pct": round(hits / (hits + misses) * 100, 1) if (hits + misses) else None,
         },
+        "breakdown": breakdown,
+        "calibration_warning": calibration_warning,
         "results": results,
     }
 
