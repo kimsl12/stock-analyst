@@ -53,13 +53,13 @@ knowledge-db/market/2026_daily_prices.md (90일)
 
 ## 호출 모드
 
-| mode | 명령 | 범위 |
-|---|---|---|
-| `quick` | /모닝브리핑 | B-5 6쌍 상관계수만 |
-| `full` | /이브닝브리핑 | B-4 서프라이즈 + B-5 상관계수 |
-| `weekly_summary` | /주간리포트 | 주간 평균 + Z-score 추세 |
-| `crypto` | /크립토브리핑 | BTC↔NASDAQ/Gold/USD만 |
-| `supplemental` | briefing-lead 재호출 | 1차 호출 후 누락된 specific_pairs 만 [v3.6] |
+| mode             | 명령                 | 범위                                        |
+| ---------------- | -------------------- | ------------------------------------------- |
+| `quick`          | /모닝브리핑          | B-5 6쌍 상관계수만                          |
+| `full`           | /이브닝브리핑        | B-4 서프라이즈 + B-5 상관계수               |
+| `weekly_summary` | /주간리포트          | 주간 평균 + Z-score 추세                    |
+| `crypto`         | /크립토브리핑        | BTC↔NASDAQ/Gold/USD만                       |
+| `supplemental`   | briefing-lead 재호출 | 1차 호출 후 누락된 specific_pairs 만 [v3.6] |
 
 ### Supplemental 모드 [v3.6 신규, 2026-05-07]
 
@@ -67,7 +67,7 @@ briefing-lead 1차 호출 후 누락 감지 시 **재호출 1회** 만 허용:
 
 ```yaml
 mode: supplemental
-specific_pairs: ["NASDAQ↔BTC", "USD/KRW↔KOSPI"]   # 보강할 페어만
+specific_pairs: ["NASDAQ↔BTC", "USD/KRW↔KOSPI"] # 보강할 페어만
 skip_kb_reread: true
 parent_output: analysis/briefing/correlation_{YYYYMMDD}.md
 ```
@@ -78,14 +78,14 @@ parent_output: analysis/briefing/correlation_{YYYYMMDD}.md
 
 ## 모니터링 페어 6개
 
-| # | 페어 | 정상 | 이상 의미 |
-|---|---|---|---|
-| 1 | S&P500 ↔ 10Y국채 | 약한 음의 상관 | 붕괴 → 스태그플레이션 또는 유동성 랠리 |
-| 2 | NASDAQ ↔ BTC | 양의 상관 | 탈동조 → 크립토 독립 이벤트 |
-| 3 | USD/KRW ↔ KOSPI | 음의 상관 | 강화 → 환 충격 |
-| 4 | Gold ↔ DXY | 음의 상관 | 약화 → Gold 독립 수요(지정학·인플헤지) |
-| 5 | VIX ↔ S&P500 | 강한 음의 상관 | 붕괴 → 옵션시장 구조 이상 |
-| 6 | WTI ↔ BEI(인플기대) | 양의 상관 | 약화 → 공급충격 또는 수요둔화 |
+| #   | 페어                | 정상           | 이상 의미                              |
+| --- | ------------------- | -------------- | -------------------------------------- |
+| 1   | S&P500 ↔ 10Y국채    | 약한 음의 상관 | 붕괴 → 스태그플레이션 또는 유동성 랠리 |
+| 2   | NASDAQ ↔ BTC        | 양의 상관      | 탈동조 → 크립토 독립 이벤트            |
+| 3   | USD/KRW ↔ KOSPI     | 음의 상관      | 강화 → 환 충격                         |
+| 4   | Gold ↔ DXY          | 음의 상관      | 약화 → Gold 독립 수요(지정학·인플헤지) |
+| 5   | VIX ↔ S&P500        | 강한 음의 상관 | 붕괴 → 옵션시장 구조 이상              |
+| 6   | WTI ↔ BEI(인플기대) | 양의 상관      | 약화 → 공급충격 또는 수요둔화          |
 
 ## 계산 방법
 
@@ -95,28 +95,39 @@ parent_output: analysis/briefing/correlation_{YYYYMMDD}.md
 
 ### Alert 판정
 
-| Z-score | Alert | 액션 |
-|---|---|---|
-| ≤±1σ | 🟢 정상 | — |
-| ±1~2σ | 🟡 주의 | 코멘트 필수 |
-| >±2σ | 🔴 이상 | 경고 + 과거 유사 사례 + 투자 시사점 |
+| Z-score | Alert   | 액션                                |
+| ------- | ------- | ----------------------------------- |
+| ≤±1σ    | 🟢 정상 | —                                   |
+| ±1~2σ   | 🟡 주의 | 코멘트 필수                         |
+| >±2σ    | 🔴 이상 | 경고 + 과거 유사 사례 + 투자 시사점 |
+
+### 하우스 뷰 매핑 의무 [v3.28, 2026-06-11]
+
+🟡 이상의 모든 Alert 와 경제 서프라이즈 Beat/Miss 에는 **하우스 뷰 연결 1줄**을 붙인다 —
+`knowledge-base/market/house_view.md` 의 명제 중 무엇을 지지/반박하는지 (해당 없으면 "독립 신호" 명시 + 신규 명제 후보 여부).
+예: `NASDAQ↔BTC -3.1σ 🔴 → HV6(크립토 탈동조) 지지` / `CPI Beat → HV1(매파 장기화) 지지`.
+고립된 사실 나열 금지 — 신호는 논지에 복무한다.
 
 ---
 
 ## 산출물
 
 ### 1. correlation_matrix.md (CURRENT 덮어쓰기)
+
 6쌍의 30D/90D 상관계수, 1년 평균/σ, Z-score, Alert 테이블.
 🔴/🟡 발생 시 해석·과거 유사 사례·시사점 기술.
 
 ### 2. surprise_index.md (CURRENT 덮어쓰기, mode=full)
+
 지역별(미국/유로존/중국/한국) Beat/Miss/중립 누적 + 스코어 + 최근 7일 주요 이벤트 + 종합 판정.
 판정: Beat > 컨센서스+1σ, Miss < 컨센서스−1σ, 중립 = ±1σ 이내.
 
 ### 3. 2026_correlation_log.md (append)
+
 `| 일자 | 페어 | 30D | 90D | Z-score | Alert |` 행 추가
 
-### 4. correlation_{YYYYMMDD}.md (briefing-lead 인계)
+### 4. correlation\_{YYYYMMDD}.md (briefing-lead 인계)
+
 🔴/🟡 핵심 시그널 요약 + 서프라이즈 종합 → briefing 본문 반영 포인트
 
 ---
@@ -131,7 +142,7 @@ parent_output: analysis/briefing/correlation_{YYYYMMDD}.md
 6. (full) Beat/Miss 누적 집계
 7. Write correlation_matrix.md, (full) surprise_index.md
 8. Append correlation_log.md
-9. Write analysis/briefing/correlation_{YYYYMMDD}.md
+9. Write analysis/briefing/correlation\_{YYYYMMDD}.md
 10. 자가검증: 6쌍 완료, 🔴/🟡 코멘트 누락 없음, 데이터 부족 시 N/A
 
 ## ★ 파일 저장 — 최우선 규칙 [v3.5]

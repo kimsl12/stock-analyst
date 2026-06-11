@@ -78,5 +78,19 @@ else
   notify_warn "portfolio_watch 실행 실패 — 손절/목표가 감시 미수행" high
 fi
 
+# 6. 일일 레짐 분류 (전환 시 스크립트가 자체 알림) [v3.28]
+if python3 scripts/regime_classifier.py 2>&1 | grep -v "FutureWarning\|warnings.warn\|NotOpenSSL"; then
+  log "OK: regime_classifier 완료"
+else
+  log "WARN: regime_classifier 실패 — 브리핑은 직전 regime.json 사용"
+fi
+
+# 7. 하우스 뷰 반증 조건 평가 (도달 시 스크립트가 자체 알림) [v3.28]
+if python3 scripts/check_house_view.py 2>&1 | grep -v "FutureWarning\|warnings.warn\|NotOpenSSL"; then
+  log "OK: check_house_view 완료"
+else
+  log "WARN: check_house_view 실패"
+fi
+
 log "=== watchdog 완료 ==="
 exit 0

@@ -105,6 +105,16 @@ Phase 0-A     market-data-collector ∥ polymarket-collector (병렬 Task)
 연계 데이터 흐름: 수집 에이전트는 `knowledge-base/market/` 에 쓰고, 분석 에이전트는 그 파일만 읽는다
 (3계층: 수집 → 공시 → 종합). research KB 강제 인용은 /주간·/글로벌·/내포·/풀 4종 한정 (v3.23).
 
+### 하우스 뷰 + 레짐 (v3.28 — 시장 해석 레이어)
+
+- **하우스 뷰 대장** `knowledge-base/market/house_view.md`: 운영 중 시장 명제 5~8개
+  (반증 조건 수치+기한 의무). 권한 차등 = 브리핑 정체성: 모닝 점검만 / 이브닝 증거·제안 /
+  **주간 유일 개정 권한** / 반증 조건 도달 시 즉시 처리 예외. SSOT: briefing-lead §정체성 매트릭스.
+- **일일 레짐** `knowledge-base/market/regime.json`: regime_classifier 가 매일 06:40 결정적 산출
+  (추세·VIX·10Y·F&G → 리스크온/중립/오프 + 가중치장). 모든 브리핑 헤더 표기 의무 +
+  scorecard-strategist 가중치 3벌 선택 입력.
+- **신호 매핑**: correlation-monitor 의 🟡+ Alert·Beat/Miss 는 하우스 뷰 명제 지지/반박 1줄 의무.
+
 ---
 
 ## 5. 병목 방지 룰 (운영 계약 — 위반 시 시간 폭주·maxTurns 사고 재발)
@@ -158,6 +168,8 @@ gh-pages 는 GitHub Actions 복원(2026-06-05) 후 자동 3채널째. KB·analys
 | `web/scripts/build_holdings_health.mjs` | prebuild + watchdog  | 보유종목 × 최신 scorecard(손절·목표·등급) → `holdings_health.json` (git tracked — Vercel 컨테이너엔 analysis/ 없음)                             |
 | `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss + 모듈×카테고리×확신도 분해·캘리브레이션 경고 — LLM 산수 배제)          |
 | `scripts/scoreboard.py`                 | scorecard Phase 3    | 유니버스 백분위 + 등급 쿼터 판정 (`--exclude {티커}` 필수 — BLIND). 강력매수 상위 5% / 매수 25% / 하위 15% 매도 검토                            |
+| `scripts/regime_classifier.py`          | watchdog 06:40       | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                     |
+| `scripts/check_house_view.py`           | watchdog 06:40·10:30 | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                             |
 | `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
 | `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |
 | `scripts/measure_turns.mjs`             | 수동/진단            | subagent jsonl 에서 에이전트별 사용 턴 vs maxTurns 근접도 측정                                                                                  |

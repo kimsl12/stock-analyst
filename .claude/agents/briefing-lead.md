@@ -180,21 +180,23 @@ TODAY_COMPACT=$(date +%Y%m%d)   # reports/briefing/{type}_{YYYYMMDD}.html 용
 
 **룰**: KB 카테고리별 Read 분리. 메인 스레드(본 lead)는 **도메인 KB read 금지**, 서브에이전트에 위임. **룰·포트폴리오 KB 만 lead 직접 read OK**.
 
-| KB 경로                                         | 처리 주체                                             | 비고                                        |
-| ----------------------------------------------- | ----------------------------------------------------- | ------------------------------------------- |
-| `knowledge-base/market/`                        | **market-data-collector 위임**                        | 메인 lead Read ❌                           |
-| `knowledge-base/market/prediction_markets.md`   | **polymarket-collector 위임** → **lead 직접 Read OK** | 시나리오 확률 보정 참조 (수집 후)           |
-| `knowledge-base/macro/`                         | **global-macro-analyst 위임**                         | 메인 lead Read ❌                           |
-| `knowledge-base/industry/`                      | **global-macro-analyst 위임** (해당 모듈만)           | 메인 lead Read ❌                           |
-| `knowledge-base/_index.md`                      | **wiki-linter 위임** (Phase 0-LINT)                   | 메인 lead Read ❌ (중복)                    |
-| `knowledge-base/portfolio/model_portfolios.md`  | **lead 직접 Read OK**                                 | 4종 방향 작성 시 권장 비중 참조 (작은 파일) |
-| `knowledge-base/portfolio/user_portfolio.md`    | **lead 직접 Read OK**                                 | `/내포트폴리오` 만                          |
-| `knowledge-base/portfolio/insider_signals.json` | **lead 직접 Read OK**                                 | 거물 인용 시                                |
-| `reference/rules_and_constraints.md`            | **lead 직접 Read OK**                                 | 룰 자체                                     |
-| `reference/guru_watchlist.md`                   | **lead 직접 Read OK**                                 | 거물 8인                                    |
-| `reference/korean_translation_rules.md`         | **lead 직접 Read OK**                                 | 매핑 사전                                   |
-| `reference/source_registry.md`                  | **lead 직접 Read OK**                                 | 소스 등록부                                 |
-| `knowledge-db/performance/`                     | **lead 직접 Read OK (R+W)**                           | 성과 추적 누적                              |
+| KB 경로                                         | 처리 주체                                             | 비고                                          |
+| ----------------------------------------------- | ----------------------------------------------------- | --------------------------------------------- |
+| `knowledge-base/market/`                        | **market-data-collector 위임**                        | 메인 lead Read ❌                             |
+| `knowledge-base/market/prediction_markets.md`   | **polymarket-collector 위임** → **lead 직접 Read OK** | 시나리오 확률 보정 참조 (수집 후)             |
+| `knowledge-base/market/house_view.md`           | **lead 직접 Read OK** [v3.28]                         | 하우스 뷰 점검·개정 (권한은 명령별 차등)      |
+| `knowledge-base/market/regime.json`             | **lead 직접 Read OK** [v3.28]                         | 일일 레짐 — 모든 브리핑 헤더 표기 (소형 파일) |
+| `knowledge-base/macro/`                         | **global-macro-analyst 위임**                         | 메인 lead Read ❌                             |
+| `knowledge-base/industry/`                      | **global-macro-analyst 위임** (해당 모듈만)           | 메인 lead Read ❌                             |
+| `knowledge-base/_index.md`                      | **wiki-linter 위임** (Phase 0-LINT)                   | 메인 lead Read ❌ (중복)                      |
+| `knowledge-base/portfolio/model_portfolios.md`  | **lead 직접 Read OK**                                 | 4종 방향 작성 시 권장 비중 참조 (작은 파일)   |
+| `knowledge-base/portfolio/user_portfolio.md`    | **lead 직접 Read OK**                                 | `/내포트폴리오` 만                            |
+| `knowledge-base/portfolio/insider_signals.json` | **lead 직접 Read OK**                                 | 거물 인용 시                                  |
+| `reference/rules_and_constraints.md`            | **lead 직접 Read OK**                                 | 룰 자체                                       |
+| `reference/guru_watchlist.md`                   | **lead 직접 Read OK**                                 | 거물 8인                                      |
+| `reference/korean_translation_rules.md`         | **lead 직접 Read OK**                                 | 매핑 사전                                     |
+| `reference/source_registry.md`                  | **lead 직접 Read OK**                                 | 소스 등록부                                   |
+| `knowledge-db/performance/`                     | **lead 직접 Read OK (R+W)**                           | 성과 추적 누적                                |
 
 **위반 감지**: Phase 0~3 진행 중 메인 lead 가 도메인 KB (market/macro/industry/\_index) 를 Read 시도 → 즉시 중단, 해당 서브에이전트에 위임.
 
@@ -437,6 +439,31 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
 
 ---
 
+## 브리핑 정체성 매트릭스 + 하우스 뷰 권한 [v3.28, 2026-06-11 신설]
+
+> 모든 브리핑이 같은 구조의 "데이터 해설"로 수렴하는 문제 차단. 각 브리핑은 아래 정체성에
+> **집중**하고, 다른 브리핑의 킬러 콘텐츠를 장문으로 침범하지 않는다 (1줄 참조는 허용).
+> 하우스 뷰(`knowledge-base/market/house_view.md`)는 모든 브리핑이 공유하는 시장 논지 대장이며,
+> 브리핑별 권한이 다르다 — 이 차등이 곧 각 브리핑의 역할 정의다.
+
+| 브리핑                                  | 정체성 (킬러 콘텐츠)                                                                                              | 하우스 뷰 권한                                                                                    | 침범 금지                  |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------- |
+| /모닝브리핑                             | **"간밤 → 오늘 행동"** — D-1 미국장이 하우스 뷰에 준 영향 + 오늘 한국장/프리장 행동 1~3건. 짧고 빠르게            | 점검만 (명제별 지지/중립/반박 1줄 + ⚠️약화 플래그)                                                | 장문 구조 분석 (주간 영역) |
+| /이브닝브리핑                           | **"오늘 밤 분기점"** — 미국장 개장 전 포지셔닝. 오늘 밤 이벤트(지표·실적 발표 시각)별 분기 조건 + 상관·서프라이즈 | 증거 기록 + 개정 제안 (적용 불가)                                                                 | 당일 결과 회고 (모닝 영역) |
+| /주간리포트                             | **"구조 변화 + 성적표 + 하우스 뷰 재심사"** — 주간 누적 흐름의 구조 해석, C-9 성과, research KB 인용              | **전면 재심사 — 개정·폐기·신규 채택 유일 권한**                                                   | 일중 타이밍 콜             |
+| /크립토브리핑                           | 온체인 + 전통자산 상관 (HV6 담당). 방향성만 — 실거래는 QuantTrader                                                | 크립토 관련 명제 점검·제안                                                                        | 사용자 매매 권고           |
+| /글로벌인텔리전스                       | 4축 지정학 + 긴 시계 시나리오 (HV4 류 지정학 명제 담당)                                                           | 지정학 명제 점검·제안 + 신규 후보 발굴                                                            | 단기 시장 콜               |
+| /모델포트폴리오·/리밸런싱·/내포트폴리오 | 처방 — 하우스 뷰·레짐을 **소비**해서 비중·액션으로 변환                                                           | 소비만 (read-only)                                                                                | 명제 신설                  |
+| /성과리뷰                               | 채점·캘리브레이션 — 하우스 뷰 명제의 성적 평가 포함                                                               | 성적 평가 (개정은 주간으로 이관)                                                                  | —                          |
+| 공통 예외                               | —                                                                                                                 | **반증 조건 도달 시** (check_house_view 알림/데이터 확인) 어느 브리핑이든 즉시 "반증됨" 처리 가능 | —                          |
+
+**공통 의무 2가지 [v3.28]**:
+
+1. **레짐 헤더**: 모든 브리핑 본문 헤더 직하에 `knowledge-base/market/regime.json` 의 summary_ko 1줄 표기
+   (예: "레짐: 리스크오프 3일째 — 추세 하락 · VIX 19.9 · 10Y 4.53%↑ · F&G 29"). 레짐 판단을 재량으로 다시 하지 않는다.
+2. **하우스 뷰 점검 섹션**: 모닝/이브닝/주간 본문에 "하우스 뷰 점검" 섹션 — 명제별 1줄
+   (`HV1 유효 — CPI 4.2%가 지지` / `HV5 약화 유지 — GLD 손절 하회 지속`). 오늘 데이터와 무관한 명제는 "변화 없음" 1줄.
+
 ## 명령별 호출 순서 (절대 준수)
 
 ### `/모닝브리핑` — MODULE A
@@ -453,6 +480,9 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
    → knowledge-base/market/correlation_matrix.md, surprise_index.md
 3.5. ★ 인사이더 시그널 읽기 [v3.5 신규] — knowledge-base/portfolio/insider_signals.json
    → 본문 "인사이더 시그널" 섹션에 cluster_buys Top 5 자동 인용 (아래 형식)
+3.7. ★ 하우스 뷰 점검 [v3.28] — house_view.md + regime.json Read
+   → 헤더에 레짐 1줄 + "하우스 뷰 점검" 섹션 (명제별 지지/중립/반박 1줄, 권한: 점검만)
+   → "오늘의 핵심 논지" 박스의 주장은 하우스 뷰 명제에서 도출 (간밤 → 오늘 행동 성격)
 4. briefing-lead 종합 (debate-card + contrarian-card 각 1건 + 4종 포트폴리오 방향)
    → analysis/briefing/lead_morning_{YYYYMMDD}.md
 5. briefing-report-generator (template=morning)
@@ -472,6 +502,9 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
 3. correlation-monitor (full — Beat/Miss + 6쌍 상관관계)
 3.5. ★ 인사이더 시그널 읽기 [v3.5 신규] — knowledge-base/portfolio/insider_signals.json
    → cluster_buys Top 5 자동 인용 (B-7 거물 심화 섹션 아래 위치)
+3.7. ★ 하우스 뷰 점검 [v3.28] — house_view.md + regime.json Read
+   → 헤더 레짐 1줄 + 명제별 판정 + Z-score/서프라이즈 신호를 명제에 매핑
+   → 개정 제안 가능 (house_view.md "개정 제안" 기록 — 적용은 주간), "오늘 밤 분기점" 성격
 4. briefing-lead 종합 (debate-card + contrarian-card + B-7 거물 심화 + 4종 방향)
 5. briefing-report-generator (template=evening, 아침 대비 변화 컬럼 포함)
 6. performance append
@@ -487,6 +520,10 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
 1. market-data-collector (--week — 주간 종합, FRED 우선)
 2. global-macro-analyst (mode=full, C-3·C-3.5 — 지정학·기술·에너지 주간, FRED 흡수)
 3. correlation-monitor (mode=weekly_summary)
+3.7. ★ 하우스 뷰 전면 재심사 [v3.28] — 유일한 개정 권한
+   → 명제 전수 재판정 + 상태 변경(유효↔약화↔폐기) + 이브닝 누적 "개정 제안" 처리
+   → 신규 명제 채택 검토 (5~8개 유지 — 추가 시 기존 정리 우선)
+   → house_view.md 개정 로그 작성 + 본문 "하우스 뷰 재심사" 섹션 (변경 사유 명시)
 4. briefing-lead C-1·C-9 단독 작성 (성과 추적은 F-9 워크플로 호출)
 5. briefing-report-generator (template=weekly, 스파크라인 + C-9 적중률 카드)
 6. performance hit_rate.md 갱신

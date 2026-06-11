@@ -167,13 +167,17 @@ extras: {
 <div class="header">
   <h1>{이모지} {모듈명} — {YYYY-MM-DD}</h1>
   <div class="meta">briefing-lead 작성 | {KST 시각}</div>
+  <!-- 레짐 헤더 [v3.28 의무] — lead 가 regime.json summary_ko 전달 -->
+  <div class="meta" style="margin-top:4px">레짐: {regime.json summary_ko 1줄}</div>
 </div>
 
-<!-- 0.5 오늘의 핵심 논지 [v3.27 의무] — 데이터 요약이 아니라 "판단"이 첫 화면 -->
-<!-- lead_*.md 의 debate-card 1순위 논쟁을 3행으로: 단정이 아닌 분기 조건 명시 -->
+<!-- 0.5 오늘의 핵심 논지 [v3.27 의무 / v3.28 타입별 성격] — 데이터 요약이 아니라 "판단"이 첫 화면 -->
+<!-- 주장은 하우스 뷰 명제에서 도출 (lead_*.md). 타입별 성격:
+     모닝 = "간밤 → 오늘 행동" / 이브닝 = "오늘 밤 분기점" / 주간 = "구조 변화 + 하우스 뷰 개정 요지"
+     크립토 = HV6 중심 / 글로벌 = 지정학 명제 중심 -->
 <div class="sec" style="border-left:4px solid var(--highlight)">
   <h2>오늘의 핵심 논지</h2>
-  <p><strong>주장:</strong> {오늘 시장의 단일 핵심 판단 1문장}</p>
+  <p><strong>주장:</strong> {오늘 시장의 단일 핵심 판단 1문장 — 하우스 뷰 명제 ID 인용 (예: HV1·HV4 교차)}</p>
   <p><strong>분기 조건:</strong> {수치+기한 — 예: "6/17 FOMC 점도표 중간값 1회 인상 이상이면 시나리오 B"}</p>
   <p><strong>행동:</strong> {포트폴리오 4종 공통 함의 1줄}</p>
 </div>
