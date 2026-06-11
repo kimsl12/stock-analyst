@@ -142,7 +142,23 @@ gh-pages 는 GitHub Actions 복원(2026-06-05) 후 자동 3채널째. KB·analys
 
 ---
 
-## 8. 알려진 제약 / 이월 항목 (2026-06-11 기준)
+## 8. 자동화·감시 레이어 (LLM 불필요 — 결정적 스크립트, 2026-06-11 신설)
+
+| 구성                                    | 스케줄               | 역할                                                                                                                                            |
+| --------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/notify.sh`                     | (헬퍼)               | 공용 알림 — macOS 알림센터 + `.env.local` NTFY_TOPIC 설정 시 ntfy.sh 폰 푸시                                                                    |
+| `scripts/daily_pick_update.sh`          | launchd 00:05        | DailyPick 갱신 + 실패 지점 6곳 알림. **로그는 ~/Library/Logs/stockanalyst/ (외장 SSD 경로 StandardOutPath 는 launchd spawn 실패 EX_CONFIG=78)** |
+| `scripts/automation_watchdog.sh`        | launchd 06:40·10:30  | daily_pick 신선도 + 미푸시 커밋 + holdings_health 재생성 + portfolio_watch 호출                                                                 |
+| `scripts/portfolio_watch.py`            | watchdog 경유        | 손절/목표가 도달·접근(2%) + 목표 비중 드리프트(`scripts/portfolio_targets.json`, 기본 5%p) 알림. KST 일별 디듀프                                |
+| `web/scripts/build_holdings_health.mjs` | prebuild + watchdog  | 보유종목 × 최신 scorecard(손절·목표·등급) → `holdings_health.json` (git tracked — Vercel 컨테이너엔 analysis/ 없음)                             |
+| `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss — LLM 산수 배제)                                                        |
+| `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
+| `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |
+| `scripts/measure_turns.mjs`             | 수동/진단            | subagent jsonl 에서 에이전트별 사용 턴 vs maxTurns 근접도 측정                                                                                  |
+
+---
+
+## 9. 알려진 제약 / 이월 항목 (2026-06-11 기준)
 
 - **리드 명세 비대** (stock-analyst-lead 1,566L / briefing-lead 1,495L) — 사고 이력 기반 운영 룰 집적.
   분할은 다음 maxTurns 사고 발생 시 진행하기로 보류 (audit P2-1/2).

@@ -206,8 +206,23 @@ async function extractScorecardMeta(folderPath, v) {
   // 한글: "목표주가: ₩72,000", "목표가 410"
   // 영어: "Target Price: $410", "PT: 410", "Price Target: 410"
   let target_price = null;
-  const tpKo = /(?:목표주가|목표가)[^0-9$₩]*([\$₩])?\s*([0-9,]+(?:\.[0-9]+)?)/i.exec(text);
-  if (tpKo) target_price = `${tpKo[1] || ''}${tpKo[2]}`;
+  // [v3.26 fix, 2026-06-11] 통화 문맥(기호/USD/원) 필수 — 기존 [^0-9$₩]* 패턴이
+  // 산문 "목표가 대비 상방이 +8%" 의 "8" 을 오캡처 (NVDA v5 timeline TP "8" 사고).
+  // lib/scorecard_parser.mjs 와 동일 원칙. 우선순위: 표 행 > Base case > 중심 > 일반.
+  const tpPatterns = [
+    /12M\s*펀더멘털\s*목표가[^|\n]*\|\s*\**\s*([\$₩])\s?([0-9,]+(?:\.[0-9]+)?)/,
+    /Base\s*case\**\s*[:：]?\s*\**\s*목표가\s*(?:USD|([\$₩]))\s?([0-9,]+(?:\.[0-9]+)?)/i,
+    /중심\s*(?:USD|([\$₩]))\s?([0-9,]+(?:\.[0-9]+)?)/,
+    /(?:목표주가|목표가)[^0-9\n]{0,15}?([\$₩])\s?([0-9,]+(?:\.[0-9]+)?)/,
+    /(?:목표주가|목표가)[^0-9\n]{0,15}?()([0-9,]+(?:\.[0-9]+)?)\s*원/,
+  ];
+  for (const re of tpPatterns) {
+    const m = re.exec(text);
+    if (m) {
+      target_price = `${m[1] || (re === tpPatterns[4] ? '₩' : '$')}${m[2]}`;
+      break;
+    }
+  }
   if (!target_price) {
     // PT 단독은 제외 (WACC/PT% 노이즈) — Target Price / Price Target 헤더만
     const tpEn = /(?:Target\s*Price|Price\s*Target)\s*[:：]?\s*([\$₩])?\s*([0-9,]+(?:\.[0-9]+)?)/i.exec(text);
