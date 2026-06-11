@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Arista Networks (ANET) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Arista Networks (ANET)</h1><div class="meta">주식 종합 분석 리포트 | 20260612</div><div style="margin-top:8px"><span class="badge b-hold">중립</span> <span class="badge b-score">73.4/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">Arista 는 AI 데이터센터 CapEx 슈퍼사이클(DC 네트워킹 CAGR 17.5%)의 직접 수혜주이자 OPM 42%·무차입 우량주다. 그러나 현재가 $155.49 에 강세가 이미 상당 반영(fwd PER 44배)되어, 펀더멘털 우수성과 주가 상방 여력은 별개다. '좋은 회사 ≠ 지금 좋은 매수 시점'.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">매수 우위, 목표가 중앙 ~$168</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">목표가는 $168 로 동일선이나 +8% 상방은 중립 밴드. 멀티플 압축 비대칭 리스크를 컨센서스보다 무겁게 본다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">① 클라우드 타이탄(MS/Meta) CapEx 가이던스 상향 + ② 분기 매출 가이던스 ~$2.8B 초과 + ③ 800G 점유 35%→45%+ 가 동시 확인되면 멀티플 정당화 → 매수 상향. 반대로 클라우드 주문 둔화 신호 시 -25~30% 디레이팅.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">신규 추격 금지. $138~148 조정 시 분할 매수. 보유자는 손절 $138.32 + 목표 $168 일부 차익.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">미적용 (등급 중립 — 적대 게이트는 매수 이상만 발동)</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">종합 73.4/100 · 유니버스 상위 27.4% (매수 쿼터 ≥74.0 에 0.6pt 미달) → 중립</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$155.49</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$195.8B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">44배(fwd FY2026E)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$85.58~$179.80</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$8.58 (5.52%)</div></div><div class="ki"><div class="kl">전일비</div><div class="kv">+2.46%</div></div><div class="ki"><div class="kl">고점 대비</div><div class="kv">-13.5%</div></div><div class="ki"><div class="kl">유니버스 순위</div><div class="kv">상위 27.4% (24/84)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$138.32</div><div class="dn" style="font-size:13px">-11.0%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$168.00</div><div class="up" style="font-size:13px">+8.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="209" y="30" width="101" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="209" y1="26" x2="209" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="209" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$138</text><line x1="267" y1="24" x2="267" y2="52" stroke="var(--text)" stroke-width="3"/><text x="267" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$155</text><line x1="310" y1="26" x2="310" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="310" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$168</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $86</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $180</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $8.58 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>Arista Networks 는 AI 데이터센터 네트워킹(800G·UEC 이더넷) 구조적 수혜 + OPM 42% 무차입 우량주이나, fwd PER 44배·고객집중(MS/Meta 30~40%)으로 하방 비대칭 가격 부담이 크다. 목표가 $168(+8.0%), 유니버스 상위 27.4% → 종합 등급 <b>중립</b>. $138~148 조정 시 매수 전환이 합리적인 '양질의 대기 종목'.</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v1</td><td>2026-05-11</td><td>—</td><td>강력매수</td><td>—</td></tr><tr><td>v2</td><td>2026-05-26</td><td>79.5</td><td>강력매수</td><td>$175</td></tr><tr><td>v3</td><td>2026-06-04</td><td>—</td><td>—</td><td>—</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide (넓음) · 확대 중</span></h2><p>AI·클라우드 데이터센터용 고속 이더넷 스위칭 전문 기업. 핵심은 7000/7500/7800 시리즈 스위치 + 자체 네트워크 OS인 EOS(Extensible Operating System). 단일 코드 베이스 OS가 전 제품군을 관통해 운영 일관성·자동화 친화성 제공. 주요 고객은 클라우드 타이탄(Microsoft·Meta 추정 합산 매출 30~40%), 대형 엔터프라이즈, 금융 초저지연 트레이딩. 제품 매출 ~83% + 서비스 ~17%.</p><h3>Moat 상세</h3><p>① EOS 소프트웨어 락인(전 제품군 단일 OS → 높은 전환비용) ② 클라우드 타이탄 공동설계 신뢰 관계 ③ 800G 기술 선도(DC 스위치 매출의 35% 점유, 2025 15%→1년만에 2배) ④ 무형자산(EOS 코드베이스+클라우드 운영 노하우). 다만 머천트 실리콘(Broadcom 칩) 의존 구조라 해자의 폭과 동시에 취약점이 공존.</p></div>
+<div class="sec"><h2>재무분석</h2><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (7행)</summary><table><thead><tr><th>항목</th><th>FY2023</th><th>FY2024</th><th>FY2025E</th><th>FY2026E</th></tr></thead><tbody><tr><td>매출 ($B)</td><td>5.86</td><td>7.00</td><td>8.70</td><td>11.20</td></tr><tr><td>매출성장 YoY</td><td>—</td><td>+19.5%</td><td>+24.3%</td><td>+28.7%</td></tr><tr><td>영업이익 ($B)</td><td>2.30</td><td>2.85</td><td>3.60</td><td>4.70</td></tr><tr><td>영업이익률</td><td>39.2%</td><td>40.7%</td><td>41.4%</td><td>42.0%</td></tr><tr><td>순이익 ($B)</td><td>2.09</td><td>2.85</td><td>3.50</td><td>4.55</td></tr><tr><td>EPS ($)</td><td>1.62</td><td>2.22</td><td>2.75</td><td>3.55</td></tr><tr><td>ROE</td><td>~32%</td><td>~32.5%</td><td>~30%</td><td>~29%</td></tr></tbody></table></details><h3>분석</h3><p>매출 성장 가속(FY2024 +19.5% → FY2026E +28.7%) + OPM 40%대 지속. 무차입 구조라 ROE 30%가 레버리지가 아닌 순수 사업 수익성에서 발생 → 질적 우수. 현금·투자자산 ~$9B, 유동비율 ~4.0배, 이연매출 $4B(향후 매출 가시성). ⚠️ FY2025E·FY2026E는 추정치(검증 필요) — Q1 +35% YoY, Q2 가이던스 ~$2.8B, AI 네트워킹 $3.25B 목표를 연환산한 가정.</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>지표</th><th>추정값</th><th>코멘트</th></tr></thead><tbody><tr><td>PER (TTM)</td><td>~56.5배</td><td>고평가 구간</td></tr><tr><td>PER (fwd FY2026E)</td><td>~43.8배</td><td>성장 감안해도 프리미엄</td></tr><tr><td>PBR</td><td>~17배</td><td>자산 경량 모델</td></tr><tr><td>EV/EBITDA (fwd)</td><td>~38배</td><td>동종 상단</td></tr><tr><td>PEG</td><td>~1.5</td><td>성장 대비 다소 비쌈</td></tr></tbody></table><p>fwd PER 44배·PEG 1.5는 성장(매출+28%, EPS+29%) 대비 정당화 가능한 상단이나 무한정은 아님. AI CapEx 가속 지속 시 유지, 둔화 신호 시 44배→30배대 -25~30% 압축 리스크. 3-method(상대밸류 PER 47배 $167 / 간이 DCF $160 / 시나리오 가중 $166) 수렴 → 목표가 $168.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>가격: 중립(52주 저점 대비 +81.7% 강력 추세 유효하나 고점 대비 -13.5% 조정, 단기 모멘텀 중립~약세). ATR 변동성 5.52%로 대형주 치고 높음(AI 테마 노출). 컨센서스: 우호적(가이던스 상향). 카탈리스트는 상·하방 공존 — 핵심은 클라우드 타이탄 CapEx 지속성 + AI 백엔드 이더넷 점유. ⚠️ 정밀 실시간 컨센서스는 fallback 환경에서 미수집(추정).</p><table><thead><tr><th>항목</th><th>추정</th></tr></thead><tbody><tr><td>목표가 범위</td><td>$140 ~ $195</td></tr><tr><td>목표가 중앙(추정)</td><td>~$168</td></tr><tr><td>투자의견</td><td>매수(매수/비중확대) 우위</td></tr><tr><td>FY2026E EPS 컨센</td><td>~$3.5 (분할반영 추정)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>AI 데이터센터 네트워킹 슈퍼사이클: DC 네트워킹 $36.17B(2026)→$95.34B(2032) CAGR 17.52%, DC AI 네트워킹 2027 ~$20B, 800G 광모듈 $12B(2026)→$28.6B(2034). DC CapEx $1.2T(2029, CAGR 21%, Dell'Oro). 핵심 구조변화는 Ultra Ethernet Consortium(UEC) 표준화로 이더넷이 InfiniBand 대비 점유 확대 — Arista는 UEC 핵심 멤버이자 800G 선도로 구조적 수혜. [L3 Q2] McKinsey 2030 반도체 $1.6T·HBM4 양산 가시화가 AI 학습 클러스터 확장→백엔드 네트워킹 트래픽 증가로 간접 수혜. 단 구매자(클라우드 타이탄)·공급자(Broadcom) 양측 교섭력이 높은 샌드위치 구조라 마진 방어가 핵심 변수.</p><table><thead><tr><th>경쟁사</th><th>포지션</th><th>위협 강도</th></tr></thead><tbody><tr><td>Cisco (CSCO)</td><td>전통 강자, AI 주문 FY2025 $2B+, N9100 800G</td><td>★★★★☆</td></tr><tr><td>Broadcom (AVGO)</td><td>Tomahawk 6(100Tbps)+Jericho 스위치실리콘 지배 — 공급사이자 잠재 경쟁자</td><td>★★★★★</td></tr><tr><td>NVIDIA</td><td>Spectrum-X 이더넷+InfiniBand, AI 클러스터 수직통합</td><td>★★★★☆</td></tr><tr><td>Juniper/HPE·Nokia</td><td>엔터프라이즈·통신 영역</td><td>★★☆☆☆</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 리스크 3축: ① 고객 집중+AI CapEx 의존 ② 멀티플 압축 ③ 공급사·구매자 샌드위치. 펀더멘털은 우수하나 가격에 강세가 이미 상당 반영되어, 하방 변동성이 상방 여력 대비 큰 비대칭 구간.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">고객 집중 (MS+Meta 30~40%)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">AI CapEx 사이클 둔화</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">밸류에이션 멀티플 압축</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">Broadcom 공급사→경쟁사 전환</text><circle cx="180" cy="192" r="5" fill="var(--warn)"/><text x="189" y="196" fill="var(--text)" font-size="10">NVIDIA Spectrum-X 수직통합</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>고객 집중 (MS+Meta 30~40%)</strong> (발생: 中, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">1사 이탈·자체설계(화이트박스) 내재화 시 매출 충격</span></div><div class="ri rl"><strong>AI CapEx 사이클 둔화</strong> (발생: 中, 영향: 매우높음)<br><span style="color:var(--sub);font-size:13px">하이퍼스케일러 6~7개사 자본지출 의존. 2027~2028 ROI 검증 국면에서 네트워킹은 GPU보다 먼저 위축 가능</span></div><div class="ri rl"><strong>밸류에이션 멀티플 압축</strong> (발생: 中, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">fwd PER 44배 → 30배대 디레이팅 시 -25~30%</span></div><div class="ri rl"><strong>Broadcom 공급사→경쟁사 전환</strong> (발생: 中, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">머천트 실리콘 의존 + Broadcom 자체 시스템/XPU 확대</span></div><div class="ri rl"><strong>NVIDIA Spectrum-X 수직통합</strong> (발생: 中, 영향: 중)<br><span style="color:var(--sub);font-size:13px">GPU 번들로 신규 그린필드 클러스터 잠식</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>신규 진입은 적극 추격 금지(중립 등급+비대칭 하방). $138~148 조정 시 분할 매수가 합리적, 현재가 $155.49는 관망 권장. 보유자는 손절 $138.32(현재가-2×ATR) 설정 + 목표 $168 도달 시 일부 차익, 펀더멘털 우량하므로 코어 일부 유지 허용. 비중은 포트폴리오 내 중간, 단일 종목 과대 금지. [1차 매수 $138~145 / 2차 $148~153 / 손절 $138.32 / 목표 $168(+8.0%) / 기술적 상단 3×ATR $181].</p></div>
+<div class="sec"><h2>재분석 v4 (이전 v3 비교 미포함 — BLIND 독립 산출)</h2>본 리포트는 <b>BLIND 재분석 v4</b>로, 이전 버전(v1~v3)의 스코어·등급·목표가를 일절 참조하지 않고 현재 데이터에서 독립 추론한 결과다(앵커링 구조적 차단). 버전 간 시계열 대조는 별도 reanalysis-tracker 산출물에서 수행한다.<br><br>⚠️ <b>fallback 모드</b>: 서브에이전트 dispatch 도구 부재 환경에서 lead가 직접 작성. 데이터 소스는 KB(capex.md 2026-06-06 + ai.md) + fetch_price.py 실시간 + 공개 지식(date_cutoff 2026-01). 정밀 공시·실시간 컨센서스는 일부 추정(검증 필요)으로, 서브에이전트 풀 분석 대비 정확도 70~85% 수준.</div>
+<div class="sec"><h2>§ Confidence Interval (앵커링 보강)</h2><b>목표가</b>: $168 (95% CI: $138 ~ $198, 폭 약 ±18%). 산출 근거 — 시나리오 가중(강세 $195 30% / Base $168 50% / 약세 $120 20%). 폭이 큰 이유는 클라우드 타이탄 CapEx·멀티플이라는 외부 단일 변수 의존도가 높기 때문.<br><br><b>스코어</b>: 73.4/100 (가정 변경 시 ±6 pt → 67.4~79.4). 가장 큰 영향은 밸류에이션 항목(가중 15%): 멀티플 44배→35배 시 -2.3pt, 성장 +28%→+35% 재가속 확인 시 +2~3pt로 매수 진입.</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2><b>1. 클라우드 타이탄 CapEx 고성장 지속</b> (외부 변수, 단기 변동성 큼) → 반증 시 종합 -4pt(69.4), 중립 하단~매도 검토 근접.<br><b>2. OPM 42% 마진 유지</b> (샌드위치 구조, 데이터 부족) → Broadcom 칩 단가 인상/클라우드 가격 압박으로 OPM 35%대 시 -3.5pt(69.9), 중립 하단.<br><b>3. fwd PER 44배 프리미엄 유지</b> (시장 심리 의존, 가장 취약) → AI 테마 디레이팅 시 -3pt(70.4) + 목표가 $120대(-25~30%), 매도 검토.<br><br>※ 강한 가정(검증된 사실: Q1 +35% 실적, 800G 35% 점유, 무차입, 이연매출 $4B)은 제외.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 20260612 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="ANET_AristaNetworks_20260612.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
