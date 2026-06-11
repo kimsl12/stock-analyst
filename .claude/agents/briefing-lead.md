@@ -524,6 +524,9 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
    → 명제 전수 재판정 + 상태 변경(유효↔약화↔폐기) + 이브닝 누적 "개정 제안" 처리
    → 신규 명제 채택 검토 (5~8개 유지 — 추가 시 기존 정리 우선)
    → house_view.md 개정 로그 작성 + 본문 "하우스 뷰 재심사" 섹션 (변경 사유 명시)
+   → 변경 0건이어도 house_view.md 헤더의 "최종 전면 재심사:" 줄을 오늘 날짜로 갱신 (수행 증명)
+   → 기계 게이트 [v3.31]: 종결 검증에서 아래 미충족 시 본 단계 재수행 (스킵 적발 — 2026-06-11 풀브리핑 라이브에서 누락 실측)
+     grep -q "최종 전면 재심사: $(date +%Y-%m-%d)" knowledge-base/market/house_view.md
 4. briefing-lead C-1·C-9 단독 작성 (성과 추적은 F-9 워크플로 호출)
 5. briefing-report-generator (template=weekly, 스파크라인 + C-9 적중률 카드)
 6. performance hit_rate.md 갱신
