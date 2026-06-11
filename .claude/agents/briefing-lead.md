@@ -774,7 +774,7 @@ status = "오류"
      ✅ 사이트 반영: https://stock-analyst-jungwon1.vercel.app/portfolio/
         (※ 다음 vercel deploy 까지 캐시 유지될 수 있음 — 반드시 prebuild + deploy 후 확인)
 
-  ※ Python sync_portfolio_to_supabase.py 는 deprecated (2026-05-09).
+  ※ Python sync_portfolio_to_supabase.py 는 deprecated (2026-05-09) → 2026-06-11 제거 완료.
     Node 포팅 (web/scripts/sync_portfolio.mjs) 으로 단일화 — prebuild 와 동일 코드 경로.
 ```
 

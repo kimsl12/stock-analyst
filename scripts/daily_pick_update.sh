@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # daily_pick_update.sh — DailyPick 위젯 매일 KST 자정 자동 갱신
 #
