@@ -164,6 +164,16 @@ applies_to:
 
 ## 자가 검증 (HTML 출력 후)
 
+> **[v3.30, 2026-06-11] 아래 파이프라인은 `scripts/check_korean.py` 로 스크립트화됐다.**
+> 에이전트는 아래 bash 를 베끼지 말고 한 줄만 실행한다 (매핑 치환 자동 수행):
+>
+> ```bash
+> python3 scripts/check_korean.py --fix {리포트.html}   # exit 0 = PASS / 1 = 영어 산문 잔존 → 재작성
+> ```
+>
+> 매핑 사전(위 표)이 SSOT — 스크립트가 본 문서의 표를 직접 파싱하므로 표에 행을 추가하면
+> 즉시 검증·치환에 반영된다. 아래 bash 는 측정 정의의 참고 문서로만 보존.
+
 ```bash
 HTML="reports/{종류}/{파일명}.html"
 FAIL=()

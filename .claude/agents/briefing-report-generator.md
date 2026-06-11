@@ -525,52 +525,13 @@ briefing-lead 의 lead\_\*.md 에서 신규 종목·ETF 가 제시되면, 본 �
     # 푸터 시그니처 (positive)
     grep -q 'briefing-report-generator'                              "$HTML" || FAIL+=(signature)
 
-    # 한국어 본문 강화 검증 [v3.14 — 2026-05-09 사용자 지적 후 강화]
-    # reference/korean_translation_rules.md 의 매핑 사전 적용 검증 (v3.22 정제).
-    # 본문(<body>~</body>) 추출 — script/style/멀티라인 style 속성/모든 태그 제거.
-    BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | \
-           perl -0pe 's{<script\b[^>]*>.*?</script>}{}gsi' | \
-           perl -0pe 's{<style\b[^>]*>.*?</style>}{}gsi' | \
-           perl -0pe 's/\s+style="[^"]*"//gs' | \
-           perl -0pe 's{<[^>]*>}{}gs' | \
-           sed 's/&lt;[^&]*&gt;//g; s/&[a-z]\+;//g')
-
-    # (a) 매핑 사전 영어 표현 잔류 검사 (등급·시나리오·매크로 등 30+ 키워드)
-    for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
-              "Bull case" "Bear case" "Base case" "Tail case" "Stress case" \
-              "Top Pick" "Conviction Buy" "Outperform" "Underperform" \
-              "Devil's Advocate" "Risk-on" "Risk-off" \
-              "Soft Landing" "Hard Landing" "Hawkish" "Dovish" \
-              "Headwind" "Tailwind" "Profit Taking" "Capitulation" \
-              "Wide Moat" "Narrow Moat" "Pricing Power" "Network Effect" \
-              "approximately" "significantly" "Take Profit" "Stop Loss" \
-              "Initial Stop" "Trailing Stop" "Drawdown"; do
-      echo "$BODY" | grep -qF "$kw" && FAIL+=("eng:$kw")
-    done
-
-    # (b) 한글 비중 80% — v3.22 (예외 1+2 제외 후 측정, 룰 본문과 일관)
-    ABBR='ETF|PER|PBR|ROE|EPS|ATR|RSI|FCF|DCF|EBITDA|YoY|QoQ|MoM|WoW|GDP|CPI|PCE|FOMC|GPU|ASIC|TAM|SAM|NAV|AUM|TER|NIM|OPM|HBM|NAND|DRAM|CAPEX|PDF|SOTP|MACD|EBIT|ROIC|API|SaaS|IPO|BPS|VIX|NYSE|NASDAQ|WACC|FCFF|FCFE|Moat|MOAT|FX|TIPS|PMI|ISM|JOLTS|WTI|OPEC|EU|UN|NATO|ESG'
-    BC=$(echo "$BODY" | \
-      perl -pe 's{\S*/\S*}{}g' | \
-      perl -pe 's{\S+\.(md|html|json|py|mjs|sh|js|css)}{}gi' | \
-      perl -pe 's{\b[a-z]+_[a-z_]+\b}{}gi' | \
-      perl -pe "s/\\b(?:$ABBR)\\b//g" | \
-      perl -pe 's/\b[A-Z][a-zA-Z]+\b//g')
-    KCHARS=$(echo "$BC" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
-    # 분모도 분자와 동일하게 grep -oE | wc -l 로 "문자 수" 카운트.
-    # (tr -cd | wc -c 는 바이트 수 → 한글 3바이트로 분모 부풀려져 비율 1/3 왜곡. wc -m 은 로케일 미설정 시 바이트 폴백되므로 사용 금지)
-    LCHARS=$(echo "$BC" | grep -oE '[가-힣A-Za-z]' | wc -l | tr -d ' ')
-    if [ "$LCHARS" -gt 100 ]; then
-      RATIO=$(( KCHARS * 100 / LCHARS ))
-      [ "$RATIO" -lt 80 ] && FAIL+=("korean-ratio-${RATIO}%")
-    fi
-
-    if [ ${#FAIL[@]} -gt 0 ]; then
-      echo "⚠️ 자가 검증 실패: ${FAIL[*]}"
-      # → eng:* 매치는 매핑 사전대로 교체 후 재출력 (최대 1회)
-      # → 1회 재시도 실패 시 briefing-lead 보고 후 lead_*.md 재작성 요청
-      # → 디자인 6항목 / footer / 시그니처 등 비-한국어 실패는 별도 처리
-    fi
+    # 한국어 검증 + 자동 치환 [v3.30 — 스크립트화, 인라인 파이프라인 폐기]
+    # 과거: 위 40줄 bash/perl 을 매번 베껴 실행 → 스킵·오실행으로 미준수 빈발 (2026-06-11 확인:
+    # 최근 종목 리포트 25개 전수 위반). 이제 한 줄 실행 — 매핑 치환은 스크립트가 직접 수행.
+    python3 scripts/check_korean.py --fix "$HTML"
+    # exit 0 = PASS (매핑 잔류 0 + 한글 비중 80%+). 치환이 있었으면 파일이 이미 수정된 상태.
+    # exit 1 = FAIL = 매핑으로 못 고치는 영어 산문 잔존 → 본문 한글로 재작성 후 재출력 (최대 1회)
+    # 1회 재시도에도 FAIL → briefing-lead 보고 + lead_*.md 재작성 요청
     ```
 
     조건부 검증 (template 별):

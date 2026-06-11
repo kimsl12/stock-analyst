@@ -35,7 +35,15 @@ scorecard·analysis 산출물에 영어 표현이 있어도 **본 에이전트�
 
 **참조: [reference/korean_translation_rules.md](../../reference/korean_translation_rules.md)** — 매핑 사전 (Strong Buy → 강력매수, Bull → 강세, Outperform → 시장수익률 상회 등) + 자가 검증 룰
 
-HTML 출력 후 본문(`<body>`~`</body>`) 영어 키워드 grep 검증. 30+ 영어 표현 발견 시 매핑 사전대로 자체 교체 후 재출력 (최대 1회). 한글 비중 80% 미만 시 동일.
+**HTML 출력 직후 의무 실행 [v3.30]** (인라인 grep 검증 폐기 — 스킵 방지 스크립트화):
+
+```bash
+python3 scripts/check_korean.py --fix reports/{생성한 파일}.html
+```
+
+--fix 가 매핑 사전 영어를 기계 치환하고 한글 비중을 검증한다. exit 1 (매핑으로 못 고치는
+영어 산문 잔존) 이면 해당 본문을 한글로 재작성해 재출력 (최대 1회). 이 단계를 건너뛰면
+stock-analyst-lead 검증 5 에서 동일 스크립트로 적발된다.
 
 ---
 

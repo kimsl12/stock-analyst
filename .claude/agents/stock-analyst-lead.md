@@ -244,39 +244,12 @@ grep -q 'onclick="toggleTheme\|data-theme'            "$HTML" || DFAIL+=(theme-t
 grep -q '@media(max-width:600px)\|@media\s*(\s*max-width' "$HTML" || DFAIL+=(mobile)
 [ ${#DFAIL[@]} -gt 0 ] && echo "⚠️ 디자인 표준 위반: ${DFAIL[*]}"
 
-# 검증 5 [v3.22]: 한국어 강제 검증 (v3.14 후속 — 측정 버그 + 설계 모순 4종 수정)
-# 본문(<body>~</body>) 추출 — script/style/멀티라인 style 속성/모든 태그 제거.
-KFAIL=()
-BODY=$(awk '/<body>/,/<\/body>/' "$HTML" | \
-       perl -0pe 's{<script\b[^>]*>.*?</script>}{}gsi' | \
-       perl -0pe 's{<style\b[^>]*>.*?</style>}{}gsi' | \
-       perl -0pe 's/\s+style="[^"]*"//gs' | \
-       perl -0pe 's{<[^>]*>}{}gs' | \
-       sed 's/&lt;[^&]*&gt;//g; s/&[a-z]\+;//g')
-for kw in "Strong Buy" "Strong Sell" "Bullish" "Bearish" \
-          "Bull case" "Bear case" "Base case" "Top Pick" \
-          "Outperform" "Underperform" "Hawkish" "Dovish" \
-          "Soft Landing" "Hard Landing" "Headwind" "Tailwind" \
-          "Wide Moat" "Narrow Moat" "Take Profit" "Stop Loss"; do
-  echo "$BODY" | grep -qF "$kw" && KFAIL+=("eng:$kw")
-done
-# 한글 비중 — 예외 1 (고유명사) + 예외 2 (표준 약어) + 파일 경로/슬러그 제외 후 측정
-ABBR='ETF|PER|PBR|ROE|EPS|ATR|RSI|FCF|DCF|EBITDA|YoY|QoQ|MoM|WoW|GDP|CPI|PCE|FOMC|GPU|ASIC|TAM|SAM|NAV|AUM|TER|NIM|OPM|HBM|NAND|DRAM|CAPEX|PDF|SOTP|MACD|EBIT|ROIC|API|SaaS|IPO|BPS|VIX|NYSE|NASDAQ|WACC|FCFF|FCFE|Moat|MOAT|FX|TIPS|PMI|ISM|JOLTS|WTI|OPEC|EU|UN|NATO|ESG'
-BC=$(echo "$BODY" | \
-  perl -pe 's{\S*/\S*}{}g' | \
-  perl -pe 's{\S+\.(md|html|json|py|mjs|sh|js|css)}{}gi' | \
-  perl -pe 's{\b[a-z]+_[a-z_]+\b}{}gi' | \
-  perl -pe "s/\\b(?:$ABBR)\\b//g" | \
-  perl -pe 's/\b[A-Z][a-zA-Z]+\b//g')
-KCHARS=$(echo "$BC" | grep -oE '[가-힣]' | wc -l | tr -d ' ')
-# 분모도 분자와 동일하게 grep -oE | wc -l 로 "문자 수" 카운트.
-# (tr -cd | wc -c 는 바이트 수 → 한글 3바이트로 분모 부풀려져 비율 1/3 왜곡. wc -m 은 로케일 미설정 시 바이트 폴백되므로 사용 금지)
-LCHARS=$(echo "$BC" | grep -oE '[가-힣A-Za-z]' | wc -l | tr -d ' ')
-[ "$LCHARS" -gt 100 ] && {
-  RATIO=$(( KCHARS * 100 / LCHARS ))
-  [ "$RATIO" -lt 80 ] && KFAIL+=("korean-ratio-${RATIO}%")
-}
-[ ${#KFAIL[@]} -gt 0 ] && echo "⚠️ 한국어 검증 실패: ${KFAIL[*]} → 매핑 사전대로 본문 교체 후 report-generator 재호출"
+# 검증 5 [v3.22 → v3.30 스크립트화]: 한국어 강제 검증 + 자동 치환
+# 과거 인라인 bash/perl 파이프라인(40줄)은 에이전트가 스킵·오실행하여 미준수 빈발
+# (2026-06-11 확인: 최근 종목 리포트 25개 전수에서 매핑 영어 잔류). 한 줄로 대체:
+python3 scripts/check_korean.py --fix "$HTML"
+# --fix 가 매핑 사전 영어(Strong Buy/Bull case/Wide Moat 등)를 기계 치환 (자동 복구 원칙).
+# exit 0 = PASS. exit 1 = 매핑으로 못 고치는 영어 산문 잔존 → report-generator 재호출 (본문 재작성)
 
 # 검증 6 [v3.16 — 2026-05-10]: manifest staleness 자동 복구 (push 직전 안전망)
 # push step 이 누락된 경우를 대비해 한 번 더 build_manifest 호출 + diff 있으면 commit.

@@ -142,7 +142,7 @@ Phase 0-A     market-data-collector ∥ polymarket-collector (병렬 Task)
 | 검증 1~3   | HTML 존재 / git commit 존재 / session-bootstrap 갱신                                                                                 |
 | 검증 4     | 디자인 표준 6항목 (다크·라이트 토글 포함, briefing-report-generator 표준)                                                            |
 | 검증 7     | [v3.27] 투자 논지 블록 존재 (`§ 투자 논지` + `반증 조건` grep) + 등급 백분위 표기 — "데이터 읊기" 차단                               |
-| 검증 5     | 한국어 검증 — `reference/korean_translation_rules.md` (매핑 사전 + 한글 비중 80%). **리포트 본문 한정, KB 데이터 파일 제외**         |
+| 검증 5     | 한국어 검증 — `python3 scripts/check_korean.py --fix {html}` (v3.30 스크립트화: 매핑 기계 치환 + 한글 비중 80%). 매핑 SSOT 는 korean_translation_rules.md 표. **리포트 본문 한정, KB 제외** |
 | 검증 6     | manifest staleness 자동 복구 (push 직전 build_manifest 재실행 + diff 시 commit)                                                      |
 | 포트폴리오 | schema contract + 단위 테스트 34종(`web/scripts/__tests__/`) + sync 사전·사후 검증 + health_check.mjs (Vercel=STRICT / 로컬=LENIENT) |
 

@@ -33,6 +33,15 @@ fi
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
 
+# ── 한국어 강제 안전망 [v3.30] — 발행 직전 매핑 자동 치환 (generator 가 건너뛰었어도 여기서 잡힘)
+HTML_FILE="reports/briefing/${TYPE}_${DATE}.html"
+if [[ -f "$HTML_FILE" ]]; then
+    if ! python3 scripts/check_korean.py --fix "$HTML_FILE"; then
+        echo "[warn] 한국어 검증 FAIL (영어 산문 잔존) — 발행은 진행, 알림 발송"
+        bash scripts/notify.sh "한국어 검증 실패" "${TYPE}_${DATE} 매핑 외 영어 잔존 — 본문 재작성 필요" || true
+    fi
+fi
+
 # ── 스테이지 ─────────────────────────────────────────
 echo "→ staging briefing artifacts ($TYPE $DATE)"
 git add \
