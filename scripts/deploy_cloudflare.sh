@@ -79,11 +79,8 @@ touch "$DEPLOY_DIR/.nojekyll"
 
 # 5. 인덱스 갱신 (Python 스크립트로 분리)
 echo "==> 애널리스트 인덱스 갱신"
-"$PYTHON" "$SCRIPT_DIR/build_analyst_index.py"
-# build_analyst_index 가 reports/analyst/index.html 을 갱신하므로 deploy_dir 에도 복사
-if [ -f "reports/analyst/index.html" ]; then
-  cp -f reports/analyst/index.html "$DEPLOY_DIR/reports/analyst/" 2>/dev/null || true
-fi
+# 출력을 deploy_dir 로 한정 — repo의 reports/analyst/index.html 은 건드리지 않음 (git 작업 트리 오염 방지)
+"$PYTHON" "$SCRIPT_DIR/build_analyst_index.py" "$DEPLOY_DIR/reports/analyst/index.html"
 
 echo "==> 메인 인덱스 생성 (3컬럼)"
 "$PYTHON" "$SCRIPT_DIR/build_main_index.py" "$DEPLOY_DIR"

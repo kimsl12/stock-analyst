@@ -2,11 +2,11 @@
 """
 Analyst Reports 인덱스 자동 생성기.
 
-reports/analyst/items/*/meta.json 을 모두 읽어 reports/analyst/index.html 을 갱신.
-deploy_cloudflare.sh 가 deploy 직전 호출하는 것을 가정.
+reports/analyst/items/*/meta.json 을 모두 읽어 index.html 을 생성.
 
 사용:
-    python3 scripts/build_analyst_index.py
+    python3 scripts/build_analyst_index.py                      # repo의 reports/analyst/index.html 갱신 (analyst-scraper 정식 경로)
+    python3 scripts/build_analyst_index.py <출력경로/index.html>  # 지정 위치에만 작성 (deploy_cloudflare.sh — repo 미변경)
 """
 from __future__ import annotations
 
@@ -174,20 +174,21 @@ h1{{font-size:24px;margin-bottom:4px}}
 """
 
 
-def main() -> int:
+def main(out_path: Path) -> int:
     items = load_items()
     if items:
         cards = "\n".join(render_card(m) for m in items)
     else:
         cards = '<div class="empty">아직 리포트가 없습니다. <code>reports/analyst/incoming/</code> 에 PDF 를 드롭하거나 <code>/애널리스트스크랩</code> 을 실행하세요.</div>'
     updated = datetime.now().strftime("%Y-%m-%d %H:%M KST")
-    INDEX_PATH.write_text(
+    out_path.write_text(
         HTML_TEMPLATE.format(count=len(items), updated=updated, cards=cards),
         encoding="utf-8",
     )
-    print(f"[ok] wrote {INDEX_PATH} ({len(items)} items)")
+    print(f"[ok] wrote {out_path} ({len(items)} items)")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else INDEX_PATH
+    raise SystemExit(main(target))
