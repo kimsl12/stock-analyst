@@ -1,7 +1,8 @@
 <!--
-  브리핑 리포트 CSS+JS 표준 스니펫 v1.0 (2026-05-18)
+  브리핑 리포트 CSS+JS 표준 스니펫 v2.0 (2026-06-11 — JW Research 통합 디자인 시스템)
   briefing-report-generator 가 이 파일의 <style>~</style> 과 <script>~</script> 를
   그대로 복사하여 HTML 에 삽입한다. 수정은 이 파일에서만 한다.
+  토큰·타이포는 report_template.py 와 동일 (종목·브리핑 리포트 레이아웃 일관성).
 -->
 
 <!-- ===== 테마 토글 (상단 고정) ===== -->
@@ -20,9 +21,9 @@
   <button
     onclick="toggleTheme()"
     style="
-      background: var(--border);
+      background: transparent;
       color: var(--text);
-      border: none;
+      border: 1px solid var(--border);
       padding: 6px 16px;
       border-radius: 8px;
       font-size: 13px;
@@ -36,91 +37,46 @@
 
 <!-- ===== CSS ===== -->
 <style>
+  /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
   :root {
-    --bg: #0f1419;
-    --card: #1a212c;
-    --text: #e8eaed;
-    --sub: #9aa0a6;
-    --border: #2d3742;
-    --up: #3fb950;
-    --down: #f85149;
-    --neutral: #8b949e;
-    --highlight: #58a6ff;
-    --warning: #d29922;
-    --debate: #8b5cf6;
-    --contrarian: #d29922;
+    --bg: #0a1118;
+    --card: #121b26;
+    --card2: #0e151e;
+    --text: #e9edf3;
+    --sub: #93a1b3;
+    --border: #22303f;
+    --up: #2fbf71;
+    --down: #f4576a;
+    --neutral: #8b97a5;
+    --highlight: #5b9dff;
+    --warning: #e5a43b;
+    --debate: #9d7bff;
+    --contrarian: #f08c4a;
   }
 
-  /* 라이트 모드 */
+  /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
   [data-theme="light"] {
-    --bg: #f5f7fa;
+    --bg: #f3f5f9;
     --card: #ffffff;
-    --text: #24292f;
-    --sub: #57606a;
-    --border: #d0d7de;
-    --up: #1a7f37;
-    --down: #cf222e;
-    --neutral: #57606a;
-    --highlight: #0969da;
-    --warning: #9a6700;
-    --debate: #6639ba;
-    --contrarian: #bc4c00;
-  }
-  [data-theme="light"] body {
-    background: #f5f7fa;
-  }
-  [data-theme="light"] th {
-    background: #eaeef2 !important;
-    color: #1f2328 !important;
-  }
-  [data-theme="light"] td {
-    background: #ffffff;
-    color: #24292f;
-    border-bottom-color: #d0d7de !important;
-  }
-  [data-theme="light"] tr:nth-child(even) td {
-    background: #f6f8fa !important;
-  }
-  [data-theme="light"] tr:hover {
-    background: #ddf4ff !important;
-  }
-  [data-theme="light"] .sec {
-    background: #ffffff;
-    border-color: #d0d7de;
-  }
-  [data-theme="light"] .debate-card {
-    background: rgba(102, 57, 186, 0.08) !important;
-  }
-  [data-theme="light"] .contrarian-card {
-    background: rgba(188, 76, 0, 0.08) !important;
+    --card2: #f7f9fc;
+    --text: #19222e;
+    --sub: #5c6878;
+    --border: #d9e1ea;
+    --up: #15803d;
+    --down: #ce2f40;
+    --neutral: #5c6878;
+    --highlight: #1d6fe0;
+    --warning: #a16207;
+    --debate: #6644cc;
+    --contrarian: #c2571f;
   }
   [data-theme="light"] .warning-13f {
     background: #fff8c5 !important;
-    color: #9a6700;
-    border-color: #9a6700;
-  }
-  [data-theme="light"] .signal-bar {
-    background: rgba(0, 0, 0, 0.08) !important;
-  }
-  [data-theme="light"] .scenario-tree .root {
-    background: #f6f8fa;
-    border-color: #d0d7de;
-  }
-  [data-theme="light"] .portfolio-card {
-    background: #f6f8fa;
-    border-color: #d0d7de;
-  }
-  [data-theme="light"] .footer {
-    background: #f6f8fa;
-    border-color: #d0d7de;
-  }
-  [data-theme="light"] .footer code {
-    background: rgba(0, 0, 0, 0.06);
-    color: #9a6700;
-  }
-  [data-theme="light"] .disclaimer {
-    border-top-color: #d0d7de;
-    color: #57606a;
+    color: #a16207;
+    border-color: #a16207;
   }
 
   * {
@@ -132,29 +88,54 @@
     background: var(--bg);
     color: var(--text);
     font-family:
-      -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+      "Pretendard Variable",
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
       sans-serif;
-    padding: 16px;
-    max-width: 960px;
+    padding: 20px 18px 28px;
+    max-width: 920px;
     margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.66;
+    transition:
+      background 0.3s,
+      color 0.3s;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* 헤더 */
+  /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
   .header {
-    text-align: center;
-    padding: 24px 0;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 24px;
+    text-align: left;
+    padding: 26px 0 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 64px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--highlight), transparent);
   }
   .header h1 {
-    font-size: 28px;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
     margin-bottom: 6px;
   }
   .header .meta {
     color: var(--sub);
-    font-size: 14px;
+    font-size: 13.5px;
+    letter-spacing: 0.01em;
   }
 
   /* 색상 클래스 */
@@ -176,72 +157,96 @@
 
   /* 셀 배경 */
   .bg-up {
-    background: rgba(63, 185, 80, 0.1);
+    background: color-mix(in srgb, var(--up) 10%, transparent);
   }
   .bg-down {
-    background: rgba(248, 81, 73, 0.1);
+    background: color-mix(in srgb, var(--down) 10%, transparent);
   }
   .bg-warning {
-    background: rgba(210, 153, 34, 0.1);
+    background: color-mix(in srgb, var(--warning) 10%, transparent);
   }
   .bg-highlight {
-    background: rgba(88, 166, 255, 0.1);
+    background: color-mix(in srgb, var(--highlight) 10%, transparent);
   }
 
-  /* 섹션 */
+  /* 섹션 카드 */
   .sec {
     background: var(--card);
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 18px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
     border: 1px solid var(--border);
   }
   .sec h2 {
-    font-size: 20px;
+    font-size: 16.5px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
     margin-bottom: 14px;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .sec h2::before {
+    content: "";
+    width: 3.5px;
+    height: 15px;
+    border-radius: 2px;
+    background: var(--highlight);
+    flex: none;
   }
   .sec h3 {
-    font-size: 16px;
+    font-size: 14.5px;
+    font-weight: 700;
     color: var(--highlight);
-    margin: 16px 0 10px;
+    margin: 16px 0 8px;
   }
 
-  /* 표 */
+  /* 표 — 금융 데이터 표준 (소형 헤더 + tabular 숫자) */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 12px 0;
-    font-size: 14px;
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
   }
   th {
-    background: rgba(255, 255, 255, 0.04);
-    padding: 10px 8px;
+    background: transparent;
+    padding: 8px 10px;
     text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid var(--border);
+    font-weight: 650;
+    font-size: 12px;
+    color: var(--sub);
+    letter-spacing: 0.05em;
+    border-bottom: 1.5px solid var(--border);
   }
   td {
-    padding: 9px 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 8px 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  }
+  tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--text) 2.5%, transparent);
   }
   tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+    background: color-mix(in srgb, var(--highlight) 7%, transparent);
   }
 
-  /* debate-card (보라) */
+  /* debate-card (보라) — 핵심 논쟁 */
   .debate-card {
-    background: rgba(139, 92, 246, 0.06);
+    background: color-mix(in srgb, var(--debate) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
     border-left: 4px solid var(--debate);
     border-radius: 0 10px 10px 0;
-    padding: 14px 18px;
+    padding: 15px 18px;
     margin: 14px 0;
   }
   .debate-card .card-title {
     color: var(--debate);
-    font-weight: 700;
+    font-weight: 750;
     margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
   }
   .debate-card .bull {
     color: var(--up);
@@ -254,21 +259,24 @@
   .debate-card .verdict {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px dashed rgba(139, 92, 246, 0.3);
+    border-top: 1px dashed color-mix(in srgb, var(--debate) 30%, transparent);
   }
 
-  /* contrarian-card (주황) */
+  /* contrarian-card (주황) — 과소평가 포인트 */
   .contrarian-card {
-    background: rgba(210, 153, 34, 0.06);
+    background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
     border-left: 4px solid var(--contrarian);
     border-radius: 0 10px 10px 0;
-    padding: 14px 18px;
+    padding: 15px 18px;
     margin: 14px 0;
   }
   .contrarian-card .card-title {
     color: var(--contrarian);
-    font-weight: 700;
+    font-weight: 750;
     margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
   }
   .contrarian-card .assumption {
     color: var(--neutral);
@@ -281,14 +289,14 @@
   .contrarian-card .probability {
     margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px dashed rgba(210, 153, 34, 0.3);
+    border-top: 1px dashed color-mix(in srgb, var(--contrarian) 30%, transparent);
   }
 
   /* 시그널 바 */
   .signal-bar {
     margin: 8px 0;
     height: 8px;
-    background: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--text) 7%, transparent);
     border-radius: 4px;
     overflow: hidden;
   }
@@ -323,15 +331,15 @@
     font-size: 13px;
   }
   .heatmap .green {
-    background: rgba(63, 185, 80, 0.15);
+    background: color-mix(in srgb, var(--up) 14%, transparent);
     color: var(--up);
   }
   .heatmap .yellow {
-    background: rgba(210, 153, 34, 0.15);
+    background: color-mix(in srgb, var(--warning) 14%, transparent);
     color: var(--warning);
   }
   .heatmap .red {
-    background: rgba(248, 81, 73, 0.15);
+    background: color-mix(in srgb, var(--down) 14%, transparent);
     color: var(--down);
   }
 
@@ -342,7 +350,7 @@
   .scenario-tree .root {
     text-align: center;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.04);
+    background: color-mix(in srgb, var(--text) 5%, transparent);
     border-radius: 8px;
     margin-bottom: 14px;
     border: 1px solid var(--border);
@@ -357,16 +365,16 @@
     border-radius: 8px;
   }
   .scenario-tree .branch.a {
-    background: rgba(63, 185, 80, 0.06);
+    background: color-mix(in srgb, var(--up) 6%, transparent);
     border: 1px solid var(--up);
   }
   .scenario-tree .branch.b {
-    background: rgba(248, 81, 73, 0.06);
+    background: color-mix(in srgb, var(--down) 6%, transparent);
     border: 1px solid var(--down);
   }
   .scenario-tree .prob-bar {
     width: 100%;
-    background: rgba(255, 255, 255, 0.04);
+    background: color-mix(in srgb, var(--text) 5%, transparent);
     height: 6px;
     border-radius: 3px;
     margin-top: 8px;
@@ -386,15 +394,15 @@
     margin: 8px 0;
   }
   .cascade .first {
-    background: rgba(255, 255, 255, 0.04);
+    background: color-mix(in srgb, var(--text) 5%, transparent);
     border-left: 3px solid var(--neutral);
   }
   .cascade .second {
-    background: rgba(88, 166, 255, 0.08);
+    background: color-mix(in srgb, var(--highlight) 8%, transparent);
     border-left: 3px solid var(--highlight);
   }
   .cascade .third {
-    background: rgba(210, 153, 34, 0.08);
+    background: color-mix(in srgb, var(--warning) 8%, transparent);
     border-left: 3px solid var(--warning);
   }
 
@@ -406,7 +414,7 @@
     margin: 16px 0;
   }
   .portfolio-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: color-mix(in srgb, var(--text) 4%, transparent);
     padding: 16px;
     border-radius: 10px;
     border: 1px solid var(--border);
@@ -426,23 +434,23 @@
     margin-right: 4px;
   }
   .tag-red {
-    background: rgba(248, 81, 73, 0.15);
+    background: color-mix(in srgb, var(--down) 14%, transparent);
     color: var(--down);
   }
   .tag-green {
-    background: rgba(63, 185, 80, 0.15);
+    background: color-mix(in srgb, var(--up) 14%, transparent);
     color: var(--up);
   }
   .tag-yellow {
-    background: rgba(210, 153, 34, 0.15);
+    background: color-mix(in srgb, var(--warning) 14%, transparent);
     color: var(--warning);
   }
   .tag-blue {
-    background: rgba(88, 166, 255, 0.15);
+    background: color-mix(in srgb, var(--highlight) 14%, transparent);
     color: var(--highlight);
   }
   .tag-purple {
-    background: rgba(139, 92, 246, 0.15);
+    background: color-mix(in srgb, var(--debate) 14%, transparent);
     color: var(--debate);
   }
 
@@ -456,24 +464,24 @@
     margin: 2px;
   }
   .badge-critical {
-    background: rgba(248, 81, 73, 0.2);
+    background: color-mix(in srgb, var(--down) 18%, transparent);
     color: var(--down);
     border: 1px solid var(--down);
   }
   .badge-high {
-    background: rgba(210, 153, 34, 0.2);
+    background: color-mix(in srgb, var(--warning) 18%, transparent);
     color: var(--warning);
     border: 1px solid var(--warning);
   }
   .badge-normal {
-    background: rgba(88, 166, 255, 0.15);
+    background: color-mix(in srgb, var(--highlight) 14%, transparent);
     color: var(--highlight);
     border: 1px solid var(--highlight);
   }
 
   /* 이슈 카드 */
   .issue-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: color-mix(in srgb, var(--text) 3%, transparent);
     border-radius: 8px;
     padding: 14px 16px;
     margin: 10px 0;
@@ -498,7 +506,7 @@
     font-size: 13px;
     margin-top: 4px;
     padding-top: 4px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.06);
+    border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
   }
 
   /* 시그널 아이템 (수평 정렬) */
@@ -538,7 +546,7 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--text) 7%, transparent);
   }
   .risk-dot.active-1,
   .risk-dot.active-2 {
@@ -567,7 +575,7 @@
 
   /* 13F 시차 경고 */
   .warning-13f {
-    background: rgba(210, 153, 34, 0.1);
+    background: color-mix(in srgb, var(--warning) 10%, transparent);
     border: 1px solid var(--warning);
     border-radius: 8px;
     padding: 12px 16px;
@@ -596,7 +604,7 @@
     font-size: 13px;
   }
   .footer code {
-    background: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--text) 7%, transparent);
     padding: 2px 8px;
     border-radius: 4px;
     color: var(--warning);
@@ -627,7 +635,7 @@
   .prediction-bar {
     margin: 6px 0;
     height: 24px;
-    background: rgba(255, 255, 255, 0.06);
+    background: color-mix(in srgb, var(--text) 7%, transparent);
     border-radius: 4px;
     overflow: hidden;
     position: relative;

@@ -29,86 +29,96 @@ except ImportError:
     CHARTS = False
 
 CSS = """
-/* briefing-report-generator 표준 변수 통일 (2026-05-04 audit) */
-:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--buy:#26A69A;--sell:#EF5350;--warn:#FFA726;--blue:#42A5F5;--border:#2D3A45;--up:#26A69A;--down:#EF5350;--warning:#FFA726;--highlight:#42A5F5;--neutral:#8b949e;--debate:#8b5cf6;--contrarian:#bc4c00}
-[data-theme="light"]{--bg:#F5F5F5;--card:#FFFFFF;--text:#1A1A1A;--sub:#666666;--buy:#0D7C66;--sell:#D32F2F;--warn:#E65100;--blue:#1976D2;--border:#E0E0E0;--up:#0D7C66;--down:#D32F2F;--warning:#E65100;--highlight:#1976D2;--neutral:#57606a;--debate:#6639ba;--contrarian:#9a4d00}
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px;max-width:900px;margin:0 auto;font-size:16px;line-height:1.6;transition:background 0.3s,color 0.3s}
-.header{text-align:center;padding:24px 0;border-bottom:2px solid var(--border);margin-bottom:20px}
-.header h1{font-size:28px;margin-bottom:4px}
-.meta{color:var(--sub);font-size:14px}
-.badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:600;margin:4px}
-.b-buy{background:rgba(38,166,154,0.2);color:var(--buy)}
-.b-sell{background:rgba(239,83,80,0.2);color:var(--sell)}
-.b-hold{background:rgba(255,167,38,0.2);color:var(--warn)}
-.b-score{background:rgba(66,165,245,0.15);color:var(--blue)}
-.sec{background:var(--card);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
-.sec h2{font-size:18px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.sec h3{font-size:15px;color:var(--blue);margin:14px 0 8px}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
 .kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
-.ki{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center}
-.ki .kl{font-size:12px;color:var(--sub);margin-bottom:2px}
-.ki .kv{font-size:20px;font-weight:700}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
-th{background:rgba(255,255,255,0.05);padding:8px 10px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
-td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
-tr:hover{background:rgba(255,255,255,0.02)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
 .sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
-.sb,.tb{padding:14px;border-radius:10px;text-align:center}
-.sb{background:rgba(239,83,80,0.1);border:1px solid var(--sell)}
-.tb{background:rgba(38,166,154,0.1);border:1px solid var(--buy)}
-.sb .sp{font-size:22px;font-weight:700;color:var(--sell)}
-.tb .tp{font-size:22px;font-weight:700;color:var(--buy)}
-.sl{font-size:12px;color:var(--sub)}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
 .cb{margin:14px 0;text-align:center}
-.mw{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(38,166,154,0.2);color:var(--buy)}
-.mn{display:inline-block;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;background:rgba(66,165,245,0.2);color:var(--blue)}
-.ri{padding:8px 12px;margin:6px 0;border-radius:8px;border-left:3px solid var(--warn)}
-.rh{border-left-color:var(--sell);background:rgba(239,83,80,0.05)}
-.rm{border-left-color:var(--warn);background:rgba(255,167,38,0.05)}
-.rl{border-left-color:var(--buy);background:rgba(38,166,154,0.05)}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
 .disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
-/* briefing-report-generator 표준 클래스 통일 (2026-05-04) */
-.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
-.footer h3{color:var(--highlight);margin-bottom:10px;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .footer table{font-size:13px}
-.footer code{background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
 .disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
 .disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
 .disclaimer ul{padding-left:18px}
 .disclaimer li{margin:3px 0}
-.debate-card{background:rgba(139,92,246,0.06);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
-.debate-card .card-title{color:var(--debate);font-weight:700;margin-bottom:8px}
-.contrarian-card{background:rgba(188,76,0,0.06);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
-.contrarian-card .card-title{color:var(--contrarian);font-weight:700;margin-bottom:8px}
-.strong-buy{background:rgba(38,166,154,0.08);border:1px solid var(--buy);border-left:4px solid var(--buy);border-radius:8px;padding:14px 18px;margin:12px 0}
-.strong-buy h4{color:var(--buy);font-size:16px;margin-bottom:8px}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
 .strong-buy h4::before{content:"🟢 "}
-.strong-sell{background:rgba(239,83,80,0.08);border:1px solid var(--sell);border-left:4px solid var(--sell);border-radius:8px;padding:14px 18px;margin:12px 0}
-.strong-sell h4{color:var(--sell);font-size:16px;margin-bottom:8px}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
 .strong-sell h4::before{content:"🔴 "}
-[data-theme="light"] .footer{background:#f6f8fa;border-color:#d0d7de}
-[data-theme="light"] .footer code{background:rgba(0,0,0,0.06);color:#9a6700}
-[data-theme="light"] .debate-card{background:rgba(102,57,186,0.08)}
-[data-theme="light"] .contrarian-card{background:rgba(154,77,0,0.08)}
-.dl-bar{position:sticky;top:0;z-index:99;background:var(--card);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-16px -16px 16px}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
 .dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
 .dl-btn:hover{opacity:0.85}
 .dl-btn svg{width:14px;height:14px;fill:currentColor}
-.theme-toggle{background:var(--border);color:var(--text);border:none;padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
-.theme-toggle:hover{opacity:0.85}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
 .cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
-.cmd-guide h2{font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
 .cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.cmd-item{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:6px;font-size:12px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
 .cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
 .cmd-item span{color:var(--sub);display:block;margin-top:2px}
-[data-theme="light"] .cmd-item{background:rgba(0,0,0,0.03)}
-[data-theme="light"] .ri{background:rgba(0,0,0,0.03)}
-[data-theme="light"] .ki{background:rgba(0,0,0,0.03)}
-[data-theme="light"] tr:hover{background:rgba(0,0,0,0.02)}
-[data-theme="light"] th{background:rgba(0,0,0,0.05)}
 /* 리스크 히트맵 셀 — 다크 */
 .hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
 /* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
