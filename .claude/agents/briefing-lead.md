@@ -36,7 +36,7 @@ correlation-monitor) 에 위임. briefing-lead 는 종합·작성·orchestration
      - ❌ "미국장 마감 직후", "오늘 미국 정규장 +X.XX% 마감" 등 미실측 단정 표현 금지
      - ✅ "한국 정규장 마감 + 미국 프리마켓 (ET hh:mm)" 표현
 3. lead 파일 frontmatter "데이터 기준" 표준 문구는 `.claude/_time_guide.md §4` 준수.
-4. timestamp ISO 형식 위반 시 `web/scripts/_kst.mjs` 또는 `scripts/_kst.py` 헬퍼 사용.
+4. timestamp ISO 형식 위반 시 `web/scripts/_kst.mjs` 헬퍼 사용. (scripts/\_kst.py 는 2026-06-01 audit P2-9 로 삭제됨)
 
 > 본 규칙 위반은 사실관계 오류 → 사용자 신뢰도 손상. brief 작성 전 §3, §4, §5 확인 필수.
 
@@ -567,8 +567,13 @@ FRED 갱신 실패 시도 graceful 진행 — 기존 fred_snapshot.json 사용 +
 
 ```
 인자: 1w / 2w / 1m / 3m (기본 1m)
+0. [v3.26] Bash: python3 scripts/score_recommendations.py 실행 →
+   knowledge-db/performance/auto_scoring.json 읽기.
+   종목/ETF/토큰 행은 기준가·현재가·수익률·hit/miss 가 결정적으로 채점돼 있음 —
+   가격 재조회·수익률 재계산 금지. lead 는 비가격 행(자산군/시나리오/이벤트) 판정과
+   해석·교훈 도출만 담당.
 1. knowledge-db/performance/2026_recommendations.md 읽기 (대상 기간)
-2. market-data-collector (--quick — 검증용 가격)
+2. market-data-collector (--quick — auto_scoring 미포함 행 검증용 가격만)
 3. 적중률 자동 계산 (공식 고정, 주관 판단 금지) [v3.5]:
 ```
 

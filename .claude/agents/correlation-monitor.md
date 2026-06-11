@@ -8,7 +8,7 @@ description: |
   Z-score Alert (🟢±1σ / 🟡±1~2σ / 🔴±2σ초과) 생성. 경제 서프라이즈 Beat/Miss 누적 관리.
   briefing-lead 가 /이브닝, /주간, /크립토 호출 시 위임.
   Triggers: 상관관계 모니터, 자산 상관계수, 경제 서프라이즈, Beat Miss, Z-score Alert, 페어 분석.
-maxTurns: 15
+maxTurns: 25
 model: sonnet
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---

@@ -25,12 +25,14 @@ mcpServers:
 ## KB 참조 [v3.0]
 
 ### 작업 순서
+
 1. **먼저** `knowledge-base/` 폴더에서 해당 섹터 파일을 읽는다
 2. KB에 이미 있는 데이터는 **웹검색 없이 신뢰하고 사용**한다
 3. KB에 없는 데이터만 웹검색으로 수집한다
 4. KB 파일을 수정하지 않는다 (읽기 전용)
 
 ### KB 데이터 활용 범위
+
 - 산업 통계 (시장 규모, 점유율, 가격 동향) → KB industry/ 에서 가져옴
 - 컨센서스 (영업이익, EPS 전망) → KB industry/ 에서 기초값 확보, 웹검색으로 보완·최신화
 - 매크로 (금리, 환율, 지정학) → KB macro/ 에서 가져옴
@@ -38,11 +40,13 @@ mcpServers:
 - 가격 데이터 (개별 종목 현재가, 52주 범위) → KB 사용 안함, **반드시 웹검색으로 실시간 수집**
 
 ### KB market/ 읽기 권한 [v3.0]
+
 - ✅ **읽기 가능: knowledge-base/market/** (일별 시장 데이터, 상관관계, 거물 투자자 참조)
 - 종목 분석에서 매크로 환경(VIX, 금리, 환율) 맥락 확인 시 우선 참조
 - 출처 표기 예: `[KB: market/daily_snapshot.md]`
 
 ### FRED 매크로 스냅샷 활용 [v3.5 신규, 2026-05-07]
+
 - ✅ **반드시 읽기: `knowledge-base/macro/fred_snapshot.json`** (St. Louis Fed 1차 소스, prebuild 자동 갱신)
 - 출력 JSON 에 **`macro_context` 블록 필수 포함** — 모든 분석 에이전트가 동일 매크로 베이스라인 사용
 - 매크로 데이터는 웹검색 금지 (FRED 가 1차 소스). FRED snapshot 미존재 시만 폴백.
@@ -79,11 +83,13 @@ mcpServers:
 ```
 
 #### 추출 규칙
+
 1. `fred_snapshot.json` 의 `series` 배열에서 id 매칭 → 위 스키마로 평탄화
 2. 실패 시 graceful skip (해당 필드 null), `macro_context.snapshot_unavailable: true` 플래그
 3. **각 분석 에이전트는 macro_context 블록만 읽으면 충분** — fred_snapshot.json 직접 읽지 않음
 
 ### knowledge-db/ 접근 금지 [v2.4]
+
 - **knowledge-db/ 폴더는 읽지 않는다.** 영구 축적 저장소는 kb-updater 전용이다.
 - knowledge-base/ (CURRENT)만 읽는다.
 
@@ -112,10 +118,12 @@ stock-analyst-lead 가 프롬프트에 "**--reanalysis 모드 v{N}**" 문구를 
 #### 위반 감지 시
 
 이전 v 폴더를 read 하려 시도한 사실을 자체 검열:
+
 1. 호출 직후 `ls -la analysis/${TICKER}_*_v*/` 출력 안에 본 세션에서 read 한 흔적이 있다면 — 그 데이터를 data.json 에서 제거
 2. 의심 시 lead 에 즉시 보고 후 재호출 받기
 
 ### KB 데이터 신뢰도 판단
+
 ```
 KB의 valid_until이 오늘 이후 → 신뢰, 웹검색 생략 가능
 KB의 valid_until이 오늘 이전 → expired, 웹검색으로 갱신 필요
@@ -196,12 +204,26 @@ mkdir -p analysis  ← 폴더 없으면 자동 생성
 한국 종목은 DART API로 공시 데이터를 수집한다. API 가이드:
 → **Read** `reference/data-collector/dart_api.md`
 
+### 2.5 애널리스트 아카이브 조회 [v3.26 신규, 2026-06-11]
+
+로컬 아카이브(reports/analyst/items/, 290+건)에서 해당 티커의 최근 IB·증권사·미디어
+의견을 결정적 스크립트로 조회한다 (웹검색 불필요, 1회 Bash):
+
+```bash
+python3 scripts/analyst_lookup.py {티커} --days 90 --limit 5
+```
+
+출력(마크다운)을 수집 패키지 data.md 의 **"애널리스트 아카이브" 섹션**으로 그대로 포함.
+momentum-analyst (컨센서스·목표주가 비교) 와 scorecard-strategist (목표가 교차검증) 가 활용.
+0건이어도 섹션 자체는 포함 ("관련 항목 없음" — 커버리지 부재 신호로 해석).
+
 ### 3. 데이터 검증 (필수)
 
 가격·컨센서스·산업 데이터의 교차검증 규칙:
 → **Read** `reference/data-collector/validation_rules.md`
 
 **핵심 검증 요약 (반드시 수행):**
+
 - 현재가 2개 소스 교차검증 (차이 5% 이내)
 - 시가총액 = 현재가 × 발행주식수 역산 확인
 - 52주 범위 내 현재가 확인
@@ -234,15 +256,18 @@ ETF로 판별된 경우 별도 소스·검증 규칙을 따른다:
 ## 운영 원칙
 
 ### 공통
+
 1. **KB 먼저, 검색은 보완**: knowledge-base/ 파일을 먼저 읽고, 없는 데이터만 웹검색 [v2.4]
 2. **출처 명시**: 모든 데이터에 출처(KRX/ETF CHECK/etf.com/DART/KB 등)와 시점 기록
 3. **에러 핸들링**: 1순위 소스 실패 → 2순위 자동 전환, 그래도 실패 → "미수집" 표기
 
 ### 개별 종목 전용
+
 4. **DART API 키 확인**: `echo $DART_API_KEY`로 확인. 미설정 시 웹 검색 대체
 5. **corp_code 선행 조회**: 종목코드 → corp_code 변환 필수
 
 ### ETF 전용
+
 6. **DART 사용 금지**: ETF는 DART 재무제표가 없으므로 DART API를 호출하지 않는다
 7. **소스 우선순위 준수**: 국내는 KRX→ETF CHECK→네이버, 해외는 etf.com→etfdb.com→Yahoo
 8. **구성종목 기준일 필수**: Holdings 데이터에 반드시 기준일 기재. 30일 초과 시 경고
@@ -252,11 +277,13 @@ ETF로 판별된 경우 별도 소스·검증 규칙을 따른다:
 ## 안전장치
 
 ### 웹검색 예산 제한 [v2.4]
+
 - **웹검색 최대 20회**.
 - 20회 소진 후 추가 검색 금지. 수집된 데이터로 반환.
 - 동일 쿼리 재검색 금지. 검색어를 바꿔서 1회 재시도까지만 허용.
 
 ### 검색 예산 배분 가이드
+
 ```
 가격·시세 교차검증:       2~3회
 DART API 관련:            0회 (API 직접 호출)
@@ -268,9 +295,11 @@ ATR·기술적 데이터:        1~2회
 ```
 
 ### 항목 우선순위
+
 - **필수 항목만 완료되면 결과를 반환한다.** 권장·선택 항목은 시간이 허용될 때만 추가.
 
 ### 기존 규칙 (유지)
+
 1. 웹 검색 실패 시: 최대 2회 시도. 2회 실패 → "미수집" 표기 후 다음 항목 진행
 2. API 오류 시: 1회 재시도 후 실패 → 대체 소스로 전환. 대체도 실패 → "미수집" 표기
 3. 무한 루프 금지: 같은 작업을 3회 이상 반복하고 있다면 즉시 멈추고 현재까지 결과를 반환
@@ -278,17 +307,18 @@ ATR·기술적 데이터:        1~2회
 5. 결과 반환 우선: 오류 발생 시 해결을 시도하기보다 현재까지 결과를 리드에게 반환
 
 ### 금지 사항
+
 - **pip install 금지**: yfinance, pandas, requests 등 패키지 설치 시도 금지.
 - **외부 API 직접 호출 금지** (DART 제외): 웹검색 도구만 사용한다.
 - **웹검색 도구만 사용**: curl/wget/requests 직접 호출 금지 (DART API만 예외).
 
 ## 참조 파일 (필요 시 Read)
 
-| 파일 | 용도 | 언제 읽나 |
-|------|------|----------|
-| `reference/data-collector/sources.md` | 33개 소스 목록 + 검색 쿼리 템플릿 | 소스 우선순위·쿼리 확인 시 |
-| `reference/data-collector/dart_api.md` | DART API 엔드포인트 + corp_code 조회 | 한국 종목 수집 시 |
-| `reference/data-collector/validation_rules.md` | 가격 8규칙 + 컨센서스 C1~C4 + 산업 I1~I3 | 검증 단계 |
-| `reference/data-collector/etf_guide.md` | ETF 소스 + 쿼리 + 검증 규칙 | ETF 수집 시 |
-| `reference/data-collector/output_schema.md` | JSON 출력 스키마 (종목 + ETF) | 결과 정리 시 |
-| `reference/source_registry.md` | 전체 시스템 소스 레지스트리 | 교차 참조 |
+| 파일                                           | 용도                                     | 언제 읽나                  |
+| ---------------------------------------------- | ---------------------------------------- | -------------------------- |
+| `reference/data-collector/sources.md`          | 33개 소스 목록 + 검색 쿼리 템플릿        | 소스 우선순위·쿼리 확인 시 |
+| `reference/data-collector/dart_api.md`         | DART API 엔드포인트 + corp_code 조회     | 한국 종목 수집 시          |
+| `reference/data-collector/validation_rules.md` | 가격 8규칙 + 컨센서스 C1~C4 + 산업 I1~I3 | 검증 단계                  |
+| `reference/data-collector/etf_guide.md`        | ETF 소스 + 쿼리 + 검증 규칙              | ETF 수집 시                |
+| `reference/data-collector/output_schema.md`    | JSON 출력 스키마 (종목 + ETF)            | 결과 정리 시               |
+| `reference/source_registry.md`                 | 전체 시스템 소스 레지스트리              | 교차 참조                  |

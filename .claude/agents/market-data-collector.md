@@ -7,7 +7,7 @@ description: |
   수집 완료 후 knowledge-base/_index.md P0 섹션 자동 갱신. [v3.2]
   Phase 0-A 시장 스냅샷 단계에서 호출되거나 /시장데이터수집 커맨드로 수동 실행.
   Triggers: 시장 데이터 수집, 시장 스냅샷, 거물 포지션 갱신, 경제 캘린더 갱신, 일일 시장 브리핑.
-maxTurns: 25
+maxTurns: 35
 model: sonnet
 tools: Read, Write, Bash, Grep, Glob, WebSearch
 mcpServers:
