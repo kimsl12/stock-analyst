@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-05-30
+last_updated: 2026-06-13
 update_cycle: weekly
 status: active
-total_headlines: 48
+total_headlines: 58
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -34,6 +34,7 @@ total_headlines: 48
 - 📄 [Preprint] arXiv:2511.12286 (2026-04) — "Sangam: Chiplet-Based DRAM-PIM Accelerator with CXL Integration for LLM Inferencing" → CXL-attached PIM-chiplet 메모리 모듈, H100 대비 디코딩 처리량·쿼리 지연 다대일 가속, GPU 대체·병행 사용 시나리오 제시
 - 📄 [Preprint] arXiv:2511.06838 (2026-05) — "P3-LLM: An Integrated NPU-PIM Accelerator for LLM Inference Using Hybrid Numerical Formats" → HBM-PIM/Ecco/Pimba 대비 평균 3.4배 가속, 하이브리드 수치 포맷으로 LLM 추론 최적화
 - 📄 [Preprint] arXiv:2604.08044 (2026-04-09) — "A Full-Stack Performance Evaluation Infrastructure for 3D-DRAM-based LLM Accelerators" (3D-DRAM 기반 LLM 가속기 풀스택 성능 평가 인프라) → 3D-DRAM 적층 메모리 아키텍처를 LLM 추론에 적용한 성능 모델링 프레임워크 제시, HBM 후속 메모리 폼팩터 평가 도구 ([source](https://arxiv.org/html/2604.08044v1))
+- 📄 [Preprint] arXiv:2606.05511 (2026-06-03) — "RH+: Row-Hit-Optimized Scheduling for PIM-based LLM Inference" (PIM 기반 LLM 추론을 위한 행-히트 최적화 스케줄링) → HBM3 PIM에서 진짜 병목은 전력제약(nCCDAB)이 아니라 DRAM 행 사이클타임(nRC, nCCDAB의 10~11배)임을 규명. 메모리 접근 stride를 64→1 컬럼으로 바꿔 사이클당 32회 연속 행-히트 유도 → 8.25~11.88배 가속, 에너지 74.5~77.1% 절감, EDP 32.4~52.0배 개선 ([source](https://arxiv.org/html/2606.05511))
 
 ### 씽크탱크
 
@@ -45,6 +46,7 @@ total_headlines: 48
 - 📄 [Conference] ISSCC 2026 (2026-02) — Samsung "36GB HBM4 12-Hi, 3.3 TB/s" → SF4 로직 base die + 1c DRAM 노드 + TSV 4배 증가, 핀당 13Gb/s, 1V 이하 동작 — Rubin 요건 충족
 - 📄 [Conference] ISSCC 2026 (2026-02) — SK hynix "48Gbps GDDR7 24Gb + LPDDR6 14.4Gbps + 48GB HBM4 11.7Gbps" → AI 플랫폼 다층 메모리 라인업, SOCAMM2 폼팩터 동시 공개
 - 📄 [Conference] VLSI Symposium 2026 어드밴스 프로그램 (2026-05, 본회의 6/14-18) — "Advancing the AI Frontier Through VLSI Innovation" → 3D 로직·3D 메모리(Flash·HBM) 기술 포커스 세션 2개 + "High-Performance CMOS for DRAM: AI 시대 Mobile/Graphics/Datacenter/HBM 활성화" 워크숍 + "Beyond 6F2 — Scaling Frontiers and Future DRAM" 단기강좌 — 차세대 DRAM 스케일링 로드맵 (📄 호놀룰루 Hilton Hawaiian Village, OnDemand 6/22~)
+- 📄 [Conference] VLSI Symposium 2026 (2026-06, 본회의 6/14-18) — Intel·SoftBank "HB3DM (ZAM 기반 3D 메모리), Paper T17.5" → 9층 하이브리드 본딩 적층(base 로직 + DRAM 8층), TSV 약 13,700개. 대역폭 약 0.25 Tb/s/mm² → 10GB 모듈당 약 5.3 TB/s로 HBM4 스택당 약 2 TB/s 대비 2배 이상. 전력 HBM 대비 약 40% 절감(무선 방열). 다만 용량은 모듈당 약 10GB로 HBM4 48GB 대비 낮음. 프로토타입 FY2027·상용화 FY2029 목표 — SK hynix·삼성 HBM 진영 차세대 경쟁 신호 ([source](https://www.trendforce.com/news/2026/04/30/news-intel-softbank-reportedly-to-unveil-zam-based-hb3dm-in-june-bandwidth-more-than-double-hbm4/))
 
 ### 규제
 
@@ -64,6 +66,7 @@ total_headlines: 48
 
 - 📄 [Think Tank] IEA Electricity 2026 (2026-04) — "데이터센터 전력 수요 2030년 2배·AI 전용 3배" → 2025년 DC 전력 +17%, AI DC +50% 증가, 미국 전력 수요 증가의 약 50%가 DC 기여
 - 📄 [White Paper] IEA Key Questions on Energy and AI (2026-05) — "Energy Demand from AI" → 하이퍼스케일러 CapEx 2025년 $400B 돌파, 2026년 +75% 추가 증가 전망, DC 전력 그리드 병목 가속화
+- 📄 [White Paper] IEA Oil Market Report (2026-05) — "Iran War Upends Oil Outlook" → 이란 분쟁으로 걸프 산유 약 10.5 mb/d 오프라인, 2026년 글로벌 공급 -3.9 mb/d·수요 -420 kb/d로 1.78 mb/d 적자 반전(기존 surplus 전망 뒤집힘). Q2 정유가동 -4.5 mb/d, 재고 Q2 평균 -8.5 mb/d (5~6월 최대 인출), Brent 약 $106/bbl 고착. "호르무즈 해협 재개통이 가격·공급 압력 완화의 단일 최대 변수" — 중동發 인플레 상방 채널 ([source](https://oilprice.com/Latest-Energy-News/World-News/IEA-Revises-2026-Forecast-Oil-Deficit-Widens-as-Iran-War-Cuts-Production.html))
 
 ### 컨퍼런스/백서
 
@@ -74,6 +77,7 @@ total_headlines: 48
 - 📄 [Policy] US NRC Part 53 발효 (2026-04-29) — "Risk-informed Advanced Reactor Licensing" → 3월 26일 의결, 4월 29일 발효. 제조지 연료 주입·운영지 운반 허용·고밀도 인구 지역 입지 가능
 - 📄 [Policy] US DOE 의회 증언 (2026-04 중순) — "첫 5~10기 신규 원전 DOE 대출 거의 확정" → 에너지 장관 의회 증언, LPO 자금 SMR/AP1000 일괄 지원 계획 명시
 - 📄 [Policy] US NRC TRISO-X 연료 시설 (2026-02-16, 확정) — "X-energy TRISO-X TX-1 Category II 라이선스 발급" → 첫 미국 Category II HALEU 연료 제조 시설 인가, 40년 라이선스, TX-1 연 5톤U / 70만 TRISO 페블, Oak Ridge 입지 — 예정 일정(5월) 대비 3개월 앞당겨 2월 16일 발급 ([source](https://www.world-nuclear-news.org/articles/us-regulator-issues-licence-for-triso-x-fuel-facility)) [KEEP — SMR thesis 핵심]
+- 📄 [Policy] US NRC 마이크로리액터 프레임워크 제안 (2026-04-24, 의견수렴 6/15 마감) — "High-Volume Microreactor Deployment 라이선스 규칙" → 마이크로리액터·유사 위험 프로파일 원자로의 신속·대량 배치를 겨냥한 첫 포괄적 리스크인폼·성능기반 라이선스 프레임워크. Part 53 발효(4/29)에 이은 후속 입법, 5/1 Federal Register 공고·6/15 공개 의견 마감 — SMR/마이크로리액터 배치 속도 제고 ([source](https://www.orrick.com/en/Insights/2026/05/NRC-Proposes-New-Framework-to-Enable-High-Volume-Microreactor-Deployment))
 
 ---
 
@@ -100,6 +104,7 @@ total_headlines: 48
 - 📄 [Policy] FOMC 의사록 (2026-05-20 공개) — "4월 28-29일 회의 의사록" → 8-4 동결 표결 (Miran 25bp 인하 선호 / Hammack·Kashkari·Logan 동결엔 동의하나 성명문 완화 바이어스 삽입 반대). 회의 시점 인플레 "상승·고착, 에너지가격 급등 주도", 노동시장 안정·실질 GDP 확장 지속 평가. 4월은 SEP 비공개 회의 (dot plot 없음), 차기 6/16-17 회의서 갱신 ([source](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260520a.htm))
 - 📄 [Policy] ECB 통화정책결정 (2026-04-30) — "기준금리 동결 (MRO 2.15% / DFR 2.0%)" → 4월 유로존 인플레 3%, 중동 전쟁 에너지가격 상방, 만장일치 동결 + 인상 옵션 토론 — Lagarde 데이터 의존 메시지
 - 📄 [Policy] 한국은행 MPC (2026-05-28) — "기준금리 2.50% 동결 (8회 연속), 신현송 총재 첫 회의 매파 시그널" → 류상대·장용성 위원 즉시 인상 소수의견, dot plot 7인 중 19/21점이 6개월 후 인상 전망 (동결은 2점). 2026년 CPI 전망 2.2%→2.7% 상향 (이란 분쟁發 유가 전가), GDP 전망 2.0%→2.6% 상향. 총재 "성장·물가·환율·부동산 모두 같은 방향" 연내 인상 사실상 확인 ([source](https://www.kedglobal.com/central-bank/newsView/ked202605280001))
+- 📄 [Policy] FOMC 6/16-17 회의 프리뷰 (2026-06) — "동결 유력 + 완화→중립/긴축 바이어스 전환 가능성" → CME FedWatch 동결 확률 98.3%. 5월 헤드라인 CPI 4.2% YoY·코어 2.9%(둘 다 2% 목표 상회), 5월 신규고용 +172K(3개월 평균 188K)·실업률 4.3%로 견조. Desk 서베이 중앙값은 향후 1년 25bp 인하 2회 유지하되 시점을 26년 3~4분기·27년 1분기로 후퇴. 이란 분쟁發 인플레 지속 시 인상 가능성 다수 의견 — SEP/dot plot 본 회의서 갱신 (4월은 비공개 회의로 미발표) ([source](https://www.indexbox.io/blog/fed-meeting-preview-june-1617-fomc-decision-and-potential-bias-shift/))
 
 ---
 
@@ -109,6 +114,7 @@ total_headlines: 48
 
 - 📄 [Journal] NEJM (2026) — "Orforglipron Phase 3 ATTAIN-1 (oral GLP-1)" → 경구 GLP-1 수용체 작용제, 비만 환자 체중감소 placebo 대비 통계적 유의, Lilly Foundayo 4/1 FDA 승인 데이터 기반
 - 📄 [Journal] NEJM SURMOUNT-5 (2026) — "Tirzepatide vs Semaglutide Head-to-Head" → 72주 추적, 비만/과체중 환자에서 tirzepatide(Zepbound)가 semaglutide(Wegovy)에 우월한 체중감소 — LLY 마진·점유율 thesis 보강
+- 📄 [Journal] NEJM (2026, NEJMoa2605555) — "Daraxonrasib or Chemotherapy in Previously Treated Metastatic Pancreatic Cancer" (전이성 췌장암 2차 치료 다라소라십 vs 항암화학) → RASolute 302 3상 동시 게재. RAS G12 변이 mPDAC에서 mOS 13.2 vs 6.7개월(HR 0.40, P<.0001, 사망위험 60%↓), 추적중앙값 8.5개월에 모든 1차·핵심 2차 종료점 충족·중대 이상반응은 더 적음 — RAS(ON) 다중선택 억제제 2차 표준요법 후보 ([source](https://www.nejm.org/doi/full/10.1056/NEJMoa2605555))
 
 ### 씽크탱크
 
@@ -116,7 +122,8 @@ total_headlines: 48
 
 ### 컨퍼런스/백서
 
-- 📄 [Conference] ASCO 2026 (2026-05-31, plenary 확정) — "RASolute 302 / Daraxonrasib in PDAC plenary" → 5/31 15:21 CDT McCormick Place Hall B1, Dr. Wolpin 발표. mOS 13.2 vs 6.7개월, HR 0.40 (P<.0001), 사망위험 60% 감소 — KRAS G12 변이 PDAC 첫 명확한 OS 우월성. Revolution Medicines 가치 재평가 모멘텀 ([source](https://ascopost.com/issues/may-10-2026/ras-inhibitor-daraxonrasib-in-metastatic-pancreatic-cancer/)) [KEEP — Bio thesis 핵심]
+- 📄 [Conference] ASCO 2026 (2026-05-31, plenary 발표 완료) — "RASolute 302 / Daraxonrasib in PDAC plenary" → 5/31 Dr. Wolpin(Dana-Farber) plenary 발표, standing ovation. mOS 13.2 vs 6.7개월, HR 0.40 (P<.0001), 사망위험 60% 감소 — KRAS G12 변이 PDAC 첫 명확한 OS 우월성. NEJM 동시 게재(NEJMoa2605555). Revolution Medicines 가치 재평가 모멘텀 ([source](https://ascopost.com/news/june-2026/daraxonrasib-nearly-doubles-survival-in-previously-treated-metastatic-pancreatic-cancer/)) [KEEP — Bio thesis 핵심]
+- 📄 [Conference] ASCO 2026 (2026-06-02) — AstraZeneca "SERENA-6 camizestrant ctDNA 클리어런스 데이터" → ESR1 변이 발생 ER+/HER2- 진행성 유방암 1차 치료 중 조기 전환. 카미제스트란트+CDK4/6i군 8주차 총 ctDNA 중앙값 99%↓·51% 완전 클리어런스 vs AI군 64%↑·1.9% 클리어런스. mPFS 16.8 vs 9.2개월, 진행/사망위험 55%↓. FDA가 4월 ODAC 다수표결 실패 후 추가 분석 검토 위해 결정시한 연장 — ctDNA 데이터로 재설득 시도 ([source](https://www.precisionmedicineonline.com/precision-oncology/astrazeneca-hoping-sway-fda-camizestrant-ctdna-clearance-data-serena-6))
 
 ### 규제
 
@@ -146,6 +153,7 @@ total_headlines: 48
 
 - 📄 [Policy] SEC Press Release 2026-30 (2026-03-17) — "SEC + CFTC 공동 암호자산 연방증권법 적용 해석" → token taxonomy 정립: digital commodities/collectibles/tools/stablecoins/digital securities — Atkins 의장 "10년 불확실성 해소"
 - 📄 [Policy] SEC Staff Statement (2026-04-13) — "셀프 호스팅 지갑 인터페이스 브로커 미해당" → self-custody 지갑 거래 소프트웨어는 broker 규제 트리거 X — 디파이·온체인 지갑 사업자 진입 장벽 완화
+- 📄 [Policy] GENIUS Act 시행 규칙 제정 진행 (2026-04~06, 의견수렴 6/9 마감) — "Treasury·OCC·FDIC·FinCEN/OFAC 시행 NPRM 일제 공개" → 7월 2026 최종규칙 시한 앞두고 4월 중 재무부·FDIC·FinCEN 각 시행 제안규칙 발표, 의견 6/9 마감. OCC는 은행·연방저축기관·외국 발행자·비은행 적격발행자 대상 결제 스테이블코인 발행 규칙, FinCEN/OFAC는 AML·제재 컴플라이언스 공동 규칙. 법 효력은 27/1/18 또는 최종규칙 후 120일 중 빠른 날 — 발행자 자격·준비금 규칙 윤곽 확정 단계 ([source](https://www.bhfs.com/insight/recent-updates-in-digital-assets-policy/))
 
 ---
 
@@ -159,6 +167,7 @@ total_headlines: 48
 
 - 📄 [Think Tank] CSIS (2026-05-08) — "Deepening Strategic Alignment: Priorities for the U.S.-Japan Alliance" (Johnstone & Rubinstein) → 일본 5개년 방위비 +60%·1년차 +25% 단계 진입, 장사거리 정밀타격·능동 사이버·우주 자산 투자 확대 — 한미일 통합 억제·역할분담 재정립 ([source](https://www.csis.org/analysis/deepening-strategic-alignment-priorities-us-japan-alliance))
 - 📄 [Think Tank] SIPRI Fact Sheet (2026-04) — "2025 World Military Expenditure" → 글로벌 군사비 사상 최고 갱신, 한국 2025년 $47.8B (+2.6%) — 3축 체계 (미사일방어·선제타격·보복능력) 지속 투자 ([source](https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf))
+- 📄 [Think Tank] CSIS (2026-04) — "Unpacking the $1.5 Trillion FY 2027 Defense Budget Topline" → 사상 최대 $1.5T 국방예산 요청(역대 최대). 재량 $1.15T + 조정(reconciliation) $350B 구조. Golden Dome 미사일방어 약 $17.5B 중 거의 전액 의무·조정예산(base는 약 $400M) — 우주기반 센서·요격체·층상 본토방어. 조정 절차 의존도가 높아 의회 통과 불확실성 동반 ([source](https://www.csis.org/analysis/unpacking-15-trillion-fy-2027-defense-budget-topline))
 
 ### 컨퍼런스/백서
 
@@ -166,7 +175,7 @@ total_headlines: 48
 
 ### 규제
 
-- (이번 주 신규 없음 — DoD FY27 예산안 6월 의회 송부 예정)
+- (이번 주 신규 없음 — FY27 예산안은 4월 의회 송부 완료, 세부 appropriations·reconciliation 심사 진행 중. CSIS 토플라인 분석은 씽크탱크 항목 참조)
 
 ---
 
@@ -211,6 +220,7 @@ total_headlines: 48
 - 📄 [Filing] Target Q1 FY26 Earnings (2026-05-20) — "EPS $1.71 (GAAP·조정 동일) / 매출 +6.7% / 동일점매출 +5.6%" → 6개 핵심 머천다이징 카테고리 전부 성장, 디지털 +8.9% (당일배송 +27% 초과). 연간 가이던스 상향 (매출 +4% 내외, EPS $7.50~8.50 상단 근접) — 단 가이던스는 관세 환급분 제외. Walmart 대비 동일점 성장 반전 ([source](https://corporate.target.com/news-features/article/2026/05/q1-2026-earnings))
 - 📄 [Filing] Home Depot Q1 FY26 Earnings (2026-05-20) — "순매출 $41.8B (+4.8% YoY)" → 핵심 고객 회복력 유지, 연간 가이던스 재확인·컨센서스 상회. 관세 환급 신청 (연료비 상승 상쇄). 관세發 특정 카테고리 "완만한 가격 인상" 예상하나 전면 인상은 아님 ([source](https://www.fool.com/earnings/call-transcripts/2026/05/19/home-depot-hd-q1-2026-earnings-transcript/))
 - 📄 [Filing] Lowe's Q1 FY26 Earnings (2026-05-20) — "EPS·매출 컨센서스 상회, 연간 가이던스 재확인" → 봄 시즌 강한 실행 + 온라인·가전·홈서비스·프로 부문 성장 견인. CEO Ellison "challenging housing macro" 인정 + 관세 영향 시인 — HD와 동일 기조 ([source](https://www.cnbc.com/2026/05/20/lowes-low-q1-2026-earnings.html))
+- 📄 [Filing] Costco Q3 FY26 Earnings (2026-05-28, 분기말 5/10) — "순매출 +11.6% $69.15B / EPS $4.93(전년 $4.28) / 조정 동일점 +9.8%(미국 +6.8%)" → 디지털 매출 +21% 초과, 멤버십 수입 $1.37B(+10.7%). 인플레·관세 환경에서도 두 자릿수 성장·견조한 트래픽 — 디스카운트/벌크 채널의 관세 전가 방어력 입증. 단 밸류에이션 부담은 별개 이슈 ([source](https://www.stocktitan.net/news/COST/costco-wholesale-corporation-reports-third-quarter-and-year-to-date-ya9rfbnhnzg9.html))
 
 ---
 
@@ -262,25 +272,25 @@ total_headlines: 48
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-05-30 트래킹)
+## 차주 갱신 예상 항목 (2026-06-13 트래킹)
 
-- **반도체**: VLSI Symposium 2026 본회의 6/14-18 paper digest, ISSCC 2026 양산 일정 후속, BIS/MATCH Act 의회 진전
-- **에너지**: DOE LPO 신규 disbursement (Palisades 7차 등), 중동 분쟁發 LNG·유가 동향, NRC SMR 신규 ESP 신청 동향
-- **매크로**: FOMC 6/16-17 SEP/dot plot 갱신 (4월 대비 인하 경로 변화 여부), 한국은행 연내 인상 시점 시그널 후속, BOJ 의사록 본문 6/19, BIS AER 2026 (6월)
-- **바이오**: ASCO 2026 plenary 5/31 RASolute 302 본 발표 결과 + 신규 oncology 3상, FDA 6월 PDUFA·AdCom 일정
-- **핀테크**: GENIUS Act 후속 라이선스·커스터디·자본 규칙 mid-2026 확정 (SEC/CFTC MOU 6개 핵심 영역), 한국 금융위 가상자산법 2단계 시행령
-- **방산**: DoD FY27 full budget request 상세 (Golden Dome·DAWG $55B 자율전력 배분), 한국 방사청 3축 체계 신규 계약
-- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-60 가이드라인, MS Build 후속, NeurIPS/ICML 7월 트랙
-- **소비재**: Costco 5월 어닝, 관세 가격 전가 본격화 (HD·Lowe's "완만한 인상" vs Walmart "5월 말 인상") 모니터링
+- **반도체**: VLSI Symposium 2026 본회의 6/14-18 발표 결과 (HB3DM T17.5 실측 스펙·삼성/SK 차세대 HBM 세션), 메모리 PIM 후속 preprint, BIS/MATCH Act 의회 진전
+- **에너지**: 이란 분쟁·호르무즈 해협 재개통 여부와 Brent 동향 (IEA 기준 mid-year 재개통 시나리오 검증), DOE LPO 신규 conditional commitment, NRC 마이크로리액터 규칙 6/15 의견마감 후속
+- **매크로**: FOMC 6/16-17 결과 — SEP/dot plot 갱신·바이어스 전환 여부 (4월 대비), Powell/Warsh 의장 이슈, 한국은행 연내 인상 시점 시그널, BOJ 의사록 본문 6/19
+- **바이오**: ASCO 2026 후속 oncology 3상 readout, camizestrant FDA 결정시한, FDA 6월 PDUFA·AdCom 일정
+- **핀테크**: GENIUS Act 6/9 의견마감 후 최종규칙 진전, 7월 최종규칙 시한, 한국 금융위 가상자산법 2단계 시행령
+- **방산**: FY27 appropriations·reconciliation 의회 심사 진전 (Golden Dome $17.5B 배분), 한국 방사청 3축 체계 신규 계약
+- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-50 가이드라인, NeurIPS/ICML 7월 트랙, MS Build 후속
+- **소비재**: 6~7월 리테일 어닝, 관세 가격 전가 진행 (5월 말 Walmart 인상 실측), 여름 소비 동향
 - **산업재**: TSMC AZ Phase 2 장비 입고 Q3 2026 진행 추적, Samsung Taylor 양산 일정
-- **자동차**: Tesla Q2 인도량 가이던스, IRA 30D 9/30 종료 시나리오 후속, 미국 EV 시장 점유율
+- **자동차**: Tesla Q2 인도량·Cybercab 6월 양산·Austin 로보택시 확대, EV 충전 크레딧 6/30 종료 후속
 
-## 폴백/미수집 (2026-05-30 회차)
+## 폴백/미수집 (2026-06-13 회차)
 
-- DOE LPO 5월 신규 disbursement — 검색 결과 May 2026 특정 건 미특정 (Palisades 5·6차는 이전 회차), 에너지 규제 이번 주 신규 없음 처리
-- SEC 스테이블코인 자본 가이던스 (98% 인정·2% haircut) — 발행일 2026-02-19 확인, 2주 윈도우(5/16+) 밖이라 미반영 → 기존 SEC 3월/4월 핀테크 헤드라인 유지
-- DoD FY27 budget request — 발행일 2026-04-03 (CSIS 분석 4/10·IISS 4월), 2주 윈도우 밖 → 방산 규제 이번 주 신규 없음, full budget 상세는 차주 추적
-- bioRxiv/medRxiv 5월 신규 preprint — 구체 trial 미특정, 다음 회차 재시도
-- NBER EEE·SSRN Energy Economics 5월 — 신규 게재 없음
+- DOE LPO 6월 신규 conditional commitment — 검색 결과 June 2026 특정 SMR 신규 건 미특정 (TMI·Palisades는 이전 회차), 에너지 규제는 NRC 마이크로리액터 프레임워크로 대체 수집
+- NuScale 77MWe 우상향 SDA — 승인 시점 2025년 5월 확인, 12주 윈도우 밖이라 미반영
+- EU AI Act 6월 신규 Code of Practice 가이드라인 — 구체 6월 신규 문서 미특정 (11/19 Digital Omnibus 후속), 테크플랫폼 5월 헤드라인(EU AI Act Omnibus·투명성 가이드라인) 유지
+- Tesla Q2 인도·Cybercab 6월 양산 — 구체 6월 수치 미발표(분기말 대기), 자동차 IRA 30D 헤드라인 유지
+- bioRxiv/medRxiv 6월 신규 preprint — 구체 trial 미특정, 다음 회차 재시도
+- NBER EEE·SSRN Energy Economics / CNAS·RUSI 방산 학술 / NeurIPS·ICML 테크 학술 — 신규 게재물 없음, 7월 트랙 대기
 - 한국 산업통상자원부 K-Chips / 일본 METI 보조금 — 본 회차 미커버, 다음 회차 추가
-- CNAS·RUSI 방산 학술 / NeurIPS·ICML 테크 — 신규 게재물 없음, 6~7월 트랙 대기
