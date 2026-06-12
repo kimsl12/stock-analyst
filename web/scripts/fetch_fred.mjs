@@ -26,16 +26,20 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT = path.join(PROJECT_ROOT, 'knowledge-base', 'macro', 'fred_snapshot.json');
 
-// [v3.32, 2026-06-12] 루트 .env.local 자체 로드 — launchd·세션·prebuild 어디서 실행돼도
-// FRED_API_KEY 사용 가능. (키 미로딩으로 2026-05-30 이후 매크로 위젯 13일 stale 원인 수정)
-try {
+// [v3.32, 2026-06-12] .env.local 자체 로드 (루트 + web/ 양쪽) — launchd·세션·prebuild
+// 어디서 실행돼도 FRED_API_KEY 사용 가능. plain node 는 .env 를 자동 로드하지 않아
+// web/.env.local 의 키가 한 번도 전달되지 못함 → 2026-05-30 이후 13일 stale 의 근본 원인.
+{
   const { readFileSync } = await import('node:fs');
-  const envText = readFileSync(path.join(PROJECT_ROOT, '.env.local'), 'utf-8');
-  for (const line of envText.split('\n')) {
-    const m = line.match(/^([A-Z][A-Z0-9_]*)=(.*)$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+  for (const envPath of [path.join(PROJECT_ROOT, '.env.local'), path.join(PROJECT_ROOT, 'web', '.env.local')]) {
+    try {
+      for (const line of readFileSync(envPath, 'utf-8').split('\n')) {
+        const m = line.match(/^\s*(?:export\s+)?([A-Z][A-Z0-9_]*)\s*=\s*(.*)$/);
+        if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '').trim();
+      }
+    } catch { /* 해당 경로 없으면 다음 */ }
   }
-} catch { /* .env.local 없으면 기존 process.env 만 사용 */ }
+}
 
 const API_KEY = process.env.FRED_API_KEY;
 
