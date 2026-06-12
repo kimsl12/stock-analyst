@@ -4,6 +4,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { parseScorecard } from '../web/scripts/lib/scorecard_parser.mjs';
 
 const ROOT = join(import.meta.dirname, '..');
 const OUT = join(import.meta.dirname, 'data');
@@ -170,112 +171,64 @@ function buildMacroRegime() {
 // 2. 전체 종목 스코어 JSON
 // ============================================================
 function buildStockScores() {
-  const analysisDir = join(ROOT, 'analysis');
+  // [v2, 2026-06-12] 소스 전면 교체 — 신호가 2026-05-19 에 멈춰 있던 근본 수리.
+  // 구버전 문제: ① analysis/ 전 폴더 스캔 + 자체 휴리스틱 점수 추출 (INTC 13 오염)
+  //             ② 분석일을 scorecard 본문 "분석일:" 텍스트에서만 찾아 대부분 null
+  //                → stale=true → 엔진 신선도 게이트(≤30일)가 전 종목 차단
+  //             ③ 비상장(ANTHROPIC/SPACEX) 포함 — 매매 불가 종목이 eligible 에 진입 위험
+  // 신버전: analysis/_history/*_timeline.json (재분석 시스템의 단일 진실 — 버전·날짜·점수)
+  //         + web/scripts/lib/scorecard_parser.mjs 폴백 (웹 대시보드와 동일 파서, 테스트 13종)
+  const UNLISTED = new Set(['ANTHROPIC', 'SPACEX']); // 비상장 — 매매 대상 아님
+  const GRADE_LETTER = { '강력매수': 'A', '매수': 'B', '중립': 'C', '보유': 'C', '매도': 'F', '강력매도': 'F' };
+
+  const histDir = join(ROOT, 'analysis', '_history');
   const stocks = [];
 
-  for (const dir of readdirSync(analysisDir)) {
-    const scPath = join(analysisDir, dir, 'scorecard.md');
-    if (!existsSync(scPath)) continue;
+  for (const fn of readdirSync(histDir)) {
+    if (!fn.endsWith('_timeline.json')) continue;
+    let tl;
+    try { tl = JSON.parse(readFileSync(join(histDir, fn), 'utf8')); } catch { continue; }
+    const ticker = tl.ticker;
+    const hist = tl.history || [];
+    if (!ticker || hist.length === 0) continue;
+    if (UNLISTED.has(String(ticker).toUpperCase())) continue;
 
-    const content = readFileSync(scPath, 'utf8');
+    const last = hist[hist.length - 1];
+    const dir = last.folder ?? null;
+    const name = dir ? (dir.split('_')[1] ?? '') : (tl.name ?? '');
+    const version = dir?.match(/_v(\d+)$/)?.[1] ?? String(hist.length);
 
-    // 티커 추출
-    const ticker = dir.split('_')[0];
-    const nameParts = dir.split('_');
-    const name = nameParts.length > 1 ? nameParts[1] : '';
-    const version = dir.match(/v(\d+)/)?.[1] ?? '1';
+    let score = last.score ?? null;
+    let gradeKr = last.grade ?? null;
+    let analysisDate = last.date ?? null;
 
-    // 스코어 추출 (정밀 파싱 v3)
-    let score = null;
-    const lines = content.split('\n');
-    for (const line of lines) {
-      // 패턴 A: "종합 스코어: 85 / 100" 또는 "종합 스코어: **85 / 100**"
-      const pA = line.match(/(?:종합\s*스코어|총점)[:\s]*\*{0,2}(\d+\.?\d*)\s*[/]\s*100/);
-      if (pA) { score = parseFloat(pA[1]); break; }
-
-      // 패턴 B: "### 합계: **83.9 / 100**"
-      const pB = line.match(/합계[:\s]*\*{0,2}(\d+\.?\d*)\s*[/]\s*100/);
-      if (pB) { score = parseFloat(pB[1]); break; }
-
-      // 패턴 C: 표 행 "| **합계** | **100%** | — | **78.5** |"
-      if (/\|\s*\*{0,2}합계\*{0,2}\s*\|/.test(line)) {
-        const cells = line.split('|').map(c => c.replace(/\*/g, '').trim()).filter(Boolean);
-        // "X / 100" 패턴이 셀 안에 있으면 그걸 우선
-        for (const cell of cells) {
-          const inCell = cell.match(/^(\d+\.?\d*)\s*\/\s*100/);
-          if (inCell) { score = parseFloat(inCell[1]); break; }
-        }
-        if (score) break;
-        // 없으면: 100, 100%, —, 빈값, 합계 건너뛰고 소수점 있는 숫자 찾기
-        for (let i = 1; i < cells.length; i++) {
-          const c = cells[i];
-          if (c === '100%' || c === '100' || c === '—' || c === '' || /합계/.test(c)) continue;
-          // "85" 같은 정수도 허용하되, 가중치(100)와 구분 위해 소수점 있거나 <100이면
-          const num = parseFloat(c);
-          if (!isNaN(num) && num > 0 && num < 100) { score = num; break; }
-          // 정확히 "강력매수", "매수" 등 텍스트면 건너뜀
-          if (/매수|매도|보유|Buy|Sell|Hold|등급/i.test(c)) continue;
-        }
-        if (score) break;
-      }
-
-      // 패턴 D: "| **종합 스코어** | **76.35** | **73.50** |" — v2 비교표
-      if (/\|\s*\*{0,2}종합\s*스코어\*{0,2}\s*\|/.test(line)) {
-        const cells = line.split('|').map(c => c.replace(/\*/g, '').trim()).filter(Boolean);
-        // "X / 100" 패턴 우선
-        for (const cell of cells) {
-          const inCell = cell.match(/^(\d+\.?\d*)\s*\/\s*100/);
-          if (inCell) { score = parseFloat(inCell[1]); break; }
-        }
-        if (score) break;
-        for (let i = 1; i < cells.length; i++) {
-          const c = cells[i];
-          if (c === '100%' || c === '100' || c === '—' || c === '' || /종합|스코어/.test(c)) continue;
-          const num = parseFloat(c);
-          if (!isNaN(num) && num > 0 && num < 100) { score = num; break; }
-        }
-        if (score) break;
-      }
-
-      // 패턴 E: "스코어 85.0/100" 또는 "85/100점"
-      const pE = line.match(/스코어\s*(\d+\.?\d*)\s*[/]\s*100/);
-      if (pE) { score = parseFloat(pE[1]); break; }
+    // 폴백 — scorecard 본문 파싱 (timeline 미추출분)
+    const scPath = last.scorecard_path ? join(ROOT, last.scorecard_path) : null;
+    if (scPath && existsSync(scPath) && (score == null || gradeKr == null || analysisDate == null)) {
+      const sc = parseScorecard(readFileSync(scPath, 'utf8'));
+      score = score ?? sc.score;
+      gradeKr = gradeKr ?? sc.grade;
+      analysisDate = analysisDate ?? sc.analysis_date;
     }
 
-    // 등급 추출
-    const gradeMap = {
-      'Strong Buy': 'A', '강력매수': 'A',
-      'Buy': 'B', '매수': 'B',
-      'Hold': 'C', '보유': 'C',
-      'Underweight': 'D', '비중축소': 'D',
-      'Sell': 'F', '매도': 'F',
-    };
-    const gradeMatch = content.match(/(Strong Buy|Buy|Hold|Underweight|Sell|강력매수|매수|보유|비중축소|매도)/);
-    const gradeRaw = gradeMatch ? gradeMatch[1] : null;
-    const grade = gradeRaw ? (gradeMap[gradeRaw] || gradeRaw) : null;
-
-    // 분석일 추출
-    const dateMatch = content.match(/분석일[:\s]*(\d{4}-\d{2}-\d{2})/);
-    const analysisDate = dateMatch ? dateMatch[1] : null;
-
-    // 시장 판별 (숫자로 시작 = KRX)
-    const market = /^\d/.test(ticker) ? 'KRX' : 'US';
-
-    // 중복 제거: 같은 티커의 최신 버전만
-    const existing = stocks.findIndex(s => s.ticker === ticker);
-    if (existing >= 0) {
-      if (parseInt(version) > parseInt(stocks[existing].version)) {
-        stocks[existing] = { ticker, name, version, score, grade, analysis_date: analysisDate, market, dir };
-      }
-    } else {
-      stocks.push({ ticker, name, version, score, grade, analysis_date: analysisDate, market, dir });
-    }
+    const market = /^\d/.test(String(ticker)) ? 'KRX' : 'US';
+    stocks.push({
+      ticker: String(ticker),
+      name,
+      version,
+      score: score != null ? Number(score) : null,
+      grade: gradeKr ? (GRADE_LETTER[gradeKr] ?? null) : null,
+      grade_kr: gradeKr ?? null,
+      analysis_date: analysisDate,
+      market,
+      dir,
+    });
   }
 
   // 스코어 순 정렬
   stocks.sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
 
-  // stale 판정 (30일+)
+  // stale 판정 (30일+ — 엔진 Gate 1 신선도 기준과 동일)
   const today = kst.toISOString().slice(0, 10);
   for (const s of stocks) {
     if (s.analysis_date) {
@@ -290,6 +243,7 @@ function buildStockScores() {
 
   const result = {
     generated_at: timestamp,
+    source: 'analysis/_history timeline + scorecard_parser (v2, 2026-06-12)',
     total_count: stocks.length,
     eligible_count: stocks.filter(s => (s.score ?? 0) >= 80 && !s.stale).length,
     kr_eligible_count: stocks.filter(s => (s.score ?? 0) >= 80 && !s.stale && s.market === 'KRX').length,

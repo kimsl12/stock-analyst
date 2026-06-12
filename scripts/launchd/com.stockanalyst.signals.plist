@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  종목분석 에이전트 — 알고 매매 엔진용 시그널 일일 빌드
+
+  - 매일 KST 15:25 (KRX 마감 15:30 직전·엔진 1차 점검 15:40 전 — 핸드오프 계약)
+  - 출력 로그: ~/Library/Logs/stockanalyst/signals.log
+    (외장 SSD 경로 StandardOutPath 는 launchd spawn 실패 EX_CONFIG=78 — 2026-06-11 확정 교훈)
+
+  설치:
+    cp "scripts/launchd/com.stockanalyst.signals.plist" ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.stockanalyst.signals.plist
+
+  즉시 테스트:
+    launchctl start com.stockanalyst.signals
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stockanalyst.signals</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/scripts/signals_update.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>15</integer>
+        <key>Minute</key>
+        <integer>25</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/kimsl12/.nvm/versions/node/v25.9.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/kimsl12</string>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string>/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/kimsl12/Library/Logs/stockanalyst/signals.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/kimsl12/Library/Logs/stockanalyst/signals.log</string>
+</dict>
+</plist>

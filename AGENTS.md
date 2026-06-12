@@ -169,6 +169,7 @@ gh-pages 는 GitHub Actions 복원(2026-06-05) 후 자동 3채널째. KB·analys
 | `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss + 모듈×카테고리×확신도 분해·캘리브레이션 경고 — LLM 산수 배제)          |
 | `scripts/scoreboard.py`                 | scorecard Phase 3    | 유니버스 백분위 + 등급 쿼터 판정 (`--exclude {티커}` 필수 — BLIND). 강력매수 상위 5% / 매수 25% / 하위 15% 매도 검토                            |
 | `scripts/regime_classifier.py`          | watchdog 06:40       | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                     |
+| `algo-trading/build_signals.mjs` + `scripts/signals_update.sh` | launchd 15:25       | 매매 엔진용 시그널 3종 (stock_scores·macro_regime·earnings) — timeline 단일 소스, 비상장 제외, 엔진 1차 점검 15:40 전 빌드. watchdog 이 신선도 검증 |
 | `scripts/check_house_view.py`           | watchdog 06:40·10:30 | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                             |
 | `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
 | `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |

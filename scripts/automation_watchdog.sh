@@ -92,5 +92,18 @@ else
   log "WARN: check_house_view 실패"
 fi
 
+# 8. 매매 시그널 신선도 (stock_scores.json — 엔진 게이트가 stale 신호로 전면 차단되는 사고 방지) [v3.33]
+SIG_GEN=$(python3 -c "import json; print(json.load(open('algo-trading/data/stock_scores.json'))['generated_at'][:10])" 2>/dev/null || echo "")
+YESTERDAY=$(TZ=Asia/Seoul date -v-1d '+%Y-%m-%d' 2>/dev/null || date -d 'yesterday' '+%Y-%m-%d')
+if [ -z "$SIG_GEN" ]; then
+  log "WARN: stock_scores.json 읽기 실패"
+  notify_warn "매매 시그널 파일 읽기 실패 — signals.log 확인" high
+elif [ "$SIG_GEN" \< "$YESTERDAY" ]; then
+  log "WARN: 매매 시그널 stale (generated=$SIG_GEN)"
+  notify_warn "매매 시그널 stale (${SIG_GEN}) — 15:25 launchd 실패 의심, 엔진 매매 차단 중" high
+else
+  log "OK: 매매 시그널 신선 ($SIG_GEN)"
+fi
+
 log "=== watchdog 완료 ==="
 exit 0

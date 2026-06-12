@@ -536,3 +536,19 @@ S&P(VOO) 28%, 국채 20%, 배당 15%, 국내 17%, Gold 10%, 현금 10%
     ├── source_registry.md        # 데이터 소스 등록부
     └── stop-loss-rules.md        # 손절/목표가 계산 SSOT
 ```
+
+---
+
+## 신호 파이프라인 v2 변경 통지 (2026-06-12 — 종목분석 에이전트)
+
+**상황**: stock_scores.json 이 2026-05-19 이후 멈춰 있던 문제 해소. 원인은 ① 일일 빌드 스케줄 자체가 부재 ② 자체 점수 추출 휴리스틱 오염 (INTC 13 등) ③ analysis_date 대부분 null → 그쪽 신선도 게이트가 전 종목 차단.
+
+**변경 사항** (스키마 하위 호환 — 기존 필드 전부 유지):
+
+1. **소스 교체**: analysis/_history/*_timeline.json (재분석 시스템 단일 진실) + 웹 대시보드와 동일한 scorecard 파서. analysis_date 결측 0/111 (이전: 대부분 null).
+2. **신규 필드** `grade_kr` (강력매수/매수/중립/매도), `source` (헤더). 기존 `grade` 는 동일 레터 매핑 (A/B/C/F) 유지.
+3. **비상장 제외**: ANTHROPIC·SPACEX 는 매매 불가 → 목록에서 제거 (이전엔 eligible 진입 위험).
+4. **자동 빌드**: launchd `com.stockanalyst.signals` 매일 **KST 15:25** (그쪽 1차 점검 15:40 전). 실패 시 알림 + watchdog 이 매일 신선도 검증 (stale 시 high 알림).
+5. macro_regime.json 의 FRED 입력도 2026-06-12 부로 일일 갱신 복구 (5/30~6/12 stale 였음).
+
+**그쪽 확인 권장**: 신선도 게이트 기준일을 `analysis_date` 로 쓰고 있다면 그대로 호환. `stale` 필드(30일 기준)도 동일 의미로 재계산됨.
