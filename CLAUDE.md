@@ -2,6 +2,26 @@
 
 ## 사이트 배포 자동화 (필수) [2026-06-11 webhook 복귀 반영]
 
+## 🔴 [임시·최우선] GitHub 플래그 기간 배포 룰 (2026-06-12 ~ 플래그 해제까지)
+
+**상황**: GitHub 계정 플래그로 서드파티 OAuth(Vercel) 연결이 차단됨. 부수효과로 **Vercel deployment 가 전부 `Blocked` → production 승격(promote/alias) 불가 → 본서버 갱신 불가**. (2026-06-12 Vercel Deployments 화면에서 최근 Production 전부 "Blocked" 확인. `promote`·`alias set` 모두 `not ready (422)` 거부.) GitHub Support 티켓 #4287825 후속 답변 발송, 처리 대기 중.
+
+**플래그 해제 전까지 강제 동작 — 이 4가지를 무조건 따른다**:
+
+1. **Vercel 시도 금지.** `vercel --prod` / `vercel ls` 확인 전부 무의미하다(Blocked 라 100% 실패 + 좀비 백그라운드만 누적). **본서버 갱신을 시도하지 말 것.** 시간 낭비다.
+2. **Cloudflare 미러가 유일 배포 채널.** `reports/**/*.html` 포함 push 직후 반드시 1줄만 실행:
+   ```bash
+   bash scripts/deploy_cloudflare.sh
+   ```
+3. **사용자 향 완료 링크 = Cloudflare** (`https://stock-analyst.pages.dev/`). 평소 "Vercel 본서버 우선" 룰의 한시적 예외(Vercel 이 stale 이므로). [[feedback_completion_links_vercel]] 예외 적용 중.
+4. **완료 보고 형식 고정**: `Cloudflare 미러 ✅ / Vercel 본서버 ❌(GitHub 플래그로 promote 차단, 해제 후 일괄 복구)`.
+
+**원복 트리거(이 블록 삭제 조건)**: 플래그 해제 신호 = ① 사용자가 "플래그 풀렸다" 고지, 또는 ② `vercel --prod --yes`(sandbox 우회 호출법은 아래) 후 deployment 가 `● Ready` 로 승격됨, 또는 ③ Vercel 대시보드 Deployments 에서 Production 이 Blocked→Ready 로 뜸. 셋 중 하나 확인되면 → **본 임시 블록 삭제 + 평상시 룰 복귀**, 그리고 `vercel --prod --yes` 한 번으로 그동안 누적된 reports 를 일괄 반영.
+
+> 수동 `vercel --prod` 정확한 호출법(플래그 해제 후 사용): `dangerouslyDisableSandbox: true` + `timeout 160 vercel --prod --yes < /dev/null 2>&1 | tail -15`. 그냥 호출하면 sandbox 가 `~/.vercel` 토큰 차단(Not authorized) 또는 백그라운드 행. 상세: 메모리 [[project_github_actions_disabled]].
+
+---
+
 `reports/**/*.html` (종목 / 브리핑 / 애널리스트) 변경이 포함된 main push 직후:
 
 ```bash
