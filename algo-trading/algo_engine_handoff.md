@@ -552,3 +552,13 @@ S&P(VOO) 28%, 국채 20%, 배당 15%, 국내 17%, Gold 10%, 현금 10%
 5. macro_regime.json 의 FRED 입력도 2026-06-12 부로 일일 갱신 복구 (5/30~6/12 stale 였음).
 
 **그쪽 확인 권장**: 신선도 게이트 기준일을 `analysis_date` 로 쓰고 있다면 그대로 호환. `stale` 필드(30일 기준)도 동일 의미로 재계산됨.
+
+### 추가 (2026-06-12 당일): sector 필드 — 엔진 요청 반영
+
+stock_scores.json 의 각 종목에 `sector`(엔진 11종 분류) + `sector_raw`(GICS 원문) 추가.
+
+- 분류: Tech / Discretionary / Financials / Utilities / Staples / Energy / Materials / Industrials / Gold / Healthcare / REIT
+- `sector: null` = 광범위 인덱스·채권 ETF (VOO/SPY/AGG/SGOV 등 13종) — **의도적** null. 그쪽 "섹터 미상 = 중립 통과" 동작이 정확히 맞는 처리.
+- GLD/IAU → `Gold` (Stagflation 우호 섹터 매칭 ✓), Communication Services(GOOGL/META/VZ) → `Tech` 로 묶음 (레짐 차단은 보수 측).
+- 소스: `algo-trading/data/sector_map.json` 캐시 (yfinance GICS + ETF 수동 표). 신규 분석 티커는 15:25 일일 빌드가 증분 조회 — 조회 실패 시 null(중립 통과)이라 안전.
+- 커버리지: 111종 중 확정 98 + 의도적 null 13, 미상 0.

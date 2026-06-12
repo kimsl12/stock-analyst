@@ -181,6 +181,15 @@ function buildStockScores() {
   const UNLISTED = new Set(['ANTHROPIC', 'SPACEX']); // 비상장 — 매매 대상 아님
   const GRADE_LETTER = { '강력매수': 'A', '매수': 'B', '중립': 'C', '보유': 'C', '매도': 'F', '강력매도': 'F' };
 
+  // [v2.1] 섹터 맵 — 엔진의 레짐별 비우호 섹터 차단용 (엔진 요청 2026-06-12).
+  // scripts/build_sector_map.py 가 구축 (yfinance GICS → 엔진 11종 + ETF 오버라이드).
+  // null = 광범위 인덱스·채권 → 엔진 "중립 통과" (의도).
+  let sectorMap = {};
+  const sectorPath = join(OUT, 'sector_map.json');
+  if (existsSync(sectorPath)) {
+    try { sectorMap = JSON.parse(readFileSync(sectorPath, 'utf8')).map ?? {}; } catch {}
+  }
+
   const histDir = join(ROOT, 'analysis', '_history');
   const stocks = [];
 
@@ -212,10 +221,13 @@ function buildStockScores() {
     }
 
     const market = /^\d/.test(String(ticker)) ? 'KRX' : 'US';
+    const sec = sectorMap[String(ticker)] ?? null;
     stocks.push({
       ticker: String(ticker),
       name,
       version,
+      sector: sec?.sector ?? null,
+      sector_raw: sec?.sector_raw ?? null,
       score: score != null ? Number(score) : null,
       grade: gradeKr ? (GRADE_LETTER[gradeKr] ?? null) : null,
       grade_kr: gradeKr ?? null,

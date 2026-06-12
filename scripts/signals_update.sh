@@ -52,6 +52,9 @@ if [ "$PULL_OK" -eq 0 ]; then
   notify_fail "signals git pull 실패 — 로컬 데이터로 빌드 진행함"
 fi
 
+# 신규 분석 티커의 섹터 증분 조회 (캐시 완비 시 즉시 no-op) [v2.1]
+python3 scripts/build_sector_map.py --missing-only 2>&1 | tail -1 || log "WARN: sector_map 갱신 실패 — 기존 맵 사용"
+
 if ! node algo-trading/build_signals.mjs 2>&1; then
   log "ERROR: build_signals 실패"
   notify_fail "build_signals.mjs 실패 — 신호 stale, 15:40 엔진 점검 전 수동 복구 필요"
