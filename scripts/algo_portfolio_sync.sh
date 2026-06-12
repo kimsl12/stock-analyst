@@ -75,16 +75,22 @@ if ! git push origin main 2>&1; then
   notify_fail "algo 보유 push 실패 — 배포는 진행됨, 커밋은 다음 회차 push"
 fi
 
-# deploy — /portfolio 는 Astro 앱 = Vercel 단독 채널 (Cloudflare 미러는 reports/ 전용이라
-# 앱 페이지가 없음 — 2026-06-12 실측, pages.dev/portfolio 는 폴백 인덱스).
-# timeout 가드: GitHub 플래그 기간 Vercel Blocked + 좀비 행 실측 — 가드는 해제 후에도 유지.
+# deploy — Cloudflare 미러 (풀사이트 패키징, 2026-06-12 전환 — 플래그 기간 주채널)
+# → Vercel (timeout 가드: 플래그 기간 Blocked + 좀비 행 실측, 해제 후 자동 복구)
+log "bash scripts/deploy_cloudflare.sh"
+if bash scripts/deploy_cloudflare.sh 2>&1; then
+  log "Cloudflare 배포 완료"
+  bash "$NOTIFY" "알고 매매 보유 반영" "포지션 ${POS_COUNT}건, 최근 ${LAST_TRADE} — 미러 /portfolio 갱신 완료" || true
+else
+  log "WARN: Cloudflare 배포 실패"
+  notify_fail "알고 보유 미러 배포 실패 — 사이트 미반영 (단독 재실행 가능)" high
+fi
+
 log "vercel --prod --yes (timeout 160s)"
 if timeout 160 vercel --prod --yes < /dev/null 2>&1; then
   log "Vercel 배포 완료"
-  bash "$NOTIFY" "알고 매매 보유 반영" "포지션 ${POS_COUNT}건, 최근 ${LAST_TRADE} — /portfolio 갱신 완료" || true
 else
-  log "WARN: Vercel 배포 실패/타임아웃 — push 는 완료, 플래그 기간이면 해제 후 자동 일괄 반영"
-  notify_fail "알고 보유 Vercel 반영 실패 — push 완료, 본서버는 플래그 해제 후 반영"
+  log "WARN: Vercel 배포 실패/타임아웃 — 플래그 기간 예상 동작 (해제 후 자동 복구)"
 fi
 
 log "=== 완료 (포지션 ${POS_COUNT}건) ==="

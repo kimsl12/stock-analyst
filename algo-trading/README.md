@@ -402,7 +402,7 @@ cat algo-trading/data/stock_scores.json | python3 -c "import sys,json; d=json.lo
 - `trades` — 최신순 최근 50건 (reason_code: ENTRY/STOP/TRAIL_STOP/TARGET/TIME_EXIT/GRADE_EXIT/REGIME_EXIT/EMERGENCY/REPLACE)
 - `engine_status` — live | paused | not_live (live + 2일 무갱신 → 종목분석 watchdog 경고)
 
-종목분석 쪽 반영 파이프라인: launchd `com.stockanalyst.algo-sync` (KST 16:15) + watchdog (06:40/10:30) 이 변경 감지 → commit/push → Vercel 배포 (/portfolio 는 본서버 단독 — Cloudflare 미러는 reports 전용).
+종목분석 쪽 반영 파이프라인: launchd `com.stockanalyst.algo-sync` (KST 16:15) + watchdog (06:40/10:30) 이 변경 감지 → commit/push → Cloudflare 미러(풀사이트) + Vercel(플래그 해제 후) 배포.
 
 ---
 

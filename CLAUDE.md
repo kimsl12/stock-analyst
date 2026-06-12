@@ -13,6 +13,7 @@
    ```bash
    bash scripts/deploy_cloudflare.sh
    ```
+2.5. **[2026-06-12 풀사이트 전환]** `deploy_cloudflare.sh` 는 이제 web 빌드 + `web/dist` 전체 + raw reports overlay 를 패키징 — **/portfolio·대시보드 등 Astro 앱 페이지도 미러에서 라이브** (소요 ~2분, 종전 5초 아님). 앱 페이지 변경도 push 후 위 1줄이면 반영. reports 전용 긴급 경로: `CF_REPORTS_ONLY=1 bash scripts/deploy_cloudflare.sh`.
 3. **사용자 향 완료 링크 = Cloudflare** (`https://stock-analyst.pages.dev/`). 평소 "Vercel 본서버 우선" 룰의 한시적 예외(Vercel 이 stale 이므로). [[feedback_completion_links_vercel]] 예외 적용 중.
 4. **완료 보고 형식 고정**: `Cloudflare 미러 ✅ / Vercel 본서버 ❌(GitHub 플래그로 promote 차단, 해제 후 일괄 복구)`.
 

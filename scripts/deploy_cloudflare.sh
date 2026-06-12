@@ -44,6 +44,24 @@ echo "    python:     $PYTHON"
 rm -rf "$DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR/reports" "$DEPLOY_DIR/reports/briefing" "$DEPLOY_DIR/reports/research" "$DEPLOY_DIR/reports/analyst/items"
 
+# 1.5 [2026-06-12 풀사이트 전환] web/dist (Astro 앱 전체) 우선 패키징
+#     GitHub 플래그로 Vercel Blocked → 미러가 /portfolio 등 앱 페이지의 유일 라이브 채널.
+#     신선도 위해 web 재빌드 시도, 실패 시 기존 dist 사용 (앱 페이지가 미러에서 사라지는 것 방지),
+#     dist 자체가 없으면 종전 reports 전용 모드로 폴백. 긴급 우회: CF_REPORTS_ONLY=1
+#     이후 단계의 raw reports 복사는 overlay 로 유지 (빌드 이후 push 된 리포트 반영).
+FULL_SITE=0
+if [ "${CF_REPORTS_ONLY:-0}" != "1" ]; then
+  echo "==> web 빌드 (풀사이트 모드 — 실패해도 기존 dist 로 진행)"
+  (cd web && npm run build) || echo "==> WARN: web 빌드 실패 — 기존 dist 사용"
+  if [ -f "web/dist/index.html" ]; then
+    FULL_SITE=1
+    cp -R web/dist/. "$DEPLOY_DIR/"
+    echo "==> 풀사이트 패키징: web/dist $(find web/dist -type f | wc -l | tr -d ' ')파일"
+  else
+    echo "==> WARN: web/dist 없음 — reports 전용 모드로 진행"
+  fi
+fi
+
 # 2. HTML 복사 (nullglob 으로 빈 디렉토리 대응)
 shopt -s nullglob
 stock_files=(reports/*.html)
@@ -82,8 +100,12 @@ echo "==> 애널리스트 인덱스 갱신"
 # 출력을 deploy_dir 로 한정 — repo의 reports/analyst/index.html 은 건드리지 않음 (git 작업 트리 오염 방지)
 "$PYTHON" "$SCRIPT_DIR/build_analyst_index.py" "$DEPLOY_DIR/reports/analyst/index.html"
 
-echo "==> 메인 인덱스 생성 (3컬럼)"
-"$PYTHON" "$SCRIPT_DIR/build_main_index.py" "$DEPLOY_DIR"
+if [ "$FULL_SITE" -eq 1 ]; then
+  echo "==> 메인 인덱스 생략 (풀사이트 모드 — Astro 앱 index 유지)"
+else
+  echo "==> 메인 인덱스 생성 (3컬럼)"
+  "$PYTHON" "$SCRIPT_DIR/build_main_index.py" "$DEPLOY_DIR"
+fi
 
 # 6. 통계
 stock_count=$(find "$DEPLOY_DIR/reports" -maxdepth 1 -name "*.html" 2>/dev/null | wc -l | tr -d ' ')
