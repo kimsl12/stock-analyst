@@ -637,6 +637,6 @@ stock_scores.json 의 각 종목에 `sector`(엔진 11종 분류) + `sector_raw`
 
 ### 9.3 종목분석 쪽 동작 (이미 구현됨 — 엔진은 파일만 쓰면 됨)
 
-- launchd **16:15 KST** (`com.stockanalyst.algo-sync`) + watchdog (06:40/10:30) 이 파일 변경 감지 → commit/push → Vercel + Cloudflare 자동 배포 → `/portfolio` 페이지 "알고 자동매매" 섹션에 표시. 일 3회 반영 (15:40 매매분은 16:15 슬롯).
+- launchd **16:15 KST** (`com.stockanalyst.algo-sync`) + watchdog (06:40/10:30) 이 파일 변경 감지 → commit/push → Vercel 배포 → `/portfolio` 페이지 "알고 자동매매" 섹션에 표시. 일 3회 반영 (15:40 매매분은 16:15 슬롯). 앱 페이지는 Vercel 본서버 단독 채널 (Cloudflare 미러는 reports 전용).
 - `engine_status: "not_live"` placeholder 가 이미 들어 있음 — 엔진 가동 시 `live` 로 바꿔서 덮어쓰면 끝.
 - 검증: 종목분석 쪽은 schema_version 불일치·파싱 실패 시 해당 섹션만 비표시 (빌드는 안 깨짐). 단 그 상태가 지속되면 사용자에게 보이지 않으므로 스키마 준수 필수.

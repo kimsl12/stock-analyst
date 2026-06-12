@@ -75,23 +75,17 @@ if ! git push origin main 2>&1; then
   notify_fail "algo 보유 push 실패 — 배포는 진행됨, 커밋은 다음 회차 push"
 fi
 
-# deploy 두 채널 (daily_pick_update 와 동일 패턴 — vercel 은 로컬 소스 업로드라 push 와 무관)
-log "vercel --prod --yes"
-if vercel --prod --yes 2>&1; then
+# deploy — /portfolio 는 Astro 앱 = Vercel 단독 채널 (Cloudflare 미러는 reports/ 전용이라
+# 앱 페이지가 없음 — 2026-06-12 실측, pages.dev/portfolio 는 폴백 인덱스).
+# timeout 가드: GitHub 플래그 기간 Vercel Blocked + 좀비 행 실측 — 가드는 해제 후에도 유지.
+log "vercel --prod --yes (timeout 160s)"
+if timeout 160 vercel --prod --yes < /dev/null 2>&1; then
   log "Vercel 배포 완료"
+  bash "$NOTIFY" "알고 매매 보유 반영" "포지션 ${POS_COUNT}건, 최근 ${LAST_TRADE} — /portfolio 갱신 완료" || true
 else
-  log "WARN: Vercel 배포 실패"
-  notify_fail "알고 보유 Vercel 배포 실패 — 본서버 stale 가능성" high
+  log "WARN: Vercel 배포 실패/타임아웃 — push 는 완료, 플래그 기간이면 해제 후 자동 일괄 반영"
+  notify_fail "알고 보유 Vercel 반영 실패 — push 완료, 본서버는 플래그 해제 후 반영"
 fi
 
-log "bash scripts/deploy_cloudflare.sh"
-if bash scripts/deploy_cloudflare.sh 2>&1; then
-  log "Cloudflare 배포 완료"
-else
-  log "WARN: Cloudflare 배포 실패"
-  notify_fail "알고 보유 Cloudflare 배포 실패 — 미러 stale (단독 재실행 가능)"
-fi
-
-bash "$NOTIFY" "알고 매매 보유 반영" "포지션 ${POS_COUNT}건, 최근 ${LAST_TRADE} — /portfolio 갱신 완료" || true
 log "=== 완료 (포지션 ${POS_COUNT}건) ==="
 exit 0

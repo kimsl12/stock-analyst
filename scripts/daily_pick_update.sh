@@ -105,8 +105,9 @@ if ! git push origin main 2>&1; then
 fi
 
 # 7. deploy 두 채널
-log "vercel --prod --yes"
-if vercel --prod --yes 2>&1; then
+# [2026-06-12] timeout 가드 — GitHub 플래그 기간 Vercel Blocked + 행 실측 (행이 Cloudflare 단계를 막음)
+log "vercel --prod --yes (timeout 160s)"
+if timeout 160 vercel --prod --yes < /dev/null 2>&1; then
   log "Vercel 배포 완료"
 else
   log "WARN: Vercel 배포 실패"
