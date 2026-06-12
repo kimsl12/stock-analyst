@@ -398,3 +398,16 @@ test('validateParsed: total_value_usd null → 실패', () => {
   const failures = validateParsed(parsed);
   assert.ok(failures.some((f) => /total_value_usd null/.test(f)));
 });
+
+test('parseTotals: 정수 환율 표기 ("≈ **1,502원**") 추출 — v3.32 회귀 테스트', () => {
+  const lines = [
+    '### 포트폴리오 총액 (2026-05-25 기준)',
+    '| 항목 | 금액 (USD) |',
+    '| --- | --- |',
+    '| **총액** | **$22,040** |',
+    '환율 기준: USD/KRW ≈ **1,502원** (2026-05-25 추정)',
+  ];
+  const t = parseTotals(lines);
+  assert.equal(t.exchange_rate, 1502);
+  assert.equal(t.total_value_krw, 22040 * 1502);
+});

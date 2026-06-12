@@ -22,8 +22,17 @@ function toNum(s) {
 
 /** 종합 점수 (0~100). 미발견 시 null. */
 export function parseScore(md) {
-  const m = md.match(/종합\s*점수\D{0,8}(\d{1,3}(?:\.\d+)?)\s*\/\s*100/);
-  if (m) return toNum(m[1]);
+  // 형식 변형 [v3.32 보강]: "종합점수: 76 / 100" / "종합 스코어: **77 / 100**" /
+  // "등급: 중립 (Hold) — 70.5점" / 산문 "스코어 45 → 중립"
+  const patterns = [
+    /종합\s*(?:점수|스코어)\D{0,8}(\d{1,3}(?:\.\d+)?)\s*\/\s*100/,
+    /등급[^\n]{0,40}?—\s*(\d{2,3}(?:\.\d+)?)\s*점/,
+    /스코어\s*(\d{2,3}(?:\.\d+)?)\s*→/,
+  ];
+  for (const re of patterns) {
+    const m = md.match(re);
+    if (m) return toNum(m[1]);
+  }
   return null;
 }
 
@@ -35,6 +44,9 @@ export function parseGrade(md) {
   // 2. "## N. 투자등급" 섹션 직후 "### 매수 (Buy)" 헤딩
   const m2 = md.match(/##\s*\d*\.?\s*투자\s*등급[\s\S]{0,200}?###\s*(강력\s?매수|강력\s?매도|매수|중립|보유|매도)/);
   if (m2) return m2[1].replace(/\s/g, '');
+  // 3. [v3.32] "등급: 중립 (Hold) — 70.5점" / "> **등급: 매수**" (재분석 v5 계열)
+  const m3 = md.match(/(?:^|\n)[>\s#*-]*등급\s*[:：]\s*\**\s*(강력\s?매수|강력\s?매도|매수|중립|보유|매도)/);
+  if (m3) return m3[1].replace(/\s/g, '');
   return null;
 }
 

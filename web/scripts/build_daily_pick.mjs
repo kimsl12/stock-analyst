@@ -19,6 +19,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nowKstIsoShort, todayKst } from './_kst.mjs';
+import { parseScore, parseGrade, parseStopLoss, parseTargetPrice } from './lib/scorecard_parser.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +31,10 @@ const OUTPUT_JSON = path.join(WEB_DIR, 'src', 'data', 'daily_pick.json');
 
 const MIN_SCORE = 80;
 const REMIND_MIN_SCORE = 85;
+
+// [v3.32, 2026-06-12] 비상장 종목 — 매수 불가 + /api/price 404 로 위젯 카드 깨짐 → 후보 제외.
+// (2026-06-12 ANTHROPIC 85.5 가 픽으로 선정되어 카드 전체가 '—' 표시된 사고)
+const UNLISTED = new Set(['ANTHROPIC', 'SPACEX']);
 
 // ---------------------------------------------------------------------------
 // 1. session-bootstrap.md 파싱 → 종목 후보 목록
@@ -49,6 +54,7 @@ async function parseBootstrap() {
     const m = re.exec(line);
     if (!m) continue;
     const [, ticker, name, version, date, scoreStr, gradeRaw] = m;
+    if (UNLISTED.has(ticker)) continue; // [v3.32] 비상장 제외
     const score = Number(scoreStr);
     if (!Number.isFinite(score) || score < MIN_SCORE) continue;
     const grade = gradeRaw.trim();
@@ -103,6 +109,8 @@ async function extractScorecardMeta(scorecardPath) {
     buy_price: null,
     stop_price: null,
     tp_price: null,
+    current_score: null,
+    current_grade: null,
     currency: 'USD',
     holding_period_days: null,
     reasons: [],
@@ -115,13 +123,14 @@ async function extractScorecardMeta(scorecardPath) {
   const cur = text.match(/현재가[:\s]*[*₩$]*([\d,.]+)/);
   if (cur) out.current_price = Number(cur[1].replace(/,/g, ''));
 
-  // 손절 (2×ATR / ATR 기반)
-  const stop = text.match(/(?:2[x×]\s*ATR\s*손절|손절가?|손절\s*\(2[x×]ATR\)|손절)[:\s]*\*?\*?[$₩]?([\d,.]+)\s*원?/);
-  if (stop) out.stop_price = Number(stop[1].replace(/,/g, ''));
+  // [v3.32] 손절·목표가 — lib/scorecard_parser 재사용 (통화 문맥 필수 패턴).
+  // 구 정규식이 "종합 목표가: 12M 기준 $238" 의 "12" 를 TP 로 오캡처하던 사고 수정.
+  out.stop_price = parseStopLoss(text);
+  out.tp_price = parseTargetPrice(text);
 
-  // 목표가 (Base / 종합)
-  const tp = text.match(/(?:Base\s*TP|종합\s*목표가|목표가\s*Base|Base\s*목표가)[:\s]*\*?\*?[$₩]?([\d,.]+)/);
-  if (tp) out.tp_price = Number(tp[1].replace(/,/g, ''));
+  // [v3.32] 최신 스코어카드 기준 점수·등급 — bootstrap 의 구버전 행 점수 보정용
+  out.current_score = parseScore(text);
+  out.current_grade = parseGrade(text);
 
   // 매수가 (분할 평단 / 적정 매수가 / 추격 매수가)
   const buy = text.match(/(?:분할\s*매수\s*평단|적정\s*매수가|매수가|평단)[:\s]*\*?\*?[$₩]?([\d,.]+)/);
@@ -175,12 +184,18 @@ async function pickToday(candidates) {
     try { history = JSON.parse(await readFile(historyPath, 'utf-8')); } catch {}
   }
 
+  // [v3.32] 일중 멱등성 — 오늘 이미 픽이 있으면 그 종목 유지 (재로테이션 금지).
+  // 이력이 미커밋 상태로 Vercel 컨테이너가 재빌드할 때마다 픽이 굴러가던 버그 수정
+  // (2026-06-12 실측: 자정 CEG → 재빌드마다 VIG/MSFT/AMZN 으로 변동).
+  const today = todayKst();
+  const todayEntry = [...history].reverse().find(h => h.date === today);
+
   // 최근 7일 추천 티커
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 7);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
   const recentTickers = new Set(
-    history.filter(h => h.date >= cutoffStr).map(h => h.ticker)
+    history.filter(h => h.date >= cutoffStr && h.date !== today).map(h => h.ticker)
   );
 
   // 정렬: 점수 desc → 발화일 desc
@@ -189,14 +204,26 @@ async function pickToday(candidates) {
     return b.date.localeCompare(a.date);
   });
 
-  // 1차: 최근 7일 추천 안 된 종목 우선
+  // 1차: 최근 7일 추천 안 된 종목 우선.
+  // 오늘 픽이 이미 있으면 그 종목을 "맨 앞에서 먼저" 시도 (멱등) — 단 최신 스코어카드
+  // 검증에 탈락하면 (예: 재분석 강등) 정상 후보로 넘어간다. 잘못된 픽 고착 방지.
   const fresh = sorted.filter(c => !recentTickers.has(c.ticker));
-  const pool = fresh.length > 0 ? fresh : sorted;
+  let pool = fresh.length > 0 ? fresh : sorted;
+  if (todayEntry) {
+    const samePick = pool.filter(c => c.ticker === todayEntry.ticker);
+    const rest = pool.filter(c => c.ticker !== todayEntry.ticker);
+    pool = [...samePick, ...rest];
+  }
 
   for (const c of pool) {
     const sc = await findLatestScorecard(c.ticker, c.name);
     if (!sc) continue;
     const meta = await extractScorecardMeta(sc.path);
+
+    // [v3.32] 최신 스코어카드 점수로 재검증 — bootstrap 행은 구버전(재분석 전) 점수일 수 있음.
+    // 현재 점수가 임계 미달이면 추천 부적격 → 다음 후보로 (VIG 사고: bootstrap 83.75 vs 실제 v3 74).
+    const liveScore = meta.current_score;
+    if (liveScore != null && liveScore < MIN_SCORE) continue;
     const market = guessMarket(c.ticker);
     const currency = market === 'KRX' ? 'KRW' : market === 'US' ? 'USD' : meta.currency;
 
@@ -204,8 +231,8 @@ async function pickToday(candidates) {
       ticker: c.ticker,
       name: c.name,
       version: c.version,
-      score: c.score,
-      grade: c.grade,
+      score: liveScore ?? c.score,
+      grade: meta.current_grade ?? c.grade,
       analysis_date: c.date,
       analysis_dir: sc.dir,
       market,
@@ -218,12 +245,14 @@ async function pickToday(candidates) {
       reasons: meta.reasons,
     };
 
-    // 이력 갱신 (최근 30일만 보존)
+    // 이력 갱신 (최근 30일만 보존, 같은 날 중복 push 금지 — 멱등 재실행 대비)
     const monthAgo = new Date();
     monthAgo.setDate(monthAgo.getDate() - 30);
     const monthAgoStr = monthAgo.toISOString().slice(0, 10);
     history = history.filter(h => h.date >= monthAgoStr);
-    history.push({ date: todayKst(), ticker: c.ticker, score: c.score });
+    if (!history.some(h => h.date === todayKst() && h.ticker === c.ticker)) {
+      history.push({ date: todayKst(), ticker: c.ticker, score: pick.score });
+    }
     await writeFile(historyPath, JSON.stringify(history, null, 2), 'utf-8');
 
     return pick;

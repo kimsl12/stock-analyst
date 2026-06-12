@@ -45,6 +45,37 @@ if (!sb) {
   }
 }
 
+// [v3.32] Supabase 행에 KRW 총액·환율이 비어 있으면 user_portfolio.md 에서 빌드 시점 폴백
+// (총액(KRW)·환율 카드가 '—' 로 비어 보이던 문제)
+if (portfolio && (portfolio.total_value_krw == null || portfolio.exchange_rate == null)) {
+  try {
+    const { readFileSync } = await import('node:fs');
+    const path = await import('node:path');
+    const mdPath = path.resolve(process.cwd(), '..', 'knowledge-base/portfolio/user_portfolio.md');
+    const lib = await import('../../../scripts/lib/portfolio_parser.mjs');
+    const lines = lib.extractCurrentSection(readFileSync(mdPath, 'utf-8')).split('\n');
+    const totals = lib.parseTotals(lines);
+    if (portfolio.total_value_krw == null && totals?.total_value_krw != null) {
+      portfolio.total_value_krw = totals.total_value_krw;
+    }
+    if (portfolio.exchange_rate == null && totals?.exchange_rate != null) {
+      portfolio.exchange_rate = totals.exchange_rate;
+    }
+  } catch { /* md 폴백 실패 시 기존 '—' 유지 */ }
+}
+
+// [v3.32] 프로파일 값의 마크다운 링크 → 텍스트 정리 ("[라벨](경로)" 원문 노출 문제)
+if (portfolio?.profile) {
+  for (const [k, v] of Object.entries(portfolio.profile)) {
+    if (typeof v === 'string') {
+      (portfolio.profile as Record<string, string>)[k] = v
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/\\_/g, '_')
+        .replace(/\*\*/g, '');
+    }
+  }
+}
+
 const fmtMoney = (v: number | null, currency: 'USD' | 'KRW' = 'USD') => {
   if (v == null) return '—';
   const opts: Intl.NumberFormatOptions = currency === 'USD'

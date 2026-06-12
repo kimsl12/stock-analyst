@@ -93,3 +93,18 @@ test('통화 기호 없는 숫자는 손절/목표가로 채택 안 함', () => 
 test('parseScorecard: 분석일 추출', () => {
   assert.equal(parseScorecard(STOCK_MD).analysis_date, '2026-06-06');
 });
+
+// ── v3.32 형식 변형 보강 (재분석 v5 계열 — 2026-06-12 웹 점검에서 발견) ──
+test('재분석 v5: "### 종합 스코어: **77 / 100**" 형식', () => {
+  assert.equal(parseScore('### 종합 스코어: **77 / 100**'), 77);
+});
+
+test('SPACEX 형식: "등급: 중립 (Hold) — 70.5점" → 점수+등급', () => {
+  const md = '> **등급: 중립 (Hold) — 70.5점, 유니버스 상위 44% (38/84위)**';
+  assert.equal(parseScore(md), 70.5);
+  assert.equal(parseGrade(md), '중립');
+});
+
+test('INTC 산문: "스코어 45 → 중립" 형식', () => {
+  assert.equal(parseScore('등급 매핑: 스코어 45 → 중립(45~64점) 구간'), 45);
+});

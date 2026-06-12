@@ -228,8 +228,13 @@ export function parseTotals(lines) {
   let fx = null;
   for (const line of lines) {
     if (/환율/.test(line) && /원/.test(line)) {
-      const m = line.match(/([\d,]+\.\d+)\s*원/);
-      if (m) { fx = cleanMoney(m[1]); break; }
+      // [v3.32] 정수 환율 허용 — "≈ **1,502원**" 표기(2026-05-25~)가 소수점 필수 패턴에 미매치
+      // → sync→Supabase→/portfolio 카드 체인 전체가 KRW null 이던 원인
+      const m = line.match(/([\d,]+(?:\.\d+)?)\s*원/);
+      if (m) {
+        const v = cleanMoney(m[1]);
+        if (v != null && v >= 800 && v <= 2500) { fx = v; break; } // 환율 범위 가드
+      }
     }
   }
   const totalKrw = totalUsd && fx ? totalUsd * fx : null;

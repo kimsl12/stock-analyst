@@ -16,6 +16,7 @@ import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nowKstIsoShort } from './_kst.mjs';
+import { parseScore } from './lib/scorecard_parser.mjs';
 
 // ---------------------------------------------------------------------------
 // 경로
@@ -46,6 +47,7 @@ const BRIEFING_TYPE = {
   model_portfolio: 'model_portfolio',
   rebalancing_user: 'rebalancing',
   rebalancing: 'rebalancing',
+  performance_review: 'performance_review', // [v3.32] /성과리뷰 산출물 (기간 접미사는 parseBriefing 이 정규화)
   daily_briefing: 'daily_briefing', // legacy
 };
 
@@ -67,7 +69,7 @@ const RESEARCH_SECTOR_LABELS = {
 // ---------------------------------------------------------------------------
 // 파일명 파서
 // ---------------------------------------------------------------------------
-const RE_BRIEFING = /^([a-z_]+)_(\d{8})\.html$/;
+const RE_BRIEFING = /^([a-z0-9_]+?)_(\d{8})\.html$/; // [v3.32] 타입에 숫자 허용 (performance_review_1m)
 const RE_STOCK = /^([0-9A-Z][0-9A-Za-z]*)_(.+)_(\d{8})\.html$/;
 // [v3.17] research/{sector}_{YYYY}Q{N}.html (분기 단위 Deep Dive)
 const RE_RESEARCH = /^([a-z]+)_(\d{4})Q([1-4])\.html$/;
@@ -171,7 +173,9 @@ function parseBriefing(filename) {
   const m = RE_BRIEFING.exec(filename);
   if (!m) return null;
   const [, rawType, dateStr] = m;
-  const btype = BRIEFING_TYPE[rawType];
+  // [v3.32] 기간 접미사 정규화 — performance_review_1m_20260505.html 류 (구 정규식이 미인식하던 6건)
+  const normType = rawType.replace(/_(1w|2w|1m|3m)$/, '');
+  const btype = BRIEFING_TYPE[normType];
   if (!btype) return null;
   return { type: btype, ticker: null, name: null, date: fmtDate(dateStr) };
 }
@@ -362,20 +366,37 @@ async function main() {
     });
   }
 
-  // [v3.25] stock_scores.json에서 스코어 맵 로드
+  // [v3.32, 2026-06-12] 스코어 맵 — analysis/_history timeline (실분석 최신 점수) 기반.
+  // 구 소스 algo-trading/stock_scores.json 은 2026-05-19 1회 생성 후 미갱신 + 오염
+  // (INTC 13, 구버전 점수, 비상장 포함) 으로 /stocks 카드가 실분석과 어긋나던 원인 — 폐기.
   const scoreMap = new Map();
-  const scoresPath = path.join(PROJECT_ROOT, 'algo-trading', 'data', 'stock_scores.json');
-  if (existsSync(scoresPath)) {
-    try {
-      const sc = JSON.parse(await readFile(scoresPath, 'utf-8'));
-      for (const s of (sc.stocks || [])) {
-        if (s.ticker && s.score != null) scoreMap.set(s.ticker, s.score);
-      }
-    } catch {}
+  const histDir = path.join(PROJECT_ROOT, 'analysis', '_history');
+  if (existsSync(histDir)) {
+    for (const fn of await readdir(histDir)) {
+      if (!fn.endsWith('_timeline.json')) continue;
+      try {
+        const tl = JSON.parse(await readFile(path.join(histDir, fn), 'utf-8'));
+        const hist = tl.history || [];
+        if (!tl.ticker || hist.length === 0) continue;
+        const last = hist[hist.length - 1];
+        let score = last.score;
+        if (score == null && last.scorecard_path) {
+          // timeline 미추출분 폴백 — lib/scorecard_parser 단일 소스 (형식 변형 일괄 대응)
+          const scPath = path.join(PROJECT_ROOT, last.scorecard_path);
+          if (existsSync(scPath)) {
+            score = parseScore(await readFile(scPath, 'utf-8'));
+          }
+        }
+        if (score != null && Number.isFinite(Number(score))) {
+          scoreMap.set(String(tl.ticker), Number(score));
+        }
+      } catch {}
+    }
   }
 
   // 2. reports/*.html (루트 = 종목분석/ETF)
   for (const fn of await listHtml(REPORTS_DIR)) {
+    if (fn === 'system_architecture.html') continue; // [v3.32] 시스템 문서 — 종목 카드 아님 (의도적 제외)
     const meta = parseStock(fn);
     if (!meta) {
       warnings.push(`미인식 stock 파일명: ${fn}`);

@@ -164,6 +164,13 @@ async function parseKbHealth() {
   const fm = text.match(/lint_last_run:\s*([\d-]+)/);
   const last_lint = fm?.[1] ?? null;
 
+  // [v3.32] frontmatter 카운트 1순위 (형식 독립적 — P0 표 제거 시 다음 표를 오카운트하던 버그 수정)
+  const fmP0 = text.match(/lint_p0_count:\s*(\d+)/);
+  const fmP1 = text.match(/lint_p1_count:\s*(\d+)/);
+  if (fmP0 && fmP1) {
+    return { p0: Number(fmP0[1]), p1: Number(fmP1[1]), last_lint, available: true };
+  }
+
   const p0Tbl = findTableAfter(text, /^##\s*P0/);
   const p1Tbl = findTableAfter(text, /^##\s*P1/);
   const p0 = p0Tbl ? p0Tbl.rows.filter((r) => r[0] && !/^\[INFO\]/.test(r[0])).length : 0;
