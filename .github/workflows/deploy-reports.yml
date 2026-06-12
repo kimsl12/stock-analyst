@@ -1,13 +1,19 @@
 name: Deploy Reports to GitHub Pages
 
+# [2026-06-12 자동 트리거 비활성화] gh-pages 자동 배포 중단.
+# 이유: main push → 이 워크플로가 gh-pages 에 push → Vercel 이 gh-pages 브랜치를 Preview 배포 시도 →
+#       gh-pages 는 정적 HTML(Astro/web 구조 없음) → 빌드 실패 → GitHub Deployments 에 "Failed" 반복 누적.
+#       이 자동 실패 deployment 누적이 GitHub abuse-detection 플래그 노이즈로 의심됨 (2026-06-12 사용자 관찰).
+#       Cloudflare 미러가 풀사이트(web 빌드 포함)로 채널 대체하므로 gh-pages 손실 없음.
+# 재가동: GitHub 플래그 해제 + GitHub Pages 채널이 다시 필요하면 아래 push 블록 복원.
 on:
-  push:
-    paths:
-      - 'reports/**/*.html'
-    branches:
-      - main
-      - 'claude/**'
   workflow_dispatch:
+#   push:
+#     paths:
+#       - 'reports/**/*.html'
+#     branches:
+#       - main
+#       - 'claude/**'
 
 jobs:
   deploy:
