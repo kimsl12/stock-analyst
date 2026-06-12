@@ -45,12 +45,34 @@ type Agg = {
   thesis_score: number;
 };
 
+// [v3.32] 분석가명 정규화 — "Tom Lee" vs "Tom Lee (Fundstrat)" vs "Dan Ives (Wedbush ... 총괄)"
+// 처럼 같은 인물이 표기 차이로 분할되던 문제. 후미 괄호(소속·직함)·" — 직함" 접미 제거 후
+// 소문자 키로 병합. 'N/A' 류는 결측 취급 → source 로 폴백 (가짜 분석가 행 방지).
+function canonicalAnalyst(it: AnalystItem): { key: string; display: string } {
+  let raw = (it.analyst_name ?? '').trim();
+  if (!raw || /^(n\/a|없음|미상|미확인|unknown|-)$/i.test(raw) || /^(구체|출연진|확인\s*불가)/.test(raw)) raw = '';
+  let name = raw
+    .replace(/\s*[(（][^)）]*[)）]\s*/g, ' ') // 괄호 소속·직함
+    .replace(/\s+[—–]\s+.*$/, '') // " — 직함·수식" 접미 (이름 내 하이픈은 보존)
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  if (!name) {
+    const src = (it.source ?? 'unknown').trim();
+    return { key: `src:${src.toLowerCase()}`, display: src };
+  }
+  return { key: name.toLowerCase(), display: name };
+}
+
 function aggregate(items: AnalystItem[]): Agg[] {
   const groups = new Map<string, AnalystItem[]>();
+  const displayOf = new Map<string, string>();
   for (const it of items) {
-    const key = it.analyst_name || it.source || 'unknown';
+    const { key, display } = canonicalAnalyst(it);
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(it);
+    // 표시명: 가장 짧은 변형 채택 (괄호 제거 후라 보통 동일)
+    const cur = displayOf.get(key);
+    if (!cur || display.length < cur.length) displayOf.set(key, display);
   }
   const aggs: Agg[] = [];
   for (const [key, list] of groups) {
@@ -70,7 +92,7 @@ function aggregate(items: AnalystItem[]): Agg[] {
     }, 0);
     aggs.push({
       key,
-      display_name: key,
+      display_name: displayOf.get(key) ?? key,
       source: list[0].source ?? null,
       count,
       hits,

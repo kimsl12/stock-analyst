@@ -9,13 +9,15 @@ interface Props {
   size_bytes: number;
   filename: string;
 }
+import { typeLabel } from '../lib/type_labels';
+
 const { title, type, date, url_path, ticker, name, size_bytes, filename } = Astro.props;
 const sizeKB = Math.round(size_bytes / 1024);
 const display = title || (ticker ? `${ticker} · ${name ?? ''}`.trim() : filename);
 ---
 <a class="report-card" href={url_path} data-type={type} data-date={date} data-ticker={ticker ?? ''}>
   <div class="report-card-meta">
-    <span class:list={['badge', `t-${type}`]}>{type.replace(/_/g, ' ')}</span>
+    <span class:list={['badge', `t-${type}`]}>{typeLabel(type)}</span>
     {ticker && <span class="ticker">{ticker}</span>}
   </div>
   <h3 class="report-card-title">{display}</h3>
