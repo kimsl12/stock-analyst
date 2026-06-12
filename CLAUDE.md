@@ -6,8 +6,9 @@
 
 ```bash
 # 1. 본서버 (Vercel) — push 가 자동 빌드 트리거 (webhook 재연결 2026-06-11 검증).
-#    push 후 1~2분 내 확인만: vercel ls 최신 행이 방금 push 의 자동 빌드 ● Ready 인지.
-#    자동 빌드 미발생/실패 시에만 수동 fallback: vercel --prod --yes
+#    ⚠️ 단 간헐 누락 있음 (2026-06-12 실측: 09:33 push 빌드됨, 10:04 push 누락 —
+#    GitHub 계정 플래그의 서드파티 전송 제한 추정. 백업 훅 추가 불가, 사용자가 GitHub 와 해결 예정).
+#    push 후 1~2분 내 vercel ls 확인 필수 → 자동 빌드 미발생 시 즉시 수동: vercel --prod --yes
 
 # 2. 미러 (Cloudflare Pages) — webhook 없음. 항상 수동 실행:
 bash scripts/deploy_cloudflare.sh
