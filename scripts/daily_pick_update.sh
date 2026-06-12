@@ -89,7 +89,8 @@ PICK_GRADE=$(jq -r '.pick.grade // "-"' web/src/data/daily_pick.json 2>/dev/null
 log "갱신 감지: $PICK_DATE / $PICK_TICKER / $PICK_SCORE $PICK_GRADE"
 
 # 6. commit + push
-git add web/src/data/daily_pick.json
+# [v3.32] 로테이션 이력 동반 커밋 — 미커밋 시 Vercel 컨테이너 재빌드마다 픽이 굴러가는 버그
+git add web/src/data/daily_pick.json web/src/data/daily_pick_history.json
 if ! git commit -m "chore(daily_pick): 자동 갱신 ${PICK_DATE} — ${PICK_TICKER} ${PICK_SCORE}점 ${PICK_GRADE} (launchd)"; then
   log "ERROR: git commit 실패"
   notify_fail "git commit 실패 — 픽은 생성됐으나 미발행"

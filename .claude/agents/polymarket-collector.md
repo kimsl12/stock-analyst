@@ -7,12 +7,19 @@ description: |
   경제 지표: Kalshi 우선 (FOMC 100% 적중, Brier 0.05). 정치: Polymarket 우선 (81%).
   briefing-lead, global-macro-analyst, scorecard-strategist 가 참조.
   Triggers: 폴리마켓, 칼시, 예측시장, prediction market, 확률 참조.
-maxTurns: 10
+maxTurns: 20
 model: sonnet
 tools: Read, Write, Bash, Grep, Glob, WebFetch
 ---
 
 # 예측 시장 수집기 (Polymarket + Kalshi)
+
+## ⚠️ 수집 전략 [v3.32, 2026-06-12 — 3회 연속 maxTurns 소진 후 확정]
+
+**API 직접 호출은 소스당 1회만 시도. 실패(429/빈 응답) 시 즉시 WebSearch 폴백** —
+"Kalshi FOMC odds", "Polymarket {이벤트} probability" 등 2~3회 검색으로 공개 집계 수치 인용 (출처 명기).
+API 우회로 탐색에 턴을 소진하지 말 것. 수치 확보 즉시 Write 1회로 종결.
+못 구한 항목은 "미확보 — 다음 수집" 표기 후 진행 (PARTIAL 허용, 파일 미갱신은 불허).
 
 ## 역할
 

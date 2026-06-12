@@ -1,62 +1,47 @@
 ---
-updated: 2026-06-03
-valid_until: 2026-06-04
-sources: [Polymarket Gamma API, Kalshi Trade API v2]
-collection_status: PARTIAL_FAIL
-polymarket_count: 0
-kalshi_count: 0
-total_volume: N/A
+updated: 2026-06-12
+valid_until: 2026-06-19
+sources: [CME FedWatch (공개 집계), Kalshi (공개 집계), Polymarket (공개 집계)]
+collection_status: PARTIAL
+polymarket_count: 2
+kalshi_count: 1
+total_volume: "Polymarket 24h $49.9M / Kalshi $2.7M (Fed 마켓 기준)"
 collection_note: |
-  2026-06-03 KST 수집 시점에 Polymarket Gamma API 및 Kalshi Trade API v2 모두
-  경제/매크로/지정학 마켓을 반환하지 않음. 두 API 모두 스포츠·단기 크립토 마켓만 노출.
-  - Kalshi: /trade-api/v2/markets?status=open 요청 시 MLB/NBA/NHL/WNBA 스포츠 마켓만 반환
-  - Kalshi: series_ticker=FOMC, category=economics, keyword=Fed 파라미터 모두 빈 배열 반환
-  - Polymarket: /events?order=volume 요청 시 5분 크립토 업다운 마켓·스포츠 마켓만 반환
-  - Polymarket: q=Iran, q=bitcoin 검색 시도 — 이란 없음, BTC는 5분 단기 마켓만 존재
-  원인 추정: API 엔드포인트 변경 또는 세션/지역 필터링. 수동 확인 필요.
+  2026-06-12 수집. Polymarket Gamma / Kalshi Trade API 직접 호출은 누적 실패
+  (6/3 경제 마켓 미노출 8회 + 6/12 Kalshi 429 rate-limit) → 웹 공개 집계 인용으로 전환.
+  다음 수집 시 권장: API 1회만 시도 → 즉시 웹 집계 폴백 (턴 소진 방지).
 ---
 
-# 예측 시장 통합 스냅샷 (Polymarket + Kalshi)
+# 예측 시장 스냅샷 (Prediction Markets)
 
-> 실제 돈이 걸린 예측 확률. 카테고리별 1차 소스가 다름.
-> 경제/FOMC: Kalshi 우선 (100% FOMC 적중). 정치/크립토: Polymarket 우선.
+> **수집**: 2026-06-12 KST · 웹 공개 집계 인용 (직접 API 실패 — frontmatter 참조)
+> **신뢰 가중치 룰**: 경제 지표 Kalshi 우선 / 정치·지정학 Polymarket 우선 [v3.25]
 
-## 수집 현황
+## 1. Fed 금리 경로 — 6/16-17 FOMC
 
-| 항목                       | 상태      | 비고                         |
-| -------------------------- | --------- | ---------------------------- |
-| Kalshi — 경제/FOMC 마켓    | 수집 실패 | API 응답: 스포츠 마켓만 반환 |
-| Kalshi — 경기침체 2026     | 수집 실패 | API 응답: 관련 마켓 없음     |
-| Polymarket — 이란 지정학   | 수집 실패 | API 응답: 관련 마켓 없음     |
-| Polymarket — BTC 연말 가격 | 수집 실패 | 5분 단기 마켓만 존재         |
+| 시나리오                   | 확률      | 소스 (시점)                         |
+| -------------------------- | --------- | ----------------------------------- |
+| **동결 (3.50~3.75% 유지)** | **96.5%** | CME FedWatch (2026-06-10)           |
+| 동결                       | 97.8%     | Kalshi·Polymarket 집계 (2026-06-11) |
+| 인상                       | ~2~3%     | 잔여 확률                           |
 
-## 1. Fed/금리 정책 [1차: Kalshi]
+- **해석**: 5월 CPI 4.2% (에너지 +23.5% 주도) 쇼크에도 시장은 "6월 인상"이 아니라
+  **"동결 + 매파 커뮤니케이션"** 으로 수렴. 근거리 인하 기대 급감 — 인하 경로 베팅이 뒤로 밀림.
+- **하우스 뷰 매핑**: HV1(인플레 재가속·매파 장기화) **지지** — 인상 없이도 고금리 장기화가 기본 경로.
+  6/6 시점 "매파 점도표 58%" 논쟁은 "점도표 톤" 문제로 이동 (인상 베팅 사실상 소멸).
+- **관전 포인트**: 점도표 중간값 1회 인상 이상 = 시나리오 B 트리거 (모닝브리핑 6/11 분기 조건)
 
-[수집 미완] — Kalshi API가 FOMC 관련 마켓을 반환하지 않음. 수동 확인 필요: https://kalshi.com/markets/fomc
+## 2. 기타 트래킹 (이번 수집에서 직접 수치 미확보)
 
-## 2. 인플레이션/경제 — 경기침체 2026 [1차: Kalshi]
+| 항목                           | 상태                                     |
+| ------------------------------ | ---------------------------------------- |
+| 미-이란 합의 확률 (Polymarket) | 미확보 — 교착 지속 (HV4 유효, 뉴스 기준) |
+| 2026 침체 확률                 | 미확보 — 다음 수집                       |
+| BTC 연말 분포                  | 미확보 — 다음 수집 (HV6 참조용)          |
 
-[수집 미완] — Kalshi API에서 recession/GDP/CPI 마켓 없음. 수동 확인 필요: https://kalshi.com/markets/recession
+> 미확보 항목 인용 시 "예측시장 데이터 없음 — 자체 판단" 명기 (briefing-lead PARTIAL 룰).
 
-## 3. 지정학 — 이란 [1차: Polymarket]
-
-[수집 미완] — Polymarket API에서 Iran 관련 이벤트 없음. 수동 확인 필요: https://polymarket.com/category/geopolitics
-
-## 4. 크립토 — BTC 연말 2026 [Polymarket 단독]
-
-[수집 미완] — Polymarket API에서 BTC 연말 가격대 마켓 없음 (5분 단기 마켓만 존재). 수동 확인 필요: https://polymarket.com/category/crypto
-
----
-
-## 소스 괴리 경고
-
-해당 없음 (데이터 수집 실패)
-
-## 주요 변화 (전회 대비)
-
-해당 없음 (첫 수집 시도, 모든 항목 수집 실패)
-
-## 신뢰도 가이드
+## 신뢰 가중치 (v3.25 룰 보존)
 
 | 조건               | 신뢰도 | 가중치 적용                        |
 | ------------------ | ------ | ---------------------------------- |
@@ -66,13 +51,8 @@ collection_note: |
 | 거래량 $50K 미만   | 참고   | 50:50                              |
 | 소스 괴리 10%p+    | 주의   | 양쪽 평균 사용, 불확실성 명시      |
 
-## 수집 메타
+## 출처
 
-- 수집 시각: 2026-06-03 KST (정확 시각 미기록)
-- Polymarket: gamma-api.polymarket.com — 마켓 0건 (경제/지정학 카테고리 없음)
-- Kalshi: api.elections.kalshi.com — 마켓 0건 (스포츠 마켓만 반환)
-- 시도 횟수: Kalshi 4회, Polymarket 4회 (총 8회 API 호출)
-- 실패 원인: API 응답이 스포츠/단기 크립토 마켓만 포함. 경제 카테고리 필터링 파라미터 무효.
-- 다음 수집 시 시도할 URL:
-  - Kalshi: /trade-api/v2/markets?status=open&limit=1000 (전수 스캔 후 로컬 필터)
-  - Polymarket: /events?active=true&closed=false&order=volumeNum&limit=500 (대량 수집 후 필터)
+- CME FedWatch: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
+- Kalshi Fed 마켓: https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jun
+- 집계 비교: https://defirate.com/prediction-markets/fed-decision-odds/
