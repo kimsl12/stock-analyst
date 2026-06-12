@@ -153,7 +153,7 @@ manifest 계약: Vercel 빌드 컨테이너에 .git 없음 → **로컬 build_ma
 ## 7. 배포 (SSOT: CLAUDE.md)
 
 `reports/**/*.html` 변경 push 직후에만: ① `vercel --prod --yes` (본서버) → ② `bash scripts/deploy_cloudflare.sh` (미러).
-gh-pages 는 GitHub Actions 복원(2026-06-05) 후 자동 3채널째. KB·analysis·스크립트만 변경 시 배포 생략.
+gh-pages 자동 배포는 2026-06-12 중단 (deploy-reports.yml 트리거 제거 — Vercel Preview 실패 누적이 GitHub 플래그 원인 의심, 32cd07c4). KB·analysis·스크립트만 변경 시 배포 생략.
 
 ---
 
