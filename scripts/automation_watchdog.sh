@@ -105,5 +105,29 @@ else
   log "OK: 매매 시그널 신선 ($SIG_GEN)"
 fi
 
+# 9. 알고 매매 보유 동기화 + 신선도 (장중 긴급 체결 잔여분 웹 반영) [v3.34]
+if bash scripts/algo_portfolio_sync.sh 2>&1; then
+  log "OK: algo_portfolio_sync 완료"
+else
+  log "WARN: algo_portfolio_sync 실패"
+  notify_warn "algo_portfolio_sync 실행 실패 — 알고 보유 웹 반영 누락 가능" high
+fi
+# 엔진 live 인데 2일+ 무보고 → 엔진 쪽 장애 의심 (not_live/paused 는 정상이므로 침묵)
+ALGO_STATE=$(python3 -c "
+import json
+d = json.load(open('algo-trading/data/algo_holdings.json'))
+print(d.get('engine_status',''), (d.get('generated_at') or '')[:10])" 2>/dev/null || echo "")
+if [ -n "$ALGO_STATE" ]; then
+  ALGO_STATUS=$(echo "$ALGO_STATE" | cut -d' ' -f1)
+  ALGO_GEN=$(echo "$ALGO_STATE" | cut -d' ' -f2)
+  TWO_DAYS_AGO=$(TZ=Asia/Seoul date -v-2d '+%Y-%m-%d' 2>/dev/null || date -d '2 days ago' '+%Y-%m-%d')
+  if [ "$ALGO_STATUS" = "live" ] && [ -n "$ALGO_GEN" ] && [ "$ALGO_GEN" \< "$TWO_DAYS_AGO" ]; then
+    log "WARN: 알고 엔진 무보고 (status=live, generated=$ALGO_GEN)"
+    notify_warn "알고 엔진 보유 보고 ${ALGO_GEN} 이후 중단 — 엔진 쪽 점검 필요" high
+  else
+    log "OK: 알고 보유 보고 상태 정상 (status=$ALGO_STATUS, generated=$ALGO_GEN)"
+  fi
+fi
+
 log "=== watchdog 완료 ==="
 exit 0

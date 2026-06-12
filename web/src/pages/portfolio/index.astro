@@ -76,6 +76,42 @@ if (portfolio?.profile) {
   }
 }
 
+// [v3.34] 알고 자동매매 채널 — 엔진이 쓰는 algo-trading/data/algo_holdings.json (계약: algo_engine_handoff.md §9)
+// 파일 부재·스키마 불일치 시 섹션만 비표시하고 빌드는 진행 (graceful)
+type AlgoPosition = {
+  ticker: string; name: string; channel: string; strategy_type: string | null;
+  qty: number; entry_price: number | null; entry_date: string | null;
+  current_price: number | null; current_value: number | null; return_pct: number | null;
+  stop_price: number | null; target_price: number | null; stop_mode: string | null;
+  score_at_entry: number | null;
+};
+type AlgoTrade = {
+  executed_at: string; ticker: string; name: string; action: string;
+  qty: number; price: number; reason: string | null; reason_code: string | null;
+};
+type AlgoHoldings = {
+  schema_version?: string; generated_at?: string; engine_status?: string;
+  cash_krw?: number | null; positions?: AlgoPosition[]; trades?: AlgoTrade[];
+};
+let algo: AlgoHoldings | null = null;
+try {
+  const { readFileSync } = await import('node:fs');
+  const path = await import('node:path');
+  const algoPath = path.resolve(process.cwd(), '..', 'algo-trading/data/algo_holdings.json');
+  const parsed = JSON.parse(readFileSync(algoPath, 'utf-8')) as AlgoHoldings;
+  if (parsed?.schema_version === 'algo-holdings-v1') algo = parsed;
+} catch { /* 엔진 미연동 또는 파싱 실패 — 섹션 비표시 */ }
+const algoPositions: AlgoPosition[] = (algo?.positions ?? []).filter((p) => p && p.ticker);
+const algoTrades: AlgoTrade[] = (algo?.trades ?? []).filter((t) => t && t.ticker).slice(0, 20);
+const algoLive = algo?.engine_status === 'live';
+const algoTotalKrw = algoPositions.reduce((s, p) => s + (p.current_value ?? 0), 0);
+const CHANNEL_LABEL: Record<string, string> = { algo: '자동', manual_managed: '재량+관리' };
+const REASON_LABEL: Record<string, string> = {
+  ENTRY: '진입', STOP: '손절', TRAIL_STOP: '트레일링 익절', TARGET: '목표 도달',
+  TIME_EXIT: '기간 초과', GRADE_EXIT: '등급 하락', REGIME_EXIT: '레짐 전환',
+  EMERGENCY: '긴급 청산', REPLACE: '종목 교체',
+};
+
 const fmtMoney = (v: number | null, currency: 'USD' | 'KRW' = 'USD') => {
   if (v == null) return '—';
   const opts: Intl.NumberFormatOptions = currency === 'USD'
@@ -144,7 +180,7 @@ const updatedAt = portfolio?.updated_at
       </section>
 
       <section>
-        <h2>보유 종목 ({holdings.length}건)</h2>
+        <h2>보유 종목 — 직접 매매 ({holdings.length}건) <span class="channel-tag tag-manual">수동 동기화</span></h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -178,6 +214,106 @@ const updatedAt = portfolio?.updated_at
       </section>
     </>
   )}
+
+  <section class="algo-section">
+    <h2 class="algo-title"><span class="channel-tag tag-algo">🤖 ALGO</span> 알고 자동매매 — 토스증권 엔진 체결분</h2>
+
+    {!algo && (
+      <div class="algo-empty">엔진 연동 데이터 없음 — algo_holdings.json 미존재 또는 형식 오류</div>
+    )}
+
+    {algo && algoPositions.length === 0 && (
+      <div class="algo-empty">
+        {algoLive
+          ? '현재 보유 포지션 없음 — 엔진 가동 중 (전량 현금 또는 진입 대기)'
+          : '알고 매매 엔진 연동 대기 중 — 엔진이 가동되면 보유 포지션과 체결 내역이 여기에 자동 표시됩니다.'}
+      </div>
+    )}
+
+    {algoPositions.length > 0 && (
+      <>
+        <div class="algo-summary">
+          <span class="chip">포지션 {algoPositions.length}건</span>
+          <span class="chip">평가액 {fmtMoney(algoTotalKrw, 'KRW')}</span>
+          {algo?.cash_krw != null && <span class="chip">예수금 {fmtMoney(algo?.cash_krw ?? null, 'KRW')}</span>}
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>티커</th>
+                <th>종목명</th>
+                <th>구분</th>
+                <th class="num">수량</th>
+                <th class="num">진입가</th>
+                <th class="num">현재가</th>
+                <th class="num">평가금</th>
+                <th class="num">수익률</th>
+                <th class="num">손절가</th>
+                <th class="num">목표가</th>
+                <th>모드</th>
+              </tr>
+            </thead>
+            <tbody>
+              {algoPositions.map((p) => (
+                <tr>
+                  <td><strong>{p.ticker}</strong></td>
+                  <td>{p.name}</td>
+                  <td><span class="muted">{CHANNEL_LABEL[p.channel] ?? p.channel}{p.strategy_type ? ` · ${p.strategy_type}` : ''}</span></td>
+                  <td class="num">{fmtQty(p.qty)}</td>
+                  <td class="num">{fmtMoney(p.entry_price, 'KRW')}</td>
+                  <td class="num">{fmtMoney(p.current_price, 'KRW')}</td>
+                  <td class="num">{fmtMoney(p.current_value, 'KRW')}</td>
+                  <td class:list={['num', p.return_pct != null && (p.return_pct >= 0 ? 'up' : 'down')]}>
+                    {fmtPct(p.return_pct)}
+                  </td>
+                  <td class="num">{fmtMoney(p.stop_price, 'KRW')}</td>
+                  <td class="num">{fmtMoney(p.target_price, 'KRW')}</td>
+                  <td><span class="muted">{p.stop_mode ?? '—'}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    {algoTrades.length > 0 && (
+      <>
+        <h3 class="algo-sub">최근 체결 ({algoTrades.length}건)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>체결 시각</th>
+                <th>종목</th>
+                <th>매수/매도</th>
+                <th class="num">수량</th>
+                <th class="num">가격</th>
+                <th>사유</th>
+              </tr>
+            </thead>
+            <tbody>
+              {algoTrades.map((t) => (
+                <tr>
+                  <td class="muted">{t.executed_at}</td>
+                  <td><strong>{t.ticker}</strong> {t.name}</td>
+                  <td class={t.action === 'buy' ? 'up' : 'down'}>{t.action === 'buy' ? '매수' : '매도'}</td>
+                  <td class="num">{fmtQty(t.qty)}</td>
+                  <td class="num">{fmtMoney(t.price, 'KRW')}</td>
+                  <td>{t.reason_code ? `[${REASON_LABEL[t.reason_code] ?? t.reason_code}] ` : ''}{t.reason ?? ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    <div class="algo-meta">
+      엔진 마지막 보고: {algo?.generated_at ?? '—'} · 상태: {algo?.engine_status ?? '—'} · 사이트 자동 반영 06:40 / 10:30 / 16:15 (KST)
+    </div>
+  </section>
 </Base>
 
 <style>
@@ -257,4 +393,65 @@ const updatedAt = portfolio?.updated_at
   table.profile th { width: 40%; }
 
   .table-wrap { overflow-x: auto; }
+
+  /* [v3.34] 채널 구분 — 직접 매매(수동) vs 알고 자동매매 */
+  .channel-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    text-transform: none;
+  }
+  .tag-manual {
+    background: rgba(156,163,175,.15);
+    border: 1px solid rgba(156,163,175,.35);
+    color: var(--muted);
+  }
+  .tag-algo {
+    background: rgba(139,92,246,.18);
+    border: 1px solid rgba(139,92,246,.5);
+    color: #a78bfa;
+  }
+  .algo-section {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem 1.1rem;
+    border: 1px solid rgba(139,92,246,.3);
+    border-left: 3px solid #8b5cf6;
+    border-radius: 10px;
+    background: rgba(139,92,246,.04);
+  }
+  .algo-section .algo-title { margin-top: 0; }
+  .algo-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 1.25rem 0 0.6rem;
+    font-weight: 500;
+  }
+  .algo-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+  .chip {
+    font-size: 0.76rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  .algo-empty {
+    font-size: 0.84rem;
+    color: var(--muted);
+    padding: 0.6rem 0.2rem;
+  }
+  .algo-meta {
+    margin-top: 0.85rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
 </style>

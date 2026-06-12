@@ -545,7 +545,7 @@ S&P(VOO) 28%, 국채 20%, 배당 15%, 국내 17%, Gold 10%, 현금 10%
 
 **변경 사항** (스키마 하위 호환 — 기존 필드 전부 유지):
 
-1. **소스 교체**: analysis/_history/*_timeline.json (재분석 시스템 단일 진실) + 웹 대시보드와 동일한 scorecard 파서. analysis_date 결측 0/111 (이전: 대부분 null).
+1. **소스 교체**: analysis/\_history/\*\_timeline.json (재분석 시스템 단일 진실) + 웹 대시보드와 동일한 scorecard 파서. analysis_date 결측 0/111 (이전: 대부분 null).
 2. **신규 필드** `grade_kr` (강력매수/매수/중립/매도), `source` (헤더). 기존 `grade` 는 동일 레터 매핑 (A/B/C/F) 유지.
 3. **비상장 제외**: ANTHROPIC·SPACEX 는 매매 불가 → 목록에서 제거 (이전엔 eligible 진입 위험).
 4. **자동 빌드**: launchd `com.stockanalyst.signals` 매일 **KST 15:25** (그쪽 1차 점검 15:40 전). 실패 시 알림 + watchdog 이 매일 신선도 검증 (stale 시 high 알림).
@@ -562,3 +562,81 @@ stock_scores.json 의 각 종목에 `sector`(엔진 11종 분류) + `sector_raw`
 - GLD/IAU → `Gold` (Stagflation 우호 섹터 매칭 ✓), Communication Services(GOOGL/META/VZ) → `Tech` 로 묶음 (레짐 차단은 보수 측).
 - 소스: `algo-trading/data/sector_map.json` 캐시 (yfinance GICS + ETF 수동 표). 신규 분석 티커는 15:25 일일 빌드가 증분 조회 — 조회 실패 시 null(중립 통과)이라 안전.
 - 커버리지: 111종 중 확정 98 + 의도적 null 13, 미상 0.
+
+---
+
+## 9. 보유·체결 역방향 계약 — 엔진 → 종목분석 (2026-06-12 신설, 엔진 구현 요청)
+
+지금까지의 계약은 전부 종목분석 → 엔진 단방향이었다. 이 섹션은 **역방향**: 엔진의 보유 포지션과 체결 내역을 종목분석 시스템이 받아 사용자 포트폴리오 페이지(웹 대시보드)에 자동 반영한다. 사용자가 "알고 매매로 뭘 들고 있고 뭘 사고팔았는지" 웹에서 바로 확인하는 용도.
+
+### 9.1 엔진이 쓰는 파일 (구현 필요)
+
+**경로:** `algo-trading/data/algo_holdings.json` (이 저장소 안 — 기존 read 파일들과 같은 폴더)
+
+**쓰기 시점 (둘 다):**
+
+1. **체결 직후 즉시** — 매수/매도 주문이 체결될 때마다 (긴급 트리거 포함)
+2. **매일 15:40 런 종료 시** — 체결이 없어도 current_price / stop_price / return_pct 갱신분 반영
+
+**쓰기 방식:** 전체 덮어쓰기 (append 아님). `positions` 는 현재 보유 전체 스냅샷, `trades` 는 **최신순** 최근 50건 cap. atomic write 권장 (temp 파일 → rename) — 종목분석 쪽이 임의 시점에 읽는다.
+
+### 9.2 스키마 (algo-holdings-v1)
+
+```json
+{
+  "schema_version": "algo-holdings-v1",
+  "generated_at": "2026-06-15 15:42:30 KST",
+  "engine_status": "live",
+  "currency": "KRW",
+  "cash_krw": 4520000,
+  "positions": [
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "channel": "algo",
+      "strategy_type": null,
+      "qty": 10,
+      "entry_price": 285000,
+      "entry_date": "2026-06-15",
+      "current_price": 291000,
+      "current_value": 2910000,
+      "return_pct": 2.11,
+      "stop_price": 269400,
+      "target_price": 316200,
+      "stop_mode": "FIXED",
+      "score_at_entry": 94.5
+    }
+  ],
+  "trades": [
+    {
+      "executed_at": "2026-06-15 15:42:10 KST",
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "action": "buy",
+      "qty": 10,
+      "price": 285000,
+      "reason": "신규 진입 — Gate 1·2·3 통과, 스코어 94.5 (A)",
+      "reason_code": "ENTRY"
+    }
+  ]
+}
+```
+
+**필드 규약:**
+
+| 필드                        | 값                                                                                                                        | 비고                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `engine_status`             | `live` \| `paused` \| `not_live`                                                                                          | live 인데 generated_at 2일+ 경과 시 종목분석 watchdog 경고 |
+| `positions[].channel`       | `algo` (A1~A6 자동) \| `manual_managed` (재량매수+알고관리 하이브리드)                                                    | 웹 표시 구분용                                             |
+| `positions[].strategy_type` | `swing` \| `position` \| `value` \| null                                                                                  | hybrid 등록 포지션만, algo 채널은 null                     |
+| `positions[].stop_mode`     | `FIXED` \| `TRAILING`                                                                                                     | §1 래칫 시스템의 mode                                      |
+| `trades[].action`           | `buy` \| `sell`                                                                                                           |                                                            |
+| `trades[].reason_code`      | `ENTRY` \| `STOP` \| `TRAIL_STOP` \| `TARGET` \| `TIME_EXIT` \| `GRADE_EXIT` \| `REGIME_EXIT` \| `EMERGENCY` \| `REPLACE` | A1~A6 / 하이브리드 정책의 매도 사유와 1:1                  |
+| `trades[].reason`           | 자유 텍스트 (한국어)                                                                                                      | 웹에 그대로 노출됨 — 사용자가 읽는 문장으로                |
+| 금액 필드                   | KRX 종목 = KRW 정수                                                                                                       | 미국 종목 거래 시 currency 필드로 확장 협의                |
+
+### 9.3 종목분석 쪽 동작 (이미 구현됨 — 엔진은 파일만 쓰면 됨)
+
+- launchd **16:15 KST** (`com.stockanalyst.algo-sync`) + watchdog (06:40/10:30) 이 파일 변경 감지 → commit/push → Vercel + Cloudflare 자동 배포 → `/portfolio` 페이지 "알고 자동매매" 섹션에 표시. 일 3회 반영 (15:40 매매분은 16:15 슬롯).
+- `engine_status: "not_live"` placeholder 가 이미 들어 있음 — 엔진 가동 시 `live` 로 바꿔서 덮어쓰면 끝.
+- 검증: 종목분석 쪽은 schema_version 불일치·파싱 실패 시 해당 섹션만 비표시 (빌드는 안 깨짐). 단 그 상태가 지속되면 사용자에게 보이지 않으므로 스키마 준수 필수.

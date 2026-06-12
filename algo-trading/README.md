@@ -390,6 +390,22 @@ cat algo-trading/data/stock_scores.json | python3 -c "import sys,json; d=json.lo
 
 ---
 
+### 9. data/algo_holdings.json — 역방향 (엔진이 씀)
+
+**경로:** `/Volumes/외장SSD/클로드 AI 폴더/작업폴더/종목분석 에이전트/algo-trading/data/algo_holdings.json`
+**갱신:** **알고 엔진이 직접 씀** — 체결 직후 즉시 + 매일 15:40 런 종료 시 (전체 덮어쓰기, atomic write 권장)
+**역할:** 엔진 보유 포지션 + 체결 내역 → 종목분석 웹 대시보드 `/portfolio` "알고 자동매매" 섹션 자동 반영
+
+다른 data/ 파일과 방향이 반대다 (유일한 엔진 → 종목분석 파일). 스키마 상세: `algo_engine_handoff.md` §9.
+
+- `positions` — 현재 보유 전체 스냅샷 (channel: algo | manual_managed 구분)
+- `trades` — 최신순 최근 50건 (reason_code: ENTRY/STOP/TRAIL_STOP/TARGET/TIME_EXIT/GRADE_EXIT/REGIME_EXIT/EMERGENCY/REPLACE)
+- `engine_status` — live | paused | not_live (live + 2일 무갱신 → 종목분석 watchdog 경고)
+
+종목분석 쪽 반영 파이프라인: launchd `com.stockanalyst.algo-sync` (KST 16:15) + watchdog (06:40/10:30) 이 변경 감지 → commit/push → Vercel + Cloudflare 자동 배포.
+
+---
+
 ## 향후 추가 예정
 
 | 기능                          | 상태      | 설명                         |
