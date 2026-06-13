@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-06
-valid_until: 2026-07-06
+updated: 2026-06-13
+valid_until: 2026-07-13
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -70,41 +70,47 @@ sources:
   - 머니투데이
   - 디지털데일리
   - DCD
+  - NPR
+  - NerdWallet
+  - SpotGamma
+  - CME Group
+  - 6G Futures
+  - 한국일보
+  - 국민일보
+  - 파이낸셜뉴스
+  - 데일리e뉴스
+  - StockTitan
+  - GSMA
+  - Computer Weekly
 confidence: high
-last_synced_from_db: 2026-06-06
+last_synced_from_db: 2026-06-13
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
-> **2026.06.06 핵심 변화 요약 (5/30 이후 델타)**:
+> **2026.06.13 핵심 변화 요약 (6/6 이후 델타)**:
 >
-> 1. **SpaceX IPO 로드쇼 개시(6/4) + 고정가 $135/주** -- 월가 가격범위 관행을 깨고 단일 고정가 채택. 555.6M주, **$75B 조달 / $1.75T 밸류**(사상 최대). 가격결정 6/11, Nasdaq 상장 6/12(SPCX). 월가 일부 "적정가는 절반"이라는 밸류 회의론 부상 [TechTimes, CNBC 6/3]
-> 2. **SPCX 지수 편입 'Fast Entry' 변수** -- Nasdaq 5/1 발효 룰(시총 Top40 신규상장 15거래일 후 편입)로 **약 7/6경 Nasdaq-100 편입 전망**, 인덱스펀드 강제 매수. 향후 S&P500 편입 시 VOO/IVV/SPY 패시브 매수 의무 [TECHi, etf.com]
-> 3. **AST SpaceMobile 6월 중순 발사 재확인** -- BlueBird 8/9/10 Falcon 9(BB7 New Glenn NG-3 실패 후 전환), Block 2 LEO 최대 위상배열, 피크 120Mbps. **2026말 목표 45~60기로 상향 명시** [SatNews, Fierce Network, AST 8-K]
-> 4. **3GPP TR 38.914(6G 시나리오&요구사항) 6월 TSG RAN 승인 예정** -- Rel-21 NR 규격작업 투입. Rel-21 타임라인 TSGs#112(6월) 확정, 6G normative 작업 공식 시작. ASN.1/OpenAPI freeze 2029.03 [3GPP.org, g6gconference]
-> 5. **EU RSPG 상위6GHz 확정** -- 540MHz(6.585~7.125GHz) 모바일 즉시 지정 + 160/125MHz는 WRC-27 후 확정. 6.425~7.250GHz 내 665~700MHz가 모바일용, 2030 EU 6G 1차 대역. **최종 명확화는 2028 초** [Light Reading, TelecomTV, Nokia]
-> 6. **SoftBank AI 데이터센터 GPU 클라우드 베타 + 상용 2026.10** -- AITRAS NVIDIA Santa Clara 배치, AI+텔레콤 공유로 '5G for free', vRAN ROI 단일목적 대비 **최대 4배 개선**(NVIDIA) [RCR Wireless, NVIDIA Blog]
-> 7. **한국 통신3사 AIDC GPU 메가딜 구체화** -- SKT 내년 하반기 300MW+(장기 1GW 아태허브), 울산(AWS 6만GPU 2027)·구로 OpenAI 'Stargate Korea'. LGU+ 파주 12만GPU(2027). KT클라우드 2030 500MW·부천DC 하반기 [머니투데이, DCD, SKT 뉴스룸]
+> 1. **SpaceX IPO 상장 완료(6/12) -- 사상 최대 IPO 확정** -- 6/11 $135 고정가로 가격결정 -> 6/12 Nasdaq 데뷔(SPCX). **시초가 $150(58M주) -> 종가 $161, 첫날 +19% 급등**. 555.6M주 $75B 조달 / $1.75T 포스트밸류(아람코 2019 $35.4B 기록 경신). **투자수요 약 $250B로 3.3배 초과청약**. 플로트 약 3%로 희소성 극대 [CNBC, NPR 6/11, TradingKey]
+> 2. **SPCX 지수편입 갈림길 명확화** -- Nasdaq-100 fast entry는 약 7/1~7/6경 전망 -> QQQ 약 $7B 기계적 매수 예상. **반면 S&P500는 6/4 fast-track 거부 -- 12개월 시즈닝+GAAP 흑자 요건 유지, 2025 -$4.9B 순손실로 미충족, 최소 2027 중반까지 편입 불가** [Yahoo Finance, CME Group, SpotGamma]
+> 3. **AST SpaceMobile BlueBird 8/9/10 발사일 6/17 확정** -- 케이프커내버럴 Falcon 9(BB7 New Glenn 실패 후 SpaceX 전환). Block 2, LEO 최대 상업 위상배열(위성당 약 2,400 sqft), 피크 120Mbps. 2026말 45~60기 목표 유지 [AST 8-K, Fierce Network]
+> 4. **3GPP Rel-21 functional freeze 2028.12로 확정** -- 6/8~6/12 TSG 플레너리(TSGs#112)에서 첫 6G normative 릴리스 타임라인 합의·공식 발표. Rel-21이 첫 3GPP 6G 규격 산출 + IMT-2030 제출용 릴리스. TR 38.914(6G 시나리오&요구사항) 6월 TSG RAN 승인 [3GPP.org, 6G Futures]
+> 5. **LGU+ 파주 AIDC 1동(50MW) 완판 + '2030년 AIDC 5조원 수주' 선언(6/6)** -- 차세대 AIDC 전략 '더 에이스 온 트러스트' 공개. 파주는 수도권 유일 200MW급 하이퍼스케일(공정률 약 20%, 2027.06 준공). 'AI 팩토리 오퍼레이터'로 전환 구상 [한국일보, 국민일보, 파이낸셜뉴스 6/6~6/7]
+> 6. **젠슨 황 6/8 한국 AI 협약 일괄 발표** -- SK하이닉스(차세대 HBM 공동개발 다년 파트너십)·SKT(기가와트급 AI 클라우드)·네이버·두산. SKT 1GW+ 하이퍼스케일 + 서남권 OpenAI 협력 AIDC(Stargate Korea) 재확인 [StockTitan, DCD]
+> 7. **NVIDIA-Nokia anyRAN 기능 테스트 성공** -- Nokia anyRAN SW를 NVIDIA GPU 가속 AI-RAN에서 T-Mobile·Indosat·SoftBank Corp와 검증 + 신규 고객 통합. IEEE ComSoc 6/9 NVIDIA 신규 6G AI-RAN 루머 분석 게재 [NVIDIA Newsroom, Computer Weekly]
+> 8. **R&S+Qualcomm FR1+FR3 캐리어 어그리게이션 시연(MWC2026)** -- FR1(약 2.5GHz)+FR3(약 7GHz) 4x4 MIMO. lower 3GHz(3.1~3.45)·7.125~8.4GHz 모바일용 스터디 2026.10 마감 예정 [RCR Wireless, Nokia Blog]
+>
+> **(6/6 갱신 유지 항목)**:
+>
+> 1. **SoftBank AI 데이터센터 GPU 클라우드 베타 + 상용 2026.10** -- AITRAS NVIDIA Santa Clara 배치, AI+텔레콤 공유로 '5G for free', vRAN ROI 단일목적 대비 최대 4배 개선(NVIDIA)
+> 2. **EU RSPG 상위6GHz 확정** -- 540MHz(6.585~7.125GHz) 모바일 즉시 지정 + 160/125MHz는 WRC-27 후 확정. 6.425~7.250GHz 내 665~700MHz가 모바일용, 2030 EU 6G 1차 대역
+> 3. **Amazon-Globalstar $11.57B 인수** -- DTC 위성 시스템 2028년 배치, 거래 2027년 종결 예상
 >
 > **(5/30 갱신 유지 항목)**:
 >
 > 1. **NVIDIA Arc Aerial RAN Computer(6G-ready 플랫폼)** -- Nokia 신규 AI-RAN 제품 탑재, T-Mobile US 6G 통합, Dell PowerEdge 구동, 2026 필드 트라이얼
 > 2. **NVIDIA 6G 글로벌 커밋에 SK Telecom·SoftBank 포함** -- 12사+ AI-native/오픈/보안 6G 플랫폼 구축 선언
->
-> **(5/25 갱신 유지 항목)**:
->
-> 1. **SpaceX S-1 정식 제출(5/20)** -- Starlink Q1 매출 $3.26B(전사 69%)/영업이익 $1.188B, 가입자 10.3M, ARPU $66/월, 2025 순손실 -$4.9B
-> 2. **OCUDU V1.0 출시 + 퀄컴 프리미어 멤버 합류(5월)** -- srsRAN BSD-3 전환, 2026H2 실 하드웨어 검증 진입
-> 3. **AI-WIN 프로젝트 6개월 만에 첫 유저-투-유저 통화 성공** -- NVIDIA/Booz Allen/T-Mobile 미국 주도 AI-native 6G 스택
-> 4. **T-Mobile-Nokia-NVIDIA**: Grace Hopper 200 단일 GPU로 AI+RAN 동시 처리 검증 완료
-> 5. **SoftBank AITRAS 2026년 상용망 도입 시작 예정** -- 스펙트럼 효율+처리량 3배 실증, MHI 엣지DC 협력
-> 6. **AT&T $250B 5개년 투자 발표** -- Open RAN 트래픽 45% 도달, 2027까지 5G 현대화 완료 목표
-> 7. **Dell'Oro**: 글로벌 CAPEX 2026 -2%, 2027~2030 +1% CAGR. CAPEX/매출 비율 2029년 14% 접근
-> 8. **Nokia AI&Cloud TAM 성장률 상향**: CAGR 16%→27%(2028까지). 미국 관세 Q2 영향 EUR 20~30M
-> 9. **한국 통신3사 AI DC 매출 격차**: SKT 1,314억(+89.3%), LGU+ 1,144억(+31%), KT클라우드 2,501억(+0.4% 정체)
-> 10. **IEEE ICC 2026(글래스고, 5/24~28)** 개최 -- AI-native 6G, NTN 통합, 무선 Foundation Models 등
 
 ---
 
@@ -132,32 +138,32 @@ last_synced_from_db: 2026-06-06
 **글로벌 주요 플레이어:**
 
 - **삼성전자**: 6G 백서 발간 (AI 내재화/지속가능 통신). 7GHz 초고집적 다중안테나 기술 검증 성공 (KT/키사이트 협력, 5G 대비 집적도 4배, 3.0Gbps). 상용망 AI-RAN 기술 검증 성공 (KT 협력, 접속 끊김률 대폭 감소). MWC 2026에서 vRAN+NVIDIA 가속컴퓨팅 AI-RAN 데모. **네트워크 사업부장: 6G 투자 '급증'은 예상하지 않는다는 입장 (점진적 진화 관점)** [Light Reading]. **삼성전자 김윤선 마스터, 3GPP TSG RAN 의장 선출(2026.03.12 인천, 5월 취임) -- 한국인 최초. 6G 표준화 핵심 주도권 확보** [Samsung Newsroom, MobileWorldLive]
-- **Nokia**: AI-RAN 파트너십 확대 (Dell, Quanta, Red Hat, NVIDIA). NTT DOCOMO/NTT와 sub-THz 144GHz에서 25Gbps 실증. MWC 2026에서 AI-native 6G 비전 발표. 기저대역 SW를 NVIDIA 플랫폼에 포팅, 2026년 초기 필드 트라이얼. 양자통신(QKD) 기업 인수 -- 6G 보안 내재화. **Q1 2026 실적: 매출 EUR 4.50B(+4% CC), 영업이익 EUR 281M(+54%), AI&Cloud 매출 +49%(EUR 1B 수주), Optical +20%, 주가 16년 최고치** [Nokia IR]. **Q2 가이던스: 매출 QoQ +5~9%, 'AI 슈퍼사이클' 진단. TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%). AI&Cloud TAM 성장률 CAGR 16%→27% 상향(2026.04). 미국 관세 영향 Q2 OP EUR 20~30M 감소** [Nokia IR, Investing.com]
+- **Nokia**: AI-RAN 파트너십 확대 (Dell, Quanta, Red Hat, NVIDIA). NTT DOCOMO/NTT와 sub-THz 144GHz에서 25Gbps 실증. MWC 2026에서 AI-native 6G 비전 발표. 기저대역 SW를 NVIDIA 플랫폼에 포팅, 2026년 초기 필드 트라이얼. 양자통신(QKD) 기업 인수 -- 6G 보안 내재화. **Q1 2026 실적: 매출 EUR 4.50B(+4% CC), 영업이익 EUR 281M(+54%), AI&Cloud 매출 +49%(EUR 1B 수주), Optical +20%, 주가 16년 최고치** [Nokia IR]. **Q2 가이던스: 매출 QoQ +5~9%, 'AI 슈퍼사이클' 진단. TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%). AI&Cloud TAM 성장률 CAGR 16%→27% 상향(2026.04). 미국 관세 영향 Q2 OP EUR 20~30M 감소** [Nokia IR, Investing.com]. **anyRAN SW를 NVIDIA GPU 가속 AI-RAN에서 T-Mobile·Indosat·SoftBank Corp와 기능 테스트 성공(6/13 갱신), NVIDIA $1B 투자(주당 $6.01)** [NVIDIA Newsroom, Computer Weekly]
 - **Ericsson**: Intel과 AI-native 6G 협력 (MWC 2026). Nokia/Fraunhofer HHI와 6G시대 차세대 비디오 코덱 공동 개발 (2029-2030 운용 목표). 자체 실리콘 투자 지속 선언. **에릭슨-퀄컴 cmWave(6~8GHz) 물리계층 기능 실험실 검증 완료** [MWC 2026]. **에릭슨 SMO 마켓플레이스에 Nokia 합류, Nokia SMO에 에릭슨 rApp 등재 -- 라이벌 간 생태계 교차 협력**. **Q1 2026 실적: 유기적 매출 +6%, 보고 매출 SEK 49.3B(-10% FX 영향 SEK 7.8B), Networks 유기적 +7%, 구조조정비 SEK 3.8B** [Ericsson IR]. **에릭슨 블로그(2026.05): 6G가 AI와 산업 정렬로 모멘텀 확보, 2026년말까지 기술·AI 역할 윤곽 확인 전망** [Ericsson Blog]. **OCUDU 에코시스템 재단 창립 프리미어 멤버, 이사회 좌석 확보** [Ericsson PR]. **에릭슨-Apple-MediaTek-Qualcomm MWC 파빌리온에서 6G 프로토타이핑 공동 진행 현황 공개** [ABI Research]
 - **NTT DOCOMO**: 세계 최초 야외 6G 실시간 트랜시버 AI-RAN 실증 성공
-- **NVIDIA**: Ericsson/Nokia/DOCOMO 등과 AI-native 6G 오픈 플랫폼 공동 선언 (AI Aerial 플랫폼). Aerial SW 오픈소스화로 6G 생태계 가속. **Nokia에 $1B 투자, Marvell에 $2B 투자 -- AI-RAN 인프라 대규모 자본 투입** [NVIDIA Newsroom]. **IEEE ICC 2026(글래스고, 5/24~28) 키노트·AI-driven 디지털트윈 패널·AI-native 6G 반일 튜토리얼 참가** [NVIDIA Events]
-- **Qualcomm**: MWC 2026에서 AI 통합 6G 비전 공개. **X105 세계 최초 Rel-19 5G 모뎀 발표(DL 14.8Gbps/UL 4.2Gbps, NR-NTN 통합). 2028년 6G 표준 확정 -> 2029년 상용 6G 시스템 목표. 60+사 6G 네트워크 커밋 확인. OCUDU 재단 프리미어 멤버 합류(2026.05)** [Qualcomm, Linux Foundation]
+- **NVIDIA**: Ericsson/Nokia/DOCOMO 등과 AI-native 6G 오픈 플랫폼 공동 선언 (AI Aerial 플랫폼). Aerial SW 오픈소스화로 6G 생태계 가속. **Nokia에 $1B 투자, Marvell에 $2B 투자 -- AI-RAN 인프라 대규모 자본 투입** [NVIDIA Newsroom]. **IEEE ICC 2026(글래스고, 5/24~28) 키노트·AI-driven 디지털트윈 패널·AI-native 6G 반일 튜토리얼 참가** [NVIDIA Events]. **젠슨 황 2026.06.08 SK하이닉스/SKT/네이버/두산과 한국 전략 AI 협약 일괄 발표(6/13 갱신). IEEE ComSoc 6/9 NVIDIA 신규 6G AI-RAN 루머 분석 게재** [StockTitan, IEEE ComSoc]
+- **Qualcomm**: MWC 2026에서 AI 통합 6G 비전 공개. **X105 세계 최초 Rel-19 5G 모뎀 발표(DL 14.8Gbps/UL 4.2Gbps, NR-NTN 통합). 2028년 6G 표준 확정 -> 2029년 상용 6G 시스템 목표. 60+사 6G 네트워크 커밋 확인. OCUDU 재단 프리미어 멤버 합류(2026.05)** [Qualcomm, Linux Foundation]. **R&S와 FR1(약 2.5GHz)+FR3(약 7GHz) 캐리어 어그리게이션 시연(MWC2026, 4x4 MIMO+고차변조)** [RCR Wireless]
 - **Huawei**: 중국 6G 독자 투자 가속, 서방 벤더 대비 적극적 투자 [Light Reading]
 - **6G-XR 컨소시엄**: Capgemini/Ericsson/i2CAT/Vicomtech 홀로그래픽 통화 및 XR 서비스 실증 (5G SA 라이브)
 - **OCUDU 에코시스템 재단**: Linux Foundation MWC 2026(2026.03.01) 설립. 오픈소스 AI-RAN CU/DU SW 스택. 창립 프리미어: AMD/AT&T/Ericsson/Nokia/NVIDIA/SoftBank/Verizon + 21사 + 17 연구기관. **V1.0(2026.03): srsRAN CU/DU BSD-3 라이선스 전환. 퀄컴 5월 프리미어 합류. 2026H2 USRP 실 하드웨어 검증 단계 진입 예정** [Linux Foundation, OCUDU.org, Red Hat, The Mobile Network]
 
 **한국 참여 기관:** 삼성전자, LG전자, SK텔레콤, KT, LG유플러스, ETRI, KAIST
 
-### 1.3 기술 표준화/규제 현황 (2026.05.25 갱신)
+### 1.3 기술 표준화/규제 현황 (2026.06.13 갱신)
 
-| 마일스톤                        | 시점                                                    | 비고                                                                                                                                      |
-| ------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| ITU-R IMT-2030 비전 권고        | 2023 완료                                               | M.2160 프레임워크                                                                                                                         |
-| **ITU IMT-2030 TPR 합의**       | **2026.02**                                             | **20개 기술성능요구사항 확정 (7개 6G 고유 신규). 6대 시나리오: IC/HRLLC/MC/UC/AIAC/ISAC. 정식 승인: 상위 스터디그룹 2026.12 예정**        |
-| ITU RIT 후보 제출 기간          | 2027.02~2029.02                                         | 기술 제안서 접수                                                                                                                          |
-| 3GPP Rel-18 (5G Advanced)       | 2024.06 freeze                                          | 2026년 상용 출시 진행 중                                                                                                                  |
-| 3GPP Rel-19 (5G Advanced 완성)  | 2025.06 RAN1/2025.09 RAN2-4 freeze                      | 5G-Advanced 마지막 전용 릴리스                                                                                                            |
-| 3GPP Rel-20 Stage-2             | 80% 완료 2026.06, freeze 2026.09, **발간 2027.06 예상** | 5G-Advanced + 6G 사전연구 병행. **TR 38.914(6G 시나리오&요구사항) 60% 완료(2026.03). TR 22.870(6G 유스케이스 Stage-1) 승인 완료(SA#111)** |
-| **3GPP Rel-21 타임라인 결정점** | **2026.06 플레너리(TSGs#112)**                          | **Rel-21 최종 타임라인 확정 예정(6/6 갱신: TSG RAN이 TR 38.914 '6G 시나리오&요구사항'을 2026.06 승인 -> Rel-21 NR 규격작업 투입). 6G normative 작업 공식 시작. 21개월 사이클 예상. ASN.1/OpenAPI freeze 2029.03. IMT-2030 제출 윈도우 정렬. 삼성 김윤선 TSG RAN 의장으로 주도** |
-| 3GPP Rel-21 (6G 최초 규격)      | 2027.03 풀가동, ~21개월 사이클                          | 6G normative 작업 공식 시작. **Rel-21은 6G 규격이지만 5G-Advanced 스펙 작업도 병행**                                                      |
-| **WRC-27 (상하이)**             | **2027.10.18 시작**                                     | **6G 주파수 정책 핵심 회의. 후보 대역: 4,400~4,800MHz / 7,125~8,400MHz / 14.8~15.35GHz. 중국 6GHz 셀룰러 독점 할당, 글로벌 조화 압박**    |
-| ITU 사양 제출                   | 2030년 중반                                             | 최종 사양                                                                                                                                 |
-| 상용 서비스 개시                | 2030~2031                                               | 한국/일본 선도 목표                                                                                                                       |
+| 마일스톤                       | 시점                                                    | 비고                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ITU-R IMT-2030 비전 권고       | 2023 완료                                               | M.2160 프레임워크                                                                                                                                                                                                                                                                                                                                 |
+| **ITU IMT-2030 TPR 합의**      | **2026.02**                                             | **20개 기술성능요구사항 확정 (7개 6G 고유 신규). 6대 시나리오: IC/HRLLC/MC/UC/AIAC/ISAC. 정식 승인: 상위 스터디그룹 2026.12 예정**                                                                                                                                                                                                                |
+| ITU RIT 후보 제출 기간         | 2027.02~2029.02                                         | 기술 제안서 접수                                                                                                                                                                                                                                                                                                                                  |
+| 3GPP Rel-18 (5G Advanced)      | 2024.06 freeze                                          | 2026년 상용 출시 진행 중                                                                                                                                                                                                                                                                                                                          |
+| 3GPP Rel-19 (5G Advanced 완성) | 2025.06 RAN1/2025.09 RAN2-4 freeze                      | 5G-Advanced 마지막 전용 릴리스                                                                                                                                                                                                                                                                                                                    |
+| 3GPP Rel-20 Stage-2            | 80% 완료 2026.06, freeze 2026.09, **발간 2027.06 예상** | 5G-Advanced + 6G 사전연구 병행. **TR 38.914(6G 시나리오&요구사항) 2026.06 TSG RAN 승인. TR 22.870(6G 유스케이스 Stage-1) 승인 완료(SA#111)**                                                                                                                                                                                                      |
+| **3GPP Rel-21 타임라인 확정**  | **2026.06 플레너리(TSGs#112, 6/8~6/12)**                | **6/13 갱신: 첫 6G normative 릴리스 Rel-21 타임라인 합의·공식 발표. Rel-21 functional freeze 2028.12로 확정 -- 워킹그룹들이 이 freeze에 자원·피처 우선순위 정렬. TR 38.914 6월 TSG RAN 승인 -> Rel-21 NR 규격작업 투입. 6G normative 작업 공식 시작. ASN.1/OpenAPI freeze 2029.03. IMT-2030 제출 윈도우 정렬. 삼성 김윤선 TSG RAN 의장으로 주도** |
+| 3GPP Rel-21 (6G 최초 규격)     | 2027.03 풀가동, freeze 2028.12, ~21개월 사이클          | 6G normative 작업 공식 시작. **Rel-21은 6G 규격이지만 5G-Advanced 스펙 작업도 병행. IMT-2030 제출용 릴리스(2030 전)**                                                                                                                                                                                                                             |
+| **WRC-27 (상하이)**            | **2027.10.18 시작**                                     | **6G 주파수 정책 핵심 회의. 후보 대역: 4,400~4,800MHz / 7,125~8,400MHz / 14.8~15.35GHz. 중국 6GHz 셀룰러 독점 할당, 글로벌 조화 압박**                                                                                                                                                                                                            |
+| ITU 사양 제출                  | 2030년 중반                                             | 최종 사양                                                                                                                                                                                                                                                                                                                                         |
+| 상용 서비스 개시               | 2030~2031                                               | 한국/일본 선도 목표                                                                                                                                                                                                                                                                                                                               |
 
 **핵심 기술 방향:**
 
@@ -169,22 +175,23 @@ last_synced_from_db: 2026-06-06
 - AI-RAN Alliance, O-RAN Alliance, **OCUDU 재단**, 6ARROW 주도 생태계 구축
 - **6G 표준 분열(fork) 리스크 현실화**: 중국 독자 6G vs 서방(EU/미국/일본) 블록 [Light Reading]
 - **3GPP-O-RAN Alliance 공동 6G 조율 워크숍 개최** -- 글로벌 통합 6G 표준 내 Open RAN 아키텍처 조율
-- **6G 스펙트럼 공유: 기술적+경제적 도전 상당** -- 국가당 중대역 2~3GHz 확보 필요(2035~2040), 추가 1~3GHz 소요 [GlobeNewswire 2026.02]. **WRC-27 후보 4.4~4.8/7.125~8.4/14.8~15.35GHz, FR3(7.125~24.25GHz) 'golden spectrum'(사업자당 400MHz+ 가능). EU RSPG 확정(6/6 갱신): 상위 6GHz 540MHz(6.585~7.125GHz) 모바일 우선 즉시 지정 + 160MHz(6.425~6.585) 또는 125MHz(7.125~7.250)는 WRC-27 후 확정 보류. 6.425~7.250GHz 내 총 665~700MHz가 모바일용으로 지정 -- 2030 EU 6G 도입 1차 대역. WRC-27(2027말)이 하위7GHz 결정, 최종 명확화는 2028 초** [Light Reading, TelecomTV, Nokia Blog, GSMA Europe]
+- **6G 스펙트럼 공유: 기술적+경제적 도전 상당** -- 국가당 중대역 2~3GHz 확보 필요(2035~2040), 추가 1~3GHz 소요 [GlobeNewswire 2026.02]. **WRC-27 후보 4.4~4.8/7.125~8.4/14.8~15.35GHz, FR3(7.125~24.25GHz) 'golden spectrum'(사업자당 400MHz+ 가능). EU RSPG 확정: 상위 6GHz 540MHz(6.585~7.125GHz) 모바일 우선 즉시 지정 + 160MHz(6.425~6.585) 또는 125MHz(7.125~7.250)는 WRC-27 후 확정 보류. 6.425~7.250GHz 내 총 665~700MHz가 모바일용으로 지정 -- 2030 EU 6G 도입 1차 대역. 상위 6GHz는 글로벌 인구 80%+ harmonized footprint. lower 3GHz(3.1~3.45)·7.125~8.4GHz 모바일용 스터디 2026.10 마감 예정(6/13 갱신). WRC-27(2027말)이 하위7GHz 결정, 최종 명확화는 2028 초** [Light Reading, TelecomTV, Nokia Blog, GSMA, RCR Wireless]
 - **IEEE ICC 2026(글래스고, 5/24~28)**: Wireless Foundation Models for 6G, Task-Oriented 통신, AI-driven NTN 통합, Gen AI 네트워크 워크숍 다수 [IEEE ICC 2026]
 
-### 1.4 한국 관련 (2026.05.25 갱신)
+### 1.4 한국 관련 (2026.06.13 갱신)
 
 - **삼성 김윤선 마스터, 3GPP TSG RAN 의장 선출(2026.03, 5월 취임)** -- 한국인 최초. 6G Rel-21 표준 작업의 핵심 의사결정 권한 확보 [Samsung Newsroom, TheFastMode]
 - **국가 예산**: 6G 핵심기술 개발 사업 예타 통과 4,407억원. **2026년 예산 860억 -> 1,067억 증액** [과기정통부]
 - **Hyper AI네트워크 전략**: 2026년 예산 2,900억원(전년 대비 +450억원). 6G·AI네트워크 표준화 협력 전문연구실 운영 [대한민국 정책브리핑]
 - **정부 로드맵**: 제4차 정보통신 기본계획(2026~2028) 확정. 2025 테스트베드 -> 2026 실증망 -> 2028 시범서비스 -> 2030 상용화
 - **SKT-삼성 AI-RAN 공동연구 착수** (2026): AI 채널추정, 분산 MIMO, AI 스케줄러, 코어 네트워크 기술 [디일렉]
-- **SKT 6G 백서 ATHENA** 발간 (세번째), AI 내재화 비전 [SK텔레콤 뉴스룸]
+- **SKT 6G 백서 ATHENA** 발간 (세번째), AI 내재화 비전. 6대 비전: AI 네이티브/제로트러스트 보안/5G·6G·위성 융합 인프라/개방형 생태계/클라우드 네이티브 가상화/고객경험 중심 구조 [SK텔레콤 뉴스룸]
 - **SKT MWC2026 AI 네이티브 전환 선언**: 네트워크 전면 AI화 [아주경제]
 - **SKT-NTT도코모 AI-RAN 백서 공동 발간**: vRAN/AI-RAN 핵심기술 요구사항 정의 [SK텔레콤 뉴스룸]
 - **SKT-에릭슨 AI 네트워크 협력**: 2031년까지 AI-RAN/5G 고도화/6G 표준화 공동 연구 MoU [서울경제]
 - **KT MWC2026 6G 비전 첫 공개**: AX(AI 전환) 초연결/초고신뢰/지능형 AI 네트워크, 자율형 통신 구조. **GPU 기반 기지국 도입, Nokia/삼성과 AI 핸드오버 최적화 SW 확보** [인사이트코리아, sentv]
 - **삼성-KT AI-RAN 상용망 검증 성공**: 실시간 데이터 분석 기반 네트워크 최적화, 접속 끊김률 대폭 감소 [삼성뉴스룸, 전자신문]
+- **ETRI 중심 6G 저궤도 위성통신 사업**: SKT·KT·LGU+ 등 17개 기업 참여, 세계 첫 6G 저궤도 위성통신 시스템 구축 본격화 [ZDNet Korea]
 - **한화시스템-ETRI 6G 저궤도 위성통신 기술개발 MOU 체결(2025.03)**: 6G 저궤도 통신위성/다계층 네트워크/우주항공 반도체/스펙트럼 관리 공동개발. **ETRI-ESA NTN 국제 표준화 협력 추진** [전자신문, ETRI Webzine]
 
 ### 1.5 리스크 팩터
@@ -192,7 +199,7 @@ last_synced_from_db: 2026-06-06
 - 시장 규모 예측 불확실성 극대 (기관별 10배 이상 편차)
 - sub-THz 야외 셀룰러 용도 축소 확정 -- 당초 비전 대비 기술 현실 괴리
 - 5G 투자 회수 미완 상태에서 6G 추가 투자 부담. **글로벌 통신 CAPEX 2026년 -2%, 2027~2030 +1% CAGR**
-- 표준화 지연 가능성 (3GPP Rel-21 일정 슬립 리스크)
+- 표준화 지연 가능성 (3GPP Rel-21 일정 슬립 리스크). **6/13 갱신: Rel-21 freeze 2028.12 확정으로 일정 가시성 확보**
 - **지정학 리스크 현실화**: 6G 표준 fork -- 중국 독자 투자 가속 vs 서방 블록. **WRC-27 상하이 개최(2027.10) -- 중국 주파수 정책 영향력 확대**
 - 5G Advanced (Rel-18/19) 상용화로 6G 수요 지연 가능성
 - **6G 스펙트럼 공유의 기술적+경제적 도전** -- 국가별 중대역 확보 경쟁 심화
@@ -322,19 +329,19 @@ last_synced_from_db: 2026-06-06
 
 - Direct-to-Device(D2D) 세그먼트가 전체 위성인터넷보다 2배 빠른 성장률 (CAGR 22% vs 14%)
 
-### 4.2 주요 기업/프로젝트 현황 (2026.05.25 갱신)
+### 4.2 주요 기업/프로젝트 현황 (2026.06.13 갱신)
 
 **Starlink (SpaceX):**
 
-- **IPO 로드쇼 개시(2026.06.04, 6/6 갱신)**: 로드쇼 6/4 개시(SEC 검토 조기 완료로 앞당김). **고정가 $135/주 제시 -- 월가 가격범위 관행을 깨고 단일 고정가 채택**. 555.6M주 발행, **$75B 조달 / $1.75T 밸류**(사상 최대 IPO, 아람코 3배). 가격결정 6/11(장 마감 후), **Nasdaq 상장 6/12(티커 SPCX)**. 트레일링 2025 매출 109~116x, 2026E 매출 58~65x. 주관사 골드만삭스 리드+모건스탠리/BofA/씨티/JPM. 듀얼클래스 구조로 머스크 의결권 지배 [TechTimes 2026.06.04, CNBC 2026.06.03, Cryptobriefing]
-- **지수 편입 'Fast Entry' 변수(6/6 신규)**: Nasdaq 2026.05.01 발효 룰 변경 -- 시총 Top40 신규상장사는 15거래일 후 Nasdaq-100 편입(기존 3~12개월 시즈닝 폐지). SPCX는 **약 2026.07.06경 Nasdaq-100 편입 전망**, 인덱스펀드 강제 매수 발생. 향후 S&P500 편입 시 VOO/IVV/SPY 등 패시브 매수 의무 [TECHi, etf.com]
-- **밸류 회의론(6/6 신규)**: 월가 일부 애널 "적정가는 제시가의 절반"('worth half the ask') -- 고정가 IPO에 대한 밸류 논쟁 부각 [TechTimes 2026.06.04]
+- **IPO 상장 완료(2026.06.12, 6/13 갱신)**: **6/11 $135 고정가로 가격결정 -> 6/12 Nasdaq 데뷔(티커 SPCX). 시초가 $150(58M주 오픈, Morgan Stanley 안정화) -> 종가 $161, 첫날 +19% 급등**. 555,555,555주 발행 **$75B 조달 / $1.75T 포스트밸류 -- 사상 최대 IPO(아람코 2019 $35.4B 기록 경신)**. **투자수요 약 $250B로 모집액의 3.3배 초과청약**. 머스크 듀얼클래스 의결권 지배, **퍼블릭 플로트 약 3%로 희소성 극대**. 주관사 골드만삭스 리드+모건스탠리/BofA/씨티/JPM [CNBC 2026.06.12, NPR 2026.06.11, TradingKey 2026.06.12]
+- **지수 편입 갈림길 명확화(6/13 갱신)**: Nasdaq 2026.03 룰변경(시총 Top40 신규상장 15거래일 후 Nasdaq-100 편입)으로 **6/12 상장 기준 약 2026.07.01~07.06경 Nasdaq-100 fast entry 전망 -> QQQ 인덱스펀드 약 $7B 기계적 매수 예상**(플로트 3%에 집중). **반면 S&P500는 6/4 fast-track 거부 -- 12개월 시즈닝 + GAAP 흑자 요건 유지. 2025 -$4.9B 순손실로 미충족, 최소 2027년 중반까지 편입 불가** [eciks/QQQ, Yahoo Finance, CME Group, SpotGamma]
+- **밸류 회의론(6/6 유지)**: 첫날 +19% 강세에도 월가 일부 애널 "적정가는 제시가의 절반"('worth half the ask') -- 2025 -$4.9B 순손실 + 트레일링 매출 109~116x 고밸류 논쟁 지속 [TechTimes 2026.06.04]
 - **가입자 10.3M(2026 Q1말, S-1 공식 확인)**: 2023 2.3M→2024 4.4M→2025 8.9M→2026Q1 10.3M [SpaceX S-1]
 - **Connectivity Q1 2026 매출 $3.26B(전사 매출의 69%), 영업이익 $1.188B**. 2025 매출 $18.7B(Connectivity $11.4B=61%). **ARPU $66/월(2023 $99에서 하락 -- 국제 확장+저가 요금제)** [SpaceX S-1, CNBC, Via Satellite, TheTechMarketer]
 - **xAI 합병 후 2025 순손실 $4.94B, Q1 2026 손실 $4.28B** [SpaceX S-1]
-- **DTC 서비스 'Starlink Mobile'**: 22개국 서비스, 월 600만+ 고객 [SpaceflightNow]
+- **DTC 서비스 'Starlink Mobile'**: 2026.03 기준 파트너 통신사 통해 누적 1,600만 유니크 유저 접속, 월 1,000만 액티브. **일 5.2만 신규 페이스로 2026말 액티브 2,500만 목표. US 다운로드 Q1 2026 YoY +223%(120만, 분기 최고)** [SatelliteInternet.com, Basenor, KeepTrack]
 - **V3 위성(차세대)**: 위성당 1Tbps+ 다운링크/200Gbps 업링크 설계
-- DTC 위성 650+기 발사, FCC 총 15,000기 Gen2 승인 (2026.01)
+- DTC 위성 650+기 발사, FCC 총 15,000기 Gen2 승인 (2026.01). 22개국 라이브, 4억+명 커버
 - **Deutsche Telekom: Starlink Mobile 유럽 10개국 도입 계약, V2 위성 기반 2028 론칭**
 - 미국 위성ISP 시장점유율 72% (2025 Q2)
 - **은행 전망: 2026년말 1,800만 가입자, 'LEO 위성군 과잉' 경고** [SatNews]
@@ -351,17 +358,17 @@ last_synced_from_db: 2026-06-06
 - **FCC 전체 248기 위성군 상업 서비스 승인 획득** [IntoMobile, AST IR]
 - BlueBird 6 배치 (2025.12.23) -- Block 2 첫 위성, 기존 대비 3배 크기
 - **BlueBird 7 궤도 진입 실패 (2026.04.19)**: New Glenn 로켓 2단 엔진 추력 부족. **보험 회수 진행 중** [SpaceNews, AST BusinessWire]
-- **복구 발사 6월 중순 재확인(6/6 갱신)**: BlueBird 8/9/10 SpaceX Falcon 9으로 **6월 중순 발사**(BB7 Blue Origin New Glenn NG-3 실패로 페이로드 오궤도 -> SpaceX 전환). **Block 2 유닛, LEO 최대 상용 위상배열 안테나, 피크 120Mbps**. BlueBird 11~33 조립 진행 중. 50만 sqft 제조시설. **2026말 목표 45~60기로 상향 명시(기존 ~45기에서 레인지 확대)** [AST SpaceMobile 8-K, SatNews 5/7, Fierce Network, Yahoo]
+- **복구 발사일 6/17 확정(6/13 갱신)**: BlueBird 8/9/10 SpaceX Falcon 9으로 **2026-06-17(현지) 케이프커내버럴 발사**(BB7 New Glenn NG-3 실패로 페이로드 오궤도 -> SpaceX 전환). **Block 2 유닛, LEO 최대 상업 위상배열 안테나(위성당 약 2,400 sqft 개구), 피크 120Mbps**. SpaceX IPO 웨이브로 ASTS 리레이팅 동반. **2026말 목표 45~60기로 전국 D2C 셀룰러 브로드밴드 제공 목표** [AST SpaceMobile 8-K FY2026, SatNews 5/7, Fierce Network, Yahoo]
 - 2026 상반기 AT&T/FirstNet 대상 베타 서비스 시작 (초기 6기 위성으로 간헐적 미국 커버리지)
-- 2026말 45~60기 배치 목표(6/6 상향 명시)이나 발사 일정 리스크 잔존 [Fierce Network, Light Reading]
+- 2026말 45~60기 배치 목표이나 발사 일정 리스크 잔존 [Fierce Network, Light Reading]
 
 **Amazon Leo (구 Project Kuiper):**
 
-- **2026.04.08 엔터프라이즈 베타 라이브, mid-2026 상용 출시 목표 유지(6/6 재확인)** [TheNextWeb, Amazon CEO Jassy]
-- **2026.04 기준 ~302기 발사** (기존 241기에서 증가)
-- **FCC 위기**: 의무 1,618기(2026.07) vs 실제 ~302기 -- **24개월 연장 신청(2026.01.30, 2028.07까지)**. **FCC 위성군 규모 2배 이상 확대 승인** [ITIF, DCD, Broadband Breakfast]
+- **2026.04.08 엔터프라이즈 베타 라이브, mid-2026 상용 출시 목표 유지(6/13 재확인)** [TheNextWeb, Amazon CEO Jassy]
+- **2026.06 기준 330+기 배치** (최근 Atlas V 발사 후, 기존 ~302기에서 증가)
+- **FCC 위기**: 의무 1,618기(2026.07) vs 실제 330+기 -- **24개월 연장 신청(2026.01.30, 2028.07까지)**. **FCC 위성군 규모 2배 이상 확대 승인** [ITIF, DCD, Broadband Breakfast]
 - SpaceX Falcon 9 추가 10회 + Blue Origin New Glenn 12회 계약으로 발사 가속
-- **Amazon, Globalstar $11.57B 인수 발표(2026.04.14)**: 주당 $90(현금/주식 선택). Apple 20% 지분 보유. **iPhone/Apple Watch 위성 서비스 제공 계약(Emergency SOS) 포함. Globalstar 24기 LEO+28 게이트웨이+면허 스펙트럼 확보. DTC 위성 시스템 2028년 배치, 거래 2027년 종결 예상(6/6 Globalstar 10-Q 재확인)** [CNBC, Bloomberg, Globalstar 10-Q FY2026]
+- **Amazon, Globalstar $11.57B 인수 발표(2026.04.14)**: 주당 $90(현금/주식 선택). Apple 20% 지분 보유. **iPhone/Apple Watch 위성 서비스 제공 계약(Emergency SOS) 포함. Globalstar 24기 LEO+28 게이트웨이+면허 스펙트럼 확보. 표준 3GPP NTN 호환폰으로 음성/문자/데이터 제공(전용 HW 불필요). DTC 위성 시스템 2028년 배치, 거래 2027년 종결 예상(6/13 재확인)** [CNBC, Bloomberg, Globalstar 8-K FY2026, aboutamazon.com]
 - 기업 매출 목표 USD 20B
 
 **Eutelsat OneWeb:**
@@ -376,16 +383,16 @@ last_synced_from_db: 2026-06-06
 ### 4.3 한국 관련
 
 - **저궤도 통신위성 2기 발사** (2030년까지): 과기정통부/우주항공청 공동 추진
-- **ETRI 총괄**: 3GPP 6G 기반 저궤도 위성통신 페이로드/지상국 핵심기술 개발
+- **ETRI 총괄**: 3GPP 6G 기반 저궤도 위성통신 페이로드/지상국 핵심기술 개발. **SKT·KT·LGU+ 등 17개 기업 참여 세계 첫 6G 저궤도 위성통신 시스템 구축** [ZDNet Korea]
 - **한화시스템-ETRI MOU(2025.03)**: 6G 저궤도 통신위성/다계층 네트워크/우주항공 반도체/스펙트럼 관리 공동개발. **ETRI-ESA NTN 국제 표준화 협력 추진** [전자신문, ETRI]
 - **참여 기업**: 한화시스템, LIG넥스원, 쎄트렉아이 (위성체), KT (NTN 통합)
 
 ### 4.4 리스크 팩터
 
 - Starlink 독점화 심화: 10.3M 가입자/72% 점유율/650+ DTC위성/15,000기 승인. **ARPU $66으로 하락 추세**
-- **SpaceX xAI 합병 후 대규모 순손실($4.94B in 2025)** -- IPO 투자자 리스크 평가 변수
-- **AST SpaceMobile BlueBird 7 궤도 실패** -- 배치 일정 타격, New Glenn 신뢰도 의문. **6월 Falcon 9 BlueBird 3기 복구 발사 예정이나 일정 리스크 존재**
-- **Amazon Leo FCC 미달 위기**: 의무 1,618기 vs ~302기, 라이선스 24개월 연장 요청 중. **Globalstar $11.6B 인수로 스펙트럼 확보하나 DTC 실배치는 2028년**
+- **SpaceX xAI 합병 후 대규모 순손실($4.94B in 2025)** -- IPO 후 S&P500 편입 차단 사유(GAAP 흑자 미충족). 첫날 +19% 강세에도 밸류 회의론 지속
+- **AST SpaceMobile BlueBird 7 궤도 실패** -- 배치 일정 타격, New Glenn 신뢰도 의문. **6/17 Falcon 9 BlueBird 3기 복구 발사 예정이나 일정 리스크 존재**
+- **Amazon Leo FCC 미달 위기**: 의무 1,618기 vs 330+기, 라이선스 24개월 연장 요청 중. **Globalstar $11.6B 인수로 스펙트럼 확보하나 DTC 실배치는 2028년, 거래 종결 2027년**
 - 우주 잔해(Space Debris) 증가: 수만 기 LEO 위성 충돌 리스크
 - Direct-to-Cell 수익 모델: 가입자 확보 중이나 ARPU 구조 미확립
 - **LEO 위성군 과잉 경고**: 은행 분석 'too many LEO constellations' [SatNews]
@@ -402,7 +409,7 @@ last_synced_from_db: 2026-06-06
 | Rel-17     | NTN 기본 규격 (NB-IoT/LTE-M 위성 지원)                                                  |
 | Rel-18     | 커버리지 강화, 지상-비지상 핸드오버, Ka-대역 지원                                       |
 | Rel-19     | NB-IoT/eMTC NTN in 5G Core, **Store-and-Forward**, **RedCap over NTN**, 재생성 페이로드 |
-| **Rel-21** | **NTN이 6G 핵심 구성요소로 처음부터 통합 설계 (네이티브 통합)**                         |
+| **Rel-21** | **NTN이 6G 핵심 구성요소로 처음부터 통합 설계 (네이티브 통합). freeze 2028.12**         |
 
 ### 5.2 상용화 현황 (2026.05.25 갱신)
 
@@ -412,6 +419,7 @@ last_synced_from_db: 2026-06-06
 - **ST Engineering iDirect**: Satellite 2026에서 5G NR-NTN 라이브 데모 [ST Engineering]
 - **Gilat**: 3GPP 준수 5G NTN GEO 위성 연결 시연 (2026.02) [SatNews]
 - **O-RAN Alliance NTN 배치 지원 세션 + 10th 6G 워크숍 개최** [O-RAN Alliance]
+- **Amazon Leo (Globalstar 인수)**: 표준 3GPP NTN 호환폰으로 음성/문자/데이터 -- 전용 HW 불필요, DTC 2028 배치 [aboutamazon.com]
 
 ### 5.3 시장 성숙도
 
@@ -443,18 +451,20 @@ last_synced_from_db: 2026-06-06
 - AI-RAN 확산 동력: 5G/6G 배치 가속 + Open RAN 클라우드 네이티브 전환 + 저지연 앱(자율주행/AR/VR) 수요
 - **NVIDIA State of AI in Telecom: 응답자 77%가 AI 네이티브 무선 네트워크 배치 시간 '대폭 단축' 기대** [NVIDIA]
 
-### 6.2 주요 기업/플랫폼 현황 (2026.05.25 갱신)
+### 6.2 주요 기업/플랫폼 현황 (2026.06.13 갱신)
 
 **NVIDIA AI Aerial:**
 
 - AI-RAN 생태계 핵심 플랫폼. vRAN DU/CU/UPF/RIC/보안 등 모든 네트워크 기능 가속 [NVIDIA]
 - **Aerial SW 오픈소스화(Apache 2.0)**: CUDA-Accelerated RAN + Omniverse Digital Twin(AODT, 2026.03 GitHub 공개) + Aerial Framework [NVIDIA Blog]
 - **MWC 2026**: 전년 대비 3배 AI-RAN 혁신 시연. 33개 데모 중 26개 NVIDIA Aerial 기반 [CRN Asia]
-- **Nokia에 $1B 투자** + **Marvell에 $2B 투자** -- AI-RAN 인프라 대규모 자본 투입 [NVIDIA Newsroom, Marvell IR]
+- **Nokia에 $1B 투자(주당 $6.01)** + **Marvell에 $2B 투자** -- AI-RAN 인프라 대규모 자본 투입 [NVIDIA Newsroom, Marvell IR]
 - **Nemotron Large Telco Model(30B 파라미터) 오픈소스 발표** [NVIDIA Blog]
 - **IEEE ICC 2026(글래스고, 5/24~28) 참가**: 키노트, AI-driven 디지털트윈 패널, AI-native 6G 튜토리얼
 - **AI Grids 발표(GTC 2026)**: AT&T/Spectrum/Indosat 등 6개 주요 통신사가 분산 AI 인프라 배치 시작. IoT/게임/Sovereign AI 유스케이스 [NVIDIA Blog, DCD]
 - **NVIDIA Arc Aerial RAN Computer(6G-ready 컴퓨팅 플랫폼) 발표(5/30 갱신)**: Nokia가 글로벌 액세스 포트폴리오에 NVIDIA 기반 신규 AI-RAN 제품 추가. T-Mobile US 6G 개발에 통합, Dell PowerEdge 서버 구동, 2026 필드 트라이얼 [NVIDIA Newsroom, Nokia]
+- **NVIDIA-Nokia anyRAN 기능 테스트 성공(6/13 갱신)**: Nokia anyRAN SW를 NVIDIA GPU 가속 AI-RAN 플랫폼에서 T-Mobile·Indosat·SoftBank Corp와 검증 + 신규 고객 통합. **IEEE ComSoc 6/9 NVIDIA 신규 6G AI-RAN 루머 분석 게재** [NVIDIA Newsroom, Computer Weekly, IEEE ComSoc]
+- **젠슨 황 한국 AI 협약(6/13 갱신, 2026.06.08)**: SK하이닉스(차세대 HBM 공동개발 다년 파트너십)·SKT(기가와트급 AI 클라우드)·네이버·두산 일괄 발표 [StockTitan, Perplexity AI Magazine]
 - **NVIDIA 6G 글로벌 커밋(5/30 갱신)**: SK Telecom·SoftBank 포함 12사+(Booz Allen/BT/Cisco/Deutsche Telekom/Ericsson/MITRE/Nokia/OCUDU/ODC/SK Telecom/SoftBank/T-Mobile)가 AI-native·오픈·보안 6G 플랫폼 구축 선언 [NVIDIA Newsroom]
 
 **AI-RAN Alliance:**
@@ -544,6 +554,7 @@ last_synced_from_db: 2026-06-06
 | 2026~2027 | 주파수 재할당 완료, 5G SA 전환 투자 시작 |
 | 2027~2028 | **통신장비 수주 피크** (5G SA 본격 투자) |
 | 2028      | LA올림픽 6G 시범서비스                   |
+| 2028.12   | **3GPP Rel-21 6G functional freeze**     |
 | 2029~2030 | 6G 투자 본격화                           |
 
 ### 8.4 2026 Q1 실적 (2026.05.25 갱신 -- 3사 확정치 반영)
@@ -560,72 +571,73 @@ last_synced_from_db: 2026-06-06
 - **통신3사 AI DC 매출 격차**: SKT 1,314억(+89.3%), LGU+ 1,144억(+31.0%), KT클라우드 2,501억(+0.4% 정체) -- **SKT AI 매출 1위, LGU+ 맹추격, KT DC 성장 정체** [kpenews, huffingtonpost.kr]
 - **통신3사 GPUaaS·특화망·클라우드 B2B 확장 가속**: 단순 망 제공자→AI 인프라 사업자 전환 중 [daily.hankooki, smartbizn]
 
-### 8.5 통신3사 AIDC GPU 메가딜 (2026.06.06 갱신)
+### 8.5 통신3사 AIDC GPU 메가딜 (2026.06.13 갱신)
 
-| 통신사 | DC 용량 목표 | 핵심 프로젝트 | GPU 규모 |
-| ------ | ------------ | ------------- | -------- |
-| SKT | 내년 하반기 300MW+, 장기 1GW+ (아태 최대 허브) | 울산 AIDC(AWS, 2027 가동), 구로/서남권 OpenAI 전용 'Stargate Korea' | 울산 6만 GPU |
-| LG유플러스 | 수도권 최대 규모 (DBO 사업) | 파주 AIDC(2027 준공) | 최대 12만장 GPU 수용 |
-| KT | 2030까지 500MW | 경기 부천 DC(2026 하반기 개소) | N/A |
+| 통신사     | DC 용량 목표                                   | 핵심 프로젝트                                                                                      | GPU/수주 규모                                        |
+| ---------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| SKT        | 내년 하반기 300MW+, 장기 1GW+ (아태 최대 허브) | 울산 AIDC(AWS, 2027 가동), 구로/서남권 OpenAI 전용 'Stargate Korea', NVIDIA 기가와트급 AI 클라우드 | 울산 6만 GPU                                         |
+| LG유플러스 | 수도권 유일 200MW급 (파주, DBO 사업)           | 파주 AIDC(2027.06 준공, 공정률 약 20%, 1동 50MW 완판)                                              | 최대 12만장 GPU 수용 / **2030 누적 수주 5조원 목표** |
+| KT         | 2030까지 500MW                                 | 경기 부천 DC(2026 하반기 개소)                                                                     | N/A                                                  |
 
-- **SKT**: 내년 하반기까지 300MW+ DC 용량 확보, 장기 1GW+로 확대해 아시아·태평양 최대 AIDC 허브 추진. 울산(AWS, 6만 GPU, 2027 가동)·구로(OpenAI 전용, 서남권 메모리 공급 LOI+MOU, 'Stargate Korea') 동시 추진. AIDC 매출 1,314억(+89.3% YoY) [머니투데이 2026.05.14, DCD, SKT 뉴스룸]
-- **LG유플러스**: 파주 AIDC 2027 준공, **최대 12만장 GPU 수용 초대형 시설** -- 향후 핵심 성장 동력. DBO(설계·구축·운영) 사업 본격화. AIDC 매출 1,144억(+31.0%) [머니투데이 2026.05.14, 디지털데일리]
+- **SKT**: 내년 하반기까지 300MW+ DC 용량 확보, 장기 1GW+로 확대해 아시아·태평양 최대 AIDC 허브 추진. 울산(AWS, 6만 GPU, 2027 가동)·구로(OpenAI 전용, 서남권 메모리 공급 LOI+MOU, 'Stargate Korea') 동시 추진. **젠슨 황 6/8 SKT와 한국 기가와트급 AI 클라우드 구축 협약, SK하이닉스 차세대 HBM 공동개발 다년 파트너십 발표(6/13 갱신)**. AIDC 매출 1,314억(+89.3% YoY) [머니투데이 2026.05.14, DCD, SKT 뉴스룸, StockTitan]
+- **LG유플러스**: **파주 AIDC 1동(50MW) 완판 + '2030년 AIDC 누적 수주 5조원' 선언(6/6 갱신)**. 차세대 AIDC 전략 '더 에이스 온 트러스트' 공개. 파주는 수도권 유일 200MW급 하이퍼스케일(수도권 전체 인구 동시 생성형AI 구동 수준), 공정률 약 20%, 2027.06 준공. 단순 공간임대->전력·냉각·자원 통합 'AI 팩토리 오퍼레이터' 전환 구상. 최대 12만장 GPU 수용. AIDC 매출 1,144억(+31.0%) [한국일보 2026.06.06, 국민일보 2026.06.06, 파이낸셜뉴스 2026.06.07, 데일리e뉴스]
 - **KT클라우드**: 2030년까지 DC 용량 **500MW 규모 확대** 계획, 2026 하반기 경기 부천 DC 개소 예정. 클라우드 매출 2,501억(+0.4% 정체) [머니투데이 2026.05.14, 디지털데일리]
-- **3색 AIDC 전략 차별화**: SKT(글로벌 빅테크 협력+GPUaaS) / LGU+(초대형 신축 DBO) / KT(자체 클라우드 용량 확장). 통신3사 모두 AIDC를 'AI 수익 사업'으로 전면화 [머니투데이]
+- **3색 AIDC 전략 차별화**: SKT(글로벌 빅테크 협력+NVIDIA 기가와트 클라우드+GPUaaS) / LGU+(초대형 신축 DBO+5조 수주 목표+AI 팩토리 오퍼레이터) / KT(자체 클라우드 용량 확장). 통신3사 모두 AIDC를 'AI 수익 사업'으로 전면화 [머니투데이, 한국일보]
 
 ---
 
 ## 9. 투자 관련 종합
 
-### 9.1 서브섹터별 투자 매력도 (2026.05.25 갱신)
+### 9.1 서브섹터별 투자 매력도 (2026.06.13 갱신)
 
-| 서브섹터     | 성장성                  | 투자 시점                                  | 불확실성                                                             |
-| ------------ | ----------------------- | ------------------------------------------ | -------------------------------------------------------------------- |
-| 6G           | 높음 (2030+ 본격화)     | 중기 (2027~28 진입 적기)                   | 극대 (시장 규모 예측 10x 편차, 표준 fork 리스크, WRC-27 주파수 정치) |
-| 5G Advanced  | 중~높음 (현재 진행형)   | 지금~단기 (Rel-18 상용화 + SA 전환)        | 낮음 (표준 확정, 상용화 중)                                          |
-| Open RAN     | 높음 (CAGR 26~42%)      | 중기 (순수 Open RAN vs 하이브리드 정립 시) | 높음 (비전 후퇴론 vs 실제 배치 확대 괴리)                            |
-| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 10.3M/SpaceX IPO 6/12 상장 확정 $1.75T)  | 중간 (Starlink ARPU 하락+2025 -$4.9B 순손실, Amazon $11.6B 경쟁, AST BB7 실패->6월 복구발사) |
-| NTN          | 높음 (6G 핵심 구성요소) | 중기 (상용화 초기 단계)                    | 중간 (핸드오버/지연 품질 미검증)                                     |
-| AI-RAN       | 매우 높음 (CAGR 29~33%) | 지금~단기 (상용화 초기, 검증 결과 도출)    | 중간 (NVIDIA 종속 심화, AI 배치 비용 vs 5G 회수)                     |
-| 엣지 컴퓨팅  | 높음 (CAGR 30~48%)      | 중기 (5G+MEC 통합 확산)                    | 높음 (시장 정의 불명확, 수익 모델 미확립)                            |
+| 서브섹터     | 성장성                  | 투자 시점                                             | 불확실성                                                                                                                  |
+| ------------ | ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 6G           | 높음 (2030+ 본격화)     | 중기 (2027~28 진입 적기)                              | 극대 (시장 규모 예측 10x 편차, 표준 fork 리스크, WRC-27 주파수 정치). **Rel-21 freeze 2028.12 확정으로 일정 가시성 개선** |
+| 5G Advanced  | 중~높음 (현재 진행형)   | 지금~단기 (Rel-18 상용화 + SA 전환)                   | 낮음 (표준 확정, 상용화 중)                                                                                               |
+| Open RAN     | 높음 (CAGR 26~42%)      | 중기 (순수 Open RAN vs 하이브리드 정립 시)            | 높음 (비전 후퇴론 vs 실제 배치 확대 괴리)                                                                                 |
+| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 10.3M/SPCX 상장완료 $1.75T, 첫날 +19%) | 중간 (Starlink ARPU 하락+2025 -$4.9B 순손실로 S&P500 편입 차단, Amazon $11.6B 경쟁, AST 6/17 복구발사)                    |
+| NTN          | 높음 (6G 핵심 구성요소) | 중기 (상용화 초기 단계)                               | 중간 (핸드오버/지연 품질 미검증)                                                                                          |
+| AI-RAN       | 매우 높음 (CAGR 29~33%) | 지금~단기 (상용화 초기, 검증 결과 도출)               | 중간 (NVIDIA 종속 심화, AI 배치 비용 vs 5G 회수)                                                                          |
+| 엣지 컴퓨팅  | 높음 (CAGR 30~48%)      | 중기 (5G+MEC 통합 확산)                               | 높음 (시장 정의 불명확, 수익 모델 미확립)                                                                                 |
 
 ### 9.2 글로벌 통신장비 업체 실적 (2026 Q1)
 
-| 업체     | 매출      | 성장률                | 주요 특이사항                                                                                                            |
-| -------- | --------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Nokia    | EUR 4.50B | +4% (CC)              | OP +54%, AI&Cloud +49%, 주가 16년 최고치. **Q2 매출 QoQ +5~9%. AI&Cloud TAM CAGR 27% 상향. 미국 관세 Q2 OP -EUR 20~30M** |
-| Ericsson | SEK 49.3B | 유기적 +6%, 보고 -10% | FX SEK 7.8B 역풍, 구조조정 SEK 3.8B                                                                                      |
+| 업체     | 매출      | 성장률                | 주요 특이사항                                                                                                                                                         |
+| -------- | --------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nokia    | EUR 4.50B | +4% (CC)              | OP +54%, AI&Cloud +49%, 주가 16년 최고치. **Q2 매출 QoQ +5~9%. AI&Cloud TAM CAGR 27% 상향. 미국 관세 Q2 OP -EUR 20~30M. NVIDIA $1B 투자(주당 $6.01)+anyRAN GPU 검증** |
+| Ericsson | SEK 49.3B | 유기적 +6%, 보고 -10% | FX SEK 7.8B 역풍, 구조조정 SEK 3.8B                                                                                                                                   |
 
-- Nokia: AI&Cloud 수주 EUR 1B(분기), Optical +20%. **Nokia TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%), 'AI 슈퍼사이클' 진단. 800G 코히어런트 플러거블 2026년 AI 네트워크 표준화**
+- Nokia: AI&Cloud 수주 EUR 1B(분기), Optical +20%. **Nokia TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%), 'AI 슈퍼사이클' 진단. 800G 코히어런트 플러거블 2026년 AI 네트워크 표준화. anyRAN SW를 T-Mobile·Indosat·SoftBank Corp와 NVIDIA GPU 가속 AI-RAN에서 검증(6/13)**
 - Ericsson: 유기적 성장 견조하나 FX/구조조정 부담. **OCUDU 재단 창립 프리미어 멤버**
 - **Samsung**: 글로벌 RAN 시장 3번째 옵션 부상. **3GPP TSG RAN 의장(김윤선) 확보로 표준화 영향력 확대** [Omdia]
 
 ### 9.3 크로스 테마
 
-- **6G + NTN**: NTN이 6G 핵심 구성요소 -- 3GPP Rel-21에서 NTN 표준 통합 가속
+- **6G + NTN**: NTN이 6G 핵심 구성요소 -- 3GPP Rel-21에서 NTN 표준 통합 가속. **Rel-21 freeze 2028.12 확정**
 - **5G Advanced + Open RAN**: Rel-18/19 상용화가 Open RAN 채택을 가속 (AI/ML + 클라우드 네이티브)
-- **AI-RAN + 6G**: AI-native 네트워크가 6G 정의의 핵심. **AI-WIN 6개월 만에 6G 스택+첫 통화 성공. NVIDIA Nemotron Telco 30B + AI Grids로 자율 네트워크 가속**
-- **위성통신 빅딜 연쇄**: SpaceX IPO 6/12 Nasdaq 상장 확정($1.75T, $75~80B 조달, 사상 최대 IPO) + Amazon-Globalstar $11.57B -- LEO 위성 인프라 자본 구도 대전환. DTC 경쟁 본격화 (Starlink vs Amazon DTC 2028)
+- **AI-RAN + 6G**: AI-native 네트워크가 6G 정의의 핵심. **AI-WIN 6개월 만에 6G 스택+첫 통화 성공. NVIDIA Nemotron Telco 30B + AI Grids로 자율 네트워크 가속. Nokia anyRAN GPU 검증(6/13)**
+- **위성통신 빅딜 연쇄**: **SpaceX IPO 6/12 Nasdaq 상장 완료($1.75T, $75B 조달, 사상 최대 IPO, 첫날 +19% $161)** + Amazon-Globalstar $11.57B -- LEO 위성 인프라 자본 구도 대전환. DTC 경쟁 본격화 (Starlink vs Amazon DTC 2028). **SPCX Nasdaq-100 fast entry 7월초 / S&P500는 GAAP 흑자 미충족으로 2027 중반 이후**
 - **Open RAN + AI-RAN**: RIC가 두 영역의 교집합. **OCUDU V1.0 + 퀄컴 합류로 오픈소스 CU/DU 경로 본격화**
-- **NVIDIA 자본 투입 확대**: Nokia $1B + Marvell $2B -- AI-RAN 생태계 자본 구도 재편
-- **RAN -> AI 서비스 플랫폼**: SoftBank AITRAS 16레이어 MIMO + 여유 컴퓨팅 활용 데모. **2026년 상용망 도입 예정**
+- **NVIDIA 자본 투입 확대**: Nokia $1B + Marvell $2B -- AI-RAN 생태계 자본 구도 재편. **젠슨 황 6/8 한국 SK하이닉스/SKT/네이버/두산 협약**
+- **RAN -> AI 서비스 플랫폼**: SoftBank AITRAS 16레이어 MIMO + 여유 컴퓨팅 활용 데모. **2026.10 상용 도입 예정**
+- **한국 AIDC 빅딜화**: LGU+ 파주 1동 완판+2030 5조 수주 목표 / SKT NVIDIA 기가와트 클라우드+OpenAI Stargate Korea -- 통신3사 'AI 인프라 사업자' 전환 가속
 - **AI Grids**: AT&T/Spectrum/Indosat 등 6사가 통신 인프라를 분산 AI 컴퓨트 인프라로 전환 [NVIDIA GTC 2026]
 - **AI-WIN**: 미국 주도 AI-네이티브 무선 네트워크 오픈 스택 -- 6G 기술 주권 확보 경쟁. **첫 유저-투-유저 통화 + ISAC/재밍탐지 앱 개발**
 - **AT&T $250B 5개년**: 5G 현대화(Open RAN 70%)+파이버+위성 통합. 미국 최대 통신 투자 사이클
 
 ### 9.4 한국 주요 관련 종목 총정리
 
-| 종목           | 6G  | 5G-Adv | Open RAN | 위성 | NTN | AI-RAN | 비고                                                                     |
-| -------------- | --- | ------ | -------- | ---- | --- | ------ | ------------------------------------------------------------------------ |
-| 삼성전자       | O   | O      | O        | -    | -   | O      | **3GPP TSG RAN 의장**, 장비/기술 선도, AI-RAN, Vodafone/Rakuten Open RAN |
-| SK텔레콤       | O   | O      | -        | O    | O   | O      | AI 네이티브 전환, 에릭슨/삼성/도코모 협력, **AIDC +89.3%**               |
-| KT             | O   | O      | -        | O    | O   | O      | 6G AX 비전, NTN 3차원 커버리지, **Q1 OP -29.9% 해킹, 2월 순증 전환**     |
-| LG유플러스     | O   | O      | -        | -    | -   | -      | 통신사, 해킹 반사이익 **유일 성장**, AIDC +31%                           |
-| 한화시스템     | -   | -      | -        | O    | O   | -      | 위성체/ETRI 협력, **6G NTN MOU**                                         |
-| 쎄트렉아이     | -   | -      | -        | O    | -   | -      | 위성체/페이로드                                                          |
-| 인텔리안테크   | -   | -      | -        | O    | -   | -      | 위성 안테나                                                              |
-| 이노와이어리스 | O   | O      | -        | -    | -   | -      | 통신장비/계측                                                            |
-| 쏠리드         | O   | O      | O        | -    | -   | -      | 소형셀/중계기                                                            |
-| RFHIC          | O   | O      | -        | -    | -   | -      | RF 반도체                                                                |
+| 종목           | 6G  | 5G-Adv | Open RAN | 위성 | NTN | AI-RAN | 비고                                                                                      |
+| -------------- | --- | ------ | -------- | ---- | --- | ------ | ----------------------------------------------------------------------------------------- |
+| 삼성전자       | O   | O      | O        | -    | -   | O      | **3GPP TSG RAN 의장**, 장비/기술 선도, AI-RAN, Vodafone/Rakuten Open RAN                  |
+| SK텔레콤       | O   | O      | -        | O    | O   | O      | AI 네이티브 전환, 에릭슨/삼성/도코모 협력, **NVIDIA 기가와트 클라우드(6/8)·AIDC +89.3%**  |
+| KT             | O   | O      | -        | O    | O   | O      | 6G AX 비전, NTN 3차원 커버리지, **Q1 OP -29.9% 해킹, 2월 순증 전환**                      |
+| LG유플러스     | O   | O      | -        | -    | -   | -      | 통신사, 해킹 반사이익 **유일 성장**, **파주 AIDC 1동 완판+2030 5조 수주 목표**, AIDC +31% |
+| 한화시스템     | -   | -      | -        | O    | O   | -      | 위성체/ETRI 협력, **6G NTN MOU**                                                          |
+| 쎄트렉아이     | -   | -      | -        | O    | -   | -      | 위성체/페이로드                                                                           |
+| 인텔리안테크   | -   | -      | -        | O    | -   | -      | 위성 안테나                                                                               |
+| 이노와이어리스 | O   | O      | -        | -    | -   | -      | 통신장비/계측                                                                             |
+| 쏠리드         | O   | O      | O        | -    | -   | -      | 소형셀/중계기                                                                             |
+| RFHIC          | O   | O      | -        | -    | -   | -      | RF 반도체                                                                                 |
 
 ---

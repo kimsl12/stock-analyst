@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-06
-valid_until: 2026-07-06
+updated: 2026-06-13
+valid_until: 2026-07-13
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -67,13 +67,22 @@ sources:
   - TQI, Riverlane, Iceberg Quantum, Nature, IEEE Spectrum, phys.org
   - ESA (Eagle-1 EuroQCI), Qubitrium (QubitCore CubeSat)
   - 247WallSt, Fast Company, CNBC, Motley Fool, Benzinga, Rosenblatt, TipRanks, Seeking Alpha, GuruFocus
+  - IBM+MIT (qLDPC + 대수적 외부 블록 제약 통합, 144큐빗 bivariate bicycle gross 코드 teraquop 진입 10^-3 노이즈 플로어 06-06)
+  - IonQ (트랩이온 9종 QEC 실험 06-06, 루마니아 RoNaQCI 유럽 최대급 운영 QKD 1,500km+/36링크, 06-12 ~$70 Buy 컨센)
+  - Horizon Quantum (더블린 256큐빗 IonQ 트랩이온 테스트베드 06-11, 아일랜드 국가반도체전략)
+  - Quantinuum (미쓰비시전기 트랩이온 산업 설계 파트너십 06-04, QNT 첫주 변동 고가~$71→저가~$50→06-12 $56.49)
+  - SK텔레콤 (아시아 민간 최초 Horizon Europe QKD 펀딩 06-09, QPIC-AI, ETRI PIC 광칩)
+  - Google Quantum AI (ECDSA-256 파괴 자원 20배 감소 백서 3월말~4월초, Cloudflare/Google 2029 PQC 가속)
+  - NIST CSRC (FIPS 206 FN-DSA 2025.08 최종승인 제출→2026 발간 예정)
+  - Space Insider / PatSnap (양자센서 PNT TAM 2026 원자시계 ~88%, 2036 양자 IMU ~18%)
+  - Seoul Economic Daily, telecoms.com, photonicsonline, Help Net Security, HPCwire, Investing.com, public.com
 confidence: high
-last_synced_from_db: 2026-06-06
+last_synced_from_db: 2026-06-13
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-06-06)
+## CURRENT (2026-06-13)
 
 ---
 
@@ -138,7 +147,7 @@ last_synced_from_db: 2026-06-06
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | **IonQ**          | **Q1 2026**: GAAP 매출 **$64.7M(+755%)**. RPO **$470M(+554%)**. **FY2026 가이던스 $260-270M**. 현금 **$3.1B**. **첫 매출 $100M+ 양자 순수기업**. 시총 **~$25.4B**(06-05): Quantinuum 데뷔 후에도 양자 순수기업 **시총 1위 유지**. **CHIPS 수혜 미포함**(9개사 외). SkyWater FTC 진행 중. Boulder R&D 22K sqft. **06-04 ~-3%**(QNT 데뷔 영향). 시초 $63.60~$64.73. **자동 InSAR 지구관측**(05월)                                                                                                                                 | FY2026 $260-270M. 2028 200K 큐빗 QPU 목표. 99.99% 2큐빗(2025-10 세계기록). 애널 11 매수/0 매도 Strong Buy [IonQ] |
 | **IonQ 네트워킹** | **포토닉 인터커넥트**(04-14): 두 상용 이온트랩 원거리 양자얽힘 최초 시연. DARPA HARQ + AFRL                                                                                                                                                                                                                                                                                                                                                                                                                                     | SDT QuREKA 한국 통합. UMD QLab $750만 [IonQ]                                                                     |
-| **Quantinuum**    | Helios 상용. **IPO 완료(06-04)**: Nasdaq **'QNT'** 데뷔. 가격 **$60/주**(레인지 $53-55 상회), **2,800만주 업사이즈**, **$1.68B 조달**, **20배 초과청약**. 시초 **$68**/세션고가 **$71.35**/**종가 거의 보합**, 시총 **~$15.7B**. **IonQ 다음 양자 순수기업 2위**. 양자 풀스택 기업 세계 최초 전통 IPO. Honeywell+Cambridge Quantum 합병체, IPO 후 Honeywell ~82% 지분 유지. **2025 확정실적: 매출 $30.9M / 수주 $79.3M / 순손실 $192.6M**. **CHIPS $100M LOI**(05-21). **BMW 연료전지·배터리 소재 다년 파트너십**. 싱가포르 R&D | 56 물리/48 논리큐빗. 1큐빗 99.9975%, 2큐빗 99.921% [Quantinuum]                                                  |
+| **Quantinuum**    | Helios 상용. **IPO 완료(06-04)**: Nasdaq **'QNT'** 데뷔. 가격 **$60/주**(레인지 $53-55 상회), **2,800만주 업사이즈**, **$1.68B 조달**, **20배 초과청약**. 시초 **$68**/세션고가 **$71.35**/**종가 거의 보합**, 시총 **~$15.7B**. **IonQ 다음 양자 순수기업 2위**. 양자 풀스택 기업 세계 최초 전통 IPO. Honeywell+Cambridge Quantum 합병체, IPO 후 Honeywell ~82% 지분 유지. **2025 확정실적: 매출 $30.9M / 수주 $79.3M / 순손실 $192.6M**. **CHIPS $100M LOI**(05-21). **BMW 연료전지·배터리 + 미쓰비시전기(06-04, 트랩이온 산업 설계 통합) 파트너십**. IPO 첫주 고변동(고가 ~$71→저가 ~$50→06-12 $56.49). 싱가포르 R&D | 56 물리/48 논리큐빗. 1큐빗 99.9975%, 2큐빗 99.921% [Quantinuum]                                                  |
 
 #### 3-3. 중성원자 방식
 
@@ -182,6 +191,8 @@ last_synced_from_db: 2026-06-06
 
 | 마일스톤                                    | 내용                                                                                                                                                          | 출처                                       |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **IBM+MIT qLDPC gross teraquop (06-06)**    | 통합 구조 합성으로 qLDPC + 대수적 외부 블록 제약 결합. **144큐빗 bivariate bicycle gross 코드**가 물리 노이즈 플로어 **10⁻³**에서 신뢰성 동작 → **teraquop 레짐 진입**, 물리 공간 오버헤드 절감 | [IBM Quantum Blog 06-06 / QCR]             |
+| **IonQ 9종 QEC 실험 (06-06)**               | 트랩이온 프로세서에서 9가지 양자오류보정 실험 실행 시연. 이온트랩 QEC 진전                                                                                    | [QCR 06-06 / ts2.tech]                     |
 | **D-Wave 게이트모델 로드맵 (06-01)**        | 100 논리큐빗 FTQC 2032 목표. 181물리(2028) **2,000배 오류감소**. **Lambda=10**(증분당 10배 감소). 초전도 QEC 사이클 중성원자/이온트랩 대비 **100~1000x 빠름** | [BusinessWire / The Quantum Insider 06-01] |
 | **Q-CTRL+IBM 실용 양자 우위 (05-06)**       | Fermi-Hubbard 모델 120큐빗: **3,000x 속도향상**(양자 2분 vs 고전 100시간+). 에러 억제로 2큐빗 게이트 **60% 절감**. 에너지 섹터 소재 발견                      | [Q-CTRL / IBM]                             |
 | **PASQAL [[4,2,2]] QEC (05-22)**            | 연속 오류검출 코드로 **50% 오류 감소**. 논리큐빗이 물리큐빗 대비 **10배 정확도**. 기본 게이트 충실도 99.4%                                                    | [PASQAL / QCR]                             |
@@ -197,7 +208,7 @@ last_synced_from_db: 2026-06-06
 | Quantinuum Helios 48 논리큐빗 (2025.11)     | 2:1 물리-논리. 1큐빗 99.9975%, 2큐빗 99.921%                                                                                                                  | [Quantinuum]                               |
 | Iceberg Pinnacle (02월)                     | RSA-2048 물리큐빗 100만→10만(**10배 절감**)                                                                                                                   | [Iceberg Quantum]                          |
 
-**핵심 트렌드**: **D-Wave 게이트모델 로드맵(06-01)으로 초전도 진영 FTQC 경쟁 합류** — Lambda=10·100~1000x 빠른 QEC 사이클을 강점으로 100논리큐빗 2032 제시. Q-CTRL+IBM Fermi-Hubbard 3,000x 속도향상(실용 양자 우위 주장) + PASQAL [[4,2,2]] 50% 오류감소 + Infleqtion Rb-Cs 0.975 세계기록(중성원자) + IonQ 99.99%(four-nines, 이온트랩) + IBM Nighthawk qLDPC <480ns + NVIDIA AI <1us = 게이트 충실도·실시간 디코딩·로드맵 동시 가속.
+**핵심 트렌드**: **IBM+MIT qLDPC gross 코드 teraquop 진입(06-06)** — 144큐빗 bivariate bicycle gross 코드가 10⁻³ 노이즈 플로어에서 신뢰성 동작, IBM의 FTQC 경로(Kookaburra/Nighthawk)에 구조적 토대 추가. IonQ도 트랩이온 9종 QEC 실험 시연(06-06). 직전 주 **D-Wave 게이트모델 로드맵(06-01)으로 초전도 진영 FTQC 경쟁 합류**(Lambda=10·100~1000x 빠른 QEC 사이클, 100논리큐빗 2032). Q-CTRL+IBM Fermi-Hubbard 3,000x 속도향상 + PASQAL [[4,2,2]] 50% 오류감소 + Infleqtion Rb-Cs 0.975 세계기록(중성원자) + IonQ 99.99%(four-nines) + IBM Nighthawk qLDPC <480ns + NVIDIA AI <1us = 게이트 충실도·실시간 디코딩·코드 구조·로드맵 동시 가속.
 
 ---
 
@@ -205,7 +216,7 @@ last_synced_from_db: 2026-06-06
 
 | 항목                                  | 내용                                                                                                                                                           | 출처                            |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| NIST 최종 표준                        | ML-KEM(FIPS 203), ML-DSA(FIPS 204), SLH-DSA(FIPS 205) - 2024.08. **FN-DSA**(FALCON, 초안 FIPS 206) 초안 단계 지속. **HQC** 초안 2026 초, 최종 2027             | [NIST]                          |
+| NIST 최종 표준                        | ML-KEM(FIPS 203), ML-DSA(FIPS 204), SLH-DSA(FIPS 205) - 2024.08. **FN-DSA**(FALCON, FIPS 206) **2025.08 최종승인 제출 → 2026 발간 예정**. **HQC** 초안 2026, 최종 2026~2027 | [NIST CSRC / NCSC]              |
 | **NIST HQC (5번째 알고리즘)**         | ML-KEM 백업(오류정정코드 기반, ML-KEM 격자와 다른 수학 접근). 초안 **2026 초**, 최종 **2027**. ML-KEM 취약 대비 폴백                                           | [NIST CSRC / industrialcyber]   |
 | **NIST PQC 추가서명 3라운드 (05-14)** | **9개 후보**: FAEST, HAWK, MAYO, MQOM, QR-UOV, SDitH, SNOVA, SQIsign, UOV. 2년 심층 평가. 08-14 업데이트 마감. 제7차 PQC 회의 2027 봄/여름                     | [NIST CSRC 05-14]               |
 | 양자취약 알고리즘 폐기                | RSA/ECC 연방 **2030 폐기, 2035 제거(금지)**                                                                                                                    | [NIST IR 8547]                  |
@@ -224,10 +235,10 @@ last_synced_from_db: 2026-06-06
 | **삼성전자 PQC 모바일 보안칩**        | CES 2026 혁신상 수상                                                                                                                                           | [CES / 벤처타임즈]              |
 | MicroCloud Hologram QKD-비트코인      | QKD 기술로 비트코인 포스트양자 프로토콜 전환 지원 (QKD+블록체인 PQC)                                                                                           | [StockTitan HOLO 05월]          |
 | 기업 PQC 도입률                       | 전환 착수 **40%**. Gartner PQC **#1 우선순위**. **하이브리드 병행 2026 엔터프라이즈 주류**. 전체 마이그레이션 2~5년                                            | [Entrust/Ponemon / Gartner]     |
-| Q-Day 가속                            | 3건 논문: Gidney 100만, Iceberg 10만, JVG 5,000큐빗. Q-Day **~2030**                                                                                           | [TQI / Gartner]                 |
+| Q-Day 가속                            | 4건: Gidney 100만, Iceberg 10만, JVG 5,000큐빗, **Google ECDSA-256 자원 20배 감소(3월말~4월초 백서)**. Q-Day **~2030**. Cloudflare/Google 2029 로드맵 가속 촉발 | [TQI / Help Net Security 04-07 / Gartner] |
 | HNDL 위협                             | 적대세력 암호문 수집 중. **지금** PQC 필수                                                                                                                     | [CISA]                          |
 
-**변화 포인트**: **하이퍼스케일러 PQC 실배치 가속 확인** — AWS(2025말 주요 엔드포인트→2026 전 HTTPS), Microsoft SymCrypt ML-KEM+ML-DSA, Akamai 하이브리드 ML-KEM 2026-02 전 고객 기본화. 빅테크 클라우드/CDN의 하이브리드 ML-KEM TLS가 사실상 표준화 단계 진입. NIST HQC(5번째, 오류정정코드 기반 ML-KEM 백업) 초안 2026 초·최종 2027 재확인. FN-DSA는 여전히 초안(FIPS 206) 단계. PQC 추가 서명 3라운드 9개 후보 진행(05-14).
+**변화 포인트**: **Google ECDSA-256 자원 20배 감소 백서가 Q-Day 경로 단축 신호** — Cloudflare·Google이 PQC 마이그레이션 데드라인을 2029로 가속하는 촉발 요인으로 작용(Cloudflare mid-2026 origin auth ML-DSA→mid-2027 Merkle Tree). **FN-DSA(FIPS 206) 2025.08 최종승인 제출→2026 발간 예정**으로 초안 단계에서 발간 임박 단계 진입. 2026이 엔터프라이즈 PQC 마이그레이션 핵심 연도(rip-and-replace 다년 로드맵). 직전 주 확인된 하이퍼스케일러 실배치(AWS·Microsoft SymCrypt·Akamai 하이브리드 ML-KEM)가 지속. NIST HQC(5번째, 오류정정코드 기반) 초안 2026·최종 2026~2027. PQC 추가 서명 3라운드 9개 후보 진행(05-14).
 
 ---
 
@@ -235,6 +246,8 @@ last_synced_from_db: 2026-06-06
 
 | 항목                                 | 내용                                                                                                                                                                                                              | 출처                                            |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **SKT Horizon Europe QPIC-AI QKD (06-09)** | SK텔레콤 **아시아 민간기업 최초 Horizon Europe 펀딩 선정**. 유럽 3개국과 3년 차세대 QKD 개발. **QPIC-AI(양자포토닉집적회로-AI)** 기반 QKD 실증, **ETRI** PIC QKD 송수신 광칩 개발. 다중 광부품→단일 미니칩 집적. 한-유럽 인증표준 통합 기여 | [Seoul Economic Daily / telecoms.com / photonicsonline 06-09] |
+| **IonQ Romania RoNaQCI (재부각)**    | 루마니아 국가양자통신인프라: **유럽 최대급 운영 QKD 네트워크**(중국 외 최대급). **1,500km+, 6개 도시 36개 양자보안 링크**, 유럽 지상 양자통신 인프라의 1/5. POLITEHNICA+RoEduNet. (발표 02-26, IR 재게시·주가 반응) | [IonQ IR / HPCwire / TQI 02-27]                 |
 | **Fraunhofer Q-net-Q 680km (02월)**  | 독일 Q-net-Q 컨소시엄(Nordhausen+IOF/HHI): **680km 장거리 QKD 광섬유 실증**(베를린→에르푸르트→프랑크푸르트)+150km Sundhausen 테스트트랙. DE-CIX 중앙 QKD 엔드포인트, 의료 환자데이터 도청불가 전송. 3년 개발 완료 | [Fraunhofer IOF/HHI 2026]                       |
 | **DI-QKD 단일원자 100km (Science)**  | 디바이스독립 QKD 단일원자 2노드 **100km 광섬유 최초**. 11km서 624시간 120만 Bell쌍, 보안키율 0.112 bit/event. 메트로폴리탄급 보안 충분                                                                            | [Science aec6243 2026-02-05 / arXiv 2602.09596] |
 | **Ooredoo Qatar QKD (05월)**         | Ooredoo+HBKU+국방부: 카타르 **최초 양자안전 통신링크** 기존 다크파이버에 QKD 구현. 미래 양자컴 위협 대비 보안 프레임워크                                                                                          | [techxplore / The Quantum Insider]              |
@@ -254,7 +267,7 @@ last_synced_from_db: 2026-06-06
 | **QCI+Ciena OFC 2026**               | 양자보안 통신 시연: QKD+양자인증+광암호화(AES-256-GCM) 통합 아키텍처                                                                                                                                              | [QCI/Ciena PRNewswire 03월]                     |
 | 한국 양자통신망                      | 800km / 48노드 정부망 (2022 완료)                                                                                                                                                                                 | [InsightKorea / SKT]                            |
 
-**핵심 변화**: **Fraunhofer Q-net-Q 680km 실세계 QKD 광역망 실증**(독일 베를린-프랑크푸르트, 의료 데이터 전송)이 메트로폴리탄급을 넘는 국가 광역 QKD 운영 단계를 보여줌. Ooredoo 카타르 첫 QKD 상용링크 + QuDef SQOUT QKD 위협 인텔 플랫폼(06-01) = QKD가 연구→정부·기업 운영 배치 단계로 이행. 글래스고 테라헤르츠 QKD는 광섬유 비의존 대안 트랙.
+**핵심 변화**: **SKT 아시아 민간 최초 Horizon Europe QKD 펀딩(06-09)** — QPIC-AI 칩 기반 차세대 QKD·ETRI 광칩 개발, 한-유럽 인증표준 통합 추진으로 한국이 유럽 QKD 표준 논의에 진입. IonQ 루마니아 RoNaQCI(1,500km+/36링크, 유럽 최대급 운영 QKD)가 재부각. 직전 주 Fraunhofer Q-net-Q 680km 국가 광역 QKD 운영 + Ooredoo 카타르 첫 상용링크 + QuDef SQOUT 위협 인텔(06-01)과 합쳐 QKD가 연구→정부·기업 운영 배치 단계로 본격 이행. 글래스고 테라헤르츠 QKD는 광섬유 비의존 대안 트랙.
 
 ---
 
@@ -265,6 +278,7 @@ last_synced_from_db: 2026-06-06
 | 시장 규모 2026E                         | $389.5M(보수)~**$983.7M**(낙관). 국방/보안 **40.25%** 점유. 원자시계 **31.45%** 제품군                                                                                                           | [Mordor / ResearchandMarkets]                         |
 | 시장 2031E / 2032E                      | **$1.56B**(CAGR 12.7%) / **$2.28B**(CAGR 14.9%)                                                                                                                                                  | [Mordor / ResearchandMarkets]                         |
 | 시장 2040E                              | **$31B**                                                                                                                                                                                         | [Infleqtion / IDTechEx]                               |
+| **PNT TAM 구성 (2026)**                 | **양자시계(원자시계) ~88%** 점유. 양자 IMU·환경센서 대부분 테스트 단계. **2036 양자 IMU ~18% 확대** 전망(DARPA RoQS·DIU 견인)                                                                    | [Space Insider 04월 / PatSnap]                        |
 | **Lockheed Martin QuINS (DIU TQS)**     | Lockheed+Q-CTRL+AOSense: 미 DIU **TQS(Transition of Quantum Sensing)** 프로그램 **양자 관성항법(QuINS) 프로토타입** 계약. GPS 미수신 정밀 위치. TQS 5대 분야(관성/중력계/자기이상/자기항법/부품) | [Lockheed Martin / Q-CTRL / Quantum Computing Report] |
 | **Safran Federal Systems (DARPA RoQS)** | DARPA **RoQS(Robust Quantum Sensor)** 선정: 군 헬리콥터 탑재 프로토타입 개발/내구화/시험. GPS 재밍/거부 환경 PNT 보장                                                                            | [Safran PRNewswire / defence-industry.eu]             |
 | **Q-CTRL 양자중력센서 비행시험**        | 듀얼 중력계 Cessna 208B **6,700km 비행시험 GPS-free 항법 성공**. **2026말 출시** 전망                                                                                                            | [IEEE Spectrum / Q-CTRL]                              |
@@ -338,6 +352,7 @@ last_synced_from_db: 2026-06-06
 | **삼성전자 PQC**            | CES 2026 PQC 모바일 보안칩 혁신상                                                                                                                | [CES / 벤처타임즈] |
 | **Quantum KOREA 2026**      | 07/02~04 DDP                                                                                                                                     | [quantum-korea.kr] |
 | **ICQCAI 2026**             | 05-08 온라인: 양자+AI 융합 국제 컨퍼런스                                                                                                         | [한국IT산업뉴스]   |
+| **SKT Horizon Europe QKD**  | **아시아 민간 최초 Horizon Europe 펀딩 선정(06-09)**. 유럽 3개국과 3년 QPIC-AI 기반 차세대 QKD 개발. ETRI PIC 광칩. 한-유럽 인증표준 통합 추진                | [Seoul Economic Daily 06-09] |
 | **IonQ 한국**               | 공동연구센터 3년 $15M. SDT QuREKA 통합                                                                                                           | [IonQ]             |
 | **한국첨단소재**            | 퀀텀쉴드 L2 PQC 블록체인(04-15)                                                                                                                  | [아시아경제]       |
 | **국내 시장**               | 2031E 3,200억원                                                                                                                                  | [이코노미사이언스] |
@@ -346,7 +361,7 @@ last_synced_from_db: 2026-06-06
 
 | 종목             | 양자 관련 사업                       | 비고            |
 | ---------------- | ------------------------------------ | --------------- |
-| SK텔레콤         | IonQ 협력, IDQ 지분, 양자암호 시험망 | 양자통신 대장주 |
+| SK텔레콤         | IonQ 협력, IDQ 지분, 양자암호 시험망, **Horizon Europe QPIC-AI QKD(06-09)** | 양자통신 대장주 |
 | 드림시큐리티     | PQC 양자보안                         | 암호 전문       |
 | 코위버           | PTN/ROADM, 양자암호 통신망           | SKT 양자망 참여 |
 | 쏠리드           | 양자통신 인프라                      | 통신장비        |
@@ -366,8 +381,8 @@ last_synced_from_db: 2026-06-06
 | **밸류에이션 경고**              | P/S: IonQ **106x**, D-Wave **283x**, Rigetti **870x**. Motley Fool "함정 경고". 하지만 CHIPS 정부 지분 = 정당화 시그널                                                                   | [Motley Fool / TipRanks]           |
 | **애널리스트**                   | IonQ: Rosenblatt **$100**, 컨센 $55~$68, 11 매수/0 매도 Strong Buy. D-Wave: 컨센 **$37**(+86%)                                                                                           | [Rosenblatt / TipRanks]            |
 | QTUM ETF                         | YTD +6%, 1Y +62%. Quantinuum(QNT) 편입 시 재편                                                                                                                                           | [Defiance ETFs]                    |
-| **IonQ (IONQ)**                  | 시총 **~$25.4B**(06-05, 양자 순수기업 1위). 시초 $63.60~$64.73. Q1 $64.7M(+755%). FY2026 $260-270M. 현금 $3.1B. 첫 매출 $100M+ 순수기업. CHIPS 미포함. QNT 데뷔일 ~-3%                   | [IonQ IR / Yahoo / CNBC]           |
-| **Quantinuum (QNT)**             | **06-04 Nasdaq 데뷔**: $60/주 업사이즈(레인지 $53-55 상회), $1.68B 조달, 20배 초과청약. 시초 $68/고가 $71.35/종가 보합, 시총 **~$15.7B**. IonQ 다음 2위. 2025 매출 $30.9M/순손실 $192.6M | [CNBC / The Quantum Insider 06-04] |
+| **IonQ (IONQ)**                  | **06-12 ~$70 거래**(QNT 데뷔 충격서 회복). 애널 12인 **Buy 컨센, 목표 $70**. 시총 ~$25.4B(06-05, 양자 순수기업 1위). Q1 $64.7M(+755%). FY2026 $260-270M. 현금 $3.1B. 첫 매출 $100M+ 순수기업. CHIPS 미포함 | [public.com 06-12 / CNBC / IonQ IR] |
+| **Quantinuum (QNT)**             | 06-04 Nasdaq 데뷔($60/주 업사이즈, $1.68B 조달, 20배 초과청약, 종가 보합, 시총 ~$15.7B). **IPO 첫주 고변동**: 고가 ~$71(06-04)→저가 ~$50(06-10)→$55.88(06-11)→**$56.49(06-12)**. IonQ 다음 2위. 2025 매출 $30.9M/순손실 $192.6M | [Investing.com QNT / StocksToTrade 06-11 / CNN] |
 | **Rigetti (RGTI)**               | QNT 데뷔일 **-10.36%**. Q1 $4.4M(+193%). 현금 $569M, 무부채. **CHIPS $100M**                                                                                                             | [Rigetti / GuruFocus]              |
 | **D-Wave (QBTS)**                | QNT 데뷔일 **-7.9%**. **게이트모델 로드맵 06-01**. Q1 매출$2.9M, 수주$33.4M(+1994%). **CHIPS $100M**. 현금 $588M. GPTW 인증                                                              | [D-Wave / GuruFocus]               |
 | **QUBT**                         | QNT 데뷔일 **-8.57%**. Q1 $3.7M. 인수 기반. 현금 $1.4B                                                                                                                                   | [QUBT / GuruFocus]                 |
@@ -391,7 +406,7 @@ last_synced_from_db: 2026-06-06
 | **상용화 불확실성**        | Q-CTRL 3,000x 실용 우위 주장은 제한적 문제. 범용 킬러앱 부재. "양자 겨울" 우려                                                    | 중간   |
 | **오류보정 장벽**          | 100만 큐빗까지 장시간. 가속 촉매: D-Wave Lambda=10 로드맵 + PASQAL 50% 감소 + Infleqtion 0.975 + IonQ 99.99% + NVIDIA <1us        | 중간   |
 | **지정학적 리스크**        | 미중 양자 경쟁, 수출통제. 중국 $10B+. CHIPS 자금 = 미국 내 제조 강제                                                              | 중간   |
-| **HNDL**                   | Q-Day ~2030. PQC 전환 지연 = 현재 데이터 위험. 단 AWS/MS/Akamai/Google 하이브리드 ML-KEM 실배치 가속                              | 높음   |
+| **HNDL**                   | Q-Day ~2030. **Google ECDSA-256 자원 20x 감소 백서로 Q-Day 경로 단축 신호** → Cloudflare/Google 2029 데드라인 가속. PQC 전환 지연 = 현재 데이터 위험 | 높음   |
 | **한국 격차**              | 선도국 대비 5년. 풀스택 2028 목표. IQM 한국 진출이 기술 이전 촉매                                                                 | 중간   |
 | **펀딩**                   | VC 위축 가능. 단 CHIPS $2B + Quantinuum IPO $1.68B + 기업 현금(IonQ $3.1B, QUBT $1.4B 등) 확보                                    | 낮음   |
 
@@ -410,6 +425,18 @@ last_synced_from_db: 2026-06-06
 | 2032    | D-Wave **100 논리큐빗 FTQC**(100만+ 연산)                                                                                                                                                                                                                                                                                                                                         |
 | 2035    | 양자취약 알고리즘 제거(금지). 한국 세계1위. 경제 파급 $1T. 시장 **$19.4B**                                                                                                                                                                                                                                                                                                        |
 
+> **2026.06.13 핵심 변화 요약**(6/06 대비 증분):
+>
+> 1. **IBM+MIT qLDPC gross 코드 teraquop 진입(06-06)**: 통합 구조 합성으로 qLDPC + 대수적 외부 블록 제약 결합, 144큐빗 bivariate bicycle gross 코드가 물리 노이즈 플로어 10⁻³에서 신뢰성 동작 → teraquop 레짐 진입·물리 공간 오버헤드 절감. IBM FTQC 경로(Kookaburra/Nighthawk)에 구조적 토대. IonQ도 트랩이온 9종 QEC 실험 시연(06-06).
+> 2. **SKT 아시아 민간 최초 Horizon Europe QKD 펀딩(06-09)**: 유럽 3개국과 3년 QPIC-AI(양자포토닉집적회로-AI) 기반 차세대 QKD 개발, ETRI PIC QKD 광칩. 다중 광부품→단일 미니칩 집적, 한-유럽 인증표준 통합 추진. 한국 양자통신이 유럽 QKD 표준 논의 진입. IonQ 루마니아 RoNaQCI(1,500km+/36링크, 유럽 최대급 운영 QKD) 재부각.
+> 3. **Quantinuum QNT IPO 첫주 고변동**: 데뷔 고가 ~$71(06-04)→저가 ~$50(06-10)→$55.88(06-11)→$56.49(06-12). 미쓰비시전기 트랩이온 산업 설계 통합 파트너십(06-04) 추가. IonQ는 QNT 충격서 회복해 06-12 ~$70(애널 12인 Buy 컨센, 목표 $70).
+> 4. **Google ECDSA-256 자원 20배 감소 백서(3월말~4월초)**: PQC Q-Day 경로 단축 신호로 Cloudflare·Google 2029 마이그레이션 데드라인 가속 촉발. FN-DSA(FIPS 206) 2025.08 최종승인 제출→2026 발간 예정으로 초안→발간 임박 단계. 2026이 엔터프라이즈 PQC 마이그레이션 핵심 연도(rip-and-replace 다년 로드맵).
+> 5. **Horizon Quantum 더블린 256큐빗 IonQ 트랩이온 테스트베드(06-11)**: 아일랜드 국가반도체전략 지원, HW-agnostic 코딩 EU 확산. 양자 HW 국제 배치 확대.
+> 6. **양자센서**: 이번 주 신규 1차 이벤트 부재. 시장 구조 보강 — 2026 PNT TAM 중 양자시계(원자시계) ~88%, 양자 IMU·환경센서 대부분 테스트 단계, 2036 양자 IMU ~18% 확대 전망(DARPA RoQS·DIU 견인).
+> 7. **(6/06 유효 지속)** Quantinuum IPO $1.68B 조달·시총 ~$15.7B, D-Wave 게이트모델 로드맵, Fraunhofer 680km QKD, 하이퍼스케일러 PQC 실배치, 국방 양자센서 PNT 수주 집중, CHIPS $2B + NSF X-Labs $1.5B.
+>
+> ---
+>
 > **2026.06.06 핵심 변화 요약**(5/30 대비 증분):
 >
 > 1. **Quantinuum IPO 데뷔(06-04)**: Nasdaq 'QNT' 상장 완료. 최종 $60/주(레인지 $53-55 상회, 업사이즈 2,800만주), **$1.68B 조달, 20배 초과청약**. 시초 $68/고가 $71.35/**종가 보합**, 시총 **~$15.7B**. Ion(~$25.4B) 다음 양자 순수기업 2위. 양자 풀스택 기업 세계 최초 전통 IPO. (5/30 KB의 "05-26 가격책정 $45-50/밸류 $12.7B/미드-6월 예상"에서 실제 $60/$15.7B로 상향 확정)

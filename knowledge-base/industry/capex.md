@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-06
-valid_until: 2026-07-06
+updated: 2026-06-13
+valid_until: 2026-07-13
 sector: capex
 confidence: high
 tags:
@@ -88,55 +88,73 @@ sources:
     Nasdaq,
     Barchart,
     MarkWide Research,
+    PRNewswire,
+    Seeking Alpha,
+    LongYield,
+    GE Vernova IR,
+    NextFinancial,
+    Sandstone Group,
+    MUFG,
+    Data Center Frontier,
+    OpenAI,
+    Sherwood News,
+    Catalyst Strategic,
   ]
-last_synced_from_db: 2026-06-06
+last_synced_from_db: 2026-06-13
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-06-06 | 신뢰도: high | 유효: ~2026-07-06
+> 갱신일: 2026-06-13 | 신뢰도: high | 유효: ~2026-07-13
 
 ---
 
 ## S1 빅테크 AI CapEx
 
-### 하이퍼스케일러 주요 기업별 (Q1 2026 실적 반영)
+### 하이퍼스케일러 주요 기업별 (Q1 2026 실적 반영, Oracle Q4 FY26 6/10 갱신)
 
-| 기업                     | Q1 2026 실적                                          | 2026E CapEx                                             | 주요 업데이트                                                                                                                                                                                                                           |
-| ------------------------ | ----------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Amazon**               | 매출 $181.5B(+17%), AWS $37.6B(**+28%**, 15분기 최고) | **$200-230B** (Yahoo $200B 유지, TrendForce $230B 상향) | Q1 CapEx $44.2B(4사 중 최대). 커스텀실리콘(Trainium/Graviton) ARR $20B+(3자릿수 성장). **2026 FCF -$17~-28B 음전환 전망**. Talen PPA 1,920MW+X-energy $500M+$3B DC 착공 [Yahoo Finance, TrendForce]                                     |
-| **Alphabet**             | 매출 $109.9B(+20%), Cloud $20B(**+63%**)              | **$190B** (상향, 기존 $175-185B → MSFT와 동률)          | Q1 CapEx $35.7B. Cloud 백로그 **$460B+**(전분기 $240B 2배). **2026 FCF $8.2B(-90%**, 2025 $73.3B 대비, Pivotal Research). CFO: 2027 CapEx "유의미하게 증가". CEO: **"compute constrained"** [CNBC, Pivotal Research]                    |
-| **Microsoft**            | 매출 $77.7B(+18%), Azure **+40%**                     | **$190B** (대폭 상향, 기존 $110-150B)                   | Q3 FY26 CapEx $30.9B(+84% YoY). AI ARR **$37B(+123%)**. 부품비 **$25B** 반영(가이던스 상향 주도). Q4 $40B+ 가이던스 [Microsoft IR]                                                                                                      |
-| **Meta**                 | 매출 $56.3B(+33%), OP $22.9B(+30%)                    | **$125-145B** (상향, 기존 $115-135B)                    | 순이익 $26.8B(+61%, 세금혜택 $8B). 부품가격+DC용량 추가. Vistra 원전 PPA 2,176MW + Oklo 1.2GW [CNBC, Fortune]                                                                                                                           |
-| **Oracle**               | RPO **$553B**(**+325~438% YoY**)                      | **$50B** (FY2026, +136% YoY, 9개월 $39.2B 집행)         | **Q4 FY2026 실적발표 6/10 예정**. OCI 매출 +84% YoY. 37개 신규 DC 건설(총 71개). 추가 DC 리스 약정 **$261B**. TTM FCF **-$24.74B**(빌드사이클). 비유동부채 $124.7B. RPO 전환·OCI 용량·부채 우려가 핵심 촉매 [Oracle IR, Futurum, TECHi] |
-| **Apple**                | R&D $11.42B/분기(+33.5% YoY)                          | **$12.7B+** (빅테크 최소, "상당히 증가" 전망)           | AI서버칩 2026H2 양산(자체설계). Private Cloud Compute. Houston AI서버 출하 시작. 미국 $600B 투자 공약 [AppleInsider, CNBC]                                                                                                              |
-| **합산(4사)**            | --                                                    | **~$700-725B**                                          | Google+Amazon+Microsoft+Meta. YoY **+77%**(2025 ~$410B 대비), 전년 대비 거의 2배. Bloomberg/Fortune/Yahoo $725B [Bloomberg, Fortune, Yahoo Finance]                                                                                     |
-| **합산(5사+Oracle)**     | --                                                    | **~$750-805B**                                          | Yahoo/CreditSights 5사 ~$750B (1월 추정 $620B → 상향) [Yahoo Finance, CreditSights]                                                                                                                                                     |
-| **합산(9사, 중국 포함)** | --                                                    | **~$830B**                                              | TrendForce — 9대 CSP 합산. YoY **+79%** [TrendForce 2026-05-06]                                                                                                                                                                         |
+| 기업                     | Q1 2026 실적                                                  | 2026E CapEx                                             | 주요 업데이트                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------ | ------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Amazon**               | 매출 $181.5B(+17%), AWS $37.6B(**+28%**, 15분기 최고)         | **$200-230B** (Yahoo $200B 유지, TrendForce $230B 상향) | Q1 CapEx $44.2B(4사 중 최대). 커스텀실리콘(Trainium/Graviton) ARR $20B+(3자릿수 성장). **2026 FCF -$17~-28B 음전환 전망**. Talen PPA 1,920MW+X-energy $500M+$3B DC 착공 [Yahoo Finance, TrendForce]                                                                                                                                                |
+| **Alphabet**             | 매출 $109.9B(+20%), Cloud $20B(**+63%**)                      | **$190B** (상향, 기존 $175-185B → MSFT와 동률)          | Q1 CapEx $35.7B. Cloud 백로그 **$460B+**(전분기 $240B 2배). **2026 FCF $8.2B(-90%**, 2025 $73.3B 대비, Pivotal Research). CFO: 2027 CapEx "유의미하게 증가". CEO: **"compute constrained"**. 유럽서 $11B 발행(100년물 포함) [CNBC, Pivotal Research, Morgan Stanley]                                                                               |
+| **Microsoft**            | 매출 $77.7B(+18%), Azure **+40%**                             | **$190B** (대폭 상향, 기존 $110-150B)                   | Q3 FY26 CapEx $30.9B(+84% YoY). AI ARR **$37B(+123%)**. 부품비 **$25B** 반영(가이던스 상향 주도). Q4 $40B+ 가이던스. Fayetteville ~1GW(2026.03) [Microsoft IR]                                                                                                                                                                                     |
+| **Meta**                 | 매출 $56.3B(+33%), OP $22.9B(+30%)                            | **$125-145B** (상향, 기존 $115-135B)                    | 순이익 $26.8B(+61%, 세금혜택 $8B). 부품가격+DC용량 추가. Vistra 원전 PPA 2,176MW + Oklo 1.2GW. **Hyperion(LA) 5GW 설계(1단계 2GW 2030)** [CNBC, Fortune, IEEE]                                                                                                                                                                                     |
+| **Oracle**               | **Q4 FY26 6/10 확정**: 매출 $19.2B(+21%), OCI $5.8B(**+93%**) | **CapEx $55.7B(+162%)** (FY2026 확정)                   | **RPO $638B(+363% YoY, 전분기 +$85B)** — 대부분 대형 AI 계약 선불. Q4 클라우드 $9.9B(+47%). FY26 총매출 $67.4B(+17%). **FY2026 FCF -$23.7B**(빌드사이클). **FY27 매출 가이던스 $90B(+34%) 상향, net cash CapEx $70B 계획**. 추가 자금조달 $40B(부채+주식, $20B 주식매각 포함) 우려로 6/10 후 주가 하락 [Oracle IR, CNBC, Seeking Alpha, LongYield] |
+| **Apple**                | R&D $11.42B/분기(+33.5% YoY)                                  | **$12.7B+** (빅테크 최소, "상당히 증가" 전망)           | AI서버칩 2026H2 양산(자체설계). Private Cloud Compute. Houston AI서버 출하 시작. 미국 $600B 투자 공약 [AppleInsider, CNBC]                                                                                                                                                                                                                         |
+| **합산(4사)**            | --                                                            | **~$700-725B**                                          | Google+Amazon+Microsoft+Meta. YoY **+77%**(2025 ~$410B 대비), 전년 대비 거의 2배. Bloomberg/Fortune/Yahoo $725B [Bloomberg, Fortune, Yahoo Finance]                                                                                                                                                                                                |
+| **합산(5사+Oracle)**     | --                                                            | **~$750-805B**                                          | Yahoo/CreditSights 5사 ~$750B(+67% YoY, 1월 추정 $620B → 상향). Oracle FY26 CapEx $55.7B 별도 합산 시 추가 [Yahoo Finance, CreditSights]                                                                                                                                                                                                           |
+| **합산(9사, 중국 포함)** | --                                                            | **~$830B**                                              | TrendForce — 9대 CSP 합산. YoY **+79%** [TrendForce 2026-05-06]                                                                                                                                                                                                                                                                                    |
 
 - **AI 비중**: 합산 CapEx의 ~75% ($450-530B)가 AI 인프라. 추론이 지출의 **2/3**로 전환 중 [Goldman Sachs, CNBC]
 - **자본집약도**: 매출 대비 45-57% — 역사적 미답 영역 [Morningstar]
 - **AWS 상향**: Yahoo $200B 유지, TrendForce $230B+(기존 $200B). 4사 중 Q1 CapEx $44.2B 최대 지출 [TrendForce, Yahoo Finance]
 - **빅테크 5사 CapEx > 글로벌 석유가스 상류 투자**: IEA 2026 확인 — 역사적 교차점 [IEA]
-- **2027 전망**: CNBC **$1T+** 전망. Alphabet CFO "2027 유의미 증가" 명시 [CNBC]
+- **2027 전망**: CNBC **$1T+** 전망. Alphabet CFO "2027 유의미 증가" 명시. Oracle FY27 net cash CapEx $70B 계획 [CNBC, Oracle IR]
 - **장기 전망**: GS 2026 연간 AI CapEx **$765B**, 2031 **$1.6T/년**. McKinsey 2030 DC 전체 **$7T**(AI $5.2T + 전통IT $1.5T). DC 인프라(IT HW 제외) **$1.7T** [Goldman Sachs, McKinsey]
-- **FCF 리스크 (6/6 정밀화)**: UBS — 2026 CapEx가 영업현금흐름의 **~100% 소진**(10년 평균 40% 대비). Amazon **2026 FCF -$17~-28B**(음전환), Alphabet FCF **$8.2B(-90%**, 2025 $73.3B 대비), Oracle TTM FCF **-$24.74B**, Meta 급감. Evercore ISI — 12개월 선행 FCF가 2022 사이클 저점 하회, **'red flag' 임박** 경고 [UBS, Pivotal Research, Evercore ISI, CNBC]
-- **자금조달 구조 변화 (6/6)**: 현금조달→부채조달 전환. MS/JPM — 향후 3년 기술섹터 신규 부채 **~$1.5T** 필요. BIS(국제결제은행) Q1 2026 보고서 — AI인프라 붐의 on/off-balance sheet 차입 본격 분석 [Morgan Stanley, JPM, BIS]
+- **FCF 리스크 (6/13 갱신)**: UBS — 2026 CapEx가 영업현금흐름의 **~100% 소진**(10년 평균 40% 대비). Amazon **2026 FCF -$17~-28B**(음전환), Alphabet FCF **$8.2B(-90%**, 2025 $73.3B 대비), **Oracle FY2026 FCF -$23.7B(확정)**, Meta 급감. Evercore ISI — 12개월 선행 FCF가 2022 사이클 저점 하회, **'red flag' 임박** 경고 [UBS, Pivotal Research, Evercore ISI, CNBC, Oracle IR]
+- **자금조달 구조 변화 (6/13 갱신)**: 현금조달→부채조달 전환. MS/JPM — 향후 3년 기술섹터 신규 부채 **~$1.5T** 필요. **2024말 이후 5대 하이퍼스케일러 자본시장 차입 $137.5B+(역사적 급증)**. Oracle FY27 추가 자금조달 $40B 계획. BIS Q1 2026 보고서 — AI인프라 붐의 on/off-balance sheet 차입 본격 분석 [Morgan Stanley, JPM, BIS, MUFG]
 - **부품비 상승**: MSFT/META 각각 $25B 부품비 추가 반영이 가이던스 상향 주도 [Microsoft IR, Meta IR]
-- **수요 백로그**: GOOGL Cloud **$460B+**, MSFT AI ARR **$37B(+123%)**, AWS 커스텀실리콘 ARR **$20B+**, Oracle RPO **$553B** [복수]
+- **수요 백로그**: GOOGL Cloud **$460B+**, MSFT AI ARR **$37B(+123%)**, AWS 커스텀실리콘 ARR **$20B+**, **Oracle RPO $638B(+363%)** [복수]
 - **공급 제약**: Alphabet CEO "compute constrained" 명시 — 공급이 수요를 못 따라감 [CNBC]
+
+### AI 데이터센터 메가프로젝트 (6/13 신규)
+
+- **OpenAI Stargate**: 5개 신규 미국 사이트 추가로 ~**10GW** AI 인프라 추진($500B). 현 총 계획용량 **~7GW**(Abilene TX 플래그십 포함). **Stargate Abilene 2026년 7월 1GW 가동 예정**(최초 1GW+급). Michigan 사이트 1.4GW 전력 승인 [Data Center Frontier, OpenAI, Tom's Hardware]
+- **최초 1GW+급 DC들이 2026-2027 도래** — 미국 전력망 부담 가중 [qz, NextBigFuture]
+- **Meta Hyperion(LA)**: 5GW 설계, 1단계 2GW 2030 완공. Zuckerberg "수십 GW 이번 10년, 장기적으로 수백 GW+" [IEEE Spectrum]
 
 ### 투자 방향성
 
 ```
 2024 $256B -> 2025 $381-443B (+49-73%) -> 2026 $700-830B (+75-79%) -> 2027E $1T+
 학습 중심 -> 추론 중심 전환 (2025~). 추론이 지출의 2/3
-FCF 악화 -> CapEx가 영업현금흐름 ~100% 소진(UBS, 10년평균 40%). Amazon -$17~28B(음전환), Alphabet -90%($8.2B), Oracle -$24.74B
+FCF 악화 -> CapEx가 영업현금흐름 ~100% 소진(UBS, 10년평균 40%). Amazon -$17~28B(음전환), Alphabet -90%($8.2B), Oracle FY26 -$23.7B(확정)
 부품비(메모리/GPU) 상승 -> CapEx 가이던스 $25-50B 추가 상향 (2026 Q1)
-부채 발행 ~$1.5T 필요 (MS/JPM, 향후 3년). BIS 차입 분석. GS 2026 $765B/년, 2031 $1.6T/년. McKinsey 2030 $7T
+부채 발행 ~$1.5T 필요 (MS/JPM, 향후 3년). 5사 누적차입 $137.5B+. BIS 차입 분석. GS 2026 $765B/년, 2031 $1.6T/년. McKinsey 2030 $7T
 9사(중국 포함) $830B -> 미국 5사 비중 ~94% (TrendForce)
 빅테크 5사 CapEx > 글로벌 석유가스 상류 투자 (IEA 2026 확인)
-Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵심 촉매
+Oracle Q4 FY26 6/10 확정 -> RPO $638B(+363%), FY27 CapEx $70B 계획, 추가 자금조달 $40B 우려로 주가 하락
+Stargate ~7GW(10GW 목표, $500B), Abilene 1GW 2026.07 가동 -> 1GW+급 DC 시대 개막
 ```
 
 ---
@@ -163,15 +181,15 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 
 - **총 CapEx**: ~$200B (2026E) — TSMC 단독 25%+ 점유 [SEMI]
 - **2026 반도체 CapEx 성장률**: **+20% YoY** [Electronics Weekly]
-- **장비 시장(WFE)**: **$112.4B**(2026E, MarkWide) — SEMI $145B(+9~11% YoY 광의 기준). 테스트 +12% [SEMI, MarkWide Research]
-- **2027E**: $156B (+11.4%) [SEMI]
-- **WFE 지배 5사**: ASML/AMAT/Lam/TEL/KLA 첨단노드 툴셋 사실상 독점. ASML 유일 EUV/High-NA EUV 공급 [MarkWide Research]
-- **ASML**: Q1 매출 EUR 8.8B, GM 53%. **2026 가이던스 EUR 36-40B 유지**(6월 변동 없음). Q2 가이던스 EUR 8.4-9.0B, GM 51-52%. 수주잔고 EUR 38.8B. EUV 리더십+백로그 견조 [ASML IR]
+- **장비 시장(SEMI 6/13 갱신)**: 2026 전세계 반도체 장비 매출 기록적 **$139B**. WFE 세그먼트 **+9.0% $135.2B**. **파운드리/로직 WFE +15% $69.3B**(GAA 전환·리딩엣지). 메모리 CapEx HBM 견인 큰폭 증가. 광의 WFE는 MarkWide $112.4B [SEMI, MarkWide Research]
+- **2027E**: 전체 장비 **$156B**(+11.4%, 기록) [SEMI]
+- **WFE 지배 5사**: ASML/AMAT/Lam/TEL/KLA 첨단노드 툴셋 사실상 독점. ASML 유일 EUV/High-NA EUV 공급. ASML 전체 WFE 점유 ~21% [SEMI, MarkWide Research]
+- **ASML**: Q1 매출 EUR 8.8B, GM 53%. **2026 가이던스 EUR 36-40B 유지**. Q2 가이던스 EUR 8.4-9.0B, GM 51-52%. 수주잔고 EUR 38.8B. High-NA EUV 2026 ~3대 전망(주문 둔화). EUV 리더십+백로그 견조 [ASML IR, SEMI]
 - **Applied Materials**: Q2 2026(5/14) 매출 $7.91B(+11% YoY, 역대최고). CEO Gary Dickerson — **반도체 장비 사업 CY2026 +30%+ 성장 전망**. 리딩엣지 파운드리/로직+DRAM+어드밴스드패키징 견인 [Applied Materials IR]
 - **한국**: 장비투자 $29.7B (42조원, +27.2% YoY) — 세계 2위 (중국 다음) [전자신문]
 - **HBM 시장**: BofA **$54.6B(+58% YoY)** [BofA]
-- **AI 가속기 시장**: **$200B+**(2026E). **NVIDIA Q1 FY27 DC매출 $75.2B(+92% YoY, +21% QoQ)** — Blackwell 300 램프+InfiniBand/Spectrum-X/NVLink. 하이퍼스케일 ~50%. ~80% 점유. **AMD DC $5.8B(+57% YoY)** — EPYC+Instinct, 2030 서버 CPU $120B 전망. 점유 5-7% [NVIDIA IR, AMD IR, DCD, SiliconAnalysts]
-- **Broadcom AI (6/3 갱신)**: **Q2 FY26 총매출 $22.2B(+48%, 역대최고), AI 반도체 매출 $10.8B(+143% YoY, 총매출 ~49%)**. Q3 가이던스 AI 반도체 +200% YoY **$16.0B**. CEO Hock Tan FY2027 AI칩 매출 **$100B** 전망. XPU 커스텀ASIC(Google/Meta/OpenAI/Anthropic) [Broadcom IR]
+- **AI 가속기 시장 (6/13 갱신)**: **$200B+**(2026E). **NVIDIA Q1 FY27 DC매출 $75.2B(+92% YoY, +21% QoQ)**, FY2026 DC 매출 **$193.7B**. AI가속기 점유 **~70-75%**(2024 피크 ~87%에서 하락). **AMD DC $5.8B(+57% YoY)** — EPYC+Instinct MI350(HBM3E 288GB). HSBC AMD AI칩 연 ~$15B 전망. 점유 5-7% [NVIDIA IR, AMD IR, SiliconAnalysts, CNBC]
+- **Broadcom AI (6/13 갱신)**: **Q2 FY26 총매출 $22.2B(+48%, 역대최고), AI 반도체 $10.8B(+143% YoY)**. adj EBITDA $15.2B(+52%, 매출 69%). **AI 반도체 부킹 $30B+ 초과**(수요 가시성 확장). Q3 가이던스 AI $16.0B(+200%), 총매출 **$29.4B(+84%)**, OPM 67%. CEO Hock Tan FY2027 AI칩 **$100B** 재확인. XPU 커스텀ASIC(Google/Meta/OpenAI/Anthropic) [Broadcom IR, Motley Fool]
 
 ### 핵심 트렌드
 
@@ -179,11 +197,11 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 - Samsung HBM4 반격: NVIDIA 품질인증 통과, 2월 출하 개시 후 Q2 2026 완료. HBM bit 점유 **20%→28%** 상승 [TrendForce, DCD]
 - SK하이닉스 지배력: HBM bit 점유 **50%**(2025 59%에서 하락하나 여전히 1위), **NVIDIA HBM4 ~2/3 공급 전망**, HBM 3년치 완판, OPM 72% 역사적 수익성 [CNBC, TrendForce]
 - Intel CapEx 순위 하락: 2025 $17.7B(-29%) → 2026 flat~down. SK하이닉스/Micron에 추월 [SC-IQ]
-- HBM 전쟁: SK 50% vs Samsung 28% vs Micron 나머지(bit 기준). **NVIDIA 16-Hi HBM4 Q4 2026 납품 요청** — 3사 풀스케일 개발 착수. Rubin HBM4 핀당 11Gbps+ 사양 상향 [Tweaktown, TrendForce]
+- HBM 전쟁: SK 50% vs Samsung 28% vs Micron 나머지(bit 기준). **NVIDIA 16-Hi HBM4 Q4 2026 납품 요청** — 3사 풀스케일 개발 착수. Vera Rubin HBM4 핀당 11Gbps+ 사양 상향 [Tweaktown, TrendForce]
 - Micron CapEx 상향: $20B→**$25B**(+25%), HBM4 양산 1분기 앞당김 [Micron IR]
 - **장기공급계약(LTA) 확산**: 삼성 3~5년 LTA 체결, SK 중장기 물량 요청 급증 — 메모리 공급 부족 장기화 [삼성전자 IR, SK하이닉스 IR]
-- **NVIDIA 지배력**: AI가속기 ~80% 점유. **Q1 FY27 DC매출 $75.2B(+92%, +21% QoQ)**. AMD MI350X 구조적 2nd 소스. **Broadcom XPU 폭발적 성장(AI $10.8B, +143%, Q3 $16B 가이던스)** [SiliconAnalysts, NVIDIA IR, Broadcom IR]
-- **장비 호황 확산**: ASML(EUR36-40B 유지) + AMAT(CY2026 장비 +30%+) + WFE $112.4B. AI 메모리·어드밴스드패키징이 견인 [ASML IR, Applied Materials IR, MarkWide Research]
+- **NVIDIA 지배력**: AI가속기 ~70-75% 점유(2024 87%에서 하락). **Q1 FY27 DC매출 $75.2B(+92%, +21% QoQ)**. AMD MI350X 구조적 2nd 소스. **Broadcom XPU 폭발적 성장(AI $10.8B, +143%, Q3 $16B 가이던스, 부킹 $30B+)** [SiliconAnalysts, NVIDIA IR, Broadcom IR]
+- **장비 호황 확산**: SEMI 2026 전체 장비 $139B(기록), WFE $135.2B(+9%), 파운드리/로직 $69.3B(+15%). ASML(EUR36-40B 유지) + AMAT(CY2026 장비 +30%+). AI 메모리·어드밴스드패키징이 견인 [SEMI, ASML IR, Applied Materials IR]
 
 ---
 
@@ -212,15 +230,16 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 | 빅테크 5사 CapEx            | **> 글로벌 석유가스 상류 투자** (역사적 교차점)                   | IEA 2026               |
 | DC IT용량 건설중            | **23GW**(글로벌), 약 3/4가 미국                                   | BloombergNEF           |
 
-### DC 파이프라인 실현율 (6/6 갱신)
+### DC 파이프라인 실현율 (6/13 갱신)
 
-| 구분            | 계획        | 실제 착공 | 취소/지연 | 실현율   |
-| --------------- | ----------- | --------- | --------- | -------- |
-| **미국 2026**   | 12-16GW     | ~1/3      | 절반+     | **~33%** |
-| **글로벌 2026** | 16GW(140개) | ~5GW      | --        | **~31%** |
+| 구분            | 계획        | 실제 착공 | 취소/지연   | 실현율      |
+| --------------- | ----------- | --------- | ----------- | ----------- |
+| **미국 2026**   | 12GW(140개) | ~5GW      | 11GW 미진척 | **~33-42%** |
+| **글로벌 2026** | 16GW(140개) | ~5GW      | --          | **~31%**    |
 
+- Sightline Climate — 미국 2026 DC 12GW(140개 발표) 중 **실제 착공 5GW**, 11GW는 "발표" 단계 물리적 진척 없음(통상 빌드 12-18개월) [Sightline Climate, PowerMag]
 - 그리드 연결 대기시간 **4년+**(주요 시장). 전력 부족이 DC 최대 병목 [Morgan Stanley]
-- **미국 2026 계획 DC의 절반 이상이 변압기·전기장비 부족으로 지연/취소 예상** — 12-16GW 중 ~1/3만 실제 착공 [PV-Magazine, PowerMag, Yahoo Finance]
+- **미국 2026 계획 DC의 절반 이상이 변압기·전기장비 부족으로 지연/취소 예상** [PV-Magazine, PowerMag, Sandstone Group]
 - 미국 DC 건설중 **32GW**(AI 70%) — Eaton Q1 어닝콜 [Eaton IR]
 - DC 전체 백로그 **228GW** = 2025 빌드율 기준 **12년분** (Eaton) [Eaton IR]
 - Morgan Stanley: 미국 **49GW 부족**(2028까지), DC 전력 +126GW(2028까지) [Morgan Stanley]
@@ -262,32 +281,33 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 
 ---
 
-## S3.5 DC 인프라 장비 (6/6 갱신)
+## S3.5 DC 인프라 장비 (6/13 갱신)
 
 ### 전력/냉각/배전 기업 실적 (Q1-Q2 2026)
 
-| 기업                   | 최근 분기 실적                                                          | 가이던스/백로그                                                                                                                 | 핵심                                                                                         |
-| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| **Vertiv (VRT)**       | Q1 2026 매출 $2.65B(**+30%**), adj OP $551M(**+64%**), adj EPS +83%     | FY2026 유기성장 **27-29%**, 매출 **$13.25-13.75B**, adj EPS **$5.97-6.07**. 백로그 **$15.0B(+109% YoY)**. Book-to-bill **2.9x** | Americas +44%. AI관련 대형딜 60% [Vertiv IR, Alphastreet]                                    |
-| **Eaton (ETN)**        | Q1 2026 매출 $7.45B(**+17%**), EPS $2.22. Elec Americas $3.6B(**+20%**) | 유기성장 가이던스 8%→**10%** 상향. DC주문 **+240%**, DC매출 +50%. 백로그 **$22.8B**                                             | Boyd Thermal 인수($11B, 매출 $1.7B). **DC 백로그 228GW(12년분)** [Eaton IR, AI DC Power Map] |
-| **EMCOR (EME)**        | Q1 2026 매출 $4.63B(**+19.7%**), OP $404M(+26.7%), EPS $6.84(**+30%**)  | FY2026 유기성장 **7-10%** 재확인. RPO **$15.6B(+32.9%)**. Network&Comm RPO **$4.3B(거의 2배)**                                  | 건설 $3.47B(+30.6%: 전기+33%/기계+29%). DC 관련이 백로그 견인 [EMCOR IR, Nasdaq, Barchart]   |
-| **Quanta (PWR)**       | Q1 2026 매출 $7.87B(**+12.7%**), adj EPS $2.68(**+31.8%**)              | Q1 12개월 백로그 **$39.2B(역대)**, 총 백로그 **$48.5B**. Book-to-bill **1.6x**                                                  | 전력·통신·그리드 연결 역량. 국내 변압기 제조 경쟁우위. 파이프라인 2030+ [Quanta IR, Nasdaq]  |
-| **Schneider Electric** | Q1 2026 매출 EUR 9.8B(**+11% 유기**), Energy Mgmt **+13%**              | 2026 재무목표 재확인. 시총 $130B+                                                                                               | 북미 +16%. DC 두 자릿수. NVIDIA 디지털트윈 파트너십. Motivair 냉각 [Schneider IR]            |
+| 기업                   | 최근 분기 실적                                                          | 가이던스/백로그                                                                                                                 | 핵심                                                                                          |
+| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Vertiv (VRT)**       | Q1 2026 매출 $2.65B(**+30%**), adj OP $551M(**+64%**), adj EPS +83%     | FY2026 유기성장 **27-29%**, 매출 **$13.25-13.75B**, adj EPS **$5.97-6.07**. 백로그 **$15.0B(+109% YoY)**. **Q4 유기주문 +252%** | Americas +44%. AI관련 대형딜 60%. DC 전력·냉각 순수 플레이 [Vertiv IR, Alphastreet, Sherwood] |
+| **GE Vernova (GEV)**   | **Q1 2026 총주문 $18.3B(+71% 유기)**, 백로그 전분기 +$13.0B             | **Electrification DC 전기장비 주문 $2.4B(2025 연간 전체 초과)**                                                                 | AI 전력 트레이드 핵심 수혜주 부상. 전력기기·그리드 [GE Vernova IR, Yahoo Finance, 24/7]       |
+| **Eaton (ETN)**        | Q1 2026 매출 $7.45B(**+17%**), EPS $2.22. Elec Americas $3.6B(**+20%**) | 유기성장 가이던스 8%→**10%** 상향. DC주문 **+240%**, DC매출 +50%. 백로그 **$22.8B**                                             | Boyd Thermal 인수($11B, 매출 $1.7B). **DC 백로그 228GW(12년분)** [Eaton IR, AI DC Power Map]  |
+| **EMCOR (EME)**        | Q1 2026 매출 $4.63B(**+19.7%**), OP $404M(+26.7%), EPS $6.84(**+30%**)  | FY2026 유기성장 **7-10%** 재확인. RPO **$15.62B(+32.9%)**, 12개월 전환 $12.17B. N&C RPO **$4.3B(거의 2배)**                     | 건설 $3.47B(+30.6%: 전기+33%/기계+29%). DC 관련이 백로그 견인 [EMCOR IR, Nasdaq, Barchart]    |
+| **Quanta (PWR)**       | Q1 2026 매출 $7.9B(**+26%**), adj EPS $2.68(**+31.8%**)                 | Q1 12개월 백로그 **$39.2B(역대)**, 총 백로그 **$48.5B**. Book-to-bill **1.6x**                                                  | 전력·통신·그리드 연결 역량. 국내 변압기 제조 경쟁우위. 파이프라인 2030+ [Quanta IR, Nasdaq]   |
+| **Schneider Electric** | Q1 2026 매출 EUR 9.8B(**+11% 유기**), Energy Mgmt **+13%**              | 2026 재무목표 재확인. 시총 $130B+                                                                                               | 북미 +16%. DC 두 자릿수. NVIDIA 디지털트윈 파트너십. Motivair 냉각 [Schneider IR]             |
 
-### 변압기/전력장비 공급 부족 (악화 중, 6/6 갱신)
+### 변압기/전력장비 공급 부족 (악화 중, 6/13 갱신)
 
-- **대형 변압기 납기**: **최대 4-5년**(표준 전력변압기 평균 128주, GSU 144주). 2020 이전 24-30개월 → 현재 최대 5년 [PV-Magazine 2026-05-11, PowerMag]
+- **대형 변압기 납기**: **최대 4-5년**(표준 전력변압기 평균 128주, GSU 144주). 2020 이전 24-30개월 → 현재 최대 5년 [PV-Magazine, PowerMag]
 - **HV substation 납기**: **3-5년** — 최대 병목으로 부상 [PowerMag]
 - **가격 상승**: 2019 대비 전력변압기 **+77%**, GSU **+45%**, 배전변압기 최대 **+95%** [WoodMac]
 - **공급 부족**: WoodMac — 전력변압기 **30% 부족**, 배전변압기 **10% 부족** [WoodMac Q2]
 - **중국 변압기 수입**: 2022년 1,500대 → 2025년 **8,000대(5배 증가)** [PowerMag]
 - **수요 급증**: GSU 수요 2019-2025 **+274%**, substation transformer **+116%**(AI DC 견인) [PV-Magazine, WoodMac]
 - **GOES(방향성 전기강판) 병목**: 미국 내 유일 생산사 **Cleveland-Cliffs**(PA/OH 공장) — 핵심 원자재 단일 의존 [PowerMag]
-- **북미 생산 확대**: **~$2B** 투입(Hitachi Energy/Siemens Energy 등) — 신규 용량 **2028 가동** 전망 [PV-Magazine]
+- **북미 생산 확대 (6/13 갱신)**: Hitachi Energy 대륙 **$1B+** 투자(VA South Boston **$457M** 공장 — 2028 미국 최대 대형변압기 공장). Siemens Energy NC Charlotte **$150M**(2027초 양산). Eaton SC 3상 변압기 **$340M**(2027 양산). 신규 용량 대부분 **2027-2028 가동** [PV-Magazine, NextFinancial, PowerMag]
 - **관세 딜레마**: 25% 철강 관세 + 중국 변압기/배터리 40%+ 의존 = AI인프라 목표와 '근본적 긴장' [CSIS]
 - **미국 자국 생산**: 전력변압기 수요의 **20%만** 국내 제조 [PV-Magazine]
 - **수명 초과**: 미국 배전변압기 **~4,000만 대** 수명 초과 [PV-Magazine]
-- **미국 DC 절반+ 지연**: 변압기·전기장비 부족으로 2026년 계획된 미국 DC 절반 이상 지연/취소 — 12-16GW 중 ~1/3만 착공 [PV-Magazine, PowerMag, Yahoo Finance]
+- **미국 DC 절반+ 지연**: 변압기·전기장비 부족으로 2026년 계획된 미국 DC 절반 이상 지연/취소 — 12GW(140개) 중 ~5GW만 착공 [PV-Magazine, Sightline Climate, Sandstone Group]
 - **한국 전력기기**: 빅3 수주잔고 **27조원+**(5년분 일감). 효성중공업 11.9조, HD현대일렉트릭 10-11조, LS일렉트릭 5조. 구매자가 관세까지 부담. 'slot reservation' 전략. 숙련공 양성 10년→공급 제약 장기화 [서울경제, econmingle]
 
 ### 액체냉각 시장
@@ -316,7 +336,7 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 - **Arista**: Q1 2026 매출 **+35% YoY**, Q2 가이던스 **~$2.8B**. AI 네트워킹 매출 목표 **$3.25B**(2026). 이연매출 **$4B**. 12.8Tbps 모듈+R4 시리즈 800G [AICerts, Converge, SDxCentral]
 - **DC AI 네트워킹 시장**: **2027년 ~$20B 근접**(650 Group) [AICerts]
 - **Cisco**: AI인프라 주문 FY2025 **$2B+**(원래 목표 $1B의 2배). N9100 800Gb 스위치 [Cisco]
-- **Broadcom**: Tomahawk 6(100Tbps) + Jericho. 스위치실리콘 지배적. SerDes 200Gbps. **AI매출 $10.8B(+143%, Q3 $16B 가이던스)**. **XPU 20GW 배치 파트너십(Apollo/Blackstone, 1차 $35B)** [Broadcom IR]
+- **Broadcom**: Tomahawk 6(100Tbps) + Jericho. 스위치실리콘 지배적. SerDes 200Gbps. **AI매출 $10.8B(+143%, Q3 $16B 가이던스, 부킹 $30B+)**. **XPU 20GW 배치 파트너십(Apollo/Blackstone, 1차 $35B)** [Broadcom IR]
 - 2025-2030 글로벌 DC IT장비 지출 **$4.7T** [Dell'Oro]
 
 ---
@@ -403,25 +423,26 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 ### CapEx 슈퍼사이클 핵심 수혜
 
 ```
-1. GPU/AI 반도체: NVIDIA(Q1 FY27 DC $75.2B +92% +21%QoQ), AMD($5.8B +57%), Broadcom(AI $10.8B +143%, Q3 $16B 가이던스), TSMC, SK하이닉스(HBM)
+1. GPU/AI 반도체: NVIDIA(Q1 FY27 DC $75.2B +92% +21%QoQ, FY26 $193.7B), AMD($5.8B +57%, MI350 HBM3E 288GB), Broadcom(AI $10.8B +143%, Q3 $16B 가이던스, 부킹 $30B+), TSMC, SK하이닉스(HBM)
    -> 하이퍼스케일러 $700-830B의 최대 수혜 (AI 75% = $450-530B)
-   -> AI가속기 시장 $200B+. 추론 지출 2/3. Blackwell 300 램프. 듀얼소싱+커스텀ASIC 확산
+   -> AI가속기 시장 $200B+. NVIDIA ~70-75% 점유(2024 87%에서 하락). 추론 지출 2/3. 듀얼소싱+커스텀ASIC 확산
    -> Broadcom FY2027 AI칩 $100B 전망. XPU 20GW 배치 파트너십(1차 $35B)
 
 2. 반도체 장비: ASML(가이던스 EUR36-40B, 잔고 EUR38.8B), AMAT(CY2026 +30%+, Q2 $7.91B), LAM, TEL, KLA
-   -> WFE 시장 $112.4B(MarkWide). 2026 반도체 CapEx +20% YoY. AI 메모리+어드밴스드패키징 견인
+   -> SEMI 2026 전체 장비 $139B(기록), WFE $135.2B(+9%), 파운드리/로직 $69.3B(+15%). 2026 반도체 CapEx +20% YoY. AI 메모리+어드밴스드패키징+GAA 견인
 
-3. DC 인프라(전력/냉각/배전): Vertiv(+30%, 백로그 $15B +109%, FY26 매출 $13.25-13.75B), Eaton(DC주문 +240%, 백로그 $22.8B), Schneider(+11% 유기)
+3. DC 인프라(전력/냉각/배전): Vertiv(+30%, 백로그 $15B +109%, Q4 유기주문 +252%), GE Vernova(Q1 주문 $18.3B +71%, DC 전기장비 $2.4B), Eaton(DC주문 +240%, 백로그 $22.8B), Schneider(+11% 유기)
    -> DC CapEx 2029 $1.2T(Dell'Oro). McKinsey DC전체 $7T(2030)
    -> DC 액체냉각 $6B→$38.4B(CAGR 28.7%). 800G 네트워킹 $12B
 
-4. EPC/건설: EMCOR(RPO $15.6B +33%, N&C RPO $4.3B 2배), Quanta(Q1 백로그 $39.2B 역대/총 $48.5B, book-to-bill 1.6x)
+4. EPC/건설: EMCOR(RPO $15.62B +33%, N&C RPO $4.3B 2배, 12개월 전환 $12.17B), Quanta(Q1 백로그 $39.2B 역대/총 $48.5B, book-to-bill 1.6x)
    -> 기록적 백로그. 미국 32GW DC 건설중(AI 70%)
-   -> DC 백로그 228GW(12년분). 파이프라인 실현율 ~33%(전력·장비 병목)
+   -> DC 백로그 228GW(12년분). 파이프라인 실현율 ~33-42%(전력·장비 병목)
 
-5. 전력망/유틸리티: Duke Energy, Southern, AEP
+5. 전력망/유틸리티: Duke Energy, Southern, AEP, GE Vernova
    -> 미국 유틸리티 $1.3-1.4T(+21-27%). 전력망 $720B 필요(GS)
    -> 변압기 납기 최대 4-5년(악화), HV substation 3-5년. 가격 +77-95%(2019 대비). 미국 49GW 부족(MS, 2028까지)
+   -> 북미 변압기 신규투자: Hitachi $457M(2028 최대공장), Siemens $150M, Eaton $340M(모두 2027-2028 가동)
 
 6. 원자력/SMR: NuScale, Oklo, TerraPower, X-energy, 두산에너빌리티
    -> NuScale ENTRA1-TVA 최대 6GW(7개주, 비구속) + Standard Power Ohio 462MW(2029~). 규제 우위(유일 NRC 설계승인)
@@ -439,6 +460,10 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 9. DC 네트워킹: Arista(Q1 +35%, AI $3.25B 목표, 800G 35% 점유), Cisco(AI주문 $2B+), Broadcom(AI $10.8B +143%)
    -> DC 네트워킹 $36B→$95B(2032). DC AI 네트워킹 ~$20B 근접(2027년). 800G 광모듈 $12B
    -> Broadcom XPU 폭발적 성장(Google/Meta/OpenAI/Anthropic). Tomahawk 6(100Tbps)
+
+10. AI DC 디벨로퍼/하이퍼스케일러: OpenAI Stargate(~7GW, 10GW 목표, $500B), Oracle(OCI), Meta Hyperion(5GW)
+   -> Stargate Abilene 2026.07 1GW 가동 — 1GW+급 DC 시대. 1GW+급이 2026-2027 다수 도래
+   -> Oracle RPO $638B(+363%), OCI +93%. FY27 매출 $90B 목표, CapEx $70B
 ```
 
 ### 리스크 요인
@@ -446,22 +471,23 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 ```
 1. ROI 정당화 위기: McKinsey $7T(2030), GS 2026 $765B→2031 $1.6T/년, 소수 가정에 극도 민감
    -> MSFT AI매출 $37B vs CapEx $190B -- Payback 수년
-   -> CapEx가 영업현금흐름 ~100% 소진(UBS). Amazon 2026 음전환(-$17~28B), Alphabet -90%($8.2B), Oracle -$24.74B. Evercore ISI 'red flag' 임박. 닷컴 비유 등장
+   -> CapEx가 영업현금흐름 ~100% 소진(UBS). Amazon 2026 음전환(-$17~28B), Alphabet -90%($8.2B), Oracle FY26 -$23.7B(확정). Evercore ISI 'red flag' 임박. 닷컴 비유 등장
 
-2. DC 파이프라인 실현 리스크: 미국 12-16GW 계획 중 ~1/3만 착공(실현율 ~33%)
-   -> 228GW 백로그 vs 현재 빌드율 = 12년분. 물리적 인프라 제약
+2. DC 파이프라인 실현 리스크: 미국 12GW(140개) 계획 중 ~5GW만 착공(실현율 ~33-42%, Sightline)
+   -> 228GW 백로그 vs 현재 빌드율 = 12년분. 물리적 인프라 제약. 11GW는 발표 단계서 진척 없음
    -> 그리드 연결 대기 4년+. 변압기 납기 최대 4-5년(악화). HV substation 3-5년. 미국 DC 절반+ 지연/취소
 
 3. 부품비 급등: 메모리/GPU 가격 상승으로 CapEx $25-50B 추가 반영
    -> Meta/MSFT 가이던스 상향의 주요인이 순수 용량확대가 아닌 부품비
 
-4. FCF/부채: Amazon 2026 FCF 음전환, Oracle -$24.74B(비유동부채 $124.7B), Meta 급감. 기술섹터 ~$1.5T 신규 부채(3년)
+4. FCF/부채 (6/13 정밀화): Amazon 2026 FCF 음전환, Oracle FY26 -$23.7B(확정, FY27 추가 자금조달 $40B 계획 — 6/10 주가 하락), Meta 급감
+   -> 5사 누적차입 $137.5B+(2024말 이후). 기술섹터 ~$1.5T 신규 부채(3년)
    -> BIS Q1 2026 보고서가 on/off-balance sheet 차입 본격 분석. 닷컴 대비 건전(CapEx/FCF <1x vs 4x)이나 절대 규모 전례 없음
 
 5. 전력 병목: 글로벌 DC 전력소비 1,000TWh+(IEA), DC 전력 485→950TWh(2030)
    -> Morgan Stanley: 미국 49GW 부족(2028까지), +126GW 증가
    -> 자체발전 30% 급등이 해법. 천연가스 +10Bcf/d(2030)
-   -> 변압기 공급부족 30%(전력), 10%(배전) — WoodMac. GOES Cleveland-Cliffs 단일 의존
+   -> 변압기 공급부족 30%(전력), 10%(배전) — WoodMac. GOES Cleveland-Cliffs 단일 의존. 북미 신규공장 2027-2028 가동 전 공급 갭
 
 6. 관세 딜레마: AI인프라 확대 vs 수입 부품 관세의 근본적 긴장
    -> 중국 변압기 8,000대/년(5배), 배터리 40%+ 의존. 25% 철강 관세
@@ -476,36 +502,39 @@ Oracle Q4 FY2026 실적발표 6/10 -> RPO 전환·OCI 용량·부채 우려 핵�
 9. 통신 정체: 5G 사이클 종료 후 6G까지 공백. 글로벌 -2% YoY
 ```
 
-### 섹터별 CapEx 성장률 비교 (2026E, 6/6 갱신)
+### 섹터별 CapEx 성장률 비교 (2026E, 6/13 갱신)
 
 ```
 Eaton DC주문      ████████████████████████████████████████████ +240%
+Oracle CapEx     ████████████████████████████████████████████ +162% (FY26)
 Broadcom AI매출   ████████████████████████████████████████░░░░ +143%
 삼성 반도체CapEx   ██████████████████████████████████████ +128%
 Vertiv 백로그     ███████████████████████████████████░ +109%
 NVIDIA DC Q1FY27 ██████████████████████████████████░░ +92%
 빅테크 AI(9사)    ████████████████████████████████░░░░ +79%
 빅테크 AI(4사)    ████████████████████████████░░░░░░░░ +77%
+GE Vernova 주문   █████████████████████████░░░░░░░░░░░ +71% (유기)
 HBM 시장         ████████████████████████████░░░░░░░░ +58%
 AMD DC매출       ██████████████████████████░░░░░░░░░░ +57%
 Eaton 전기백로그   █████████████████████████░░░░░░░░░░░ +48%
+Broadcom Q3총매출 █████████████████████████░░░░░░░░░░░ +84% (Q3 가이던스)
 TSMC 매출        ████████████████████████░░░░░░░░░░░░ +40.6%
 Arista 매출      ████████████████████░░░░░░░░░░░░░░░░ +35%
 EMCOR RPO        ████████████████████░░░░░░░░░░░░░░░░ +32.9%
 AMAT 장비(CY26)  ██████████████████░░░░░░░░░░░░░░░░░░ +30%+
 Vertiv Q1매출     ██████████████████░░░░░░░░░░░░░░░░░░ +30%
-Vertiv FY가이던스 █████████████████░░░░░░░░░░░░░░░░░░░ +27-29%
 DC 설치전력       ██████████████████░░░░░░░░░░░░░░░░░░ +29% (155GW)
 DC 액체냉각       ██████████████████░░░░░░░░░░░░░░░░░░ +28.7% (CAGR)
 한국 반도체       ████████████████░░░░░░░░░░░░░░░░░░░░ +27%
+Quanta 매출      ████████████████░░░░░░░░░░░░░░░░░░░░ +26%
 Micron CapEx     ████████████████░░░░░░░░░░░░░░░░░░░░ +25%
 미국 유틸리티     ███████████████░░░░░░░░░░░░░░░░░░░░░ +21-27%
+Oracle Q4매출     ██████████████░░░░░░░░░░░░░░░░░░░░░░ +21%
 반도체 CapEx     ████████████░░░░░░░░░░░░░░░░░░░░░░░░ +20%
-Eaton Q1매출      ██████████░░░░░░░░░░░░░░░░░░░░░░░░░░ +17%
 DC 네트워킹       ██████████░░░░░░░░░░░░░░░░░░░░░░░░░░ +17.5% (CAGR)
-Quanta 매출      ███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ +12.7%
+Eaton Q1매출      ██████████░░░░░░░░░░░░░░░░░░░░░░░░░░ +17%
 Schneider 유기    ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░ +11%
-글로벌 장비WFE    █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░ +9~11%
+글로벌 장비WFE    █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░ +9.0% ($135.2B)
 미국 건설        ███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ +5.6%
 에너지 전체       ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ +2%
 통신             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -2%
