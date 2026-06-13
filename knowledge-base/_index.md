@@ -21,7 +21,7 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-07 (wiki-linter full 점검)**
+> **최종 갱신: 2026-06-13 (market-data-collector 모닝 수집)**
 
 ✅ **P0 0건** — `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소
 (FOMC 동결 96.5~97.8% 등 웹 공개 집계 인용, valid_until 2026-06-19, status PARTIAL).
@@ -33,8 +33,8 @@ lint_p2_count: 2
 | 갱신 완료 KB (참조)              | 신규 valid_until | 핵심 변경                                                                                                                                              |
 | -------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `macro/us_monetary_policy.md`    | 2026-07-07       | **6/7 P0 해소 재수집**: 3.50~3.75% 3연속 동결, 6/16~17 첫 Warsh FOMC(동결 65%·점도표 촉매), 5월 NFP +172K로 CME 12월 인상 ~70% 역전, 10Y 4.55%·DXY 100 |
-| `market/daily_snapshot.md`       | 2026-06-12       | 6/11 모닝 갱신: 미국 6/10 종가(S&P -1.62%·7,267·다우 50K이탈) + CPI 4.2% YoY 확정 + WTI $90 재돌파 + 금 -4.8% + 10Y 4.53%                              |
-| `market/economic_calendar.md`    | 2026-06-17       | 6/4 결과(실업수당 225K·생산성 2.8%) 반영 + NFP 컨센·6/6~17 갱신                                                                                        |
+| `market/daily_snapshot.md`       | 2026-06-14       | 6/13 모닝 갱신: 미국 6/12 종가(S&P +0.50%·7,431·SpaceX IPO+이란 협상) + WTI ~$83.5(-4%) + 10Y 4.47% + BTC $63,625 + F&G 13 극단공포                 |
+| `market/economic_calendar.md`    | 2026-06-19       | 6/13 갱신: 6/12 BOK 동결 확정 + FOMC 6/17 Warsh 첫 주재(동결 98.2%·점도표·기자회견) + Juneteenth 6/19 휴장                                             |
 | `industry/ai.md`                 | 2026-06-08       | Anthropic $965B Series H (OpenAI 추월)                                                                                                                 |
 | `industry/auto.md`               | 2026-06-08       | Tesla Robotaxi 지연 + Hyundai $86B 한국 투자                                                                                                           |
 | `industry/banking_capital.md`    | 2026-06-08       | BOK 8연속 동결 매파 전환 + KB 자사주 2.3조 소각                                                                                                        |
