@@ -146,3 +146,27 @@ sources:
 - VIX 19.14 < 20: 위험경보 미발동. S&P +0.50% 와 일관성 확인
 - WTI -4%+ + 이란 협상: 인과 논리 정합
 - SpaceX IPO 유동성 흡수 → NASDAQ 상대 부진(+0.31% vs S&P +0.50%) 정합
+
+---
+
+## 주말 보충 업데이트 (KST 2026-06-13 20:08 — 이브닝브리핑 MODULE B)
+
+> 6/12 종가 섹션 불변. 아래는 주말 델타만 기록.
+
+### 크립토 F&G 갱신 — KST 6/13 20:08
+
+| 항목 | 갱신값 | 변화 | 소스 |
+|------|--------|------|------|
+| Fear & Greed | **12 (극단 공포)** | 13 → 12 소폭 악화 | [feargreedmeter.com, KST 6/13 약 20:00] |
+| BTC | ~$63,600~63,700 | 6/12 $63,667 전후 횡보 | [CoinDesk live, KST 6/13 20:08] |
+
+### 주말 지정학 — 미-이란 협상 (KST 6/13 20:08)
+
+| 상태 | 내용 |
+|------|------|
+| 서명 미완료 | 6/12 합의문 텍스트 도달. 6/14(일) 제네바 서명 유력 — 비구속적 MoU |
+| 서명 주체 | Vance(미) — Ghalibaf(이란) / 장소: 제네바 / G7 정상회의 전 목표 |
+| 쟁점 | 이란 국영미디어 공개 조항 vs 트럼프 "전혀 다른 내용" 공개 반박 → 조항 불일치 리스크 |
+| 월요일 영향 | 서명 여부가 6/15(월) 장 오픈 갭 방향 결정 — 브리핑에서 확인 필요 경고 권장 |
+
+> 소스: [CBS News](https://www.cbsnews.com/live-updates/iran-war-trump-us-strait-of-hormuz-attacks/) · [Athens Times/Bloomberg 제네바](https://athens-times.com/bloomberg-u-s-iran-deal-on-strait-of-hormuz-may-be-signed-in-geneva-sunday-ahead-of-g7-summit/) · [CNBC 조항 불일치](https://www.cnbc.com/2026/06/12/iran-us-peace-memo-strait-hormuz-oil-sanctions.html)
