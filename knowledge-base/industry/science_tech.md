@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-07
-valid_until: 2026-07-07
+updated: 2026-06-14
+valid_until: 2026-07-14
 sector: science_tech
 sources:
   [
@@ -175,10 +175,27 @@ sources:
     TradingKey,
     Mitsubishi Electric,
     Cloudflare,
+    Neowin,
+    HPCwire/Majorana,
+    SDxCentral,
+    CoinDesk,
+    Intellia,
+    BioSpace,
+    Innovative Genomics,
+    Tamarind,
+    MIT News,
+    GenEngNews,
+    BusinessWire,
+    IDTechEx,
+    phys.org,
+    EurekAlert,
+    vfuturemedia,
+    exoswan,
+    Sacra,
   ]
 confidence: high
-last_synced_from_db: 2026-06-07
-db_records: 788
+last_synced_from_db: 2026-06-14
+db_records: 818
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -225,12 +242,13 @@ db_records: 788
 | IonQ FT 청사진                                    | 풀스택 오류내성 양자컴퓨팅 청사진 공개. **99.99% 2큐빗 충실도** + 안정적 이온 수송 입증                                                                                                                                                                                                                                                                                                            | 2026.04    | IonQ / Investing.com                                      |
 | IonQ 포토닉 인터커넥트                            | 두 독립 상용 이온트랩 간 **원거리 양자얽힘 최초 시연**(04-14). DARPA HARQ 선정                                                                                                                                                                                                                                                                                                                     | 2026.04.14 | IonQ / HPCwire                                            |
 | IonQ Florida QKD                                  | Florida LambdaRail 파트너십 -- Palm Beach~Miami-Dade **100마일 QKD** 양자안전 통신망                                                                                                                                                                                                                                                                                                               | 2026       | IonQ                                                      |
-| **Quantinuum IPO 완료** [6/7 갱신]                | **6/4 Nasdaq 데뷔 완료**(티커 QNT). **2,800만주 @ $60** 발행 → **$1.68B 모집**(기존 $1.05B 추정 대폭 상회), 초기 밸류 **~$15.6B**(기존 $12.7B 추정 상회). 시초가 $68, 장중 고가 $71.35, **보합 마감**. 2025 매출 $30.9M, 순손실 $192.6M. Honeywell+Cambridge Quantum 합병체. IonQ/D-Wave 이어 3번째 트랩이온 상장. 6/4 미쓰비시일렉트릭 파트너십(트랩이온 CAE 통합). 미 상무부 $100M 지분투자 수혜 | 2026.06.04 | CNBC / TechTimes / Yahoo Finance / 24/7WallSt             |
+| **Quantinuum IPO 완료** [6/7 갱신]                | **6/4 Nasdaq 데뷔 완료**(티커 QNT). **2,800만주 @ $60** 발행 → **$1.68B 모집**(기존 $1.05B 추정 대폭 상회), 초기 밸류 **~$15.6B~17.63B**(기존 $12.7B 추정 상회). 시초가 $68(+13.3% vs 발행가), 장중 고가 $71.35, **보합 마감**. IPO 자금=대규모 양자시스템 개발 + **Helios 차세대 플랫폼 롤아웃**(2025.11 가동, 2큐빗 게이트 충실도 99.921%). 2025 매출 $30.9M, 순손실 $192.6M. Honeywell+Cambridge Quantum 합병체. IonQ/D-Wave 이어 3번째 트랩이온 상장. 6/4 미쓰비시일렉트릭 파트너십(트랩이온 CAE 통합). 미 상무부 $100M 지분투자 수혜 | 2026.06.04 | CNBC / TechTimes / Yahoo Finance / 24/7WallSt             |
 | **Quantinuum H2 QV 2^25** [5/17]                  | 56큐빗 H2 프로세서 **QV 33.5M(2^25)** 달성. MS **Level 2 Resilient** 최초 도달                                                                                                                                                                                                                                                                                                                     | 2026.05    | Quantum Insider                                           |
 | **Quantinuum-BMW 다년 파트너십**                  | 연료전지/배터리 소재 양자 가속 R&D. Helios/Sol/Apollo 로드맵 활용                                                                                                                                                                                                                                                                                                                                  | 2026.05    | Quantum Insider                                           |
 | **Rigetti Q1 2026 실적** [5/31]                   | 매출 사상최대 **$4.4M**(온프레미스 시스템 출하 + 108큐빗 GA). **Cepheus-1-108Q** 프로세서 출시 = 첫 상업성 프로세서. 미 상무부 **$100M** 지분투자 수혜. 기존 DARPA QBI 2차 평가 탈락 이력                                                                                                                                                                                                          | 2026 Q1    | Quantum Insider / TradingKey / GoTrade                    |
 | **IBM Anderon 양자 파운드리** [5/31]              | CHIPS 인센티브 **$1B** 제안 = **Anderon** 신규 독립 자회사 출범. America 최초 순수 양자 웨이퍼 파운드리 표방                                                                                                                                                                                                                                                                                       | 2026.05    | Quantum Insider / TechTimes                               |
-| **IBM Nighthawk + Google Willow FTQC** [6/7 신규] | FTQC 시대 진입 가속. IBM **120큐빗 Nighthawk**로 **2026말 검증된 양자우위** 시연 목표(에러정정 **10x** 가속, 1년 앞당김), qLDPC 코드 **480ns 미만 실시간 디코딩** 입증. Google **Willow**: below-threshold 에러정정(큐빗 추가 시 에러 지수적 감소), **2026.05 1:100 비율** 달성. 모듈형 인터커넥트(coupler) 수평 확장                                                                              | 2026.05    | IBM Newsroom / webpronews / Programming Helper            |
+| **MS Majorana 2 토폴로지 칩** [6/14 신규]        | **6/2 Build 2026 공개**. 큐빗 신뢰성 이전 세대 대비 **1,000x 향상**(평균 큐빗 수명 **20초**, 최대 1분). 신소재 스택 **알루미늄→납(lead)** 전환. **agentic AI 'Microsoft Discovery'**가 핵심 소재 난제 해결에 직접 기여(문서화 최초). 상업 규모 양자컴퓨터 타임라인 **2035→2029 대폭 단축**. 토폴로지 큐빗 안정성 우위 = 초전도/트랩이온 대비 차별화 경로 |  2026.06.02 | Neowin / HPCwire / Microsoft News / technology.org        |
+| **IBM Nighthawk + Google Willow FTQC** [6/7]      | FTQC 시대 진입 가속. IBM **120큐빗 Nighthawk**로 **2026말 검증된 양자우위** 시연 목표(에러정정 **10x** 가속, 1년 앞당김), qLDPC 코드 **480ns 미만 실시간 디코딩** 입증. Google **Willow**: below-threshold 에러정정(큐빗 추가 시 에러 지수적 감소), **2026.05 1:100 비율** 달성. 모듈형 인터커넥트(coupler) 수평 확장                                                                              | 2026.05    | IBM Newsroom / webpronews / Programming Helper            |
 | **IBM Q-CTRL 3,000x 가속**                        | Fermi-Hubbard 120큐빗 시뮬레이션 **3,000x 속도 향상**. 실용적 양자 우위 시연                                                                                                                                                                                                                                                                                                                       | 2026       | Q-CTRL / IBM                                              |
 | IBM Kookaburra 2026                               | **1,386큐빗** 멀티칩(3칩 **4,158큐빗**). qLDPC 메모리+LPU 최초 통합. 2026 양자우위 목표                                                                                                                                                                                                                                                                                                            | 2026       | IBM Quantum                                               |
 | IBM Heron R2 + Starling 시설                      | Heron R2 **156큐빗** 미국+EU 클라우드. QEC 디코딩 **10x**. **5,000 2큐빗 게이트**. Poughkeepsie **511K sqft** Starling 시설 건설(2029). 200명 고용                                                                                                                                                                                                                                                 | 2026       | IBM Quantum                                               |
@@ -243,8 +261,9 @@ db_records: 788
 | **PQC 마이그레이션 $15B 시장** [6/7 갱신]         | **$15B** 마이그레이션 시장(PRNewswire). NIST FIPS 203/204/205 확정(2024.08), **FIPS 206(FN-DSA) 2026 후반** 예상. **CNSA 2.0(v2.1)**: 신규 NSS 양자안전 **2027.01 의무**, 앱 마이그레이션 **2030**, 인프라 완전 전환 **2035**. NIST IR 8547: RSA-2048/ECC P-256 **2030 폐기**. **Cloudflare/Chrome/iMessage 하이브리드 PQC 프로덕션 배포**. Y2K 이후 최대 인프라 갱신 사이클. HNDL 위협 가속       | 2026       | PRNewswire / NIST CSRC / PostQuantum / Palo Alto Networks |
 | **한국 PQC 실증 확대**                            | 과기정통부 PQC 전환 실증 **통신/금융/교통/국방/우주** 5개 분야 확대(05-06). **2030 양자보안 자립** 목표. 양자클러스터 공모(04-17). 양자산업 육성법 시행. 3조원+ 투자(~2035)                                                                                                                                                                                                                        | 2026       | 과기정통부 / 양자신문                                     |
 
-> **2026.06.07 핵심 변화**: **Quantinuum IPO 완료**(6/4 Nasdaq, 티커 QNT) — 2,800만주 @ $60 → **$1.68B 모집·밸류 ~$15.6B** (기존 $1.05B·$12.7B 추정을 모두 상회), IonQ 2021 SPAC 이후 양자 섹터 최대 공개시장 이벤트. 보합 마감(시초가 $68, 고가 $71.35).
-> **PQC 마이그레이션 $15B 시장** 부각: CNSA 2.0 신규 NSS 2027.01 의무·인프라 완전 전환 2035, Y2K 이후 최대 인프라 갱신 사이클(Cloudflare/Chrome/iMessage 하이브리드 PQC 프로덕션 배포). FIPS 206 2026 후반 예상.
+> **2026.06.14 핵심 변화**: **MS Majorana 2 토폴로지 칩 공개**(6/2 Build 2026) — 큐빗 신뢰성 **1,000x 향상**(수명 20초), 알루미늄→납 신소재 + agentic AI 'Microsoft Discovery' 활용, 상업 양자컴 타임라인 **2035→2029 단축**. 토폴로지 경로가 초전도/트랩이온 대비 차별화 부각.
+> **Quantinuum(QNT) 데뷔 첫 주**: 6/4 시초가 $68(+13.3% vs 발행가 $60), 밸류 $15.6B~17.63B. IPO 자금=Helios 차세대 플랫폼 롤아웃(2큐빗 게이트 충실도 99.921%).
+> **PQC CNSA 2.0 타임라인 확정**: 신규 NSS 2027.01.01 의무, OS/앱/클라우드 독점 2033, 전 NSS 완전 양자내성 2035. 4대 알고리즘 AES-256/ML-KEM-1024/ML-DSA-87/SHA-384·512. FIPS 206(FN-DSA) 2026 후반.
 > **FTQC 진입 가속**: IBM 120큐빗 Nighthawk로 2026말 검증된 양자우위 목표(에러정정 10x, 480ns 미만 실시간 디코딩), Google Willow below-threshold·1:100 비율 달성.
 > (5/31 배경) 미 상무부 $2.013B 양자 9개사 투자+소수 지분(05-21), Rigetti Q1 매출 사상최대 $4.4M + Cepheus-1-108Q GA.
 > 전문 세부: `industry/quantum.md` 참조.
@@ -277,9 +296,11 @@ db_records: 788
 | AI 신약 파이프라인 (2026)                    | **200개+** 개발 중. **15~20개** pivotal. 첫 FDA 정식승인 **2026~2027E**. 타임라인 **30~40%** 단축, 비용 **25~40%** 절감                 | 2026       | Axis Intelligence                    |
 | CRISPR 생태계                                | **359개 활성 기업**, 누적 펀딩 $845억, CAGR 33.5%                                                                                       | 2025~2026  | BioPharma International              |
 | **CRISPR Casgevy 매출**                      | 2025년 매출 **$116M**. 147명 치료 개시. 1회 220만 달러                                                                                  | 2025       | Motley Fool / Vertex                 |
+| **Intellia in vivo CRISPR 최초** [6/14 신규] | ★ lonvo-z = **후기 임상 최초 in vivo 유전자편집 성공**. 유전성 혈관부종(HAE) 공격 위약 대비 6개월 **-87%**. **FDA 승인 신청 개시**. LNP에 CRISPR 패키징→혈류로 간 도달→직접 DNA 편집 | 2026.06 | BioSpace / STAT News |
+| **FDA 맞춤형 CRISPR 승인경로** [6/14 신규]   | FDA bespoke CRISPR 치료제 승인경로 초안 가이던스 = 희귀질환 근본원인 표적 유전체편집/RNA. Prime Medicine 2환자 임상 후 CGD 승인 추진(03월). Lilly orforglipron 2026말 추가 승인 신청 | 2026.06 | FierceBiotech / STAT News |
 
-> **2026.05.17 핵심 변화**: Survodutide Phase 3 **-16.6% 체중감소**(04-28) = Boehringer 신규 GLP-1 이중작용제 등장.
-> Foundayo **Amazon One Medical $149/월** 출시 = 경구 GLP-1 유통 대중화 가속. GLP-1 가격 하락 본격화: Costco $499/월.
+> **2026.06.14 핵심 변화**: **Intellia in vivo CRISPR 최초 후기 임상 성공**(lonvo-z, HAE -87%, FDA 신청) = 생체 내 유전자편집 임상 변곡점. FDA **맞춤형 CRISPR 승인경로** 초안 발표.
+> (5/17 배경) Survodutide Phase 3 -16.6% 체중감소, Foundayo Amazon $149/월 출시. Costco Wegovy $499/월.
 
 ---
 
@@ -291,9 +312,10 @@ db_records: 788
 | **생성형 단백질 모델** [5/31]           | **Evo2 / BoltzGen** = 신규 서열 생성 + 결합 친화도 예측. 2026 = wet lab 검증 본격화 + 멀티 AI 에이전트 클라우드 랩 실험                                         | 2026 | Council on Strategic Risks        |
 | **Twist Bioscience AI DNA 합성** [5/31] | ML 기반 DNA 서열 설계 + 합성 오류 사전 차단. 정확도 **99.9%+**, 비용 **~90% 절감**                                                                              | 2026 | Twist Bioscience                  |
 | **합성생물 첨단소재** [5/31]            | 유전공학 단백질(실크/펩타이드)이 **CaCO3/실리카/금속 나노입자** 형성 템플릿화 = 기계강도/광학/촉매 활성 강화. SynBioBeta 2026(5/4~7 산호세) AI+Biology 테마     | 2026 | MDPI / SynBioBeta                 |
+| **BoltzGen/Profluent AI 바인더** [6/14] | MIT **BoltzGen** = 임의 표적에 단백질 바인더를 처음부터 설계, 신약 발굴 파이프라인 진입 준비된 신규 바인더 생성 최초(바인더 설계+구조예측 단일 프레임워크). Profluent **proseLM** = 1라운드로 최고급 베이스에디터 수준·항체는 nivolumab 능가 결합, **$106M 조달**(누적 $150M) | 2026.06 | Tamarind / MIT News / GenEngNews / BusinessWire |
 
-> **2026.05.31 신규**: AI 단백질 설계가 'AlphaFold 이후' 다음 단계 진입 -- Variational Synthesis로 단백질 구축 비용 1조배 절감.
-> 생성형 모델(Evo2/BoltzGen)이 2026년 wet lab 검증으로 진입. 합성생물학이 첨단소재(나노 템플릿)로 횡단 확장.
+> **2026.06.14 신규**: MIT **BoltzGen** = 신약 파이프라인 진입 준비된 de novo 단백질 바인더 생성 최초. Profluent proseLM 베이스에디터 수준 + $106M 조달(누적 $150M).
+> (5/31 배경) Variational Synthesis로 단백질 구축 비용 1조배 절감. 생성형 모델 wet lab 검증 진입, 합성생물학이 첨단소재(나노 템플릿)로 횡단 확장.
 
 ---
 
@@ -304,14 +326,14 @@ db_records: 788
 | 글로벌 우주경제 (2025)                 | **$626B** (상업 78% / 정부 22%)                                                                                                                                                                                                                                                     | 2025년     | SpaceNews/Orbital Radar                              |
 | 장기 전망                              | **$1T by 2032~34** (CAGR 12%), **$1.8T by 2035**                                                                                                                                                                                                                                    | 2035E      | McKinsey/WEF/Novaspace                               |
 | **2026 글로벌 궤도발사** [5/31]        | **250회+** 전망(2024~25 급성장 지속). SpaceX 단독 **80~100+** 미션. 중국/유럽/인도/신규 사업자 기여                                                                                                                                                                                 | 2026E      | SpaceNexus / Nova.space                              |
-| **Starlink 가입자** [6/7 갱신]         | **10M+** 돌파(일 ~14,000명 순증). 애널리스트 **2026말 1,800만** 전망. 2025말 42개 신규 국가/지역 확장                                                                                                                                                                               | 2026       | IEEE ComSoc / Yahoo Finance                          |
+| **Starlink 가입자** [6/14 갱신]        | **10M+** 돌파. **2026말 목표 2,500만**(SDxCentral, 기존 1,800만 전망 상향). 누적 발사 위성 12,000+, 궤도 운영 ~10,500기. FCC 총 **15,000기** 발사 승인. Gen2 위성 **100x 데이터 밀도** 계획                                                                                         | 2026       | SDxCentral / HighSpeedInternet                       |
 | **Starlink 매출 2025**                 | **$12.3B** (SpaceX 총 매출의 **70%**)                                                                                                                                                                                                                                               | 2025FY     | Motley Fool / Yahoo Finance                          |
 | **Starlink 위성 군집**                 | 궤도 **10,296기**, 운영 **10,280기**                                                                                                                                                                                                                                                | 2026.05.01 | Spaceflight Now                                      |
 | **Starlink V3 위성**                   | 다운링크 **1Tbps+**, 업링크 **200Gbps**. 2026H1 Starship 배치 목표                                                                                                                                                                                                                  | 2026       | DataCenterDynamics                                   |
-| **SpaceX IPO 업데이트** [6/7 갱신]     | S-1 제출(04-01). **$2T** 밸류(기존 $1.75T 상향). **공개 안내서(prospectus) 공개** — 기록적 공모 준비 중. 6/8주 로드쇼                                                                                                                                                               | 2026       | Morningstar / Motley Fool / CNBC                     |
+| **SpaceX IPO 완료** [6/14 갱신]         | ★ **6/11 가격결정 — 사상 최대 IPO**. 555,555,555주 @ **$135** → **$75B 모집**, 밸류 **$1.75T**(2019 사우디 아람코 $29.4B 추월). Nasdaq 티커 **SPCX**. **6/12 상장 첫날 +19% → 종가 $160.95**. float 4% + 6/13 MSCI 편입 = 인덱스 구조적 수요. Starlink 핵심 수익(2025 매출 $11.4B·EBITDA 마진 63%), xAI 부문 2025 영업손실 $6.36B                                                                                  | 2026.06.11 | NPR / CoinDesk / TradingKey                          |
 | **Starship Flight 12 결과** [5/31]     | **5/22 발사**(22:30 UTC). Pad 2 최초 + V3 데뷔 + Raptor 3. **결과 혼재**: Super Heavy 부스터 단분리 후 **비정상 급속 회전→엔진 다수 실패**, 착륙연소 1기만 점화, 멕시코만 1,450km/h **충돌**. Ship 상단은 1기 손실에도 대부분 목표 수행 후 인도양 계획대로 splashdown               | 2026.05.22 | Space.com / Wikipedia / CNN                          |
 | **FAA Starship grounding** [5/31]      | FAA **05-27** 부스터 실패 = **mishap 선언**, 조사 완료까지 Starship **grounding**. 발사 재개 보류                                                                                                                                                                                   | 2026.05.27 | Space.com / Wikipedia                                |
-| **Starship Flight 13 예정** [6/7 신규] | **6/30 예정**(00:00 UTC, Starbase Pad 2). Flight 12 mishap·FAA grounding 이후 재개 시도. SpaceX IPO 안내서 공개 — 기록적 공모 준비(밸류 ~$2T 추정)                                                                                                                                  | 2026.06.30 | SpaceLaunchSchedule / CNBC / Morningstar             |
+| **Starship Flight 13 윈도** [6/14 갱신] | **7~8월 윈도**(NASASpaceFlight 추정, FAA 조사 결과 대기). Flight 12(5/22) 부스터 실패→grounding이 6월 IPO 이전 발사 가능성 축소. SpaceX IPO 완료(6/11)까지 재개 미정 = 발사 캐던스 단기 둔화                                                                                       | 2026.07~08 | NASASpaceFlight / TechTimes / Capital.com            |
 | **Starship 개발 누적 비용**            | **$15B+**                                                                                                                                                                                                                                                                           | 2026       | Reuters                                              |
 | **Falcon 9 600번째 착륙**              | 04-19. 연간 250회+ 궤도발사 전망                                                                                                                                                                                                                                                    | 2026.04    | Space.com                                            |
 | **Artemis II 완료**                    | **4/1~4/11 성공** -- 50년 만에 유인 달 비행. Artemis III **2027 후반** 지연(지구궤도 HLS 시연 변경). **Artemis IV 최초 달 착륙(2028)**                                                                                                                                              | 2026.04    | NASA                                                 |
@@ -324,9 +346,9 @@ db_records: 788
 | 한국 KASA R&D                          | **9,495억원**. 누리호 5차 상반기                                                                                                                                                                                                                                                    | 2026       | KASA/과기정통부                                      |
 | **우주 방위 (Golden Dome)**            | 총 비용 **$185B**. FY2026 **$13.4B** 의회 확정. SBI **$3.2B**(4/24). True Anomaly **$650M**                                                                                                                                                                                         | 2026       | BreakingDefense/CNBC                                 |
 
-> **2026.06.07 핵심 변화**: **Starship Flight 13 6/30 예정** — Flight 12 mishap·FAA grounding 이후 재개. **SpaceX IPO 안내서(prospectus) 공개**(밸류 ~$2T), RKLB 등 5개 공개 우주주 재평가 촉발 전망.
-> **Starlink 1,000만+ 돌파**(2026말 1,800만 전망, 매출 $12.3B = SpaceX 총매출 70%). **Amazon Leo 331기 발사**(217+기 궤도, 7/30 FCC 의무 → 24개월 연장 신청).
-> **Rocket Lab Neutron** Q4 2026 데뷔 목표 유지, 5 Neutron+3 Electron 블록 계약(기존 최대 $190M 상회), SpaceX IPO가 5개 공개 우주주 재평가 촉발.
+> **2026.06.14 핵심 변화**: **SpaceX IPO 완료(6/11) — 사상 최대 $75B 모집, 밸류 $1.75T(아람코 추월)**. SPCX 6/12 상장 첫날 **+19% → $160.95**. float 4%+MSCI 편입 구조적 수요. RKLB 등 공개 우주주 밸류에이션 재평가 촉발 전망.
+> **Starship Flight 13 7~8월 윈도**(FAA 조사 대기, IPO 이전 발사 무산 = 캐던스 단기 둔화). **Starlink 1,000만+ 돌파**(2026말 목표 **2,500만**으로 상향, Gen2 100x 데이터 밀도).
+> Amazon Leo 217+기 궤도(7/30 FCC 50% 의무 미달 → 연장 신청 예상). Rocket Lab Neutron Q4 2026 데뷔 목표, 6/22 Nasdaq-100 편입.
 > 전문 세부: `industry/space.md` 참조.
 
 ---
@@ -339,23 +361,23 @@ db_records: 788
 | 휴머노이드 글로벌 출하 (2026E)       | **5.1만대** (2025 1.5~2만대 대비 3배)                                                                                                                                                                                                                        | 2026E      | Goldman Sachs                         |
 | 휴머노이드 시장 (2035E)              | **$38B** (Goldman 상향, 기존 $6B의 6배; bull 시나리오 ~$1,500억). base case 2030 25만대+ 출하                                                                                                                                                                | 2035E      | Goldman Sachs (TechTimes 06-03)       |
 | **Optimus V3 Fremont 생산**          | Fremont 공장 **7월 생산 시작**(Model S/X 라인 전환). 연간 **100만대** 생산 능력 목표. **$25B CapEx** 포함. V3: **37관절**, 보행 **1.2m/s**, 15도 경사 안정. 소비자 판매 **2027년 말**                                                                        | 2026       | eWeek / BotInfo / TeslaOracle         |
-| **Optimus V3 공개 일정** [6/7 갱신]  | V3 **7~8월 공개** 후 **Q3 양산** 목표. 5월 현재 내부 배치 **수백 대** 수준. 2026 말까지 **수천 대** 배치 목표. 연 **100만대(2026말)→1,000만대(기가텍사스)** 장기 목표                                                                                        | 2026.05    | BotInfo / humanoid.press / TradingKey |
+| **Optimus V3 공개 일정** [6/7 갱신]  | V3 **7~8월 공개** 후 **Q3 양산** 목표. **Giga Texas 1,000+대 가동**(부품 분류·운반·품질검사). Fremont Model S/X 라인 종료(05월)→Optimus 라인 전환 중. 2026 말까지 **수천 대** 배치 목표. 연 **100만대(2026말)→1,000만대(기가텍사스)** 장기 목표                                                                                        | 2026.05    | BotInfo / humanoid.press / TradingKey |
 | **Optimus Giga Texas 2세대**         | 기가 텍사스에 2세대 공장 착공 -- 장기 **연간 1,000만대** 목표                                                                                                                                                                                                | 2026       | The Robot Report                      |
 | **Optimus 상하이 양산**              | 상하이 기가팩토리 대량생산 핵심 거점 확정                                                                                                                                                                                                                    | 2026.04.14 | GuruFocus                             |
 | Optimus 가격 목표                    | 장기 **$20,000~30,000**                                                                                                                                                                                                                                      | 장기       | Tesla (Musk 발언)                     |
-| **Figure 03 BotQ 양산** [6/7 갱신]   | BotQ 공장 **시간당 1대** 생산 도달(2026.06 ramp). Helix 02 기반 무감독 연속 운영+전신 자율성. 가정 테스트 개시. 24개월 내 로봇이 로봇 생산                                                                                                                   | 2026       | humanoid.press                        |
+| **Figure 03 BotQ 양산** [6/7 갱신]   | BotQ **시간당 1대** 생산 도달(2026.06). 연 설계능력 **12,000대**, 2026 목표 **50,000대**. **40대 군집 BMW 세계 최대 조립공장 상업 배치**(로봇-운영시간당 ~$25 RaaS). Helix 02 기반 무감독 연속 운영+전신 자율성. 가정 테스트 개시. 24개월 내 로봇이 로봇 생산                                                                                                                   | 2026       | humanoid.press                        |
 | **Figure 02 BMW 실전 배치**          | BMW 스파르탄버그 **30,000대 차량 생산 기여**. **1,250시간+**, 90,000+ 부품 처리                                                                                                                                                                              | 2026       | humanoid.press / Yahoo Finance        |
 | Figure AI                            | 밸류에이션 **$390억** (총 펀딩 $19억+). 자체 **Helix AI 플랫폼**                                                                                                                                                                                             | 2026       | PitchBook/CNBC                        |
 | **가정용 휴머노이드 베타**           | 1X NEO + Figure 03 = 소비자 가정 배치 선두. Optimus 2026년 말 제한적 가정 배치                                                                                                                                                                               | 2026       | humanoid.press / Standard Bots        |
 | **Agibot 1만대 출하**                | 중국 Agibot 1만 번째 출하(03월 말). 3개월 5,000대                                                                                                                                                                                                            | 2026.03    | humanoid.press                        |
-| **Unitree + NVIDIA** [6/7 갱신]      | NVIDIA 첫 로보틱스 시스템(연구자 판매용)으로 Unitree 선정(6/1) — H2 Plus에 **Blackwell 칩** 탑재. 연내 판매 개시, Unitree IPO 추진. 2025 ~5,500대, **2026 목표 1~2만대**(美 Figure/Tesla 대비 **36배**). 중국 생산량 2026 **+94%**, Unitree+AgiBot ~80% 점유 | 2026E      | CNBC / TrendForce / techbuzz          |
+| **Unitree + NVIDIA** [6/7 갱신]      | NVIDIA 첫 로보틱스 시스템(연구자 판매용)으로 Unitree 선정(6/1) — H2 Plus에 **Blackwell 칩** 탑재. 연내 판매 개시, Unitree IPO 추진. 2025 5,500+대(타 휴머노이드 합산 초과, **Amazon US $17,990 리스팅**), **2026 목표 1~2만대**(美 Figure/Tesla 대비 **36배**). 중국 생산량 2026 **+94%**, Unitree+AgiBot ~80% 점유 | 2026E      | CNBC / TrendForce / techbuzz          |
 | **Boston Dynamics Atlas** [6/7 신규] | 전기 Atlas 현대/DeepMind **첫 출하 개시**. 현대 BD 공장 환경용 신형. 美 시설 연 최대 **30,000대** 생산 계획, **2028 공장 배치**                                                                                                                              | 2026       | CNBC / humanoid.press                 |
 | **Honor Lightning 하프마라톤**       | **50분26초** 완주 -- 인간 세계기록 대비 약 7분 빠름                                                                                                                                                                                                          | 2026       | humanoid.press                        |
 | **Waymo 2026 대확장**                | 신규 11개 도시. 주간 **100만 탑승** 목표. 차량 **2,500~3,500대**. Magna 2배 확장. **Ojai** 미니밴 2026말. **런던+도쿄** 국제 테스트                                                                                                                          | 2026       | TestMiles / TechCrunch                |
 | 한국 로봇 산업 매출                  | 6조 원대                                                                                                                                                                                                                                                     | 2025년     | 산업부                                |
 
-> **2026.06.07 갱신**: **Figure 03 BotQ 시간당 1대 생산** 도달(6월). **NVIDIA-Unitree 파트너십**(6/1, Blackwell 탑재 H2 Plus). **Boston Dynamics Atlas 현대/DeepMind 첫 출하**(연 최대 3만대, 2028 배치).
-> 중국 생산량 2026 **+94%**(Unitree+AgiBot ~80% 점유). **Goldman 2035 시장 $38B로 상향**(기존 6배). Optimus V3 7~8월 공개·Q3 양산 목표.
+> **2026.06.14 갱신**: 휴머노이드 노동현장 진입 본격화 — **Optimus 1,000+대 Giga Texas 가동**(Fremont 라인 전환 중), **Figure 03 40대 군집 BMW 상업 배치**(~$25/robot-hour RaaS), BotQ 연 12,000대 능력·2026 목표 50,000대, **BD Atlas 현대/DeepMind 첫 출하**.
+> Unitree 2025 5,500+대(Amazon US $17,990)·2026 목표 1~2만대, NVIDIA 파트너십(Blackwell H2 Plus). Goldman 2035 시장 $38B. Optimus V3 7~8월 공개·여름 양산.
 
 ---
 
@@ -377,7 +399,7 @@ db_records: 788
 | **Holtec SMR-300 NRC 신청**                  | Palisades Pioneer 1&2. NRC 수리(2026.02). 안전평가 **2027 중반**                                                                                                                                                         | 2026      | Holtec/NRC                      |
 | GE Hitachi BWRX-300                          | 캐나다 OPG Darlington **세계 최초 건설 진행**. UK GDA Step 2 완료                                                                                                                                                        | 2026      | GE Vernova/ONR                  |
 | **Rolls-Royce SMR Wylfa**                    | UK GDA **Step 3 진입**(유일). 470MW PWR. **Wylfa 3기 확정**. Arup 기초공학 설계 착수(GBE-N 선정). **최대 1.5GW** 공급                                                                                                    | 2026      | WNN/UK 정부                     |
-| X-energy Xe-100 [6/7 갱신]                   | NRC 심사. Dow Long Mott(TX) 부지. **NRC 안전평가 2026.11 완료 예상→직후 최종결정**. TRISO-X 연료공장 허가. **Amazon+한수원 국제 파트너십**                                                                               | 2026      | NRC / ANS / X-energy            |
+| X-energy Xe-100 [6/7 갱신]                   | NRC 심사. Dow Long Mott(TX) 부지. **NRC 안전평가 2026.11 완료 예상→직후 최종결정**. TRISO-X 연료공장 허가. **Amazon+한수원 국제 파트너십**. ★ **X-energy(Nasdaq: XE) IPO 완료(04-24)** = $1.02B 모집(발행가 $23, 목표 $16~19 상회)                                                                               | 2026      | NRC / ANS / X-energy            |
 | Kairos Power Hermes                          | DOE HALEU 연료 계약. 35MWt FHR Oak Ridge 건설                                                                                                                                                                            | 2026      | Kairos/DOE                      |
 | **두산에너빌리티 SMR**                       | FY2025 수주 **14.7조원**(+106.5%). 창원 SMR 전용공장 착공(2026.03, **8,068억원**, 연 20기)                                                                                                                               | 2026      | 한경/미래에셋                   |
 | **빅테크 원전 PPA**                          | MS-TMI $16B 835MW(2028) / Google-Kairos 500MW / Amazon $20B+ Susquehanna / Meta 1~4GW(2030s)                                                                                                                             | 2024~2039 | IAEA/Introl/Commonfund          |
@@ -401,8 +423,8 @@ db_records: 788
 | ARPA-E 핵융합                           | **$135M** 투자 -- 역대 최대 단일 투자                                                                                                                                                                        | 2026       | ARPA-E/FIA                            |
 | **핵융합 상업화 현실** [6/7 신규]       | **2026 현재 어떤 기업도 전력망 공급 12개월 이내 도달 못함**. 초기 공격적 마일스톤 일부 지연되나 물리/공학/자본 궤적 의미있게 전진                                                                            | 2026       | pdpspectra / TechCrunch               |
 
-> **2026.06.07 갱신 (SMR)**: **NRC 상업 원자로 최초 건설허가** = TerraPower Natrium Kemmerer WY(non-light-water 40년 만 첫, NRC 26-028), 비핵 착공 진행. **DOE TVA+Holtec 각 $400M(총 $800M)** 조기 배치 지원. X-energy Xe-100 NRC 안전평가 2026.11 예상.
-> **2026.06.07 갱신 (핵융합)**: CFS SPARC 18개 자석 중 첫 설치, **2026말 거의 완성·2027 첫 플라즈마+Q>1 순에너지 이득** 목표(세계 최초 상업적 의미). ARC 400MWe 버지니아 Chesterfield 2030년대 초. **Helion 2028 발전 목표**(Orion 착공). **2026 현실: 전력망 공급 12개월 내 기업 없음**.
+> **2026.06.14 갱신 (SMR)**: **X-energy(Nasdaq: XE) IPO 완료(04-24)** = $1.02B 모집(발행가 $23, 목표 상회). 2026 초 현재 서방권 SMR 상업 운전 0건(러 Lomonosov 2020·중 HTR-PM 2023 선례). (6/7 배경) NRC 상업 원자로 최초 건설허가 TerraPower Natrium(NRC 26-028) 비핵 착공, DOE TVA+Holtec 각 $400M.
+> **2026.06.14 갱신 (핵융합)**: CFS SPARC = **Google DeepMind TORAX 파트너십**(플라즈마 시뮬레이션 최적화), first plasma 2026말~2027초 목표, ARC 첫 상업 발전소 2027 착공·2030 운전. Helion 펄스형 순전력 생산 시연 주장(검증 필요), TAE FRC 아키텍처 단순화. **2026 현실: 전력망 공급 12개월 내 기업 없음**.
 > 전문 세부: `industry/smr.md` 참조.
 
 ---
@@ -464,17 +486,18 @@ db_records: 788
 | **Apple OLED 전환**                  | 전 iPhone OLED + iPad Pro/MacBook Pro 확대. 스마트폰 OLED 침투율 **2027 75%+**                                                                                                                                                                                | 2026~2027  | Fortune BI / Omdia                          |
 | **UDC 청색 PHOLED**                  | 양산 라이선스 협상 중. 에너지 효율 **25~35% 향상**                                                                                                                                                                                                            | 2026       | MarketIntelo                                |
 | **페로브스카이트 디스플레이**        | 나노결정 필름 PLQY **100%** + EQY **91.4%**                                                                                                                                                                                                                   | 2026       | Perovskite-Info                             |
+| **페로브스카이트 Science 표지** [6/14]  | 계층-쉘(hierarchical-shell) 페로브스카이트 나노결정 = 금속할라이드 발광체 불안정성 극복 + 기록적 양자수율·운영안정성·확장성 동시 달성(**Science 1/15 표지**, 서울대 이태우 교수팀). 할라이드 페로브스카이트 LED **EQE 25%+**. OLED 장비·소재 기업 2026 페로브스카이트 확장 | EurekAlert / phys.org / Science |
 | 그래핀 시장                          | 펀딩 **$1.2B+**. EV 배터리용 CNT/그래핀 최대 수요                                                                                                                                                                                                             | 2026       | BusinessWire / IDTechEx                     |
 | **나노카본 고밀도 전지** [6/7 신규]  | 첨단 나노카본(CNT/그래핀) 안정·고전도 환경 = 에너지밀도 **~400Wh/kg** 주장(현 업계 표준 대비 **+74%**). Solidion: 그래핀 열전도/방사선 저항 활용 셀 내 능동 온도조절 특허(LEO AI DC·달경제·우주 극한환경 표적)                                                | 2026       | ScienceDaily / Graphene-Info / Solidion     |
 | **전고체 전지 -- 글로벌 펀딩**       | **$1.3B+** (2025~Q1 2026) -- 프리상업화 단계 진입                                                                                                                                                                                                             | 2026       | DQ India                                    |
-| **전고체 전지 -- QS** [6/7 갱신]     | Q1 2026 **Eagle Line**(첫 고도 자동화 파일럿 라인) **설치 완료+가동 개시**, QSE-5 초기 물량 생산. **Cobra 공정** 분리막 베이스라인 확립. 2026 우선순위: 확장 양산 실증 + 자동차 파트너십/라이선싱                                                             | 2026       | SEC QS 8-K / ARS 2026                       |
+| **전고체 전지 -- QS** [6/7 갱신]     | **Eagle Line 가동식 2026.02.04**(첫 고도 자동화 라인, Cobra 공정 통합). **VW PowerCo와 Ducati 오토바이 구동 셀 공개 시연**. 설치+가동 개시, QSE-5 초기 물량 생산. **Cobra 공정** 분리막 베이스라인 확립. 2026 우선순위: 확장 양산 실증 + 자동차 파트너십/라이선싱                                                             | 2026       | SEC QS 8-K / ARS 2026                       |
 | **전고체 전지 -- Toyota**            | Lexus 컨셉 **실차 테스트 중**. 일본 정부 지원 하 **2026 소규모 생산**, 양산 **"2030 이후"**. **450~500Wh/kg**                                                                                                                                                 | 2026       | Cars.com / IDTechEx                         |
 | **전고체 전지 -- Samsung SDI**       | SDI+**BMW+Solid Power** 공동개발. 황화물 전해질. **2027 양산**. 80% 충전 **9분**. 프로토타입 **965km 주행거리**, Ag-C 복합 양극                                                                                                                               | 2026~2027  | IDTechEx / eepower / to7motor               |
 | **전고체 상용화 타임라인**           | Phase 1(2026~2027): 고급 EV($100K+)/이륜차. Phase 2(2029+): 대중차                                                                                                                                                                                            | 2026~2029  | 업계 컨센서스                               |
 | **전고체 양산 진입 신호** [6/7 갱신] | 2026 SSB **최초 상업 규모 도달**: **오토바이 Q1 인도**(첫 상용 적용). **중국 2026.07 최초 SSB 표준** 발표(토요타/BYD/CATL 양산 타임라인). 유럽 **Argylium**(Syensqo+Axens, 2026.01) 황화물 고체전해질 산업화 가속. **단 2030 이전 대규모 상업화 업계 비관적** | 2026       | to7motor / engineerlive / 36kr / technoolab |
 
-> **2026.06.07 갱신**: 전고체 **2026 최초 상업 규모 진입**(오토바이 Q1 인도). QuantumScape **Eagle Line 설치+가동**(Q1), QSE-5 초기 물량. **중국 2026.07 첫 SSB 표준** 발표.
-> 나노카본(CNT/그래핀) **~400Wh/kg** 주장(+74%, Solidion 극한환경 특허). 단 업계: 2030 이전 대규모 상업화 비관적. Samsung SDI 프로토타입 965km(Ag-C 양극).
+> **2026.06.14 갱신**: QuantumScape **Eagle Line 가동식 2/4** + **VW PowerCo Ducati 구동 셀 시연**(Cobra 공정 통합). Toyota 프로토타입 745Wh/L(SSB EV 2027~2030). **페로브스카이트 Science 표지**(이태우 교수팀, LED EQE 25%+).
+> (6/7 배경) 전고체 2026 최초 상업 규모 진입(오토바이 Q1 인도), 중국 2026.07 첫 SSB 표준. 나노카본 ~400Wh/kg(+74%). 단 업계: 2030 이전 대규모 상업화 비관적.
 
 ---
 
@@ -634,9 +657,12 @@ db_records: 788
 
 ---
 
-### 16. 트렌드 요약 (2026-06-07 기준)
+### 16. 트렌드 요약 (2026-06-14 기준)
 
-1. **Quantinuum IPO 완료(6/4 Nasdaq, 티커 QNT)**: 2,800만주 @ $60 → **$1.68B 모집·밸류 ~$15.6B**(기존 $1.05B·$12.7B 추정 모두 상회). 시초가 $68·고가 $71.35·보합 마감. IonQ 2021 SPAC 이후 양자 섹터 최대 공개시장 이벤트. 6/4 미쓰비시일렉트릭 파트너십. [6/7 신규]
+1. **SpaceX IPO 완료(6/11) — 사상 최대 $75B**: 555,555,555주 @ $135 → 밸류 **$1.75T**(2019 아람코 추월). SPCX 6/12 상장 첫날 **+19% → $160.95**. float 4%+6/13 MSCI 편입 구조적 수요. Starlink 2025 매출 $11.4B·EBITDA 63%, xAI 영업손실 $6.36B. RKLB 등 공개 우주주 재평가 촉발. [6/14 신규]
+2. **MS Majorana 2 토폴로지 양자칩(6/2 Build 2026)**: 큐빗 신뢰성 **1,000x 향상**(수명 20초), 알루미늄→납 신소재 + agentic AI 'Microsoft Discovery' 활용, 상업 양자컴 타임라인 **2035→2029 단축**. 토폴로지 경로 차별화. Quantinuum(QNT) 데뷔 첫 주 시초 $68(+13%). [6/14 신규]
+3. **Intellia in vivo CRISPR 최초 후기 임상 성공**: lonvo-z = 생체 내 유전자편집 임상 최초(HAE -87%, FDA 신청). FDA **맞춤형 CRISPR 승인경로** 초안 발표. MIT BoltzGen = 신약 진입 준비 de novo 단백질 바인더 최초. [6/14 신규]
+4. **Quantinuum IPO(6/4 Nasdaq, QNT)**: 2,800만주 @ $60 → **$1.68B 모집·밸류 ~$15.6B**. 시초가 $68·보합 마감. IPO 자금=Helios 차세대 플랫폼 롤아웃(2큐빗 게이트 충실도 99.921%). [6/7→6/14]
 2. **PQC 마이그레이션 $15B 시장 부각**: CNSA 2.0 신규 NSS 2027.01 의무·인프라 완전 전환 2035·FIPS 206 2026 후반. Cloudflare/Chrome/iMessage 하이브리드 PQC 프로덕션 배포 = Y2K 이후 최대 인프라 갱신 사이클. **FTQC 진입 가속**: IBM 120큐빗 Nighthawk 2026말 양자우위 목표(에러정정 10x), Google Willow 1:100 비율 달성. [6/7 갱신]
 3. **Starship Flight 13 6/30 재개 + SpaceX IPO 안내서 공개**: Flight 12 mishap·FAA grounding 이후 재개 시도. SpaceX prospectus 공개(밸류 ~$2T), RKLB 등 **5개 공개 우주주 재평가** 촉발 전망. Starlink **1,000만+ 돌파**(2026말 1,800만, 매출 $12.3B=총 70%). Amazon Leo 331기 발사(217+ 궤도, 7/30 FCC 의무 24개월 연장). Rocket Lab Neutron Q4 2026 데뷔 목표, 5 Neutron+3 Electron 블록 계약(>$190M). [6/7 갱신]
 4. **로보틱스 양산 변곡점**: Figure 03 BotQ **시간당 1대** 생산 도달(6월). **NVIDIA-Unitree 파트너십**(6/1, Blackwell 탑재 H2 Plus). Boston Dynamics Atlas 현대/DeepMind 첫 출하(연 3만대, 2028). 중국 생산량 2026 **+94%**(Unitree+AgiBot ~80%). Goldman 2035 시장 **$38B로 상향**(기존 6배). Optimus V3 7~8월 공개·Q3 양산. [6/7 신규]
@@ -675,7 +701,7 @@ db_records: 788
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (788건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (818건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
