@@ -1,0 +1,301 @@
+#!/usr/bin/env python3
+"""
+재분석 자동 실행 — 2026-06-15 (7일 임계, 상한 20→10 클램핑) — 10종 BLIND 일괄 생성
+대상: XOM v6, WMT v6, V v6, VZ v6, VST v4, VRT v4, VIG v4, UNP v6, TLT v6, TIP v6
+- BLIND 모드: 이전 v{N-1} 절대 read 안 함 (specialist 에이전트가 _content.json 작성)
+- 가격은 analysis/{folder}_v{N}/data.json (사전 fetch_price.py 수집, 기준일 2026-06-12)
+- 출력: 종목당 6개 MD + HTML 리포트
+- 회차 보고: analysis/_reanalysis_runs/20260615_run2.md (run.md 는 동일자 USMV 1종 런이 선점)
+"""
+import json, os, sys
+from datetime import datetime
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from report_template import generate_report
+
+TODAY = "2026-06-15"
+YYYYMMDD = "20260615"
+RUN_MD = "20260615_run2"
+
+# ticker -> (folder_name, name_kr, next_v, prev_v_date)
+PLAN = {
+    "XOM": ("ExxonMobil",                   "엑손모빌",               6, "2026-06-07"),
+    "WMT": ("Walmart",                      "월마트",                 6, "2026-06-07"),
+    "V":   ("Visa",                         "비자",                   6, "2026-06-07"),
+    "VZ":  ("Verizon",                      "버라이즌",               6, "2026-06-07"),
+    "VST": ("VistraCorp",                   "비스트라",               4, "2026-06-07"),
+    "VRT": ("VertivHoldings",               "버티브 홀딩스",          4, "2026-06-07"),
+    "VIG": ("VanguardDividendAppreciation", "Vanguard 배당성장 ETF",  4, "2026-06-07"),
+    "UNP": ("UnionPacific",                 "유니온 퍼시픽",          6, "2026-06-07"),
+    "TLT": ("iSharesTreasury",              "iShares 20년+ 국채 ETF", 6, "2026-06-07"),
+    "TIP": ("iSharesTIPS",                  "iShares TIPS ETF",      6, "2026-06-07"),
+}
+
+
+def _fmt(v):
+    if isinstance(v, (int, float)):
+        return f"{v:,}"
+    return str(v)
+
+
+def make_md_files(ticker, folder, kr, nv, prev_date, c, d):
+    out_dir = f"analysis/{ticker}_{folder}_v{nv}"
+    cur = d.get("currency", "$")
+    prevv = nv - 1
+
+    company_md = f"""# {kr} ({ticker}) — 기업개요 & Moat (BLIND v{nv} 재분석)
+
+> **재분석 모드**: BLIND v{nv} (이전 v{prevv} 절대 read 안 함)
+> **재분석 일자**: {TODAY}
+> **데이터 기준일**: {d.get('date')}
+
+## Executive Summary
+
+{c['summary']}
+
+## Moat 평가: {c['moat_rating']}
+
+{c['moat_details']}
+
+## 산업 위치 + 경쟁 우위
+
+- **섹터**: {c['sector']}
+- **카테고리**: {c['category']}
+- **종합 등급**: {c['grade']} (스코어 {c['score']}/100)
+"""
+
+    financial_md = f"""# {kr} ({ticker}) — 재무 분석 (BLIND v{nv})
+
+> **BLIND 모드 — 이전 v{prevv} read 0건**
+
+## 최근 실적 + 재무 상태
+
+{c['financial']}
+
+## 밸류에이션
+
+{c['valuation']}
+
+## 가격 정보 ({d.get('date')} 기준)
+
+- 현재가 {cur}{d.get('current_price')} / ATR(14) {cur}{d.get('atr_14')} ({d.get('atr_pct')}%)
+- 52주 범위 {cur}{d.get('low_52w')} ~ {cur}{d.get('high_52w')}
+- 상세 data.json 참조
+"""
+
+    business_md = f"""# {kr} ({ticker}) — 사업/산업 분석 (BLIND v{nv})
+
+> **BLIND 모드 — 이전 v{prevv} read 0건**
+
+## 산업 동향 + 경쟁 구도 + 메가트렌드
+
+{c['business']}
+"""
+
+    momentum_md = f"""# {kr} ({ticker}) — 모멘텀 + 컨센서스 (BLIND v{nv})
+
+> **BLIND 모드 — 이전 v{prevv} read 0건**
+
+## 최근 모멘텀 + 컨센서스 + 수급
+
+{c['momentum']}
+
+## 컨센서스 표
+
+| 항목 | 값 |
+|------|-----|
+""" + "\n".join(f"| {k} | {v} |" for k, v in c['consensus']) + "\n"
+
+    risk_md = f"""# {kr} ({ticker}) — 리스크 분석 (BLIND v{nv})
+
+> **BLIND 모드 — 이전 v{prevv} read 0건**
+
+## 주요 리스크 (4개)
+
+"""
+    for r in c['risks']:
+        risk_md += f"""### {r['name']} ({r['level']})
+
+- **영향**: {r['impact']}
+- **상세**: {r['desc']}
+
+"""
+    risk_md += f"""## 리스크 종합
+
+{c['risk_summary']}
+"""
+
+    conf = c['confidence']
+    sc_md = f"""# {kr} ({ticker}) — 종합 스코어카드 (BLIND v{nv})
+
+> **재분석 v{nv}** — 이전 v{prevv} 비교 미포함 (Phase 2 reanalysis_runs/{RUN_MD}.md 참조)
+> **BLIND 모드 — 이전 v{prevv} read 0건**
+
+## 종합 평가
+
+- **종합 점수**: {c['score']}/100
+- **투자 등급**: {c['grade']}
+- **카테고리**: {c['category']}
+
+## 10항목 스코어카드
+
+| # | 항목 | 점수 | 가중 |
+|---|------|------|------|
+"""
+    for i, (n, s) in enumerate(c['scorecard_items'], 1):
+        sc_md += f"| {i} | {n} | {float(s):.1f}/10 | 10% |\n"
+
+    sc_md += f"""
+## 투자 전략
+
+{c['strategy']}
+
+## § Confidence Interval (95% CI)
+
+- **목표가 범위**: {cur}{_fmt(conf['target_low'])} ~ {cur}{_fmt(conf['target_high'])} (중심 {cur}{_fmt(conf['target_mid'])}, {conf['ci_pct']})
+- **스코어 ±밴드**: {conf['score_band']} (가정 변경 시 변동 폭)
+- **시나리오 분기**:
+  - **Bull case**: 목표가 {cur}{_fmt(conf['target_high'])}
+  - **Base case**: 목표가 {cur}{_fmt(conf['target_mid'])}
+  - **Bear case**: 목표가 {cur}{_fmt(conf['target_low'])}
+
+## § 약한 가정 3개 (Most Fragile Assumptions)
+
+본 결론을 뒤집을 수 있는 핵심 가정 3개:
+
+"""
+    for i, (assumption, impact) in enumerate(c['fragile_assumptions'], 1):
+        sc_md += f"{i}. **{assumption}**\n   - 반증 시 영향: {impact}\n\n"
+
+    sc_md += f"""## 카탈리스트 + 모니터링 포인트
+
+분석 본문 §3~5 참조. 핵심 KPI:
+- {c['risks'][0]['name']}
+- {c['risks'][1]['name']}
+
+---
+
+> 본 스코어카드는 **{TODAY} BLIND 재분석 v{nv}**입니다.
+> 이전 v{prevv} ({prev_date}) 와의 차이는 `analysis/_reanalysis_runs/{RUN_MD}.md` 비교표 참조.
+"""
+
+    files = {
+        f"{out_dir}/company.md": company_md,
+        f"{out_dir}/financial.md": financial_md,
+        f"{out_dir}/business.md": business_md,
+        f"{out_dir}/momentum.md": momentum_md,
+        f"{out_dir}/risk.md": risk_md,
+        f"{out_dir}/scorecard.md": sc_md,
+    }
+    for path, content in files.items():
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content)
+    return out_dir
+
+
+def make_html_report(ticker, folder, kr, nv, prev_date, c, d):
+    cur = d.get("currency", "$")
+    conf = c['confidence']
+    prevv = nv - 1
+    report_data = {
+        "ticker": ticker,
+        "name": f"{kr} ({folder})",
+        "date": TODAY,
+        "score": c["score"],
+        "grade": c["grade"],
+        "current_price": d["current_price"],
+        "currency": cur,
+        "market_cap": d.get("market_cap"),
+        "per": c.get("per", "N/A"),
+        "low52": d.get("low_52w"),
+        "high52": d.get("high_52w"),
+        "asset_type": c.get("asset_type", "주식"),
+        "stop_loss": d.get("stop_loss_2atr"),
+        "target_price": d.get("target_3atr"),
+        "atr": d.get("atr_14"),
+        "executive_summary": c["summary"],
+        "company_overview": c["summary"],
+        "moat_rating": c["moat_rating"],
+        "moat_details": c["moat_details"],
+        "financial_analysis": c["financial"],
+        "valuation": c["valuation"],
+        "momentum": c["momentum"],
+        "business_analysis": c["business"],
+        "scorecard_items": [(n, float(s)) for n, s in c["scorecard_items"]],
+        "risks": c["risks"],
+        "risk_summary": c["risk_summary"],
+        "strategy": c["strategy"],
+        "consensus_table": {
+            "headers": ["항목", "값"],
+            "rows": [[k, v] for k, v in c["consensus"]]
+        },
+        "extra_kpis": [
+            ("등급", c["grade"]),
+            ("재분석", f"v{nv} BLIND"),
+        ],
+        "custom_sections": [
+            {
+                "title": "§ Confidence Interval (95% CI)",
+                "content": (
+                    f"**목표가 범위**: {cur}{_fmt(conf['target_low'])} ~ {cur}{_fmt(conf['target_high'])}"
+                    f" (중심 {cur}{_fmt(conf['target_mid'])}, {conf['ci_pct']})\n\n"
+                    f"**스코어 ±밴드**: {conf['score_band']}\n\n"
+                    f"**시나리오 분기**:\n"
+                    f"- Bull case: {cur}{_fmt(conf['target_high'])}\n"
+                    f"- Base case: {cur}{_fmt(conf['target_mid'])}\n"
+                    f"- Bear case: {cur}{_fmt(conf['target_low'])}"
+                )
+            },
+            {
+                "title": "§ 약한 가정 3개 (Most Fragile Assumptions)",
+                "content": "\n\n".join([
+                    f"**{i+1}. {assum}**\n\n반증 시 영향: {impact}"
+                    for i, (assum, impact) in enumerate(c['fragile_assumptions'])
+                ])
+            },
+            {
+                "title": f"재분석 메타 (v{nv} BLIND)",
+                "content": (
+                    f"- **재분석 회차**: v{nv} (이전 v{prevv}, {prev_date})\n"
+                    f"- **모드**: BLIND (이전 v{prevv} read 0건)\n"
+                    f"- **임계 경과**: 8일 (7일 임계, 상한 20→10종 클램핑, 2026-06-15)\n"
+                    f"- **회차 보고**: `analysis/_reanalysis_runs/{RUN_MD}.md`"
+                )
+            }
+        ]
+    }
+    output_path = f"reports/{ticker}_{folder}_{YYYYMMDD}.html"
+    generate_report(report_data, output_path=output_path)
+    return output_path
+
+
+def main():
+    only = sys.argv[1:] if len(sys.argv) > 1 else list(PLAN.keys())
+    print(f"=== 재분석 자동 실행 — {TODAY} (7일 임계, 상한 10) BLIND — {len(only)}종 ===\n")
+    ok, fail = [], []
+    for ticker in only:
+        folder, kr, nv, prev_date = PLAN[ticker]
+        cpath = f"analysis/{ticker}_{folder}_v{nv}/_content.json"
+        dpath = f"analysis/{ticker}_{folder}_v{nv}/data.json"
+        if not os.path.exists(cpath):
+            print(f"  ⏸ {ticker}: _content.json 없음 — SKIP")
+            fail.append(ticker)
+            continue
+        try:
+            c = json.load(open(cpath, encoding="utf-8"))
+            d = json.load(open(dpath, encoding="utf-8"))
+            out_dir = make_md_files(ticker, folder, kr, nv, prev_date, c, d)
+            html = make_html_report(ticker, folder, kr, nv, prev_date, c, d)
+            print(f"[{ticker}] ✅ v{nv} MD(6) + HTML: {html}")
+            ok.append(ticker)
+        except Exception as e:
+            print(f"  ❌ {ticker}: FAILED — {e}")
+            import traceback; traceback.print_exc()
+            fail.append(ticker)
+    print(f"\n=== 완료 — 성공 {len(ok)} / 실패 {len(fail)} ===")
+    if fail:
+        print("실패:", ", ".join(fail))
+
+
+if __name__ == "__main__":
+    main()
