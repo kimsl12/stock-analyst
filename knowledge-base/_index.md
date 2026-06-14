@@ -34,7 +34,7 @@ lint_p2_count: 2
 
 > [해소 참조] `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소(valid_until 2026-06-19, PARTIAL).
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/13 모닝 갱신 완료(S&P 7,431·10Y 4.47%·VIX 19.14, valid_until 2026-06-14 — 오늘 만료, 다음 수집 대상).
+> [해소 참조] `market/daily_snapshot.md`는 6/14 이브닝 market-data-collector 갱신 완료(BTC $64,385·F&G 21·이란 서명 불확정 반영, valid_until 2026-06-17 — FOMC 발표일까지 유효).
 
 ---
 
