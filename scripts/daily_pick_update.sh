@@ -41,12 +41,25 @@ fi
 
 cd "$PROJECT_ROOT" || { log "ERROR: cd 실패"; exit 1; }
 
-# 2. 원격 최신화 (unstaged changes 자동 stash 처리, v3.22 P1-10 fail-fast)
-log "git pull --rebase --autostash origin main"
-if ! git pull --rebase --autostash origin main 2>&1; then
-  log "ERROR: git pull 실패 — 누적 충돌 위험 (silent state corruption 방지). deploy 중단."
-  notify_fail "git pull 실패 — 수동 확인 필요 (daily-pick.log)"
-  exit 1
+# 2. 원격 최신화
+#    [2026-06-15] 런타임 산출물(fetch/build 가 매번 재생성하는 git-tracked JSON)을 pull 전 정리.
+#    이들이 로컬·원격 양쪽에서 동시 변경돼 autostash pop 충돌 → 6/12~ launchd 연속 중단 사고
+#    (로그 "작업 폴더를 정방향 진행할 수 없습니다"). step 3 빌드가 어차피 재생성하므로 폐기 안전.
+git checkout -- web/src/data/ \
+  knowledge-base/macro/fred_snapshot.json \
+  knowledge-base/market/fear_greed.json \
+  knowledge-base/market/regime.json \
+  knowledge-base/portfolio/insider_signals.json 2>/dev/null || true
+
+export GIT_TERMINAL_PROMPT=0
+log "git pull --rebase --autostash origin main (timeout 120s)"
+if ! timeout 120 git pull --rebase --autostash origin main 2>&1; then
+  # 충돌/타임아웃 — 진행 중 rebase·stash 잔재 정리 후 로컬 데이터로 계속 (픽은 로컬 analysis/ 기반
+  # 결정적 생성, 최종 push 가 원격 동기화). signals_update.sh·algo_portfolio_sync.sh 와 동일 패턴.
+  log "WARN: git pull 실패/타임아웃 — 작업트리 복구 후 로컬 데이터로 빌드 계속"
+  git rebase --abort 2>/dev/null || true
+  git checkout -- web/src/data/ knowledge-base/ 2>/dev/null || true
+  notify_fail "daily_pick git pull 실패 — 로컬 데이터로 진행 (다음 회차 재동기화)"
 fi
 
 # 3. daily_pick.json + kb.json 재빌드 (past 필터 매일 재계산 — economic_calendar 등)
