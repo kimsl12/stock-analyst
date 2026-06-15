@@ -102,8 +102,7 @@ async function findLatestScorecard(ticker, name) {
 // ---------------------------------------------------------------------------
 // 3. scorecard.md 본문에서 핵심 정보 추출 (best-effort grep)
 // ---------------------------------------------------------------------------
-async function extractScorecardMeta(scorecardPath) {
-  const text = await readFile(scorecardPath, 'utf-8');
+export function extractScorecardMeta(text) {
   const out = {
     current_price: null,
     buy_price: null,
@@ -119,9 +118,25 @@ async function extractScorecardMeta(scorecardPath) {
   // 통화 추정 (₩ 또는 KRW 등장 → KRW)
   if (/₩|KRW|원\b/.test(text)) out.currency = 'KRW';
 
-  // 현재가 (다양한 패턴)
-  const cur = text.match(/현재가[:\s]*[*₩$]*([\d,.]+)/);
-  if (cur) out.current_price = Number(cur[1].replace(/,/g, ''));
+  // 현재가 — 통화 기호($/₩/원) 필수 [v3.34].
+  // 구 정규식 /현재가[:\s]*[*₩$]*([\d,.]+)/ 은 기호 0개 허용이라 "분할매수: 현재가 60%" 의
+  // 60(비중%)을 가격으로 오캡처했다 (TSM $424 → 60 사고). 공유 파서의 통화 문맥 원칙 적용 +
+  // 신형 압축 산문 "현 $588 부근"/"현재 $588" (META_v6 등 BLIND 재분석) 대응.
+  const curPatterns = [
+    /현재가[^\n|]*\|\s*\**\s*[$₩]\s?([\d,]+(?:\.\d+)?)/,        // 표 "| 현재가 | $424.04 |"
+    /현재가[^\n|]*\|\s*\**\s*([\d,]+(?:\.\d+)?)\s*(?:원|달러)/,  // 표 "| 현재가 | 180,000원 |"
+    /현재가[는은]?[:\s]*\**\s*[$₩]\s?([\d,]+(?:\.\d+)?)/,        // "현재가: $588"
+    /현재가[는은]?[:\s]*\**\s*([\d,]+(?:\.\d+)?)\s*(?:원|달러)/,  // "현재가 394.69달러" / "현재가 180,000원"
+    /현재\s*[$₩]\s?([\d,]+(?:\.\d+)?)/,                          // "현재 $588"
+    /현\s*[$₩]\s?([\d,]+(?:\.\d+)?)/,                            // "현 $588 부근" (압축)
+  ];
+  for (const re of curPatterns) {
+    const m = text.match(re);
+    if (m) {
+      const n = Number(m[1].replace(/,/g, ''));
+      if (Number.isFinite(n) && n > 0) { out.current_price = n; break; }
+    }
+  }
 
   // [v3.32] 손절·목표가 — lib/scorecard_parser 재사용 (통화 문맥 필수 패턴).
   // 구 정규식이 "종합 목표가: 12M 기준 $238" 의 "12" 를 TP 로 오캡처하던 사고 수정.
@@ -157,6 +172,25 @@ async function extractScorecardMeta(scorecardPath) {
         .map((b) => b.replace(/^[-•*]\s+/, '').replace(/\*\*/g, '').trim().slice(0, 140));
       break;
     }
+  }
+
+  // [v3.34] 신형 압축 카드 폴백 — 불릿이 없고 "## 투자 전략" 산문만 있는 경우 (META_v6 등).
+  // 한국어 종결("…다.") 단위로 문장 분리 → 앞 3문장을 추천 이유로.
+  if (out.reasons.length === 0) {
+    const strat = text.match(/##\s*투자\s*전략\s*\n+([\s\S]+?)(?=\n\s*##|\n\s*>|\n\s*---|$)/);
+    if (strat) {
+      const sentences = strat[1]
+        .replace(/\n+/g, ' ')
+        .split(/(?<=다\.)\s+/)
+        .map((s) => s.replace(/\*\*/g, '').trim())
+        .filter((s) => s.length > 10);
+      if (sentences.length > 0) out.reasons = sentences.slice(0, 3).map((s) => s.slice(0, 140));
+    }
+  }
+  // 그래도 비면 "카테고리" 한 줄이라도 (최소 컨텍스트)
+  if (out.reasons.length === 0) {
+    const cat = text.match(/[-*\s]*\*?\*?카테고리\*?\*?\s*[:：]\s*(.+)/);
+    if (cat) out.reasons = [cat[1].replace(/\*\*/g, '').trim().slice(0, 140)];
   }
 
   return out;
@@ -218,7 +252,7 @@ async function pickToday(candidates) {
   for (const c of pool) {
     const sc = await findLatestScorecard(c.ticker, c.name);
     if (!sc) continue;
-    const meta = await extractScorecardMeta(sc.path);
+    const meta = extractScorecardMeta(await readFile(sc.path, 'utf-8'));
 
     // [v3.32] 최신 스코어카드 점수로 재검증 — bootstrap 행은 구버전(재분석 전) 점수일 수 있음.
     // 현재 점수가 임계 미달이면 추천 부적격 → 다음 후보로 (VIG 사고: bootstrap 83.75 vs 실제 v3 74).
@@ -307,7 +341,10 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error('ERR:', err);
-  process.exit(1);
-});
+// 직접 실행 시에만 main() — import (테스트) 시에는 함수만 노출
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  main().catch((err) => {
+    console.error('ERR:', err);
+    process.exit(1);
+  });
+}
