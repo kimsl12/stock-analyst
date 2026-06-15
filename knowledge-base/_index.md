@@ -21,20 +21,21 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-14 (wiki-linter full 점검)**
+> **최종 갱신: 2026-06-14 (wiki-linter full 점검) / market KB 6/15 이브닝 갱신 반영**
 
 ⚠️ **P0 2건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 6일 경과)
 
 | 파일                            | 만료일     | 경과일 | 권장 조치                                                     |
 | ------------------------------- | ---------- | ------ | ------------------------------------------------------------- |
-| `industry/*.md` 18종            | 2026-06-08 | 6일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
-| `portfolio/model_portfolios.md` | 2026-06-08 | 6일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
+| `industry/*.md` 18종            | 2026-06-08 | 7일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
+| `portfolio/model_portfolios.md` | 2026-06-08 | 7일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 6일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. macro/market KB는 정상. 6/16~17 Warsh 첫 FOMC 브리핑 전 industry 재수집 강력 권장.
+> **브리핑 진행 가능 여부:** industry KB 만료 7일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/15 이브닝 갱신 완료(이란 평화협정 확정 반영). 6/17 Warsh 첫 FOMC 전 industry 재수집 강력 권장.
 
 > [해소 참조] `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소(valid_until 2026-06-19, PARTIAL).
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/14 이브닝 market-data-collector 갱신 완료(BTC $64,385·F&G 21·이란 서명 불확정 반영, valid_until 2026-06-17 — FOMC 발표일까지 유효).
+> [해소 참조] `market/daily_snapshot.md`는 6/15 이브닝 market-data-collector 갱신 완료(이란 평화협정 확정·닛케이 역대최고 69,317·KOSPI +5%·WTI $80.14 -5.6%·USD/KRW 1,508·BTC ~$65,974·F&G 20 반영, valid_until 2026-06-17).
+> [해소 참조] `market/economic_calendar.md`는 6/15 이브닝 갱신 완료(이란 협정 확정 + 6/15~19 FOMC 주간 최신화, valid_until 2026-06-19).
 
 ---
 
@@ -44,15 +45,16 @@ lint_p2_count: 2
 
 | 파일                           | 문제                                                                                          | 심각도 | 권장 조치                                                                           |
 | ------------------------------ | --------------------------------------------------------------------------------------------- | ------ | ----------------------------------------------------------------------------------- |
-| `market/daily_snapshot.md`     | ✅ **해소** — auto-trigger 후 kb-updater 재수집 완료 (valid_until 06-17 연장)                 | 해소   | 완료. S&P 7,431·VIX 19.14·10Y 4.45%·USD/KRW ~1,520, 6/12 금 종가 유지 (일요일 휴장) |
+| `market/daily_snapshot.md`     | ✅ **해소** — 6/15 이브닝 갱신 완료 (valid_until 06-17 유지)                                  | 해소   | 완료. 이란 평화협정 확정·닛케이 69,317 역대최고·KOSPI ~+5%·WTI $80.14·USD/KRW 1,508 반영 |
 | `market/correlation_matrix.md` | valid_until 2026-06-16 (D-2). 6/13 갱신                                                       | 중간   | 이브닝브리핑 또는 kb-updater 회전                                                   |
 | `market/surprise_index.md`     | valid_until 2026-06-17 (D-3). 6/13 갱신                                                       | 중간   | 이브닝브리핑 회전                                                                   |
-| `market/economic_calendar.md`  | valid_until 2026-06-19 (D-5). **6/16~17 FOMC 첫 Warsh 주재 직전** — 점도표·기자회견 반영 필요 | 중간   | FOMC 당일(6/17) 이후 즉시 재수집 권장                                               |
+| `market/economic_calendar.md`  | ✅ **해소** — 6/15 이브닝 갱신 완료 (valid_until 06-19 유지)                                  | 해소   | 완료. 이란 협정 확정 + 6/15~19 FOMC 주간 최신화 반영. FOMC 발표(6/17) 후 재수집 권장 |
 
 > [해소 2026-06-14] daily_snapshot → /KB점검 auto-trigger 후 kb-updater 즉시 재수집 완료(valid_until 06-17). 활성 P1 4→3.
 > [P0 승격 2026-06-14] industry 18종 + model_portfolios → 만료 6일 경과로 P0으로 이동.
 > [해소 참조 2026-06-07] correlation_matrix·surprise_index → 06-13 재갱신 완료(정상 주기).
 > [해소 참조 2026-06-12] economic_calendar → 06-13 재갱신(valid_until 06-19) 완료.
+> [해소 2026-06-15] daily_snapshot·economic_calendar → 6/15 이브닝 market-data-collector 갱신 완료. 이란 평화협정 확정 반영.
 
 ---
 
