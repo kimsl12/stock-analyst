@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AST 스페이스모바일 (ASTSpaceMobile) (ASTS) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>AST 스페이스모바일 (ASTSpaceMobile) (ASTS)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-17</div><div style="margin-top:8px"><span class="badge b-hold">중립</span> <span class="badge b-score">56/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$83.61</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$32.4B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">사전수익 단계로 PER 적용 불가(EPS 적자 -$1.42 전망). 대체지표: 시총 $32.4B ÷ FY2026 매출 가이던스 중간값 ~$175M = P/S 약 185배, EV/매출 약 150~190배(현금 $3.9B 차감 시). FY2025 실매출 $70.9M 대비로는 P/S ~457배 수준의 극단적 성장 프리미엄.</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$36.08~$133.86</div></div><div class="ki"><div class="kl">등급</div><div class="kv">중립</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v6 BLIND</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$58.81</div><div class="dn" style="font-size:13px">-29.7%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$120.81</div><div class="up" style="font-size:13px">+44.5%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="104" y="30" width="203" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="104" y1="26" x2="104" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="104" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$59</text><line x1="186" y1="24" x2="186" y2="52" stroke="var(--text)" stroke-width="3"/><text x="186" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$84</text><line x1="307" y1="26" x2="307" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="307" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$121</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $36</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $134</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $12.40 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>AST 스페이스모바일은 일반 스마트폰과 위성을 개조 없이 직접 연결하는 D2C(Direct-to-Device) 우주통신 기업으로, 여전히 사실상 사전수익(pre-revenue) 단계다. 핵심 마일스톤인 BlueBird 8·9·10 위성 3기가 2026년 6월 17일 새벽(EDT) Falcon 9으로 발사 예정이며, Block 2 하드웨어는 1세대 대비 약 2배 속도를 목표로 한다. FCC의 SCS(우주 보조 커버리지) 상용 인가, AT&T·Verizon·Vodafone 등 60여 개 MNO 파트너(합산 30억+ 가입자), 그리고 연말 기준 $3.9B+ 유동성을 확보한 점은 강점이나, 시총 $32.4B는 FY2026 매출 가이던스 $150~200M(컨센서스 ~$169M) 대비 EV/매출 약 150~190배에 달해 거의 모든 성공 시나리오가 선반영된 상태다. 현재가 $83.61는 애널리스트 평균 목표가($82~84)에 거의 수렴해 있고, $1B 전환사채·반복 ATM 발행으로 인한 희석 압력과 발사 실패·배치 지연 리스크가 공존한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,90.0 169.4,109.5 159.0,143.8 225.6,177.8 151.8,166.2 140.0,200.0 104.7,198.5 63.9,174.7 102.0,137.6 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업경쟁력/해자</text><circle cx="140.0" cy="90.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무안정성</text><circle cx="169.4" cy="109.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="159.0" cy="143.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="225.6" cy="177.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션매력도</text><circle cx="151.8" cy="166.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="200.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/지배구조</text><circle cx="104.7" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업전망</text><circle cx="63.9" cy="174.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크관리</text><circle cx="102.0" cy="137.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지속가능성</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업경쟁력/해자</td><td>6.0</td><td>/10</td></tr><tr><td>재무안정성</td><td>5.0</td><td>/10</td></tr><tr><td>수익성</td><td>2.0</td><td>/10</td></tr><tr><td>성장성</td><td>9.0</td><td>/10</td></tr><tr><td>밸류에이션매력도</td><td>2.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>5.0</td><td>/10</td></tr><tr><td>경영진/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>산업전망</td><td>8.0</td><td>/10</td></tr><tr><td>리스크관리</td><td>4.0</td><td>/10</td></tr><tr><td>ESG/지속가능성</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 56/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v3</td><td>2026-05-25</td><td>—</td><td>매수</td><td>—</td></tr><tr><td>v4</td><td>2026-06-01</td><td>—</td><td>매도</td><td>$130</td></tr><tr><td>v5</td><td>2026-06-08</td><td>—</td><td>—</td><td>—</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">Narrow</span></h2><p>AST 스페이스모바일은 일반 스마트폰과 위성을 개조 없이 직접 연결하는 D2C(Direct-to-Device) 우주통신 기업으로, 여전히 사실상 사전수익(pre-revenue) 단계다. 핵심 마일스톤인 BlueBird 8·9·10 위성 3기가 2026년 6월 17일 새벽(EDT) Falcon 9으로 발사 예정이며, Block 2 하드웨어는 1세대 대비 약 2배 속도를 목표로 한다. FCC의 SCS(우주 보조 커버리지) 상용 인가, AT&T·Verizon·Vodafone 등 60여 개 MNO 파트너(합산 30억+ 가입자), 그리고 연말 기준 $3.9B+ 유동성을 확보한 점은 강점이나, 시총 $32.4B는 FY2026 매출 가이던스 $150~200M(컨센서스 ~$169M) 대비 EV/매출 약 150~190배에 달해 거의 모든 성공 시나리오가 선반영된 상태다. 현재가 $83.61는 애널리스트 평균 목표가($82~84)에 거의 수렴해 있고, $1B 전환사채·반복 ATM 발행으로 인한 희석 압력과 발사 실패·배치 지연 리스크가 공존한다.</p><h3>Moat 상세</h3><p>ASTS의 해자는 '잠재적'이며 아직 완성되지 않은 Narrow 수준이다. 긍정 요소는 (1) 일반 스마트폰을 개조 없이 위성에 직접 연결하는 광대역 D2C 기술의 선도적 실증(BlueBird 1세대 98.9Mbps 피크), (2) FCC SCS 상용 인가와 최대 248기 위성 인가라는 규제 선점, (3) AT&T·Verizon·Vodafone·Rakuten·Google 등 60여 개 MNO와의 매출분배형 파트너십 네트워크, (4) Ligado 거래를 통한 45MHz 저중대역 스펙트럼 확보 추진, (5) 95% 수직통합 제조(월 6기 능력)다. 그러나 SpaceX Starlink Direct-to-Cell(DTC 위성 650기+, Gen2 100배 밀도)이라는 압도적 자본·발사 역량을 갖춘 경쟁자가 동일 시장을 빠르게 잠식 중이고, 네트워크 효과·전환비용 같은 구조적 진입장벽은 상용 매출이 본격화되기 전까지 검증되지 않는다. 스펙트럼·규제·파트너십이 일종의 진입장벽이나, 자본력 우위의 경쟁자 앞에서 지속가능성은 아직 입증 단계다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>재무는 사전수익 기업 중에서는 비교적 견조한 유동성을 갖췄다. 2025년 말 기준 현금·현금성·제한현금 및 유동성은 전환사채 발행과 ATM 잔여 한도를 포함한 프로포마로 $3.9B+에 달한다(Q1 2026 현금 $3.5B에서 확충). 매출은 FY2025 $70.9M, Q1 2026 $14.7M으로 초기 단계이며 FY2026 가이던스는 $150~200M(컨센서스 ~$169M)으로 +111~182% 성장을 제시한다. 그러나 대규모 위성 제조·발사 capex로 현금소진(burn)이 지속되고, EPS 손실은 -$0.88에서 -$1.42로 악화 전망이다. 자금조달 측면에서 2026년 2월 $1.075B 규모 2.25% 전환사채(2036 만기)를 발행해 약 $983.7M을 조달했고(11M+ Class A 전환 잠재 희석), 동시에 직접 주식발행 6.3M주(@$96.92)와 기존 전환사채 일부($296.5M) 매입으로 자본구조를 재편했다. 반복적 전환사채·ATM 의존은 향후 추가 희석의 구조적 위험이다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>밸류에이션은 본 분석의 가장 큰 약점이다. 시총 $32.4B는 FY2026 매출 가이던스 상단($200M)을 적용해도 P/S 약 162배, 컨센서스(~$169M) 기준으로는 약 192배로, 미국 성장주 전반은 물론 위성통신 동종군 대비로도 극단적이다. 이 멀티플은 (1) BlueBird 풀 컨스텔레이션(~248기) 배치 성공, (2) AT&T·Verizon SCS 상용 매출의 본격 램프, (3) 글로벌 60개 MNO 매출분배의 실현, (4) Ligado 스펙트럼 가치화라는 다년 시나리오가 모두 성공함을 전제로 한다. 현재가 $83.61가 애널리스트 평균 목표가($82~84, S&P 11명 'Hold')에 거의 수렴했다는 점은 시장이 단기 상승여력을 제한적으로 본다는 신호다. 즉 밸류 자체에는 매력이 없고, 오직 발사·배치·상용화 마일스톤이 가이던스를 초과 달성해야만 멀티플이 정당화되는 '실행 베팅' 구간이다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가 모멘텀은 단기 약세, 중장기 고변동이다. 기준일 종가 $83.61로 전일 대비 -4.52% 하락했고, 52주 범위 $36.08~$133.86의 중하단부(저점 대비 +132%, 고점 대비 -38%)에 위치한다. ATR 14가 $12.4(주가의 14.83%)로 변동성이 극단적으로 높아 일중 ±10% 이상 스윙이 일상적이다. 거래량 1,295만 주로 유동성은 풍부하다. 6/17 BlueBird 8/9/10 발사라는 즉각적 촉매를 앞두고 있어 '소문에 사고 뉴스에 파는(sell the news)' 변동성 또는 발사 성공 시 모멘텀 가속의 양방향 가능성이 모두 열려 있다. 다만 컨센서스 목표가가 현재가에 수렴해 있어 기관 수급 측면의 추가 상방 동력은 약화된 상태다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>투자의견</td><td>Hold ~ Moderate Buy 혼재 (S&P Global 11개사 기준 컨센서스 'Hold'). 강세론과 중립론이 첨예하게 갈리는 고논쟁주.</td></tr><tr><td>평균 목표주가</td><td>약 $82~84 (S&P 11개사 평균 $82.02, 일부 집계 $83.90). 현재가 $83.61에 거의 수렴 → 단기 상승여력 제한적.</td></tr><tr><td>목표가 범위</td><td>강세 시나리오 $100~130대 vs 보수 집계 ~$45 수준까지 광범위. 발사·상용화 가정에 따라 편차 극심.</td></tr><tr><td>상용서비스 일정</td><td>FCC SCS 상용 인가 확보. BB8/9/10(6/17) 성공 시 AT&T·Verizon SCS 상용 램프 가속. 2026 ~45기 배치 목표, 전국 D2C는 풀 컨스텔레이션(~248기) 이후.</td></tr><tr><td>현금소진/런웨이</td><td>유동성 $3.9B+ (연말 PF, 전환사채+ATM 포함). 대규모 capex 지속 소진하나 단기 자금 압박은 낮음. 단 반복 전환사채·ATM 발행으로 희석 누적.</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>산업 배경은 우호적이다. 위성-셀 직접연결(Satellite-to-Cell) 시장은 2026년 ~$4.5B에서 CAGR 16% 내외로 2030년 $8B+로 성장하며, 전 세계 휴대폰 음영지역(육상·해상)을 메우는 보조 커버리지 수요가 구조적이다. ASTS의 기술 실증은 진척 중으로, Block 1 위성으로 98.9Mbps 피크 데이터 속도를 달성했고 6/17 발사 예정인 Block 2(BB8/9/10)는 약 2배 속도를 목표한다. 2026년 ~45기 배치 목표와 월 6기 제조능력으로 컨스텔레이션 구축에 속도를 내고 있으며, BlueBird 7이 4월 Blue Origin New Glenn(NG-3) 2단 이상으로 디오빗 손실되자 발사 의존을 검증된 Falcon 9으로 전환한 점은 실행 리스크 완화 요인이다. 다만 경쟁 구도가 험난하다. SpaceX Starlink Direct-to-Cell은 이미 DTC 위성 650기+를 궤도에 올렸고 Gen2로 데이터 밀도 100배·V2 DTC(2027 5G급)를 추진하며, 자체 발사체로 비용·속도에서 압도한다. ASTS의 차별점은 대형 위상배열 안테나로 광대역(5G급) 성능을 노린다는 점이지만, 경쟁자의 자본·배치 속도 우위를 기술 우위로 상쇄할 수 있을지가 핵심 변수다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>ASTS는 고위험·고변동 사전수익 베팅이다. 가장 큰 위험은 두 축으로, (1) 흑자 전환 전까지 불가피한 반복적 희석(전환사채·ATM)이 주주가치를 지속 훼손하고, (2) 극단적 밸류(P/S ~190배)가 어떤 실행 차질에도 비대칭적으로 큰 조정을 부른다는 점이다. 여기에 SpaceX Starlink DTC라는 자본력 압도적 경쟁자, 미확정 Ligado 스펙트럼, 대형 안테나 기술 난제가 겹친다. 반대로 발사·상용화 마일스톤이 순차 달성되면 60개 MNO·30억 가입자 잠재시장에서 폭발적 재평가가 가능한 양극단 자산이다. ATR 14.83%의 변동성을 견딜 수 있는 자금에서만, 그리고 손절 규율을 전제로만 접근해야 한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">주식 희석 / 반복 자금조달</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">실행 / 배치 지연 리스크</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">기술 실증 / 안테나 전개 리스크</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">경쟁 (Starlink DTC) / 스펙트럼</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>주식 희석 / 반복 자금조달</strong> (발생: 높음, 영향: 주당가치 지속 훼손 + 발행 시 급락)<br><span style="color:var(--sub);font-size:13px">위성 제조·발사 capex 충당을 위해 2026년 2월 $1.075B 전환사채(11M+ 주 전환 잠재)와 반복 ATM·직접 주식발행에 의존. 전환사채 발행 발표 시 -9.9% 급락 전례. 흑자 전환 전까지 추가 발행이 구조적으로 불가피해 주주가치 희석 압력 상존.</span></div><div class="ri rl"><strong>실행 / 배치 지연 리스크</strong> (발생: 높음, 영향: 가이던스 미달 + 멀티플 디레이팅)<br><span style="color:var(--sub);font-size:13px">FY2026 매출 가이던스($150~200M)와 2026 ~45기 배치 목표 달성이 BlueBird 연속 발사 성공에 달려 있음. 6/17 BB8/9/10 Falcon 9 발사 실패·전개 불량 시 2026 배치 목표 직접 타격. 극단적 밸류(P/S ~190배)는 어떤 지연·미달에도 큰 폭의 조정으로 반응.</span></div><div class="ri rl"><strong>기술 실증 / 안테나 전개 리스크</strong> (발생: 중간, 영향: 성능 미달 시 상용화 신뢰 훼손)<br><span style="color:var(--sub);font-size:13px">대형 위상배열 안테나의 궤도상 전개·열관리·빔포밍이 핵심 기술 난제. BB7은 4월 발사체(New Glenn 2단) 이상으로 디오빗 손실. Block 2의 ~2배 속도·안정적 궤도 운용이 실측으로 입증돼야 SCS 상용 신뢰가 확보됨. 실측 미달 시 MNO 파트너 매출분배 실현 지연.</span></div><div class="ri rl"><strong>경쟁 (Starlink DTC) / 스펙트럼</strong> (발생: 높음, 영향: 시장점유·가격결정력 잠식)<br><span style="color:var(--sub);font-size:13px">SpaceX Starlink Direct-to-Cell이 DTC 위성 650기+ 운용, Gen2 100배 밀도·자체 발사 비용우위로 동일 D2C 시장을 빠르게 선점 중. ASTS는 자본·배치 속도에서 열위. 또한 Ligado 45MHz 스펙트럼 거래($550M, $420M 기지급)는 규제 승인·Inmarsat 소송에 의존해 미확정 → 스펙트럼 확보 실패 시 광대역 경쟁력 약화.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>고위험 투기적 성장주로, 포트폴리오 내 소액 위성(satellite) 비중(예: 위험자본의 3~5% 이내)으로만 접근할 것을 권한다. 현재가 $83.61는 컨센서스 평균 목표가에 수렴해 밸류 매력이 없으므로, 신규 진입은 (1) 6/17 BlueBird 발사 성공·전개 확인 후, 또는 (2) 변동성에 따른 의미 있는 조정(예: $60~70대) 시 분할 매수가 합리적이다. 리스크 관리가 절대적으로 중요하다. ATR 14가 $12.4로, 2ATR 손절가는 약 $58.8(-30%), 3ATR 목표는 약 $120.8(+45%)이다. 단 변동성이 워낙 커 표준 2ATR 손절은 잦은 휩쏘에 노출되므로, 발사 결과·분기 가이던스 같은 펀더멘털 트리거 기반 손절(예: 발사 실패·배치 목표 하향 시 무조건 비중 축소)을 병행해야 한다. 보유자는 발사 성공 후 'sell the news' 변동성에 일부 차익 실현으로 대응하고, 추가 자금조달(전환사채/ATM) 공시에 따른 희석 충격을 비중 조절 신호로 삼을 것. 흑자 전환·SCS 상용 매출 본격화 전까지는 매수 후 방치(buy-and-hold)가 아닌 적극적 리스크 관리 모드로 운용한다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $50 ~ $125 (중심 $86, ±44%)
+
+**스코어 ±밴드**: ±9 pt
+
+**시나리오 분기**:
+- Bull case: $125
+- Base case: $86
+- Bear case: $50</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. BlueBird 8/9/10(6/17)을 비롯한 2026년 ~45기 배치가 일정대로 성공한다**
+
+반증 시 영향: 발사 실패·전개 불량 시 FY2026 가이던스 미달 + P/S ~190배 멀티플 급격 디레이팅으로 30~50% 조정 가능
+
+**2. AT&T·Verizon 등 MNO와의 SCS 상용 매출분배가 2026~2027년 본격 램프된다**
+
+반증 시 영향: 상용화 지연·매출분배 비율 열위 시 $150~200M 가이던스 및 장기 매출 모델 붕괴, 극단적 밸류 정당화 불가
+
+**3. 반복적 전환사채·ATM에도 희석 속도가 관리 가능하며 추가 대규모 자금조달 없이 컨스텔레이션을 완성한다**
+
+반증 시 영향: 발사 차질로 capex가 초과되면 추가 대규모 희석 발행 → 주당가치 추가 훼손 및 신뢰 약화</div>
+<div class="sec"><h2>재분석 메타 (v6 BLIND)</h2>- **재분석 회차**: v6 (이전 v5, 2026-06-08)
+- **모드**: BLIND (이전 v5 read 0건)
+- **임계 경과**: 9일 (7일 임계, 상한 20→10종 클램핑, 2026-06-17)
+- **회차 보고**: `analysis/_reanalysis_runs/20260617_run.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-17 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="ASTS_ASTSpaceMobile_20260617.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
