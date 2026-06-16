@@ -21,21 +21,21 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-14 (wiki-linter full 점검) / market KB 6/15 이브닝 갱신 반영**
+> **최종 갱신: 2026-06-16 (market-data-collector 이브닝 갱신 반영)**
 
 ⚠️ **P0 2건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 6일 경과)
 
 | 파일                            | 만료일     | 경과일 | 권장 조치                                                     |
 | ------------------------------- | ---------- | ------ | ------------------------------------------------------------- |
-| `industry/*.md` 18종            | 2026-06-08 | 7일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
-| `portfolio/model_portfolios.md` | 2026-06-08 | 7일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
+| `industry/*.md` 18종            | 2026-06-08 | 8일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
+| `portfolio/model_portfolios.md` | 2026-06-08 | 8일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 7일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/15 이브닝 갱신 완료(이란 평화협정 확정 반영). 6/17 Warsh 첫 FOMC 전 industry 재수집 강력 권장.
+> **브리핑 진행 가능 여부:** industry KB 만료 8일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/16 이브닝 갱신 완료(KOSPI 8,718·KOSDAQ 1,019·닛케이 69,367·WTI $80.47·Gold $4,358·BTC $65,845·F&G 16 반영). 6/17 FOMC 발표 후 즉시 재수집 필요.
 
 > [해소 참조] `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소(valid_until 2026-06-19, PARTIAL).
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/15 이브닝 market-data-collector 갱신 완료(이란 평화협정 확정·닛케이 역대최고 69,317·KOSPI +5%·WTI $80.14 -5.6%·USD/KRW 1,508·BTC ~$65,974·F&G 20 반영, valid_until 2026-06-17). 6/16 모닝 재갱신 완료(S&P 7,554.29 +1.65%·NASDAQ 26,683.94 +3.07%·KOSPI 8,545.98 +5.20%·WTI $79.82 $80 하회·Gold $4,308·BTC ~$66,521·F&G 20, 6/15 ET 종가 기준).
-> [해소 참조] `market/economic_calendar.md`는 6/15 이브닝 갱신 완료(이란 협정 확정 + 6/15~19 FOMC 주간 최신화, valid_until 2026-06-19).
+> [해소 참조] `market/daily_snapshot.md`는 6/16 이브닝 market-data-collector 갱신 완료(KOSPI 8,718.16 +2.01%·KOSDAQ 1,019.43 -1.41%·닛케이 69,367 +0.07%·WTI $80.47·Gold $4,357.93·BTC $65,845·F&G 16 극단공포·S&P 선물 +0.46% 프리마켓 반영, valid_until 2026-06-17).
+> [해소 참조] `market/economic_calendar.md`는 6/16 이브닝 갱신 완료(FOMC 1일차 진행중 반영 + 6/17 소매판매·FOMC 결정·Warsh 기자회견 일정 최신화, valid_until 2026-06-20).
 
 ---
 
