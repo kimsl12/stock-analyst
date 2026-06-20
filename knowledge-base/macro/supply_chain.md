@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-13
-valid_until: 2026-07-13
+updated: 2026-06-20
+valid_until: 2026-07-20
 category: macro
 sources:
   [
@@ -8,18 +8,31 @@ sources:
     "Container News",
     "Shipping Telegraph",
     "FreightWaves",
+    "SAFETY4SEA",
     "Lloyd's List",
     "HandyBulk",
     "Baltic Exchange",
     "Investing.com",
     "KuCoin",
     "tradingeconomics",
+    "DiscoveryAlert",
     "The Hill",
     "Axios",
     "CNBC",
     "BBC",
+    "NPR",
+    "PBS NewsHour",
+    "NBC News",
+    "Business Standard",
+    "RFE/RL",
+    "Britannica",
+    "Deccan Herald",
+    "TechTimes",
     "House of Commons Library",
     "Seatrade Maritime",
+    "SupplyChainBrain",
+    "gCaptain",
+    "Sourcing Journal",
     "ING THINK",
     "Zencargo",
     "lines.com",
@@ -30,28 +43,31 @@ sources:
     "East Asia Forum",
     "rareearthexchanges.com",
     "rare-earth-mining.com",
+    "S&P Global",
     "Crux Investor",
     "Goldman Sachs",
     "Mining.com",
     "Bloomberg",
     "MexicoBusiness",
-    "DiscoveryAlert",
     "White & Case",
     "PwC",
     "Congress.gov",
+    "Sprott",
     "TrendForce",
     "Gartner",
     "Astute Group",
     "Tom's Hardware",
     "SemiWiki",
-    "FinancialContent",
+    "Network World",
     "Tech-Insider",
-    "TechTimes",
     "Yahoo Finance",
+    "Investing.com",
     "Atlantic Council",
     "GingerControl",
-    "ustariffrates",
     "octopart",
+    "tariffstool",
+    "American Action Forum",
+    "Tradlinx",
     "HSF Kramer",
     "Mondaq",
     "autonocion",
@@ -61,13 +77,11 @@ sources:
     "ITIF",
     "Holland & Knight",
     "Skadden",
-    "BDO",
+    "AZ Tech Council",
+    "NIST",
     "CRS",
     "IoT Analytics",
-    "pv-magazine",
-    "evlithium",
     "Global LNG Hub",
-    "lngpriceindex",
     "FAO",
     "World Bank",
     "WFP",
@@ -77,7 +91,7 @@ sources:
     "GAO",
   ]
 confidence: high
-last_synced_from_db: 2026-06-13
+last_synced_from_db: 2026-06-20
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -90,62 +104,72 @@ last_synced_from_db: 2026-06-13
 
 ## ★ CURRENT ★
 
+### 0. 이번 주 헤드라인 (6/20 갱신) — 호르무즈 MOU 정식 서명 → 통항 재개 개시
+
+- **6/17 미·이란 MOU 정식 서명 + 호르무즈 통항 재개 개시.** 6/14 발표→6/17 제네바 서명(파키스탄 중재). 무톨(toll-free) 통항 + 미 해군 봉쇄 해제 + 다전선 휴전(레바논 포함). **선박 추적 데이터상 상업 통항량 급증.** 기뢰제거는 30일 내 완료 조건. [NPR, Axios, NBC, RFE/RL, Business Standard]
+- **유가 급락: Brent ~$80, 주간 -8.5%.** 연중 $110+ 고점서 호르무즈 공급 복귀 기대로 2026 피크 대비 -20%. [Deccan Herald, CNBC, tradingeconomics]
+- **단, 잔존 리스크 3종:** (1) Vance 부통령 6/19 제네바 핵협상 트립 "logistics" 사유 연기, (2) Tehran의 호르무즈 통항 **보험 의무화** 언급(현재 무료→유료 가능), (3) 60일 협상 윈도우(제재 완화·핵)가 미해결. 단기 재봉쇄 꼬리위험 잔존. [Deccan Herald, House of Commons Library]
+- **컨테이너 운임 18개월 최고 vs 벌크 2026 저점 — 디커플링 심화.** WCI $3,969(+12% WoW, 18개월 최고) vs BDI 2,771(9연속 하락, 2026 저점). [Drewry 06/18, HandyBulk, Investing.com]
+
+---
+
 ### 1. 물류 및 해운 운임
 
-#### 1-1. 컨테이너 운임 지수 현황 — 6월 피크시즌 상승 지속
+#### 1-1. 컨테이너 운임 지수 현황 — 6월 피크시즌 + 7/1 벙커유 선수요로 18개월 최고
 
-| 지수               | 최신 수치        | 기준일     | 추세        | 비고                                                                                                       |
-| ------------------ | ---------------- | ---------- | ----------- | ---------------------------------------------------------------------------------------------------------- |
-| Shanghai-Rotterdam | **$3,768**/40ft  | 2026.06.11 | **+5% WoW** | 6/4 $3,433(+23%) → 6/11 $3,768(+5%). 피크시즌 상승 지속 [Drewry 06/11, Container News, Shipping Telegraph] |
-| WCI 종합           | **+5% WoW**      | 2026.06.11 | 상승        | 6/4 WCI +23% 급등 후 6/11 추가 +5%. Transpacific+Asia-Europe 동반 [Drewry 06/11]                           |
-| Shanghai-Genoa     | **~$5,100**/40ft | 2026.06.11 | 강세 유지   | 지중해 노선 $5,000+ 유지 [Drewry, FreightWaves]                                                            |
-| Shanghai-LA        | **~$2,300**/40ft | 2026.06.11 | 완만 상승   | 태평양 서부 노선 [Drewry]                                                                                  |
-| Shanghai-NY        | **~$4,300**/40ft | 2026.06.11 | 완만 상승   | 태평양 동부 노선 [Drewry]                                                                                  |
+| 지수               | 최신 수치         | 기준일     | 추세         | 비고                                                                                                |
+| ------------------ | ----------------- | ---------- | ------------ | --------------------------------------------------------------------------------------------------- |
+| Shanghai-Rotterdam | **$4,342**/40ft   | 2026.06.18 | **+15% WoW** | 6/11 $3,768(+5%) → 6/18 $4,342(+15%). 피크시즌 + 7/1 벙커유 조정 선수요 [Drewry 06/18, SAFETY4SEA]  |
+| **WCI 종합**       | **$3,969**/40ft   | 2026.06.18 | **+12% WoW** | 6/11 $3,549(+3%) → 6/18 $3,969(+12%). **18개월 최고**. Transpacific+Asia-Europe 동반 [Drewry 06/18] |
+| Shanghai-Genoa     | **~$5,000+**/40ft | 2026.06.18 | 강세 유지    | 지중해 노선 강세 유지 [Drewry, FreightWaves]                                                        |
+| Shanghai-LA        | 완만 상승         | 2026.06.18 | 완만 상승    | 태평양 서부 노선 [Drewry]                                                                           |
+| Shanghai-NY        | 완만 상승         | 2026.06.18 | 완만 상승    | 태평양 동부 노선 [Drewry]                                                                           |
 
-**운임 방향성 (6/13 갱신):** **아시아-유럽 피크시즌 상승 지속** -- Shanghai-Rotterdam **$3,768(+5% WoW)**으로 6/4 +23% 급등에 이어 6/11 추가 상승. Drewry "향후 수주간 추가 상승압력" 전망 유지. 4대 드라이버 불변: (1) **6월 조기 피크시즌**, (2) **7월 미국 관세변경 선수요(pull-forward)** -- Section 122 7/24 만료+301 신규관세 임박이 부킹 당김, (3) **2026 FIFA 월드컵 화물**, (4) **홍해 우회 지속**으로 운송시간 연장→조기 발주. 5/28 이란-미국 잠정합의 진전이나 Trump 미서명+홍해 후티 공격 잔존으로 단기 운임 하방 제한. [Drewry 06/11, Container News, Shipping Telegraph, FreightWaves]
+**운임 방향성 (6/20 갱신):** **아시아-유럽 피크시즌 상승 가속 — WCI 종합 18개월 최고($3,969, +12% WoW)** -- 6/11 $3,549→6/18 $3,969로 상승폭 확대(+3%→+12%). Shanghai-Rotterdam $4,342(+15%). Drewry "수주간 추가 상승압력" 유지. 4대 드라이버 불변: (1) **6월 조기 피크시즌**, (2) **7월 미국 관세변경 선수요(pull-forward)** -- Section 122 7/24 만료+301 신규관세 임박이 부킹 당김, (3) **7/1 벙커유(bunker fuel) 조정 선수요**, (4) **홍해 우회 지속**으로 운송시간 연장→조기 발주. **6/17 호르무즈 MOU 서명이 운임에 즉각 영향 없음** -- 컨테이너 노선(아시아-유럽)은 홍해/수에즈가 변수이며 호르무즈는 원유·LNG·벌크 경로. 홍해 정상화(연말 추정)가 컨테이너 운임 정상화의 핵심 변수. [Drewry 06/18, SAFETY4SEA, Container News, FreightWaves]
 
-#### 1-1b. 벌크선 운임 지수 — BDI 8연속 하락 2026 저점 (컨테이너와 디커플링 심화)
+#### 1-1b. 벌크선 운임 지수 — BDI 9연속 하락 2026 저점 (컨테이너와 디커플링 심화, 단 YoY +59%)
 
-| 지수               | 최신 수치   | 기준일     | 추세                               | 비고                                                          |
-| ------------------ | ----------- | ---------- | ---------------------------------- | ------------------------------------------------------------- |
-| **BDI (발틱운임)** | **2,818pt** | 2026.06.09 | **-3.36%, 8연속 하락 (2026 최저)** | 5월 고점 3,226서 -13% 반락 [HandyBulk, Investing.com, KuCoin] |
-| Capesize (BCI)     | **4,441pt** | 2026.06.09 | **-5.89%** (지수 견인)             | 철광석·석탄 대형선 급락 [HandyBulk, Investing.com]            |
-| Panamax (BPI)      | 약세        | 2026.06.09 | 하락 동반                          | 곡물·석탄 중형선. Supramax만 소폭 반등 [HandyBulk, KuCoin]    |
+| 지수               | 최신 수치   | 기준일     | 추세                              | 비고                                                                                                  |
+| ------------------ | ----------- | ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **BDI (발틱운임)** | **2,771pt** | 2026.06.10 | **-1.7%, 9연속 하락 (2026 최저)** | 6/9 2,818(저점)→6/10 2,771. 5월 고점 3,226서 -14%. **단 YoY +59%** [HandyBulk, Investing.com, KuCoin] |
+| Capesize (BCI)     | **4,441pt** | 2026.06.09 | **-5.89%** (지수 견인)            | 철광석·석탄 대형선 급락 [HandyBulk, DiscoveryAlert]                                                   |
+| Panamax (BPI)      | **2,205pt** | 2026.06.10 | **-0.59%**                        | 곡물·석탄 중형선 약세 [HandyBulk, Investing.com]                                                      |
+| Supramax (BSI)     | **1,614pt** | 2026.06.10 | **+1.13%** (유일 반등)            | 소형선만 소폭 반등 [HandyBulk, KuCoin]                                                                |
 
-**벌크 방향성 (6/13 갱신):** **BDI 2,818pt로 8연속 하락 + 2026 저점 경신** -- 5월 고점 3,226서 -13% 반락, Capesize 4,441(-5.89%)이 지수 급락 견인. **컨테이너(피크시즌 +5%) vs 드라이벌크(2026 저점) 디커플링 심화**. 중국 철강 계절적 둔화+석탄 공급 증가로 철광석·석탄 실수요 약화. 컨테이너는 소비재 피크시즌, 벌크는 원자재 실수요로 사이클 비동조 지속. [HandyBulk 06/05, Investing.com, KuCoin, tradingeconomics]
+**벌크 방향성 (6/20 갱신):** **BDI 2,771pt로 9연속 하락 + 2026 저점 경신** -- 5월 고점 3,226서 -14% 반락, Capesize 4,441(-5.89%)이 지수 급락 견인, Supramax(+1.13%)만 반등. **컨테이너(18개월 최고) vs 드라이벌크(2026 저점) 디커플링 심화**. 중국 철강 계절적 둔화+석탄 공급 증가로 철광석·석탄 실수요 약화. **단 BDI는 여전히 YoY +59%로 구조적 수요 붕괴는 아님**(계절적 조정). 컨테이너는 소비재 피크시즌+관세 선수요, 벌크는 원자재 실수요로 사이클 비동조 지속. [HandyBulk 06/05~10, Investing.com, KuCoin, DiscoveryAlert, tradingeconomics]
 
-#### 1-2. 호르무즈 해협 위기 (2026.02.28~ → 5/28 60일 MOU 잠정합의, Trump 미서명 지속)
+#### 1-2. 호르무즈 해협 — 6/17 MOU 서명 + 통항 재개 개시 (정상화 경로 진입, 잔존 리스크)
 
-| 항목                       | 현황                                                                                                                                          | 출처                                   |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| 전쟁 발발                  | 2026.02.28 미국+이스라엘 이란 공습, 하메네이 사망                                                                                             | Wikipedia, CNBC                        |
-| 이중봉쇄                   | 미 해군 이란 봉쇄(4/13~) + 이란 호르무즈 통제. "이중봉쇄" 대치                                                                                | CNN, Wikipedia                         |
-| **주간 통항**              | **여전히 매우 저조** (전쟁 전 120척/일 대비). 통항 회복 미확인                                                                                | House of Commons Library, Lloyd's List |
-| **5/28 60일 MOU 잠정합의** | **60일 휴전연장+호르무즈 무톨(no tolls) 재개방+이란 기뢰제거+미국 항구봉쇄 해제+이란 원유 자유판매+핵 협상 프레임워크.** Witkoff+Kushner 교섭 | The Hill, Axios, BBC, CNBC             |
-| **Trump 미서명 (지속)**    | MOU 최종 문안 마무리 중, **Trump 서명 대기**. 통항 회복 전제는 서명+기뢰제거                                                                  | The Hill, House of Commons Library     |
-| **핵심 걸림돌**            | **이란 영해 톨링(tolling) 시스템** -- Rubio 국무장관 "이란 통행료 부과 시 외교 합의 불가능". 영해 주권 vs 무톨 자유항행 충돌                  | House of Commons Library, The Hill     |
-| 보험료                     | 선가 대비 **1~5%** ($100M 선박 기준 ~$5M)                                                                                                     | Al Jazeera 04/28                       |
+| 항목                   | 현황                                                                                                                                             | 출처                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| 전쟁 발발              | 2026.02.28 미국+이스라엘 이란 공습, 하메네이 사망. 이후 이란 호르무즈 봉쇄(세계 원유 ~20% 경로)                                                  | Britannica, CNBC                        |
+| **6/14 합의 발표**     | Trump Truth Social 발표 + 이란 SNSC 확인. 60일 휴전 연장 + 호르무즈 재개방                                                                       | NPR, Al Jazeera, Axios                  |
+| **6/17 MOU 정식 서명** | **제네바 서명(파키스탄 중재). 3대 핵심: 무톨(toll-free) 통항권 + 미 해군 봉쇄 해제 + 다전선 휴전(레바논 포함)**                                  | Business Standard, TechTimes, NBC       |
+| **통항 재개 개시**     | **6/19 서명 후 통항 재개 시작 — 선박 추적상 상업 통항량 급증.** 기뢰제거 먼저, **30일 내 완료** 조건                                             | RFE/RL, Deccan Herald, NbC              |
+| 상업 운항 정상화 시점  | **수주~수개월** — 기뢰제거 속도 + 선사·보험사 복귀 의향에 따라. 전쟁 전 120척/일 수준 회복 미확인                                                | TechTimes, House of Commons Library     |
+| **잔존 리스크 (3종)**  | **(1) Vance 6/19 제네바 핵협상 트립 logistics 사유 연기, (2) Tehran 호르무즈 보험 의무화 언급(현재 무료→유료 가능), (3) 60일 협상윈도우 미해결** | Deccan Herald, House of Commons Library |
+| 보험료                 | 선가 대비 1~5% 잔존. 보험사 재인수·선사 복귀에 수개월 소요                                                                                       | Al Jazeera                              |
 
-**핵심 전환 (6/13 갱신):** **5/28 60일 MOU 잠정합의는 진전이나 Trump 미서명 지속 + 톨링 시스템이 최대 걸림돌** -- (1) **MOU 프레임워크**(호르무즈 무톨 재개방+기뢰제거+원유 자유판매+핵협상)는 진전이나 **Trump 최종 서명 대기**, (2) **이란 영해 톨링 시스템이 핵심 쟁점** -- Rubio "이란 통행료 부과 시 합의 불가능"으로 영해 주권 vs 무톨 자유항행 충돌, (3) **통항은 여전히 매우 저조** -- 휴전 중이나 실제 통항 회복은 미확인, (4) **서명해도 정상화 시차**: 기뢰제거+ 보험 재인수·선사 복귀에 수개월→실질 정상화 연내 불확실. [The Hill, Axios, BBC, CNBC, House of Commons Library]
+**핵심 전환 (6/20 갱신):** **호르무즈가 봉쇄→정상화 경로 진입 — 6/17 MOU 서명 + 통항 재개 개시가 결정적 전환** -- (1) **6/17 제네바 서명으로 MOU 확정**(무톨 통항+해군봉쇄해제+다전선휴전), 종전 "Trump 미서명"이 해소됨, (2) **선박 추적상 통항량 급증** -- 봉쇄 사실상 종료, 유가 즉각 반응(주간 -8.5%, Brent ~$80), (3) **그러나 완전 정상화엔 시차** -- 기뢰제거 30일 + 보험 재인수·선사 복귀 수개월, (4) **잔존 꼬리위험 3종**: Vance 핵협상 트립 연기(logistics)+Tehran 보험 톨링 시도+60일 협상 윈도우 미해결로 단기 재봉쇄 가능성 완전 소거 안 됨. **종전 톨링(tolling) 이슈는 무톨 통항권으로 일단 합의됐으나, Tehran이 "보험 의무화"로 우회 시도 가능성이 새 변수.** [NPR, Axios, NBC, RFE/RL, Business Standard, Deccan Herald, House of Commons Library]
 
-**시나리오 재조정 (6/13):**
+**시나리오 재조정 (6/20):**
 
-- **(Bull - 30%)** Trump 서명+60일 내 호르무즈 재개방 개시+톨링 이슈 해소→통항 회복, 운임·에너지 프리미엄 완화
-- **(Base - 45%)** 서명이나 이행 지연(이란 영해 톨링+기뢰제거)→부분 재개방+통항 저조 지속
-- **(Bear - 25%)** 합의 결렬(톨링·주권·핵 이견)→호르무즈 재폐쇄, 에너지 운임 급등
-- _변경: 6/13 톨링 시스템이 핵심 걸림돌로 부각, Trump 미서명 장기화. 분기 가중치 유지._
+- **(Bull - 45%, ↑)** 기뢰제거 30일 내 완료 + 보험·선사 복귀 가속→통항 정상화, 운임·에너지 프리미엄 완화. _6/17 서명+통항재개로 상향(종전 30%)_
+- **(Base - 40%)** 통항 재개되나 기뢰제거·보험 재인수 지연→부분 정상화, 에너지 프리미엄 점진 완화
+- **(Bear - 15%, ↓)** 60일 협상 결렬 or Tehran 보험 톨링 강행→재봉쇄, 에너지·운임 급등. _서명·통항재개로 하향(종전 25%)_
+- _변경: 6/17 MOU 서명 + 통항 재개로 Bull 30%→45%, Bear 25%→15%. 정상화 경로 진입을 반영._
 
-#### 1-3. 수에즈 운하 및 홍해 위기
+#### 1-3. 수에즈 운하 및 홍해 위기 — Maersk 2년만 첫 통과(점진적), 케이프 우회 디폴트 지속
 
-| 항목             | 현황                                                                           | 출처                          |
-| ---------------- | ------------------------------------------------------------------------------ | ----------------------------- |
-| 수에즈 통과 톤수 | 전쟁 전 대비 **여전히 대폭 하회** (악화)                                       | lines.com, S&P Global         |
-| 홍해 노선        | **cautious experimentation** -- 일부 선사 제한적 시범 운항(ME11 2월 재개) 그쳐 | Seatrade, ING, Container News |
-| 선사 대응        | Maersk·MSC·Hapag-Lloyd·CMA CGM 주요 노선 **희망봉 우회 지속**                  | Seatrade Maritime             |
-| 복귀 전망        | **2026년 내 대규모 복귀 불가능** (예측시장 90.5% NO)                           | lines.com, ING, Zencargo      |
-| 후티 위협        | 가자 휴전·이란전 연동 -- 휴전 붕괴/이란전 확대 시 공격 재개 경고               | Container News, Seatrade      |
+| 항목               | 현황                                                                                  | 출처                       |
+| ------------------ | ------------------------------------------------------------------------------------- | -------------------------- |
+| 수에즈 통과 톤수   | 전쟁 전 대비 **여전히 대폭 하회**                                                     | lines.com, S&P Global      |
+| **Maersk 첫 통과** | **2년만(2023.12 이후) 홍해/바브엘만데브 첫 통과 — 단 "stepwise approach", 제한 운항** | SupplyChainBrain, gCaptain |
+| 주요 선사 디폴트   | **Maersk·MSC·Hapag-Lloyd 케이프 우회를 디폴트 유지** (Asia-Europe/Asia-USEC)          | Seatrade, Sourcing Journal |
+| 복귀 전망          | **2026년 내 대규모 복귀 불가능** — 연말경 전쟁 전 수준 회복 추정                      | Sourcing Journal, Seatrade |
+| 후티 위협          | **후티 영상 위협 재부각** — 가자 휴전·이란전 연동. 선사 리스크 재평가 중              | Sourcing Journal, Seatrade |
 
-**핵심 변화 (6/13 갱신):** 홍해는 **"회피→신중한 실험(cautious experimentation)"** 단계 -- ME11 등 일부 선사가 2월부터 제한적 시범 운항하나 **대규모 복귀는 2026년 내 불가능**(예측시장 90.5% NO). 후티 위협이 가자 휴전·2026 이란전과 연동되어 미해소. 홍해 우회 지속이 6월 컨테이너 피크시즌 운임 상승의 구조적 배경(운송시간 연장→조기 발주). 호르무즈 MOU 서명 시 수에즈 안전성 재평가 가능이나 선사 복귀 결정에 수개월. [Seatrade, ING, Container News, lines.com, Zencargo]
+**핵심 변화 (6/20 갱신):** **Maersk 2년만 홍해 첫 통과는 상징적이나 대규모 복귀 아님** -- Maersk가 2023.12 이후 처음 홍해/바브엘만데브를 통과했으나 "stepwise approach"로 제한적 운항만 계획, 광범위 네트워크 전환은 아직. **MSC·Hapag 등 주요 선사는 케이프 우회를 디폴트로 유지.** 후티 영상 위협 재부각으로 선사 리스크 재평가 중. **대규모 복귀는 2026년 내 불가능, 연말경 전쟁 전 수준 회복 추정.** 홍해 우회 지속이 6월 컨테이너 피크시즌 운임 18개월 최고의 구조적 배경(운송시간 연장→조기 발주). 호르무즈 MOU 서명이 홍해 안전성 재평가를 촉진할 수 있으나 선사 복귀 결정에 추가 수개월. [SupplyChainBrain, gCaptain, Seatrade, Sourcing Journal, lines.com]
 
 #### 1-4. 항공화물
 
@@ -154,99 +178,102 @@ last_synced_from_db: 2026-06-13
 | BAI00 글로벌 지수 | YoY **고운임 유지** (구조적)       | TAC Index, Air Cargo News |
 | 전용화물기 부족   | **2027~28년까지 구조적 부족** 지속 | C.H. Robinson             |
 
-**핵심 변화 (6/13):** 항공화물 구조적 고운임 유지. 호르무즈 MOU 서명→제트연료 하락 시 항공 운임 완화 가속 가능. 전용화물기 부족 2027~28까지 지속. [TAC Index, Air Cargo News, C.H. Robinson]
+**핵심 변화 (6/20):** 항공화물 구조적 고운임 유지. 호르무즈 MOU 서명→제트연료 하락 시 항공 운임 완화 가속 가능. 전용화물기 부족 2027~28까지 지속. [TAC Index, Air Cargo News, C.H. Robinson]
 
 ---
 
 ### 2. 핵심광물 및 희토류
 
-#### 2-1. 희토류 — 4월 규제 미해제 + Phase 2 유예 11.10 이중 시한
+#### 2-1. 희토류 — 4월 규제 미해제 + Phase 2 유예 11.10 이중 시한 (변화 없음)
 
-| 항목               | 현황                                                                                                            | 출처                                                |
-| ------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| 중국 지배력        | 원광 38~60%, **정제 91%**, **자석제조 92%**                                                                     | IEA, CSIS                                           |
-| Phase 1 (2025.04)  | 중희토류 **7종**(Tb/Dy/Sm/Gd/Lu/Sc/Y 등)+화합물+자석 라이선스. **fully in effect (미해제)** 지속                | IEA, Crux Investor, rare-earth-mining.com           |
-| Phase 2 (2025.10)  | 5종+완제품+배터리소재. **1년 유예 ~2026.11.10** (further review 대기). 역외관할+50% 룰                          | Crux Investor, White & Case, HSF Kramer             |
-| **Tb oxide 가격**  | **중국외 $4,500~4,700/kg vs 중국내 $914~923/kg** (중국외 약 **5배 프리미엄**)                                   | rareearthexchanges.com 06/05, rare-earth-mining.com |
-| Dy oxide 가격      | **중국외 구득난** -- "가격이 아니라 확보 가능 여부가 관건". Dy/Tb 99~100% 중국 의존                             | rareearthexchanges.com, rare-earth-mining.com       |
-| China REPI         | **252.4** (2026.06.05, 중희토류 강세 지속)                                                                      | rareearthexchanges.com 06/05                        |
-| **한국 타격**      | 한국 희토류 중국 의존 **80%(자석)**, 일본 10%. 3~5월 대한국 자석수출 -93% 붕괴 경험. Sm-Co 자석(방산·항공) 위협 | CSIS, Asia Business Daily, East Asia Forum          |
-| 전면 재시행 리스크 | IEA 추정 중국外 연 **$6.5T** 경제활동 위험 (자동차·전자 최노출)                                                 | IEA                                                 |
-| 서방 대체 진전     | MP Materials, Lynas, Energy Fuels, Northern Minerals. 정제 91%+자석 92% 해소엔 수년                             | Crux Investor, IEA, ORF America                     |
+| 항목               | 현황                                                                                                            | 출처                                          |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| 중국 지배력        | 원광 38~60%, **정제 91%**, **자석제조 92%**                                                                     | IEA, CSIS                                     |
+| Phase 1 (2025.04)  | 중희토류 **7종**(Tb/Dy/Sm/Gd/Lu/Sc/Y 등)+화합물+자석 라이선스. **fully in effect (미해제)** 지속                | IEA, rare-earth-mining.com, S&P Global        |
+| Phase 2 (2025.10)  | 5종+완제품+배터리소재. **1년 유예 11/7/25~2026.11.10** (further review 대기). 역외관할+0.1% 룰                  | Crux Investor, White & Case, HSF Kramer       |
+| **Tb oxide 가격**  | **중국외 $4,500~4,700/kg vs 중국내 $914~923/kg** (중국외 약 **5배 프리미엄**)                                   | rareearthexchanges.com, rare-earth-mining.com |
+| Dy oxide 가격      | **중국외 구득난** -- "가격이 아니라 확보 가능 여부가 관건". Dy/Tb 99~100% 중국 의존                             | rareearthexchanges.com, rare-earth-mining.com |
+| China REPI         | **중희토류 강세 지속** (252.4 부근, 6월)                                                                        | rareearthexchanges.com                        |
+| **한국 타격**      | 한국 희토류 중국 의존 **80%(자석)**, 일본 10%. 3~5월 대한국 자석수출 -93% 붕괴 경험. Sm-Co 자석(방산·항공) 위협 | CSIS, Asia Business Daily, East Asia Forum    |
+| 전면 재시행 리스크 | IEA 추정 중국外 연 **$6.5T** 경제활동 위험 (자동차·전자 최노출)                                                 | IEA                                           |
+| 서방 대체 진전     | MP Materials, Lynas, Energy Fuels, Northern Minerals. 정제 91%+자석 92% 해소엔 수년                             | Crux Investor, IEA, ORF America               |
 
-**핵심 리스크 (6/13 갱신):** (1) **4월 중희토류 7종 라이선스 규제 fully in effect (미해제)** 지속→11월 Phase 2 만료(~11.10)와 겹쳐 **이중 시한**, (2) **중국외 가격 고통 심화**: Tb oxide 중국외 $4,500~4,700 vs 중국내 $914~923으로 **약 5배 프리미엄**, China REPI 252.4(6/5) 중희토류 강세, (3) **Dy 중국외 구득난** -- "가격이 아니라 확보 가능 여부가 관건"(Dy/Tb 99~100% 중국 의존), (4) **한국 타격 명확**: 희토류 중국 의존 80%(자석), 현대차 등 완화기 비축으로 대응, Sm-Co 자석(방산·항공) 직접 위협, (5) 전면 재시행 시 IEA "중국外 $6.5T 경제활동 위험", (6) 서방 대체(MP/Lynas/Energy Fuels) 가동이나 정제·자석 의존 해소엔 수년. [IEA, Crux Investor, rareearthexchanges.com, rare-earth-mining.com, CSIS, Asia Business Daily]
+**핵심 리스크 (6/20 갱신, 변화 없음):** (1) **4월 중희토류 7종 라이선스 규제 fully in effect (미해제)** 지속→11월 Phase 2 만료(~11.10)와 겹쳐 **이중 시한**, (2) **중국외 가격 고통 심화**: Tb oxide 중국외 $4,500~4,700 vs 중국내 $914~923으로 **약 5배 프리미엄**, China REPI 중희토류 강세, (3) **Dy 중국외 구득난** -- "가격이 아니라 확보 가능 여부가 관건"(Dy/Tb 99~100% 중국 의존), (4) **한국 타격 명확**: 희토류 중국 의존 80%(자석), 현대차 등 완화기 비축으로 대응, Sm-Co 자석(방산·항공) 직접 위협, (5) 전면 재시행 시 IEA "중국外 $6.5T 경제활동 위험", (6) 서방 대체(MP/Lynas/Energy Fuels) 가동이나 정제·자석 의존 해소엔 수년. [IEA, Crux Investor, rareearthexchanges.com, rare-earth-mining.com, CSIS, S&P Global, Asia Business Daily]
 
-#### 2-2. 구리 — 50% Section 232 관세 6/8 발효, 6/30 정제구리 검토
+#### 2-2. 구리 — 50% Section 232 발효 중, 6/30 정제구리 검토 시한 임박
 
-| 항목                               | 수치                                                                                  | 출처                                         |
-| ---------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------- |
-| COMEX/LME                          | 사상최고 $6.65/lb(5/13)서 **LME ~$13,100~13,400/t 조정** (관세결정 선반영)            | MexicoBusiness, Crux Investor, ING           |
-| 사상최고                           | **$6.65/lb** (5/13, ≒ LME $13,650/t). YTD **+33.9%**                                  | MexicoBusiness, Crux Investor                |
-| **Section 232 (6/1 proclamation)** | **대부분 구리 품목 50% 관세 6/8 발효** (2027.12.31까지). 메탈 파생품 full value 적용  | White & Case, PwC, GHY, Congress.gov         |
-| **정제구리 추가 검토**             | **6/30 상무부 업데이트** → 정제구리 단계적 보편관세(**2027.01 15%→2028.01 30%**) 가능 | Congress.gov, DiscoveryAlert, Crux Investor  |
-| 구조적 적자 2026E                  | **150~600kt** (ICSG 150kt, JPM 330kt, Morgan Stanley **600kt**)                       | Crux Investor, DiscoveryAlert, Goldman Sachs |
-| Grasberg 감산                      | 완전 재가동 **2028 추가 지연** (산사태 불가항력)                                      | Crux Investor, Mining.com                    |
-| AI 데이터센터 수요                 | 1GW DC당 ~27kt. 구조적 수요 동인 유지                                                 | JPM, DiscoveryAlert                          |
+| 항목                               | 수치                                                                                                                            | 출처                                         |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| COMEX/LME                          | 사상최고 $6.65/lb(5/13)서 **LME ~$13,100~13,400/t 조정** (관세결정 선반영)                                                      | MexicoBusiness, DiscoveryAlert, Sprott       |
+| 사상최고                           | **$6.65/lb** (5/13, ≒ LME $13,650/t). YTD **+33.9%**                                                                            | MexicoBusiness, Crux Investor                |
+| **Section 232 (6/1 proclamation)** | **반제품·가공 구리 품목 50% 관세 6/8 발효** (2027.12.31까지). 메탈 파생품 full value 적용                                       | White & Case, PwC, Congress.gov              |
+| **정제구리 추가 검토 (6/30 시한)** | **6/30까지 상무부 232 검토 보고 의무** → 정제구리(캐소드·음극·정광 현재 제외) 단계적 보편관세(**2027.01 15%→2028.01 30%**) 가능 | Congress.gov, DiscoveryAlert                 |
+| COMEX 프리미엄                     | LME 대비 **~3%** (관세 부과 기대 반영, front-run)                                                                               | Sprott, DiscoveryAlert                       |
+| 구조적 적자 2026E                  | **150~600kt** (ICSG 150kt, JPM 330kt, Morgan Stanley **600kt**)                                                                 | Crux Investor, DiscoveryAlert, Goldman Sachs |
+| Grasberg 감산                      | 완전 재가동 **2028 추가 지연** (산사태 불가항력)                                                                                | Crux Investor, Mining.com                    |
+| AI 데이터센터 수요                 | 1GW DC당 ~27kt. 구조적 수요 동인 유지                                                                                           | JPM, DiscoveryAlert                          |
 
-**투자 시사점 (6/13 갱신):** **6/1 proclamation으로 대부분 구리 품목 50% Section 232 관세가 6/8 발효** (2027.12까지) -- 종전 검토 단계에서 본격 부과로 전환. COMEX 사상최고 $6.65(5/13)서 LME ~$13,100~13,400/t로 조정(관세결정 선반영 트레이더 front-run), YTD +33.9%. **6/30 상무부 업데이트가 다음 촉매** -- 정제구리 단계적 보편관세(2027.01 15%→2028 30%) 가능. "Triple Demand + Supply Disruption" 구조 유지 -- AI DC+방산+그리드 수요에 Grasberg 완전 재가동 2028 지연+구조적 적자(150~600kt, MS 600kt) 겹침. [MexicoBusiness, Crux Investor, White & Case, PwC, Congress.gov, Goldman Sachs]
+**투자 시사점 (6/20 갱신):** **6/30 정제구리 검토 시한이 임박한 핵심 촉매** -- 6/1 proclamation으로 반제품·가공 구리 50% 관세가 6/8 발효(2027.12까지)됐으나, **정제구리(캐소드·음극·정광)는 현재 50% 적용 제외** 상태. **상무부가 6/30까지 232 검토를 보고할 의무**가 있어, 정제구리 단계적 보편관세(2027.01 15%→2028 30%) 부과 여부가 6월 말 결정. COMEX 사상최고 $6.65(5/13)서 LME ~$13,100~13,400/t로 조정(관세결정 선반영, COMEX 프리미엄 ~3%), YTD +33.9%. "Triple Demand + Supply Disruption" 구조 유지 -- AI DC+방산+그리드 수요에 Grasberg 완전 재가동 2028 지연+구조적 적자(150~600kt, MS 600kt) 겹침. [MexicoBusiness, DiscoveryAlert, White & Case, PwC, Congress.gov, Sprott, Goldman Sachs]
 
-#### 2-3. 식량 및 비료 — FAO 130.8(5월, 곡물 +2.6%)
+#### 2-3. 식량 및 비료 — 호르무즈 서명으로 완화 기대, 비료 WB +31~33% 전망
 
-| 항목                    | 수치                                               | 출처                                             |
-| ----------------------- | -------------------------------------------------- | ------------------------------------------------ |
-| FAO 식품가격지수        | **130.8pt** (2026.05, -0.2% MoM, **+2.9% YoY**)    | 식물성유 하락이 곡물 상승 상쇄 [FAO]             |
-| FAO 곡물지수            | **+2.6% MoM** (YoY ~+5%)                           | 연료·비료비+기상 압력. 모든 주요 곡물 상승 [FAO] |
-| 요소비료                | **WB 2026 +60% 전망** (공급긴축+에너지비용+지정학) | 호르무즈 LNG 차질이 질소비료 직격 [World Bank]   |
-| 호르무즈 비료 경유 비중 | 전세계 교역량의 **30%** (질소비료 40%)             | FAO, Carnegie                                    |
-| WFP 경고                | **4,500만 명 추가** 식량불안정                     | WFP                                              |
+| 항목                 | 수치                                               | 출처                                             |
+| -------------------- | -------------------------------------------------- | ------------------------------------------------ |
+| FAO 식품가격지수     | **130.8pt** (2026.05, -0.2% MoM, **+2.9% YoY**)    | 식물성유 하락이 곡물 상승 상쇄 [FAO]             |
+| FAO 곡물지수         | **+2.6% MoM** (YoY ~+5%)                           | 연료·비료비+기상 압력. 모든 주요 곡물 상승 [FAO] |
+| 비료 가격지수        | **WB 2026 +31~33% 전망** (요소 +60%)               | 공급긴축+에너지비용+호르무즈 [World Bank]        |
+| 요소(urea) 가격      | **$850+/t** (4월, 2월대비 +80%, 2022.04 이후 최고) | 호르무즈 비료 차단 영향 [World Bank]             |
+| 호르무즈 비료 차단량 | 월 **130만 톤** 통과 불가 (육로 대안 無)           | FAO, World Bank                                  |
+| WFP 경고             | **4,500만 명 추가** 식량불안정                     | WFP                                              |
 
-**시사점 (6/13 갱신):** FAO **130.8pt(5월, -0.2% MoM이나 +2.9% YoY)** -- 식물성유 하락이 곡물 상승(+2.6%, 모든 주요 곡물 상승)을 상쇄해 전체 안정. 그러나 **곡물가가 연료·비료비+기상에 취약** 신호. 요소비료 WB +60% 전망 유지(호르무즈 LNG 차질→질소비료 원가 직격). 호르무즈 MOU 서명 지연 시 비료 사용 감소→추가 식량가 압력. [FAO, World Bank, WFP]
+**시사점 (6/20 갱신):** FAO **130.8pt(5월, -0.2% MoM이나 +2.9% YoY)** -- 식물성유 하락이 곡물 상승(+2.6%, 모든 주요 곡물 상승)을 상쇄해 전체 안정. 그러나 **곡물가가 연료·비료비+기상에 취약** 신호. 비료지수 WB 2026 +31~33% 전망(요소 +60%, 4월 $850+/t로 2022 이후 최고). 호르무즈가 월 130만 톤 비료를 차단(육로 대안 없음)해 질소비료 직격. **6/17 호르무즈 MOU 서명→비료 경로 재개 기대로 향후 완화 가능**이나, 통항 정상화 시차로 단기 비료 프리미엄 지속. [FAO, World Bank, WFP]
 
 ---
 
 ### 3. 반도체 공급망
 
-#### 3-1. HBM 메모리 — NVIDIA Vera Rubin 6/1 풀생산, 6/5 3사 HBM4 인증, Q3 출하
+#### 3-1. HBM 메모리 — 2026 전량 매진, HBM4 양산 후기→2027초, NVIDIA Vera Rubin Q3 출하
 
-| 항목                         | 현황                                                                                         | 출처                                          |
-| ---------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **NVIDIA Vera Rubin 풀생산** | **6/1 GTC Taipei 발표 후 풀생산 진입**. 고객 출하 **Q3 2026(7~9월)** 예정                    | TechTimes 06/02, Investing.com                |
-| **HBM4 3사 인증 (6/5)**      | **Jensen Huang 6/5 서울서 삼성·SK하이닉스·마이크론 3사 모두 Vera Rubin HBM4 인증·양산 확인** | TechTimes 06/05, Yahoo Finance, Investing.com |
-| **HBM4 점유율 (Vera Rubin)** | SK하이닉스 **60~70%**, 삼성 **25~30%**, 마이크론 잔여                                        | Investing.com 공급망분석, TrendForce          |
-| HBM4 양산                    | 삼성 **2026.02 양산 개시**, SK하이닉스 양산체제. Huang 6/2 SK에 증산 촉구(공급 타이트)       | TechTimes, FinancialContent                   |
-| 2026년 HBM 물량              | **전 공급사 전량 매진 (sold out)**. 글로벌 반도체 공급 여전히 타이트                         | CNBC, TechTimes                               |
-| HBM DRAM 웨이퍼 잠식         | HBM이 DRAM 생산능력 **18~28%** 점유 → 범용 메모리 압박                                       | Tech-Insider, TrendForce                      |
+| 항목                         | 현황                                                                                  | 출처                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------ |
+| **NVIDIA Vera Rubin**        | 6/1 GTC Taipei 발표 후 풀생산 진입. 고객 출하 **Q3 2026(7~9월)** 예정                 | TechTimes, Investing.com             |
+| **HBM4 양산 일정**           | **본격 양산 2026 후기~2027 초** (램프업 진행). 삼성·SK 양산체제, Huang SK에 증산 촉구 | Network World, TrendForce            |
+| **HBM4 점유율 (Vera Rubin)** | SK하이닉스 **60~70%**, 삼성 **25~30%**, 마이크론 잔여                                 | Investing.com 공급망분석, TrendForce |
+| 2026년 HBM/DRAM/NAND 물량    | **SK하이닉스 HBM·DRAM·NAND 2026 사실상 전량 매진(sold out)**. H2 DRAM 공급제약 지속   | Network World, Astute Group          |
+| HBM DRAM 웨이퍼 잠식         | HBM이 DRAM 생산능력 **23%** 점유 (1GB HBM = DDR5 웨이퍼 3~4배) → 범용 메모리 압박     | Tech-Insider, TrendForce             |
 
-#### 3-2. DRAM/NAND 가격 — "Memflation" Gartner 전망 상향(DRAM +125%/NAND +234%)
+#### 3-2. DRAM/NAND 가격 — "Memflation" 구조 심화, 공급자 가격결정력 회복
 
-| 항목                  | 현황                                                          | 출처                       |
-| --------------------- | ------------------------------------------------------------- | -------------------------- |
-| **Gartner 연간 전망** | **DRAM +125%, NAND +234%** (4/8 상향, 종전 +80%/+202%서 상향) | Gartner 04/08              |
-| Q2 2026 계약가        | DRAM **+58~63% QoQ**, NAND **+70~75% QoQ** (Q1 +95% 후속)     | TrendForce, Tom's Hardware |
-| 가격 피크 전망        | 의미있는 완화는 **2027말 이후** 없음                          | TrendForce, Astute Group   |
-| HBM 웨이퍼 잠식       | HBM 램프가 범용 DDR5 메모리 직접 압박 (AI서버 수요 공급긴축)  | Micron, Tech-Insider       |
+| 항목                  | 현황                                                                   | 출처                          |
+| --------------------- | ---------------------------------------------------------------------- | ----------------------------- |
+| **Gartner 연간 전망** | **DRAM +125%, NAND +234%** (4/8 상향, 종전 +80%/+202%서 상향)          | Gartner 04/08                 |
+| Q1 2026 계약가        | DRAM/NAND **+80~90% QoQ** 급등 (32GB DDR5 모듈 $149→$239)              | Astute Group, Network World   |
+| 공급자 가격결정력     | **계약기간 단축, 가격결정력 공급자로 이동**. 삼성·SK 영업이익률 40~50% | Tom's Hardware                |
+| Micron 컨슈머 철수    | **Micron 컨슈머 메모리 시장 완전 철수** → 엔터프라이즈·AI 집중         | Network World, Tom's Hardware |
+| 가격 피크 전망        | 의미있는 완화는 **2027말 이후** 없음                                   | TrendForce, Astute Group      |
 
-**시사점 (6/13 갱신):** "Memflation" 구조 심화 -- **Gartner 4/8 연간 전망을 DRAM +125%/NAND +234%로 상향**(종전 +80%/+202%). Q2 DRAM +58~63%/NAND +70~75% QoQ(Q1 +95% 후속). HBM이 DRAM 생산능력 18~28% 잠식+AI서버 수요로 범용 메모리 공급 긴축이 구조적 원인. 의미있는 완화는 2027말 이후. [Gartner, TrendForce, Tom's Hardware, Astute Group, Tech-Insider]
+**시사점 (6/20 갱신):** "Memflation" 구조 심화 -- **SK하이닉스 HBM·DRAM·NAND 2026 사실상 전량 매진, H2 DRAM 공급제약 지속**. **Micron 컨슈머 메모리 완전 철수**로 공급 추가 긴축. **공급자 가격결정력 회복** -- 삼성·SK 계약기간 단축, 영업이익률 40~50% 도달. Gartner 연간 전망 DRAM +125%/NAND +234%(4/8 상향). Q1 +80~90% QoQ(32GB DDR5 $149→$239). HBM이 DRAM 생산능력 23% 잠식(1GB HBM = DDR5 웨이퍼 3~4배)+AI서버 수요로 범용 메모리 공급 긴축이 구조적 원인. 의미있는 완화는 2027말 이후. [Gartner, TrendForce, Network World, Astute Group, Tom's Hardware, Tech-Insider]
 
-#### 3-3. 파운드리 — TSMC N2 90~100K/월 매진, Arizona Fab Q3'26 장비반입, Intel 18A HVM
+#### 3-3. 파운드리 — TSMC N2 매진, Arizona Fab2 Q3'26 장비반입(N3/N2 앞당김), Intel 18A
 
 | 항목                  | 현황                                                                                       | 출처                            |
 | --------------------- | ------------------------------------------------------------------------------------------ | ------------------------------- |
 | TSMC 2nm (N2)         | **90~100K 웨이퍼/월**(대만, 2025 Q4 양산개시 Fab22 Kaohsiung·Fab20 Hsinchu, **전량 매진**) | SemiWiki, Tom's Hardware        |
-| **TSMC Arizona Fab3** | **Q3'26(7~9월) 장비 반입** → **2027 양산**(N3 1년 앞당김, AI 수요 견인). N2/A16도 2027     | Tom's Hardware, AZ Tech Council |
-| TSMC Arizona 총투자   | **$165B** GigaFab (P1 양산중/Fab3 Q3장비)                                                  | TSMC, Tech-Insider              |
-| **Intel 18A**         | **Arizona+Oregon HVM(대량생산) 진입** -- 미국 내 첫 sub-2nm. 수율 산업표준 도달은 2027     | Intel 8-K Q1'26, Tom's Hardware |
-| 삼성 파운드리         | TSMC 대안 부상 지속                                                                        | Counterpoint                    |
+| **TSMC Arizona Fab2** | **Phase2(N3/N2) Q3'26 장비 반입** → **2027 양산**(종전 2028서 1년 앞당김, AI 수요 견인)    | Tom's Hardware, AZ Tech Council |
+| TSMC Arizona Fab3     | **N2/A16 노드, 2028~29 양산** 목표                                                         | Tom's Hardware, NIST            |
+| TSMC Arizona 총투자   | **$165B** GigaFab (Fab1 P1 양산중/Fab2 Q3 장비). CHIPS $6.6B 확정                          | TSMC, blackridge, NIST          |
+| **Intel 18A**         | **Arizona+Oregon 양산(HVM) 진입** -- 미국 내 첫 sub-2nm. 수율 산업표준 도달은 2027         | Intel 8-K, Tom's Hardware       |
+| 삼성 파운드리         | 2nm 2026말 21K 웨이퍼/월 목표. TSMC 대안 부상 지속                                         | Counterpoint, Tom's Hardware    |
 
-#### 3-4. 미중 반도체 규제 — Section 232 25% + 301 7월초 공청회
+#### 3-4. 미중 반도체 규제 — Section 232 25% + 122 7/24 만료→301 전환
 
-| 항목               | 현황                                                                                            | 출처                           |
-| ------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------ |
-| Section 232 반도체 | **25% 발효 중** (6개 품목군 중 반도체. IEEPA 2/20 대법원 무효 영향 없음, full force)            | GingerControl, White House, EY |
-| Section 232 2단계  | **세율 인상+미국 투자 오프셋 프로그램 예정**. ITIF "美 경제성장 저해" 경고                      | ITIF, Pillsbury                |
-| Section 301 반도체 | **50% 적용** (List 3/4A 누적 인상). USTR 2건 조사+**7월초 공청회** → 7/24 전 신규 부과 목표     | GingerControl, ustariffrates   |
-| MATCH 법안         | 4/22 하원외교위 통과. **본회의·상원 미통과**. NDAA 수정안 편입 가능. SMIC/YMTC/CXMT/화웨이 대상 | TechWireAsia, Senate           |
-| 미-한 반도체 관세  | **15%** 합의 (발효 중)                                                                          | ainvest                        |
+| 항목                   | 현황                                                                                                            | 출처                           |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Section 232 반도체     | **25% 발효 중** (6개 품목군 중 반도체. IEEPA 2/20 대법원 무효 영향 없음, full force)                            | GingerControl, White House, EY |
+| Section 232 2단계      | **세율 인상+미국 투자 오프셋 프로그램 예정**. ITIF "美 경제성장 저해" 경고                                      | ITIF, Pillsbury                |
+| **Section 301 반도체** | **50% 적용** (List 3/4A 25%+25% 누적). USTR 3/11~12 조사2건(60+국, 16개국 반도체·전자) → 7/24 전 신규 부과 목표 | GingerControl, Tradlinx, AAF   |
+| MATCH 법안             | 4/22 하원외교위 통과. **본회의·상원 미통과**. NDAA 수정안 편입 가능. SMIC/YMTC/CXMT/화웨이 대상                 | TechWireAsia, Senate           |
+| 미-한 반도체 관세      | **15%** 합의 (발효 중)                                                                                          | ainvest                        |
 
 #### 3-5. 대만 집중 리스크
 
@@ -255,76 +282,78 @@ last_synced_from_db: 2026-06-13
 | 대만 반도체 글로벌 점유 | **60%+** (파운드리 매출), 최첨단 칩 **90%+**                              | Z2Data, Resilinc            |
 | 봉쇄/침공 시 손실       | 봉쇄 **$5T**(1년차) / 침공 **$10.6T**(전세계 GDP 9.6%)                    | Bloomberg, InsuranceJournal |
 | CHIPS Act 집행          | **$30.9B/40개 프로젝트**. 미국 첨단칩 점유 0%→**20%(2030 목표)**          | GAO                         |
-| PLA 대만 준비 목표      | **2027년**. TSMC Arizona Fab3 2027 양산(앞당김)으로 PLA 2027 갭 일부 완화 | War on the Rocks, 247WallSt |
+| PLA 대만 준비 목표      | **2027년**. TSMC Arizona Fab2 2027 양산(앞당김)으로 PLA 2027 갭 일부 완화 | War on the Rocks, 247WallSt |
 
 **Q1 2026 글로벌 반도체 판매 QoQ +25%, Gartner 2026E $1.32T+("memflation" 반영). AI 반도체 비중 30%(2026E).** [Gartner, SIA]
 
 ---
 
-### 4. 관세 및 무역 정책 — Section 232 중심 재편
+### 4. 관세 및 무역 정책 — Section 232 중심 재편, 122 7/24 만료 D-34
 
-#### 4-1. 미국 관세 체계 현황 (2026.06.13 기준)
+#### 4-1. 미국 관세 체계 현황 (2026.06.20 기준)
 
-| 관세                   | 세율                               | 법적 근거   | 상태                                                                      | 만료/검토                |
-| ---------------------- | ---------------------------------- | ----------- | ------------------------------------------------------------------------- | ------------------------ |
-| **IEEPA 관세**         | (구) reciprocal+중국/캐나다/멕시코 | IEEPA       | **2/20 대법원 6-3 무효** → Trump IEEPA 종료·부분 대체                     | 종료                     |
-| **Section 122 글로벌** | **10%**                            | Section 122 | **5/7 CIT 무효(항소중)** → **징수 지속**. 2/24~7/24 150일 윈도우          | **7/24 만료** (미연장시) |
-| **Section 301 대체**   | **단계별** (국가/품목별)           | Section 301 | USTR 2건 조사. **7월초 공청회** → 7/24 Section 122 만료 전 신규 부과 목표 | 7월 부과 목표            |
-| 반도체 관세            | **25%**                            | Section 232 | 발효 중 (IEEPA 무효 영향 없음, full force). 2단계 인상 예정               | 2단계 검토               |
-| 구리 관세              | **50%**                            | Section 232 | **6/1 proclamation, 6/8 발효** (2027.12까지). 정제구리 6/30 추가검토      | 6/30 정제구리 검토       |
-| 강철/알루미늄          | **25~50%**                         | Section 232 | 발효 중 (메탈 파생품 full value 적용)                                     | 기한 없음                |
-| 제약 관세              | **100%** (온쇼어링 20%, 한국 15%)  | Section 232 | **7/31 발효** 예정                                                        | 대기업 7/31, 기타 9/29   |
-| 자동차                 | **25%**                            | Section 232 | 발효 중                                                                   | 기한 없음                |
-| 한국 반도체            | **15%**                            | 미-한 합의  | 발효 중                                                                   | --                       |
+| 관세                   | 세율                               | 법적 근거   | 상태                                                                 | 만료/검토                             |
+| ---------------------- | ---------------------------------- | ----------- | -------------------------------------------------------------------- | ------------------------------------- |
+| **IEEPA 관세**         | (구) reciprocal+중국/캐나다/멕시코 | IEEPA       | **2/20 대법원 6-3 무효** → Trump IEEPA 종료·부분 대체                | 종료                                  |
+| **Section 122 글로벌** | **10%**                            | Section 122 | **5/7 CIT 무효(항소중)** → **징수 지속**. 2/24~7/24 150일 윈도우     | **7/24 만료** (D-34, 의회연장만 가능) |
+| **Section 301 대체**   | **단계별** (국가/품목별)           | Section 301 | USTR 조사2건(60+국, 16개국). 7/24 Section 122 만료 전 신규 부과 목표 | 7월 부과 목표                         |
+| 반도체 관세            | **25%**                            | Section 232 | 발효 중 (IEEPA 무효 영향 없음, full force). 2단계 인상 예정          | 2단계 검토                            |
+| 구리 관세 (반제품)     | **50%**                            | Section 232 | **6/1 proclamation, 6/8 발효** (2027.12까지). **정제구리 6/30 검토** | 6/30 정제구리 검토                    |
+| 강철/알루미늄          | **25~50%**                         | Section 232 | 발효 중 (메탈 파생품 full value 적용)                                | 기한 없음                             |
+| 제약 관세              | **100%** (온쇼어링 20%, 한국 15%)  | Section 232 | **7/31 발효** 예정                                                   | 대기업 7/31, 기타 9/29                |
+| 자동차                 | **25%**                            | Section 232 | 발효 중                                                              | 기한 없음                             |
+| 한국 반도체            | **15%**                            | 미-한 합의  | 발효 중                                                              | --                                    |
 
-**핵심 변화 (6/13 갱신):**
+**핵심 변화 (6/20 갱신):**
 
 1. **IEEPA 관세 대법원 무효(2/20) → Section 232 중심 재편 + 232는 영향 없음**: 2/20 대법원이 IEEPA 기반 reciprocal 관세를 6-3 무효 판결→Trump가 IEEPA 종료·부분 대체. **Section 232(국가안보)는 무효 판결 영향 없이 full force 유지** -- 반도체 25%, 구리 50%, 철강/알루미늄 25~50% [GingerControl, White House, EY, Holland & Knight]
-2. **구리 50% 본격 부과 전환**: 종전 "검토" 단계서 **6/1 proclamation으로 50% 관세 6/8 발효**(2027.12까지). 6/30 상무부 업데이트로 정제구리 단계적 보편관세(2027.01 15%→2028 30%) 추가 가능 [White & Case, PwC, Congress.gov]
-3. **Section 301 전환 가속 + 122 만료 시한 압박**: Section 122 10% 글로벌은 5/7 CIT 무효(항소중·징수지속) + **7/24 만료**. USTR이 **7월초 공청회** 후 7/24 전 신규 301 관세 부과 목표 → 동일 세수를 다른 법적 근거로 재구성하려는 행정부 의지. 이 시한 압박이 6월 컨테이너 운임 pull-forward 부킹의 핵심 동인 [GingerControl, ustariffrates, octopart, Skadden, CRS]
+2. **구리: 반제품 50% 발효 + 정제구리 6/30 검토 시한 임박**: 6/1 proclamation으로 반제품·가공 구리 50% 6/8 발효(2027.12까지). **6/30까지 상무부가 232 검토 보고 의무** → 정제구리 단계적 보편관세(2027.01 15%→2028 30%) 추가 여부 결정 [White & Case, PwC, Congress.gov, DiscoveryAlert]
+3. **Section 301 전환 가속 + 122 만료 D-34 압박**: Section 122 10% 글로벌은 5/7 CIT 무효(항소중·징수지속) + **7/24 만료(D-34, 대통령 단독 연장 불가·의회만)**. USTR 조사2건(60+국, 16개국 반도체·전자 포함) 후 7/24 전 신규 301 관세 부과 목표 → 동일 세수를 다른 법적 근거로 재구성. **이 시한 압박이 6월 컨테이너 운임 18개월 최고(pull-forward 부킹)의 핵심 동인** [GingerControl, Tradlinx, AAF, octopart, tariffstool, Skadden]
 
 #### 4-2. 리쇼어링/니어쇼어링 투자 현황
 
-| 항목                   | 수치                                                       | 출처                            |
-| ---------------------- | ---------------------------------------------------------- | ------------------------------- |
-| 제조업 건설지출        | 피크 $240.1B(2024.08)서 둔화. 리쇼어링 "붐" 아직 미확인    | IoT Analytics, Atlantic Council |
-| CHIPS Act 집행         | **$30.9B/40개 프로젝트**. 미국 첨단칩 점유 0%→20%(2030)    | GAO                             |
-| TSMC Arizona           | **$165B**. P1 양산중/Fab3 Q3'26 장비반입/2027 양산(앞당김) | TSMC, Tom's Hardware            |
-| Intel 18A              | **Arizona+Oregon HVM 진입** -- 미국 내 첫 sub-2nm          | Intel 8-K, Tom's Hardware       |
-| 리쇼어링 실태          | **"붐" 아직 아님** (IoT Analytics 매크로 데이터 기준)      | IoT Analytics                   |
-| 미국 제조비용 프리미엄 | 아시아 대비 **+30~50%**                                    | PwC, Cushman & Wakefield        |
-| 숙련인력 부족          | 2030년까지 **70,000명** 부족                               | Metaintro, CSIS                 |
+| 항목                   | 수치                                                         | 출처                            |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------- |
+| 제조업 건설지출        | 피크 $240.1B(2024.08)서 둔화. 리쇼어링 "붐" 아직 미확인      | IoT Analytics, Atlantic Council |
+| CHIPS Act 집행         | **$30.9B/40개 프로젝트**. 미국 첨단칩 점유 0%→20%(2030)      | GAO                             |
+| TSMC Arizona           | **$165B**. Fab1 양산중/Fab2 Q3'26 장비반입/2027 양산(앞당김) | TSMC, Tom's Hardware, NIST      |
+| Intel 18A              | **Arizona+Oregon HVM 진입** -- 미국 내 첫 sub-2nm            | Intel 8-K, Tom's Hardware       |
+| 리쇼어링 실태          | **"붐" 아직 아님** (IoT Analytics 매크로 데이터 기준)        | IoT Analytics                   |
+| 미국 제조비용 프리미엄 | 아시아 대비 **+30~50%**                                      | PwC, Cushman & Wakefield        |
+| 숙련인력 부족          | 2030년까지 **70,000명** 부족                                 | Metaintro, CSIS                 |
 
-**구조적 변화 (6/13 갱신):** TSMC Arizona Fab3 Q3'26 장비반입(2027 양산 앞당김)+Intel 18A HVM -- **미국 반도체 제조 이정표 연속 달성**. 그러나 제조건설지출은 피크($240.1B, 2024.08)서 둔화+IoT Analytics "아직 붐 아님" 유지. **대기업 중심 선별적 진전, 광범위한 붐은 미확인.** 관세체계 재편(IEEPA 무효→232 중심, 122 7/24 만료→301 전환)이 리쇼어링 인센티브 구조의 핵심 변수. [IoT Analytics, Atlantic Council, GAO, Tom's Hardware]
+**구조적 변화 (6/20 갱신):** TSMC Arizona Fab2 Q3'26 장비반입(N3/N2 2027 양산 앞당김)+Intel 18A HVM -- **미국 반도체 제조 이정표 연속 달성**. 그러나 제조건설지출은 피크($240.1B, 2024.08)서 둔화+IoT Analytics "아직 붐 아님" 유지. **대기업 중심 선별적 진전, 광범위한 붐은 미확인.** 관세체계 재편(IEEPA 무효→232 중심, 122 7/24 만료→301 전환)이 리쇼어링 인센티브 구조의 핵심 변수. [IoT Analytics, Atlantic Council, GAO, Tom's Hardware]
 
 ---
 
 ### 5. EV 배터리 공급망
 
-| 항목                  | 현황                                                                                                       | 출처                              |
-| --------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| 중국 흑연/음극재 통제 | 2025.10 리튬배터리·인조흑연 음극재 수출통제 추가(Decision No.58) → **11/7/25 즉시 유예**. 현재(6월) 무규제 | HSF Kramer, Mondaq, Crux Investor |
-| 유예 시한             | 리튬배터리·인조흑연 음극재·관련 장비/기술 **~2026.11.10** (정치·통상 관계 따라 재시행 여부 결정)           | HSF Kramer, Mondaq                |
-| 미국 흑연 취약성      | **100% 수입의존** (70년간 자국생산 無). 비중국산도 **중국 가공 경유**해 음극재화                           | autonocion, Crux Investor         |
-| 영향 기업             | LG에너지솔루션·삼성SDI·CATL·Tesla 등 주요 배터리 제조사                                                    | Crux Investor, IEA                |
-| 미국 대응             | **Lake Erie 사이트 확보** -- 미국 첫 배터리급 흑연 광산 추진 (70년 만)                                     | autonocion                        |
+| 항목                  | 현황                                                                                                 | 출처                              |
+| --------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------- |
+| 중국 흑연/음극재 통제 | 2025.10 리튬배터리·인조흑연 음극재 수출통제 추가(11/8 발효) → **11/8 패키지 유예**. 현재(6월) 무규제 | HSF Kramer, Mondaq, Crux Investor |
+| **유예 시한 (이중)**  | 리튬배터리·인조흑연 음극재·장비/기술 **~2026.11.10**. **대미 흑연 별도 ~2026.11.27**                 | HSF Kramer, Mondaq, Crux Investor |
+| 중국 흑연 지배력      | **천연흑연 생산 ~75%** + 다운스트림 가공 지배. 미국 **100% 수입의존** (70년간 자국생산 無)           | autonocion, Crux Investor         |
+| 미국 흑연 취약성      | 비중국산도 **중국 가공 경유**해 음극재화                                                             | autonocion, Crux Investor         |
+| 영향 기업             | LG에너지솔루션·삼성SDI·CATL·Tesla 등 주요 배터리 제조사                                              | Crux Investor, IEA                |
+| 미국 대응             | **Lake Erie 사이트 확보** -- 미국 첫 배터리급 흑연 광산 추진 (70년 만)                               | autonocion                        |
 
-**핵심 리스크 (6/13 갱신):** **흑연이 미국 배터리 공급망의 실질 취약점** -- 리튬보다 흑연(미국 100% 수입의존, 70년간 자국생산 無)이 핵심. 비중국산 흑연도 중국 가공 경유. 중국 흑연/배터리 수출통제는 **11/7/25 즉시 유예~2026.11.10**으로 현재 무규제이나, **11월 시한**이 희토류 Phase 2(~11.10)와 정확히 겹쳐 4분기 공급망 리스크 집중. 미국 Lake Erie 사이트로 70년 만에 자국 흑연 추진. LG에너지솔루션·삼성SDI 등 한국 배터리사 직접 노출. [HSF Kramer, Mondaq, Crux Investor, autonocion, IEA]
+**핵심 리스크 (6/20 갱신):** **흑연이 미국 배터리 공급망의 실질 취약점** -- 리튬보다 흑연(중국 천연흑연 ~75% 생산+가공 지배, 미국 100% 수입의존)이 핵심. 비중국산 흑연도 중국 가공 경유. 중국 흑연/배터리 수출통제는 **11/8 즉시 유예** 상태로 현재 무규제이나, **11/10(배터리·음극재) + 11/27(대미 흑연) 이중 시한**이 희토류 Phase 2(~11.10)와 4분기 집중. 미국 Lake Erie 사이트로 70년 만에 자국 흑연 추진. LG에너지솔루션·삼성SDI 등 한국 배터리사 직접 노출. [HSF Kramer, Mondaq, Crux Investor, autonocion, IEA]
 
 ---
 
 ### 6. 에너지 공급망
 
-#### 6-1. LNG 가격 및 공급 차질
+#### 6-1. LNG 가격 및 공급 차질 — 호르무즈 서명으로 하방, 카타르 수리 5년 구조적
 
-| 항목                   | 수치                                              | 출처                 |
-| ---------------------- | ------------------------------------------------- | -------------------- |
-| JKM (아시아, 5/29)     | **~$18.30/MMBtu** (7월 인도, mid-$18s)            | Global LNG Hub 06/01 |
-| 카타르 LNG 시설 피해   | 미사일 피해. 수리 **5년** 소요. 불가항력 유지     | IEA, QatarEnergy     |
-| 한국 LNG 호르무즈 의존 | 약 **30%** 경유                                   | EIA, Congress.gov    |
-| 정상화 전망            | "**2027년까지 완전 정상화 불가**" (에너지 경영진) | MUFG via CNBC        |
+| 항목                   | 수치                                                | 출처              |
+| ---------------------- | --------------------------------------------------- | ----------------- |
+| JKM (아시아)           | **~$18/MMBtu 부근** (7월 인도)                      | Global LNG Hub    |
+| 유럽 가스 전망         | **2026 +25% 전망** (중동 LNG 차질+카타르 시설 피해) | World Bank        |
+| 카타르 LNG 시설 피해   | 미사일 피해. 수리 **5년** 소요. 불가항력 유지       | IEA, QatarEnergy  |
+| 한국 LNG 호르무즈 의존 | 약 **30%** 경유                                     | EIA, Congress.gov |
+| 정상화 전망            | "**2027년까지 완전 정상화 불가**" (에너지 경영진)   | MUFG via CNBC     |
 
-**시사점 (6/13 갱신):** JKM ~$18.30(5/29, 7월 인도)로 온화한 날씨+이란 협상 진전 반영 안정세. **5/28 MOU→호르무즈 재개방 기대로 가격 하방**이나 **(1) 카타르 LNG 수리 5년 불변**, (2) 기뢰제거+ 보험 재인수 수개월, (3) Trump 미서명+톨링 쟁점, (4) 에너지 경영진 "2027까지 완전 정상화 불가"→**서명해도 LNG 프리미엄 최소 1~2년 지속** 구조. [Global LNG Hub, IEA, MUFG]
+**시사점 (6/20 갱신):** **6/17 호르무즈 MOU 서명→호르무즈 LNG 경로 재개 기대로 가격 하방** -- 유가 동반 하락(Brent ~$80, 주간 -8.5%). 그러나 **(1) 카타르 LNG 수리 5년 불변**, (2) 기뢰제거 30일+보험 재인수·선사 복귀 수개월, (3) 유럽 가스 WB +25% 전망 유지, (4) 에너지 경영진 "2027까지 완전 정상화 불가"→**서명해도 LNG 프리미엄 최소 1~2년 지속** 구조. 한국 LNG 호르무즈 30% 의존 리스크는 통항 정상화 시 점진 완화. [Global LNG Hub, World Bank, IEA, MUFG]
 
 ---
 
@@ -336,7 +365,8 @@ last_synced_from_db: 2026-06-13
 | --------------------- | ------------------------------------------------------ | --------------------- |
 | 한국 반도체 중국 수출 | 전체의 약 **40%**                                      | ITIF, KIEP            |
 | 한국 희토류 중국 의존 | **80%(자석)**, 일본 10%. 3~5월 자석수출 -93% 붕괴 경험 | CSIS, East Asia Forum |
-| 한국 배터리 흑연 노출 | LG엔솔·삼성SDI 중국 흑연 의존. ~11.10 유예 시한        | HSF Kramer, IEA       |
+| 한국 배터리 흑연 노출 | LG엔솔·삼성SDI 중국 흑연 의존. 11.10/11.27 유예 시한   | HSF Kramer, IEA       |
+| 한국 LNG 호르무즈     | 약 **30%** 경유. 6/17 MOU 서명→리스크 점진 완화 기대   | EIA, Congress.gov     |
 | 한국 목표             | 핵심소재 중국 의존 **80%→50%** (2030)                  | KDI, MOTIE            |
 
 #### 7-2. 한국 공급망 안보 정책
@@ -349,36 +379,40 @@ last_synced_from_db: 2026-06-13
 | 희토류 TF        | **범정부 희토류 공급망 TF** 가동                  | MOTIE, KIEP           |
 | 현대차 대응      | 완화기 비축(stockpiling)으로 Sm-Co 자석 수급 대응 | Asia Business Daily   |
 
-**핵심 딜레마 (6/13 갱신):** (1) **이란 5/28 MOU가 한국에 최대 호재이나 Trump 미서명+톨링 쟁점으로 불확실**: 서명 시 에너지·비료 인플레 완화+호르무즈 LNG 30% 의존 리스크 해소 기대, (2) **관세체계 재편(IEEPA 무효→232 중심, 122 7/24 만료→301 전환)**: 7월초 301 공청회·신규 부과에서 한국 추가 노출 + 미-한 반도체 15% 발효 중, (3) **희토류+배터리 흑연 11월 이중 시한 집중**: 희토류 의존 80%(자석)+흑연 11.10 유예 만료가 4분기 리스크 집중, 현대차 비축 대응, (4) 범정부 TF+2,500억원+비축 100일 추진이나 구조적 의존 해소엔 수년. [CSIS, MOTIE, KEIA, East Asia Forum, The Hill, HSF Kramer, Asia Business Daily]
+**핵심 딜레마 (6/20 갱신):** (1) **호르무즈 6/17 MOU 서명이 한국에 최대 호재 — 정상화 경로 진입**: 에너지·비료 인플레 완화+호르무즈 LNG 30% 의존 리스크 해소 기대. 단 Vance 핵협상 트립 연기+Tehran 보험 톨링 시도+60일 협상윈도우로 완전 해소까지 시차, (2) **관세체계 재편(IEEPA 무효→232 중심, 122 7/24 만료 D-34→301 전환)**: 301 신규 부과(16개국에 한국 포함)에서 한국 추가 노출 + 미-한 반도체 15% 발효 중, (3) **희토류+배터리 흑연 11월 이중·삼중 시한 집중**: 희토류 의존 80%(자석)+흑연 11.10/11.27 유예 만료가 4분기 리스크 집중, 현대차 비축 대응, (4) 범정부 TF+2,500억원+비축 100일 추진이나 구조적 의존 해소엔 수년. [CSIS, MOTIE, KEIA, East Asia Forum, NPR, HSF Kramer, Asia Business Daily]
 
 ---
 
 ### 핵심 취약점 Alert (단일 공급원 의존도 >= 70%)
 
-| 품목/분야              | 단일 의존도     | 의존국     | 대체 경로                                                                                              | 현실화 시 파급                                                     | 관련 자산                       |
-| ---------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------- |
-| 희토류 정제            | **91%**         | 중국       | MP/Lynas/Energy Fuels 가동. 4월 7종 규제 미해제. **11.10 Phase 2 + 한국 자석수출 -93% 경험**           | 반도체 장비, 방산 부품                                             | 한화에어로스페이스              |
-| 희토류 자석제조        | **92%**         | 중국       | FORGE 블록, 도시광산. Tb 중국외 $4,500~4,700/kg(5배 프리미엄), Dy 구득난                               | EV 모터/풍력발전기 생산 차질                                       | 현대차, LG에너지솔루션          |
-| 배터리 흑연            | **100% 수입**   | 중국 가공  | Lake Erie 사이트(미국 첫 광산, 70년만). 비중국산도 중국 가공 경유. **11.10 유예 만료**                 | EV 배터리 음극재 생산 차질                                         | LG에너지솔루션, 삼성SDI, Tesla  |
-| 최첨단 반도체 (대만)   | **90%+**        | 대만       | TSMC Arizona $165B(Fab3 Q3'26 장비/2027양산 앞당김)+Intel 18A HVM. PLA 2027 갭 일부 완화               | 글로벌 AI/전자 공급망 마비. 봉쇄 **$5T**/침공 $10.6T               | NVIDIA, Apple, 삼성전자         |
-| 호르무즈 원유/LNG/비료 | **35%/30%/30%** | 걸프       | **5/28 60일 MOU(Trump 미서명, 톨링 쟁점)→무톨 재개방 경로**. 기뢰제거·보험 수개월. 카타르 LNG 수리 5년 | 에너지-비료-식량 삼중 인플레. JKM $18.30/요소 WB +60%              | CJ제일제당, S-Oil, 한국가스공사 |
-| HBM 메모리 (NVIDIA)    | **~90%**        | SK하이닉스 | **삼성·SK·마이크론 6/5 Vera Rubin HBM4 3사 인증, Q3 출하**. SK 60~70%/삼성 25~30%/마이크론으로 분산    | AI 가속기 생산 차질                                                | NVIDIA, SK하이닉스, 삼성전자    |
-| 구리 정제              | **50%**         | 중국 황산  | 대체 소싱(캐나다·호주). Grasberg 완전재가동 2028 지연                                                  | 구리 공급 추가 차질. 50% Section232 6/8 발효, 사상최고 $6.65(5/13) | Freeport, Southern Copper       |
+| 품목/분야              | 단일 의존도     | 의존국     | 대체 경로                                                                                                                         | 현실화 시 파급                                                               | 관련 자산                       |
+| ---------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------- |
+| 희토류 정제            | **91%**         | 중국       | MP/Lynas/Energy Fuels 가동. 4월 7종 규제 미해제. **11.10 Phase 2 + 한국 자석수출 -93% 경험**                                      | 반도체 장비, 방산 부품                                                       | 한화에어로스페이스              |
+| 희토류 자석제조        | **92%**         | 중국       | FORGE 블록, 도시광산. Tb 중국외 $4,500~4,700/kg(5배 프리미엄), Dy 구득난                                                          | EV 모터/풍력발전기 생산 차질                                                 | 현대차, LG에너지솔루션          |
+| 배터리 흑연            | **100% 수입**   | 중국 가공  | Lake Erie 사이트(미국 첫 광산, 70년만). 비중국산도 중국 가공 경유. **11.10/11.27 유예 만료**                                      | EV 배터리 음극재 생산 차질                                                   | LG에너지솔루션, 삼성SDI, Tesla  |
+| 최첨단 반도체 (대만)   | **90%+**        | 대만       | TSMC Arizona $165B(Fab2 Q3'26 장비/2027양산 앞당김)+Intel 18A HVM. PLA 2027 갭 일부 완화                                          | 글로벌 AI/전자 공급망 마비. 봉쇄 **$5T**/침공 $10.6T                         | NVIDIA, Apple, 삼성전자         |
+| 호르무즈 원유/LNG/비료 | **20%/30%/30%** | 걸프       | **6/17 MOU 서명→무톨 통항 재개 개시(통항량 급증).** 기뢰제거 30일+보험 재인수 수개월. 카타르 LNG 수리 5년. Vance 핵협상 연기 잔존 | 에너지-비료-식량 삼중 인플레(완화 진행). Brent ~$80/요소 $850+/유럽가스 +25% | CJ제일제당, S-Oil, 한국가스공사 |
+| HBM 메모리 (NVIDIA)    | **~90%**        | SK하이닉스 | 삼성·SK·마이크론 Vera Rubin HBM4 인증, Q3 출하. SK 60~70%/삼성 25~30%/마이크론으로 분산                                           | AI 가속기 생산 차질                                                          | NVIDIA, SK하이닉스, 삼성전자    |
+| 구리 정제              | **50%**         | 중국 황산  | 대체 소싱(캐나다·호주). Grasberg 완전재가동 2028 지연                                                                             | 구리 공급 추가 차질. 반제품 50% Section232 6/8 발효, **정제구리 6/30 검토**  | Freeport, Southern Copper       |
 
 ---
 
 ## 업데이트 로그
 
-| 날짜       | 에이전트   | 변경 내용                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-06-13 | kb-updater | 주간 갱신(14회 검색, +14 DB레코드): **WCI Shanghai-Rotterdam $3,768(+5% WoW, 6/4 +23% 후속 피크시즌 지속) vs BDI 2,818(-3.36% 8연속하락 2026저점, Capesize 4,441) 디커플링 심화**. **호르무즈 5/28 60일 MOU 잠정합의 but Trump 미서명+이란 톨링시스템이 핵심걸림돌(Rubio 반대)**. **구리 50% Section232 6/1 proclamation 6/8 발효(2027.12까지)+6/30 정제구리 검토(2027.01 15%→2028 30%), 사상최고 $6.65(5/13)서 LME $13,100~13,400 조정, 적자 600kt(MS)**. **희토류 4월 7종규제 미해제+Phase2 유예~11.10, Tb oxide 중국외 $4,500~4,700 vs 中 $914~923(5배), Dy 구득난, China REPI 252.4, 한국 자석 中의존 80%**. **HBM4 6/5 삼성·SK·마이크론 3사인증 Q3출하(SK 60~70%), Huang SK증산 촉구**. **Gartner memflation 상향 DRAM+125%/NAND+234%**. **TSMC N2 90~100K 매진+Arizona Fab3 Q3'26 장비반입(2027 양산 앞당김)/Intel 18A HVM**. **관세 IEEPA 2/20 무효→232 영향없음(반도체25%/구리50%), 122 10% CIT무효 항소중·징수지속 7/24만료→301 7월초 공청회**. **흑연 11/7/25 유예~11.10(미국 100%수입의존, Lake Erie 사이트)**. LNG JKM ~$18.30. FAO 130.8(곡물+2.6%) |
-| 2026-06-06 | kb-updater | 주간 갱신(16회 검색, +23 DB레코드): 컨테이너운임 6월 피크시즌 급등(Shanghai-Rotterdam $3,579 +25%/Genoa $5,089 +20%) vs BDI 3,037(-2.8% 6연속하락) 디커플링. 이란 6/1 레바논공세로 협상중단→재개, 5/28 60일MOU 잠정타결 but Trump 미서명. 구리 COMEX ~$5.89(사상최고 $6.65~6.71 5/13). 희토류 4월규제 미해제+Phase2 유예~11.10. HBM4 NVIDIA Vera Rubin 6/1 풀생산+6/5 3사인증. DRAM/NAND Q3~Q4피크. TSMC N2 매진+Fab21 P2/Intel 18A HVM. 관세 IEEPA 무효→232중심. §5 EV배터리. LNG JKM$18.30. FAO 130.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 2026-05-30 | kb-updater | 주간 갱신(28회 검색, +12 DB레코드): WCI $2,800(+3% WoW 4주연속), BDI 3,226 월간+20% §1-1b신규. 이란 5/28 잠정합의 but Trump 미서명. Brent $91.2~91.7(5월-17%). 구리 $6.36(사상최고 $6.71 인트라데이 5/13). 희토류 베이징 정상회담 후 4월규제 미해제. DRAM Q2 +58~63%/NAND +70~75%. HBM SK70%(UBS)/삼성6월풀공급. §6-1 제조PMI 신규. Section122 CIT무효→CAFC정지. 시나리오 Bull30%/Bear25%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 2026-05-25 | kb-updater | 주간 갱신: 이란 MOU 합의 임박(5/24), Brent $98~103, WCI $2,712(+6% 3주연속), PGSA 5/18 정식운영, 수에즈 -70%, 구리 $6.64 사상최고, 희토류 Dy +105% YTD, 요소 $502, TSMC N2 50K→140K, HBM4 SK 70%, Section 301 최대 60개국                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 2026-05-16 | kb-updater | 주간 갱신: WCI $2,553(+12%), 이란 PGSA 통행료 $2M/척, 트럼프 이란안 거부(5/10), Brent $107~111, 구리 $6.53, 삼성 HBM4 통과, Section 122 CIT 무효, 요소 $562                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| 2026-05-09 | kb-updater | 주간 갱신: WCI $2,286, Brent $104, 구리 $6.24, 요소 $616, FAO 130.7, TSMC 5팹 동시양산, Intel 18A HVM, Section 301 공청회 완료                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 2026-05-07 | kb-updater | 주간 갱신: Project Freedom 실패, WTI $95.66/Brent $101.96, WCI $2,216, DRAM Q2 +58~63%/NAND +70~75%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| 2026-05-02 | kb-updater | 전면 갱신: WCI $2,216, UAE OPEC 탈퇴 발효, 구리 $5.98, HBM4 양산 중, MATCH 본회의 대기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 2026-04-25 | kb-updater | 전면 갱신: 호르무즈 '개방→재봉쇄→해군대치', WCI $2,232, MATCH 하원외교위 통과                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 2026-04-18 | kb-updater | 전면 갱신: 호르무즈 "완전 개방" 선언, WCI $2,246                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 2026-04-13 | kb-updater | 전면 갱신: 물류/원자재/반도체/관세/리스크 전면 신규                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 날짜       | 에이전트   | 변경 내용                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-20 | kb-updater | 주간 갱신(15회 검색, +15 DB레코드): **호르무즈 6/17 MOU 정식 서명(제네바, 파키스탄 중재)+통항 재개 개시(선박추적 급증)** -- 무톨통항+해군봉쇄해제+다전선휴전. 기뢰제거 30일내. **유가 Brent ~$80(주간 -8.5%)**. 잔존리스크: Vance 6/19 핵협상 트립 연기(logistics)+Tehran 보험톨링 시도+60일 협상윈도우. 시나리오 Bull 30→45%/Bear 25→15%. **WCI 종합 $3,969(+12% WoW, 18개월 최고)/Shanghai-Rotterdam $4,342(+15%) vs BDI 2,771(9연속하락 2026저점, Capesize 4,441) 디커플링 심화(단 BDI YoY +59%)**. **Maersk 2년만 홍해 첫 통과(stepwise, 제한)+MSC·Hapag 케이프 우회 디폴트, 후티 영상위협 재부각, 연말 정상화 추정**. **구리 반제품 50% 발효+정제구리 6/30 검토시한 임박(2027.01 15%→2028 30%), COMEX $6.65(5/13)서 LME $13,100~13,400**. **희토류 4월 7종 미해제+Phase2 ~11.10 (변화없음)**. **메모리 SK 2026 sold out+Micron 컨슈머 철수+공급자 가격결정력 회복(영업이익률 40~50%), HBM4 후기~2027초 양산, HBM DRAM 23% 잠식**. **TSMC Arizona Fab2 Q3'26 장비반입(N3/N2 2027양산 앞당김)+Intel 18A HVM**. **관세 122 7/24 만료 D-34→301 전환(USTR 조사2건 60+국·16개국 반도체)**. **흑연 11.10/11.27 이중 유예(중국 천연흑연 75%, 미국 100%수입)**. 비료 WB +31~33%(요소 $850+). FAO 130.8 |
+| 2026-06-13 | kb-updater | 주간 갱신(14회 검색, +14 DB레코드): WCI Shanghai-Rotterdam $3,768(+5% WoW) vs BDI 2,818(-3.36% 8연속하락) 디커플링. 호르무즈 5/28 60일 MOU 잠정합의 but Trump 미서명+이란 톨링시스템 핵심걸림돌(Rubio 반대). 구리 50% Section232 6/8 발효+6/30 정제구리 검토. 희토류 Tb oxide 중국외 5배 프리미엄, China REPI 252.4. HBM4 6/5 3사인증 Q3출하. Gartner DRAM+125%/NAND+234%. TSMC N2 매진+Arizona Fab3 Q3'26. 관세 122 7/24만료→301. 흑연 ~11.10. LNG JKM ~$18.30. FAO 130.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 2026-06-06 | kb-updater | 주간 갱신(16회 검색, +23 DB레코드): 컨테이너운임 6월 피크시즌 급등(Shanghai-Rotterdam $3,579 +25%/Genoa $5,089 +20%) vs BDI 3,037(-2.8% 6연속하락) 디커플링. 이란 6/1 레바논공세로 협상중단→재개, 5/28 60일MOU 잠정타결 but Trump 미서명. 구리 COMEX ~$5.89(사상최고 $6.65~6.71 5/13). 희토류 4월규제 미해제+Phase2 유예~11.10. HBM4 NVIDIA Vera Rubin 6/1 풀생산+6/5 3사인증. DRAM/NAND Q3~Q4피크. TSMC N2 매진+Fab21 P2/Intel 18A HVM. 관세 IEEPA 무효→232중심. §5 EV배터리. LNG JKM$18.30. FAO 130.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 2026-05-30 | kb-updater | 주간 갱신(28회 검색, +12 DB레코드): WCI $2,800(+3% WoW 4주연속), BDI 3,226 월간+20% §1-1b신규. 이란 5/28 잠정합의 but Trump 미서명. Brent $91.2~91.7(5월-17%). 구리 $6.36(사상최고 $6.71 인트라데이 5/13). 희토류 베이징 정상회담 후 4월규제 미해제. DRAM Q2 +58~63%/NAND +70~75%. HBM SK70%(UBS)/삼성6월풀공급. §6-1 제조PMI 신규. Section122 CIT무효→CAFC정지. 시나리오 Bull30%/Bear25%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 2026-05-25 | kb-updater | 주간 갱신: 이란 MOU 합의 임박(5/24), Brent $98~103, WCI $2,712(+6% 3주연속), PGSA 5/18 정식운영, 수에즈 -70%, 구리 $6.64 사상최고, 희토류 Dy +105% YTD, 요소 $502, TSMC N2 50K→140K, HBM4 SK 70%, Section 301 최대 60개국                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 2026-05-16 | kb-updater | 주간 갱신: WCI $2,553(+12%), 이란 PGSA 통행료 $2M/척, 트럼프 이란안 거부(5/10), Brent $107~111, 구리 $6.53, 삼성 HBM4 통과, Section 122 CIT 무효, 요소 $562                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 2026-05-09 | kb-updater | 주간 갱신: WCI $2,286, Brent $104, 구리 $6.24, 요소 $616, FAO 130.7, TSMC 5팹 동시양산, Intel 18A HVM, Section 301 공청회 완료                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 2026-05-07 | kb-updater | 주간 갱신: Project Freedom 실패, WTI $95.66/Brent $101.96, WCI $2,216, DRAM Q2 +58~63%/NAND +70~75%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| 2026-05-02 | kb-updater | 전면 갱신: WCI $2,216, UAE OPEC 탈퇴 발효, 구리 $5.98, HBM4 양산 중, MATCH 본회의 대기                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 2026-04-25 | kb-updater | 전면 갱신: 호르무즈 '개방→재봉쇄→해군대치', WCI $2,232, MATCH 하원외교위 통과                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 2026-04-18 | kb-updater | 전면 갱신: 호르무즈 "완전 개방" 선언, WCI $2,246                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 2026-04-13 | kb-updater | 전면 갱신: 물류/원자재/반도체/관세/리스크 전면 신규                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+
+</content>
+</invoke>
