@@ -21,7 +21,7 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-19 (market-data-collector 이브닝 갱신 반영)**
+> **최종 갱신: 2026-06-20 (market-data-collector 모닝 갱신 반영)**
 
 ⚠️ **P0 2건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 6일 경과)
 
@@ -30,7 +30,7 @@ lint_p2_count: 2
 | `industry/*.md` 18종            | 2026-06-08 | 8일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
 | `portfolio/model_portfolios.md` | 2026-06-08 | 8일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 11일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/19 이브닝 갱신 완료(KOSPI 9,052·닛케이 71,250·WTI $75.44·Gold $4,173·BTC ~$62,800·F&G 19 극단공포·미-이란 정식 서명 확정 반영, valid_until 2026-06-22). economic_calendar Core PCE 발표일 6/25 정정 반영.
+> **브리핑 진행 가능 여부:** industry KB 만료 12일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/20 모닝 갱신 완료(S&P 7,500.58(+1.08%)·NASDAQ 26,517.93(+1.91%)·VIX 16.40·10Y 4.46%·BTC ~$62,328·F&G 19 극단공포·6/19 Juneteenth 휴장 반영, valid_until 2026-06-22). economic_calendar valid_until 2026-06-26 유지.
 
 > [해소 참조] `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소(valid_until 2026-06-19, PARTIAL).
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
