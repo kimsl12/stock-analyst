@@ -1,13 +1,13 @@
 ---
-updated: 2026-06-14
+updated: 2026-06-21
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-06-14
-lint_last_post_fix: 2026-06-14
+lint_last_run: 2026-06-21
+lint_last_post_fix: 2026-06-21
 lint_mode: full
-lint_p0_count: 2
-lint_p1_count: 4
-lint_p2_count: 2
+lint_p0_count: 3
+lint_p1_count: 3
+lint_p2_count: 3
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -21,52 +21,51 @@ lint_p2_count: 2
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-20 (market-data-collector 모닝 갱신 반영)**
+> **최종 갱신: 2026-06-21 (wiki-linter full 점검)**
 
-⚠️ **P0 2건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 6일 경과)
+⚠️ **P0 3건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 13일 경과) + prediction_markets.md 오늘 만료
 
-| 파일                            | 만료일     | 경과일 | 권장 조치                                                     |
-| ------------------------------- | ---------- | ------ | ------------------------------------------------------------- |
-| `industry/*.md` 18종            | 2026-06-08 | 8일    | kb-updater 재수집 위임. 주간리포트/종목분석 전 우선 처리 권장 |
-| `portfolio/model_portfolios.md` | 2026-06-08 | 8일    | /리밸런싱 또는 /주간리포트 시 갱신                            |
+| 파일                            | 만료일     | 경과일 | 권장 조치                                                           |
+| ------------------------------- | ---------- | ------ | ------------------------------------------------------------------- |
+| `industry/*.md` 18종            | 2026-06-08 | 13일   | kb-updater 재수집 위임. 6/25 PCE·6/22 미국장 재개 전 우선 처리 권장 |
+| `portfolio/model_portfolios.md` | 2026-06-08 | 13일   | /리밸런싱 또는 /주간리포트 시 갱신                                  |
+| `market/prediction_markets.md`  | 2026-06-21 | 0일    | kb-updater 재수집 위임. 6/25 PCE 컨센 반영 필요                     |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 12일 경과이나 주요 수치 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market KB 6/20 모닝 갱신 완료(S&P 7,500.58(+1.08%)·NASDAQ 26,517.93(+1.91%)·VIX 16.40·10Y 4.46%·BTC ~$62,328·F&G 19 극단공포·6/19 Juneteenth 휴장 반영, valid_until 2026-06-22). economic_calendar valid_until 2026-06-26 유지.
+> **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market/daily_snapshot valid_until 2026-06-22(내일) — 6/22 미국장 재개(6/19 Juneteenth 이후 첫 정규장) 데이터 반영 필요. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
 
-> [해소 참조] `market/prediction_markets.md` 만료는 2026-06-12 재수집으로 해소(valid_until 2026-06-19, PARTIAL).
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/16 이브닝 market-data-collector 갱신 완료(KOSPI 8,718.16 +2.01%·KOSDAQ 1,019.43 -1.41%·닛케이 69,367 +0.07%·WTI $80.47·Gold $4,357.93·BTC $65,845·F&G 16 극단공포·S&P 선물 +0.46% 프리마켓 반영, valid_until 2026-06-17).
-> [해소 참조] `market/economic_calendar.md`는 6/16 이브닝 갱신 완료(FOMC 1일차 진행중 반영 + 6/17 소매판매·FOMC 결정·Warsh 기자회견 일정 최신화, valid_until 2026-06-20).
+> [해소 참조] `market/daily_snapshot.md`는 6/20 모닝 market-data-collector 갱신 완료(S&P 7,500.58(+1.08%)·NASDAQ 26,517.93(+1.91%)·VIX 16.40·10Y 4.46%·BTC ~$62,328·F&G 19 극단공포·6/19 Juneteenth 휴장 반영, valid_until 2026-06-22).
+> [해소 참조] `market/economic_calendar.md`는 6/20 모닝 갱신 완료(6/25 Core PCE·6/22 미국장 재개 포함, valid_until 2026-06-26).
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-06-14 full)
+## P1 — 이번 주 조치 (탐지: 2026-06-21 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
-| 파일                           | 문제                                                         | 심각도 | 권장 조치                                                                                |
-| ------------------------------ | ------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------------- |
-| `market/daily_snapshot.md`     | ✅ **해소** — 6/15 이브닝 갱신 완료 (valid_until 06-17 유지) | 해소   | 완료. 이란 평화협정 확정·닛케이 69,317 역대최고·KOSPI ~+5%·WTI $80.14·USD/KRW 1,508 반영 |
-| `market/correlation_matrix.md` | valid_until 2026-06-16 (D-2). 6/13 갱신                      | 중간   | 이브닝브리핑 또는 kb-updater 회전                                                        |
-| `market/surprise_index.md`     | valid_until 2026-06-17 (D-3). 6/13 갱신                      | 중간   | 이브닝브리핑 회전                                                                        |
-| `market/economic_calendar.md`  | ✅ **해소** — 6/15 이브닝 갱신 완료 (valid_until 06-19 유지) | 해소   | 완료. 이란 협정 확정 + 6/15~19 FOMC 주간 최신화 반영. FOMC 발표(6/17) 후 재수집 권장     |
+| 파일                           | 문제                                                                            | 심각도 | 권장 조치                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------- |
+| `market/daily_snapshot.md`     | valid_until 2026-06-22 (D-1). **6/21 09:14 모닝 갱신 완료**(updated=2026-06-21) | 낮음   | 갱신 불필요 — 6/21 모닝에 이미 재수집(크립토·주말뉴스 반영). 다음 실데이터는 6/22 미국장 재개 후 모닝 자동 갱신 |
+| `market/correlation_matrix.md` | valid_until 2026-06-23 (D-2). 6/20 갱신                                         | 중간   | kb-updater 재수집 위임 (6/25 PCE 전 최신 상관계수 확보 권장)                                                    |
+| `macro/science_tech.md`        | valid_until 2026-06-24 (D-3). 5/25 갱신 27일 경과                               | 중간   | kb-updater 재수집 위임                                                                                          |
 
-> [해소 2026-06-14] daily_snapshot → /KB점검 auto-trigger 후 kb-updater 즉시 재수집 완료(valid_until 06-17). 활성 P1 4→3.
-> [P0 승격 2026-06-14] industry 18종 + model_portfolios → 만료 6일 경과로 P0으로 이동.
-> [해소 참조 2026-06-07] correlation_matrix·surprise_index → 06-13 재갱신 완료(정상 주기).
-> [해소 참조 2026-06-12] economic_calendar → 06-13 재갱신(valid_until 06-19) 완료.
-> [해소 2026-06-15] daily_snapshot·economic_calendar → 6/15 이브닝 market-data-collector 갱신 완료. 이란 평화협정 확정 반영.
+> [해소 참조 2026-06-15~16] correlation_matrix·surprise_index·economic_calendar → 이브닝 브리핑 + FOMC 결과 반영 갱신 완료.
+> [해소 참조 2026-06-21] market/surprise_index → valid_until 확인 불필요. market/economic_calendar valid_until 2026-06-26 유지.
+> [P1 정정 2026-06-21 12:10] daily_snapshot 은 6/21 09:14 모닝에 이미 갱신됨(updated=2026-06-21) — wiki-linter 가 "6/20 갱신"으로 오기록하며 auto-trigger 발화한 false-positive. 메인이 dispatch 생략(일요일 휴장·신규 데이터 없음, 다음 실데이터 6/22 미국장 재개) + 🚨 마커 해소. correlation_matrix D-2 / science_tech D-3 유지.
+
+> **P1 해결완료 2026-06-21:** 직전 P1 4건(daily_snapshot·correlation_matrix·surprise_index·economic_calendar) 모두 해소 확인(valid_until 경과 또는 재갱신 완료).
 
 ---
 
-## P2 — 모니터링 (탐지: 2026-06-14 full)
+## P2 — 모니터링 (탐지: 2026-06-21 full)
 
 > 30일+ 미갱신 또는 구조 점검 항목. 즉시 조치 불필요, 추세 관찰만.
 
 | 파일                               | 문제                                                                                                                                                                                 | 권장 조치                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| `portfolio/rebalancing_history.md` | updated 2026-04-14 **61일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                             | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)              |
+| `portfolio/rebalancing_history.md` | updated 2026-04-14 **68일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                             | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)              |
 | 루트 레거시 KB 4종                 | `us_monetary_policy.md`·`geopolitics.md`·`korea_economy.md`·`global_risk_factors.md` (루트) 가 교차참조 맵에서 참조되나 데이터는 `macro/` 버전과 분리·구버전(04-13~05-06). 구조 중복 | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후) |
-| analysis/ 30~90일 파일             | 30~90일 미갱신 파일 254개 존재 (5/5 전후 분석 포함). 90일 초과 0건 — 삭제 불필요.                                                                                                    | wiki/analysis/ scorecard 70점+ 확인 후 아카이브 검토       |
+| analysis/ 30~90일 파일             | 30~90일 미갱신 파일 약 270개 존재 (5/5 전후 분석 포함). 90일 초과: 2026-03-23 이전 분석 해당 여부 확인 필요 (현재 가장 오래된 파일 5/5 기준 — 47일 경과로 90일 미도달, 삭제 불필요). | wiki/analysis/ scorecard 70점+ 확인 후 아카이브 검토       |
 
 ---
 
@@ -546,15 +545,15 @@ SUPPLY_CHAIN_PLACEHOLDER
 
 > wiki-linter가 주간 점검 시 이 맵 기준으로 수치 일관성 검증.
 
-| 수치          | 파일 A                                                                                | 파일 B                                                                                     | 마지막 검증 | 상태                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)                           | `macro/us_monetary_policy.md`: **3.50~3.75%** (06-07 갱신, 3연속 동결·6/16~17 Warsh FOMC)  | 06-14       | ✅ 일치 — 06-07 재수집 완료. 수치 불변(3연속 동결), valid_until 2026-07-07                                                                        |
-| VIX           | `macro/global_risk_factors.md`: **19.44** (06-14 갱신, FRED VIXCLS 6/11)              | `market/daily_snapshot.md`: **19.14** (06-13 갱신, 6/12 추정치)                            | 06-14       | ✅ 일치 (±1.6% 시점차, 허용 범위 — 이전 05-31 수치 15.32는 현행화 완료)                                                                           |
-| DXY           | `macro/global_risk_factors.md`: DTWEXBGS **120.08** (06-05, Trade Weighted 광의 지수) | `market/daily_snapshot.md`: DXY **~99.75** (06-12, 협의 달러 인덱스)                       | 06-14       | ℹ️ 지수 정의 상이 — global_risk_factors는 DTWEXBGS(광의), daily_snapshot은 협의 DXY. 각각 SSOT 일관 사용 중. 모순 아님                            |
-| 원/달러       | `macro/korea_economy.md`: **~1,520원대** (06-13 갱신, 6/11~12 기준)                   | `market/daily_snapshot.md`: **~1,520원** (06-13, 6/11 1,527.92 → 6/12 미확인)              | 06-14       | ✅ 일치 (±0.5% 시점차, 허용 범위)                                                                                                                 |
-| S&P 500       | `macro/us_economy.md`: 7,473 (05-25 갱신, 지수는 daily_snapshot 소관)                 | `market/daily_snapshot.md`: **S&P 7,431.46** (06-13 갱신, 6/12 종가)                       | 06-14       | ℹ️ 지수 SSOT은 daily_snapshot. us_economy는 매크로(금리·물가) 중심. 수치차 -0.6% = us_economy stale이나 매크로 맥락상 허용                        |
-| WTI           | `macro/us_economy.md`: $96.60 (05-25, stale)                                          | `industry/energy.md`: **~$83.5** (06-14 갱신) / `market/daily_snapshot.md`: ~$83.5 (06-13) | 06-14       | ⚠️ us_economy.md WTI $96.60 stale (실제 ~$83.5, -13.2% 괴리). us_economy는 매크로 영향 기술용이나 참조 시 energy.md/daily_snapshot 우선 사용 권장 |
-| Gold          | `macro/global_risk_factors.md`: **~$4,441~4,491** (06-14 갱신, 6월 전망치)            | `market/daily_snapshot.md`: 6/12 수치 미수집 (daily_snapshot Gold 섹션 갱신 필요)          | 06-14       | ℹ️ Gold SSOT은 daily_snapshot이나 최신치 미수집 — global_risk_factors 전망치 임시 참조. daily_snapshot 다음 갱신 시 현행화 필요                   |
+| 수치          | 파일 A                                                                                | 파일 B                                                                                          | 마지막 검증 | 상태                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 미국 Fed 금리 | `us_monetary_policy.md` (루트): redirect 포인터 (수치 없음)                           | `macro/us_monetary_policy.md`: **3.50~3.75%** (06-07 갱신, 3연속 동결·6/16~17 Warsh FOMC)       | 06-21       | ✅ 일치 — 06-07 재수집 완료. 수치 불변(만장일치 동결·점도표 인상 플립), valid_until 2026-07-07                              |
+| VIX           | `macro/global_risk_factors.md`: **18.44** (06-21 갱신, FRED VIXCLS 6/17)              | `market/daily_snapshot.md`: **16.40** (06-20 갱신, 6/18 종가·6/19 Juneteenth 휴장)              | 06-21       | ✅ 일치 (시점차 — 6/17 FOMC 전후 18대, 6/18 반등 후 16대. ±13% 시점차이나 동일 방향·허용 범위)                              |
+| DXY           | `macro/global_risk_factors.md`: DTWEXBGS **119.51** (06-21 갱신, Trade Weighted 광의) | `market/daily_snapshot.md`: DXY **~100.6** (06-20 갱신, 6/19 추산·협의 달러 인덱스)             | 06-21       | ℹ️ 지수 정의 상이 — global_risk_factors는 DTWEXBGS(광의), daily_snapshot은 협의 DXY. 각각 SSOT 일관 사용 중. 모순 아님      |
+| 원/달러       | `macro/korea_economy.md`: **~1,520원대** (06-13 갱신, 6/11~12 기준)                   | `market/daily_snapshot.md`: **1,530.55원** (06-20 갱신, 6/19 마감)                              | 06-21       | ℹ️ korea_economy.md 수치 1주+ 경과(stale). daily_snapshot 최신치 1,530.55 우선 참조. korea_economy 다음 갱신 시 현행화 필요 |
+| S&P 500       | `macro/us_economy.md`: **7,500.58** (06-20 갱신, 6/18 종가)                           | `market/daily_snapshot.md`: **7,500.58** (06-20 갱신, 6/18 종가·6/19 Juneteenth 휴장 불변)      | 06-21       | ✅ 일치 — 양 파일 동일 수치. 6/22 미국장 재개 후 갱신 필요                                                                  |
+| WTI           | `macro/us_economy.md`: **$78.15** (06-20 갱신, 6/19 수집)                             | `industry/energy.md`: **~$75~78** (06-21 갱신) / `market/daily_snapshot.md`: **$75.44** (06-20) | 06-21       | ✅ 일치 (±3.6% 범위 내 — 이란 MOU 서명 후 급락 반영. us_economy $78.15 vs energy/daily_snapshot $75~78 허용 범위)           |
+| Gold          | `macro/global_risk_factors.md`: 전망치 기재 (구체 현물가 미수집)                      | `market/daily_snapshot.md`: **$4,173.05** (06-20 갱신, 6/19 수집)                               | 06-21       | ℹ️ Gold SSOT은 daily_snapshot($4,173.05, 6/19). global_risk_factors는 구조적 전망 기술. 수치 참조 시 daily_snapshot 우선    |
 
 ---
 
