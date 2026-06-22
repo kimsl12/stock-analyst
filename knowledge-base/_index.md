@@ -1,5 +1,5 @@
 ---
-updated: 2026-06-21
+updated: 2026-06-22
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
 lint_last_run: 2026-06-21
@@ -31,10 +31,10 @@ lint_p2_count: 3
 | `portfolio/model_portfolios.md` | 2026-06-08 | 13일   | /리밸런싱 또는 /주간리포트 시 갱신                                  |
 | `market/prediction_markets.md`  | 2026-06-21 | 0일    | kb-updater 재수집 위임. 6/25 PCE 컨센 반영 필요                     |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. market/daily_snapshot valid_until 2026-06-22(내일) — 6/22 미국장 재개(6/19 Juneteenth 이후 첫 정규장) 데이터 반영 필요. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
+> **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
 
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/20 모닝 market-data-collector 갱신 완료(S&P 7,500.58(+1.08%)·NASDAQ 26,517.93(+1.91%)·VIX 16.40·10Y 4.46%·BTC ~$62,328·F&G 19 극단공포·6/19 Juneteenth 휴장 반영, valid_until 2026-06-22).
+> [해소 참조] `market/daily_snapshot.md`는 6/22 모닝 market-data-collector 갱신 완료(BTC ~$64,227·SOL ~$72.34·F&G 15 극단공포·US선물 ES+0.98%/NQ+1.64%·KOSPI 개장 9,288·LPR 동결·WTI $76.51·Gold $4,150, valid_until 2026-06-23).
 > [해소 참조] `market/economic_calendar.md`는 6/20 모닝 갱신 완료(6/25 Core PCE·6/22 미국장 재개 포함, valid_until 2026-06-26).
 
 ---
@@ -45,7 +45,7 @@ lint_p2_count: 3
 
 | 파일                           | 문제                                                                            | 심각도 | 권장 조치                                                                                                       |
 | ------------------------------ | ------------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------- |
-| `market/daily_snapshot.md`     | valid_until 2026-06-22 (D-1). **6/21 09:14 모닝 갱신 완료**(updated=2026-06-21) | 낮음   | 갱신 불필요 — 6/21 모닝에 이미 재수집(크립토·주말뉴스 반영). 다음 실데이터는 6/22 미국장 재개 후 모닝 자동 갱신 |
+| `market/daily_snapshot.md`     | ✅ **6/22 09:10 모닝 갱신 완료**(updated=2026-06-22, valid_until 2026-06-23)      | 해소   | 6/22 모닝 재수집 완료 — 크립토·US선물·KOSPI 개장·LPR·환율·원자재 반영                                         |
 | `market/correlation_matrix.md` | valid_until 2026-06-23 (D-2). 6/20 갱신                                         | 중간   | kb-updater 재수집 위임 (6/25 PCE 전 최신 상관계수 확보 권장)                                                    |
 | `macro/science_tech.md`        | valid_until 2026-06-24 (D-3). 5/25 갱신 27일 경과                               | 중간   | kb-updater 재수집 위임                                                                                          |
 
