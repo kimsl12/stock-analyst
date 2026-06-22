@@ -1,17 +1,17 @@
 ---
-updated: 2026-06-21
-valid_until: 2026-06-25
+updated: 2026-06-22
+valid_until: 2026-06-26
 file: surprise_index
 category: market
 confidence: medium-high
-collection_status: UPDATED (6/21 일요일 이브닝 full 에디션 — 주말, 신규 경제지표 없음 / 미국 스코어 +13 유지 / 주간 실업수당(6/14주) 보류 지속 / 6/25 Core PCE ★★★★★ 최대 이벤트 / BTC ETF 누적 유출 ~$5.4B 갱신)
+collection_status: UPDATED (6/22 이브닝 full 에디션 — 미국 스코어 +13 유지 / 중국 LPR 동결(6/22 신규, 중립) / 주간 실업수당(6/14주) 보류 지속 / 6/23 Flash PMI 대기 / 6/25 Core PCE ★★★★★)
 sources:
-  - "직전 회차(2026-06-20 이브닝 full 에디션) surprise_index.md — 미국 스코어 +13"
-  - "6/21 신규 경제지표 없음 — 일요일 주말 전면 휴장. 스코어 변동 없음."
-  - "6/21 09:00 KST 크립토 신규(snapshots_2026.jsonl): BTC ~$63,609 보합, ETH ~$1,803, SOL ~$71.84(+5%), F&G 15 소폭 회복 (비경제지표 — 스코어 미반영)"
-  - "BTC ETF 6월 MTD 누적 순유출 ~$5.4B 갱신(snapshots_2026.jsonl 6/21 09:00)"
-  - "6/22~26 예정: 중국 LPR(6/22), Flash PMI 미국·유럽(6/23), Core PCE(6/25 ★★★★★), GDP 최종치(6/25)"
+  - "직전 회차(2026-06-21 이브닝 full 에디션) surprise_index.md — 미국 스코어 +13, 중국 +2"
+  - "6/22 중국 PBOC LPR 결정: 1년 LPR 3.45% 동결, 5년 LPR 3.95% 동결 (컨센 인하 기대 불충족 — 중립 판정, 스코어 변동 없음)"
+  - "6/22 미국 신규 경제지표 없음 — KST 20시 기준 미국 정규장 미개장(KST 22:30 재개장 예정)"
+  - "시스템 컨텍스트 2026-06-22: KOSPI 9,113.67(+0.68%), USD/KRW 1,530.57(-0.54%) — 비경제지표"
   - "주간 실업수당(6/14주) 보류 지속 — 확정 수치 미수집. Miss(>230K) 확정 시 +13→+12"
+  - "6/23 Flash PMI(미국·유럽), 6/25 Core PCE(★★★★★) + GDP 최종치 대기"
 ---
 
 # 경제 서프라이즈 지수 (Surprise Index)
