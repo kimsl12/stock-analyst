@@ -34,7 +34,7 @@ lint_p2_count: 3
 > **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
 
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/23 모닝 market-data-collector 갱신 완료(S&P +0.12%·NASDAQ -0.19%·Dow +0.29%·Russell 2000 3,004(사상 첫 3,000 돌파)·10Y 4.48%·USD/KRW 1,538·WTI $74.3·Gold $4,190·BTC $63,902·F&G 23 극단공포, valid_until 2026-06-24).
+> [해소 참조] `market/daily_snapshot.md`는 6/23 이브닝 market-data-collector 갱신 완료(KOSPI -9.99% 서킷브레이커·S&P 7,472.79(6/22 종가)·프리마켓 선물 -1.43%·BTC $62,290·F&G 크립토 23 극단공포, valid_until 2026-06-24).
 > [해소 참조] `market/economic_calendar.md`는 6/20 모닝 갱신 완료(6/25 Core PCE·6/22 미국장 재개 포함, valid_until 2026-06-26).
 
 ---
