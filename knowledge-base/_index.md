@@ -34,7 +34,7 @@ lint_p2_count: 3
 > **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
 
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~3.75%·6/16~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
-> [해소 참조] `market/daily_snapshot.md`는 6/26 모닝 market-data-collector 갱신 완료(Core PCE 5월 YoY 3.40%·MoM +0.3% 컨센 부합·S&P 7,357.49(-0.01%)·NASDAQ 25,358.60(-0.46%)·Dow 51,920.62(+0.14%)·VIX 18.89·10Y 4.41%·Gold $4,000 하회·Crypto F&G 24(Extreme Fear), valid_until 2026-06-26). D-1(6/25 ET 16:00) 확정 종가 + PCE 실측치 반영.
+> [해소 참조] `market/daily_snapshot.md`는 6/27 모닝 market-data-collector 갱신 완료(S&P 7,354.02(-0.05%)·NASDAQ 25,297.62(-0.24%)·Dow 51,876.11(-0.09%)·RUT 3,010.08(+0.07%)·VIX 18.41(-2.54%)·10Y~4.37%·Gold $4,073(+1.2%)·WTI $69.40(-3.51%)·BTC~$59,949·SOL+9.4%·F&G 17(Extreme Fear), valid_until 2026-06-27). D-1(6/26 ET 16:00) 확정 종가. 아시아 패닉(KOSPI -5.81%) 대비 미국장 낙폭 대폭 제한, MU 어닝 서프라이즈 방어. NVDA -1.64%·SFTBY -9.2%.
 > [해소 참조] `market/economic_calendar.md`는 6/20 모닝 갱신 완료(6/25 Core PCE·6/22 미국장 재개 포함, valid_until 2026-06-26).
 
 ---
