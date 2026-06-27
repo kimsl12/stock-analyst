@@ -1,6 +1,6 @@
 ---
-updated: 2026-06-20
-valid_until: 2026-07-20
+updated: 2026-06-27
+valid_until: 2026-07-27
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -100,13 +100,24 @@ sources:
   - aminext.blog
   - Digital Regulation Platform
 confidence: high
-last_synced_from_db: 2026-06-20
+last_synced_from_db: 2026-06-27
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.06.27 핵심 변화 요약 (6/20 이후 델타)**:
+>
+> 1. **SPCX 급등 반전 -- $225 피크 -> $158 조정** -- 6/12 IPO $150 listing, 장중 피크 **$225.64(6/12)** 후 큰 폭 하락해 **6/26(금) 약 $158($150 대비 +5%, 피크 대비 -24%)**. 6/20 KB '$200~206 급등'에서 명확히 후퇴 -- 밸류 과열론 현실화. **FTSE Russell이 6/26 종가 후 Russell 1000/Top 200/3000 편입 발효(6/29 거래 라이브), 패시브 강제매수 추정 $3B~$22-27B(Russell1000 추적펀드 한정 시). MSCI 6/26~29($3-5B), Nasdaq-100 fast entry 7월(QQQ 추가 웨이브)**. S&P500는 GAAP 흑자 미충족으로 차단 유지. 일부 애널 '미끼 주의' 경고 [Invezz 6/26, ETF.com, Blockonomi, SpotGamma]
+> 2. **3GPP Rel-21 단계별 마일스톤 락인 + 마이그레이션 9월 이월** -- IEEE ComSoc 6/16 공식 정리: Stage-1 freeze 2027.03, 2차 freeze 2028.06, 80% 체크포인트 2028.03, Stage-3 final freeze 2028.12, full code/ASN.1 freeze 2029.03. 작업윈도우 RAN1 Q2'27~Q3'28 / RAN2·3·4 Q3'27~Q4'28(6분기 압축). **★핵심 미결: 6/8 싱가포르에서 '마이그레이션 아키텍처(5G->6G 이행 방식)' 결정 보류 -> 2026.09 마드리드 TSG RAN#113로 이월**('요구사항은 정해졌고, 9월부터 무엇이 될지 싸움 시작') [IEEE ComSoc 6/16, 6G Futures]
+> 3. **광통신/SiPho -- LightCounting 권위 수치로 갱신** -- 광트랜시버 판매 2025 **$23.8B** -> 2026E **+65% 약 $26B**(InP EML/레이저 공급제약, 현 수요가 공급 약 30% 초과, 2026말 완화). 1.6T 모듈 2025 100~180만 -> 2026E 500만~30M개(공격적 추정 NVIDIA 60%+). **Coherent Q2 FY26 매출 $1.7B(+17.5%)·DC&Comms $1.2B(+33.6%), 6인치 InP 램프 목표 80% 도달·2026 Q4 내부 capa 2배. NVIDIA Spectrum-X CPO 스위치(1.6T/3.2T) H2 2026 예정** [LightCounting 6월, Coherent Q2 FY26, io-fund]
+> 4. **한국 통신3사 NVIDIA 협력 분화 선명** -- 6/8 SK서린사옥 최태원-젠슨 황 회동 후속: **SKT가 NVIDIA DSX 풀스택 AI클라우드 공동구축 + 'NVIDIA 클라우드 파트너' 합류 + Blackwell/Vera Rubin 도입 + 기가와트급 AI팩토리 2027 가동**. **LGU+ '원 LG' AI팩토리(구광모-젠슨 황 DC 아키텍처 논의)**. **KT는 NVIDIA 미동맹·타 빅테크 협업 독자 행보** -- 'NVIDIA 동맹(SKT/LGU+) vs 효율·독자(KT)' 구도 [g-enews 6/9, economidaily]
+> 5. **양자통신 -- SKT EU펀딩 + Toshiba 라이브망 실증** -- **SKT가 EU 연구펀딩 확보해 차세대 양자암호(AI 양자보안) 개발: 무선/위성 QKD 확장 + 10Gbps QRNG + QKD-PQC 하이브리드(Clavis XG, NIST FIPS 203/204 준수)**. **Toshiba+Quantum Corridor 21.8km 라이브 상업 광망 QKD 실증(100% 라인레이트·제로 패킷손실 48h)**. 2026 활발 통신사 BT/Toshiba/DT/Telefonica/SKT/KT/Verizon/TELUS [SKT Newsroom, Light Reading, Toshiba News]
+> 6. **AST BlueBird 8/9/10 발사 성공 정상화 + Amazon Leo 367기·FCC 데드라인 면제** -- AST는 6/17 Falcon 9 적층 발사 성공(2026말 45~60기 목표 재집중). Amazon Leo 양산 367기(330+기에서 증가), **FCC가 7월 절반-배치 데드라인 면제하되 7월 이후 발사위성 스펙트럼 우선순위 일시 강등 조건** [AST BusinessWire 6/17, Amazon Leo Wiki, Türkiye Today]
+>
+> **(이전 갱신 -- 6/20 핵심 요약, 참고용)**:
+>
 > **2026.06.20 핵심 변화 요약 (6/13 이후 델타)**:
 >
 > 1. **SPCX 상장 후 급등 + 지수 fast-track 편입 확정** -- $135 IPO가 대비 +40% 급등해 약 **$200~206 거래(시총 $2.5T+, 장중 $2.53T 도달)**. 6/13 KB의 종가 $161 대비 추가 상승. **FTSE Russell(Russell 1000/Top 200) 2026.06.26 종가 후 발효, MSCI 스탠다드/라지캡 2026.06.29 발효 확정** -- Nasdaq-100 fast entry(약 7/1)보다 먼저 패시브 수요 발생. QQQ 약 $7~10B 기계적 매수 예상(플로트 3%, 일시 가격영향 1.6~2.2% 추정). **S&P500는 GAAP 흑자 미충족으로 2027 중반까지 차단 유지. 첫 공개 실적 2026.09.02**. 전 Nasdaq 의장 '펀더멘털 아닌 거래' 경고, $225->$206 조정 [Gate News, Yahoo Finance, TradingKey, SpotGamma, CME Group]
@@ -173,7 +184,7 @@ last_synced_from_db: 2026-06-20
 | 3GPP Rel-18 (5G Advanced)      | 2024.06 freeze                                          | 2026년 상용 출시 진행 중                                                                                                                                                                                                                                                                                                                          |
 | 3GPP Rel-19 (5G Advanced 완성) | 2025.06 RAN1/2025.09 RAN2-4 freeze                      | 5G-Advanced 마지막 전용 릴리스                                                                                                                                                                                                                                                                                                                    |
 | 3GPP Rel-20 Stage-2            | 80% 완료 2026.06, freeze 2026.09, **발간 2027.06 예상** | 5G-Advanced + 6G 사전연구 병행. **TR 38.914(6G 시나리오&요구사항) 2026.06 TSG RAN 승인. TR 22.870(6G 유스케이스 Stage-1) 승인 완료(SA#111)**                                                                                                                                                                                                      |
-| **3GPP Rel-21 타임라인 락인**  | **2026.06 싱가포르 플레너리(TSGs#112, 6/8)**            | **6/20 갱신: 싱가포르 플레너리에서 6G 표준 타임라인 락인 -- Rel-21 functional freeze 2028.12 + ASN.1/Stage-3 스펙 freeze 2029.03(칩 개발 윈도우 개방) 공식 확정. Rel-21이 첫 6G normative(구속력 있는 구현가능) 규격 산출 -- Rel-20 스터디아이템/유스케이스와 달리 Stage-3 프로토콜 정의+ASN.1 스키마 생산. 2027~2028 Rel-21 스펙 작업(6G 라디오 프로토콜/AI 라이프사이클 관리/보안 프레임워크/NTN 통합). TR 38.914 6월 TSG RAN 승인. IMT-2030 제출 윈도우 정렬. 삼성 김윤선 TSG RAN 의장 주도** |
+| **3GPP Rel-21 타임라인 락인**  | **2026.06 싱가포르 플레너리(TSGs#112, 6/8)**            | **6/27 갱신(IEEE ComSoc 6/16 공식 정리): 단계별 마일스톤 락인 -- Stage-1 freeze 2027.03(1차 functional freeze), 2차 freeze 2028.06, 80% 체크포인트 2028.03, Stage-3 final freeze 2028.12, full code/ASN.1 freeze 2029.03. 작업윈도우 RAN1 Q2 2027~Q3 2028 / RAN2·3·4 Q3 2027~Q4 2028(6분기 압축). Rel-21이 첫 6G normative 규격(6G RAN+Core) + 5G-Advanced 병행. ★미결: 6/8 싱가포르에서 '마이그레이션 아키텍처(5G→6G 이행 방식)' 결정 보류 -> 2026.09 마드리드 TSG RAN#113로 이월('요구사항은 정해졌고, 9월부터 무엇이 될지 싸움 시작'). TR 38.914(6G 시나리오&요구사항) 6월 승인. 삼성 김윤선 TSG RAN 의장 주도** |
 | 3GPP Rel-21 (6G 최초 규격)     | 2027.03 풀가동, freeze 2028.12, ~21개월 사이클          | 6G normative 작업 공식 시작. **Rel-21은 6G 규격이지만 5G-Advanced 스펙 작업도 병행. IMT-2030 제출용 릴리스(2030 전)**                                                                                                                                                                                                                             |
 | **WRC-27 (상하이)**            | **2027.10.18 시작**                                     | **6G 주파수 정책 핵심 회의. 후보 대역: 7.125~8.4GHz / 14.8~15.35GHz / 12.7~13.25GHz(FR3 7.125~24GHz 골든스펙트럼). sub-THz(102~109.5/151.5~164/167~174.8/209~226/252~275GHz) 검토하나 비즈니스케이스·RF 컴포넌트 미성숙으로 6G 1차 웨이브 제외(D-band 130~174GHz 규제 미정). 상위 6GHz(6.585~7.125GHz) EU 즉시 모바일 지정. ITU-R M.2541(>100GHz IMT 기술타당성). 중국 6GHz 영향력, 글로벌 조화 압박** |
 | ITU 사양 제출                  | 2030년 중반                                             | 최종 사양                                                                                                                                                                                                                                                                                                                                         |
@@ -347,8 +358,8 @@ last_synced_from_db: 2026-06-20
 
 **Starlink (SpaceX):**
 
-- **IPO 상장 완료(2026.06.12) + 상장 후 급등(6/20 갱신)**: 6/11 $135 고정가 -> 6/12 Nasdaq 데뷔(SPCX), 시초가 $150 -> 종가 $161 첫날 +19%. **이후 추가 급등해 약 $200~206 거래(6/13 KB $161 대비 +25%+), $135 IPO가 대비 +40%, 시총 $2.5T+(장중 $2.53T 도달)**. 555,555,555주 $75B 조달 / $1.75T 포스트밸류 -- 사상 최대 IPO(아람코 2019 $35.4B 경신). 투자수요 약 $250B로 3.3배 초과청약, 머스크 듀얼클래스 지배, 퍼블릭 플로트 약 3%로 희소성 극대 [CNBC, TradingKey, Gate News, Yahoo Finance 6/13]
-- **지수 편입 fast-track 확정(6/20 갱신)**: **FTSE Russell이 Russell 1000/Top 200 등에 2026.06.26 종가 후 SPCX 편입 발효(5일 fast-entry 룰), MSCI 스탠다드/라지캡 2026.06.29 발효 확정** -- Nasdaq-100 fast entry(약 2026.07.01, 상장 15거래일 후)보다 먼저 패시브 수요. **QQQ 약 $7~10B 기계적 매수 예상(플로트 3%, 인덱스트래커 약 8% 플로트, 일시 가격영향 1.6~2.2% 추정)**. **S&P500는 GAAP 흑자 미충족(2025 -$4.9B)으로 12개월 시즈닝 요건 미달, 최소 2027 중반까지 차단 유지**. 첫 공개 실적 2026.09.02 [Gate News, Yahoo Finance, CME Group, SpotGamma, TradingKey]
+- **IPO 후 급등→급락 반전(6/27 갱신)**: 6/12 Nasdaq 데뷔(SPCX) $150 listing -> 장중 피크 **$225.64(6/12)** -> 이후 큰 폭 조정해 **6/26(금) 약 $158 거래($150 listing 대비 +5%에 불과, IPO 피크 대비 -24%)**. 6/20 KB의 '$200~206 급등'에서 명확히 후퇴 -- 밸류 과열론 현실화. 555,555,555주 $75B 조달 / $1.75T 포스트밸류 -- 사상 최대 IPO. 투자수요 약 $250B 3.3배 초과청약, 머스크 듀얼클래스 지배, 퍼블릭 플로트 약 3%로 희소성 극대. 일부 애널 '미끼 주의(Don't take the bait)' 경고 [Invezz 6/26, Blockonomi, Yahoo Finance 6/26, ETF.com]
+- **지수 편입 발효(6/27 갱신)**: **FTSE Russell이 2026.06.26 종가 후 Russell 1000/Top 200/3000 편입 발효(5일 fast-entry 룰), 6/29(월)부터 거래 라이브** -- 패시브 강제매수 추정폭 보수적 약 $3B ~ Russell1000 추적펀드 한정 시 $22~27B. 6/26 금요일 주가 +3%(편입 대비 선반영). **MSCI 스탠다드/라지캡 6/26~29 편입(패시브 약 $3~5B). Nasdaq-100 fast entry는 7월(상장 15거래일 후)로 QQQ 추가 매수웨이브 예정.** **S&P500는 GAAP 4분기 연속 흑자+시즈닝 요건 미충족(2025 -$4.9B)으로 차단 유지(최소 2027 중반 이후)**. 첫 공개 실적 2026.09.02 [Invezz 6/26, ETF.com, Basenor, SpotGamma, CME Group]
 - **밸류 회의론(6/6 유지)**: 첫날 +19% 강세에도 월가 일부 애널 "적정가는 제시가의 절반"('worth half the ask') -- 2025 -$4.9B 순손실 + 트레일링 매출 109~116x 고밸류 논쟁 지속 [TechTimes 2026.06.04]
 - **가입자 10.3M(2026 Q1말, S-1 공식 확인)**: 2023 2.3M→2024 4.4M→2025 8.9M→2026Q1 10.3M [SpaceX S-1]
 - **Connectivity Q1 2026 매출 $3.26B(전사 매출의 69%), 영업이익 $1.188B**. 2025 매출 $18.7B(Connectivity $11.4B=61%). **ARPU $66/월(2023 $99에서 하락 -- 국제 확장+저가 요금제)** [SpaceX S-1, CNBC, Via Satellite, TheTechMarketer]
@@ -379,8 +390,8 @@ last_synced_from_db: 2026-06-20
 **Amazon Leo (구 Project Kuiper):**
 
 - **2026.04.08 엔터프라이즈 베타 라이브, mid-2026 상용 출시 목표 유지(6/13 재확인)** [TheNextWeb, Amazon CEO Jassy]
-- **2026.06 기준 330+기 배치** (최근 Atlas V 발사 후, 기존 ~302기에서 증가)
-- **FCC 위기**: 의무 1,618기(2026.07) vs 실제 330+기 -- **24개월 연장 신청(2026.01.30, 2028.07까지)**. **FCC 위성군 규모 2배 이상 확대 승인** [ITIF, DCD, Broadband Breakfast]
+- **2026.06 기준 양산 367기 + 프로토타입 2기 배치(6/27 갱신, 기존 330+기에서 증가)**
+- **FCC 데드라인 면제(6/27 갱신)**: **FCC가 절반 배치 의무 데드라인(2026.07 마일스톤)을 면제하되, 7월 마일스톤 이후 발사 위성의 스펙트럼 우선순위를 일시 강등(더 빠른 배치 압박)**. 의무 1,618기 대비 실제 367기로 여전히 큰 격차. 24개월 연장 신청(2026.01.30, 2028.07까지) [Amazon Leo Wiki, Türkiye Today, ITIF, DCD]
 - SpaceX Falcon 9 추가 10회 + Blue Origin New Glenn 12회 계약으로 발사 가속
 - **Amazon, Globalstar $11.57B 인수 발표(2026.04.14)**: 주당 $90(현금/주식 선택). Apple 20% 지분 보유. **iPhone/Apple Watch 위성 서비스 제공 계약(Emergency SOS) 포함. Globalstar 24기 LEO+28 게이트웨이+면허 스펙트럼 확보. 표준 3GPP NTN 호환폰으로 음성/문자/데이터 제공(전용 HW 불필요). DTC 위성 시스템 2028년 배치, 거래 2027년 종결 예상(6/13 재확인)** [CNBC, Bloomberg, Globalstar 8-K FY2026, aboutamazon.com]
 - 기업 매출 목표 USD 20B
@@ -520,23 +531,24 @@ last_synced_from_db: 2026-06-20
 
 | 지표                          | 값                                       | 출처                |
 | ----------------------------- | ---------------------------------------- | ------------------- |
-| 광트랜시버 시장 2025          | USD 8.42B                                | c-light/시장조사    |
-| 광트랜시버 시장 2026E         | USD 9.15B                                | c-light/시장조사    |
-| 400/800G 데이텀 모듈 2024->2026 | 약 $9B -> 약 $16B                        | 시장조사            |
+| 광트랜시버 판매 2025          | USD 23.8B (LightCounting 전체 집계)      | LightCounting       |
+| 광트랜시버 시장 2026E         | USD ~26B (+65% YoY, InP 공급제약)        | LightCounting 6월   |
+| AI 클러스터 옵틱스 2030       | USD ~100B 전망                           | LightCounting       |
 | 실리콘포토닉스 침투율 2026E   | 50~70% (2018 10%/2024 33%)               | LightCounting       |
-| 1.6T 출하 2025->2026E         | 100만개+ -> 500만개+ ('2026=1.6T의 해')  | 시장조사            |
+| 1.6T 출하 2025->2026E         | 100~180만개 -> 500만~30M+개(기관별 분산) | LightCounting/io-fund |
+| InP 수요-공급 갭 2026         | 수요가 공급 약 30% 초과(2026말 완화)     | LightCounting       |
 
 - **AI 데이터센터 네트워킹 병목이 차세대 성장 동력**: GPU 클러스터 간 광연결 수요 폭증으로 800G->1.6T 전환 가속
-- **Coherent**: 데이터센터 book-to-bill 4x+, InP 레이저 2027까지 매진 -- 공급 타이트 [Coherent IR]
+- **Coherent(6/27 갱신)**: Q2 FY2026 매출 $1.7B(+17.5%), Datacenter&Comms $1.2B(+33.6%). **6인치 InP 램프 Sherman(TX)+Yarfala(스웨덴) 목표 wafer-start의 약 80% 도달, 2026 캘린더 Q4까지 내부 InP capa 2배 목표(9->12월 분기 wafer starts 4배+)**. 캘린더 2026 부킹 대부분 완료·2027 빠르게 채워짐('가시성 사상 최고'). OFC 2026서 CPO용 400mW 고출력 InP 레이저 시연 [Coherent Q2 FY26, Futurum, Investing.com]
 - **Marvell**: Aquila 코히어런트-lite DSP가 800G/1.6T 인트라캠퍼스(2~20km) 연결 지원. NVIDIA $2B 투자 [Marvell]
-- **NVIDIA $4B 포토닉스 투자(Lumentum/Coherent)**: 공동패키지 옵틱스(CPO) 등 차세대 광인터커넥트 내재화 [tech-insider.org]
+- **NVIDIA $4B 포토닉스 투자(Lumentum/Coherent 각 $2B, 2026.03)**: 공동패키지 옵틱스(CPO) 차세대 광인터커넥트 내재화. **NVIDIA Spectrum-X CPO 스위치(1.6T/3.2T 실리콘포토닉스) H2 2026 예정(Quantum-X 1.6T는 2025 하반기 출시)** [tech-insider.org, io-fund, TradingKey]
 - **Nokia**: Optical Networks Q1 +20%(AI/DC 수요), 800G 코히어런트 플러거블 2026 AI 네트워크 표준화
 
 **양자통신 (6G 보안 연계):**
 
-- **Toshiba + Quantum Bridge(OFC 2026)**: 양자안전 국제 네트워크 시연 -- Toshiba QKD + QBT DSKE(분산대칭키확립) 결합으로 고속 QKD 메트로망+장거리 글로벌 확장 [The Quantum Insider 5/21]
-- **Quantum Corridor + Toshiba**: 미국 첫 cross-state QKD 라이브 상업 광망 시연 [Quantum Computing Report]
-- **SK텔레콤(ID Quantique 협력)**: 세계 최대급 QKD망 운영(48개 공공기관 연결), 5G 백홀+클라우드에 QKD 내재 [postquantum.com]
+- **Toshiba + Quantum Bridge(OFC 2026)**: 양자안전 국제 네트워크 시연 -- Toshiba QKD + QBT DSKE(분산대칭키확립) 결합으로 필드설치 광인프라 통합, 대륙간 메트로 QKD망 상호접속 [The Quantum Insider 5/21]
+- **Quantum Corridor + Toshiba(6/27 갱신)**: **21.8km 라이브 상업 광망에서 QKD 실증 -- 100% 라인레이트 처리량 + 제로 패킷손실 48시간 유지**. 런던/도쿄 메트로망·BT-Toshiba 런던 양자보안망·Equinix 통합 등 금융/정부/통신 프로덕션 배치. **2026 활발 통신사: BT/Toshiba/Deutsche Telekom/Telefonica/SKT/KT/Verizon/TELUS** [Toshiba News, Quantum Zeitgeist]
+- **SK텔레콤(6/27 갱신)**: 세계 최대급 QKD망(48개 공공기관). **EU 연구펀딩 확보해 차세대 양자암호(AI 양자보안 프로젝트) 개발 -- 광기반 QKD를 무선+위성 QKD로 확장 + 10Gbps급 QRNG. 'QKD-PQC 하이브리드'(Clavis XG에 자체 PQC SW 탑재, 단일장비 이중암호, NIST FIPS 203/204 준수)**. 2011년 이래 15년+ R&D [SKT Newsroom, Light Reading, TheFastMode]
 - **Nokia**: QKD 기업 인수로 6G 보안 내재화. O-RAN WG11 6G 보안전략에 PQC(포스트퀀텀 암호) 포함
 - **로드맵**: 텔레콤 양자 파일럿(2023~2026) -> 하이브리드 통합(2026~2030, PQC 표준 네트워크SW 내재 + 양자강화 AI 테스트)
 
@@ -625,10 +637,10 @@ last_synced_from_db: 2026-06-20
 | LG유플러스 | 수도권 유일 200MW급 (파주, DBO 사업)           | 파주 AIDC(2027.06 준공, 공정률 약 20%, 1동 50MW 완판)                                              | 최대 12만장 GPU 수용 / **2030 누적 수주 5조원 목표** |
 | KT         | 2030까지 500MW                                 | 경기 부천 DC(2026 하반기 개소)                                                                     | N/A                                                  |
 
-- **SKT**: 내년 하반기까지 300MW+ DC 용량 확보, 장기 1GW+로 확대해 아시아·태평양 최대 AIDC 허브 추진. 울산(AWS, 6만 GPU, 2027 가동)·구로(OpenAI 전용, 서남권 메모리 공급 LOI+MOU, 'Stargate Korea') 동시 추진. **젠슨 황 6/8 SKT와 한국 기가와트급 AI 클라우드 구축 협약, SK하이닉스 차세대 HBM 공동개발 다년 파트너십 발표(6/13 갱신)**. AIDC 매출 1,314억(+89.3% YoY) [머니투데이 2026.05.14, DCD, SKT 뉴스룸, StockTitan]
-- **LG유플러스**: **파주 AIDC 1동(50MW) 완판 + '2030년 AIDC 누적 수주 5조원' 선언(6/6 갱신)**. 차세대 AIDC 전략 '더 에이스 온 트러스트' 공개. 파주는 수도권 유일 200MW급 하이퍼스케일(수도권 전체 인구 동시 생성형AI 구동 수준), 공정률 약 20%, 2027.06 준공. 단순 공간임대->전력·냉각·자원 통합 'AI 팩토리 오퍼레이터' 전환 구상. 최대 12만장 GPU 수용. AIDC 매출 1,144억(+31.0%) [한국일보 2026.06.06, 국민일보 2026.06.06, 파이낸셜뉴스 2026.06.07, 데일리e뉴스]
-- **KT클라우드**: 2030년까지 DC 용량 **500MW 규모 확대** 계획, 2026 하반기 경기 부천 DC 개소 예정. 클라우드 매출 2,501억(+0.4% 정체) [머니투데이 2026.05.14, 디지털데일리]
-- **3색 AIDC 전략 차별화**: SKT(글로벌 빅테크 협력+NVIDIA 기가와트 클라우드+GPUaaS) / LGU+(초대형 신축 DBO+5조 수주 목표+AI 팩토리 오퍼레이터) / KT(자체 클라우드 용량 확장). 통신3사 모두 AIDC를 'AI 수익 사업'으로 전면화 [머니투데이, 한국일보]
+- **SKT(6/27 갱신)**: 내년 하반기까지 300MW+ DC 용량 확보, 장기 1GW+로 아태 최대 AIDC 허브 추진. 울산(AWS, 6만 GPU, 2027 가동)·구로(OpenAI 전용 'Stargate Korea') 동시 추진. **6/8 SK서린사옥 최태원-젠슨 황 회동 후속: NVIDIA DSX 플랫폼 기반 칩~DC운영 '풀스택 AI 클라우드' 공동구축, 'NVIDIA 클라우드 파트너' 합류, Blackwell GPU + Vera Rubin 플랫폼 도입, 기가와트급 'AI 팩토리' 2027 한국 첫 가동 후 아시아 확장. SK하이닉스 차세대 HBM 공동개발 다년 파트너십 병행**. AIDC 매출 1,314억(+89.3% YoY) [g-enews 2026.06.09, economidaily, 머니투데이, DCD, SKT 뉴스룸]
+- **LG유플러스**: **파주 AIDC 1동(50MW) 완판 + '2030년 AIDC 누적 수주 5조원' 선언(6/6 갱신)**. 차세대 AIDC 전략 '더 에이스 온 트러스트' 공개. 파주는 수도권 유일 200MW급 하이퍼스케일, 공정률 약 20%, 2027.06 준공. 단순 공간임대->'AI 팩토리 오퍼레이터' 전환. 최대 12만장 GPU 수용. **6/27 갱신: '원 LG' 시너지로 AI팩토리 사업 추진, 젠슨 황이 구광모 회장 등과 미래 DC 아키텍처 설계 포함 전략협력 논의(LG-NVIDIA 물리AI 협력)**. AIDC 매출 1,144억(+31.0%) [한국일보 2026.06.06, 국민일보, g-enews 2026.06.09, 데일리e뉴스]
+- **KT클라우드**: 2030년까지 DC 용량 **500MW 규모 확대** 계획, 2026 하반기 경기 부천 DC 개소 예정. 클라우드 매출 2,501억(+0.4% 정체). **6/27 갱신: SKT/LGU+가 NVIDIA와 동맹 가속하는 가운데 KT는 NVIDIA 대신 다른 글로벌 빅테크 협업 통한 AI 고도화 '독자 행보'** [머니투데이, g-enews 2026.06.09, 디지털데일리]
+- **3색 AIDC 전략 차별화(6/27 명확화)**: SKT(NVIDIA 동맹·풀스택 AI클라우드·Blackwell/Vera Rubin·기가와트 AI팩토리) / LGU+(NVIDIA AI팩토리·초대형 DBO·5조 수주 목표) / **KT(NVIDIA 미동맹, 타 빅테크 협업 독자 행보)**. SKT·LGU+ 'NVIDIA 동맹 가속' vs KT '효율·독자' 구도 선명. 통신3사 모두 AIDC를 'AI 수익 사업'으로 전면화 [g-enews 2026.06.09, 머니투데이]
 
 ---
 
@@ -641,7 +653,7 @@ last_synced_from_db: 2026-06-20
 | 6G           | 높음 (2030+ 본격화)     | 중기 (2027~28 진입 적기)                              | 극대 (시장 규모 예측 10x 편차, 표준 fork 리스크, WRC-27 주파수 정치). **Rel-21 freeze 2028.12 확정으로 일정 가시성 개선** |
 | 5G Advanced  | 중~높음 (현재 진행형)   | 지금~단기 (Rel-18 상용화 + SA 전환)                   | 낮음 (표준 확정, 상용화 중)                                                                                               |
 | Open RAN     | 높음 (CAGR 26~42%)      | 중기 (순수 Open RAN vs 하이브리드 정립 시)            | 높음 (비전 후퇴론 vs 실제 배치 확대 괴리)                                                                                 |
-| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 10.3M/SPCX $2.5T+ 시총·FTSE 6/26·MSCI 6/29 편입, AST 6/17 발사성공) | 중간~높음 (SPCX +40% 급등 밸류 과열론·전 Nasdaq의장 경고, ARPU 하락+2025 -$4.9B로 S&P500 차단, Amazon $11.6B 경쟁) |
+| 위성통신/D2D | 매우 높음 (현재 진행형) | 지금 (Starlink 10.3M, SPCX FTSE 6/26·MSCI·Nasdaq100 7월 패시브 편입, AST 6/17 발사성공) | 중간~높음 (**SPCX IPO피크 $225->$158 -24% 조정·밸류 과열론 현실화**, ARPU 하락+2025 -$4.9B로 S&P500 차단, Amazon $11.6B 경쟁) |
 | NTN          | 높음 (6G 핵심 구성요소) | 중기 (상용화 초기 단계)                               | 중간 (핸드오버/지연 품질 미검증)                                                                                          |
 | AI-RAN       | 매우 높음 (CAGR 29~33%) | 지금~단기 (상용화 초기, 검증 결과 도출)               | 중간 (NVIDIA 종속 심화, AI 배치 비용 vs 5G 회수)                                                                          |
 | 엣지 컴퓨팅  | 높음 (CAGR 30~48%)      | 중기 (5G+MEC 통합 확산)                               | 높음 (시장 정의 불명확, 수익 모델 미확립)                                                                                 |
