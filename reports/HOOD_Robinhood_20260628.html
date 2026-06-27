@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>로빈후드 (Robinhood) (HOOD) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>로빈후드 (Robinhood) (HOOD)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-28</div><div style="margin-top:8px"><span class="badge b-hold">중립</span> <span class="badge b-score">58/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$98.69</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$88.9B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">흑자 전환 후 성장형 — 시가총액 $88.9B, 매출 두 자릿수 성장이지만 크립토·거래대금 사이클에 EPS 변동성 큼. 성장 프리미엄이 반영된 리치한 멀티플</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$63.51~$153.86</div></div><div class="ki"><div class="kl">등급</div><div class="kv">중립</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v7 BLIND</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$84.08</div><div class="dn" style="font-size:13px">-14.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$120.61</div><div class="up" style="font-size:13px">+22.2%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="103" y="30" width="129" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="103" y1="26" x2="103" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="103" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$84</text><line x1="155" y1="24" x2="155" y2="52" stroke="var(--text)" stroke-width="3"/><text x="155" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$99</text><line x1="232" y1="26" x2="232" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="232" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$121</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $64</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $154</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $7.31 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>로빈후드는 거래수수료(주식·옵션·이벤트계약·크립토)·순이자수익(예치현금·증거금·증권대여)·골드 구독을 결합한 멀티 매출 리테일 브로커리지다. 2026년 1분기 총매출은 전년비 +15% 증가한 10.7억 달러로 사업 다각화가 작동했으나, 크립토 거래수익이 -47% 급감(1.34억 달러)하며 EPS는 4개 분기 만에 컨센서스를 소폭 하회($0.38 vs $0.39)했다. 현재 시장은 리스크오프 4일째에 크립토 공포·탐욕 지수 15(극단적 공포), Fed 기준금리 인하(3.63%) 국면으로 크립토 베타·거래대금·순이자수익 모두 역풍을 맞는 구간이다. 주가는 $98.69로 52주 고점($153.86) 대비 약 36% 하락했고 ATR 7.4%의 초고변동 상태로, 펀더멘털 성장과 단기 사이클 역풍이 충돌하는 전형적 중립 구간으로 판단한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,90.0 178.2,97.4 211.3,126.8 201.8,170.1 166.5,186.4 140.0,190.0 134.1,158.1 97.2,163.9 78.2,129.9 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업경쟁력/해자</text><circle cx="140.0" cy="90.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="178.2" cy="97.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무안정성</text><circle cx="201.8" cy="170.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션매력도</text><circle cx="166.5" cy="186.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="190.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당</text><circle cx="134.1" cy="158.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크관리</text><circle cx="97.2" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업전망</text><circle cx="78.2" cy="129.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/지배구조</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업경쟁력/해자</td><td>6.0</td><td>/10</td></tr><tr><td>수익성</td><td>6.5</td><td>/10</td></tr><tr><td>성장성</td><td>7.5</td><td>/10</td></tr><tr><td>재무안정성</td><td>6.5</td><td>/10</td></tr><tr><td>밸류에이션매력도</td><td>4.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>4.0</td><td>/10</td></tr><tr><td>배당</td><td>1.0</td><td>/10</td></tr><tr><td>리스크관리</td><td>4.5</td><td>/10</td></tr><tr><td>산업전망</td><td>6.5</td><td>/10</td></tr><tr><td>경영진/지배구조</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 58/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v4</td><td>2026-06-03</td><td>—</td><td>—</td><td>$95</td></tr><tr><td>v5</td><td>2026-06-11</td><td>64.3</td><td>매수</td><td>$105</td></tr><tr><td>v6</td><td>2026-06-19</td><td>—</td><td>매도</td><td>$112,</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">Narrow</span></h2><p>로빈후드는 거래수수료(주식·옵션·이벤트계약·크립토)·순이자수익(예치현금·증거금·증권대여)·골드 구독을 결합한 멀티 매출 리테일 브로커리지다. 2026년 1분기 총매출은 전년비 +15% 증가한 10.7억 달러로 사업 다각화가 작동했으나, 크립토 거래수익이 -47% 급감(1.34억 달러)하며 EPS는 4개 분기 만에 컨센서스를 소폭 하회($0.38 vs $0.39)했다. 현재 시장은 리스크오프 4일째에 크립토 공포·탐욕 지수 15(극단적 공포), Fed 기준금리 인하(3.63%) 국면으로 크립토 베타·거래대금·순이자수익 모두 역풍을 맞는 구간이다. 주가는 $98.69로 52주 고점($153.86) 대비 약 36% 하락했고 ATR 7.4%의 초고변동 상태로, 펀더멘털 성장과 단기 사이클 역풍이 충돌하는 전형적 중립 구간으로 판단한다.</p><h3>Moat 상세</h3><p>로빈후드의 해자는 '좁은(Narrow)'으로 평가한다. 첫째, 브랜드·UX 우위가 명확하다. 무료 수수료·직관적 모바일 경험으로 밀레니얼·Z세대 리테일 진입의 디폴트 채널이 됐고, 이는 신규 고객 획득 비용을 낮추는 무형자산이다. 둘째, 전환비용이 점진적으로 축적된다. 골드 구독·은퇴계좌(IRA)·증거금 잔고·자동 매칭 적립이 쌓일수록 이탈이 어려워지며, 실제로 증거금 장부가 1년 새 $17B로 약 2배 확대된 점이 점착성을 보여준다. 셋째, 규모의 경제가 순이자수익과 PFOF(주문흐름 대가) 단가에서 작동한다. 다만 핵심 거래 서비스는 업계 전반이 제로 커미션으로 수렴해 차별화가 제한적이고, 크립토·이벤트계약은 진입장벽이 낮아 경쟁 모방이 빠르다. 또한 PFOF 의존도와 규제 불확실성은 해자를 구조적으로 제약한다. 종합하면 네트워크 효과보다 브랜드·전환비용 중심의 좁은 해자이며, 사이클 민감도가 해자 폭을 넓히는 것을 가로막는다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>재무 체력은 '개선되는 흑자 성장'으로 요약된다. 2026년 1분기 총순매출은 전년비 +15% 증가한 10.7억 달러, 순이자수익은 증거금 장부 약 2배 확대에 힘입어 +24%($359M), 주식 거래수익 +46%, 이벤트계약은 +320% 폭증했다. 거래 기반 매출 전체도 +7%($623M)로 크립토 외 라인이 견조하다. 다만 크립토 거래수익이 -47%($134M) 급감하며 EPS는 $0.38로 컨센($0.39)을 4개 분기 만에 하회했고, 영업비용은 +18%($656M)로 매출 증가율을 상회해 영업 레버리지가 일시 둔화됐다. 부채 의존도가 낮고 자기자본 기반 사업이라 재무 안정성 자체는 양호하나, 매출 구성의 사이클 민감도가 분기 실적의 예측 가능성을 떨어뜨린다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>밸류에이션은 '성장 프리미엄 vs 사이클 디스카운트'가 교차하는 구간이다. 시가총액 $88.9B는 매출 두 자릿수 성장과 흑자 정착을 반영한 리치한 수준으로, 거래대금·크립토가 강세일 때의 실적 레버리지를 선반영한다. 주가는 52주 고점 $153.86 대비 약 36% 하락한 $98.69로, 크립토 급감과 리스크오프가 멀티플을 이미 상당폭 압축했다. 강세 시 거래대금·이벤트계약 폭발이 EPS를 빠르게 끌어올려 멀티플을 정당화할 수 있으나, 약세 시 크립토 -47%처럼 매출 라인이 동시 위축되며 하방 변동성이 크다. 현재가는 고점과 저점($63.51)의 중간 상단부로, 강한 저평가 매수 구간은 아니며 '적정~다소 비싼' 영역으로 판단한다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>단기 모멘텀은 '약세 우위, 일중 반등 혼재'다. 시장 레짐은 리스크오프 4일째이며 S&P500은 MA20 대비 -1.4%, CNN 공포·탐욕 24.8(극단적 공포), 크립토 공포·탐욕은 15(극단적 공포)로 HOOD가 고베타로 노출된 두 축이 모두 냉각돼 있다. 비트코인은 약 $60K로 1년 전 대비 부진하며 크립토 거래수익 회복 가시성이 낮다. 반면 당일 주가는 +5.58% 급반등해 과매도 되돌림 성격의 변동성을 보였다. ATR 7.4%의 초고변동 환경에서 일중 큰 반등이 추세 전환을 의미하지 않으며, 거래대금·크립토 센티먼트가 돌아서기 전까지 수급은 불안정하다. 다음 분기 실적에서 이벤트계약·주식 라인이 크립토 공백을 메우는지가 모멘텀 분기점이다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>현재가</td><td>$98.69</td></tr><tr><td>52주 범위</td><td>$63.51 ~ $153.86</td></tr><tr><td>시가총액</td><td>$88.9B</td></tr><tr><td>1분기 매출 성장</td><td>+15% YoY ($1.07B)</td></tr><tr><td>투자의견</td><td>중립 (Hold)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>로빈후드의 사업은 네 개의 매출 엔진으로 구성된다. (1) 주식·옵션 거래수익: 무료 수수료 기반이지만 PFOF로 수익화하며, 1분기 주식 +46%로 핵심 회복축이다. (2) 크립토 거래수익: 변동성이 가장 큰 라인으로 강세장엔 폭발적이나 1분기 -47% 급감해 전사 실적을 끌어내렸다. (3) 이벤트계약: +320% 폭증한 신성장 엔진으로, 예측시장·정치/스포츠 이벤트 베팅 수요를 흡수하며 거래 매출 다각화를 견인한다. (4) 순이자수익: 예치현금 스윕·증거금·증권대여에서 발생하며 증거금 장부 약 2배 확대로 +24% 성장했으나, Fed 금리 인하(현 3.63%, 1년 전 4.33%)가 진행되며 단가 측면 압박이 누적된다. 여기에 골드 구독이 반복 매출과 전환비용을 보강한다. 핵심 동학은 '크립토·거래대금 강세 시 폭발적 레버리지, 약세 시 동반 위축'이며, 이벤트계약·NIR·구독이 변동성을 완충하는 다각화가 진행 중이다. 다만 다각화에도 불구하고 전사 실적은 여전히 리테일 리스크 선호도와 크립토 사이클에 높은 베타를 보인다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>HOOD의 위험은 '사이클 베타'에 집중된다. 크립토·거래대금 동반 급랭이 가장 큰 단일 위험이며, 현재 크립토 극단적 공포·리스크오프 4일째가 이를 실시간으로 자극하고 있다. 금리 인하는 그동안 실적을 완충하던 순이자수익의 단가를 점진적으로 압박해, 잔고 성장이 멈추면 두 번째 충격원이 된다. 여기에 PFOF·이벤트계약의 규제 불확실성이 수익모델 구조 자체를 흔들 꼬리위험으로 잠복한다. ATR 7.4%의 초고변동성은 이 모든 위험이 주가에 증폭되어 반영됨을 의미하므로, 포지션 사이징과 손절 규율이 다른 종목보다 훨씬 중요하다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">크립토·거래대금 사이클 급랭</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">금리 인하에 따른 순이자수익 압박</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">PFOF·이벤트계약 규제 불확실성</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>크립토·거래대금 사이클 급랭</strong> (발생: 높음, 영향: 전사 매출·EPS 동반 하락)<br><span style="color:var(--sub);font-size:13px">크립토 거래수익이 1분기 -47% 급감했고 현재 크립토 공포·탐욕 지수 15로 극단적 공포 구간이다. 비트코인 약세가 지속되면 가장 마진 좋은 거래 라인이 추가 위축되고, 동시에 리스크오프로 주식·옵션 거래대금까지 함께 줄어 다각화 효과가 무력화될 수 있다. 매출 구조의 사이클 베타가 가장 큰 단일 위험이다.</span></div><div class="ri rl"><strong>금리 인하에 따른 순이자수익 압박</strong> (발생: 중간, 영향: NIR 단가 하락 → 안정 매출축 약화)<br><span style="color:var(--sub);font-size:13px">Fed 기준금리가 3.63%로 1년 전 4.33% 대비 약 70bp 인하됐고 추가 인하 경로가 진행 중이다. 순이자수익은 1분기 증거금 장부 약 2배 확대로 +24% 성장했으나, 이는 잔고 증가가 단가 하락을 상쇄한 결과다. 잔고 성장이 둔화되면 금리 인하가 NIR을 직접 압박해 실적 완충 역할이 약해진다.</span></div><div class="ri rl"><strong>PFOF·이벤트계약 규제 불확실성</strong> (발생: 중간, 영향: 핵심 수익모델 구조 변경 위험)<br><span style="color:var(--sub);font-size:13px">거래 매출의 상당 부분이 주문흐름 대가(PFOF)에 의존하며 규제당국의 지속 감시 대상이다. 또한 +320% 폭증한 이벤트계약(예측시장형 베팅)은 규제 프레임이 미성숙해 향후 제한·금지 리스크가 잠재한다. 핵심 또는 신성장 매출축의 규제 변경은 수익모델을 구조적으로 바꿀 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>현 국면은 펀더멘털 성장과 단기 사이클 역풍이 충돌하는 중립 구간으로, 신규 대량 진입보다 분할·관망이 우선이다. data.json 기준 현재가 $98.69, ATR(14) $7.31(7.4%)의 초고변동 종목이므로 포지션 사이징을 평소의 절반 이하로 축소하는 것이 핵심이다. 손절은 2ATR 기준 $84.08로 설정하되, 이 가격은 종가 기준으로 관리하고 장중 변동성에 휩쓸려 조기 청산되지 않도록 한다. 목표가는 3ATR 기준 $120.61로, 크립토 센티먼트 반등과 이벤트계약·주식 라인의 실적 확인이 동반될 때 유효하다. 진입 전략은 (1) 분할 매수로 1차는 현재가 부근 소량, (2) 추가 매수는 크립토 공포·탐욕 지수가 공포 구간을 벗어나거나 리스크오프 레짐이 중립으로 전환될 때로 한정한다. 리스크오프 4일째·크립토 극단적 공포 구간에서 풀 포지션 진입은 권하지 않으며, 손절 $84.08 이탈 시 추세 훼손으로 보고 기계적으로 청산한다. 다음 분기 실적에서 크립토 공백을 비크립토 라인이 메우는지가 비중 확대 여부의 분기점이다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $88 ~ $121 (중심 $105, ±16%)
+
+**스코어 ±밴드**: ±8 pt
+
+**시나리오 분기**:
+- 강세 시나리오: $121
+- 기본 시나리오: $105
+- 약세 시나리오: $88</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. 비크립토 라인(주식·옵션·이벤트계약)이 크립토 -47% 공백을 지속 상쇄한다**
+
+반증 시 영향: 이벤트계약 성장 둔화·리스크오프로 거래대금까지 위축되면 전사 매출이 동반 하락하며 중립 등급이 매도 쪽으로 이동
+
+**2. 순이자수익이 증거금 잔고 성장으로 금리 인하 압박을 계속 흡수한다**
+
+반증 시 영향: 잔고 성장이 멈추고 Fed 인하가 가속되면 안정 매출축이 약화돼 EPS 가시성·밸류에이션 프리미엄이 동시에 훼손
+
+**3. 크립토 센티먼트가 현 극단적 공포에서 점진 회복된다**
+
+반증 시 영향: 비트코인 추가 급락·크립토 공포 지속 시 가장 마진 좋은 라인이 더 위축돼 목표가 상단 달성 확률이 급감</div>
+<div class="sec"><h2>재분석 메타 (v7 BLIND)</h2>- **재분석 회차**: v7 (이전 v6, 2026-06-19)
+- **모드**: BLIND (이전 v6 read 0건)
+- **임계**: 7일 (상한 10종, stock_update-2 슬롯, 2026-06-28)
+- **회차 보고**: `analysis/_reanalysis_runs/20260628_run_7day.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-28 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="HOOD_Robinhood_20260628.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
