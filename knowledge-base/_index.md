@@ -1,13 +1,13 @@
 ---
-updated: 2026-06-22
+updated: 2026-06-28
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-06-21
-lint_last_post_fix: 2026-06-21
+lint_last_run: 2026-06-28
+lint_last_post_fix: 2026-06-28
 lint_mode: full
-lint_p0_count: 3
-lint_p1_count: 3
-lint_p2_count: 3
+lint_p0_count: 4
+lint_p1_count: 2
+lint_p2_count: 4
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -21,17 +21,18 @@ lint_p2_count: 3
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-06-21 (wiki-linter full 점검)**
+> **최종 갱신: 2026-06-28 (wiki-linter full 점검 — agent maxTurns 패턴 회피, 메인 직접 수행)**
 
-⚠️ **P0 3건** — industry 18종 + portfolio/model_portfolios.md 만료 (valid_until 2026-06-08, 13일 경과) + prediction_markets.md 오늘 만료
+⚠️ **P0 4건** — industry 18종 + portfolio/model_portfolios.md (valid_until 2026-06-08, 20일 경과) + market/prediction_markets.md (06-21 만료, 7일) + macro/science_tech.md (06-24 만료, 4일)
 
-| 파일                            | 만료일     | 경과일 | 권장 조치                                                           |
-| ------------------------------- | ---------- | ------ | ------------------------------------------------------------------- |
-| `industry/*.md` 18종            | 2026-06-08 | 13일   | kb-updater 재수집 위임. 6/25 PCE·6/22 미국장 재개 전 우선 처리 권장 |
-| `portfolio/model_portfolios.md` | 2026-06-08 | 13일   | /리밸런싱 또는 /주간리포트 시 갱신                                  |
-| `market/prediction_markets.md`  | 2026-06-21 | 0일    | kb-updater 재수집 위임. 6/25 PCE 컨센 반영 필요                     |
+| 파일                            | 만료일     | 경과일 | 권장 조치                                                                                   |
+| ------------------------------- | ---------- | ------ | ------------------------------------------------------------------------------------------- |
+| `industry/*.md` 18종            | 2026-06-08 | 20일   | kb-updater 재수집 위임. 7/1 ISM·7/2 NFP 전 우선 처리 권장                                   |
+| `portfolio/model_portfolios.md` | 2026-06-08 | 20일   | /리밸런싱 또는 /주간리포트 시 갱신                                                          |
+| `market/prediction_markets.md`  | 2026-06-21 | 7일    | kb-updater 재수집 위임. confidence 필드 누락(collection_status=SUCCESS) + 7/2 NFP 컨센 반영 |
+| `macro/science_tech.md`         | 2026-06-24 | 4일    | kb-updater 재수집 위임 (6/27 주간 KB 갱신에서 industry/science_tech 만 갱신·macro/ 누락)    |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 13일 경과이나 주요 구조는 유지됨 — 산업 섹션 인용 시 "6/8 기준" 주석 추가 권장. economic_calendar valid_until 2026-06-26 유지. prediction_markets 오늘 만료 — 6/25 Core PCE 컨센·F&G 14(연중최저권)·크립토 급락 진정 반영 필요.
+> **브리핑 진행 가능 여부:** industry KB 만료 20일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 06-29)·economic_calendar(vu 07-05) 는 6/28 모닝 갱신 완료. 일요일 미국장 휴장으로 신규 시장 데이터 부재 → P0 본문 강제 재수집은 7/1 미국장 재개 후 권장(CLAUDE.md 강제갱신금지 원칙). auto-trigger 마커 0건 → kb-updater 자동 dispatch 생략.
 
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~~3.75%·6/16~~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
 > [해소 참조] `market/daily_snapshot.md`는 6/27 모닝 market-data-collector 갱신 완료(S&P 7,354.02(-0.05%)·NASDAQ 25,297.62(-0.24%)·Dow 51,876.11(-0.09%)·RUT 3,010.08(+0.07%)·VIX 18.41(-2.54%)·10Y~~4.37%·Gold $4,073(+1.2%)·WTI $69.40(-3.51%)·BTC~~$59,949·SOL+9.4%·F&G 17(Extreme Fear), valid_until 2026-06-27). D-1(6/26 ET 16:00) 확정 종가. 아시아 패닉(KOSPI -5.81%) 대비 미국장 낙폭 대폭 제한, MU 어닝 서프라이즈 방어. NVDA -1.64%·SFTBY -9.2%.
@@ -40,33 +41,30 @@ lint_p2_count: 3
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-06-21 full)
+## P1 — 이번 주 조치 (탐지: 2026-06-28 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
-| 파일                           | 문제                                                                         | 심각도 | 권장 조치                                                             |
-| ------------------------------ | ---------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------- |
-| `market/daily_snapshot.md`     | ✅ **6/22 09:10 모닝 갱신 완료**(updated=2026-06-22, valid_until 2026-06-23) | 해소   | 6/22 모닝 재수집 완료 — 크립토·US선물·KOSPI 개장·LPR·환율·원자재 반영 |
-| `market/correlation_matrix.md` | valid_until 2026-06-23 (D-2). 6/20 갱신                                      | 중간   | kb-updater 재수집 위임 (6/25 PCE 전 최신 상관계수 확보 권장)          |
-| `macro/science_tech.md`        | valid_until 2026-06-24 (D-3). 5/25 갱신 27일 경과                            | 중간   | kb-updater 재수집 위임                                                |
+| 파일                           | 문제                                    | 심각도 | 권장 조치                                              |
+| ------------------------------ | --------------------------------------- | ------ | ------------------------------------------------------ |
+| `market/correlation_matrix.md` | valid_until 2026-06-30 (D-2). 6/27 갱신 | 중간   | kb-updater 재수집 위임 (7/2 NFP 전 최신 상관계수 확보) |
+| `market/surprise_index.md`     | valid_until 2026-07-03 (D-5). 6/26 갱신 | 낮음   | 경과 관찰 — 7/2 NFP Beat/Miss 반영 시 자동 갱신        |
 
-> [해소 참조 2026-06-15~16] correlation_matrix·surprise_index·economic_calendar → 이브닝 브리핑 + FOMC 결과 반영 갱신 완료.
-> [해소 참조 2026-06-21] market/surprise_index → valid_until 확인 불필요. market/economic_calendar valid_until 2026-06-26 유지.
-> [P1 정정 2026-06-21 12:10] daily_snapshot 은 6/21 09:14 모닝에 이미 갱신됨(updated=2026-06-21) — wiki-linter 가 "6/20 갱신"으로 오기록하며 auto-trigger 발화한 false-positive. 메인이 dispatch 생략(일요일 휴장·신규 데이터 없음, 다음 실데이터 6/22 미국장 재개) + 🚨 마커 해소. correlation_matrix D-2 / science_tech D-3 유지.
-
-> **P1 해결완료 2026-06-21:** 직전 P1 4건(daily_snapshot·correlation_matrix·surprise_index·economic_calendar) 모두 해소 확인(valid_until 경과 또는 재갱신 완료).
+> [해소 참조 2026-06-28] daily_snapshot(vu 06-29)·economic_calendar(vu 07-05) 는 6/28 모닝 market-data-collector 갱신 완료로 P1 제외. macro/science_tech(vu 06-24)는 만료 → P0 승격.
+> [해소 참조 2026-06-21] 직전 P1 4건(daily_snapshot·correlation_matrix·surprise_index·economic_calendar) 모두 해소 확인 후 회전.
 
 ---
 
-## P2 — 모니터링 (탐지: 2026-06-21 full)
+## P2 — 모니터링 (탐지: 2026-06-28 full)
 
 > 30일+ 미갱신 또는 구조 점검 항목. 즉시 조치 불필요, 추세 관찰만.
 
-| 파일                               | 문제                                                                                                                                                                                 | 권장 조치                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| `portfolio/rebalancing_history.md` | updated 2026-04-14 **68일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                             | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)              |
-| 루트 레거시 KB 4종                 | `us_monetary_policy.md`·`geopolitics.md`·`korea_economy.md`·`global_risk_factors.md` (루트) 가 교차참조 맵에서 참조되나 데이터는 `macro/` 버전과 분리·구버전(04-13~05-06). 구조 중복 | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후) |
-| analysis/ 30~90일 파일             | 30~90일 미갱신 파일 약 270개 존재 (5/5 전후 분석 포함). 90일 초과: 2026-03-23 이전 분석 해당 여부 확인 필요 (현재 가장 오래된 파일 5/5 기준 — 47일 경과로 90일 미도달, 삭제 불필요). | wiki/analysis/ scorecard 70점+ 확인 후 아카이브 검토       |
+| 파일                               | 문제                                                                                                                                                                                | 권장 조치                                                                |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `portfolio/rebalancing_history.md` | updated 2026-04-14 **75일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                            | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)                            |
+| 루트 레거시 KB 4종                 | `us_monetary_policy`·`geopolitics`·`korea_economy`·`global_risk_factors` (루트) 전부 redirect stub 확인(sources:[redirect]) — macro/ SSOT 일원화 완료. 교차참조 맵만 루트 경로 잔존 | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후)               |
+| analysis/ 30~90일 파일             | 1,993개 파일, 가장 오래된 파일 5/5(54일, 90일 미도달) → 삭제 불필요                                                                                                                 | scorecard 70점+ 확인 후 아카이브 검토 (현재 불필요)                      |
+| `_index.md` 비대 (432KB/655행)     | "최근 7일 인사이트" 테이블에 5/29 이전 30일+ 경과 행이 다수 잔존 → 목적(에이전트가 1파일만 읽기) 대비 과대. 토큰/agent maxTurns 원인 추정                                           | 30일+ 경과 인사이트 행을 별도 아카이브 파일로 분리 검토 (사용자 확인 후) |
 
 ---
 
