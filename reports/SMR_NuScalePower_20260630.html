@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>뉴스케일파워 (NuScalePower) (SMR) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>뉴스케일파워 (NuScalePower) (SMR)</h1><div class="meta">주식 종합 분석 리포트 | 2026-06-30</div><div style="margin-top:8px"><span class="badge b-hold">보유</span> <span class="badge b-score">54/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$10.23</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$3.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A (pre-revenue, 적자 지속 — EV/매출·PER 무의미)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$8.85~$57.42</div></div><div class="ki"><div class="kl">등급</div><div class="kv">보유</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v6 BLIND</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$8.31</div><div class="dn" style="font-size:13px">-18.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$13.12</div><div class="up" style="font-size:13px">+28.3%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="30" y="30" width="28" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="26" y1="26" x2="26" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="26" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$8</text><line x1="39" y1="24" x2="39" y2="52" stroke="var(--text)" stroke-width="3"/><text x="39" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$10</text><line x1="58" y1="26" x2="58" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="58" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$13</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $9</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $57</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $0.96 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>뉴스케일파워(SMR)는 미국 NRC 설계인증을 보유한 유일한 소형모듈원자로(77MWe 모듈) 개발사로, AI 데이터센터발 전력수요 급증과 원자력 르네상스 테마의 대표 수혜주로 분류된다. 그러나 현 시점은 명백한 상용화 이전 단계로, 직전 분기 매출은 $0.6M 수준까지 위축되고 분기 순손실 약 $45M의 지속 현금소진 구조다. 핵심 가치는 TVA 6GW급 그리드 공급 프로그램의 PPA 체결(2026년 말 기대)과 일본발 최대 $25B 투자 변수 같은 미래 촉매에 전적으로 의존하며, 첫 상업 호기 가동 시점은 여전히 2030년대로 불확실하다. 현재가 $10.23은 52주 고점 대비 약 -82% 급락한 수준으로 테마 광풍의 거품이 상당 부분 해소된 가격대이나, ATR 9.4%의 극단 변동성은 펀더멘털이 아닌 뉴스플로우에 주가가 좌우됨을 시사한다. 결론적으로 구조적 성장 테마는 유효하나 실적 가시성·희석 리스크·타이밍 불확실성이 결합돼 투기적 성격이 짙은 종목이다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,90.0 166.5,113.6 211.3,126.8 187.6,165.5 166.5,186.4 140.0,205.0 128.2,166.2 59.2,176.3 102.0,137.6 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업성/해자</text><circle cx="140.0" cy="90.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="166.5" cy="113.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="187.6" cy="165.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/수급</text><circle cx="166.5" cy="186.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">경영/지배구조</text><circle cx="140.0" cy="205.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">배당/주주환원</text><circle cx="128.2" cy="166.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="59.2" cy="176.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크(역수)</text><circle cx="102.0" cy="137.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/타이밍</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업성/해자</td><td>6.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>4.5</td><td>/10</td></tr><tr><td>성장성</td><td>7.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>5.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>4.5</td><td>/10</td></tr><tr><td>경영/지배구조</td><td>5.5</td><td>/10</td></tr><tr><td>배당/주주환원</td><td>2.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>8.5</td><td>/10</td></tr><tr><td>리스크(역수)</td><td>4.0</td><td>/10</td></tr><tr><td>촉매/타이밍</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 54/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v3</td><td>2026-06-05</td><td>—</td><td>중립</td><td>$13</td></tr><tr><td>v4</td><td>2026-06-13</td><td>—</td><td>—</td><td>$13.42</td></tr><tr><td>v5</td><td>2026-06-21</td><td>—</td><td>매수</td><td>$13.75</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">보통(Narrow)</span></h2><p>뉴스케일파워(SMR)는 미국 NRC 설계인증을 보유한 유일한 소형모듈원자로(77MWe 모듈) 개발사로, AI 데이터센터발 전력수요 급증과 원자력 르네상스 테마의 대표 수혜주로 분류된다. 그러나 현 시점은 명백한 상용화 이전 단계로, 직전 분기 매출은 $0.6M 수준까지 위축되고 분기 순손실 약 $45M의 지속 현금소진 구조다. 핵심 가치는 TVA 6GW급 그리드 공급 프로그램의 PPA 체결(2026년 말 기대)과 일본발 최대 $25B 투자 변수 같은 미래 촉매에 전적으로 의존하며, 첫 상업 호기 가동 시점은 여전히 2030년대로 불확실하다. 현재가 $10.23은 52주 고점 대비 약 -82% 급락한 수준으로 테마 광풍의 거품이 상당 부분 해소된 가격대이나, ATR 9.4%의 극단 변동성은 펀더멘털이 아닌 뉴스플로우에 주가가 좌우됨을 시사한다. 결론적으로 구조적 성장 테마는 유효하나 실적 가시성·희석 리스크·타이밍 불확실성이 결합돼 투기적 성격이 짙은 종목이다.</p><h3>Moat 상세</h3><p>유일한 NRC 설계인증(77MWe) 보유는 진입장벽이 매우 높은 원자력 인허가 영역에서 선발 우위를 제공하는 실질적 해자다. 다년의 심사·검증을 통과한 설계 자산과 루마니아 RoPower·TVA 등 그리드급 레퍼런스 파이프라인은 후발주자가 단기 복제하기 어렵다. 다만 X-energy(IPO 완료·파이프라인 144기)·Oklo(데이터센터 직거래 ~14GW)·TerraPower(착공) 등 경쟁사가 각기 다른 노형으로 빠르게 인허가·고객을 확보 중이어서 인증 우위의 독점력은 시간이 갈수록 희석된다. 첫 상업 가동 실적이 부재한 상태에서 해자는 '인증된 설계도'에 머물며, 실제 건설·운영 트랙레코드로 전환되기 전까지는 넓음(Wide)으로 보기 어렵다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>재무 구조는 전형적인 상용화 이전 개발사 프로파일이다. 직전 분기(2026 1분기) 매출은 약 $0.6M으로 전년 동기 대비 약 -95% 급감했는데, 이는 RoPower 라이선스 매출 기저효과와 Fluor FEED 단계 종료에 기인한 일회성 공백 성격이 크다. 분기 순손실은 약 $44~47M, 주당손실 약 -$0.14로 컨센서스를 소폭 하회했다. 긍정적 측면은 유동성으로, 5~6월 기준 현금성 자산이 약 $1.0~1.3B 확보돼 있어 현 소진 속도 기준 수년치 런웨이를 보유한다. 그러나 매출이 site-specific 엔지니어링 서비스와 OEM 계약으로 본격 전환되기 전까지 영업현금흐름 적자는 불가피하며, CEO가 제시한 2026년 말 영업현금흐름 흑자전환은 TVA PPA 체결을 전제로 한 조건부 목표다. 추가 자본조달(ATM·일본 투자 등) 시 기존 주주 지분 희석이 동반될 수 있는 점이 재무상 핵심 부담이다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>전통적 멀티플(PER·EV/EBITDA)은 적자·pre-revenue 구조상 적용 불가하며, 밸류에이션은 사실상 미래 PPA 파이프라인의 옵션 가치를 현재가치로 할인하는 시나리오 분석에 의존한다. 시총 약 $3.5B은 TVA 6GW를 비롯한 수십 GW급 파이프라인의 잠재 가치를 일부 선반영한 수준이나, 실현 시점이 2030년대로 멀고 할인율이 높아 평가 폭이 매우 넓다. 시장 컨센서스 평균 목표주가는 약 $15~16(고 $25/저 $7)이며 투자의견은 중립(매수 6·중립 9·매도 2)으로, Citi·골드만삭스·UBS 등이 상용화 일정 지연과 FID(최종투자결정) 도래 시점 후퇴, 지분 희석 우려를 들어 목표가를 하향 조정해 왔다. 현재가 $10.23은 컨센 평균 대비 약 30%대 할인 상태이나, 이는 펀더멘털 가시성 부재에 대한 합리적 디스카운트로 해석되며 명백한 저평가로 단정하기는 어렵다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $10.23은 52주 최고가 $57.42 대비 약 -82% 급락한 수준으로, 2025~2026년 테마 광풍 당시 형성된 거품이 대부분 해소된 가격대다. 52주 최저가 $8.85 대비로는 약 +16% 위에 위치해 바닥권에서 등락 중인 양상이다. ATR 14일 기준 변동성이 9.4%로 극단적으로 높아, 일본 $25B 투자 보도(6월 중순 +약10% 랠리)나 PPA 관련 단발 뉴스에 주가가 두 자릿수로 출렁이는 전형적인 모멘텀·테마 트레이딩 종목 성격을 보인다. 직전 거래일은 +1.3%로 마감했고 거래량 약 1,500만주로 유동성은 풍부하다. 컨센서스는 중립으로, 강세 동력은 TVA PPA 연내 체결 기대와 일본 자본 유입 가능성이고, 약세 동력은 Fluor의 보유지분 전량 매도 완료에 따른 오버행 해소 이후에도 잔존하는 실적 공백·집단소송·추가 희석 우려다. 시장 전반(6/26 AI capex ROI 패닉 이후 반등 4일째, F&G 26 공포 구간)의 고베타·고변동 자산에 대한 변동성 민감도가 높은 국면이라 단기 방향성 단정은 부적절하다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>목표주가(컨센)</td><td>약 $15~16 (평균)</td></tr><tr><td>투자의견</td><td>중립 (매수 6 / 중립 9 / 매도 2)</td></tr><tr><td>목표가 레인지</td><td>고 $25 / 저 $7</td></tr><tr><td>FY26E EPS</td><td>적자 지속 (분기 -$0.14 수준)</td></tr><tr><td>핵심 촉매</td><td>TVA 6GW PPA 연내 체결 기대</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>산업 메가트렌드는 명확히 우호적이다. AI 데이터센터 전력수요 폭증(DC 전력 2026년 ~1,000TWh 전망)과 24시간 무탄소 기저전력 수요가 결합되며 SMR은 빅테크의 핵심 전력 솔루션으로 부상했고, NRC의 Part 53(2026.04 발효)·Part 57 마이크로리액터 규제 현대화가 인허가 비용·기간을 구조적으로 단축시키고 있다. 글로벌 SMR 시장은 2025년 약 $6.9B에서 2032년 약 $13.8B로 약 2배 성장이 전망된다. 뉴스케일의 차별화 포인트는 경쟁사(Oklo의 데이터센터 직거래)와 달리 TVA 6GW 같은 계통(그리드) 공급 중심 전략으로, 대규모 유틸리티 레퍼런스를 우선 확보하려는 노선이다. 다만 경쟁 강도가 빠르게 높아지는 점이 부담이다. X-energy는 IPO로 $1B+를 조달하며 144기 파이프라인을 확보했고, Oklo는 Switch 12GW 등 ~14GW 파이프라인과 NVIDIA 협력을, TerraPower는 이미 착공에 들어갔다. 중국 Linglong One은 2026년 상반기 세계 최초 육상 상업 SMR 계통연결을 목표로 서구 경쟁사를 수년 앞선다. 즉 테마 자체는 성장하나 뉴스케일이 그 안에서 점유율과 수익화 우위를 입증할지는 미해결 과제다. 연료 측면에서 일부 설계가 요구하는 HALEU 공급망(Centrus 등) 병목도 산업 공통 변수다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 '미래 가치에 전적으로 의존하는데 그 실현 시점이 불확실하다'는 구조 자체다. 상용화 타이밍 지연, 지속 현금소진과 지분 희석, 그리고 펀더멘털과 괴리된 테마 변동성이 결합돼 하방 위험이 크다. 산업 메가트렌드는 우호적이나, 그 수혜를 뉴스케일이 실적으로 환산할 수 있을지에 대한 가시성이 낮은 점이 투기적 성격을 규정한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">상용화·첫 호기 가동 타이밍 불확실성</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">지속 현금소진·지분 희석</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">테마 모멘텀-펀더멘털 괴리·고변동성</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">경쟁 심화·점유율 불확실성</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">소송·규제·정책 리스크</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>상용화·첫 호기 가동 타이밍 불확실성</strong> (발생: 높음, 영향: 가치 실현 시점이 2030년대로 지연되면 옵션 가치 할인폭 확대)<br><span style="color:var(--sub);font-size:13px">뉴스케일의 밸류에이션은 미래 PPA 파이프라인의 현재가치에 전적으로 의존하나, 첫 상업 호기 가동은 여전히 2030년대로 불확실하다. FID(최종투자결정)와 건설 착수가 늦어질수록 할인율 적용 기간이 길어져 적정가치가 하락한다. 인허가는 완료됐어도 고객 확약·자금조달·EPC 실행이 연쇄적으로 지연될 위험이 상존한다.</span></div><div class="ri rl"><strong>지속 현금소진·지분 희석</strong> (발생: 높음, 영향: 추가 자본조달 시 기존 주주 지분 가치 희석)<br><span style="color:var(--sub);font-size:13px">분기 약 $45M의 순손실이 지속되며, 매출이 본격화되기 전까지 영업현금흐름 적자가 이어진다. 현 유동성 $1.0~1.3B로 런웨이는 확보돼 있으나, 일본 투자 유치나 ATM 등 추가 자본조달이 주식 발행을 동반하면 희석이 불가피하다. Fluor의 약 4,000만주 전량 매도가 보여주듯 대량 매도 오버행도 주가에 부담이다.</span></div><div class="ri rl"><strong>테마 모멘텀-펀더멘털 괴리·고변동성</strong> (발생: 높음, 영향: 센티먼트 반전 시 단기 급락 위험)<br><span style="color:var(--sub);font-size:13px">ATR 9.4%의 극단 변동성과 52주 -82% 낙폭은 주가가 펀더멘털이 아닌 뉴스·테마 모멘텀에 좌우됨을 보여준다. AI capex ROI 회의론(6/26 패닉)처럼 테마 전반의 센티먼트가 식으면 실적 무관하게 고베타 종목이 먼저 급락한다. 단발성 호재 랠리 후 차익실현 매물도 반복적으로 출현한다.</span></div><div class="ri rl"><strong>경쟁 심화·점유율 불확실성</strong> (발생: 중간, 영향: 인증 선발 우위의 독점력 시간 경과에 따라 희석)<br><span style="color:var(--sub);font-size:13px">X-energy(파이프라인 144기)·Oklo(~14GW·NVIDIA 협력)·TerraPower(착공)·GE Vernova Hitachi 등 경쟁사가 각기 다른 노형으로 빠르게 고객과 인허가를 확보 중이다. 중국 Linglong One은 세계 최초 상업 가동을 앞두고 있어 글로벌 SMR 시장에서 뉴스케일의 수익화 우위가 보장되지 않는다.</span></div><div class="ri rl"><strong>소송·규제·정책 리스크</strong> (발생: 중간, 영향: 법적 분쟁·정책 변경 시 비용·평판 부담)<br><span style="color:var(--sub);font-size:13px">ENTRA1 자격·역량 오도 혐의의 집단소송(Truedson v. NuScale)이 진행 중이며, 패소 시 비용과 평판 손상이 우려된다. SMR 산업은 IRA 세제혜택·DOE 대출 등 정책 지원에 크게 의존하므로 정책 기조 변화도 변수다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>투기적 테마주 성격을 인정하고 포트폴리오 내 소액 위성(satellite) 비중으로만 접근하는 것이 합리적이다. 신규 진입은 일괄 매수 대신 분할로, 핵심 촉매인 TVA PPA 체결 여부를 확인하며 단계적으로 비중을 조절하는 조건부 전략이 적절하다. ATR 9.4%의 고변동성을 감안하면 손절선은 2 ATR 기준 약 $8.31(52주 저점 $8.85 하회 지점과 근접)에 설정하고, 이 레벨을 종가로 이탈하면 테마 신뢰 훼손으로 보고 기계적으로 정리한다. 단기 목표가는 ATR 기반 약 $13.1 수준에서 1차 차익실현을 고려하되, 펀더멘털 목표가(컨센 평균 ~$15)는 PPA 체결 등 촉매 실현을 전제로 한다. 모니터링 핵심 지표는 ① TVA/ENTRA1 PPA 진척, ② 추가 자본조달 시 희석 규모, ③ 분기 영업현금흐름 적자 추이, ④ 경쟁사(X-energy·Oklo) 상대 진척이다. 안정 추구 투자자에게는 부적합하며, 손실 감내 여력이 있는 자금으로만 베팅 성격으로 접근할 것을 권한다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: $7 ~ $20 (중심 $13, ±50% (시나리오 폭 — pre-revenue 옵션가치 특성상 극단적))
+
+**스코어 ±밴드**: ±8 pt (PPA 체결·희석 가정 변경 시 변동)
+
+**시나리오 분기**:
+- 강세 시나리오: $20
+- 기본 시나리오: $13
+- 약세 시나리오: $7</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. TVA 6GW PPA가 2026년 말까지 체결되고 매출 본격화로 이어진다**
+
+반증 시 영향: 체결 지연·무산 시 핵심 강세 논리 붕괴 → 목표가 컨센 저점 $7대로, 스코어 -8pt
+
+**2. 현 유동성($1.0~1.3B)으로 대규모 희석 없이 상용화 단계에 도달한다**
+
+반증 시 영향: 대규모 추가 발행 시 주당가치 희석 → 목표가 -20~30%, 스코어 -5pt
+
+**3. 인증 선발 우위가 경쟁 심화 속에서도 수익화 우위로 전환된다**
+
+반증 시 영향: X-energy·Oklo가 먼저 상업 매출·고객을 확보하면 점유율 가정 훼손 → 성장성·해자 점수 하향, 스코어 -4pt</div>
+<div class="sec"><h2>재분석 메타 (v6 BLIND)</h2>- **재분석 회차**: v6 (이전 v5, 2026-06-21)
+- **모드**: BLIND (이전 v5 read 0건)
+- **임계**: 7일 (상한 10종, stock_update-2 슬롯, 2026-06-30)
+- **회차 보고**: `analysis/_reanalysis_runs/20260630_run_7day.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-06-30 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="SMR_NuScalePower_20260630.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
