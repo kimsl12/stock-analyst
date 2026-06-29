@@ -32,12 +32,13 @@ lint_p2_count: 4
 | `market/prediction_markets.md`  | 2026-06-21 | 7일    | kb-updater 재수집 위임. confidence 필드 누락(collection_status=SUCCESS) + 7/2 NFP 컨센 반영 |
 | `macro/science_tech.md`         | 2026-06-24 | 4일    | kb-updater 재수집 위임 (6/27 주간 KB 갱신에서 industry/science_tech 만 갱신·macro/ 누락)    |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 20일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 06-29)·economic_calendar(vu 07-05) 는 6/28 모닝 갱신 완료. 일요일 미국장 휴장으로 신규 시장 데이터 부재 → P0 본문 강제 재수집은 7/1 미국장 재개 후 권장(CLAUDE.md 강제갱신금지 원칙). auto-trigger 마커 0건 → kb-updater 자동 dispatch 생략.
+> **브리핑 진행 가능 여부:** industry KB 만료 21일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 06-30)는 6/29 이브닝 market-data-collector 갱신 완료(아시아 6/29 종가 + 미국 프리마켓 ET 07:05). economic_calendar(vu 07-05)는 6/28 갱신 유지. 7/1 ISM·Warsh 발언·7/2 NFP 주요 이벤트 대기. auto-trigger 마커 0건 → kb-updater 자동 dispatch 생략.
 
 > [해소 참조] `macro/us_monetary_policy.md`는 6/7 재수집 완료(3.50~~3.75%·6/16~~17 첫 Warsh FOMC·5월 NFP +172K, valid_until 2026-07-07).
 > [해소 참조] `market/daily_snapshot.md`는 6/27 모닝 market-data-collector 갱신 완료(S&P 7,354.02(-0.05%)·NASDAQ 25,297.62(-0.24%)·Dow 51,876.11(-0.09%)·RUT 3,010.08(+0.07%)·VIX 18.41(-2.54%)·10Y~~4.37%·Gold $4,073(+1.2%)·WTI $69.40(-3.51%)·BTC~~$59,949·SOL+9.4%·F&G 17(Extreme Fear), valid_until 2026-06-27). D-1(6/26 ET 16:00) 확정 종가. 아시아 패닉(KOSPI -5.81%) 대비 미국장 낙폭 대폭 제한, MU 어닝 서프라이즈 방어. NVDA -1.64%·SFTBY -9.2%.
 > [해소 참조] `market/economic_calendar.md`는 6/20 모닝 갱신 완료(6/25 Core PCE·6/22 미국장 재개 포함, valid_until 2026-06-26).
 > [해소 참조 2026-06-28] `market/daily_snapshot.md` + `market/economic_calendar.md`는 6/28 모닝 market-data-collector 갱신 완료. 6/26 종가 확정값 재확인(S&P 7,354.02·NASDAQ 25,297.62·VIX 18.41) + 6/26 아시아 대폭락 원인 기록(KOSPI -5.81%·닛케이 -4.15%: OpenAI IPO 2027 연기·AI칩 수요 우려·외인 $6B 이탈) + 주말 크립토 갱신(BTC $60,200·ETH $1,580·SOL $72) + F&G 25(공포) + 6/29 주간 캘린더(7/1 ISM·Warsh 발언, 7/2 NFP ★★★★★). valid_until 2026-06-29.
+> [해소 참조 2026-06-29] `market/daily_snapshot.md`는 6/29 이브닝 market-data-collector 갱신 완료. 아시아 6/29 종가(KOSPI ~8,333 반등 실패·KOSDAQ ~900.68 +5.79% 강세 디버전스·닛케이 68,563 -1.15%·항셍 23,076 +1.78%·상해 4,027 -2.26%) + 미국 프리마켓 ET 07:05(S&P +0.8%·NQ +1.2%·Dow +188pt — 미-이란 stand down+호르무즈 통항 합의) + WTI $70.79(+2.8% 반등)·Gold ~$4,044(-1%)·USD/KRW 1,543·BTC $60,357·크립토F&G 36·주식F&G 25. valid_until 2026-06-30.
 
 ---
 
