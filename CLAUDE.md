@@ -1,38 +1,20 @@
 # 종목분석 에이전트 — 작업 자동화 지침
 
-## 사이트 배포 자동화 (필수) [2026-06-11 webhook 복귀 반영]
-
-## 🔴 [임시·최우선] GitHub 플래그 기간 배포 룰 (2026-06-12 ~ 플래그 해제까지)
-
-**상황**: GitHub 계정 플래그로 서드파티 OAuth(Vercel) 연결이 차단됨. 부수효과로 **Vercel deployment 가 전부 `Blocked` → production 승격(promote/alias) 불가 → 본서버 갱신 불가**. (2026-06-12 Vercel Deployments 화면에서 최근 Production 전부 "Blocked" 확인. `promote`·`alias set` 모두 `not ready (422)` 거부.) GitHub Support 티켓 #4287825 후속 답변 발송, 처리 대기 중.
-
-**플래그 해제 전까지 강제 동작 — 이 4가지를 무조건 따른다**:
-
-1. **Vercel 시도 금지.** `vercel --prod` / `vercel ls` 확인 전부 무의미하다(Blocked 라 100% 실패 + 좀비 백그라운드만 누적). **본서버 갱신을 시도하지 말 것.** 시간 낭비다.
-2. **Cloudflare 미러가 유일 배포 채널.** `reports/**/*.html` 포함 push 직후 반드시 1줄만 실행:
-   ```bash
-   bash scripts/deploy_cloudflare.sh
-   ```
-2.5. **[2026-06-12 풀사이트 전환]** `deploy_cloudflare.sh` 는 이제 web 빌드 + `web/dist` 전체 + raw reports overlay 를 패키징 — **/portfolio·대시보드 등 Astro 앱 페이지도 미러에서 라이브** (소요 ~2분, 종전 5초 아님). 앱 페이지 변경도 push 후 위 1줄이면 반영. reports 전용 긴급 경로: `CF_REPORTS_ONLY=1 bash scripts/deploy_cloudflare.sh`.
-3. **사용자 향 완료 링크 = Cloudflare** (`https://stock-analyst.pages.dev/`). 평소 "Vercel 본서버 우선" 룰의 한시적 예외(Vercel 이 stale 이므로). [[feedback_completion_links_vercel]] 예외 적용 중.
-4. **완료 보고 형식 고정**: `Cloudflare 미러 ✅ / Vercel 본서버 ❌(GitHub 플래그로 promote 차단, 해제 후 일괄 복구)`.
-
-**원복 트리거(이 블록 삭제 조건)**: 플래그 해제 신호 = ① 사용자가 "플래그 풀렸다" 고지, 또는 ② `vercel --prod --yes`(sandbox 우회 호출법은 아래) 후 deployment 가 `● Ready` 로 승격됨, 또는 ③ Vercel 대시보드 Deployments 에서 Production 이 Blocked→Ready 로 뜸. 셋 중 하나 확인되면 → **본 임시 블록 삭제 + 평상시 룰 복귀**, 그리고 `vercel --prod --yes` 한 번으로 그동안 누적된 reports 를 일괄 반영.
-
-> 수동 `vercel --prod` 정확한 호출법(플래그 해제 후 사용): `dangerouslyDisableSandbox: true` + `timeout 160 vercel --prod --yes < /dev/null 2>&1 | tail -15`. 그냥 호출하면 sandbox 가 `~/.vercel` 토큰 차단(Not authorized) 또는 백그라운드 행. 상세: 메모리 [[project_github_actions_disabled]].
-
----
+## 사이트 배포 자동화 (필수) [2026-07-01 재연결 반영]
 
 `reports/**/*.html` (종목 / 브리핑 / 애널리스트) 변경이 포함된 main push 직후:
 
 ```bash
-# 1. 본서버 (Vercel) — push 가 자동 빌드 트리거 (webhook 재연결 2026-06-11 검증).
-#    ⚠️ 단 간헐 누락 있음 (2026-06-12 실측: 09:33 push 빌드됨, 10:04 push 누락 —
-#    GitHub 계정 플래그의 서드파티 전송 제한 추정. 백업 훅 추가 불가, 사용자가 GitHub 와 해결 예정).
-#    push 후 1~2분 내 vercel ls 확인 필수 → 자동 빌드 미발생 시 즉시 수동: vercel --prod --yes
+# 1. 본서버 (Vercel) — push 가 자동 빌드 트리거 (webhook).
+#    이력: 2026-06-12 GitHub 플래그로 Vercel OAuth 끊겨 deployment Blocked/UNKNOWN → 본서버 갱신 불가.
+#          2026-07-01 플래그 해제(GitHub Support) + 사용자가 Vercel↔GitHub 재연결 → webhook 자동 빌드 복구 검증 완료.
+#    push 후 vercel ls 확인 → 자동 빌드 미발생 시에만 수동 fallback (sandbox 우회 필수):
+#      timeout 160 vercel --prod --yes < /dev/null   (dangerouslyDisableSandbox 로 실행 — 안 그러면 Not authorized)
 
 # 2. 미러 (Cloudflare Pages) — webhook 없음. 항상 수동 실행:
 bash scripts/deploy_cloudflare.sh
+#    [2026-06-12 풀사이트 전환] web 빌드 + web/dist 전체 + raw reports overlay 패키징 (~2분).
+#    /portfolio·대시보드 등 Astro 앱 페이지도 미러 라이브. reports 전용 긴급: CF_REPORTS_ONLY=1 bash scripts/deploy_cloudflare.sh
 ```
 
 ### 본서버 / 미러 구조
@@ -67,7 +49,7 @@ Cloudflare Pages는 5/7에 우회 채널로 추가. 메인 사용자 트래픽�
 ### 실행 결과
 
 - Vercel: cloud build (45초), `web/dist/` 출력, deployment URL 반환
-- Cloudflare: 로컬 패키지 + wrangler upload (3~5초), 207~217 파일
+- Cloudflare: 로컬 패키지 + wrangler upload (3~~5초), 207~~217 파일
 
 ### 실패 시 처리
 
