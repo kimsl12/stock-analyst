@@ -49,10 +49,20 @@ if ! python3 scripts/check_confidence.py; then
     bash scripts/notify.sh "확신 라벨 게이트 실패" "${TYPE}_${DATE} 확신 높음 남발/반증 트리거 누락 — 산정 체크리스트 재적용 필요" || true
 fi
 
+# ── 처방 → 목표 비중 동기화 [v3.37] — /내포트폴리오 산출물의 "## 목표 비중" 블록을
+#    portfolio_targets.json 에 반영 (드리프트 감시·웹 표시가 처방을 자동 추종)
+if [[ "$TYPE" == "user_portfolio" ]]; then
+    if ! python3 scripts/sync_portfolio_targets.py; then
+        echo "[warn] 목표 비중 동기화 실패 (검증 거부) — 발행은 진행, 알림 발송"
+        bash scripts/notify.sh "목표 비중 동기화 실패" "${TYPE}_${DATE} 목표 비중 블록 검증 거부 — 기존 targets 유지" || true
+    fi
+fi
+
 # ── 스테이지 ─────────────────────────────────────────
 echo "→ staging briefing artifacts ($TYPE $DATE)"
 git add \
     "reports/briefing/" \
+    "scripts/portfolio_targets.json" \
     "knowledge-base/portfolio/" \
     "knowledge-base/market/" \
     "knowledge-base/_index.md" \

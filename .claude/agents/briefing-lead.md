@@ -750,6 +750,18 @@ status = "오류"
     7. [신규] 🔵 강력 매도/축소 권고 (4요소 명시)
     8. [신규] 다음 주 모니터링 포인트 (트리거)
     9. 4종 모델 포트폴리오 비교
+    10. [v3.37 의무] "## 목표 비중 (기계 동기화 — sync_portfolio_targets)" 블록 —
+        처방을 기계가 읽는 목표 상태로 고정. 이 블록이 드리프트 감시·웹 표시의 SSOT 가 된다:
+
+        | 티커 | 목표 비중(%) | 근거 1줄 |
+        |---|---|---|
+        | VOO | 44 | ... |
+
+        룰: 토스 주식 슬리브만 (현금·ISA·크립토 제외) / 합계 95~105 / 3종 이상 /
+        protected_holdings.json 의 보호 종목은 0% 로 만들지 말 것 (목록 유지).
+        커밋 시 scripts/sync_portfolio_targets.py 가 자동 파싱 → portfolio_targets.json 갱신
+        → watchdog 드리프트 알림 + /portfolio "목표 vs 실제" 표시가 이 처방을 추종.
+        블록 누락 시 sync 가 구형 산출물로 간주하고 기존 targets 유지 (경고 로그).
 
   → analysis/briefing/lead_user_portfolio_{YYYYMMDD}.md 저장
 

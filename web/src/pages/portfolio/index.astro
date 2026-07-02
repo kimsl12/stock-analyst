@@ -112,6 +112,36 @@ const REASON_LABEL: Record<string, string> = {
   EMERGENCY: '긴급 청산', REPLACE: '종목 교체',
 };
 
+// [v3.37] 처방 목표 비중 — /내포트폴리오 처방의 "## 목표 비중" 블록이 sync_portfolio_targets.py 로
+// 동기화한 scripts/portfolio_targets.json. 목표 vs 실제 괴리 + 다음 적립 권고 표시.
+type TargetsCfg = { targets?: Record<string, number>; source?: string; seeded_at?: string; threshold_pct_point?: number };
+let targetsCfg: TargetsCfg | null = null;
+try {
+  const { readFileSync } = await import('node:fs');
+  const path = await import('node:path');
+  targetsCfg = JSON.parse(readFileSync(path.resolve(process.cwd(), '..', 'scripts/portfolio_targets.json'), 'utf-8')) as TargetsCfg;
+} catch { /* graceful — 파일 부재 시 목표 컬럼 비표시 */ }
+const targets: Record<string, number> = targetsCfg?.targets ?? {};
+const driftThreshold = targetsCfg?.threshold_pct_point ?? 5;
+// 정규화: 목표에 등재된 티커의 실제 평가금 합 기준 (portfolio_watch.py 와 동일 방식)
+const targetSum = holdings
+  .filter((h) => targets[h.ticker] != null && h.current_value_usd != null)
+  .reduce((s, h) => s + (h.current_value_usd ?? 0), 0);
+const actualPctOf = (h: Holding): number | null =>
+  targets[h.ticker] != null && h.current_value_usd != null && targetSum > 0
+    ? (h.current_value_usd / targetSum) * 100
+    : null;
+// 목표 대비 괴리 — 미보유 목표 종목(예: 청산된 방어 슬리브)은 실제 0% 취급
+const gaps = Object.entries(targets)
+  .map(([t, tw]) => {
+    const h = holdings.find((x) => x.ticker === t);
+    const actual = h ? (actualPctOf(h) ?? 0) : 0;
+    return { ticker: t, target: tw, actual, gap: actual - tw };
+  })
+  .sort((a, b) => a.gap - b.gap);
+const nextBuy = gaps.length > 0 && gaps[0].gap < -1 ? gaps[0] : null;
+const missingTargets = gaps.filter((g) => g.actual === 0);
+
 const fmtMoney = (v: number | null, currency: 'USD' | 'KRW' = 'USD') => {
   if (v == null) return '—';
   const opts: Intl.NumberFormatOptions = currency === 'USD'
@@ -181,6 +211,19 @@ const updatedAt = portfolio?.updated_at
 
       <section>
         <h2>보유 종목 — 직접 매매 ({holdings.length}건) <span class="channel-tag tag-manual">수동 동기화</span></h2>
+
+        {Object.keys(targets).length > 0 && (
+          <div class="targets-bar">
+            {nextBuy && (
+              <span class="chip chip-nextbuy">💡 다음 적립 권고: <strong>{nextBuy.ticker}</strong> (목표 {nextBuy.target}% 대비 {nextBuy.gap.toFixed(1)}%p 부족)</span>
+            )}
+            {missingTargets.length > 0 && (
+              <span class="chip">미보유 목표: {missingTargets.map((g) => `${g.ticker} ${g.target}%`).join(' · ')}</span>
+            )}
+            <span class="targets-src">목표 출처: {targetsCfg?.source ?? '수동 설정'} ({targetsCfg?.seeded_at ?? '—'}) · 주식 슬리브 정규화 · 임계 ±{driftThreshold}%p</span>
+          </div>
+        )}
+
         <div class="table-wrap">
           <table>
             <thead>
@@ -191,23 +234,33 @@ const updatedAt = portfolio?.updated_at
                 <th class="num">수량</th>
                 <th class="num">평가금</th>
                 <th class="num">비중</th>
+                <th class="num">목표</th>
+                <th class="num">괴리</th>
                 <th class="num">수익률</th>
               </tr>
             </thead>
             <tbody>
-              {holdings.map((h) => (
-                <tr>
-                  <td><strong>{h.ticker}</strong></td>
-                  <td>{h.name}</td>
-                  <td><span class="muted">{h.asset_type ?? '—'}</span></td>
-                  <td class="num">{fmtQty(h.quantity)}</td>
-                  <td class="num">{fmtMoney(h.current_value_usd, 'USD')}</td>
-                  <td class="num">{h.weight_pct == null ? '—' : `${h.weight_pct.toFixed(2)}%`}</td>
-                  <td class:list={['num', h.return_pct != null && (h.return_pct >= 0 ? 'up' : 'down')]}>
-                    {fmtPct(h.return_pct)}
-                  </td>
-                </tr>
-              ))}
+              {holdings.map((h) => {
+                const actual = actualPctOf(h);
+                const gap = actual != null ? actual - targets[h.ticker] : null;
+                return (
+                  <tr>
+                    <td><strong>{h.ticker}</strong></td>
+                    <td>{h.name}</td>
+                    <td><span class="muted">{h.asset_type ?? '—'}</span></td>
+                    <td class="num">{fmtQty(h.quantity)}</td>
+                    <td class="num">{fmtMoney(h.current_value_usd, 'USD')}</td>
+                    <td class="num">{h.weight_pct == null ? '—' : `${h.weight_pct.toFixed(2)}%`}</td>
+                    <td class="num muted">{targets[h.ticker] != null ? `${targets[h.ticker]}%` : '—'}</td>
+                    <td class:list={['num', gap != null && gap <= -driftThreshold && 'gap-under', gap != null && gap >= driftThreshold && 'gap-over']}>
+                      {gap == null ? '—' : `${gap >= 0 ? '+' : ''}${gap.toFixed(1)}%p`}
+                    </td>
+                    <td class:list={['num', h.return_pct != null && (h.return_pct >= 0 ? 'up' : 'down')]}>
+                      {fmtPct(h.return_pct)}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -449,6 +502,25 @@ const updatedAt = portfolio?.updated_at
     color: var(--muted);
     padding: 0.6rem 0.2rem;
   }
+  /* [v3.37] 처방 목표 vs 실제 */
+  .targets-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+  }
+  .chip-nextbuy {
+    background: rgba(16,185,129,.10);
+    border-color: rgba(16,185,129,.4);
+    color: #10b981;
+  }
+  .targets-src {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .gap-under { color: var(--accent); font-weight: 700; }
+  .gap-over { color: #f59e0b; font-weight: 700; }
   .algo-meta {
     margin-top: 0.85rem;
     font-size: 0.72rem;
