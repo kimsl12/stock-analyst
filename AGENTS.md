@@ -171,6 +171,7 @@ gh-pages 자동 배포는 2026-06-12 중단 (deploy-reports.yml 트리거 제거
 | `scripts/regime_classifier.py`          | watchdog 06:40       | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                     |
 | `algo-trading/build_signals.mjs` + `scripts/signals_update.sh` | launchd 15:25       | 매매 엔진용 시그널 3종 (stock_scores·macro_regime·earnings) — timeline 단일 소스, 비상장 제외, 엔진 1차 점검 15:40 전 빌드. watchdog 이 신선도 검증 |
 | `scripts/algo_portfolio_sync.sh`        | launchd 16:15 + watchdog | 엔진이 쓴 `algo-trading/data/algo_holdings.json` (역방향 계약, handoff §9) 변경 감지 → commit/push + Cloudflare(풀사이트)·Vercel(timeout 가드) 배포 → `/portfolio` "알고 자동매매" 섹션 반영. live + 2일 무보고 시 watchdog 경고 |
+| `scripts/check_confidence.py`           | briefing_commit 경유 | 확신 라벨 기계 게이트 — 높음 계열 반증 트리거 필수 + 30일 높음 비율 cap 25% + 역캘리브레이션(실측 높음 14.3%<중간 60.0%) 중 남발 경고. 산정 룰: briefing-lead §Step 8.5-B |
 | `scripts/check_house_view.py`           | watchdog 06:40·10:30 | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                             |
 | `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
 | `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |

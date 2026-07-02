@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 /**
- * build_daily_pick.mjs — 매일 추천 종목 1건 산출 (DailyPick 위젯용) [v3.22]
+ * build_daily_pick.mjs — 매일 추천 종목 1건 산출 (DailyPick 위젯용) [v3.35]
  *
  * 출력: web/src/data/daily_pick.json
  *
- * 추천 룰:
- *  1순위: session-bootstrap.md 점수 ≥80 종목 중 가장 최근 등장한 1건
- *  - 빌드 타임에는 holdings 미반영 (브라우저가 Supabase 조회해 분류 표시)
- *  - 추천 데이터 자체는 "오늘의 후보 1건" + 메타 (점수/등급/가격/이유)
+ * 추천 룰 (하이브리드, 2026-07-02 재정의 — 사용자 확정):
+ *  등급 매수 이상 (강력매수/매수) AND 점수 ≥75 중 최고점 1건 + 7일 로테이션.
+ *  75 미만뿐이면 "추천 없음" 유지 (질 하한 보장).
+ *  ⚠️ v3.27 등급 쿼터 도입 후 절대컷 80은 "추천 없음" 만성화 — 6/19~7/1 8일 픽 부재 사고.
  *
- * 데이터 소스:
- *  - session-bootstrap.md (점수·등급·티커·발화일)
- *  - analysis/{ticker}_*_v{N}/scorecard.md (최신 v — 가격·이유 발췌)
- *  - manifest.json (HTML link · name)
+ * 데이터 소스 (v3.35 — session-bootstrap 소싱 폐지):
+ *  - analysis/_history/{TICKER}_*_timeline.json (재분석 시스템 단일 진실 — 후보·점수·날짜)
+ *    ⚠️ 구 소스 session-bootstrap.md 는 재분석 전 옛 버전 점수가 잔류해 후보 풀이 부풀려지고
+ *    라이브 재검증에서 전멸하던 원인 (bootstrap 81~86 vs live 63~78, 2026-07-02 실측).
+ *  - analysis/{ticker}_*_v{N}/scorecard.md (최신 v — 등급·가격·이유 라이브 보정)
  */
 import { readFile, writeFile, readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -25,48 +26,46 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WEB_DIR = path.resolve(__dirname, '..');
 const PROJECT_ROOT = path.resolve(WEB_DIR, '..');
-const BOOTSTRAP = path.join(PROJECT_ROOT, 'session-bootstrap.md');
 const ANALYSIS_DIR = path.join(PROJECT_ROOT, 'analysis');
+const HISTORY_DIR = path.join(ANALYSIS_DIR, '_history');
 const OUTPUT_JSON = path.join(WEB_DIR, 'src', 'data', 'daily_pick.json');
 
-const MIN_SCORE = 80;
-const REMIND_MIN_SCORE = 85;
+const MIN_SCORE = 75; // [v3.35 하이브리드] 등급 필터(매수 이상)와 결합된 질 하한
+const BUY_GRADE = /강력\s?매수|매수/; // 매수 이상만 추천 (중립/보유/매도 제외)
 
 // [v3.32, 2026-06-12] 비상장 종목 — 매수 불가 + /api/price 404 로 위젯 카드 깨짐 → 후보 제외.
 // (2026-06-12 ANTHROPIC 85.5 가 픽으로 선정되어 카드 전체가 '—' 표시된 사고)
 const UNLISTED = new Set(['ANTHROPIC', 'SPACEX']);
 
 // ---------------------------------------------------------------------------
-// 1. session-bootstrap.md 파싱 → 종목 후보 목록
-//    표 형식: | **TICKER_Name_v{N}** | **YYYY-MM-DD** | **score grade** (...) | status |
+// 1. analysis/_history/*_timeline.json → 종목 후보 목록 (단일 진실) [v3.35]
+//    각 timeline 의 마지막 항목(최신 v)만 사용. score ≥ MIN_SCORE 프리필터.
+//    grade 는 timeline 에 null 이 많아(75/112 실측) 라이브 스코어카드가 pickToday 에서 보정.
 // ---------------------------------------------------------------------------
-async function parseBootstrap() {
-  if (!existsSync(BOOTSTRAP)) return [];
-  const text = await readFile(BOOTSTRAP, 'utf-8');
-  const lines = text.split(/\r?\n/);
+async function parseTimelines() {
+  if (!existsSync(HISTORY_DIR)) return [];
+  const files = (await readdir(HISTORY_DIR)).filter((f) => f.endsWith('_timeline.json'));
   const candidates = [];
-
-  // 패턴: | **{TICKER}_{name}[_v{N}]** | **{YYYY-MM-DD}** | **{score} {grade}** ... |
-  // 또는 비강조 버전도 허용
-  const re = /^\|\s*\*?\*?([A-Z0-9가-힣]+)_([^|*]+?)(?:_v(\d+))?\*?\*?\s*\|\s*\*?\*?(\d{4}-\d{2}-\d{2})\*?\*?\s*\|\s*\*?\*?([\d.]+)\s+([^|*(]+?)\*?\*?\s*[(|]/;
-
-  for (const line of lines) {
-    const m = re.exec(line);
-    if (!m) continue;
-    const [, ticker, name, version, date, scoreStr, gradeRaw] = m;
+  for (const f of files) {
+    let tl;
+    try {
+      tl = JSON.parse(await readFile(path.join(HISTORY_DIR, f), 'utf-8'));
+    } catch {
+      continue;
+    }
+    const ticker = String(tl.ticker ?? '');
+    const last = (tl.history ?? []).at(-1);
+    if (!ticker || !last) continue;
     if (UNLISTED.has(ticker)) continue; // [v3.32] 비상장 제외
-    const score = Number(scoreStr);
+    const score = Number(last.score);
     if (!Number.isFinite(score) || score < MIN_SCORE) continue;
-    const grade = gradeRaw.trim();
-    // 비강추 등급 필터
-    if (/중립|매도|hold|sell|⚠/i.test(grade) && score < REMIND_MIN_SCORE) continue;
     candidates.push({
       ticker,
-      name: name.trim(),
-      version: version ? `v${version}` : '',
-      date,
+      name: tl.name ?? ticker,
+      version: last.v ? `v${last.v}` : '',
+      date: last.date ?? '',
       score,
-      grade,
+      grade: last.grade ?? '',
     });
   }
   return candidates;
@@ -157,8 +156,9 @@ export function extractScorecardMeta(text) {
   const period = text.match(/(?:예상\s*보유\s*기간|holding\s*period)[:\s]*\*?\*?(\d+)\s*(?:일|days?)/i);
   if (period) out.holding_period_days = Number(period[1]);
 
-  // 매수 이유 (S6 / "투자 포인트" / "핵심 결론" 등에서 첫 3 bullet 발췌)
+  // 매수 이유 — 우선순위: § 투자 논지(Thesis, v3.27+) > 결론/투자 포인트 섹션의 첫 3 bullet
   const bulletSections = [
+    /##\s*§?\s*[①-⑩\d.\s]*투자\s*논지[\s\S]+?(?=^## |\Z)/m, // "## § 투자 논지 (Thesis)" — 핵심 주장/컨센 vs 우리/반증
     /## (?:7\.|8\.|9\.).*?결론[\s\S]+?(?=^## |\Z)/m,
     /## .*?(?:핵심|투자\s*포인트|결론)[\s\S]+?(?=^## |\Z)/m,
   ];
@@ -254,10 +254,13 @@ async function pickToday(candidates) {
     if (!sc) continue;
     const meta = extractScorecardMeta(await readFile(sc.path, 'utf-8'));
 
-    // [v3.32] 최신 스코어카드 점수로 재검증 — bootstrap 행은 구버전(재분석 전) 점수일 수 있음.
-    // 현재 점수가 임계 미달이면 추천 부적격 → 다음 후보로 (VIG 사고: bootstrap 83.75 vs 실제 v3 74).
-    const liveScore = meta.current_score;
-    if (liveScore != null && liveScore < MIN_SCORE) continue;
+    // [v3.35 하이브리드 게이트] 라이브 스코어카드 기준 최종 검증:
+    //   점수 ≥ MIN_SCORE(75) AND 등급 매수 이상 (강력매수/매수).
+    //   timeline 이 stale/null 인 필드는 라이브 값이 보정 — 양쪽 다 없으면 보수적으로 스킵.
+    const liveScore = meta.current_score ?? c.score;
+    if (liveScore == null || liveScore < MIN_SCORE) continue;
+    const liveGrade = meta.current_grade ?? (c.grade || null);
+    if (!liveGrade || !BUY_GRADE.test(liveGrade) || /중립|보유|매도/.test(liveGrade)) continue;
     const market = guessMarket(c.ticker);
     const currency = market === 'KRX' ? 'KRW' : market === 'US' ? 'USD' : meta.currency;
 
@@ -315,7 +318,7 @@ async function main() {
     return;
   }
 
-  const candidates = await parseBootstrap();
+  const candidates = await parseTimelines();
   const top = await pickToday(candidates);
 
   await mkdir(path.dirname(OUTPUT_JSON), { recursive: true });

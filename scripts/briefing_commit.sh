@@ -42,6 +42,13 @@ if [[ -f "$HTML_FILE" ]]; then
     fi
 fi
 
+# ── 확신 라벨 게이트 [v3.36] — 역캘리브레이션 교정 (실측: 높음 14.3% < 중간 60.0%)
+#    확신 높음 남발 + 반증 트리거 누락을 발행 시점에 기계 검사 (briefing-lead §확신 라벨 산정 룰)
+if ! python3 scripts/check_confidence.py; then
+    echo "[warn] 확신 라벨 게이트 FAIL — 발행은 진행, 알림 발송"
+    bash scripts/notify.sh "확신 라벨 게이트 실패" "${TYPE}_${DATE} 확신 높음 남발/반증 트리거 누락 — 산정 체크리스트 재적용 필요" || true
+fi
+
 # ── 스테이지 ─────────────────────────────────────────
 echo "→ staging briefing artifacts ($TYPE $DATE)"
 git add \
