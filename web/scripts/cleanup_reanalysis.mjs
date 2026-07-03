@@ -27,6 +27,9 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { todayKst, nowKstIsoShort } from './_kst.mjs';
+// [v3.39] 점수·등급·목표가 추출은 공유 파서 우선 (웹·시그널과 동일 SSOT) — 자체 정규식은 폴백만.
+// 자체 등급 정규식이 반증 조건 "등급 {중립→매수}" 의 '→ 매수' 를 결론으로 오캡처한 사고 (2026-07-03, LIN·SPGI·LNG 등 6종).
+import { parseScore, parseGrade, parseTargetPrice, parseAnalysisDate } from './lib/scorecard_parser.mjs';
 
 // ---------------------------------------------------------------------------
 // 경로
@@ -167,17 +170,17 @@ async function extractScorecardMeta(folderPath, v) {
   }
 
   // 작성일 — 한/영 헤더 또는 mtime
-  let date = null;
+  let date = parseAnalysisDate(text);
   const dateMatch = /(?:작성일|Date)[^0-9]*(\d{4}[-./]\d{2}[-./]\d{2})/i.exec(text);
-  if (dateMatch) date = dateMatch[1].replace(/[./]/g, '-');
+  if (!date && dateMatch) date = dateMatch[1].replace(/[./]/g, '-');
   if (!date) {
     try { date = statSync(scPath).mtime.toISOString().slice(0, 10); } catch { /* skip */ }
   }
 
-  // 종합 스코어 — /100 또는 "점 해당" boundary 명시만 매치 (best-effort)
-  let score = null;
+  // 종합 스코어 — 공유 파서 우선, 레거시 패턴 폴백
+  let score = parseScore(text);
   const scoreM1 = /(?:종합\s*점수|총점|Score|Total)\s*[:：]?\s*([0-9]+(?:\.[0-9]+)?)\s*\/\s*100\b/i.exec(text);
-  if (scoreM1) score = Number(scoreM1[1]);
+  if (score == null && scoreM1) score = Number(scoreM1[1]);
   if (score == null) {
     const scoreM2 = /([0-9]+(?:\.[0-9]+)?)\s*점\s*해당/i.exec(text);
     if (scoreM2) score = Number(scoreM2[1]);
@@ -190,9 +193,9 @@ async function extractScorecardMeta(folderPath, v) {
 
   // 투자 등급 — "결론 표현(→, 최종, 투자 등급:, Grade:) 다음 30자 안 키워드" 우선
   // 옛 분석엔 등급 기준표 ("80~100: 강력매수, 65~79: 매수...") 가 있어 단순 alternation 매치 부정확
-  let grade = null;
+  let grade = parseGrade(text);
   const conclKoM = /(?:→\s*\*?\*?\s*|최종[^:\n]{0,10}|\*\*\s*투자\s*등급\s*[:：]\s*\*?\*?|투자\s*등급\s*[:：]\s*\*?\*?)\s*(강력매수|강력매도|매수|매도|중립)/.exec(text);
-  if (conclKoM) grade = conclKoM[1];
+  if (!grade && conclKoM) grade = conclKoM[1];
   if (!grade) {
     const conclEnM = /(?:Grade|Rating)[^\n]{0,40}?\b(Strong\s*Buy|Strong\s*Sell|Buy|Hold|Neutral|Sell)\b/i.exec(text);
     if (conclEnM) grade = conclEnM[1].replace(/\s+/g, ' ');
@@ -205,7 +208,16 @@ async function extractScorecardMeta(folderPath, v) {
   // 목표주가 — 한/영 패턴
   // 한글: "목표주가: ₩72,000", "목표가 410"
   // 영어: "Target Price: $410", "PT: 410", "Price Target: 410"
+  // [v3.39] 공유 파서 우선 — 레거시 pattern 4 가 컨센/단기 목표를 12M 보다 먼저 오캡처
+  // (AAPL $305, 207940 컨센 206만 사고) + 후행 콤마 잔류 (ISRG "$449,").
   let target_price = null;
+  {
+    const tpShared = parseTargetPrice(text);
+    if (tpShared != null) {
+      const isKrw = /원\b|₩/.test(text) && !/\$/.test(text.slice(0, 400));
+      target_price = `${isKrw ? '₩' : '$'}${tpShared.toLocaleString('en-US')}`;
+    }
+  }
   // [v3.26 fix, 2026-06-11] 통화 문맥(기호/USD/원) 필수 — 기존 [^0-9$₩]* 패턴이
   // 산문 "목표가 대비 상방이 +8%" 의 "8" 을 오캡처 (NVDA v5 timeline TP "8" 사고).
   // lib/scorecard_parser.mjs 와 동일 원칙. 우선순위: 표 행 > Base case > 중심 > 일반.
@@ -217,6 +229,7 @@ async function extractScorecardMeta(folderPath, v) {
     /(?:목표주가|목표가)[^0-9\n]{0,15}?()([0-9,]+(?:\.[0-9]+)?)\s*원/,
   ];
   for (const re of tpPatterns) {
+    if (target_price) break;
     const m = re.exec(text);
     if (m) {
       target_price = `${m[1] || (re === tpPatterns[4] ? '₩' : '$')}${m[2]}`;
@@ -227,6 +240,13 @@ async function extractScorecardMeta(folderPath, v) {
     // PT 단독은 제외 (WACC/PT% 노이즈) — Target Price / Price Target 헤더만
     const tpEn = /(?:Target\s*Price|Price\s*Target)\s*[:：]?\s*([\$₩])?\s*([0-9,]+(?:\.[0-9]+)?)/i.exec(text);
     if (tpEn) target_price = `${tpEn[1] || '$'}${tpEn[2]}`;
+  }
+  if (!target_price) {
+    const tpShared = parseTargetPrice(text);
+    if (tpShared != null) {
+      const isKrw = /원\b|₩/.test(text) && !/\$/.test(text.slice(0, 400));
+      target_price = `${isKrw ? '₩' : '$'}${tpShared.toLocaleString('en-US')}`;
+    }
   }
 
   // 약한 가정 — § 섹션 안의 "1." "2." "3." 글머리 첫 줄 추출 (있으면)
