@@ -108,3 +108,12 @@ test('SPACEX 형식: "등급: 중립 (Hold) — 70.5점" → 점수+등급', () 
 test('INTC 산문: "스코어 45 → 중립" 형식', () => {
   assert.equal(parseScore('등급 매핑: 스코어 45 → 중립(45~64점) 구간'), 45);
 });
+
+test('[v3.38] 목표주가_점추정 변형 — AMD v1 실측 드리프트', () => {
+  assert.equal(parseTargetPrice('목표주가_점추정: $505 (자체 가중평균, 컨센서스 $588 병기)'), 505);
+});
+
+test('[v3.38] 목표주가 표 행 + 원화 변형', () => {
+  assert.equal(parseTargetPrice('| 목표주가 | $412.50 | 근거 |'), 412.5);
+  assert.equal(parseTargetPrice('목표주가: 285,000원 (컨센 중앙값)'), 285000);
+});
