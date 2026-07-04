@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-06-27
+last_updated: 2026-07-04
 update_cycle: weekly
 status: active
-total_headlines: 76
+total_headlines: 84
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -34,8 +34,9 @@ total_headlines: 76
 - 📄 [Preprint] arXiv:2511.12286 (2026-04) — "Sangam: Chiplet-Based DRAM-PIM Accelerator with CXL Integration for LLM Inferencing" → CXL-attached PIM-chiplet 메모리 모듈, H100 대비 디코딩 처리량·쿼리 지연 다대일 가속, GPU 대체·병행 사용 시나리오 제시
 - 📄 [Preprint] arXiv:2511.06838 (2026-05) — "P3-LLM: An Integrated NPU-PIM Accelerator for LLM Inference Using Hybrid Numerical Formats" → HBM-PIM/Ecco/Pimba 대비 평균 3.4배 가속, 하이브리드 수치 포맷으로 LLM 추론 최적화
 - 📄 [Preprint] arXiv:2604.08044 (2026-04-09) — "A Full-Stack Performance Evaluation Infrastructure for 3D-DRAM-based LLM Accelerators" (3D-DRAM 기반 LLM 가속기 풀스택 성능 평가 인프라) → 3D-DRAM 적층 메모리 아키텍처를 LLM 추론에 적용한 성능 모델링 프레임워크 제시, HBM 후속 메모리 폼팩터 평가 도구 ([source](https://arxiv.org/html/2604.08044v1))
-- 📄 [Preprint] arXiv:2606.05511 (2026-06-03) — "RH+: Row-Hit-Optimized Scheduling for PIM-based LLM Inference" (PIM 기반 LLM 추론을 위한 행-히트 최적화 스케줄링) → HBM3 PIM에서 진짜 병목은 전력제약(nCCDAB)이 아니라 DRAM 행 사이클타임(nRC, nCCDAB의 10~11배)임을 규명. 메모리 접근 stride를 64→1 컬럼으로 바꿔 사이클당 32회 연속 행-히트 유도 → 8.25~11.88배 가속, 에너지 74.5~77.1% 절감, EDP 32.4~52.0배 개선 ([source](https://arxiv.org/html/2606.05511))
-- 📄 [Preprint] arXiv:2604.26103v2 (2026-04-30) — "AMMA: A Multi-Chiplet Memory-Centric Architecture for Low-Latency 1M Context Attention Serving" (저지연 100만 토큰 컨텍스트 어텐션 서빙을 위한 멀티칩렛 메모리 중심 아키텍처) → GPU 연산 다이를 4×4 메시의 HBM-PNM(processing-near-memory) 큐브 16개로 대체, 36GB 3.3TB/s HBM4 사양 기반 로직다이(≤5nm) 통합. NVIDIA H100 대비 어텐션 지연 15.5배↓·에너지 6.9배↓, batch=1에서 12.0~16.3배·batch=32에서 13~20배 가속, 100만 토큰 디코드 어텐션 타겟 — GPU 비의존 자율 가속기. HBM4 진영(SK하이닉스·삼성)에 PNM 통합 수요 신호 ([source](https://arxiv.org/html/2604.26103))
+- 📄 [Preprint] arXiv:2606.05511 (2026-06-03) — "RH+: Row-Hit-Optimized Scheduling for PIM-based LLM Inference" (PIM 기반 LLM 추론을 위한 행-히트 최적화 스케줄링) → HBM3 PIM에서 진짜 병목은 전력제약(nCCDAB)이 아니라 DRAM 행 사이클타임(nRC, nCCDAB의 10~~11배)임을 규명. 메모리 접근 stride를 64→1 컬럼으로 바꿔 사이클당 32회 연속 행-히트 유도 → 8.25~~11.88배 가속, 에너지 74.5~~77.1% 절감, EDP 32.4~~52.0배 개선 ([source](https://arxiv.org/html/2606.05511))
+- 📄 [Preprint] arXiv:2604.26103v2 (2026-04-30) — "AMMA: A Multi-Chiplet Memory-Centric Architecture for Low-Latency 1M Context Attention Serving" (저지연 100만 토큰 컨텍스트 어텐션 서빙을 위한 멀티칩렛 메모리 중심 아키텍처) → GPU 연산 다이를 4×4 메시의 HBM-PNM(processing-near-memory) 큐브 16개로 대체, 36GB 3.3TB/s HBM4 사양 기반 로직다이(≤5nm) 통합. NVIDIA H100 대비 어텐션 지연 15.5배↓·에너지 6.9배↓, batch=1에서 12.0~~16.3배·batch=32에서 13~~20배 가속, 100만 토큰 디코드 어텐션 타겟 — GPU 비의존 자율 가속기. HBM4 진영(SK하이닉스·삼성)에 PNM 통합 수요 신호 ([source](https://arxiv.org/html/2604.26103))
+- 📄 [Preprint] arXiv:2606.17104v1 (2026-06) — "Prefill/Decode-Aware Evaluation of LLM Inference on Emerging AI Accelerators" (프리필/디코드 인지 신흥 AI 가속기 LLM 추론 평가, HPAI4S'26 @ IEEE IPDPS 2026 채택) → LLM 추론을 프리필(연산 바운드)·디코드(메모리대역폭 바운드) 두 단계로 분리 평가하는 벤치마크 방법론. 신흥 가속기(PIM/PNM 포함)의 실효 성능이 단계별로 크게 갈림을 규명 — HBM 대역폭이 디코드 단계 병목의 핵심임을 재확인, 메모리 중심 가속기 수요 논거 강화 (📄 IEEE IPDPS 2026 워크숍 채택 [source](https://arxiv.org/html/2606.17104v1))
 - 📄 [Preprint] arXiv:2605.05639v1 (2026-05-07) — "TokenStack: A Heterogeneous HBM-PIM Architecture and Runtime for Efficient LLM Inference" (효율적 LLM 추론을 위한 이종 HBM-PIM 아키텍처·런타임) → HBM 스택을 기능별 수직 분리(용량층=표준 HBM이 weight·activation·cold KV / 연산층=PIM이 hot KV). HBM4의 CMOS 로직 base die가 스택-로컬 데이터이동·주소변환·인라인 양자화를 호스트 개입 없이 수행 + UCIe 다이투다이 인터커넥트. AttAcc(전용 PIM 베이스라인) 대비 토큰 처리량 기하평균 1.62배↑, 2배 지연 SLO 충족 서빙 캐파 1.70배↑, 토큰당 에너지 30~47% 절감 — HBM4 로직 base die가 이전 세대 불가능했던 자율 DMA 활성화하는 thesis 보강 ([source](https://arxiv.org/html/2605.05639))
 
 ### 씽크탱크
@@ -57,6 +58,7 @@ total_headlines: 76
 
 - 📄 [Policy] US BIS / MATCH Act 입법 (2026-04) — "Multilateral Alignment of Technology Controls on Hardware Act" → 미국 단독 통제→동맹 다자 통제 전환, ASML/Nikon/Canon 우회 차단 명문화 시도
 - 📄 [Policy] EU Commission (2026-05) — "EU 데이터센터 캐파 3배 확장 7개년 플랜" → EU 자체 클라우드·AI 컴퓨트 자립 정책, 한·미·일 반도체 수출 추가 수요 채널
+- 📄 [Industry] 3사 16-Hi HBM4 NVIDIA 발주 경쟁 (2026-07-02 보도) — "삼성·SK하이닉스·마이크론, NVIDIA Q4 2026 신규 16-Hi HBM4 물량 놓고 3파전 — 업계 첫 16단 적층 난이도 'formidable'" → Vera Rubin용 12-Hi HBM4 초도 공급(SK하이닉스 약 60~~70%·삼성 약 25~~30%·마이크론 잔여) 이후, NVIDIA가 Q4 2026 16-Hi HBM4 신규 발주 요청. 16단은 업계 최초 적층으로 열·휘어짐·수율 난제 동반 — HBM4 세대 내 2차 물량 배분에서 3사 재경쟁 구도. SK하이닉스 HBM3E→HBM4 전환 일부 지연(DDR5 재배치, 6/24 기존 헤드라인)과 맞물려 공급 타이트닝 지속 ([source](https://www.tweaktown.com/news/109495/sk-hynix-samsung-and-micron-fighting-for-nvidia-supply-contracts-for-new-16-hi-hbm4-orders/index.html))
 - 📄 [Policy] US CHIPS Act Phase 2 진행 (2026-05) — "TSMC AZ Fab21 3nm 장비 입고 Q3 2026, Samsung Taylor TPU/FSD 칩 다년 계약" → TSMC 3nm 양산 2027년 (원래 2028→1년 단축), Samsung Taylor — Tesla AI5/AI6 + Alphabet TPU 다년 계약 체결 ([source](https://markets.financialcontent.com/wral/article/tokenring-2026-1-1-the-silicon-renaissance-us-chips-act-enters-production-era-as-intel-tsmc-and-samsung-hit-critical-milestones))
 
 ---
@@ -74,6 +76,7 @@ total_headlines: 76
 - 📄 [White Paper] IEA Oil Market Report (2026-05) — "Iran War Upends Oil Outlook" → 이란 분쟁으로 걸프 산유 약 10.5 mb/d 오프라인, 2026년 글로벌 공급 -3.9 mb/d·수요 -420 kb/d로 1.78 mb/d 적자 반전(기존 surplus 전망 뒤집힘). Q2 정유가동 -4.5 mb/d, 재고 Q2 평균 -8.5 mb/d (5~6월 최대 인출), Brent 약 $106/bbl 고착. "호르무즈 해협 재개통이 가격·공급 압력 완화의 단일 최대 변수" — 중동發 인플레 상방 채널 ([source](https://oilprice.com/Latest-Energy-News/World-News/IEA-Revises-2026-Forecast-Oil-Deficit-Widens-as-Iran-War-Cuts-Production.html))
 - 📄 [Think Tank] CRS Report R45281 (2026-06) — "Iran Conflict and the Strait of Hormuz: Impacts on Oil, Gas, and Other Commodities" (이란 분쟁과 호르무즈 해협: 석유·가스·기타 원자재 영향) → 미·이스라엘 작전(2026-02~) + 이란 보복으로 3/4부터 이란이 호르무즈 "봉쇄" 선언·통항 선박 공격. 2025년 세계 해상 석유교역의 약 25%가 호르무즈 통과했고 우회 경로는 제한적. 재고 인출은 5~6월 최대, Brent 약 $106/bbl 유지, IEA 회원국 전략비축 4억 배럴 방출 합의 — 해협 통항이 가격 정상화의 핵심 변수 ([source](https://www.congress.gov/crs-product/R45281))
 - 📄 [White Paper] 유가·호르무즈 통항 정상화 진전 (2026-06-17) — "Brent $78.24/bbl, 3/3 이후 최저 — 美·이란 휴전 프레임워크 + 해협 재개통 기대로 2026년 고점 대비 약 20% 하락" → 분쟁 중 50% 이상 급등했던 유가가 전쟁 전(2/28) 대비 약 7% 수준으로 회귀. 6/19 제네바 서명 예정 프레임워크: 이란이 호르무즈 near-total 봉쇄 해제 ↔ 美 이란 항만 봉쇄 해제. 단 정상화엔 시차 — 통항 대기 선박 500척 초과, 기뢰 제거에 수주 이상 소요로 정상 해운 복원은 수주~수개월 전망. 직전 회차(CRS $106/bbl) 대비 중동發 인플레 상방 압력 급속 완화 신호 ([source](https://www.aljazeera.com/economy/2026/6/17/oil-prices-continue-slide-amid-hopes-for-peace-opening-of-strait-of-hormuz))
+- 📄 [White Paper] 호르무즈 주말 재교전 후 재휴전 (2026-06-29) — "Brent 8월물 $73.21/bbl(+0.9%), 전쟁 프리미엄 거의 소진 — 6/27~28 美·이란 상호 타격 후 일요일 재휴전·7/1 도하 협상 예정" → US CENTCOM이 이란의 호르무즈 상선 공격을 이유로 금·토 이란 타격, 이란은 바레인·쿠웨이트 美 자산에 미사일·드론 보복. 일요일 밤 양측 공격 중단·협상 재개 합의(도하, 화요일 예정, 이란 공식 확인 전). 애널리스트 "MoU에 집행 세부 없고 타격 지속되는데도 유가가 전쟁 프리미엄 거의 되돌림" — 재개통 지연 리스크 잔존하나 유가는 $73선 안착으로 중동發 인플레 상방 채널 실질 소멸 국면. 5월 IEA($106) 대비 방향 완전 역전 ([source](https://www.aljazeera.com/economy/2026/6/29/oil-prices-rise-as-us-iranian-strikes-threaten-strait-of-hormuz-reopening))
 
 ### 컨퍼런스/백서
 
@@ -114,9 +117,10 @@ total_headlines: 76
 - 📄 [Policy] ECB 통화정책결정 (2026-04-30) — "기준금리 동결 (MRO 2.15% / DFR 2.0%)" → 4월 유로존 인플레 3%, 중동 전쟁 에너지가격 상방, 만장일치 동결 + 인상 옵션 토론 — Lagarde 데이터 의존 메시지
 - 📄 [Policy] 한국은행 MPC (2026-05-28) — "기준금리 2.50% 동결 (8회 연속), 신현송 총재 첫 회의 매파 시그널" → 류상대·장용성 위원 즉시 인상 소수의견, dot plot 7인 중 19/21점이 6개월 후 인상 전망 (동결은 2점). 2026년 CPI 전망 2.2%→2.7% 상향 (이란 분쟁發 유가 전가), GDP 전망 2.0%→2.6% 상향. 총재 "성장·물가·환율·부동산 모두 같은 방향" 연내 인상 사실상 확인 ([source](https://www.kedglobal.com/central-bank/newsView/ked202605280001))
 - 📄 [Policy] FOMC 6/16-17 회의 프리뷰 (2026-06) — "동결 유력 + 완화→중립/긴축 바이어스 전환 가능성" → CME FedWatch 동결 확률 98.3%. 5월 헤드라인 CPI 4.2% YoY·코어 2.9%(둘 다 2% 목표 상회), 5월 신규고용 +172K(3개월 평균 188K)·실업률 4.3%로 견조. Desk 서베이 중앙값은 향후 1년 25bp 인하 2회 유지하되 시점을 26년 3~4분기·27년 1분기로 후퇴. 이란 분쟁發 인플레 지속 시 인상 가능성 다수 의견 — SEP/dot plot 본 회의서 갱신 (4월은 비공개 회의로 미발표) ([source](https://www.indexbox.io/blog/fed-meeting-preview-june-1617-fomc-decision-and-potential-bias-shift/))
-- 📄 [Policy] FOMC Statement + SEP (2026-06-17) — "정책금리 3.50~3.75% 동결(만장 12-0), dot plot 인하→인상 반전 + Warsh 첫 주재" → 5/22 취임한 Kevin Warsh 의장 첫 회의서 만장일치 동결 — 4월 8-4 분열에서 급반전. SEP 2026년 말 중앙값 3.8%로 3월 3.4% 대비 상향(인하 함의→인상 함의로 전환). 18인 dot 분포: 9인 인상·8인 현 중앙값(3.625%)·1인 인하, 범위 3.4~4.4%. 인플레 위험 평가 17인 상방·1인 균형·0인 하방 — 중동發 에너지 인플레 고착 반영, 2026년 사실상 긴축 바이어스 진입 ([source](https://www.stocktitan.net/articles/fed-rate-decision-june-17-2026))
+- 📄 [Policy] FOMC Statement + SEP (2026-06-17) — "정책금리 3.50~~3.75% 동결(만장 12-0), dot plot 인하→인상 반전 + Warsh 첫 주재" → 5/22 취임한 Kevin Warsh 의장 첫 회의서 만장일치 동결 — 4월 8-4 분열에서 급반전. SEP 2026년 말 중앙값 3.8%로 3월 3.4% 대비 상향(인하 함의→인상 함의로 전환). 18인 dot 분포: 9인 인상·8인 현 중앙값(3.625%)·1인 인하, 범위 3.4~~4.4%. 인플레 위험 평가 17인 상방·1인 균형·0인 하방 — 중동發 에너지 인플레 고착 반영, 2026년 사실상 긴축 바이어스 진입 ([source](https://www.stocktitan.net/articles/fed-rate-decision-june-17-2026))
 - 📄 [Policy] FOMC 성명문 구조 개편 + Fed 운영 개혁 태스크포스 (2026-06-17) — "Warsh 의장 성명문 약 300단어→약 130단어 축약, forward guidance 폐기" → 6/17 첫 주재 회의서 성명문을 대폭 단축(이전 300단어 초과 → 약 130단어). Warsh "forward guidance는 현 정책 국면에 부적합" — 일부 구(舊)표현 삭제하고 더 짧고 단순하게. 동시에 Fed 주요 운영(operations) 전반을 손볼 태스크포스 신설 발표 — Powell 압박 정쟁(독립성 논란) 끝 취임한 Warsh의 커뮤니케이션·거버넌스 구조 개혁 착수. 점도표 인상 반전(6/17 SEP, 위 항목)과 함께 Fed 운영 체제 전환 신호 ([source](https://www.cnbc.com/2026/06/17/fed-meeting-today-live-updates.html))
 - 📄 [Policy] BOJ 통화정책결정 (2026-06-19) — "정책금리 +25bp 1.00% 인상 (7-1 표결), 1995년 9월 이후 최고" → 0.75%→1.00% 인상(보완당좌예금 1.0%·기본대출 1.25%). Asada Toichiro 위원만 반대(가격 상방보다 생산·고용 하방 위험 우려). 4월 6-3 분열에서 합의 강화. 기조 인플레가 에너지가격 상승으로 2% 목표 상회 가속 가능 평가, 인상 후에도 완화적 금융여건 유지. 가이던스는 중립·데이터 의존 — USD/JPY 발표 후 약 160.29(엔 일시 강세 후 되돌림). 추가 인상 지속 시사 + 중동 분쟁 영향 주시 ([source](https://www.ebc.com/forex/boj-at-1-percent-yen-usd-jpy-rate-hike))
+- 📄 [Data] BLS 고용상황 — June 2026 (2026-07-02 발표) — "신규 비농업 고용 +57K(예상 +115K 대폭 하회), 실업률 4.3→4.2%(경활률 -0.3%p 하락 착시), 시간당임금 +0.3%m/+3.5%y" → 5월치 +129K로 하향 수정, 12개월 평균(+36K) 수준으로 둔화. 레저·접객 -61K(계절 고용 부진), 전문·사업서비스 +36K·헬스케어 +22K가 상쇄. 실업률 하락은 경활률이 61.5%(2021년 3월 이후 최저)로 급락한 착시. NFP 쇼크로 6/17 dot plot 인상 반전(연내 9인 인상 전망)의 긴축 서사가 약화 — 시장은 9월 인상 배제·10월 가능성만 잔존으로 재조정. 매크로 축이 '인플레 상방'에서 '노동 냉각'으로 이동하는 첫 하드데이터 (📄 BLS 공식 릴리스 [source](https://www.bls.gov/news.release/archives/empsit_07022026.htm))
 
 ---
 
@@ -193,7 +197,7 @@ total_headlines: 76
 
 ### 규제
 
-- (이번 주 신규 없음 — FY27 예산안은 4월 의회 송부 완료, 세부 appropriations·reconciliation 심사 진행 중. CSIS 토플라인 분석은 씽크탱크 항목 참조)
+- 📄 [Policy] Golden Dome $17.1B 조정예산 의존 구조 재확인 (2026-07-04 트래킹) — "미사일방어 Golden Dome 요청액 약 $17.5B 중 $17.1B가 정규 appropriations 아닌 reconciliation 패키지 경유 — base 요청은 약 $400M뿐" → FY27 국방예산($1.5T = 재량 $1.15T + 조정 $350B) 구조상 Golden Dome 우주기반 센서·요격체 자금 거의 전액이 조정절차 통과에 좌우. 前 회차(2025 OBBBA, P.L. 119-21)처럼 조정 패키지로 국방 추가재원 조달하는 선례 반복 시도 — 의회 조정 협상 타결 전까지 실집행 불확실. HASC 조정안 마크업은 미사일방어에 약 $30B(조정예산의 약 20%, 우주센서 $7.2B) 배정. 관세發 원자재 가격 상승이 DOD 구매력 잠식 리스크 병존 (📄 근거: Federal News Network·CSIS 토플라인 [source](https://federalnewsnetwork.com/budget/2026/04/white-house-seeks-17-5-billion-for-golden-dome-but-most-funding-hinges-on-reconciliation/))
 
 ---
 
@@ -215,6 +219,7 @@ total_headlines: 76
 
 - 📄 [Policy] EU AI Act Omnibus 정치 합의 (2026-05-07) — "고위험 AI 시스템 컴플라이언스 마감 연장 + 규칙 명료화" → AI 생성 친밀 콘텐츠 신규 규칙. Annex III 고위험 AI(고용·신용·교육·법 집행) 2026-08-02 시행. 위반 시 최대 €35M / 글로벌 매출 7% 과징금 ([source](https://www.lw.com/en/insights/ai-act-update-eu-resolves-to-change-rules-and-extend-deadlines))
 - 📄 [Policy] EU Commission AI 투명성 가이드라인 협의 (2026-05) — "AI Office 시행·감독 권한 명료화" → 회원국 당국 + AI Office 양층 거버넌스, draft Code of Practice 공개 — 하이퍼스케일러 컴플라이언스 비용 가중
+- 📄 [Policy] EU AI Act Annex III 고위험 의무 시행 D-29 (2026-07-04 기준) — "8/2 고용·신용·교육·법 집행 등 고위험 AI 규제 발효 임박 — 하이퍼스케일러·SaaS 컴플라이언스 최종 준비 국면" → 5/7 Omnibus 정치 합의로 마감이 연장·명료화됐으나 Annex III 고위험 분류 시스템의 핵심 의무(위험관리·데이터 거버넌스·인적 감독·정확성/견고성)는 8/2 예정대로 발효. 위반 시 최대 €35M 또는 글로벌 매출 7% 과징금. Google·Microsoft·Meta·OpenAI 등 미국 빅테크의 EU 향 고위험 AI 제품 컴플라이언스 비용·출시 지연 리스크가 발효 직전 현실화 — 미국 테크플랫폼 EU 규제 부담 채널 (📄 근거: 5/7 Omnibus [source](https://www.lw.com/en/insights/ai-act-update-eu-resolves-to-change-rules-and-extend-deadlines))
 
 ---
 
