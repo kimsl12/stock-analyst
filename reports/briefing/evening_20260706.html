@@ -1,0 +1,2026 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>이브닝 브리핑 — 2026-07-06</title>
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      .heatmap {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .heatmap .cell {
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .heatmap .green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .heatmap .yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .heatmap .red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+
+      .scenario-tree {
+        margin: 14px 0;
+      }
+      .scenario-tree .root {
+        text-align: center;
+        padding: 12px;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-radius: 8px;
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+      }
+      .scenario-tree .branches {
+        display: flex;
+        gap: 14px;
+      }
+      .scenario-tree .branch {
+        flex: 1;
+        padding: 14px;
+        border-radius: 8px;
+      }
+      .scenario-tree .branch.a {
+        background: color-mix(in srgb, var(--up) 6%, transparent);
+        border: 1px solid var(--up);
+      }
+      .scenario-tree .branch.b {
+        background: color-mix(in srgb, var(--down) 6%, transparent);
+        border: 1px solid var(--down);
+      }
+      .scenario-tree .prob-bar {
+        width: 100%;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        height: 6px;
+        border-radius: 3px;
+        margin-top: 8px;
+      }
+      .scenario-tree .prob-bar .fill {
+        height: 6px;
+        border-radius: 3px;
+      }
+
+      .cascade {
+        margin: 14px 0;
+      }
+      .cascade .step {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 8px 0;
+      }
+      .cascade .first {
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-left: 3px solid var(--neutral);
+      }
+      .cascade .second {
+        background: color-mix(in srgb, var(--highlight) 8%, transparent);
+        border-left: 3px solid var(--highlight);
+      }
+      .cascade .third {
+        background: color-mix(in srgb, var(--warning) 8%, transparent);
+        border-left: 3px solid var(--warning);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin: 16px 0;
+      }
+      .portfolio-card {
+        background: color-mix(in srgb, var(--text) 4%, transparent);
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .portfolio-card h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+      .tag-green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .tag-yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+      }
+      .tag-purple {
+        background: color-mix(in srgb, var(--debate) 14%, transparent);
+        color: var(--debate);
+      }
+
+      .event-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .badge-critical {
+        background: color-mix(in srgb, var(--down) 18%, transparent);
+        color: var(--down);
+        border: 1px solid var(--down);
+      }
+      .badge-high {
+        background: color-mix(in srgb, var(--warning) 18%, transparent);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+      .badge-normal {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+        border: 1px solid var(--highlight);
+      }
+
+      .issue-card {
+        background: color-mix(in srgb, var(--text) 3%, transparent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 10px 0;
+        border-left: 3px solid var(--border);
+      }
+      .issue-card.critical {
+        border-left-color: var(--down);
+      }
+      .issue-card.high {
+        border-left-color: var(--warning);
+      }
+      .issue-card.normal {
+        border-left-color: var(--highlight);
+      }
+      .issue-title {
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+      .issue-secondary {
+        color: var(--sub);
+        font-size: 13px;
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
+      }
+
+      .signal-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0;
+        font-size: 14px;
+      }
+      .signal-label {
+        width: 120px;
+        flex-shrink: 0;
+        color: var(--sub);
+      }
+      .signal-value {
+        width: 120px;
+        flex-shrink: 0;
+        font-weight: 600;
+      }
+      .signal-bar-wrap {
+        flex: 1;
+      }
+
+      .risk-gauge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+      }
+      .risk-dots {
+        display: flex;
+        gap: 4px;
+      }
+      .risk-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+      }
+      .risk-dot.active-1,
+      .risk-dot.active-2 {
+        background: var(--up);
+      }
+      .risk-dot.active-3 {
+        background: var(--warning);
+      }
+      .risk-dot.active-4,
+      .risk-dot.active-5 {
+        background: var(--down);
+      }
+
+      .premarket-badge {
+        display: inline-block;
+        background: rgba(88, 166, 255, 0.12);
+        border: 1px solid var(--highlight);
+        color: var(--highlight);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+      }
+
+      .warning-13f {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .warning-13f::before {
+        content: "⚠️ ";
+      }
+
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      .prediction-bar {
+        margin: 6px 0;
+        height: 24px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .prediction-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .prediction-bar .fill.high {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .prediction-bar .fill.mid {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .prediction-bar .fill.low {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .prediction-bar .pct {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .pm-change-up {
+        color: var(--up);
+        font-size: 12px;
+      }
+      .pm-change-down {
+        color: var(--down);
+        font-size: 12px;
+      }
+      .pm-source {
+        color: var(--sub);
+        font-size: 11px;
+        font-style: italic;
+        margin-top: 6px;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .heatmap {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .scenario-tree .branches {
+          flex-direction: column;
+        }
+        .signal-label {
+          width: 80px;
+        }
+        .signal-value {
+          width: 90px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* 모듈 전용 */
+      .thesis-box {
+        border-left: 4px solid var(--highlight);
+      }
+      .house-view-table td {
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <div class="header">
+      <h1>🌙 이브닝 브리핑 — 2026-07-06</h1>
+      <div class="meta">
+        briefing-lead 작성 | KST 20:24 (= ET 07:24, 미국 재개장 22:30 KST 약
+        2시간 전 프리마켓)
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 중립 6일째 — 추세 횡보(MA20 +0.7%) · VIX 16.1(중) · 10Y
+        4.49%(중립) · F&amp;G 31.9 → 가중치 횡보장
+      </div>
+      <div class="regime-strip">
+        <span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-11 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-12 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-15 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-16 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-17 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-18 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-19 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-20 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-21 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-22 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-23 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-24 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-25 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-26 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-27 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-28 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-29 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-30 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-01 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-02 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-03 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-04 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-06 중립"
+        ></span
+        ><span class="rg-label">레짐 최근 23일</span>
+      </div>
+    </div>
+
+    <div class="sec thesis-box">
+      <h2>오늘 밤 핵심 논지</h2>
+      <p>
+        <strong>주장:</strong> catch-down은 없었다. 그러나 판별은 오늘 밤
+        22:30으로 넘어갔다 — 삼성전자·SK하이닉스 디커플링과 개인 +2.68조 매수
+        방어가 새 변수다.
+      </p>
+      <p style="margin-top: 10px">
+        오늘 아침 최대 미지수는 "반도체 쏠린 한국이 미국 SOX(이틀 -11%)를 오늘
+        catch-down 하느냐"였다. 낮 동안 답이 나왔고, 답은
+        <strong>"전면 catch-down 아님 + 종목 내 디커플링"</strong>이다.
+      </p>
+      <ol style="margin: 10px 0 10px 20px">
+        <li style="margin-bottom: 8px">
+          <strong
+            >전면 catch-down은 없었다 — 그러나 반도체 대표 2종이 정반대로
+            갈렸다.</strong
+          >
+          KOSPI 8,051.33(-0.46%)·KOSDAQ 847.07(-2.46%)로 완만히 밀렸을 뿐, 미국
+          SOX -11%를 그대로 복제하지 않았다. 대신
+          <strong
+            >삼성전자 +2.75%(31.8만원, 7/7 2분기 잠정실적 발표 앞 강세) vs
+            SK하이닉스 -3.38%(234만원, ADR 나스닥 상장 이벤트 앞 조정)</strong
+          >로 대표주가 갈렸다. 장중 고점 8,327 → 저점 7,815(약 512p, 변동폭
+          6.3%)의 극심한 롤러코스터였다.
+        </li>
+        <li style="margin-bottom: 8px">
+          <strong
+            >아침의 '기관 단독 반등'에서 '개인 단독 방어'로 수급 주체가
+            역전됐다.</strong
+          >
+          오늘은 <strong>개인이 +2조6,806억원</strong> 순매수로 하방을 받쳤고,
+          <strong>외국인(-1조3,088억)·기관(-1조4,676억)이 동반 매도</strong
+          >했다. 7/3(금) V자 반등을 이끈 게 기관이었는데, 하루 만에 매수 주체가
+          개인으로 바뀌었다 — 반등의 저변이 얇아졌다는 신호다.
+        </li>
+        <li>
+          <strong
+            >미국 프리마켓은 여전히 리스크온 + Foxconn 2Q Beat가 AI 서사 반전을
+            반박한다.</strong
+          >
+          S&amp;P500 선물 +0.5%·NASDAQ100 선물 +1.1%.
+          <strong
+            >Foxconn(Hon Hai, NVIDIA 협력사) 2분기 매출 +39.8%(NT$2.513조, 컨센
+            NT$2.372조 상회)</strong
+          >
+          — AI 클라우드·네트워킹 실수요를 실적으로 반증, HV3 지지. NVIDIA +0.3%
+          vs Apple -0.8%.
+        </li>
+      </ol>
+      <p>
+        <strong
+          >오늘 밤 당신이 지켜볼 것은 종목이 아니라 "선물 반등이 실제 종가로
+          굳는가"다.</strong
+        >
+        낮의 한국 디커플링이 1차 답을 줬고,
+        <strong>오늘 밤 22:30 미국 재개가 확정 답</strong>을 준다. 게다가
+        미-이란 휴전(7/9 만료)·7/8 FOMC 의사록이 겹쳐 이번 주 분기점이 밀집했다.
+      </p>
+      <p style="margin-top: 10px"><strong>분기 조건 3건:</strong></p>
+      <ol style="margin: 6px 0 0 20px">
+        <li style="margin-bottom: 6px">
+          <strong>22:30 미국 재개</strong> — 프리마켓 선물(NASDAQ100 +1.1%)이
+          실제 개장·종가로 유지되는지가 SOX 조정(이틀 -11%+) 완화의 첫 확정
+          신호. 유지 시 catch-down 위험 실질 완화, 되돌림 시 미소화 리스크 부활.
+          VIX↔S&amp;P500 +3.69σ·S&amp;P500↔10Y +2.87σ 이상 신호 3종의 첫 실질
+          검증도 오늘 밤.
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong
+            >삼성전자 실적(7/7 잠정) 프리뷰 vs SK하이닉스 ADR 이벤트</strong
+          >
+          — 오늘 갈린 디커플링이 내일까지 이어질지. 삼성 강세가 실적
+          서프라이즈로 확인되면 반도체 심리 회복 촉매, SK하이닉스 ADR 흥행
+          여부가 별개 변수.
+        </li>
+        <li>
+          <strong>미-이란 휴전 유지 vs 균열</strong> — 프리마켓 리스크온의
+          지정학 전제. 7/2 휴전 '취약하나 유지'이나 7/9 만료·통항료·합동순찰
+          이슈가 재긴장으로 돌면 유가 갭업이 리스크온을 되돌린다.
+        </li>
+      </ol>
+    </div>
+
+    <div class="sec">
+      <h2>0. 핵심 요약</h2>
+      <p>
+        한국은 미국 SOX 이틀 -11% 급락에도 전면 catch-down을 피했으나,
+        삼성전자(+2.75%)·SK하이닉스(-3.38%) 반도체 대표주가 정반대로 갈리는 종목
+        내 디커플링이 나타났다. 반등은 기관에서 개인(+2.68조 단독 매수)으로 매수
+        주체가 바뀌며 저변이 얇아졌다는 신호도 함께 포착됐다.
+      </p>
+      <p style="margin-top: 8px">
+        미국은 아직 프리마켓 단계(재개 22:30 KST 약 2시간 전)로
+        S&amp;P500·NASDAQ100 선물이 각각 +0.5%·+1.1% 리스크온을 나타내며,
+        Foxconn 2분기 매출 서프라이즈(+39.8%)가 AI 실수요 무손상(HV3)을 실적으로
+        뒷받침했다.
+      </p>
+      <p style="margin-top: 8px">
+        오늘 밤 22:30 미국 재개(선물 반등이 종가로 굳는지), 7/7 삼성전자
+        잠정실적, 7/9 미-이란 휴전 만료가 이번 주 3대 분기점으로 밀집해 있다.
+        하우스 뷰는 HV1(스태그 교착) 약화 감시 유지, HV3(AI 실수요 무손상)는
+        Foxconn Beat로 강화 제안된 상태다.
+      </p>
+    </div>
+    <div class="sec">
+      <h2>B-1. 글로벌 이슈 톱5 (방향·영향도·2차효과)</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        ⚠️ 미국은 프리마켓 단계 — 아래 미국발 이슈는 선물·오버나이트·실적
+        기준(정규 종가 아님).
+      </p>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>이슈</th>
+          <th>방향</th>
+          <th>영향도</th>
+          <th>2차 효과</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>
+            <strong>미-이란 호르무즈 휴전 '취약하나 유지'</strong> — 통항 추가
+            회복(사우디 원유수출 전쟁前 90%), 유가 Brent ~$72/WTI ~$69 안정. 단
+            7/9 만료·이란·프랑스·영국 합동순찰 경고 잔존
+          </td>
+          <td class="neutral">중립</td>
+          <td>★★★☆☆</td>
+          <td>
+            휴전 유지 시 프리마켓 리스크온 지지 / 균열 시 유가 갭업이 리스크온
+            되돌림 — 오늘 밤 재개 방향의 지정학 전제
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>
+            <strong
+              >한국 반도체 디커플링 — 삼성전자 +2.75% vs SK하이닉스
+              -3.38%</strong
+            >. 7/7 삼성 2분기 잠정실적 앞 강세 vs SK하이닉스 ADR 나스닥 상장
+            이벤트 앞 조정. 미국 SOX -11% 전면 catch-down 아님
+          </td>
+          <td class="neutral">중립</td>
+          <td>★★★★☆</td>
+          <td>
+            7/7 삼성 실적 서프라이즈면 반도체 심리 회복 촉매 / 실망 시 디커플링
+            반전 위험. USD/KRW↔KOSPI 정상(+0.250σ)로 환 경로 전이 제한적
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>
+            <strong
+              >개인 +2.68조 매수가 외국인·기관 이중 매도(-2.78조) 방어 — 수급
+              주체 역전</strong
+            >. 7/3 기관 단독 반등 → 7/6 개인 단독 방어. 장중 변동폭 512p(6.3%)
+          </td>
+          <td class="neutral">중립</td>
+          <td>★★★☆☆</td>
+          <td>
+            외국인 순매도 지속(최소 11일+ 추정) 시 개인 매수 체력 테스트 국면 —
+            반등 저변이 얇아졌다는 신호
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>
+            <strong
+              >SOX 조정 후 저가매수 + Foxconn 2Q +39.8% Beat — AI 트레이드 신뢰
+              회복 조짐</strong
+            >. NVIDIA 협력사 Foxconn 매출 컨센 상회, 3분기 AI 랙 출하 성장 전망.
+            NASDAQ100 선물 +1.1%
+          </td>
+          <td class="up">완화</td>
+          <td>★★★★☆</td>
+          <td>
+            HV3(AI CapEx 실수요 무손상) 실적 기반 반박 신호 — 7/1 Meta Compute發
+            "희소성→과잉" 서사 반전 이후 첫 실적 반박. 오늘 밤 재개 시 SOX 반등
+            지속 여부 핵심
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>
+            <strong
+              >7/8(수) FOMC 6월 의사록 대기 + 6월 NFP 고용쇼크(+57K) 미소화
+              지속</strong
+            >. Warsh 매파 점도표(3.8%) 세부 논리 vs 시장 조기 인하 기대("나쁜
+            뉴스=좋은 뉴스")
+          </td>
+          <td class="neutral">중립</td>
+          <td>★★★☆☆</td>
+          <td>
+            HV1(매파 장기화) 약화 감시 중간 점검대 — 매파 톤 확인 시 인하 기대
+            후퇴, 비둘기면 리스크온 강화
+          </td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 12px; margin-top: 8px">
+        ⚠️ 미수집: 삼성전자 실적 프리뷰 세부 컨센·SK하이닉스 ADR 발행조건 등
+        개별 기업 상세는 추가 확인 대기.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-2. 아시아 시장 마감 (2026-07-06 정규장 확정 실측)</h2>
+      <table>
+        <tr>
+          <th>지수</th>
+          <th>종가</th>
+          <th>등락</th>
+          <th>코멘트</th>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>KOSPI</strong></td>
+          <td><strong>8,051.33</strong></td>
+          <td class="down"><strong>-37.01p (-0.46%)</strong></td>
+          <td>
+            8,145.78(+0.71%) 출발 → 장중 고점 8,327.26 → 저점 7,815.53 → 소폭
+            반등 마감. 극심한 변동성, 8,000선 사수
+          </td>
+        </tr>
+        <tr class="bg-down">
+          <td><strong>KOSDAQ</strong></td>
+          <td><strong>847.07</strong></td>
+          <td class="down"><strong>-21.34p (-2.46%)</strong></td>
+          <td>KOSPI보다 낙폭 확대. 전자장비·전기제품·제약 약세</td>
+        </tr>
+        <tr>
+          <td>삼성전자</td>
+          <td>318,000원</td>
+          <td class="up"><strong>+2.75%</strong></td>
+          <td>7/7 2분기 잠정실적 앞 독자 강세. 프리마켓(NXT)도 강세</td>
+        </tr>
+        <tr>
+          <td>SK하이닉스</td>
+          <td>2,340,000원</td>
+          <td class="down"><strong>-3.38%</strong></td>
+          <td>삼성과 상반된 디커플링. ADR 나스닥 상장 이벤트 주목</td>
+        </tr>
+        <tr>
+          <td>Nikkei 225</td>
+          <td>69,737.69</td>
+          <td class="down">-0.01% (-6.38p)</td>
+          <td>
+            보합권. 도쿄일렉트론·어드반테스트 등 반도체 모멘텀 둔화 경계.
+            달러/엔 161.8엔대 초엔저
+          </td>
+        </tr>
+        <tr>
+          <td>TAIEX (대만)</td>
+          <td>46,556.39</td>
+          <td class="down">-0.48% (-224.23p)</td>
+          <td>TSMC 중심 반도체 랠리 후 숨고르기·차익실현</td>
+        </tr>
+        <tr>
+          <td>Hang Seng</td>
+          <td>약 +1.04%</td>
+          <td class="up">상승 (16:50 기준)</td>
+          <td>저가매수 + 기술·소비주 반등. 홍콩 아시아 AI 무역허브 부각</td>
+        </tr>
+        <tr>
+          <td>Shanghai</td>
+          <td>-0.06% (-2.41p)</td>
+          <td class="down">소폭 하락</td>
+          <td>보합권 조정</td>
+        </tr>
+      </table>
+      <p style="margin-top: 8px">
+        <strong>투자자별 수급 (KOSPI)</strong>: 개인
+        <span class="up"><strong>+2조6,806억원</strong></span> 순매수(하방 지지)
+        / 외국인 <span class="down"><strong>-1조3,088억원</strong></span> 순매도
+        / 기관 <span class="down"><strong>-1조4,676억원</strong></span> 순매도.
+      </p>
+      <p style="margin-top: 6px">
+        <strong>소결</strong>: 삼성전자 실적 기대(7/7) + SK하이닉스 ADR 이벤트를
+        앞두고 지역별·종목별 온도차. 한국 반도체는 삼성(실적
+        기대)·SK하이닉스(디커플링 조정)로 갈렸고, 일본·대만은 차익실현 우위. ⚠️
+        외국인 연속 순매도일수는 소스 상충(11일째 vs 12일 만에 순매수 전환)으로
+        "미확정(최소 11일+ 추정)"으로만 기록.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-3. 투자 방향 신호판 (Signal Dashboard)</h2>
+      <div class="signal-item">
+        <div class="signal-label">레짐</div>
+        <div class="signal-value neutral">🟡 횡보</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar neutral">
+            <div class="fill" style="width: 50%"></div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="color: var(--sub); font-size: 12.5px; margin: -4px 0 10px 130px"
+      >
+        중립 6일째 — MA20 +0.68%·VIX 16.1(중)·10Y 4.49%(중립)·F&amp;G 31.9 →
+        가중치 횡보장
+      </p>
+
+      <div class="signal-item">
+        <div class="signal-label">공포·탐욕(주식)</div>
+        <div class="signal-value warning">🟡 31.9 (공포)</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar warning">
+            <div class="fill" style="width: 32%"></div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="color: var(--sub); font-size: 12.5px; margin: -4px 0 10px 130px"
+      >
+        전일 31.4·1주前 25.1서 소폭 개선, 1개월前 53서 하락. source_ts 7/3(stale
+        가능)
+      </p>
+
+      <div class="signal-item">
+        <div class="signal-label">공포·탐욕(크립토)</div>
+        <div class="signal-value down">🔴 24 (극단공포)</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar down">
+            <div class="fill" style="width: 24%"></div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="color: var(--sub); font-size: 12.5px; margin: -4px 0 10px 130px"
+      >
+        전일 23·1주前 12서 상승했으나 극단공포 국면 지속 (7/6 00:00 UTC)
+      </p>
+
+      <div class="signal-item">
+        <div class="signal-label">VIX</div>
+        <div class="signal-value up">🟢 16.59 (낮음)</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar up">
+            <div class="fill" style="width: 33%"></div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="color: var(--sub); font-size: 12.5px; margin: -4px 0 10px 130px"
+      >
+        5d -2.7%. 지수 태평 vs 섹터 붕괴 디스커넥트 지속
+      </p>
+
+      <div class="signal-item">
+        <div class="signal-label">미국 프리마켓</div>
+        <div class="signal-value up">🟢 리스크온</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar up">
+            <div class="fill" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="color: var(--sub); font-size: 12.5px; margin: -4px 0 10px 130px"
+      >
+        S&amp;P선물 +0.5%·NASDAQ100선물 +1.1%. 재개 앞 저가매수 + 미-이란 휴전 +
+        Foxconn Beat 반영 (ET 07시)
+      </p>
+
+      <div class="signal-item">
+        <div class="signal-label">미 10Y / 2Y</div>
+        <div class="signal-value neutral">🟡 4.48% / 4.17%</div>
+        <div class="signal-bar-wrap">
+          <div class="signal-bar neutral">
+            <div class="fill" style="width: 50%"></div>
+          </div>
+        </div>
+      </div>
+      <p style="color: var(--sub); font-size: 12.5px; margin: -4px 0 0 130px">
+        비역전(+0.35%p 스티프닝). NFP Miss에도 4.0% 미하회, 오히려 견조
+      </p>
+
+      <p style="color: var(--sub); font-size: 12px; margin-top: 12px">
+        ※ 미국 지수·VIX·채권은 7/2(목) 확정치 + 프리마켓 방향성 — 정규 종가는
+        오늘 밤 재개 후 확정.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-4. 경제 서프라이즈 인덱스</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        판정 기준: Beat &gt; 컨센+1σ / Miss &lt; 컨센-1σ / 중립 ±1σ 이내
+      </p>
+      <table>
+        <tr>
+          <th>지역</th>
+          <th>스코어</th>
+          <th>아침 대비</th>
+          <th>종합 판정</th>
+        </tr>
+        <tr>
+          <td><strong>미국</strong></td>
+          <td class="up"><strong>+6</strong></td>
+          <td>유지</td>
+          <td>
+            NFP +57K 대폭 Miss로 하향(+8→+6) 유지.
+            <strong>Foxconn 2Q +39.8% Beat(정성)가 HV3 지지 근거</strong>. 7/8
+            FOMC 의사록·7월 중순 CPI가 다음 방향 판별
+          </td>
+        </tr>
+        <tr>
+          <td><strong>한국</strong></td>
+          <td class="down"><strong>-1</strong></td>
+          <td>유지</td>
+          <td>
+            6/30 광공업생산 Beat(+1)로 부분 회복 유지.
+            <strong>삼성전자·SK하이닉스 디커플링은 공식지표 아님</strong> —
+            스코어 미반영, 정성 메모만. 7/7 삼성 실적이 방향 판별
+          </td>
+        </tr>
+        <tr>
+          <td><strong>중국</strong></td>
+          <td class="up"><strong>+3</strong></td>
+          <td>유지</td>
+          <td>신규 발표 없음. Beat 기조</td>
+        </tr>
+        <tr>
+          <td>유로존</td>
+          <td class="neutral">N/A</td>
+          <td>유지</td>
+          <td>Flash PMI 6월 결과 미수집</td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px"><strong>오늘의 서프라이즈 이벤트</strong>:</p>
+      <ul style="margin: 6px 0 0 20px">
+        <li style="margin-bottom: 8px">
+          <strong
+            >Foxconn(Hon Hai) 2Q 매출 NT$2.513조(+39.8% YoY, 컨센 NT$2.372조
+            상회) — 정성 Beat ★★</strong
+          >. AI 클라우드·네트워킹 수요 견조, 3분기 AI 랙 출하 성장 전망. 공식
+          미국 경제지표는 아니나(대만 기업 실적) HV3 지지 근거로 기록 — 7/1 Meta
+          Compute發 서사 반전 이후 첫 실적 기반 반박 신호. 스코어 미반영.
+        </li>
+        <li>
+          한국 KOSPI/KOSDAQ -0.46%/-2.46% + 삼성/SK하이닉스 디커플링 — 공식
+          경제지표 아니라 스코어 미반영, 정성 메모. 7/7 삼성전자 2분기
+          잠정실적이 다음 판별 포인트.
+        </li>
+      </ul>
+      <p style="margin-top: 10px; color: var(--sub); font-size: 13px">
+        <strong>서프라이즈 → 상관 연결</strong>: 미국 +6(NFP Miss 반영) 유지는
+        S&amp;P500↔10Y 이상 구조(+2.87σ)와 공명 — 고용 둔화에도 10Y가 하락
+        전환하지 않아 스태그플레이션 유사 긴장 미해소. 한국 -1(유지)은
+        USD/KRW↔KOSPI 정상(+0.250σ)과 연결 — 충격이 외환보다 반도체 대형주 내부
+        디커플링으로 흡수되는 패턴 지속.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-5. 자산 간 상관관계 변화 모니터</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        계산 기준: 미국 5쌍은 7/3 값 유지(미국 휴장·신규 확정 종가 없음,
+        프리마켓 방향성만 코멘트). USD/KRW↔KOSPI만 7/3+7/6 실측 2건 반영 정식
+        rolling 갱신. n≈46 EWM 근사.
+      </p>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>페어</th>
+          <th>30D r</th>
+          <th>Z-score</th>
+          <th>Alert</th>
+          <th>아침(7/4) 대비</th>
+        </tr>
+        <tr class="bg-down">
+          <td>1</td>
+          <td><strong>VIX ↔ S&amp;P500</strong></td>
+          <td>-0.244</td>
+          <td class="down"><strong>+3.69σ</strong></td>
+          <td class="down">🔴 이상 ★1순위</td>
+          <td>유지 — 미국 휴장, NFP 이후 첫 VIX 검증은 오늘 밤 재개 후</td>
+        </tr>
+        <tr class="bg-down">
+          <td>2</td>
+          <td><strong>NASDAQ ↔ BTC</strong></td>
+          <td>+0.306</td>
+          <td class="down"><strong>-2.97σ</strong></td>
+          <td class="down">🔴 이상 ★2순위</td>
+          <td>
+            유지 — NASDAQ100 선물 +1.1% vs BTC +0.15%, 프리마켓 참고만(r/Z
+            미반영)
+          </td>
+        </tr>
+        <tr class="bg-down">
+          <td>3</td>
+          <td><strong>S&amp;P500 ↔ 10Y</strong></td>
+          <td>+0.117</td>
+          <td class="down"><strong>+2.87σ</strong></td>
+          <td class="down">🔴 이상 ★3순위</td>
+          <td>
+            유지 — 스태그 구조 판정은 재개장 후. 10Y 4.0% 접근 여부가 HV1 판별자
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>USD/KRW ↔ KOSPI</td>
+          <td><strong>-0.733</strong></td>
+          <td class="up"><strong>+0.250σ</strong></td>
+          <td class="up">🟢 정상</td>
+          <td>
+            <strong>정식 갱신(+0.27σ→+0.250σ, 소폭 개선)</strong> — 7/3+7/6 실측
+            2건 모두 정상 방향 cross
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Gold ↔ DXY</td>
+          <td>-0.716</td>
+          <td class="neutral">+0.47σ</td>
+          <td class="up">🟢 정상</td>
+          <td>유지 — 한국 자동수집 Gold·DXY 7/6 동반 상승(참고용)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>WTI ↔ BEI</td>
+          <td>+0.528</td>
+          <td class="neutral">+0.25σ</td>
+          <td class="up">🟢 정상</td>
+          <td>유지 — BEI 확정치 없음</td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px">
+        <strong>이상 신호 3종 상세 (Z &gt; ±2σ)</strong>:
+      </p>
+      <ul style="margin: 6px 0 0 20px">
+        <li style="margin-bottom: 8px">
+          <strong>① VIX↔S&amp;P500 +3.69σ (★1순위)</strong> — 4주 고착, 4회 연속
+          완화 진행 중이나 여전히 이상권. 정상 μ(-0.790)와 괴리 0.546. 오늘 밤
+          재개가 NFP 이후 첫 VIX 반응 검증 지점. → HV1 지지 + HV2 약화 신호
+          지속.
+        </li>
+        <li style="margin-bottom: 8px">
+          <strong>② NASDAQ↔BTC -2.97σ (★2순위)</strong> — 탈동조 이상권 심화
+          지속. BTC F&amp;G 24(극단공포) 속 소폭 반등(+0.15%). NASDAQ100 선물
+          +1.1%와 방향 유사해 보이나 확정 종가 아니므로 r/Z 미반영. → HV6(크립토
+          탈동조 독립 약세) 지지 강화.
+        </li>
+        <li>
+          <strong>③ S&amp;P500↔10Y +2.87σ (★3순위)</strong> — 스태그플레이션
+          유사 구조 3주+ 고착. NFP Miss에도 10Y가 하락 안 함(4.48%). → HV1 지지.
+          10Y 4.0% 접근 여부가 HV1 정식 재심사 핵심 판별자.
+        </li>
+      </ul>
+      <p style="margin-top: 10px; color: var(--sub); font-size: 13px">
+        <strong>정상 신호 특이 메모</strong>: USD/KRW↔KOSPI +0.250σ — 7/2 KOSPI
+        폭락 시 우려했던 "환 충격 동반"(비정상 동조 붕괴)이 7/3·7/6 모두
+        재현되지 않았다. 삼성전자·SK하이닉스 디커플링은 종목별 이슈로 환율 경로
+        전이가 제한적임을 시사.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-6. 신규 투자 아이디어</h2>
+      <p><strong>신규 아이디어: 없음.</strong></p>
+      <p style="margin-top: 8px">
+        오늘 밤은 3대 분기점(미국 재개·삼성 실적·미-이란 휴전)이 밀집한
+        <strong>확인 대기 국면</strong>으로, 신규 방향성을 제시할 만한 확정
+        근거가 부족하다. 삼성전자 강세·SK하이닉스 조정은 각각 7/7 실적·ADR
+        이벤트라는 개별 촉매에 걸려 있어, 확정 전 신규 아이디어 제시는
+        시기상조다. 반도체 저가매수(Foxconn Beat·Gartner 매출 상향)는 방향은
+        우호적이나
+        <strong
+          >오늘 밤 미국 재개에서 선물 반등이 종가로 굳는 것을 먼저 확인</strong
+        >해야 근거가 완성된다. 기존 로테이션 서사(방어·배당) 내 관찰만 유지하고
+        신규 진입 아이디어는 유보한다.
+      </p>
+    </div>
+    <div class="sec">
+      <h2>B-7. 거물 투자자 동향 심화</h2>
+      <div class="warning-13f">
+        13F 시차 경고: 기관 13F는 2026년 1분기 분기말(2026-03-31) 기준 최대
+        45일+ 시차의 과거 스냅샷 — "현재 보유" 표현 금지. 8인 워치리스트 신규
+        13F 갱신 없음 → 시차 0일 내부자 클러스터로 보완.
+      </div>
+      <h3>인사이더 클러스터 매수 — Form 4 시차 0일</h3>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        3명 이상 인사이더 동시 자사주 매수 — 13F(45일 시차) 보완 단기 시그널
+        (openinsider.com, filing ~2026-07-02)
+      </p>
+      <table>
+        <tr>
+          <th>거래일</th>
+          <th>티커</th>
+          <th>회사</th>
+          <th>인원</th>
+          <th>금액</th>
+          <th>지분Δ</th>
+          <th>산업</th>
+        </tr>
+        <tr>
+          <td>2026-06-26</td>
+          <td><strong>LILA</strong></td>
+          <td>Liberty Latin America</td>
+          <td>5인</td>
+          <td><strong>$140.3M</strong></td>
+          <td class="up">+78%</td>
+          <td>케이블·페이TV</td>
+        </tr>
+        <tr>
+          <td>2026-06-26</td>
+          <td><strong>DPC</strong></td>
+          <td>DPC Holdings</td>
+          <td>9인</td>
+          <td>$75.8M</td>
+          <td class="up">+410%</td>
+          <td>소재(비철주조)</td>
+        </tr>
+        <tr>
+          <td>2026-06-17</td>
+          <td><strong>PSUS</strong></td>
+          <td>Pershing Square USA (Ackman)</td>
+          <td>7인</td>
+          <td>$70.7M</td>
+          <td>—</td>
+          <td>폐쇄형 펀드</td>
+        </tr>
+        <tr>
+          <td>2026-06-25</td>
+          <td><strong>KMX</strong></td>
+          <td>CarMax</td>
+          <td>5인</td>
+          <td>$1.3M</td>
+          <td class="up">+18%</td>
+          <td>자동차 소매</td>
+        </tr>
+        <tr>
+          <td>2026-06-29</td>
+          <td><strong>TSM</strong></td>
+          <td>대만 반도체</td>
+          <td>2인</td>
+          <td>$447K</td>
+          <td class="up">+39%</td>
+          <td>반도체</td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px"><strong>해석 (briefing-lead)</strong>:</p>
+      <ul style="margin: 6px 0 0 20px">
+        <li style="margin-bottom: 8px">
+          <strong>강한 시그널</strong>:
+          LILA($140.3M·5인)·DPC($75.8M·9인)·PSUS($70.7M·7인)가 금액·인원 모두
+          압도적. Ackman 관련 PSUS 7인 클러스터는 거물 워치리스트와 간접 연결.
+        </li>
+        <li style="margin-bottom: 8px">
+          <strong>반도체 접점</strong>:
+          <strong>TSM 내부자 2인 매수($447K, +39%, 6/29 거래)</strong> — 반도체
+          조정 국면에서 대만 반도체 대표주에 내부자 매수 출현. Foxconn 2Q Beat와
+          결합하면
+          <strong>HV3(AI 실수요 무손상)를 내부자 레벨에서도 방증</strong>. 오늘
+          아침 브리핑에서 짚은 역발상 근거가 이브닝까지 유지.
+        </li>
+        <li style="margin-bottom: 8px">
+          <strong>섹터 편중</strong>: Closed-End Fund
+          계열(PSUS·MSIF·KYN·GOF·WHF) + 배당·인컴 자산으로의 내부자 자금 이동
+          지속 — <strong>방어·배당 로테이션 서사와 정합</strong>.
+        </li>
+        <li>
+          <strong>Cathie Wood(ARK)</strong>: 반도체 투매 국면은 통상 ARK 역발상
+          매수 트리거. 신규 13F 없음 → 미국 재개(오늘 밤) 후 ARK 일별 매매 공시
+          주시.
+        </li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>B-8. 모델 포트폴리오 4종 방향 (아침 대비 변화)</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 10px">
+        ⚠️ model_portfolios.md는 주간 갱신 대기. 아래는 오늘 레짐·하우스 뷰·한국
+        마감·프리마켓 기반 방향성만.
+      </p>
+      <table>
+        <tr>
+          <th>유형</th>
+          <th>아침(모닝)</th>
+          <th>이브닝</th>
+          <th>변화</th>
+          <th>근거</th>
+        </tr>
+        <tr>
+          <td>🛡️ 안전형</td>
+          <td class="up">▲ 유리</td>
+          <td class="up"><strong>▲ 유리</strong></td>
+          <td class="neutral">유지</td>
+          <td>
+            NFP 쇼크·인하 기대·10Y 하방 여지로 중기채·금 수혜. Gold
+            $4,195(+1.69%) 반등이 우호. 로테이션 직접 수혜 진영
+          </td>
+        </tr>
+        <tr>
+          <td>⚖️ 중립형</td>
+          <td class="neutral">● 유지</td>
+          <td class="neutral"><strong>● 유지</strong></td>
+          <td class="neutral">유지</td>
+          <td>
+            방어·배당과 정합. 반도체 비중은 삼성/SK하이닉스 디커플링으로 약세
+            부분 흡수. 현금 쿠션(SGOV) 유용. 선물 반등에도 추격 금지
+          </td>
+        </tr>
+        <tr class="bg-highlight">
+          <td>🚀 공격형</td>
+          <td class="warning">▽→● 역풍 완화</td>
+          <td class="neutral"><strong>● 중립</strong></td>
+          <td class="up"><strong>▲ 소폭 개선</strong></td>
+          <td>
+            한국 catch-down 전면 회피 + Foxconn Beat·프리마켓 NASDAQ100 +1.1%로
+            낙폭 회복 여지 확대. 단 오늘 밤 재개 확정 전 + SOX 지속성·휴전 의존
+            리스크 상존 → 분할·조건부만
+          </td>
+        </tr>
+        <tr>
+          <td>💰 배당형</td>
+          <td class="up">▲▲ 최선호</td>
+          <td class="up"><strong>▲▲ 최선호</strong></td>
+          <td class="neutral">유지</td>
+          <td>
+            방어·배당 로테이션 직접 최대 수혜 — 다우 사상최고 흐름 + Closed-End
+            Fund 내부자 매수(PSUS·MSIF·KYN). 연휴 갭에 가장 견고
+          </td>
+        </tr>
+      </table>
+      <p style="margin-top: 8px">
+        <strong>아침 대비 핵심 변화</strong>: 공격형이
+        <strong>▽→●(역풍 완화 → 중립)로 소폭 개선</strong>. 아침엔 한국
+        catch-down 크래시 위험이 미검증이었으나, 낮에 전면 catch-down이 아님이
+        확인됐고 Foxconn Beat·프리마켓 리스크온이 낙폭 회복 여지를 넓혔다. 단
+        확정은 오늘 밤 미국 재개까지 유보 — 배당형 최선호·안전형 유리 구도는
+        그대로다.
+      </p>
+    </div>
+
+    <div class="debate-card">
+      <div class="card-title">
+        💜 핵심 논쟁 — 삼성전자 +2.75% vs SK하이닉스 -3.38%. 오늘 밤 미국 재개는
+        이 디커플링에서 어느 쪽 손을 들어주나?
+      </div>
+      <div class="bull">
+        <strong>삼성 강세측 (실적 기대가 이긴다):</strong>
+        <ul style="margin: 6px 0 0 18px">
+          <li style="margin-bottom: 4px">
+            삼성전자 +2.75%는
+            <strong>7/7 2분기 잠정실적 발표 앞 포지셔닝</strong> — 시장 기대가
+            높다
+          </li>
+          <li style="margin-bottom: 4px">
+            <strong>Foxconn 2Q +39.8% Beat</strong>로 AI 메모리·클라우드
+            실수요가 실적으로 재확인 → 삼성 실적 서프라이즈 기대 뒷받침
+          </li>
+          <li style="margin-bottom: 4px">
+            Gartner 2026 반도체 매출 사상최고 $1.3조+ 상향 + TSM 내부자 2인
+            매수($447K) = 수요 무손상(HV3) 방증
+          </li>
+          <li>
+            프리마켓 NASDAQ100 선물 +1.1%·NVIDIA +0.3%로 반도체 심리 회복 조짐
+          </li>
+        </ul>
+      </div>
+      <div class="bear" style="margin-top: 10px">
+        <strong>SK하이닉스 조정측 (이벤트 리스크가 이긴다):</strong>
+        <ul style="margin: 6px 0 0 18px">
+          <li style="margin-bottom: 4px">
+            SK하이닉스 -3.38%는
+            <strong>ADR 나스닥 상장 이벤트 앞 조정</strong> — 상장 흥행 여부가
+            미확정 리스크
+          </li>
+          <li style="margin-bottom: 4px">
+            반등 매수 주체가 개인 하나(+2.68조)뿐, 외국인·기관 이중
+            매도(-2.78조) — 저변이 얇다
+          </li>
+          <li style="margin-bottom: 4px">
+            SOX 이틀 -11% 디레이팅 국면(HV2) 유효 — 선물 반등 1회로 판정 이르다
+          </li>
+          <li>
+            삼성 강세도 "실적 발표 전 기대 선반영"이라 발표 후 되돌림(sell the
+            news) 위험 잔존
+          </li>
+        </ul>
+      </div>
+      <div class="verdict">
+        <strong>briefing-lead 판단:</strong> 낮의 디커플링은 "실적 촉매(삼성) vs
+        이벤트 리스크(SK하이닉스)"의 종목별 분리이지 반도체 섹터 전체의 방향
+        확정이 아니다. 오늘 밤 22:30 미국 재개가 1차 답(선물 반등이 종가로
+        굳는지)을, 7/7 삼성 실적이 2차 답(기대가 실제로 확인되는지)을 준다.
+        (예측 시장 해당 마켓 없음 — briefing-lead 100% 자체 판단) 현재는
+        <strong>삼성 실적 기대 우위 55% vs SK하이닉스 이벤트 조정 45%</strong> —
+        Foxconn Beat·내부자 매수·프리마켓 리스크온이 삼성 쪽에 소폭 무게를
+        싣지만, 개인 단독 방어의 얇은 저변과 sell-the-news 위험이 확신을 낮춘다.
+        <strong>확신 강도 중간</strong> — 반증 트리거: 오늘 밤 미국 재개 시
+        NASDAQ100 선물 +1.1%가 실제 종가에서 마이너스로 반전되면 삼성 강세도
+        되돌림.
+      </div>
+    </div>
+
+    <div class="contrarian-card">
+      <div class="card-title">
+        🟠 과소평가 포인트 — 개인 +2.68조 매수가 8,000선을 지켰다. 그런데 이
+        방어는 얼마나 갈까?
+      </div>
+      <div class="assumption">
+        <strong>시장의 일반 가정:</strong> "개인 대량 매수 = 하방 지지 = 지수
+        견고"다. 오늘 개인이 +2조6,806억원을 순매수해
+        외국인(-1조3,088억)·기관(-1조4,676억)의 이중 매도를 상쇄하며 8,000선을
+        지킨 것이 그 통념을 뒷받침하는 듯 보인다.
+      </div>
+      <div class="signal">
+        <strong>반대 시그널:</strong> 그러나 시장이 놓치고 있는 것은
+        <strong>수급 주체가 하루 만에 역전됐다는 사실의 무게</strong>다. 7/3(금)
+        V자 반등(+5.76%)을 이끈 건 기관(+4조4,450억)이었는데, 7/6 오늘은 그
+        기관이 -1조4,676억 순매도로 돌아섰고 개인이 홀로 방어했다.
+        <strong
+          >"기관 반등 → 개인 방어"로의 주체 전환은 반등의 저변이 얇아지고 있다는
+          신호</strong
+        >다. 개인 매수는 외국인·기관 매도가 지속될 경우 체력 테스트에 직면한다 —
+        특히 외국인 순매도가 최소 11일+ 지속 추정인 상황에서, 원화 강세(7/3
+        -1.94%)에도 외국인이 안 멈춘 이탈은 구조적일 수 있다.
+        <p style="margin-top: 8px">
+          <strong>만약 이 반대 시그널이 맞다면</strong>: 개인 매수 체력이
+          소진되고 외국인·기관 매도가 이어지면 8,000선 방어가 무너지며 KOSPI가
+          뒤늦게 catch-down할 수 있다 — 오늘 낮 피한 catch-down이 시차를 두고
+          실현되는 경로다. 반대로
+          <strong>오늘 밤 미국 재개가 강한 리스크온으로 굳으면</strong> 외국인이
+          순매수로 전환하며 개인 방어에 안도 랠리가 더해질 수 있다.
+        </p>
+      </div>
+      <div class="probability">
+        <strong>확률:</strong> 중간 (briefing-lead 추정, 예측 시장 해당 마켓
+        없음 — 100% 자체 판단). 개인 방어의 지속가능성은 오늘 밤 미국
+        재개(외국인 심리)와 7/7 삼성 실적에 걸려 있어 방향이 아직 열려 있다.
+        반증 트리거: 외국인이 12일째 순매도를 이어가고 미국 재개가 되돌림이면
+        개인 방어의 취약성이 부각된다.
+      </div>
+    </div>
+    <div class="sec">
+      <h2>
+        하우스 뷰 점검 (권한: 증거 기록 + 개정 제안 가능 — 적용은 주간 재심사)
+      </h2>
+      <table class="house-view-table">
+        <tr>
+          <th>명제</th>
+          <th>상태</th>
+          <th>오늘 밤 판정 (증거 기록)</th>
+        </tr>
+        <tr>
+          <td><strong>HV1</strong> 인플레 재가속·Fed 매파 장기화</td>
+          <td class="warning">유효</td>
+          <td>
+            <strong>⚠️ 약화 감시 유지</strong> — 6월 NFP +57K가 매파 논리에
+            도전하나 반증조건(10Y&lt;4.0%) 미충족(10Y 4.48% 견조)·Core PCE 3.41%
+            고착. S&amp;P500↔10Y +2.87σ가 스태그 긴장 미해소 재확인. 판별자: 7/8
+            FOMC 의사록 + 7월 중순 6월 CPI
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV2</strong> 금리發 멀티플 압축·반도체 디레이팅</td>
+          <td class="warning">유효</td>
+          <td>
+            지지 — SOX 이틀 -11%+ 디레이팅 지속. 프리마켓 반등(NASDAQ100
+            +1.1%)은 저가매수 시도일 뿐 디레이팅 해소 아님. 동인은 금리보다 AI
+            ROI로 HV3와 수렴. 반증조건(10Y&lt;4.2% 5일) 미충족
+          </td>
+        </tr>
+        <tr class="bg-up">
+          <td><strong>HV3</strong> AI CapEx 실수요 무손상</td>
+          <td class="up">유효</td>
+          <td>
+            <strong>강화 (개정 제안: 근거 보강)</strong> —
+            <strong>Foxconn 2Q +39.8% Beat + TSM 내부자 2인 매수($447K)</strong
+            >가 "수요 무손상"을 실적·내부자 양면으로 방증. 7/1 Meta Compute發
+            "희소성→과잉" 서사 반전 이후
+            <strong>첫 실적 기반 반박 신호</strong>. 강등 2트리거(HY 2.9%+·8월
+            capex 하향) 모두 미충족 → 유효 유지.
+            <strong
+              >주간 재심사에 "Foxconn 2Q Beat = 희소성 프리미엄 지속 방증" 개정
+              제안 기록 권고</strong
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV5</strong> Gold 구조적 강세·단기 조정</td>
+          <td class="down">약화</td>
+          <td>
+            약화 유지 — Gold $4,195.30(+1.69%) 인하기대 반등이나 $4,200
+            미회복(반증조건 미충족). 추격 매수 금지 유지
+          </td>
+        </tr>
+        <tr class="bg-up">
+          <td><strong>HV6</strong> 크립토-나스닥 탈동조·BTC 독립</td>
+          <td class="up">유효</td>
+          <td>
+            <strong>강화</strong> — NASDAQ↔BTC -2.97σ 심화 유지. 크립토 F&amp;G
+            24(극단공포)·BTC $80K 미회복($62.7K). 프리마켓 NASDAQ100 +1.1%에도
+            BTC +0.15% 약보합 = 방향 무관 탈동조 재확인
+          </td>
+        </tr>
+      </table>
+      <p style="margin-top: 10px; color: var(--sub); font-size: 13px">
+        <strong>개정 제안 (이브닝 권한 — 적용은 주간)</strong>:
+        <strong
+          >HV3에 "Foxconn 2Q +39.8% Beat"를 실적 기반 지지 근거로 정식 기록
+          권고.</strong
+        >
+        지금까지 HV3 강등 검토의 핵심 우려는 "7/1 Meta Compute發 컴퓨트 과잉
+        서사"였는데, Foxconn 실적이 AI 클라우드·네트워킹 실수요를 매출로 반박한
+        첫 사례다. 8월 하이퍼스케일러 2분기 capex 가이던스 전까지 이 신호가
+        유지되는지가 판별자.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-9. 글로벌 매크로 핵심 시사점</h2>
+      <p>
+        <strong>한 줄 요약</strong>: "6월 고용 절벽(+57K) + 4·5월 하향(-74K)으로
+        노동시장 냉각 확정. 그러나 Core PCE 3.41%·Warsh 매파가 인하를 막는
+        <strong>스태그플레이션 교착</strong>. 오늘 낮 한국은 catch-down을
+        피했고(디커플링 흡수), 미국 프리마켓은 미-이란 휴전·Foxconn Beat에
+        리스크온. 단 오늘 밤 재개·7/8 FOMC 의사록·7/9 휴전 만료·7월 중순 CPI가
+        연속 분수령."
+      </p>
+
+      <h3>종합 위험등급: 4/5</h3>
+      <div class="risk-gauge">
+        <div class="risk-dots">
+          <div class="risk-dot active-1"></div>
+          <div class="risk-dot active-2"></div>
+          <div class="risk-dot active-3"></div>
+          <div class="risk-dot active-4"></div>
+          <div class="risk-dot"></div>
+        </div>
+        <span class="warning" style="font-weight: 600">4/5 — 높은 경계</span>
+      </div>
+      <p style="color: var(--sub); font-size: 13px">
+        약고용+끈적인플레+매파 Fed = 스태그 교착. 낮에 catch-down 크래시는
+        피했고 Foxconn Beat가 AI 서사를 실적으로 반박했으나, ① 오늘 밤 재개
+        미확정 ② 미소화 리스크 3종(SOX 지속성·외국인 이탈·NFP 로테이션) 잔존 ③
+        개인 단독 방어의 얇은 저변. 표면 리스크온과 구조 로테이션·심리 fear의
+        괴리가 핵심 리스크로 유지.
+      </p>
+
+      <h3>30일 시나리오 분기</h3>
+      <div class="scenario-tree">
+        <div class="root">
+          <strong
+            >현재: 중립 6일째 · 스태그 교착 우위 · 오늘 밤 미국 재개가 1차
+            판별</strong
+          >
+        </div>
+        <div class="branches">
+          <div class="branch a">
+            <strong>Base — 스태그 교착 (55%)</strong>
+            <div class="prob-bar">
+              <div
+                class="fill"
+                style="width: 55%; background: var(--warning)"
+              ></div>
+            </div>
+            <p style="margin-top: 8px; font-size: 13.5px">
+              조건: Core PCE 3.4% 고착 + Warsh 매파, 금리 4.3~4.6% 박스 (추정)
+            </p>
+            <p style="margin-top: 6px; font-size: 13.5px; color: var(--sub)">
+              함의: 로테이션 지속(가치·배당·경기민감 우위), 금 강세, 달러 약세
+            </p>
+          </div>
+          <div class="branch b">
+            <strong>Bull — 골디락스 인하 재개 (25%)</strong>
+            <div class="prob-bar">
+              <div class="fill" style="width: 25%; background: var(--up)"></div>
+            </div>
+            <p style="margin-top: 8px; font-size: 13.5px">
+              조건: 6월 CPI Core 하회 + 유가 $65 이하 안착(휴전 유지) + 오늘 밤
+              재개 강한 리스크온 (추정)
+            </p>
+            <p style="margin-top: 6px; font-size: 13.5px; color: var(--sub)">
+              함의: 채권 랠리(10Y 4.0% 하회), 성장주·AI 재부상, 외국인 순매수
+              전환
+            </p>
+          </div>
+        </div>
+        <div
+          class="branch b"
+          style="margin-top: 14px; border-color: var(--down)"
+        >
+          <strong>Bear — 스태그 심화 / catch-down 시차 실현 (20%)</strong>
+          <div class="prob-bar">
+            <div class="fill" style="width: 20%; background: var(--down)"></div>
+          </div>
+          <p style="margin-top: 8px; font-size: 13.5px">
+            조건: CPI Core 3%+ 재가속 or 오늘 밤 재개 되돌림 or 호르무즈 재긴장
+            or 개인 방어 소진 (추정)
+          </p>
+          <p style="margin-top: 6px; font-size: 13.5px; color: var(--sub)">
+            함의: 채권·주식 동반 약세 or 테크 급락, 반도체 쏠린 KOSPI 시차
+            catch-down
+          </p>
+        </div>
+      </div>
+
+      <h3>주요 트리거 캘린더 (재개장 주간)</h3>
+      <ul style="margin: 6px 0 0 20px">
+        <li style="margin-bottom: 8px">
+          <span class="event-badge badge-critical">7/6(월)</span> 오늘 밤 22:30
+          미국 정규장 재개 ⭐⭐ — 프리마켓 선물(NASDAQ100 +1.1%)이 실제 종가로
+          유지되는지. NFP 미소화분 + SOX 조정 완화 + 미-이란 휴전 3변수 동시
+          확인. VIX↔S&amp;P500·S&amp;P500↔10Y·NASDAQ↔BTC 이상 3종의 첫 실질 검증
+        </li>
+        <li style="margin-bottom: 8px">
+          <span class="event-badge badge-critical">7/7(화)</span> 삼성전자 2분기
+          잠정실적 ⭐⭐ — 코스피 반등 분수령. 오늘 갈린 삼성/SK하이닉스 디커플링
+          해소 여부. 기대 높아 sell-the-news 위험 병존
+        </li>
+        <li style="margin-bottom: 8px">
+          <span class="event-badge badge-high">7/8(수)</span> 익일 03:00 FOMC
+          6월 의사록 ⭐ — Warsh 매파 점도표(3.8%) 세부 논리·표결 배경. HV1 약화
+          감시 중간 점검대
+        </li>
+        <li style="margin-bottom: 8px">
+          <span class="event-badge badge-high">7/9(목)</span> 21:30 주간
+          실업수당 + 하메네이 장례 종료·미-이란 휴전 만료 시점 — 고용 추가 균열
+          여부 + 협상 재개 톤·호르무즈 이슈(프리마켓 리스크온 트리거의 유지
+          여부)
+        </li>
+        <li style="margin-bottom: 8px">
+          <span class="event-badge badge-critical">7월 중순</span> 6월 CPI ★최대
+          분수령 — Core 끈적함 지속이 스태그 구도·HV1 강등 트리거 판별
+        </li>
+        <li>
+          <span class="event-badge badge-normal">상시</span> Section 122 관세
+          7/24 만료 · 일본 30Y JGB 4.04%(엔캐리 청산 임계) 상시 감시
+        </li>
+      </ul>
+    </div>
+
+    <div class="sec bg-highlight">
+      <h2>🔬 심층 분석 권장 (다음 단계)</h2>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>티커</th>
+          <th>권장 사유</th>
+          <th>다음 단계</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>삼성전자 (005930)</strong></td>
+          <td>
+            7/7 2분기 잠정실적 앞 +2.75% 강세 — 실적 서프라이즈 여부가 반도체
+            심리 분수령
+          </td>
+          <td><code>/종목분석 005930</code></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>TSM</strong></td>
+          <td>
+            반도체 조정 중 내부자 2인 매수($447K, +39%) + Foxconn Beat로 HV3
+            실수요 방증
+          </td>
+          <td><code>/종목분석 TSM</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <h3>📌 다른 브리핑도 확인해보세요</h3>
+      <table>
+        <tr>
+          <td><code>/모닝브리핑</code></td>
+          <td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td>
+        </tr>
+        <tr>
+          <td><code>/이브닝브리핑</code></td>
+          <td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td>
+        </tr>
+        <tr>
+          <td><code>/주간리포트</code></td>
+          <td>→ 한 주 심층 + 성과 추적</td>
+        </tr>
+        <tr>
+          <td><code>/리밸런싱</code></td>
+          <td>→ 4종 모델 포트폴리오 재조정</td>
+        </tr>
+        <tr>
+          <td><code>/크립토브리핑</code></td>
+          <td>→ BTC/ETH/SOL + 온체인 + 규제</td>
+        </tr>
+        <tr>
+          <td><code>/모델포트폴리오</code></td>
+          <td>→ 4종 현재 구성 + 구체 종목·ETF</td>
+        </tr>
+        <tr>
+          <td><code>/글로벌인텔리전스</code></td>
+          <td>→ 4축 교차 + 시나리오 플래닝</td>
+        </tr>
+        <tr>
+          <td><code>/풀브리핑</code></td>
+          <td>→ 4편 동시</td>
+        </tr>
+        <tr>
+          <td><code>/성과리뷰</code></td>
+          <td>→ 1주/2주/1개월/3개월 적중률</td>
+        </tr>
+        <tr>
+          <td><code>/내포트폴리오</code></td>
+          <td>→ 사용자 보유 자산 (개인 데이터 격리)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="disclaimer">
+      <h4>⚠️ 주의사항</h4>
+      <ul style="margin-left: 18px">
+        <li>
+          본 리포트는 다수 구독자 공유용 <strong>교육·참고 정보</strong>이며,
+          매수·매도 추천이 아닙니다.
+        </li>
+        <li>
+          크립토 자산은 별도 자동매매 영역으로
+          <strong>방향성 관찰만</strong> 제시합니다.
+        </li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>13F 데이터는 분기말 기준 최대 45일 시차가 있습니다.</li>
+        <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+        <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <div class="footer" style="margin-top: 20px">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 크립토</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> 4편 동시</div>
+        <div><code>/KB업데이트</code> KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+      </div>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
