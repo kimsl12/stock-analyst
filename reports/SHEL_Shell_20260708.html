@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shell PLC (재분석 v9) (SHEL) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Shell PLC (재분석 v9) (SHEL)</h1><div class="meta">주식 종합 분석 리포트 | 2026-07-08</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">68/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">Shell은 세계 최대급 LNG·통합 다각화·슈퍼메이저 최상급 자본규율을 갖춘 방어적 고배당 통합 에너지주다. 결론은 성장이 아니라 유가 사이클·정제마진·환원 지속성이 가른다.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">저PER·고배당(~4%)·자사주의 방어적 인컴주. 유가 약세 역풍을 정제마진 초강세·LNG 트레이딩·다각화가 상쇄.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">성숙 산업으로 볼륨 성장 제약 → 매력은 인컴·환원에 국한. 유가 $70~80 박스와 정제마진 지속이 Base의 전제. 오늘 +3.66%는 반도체→비반도체 브로드닝 수혜.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">유가 $60 이하 장기 하향 + 정제마진 정상화 동시 발생(이익 이중 압박), 손절선 $78.18 종가 이탈, 또는 배당·자사주 환원 축소 시그널.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">방어·인컴형 매수(하단부). 저변동성이라 분할 편입. 4% 배당+자사주가 하방 앵커, 유가 촉매 부재로 상방 제한.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">유가 약세가 심화되고 정제마진이 정상화되면 상류·다운스트림 양쪽 역풍으로 이익이 이중 압박받아 저PER이 밸류트랩으로 전환. 자사주 축소 시 방어·인컴 프리미엄 훼손.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (Buy) · 종합 67.6/100</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$81.00</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$224.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">9~11배 (fwd)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$66.65~$94.05</div></div><div class="ki"><div class="kl">당일</div><div class="kv">+3.66%</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$1.41 (1.74%)</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">약 4%</div></div><div class="ki"><div class="kl">섹터</div><div class="kv">에너지/석유메이저 (통합·LNG)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$78.18</div><div class="dn" style="font-size:13px">-3.5%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$85.22</div><div class="up" style="font-size:13px">+5.2%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="165" y="30" width="82" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="165" y1="26" x2="165" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="165" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$78</text><line x1="198" y1="24" x2="198" y2="52" stroke="var(--text)" stroke-width="3"/><text x="198" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$81</text><line x1="247" y1="26" x2="247" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="247" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$85</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $67</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $94</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $1.41 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>Shell PLC는 유럽 최대이자 세계 최상위권의 통합 에너지 슈퍼메이저로, 상류·통합가스(LNG)·다운스트림·마케팅을 아우르는 수직통합 포트폴리오와 <strong>세계 최대급 LNG 트레이딩</strong> 역량이 핵심 차별점이다. 투자 매력은 고성장이 아니라 <strong>강한 FCF → 배당(~4%)+대규모 자사주+디레버리징</strong>의 방어적 인컴·환원 조합이다. <strong>오늘 시장 전반이 'Sell Chips' 반도체 매도로 부분 리스크오프인 국면에서 SHEL은 +3.66% 상대강세</strong>를 기록했는데, 이는 반도체·고베타에서 이탈한 자금이 비반도체·고배당·저변동성 방어자산으로 브로드닝(시장 폭 확대)한 결과로 Shell 프로파일이 현 레짐에 부합함을 방증한다. 종합 67.6점·<strong>매수(하단부)</strong> 등급. 단, (1) 유가 약세(Brent ~$72, 2027 구조적 공급과잉), (2) 성숙 산업 볼륨 성장 제약, (3) 정제마진 초강세(2022래 최고)의 정상화 위험이 상방을 제약한다. 저변동성(ATR 1.74%)·저손익분기·강한 환원으로 하방은 방어적이나 상방은 유가 촉매 부재로 제한 — 인컴+완만한 자본이득 목적의 방어 포지션에 적합하다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,80.0 187.0,85.3 216.1,125.3 187.6,165.5 181.1,206.6 140.0,220.0 104.7,198.5 92.4,165.5 82.9,131.5 87.1,77.2" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">해자/경쟁우위</text><circle cx="140.0" cy="80.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 건전성·수익성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="216.1" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">산업 성장성</text><circle cx="187.6" cy="165.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/기술적</text><circle cx="181.1" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">수급/투자자 동향</text><circle cx="140.0" cy="220.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스/실적 모멘텀</text><circle cx="104.7" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">사이클 리스크</text><circle cx="92.4" cy="165.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">지정학/규제 리스크</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영·자본배분·주주환원</text><circle cx="87.1" cy="77.2" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>해자/경쟁우위</td><td>7.0</td><td>/10</td></tr><tr><td>재무 건전성·수익성</td><td>8.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>8.0</td><td>/10</td></tr><tr><td>산업 성장성</td><td>5.0</td><td>/10</td></tr><tr><td>모멘텀/기술적</td><td>7.0</td><td>/10</td></tr><tr><td>수급/투자자 동향</td><td>7.0</td><td>/10</td></tr><tr><td>컨센서스/실적 모멘텀</td><td>6.0</td><td>/10</td></tr><tr><td>사이클 리스크</td><td>5.0</td><td>/10</td></tr><tr><td>지정학/규제 리스크</td><td>6.0</td><td>/10</td></tr><tr><td>경영·자본배분·주주환원</td><td>9.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 68/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v6</td><td>2026-06-10</td><td>75</td><td>매수</td><td>$95</td></tr><tr><td>v7</td><td>2026-06-19</td><td>—</td><td>매수</td><td>$88</td></tr><tr><td>v8</td><td>2026-06-28</td><td>—</td><td>—</td><td>$90</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">중상 (Narrow~Mid Wide Moat)</span></h2><p>영국 런던 본사의 유럽 최대 통합 에너지·석유가스 슈퍼메이저(NYSE ADR, 티커 SHEL). 상류(탐사생산)·통합가스(LNG·GTL)·마케팅(주유소·윤활유)·화학제품(정유·석화)·재생에너지솔루션까지 밸류체인 전 구간에 걸친 수직통합 포트폴리오. 특히 세계 최대 규모의 LNG 포트폴리오·트레이딩이 경쟁 슈퍼메이저(엑슨·셰브론·토탈·BP) 대비 구조적 차별점. 시가총액 약 $224.5B, 배당수익률 ~4%. ATR 1.74%로 지수·성장주 대비 저변동성 방어 프로파일.</p><h3>Moat 상세</h3><p>- <strong>세계 최대급 LNG 포트폴리오·트레이딩 해자</strong>: 수십조 규모 액화플랜트·장기계약·선단이라는 극도로 높은 진입장벽. 트레이딩 조직이 지역 간 가격차(JKM·TTF·HH 아비트라지)를 이익화 → Shell을 '석유주'가 아닌 '통합 에너지주'로 재평가<br>&bull; <strong>수직통합·다각화 완충</strong>: 상류(유가↑ 수혜) ↔ 다운스트림·화학(유가↓ 원가절감·정제마진 수혜)의 자연 헤지. 현 국면(유가 약세)에서 정제마진 2022래 최고가 상류 부진 상쇄<br>&bull; <strong>규모·자본·기술 진입장벽</strong>: 심해 개발·LNG 액화·글로벌 트레이딩 인프라는 신규 진입 사실상 불가. 규모의 경제로 배럴당 비용 절감<br>&bull; <strong>브랜드·소매 네트워크</strong>: 전 세계 주유소·프리미엄 윤활유. 저마진이나 저사이클 안정 현금흐름<br>&bull; <strong>약점</strong>: 사업이 아니라 상품가격(유가·정제마진) 사이클 민감성 + 에너지전환 장기 좌초자산 구조</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>지표</th><th>현황(2026-07)</th><th>방향</th><th>비고</th></tr></thead><tbody><tr><td>Brent 유가</td><td>~$72/bbl</td><td>약세(4주연속↓)</td><td>2027 공급과잉·OPEC+ 증산. GS 2026 $77 하향</td></tr><tr><td>싱가포르 정제마진</td><td>~$43.50/bbl</td><td>초강세(2022래 최고)</td><td>다운스트림 이익 방어(제트크랙 $52.10)</td></tr><tr><td>LNG (JKM/TTF)</td><td>low-15s / $13.6</td><td>하락 but 공급타이트</td><td>카타르 능력 17% 손상(최대 5년)</td></tr><tr><td>배당수익률</td><td>약 4%</td><td>안정</td><td>FCF 커버리지 안정 + 대규모 자사주</td></tr><tr><td>재무(기어링)</td><td>디레버리징</td><td>개선</td><td>투자등급 신용, 저손익분기</td></tr></tbody></table><h3>분석</h3><p>슈퍼메이저 특유의 대규모 절대이익·현금창출력. 이익 규모는 크나 상품가격(유가·가스가·정제마진) 연동으로 분기·연간 변동성이 높음. 연 수백억 달러 CFO로 유가 밴드($70~80)에서도 배당·자사주·CapEx를 모두 커버하는 FCF 창출. 디레버리징 지속(기어링 건전)·투자등급 신용·안정적 배당 커버리지로 유가 하락 국면 방어력 높음. 상류(유가 민감)+통합가스/LNG+다운스트림/화학(정제마진)+마케팅(안정)의 다각화가 이익 변동을 완충. 현 국면은 유가 약세(-)를 정제마진 2022래 최고(+)·LNG 트레이딩(±)이 상쇄하는 혼합.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>석유 슈퍼메이저 전형의 저PER·고배당·저PBR. forward PER 약 9~11배(S&P500 대비 큰 폭 할인), EV/EBITDA 4~5배, 배당수익률 ~4%, PBR 1.1~1.3배. 저배수는 '싸다'가 아니라 사이클성·에너지전환 좌초자산 리스크의 구조적 할인. 유가 밴드($70~80) 유지·환원 지속 시 인컴+완만한 자본이득의 방어 프로파일이 합리적. 유가 상승 서프라이즈·LNG 스프레드 확대가 배수 리레이팅 상방 촉매. 반대로 유가 $60대 하향·정제마진 정상화 시 이익 레벨 하락으로 저PER이 밸류트랩화 위험. 펀더멘털 Base 목표가 $84(fwd PER 10~11배 × 방어·환원 프리미엄).</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $81.00, 당일 +3.66%. 시장 전반 'Sell Chips' 부분 리스크오프에서 SHEL 상대강세 — 반도체→비반도체·고배당 브로드닝 수혜(vs MRVL -7.45%, TQQQ -4.02%). 52주 $66.65~$94.05에서 현재 중상단(약 60% 지점) 중립 위치. ATR 1.74% 저변동성으로 리스크오프 낙폭 작아 인컴·방어 앵커. 레짐 중립 7일째, VIX 15.6, F&G 40.5(공포). 유가 4주 연속 하락에도 주가가 방어 인컴 수요·정제마진 순풍으로 지지받는 디커플링. 자사주매입이 유통물량 축소로 구조적 하방 지지·EPS 상방 제공. 폭발적 상승보다 레짐 부합형 상대강세.</p><table><thead><tr><th>구분</th><th>값</th><th>비고</th></tr></thead><tbody><tr><td>투자의견</td><td>매수~중립 우위</td><td>자본규율·환원·LNG 차별화</td></tr><tr><td>현재가</td><td>$81.00</td><td>2026-07-07 종가 (+3.66%)</td></tr><tr><td>Base 목표가</td><td>$84</td><td>fwd PER 10~11배 × 방어 프리미엄</td></tr><tr><td>확률가중 기대치</td><td>$83.7</td><td>현재가 +3.3% (+ 배당 ~4% 별도)</td></tr><tr><td>52주 범위</td><td>$66.65 ~ $94.05</td><td>현재 중상단(60% 지점)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>글로벌 통합 석유가스 산업. 성과는 유가·가스가(상류)·정제마진(다운스트림)·LNG 스프레드(통합가스) 세 축이 결정. Shell은 세 축 모두에 노출된 완전 통합 사업자로 사이클 변동을 다각화로 완충. 성장은 볼륨(원유수요 2026 -1.1Mbpd 정체)이 아니라 가격·믹스 개선·비용절감·자사주 소각(EPS 성장)에서 발생. LNG가 유일한 구조적 성장축 — 석탄 대체·아시아 수요·AI 데이터센터 전력수요(가스발전)로 장기 견조. 경쟁: 미국 메이저(엑슨·셰브론)는 상류·퍼미안 강점, Shell·토탈은 LNG·트레이딩 우위. Shell은 서구 슈퍼메이저 중 LNG·통합 폭 최상위. 핵심 논쟁: 에너지전환(재생 투자) vs 현금·환원 자본배분 — Shell은 최근 현금·환원 우위로 기울며 슈퍼메이저 재평가에 동참.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>리스크는 사업 부실이 아니라 외생 3종에 집중: <strong>(1) 유가·상품가격 사이클</strong> — Brent ~$72 4주연속 하락·2027 공급과잉(+8mb/d)·OPEC+ 증산으로 상류 역풍(정제마진·LNG·다각화가 완충). <strong>(2) 에너지전환·좌초자산</strong> — 탄소중립 가속·수요 정점 논쟁의 장기 구조 리스크(LNG 브릿지 수요가 완화). <strong>(3) 정제마진 정상화</strong> — 현 다운스트림 완충(2022래 최고)이 일시 요인에 기대 회귀 시 이익 이중 압박. 지정학(호르무즈·이란)은 유가 급등 옵션(상방)이자 리스크(하방)의 양날. 재무 건전성 견고로 방어·인컴 하방 제한적.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">유가·상품가격 사이클</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">정제마진 정상화</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">에너지전환·좌초자산·ESG</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">지정학 (호르무즈·이란)</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">환원 지속성</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>유가·상품가격 사이클</strong> (발생: 높음, 영향: 중간~큼)<br><span style="color:var(--sub);font-size:13px">Brent ~$72 4주연속 하락·2027 공급과잉(+8mb/d)·OPEC+ 8월 증산. 상류 역풍. $60 이하 장기화 시 저PER 밸류트랩화</span></div><div class="ri rl"><strong>정제마진 정상화</strong> (발생: 중간, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">다운스트림 완충(2022래 최고 ~$43.50)이 역내 가동축소 일시 요인에 기댐. 정상화 시 유가 약세와 함께 이익 이중 압박</span></div><div class="ri rl"><strong>에너지전환·좌초자산·ESG</strong> (발생: 낮음~중간(장기), 영향: 중간~큼(장기))<br><span style="color:var(--sub);font-size:13px">탄소중립 가속·수요 정점·ESG 자금 이탈의 장기 밸류 디레이팅. 현금·환원 우위 전략은 장기 규제·평판과 트레이드오프. LNG 브릿지 수요가 완화</span></div><div class="ri rl"><strong>지정학 (호르무즈·이란)</strong> (발생: 중간, 영향: 중간(양방향))<br><span style="color:var(--sub);font-size:13px">통행료 분쟁 재격화 시 Brent $80~90 반등(상방 옵션). 공급망·자산·평판 리스크(하방). 글로벌 분산이 완충</span></div><div class="ri rl"><strong>환원 지속성</strong> (발생: 낮음, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">배당·자사주는 유가·FCF 연동. 유가 장기 급락 시 자사주 먼저 축소 가능 → 방어·인컴 프리미엄 훼손</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>- <strong>신규 진입</strong>: 방어·인컴형 매수(하단부). 저변동성이라 급락 대기보다 분할 편입. 4% 배당+자사주가 하방 앵커<br>&bull; <strong>보유</strong>: 유가 밴드($70~80)·정제마진 순풍·환원 지속 시 홀드. 방어 포지션 앵커로 유지<br>&bull; <strong>강세 재진입</strong>: 유가 반등(호르무즈 통행료 재격화 Brent $80+)·LNG 스프레드 확대·정제마진 지속, $85.22(3ATR)·52주 고점 $94.05 회복<br>&bull; <strong>약세 강등</strong>: 손절선 $78.18 종가 이탈, 또는 유가 $60 이하 장기 하향+정제마진 정상화 동시(이익 이중 압박), 또는 환원 축소 시그널</p></div>
+<div class="sec"><h2>§ Confidence Interval (신뢰구간)</h2><ul><li><b>점수 신뢰구간</b>: 67.6 ± 3점 (64.6 ~ 70.6)</li><li><b>12개월 목표가 구간</b>: $66(Bear) ~ $95(Bull), 확률가중 기대치 $83.7, Base $84 (+ 배당 ~4% 별도)</li><li><b>신뢰도 등급</b>: 중~상 (사업 구조·배당·자본규율·유가/정제마진 현황은 공개 데이터 확인, 유가 방향·정제마진 정상화 타이밍·에너지전환 정책 속도는 본질적 불확실성)</li><li><b>데이터 기준일</b>: 2026-07-07(가격), 2026-07-08(분석)</li></ul></div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li><b>유가가 $70~80 박스권을 유지한다는 가정.</b> 2027 구조적 공급과잉(+8mb/d)·OPEC+ 증산 가속·수요 급둔화로 Brent가 $60 이하 장기 하향하면 상류 이익·FCF 압박으로 이익 레벨 하락, 저PER이 밸류트랩으로 전환 → Base $84 약화, 등급 매수→중립 강등 가능</li><li><b>정제마진 초강세(2022래 최고)가 상당 기간 지속된다는 가정.</b> 현 다운스트림 완충은 역내 가동축소·공급 타이트 일시 요인에 기댐. 신규 증설·가동 정상화로 회귀 시 유가 약세를 상쇄하던 완충 약화 → 이익 이중 압박, Bear 시나리오 확률 상승</li><li><b>주주환원(배당+자사주)이 현 수준으로 지속된다는 가정.</b> 4% 배당·대규모 자사주는 유가·FCF 연동. 유가 장기 급락 시 자사주 먼저 축소되면 방어·인컴 프리미엄 훼손 → 저변동성 앵커 논리 붕괴, 목표가·등급 동시 하향</li></ol></div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-07-08 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="SHEL_Shell_20260708.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
