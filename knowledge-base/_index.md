@@ -32,7 +32,7 @@ lint_p2_count: 4
 | `market/prediction_markets.md`  | 2026-06-21 | 14일   | kb-updater 재수집 위임. confidence 필드 누락(collection_status=SUCCESS) + 7/8 FOMC 의사록 확률 반영                                                                                       |
 | `macro/science_tech.md`         | 2026-06-24 | 11일   | kb-updater 재수집 위임 (industry/science_tech는 7/5 갱신·macro/science_tech 누락 지속·6/28부터 이월)                                                                                      |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 27일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-06)·weekend_watch_20260705(vu 07-06)는 7/5 모닝 갱신 완료(연휴 마지막 날·7/6 개장 D-1). surprise_index(vu 07-08)는 7/4 이브닝 6월 NFP 쇼크(+57K) 반영 갱신. auto-trigger 마커 0건 + 일요일 미국장 휴장(7/6 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
+> **브리핑 진행 가능 여부:** industry KB 만료 27일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-08, 7/7 모닝 갱신 — 7/6 미국 정규장 확정 종가 반영, Dow 사상 최고치)·weekend_watch_20260705(vu 07-06)는 7/5~7/7 순차 모닝 갱신 완료. surprise_index(vu 07-08)는 7/4 이브닝 6월 NFP 쇼크(+57K) 반영 갱신. auto-trigger 마커 0건 + 일요일 미국장 휴장(7/6 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
 
 > [해소 참조 2026-07-05] `market/daily_snapshot`·`economic_calendar`·`surprise_index` 등 market/ KB는 7/3~~7/5 브리핑에서 갱신 완료로 P0/P1 제외. 6/12~~7/2 daily_snapshot 해소 이력(9행)은 파일 신선도 회복으로 아카이브 처리(비대 완화). `macro/us_monetary_policy`는 6/7 재수집분(vu 07-07 D+2) → P1 승격 관찰.
 
