@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>인베스코 S&P500 동일가중 ETF (재분석 v8) (RSP) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>인베스코 S&P500 동일가중 ETF (재분석 v8) (RSP)</h1><div class="meta">ETF 종합 분석 리포트 | 2026-07-08</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">73/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">동일가중 구조가 '반도체 vs 나머지' 디커플링 국면의 핵심 방어처로 정렬 — 빅테크 고밸류 회피 + 시장 폭 확대(브로드닝) 수혜.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">S&P500 코어(VOO)의 저비용 대안. 빅테크 집중 랠리 국면에선 장기 언더퍼폼.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">Sell Chips發 반도체 리스크오프로 시장이 '나머지'(다우·산업재·가치)로 폭이 넓어지는 지금이 동일가중의 상대매력 구간. 52주 신고가권 저변동 상승 + 반도체 급락일 보합이 이를 실증.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">AI capex 실수요 재확인으로 반도체·빅테크 랠리 재개 → 자금이 시총가중·성장으로 회귀 시 구조적 언더퍼폼. 3개월 코어 대비 상대약세 지속.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">코어(VOO) 보완재로 분할 편입·보유. 손절 $210.39(2ATR), 단기목표 $222.19(3ATR)·12M Base $230.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">동일가중 최대 약점은 스타일 국면 의존성 — 대형테크 랠리 재개도, 성장 둔화發 방어적 협소화도 양방향 모두 불리. 유리한 구간은 '넓게 오르는' 브로드닝뿐이며 시장 베타는 코어와 동일.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">종합 73.1/100 · 투자등급 매수 (Buy)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$215.11</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">N/A</div></div><div class="ki"><div class="kl">PER</div><div class="kv">N/A</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$177.00~$216.36</div></div><div class="ki"><div class="kl">보수율(TER)</div><div class="kv">0.20%</div></div><div class="ki"><div class="kl">추종지수</div><div class="kv">S&P500 동일가중</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$2.36 (1.1%)</div></div><div class="ki"><div class="kl">52주 위치</div><div class="kv">고점 대비 -0.58%</div></div><div class="ki"><div class="kl">리밸런싱</div><div class="kv">분기</div></div><div class="ki"><div class="kl">일평균 거래량</div><div class="kv">약 409만주</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$210.39</div><div class="dn" style="font-size:13px">-2.2%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$222.19</div><div class="up" style="font-size:13px">+3.3%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="301" y="30" width="49" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="301" y1="26" x2="301" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="301" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$210</text><line x1="340" y1="24" x2="340" y2="52" stroke="var(--text)" stroke-width="3"/><text x="340" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$215</text><line x1="397" y1="26" x2="397" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="397" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$222</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $177</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $216</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $2.36 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>RSP는 S&P 500 500종을 시총이 아닌 동일 비중(~0.2%)으로 담아 빅테크 집중을 구조적으로 걷어낸 ETF다. 현재가 $215.11로 52주 고점($216.36) 대비 -0.58%의 신고가권에 저변동(ATR 1.1%)으로 안착했고, 모건스탠리 Sell Chips發 반도체 급락일에도 +0.05% 보합을 지켜 '반도체 vs 나머지' 디커플링의 방어처임을 실증했다. 빅테크 고밸류 회피·시장 폭 확대 수혜 논지와 개별종목 리스크 사실상 0의 구조적 안전판이 매수 논거. 다만 대형테크 랠리 재개 또는 성장 둔화發 협소화 시 언더퍼폼 전환 위험으로 강력매수가 아닌 매수(73.1/100)로 판단한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,70.0 175.3,101.5 216.1,125.3 206.6,171.6 187.0,214.7 140.0,230.0 98.9,206.6 92.4,165.5 63.9,125.3 93.0,85.3" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">해자/구조우위</text><circle cx="140.0" cy="70.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무·비용효율</text><circle cx="175.3" cy="101.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="216.1" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">산업성장성</text><circle cx="206.6" cy="171.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀/기술</text><circle cx="187.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">수급/자금흐름</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센/폭확대</text><circle cx="98.9" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">사이클/스타일</text><circle cx="92.4" cy="165.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">지정학/규제</text><circle cx="63.9" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">운용/구조건전성</text><circle cx="93.0" cy="85.3" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>해자/구조우위</td><td>8.0</td><td>/10</td></tr><tr><td>재무·비용효율</td><td>6.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>8.0</td><td>/10</td></tr><tr><td>산업성장성</td><td>7.0</td><td>/10</td></tr><tr><td>모멘텀/기술</td><td>8.0</td><td>/10</td></tr><tr><td>수급/자금흐름</td><td>8.0</td><td>/10</td></tr><tr><td>컨센/폭확대</td><td>7.0</td><td>/10</td></tr><tr><td>사이클/스타일</td><td>5.0</td><td>/10</td></tr><tr><td>지정학/규제</td><td>8.0</td><td>/10</td></tr><tr><td>운용/구조건전성</td><td>8.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 73/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v5</td><td>2026-06-07</td><td>—</td><td>—</td><td>$215</td></tr><tr><td>v6</td><td>2026-06-18</td><td>—</td><td>—</td><td>$216,</td></tr><tr><td>v7</td><td>2026-06-27</td><td>78</td><td>매수</td><td>—</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">구조적 우위 (분산·규율·선점)</span></h2><p>운용사 인베스코, 2003년 상장한 동일가중 S&P500 카테고리의 원조·최대 상품. 추종지수는 S&P 500 Equal Weight Index로 500개 동일 종목을 각 ~0.2%씩 균등 배분한다. 보수율 0.20%(코어 VOO 0.03% 대비 6~7배)이나 동일가중 팩터 노출·분기 리밸런싱 규율의 대가로 카테고리 표준이다. 일평균 약 409만주로 유동성 우수. 해자는 기업이 아니라 (1) 팩터 다변화(빅테크 언더웨이트로 개별·섹터 집중 제거), (2) 카테고리 선점·유동성, (3) 분기 리밸런싱의 자동 역발상 규율 세 축에 있다.</p><h3>Moat 상세</h3><p>ETF 자체 기업형 해자는 없으나 상품·전략 우위는 견고하다. 시총가중이 상위 빅테크 7종에 30%+ 집중되는 것과 달리 RSP는 500종 균등배분으로 단일 종목 리스크가 0에 수렴한다. 분기 리밸런싱은 '오른 종목 덜고 빠진 종목 담는' 규율을 자동화해 장기 리밸런싱 프리미엄(평균회귀 수익원)을 내재한다. 카테고리 원조·최대 규모로 유동성·스프레드·트래킹 신뢰도에서 후발 상품 대비 우위.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>항목</th><th>값</th><th>비고</th></tr></thead><tbody><tr><td>총보수율(TER)</td><td>0.20%</td><td>코어 VOO 0.03% 대비</td></tr><tr><td>분배수익률</td><td>약 1.3~1.7%</td><td>분기 분배, 추정</td></tr><tr><td>추적오차</td><td>0.1~0.3%p</td><td>대형·유동 종목 복제, 추정</td></tr><tr><td>회전율</td><td>코어 대비 높음</td><td>분기 리밸런싱</td></tr><tr><td>구성 종목수</td><td>500종</td><td>각 ~0.2% 균등</td></tr></tbody></table><h3>분석</h3><p>비용: 총보수 0.20%로 코어(0.03%) 대비 연 +0.17%p 드래그이나 동일가중 노출 대가로 표준. 분배수익률 약 1.3~1.7% 추정(배당주 비중이 시총가중보다 높아 코어보다 소폭 높은 경향, 분기 분배). 추적오차는 대형·유동 종목만 담아 낮은 편(연 0.1~0.3%p 추정)이나 분기 리밸런싱 회전율로 세금·거래 효율은 코어 열위. NAV 프리미엄/디스카운트는 초유동으로 ±0.05% 이내 타이트.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>현재가 $215.11, 52주 밴드 $177.00~$216.36 — 고점 대비 -0.58%의 신고가권, 저점 대비 +21.5%. 동일가중 실효 PER은 고PER 빅테크가 가중되지 않아 시총가중 S&P500보다 통상 크게 낮다 — 빅테크 고밸류 리스크의 회피처로 상대매력. 12개월 확률가중 기대치 $226.2(+5.2%), Base 목표 $230.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>52주 신고가권($215.11 vs 고 $216.36)에서 ATR 1.1%의 저변동 상승. 반도체 급락일 보합(+0.05%)으로 상대강도가 시장 폭 쪽에 있음을 시사. 레짐 중립 7일째·추세 상승(MA20 +1.4%)·VIX 15.6 하락은 광범위 지수 보유에 우호. 단 F&G 공포권(40.5) 진입·서킷브레이커 재발로 지수 전반 변동성 재확대 시 절대 하방은 동반. '반도체 vs 나머지' 디커플링 수급이 동일가중으로 정렬돼 단기 상대강도 우위.</p><table><thead><tr><th>시나리오</th><th>확률</th><th>목표가</th><th>논거</th></tr></thead><tbody><tr><td>Bull</td><td>30%</td><td>$242</td><td>브로드닝 본격화·반도체 집중 해소·리밸런싱 프리미엄</td></tr><tr><td>Base</td><td>50%</td><td>$230</td><td>미국 대형주 한 자릿수 후반 총수익·디커플링 완만 지속</td></tr><tr><td>Bear</td><td>20%</td><td>$193</td><td>성장 둔화 협소화 or 시스템 리스크오프·중형/가치 압박</td></tr><tr><td>기대치</td><td>-</td><td>$226.2</td><td>확률가중 (+5.2% vs 현재가)</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>RSP의 실효 노출은 두 국면에서 정반대로 작동한다. 브로드닝(폭 확대) 국면엔 시총가중 아웃퍼폼, 소수 대형테크 집중 랠리 국면엔 언더퍼폼. 현 국면은 모건스탠리 Sell Chips로 반도체 이익모멘텀 정점 경고 → 7/7 코스피 -4.91% 서킷브레이커·아시아 반도체 동반 약세인 반면 다우는 사상최고(7/6 53,055). '반도체 vs 나머지' 디커플링에서 동일가중은 빅테크·반도체 저비중으로 '나머지 강세'에 정렬된 구조적 방어처다. 매크로는 6월 고용 급둔화(+57K)로 성장 둔화 우려 부각·인상 우려 후퇴, 유가 완화로 헤드라인 인플레 완화 경로. 집중 리스크 경계론·팩터 투자 확산이 장기 순풍.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>리스크는 '기업'이 아니라 '스타일 국면 의존성'에 집중된다. 최대 리스크는 방향이 반대 — 대형테크 랠리 재개도, 성장 둔화發 방어적 협소화도 모두 불리하고 유리한 구간은 '넓게 오르는' 브로드닝뿐이다. 금리 재상승(10Y 4.48%, Core PCE 3.4% 고착)은 중형·가치 비중 큰 동일가중을 코어보다 더 압박할 수 있다. 분산은 개별·섹터 리스크를 줄일 뿐 시장 베타는 코어와 동일해 시스템 리스크오프엔 동반 하락. 6월 CPI(7월 중순)가 핵심 판별자.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">대형테크·반도체 랠리 재개</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">성장 둔화 심화·폭 협소화</text><circle cx="180" cy="156" r="5" fill="var(--warn)"/><text x="189" y="160" fill="var(--text)" font-size="10">금리 재상승</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">시스템적 리스크오프</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">비용 드래그·순환 회전</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>대형테크·반도체 랠리 재개</strong> (발생: 높음, 영향: 중)<br><span style="color:var(--sub);font-size:13px">Sell Chips 반전·AI capex 재확인 시 자금 시총가중 회귀 → 구조적 언더퍼폼.</span></div><div class="ri rm"><strong>성장 둔화 심화·폭 협소화</strong> (발생: 중, 영향: 중~높음)<br><span style="color:var(--sub);font-size:13px">GDPNow Q2 +1.2% 급락. 상승이 방어적 소수로 좁아지면 중형·경기민감 노출 불리.</span></div><div class="ri rm"><strong>금리 재상승</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">10Y 4.48%·Core PCE 3.4% 고착. 6월 CPI 재가속 시 중형·가치 압박.</span></div><div class="ri rl"><strong>시스템적 리스크오프</strong> (발생: 낮~중, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">F&G 40.5·서킷브레이커 재발. 분산에도 시장 베타는 그대로 동반 하락.</span></div><div class="ri rl"><strong>비용 드래그·순환 회전</strong> (발생: 높음, 영향: 낮음)<br><span style="color:var(--sub);font-size:13px">0.20% 보수+분기 회전율로 코어 대비 장기 비용·세금 효율 열위.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>신규: 코어(VOO/IVV) 보완재로 분할 편입, 빅테크 집중 회피 헤지 목적에 적합, $210.39(2ATR) 이탈 시 손절. 보유: 신고가권·상승추세·디커플링 수급 정렬로 유지, 목표 $222.19(단기)~$230(Base 12M). 강세 재진입: $216.36 신고가 돌파 안착 + 시장 폭 확대 확인. 약세 강등: 반도체·빅테크 랠리 재개로 3개월 코어 대비 상대약세 지속, 또는 $210.39 이탈 + 협소화 신호 시 중립 강등.</p></div>
+<div class="sec"><h2>§ Confidence Interval (신뢰구간)</h2><ul><li><b>점수 신뢰구간</b>: 73.1 ± 4점 (69.1 ~ 77.1)</li><li><b>12개월 목표가 구간</b>: $193 (Bear) ~ $242 (Bull), 중앙 $226</li><li><b>신뢰도 등급</b>: 중~상 — ETF·초유동·투명 방법론으로 데이터 신뢰 높음. 단 스타일 국면 전환 시점 예측 난이도 큼</li><li><b>데이터 기준일</b>: 가격 2026-07-07 종가 / 분석 2026-07-08 (KST)</li></ul></div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li><b>'반도체 vs 나머지' 디커플링 지속</b> — Sell Chips 반전·AI capex 실수요 재확인 시 자금이 시총가중·성장으로 회귀해 RSP가 구조적 언더퍼폼으로 전환. 반증 시 등급 중립 하향.</li><li><b>시장 폭이 넓게 유지</b> — 성장 둔화(GDPNow Q2 +1.2%) 심화 시 상승이 방어적 소수로 협소화되어 동일가중의 중형·경기민감 노출 불리. 반증 시 Base→Bear 경로.</li><li><b>금리 급등 없음</b> — 6월 CPI(7월 중순) 재가속으로 10Y 추가 상승 시 중형·가치 비중 큰 동일가중이 코어보다 더 눌림. 반증 시 목표가 하향.</li></ol></div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-07-08 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="RSP_InvescoSP500EqualWeight_20260708.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
