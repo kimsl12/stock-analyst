@@ -1,12 +1,12 @@
 ---
 sector: auto
 created: 2026-05-12
-last_updated: 2026-06-06
+last_updated: 2026-07-11
 status: active
 related_industry_kb:
   - knowledge-base/industry/auto.md
   - knowledge-base/industry/battery.md
-l1_index_count: 2
+l1_index_count: 3
 l2_summary_count: 1
 l3_deep_dive_count: 0
 deep_dive_priority: 10

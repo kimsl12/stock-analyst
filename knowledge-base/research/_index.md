@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-07-04
+last_updated: 2026-07-11
 update_cycle: weekly
 status: active
-total_headlines: 84
+total_headlines: 87
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -53,6 +53,7 @@ total_headlines: 84
 - 📄 [Industry] Samsung HBM4 누적 매출 $1B 돌파 (2026-06-23) — "2월 12일 HBM4 첫 양산 후 4개월 만에 누적 매출 $1B 돌파" → Vera Rubin용 6세대 HBM4 공급사 3사(삼성·SK하이닉스·마이크론) 중 삼성이 2/12 업계 첫 양산 시작, 6/23 기준 누적 매출 $1B 도달(약 4개월). HBM4 스택당 약 $500 추정가 기준 — 삼성 HBM 진영 복귀·매출 기여 본격화 신호 ([source](https://www.techtimes.com/articles/317539/20260602/nvidia-vera-rubin-enters-full-production-samsung-sk-hynix-micron-named-hbm4-suppliers.htm))
 - 📄 [Industry] SK hynix HBM3E→HBM4 전환 일부 지연, DDR5로 재조정 (2026-06-24) — "일부 HBM3E 라인의 HBM4 전환을 늦추고 DDR5 일반 DRAM 생산으로 재배치" → 업계 소식통 인용. HBM4 점유율 50~55% 선두를 유지하면서도 단기 수익성(DDR5 가격 강세) 우선 — HBM4 램프 속도 조절. 16-Hi HBM4 신규 발주를 두고 삼성·마이크론과 NVIDIA 공급 계약 경쟁 중. HBM 공급 타이트닝·메모리 믹스 재편 신호 ([source](https://www.techtimes.com/articles/319016/20260624/sk-hynix-dethroned-samsung-after-26-years-now-choosing-ddr5-profits-over-hbm4-ramp.htm))
 - 📄 [Conference] VLSI Symposium 2026 (2026-05-22, 본회의 6/14-18 발표) — "PSMC, Intel·SAIMEMORY HB3DM 9층 Via-in-One 합류 — 파운드리·제조 파트너 확정" → 사전 예고(T17.5) 대비 제조 진영 구체화: 설계·IP는 SAIMEMORY, 3D 적층은 Intel, 제조 지원은 PSMC + 日 Shinko Electric. 9층 구조 — 약 3µm 초박형 실리콘 기판, 산화물 트렌치 TSV 10×85µm²/20µm 피치(층당 약 13.7K TSV), C타입 대비 저항 40%↓ O타입 콘택트, 0.95~1.2V 동작. 대역폭밀도 약 0.25 Tb/s/mm²(171mm² 다이 10GB 모듈당 약 5.3 TB/s, HBM4 스택당 약 2 TB/s의 2배 초과), 데이터전송 전력 0.35 W/mm² 미만·0.7 pJ/bit 미만. 프로토타입 2027·양산 2029 — HBM4E 예비 사양에 도전하는 비메모리 진영 연합 구도 ([source](https://www.trendforce.com/news/2026/05/22/news-psmc-joins-intel-saimemory-to-demo-9-layer-fusion-bonded-via-in-one-architecture-for-high-bandwidth-3d-memory/))
+- 📄 [Industry] TSMC Q2 2026 실적 프리뷰 (2026-07-09 Forbes 분석 / 발표 7/16) — "AI 빌드아웃에 천장이 있는가 — TSMC Q2가 시험대" → 자체 가이던스 매출 $39.0~40.2B·GM 65.5~67.5%, 컨센 ~$40B(+32% YoY)·ADR당 EPS +50%↑. C.C. Wei "AI 수요 극도로 견조" — FY2026 매출성장 가이던스 "30%+"에서 상향 관측, capex $52~56B 상단(증액 여부 주시). 지속성 논쟁: CoWoS 패키징 병목(공급-수요 갭 20%→연말 ~10% 축소 전망)·AZ $465B 11-fab 실행 리스크·4년 연속 가격 인상(노드별 3~10%). HBM4·AI GPU·커스텀 ASIC·클라우드 TPU 수요 지속성 확인 이벤트 — 7/16 실적이 AI 슈퍼사이클 방향타 ([source](https://www.forbes.com/sites/drewbernstein/2026/07/09/tsmcs-second-quarter-will-test-whether-the-ai-buildout-has-a-ceiling/))
 
 ### 규제
 
@@ -77,6 +78,7 @@ total_headlines: 84
 - 📄 [Think Tank] CRS Report R45281 (2026-06) — "Iran Conflict and the Strait of Hormuz: Impacts on Oil, Gas, and Other Commodities" (이란 분쟁과 호르무즈 해협: 석유·가스·기타 원자재 영향) → 미·이스라엘 작전(2026-02~) + 이란 보복으로 3/4부터 이란이 호르무즈 "봉쇄" 선언·통항 선박 공격. 2025년 세계 해상 석유교역의 약 25%가 호르무즈 통과했고 우회 경로는 제한적. 재고 인출은 5~6월 최대, Brent 약 $106/bbl 유지, IEA 회원국 전략비축 4억 배럴 방출 합의 — 해협 통항이 가격 정상화의 핵심 변수 ([source](https://www.congress.gov/crs-product/R45281))
 - 📄 [White Paper] 유가·호르무즈 통항 정상화 진전 (2026-06-17) — "Brent $78.24/bbl, 3/3 이후 최저 — 美·이란 휴전 프레임워크 + 해협 재개통 기대로 2026년 고점 대비 약 20% 하락" → 분쟁 중 50% 이상 급등했던 유가가 전쟁 전(2/28) 대비 약 7% 수준으로 회귀. 6/19 제네바 서명 예정 프레임워크: 이란이 호르무즈 near-total 봉쇄 해제 ↔ 美 이란 항만 봉쇄 해제. 단 정상화엔 시차 — 통항 대기 선박 500척 초과, 기뢰 제거에 수주 이상 소요로 정상 해운 복원은 수주~수개월 전망. 직전 회차(CRS $106/bbl) 대비 중동發 인플레 상방 압력 급속 완화 신호 ([source](https://www.aljazeera.com/economy/2026/6/17/oil-prices-continue-slide-amid-hopes-for-peace-opening-of-strait-of-hormuz))
 - 📄 [White Paper] 호르무즈 주말 재교전 후 재휴전 (2026-06-29) — "Brent 8월물 $73.21/bbl(+0.9%), 전쟁 프리미엄 거의 소진 — 6/27~28 美·이란 상호 타격 후 일요일 재휴전·7/1 도하 협상 예정" → US CENTCOM이 이란의 호르무즈 상선 공격을 이유로 금·토 이란 타격, 이란은 바레인·쿠웨이트 美 자산에 미사일·드론 보복. 일요일 밤 양측 공격 중단·협상 재개 합의(도하, 화요일 예정, 이란 공식 확인 전). 애널리스트 "MoU에 집행 세부 없고 타격 지속되는데도 유가가 전쟁 프리미엄 거의 되돌림" — 재개통 지연 리스크 잔존하나 유가는 $73선 안착으로 중동發 인플레 상방 채널 실질 소멸 국면. 5월 IEA($106) 대비 방향 완전 역전 ([source](https://www.aljazeera.com/economy/2026/6/29/oil-prices-rise-as-us-iranian-strikes-threaten-strait-of-hormuz-reopening))
+- 📄 [White Paper] Al-Monitor 유가·OPEC+ 동향 (2026-07-06) — "OPEC+ 8월 +188K bpd 5개월 연속 증산 + 호르무즈 통항 회복 → Brent $71.87 분쟁 개시 이후 최저" → OPEC+ 7개국(사우디·이라크·쿠웨이트·오만·알제리·러시아·카자흐스탄) 8월 일 18.8만 배럴 증산 결정(2023년 감산 되돌림 5개월째). Brent $71.87(-0.15%, 장중 저점 $71.09) — 2/28 분쟁 개시 이후 최저. 6/17 美·이란 휴전 후 호르무즈 점진 재개통이나 통항량은 전쟁 전 하루 130~140척 대비 여전히 낮음(월요일 日 관련 10척 통과·사우디 초대형유조선 韓行). 전쟁 프리미엄 소진 지속 — 중동發 인플레 상방 채널 실질 소멸 국면(5월 IEA $106 대비 방향 완전 역전) ([source](https://www.al-monitor.com/originals/2026/07/oil-prices-ease-opec-increases-production-hormuz-traffic-rebounds))
 
 ### 컨퍼런스/백서
 
@@ -121,6 +123,7 @@ total_headlines: 84
 - 📄 [Policy] FOMC 성명문 구조 개편 + Fed 운영 개혁 태스크포스 (2026-06-17) — "Warsh 의장 성명문 약 300단어→약 130단어 축약, forward guidance 폐기" → 6/17 첫 주재 회의서 성명문을 대폭 단축(이전 300단어 초과 → 약 130단어). Warsh "forward guidance는 현 정책 국면에 부적합" — 일부 구(舊)표현 삭제하고 더 짧고 단순하게. 동시에 Fed 주요 운영(operations) 전반을 손볼 태스크포스 신설 발표 — Powell 압박 정쟁(독립성 논란) 끝 취임한 Warsh의 커뮤니케이션·거버넌스 구조 개혁 착수. 점도표 인상 반전(6/17 SEP, 위 항목)과 함께 Fed 운영 체제 전환 신호 ([source](https://www.cnbc.com/2026/06/17/fed-meeting-today-live-updates.html))
 - 📄 [Policy] BOJ 통화정책결정 (2026-06-19) — "정책금리 +25bp 1.00% 인상 (7-1 표결), 1995년 9월 이후 최고" → 0.75%→1.00% 인상(보완당좌예금 1.0%·기본대출 1.25%). Asada Toichiro 위원만 반대(가격 상방보다 생산·고용 하방 위험 우려). 4월 6-3 분열에서 합의 강화. 기조 인플레가 에너지가격 상승으로 2% 목표 상회 가속 가능 평가, 인상 후에도 완화적 금융여건 유지. 가이던스는 중립·데이터 의존 — USD/JPY 발표 후 약 160.29(엔 일시 강세 후 되돌림). 추가 인상 지속 시사 + 중동 분쟁 영향 주시 ([source](https://www.ebc.com/forex/boj-at-1-percent-yen-usd-jpy-rate-hike))
 - 📄 [Data] BLS 고용상황 — June 2026 (2026-07-02 발표) — "신규 비농업 고용 +57K(예상 +115K 대폭 하회), 실업률 4.3→4.2%(경활률 -0.3%p 하락 착시), 시간당임금 +0.3%m/+3.5%y" → 5월치 +129K로 하향 수정, 12개월 평균(+36K) 수준으로 둔화. 레저·접객 -61K(계절 고용 부진), 전문·사업서비스 +36K·헬스케어 +22K가 상쇄. 실업률 하락은 경활률이 61.5%(2021년 3월 이후 최저)로 급락한 착시. NFP 쇼크로 6/17 dot plot 인상 반전(연내 9인 인상 전망)의 긴축 서사가 약화 — 시장은 9월 인상 배제·10월 가능성만 잔존으로 재조정. 매크로 축이 '인플레 상방'에서 '노동 냉각'으로 이동하는 첫 하드데이터 (📄 BLS 공식 릴리스 [source](https://www.bls.gov/news.release/archives/empsit_07022026.htm))
+- 📄 [Policy] FOMC 의사록 (2026-07-08 공개) — "6/16-17 회의 의사록 — Warsh 첫 회의 '집안싸움'을 만장 동결로 봉합" → 정책금리 3.50~3.75% 만장 12-0 동결(4회 연속). 18인 중 9인 연내 인상 전망(6인은 25bp 2회) — 3월 인하 편향 중앙값에서 반전, 12월 적정 수준엔 이견 지속(일부 "현 정책 비긴축적" vs 타 위원 "약간 긴축적"). 5월 총 PCE 4.1%(4월 대비 상승)·코어 3.4%, 스태프는 관세 전가·중동 에너지·AI 관련 수요를 원인 지목·인플레 위험 상방 편향 유지. Warsh 성명 132단어로 4월(341단어) 대비 최단축·점도표 미제출(2012년 도입 후 첫 의장 기권), "The Committee will deliver price stability" 무조건부 문장 삽입 — 이코노미스트(L. Ullrich) "의사록에서 가장 강한 시그널". 7/2 NFP 쇼크(+57K)와 겹쳐 인상 서사 vs 노동 냉각 긴장 지속 ([source](https://fortune.com/2026/07/08/laura-ullrich-fed-reserve-kevin-warsh-minutes-fomc/))
 
 ---
 
@@ -198,6 +201,7 @@ total_headlines: 84
 ### 규제
 
 - 📄 [Policy] Golden Dome $17.1B 조정예산 의존 구조 재확인 (2026-07-04 트래킹) — "미사일방어 Golden Dome 요청액 약 $17.5B 중 $17.1B가 정규 appropriations 아닌 reconciliation 패키지 경유 — base 요청은 약 $400M뿐" → FY27 국방예산($1.5T = 재량 $1.15T + 조정 $350B) 구조상 Golden Dome 우주기반 센서·요격체 자금 거의 전액이 조정절차 통과에 좌우. 前 회차(2025 OBBBA, P.L. 119-21)처럼 조정 패키지로 국방 추가재원 조달하는 선례 반복 시도 — 의회 조정 협상 타결 전까지 실집행 불확실. HASC 조정안 마크업은 미사일방어에 약 $30B(조정예산의 약 20%, 우주센서 $7.2B) 배정. 관세發 원자재 가격 상승이 DOD 구매력 잠식 리스크 병존 (📄 근거: Federal News Network·CSIS 토플라인 [source](https://federalnewsnetwork.com/budget/2026/04/white-house-seeks-17-5-billion-for-golden-dome-but-most-funding-hinges-on-reconciliation/))
+- 📄 [Policy] CRS IN12703 — FY2027 NDAA 인가 요약 (2026-07-09) — "하원 H.R.8800·상원 S.4784 모두 재량 국방비 약 $1.14T 인가 — FY2026 대비 +$250B(+28%)" → 양원 모두 행정부 요청 부합 수준(약 $1.14조) 인가, 별도 조정(reconciliation) $350B 가정 유지. 하원: 조달 +$1.2B·RDT&E +$0.7B 증액 / 상원: 조달 -$0.4B·RDT&E +$1.1B. Moulton 의원의 $150B 삭감 수정안 부결(총 $1.5T 국방 패키지 + 조정 조항 감독 미흡 우려). FY27 국방 authorizations 양원 심사 본격화 — Golden Dome 등 세부 무기체계 배분은 후속 (📄 CRS via USNI News 2026-07-09 [source](https://www.everycrsreport.com/reports/IN12703.html))
 
 ---
 
@@ -283,6 +287,7 @@ total_headlines: 84
 
 ### 규제
 
+- 📄 [Filing] Tesla Q2 2026 인도량 보고 (2026-07-02, 8-K) — "인도 480,126대·생산 451,758대 — 월가 컨센(약 406,024대) 대폭 상회, 4번째 최고 분기" → Model 3/Y 442,936대 생산·467,762대 인도, 기타 모델 8,822/12,364대, 에너지 저장 13.5 GWh 배치. 인도 전년比 약 +25%·전분기比 약 +34%, 약 2%가 운용리스 회계 대상. Q2 재무실적(마진·ASP)은 7/22 발표 예정 — IRA 크레딧 9/30 종료 전 수요 풀인 국면 확인, 사이클 후반부 신호 ([source](https://www.stocktitan.net/sec-filings/TSLA/8-k-tesla-inc-reports-material-event-72d527c29eb5.html))
 - 📄 [Policy] IRA 30D 신차 EV 크레딧 (확정 적용) — "2026년 배터리 부품 70% / 핵심광물 70% 요건 단계 상향" → 부품 80%('27)→90%('28)→100%('29), 광물 80%('27~). Tesla 공지 "연방 EV 크레딧 9/30 종료" 시나리오 동시 부상 — 사이클 후반부 수요 풀인 ([source](https://www.tesla.com/IRA))
 
 ---
@@ -295,25 +300,25 @@ total_headlines: 84
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-06-27 트래킹)
+## 차주 갱신 예상 항목 (2026-07-11 트래킹)
 
-- **반도체**: SK hynix HBM3E→HBM4 전환 지연·DDR5 재배치 후속(NVIDIA 16-Hi HBM4 발주 향방), 삼성 HBM4 매출 램프 속도, VLSI 2026 OnDemand(6/22~) 삼성/SK 차세대 메모리 세션 실측, 메모리 PIM/PNM(TokenStack 계열) 후속 preprint, BIS/MATCH Act 의회 진전
-- **에너지**: 호르무즈 통항 정상화 진척(기뢰 제거·대기선박 500척 해소)과 Brent 동향, IEA 7월 OMR, DOE AP1000 $17.5B 약정 후속(개별 5건 융자 confirm·정의적 자금 집행 조건), NRC 마이크로리액터 규칙 6/15 의견마감 후 검토, DOE Gen III+ SMR Tier 3
-- **매크로**: FOMC 6/17 후속 — Warsh 성명 개편·운영 개혁 태스크포스 세부, FOMC 의사록(7월 공개), BOJ 1.0% 인상 후 엔/JGB 반응·추가 인상 경로, 한국은행 7월 회의 연내 인상 시점, ECB 6월 회의, NBER SI 2026 7월 트랙
-- **바이오**: ADA 후속 GLP-1 readout(retatrutide·CagriSema REIMAGINE 상세), camizestrant 연장된 PDUFA 추가 데이터·재심, orforglipron/CagriSema FDA 리뷰 진전, FDA 7월 PDUFA(ONS-5010 7/29 등)·AdCom
-- **핀테크**: GENIUS Act 7/18 최종규칙 발표 임박 — 6개 기관 최종규칙·발행자 자격·준비금 확정, 한국 금융위 가상자산법 2단계 시행령
-- **방산**: FY27 appropriations·reconciliation 의회 심사 진전 (Golden Dome $17.5B 배분), 한국 방사청 3축 체계 신규 계약
-- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-36 가이드라인, NeurIPS/ICML 7월 트랙, MS Build 후속
-- **소비재**: 6~7월 리테일 어닝, 관세 가격 전가 진행, 여름 소비 동향
-- **산업재**: TSMC AZ Phase 2 장비 입고 Q3 2026 진행 추적, Samsung Taylor 양산 일정
-- **자동차**: Tesla Q2 인도량·Cybercab 양산·Austin 로보택시 확대, EV 충전 크레딧 6/30 종료 후속
+- **반도체**: 7/16 TSMC Q2 실적 — FY2026 가이던스/capex($52~56B) 상향 여부·C.C. Wei AI 슈퍼사이클 지속성 코멘트, NVIDIA 16-Hi HBM4 Q4 발주 3사 배분 확정, SK hynix 30µm 웨이퍼 씨닝(MR-MUF) 양산성, 삼성 HBM4 매출 램프, 후속 메모리 PIM/PNM preprint
+- **에너지**: OPEC+ 8월 증산(+188K) 이행·9월 증산 논의, 호르무즈 통항 정상화 속도(전쟁 전 130~140척/일 복원), Brent $70선 공방·Citi 연말 $60 전망 검증, IEA 7월 OMR, DOE AP1000 $17.5B 개별 융자 confirm
+- **매크로**: 7/14 6월 CPI(관세·에너지 전가 지속 여부, 인상 vs 노동 냉각 서사 분기), FOMC 7/28-29 회의 프리뷰, 7/22~ 어닝시즌 연동, BOJ 추가 인상 경로, 한국은행 연내 인상 시점, NBER SI 2026 7월 트랙
+- **바이오**: camizestrant 연장 PDUFA 재심, ADA 후속 GLP-1 readout(retatrutide·CagriSema 상세), 7/29 ONS-5010 PDUFA, FDA 7월 AdCom
+- **핀테크**: 7/18 GENIUS Act 최종규칙 발표(OCC·FDIC·NCUA·Treasury·FinCEN·OFAC 동시)·발행자 자격/준비금/$5M 자본 하한/수익지급 금지 확정·120일 유예 기산, Circle/Tether 컴플라이언스 대응
+- **방산**: FY27 NDAA 양원 조정(H.R.8800 vs S.4784)·Golden Dome $18B 배분($17B 조정 의존, 누적 $42B), 한국 방사청 3축 신규 계약
+- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-22, NeurIPS/ICML 7월 트랙, 빅테크 Q2 어닝(7월말)
+- **소비재**: 6월 리테일 판매·관세 가격 전가, 여름 소비, 리테일 Q2 어닝 프리뷰
+- **산업재**: TSMC AZ Phase 2 장비 입고 Q3 진행, Samsung Taylor 양산 일정
+- **자동차**: Tesla 7/22 Q2 재무실적(마진·ASP), EV 크레딧 9/30 종료 전 수요 풀인, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-06-27 회차)
+## 폴백/미수집 (2026-07-11 회차)
 
-- 매크로 Alan Greenspan 별세(2026-06-22, Fed Board 공식 추모 공고) — 1차 정책/연구 자료 아닌 obituary 성격으로 인덱스 등재 보류(시장 영향 채널 아님). 다음 회차 추모·정책 회고 분석 게재 시 재검토
-- VLSI Symposium 본회의(6/14-18) 삼성/SK 개별 HBM4 논문 실측 스펙 — OnDemand(6/22~) 상세 보도 미특정, 삼성 $1B 매출·SK 전환지연 산업 동향으로 대체 수집, 다음 회차 재시도
-- 에너지 학술(NBER EEE·SSRN)·IEA 6월 OMR 본문(iea.org 403) — Al Jazeera/CRS 등 2차 보도로 Brent·Hormuz 수치 확정 수집, IEA 직접 본문은 다음 회차 재시도
-- 테크플랫폼 6월 신규 학술/규제 — NeurIPS·ICML 7월 트랙, EU AI Act 6월 신규 가이드라인 미특정, 5월 헤드라인 유지
-- 방산 6월 신규 — CNAS·RUSI 학술 게재물 부재, FY27 reconciliation 심사 진행(CSIS 토플라인 유지), 다음 회차 재시도
-- 소비재·산업재·자동차 6월 신규 1차 자료 — 리테일 어닝 시즌 종료·분기말 대기로 신규 부재, 5월 어닝/IRA 헤드라인 유지
-- bioRxiv/medRxiv 6월 신규 preprint — 구체 trial 미특정, ADA/ASCO 컨퍼런스 데이터로 대체, 다음 회차 재시도
+- 매크로 FOMC 의사록 원문(federalreserve.gov 403) — 직접 fetch 불가, Fortune(2026-07-08) 2차 분석으로 12-0 동결·9/18 인상 전망·PCE 5월 4.1%·Warsh 132단어·점도표 미제출 확정 수집. releases 원문은 다음 verify 회차 재시도
+- 에너지 EIA 7월 STEO 본문(PDF)·IEA 7월 OMR — 미fetch, Al-Monitor(2026-07-06) 2차 보도로 OPEC+ +188K·Brent $71.87·호르무즈 통항 확정. IEA/EIA 직접 본문 다음 회차
+- 방산 USNI News 원문(2026-07-09 403) — 동일 CRS 제품(everycrsreport IN12703)으로 FY27 NDAA $1.14T·양원 차이·Moulton 수정안 확정 수집
+- 자동차 Tesla 8-K 원문(sec.gov EDGAR 403) — StockTitan 8-K 래퍼로 인도 480,126대·생산 451,758대·13.5GWh·7/22 콜 확정 수집
+- 바이오 이번 주 신규 1차 자료 — 컨퍼런스(ADA/ASCO) 종료 후 공백, camizestrant PDUFA 연장·7/29 ONS-5010 대기. bioRxiv/medRxiv 신규 preprint 미특정, 다음 회차 재시도
+- 핀테크 — GENIUS Act 7/18 최종규칙 미발표(차주 예정), 6/26 트래커·발행자 컴플라이언스($5M 자본 하한·수익지급 금지) 헤드라인 유지. 발표 시 차주 수집
+- 테크플랫폼·소비재·산업재 — 10분 cap 하 고신호 5섹터(반도체·에너지·매크로·방산·자동차) 우선 처리로 개별 검색 deprioritize, 6~7월 기존 헤드라인 유지. 차주 재개

@@ -1,12 +1,12 @@
 ---
 sector: defense
 created: 2026-05-12
-last_updated: 2026-06-13
+last_updated: 2026-07-11
 status: active
 related_industry_kb:
   - knowledge-base/industry/defense_industry.md
   - knowledge-base/macro/geopolitics.md
-l1_index_count: 3
+l1_index_count: 5
 l2_summary_count: 1
 l3_deep_dive_count: 0
 deep_dive_priority: 6
