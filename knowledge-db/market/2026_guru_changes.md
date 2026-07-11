@@ -93,3 +93,6 @@ type: time_series
 | 2026-04-18 | Bill Ackman | CMG | Q4 2025 | 2025-12-31 | 2026-02-17 | SOLD OUT | — | Chipotle 전량매도 (-21.54M주, -$844.2M) | [13radar, stockcircle] |
 | 2026-04-18 | Bill Ackman | GOOGL | Q4 2025 | 2025-12-31 | 2026-02-17 | DECREASED (-86.0%) | — | Class A 대폭 축소 (-4.17M주, -$1.3B). GOOG(Class C) 유지 | [13radar] |
 | 2026-04-18 | Bill Ackman | — | Q4 2025 | 2025-12-31 | 2026-02-17 | SUMMARY | — | 총 11종목 $15.53B. 턴오버 14.67%. 극도 집중형. META 신규 $1.76B(!)+ AMZN +65%. CMG 전량매도. BN/UBER/GOOG 유지. | [13radar, seekingalpha, stockcircle] |
+| 2026-07-11 | Warren Buffett | GOOGL | Q1 2026 | 2026-03-31 | 2026-05-15 | INCREASED (~3배 확대, Top5 근접/진입 추정) | — | ~$16.6B, ~57.8M주 (포트폴리오 대비 ~6.3%) | [Barchart, Nasdaq, GlobeAndMail — 2026-07 상순 후속보도, 원소스 Q1 2026 13F] |
+| 2026-07-11 | Bill Ackman | GOOGL | Q1 2026 | 2026-03-31 | 2026-05-15 | DECREASED (-95%+, 사실상 청산) | — | 잔여 소량 추정, MSFT 재배치 자금원으로 보도 | [Barchart, Nasdaq — 2026-07 상순 후속보도] |
+| 2026-07-11 | Cathie Wood | — | 주간(6/22~26) | — | — | 비중확대(정성) | — | AI·디지털자산·차세대헬스케어 테마 확대, 세부종목 미확보 | [GuruFocus] |
