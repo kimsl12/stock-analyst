@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-04
-valid_until: 2026-08-03
+updated: 2026-07-11
+valid_until: 2026-08-10
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -108,14 +108,37 @@ sources:
   - 디일렉
   - ftoday
   - 247WallSt
+  - The Register
+  - GeekWire
+  - HPCwire
+  - AIwire
+  - photoncap
+  - Kavout
+  - ad-hoc-news
+  - NGMN
+  - GuruFocus
+  - StockTitan
+  - PRNewswire
+  - Communications Today
 confidence: high
-last_synced_from_db: 2026-07-04
+last_synced_from_db: 2026-07-11
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.07.11 핵심 변화 요약 (7/4 이후 델타)**:
+>
+> 1. **SPCX Nasdaq-100 편입 7/7 완결 + 첫 공개실적 8/6로 확정(직전 KB 9/2에서 앞당김)** -- **7/7 Nasdaq-100 fast entry 발효로 ~$4.3B QQQ 강제매수(전체 Nasdaq-100·Russell 추적펀드 합산 최대 약 $27B 추정)**. **★첫 공개 분기실적 2026.08.06으로 조정(직전 KB의 9/2에서 변경) -- 실적 발표 후 내부자 보유분 최대 20% 매도 허용(락업 부분해제)**. Q1 2026 매출 $4.7B·Starlink 10.3M+ 가입자. 팔란티어 편입 후 궤적과 비교 분석 확산, 3% 플로트 희소성 지속 [TradingKey 7월, CNN Markets SPCX, Nasdaq, GuruFocus]
+> 2. **Ericsson Q2 7/14 · Nokia Q2 7/23 실적 임박 -- 'AI 슈퍼사이클' 첫 시험대** -- **에릭슨: 2026.07.14 07:00 CEST 발표(Ekholm CEO/Sandström CFO). Networks Q2 가이던스 QoQ 3년평균 계절성 수준 성장 + Networks 조정총이익률 49~51%, 북미시장 낙관**. **노키아: 2026.07.23 발표. 컨센서스 매출 ~EUR 4.83B·EPS EUR 0.051, Q2 OP EUR 240~400M(FY의 12~16%). FY OP EUR 2.0~2.5B 유지·2028 장기 EUR 3.2B. AI&Cloud Q1 +49%(전사 ~8%). AI-RAN 공개커밋 10사(T-Mobile/DT/Vodafone/SoftBank/NTT Docomo). 주가 17년 최고 부근 -- NVIDIA 파트너십·산호세 시설 램프가 수주로 나타나는지 첫 검증** [StockTitan ERIC, PRNewswire, ad-hoc-news, Kavout, Motley Fool 7/3]
+> 3. **NVIDIA Spectrum-X 이더넷 포토닉스 CPO '양산 진입' 재확인 + Coherent/Lumentum 공급망 존치** -- **5/31 Spectrum-X Ethernet Photonics 'now in production'(200G SerDes 기반 세계 첫 CPO 이더넷 스위치, CoreWeave/Lambda/Oracle Cloud 초기 채택), 광범위 가용은 2H 2026 가이드**(레이저 4배↓·전력효율 3.5배·신호무결성 63배·복원력 10배). **Computex/Taiwan GTC 2026: CPO가 양산 진입했음에도 'CPO가 대체할 것'으로 지목됐던 Coherent·Lumentum이 여전히 NVIDIA 공급업체 명단 유지 -- 플러거블 옵틱스 병존 서사 강화**(NVIDIA $4B 투자 Coherent/Lumentum 각 $2B, 3/2 유지) [NVIDIA Newsroom Spectrum-X Photonics, Futurum, photoncap]
+> 4. **위성 D2C 배치 가속 -- Amazon Leo 390기+ '초기 서비스' 사거리 확보, Starlink/T-Satellite 확대** -- **Amazon Leo 7/2 Atlas V로 +29기 발사, 누적 390기+('초기 위도대 연속 서비스 가능', 연내 초기 상용 온트랙)**. 단 FCC 50%(1,618기 절반) 배치의무(7/30)는 미달 확정(작년 연장 승인·조건부). Globalstar $11.5B 인수 2027 종결 예정. **Starlink 10.3M 가입자(3/31)·DTC 위성 657기+, T-Satellite CONUS+PR+HI+AK/캐나다/뉴질랜드/일본 일부 커버. Starlink Mobile이 AT&T/Verizon 정조준(스펙트럼 확보, 지상 타워 필요)**. AST BB8/9/10(6/17) 궤도 안착, 2026 ~45기 목표 유지 [The Register 7/3, aboutamazon, CNBC 7/2, GeekWire, TechTimes]
+> 5. **SKT 15GW AI DC 청사진 영문·해외 매체 확산 + 투자 ~1,000조원 규모 부각** -- **SKT AI DC 총 15GW 단계 구축(1단계 5GW -> 2035년 추가 10GW), 투자 약 1,000조원 규모 전망, '아시아 AI 인프라 허브' 표방 -- 영문매체(HPCwire/AIwire 7/6)·아시아경제(7/5) 확산**. SKT·LGU+ NVIDIA AI팩토리 2027 한국 첫 가동 후 GW급 확장. LGU+ 지엔씨에너지 전력 인프라 MOU(비상발전기 등). KT NVIDIA 미동맹 독자 유지 -- '15GW SKT·국내 최다 KT·수도권 최대 전력 LGU+' 3색 구도(6/30) 유지 [아시아경제 7/5, HPCwire/AIwire 7/6, 전자신문 7/4, Newspim 6/30, mediawatch]
+> 6. **3GPP Rel-21 마이그레이션 -- DT '스탠드얼론+MRSS면 충분' 단순화론 부상(9월 마드리드 RAN#113 결정) + 6G 7GHz 시험** -- 6월 RAN#112에서 결정 불가 -> **TSG RAN#113(마드리드 9/14~17) 이월 확정**. 후보 Standalone 6G/MRSS(Multi-RAT Spectrum Sharing)/NR<->6GR inter-RAT 모빌리티. **도이치텔레콤이 '업계는 standalone + MRSS 이상은 불필요할 수 있다'며 5G 다중옵션 복잡성 회피·단순화 주도(NGMN도 마이그레이션 단순화 촉구)**. Stage-3 freeze 2028.12 -> 첫 6G 프로토콜 작업 ~30개월. **6G 주파수: SoftBank+Nokia 도쿄 7GHz 옥외 시험(일본 최초), R&S+퀄컴 FR1(~2.5GHz)+FR3(~7GHz) 캐리어 어그리게이션 4x4 MIMO 시연** [6G Futures RAN#112, IEEE ComSoc 6/16, NGMN, RCR Wireless, Nokia Blog]
+>
+> **(이전 갱신 -- 7/4 핵심 요약, 참고용)**:
+>
 > **2026.07.04 핵심 변화 요약 (6/27 이후 델타)**:
 >
 > 1. **3GPP Rel-21 마이그레이션 결정 마드리드 RAN#113(9/14~17)로 최종 압축** -- 6/8 싱가포르에서 이월된 '5G->6G 마이그레이션 아키텍처'를 **2026.09 마드리드 TSG RAN#113(9/14~17)에서 확정**. 후보: **Standalone 6G / MRSS(Multi-RAT Spectrum Sharing) / NR-6GR inter-RAT mobility** + 추가로 **Option 1(6G-anchored dual connectivity with NR)·Option 3(dual stack, RAN-레벨 어그리게이션 없음)**. **RAN1이 9월(RAN#113)까지 예비 MRSS 성능평가 제출 공식 의무화** -- 제어채널 공유 오버헤드를 수용가능 수준으로 낮추면 'standalone+MRSS' 경로가 유력, 실패 시 DC/dual-stack 경합. LTE-NR DSS 교훈(오버헤드·스케줄링 충돌) 반영 [6G Futures RAN#112 분석, 6G RAN HOW, Ericsson MRSS Blog 2026.04, arxiv 2604.26853]

@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-04
-valid_until: 2026-08-03
+updated: 2026-07-11
+valid_until: 2026-08-10
 sector: capex
 confidence: high
 tags:
@@ -128,13 +128,33 @@ sources:
     Counterpoint,
     247WallSt,
     Sammy Fans,
+    삼성글로벌뉴스룸,
+    InsiderFinance,
+    digitaltoday,
+    fourweekmba,
+    globaldatacenterhub,
+    SCMP,
+    CryptoBriefing,
+    Forbes,
   ]
-last_synced_from_db: 2026-07-04
+last_synced_from_db: 2026-07-11
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-07-04 | 신뢰도: high | 유효: ~2026-08-03
+> 갱신일: 2026-07-11 | 신뢰도: high | 유효: ~2026-08-10
+
+---
+
+## ★ 주간 델타 (7/11) — 직전 갱신(7/4) 이후 변화
+
+- **삼성전자 Q2 2026 잠정(7/7)**: 매출 ~171조원, **영업이익 ~89.4조원(+약 19배 YoY**, Q2 2025 4.68조 대비). DS(반도체) 견인 — HBM+DRAM+NAND 가격 급등, HBM4 상용 출하 개시. 단 매출 일부 기대 하회로 주가 -6%. 확정 7/30 [삼성글로벌뉴스룸, InsiderFinance]
+- **SK하이닉스 나스닥 ADR 데뷔(7/10)**: 티커 SKHYV(7/14 SKHY), ADR $149·**$26.5B 조달** — 외국기업 사상 최대 미국 주식 발행(알리바바 $25B 초과). 첫날 **+13% $168.01**, 청약 7배. 조달금=신규 팹·장비(capex). 회장 "수요 막대". SKUU/SKDD 레버리지 ETF 7/13 예정 [CNBC, Yahoo Finance, Forbes]
+- **TSMC**: 5월 매출 NT$416.98B(+30.1%), Q2 가이던스 $39.0-40.2B(+10% QoQ), **2026 capex $52-56B '상단(~$56B)' 상향**. HPC 61%. Q2 실적 7/16 [SCMP, CryptoBriefing]
+- **Oracle DC 부채 2차시장 스트레스**: $14B+ Oracle 담보 DC 부채에 투자자 고금리 요구, **PIMCO 일부 매도** — 연속 가격형성 2차시장 부상. 'GPU 부채 트레드밀'(GPU 7년 vs 시설 20-30년) 구조 리스크. SPV $120B+ 지속 [globaldatacenterhub, Quinn Emanuel]
+- **전력장비**: 스위치기어 **2028까지 완판**, 변압기 3-5년 납기 지속. 2026 미국 DC 30-50% 지연 리스크. GE Vernova Q2 7/23 [Sandstone Group, Energy News Beat]
+- **DC 액체냉각 상향**: 2026 **$8.17B**(2025 $6.65B), CAGR 20.1%→2033 $29.46B. Direct-to-chip $3.33B→$17.31B(2032). Vertiv 1위(11.3%) [GrandViewResearch, MarketsandMarkets]
+- **하이퍼스케일러/GPU**: 2026 capex 컨센 $725B(4사)·일부 $750B 상향(CreditSights). NVIDIA(황) **AI capex 2030 $3-4T** 재확인. NVIDIA Q1 FY27 총매출 $81.6B(+85%), Q2 가이던스 $91B [Futurum, Motley Fool]
 
 ---
 
@@ -174,6 +194,7 @@ last_synced_from_db: 2026-07-04
 - **6월 CDS 전반 확대**: 6월 들어 하이퍼스케일러 부채 CDS 보험비용 전반 상승 — capex 실행 민감도 반영. **Oracle 스프레드 확대 두드러짐**(CoreWeave는 예외적 개선), Alphabet/Amazon/Microsoft는 소폭 확대 [Morgan Stanley, Mellon Investments]
 - **Oracle 신용 부담**: Oracle은 5사 중 유일하게 **2029까지 음의 FCF** — 추가 부채 여력 제한적. 현 수준 전부 상환에 **7.4년** 소요 추정 [Yahoo Finance, Mellon]
 - **Oracle 조달계획**: 2026년 **$45-50B 조달**($38B 부채 DC용 + $20B 주식). $18B 회사채 발행 + $56B 대출 추진. FY27(2026.06~)부터 자금 갭 — 추가 발행(징벌적 금리) 또는 빌드아웃 둔화 불가피 [Investing.com, SimpleVisor, ainvest]
+- **[7/11 신규] Oracle DC 부채 2차시장 스트레스**: 투자자들이 **$14B+ Oracle 담보 DC 부채**에 더 높은 금리 요구, **PIMCO가 보유분 일부 매도** — 만기보유가 아닌 연속 가격형성되는 2차 시장 부상(신용 스트레스 신호). **'GPU 부채 트레드밀'**: GPU 수명 ~7년 vs DC 시설 수명 20-30년 불일치가 구조적 리스크. 오프밸런스시트 SPV $120B+ 지속, CoreWeave $2.6B DDTL 마감(OpenAI 계약용) [globaldatacenterhub, Quinn Emanuel, DCD]
 
 ### Neocloud 순환 파이낸싱 (6/20 신규, 7/4 갱신)
 
@@ -252,6 +273,8 @@ Stargate ~10GW($500B), Abilene 8동 중 4동 건설·미가동·2.1GW 확장 철
 
 ### 삼성+SK하이닉스 합산 실적
 
+- **[7/11 신규] 삼성전자 Q2 2026 잠정(7/7)**: 매출 ~171조원, **영업이익 ~89.4조원(+약 19배 YoY**, Q2 2025 4.68조 대비). DS(반도체) 부문 견인 — HBM+DRAM+NAND 가격 급등. HBM4 상용 출하 개시. 단 매출 일부 기대 하회로 발표 후 주가 -6%(AI 지출 지속성 의문). 세그먼트 확정 7/30 [삼성글로벌뉴스룸, InsiderFinance, digitaltoday]
+- **[7/11 신규] SK하이닉스 나스닥 ADR 데뷔(7/10)**: 티커 SKHYV(7/14 SKHY 전환), ADR $149·**$26.5B 조달** — 외국기업 사상 최대 미국 주식 발행(2014 알리바바 $25B 초과). 첫날 **+13% $168.01**, 청약 7배 초과. 조달금 용도=신규 팹·장비 투자(capex 확대). 회장 "수요 막대". SKUU/SKDD 레버리지 ETF 7/13 예정 [CNBC, Yahoo Finance, Forbes]
 - **Q1 2026 합산 OP**: **91조원($61.8B)** — 양사 OPM **70%+**(NVIDIA/TSMC 초과) [BigGo Finance]
 - **2026 연간 합산 OP 전망**: **200조원+** [글로벌이코노믹]
 - **밸류에이션**: SK증권(5/7) — 삼성 50만원 / SK하이닉스 300만원 목표주가 [SK증권]
@@ -298,6 +321,7 @@ Stargate ~10GW($500B), Abilene 8동 중 4동 건설·미가동·2.1GW 확장 철
 - **NVIDIA 지배력**: AI가속기 ~70-75% 점유(2024 87%에서 하락). **Q1 FY27 DC매출 $75.2B(+92%, +21% QoQ)**. AMD MI350X 구조적 2nd 소스. **Broadcom XPU 폭발적 성장(AI $10.8B, +143%, Q3 $16B 가이던스, 부킹 $30B+)** [SiliconAnalysts, NVIDIA IR, Broadcom IR]
 - **장비 호황 확산**: SEMI 2026 전체 장비 $139B(기록), WFE $135.2B(+9%), 파운드리/로직 $69.3B(+15%). ASML(EUR36-40B 유지) + AMAT(CY2026 장비 +30%+). AI 메모리·어드밴스드패키징이 견인 [SEMI, ASML IR, Applied Materials IR]
 - **공급 제약 심화**: 반도체 리드타임 40주(2026.03), 메모리 IC·광부품 가장 심함. 2026 계획 AI DC 용량의 30-50%가 2028 이연 [Omdia, Accuris]
+- **[7/11 신규] TSMC Q2 2026**: 5월 매출 NT$416.98B(+30.1% YoY), Q2 가이던스 $39.0-40.2B(+10% QoQ). **2026 capex $52-56B '상단(~$56B)' 전망으로 상향**. HPC(AI+5G) 매출 비중 61%. Q2 실적 7/16, 6월 월매출 7/10 공개 [SCMP, CryptoBriefing]
 
 ---
 
@@ -397,6 +421,7 @@ Stargate ~10GW($500B), Abilene 8동 중 4동 건설·미가동·2.1GW 확장 철
 
 - **대형 변압기 납기**: **최대 4-5년**(표준 전력변압기 평균 128주, GSU 144주). 2020 이전 24-30개월 → 현재 최대 5년 [PV-Magazine, PowerMag]
 - **HV substation 납기**: **3-5년** — 최대 병목으로 부상 [PowerMag]
+- **[7/11 신규] 스위치기어 2028까지 완판**: 데이터센터용 스위치기어(switchgear)가 사실상 **2028년까지 완판**. 변압기 3-5년 납기 지속으로 2026 계획 미국 DC의 30-50%가 지연/취소 리스크. GE Vernova Q2 실적 7/23 예정 [Sandstone Group, Energy News Beat, chargeduppro]
 - **변압기·스위치기어·가스터빈 동시 부족**: 그리드 병목 가중. 글로벌 그리드 연결대기 **2,500GW+** 정체. GE Vernova 가스터빈 2030-31 완전 완판 [IEA, Energy News Beat, GE Vernova IR]
 - **가격 상승**: 2019 대비 전력변압기 **+77%**, GSU **+45%**, 배전변압기 최대 **+95%** [WoodMac]
 - **공급 부족**: WoodMac — 전력변압기 **30% 부족**, 배전변압기 **10% 부족** [WoodMac Q2]
@@ -426,6 +451,7 @@ Stargate ~10GW($500B), Abilene 8동 중 4동 건설·미가동·2.1GW 확장 철
 - Eaton Boyd Thermal 인수($11B)로 냉각 역량 강화. Ecolab-CoolIT 딜 등 냉각 M&A 가속 [Eaton IR, MarketWise]
 - **Arista 액체냉각 스위치 (6/20)**: 7060XE7-64PRS-RV3-L 2OU 액체냉각 플랫폼(224G SerDes). OFC 2026서 액체냉각 XPO 광모듈 프로토타입 데모 [Arista, Network World]
 - 시장 성장률 **CAGR 28.7%**(2026-2033) [GMInsights]
+- **[7/11 신규] 액체냉각 시장 규모 상향**: DC 액체냉각 2025 $6.65B→**2026 $8.17B**, CAGR 20.1%로 2033 $29.46B(GrandView). Direct-to-chip 2026 $3.33B→2032 $17.31B(CAGR 26.5%, 최고 성장). 액침냉각 CAGR 21.9-24.8%. **Vertiv 시장 1위(2025 점유 11.3%)**, CoolCenter Immersion 유럽·중동 출시(2025.11) [GrandViewResearch, MarketsandMarkets]
 
 ### DC 네트워킹 시장 (6/20 갱신)
 
