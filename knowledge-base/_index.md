@@ -1,13 +1,13 @@
 ---
-updated: 2026-07-05
+updated: 2026-07-12
 version: v3.22
 maintainer: wiki-linter (자동) + briefing-lead (수동)
-lint_last_run: 2026-07-05
-lint_last_post_fix: 2026-07-05
+lint_last_run: 2026-07-12
+lint_last_post_fix: 2026-07-12
 lint_mode: full
-lint_p0_count: 4
+lint_p0_count: 5
 lint_p1_count: 2
-lint_p2_count: 4
+lint_p2_count: 5
 ---
 
 # Knowledge Base Index — Wiki Master Index
@@ -21,49 +21,51 @@ lint_p2_count: 4
 ## P0 — 즉시 조치 필요 (FAILED / 만료)
 
 > wiki-linter가 탐지한 긴급 항목. 브리핑 실행 전 반드시 확인.
-> **최종 갱신: 2026-07-05 (wiki-linter full 점검 — agent maxTurns 7주 연속 패턴 + \_index.md 519KB 비대 고려, 메인 직접 전수 스캔 수행)**
+> **최종 갱신: 2026-07-12 (wiki-linter full 점검 — agent maxTurns 8주 연속 패턴 + \_index.md 516KB 비대 고려, 메인 직접 전수 스캔 수행)**
 
-⚠️ **P0 4건** — industry 18종 + portfolio/model_portfolios.md (valid_until 2026-06-08, 27일 경과) + market/prediction_markets.md (06-21 만료, 14일) + macro/science_tech.md (06-24 만료, 11일)
+⚠️ **P0 5건** — industry 18종 + portfolio/model_portfolios.md (valid_until 2026-06-08, 34일 경과) + market/prediction_markets.md (06-21 만료, 21일) + macro/science_tech.md (06-24 만료, 18일) + macro/us_monetary_policy.md (07-07 만료, 5일 — P1서 승격)
 
-| 파일                            | 만료일     | 경과일 | 권장 조치                                                                                                                                                                                 |
-| ------------------------------- | ---------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `industry/*.md` 18종            | 2026-06-08 | 27일   | kb-updater 재수집 위임. 7/8 FOMC 6월 의사록 전 처리 권장 (advanced_materials·capex·energy·quantum·science_tech·smr·space·telecom_next 8종은 7/4~5 주간 글로벌 갱신 완료·나머지 18종 잔존) |
-| `portfolio/model_portfolios.md` | 2026-06-08 | 27일   | /리밸런싱 또는 /주간리포트 시 갱신                                                                                                                                                        |
-| `market/prediction_markets.md`  | 2026-06-21 | 14일   | kb-updater 재수집 위임. confidence 필드 누락(collection_status=SUCCESS) + 7/8 FOMC 의사록 확률 반영                                                                                       |
-| `macro/science_tech.md`         | 2026-06-24 | 11일   | kb-updater 재수집 위임 (industry/science_tech는 7/5 갱신·macro/science_tech 누락 지속·6/28부터 이월)                                                                                      |
+| 파일                            | 만료일     | 경과일 | 권장 조치                                                                                                                                                                            |
+| ------------------------------- | ---------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `industry/*.md` 18종            | 2026-06-08 | 34일   | kb-updater 재수집 위임 (advanced_materials·capex·energy·quantum·science_tech·smr·space·telecom_next 8종은 7/11~12 주간 글로벌 갱신 완료·나머지 18종 잔존). 7/14 6월 CPI 전 처리 권장 |
+| `portfolio/model_portfolios.md` | 2026-06-08 | 34일   | /리밸런싱 또는 /주간리포트 시 갱신 (7/11 주간리포트서 stale 3주째 명시)                                                                                                              |
+| `market/prediction_markets.md`  | 2026-06-21 | 21일   | kb-updater 재수집 위임. confidence 필드 누락(collection_status=SUCCESS) + 7/14 CPI·7/16 BOK 확률 반영                                                                                |
+| `macro/science_tech.md`         | 2026-06-24 | 18일   | kb-updater 재수집 위임 (industry/science_tech는 7/12 갱신·macro/science_tech 누락 지속·6/28부터 4주 이월)                                                                            |
+| `macro/us_monetary_policy.md`   | 2026-07-07 | 5일    | kb-updater 재수집 위임 (updated 06-07 35일·7/8 FOMC 6월 의사록 지났으나 미반영·P1서 만료 승격)                                                                                       |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 27일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-10, 7/9 모닝 갱신 — 7/8 미국 정규장 혼조 마감·FOMC 6월 의사록 공개·이란 2차공습 반영)·weekend_watch_20260705(vu 07-06)는 7/5~7/9 순차 모닝 갱신 완료. surprise_index(vu 07-08)는 7/4 이브닝 6월 NFP 쇼크(+57K) 반영 갱신. auto-trigger 마커 0건 + 일요일 미국장 휴장(7/6 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
+> **브리핑 진행 가능 여부:** industry KB 만료 34일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-13, 7/12 이브닝 20:04 갱신 — 7/10 금요일 확정 마감·SK하이닉스 나스닥 ADR 흥행·VIX 15.84 리스크온 반영)·correlation_matrix(vu 07-13, 7/11 이브닝 갱신)·economic_calendar(vu 07-15)는 7/11~12 브리핑 순차 갱신. auto-trigger 마커 0건 + 일요일 미국장 휴장(7/13 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
 
-> [해소 참조 2026-07-05] `market/daily_snapshot`·`economic_calendar`·`surprise_index` 등 market/ KB는 7/3~~7/5 브리핑에서 갱신 완료로 P0/P1 제외. 6/12~~7/2 daily_snapshot 해소 이력(9행)은 파일 신선도 회복으로 아카이브 처리(비대 완화). `macro/us_monetary_policy`는 6/7 재수집분(vu 07-07 D+2) → P1 승격 관찰.
+> [해소 참조 2026-07-12] `market/daily_snapshot`(7/12 이브닝)·`correlation_matrix`(7/11 이브닝)·`economic_calendar`(7/11)·`surprise_index` 등 market/ KB는 7/10~12 브리핑에서 갱신 완료로 P0 제외. 7/5 P0였던 `macro/us_monetary_policy`(vu 07-07)는 만료 경과로 P0 승격.
 
 ---
 
-## P1 — 이번 주 조치 (탐지: 2026-07-05 full)
+## P1 — 이번 주 조치 (탐지: 2026-07-12 full)
 
 > wiki-linter P1 탐지 결과. 브리핑 실행 가능하나 이번 주 내 처리 권장.
 
-| 파일                           | 문제                                               | 심각도 | 권장 조치                                                      |
-| ------------------------------ | -------------------------------------------------- | ------ | -------------------------------------------------------------- |
-| `macro/us_monetary_policy.md`  | valid_until 2026-07-07 (D+2), updated 06-07 (28일) | 중간   | kb-updater 재수집 위임 (7/8 FOMC 6월 의사록 전 갱신 권장)      |
-| `market/correlation_matrix.md` | valid_until 2026-07-06 (D+1), updated 07-04        | 낮음   | 7/6 개장 후 이브닝 correlation-monitor 자동 갱신 (강제 불필요) |
+| 파일                           | 문제                                        | 심각도 | 권장 조치                                                       |
+| ------------------------------ | ------------------------------------------- | ------ | --------------------------------------------------------------- |
+| `market/correlation_matrix.md` | valid_until 2026-07-13 (D+1), updated 07-11 | 낮음   | 7/13 개장 후 이브닝 correlation-monitor 자동 갱신 (강제 불필요) |
+| `market/economic_calendar.md`  | valid_until 2026-07-15 (D+3), updated 07-11 | 낮음   | 다음 모닝/이브닝 market-data-collector 자동 갱신 (강제 불필요)  |
 
-> [해소 참조 2026-07-05] surprise_index(vu 07-08)·daily_snapshot(vu 07-06, 7/5 갱신)·economic_calendar(vu 07-07)는 7/3~5 브리핑 갱신 완료로 P1 제외. macro/science_tech(vu 06-24)는 만료 → P0 유지.
-> [해소 참조 2026-06-28] 직전 P1(correlation_matrix·surprise_index) 회전 — surprise_index는 7/4 NFP 반영 갱신 완료.
+> [해소 참조 2026-07-12] daily_snapshot(vu 07-13, 7/12 이브닝 갱신)·surprise_index는 7/10~~12 브리핑 갱신 완료로 P1 제외. macro/us_monetary_policy(vu 07-07)는 만료 경과 → P0 승격.
+> [해소 참조 2026-07-05] surprise_index(vu 07-08)·daily_snapshot(vu 07-06, 7/5 갱신)·economic_calendar(vu 07-07)는 7/3~~5 브리핑 갱신 완료로 P1 제외.
 
 ---
 
-## P2 — 모니터링 (탐지: 2026-07-05 full)
+## P2 — 모니터링 (탐지: 2026-07-12 full)
 
 > 30일+ 미갱신 또는 구조 점검 항목. 즉시 조치 불필요, 추세 관찰만.
 
-| 파일                               | 문제                                                                                                                                                                                | 권장 조치                                                                |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `portfolio/rebalancing_history.md` | updated 2026-04-14 **82일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                            | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)                            |
-| 루트 레거시 KB 4종                 | `us_monetary_policy`·`geopolitics`·`korea_economy`·`global_risk_factors` (루트) 전부 redirect stub 확인(sources:[redirect]) — macro/ SSOT 일원화 완료. 교차참조 맵만 루트 경로 잔존 | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후)               |
-| analysis/ 파일                     | 2,139개 파일, 가장 오래된 파일 5/5(61일, 90일 미도달) → 삭제 불필요                                                                                                                 | scorecard 70점+ 확인 후 아카이브 검토 (현재 불필요)                      |
-| `_index.md` 비대 (519KB/662행)     | 6/28 432KB→519KB 증가 지속. "최근 7일 인사이트" 테이블에 30일+ 경과 행 다수 잔존 → 목적(에이전트가 1파일만 읽기) 대비 과대. agent maxTurns 원인 추정                                | 30일+ 경과 인사이트 행을 별도 아카이브 파일로 분리 검토 (사용자 확인 후) |
+| 파일                                     | 문제                                                                                                                                                                                    | 권장 조치                                                                 |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `portfolio/rebalancing_history.md`       | updated 2026-04-14 **89일 미갱신** (valid_until 2026-12-31). 이벤트성 파일이나 장기 정체                                                                                                | 다음 리밸런싱 실행 시 자동 갱신 (강제 불필요)                             |
+| 루트 레거시 KB 4종                       | `us_monetary_policy`·`geopolitics`·`korea_economy`·`global_risk_factors` (루트) 전부 redirect stub 확인(sources:[redirect]) — macro/ SSOT 일원화 완료. 교차참조 맵만 루트 경로 잔존     | 교차참조 맵을 `macro/` 경로로 일원화 검토 (사용자 확인 후)                |
+| `knowledge-db/2026_daily_prices.md` 정체 | 7/6 이후 6일째 신규 append 없음(mtime 7/6 20:13·최근 일자 7/6). correlation_matrix 90D Pearson 재계산 불가 → EWM 근사로 대체 중(계산 노트 명시). market-data-collector 원본 시계열 누락 | 다음 이브닝 브리핑서 market-data-collector 7/10 확정치 append (자동 회복) |
+| analysis/ 파일                           | 3,455개 파일, 가장 오래된 파일 5/5(68일, 90일 미도달) → 삭제 불필요                                                                                                                     | scorecard 70점+ 확인 후 아카이브 검토 (현재 불필요)                       |
+| `_index.md` 비대 (516KB/663행)           | 519KB→516KB 미세 감소나 여전히 과대. "최근 7일 인사이트" 테이블에 30일+ 경과 행(6/6~) 다수 잔존 → 목적(에이전트가 1파일만 읽기) 대비 과대. agent maxTurns 8주 연속 원인 추정            | 30일+ 경과 인사이트 행을 별도 아카이브 파일로 분리 검토 (사용자 확인 후)  |
 
-> **관찰(orphan):** `market/weekend_watch_20260704.md`는 `_20260705.md`로 대체됨(양쪽 valid_until 2026-07-06). 7/6 개장 후 자연 만료 — 조치 불필요.
+> **관찰(orphan):** `market/weekend_watch_20260704.md`·`_20260705.md` 둘 다 valid_until 2026-07-06 자연 만료(6일 경과)·신규 주말 파일 미생성. 다음 주말 브리핑 시 대체 생성 예상 — 오래 잔존 시 아카이브 검토(사용자 확인 후).
 
 ---
 
@@ -621,11 +623,11 @@ SUPPLY_CHAIN_PLACEHOLDER
 | 2026-06-27 | `industry/quantum.md` | **양자 주간섹션 갱신(7회 검색, +6 DB 레코드)** -- 주간 최대 이벤트=**트럼프 양자 행정명령 2건(06-22)**: ① **EO 14413** 'Ushering in the Next Frontier of Quantum Innovation'(QC-ADDS DOE 양자컴 이니셔티브, DOE 90일내 기술사양·180일내 민관파트너십, **국방장관에 2028-09-30까지 차세대 양자센서 3건+ 필드 명령**) ② **EO 14412** 'Securing the Nation Against Advanced Cryptographic Attacks'(PQC 가속). Federal Register Vol91 No121(06-25). **PQC 연방 데드라인 법제화: 키확립 2030-12-31·디지털서명 2031-12-31·계약자 FIPS 2030말·상무부 파일럿 2027말·4개월내 마이그레이션 계획**(NSM-10→행정명령 구속력 격상). 후속 **DOE Quantum Genesis(06-23)**: 세계최초 과학용 **FTQC 2028 배치(논리큐빗 low hundreds)**·DOE Q Competition+National Quantum Supercomputing User Facility. 양자주 EO 단기 랠리→**06-25 Motley Fool 내부자 2년 순매도 $857M 경고**(IonQ $454.1M·DWave $331.1M·Rigetti $71.5M, 매수 전무)로 차익실현: **IONQ $49.31(시총$19B)·RGTI $18.38(시총$6.1B 월간-20.67%)·QBTS $22.76**(06-25). QKD/FTQC 신규 1차 이벤트는 EO/Genesis 외 부재 | +6 |
 | 2026-06-13 | `industry/advanced_materials.md` | **첨단소재 5개 서브섹터 deep 갱신(20회 검색, +21 DB 레코드)** -- **희토류**: NdPr alloy $109.55/kg(6/1, 5월 벤치마크 $126.16서 **-13.2%**)·Nd metal $121.95(-2.3%)·**NdPr 2년 연속 공급적자**. **중희토 역외 5배+ 강세**(Dy oxide ex-China >$1,000/kg·Tb oxide ex-China >$4,500/kg). **신규: 펜타곤 NdPr $110/kg floor(MP·Lynas 공통)**. **MP** Q1 NdPr 1,006MT·Magnetics +306% YoY·텍사스 1,000t/y 자석공장 2026 commissioning·10x 공장 연내 착공/2028초. **Lynas** CEO Lacaze 6월말 사임+텍사스 Seadrift 좌초 확정→말레이시아 집중·DoD 자금 재배분. 중국 유예 종료 2026.11.10 최대 변수. **전고체**: QuantumScape Cobra 베이스라인 통합(Raptor 대비 **25배 빠른 열처리**)·QSE-5 B1 출하·2026 VW PowerCo 필드테스트. CATL 황화물 60-Ah 자동차급(500Wh/kg). 7개사 $100억+/고객차량 셀 0건·2027 마일스톤. **전력반도체**: Wolfspeed FQ3 $150M(**-28% 미스**)·EPS -$3.26·주가 +18~~22% AI랠리(Citrini)·부채 70%↓. **Navitas** NVIDIA MGX 800VDC(5/29~~6/3)·800V→6V PDB(48V IBC 제거)·COMPUTEX 2026 시연. Infineon/onsemi PCIM 2026 풀포트폴리오. **800VDC**: **Vertiv 포트폴리오 2H 2026 출시(Kyber·Rubin Ultra 선행)·실수요 변곡은 2027(a 2027 thing)** — 현 합류는 선제 포지셔닝. 하이퍼스케일 190GW(777개). **공급망**: Toray surcharge 지속(호르무즈)·Syensqo 5년 계약. CATL Na-ion 2Q 승용차 탑재 시작·9GWh(+150%)→4년내 1,000GWh+·2세대 $70/kWh. 리튬 ¥170K+/t(Q1 스팟 +95%)·짐바브웨 2027 정광 수출금지. 한국 소부장 전략품목 137개(희토류 편입) | +21 |
 | 2026-06-13 | `industry/capex.md` | **CapEx 트래커 주간 갱신(15회 검색, +12 DB 레코드)** -- **Oracle Q4 FY26 6/10 확정**: 매출 $19.2B(+21%)·OCI $5.8B(+93%)·**RPO $638B(+363%)**·**FY26 CapEx $55.7B(+162%)**·**FCF -$23.7B**·FY27 매출 $90B(+34%)/net cash CapEx $70B 계획→추가 자금조달 $40B(부채+주식) 우려로 주가↓. 하이퍼스케일러 5사 **~$750B(+67%, 1월 $620B↑)**·4사 $725B·5사 누적차입 **$137.5B+**(2024말 이후). **SEMI 2026 장비 $139B(기록)/WFE $135.2B(+9%)/파운드리·로직 $69.3B(+15%, GAA)**. Broadcom AI 부킹 **$30B+**·Q3 총매출 $29.4B(+84%). NVIDIA ~~70-75% AI가속기(2024 87%↓)·AMD MI350 HBM3E 288GB. **GE Vernova 신규 추가**: Q1 주문 $18.3B(+71% 유기)/DC 전기장비 $2.4B(2025 연간 초과). 변압기 북미 신규공장 Hitachi $457M/Siemens $150M/Eaton $340M(2027-28 가동). Stargate **~7GW**(10GW 목표, $500B)/Abilene 1GW 2026.07 가동→1GW+급 DC 시대 | +12 |
-| 2026-06-07 | `industry/energy.md` | **에너지 갱신(13회 검색, 교차검증 다수, +25 DB 레코드)** -- **이란 60일MOU 여전히 미서명**(이스라엘 레바논 작전이 걸림돌, 충돌 지속, 이란 쿠웨이트向 미사일+호르무즈向 드론, UBS '단기 통항개선 증거 거의 없음', CNBC 6/5). 유가 소폭반등 **Brent ~~$94.66/WTI ~$91~~92**, 향후 2개월 **$90~100 박스권**. **중국 원유수입 10년 최저**(사우디向 6월말 333Kbpd). OPEC+ **6/7 66차 JMMC=41차 장관회의**(사우디 쿼터 10.291 vs 4월 실제 6.879Mbpd, 3월 컴플 갭 9Mbpd 역대최악). **JKM mid-$18s/HH ~$3.05/TTF ~$16**. **Ras Laffan 77->64Mtpa**(S4/S6 12.8Mtpa 수리 3~~5년), Golden Pass Train1 가동. **DC전력 GS 31->41->66GW**(76GW 추정 정정)+**PJM 용량 $329.17/MW-day**. IEA **태양광 +27%/풍력 +19%(2026)**. **우라늄 현물 $85~~87/장기 $90(2008래 최고)**, **SMR 시장 $6.9B->$13.8B(2032)**, **Meta 원자력 7.8GW**. 두산에너빌리티 **~105,600원**(TP 15.2만, 2026 OP 1.3조). S-Oil **2026 OP 3.2조 전망**. GS 2026 Brent $85/JPM $60/EIA 4Q26 $89 | +25 |
+| 2026-06-07 | `industry/energy.md` | **에너지 갱신(13회 검색, 교차검증 다수, +25 DB 레코드)** -- **이란 60일MOU 여전히 미서명**(이스라엘 레바논 작전이 걸림돌, 충돌 지속, 이란 쿠웨이트向 미사일+호르무즈向 드론, UBS '단기 통항개선 증거 거의 없음', CNBC 6/5). 유가 소폭반등 **Brent ~~$94.66/WTI ~~$91~~92**, 향후 2개월 **$90~~100 박스권**. **중국 원유수입 10년 최저**(사우디向 6월말 333Kbpd). OPEC+ **6/7 66차 JMMC=41차 장관회의**(사우디 쿼터 10.291 vs 4월 실제 6.879Mbpd, 3월 컴플 갭 9Mbpd 역대최악). **JKM mid-$18s/HH ~$3.05/TTF ~$16**. **Ras Laffan 77->64Mtpa**(S4/S6 12.8Mtpa 수리 3~~5년), Golden Pass Train1 가동. **DC전력 GS 31->41->66GW**(76GW 추정 정정)+**PJM 용량 $329.17/MW-day**. IEA **태양광 +27%/풍력 +19%(2026)**. **우라늄 현물 $85~~87/장기 $90(2008래 최고)**, **SMR 시장 $6.9B->$13.8B(2032)**, **Meta 원자력 7.8GW**. 두산에너빌리티 **~105,600원**(TP 15.2만, 2026 OP 1.3조). S-Oil **2026 OP 3.2조 전망**. GS 2026 Brent $85/JPM $60/EIA 4Q26 $89 | +25 |
 | 2026-05-31 | `industry/energy.md` | **에너지 갱신(15회 검색, 교차검증 11건, +21 DB 레코드)** -- **이란 60일MOU Trump 서명 대기**(5/25 일요일 발표 불발, 양국 공식논평 없음, WaPo/AlJazeera 5/29): 호르무즈 무제한통항+30일내 기뢰제거+석유 자유판매+제재면제, HEU는 60일창 내 협상. 유가 추가급락 **Brent $92.56(5월-19%, 2020.3 이후 최악)**, **WTI $87.36(-17%)**. OPEC+ **6월 188Kbpd 확정**(6/7 JMMC 모니터링, 주요결정 아님). base case **Brent $78~85**. Henry Hub **$3.29(+11%)**, JKM **high-$18s~19s**, TTF **$16.5**. Golden Pass **Train2 2026 연말(ExxonCEO)**, QatarEnergy 12.6Mtpa로 Ras Laffan 손실 상쇄. NuScale **$13 미만(6M-33%)**, Oklo **-22%**. 미국 DC전력 **~76GW(2026)**. 두산에너빌리티 **~94,810원(TP컨센 15.2만, 연말잔고 31조)**. 한전 **~44,700원, BofA 매수->중립(TP 70K->47K)**. IEA **태양광 투자 $365B(2026)**+2025-2030 전망 -5% 하향. 중간유분 crack 사상최고($290+) | +21 |
 | 2026-05-31 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(11회 검색, +11 DB 레코드)** -- **신규 1위: 시장 complacency/VIX 디스커넥트** -- VIX **15.32(1월래 최저)** vs 개별주 변동성 1년최고, VIXEQ-VIX 스프레드 2023.01래 최대(CNBC '기록적 디스커넥트' 5/29). **신규 2위: 사모신용 시스템 균열** -- FSB 보고서(5/6) AUM $1.7~~2.0조+차주 40% 음의FCF+Fitch 디폴트 9.2%(역대최고). **미 부채 $39조 GDP 초과**(2차대전래 최초)+IMF '재정조정 창 협소' 경고. **미 30Y 4.99%/10Y 4.45%(FRED 5/28)/일본 30Y 3.97%**(캐리청산·1Q 미국채 $300억 매도). **Q1 PCE 4.5% 연율화**. **6/16~17 첫 Warsh FOMC 인상확률 ~35%**. **이란 합의 미서명**(트럼프 숙고). Dow **51,032(51K돌파)**/S&P **7,580**/NASDAQ **26,973** 사상최고 vs Gold **$4,541 신고가**/BTC **$73,105**(IBIT $223M유출). DXY **98.97(99붕괴)** | +11 |
 | 2026-05-31 | `macro/geopolitics.md` (SSOT) | **지정학 주간 갱신(15회 검색, +14 DB 레코드)** -- **이란 5/28 잠정합의(tentative agreement)**: 60일휴전+호르무즈무제한통항(통행료·괴롭힘無)+이란30일내기뢰제거+원유자유판매+제재면제+핵무기불추구. **트럼프 최종승인만 남음**(JD Vance '시점불확실'/이란'워싱턴방해'비난). **WTI $87.36/Brent $91.12(5/29)** 추가하락. **Section122 5/7 CIT 위법판결**(IEEPA이어 2번째 사법무효화·항소). Bessent 'truce연장비긴급+중국301복원수용전망'·시진핑9월방미. **대만 $14B 무기패키지 중단 후폭풍**(초당파상원의원서한+CFR비판)+둥사CCG진입(6회째). **북한 5/26 8번째 신형무기시험**(전술순항미사일+화성-11D, 전방장사정포여단배치). **인도-파키스탄 군비경쟁가속**(국방예산+15.2%/+13.5%·임계점하락). **NATO 앙카라 7/7~8 준비**(유럽방위비$574B+20%). 러-우 협상교착(이란전쟁여파)+EU€90억차관 의회통과(5/28). 종합리스크 4/5 유지 | +14 |
-| 2026-05-30 | `macro/supply_chain.md` (SSOT) | **공급망 주간 갱신(28회 검색, +12 DB 레코드)** -- WCI **$2,800(5/28, +3%WoW 4주연속, Rotterdam $2,861/Genoa $4,253)**. **BDI 3,226(5/28)/3,224(5/29) 월간+20% §1-1b 신규**(Capesize 5,517 일수익$46,538). **이란 5/28 잠정합의(60일휴전+호르무즈무톨재개방+기뢰제거30일+원유자유판매) but Trump 미서명**(5/29 Situation Room 결정미발표/Vance 미도달/이란 주권분쟁). **Brent $91.2~~91.7(5월-17% 2020래 최대 월간낙폭)/WTI $87.4**. 구리 **$6.36(5/29) 월+7.3%/YoY+36%, 사상최고 $6.71 인트라데이(5/13)**. 희토류 **Dy 중국내$122~~125/FOB$292·Tb$892~901/FOB$1,140, 베이징 정상회담 후 4월규제 미해제**. **DRAM Q2+58~63%/NAND+70~75% Q3~Q4피크, Goldman 수급갭4.9% 15년래최악**. HBM **SK70%(UBS)/삼성6월풀공급/TrendForce비트 SK50%삼성28%**. LNG **JKM$18.24(5/27)/TTF€50.08**, 요소 **WB+60%전망**. **§6-1 제조PMI 신규(S&P 5월55.3 2022.05래최강, 납기 2022.08래최대장기화)**. Section122 **CIT무효→CAFC정지(징수지속)/Section301 16+60개국**. 시나리오 **Bull30%↑/Bear25%** | +12 |
+| 2026-05-30 | `macro/supply_chain.md` (SSOT) | **공급망 주간 갱신(28회 검색, +12 DB 레코드)** -- WCI **$2,800(5/28, +3%WoW 4주연속, Rotterdam $2,861/Genoa $4,253)**. **BDI 3,226(5/28)/3,224(5/29) 월간+20% §1-1b 신규**(Capesize 5,517 일수익$46,538). **이란 5/28 잠정합의(60일휴전+호르무즈무톨재개방+기뢰제거30일+원유자유판매) but Trump 미서명**(5/29 Situation Room 결정미발표/Vance 미도달/이란 주권분쟁). **Brent $91.2~~91.7(5월-17% 2020래 최대 월간낙폭)/WTI $87.4**. 구리 **$6.36(5/29) 월+7.3%/YoY+36%, 사상최고 $6.71 인트라데이(5/13)**. 희토류 **Dy 중국내$122~~125/FOB$292·Tb$892~901/FOB$1,140, 베이징 정상회담 후 4월규제 미해제**. **DRAM Q2+58~~63%/NAND+70~~75% Q3~Q4피크, Goldman 수급갭4.9% 15년래최악**. HBM **SK70%(UBS)/삼성6월풀공급/TrendForce비트 SK50%삼성28%**. LNG **JKM$18.24(5/27)/TTF€50.08**, 요소 **WB+60%전망**. **§6-1 제조PMI 신규(S&P 5월55.3 2022.05래최강, 납기 2022.08래최대장기화)**. Section122 **CIT무효→CAFC정지(징수지속)/Section301 16+60개국**. 시나리오 **Bull30%↑/Bear25%** | +12 |
 | 2026-05-30 | `macro/korea_economy.md` (SSOT) | **한국경제 주간 갱신(16회 검색, +12 DB 레코드)** -- 5/28 금통위 **2.50% 8연속 동결**+인상 소수의견 **2명(유상대·장용성)**+점도표 6개월내 **3.0% 다수(10/21표)→인상 기조 공식화**. BOK 수정전망 **2026E GDP 2.0→2.6%**(5년만 최대폭)·**CPI 2.2→2.7%**(8월 정점). **KOSPI 5/29 8,476.15 사상최고 종가**(5/22 7,847 대비 +8%). 원/달러 **1,506원**(5/29). 외국인 14거래일 약 50조 순매도→5/29 막판 순매수 전환. **4월 경상수지 $5.7B로 급감**(배당 본원소득 적자전환) | +12 |
 | 2026-05-25 | `macro/supply_chain.md` (SSOT) | **공급망 주간 갱신(16회 검색, +17 DB 레코드)** -- 이란MOU **합의임박(5/24, 60일휴전+호르무즈재개방+핵모라토리엄 12~15년)**. Brent **$98~103(주간-5%+)**/WTI **$92~96(주간-8%+)**. WCI **$2,712(+6%WoW 3주연속)**. PGSA **5/18 정식운영+통제구역지도**. 수에즈 **-70%(악화)**. 구리 **$6.64 사상최고(05/13)+페루전력위기**. 희토류 **Dy+105%YTD/이트륨-83%급감/5/20 중국"합법적조치"**. 요소 **$502(-27%MoM)**. TSMC **N2 50K→140K/월**. HBM4 **SK70%(UBS)/삼성6월풀공급**. 항공 **BAI-4.9%WoW(YoY+30%)**. Section122 **CIT무효→CAFC정지→CIT stay거부**. 시나리오 **Bull25%↑↑/Bear25%↓↓** | +17 |
 | 2026-05-25 | `macro/korea_economy.md` (SSOT) | **한국경제 주간 갱신(15회 검색, +19 DB 레코드)** -- 5월1~20일수출 **$52.65B(+64.8% 5월역대최대)**. 반도체 **$21.95B(+202.1% 비중41.7%)**. 원/달러 **1,520원(5/22 고착)**. 외국인 **12거래일 46.57조 순매도**. 5/28금통위 **매파적동결+점도표 중간값2.75%**. PPI **4월+2.5%MoM(1998래최고)**. CPI **5월3%접근**. 금리인상 **Citi 연말3.00%/2027 3.50%**. KB증권 **KOSPI연말10,500 대폭상향**. KOSPI 5/21 **+8.42%폭등(NVIDIA실적)**. 2차전지 탄산리튬 **+112%YoY**. 반도체의존도 **41.7~46.3%** | +19 |
