@@ -1,17 +1,18 @@
 ---
-updated: 2026-07-11
-valid_until: 2026-07-13
+updated: 2026-07-13
+valid_until: 2026-07-14
 file: correlation_matrix
 category: market
-confidence: medium
-calculation_source: "7/11(토) 이브닝 full 에디션 — 7/10(금) ET 정규장 확정 종가로 재계산. 미국 3대지수 동반 상승 마감(S&P +0.42%, NASDAQ +0.29%, Dow +0.29%) + VIX 15.84(-6.3%) 급락 — 이번 주 반도체 셀오프→검은 수요일→반등 롤러코스터가 리스크온으로 진정. SK하이닉스 나스닥 ADR 상장 흥행(+13%)이 훈풍 이어감. 10Y는 4.54%(-2bp)로 2거래일 연속 하락. 한국은 7/10 매수 사이드카(KOSPI +2.52%, KOSDAQ +6.26%) 발동 후 토요일(7/11) 휴장으로 마감치 이월."
-calculation_method: "6쌍 전부 7/10 ET/KST 확정 1건 EWM 근사 반영(alpha≈1/49). S&P +0.42%(7/10 확정)+10Y -2bp 하락 역방향(정상 방향, 음의 상관 부합) cross로 r 0.100→0.088, Z +2.80σ→+2.75σ(이상권 소폭 정상화, ★순위 2위 유지). NASDAQ +0.29%(7/10 확정)+BTC +0.94%(7/9$63,207→7/10저녁$63,803 근사) 동방향(정상 방향, 양의 상관 부합) cross로 r 0.339→0.344, Z -2.61σ→-2.56σ(이상권 내 3일 연속 개선, ★순위 3위 유지). USD/KRW +0.08%(1,504.93→1,506.10, 사실상 보합)+KOSPI +2.52%(매수 사이드카 확정) 약한 비정상 방향 cross(원화 변동 미미해 신호 강도 약함)로 r -0.729→-0.727, Z +0.27σ→+0.28σ(사실상 변화 없음). Gold +1.83%($4,030→$4,103.69)+DXY -0.17%(101.07→~100.9) 역방향(정상 방향, 음의 상관 부합) cross로 r -0.723→-0.733, Z +0.43σ→+0.38σ(정상화). VIX -6.3%(16.90→15.84 확정)+S&P +0.42% 역방향(정상 방향, 강한 음의 상관 이론과 부합) cross로 r -0.232→-0.282, Z +3.77σ→+3.43σ(★1순위 유지하나 4주+ 이어진 이상 신호의 첫 뚜렷한 정상화 진행). WTI -2.7%대(~$73→~$71, 하락 전환)+BEI 신규 확정치 없음(2.23% 7/1 이월 유지)로 보수적 소폭 조정만 반영, r 0.524→0.521, Z +0.23σ→+0.22σ(미세 조정). z=(r-mu)/sigma 산식 6쌍 전부 재확인. 90D: N/A(데이터 sparse — knowledge-db/market/2026_daily_prices.md 실제 일자별 기록이 7/6 이후 신규 append 없음(market-data-collector 미갱신 확인) — 정식 Pearson 재계산 불가, daily_snapshot.md 기반 EWM 근사 방법론 유지). 오차 ±0.05~0.10σ."
-data_cutoff_note: "7/11(토) KST 오전(09:11 daily_snapshot.md 갱신) 기준 — 미국 6쌍 관련 값은 7/10(금) 정규장 확정 종가(S&P 7,575.39/+0.42%, NASDAQ 26,281.61/+0.29%, Dow 52,637.01/+0.29%, VIX 15.84/-6.3%, 10Y 4.54%/-2bp)로 갱신 완료(전회차 7/9 확정치를 대체). 한국은 7/10 15:30 정규장 마감 확정(KOSPI 7,475.94/+2.52%, KOSDAQ 843.68/+6.26%, 매수 사이드카 발동) — 7/11(토)·7/12(일) 한국·미국 모두 휴장으로 이 마감치가 다음 실질 갱신(7/13 월)까지 유지된다. BEI(10Y BEI, T10YIE)는 신규 FRED 갱신 없음 — 2.23%(7/1 확정) 이월."
+confidence: medium (데이터 갱신 지연 3일차 — 6쌍 전부 신규 확정 크로스 없음, 하향 검토 대상)
+calculation_source: "7/13(월) 이브닝 full 에디션(20:00 KST) — ⚠️ 신규 확정 크로스 없음. 미국 정규장은 아직 개장 전(다음 개장 22:30 KST = ET 09:30)이라 S&P500·NASDAQ·VIX·10Y·DXY 모두 7/10(금) 확정 종가가 최신치로 유지된다. 한국은 오늘(7/13, 월) 15:30 KST 정규장이 실제로 마감됐으나 market-data-collector가 아직 KOSPI/USD-KRW 신규 확정치를 daily_snapshot.md·2026_daily_prices.md에 append하지 않아 로컬 KB상 확인 불가 — 7/10 확정치(매수 사이드카 마감)를 그대로 이월한다. 주말(7/11~12) 사이 이란-미국 확전이 급격히 심화(IRGC 호르무즈 해협 재봉쇄 선언, 미군 이란 목표물 약 140여곳 추가타격, 걸프국 5개국 피습 확산)됐고 WTI·Brent가 주간 기준 +6%/+7% 급등했으나, 이는 전자거래/주말 실시간가일 뿐 정규장 확정 종가가 아니라 공식 Pearson 크로스에는 반영하지 않는다(N/A/직전값 유지 원칙, 규칙 #9)."
+calculation_method: "6쌍 전부 신규 페어 크로스 성립 불가 — 7/11 회차 값을 그대로 이월(r·Z 변동 없음). 사유: ① S&P500↔10Y·VIX↔S&P500 — 양 다리 모두 7/10 확정 종가에서 변화 없음(미국 정규장 미개장). ② NASDAQ↔BTC — NASDAQ 다리 신규치 없음. BTC만 주말~월요일 아침 소폭 추가 반등($63,834.54→~$64,000, +0.26%)했으나 짝을 이루는 NASDAQ 값이 없어 공식 크로스 불가, 정보성 참고로만 기재. ③ USD/KRW↔KOSPI — 금일 실제 정규장 마감이 있었으나 로컬 KB 미반영(데이터 갭), 7/10 확정치 이월. ④ Gold↔DXY — Gold는 주말 실시간가 소폭 상승($4,121.05→$4,122~4,138, +0.3%대)했으나 DXY는 7/10 종가(100.97) 그대로 유지·신규치 없어 짝 크로스 불가. ⑤ WTI↔BEI — WTI 주말 전자거래 레인지($70.77~73.16)가 7/10 확정 종가($71.51)를 중심으로 등락(순변화 미미), BEI는 2.23%(7/1 확정) 이후 12일째 미갱신 지속(그 자체로 데이터 품질 이슈로 별도 플래그). z=(r-mu)/sigma 산식 파라미터 불변. 90D: N/A(기존과 동일 사유 — knowledge-db/market/2026_daily_prices.md sparse). 참고(비공식): knowledge-base/market/regime.json(로컬 자동갱신 스크립트, 10:30 KST)이 VIX=15.0(5일 변화 -1.1)·10Y=4.57%(20일 변화 +3bp)를 표시하나 FRED/daily_snapshot 확정치(VIX 15.84, 10Y 4.54~4.56%)와 벤더 간 괴리(VIX -0.84pt)가 있어 공식 r/Z 재계산에는 사용하지 않음 — 다음 회차에서 market-data-collector 갱신본과 교차검증 필요."
+data_cutoff_note: "7/13(월) 20:00 KST 작성 기준 — 미국 6쌍 관련 값은 여전히 7/10(금) 정규장 확정 종가(S&P 7,575.39/+0.42%, NASDAQ 26,281.61/+0.29%, Dow 52,637.01/+0.29%, VIX 15.84/-6.3%, 10Y 4.56%/4.54%[FRED])다. 다음 미국 정규장 개장은 7/13 22:30 KST(이 리포트 작성 시점 이후) — 이번 회차에는 반영 불가. 한국은 7/10 15:30 정규장 마감(KOSPI 7,475.94/+2.52%, KOSDAQ 843.68/+6.26%, 매수 사이드카 발동)이 로컬 KB상 최신치이나, 실제로는 오늘(7/13) 한국 정규장이 정상 개장·마감했음에도 신규 확정치가 daily_snapshot.md·2026_daily_prices.md 어디에도 append되지 않음 — market-data-collector 갱신 대기 상태로 명시. BEI(10Y BEI, T10YIE)는 2.23%(7/1 확정) 이후 신규 FRED 갱신 없음, 12일째 이월."
 sources:
-  - "knowledge-base/market/correlation_matrix.md 직전 회차(7/10 금요일 이브닝 full, n≈49) — 6쌍 r/Z 기준값 이월 후 재계산"
-  - "knowledge-base/market/daily_snapshot.md — 7/11 09:11 KST 갱신(미국 7/10 정규장 확정: S&P 7,575.39/+0.42%, NASDAQ 26,281.61/+0.29%, Dow 52,637.01/+0.29%, VIX 15.84/-6.3%, 10Y 4.54%/-2bp, USD/KRW 1,506.10원, DXY ~100.9, WTI ~$71[하락전환], Gold $4,103.69, BTC $63,834.54[7/11 09:11 KST], KOSPI 7,475.94/+2.52%[매수 사이드카], KOSDAQ 843.68/+6.26%[매수 사이드카], SK하이닉스 나스닥 ADR 상장 흥행+13% 마감)"
-  - "knowledge-db/market/2026_daily_prices.md — 최근 로그는 2026-07-06까지, 이후 신규 append 없음(daily_snapshot.md로 교차 확인). 데이터 sparse(6쌍 공통 관측치 15~17개 수준) — 정식 30D/90D Pearson 재계산 불가, N/A 처리 + EWM 근사 방법론 유지"
-  - "knowledge-db/market/2026_economic_indicators.md — 최종 관측치 2026-04-22 (로컬 미갱신, daily_snapshot.md/economic_calendar.md로 교차 확인)"
+  - "knowledge-base/market/correlation_matrix.md 직전 회차(7/11 토요일 이브닝 full, n≈49) — 6쌍 r/Z 값 그대로 이월(신규 크로스 부재)"
+  - "knowledge-base/market/daily_snapshot.md — 7/13 09:12 KST 갱신(미국 7/10 정규장 확정치 유지 재확인, 한국 7/10 확정치 이월, 주말 이란 확전 심화 신규 확정: IRGC 호르무즈 재봉쇄·미군 140여곳 추가타격·걸프 5개국 피습, WTI 주간 +6%/Brent +7%, Gold $4,122~4,138, BTC ~$64,000/-0.23%(24h), DXY 100.97 유지)"
+  - "knowledge-base/market/regime.json — 7/13 10:30 KST 자동갱신(VIX 15.0/10Y 4.57%, 참고용, FRED 확정치와 벤더差 존재 — 공식 반영 보류)"
+  - "knowledge-db/market/2026_daily_prices.md — 최근 로그는 2026-07-06까지, 이후 신규 append 없음. 데이터 sparse — 정식 30D/90D Pearson 재계산 불가, N/A 처리 + EWM 근사 방법론 유지"
+  - "knowledge-db/market/2026_economic_indicators.md — 최종 관측치 2026-04-22 (로컬 미갱신)"
   - "knowledge-base/market/house_view.md — HV1~HV6 매핑"
 ---
 
