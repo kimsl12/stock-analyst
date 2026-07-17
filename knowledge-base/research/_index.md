@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-07-11
+last_updated: 2026-07-18
 update_cycle: weekly
 status: active
-total_headlines: 87
+total_headlines: 93
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -54,6 +54,8 @@ total_headlines: 87
 - 📄 [Industry] SK hynix HBM3E→HBM4 전환 일부 지연, DDR5로 재조정 (2026-06-24) — "일부 HBM3E 라인의 HBM4 전환을 늦추고 DDR5 일반 DRAM 생산으로 재배치" → 업계 소식통 인용. HBM4 점유율 50~55% 선두를 유지하면서도 단기 수익성(DDR5 가격 강세) 우선 — HBM4 램프 속도 조절. 16-Hi HBM4 신규 발주를 두고 삼성·마이크론과 NVIDIA 공급 계약 경쟁 중. HBM 공급 타이트닝·메모리 믹스 재편 신호 ([source](https://www.techtimes.com/articles/319016/20260624/sk-hynix-dethroned-samsung-after-26-years-now-choosing-ddr5-profits-over-hbm4-ramp.htm))
 - 📄 [Conference] VLSI Symposium 2026 (2026-05-22, 본회의 6/14-18 발표) — "PSMC, Intel·SAIMEMORY HB3DM 9층 Via-in-One 합류 — 파운드리·제조 파트너 확정" → 사전 예고(T17.5) 대비 제조 진영 구체화: 설계·IP는 SAIMEMORY, 3D 적층은 Intel, 제조 지원은 PSMC + 日 Shinko Electric. 9층 구조 — 약 3µm 초박형 실리콘 기판, 산화물 트렌치 TSV 10×85µm²/20µm 피치(층당 약 13.7K TSV), C타입 대비 저항 40%↓ O타입 콘택트, 0.95~1.2V 동작. 대역폭밀도 약 0.25 Tb/s/mm²(171mm² 다이 10GB 모듈당 약 5.3 TB/s, HBM4 스택당 약 2 TB/s의 2배 초과), 데이터전송 전력 0.35 W/mm² 미만·0.7 pJ/bit 미만. 프로토타입 2027·양산 2029 — HBM4E 예비 사양에 도전하는 비메모리 진영 연합 구도 ([source](https://www.trendforce.com/news/2026/05/22/news-psmc-joins-intel-saimemory-to-demo-9-layer-fusion-bonded-via-in-one-architecture-for-high-bandwidth-3d-memory/))
 - 📄 [Industry] TSMC Q2 2026 실적 프리뷰 (2026-07-09 Forbes 분석 / 발표 7/16) — "AI 빌드아웃에 천장이 있는가 — TSMC Q2가 시험대" → 자체 가이던스 매출 $39.0~40.2B·GM 65.5~67.5%, 컨센 ~$40B(+32% YoY)·ADR당 EPS +50%↑. C.C. Wei "AI 수요 극도로 견조" — FY2026 매출성장 가이던스 "30%+"에서 상향 관측, capex $52~56B 상단(증액 여부 주시). 지속성 논쟁: CoWoS 패키징 병목(공급-수요 갭 20%→연말 ~10% 축소 전망)·AZ $465B 11-fab 실행 리스크·4년 연속 가격 인상(노드별 3~10%). HBM4·AI GPU·커스텀 ASIC·클라우드 TPU 수요 지속성 확인 이벤트 — 7/16 실적이 AI 슈퍼사이클 방향타 ([source](https://www.forbes.com/sites/drewbernstein/2026/07/09/tsmcs-second-quarter-will-test-whether-the-ai-buildout-has-a-ceiling/))
+- 📄 [Filing] TSMC Q2 2026 실적 발표 (2026-07-16) — "매출 US$40.20B(+33.7% YoY·+12.0% QoQ, 자체 가이던스 $39.0~~40.2B 상단), 순이익 NT$706.56B(+77.4% YoY), 희석 EPS NT$27.25(US$4.31/ADR), GM 67.7%·OM 60.3%·순이익률 55.6%" → 웨이퍼매출 기술믹스 2nm 3%·3nm 30%·5nm 33%·7nm 11%(첨단 7nm+ 77%). **2026 capex 가이던스 $52~~56B → $60~64B로 상향** — AI 빌드아웃 '천장' 논쟁에 증액으로 답, 2nm·3nm 강한 수요·가격 인상·CoWoS 병목 공격적 확장. 7/09 프리뷰(증액 여부 주시) 대비 실제 대폭 상향 확인 — AI 슈퍼사이클 지속성 방향타 (📄 TSMC 공식 릴리스 [source](https://pr.tsmc.com/english/news/3326))
+- 📄 [Industry] SK hynix 12단 HBM4 NVIDIA 양산 출하 개시 (2026-07-13 Digitimes) — "6월 말 12-layer HBM4 대량생산 출하 시작, 9월 광범위 램프 앞두고 출하량 증대" → SK하이닉스 HBM 점유율 50~55% 선두(스택당 약 $500), Vera Rubin용 물량 다수 공급 + 6월 NVIDIA와 로드맵 정렬 기술 파트너십. 16-Hi HBM4 48GB는 스택당 2TB/s·11.7Gbps 업계 최고속. Samsung은 2026년 HBM 생산 +50%(연말 월 약 25만 웨이퍼) 확대·하이브리드본딩 HBM4 프로토타입 NVIDIA 공급하나 수율 약 10% — 3사 12→16단 전환 경쟁 지속(7/02 3사 16-Hi 발주 3파전 헤드라인 후속) ([source](https://www.digitimes.com/news/a20260713VL219/sk-hynix-hbm4-nvidia-shipments-samsung.html))
 
 ### 규제
 
@@ -79,6 +81,7 @@ total_headlines: 87
 - 📄 [White Paper] 유가·호르무즈 통항 정상화 진전 (2026-06-17) — "Brent $78.24/bbl, 3/3 이후 최저 — 美·이란 휴전 프레임워크 + 해협 재개통 기대로 2026년 고점 대비 약 20% 하락" → 분쟁 중 50% 이상 급등했던 유가가 전쟁 전(2/28) 대비 약 7% 수준으로 회귀. 6/19 제네바 서명 예정 프레임워크: 이란이 호르무즈 near-total 봉쇄 해제 ↔ 美 이란 항만 봉쇄 해제. 단 정상화엔 시차 — 통항 대기 선박 500척 초과, 기뢰 제거에 수주 이상 소요로 정상 해운 복원은 수주~수개월 전망. 직전 회차(CRS $106/bbl) 대비 중동發 인플레 상방 압력 급속 완화 신호 ([source](https://www.aljazeera.com/economy/2026/6/17/oil-prices-continue-slide-amid-hopes-for-peace-opening-of-strait-of-hormuz))
 - 📄 [White Paper] 호르무즈 주말 재교전 후 재휴전 (2026-06-29) — "Brent 8월물 $73.21/bbl(+0.9%), 전쟁 프리미엄 거의 소진 — 6/27~28 美·이란 상호 타격 후 일요일 재휴전·7/1 도하 협상 예정" → US CENTCOM이 이란의 호르무즈 상선 공격을 이유로 금·토 이란 타격, 이란은 바레인·쿠웨이트 美 자산에 미사일·드론 보복. 일요일 밤 양측 공격 중단·협상 재개 합의(도하, 화요일 예정, 이란 공식 확인 전). 애널리스트 "MoU에 집행 세부 없고 타격 지속되는데도 유가가 전쟁 프리미엄 거의 되돌림" — 재개통 지연 리스크 잔존하나 유가는 $73선 안착으로 중동發 인플레 상방 채널 실질 소멸 국면. 5월 IEA($106) 대비 방향 완전 역전 ([source](https://www.aljazeera.com/economy/2026/6/29/oil-prices-rise-as-us-iranian-strikes-threaten-strait-of-hormuz-reopening))
 - 📄 [White Paper] Al-Monitor 유가·OPEC+ 동향 (2026-07-06) — "OPEC+ 8월 +188K bpd 5개월 연속 증산 + 호르무즈 통항 회복 → Brent $71.87 분쟁 개시 이후 최저" → OPEC+ 7개국(사우디·이라크·쿠웨이트·오만·알제리·러시아·카자흐스탄) 8월 일 18.8만 배럴 증산 결정(2023년 감산 되돌림 5개월째). Brent $71.87(-0.15%, 장중 저점 $71.09) — 2/28 분쟁 개시 이후 최저. 6/17 美·이란 휴전 후 호르무즈 점진 재개통이나 통항량은 전쟁 전 하루 130~140척 대비 여전히 낮음(월요일 日 관련 10척 통과·사우디 초대형유조선 韓行). 전쟁 프리미엄 소진 지속 — 중동發 인플레 상방 채널 실질 소멸 국면(5월 IEA $106 대비 방향 완전 역전) ([source](https://www.al-monitor.com/originals/2026/07/oil-prices-ease-opec-increases-production-hormuz-traffic-rebounds))
+- 📄 [White Paper] IEA Oil Market Report July 2026 + EIA July STEO (2026-07) — "6월 글로벌 원유공급 +4.1 mb/d 반등해 98.8 mb/d(호르무즈 통항 재개로 걸프 생산 부분 회복), 단 전쟁 전 대비 9.4 mb/d 하회·2026년 평균 -3.7 mb/d로 102.6 mb/d 전망" → Brent 7/1 $70/b 하회·7월 $72 하회(늦겨울 이후 최저). EIA STEO Brent 3Q26 평균 $74/b·2027년 $65/b(6월 STEO 대비 -$15). OPEC+ 8월 +188K bpd 증산 개시. 중동發 전쟁 프리미엄 완전 소진·공급 정상화 국면 확정 — 6/17 휴전 후 통항 회복이 유가·인플레 상방 압력 완화의 핵심 변수로 실현 ([source](https://www.iea.org/reports/oil-market-report-july-2026))
 
 ### 컨퍼런스/백서
 
@@ -124,6 +127,7 @@ total_headlines: 87
 - 📄 [Policy] BOJ 통화정책결정 (2026-06-19) — "정책금리 +25bp 1.00% 인상 (7-1 표결), 1995년 9월 이후 최고" → 0.75%→1.00% 인상(보완당좌예금 1.0%·기본대출 1.25%). Asada Toichiro 위원만 반대(가격 상방보다 생산·고용 하방 위험 우려). 4월 6-3 분열에서 합의 강화. 기조 인플레가 에너지가격 상승으로 2% 목표 상회 가속 가능 평가, 인상 후에도 완화적 금융여건 유지. 가이던스는 중립·데이터 의존 — USD/JPY 발표 후 약 160.29(엔 일시 강세 후 되돌림). 추가 인상 지속 시사 + 중동 분쟁 영향 주시 ([source](https://www.ebc.com/forex/boj-at-1-percent-yen-usd-jpy-rate-hike))
 - 📄 [Data] BLS 고용상황 — June 2026 (2026-07-02 발표) — "신규 비농업 고용 +57K(예상 +115K 대폭 하회), 실업률 4.3→4.2%(경활률 -0.3%p 하락 착시), 시간당임금 +0.3%m/+3.5%y" → 5월치 +129K로 하향 수정, 12개월 평균(+36K) 수준으로 둔화. 레저·접객 -61K(계절 고용 부진), 전문·사업서비스 +36K·헬스케어 +22K가 상쇄. 실업률 하락은 경활률이 61.5%(2021년 3월 이후 최저)로 급락한 착시. NFP 쇼크로 6/17 dot plot 인상 반전(연내 9인 인상 전망)의 긴축 서사가 약화 — 시장은 9월 인상 배제·10월 가능성만 잔존으로 재조정. 매크로 축이 '인플레 상방'에서 '노동 냉각'으로 이동하는 첫 하드데이터 (📄 BLS 공식 릴리스 [source](https://www.bls.gov/news.release/archives/empsit_07022026.htm))
 - 📄 [Policy] FOMC 의사록 (2026-07-08 공개) — "6/16-17 회의 의사록 — Warsh 첫 회의 '집안싸움'을 만장 동결로 봉합" → 정책금리 3.50~3.75% 만장 12-0 동결(4회 연속). 18인 중 9인 연내 인상 전망(6인은 25bp 2회) — 3월 인하 편향 중앙값에서 반전, 12월 적정 수준엔 이견 지속(일부 "현 정책 비긴축적" vs 타 위원 "약간 긴축적"). 5월 총 PCE 4.1%(4월 대비 상승)·코어 3.4%, 스태프는 관세 전가·중동 에너지·AI 관련 수요를 원인 지목·인플레 위험 상방 편향 유지. Warsh 성명 132단어로 4월(341단어) 대비 최단축·점도표 미제출(2012년 도입 후 첫 의장 기권), "The Committee will deliver price stability" 무조건부 문장 삽입 — 이코노미스트(L. Ullrich) "의사록에서 가장 강한 시그널". 7/2 NFP 쇼크(+57K)와 겹쳐 인상 서사 vs 노동 냉각 긴장 지속 ([source](https://fortune.com/2026/07/08/laura-ullrich-fed-reserve-kevin-warsh-minutes-fomc/))
+- 📄 [Data] BLS CPI — June 2026 (2026-07-14 발표) — "헤드라인 +3.5% YoY(5월 대비 둔화, 1월 이후 첫 연율 반락), 월 -0.4%(2020년 4월 이후 최대 월간 감소), 코어 월 flat·2.6% YoY" → 에너지 -5.7%(이란 전쟁 완화·유가 급락이 최대 기여, 5월 +3.9%에서 반전)로 주거·식품 상승 상쇄. 관세 전가에도 에너지 급락이 헤드라인 끌어내림 — 6/17 dot plot 인상 반전 서사 약화. CME FedWatch 9월 인상 확률 75%→63% 하향, 인플레 상방→둔화·노동 냉각(7/2 NFP +57K)으로 매크로 축 이동 가속 (📄 BLS 공식 릴리스 [source](https://www.bls.gov/news.release/archives/cpi_07142026.htm))
 
 ---
 
@@ -179,6 +183,7 @@ total_headlines: 87
 - 📄 [Policy] GENIUS Act 시행 규칙 제정 진행 (2026-04~06, 의견수렴 6/9 마감) — "Treasury·OCC·FDIC·FinCEN/OFAC 시행 NPRM 일제 공개" → 7월 2026 최종규칙 시한 앞두고 4월 중 재무부·FDIC·FinCEN 각 시행 제안규칙 발표, 의견 6/9 마감. OCC는 은행·연방저축기관·외국 발행자·비은행 적격발행자 대상 결제 스테이블코인 발행 규칙, FinCEN/OFAC는 AML·제재 컴플라이언스 공동 규칙. 법 효력은 27/1/18 또는 최종규칙 후 120일 중 빠른 날 — 발행자 자격·준비금 규칙 윤곽 확정 단계 ([source](https://www.bhfs.com/insight/recent-updates-in-digital-assets-policy/))
 - 📄 [Policy] US Treasury / FinCEN·OFAC PPSI 컴플라이언스 프레임워크 (2026-06, ABA 분석) — "결제 스테이블코인 발행자(PPSI)를 BSA 금융기관으로 편입" → 6/9 의견마감(4/8 공개) 후 ABA Business Law Today 분석. PPSI를 은행비밀법(BSA)상 금융기관으로 취급 — AML 프로그램 수립·의심거래 보고(SAR)·기록보존·정보공유 의무. 기존 송금업자(money transmitter) 규제와 차별화된 별도 컴플라이언스 트랙. 7/18 최종규칙 시한 앞두고 발행자 컴플라이언스 비용·진입요건 구체화 — Circle·Tether 등 발행자 운영부담 가중 채널 ([source](https://www.americanbar.org/groups/business_law/resources/business-law-today/2026-june/treasurys-proposed-stablecoin-compliance-framework/))
 - 📄 [Policy] GENIUS Act 최종규칙 제정 막바지 — 6개 기관 7/18 시한 동시 입법 (2026-06-26 트래커) — "전 의견수렴 6/9 종료, 6개 기관이 5주 내 6개 제안 프레임워크 조율·최종규칙 발표 임박" → OCC·FDIC·NCUA·Treasury·FinCEN·OFAC 6개 기관이 GENIUS Act 제정 1주년(7/18)에 맞춰 최종규칙 동시 발표 압박. OCC 12 CFR Part 15(3월 제안), FDIC·Treasury(4월), FinCEN·OFAC AML NPRM(4월). 최종규칙 확정 후 발행자는 약 120일 유예 → 2026년 말 효력 발생. 발행자 자격·준비금·AML 요건 확정 단계 — 스테이블코인 발행 제도권 진입 본격화 ([source](https://www.chapman.com/publication-genius-act-rulemaking-tracker))
+- 📄 [Policy] GENIUS Act 최종규칙 법정시한 도래 (2026-07-18) — "6개 기관(OCC·FDIC·NCUA·Treasury·FinCEN·OFAC) 7/18 최종규칙 발표 법정시한 — 6/9 전 의견수렴 종료 후 35일 최종 스프린트" → 규칙 범위: 최소자본요건·유동성 계층·준비금 구성·AML/제재 컴플라이언스·상환 표준·무수익(no-yield) 금지 등 결제 스테이블코인 발행 운영체계 전반. OCC 12 CFR Part 15(3월 제안·5/1 마감), FDIC·Treasury(4월), FinCEN·OFAC AML NPRM(4월·6/9 마감). 상원 68-30·하원 308-122 통과 법의 시행규칙 확정 단계 — 발행자 제도권 진입 본격화, 최종규칙 후 약 120일 유예 기산(6/26 트래커 후속, 시한 당일 실제 발표문은 다음 회차 verify) ([source](https://stablecoininsider.org/six-federal-agencies-have-35-days-to-finalize-genius-act-stablecoin-rules-by-july-18/))
 
 ---
 
@@ -248,6 +253,7 @@ total_headlines: 87
 - 📄 [Filing] Home Depot Q1 FY26 Earnings (2026-05-20) — "순매출 $41.8B (+4.8% YoY)" → 핵심 고객 회복력 유지, 연간 가이던스 재확인·컨센서스 상회. 관세 환급 신청 (연료비 상승 상쇄). 관세發 특정 카테고리 "완만한 가격 인상" 예상하나 전면 인상은 아님 ([source](https://www.fool.com/earnings/call-transcripts/2026/05/19/home-depot-hd-q1-2026-earnings-transcript/))
 - 📄 [Filing] Lowe's Q1 FY26 Earnings (2026-05-20) — "EPS·매출 컨센서스 상회, 연간 가이던스 재확인" → 봄 시즌 강한 실행 + 온라인·가전·홈서비스·프로 부문 성장 견인. CEO Ellison "challenging housing macro" 인정 + 관세 영향 시인 — HD와 동일 기조 ([source](https://www.cnbc.com/2026/05/20/lowes-low-q1-2026-earnings.html))
 - 📄 [Filing] Costco Q3 FY26 Earnings (2026-05-28, 분기말 5/10) — "순매출 +11.6% $69.15B / EPS $4.93(전년 $4.28) / 조정 동일점 +9.8%(미국 +6.8%)" → 디지털 매출 +21% 초과, 멤버십 수입 $1.37B(+10.7%). 인플레·관세 환경에서도 두 자릿수 성장·견조한 트래픽 — 디스카운트/벌크 채널의 관세 전가 방어력 입증. 단 밸류에이션 부담은 별개 이슈 ([source](https://www.stocktitan.net/news/COST/costco-wholesale-corporation-reports-third-quarter-and-year-to-date-ya9rfbnhnzg9.html))
+- 📄 [Data] US Census 소매판매 — June 2026 (2026-07-16 발표) — "소매·외식 매출 $768.6B, 월 +0.2%(예상 +0.3% 하회, 5월 수정치 +1%에서 급둔화), YoY +6.7%" → 주유소 -5.3%(유가 하락) 제외 시 +0.7%, 변동성 큰 항목(주유·자동차·건자재) 제외 컨트롤그룹 +0.5%. 비점포(온라인) +1.9%(Amazon Prime Day 6/23~26 효과)·스포츠/취미/서점 +1.3%(월드컵 관련) 견인. 세금환급 효과 소멸·경제 불확실성이 소비 압박, 고소득-저소득 지출 격차 확대 — 소비 두 자릿수 성장에서 완만한 냉각 신호 ([source](https://www.census.gov/retail/marts/www/marts_current.pdf))
 
 ---
 
@@ -300,25 +306,25 @@ total_headlines: 87
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-07-11 트래킹)
+## 차주 갱신 예상 항목 (2026-07-18 트래킹)
 
-- **반도체**: 7/16 TSMC Q2 실적 — FY2026 가이던스/capex($52~56B) 상향 여부·C.C. Wei AI 슈퍼사이클 지속성 코멘트, NVIDIA 16-Hi HBM4 Q4 발주 3사 배분 확정, SK hynix 30µm 웨이퍼 씨닝(MR-MUF) 양산성, 삼성 HBM4 매출 램프, 후속 메모리 PIM/PNM preprint
-- **에너지**: OPEC+ 8월 증산(+188K) 이행·9월 증산 논의, 호르무즈 통항 정상화 속도(전쟁 전 130~140척/일 복원), Brent $70선 공방·Citi 연말 $60 전망 검증, IEA 7월 OMR, DOE AP1000 $17.5B 개별 융자 confirm
-- **매크로**: 7/14 6월 CPI(관세·에너지 전가 지속 여부, 인상 vs 노동 냉각 서사 분기), FOMC 7/28-29 회의 프리뷰, 7/22~ 어닝시즌 연동, BOJ 추가 인상 경로, 한국은행 연내 인상 시점, NBER SI 2026 7월 트랙
-- **바이오**: camizestrant 연장 PDUFA 재심, ADA 후속 GLP-1 readout(retatrutide·CagriSema 상세), 7/29 ONS-5010 PDUFA, FDA 7월 AdCom
-- **핀테크**: 7/18 GENIUS Act 최종규칙 발표(OCC·FDIC·NCUA·Treasury·FinCEN·OFAC 동시)·발행자 자격/준비금/$5M 자본 하한/수익지급 금지 확정·120일 유예 기산, Circle/Tether 컴플라이언스 대응
-- **방산**: FY27 NDAA 양원 조정(H.R.8800 vs S.4784)·Golden Dome $18B 배분($17B 조정 의존, 누적 $42B), 한국 방사청 3축 신규 계약
-- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-22, NeurIPS/ICML 7월 트랙, 빅테크 Q2 어닝(7월말)
-- **소비재**: 6월 리테일 판매·관세 가격 전가, 여름 소비, 리테일 Q2 어닝 프리뷰
-- **산업재**: TSMC AZ Phase 2 장비 입고 Q3 진행, Samsung Taylor 양산 일정
+- **반도체**: TSMC 콜 코멘터리 상세(capex $60~64B 상향 배경·2027 성장 가시성), NVIDIA 16-Hi HBM4 Q4 발주 3사 배분 확정, SK hynix Q2 실적(7월말)·9월 HBM4 램프, 삼성 하이브리드본딩 HBM4 수율(약 10%) 개선 추이, 후속 메모리 PIM/PNM preprint
+- **에너지**: OPEC+ 9월 증산 논의, Brent $65~72 공방·EIA 2027 $65 전망 검증, 호르무즈 통항 전쟁 전(130~140척/일) 복원 속도, IEA/EIA 8월 리포트, DOE AP1000 $17.5B 개별 융자 confirm
+- **매크로**: 6월 PCE(7/31경, CPI 둔화 확인 여부), FOMC 7/28-29 회의(동결 유력·성명 톤), Q2 GDP 속보, 어닝시즌 연동, BOJ 추가 인상 경로, 한국은행 연내 인상 시점, NBER SI 2026 트랙
+- **바이오**: camizestrant 연장 PDUFA 재심 결정, 7/29 ONS-5010 PDUFA, ADA 후속 GLP-1 readout(retatrutide·CagriSema 상세), bioRxiv/medRxiv 신규 preprint
+- **핀테크**: 7/18 GENIUS Act 최종규칙 실제 발표문 확인(6개 기관)·발행자 자격/준비금/무수익 금지 확정·120일 유예 기산, Circle/Tether 컴플라이언스 대응
+- **방산**: FY27 NDAA 양원 조정(H.R.8800 vs S.4784)·Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약
+- **테크플랫폼**: EU AI Act 8/2 Annex III 고위험 시행 D-15, NeurIPS/ICML 7월 트랙, 빅테크 Q2 어닝(7월말 MSFT·GOOGL·META·AMZN)
+- **소비재**: 리테일 Q2 어닝(WMT/TGT 8월), 여름 소비·관세 가격 전가 추이, 6월 소매 컨트롤그룹 후속
+- **산업재**: TSMC AZ $100B 추가투자·Phase 2 진행, Samsung Taylor 양산 일정
 - **자동차**: Tesla 7/22 Q2 재무실적(마진·ASP), EV 크레딧 9/30 종료 전 수요 풀인, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-07-11 회차)
+## 폴백/미수집 (2026-07-18 회차)
 
-- 매크로 FOMC 의사록 원문(federalreserve.gov 403) — 직접 fetch 불가, Fortune(2026-07-08) 2차 분석으로 12-0 동결·9/18 인상 전망·PCE 5월 4.1%·Warsh 132단어·점도표 미제출 확정 수집. releases 원문은 다음 verify 회차 재시도
-- 에너지 EIA 7월 STEO 본문(PDF)·IEA 7월 OMR — 미fetch, Al-Monitor(2026-07-06) 2차 보도로 OPEC+ +188K·Brent $71.87·호르무즈 통항 확정. IEA/EIA 직접 본문 다음 회차
-- 방산 USNI News 원문(2026-07-09 403) — 동일 CRS 제품(everycrsreport IN12703)으로 FY27 NDAA $1.14T·양원 차이·Moulton 수정안 확정 수집
-- 자동차 Tesla 8-K 원문(sec.gov EDGAR 403) — StockTitan 8-K 래퍼로 인도 480,126대·생산 451,758대·13.5GWh·7/22 콜 확정 수집
-- 바이오 이번 주 신규 1차 자료 — 컨퍼런스(ADA/ASCO) 종료 후 공백, camizestrant PDUFA 연장·7/29 ONS-5010 대기. bioRxiv/medRxiv 신규 preprint 미특정, 다음 회차 재시도
-- 핀테크 — GENIUS Act 7/18 최종규칙 미발표(차주 예정), 6/26 트래커·발행자 컴플라이언스($5M 자본 하한·수익지급 금지) 헤드라인 유지. 발표 시 차주 수집
-- 테크플랫폼·소비재·산업재 — 10분 cap 하 고신호 5섹터(반도체·에너지·매크로·방산·자동차) 우선 처리로 개별 검색 deprioritize, 6~7월 기존 헤드라인 유지. 차주 재개
+- WebSearch 도구 정상 바인딩 확인(스케줄 슬롯이나 이번 회차는 동작) — 9회 검색으로 5섹터 6신규 헤드라인 실측 수집
+- 반도체 TSMC — 공식 PR(pr.tsmc.com/english/news/3326) + SEC 6-K로 실측 확보: 매출 $40.20B·EPS NT$27.25·GM 67.7%·**capex $60~64B 상향**(프리뷰 $52~56B 대비). 콜 트랜스크립트 상세는 다음 회차
+- 매크로 CPI — BLS 아카이브 URL(cpi_07142026.htm)로 헤드라인 +3.5%·월 -0.4%·코어 2.6%·에너지 -5.7% 확정. PDF 본문 미fetch(검색 요약 기반), 6월 PCE는 7/31 예정
+- 에너지 IEA 7월 OMR·EIA 7월 STEO — 리포트 페이지 URL 확보, 본문 PDF 직접 미fetch(검색 요약으로 공급 98.8mb/d·Brent $65~74·OPEC+ +188K 확정). 8월 리포트 다음 회차
+- 핀테크 GENIUS Act — 7/18 시한 당일, 6개 기관 최종규칙 실제 발표문(연방관보)은 미확인(당일 상태). 트래커 기준 35일 스프린트·규칙 범위 수집, 실제 발표문은 다음 verify 회차
+- 바이오 신규 1차 자료 없음 — camizestrant PDUFA 연장은 6월 기수집분(중복 회피), 이번 주 신규 컨퍼런스/저널/preprint 미특정. 7/29 ONS-5010 대기, 다음 회차 재시도
+- 방산·테크플랫폼·자동차·산업재 — 10분 cap 하 고신호 5섹터(반도체·에너지·매크로·핀테크·소비재) 우선, 신규 1차 자료 부재로 6~7월 기존 헤드라인 유지(FY27 NDAA 7/09·EU AI Act 7/04·Tesla 7/02 등). 차주 재개
