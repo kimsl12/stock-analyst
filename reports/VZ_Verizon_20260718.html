@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Verizon (VZ) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Verizon (VZ)</h1><div class="meta">주식 · 재분석 v10 (BLIND) 종합 분석 리포트 | 2026-07-18</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">65/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">선행 PER 8.4배·배당 6.45%의 저평가 방어 인컴 자산 — 주가 완만 회복(+13%)+배당(6.5%)의 총수익 ~20%를 노리는 매수.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">애널리스트 평균 목표가 $51.25(+16%). 시장은 '저성장·고부채 value trap'으로 디스카운트.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">FCF 배당 커버리지 1.6배 + 금리 하락 방향성이 배당·멀티플을 방어 → 총수익 대비 리스크 보상 유리.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">① 후불 가입자 순감 전환 ② 이자비용 급증으로 FCF 배당커버리지 1.3배 하회 ③ 배당 증배 중단/삭감 — 하나라도 발생 시 논지 기각, 중립/매도 강등.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">$44 근방 1차·$42 접근 시 2차 분할매수. 인컴 코어로 5~8% 비중.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">적대 게이트 미수행(fallback 슬롯). 리스크 축(부채·재융자→배당 커버리지)은 risk.md 반대 관점 로 자체 반박 수행.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (65점, 총수익 관점 — 배당 포함 +19.9%)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$44.10</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$184.2B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">10.7x (선행 8.4x)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$36.55~$50.06</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">6.45%</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">~6.0x</div></div><div class="ki"><div class="kl">ATR%</div><div class="kv">3.29%</div></div><div class="ki"><div class="kl">컨센 목표가(평균)</div><div class="kv">$51.25</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$41.19</div><div class="dn" style="font-size:13px">-6.6%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$50.00</div><div class="up" style="font-size:13px">+13.4%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="140" y="30" width="209" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="140" y1="26" x2="140" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="140" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$41</text><line x1="209" y1="24" x2="209" y2="52" stroke="var(--text)" stroke-width="3"/><text x="209" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$44</text><line x1="349" y1="26" x2="349" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="349" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$50</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $37</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $50</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $1.45 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>Verizon 은 미국 최대 무선 사업자로, 선행 PER 8.4배·EV/EBITDA 6.0배·배당수익률 6.45%의 저평가 방어 인컴 자산이다. 2026 Q1 매출 +2.85% YoY, 영업이익률 23.9%로 완만한 성장·고마진 캐시카우 구조를 유지한다. 다만 이자비용이 YoY +18.9% 급증하며 순부채 ~$145B + Frontier 인수 부채 부담이 순이익 성장을 잠식하는 구조적 리스크가 병존한다. <strong>총수익 관점(주가 +13.4% + 배당 6.45% = ~+19.9%)에서 매수(하단)</strong>로 판단하되, 폭발적 성장이 아닌 '저평가 캐시카우의 인컴 + 완만한 멀티플 회복'이 논지다. 핵심 리스크는 부채·재융자→배당 커버리지 축이며, 반증 조건 충족 시 중립/매도로 강등한다. (WebSearch 미가용 fallback 분석 — 신뢰구간 통상 대비 확대)</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,75.0 172.3,105.5 204.7,129.0 220.8,176.3 168.2,188.8 140.0,212.0 107.7,194.5 90.5,166.1 84.8,132.1 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">밸류에이션</text><circle cx="140.0" cy="75.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 안정성</text><circle cx="172.3" cy="105.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="204.7" cy="129.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">배당 매력도</text><circle cx="220.8" cy="176.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="168.2" cy="188.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">해자/경쟁력</text><circle cx="140.0" cy="212.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀</text><circle cx="107.7" cy="194.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업 환경</text><circle cx="90.5" cy="166.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영/자본배분</text><circle cx="84.8" cy="132.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크 관리</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>밸류에이션</td><td>7.5</td><td>/10</td></tr><tr><td>재무 안정성</td><td>5.5</td><td>/10</td></tr><tr><td>수익성</td><td>6.8</td><td>/10</td></tr><tr><td>배당 매력도</td><td>8.5</td><td>/10</td></tr><tr><td>성장성</td><td>4.8</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>6.2</td><td>/10</td></tr><tr><td>모멘텀</td><td>5.5</td><td>/10</td></tr><tr><td>산업 환경</td><td>5.2</td><td>/10</td></tr><tr><td>경영/자본배분</td><td>5.8</td><td>/10</td></tr><tr><td>리스크 관리</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 65/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v7</td><td>2026-06-22</td><td>56</td><td>중립</td><td>$47</td></tr><tr><td>v8</td><td>2026-06-30</td><td>59</td><td>매수</td><td>$47</td></tr><tr><td>v9</td><td>2026-07-08</td><td>60</td><td>중립</td><td>$46</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+1pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">좁은 해자 (준광의) — 침식 진행</span></h2><p>Verizon Communications(VZ, NYSE)는 미국 최대 무선통신 사업자로 Consumer Group(매출 ~75%: 무선 후불/선불, Fios 광, FWA 고정형 무선)과 Business Group(~25%: 기업/정부·IoT)로 운영된다. 리테일 무선 연결 1.1억+ 기반. AT&T·T-Mobile 과 3강 과점. Frontier Communications 인수(~$200억, 2026년 종결 전망)로 fiber 커버리지를 ~2,500만 로케이션으로 확대한다.</p><h3>Moat 상세</h3><p>해자 원천: (1) 스펙트럼 자산(C-band $450억+ 투입, 정부 경매로만 취득 → 규제 진입장벽), (2) 네트워크 규모·자본집약성(누적 CapEx 수천억 달러, 신규 진입 사실상 불가), (3) 전환비용(가족요금제·단말할부·페크 번들, 중간 수준), (4) 규제 라이선스. 침식 요인: T-Mobile 의 5G 중대역 우위로 '네트워크 품질=Verizon' 공식 약화, 케이블 MVNO 저가 침투로 가격결정력 훼손. 구조적 해자는 견고하나 가격결정력 해자는 얇아지는 중 → Narrow 로 평가.</p></div>
+<div class="sec"><h2>재무분석</h2><table><thead><tr><th>항목</th><th>2026 Q1</th><th>2025 Q1</th><th>YoY</th></tr></thead><tbody><tr><td>매출</td><td>$34.44B</td><td>$33.49B</td><td>+2.85%</td></tr><tr><td>영업이익</td><td>$8.24B</td><td>$7.98B</td><td>+3.3%</td></tr><tr><td>EBITDA</td><td>$13.62B</td><td>$12.68B</td><td>+7.4%</td></tr><tr><td>순이익</td><td>$5.05B</td><td>$4.88B</td><td>+3.4%</td></tr><tr><td>희석 EPS</td><td>$1.20</td><td>$1.15</td><td>+4.3%</td></tr><tr><td>이자비용</td><td>$1.94B</td><td>$1.63B</td><td>+18.9% ⚠️</td></tr></tbody></table><h3>분석</h3><p>영업이익률 23.9%·EBITDA 마진 39.5%의 고마진 구조. 매출은 저자릿수 성장(+2.85%)으로 무선 인상+FWA 순증이 레거시 유선 감소를 상쇄. 경고 신호는 이자비용 YoY +18.9% 급증 — EBITDA(+7.4%)가 순이익(+3.4%)을 앞선 것이 그 증거. FCF ~$180~190억 규모, 배당 총액 ~$114억 대비 커버리지 ~1.6배로 배당 지속성 뒷받침.</p></div>
+<div class="sec"><h2>밸류에이션</h2><table><thead><tr><th>지표</th><th>값</th><th>해석</th></tr></thead><tbody><tr><td>후행 PER</td><td>10.7x</td><td>절대·상대 저평가</td></tr><tr><td>선행 PER</td><td>8.4x</td><td>이익성장 반영 시 더 저렴</td></tr><tr><td>EV/EBITDA</td><td>~6.0x</td><td>통신 밴드 하단</td></tr><tr><td>배당수익률</td><td>6.45%</td><td>10Y 국채 대비 +190bp</td></tr><tr><td>12M 목표가</td><td>$50.00</td><td>총수익 +19.9%</td></tr></tbody></table><p>목표가 $50.00 — 3가지 접근 블렌드(≈$48.6)에 배당 재투자 여력 반영, 컨센서스 mean $51.25 하회. ① 선행 PER: 조정 EPS ~$4.65 × 10.5x = $48.8 ② 배당 리버전: $2.84 ÷ 5.75% = $49.4 ③ EV/EBITDA: EBITDA $54.5B × 6.3x − 순부채 $145B ÷ 42.1억주 = $47.6. 현재가 $44.10 대비 주가 +13.4%, 배당 포함 총수익 ~+19.9%.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $44.10 은 52주 밴드(36.55~50.06) 중단부(~56%). 저점 대비 +20.7%, 고점 대비 -11.9% 조정. 저변동성(ATR% 3.29%) 방어주 궤적. 컨센서스 mean $51.25(+16.2%)·median $51 상방 여력. 최저 목표가 $43 이 현재가 근접 → 다운사이드 제한적 컨센서스. 배당 6.45%가 10Y(4.55%) 대비 +190bp 스프레드로 금리 하락 시 매력 재평가 트리거.</p><table><thead><tr><th>지표</th><th>값</th><th>vs 현재가</th></tr></thead><tbody><tr><td>평균 목표가</td><td>$51.25</td><td>+16.2%</td></tr><tr><td>중앙값</td><td>$51.00</td><td>+15.6%</td></tr><tr><td>최고</td><td>$71.00</td><td>+61.0%</td></tr><tr><td>최저</td><td>$43.00</td><td>-2.5%</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>미국 무선은 3강 성숙 과점(침투율 포화). 성장 여력은 ARPU 인상·FWA 신규시장·IoT. 성장 동력: FWA(최대 성장축, 케이블서 점유율 탈환)·fiber 확장(Frontier)·프리미엄 요금제. 역풍: 레거시 유선 감소·케이블 MVNO 침투·CapEx 부담·고금리. 매크로(KB): 10Y 4.55%·Fed Funds 3.63%(인하 진입)·CNN Fear&Greed 38.9(공포) → 금리 하락+위험회피 조합은 방어적 고배당 통신주에 방어자금 유입 우호. 성장주가 아닌 '총수익 방어주'로 규정.</p><table><thead><tr><th>사업자</th><th>포지셔닝</th><th>강점</th><th>약점</th></tr></thead><tbody><tr><td>Verizon</td><td>프리미엄/네트워크</td><td>스펙트럼·리테일 규모</td><td>성장 둔화·고부채</td></tr><tr><td>AT&T</td><td>광+무선 번들</td><td>fiber 확장·부채감축</td><td>무선 경쟁 열위</td></tr><tr><td>T-Mobile</td><td>5G 중대역 선도</td><td>순증 1위·mid-band</td><td>프리미엄 약함</td></tr><tr><td>케이블 MVNO</td><td>저가 재판매</td><td>번들·가격</td><td>자체망 없음</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 리스크는 부채·이자비용→배당/이익 커버리지로 연결되는 재무 축. 사업은 방어적이고 하방은 배당(6.45%)이 완충하나, 상방 촉매(멀티플 리레이팅)가 부채·저성장에 발목 잡힐 구조적 위험 상존. '안전한 인컴'과 'value trap' 경계 종목. 약세 시나리오 목표가 $40(-9.3%), 배당 완충 시 총수익 -3% 안팎.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">고부채·재융자(이자비용)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">성장 정체·가입자 순감 전환</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">케이블 MVNO·경쟁 침투</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">배당 커버리지 압박</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">Frontier 인수 통합 리스크</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>고부채·재융자(이자비용)</strong> (발생: 높음, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">순부채 ~$145B, 이자비용 YoY +18.9% 급증. 고금리 재융자 시 이익·배당 커버리지 압박.</span></div><div class="ri rl"><strong>성장 정체·가입자 순감 전환</strong> (발생: 중간, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">매출 +2.85% 저성장. 후불 순감 전환 시 멀티플 리레이팅 촉매 소멸.</span></div><div class="ri rl"><strong>케이블 MVNO·경쟁 침투</strong> (발생: 높음, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">Comcast/Charter 저가 재판매가 순증·ARPU 잠식. T-Mobile 순증 주도.</span></div><div class="ri rl"><strong>배당 커버리지 압박</strong> (발생: 중간, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">CapEx+Frontier 통합+재융자가 동시 현금 요구 → 증배 여력 제한.</span></div><div class="ri rl"><strong>Frontier 인수 통합 리스크</strong> (발생: 중간, 영향: 중간)<br><span style="color:var(--sub);font-size:13px">~$200억 딜, 통합비용 초과·부채 증가 리스크.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>분할매수 $44 근방 1차 / $42 접근 시 2차. 방어·인컴 코어로 포트폴리오 5~8% 이내(성장 엔진 아님). 보유 논리: 배당 캐리 6.5% + 완만한 멀티플 회복. 배당 증배·FWA 순증 확인 시 홀드 연장. 청산 트리거: 반증 조건(후불 순감/커버리지 1.3배 하회/증배 중단) 발생 또는 $50 목표 도달. 손절 $41.19(2×ATR, -6.6%) — 저변동성 반영 타이트 손절.</p></div>
+<div class="sec"><h2>Confidence Interval</h2>목표가 $50.00 (95% CI: $45 ~ $55, 폭 ±10%) — 하단 $45는 배당 리버전 실패, 상단 $55는 금리 인하 가속+FWA 서프라이즈. 종합 점수 65 (±5 pt, 60~70 변동 가능). 최대 변동 요인은 이자비용/배당 커버리지 가정(항목 2·4)의 실측 확인. WebSearch 미가용으로 직전 분기 순증·배당 증배율 실측 불가 → 신뢰구간을 통상 대비 확대.</div>
+<div class="sec"><h2>약한 가정 3개 (Most Fragile Assumptions)</h2>① 배당 커버리지 지속(FCF ~1.6배): Frontier 통합비용·CapEx·재융자 동시 압박 시 커버리지 하락 → 반증 시 배당 매력도 -15pt, 등급 중립 강등. ② FWA 성장이 유선·케이블 잠식 상쇄: FWA 순증 둔화/케이블 반격 시 성장 공백 노출 → 반증 시 성장성 -10pt. ③ 금리 하락 방향성 지속(재융자 부담 완화): 10Y 4.55% 재고착·인하 중단 시 순이익 침식 지속 → 반증 시 재무 -8pt·수익성 -5pt. ('약한' = WebSearch 미가용 데이터 부족 / 금리 등 외부변수 의존 / 단기 실측 미확인. 검증된 사실은 제외.)</div>
+<div class="sec"><h2>분석 방법 고지 (Fallback)</h2>본 리포트는 서브에이전트 dispatch 도구 부재(스케줄 슬롯) 환경에서 stock-analyst-lead 가 직접 작성한 BLIND 재분석 v10. 데이터: analysis/VZ_Verizon_v10/data.json(fetch_price.py) + yfinance(2026-07-18 분기손익·PER·배당·목표가) + knowledge-base(macro/market) + 공개지식(date_cutoff 2026-01). 이전 v1~v9 분석/리포트/timeline 미참조(앵커링 차단). WebSearch 미가용 — 최신 뉴스·경영진 인사·직전 분기 순증 실측 미반영, confidence 한 단계 하향.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-07-18 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="VZ_Verizon_20260718.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
