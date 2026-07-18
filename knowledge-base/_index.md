@@ -617,6 +617,7 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 10건)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-07-18 | macro/supply_chain.md (SSOT) | **공급망 주간 갱신(17회 검색, +15 DB 레코드)** -- **★호르무즈 전면 재격화★** 7/12~15 미·이란 6일연속 교전·미군 CENTCOM 7/14 봉쇄 재개(이란 선박)·6/17 MOU 완전 사문화(7/11 예고 Bear 시나리오 현실화). 이란 초대형유조선 2척 타격 주장·UAE 유조선 2척 피격(1명 사망). 에너지·LNG 급반등 **JKM $19.93(7/16 +18.5% DoD, 7/9 $16.58서)·Brent $85.95·WTI $82.49(주간 +10%)**. 홍해 복귀 지속(Maersk/Hapag 수에즈 AE15+MECL) — 리스크 축 완전히 호르무즈로 이동. 컨테이너 피크 소진 **WCI $4,547(-2% WoW)** vs 벌크 **BDI 2,929(Capesize -5.6%)**. 관세 3중 중첩 **122 7/24 만료 D-6→301(15국10%+45국12.5%, 한국12.5%)+제약 232 100% 7/31(한국15%)+8/1 EU·멕시코 30%**. HBM4 **~$500·내년 2배**·DDR5 32GB **$375**·Q3 냉각 +13~18% QoQ·CoWoS **150K/NVIDIA ~595K/TSMC $56B**·TSMC AZ Fab1 **NVIDIA Blackwell 양산**. 희토류 **Dy FOB $261.63·中지수 272.2·선적 -50%**. 구리 **COMEX $6.17/LME $13,298·재고 -18%**. 흑연 11.10/11.27 유예. 변압기 3~5년·switchgear 2028매진 | +15 |
 | 2026-07-12 | macro/global_risk_factors.md | 이란-호르무즈 재확전(브렌트$78) Top5 재격상 + VIX15.84·HY2.70% 복합최저 안도랠리 + IMF 3.0% 하향 + 일본JGB 3.93% 후퇴 | +8 |
 | 2026-07-12 | macro/tech_breakthrough.md | AI 프런티어 GA러시(GPT-5.6 7/9·Gemini 7/17타깃)+capex $725B Q2실적·HBM4 BofA $54.6B/UBS SK70%·TSMC 7/16 Q2·GLP-1 Medicare $50·Optimus 주간램프·Waymo 50만회/주 | +7 |
 | 2026-07-12 | industry/energy.md | 미-이란 재격화로 유가($76)·LNG(JKM $16.58) 반전 상승, OPEC+ 8월 188K 증산 확정, OBBB 7/4 착공마감 통과 | +14 |
