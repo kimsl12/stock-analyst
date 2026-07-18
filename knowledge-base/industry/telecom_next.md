@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-11
-valid_until: 2026-08-10
+updated: 2026-07-18
+valid_until: 2026-08-17
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -121,13 +121,24 @@ sources:
   - PRNewswire
   - Communications Today
 confidence: high
-last_synced_from_db: 2026-07-11
+last_synced_from_db: 2026-07-18
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.07.18 핵심 변화 요약 (7/11 이후 델타)**:
+>
+> 1. **★Nokia, 업계 첫 '상용' AI-RAN 플랫폼 출시(7/15) -- anyRAN + NVIDIA Aerial, 2028년 스펙트럼 효율 2배 목표** -- **Nokia anyRAN(AI-native SW) + NVIDIA Aerial 가속컴퓨팅 기반 세계 첫 상용 AI-RAN 플랫폼 발표. 시연 스펙트럼 효율 이득 20%+ 실증 -> 2027년 50% -> 2028년 100%+(신규 주파수·HW 교체 없이 동일 라이선스 스펙트럼으로 트래픽 2배 수용). 3개 배치경로: 기존 AirScale HW용 확장카드 / 독립형 GPU AI-RAN 노드 / 클라우드 네이티브 COTS 서버. 4G/5G/6G 지원·Open RAN 준수. 파일럿 2025말~, 상용 가용 2027**. Nokia Q2 실적 7/23 발표 임박(가이던스 OP EUR 2.0~2.5B 유지, 컨센 매출 ~EUR 4.83B·EPS EUR 0.051) -- NVIDIA 파트너십의 수주장부·매출화 첫 검증대 [Nokia Newsroom 7/15, GlobeNewswire, ConvergeDigest, TechTimes 7/16]
+> 2. **★Ericsson Q2 2026(7/14) 확정 -- 마진 견조하나 EPS 미스 + 'AI 칩 크런치' 신규 리스크 부상** -- **순매출 SEK 52.7B(-6% YoY, 유기적 -1%, IPR 일회성 소멸), 조정 총이익률 48.4%(전년 48.0%), Networks 매출 SEK 33B(-8%, 북미 모더나이제이션 감소), Networks 조정 총이익률 50.4%(전년 49.5%), 순이익 SEK 4.1B(전년 4.6B), Cloud SW&Services SEK 14.7B(+5% 유기적, EBITA 마진 12.4%). ★AI 붐발 부품비 인플레이션이 향후 분기 실적 압박 예고 -- AI 하이퍼스케일러가 기지국용 동일 DRAM 대량 소비 -> 원가 상승, 내부효율+가격인상 대응. 5G 가입자 30억 돌파. 'AI in RAN' SW 온리 구독형 2026.06 출시**. EPS 미스로 주가 실망 [Ericsson PR 7/14, Investing.com, Benzinga, TechTimes, ConvergeDigest]
+> 3. **SPCX 편입 후 약세 -- 52주 최저 $131로 하락, 8/6 첫 실적·부분 락업해제 대기** -- **7/17 종가 근처 $131.11(전일 $135.27, 52주 최저 $130.74 부근)으로 하락 -- 7/11 KB $158 대비 -17%, IPO 피크 $225.64 대비 -42%. Nasdaq-100 편입 7/7 완결(QQQ ~$4.3B 강제매수)에도 편입 후 되레 약세 지속(팔란티어 편입 후 궤적 비교론 확산). ★다음 촉매: 첫 공개 분기실적 2026.08.06 -> 발표 후 내부자 보유분 최대 20% 매도 허용(부분 락업해제)**. Q1 2026 매출 $4.7B·Starlink 10M+ 가입자·AI Compute 계약 연 ~$27.8B 거론 [Yahoo Finance SPCX 7/17, TradingKey, Seeking Alpha, TheTechMarketer]
+> 4. **Amazon Leo 390기+ '초기 서비스 충분' 배치 선언** -- **7/2 ULA Atlas V로 +29기 발사, 누적 390기+(운영 첫해 12개 미션 완료, 100+ 발사 추가 확보). Chris Weber VP(사업·제품): '올해 초기 서비스 개시에 충분한 발사 완료'. 베타 미국·영국·프랑스·독일·캐나다 개시 예정. FCC는 6월 절반배치 데드라인 면제하되 7월 이후 발사 위성 스펙트럼 우선순위 일시 강등(더 빠른 배치 압박)**. AST BlueBird 8/9/10(6/17) 궤도 안착·2026 ~45기 목표 유지 [CNBC 7/2, The Register 7/3, aboutamazon, SpaceNews]
+> 5. **OFC 2026 광통신 -- Lumentum 1.6T DR4 플러거블·Coherent CPO/멀티레일** -- **Lumentum 1.6T DR4 OSFP 플러거블 트랜시버 프로토타입 시연(자사 400G 차동 EML 4개, 4x400Gbps SMF, 차세대 하이퍼스케일 AI DC 타깃). Lumentum이 유일하게 200G/lane EML 양산 출하(1.6T 핵심부품). Coherent는 CPO+멀티레일 트랜스포트+오픈 광네트워킹 시연**. 광트랜시버 시장 2026E ~$9.15B, 800G/1.6T가 AI DC 표준화, NVIDIA $4B 포토닉스(Lumentum/Coherent) 존치 [Lumentum IR/StockTitan, Coherent PR, tech-insider.org]
+> 6. **Vodafone-삼성 vRAN 2026 상용배치 확인 + 6G Rel-21 마드리드 9월 대기 유지** -- **Vodafone-삼성이 Intel Xeon 6 SoC 기반 vRAN 테스트콜 성공분을 2026년 중 상용 배치(하노버 첫 사이트 라이브, Wismar 2026초 Open RAN 완전전환 첫 도시, 5년 수천 사이트). AT&T 트래픽 ~50% 오픈가능 HW 유지**. 6G 3GPP Rel-21은 연구단계 지속(sub-THz D/G/H밴드 탐색+AI 웨이브폼+RIS), 마이그레이션(Standalone 6G/MRSS/NR<->6GR inter-RAT) 최종결정은 마드리드 TSG RAN#113(9/14~17) 대기(전주 대비 변동 없음) [TheFastMode, Samsung Newsroom, 3GPP Rel21 Timeline, Global 6G Conference]
+>
+> **(이전 갱신 -- 7/11 핵심 요약, 참고용)**:
+>
 > **2026.07.11 핵심 변화 요약 (7/4 이후 델타)**:
 >
 > 1. **SPCX Nasdaq-100 편입 7/7 완결 + 첫 공개실적 8/6로 확정(직전 KB 9/2에서 앞당김)** -- **7/7 Nasdaq-100 fast entry 발효로 ~$4.3B QQQ 강제매수(전체 Nasdaq-100·Russell 추적펀드 합산 최대 약 $27B 추정)**. **★첫 공개 분기실적 2026.08.06으로 조정(직전 KB의 9/2에서 변경) -- 실적 발표 후 내부자 보유분 최대 20% 매도 허용(락업 부분해제)**. Q1 2026 매출 $4.7B·Starlink 10.3M+ 가입자. 팔란티어 편입 후 궤적과 비교 분석 확산, 3% 플로트 희소성 지속 [TradingKey 7월, CNN Markets SPCX, Nasdaq, GuruFocus]
@@ -402,7 +413,7 @@ last_synced_from_db: 2026-07-11
 **Starlink (SpaceX):**
 
 - **IPO 후 급등→급락 반전(6/27 갱신)**: 6/12 Nasdaq 데뷔(SPCX) $150 listing -> 장중 피크 **$225.64(6/12)** -> 이후 큰 폭 조정해 **6/26(금) 약 $158 거래($150 listing 대비 +5%에 불과, IPO 피크 대비 -24%)**. 6/20 KB의 '$200~206 급등'에서 명확히 후퇴 -- 밸류 과열론 현실화. 555,555,555주 $75B 조달 / $1.75T 포스트밸류 -- 사상 최대 IPO. 투자수요 약 $250B 3.3배 초과청약, 머스크 듀얼클래스 지배, 퍼블릭 플로트 약 3%로 희소성 극대. 일부 애널 '미끼 주의(Don't take the bait)' 경고 [Invezz 6/26, Blockonomi, Yahoo Finance 6/26, ETF.com]
-- **지수 편입 발효(6/27 갱신)**: **FTSE Russell이 2026.06.26 종가 후 Russell 1000/Top 200/3000 편입 발효(5일 fast-entry 룰), 6/29(월)부터 거래 라이브** -- 패시브 강제매수 추정폭 보수적 약 $3B ~ Russell1000 추적펀드 한정 시 $22~27B. 6/26 금요일 주가 +3%(편입 대비 선반영). **MSCI 스탠다드/라지캡 6/26~29 편입(패시브 약 $3~5B). ★7/4 갱신: Nasdaq-100 편입 2026.07.07 확정 -> 약 $4.3B 인덱스펀드(QQQ 등) 강제매수 추정으로 3대 지수 패시브 웨이브 완결. 오버얼롯 전량 행사로 총 조달 약 $85.7B·밸류 약 $2.3T로 상향. 주가 7/1 $170.86 -> 7/2 $157.69 등락 반복(변동성 지속).** **S&P500는 GAAP 4분기 연속 흑자+시즈닝 요건 미충족(2025 -$4.9B)으로 차단 유지(최소 2027 중반 이후)**. 첫 공개 실적 2026.09.02 [Invezz 6/26, ETF.com, Basenor, SpotGamma, CME Group]
+- **지수 편입 발효(6/27 갱신)**: **FTSE Russell이 2026.06.26 종가 후 Russell 1000/Top 200/3000 편입 발효(5일 fast-entry 룰), 6/29(월)부터 거래 라이브** -- 패시브 강제매수 추정폭 보수적 약 $3B ~ Russell1000 추적펀드 한정 시 $22~27B. 6/26 금요일 주가 +3%(편입 대비 선반영). **MSCI 스탠다드/라지캡 6/26~29 편입(패시브 약 $3~5B). ★7/4 갱신: Nasdaq-100 편입 2026.07.07 확정 -> 약 $4.3B 인덱스펀드(QQQ 등) 강제매수 추정으로 3대 지수 패시브 웨이브 완결. 오버얼롯 전량 행사로 총 조달 약 $85.7B·밸류 약 $2.3T로 상향. 주가 7/1 $170.86 -> 7/2 $157.69 등락 반복(변동성 지속).** **S&P500는 GAAP 4분기 연속 흑자+시즈닝 요건 미충족(2025 -$4.9B)으로 차단 유지(최소 2027 중반 이후)**. **★7/18 갱신: Nasdaq-100 편입 7/7 완결에도 편입 후 약세 지속 -- 7/17 종가 근처 $131.11(52주 최저 $130.74 부근, IPO 피크 $225.64 대비 -42%, 7/11 $158 대비 -17%). 첫 공개 분기실적 2026.08.06(직전 9/2에서 앞당김) -> 발표 후 내부자 최대 20% 매도 허용(부분 락업해제). 팔란티어 편입 후 궤적 비교론 확산** [Yahoo Finance SPCX 7/17, TradingKey, Seeking Alpha, TheTechMarketer]
 - **밸류 회의론(6/6 유지)**: 첫날 +19% 강세에도 월가 일부 애널 "적정가는 제시가의 절반"('worth half the ask') -- 2025 -$4.9B 순손실 + 트레일링 매출 109~116x 고밸류 논쟁 지속 [TechTimes 2026.06.04]
 - **가입자 10.3M(2026 Q1말, S-1 공식 확인)**: 2023 2.3M→2024 4.4M→2025 8.9M→2026Q1 10.3M [SpaceX S-1]
 - **Connectivity Q1 2026 매출 $3.26B(전사 매출의 69%), 영업이익 $1.188B**. 2025 매출 $18.7B(Connectivity $11.4B=61%). **ARPU $66/월(2023 $99에서 하락 -- 국제 확장+저가 요금제)** [SpaceX S-1, CNBC, Via Satellite, TheTechMarketer]
@@ -531,6 +542,7 @@ last_synced_from_db: 2026-07-11
 - **IEEE ICC 2026(글래스고, 5/24~28) 참가**: 키노트, AI-driven 디지털트윈 패널, AI-native 6G 튜토리얼
 - **AI Grids 발표(GTC 2026)**: AT&T/Spectrum/Indosat 등 6개 주요 통신사가 분산 AI 인프라 배치 시작. IoT/게임/Sovereign AI 유스케이스 [NVIDIA Blog, DCD]
 - **NVIDIA Arc Aerial RAN Computer(6G-ready 컴퓨팅 플랫폼) 발표(5/30 갱신)**: Nokia가 글로벌 액세스 포트폴리오에 NVIDIA 기반 신규 AI-RAN 제품 추가. T-Mobile US 6G 개발에 통합, Dell PowerEdge 서버 구동, 2026 필드 트라이얼 [NVIDIA Newsroom, Nokia]
+- **Nokia 상용 AI-RAN 플랫폼 출시(7/18 갱신, 2026.07.15)**: 업계 첫 '상용' AI-RAN -- anyRAN + NVIDIA Aerial 기반, 스펙트럼 효율 20%+ 실증(2027 50%/2028 100%+ 목표), AirScale 확장카드/독립형 GPU 노드/클라우드 네이티브 COTS 3개 경로, 4G/5G/6G+Open RAN 준수, 상용 가용 2027 [Nokia Newsroom 7/15, GlobeNewswire, ConvergeDigest]
 - **NVIDIA-Nokia anyRAN 기능 테스트 성공(6/13 갱신)**: Nokia anyRAN SW를 NVIDIA GPU 가속 AI-RAN 플랫폼에서 T-Mobile·Indosat·SoftBank Corp와 검증 + 신규 고객 통합. **IEEE ComSoc 6/9 NVIDIA 신규 6G AI-RAN 루머 분석 게재** [NVIDIA Newsroom, Computer Weekly, IEEE ComSoc]
 - **젠슨 황 한국 AI 협약(6/13 갱신, 2026.06.08)**: SK하이닉스(차세대 HBM 공동개발 다년 파트너십)·SKT(기가와트급 AI 클라우드)·네이버·두산 일괄 발표 [StockTitan, Perplexity AI Magazine]
 - **NVIDIA 6G 글로벌 커밋(5/30 갱신)**: SK Telecom·SoftBank 포함 12사+(Booz Allen/BT/Cisco/Deutsche Telekom/Ericsson/MITRE/Nokia/OCUDU/ODC/SK Telecom/SoftBank/T-Mobile)가 AI-native·오픈·보안 6G 플랫폼 구축 선언 [NVIDIA Newsroom]
@@ -711,7 +723,9 @@ last_synced_from_db: 2026-07-11
 | Ericsson | SEK 49.3B | 유기적 +6%, 보고 -10% | FX SEK 7.8B 역풍, 구조조정 SEK 3.8B                                                                                                                                   |
 
 - Nokia: AI&Cloud 수주 EUR 1B(분기), Optical +20%. **Nokia TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%), 'AI 슈퍼사이클' 진단. 800G 코히어런트 플러거블 2026년 AI 네트워크 표준화. anyRAN SW를 T-Mobile·Indosat·SoftBank Corp와 NVIDIA GPU 가속 AI-RAN에서 검증(6/13)**
+- **Nokia 7/15: 업계 첫 '상용' AI-RAN 플랫폼 출시(anyRAN+NVIDIA Aerial)** -- 스펙트럼 효율 20%+ 실증, 2028년 100%+(트래픽 2배) 목표, 3개 배치경로(AirScale 확장카드/GPU 노드/COTS), 상용 2027. **Q2 2026 실적 7/23 발표(가이던스 OP EUR 2.0~2.5B, 컨센 매출 ~EUR 4.83B) -- NVIDIA 파트너십 매출화·산호세 램프 첫 검증대** [Nokia Newsroom 7/15, GlobeNewswire, Kavout, ad-hoc-news]
 - Ericsson: 유기적 성장 견조하나 FX/구조조정 부담. **OCUDU 재단 창립 프리미어 멤버**
+- **Ericsson Q2 2026(7/14 확정)**: 순매출 SEK 52.7B(-6% YoY, 유기적 -1%), 조정 GM 48.4%, Networks SEK 33B(-8%)·Networks 조정 GM 50.4%(전년 49.5%), 순이익 SEK 4.1B, Cloud SW&S SEK 14.7B(+5% 유기적, EBITA 12.4%). **마진 견조하나 EPS 미스. ★AI 칩 크런치: AI 하이퍼스케일러가 기지국용 DRAM 대량 소비 -> 부품비 인플레 향후 분기 실적 압박(가격인상+효율 대응). 5G 가입자 30억 돌파. 'AI in RAN' SW 구독형 6월 출시** [Ericsson PR 7/14, Benzinga, TechTimes]
 - **Samsung**: 글로벌 RAN 시장 3번째 옵션 부상. **3GPP TSG RAN 의장(김윤선) 확보로 표준화 영향력 확대. 삼성-AMD AI-RAN 상용 전환, Videotron 배치 선정, Tier1 미국 사업자 Xeon vRAN 첫 통화 성공(6/20)** [Omdia, Samsung Global Newsroom]
 
 ### 9.3 크로스 테마
