@@ -618,6 +618,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 10건)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-07-19 | macro/geopolitics.md | 이란 휴전 완전 붕괴·7.19 호르무즈 재폐쇄, 유가 Brent $88.10/WTI $82.49 급등, Section 122 만료 D-5·Section 301 임박, 대만 침범 지속(강도완화), 러-우 격화·교착, 북한 시험 N/A, NATO 앙카라 선언 확정 | +7 |
+| 2026-07-19 | macro/global_risk_factors.md | 6월 CPI 3.5% 급냉각·JPM Q2 +38.7% 서프라이즈 → 후반 반도체 셀오프(S&P 7,457·VIX 18.77)·이란 재확전(브렌트 $88·호르무즈 통항 6척)로 반전, 침체확률 Moody's AI 49%·GS 30% 상향. Top5 이란 2위 격상 | +13 |
+| 2026-07-19 | macro/political_cycle.md | 한은 7/16 25bp 인상 확정(2.75%·신현송)·6월 CPI 3.5% 둔화·이란 재확전(전면 봉쇄·유가 $79)·트럼프 39.4%/D+7·Section 301 46개국·GENIUS 7/18·佛 르코르뉘 사임 | +14 |
+| 2026-07-19 | industry/energy.md | 미이란 전면전 재격화 - Brent~88/WTI~82(+14%), JKM~19.93·TTF~17.4(카타르 해상 전면중단), GS Brent$100+ 시나리오, OBBB Notice2025-42, PJM경매 DC비용$6.3B·예비부족6.8GW, SMR추가하락(NuScale$7.64/Oklo$49.27) | +13 |
+| 2026-07-19 | macro/tech_breakthrough.md | AI 프런티어(Gemini GA 재불발·DeepSeek V4)·AI capex 버블(BIS 시스템리스크·MSFT $190B·Oracle/CoreWeave 로테이션)·TSMC 2Q26 실측·HBM4 2027 2배+·Optimus/Unitree/Figure/Waymo·CagriSema 미승인 정정·양자x핵융합 | +13 |
+| 2026-07-19 | industry/science_tech.md | SPCX 7/18 신저점 $123.99(ATH -45%)·Starship F13 NET 7/20·ASTS $1B 전환사채; 핵융합 FIA 누적 $14.24B·Proxima $518M 신규; IonQ 8/5 실적 촉매(그룹 -60~76%); 中 SSB 국가표준·Isomorphic AI약 인체임상 임박 | +11 |
 | 2026-07-18 | macro/supply_chain.md (SSOT) | **공급망 주간 갱신(17회 검색, +15 DB 레코드)** -- **★호르무즈 전면 재격화★** 7/12~~15 미·이란 6일연속 교전·미군 CENTCOM 7/14 봉쇄 재개(이란 선박)·6/17 MOU 완전 사문화(7/11 예고 Bear 시나리오 현실화). 이란 초대형유조선 2척 타격 주장·UAE 유조선 2척 피격(1명 사망). 에너지·LNG 급반등 **JKM $19.93(7/16 +18.5% DoD, 7/9 $16.58서)·Brent $85.95·WTI $82.49(주간 +10%)**. 홍해 복귀 지속(Maersk/Hapag 수에즈 AE15+MECL) — 리스크 축 완전히 호르무즈로 이동. 컨테이너 피크 소진 **WCI $4,547(-2% WoW)** vs 벌크 **BDI 2,929(Capesize -5.6%)**. 관세 3중 중첩 **122 7/24 만료 D-6→301(15국10%+45국12.5%, 한국12.5%)+제약 232 100% 7/31(한국15%)+8/1 EU·멕시코 30%**. HBM4 **~$500·내년 2배**·DDR5 32GB **$375**·Q3 냉각 +13~18% QoQ·CoWoS **150K/NVIDIA ~595K/TSMC $56B**·TSMC AZ Fab1 **NVIDIA Blackwell 양산**. 희토류 **Dy FOB $261.63·中지수 272.2·선적 -50%**. 구리 **COMEX $6.17/LME $13,298·재고 -18%**. 흑연 11.10/11.27 유예. 변압기 3~5년·switchgear 2028매진 | +15 |
 | 2026-07-12 | macro/global_risk_factors.md | 이란-호르무즈 재확전(브렌트$78) Top5 재격상 + VIX15.84·HY2.70% 복합최저 안도랠리 + IMF 3.0% 하향 + 일본JGB 3.93% 후퇴 | +8 |
 | 2026-07-12 | macro/tech_breakthrough.md | AI 프런티어 GA러시(GPT-5.6 7/9·Gemini 7/17타깃)+capex $725B Q2실적·HBM4 BofA $54.6B/UBS SK70%·TSMC 7/16 Q2·GLP-1 Medicare $50·Optimus 주간램프·Waymo 50만회/주 | +7 |
