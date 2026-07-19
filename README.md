@@ -31,25 +31,25 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      7일 cutoff (KST 기준), 날짜 desc, reports/briefing/*.html 스캔.
 -->
 <!-- BEGIN AUTOGEN: recent-briefing -->
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260719.html) — 2026-07-19
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260718.html) — 2026-07-18
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260718.html) — 2026-07-18
+- [성과 리뷰 1M](https://stock-analyst-jungwon1.vercel.app/reports/briefing/performance_review_1m_20260718.html) — 2026-07-18
+- [내 포트폴리오](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260718.html) — 2026-07-18
+- [주간 리포트](https://stock-analyst-jungwon1.vercel.app/reports/briefing/weekly_20260718.html) — 2026-07-18
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260717.html) — 2026-07-17
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260717.html) — 2026-07-17
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260716.html) — 2026-07-16
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260716.html) — 2026-07-16
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260715.html) — 2026-07-15
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260715.html) — 2026-07-15
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260714.html) — 2026-07-14
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260714.html) — 2026-07-14
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260713.html) — 2026-07-13
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260713.html) — 2026-07-13
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260712.html) — 2026-07-12
+- [글로벌 인텔리전스](https://stock-analyst-jungwon1.vercel.app/reports/briefing/global_intelligence_20260712.html) — 2026-07-12
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260712.html) — 2026-07-12
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260711.html) — 2026-07-11
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260711.html) — 2026-07-11
-- [성과 리뷰 1M](https://stock-analyst-jungwon1.vercel.app/reports/briefing/performance_review_1m_20260711.html) — 2026-07-11
-- [내 포트폴리오](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260711.html) — 2026-07-11
-- [주간 리포트](https://stock-analyst-jungwon1.vercel.app/reports/briefing/weekly_20260711.html) — 2026-07-11
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260710.html) — 2026-07-10
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260710.html) — 2026-07-10
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260709.html) — 2026-07-09
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260709.html) — 2026-07-09
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260708.html) — 2026-07-08
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260708.html) — 2026-07-08
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260707.html) — 2026-07-07
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260707.html) — 2026-07-07
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260706.html) — 2026-07-06
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260706.html) — 2026-07-06
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260705.html) — 2026-07-05
-- [글로벌 인텔리전스](https://stock-analyst-jungwon1.vercel.app/reports/briefing/global_intelligence_20260705.html) — 2026-07-05
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260705.html) — 2026-07-05
 <!-- END AUTOGEN: recent-briefing -->
 
 ### 누적
@@ -61,7 +61,7 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      데이터 소스: reports/*.html (직속) + reports/briefing/*.html + reports/analyst/items/ 디렉토리.
 -->
 <!-- BEGIN AUTOGEN: counts -->
-종목·ETF **167건** + 브리핑 **236건** + 애널리스트 **707건** = 총 **1110건** (2026-07-12 기준)
+종목·ETF **151건** + 브리핑 **254건** + 애널리스트 **824건** = 총 **1229건** (2026-07-19 기준)
 <!-- END AUTOGEN: counts -->
 
 ## 변경 이력
