@@ -1,0 +1,1713 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>모닝 브리핑 — 2026-07-20</title>
+    <!-- ===== CSS ===== -->
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      /* 레짐 스트립 [v3.29] — 최근 30일 위험선호 레짐 (regime.json strip_html 그대로 삽입) */
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      /* 색상 클래스 */
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      /* 셀 배경 */
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      /* 섹션 카드 */
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      /* 표 — 금융 데이터 표준 (소형 헤더 + tabular 숫자) */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      /* debate-card (보라) — 핵심 논쟁 */
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      /* contrarian-card (주황) — 과소평가 포인트 */
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      /* 시그널 바 */
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      /* 히트맵 (6셀) */
+      .heatmap {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .heatmap .cell {
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .heatmap .green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .heatmap .yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .heatmap .red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+
+      /* 시나리오 트리 (G-8) */
+      .scenario-tree {
+        margin: 14px 0;
+      }
+      .scenario-tree .root {
+        text-align: center;
+        padding: 12px;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-radius: 8px;
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+      }
+      .scenario-tree .branches {
+        display: flex;
+        gap: 14px;
+      }
+      .scenario-tree .branch {
+        flex: 1;
+        padding: 14px;
+        border-radius: 8px;
+      }
+      .scenario-tree .branch.a {
+        background: color-mix(in srgb, var(--up) 6%, transparent);
+        border: 1px solid var(--up);
+      }
+      .scenario-tree .branch.b {
+        background: color-mix(in srgb, var(--down) 6%, transparent);
+        border: 1px solid var(--down);
+      }
+      .scenario-tree .prob-bar {
+        width: 100%;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        height: 6px;
+        border-radius: 3px;
+        margin-top: 8px;
+      }
+      .scenario-tree .prob-bar .fill {
+        height: 6px;
+        border-radius: 3px;
+      }
+
+      /* 연쇄 효과 플로우 (G-6) */
+      .cascade {
+        margin: 14px 0;
+      }
+      .cascade .step {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 8px 0;
+      }
+      .cascade .first {
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-left: 3px solid var(--neutral);
+      }
+      .cascade .second {
+        background: color-mix(in srgb, var(--highlight) 8%, transparent);
+        border-left: 3px solid var(--highlight);
+      }
+      .cascade .third {
+        background: color-mix(in srgb, var(--warning) 8%, transparent);
+        border-left: 3px solid var(--warning);
+      }
+
+      /* 4종 포트폴리오 그리드 */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin: 16px 0;
+      }
+      .portfolio-card {
+        background: color-mix(in srgb, var(--text) 4%, transparent);
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .portfolio-card h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      /* 태그 시스템 */
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+      .tag-green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .tag-yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+      }
+      .tag-purple {
+        background: color-mix(in srgb, var(--debate) 14%, transparent);
+        color: var(--debate);
+      }
+
+      /* 이벤트 배지 */
+      .event-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .badge-critical {
+        background: color-mix(in srgb, var(--down) 18%, transparent);
+        color: var(--down);
+        border: 1px solid var(--down);
+      }
+      .badge-high {
+        background: color-mix(in srgb, var(--warning) 18%, transparent);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+      .badge-normal {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+        border: 1px solid var(--highlight);
+      }
+
+      /* 이슈 카드 */
+      .issue-card {
+        background: color-mix(in srgb, var(--text) 3%, transparent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 10px 0;
+        border-left: 3px solid var(--border);
+      }
+      .issue-card.critical {
+        border-left-color: var(--down);
+      }
+      .issue-card.high {
+        border-left-color: var(--warning);
+      }
+      .issue-card.normal {
+        border-left-color: var(--highlight);
+      }
+      .issue-title {
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+      .issue-secondary {
+        color: var(--sub);
+        font-size: 13px;
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
+      }
+
+      /* 시그널 아이템 (수평 정렬) */
+      .signal-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0;
+        font-size: 14px;
+      }
+      .signal-label {
+        width: 120px;
+        flex-shrink: 0;
+        color: var(--sub);
+      }
+      .signal-value {
+        width: 120px;
+        flex-shrink: 0;
+        font-weight: 600;
+      }
+      .signal-bar-wrap {
+        flex: 1;
+      }
+
+      /* 위험도 게이지 */
+      .risk-gauge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+      }
+      .risk-dots {
+        display: flex;
+        gap: 4px;
+      }
+      .risk-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+      }
+      .risk-dot.active-1,
+      .risk-dot.active-2 {
+        background: var(--up);
+      }
+      .risk-dot.active-3 {
+        background: var(--warning);
+      }
+      .risk-dot.active-4,
+      .risk-dot.active-5 {
+        background: var(--down);
+      }
+
+      /* 프리마켓 배지 */
+      .premarket-badge {
+        display: inline-block;
+        background: rgba(88, 166, 255, 0.12);
+        border: 1px solid var(--highlight);
+        color: var(--highlight);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+      }
+
+      /* 13F 시차 경고 */
+      .warning-13f {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .warning-13f::before {
+        content: "⚠️ ";
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      /* 주의사항 (F-7, G-9) */
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      /* 예측 시장 (Polymarket) */
+      .prediction-bar {
+        margin: 6px 0;
+        height: 24px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .prediction-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .prediction-bar .fill.high {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .prediction-bar .fill.mid {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .prediction-bar .fill.low {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .prediction-bar .pct {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .pm-change-up {
+        color: var(--up);
+        font-size: 12px;
+      }
+      .pm-change-down {
+        color: var(--down);
+        font-size: 12px;
+      }
+      .pm-source {
+        color: var(--sub);
+        font-size: 11px;
+        font-style: italic;
+        margin-top: 6px;
+      }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .heatmap {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .scenario-tree .branches {
+          flex-direction: column;
+        }
+        .signal-label {
+          width: 80px;
+        }
+        .signal-value {
+          width: 90px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* 모듈 전용 */
+      .checkpoint-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin: 10px 0;
+      }
+      .checkpoint-box {
+        padding: 12px 14px;
+        border-radius: 8px;
+        font-size: 13.5px;
+      }
+      .checkpoint-box.watch {
+        background: color-mix(in srgb, var(--down) 7%, transparent);
+        border-left: 3px solid var(--down);
+      }
+      .checkpoint-box.ignore {
+        background: color-mix(in srgb, var(--text) 4%, transparent);
+        border-left: 3px solid var(--neutral);
+      }
+      .checkpoint-box ul {
+        margin: 6px 0 0 16px;
+      }
+      @media (max-width: 600px) {
+        .checkpoint-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== 테마 토글 (상단 고정) ===== -->
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <div class="header">
+      <h1>🌅 모닝 브리핑 — 2026-07-20 (월)</h1>
+      <div class="meta">
+        briefing-lead 작성 | KST 09:20 | 데이터 기준: 직전 미국 정규장 7/17(금)
+        종가(ET 16:00 / KST 7/18 05:00 마감) — 토·일 휴장으로 불변 · 월요일
+        재개장 선물 · 한국·아시아 7/20(월) 재개장 직후
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 중립 20일째 — 추세 횡보(MA20 -0.3%) · VIX 18.8(중) · 10Y
+        4.54%(중립) · F&amp;G 37.1(공포) → 가중치 횡보장
+      </div>
+      <div class="regime-strip">
+        <span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-20 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-21 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-22 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-23 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-24 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-25 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-26 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-27 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-28 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-06-29 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-30 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-01 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-02 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-03 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-04 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-06 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-07 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-08 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-09 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-10 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-11 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-12 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-13 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-14 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-15 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-16 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-17 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-18 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-19 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-20 중립"
+        ></span
+        ><span class="rg-label">레짐 최근 30일</span>
+      </div>
+    </div>
+
+    <!-- 0.5 오늘의 핵심 논지 -->
+    <div class="sec" style="border-left: 4px solid var(--highlight)">
+      <h2>오늘의 핵심 논지</h2>
+      <p>
+        <strong>주장:</strong> 재개장 첫날 시장은 3거래일치 악재(이란 확전·Kimi
+        K3 여파)를 프리마켓에서 상당 부분 흡수한 모습(S&amp;P500 선물 금 현물比
+        +0.61%)이지만, 유가만은 예외다 — WTI +2.46%·Brent +2.92%로 리스크
+        프리미엄이 구조화되며 강등된 HV1(인플레 재가속)의 포워드 재점화 축을
+        자극하고 있다.
+      </p>
+      <p>
+        <strong>분기 조건:</strong> 7/22(수) 알파벳·테슬라 CapEx 가이던스
+        유지·상향 시 HV3(AI CapEx 실수요) 확정, 하향 시 추세 전환 판정 /
+        7/24(목) Section 122 10% 글로벌관세 하드 선셋(연장 불가) / 8/12경 7월
+        CPI가 HV1 정식 판별자.
+      </p>
+      <p>
+        <strong>행동:</strong> 재개장 첫날 방향에 과잉 베팅 금지 — 4종
+        포트폴리오 공통으로 예비 실탄 유지 + 이번 주 삼중 관문(실적·관세·FOMC)
+        확인 후 대응.
+      </p>
+    </div>
+
+    <!-- 0. 핵심 요약 -->
+    <div class="sec">
+      <h2>0. 핵심 요약</h2>
+      <ol style="margin-left: 18px">
+        <li style="margin-bottom: 6px">
+          금요일(7/17) 정규장은 조정(S&amp;P -1.01%·나스닥 -1.40%·VIX
+          +12.19%)으로 마감했고 지난주 자체가 하락 주간(S&amp;P -1.6%·나스닥
+          -2.9%)이었으나, 월요일 재개장 선물은 소폭 반등(S&amp;P선물
+          +0.61%)했다. 다만 이란 확전 9일째로 유가만 급등 지속(WTI $83.79·Brent
+          $90.67) — "지수 안도 vs 유가 경계"의 분기다.
+        </li>
+        <li style="margin-bottom: 6px">
+          이번 주는 삼중 분기점이다 — 7/22(수) 알파벳·테슬라 실적(HV3 1차
+          판별자), 7/24(목) Section 122 관세 하드 선셋, 7/28~29 FOMC(동결
+          유력이나 9월 인상 논쟁 존속). 10Y는 4.54%로 리스크오프에도 내려오지
+          않아 헤지는 채권보다 금·현금 쪽이 유효하다.
+        </li>
+        <li>
+          하우스 뷰 5개 명제는 모두 상태 유지(HV1 약화·HV2 유효·HV3 유효·HV5
+          약화·HV6 유효) — 오늘 행동의 답은 재개장 첫날 방향에 대한 과잉 베팅이
+          아니라 예비 실탄 유지 + 관문 확인 후 대응이다.
+        </li>
+      </ol>
+    </div>
+
+    <!-- 하우스 뷰 점검 -->
+    <div class="sec">
+      <h2>
+        🏛️ 하우스 뷰 점검 (v6, 2026-07-18 5차 재심사 반영 · 모닝 권한 = 점검만)
+      </h2>
+      <table>
+        <tr>
+          <th>명제</th>
+          <th>상태</th>
+          <th>오늘 점검</th>
+        </tr>
+        <tr>
+          <td><strong>HV1</strong> 인플레 재가속 → Fed 매파적 장기화</td>
+          <td class="warning">약화</td>
+          <td>
+            포워드 축 시험 중 — 유가 급등(WTI $83.79)이 재점화 리스크를 자극하나
+            6월 CPI 냉각·미시간 기대인플레 4.2% 하락은 약화를 지지.
+            반증조건(10Y&lt;4.0%) 미충족(4.54%) → 폐기 아님. 판별자: 8/12 7월
+            CPI
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV2</strong> 금리發 반도체 디레이팅</td>
+          <td class="up">유효</td>
+          <td>
+            지지 — SOX 기술적 베어마켓 지속, 10Y 4.2% 미하회 + SOX 고점
+            미회복(반증 2조건 모두 미충족). 동인은 금리→AI ROI로 전환 중
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV3</strong> AI CapEx 실수요 무손상</td>
+          <td class="up">유효</td>
+          <td>
+            판별 임박 — 7/22 알파벳·테슬라 CapEx 가이던스가 직접 시험. 강등
+            2트리거 미충족 → 유효 유지, 추격도 손절도 아닌 관망
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV5</strong> Gold 구조적 강세(단기 조정)</td>
+          <td class="warning">약화</td>
+          <td>
+            Gold $3,990($4,000선 재하회, $4,200 미회복). $3,800 미하회로 구조론
+            자체는 유효. GLD 추격 금지
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HV6</strong> 크립토-나스닥 탈동조</td>
+          <td class="up">유효</td>
+          <td>
+            지지 — BTC $64,924($80K 미회복), 30일 상관 +0.235(나스닥↔BTC
+            -1.16σ). 시장 방향성 참고 지표로만
+          </td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        모닝 권한 = 점검만. 상태 변경 없음. HV1 포워드 축(유가·관세)이 이번 주
+        집중 시험대. 정식 판정은 다음 주간리포트.
+      </p>
+    </div>
+
+    <!-- A-1 -->
+    <div class="sec">
+      <h2>
+        A-1. 미국 시장 — 직전 정규장(D-1 7/17 금) 종가 + 월요일 재개장 선물
+      </h2>
+      <table>
+        <tr>
+          <th>지표</th>
+          <th>7/17(금) 종가 [실측]</th>
+          <th>주간 변동</th>
+          <th>월요일 선물/24h [실측, KST 09시대]</th>
+        </tr>
+        <tr>
+          <td><strong>S&amp;P 500</strong></td>
+          <td class="down">7,457.69 (-1.01%)</td>
+          <td class="down">-1.6%</td>
+          <td class="up">선물 7,503.50 (금 현물比 <strong>+0.61%</strong>)</td>
+        </tr>
+        <tr>
+          <td><strong>NASDAQ / 나스닥100 선물</strong></td>
+          <td class="down">25,520.24 (-1.40%)</td>
+          <td class="down">-2.9%</td>
+          <td class="up">나스닥100 선물 +0.31%</td>
+        </tr>
+        <tr>
+          <td><strong>다우 / 선물</strong></td>
+          <td class="down">(금 -0.9% 주간)</td>
+          <td class="down">-0.9%</td>
+          <td class="down">다우 선물 -0.04%</td>
+        </tr>
+        <tr>
+          <td><strong>VIX</strong></td>
+          <td class="warning">18.77 (금 +12.19%)</td>
+          <td class="warning">상승</td>
+          <td class="neutral">regime 18.8 (중)</td>
+        </tr>
+        <tr>
+          <td><strong>미 10Y</strong></td>
+          <td class="neutral">4.54%</td>
+          <td class="warning">미하락</td>
+          <td class="warning">리스크오프에도 4.0%대 멀다</td>
+        </tr>
+        <tr>
+          <td><strong>WTI / Brent</strong></td>
+          <td class="up">(금 +3.57%)</td>
+          <td class="up">+10%+</td>
+          <td class="up"><strong>$83.79 (+2.46%) / $90.67 (+2.92%)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Gold</strong></td>
+          <td class="neutral">—</td>
+          <td class="neutral">—</td>
+          <td class="down">$3,990.60 (-0.66%, $4,000선 재하회)</td>
+        </tr>
+        <tr>
+          <td><strong>USD/KRW · DXY</strong></td>
+          <td class="neutral">—</td>
+          <td class="neutral">—</td>
+          <td class="neutral">1,488.48원 · DXY 100.83</td>
+        </tr>
+        <tr>
+          <td><strong>BTC / ETH</strong></td>
+          <td class="neutral">—</td>
+          <td class="neutral">—</td>
+          <td class="up">$64,924 (+1.66%) / $1,887 (+2.59%)</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        <strong>핵심</strong>: 미국 정규장 확정 종가는 금 7/17 그대로(토·일
+        휴장). 월요일 선물은 소폭 반등이나 유가만 급등 지속 — "지수 안도 vs 유가
+        경계"의 분기. VIX 18.8은 '중' 구간, 패닉 아님.
+      </p>
+    </div>
+
+    <!-- A-2 -->
+    <div class="sec">
+      <h2>A-2. 주말~월요일 전개 + 이번 주 관전 포인트</h2>
+      <h3>주말 전개 (7/18~20)</h3>
+      <ol style="margin-left: 18px">
+        <li style="margin-bottom: 6px">
+          <strong>이란-미국 무력충돌 9일째</strong> [인용] — 미군 9일 연속 공습,
+          호르무즈 해협 해군 봉쇄 재개(글로벌 원유·연료 약 1/5 경유), IRGC
+          시리아 기습. 유가 주간 +10%+.
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong>미국 선물 야간 재개장</strong> [실측] — 지난주 하락 주간 이후
+          보합권에서 소폭 반등으로 전환.
+        </li>
+        <li>
+          <strong>관세 시계</strong> [인용] — Section 122 10% 글로벌관세 권한
+          7/24 만료 예정 + CIT 위헌 판결 항소 중으로 법적 근거 유동적.
+        </li>
+      </ol>
+      <h3>이번 주 이벤트 캘린더 (macro_20260720 연계)</h3>
+      <table>
+        <tr>
+          <th>일자</th>
+          <th>이벤트</th>
+          <th>의미</th>
+        </tr>
+        <tr>
+          <td><strong>7/22(수)</strong></td>
+          <td>GOOGL·TSLA 실적 + CapEx 가이던스</td>
+          <td class="highlight">
+            <strong>HV3 1차 판별자</strong> — AI 인프라 투자 지속성
+          </td>
+        </tr>
+        <tr>
+          <td><strong>7/24(목)</strong></td>
+          <td>Section 122 10% 글로벌관세 하드 선셋(D-4)</td>
+          <td>대통령 연장 불가 — 법적 유동성</td>
+        </tr>
+        <tr>
+          <td><strong>7/27(일)</strong></td>
+          <td>Kimi K3 전체 가중치 공개 + CXMT 상장</td>
+          <td>벤치마크 독립검증 개시</td>
+        </tr>
+        <tr>
+          <td><strong>7/28-29</strong></td>
+          <td>FOMC (SEP 없음)</td>
+          <td>동결 유력이나 9월 인상 논쟁 존속</td>
+        </tr>
+        <tr>
+          <td><strong>8/1(토)</strong></td>
+          <td>EU·멕시코 30% 관세 발효</td>
+          <td>HV1 포워드 재점화 축</td>
+        </tr>
+        <tr>
+          <td><strong>8/12경</strong></td>
+          <td>7월 CPI(유가 청구서 반영)</td>
+          <td class="highlight"><strong>HV1 정식 판별자</strong></td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        지금까지 S&amp;P500 발표 기업 95%가 EPS 서프라이즈 [인용] — 실적시즌
+        톤은 우호적 출발.
+      </p>
+    </div>
+
+    <!-- A-3 -->
+    <div class="sec">
+      <h2>A-3. 오늘(월) 아시아 시장 — 재개장 관전</h2>
+      <ul style="margin-left: 18px">
+        <li style="margin-bottom: 6px">
+          <strong>한국(코스피/코스닥)</strong>: KST 09시 재개장. 실측
+          시가·외국인/기관 수급·국내 고시환율은 개장 직후라 제공처 반영 지연 →
+          본 브리핑 시점 미형성(익일 모닝/금일 이브닝 보강) [미수집].
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong>관전 포인트</strong>: ① 반도체(삼성전자·SK하이닉스) — SOX
+          베어마켓 + Kimi K3 여파를 3세션 만에 첫 반영, ② 정유·화학 — 유가 급등
+          수혜/원가 부담 분화, ③ 원화 — USD/KRW 1,488원대(달러 소폭 강세) + 유가
+          수입비용.
+        </li>
+        <li>
+          <strong>한국 특수 노출</strong>: 원유수입 호르무즈 경유 95% · 중동
+          의존 70.7% [KB, macro] → 도입비용·물류 갭리스크 정면 노출. 반도체
+          외다리 리스크(수출 43.8%)와 중첩.
+        </li>
+      </ul>
+    </div>
+
+    <!-- A-4 -->
+    <div class="sec">
+      <h2>A-4. 오늘의 체크포인트 (주시 vs 무시)</h2>
+      <div class="checkpoint-grid">
+        <div class="checkpoint-box watch">
+          <strong class="down">🔴 주시</strong>
+          <ul>
+            <li>
+              월요일 재개장 첫 반응 — 선물 +0.6% 반등이 정규장까지 이어지는지,
+              아니면 유가·SOX 악재로 뒤집히는지.
+            </li>
+            <li>
+              유가 되돌림 여부 — WTI $83.79 지속·추가 급등이면 HV1 포워드 재점화
+              축 강화. WTI↔BEI 전이(재개장 후 재계산 대상)가 핵심.
+            </li>
+            <li>
+              10Y 4.54% 방향 — 4.0% 접근 시 HV1 약화→폐기 트리거 근접(현재
+              멀다).
+            </li>
+          </ul>
+        </div>
+        <div class="checkpoint-box ignore">
+          <strong class="neutral">⚪ 무시</strong>
+          <ul>
+            <li>
+              선물 소폭 등락 자체 — 방향 참고용, 정규장 아님. 3세션치 누적이라
+              변동폭 클 수 있음(과대해석 금지).
+            </li>
+            <li>
+              크립토 24시간 반등 — HV6(탈동조) 유효, 시장 방향성 참고 지표로만.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="warning-13f">
+      13F 시차 경고: Q1 2026 13F(포지션일 2026-03-31, 공시 2026-05-15) 기준 —
+      최대 3.5개월 전 스냅샷. "현재 보유 중"이 아니다. Berkshire 외 7인은 원자료
+      미수집(동향은 후속보도 기반).
+    </div>
+
+    <!-- A-5 -->
+    <div class="sec">
+      <h2>A-5. 거물 투자자 동향 스냅샷 (8인 워치리스트)</h2>
+      <table>
+        <tr>
+          <th>투자자</th>
+          <th>상태</th>
+          <th>핵심</th>
+        </tr>
+        <tr>
+          <td><strong>Warren Buffett</strong> (BRK)</td>
+          <td class="up">확인 완료</td>
+          <td>
+            $263.10B · 29종목. AAPL Top1(21.99%). 후속보도 GOOGL 약 3배 확대 —
+            수요일 알파벳 실적이 직접 시험
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Bill Ackman</strong> (Pershing)</td>
+          <td class="neutral">원자료 미수집</td>
+          <td>
+            후속보도: GOOGL 95%+ 청산 → MSFT 재배치 — Berkshire와
+            정반대(다이버전스 미해소)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Cathie Wood</strong> (ARK)</td>
+          <td class="neutral">원자료 미수집</td>
+          <td>
+            AI·크립토·헬스케어 테마 확대. TSLA Top1 — 화요일 테슬라 실적 노출
+          </td>
+        </tr>
+        <tr>
+          <td>Ray Dalio (Bridgewater)</td>
+          <td class="neutral">미수집</td>
+          <td>Q4 2025 최종: SPY/IVV Top2 · NVDA +54% · ORCL +361%</td>
+        </tr>
+        <tr>
+          <td>Michael Burry (Scion)</td>
+          <td class="neutral">N/A</td>
+          <td>2025-11 펀드 해산 — 추적 종료</td>
+        </tr>
+        <tr>
+          <td>Stanley Druckenmiller</td>
+          <td class="neutral">미수집</td>
+          <td>Q4 2025 최종: NTRA Top1 · GOOGL +277% · AMZN +69%</td>
+        </tr>
+        <tr>
+          <td>Howard Marks (Oaktree)</td>
+          <td class="neutral">미수집</td>
+          <td>
+            Q4 2025 최종: EXE Top1(에너지) · 금광(AU) — 이란 확전·유가 급등과
+            정합
+          </td>
+        </tr>
+        <tr>
+          <td>David Tepper (Appaloosa)</td>
+          <td class="neutral">미수집</td>
+          <td>
+            Q4 2025 최종: BABA Top1 · MU +200%(HBM) · EWY 신규(한국 반도체) —
+            SOX 베어마켓 최대 역풍
+          </td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        🔎 <strong>읽을거리</strong>: Howard Marks의 에너지(EXE)·금광 베팅이
+        이란 확전·유가 급등 국면에서 가장 정합적. 반대로 Tepper의 MU·EWY(한국
+        반도체)는 Kimi K3 + 월요일 재개장 리스크가 최대 역풍. Buffett(GOOGL
+        확대) vs Ackman(GOOGL 청산) 다이버전스는 수요일 알파벳 실적이 1차 판정.
+      </p>
+
+      <h3>🔦 인사이더 클러스터 매수 Top 5 (openinsider, 7/20 06:42 갱신)</h3>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>티커</th>
+          <th>기업</th>
+          <th>매수인</th>
+          <th>규모</th>
+          <th>거래일</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>ELV</strong></td>
+          <td>Elevance Health (건강보험)</td>
+          <td>2인</td>
+          <td>$1.4M @ $367.32</td>
+          <td>7/17</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>VIRC</strong></td>
+          <td>Virco Mfg (가구)</td>
+          <td>2인</td>
+          <td>—</td>
+          <td>7/15</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>GLOO</strong></td>
+          <td>Gloo Holdings (데이터처리)</td>
+          <td>4인</td>
+          <td>—</td>
+          <td>7/10</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>IPX</strong></td>
+          <td>Iperionx (티타늄 광물)</td>
+          <td>2인</td>
+          <td>@ $3.95</td>
+          <td>7/10</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>UUUU</strong></td>
+          <td>Energy Fuels (우라늄·희토류)</td>
+          <td>2인</td>
+          <td>—</td>
+          <td>7/8</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        헬스케어(ELV·방어)·소재/원자재(IPX 티타늄·UUUU 우라늄) 클러스터 —
+        방어+실물자산 편향. 지정학·인플레 헤지 방증과 정합 [KB].
+      </p>
+    </div>
+
+    <!-- A-7 -->
+    <div class="sec">
+      <h2>A-7. 글로벌 매크로 핵심 시사점 (MODULE G 연계)</h2>
+      <h3>
+        ① 이란 확전 9일째 — 유가 리스크 프리미엄 구조화, HV1 약화 판정의 포워드
+        축 자극 [G-1 지정학 · G-4 에너지]
+      </h3>
+      <p style="margin-bottom: 6px">
+        <strong>사실</strong>: 호르무즈 봉쇄 재개 + 유가 주간 +10%+ (WTI $83.79
+        · Brent $90.67) [실측/인용]. 6/17 폐기된 HV4(중동 유가 리스크)의 전제가
+        되살아나는 중이나 정식 재채택은 유가→인플레 전이 확인 후(현재 WTI↔BEI
+        -1.51σ = 전이 실패 신호).
+      </p>
+      <p style="margin-bottom: 6px">
+        <strong>전이 경로</strong>: 유가 급등 → 헤드라인 인플레 상방 → 강등된
+        HV1('약화')의 포워드 재점화 축을 자극. 단 6월 CPI(냉각)는 유가 급등 전
+        조사분 → 8/12경 7월 CPI가 진짜 유가 청구서. 관세 8/1과 중첩.
+      </p>
+      <p>
+        <strong>오늘 행동 함의</strong>: 에너지(XLE) 소폭 우호이나 추격 금지.
+        SGOV 현금 캐리 유효(10Y 4.54%). 한국은 호르무즈 경유 95%로 도입비용
+        갭리스크 정면 노출.
+      </p>
+
+      <h3>
+        ② 이번 주 삼중 분기점 — 실적(GOOGL·TSLA) + 관세(Section 122 선셋) + FOMC
+        [G-2 정치 · G-3 기술]
+      </h3>
+      <p style="margin-bottom: 6px">
+        <strong>사실</strong>: 7/22 알파벳·테슬라 CapEx 가이던스 = HV3 1차
+        판별자. 7/24 Section 122 하드 선셋(대통령 연장 불가). 7/28-29 FOMC 동결
+        유력.
+      </p>
+      <p style="margin-bottom: 6px">
+        <strong>전이 경로</strong>: Kimi K3(효율 모델) → "AI 인프라 과잉투자"
+        우려로 SOX 베어마켓. 반론(HV3): 효율↑ → 추론비용↓ → 사용량 폭증(Jevons
+        역설). 하이퍼스케일러 CapEx 유지·상향이면 A(과매도)·하향이면 B(추세
+        전환).
+      </p>
+      <p>
+        <strong>오늘 행동 함의</strong>: "모델 효율 개선 ≠ 칩 수요 소멸" HV3
+        프레임 유지. 강등 2트리거(HY 2.9%+ / 8월 CapEx 하향) 미충족 → 관망.
+        화·수 실적이 1차 판별자.
+      </p>
+    </div>
+
+    <!-- ★ debate-card -->
+    <div class="debate-card">
+      <div class="card-title">
+        💜 핵심 논쟁 — Kimi K3 딥시크 모먼트, AI 인프라 '과잉투자'의 신호탄인가
+        저가 매수 기회인가?
+      </div>
+      <div class="bull">
+        <strong>강세 측:</strong> 효율↑ → 추론비용↓ → 사용량 폭증(Jevons 역설).
+        딥시크 1차(2025.1) 이후 하이퍼스케일러 CapEx는 오히려 상향됐고,
+        S&amp;P500 발표기업 95%가 EPS 서프라이즈를 기록 중이다. 판별자: 7/22
+        알파벳 CapEx 유지·상향($180-190B) → 강세 확정.
+      </div>
+      <div class="bear">
+        <strong>약세 측:</strong> 모델 효율 개선은 칩 수요 정점의 신호일 수
+        있다. SOX 지수는 이미 기술적 베어마켓에 진입하며 이를 선반영했고, 7/27
+        Kimi K3 전체 가중치 공개로 독립검증 리스크가 남아있다. 판별자: 7/22
+        CapEx 하향 또는 7/27 벤치마크 검증 실패 → 약세 확정.
+      </div>
+      <div class="verdict">
+        <strong>briefing-lead 판단:</strong> HV3(AI CapEx 실수요 무손상) 유효
+        유지 — 강등 2트리거 미충족. "모델 효율 개선 ≠ 칩 수요 소멸" 프레임.
+        화·수 실적 확인 전까지는 추격도 손절도 아닌 관망.
+      </div>
+    </div>
+
+    <!-- ★ contrarian-card -->
+    <div class="contrarian-card">
+      <div class="card-title">
+        🟠 과소평가 포인트 — 7/24 Section 122 관세 하드 선셋의 법적 공백 리스크
+      </div>
+      <div class="assumption">
+        <strong>시장의 일반 가정:</strong> 관세 리스크는 8/1(EU·멕시코 30%)에
+        집중, 시장은 8월을 D-day로 본다.
+      </div>
+      <div class="signal">
+        <strong>반대 시그널:</strong> 그보다 먼저 오는 7/24(목) Section 122 10%
+        글로벌관세 권한이 하드 선셋을 맞는다. 대통령 연장이 법적으로 불가능하고
+        CIT 위헌 판결 항소가 진행 중이라 관세의 법적 근거 자체가 유동적이다. 8/1
+        신관세 발효와 7/24 기존 근거 만료가 겹치며 법적 공백·재편 리스크가 시장
+        레이더 밖에 있다. 이 유동성이 해소(연장 대체입법)되면 무이벤트지만,
+        공백이 드러나면 수입물가·기업 마진·인플레 경로(HV1)에 동시 파급된다.
+      </div>
+      <div class="probability">
+        <strong>확률:</strong> 중간 — 저비용 관찰 우위 구간, 액션 트리거는
+        아니다. 7/24 전후 관세 관련 헤드라인 주시.
+      </div>
+    </div>
+
+    <!-- 4종 모델 포트폴리오 방향 -->
+    <div class="sec">
+      <h2>4종 모델 포트폴리오 방향 체크</h2>
+      <p style="color: var(--sub); font-size: 13px; margin-bottom: 8px">
+        ⚠️ model_portfolios CURRENT 2026-06-01 기준 — 49일+ 경과 stale. 아래는
+        방향 점검만이며 비중 재산출이 아니다(정식 갱신은 /주간리포트(7/18
+        실행)·/모델포트폴리오 소관).
+      </p>
+      <table>
+        <tr>
+          <th>유형</th>
+          <th>시사점</th>
+          <th>방향</th>
+          <th>참고</th>
+        </tr>
+        <tr>
+          <td>🛡️ 방어형(안전형)</td>
+          <td>
+            Gold $3,990($4,000선 재하회) → HV5 약화 유지, GLD 추격 금지.
+            SGOV/BIL 현금 캐리 10Y 4.54%서 유효. 이란 확전 = 헤지 축(금·에너지)
+            우호이나 추격 금지
+          </td>
+          <td class="up">소폭 우호</td>
+          <td>현금 캐리 유효</td>
+        </tr>
+        <tr>
+          <td>⚖️ 균형형(중립형)</td>
+          <td>
+            리스크오프에도 10Y 4.54% 미추종 → 듀레이션 확대 근거 부족.
+            중기채(IEF) 유지, 장기채 회피
+          </td>
+          <td class="neutral">유지</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>🔥 공격형</td>
+          <td>
+            화·수 GOOGL·TSLA 실적 + 월요일 반도체 재개장 관문. HV3 유효 전제
+            낙폭 매수는 분할·조건부만, 추격 금지
+          </td>
+          <td class="warning">관망</td>
+          <td>예비 실탄 유지</td>
+        </tr>
+        <tr>
+          <td>💰 배당형</td>
+          <td>
+            에너지 배당(XLE) 이란發 우호. HY 무스트레스(2.71%) →
+            IG·배당성장(SCHD/VIG) 방어선 유효. 인사이더 ELV(건강보험)도 방어
+            방증
+          </td>
+          <td class="up">소폭 우호</td>
+          <td>인사이더 클러스터 정합</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 8px">
+        <strong>공통 시사점</strong>: 4종 모두 6/1 대비 근본 전제 미변경. 재개장
+        첫날 + 이번 주 삼중 분기점(실적·관세·FOMC) 앞에서 예비 실탄 유지 + 관문
+        확인 후 대응이 4종 공통 답. 비중 조정 근거는 아직 없다.
+      </p>
+    </div>
+
+    <!-- 데이터 신뢰도 -->
+    <div class="sec">
+      <h2>📊 데이터 신뢰도 / 미수집</h2>
+      <ul style="margin-left: 18px">
+        <li style="margin-bottom: 6px">
+          <strong>[실측]</strong>: 미국 선물·유가·금·크립토·환율(yfinance, KST
+          09시대) · 금 7/17 종가 · regime/F&amp;G(오늘 06:42 자동 갱신)
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong>[KB]</strong>: 하우스 뷰 v6 · 상관관계(7/19 표본 3일 계승) ·
+          인사이더 시그널 · 한국 원유 의존도
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong>[인용]</strong>: 이란 충돌·관세 시계·실적 캘린더(WebSearch
+          주말 교차검증) · 13F(Q1 2026, 분기말)
+        </li>
+        <li style="margin-bottom: 6px">
+          <strong>[미수집]</strong>: 한국·아시아 7/20 실측 개장
+          데이터(외국인/기관 수급·국내 고시환율 — 개장 직후 미형성, 익일/이브닝
+          보강) · 거물 7인 원자료(후속보도 기반)
+        </li>
+        <li>
+          <strong>⚠️ 시차</strong>: 13F 최대 3.5개월 · model_portfolios 49일
+          stale(방향 점검만) · correlation 표본 7/16 컷오프(재개장 후 재계산
+          예정)
+        </li>
+      </ul>
+    </div>
+
+    <!-- 심층 분석 권장 -->
+    <div class="sec bg-highlight">
+      <h2>🔬 심층 분석 권장 (다음 단계)</h2>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>티커</th>
+          <th>권장 사유</th>
+          <th>다음 단계</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>GOOGL</strong></td>
+          <td>
+            7/22(수) 실적 + CapEx 가이던스 = HV3 1차 판별자, Buffett↔Ackman 보유
+            다이버전스 시험대
+          </td>
+          <td><code>/종목분석 GOOGL</code></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>TSLA</strong></td>
+          <td>7/22(수) 실적 발표, ARK Cathie Wood Top1 보유 노출</td>
+          <td><code>/종목분석 TSLA</code></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>XLE</strong></td>
+          <td>
+            이란 확전 9일째 · 유가 급등 수혜, 배당형 포트폴리오 방향 점검용
+          </td>
+          <td><code>/종목분석 XLE</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 푸터 (명령어 가이드) -->
+    <div class="footer">
+      <h3>📌 다른 브리핑도 확인해보세요</h3>
+      <table>
+        <tr>
+          <td><code>/모닝브리핑</code></td>
+          <td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td>
+        </tr>
+        <tr>
+          <td><code>/이브닝브리핑</code></td>
+          <td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td>
+        </tr>
+        <tr>
+          <td><code>/주간리포트</code></td>
+          <td>→ 한 주 심층 + 성과 추적(C-9)</td>
+        </tr>
+        <tr>
+          <td><code>/리밸런싱</code></td>
+          <td>→ 4종 모델 포트폴리오 재조정</td>
+        </tr>
+        <tr>
+          <td><code>/크립토브리핑</code></td>
+          <td>→ BTC/ETH/SOL + 온체인 + 규제</td>
+        </tr>
+        <tr>
+          <td><code>/모델포트폴리오</code></td>
+          <td>→ 4종 현재 구성 + 구체 종목·ETF</td>
+        </tr>
+        <tr>
+          <td><code>/글로벌인텔리전스</code></td>
+          <td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td>
+        </tr>
+        <tr>
+          <td><code>/풀브리핑</code></td>
+          <td>→ A+B+C+E 4편 동시</td>
+        </tr>
+        <tr>
+          <td><code>/성과리뷰</code></td>
+          <td>→ 1주/2주/1개월/3개월 적중률</td>
+        </tr>
+        <tr>
+          <td><code>/내포트폴리오</code></td>
+          <td>→ 사용자 보유 자산 (개인 데이터 격리)</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 주의사항 -->
+    <div class="disclaimer">
+      <h4>⚠️ 주의사항</h4>
+      <ul>
+        <li>
+          본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도
+          추천이 아닙니다.
+        </li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>
+          13F 데이터는 분기말 기준 최대 45일 이상 시차가 있습니다(본 회차: 약
+          3.5개월).
+        </li>
+        <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+        <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <!-- 명령어 가이드 [v3.5] -->
+    <div class="footer" style="margin-top: 20px">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 크립토</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> A+B+C+E</div>
+        <div><code>/KB업데이트</code> KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+      </div>
+      <p style="margin-top: 14px; font-size: 12px; color: var(--sub)">
+        생성: briefing-report-generator | 데이터 기준: 직전 정규장 7/17(금) 종가
+        + 월요일 재개장 선물(KST 2026-07-20 09시대 실측)
+      </p>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
