@@ -44,15 +44,23 @@ function buildMacroRegime() {
         return s.value ?? null;
       };
 
+      // 지수형 시리즈는 원값(지수 레벨)이 아니라 전년 대비 %(yoy_pct)를 읽는다.
+      // PCEPILFE 원값(~130)을 상승률로 오독 → 레짐이 상시 '물가 높음' 판정된 사고 (2026-07-20).
+      const getYoy = (key) => {
+        const s = seriesArr.find(x => x.id === key);
+        if (!s) return null;
+        return s.yoy_pct ?? null;
+      };
+
       const ffr = getValue('DFF') || getValue('FEDFUNDS');
       const t10y = getValue('DGS10');
       const t2y = getValue('DGS2');
       const t10y2y = getValue('T10Y2Y');
-      const corePce = getValue('PCEPILFE');
+      const corePce = getYoy('PCEPILFE');
       const unrate = getValue('UNRATE');
       const hySpread = getValue('BAMLH0A0HYM2');
       const breakeven10y = getValue('T10YIE');
-      const gdp = getValue('A191RL1Q225SBEA');
+      const gdp = getYoy('GDPC1'); // A191RL1Q225SBEA는 스냅샷에 없음(상시 null) → 실질 GDP YoY로 교체
 
       result.indicators = {
         fed_funds_rate: ffr,
