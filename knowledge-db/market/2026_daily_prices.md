@@ -696,3 +696,24 @@ type: time_series
 | 2026-07-15 | commodity | Gold | 4063.50 | +0.06% | USD/oz | yfinance GC=F [2026-07-15 종가] | 2026-07-16T09:10:00+09:00 | — |
 | 2026-07-16 | crypto | BTC | 64742.00 | -0.33%(근사) | USD | yfinance BTC-USD [2026-07-16 KST 09:10 스냅샷] | 2026-07-16T09:10:00+09:00 | ⚠️ 7/15 일봉 데이터 결측, confidence medium |
 | 2026-07-16 | crypto | ETH | 1920.99 | +1.67%(근사) | USD | yfinance ETH-USD [2026-07-16 KST 09:10 스냅샷] | 2026-07-16T09:10:00+09:00 | ⚠️ 7/15 일봉 데이터 결측, confidence medium |
+| 2026-07-22 | asia_index | KOSPI | 6797.70 | +0.74% | point | yfinance(^KS11) [실측, 정규장 마감] | 2026-07-22T20:08:00+09:00 | 반도체 수출호조 랠리 연장 |
+| 2026-07-22 | asia_index | KOSDAQ | 751.09 | -0.30% | point | yfinance(^KQ11) [실측, 정규장 마감] | 2026-07-22T20:08:00+09:00 | 소폭 되돌림 |
+| 2026-07-22 | asia_index | Nikkei225 | 66115.60 | -0.18%(추정) | point | yfinance(^N225) [실측, KB확정 전일종가 대조] | 2026-07-22T20:08:00+09:00 | yfinance 캐시 전일종가와 0.25%p 상충 |
+| 2026-07-22 | asia_index | ShanghaiComposite | 3867.03 | +0.06% | point | yfinance(000001.SS) [실측] | 2026-07-22T20:08:00+09:00 | 보합권 |
+| 2026-07-22 | asia_index | HangSeng | 24892.66 | -0.95% | point | yfinance(^HSI) [실측] | 2026-07-22T20:08:00+09:00 | 반도체株 밸류에이션 경계감 |
+| 2026-07-22 | asia_index | SENSEX | 76755.05 | -0.92% | point | yfinance(^BSESN) [실측] | 2026-07-22T20:08:00+09:00 | 반도체株 밸류에이션 경계감 |
+| 2026-07-22 | us_index | SP500_futures | 7530.50 | -0.06%~-0.29% | point | yfinance(ES=F) + WebSearch(Benzinga ET05:39) [실측+인용] | 2026-07-22T20:08:00+09:00 | 프리마켓(ET07:08), 정규장 미개장 |
+| 2026-07-22 | us_index | NASDAQ100_futures | 29155.75 | -0.14%~-0.71% | point | yfinance(NQ=F) + WebSearch(Benzinga ET05:39) [실측+인용] | 2026-07-22T20:08:00+09:00 | 반도체 냉각 반영 |
+| 2026-07-22 | us_index | Dow_futures | 52424.00 | +0.08%~-0.09% | point | yfinance(YM=F) + WebSearch(Benzinga ET05:39) [실측+인용] | 2026-07-22T20:08:00+09:00 | 소스간 편차 |
+| 2026-07-22 | us_index | VIX | 17.36 | +1.82% | index | yfinance(^VIX) [실측] | 2026-07-22T20:08:00+09:00 | 20 미만 유지 |
+| 2026-07-22 | fx | USDKRW | 1479.20 | -0.06% | KRW | yfinance(KRW=X) [실측] | 2026-07-22T20:08:00+09:00 | 역외 실시간 |
+| 2026-07-22 | fx | DXY | 101.16 | +0.01% | index | yfinance(DX-Y.NYB) [실측] | 2026-07-22T20:08:00+09:00 | 보합권 |
+| 2026-07-22 | fx | USDJPY | 163.01 | -0.12% | JPY | yfinance(JPY=X) [실측] | 2026-07-22T20:08:00+09:00 | — |
+| 2026-07-22 | commodity | WTI | 87.11 | +2.11% | USD/barrel | yfinance(CL=F) [실측] | 2026-07-22T20:08:00+09:00 | 후티 사우디 해상봉쇄·호르무즈 리스크 |
+| 2026-07-22 | commodity | Gold | 4121.20 | -0.35% | USD/oz | yfinance(GC=F) [실측] | 2026-07-22T20:08:00+09:00 | $4,000선 상회 지속 |
+| 2026-07-22 | commodity | Copper | 6.516 | -0.11% | USD/lb | yfinance(HG=F) [실측] | 2026-07-22T20:08:00+09:00 | 보합 |
+| 2026-07-22 | bond | US10Y | 4.63 | +3bp | percent | yfinance(^TNX) [실측] | 2026-07-22T20:08:00+09:00 | 5월 중순 이후 고점권 유지 |
+| 2026-07-22 | bond | US2Y | 4.26 | — | percent | FRED T10Y2Y(0.37%p,7/21) 역산 [파생, medium] | 2026-07-22T20:08:00+09:00 | 직접 실측 아님 |
+| 2026-07-22 | bond | Spread2Y10Y | 37 | -3bp(전주比) | bp | FRED(T10Y2Y, 2026-07-21) | 2026-07-22T20:08:00+09:00 | 정상곡선 유지, 역전 아님 |
+| 2026-07-22 | crypto | BTC | 66005.77 | -0.77% | USD | yfinance(BTC-USD) [실측] | 2026-07-22T20:08:00+09:00 | 24h |
+| 2026-07-22 | crypto | ETH | 1927.70 | -0.05% | USD | yfinance(ETH-USD) [실측] | 2026-07-22T20:08:00+09:00 | 24h |
