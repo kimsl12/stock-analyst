@@ -214,6 +214,17 @@ python3 scripts/analyst_lookup.py {티커} --days 90 --limit 5
 ```
 
 출력(마크다운)을 수집 패키지 data.md 의 **"애널리스트 아카이브" 섹션**으로 그대로 포함.
+
+### 2.6 리서치 KB 컨텍스트 배달 [v3.40 신규, 2026-07-23]
+
+수집 마지막 단계에 1줄 실행 (로컬 파일 조합 — 네트워크·토큰 비용 없음, 실패해도 수집은 유효):
+
+```bash
+python3 scripts/build_research_context.py {티커} --dir analysis/{분석폴더}
+```
+
+산출 `research_context.md` 는 후속 분석가·scorecard 가 Read 해 인용한다 (인용 게이트 연동).
+리드가 이미 실행했으면 멱등 덮어쓰기라 무해.
 momentum-analyst (컨센서스·목표주가 비교) 와 scorecard-strategist (목표가 교차검증) 가 활용.
 0건이어도 섹션 자체는 포함 ("관련 항목 없음" — 커버리지 부재 신호로 해석).
 

@@ -64,7 +64,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 | ----- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
 | 1     | 5개 분석가 산출물 (company / financial / business / momentum / risk.md) | 10항목 가중 스코어카드 산출 + FRED 매크로 레짐 점수 보정   |
 | 2     | data.json + ATR 계산 + 보유 기간 의무 필드                              | ATR 기반 손절·목표가 + R:R 분석 + 보유 기간 결정           |
-| 3     | Research KB excerpts (lead 가 Phase 0-D 에서 첨부)                      | Alignment 점수 보정 (±1~3pt) + 모순 보정 (Moat / momentum) |
+| 3     | research_context.md (build_research_context.py 자동 배달)               | Alignment 점수 보정 (±1~3pt) + 모순 보정 (Moat / momentum) |
 | 4     | 최종 등급·전략·KB 피드백                                                | scorecard.md + KB 갱신 항목 + debate-card·contrarian-card  |
 
 재분석 모드(`--reanalysis`)에서는 이전 분석을 read 하지 않고 신규 분석가 산출물만 활용한다 (앵커링 차단).
@@ -576,7 +576,9 @@ if current_price > consensus_avg_target:
 
 ## Research KB Alignment 점수 보정 [v3.18 신규, 2026-05-12]
 
-stock-analyst-lead 가 Phase 0-D 에서 `research_kb_excerpts` 블록을 첨부했을 때, 학술·정책 1차 자료가 컨센서스와 정렬되는지 여부에 따라 종합 점수에 **±1~3점 보정**을 자동 적용한다.
+입력 소스 [v3.40 교체]: 분석 폴더의 **`research_context.md`** (scripts/build_research_context.py 자동 배달 — 구 `research_kb_excerpts` 프롬프트 블록 방식은 폐지). 파일이 존재하면 반드시 Read 하고, 학술·정책 1차 자료가 컨센서스와 정렬되는지 여부에 따라 종합 점수에 **±1~3점 보정**을 자동 적용한다.
+
+**인용 의무 (기계 게이트 연동)**: research_context.md 존재 시 scorecard 본문에 ① citation 라인(`📄 …`)을 **그대로 복사**해 1건 이상 인용하거나, ② 논지와 무관하면 `research_skip_reason: <사유 1줄>` 을 명기한다. 둘 다 없으면 검증 8 (check_research_citation.py) 에서 실패 → 재호출된다.
 
 ### 도입 배경
 
@@ -608,9 +610,9 @@ v3.17 첫 통합 검증 (SK하이닉스 v3) 에서 18건 인용 → 종합 점�
    - scorecard 본문에 "Research KB Alignment: {🟢/⚪/🟡/🔴} N_B Bull / N_C Bear, 보정 {±X}점" 1줄
    - report-generator 전달 필드: `research_kb_alignment: "Bear 시그널 -2"`, `research_kb_adjustment: -2`
 
-### excerpts 부재 시
+### research_context.md 부재 시
 
-블록 첨부 안 됨 (5섹터 외 / ETF / 매크로 단독) → 보정 0 + 본문에 "Research KB 부재 — 보정 N/A" 명시.
+파일 없음 (섹터 매핑 불가 / 섹터 아이템 0건 / ETF) → 보정 0 + 본문에 "Research KB 부재 — 보정 N/A" 명시 (게이트 미적용).
 
 ### scorecard 출력 형식 (보정 적용 시)
 

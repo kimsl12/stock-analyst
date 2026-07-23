@@ -171,6 +171,8 @@ gh-pages 자동 배포는 2026-06-12 중단 (deploy-reports.yml 트리거 제거
 | `scripts/regime_classifier.py`          | watchdog 06:40       | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                     |
 | `algo-trading/build_signals.mjs` + `scripts/signals_update.sh` | launchd 15:25       | 매매 엔진용 시그널 3종 (stock_scores·macro_regime·earnings) — timeline 단일 소스, 비상장 제외, 엔진 1차 점검 15:40 전 빌드. watchdog 이 신선도 검증 |
 | `scripts/algo_portfolio_sync.sh`        | launchd 16:15 + watchdog | 엔진이 쓴 `algo-trading/data/algo_holdings.json` (역방향 계약, handoff §9) 변경 감지 → commit/push + Cloudflare(풀사이트)·Vercel(timeout 가드) 배포 → `/portfolio` "알고 자동매매" 섹션 반영. live + 2일 무보고 시 watchdog 경고 |
+| `scripts/build_research_context.py`    | data-collector §2.6 / lead Phase 0-D | 티커→리서치 섹터 매핑(sector_map+오버라이드) → 섹터 thesis·citation·key_finding 발췌를 analysis/{폴더}/research_context.md 로 자동 배달 — "찾는" 구조를 "받는" 구조로 역전 |
+| `scripts/check_research_citation.py`   | lead 검증 8 / 수동 --all-recent      | research_context 배달 시 scorecard 📄 인용 ≥1 또는 research_skip_reason 의무 기계 게이트 (132건 축적·인용 5.3% 사고 재발 방지) |
 | `scripts/sync_portfolio_targets.py`     | briefing_commit 경유 (user_portfolio) | /내포트폴리오 처방의 "## 목표 비중" 블록 → portfolio_targets.json 자동 동기화 (검증: 합계 95~105·3종+). 드리프트 감시·/portfolio 목표 vs 실제 표시가 처방을 추종 |
 | `scripts/check_confidence.py`           | briefing_commit 경유 | 확신 라벨 기계 게이트 — 높음 계열 반증 트리거 필수 + 30일 높음 비율 cap 25% + 역캘리브레이션(실측 높음 14.3%<중간 60.0%) 중 남발 경고. 산정 룰: briefing-lead §Step 8.5-B |
 | `scripts/check_house_view.py`           | watchdog 06:40·10:30 | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                             |

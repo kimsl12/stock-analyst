@@ -284,6 +284,14 @@ grep -qE "유니버스 상위 [0-9.]+%" "$SC" \
   || echo "⚠️ 검증 7 경고: 등급 백분위 미표기 — python3 scripts/scoreboard.py {점수} --exclude {티커} 후 등급 재확인"
 ```
 
+```bash
+# 검증 8 [v3.40 — 2026-07-23]: 리서치 KB 인용 게이트
+# research_context.md 배달됐으면 scorecard 에 📄 인용 ≥1 또는 research_skip_reason 필수.
+# (132건 축적 / 인용 7건 5.3% 사고 재발 방지 — 게이트 없는 의무는 안 지켜진다)
+python3 scripts/check_research_citation.py "analysis/{폴더}" \
+  || echo "❌ 검증 8 실패: scorecard-strategist 재호출 (research_context.md 의 citation 라인 인용 또는 skip_reason 보강만)"
+```
+
 ### 검증 실패 시 대응
 
 | 실패 항목                    | 복구 액션                                                                                                                                                                                            |
@@ -1214,55 +1222,24 @@ KB에 없는 데이터만 웹검색으로 수집해.
 - 1차 섹터 (주 매핑) 발췌 + 2차 섹터 보조 1~2건 권장
 - 종목 분석 본문에 "주 섹터: X / 부 섹터: Y" 명시
 
-**워크플로**:
+**워크플로 [v3.40 — 2026-07-23 자동 배달 전환]**:
 
-1. data-collector 의 `data.json` 의 `sector` 필드 또는 본 lead 의 섹터 분류 룰로 10섹터 매핑 결정
-2. **L2 발췌** — 섹터 결정 시 Bash:
+> 구 방식(리드가 ls→Read→발췌→프롬프트 블록 조립, ~4분)은 실전에서 생략됐고
+> (2026-07-03 신규 17종 배치: 132건 축적에 인용 7건, "excerpts 미첨부" 자백)
+> 게이트도 없었다. 스크립트 배달 + 기계 게이트로 교체한다.
+
+1. **배달 (1줄, ~10초)**:
    ```bash
-   ls -1t knowledge-base/research/{sector}/*.md 2>/dev/null | head -3
+   python3 scripts/build_research_context.py {티커} --dir analysis/{폴더}
    ```
-3. 최근 3건 Read → 각 파일의 frontmatter `citation` + `key_finding` 추출
-4. **L3 발췌 (v3.19 신규)** — 가장 최근 분기 L3 1건 추가:
-
-   ```bash
-   ls -1t reports/research/{sector}_*.html 2>/dev/null | head -1
-   ```
-
-   - 발견 시 Read → **S1 Executive Summary + S8 관련 종목 영향 매트릭스** 두 섹션만 추출 (전체 50~61KB 중 핵심 ~5KB)
-   - S8 에서 해당 종목명이 명시되어 있으면 Bull/Bear 시나리오 1줄씩 직접 발췌 (가장 가치 있는 1차 인용)
-   - 발견 안 됨 → L3 블록 생략 (Phase 1 진행)
-
-5. 프롬프트 첨부 블록 작성:
-   ```
-   research_kb_excerpts:
-     L2_summaries:
-       - 📄 [Conference] ISSCC 2026 — "HBM4 16-Hi TSV" → yield 78%, 2027 Q1 양산 가시
-       - 📄 [Working Paper] BIS WP #1183 (2026-03) → 메모리 공급사 3+ 진입 시 24M 내 마진 -15~20%p
-       - 📄 [Think Tank] McKinsey GI (2026-03) → HBM 시장 2030 $185B (CAGR 38%)
-     L3_quarterly: reports/research/semiconductor_2026Q2.html [Q2 Deep Dive]
-       executive_summary:
-         - 핵심 1: HBM4 양산 사이클 — 단독 우위 vs 4축 플랫폼 정면 충돌
-         - 핵심 2: McKinsey $1.6T 시장 thesis (정량 앵커)
-         - 핵심 3~5: ...
-       impact_on_this_stock:  # S8 매트릭스 직접 매핑 (해당 종목 있을 시만)
-         bull: 본 종목 +X% 시나리오 (요약 1줄)
-         bear: 본 종목 -X% 시나리오 (요약 1줄)
-   ```
-6. 10섹터 매핑 안 됨 또는 L2/L3 모두 부재 → 블록 첨부 생략 (분석 에이전트는 "research KB 부재" 1줄 명시 후 평소 진행)
-
-**조건부 스킵 케이스**:
-
-- 종목 섹터가 매크로 단독 또는 10섹터 외 → Phase 0-D 스킵
-- `knowledge-base/research/{sector}/` 에 L2 요약본 0건 AND `reports/research/{sector}_*.html` 0건 → 스킵
-- ETF 분석 (etf-lead 경유) → Phase 0-D 스킵 (ETF 는 다중 섹터 노출)
-
-**시간 예산**: 최대 4분 (L2 3분 + L3 1분). data-collector ~ Phase 1 사이 짧은 추가 단계로 끼움.
-
-**L3 분기 발췌 cap (v3.19)**:
-
-- 섹터당 가장 최근 분기 L3 **1건만** 발췌 (예: 2026 Q2 발행 후 Q3 발행 전까지는 Q2 L3 사용)
-- 종목 분석 1회당 L3 인용 **최대 3개 bullet** (executive_summary 2 + impact 1)
-- L3 전체 본문 인용 금지 — 위 추출 블록만 sub-agent 전달
+   섹터 매핑 자동 (algo-trading/data/sector_map.json + 스크립트 내 티커 오버라이드 — 위 10섹터 표는 참고용,
+   매핑 SSOT 는 스크립트). 산출: `analysis/{폴더}/research_context.md`
+   (섹터 thesis + 최신 아이템 citation·key_finding 발췌 + L3 분기 Deep Dive 포인터).
+2. **서브에이전트 지시**: 5개 분석가 + scorecard-strategist 프롬프트에 다음 1줄 포함 (블록 붙여넣기 불필요):
+   "analysis/{폴더}/research_context.md 가 존재하면 Read — 논지와 관련 시 citation 라인(📄 …)을 그대로 복사 인용,
+   무관하면 scorecard 에 `research_skip_reason: <사유 1줄>` 명기."
+3. **미생성 케이스** (매핑 불가·섹터 아이템 0건) → 스크립트가 스스로 미생성 보고, 게이트 미적용 — 평소 진행.
+4. **검증**: Phase 3 검증 8 (check_research_citation.py) 이 인용/사유를 기계 검증.
 
 **환각 방지**: research-curator 가 작성하지 않은 출처는 절대 인용 X. Glob 결과 파일만 사용. frontmatter 의 citation 필드 그대로 발췌 (재해석 X). L3 발췌도 HTML 원문 텍스트 그대로 인용 (요약 시 의미 왜곡 금지).
 
