@@ -7,7 +7,7 @@ portfolio_watch.py — 보유 종목 감시 (손절/목표가 도달 + 리밸런
     scripts/portfolio_targets.json      (티커별 목표 비중 — 사용자 편집 파일)
     yfinance 실시간(지연) 종가          (배치 1회 조회)
 
-알림 (scripts/notify.sh 경유 — macOS 알림센터 + ntfy):
+알림 (scripts/notify.sh 경유 — macOS 알림센터):
     [high]    현재가 ≤ 손절가          → "손절선 도달"
     [default] 현재가 ≥ 목표가          → "목표가 도달"
     [default] 현재가 ≤ 손절가 × 1.02   → "손절선 2% 이내 접근"

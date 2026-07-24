@@ -161,7 +161,7 @@ gh-pages 자동 배포는 2026-06-12 중단 (deploy-reports.yml 트리거 제거
 
 | 구성                                    | 스케줄               | 역할                                                                                                                                            |
 | --------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/notify.sh`                     | (헬퍼)               | 공용 알림 — macOS 알림센터 + `.env.local` NTFY_TOPIC 설정 시 ntfy.sh 폰 푸시                                                                    |
+| `scripts/notify.sh`                     | (헬퍼)               | 공용 알림 — macOS 알림센터 단일 (ntfy 폰 푸시는 2026-07-24 사용자 지시로 제거)                                                                  |
 | `scripts/daily_pick_update.sh`          | launchd 00:05        | DailyPick 갱신 + 실패 지점 6곳 알림. **로그는 ~/Library/Logs/stockanalyst/ (외장 SSD 경로 StandardOutPath 는 launchd spawn 실패 EX_CONFIG=78)** |
 | `scripts/automation_watchdog.sh`        | launchd 06:40·10:30  | daily_pick 신선도 + 미푸시 커밋 + holdings_health 재생성 + portfolio_watch 호출                                                                 |
 | `scripts/portfolio_watch.py`            | watchdog 경유        | 손절/목표가 도달·접근(2%) + 목표 비중 드리프트(`scripts/portfolio_targets.json`, 기본 5%p) 알림. KST 일별 디듀프                                |

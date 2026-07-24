@@ -9,7 +9,7 @@
 #   4. holdings_health.json 재생성 (최신 분석 반영)
 #   5. portfolio_watch.py — 손절/목표가 도달 + 리밸런싱 드리프트 알림
 #
-# 알림: scripts/notify.sh (macOS 알림센터 + NTFY_TOPIC 설정 시 폰 푸시)
+# 알림: scripts/notify.sh (macOS 알림센터)
 # 로그: scripts/launchd/watchdog.log
 #
 # 설치:

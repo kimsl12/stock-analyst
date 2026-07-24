@@ -86,7 +86,7 @@ if [[ "$CUR_BRANCH" == "main" ]]; then
     echo "→ 1차: main 직접 push 시도"
     if git push origin main 2>&1 | tee /tmp/briefing-push-main.log; then
         echo "[ok] main push 성공 — $(git rev-parse --short HEAD)"
-        # 브리핑 발행 알림 (macOS + ntfy — NTFY_TOPIC 설정 시 폰 푸시)
+        # 브리핑 발행 알림 (macOS 알림센터)
         bash "$REPO_ROOT/scripts/notify.sh" "브리핑 발행: ${TYPE}" \
             "${DATE} ${TYPE} 브리핑 push 완료 — 배포 후 사이트 반영" || true
         exit 0
