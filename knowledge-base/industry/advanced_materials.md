@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-18
-valid_until: 2026-08-17
+updated: 2026-07-25
+valid_until: 2026-08-24
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -158,10 +158,20 @@ sources:
     관세무역개발원,
     아시아경제,
     재료연구원,
+    Rare Earth Exchanges,
+    Metalnomist,
+    Mainrich International,
+    The Oregon Group,
+    SupplyICs,
+    Atlas Peak Research,
+    Technavio,
+    Gurufocus,
+    전기신문,
+    국가전략포털,
   ]
 confidence: high
-last_synced_from_db: 2026-07-18
-db_records: 401
+last_synced_from_db: 2026-07-25
+db_records: 412
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -170,6 +180,17 @@ db_records: 401
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.07.25 핵심 변화 요약 (7/18→7/25 윈도우)**:
+>
+> 1. **희토류 — 중국 가격지수 270.4(7/23)로 소폭 하락 반전, NdPr oxide 약세·중희토 혼조** — 7/16 273.5서 하락(경로 273.5(7/16)→272.4→270.4(7/23), 2010 베이스 100 대비 +170.4%, 4월초 고점 310서 조정 지속). NdPr oxide ¥746-766/kg($112-115/kg) 하락, Dy oxide ¥1,390-1,430/kg($209-214/kg)·Tb oxide ¥5,000-5,200/kg($750-780/kg 고위) 플랫, Ho 하락·Er 상승·Y 플랫으로 상승동력 둔화. 역외(ex-China) Dy oxide $1,000-1,200/kg·Tb oxide $3,800-4,500/kg cif Europe로 4~6배 프리미엄 지속. **서방 공급 마일스톤: USA Rare Earth 오클라호마 Stillwater 상업 자석라인 Phase 1a commissioning — 소결 NdFeB 고객주문 이행 Q2 개시(600t/y 연말·1,200t/y 2027Q1). MP Materials Independence 자석 판매 H2 2026 개시 목표.** 펜타곤 NdPr $110/kg floor 유지. **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(7/23·7/16), Metalnomist, Crux Investor, USA Rare Earth·MP Materials IR]
+> 2. **화합물반도체 — Wolfspeed v Navitas 소송 계류(판결 없음) + Infineon 2차 가격인상 발효 + onsemi Q2 8/3 발표 예정** — Wolfspeed v Navitas 특허소송(7/7 제소)은 7/16 기준 법원 판결 없이 계류, 제소時 Navitas 주가 -7%. **Infineon 2차 전력반도체 가격인상 7/1 발효 — IGBT 모듈·자동차 SiC MOSFET +8~15%, 표준 MOSFET·discrete +3~7%(SiC 기판·고순도 구리·EU 에너지비 상승), GaN은 재고 여유로 stable~소폭.** Wolfspeed 차세대 TOLT 포트폴리오·10kV SiC MOSFET 출시. onsemi Q2 2026 실적 8/3 발표 — 가이던스 매출 $1.535-1.635B·EPS $0.65-0.77·GM 38-40%, AI DC 2026 YoY 2배·Treo QoQ 2.5배·GaN 펀넬 >$1.5B. 400V 아직 80%+ 점유이나 800V/1000V 전환 가속(2031 50%+), SiC 150mm 공급제약·200mm 수율램프가 로드맵 대비 지연 [Semiconductor Today(7/16), SupplyICs(Infineon 7/1), StockTitan(onsemi 8/3), Atlas Peak Research]
+> 3. **전고체 — QuantumScape Q2 2026 실적(7/22) 예상 상회, Eagle Line 가동률 90%+** — GAAP 순손실 $98.2M·EPS -$0.16(컨센 -$0.18 상회 +11.1%), 조정 EBITDA 손실 $64.2M(부합). Eagle Line 코어툴 가동률 90%+·핵심 생산성 목표 도달·고객 샘플 출하, 2026 하반기 셀 산출 배증 목표. Cobra 공정 대형 세라믹 분리막 생산 실증→패키징 효율·에너지밀도 상승. FY2026 조정 EBITDA 손실 가이던스 $250-275M 유지, 분기말 유동성 $859M. **단 고객 차량 탑재 all-solid 셀 여전히 0건** [QuantumScape SEC 8-K FY2026(7/22), Yahoo Finance, Gurufocus, StockTitan]
+> 4. **나트륨이온 — CATL Naxtra 양산 스펙 재확인** — 175Wh/kg(LFP 동급)·피크 5C·주행 500km·사이클 10,000회 초과. GB 38031-2025(7/1 발효) 세계 최초 인증. CATL-Changan Nevo A06 세계 최초 양산 Na-ion 승용 EV, 4개 세그먼트 동시 전개. 최근 리튬 조정이 단기 코스트 인센티브 완화하나 중장기 전환 논리 유효 [CATL, CarNewsChina, bike-ev, EVTech.News]
+> 5. **리튬 — ¥146,500/t(7/23)로 4개월 최저 부근 지속, 당일 +1.58% 소폭 반등** — 7/18 ¥151,000서 추가 하락 후 반등. 배터리급 CIF 중·일·한 $18.83/kg. GFEX 7/3 해외개방 헤징압력+호주 광산 재가동 공급과잉 우려 vs EV·ESS·AI DC 수요 지지. Goldman: Q4 재고재축적 ¥200,000/t 견인 가능(中 재고 주당 ~4,000t 감소·CATL 이춘 장시아워 재가동 지연). **스포듀민 2023말 이후 첫 $2,000/t 돌파** [Carbon Credits(7/23), Fastmarkets, Goldman via Investing News]
+> 6. **반도체소재 — 시장 정량화 갱신** — 반도체 소재 2026-2030 +$25.5B·CAGR 5.5%, CMP 소재 CAGR ~6.2%, 포토레지스트 화학(광의) $40.30B(2026)→$63.77B(2034) CAGR 5.91%. TSMC N2·Samsung 3nm GAA·Intel 18A 램프 + sub-2nm High-NA EUV 전환이 PR·전구체·CMP 요건 강화. 세부는 semiconductor.md [Technavio, Fortune BI, IndexBox, Intel Market Research]
+> 7. **한국 희토류 종합대책 후속** — 산업통상부 제3차 자원안보협의회 의결, 산업자원안보실 1호 정책. 광산개발~분리정제~제품생산 전주기+통상협력 확대+희토류 17종 전체 핵심광물 지정+HSK코드 신설·세분화. **KIMS(재료연) 이정구 박사팀 중희토류 저감형 희토 자석 국산화 성공.** 희토 영구자석 재자원화·공공비축 확대, 해외자원개발 융자 '실패해도 90% 탕감' [산업통상부/정책브리핑, 관세무역개발원, 전기신문/KIMS, 서울신문]
+
 
 > **2026.07.18 핵심 변화 요약 (7/11→7/18 윈도우)**:
 >
@@ -463,6 +484,9 @@ db_records: 401
 
 > **[2026.07.18 신규] Gartner 'AI 반도체 vendor race'(7/16) — Infineon AI DC 전력반도체 'company to beat' 재확인**: Gartner 7/16 발표에서 Infineon을 AI 데이터센터 전력반도체 선두(company to beat)로 재확인(5/18 기준 리포트 후속). 근거는 종합 포트폴리오·제조능력·WBG(SiC/GaN) 조기투자. **Infineon 주가 YTD +114%.** SiC는 고전압 grid-to-rack, GaN은 초고밀도 고주파 중간단 담당. **onsemi는 차세대 1MW AI 랙당 전력반도체 콘텐츠가 $50K→$100K로 2배**(SiC+GaN 포트폴리오). 400V 아직 80%+ 점유이나 800V/1000V 전환 가속. Wolfspeed v Navitas 특허소송(7/7 제소)은 진행 중·이번 주 신규 법원 델타 없음 [Gartner(7/16), Infineon(infxx202606-117), Semiconductor Today(6/30), Power Semiconductors Weekly]
 
+> **[2026.07.25 신규] Wolfspeed v Navitas 소송 계류 지속 + Infineon 2차 가격인상 발효 + onsemi Q2 8/3 발표 예정**: (1)**Wolfspeed v Navitas 특허소송(7/7 제소)은 7/16 기준 법원 판결 없이 계류(no rulings issued)** — 제소 발표에 Navitas 주가 약 -7%, Navitas 7/8 반박(강력방어·승소확신). (2)**Infineon 2차 전력반도체 가격인상 5/26 발표·7/1 발효 — IGBT 모듈(1200V/1700V 산업급)·자동차급 SiC MOSFET +8~15%, 표준 MOSFET·범용 discrete +3~7%(600-950V super-junction 포함), GaN은 재고 여유로 stable~소폭.** 근거: SiC 기판·고순도 구리 리드프레임 원자재비+물류비+유럽 에너지비 상승, AI DC 하이퍼스케일러 12~18개월 선행 발주가 산업·자동차 물량 선점. (3)**Wolfspeed 차세대 TOLT 포트폴리오·최초 상업용 10kV SiC MOSFET 출시**(AI DC·grid), AI DC 매출 FQ3 QoQ +30% 지속. (4)**onsemi Q2 2026 실적 8/3 발표 예정** — 가이던스 매출 $1.535-1.635B·EPS $0.65-0.77·GM 38-40%, AI DC 매출 2026 YoY 2배·Treo QoQ 2.5배·GaN 펀넬 >$1.5B·자동차 YoY +5%. (5)**400V 아직 80%+ 점유(2026)이나 800V/1000V 전환 가속 — 2031 고전압 아키텍처 50%+ 침투 전망. SiC 기판 150mm 공급제약·200mm 전환(Wolfspeed Mohawk Valley·Infineon Villach) 수율 램프가 로드맵 대비 지연** [Semiconductor Today/Quasa(7/16 no rulings), SupplyICs(Infineon 5/26·7/1), StockTitan/Seeking Alpha(onsemi 8/3), Atlas Peak Research(400V 80%·200mm 수율)]
+
+
 #### 4-2. GaN(질화갈륨) 시장
 
 | 항목                         | 수치                                                             | 기준         | 출처           |
@@ -566,7 +590,7 @@ db_records: 401
 
 > **2026.11.10 유예 종료가 최대 변수.** 1차 통제(Dy·Tb 등 7원소)는 유예 없이 지속 중이며, 비중국 시장에서 중국 내 가격 대비 several times(최대 5배+) 프리미엄 형성.
 
-#### 5-3. 가격 동향 (2026.07.18 업데이트 — 중국 가격지수 273.5(7/16) 추가 상승·NdPr oxide $114-117/kg·alloy $139-142/kg 안정·이번 주 중희토 견인 재부상)
+#### 5-3. 가격 동향 (2026.07.25 업데이트 — 중국 가격지수 270.4(7/23) 소폭 하락 반전·NdPr oxide 약세($112-115/kg)·중희토 혼조·서방 USAR 자석 Phase 1a commissioning)
 
 | 원소                       | 가격                                              | 변동                                                                              | 출처                                                |
 | -------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -582,6 +606,9 @@ db_records: 401
 > **2026.07.11 갱신 (7/4→7/11)**: 중국 희토류 가격지수 **271.9(7/8)** — 7/2 267.6서 추가 상승(경로 262.6→267.6(7/2)→271.9(7/8), 2010 대비 +172%). **NdPr alloy $133.02/kg(6월 벤치마크 $109.55서 +21.4% 유지)**, 네오디뮴 금속 **SMM 국내 벤치마크 $145.88/kg(7/1, 6/1 $121.95서 +19.6%)**. 중국이 정제 NdPr ~92%·분리 중희토(Dy·Tb) 98~99% 지배 — 서방 제조사 상업물량 중희토 산화물·금속·합금 조달 여전히 심각한 난항(구조적 타이트). NdPr 2년 연속 공급적자 전망 유지. **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(7/8), Rare Earth Mining(SMM 7/1), Critical Minerals News]
 
 > **2026.07.18 갱신 (7/11→7/18)**: 중국 희토류 가격지수 **273.5(7/16)** — 7/8 271.9서 추가 상승(경로 271.9(7/8)→273.5(7/16), 2010 대비 +173.5%). 이번 주는 **중희토(Tb·Ho·Er·Gd) 상승 vs NdPr(자석 벤치마크 원료) 안정**: NdPr oxide ¥757-777/kg(**$114-117/kg**)·alloy ¥924-944/kg(**$139-142/kg**) 사실상 보합. 중희토 견인 구조 재부상. **Morgan Lewis 7월 분석: 中 수출통제 능동적 집행(active enforcement) 신호** — 라이선스 심사·역외적용 실집행 강화. 서방: **USA Rare Earth 오클라호마 Stillwater 소결자석 시설(310,000 ft², 3 ktpa NdFeB) 완공 — 2026 상반기 첫 상업생산.** 펜타곤 NdPr $110/kg floor(MP $400M Series A+Lynas $96M) 유지. **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(7/16), Crux Investor, Morgan Lewis(7월), MP Materials IR, SFA Oxford]
+
+> **2026.07.25 갱신 (7/18→7/25)**: 중국 희토류 가격지수 **270.4(7/23)** — 7/16 273.5서 소폭 하락 반전(경로 273.5(7/16)→272.4→270.4(7/23), 2010 대비 +170.4%, 4월초 고점 310서 조정 지속). 이번 주 **NdPr oxide 하락(¥746-766/kg=$112-115/kg)**, Dy oxide 플랫(¥1,390-1,430/kg=$209-214/kg)·Tb oxide 플랫(¥5,000-5,200/kg=$750-780/kg 고위), Ho oxide 하락·Er oxide 상승·Y oxide 플랫 — 경희토 약보합+중희토 혼조로 상승동력 둔화. 역외(ex-China) Dy oxide $1,000-1,200/kg·Tb oxide $3,800-4,500/kg cif Europe로 4~6배 프리미엄 지속. **서방 공급 진전: USA Rare Earth 오클라호마 Stillwater 상업 자석라인 Phase 1a commissioning(소결 NdFeB 고객주문 이행 Q2 개시, 600t/y 연말·1,200t/y 2027Q1), MP Materials Independence 자석 판매 H2 2026 개시 목표.** 펜타곤 NdPr $110/kg floor 유지. **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(7/23·7/16), Metalnomist, Crux Investor, USA Rare Earth·MP Materials IR]
+
 
 #### 5-4. 서방 대응 & 공급망 다변화 (2026.06.13 업데이트)
 
@@ -621,7 +648,7 @@ db_records: 401
 
 ### 5.5. 리튬
 
-#### 5.5-1. 리튬 가격 동향 (2026.07.18 — 조정 지속 ¥151,000/t대 4개월 최저, GFEX 7/3 해외개방 확정)
+#### 5.5-1. 리튬 가격 동향 (2026.07.25 — ¥146,500/t 4개월 최저 부근 지속, 당일 +1.58% 반등, 스포듀민 $2,000/t 돌파)
 
 | 항목                       | 수치                                                                                           | 출처                                  |
 | -------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
@@ -636,6 +663,9 @@ db_records: 401
 > **2026.07.11 갱신 (7/4→7/11)**: 중국 배터리급 탄산리튬 **급반락 — 7/9 -3.54% ¥158,501/t, 7/7 ¥151,750/t로 3개월 저점**(6/29 ¥165,000서 하락). 하락 주동인: **광저우선물거래소(GFEX)가 해외투자자에 개방 → 스팟시장에 헤징압력 유입.** 단 AI DC 전력부하 대응 **ESS(에너지저장) 수요가 리튬 소비 확대 지지.** Goldman 2026 중반까지 range-bound·Q3 신규 배터리 capacity로 타이트닝 전망 유지, BMI 강수요 $28,000/t 시나리오. **리튬 고가 지속→Na-ion 전환 가속 논리는 중장기 유효하나 단기 가격은 조정 국면** [Trading Economics(7/9·7/7·6/29), Carbon Credits(GFEX·AI DC ESS)]
 
 > **2026.07.18 갱신 (7/11→7/18)**: 중국 배터리급 탄산리튬 **¥151,000/t대(약 4개월 최저)** — 7/7 ¥151,750서 소폭 추가 하락. 하락 주동인: **광저우선물거래소(GFEX)가 7/3부터 해외투자자에 탄산리튬 선물·옵션 개방**(외국인 USD 증거금 허용, 5% haircut) → 스팟에 헤징압력 유입 + 글로벌 공급 증가 전망. **Goldman: 2026 중반까지 range-bound → 국내공급 제약+견조 수요로 타이트닝**(연평균 $8,900/t 보수적). 中 리튬화학 재고 주당 ~4,000t 감소·CATL 이춘 장시아워 광산 재가동 예상보다 지연이 하방 완충. AI DC용 ESS 수요가 소비 지지. **리튬 조정이 단기 Na-ion 코스트 인센티브 완화 요인**(단 중장기 전환 논리 유효) [Trading Economics(¥151,000 4개월최저), Caproasia/Discovery Alert(GFEX 7/3 해외개방), Goldman via Futunn, SMM]
+
+> **2026.07.25 갱신 (7/18→7/25)**: 중국 배터리급 탄산리튬 **¥146,500/t(7/23)** — 7/18 ¥151,000서 추가 하락 후 4개월 최저 부근 지속, 단 7/23 당일 **+1.58% 소폭 반등**. 배터리급 CIF 중·일·한 **$18.1-19.55/kg(중간값 $18.83/kg, 7/23)**. 하방: GFEX 7/3 해외개방 헤징압력+호주 광산 재가동發 공급과잉 우려. 지지: EV·그리드ESS·AI DC 수요 견조. **Goldman: Q4 재고재축적이 ¥200,000/t까지 견인 가능(상단 ¥250,000/t이나 ESS 고객 가격민감으로 지속 곤란), 中 리튬화학 재고 주당 ~4,000t 감소·CATL 이춘 장시아워 광산(월 7,000-8,000t 탄산리튬) 재가동 지연이 Q4 타이트닝 지지.** **스포듀민 2023말 이후 처음 $2,000/t 돌파.** 리튬 조정이 단기 Na-ion 코스트 인센티브 완화 요인(단 중장기 전환 논리 유효) [Trading Economics/Carbon Credits(7/23 ¥146,500·+1.58%), Fastmarkets(CIF·스포듀민 $2,000), Goldman via Investing News]
+
 
 #### 5.5-2. 수급 구조
 
@@ -693,6 +723,9 @@ db_records: 401
 > 2026년 현재: 전고체 배터리는 소규모 파일럿→시운전 단계 이행 중. **$100억+/7개사 투입했으나 고객 차량 탑재 all-solid 셀은 0건.** 업계 합의: **2027년이 소량 양산 EV 적용 첫 마일스톤.** 황화물계가 주류 경로로 수렴.
 
 > **[2026.07.18 신규] Na-ion 양산 변곡점 + 전고체 실차 라이브 시연**: (1)**CATL Naxtra 나트륨이온이 2026년 7월 양산 개시(대량생산 진입)** — 4개 세그먼트(배터리스왑·승용·상용·ESS) 동시 전개, 첫 탑재 GAC Aion(Q2)+세계 최초 양산 Na-ion 승용 EV Changan Nevo A06(mid-2026). 현 175Wh/kg LFP 동급·주행 400km+·차세대 500~600km 목표. (2)**QuantumScape가 IAA Mobility(뮌헨)서 Ducati V21L 레이스 모터사이클에 QS 전고체 리튬메탈 배터리 세계 최초 실차 라이브 시연** — Cobra 기반 QSE-5 B1 샘플(>800 Wh/L·<15분 10~80% 급속충전) 연계. Q2 실적 7/22 발표 예정. Samsung SDI 'SolidStack' 2027 하반기 양산(파일럿 라인 가동). **단 고객 차량 탑재 all-solid 셀은 여전히 0건**(라이브 시연은 모터사이클 데모) [EVTech.News, Electrek, New Atlas, QuantumScape ARS FY2026·IR, StockTitan]
+
+> **[2026.07.25 신규] QuantumScape Q2 2026 실적(7/22) 예상 상회 + Eagle Line 가동률 90%+**: GAAP 영업비용 $106.1M·순손실 $98.2M·주당순손실 -$0.16(Zacks 컨센 -$0.18 상회, 서프라이즈 +11.1%), 조정 EBITDA 손실 $64.2M(컨센 부합). **Eagle Line(산호세 자동화 파일럿) 코어툴 가동률 90%+·핵심 생산성 지표 목표 도달·고객 샘플 출하, 2026 하반기 셀 산출 배증 목표(고객 출하 가속·개발주기 단축).** Cobra 공정이 더 큰 세라믹 분리막 생산 가능 실증→대형 셀 패키징 효율·셀레벨 에너지밀도 상승. FY2026 조정 EBITDA 손실 가이던스 $250-275M 유지, 분기말 유동성 $859M. QSE-5는 기존·차세대 Li-ion 대비 유의미하게 안전한 셀 설계 재확인. **단 고객 차량 탑재 all-solid 셀은 여전히 0건.** CATL Naxtra Na-ion 양산 스펙 재확인(175Wh/kg·피크 5C·500km·10,000사이클 초과) [QuantumScape SEC 8-K FY2026·GlobeNewswire(7/22), Yahoo Finance(Eagle Line 90%+), Gurufocus(EPS -$0.16 beat), StockTitan(유동성 $859M)]
+
 
 #### 6-2. 차세대 양극재
 

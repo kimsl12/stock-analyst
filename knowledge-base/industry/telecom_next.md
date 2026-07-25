@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-18
-valid_until: 2026-08-17
+updated: 2026-07-25
+valid_until: 2026-08-24
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -120,14 +120,29 @@ sources:
   - StockTitan
   - PRNewswire
   - Communications Today
+  - datatooza
+  - Futurum
+  - FXLeaders
+  - StartupHub.ai
 confidence: high
-last_synced_from_db: 2026-07-18
+last_synced_from_db: 2026-07-25
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.07.25 핵심 변화 요약 (7/18 이후 델타)**:
+>
+> 1. **★Nokia Q2 2026(7/23) 어닝 서프라이즈 -- AI&Cloud 매출 2배·수주 EUR 2.8B, 가이던스 상단 상향 + '옵티컬 병목은 수요 아닌 공급'** -- **매출 EUR 4.82B(+8%, 고정환율 +9%), 비교영업이익 EUR 434M(+18%, EPS 컨센 상회), 총이익률 46%(+70bp, Infinera 통합+Optical 성장). AI&Cloud 매출 EUR 446M(+105% YoY)·신규수주 EUR 2.8B, AI 관련 파이프라인 EUR 1B+. Network Infrastructure +12%(Optical +20%·IP +16%), Mobile Infrastructure +7%. FY 영업이익 가이던스 EUR 2.0~2.5B 중 '상단'으로 상향. CEO "옵티컬 산업 최대 제약은 수요 아닌 공급" -- 1.6T 코히어런트 플러거블 신규 출시. Google Cloud Gemini AI 에이전트 자율네트워크 통합 + Vodafone Albania AI 슬라이싱 시연. JP모건 Overweight·Argus Buy 상향 -- '레거시 벤더->AI 인프라 플레이어' 재평가 촉매**. 7/15 상용 AI-RAN(anyRAN+NVIDIA Aerial)의 수주장부 매출화가 실적으로 확인됨 [Nokia Newsroom Q2 2026, TheNextWeb, Investing.com transcript, ad-hoc-news, TechTimes 7/23]
+> 2. **★Ericsson Q2(7/14) 후폭풍 -- 약 3년 만 최악 주가 반응(-8~9%), 'AI 칩 크런치' 마진 압박 공식화** -- **실적 발표 후 주가 프리마켓 약 -8~9%($11.72->$10.77) -- 약 3년 만의 최악 실적 반응. EPS $0.12(컨센 $0.13 소폭 미스), 매출 $5.44B(컨센 $5.66B 미스). Networks Q3 조정 총이익률 가이던스 48~50%(Q2 50.4% 대비 믹스 변화로 하락). 메모리칩 가격 급등 등 부품비 인플레가 향후 분기 마진의 성장 헤드윈드 -- 어닝 서프라이즈한 Nokia와 극명 대비**. 단 Ericsson 'AI in RAN' SW는 2026.06부터 상용 라이브 15개+ 배치(SoftBank/Bell/SK텔레콤/Rogers), GPU 없이 스펙트럼효율 ~10%·다운링크 처리량 ~20% 이득 -- Nokia의 2028년 100%+ '목표치'와 달리 '실측 상용' 강점 [Investing.com Ericsson transcript, FinancialModelingPrep, BigGo Finance, Futurum]
+> 3. **★SPCX IPO가($135) 붕괴 -- $115로 첫 하회, 8/6 첫 실적 + 약 $116B 락업해제 대기** -- **7/22 $115.26(-6.7%)로 6/12 상장 후 처음 IPO가 $135 하회(피크 $225.64 대비 -49%, 최근 한 달 -33.6%, Nasdaq-100 편입 후 약 -23%, 7/17 장중 저점 $122.12). 촉매: 7/16 스타십 13차 시험비행 자동 어보트(다수 엔진 점화 실패)+8월 락업 우려+고밸류 차익실현 겹침. ★8/6 첫 공개 분기실적 + 1차 락업해제: 약 9.115억주($116B) 매매가능화(조건부 추가 4.558억주), 내부자 최대 20% 매도 허용**. 애널 33명 강력매수 22·평균 목표가 $231.83(+88% 상방 여지) -- 펀더 강세론 vs 밸류/CapEx 우려 충돌, 팔란티어 편입후 궤적 비교론 지속 [StartupHub.ai 7/22, CNBC 7/17, Yahoo Finance lock-up, Quartz, FXLeaders]
+> 4. **위성 D2D 배치 -- Amazon Leo 390기+ 연내 초기서비스, ASTS BB11 8월 발사 대기** -- **Amazon Leo 7/2 Atlas V로 +29기 누적 390기+(14개 미션, '초기 위도대 연속 서비스 충분'), 베타 미국·영국·프랑스·독일·캐나다 연내 개시. FCC 1,600기 배치의무(7/30) 미달 확정(FCC 수정 예상), 완전군집 3,200기 2029 목표. AST BB8/9/10(6/17) 안착으로 궤도 운영 9기, BB11 케이프커내버럴 이동(BB11/12/13 8월 상반기 발사 목표), 위상배열 BB28까지 완성, 2026 약 45기 목표 유지** [CNBC 7/2, The Register 7/3, aboutamazon, Spaceflight Now, Stocktwits BB11]
+> 5. **AI-RAN 경쟁 구도 선명(SK텔레콤 양대 벤더 참여) + 광통신 1.6T 공급전쟁 점화** -- **Nokia 상용 AI-RAN(7/15, GPU/NVIDIA Aerial, 2028 스펙트럼효율 100%+ 목표, T-Mobile US 유일 확정일정) vs Ericsson 'AI in RAN'(GPU 없이 현재 +10%/+20% 상용 15사). SK텔레콤 AI-RAN 파일럿 라이브(7/16) -- 양대 벤더 모두 참여. 광통신: NVIDIA Coherent $2B로 레이저/광엔진 capa 선점, STMicro 300mm 실리콘포토닉스 2027까지 4배(PIC100 800G/1.6T 양산), 1.6T 실리콘포토닉스+EML 현재 램프(200G VCSEL 내년), LightCounting 2026E $26B(AI DC 고속모듈, 2025 $16.5B 대비 +60%)** [Futurum Nokia AI-RAN, TechTimes SKT pilot 7/16, TechTimes optical supply race 7/23, C-LIGHT, Pandaily]
+> 6. **한국 -- SKT 'SK하이퍼' AIDC 신설법인(7/23, 7,500억 출자) + 6G Rel-21 마드리드 9월 대기** -- **SKT 7/23 이사회, AI 데이터센터 사업개발 전문 신설법인 'SK하이퍼(SK Hyper)' 설립 의결 -- 2030년까지 7,500억원 출자, 정석근 AI CIC장 초대 대표. 총 15GW AIDC 청사진의 실행 주체. 정부·통신3사 8월 'AI 네트워크 투자' 민관 협의체 구축 예정**. 6G Rel-21의 5G->6G 마이그레이션 옵션(Standalone 6G/MRSS/NR<->6GR Inter-RAT) 결정은 TSG RAN#113 마드리드(9/14~17) 대기 -- 전주 대비 변동 없음 [datatooza 7/23, 파이낸셜뉴스 7/23, 6G Futures, 3GPP Rel-21 Timeline]
+>
+> **(이전 갱신 -- 7/18 핵심 요약, 참고용)**:
+>
 > **2026.07.18 핵심 변화 요약 (7/11 이후 델타)**:
 >
 > 1. **★Nokia, 업계 첫 '상용' AI-RAN 플랫폼 출시(7/15) -- anyRAN + NVIDIA Aerial, 2028년 스펙트럼 효율 2배 목표** -- **Nokia anyRAN(AI-native SW) + NVIDIA Aerial 가속컴퓨팅 기반 세계 첫 상용 AI-RAN 플랫폼 발표. 시연 스펙트럼 효율 이득 20%+ 실증 -> 2027년 50% -> 2028년 100%+(신규 주파수·HW 교체 없이 동일 라이선스 스펙트럼으로 트래픽 2배 수용). 3개 배치경로: 기존 AirScale HW용 확장카드 / 독립형 GPU AI-RAN 노드 / 클라우드 네이티브 COTS 서버. 4G/5G/6G 지원·Open RAN 준수. 파일럿 2025말~, 상용 가용 2027**. Nokia Q2 실적 7/23 발표 임박(가이던스 OP EUR 2.0~2.5B 유지, 컨센 매출 ~EUR 4.83B·EPS EUR 0.051) -- NVIDIA 파트너십의 수주장부·매출화 첫 검증대 [Nokia Newsroom 7/15, GlobeNewswire, ConvergeDigest, TechTimes 7/16]
@@ -723,9 +738,9 @@ last_synced_from_db: 2026-07-18
 | Ericsson | SEK 49.3B | 유기적 +6%, 보고 -10% | FX SEK 7.8B 역풍, 구조조정 SEK 3.8B                                                                                                                                   |
 
 - Nokia: AI&Cloud 수주 EUR 1B(분기), Optical +20%. **Nokia TAM 2025 EUR 101B -> 2028 EUR 126B(CAGR 8%), 'AI 슈퍼사이클' 진단. 800G 코히어런트 플러거블 2026년 AI 네트워크 표준화. anyRAN SW를 T-Mobile·Indosat·SoftBank Corp와 NVIDIA GPU 가속 AI-RAN에서 검증(6/13)**
-- **Nokia 7/15: 업계 첫 '상용' AI-RAN 플랫폼 출시(anyRAN+NVIDIA Aerial)** -- 스펙트럼 효율 20%+ 실증, 2028년 100%+(트래픽 2배) 목표, 3개 배치경로(AirScale 확장카드/GPU 노드/COTS), 상용 2027. **Q2 2026 실적 7/23 발표(가이던스 OP EUR 2.0~2.5B, 컨센 매출 ~EUR 4.83B) -- NVIDIA 파트너십 매출화·산호세 램프 첫 검증대** [Nokia Newsroom 7/15, GlobeNewswire, Kavout, ad-hoc-news]
+- **Nokia 7/15: 업계 첫 '상용' AI-RAN 플랫폼 출시(anyRAN+NVIDIA Aerial)** -- 스펙트럼 효율 20%+ 실증, 2028년 100%+(트래픽 2배) 목표, 3개 배치경로(AirScale 확장카드/GPU 노드/COTS), 상용 2027. **★Q2 2026 확정(7/23): 매출 EUR 4.82B(+8%, CC +9%), 비교영업이익 EUR 434M(+18%, EPS 컨센 상회), GM 46%(+70bp). AI&Cloud 매출 EUR 446M(+105% YoY)·신규수주 EUR 2.8B(AI 파이프라인 EUR 1B+). Network Infrastructure +12%(Optical +20%·Infinera 통합·IP +16%), Mobile Infrastructure +7%. FY OP 가이던스 EUR 2.0~2.5B 중 '상단'으로 상향. CEO '옵티컬 병목은 수요 아닌 공급', 1.6T 코히어런트 플러거블 출시. Google Cloud Gemini 에이전트 자율네트워크 통합. JP모건 Overweight·Argus Buy 상향 -- AI 인프라 플레이어 재평가 촉매** [Nokia Newsroom Q2 2026, TheNextWeb, Investing.com transcript, ad-hoc-news 7/23]
 - Ericsson: 유기적 성장 견조하나 FX/구조조정 부담. **OCUDU 재단 창립 프리미어 멤버**
-- **Ericsson Q2 2026(7/14 확정)**: 순매출 SEK 52.7B(-6% YoY, 유기적 -1%), 조정 GM 48.4%, Networks SEK 33B(-8%)·Networks 조정 GM 50.4%(전년 49.5%), 순이익 SEK 4.1B, Cloud SW&S SEK 14.7B(+5% 유기적, EBITA 12.4%). **마진 견조하나 EPS 미스. ★AI 칩 크런치: AI 하이퍼스케일러가 기지국용 DRAM 대량 소비 -> 부품비 인플레 향후 분기 실적 압박(가격인상+효율 대응). 5G 가입자 30억 돌파. 'AI in RAN' SW 구독형 6월 출시** [Ericsson PR 7/14, Benzinga, TechTimes]
+- **Ericsson Q2 2026(7/14 확정)**: 순매출 SEK 52.7B(-6% YoY, 유기적 -1%), 조정 GM 48.4%, Networks SEK 33B(-8%)·Networks 조정 GM 50.4%(전년 49.5%), 순이익 SEK 4.1B, Cloud SW&S SEK 14.7B(+5% 유기적, EBITA 12.4%). **마진 견조하나 EPS 미스. ★실적 후 주가 프리마켓 -8~9%($11.72->$10.77) 약 3년 만 최악 반응(EPS $0.12 vs 컨센 $0.13, 매출 $5.44B vs 컨센 $5.66B). Networks Q3 조정GM 가이던스 48~50%(Q2 50.4% 대비 믹스로 하락). ★AI 칩 크런치: 메모리칩 가격 급등 등 부품비 인플레가 향후 분기 마진 압박(가격인상+효율 대응). 5G 가입자 30억 돌파. 'AI in RAN' SW 2026.06 상용 라이브 15사(SoftBank/Bell/SK텔레콤/Rogers), GPU 없이 스펙트럼효율 ~10%·다운링크 ~20% 이득** [Ericsson PR 7/14, Investing.com transcript, BigGo Finance, Futurum]
 - **Samsung**: 글로벌 RAN 시장 3번째 옵션 부상. **3GPP TSG RAN 의장(김윤선) 확보로 표준화 영향력 확대. 삼성-AMD AI-RAN 상용 전환, Videotron 배치 선정, Tier1 미국 사업자 Xeon vRAN 첫 통화 성공(6/20)** [Omdia, Samsung Global Newsroom]
 
 ### 9.3 크로스 테마

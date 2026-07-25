@@ -1,6 +1,6 @@
 ---
-updated: 2026-07-11
-valid_until: 2026-08-10
+updated: 2026-07-25
+valid_until: 2026-08-24
 category: industry
 sub_category: science_tech
 topic: smr
@@ -24,6 +24,8 @@ sources:
   - ITER / Science / Scientific American / NucNet / GCN / Fusion for Energy / InterestingEngineering / Metrology News / ENR / faculty.world / OilPrice / DOE FY2026 Fusion Energy Sciences / ASNR
   - DOE Office of Fusion / energy.gov / HoganLovells / TechTimes (Fusion S&T Roadmap)
   - IEEE Spectrum / IAEA / Deloitte / Wood Mackenzie / IEA / FIA (Fusion Industry Association)
+  - Proxima Fusion / Max-Planck-Gesellschaft / Pacific Fusion / PitchBook / Physics World / SolarQuarter / Neutron Bytes / Tech Startups (핵융합 2026 델타)
+  - RealClearEnergy / Fox News / DataCenterDynamics (DOE Reactor Pilot) / 아시아투데이 / 헤럴드경제 / 재경일보 / 알파스퀘어 (HD현대 ITER·핵융합·두산 주가)
   - White House (Ratepayer Protection Pledge / 우주 원자력)
   - ANS Nuclear Newswire / NRC (Part 53, Part 57) / Federal Register / Orrick / Pillsbury / Morgan Lewis
   - NASA / MIT Technology Review
@@ -43,14 +45,14 @@ sources:
   - Motley Fool / Simply Wall St (BWXT / Westinghouse)
   - 혁신형SMR기술개발사업단 / 한수원 (i-SMR)
 confidence: high
-last_synced_from_db: 2026-07-11
+last_synced_from_db: 2026-07-25
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
 
 ## CURRENT
 
-> 이번 주(7/04 -> 7/11) 핵심 변화: **DOE Reactor Pilot Program 7/4 마감시한 달성 -- 4개 마이크로리액터社 임계 도달** (트럼프 EO 14301 'America 250'): Antares Nuclear(Mark-0, 6/4 INL 최초)·Valar Atomics·Deployable Energy(7/1)·**Aalo Atomics(7/4 00:20 MT INL)**. DOE '목표(3기+) 초과달성' 공식 발표 -- 다만 **전부 비상장 스타트업**, 상장 대형사(Oklo·NuScale·NANO)는 미포함 · **Oklo Groves는 DSA 승인(7/1)했으나 임계는 '7월 중' 목표로 7/4 마감시한 미충족**, 주가 **$49.27(7/9)로 하락** -- 52주 최저 $44.88 근접·피크 $193.84 대비 -70%·YTD -31%, 7/1 DSA 후 $54.90에서 되밀림(원자력주 전반 조정), $67M 기관 강세 옵션 베팅(CNBC 7/9), 24/7 Wall St TP $98.56(+100%)·Guggenheim Hold $54.06 · **NuScale ~$10.26**(YTD -38%), Paragon HIPS 최종설계 계약(6/17), TVA PPA 연말 기대 유지 · **두산 체코 테믈린 우선협상 7월 발표 예정**(2026 수주전망 원자력 5.8조+가스 5.3조=~14.3조, 목표주가 14~15만원). **핵융합 7/05~7/11 신규 대형 딜/마일스톤 없음** -- CFS SPARC 진공용기 2번째 48톤 절반 설치로 조립 ~75%(5월 마일스톤)·first plasma 2027 슬립·net energy Q>1 2027, Helion Orion 50MW 건설 진행, '상업 핵융합 12개월 내 도달 기업 부재' 업계 공통진단 지속. 우라늄 ~$85/lb 박스권(장기계약 ~$90)·Centrus $900M HALEU 상업전환(7/1)·Westinghouse-DOE $17.5B(6/23)·빅테크 9.8GW는 기존 유지.
+> 이번 주(7/11 -> 7/25) 핵심 변화: **FIA 2026 Global Fusion Industry Report 발표(7월) -- 민간 핵융합 누적 투자 $14.24B(민간 $13.26B+공공 $980.7M)로 직전 $11.4B 대비 급증**, 최근 12개월 연간 조달 $4.48B(6년 내 최대·역대 최고), 56개사·고용 16,000명+. 주요 라운드 CFS $863M(2025.08)·Inertia $450M(2026.02)·Helion $465M(2026.06)·**Proxima Fusion $518M(2026.07, Google 참여·기업가치 €2.4B+로 유럽 최고밸류)**. 단 71%가 첫 상업전력 2030년대 전망(타임라인 불변)·67%가 자금을 최대 난제로 지목. **Pacific Fusion 2차 마일스톤(스케일모듈 피크출력 440GW+·1.1MV, 6월)**. CFS SPARC 조립·커미셔닝 개시(TF자석 1호+크라이오스탯 베이스), first plasma 공식목표 2026 유지(2026말~2027 슬립 관측)·net energy Q>1 2027. **Oklo 주가 $44.13(7/21)로 52주 최저권·시총 $7.74B·피크 대비 -77%**, Groves 임계 목표 '7월 중' 유지(DSA 7/1 후 readiness review·startup approval 잔존), 24/7 Wall St TP $97.74(+121%). NuScale TVA PPA 8월 실적콜 업데이트 예정(연말 기대 유지). DOE Reactor Pilot 4개사 임계 후 순항(RealClearEnergy 7/14). **한국: 두산에너빌리티 주가 6만원대로 대폭 조정(52주고점 139,200원 대비 -44~-55%, KB 목표주가 15.6->14만원 하향 7/23·전원 매수 유지)**, **체코 테믈린 3·4호기 최종결정 2027로 지연·EDF/웨스팅하우스 경쟁입찰 검토(7월 발표 미실현)**, **HD현대중공업 ITER 마지막 진공용기 섹터 제작완료(7/22)·핵융합 진출**. 우라늄 $85.75/lb(7/23) 박스권·Centrus $900M HALEU(누적 1,900kg+, Piketon 상업능력 2029) 기존 유지.
 
 ---
 
@@ -81,14 +83,20 @@ last_synced_from_db: 2026-07-11
 
 | 지표                     | 수치                                                      | 출처                       |
 | ------------------------ | --------------------------------------------------------- | -------------------------- |
-| 민간 핵융합 누적 투자    | **$11.4B+** (FIA disclosed, 2026.06 초)                   | FIA / cleanenergy-platform |
+| 민간 핵융합 누적 투자    | **$14.24B** (민간 $13.26B+공공 $980.7M, FIA 2026.07)      | FIA 2026 Global Report     |
 | Helion 밸류              | **$15.5B** post-money (Series G, 기존 $5.43B 대비 약 3배) | GeekWire / TechCrunch      |
 | Helion 누적 조달         | **$1.5B** (Series G $465M 포함)                           | TechCrunch / IndexBox      |
 | CFS 누적 펀딩            | $3B (Series B2 $863M 포함), 세계 최다 펀딩 민간 핵융합사  | CFS 공식 / Sacra           |
 | 미국 민간 핵융합 기업    | 42개사, $8.05B (글로벌 53%)                               | ANS Nuclear Newswire       |
-| 첫 상업 발전소 가동 전망 | 2030~2035년                                               | CFS/Helion 목표            |
+| 핵융합 연간 조달 (2026)  | **$4.48B** (6년 내 최대·역대 최고, 12개월 to 2026.07)     | FIA 2026 Global Report     |
+| 조사 대상 기업 수        | **56개사** (2021년 23개 대비·신규 6/철수 3), 고용 16,000명+ | FIA 2026 Global Report     |
+| Proxima Fusion 밸류      | **€2.4B+** (유럽 최고밸류, €411M 라운드 7월·Google 참여)  | Max-Planck / Proxima       |
+| 첫 상업 발전소 가동 전망 | 2030~2035년 (71% 기업 2030년대 응답, 타임라인 불변)      | FIA 2026 / CFS·Helion 목표 |
 
-- **핵융합 6/27~7/04 신규 대형 딜/마일스톤 없음 (전주 모멘텀 유지) [상태 유지]**: SPARC 조립 진행(자석 18기·크라이오스탯 순차 설치), ITER cryopump 8기 제작완료, Helion $465M@$15.5B(6/4, 전주 반영)·TAE-TMTG $6B 합병 진행. "커밋 vs 현실" 검증 국면 지속 -- 상업 발전 전력공급 12개월 내 도달 기업 부재(업계 공통 진단) [World Nuclear News/ANS/pdpspectra]
+- **FIA 2026 Global Fusion Industry Report 발표 (2026.07) [신규/핵심]**: 민간 핵융합 누적 투자 **$14.24B**(민간 $13.26B+공공 $980.7M)로 직전 $11.4B 대비 급증. 최근 12개월(to 2026.07) 연간 조달 **$4.48B로 6년 내 최대·역대 최고**. 조사 56개사(2021년 23개 대비, 신규 6·철수 3)·고용 **16,000명+**. 주요 라운드: CFS $863M Series B2(2025.08), Inertia Enterprises $450M(2026.02), Helion $465M(2026.06), **Proxima Fusion $518M(2026.07)**. NYC·워싱턴DC·런던 동시 런칭 [FIA/SolarQuarter/Physics World/Power-technology]
+- **핵융합 상업화 타임라인 불변 -- 자금이 최대 단기 난제 [FIA 진단]**: 투자 급증에도 **71% 기업이 첫 상업 전력을 2030년대로 전망**(작년과 동일, 타임라인 불변). **67%가 자금조달을 최대 단기 난제**로 지목. "커밋 vs 현실" 검증 국면 지속 -- 상업 발전 전력공급 12개월 내 도달 기업 부재(업계 공통 진단) [ExchangeMonitor/World Nuclear News/ANS]
+- **Proxima Fusion €411M(~$518M) 라운드·유럽 최고밸류 등극 (2026.07) [신규]**: 독일 스텔러레이터社, Google 참여 라운드로 기업가치 **€2.4B+** -- 유럽 최다 펀딩·최고밸류 핵융합사. Alpha 실증기 마일스톤 도달(2026.02.26 MoU 요건 충족), 유럽 첫 상업 핵융합 발전소 목표 2030년대 [Max-Planck/Proxima/Tech Startups/Neutron Bytes]
+- **Pacific Fusion 2차 기술 마일스톤 달성 (6월) [신규]**: 펄스 자기관성 핵융합($1B Series A 마일스톤 연동), 스케일 모듈 프로토타입이 피크출력 **440GW+·피크전압 약 1.1MV**를 초고속 펄스로 실증 -- '핵융합 조건 구동 필요 성능' 입증. 자본집약 리스크를 마일스톤 기반 구조로 완화 [Power Magazine/Pacific Fusion/PitchBook]
 - **DOE Fusion S&T 로드맵 확정 발표 (2026.06.09) [기존 유지]**: 신설 **Office of Fusion** 주관 첫 공식 로드맵. 민간 정렬 + 기초과학 혁신 균형, **2030년대 마감 마일스톤·지표**로 근시일 갭 추적. **재료(materials) 엔지니어링 장벽**을 핵심 난제로 지목. 단 특정 예산수준 미확약 -- 향후 의회 세출·민관 파트너십에 의존 (실효성 불확실성 잔존) [DOE/HoganLovells/TechTimes]
 - **Helion Series G $465M @ 밸류 $15.5B (2026.06.04) [기존 유지]**: Thrive Capital 주도, 밸류 **기존 $5.43B(2025.01) 대비 약 3배 급등**, 총 조달 $1.5B. 신규 투자자 Lux Capital·Peak XV·Anti Fund·BoxGroup·**Ford 회장 Bill Ford** 등. 민간 핵융합 단일 밸류 글로벌 최대급. 다만 일부 '핵융합 회의론' 속 고밸류 논란도 병존 [GeekWire/TechCrunch/Whalesbook]
 - **Helion Orion(Microsoft) 2028 목표 재확인 [기존 유지]**: 워싱턴 Malaga 50MW Orion 발전소 -- Microsoft PPA(2023.05 체결) 이행, **2028년 carbon-free 전력 최소 50MW 공급** 목표. Polaris D-T 핵융합(1.5억도C, 2026.02) 실증 기반 [TechCrunch/IndexBox]
@@ -104,7 +112,7 @@ last_synced_from_db: 2026-07-11
 
 | 지표                    | 수치                                                     | 출처                                      |
 | ----------------------- | -------------------------------------------------------- | ----------------------------------------- |
-| 우라늄 스팟 가격 (6월)  | **~$85/lb** (4월 초 이후 박스권, 연초 급등분 소멸)       | TradingEconomics / Foreign Policy Journal |
+| 우라늄 스팟 가격 (7월)  | **$85.75/lb** (7/23, 4월 초 이후 박스권 지속)            | CarbonCredits / ANS       |
 | Cameco 2026 실현가      | **$85~89/lb** (가이던스, 매출 $3.13~3.37B 유지)          | Cameco                                    |
 | Cameco 주가             | ~$101 (최근 1개월 -13%, 1년 +49%)                        | Yahoo Finance                             |
 | Q1 2026 말              | $83.90/lb                                                | INN                                       |
@@ -201,9 +209,9 @@ last_synced_from_db: 2026-07-11
 - **Centrica UK 파트너십**: 영국 **6GW 배치** 계획, 12기 Xe-100(80MW) 건설, UK GDA 진입(6/2)
 - **Amazon-Energy Northwest Cascade**: 4기 Xe-100(80MW, 320MW), Richland 인근, 2030 착공. Amazon $500M 투자(X-energy/KHNP/두산 960MW by 2039 포함), 5GW 목표
 
-#### Oklo (미국) -- Groves DSA 승인(7/1)·임계 '7월 중' 목표(7/4 마감시한 미충족), 주가 $49.27 하락 [업데이트]
+#### Oklo (미국) -- Groves 임계 '7월 중' 목표 유지, 주가 $44.13(7/21)로 52주 최저권 [업데이트]
 
-- **Groves 최종 안전분석(DSA) DOE 승인 (2026.07.01) [신규/핵심]**: DOE, Atomic Alchemy(Oklo Isotopes) **Groves Isotope Test Reactor** 최종 문서화안전분석(DSA) 승인. PDSA+DSA 완료로 **DOE 최종 pre-startup review 진입** -- 남은 단계는 **readiness review + startup approval**(이후 연료 수령·장전·startup testing -> first criticality). Groves는 텍사스 Lockhart(Caldwell County) 소재 **15MWt pool형 비가압 수냉 저농축우라늄로(VIPR, Versatile Isotope Production Reactor)**, 암·의료용 방사성동위원소 국내 생산 기반. **임계 목표 '7월 중'(당초 7/4 -> 미충족)**. DOE 7/4 Reactor Pilot 마감시한에 임계 달성한 4개사(Antares·Valar·Deployable Energy·Aalo Atomics) 명단엔 미포함. 발표 후 주가 $54.90(7/1)에서 **$49.27(7/9)로 되밀림**(52주 최저 $44.88 근접, 원자력주 전반 조정), $67M 기관 강세 옵션 베팅(CNBC 7/9) [Oklo/BusinessWire/Foreign Policy Journal/24-7 Wall St/CNN]
+- **Groves 최종 안전분석(DSA) DOE 승인 (2026.07.01) [신규/핵심]**: DOE, Atomic Alchemy(Oklo Isotopes) **Groves Isotope Test Reactor** 최종 문서화안전분석(DSA) 승인. PDSA+DSA 완료로 **DOE 최종 pre-startup review 진입** -- 남은 단계는 **readiness review + startup approval**(이후 연료 수령·장전·startup testing -> first criticality). Groves는 텍사스 Lockhart(Caldwell County) 소재 **15MWt pool형 비가압 수냉 저농축우라늄로(VIPR, Versatile Isotope Production Reactor)**, 암·의료용 방사성동위원소 국내 생산 기반. **임계 목표 '7월 중'(당초 7/4 -> 미충족)**. DOE 7/4 Reactor Pilot 마감시한에 임계 달성한 4개사(Antares·Valar·Deployable Energy·Aalo Atomics) 명단엔 미포함. 발표 후 주가 $54.90(7/1)에서 **$44.13(7/21)로 하락**(52주 최저권, 원자력주 전반 조정), $67M 기관 강세 옵션 베팅(CNBC 7/9) [Oklo/BusinessWire/Foreign Policy Journal/24-7 Wall St/CNN]
 - **Oklo-Kiewit Nuclear Solutions MOU (2026.06.18) [기존 유지]**: 남부 오하이오 초기 Aurora 배치용 **EPC 계획** 지원. Aurora 첫 상업 배치의 시공 파트너 가시화
 - **Centrus HALEU 공급 LOI (2026.06.18) [기존 유지]**: 남부 오하이오 **1.2GW Clean Energy Campus**용, Aurora **최대 5기 다년 운영분 HALEU를 2029년부터 공급**
 - **Standard Nuclear 연료재활용 MOU (6월) [기존 유지]**: 연료 재활용·잉여 플루토늄·첨단연료 제조 협력 탐색. **Oklo 첫 제3자 재활용 연료 offtake 경로**
@@ -223,8 +231,8 @@ last_synced_from_db: 2026-07-11
   - **Equinix 500MW**: $25M 선급금, 20년 PPA
   - **Meta 오하이오 1.2GW**: Pike County, 16기 Aurora(75MW), 206에이커, Phase1 150MW, 2030 운전 목표
 - **NVIDIA 전략적 파트너십**: AI 전력 + 첨단원자력 인프라 교차점
-- **주가 [업데이트]**: **$49.27(7/9)** -- 7/1 DSA 승인 직후 $54.90에서 되밀림. 52주 최저 $44.88 근접, 피크 $193.84 대비 **-70%**, YTD -31.34%·1개월 -12.77%. 원자력주 전반 조정 + 7/4 임계 마감시한 미충족. $67M 기관 강세 옵션 베팅(CNBC 7/9)
-- **애널리스트 컨센서스 [업데이트]**: TP 레인지 **$14~$140**(상업화 타임라인 불확실성으로 편차 큼). **24/7 Wall St TP $98.56(+100% 여력, 7/10)**, **Guggenheim Hold TP $54.06**(6월 개시, EBITDA+ 2030 전망), B.Riley Buy $92, Wedbush Outperform $110, UBS Neutral $55
+- **주가 [업데이트]**: **$44.13(7/21 종가)** -- 52주 최저권까지 하락, 시총 **$7.74B**, 피크 $193.84 대비 **-77%**. 7/9 $67M 기관 강세 옵션 베팅(CNBC) 이후에도 원자력주 전반 조정 지속. Groves 임계 목표 '7월 중' 유지가 촉매 대기
+- **애널리스트 컨센서스 [업데이트]**: TP 레인지 **$14~$140**(상업화 타임라인 불확실성으로 편차 큼). **24/7 Wall St TP $97.74(+121% 여력, 7/22 기사)**, **Guggenheim Hold TP $54.06**(6월 개시, EBITDA+ 2030 전망), B.Riley Buy $92, Wedbush Outperform $110, UBS Neutral $55. 파이프라인 ~14GW(Switch 12GW 2044·Equinix 500MW LOI $25M 선급)
 
 #### BWXT (BWX Technologies) -- SMR 증설, TP 상향, 불가리아 진출 [기존 유지]
 
@@ -283,7 +291,7 @@ last_synced_from_db: 2026-07-11
 
 #### Commonwealth Fusion Systems (CFS) -- SPARC 조립 진행, 가동 late 2026~2027 [기존 유지]
 
-- **SPARC 조립 진행, 가동 시점 'late 2026~~2027 후반' (6~~7월) [기존 유지]**: Devens(MA) 캠퍼스에서 **18기 초전도 자석 순차 설치 + 크라이오스탯 베이스 설치**로 토카막 조립 개시. 가동 개시 near-term(late 2026~2027 후반). **net energy gain Q>1 목표 2027** 유지. **DOE Milestone 프로그램 선정** + 대학·연구소 공개 연구자금 배정. 누적 펀딩 $3B로 세계 최다 펀딩 민간 핵융합사 [Linos/InterestingEngineering/World Nuclear News/Sacra]
+- **SPARC 조립·커미셔닝 개시, first plasma 목표 2026 (2026.07) [업데이트]**: Devens(MA) 캠퍼스에서 **18기 초전도 TF 자석 중 1호 완성·조립지그 안착 + 크라이오스탯 베이스(75톤·24피트) 설치**로 토카막 조립·커미셔닝 본격 개시. 진공용기 2번째 48톤 절반 설치로 조립 약 75%(5월 마일스톤). **first plasma 공식 목표 2026 유지(현실적으로 2026말~2027 슬립 관측)**, **net energy gain Q>1 목표 2027**. DOE Milestone 프로그램 선정. 누적 펀딩 $3B로 세계 최다 펀딩 민간 핵융합사 [cfs.energy/Prism News/World Nuclear News/Wikipedia SPARC]
 - **ARC 물리기반 동료심사 논문 5편 발표 (6월 초)**: Journal of Plasma Physics 특별판. ARC는 **핵융합출력 1.1GW -> 연속 순전력 400MWe** 변환. SPARC 실험으로 ARC 설계 확정 경로
 - **SPARC 사양**: fusion gain 약 Q=11 목표, 25MW 입력 가열 -> 50~100MW 핵융합출력
 - **타임라인**: SPARC 가동 **late 2026~2027 -> net energy gain Q>1 실증 2027**
@@ -390,18 +398,18 @@ last_synced_from_db: 2026-07-11
 - **Q1 수주**: 2.79조원, **수주잔고 24.13조원 (+46% YoY)**
 - **2026 수주 전망 [업데이트]**: **~14.3조원**(원자력 5.8조 + 가스발전 5.3조 등; 데일리머니 -- 앞선 ~15.5조 대비 세분화 추정치). 가스터빈이 실적 견인·SMR 주기기 독점. 폴란드향 AP1000 원자로용기·증기발생기, TerraPower 나트륨 SMR 기자재, NuScale VOYGR(루마니아/미국) 주기기 등 해외 원전기술사향 수주 확대
 - **체코 두코바니 5·6호기 주기기**: APR1000 2기 주기기 공급 **~5.6조원** (주기기 4.9조 + 터빈·발전기 0.7조). 6월 한수원-EDU II 본계약 후속 협력계약 성격. **주기기 2027.11~2032.08 제작·공급** 일정. 한전기술 종합설계. 두산스코다파워 증기터빈 등 3,200억원 추가계약(2월)
-- **체코 테믈린 3·4호기 우선협상대상자 7월 발표 예정 [신규]**: ~30조원 규모 후속 수주전 -- 한국 선정 시 **수주 인식은 내년 초** 예상 [뉴시스/한경/브로크담]
+- **체코 테믈린 3·4호기 최종결정 2027로 지연 [정정]**: ~30조원 규모 후속 수주전 -- 체코 산업통상부 원자력실장 '재정 전제조건·기본계획 검토 중, 최종 결정은 내년(2027)'(4/22 부산). **체코 정부가 프랑스 EDF·미국 웨스팅하우스에도 경쟁입찰 참여 의사 타진** 방침 -> 한수원 단독 우선협상 지위에 불확실성. **직전 KB '7월 발표 예정'은 실현되지 않음** [아시아경제/서울신문/아시아투데이]
 - **SMR 전용공장**: 창원, **2026.03~2031.06 총 8,068억원 투입**, 연 20기+ 생산능력. 세계 최초 SMR 전용공장 착공
 - **글로벌 SMR Foundry**: NuScale/X-energy/TerraPower 주기기 위탁 생산 (2026H2 생산 시작)
 - **SMR 매출 전망**: 2026 2,000~3,000억 -> 2027 7,000억 -> 2028 1.14조 -> 2029 2.4조 -> **2030 3.3조원**
 - **빅테크 가스터빈**: 미국향 380MW급 7기 1.2조원 계약 (2026.03.06)
-- **주가**: 5/6 기준 **126,900원** (2026.02 장중 99,900원 신고가 이후 등락). **2026년 외국인 순매수 1위**
-- **목표주가**: 증권사 평균 **152,214원** (+20%). 하나 165,000 / KB 148,000 / 유진 150,000 / 대신 130,000 / 메리츠 122,000 / NH 111,000 / 미래에셋 105,000
+- **주가 [업데이트]**: **6만원대(7/24)** -- 7/11 78,100원(52주 고점 139,200원 대비 -43.9%) -> 7/16 65,000원(+7.97%) -> 7/24 약 6만원대. 직전 KB 126,900원(5/6)·4/29 129,200원 대비 **-50% 수준 대폭 조정**(원자력주 전반 조정 국면). 낮은 영업이익률(약 3%)이 밸류 디스카운트 요인
+- **목표주가 [업데이트]**: KB증권 15.6만 -> **14만원 하향**(7/23)하나 애널리스트 **20명 전원 매수** 유지, 평균 TP ~14만원(현재가 대비 +80%). 수주잔고 24조·2026 수주전망 ~14.3조 펀더멘털 유효
 
 ### 한국 원전 수출 [업데이트]
 
 - **체코 Dukovany 본계약 체결 (6/4)**: 한수원-EDU II **본계약 체결 완료**. APR1000 5·6호기 (각 1,000MW), **~26조원**. 5/6 EDF(프랑스) 계약금지 가처분 -> EDU II·한수원 최고행정법원 항고 -> 6/4 가처분 최종 파기로 불확실성 해소. 한국 사상 최대 원전 수출
-- **체코 Temelin 3·4호기 후속 [신규]**: 우선협상대상자 **7월 발표 예정**, ~30조원 규모. 한국 선정 시 수주 인식 내년 초
+- **체코 Temelin 3·4호기 후속 [정정]**: ~30조원 규모. 최종 결정 **2027년으로 지연**(체코 산업부 4/22), EDF·웨스팅하우스 경쟁입찰 검토 -- 7월 발표 미실현
 - **두산에너빌리티·한전기술 후속계약**: 두코바니 5·6호기 주기기·터빈·발전기 5.6조원 + 종합설계용역 (본계약 체결로 진행, 주기기 2027.11~2032.08)
 - **폴란드**: AP1000 원자로용기/증기발생기 수주 확대 예상. **시프로위 폴삿 민간원전 탈퇴 변수** [리스크]
 - **원전수출기획위원회 신설 (5/14)**: 산업부 원전전략기획관 위원장. 한전(협상·금융·지분), 한수원(건설·운영·체코/필리핀/i-SMR). **원전수출진흥법** 연내 입법 추진
@@ -412,6 +420,7 @@ last_synced_from_db: 2026-07-11
 - **2026 예산**: SMR 제조기술 확보 **3,000억원** 포함, 원전 육성 **9,000억원**. 민관 합산 3,992억원
 - **타임라인**: **2026 표준설계인가 신청** -> **2028 인허가 확보** -> **2034 상업운전 목표** (제11차 전력수급기본계획 첫 SMR). SMR 규제체계 초안 연내 개발, 경수로 범용규제 2028 완료
 - **우리기술 i-SMR 참여**: '모듈형원자로 MMIS 안전계통 표준 플랫폼 개발' 협약 체결 (5/22), 혁신형SMR기술개발사업단과 협력
+- **최근 동향 [신규]**: 한수원 iSMR 모형·현장투입 로봇 국제안전보건전시회 첫 공개. 국정원 'SMR 사이버보안 협의체' 발족. 삼성중공업 해상 소형원자로 미국선급(ABS) 인증 획득으로 해상 SMR 상용화 속도
 - **SMR 특별법**: 연구개발→상용화→계통연계→수출 전주기 지원 체계 추진
 - **SMR 제작지원센터**: 창원/부산/경주 3개소 / **원전산업성장펀드** 1,000억원
 - 한수원/두산에너빌리티 주도, 2030년대 수출 목표
@@ -429,13 +438,16 @@ last_synced_from_db: 2026-07-11
   - 한국형 혁신 핵융합 실증로 조기 설계, KSTAR 2.0, AI 가상핵융합로 구축
   - 하반기 국가 핵융합위원회 심의 후 **연내 확정**. 목표: **2030년대 핵융합 전력생산 실증**
 - **현대엔지니어링-KFE 협약**: 한국형 혁신 핵융합로 핵심기술 개발 사업협약. 건설사 핵융합 밸류체인 참여 확대
+- **HD현대중공업 ITER 마지막 진공용기 섹터 제작완료 (2026.07.22) [신규]**: 높이 11.3m·폭 6.6m·무게 약 400톤, 1억도+ 플라즈마 봉입 핵심설비. 전체 9기 중 **4기 제작**, 프랑스 카다라슈서 감사패 수령. 핵융합 분야로 사업 포트폴리오 확장
 - **ITER 국내 기업 수주**: 누적 해외 수주 **1조원**, 신규 **211억원**
 
 ### 한국 SMR/핵융합 관련주
 
-- 두산에너빌리티: SMR 주기기 제조 + 원전 EPC (외국인 순매수 1위, TP 평균 15.2만원, 체코 주기기 5.6조, 테믈린 우선협상 7월 발표 예정)
+- 두산에너빌리티: SMR 주기기 제조 + 원전 EPC (주가 6만원대 -50% 조정, TP 14만원 KB 하향·전원 매수, 체코 주기기 5.6조, 테믈린 최종결정 2027 지연)
+- HD현대중공업: ITER 마지막 진공용기 섹터 제작완료(7/22, 9기 중 4기)·핵융합 진출, TerraPower Natrium 원자로용기·엔클로저 공급, MSR 원자력 추진선 2030 목표
 - 우리기술: i-SMR MMIS 안전계통 표준 플랫폼 개발
 - 현대엔지니어링: KFE 핵융합 핵심기술 개발 협약
+- 삼성중공업: 해상 소형원자로 미국선급(ABS) 인증 획득
 - 한국전력/한수원: i-SMR 개발 파트너 / 한국핵융합에너지연구원(KFE): KSTAR 운영
 
 ---
@@ -549,17 +561,17 @@ last_synced_from_db: 2026-07-11
 4. **HALEU 연료 공급**: 미국 글로벌 농축 **1% 미만**. Centrus DOE $900M 상업운전 전환(7/1)·누적 1,900kg+·연 12MT 목표로 진전하나, 미국 유일 상업 생산자 의존도 여전. Oklo LOI·Urenco 50% 증설·General Matter 등 다변화 진행 중이나 시간 필요
 5. **경제성 미입증**: 실제 건설/운영 비용 데이터 부족. Carnegie Endowment "hype vs reality" 경고
 6. **사회적 수용성**: 원전 안전 우려, 방사성폐기물 처리
-7. **주가 변동성**: Oklo 7/1 Groves DSA로 +4.92% $54.90, 컨센 TP 레인지 $14~$140(B.Riley $92/UBS $55). NuScale ~$10(BofA $12). 단일 뉴스에 ±5~10% 급변
+7. **주가 변동성**: Oklo $44.13(7/21, 52주 최저권·피크 대비 -77%), 컨센 TP 레인지 $14~$140(24/7 Wall St $97.74/B.Riley $92/UBS $55). NuScale ~$10(BofA $12). 두산에너빌리티도 6만원대 -50% 조정. 원자력주 전반 조정, 단일 뉴스에 ±5~10% 급변
 8. **중국 경쟁**: Linglong One 2026 H1 가동 시 세계 최초 육상 상업 SMR 타이틀. 서구 대비 수년 선행
-9. **우라늄 가격**: ~~$85/lb (6월, 4월 초 이후 박스권). Cameco 2026 실현가 $85~~89/lb. 구조적 공급부족·AI DC 수요가 하한 지지, 유틸리티 관망세
-10. **체코 원전**: 두코바니 본계약 6/4 체결로 가처분 해소. 두산 주기기 2027.11~2032.08 공급. 테믈린 3·4호기 우선협상 7월 발표 예정(선정 시 내년 초 인식)·폴란드 시프로위폴삿 탈퇴 변수 잔존
+9. **우라늄 가격**: $85.75/lb (7/23, 4월 초 이후 박스권 지속). Cameco 2026 실현가 $85~89/lb. 구조적 공급부족·AI DC 수요가 하한 지지, 유틸리티 관망세
+10. **체코 원전**: 두코바니 본계약 6/4 체결로 가처분 해소. 두산 주기기 2027.11~2032.08 공급. **테믈린 3·4호기 최종결정 2027로 지연**(EDF·웨스팅하우스 경쟁입찰 검토)·폴란드 시프로위폴삿 탈퇴 변수 잔존
 11. **폴란드 변수**: 시프로위 폴삿 민간원전 탈퇴
 
 ### 핵융합 리스크
 
 1. **기술 불확실성**: Q>1 달성 및 상업적 순에너지 생산 아직 미입증. Helion Polaris net production 미발표. CFS SPARC 조립 진행이나 net energy gain 실증은 2027 목표. 상업 발전 전력공급 12개월 내 도달 기업 부재(업계 공통 진단)
 2. **일정 리스크**: CFS SPARC 가동 시점 **'late 2026~2027 후반'** -> net energy gain 실증 2027. 원래 aggressive 마일스톤 대비 슬립 지속
-3. **자본 집약성 vs 고밸류**: Helion 밸류 $15.5B(3배 급등)이나 net production 미입증 상태 -- 일부 '핵융합 회의론' 병존. 누적 민간투자 $11.4B로 증가 중이나 상업화엔 부족
+3. **자본 집약성 vs 고밸류**: Helion 밸류 $15.5B·Proxima €2.4B+ 등 고밸류이나 net production 미입증 -- 일부 '핵융합 회의론' 병존. 누적 민간투자 **$14.24B**(FIA 2026, 연간 $4.48B 역대 최고)로 급증하나 상업화엔 부족. **71% 기업이 첫 상업전력 2030년대 전망(타임라인 불변)·67%가 자금을 최대 난제로 지목**
 4. **상업화 갭**: 기술 실증 -> 상업 발전 사이 5~10년 이행 기간. DOE 로드맵(6/9)도 '재료 엔지니어링 장벽'을 핵심 난제로 지목
 5. **정책·예산 리스크**: DOE Fusion S&T 로드맵(6/9) 예산수준 미확약 -- 의회 세출·민관 파트너십에 의존. ITER 미 DOE FY2026 분담 축소 제안
 6. **경쟁 기술**: SMR/재생에너지 비용 하락이 핵융합 경제성 창구 좁힐 가능성
@@ -570,4 +582,4 @@ last_synced_from_db: 2026-07-11
 
 ---
 
-_본 KB는 2026-07-11 웹검색 기반 갱신 (11회 검색, 6건 DB 추가). 최대 변화: DOE Reactor Pilot Program 7/4 마감시한 달성 -- 4개 비상장 마이크로리액터社(Antares·Valar·Deployable Energy·Aalo Atomics) DOE 승인 임계 도달, 트럼프 EO 14301 목표 초과. 상장 대형사(Oklo·NuScale·NANO)는 미포함 · Oklo Groves DSA 승인(7/1)에도 임계는 '7월 중' 목표로 7/4 미충족, 주가 $49.27(7/9)·피크 $193.84 대비 -70%(24/7 Wall St TP $98.56 vs Guggenheim Hold $54.06) · NuScale ~$10.26(YTD -38%)·Paragon HIPS 계약(6/17)·TVA PPA 연말 기대 · 두산 체코 테믈린 우선협상 7월 발표 예정(2026 수주전망 ~14.3조) · 핵융합 신규 대형 딜/마일스톤 없음(CFS SPARC 조립 ~75% 5월 마일스톤·first plasma 2027 슬립). 우라늄 ~$85/lb·Centrus $900M HALEU·Westinghouse $17.5B·빅테크 9.8GW 기존 유지. 다음 갱신 권장: 2026-08-10 이전_
+_본 KB는 2026-07-25 웹검색 기반 갱신 (18회 검색, 13건 DB 추가). 최대 변화: **FIA 2026 Global Fusion Industry Report 발표 -- 민간 핵융합 누적 투자 $14.24B(연간 $4.48B 6년 내 최대·역대 최고), 56개사·16,000명+**. 주요 라운드 CFS $863M·Helion $465M·**Proxima Fusion $518M(유럽 최고밸류 €2.4B+·Google 참여)**·Inertia $450M. 단 71%가 첫 상업전력 2030년대·67%가 자금 최대 난제(타임라인 불변). Pacific Fusion 2차 마일스톤(440GW+·1.1MV). CFS SPARC 조립·커미셔닝 개시(first plasma 목표 2026 유지·2026말~2027 슬립 관측). Oklo 주가 $44.13(7/21)·52주 최저권·피크 대비 -77%(24/7 Wall St TP $97.74)·Groves 임계 '7월 중' 유지. NuScale TVA PPA 8월 실적콜 업데이트. 한국: **두산에너빌리티 6만원대 -50% 조정(KB TP 15.6->14만 하향·전원 매수)** · **체코 테믈린 최종결정 2027 지연·EDF/웨스팅하우스 경쟁입찰 검토(7월 발표 미실현)** · **HD현대중공업 ITER 마지막 진공용기 섹터 제작완료(7/22)·핵융합 진출**. 우라늄 $85.75/lb(7/23)·Centrus $900M HALEU·DOE Reactor Pilot 순항 기존 유지. 다음 갱신 권장: 2026-08-24 이전_
