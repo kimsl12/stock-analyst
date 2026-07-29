@@ -33,9 +33,11 @@ lint_p2_count: 5
 | `macro/science_tech.md`         | 2026-06-24 | 32일     | kb-updater 재수집 위임 (industry/science_tech는 7/26 갱신·macro/science_tech 누락 지속·6/28부터 6주 이월)                                                                                                          |
 | `macro/us_monetary_policy.md`   | 2026-07-07 | 19일     | kb-updater 재수집 위임 (updated 06-07 49일·7/8 FOMC 6월 의사록 + 7/29 FOMC 미반영·7/12 P0 이월)                                                                                                                    |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 48일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-26, 7/25 이브닝 갱신)·surprise_index(vu 07-26, 7/25 갱신)·correlation_matrix(vu 07-26, 7/25 갱신)는 최신. economic_calendar(vu 07-27, D+1)는 다음 개장 후 자동 회전(P1). auto-trigger 마커 0건(KB 본문) + 일요일 미국장 휴장(7/27 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
+> **브리핑 진행 가능 여부:** industry KB 만료 48일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 07-30, 7/29 이브닝 갱신 — 한국 KOSPI/KOSDAQ 2일째 폭락 마감 확정 + 미 프리마켓 견조 + FOMC/MSFT·META 실적 오늘밤 예정 프리뷰)·surprise_index(vu 07-26, 7/25 갱신)·correlation_matrix(vu 07-26, 7/25 갱신)는 최신. economic_calendar(vu 07-27, D+1)는 다음 개장 후 자동 회전(P1). auto-trigger 마커 0건(KB 본문) + 일요일 미국장 휴장(7/27 개장) + CLAUDE.md 강제갱신금지 → kb-updater 자동 dispatch 생략.
 
 > [해소 참조 2026-07-26] `market/prediction_markets`는 7/22 재수집으로 vu 06-21→07-23 개선(만료 28→3일)·`market/daily_snapshot·surprise_index·correlation_matrix`는 7/25 이브닝 브리핑 갱신 완료로 P1 이하. 8종 industry(advanced_materials·capex·energy·quantum·science_tech·smr·space·telecom_next)는 지난 주간 글로벌 KB 갱신으로 vu 08-xx 유효 → P0 제외.
+
+> [해소 참조 2026-07-29] `market/daily_snapshot.md` 이브닝 갱신 완료 — 한국 KOSPI -5.98%(5,663.24)·KOSDAQ -6.12%(662.68) 2거래일 연속 폭락 확정 마감(이틀 누적 약 -16.2%), 삼성전자·SK하이닉스 반도체 대형주 투매 지속, 아시아 국가별 편차(항셍 +1.96% 반등), 미 프리마켓 견조(ES=F +0.18%), FOMC 결정·MSFT·META Q2 실적은 오늘 밤(KST 7/30 새벽) 예정으로 프리뷰만 반영·미발표 상태 명시. vu 07-26→07-30 갱신.
 
 ---
 
