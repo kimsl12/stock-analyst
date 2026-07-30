@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>크래프톤 — 전략적 의사결정의 이슈, 목표가 14.7% 하향 — 키움증권</title>
+<style>
+:root{--bg:#0F1923;--card:#1A2733;--text:#E8EAED;--sub:#9AA0A6;--blue:#42A5F5;--buy:#26A69A;--sell:#EF5350;--hold:#FFA726;--border:#2D3A45;--accent:#7C4DFF;--ai:#FFB74D}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:24px;max-width:880px;margin:0 auto;line-height:1.55}
+.back{display:inline-block;color:var(--blue);font-size:13px;margin-bottom:12px;text-decoration:none}
+.back:hover{text-decoration:underline}
+header{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:20px}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--border);padding:3px 10px;border-radius:12px;font-size:11px;color:var(--sub);margin-right:6px}
+.tag.src{color:var(--blue);border-color:rgba(66,165,245,0.4)}
+.tag.date{color:var(--sub)}
+h1{font-size:22px;margin:10px 0 6px;line-height:1.3}
+.target{font-size:15px;color:var(--sub)}
+.target b{color:var(--text);font-size:16px}
+.target .code{color:var(--sub);font-size:12px;margin-left:4px;font-family:ui-monospace,Menlo,monospace}
+.priceline{margin-top:10px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px}
+.priceline .item{background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:6px}
+.priceline .item .lbl{color:var(--sub);font-size:11px;display:block}
+.rating{font-size:12px;padding:2px 10px;border-radius:10px;background:#2D3A45}
+.rating.buy{background:rgba(38,166,154,0.2);color:var(--buy)}
+.rating.sell{background:rgba(239,83,80,0.2);color:var(--sell)}
+.rating.hold{background:rgba(255,167,38,0.2);color:var(--hold)}
+section{margin-bottom:24px}
+h2{font-size:15px;color:var(--blue);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+ul{padding-left:20px}
+ul li{margin-bottom:8px;font-size:14px}
+.bullets li::marker{color:var(--blue)}
+/* 사후 평가 섹션 */
+.oc-block{background:rgba(66,165,245,0.04);border:1px solid var(--border);border-left:3px solid var(--blue);padding:14px 18px;border-radius:6px;margin-bottom:24px}
+.oc-block h2{color:var(--blue);border-bottom:none;padding-bottom:0;margin-bottom:12px;display:flex;align-items:center;gap:6px;font-size:15px}
+.oc-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px;flex-wrap:wrap}
+.oc-label{display:inline-block;color:var(--sub);font-size:12.5px;min-width:140px}
+.oc-badge{display:inline-block;padding:2px 12px;border-radius:10px;font-size:12px;font-weight:700}
+.oc-badge.hit{background:rgba(38,166,154,0.22);color:var(--buy)}
+.oc-badge.miss{background:rgba(239,83,80,0.22);color:var(--sell)}
+.oc-badge.progress{background:rgba(255,167,38,0.22);color:var(--hold)}
+.oc-thesis{font-size:12px;padding:2px 9px;border-radius:9px;background:#2D3A45;color:var(--sub)}
+.oc-thesis.thesis-correct{background:rgba(38,166,154,0.16);color:var(--buy)}
+.oc-thesis.thesis-partial{background:rgba(255,167,38,0.16);color:var(--hold)}
+.oc-thesis.thesis-incorrect{background:rgba(239,83,80,0.16);color:var(--sell)}
+.oc-notes{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:13px;line-height:1.6;color:var(--text)}
+/* AI 해석 섹션 */
+.ai-block{background:linear-gradient(135deg,rgba(255,183,77,0.06),rgba(124,77,255,0.04));border:1px solid var(--border);border-left:3px solid var(--ai);padding:14px 18px;border-radius:6px;margin-bottom:24px}
+.ai-block h2{color:var(--ai);border-bottom:none;padding-bottom:0;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.ai-block h2::before{content:"🤖";font-size:16px}
+.ai-block .ai-row{margin-bottom:10px;font-size:14px;line-height:1.6}
+.ai-block .ai-row:last-child{margin-bottom:0}
+.ai-block .ai-label{display:inline-block;font-weight:700;color:var(--text);min-width:88px;padding-right:8px;font-size:13px}
+.ai-block .ai-row.context .ai-label{color:var(--blue)}
+.ai-block .ai-row.agreement .ai-label{color:var(--buy)}
+.ai-block .ai-row.divergence .ai-label{color:var(--hold)}
+.ai-block .ai-row.insight{padding-top:10px;margin-top:10px;border-top:1px dashed var(--border);font-style:italic;color:var(--text)}
+.ai-block .ai-row.insight .ai-label{color:var(--ai);font-style:normal}
+.ai-disclaimer{font-size:11px;color:var(--sub);margin-top:10px;padding-top:8px;border-top:1px dashed var(--border)}
+.notice{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:10px 14px;border-radius:4px;font-size:12px;color:var(--sub);margin:14px 0}
+.notice b{color:var(--text)}
+.source-link{display:inline-block;margin-top:6px;font-size:13px;color:var(--blue);text-decoration:none}
+.source-link:hover{text-decoration:underline}
+.full-link{display:inline-block;margin-top:8px;background:var(--card);border:1px solid var(--border);padding:8px 14px;border-radius:6px;font-size:13px;color:var(--text);text-decoration:none;transition:border-color 0.2s}
+.full-link:hover{border-color:var(--blue);color:var(--blue)}
+.pdf-frame{width:100%;height:75vh;border:1px solid var(--border);border-radius:6px;margin-top:12px;background:#fff}
+footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--sub);font-family:ui-monospace,Menlo,monospace}
+@media(max-width:700px){body{padding:12px}.ai-block .ai-label{display:block;min-width:auto;margin-bottom:2px}}
+</style>
+</head>
+<body>
+<a class="back" href="../../index.html">← Analyst Reports 인덱스</a>
+<header>
+  <div>
+    <span class="tag src">키움증권</span>
+    <span class="tag date">2026-07-30</span>
+    <span class="tag">김진구 (키움증권)</span>
+    <span class="tag rating buy">매수</span>
+  </div>
+  <h1>크래프톤 — 전략적 의사결정의 이슈, 목표가 14.7% 하향</h1>
+  <div class="target"><b>크래프톤</b><span class="code">259960</span></div>
+  <div class="priceline"><div class="item"><span class="lbl">목표가</span>KRW290000</div><div class="item"><span class="lbl">직전 목표가</span>KRW340000</div><div class="item"><span class="lbl">기간</span>12M</div></div>
+</header>
+
+<section>
+  <h2>핵심 메시지</h2>
+  <ul class="bullets">
+    <li>키움증권 김진구 연구원, 목표주가 34만원→29만원 14.7% 하향 제시</li>
+    <li>2027년 예상 지배주주지분에 목표 PER 15배·할인율 10% 적용해 산정</li>
+    <li>다수 신작 게임 준비 중이나 글로벌 트리플A급 흥행 여부는 게임스컴서 검증 필요</li>
+    <li>업계 평균 목표가 36만4500원 대비 20.4% 낮은 보수적 접근</li>
+    <li>전일 종가 기준 추가 상승여력은 18.9%로 여전히 매수 의견 유지</li>
+  </ul>
+</section>
+
+
+
+<section class="ai-block"><h2>AI 해석 / 의견</h2><div class="ai-row context"><span class="ai-label">시장 컨텍스트</span>2026-07-30 코스피 조정 국면 속 성장주·게임주는 밸류에이션 재평가 압력에 노출돼 있다. 모닝브리핑(7/30) 기준 위험자산 회피 심리가 개별 성장주에도 영향을 미치고 있다.</div>
+<div class="ai-row agreement"><span class="ai-label">동의 / 타당</span>본 KB는 크래프톤 개별 v2 분석을 보유하지 않는다. 다만 최근 KB 매크로의 성장주 밸류에이션 조정 흐름과 이번 목표가 보수화(할인율 10% 적용)는 정합적이다.</div>
+<div class="ai-row divergence"><span class="ai-label">이견 / 위험</span>업계 평균(36만4500원) 대비 20.4% 낮은 보수적 목표가는 신작 흥행 불확실성을 과도하게 디스카운트했을 가능성이 있다. 게임스컴 등 카탈리스트 이전에 선제적으로 하향한 점은 시장 컨센서스와 온도차가 있다.</div>
+<div class="ai-row insight"><span class="ai-label">핵심 시사점</span>목표가 하향은 신작 검증 이전 보수적 접근일 뿐 펀더멘털 훼손은 아니다 — 게임스컴 등 구체 카탈리스트 확인 전까지는 목표가 하단 시나리오로 접근을 권장한다.</div><div class="ai-disclaimer">※ 이 평가는 분석 에이전트가 KB 매크로/시장 데이터 + 사용자 분석 누적을 참고하여 작성한 것이며, 원 발행처 의견과 다를 수 있습니다. 투자 판단은 본인 책임 · 평가 시점 2026-07-31.</div></section>
+
+<section><h2>원문 (스크랩 텍스트)</h2><a class="full-link" href="source.html" target="_blank">전체 보기 ↗</a></section>
+
+<div class="notice">
+  <b>출처 / 인용 안내:</b> 본 페이지는 키움증권 의 2026-07-30 자료를 정리한 것입니다.
+  원본 저작권은 발행처에 있으며 본 정리는 비영리 개인 학습 / 연구 목적입니다.
+  <a class="source-link" href="https://www.newspim.com/news/view/20260730000422" target="_blank">https://www.newspim.com/news/view/20260730000422</a>
+</div>
+
+<footer>
+  item_id: 20260730_Kiwoom_259960_TP290000 · source_type: korea_brokerage · license: media_quote_only · collected: 2026-07-31T16:35:00+09:00
+</footer>
+</body>
+</html>
