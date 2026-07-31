@@ -1,13 +1,13 @@
 ---
 sector: tech_platform
 created: 2026-05-12
-last_updated: 2026-07-25
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/ai.md
   - knowledge-base/industry/tech_breakthrough.md
 l1_index_count: 3
-l2_summary_count: 1
+l2_summary_count: 2
 l3_deep_dive_count: 0
 deep_dive_priority: 7
 ---
@@ -68,6 +68,7 @@ deep_dive_priority: 7
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-08 `eu_ai_act_gpai_enforcement_202608.md` — EU AI Act Chapter V: GPAI(범용 AI) 집행 권한 2026-08-02 발효 + 과징금 매출 3%/€15M + 구모델 2027-08-02 유예 → 빅테크 EU AI 컴플라이언스 비용·시장 접근 리스크
 - 2026-06 `eu_ai_act_omnibus_202606.md` — EU AI Act Omnibus: 독립형 고위험 AI 마감 2027-12-02 연장 + 생성형 AI 투명성 2026-12-02 + nudifier 금지 + 과징금 €35M/매출 7%(금지)·€15M/3%(투명성)
 
 ## L3 분기 Deep Dive 이력

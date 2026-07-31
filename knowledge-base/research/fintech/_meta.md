@@ -1,13 +1,13 @@
 ---
 sector: fintech
 created: 2026-05-12
-last_updated: 2026-07-25
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
 l1_index_count: 10
-l2_summary_count: 6
+l2_summary_count: 7
 l3_deep_dive_count: 1
 deep_dive_priority: 5
 ---
@@ -50,6 +50,7 @@ deep_dive_priority: 5
 
 ## L2 월간 요약 목록
 
+- 2026-08 `occ_genius_act_stablecoin_reserves_202608.md` — OCC NPRM(2/25) 스테이블코인 준비금 1:1(만기 93일 미만 국채)·유동성 일 10%/주 30%·집중 40%·상환 2영업일(급증 7일)·$25B↑ 예금보험·$10B 연방전환, 발효 2027-01-18
 - 2026-06 `genius_act_sec_cftc_mou_custody_202606.md` — GENIUS Act 시행 본격화 (SEC·CFTC MOU 3/11 + 토큰증권 혁신 면제 + FDIC 패스스루 보험 배제 + OCC/Treasury 커스터디 룰, 7/18 데드라인)
 - 2026-05 `stablecoin_bis_papers_170_202605.md` — BIS Papers #170 EMDE 통화주권 침식 3 시나리오
 - 2026-04 `sec_self_custody_wallet_broker_202604.md` — SEC Staff Statement 4/13 셀프 호스팅 지갑 broker 미해당

@@ -1,14 +1,14 @@
 ---
 sector: industrials
 created: 2026-05-12
-last_updated: 2026-06-06
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/capex.md
   - knowledge-base/industry/infrastructure.md
   - knowledge-base/industry/logistics.md
 l1_index_count: 1
-l2_summary_count: 1
+l2_summary_count: 2
 l3_deep_dive_count: 0
 deep_dive_priority: 9
 ---
@@ -69,6 +69,7 @@ deep_dive_priority: 9
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-08 `electrical_equipment_lead_times_202608.md` — TerraPin 전력기기 리드타임: 변압기 75~~110주·MV 스위치기어 52~~80주·발전기 50~~78주, 팬데믹前 2~~4배·2028년 전 정상화 난망 + DC 부지 30~50% 지연 위험(capex 물리적 병목)
 - 2026-06 `chips_fab_construction_boom_202606.md` — 미국 반도체 팹 건설 붐 (TSMC AZ 6개월 조기 + Samsung Taylor 재개 + Micron $200B + ITC 25→35% + 건설시장 $58.8B/2030)
 
 ## L3 분기 Deep Dive 이력

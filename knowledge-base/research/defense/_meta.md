@@ -1,13 +1,13 @@
 ---
 sector: defense
 created: 2026-05-12
-last_updated: 2026-07-11
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/defense_industry.md
   - knowledge-base/macro/geopolitics.md
 l1_index_count: 5
-l2_summary_count: 1
+l2_summary_count: 2
 l3_deep_dive_count: 0
 deep_dive_priority: 6
 ---
@@ -69,6 +69,7 @@ deep_dive_priority: 6
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-08 `counter_uas_drone_swarm_cnas_202608.md` — CNAS 'Countering the Swarm': 저가·대량 드론이 미국 제공권 독점 무력화 + counter-UAS 조달 과소투자 → 다층 능동방어(HPM 양산·저가 요격 비축·AI C2·전군 훈련) 권고 → 대드론·자율·EW 방산 신규 수요 채널
 - 2026-06 `us_japan_alliance_csis_202606.md` — CSIS US-Japan 동맹 우선순위: 일본 방위비 GDP 2% 조기 + 미국 동맹 5% 새 기준(군사 3.5%+안보 1.5%) + 미사일 공동개발(AMRAAM/SM-3)
 
 ## L3 분기 Deep Dive 이력

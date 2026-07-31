@@ -1,14 +1,14 @@
 ---
 sector: consumer
 created: 2026-05-12
-last_updated: 2026-07-18
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/consumer_retail.md
   - knowledge-base/industry/luxury.md
   - knowledge-base/industry/food_agriculture.md
 l1_index_count: 6
-l2_summary_count: 1
+l2_summary_count: 2
 l3_deep_dive_count: 0
 deep_dive_priority: 8
 ---
@@ -69,6 +69,7 @@ deep_dive_priority: 8
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-08 `k_shaped_spending_tariff_back_to_school_202608.md` — BofA K자형 카드지출(고소득 +2.4% vs 저소득 +0.4%) + NRF 백투스쿨 $433억(+9.89%, 응답자 73% 관세發 인상 예상)·저소득 축소구매 + 노동시장 스윙 팩터
 - 2026-06 `q1_fy26_retail_tariff_passthrough_202606.md` — Q1 FY26 미국 리테일 어닝 관세 가격 전가 본격화 (Walmart 5~6월 인상 명시 / Target 반전·가이던스 상향 / Home Depot 선별 인상)
 
 ## L3 분기 Deep Dive 이력

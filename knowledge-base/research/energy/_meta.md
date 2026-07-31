@@ -1,13 +1,13 @@
 ---
 sector: energy
 created: 2026-05-12
-last_updated: 2026-07-25
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
 l1_index_count: 16
-l2_summary_count: 6
+l2_summary_count: 7
 l3_deep_dive_count: 1
 deep_dive_priority: 2
 ---
@@ -51,6 +51,7 @@ deep_dive_priority: 2
 
 ## L2 월간 요약 목록
 
+- 2026-08 `smr_commercialization_datacenter_ppa_202608.md` — Yale CEF SMR 상업화: FOAK→NOAK 원가 -50% + 2026 NRC 첫 상업 건설허가 2건(TerraPower Natrium 상반기)·NuScale 77MWe SDA + 하이퍼스케일러 10GW+ PPA(Amazon·Meta·Google·TVA) + IEA DC 1,100 TWh(+18%)
 - 2026-06 `oklo_aurora_doe_pilot_criticality_202606.md` — Oklo Aurora DOE Reactor Pilot 7/4/2026 임계 목표 + DOE OTA·NSDA·PDSA + NRC 우회 가속 트랙
 - 2026-05 `iea_key_questions_energy_ai_202605.md` — IEA Key Questions on Energy and AI (하이퍼스케일러 CapEx $400B+, +75%, 그리드 lead time 7~10년)
 - 2026-05 `triso_x_xenergy_fuel_facility_202605.md` — NRC TRISO-X X-energy 연료 시설

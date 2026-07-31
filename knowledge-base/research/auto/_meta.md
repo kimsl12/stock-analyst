@@ -1,13 +1,13 @@
 ---
 sector: auto
 created: 2026-05-12
-last_updated: 2026-07-25
+last_updated: 2026-08-01
 status: active
 related_industry_kb:
   - knowledge-base/industry/auto.md
   - knowledge-base/industry/battery.md
 l1_index_count: 4
-l2_summary_count: 1
+l2_summary_count: 2
 l3_deep_dive_count: 0
 deep_dive_priority: 10
 ---
@@ -69,6 +69,7 @@ deep_dive_priority: 10
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-08 `china_ev_export_eu_tariff_localization_202608.md` — T&E 중국 EV 유럽: 관세는 통했으나 침투 못 막음 + BYD(17%) 판매 2배↑·SAIC(35%) 반토막 + 현지생산 0→100만대(터키·헝가리·스페인) + PHEV 우회 37%→60% + BYD 해외판매 43%
 - 2026-06 `ira_30d_industrial_policy_siepr_202606.md` — IRA 30D 클린비클 크레딧 = 신산업정책, 이원 $3,750 + 북미조립 요건, 미국 EV 제조 리쇼어링 함의 (SIEPR)
 
 ## L3 분기 Deep Dive 이력
