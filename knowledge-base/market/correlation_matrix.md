@@ -1,18 +1,18 @@
 ---
-updated: 2026-07-30
-valid_until: 2026-07-31
+updated: 2026-07-31
+valid_until: 2026-08-01
 file: correlation_matrix
 category: market
-confidence: "high (6/6 페어 전량 yfinance+FRED 직접 페치 신규 재계산 완료 — 단 cutoff이 페어별로 상이함에 유의. S&P500↔10Y·NASDAQ↔BTC[NASDAQ레그]·VIX↔S&P500[S&P500레그]·WTI↔BEI[BEI레그] 4쌍은 미국 정규장·FRED 공표가 아직 7/29(수) 확정치까지만 존재해 cutoff 7/29, USD/KRW↔KOSPI·Gold↔DXY 2쌍은 아시아·상품시장이 7/30(목)까지 마감 확정돼 cutoff 7/30. 7/26~29(4일) 갱신 공백[외장SSD 언마운트 3일 장애+휴일] 이후 7/25(cutoff 7/24) 이래 첫 재계산)"
-calculation_source: "correlation-monitor 직접 yfinance+FRED 페치(2026-07-30 실행, Bash+python3) — 기존 방법론(daily_prices.md 우회 → yfinance/FRED 직접 페치)을 계승해 SP500/NASDAQ/US10Y/VIX/KOSPI/USDKRW/GOLD/DXY/WTI/BTC 10개 시계열 + FRED T10YIE(BEI, curl 직접, HTTP 200, 564건)를 2024-06-01~2026-07-30(자산별 최신 거래일까지)으로 재구성, 6쌍 전량 정식 재계산. μ/σ 기준선은 7/20~7/25 다회차 연속 교차검증된 established 값(2024-06-01~2026-07-2X 2년 롤링 분포)을 계승 — 본 세션 자체 재도출(N=539~543)한 μ/σ가 established 값과 소수점 셋째 자리 이내로 대부분 일치(WTI↔BEI만 μ90 0.443 vs 자체 0.430으로 약 0.013 편차, 과거에도 관측된 세션 노이즈 수준)해 계승의 타당성이 재확인됐다(투명 기록)."
+confidence: "high (6/6 페어 전량 yfinance+FRED 직접 페치 신규 재계산 완료 — cutoff이 페어별로 상이함에 유의. S&P500↔10Y·NASDAQ↔BTC[NASDAQ레그]·VIX↔S&P500[S&P500레그]·WTI↔BEI[BEI레그] 4쌍은 미국 정규장이 아직 미개장(KST 20:10=ET 07:10 프리마켓)이라 cutoff 7/30(목) 확정 종가, USD/KRW↔KOSPI·Gold↔DXY 2쌍은 한국·상품시장이 7/31(금)까지 마감 확정돼 cutoff 7/31. KOSPI 사상 최대 단일일 +17.91% 반등 전 구간이 이번 회차에 반영됨 — market-data-collector WebSearch 교차검증으로 데이터 신뢰성 확인)"
+calculation_source: "correlation-monitor 직접 yfinance+FRED 페치(2026-07-31 실행, Bash+python3) — 기존 방법론을 그대로 계승해 SP500/NASDAQ/US10Y/VIX/KOSPI/USDKRW/GOLD/DXY/WTI/BTC 10개 시계열 + FRED T10YIE(BEI, curl 직접, HTTP 200, 565건)를 2024-06-01~2026-07-31(자산별 최신 거래일까지)으로 재구성, 6쌍 전량 정식 재계산. μ/σ 기준선은 7/18 house_view v5 정식 채택 이래 계승돼 온 established 값(2024-06-01~2026-07-2X 2년 롤링 분포)을 그대로 사용."
 calculation_method: "각 자산의 yfinance 일별 종가를 pct_change(fill_method=None) 산출 → 페어별 교집합 날짜(inner join)로 pandas rolling(21)/rolling(60).corr() 계산(Pearson r, 30D=21거래일 창/90D=60거래일 창 고정 롤링). μ/σ는 2024-06-01~2026-07-2X 전체 롤링 상관계수 분포의 평균·표준편차(정합 기준선, established value 계승). Z-score=(r_실측-μ)/σ."
-data_cutoff_note: "페어별 cutoff 상이 — ① S&P500↔10Y·NASDAQ↔BTC(NASDAQ레그)·VIX↔S&P500(S&P500레그)·WTI↔BEI(BEI레그): 2026-07-29(수) 미국 정규장 확정 종가/FRED BEI 최신 공표치까지(오늘 7/30은 미국 프리마켓 단계·BEI는 1영업일 시차로 7/30치 미공표). ② USD/KRW↔KOSPI·Gold↔DXY: 2026-07-30(목) 한국·상품시장 마감 확정치까지(둘 다 미국 세션 비의존). KOSPI 3거래일 연속 폭락(7/28 -10.84%·7/29 -5.98%·7/30 -1.23%, 누적 약 -17.2%) 전 구간이 이번 회차에 반영됨. 7/29(수)는 FOMC 결정+MSFT·META 실적이 겹친 날로 S&P500 -1.52%·NASDAQ -1.74%·VIX 20.66(20선 상회) 확정."
+data_cutoff_note: "페어별 cutoff 상이 — ① S&P500↔10Y·NASDAQ↔BTC(NASDAQ레그)·VIX↔S&P500(S&P500레그)·WTI↔BEI(BEI레그): 2026-07-30(목) 미국 정규장 확정 종가/FRED BEI 최신 공표치까지(오늘 7/31은 미국 정규장 미개장, ET 07:10 프리마켓). ② USD/KRW↔KOSPI·Gold↔DXY: 2026-07-31(금) 한국·상품시장 마감 확정치까지(둘 다 미국 세션 비의존). ★ **KOSPI 사상 최대 단일일 +17.91%(6,595.45, 3거래일 폭락 누적 -17.2% 되돌림, 삼성전자+26.81%·SK하이닉스+29.95% 상한가, 외국인 7.24조·기관 1.14조 순매수)** 전 구간이 이번 회차에 반영됨 — market-data-collector WebSearch 교차검증(market_data_20260731.md)으로 실측 확정, 데이터 오류 아님. 7/30(목)은 MSFT+15.51%(사상 최대 단일종목 시총 증가)·SOX+8.19%·VIX-17.28%로 전일(7/29) FOMC 매파 표결發 급락을 대부분 되돌린 강한 리스크온 마감일."
 sources:
-  - "yfinance 직접 페치(2026-07-30 실행) — ^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 2024-06-01~2026-07-30"
-  - "FRED T10YIE(BEI) 직접 페치(2026-07-30, curl, HTTP 200, 564건, 최신치 2026-07-29)"
-  - "knowledge-base/market/daily_snapshot.md — CURRENT(2026-07-30 목요일 이브닝, 아시아 7/30 마감+미 프리마켓, 메인 yfinance 실측)"
-  - "knowledge-db/market/2026_daily_prices.md — 2026-07-30 20:10 KST 실측 행(메인 직접 입력)"
-  - "analysis/briefing/correlation_evening_20260725.md — 직전 회차(cutoff 7/24, 이후 7/26~29 공백)"
+  - "yfinance 직접 페치(2026-07-31 실행) — ^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 2024-06-01~2026-07-31"
+  - "FRED T10YIE(BEI) 직접 페치(2026-07-31, curl, HTTP 200, 565건, 최신치 2026-07-30)"
+  - "knowledge-base/market/daily_snapshot.md — CURRENT(2026-07-31 금요일 아침, 미국 D-1(7/30) 확정 종가+AAPL·AMZN 실적)"
+  - "analysis/briefing/market_data_20260731.md — market-data-collector(2026-07-31 이브닝, WebSearch 교차검증, KOSPI +17.91% 확정)"
+  - "analysis/briefing/correlation_20260730.md — 직전 회차(cutoff 페어별 7/29·7/30)"
   - "knowledge-base/market/house_view.md — v7(2026-07-25 6차 재심사), HV1~HV6 매핑"
 ---
 
