@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>내 포트폴리오 v2 처방 — 2026-08-01</title>
+<style>
+  /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+  :root {
+    --bg: #0a1118;
+    --card: #121b26;
+    --card2: #0e151e;
+    --text: #e9edf3;
+    --sub: #93a1b3;
+    --border: #22303f;
+    --up: #2fbf71;
+    --down: #f4576a;
+    --neutral: #8b97a5;
+    --highlight: #5b9dff;
+    --warning: #e5a43b;
+    --debate: #9d7bff;
+    --contrarian: #f08c4a;
+  }
+
+  /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
+  [data-theme="light"] {
+    --bg: #f3f5f9;
+    --card: #ffffff;
+    --card2: #f7f9fc;
+    --text: #19222e;
+    --sub: #5c6878;
+    --border: #d9e1ea;
+    --up: #15803d;
+    --down: #ce2f40;
+    --neutral: #5c6878;
+    --highlight: #1d6fe0;
+    --warning: #a16207;
+    --debate: #6644cc;
+    --contrarian: #c2571f;
+  }
+  [data-theme="light"] .warning-13f {
+    background: #fff8c5 !important;
+    color: #a16207;
+    border-color: #a16207;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+      "Pretendard Variable",
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
+      sans-serif;
+    padding: 20px 18px 28px;
+    max-width: 920px;
+    margin: 0 auto;
+    font-size: 15.5px;
+    line-height: 1.66;
+    transition:
+      background 0.3s,
+      color 0.3s;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+  .header {
+    text-align: left;
+    padding: 26px 0 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 64px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--highlight), transparent);
+  }
+  .header h1 {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+  .header .meta {
+    color: var(--sub);
+    font-size: 13.5px;
+    letter-spacing: 0.01em;
+  }
+
+  /* 레짐 스트립 [v3.29] — 최근 30일 위험선호 레짐 (regime.json strip_html 그대로 삽입) */
+  .regime-strip {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 9px;
+  }
+  .regime-strip .rg-cell {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    opacity: 0.85;
+  }
+  .regime-strip .rg-label {
+    font-size: 11px;
+    color: var(--sub);
+    margin-left: 7px;
+  }
+
+  /* 색상 클래스 */
+  .up {
+    color: var(--up);
+  }
+  .down {
+    color: var(--down);
+  }
+  .neutral {
+    color: var(--neutral);
+  }
+  .highlight {
+    color: var(--highlight);
+  }
+  .warning {
+    color: var(--warning);
+  }
+
+  /* 셀 배경 */
+  .bg-up {
+    background: color-mix(in srgb, var(--up) 10%, transparent);
+  }
+  .bg-down {
+    background: color-mix(in srgb, var(--down) 10%, transparent);
+  }
+  .bg-warning {
+    background: color-mix(in srgb, var(--warning) 10%, transparent);
+  }
+  .bg-highlight {
+    background: color-mix(in srgb, var(--highlight) 10%, transparent);
+  }
+
+  /* 섹션 카드 */
+  .sec {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .sec h2 {
+    font-size: 16.5px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .sec h2::before {
+    content: "";
+    width: 3.5px;
+    height: 15px;
+    border-radius: 2px;
+    background: var(--highlight);
+    flex: none;
+  }
+  .sec h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--highlight);
+    margin: 16px 0 8px;
+  }
+
+  /* 표 — 금융 데이터 표준 (소형 헤더 + tabular 숫자) */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  th {
+    background: transparent;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 650;
+    font-size: 12px;
+    color: var(--sub);
+    letter-spacing: 0.05em;
+    border-bottom: 1.5px solid var(--border);
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+  }
+  tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--text) 2.5%, transparent);
+  }
+  tr:hover {
+    background: color-mix(in srgb, var(--highlight) 7%, transparent);
+  }
+
+  /* debate-card (보라) — 핵심 논쟁 */
+  .debate-card {
+    background: color-mix(in srgb, var(--debate) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+    border-left: 4px solid var(--debate);
+    border-radius: 0 10px 10px 0;
+    padding: 15px 18px;
+    margin: 14px 0;
+  }
+  .debate-card .card-title {
+    color: var(--debate);
+    font-weight: 750;
+    margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .debate-card .bull {
+    color: var(--up);
+    margin-top: 6px;
+  }
+  .debate-card .bear {
+    color: var(--down);
+    margin-top: 6px;
+  }
+  .debate-card .verdict {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed color-mix(in srgb, var(--debate) 30%, transparent);
+  }
+
+  /* contrarian-card (주황) — 과소평가 포인트 */
+  .contrarian-card {
+    background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+    border-left: 4px solid var(--contrarian);
+    border-radius: 0 10px 10px 0;
+    padding: 15px 18px;
+    margin: 14px 0;
+  }
+  .contrarian-card .card-title {
+    color: var(--contrarian);
+    font-weight: 750;
+    margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .contrarian-card .assumption {
+    color: var(--neutral);
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .contrarian-card .signal {
+    margin-top: 6px;
+  }
+  .contrarian-card .probability {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed
+      color-mix(in srgb, var(--contrarian) 30%, transparent);
+  }
+
+  /* 시그널 바 */
+  .signal-bar {
+    margin: 8px 0;
+    height: 8px;
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .signal-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+  .signal-bar.up .fill {
+    background: linear-gradient(90deg, var(--up), #2ea043);
+  }
+  .signal-bar.down .fill {
+    background: linear-gradient(90deg, var(--down), #da3633);
+  }
+  .signal-bar.warning .fill {
+    background: linear-gradient(90deg, var(--warning), #b08800);
+  }
+  .signal-bar.neutral .fill {
+    background: linear-gradient(90deg, var(--neutral), #6e7681);
+  }
+
+  /* 히트맵 (6셀) */
+  .heatmap {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin: 12px 0;
+  }
+  .heatmap .cell {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .heatmap .green {
+    background: color-mix(in srgb, var(--up) 14%, transparent);
+    color: var(--up);
+  }
+  .heatmap .yellow {
+    background: color-mix(in srgb, var(--warning) 14%, transparent);
+    color: var(--warning);
+  }
+  .heatmap .red {
+    background: color-mix(in srgb, var(--down) 14%, transparent);
+    color: var(--down);
+  }
+
+  /* 시나리오 트리 (G-8) */
+  .scenario-tree {
+    margin: 14px 0;
+  }
+  .scenario-tree .root {
+    text-align: center;
+    padding: 12px;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+  }
+  .scenario-tree .branches {
+    display: flex;
+    gap: 14px;
+  }
+  .scenario-tree .branch {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+  }
+  .scenario-tree .branch.a {
+    background: color-mix(in srgb, var(--up) 6%, transparent);
+    border: 1px solid var(--up);
+  }
+  .scenario-tree .branch.b {
+    background: color-mix(in srgb, var(--down) 6%, transparent);
+    border: 1px solid var(--down);
+  }
+  .scenario-tree .prob-bar {
+    width: 100%;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    height: 6px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+  .scenario-tree .prob-bar .fill {
+    height: 6px;
+    border-radius: 3px;
+  }
+
+  /* 연쇄 효과 플로우 (G-6) */
+  .cascade {
+    margin: 14px 0;
+  }
+  .cascade .step {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+  }
+  .cascade .first {
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    border-left: 3px solid var(--neutral);
+  }
+  .cascade .second {
+    background: color-mix(in srgb, var(--highlight) 8%, transparent);
+    border-left: 3px solid var(--highlight);
+  }
+  .cascade .third {
+    background: color-mix(in srgb, var(--warning) 8%, transparent);
+    border-left: 3px solid var(--warning);
+  }
+
+  /* 4종 포트폴리오 그리드 */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .portfolio-card {
+    background: color-mix(in srgb, var(--text) 4%, transparent);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .portfolio-card h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  /* 태그 시스템 */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .tag-red {
+    background: color-mix(in srgb, var(--down) 14%, transparent);
+    color: var(--down);
+  }
+  .tag-green {
+    background: color-mix(in srgb, var(--up) 14%, transparent);
+    color: var(--up);
+  }
+  .tag-yellow {
+    background: color-mix(in srgb, var(--warning) 14%, transparent);
+    color: var(--warning);
+  }
+  .tag-blue {
+    background: color-mix(in srgb, var(--highlight) 14%, transparent);
+    color: var(--highlight);
+  }
+  .tag-purple {
+    background: color-mix(in srgb, var(--debate) 14%, transparent);
+    color: var(--debate);
+  }
+
+  /* 이벤트 배지 */
+  .event-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 2px;
+  }
+  .badge-critical {
+    background: color-mix(in srgb, var(--down) 18%, transparent);
+    color: var(--down);
+    border: 1px solid var(--down);
+  }
+  .badge-high {
+    background: color-mix(in srgb, var(--warning) 18%, transparent);
+    color: var(--warning);
+    border: 1px solid var(--warning);
+  }
+  .badge-normal {
+    background: color-mix(in srgb, var(--highlight) 14%, transparent);
+    color: var(--highlight);
+    border: 1px solid var(--highlight);
+  }
+
+  /* 이슈 카드 */
+  .issue-card {
+    background: color-mix(in srgb, var(--text) 3%, transparent);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    border-left: 3px solid var(--border);
+  }
+  .issue-card.critical {
+    border-left-color: var(--down);
+  }
+  .issue-card.high {
+    border-left-color: var(--warning);
+  }
+  .issue-card.normal {
+    border-left-color: var(--highlight);
+  }
+  .issue-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .issue-secondary {
+    color: var(--sub);
+    font-size: 13px;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
+  }
+
+  /* 시그널 아이템 (수평 정렬) */
+  .signal-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0;
+    font-size: 14px;
+  }
+  .signal-label {
+    width: 120px;
+    flex-shrink: 0;
+    color: var(--sub);
+  }
+  .signal-value {
+    width: 120px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .signal-bar-wrap {
+    flex: 1;
+  }
+
+  /* 위험도 게이지 */
+  .risk-gauge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .risk-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .risk-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+  }
+  .risk-dot.active-1,
+  .risk-dot.active-2 {
+    background: var(--up);
+  }
+  .risk-dot.active-3 {
+    background: var(--warning);
+  }
+  .risk-dot.active-4,
+  .risk-dot.active-5 {
+    background: var(--down);
+  }
+
+  /* 프리마켓 배지 */
+  .premarket-badge {
+    display: inline-block;
+    background: rgba(88, 166, 255, 0.12);
+    border: 1px solid var(--highlight);
+    color: var(--highlight);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+
+  /* 13F 시차 경고 */
+  .warning-13f {
+    background: color-mix(in srgb, var(--warning) 10%, transparent);
+    border: 1px solid var(--warning);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    color: var(--warning);
+    font-size: 14px;
+  }
+  .warning-13f::before {
+    content: "⚠️ ";
+  }
+
+  /* 푸터 */
+  .footer {
+    margin-top: 32px;
+    padding: 20px;
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .footer h3 {
+    color: var(--highlight);
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .footer table {
+    font-size: 13px;
+  }
+  .footer code {
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--warning);
+  }
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  /* 주의사항 (F-7, G-9) */
+  .disclaimer {
+    margin-top: 24px;
+    padding: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--sub);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .disclaimer h4 {
+    color: var(--warning);
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  /* 예측 시장 (Polymarket) */
+  .prediction-bar {
+    margin: 6px 0;
+    height: 24px;
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .prediction-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .prediction-bar .fill.high {
+    background: linear-gradient(90deg, var(--up), #2ea043);
+  }
+  .prediction-bar .fill.mid {
+    background: linear-gradient(90deg, var(--warning), #b08800);
+  }
+  .prediction-bar .fill.low {
+    background: linear-gradient(90deg, var(--down), #da3633);
+  }
+  .prediction-bar .pct {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .pm-change-up {
+    color: var(--up);
+    font-size: 12px;
+  }
+  .pm-change-down {
+    color: var(--down);
+    font-size: 12px;
+  }
+  .pm-source {
+    color: var(--sub);
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* 모바일 */
+  @media (max-width: 600px) {
+    body {
+      padding: 12px;
+      font-size: 15px;
+    }
+    .header h1 {
+      font-size: 22px;
+    }
+    .heatmap {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+    .scenario-tree .branches {
+      flex-direction: column;
+    }
+    .signal-label {
+      width: 80px;
+    }
+    .signal-value {
+      width: 90px;
+    }
+    .cmd-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+<style>
+  /* 모듈 전용: user_portfolio_v2 컴포넌트 (2026-08-01) — briefing_css.html 표준 토큰에 alias */
+  :root {
+    --bg-primary: var(--bg);
+    --bg-secondary: var(--card);
+    --bg-tertiary: var(--card2);
+    --text-primary: var(--text);
+    --text-secondary: var(--sub);
+    --text-muted: color-mix(in srgb, var(--sub) 65%, transparent);
+    --accent-blue: var(--highlight);
+    --accent-green: var(--up);
+    --accent-red: var(--down);
+    --accent-orange: var(--contrarian);
+    --accent-purple: var(--debate);
+    --accent-gold: var(--warning);
+    --accent-cyan: #39d2c0;
+  }
+  .header .subtitle {
+    color: var(--text-secondary);
+    font-size: 14.5px;
+    margin-top: 6px;
+  }
+  .header .date-badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--accent-blue) 12%, transparent);
+    color: var(--accent-blue);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .metric-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .metric-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .metric-card .value {
+    font-size: 18px;
+    font-weight: 750;
+  }
+  .metric-card .change {
+    font-size: 12px;
+    margin-top: 4px;
+    color: var(--text-secondary);
+  }
+  .donut-chart {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .donut-legend .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 7px;
+  }
+  .bar-chart {
+    margin: 14px 0;
+  }
+  .bar-row {
+    margin: 12px 0;
+  }
+  .bar-row .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+  .bar-track {
+    position: relative;
+    height: 10px;
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+    border-radius: 5px;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 5px;
+  }
+  .bar-target {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 16px;
+    background: var(--accent-gold);
+  }
+  .alert-box {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13.5px;
+    border: 1px solid var(--border);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+  .alert-box.warn {
+    border-color: var(--accent-orange);
+    background: color-mix(in srgb, var(--accent-orange) 8%, transparent);
+    color: var(--accent-orange);
+  }
+  .alert-box.success {
+    border-color: var(--accent-green);
+    background: color-mix(in srgb, var(--accent-green) 8%, transparent);
+    color: var(--accent-green);
+  }
+  .alert-box.info-box {
+    border-color: var(--accent-blue);
+    background: color-mix(in srgb, var(--accent-blue) 8%, transparent);
+    color: var(--accent-blue);
+  }
+  .strong-buy,
+  .strong-sell {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 14px 0;
+    border: 1px solid var(--border);
+  }
+  .strong-buy {
+    border-left: 4px solid var(--accent-red);
+    background: color-mix(in srgb, var(--accent-red) 5%, transparent);
+  }
+  .strong-sell {
+    border-left: 4px solid var(--accent-blue);
+    background: color-mix(in srgb, var(--accent-blue) 5%, transparent);
+  }
+  .strong-buy .ticker-head,
+  .strong-sell .ticker-head {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .strong-buy .what,
+  .strong-buy .why,
+  .strong-buy .how,
+  .strong-buy .score,
+  .strong-sell .what,
+  .strong-sell .why,
+  .strong-sell .how,
+  .strong-sell .score {
+    margin-top: 7px;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .strong-buy .score,
+  .strong-sell .score {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    font-weight: 700;
+  }
+  .timeline {
+    margin: 14px 0;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px dashed color-mix(in srgb, var(--border) 70%, transparent);
+  }
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+  .timeline-item .time {
+    flex: none;
+    width: 130px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .timeline-item .content {
+    font-size: 13.5px;
+    color: var(--text-primary);
+  }
+  .action-card {
+    border: 1px solid var(--accent-green);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: color-mix(in srgb, var(--accent-green) 6%, transparent);
+    font-size: 13.5px;
+  }
+  @media (max-width: 600px) {
+    .metric-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .donut-chart {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .timeline-item {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .timeline-item .time {
+      width: auto;
+    }
+  }
+</style>
+</head>
+<body>
+<div
+  style="
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: flex-end;
+  "
+>
+  <button
+    onclick="toggleTheme()"
+    style="
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+    "
+  >
+    <span id="theme-icon">☀️</span> <span id="theme-label">라이트 모드</span>
+  </button>
+</div>
+<div class="header">
+  <h1>내 포트폴리오 — 강력 처방 v2</h1>
+  <div class="subtitle">
+    VOO 과집중 57.95%·채권 갭 -13%p(최대) → 이번 회차 SGOV 13주 집중 매수, 8/7
+    NFP·8/12 CPI 관문 대기
+  </div>
+  <div class="date-badge">
+    2026-08-01 (토) · 데이터 기준 2026-07-31(금) 확정 종가 · 환율 $1 = 1,442원
+  </div>
+</div>
+
+<div class="sec">
+  <h2>1. 투자자 프로파일</h2>
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">해외주식 평가액 (7/31)</div>
+      <div class="value">$12,406.02</div>
+      <div class="change up">+1.70% (7/1 입력 대비)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">투자 성향</div>
+      <div class="value">균형형 (Balanced+)</div>
+      <div class="change">v3 · 2026-05-12 확정</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">월 적립 가능액</div>
+      <div class="value">200만원</div>
+      <div class="change">ISA 절세 + 일반계좌 이원 운용</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">투자 기간</div>
+      <div class="value">5년+ (장기)</div>
+      <div class="change">장기보유·글로벌분산·레버리지 회피</div>
+    </div>
+  </div>
+  <p style="color: var(--text-secondary); font-size: 13px; margin-top: 4px">
+    관심 테마: 배당 + 성장 + 분산 균형
+  </p>
+</div>
+
+<div class="sec">
+  <h2>2. 보유 종목 + 자산군 현황 (7/31 금 종가 재평가)</h2>
+  <div class="alert-box info-box">
+    보유 수량은 7/1 토스 스크린샷 스냅샷 기준(6종) — 가격만 7/31 확정 종가로
+    재평가. 사용자 부재로 최신 스크린샷 재확인 불가 — 방어축
+    5종(SGOV·VIG·QUAL·RSP·VEA) 복원 집행 여부 미확인.
+  </div>
+
+  <table>
+    <tr>
+      <th>티커</th>
+      <th>종목명</th>
+      <th>수량</th>
+      <th>7/31 종가</th>
+      <th>평가금</th>
+      <th>비중</th>
+      <th>표입력(7/1) 대비</th>
+    </tr>
+    <tr>
+      <td>VOO</td>
+      <td>Vanguard S&amp;P 500</td>
+      <td>10.469743</td>
+      <td>$686.65</td>
+      <td>$7,189.05</td>
+      <td>57.95%</td>
+      <td class="up">+0.49%</td>
+    </tr>
+    <tr>
+      <td>SCHD</td>
+      <td>Schwab US Dividend</td>
+      <td>60.434539</td>
+      <td>$33.47</td>
+      <td>$2,022.74</td>
+      <td>16.30%</td>
+      <td class="up">+5.82%</td>
+    </tr>
+    <tr>
+      <td>NVDA</td>
+      <td>NVIDIA</td>
+      <td>8</td>
+      <td>$200.75</td>
+      <td>$1,606.00</td>
+      <td>12.95%</td>
+      <td class="up">+1.50%</td>
+    </tr>
+    <tr>
+      <td>GLD</td>
+      <td>SPDR Gold Shares</td>
+      <td>4.001475</td>
+      <td>$371.54</td>
+      <td>$1,486.71</td>
+      <td>11.98%</td>
+      <td class="up">+2.09%</td>
+    </tr>
+    <tr>
+      <td>BAC</td>
+      <td>Bank of America</td>
+      <td>0.859914</td>
+      <td>$61.95</td>
+      <td>$53.27</td>
+      <td>0.43%</td>
+      <td class="up">+9.09%</td>
+    </tr>
+    <tr>
+      <td>AVGO</td>
+      <td>Broadcom</td>
+      <td>0.123927</td>
+      <td>$389.28</td>
+      <td>$48.24</td>
+      <td>0.39%</td>
+      <td class="up">+3.59%</td>
+    </tr>
+  </table>
+  <p style="font-size: 13.5px; margin-top: 6px">
+    해외주식 소계: <strong>$12,406.02</strong> — 7/1 입력 $12,199.08 대비
+    <span class="up">+1.70%</span>, 직전 7/25 재평가 $12,365.85 대비
+    <span class="up">+0.32%</span> (주간 사실상 무변동)
+  </p>
+
+  <div class="alert-box warn">
+    <strong>5% 초과 2종 (가격만·수량 무변동):</strong> SCHD 표입력 $31.63→$33.47
+    (+5.82%, 배당·방어 순환매·52주 신고가 $34.24 근접), BAC $56.79→$61.95
+    (+9.09%, 은행주 강세·52주 신고가 $62.99 근접). 단 직전 7/25 재평가 대비로는
+    SCHD +0.54%·BAC −0.16%로 정상 — 표 기준값이 7/1 이후 미갱신되어 누적된
+    차이일 뿐, 실제 매매는 아님.
+  </div>
+
+  <h3>자산군 배분 (해외계좌 내 비중)</h3>
+  <div class="donut-chart">
+    <svg width="150" height="150" viewBox="0 0 120 120">
+      <g transform="rotate(-90 60 60)">
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--border)"
+          stroke-width="14"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--accent-blue)"
+          stroke-width="14"
+          stroke-dasharray="189.34 137.39"
+          stroke-dashoffset="0"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--accent-green)"
+          stroke-width="14"
+          stroke-dasharray="53.26 273.47"
+          stroke-dashoffset="-189.34"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--accent-purple)"
+          stroke-width="14"
+          stroke-dasharray="42.31 284.41"
+          stroke-dashoffset="-242.59"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--accent-gold)"
+          stroke-width="14"
+          stroke-dasharray="39.14 287.58"
+          stroke-dashoffset="-284.90"
+        />
+        <circle
+          cx="60"
+          cy="60"
+          r="52"
+          fill="none"
+          stroke="var(--accent-cyan)"
+          stroke-width="14"
+          stroke-dasharray="2.68 324.05"
+          stroke-dashoffset="-324.05"
+        />
+      </g>
+      <text
+        x="60"
+        y="57"
+        text-anchor="middle"
+        font-size="10.5"
+        fill="var(--text-secondary)"
+      >
+        해외주식
+      </text>
+      <text
+        x="60"
+        y="71"
+        text-anchor="middle"
+        font-size="12.5"
+        font-weight="700"
+        fill="var(--text-primary)"
+      >
+        $12,406
+      </text>
+    </svg>
+    <div class="donut-legend">
+      <div>
+        <span class="dot" style="background: var(--accent-blue)"></span
+        >VOO(S&amp;P500) 57.95%
+      </div>
+      <div>
+        <span class="dot" style="background: var(--accent-green)"></span
+        >SCHD(배당) 16.30%
+      </div>
+      <div>
+        <span class="dot" style="background: var(--accent-purple)"></span
+        >NVDA(반도체) 12.95%
+      </div>
+      <div>
+        <span class="dot" style="background: var(--accent-gold)"></span>GLD(금)
+        11.98%
+      </div>
+      <div>
+        <span class="dot" style="background: var(--accent-cyan)"></span
+        >BAC·AVGO(개별주) 0.82%
+      </div>
+      <div>
+        <span class="dot" style="background: var(--border)"></span
+        >채권·방어슬리브 0% (갭)
+      </div>
+    </div>
+  </div>
+
+  <h3>자산군 갭 (균형형 목표 seed 대비)</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>S&amp;P500 (VOO)</span><span>57.95% / 목표 44%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 57.95%; background: var(--accent-red)"
+        ></div>
+        <div class="bar-target" style="left: 44%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        과집중 — 매도 아닌 적립 희석으로 목표 접근
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>미국 배당 (SCHD)</span><span>16.30% / 목표 12%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 16.3%; background: var(--accent-red)"
+        ></div>
+        <div class="bar-target" style="left: 12%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        적정 상단
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>AI·반도체 (NVDA)</span><span>12.95% / 목표 10%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 12.95%; background: var(--accent-red)"
+        ></div>
+        <div class="bar-target" style="left: 10%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        상단 초과, 손절 관리로 유지
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>금 (GLD)</span><span>11.98% / 목표 9%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 11.98%; background: var(--accent-red)"
+        ></div>
+        <div class="bar-target" style="left: 9%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        보유 유지·추격 금지 (HV5 약화)
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span style="color: var(--accent-blue); font-weight: 700"
+          >채권 (SGOV)</span
+        ><span style="color: var(--accent-blue); font-weight: 700"
+          >0% / 목표 13%</span
+        >
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0%; background: var(--accent-blue)"
+        ></div>
+        <div class="bar-target" style="left: 13%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--accent-blue); margin-top: 3px"
+      >
+        🔴 최대 갭 — 복원 최우선
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>배당성장 (VIG)</span><span>0% / 목표 5%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0%; background: var(--accent-blue)"
+        ></div>
+        <div class="bar-target" style="left: 5%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        복원 후순위
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>퀄리티 (QUAL)</span><span>0% / 목표 4%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0%; background: var(--accent-blue)"
+        ></div>
+        <div class="bar-target" style="left: 4%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        복원 후순위
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>동일가중 (RSP)</span><span>0% / 목표 2%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0%; background: var(--accent-blue)"
+        ></div>
+        <div class="bar-target" style="left: 2%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        복원 후순위
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>국제분산 (VEA)</span><span>0% / 목표 1%</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0%; background: var(--accent-blue)"
+        ></div>
+        <div class="bar-target" style="left: 1%"></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        복원 후순위
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>개별주 (BAC·AVGO)</span><span>0.82% / 목표 —</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 0.82%; background: var(--text-muted)"
+        ></div>
+      </div>
+      <div
+        style="font-size: 11.5px; color: var(--text-secondary); margin-top: 3px"
+      >
+        알고 편입 소량
+      </div>
+    </div>
+  </div>
+  <p style="color: var(--text-secondary); font-size: 12.5px; margin-top: 6px">
+    방어 슬리브 5종(SGOV·VIG·QUAL·RSP·VEA, 목표 합 25%)은 6월 말 토스엔진 알고
+    청산으로 소멸 → 7/2부터 월 적립으로 점진 복원 중. protected_holdings.json
+    계약으로 엔진 재청산 방지.
+  </p>
+</div>
+
+<div class="sec">
+  <h2>3. 이번주 매크로 요약 (주간 리포트 8/1)</h2>
+  <ol style="padding-left: 20px; line-height: 1.85">
+    <li>
+      <strong>판별자 대량 해소된 결정적 한 주</strong> — 7/27 Kimi K3, 7/29 FOMC
+      9-3 동결(매파 3인 인상 반대표), 7/29~30 빅테크 실적이 모두 도래. FOMC가
+      '9월 인상 즉각화'를 저지.
+    </li>
+    <li>
+      <strong>클라우드 실적 서프라이즈로 HV3 강화</strong> — MSFT Azure
+      +43%·AMZN AWS +37%(18분기 최고)로 AI 자본지출(CAPEX) 슈퍼사이클 실물
+      재확인. TSM 인사이더 3인 클러스터 매수(+35%)가 실수요 방증. 검증 관문이
+      '수요 존재' → '종목별 ROI 차별화'로 이행(승자 AMZN·GOOGL 대 패자 META·AAPL
+      분화).
+    </li>
+    <li>
+      <strong>금리·유가 상방 경계</strong> — 10Y 4.74%(연중 최고 부근)·WTI
+      $86.80(월 +20%·호르무즈 153일째)·WTI-BEI +1.57σ(유일 이중 이상권, 인플레
+      전이 채널 재개통). HV1(약화)은 재점화 조짐 관찰 단계.
+    </li>
+    <li>
+      <strong>변동성 완화·주말 공백</strong> — VIX 15.99(16선 하회)·CNN F&amp;G
+      42.5(공포·개선)·레짐 중립 2일째. 7월 월간은 하락월(S&amp;P -0.79%·Nasdaq
+      -2.38%, Dow +3.22%) — 이틀간 V자 반등이 하락월 흐름을 가린 구도.
+    </li>
+    <li>
+      <strong>다음 관문</strong> — ★8/7 7월 NFP(최대 변수)★ → 8/12 7월
+      CPI(유가·관세 첫 반영, HV1 정면 판별). 8/3 ISM·8/4 AMD 실적 선행.
+    </li>
+  </ol>
+  <div class="alert-box warn">
+    다음 관문: <strong>8/7 미 7월 NFP</strong>(최대 변수) →
+    <strong>8/12 미 7월 CPI</strong>(HV1 정면 판별) — 이번 회차 신규 진입 0,
+    SGOV 실탄 확보로 대기.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>4. 이번주 등장 종목 풀 (적합도 점수)</h2>
+  <p style="color: var(--text-secondary); font-size: 13px">
+    적합도 = 절대매력(0.35) + 갭매칭(0.30) + 등장빈도(0.20) + 최근성(0.15).
+    fetch 성공 11종(보유 6 + 방어 5) 대상.
+    클라우드(AMZN·GOOGL·MSFT)·반도체(TSM)·금(GLD)·에너지는 추격 금지로 fetch
+    제외(관찰 등급만).
+  </p>
+  <table>
+    <tr>
+      <th>종목</th>
+      <th>적합도</th>
+      <th>7/31 종가</th>
+      <th>근거</th>
+      <th>판정</th>
+    </tr>
+    <tr class="bg-highlight">
+      <td><strong>SGOV</strong></td>
+      <td><strong>87</strong></td>
+      <td>$100.71</td>
+      <td>
+        채권 목표 13% 대 현 0%(최대 갭) + 10Y 4.74% 캐리 무위험 + 안전형
+        방향·금리신호·주간 안전형 3중 등장 + 8/7 NFP 관문 실탄
+      </td>
+      <td style="color: var(--accent-red); font-weight: 700">🔴 강력 매수</td>
+    </tr>
+    <tr>
+      <td>VIG</td>
+      <td>66</td>
+      <td>$239.17</td>
+      <td>배당성장 방어(목표 5%) + 배당형 순환매 방향. 복원 후순위</td>
+      <td class="neutral">유보</td>
+    </tr>
+    <tr>
+      <td>QUAL</td>
+      <td>62</td>
+      <td>$219.32</td>
+      <td>퀄리티 팩터(목표 4%). 복원 후순위</td>
+      <td class="neutral">유보</td>
+    </tr>
+    <tr>
+      <td>RSP</td>
+      <td>58</td>
+      <td>$215.01</td>
+      <td>동일가중 분산(목표 2%). 복원 후순위</td>
+      <td class="neutral">유보</td>
+    </tr>
+    <tr>
+      <td>VEA</td>
+      <td>52</td>
+      <td>$70.62</td>
+      <td>국제분산(목표 1%). 복원 후순위</td>
+      <td class="neutral">유보</td>
+    </tr>
+    <tr>
+      <td>AMZN·GOOGL·MSFT</td>
+      <td>관찰</td>
+      <td>—</td>
+      <td>
+        클라우드 실증 승자(AWS +37%·Azure +43%). 단 이미 급등, 추격 주의 — 이틀
+        V자 반등 추세 단정 금지
+      </td>
+      <td class="warning">관찰(진입 X)</td>
+    </tr>
+    <tr>
+      <td>TSM</td>
+      <td>관찰</td>
+      <td>—</td>
+      <td>
+        인사이더 3인 클러스터(HV3 지지). 반도체 추격 금지(ETF 병목 교훈·8/7 검증
+        전)
+      </td>
+      <td class="warning">관찰(진입 X)</td>
+    </tr>
+    <tr>
+      <td>GLD(보유)</td>
+      <td>회피</td>
+      <td>$371.54</td>
+      <td>
+        HV5 약화($4,200 미회복·Gold $4,098). 추격 금지, 보유 4주는 매도 안 함
+      </td>
+      <td class="neutral">보유 유지</td>
+    </tr>
+  </table>
+  <p style="font-size: 13.5px; margin-top: 6px">
+    <strong>적합도 Top: SGOV 87 단독 압도.</strong> VIG·QUAL·RSP·VEA는 복원
+    후순위(8/7 NFP 통과 후 배치). 신규 종목 진입 0.
+  </p>
+</div>
+
+<div class="sec">
+  <h2>5. 포트 갭 분석 종합</h2>
+  <ul style="padding-left: 20px; line-height: 1.85">
+    <li>
+      <strong>VOO 과집중 57.95%(해외계좌 내)</strong> — 목표 44% 대비 +13.95%p.
+      매도 아닌 월 적립 희석으로 목표 접근(방어축 분리 방침: 매도금지·매도 0).
+    </li>
+    <li>
+      <strong>채권(SGOV) 0% 대 목표 13% = 최대 갭.</strong> 8/7 NFP·8/12 CPI
+      관문 앞 실탄 최우선 → 이번 회차 SGOV 집중.
+    </li>
+    <li>
+      <strong>방어 슬리브 25%(SGOV+VIG+QUAL+RSP+VEA) 미복원.</strong> 알고
+      청산분을 월 적립으로 순차 복원 중(7/2~7/25 SGOV 중심 진행). SGOV 목표 도달
+      후 VIG·QUAL 순.
+    </li>
+    <li>
+      <strong>금(GLD 11.98%)·NVDA(12.95%)</strong> 상단 초과지만 보유 유지 — GLD
+      추격 금지(HV5), NVDA 손절 관리.
+    </li>
+  </ul>
+
+  <h3>우선순위 갭 (절대값 기준)</h3>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>VOO 과집중</span
+        ><span style="color: var(--accent-red)">+13.95%p</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 83.7%; background: var(--accent-red)"
+        ></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>SGOV 최대 갭 (채권)</span
+        ><span style="color: var(--accent-blue)">-13.00%p 🔴 최우선</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 78%; background: var(--accent-blue)"
+        ></div>
+      </div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">
+        <span>방어슬리브 잔여 4종 (VIG+QUAL+RSP+VEA)</span
+        ><span style="color: var(--text-secondary)">-12.00%p</span>
+      </div>
+      <div class="bar-track">
+        <div
+          class="bar-fill"
+          style="width: 72%; background: var(--text-muted)"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div class="alert-box info-box">
+    채권 갭(-13%p)이 전 자산군 중 최대 — 이번 회차 SGOV 집중 매수로 정면 대응.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>6. 🔴 강력 매수 권고</h2>
+  <div class="strong-buy">
+    <div class="ticker-head" style="color: var(--accent-red)">
+      SGOV — iShares 0-3 Month Treasury Bond ETF (+13주)
+    </div>
+    <div class="what">
+      <strong>① 무엇:</strong> SGOV <strong>+13주 매수</strong> ($1,309.23 @
+      $100.71)
+    </div>
+    <div class="why">
+      <strong>② 왜:</strong> 주간 안전형 판단 "SGOV 캐리 유효" + 이브닝 금리신호
+      매파 잔존(10Y 4.74% 연중최고·반증선 4.0% 원거리) + 안전형·중립형 "예비
+      실탄(SGOV)" 3중 등장. 8/7 7월 NFP·8/12 CPI라는 8월 초 최대 관문 앞, 무위험
+      4%대 캐리로 실탄을 확보하는 것이 최우선. 채권 목표 13% 대 현 0%(최대
+      자산군 갭)도 정면 해소.
+    </div>
+    <div class="how">
+      <strong>③ 어떻게:</strong> 13주 매수(채권 목표 13% 갭 -13%p 축소). 자금 =
+      월 적립 200만원 ≈ $1,387(@USD/KRW 1,442, 7/31 원화 강세) 내 집행, 잔여
+      ~$78. 진입가 $100.71(변동성 사실상 0·ATR $0.02), 손절 불요(단기채). 매도
+      자금 조달 0 — 전액 신규 적립.
+    </div>
+    <div class="score">
+      <strong>④ 적합도:</strong> 갭 매칭(채권 0%→13% 최대 갭) + 절대매력(10Y
+      4.74% 캐리) — 87점 단독 압도
+    </div>
+  </div>
+  <div class="action-card">
+    <strong>즉시 실행:</strong> SGOV 13주 매수 → $1,309.23 집행 (월 적립 200만원
+    ≈ $1,387 중, 잔여 ~$78 대기)
+  </div>
+  <p class="highlight">→ <code>/종목분석 SGOV</code> 명령으로 심층 분석 가능</p>
+  <p style="color: var(--text-secondary); font-size: 13px; margin-top: 8px">
+    이번 회차 매수는 SGOV 1건뿐. VIG·QUAL·RSP·VEA(방어 후순위)는 8/7 NFP 판별
+    결과 확인 후 다음 회차 배치. <strong>신규 종목 진입 0</strong> — 클라우드
+    승자(AMZN·GOOGL·MSFT)·반도체(TSM)·금·에너지 전부
+    <strong>추격 금지</strong>(이틀 V자 반등 추세 단정 금지 + ETF 21.7% 병목
+    교훈 + 8/7·8/12 관문 전 확신 자제).
+  </p>
+</div>
+
+<div class="sec">
+  <h2>7. 🔵 강력 매도/축소 권고</h2>
+  <div class="alert-box success">
+    매도/축소 <strong>0건</strong> — 방어축 분리 방침 유지
+  </div>
+  <ul style="padding-left: 20px; line-height: 1.85">
+    <li>
+      <strong>방어축 분리 방침 (2026-07-02 사용자 확정):</strong>
+      protected_holdings.json 매도금지
+      9종(VOO·SCHD·NVDA·GLD·SGOV·VIG·QUAL·RSP·VEA)은 매도·축소·교체 대상에서
+      제외. 기존 보유 매도 없이 월 적립으로만 재조정.
+    </li>
+    <li>
+      <strong>VOO 과집중(57.95%)</strong>은 매도가 아닌 월 적립 희석으로 목표
+      44% 접근 — 이번 회차도 매도 없음.
+    </li>
+    <li>
+      <strong>NVDA 유지</strong> — 손절 2ATR $185.47(현재 $200.75 대비 여유
+      +7.6%), HV3 강화(클라우드 실증)로 AI 인프라 논거 무손상.
+    </li>
+    <li>
+      <strong>GLD 보유 유지·추격 금지</strong> — HV5 약화(Gold $4,098·$4,200
+      미회복)로 신규 매수는 금지하나, 보유 4주는 매도하지 않음(자산군 갭 내 헤지
+      슬리브).
+    </li>
+    <li>
+      <strong>BAC·AVGO(알고 편입 소량)</strong> — 소수점 포지션, 무변동 유지.
+    </li>
+  </ul>
+</div>
+
+<div class="sec">
+  <h2>8. 다음 주 모니터링 포인트</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time">8/3 (월)<br />ISM 제조업</div>
+      <div class="content">
+        관세·유가 반영 첫 심리 → 레짐 재판정. 리스크오프 재전환 시 SGOV 우선순위
+        유지
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">8/4 (화)<br />AMD 실적</div>
+      <div class="content">
+        AI GPU 수요 확인 → 반도체 심리 참고, 추격 금지 유지(NVDA·AVGO 보유분만)
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time" style="color: var(--accent-red)">
+        ★ 8/7 (금)<br />미 7월 NFP
+      </div>
+      <div class="content">
+        최대 변수·9월 방향타 → 견조 시 매파 재부상(SGOV 캐리 강화) / 냉각 시
+        방어 후순위(VIG·QUAL) 배치 개시
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time" style="color: var(--accent-red)">
+        ★ 8/12 (수)<br />미 7월 CPI
+      </div>
+      <div class="content">
+        유가·관세 첫 반영·HV1 정면 판별 → MoM 0.4%↑면 인플레 전이 확정(장기채
+        회피·현금 유지) / 0.2%↓면 흡수(방어 슬리브 복원 가속)
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">NVDA<br />손절선</div>
+      <div class="content">
+        2ATR $185.47 — 현재 $200.75, 여유 +7.6%, 이탈 시 재검토
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">Gold<br />$4,200 회복</div>
+      <div class="content">
+        HV5 약화 해제선 — 미회복 지속 시 GLD 추격 금지 유지
+      </div>
+    </div>
+  </div>
+  <div class="alert-box info-box">
+    <strong>다음 회차 방향:</strong> 8/7 NFP·8/12 CPI 결과에 따라 SGOV 실탄(잔여
+    $78 + 달러현금 $2,159)을 배치. 강세(냉각) → 방어 후순위 VIG·QUAL 복원 재개 /
+    기본(부합) → SGOV 유지 / 약세(재점화) → 현금·SGOV 최대 방어.
+  </div>
+</div>
+
+<div class="sec">
+  <h2>9. 4종 모델 포트폴리오 비교 (주간 방향)</h2>
+  <table>
+    <tr>
+      <th>유형</th>
+      <th>방향</th>
+      <th>사용자 연결</th>
+    </tr>
+    <tr>
+      <td>🛡️ 안전형</td>
+      <td>SGOV 캐리 유효·듀레이션 짧게</td>
+      <td style="color: var(--accent-red); font-weight: 700">
+        ← 이번 처방 정합(SGOV +13주)
+      </td>
+    </tr>
+    <tr>
+      <td>⚖️ 중립형</td>
+      <td>클라우드 코어 유지 + 반도체 분할·조건부</td>
+      <td>VOO·NVDA·AVGO 보유 유지, 신규 진입 X</td>
+    </tr>
+    <tr>
+      <td>🔥 공격형</td>
+      <td>클라우드 승자(AMZN·GOOGL) 선별, 반도체 V자 후 추격 주의</td>
+      <td>추격 금지 — 관찰만</td>
+    </tr>
+    <tr>
+      <td>💰 배당형</td>
+      <td>유틸·에너지 관찰, GLD 추격 금지</td>
+      <td>SCHD 보유, GLD 보유 유지·추격 X</td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer">
+  <h3>명령어 가이드</h3>
+  <div class="cmd-grid">
+    <div><code>/모닝브리핑</code> 오전 시장</div>
+    <div><code>/이브닝브리핑</code> 저녁 시장</div>
+    <div><code>/주간리포트</code> 주간 종합</div>
+    <div><code>/크립토브리핑</code> 암호화폐</div>
+    <div><code>/모델포트폴리오</code> 4종 모델</div>
+    <div><code>/리밸런싱</code> 비중 재조정</div>
+    <div><code>/글로벌인텔리전스</code> 매크로</div>
+    <div><code>/성과리뷰</code> 적중률</div>
+    <div><code>/내포트폴리오</code> 개인 처방</div>
+    <div><code>/풀브리핑</code> A+B+C+E 4편</div>
+    <div><code>/종목분석</code> 종목 심층 분석</div>
+    <div><code>/빠른분석</code> 핵심 지표 + ATR</div>
+    <div><code>/애널리스트PDF</code> IB PDF 드롭존 처리</div>
+    <div><code>/애널리스트스크랩</code> 웹 자동 수집 (IB·미디어·한국·YT)</div>
+    <div><code>/리서치업데이트</code> Research KB 갱신 (학술·씽크탱크)</div>
+    <div><code>/재분석실행</code> 대상 자동 검출 + 일괄 재분석</div>
+    <div><code>/KB업데이트</code> 섹터 KB 갱신</div>
+    <div><code>/KB점검</code> KB 건강 점검</div>
+  </div>
+  <p style="margin-top: 14px; font-size: 12px; color: var(--text-secondary)">
+    생성: briefing-report-generator | 모드: user_portfolio_v2 (private) | 데이터
+    기준: fetch_price.py 2026-08-01 22:12 KST (2026-07-31 금 확정 종가)
+  </p>
+</div>
+<script>
+  function applyTheme(light) {
+    if (light) {
+      document.body.setAttribute("data-theme", "light");
+      document.getElementById("theme-icon").textContent = "🌙";
+      document.getElementById("theme-label").textContent = "다크 모드";
+    } else {
+      document.body.removeAttribute("data-theme");
+      document.getElementById("theme-icon").textContent = "☀️";
+      document.getElementById("theme-label").textContent = "라이트 모드";
+    }
+    localStorage.setItem("theme", light ? "light" : "dark");
+  }
+  function toggleTheme() {
+    applyTheme(document.body.getAttribute("data-theme") !== "light");
+  }
+  (function () {
+    applyTheme(localStorage.getItem("theme") === "light");
+  })();
+</script>
+</body>
+</html>
