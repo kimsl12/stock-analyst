@@ -39,6 +39,8 @@ lint_p2_count: 5
 
 > [해소 참조 2026-07-29] `market/daily_snapshot.md` 이브닝 갱신 완료 — 한국 KOSPI -5.98%(5,663.24)·KOSDAQ -6.12%(662.68) 2거래일 연속 폭락 확정 마감(이틀 누적 약 -16.2%), 삼성전자·SK하이닉스 반도체 대형주 투매 지속, 아시아 국가별 편차(항셍 +1.96% 반등), 미 프리마켓 견조(ES=F +0.18%), FOMC 결정·MSFT·META Q2 실적은 오늘 밤(KST 7/30 새벽) 예정으로 프리뷰만 반영·미발표 상태 명시. vu 07-26→07-30 갱신.
 
+> [갱신 참조 2026-08-01] 토요일 주간섹터 KB 갱신(weekly-section 스케줄): quantum·space·smr(industry/science_tech §2·§4·§6)·telecom_next·advanced_materials·capex 6종 재수집 완료 — 각 md `updated`/`last_synced_from_db` 2026-08-01 통일, knowledge-db +64행(science_tech +29·telecom_next +11·advanced_materials +10·capex +14). 상세 changelog_2026.jsonl 참조.
+
 ---
 
 ## P1 — 이번 주 조치 (탐지: 2026-07-26 full)
