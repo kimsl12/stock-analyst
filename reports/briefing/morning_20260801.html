@@ -1,0 +1,1357 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>모닝브리핑 — 2026-08-01</title>
+    <!-- ===== 테마 토글 (상단 고정) ===== -->
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      /* 레짐 스트립 [v3.29] — 최근 30일 위험선호 레짐 (regime.json strip_html 그대로 삽입) */
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      /* 색상 클래스 */
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      /* 셀 배경 */
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      /* 섹션 카드 */
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      /* 표 — 금융 데이터 표준 (소형 헤더 + tabular 숫자) */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      /* debate-card (보라) — 핵심 논쟁 */
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      /* contrarian-card (주황) — 과소평가 포인트 */
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      /* 시그널 바 */
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      /* 이벤트 배지 */
+      .event-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .badge-critical {
+        background: color-mix(in srgb, var(--down) 18%, transparent);
+        color: var(--down);
+        border: 1px solid var(--down);
+      }
+      .badge-high {
+        background: color-mix(in srgb, var(--warning) 18%, transparent);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+      .badge-normal {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+        border: 1px solid var(--highlight);
+      }
+
+      /* 이슈 카드 */
+      .issue-card {
+        background: color-mix(in srgb, var(--text) 3%, transparent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 10px 0;
+        border-left: 3px solid var(--border);
+      }
+      .issue-card.critical {
+        border-left-color: var(--down);
+      }
+      .issue-card.high {
+        border-left-color: var(--warning);
+      }
+      .issue-card.normal {
+        border-left-color: var(--highlight);
+      }
+      .issue-title {
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+      .issue-secondary {
+        color: var(--sub);
+        font-size: 13px;
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
+      }
+
+      /* 13F 시차 경고 */
+      .warning-13f {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .warning-13f::before {
+        content: "⚠️ ";
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      /* 주의사항 (F-7, G-9) */
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <div class="header">
+      <h1>🌅 모닝브리핑 — 2026-08-01 (토)</h1>
+      <div class="meta">
+        briefing-lead 작성 | 데이터 기준: 직전 정규장(D-1 = 2026-07-31 금) 종가
+        정리 · 한국·아시아는 주말 휴장
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 중립 2일째 — 추세 횡보(MA20 +0.1%) · VIX 16.0(중) · 10Y
+        4.74%(상승) · F&amp;G 43.8 → 가중치 횡보장
+      </div>
+      <div class="regime-strip">
+        <span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-06-30 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-01 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-02 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-03 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-04 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-06 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-07 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-08 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-09 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-10 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-11 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-12 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-13 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-14 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-15 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-16 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-17 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-18 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-19 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-20 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-21 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-22 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-23 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-07-24 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-07-25 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-07-26 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-29 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-07-30 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-31 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-01 중립"
+        ></span
+        ><span class="rg-label">레짐 최근 30일</span>
+      </div>
+    </div>
+
+    <!-- 0.5 오늘의 핵심 논지 -->
+    <div class="sec" style="border-left: 4px solid var(--highlight)">
+      <h2>오늘의 핵심 논지</h2>
+      <p>
+        <strong>주장:</strong> 미국 증시는 실적 서프라이즈(AMZN AWS +37%·GOOGL
+        클라우드) 승자독식 랠리로 금요일 반등했지만, 7월 자체는 S&amp;P
+        −0.79%·Nasdaq −2.38% 하락月로 마감했고 8/1 상호관세 발효·호르무즈
+        오일쇼크·10Y 연중최고가 매크로 역풍을 실물화하는 국면(HV1 재점화 조짐
+        관찰, HV3 지지 강화, HV5 추가 약화)이다.
+      </p>
+      <p>
+        <strong>분기 조건:</strong> 8/12 CPI(유가·관세 첫 반영)가 HV1 "약화 유지
+        vs 유효 상향" 판별자 — 그 전까지 선별·방어 우위, 무차별 추격 부적합.
+      </p>
+      <p>
+        <strong>행동:</strong> 클라우드 승자(AMZN·GOOGL·MSFT) 보유 유지·신규
+        진입은 분할, AAPL 추격매도·Gold 추격 모두 금지, 방어는 SGOV 캐리(4.74%)
+        우선.
+      </p>
+    </div>
+
+    <!-- 0. 핵심 요약 -->
+    <div class="sec">
+      <h2>0. 핵심 요약</h2>
+      <p>
+        <strong
+          >간밤(D-1, 7/31 금 미국 정규장) = 아마존이 지수를 끌어올린 랠리,
+          그러나 7월은 하락月로 마감.</strong
+        >
+        S&amp;P500 <span class="up">+0.70%</span>·Nasdaq
+        <span class="up">+1.00%</span>·Dow <span class="up">+0.53%</span> 로
+        마지막 7월 거래일을 상승 마감했으나,
+        <strong>월간으로는 S&amp;P −0.79%·Nasdaq −2.38%</strong>(호르무즈
+        오일쇼크·매파적 Fed·반도체 셀오프) 하락月 — 유일한 승자는
+        <strong>Dow +3.22%(4개월 연속 상승, 가치·경기순환 순환매)</strong>.
+        금요일 견인차는
+        <strong
+          >AMZN <span class="up">+15.32%</span>(AWS +37%, 실적 서프라이즈)·GOOGL
+          <span class="up">+6.73%</span>(클라우드)</strong
+        >
+        vs
+        <strong
+          >AAPL <span class="down">−7.35%</span>(서비스
+          미스·가이던스·중국·부품비 상승)</strong
+        >
+        — 'CAPEX 갭 심판'의 <strong>승자독식</strong>이 하루 더 이어졌다. 배경엔
+        <strong>8/1 상호관세 발효</strong>와
+        <strong
+          >호르무즈 이란 탱커 공격發 유가 급등(WTI 월 +20%)·10Y 4.74%(2025년
+          1월래 최고 부근)</strong
+        >
+        이라는 매크로 역풍이 깔려 있다.
+      </p>
+
+      <h3>오늘 행동 (1~3건, 교육·참고용 — 개인 맞춤 아님)</h3>
+      <ol style="margin-left: 18px">
+        <li style="margin-bottom: 8px">
+          <strong
+            >금요일 이틀 V반등 추격 자제 — 8/1 관세 실물 발효·오일쇼크·10Y
+            연중최고가 겹친 국면.</strong
+          >
+          클라우드 승자(AMZN·GOOGL·MSFT) 보유분은 유지하되, 이틀 반등을 추세
+          전환으로 단정 말고 신규 진입은 분할·조건부. 주말 2일간
+          <strong>관세 후속(딜/보복)·중동 호르무즈 헤드라인</strong>이 월요일 갭
+          방향을 정한다.
+        </li>
+        <li style="margin-bottom: 8px">
+          <strong
+            >AAPL <span class="down">−7.35%</span> 추격 매도 금지 — 단 소비·중국
+            노출 재점검.</strong
+          >
+          Buffett 최대 보유(AAPL) 직결. 실적 본체보다
+          <strong>가이던스·부품비·중국 성장 둔화</strong>가 문제. 소비 둔화
+          조기신호일 수 있으니 감정적 처분 금지, 반등 시 비중 점검 기회로.
+        </li>
+        <li>
+          <strong
+            >유가·인플레 재점화 조짐 점검 — 단 Gold 추격은 여전히 금지.</strong
+          >
+          WTI 월 +20%·10Y 4.74%·Fed 인상론 = 6월 CPI 냉각을 되돌릴 포워드
+          리스크. 방어는 <strong>SGOV 캐리(4.74%)</strong> 로, Gold($4,098,
+          $4,100 하회)는 HV5 약화로 추격 부적합.
+        </li>
+      </ol>
+    </div>
+
+    <!-- A-1 -->
+    <div class="sec">
+      <h2>A-1. 미국 시장 마감 핵심 (D-1 = 2026-07-31 금 정규장 확정 종가)</h2>
+      <table>
+        <tr>
+          <th>지표</th>
+          <th>종가</th>
+          <th>등락</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td>S&amp;P500</td>
+          <td>7,489.72</td>
+          <td><span class="up">+0.70%</span></td>
+          <td><strong>7월 월간 −0.79%</strong> 하락月 마감</td>
+        </tr>
+        <tr>
+          <td>Nasdaq</td>
+          <td>25,373.85</td>
+          <td><span class="up">+1.00%</span></td>
+          <td>7월 월간 −2.38% (AMZN 견인 반등)</td>
+        </tr>
+        <tr>
+          <td>Dow</td>
+          <td>52,485.03</td>
+          <td><span class="up">+0.53%</span></td>
+          <td><strong>7월 +3.22% · 4개월 연속↑</strong>(가치·순환매)</td>
+        </tr>
+        <tr class="bg-warning">
+          <td>VIX</td>
+          <td>15.99</td>
+          <td><span class="down">−6.44%</span></td>
+          <td>16선 하회, 공포 진정</td>
+        </tr>
+        <tr>
+          <td>SOX(필라델피아반도체)</td>
+          <td>11,311.08</td>
+          <td><span class="up">+0.07%</span></td>
+          <td>목 +8.19% 후 보합(급등 소화)</td>
+        </tr>
+        <tr>
+          <td>AMZN</td>
+          <td>$271.58</td>
+          <td><span class="up">+15.32%</span></td>
+          <td>AWS +37%·AI 모멘텀, 실적 서프라이즈</td>
+        </tr>
+        <tr>
+          <td>GOOGL</td>
+          <td>$356.13</td>
+          <td><span class="up">+6.73%</span></td>
+          <td>클라우드 강세</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>$464.72</td>
+          <td><span class="up">+3.02%</span></td>
+          <td>Azure 후속 강세 / NVDA +2.93% / META +3.28%</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>$308.91</td>
+          <td><span class="down">−7.35%</span></td>
+          <td>서비스 미스·가이던스·중국·부품비 상승</td>
+        </tr>
+        <tr>
+          <td>금(Gold)</td>
+          <td>$4,098.60</td>
+          <td><span class="down">−0.04%</span></td>
+          <td><strong>$4,100 하회</strong>(고점 $4,161서 되돌림)</td>
+        </tr>
+        <tr>
+          <td>WTI</td>
+          <td>$86.80</td>
+          <td><span class="up">+3.84%</span></td>
+          <td>호르무즈 이란 탱커 공격 · <strong>월 +20%</strong></td>
+        </tr>
+        <tr class="bg-warning">
+          <td>美10Y</td>
+          <td>4.74%</td>
+          <td><span class="up">+8bp</span></td>
+          <td><strong>2025년 1월래 최고 부근</strong> — 유가→인플레 우려</td>
+        </tr>
+        <tr class="bg-warning">
+          <td>USD/KRW</td>
+          <td>~1,442</td>
+          <td class="neutral">—</td>
+          <td>원화 최근 강세 일부 되돌림(주말·월요일 확인)</td>
+        </tr>
+        <tr>
+          <td>BTC</td>
+          <td>$62,886</td>
+          <td><span class="down">−2.84%</span></td>
+          <td>$63K 하회(나스닥 상승과 탈동조)</td>
+        </tr>
+        <tr>
+          <td>DXY / Silver</td>
+          <td>99.80 / $57.78</td>
+          <td>
+            <span class="down">−0.21%</span> / <span class="down">−1.77%</span>
+          </td>
+          <td>달러 약세 / 은 조정</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px">
+        CNN 공포탐욕지수 <strong>43.8 (공포)</strong>, 전일 38.9 → 회복 지속.
+        크립토 공포탐욕지수 <strong>25 (극단공포)</strong>.
+      </p>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 4px">
+        regime.json(8/1): <strong>중립 2일째</strong> · 추세 횡보(MA20 +0.1%) ·
+        VIX 16.0(중) · 10Y 4.74%(상승) → 가중치 횡보장.
+      </p>
+    </div>
+
+    <!-- A-2 -->
+    <div class="sec">
+      <h2>A-2. 어젯밤 주요 뉴스 (소스 + 영향도 + 방향)</h2>
+
+      <div class="issue-card critical">
+        <div class="issue-title">
+          1. 8/1 상호관세 발효 — 딜국 vs 고율 부과국 갈림
+          <span class="event-badge badge-critical">CRITICAL</span>
+        </div>
+        <p>
+          〔위험자산·물가 하락 압력·혼재〕 [백악관/ABC/PwC] 딜 체결: EU(대형
+          무역합의)·일본(전략적 무역·투자 협정)·영국·베트남·인도네시아 + 중국
+          예비합의. 고율 부과: 캐나다 35%·브라질 50%·(EU·멕시코 30% 등). 4분기
+          마진·물가 압박 예약.
+        </p>
+        <div class="issue-secondary">
+          <strong>한국 최종 적용률은 재확인 대상</strong>(1월 25% 위협 → 2월
+          IEEPA 위헌 판결 후 실효 10~15%대 추정) — 반도체·자동차 수출 직결.
+        </div>
+      </div>
+
+      <div class="issue-card high">
+        <div class="issue-title">
+          2. AMZN <span class="up">+15.3%</span> — AWS 실적 서프라이즈, 지수
+          견인 <span class="event-badge badge-high">HIGH</span>
+        </div>
+        <p>
+          〔AMZN·클라우드 상승〕 [CNBC/워싱턴포스트] 클라우드 부문 컨센서스 상회
+          + AI 모멘텀. 'CAPEX가 클라우드 실매출로 전환'을 재실증. GOOGL +6.73%
+          동반.
+        </p>
+      </div>
+
+      <div class="issue-card high">
+        <div class="issue-title">
+          3. AAPL <span class="down">−7.4%</span> — 부진한 매출
+          가이던스·부품비·성장 둔화
+          <span class="event-badge badge-high">HIGH</span>
+        </div>
+        <p>
+          〔AAPL 하락〕 [9to5Mac/thestreet] 애프터(−6.3%)가 정규장에서 −7.35%로
+          확정. 서비스 미스 + 중국 약세 반복 우려 + 부품 원가 상승. 소비자 노출
+          종목 경계 신호.
+        </p>
+      </div>
+
+      <div class="issue-card high">
+        <div class="issue-title">
+          4. 호르무즈 이란 탱커 공격 — WTI
+          <span class="up">+3.84%</span>($86.80), 월 +20%
+          <span class="event-badge badge-high">HIGH</span>
+        </div>
+        <p>
+          〔유가·인플레 상승, 위험자산 하락〕 [CNBC/finviz] 이란이 호르무즈 통과
+          탱커 2척 공격 주장, 일부 회항. 중동 긴장 재고조. 유가 상승이 채권 심리
+          훼손 → 10Y 상승 압력.
+        </p>
+      </div>
+
+      <div class="issue-card normal">
+        <div class="issue-title">
+          5. 10Y 4.74% 2025년 1월래 최고 부근 — Fed 인사 "인상 필요" 발언
+          <span class="event-badge badge-normal">MEDIUM</span>
+        </div>
+        <p>
+          〔금리 혼재〕 [CNBC/Mariemont] 오일쇼크發 인플레 우려로 베어 플래트너.
+          인하 아닌 <strong>인상 논쟁</strong> 재점화. 듀레이션 짧게·SGOV 캐리
+          유효.
+        </p>
+      </div>
+    </div>
+
+    <!-- A-3 -->
+    <div class="sec">
+      <h2>A-3. 오늘 아시아 시장 전망 (주말 휴장 — 월요일 8/3 관전 포인트)</h2>
+      <p>
+        <strong>한국·아시아 주말 휴장.</strong> 다음 개장 =
+        <strong>월요일 8/3</strong>. 주말 2일간
+        <strong>관세 후속·중동 호르무즈</strong> 헤드라인이 월요일 갭 방향을
+        결정.
+      </p>
+      <p style="margin-top: 10px"><strong>월요일 관전 포인트</strong></p>
+      <ol style="margin-left: 18px; margin-top: 6px">
+        <li>
+          8/1 관세의 <strong>한국 최종 적용률</strong> 확정(반도체·자동차 직결)
+        </li>
+        <li>
+          금요일 미 클라우드 랠리(AMZN·GOOGL) → 삼성전자·SK하이닉스 반도체 심리
+          전이 여부
+        </li>
+        <li>원화 ~1,442 되돌림 지속 여부</li>
+        <li>유가 급등이 정유·화학·항공 등 KOSPI 업종에 미칠 차별 영향</li>
+      </ol>
+      <p style="margin-top: 10px">
+        <strong>일본·중국</strong>: 일본은 대미 전략협정 타결로 관세 불확실성
+        일부 해소(상대적 우호). 중국은 예비합의 진행 상태 확인 필요.
+      </p>
+    </div>
+
+    <!-- A-4 -->
+    <div class="sec">
+      <h2>A-4. 오늘의 체크포인트</h2>
+      <p><strong>주시</strong></p>
+      <ol style="margin-left: 18px; margin-top: 6px">
+        <li>주말 관세 후속(추가 딜/보복 관세) 헤드라인</li>
+        <li>중동 호르무즈 긴장 재고조(유가 갭업 리스크)</li>
+        <li>
+          다음 주 매크로: ISM 제조업(8/3)·7월 고용(8/7)·7월 CPI(8/12, 유가·관세
+          청구서 첫 반영)
+        </li>
+        <li>잔여 실적(에너지·소비재)</li>
+      </ol>
+      <p style="margin-top: 10px"><strong>무시</strong></p>
+      <p style="margin-top: 6px">
+        금요일 이틀 V반등을 8월 상승 추세로 단정 금지. AMZN +15% 개별
+        서프라이즈를 지수 전반 신호로 확대 금지. 7월 하락月(S&amp;P −0.79%)을
+        이틀 반등이 가린 점 유의.
+      </p>
+    </div>
+
+    <!-- A-5 -->
+    <div class="sec">
+      <h2>A-5. 거물 투자자 동향 스냅샷 (8인 워치리스트)</h2>
+      <div class="warning-13f">
+        13F 시차 경고: 최신 원자료 = Q1 2026 13F(포지션일 2026-03-31, 공시 5/15)
+        — 오늘과 <strong>~120일 시차</strong>. 오늘 급변(관세·실적) 대응 근거로
+        직접 사용 금지, 방향성 참고만.
+      </div>
+      <p>
+        <strong>Buffett(Berkshire)</strong>: AAPL 최대 보유(~22%)·AXP·KO·BAC.
+        <strong>어젯밤 AAPL −7.35%가 최대 보유 종목 직결</strong> — 소비·중국
+        노출 우려. 보유 축소·현금 확대 = 방어적 성향 지속과 정합.
+      </p>
+      <p style="margin-top: 10px">
+        <strong>실시간 인사이더 신호(SEC Form 4, 시차 짧음)</strong>
+      </p>
+      <table>
+        <tr>
+          <th>종목</th>
+          <th>내용</th>
+          <th>거래일</th>
+          <th>규모</th>
+        </tr>
+        <tr>
+          <td>TSM</td>
+          <td>
+            내부자 3인 클러스터 매수 — 반도체 저점 구간 내부자 저가 매수, HV3
+            실수요 지지 방증
+          </td>
+          <td>7/28</td>
+          <td>지분 +35% · $1.2M</td>
+        </tr>
+        <tr>
+          <td>ACI(Albertsons)</td>
+          <td>2인 클러스터 매수 — 방어·식료품 로테이션</td>
+          <td>-</td>
+          <td>지분 +18% · $2.4M</td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 13px; margin-top: 6px">
+        나머지 6인(Ackman·Burry·Wood·Dalio·Tepper·Klarman·Marks) Q1 13F 상세
+        미수집 — 다음 분기 공시 시 갱신.
+      </p>
+    </div>
+
+    <!-- A-6 : 4종 모델 포트폴리오 방향 -->
+    <div class="sec">
+      <h2>A-6. 4종 모델 포트폴리오 방향 체크</h2>
+      <table>
+        <tr>
+          <th>유형</th>
+          <th>시사점</th>
+          <th>방향</th>
+          <th>참고</th>
+        </tr>
+        <tr>
+          <td>🛡️ 방어형</td>
+          <td>관세·오일·금리 3중 역풍에 방어 프리미엄 유효</td>
+          <td class="neutral">유지</td>
+          <td>
+            SGOV 캐리(4.74%) 우위. Gold는 $4,100 하회로 추격 부적합(HV5 약화)
+          </td>
+        </tr>
+        <tr>
+          <td>⚖️ 균형형</td>
+          <td>클라우드 승자(AMZN·GOOGL·MSFT) 유지 + 현금(SGOV) 대기자금</td>
+          <td class="neutral">유지</td>
+          <td>
+            반도체는 SOX 보합이라 신규 확대 자제. Dow형 가치·경기순환 순환매
+            수혜 재점검
+          </td>
+        </tr>
+        <tr>
+          <td>🔥 성장형</td>
+          <td>
+            AMZN·GOOGL·MSFT형(클라우드 ROI 실증) 선별 유지 vs
+            AAPL형(소비·중국)·비용급증형 경계
+          </td>
+          <td class="warning">선별</td>
+          <td>
+            'CAPEX 갭 심판' 승자독식 반영. AI 인프라 보유분 패닉 매도 금지
+          </td>
+        </tr>
+        <tr>
+          <td>💰 배당형</td>
+          <td>SCHD·VIG·XLV 방어 로테이션</td>
+          <td class="neutral">유지</td>
+          <td>
+            Dow 4개월 연속 상승 = 가치·경기순환 순환매 수혜 국면. 배당 캐리 방어
+            유효
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- A-7 -->
+    <div class="sec">
+      <h2>A-7. 글로벌 매크로 핵심 시사점 (MODULE G 연계)</h2>
+      <ol style="margin-left: 18px">
+        <li style="margin-bottom: 8px">
+          <strong>8/1 상호관세 발효 = 매크로 역풍의 실물화.</strong>
+          딜국(EU·일본·영국·베트남·인니)과 고율국(캐나다 35%·브라질 50%)으로
+          세계가 갈렸다. 관세는 4분기 마진·소비자물가 압박을 예약 — 아직
+          실적·CPI에 미반영. 한국 적용률 재확인이 반도체·자동차 노출도의 최대
+          변수.
+        </li>
+        <li>
+          <strong
+            >호르무즈 오일쇼크 → 인플레 재점화 조짐 (HV1 약화 재점검
+            트리거).</strong
+          >
+          WTI 월 +20%·10Y 4.74% 연중최고·Fed 인상론이 6월 CPI 냉각(백워드)을
+          되돌릴 포워드 리스크로 실물화 시작.
+          <strong>8월 CPI(8/12, 유가·관세 첫 반영)</strong> 가 '약화 유지 vs
+          유효 상향'의 판별자. 인하 사이클 진입 차단 지속 — 듀레이션 짧게.
+        </li>
+      </ol>
+    </div>
+
+    <!-- 하우스 뷰 점검 -->
+    <div class="sec">
+      <h2>하우스 뷰 점검 (v3.28 — 모닝 = 점검만, 상태 변경 불가)</h2>
+      <table>
+        <tr>
+          <th>명제</th>
+          <th>상태</th>
+          <th>오늘 판정</th>
+          <th>근거</th>
+        </tr>
+        <tr>
+          <td>HV1 인플레 재가속·매파적</td>
+          <td><span class="warning">약화</span></td>
+          <td><strong>재점화 조짐 관찰</strong></td>
+          <td>
+            유가 월 +20%(호르무즈)·10Y 4.74% 연중최고·8/1 관세 발효·Fed 인상론 =
+            포워드 재점화가 실물화 시작. 6월 CPI 냉각(백워드)과 팽팽 → 8/12
+            CPI가 판별자
+          </td>
+        </tr>
+        <tr>
+          <td>HV2 금리發 디레이팅</td>
+          <td><span class="up">유효</span></td>
+          <td><strong>지지</strong></td>
+          <td>
+            10Y 4.74% 상승 지속. 단 금요일 빅테크는 실적發로 금리 무시. 반증
+            2조건(10Y&lt;4.2% 5일+SOX 고점회복) 미충족
+          </td>
+        </tr>
+        <tr>
+          <td>HV3 AI CAPEX 수요 무손상</td>
+          <td><span class="up">유효</span></td>
+          <td><strong>지지(강화)</strong></td>
+          <td>
+            AMZN AWS +37%·+15.32%·GOOGL +6.73% = 클라우드 실매출 재실증. TSM
+            인사이더 클러스터 매수 방증. 강등 트리거 정반대
+          </td>
+        </tr>
+        <tr>
+          <td>HV5 Gold 구조적 강세</td>
+          <td><span class="warning">약화</span></td>
+          <td><strong>지지(추가 약화)</strong></td>
+          <td>
+            Gold $4,098로 <strong>$4,100마저 하회</strong>($4,161 고점서
+            되돌림). $4,200 미회복 → 약화 해제 원거리. GLD 추격 금지
+          </td>
+        </tr>
+        <tr>
+          <td>HV6 크립토-나스닥 탈동조</td>
+          <td><span class="up">유효</span></td>
+          <td><strong>지지</strong></td>
+          <td>
+            Nasdaq +1.00% 상승하는데 BTC −2.84% 하락($63K 하회). 역방향 탈동조
+            뚜렷. 크립토 공포탐욕지수 25 극단공포
+          </td>
+        </tr>
+      </table>
+      <p style="color: var(--sub); font-size: 12.5px; margin-top: 8px">
+        모닝 브리핑은 점검만 — 상태 변경은 /주간리포트 권한.
+        <strong>플래그</strong>: HV1 유가·관세發 재점화가 실물화 시작(다음 주간
+        재심사에서 '약화→유효' 상향 후보) · HV5 $4,100 하회로 추가 약화.
+      </p>
+    </div>
+
+    <!-- debate-card -->
+    <div class="debate-card">
+      <div class="card-title">
+        💜 핵심 논쟁 — 8월 초, 마이크로(실적)가 이길까 매크로(관세·오일·금리)가
+        이길까?
+      </div>
+      <div class="bull">
+        <strong>Bull(실적 우위):</strong> 클라우드 실적 실증(AMZN AWS +37%·GOOGL
+        +6.73%)은 진짜 이익 성장 → 마이크로가 매크로를 압도. VIX 15.99로 진정,
+        Dow 4개월 연속 상승 = 순환매 건강. 금요일 "시장은 오르는 금리를
+        무시(looked past rising yields)".
+      </div>
+      <div class="bear">
+        <strong>Bear(매크로 역풍):</strong>
+        <strong>7월 자체가 하락月</strong>(S&amp;P −0.79%·Nasdaq −2.38%). 8/1
+        관세 실물 발효(캐나다 35%·브라질 50%) + 호르무즈 오일쇼크(WTI 월 +20%) +
+        10Y 4.74% 연중최고 + Fed 인상론 = 인플레·금리 역풍 실물화. AAPL −7.35%는
+        소비 균열 조기신호.
+      </div>
+      <div class="verdict">
+        <strong>briefing-lead 판단:</strong> 마이크로(클라우드 실적)는
+        승자독식으로 견조하나, 매크로(관세·오일·금리)가 7월 내내 지수를 눌렀고
+        8월 초 발효로 실물화. 지수 방향은 "실적 시즌 소멸 후 매크로 재부각"에
+        취약 → <strong>선별·방어 우위, 무차별 추격 부적합</strong>. 8/12 CPI가
+        다음 판별.
+      </div>
+    </div>
+
+    <!-- contrarian-card -->
+    <div class="contrarian-card">
+      <div class="card-title">
+        🟠 과소평가 포인트 — 금요일 랠리에 취해 시장이 놓친 것
+      </div>
+      <div class="assumption">
+        <strong>시장의 일반 가정:</strong> AMZN +15%·Nasdaq +1% = AI 트레이드
+        부활, 8월도 상승 연장.
+      </div>
+      <div class="signal">
+        <strong>반대 시그널:</strong> ①
+        <strong>유가 월 +20%(호르무즈)·10Y 4.74% 연중최고</strong> = 조용히
+        퍼지는 인플레·금리 독. 금요일 "무시"가 8월에도 지속 가능한가. ②
+        <strong>8/1 관세 실물 발효</strong> = 아직 실적·물가 미반영, 4분기 마진
+        압박 예약. ③ <strong>7월 = 하락月</strong>(S&amp;P −0.79%) — 이틀
+        V반등이 한 달 부진을 가림. ④ AAPL −7.35%·Buffett 최대 보유 = 소비 둔화
+        조기신호 무시. ⑤ 크립토 공포탐욕지수 25 극단공포·BTC $63K 하회 = 위험
+        선호 회복이 주식에 국한.
+      </div>
+      <div class="probability">
+        <strong>확률:</strong> 중간 — 8월 초 매크로 역풍 우위 ~55% (실적
+        서프라이즈 소멸 + 관세·오일 실물화). 추격보다 눌림·선별이 유효. 단
+        클라우드 실수요가 받치면 승자 종목은 비대칭 기회 잔존.
+      </div>
+    </div>
+
+    <!-- 심층 분석 권장 -->
+    <div class="sec bg-highlight">
+      <h2>🔬 심층 분석 권장 (다음 단계)</h2>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>티커</th>
+          <th>권장 사유</th>
+          <th>다음 단계</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>AMZN</strong></td>
+          <td>
+            AWS +37%·+15.32% 실적 서프라이즈, 클라우드 실매출 재실증 견인차
+          </td>
+          <td><code>/종목분석 AMZN</code></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>AAPL</strong></td>
+          <td>−7.35% 서비스 미스·가이던스·중국 노출, Buffett 최대 보유 직결</td>
+          <td><code>/종목분석 AAPL</code></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>GOOGL</strong></td>
+          <td>+6.73% 클라우드 강세 동반, AMZN과 클라우드 실증 축</td>
+          <td><code>/종목분석 GOOGL</code></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>TSM</strong></td>
+          <td>
+            내부자 3인 클러스터 매수(지분 +35%, $1.2M) — 반도체 저점 저가 매수
+            신호
+          </td>
+          <td><code>/종목분석 TSM</code></td>
+        </tr>
+      </table>
+      <p class="highlight" style="margin-top: 6px">
+        → 위 <code>/종목분석 {티커}</code> 명령으로 심층 분석 가능
+      </p>
+    </div>
+
+    <!-- 푸터 (명령어 가이드) -->
+    <div class="footer">
+      <h3>📌 다른 브리핑도 확인해보세요</h3>
+      <table>
+        <tr>
+          <td><code>/모닝브리핑</code></td>
+          <td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td>
+        </tr>
+        <tr>
+          <td><code>/이브닝브리핑</code></td>
+          <td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td>
+        </tr>
+        <tr>
+          <td><code>/주간리포트</code></td>
+          <td>→ 한 주 심층 + 성과 추적(C-9)</td>
+        </tr>
+        <tr>
+          <td><code>/리밸런싱</code></td>
+          <td>→ 4종 모델 포트폴리오 재조정</td>
+        </tr>
+        <tr>
+          <td><code>/크립토브리핑</code></td>
+          <td>→ BTC/ETH/SOL + 온체인 + 규제</td>
+        </tr>
+        <tr>
+          <td><code>/모델포트폴리오</code></td>
+          <td>→ 4종 현재 구성 + 구체 종목·ETF</td>
+        </tr>
+        <tr>
+          <td><code>/글로벌인텔리전스</code></td>
+          <td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td>
+        </tr>
+        <tr>
+          <td><code>/풀브리핑</code></td>
+          <td>→ A+B+C+E 4편 동시</td>
+        </tr>
+        <tr>
+          <td><code>/성과리뷰</code></td>
+          <td>→ 1주/2주/1개월/3개월 적중률</td>
+        </tr>
+        <tr>
+          <td><code>/내포트폴리오</code></td>
+          <td>→ 사용자 보유 자산 (개인 데이터 격리)</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 주의사항 -->
+    <div class="disclaimer">
+      <h4>⚠️ 주의사항</h4>
+      <ul style="margin-left: 18px">
+        <li>
+          본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도
+          추천이 아닙니다.
+        </li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>
+          13F 데이터는 분기말 기준 최대 45일 시차가 있습니다(본 회차는 ~120일
+          시차 — 상단 A-5 경고 참조).
+        </li>
+        <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+        <li>
+          본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다(교육·참고용).
+        </li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <!-- 명령어 가이드 -->
+    <div class="footer" style="margin-top: 20px">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 크립토</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> A+B+C+E</div>
+        <div><code>/KB업데이트</code> KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+      </div>
+      <p style="margin-top:14px;font-size:12px;color:var(--sub)">
+        생성: briefing-report-generator | 모드: morning | 데이터 기준: 미국 정규장 D-1(2026-07-31 금) 종가 · KST 2026-08-01(토)
+      </p>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
