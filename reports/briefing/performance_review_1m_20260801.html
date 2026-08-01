@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>성과 리뷰 (1개월) — 2026-07-18</title>
+    <!-- ===== CSS ===== -->
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      /* 라이트 모드 — 토큰만 교체 */
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 마스트헤드 */
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      /* 색상 클래스 */
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      /* 셀 배경 */
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      /* 섹션 카드 */
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      /* 표 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      /* 경고 박스 */
+      .warning-box {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .warning-box::before {
+        content: "⚠️ ";
+      }
+
+      /* 캘리브레이션 경고 — 빨간 강조 박스 */
+      .calibration-warning {
+        background: color-mix(in srgb, var(--down) 12%, transparent);
+        border: 1.5px solid var(--down);
+        border-left: 5px solid var(--down);
+        border-radius: 0 10px 10px 0;
+        padding: 16px 18px;
+        margin: 14px 0;
+        color: var(--down);
+        font-size: 14.5px;
+        font-weight: 700;
+        line-height: 1.6;
+      }
+
+      /* 요약 박스 */
+      .summary-box {
+        background: color-mix(in srgb, var(--highlight) 8%, transparent);
+        border-left: 4px solid var(--highlight);
+        border-radius: 0 10px 10px 0;
+        padding: 16px 18px;
+        margin: 14px 0;
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+      .summary-box .kpi-row {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .summary-box .kpi {
+        text-align: center;
+      }
+      .summary-box .kpi .val {
+        font-size: 22px;
+        font-weight: 800;
+        display: block;
+        line-height: 1.2;
+      }
+      .summary-box .kpi .lbl {
+        font-size: 12px;
+        color: var(--sub);
+        display: block;
+        margin-top: 2px;
+      }
+
+      /* 교훈 노트 표 */
+      .lesson-table td:first-child {
+        font-weight: 700;
+        color: var(--highlight);
+        white-space: nowrap;
+      }
+      .lesson-table td:nth-child(2) {
+        font-size: 12.5px;
+        color: var(--sub);
+      }
+
+      /* 퍼포먼스 바 */
+      .perf-bar-wrap {
+        margin: 6px 0;
+      }
+      .perf-bar {
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+      }
+      .perf-bar .fill-up {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .perf-bar .fill-down {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .perf-bar .fill-warn {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+
+      /* 태그 */
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+      .tag-green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .tag-yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+      }
+
+      /* 신호음 박스 (자기 정당화 회피 등) */
+      .info-note {
+        background: color-mix(in srgb, var(--text) 4%, transparent);
+        border-left: 3px solid var(--neutral);
+        border-radius: 0 8px 8px 0;
+        padding: 10px 14px;
+        margin: 10px 0;
+        font-size: 13px;
+        color: var(--sub);
+        line-height: 1.6;
+      }
+
+      /* 앵커 섹션 (애널리스트 사후 평가) */
+      .analyst-pending {
+        background: color-mix(in srgb, var(--neutral) 8%, transparent);
+        border: 1px dashed var(--border);
+        border-radius: 10px;
+        padding: 20px 24px;
+        text-align: center;
+        color: var(--sub);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      /* 주의사항 */
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .summary-box .kpi-row {
+          gap: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 테마 토글 (상단 고정) -->
+    <div style="position: sticky; top: 0; z-index: 99; background: var(--card); border-bottom: 1px solid var(--border); padding: 8px 16px; display: flex; justify-content: flex-end;">
+      <button onclick="toggleTheme()" style="background: transparent; color: var(--text); border: 1px solid var(--border); padding: 6px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: inherit;">
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <!-- 헤더 -->
+<div class="header">
+  <h1>📈 성과 리뷰 (1개월) — 2026-08-01</h1>
+  <div class="meta">briefing-lead 작성 | 결정적 채점(±3% 임계) 스냅샷 · 2026-08-01 19:03 KST 생성</div>
+  <div class="meta" style="margin-top: 4px">평가창 04-13~06-06 · 직전(07-25)과 동일 방법론 — 직접 비교 가능</div>
+</div>
+
+<!-- 0. 핵심 요약 -->
+<div class="sec">
+  <h2>0. 핵심 요약</h2>
+  <div class="summary-box">
+    <p style="font-weight: 700; font-size: 15px; margin-bottom: 10px">
+      결정적 채점(±3% 임계) 기준 2026-08-01 스냅샷 — 종합 적중률
+      <span class="down">37.8%</span> (37건 판정 가능) · 직전 41.7% 대비
+      <span class="down">-3.9%p</span> ·
+      <strong>V자 반등 후 소폭 되돌림 (40% 하회 재진입)</strong>
+    </p>
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="val up">72.7%</span><span class="lbl">종목(개별주) 적중률<br />8/11건 — 견고 유지</span>
+      </div>
+      <div class="kpi">
+        <span class="val warning">21.7%</span><span class="lbl">ETF 적중률<br />5/23건 (직전 27.3%↓)</span>
+      </div>
+      <div class="kpi">
+        <span class="val down">15.4%</span><span class="lbl">확신 '높음' 적중률<br />2/13건 — 과신 경보 8주째·추가 악화</span>
+      </div>
+    </div>
+  </div>
+  <p style="font-size: 14px; margin-top: 12px; line-height: 1.8">
+    <strong>이번 되돌림 원인 — 신규 대박 없이 시간축 재분류가 역방향:</strong><br />
+    지난주 41.7%(7주 만의 40% 재돌파) 대비 이번주는 37.8%로 -3.9%p 되돌림. 신규로 크게 적중한 콜은 없고, 오히려
+    지난주 hit이던 일부 단기 콜이 시간 경과로 miss·flat으로 재분류되며 <strong>hit 15→14·miss 21→23</strong>으로
+    분모가 악화됐다. 구조는 직전과 동일 — <strong>종목은 강하고(72.7%) ETF·확신 높음은 추가 악화</strong>.
+    <strong>GLD "구조적 Bull" 클러스터(중기 miss 12건)</strong>가 통계 하단을 계속 짓누르는 그림도 불변이며,
+    확신 '높음'은 21.4%→15.4%로 오히려 더 내려가 <strong>확신도 역전(과신 경보)이 8주 연속·심화</strong>됐다.
+  </p>
+</div>
+
+<!-- 1. 종합 통계 -->
+<div class="sec">
+  <h2>1. 종합 통계</h2>
+  <div class="info-note" style="margin-bottom: 14px">
+    <strong>방법론 일관(직접 비교 가능):</strong> 이번 산정은 직전(2026-07-25)과
+    <strong>동일한 결정적 채점(±3% 임계 + 시간축 게이팅)</strong>이다. 헤드라인
+    <strong>41.7% → 37.8% (-3.9%p)</strong>는 직접 비교 가능하다. 이번 하락은 신규 실패가 아니라
+    hit→miss/flat 재분류(시간 경과)에 따른 분모 변화가 주동력이다.
+  </div>
+  <table>
+    <thead><tr><th>항목</th><th>값</th></tr></thead>
+    <tbody>
+      <tr><td>가격 측정 대상 행</td><td><strong>57건</strong> (티커 27종) [auto_scoring]</td></tr>
+      <tr><td>판정 가능 (적중+오류)</td><td><strong>37건</strong></td></tr>
+      <tr><td>적중 (hit)</td><td class="up"><strong>14건</strong></td></tr>
+      <tr><td>오류 (miss)</td><td class="down"><strong>23건</strong></td></tr>
+      <tr><td>진행중 (flat ≤3%)</td><td class="neutral"><strong>4건</strong></td></tr>
+      <tr><td>시간축 미도래 (early)</td><td class="neutral"><strong>11건</strong></td></tr>
+      <tr class="bg-down"><td><strong>종합 적중률</strong></td><td class="down"><strong>37.8%</strong> (14 / 37) [결정적 채점 ±3%]</td></tr>
+      <tr class="bg-down"><td>직전 산정 (2026-07-25, 41.7%)</td><td class="down"><strong>-3.9%p</strong> — hit 15→14·miss 21→23 재분류, 동일 방법론</td></tr>
+    </tbody>
+  </table>
+  <div class="info-note">
+    <strong>자기 정당화 회피(#14):</strong> 결정적 채점이 부여한 판정을 그대로 인용했다. flat(±3% 이내) 4건과
+    early 11건을 적중으로 끌어올리지 않았고, miss 23건을 "구조는 옳았다"로 재해석하지 않았다. 하락한 -3.9%p도
+    "실력 저하"로 단정하지 않고 시간축 재분류에 따른 분류 이동임을 명시했다(개선/악화 어느 쪽으로도 과장하지 않음).
+  </div>
+  <p style="font-size: 13px; color: var(--sub); margin-top: 10px">
+    <strong>데이터 기준:</strong> <code>score_recommendations.py</code> 결정적 자동 채점 (2026-08-01 19:03 KST)
+    → <code>auto_scoring.json</code>. 기준가 = 제안일 이후 첫 거래일 종가, 임계 <strong>±3%</strong>,
+    시간축 최소 경과 게이팅(미달=early). 평가 스냅샷 범위: 결정적 채점 평가창 <strong>04-13~06-06</strong>.
+  </p>
+</div>
+
+<!-- 2. 모듈별 -->
+<div class="sec">
+  <h2>2. 적중률 분해 — 모듈별</h2>
+  <table>
+    <thead><tr><th>모듈</th><th>제안</th><th>적중</th><th>오류</th><th>진행중</th><th>적중률</th></tr></thead>
+    <tbody>
+      <tr class="bg-up"><td>이브닝</td><td>21</td><td class="up">9</td><td class="down">10</td><td class="neutral">2</td><td class="up"><strong>47.4%</strong> (9/19)</td></tr>
+      <tr><td>주간</td><td>10</td><td class="up">3</td><td class="down">5</td><td class="neutral">2</td><td class="warning"><strong>37.5%</strong> (3/8)</td></tr>
+      <tr class="bg-down"><td>모닝</td><td>10</td><td class="up">2</td><td class="down">8</td><td class="neutral">0</td><td class="down"><strong>20.0%</strong> (2/10)</td></tr>
+    </tbody>
+  </table>
+  <div class="info-note" style="margin-top: 12px">
+    이브닝(47.4%, -5.5%p)이 여전히 최강 모듈이나 판정 분모 확대(17→19)로 소폭 하락. 주간(37.5%, -6.9%p)은
+    hit 1건이 재분류로 빠지며 후퇴. 모닝(20.0%, 동일)은 GLD/VXX "구조적 Bull" 재확인 콜이 표본을 점령해
+    8주 연속 최저. 크립토·포트폴리오·글로벌·리밸런싱 모듈은 이번 평가창 결정적 채점 표본 없음(비-티커 시나리오 위주).
+  </div>
+</div>
+
+<!-- 3. 카테고리별 -->
+<div class="sec">
+  <h2>3. 적중률 분해 — 카테고리별</h2>
+  <table>
+    <thead><tr><th>카테고리</th><th>제안</th><th>적중</th><th>오류</th><th>진행중</th><th>적중률</th></tr></thead>
+    <tbody>
+      <tr class="bg-up"><td>종목 (개별주)</td><td>12</td><td class="up">8</td><td class="down">3</td><td class="neutral">1</td><td class="up"><strong>72.7%</strong> (8/11)</td></tr>
+      <tr><td>토큰</td><td>3</td><td class="up">1</td><td class="down">2</td><td class="neutral">0</td><td class="down"><strong>33.3%</strong> (1/3)</td></tr>
+      <tr class="bg-warning"><td>ETF</td><td>26</td><td class="up">5</td><td class="down">18</td><td class="neutral">3</td><td class="warning"><strong>21.7%</strong> (5/23)</td></tr>
+    </tbody>
+  </table>
+  <div class="warning-box">
+    <strong>양극화 재확대:</strong> 종목 72.7% vs ETF 21.7% — 격차 <strong>51.0%p</strong>(직전 45.4%p에서 재확대).
+    종목 적중 8건은 AI 인프라 반도체(INTC×2·ASML·AMD·STX) + 인사이더(SRAD) 등으로 견고 유지. 반면 ETF는
+    hit 6→5로 후퇴하고 오류 18건 중 <strong>12건이 여전히 GLD 단일 논리</strong>다.
+    <strong>개별 종목 리서치는 견고하나, 지수·원자재 방향성 콜의 구조적 취약이 이번 회차에 다시 두드러졌다.</strong>
+  </div>
+</div>
+
+<!-- 4. 시간축별 -->
+<div class="sec">
+  <h2>4. 적중률 분해 — 시간축별</h2>
+  <table>
+    <thead><tr><th>시간축</th><th>제안</th><th>적중</th><th>오류</th><th>진행중</th><th>적중률</th><th>직전(07-25) 대비</th></tr></thead>
+    <tbody>
+      <tr class="bg-up"><td>단기 (1~3개월)</td><td>26</td><td class="up">11</td><td class="down">9</td><td class="neutral">3</td><td class="up"><strong>55.0%</strong> (11/20)</td><td class="down">63.2% → 55.0% <strong>(-8.2%p)</strong></td></tr>
+      <tr class="bg-down"><td>중기 (3~12개월)</td><td>31</td><td class="up">3</td><td class="down">14</td><td class="neutral">12</td><td class="down"><strong>17.6%</strong> (3/17)</td><td class="neutral">17.6% → 17.6% <strong>(±0.0%p)</strong></td></tr>
+      <tr><td>장기 (1~5년)</td><td>0</td><td class="neutral">0</td><td class="neutral">0</td><td class="neutral">0</td><td class="neutral">신규 0건</td><td class="neutral">—</td></tr>
+    </tbody>
+  </table>
+  <div class="info-note" style="margin-top: 12px">
+    <strong>단기 되돌림이 헤드라인 하락의 주원인:</strong> 단기는 지난주 재채점 급등(+13.2%p)에서 이번주 -8.2%p로
+    되돌아왔다(hit 12→11·판정 분모 19→20). 중기는 ASML·ITA hit 성숙과 <strong>GLD 구조Bull 12건 miss 점령</strong>이
+    상쇄되어 17.6%로 정확히 정체(±0.0%p). 중기 early 11건은 시간축 미도래로 다음 회차 순차 성숙 예정 — 이 중
+    상당수가 miss로 굳으면 중기 통계가 추가 악화될 위험이 있다.
+  </div>
+</div>
+
+<!-- 5. 캘리브레이션 점검 -->
+<div class="sec">
+  <h2>5. 캘리브레이션 점검 <span style="font-size: 13px; color: var(--sub)">[v3.27 의무]</span></h2>
+  <div class="calibration-warning">
+    <strong>⚠️ calibration_warning (auto_scoring.json, non-null):</strong><br />
+    "확신 '높음' 적중률 15.4% &lt; '중간' 55.6% — 확신 표기 기준 강화 검토 (briefing-lead 제안 기록 룰)"
+  </div>
+  <table>
+    <thead><tr><th>확신도</th><th>제안</th><th>적중</th><th>오류</th><th>진행중</th><th>적중률</th></tr></thead>
+    <tbody>
+      <tr><td>낮음</td><td>2</td><td class="up">1</td><td class="down">1</td><td class="neutral">0</td><td class="neutral"><strong>50.0%</strong> (1/2) <span class="tag tag-yellow">표본부족</span></td></tr>
+      <tr class="bg-up"><td>중간</td><td>20</td><td class="up">10</td><td class="down">8</td><td class="neutral">2</td><td class="up"><strong>55.6%</strong> (10/18)</td></tr>
+      <tr><td>중간~높음</td><td>5</td><td class="up">1</td><td class="down">3</td><td class="neutral">1</td><td class="down"><strong>25.0%</strong> (1/4)</td></tr>
+      <tr class="bg-down"><td>높음</td><td>14</td><td class="up">2</td><td class="down">11</td><td class="neutral">1</td><td class="down"><strong>15.4%</strong> (2/13) — 과신·추가 악화</td></tr>
+    </tbody>
+  </table>
+  <div class="warning-box">
+    <strong>확신도 역전 8주 연속·심화:</strong> 중간 55.6% &gt; 낮음 50.0% &gt; 중간~높음 25.0% &gt; 높음 15.4% —
+    <strong>확신이 가장 높을 때 가장 부정확</strong>한 역-신호 구조가 유지될 뿐 아니라, 확신 '높음' 자체가
+    21.4%→15.4%로 <strong>추가 악화</strong>됐다(hit 3→2). 높음-중간 격차는 -40.2%p로 직전(-37.4%p)보다 재확대.
+    확신 '높음' 오류 11건 중 <strong>여전히 8건이 GLD 단일 논리</strong>다. 시스템이 가장 확신할 때 가장 틀리는
+    구조는 8주째 미해소 — 확신 표기 기준 강화 룰(#2)의 우선순위가 더 높아졌다.
+  </div>
+</div>
+
+<!-- 6. 가장 정확했던 판단 -->
+<div class="sec">
+  <h2>6. 가장 정확했던 판단 (Top 3)</h2>
+  <table>
+    <thead><tr><th>#</th><th>종목·콜</th><th>발행</th><th>확신</th><th>수익률</th><th>핵심</th></tr></thead>
+    <tbody>
+      <tr class="bg-up"><td>1</td><td><strong>AMD</strong> Bull</td><td>05-04 모닝</td><td><span class="tag tag-blue">중간</span></td><td class="up"><strong>+39.4%</strong></td><td>데이터센터 GPU +42% YoY. 5/5 실적 Beat(EPS $1.29, +34.4%) 후 추세 확인 — 표본 내 최대 수익</td></tr>
+      <tr class="bg-up"><td>2</td><td><strong>STX</strong> (Seagate) Bull</td><td>04-29 이브닝</td><td><span class="tag tag-blue">중간</span></td><td class="up"><strong>+33.2%</strong></td><td>AI 인프라 2차 수혜(스토리지 수요 구조 증가) — 파생 테마 포착</td></tr>
+      <tr class="bg-up"><td>3</td><td><strong>BTC</strong> Bear</td><td>05-14 이브닝</td><td><span class="tag tag-blue">중간</span></td><td class="up"><strong>+22.3%</strong></td><td>"NASDAQ 디커플링 3일차, $80K 공방" Bear 콜이 이후 하락을 정확히 포착(signed +22.3%)</td></tr>
+    </tbody>
+  </table>
+  <div class="info-note">
+    <strong>차순위:</strong> SRAD +13.6%(인사이더 7명 클러스터 매수), ITA +11.9%(방산 구조적 상승), SOXX +10.9%(반도체 슈퍼사이클),
+    ASML +10.7%(실적 전 선행). <strong>Top 3가 모두 확신 "중간"</strong>인 점이 이번에도 핵심 —
+    <strong>정확한 콜은 겸손한 확신에서 나왔다</strong>(5주 연속 동일 패턴).<br />
+    <span style="color: var(--sub)"><strong>※ 데이터 정합 주의:</strong> auto_scoring 상 최고 수익 "S-Oil(+49.5%)"은
+    티커 <code>S</code>(기준가 $12.75)로 조회된 <strong>미국 종목 오조회</strong>다. S-Oil(010950.KS, 한국·수만원대)이
+    아니므로 Top에서 제외했다 — 결정적 채점의 티커 매핑 버그(score_recommendations.py 개선 대상).</span>
+  </div>
+</div>
+
+<!-- 7. 가장 빗나간 판단 -->
+<div class="sec">
+  <h2>7. 가장 빗나간 판단 (Top 3)</h2>
+  <table>
+    <thead><tr><th>#</th><th>종목·콜</th><th>발행</th><th>확신</th><th>수익률</th><th>교훈</th></tr></thead>
+    <tbody>
+      <tr class="bg-down"><td>1</td><td><strong>SMR</strong> Bull (원자력 SMR)</td><td>04-26 이브닝</td><td><span class="tag tag-blue">중간</span></td><td class="down"><strong>-33.4%</strong></td><td>SMR 원자력 AI DC 전력 테마 + IPO 검증 논리 → 테마 붕괴. 초기 성장주 테마 추격의 변동성</td></tr>
+      <tr class="bg-down"><td>2</td><td><strong>VXX</strong> Bull (VIX 반등)</td><td>04-16 이브닝</td><td><span class="tag tag-blue">중간</span></td><td class="down"><strong>-27.5%</strong></td><td>변동성 롱의 음의 롤캐리 + VIX 하락. 이벤트 헤지 롱은 타이밍 실패 시 급락(04-17 모닝 -26.7% 반복)</td></tr>
+      <tr class="bg-down"><td>3</td><td><strong>BTC</strong> Bull (추세전환)</td><td>05-06 이브닝</td><td><span class="tag tag-red">중간~높음</span></td><td class="down"><strong>-22.7%</strong></td><td>"200DMA $82,228 돌파 = 7개월 추세 전환 확정" 단정 → 반전 하락. 기술레벨 돌파 확정론의 함정</td></tr>
+    </tbody>
+  </table>
+  <div class="warning-box">
+    <strong>미스 23건 진원지 2갈래(직전과 동일):</strong> (A) 단일 자산 GLD 조정 추격을 "구조 유지"로 반복 확신 —
+    중기 오류 14건 중 12건이 GLD. (B) 기술레벨(BTC 200DMA·VIX 밴드)을 "돌파/반등 확정"으로 단정 — VXX 2건
+    평균 -27.1%, BTC 200DMA 돌파 콜 2건 -22%대. 두 패턴 모두
+    <strong>확신 '높음'~'중간~높음'을 부여받은 뒤 붕괴</strong>했다. miss 21→23 증가분도 이 두 진원지에서 발생.
+  </div>
+</div>
+
+<!-- 8. 최근 1개월 신규 발행 관찰 목록 -->
+<div class="sec">
+  <h2>8. 최근 1개월 신규 발행 관찰 목록 <span style="font-size: 13px; color: var(--sub)">(07-24~08-01)</span></h2>
+  <div class="info-note" style="margin-bottom: 14px">
+    평가창(04-13~06-06) 이후 신규 발행분은 전부 시간축 미도래로 <strong>진행중</strong> — 정량 적중률 산정 불가.
+    아래는 직전 리뷰(07-25) 이후 발행된 주요 콜. <strong>여전히 시나리오/자산군이 다수</strong>라 결정적 채점
+    사각 지대이며, 판별 기준일(trigger date) 명시가 관건 → 교훈 노트 #5 룰 diff로 연결.
+  </div>
+  <table>
+    <thead><tr><th>발행</th><th>모듈</th><th>카테고리</th><th>콜</th><th>방향</th></tr></thead>
+    <tbody>
+      <tr><td>07-24</td><td>모닝</td><td>시나리오</td><td>AI 트레이드 — '주인이 바뀐 것' vs '꺾이는 중' (debate-card)</td><td class="neutral">중립(재배치 우세)</td></tr>
+      <tr><td>07-28</td><td>이브닝</td><td>자산군</td><td>반도체 조정 국면 — CapEx 수취자(SOX·MU·VRT) 방어 vs 지불자(GOOGL) 응징</td><td class="up">Bull(수취자 조건부)</td></tr>
+      <tr><td>07-30</td><td>이브닝</td><td>시나리오</td><td>반도체 폭락 3일차 진정 + AAPL·AMZN CapEx 심판 완결 (분기)</td><td class="neutral">중립(진정 우세)</td></tr>
+      <tr><td>07-31</td><td>이브닝</td><td>시나리오</td><td>오늘 밤 분기점 — 빅테크 실적 후 방향 판별</td><td class="neutral">중립</td></tr>
+      <tr><td>08-01</td><td>모닝</td><td>시나리오</td><td>8/1 관세 발효·호르무즈 오일쇼크 vs 빅테크 클라우드 랠리 (debate-card)</td><td class="neutral">중립(양방 촉매 교착)</td></tr>
+      <tr><td>08-01</td><td>모닝</td><td>자산군</td><td>Brent 급등에도 금 약세 — 유가를 인플레로 안 본다 (contrarian 연속)</td><td class="down">Gold Bear 관찰</td></tr>
+    </tbody>
+  </table>
+  <div class="info-note" style="margin-top: 12px">
+    07-30~08-01 CapEx 심판(AAPL·AMZN 가이던스) + 8/1 관세 발효·호르무즈 오일쇼크가 이번 창의 핵심 분기 —
+    전부 시나리오/자산군 위주라 결정적 채점 사각이다. 판별자(빅테크 CapEx 가이던스·관세 실제 발효 여부)가
+    명시된 debate-card는 교훈 #5(시나리오 trigger date 의무화) 방향과 부합한다.
+  </div>
+</div>
+
+<!-- 9. 교훈 노트 → 룰 diff 제안 -->
+<div class="sec">
+  <h2>9. 교훈 노트 → 룰 diff 제안 <span style="font-size: 13px; color: var(--sub)">[v3.27 형식 · 5건]</span></h2>
+  <div class="info-note" style="margin-bottom: 14px">
+    아래는 <strong>제안</strong>일 뿐이다 — 명세 적용은 사용자 승인 후 별도 작업이며 자동 적용하지 않는다.
+    #1~#4는 8주 연속 동일 제안(미해소), #5는 시나리오 판정 사각 관련. 이번 회차 일부 지표(ETF·확신 높음)가
+    오히려 악화됐으므로 제안의 시급성이 더 높아졌다.
+  </div>
+  <table class="lesson-table">
+    <thead><tr><th>#</th><th>대상 명세</th><th>현재 룰</th><th>제안 룰</th><th>근거 (breakdown 수치)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><code>briefing-lead.md</code></td><td>동일 티커·동일 논리를 매일 신규 제안으로 반복 기록 허용</td><td>동일 티커+동일 논리 7일 내 재제안 시 신규 카운트 대신 기존 제안 "유지" 표기 (표본 오염 차단)</td><td>확신 높음 miss 11건 중 <strong>8건이 GLD 단일 논리</strong>. 중기 오류 표본 12/14 점령, 8주 연속</td></tr>
+      <tr><td>2</td><td><code>briefing-lead.md</code></td><td>확신 3단계 자유 표기</td><td>"높음"은 반증 조건(무효화 트리거) 명시 시에만 허용</td><td>높음 <strong>15.4%(2/13)</strong> &lt; 중간 55.6%(10/18) — 8주 연속 역전, 이번 회차 격차 -40.2%p로 재확대</td></tr>
+      <tr><td>3</td><td><code>briefing-lead.md</code></td><td>종목·ETF 동일 확신 부여</td><td>ETF(지수/원자재) 방향성 콜은 확신 1단계 하향 캡</td><td>ETF <strong>21.7%(5/23)</strong> vs 종목 72.7%(8/11) — 격차 51.0%p (이번 회차 재확대)</td></tr>
+      <tr><td>4</td><td><code>briefing-lead.md</code></td><td>VIX 반등 시 VXX/VIXY 롱 이벤트 헤지 단순 제안</td><td>변동성 ETF 롱은 음의 롤캐리 경고 + 최대 보유 5거래일 명시</td><td>VXX 2건 평균 <strong>-27.1%</strong> — 단기 miss 대형 손실</td></tr>
+      <tr><td>5</td><td><code>score_recommendations.py</code> · <code>briefing-lead.md</code></td><td>시나리오/자산군 행은 판정 무한 "진행중" 고착 + 티커 매핑 검증 부재</td><td>시나리오 행에 판별 기준일(trigger date) 명시 의무화 + <strong>한국 종목 티커 자동검증(.KS 접미사·가격대 sanity check)</strong> 추가</td><td>신규 발행 6건 중 대부분 시나리오/자산군(채점 사각) + <strong>S-Oil이 미국 티커 'S'로 오조회(+49.5% 허수)</strong> — 이번 회차 신규 근거</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 10. 애널리스트 사후 평가 -->
+<div class="sec">
+  <h2>10. 애널리스트 사후 평가 <span style="font-size: 13px; color: var(--sub)">(outcome_eval · analyst-scraper)</span></h2>
+  <div class="summary-box">
+    <p style="font-weight: 700; font-size: 15px; margin-bottom: 10px">
+      이번 기간 신규 평가 <strong>20건</strong> — 평가 시점 도달분(5월 중순~7월 초 발행) 결정.
+      대부분 EOY(연말) 목표 계열로 목표 기간 32~35%만 경과 → 최종 판정 보류(진행중), ±5% 근접·예측 사건 확정 3건만 적중 확정.
+    </p>
+    <div class="kpi-row">
+      <div class="kpi"><span class="val up">3</span><span class="lbl">적중 (hit)</span></div>
+      <div class="kpi"><span class="val neutral">0</span><span class="lbl">미적중 (miss)</span></div>
+      <div class="kpi"><span class="val neutral">17</span><span class="lbl">진행 중 (기간 미도래)</span></div>
+    </div>
+  </div>
+  <p style="font-size: 14px; margin-top: 12px; line-height: 1.8">
+    <strong>논거 유효성(thesis validity):</strong> 이번 20건 중 <strong>방향이 완전히 부정된(miss) 콜은 0건</strong>이나,
+    <strong>국내 KOSPI 지수 목표는 심각한 오차</strong>를 기록했다. 이은택(KB, 10,500)·이재만(하나, 10,380)·Nomura(11,000) 목표는
+    7/28~30 <strong>KOSPI 대붕괴(월간 -22.19%, 1997년來 최악)</strong>로 목표 대비 <span class="down">-36~40%</span> 대폭 미달.
+    EOY 기간 미도래로 최종 판정은 보류했으나, <strong>지난 회차 지적한 "목표가 과대 설정" 취약성이 이번엔 지수 레벨에서 재현</strong>됐다.
+    신규 미국 커버리지(QNT -47%·BROS -30.7%·CHKP -32.4%)도 초기 대폭 미달이나 전부 기간 미도래 진행중.
+  </p>
+
+  <h3 style="font-size: 16px; font-weight: 700; margin: 18px 0 8px">
+    분석가·기관별 누적 스코어보드
+    <span style="font-size: 12px; color: var(--sub)">(전체 173건, n≥2, 해결건 기준, 이름 정규화)</span>
+  </h3>
+  <table>
+    <thead><tr><th>순위</th><th>분석가</th><th>적중률</th><th>표본(해결건)</th></tr></thead>
+    <tbody>
+      <tr class="bg-up"><td>Top 1</td><td>Michael Hartnett (BoA)</td><td class="up"><strong>100%</strong></td><td>6건 — AI 버블·집중도 경고 계열</td></tr>
+      <tr class="bg-up"><td>Top 2</td><td>Ben Snider (GS)</td><td class="up"><strong>100%</strong></td><td>5건 (이번 +2 적중) — S&amp;P500 7,600 목표 근접 달성</td></tr>
+      <tr class="bg-up"><td>Top 3</td><td>Mohamed El-Erian (CNBC) · Dubravko Lakos-Bujas (JPM)</td><td class="up"><strong>100%</strong></td><td>각 2건 (동률)</td></tr>
+      <tr class="bg-down"><td>Bottom</td><td>N/A 애널리스트명 (Bloomberg)</td><td class="down"><strong>0%</strong></td><td>3건 — 채권 신질서·본드라우트·워시Fed 콜 전량 미적중</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 12px; color: var(--sub); margin-top: 6px">
+    참고(동률 0%, 소표본): 미래에셋 하이닉스 2건·SK증권 한동희 2건·Tom Lee(CNBC) 2건 — 모두 이번 세션 변화 없음.
+  </p>
+
+  <div class="info-note">
+    <strong>이번 회차 적중 콜:</strong> Ben Snider(GS) S&amp;P500 "성숙·분산" 목표 계열 2건(5/21·5/22, 오차 <span class="up">-1.45%</span>)이
+    7,600 목표에 근접 달성 확인, Paul Ciana(BoA) "Q3 조정" 방향 콜(6/26)이 7월 말 실제 조정으로 방향 적중(+9.34%).
+    <strong>매크로·지수 방향 콜의 적중이 개별 목표가 콜을 다시 상회</strong>(본 시스템 성과와 동형 — 방향은 맞고 목표가는 과대).
+  </div>
+  <p style="font-size: 13px; color: var(--sub); margin-top: 10px">
+    다음 평가 가능 시점: <strong>즉시 (잔여 미평가 다수)</strong> — 다음 호출에서 6월 발간 시황 코멘트류(YouTube·Bloomberg Surveillance 등)
+    우선 처리 예정. 상세: <a href="/analyst/scoreboard" style="color: var(--highlight)">/analyst/scoreboard →</a>
+  </p>
+</div>
+
+<div class="footer">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표 + ATR</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 암호화폐</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> A+B+C+E</div>
+        <div><code>/KB업데이트</code> KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+      </div>
+      <p style="margin-top: 12px; font-size: 12px; color: var(--sub)">
+        생성: briefing-lead + 메인 조립 | 모드: performance_review | 데이터 기준: score_recommendations.py 2026-08-01 19:03 KST
+      </p>
+    </div>
+
+    <!-- 주의사항 -->
+    <div class="disclaimer">
+      <h4>주의사항</h4>
+      <ul style="padding-left: 16px">
+        <li>본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도 추천이 아닙니다.</li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>적중률 수치는 결정적 자동 채점 기준이며, 임계·게이팅 기준 변경 시 직전 수치와 직접 비교가 부적절합니다.</li>
+        <li>과거 수익률·성과가 미래 결과를 보장하지 않습니다.</li>
+        <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
