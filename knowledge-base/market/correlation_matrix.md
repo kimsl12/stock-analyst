@@ -1,18 +1,18 @@
 ---
-updated: 2026-07-31
-valid_until: 2026-08-01
+updated: 2026-08-01
+valid_until: 2026-08-02
 file: correlation_matrix
 category: market
-confidence: "high (6/6 페어 전량 yfinance+FRED 직접 페치 신규 재계산 완료 — cutoff이 페어별로 상이함에 유의. S&P500↔10Y·NASDAQ↔BTC[NASDAQ레그]·VIX↔S&P500[S&P500레그]·WTI↔BEI[BEI레그] 4쌍은 미국 정규장이 아직 미개장(KST 20:10=ET 07:10 프리마켓)이라 cutoff 7/30(목) 확정 종가, USD/KRW↔KOSPI·Gold↔DXY 2쌍은 한국·상품시장이 7/31(금)까지 마감 확정돼 cutoff 7/31. KOSPI 사상 최대 단일일 +17.91% 반등 전 구간이 이번 회차에 반영됨 — market-data-collector WebSearch 교차검증으로 데이터 신뢰성 확인)"
-calculation_source: "correlation-monitor 직접 yfinance+FRED 페치(2026-07-31 실행, Bash+python3) — 기존 방법론을 그대로 계승해 SP500/NASDAQ/US10Y/VIX/KOSPI/USDKRW/GOLD/DXY/WTI/BTC 10개 시계열 + FRED T10YIE(BEI, curl 직접, HTTP 200, 565건)를 2024-06-01~2026-07-31(자산별 최신 거래일까지)으로 재구성, 6쌍 전량 정식 재계산. μ/σ 기준선은 7/18 house_view v5 정식 채택 이래 계승돼 온 established 값(2024-06-01~2026-07-2X 2년 롤링 분포)을 그대로 사용."
-calculation_method: "각 자산의 yfinance 일별 종가를 pct_change(fill_method=None) 산출 → 페어별 교집합 날짜(inner join)로 pandas rolling(21)/rolling(60).corr() 계산(Pearson r, 30D=21거래일 창/90D=60거래일 창 고정 롤링). μ/σ는 2024-06-01~2026-07-2X 전체 롤링 상관계수 분포의 평균·표준편차(정합 기준선, established value 계승). Z-score=(r_실측-μ)/σ."
-data_cutoff_note: "페어별 cutoff 상이 — ① S&P500↔10Y·NASDAQ↔BTC(NASDAQ레그)·VIX↔S&P500(S&P500레그)·WTI↔BEI(BEI레그): 2026-07-30(목) 미국 정규장 확정 종가/FRED BEI 최신 공표치까지(오늘 7/31은 미국 정규장 미개장, ET 07:10 프리마켓). ② USD/KRW↔KOSPI·Gold↔DXY: 2026-07-31(금) 한국·상품시장 마감 확정치까지(둘 다 미국 세션 비의존). ★ **KOSPI 사상 최대 단일일 +17.91%(6,595.45, 3거래일 폭락 누적 -17.2% 되돌림, 삼성전자+26.81%·SK하이닉스+29.95% 상한가, 외국인 7.24조·기관 1.14조 순매수)** 전 구간이 이번 회차에 반영됨 — market-data-collector WebSearch 교차검증(market_data_20260731.md)으로 실측 확정, 데이터 오류 아님. 7/30(목)은 MSFT+15.51%(사상 최대 단일종목 시총 증가)·SOX+8.19%·VIX-17.28%로 전일(7/29) FOMC 매파 표결發 급락을 대부분 되돌린 강한 리스크온 마감일."
+confidence: "medium-high (6/6 페어 경량 delta 조정 완료 — 전량 처음부터 재계산이 아니라, 직전 회차(analysis/briefing/correlation_20260731.md) 확정 Z-score에 cutoff 2026-07-30→2026-07-31 1거래일 증분(Δ)만 가산하는 방식. Δ 산출용 yfinance 배치 페치(10개 티커, 단일 호출)+FRED T10YIE curl 1회로 fetch 최소화(직전 회차 maxTurns 실패 재발 방지). 이번 회차부터 6쌍 전부 cutoff 2026-07-31(금) 균일 — USD/KRW↔KOSPI·Gold↔DXY는 직전 회차가 이미 cutoff 7/31이라 신규 거래일 없어 무변동. WTI(CL=F $84.67)·Gold(GC=F $4,049.10) 계산용 소스가 daily_snapshot 실측치($86.80·$4,098.60)와 편차 존재 — established quirk, 방향은 일치)"
+calculation_source: "correlation-monitor 경량 delta 조정(2026-08-01 실행, Bash+python3) — yfinance 배치 페치(^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 단일 호출, 2024-06-01~2026-07-31) + FRED T10YIE curl(HTTP 200, 566건, 최신치 2026-07-31)로 cutoff 7/30→7/31 Z-score 증분(Δ)을 자체 산출 후, 직전 회차 확정 Z-score 6쌍에 Δ를 가산. 전량 처음부터 재계산 시 Yahoo 데이터 소급개정으로 세션 간 노이즈가 발생하는 기존 패턴(archive 다수 관찰)을 우회하기 위해 채택."
+calculation_method: "자체 배치 페치로 cutoff=2026-07-30 vs cutoff=2026-07-31 각각의 Z-score를 산출(established μ/σ 기준선 적용)하고 그 차이(Δ=Z_731-Z_730)를 계산 → 직전 회차 확정 Z-score(analysis/briefing/correlation_20260731.md)에 Δ를 가산. USD/KRW↔KOSPI·Gold↔DXY는 직전 회차가 이미 cutoff 7/31이라 Δ=0(무변동). r 값은 established μ/σ로 역산 재구성(r=μ+Z·σ)해 표기."
+data_cutoff_note: "이번 회차부터 6쌍 전부 균일 cutoff 2026-07-31(금, 미국·한국·상품·BEI 전 레그 확정 종가). 오늘(8/1, 토)은 미국·한국·상품시장 전부 휴장이라 신규 거래일 데이터 없음 — 다음 신규 데이터는 8/3(월) 재개장. 금요일(7/31) 핵심: S&P500 7,489.72(+0.70%)·Nasdaq 25,373.85(+1.00%)·VIX 15.99(-6.44%, 16선 하회)·美10Y 4.74%(+8bp, 연중 최고 부근)·WTI $86.80(+3.84%, 호르무즈 153일째, 월+20%)·Gold $4,098.60(-0.04%)·DXY 99.80·BTC $62,886(-2.84%)·KOSPI 6,595.45(+17.91%, 사상 최대 단일일 상승)."
 sources:
-  - "yfinance 직접 페치(2026-07-31 실행) — ^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 2024-06-01~2026-07-31"
-  - "FRED T10YIE(BEI) 직접 페치(2026-07-31, curl, HTTP 200, 565건, 최신치 2026-07-30)"
-  - "knowledge-base/market/daily_snapshot.md — CURRENT(2026-07-31 금요일 아침, 미국 D-1(7/30) 확정 종가+AAPL·AMZN 실적)"
-  - "analysis/briefing/market_data_20260731.md — market-data-collector(2026-07-31 이브닝, WebSearch 교차검증, KOSPI +17.91% 확정)"
-  - "analysis/briefing/correlation_20260730.md — 직전 회차(cutoff 페어별 7/29·7/30)"
+  - "yfinance 배치 페치(2026-08-01 실행, 단일 호출) — ^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 2024-06-01~2026-07-31, Δ 산출용"
+  - "FRED T10YIE(BEI) 직접 페치(2026-08-01, curl, HTTP 200, 566건, 최신치 2026-07-31)"
+  - "analysis/briefing/correlation_20260731.md — 직전 회차 확정 Z-score(delta 조정 베이스)"
+  - "knowledge-base/market/daily_snapshot.md — CURRENT(2026-08-01 토요일 저녁, 7/31 금 확정 종가)"
+  - "analysis/briefing/market_data_20260801.md — market-data-collector(2026-08-01 이브닝)"
   - "knowledge-base/market/house_view.md — v7(2026-07-25 6차 재심사), HV1~HV6 매핑"
 ---
 
@@ -24,7 +24,9 @@ sources:
 
 ---
 
-## CURRENT (2026-07-30 목요일 이브닝 full — cutoff 페어별 상이[미국·BEI 레그 7/29 확정 / KOSPI·상품 레그 7/30 확정], 7/26~29 4일 공백[외장SSD 언마운트 장애] 이후 재개 / **🔴 0건 / 🟡 2건 / 🟢 4건**(전회차 7/25 🟡3·🟢3에서 개선 — Gold↔DXY 🟡→🟢 정상화) / 최대 이상 여전히 S&P500↔10Y -1.74σ 🟡(90D, 완화 지속) / ★ WTI↔BEI 90D +1.18σ→+1.56σ 뚜렷한 심화, 30D도 신규 🟡 진입(+1.35σ) — 딥다이브 하단 참조 / KOSPI 3거래일 연속 폭락(7/28 -10.84%·7/29 -5.98%·7/30 -1.23%, 누적 약 -17.2%)에도 USD/KRW↔KOSPI 90D는 오히려 기준선 평균에 더 근접(정상권 유지) — 단 7/29-30 이틀 연속 단일일 디커플링[코스피 급락+원화 강세] 관찰은 하단 별도 기술 / Gold↔DXY 정상화는 "금-달러 동반강세" 아닌 DXY 보합·Gold 단독 사상최고 랠리 재확인, 아래 참조)
+## CURRENT (2026-08-01 토요일 이브닝 full — cutoff 6쌍 전부 2026-07-31[금] 균일 확정, 이번 회차부터 페어별 cutoff 불일치 해소 / **🔴 0건 / 🟡 2건 / 🟢 4건**(전회차 7/31과 동일 구성) / S&P500↔10Y 90D -1.39σ 🟡, 4회 연속 완화(-1.93→-1.74→-1.57→-1.39) / WTI↔BEI 90D +1.57σ 🟡로 재확대, 6쌍 중 유일 이중[30D+90D] 이상권 지속 / USD/KRW↔KOSPI·Gold↔DXY는 직전 회차가 이미 cutoff 7/31이라 신규 거래일 없어 무변동 / 본 회차는 경량 delta 조정 방식[직전 회차 Z-score + 1거래일 증분] — 하단 방법론 참조)
+
+> **금일 헤드라인**: 오늘(8/1, 토)은 미국·한국·상품시장 모두 휴장이라 신규 거래일 데이터가 없다. 이번 회차는 금요일(7/31) 미국 정규장 확정 종가(클라우드 실적 랠리 — S&P500 +0.70%·Nasdaq +1.00%·VIX -6.44%[15.99, 16선 하회]·美10Y 4.74%[+8bp]) 단 1거래일만 새로 반영한 경량 조정이다(직전 회차 maxTurns 실패 재발 방지를 위해 yfinance 배치 1회+FRED curl 1회로 fetch 최소화, 전량 재계산 대신 직전 확정 Z-score에 증분만 가산). 결과: **S&P500↔10Y가 4회 연속 완화**(-1.93σ→-1.74σ→-1.57σ→-1.39σ)를 이어갔다 — 금요일 지수·금리(4.74%, +8bp)가 동반 상승한 "굿뉴스=굿뉴스" 하루가 반영된 결과이나, 여전히 90D 🟡 상태는 유지된다. **WTI↔BEI는 90D +1.48σ→+1.57σ로 재확대**됐다 — 유가(계산 소스 CL=F 기준 +1.29%)·BEI(T10YIE 2.27%→2.28%, +0.44%) 동시 상승이 6쌍 중 유일한 이중(30D+90D) 이상권을 다시 심화시켰다(단 30D는 +1.28σ→+1.06σ로 소폭 이완). **NASDAQ↔BTC는 탈동조 방향으로 소폭 심화**(90D -0.62σ→-0.79σ)됐다 — 금요일 NASDAQ +1.00% vs BTC -2.84%로 방향이 갈렸다(여전히 🟢 정상권). **USD/KRW↔KOSPI·Gold↔DXY는 직전 회차(7/31)에 이미 cutoff 7/31을 반영했던 페어라 이번 회차 신규 거래일이 없어 무변동**(각각 -0.18σ·-0.82σ 유지) — 코스피 사상 최대 +17.91% 폭등(6,595.45)이 반영된 상태 그대로다.
 
 > **금일 헤드라인**: 오늘(7/30, 목)은 한국·아시아 정규장이 마감 확정됐고 미국은 프리마켓 단계(ET 07:10)다. 이번 회차 6쌍 매트릭스는 5일 만의 재계산(7/26~~29는 외장SSD 언마운트 3일 장애로 correlation-monitor 미가동)이라 반영 폭이 크다 — 그 사이 **KOSPI가 3거래일 연속 폭락**했다(7/28 -10.84%·7/29 -5.98%·7/30 -1.23%, 누적 약 -17.2%, 반도체발). 같은 구간 미국은 **7/29(수) FOMC 9-3 동결(반대 3인 전원 인상 주장, 매파 성향 이례적 표결) + MSFT·META Q2 실적이 겹친 최대 변동성일**로, S&P500 -1.52%·NASDAQ -1.74%·VIX 20.66(20선 상회) 확정 마감했다 [KB, daily_snapshot 7/30]. 이 리스크오프가 6쌍에 고르게 반영됐다 — **S&P500↔10Y는 여전히 6쌍 중 최대 이상권(-1.74σ)이나 7/25 대비 완화**됐고(-1.93σ→-1.74σ), **WTI↔BEI는 오히려 심화**돼 90D +1.18σ→+1.56σ, 30D도 신규로 🟡(+1.35σ) 진입했다 — 유가 whipsaw(7/24~~28 -3주 연속 급락 후 7/29 +6.56% 반등, "미-이란 긴장 재고조")에 BEI가 같은 날 동조 반응하며 전이 구조가 오히려 강화된 결과다(하단 딥다이브 참조). 반면 **Gold↔DXY는 🟡→🟢 완전 정상화**됐는데, 이는 "금-달러 동반강세"가 아니라 **DXY가 보합~약보합(-0.13%)을 유지한 채 Gold만 사상최고가 부근으로 단독 질주**(오늘 +2.55%)한 결과다 — 역상관 방향 자체가 오히려 정상 수준으로 되돌아온 것이지, 과거 archive가 경계했던 "안전자산 역할 분리"(금-달러 동시 약세/강세) 패턴이 아니다. **USD/KRW↔KOSPI는 KOSPI 3일 폭락에도 90D Z가 오히려 -0.42σ→-0.14σ로 기준선 평균에 더 근접**했다 — 단 이는 누적 60거래일 구조의 결과이며, 최근 이틀(7/29·7/30)만 떼어보면 "코스피 급락에도 원화가 강세로 반응"하는 단일일 디커플링이 2일 연속 관찰된다(하단 별도 기술).
 
