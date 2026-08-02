@@ -367,6 +367,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-02 | `macro/geopolitics.md` | **지정학 주간 갱신(12회 검색, +8 DB 레코드)** -- 유가 반락(Brent $90.24)·중재 대화, 상원 러·이란 제재법 가결(2차관세 200%), 대만 ADIZ 급감, 남중국해 美 항모 전개, NATO 대러 장기위협 | +8 |
+| 2026-08-02 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +12 DB 레코드)** -- 급성 리스크 3종 완화(AI관문 통과·유가 $98→$90·BOJ개입 엔 163.99→157.40), Top5 재정렬(AI 2→1위·유가 1→2위), FOMC 7/29 동결 9-3(3인 인상반대·워시 신임), FRED VIX17.09·10Y4.68·HY2.84확대 | +12 |
+| 2026-08-02 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(16회 검색, +11 DB 레코드)** -- 한미 관세타결 15%·코스피 +17.91% 사상최대·FOMC/BOJ 7월 동결·유가 반락 Brent $88 | +11 |
+| 2026-08-02 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +14 DB 레코드)** -- 유가 전쟁프리미엄 완화(Brent $88·WTI $84.67, 카타르 호르무즈 통항재개), OPEC+ 8/2 9월결정, 원자력 급등후 되돌림(Oklo $38.80), 두산 8/1 67,100원 +11.46% | +14 |
+| 2026-08-02 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(15회 검색, +14 DB 레코드)** -- 하이퍼스케일러 2026 capex $725B(MSFT FY27 $255-260B·META FCF -91%·AMZN $220B)·순환금융 신용균열(CoreWeave CDS 50%·Moody's 6사 $460B)·Claude Opus 5+Anthropic 10월 IPO $965B·HBM4 2027 2배($4-5/Gb)·Starship F13 Starlink V3·IonQ SkyWater $1.8B | +14 |
+| 2026-08-02 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +5 DB 레코드)** -- 바이오 신규딜 2건(AZ-Algen $555M·Scribe IPO SCTX)·기초과학 물리(EAST 밀도한계 돌파·CeSiI 중페르미온 초전도·AI초전도체 명명)·SpaceX Q2 8/4 프리뷰 | +5 |
 | 2026-07-26 | `macro/geopolitics.md` | **지정학 주간 갱신(13회 검색, +7 DB 레코드)** -- 중동 충돌 3주차·유가 Brent $96.78, Section 122 만료→301 발효(중국 12.5%), 러 50일 시한+Graham 사후 제재법안, 남중국해 신규 3+회 충돌 | +7 |
 | 2026-07-26 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +18 DB 레코드)** -- 이란-호르무즈 유가쇼크 전면화(브렌트 $98·+30%MTD) 1위 격상, 채권급등(10Y 4.71%)·HY 2.77% 확대·VIX 18.70, Alphabet Q2 AI capex 완화(빅테크 관문 7/29~~30), 원달러 1,474 급강세 vs 엔 163.78 40년최저·JGB 엔캐리임계, 침체확률 GS30%·Moody's49% | +18 |
 | 2026-07-26 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(18회 검색, +14 DB 레코드)** -- 이란 유가 $100 돌파·Fed 인상확률 급등·Section 301 발효/122 소멸·트럼프 39%·이재명 51%·원달러 1,470~1,500 외국인 순매수 전환·佛 예산 49.3 통과(사임설 정정) | +14 |

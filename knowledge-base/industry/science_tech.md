@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-01
-valid_until: 2026-08-25
+updated: 2026-08-02
+valid_until: 2026-09-01
 sector: science_tech
 sources:
   [
@@ -246,8 +246,8 @@ sources:
     financefeeds,
   ]
 confidence: high
-last_synced_from_db: 2026-08-01
-db_records: 1038
+last_synced_from_db: 2026-08-02
+db_records: 1043
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -357,7 +357,10 @@ db_records: 1038
 | **CRISPR Casgevy 매출**                      | 2025년 매출 **$116M**. 147명 치료 개시. 1회 220만 달러                                                                                                                                                                                                                                                      | 2025       | Motley Fool / Vertex                                         |
 | **Intellia lonvo-z FDA 진행** [6/21 갱신]    | ★ lonvo-z = **세계 첫 in vivo CRISPR 유전자편집 치료제**. Phase 3 **80명 HAE** 무작위, 1회 주입으로 6개월 부종발작 위약 대비 **-87%**(1차종점 충족). **rolling BLA 2026.04 FDA 개시→하반기 완료→2027 상반기 출시** 목표. 6월 이스탄불 EAACI 콩그레스 상세 데이터. FDA가 직면한 적 없는 규제 스트레스 테스트 | 2026.06    | Nature Biotech / BioSpace / Endpoints / FierceBiotech / CNBC |
 | **FDA 맞춤형 CRISPR 승인경로** [6/14]        | FDA bespoke CRISPR 치료제 승인경로 초안 가이던스 = 희귀질환 근본원인 표적 유전체편집/RNA. Prime Medicine 2환자 임상 후 CGD 승인 추진(03월). Lilly orforglipron 2026말 추가 승인 신청                                                                                                                        | 2026.06    | FierceBiotech / STAT News                                    |
+| **AstraZeneca-Algen $555M AI 유전자편집** [8/2 신규] | **AZ가 Algen Biotechnologies(Doudna 버클리랩 스핀오프)와 AI 유전자편집 치료제 개발 계약 = 최대 $555M 마일스톤**. Lilly-Profluent($2.25B)·Lilly-Verve($1.3B)에 이은 빅파마 AI 유전자편집 딜 확장(Doudna 생태계로 다변화) | 2026.07 | FT / MarketScreener |
+| **Scribe Therapeutics 나스닥 IPO(SCTX)** [8/2 신규] | 유전자편집 스타트업 **Scribe Therapeutics 나스닥 IPO 신청(티커 SCTX)** = 심혈관대사질환 유전자의약, **Biogen·Sanofi·Lilly 협업** 보유. CRISPR 생태계 자본시장(IPO) 재개 신호 | 2026.07 | BioPharma Dive |
 
+> **2026.08.02 갱신**: 신규 딜 2건 — **AstraZeneca-Algen Biotechnologies $555M AI 유전자편집 계약**(Algen=Doudna 버클리랩 스핀오프) = Lilly-Profluent/Verve에 이은 빅파마 AI 유전자편집 다변화. **Scribe Therapeutics 나스닥 IPO 신청(SCTX)**(심혈관대사 유전자의약, Biogen/Sanofi/Lilly 협업) = CRISPR 자본시장 재개 신호. (GLP-1·Intellia lonvo-z는 8/1 이후 신규 촉매 없음.)
 > **2026.07.26 갱신**: 신규 discrete 이벤트 제한적 — **Intellia lonvo-z 추가 Phase 3 HAE 데이터 EAACI 2026+NEJM 게재**(부종발작 -87% 재확인, BLA 제출 H2 2026 완료 목표·美 출시 H1 2027, 안전성 간효소 상승 1건 1주 내 자연소실) = 세계 첫 in vivo CRISPR FDA 승인 트랙 온궤도. **[MCED] Grail Galleri**: 2월 NHS-Galleri 1차종점 실패(주가 -50%) 여파 지속, 이번 주 신규 촉매 없음(AACR 2026 = 액체생검 MCED 비용·규모 근본 장벽).
 > **2026.07.19 갱신**: **Lilly H1 2026 최대 인수기업 = 10건 ~$25B**(종양/신경/세포치료 다각화, Verve/Profluent/Insilico 포함, GLP-1 현금흐름 활용). **orforglipron 72주 ~12% 감량·경구 semaglutide 대비 체중/A1C 우월**. **Novo CagriSema 2월 tirzepatide head-to-head 실패→Novo -15%** = Lilly 결정적 우위. Medicare GLP-1 프로그램 Lilly/Novo 수혜.
 > **2026.07.05 핵심 변화**: **Lilly-Verve $1.3B in vivo CRISPR 인수**(6월 발표·한달 후 클로징, PCSK9 콜레스테롤 표적) = 유전자편집 포트폴리오 확대. **orforglipron, Novo Rybelsus 대비 head-to-head 우위**(당뇨, 2/26 데이터)·2건 Phase 3 우월 혈당조절. Foundayo 출시 = Novo 경구 Wegovy 승인 ~3개월 후.
@@ -392,7 +395,7 @@ db_records: 1038
 | --- | --- | --- | --- |
 | 글로벌 우주경제 (2025) | **$626B** (상업 78% / 정부 22%) | 2025년 | Novaspace / SpaceNews / Orbital Radar |
 | 장기 전망 | **$1T by 2032**(Space Foundation)**~2034**(Novaspace, $1.01T), **$1.8T by 2035**(WEF/McKinsey). 10년 내 규모 배증 컨센서스 | 2035E | Space Foundation / Novaspace / WEF |
-| **SpaceX(SPCX) 7/31 ~$108 + 실적/락업 슈퍼위크** [8/1 갱신] | ★ **7/31 ~$108**(전일종가 $112.20·7/26 ~$114~116). **ATH $225.64(6/16) 대비 -52%·IPO가 $135 -20%**. Flight 13 성공(7/24)에도 무반응. **애널 34인 27매수/1매도 평균목표 $236.71(Buy·고 $800/저 $62)**. ★ **첫 Q2 실적 8/4(장마감후)→8/6 $116B 락업 만료**(911.5M주=금융史 최대·이후 7% 트란셰 8/31~10/25 롤링, price-contingent 455.8M주는 $175.50 상회 조건). 2025 Starlink 매출 $11.4~12.3B·EBITDA 63% | 2026.08 | CNN / MarketBeat / MLQ / Motley Fool |
+| **SpaceX(SPCX) 7/31 ~$108 + 실적/락업 슈퍼위크** [8/1 갱신] | ★ **7/31 ~$108**(전일종가 $112.20·7/26 ~$114~116). **ATH $225.64(6/16) 대비 -52%·IPO가 $135 -20%**. Flight 13 성공(7/24)에도 무반응. **애널 34인 27매수/1매도 평균목표 $236.71(Buy·고 $800/저 $62)**. ★ **첫 Q2 실적 8/4(장마감후, 컨센 매출 ~$6.9B·연결성 마진 35.9%·H2 $26.6~34.2B 급가속 필요 [8/2])→8/6 $116B 락업 만료**(911.5M주=금융史 최대·이후 7% 트란셰 8/31~10/25 롤링, price-contingent 455.8M주는 $175.50 상회 조건). 2025 Starlink 매출 $11.4~12.3B·EBITDA 63% | 2026.08 | CNN / MarketBeat / MLQ / Motley Fool |
 | **Starlink 가입자 + Direct-to-Cell** [7/18 갱신] | 활성 가입자 **10.3M**(3/31/2026·160개국+). **Direct-to-Cell(T-Mobile T-Satellite) 650+위성·22개국 라이브·4억명+ 접근**(문자/위치/일부앱). **V3 위성 = Starship 통해 발사**(Flight 13 첫 20기), V1 대비 **100x 데이터밀도**·5G급. 2026말 목표 2,500만 | 2026 | SatelliteInternet.com / KeepTrack / BroadbandBreakfast |
 | **Starship Flight 14 = NET 8월(월1회 목표)** [8/1 갱신] | Flight 13 **성공(7/24, Super Heavy V3 최초비행·V3 Starlink 20기 궤도)** 후 Shotwell **'월 1회 발사' 표명=Flight 14 NET 8월**(일부 스케줄 9/30 UTC 표기·변동). **Flight 14 = 최초 궤도비행 + 타워 ship 캐치 시도 가능**(규제승인 조건). Booster 21 8월말 비행준비·Ship 41 정적연소 대기. Starbase Pad B | 2026.08 | TechTimes / Teslarati / SpaceLaunchSchedule |
 | **Blue Origin New Glenn 발사 복귀** [7/18 갱신] | 5/28 LC-36 hotfire 이상(낙뢰탑·트랜스포터-이렉터·유압실린더 소실, 탱크팜/조립동 무사). **6/30 발사복귀 계획 = 수평/수직 하이브리드 CONOPS**(재건 패드, 크레인 직립, 트랜스포터-이렉터 신규 생략). **2026 연말(12월) 발사 복귀 목표**(NASA Isaacman 'very committed'). 조사 = 1단 후미부 지목. Amazon Leo 48기 미션 병목 지속 | 2026.07 | Spaceflight Now / SpaceNews / Motley Fool |
@@ -614,7 +617,10 @@ db_records: 1038
 | **AlphaFold3 + GNoME 산출** [6/21 신규]     | AlphaFold3 = 단백질-DNA/RNA/소분자 상호작용 예측 **+50%**(2024 노벨 화학상). DeepMind **GNoME = 220만 신규 결정구조 발굴**(5.2만 신규 Li이온 전도체 포함, 외부 736종 합성). 과학용 파운데이션 모델(화학/생물/물리) 부상                                  | 2026    | Nature Comms Biology / O-mega / DeepMind     |
 | **2026 Breakthrough Prize**                 | $18M+ 시상(4월). **기초물리학 = Muon g-2 실험 3세대**. **특별상 = David Gross**(QCD). 신개척상 = Carolina Figueiredo                                                                                                                                     | 2026.04 | Science/AAAS / Breakthrough Prize / Fermilab |
 | **AI 초전도체 발견 가속** [7/26 신규]       | **ML+양자물리 결합으로 신규 초전도체 2종 발견 + 대규모 후보 탐색 가속법 개발**(2026.07.01) = 실온 초전도체 목표에 근접. 별도 장기 미해결 **2D 양자물질 최초 합성**+비정상 전도성 엣지상태 확인, 원자 두께 양자물질 빛-자성 상호작용 제어. AI가 소재발견 워크플로 자체 가속(GNoME 계보 연장)                                  | 2026.07 | ScienceDaily / phys.org / Nature             |
+| **초전도체 물질명 확정 + 중페르미온 신규** [8/2 신규] | AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome 격자 flat band 기인, Aalto대 Törmä) 물질명 확정 = 7/26 '2종 발견' 후속. 별도 **반데르발스 중페르미온 금속 CeSiI 가압 초전도 발견**(Nature Physics 2026.07, 반강자성·Kondo 결맞음·비전통 초전도 상호작용). 3월 U.Houston Hg1223 준안정상 상압 **151K**(종전 133K 경신) | 2026.07 | Nature Physics / ScienceDaily / phys.org |
+| **中 EAST 밀도한계 돌파(핵융합 물리)** [8/2 신규] | 中 완전초전도 토카막 **EAST가 '밀도-무제한(density-free) 영역' 최초 실험 접근** = 선평균 전자밀도 **Greenwald 한계 1.3~1.65배** 안정운전(통상 초과 시 붕괴). 신공정 **plasma-wall self-organisation(PWSO)**+ECRH 보조 오믹 시동. 핵융합 점화 경로 최대 물리장벽 중 하나 극복 단서(Science Advances 2026.01.01) | 2026.01 | Science Advances / phys.org / NEI / WNN |
 
+> **2026.08.02 신규 (기초과학)**: **초전도 물질명 확정 + 중페르미온 신규** — AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome flat band) 명명(7/26 '2종 발견' 후속)+**반데르발스 중페르미온 CeSiI 가압 초전도**(Nature Physics 7월). **中 EAST 밀도-무제한 영역**(Greenwald 한계 1.3~1.65배, PWSO+ECRH, Science Advances)=핵융합 점화 물리장벽 돌파 단서. AI 소재발견 가속(GNoME 계보) 지속.
 > **2026.07.26 신규 (AI for Science)**: **AI 초전도체 발견 가속**(2026.07.01) — ML+양자물리로 신규 초전도체 2종 발견+탐색 가속법 = 실온 초전도체 목표 근접. 장기 미해결 2D 양자물질 최초 합성+전도성 엣지상태 확인. AI가 소재발견 워크플로 가속하는 GNoME 계보 연장.
 > **2026.06.21 신규 (AI for Science)**: **DeepMind 영국 첫 자동화 연구소**(소재과학, Gemini 통합, 일 수백종 합성). **빅테크 AI4Science 본격화**(OpenAI GPT-5/Google AI co-scientist/Anthropic Claude for Life Sciences/MS AI4Science). GNoME 220만 결정구조·5.2만 Li이온 전도체 발굴. AI가 과학연구 워크플로 자체를 재구성.
 > (5/31 배경) 2026 Breakthrough Prize($18M+) = Muon g-2/David Gross(QCD).
@@ -704,7 +710,7 @@ db_records: 1038
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (987건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1043건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
