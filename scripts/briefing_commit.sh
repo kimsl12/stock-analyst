@@ -56,6 +56,14 @@ if [[ "$TYPE" == "user_portfolio" ]]; then
         echo "[warn] 목표 비중 동기화 실패 (검증 거부) — 발행은 진행, 알림 발송"
         bash scripts/notify.sh "목표 비중 동기화 실패" "${TYPE}_${DATE} 목표 비중 블록 검증 거부 — 기존 targets 유지" || true
     fi
+
+    # ── 역보고 폴백 브리지 [2026-08-06] — 갱신된 user_portfolio.md 로 algo_holdings.json 재구성
+    #    (엔진 §9 미구현 폴백: user_portfolio − protected_holdings = 알고채널). engine_status=live 면 스크립트가 자체 스킵.
+    #    algo_holdings.json 의 commit/배포는 기존 소유자(scripts/algo_portfolio_sync.sh launchd 16:15 + watchdog 06:40/10:30)가 담당 → 여기선 파일 재생성만.
+    if ! node algo-trading/reconstruct_algo_holdings.mjs; then
+        echo "[warn] 알고 보유 재구성 실패 — 발행은 진행 (/portfolio 알고 섹션은 이전 값 유지)"
+        bash scripts/notify.sh "알고 보유 재구성 실패" "${TYPE}_${DATE} reconstruct_algo_holdings 실패 — 알고 섹션 갱신 안 됨" || true
+    fi
 fi
 
 # ── 스테이지 ─────────────────────────────────────────

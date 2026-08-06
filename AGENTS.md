@@ -136,15 +136,15 @@ Phase 0-A     market-data-collector ∥ polymarket-collector (병렬 Task)
 
 ## 6. 검증 게이트 (오류 방지 계약)
 
-| 게이트     | 내용                                                                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| 검증 0     | 출력 경로 직속 강제 — `reports/*.html` 직속 + briefing/ + analyst/items/ + research/ 4곳만 (그 외 서브디렉토리 = 본서버 404)         |
-| 검증 1~3   | HTML 존재 / git commit 존재 / session-bootstrap 갱신                                                                                 |
-| 검증 4     | 디자인 표준 6항목 (다크·라이트 토글 포함, briefing-report-generator 표준)                                                            |
-| 검증 7     | [v3.27] 투자 논지 블록 존재 (`§ 투자 논지` + `반증 조건` grep) + 등급 백분위 표기 — "데이터 읊기" 차단                               |
+| 게이트     | 내용                                                                                                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 검증 0     | 출력 경로 직속 강제 — `reports/*.html` 직속 + briefing/ + analyst/items/ + research/ 4곳만 (그 외 서브디렉토리 = 본서버 404)                                                                |
+| 검증 1~3   | HTML 존재 / git commit 존재 / session-bootstrap 갱신                                                                                                                                        |
+| 검증 4     | 디자인 표준 6항목 (다크·라이트 토글 포함, briefing-report-generator 표준)                                                                                                                   |
+| 검증 7     | [v3.27] 투자 논지 블록 존재 (`§ 투자 논지` + `반증 조건` grep) + 등급 백분위 표기 — "데이터 읊기" 차단                                                                                      |
 | 검증 5     | 한국어 검증 — `python3 scripts/check_korean.py --fix {html}` (v3.30 스크립트화: 매핑 기계 치환 + 한글 비중 80%). 매핑 SSOT 는 korean_translation_rules.md 표. **리포트 본문 한정, KB 제외** |
-| 검증 6     | manifest staleness 자동 복구 (push 직전 build_manifest 재실행 + diff 시 commit)                                                      |
-| 포트폴리오 | schema contract + 단위 테스트 34종(`web/scripts/__tests__/`) + sync 사전·사후 검증 + health_check.mjs (Vercel=STRICT / 로컬=LENIENT) |
+| 검증 6     | manifest staleness 자동 복구 (push 직전 build_manifest 재실행 + diff 시 commit)                                                                                                             |
+| 포트폴리오 | schema contract + 단위 테스트 34종(`web/scripts/__tests__/`) + sync 사전·사후 검증 + health_check.mjs (Vercel=STRICT / 로컬=LENIENT)                                                        |
 
 manifest 계약: Vercel 빌드 컨테이너에 .git 없음 → **로컬 build_manifest 후 manifest.json commit 필수**.
 
@@ -159,26 +159,27 @@ gh-pages 자동 배포는 2026-06-12 중단 (deploy-reports.yml 트리거 제거
 
 ## 8. 자동화·감시 레이어 (LLM 불필요 — 결정적 스크립트, 2026-06-11 신설)
 
-| 구성                                    | 스케줄               | 역할                                                                                                                                            |
-| --------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/notify.sh`                     | (헬퍼)               | 공용 알림 — macOS 알림센터 단일 (ntfy 폰 푸시는 2026-07-24 사용자 지시로 제거)                                                                  |
-| `scripts/daily_pick_update.sh`          | launchd 00:05        | DailyPick 갱신 + 실패 지점 6곳 알림. **로그는 ~/Library/Logs/stockanalyst/ (외장 SSD 경로 StandardOutPath 는 launchd spawn 실패 EX_CONFIG=78)** |
-| `scripts/automation_watchdog.sh`        | launchd 06:40·10:30  | daily_pick 신선도 + 미푸시 커밋 + holdings_health 재생성 + portfolio_watch 호출                                                                 |
-| `scripts/portfolio_watch.py`            | watchdog 경유        | 손절/목표가 도달·접근(2%) + 목표 비중 드리프트(`scripts/portfolio_targets.json`, 기본 5%p) 알림. KST 일별 디듀프                                |
-| `web/scripts/build_holdings_health.mjs` | prebuild + watchdog  | 보유종목 × 최신 scorecard(손절·목표·등급) → `holdings_health.json` (git tracked — Vercel 컨테이너엔 analysis/ 없음)                             |
-| `scripts/score_recommendations.py`      | /성과리뷰 Step 0     | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss + 모듈×카테고리×확신도 분해·캘리브레이션 경고 — LLM 산수 배제)          |
-| `scripts/scoreboard.py`                 | scorecard Phase 3    | 유니버스 백분위 + 등급 쿼터 판정 (`--exclude {티커}` 필수 — BLIND). 강력매수 상위 5% / 매수 25% / 하위 15% 매도 검토                            |
-| `scripts/regime_classifier.py`          | watchdog 06:40       | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                     |
-| `algo-trading/build_signals.mjs` + `scripts/signals_update.sh` | launchd 15:25       | 매매 엔진용 시그널 3종 (stock_scores·macro_regime·earnings) — timeline 단일 소스, 비상장 제외, 엔진 1차 점검 15:40 전 빌드. watchdog 이 신선도 검증 |
-| `scripts/algo_portfolio_sync.sh`        | launchd 16:15 + watchdog | 엔진이 쓴 `algo-trading/data/algo_holdings.json` (역방향 계약, handoff §9) 변경 감지 → commit/push + Cloudflare(풀사이트)·Vercel(timeout 가드) 배포 → `/portfolio` "알고 자동매매" 섹션 반영. live + 2일 무보고 시 watchdog 경고 |
-| `scripts/build_research_context.py`    | data-collector §2.6 / lead Phase 0-D | 티커→리서치 섹터 매핑(sector_map+오버라이드) → 섹터 thesis·citation·key_finding 발췌를 analysis/{폴더}/research_context.md 로 자동 배달 — "찾는" 구조를 "받는" 구조로 역전 |
-| `scripts/check_research_citation.py`   | lead 검증 8 / 수동 --all-recent      | research_context 배달 시 scorecard 📄 인용 ≥1 또는 research_skip_reason 의무 기계 게이트 (132건 축적·인용 5.3% 사고 재발 방지) |
-| `scripts/sync_portfolio_targets.py`     | briefing_commit 경유 (user_portfolio) | /내포트폴리오 처방의 "## 목표 비중" 블록 → portfolio_targets.json 자동 동기화 (검증: 합계 95~105·3종+). 드리프트 감시·/portfolio 목표 vs 실제 표시가 처방을 추종 |
-| `scripts/check_confidence.py`           | briefing_commit 경유 | 확신 라벨 기계 게이트 — 높음 계열 반증 트리거 필수 + 30일 높음 비율 cap 25% + 역캘리브레이션(실측 높음 14.3%<중간 60.0%) 중 남발 경고. 산정 룰: briefing-lead §Step 8.5-B |
-| `scripts/check_house_view.py`           | watchdog 06:40·10:30 | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                             |
-| `scripts/analyst_lookup.py`             | data-collector Phase | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                      |
-| `scripts/lint_agents.mjs`               | 수동/명세 수정 후    | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                    |
-| `scripts/measure_turns.mjs`             | 수동/진단            | subagent jsonl 에서 에이전트별 사용 턴 vs maxTurns 근접도 측정                                                                                  |
+| 구성                                                           | 스케줄                                | 역할                                                                                                                                                                                                                                                             |
+| -------------------------------------------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/notify.sh`                                            | (헬퍼)                                | 공용 알림 — macOS 알림센터 단일 (ntfy 폰 푸시는 2026-07-24 사용자 지시로 제거)                                                                                                                                                                                   |
+| `scripts/daily_pick_update.sh`                                 | launchd 00:05                         | DailyPick 갱신 + 실패 지점 6곳 알림. **로그는 ~/Library/Logs/stockanalyst/ (외장 SSD 경로 StandardOutPath 는 launchd spawn 실패 EX_CONFIG=78)**                                                                                                                  |
+| `scripts/automation_watchdog.sh`                               | launchd 06:40·10:30                   | daily_pick 신선도 + 미푸시 커밋 + holdings_health 재생성 + portfolio_watch 호출                                                                                                                                                                                  |
+| `scripts/portfolio_watch.py`                                   | watchdog 경유                         | 손절/목표가 도달·접근(2%) + 목표 비중 드리프트(`scripts/portfolio_targets.json`, 기본 5%p) 알림. KST 일별 디듀프                                                                                                                                                 |
+| `web/scripts/build_holdings_health.mjs`                        | prebuild + watchdog                   | 보유종목 × 최신 scorecard(손절·목표·등급) → `holdings_health.json` (git tracked — Vercel 컨테이너엔 analysis/ 없음)                                                                                                                                              |
+| `scripts/score_recommendations.py`                             | /성과리뷰 Step 0                      | 추천 기록 203행 자동 채점 → `auto_scoring.json` (기준가·수익률·hit/miss + 모듈×카테고리×확신도 분해·캘리브레이션 경고 — LLM 산수 배제)                                                                                                                           |
+| `scripts/scoreboard.py`                                        | scorecard Phase 3                     | 유니버스 백분위 + 등급 쿼터 판정 (`--exclude {티커}` 필수 — BLIND). 강력매수 상위 5% / 매수 25% / 하위 15% 매도 검토                                                                                                                                             |
+| `scripts/regime_classifier.py`                                 | watchdog 06:40                        | 일일 레짐 결정적 분류 → `regime.json` (전환 시 알림). 브리핑 헤더 + scorecard 가중치장 입력                                                                                                                                                                      |
+| `algo-trading/build_signals.mjs` + `scripts/signals_update.sh` | launchd 15:25                         | 매매 엔진용 시그널 3종 (stock_scores·macro_regime·earnings) — timeline 단일 소스, 비상장 제외, 엔진 1차 점검 15:40 전 빌드. watchdog 이 신선도 검증                                                                                                              |
+| `scripts/algo_portfolio_sync.sh`                               | launchd 16:15 + watchdog              | 엔진이 쓴 `algo-trading/data/algo_holdings.json` (역방향 계약, handoff §9) 변경 감지 → commit/push + Cloudflare(풀사이트)·Vercel(timeout 가드) 배포 → `/portfolio` "알고 자동매매" 섹션 반영. live + 2일 무보고 시 watchdog 경고                                 |
+| `scripts/build_research_context.py`                            | data-collector §2.6 / lead Phase 0-D  | 티커→리서치 섹터 매핑(sector_map+오버라이드) → 섹터 thesis·citation·key_finding 발췌를 analysis/{폴더}/research_context.md 로 자동 배달 — "찾는" 구조를 "받는" 구조로 역전                                                                                       |
+| `scripts/check_research_citation.py`                           | lead 검증 8 / 수동 --all-recent       | research_context 배달 시 scorecard 📄 인용 ≥1 또는 research_skip_reason 의무 기계 게이트 (132건 축적·인용 5.3% 사고 재발 방지)                                                                                                                                   |
+| `scripts/sync_portfolio_targets.py`                            | briefing_commit 경유 (user_portfolio) | /내포트폴리오 처방의 "## 목표 비중" 블록 → portfolio_targets.json 자동 동기화 (검증: 합계 95~105·3종+). 드리프트 감시·/portfolio 목표 vs 실제 표시가 처방을 추종                                                                                                 |
+| `algo-trading/reconstruct_algo_holdings.mjs`                   | briefing_commit 경유 (user_portfolio) | 엔진 §9 역보고 미구현 폴백 — user_portfolio − protected_holdings 로 알고채널 재구성 → algo_holdings.json(status=reconstructed). /portfolio 알고 섹션 표시. engine_status=live 시 자체 스킵(엔진 우선). commit/배포는 algo_portfolio_sync.sh(16:15)+watchdog 담당 |
+| `scripts/check_confidence.py`                                  | briefing_commit 경유                  | 확신 라벨 기계 게이트 — 높음 계열 반증 트리거 필수 + 30일 높음 비율 cap 25% + 역캘리브레이션(실측 높음 14.3%<중간 60.0%) 중 남발 경고. 산정 룰: briefing-lead §Step 8.5-B                                                                                        |
+| `scripts/check_house_view.py`                                  | watchdog 06:40·10:30                  | house_view.md 기계 검사 fence 평가 — 반증 조건 도달 시 알림 + 다음 브리핑 개정 의무                                                                                                                                                                              |
+| `scripts/analyst_lookup.py`                                    | data-collector Phase                  | 티커별 애널리스트 아카이브(290+건) 최근 의견 마크다운 출력                                                                                                                                                                                                       |
+| `scripts/lint_agents.mjs`                                      | 수동/명세 수정 후                     | 커맨드↔에이전트 라우팅·Agent(...) 목록·참조 경로 정합성 검사                                                                                                                                                                                                     |
+| `scripts/measure_turns.mjs`                                    | 수동/진단                             | subagent jsonl 에서 에이전트별 사용 턴 vs maxTurns 근접도 측정                                                                                                                                                                                                   |
 
 ---
 
