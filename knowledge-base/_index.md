@@ -34,7 +34,7 @@ lint_p2_count: 5
 | `macro/us_monetary_policy.md`   | 2026-07-07 | 26일   | kb-updater 재수집 위임 (updated 06-07 56일·7/29 FOMC 9-3 동결·케빈 워시 신임 의장 체제 미반영)                                                                                                           |
 | `market/economic_calendar.md`   | 2026-07-27 | ✅해소 | ✅ kb-updater 재수집 완료 (2026-08-02, vu 07-27→08-09, collection_status PARTIAL→OK, knowledge-db +11행). 8/7 NFP·8/4 AMD·8/12 CPI·9/16 FOMC·8/27 BOK 반영. WebSearch 7회 교차검증.                      |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 55일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-07, 8/5 모닝 갱신 완료 — 美 3대지수 사상최고 랠리 2일째·다우 첫 54,000 돌파 반영)는 최신. surprise_index(vu 08-05, 오늘 만료 — 이번 모닝 세션 미갱신, 이브닝 재확인 필요). correlation_matrix(vu 08-02, 만료 3일 경과)는 P1 참조. auto-trigger 마커 1건(economic_calendar) → 메인 핸드오프 시 kb-updater dispatch **완료** (2026-08-02 재수집·vu 08-09·PARTIAL→OK).
+> **브리핑 진행 가능 여부:** industry KB 만료 55일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-08, 8/6 모닝 갱신 완료 — 다우 사상 최고 종가 재경신·S&P·나스닥 랠리 되돌림·금값 +5.67% 폭등 반영)는 최신. surprise_index(vu 08-05, 오늘 만료 — 이번 모닝 세션 미갱신, 이브닝 재확인 필요). correlation_matrix(vu 08-02, 만료 3일 경과)는 P1 참조. auto-trigger 마커 1건(economic_calendar) → 메인 핸드오프 시 kb-updater dispatch **완료** (2026-08-02 재수집·vu 08-09·PARTIAL→OK).
 
 > [해소 참조 2026-08-01] 토요일 주간섹터 KB 갱신(weekly-section 스케줄): quantum·space·smr(industry/science_tech §2·§4·§6)·telecom_next·advanced_materials·capex 6종 재수집 완료 — 각 md `updated`/`last_synced_from_db` 2026-08-01 통일, knowledge-db +64행(science_tech +29·telecom_next +11·advanced_materials +10·capex +14).
 
