@@ -14,6 +14,10 @@ const now = new Date();
 const kst = new Date(now.getTime() + 9 * 3600_000);
 const timestamp = kst.toISOString().replace('T', ' ').slice(0, 19) + ' KST';
 
+// FalseCalm(거짓 안정) 완전정지 히스테리시스 — 원조건(VIX<18·HY<3·PCE>3)이 이 일수만큼
+// 연속 충족돼야 halt 확정. 경계(VIX≈18) whipsaw 방지. [2026-08-06 추가]
+const FALSECALM_CONFIRM_DAYS = 2;
+
 // ============================================================
 // 1. 매크로 레짐 판정
 // ============================================================
@@ -129,10 +133,31 @@ function buildMacroRegime() {
     result.indicators.vix = vix;
     result.indicators.usd_krw = usdkrw;
 
-    // 거짓 안정 최종 판정
-    if (vix != null && vix < 18 &&
-        result.indicators.hy_spread != null && result.indicators.hy_spread < 3 &&
-        result.indicators.core_pce_yoy != null && result.indicators.core_pce_yoy > 3) {
+    // 거짓 안정 최종 판정 (히스테리시스 — 원조건이 CONFIRM_DAYS 연속 충족 시에만 halt 확정, 경계 whipsaw 방지) [2026-08-06]
+    const rawFalseCalm =
+      vix != null && vix < 18 &&
+      result.indicators.hy_spread != null && result.indicators.hy_spread < 3 &&
+      result.indicators.core_pce_yoy != null && result.indicators.core_pce_yoy > 3;
+
+    // 직전 macro_regime.json 에서 연속 카운터 이어받기 (필드 없으면 콜드스타트: 기존이 FalseCalm 이면 확정으로 시드)
+    const todayKst = kst.toISOString().slice(0, 10);
+    let prevStreak = 0, prevDate = null;
+    try {
+      const prevRegime = JSON.parse(readFileSync(join(OUT, 'macro_regime.json'), 'utf8'));
+      prevDate = (prevRegime.generated_at || '').slice(0, 10);
+      prevStreak = prevRegime.falsecalm_streak != null
+        ? prevRegime.falsecalm_streak
+        : (prevRegime.regime === 'FalseCalm' ? FALSECALM_CONFIRM_DAYS : 0);
+    } catch { /* 최초 실행 — 0 */ }
+
+    let streak;
+    if (!rawFalseCalm) streak = 0;
+    else if (prevDate === todayKst) streak = prevStreak; // 같은 날 재실행 — 중복 증가 방지
+    else streak = prevStreak + 1;
+    result.falsecalm_streak = streak;
+    result.falsecalm_confirm_days = FALSECALM_CONFIRM_DAYS;
+
+    if (rawFalseCalm && streak >= FALSECALM_CONFIRM_DAYS) {
       result.regime = 'FalseCalm';
       result.regime_kr = '거짓 안정';
       result.confidence = 'high';
@@ -140,6 +165,10 @@ function buildMacroRegime() {
       result.unfavorable_sectors = ['ALL'];
       result.max_holdings = 0;
       result.position_multiplier = 0;
+    } else if (rawFalseCalm) {
+      // 원조건 충족이나 미확정 — halt 보류, 기저 레짐 유지 (whipsaw 방지)
+      result.falsecalm_pending = true;
+      result.falsecalm_pending_note = `거짓 안정 원조건 ${streak}/${FALSECALM_CONFIRM_DAYS}일 연속 — 확정 전, 기저 레짐(${result.regime_kr}) 유지`;
     }
 
     // 긴급 트리거
@@ -171,7 +200,7 @@ function buildMacroRegime() {
 
   const outPath = join(OUT, 'macro_regime.json');
   writeFileSync(outPath, JSON.stringify(result, null, 2));
-  console.log(`OK: macro_regime.json (${result.regime_kr}, max_holdings=${result.max_holdings}, emergency=${result.emergency.active})`);
+  console.log(`OK: macro_regime.json (${result.regime_kr}, max_holdings=${result.max_holdings}, emergency=${result.emergency.active}${result.falsecalm_pending ? `, FalseCalm대기 ${result.falsecalm_streak}/${FALSECALM_CONFIRM_DAYS}일` : ''})`);
   return result;
 }
 

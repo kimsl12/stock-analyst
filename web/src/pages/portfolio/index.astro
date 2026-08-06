@@ -90,7 +90,7 @@ type AlgoTrade = {
   qty: number; price: number; reason: string | null; reason_code: string | null;
 };
 type AlgoHoldings = {
-  schema_version?: string; generated_at?: string; engine_status?: string;
+  schema_version?: string; generated_at?: string; engine_status?: string; currency?: string;
   cash_krw?: number | null; positions?: AlgoPosition[]; trades?: AlgoTrade[];
 };
 let algo: AlgoHoldings | null = null;
@@ -104,7 +104,9 @@ try {
 const algoPositions: AlgoPosition[] = (algo?.positions ?? []).filter((p) => p && p.ticker);
 const algoTrades: AlgoTrade[] = (algo?.trades ?? []).filter((t) => t && t.ticker).slice(0, 20);
 const algoLive = algo?.engine_status === 'live';
-const algoTotalKrw = algoPositions.reduce((s, p) => s + (p.current_value ?? 0), 0);
+const algoReconstructed = algo?.engine_status === 'reconstructed';
+const algoCurrency: 'USD' | 'KRW' = algo?.currency === 'USD' ? 'USD' : 'KRW';
+const algoTotalValue = algoPositions.reduce((s, p) => s + (p.current_value ?? 0), 0);
 const CHANNEL_LABEL: Record<string, string> = { algo: '자동', manual_managed: '재량+관리' };
 const REASON_LABEL: Record<string, string> = {
   ENTRY: '진입', STOP: '손절', TRAIL_STOP: '트레일링 익절', TARGET: '목표 도달',
@@ -269,7 +271,7 @@ const updatedAt = portfolio?.updated_at
   )}
 
   <section class="algo-section">
-    <h2 class="algo-title"><span class="channel-tag tag-algo">🤖 ALGO</span> 알고 자동매매 — 토스증권 엔진 체결분</h2>
+    <h2 class="algo-title"><span class="channel-tag tag-algo">🤖 ALGO</span> 알고 자동매매 — {algoReconstructed ? '토스 스냅샷 재구성 · 엔진 역보고 미구현(추정치)' : '토스증권 엔진 체결분'}</h2>
 
     {!algo && (
       <div class="algo-empty">엔진 연동 데이터 없음 — algo_holdings.json 미존재 또는 형식 오류</div>
@@ -287,7 +289,7 @@ const updatedAt = portfolio?.updated_at
       <>
         <div class="algo-summary">
           <span class="chip">포지션 {algoPositions.length}건</span>
-          <span class="chip">평가액 {fmtMoney(algoTotalKrw, 'KRW')}</span>
+          <span class="chip">평가액 {fmtMoney(algoTotalValue, algoCurrency)}</span>
           {algo?.cash_krw != null && <span class="chip">예수금 {fmtMoney(algo?.cash_krw ?? null, 'KRW')}</span>}
         </div>
         <div class="table-wrap">
@@ -314,14 +316,14 @@ const updatedAt = portfolio?.updated_at
                   <td>{p.name}</td>
                   <td><span class="muted">{CHANNEL_LABEL[p.channel] ?? p.channel}{p.strategy_type ? ` · ${p.strategy_type}` : ''}</span></td>
                   <td class="num">{fmtQty(p.qty)}</td>
-                  <td class="num">{fmtMoney(p.entry_price, 'KRW')}</td>
-                  <td class="num">{fmtMoney(p.current_price, 'KRW')}</td>
-                  <td class="num">{fmtMoney(p.current_value, 'KRW')}</td>
+                  <td class="num">{fmtMoney(p.entry_price, algoCurrency)}</td>
+                  <td class="num">{fmtMoney(p.current_price, algoCurrency)}</td>
+                  <td class="num">{fmtMoney(p.current_value, algoCurrency)}</td>
                   <td class:list={['num', p.return_pct != null && (p.return_pct >= 0 ? 'up' : 'down')]}>
                     {fmtPct(p.return_pct)}
                   </td>
-                  <td class="num">{fmtMoney(p.stop_price, 'KRW')}</td>
-                  <td class="num">{fmtMoney(p.target_price, 'KRW')}</td>
+                  <td class="num">{fmtMoney(p.stop_price, algoCurrency)}</td>
+                  <td class="num">{fmtMoney(p.target_price, algoCurrency)}</td>
                   <td><span class="muted">{p.stop_mode ?? '—'}</span></td>
                 </tr>
               ))}
