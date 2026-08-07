@@ -1,12 +1,12 @@
 ---
 sector: biotech
 created: 2026-05-12
-last_updated: 2026-08-01
+last_updated: 2026-08-08
 status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
-l1_index_count: 14
+l1_index_count: 15
 l2_summary_count: 7
 l3_deep_dive_count: 1
 deep_dive_priority: 4
