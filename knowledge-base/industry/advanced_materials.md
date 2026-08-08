@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-01
-valid_until: 2026-08-31
+updated: 2026-08-08
+valid_until: 2026-09-07
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -170,8 +170,8 @@ sources:
     국가전략포털,
   ]
 confidence: high
-last_synced_from_db: 2026-08-01
-db_records: 422
+last_synced_from_db: 2026-08-08
+db_records: 434
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -180,6 +180,18 @@ db_records: 422
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.08.08 핵심 변화 요약 (8/1→8/8 윈도우)**:
+>
+> 1. **희토류 — 중국 가격지수 263.6(8/6)로 추가 하락 지속, NdPr oxide $109-112/kg로 소폭 반등(floor 재진입권) + [중대] MP Materials Q2 실적(8/6)** — 7/29 268.4서 263.6(8/6), 2010 베이스 100 대비 +163.6%, 4월초 고점 310서 조정 국면 지속. NdPr oxide 中내 $109-112/kg로 8/1 $103-106서 소폭 반등(펜타곤 $110 floor 재진입권) vs 역외 $120-140+/kg. 중희토 中내 quote Dy oxide $204.75-210.75/kg·Tb oxide $994.50-1,003.50/kg이나 역외 Dy $575-2,500+/kg로 극심한 security-of-supply 프리미엄 지속. **MP Materials Q2 2026(8/6): 총매출 $108.5M(+89% YoY, 컨센 +13.33% 상회)·조정 EPS -$0.01(컨센 대비 -$0.02 미스)·Magnetics 매출 $16.5M·조정이익 $7.5M. 美 항공우주·방산 신규 고객과 분리 가돌리늄(Gd) nine-figure 장기 오프테이크 신규 체결.** **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(263.6 8/6), Critical Minerals News, StockTitan/Investing.com(MP Q2 8/6), NAI500]
+> 2. **화합물반도체 [실적 大이벤트] onsemi Q2·Infineon Q3 동반 서프라이즈 + Wolfspeed v Navitas 계류** — **onsemi Q2 2026(8/3): 매출 $1,604M(+9% YoY, 가이던스 미드포인트 상회)·비GAAP EPS $0.74·비GAAP GM 39.3%·비GAAP 영업이익률 20.8%·FCF $425.4M(YoY 4배)·PSG 매출 +19%(YoY 증가분 대부분), Q3 가이던스 매출 $1.65-1.75B·GM 추가 확대. AI DC·Treo·고전압 파워솔루션 견인.** **Infineon Q3 FY2026(8월초): 사상 최대 분기매출 EUR 4.17B(+13% YoY·+9% QoQ)·segment margin 19.1%. FY2026 매출 가이던스 EUR 16.3B(+11%)로 상향, AI 매출 EUR 1.6B+(당초 1.5B 계획 상회, 수요>공급), AI DC 10개+ 고객 다년 CRA·€500M 앞당겨 램프 가속, Q4 ~EUR 4.7B(+13%).** **Wolfspeed v Navitas 특허소송(7/7 제소)은 8/8 기준 판결 없이 계류 — 제소법원 W.D.N.C(종전 KB '델라웨어' 정정).** [onsemi/GlobeNewswire(8/3), TradingKey, Infineon(infpr202608-125), Investing.com/RTTNews, Wolfspeed IR·Semiconductor Today]
+> 3. **리튬 [방향 전환·주의] 4개월 최저·공급과잉서 '1년 최고 근접' surge로 반전** — Trading Economics 복수 헤드라인 'Lithium approaches/extends surge to 1-year high'. TE/GFEX 벤치마크 기준 1년 최고 ~¥85,680/t(8월). **단 KB가 추적한 SMM 배터리급 스팟(7/29 ¥146,000/t)과 벤치마크·단위 상이 — 동일 시리즈 직역 금지(가격 레벨 confidence medium, 방향 confidence high).** 반전 동인: (1)중국 EV·리튬리치 ESS 정책지원(전력저장 보상 메커니즘·2027 EV 충전용량 180GW로 2배), (2)공급 제약 — CATL Jianxiawo(장시아워) 광산 채굴허가 미연장 가동중단(글로벌 공급 ~5%). 리튬 반등이 단기 Na-ion 코스트 인센티브 재강화 [Trading Economics(1년 최고·surge·Jianxiawo·EV/ESS 정책), Discovery Alert, S&P Global]
+> 4. **초전도 — CFS SPARC 80% 조립(7/30) 재확인, 신규 델타 제한적** — 18개 REBCO 토로이달 필드 자석 전량 2026 여름내 설치·first plasma·scientific breakeven 2027 목표 유지. 연기금 $1B 조달(7/31, 핵융합 업계 최초)이 최신 자금 마일스톤. REBCO+VIPER 20테슬라. REBCO 테이프 수요(SPARC 총 10,000km급)가 초전도 테이프 공급 병목 유지 [World Nuclear News, TechTimes(7/31), CFS blog, Fortune]
+> 5. **800VDC/DC인프라 — Vertiv Q2 2026(7/29): 조정 EPS $1.52 beat·매출 $3.28B 소폭 미스·백로그 $15B+·FY 가이던스 $13.8-14.2B 상향** — 기록적 수주·리퀴드쿨링 채택 확대·조정 FCF $925M(+234% YoY). 800VDC 포트폴리오 2H 2026 출시(NVIDIA Kyber·Rubin Ultra 선행), **실수요 변곡은 2027 — 전력반도체(GaN/SiC) 구조적 신규 TAM** [Yahoo Finance(Vertiv Q2), Simply Wall St, 24/7 Wall St]
+> 6. **배터리 — CATL Naxtra Na-ion 2026 대량양산 재확인(기존 배터리 30-40% 대체 전망) + QuantumScape 신규 델타 없음** — CATL: LFP 동급 에너지밀도·최대 30% 저비용, Changan Nevo A06 mid-2026 세계 최초 양산 Na-ion 승용 EV. QuantumScape Q2 2026(7/22)이 최신, **all-solid 고객 차량 탑재 셀 여전히 0건, 2027 첫 양산 마일스톤** [eu.36kr, Autonocion, QuantumScape SEC 8-K]
+> 7. **CNT/그래핀 — 신규 상업 델타 제한적(확인)** — MWCNT가 리튬이온 양극 도전재 지배(카본블랙 대비 1/5 로딩), Cnano·LG화학·금호 500-1,000 mt/y·가격 규모경제로 -15~25%. Si-음극+CNT 도전재로 Si 파쇄 방지·수명·급속충전. Samsung graphene ball Li-ion 용량 +45%·5배 충전 [ChemNanoMat, Brian Colwell, LG에너지솔루션(7월)]
+> 8. **한국 소부장 — 희토류 재자원화 8월 인증 완료 예정·연내 원료 100톤 + 제14차 소부장 경쟁력위 4개 안건 의결** — 폐영구자석 활용 국내 양산 기반 연내 구축·양산능력 검증 착수. 소부장 기본계획+특화단지 종합계획(2026-2030)+공급망안정화기금 지원방안. 희토류 17종 전체 핵심광물 지정·전주기 대응·대체/저감/재자원화 R&D 로드맵. NdFeB 자석 대중국 88.0% [헤럴드경제, 정책브리핑, 관세무역개발원, 아주경제]
+
 
 > **2026.08.01 핵심 변화 요약 (7/25→8/1 윈도우)**:
 >
@@ -499,6 +511,8 @@ db_records: 422
 
 > **[2026.07.25 신규] Wolfspeed v Navitas 소송 계류 지속 + Infineon 2차 가격인상 발효 + onsemi Q2 8/3 발표 예정**: (1)**Wolfspeed v Navitas 특허소송(7/7 제소)은 7/16 기준 법원 판결 없이 계류(no rulings issued)** — 제소 발표에 Navitas 주가 약 -7%, Navitas 7/8 반박(강력방어·승소확신). (2)**Infineon 2차 전력반도체 가격인상 5/26 발표·7/1 발효 — IGBT 모듈(1200V/1700V 산업급)·자동차급 SiC MOSFET +8~15%, 표준 MOSFET·범용 discrete +3~7%(600-950V super-junction 포함), GaN은 재고 여유로 stable~소폭.** 근거: SiC 기판·고순도 구리 리드프레임 원자재비+물류비+유럽 에너지비 상승, AI DC 하이퍼스케일러 12~18개월 선행 발주가 산업·자동차 물량 선점. (3)**Wolfspeed 차세대 TOLT 포트폴리오·최초 상업용 10kV SiC MOSFET 출시**(AI DC·grid), AI DC 매출 FQ3 QoQ +30% 지속. (4)**onsemi Q2 2026 실적 8/3 발표 예정** — 가이던스 매출 $1.535-1.635B·EPS $0.65-0.77·GM 38-40%, AI DC 매출 2026 YoY 2배·Treo QoQ 2.5배·GaN 펀넬 >$1.5B·자동차 YoY +5%. (5)**400V 아직 80%+ 점유(2026)이나 800V/1000V 전환 가속 — 2031 고전압 아키텍처 50%+ 침투 전망. SiC 기판 150mm 공급제약·200mm 전환(Wolfspeed Mohawk Valley·Infineon Villach) 수율 램프가 로드맵 대비 지연** [Semiconductor Today/Quasa(7/16 no rulings), SupplyICs(Infineon 5/26·7/1), StockTitan/Seeking Alpha(onsemi 8/3), Atlas Peak Research(400V 80%·200mm 수율)]
 
+> **[2026.08.08 신규·실적] onsemi Q2·Infineon Q3 실적 동반 서프라이즈 + Wolfspeed v Navitas 계류 지속**: (1)**onsemi Q2 2026 실적(8/3): 매출 $1,604M(+9% YoY, 가이던스 미드포인트 상회)·GAAP GM 38.4%/비GAAP GM 39.3%·GAAP 영업이익률 16.1%/비GAAP 20.8%·GAAP 희석EPS $0.56/비GAAP $0.74. 영업현금흐름 +150%·FCF $425.4M(YoY 4배)·자사주 $332M(YTD 주주환원 FCF의 ~105%). AI DC·Treo·고전압 파워솔루션이 견인, PSG 매출 +19%(YoY 증가분 대부분)·AMG -2%. Q3 가이던스 매출 $1.65-1.75B·GM 추가 확대.** (2)**Infineon Q3 FY2026 실적(8월초): 사상 최대 분기매출 EUR 4.17B(+13% YoY·+9% QoQ)·segment margin 19.1%. AI DC 파워솔루션+자동차 견인 — AI 파워 수요>공급, FY2026 AI 매출 EUR 1.6B+(당초 1.5B 계획 상회). FY2026 매출 가이던스 EUR 16.3B(+11% YoY)로 상향, 모듈러 투자 ~EUR 2.7B·AI 투자 EUR 500M 앞당겨 램프 가속, AI DC 생태계 10개+ 고객 다년 CRA(누적 high-single-digit billion euro) 체결. Q4 가이던스 ~EUR 4.7B(+13%). 발표 후 주가 하락(고밸류 부담).** (3)**Wolfspeed v Navitas 특허소송(7/7 제소, 美특허 5건)은 8/8 기준 법원 판결 없이 계류 — 제소법원은 US District Court for the Western District of North Carolina(노스캐롤라이나 서부지법, 종전 KB '델라웨어' 정정).** 피소 제품 Navitas GaN FET 전 제품군+GeneSiC+SiCPAK 전부, Wolfspeed 美 판매금지 요구 보도 [onsemi/GlobeNewswire(8/3), TradingKey/StockStory, Infineon(infpr202608-125)/Investing.com/RTTNews, Wolfspeed IR·Semiconductor Today·TrendForce]
+
 
 #### 4-2. GaN(질화갈륨) 시장
 
@@ -603,7 +617,7 @@ db_records: 422
 
 > **2026.11.10 유예 종료가 최대 변수.** 1차 통제(Dy·Tb 등 7원소)는 유예 없이 지속 중이며, 비중국 시장에서 중국 내 가격 대비 several times(최대 5배+) 프리미엄 형성.
 
-#### 5-3. 가격 동향 (2026.08.01 업데이트 — 중국 가격지수 268.4(7/29) 소폭 하락 지속·NdPr oxide $103-106/kg 추가 하락·펜타곤 $110 floor 하회 진입·중희토 中내 플랫/역외 조달난)
+#### 5-3. 가격 동향 (2026.08.08 업데이트 — 중국 가격지수 263.6(8/6) 추가 하락·NdPr oxide $109-112/kg 소폭 반등(floor 재진입권)·중희토 역외 극심 프리미엄·MP Materials Q2 8/6 매출 $108.5M +89%)
 
 | 원소                       | 가격                                              | 변동                                                                              | 출처                                                |
 | -------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------- |
@@ -624,6 +638,8 @@ db_records: 422
 
 
 > **2026.08.01 갱신 (7/25→8/1)**: 중국 희토류 가격지수 **268.4(7/29)** — 7/23 270.4서 소폭 하락 지속(경로 270.4(7/23)→270.5(7/24)→268.4(7/29), 2010 대비 +168.4%, 4월초 고점 310서 조정 국면 지속). 이번 주 **NdPr oxide ¥739.6-759.6/kg($103-106/kg)로 7/23 $112-115서 추가 하락** — 자석 벤치마크 경희토 약보합, **스팟이 펜타곤 $110/kg floor 하회 진입 → floor가 하방방어로 재부각.** 중희토(Dy·Tb) 中내 quote 플랫이나 상업물량 역외(ex-China) 조달 여전히 심각 난항(Dy oxide 역외 ~$930/kg·YTD +105%). **서방 공급 진전: MP Materials Independence(Fort Worth TX) 3,000MT NdFeB 자석 capacity·GM foundational 고객·2025.03 첫 인도 후 램프, 10X Northlake TX 착공 2026 예정(가동 시 美 총 10,000MT/y).** **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(268.4 7/29), Mainrich International(7월 NdPr·MOFCOM), Critical Minerals News(Dy $930·YTD +105%), MP Materials IR/IEEE Spectrum(Independence 3,000MT·10X Northlake), SFA Oxford]
+
+> **2026.08.08 갱신 (8/1→8/8)**: 중국 희토류 가격지수 **263.6(8/6)** — 7/29 268.4서 추가 하락 지속(2010 대비 +163.6%, 4월초 고점 310서 조정 국면 지속). **NdPr oxide 中내 $109-112/kg로 8/1 $103-106서 소폭 반등 — 펜타곤 $110/kg floor 재진입권** vs 역외(ex-China) $120-140+/kg. 중희토 中내 quote: Dy oxide ¥1,365-1,405/kg($204.75-210.75/kg)·Tb oxide ¥6,630-6,690/kg($994.50-1,003.50/kg). **역외 Dy $575-2,500+/kg로 극심한 security-of-supply 프리미엄 지속**(라이선싱·수출통제·국가산업정책 반영). **[신규·중대] MP Materials Q2 2026 실적(8/6): 총매출 $108.5M(+89% YoY, 컨센 +13.33% 상회)·조정 희석 EPS -$0.01(컨센 +$0.01 대비 -$0.02 미스)·Magnetics 매출 $16.5M·조정이익 $7.5M(개발→상업운영 진행). 美 항공우주·방산 신규 고객과 분리 가돌리늄(Gd) nine-figure 장기 오프테이크 신규 체결(HREE 사업 확장).** **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(263.6 8/6·NdPr $109-112·Dy/Tb 中내), Critical Minerals News, StockTitan/Investing.com/NAI500(MP Q2 8/6), S&P Global Platts(역외 프리미엄)]
 
 #### 5-4. 서방 대응 & 공급망 다변화 (2026.06.13 업데이트)
 
@@ -663,7 +679,7 @@ db_records: 422
 
 ### 5.5. 리튬
 
-#### 5.5-1. 리튬 가격 동향 (2026.08.01 — ¥146,000/t 4개월 최저권, -0.36% DoD, 재가동 광산발 공급과잉 우려 vs EV·ESS 수요)
+#### 5.5-1. 리튬 가격 동향 (2026.08.08 — [방향 전환] 4개월 최저서 '1년 최고 근접' surge 반전, 중국 EV/ESS 정책지원+CATL Jianxiawo 공급제약, TE/GFEX ~¥85,680 vs SMM 스팟 ¥146,000 벤치마크 상이)
 
 | 항목                       | 수치                                                                                           | 출처                                  |
 | -------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
@@ -683,6 +699,8 @@ db_records: 422
 
 
 > **2026.08.01 갱신 (7/25→8/1)**: 중국 배터리급 탄산리튬 **¥146,000/t(7/29, -0.36% DoD)** — 7/23 ¥146,500서 소폭 추가 하락, 4개월 최저권 지속. 글로벌 리튬 가격 **$21.57/kg(7/29).** 하방: **재가동된 글로벌 광산발 공급과잉 우려(oversupply fears)가 EV·ESS 견조 수요를 압도**하며 스팟·선물 subdued. 지지: EV·그리드ESS·AI DC 백업전원 수요 견조. **S&P Global: 2026 탄산리튬 잉여 축소·ESS가 성장 견인 전망.** Goldman Q4 재고재축적 타이트닝 논리 유지. **리튬 저가 지속이 단기 Na-ion 코스트 인센티브 완화 요인**(단 중장기 전환 논리 유효) [Carbon Credits(¥146,000 7/29·-0.36%·$21.57/kg), S&P Global(2026 잉여축소·ESS 견인), CEIC/SMM, Fastmarkets]
+
+> **2026.08.08 갱신 (8/1→8/8) [방향 전환·주의]**: 리튬 탄산리튬 **하락 내러티브서 상승 반전** — Trading Economics 복수 헤드라인 'Lithium approaches/extends surge to 1-year high'. **TE/GFEX 벤치마크 기준 1년 최고 ~¥85,680/t(8월).** 단 KB가 추적해온 **SMM 배터리급 스팟(7/29 ¥146,000/t)과 벤치마크·단위가 상이 — 동일 시리즈로 직역 금지**(가격 레벨 confidence medium, 방향성 confidence high). 반전 동인: **(1)중국 EV·리튬리치 ESS 정책지원**(전력저장 인프라 보상 메커니즘·2027 EV 충전용량 180GW로 2배), **(2)공급 제약 — CATL Jianxiawo(장시아워) 레피돌라이트 광산 채굴허가 미연장으로 가동중단**(글로벌 공급 ~5%). 견조한 배터리·파워인프라 수요가 오버서플라이 우려 상쇄. **리튬 반등이 단기 Na-ion 코스트 인센티브 재강화 요인** [Trading Economics(1년 최고 ~¥85,680·surge·Jianxiawo·EV/ESS 정책), Discovery Alert(China lithium 2026 surge), S&P Global(2026 잉여 축소·ESS 견인)]
 
 #### 5.5-2. 수급 구조
 

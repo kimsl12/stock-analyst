@@ -369,6 +369,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-08 | `industry/quantum.md` | **양자 주간 갱신(14회 검색, +16 DB 레코드)** -- 양자 3사 Q2 실적(IonQ $80.1M+287%·SkyWater $1.8B 클로징, Rigetti $5.1M, D-Wave 부킹 $35.5M+1120%)·IonQ DARPA 광원자시계+Capella NRO 국방계약·PASQAL SPAC Nasdaq PSQL·QKD 라이브망 1.6Tb/s | +16 |
+| 2026-08-08 | `industry/space.md` | **우주 주간 갱신(14회 검색, +15 DB 레코드)** -- SpaceX Q2 매출 $7.8B(+92%)·AI CapEx $18.4B 우려, SPCX 8/6 락업 소화 +6.1%; ASTS BB11/12/13 궤도진입 성공(8/5); RKLB SB-AMTI $397M(Neutron 첫 국방미션); LUNR L3Harris AMDT3 편입; 누리호 5차 10월 연기; Starship Flight14 8월말 첫 궤도 | +15 |
+| 2026-08-08 | `industry/smr.md` | **SMR/핵융합 주간 갱신(14회 검색, +11 DB 레코드)** -- Oklo Groves 첫 임계(8/6)·CFS 추가 $1B 누적 $4B·X-energy-Centrus HALEU 계약·Q2 실적(NuScale/BWXT/Centrus)·두산 77,000원 반등·우라늄 $86.36/lb | +11 |
+| 2026-08-08 | `industry/telecom_next.md` | **차세대통신 주간 갱신(13회 검색, +12 DB 레코드)** -- SPCX 첫실적 매출+92% $7.81B·CapEx $18.37B 쇼크+8/6 락업 무난통과, AST BB11-13 발사성공+Amazon D2D 5105기 FCC신청, Nokia 반등랠리(BofA $18.50) vs 메모리크런치 2027, 광통신 1.6T $26B(+60%), KT 18조·8월 민관협의체 | +12 |
+| 2026-08-08 | `industry/advanced_materials.md` | **첨단소재 주간 갱신(12회 검색, +12 DB 레코드)** -- 희토류지수 263.6(8/6)·MP Q2 매출$108.5M+89%·Gd오프테이크; onsemi Q2($1,604M·비GAAP EPS$0.74)·Infineon Q3(사상최대 EUR4.17B·FY상향); 리튬 1년최고 근접 surge 방향전환(TE벤치마크, SMM스팟과 상이); Vertiv Q2 백로그$15B+; CFS SPARC 80%; 한국 희토류 재자원화 8월인증 | +12 |
+| 2026-08-08 | `industry/capex.md` | **CapEx 슈퍼사이클 주간 갱신(8회 검색, +6 DB 레코드)** -- Lam Research WFE low $150B 상향(SEMI $135B 대비), 하이퍼스케일러 4사 ~$725-765B 재확인, Stargate Abilene 0.3GW 가동·GB200 인도, HD현대 수주목표 +22.8%·LS 천안 DC팩토리 준공 | +6 |
 | 2026-08-02 | `macro/geopolitics.md` | **지정학 주간 갱신(12회 검색, +8 DB 레코드)** -- 유가 반락(Brent $90.24)·중재 대화, 상원 러·이란 제재법 가결(2차관세 200%), 대만 ADIZ 급감, 남중국해 美 항모 전개, NATO 대러 장기위협 | +8 |
 | 2026-08-02 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +12 DB 레코드)** -- 급성 리스크 3종 완화(AI관문 통과·유가 $98→$90·BOJ개입 엔 163.99→157.40), Top5 재정렬(AI 2→1위·유가 1→2위), FOMC 7/29 동결 9-3(3인 인상반대·워시 신임), FRED VIX17.09·10Y4.68·HY2.84확대 | +12 |
 | 2026-08-02 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(16회 검색, +11 DB 레코드)** -- 한미 관세타결 15%·코스피 +17.91% 사상최대·FOMC/BOJ 7월 동결·유가 반락 Brent $88 | +11 |

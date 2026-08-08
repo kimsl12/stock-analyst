@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-01
-valid_until: 2026-08-31
+updated: 2026-08-08
+valid_until: 2026-09-07
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -124,14 +124,32 @@ sources:
   - Futurum
   - FXLeaders
   - StartupHub.ai
+  - Fortune
+  - Teslarati
+  - Timothy Sykes
+  - dig.watch
+  - Semiconductor Today
+  - orbitalradar
+  - electronics-lab
 confidence: high
-last_synced_from_db: 2026-08-01
+last_synced_from_db: 2026-08-08
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.08.08 핵심 변화 요약 (8/1 이후 델타)**:
+>
+> 1. **★SPCX 첫 실적(8/4) 매출 +92% 서프라이즈 $7.81B이나 CapEx $18.37B 쇼크 + 8/6 락업 무난 통과** -- **매출 $7.81B(+92% YoY, 컨센 $6.93B +13% 상회, 연말 매출 $100B 근접 시사). Connectivity(Starlink) $4.3B(+66%, 가입자 12M으로 1년새 2배), Space $962M(+29%), AI(xAI+X+클라우드) $2.56B(+247%). 순손실 -$541M(-$0.09/주, 컨센 -$0.23~0.24 대폭 선방). ★CapEx $18.37B(컨센 +39% 초과)가 최대 논쟁 -- 정규장 +9.4% 급등 후 애프터 -7% 반락. 2027 AI컴퓨팅 2GW+ 추가배치가 핵심 상방 촉매. ★8/6 1차 락업해제 무난 통과: 약 9.115억주($116B) 언락(퍼블릭 플로트 4.9%->11.8% 2배+), 장중 신저가 $105.11 -> $111.17 반등(+2.6%, bucking higher). 6/16 피크 $225.64 대비 -50%·$135 IPO가 대비 -20%. 8/12경 약 3.19억주 추가·9~10월 트랜치, 머스크·핵심 내부자 2027 중반까지 락업. Morgan Stanley Overweight $300(밸류 $4T 함의), Argus 8/7 Hold->Buy 상향 $160** [Fortune 8/4, Yahoo/CNBC Q2, FX Leaders CapEx $18B, Motley Fool 8/5 lockup, Quartz $105.11, TradingKey outcome]
+> 2. **★AST BlueBird 11/12/13 8/5 궤도 발사 성공 -- LEO 사상 최대 통신 어레이 + Amazon 7/27 D2D 5,105기 FCC 신청** -- **AST BB11/12/13 8/5 03:42 EDT 케이프커내버럴 SFS Falcon 9 발사·궤도 안착 성공. Block 1(5기) 대비 3배+ 크기, 대형 개구부·고급 빔포밍으로 타깃 커버리지·간섭저감·용량 증대. BB14/15/16 차기 준비·생산 BB42까지, 2026 궤도 약 45기 목표. Amazon Leo는 392기+(19개 미션)로 FCC 7/30 절반배치(1,618기) 미달·연장 신청 + ★7/27 별도 direct-to-device(D2D)용 위성 5,105기 FCC 신규 신청 -- Starlink DTC·AST SpaceMobile 정조준** [AST BusinessWire 8/5 successful orbital, Space.com 3 giant BlueBird, CNBC 7/27 Amazon 5105 D2D, orbitalradar Leo 392+]
+> 3. **★통신장비 -- Nokia 반등 랠리(BofA $18.50·SEB Buy) vs 메모리 크런치 2027 지속 그림자** -- **Nokia 8/1 셀오프에서 반등, 8/3 AI 수주·업그레이드 누적으로 랠리(+3.1% 부근). Q2 EPS EUR 0.07(전년 0.04)·AI&Cloud 수주 EUR 2.8B. ★목표가 상향 릴레이: Bank of America $18.50 상향·Buy 유지, SEB Equities Buy 상향(EUR 12). NVIDIA Aerial 상용 AI-RAN(2027 상용·구독형 SW)이 '5G->AI 스토리' 재평가 촉매(Motley Fool 8/6). 단 Ericsson발 메모리칩 크런치가 2027까지 지속(AI 하이퍼스케일러 DRAM 대량 흡수, 전 테크산업 단일 최대 병목)·Nokia 구조조정비 EUR 800M로 하반기 현금화 입증 부담이 밸류 상한. 벤더 커스텀 실리콘(Ericsson)이 GPU 의존 대비 '더 안전한 베팅' 재조명** [Timothy Sykes 8/3 Nokia rallies, Motley Fool 8/6 5G becomes AI story, ad-hoc-news chip squeeze, ts2.tech AI-RAN 2027]
+> 4. **광통신 1.6T 램프 가속 -- LightCounting 2026E $26B(+60%)·Jabil 1.6T 출시·Lumentum 200G/lane EML 단독양산** -- **AI 이더넷 광트랜시버 시장 2026E $26B(2025 $16.5B 대비 +60%), 전체 광트랜시버 세그먼트 2026E $9.15B(800G/1.6T가 AI DC 표준화). Jabil 4월 1.6T 트랜시버 출시. Lumentum 1.6T DR4 OSFP(400G 차동 EML x4)·200G/lane EML 유일 양산(1.6T 핵심부품)·3.2T 향 스테핑스톤. Coherent SiPho 1.6T-DR8(Marvell 3nm DSP). NVIDIA $4B 포토닉스(Lumentum/Coherent 각 $2B) 투자 존치** [LightCounting 2026E $26B, tech-insider.org NVIDIA $4B, Semiconductor Today Lumentum, C-LIGHT AI DC optical]
+> 5. **AI-RAN 상용화 진전(SoftBank AITRAS FY2026, Alliance 140+) + 6G Rel-21 마드리드 9월·Qualcomm X105 상용 H2 홀딩** -- **SoftBank AITRAS(NVIDIA GH200 Grace Hopper, AI Aerial, 캐리어급 L1 SW) FY2026부터 자사 상용망 도입·2026+ 글로벌 통신사 확대, GPU상 'SW 온리 Massive MIMO' 실현으로 PoC->상용 전환, NVIDIA 최대 수혜. AI-RAN Alliance 2026.07 기준 140+ 조직으로 확대. 6G Rel-21 마이그레이션은 TSG RAN#113 마드리드(9/14~17) 대기 유지(전주 대비 변동 없음) -- RAN1 예비 MRSS 성능평가 9월 제출 공식 의무, 9월 플레너리가 standalone·MRSS·NR<->6G inter-RAT 외 WG SI scope 확장 여부 결정, DT 'standalone+MRSS면 충분' 단순화론 유지. Qualcomm X105(Rel-19 준수, DL 14.8Gbps, NR-NTN, agentic AI) 고객 샘플 배포 중·상용 디바이스 2026 하반기·9월 Snapdragon Summit 공개** [SoftBank PoC to commercial, telecoms.com NVIDIA beneficiary, 6G Futures RAN#112, IEEE ComSoc Rel-21, Qualcomm PR X105]
+> 6. **Open RAN 2026 성장 5~10% 하단 착지(Dell'Oro) + 한국 KT 5년 18조 투자·8월 AI네트워크 민관협의체 가동** -- **Dell'Oro: 글로벌 RAN 시장 안정, Open RAN 성장하나 연 5~10% 목표의 하단(미·일 조건·유럽 채택 속도). AT&T 트래픽 약 50% 오픈가능 HW·1Finity/Fujitsu 라이브콜, Samsung-Vodafone 독일 첫 시장 수천 사이트·Wismar 첫 완전전환 도시·2027 UK 2,500사이트, Top5 벤더(Huawei·Ericsson·Nokia·ZTE·Samsung) 불변. ★KT 박윤영 대표 5년 18조 투자: AI DC 5조(수요 기반 1GW, 신규 약 20개 추가해 총 25개 센터) + 네트워크 8조 + 해저케이블 1조(국제 데이터 8배 대비 128TB+/90Tbps+·빅테크 공동조달). SKT 15GW/2035·LGU+ 파주 200MW. 배경훈 부총리, 8월 통신3사 'AI 네트워크 투자' 민관 협의체 가동 확정('통신사도 AI 기업, 6G·AI-RAN 투자 본격화')** [Dell'Oro RAN 2026 low end, dig.watch Vodafone Samsung Europe, 머니투데이 7/6 KT 18조, ZDNet KT 1GW, enewstoday 배경훈 부총리]
+>
+> **(이전 갱신 -- 8/1 핵심 요약, 참고용)**:
+>
 > **2026.08.01 핵심 변화 요약 (7/25 이후 델타)**:
 >
 > 1. **★SPCX 붕괴 심화 -- 7/31 종가 $108.37(주간 -5.8%, 신규 종가 최저) + 8/4 상장 후 첫 실적·8/6 $116B 락업해제 임박** -- **7/31 $108.37(-3.4% 금요일), 상장가 $150 대비 -30%·피크 $225.64 대비 -50%. 주간 변동성 극심(장중 사상최저->급반등->재차 최저 마감). ★8/4(화) 상장 후 첫 Q2 실적(장 마감 후 16:30 ET 웹캐스트) -- 컨센 매출 약 $6.82~6.9B·순손실 약 -$0.26/주(AI·Space 비용). Morgan Stanley 가입자 2025 8.9M->2026 16.8M, HSBC 2026 Connectivity 매출 $15.6B·EBITDA $9.5B 전망. ★8/6 1차 락업해제 -- 약 9.115억주($116B) 매매가능(내부자 최대 20% 매도), 이후 2~4주마다 7% 트랜치·Q3 트리거 약 28%·잔여 180일물 12/8 전량, 머스크/핵심 내부자는 2027 중반까지 락업. 애널 평균 목표가 $231.83(+101% 상방)** [Yahoo Finance 7/31, Motley Fool 7/27·7/29, S&P Global earnings preview, Investing.com $123B unlock]

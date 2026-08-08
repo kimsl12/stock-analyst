@@ -1,24 +1,25 @@
 ---
-updated: 2026-07-25
-valid_until: 2026-08-24
+updated: 2026-08-08
+valid_until: 2026-09-07
 category: industry
 sub_category: science_tech
 topic: space
 sources:
-  - Space.com / CNN / Spaceflight Now / NASASpaceFlight 07-24 (★ Starship Flight 13 발사 성공 — Starlink V3 20기 첫 궤도 배치(6기 카메라), Super Heavy B20 해상 연착륙, Ship in-space Raptor relight + 인도양 '역대 최연착륙', 열차폐 대폭 개선. 7/16 abort·엔진 6기 교체 후)
-  - Space.com / Benzinga / Simply Wall St 07-20~24 (★ RKLB Neutron 2단 Archimedes Vacuum ~5.5분 full-duration 열연소시험 완료(Stennis), Q4 2026 데뷔 유지)
-  - Yahoo Finance / TradingKey / Investing / stockalarm 07-24~25 (★ SPCX ~$114 IPO가 $135 하회(-15%)·ATH -49%, Q2 실적 8/4 확정 → 2거래일 후 20% 인가주식(최대 9.115억주) 락업 1차 해제)
-  - BusinessWire / SEC 8-K / Motley Fool 07-16~21 (★ ASTS $1.15B 전환사채(2034) 발행완료 — 1.625%, 전환가 ~$79.57, 발표 주가 ~17%↓ ~$58. BB11/12/13 8월 상반기·~45 BlueBird 2027 초로 지연)
-  - FCC / FierceNetwork / GeekWire / Yahoo 06~07 (★ Amazon Leo FCC 7/30 중간 데드라인 waiver 확정 — 중간의무 폐기, 전체 3,232기 2029.07.30 유지, 7/30 후 스펙트럼 우선권 임시상실)
-  - SDA / Space.com / DefenseScoop / Air&Space Forces 07-13~14 (★ Golden Dome 추적층 36기 $1.75B 추가발주 — L3Harris $955M·Sierra Space $798M 각 18기, T3 성좌 108기·~$5.25B, 2028말 발사)
-  - HighSpeedInternet / KeepTrack / azmth 07-23~24 (Starlink 궤도 ~10,844기 7/24, 7/2 10,742 대비 +100, 누적 12,552 발사)
+  - Fortune / CNN / CNBC / Yahoo Finance 08-04 (★ SpaceX 첫 Q2 실적 — 매출 $7.8B(+92% YoY, 컨센 ~$6.8B 상회), 순손실 -$541M(전년 -$1.0B서 축소), adj EBITDA $3.5B(+191%). CapEx $18.4B(AI $15.83B/80%+)로 AI지출 우려 시간외 -8%)
+  - Motley Fool / Forbes / Investing.com 08-04~07 (★ SPCX 8/6 1차 락업만기 최대 9.115억주(적격 20%·~$116B) 해제 → 우려와 달리 당일 +6.1%. 8/7 ~$114.92(IPO가 $135 하회), Buy 27/2, 평균 TP $228.95)
+  - BusinessWire / Yahoo / ForeignPolicyJournal 08-05 (★ ASTS BlueBird 11/12/13 궤도 진입 성공(8/5 Cape Canaveral Falcon 9) — 초기 대비 속도 거의 2배, 생산 42호기 진척, BB14/15/16 차기 준비)
+  - Rocket Lab IR / SpaceNews / Via Satellite / Motley Fool 08-04~06 (★ RKLB 미 우주군 SB-AMTI $397M 수주 — Neutron으로 Flatellite 개발·발사·운용, 9일간 총 $663M(+$266M 알래스카 준궤도), Neutron 첫 확정 국방미션 2028)
+  - StockTitan / MarketBeat / TipRanks / CNN 08-06 (★ LUNR Q2 실적 8/13 장전(컨센 매출 $216.33M) — L3Harris AMDT3(Golden Dome T3 추적층) 우주선 플랫폼 지원 선정으로 +7%, 주가 ~$13.96)
+  - Space.com / SpacePolicyOnline / KeepTrack 07-30~08-05 (★ Starship Flight 14 8월말 목표 — 첫 궤도비행+타워 Ship catch 첫 시도, Starlink V3 운용 배치, 최대 48h 임무)
+  - 머니투데이 / 인사이트 / CBC뉴스 08-02 (★ 누리호 5차 발사 9월→10월 연기 — 초소형군집위성 추력기 성능 보완, 8월 말 발사관리위 발사윈도 확정)
+  - HighSpeedInternet / KeepTrack / azmth 08-06~07 (Starlink 궤도 ~10,764~10,920기, 누적 발사 ~12,668기)
+  - aboutamazon / orbitalradar / RocketLaunch.Live 08 (Amazon Leo 궤도 ~375+기(3위 성좌), 첫 Vulcan 미션 9월로 목표(45기·최적화 Centaur V), Atlas V 잔여 6회)
+  - NASASpaceFlight / SpaceNews / RocketLaunch.Live 05~08 (RKLB Neutron 데뷔 NET Q4 2026 유지, 첫 비행 재사용 미시도(회수 2차 비행 barge), FAA 윈도 7/1~12/31/2026)
+  - SDA / Space.com / DefenseScoop / Air&Space Forces 07-13~14 (Golden Dome 추적층 36기 $1.75B 추가발주 — L3Harris $955M·Sierra Space $798M 각 18기, T3 성좌 108기·~$5.25B, 2028말 발사)
   - PRNewswire / Yahoo / Benzinga 06-29~07 (RKLB Iridium $8.0B 구조 — $54/주($27 현금+주식 collar), $3.6B 브릿지론(DB/Wells Fargo), 2027 중반 종결)
-  - TS2 / Benzinga / Yahoo / CNN 07 (LUNR ~$19.58(7/2, 월 -36.5%), NASA 6번째 CLPS $148.3M Nova-C 생산라인 2028 인도(기본 $68.6M+인센티브 $79.7M))
-  - GovConWire / TipRanks 07-10 (LUNR USSF Andromeda IDIQ 상한 $1.8B→$6.24B — GEO 기동위성 SDA 성좌)
-  - Astronomy.com / 이투데이 06-24 / ZDNet (NASA FY26 확정 $24.4B(의회 요청 -24% 거부), FY27 요청 $18.8B(-23%). 누리호 5차 총조립 개시→9월 발사 추진, KOMPSAT-6 2027 Q2 연기)
   - SpaceflightNow 06-30 / NASASpaceFlight 07-01 / Blue Origin (New Glenn Return to Flight 공식 페이지 — LC-36 hybrid horizontal-vertical integration 전환, 이상원인 1단 aft section, 연내 RTF 목표)
 confidence: high
-last_synced_from_db: 2026-07-25
+last_synced_from_db: 2026-08-08
 ---
 
 # Space (우주산업) Knowledge Base
@@ -41,25 +42,26 @@ last_synced_from_db: 2026-07-25
 | 지구관측(EO) 시장                | ~$6B          | 광학/SAR/초분광. Planet/Maxar/Airbus/BlackSky. Planet FY26 $308M(+26%, 백로그 $900M) [Space Foundation/IndexBox] |
 | **NASA ETF (순수 우주)**         | **AUM $2.6B** | 3/30 데뷔 → 2개월만 $2.6B. SpaceX 직접 노출 최초 순수 우주 ETF [Yahoo]                                           |
 
-> **2026.07.25 갱신**: **★ Starship Flight 13 발사 성공(7/24) — Starlink V3 위성 20기 첫 궤도 배치(6기 열차폐 카메라), Super Heavy B20 해상 연착륙, Ship in-space Raptor relight + 인도양 '역대 최연착륙(softest splashdown)', 열차폐 5월 IFT-12 대비 대폭 개선(Musk "최신 열차폐 설계 훌륭"). 7/16 T-0 자동중단(4기 Raptor 습기 시동실패→엔진 6기 교체) 후 재발사.** **★ SPCX ~$114(7/24~25, 시총 $1.53T) — IPO가 $135 하회(-15%), ATH $225.64(6/16, 종가 $211.39) 대비 -49%. Q2 실적 8/4 확정(기존 8/6) → 발표 2거래일 후 최대 20% 인가주식(최대 9.115억주) 락업 1차 해제 = 사상 최대 인사이더 락업 만기. 180일 락업 12/8.** **★ ASTS $1.15B 전환사채(2034 만기) 발행 완료(7/21) — 1.625% 쿠폰·전환가 ~$79.57(+20% 프리미엄)·capped call 실효전환가 $149.20. 발표(7/16) 주가 ~17%↓ ~$58 희석 우려. BB11/12/13 8월 상반기로·~45 BlueBird 2027 초로 지연.** **★ RKLB Neutron 2단 Archimedes Vacuum(AVac) ~5.5분 full-duration 열연소시험 완료(~7/20, Stennis) — Q4 2026 데뷔 유지 핵심 마일스톤. Iridium 인수 구조 구체화: $54/주($27 현금+주식 collar), $3.6B 브릿지론(DB/Wells Fargo), 2027 중반 종결.** **★ Amazon Leo FCC 7/30 중간배치 데드라인 waiver 확정 — 중간의무(1,618기/50%) 폐기, 전체 3,232기 2029.07.30만 유지, 7/30 후 스펙트럼 우선권 임시상실(50% or 2028.03.30 회복). 궤도 396기(7/2 Atlas V 최종, 차기 Vulcan).** **★ Golden Dome 추적층 36기 $1.75B 추가발주(7/13) — L3Harris $955M·Sierra Space $798M 각 18기(경보18+방어18, HBTSS 기반), T3 성좌 108기·~$5.25B, 2028말 발사.** Starlink 궤도 ~10,844기(7/24). LUNR ~$19.58(7/2, 월 -36.5%). 누리호 5차 총조립 진입, 9월 발사 추진(8월초 발사관리위 발사일 확정, 15기).
+> **2026.08.08 갱신**: **★ SpaceX 첫 Q2 실적(8/4) — 매출 $7.8B(+92% YoY)로 컨센 ~$6.8B을 ~$1B 상회, 순손실 -$541M(전년 -$1.0B서 축소), adj EBITDA $3.5B(+191%). Starlink(연결성) $4.3B(+66%)·가입자 12M(2배)·ARPU -22%. 단 CapEx $18.4B(전분기 $10.1B서 급증, 이중 AI $15.83B/80%+ = Google $920M/월·Anthropic $1.25B/월·Reflection $150M/월 컴퓨트)로 AI지출 우려 → SPCX 시간외 최대 -8%.** **★ SPCX 8/6 1차 락업만기 — 인가주식 최대 9.115억주(적격 20%·최대 $116B) 해제됐으나 우려와 달리 당일 종가 +6.1% 반등, 8/7 ~$114.92(IPO가 $135 하회). Buy(27매수/2매도)·평균 TP $228.95. Morgan Stanley "펀더멘털 대체로 불변, 매력적 진입점".** **★ ASTS BlueBird 11/12/13 궤도 진입 성공(8/5 Cape Canaveral Falcon 9) — 초기 BlueBird 대비 최대 다운로드 속도 거의 2배, 수직통합 생산 42호기 진척, BB14/15/16 차기 준비.** **★ RKLB 미 우주군 SB-AMTI $397M 수주(8/4) — Neutron으로 Flatellite(평판위성) 개발·발사·운용, 9일간 총 $663M(+$266M 알래스카 준궤도) 확보, Neutron 첫 확정 국방미션(2028 데드라인). Q2 실적 8/10.** **★ LUNR L3Harris AMDT3(Golden Dome T3 추적층) 우주선 플랫폼 지원 선정으로 +7%, ~$13.96. Q2 실적 8/13(컨센 매출 $216.33M).** **★ Starship Flight 14 8월말 목표 — 첫 궤도비행+타워 Ship catch 첫 시도, Starlink V3 운용 배치.** **★ 누리호 5차 발사 9월→10월 연기(초소형군집위성 추력기 성능 보완, 8월 말 발사관리위 발사윈도 확정).** Starlink 궤도 ~~10,764~~10,920기. Amazon Leo ~375+기, 첫 Vulcan 미션 9월로.
 
-> **2026.07.11 갱신**: **★ RKLB, Iridium $8.0B 인수 확정계약 공식 발표(6/29) — $54/주 현금+주식, EV ~$8.0B, 2027 중반 종결. 발사·위성제조+Iridium 글로벌 위성통신망·스펙트럼·500+ 파트너 결합한 완전 수직통합 우주기업.** **★ SPCX 7/7 Nasdaq-100 편입은 7/6~7/7 선반영으로 페이드 — 7/8 신저점 $145.20, 7/10 $145.39(ATH $225.64 대비 -36%).** **★ LUNR USSF Andromeda IDIQ 상한 $1.8B→$6.24B 상향·선정 — GEO 기동위성 SDA 성좌(단 IDIQ는 상한, 실매출 task order 의존).** **★ ASTS MNO 파트너 ~60개(가입자 30억+), FY26 $150~200M·~45 BlueBird 목표.** 누리호 5차 총조립 개시→9월 발사 재확인. NASA FY26 확정 $24.4B(의회 요청 -24% 거부), FY27 요청 $18.8B(-23%). 제2우주센터(전남 고흥) 10월 부지선정.
+> **2026.07.25 갱신**: **★ Starship Flight 13 발사 성공(7/24) — Starlink V3 위성 20기 첫 궤도 배치(6기 열차폐 카메라), Super Heavy B20 해상 연착륙, Ship in-space Raptor relight + 인도양 '역대 최연착륙(softest splashdown)', 열차폐 5월 IFT-12 대비 대폭 개선. 7/16 T-0 자동중단(엔진 6기 교체) 후 재발사.** **★ SPCX ~$114(7/24~25) — IPO가 $135 하회(-15%), ATH $225.64(6/16) 대비 -49%.** **★ ASTS $1.15B 전환사채(2034) 발행 완료(7/21) — 1.625%·전환가 ~$79.57·capped call 실효 $149.20, 발표 ~17%↓.** **★ RKLB Neutron 2단 AVac ~5.5분 full-duration 시험 완료(~7/20). Iridium $8.0B 인수 구조 구체화($54/주, $3.6B 브릿지론).** **★ Amazon Leo FCC 7/30 중간배치 데드라인 waiver 확정.** **★ Golden Dome 추적층 36기 $1.75B 추가발주(7/13, T3 108기·$5.25B).**
 
 ### 2. 우주발사체
 
-#### SpaceX -- ★ Flight 13 발사 성공(7/24) Starlink V3 20기 첫 배치·B20 해상연착륙·역대 최연착륙, SPCX ~$114 IPO가 하회 ★
+#### SpaceX -- ★ Q2 실적(8/4) 매출 $7.8B(+92%)·AI CapEx $18.4B 우려, SPCX 8/6 락업만기 +6.1% 반등 ~$114.92, Flight 14 8월말 궤도비행 목표 ★
 
-| 항목                           | 수치                                                    | 비고                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ------------------------------ | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 상업 발사 글로벌 점유율 (2025) | 82%                                                     | 독보적 1위                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Falcon 패밀리 발사 (2026)**  | **6/4 기준 66회** (Falcon 9 65 + FH 1)                  | 4/14 2026년 1,000번째 Starlink 발사. 연간 목표 140~145회 (Shotwell)                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 2025 매출                      | **$18.67B**                                             | 순손실 -$4.9B. Starlink 2025 매출 ~$11.4B(+50%, SpaceX 매출 61%) [CNBC S-1]                                                                                                                                                                                                                                                                                                                                                                                            |
-| 2026E 매출                     | **$24B**                                                | Starlink+컴퓨트 포함                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **SpaceX SPCX 주가 (7/24~25)** | **~$114** (IPO가 $135 하회 -15%, ATH $225.64 대비 -49%) | 6/12 데뷔 $160.95(+19%, 공모가 $135 밸류 $1.75T) → 6/16 ATH $225.64(종가 $211.39) → 7/7 Nasdaq-100 편입 페이드 → 7/8 $145.20 → **7/24~25 ~$113.66~114.25(저 $110.26·고 $118.02), 시총 $1.53T. IPO가 $135 하회.** **Q2 실적 8/4(변경, 기존 8/6) after close 확정 → 발표 2거래일 후 최대 20% 인가 인사이더/직원 주식(최대 9.115억주) 락업 1차 해제 = 사상 최대 인사이더 락업 만기. 180일 락업 12/8.** 옵션거래 6/17 개시 [Yahoo Finance/TradingKey/Investing/stockalarm] |
+| 항목                           | 수치                                                        | 비고                                                                                                                                                                                                                                                                                                           |
+| ------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 상업 발사 글로벌 점유율 (2025) | 82%                                                         | 독보적 1위                                                                                                                                                                                                                                                                                                     |
+| **Falcon 패밀리 발사 (2026)**  | **6/4 기준 66회** (Falcon 9 65 + FH 1)                      | 4/14 2026년 1,000번째 Starlink 발사. 연간 목표 140~145회 (Shotwell)                                                                                                                                                                                                                                            |
+| **★ Q2 2026 매출**             | **★ $7.8B (+92% YoY) ★**                                    | 컨센 ~$6.8B을 ~$1B 상회. 6/12 상장 후 첫 분기실적(8/4 장마감후). 연결성(Starlink) $4.3B(+66%)이 우주/AI 손실 상쇄 [Fortune/CNN/Yahoo]                                                                                                                                                                          |
+| **★ Q2 순손익/EBITDA**         | **★ 순손실 -$541M(전년 -$1.0B), adj EBITDA $3.5B(+191%) ★** | 순손실 전년동기 -$1.0B서 대폭 축소, 컨센 -$1.9B 예상 대비 선방 [CNN/CNBC]                                                                                                                                                                                                                                      |
+| **★ Q2 CapEx**                 | **★ $18.4B (전분기 $10.1B서 급증, AI $15.83B/80%+) ★**      | AI 컴퓨트(Google $920M/월·Anthropic $1.25B/월·Reflection $150M/월, Colossus 멤피스)에 80%+. CFO "1년 미만 회수기간" 방어에도 SPCX 시간외 최대 -8% [CNN/CNBC/TechCrunch]                                                                                                                                        |
+| 2026E 매출                     | **$24B+**                                                   | H2 급가속 필요(AI 컴퓨트+Starlink)                                                                                                                                                                                                                                                                             |
+| **SpaceX SPCX 주가 (8/7)**     | **~$114.92** (IPO가 $135 하회 -15%, 52주 $104.83~$225.64)   | 6/12 데뷔 $150→6/16 ATH $225.64→7/15 IPO가 첫 하회→8/4 실적후 급락→**8/6 1차 락업만기(최대 9.115억주·적격 20%·~$116B 해제)에도 당일 종가 +6.1% 반등**, 8/7 ~$114.92. 애널 Buy(27매수/2매도)·평균 12M TP $228.95. Morgan Stanley "펀더멘털 대체로 불변, 매력적 진입점" [Motley Fool/Forbes/Investing.com/Yahoo] |
 
-- **Starship Flight 13 (IFT-13) — 7/24 발사 성공 ★**: **Booster 20(B20)+Ship 40(S40), V3 Block 3 2차 비행(준궤도).** **Starlink V3 위성 20기 첫 궤도 배치 성공(6기 열차폐 실시간 촬영 카메라·전량 태양전지+레이저링크, Starship과 동일 궤적 디오빗).** **Super Heavy B20 발사 6분 후 해상 controlled landing 성공.** **Ship S40 coast phase 후 in-space Raptor 1기 relight(기동시험) + 인도양 controlled entry·'역대 최연착륙(softest splashdown ever)'.** **열차폐 5월 IFT-12 대비 대폭 개선(Musk "최신 열차폐 설계 훌륭").** largely successful [Space.com/CNN/Spaceflight Now/NASASpaceFlight]
-- **7/16 abort → 엔진 6기 교체 → 7/24 재발사**: 7/16 1차 시도 T-0 직전 비행SW 자동중단(4기 Raptor 시동파라미터 미달, 습기 문제 추정) → 습기 영향 엔진 6기 교체 후 7/24 2차 시도 성공 [Spaceflight Now]
-- **Starship V3 (IFT-12) — 5/22 비행 완료**: Pad 2 첫 사용, V3 첫 비행. S39 상승 중 Rvac 1기 조기셧다운·in-space relight 불발, 인도양 splashdown 성공, 부스터 B19 boostback 실패 crash. **Flight 13이 V3의 명확한 진전 입증** [SpaceX.com/Wikipedia]
+- **Starship Flight 14 (IFT-14) — 8월말 목표 ★**: **Booster 21(B21)+Ship 41(S41), V3 Block 3 3차 비행.** **첫 궤도비행 + 타워 Ship catch 첫 시도(규제승인 조건).** **Starlink V3 위성 운용 궤도 배치(Flight 13 20기 준궤도 시험 성공 후).** Shotwell "매월 발사" 방침 = Flight 13(7/24) 기준 8월말 NET. 궤도 프로파일로 최대 수시간~48h 후 착륙 가능. Musk 실적콜(8/4)서 "이달 발사+catch 시도" 언급 [Space.com/SpacePolicyOnline/KeepTrack]
+- **Starship Flight 13 (IFT-13) — 7/24 발사 성공**: B20+S40, V3 Block 3 2차(준궤도). Starlink V3 20기 첫 궤도 배치(6기 열차폐 카메라), Super Heavy B20 해상 연착륙, Ship in-space Raptor relight + 인도양 '역대 최연착륙', 열차폐 대폭 개선. **Flight 13 분석서 열차폐 성능이 궤도 시도를 정당화할 만큼 양호 → Flight 14 궤도 결정** [Space.com/CNN/Spaceflight Now]
 - **LC-39A**: Falcon 9 단일 발사 종료, Starship 전용 전환 진행. 2026 하반기 플로리다 첫 Starship 발사 예정
 
 #### Blue Origin -- New Glenn Return to Flight 공식화(hybrid CONOPS)
@@ -68,7 +70,7 @@ last_synced_from_db: 2026-07-25
 | ------------------------ | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **NG-4 폭발 (5/28)**     | **정적연소시험 중 SLC-36 폭발**        | 7개 BE-4 엔진 점화 직후 1단(322ft) 붕괴. 페이로드 미탑재, 인명피해 없음. **초기분석: 이상원인 1단 aft section**                                                                                                                                                                                                                                                             |
 | **LC-36 RTF (6/30~7/1)** | **hybrid H/V integration 전환 공식화** | **Blue Origin "New Glenn Return to Flight" 공식 페이지 공개.** LC-36 재건 대신 **hybrid horizontal-vertical integration CONOPS**: 1·2단 수평통합(HIF)→간이 transporter로 static launch mount 이송→표준 crane으로 수직회전 후 launch mount 안착. lightning tower 등 주요 인프라 손실이나 **tank farm 등 핵심 시스템 경미 손상** [SpaceflightNow 06-30/NASASpaceFlight 07-01] |
-| **RTF 시점 (괴리)**      | **CEO Limp 연내 vs NASA 2028**         | Limp "연내 RTF"(2026말) 재확인 ↔ NASA Isaacman "2028 가능성", 타 패드 대비 절반 일정으로 ambitious [SpaceflightNow/Starlust]                                                                                                                                                                                                                                                |
+| **RTF 시점 (괴리)**      | **CEO Limp 연내(12월) vs NASA 2028**   | Limp "연내 RTF"(2026말) 재확인 ↔ NASA Isaacman "2028 가능성", 타 패드 대비 절반 일정으로 ambitious [SpaceflightNow/Starlust]                                                                                                                                                                                                                                                |
 | 부스터·상단 무피해       | **HIF 내 GS-2 3기 + GS-1 1기 무피해**  | HIF 내 부스터·상단 양호(4 stages escaped damage). 빠른 재개의 잠재 레버리지                                                                                                                                                                                                                                                                                                 |
 | Amazon Leo 매니페스트    | **발사 동결 (FCC 면제로 압박 완화)**   | New Glenn=Amazon 100+ 발사 중 25%. LC-36 재건까지. **FCC 중간 데드라인 waiver로 시간 압박 완화**                                                                                                                                                                                                                                                                            |
 
@@ -76,22 +78,22 @@ last_synced_from_db: 2026-07-25
 - **NG-3 (4/19)**: 부스터 재사용 최초 성공했으나 2단 BE-3U 열적 이상 → AST BlueBird 7 궤도 이탈(손실, 보험 적용)
 - Vandenberg 서해안 발사장 건설 진행 중 (LC-36 의존도 분산 시도)
 
-#### Rocket Lab (RKLB) -- ★ Neutron AVac ~5.5분 full-duration 시험 완료(~7/20) + Iridium $8.0B 인수 구조 구체화($3.6B 브릿지론) ★
+#### Rocket Lab (RKLB) -- ★ 미 우주군 SB-AMTI $397M 수주(8/4, Neutron)·9일간 총 $663M, Neutron 첫 확정 국방미션(2028)·Q2 실적 8/10 ★
 
-| 항목                    | 수치                                                                  | 비고                                                                                                                                                                                                                                                                        |
-| ----------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Q1 2026 매출            | **$200.3M (+63.5% YoY)**                                              | 분기 역대 최고. GAAP GM 38.2%. Q1 신규 36개 계약(31 Electron/HASTE+5 Neutron)                                                                                                                                                                                               |
-| **백로그**              | **$2.2B (+108% YoY)**                                                 | 70+ 발사 백로그. 유동성 $2B+                                                                                                                                                                                                                                                |
-| HASTE 극초음속 수주     | **Anduril $30M (3회) + DoW $190M 블록(20회)**                         | LC-2 버지니아, 첫 미션 12개월 내                                                                                                                                                                                                                                            |
-| **★ Neutron AVac 시험** | **★ 2단 Archimedes Vacuum ~5.5분 full-duration 열연소 완료(~7/20) ★** | Stennis Archimedes Test Complex, stub skirt로 core 검증(full nozzle은 비행 상단 장착). AVac=1단 대비 추력 ~1.2x·노즐 2.5m 연장. Neutron 1단 8기 Archimedes ~1.5M lbf. **Q4 2026 데뷔 유지 핵심 마일스톤 — 6연속 하락 후 프리마켓 ~3%↑** [Space.com/Benzinga/Simply Wall St] |
-| **주가 (7월)**          | **~$100대 (52주고 $150.23 5월, YTD +33%)**                            | Iridium 발표(6/29) +12% ~$94 → 변동성. 7월 우주주 조정·희석 우려 지속. Nasdaq-100 편입(6/22) [Yahoo/Benzinga/TradingKey]                                                                                                                                                    |
-| **애널 컨센서스**       | **Buy(16애널), Wall St TP $93.75**                                    | Stifel TP $132(←$110). Needham/DB $120                                                                                                                                                                                                                                      |
-| **Nasdaq-100 편입**     | **6/22/2026 개장전 발효**                                             | QQQ 등 200+ 상품 $800B AUM 추종. 패시브 수급 유입 [StockTitan 06-12]                                                                                                                                                                                                        |
+| 항목                      | 수치                                                                    | 비고                                                                                                                                                                                                                                                                                  |
+| ------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Q1 2026 매출              | **$200.3M (+63.5% YoY)**                                                | 분기 역대 최고. GAAP GM 38.2%. Q1 신규 36개 계약(31 Electron/HASTE+5 Neutron)                                                                                                                                                                                                         |
+| **★ Q2 2026 실적 (8/10)** | **★ 컨센 매출 ~$231.6M(+60% YoY)·주당손실 -$0.06 ★**                    | 8/10 장마감후 발표(콘콜 5pm ET). Neutron 데뷔 타임라인이 핵심 지표 [StockTitan/TechTimes/ForeignPolicyJournal]                                                                                                                                                                        |
+| **★ SB-AMTI $397M (8/4)** | **★ 미 우주군 SB-AMTI $397M — Neutron으로 Flatellite 개발·발사·운용 ★** | Space-Based Airborne Moving Target Indicator=유인정찰기 불가 지역 공중위협 상시감시. Flatellite(대형 성좌 최적화 평판위성)+우주센서·저지연 고대역 통신. **3개사 $615M 패키지의 일부(RKLB/STR 등). = Neutron 첫 확정 국방미션(2028 데드라인)** [Rocket Lab IR/SpaceNews/Via Satellite] |
+| **★ 9일간 총 수주**       | **★ $663M+ (SB-AMTI $397M + 알래스카 준궤도 $266M) ★**                  | 9일 윈도우 총 $663M. 최대 계약이 미검증 Neutron에 의존 [Motley Fool/ForeignPolicyJournal]                                                                                                                                                                                             |
+| **백로그**                | **$2.2B (+108% YoY)**                                                   | 70+ 발사 백로그. 유동성 $2B+ (Q1 말 기준, Q2 실적 8/10 갱신)                                                                                                                                                                                                                          |
+| **애널 컨센서스**         | **Buy(16애널), Wall St TP $93.75**                                      | Stifel TP $132(←$110). Needham/DB $120                                                                                                                                                                                                                                                |
+| **Nasdaq-100 편입**       | **6/22/2026 발효**                                                      | QQQ 등 200+ 상품 $800B AUM 추종. 패시브 수급 유입                                                                                                                                                                                                                                     |
 
-- **★ Iridium Communications $8.0B 인수 — 구조 구체화 ★**: 6/29 정의계약(definitive agreement). **Iridium 주주 $54/주 = $27 현금 + RKLB 주식(collar mechanism 연동), EV ~$8.0B, 2027 중반 종결(주주·규제 승인).** **현금분 조달 위해 $3.6B 브릿지론(Deutsche Bank·Wells Fargo) 확보.** 발사·위성제조 + Iridium 글로벌 L밴드 위성통신망·스펙트럼·500+ 파트너 → 설계·제조·발사·성좌운용 완전 수직통합, 반복 위성서비스 매출·현금흐름 개선. 발표일 RKLB +12% ~$94·Iridium +22% ~$53 [PRNewswire/Yahoo/Benzinga]
-- **Neutron**: **데뷔 NET Q4 2026 유지(Beck "aggressive schedule")**. **발사허가 윈도 7/1~12/31/2026 FAA 신청.** 43m·LEO 13t(재사용). Archimedes 9기 methane. 1월 hydrostatic 시험서 1단 탱크 rupture → 자동섬유배치 유닛으로 교체. **5-Neutron+3-Electron 블록계약(>$190M, 매니페스트 70+).** 성공 시 Falcon 9와 정부·상업 중대형 미션 직접 경쟁 [NASASpaceFlight 07/SpaceflightNow 05-07]
-- **Motiv Space Systems 인수**: $60M, 5월. 화성 검증 로보틱스(→Rocket Lab Robotics). 수직통합 강화
-- **★ VICTUS HAZE(USSF TacRS)**: Notice to Launch 16h42m 만에 발사(6/19 LC-1 뉴질랜드) — 세계 대응발사 기록 경신(기존 대비 10h+ 단축), 단일 프라임 Pioneer 위성 수직통합+발사+온오빗 운용 최초 일괄 [Rocket Lab/Space.com/SpaceNews]
+- **★ Neutron — 데뷔 NET Q4 2026 유지 ★**: 비행 하드웨어 버지니아 AIC 조립 중. **FAA 발사윈도 7/1~12/31/2026.** 43m·LEO 13t(LOX/메탄 양단). **첫 비행 재사용 미시도 → 회수는 2차 비행 landing barge.** 1월 hydrostatic 시험서 파열한 1단 탱크를 자동섬유배치(AFP) 유닛으로 교체 = 수작업 결함 클래스 제거. 성공 시 Falcon 9와 정부·상업 중대형 미션 직접 경쟁 [NASASpaceFlight/SpaceNews/RocketLaunch.Live]
+- **★ Iridium Communications $8.0B 인수**: 6/29 정의계약. Iridium 주주 $54/주 = $27 현금 + RKLB 주식(collar), EV ~$8.0B, 2027 중반 종결. 현금분 $3.6B 브릿지론(Deutsche Bank·Wells Fargo). 발사·위성제조 + Iridium 글로벌 L밴드 위성통신망·스펙트럼·500+ 파트너 → 완전 수직통합 [PRNewswire/Yahoo/Benzinga]
+- **HASTE 극초음속**: Anduril $30M(3회) + DoW $190M 블록(20회). LC-2 버지니아
+- **Motiv Space Systems 인수**($60M, 5월)·**VICTUS HAZE**(6/19 세계 대응발사 기록 16h42m)
 
 #### Relativity Space
 
@@ -103,37 +105,35 @@ last_synced_from_db: 2026-07-25
 
 #### Starlink (SpaceX)
 
-| 항목                 | 수치                   | 비고                                                                                                                      |
-| -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **활성 고객 (6월)**  | **1,000만+**           | 160개국+. 2/2026 1,000만 마일스톤 달성(Musk/Shotwell) [Wikipedia/basenor]                                                 |
-| **궤도 위성 (7/24)** | **~10,844기**          | 운용 ~10,828기. 7/2 10,742 대비 +100. 누적 12,552기 발사(1,708 디오빗). 계획 42,000기 [HighSpeedInternet/KeepTrack/azmth] |
-| 서비스 국가          | 160개국+               | 양안 동시발사 지속                                                                                                        |
-| **FCC 승인 한도**    | **15,000기**           | Gen2 +7,500기 추가 배치·운용 허가                                                                                         |
-| **Starlink V3 위성** | **첫 우주 배치(7/24)** | Flight 13서 V3 20기 첫 궤도 진입(Starship 발사 전용). 5G급·고대역, 향후 대량 배치 예정                                    |
-| DTC 위성 수          | 650기+                 | 세계 최대 4G 커버리지                                                                                                     |
-| 2025 매출            | $11.4B                 | +50% YoY. SpaceX 매출 61% [SpaceXChart]                                                                                   |
+| 항목                  | 수치                                                    | 비고                                                                                                                                        |
+| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **가입자 (Q2 2026)**  | **1,200만 (2배 YoY)**                                   | Q2 실적서 12M 도달(전년비 2배). Q2 연결성 매출 $4.3B(+66%), ARPU -22% YoY(국제확장+저가요금제) [Fortune/CNN 08-04]                          |
+| **궤도 위성 (8/6~7)** | **~~10,764~~10,920기**                                  | 트래커별 상이(디오빗/실패 포함 여부). 운용 ~10,904기(8/6). 누적 발사 ~12,668기. 550km 셸. 계획 42,000기 [HighSpeedInternet/KeepTrack/azmth] |
+| 서비스 국가           | 160개국+                                                | 양안 동시발사 지속                                                                                                                          |
+| **FCC 승인 한도**     | **15,000기**                                            | Gen2 +7,500기 추가 배치·운용 허가                                                                                                           |
+| **Starlink V3 위성**  | **Flight 13 첫 배치(7/24), Flight 14(8월말) 운용 배치** | 5G급·고대역, Starship 발사 전용. Flight 14서 운용 궤도 배치 시도                                                                            |
+| DTC 위성 수           | 650기+                                                  | 세계 최대 4G 커버리지                                                                                                                       |
+| 2025 매출             | $11.4B                                                  | +50% YoY. SpaceX 매출 61% [SpaceXChart]                                                                                                     |
 
-- **Starlink Mobile**: DTC 정식 브랜드. 텍스트+음성+데이터(30개 앱). **연말 2,500만 이용자 목표**
-- **Gen2 위성 계획**: 100배 데이터 밀도 향상 목표. **V3 위성 Flight 13(7/24) 첫 궤도 배치 = Starship 발사 캐던스에 위성 배치 결합 개시**
+- **Starlink Mobile**: DTC 정식 브랜드. 텍스트+음성+데이터. **연말 2,500만 이용자 목표**
+- **Gen2/V3 위성 계획**: 100배 데이터 밀도 향상 목표. **V3 위성 Starship 발사 캐던스에 위성 배치 결합 — Flight 14(8월말) 운용 배치 시도**
 - **V2 DTC 위성 (2027 중반)**: 5G급, Starship 발사, 6개월 내 1,200기 배치 목표
 - Deutsche Telekom 유럽 10개국 Starlink Mobile 2028 계약
 
-#### Amazon Leo (구 Project Kuiper) -- ★ FCC 7/30 중간 데드라인 waiver 확정, 궤도 396기 ★
+#### Amazon Leo (구 Project Kuiper) -- ★ 궤도 ~375+기(3위 성좌), 첫 Vulcan 미션 9월로, FCC 7/30 waiver ★
 
-| 항목                       | 수치                               | 비고                                                                                                                                                                              |
-| -------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 투자 규모                  | $10B+                              | 인프라 투자                                                                                                                                                                       |
-| **궤도 위성 수 (2026.07)** | **396기 (7/2 Atlas V +29)**        | 7/2 ULA Atlas V 29기 발사 → 궤도 396기(14차 미션, 3위 성좌). Atlas V 최종 미션 → 차기 Vulcan(40+기). 신규 발사 이후 없음 [MLQ/Broadband Breakfast/Space.com]                      |
-| **★ FCC waiver 확정 ★**    | **★ 7/30 중간의무 폐기 ★**         | FCC가 2년 연장 요청 대신 **중간 데드라인(1,618기/50%) 자체 폐기**, 전체 3,232기 **2029.07.30 최종기한만 유지**. 7/30까지 ~700기(인가 21%) 예상 [FCC/FierceNetwork/GeekWire/Yahoo] |
-| **스펙트럼 페널티**        | **7/30 후 발사분 우선권 임시상실** | 선처리회차(Starlink) 보호·양립 입증 의무. **50% 배치 시점 or 2028.03.30 회복**(Starlink 시간 우위) [FCC DA-26-553/Engadget]                                                       |
-| **2029 최종 의무**         | **3,232기 by 2029.07.30 유지**     | 중간의무 폐기 후 유일 강제기한                                                                                                                                                    |
-| **New Glenn 발사**         | **동결 (FCC 압박 완화)**           | 5/28 NG-4 폭발 + LC-36 파괴(RTF hybrid CONOPS). New Glenn=발사 25%                                                                                                                |
-| 목표 컨스텔레이션          | 3,232기 (Gen2 +4,500)              | Gen2 1월 FCC 승인 → 총 7,732기                                                                                                                                                    |
-| 2030 매출 목표             | $20B/년                            | 내부 추정                                                                                                                                                                         |
+| 항목                       | 수치                                    | 비고                                                                                                                                                                 |
+| -------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 투자 규모                  | $10B+                                   | 인프라 투자                                                                                                                                                          |
+| **궤도 위성 수 (2026.08)** | **~375+기 (Amazon 공식, 12+ 미션)**     | Atlas V/Falcon 9/Ariane 6로 배치, 3위 성좌. 연내 상업 서비스 개시 임계 [aboutamazon/orbitalradar/CNBC]                                                               |
+| **★ 첫 Vulcan 미션**       | **★ 9월로 목표(당초 예상 대비 슬립) ★** | 45기·최적화 Centaur V 상단. ULA Atlas V 잔여 6회 후 퇴역, Vulcan 38회 계획(각 45기). 2026 20+미션·2027 30+미션 목표 [RocketLaunch.Live/orbitalradar]                 |
+| **FCC waiver (7/30)**      | **중간의무(1,618기/50%) 폐기**          | FCC가 중간 데드라인 자체 폐기, 전체 3,232기 2029.07.30 최종기한만 유지. 7/30 후 발사분 스펙트럼 우선권 임시상실(50% or 2028.03.30 회복) [FCC/FierceNetwork/GeekWire] |
+| **2029 최종 의무**         | **3,232기 by 2029.07.30 유지**          | 중간의무 폐기 후 유일 강제기한                                                                                                                                       |
+| 목표 컨스텔레이션          | 3,232기 (Gen2 +4,500)                   | Gen2 1월 FCC 승인 → 총 7,732기                                                                                                                                       |
+| 2030 매출 목표             | $20B/년                                 | 내부 추정                                                                                                                                                            |
 
-- **FCC waiver로 중간 데드라인 부담 해소** — 단 스펙트럼 페널티(~20개월)는 사실상 Starlink에 시간 우위 부여. FCC "SpaceX가 현재 미국 유일 LEO 소비자 브로드밴드 제공자"라며 경쟁 촉진 명분
-- **2026.04 엔터프라이즈 베타 개시**. 고객: Verizon, AT&T, Vodafone, JetBlue, NASA 등
-- **연내 상업 광대역 서비스 개시 임계**: 396기 도달 → US/UK/프랑스/독일/캐나다 베타 late 2026~early 2027 (Amazon 발표)
+- **연내 상업 광대역 서비스 개시 임계** — US/UK/프랑스/독일/캐나다 베타 late 2026~early 2027 (Amazon 발표). 고객: Verizon, AT&T, Vodafone, JetBlue, NASA 등
+- **FCC waiver로 중간 데드라인 부담 해소** — 단 스펙트럼 페널티(~20개월)는 사실상 Starlink에 시간 우위. FCC "SpaceX가 현재 미국 유일 LEO 소비자 브로드밴드 제공자"
 
 #### Eutelsat / OneWeb
 
@@ -159,24 +159,25 @@ last_synced_from_db: 2026-07-25
 
 - DTC 위성 650기+. 22개국. **2026 목표 2,500만**. V2 위성(2027 중반) Starship 발사 5G급
 
-#### AST SpaceMobile (ASTS) -- ★ $1.15B 전환사채(2034) 발행완료(7/21), BB11/12/13 8월 상반기·~45 BlueBird 2027 초로 지연 ★
+#### AST SpaceMobile (ASTS) -- ★ BlueBird 11/12/13 궤도 진입 성공(8/5)·초기 대비 속도 2배, 생산 42호기 진척, BB14/15/16 차기 ★
 
-| 항목                       | 수치                                          | 비고                                                                                                                                                                               |
-| -------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **FCC 상업 승인**          | **최대 248기 인가**                           | 미국 DTC 브로드밴드 상용 운용 프레임워크 (SCS) [8-K]                                                                                                                               |
-| **★ 전환사채 발행 (7/21)** | **★ $1.15B 1.625% 전환 선순위채 2034 만기 ★** | $1.0B + 옵션 $150M. 전환가 ~$79.57(7/14 종가 $66.31 대비 +20% 프리미엄), capped call로 실효전환가 $149.20. 발표(7/16) 주가 ~17%↓ ~$58 희석 우려 [BusinessWire/SEC 8-K/Motley Fool] |
-| **BlueBird 8/9/10**        | **6/17 궤도 진입 성공**                       | 케이프 카나베랄 Falcon 9. Block 2, LEO 최대 상업 통신 어레이 [BusinessWire 06-17]                                                                                                  |
-| **★ BlueBird 11/12/13**    | **★ 8월 상반기 발사 목표(지연) ★**            | 케이프 카나베랄 Falcon 9. 기존 발표 대비 시점 구체화(8월 상반기) [BusinessWire]                                                                                                    |
-| **Rakuten 일본 JV**        | **일본 50/50 합작법인 설립**                  | 2026말 일본 DTC 서비스 개시, FY2027 전국 확대 목표 [Timothy Sykes 06-26]                                                                                                           |
-| **생산 (BB11~33)**         | **월 6기 제조능력**                           | BB11~33 advanced stages 생산·조립 중(전량 Falcon 9 전환)                                                                                                                           |
-| **FY2026 매출 가이던스**   | **$150~200M (재확인)**                        | FY2025 $70.9M 대비 +111~182%. Q1 매출 $14.7M [8-K]                                                                                                                                 |
-| **배치 목표 (지연)**       | **~45기 → 2027 초로 이동**                    | 발사 가용성 제약으로 기존 2026말~2026 목표에서 **2027 초로 지연** [BusinessWire]                                                                                                   |
-| 계약 매출 (pipeline)       | **$1.2B+**                                    | MNO 파트너+미정부 약정. 3월 이후 정부 신규 3건 수주                                                                                                                                |
-| **MNO 파트너 (7월)**       | **~60개 (가입자 30억+)**                      | ~60개 이동통신사 파트너, 30억+ 가입자 커버 [24/7 Wall St/congress.net]                                                                                                             |
-| 현금                       | **$3.5B** (Q1 말)                             | 95% 수직통합. **전환사채 $1.15B로 유동성 추가 확보(희석 트레이드오프)**                                                                                                            |
+| 항목                     | 수치                                                            | 비고                                                                                                                                                              |
+| ------------------------ | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **FCC 상업 승인**        | **최대 248기 인가**                                             | 미국 DTC 브로드밴드 상용 운용 프레임워크 (SCS) [8-K]                                                                                                              |
+| **★ BlueBird 11/12/13**  | **★ 8/5 궤도 진입 성공 (Cape Canaveral Falcon 9, 03:42 EDT) ★** | 차세대기. 특수 지상장비 없이 일반 스마트폰 직접 셀룰러 광대역. **초기 BlueBird 대비 최대 다운로드 속도 거의 2배** [BusinessWire 08-05/Yahoo/ForeignPolicyJournal] |
+| **BlueBird 8/9/10**      | **6/17 궤도 진입 성공**                                         | 케이프 카나베랄 Falcon 9. Block 2, LEO 최대 상업 통신 어레이                                                                                                      |
+| **★ BlueBird 14/15/16**  | **★ 차기 미션 준비 ★**                                          | BB11/12/13 성공에 이어 차기 발사 준비, 캐던스 유지 [BusinessWire]                                                                                                 |
+| **★ 전환사채 (7/21)**    | **★ $1.15B 1.625% 전환 선순위채 2034 만기 ★**                   | $1.0B + 옵션 $150M. 전환가 ~$79.57(+20% 프리미엄), capped call 실효 $149.20. 발표(7/16) 주가 ~17%↓ [BusinessWire/SEC 8-K/Motley Fool]                             |
+| **★ 생산 (수직통합)**    | **★ 42호기까지 진척 ★**                                         | 수직통합 제조 42호기까지 advanced stages, 전량 Falcon 9 전환. 월 6기 제조능력 [ForeignPolicyJournal 08-02]                                                        |
+| **Rakuten 일본 JV**      | **일본 50/50 합작법인 설립**                                    | 2026말 일본 DTC 서비스 개시, FY2027 전국 확대 목표                                                                                                                |
+| **FY2026 매출 가이던스** | **$150~200M (재확인)**                                          | FY2025 $70.9M 대비 +111~182%. Q1 매출 $14.7M [8-K]                                                                                                                |
+| **배치 목표**            | **~45기 → 2027 초로 이동**                                      | 발사 가용성 제약. **BB11/12/13(8/5) 발사로 캐던스 회복 진전** [BusinessWire]                                                                                      |
+| 계약 매출 (pipeline)     | **$1.2B+**                                                      | MNO 파트너+미정부 약정. 3월 이후 정부 신규 3건 수주                                                                                                               |
+| **MNO 파트너 (7월)**     | **~60개 (가입자 30억+)**                                        | ~60개 이동통신사 파트너, 30억+ 가입자 커버                                                                                                                        |
+| 현금                     | **$3.5B** (Q1 말) + 전환사채 $1.15B                             | 95% 수직통합. 전환사채로 유동성 추가 확보(희석 트레이드오프)                                                                                                      |
 
-- **$1.15B 전환사채로 위성 배치 자금 확보하나 희석 우려로 주가 ~17%↓** — capped call로 실효 희석 방어(전환가 $79.57→실효 $149.20)하나 시장은 배치 지연(~45기 2027 초)과 함께 부정 반응
-- **BB8/9/10(6/17) 성공에 이어 BB11/12/13 8월 상반기 발사로 캐던스 유지** — FY26 $150~200M 가이던스 궤도 유지의 핵심
+- **BB11/12/13(8/5) 궤도 진입 성공으로 배치 캐던스 회복** — BB8/9/10(6/17)+BB11/12/13(8/5)+BB14/15/16 준비. 초기 대비 속도 거의 2배 = 기술 진전. FY26 $150~200M 가이던스 궤도 유지 핵심
+- **$1.15B 전환사채(7/21)로 위성 배치 자금 확보** — capped call로 실효 희석 방어(전환가 $79.57→실효 $149.20)
 - **Rakuten 일본 50/50 JV로 글로벌 MNO 파트너십 확장** — 일본 시장 DTC 진출 가시화
 
 ### 5. 우주 탐사
@@ -192,35 +193,33 @@ last_synced_from_db: 2026-07-25
 | **Blue Moon Mk2**  | **유인착륙 2028로 이동**   | Blue Moon에 Axiom 우주복 탑재(Artemis III 테스트), Orion 도킹 후 검증                                                          |
 
 - **NASA 아키텍처 재편 (6월)**: Artemis III(late 2027)는 Orion+상업착륙선 지구궤도 랑데부·도킹 검증 미션으로 전환(유인착륙 제외). **유인 달 착륙은 2028 목표** [Space.com/NASA]
-- 미션 구조: Blue Moon/Starship 착륙선 + Orion 도킹 구조 유지. Blue Moon에 Axiom 우주복 탑재 검증
-- **WFTC Act $1.8B 추가**: Artemis III 이후 SLS 최대 2회 추가비행+Gateway 지원
-- **SLS 진행**: 코어스테이지 VAB 반입 후 엔진섹션-코어스테이지 통합 중. **RS-25 4기 Stennis에서 출하 → 엔진섹션 통합(핵심 마일스톤).** SRB 전 세그먼트 KSC 도착 → 여름 스태킹 개시 [NASA.gov]
+- **SLS 진행**: 코어스테이지 VAB 반입 후 엔진섹션-코어스테이지 통합 중. **RS-25 4기 Stennis 출하 → 엔진섹션 통합. SRB 전 세그먼트 KSC 도착 → 여름 스태킹 개시** [NASA.gov]
+- **中 Chang'e 7**: 2026년 8월 발사 목표(달 남극 Shackleton 크레이터, 물얼음 탐색+ILRS 기지 부지평가) [SpaceNews/Global Times]
 
-#### Intuitive Machines (LUNR) -- USSF Andromeda IDIQ 상한 $6.24B + NASA 6번째 CLPS $148.3M Nova-C
+#### Intuitive Machines (LUNR) -- ★ Q2 실적 8/13(컨센 매출 $216.33M)·L3Harris AMDT3(Golden Dome T3) 우주선 플랫폼 지원 선정 +7% ~$13.96 ★
 
-| 항목                       | 수치                                        | 비고                                                                                                                                                                            |
-| -------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Q1 2026 매출               | **$186.7M (+199% YoY)**                     | 분기 역대 최고 (Lanteris 인수 효과)                                                                                                                                             |
-| Q1 adj EBITDA              | **흑자 전환**                               | 최초 흑자. 백로그 $1B+ (Lanteris+신규 $428.9M)                                                                                                                                  |
-| FY2026 가이던스            | **$900M~$1B**                               | Adj EBITDA 흑자 전환                                                                                                                                                            |
-| **★ NASA 6번째 CLPS**      | **★ 최대 $148.3M (6/30) ★**                 | firm-fixed-price — Nova-C 생산라인 자격화 착륙선 2028 달 인도(기본 $68.6M + 제품라인 자격화 성과인센티브 $79.7M). Firefly도 6/30 NASA 달착륙선 수주 [TS2/Benzinga/Craig-Hallum] |
-| **★ USSF Andromeda IDIQ**  | **★ 상한 $1.8B→$6.24B 상향·선정 ★**         | 우주군이 Andromeda IDIQ 상한 상향, LUNR 선정 = GEO 기동위성 우주영역인식(SDA) 성좌 경쟁. **단 IDIQ는 상한(max)일 뿐 실매출은 task order 의존** [GovConWire/TipRanks]            |
-| **$500M ATM 발행 (6월초)** | **보통주 최대 $500M ATM+shelf → 희석 우려** | 발행+LTV 탈락으로 주가 -21.6% 급락(리셋) [Simply Wall St/8-K]                                                                                                                   |
-| **LTV (달 표면 이동체)**   | **탈락 (Astrolab/Lunar Outpost 수주)**      | NASA 경쟁사 선정. 변동성 확대                                                                                                                                                   |
-| **주가 (7월)**             | **~$19.58 (7/2, 월 -36.5%)**                | $500M ATM 발행 + LTV 탈락 후 변동성. 6/30 NASA 뉴스 후 $21.39서 되돌림. 일부 애널 TP $75 [TS2/Benzinga/Yahoo]                                                                   |
-| Lanteris 인수              | **최대 $851M**                              | 매출 성장 동인                                                                                                                                                                  |
+| 항목                      | 수치                                                        | 비고                                                                                                                                              |
+| ------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Q1 2026 매출              | **$186.7M (+199% YoY)**                                     | 분기 역대 최고 (Lanteris 인수 효과). 백로그 $1B+, adj EBITDA 첫 흑자                                                                              |
+| **★ Q2 2026 실적 (8/13)** | **★ 컨센 매출 $216.33M(전년 $20.69M)·주당손실 -$0.09 ★**    | 8/13 장전 발표(콘콜 8:30am ET). 전년동기 -$0.70·$20.69M 대비 대폭 개선 [StockTitan/MarketBeat]                                                    |
+| FY2026 가이던스           | **$900M~$1B**                                               | Adj EBITDA 흑자 전환                                                                                                                              |
+| **★ L3Harris AMDT3 선정** | **★ Golden Dome T3 추적층 우주선 플랫폼 생산 지원 → +7% ★** | L3Harris가 AMDT3(Accelerated Missile Defense Tranche 3) 우주선 플랫폼 생산 지원 파트너로 LUNR 선정 = Golden Dome 공급망 편입 [TipRanks/CNN 08-06] |
+| **NASA 6번째 CLPS**       | **최대 $148.3M (6/30)**                                     | Nova-C 생산라인 자격화 착륙선 2028 달 인도(기본 $68.6M+인센티브 $79.7M)                                                                           |
+| **USSF Andromeda IDIQ**   | **상한 $1.8B→$6.24B 상향·선정**                             | GEO 기동위성 우주영역인식(SDA) 성좌. IDIQ는 상한, 실매출 task order 의존                                                                          |
+| **주가 (8/4)**            | **~$13.96 (YTD -22%, 고점 -70%)**                           | $500M ATM 발행+LTV 탈락 리셋 후. L3Harris AMDT3 선정으로 +7% 반등 [CNN/investingwpurpose]                                                         |
+| Lanteris 인수             | **최대 $851M**                                              | 매출 성장 동인                                                                                                                                    |
 
-- IM-3: H2 2026 발사 (Nova-C, Reiner Gamma). 총 CLPS 계약 6건. **6/30 Nova-C 생산라인 계약으로 반복형 착륙선 인프라 사업 전환 가속**
+- IM-3: H2 2026 발사 (Nova-C, Reiner Gamma). 총 CLPS 계약 6건. **L3Harris AMDT3 우주선 플랫폼 지원 선정으로 방위 공급망 진입 = Golden Dome 밸류체인 편입**
 
 ### 6. 한국 우주산업
 
-#### 누리호 (KSLV-II) -- ★ 5차 총조립 진입, 9월 발사 추진(8월초 발사관리위 확정) ★
+#### 누리호 (KSLV-II) -- ★ 5차 발사 9월→10월 연기(초소형군집위성 추력기 성능 보완), 8월 말 발사관리위 발사윈도 확정 ★
 
 - 4차 발사 성공 (2025.11.27) — **한화에어로스페이스 최초 민간 체계관리** (KARI→민간 이양)
-- **5차 발사**: **9월 발사 추진** — 1·2·3단 단별 조립 완료 → **총조립 단계 진입.** **8월초 발사관리위원회 개최해 정확한 발사일 결정 예정.** 탑재: **초소형군집위성 5기 + 부탑재위성 10기 = 총 15기(역대 최다)**, 태양동기궤도. 오태석 우주청장 6/25 브리핑 후 일정대로 진행 [뉴스핌/아주경제/경향신문/유니콘팩토리 06-25]
-- **5호기 단 조립 70~90% 막바지** → 총조립 착수. 한화에어로스페이스 체계종합 3번째 발사(5차 민간 주도 전환 심화)
-- **KOMPSAT-6(다목적실용위성 6호) 발사 재연기 → 2027 2분기 검토** — 누리호 5차(9월)에 우선순위 [이투데이/ZDNet 06-24]
-- **농림위성 7/7 해외로켓 발사.** **제2우주센터(전남 고흥) 최종 부지 10월 선정 → 2028 착공, 2030년대 중반 재사용발사체 운용 목표** [뉴스핌/YTN 07-04]
+- **★ 5차 발사 — 9월→10월로 연기 ★**: **주탑재위성인 초소형군집위성의 추력기(thruster) 성능 보완이 필요해 당초 9월 계획서 10월로 연기(8/2).** **우주청은 8월 말 '발사관리위원회'를 열고 준비상태 고려해 발사 윈도우 확정 예정.** 탑재: **초소형군집위성 5기 + 부탑재위성 10기 = 총 15기(역대 최다)**, 고도 570km 태양동기궤도. 각 단 조립 완료 → 총조립 진입 [머니투데이/인사이트/CBC뉴스]
+- 한화에어로스페이스 체계종합 3번째 발사(민간 주도 전환 심화)
+- **KOMPSAT-6(다목적실용위성 6호) 발사 재연기 → 2027 2분기 검토** — 누리호 5차에 우선순위
+- **농림위성 7/7 해외로켓 발사.** **제2우주센터(전남 고흥) 최종 부지 10월 선정 → 2028 착공, 2030년대 중반 재사용발사체 운용 목표**
 - 6차(최종): 2027년 / 7차도 추진 결정. 2027년까지 연 1회 발사. 한화에어로스페이스 체계종합기업
 
 #### 차세대 발사체 (KSLV-III)
@@ -238,44 +237,46 @@ last_synced_from_db: 2026-07-25
 
 ### 7. 우주 방위산업
 
-| 항목                          | 수치                          | 비고                                                                                                                                                                                                      |
-| ----------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 미 우주군 FY2026 기본 예산    | **$26B**                      | 의회 확정                                                                                                                                                                                                 |
-| **Golden Dome OBBBA 배정**    | **$24B**                      | One Big Beautiful Bill Act (2026)                                                                                                                                                                         |
-| **FY27 reconciliation 요청**  | **$17.5B**                    | 펜타곤 FY27. HBTSS(극초음속·탄도 추적) 가속 포함                                                                                                                                                          |
-| **CBO 20년 비용 추정**        | **$1.2T**                     | SBI 7,800기 성좌 $720B + 나머지 아키텍처                                                                                                                                                                  |
-| **Golden Dome 총액 (행정부)** | **$185B**                     | CBO 추정 **6.5배** 괴리                                                                                                                                                                                   |
-| **12개사 SBI 계약**           | **$3.2B** (4/24)              | 우주 기반 인터셉터 20건 OTA. SBI 프로토타입 2028 목표                                                                                                                                                     |
-| **★ SDA 추적층 36기 (7/13)**  | **★ $1.75B 추가발주 ★**       | L3Harris $955M·Sierra Space $798M 각 18기(경보/추적 18 + 방어 18 변형, AMDT3). L3Harris 설계=HBTSS 기반. 2028말 발사. 2025.12 72기($3.5B)에 추가 → **T3 성좌 108기·~$5.25B** [SDA/Space.com/DefenseScoop] |
-| **NG SBI 시연 선정 (6/1)**    | **2027 온오빗 목표**          | 우주군이 Northrop Grumman을 SBI 시연 사업자로 선정(Apex 핵심 협력). 지상시험 성공, 2027 온오빗 능력 인도 예정 [Army Recognition/DefenseScoop/SpaceNews]                                                   |
-| **$4.16B 감지층 성좌 (6월)**  | **space-based sensing layer** | 우주군 $4.16B OTA — 지구적 공중위협 추적·표적 위성 성좌. NG가 LA 스타트업 Apex와 저비용·고속 SBI 협력 [ClearanceJobs/DefenseScoop]                                                                        |
+| 항목                           | 수치                           | 비고                                                                                                                                                                                               |
+| ------------------------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 미 우주군 FY2026 기본 예산     | **$26B**                       | 의회 확정                                                                                                                                                                                          |
+| **Golden Dome OBBBA 배정**     | **$24B**                       | One Big Beautiful Bill Act (2026)                                                                                                                                                                  |
+| **FY27 reconciliation 요청**   | **$17.5B**                     | 펜타곤 FY27. HBTSS(극초음속·탄도 추적) 가속 포함                                                                                                                                                   |
+| **CBO 20년 비용 추정**         | **$1.2T**                      | SBI 7,800기 성좌 $720B + 나머지 아키텍처                                                                                                                                                           |
+| **Golden Dome 총액 (행정부)**  | **$185B**                      | CBO 추정 **6.5배** 괴리                                                                                                                                                                            |
+| **12개사 SBI 계약**            | **$3.2B** (4/24)               | 우주 기반 인터셉터 20건 OTA. SBI 프로토타입 2028 목표                                                                                                                                              |
+| **SDA 추적층 36기 (7/13)**     | **$1.75B 추가발주 (AMDT3)**    | L3Harris $955M·Sierra Space $798M 각 18기(경보/추적 18 + 방어 18 변형). L3Harris 설계=HBTSS 기반. 2028말 발사. 2025.12 72기($3.5B)에 추가 → **T3 성좌 108기·~$5.25B** [SDA/Space.com/DefenseScoop] |
+| **★ RKLB SB-AMTI $397M (8/4)** | **★ Neutron으로 Flatellite ★** | 공중이동표적지시(SB-AMTI) — 3개사 $615M 패키지 중 RKLB $397M, Neutron 첫 확정 국방미션(2028) [Rocket Lab IR/SpaceNews]                                                                             |
+| **★ LUNR AMDT3 우주선 플랫폼** | **★ L3Harris 협력사 선정 ★**   | LUNR이 L3Harris의 AMDT3(T3 추적층) 우주선 플랫폼 생산 지원 파트너로 선정 = Golden Dome 공급망 편입 [TipRanks/CNN 08-06]                                                                            |
+| **NG SBI 시연 선정 (6/1)**     | **2027 온오빗 목표**           | 우주군이 Northrop Grumman을 SBI 시연 사업자로 선정(Apex 핵심 협력). 2027 온오빗 능력 인도 예정 [Army Recognition/DefenseScoop]                                                                     |
 
 - SBI 12개사: Anduril, Booz Allen, GD, GITAI, LM, NG, Quindar, Raytheon, Sci-Tec, SpaceX, True Anomaly, Turion
-- **SDA Tranche 3 추적층 확대**: 2025.12 72기($3.5B, NG/L3Harris/RKLB/LM 각 18기) + 2026.07 36기($1.75B, L3Harris/Sierra Space 각 18기) = **총 108기·~$5.25B.** 2028말 발사. **Golden Dome Week $19B 계약(7월).** 단 Tranche3 transport layer는 FY27 미배정(취소수순)
-- **SBI 비용 논란**: CBO $1.2T(20년) — SBI 7,800기 $743B(60%, 위성당 $22M·수명 5년) vs 행정부 당초 $175B. 운용능력 시연 '여름 2028' 요구, 아키텍처 2030년대 [CBO/에어앤스페이스]
+- **SDA Tranche 3 추적층 확대**: 2025.12 72기($3.5B, NG/L3Harris/RKLB/LM 각 18기) + 2026.07 36기($1.75B, L3Harris/Sierra Space 각 18기) = **총 108기·~$5.25B.** 2028말 발사. 단 Tranche3 transport layer는 FY27 미배정(취소수순)
+- **Golden Dome 공급망 확장 (8월)**: RKLB(SB-AMTI $397M, Neutron/Flatellite) + LUNR(L3Harris AMDT3 우주선 플랫폼) 등 상장 우주주 방위 밸류체인 편입 심화
+- **SBI 비용 논란**: CBO $1.2T(20년) — SBI 7,800기 $743B(60%, 위성당 $22M·수명 5년) vs 행정부 당초 $175B [CBO/에어앤스페이스]
 
 ### 8. 우주 잔해(Space Debris)
 
 - **Astroscale ELSA-M**: 2026년 발사 예정 (520kg 서비서). US 특허 12,234,043 B2 (다중물체 ADR). Isar Aerospace 발사
 - **UK CLEAR Phase 2 완료**: Astroscale+ClearSpace 2028 듀얼위성 디오빗 미션
-- **궤도 혼잡 가속**: Starlink ~10,844기 + OneWeb ~600기(Gen2 440기 추가) + Amazon 396기 = LEO 11,800기+ 운용 중
+- **궤도 혼잡 가속**: Starlink ~~10,764~~10,920기 + OneWeb ~600기(Gen2 440기 추가) + Amazon ~375기 = LEO 11,700기+ 운용 중
 - ADR(Active Debris Removal) 시장 2026년 산업화 도입기 (비협력 잔해 완전 상용화 미달)
 
 ### 9. 리스크 팩터
 
-1. **SpaceX IPO 밸류에이션·락업·변동성**: SPCX 6/16 ATH $225.64(종가 $211.39) → **7/24~25 ~$114로 IPO가 $135 하회(-15%, ATH -49%, 시총 $1.53T).** 시총 $1.5T+에 2026E 매출 $24B = PSR ~64x. 2025 순손실 -$4.9B. **★ Q2 실적 8/4(변경) → 발표 2거래일 후 최대 20% 인가 인사이더/직원 주식(최대 9.115억주) 락업 1차 해제 = 사상 최대 인사이더 락업 만기 → 매도압력 리스크. 180일 락업 12/8.** Flight 13(7/24) 성공은 긍정이나 락업·실적이 심리 직결
-2. **Blue Origin RTF 시점 불확실**: **New Glenn Return to Flight 공식화(6/30~7/1) — LC-36 재건 대신 hybrid horizontal-vertical integration CONOPS 전환.** CEO Limp 연내 RTF vs NASA·업계 회의적(2028 가능성). Artemis III 재편으로 Blue Moon 유인착륙 2028 이동
-3. **Amazon Leo 발사 병목·스펙트럼**: 궤도 396기(7/2 Atlas V 최종). **FCC 7/30 중간 데드라인 waiver 확정(중간의무 폐기, 전체 3,232기 2029.07.30만 유지)으로 압박 완화.** 단 7/30 후 발사분 스펙트럼 우선권 임시상실(50% or 2028.03.30 회복, Starlink 시간 우위). New Glenn(발사 25%) 동결로 Vulcan/Ariane 6 의존
-4. **SpaceX 독점 심화**: 상업 발사 82% + Starlink ~10,844기(V3 배치 개시)·활성 1,000만+ + DTC 선두 + IPO 자본력. FCC도 "미국 유일 LEO 소비자 브로드밴드 제공자" 인정. 경쟁사 차질로 독점 가속 vs 규제/반독점 리스크
-5. **Starship V3 진전 vs 재사용 완성도**: **Flight 13(7/24) 발사 성공 — Starlink V3 20기 첫 배치·B20 해상 연착륙·in-space relight·역대 최연착륙·열차폐 대폭 개선.** IFT-12(5월) 부분 성공에서 명확한 진전. 관건은 완전 재사용·궤도 재점화·배치 캐던스 확립
-6. **ASTS 희석·배치 지연 리스크**: **$1.15B 전환사채(7/21) 발행으로 유동성 확보하나 희석 우려로 주가 ~17%↓ ~$58.** BB8/9/10(6/17) 성공 + BB11/12/13 8월 상반기 발사 예정이나 **~45 BlueBird 배치 2027 초로 지연(기존 2026).** 관건은 위성 전개·서비스 활성화·FY26 $150~200M 가이던스 달성. FCC 248기 인가·현금 $3.5B·월 6기 제조
-7. **LUNR 희석/실적 리스크**: $500M ATM 발행+NASA LTV 탈락 리셋 후 ~$19.58(7/2, 월 -36.5%). **단 USSF Andromeda IDIQ 상한 $6.24B(GEO SDA)+NASA 6번째 CLPS $148.3M Nova-C 생산라인으로 파이프라인 확대 — IDIQ는 상한, 실매출 task order 의존.** Q1 $186.7M·백로그 $1B+·FY26 $900M~$1B·adj EBITDA 흑자
-8. **Neutron 지연·M&A 통합 리스크**: **★ Iridium $8.0B 인수($54/주, $3.6B 브릿지론, 2027 중반 종결)로 위성통신 수직통합 진입 — 통합 실행·희석·부채 관건.** **Neutron AVac ~5.5분 full-duration 시험 완료(~7/20)로 진전, 데뷔 NET Q4 2026 유지(1월 탱크 rupture 교체 후)**, 추가 슬립 가능성. 백로그 $2.2B(+108%)·매니페스트 70+ 견고. Nasdaq-100 편입(6/22)·VICTUS HAZE 세계기록 긍정
+1. **SpaceX 밸류에이션·AI CapEx·락업**: SPCX 6/16 ATH $225.64 → **8/7 ~$114.92로 IPO가 $135 하회(-15%, 52주 $104.83~$225.64).** **★ Q2 실적(8/4) 매출 $7.8B(+92%)·adj EBITDA $3.5B(+191%)·순손실 -$541M 축소로 서프라이즈했으나 CapEx $18.4B(AI $15.83B/80%+) 급증 우려로 시간외 -8% → 밸류에이션 논쟁 격화.** AI 컴퓨트(Google/Anthropic/Reflection $2.3B+/월 잠재)로 매출 2배 급증하나 자본집약도 급상승. **8/6 1차 락업만기(9.115억주·~$116B)는 우려와 달리 당일 +6.1% 소화** — 향후 분산 매도압력 지속 리스크
+2. **Blue Origin RTF 시점 불확실**: New Glenn RTF 공식화(hybrid CONOPS). CEO Limp 연내(12월) RTF vs NASA·업계 회의적(2028). Artemis III 재편으로 Blue Moon 유인착륙 2028 이동
+3. **Amazon Leo 발사 병목·서비스 개시**: 궤도 ~375+기(3위 성좌). **첫 Vulcan 미션 9월로 슬립 — Atlas V 잔여 6회 후 Vulcan 38회 의존.** FCC 7/30 waiver로 중간 데드라인 압박은 완화됐으나 연내 상업 서비스 개시가 관건. New Glenn(발사 25%) 동결
+4. **SpaceX 독점 심화**: 상업 발사 82% + Starlink ~10,900기·가입자 1,200만 + DTC 선두 + AI 컴퓨트 자본력. FCC "미국 유일 LEO 소비자 브로드밴드 제공자" 인정. 경쟁사 차질로 독점 가속 vs 규제/반독점 리스크
+5. **Starship 궤도·재사용 완성도**: **Flight 13(7/24) 성공 — Starlink V3 20기 첫 배치·B20 해상 연착륙·역대 최연착륙·열차폐 대폭 개선.** **Flight 14(8월말) 첫 궤도비행+타워 Ship catch 첫 시도가 다음 관문.** 관건은 완전 재사용·궤도 재점화·V3 운용 배치 캐던스 확립
+6. **ASTS 배치 실행·희석 리스크**: **BB11/12/13(8/5) 궤도 진입 성공·초기 대비 속도 2배·생산 42호기 진척으로 배치 캐던스 회복.** 단 $1.15B 전환사채(7/21) 희석 우려 잔존, ~45 BlueBird 배치 2027 초로 지연. 관건은 위성 전개·서비스 활성화·FY26 $150~200M 가이던스 달성. FCC 248기 인가·현금 $3.5B+$1.15B
+7. **LUNR 희석/실적 리스크**: $500M ATM+LTV 탈락 리셋 후 ~$13.96(YTD -22%, 고점 -70%). **단 L3Harris AMDT3(Golden Dome T3) 우주선 플랫폼 지원 선정으로 방위 공급망 편입(+7%)+USSF Andromeda IDIQ 상한 $6.24B+NASA 6번째 CLPS $148.3M로 파이프라인 확대.** Q2 실적 8/13(컨센 $216.33M) 관건. IDIQ는 상한, 실매출 task order 의존
+8. **Neutron 지연·국방 의존 리스크**: **★ RKLB SB-AMTI $397M(8/4) 수주로 Neutron 첫 확정 국방미션(2028) 확보했으나 최대 계약이 미검증 Neutron에 의존.** Neutron 데뷔 NET Q4 2026 유지(첫 비행 재사용 미시도), FAA 윈도 7/1~12/31/2026 — 추가 슬립 시 국방 데드라인 압박. Iridium $8.0B 인수($3.6B 브릿지론) 통합·희석 관건. 백로그 $2.2B·9일간 $663M 수주 견고. Q2 실적 8/10
 9. **Eutelsat 파이낸싱 부담**: OneWeb Gen1 후속 $2.3B + IRIS2 LEO $2.1B 합산 ~$4.4B 지출 약정, ECA 파이낸싱 의존. CEO 교체
-10. **우주 잔해 급증**: 11,800기+ LEO 위성 → 궤도 혼잡, Kessler Syndrome 장기 리스크
-11. **한국 차세대 발사체**: 총 2.3조원(메탄+재사용), 2026 예비설계 착수. 기술 선택 리스크. **누리호 5차 총조립 진입, 9월 발사 추진(8월초 발사관리위 발사일 확정, 15기). KOMPSAT-6는 2027 Q2 연기(누리호 우선순위).**
-12. **Golden Dome SBI 비용 폭발**: CBO $1.2T(20년) vs 행정부 $185B (6.5배 괴리). 의회 반발 + 아키텍처 불확실성. **단 SDA 추적층 36기 $1.75B 추가발주(7/13, T3 108기·$5.25B)+NG SBI 시연 선정(6/1, 2027 온오빗)으로 진전 지속(Golden Dome Week $19B 계약)**
-13. **Artemis 재편·예산 리스크**: **Artemis III(late 2027)가 유인착륙 미션에서 테스트(Orion+상업착륙선 랑데부) 미션으로 격하 → 유인착륙 2028 목표.** **NASA FY26 확정 $24.4B(의회가 요청 -24% 거부)이나 FY27 요청 $18.8B(-23%)로 재압박 — FY27 의회 심의가 일정 리스크 관건.** SLS는 여름 스태킹 개시로 진전
+10. **우주 잔해 급증**: 11,700기+ LEO 위성 → 궤도 혼잡, Kessler Syndrome 장기 리스크
+11. **한국 우주 일정 지연**: **누리호 5차 발사 9월→10월 연기(초소형군집위성 추력기 성능 보완, 8월 말 발사관리위 발사윈도 확정, 15기).** KOMPSAT-6는 2027 Q2 연기(누리호 우선순위). 차세대 발사체(2.3조원, 메탄+재사용) 2026 예비설계 착수 — 기술 선택 리스크
+12. **Golden Dome SBI 비용 폭발**: CBO $1.2T(20년) vs 행정부 $185B (6.5배 괴리). 의회 반발+아키텍처 불확실성. **단 SDA 추적층 36기 $1.75B(T3 108기·$5.25B)+RKLB SB-AMTI $397M+LUNR AMDT3 편입+NG SBI 시연(2027 온오빗)으로 진전·공급망 확장 지속**
+13. **Artemis 재편·예산 리스크**: Artemis III(late 2027)가 유인착륙에서 테스트 미션으로 격하 → 유인착륙 2028. **NASA FY26 확정 $24.4B(의회 -24% 거부)이나 FY27 요청 $18.8B(-23%) 재압박 — FY27 의회 심의가 일정 리스크 관건.** SLS 여름 스태킹 개시로 진전
 14. **SDA Tranche3 transport 취소 리스크**: FY27 예산에서 Tranche3 transport layer 미배정(취소 수순) — Tracking 108기($5.25B, RKLB 18기 포함)는 확대되나 transport 물량 축소 시 수주 영향. Golden Dome 비용 논란(CBO $1.2T) 지속
 
 ---
