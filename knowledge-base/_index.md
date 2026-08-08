@@ -369,6 +369,9 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-08 | `macro/us_economy.md` | **7월 고용 -23K 쇼크를 '인상우려 제거'로 소화, S&P·다우·나스닥 신고가** -- NFP -23K·5·6월 -103K 하향·실업률 4.1%, 9월 인상확률 급락(동결 60%), ISM 제조 55.6(4년래 최고)·서비스 가격 70.3 재점화, 유가 반락(Brent $82), 8/12 CPI 분수령 | +16 |
+| 2026-08-08 | `macro/korea_economy.md` | **7월 CPI +2.8%(근원 2.6% 31개월래 최고)·6월 경상수지 $497.3억 두달연속 역대최대·원달러 1,416원 올해 최저권** -- KOSPI 8/7 6,258.77(주간 -5.1%, 8/6 반도체 급락)·7월말 외환보유액 $4,279.5억(세계10위 복귀)·8/27 금통위 인상 논쟁 | +6 |
+| 2026-08-08 | `macro/supply_chain.md` | **호르무즈 통항 재개 잠정합의 임박 → 에너지 프리미엄 해소·물류 반등** -- Brent $82~83·JKM ~$18.75 반락, WCI $4,297(+1%)·BDI 2,797, 반도체 232 Phase 2 DC칩 임박·中 DUV, 희토류 中외 Dy $930.70·MP $400M, FAO 131.1(3년래 최고) | +23 |
 | 2026-08-08 | `industry/quantum.md` | **양자 주간 갱신(14회 검색, +16 DB 레코드)** -- 양자 3사 Q2 실적(IonQ $80.1M+287%·SkyWater $1.8B 클로징, Rigetti $5.1M, D-Wave 부킹 $35.5M+1120%)·IonQ DARPA 광원자시계+Capella NRO 국방계약·PASQAL SPAC Nasdaq PSQL·QKD 라이브망 1.6Tb/s | +16 |
 | 2026-08-08 | `industry/space.md` | **우주 주간 갱신(14회 검색, +15 DB 레코드)** -- SpaceX Q2 매출 $7.8B(+92%)·AI CapEx $18.4B 우려, SPCX 8/6 락업 소화 +6.1%; ASTS BB11/12/13 궤도진입 성공(8/5); RKLB SB-AMTI $397M(Neutron 첫 국방미션); LUNR L3Harris AMDT3 편입; 누리호 5차 10월 연기; Starship Flight14 8월말 첫 궤도 | +15 |
 | 2026-08-08 | `industry/smr.md` | **SMR/핵융합 주간 갱신(14회 검색, +11 DB 레코드)** -- Oklo Groves 첫 임계(8/6)·CFS 추가 $1B 누적 $4B·X-energy-Centrus HALEU 계약·Q2 실적(NuScale/BWXT/Centrus)·두산 77,000원 반등·우라늄 $86.36/lb | +11 |
