@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>퀄컴 (Qualcomm) (QCOM) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>퀄컴 (Qualcomm) (QCOM)</h1><div class="meta">주식 종합 분석 리포트 | 2026-08-10</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">70/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">USD167.86</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">USD176.3B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">선행 PER 약 13~15배 추정 — S&P500·반도체 대형주 평균 대비 뚜렷한 할인, 애플 모뎀 이탈·핸드셋 사이클·중국 노출 우려가 밸류에이션에 이미 상당 부분 반영</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">USD121.54~USD258.96</div></div><div class="ki"><div class="kl">등급</div><div class="kv">매수</div></div><div class="ki"><div class="kl">재분석</div><div class="kv">v5 BLIND</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">USD152.43</div><div class="dn" style="font-size:13px">-9.2%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">USD191.01</div><div class="up" style="font-size:13px">+13.8%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="102" y="30" width="90" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="102" y1="26" x2="102" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="102" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">USD152</text><line x1="138" y1="24" x2="138" y2="52" stroke="var(--text)" stroke-width="3"/><text x="138" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">USD168</text><line x1="192" y1="26" x2="192" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="192" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">USD191</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: USD122</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: USD259</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): USD7.72 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>퀄컴은 현재가 167.86달러, 시가총액 약 176억 달러대(약 1,763억 달러)로, 52주 밴드(121.54~258.96) 기준 고점 대비 약 -35% 조정된 하단부에 위치하며 당일 +4.66% 반등했다. 투자논지는 무선 IP·모뎀 리더십이라는 확립된 캐시카우 위에 스냅드래곤 프리미엄 AP, 자동차 디지털 콕핏·ADAS, IoT 회복, 온디바이스(엣지) AI 및 AI PC라는 다각화 성장 옵션이 얹힌 구조다. 밸류에이션은 선행 PER 약 13~15배로 대형 반도체주 중 저평가 구간에 속하며, 강한 잉여현금흐름과 배당·자사주 환원이 하방을 지지한다. 핵심 상쇄 요인은 애플의 자체 5G 모뎀 전환에 따른 최대 고객 매출의 구조적 감소와 중국 핸드셋 수요·지정학 노출이다. 결국 '애플 이탈 공백을 자동차·IoT·엣지AI 다각화가 얼마나 메우는가'가 재평가의 관건이며, 현 밸류에이션은 이 불확실성을 상당히 보수적으로 가격에 반영한 상태다. 이에 저평가·현금창출·환원 매력과 구조적 성장 둔화 리스크를 종합해 '매수(약)' 등급으로 판단한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,70.0 187.0,85.3 197.1,131.5 216.1,174.7 187.0,214.7 140.0,200.0 98.9,206.6 63.9,174.7 92.4,134.5 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업모델/해자</text><circle cx="140.0" cy="70.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="197.1" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="216.1" cy="174.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="187.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="200.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경쟁우위</text><circle cx="98.9" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영/자본배분</text><circle cx="63.9" cy="174.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크(역)</text><circle cx="92.4" cy="134.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업모델/해자</td><td>8.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>8.0</td><td>/10</td></tr><tr><td>성장성</td><td>6.0</td><td>/10</td></tr><tr><td>수익성</td><td>8.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>8.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>5.0</td><td>/10</td></tr><tr><td>경쟁우위</td><td>7.0</td><td>/10</td></tr><tr><td>경영/자본배분</td><td>8.0</td><td>/10</td></tr><tr><td>리스크(역)</td><td>5.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>7.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 70/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v2</td><td>2026-07-11</td><td>64</td><td>중립</td><td>$205</td></tr><tr><td>v3</td><td>2026-07-23</td><td>69</td><td>중립</td><td>$195</td></tr><tr><td>v4</td><td>2026-08-01</td><td>65</td><td>매수</td><td>$168</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="dn">-4pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">넓음</span></h2><p>퀄컴은 현재가 167.86달러, 시가총액 약 176억 달러대(약 1,763억 달러)로, 52주 밴드(121.54~258.96) 기준 고점 대비 약 -35% 조정된 하단부에 위치하며 당일 +4.66% 반등했다. 투자논지는 무선 IP·모뎀 리더십이라는 확립된 캐시카우 위에 스냅드래곤 프리미엄 AP, 자동차 디지털 콕핏·ADAS, IoT 회복, 온디바이스(엣지) AI 및 AI PC라는 다각화 성장 옵션이 얹힌 구조다. 밸류에이션은 선행 PER 약 13~15배로 대형 반도체주 중 저평가 구간에 속하며, 강한 잉여현금흐름과 배당·자사주 환원이 하방을 지지한다. 핵심 상쇄 요인은 애플의 자체 5G 모뎀 전환에 따른 최대 고객 매출의 구조적 감소와 중국 핸드셋 수요·지정학 노출이다. 결국 '애플 이탈 공백을 자동차·IoT·엣지AI 다각화가 얼마나 메우는가'가 재평가의 관건이며, 현 밸류에이션은 이 불확실성을 상당히 보수적으로 가격에 반영한 상태다. 이에 저평가·현금창출·환원 매력과 구조적 성장 둔화 리스크를 종합해 '매수(약)' 등급으로 판단한다.</p><h3>Moat 상세</h3><p>퀄컴의 해자는 두 축이다. 첫째, 3G/4G/5G 셀룰러 표준에 걸친 방대한 표준필수특허(SEP) 포트폴리오로, 스마트폰 제조사가 셀룰러 기능을 탑재하려면 사실상 회피가 어려운 QTL 로열티 구조를 형성한다. 둘째, 스냅드래곤 프리미엄 SoC와 통합 모뎀-RF 시스템에서의 설계 역량으로, 안드로이드 하이엔드 AP에서 미디어텍과 양강 구도를 유지한다. QTL은 매출 비중은 작지만 세전마진이 매우 높아 이익의 질을 떠받친다. 다만 애플의 자체 모뎀 내재화와 표준 로열티율 협상·소송 리스크가 해자의 폭을 서서히 압박하는 구조라 '매우 넓음'까지는 아니다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>매출은 칩 사업인 QCT(핸드셋·자동차·IoT)와 라이선싱 사업인 QTL로 구성되며, QCT가 전체 매출의 대부분(약 85% 안팎)을, QTL이 이익률이 매우 높은 로열티를 담당하는 이원 구조다. 연간 매출은 약 390억 달러 안팎 규모로 추정되며, 핸드셋 사이클 회복과 자동차 매출 급성장이 외형을 견인해 왔다. 조정 EPS는 연 11달러 안팎 수준으로 추정되고 QTL의 고마진 덕에 전사 영업이익률이 반도체 평균 대비 견조하다. 잉여현금흐름은 연 90~110억 달러대로 강하게 창출되며, 이를 바탕으로 분기 배당(연 배당수익률 약 2% 안팎)과 대규모 자사주 매입을 병행해 주주환원 강도가 높다. 순현금성 재무구조에 가까워 대차대조표 리스크는 제한적이다. 단, 구체 수치는 분기 실적·환율·믹스에 따라 변동하므로 보수적으로 해석한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>현재가 167.86달러 기준 선행 PER은 약 13~15배로 추정되며, 이는 대형 반도체·플랫폼 평균 대비 명확한 할인 구간이다. 할인의 근거는 애플 모뎀 매출 감소로 인한 향후 이익 성장 둔화 우려와 핸드셋 시장의 성숙·순환성이다. 시장 컨센서스 목표주가는 대략 175~190달러 밴드로 추정되어 현재가 대비 완만한 상승 여력을 시사한다. 강세 시나리오(엣지AI·AI PC·자동차 재평가 가속, 애플 공백을 다각화가 성공적으로 흡수)에서는 선행 17~18배 적용 시 210달러대가 가능하다. 기본 시나리오는 다각화가 애플 감소분을 부분 상쇄하며 EPS가 완만히 유지·성장, 15~16배 재평가로 185달러 안팎이다. 약세 시나리오(애플 전환 가속+중국 수요 부진+로열티율 압박)에서는 12~13배로 150달러대 초반까지 하향될 수 있다. 저평가 매력은 명확하나 '가치 함정' 회피를 위해 다각화 매출의 실제 성장 확인이 재평가 트리거다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가는 52주 고점(258.96) 대비 약 -35%, 저점(121.54) 대비 약 +38% 지점인 167.86달러로 밴드 하단부에서 반등을 시도하는 국면이다. 당일 +4.66% 상승은 과매도 되돌림 또는 다각화 서사 재부각 가능성을 시사한다. ATR(14)은 7.72(약 4.6%)로 변동성이 큰 편이며, 베타는 대체로 1.2 안팎의 시장 민감형으로 알려져 있다. 단기 지지선은 2ATR 손절 기준인 152.43달러 및 심리적 150달러 부근, 그 아래는 저점권 121~130달러대다. 저항은 3ATR 목표인 191.01달러와 200달러 라운드 넘버, 이후 갭 구간이다. 상방 촉매는 자동차·IoT 다각화 매출의 분기 서프라이즈, 엣지AI·AI PC 채택 확대이며, 하방 촉매는 애플 이탈 속도 상향과 중국 수요 둔화다. 기술적으로는 하단부 바닥 다지기 성격으로, 추세 전환 확증에는 거래량 동반 저항 돌파가 필요하다.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>투자의견</td><td>매수~보유 혼재의 완만한 매수 우위로 추정 — 저평가·환원 매력과 애플 이탈 불확실성이 상충</td></tr><tr><td>목표주가 컨센서스</td><td>약 175~190달러 밴드로 추정 (현재가 167.86달러 대비 완만한 상승 여력)</td></tr><tr><td>배당수익률</td><td>연 약 2% 안팎 (분기 배당, 배당성향·자사주 병행으로 환원 강도 높음)</td></tr><tr><td>예상 EPS 성장률</td><td>저·중 한 자릿수 성장 추정 — 자동차·IoT·엣지AI 성장이 애플 매출 감소분을 부분 상쇄하는 구도</td></tr><tr><td>선행 밸류에이션</td><td>선행 PER 약 13~15배 — 대형 반도체주 평균 대비 할인</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>사업의 축은 여전히 프리미엄 스마트폰용 애플리케이션 프로세서(스냅드래곤 8 시리즈)와 통합 모뎀-RF다. 여기에 세 갈래 다각화가 진행 중이다. (1) 자동차: 디지털 콕핏과 ADAS를 아우르는 스냅드래곤 디지털 섀시로 수백억 달러대 설계 수주 파이프라인을 축적하며 매출이 빠르게 증가하는 구조적 성장 축이다. (2) IoT: 산업·소비자·엣지 네트워킹 전반의 재고 조정 이후 회복 국면. (3) 엣지AI: 온디바이스 생성형 AI(NPU 강화 스냅드래곤)와 AI PC(스냅드래곤 X 계열의 윈도우 온암) 확장이 신규 성장 서사다. 경쟁·리스크 측면에서 최대 변수는 애플의 자체 5G 모뎀 내재화로, 최대 고객향 칩 매출이 수년에 걸쳐 축소되는 구조적 역풍이다. 또한 안드로이드 진영에서 미디어텍과의 경쟁, 중국 OEM 의존도와 지정학적 규제 리스크가 상존한다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 리스크는 '구조적'과 '순환적'이 겹친다는 점이다. 애플 모뎀 이탈과 중국 노출은 방향성이 정해진 구조적 역풍이고, 핸드셋 순환성은 경기·재고에 연동된다. 저평가 밸류에이션은 이 우려를 상당 부분 선반영했으나, 다각화(자동차·IoT·엣지AI) 매출의 실제 성장 확인이 지연되면 '싼 데는 이유가 있다'는 가치 함정 논리가 부각될 수 있다. 반대로 다각화 성장이 확증되면 할인 해소와 함께 재평가 여지가 크다. 강한 잉여현금흐름과 주주환원은 하방을 완충하는 방어 요인이다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">애플 자체 모뎀 내재화</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">중국 노출·지정학 리스크</text><circle cx="180" cy="156" r="5" fill="var(--warn)"/><text x="189" y="160" fill="var(--text)" font-size="10">핸드셋 시장 성숙·순환성</text><circle cx="180" cy="174" r="5" fill="var(--warn)"/><text x="189" y="178" fill="var(--text)" font-size="10">라이선싱(QTL) 로열티율 압박</text><circle cx="180" cy="192" r="5" fill="var(--warn)"/><text x="189" y="196" fill="var(--text)" font-size="10">AP 경쟁 심화 및 다각화 실행 리스크</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>애플 자체 모뎀 내재화</strong> (발생: 상, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">최대 고객인 애플이 자체 5G 모뎀 전환을 진행하며 향후 수년에 걸쳐 애플향 칩 매출이 구조적으로 축소된다. 다각화가 이 공백을 메우지 못하면 성장률·밸류에이션 프리미엄이 동반 하향될 수 있다.</span></div><div class="ri rl"><strong>중국 노출·지정학 리스크</strong> (발생: 상, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">매출의 상당 부분이 중국 안드로이드 OEM에 의존한다. 미중 갈등, 수출 규제, 중국 내수 스마트폰 수요 둔화가 핸드셋 매출과 로열티에 직접 타격을 줄 수 있다.</span></div><div class="ri rm"><strong>핸드셋 시장 성숙·순환성</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">스마트폰은 교체 주기 장기화로 성숙 시장이다. 프리미엄 믹스 개선에도 물량 성장 여력이 제한적이며 경기 둔화 시 재고 조정에 노출된다.</span></div><div class="ri rm"><strong>라이선싱(QTL) 로열티율 압박</strong> (발생: 중, 영향: 높음)<br><span style="color:var(--sub);font-size:13px">이익의 질을 지탱하는 QTL 로열티는 규제·소송·재계약 협상에서 요율 하향 압박을 받을 수 있다. 고마진 라이선싱 수익 훼손은 전사 이익에 지렛대 효과로 작용한다.</span></div><div class="ri rm"><strong>AP 경쟁 심화 및 다각화 실행 리스크</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">안드로이드 AP에서 미디어텍 경쟁이 지속되고, 자동차·IoT·엣지AI 다각화가 기대만큼 매출로 전환되지 않을 경우 성장 서사가 지연되며 재평가 트리거가 부재해질 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>저평가·고현금창출 매력과 구조적 성장 둔화 리스크가 공존하므로 분할매수 접근이 적합하다. 1차 매수는 현재가 167달러 부근~160달러대, 2차는 155달러 및 2ATR 손절선(152.43달러) 상단 지지 확인 시로 나눈다. 손절은 152달러(2ATR) 이탈 시 원칙적으로 축소하되, 애플 이탈 속도·중국 수요 관련 펀더멘털 훼손이 확인되면 손절 우선한다. 1차 목표는 3ATR 목표(191달러) 및 컨센서스 상단, 확장 목표는 다각화 재평가 시 210달러대다. 포트폴리오 내 목표비중은 반도체 배분 내에서 중립~소폭 비중(예: 개별 3~5%) 수준으로, 밸류에이션 하방과 배당을 활용한 코어-분산형 보유가 적절하다.</p></div>
+<div class="sec"><h2>§ Confidence Interval (95% CI)</h2>**목표가 범위**: USD152 ~ USD214 (중심 USD185, ±16%)
+
+**스코어 ±밴드**: ±7pt
+
+**시나리오 분기**:
+- 강세 시나리오: USD214
+- 기본 시나리오: USD185
+- 약세 시나리오: USD152</div>
+<div class="sec"><h2>§ 약한 가정 3개 (Most Fragile Assumptions)</h2>**1. 애플이 자체 모뎀으로 전환하더라도 퀄컴 칩 매출의 감소가 점진적이며, 자동차·IoT·엣지AI 다각화가 그 공백을 상당 부분 상쇄한다는 가정**
+
+반증 시 영향: 애플 전환이 예상보다 빠르고 다각화 매출 전환이 지연되면 성장률·밸류에이션 프리미엄이 동반 하향돼 목표가와 매수 논지가 약세 시나리오(150달러대)로 수렴한다
+
+**2. 중국 안드로이드 OEM 수요와 지정학 환경이 급격히 악화되지 않고 핸드셋 매출·로열티가 유지된다는 가정**
+
+반증 시 영향: 미중 규제 강화나 중국 내수 급랭 시 QCT·QTL이 동시 타격을 받아 이익 추정과 배당·자사주 여력이 훼손되며 등급 하향 요인이 된다
+
+**3. QTL 라이선싱 로열티율과 스마트폰 프리미엄 믹스가 대체로 방어되어 이익의 질(고마진)이 유지된다는 가정**
+
+반증 시 영향: 규제·소송으로 로열티율이 구조적으로 하향되거나 프리미엄 믹스가 훼손되면 고마진 완충이 사라져 전사 이익과 밸류에이션 하방이 동시에 확대된다</div>
+<div class="sec"><h2>재분석 메타 (v5 BLIND)</h2>- **재분석 회차**: v5 (이전 v4, 2026-08-01)
+- **모드**: BLIND (이전 v4 read 0건)
+- **임계**: 7일 (상한 10종, stock_update-2 슬롯, 2026-08-10)
+- **회차 보고**: `analysis/_reanalysis_runs/20260810b_run.md`</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-08-10 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="QCOM_Qualcomm_20260810.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
