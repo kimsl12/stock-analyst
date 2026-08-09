@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-02
-valid_until: 2026-09-01
+updated: 2026-08-09
+valid_until: 2026-09-08
 sector: science_tech
 sources:
   [
@@ -244,10 +244,14 @@ sources:
     StocksToTrade,
     PLCY,
     financefeeds,
+    Teslarati,
+    the-decoder,
+    SpacePolicyOnline,
+    Life Science Daily,
   ]
 confidence: high
-last_synced_from_db: 2026-08-02
-db_records: 1043
+last_synced_from_db: 2026-08-09
+db_records: 1066
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -322,7 +326,12 @@ db_records: 1043
 | **[양자통신] QED-C/CQN 양자네트워킹 로드맵** [8/1 신규] | 7/28 QED-C+CQN(Center for Quantum Networks) **양자네트워킹 로드맵** = **10대 고임팩트 유즈케이스** 중 **현재 2개만 지원**. 단거리 응용 **5년 내**, 장거리 분산 양자컴퓨팅 **~10년** 상용성숙 전망. 임계 기술격차·상용화 조건 식별 = 양자통신 상업화 로드맵 구체화(EU EuroQCI/Eagle-1·中 Micius 인프라 축적과 병행) | 2026.07.28 | Quantum Computing Report / QED-C / CQN |
 | **[PQC] FIPS 140-3 전환 병목 부각** [8/1 신규] | 9/21 FIPS 140-2 종료(신규 연방조달 부적격) 재확인 + 신규 리스크 = **CMVP 검증 평균 ~18개월** → 現 파이프라인 미진입 모듈은 **2027.01 CNSA 2.0 게이트** 인증 확보 불가. 전 기관 **PQC 마이그레이션 계획 ~10/22**(6/24 EO+120일) 제출 의무. NIST **HQC(5번째 알고리즘)** 표준화 ~2027, FIPS 206 백업. 'PQC 데드라인 추가 압축' 컨센서스 | 2026.08 | postquantum.com / Nenkin / CMMC Ready Now / gopher.security |
 | **[양자센서] DARPA RoQS 항법 상용화 가속** [8/1 신규] | DARPA **RoQS**(Robust Quantum Sensors) = Q-CTRL Ironstone Opal **$24.4M** 계약 + Safran Federal Systems RoQS 어워드(관성항법 센서). SBQuantum 다이아몬드 자력계 3/29 우주 발사(NGA MagQuest). SandboxAQ **AQNav** = 세계 첫 상업 실시간 양자항법(AI+자기이상, GPS-denied). Q-CTRL 자성항법 = 재밍·스푸핑 불가. Northrop Grumman 국방 양자센서 고도화 | 2026 | thequantuminsider / DARPA / Northrop Grumman / SBQuantum |
+| **IonQ Q2 2026 실적 = 더블비트·가이던스 상향** [8/9 신규] | **8/5 IonQ Q2 매출 $80.1M(+287% YoY)** = 컨센 $66.58M **22.4% 상회**·'역대 최강 분기'(CEO Niccolo de Masi). **FY26 가이던스 $260~270M→$280~290M 상향**(~+100% YoY). **SkyWater $1.8B 인수 완료** 재확인, 세그먼트 국제~50%/상업~60%/멀티프로덕트~25%. 주가 종가 **-4.29% $39.93**(AH +1.4% $40.49) — 8/1 $32서 실적 앞두고 반등. Benzinga 'double beat, raised outlook' | 2026.08.05 | Investing.com / Benzinga / IonQ IR |
+| **Rigetti Q2 2026 실적 = 매출 +183%·손실 확대** [8/9 신규] | **8/6 Rigetti Q2 매출 $5.1M(+183% YoY**, 전년 $1.8M, 컨센 정확 부합)·**GAAP 손실 $52.6M**. 손실 확대+상업 양자우위 지연 부각→**주가 AH -5.56%**. 3대 성과 = Cepheus급 기술진전·**$100M 연방자금 LOI**·HPE+Pittsburgh Supercomputing Center 파트너십 확대 | 2026.08.06 | StockTitan / Investing.com |
+| **D-Wave Q2 2026 실적 = 예약 +1,120%** [8/9 신규] | **8/6 D-Wave H1 예약 $35.5M(+1,120% YoY)**·**H1 RPO $40.7M(+668% YoY)**·H1 QCaaS 생산매출 비중 **37.3%**. 어닐링→게이트모델 확장 지속, 현금 견조(5월 $588M) | 2026.08.06 | D-Wave 8-K / SEC |
+| **★ D-Wave Nature 논문 = dual-rail 2큐빗 게이트** [8/9 신규] | **8/5 Nature** — dual-rail **erasure qubit** 아키텍처 **2큐빗 얽힘 게이트** 최초 시연: 충실도 **~99.9%**·게이트타임 **~500ns**·하드웨어 **native 에러검출**. '가장 흔한 에러가 가장 정정 쉬운' **유리한 에러 계층구조가 2큐빗 연산서 보존** 입증 = 게이트모델 FTQC 하드웨어 오버헤드 대폭 절감. D-Wave의 **게이트모델 진입**(어닐링 외) 하드웨어 증거 | 2026.08.05 | thequantuminsider / D-Wave Newsroom / Nature |
 
+> **2026.08.09 갱신**: ★ **양자주 Q2 2026 실적 3사 발표** — **IonQ 8/5 매출 $80.1M(+287% YoY, 컨센 22.4% 상회)=더블비트**, FY26 가이던스 **$260~270M→$280~290M 상향**, SkyWater $1.8B 인수 완료 재확인, 주가 종가 -4.29% $39.93(실적 앞두고 8/1 $32→$40 반등). **Rigetti 8/6 매출 $5.1M(+183% YoY)·GAAP 손실 $52.6M→AH -5.56%**($100M 연방 LOI·HPE·Pittsburgh Supercomputing). **D-Wave 8/6 H1 예약 $35.5M(+1,120%)·RPO $40.7M(+668%)**. ★★ 과학 = **D-Wave 8/5 Nature 논문**(dual-rail erasure qubit 2큐빗 게이트 ~99.9%·~500ns·native 에러검출, 유리한 error hierarchy 2큐빗서 보존→게이트모델 FTQC 오버헤드 절감)=D-Wave 게이트모델 진입 증거. 실적 전반 = 매출 급성장 지속 vs 손실/희석 우려 병존, IonQ만 가이던스 상향.
 > **2026.08.01 갱신**: 신규 discrete 이벤트 다수 — **IonQ, SkyWater $1.8B 인수 7/31 완료**(7/28 최종 규제승인, 풀스택 수직통합 양자 플랫폼·'해외 칩 의존 종식', 6월 FTC 2차요청 미결→완결). **AT&T-D-Wave 7/27 네트워크 운영 확대 계약**(어닐링 최적화 ~1시간→15초, agentic AI 레이어링, D-Wave +7% 섹터 견인). **IBM 7/23 HRL 연구소 인수**(실리콘 스핀 큐빗→Anderon 파운드리)+**HRL Nature 18큐빗 실리콘 스핀 QPU 자율구동**(4K, 극저온 CMOS, ~0.2% 에러). **IBM Nighthawk r2**(리셋 25x)+**DOE Genesis $50M**. **Benchmark 7/27 IonQ Buy $60 커버리지 개시**→IonQ +9%. ★펀더멘털 촉매 = **양자주 Q2 실적**(IonQ 8/5 컨센 매출 $66.58M ~+222% YoY·EPS -$0.54·옵션 19.55% 스윙, D-Wave/Rigetti 8/6). 주가 = IonQ ~$32(52주고점 -62%)·그룹 -60~76%, IonQ 20애널 평균 PT $73.88. **[양자통신] QED-C/CQN 로드맵**(10 유즈케이스 중 2개만 지원). **[PQC] FIPS 140-3 CMVP 병목**(검증 ~18개월→2027.01 게이트 미달 우려, 9/21 140-2 종료·기존 EO 프레임 재순환). **[양자센서] DARPA RoQS**(Q-CTRL $24.4M·Safran 관성항법). (주의: PQC 9/21·CNSA 2.0·HQC 표준화는 기존 발표건 재순환 — 신규는 CMVP 파이프라인 병목 각도.)
 > **2026.07.26 갱신**: 양자주 조정 심화 지속 — **IonQ 7/24 종가 $32.84**(7/13 $39.52서 추가 -17%, 매크로 리프라이싱 연장). **Motley Fool 7/22 '$988M 경고'**(3사 합산 희석·현금소진, 5월 $931M→$988M 확대) = 라이브 매출 대비 밸류 과열 경고 재점화. 펀더멘털 촉매 = **IonQ Q2 2026 실적 8/5**(애널 ~60% 상승여력 컨센 유지). 신규 discrete 이벤트 = **Quantinuum-SoftBank 7/21 엔터프라이즈 양자 통합 로드맵 백서**(산업 양자화학·그래프분석 워크로드 고전→QPU 전환 타임라인, Helios→Sol 2027→Apollo 2029→Lumos 2030s). (주의: Quantinuum 'FTQC by 2030 로드맵'·비아벨리안 애니온 위상 게이트셋 보도는 기존 발표건 재순환 가능성 — 신규 확정 배제.)
 > **2026.07.19 갱신**: 양자 섹터 신규 discrete 이벤트 제한적(7/18 대규모 갱신 직후) — **8/5 IonQ Q2 실적이 다음 촉매**(애널 ~60% 상승여력, 그룹 52주고점 -60~76% 지속). IonQ-Jane Goodall Institute 침팬지 행동데이터 분석 = 양자컴 실사용 저변 확대. (주의: Quantinuum 'FTQC by 2030 가속 로드맵'은 2024.09 발표건으로 신규 아님 — 재확인.)
@@ -359,7 +368,9 @@ db_records: 1043
 | **FDA 맞춤형 CRISPR 승인경로** [6/14]        | FDA bespoke CRISPR 치료제 승인경로 초안 가이던스 = 희귀질환 근본원인 표적 유전체편집/RNA. Prime Medicine 2환자 임상 후 CGD 승인 추진(03월). Lilly orforglipron 2026말 추가 승인 신청                                                                                                                        | 2026.06    | FierceBiotech / STAT News                                    |
 | **AstraZeneca-Algen $555M AI 유전자편집** [8/2 신규] | **AZ가 Algen Biotechnologies(Doudna 버클리랩 스핀오프)와 AI 유전자편집 치료제 개발 계약 = 최대 $555M 마일스톤**. Lilly-Profluent($2.25B)·Lilly-Verve($1.3B)에 이은 빅파마 AI 유전자편집 딜 확장(Doudna 생태계로 다변화) | 2026.07 | FT / MarketScreener |
 | **Scribe Therapeutics 나스닥 IPO(SCTX)** [8/2 신규] | 유전자편집 스타트업 **Scribe Therapeutics 나스닥 IPO 신청(티커 SCTX)** = 심혈관대사질환 유전자의약, **Biogen·Sanofi·Lilly 협업** 보유. CRISPR 생태계 자본시장(IPO) 재개 신호 | 2026.07 | BioPharma Dive |
+| **FDA 8월 결정 밀집(결과 미확정)** [8/9 신규] | **Moderna mRNA-1010 계절독감 백신 PDUFA 8/5/2026** + **Replimune RP1(+nivolumab) 진행성 흑색종**(anti-PD-1 실패후) 목표일 **8/2/2026**. 8~9월 FDA 결정 = 종양/혈액/희귀신경/유전자치료/진단영상 폭넓게 분포. GLP-1 신규 대형딜은 이번 주 부재(**Viking VK2735** 최유력 인수후보 상태 유지) | 2026.08 | Life Science Daily / BioPharma Dive / PharmaVoice |
 
+> **2026.08.09 갱신**: 신규 확정 딜/임상 촉매 제한적 — **FDA 8월 결정 밀집**(Moderna mRNA-1010 독감백신 PDUFA 8/5·Replimune RP1 흑색종 8/2, 결과 미확정)이 근접 이벤트. GLP-1 신규 대형딜 부재(Viking VK2735 인수후보 유지). AstraZeneca-Algen·Scribe IPO(8/2 반영) 이후 신규 유전자편집 딜 없음.
 > **2026.08.02 갱신**: 신규 딜 2건 — **AstraZeneca-Algen Biotechnologies $555M AI 유전자편집 계약**(Algen=Doudna 버클리랩 스핀오프) = Lilly-Profluent/Verve에 이은 빅파마 AI 유전자편집 다변화. **Scribe Therapeutics 나스닥 IPO 신청(SCTX)**(심혈관대사 유전자의약, Biogen/Sanofi/Lilly 협업) = CRISPR 자본시장 재개 신호. (GLP-1·Intellia lonvo-z는 8/1 이후 신규 촉매 없음.)
 > **2026.07.26 갱신**: 신규 discrete 이벤트 제한적 — **Intellia lonvo-z 추가 Phase 3 HAE 데이터 EAACI 2026+NEJM 게재**(부종발작 -87% 재확인, BLA 제출 H2 2026 완료 목표·美 출시 H1 2027, 안전성 간효소 상승 1건 1주 내 자연소실) = 세계 첫 in vivo CRISPR FDA 승인 트랙 온궤도. **[MCED] Grail Galleri**: 2월 NHS-Galleri 1차종점 실패(주가 -50%) 여파 지속, 이번 주 신규 촉매 없음(AACR 2026 = 액체생검 MCED 비용·규모 근본 장벽).
 > **2026.07.19 갱신**: **Lilly H1 2026 최대 인수기업 = 10건 ~$25B**(종양/신경/세포치료 다각화, Verve/Profluent/Insilico 포함, GLP-1 현금흐름 활용). **orforglipron 72주 ~12% 감량·경구 semaglutide 대비 체중/A1C 우월**. **Novo CagriSema 2월 tirzepatide head-to-head 실패→Novo -15%** = Lilly 결정적 우위. Medicare GLP-1 프로그램 Lilly/Novo 수혜.
@@ -409,7 +420,10 @@ db_records: 1043
 | 한국 KASA R&D | **9,495억원**. **누리호 5차 = 1·2·3단 조립 완료→총조립 개시, 8월초 발사관리위→9월 발사 추진**(역대 최다 **15기 탑재**, 초소형 군집위성 5기 = 한반도 24시간 감시+민간/지자체). 농림위성 7/7 해외로켓 발사. **제2우주센터 최종 부지 10월 선정→2028 착공**, 2030년대 중반 재사용발사체. 2027까지 연 1회 발사 | 2026 | KASA / 아주경제 / 뉴스핌 / YTN |
 | **우주 방위 (Golden Dome)** [7/18 갱신] | 총 비용 **$185B**·20년 최대 **$3.6T**. **7/14 SDA $1.75B로 미사일 경보·추적 위성 36기 발주(2028)** = **L3Harris $955M**(HBTSS형 18기)·**Sierra Space $798M**(미사일경보/추적 18기·프라임+미션통합). 5월 SpaceX $4B 감지층 계약. 초기능력 2028·완전 아키텍처 2030년대 | 2026 | ClearanceJobs / Air&Space Forces / Military Times |
 | **★ Starship Flight 13 성공(7/24) + SPCX 무반응** [7/26 신규] | **Starship Flight 13 성공(7/24 ~18:50 ET, Boca Chica)** = **Super Heavy V3 부스터 최초 비행**·차세대 Starlink 20기 궤도 배치·역대 최상 해상 착수. 당초 7/16 예정→엔진/기상 연기 후 성공(KB '7/20 재시도'→'7/24 성공' 해소). 단 20기 페이로드는 전체 용량 증대 미반영. **SPCX 성공에도 무반응 ~$114~116**(IPO가 $135 -15%, 발사전 신저가 종가 $115.07·주간 -7.2%) = 밸류 리셋 지속, retail 성공 시 $150 복귀 베팅. **Q2 실적 8/4(after close) = 다음 촉매** | 2026.07.24 | news.bitcoin.com / ts2.tech / Yahoo Finance / Forbes |
+| **★ SpaceX(SPCX) 첫 상장 후 Q2 실적 = capex 쇼크** [8/9 신규] | **8/4 첫 Q2 실적: 매출 $7.8B(+92% YoY)** — Starlink/연결성 **~$4.3B(+66%**, 가입자 **12M**=1년새 2배·QoQ +17%·ARPU -22%), Space 매출 **$962M(+29% YoY·+55% QoQ)**, 순손실 **-$541M**(축소), adj EBITDA **$3.5B(+191%)**. ★ **capex $18.4B(AI 인프라 중심)**가 컨센 매출 상회를 압도 → **주가 -8%**. 경영진 **연말 $100B 연환산 런레이트·2030 $1T 매출** 경로 제시. Musk 첫 콜서 **Flight 14 이달+타워캐치 시도** 표명 | 2026.08.04 | CNN / CNBC / StockTitan / Teslarati / TradingKey |
+| **[우주과학] Roman 망원경 8/30 발사 + JWST/일식** [8/9 신규] | NASA **Nancy Grace Roman 우주망원경 발사일 8/30/2026 확정**(당초 8/20, SpaceX Falcon Heavy·KSC, 8,000kg 암흑에너지/외계행성 탐사). JWST가 잘 연구된 항성계 내 **먼지원반에 가려진 거대행성 발견**(7월). **8/12 개기일식**(그린란드/아이슬란드/스페인). NASA Swift 은하중심 3만광년 밖 별-초대질량블랙홀 **조석파괴 관측**(7월말) | 2026.08 | SpacePolicyOnline / NASA / space.com / ScienceDaily |
 
+> **2026.08.09 갱신**: ★ **SpaceX(SPCX) 첫 상장 후 Q2 실적 8/4** — 매출 **$7.8B(+92% YoY)**·Starlink ~$4.3B(+66%, 12M 가입자)·Space $962M(+29%)·adj EBITDA $3.5B(+191%)·순손실 -$541M. **capex $18.4B(AI 인프라)가 매출 상회 압도→주가 -8%**(연말 $100B run-rate·2030 $1T 경로). Musk 첫 콜서 Flight 14 이달+타워캐치 표명(8/1 NET 8월과 일치). **[우주과학] Roman 망원경 8/30 발사 확정**(Falcon Heavy·KSC)+JWST 은폐 거대행성+8/12 개기일식+Swift SMBH 조석파괴. (락업 만료·AST·Rocket Lab Q2(8/10 예정)는 8/1 반영건 진행형, 신규 확정 결과 없음.)
 > **2026.08.01 갱신**: **★ 실적/락업 슈퍼위크 진입** — **SPCX 7/31 ~$108**(전일종가 $112.20·ATH -52%·IPO가 -20%, Flight 13 성공에도 무반응) → **첫 Q2 실적 8/4(장마감후)→8/6 $116B 락업 만료**(911.5M주=금융史 최대, 이후 7% 트란셰 8/31~10/25). **AST SpaceMobile BB11/12/13 발사 8/5 03:42 EDT 확정**(Falcon 9·케이프, BB11 도착, $1B run-rate 목표·주가 ~$58 월 -34%). **Rocket Lab ★7/27 USSF $266M 준궤도(사상최대 발사계약, Kodiak Alaska)** + **Q2 실적 8/10**·Iridium 지분가치 ~$5.9B(EV~$8B) 재확인·Neutron Q4 2026 목표 유지(파열탱크 자동적층 교체). **Amazon Leo, FCC 7/30 1차 1,616기 데드라인 면제**(궤도 ~309~400기, Gen1 3,232기는 2029까지). **Starship Flight 14 NET 8월**(월1회, 최초 궤도+타워캐치 시도 가능). **中 Chang'e 7 8월 발사 임박**(달남극 Shackleton·물얼음). **누리호 5차 9월**(8월초 발사관리위, 15기·초소형군집위성 2~6호). (Golden Dome $1.75B·Blue Origin New Glenn 12월 복귀는 신규 아님, 재확인.)
 > **2026.07.26 갱신**: **★ Starship Flight 13 성공(7/24 ~18:50 ET)** — Super Heavy **V3 부스터 최초 비행**, 차세대 Starlink 20기 궤도 배치, 역대 최상 해상 착수(KB '7/20 재시도'→'7/24 성공' 해소). 당초 7/16 예정→엔진 미점화·기상 연기 후 성공. 단 20기 페이로드 테스트는 전체 용량 증대엔 미반영. **SPCX 성공에도 반응 무덤덤 ~$114~116**(6/11 IPO가 $135 대비 -15%, 발사 전날 신저가 종가 $115.07·주간 -7.2%) = 밸류 리셋 지속(retail은 성공 시 $150 복귀 베팅). 차기 촉매 = **SPCX Q2 실적 8/4(after close)**. (기타 우주 종목 discrete 이벤트는 7/18~19 대규모 갱신 직후로 제한적.)
 > **2026.07.19 갱신**: **SPCX 7/18 추가 신저점 $123.99**(전일 $131.11, IPO가 -8%·ATH -45%, 애널 27매수 평균 $240.29). **Starship Flight 13 NET 7/20 18:45 EDT 재시도 확정**(Raptor 2기 교체, 첫 V3 Starlink 20기·6기 열차폐 카메라). **AST SpaceMobile $1B 1.625% 전환사채(7/17)→희석우려 -10~19%·~$55**(D2D 2027초 연기와 겹침). **Rocket Lab Iridium $8B에 ~$3.6B 브릿지금융**(향후 희석 시사, $67.35·컨센 $116.57).
@@ -619,7 +633,9 @@ db_records: 1043
 | **AI 초전도체 발견 가속** [7/26 신규]       | **ML+양자물리 결합으로 신규 초전도체 2종 발견 + 대규모 후보 탐색 가속법 개발**(2026.07.01) = 실온 초전도체 목표에 근접. 별도 장기 미해결 **2D 양자물질 최초 합성**+비정상 전도성 엣지상태 확인, 원자 두께 양자물질 빛-자성 상호작용 제어. AI가 소재발견 워크플로 자체 가속(GNoME 계보 연장)                                  | 2026.07 | ScienceDaily / phys.org / Nature             |
 | **초전도체 물질명 확정 + 중페르미온 신규** [8/2 신규] | AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome 격자 flat band 기인, Aalto대 Törmä) 물질명 확정 = 7/26 '2종 발견' 후속. 별도 **반데르발스 중페르미온 금속 CeSiI 가압 초전도 발견**(Nature Physics 2026.07, 반강자성·Kondo 결맞음·비전통 초전도 상호작용). 3월 U.Houston Hg1223 준안정상 상압 **151K**(종전 133K 경신) | 2026.07 | Nature Physics / ScienceDaily / phys.org |
 | **中 EAST 밀도한계 돌파(핵융합 물리)** [8/2 신규] | 中 완전초전도 토카막 **EAST가 '밀도-무제한(density-free) 영역' 최초 실험 접근** = 선평균 전자밀도 **Greenwald 한계 1.3~1.65배** 안정운전(통상 초과 시 붕괴). 신공정 **plasma-wall self-organisation(PWSO)**+ECRH 보조 오믹 시동. 핵융합 점화 경로 최대 물리장벽 중 하나 극복 단서(Science Advances 2026.01.01) | 2026.01 | Science Advances / phys.org / NEI / WNN |
+| **★ DeepMind AlphaFold 전담팀 해체 = AI4Science 재편** [8/9 신규] | **Google DeepMind, 노벨상(2024 화학) AlphaFold 전담팀 해체**(FT 7/29 보도). **John Jumper 부사장 6월 Anthropic行**+공저자 Jonas Adler·Alexander Pritzel 동반 = 원논문 정규직 저자 **~25% 이탈**. 잔여인력 **Gemini·효소설계·핵융합·유전체·Isomorphic Labs 재배치**. Pushmeet Kohli(AI4Science 창립 VP) '전략 진화' = **LLM(Gemini) 중심 재편** + Anthropic으로 과학AI 인재 이동. AlphaFold 성과는 유지, 조직 모델만 전환 | 2026.07.29 | FT / Engadget / MLQ / the-decoder / Scientific American |
 
+> **2026.08.09 신규 (AI for Science)**: **DeepMind AlphaFold 전담팀 해체**(FT 7/29) — 노벨상 팀 해체, Jumper 부사장 6월 Anthropic行+공저자 2명 동반(원논문 저자 ~25% 이탈), 잔여 Gemini/효소설계/핵융합/유전체/Isomorphic 재배치. Kohli '전략 진화'=LLM(Gemini) 중심 AI4Science 재편 + Anthropic으로 과학AI 인재 이동. AlphaFold 성과는 존속·조직 모델만 전환(자율연구소·GNoME 계보와 병행).
 > **2026.08.02 신규 (기초과학)**: **초전도 물질명 확정 + 중페르미온 신규** — AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome flat band) 명명(7/26 '2종 발견' 후속)+**반데르발스 중페르미온 CeSiI 가압 초전도**(Nature Physics 7월). **中 EAST 밀도-무제한 영역**(Greenwald 한계 1.3~1.65배, PWSO+ECRH, Science Advances)=핵융합 점화 물리장벽 돌파 단서. AI 소재발견 가속(GNoME 계보) 지속.
 > **2026.07.26 신규 (AI for Science)**: **AI 초전도체 발견 가속**(2026.07.01) — ML+양자물리로 신규 초전도체 2종 발견+탐색 가속법 = 실온 초전도체 목표 근접. 장기 미해결 2D 양자물질 최초 합성+전도성 엣지상태 확인. AI가 소재발견 워크플로 가속하는 GNoME 계보 연장.
 > **2026.06.21 신규 (AI for Science)**: **DeepMind 영국 첫 자동화 연구소**(소재과학, Gemini 통합, 일 수백종 합성). **빅테크 AI4Science 본격화**(OpenAI GPT-5/Google AI co-scientist/Anthropic Claude for Life Sciences/MS AI4Science). GNoME 220만 결정구조·5.2만 Li이온 전도체 발굴. AI가 과학연구 워크플로 자체를 재구성.
