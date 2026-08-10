@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-06
-valid_until: 2026-08-07
+updated: 2026-08-10
+valid_until: 2026-08-12
 file: surprise_index
 category: market
 confidence: "medium-high (8/3 이브닝 시점 신규 확정 공식 거시지표 없음 — 이번 주 지표 러시[ISM제조 8/3밤·JOLTS 8/4·ADP+ISM서비스 8/5·NFP 8/7·CPI 8/12]가 전부 발표 전. 4개 지역 스코어 전회차[8/1] 계승. 8/3 정성 대량 추가: 관세 발효 후 첫 거래일 KOSPI -5.13% 되돌림·WTI -6% 급락·예측시장 9월 FOMC 인상 가격[Kalshi 53.5%/Poly 56.5%]. 7/17 밤 발표분 4종 로컬 KB 17일째 미확인 지속. 6쌍 매트릭스는 correlation-monitor 확정, surprise_index·노트는 메인 스레드가 correlation-monitor maxTurns 종료분 승계 마무리)"
