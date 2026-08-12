@@ -33,7 +33,7 @@ lint_p2_count: 5
 | `macro/science_tech.md`         | 2026-06-24 | 46일   | kb-updater 재수집 위임 (industry/science_tech는 8/9 갱신·macro/science_tech 별도파일 누락 11주째 이월)                                                                                                                                                                                                                                                                                                                |
 | `macro/us_monetary_policy.md`   | 2026-07-07 | 33일   | kb-updater 재수집 위임 (updated 06-07 63일 전·7/29 FOMC 9-3 동결·워시 신임 의장 체제 미반영)                                                                                                                                                                                                                                                                                                                          |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 62일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-08, 8/6 모닝 갱신)·correlation_matrix(vu 08-07, 8/6 갱신)·surprise_index(vu 08-07, 8/6 갱신)는 **일요일 미국장 휴장으로 8/9 모닝브리핑까지 반영된 최신 파일 — P0 제외**(다음 거래일 이브닝브리핑서 자동 갱신 예정).
+> **브리핑 진행 가능 여부:** industry KB 만료 62일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-13, 8/12 모닝 갱신 — market-data-collector 8/11 정규장 확정치 반영)·correlation_matrix(vu 08-12, 8/11 갱신)·surprise_index(vu 08-13, 8/11 갱신) 모두 유효 — **P0 제외**.
 
 > [해소 참조 2026-08-09] macro/geopolitics·global_risk_factors·political_cycle·tech_breakthrough·industry/energy·industry/science_tech 6종 일요일 글로벌 주간 갱신 완료(+54 DB 레코드, vu 09-08). **WTI 교차검증 불일치(전회차 P1) 이번 갱신으로 해소** — energy.md $82.15(8/7) vs geopolitics.md ~$82~85(8.7 종가), 격차 <2%(교차참조 맵 갱신, 아래 참조).
 
