@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-08
-valid_until: 2026-09-07
+updated: 2026-08-15
+valid_until: 2026-09-14
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -125,13 +125,18 @@ sources:
   - Quantum Corridor+Ciena+Toshiba 1.6Tb/s 양자안전 광암호화 라이브 광섬유 08-05 + 시카고 24.4km 얽힘분배 충실도 94%+ (phys.org 07월) + Quantum Source 이스라엘 DDR&D 교정불필요 결정론적 얽힘광자원
   - 양자주 08월초 실적랠리 (여름 저점 08-04 IONQ $41.72·RGTI $17.45·QBTS $21.83서 7세션 ~20%+ 반등)
   - PQC 마이그레이션 타임라인 (TQI 08-07 기업 완전전환 12~15년+, NCCoE 하이브리드 처리량 ~50% 저하, AWS 2026 全 HTTPS ML-KEM+레거시 Kyber 제거, 델타 윈도 신규 NIST 표준 없음)
+  - IQM Quantum Computers 상장 후 첫 실적 (08-04: Q2 매출 €6.68M +28%, H1 €8.87M +47%, H1 영업손실 €60.54M, 수주잔고 €102M+, FY26 가이던스 수주 €65~75M·매출 €42~47M, 유럽 최초 순수 양자기업 07-02 Nasdaq+Helsinki 이중상장)
+  - D-Wave+Nasdaq Verafin 금융범죄탐지 파트너십 (08-03, QBTS +11% $20 터치) + Wedbush 양자3사 커버리지 개시 (IonQ Outperform $75/RGTI $40/QBTS $40, Matt Bryson)
+  - Honda Xcelerator Ventures Quemix 양자알고리즘 투자 (배터리 소재) + 연세대 IBM Nighthawk QPU 설치 (08월) + 양자컴 시장 2035E $21.87B 신규추정 (GlobeNewswire 08-12)
+  - IonQ+EPB 테네시 양자통신연구센터 5년 $15M (08-03, 세계 최초 상용 양자메모리 라이브 광섬유망) + NIST+UMD+Qunnect 62km 항공광섬유 얽힘분배 (08-06)
+  - IonQ DARPA 'It's About Time' 프로그램 광원자시계 총 $58M 확정 (08-07, 125기 Evergreen-05) + PQC 델타윈도 신규표준 없음 (Apple iOS26 전역 양자안전TLS, 기업 배치 7%)
 confidence: high
-last_synced_from_db: 2026-08-08
+last_synced_from_db: 2026-08-15
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-08-08)
+## CURRENT (2026-08-15)
 
 ---
 
@@ -143,7 +148,7 @@ last_synced_from_db: 2026-08-08
 | 글로벌 양자컴퓨팅 시장 2026E     | $1.88B ~ $2.7B (Fortune BI $2.04B)                         | [Precedence / Fortune BI / MarketsandMarkets]        |
 | 양자컴퓨팅 소프트웨어 시장 2026E | $0.78B -> 2030E $1.68B (CAGR 21.2%)                        | [Research and Markets]                               |
 | 글로벌 양자컴퓨팅 시장 2030E     | $4.24B ~ $20.2B (CAGR 20.5~41.8%)                          | [Grand View / BCC $7.3B / TBRC $16.27B / M&M $20.2B] |
-| 글로벌 양자컴퓨팅 시장 2035E     | **$19.44B**                                                | [Precedence Research]                                |
+| 글로벌 양자컴퓨팅 시장 2035E     | **$19.44B ~ $21.87B**(08-12 신규 리포트 상향)                                                | [Precedence Research]                                |
 | 양자센서 시장 2025               | $760M ~ **$859.9M** (정의 범위 편차)                       | [Mordor Intelligence / ResearchandMarkets]           |
 | 양자센서 시장 2026E              | $389.5M(보수)~**$983.7M**(낙관). 국방/보안 **40.25%** 점유 | [ResearchandMarkets / Mordor / GlobeNewswire 05-21]  |
 | 양자센서 시장 2031E              | **$1.56B** (CAGR 12.7%)                                    | [Mordor Intelligence]                                |
@@ -328,8 +333,9 @@ last_synced_from_db: 2026-08-08
 | 유럽 Eagle-1 QKD 위성                | **발사 2027말~2028초로 슬립**. SES+Airbus 네덜란드 Noordwijk **광지상국 08월 건설 착수**. EuroQCI 27개국 3년 궤도 검증                                                                                                                                                             | [ESA / SES]                                     |
 | **캐나다 QEYSSat 위성**              | Quantum EncrYption and Science Satellite **2026 발사 예정**                                                                                                                                                       | [Quantum Zeitgeist / QNu Labs]                  |
 | 100km 얽힘 분배                      | USTC 02월: memory-memory 얽힘 100km                                                                                                                                                                               | [Nature 2026.02]                                |
-| EPB-IonQ 챠타누가                    | 양자컴퓨팅+네트워킹 **상용시설 운영 개시**                                                                                                                                                                        | [EPB / IonQ]                                    |
+| EPB-IonQ 챠타누가                    | 양자컴퓨팅+네트워킹 상용시설 + **테네시 양자통신연구센터(08-03): IonQ 5년 $15M, 세계 최초 상용 양자메모리 라이브 광섬유망, EPB 상용화 파트너**                                                                                                                                                                        | [EPB / IonQ]                                    |
 | **QCI+Ciena OFC 2026**               | 양자보안 통신 시연: QKD+양자인증+광암호화(AES-256-GCM) 통합 아키텍처                                                                                                                                              | [QCI/Ciena PRNewswire 03월]                     |
+| **NIST+UMD+Qunnect 62km 항공광섬유 얽힘 (08-06)** | 메트로 **항공(overhead) 광섬유 62km** 양자얽힘 분배 실증. 날씨·진동 노출 환경서 얽힘 유지 → 시카고 24.4km 매설(07월) 대비 거리·난이도 상향. 다크파이버 불필요 상용망 양자화 실현성 강화 | [Quantum Computing Report / Quantum Zeitgeist 08-06] |
 | 한국 양자통신망                      | 800km / 48노드 정부망 (2022 완료)                                                                                                                                                                                 | [InsightKorea / SKT]                            |
 
 **핵심 변화**: **유럽 QUARTERNEXT 컨소시엄 출범(07-08)으로 EuroQCI 자국산 QKD 인증 생태계 확대** — 4년간 EU산 양자 HW 블록 통합·인증, CV-QKD(연속변수 QKD) 소형화·배치·표준화(스페인·오스트리아·네덜란드), SKT 아시아 최초 Horizon Europe QKD(06-09)·Fraunhofer 680km에 이은 유럽 QKD 자국산 공급망 구축. WiMi 신경망 TF-QKD 비밀키율 최적화 연구 병행. 직전 주 **QKD/양자보안 키관리 제품 상용화 가속(06-30~07월)** — Q*Bird Falqon Key Manager(독립형 QKMS, QKD·PQC·하이브리드 키를 QKD/비QKD 인프라에서 관리, 정부/국방/통신/핵심인프라 멀티벤더)와 QNu Labs QConnect(Kyber-1024+AES-256-GCM/TLS1.3 양자저항 터널)·QVerse(AES-256+QRNG 양자안전 메시징)가 나란히 출시되며 QKD+PQC+QRNG 통합이 연구·실증에서 **상용 제품 배치 단계로 이행**. 직전 주 **IonQ+ID Quantique Clavis XG Multiplex(06-17)** — 양자키와 클래식 데이터를 동일 광섬유에 동시 전파해 전용 다크파이버 임대 없이 메트로망 QKD 배치 가능, Clarion KX+PQC와 통합. QKD 상용화의 인프라 비용 장벽을 낮추는 분기점. 직전 주 **SKT 아시아 민간 최초 Horizon Europe QKD 펀딩(06-09)** — QPIC-AI 칩 기반 차세대 QKD·ETRI 광칩 개발, 한-유럽 인증표준 통합 추진으로 한국이 유럽 QKD 표준 논의에 진입. IonQ 루마니아 RoNaQCI(1,500km+/36링크, 유럽 최대급 운영 QKD)가 재부각. 직전 주 Fraunhofer Q-net-Q 680km 국가 광역 QKD 운영 + Ooredoo 카타르 첫 상용링크 + QuDef SQOUT 위협 인텔(06-01)과 합쳐 QKD가 연구→정부·기업 운영 배치 단계로 본격 이행. 글래스고 테라헤르츠 QKD는 광섬유 비의존 대안 트랙.
@@ -453,12 +459,12 @@ last_synced_from_db: 2026-08-08
 | **양자 랠리 반전 (07-02)**       | 4사 동반 **5~7% 하락**: RGTI **-7% ~$21.17**, IONQ **-5%**(밸류 ~$21.46B), QBTS **-6%**, QUBT -5~7%. 뉴스 무관 바스켓 동조매매(10~15% 일간 변동 상시). **07-03 조기폐장·07-04 독립기념일 휴장**(미국 3일 연휴)                                       | [Yahoo Finance / heygotrade / fastcompany 07-02] |
 | **07월 중순 리스크오프 급락 (07-13)** | 중동 긴장發 리스크오프 리플: **IonQ -8%**, D-Wave·Rigetti·QUBT **-6%**. 무현금흐름 장기듀레이션·투기적 양자주 회피. 07-22 월간 IONQ -36%·RGTI -24%·QBTS -26% | [24/7 WallSt 07-13 / Motley Fool 07-22] |
 | **밸류에이션 경고**              | P/S: IonQ **106x**, D-Wave **283x**, Rigetti **870x**. Motley Fool "함정 경고". 하지만 CHIPS 정부 지분 = 정당화 시그널                                                                   | [Motley Fool / TipRanks]           |
-| **애널리스트**                   | IonQ: Rosenblatt **$100**, 컨센 $55~$68, 11 매수/0 매도 Strong Buy. D-Wave: 컨센 **$37**(+86%)                                                                                           | [Rosenblatt / TipRanks]            |
+| **애널리스트**                   | IonQ: Rosenblatt **$100**, 컨센 $55~$68, 11 매수/0 매도 Strong Buy. D-Wave: 컨센 **$37**(+86%). **Wedbush(08-03~04) 3사 Outperform 개시: IONQ $75·RGTI $40·QBTS $40** (Matt Bryson)                                                                                           | [Rosenblatt / TipRanks]            |
 | QTUM ETF                         | YTD +6%, 1Y +62%. Quantinuum(QNT) 편입 시 재편                                                                                                                                           | [Defiance ETFs]                    |
 | **IonQ (IONQ)**                  | **Q2 2026(08-05) 레코드 매출 $80.1M(+287%)**·조정EPS $0.33·**FY26 가이던스 $280~290M 상향**·**SkyWater $1.8B 클로징**·**DARPA $28M 광원자시계+Capella NRO SAR(08-06)** 국방계약으로 실적 급등. 여름 저점 08-04 $41.72→7세션 ~20%+ 반등. 애널 컨센 Buy·목표 **$71.25**(Rosenblatt $100). 순수기업 시총 1위 유지. **FY26 조정EBITDA손실 가이던스 $310~330M**(2025 $186.75M서 확대, Q1 영업손실 $271.5M). 현금 $3.1B. CHIPS 미포함. **내부자 2년 순매도 $454.1M**(최대). 양자센싱(Vector Atomic·DARPA/NRO) | [IonQ Q2 2026 / Benzinga 08-05 / TipRanks 08-06] |
 | **Quantinuum (QNT)**             | 06-04 Nasdaq 데뷔($60/주 업사이즈, $1.68B 조달, 20배 초과청약). V자 반등 후 고점: 저가 ~$50(06-10)→$56.49(06-12)→06-17 $64.75→**06-18 $69.80(역대 최고, 시총 $18.24B)**. 직전주 IPO가 $60 상회 회복. 2025 매출 $30.9M/순손실 $192.6M. (06-25 동종 양자주 EO 후 조정 국면, QNT 신규 가격 미확인 — Honeywell ~82% 지분 보유로 유동주식 제한) | [stockanalysis.com QNT / GuruFocus / Yahoo] |
 | **Rigetti (RGTI)**               | **Q2 2026 실적(08-06)**: 매출 **$5.1M(+185%)**, GAAP 순손실 $52.6M. 여름 저점 08-04 $17.45→7세션 ~20%+ 반등. **Novera 9큐빗 Pittsburgh Supercomputing Center 테스트베드**(NSF $5M). HPE 하이브리드 양자 8파트너 초전도 HW. 현금 $569M, 무부채. **CHIPS $100M**. 내부자 2년 순매도 $71.5M | [StockTitan 08-06 / QCR 08-06] |
-| **D-Wave (QBTS)**                | **Q2 2026 실적(08-06 장전)**: 매출 $3.1M(flat), 2Q 부킹 $2.1M(+59%), **상반기 부킹 $35.5M(+1,120%)**·RPO $40.7M(+668%), 현금 $588M(+93%). 부킹 급증 vs 매출 flat. **08-05 $21.39**(애널 상단 $37). **IDC MarketScape 리더(07-08)**(문제제출 2억건+·Advantage2 314% YoY↑). NSF ERASE $1.57M(06-30). **CHIPS $100M**. 내부자 2년 순매도 $331.1M | [SEC 8-K 08-06 / congress.net 08-06 / Yahoo 08-06] |
+| **D-Wave (QBTS)**                | **Q2 2026 실적(08-06 장전)**: 매출 $3.1M(flat), 2Q 부킹 $2.1M(+59%), **상반기 부킹 $35.5M(+1,120%)**·RPO $40.7M(+668%), 현금 $588M(+93%). 부킹 급증 vs 매출 flat. **08-05 $21.39**(애널 상단 $37). **IDC MarketScape 리더(07-08)**(문제제출 2억건+·Advantage2 314% YoY↑). **Nasdaq Verafin 금융범죄탐지 파트너십(08-03: QBTS +11% $20 터치)**. NSF ERASE $1.57M(06-30). **CHIPS $100M**. 내부자 2년 순매도 $331.1M | [SEC 8-K 08-06 / congress.net 08-06 / Yahoo 08-06] |
 | **QUBT**                         | QNT 데뷔일 **-8.57%**. Q1 $3.7M. 인수 기반. 현금 $1.4B                                                                                                                                   | [QUBT / GuruFocus]                 |
 | **Infleqtion (INFQ)**            | Q1 $9.5M(+14%). FY $40M+. **CHIPS $100M**. Rb-Cs 세계기록. DoD $11M 항법                                                                                                                 | [Infleqtion]                       |
 | **Xanadu (XNDU)**                | Nasdaq/TSX 03-27. Q1 $2.8M(+305%). SPAC $302M                                                                                                                                            | [Xanadu]                           |
@@ -500,6 +506,22 @@ last_synced_from_db: 2026-08-08
 | 2032    | D-Wave **100 논리큐빗 FTQC**(100만+ 연산)                                                                                                                                                                                                                                                                                                                                         |
 | 2035    | 양자취약 알고리즘 제거(금지). 한국 세계1위. 경제 파급 $1T. 시장 **$19.4B**                                                                                                                                                                                                                                                                                                        |
 
+> **2026.08.15 핵심 변화 요약**(8/08 대비 증분):
+>
+> 1. **양자 순수기업 실적·상장 지형 완비 — IQM 상장 후 첫 실적(08-04)**: 유럽 최초 순수 양자기업 IQM(07-02 Nasdaq+Nasdaq Helsinki 이중상장) 첫 공개실적. Q2 매출 **€6.68M(+28% YoY)**·H1 €8.87M($9.67M, +47%), H1 영업손실 €60.54M(전년 €31.64M서 확대 — SPAC 거래비용 €9.9M+R&D €34.05M·직원 460명). **수주잔고 €102M+**(Q2말 이후 €33M 증가). FY26 가이던스 재확인(수주 €65~75M·매출 €42~47M). IonQ($80.1M 08-05)·Rigetti·D-Wave(08-06)에 이어 IQM·Quantinuum까지 상장 순수기업 실적 공시 완비 — **부킹/수주잔고 급증 vs 소액 매출 괴리** 패턴 공통.
+>
+> 2. **양자주 촉매·애널리스트 커버리지 확대(08-03~04)**: **Wedbush(Matt Bryson) 양자 3사 커버리지 개시** — IonQ Outperform **$75**(업사이드 88%)·Rigetti Outperform **$40**(147%)·D-Wave Outperform **$40**(100%), "정부 R&D·파트너십 넘어 지속가능 상업 매출 전환이 핵심 마일스톤" 논평. **D-Wave+Nasdaq Verafin 금융범죄(자금세탁·사기)탐지 파트너십**(QBTS +11% $20 터치). IonQ SkyWater 인수+Wedbush로 IONQ +9%·RGTI +7% 동반 반등. YTD는 여전히 7~21% 약세이나 리테일 강세 지속(Stocktwits 81% bullish).
+>
+> 3. **양자통신 라이브망 얽힘분배 진전(08-03~06)**: **NIST+UMD+Qunnect 62km 메트로 항공(overhead) 광섬유 양자얽힘 분배 실증(08-06)** — 항공포설 광섬유(날씨·진동 노출, 매설선보다 가혹)에서 얽힘 유지, 시카고 24.4km 매설 얽힘분배(07월) 대비 거리·환경 난이도 상향해 기존 상용망 양자화 실현성 강화. **IonQ+EPB 테네시 양자통신연구센터(08-03)**: IonQ 5년 **$15M**, 라이브 네트워크 직결 최초 차세대 양자통신 R&D 랩, **세계 최초 상용 양자메모리를 라이브 광섬유망에 호스팅**(양자메모리·양자네트워킹, EPB 상용화 파트너).
+>
+> 4. **국방 양자센싱(주간 신규 대형 이벤트 부재, IonQ DARPA 딜 세부 확정)**: DARPA 신설 **'It's About Time' 프로그램**하 IonQ 광원자시계 $28M+미행사옵션 $30M(총 **$58M**) 확정 — 125기 Evergreen-05 GPS-free 광원자시계 제조, IonQ 자체 $15M 생산투자. '양자HW 물리가 아닌 **제조**'를 핵심 미해결 문제로 규정(Vector Atomic ROCN 발원). 이번 주 양자센서 1차 신규 이벤트는 이 딜 세부화가 유일.
+>
+> 5. **한국·글로벌 인프라·응용**: **연세대 IBM Nighthawk QPU 설치**(연구·산업 응용, 한국 대학 IBM 양자 인프라 확대). **Honda(Xcelerator Ventures) 일본 Quemix 양자알고리즘 투자**(배터리 소재) — 자동차 OEM 양자 응용 확대. 신규 시장 리포트 양자컴 **2035E $21.87B**(GlobeNewswire 08-12, 기존 Precedence $19.44B서 상향).
+>
+> 6. **PQC(델타 윈도 신규 표준 없음, 실행단계 지속)**: 신규 NIST 표준 없음. 정밀화 — **Apple 2026 양자안전 암호 시스템 전역 확대**(iOS26/iPadOS26/macOS26 기본 양자안전 TLS, 기존 PQ3 iMessage서 확장), 기업 PQC **실배치 완료 7% 그침**(계획 다수 vs 배치 갭, TechTimes 07-24). HQC 초안 2026초·최종 2027, OMB M-26-15 민간 연방기관 마이그레이션 계획 **~2026-10 제출 마감 임박**, FIPS140-2 sunset 09-21·CNSA2.0 2027-01 재확인.
+>
+> ---
+>
 > **2026.08.08 핵심 변화 요약**(7/25 대비 증분):
 >
 > 1. **양자 3사 Q2 2026 실적 발표 — 주간 최대 이벤트**: **IonQ(08-05)** 레코드 매출 **$80.1M(+287% YoY)**·조정 EPS $0.33(컨센 $0.30 상회)·유기 compute +130%, **FY26 가이던스 $280~290M로 상향**(직전 $260~270M). **SkyWater $1.8B 인수 클로징 완료**(온쇼어 반도체 파운드리 확보 수직통합 풀스택, 단 가이던스엔 미포함·통합 후 결합 가이던스). **Rigetti(08-06)** 매출 **$5.1M(+185%)**·GAAP 순손실 $52.6M·현금 $569M 무부채. **D-Wave(08-06)** 매출 $3.1M(flat)이나 **상반기 부킹 $35.5M(+1,120%)**·RPO $40.7M(+668%)·현금 $588M(+93%) — 부킹 급증 vs 매출 flat 괴리 지속. 실적 시즌에 양자주 여름 저점(08-04 IONQ $41.72·RGTI $17.45·QBTS $21.83)서 **7세션 ~20%+ 반등**(IonQ 어닝 비트+국방계약 견인).

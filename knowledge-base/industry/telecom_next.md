@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-08
-valid_until: 2026-09-07
+updated: 2026-08-15
+valid_until: 2026-09-14
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -131,14 +131,31 @@ sources:
   - Semiconductor Today
   - orbitalradar
   - electronics-lab
+  - Reuters
+  - Cignal AI
+  - StocksToTrade
+  - MobileWorldLive
+  - Insider Monkey
+  - Counterpoint Research
 confidence: high
-last_synced_from_db: 2026-08-08
+last_synced_from_db: 2026-08-15
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.08.15 핵심 변화 요약 (8/8 이후 델타)**:
+>
+> 1. **★SPCX 8/6 락업해제 무난 통과 후 V자 반등 -- 8/5 사상최저 $108.27 -> 8/10 IPO가 $135 첫 회복 -> 8/14 약 $140(8/5 저점 대비 +35%), 조건부 2차 보너스 트랜치 미발동** -- **8/5 Q2 실적 실망·락업 우려로 종가 $108.27 사상최저(수요일 약 -14%). 8/6 1차 락업(약 9.115억주 $116B) 언락 당일 오히려 +6% 반등, 8/10 종가가 7/15 이후 처음 IPO가 $135 상회(+4%), 8/14 약 $140(52주 $104.83~$225.64). ★조건부 2차 보너스 트랜치(약 4.5억주·10%)는 미발동 -- IPO가 30% 상회($175.50) 조건(Q2 실적일 종료 10거래일 중 5일) 미충족. Q2 매출 $7.81B(+92% YoY, 컨센 $6.93B 상회)·조정 EBITDA $3.5B(+191%)·순손실 -$541M. 머스크·핵심 내부자 2027 중반까지 락업, 9~10월 추가 트랜치 대기** [CNBC 8/10 above $135, CNN 8/6 +6% unlock, Motley Fool 8/5 911.5M lockup, Yahoo 8/14 $140, Forbes 8/4]
+> 2. **★FCC 신규 중국산 광트랜시버 수입금지 규칙 초안(로이터 8/4) -- AI DC 공급망 지각변동, Nokia·광통신주 반사 랠리 촉매** -- **트럼프 행정부 FCC가 AI 데이터센터용 신규 중국산 광트랜시버 수입금지 규칙 초안 작성(멀웨어·데이터 탈취 방지 명목). Innolight 단독 글로벌 DC 트랜시버 약 27%, Innolight+Eoptolink 800G+ 고대역 60%+(글로벌 합산 55%+) 지배. 미국 대체재 Coherent·Lumentum 수혜 기대되나 (1)생산 스케일 부족 -> 중국 물량 대체에 12~24개월 램프갭(Counterpoint), (2)대체 트랜시버가 의존하는 인듐인화물(InP) 기판이 2025년 중국 수출통제로 +250% 급등. 초안 단계·신규 모델만 대상·기배치분 제외, 연내 발효 가능성** [Bloomberg 8/4 FCC drafts ban, TechTimes 8/5 60% supply cut, WCCFTech Innolight 27%, TheNextWeb Counterpoint, Cignal AI]
+> 3. **★광통신 어닝 블로우아웃(8/11~12) -- Lumentum +109% 주가+15%·1.6T 가속, Coherent +34% 주가+9%(DC&Comms $1.6B)** -- **Lumentum FQ4 2026(8/11): 매출 약 $1.01B(+109.3% YoY), 펌프레이저 +80% YoY 사실상 완판, 1.6T 초기양산->광범위 채택 가속, FQ1 2027 가이던스 $1.225~1.275B(+130%+ YoY, 첫 3자릿수 OCS 분기) -- 주가 +15%. Coherent FQ4 2026(8/12): 매출 $2.045B(+33.7% YoY), Datacenter&Comms $1.615B(전체 79%, pro forma +59%) -- 주가 +9%, Corning +5%. 1.6T/NPO/고출력 CPO 레이저 수요가 AI 인프라 심화 확증. FCC 중국산 금지 초안과 결합해 서방 광통신 밸류 재평가** [247WallSt 8/12 Lumentum+15% Coherent+9%, Investing.com Lumentum FQ4 transcript, MEXC 1.6T NPO]
+> 4. **★통신장비 -- Nokia 8월 랠리 지속(EUR 9 돌파)·FCC 반사이익·BofA/SEB 상향·대만모바일 5G 수주 + Nokia-NVIDIA-T-Mobile 시애틀 6G 트라이얼 실증** -- **Nokia 주가 EUR 9 돌파(8/12), ADR 다중 급등일(약 +9.8%·+8.7%·+5.5%). 촉매: Q2 EPS EUR 0.07(전년 0.04)·AI&Cloud 수주 EUR 2.8B + ★FCC 중국산 광트랜시버 금지 초안 반사이익 + 신규 Taiwan Mobile 5G 확장 수주 + 애널 상향(BofA $18.50 Buy·SEB Hold->Buy EUR 12). 2026 OP 가이던스 EUR 2.1~2.6B 상향·CapEx EUR 800~900M 축소(현금효율 개선), 단 공급제약·텔레콤 약세로 EUR 10 저항. ★Nokia·T-Mobile US·NVIDIA가 T-Mobile AI-RAN Innovation Centre(시애틀)에서 GPU 가속 AI-RAN 실증(AirScale Massive MIMO 3.7GHz, 단일 GH200에서 AI+RAN 동시 처리). T-Mobile 유일 확정 일정: 2026 필드 트라이얼->2027 상용 개시->2028 대량배치, 8개 사업자 참여** [FX Leaders 8/12, Timothy Sykes 8/13, 247WallSt 8/13 6G trials, MobileWorldLive]
+> 5. **6G Rel-21 마드리드 RAN#113(9/14~17) -- MRSS가 5G->6G 1차 마이그레이션 기제로 유력 + NGMN 단순화 촉구·Ericsson standalone-only 지지** -- **MRSS(Multi-RAT Spectrum Sharing)가 1차 마이그레이션 기제로 부상(서로 다른 RAT 동시 스펙트럼 공유·공존). 9월 데드라인: RAN1의 MRSS 오버헤드 수치 제출 + 비병치(non-collocated) 스펙트럼 어그리게이션 명시적 스터디 위임, Option 1(6G-anchored DC with NR) vs Option 3(dual stack) 선택도 9월 확정 예정. NGMN '5G 복잡성 반복 경계·단순화 우선' 재촉구, Ericsson 블로그 'standalone-only의 이점(더 단순한 진화)' 지지. Stage-1 freeze 2027.03, Stage-3 final freeze 2028.12, full ASN.1 freeze 2029.03 유지** [6G Futures RAN#112, Light Reading smoother path MRSS, Ericsson blog standalone, NGMN]
+> 6. **위성 D2D -- AST BB11/12/13 궤도 안착 확정(연내 D2D 베타)·Amazon Leo 5,105기 D2D 2028+Apple 협약 + 한국 8월 민관협의체·LGU+ 파주 2단계 1.35조** -- **AST SpaceMobile BB11/12/13 8/5 03:42 EDT Falcon 9 궤도 안착 성공 확정, BB14/15/16 준비·생산 BB42까지, 연내 D2D 베타 타깃(AT&T·Verizon 초기 비연속 커버리지), 애널 약 +22% 상방. Amazon Leo D2D용 5,105기 FCC 신청(배치 개시 2028, L/S-band Globalstar $11.57B 인수 연계, Apple iPhone/Watch 위성기능 협약), 궤도 약 336~392기(집계 편차)로 연내 초기서비스. ★한국: 정부 8월 'AI 네트워크 투자' 민관협의체 가동(6G·해저케이블·5G SA로 화답), LGU+ 파주 AIDC 2단계 약 1.3489조 투자 의결(~2028.11 DBO 신수익원), KT 해저케이블 1조·전국 3,500개 국사 AI 엣지 전환·추가 1GW 공급** [AST BusinessWire 8/5, telecomstechnews beta D2D, CNBC 7/27 Amazon 5105, sateconomy 민관협의체, IMPACT ON LGU+ 1.35조]
+>
+> **(이전 갱신 -- 8/08 핵심 요약, 참고용)**:
+>
 > **2026.08.08 핵심 변화 요약 (8/1 이후 델타)**:
 >
 > 1. **★SPCX 첫 실적(8/4) 매출 +92% 서프라이즈 $7.81B이나 CapEx $18.37B 쇼크 + 8/6 락업 무난 통과** -- **매출 $7.81B(+92% YoY, 컨센 $6.93B +13% 상회, 연말 매출 $100B 근접 시사). Connectivity(Starlink) $4.3B(+66%, 가입자 12M으로 1년새 2배), Space $962M(+29%), AI(xAI+X+클라우드) $2.56B(+247%). 순손실 -$541M(-$0.09/주, 컨센 -$0.23~0.24 대폭 선방). ★CapEx $18.37B(컨센 +39% 초과)가 최대 논쟁 -- 정규장 +9.4% 급등 후 애프터 -7% 반락. 2027 AI컴퓨팅 2GW+ 추가배치가 핵심 상방 촉매. ★8/6 1차 락업해제 무난 통과: 약 9.115억주($116B) 언락(퍼블릭 플로트 4.9%->11.8% 2배+), 장중 신저가 $105.11 -> $111.17 반등(+2.6%, bucking higher). 6/16 피크 $225.64 대비 -50%·$135 IPO가 대비 -20%. 8/12경 약 3.19억주 추가·9~10월 트랜치, 머스크·핵심 내부자 2027 중반까지 락업. Morgan Stanley Overweight $300(밸류 $4T 함의), Argus 8/7 Hold->Buy 상향 $160** [Fortune 8/4, Yahoo/CNBC Q2, FX Leaders CapEx $18B, Motley Fool 8/5 lockup, Quartz $105.11, TradingKey outcome]

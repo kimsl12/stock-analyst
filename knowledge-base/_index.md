@@ -358,6 +358,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-15 | `industry/quantum.md` | **IQM 상장후 첫 실적·Wedbush 양자3사 커버리지 개시** -- IQM Q2 €6.68M(수주잔고 €102M+), Wedbush IONQ$75/RGTI·QBTS$40 Outperform, D-Wave Nasdaq Verafin 금융범죄탐지딜, IonQ+EPB 테네시 양자통신센터 5년$15M(상용 양자메모리 라이브망), NIST+UMD+Qunnect 62km 항공광섬유 얽힘, IonQ DARPA 광원자시계 $58M, PQC 델타윈도 신규표준無 | +11 |
+| 2026-08-15 | `industry/space.md` | **우주 상장주 Q2 실적 주간** -- RKLB 매출 $234.07M(+62%, 기록)·백로그 $2.36B·Q3 가이드 $250~265M·Neutron Q4 온트랙, SPCX 8/10 IPO가 $135 회복→~$140, ASTS Q2 $31.5M(컨센 하회)·궤도 13기·연말 베타, LUNR Q2 $206.2M(컨센 미스)·Goonhilly인수, Starship F14 8월말 궤도+타워catch, 창어7 발사장 도착, Golden Dome SBI 첫시험 통과 | +17 |
+| 2026-08-15 | `industry/smr.md` | **SMR Q2 실적 마무리 & 체코 SMR 확대** -- X-energy Q2 매출+보조금 $54.6M(+154%)·EPS -$0.15 미스·SGL 흑연+Centrus HALEU 이중확보, Oklo Q2 YTD손실 $81.6M·현금 $3.0B·현금소진/자본지출 가이던스 상향, 체코 ČEZ-Rolls-Royce SMR MOU(470MW·두산 파트너), TerraPower INPO 가입(첨단원자로 최초), 우라늄 $86.5/lb 박스권·장기계약 $90/lb, 두산 82,600원(+2.1%) | +12 |
+| 2026-08-15 | `industry/telecom_next.md` | **FCC 중국산 광트랜시버 금지 초안 + 광통신 어닝 블로우아웃** -- SPCX 락업 통과 후 V자 반등($108→$140), Lumentum +109%/Coherent +34%, Nokia EUR 9 돌파·시애틀 6G 트라이얼, Rel-21 MRSS 유력, AST BB11 궤도 안착 | +10 |
+| 2026-08-15 | `industry/advanced_materials.md` | **폴리실리콘 232조 최종확정(12/4 발효·MIP $21/kg)·MP Materials 첫 상업자석 GM 인도 Q4·리튬 1년최고 surge** -- 中 희토류지수 260.8(8/11)·펜타곤 floor 확대(Serra Verde Dy $575/Tb $2,050)·JSR 대만 EUV팹+AMAT CMP JV·복합소재 정량화 갱신 | +19 |
+| 2026-08-15 | `industry/capex.md` | **AI capex 파이낸싱 스트레스 가시화** -- Oracle S&P BBB- 강등(OpenAI RPO 절반·FY27 FOCF -$42B)·CoreWeave Q2 백로그 $104B/순손실 $626M(이자급증)·SEMI 미드이어 WFE +23.1% $143.9B·MSFT FY27 회계변경 $175B·K전력 3사 상반기 수주 작년 연간 근접 | +10 |
 | 2026-08-09 | `macro/geopolitics.md` | **호르무즈 통항 잠정협정 임박(미타결)·유가 Brent ~$83 재하락·러 제재법 상원 86-11 가결·북 8.5 SRBM 발사** -- 이란-오만-美 통항협정 '근접'하나 이란 의회 미통과, 상원 Graham 러·이란 제재법 86-11(하원 9월 처리), 북한 4월래 첫 탄도미사일(UFS 8.17~27 직전), 남중국해 中 스카버러암 무력시위(8.1), 러 공세 2.5개월째 작전적 진전 실패 | +9 |
 | 2026-08-09 | `macro/global_risk_factors.md` (SSOT) | **약한 7월 고용發 골디락스 리프라이싱 전자산 랠리** -- NFP -23K로 9월 인상위협 제거·S&P 7,757 사상최고(+3.5%wk)·나스닥 +5%·금 ~$4,400 급등(인하베팅)·VIX 15.15/HY 2.71(위험선호 심화)·유가 브렌트 $82(이란-오만 임시항로)·엔 158 재약세(캐리 재개)·원화 1,407 강세·8/12 CPI(컨센 +2.8%y/코어+3.0%y) 관문으로 스태그플레이션 2위 격상 | +13 |
 | 2026-08-09 | `macro/political_cycle.md` | **트럼프 2기 최저·한국 부동산세제개편 확정·폴리실리콘 232관세** -- 트럼프 net-20.6(무당층34%)·25개주 Section301 제소·9월FOMC 61.9%·이재명 45.9%(부정 첫 과반)·폴리실리콘 232+MIP 8/6포고(12/4발효)·일본 다카이치 BOJ 국채매입 요청·FY27 CR 12/4 | +8 |

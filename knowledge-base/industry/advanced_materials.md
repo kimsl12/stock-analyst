@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-08
-valid_until: 2026-09-07
+updated: 2026-08-15
+valid_until: 2026-09-14
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -168,10 +168,25 @@ sources:
     Gurufocus,
     전기신문,
     국가전략포털,
+    MacroMicro,
+    White & Case,
+    Wiley,
+    Troutman Pepper Locke,
+    pv magazine USA,
+    Stratview Research,
+    Research and Markets,
+    Canaccord Genuity,
+    Future Market Insights,
+    헤럴드경제,
+    파이낸셜뉴스,
+    뉴스후플러스,
+    Wah Lee Industrial,
+    LCY Chemical,
+    Serra Verde,
   ]
 confidence: high
-last_synced_from_db: 2026-08-08
-db_records: 434
+last_synced_from_db: 2026-08-15
+db_records: 453
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -180,6 +195,18 @@ db_records: 434
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.08.15 핵심 변화 요약 (8/8→8/15 윈도우)**:
+>
+> 1. **희토류 — 中 가격지수 260.8(8/11)로 추가 하락, NdPr oxide $100-102/kg로 펜타곤 floor 하회 유지 + [중대] MP Materials 첫 상업 자석 GM 인도 임박·펜타곤 floor 확대** — 8/6 263.6서 260.8(8/11), 2010 base100 대비 +160.8%, 4월초 고점 310서 조정 지속. NdPr oxide 中내 RMB714.9-734.9/kg($100-102/kg)로 $110 floor 하회 유지. Dy oxide RMB1,365-1,405/kg·Tb oxide RMB6,600-6,660/kg(中내 ~$990-999/kg vs 역외 $3,625-4,500/kg, 4~5배 프리미엄). **펜타곤 backing 가격 floor 확대: NdPr $110/kg + Serra Verde 딜로 Dy $575/kg·Tb $2,050/kg floor 신규 설정(中내 quote·역외 assess·정부 floor 3개 별개 pricing class).** **MP Materials(Canaccord Growth Conf 8/12): Q2 매출 $108.49M(+89% YoY, 컨센 +13.08% 상회)·Q2 NdPr 생산 +41% YoY 840톤·Q3 NdPr >1,000톤 가이드, 첫 상업 자석 GM 인도 Q4 2026, Mountain Pass 중희토(Dy·Tb) 분리 commissioning 착수, '10X' 2028년 연 ~10,000톤 자석 목표. NdPr access가 최대 병목(중희토 희소성보다).** 8/10 희토류주 랠리. **2026.11.10 中 2차 통제 유예 종료가 최대 forward 리스크** [Rare Earth Exchanges(260.8 8/11), Investing.com/Yahoo Finance/24-7 Wall St(MP Q2·Canaccord 8/12)]
+> 2. **[중대·신규 델타] 폴리실리콘 232조 관세 최종 확정 — 8/6 포고·12/4 발효, MIP 상세 공개** — 파생제품 15% 종가세 + 최저수입가(MIP): 폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·태양광셀 $0.22/W·모듈 $0.38/W. 반도체 공급망 안보 프레임이나 타깃 다운스트림은 태양광만. **韓 영향: 폴리실리콘 대미 수출 ~$220만·파생상품 ~$4.3억, 한화큐셀·OCI 美 현지공장 원가상승·공급망 조정 부담. 산업통상부 8/11 대한상의서 삼성전자·한화큐셀·SK실트론·OCI 긴급 민관합동 대책회의.** [White & Case/Wiley/pv-magazine/SMM(232 상세), 전자신문/서울경제/아주경제(韓 영향 8/11)]
+> 3. **리튬 [방향 확인] '1년 최고 근접' surge 지속 — 공급과잉→적자 서사 전환** — 글로벌 리튬 $21.94/kg(8/12, +2.45%). 中 배터리급 탄산리튬 GFEX 선물 장중 1년 최고 ¥102,500/t·스팟 평균 ¥99,250/t. 中 EV 사상최대 판매+탄산리튬 재고소진 가속·다운스트림 수요 예상상회로 타이트. **Morgan Stanley 2026 LCE 8만톤 적자·UBS 2.2만톤 적자 전망(SQM $15-18/kg).** [주의: 7/29 KB의 SMM ¥146,000과 시리즈/그레이드 상이 — 가격레벨 confidence medium·방향 high]. 리튬 반등이 단기 Na-ion 코스트 인센티브 재강화 [Carbon Credits/Trading Economics(리튬 8/12), MINING.COM(MS/UBS 적자)]
+> 4. **반도체소재 [신규 델타] JSR 대만 EUV 팹 + Applied Materials CMP JV — 소재사 TSMC 인접 증설 경쟁** — JSR 첫 대만 포토레지스트 팹(윈린현, Wah Lee Industrial·LCY Chemical JV, 이르면 2028 가동)서 금속산화물(MOR) EUV 레지스트 TSMC 공급·공동개발. JSR-Applied Materials 신주(Hsinchu) CMP 공동연구센터(4월)·기판 평탄화 연마재 생산 검토. 포토레지스트 시장 $5.41B(2025)→$8.06B(2033) CAGR 5.1%(TOK·JSR·Shin-Etsu·FUJIFILM·DuPont 과점). TOK 5nm↓ CAR 개발. 세부는 semiconductor.md [TrendForce/Tom's Hardware/Yahoo Finance/Digitimes, SkyQuest/Fortune BI]
+> 5. **화합물반도체 — 신규 실적 델타 없음(8/3 onsemi·8월초 Infineon 반영), Navitas 2.0·NVIDIA 800V 파트너 재확인** — Navitas 2.0 고전력 전환(CFO Tonya Stevens 3/30 선임), NVIDIA 800VDC AI팩토리 공식 파워파트너·2030 serviceable market $3.5B·60%+ CAGR 목표. Wolfspeed v Navitas 특허소송 계류(7/7 제소, 판결 없음, 제소법원 보도 상충: Delaware/W.D.N.C). 실수요 변곡은 2027 [Navitas SEC 8-K/Semiconductor Today]
+> 6. **첨단 복합소재 [정량화 갱신] — 항공우주 CFRP $3.16B(2026)→$4.37B(2030) CAGR 8.4%, 열가소성 급성장** — 고성능 복합재 중 CFRP 66.39% 점유(2026). 항공·방산 열가소성 복합재 $553.7M(2025)→$930.8M(2032) CAGR 8.1%(재활용성·빠른 성형). 첨단복합재 전체 CAGR 10.44%(2026-2035, Precedence $132.16B by 2035). Toray +10~20%(2025.12.12 발표)+호르무즈 surcharge 이중가격구조 유지. Hexcel JEC World 2026 신소재·NASA 열가소성 우주구조물(달/궤도) 프로그램 [Research and Markets/GVR, Stratview Research/FMI, CompositesWorld]
+> 7. **배터리/Na-ion — CATL Naxtra 2026 대량양산 재확인, 신규 델타 제한적** — 175Wh/kg·주행 500km+·4개 세그먼트(배터리스왑·승용·상용·ESS), 원료 풍부·LFP 대비 저비용. 리튬 반등이 코스트 인센티브 재강화. Changan 첫 상용 Na-ion EV 탑재 [CarNewsChina/S&P Global]
+> 8. **한국 소부장 — 희토류 재자원화 8월 인증 완료 예정·원료 100톤 연내** — 폐영구자석 순환자원 인정 등 선행 행정절차 8월 완료, 연내 원료 100톤·국내 양산능력 검증 착수. 재활용은 1차생산 대비 환경부담 80%+ 감소. 해외자원개발 융자 675억원(+285억)·융자율 50→70% 상향 [헤럴드경제, 아주경제]
+
 
 > **2026.08.08 핵심 변화 요약 (8/1→8/8 윈도우)**:
 >

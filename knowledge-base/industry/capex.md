@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-08
-valid_until: 2026-09-07
+updated: 2026-08-15
+valid_until: 2026-09-14
 sector: capex
 confidence: high
 tags:
@@ -148,24 +148,31 @@ sources:
     비즈니스포스트,
     Silicon Analysts,
     UBS,
+    CFO Dive,
+    Directions on Microsoft,
+    Axis Intelligence,
+    mgrid.org,
+    briefs.co,
+    S&P Global Ratings,
   ]
-last_synced_from_db: 2026-08-08
+last_synced_from_db: 2026-08-15
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-08-08 | 신뢰도: high | 유효: ~2026-09-07
+> 갱신일: 2026-08-15 | 신뢰도: high | 유효: ~2026-09-14
 
 ---
 
-## ★ 주간 델타 (8/8) — 직전 갱신(8/1) 이후 변화
+## ★ 주간 델타 (8/15) — 직전 갱신(8/8) 이후 변화
 
-- **[핵심] Lam Research Q4 FY2026 확정(7/29) + CY2026 WFE 전망 low $150B로 상향**: 매출 역대 **$6.72B**·희석 EPS **$1.82**(컨센 $1.68 상회 +8.3%). **Sep 2026 분기 가이던스 매출 $8.1B(±$400M)·GM 52%·EPS $2.15**. 경영진 **CY2026 WFE 전망을 low $150B 레인지로 상향**(기존 ~$140B with upside bias, **SEMI 공식 $135.2B 대비 +9%+**) — NAND·DRAM·어드밴스드패키징 강한 수요. **2027 'extraordinary'** AI 견인 전망. 장기 목표 GM mid-50%·OPM mid-40%. 반도체 장비 사이클 상향 바이어스 재확인 [Investing.com, Seeking Alpha, BigGo Finance]
-- **하이퍼스케일러 2026 capex 합산 주간 재확인 — CreditSights 추정 상향**: Q2 어닝위크 후 4사(GOOGL/AMZN/MSFT/META) 합산 **~$725-765B(+77% YoY**, 2025 $410B), 5사(+Oracle) **~$825B**. **CreditSights 'Raising Hyperscaler Capex 2026 Estimates'**(포스트 Q2). GS 2025-27 합산 **$1.15T**(2022-24 $477B 2배+). AI 비중 ~75%($450B). 부채시장 의존 심화(내부 FCF 갭 브릿지) [Yahoo Finance, CreditSights, Futurum]
-- **Stargate Abilene 플래그십 가동 개시 확인**: **Abilene(TX) ~0.3GW 가동 중, Oracle이 6월 첫 NVIDIA GB200 랙 인도 개시·조기 학습/추론 워크로드 가동**. 신규 3개 사이트(Shackelford TX·Doña Ana NM·중서부)+Abilene = 5.5GW+. 600MW 추가확장은 3월 협상 종료로 철회(기존 캠퍼스 계속 가동·빌드아웃). **당초 2029 10GW 목표 조기 초과(최근 90일 +3GW)** [OpenAI, Epoch AI, DCD, Enverus]
-- **한국 전력기기 — HD현대일렉트릭 2026 수주 목표 +22.8% 상향 + LS 천안 DC팩토리 준공**: **HD현대일렉트릭 2026 수주 목표 $42.22억→$51.85억로 +22.8% 상향**(북미 빅테크 1조1212억 DC 장기공급 기본계약 반영: 배전 5539억+전력 5673억, 2028까지 순차 납품). **LS일렉트릭 충남 천안 'DC팩토리' 준공 — 세계 최초 100% 직류(DC) 배전 제조시설**(SST·SSCB·ESS 직류 전용 핵심기기 적용). 효성중공업 호주 AusNet 3100억 5년 독점공급. 미국 DC 변압기 부족이 K-전력 3사 존재감 강화, 주가 재평가·등급 상향 기대 [머니투데이, 인사이트, 비즈니스포스트]
-- **GE Vernova 가스터빈 백로그 116GW·인도 슬롯 2031년까지 예약**: 백로그 Q2말 **116GW**(Q1 100GW, 10GW slot→firm 전환·3GW 출하), 총 백로그 **$176B**, **2026말 125GW+ 목표, 가스터빈 인도를 2031년까지 예약**. DC 전기화 주문 YTD **$5B+**, SST·중전압 UPS 상용화로 GW당 매출 **2-3배** 상승 전망. 생산능력 Q3 20GW→2028 24GW→2030 30GW [Turbomachinery, Utility Dive, Power-Eng]
-- **변압기 납기 재확인 — 최대 4년, 북미 증설 $2B**: 대형 변압기 리드타임 최대 **4년**(전력변압기 128주·GSU 144주), 가격 2019 대비 **+77%**. 수요 2024 대비 전력변압기 +21%·GSU +16% 초과 지속. **북미 변압기 증설 ~$2B**(Hitachi·Siemens 등, 2028 가동)이나 현재 갭 미해소 — 2028 이전 실행 프로젝트는 현 부족 시장 직면. AI DC capex $750B의 30-50% 사이트가 변압기·스위치기어 병목으로 지연 리스크 [PV-Magazine, PowerMag, industrialsage]
+- **[핵심] Oracle S&P 신용등급 BBB-로 강등(7/9) — OpenAI 집중 리스크 + capex 급증**: **S&P Global이 Oracle 장기 발행자 등급을 1노치 강등하여 BBB-**(투기등급 바로 위, stable outlook). **OpenAI가 Oracle RPO($638B)의 ~절반**을 차지하는 집중 노출이 핵심 사유. S&P 전망: **FY2027 capex $90-95B(기존 $60B 대폭 상향), free operating cash flow 적자 -$42B**(기존 -$24B), 조정 debt-to-leverage **mid-4x**(표준 BBB 임계 초과), 총부채 **~$160-167B**. 강등 후 주가 -4% 1년 최저. 5년 CDS 멀티이어 최고 지속. AI DC 파이낸싱 스트레스가 신용등급 실질 훼손으로 가시화 [TradingKey, Yahoo Finance, briefs.co]
+- **[핵심] CoreWeave Q2 2026 확정(8/11) — 백로그 $104B·capex 상향, 단 이자비용에 순손실 확대**: 매출 역대 **$2.6B**(+112% YoY, +24% QoQ, 컨센 $2.56B 상회). **매출 백로그 $104B**(+246% YoY, 기존 $99.4B, Q3초 순신규 $25B+ 계약 제외). **2026 capex $31-35B→$35-39B 상향**. FY2026 매출 가이던스 $12.4-13.2B·adj OI $960M-1.15B 상향, 연말 가동 전력목표 **1.85GW+**. 단 **순손실 $626M로 확대**(전년 $290M) — GPU담보 부채 이자비용 급증. neocloud '매출이 capex 후행+이자부담 가시화' 구조 재확인 [CNBC, Seeking Alpha, Yahoo Finance]
+- **SEMI 미드이어 WFE 대폭 상향 — $143.9B(+23.1%), Lam low $150B 콜 검증**: SEMI가 **미드이어 2026 전망에서 WFE를 +23.1% $143.9B로 상향**(연초 공식 $135.2B/+9.0% 대비 대폭 상향, Lam Research의 CY2026 low $150B 콜에 근접·검증). **300mm 팹장비 +18% $133B(2026)·+14% $151B(2027)**. 전체 장비 2026 $139B→2027 $156B(기록)→2028 $229B. AI 인프라·리딩엣지 로직·어드밴스드 메모리(HBM)·후공정이 상향 견인. 대만 리딩엣지+한국 HBM 투자 주도 [SEMI, marklapedus, PRNewswire]
+- **Microsoft FY2027 capex 회계변경 — $190B→~$175B(감가상각 기간 연장)**: Microsoft **FY2027 capex 가이던스가 회계변경으로 ~$175B로 조정**(기존 추정 $190B). 데이터센터·오피스빌딩 비용을 더 긴 기간에 배분(감가상각 연장)하는 회계처리 변경 반영 — **현금 capex 축소가 아닌 비용인식 방식 변경**. FY27 double-digit 매출·영업익 성장·영업마진 1%p 미만 하락 동반. 8월 초 인도 하이데라바드 4번째 Azure 리전 가동. Azure 미충족 백로그 $80B 지속(전력 제약) [Globe and Mail, CFO Dive, Directions on Microsoft]
+- **한국 전력기기 3사 연간 수주목표 줄상향 — 상반기 실적 작년 연간 근접**: **HD현대일렉트릭 YTD 계약 $32.37억(2025 연간 수주 $42.7억의 76% 달성)**·빅테크 A사 1.1조 DC 변압기 장기공급(2027-28 납품)+더 큰 2029-30 계약 협의 중. **효성중공업 상반기 누적 신규수주 7조4981억(2025 연간 7.6조의 99%)**+호주 3100억. **LS일렉트릭 상반기 수주 3.2조(2025 3.7조 근접)**·천안 100% DC 배전공장 가동·AWS 1700억 배전반+Q2 빅테크 5건 연속. 미국 노후망 교체+DC 변압기 부족이 재평가·등급상향 견인 [머니투데이, 한국경제, 인베스트조선]
+- **Siemens Energy 그리드 백로그 사상 최대 €51B — 변압기 병목 장기화**: Siemens Energy **그리드 주문 백로그 €51B 기록**(변압기 수요, 8/9), 가스터빈 백로그 ~70GW 근접. **계획된 변압기·GIS +50% 능력이 2030에야 도착**. 스위치기어 2028까지 사실상 완판, HV 변압기 리드타임 3-5년 지속. **변압기·스위치기어(가스터빈 아닌)가 현재 미국 계통연계 지연 최대 요인** — AI 하이퍼스케일러 $750B+ DC capex의 30-50% 사이트 지연/취소 리스크 [Utility Dive, mgrid.org, PowerMag]
+- **[신규 인용] Anthropic-Google-Broadcom TPU $200B/5GW — 커스텀 실리콘 산업 확산**: Anthropic이 Google에 **5년 ~$200B TPU·클라우드**(최대 100만 TPU, 5GW). **2026년 1GW+ 가동**, Alphabet Anthropic $10B(최대 $40B) 투자. 6개월 후 **Broadcom 합류로 2027부터 ~3.5GW 추가 TPU 공급**. Google TPU 가격 NVIDIA 대비 40-50% 저렴. OpenAI-Broadcom 추론칩 2026 H2 첫 배치 — 커스텀 ASIC(Google/Meta/OpenAI/Anthropic)이 NVIDIA 지배력 장기 잠식 [DCD, CNBC, Anthropic]
 ---
 
 ## S0 CapEx 파이낸싱 (채권/CDS/오프밸런스시트) (6/20 신규 섹션, 7/4 갱신)
@@ -208,9 +215,12 @@ last_synced_from_db: 2026-08-08
 
 - **[8/1 신규] Moody's AI 부채 경고 + 'SPV=서브프라임 CDO' 유비 논쟁**: Moody's가 AI 관련 부채 급증에 공식 경고. 오프밸런스시트 SPV $120B+ 지속(Oracle·Meta·xAI·CoreWeave). **'AI DC SPV가 서브프라임 모기지 CDO와 구조적으로 유사'** 유비 확산 — 급속 감가 GPU 담보·차주 집중·유동성 미스매치가 버블 촉발 우려. **CoreWeave $8.5B DDTL 4.0**(Meta 계약+DC 자산 담보, MUFG·Deutsche Bank·US Bank, SPV 'CoreWeave Compute Acquisition Co VIII LLC')= **첫 GPU담보 IG등급 파이낸싱**(신용평가사가 급속 감가 GPU 담보 인정). Oracle $14B+ DC부채 2차시장 리프라이싱·PIMCO 매도 지속 [Cryptopolitan, Longbridge, globaldatacenterhub, Moody's]
 
+- **[8/15 신규] S&P Global Oracle 신용등급 BBB-로 강등(7/9)** — 투기등급 바로 위로 1노치 하향(stable outlook). **OpenAI가 Oracle RPO($638B)의 ~절반** 집중 노출이 핵심 사유. S&P 전망: **FY2027 capex $90-95B(기존 $60B 대폭 상향)·FOCF -$42B(기존 -$24B)·조정레버리지 mid-4x(표준 BBB 임계 초과)·총부채 $160-167B**. 강등 후 주가 -4% 1년 최저. AI DC 파이낸싱 스트레스가 신용등급 실질 훼손으로 가시화된 첫 대형 사례 — CDS 스프레드 상승이 등급 강등으로 현실화 [S&P Global, TradingKey, Yahoo Finance, briefs.co]
+
 ### Neocloud 순환 파이낸싱 (6/20 신규, 7/4 갱신)
 
 - **CoreWeave 백로그 $99.4B**: Meta $21B + OpenAI $22.4B + Anthropic(비공개 다년) 포함. 2026 매출 가이던스 $12-13B, **CapEx $30-35B**(매출 2.5배+). 매출이 CapEx를 2:1로 후행. **7월 OpenAI $11.9B 계약 이행 위해 $2.6B 추가 차입** [Motley Fool, AgentMarketCap, Cryptopolitan]
+- **[8/15 갱신] CoreWeave Q2 2026 확정(8/11)**: 매출 역대 **$2.6B**(+112% YoY, +24% QoQ, 컨센 상회), **백로그 $104B**(+246% YoY, Q3초 순신규 $25B+ 제외), **2026 capex $31-35B→$35-39B 상향**, FY26 매출 $12.4-13.2B·adj OI $960M-1.15B, 연말 전력목표 **1.85GW+**. 단 **순손실 $626M로 확대**(전년 $290M) — GPU담보 부채 이자비용 급증으로 '차입 트레드밀' 비용 가시화 [CNBC, Seeking Alpha, Yahoo Finance]
 - **순환 파이낸싱 구조**: NVIDIA → CoreWeave/Nebius 투자/공급 → 하이퍼스케일러 임대 매출. 하이퍼스케일러가 CapEx를 neocloud로 이전, neocloud는 지속적 자금조달 필요 [Beth Kindig, IO Fund]
 - **Nebius $4.2B 메가조달**(주식+전환사채). RPO의 OpenAI 집중도가 핵심 리스크 [knowyourinvestments]
 
@@ -313,7 +323,7 @@ Stargate ~10GW($500B): 조지아 $30B+ 3.2GW 신규+OpenAI-Oracle 4.5GW 추가($
 - **총 CapEx**: ~$200B (2026E, +20% YoY) — TSMC 단독 25%+ 점유 [SEMI, Electronics Weekly]
 - **2026 반도체 CapEx 성장률**: **+20% YoY** — AI 수요+HBM+어드밴스드패키징 견인 [Electronics Weekly]
 - **반도체 리드타임**: 2026.03 **40주** 도달 — 메모리 IC·광부품(AI DC 대량소비)이 가장 심한 공급 제약 [Omdia, Accuris]
-- **장비 시장(SEMI)**: 2026 전세계 반도체 장비 매출 기록적 **$139B**. WFE 세그먼트 **+9.0% $135.2B**. **파운드리/로직 WFE +15% $69.3B**(GAA 전환·리딩엣지). 메모리 CapEx HBM 견인 큰폭 증가. 광의 WFE는 MarkWide $112.4B. **[8/8 갱신] Lam Research는 CY2026 WFE를 low $150B로 상향 제시(SEMI 공식 $135.2B 대비 +9%+, 기존 ~$140B) — AI 수요가 미드이어 전망 상회로 전 세그먼트 상향 바이어스** [SEMI, MarkWide Research, Lam Research IR]
+- **장비 시장(SEMI)**: 2026 전세계 반도체 장비 매출 기록적 **$139B**. WFE 세그먼트 **+9.0% $135.2B**. **파운드리/로직 WFE +15% $69.3B**(GAA 전환·리딩엣지). 메모리 CapEx HBM 견인 큰폭 증가. 광의 WFE는 MarkWide $112.4B. **[8/8 갱신] Lam Research는 CY2026 WFE를 low $150B로 상향 제시(SEMI 공식 $135.2B 대비 +9%+, 기존 ~$140B) — AI 수요가 미드이어 전망 상회로 전 세그먼트 상향 바이어스**. **[8/15 갱신] SEMI 미드이어 전망도 WFE를 +23.1% $143.9B로 대폭 상향(연초 $135.2B 대비, Lam low $150B 콜 검증)·300mm 팹장비 +18% $133B(2026)·+14% $151B(2027), 전체장비 2027 $156B·2028 $229B** [SEMI, MarkWide Research, Lam Research IR]
 - **2027E**: 전체 장비 **$156B**(+11.4%, 기록) [SEMI]
 - **WFE 지배 5사**: ASML/AMAT/Lam/TEL/KLA 첨단노드 툴셋 사실상 독점. ASML 유일 EUV/High-NA EUV 공급. ASML 전체 WFE 점유 ~21% [SEMI, MarkWide Research]
 - **ASML**: Q1 매출 EUR 8.8B, GM 53%. **2026 가이던스 EUR 36-40B 유지**. Q2 가이던스 EUR 8.4-9.0B, GM 51-52%. 수주잔고 EUR 38.8B. High-NA EUV 2026 ~3대 전망(주문 둔화). EUV 리더십+백로그 견조 [ASML IR, SEMI]
