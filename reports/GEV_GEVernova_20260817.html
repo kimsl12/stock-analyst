@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GE Vernova (GEV) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>GE Vernova (GEV)</h1><div class="meta">주식 · 재분석 v11 (이전 비교 미포함) 종합 분석 리포트 | 2026-08-17</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">77/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">GEV는 AI 데이터센터發 전력 슈퍼사이클의 발전(가스터빈)+송배전(그리드) 양방향 순수 수혜주. 백로그 $176B(약 4년치 매출)·주문 +88%·가스터빈 2030-31 완판이 다년 이익 가시성을 확보. 턴어라운드는 이미 완성(영업이익 -$2.9B→+$1.4B), 지금은 마진·현금 확대 국면. 비싸지만 값을 하는 우량 성장주.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">컨센서스는 목표 평균 $1,239(+16.6%)·매수(33명, 1.58)로 우호적. 백로그·성장 가시성을 강조.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">우리도 매수에 동의하나 한 단계 더 신중 — forward 42.2x·PBR 23.7x의 얇은 안전마진과 AI capex 사이클 의존을 컨센서스가 상대적으로 과소반영. 목표가 $1,230은 컨센 중앙값 $1,250에 밸류에이션 discipline 할인.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">① 하이퍼스케일러 capex 가이던스 하향 또는 가스터빈/DC 전기장비 신규 주문 QoQ 감소(book-to-bill<1) → 성장 프리미엄 붕괴. ② 오프쇼어 풍력 추가 대규모 충당금으로 마진 확대 정체. ③ 10Y 5%+ 재상승 디레이팅. 하나라도 확정 시 등급 중립 하향.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">매수 · 12개월 목표 $1,230 (+15.7%) · 손절 $965 (-9.2%) · R:R 약 1:1.7. 분할·손절 규율 필수.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">최대 반론: 42x forward는 향후 수년 두 자릿수 성장+마진 확대를 이미 반영. 성장 둔화와 디레이팅이 동시 발생 시 이중 타격.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 · 종합 77/100 · 유니버스 상위 11.0% (17/145위)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$1,063.25</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$283.2B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">42.2x (fwd)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$530.16~$1,195.94</div></div><div class="ki"><div class="kl">ATR(14)</div><div class="kv">$49.16 (4.6%)</div></div><div class="ki"><div class="kl">PBR</div><div class="kv">23.7x</div></div><div class="ki"><div class="kl">1Y 수익률</div><div class="kv">+71.4%</div></div><div class="ki"><div class="kl">기관 보유</div><div class="kv">81.7%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">0.19%</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$965.00</div><div class="dn" style="font-size:13px">-9.2%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$1,230.00</div><div class="up" style="font-size:13px">+15.7%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="239" y="30" width="111" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="239" y1="26" x2="239" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="239" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$965</text><line x1="286" y1="24" x2="286" y2="52" stroke="var(--text)" stroke-width="3"/><text x="286" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$1,063</text><line x1="366" y1="26" x2="366" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="366" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$1,230</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $530</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $1,196</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $49.16 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>GE Vernova(GEV)는 GE 3분할로 2024년 분사한 전력·에너지 장비 순수 플레이어다. <strong>턴어라운드는 완성 단계</strong> — 영업이익이 2022년 -$2.9B에서 2025년 +$1.4B로 3년 연속 개선됐고, Q2 2026 매출 +21.9% YoY·영업마진 5.9%로 가속 중이다. 핵심 동력은 <strong>AI 데이터센터發 전력 슈퍼사이클</strong>: 美 DC 전력수요 31→66GW(2027), 그리드 투자 $720B(2030), 가스터빈 2030-31 완판, 초고압 변압기·스위치기어 만성 부족이 GEV에 가격결정력(+10~20%p $/kW)을 부여한다. 백로그 $176B(약 4년치 매출)와 순현금 대차대조표(+$9~11B), FCF 가이던스 $11.5~12.5B가 체력을 뒷받침한다. <strong>유일한 견제는 밸류에이션</strong> — forward 42.2x·PBR 23.7x로 안전마진이 얇다. 종합 77점, <strong>매수</strong> 등급, 12개월 목표 $1,230(+15.7%). 사업은 최상급이나 가격 프리미엄이 강력매수 격상을 막는다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,58.0 190.0,81.2 228.4,121.3 204.7,171.0 191.7,221.2 140.0,195.0 101.2,203.4 59.2,176.3 62.0,124.7 110.6,109.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="58.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">사업 경쟁력(해자)</text><circle cx="190.0" cy="81.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">산업 매력도</text><circle cx="228.4" cy="121.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="204.7" cy="171.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무 안정성</text><circle cx="191.7" cy="221.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">밸류에이션</text><circle cx="140.0" cy="195.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">모멘텀/수급</text><circle cx="101.2" cy="203.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">컨센서스/리비전</text><circle cx="59.2" cy="176.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영/자본배분</text><circle cx="62.0" cy="124.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크(역)</text><circle cx="110.6" cy="109.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>9.2</td><td>/10</td></tr><tr><td>사업 경쟁력(해자)</td><td>8.5</td><td>/10</td></tr><tr><td>산업 매력도</td><td>9.3</td><td>/10</td></tr><tr><td>수익성</td><td>6.8</td><td>/10</td></tr><tr><td>재무 안정성</td><td>8.8</td><td>/10</td></tr><tr><td>밸류에이션</td><td>4.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>6.6</td><td>/10</td></tr><tr><td>컨센서스/리비전</td><td>8.5</td><td>/10</td></tr><tr><td>경영/자본배분</td><td>8.2</td><td>/10</td></tr><tr><td>리스크(역)</td><td>5.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 77/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v8</td><td>2026-07-17</td><td>64</td><td>중립</td><td>$1,175</td></tr><tr><td>v9</td><td>2026-07-29</td><td>73</td><td>매수</td><td>$1,090</td></tr><tr><td>v10</td><td>2026-08-07</td><td>74</td><td>매수</td><td>$1,100</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+1pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mw">Wide</span></h2><p>전력·에너지 장비 전문기업(시총 $283B, 직원 78,000명, CEO Scott Strazik). 3개 부문: <strong>Power</strong>(가스터빈·원자력 BWRX-300 SMR·수력, 이익 최대), <strong>Electrification</strong>(변압기·스위치기어·HVDC 그리드 장비, 최고 성장·book-to-bill ~2.5), <strong>Wind</strong>(풍력, 유일 취약부문·오프쇼어 정리 중). 실적 엔진은 약 7,000기 글로벌 설치 가스터빈 기반의 20~30년 고마진 서비스 애뉴이티.</p><h3>Moat 상세</h3><p>① 가스터빈 3강 과점(GEV·Siemens Energy·Mitsubishi) — 고온소재·냉각 IP 20년+ 진입장벽. ② 7,000기 설치기반 서비스 애뉴이티 — 높은 전환비용. ③ 그리드 장비 공급 병목(변압기 리드타임 3~5년, 스위치기어 2028 완판) — 즉시 공급능력이 가격결정력으로 전환. ④ 원자력 SMR(BWRX-300) 상용화 옵셔널리티. → 넓은 해자, 10년+ 지속성 높음. 그리드 병목發 가격결정력은 중기(2027-28)까지 강하게 유지.</p></div>
+<div class="sec"><h2>재무분석</h2><div class="cb"><svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;"><rect x="50" y="5" width="10" height="10" fill="var(--blue)" rx="2"/><text x="64" y="14" fill="var(--sub)" font-size="10">매출($B)</text><rect x="130" y="5" width="10" height="10" fill="var(--buy)" rx="2"/><text x="144" y="14" fill="var(--sub)" font-size="10">영업이익($B)</text><defs><pattern id="est" patternUnits="userSpaceOnUse" width="6" height="6"><path d="M0,6 L6,0" stroke="var(--sub)" stroke-width="1" opacity="0.4"/></pattern></defs><rect x="62" y="73" width="28" height="97" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="92" y="179" width="28" height="-9" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="91" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2022</text><rect x="145" y="61" width="28" height="109" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="175" y="173" width="28" height="-3" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="174" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2023</text><rect x="227" y="55" width="28" height="115" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="257" y="168" width="28" height="2" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="256" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2024</text><rect x="310" y="45" width="28" height="125" fill="var(--blue)" stroke="var(--blue)" stroke-width="0.5" rx="2"/><rect x="340" y="165" width="28" height="5" fill="var(--buy)" stroke="var(--buy)" stroke-width="0.5" rx="2"/><text x="339" y="192" fill="var(--sub)" font-size="11" text-anchor="middle">2025</text><line x1="45" y1="170" x2="390" y2="170" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="170" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">0</text><line x1="45" y1="95" x2="390" y2="95" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="95" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">23</text><line x1="45" y1="20" x2="390" y2="20" stroke="var(--border)" stroke-width="0.5"/><text x="42" y="20" fill="var(--sub)" font-size="10" text-anchor="end" dominant-baseline="middle">46</text></svg></div><table><thead><tr><th>연도</th><th>매출($B)</th><th>영업이익($B)</th><th>영업마진</th><th>순이익($B)</th></tr></thead><tbody><tr><td>2022</td><td>29.65</td><td>-2.88</td><td>-9.7%</td><td>-2.74</td></tr><tr><td>2023</td><td>33.24</td><td>-0.92</td><td>-2.8%</td><td>-0.44</td></tr><tr><td>2024</td><td>34.94</td><td>+0.47</td><td>+1.3%</td><td>+1.55</td></tr><tr><td>2025</td><td>38.07</td><td>+1.39</td><td>+3.6%</td><td>+4.88*</td></tr><tr><td>2026E(가이던스)</td><td>45.5~46.5</td><td>—</td><td>—</td><td>—</td></tr></tbody></table><h3>분석</h3><p>명확한 턴어라운드 완성 — 영업마진 -9.7%(2022)→+3.6%(2025), Q2 2026 5.9%로 분기 최고. 요새형 대차대조표: 현금 $12.7B vs 총부채 $3.72B, <strong>순현금 +$9~11B</strong>. TTM FCF $15.7B(백로그 선수금 유입 증폭). <strong>주의 — GAAP 이익 왜곡</strong>: TTM 순이익 $9.5B·trailing EPS $34.87·trailing PER 30.5x는 2025Q4 세액공제(+$2,565M)·2026Q1 세전 일회성 이익으로 과대계상. <strong>실질 밸류에이션은 forward PER 42.2x가 정확.</strong> 유동비율 0.85는 고객 선수금이 유동부채에 계상된 수주사업 특성으로, 유동성 위험이 아닌 무이자 운전자본 조달.</p></div>
+<div class="sec"><h2>밸류에이션</h2><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (7행)</summary><table><thead><tr><th>지표</th><th>값</th><th>코멘트</th></tr></thead><tbody><tr><td>forward PER</td><td>42.2x</td><td>정상화 기준 밸류에이션</td></tr><tr><td>trailing PER</td><td>30.5x</td><td>일회성 세금혜택 왜곡 — 참고불가</td></tr><tr><td>PBR</td><td>23.7x</td><td>얇은 자본기반</td></tr><tr><td>PSR(TTM)</td><td>6.85x</td><td>장비사 대비 높음</td></tr><tr><td>EV/Revenue</td><td>6.66x</td><td>—</td></tr><tr><td>PEG</td><td>1.81</td><td>성장 대비 다소 비쌈</td></tr><tr><td>배당수익률</td><td>0.19%</td><td>미미 (배당성향 5.7%)</td></tr></tbody></table></details><p>FY2026 FCF ~$12B, 백로그 $176B(약 4년치 매출)·20%+ 성장을 반영하되 42x forward·23.7x PBR 프리미엄에 밸류에이션 discipline 적용. <strong>12개월 목표가 $1,230(+15.7%)</strong> — 컨센서스 중앙값 $1,250에 소폭 할인. 시나리오: 강세 $1,410(+33%) / 기준 $1,230(+16%) / 약세 $900(-15%).</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>정배열(현재가 > 50DMA $1,027 > 200DMA $857)·1Y +71.4%·YTD +56.8%로 강한 장기 모멘텀. 단, 3개월 -2.5%로 고점권(52주 고점 대비 -11%) 횡보·숨고르기 국면. 단기 조정을 눌림목 매수로 활용 가능. 실적 리비전 우호적 — 이익성장 +32.8% YoY, FY2026 가이던스 2회 상향. 기관 보유 81.7%.</p><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>투자의견</td><td>매수 (mean 1.58, 33명)</td></tr><tr><td>목표가 평균</td><td>$1,239 (+16.6%)</td></tr><tr><td>목표가 중앙값</td><td>$1,250 (+17.6%)</td></tr><tr><td>목표가 최고 / 최저</td><td>$1,450 / $940</td></tr><tr><td>기관 보유 / 내부자</td><td>81.7% / 0.13%</td></tr></tbody></table></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>AI 데이터센터發 전력 슈퍼사이클의 핵심 수혜주. 美 DC 전력수요 31→41→66GW(2027, GS), 그리드 투자 $720B(2030), 변압기 리드타임 3~5년·스위치기어 2028 완판. Q2 2026 확정(7/22-23): 총주문 $24.2B(+88% 유기), 백로그 $163B→$176B(2027 $200B 목표), 가스터빈 슬롯 116GW(2026말 125GW+ 목표, 2030-31 완판), Electrification 주문 $7.1B(book-to-bill ~2.5), H1 신규 $/kW +10~20%p. <strong>발전+그리드 양방향 노출 유일급 순수 플레이.</strong> 산업 사이클리컬리티가 유일한 구조적 리스크.</p><table><thead><tr><th>기업</th><th>포지션</th><th>비고</th></tr></thead><tbody><tr><td>GE Vernova</td><td>가스터빈 3강+그리드+SMR</td><td>주문 +88%, 백로그 $176B, 2030-31 완판</td></tr><tr><td>Siemens Energy</td><td>가스터빈 ~70GW·그리드 €51B</td><td>유럽 강세, 변압기 병목 동일 수혜</td></tr><tr><td>Mitsubishi Power</td><td>아시아 가스터빈 강자</td><td>—</td></tr><tr><td>Eaton</td><td>전기장비, 백로그 +48%</td><td>SST 변압기 H2 2026 개시</td></tr><tr><td>Vertiv</td><td>DC 전력/냉각</td><td>백로그 $15B+</td></tr></tbody></table></div>
+<div class="sec"><h2>리스크 분석</h2><p>리스크는 사업이 아니라 <strong>가격과 사이클</strong>에 집중. 사업 체력(순현금·백로그·해자)은 견고하나 밸류에이션 리스크와 AI capex 사이클 의존이 동시에 현실화되면 하방이 크다. 이 두 리스크가 강력매수 격상을 막는 핵심 제약. 손절 규율($965, 2×ATR) 필수.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">밸류에이션 디레이팅</text><circle cx="180" cy="68" r="5" fill="var(--sell)"/><text x="189" y="72" fill="var(--text)" font-size="10">AI/DC 전력 capex 사이클 둔화</text><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">오프쇼어 풍력 추가 손실</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">GAAP 이익 품질 왜곡</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">공급망 병목(특수강·인력)</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>밸류에이션 디레이팅</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">forward 42.2x·PBR 23.7x 프리미엄, 안전마진 얇음. 컨센서스 최저 목표 $940(-11.6%)이 경고.</span></div><div class="ri rh"><strong>AI/DC 전력 capex 사이클 둔화</strong> (발생: 중, 영향: 고)<br><span style="color:var(--sub);font-size:13px">가스터빈 백로그의 ~20%가 AI/DC 연동. 하이퍼스케일러 capex 둔화 시 신규 수주 감속·취소 가능.</span></div><div class="ri rm"><strong>오프쇼어 풍력 추가 손실</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">산업 구조적 손실 영역. 추가 충당금·비용 초과가 마진 개선 스토리 발목.</span></div><div class="ri rh"><strong>GAAP 이익 품질 왜곡</strong> (발생: 고, 영향: 중)<br><span style="color:var(--sub);font-size:13px">일회성 세금혜택으로 trailing 지표 과대계상 → 저평가 착시 유발.</span></div><div class="ri rm"><strong>공급망 병목(특수강·인력)</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">변압기 병목은 가격결정력이나 GEV 자체 캐파 확장(GOES·숙련인력)도 제약.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>우량 성장주 눌림목 분할매수. <strong>분할매수</strong>: 1차 $1,030~1,063(현재가~50DMA), 2차 $965~1,000(눌림), 3차 $900 이하(디레이팅 시 저가매수, 반증조건 미확정 전제). <strong>비중</strong>: 중형, 신규는 절반 우선 진입 후 조정 시 증액. <strong>청산</strong>: 12M $1,230 도달 시 일부 실현, $1,300+ 트레일링, 손절 $965 하회 시 규율 청산. <strong>모니터링</strong>: Q3 실적(10월) book-to-bill, 가스터빈 슬롯 125GW 진척, 하이퍼스케일러 capex 가이던스.</p></div>
+<div class="sec"><h2>Confidence Interval (앵커링 보강)</h2>
+<p><b>목표가 $1,230 · 95% CI: $1,050 ~ $1,410 (폭 약 ±15%)</b></p>
+<ul>
+<li>하단 $1,050 (-1%): 성장주 디레이팅 + 오프쇼어 풍력 손실 시나리오 (컨센서스 최저 $940에 근접).</li>
+<li>상단 $1,410 (+33%): FY2027 매출 $50B+·마진 8%+·백로그 $200B 달성 + 멀티플 유지 (컨센서스 최고 $1,450).</li>
+<li>CI를 넓히는 최대 변수: <b>밸류에이션 멀티플</b> &gt; AI capex 지속성 &gt; 마진 확대 속도.</li>
+</ul>
+<p><b>종합 스코어 77 ± 7 pt (70 ~ 84)</b> — 가정 변경 시 매수 하단(70)에서 강력매수 경계(84)까지 변동 가능.</p>
+</div>
+<div class="sec"><h2>약한 가정 3개 (Most Fragile Assumptions)</h2>
+<ol>
+<li><b>AI 데이터센터 전력 수요가 다년간 지속되어 백로그가 매출로 전환된다.</b><br>
+반증(하이퍼스케일러 capex 둔화·DC 전력병목 자체 해소·수주 취소) 시: <b>스코어 -8pt, 등급 매수→중립.</b></li>
+<li><b>forward 42.2x 프리미엄 멀티플이 유지된다(성장·품질이 정당화).</b><br>
+반증(10Y 5%+ 재상승 또는 성장주 디레이팅) 시: <b>목표가 -15%(~$1,045), 스코어 -6pt.</b></li>
+<li><b>오프쇼어 풍력 손실이 축소되고 영업마진 개선이 지속된다.</b><br>
+반증(오프쇼어 추가 충당금·비용 초과) 시: <b>스코어 -5pt, 수익성 항목 하향, 마진 스토리 지연.</b></li>
+</ol>
+<p style="color:var(--sub);font-size:13px">※ "강한" 가정(가스터빈 2030-31 완판·백로그 $176B 확정·순현금 대차대조표)은 검증된 사실로 제외.</p>
+</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-08-17 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="GEV_GEVernova_20260817.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
