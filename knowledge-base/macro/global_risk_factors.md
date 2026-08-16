@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-09
-valid_until: 2026-09-08
+updated: 2026-08-16
+valid_until: 2026-09-15
 category: macro
 sector: global_risk
 sources:
@@ -52,9 +52,15 @@ sources:
     STL.News,
     OilPrice,
     Boston Institute of Analytics,
+    NBC News,
+    Kraken,
+    Charles Schwab,
+    ts2.tech,
+    Forbes,
+    CoinMarketCap,
   ]
 confidence: high
-last_synced_from_db: 2026-08-09
+last_synced_from_db: 2026-08-16
 ---
 
 # 글로벌 리스크 맵 Knowledge Base
@@ -64,6 +70,22 @@ last_synced_from_db: 2026-08-09
 > **갱신 빈도:** 주간 (kb-updater 정기 갱신)
 
 ## ★ CURRENT (에이전트는 이 섹션만 사용) ★
+
+---
+
+### ◆ 2026-08-16 주간 업데이트 — CPI 관문 무난 통과(쿨/인라인) → 인상 위협 추가 완화, 그러나 소프트 데이터 누적 + 유가 재상승
+
+**★ 이번 주 핵심 = '지난주 골디락스 랠리의 관문(8/12 CPI) 무난 통과 → 9월 인상 위협 추가 완화, 그러나 소비·심리 소프트 데이터 누적 + 유가 재상승(호르무즈 압박)으로 미묘한 무게 이동.'**
+
+- **① 7월 CPI 무난 통과 (8/12):** 헤드라인 +0.1% m/m·+3.4% y/y(컨센 매치, FRED 3.3%), 코어 +0.2% m/m·+2.5% y/y — 2개월 연속 냉각. 지난주 우려했던 '뜨거운 CPI發 스태그플레이션 조임' 시나리오 불발. → **9월 인상 확률 42%로 추가 하락(CME, 직전 ~60%서).** [CNBC·Fox Business·Kiplinger 8/12]
+- **② 그러나 소프트 데이터 누적:** 7월 PPI 예상 하회(소프트), **7월 소매판매 -0.6%(1년+ 내 최대 감소)**, 8월 미시간 소비심리 예비치 하락(인플레 우려 지속). '골디락스'서 '소비 둔화 우려'로 미묘한 무게 이동. [Charles Schwab 8/14, CNBC 8/12]
+- **③ 유가 재상승(반전) — 브렌트 ~$87~88(주간 +~5%):** 지난주 $82서 반등. **미국의 대이란 경제압박 강화(호르무즈 재개 압박)로 재상승.** WTI ~$81. 지난주 '디에스컬레이션' 서사 일부 반전 — 진행형. [Fortune·tradingeconomics 8/14]
+- **④ 시장 — 3주 연속 상승·VIX 2026 저점:** S&P 500 7,781(8/14, 금요일 -0.22%·사상 최고서 후퇴), 나스닥 26,729.16, **VIX 14.25~14.63(2026 신저점, complacency 극단).** 3주 연속 주간 상승 마감. [Yahoo Finance·ts2.tech 8/14, FRED: VIXCLS 8/13]
+- **⑤ 채권 완화·스티프닝:** 10Y 4.63%(FRED 8/13, 화요일 19개월래 최고 4.75% 테스트 후 하락), 2Y 4.15%, **10Y-2Y +0.51%p(스티프닝)**, 10Y BEI 2.27%. HY 2.71%(보합·complacency 유지). [FRED: DGS10·DGS2·T10Y2Y·T10YIE·BAMLH0A0HYM2 8/13~14]
+- **⑥ 환율 — 달러 약세 지속·엔 약세:** DXY(DTWEXBGS) 119.06(1w전 119.70·1m전 121.13, 추가 약세). 엔 약세 지속(일본 외환보유액 매각 우려·JGB 10Y 2.88%). [FRED: DTWEXBGS 8/7, tradingeconomics JGB 8/14]
+- **⑦ 안전자산·크립토:** 금 ~$4,400(10주래 최고 근접, 쿨 CPI·Fed 동결 기대). BTC 강반등(~$82K대, 컨버터 환산·confidence medium). [tradingeconomics gold 8/14, CoinMarketCap/CoinGecko 8/16]
+
+> **★ 08-09 대비 순변화:** 지배 서사가 '약한 고용發 골디락스 랠리 + CPI 관문 대기'서 **'CPI 관문 무난 통과 → 인상 위협 추가 완화, 그러나 소프트 데이터(소매 -0.6%·PPI·심리)로 소비 둔화 우려 대두 + 유가 재상승'으로 이동.** VIX 2026 신저점(14.2~14.6)은 complacency 극단 = 하방 서프라이즈 취약. 유가 재상승(호르무즈 압박)이 재부각 리스크. FRED 1차 소스 반영(8/13~14).
 
 ---
 

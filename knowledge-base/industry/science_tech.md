@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-09
-valid_until: 2026-09-08
+updated: 2026-08-16
+valid_until: 2026-09-15
 sector: science_tech
 sources:
   [
@@ -250,8 +250,8 @@ sources:
     Life Science Daily,
   ]
 confidence: high
-last_synced_from_db: 2026-08-09
-db_records: 1066
+last_synced_from_db: 2026-08-16
+db_records: 1093
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -706,6 +706,22 @@ db_records: 1066
 10. **빅테크 AI CapEx $725B + 2027E $1T+**: MS/Google 각 $190B, Amazon $200B. MS Azure RPO $627B(전력 제약 $80B 백로그).
 11. **RSAC 2026 + PANW AI 공격 경고**: Geordie AI(에이전트 가시성) 최우수. PANW "3~5개월 내 AI 공격 뉴노멀". CrowdStrike Agentic MDR 출시.
 12. **AMAT 사상최대 + ASML 중국 급감**: Applied Materials Q2 $7.91B(역대 최대), CY2026 장비 +30%. ASML 중국 36%->19%.
+
+---
+
+### 16-C. 주간 과학기술 동향 (2026-08-16 신규)
+
+> 2026-08-09~08-16 주간 수집(web_search 6회). 개별 이벤트는 §2/3/4/6/9 및 jsonl 상세.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[양자통신]** | **NIST·UMD·Qunnect, 62km 대도시 공중 광섬유로 얽힘광자 분배 성공** — 얽힘광자 분배율 **1,500쌍/초** 유지 = 도시급 양자네트워크 실증(레이저 광원 밖 대안 경로 확장) | 2026.08 | ScienceDaily |
+| **[양자]** | **Honda(Xcelerator Ventures), 日 양자알고리즘 스타트업 Quemix 투자**(차세대 배터리 소재). 별도 연구 = **햇빛에서 직접 양자얽힘 생성**(저에너지 양자광원)·상온 결정서 열이 파동형 광선(2차음/포논빔)으로 전도 | 2026.08 | QC Report / ScienceDaily |
+| **[우주]** | **NASA Roman 우주망원경 발사 통합운영 개시(8/10)** → **8/30 Falcon Heavy 발사 확정(당초比 8개월 조기)**. 2.4m 미러(허블급)·시야 100x·탐사속도 최대 1,000x, 암흑에너지·외계행성. JWST 이후 최대 우주천문 발사. Starship Flight 13(7/24~25) 부스터 hard splashdown+상단 인도양 준궤도 도달 성공 확인 | 2026.08 | NASA Roman blog / SpacePolicyOnline / Spaceflight Now |
+| **[바이오]** | **FDA, Casgevy(exa-cel)를 2세 이상 소아 SCD·TDT로 승인**(신청 **53일** 초고속) = 두 질환 모두 2세까지 확대한 최초 유전자치료. **CRISPR Therapeutics Q2 2026** 실적+신규 Phase 1 **CTX340**(난치성 고혈압)·**CTX460**(알파-1 항트립신결핍) 개시 | 2026.08 | Life Science Daily / BioSpace |
+| **[핵융합]** | **ORNL, 극저온 펠릿연료 기술 Type One Energy에 라이선스**. **UKAEA 리튬증식 삼중수소(Tritium) 프로그램에 CFS 첫 국제기업 합류**. 中 **EAST 토카막 통상 운전한계 돌파**. **FIA: 2025 핵융합 공급망 지출 $538M(+25% YoY)** | 2026.08 | World Nuclear News / FIA |
+| **[SMR]** | **Rolls-Royce SMR, 유럽용 원자로섬 부품 공급사로 두산에너빌리티(한국)·Škoda JS(체코) 선정**(사전생산·설계확정 착수). 스웨덴 서부해안 원전에 Rolls-Royce SMR **3기** 채택 | 2026.08 | World Nuclear News |
+| **[소재/AI4Science]** | **Aalto SuperC 컨소시엄, ML 유도 스크리닝→제1원리 계산→합성·측정으로 카고메 초전도체 2종 신규 확증** — **YRu3B2(Tc 0.81K)·LuRu3B2(0.95K)**. AI 가속 초전도체 발견 워크플로 정립(상온초전도 2033 목표, 아직 저온) | 2026.08 | npj Computational Materials / ScienceDaily |
 
 ---
 
