@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-17
-valid_until: 2026-08-18
+updated: 2026-08-18
+valid_until: 2026-08-19
 file: correlation_matrix
 category: market
 confidence: "medium-high (전체 6쌍 재계산 — 8/3 CURRENT 이후 8/4·8/5는 correlation-monitor maxTurns로 메인 스레드가 값만 승계[재계산 생략]했던 3거래일 공백을 이번 회차가 해소. yfinance 배치 페치(^GSPC ^IXIC ^TNX ^VIX ^KS11 KRW=X GC=F DX-Y.NYB CL=F BTC-USD, 2026-04-01~08-06) + FRED T10YIE curl 직접 페치(2026-04-01~08-05)로 30D/90D Pearson r 신규 산출, established μ/σ 기준선 그대로 적용. 미국 레그[S&P500·NASDAQ·10Y·BEI]는 8/5 확정 종가까지, 한국·크립토·상품·VIX 레그는 8/6 확정치까지 반영[수집 시점 KST 20시=ET 07시, 미국 정규장 프리마켓 단계]. Gold[GC=F]·WTI[CL=F] 계산값이 메인 daily_snapshot.md 헤드라인 수치[스팟/타 소스]와 소폭 편차 있으나 결론·방향 불변, 하단 각주 참조)"
