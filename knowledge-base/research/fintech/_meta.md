@@ -1,12 +1,12 @@
 ---
 sector: fintech
 created: 2026-05-12
-last_updated: 2026-08-08
+last_updated: 2026-08-22
 status: active
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
-l1_index_count: 11
+l1_index_count: 12
 l2_summary_count: 7
 l3_deep_dive_count: 1
 deep_dive_priority: 5

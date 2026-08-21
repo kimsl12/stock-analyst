@@ -1,14 +1,14 @@
 ---
 sector: macro
 created: 2026-05-12
-last_updated: 2026-08-08
+last_updated: 2026-08-22
 status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
   - knowledge-base/macro/us_monetary_policy.md
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
-l1_index_count: 20
+l1_index_count: 21
 l2_summary_count: 7
 l3_deep_dive_count: 1
 deep_dive_priority: 3
