@@ -45,3 +45,11 @@
 | 2026-07-12 | macro/geopolitics.md | 이란 휴전 붕괴·美 90표적 공습·유가 급등, 미중 Section122 D-12+301 공청회, 대만 중간선 침범 재개, 러-우 격화, 북한 강건함 시험, NATO 앙카라 종료 | +10 |
 | 2026-07-12 | industry/science_tech.md | 양자 어드밴티지 촉매·IBM인도양자컴·PQC FIPS140-2 sunset / 우주 SPCX페이드·RKLB-Iridium$8B·AmazonLeo396기·LUNR IDIQ / SMR Oklo착공·GE Vernova-Blue·미28건선두 | +15 |
 | 2026-07-12 | macro/political_cycle.md | 이란 휴전 붕괴(7/8)·한은 7/16 25bp 인상 유력·트럼프39.4%/GenericD+7·이재명 갤럽54%/리얼47% 동반반등·원달러1,530·코스피 -20%후 반등·Section301 7/20시한 | +11 |
+
+<!-- === 2026-08-22 weekly-frontier 회전: 2026-07-26 이력 6행 === -->
+| 2026-07-26 | `macro/geopolitics.md` | **지정학 주간 갱신(13회 검색, +7 DB 레코드)** -- 중동 충돌 3주차·유가 Brent $96.78, Section 122 만료→301 발효(중국 12.5%), 러 50일 시한+Graham 사후 제재법안, 남중국해 신규 3+회 충돌 | +7 |
+| 2026-07-26 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +18 DB 레코드)** -- 이란-호르무즈 유가쇼크 전면화(브렌트 $98·+30%MTD) 1위 격상, 채권급등(10Y 4.71%)·HY 2.77% 확대·VIX 18.70, Alphabet Q2 AI capex 완화(빅테크 관문 7/29~~30), 원달러 1,474 급강세 vs 엔 163.78 40년최저·JGB 엔캐리임계, 침체확률 GS30%·Moody's49% | +18 |
+| 2026-07-26 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(18회 검색, +14 DB 레코드)** -- 이란 유가 $100 돌파·Fed 인상확률 급등·Section 301 발효/122 소멸·트럼프 39%·이재명 51%·원달러 1,470~1,500 외국인 순매수 전환·佛 예산 49.3 통과(사임설 정정) | +14 |
+| 2026-07-26 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +20 DB 레코드)** -- 홍해·호르무즈 위기로 Brent $97(주간+10%,7/23 $102)·JKM $21·TTF $19.2 급등, GS 봉쇄시 Q4 $120; DOE 3회 그리드비상+변압기 3~~5년(HD현대일렉·효성重); NuScale $8.68/Oklo $44.13 X-Energy $200M 프로그램; OBBB 5%세이프하버 6/6법원 복원 | +20 |
+| 2026-07-26 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(14회 검색, +12 DB 레코드)** -- Alphabet Q2 capex $195-205B 상향·OpenAI Stargate $750B·DeepSeek V4 GA·TSMC 애리조나 +$100B·[정정]Optimus 생산 0·Starship F13·경구 Wegovy 300만+·Golden Dome 36기 | +12 |
+| 2026-07-26 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +13 DB 레코드)** -- Starship Flight 13 성공(V3 첫 비행)·AI 설계 CRISPR SynTnpB(Science, 천연 능가)·Helion 세계 첫 융합 규제 라이선스·IonQ $32.84 조정+$988M 경고→8/5 실적·AI 초전도체 2종 발견 | +13 |

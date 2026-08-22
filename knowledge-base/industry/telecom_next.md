@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-15
-valid_until: 2026-09-14
+updated: 2026-08-22
+valid_until: 2026-09-21
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -137,14 +137,43 @@ sources:
   - MobileWorldLive
   - Insider Monkey
   - Counterpoint Research
+  - TrendForce
+  - MLQ.ai
+  - IDTechEx
+  - EDN
+  - SemiAnalysis
+  - Ayar Labs
+  - Skylo
+  - Iridium
+  - Tele2 IoT
+  - ST Engineering iDirect
+  - Smart Maritime Network
+  - Cantor Fitzgerald
+  - Piper Sandler
+  - Tom's Hardware
+  - XenoSpectrum
+  - AI Weekly
+  - GlobeNewswire
+  - Foreign Policy Journal
 confidence: high
-last_synced_from_db: 2026-08-15
+last_synced_from_db: 2026-08-22
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.08.22 핵심 변화 요약 (8/15 이후 델타)**:
+>
+> 1. **★SPCX 8/21 약 $134로 IPO가($135) 부근 회복 유지·8/20 추가 언락 눌림(-5%) 통과 + AST Q2 실적 미스(-$0.77 vs -$0.32)에도 백로그 $1.30B·목표가 혼조** -- **SPCX 8/21 종가 약 $134(장중 $130.39~$137.88, 52주 $104.83~$225.64), $135 IPO가 부근 회복 유지. 8/5 사상최저 이후 1차 락업해제(8/6) 통과 뒤 +26% 반등(24/7 Wall St '크래시 우려했으나 +21%'), 8/10 이후 IPO가 상회 지속, 8/20 추가 주식 언락 앞두고 화요일 개장 -5% 눌림 후 회복. Q2 매출 +92% $7.8B·Starlink 가입자 1,200만(Connectivity OP $1.66B 흑자)·CapEx $18.4B 논쟁 존치. ★AST SpaceMobile Q2(8/10): 손실 -$0.77/주(컨센 -$0.32 대폭 미스)·매출 $31.52M(하회)이나 FY2026 $150~200M 재확인·백로그 $1.30B. BB11/12/13 8/5 안착(피크 다운로드 초기 대비 약 2배·표준폰 직접 약 200Mbps·생산 42호). 애널 Cantor $80->$90 상향 vs BofA $95->$80·UBS $80->$78 하향, 평균 $80.48(+12% 상방)** [CNN Markets SPCX 8/21 $134, 247WallSt 8/11 up 21%, FMP ASTS Q2 Cantor $90, BusinessWire 8/5 BB11/12/13]
+> 2. **★광통신 슈퍼사이클 심화 -- 800G+ 트랜시버 2026 2.6배 폭증(TrendForce)·Lumentum 200G EML 공급부족 25~30%·CPO 2026 변곡점(COUPE·Ayar Labs $500M) + FCC 중국산 금지 초안 여전 미발표** -- **TrendForce: 800G급+ 트랜시버 출하 2025 2,400만 -> 2026 약 6,300만대(단년 2.6배). Lumentum 유일 200G/lane EML 양산·수요가 공급 25~30% 초과 -> 가격결정력·마진(FY2027까지). ★CPO 2026 변곡점: 하이퍼스케일러(AWS·Azure·Google·Meta) 2026~2027 배치 평가, TSMC COUPE 첫 대량양산(NVIDIA GTC 2025 공개·최초출하·Broadcom 채택), NVIDIA CPO 스위치 전력효율·AI 런타임 5배, Ayar Labs 시리즈E $500M(AMD·NVIDIA·밸류 $3.75B), 8/17 CPO 10년 예측 리포트. ★FCC 중국산 광트랜시버 신규 수입금지 규칙 초안(로이터 8/4) 연내 발표 희망하나 수정·보류 가능성 잔존 -- Innolight 27%(중국 합산 2/3 유닛), 단 중국 모듈이 美 DSP(Broadcom·Marvell)·레이저(Lumentum·Coherent) 의존하는 상호의존·서방 스케일 부족. Innolight ban 루머 5일 전 홍콩 IPO $6.81B 조달** [MLQ.ai TrendForce 2.6x 200G EML, GlobeNewswire 8/17 CPO 10yr forecast, EDN CPO 2026, Counterpoint FCC ban, Cignal AI 8월]
+> 3. **★Open RAN 8월 Dell'Oro 리포트 -- 성장 5~10% 하단 착지·Open Fronthaul 선호 인터페이스화·DT 3,000사이트 + AI-RAN $35B(2026~2030)·GPU RAN $1B+ 상향** -- **Dell'Oro 2026.08 Open RAN 리포트: 장기 전망 불변, Open Fronthaul이 차세대 RAN 선호 인터페이스로 부상(근시일 채택은 완만), 2026 성장 5~10% 목표 하단(미·일 여건+유럽 속도), 글로벌 RAN 안정(5년 CAGR 약 1%). Deutsche Telekom 독일 3,000사이트+ Open RAN(Huawei->Nokia·Fujitsu 1Finity), Vodafone-Samsung 2030 유럽 마스트 30% 목표·Wismar 첫 완전전환 도시. ★AI RAN 누적 매출 2026~2030 약 $35B(단 전체 RAN 확장은 아님)·GPU RAN 예측기간말 $1B+ 상향. SoftBank AITRAS FY2026 상용(Ericsson SMO·Nokia 외부컴퓨트엔진 통합), Ericsson 'AI in RAN' 15개+ 라이브(GPU 없이 스펙트럼효율 ~10%·처리량 ~20%), Nokia AI-RAN 2026말 파일럿->2027 상용** [Light Reading Dell'Oro 8월 Open RAN, IEEE ComSoc Dell'Oro AI RAN $35B, DCD Vodafone DT 3000, SoftBank AITRAS FY2026]
+> 4. **★위성-지상 통합(NTN) 상용 확산 -- Starlink Mobile로 미국 이통3사 직접 도전(EchoStar 65MHz·2027 100배)·Iridium NTN Direct·Skylo/Viasat 3GPP D2D** -- **SpaceX COO Shotwell 8/4 실적콜서 Starlink Mobile로 AT&T·T-Mobile·Verizon 직접 도전 신호, EchoStar 약 65MHz 확보, 차세대 위성 2027 배치·연말 업그레이드(현행 대비 잠재 100배), direct-to-cell 650기+(커버리지 최대 4G), FT 'SpaceX D2C 모바일+지상 셀룰러 인프라 검토'. ★3GPP NTN 상용화: Iridium NTN Direct 2026 세계 최초 글로벌 3GPP NB-IoT/D2D, Viasat-Skylo-Ligado 'market discovery'(무 capex), Skylo-Vodafone IoT NB-IoT, Tele2 스웨덴 최초 상용 D2D IoT, ST Engineering iDirect native 5G NR-NTN 실증(5G 코어 연동)** [Teslarati SpaceX Starlink Mobile 8/4, MacRumors 8/5, Iridium NTN Direct 2026, Computer Weekly Skylo Vodafone IoT]
+> 5. **6G Rel-21 마드리드 RAN#113(9/14~17) 약 3주 앞 임박 -- MRSS 1차 마이그레이션·Option 1 vs 3 9월 확정 + Qualcomm Snapdragon Summit 마우이 9/22~24** -- **3GPP TSG RAN#113(마드리드 9/14~17)이 6G 마이그레이션 옵션 가지치기·지원 아키텍처 확정 순간으로 지목 -- RAN1 예비 MRSS 성능평가 9월 데드라인, 6G-anchored DC with NR(Option 1) vs dual stack(Option 3) 9월 확정 예정. 6월 RAN#112 미합의는 '신규 라디오냐 NR 진화냐·SA 마이그레이션·스펙트럼 재사용·하위호환' 근본질문과 연결. Rel-21 normative 6G 규격 2027 Q1경 시작(Stage-1 freeze 2027.03·Stage-3 2028.12·ASN.1 2029.03). Qualcomm X105(세계최초 R19 준수, DL 14.8Gbps, agentic AI) 6G 기반 -- Snapdragon Summit 하와이 마우이 9/22~24(Snapdragon 8 Elite Gen 6 Pro 공개 후보), 6G 프리커머셜 2028(LA올림픽)·상용 2029** [6G Futures RAN#112, IEEE ComSoc Rel-21 timelines, Qualcomm X105 R19, Fierce Network Qualcomm 6G]
+> 6. **Amazon Leo D2D 5,105기 별도 군집(2028 배치)·궤도 345~375기+ 3위권 -- Starlink Direct·AST 정조준** -- **Amazon Leo 2026.08 궤도 약 345~375기+(3위권, 1년차 12개 미션·100+ 발사 확보), FCC 의무 1,618기(2026.07.30 미달·연장)·3,236기(2029.07.30). ★별도 D2D 전용 5,105기 FCC 신청(7/27) -- 음성·메시징·데이터·긴급서비스 스마트폰 직접(배치 2028), Globalstar MSS 스펙트럼(L/S-band, 4월 인수합의) 활용, 현행 광대역과 분리. Starlink Direct·AST SpaceMobile 경쟁 심화** [aboutamazon 375+ Atlas V, GeekWire 5105 D2D, Via Satellite Globalstar spectrum, orbitalradar tracker]
+>
+> **(이전 갱신 -- 8/15 핵심 요약, 참고용)**:
+>
 > **2026.08.15 핵심 변화 요약 (8/8 이후 델타)**:
 >
 > 1. **★SPCX 8/6 락업해제 무난 통과 후 V자 반등 -- 8/5 사상최저 $108.27 -> 8/10 IPO가 $135 첫 회복 -> 8/14 약 $140(8/5 저점 대비 +35%), 조건부 2차 보너스 트랜치 미발동** -- **8/5 Q2 실적 실망·락업 우려로 종가 $108.27 사상최저(수요일 약 -14%). 8/6 1차 락업(약 9.115억주 $116B) 언락 당일 오히려 +6% 반등, 8/10 종가가 7/15 이후 처음 IPO가 $135 상회(+4%), 8/14 약 $140(52주 $104.83~$225.64). ★조건부 2차 보너스 트랜치(약 4.5억주·10%)는 미발동 -- IPO가 30% 상회($175.50) 조건(Q2 실적일 종료 10거래일 중 5일) 미충족. Q2 매출 $7.81B(+92% YoY, 컨센 $6.93B 상회)·조정 EBITDA $3.5B(+191%)·순손실 -$541M. 머스크·핵심 내부자 2027 중반까지 락업, 9~10월 추가 트랜치 대기** [CNBC 8/10 above $135, CNN 8/6 +6% unlock, Motley Fool 8/5 911.5M lockup, Yahoo 8/14 $140, Forbes 8/4]

@@ -355,6 +355,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-22 | `industry/quantum.md` | **양자 3사 금리發 로테이션 매도·USTC 양자메모리 420km 얽힘 세계기록** -- 30년 국채 19년래 최고로 IONQ/QBTS/RGTI 08-18·08-20 5~7%↓(컨센 낙관 유지)·USTC 420km PLOB 초과·IonQ 8월 3건 딜(CMC캐나다·Sandia·EPB)·Quantum X Labs AI QEC·PQC 신규표준無(한국형 KPQC 4종 반영)·양자센서 TRL 정밀화 | +12 |
+| 2026-08-22 | `industry/space.md` | **우주 상장주 대형계약 랠리·Chang'e 7 8/24 발사 임박** -- RKLB NITE-STAR $981M+Space Data $12M·LUNR $600M+ 통신 ATP(+6% $20.22)·中 Chang'e 7 8/24 발사(11월 달 남극 착륙)·Starship F14 정적연소(NET 8월말~9월초·첫 궤도+catch)·Starlink 11,000기(전세계 67%)·Eutelsat IRIS2 348기 €3.39B·Golden Dome SBI Gate 2 | +14 |
+| 2026-08-22 | `industry/smr.md` | **한국 SMR 밸류체인 계약 러시 -- 두산 테라파워 기자재 제작계약(NH TP 13만원)·현대건설 EPC+SK이노 텀시트** -- X-energy DOE +$1B(Seadrift $2.15B)·Oklo DOE INL 부지허가+HALEU 5MT·TP 하향(-8%)·TAE He-3(Da Vinci 2031)·우라늄 $88.29/lb·스톡 OKLO $42.09/두산 73,300원 | +13 |
+| 2026-08-22 | `industry/telecom_next.md` | **6G RAN#113 마드리드(9/14~17) 임박·MRSS 1차 마이그레이션 + 광통신 800G+ 2.6배·Lumentum EML 공급부족·FCC 중국산 금지 초안 + Dell'Oro AI-RAN $35B(2026~30) + SPCX $134 IPO가 회복·AST Q2 미스에도 백로그 $1.30B** -- 5개 서브섹터(6G·NTN·O-RAN/AI-RAN·광통신·저궤도) 미니사이클 갱신 | +12 |
+| 2026-08-22 | `industry/advanced_materials.md` | **희토류 中지수 259.1로 추가하락·NdPr floor 하회 지속, MP Q2 +89% 랠리(MS PT $73)** -- 폴리실리콘 232 韓 태양광 US생산사엔 boost 관측(한화큐셀 긍정), HTS테이프 $1.42B→$4.18B·CNT $1.78B→$3.56B·항공탄소섬유 $2.1B→$4.5B 정량화, Hexcel/SeAH-Boeing 장기계약, 11.10 中유예종료 최대 리스크(IEA $6.5T) | +14 |
+| 2026-08-22 | `industry/capex.md` | **Moody's 하이퍼스케일러 capex 2027 $1T·Dell'Oro DC $3T(2030) 상향, AI 파이낸싱 스트레스 심화** -- 6사 capex 2026 $785B(+$85B)·직접부채 $460B, CoreWeave 부채 $35.6B·8/18 -11.8%·컴퓨트약정 $1.1T vs 매출 $17B, MS 미국 38GW 전력갭·K전력 수주 36조+, SEMI 파운드리/로직 WFE $78B·300mm 2029 $172B·AMAT +98% | +10 |
 | 2026-08-16 | `macro/geopolitics.md` | **Hormuz 잠정협정 결렬·유가 재급등 Brent $89.53(+~24% since 개전)** -- 통항 8.10 단 10척(전쟁前 ~~130/일), 이란 전쟁배상·제재해제 선결조건 격상; 8.11 후티 바브엘만데브 상선 피격 6명 사망; Graham 러·이란 제재법 하원안 8.10 발의; ISW 8.12 포크롭스크 진전無·쿠퍈스크 우크라 반격; 한미 UFS 8.17~~27 개시(北 '압도적 대응') | +7 |
 | 2026-08-16 | `macro/global_risk_factors.md` (SSOT) | **7월 CPI 무난 통과(쿨/인라인) → 9월 인상위협 추가완화, 그러나 소프트데이터 누적 + 유가 재상승** -- CPI +3.4%y·코어 +2.5%y(2개월 연속 냉각), 9월 인상확률 42%(CME); 소매판매 -0.6%(1년+ 최대)·PPI 소프트·미시간심리 악화 → 소비둔화 우려; 유가 재상승 브렌트 ~$87~88(+5%w, 호르무즈 압박); VIX 14.6(2026 신저점·complacency 극단), S&P 7,781(3주 연속 상승·사상최고서 후퇴); FRED 10Y 4.63·2Y 4.15·10Y-2Y +0.51 스티프닝·DXY 119.06 약세·HY 2.71 보합; 금 ~$4,400 | +9 |
 | 2026-08-16 | `macro/political_cycle.md` | **이재명 지지율 43.3% 취임후 최저 재경신·美 예산 경쟁 CR 시한 불일치** -- 리얼미터 43.3%(4주연속↓·첫 대통령<당 역전)·부정53.0% / 상원CR 90-6(~12/11)·하원 220-205(~12/4) / 9월FOMC 인상확률 61.9%→~50% / 트럼프 38.2%(net -20.6 횡보) / 韓세제개편 여당손질·日 BOJ조기인상 Bessent이견 | +7 |
@@ -391,12 +397,6 @@ SUPPLY_CHAIN_PLACEHOLDER
 | 2026-08-02 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +14 DB 레코드)** -- 유가 전쟁프리미엄 완화(Brent $88·WTI $84.67, 카타르 호르무즈 통항재개), OPEC+ 8/2 9월결정, 원자력 급등후 되돌림(Oklo $38.80), 두산 8/1 67,100원 +11.46% | +14 |
 | 2026-08-02 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(15회 검색, +14 DB 레코드)** -- 하이퍼스케일러 2026 capex $725B(MSFT FY27 $255-260B·META FCF -91%·AMZN $220B)·순환금융 신용균열(CoreWeave CDS 50%·Moody's 6사 $460B)·Claude Opus 5+Anthropic 10월 IPO $965B·HBM4 2027 2배($4-5/Gb)·Starship F13 Starlink V3·IonQ SkyWater $1.8B | +14 |
 | 2026-08-02 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +5 DB 레코드)** -- 바이오 신규딜 2건(AZ-Algen $555M·Scribe IPO SCTX)·기초과학 물리(EAST 밀도한계 돌파·CeSiI 중페르미온 초전도·AI초전도체 명명)·SpaceX Q2 8/4 프리뷰 | +5 |
-| 2026-07-26 | `macro/geopolitics.md` | **지정학 주간 갱신(13회 검색, +7 DB 레코드)** -- 중동 충돌 3주차·유가 Brent $96.78, Section 122 만료→301 발효(중국 12.5%), 러 50일 시한+Graham 사후 제재법안, 남중국해 신규 3+회 충돌 | +7 |
-| 2026-07-26 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +18 DB 레코드)** -- 이란-호르무즈 유가쇼크 전면화(브렌트 $98·+30%MTD) 1위 격상, 채권급등(10Y 4.71%)·HY 2.77% 확대·VIX 18.70, Alphabet Q2 AI capex 완화(빅테크 관문 7/29~~30), 원달러 1,474 급강세 vs 엔 163.78 40년최저·JGB 엔캐리임계, 침체확률 GS30%·Moody's49% | +18 |
-| 2026-07-26 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(18회 검색, +14 DB 레코드)** -- 이란 유가 $100 돌파·Fed 인상확률 급등·Section 301 발효/122 소멸·트럼프 39%·이재명 51%·원달러 1,470~1,500 외국인 순매수 전환·佛 예산 49.3 통과(사임설 정정) | +14 |
-| 2026-07-26 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +20 DB 레코드)** -- 홍해·호르무즈 위기로 Brent $97(주간+10%,7/23 $102)·JKM $21·TTF $19.2 급등, GS 봉쇄시 Q4 $120; DOE 3회 그리드비상+변압기 3~~5년(HD현대일렉·효성重); NuScale $8.68/Oklo $44.13 X-Energy $200M 프로그램; OBBB 5%세이프하버 6/6법원 복원 | +20 |
-| 2026-07-26 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(14회 검색, +12 DB 레코드)** -- Alphabet Q2 capex $195-205B 상향·OpenAI Stargate $750B·DeepSeek V4 GA·TSMC 애리조나 +$100B·[정정]Optimus 생산 0·Starship F13·경구 Wegovy 300만+·Golden Dome 36기 | +12 |
-| 2026-07-26 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +13 DB 레코드)** -- Starship Flight 13 성공(V3 첫 비행)·AI 설계 CRISPR SynTnpB(Science, 천연 능가)·Helion 세계 첫 융합 규제 라이선스·IonQ $32.84 조정+$988M 경고→8/5 실적·AI 초전도체 2종 발견 | +13 |
 "삼성전자 실적은?" → industry/semiconductor.md §2 한국 반도체
 "Fed 금리 전망?" → macro/us_monetary_policy.md
 "오늘 시장 상황?" → market/daily_snapshot.md ✅ 2026-04-21 갱신

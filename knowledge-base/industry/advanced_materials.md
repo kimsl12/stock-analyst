@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-15
-valid_until: 2026-09-14
+updated: 2026-08-22
+valid_until: 2026-09-21
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -183,10 +183,18 @@ sources:
     Wah Lee Industrial,
     LCY Chemical,
     Serra Verde,
+    Korea Times,
+    Mining-technology,
+    InvestorNews,
+    SEMI VISTA,
+    Global Growth Insights,
+    AlloyIndex,
+    GII Research,
+    EIN Presswire,
   ]
 confidence: high
-last_synced_from_db: 2026-08-15
-db_records: 453
+last_synced_from_db: 2026-08-22
+db_records: 467
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -195,6 +203,19 @@ db_records: 453
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.08.22 핵심 변화 요약 (8/15→8/22 윈도우)**:
+>
+> 1. **희토류 — 中 가격지수 259.1(8/18)로 추가 하락(NdPr·Gd↓ vs Tb·Ho·Er↑ 분화), NdPr $110 floor 하회 유지 + MP Materials Q2 실적·애널리스트 랠리** — ACREI 가격지수 259.1(8/18), 8/11 260.8서 추가 하락, 2010 base100 대비 +159.1%, 4월초 고점 310서 조정 지속. NdPr oxide 中내 SMM 벤치마크 $97.4/kg(8/4)로 7월 $110.55 대비 -11.9%·펜타곤 $110 floor 첫 하회 후 유지. 중희토 Tb metal 中내 최대 $1,260/kg·Dy metal $266/kg vs 역외 Tb ~$5,000/kg(security-of-supply 프리미엄). **MP Materials Q2 매출 $108.5M(+89% YoY, 컨센 $96.9M 상회)·조정 EPS -$0.01(부합), NdPr 램프·자석 인증·10X 자석시설 가속·신규 美 항공우주/방산 고객 장기 Gd 오프테이크. 8/20-21 주가 +9.19% 랠리, Morgan Stanley PT $73 상향·Overweight(DB·JPM PT 소폭↓하나 Buy/OW 유지).** **2026.11.10 中 2차 통제(5개 추가 희토류+역외 0.1% 룰) 유예 종료가 최대 forward 리스크 — IEA: 전면 재시행 시 中외 연 $6.5T 경제활동 리스크·공급망 'readiness 미충족'** [Rare Earth Exchanges/SMM(259.1 8/18), StocksToTrade/Yahoo Finance/Investing.com(MP Q2·랠리), Yahoo Finance/Mining-technology/InvestorNews(11.10)]
+>
+> 2. **[중대] 폴리실리콘 232 관세 — 韓 태양광 메이커엔 오히려 boost 관측(한화큐셀 긍정 평가) + 포토레지스트 시장 재정량화** — 232 파생제품만 15% 종가세(원료 폴리실리콘 제외), 12/4/2026 발효(8/6 포고 120일 후), MIP 폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·셀 $0.22/W·모듈 $0.38/W(韓 15%·英 10%). **韓 반전 관측: 한화큐셀(조지아 셀 생산) CEO Andy Park '규칙이 안정성 부여·온쇼어링 진전' 긍정 평가, Korea Times '韓 태양광 메이커엔 오히려 수혜' — US 현지생산 보유사에 유리.** 韓 대미 폴리실리콘 수출 ~$220만·파생 ~$4.3억, 산업부 8/11 대한상의 민관합동 대책회의(삼성전자·한화큐셀·OCI·SK실트론·한국반도체산업협회). **포토레지스트 시장 $3.24B(2026)→$5.53B(2031) CAGR 11.31%(광의 $5.2B), EUV 비중 advanced PR의 25%+(2024)→45%+(2034), TOK·JSR·Shin-Etsu·DuPont·FUJIFILM 과점, JSR Micro Korea 청주 MOR EUV 레지스트 2026 가동 예정.** 세부는 semiconductor.md [White & Case/pv-magazine/Korea Times, ZDNet/서울경제/이투데이, Mordor Intelligence/GM Insights/SEMI VISTA]
+>
+> 3. **초전도 [시장 정량화] — 2G HTS 테이프 $1.42B(2024)→$4.18B(2033) CAGR 12.8%, 핵융합發 300,000km 잠재수요 + SPARC ~80% 조립 확인** — 2세대(2G) HTS 테이프 시장 $1.42B(2024)→$4.18B(2033) CAGR 12.8%, 美 $0.9B(2024)→$1.5B(2033). Fusion Industry Association: 핵융합 상업화 시 ~300,000km HTS 소요 전망(현 병목). 美中 그리드 현대화용 960km 2G HTS 배치. Fujikura Sakura 증설(5월)·THEVA→Subra(덴마크) 편입(4/10). 핵심 SuperPower·Fujikura·AMSC·Sumitomo·Furukawa·Shanghai Superconductor. **CFS SPARC ~80% 조립(7/30)·18개 REBCO 자석 여름내 전량 설치·2027 first plasma/scientific breakeven 유지(신규 델타 제한적), 연기금 $1B(7/31) 최신 자금 마일스톤** [GM Insights/OpenPR/Verified(HTS 시장), TechTimes/Science.org/CFS blog(SPARC)]
+>
+> 4. **그래핀/탄소소재 [시장 정량화] — CNT $1.78B(2026)→$3.56B(2031) CAGR 14.88%, LG화학 4공장 6,100톤/y·Si음극 전환이 도전재 수요 증폭** — 카본나노튜브 시장 $1.78B(2026)→$3.56B(2031) CAGR 14.88%(배터리 최대 응용), CNT for solid-state 배터리용 CAGR 25.0%. LG화학 韓 4번째 CNT 공장 가동(1월)으로 총 capacity 6,100톤/y(전년 2,900톤서 2배+). MWCNT가 EV 양극 도전재 표준(LG화학·Cnano)·내부저항 최대 -20%. Si계 음극(SiOx·Si-C)+고니켈 양극 전환이 도전재 수요 증폭(부피팽창 대응)·SWCNT Si 음극용. 핵심공급 Cnano·LG화학·Nanocyl·OCSiAl·Kumho. 그래핀은 여전히 차세대 enabling 소재(CNT가 상업화 선행) [GlobeNewswire/MarketsandMarkets/OpenPR, Expert Market Research/Research and Markets]
+>
+> 5. **복합소재/첨단합금 [정량화·계약 델타] — 항공우주용 탄소섬유 $2.1B(2024)→$4.5B(2032) CAGR 8.7% + Hexcel-Boeing 장기계약(7월), Ti/초합금 30% 점유·고급 Ti 구조적 부족 리스크** — 항공우주용 탄소섬유 $2.1B(2024)→$2.3B(2025)→$4.5B(2032) CAGR 8.7%(항공 CFRP $3.16B(2026)→$4.37B(2030) CAGR 8.4%). **Hexcel 7월 Boeing과 상용·방산·우주 프로그램 복합재 장기계약 신규·연장, Toray·Teijin(5월) 차세대 항공구조·수소저장용 고탄성 CF 진전.** Toray +10~20%(2025.12)+호르무즈 surcharge 이중가격 유지. **Ti합금+초합금이 항공소재 시장 30%(Ti 20%) 점유(고강도/내열), 고급 항공급 Ti 구조적 공급부족 리스크 부각. SeAH Aerospace(韓) Boeing 동체/날개용 고강도 Al합금 장기공급(2026 개시), ATI 항공방산 수요로 2026 가이던스 상향, UNSW(3월) AI+3D프린팅 refractory 합금 개발 가속** [Fortune BI/Research and Markets/GII, Yahoo Finance/EIN Presswire/CompositesWorld, Global Growth Insights/Metalnomist/AlloyIndex]
+
 
 > **2026.08.15 핵심 변화 요약 (8/8→8/15 윈도우)**:
 >
