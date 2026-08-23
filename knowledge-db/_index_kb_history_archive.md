@@ -53,3 +53,11 @@
 | 2026-07-26 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +20 DB 레코드)** -- 홍해·호르무즈 위기로 Brent $97(주간+10%,7/23 $102)·JKM $21·TTF $19.2 급등, GS 봉쇄시 Q4 $120; DOE 3회 그리드비상+변압기 3~~5년(HD현대일렉·효성重); NuScale $8.68/Oklo $44.13 X-Energy $200M 프로그램; OBBB 5%세이프하버 6/6법원 복원 | +20 |
 | 2026-07-26 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(14회 검색, +12 DB 레코드)** -- Alphabet Q2 capex $195-205B 상향·OpenAI Stargate $750B·DeepSeek V4 GA·TSMC 애리조나 +$100B·[정정]Optimus 생산 0·Starship F13·경구 Wegovy 300만+·Golden Dome 36기 | +12 |
 | 2026-07-26 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +13 DB 레코드)** -- Starship Flight 13 성공(V3 첫 비행)·AI 설계 CRISPR SynTnpB(Science, 천연 능가)·Helion 세계 첫 융합 규제 라이선스·IonQ $32.84 조정+$988M 경고→8/5 실적·AI 초전도체 2종 발견 | +13 |
+
+<!-- === 2026-08-23 /KB점검 회전: 2026-08-02 이력 6행 === -->
+| 2026-08-02 | `macro/geopolitics.md` | **지정학 주간 갱신(12회 검색, +8 DB 레코드)** -- 유가 반락(Brent $90.24)·중재 대화, 상원 러·이란 제재법 가결(2차관세 200%), 대만 ADIZ 급감, 남중국해 美 항모 전개, NATO 대러 장기위협 | +8 |
+| 2026-08-02 | `macro/global_risk_factors.md` (SSOT) | **글로벌 리스크 맵 주간 갱신(13회 검색, +12 DB 레코드)** -- 급성 리스크 3종 완화(AI관문 통과·유가 $98→$90·BOJ개입 엔 163.99→157.40), Top5 재정렬(AI 2→1위·유가 1→2위), FOMC 7/29 동결 9-3(3인 인상반대·워시 신임), FRED VIX17.09·10Y4.68·HY2.84확대 | +12 |
+| 2026-08-02 | `macro/political_cycle.md` | **정치 사이클 주간 갱신(16회 검색, +11 DB 레코드)** -- 한미 관세타결 15%·코스피 +17.91% 사상최대·FOMC/BOJ 7월 동결·유가 반락 Brent $88 | +11 |
+| 2026-08-02 | `industry/energy.md` | **에너지 주간 갱신(15회 검색, +14 DB 레코드)** -- 유가 전쟁프리미엄 완화(Brent $88·WTI $84.67, 카타르 호르무즈 통항재개), OPEC+ 8/2 9월결정, 원자력 급등후 되돌림(Oklo $38.80), 두산 8/1 67,100원 +11.46% | +14 |
+| 2026-08-02 | `macro/tech_breakthrough.md` | **첨단기술 주간 갱신(15회 검색, +14 DB 레코드)** -- 하이퍼스케일러 2026 capex $725B(MSFT FY27 $255-260B·META FCF -91%·AMZN $220B)·순환금융 신용균열(CoreWeave CDS 50%·Moody's 6사 $460B)·Claude Opus 5+Anthropic 10월 IPO $965B·HBM4 2027 2배($4-5/Gb)·Starship F13 Starlink V3·IonQ SkyWater $1.8B | +14 |
+| 2026-08-02 | `industry/science_tech.md` | **과학기술 주간 갱신(10회 검색, +5 DB 레코드)** -- 바이오 신규딜 2건(AZ-Algen $555M·Scribe IPO SCTX)·기초과학 물리(EAST 밀도한계 돌파·CeSiI 중페르미온 초전도·AI초전도체 명명)·SpaceX Q2 8/4 프리뷰 | +5 |
