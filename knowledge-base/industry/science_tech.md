@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-16
-valid_until: 2026-09-15
+updated: 2026-08-23
+valid_until: 2026-09-22
 sector: science_tech
 sources:
   [
@@ -250,8 +250,8 @@ sources:
     Life Science Daily,
   ]
 confidence: high
-last_synced_from_db: 2026-08-16
-db_records: 1093
+last_synced_from_db: 2026-08-23
+db_records: 1120
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -368,8 +368,10 @@ db_records: 1093
 | **FDA 맞춤형 CRISPR 승인경로** [6/14]        | FDA bespoke CRISPR 치료제 승인경로 초안 가이던스 = 희귀질환 근본원인 표적 유전체편집/RNA. Prime Medicine 2환자 임상 후 CGD 승인 추진(03월). Lilly orforglipron 2026말 추가 승인 신청                                                                                                                        | 2026.06    | FierceBiotech / STAT News                                    |
 | **AstraZeneca-Algen $555M AI 유전자편집** [8/2 신규] | **AZ가 Algen Biotechnologies(Doudna 버클리랩 스핀오프)와 AI 유전자편집 치료제 개발 계약 = 최대 $555M 마일스톤**. Lilly-Profluent($2.25B)·Lilly-Verve($1.3B)에 이은 빅파마 AI 유전자편집 딜 확장(Doudna 생태계로 다변화) | 2026.07 | FT / MarketScreener |
 | **Scribe Therapeutics 나스닥 IPO(SCTX)** [8/2 신규] | 유전자편집 스타트업 **Scribe Therapeutics 나스닥 IPO 신청(티커 SCTX)** = 심혈관대사질환 유전자의약, **Biogen·Sanofi·Lilly 협업** 보유. CRISPR 생태계 자본시장(IPO) 재개 신호 | 2026.07 | BioPharma Dive |
-| **FDA 8월 결정 밀집(결과 미확정)** [8/9 신규] | **Moderna mRNA-1010 계절독감 백신 PDUFA 8/5/2026** + **Replimune RP1(+nivolumab) 진행성 흑색종**(anti-PD-1 실패후) 목표일 **8/2/2026**. 8~9월 FDA 결정 = 종양/혈액/희귀신경/유전자치료/진단영상 폭넓게 분포. GLP-1 신규 대형딜은 이번 주 부재(**Viking VK2735** 최유력 인수후보 상태 유지) | 2026.08 | Life Science Daily / BioPharma Dive / PharmaVoice |
+| **★ FDA 8월 승인 확정(8/9 미확정 해소)** [8/23 갱신] | **Moderna mFLUSIVA(mRNA-1010) 계절독감 mRNA백신 8/5 승인**(성인 50~64 정식+65세 이상 가속). **Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(PDUFA 8/2→7/30 자문위 10:3 IGNYTE 인정→승인, 60일 내 출시). 8월말 PDUFA 잔여: **Ultragenyx DTX401 유전자치료(GSD Ia) 8/23·피하 lecanemab 개시용량 8/24·Gilead bictegravir/lenacapavir 단일정 8/27·ITM 177Lu-edotreotide GEP-NET 8/28** | 2026.08 | Entry to Regulatory / BiopharmaWatch / SEC 8-K / PharmaVoice |
+| **Amylyx avexitide Phase 3 충족 + 바이오 M&A 급증** [8/23 신규] | **Amylyx LUCIDITY(avexitide, 비만수술후 저혈당) 8/18 1차종점 충족 = Level2/3 저혈당 복합률 -55%**. 2026 바이오 M&A 급증 지속 = **Vertex-Crinetics $10B(7/6)·Actio Biosciences 선급 $820M·Scribe Therapeutics $129M IPO**(7월, 2026년 14번째 VC바이오 상장) | 2026.08 | BioSpace / STAT News / MedCity News / BioPharma Dive |
 
+> **2026.08.23 갱신**: ★ **8월 FDA 승인 확정** — 8/9 '결과 미확정'이던 **Moderna mFLUSIVA(mRNA-1010) 독감 mRNA백신 8/5 승인**(50~64 정식+65+ 가속)·**Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(7/30 자문위 10:3→승인, 60일 내 출시) 모두 해소. 8월말 PDUFA 잔여 밀집(Ultragenyx DTX401 8/23·피하 lecanemab 8/24·Gilead 단일정 8/27·ITM 177Lu 8/28). 임상 = **Amylyx avexitide Phase 3 -55% 저혈당** 충족. **바이오 M&A 급증 지속**(Vertex-Crinetics $10B·Actio $820M·Scribe $129M IPO). GLP-1 신규 대형딜 부재(Viking VK2735 인수후보 유지).
 > **2026.08.09 갱신**: 신규 확정 딜/임상 촉매 제한적 — **FDA 8월 결정 밀집**(Moderna mRNA-1010 독감백신 PDUFA 8/5·Replimune RP1 흑색종 8/2, 결과 미확정)이 근접 이벤트. GLP-1 신규 대형딜 부재(Viking VK2735 인수후보 유지). AstraZeneca-Algen·Scribe IPO(8/2 반영) 이후 신규 유전자편집 딜 없음.
 > **2026.08.02 갱신**: 신규 딜 2건 — **AstraZeneca-Algen Biotechnologies $555M AI 유전자편집 계약**(Algen=Doudna 버클리랩 스핀오프) = Lilly-Profluent/Verve에 이은 빅파마 AI 유전자편집 다변화. **Scribe Therapeutics 나스닥 IPO 신청(SCTX)**(심혈관대사 유전자의약, Biogen/Sanofi/Lilly 협업) = CRISPR 자본시장 재개 신호. (GLP-1·Intellia lonvo-z는 8/1 이후 신규 촉매 없음.)
 > **2026.07.26 갱신**: 신규 discrete 이벤트 제한적 — **Intellia lonvo-z 추가 Phase 3 HAE 데이터 EAACI 2026+NEJM 게재**(부종발작 -87% 재확인, BLA 제출 H2 2026 완료 목표·美 출시 H1 2027, 안전성 간효소 상승 1건 1주 내 자연소실) = 세계 첫 in vivo CRISPR FDA 승인 트랙 온궤도. **[MCED] Grail Galleri**: 2월 NHS-Galleri 1차종점 실패(주가 -50%) 여파 지속, 이번 주 신규 촉매 없음(AACR 2026 = 액체생검 MCED 비용·규모 근본 장벽).
@@ -392,6 +394,7 @@ db_records: 1093
 | **Isomorphic Labs AI설계약 인체임상 임박** [7/19 신규] | Isomorphic Labs(DeepMind 스핀오프)=AlphaFold 기반 **AI설계 항암제 first-in-human 임상 착수 준비**('dosing 환자에 매우 근접', Colin Murdoch 사장). IsoDDE(2026.02, AF3 대비 2.3x·Boltz-2 대비 19.8x)=숨은 결합부위 발굴. 2025 $600M·Novartis/Lilly/J&J. **AI설계 신약 임상 진입 = AI4Science 상업검증 분수령** | 2026 | ChemDiv / IntuitionLabs / creati.ai |
 | **★ AI 설계 합성 CRISPR 효소 자연 능가** [7/26 신규] | **2026.07.16 Science** — Innovative Genomics Institute+**Doudna랩**, Meta **ESM Inverse Folding(ESM-IF1)** 모델로 TnpB 구조 기반 합성변이 **1,980종(SynTnpB)** 생성. 인간세포 최고변이 편집효율 **46~50%**(천연 TnpB **28%** 대비)·일부 표적 **~4x**. 박테리아/인간/식물 세포서 천연 이상. **AI가 완전 신규 RNA가이드 유전자편집 단백질 발명** = CRISPR 툴박스 확장(신약·농업·합성생물) | 2026.07.16 | Science / Nature News / phys.org / C&EN |
 
+> **2026.08.23 갱신**: **AI 유전자편집 효소 설계 후속 확산** — 생성AI가 자연 대비 우월한 CRISPR 효소 설계(합성 후보 수천종·서열 천연 대비 ~30% 상이=종전 AI-CRISPR 최대치, 다종 세포 편집 성공, EurekAlert/Technology Networks) = 7/16 Science SynTnpB 계보 연장. **Raygun** 단백질언어모델 = 단백질을 표준 수학표현으로 변환(기능 유지 재설계). AI 단백질 설계가 유전자편집·식물 형질설계로 저변 확대.
 > **2026.07.26 갱신**: **★ AI 설계 합성 CRISPR 효소 최초 자연 능가**(2026.07.16 Science) — IGI+Doudna랩이 Meta ESM-IF1로 TnpB 기반 합성변이 1,980종(SynTnpB) 생성, 인간세포 편집효율 46~50% vs 천연 28%·일부 ~4x. AI가 완전 신규 RNA가이드 편집 단백질 발명 = CRISPR 툴박스 확장 분수령. AI 단백질 설계(BoltzGen/Profluent/Isomorphic)에 이어 **유전자편집 효소 de novo 설계**로 확장.
 > **2026.07.19 갱신**: **Isomorphic Labs AI설계 항암제 first-in-human 임상 착수 임박**('dosing 매우 근접')=AlphaFold 기반 신약이 임상 진입, **AI4Science 상업검증 분수령**.
 > **2026.07.05 갱신**: 신규 discrete 이벤트 없음, 상태 재확인 — **Isomorphic Labs IsoDDE**(2026.02) = AlphaFold3 대비 **2.3x**·Boltz-2 대비 **19.8x**, 2025 $600M 조달·Novartis/Lilly/J&J 파트너십. AI-합성생물 융합 '임박한 홍수'(npj) 트렌드 지속.
@@ -450,6 +453,7 @@ db_records: 1093
 | **Waymo 2026 대확장**                 | 신규 11개 도시. 주간 **100만 탑승** 목표. 차량 **2,500~3,500대**. **런던+도쿄** 국제 테스트                                                                                                                                 | 2026   | TestMiles / TechCrunch                     |
 | 한국 로봇 산업 매출                   | 6조 원대                                                                                                                                                                                                                    | 2025년 | 산업부                                     |
 
+> **2026.08.23 갱신**: 양산 스케일업 지속 — **Figure 03 BotQ 7/23 1,000번째 생산**(시간당 1대·BMW 물류 확대), **Tesla Optimus V3 Fremont 저물량 여름 착수**(22-DoF손·AI5·Grok, 중순까지 미개시→여름 가이던스). **Unitree 2026 1~2만대 목표**(서구 대비 ~1/10 가격·최다 출하이나 Q1 이익 반감), **AgiBot 누적 1.5만대**. Figure+Agility 실배치 실적 최강.
 > **2026.07.05 갱신**: 상태 재확인 + 정밀화 — **Optimus Gen3 저물량 여름·Fremont 대량생산 7월말~8월**(V3 = 22-DoF 손·AI5 칩·Grok). **Figure AI Series C $39B 밸류**(2025.09, $1B+ 조달, NVIDIA/Intel/Qualcomm 참여) = Goldman 2035 전체 시장($38B) 초과 = 밸류 과열 시그널. Figure 03 BotQ 시간당 1대, BD 전기 Atlas 현대/DeepMind 첫 출하($140K~150K), Unitree 2025 5,500+대·2026 1~2만대. Goldman 2030 25만대+ 출하(산업용).
 > (6/28 배경) TrendForce 휴머노이드 출하 2026 5만대 돌파 전망(+700% YoY). Figure 03 BotQ 40대 BMW ~$25/robot-hour. Goldman 2035 $38B(6x 상향).
 
@@ -559,6 +563,7 @@ db_records: 1093
 | **전고체 전지 -- Samsung SDI**         | SDI+**BMW+Solid Power** 공동개발. **황화물계 고체전해질**. **2027 양산**. 80% 충전 9분. 프로토타입 965km 주행거리                                                                                                                                                                                      | 2026~2027 | IDTechEx / eepower / to7motor                    |
 | **전고체 양산 진입 신호** [6/7]        | 2026 SSB **최초 상업 규모 도달**: 오토바이 Q1 인도(첫 상용 적용). **중국 2026.07 최초 SSB 표준** 발표. 유럽 Argylium(Syensqo+Axens) 황화물 산업화. **단 2030 이전 대규모 상업화 업계 비관적**                                                                                                          | 2026      | to7motor / engineerlive / 36kr / technoolab      |
 
+> **2026.08.23 갱신**: 배터리 소재 연구 진전(양산 아닌 랩 단계) — **나트륨이온**: NUS팀 graphitic carbon nitride(GCN, 요소 550도)로 덴드라이트 억제·2,000시간+ 구동, U.Surrey 나트륨바나듐옥사이드 조성변경 출력 ~2배(中 Hina 나트륨전지 Tesla 리튬 벤치마크 근접) = 저비용·공급안보 그리드저장 부각. **전고체**: 연질 리튬 덴드라이트가 경질 세라믹 균열→단락 유발 기전 규명(안전·장수명 설계 단서). 완전 전고체 양산차는 2026 현재 0(재확인).
 > **2026.07.19 갱신**: 신규 discrete 이벤트 제한적, 스펙 정밀화 — **中 2026.07 최초 국가 SSB 표준 발표 확정**(KB 예고건 확인). **Samsung SDI 900Wh/L 프로토타입**(현 리튬이온 ~2x)·2027 9분 80%충전. **QuantumScape 4C rate 400사이클 후 80% 용량유지**(랩). 3사(QS/삼성/도요타) 2027~2028 생산 목표. 완전 전고체 양산차는 2026 현재 0.
 > **2026.07.05 갱신**: 신규 discrete 이벤트 없음, 상태 재확인 — 전고체 2026 lab→public road 전환(Factorial-Mercedes EQS **1,205km** 주행), SSB 2036 **$10B** 시장(IDTechEx). 고곡률 그래핀 네트워크 기록적 에너지/전력밀도. 페로브스카이트 빛 형태 가역변화.
 > (6/28 배경) **QuantumScape Eagle Line 가동·Cobra 스케일업**, VW PowerCo 라이선스 최대 40GWh(80GWh 확장). Toyota 일본 정부 인증 2026 SSB 소규모 생산. 그래핀-페로브스카이트 융합. 단 2030 이전 대규모 상업화 비관적.
@@ -634,7 +639,9 @@ db_records: 1093
 | **초전도체 물질명 확정 + 중페르미온 신규** [8/2 신규] | AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome 격자 flat band 기인, Aalto대 Törmä) 물질명 확정 = 7/26 '2종 발견' 후속. 별도 **반데르발스 중페르미온 금속 CeSiI 가압 초전도 발견**(Nature Physics 2026.07, 반강자성·Kondo 결맞음·비전통 초전도 상호작용). 3월 U.Houston Hg1223 준안정상 상압 **151K**(종전 133K 경신) | 2026.07 | Nature Physics / ScienceDaily / phys.org |
 | **中 EAST 밀도한계 돌파(핵융합 물리)** [8/2 신규] | 中 완전초전도 토카막 **EAST가 '밀도-무제한(density-free) 영역' 최초 실험 접근** = 선평균 전자밀도 **Greenwald 한계 1.3~1.65배** 안정운전(통상 초과 시 붕괴). 신공정 **plasma-wall self-organisation(PWSO)**+ECRH 보조 오믹 시동. 핵융합 점화 경로 최대 물리장벽 중 하나 극복 단서(Science Advances 2026.01.01) | 2026.01 | Science Advances / phys.org / NEI / WNN |
 | **★ DeepMind AlphaFold 전담팀 해체 = AI4Science 재편** [8/9 신규] | **Google DeepMind, 노벨상(2024 화학) AlphaFold 전담팀 해체**(FT 7/29 보도). **John Jumper 부사장 6월 Anthropic行**+공저자 Jonas Adler·Alexander Pritzel 동반 = 원논문 정규직 저자 **~25% 이탈**. 잔여인력 **Gemini·효소설계·핵융합·유전체·Isomorphic Labs 재배치**. Pushmeet Kohli(AI4Science 창립 VP) '전략 진화' = **LLM(Gemini) 중심 재편** + Anthropic으로 과학AI 인재 이동. AlphaFold 성과는 유지, 조직 모델만 전환 | 2026.07.29 | FT / Engadget / MLQ / the-decoder / Scientific American |
+| **★ GenBio AI '가상세포 월드모델' AIDO Cell 공개** [8/23 신규] | **노벨상 David Baker+Eric Xing 공동창업 GenBio AI, 첫 인간세포 월드모델 AIDO Cell 공개(8/18~19)** = **DNA→RNA→단백질→전세포** 전 생물계층 시뮬레이션(자연상태+약물/개입 반응). **multiscale+stateful** = 순차 섭동 누적효과 유지·계층 간 연쇄효과 모델링 = 전사체 중심 세포 파운데이션모델 넘어섬. 백혈병세포 **imatinib 기전** 예비 모델링 성공, K562/HepG2 세포주 지원. 신약발굴 겨냥 | 2026.08.18 | STAT News / HPCwire / SynBioBeta / FirstWord Pharma |
 
+> **2026.08.23 신규 (AI for Science)**: ★ **GenBio AI 가상세포 월드모델 AIDO Cell 공개**(8/18~19, David Baker+Eric Xing) — 인간세포 전 생물계층(DNA→RNA→단백질→전세포) multiscale+stateful 시뮬레이션, imatinib 백혈병 기전 예비 모델링, K562/HepG2 지원 = 전사체 중심 세포 파운데이션모델 넘어선 '월드모델' 접근. AlphaFold 팀 재편(8/9) 후에도 **AlphaProteo 단백질바인더·GNoME 220만 결정구조** 성과 존속 재확인. 방향 = 구조예측→세포 전체 시뮬레이션으로 AI4Science 확장.
 > **2026.08.09 신규 (AI for Science)**: **DeepMind AlphaFold 전담팀 해체**(FT 7/29) — 노벨상 팀 해체, Jumper 부사장 6월 Anthropic行+공저자 2명 동반(원논문 저자 ~25% 이탈), 잔여 Gemini/효소설계/핵융합/유전체/Isomorphic 재배치. Kohli '전략 진화'=LLM(Gemini) 중심 AI4Science 재편 + Anthropic으로 과학AI 인재 이동. AlphaFold 성과는 존속·조직 모델만 전환(자율연구소·GNoME 계보와 병행).
 > **2026.08.02 신규 (기초과학)**: **초전도 물질명 확정 + 중페르미온 신규** — AI 발견 초전도체 **YRu3B2·LuRu3B2**(kagome flat band) 명명(7/26 '2종 발견' 후속)+**반데르발스 중페르미온 CeSiI 가압 초전도**(Nature Physics 7월). **中 EAST 밀도-무제한 영역**(Greenwald 한계 1.3~1.65배, PWSO+ECRH, Science Advances)=핵융합 점화 물리장벽 돌파 단서. AI 소재발견 가속(GNoME 계보) 지속.
 > **2026.07.26 신규 (AI for Science)**: **AI 초전도체 발견 가속**(2026.07.01) — ML+양자물리로 신규 초전도체 2종 발견+탐색 가속법 = 실온 초전도체 목표 근접. 장기 미해결 2D 양자물질 최초 합성+전도성 엣지상태 확인. AI가 소재발견 워크플로 가속하는 GNoME 계보 연장.
@@ -709,19 +716,20 @@ db_records: 1093
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-08-16 신규)
+### 16-C. 주간 과학기술 동향 (2026-08-23 신규)
 
-> 2026-08-09~08-16 주간 수집(web_search 6회). 개별 이벤트는 §2/3/4/6/9 및 jsonl 상세.
+> 2026-08-16~08-23 주간 수집(web_search 10회). 프론티어 4종(양자/우주/SMR·핵융합/차세대통신)은 헤드라인 수준(전문 갱신은 토요일 weekly-frontier 담당, 8/22 반영). 개별 이벤트는 §3/5/9/12-B 및 jsonl 상세.
 
 | 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
 | --- | --- | --- | --- |
-| **[양자통신]** | **NIST·UMD·Qunnect, 62km 대도시 공중 광섬유로 얽힘광자 분배 성공** — 얽힘광자 분배율 **1,500쌍/초** 유지 = 도시급 양자네트워크 실증(레이저 광원 밖 대안 경로 확장) | 2026.08 | ScienceDaily |
-| **[양자]** | **Honda(Xcelerator Ventures), 日 양자알고리즘 스타트업 Quemix 투자**(차세대 배터리 소재). 별도 연구 = **햇빛에서 직접 양자얽힘 생성**(저에너지 양자광원)·상온 결정서 열이 파동형 광선(2차음/포논빔)으로 전도 | 2026.08 | QC Report / ScienceDaily |
-| **[우주]** | **NASA Roman 우주망원경 발사 통합운영 개시(8/10)** → **8/30 Falcon Heavy 발사 확정(당초比 8개월 조기)**. 2.4m 미러(허블급)·시야 100x·탐사속도 최대 1,000x, 암흑에너지·외계행성. JWST 이후 최대 우주천문 발사. Starship Flight 13(7/24~25) 부스터 hard splashdown+상단 인도양 준궤도 도달 성공 확인 | 2026.08 | NASA Roman blog / SpacePolicyOnline / Spaceflight Now |
-| **[바이오]** | **FDA, Casgevy(exa-cel)를 2세 이상 소아 SCD·TDT로 승인**(신청 **53일** 초고속) = 두 질환 모두 2세까지 확대한 최초 유전자치료. **CRISPR Therapeutics Q2 2026** 실적+신규 Phase 1 **CTX340**(난치성 고혈압)·**CTX460**(알파-1 항트립신결핍) 개시 | 2026.08 | Life Science Daily / BioSpace |
-| **[핵융합]** | **ORNL, 극저온 펠릿연료 기술 Type One Energy에 라이선스**. **UKAEA 리튬증식 삼중수소(Tritium) 프로그램에 CFS 첫 국제기업 합류**. 中 **EAST 토카막 통상 운전한계 돌파**. **FIA: 2025 핵융합 공급망 지출 $538M(+25% YoY)** | 2026.08 | World Nuclear News / FIA |
-| **[SMR]** | **Rolls-Royce SMR, 유럽용 원자로섬 부품 공급사로 두산에너빌리티(한국)·Škoda JS(체코) 선정**(사전생산·설계확정 착수). 스웨덴 서부해안 원전에 Rolls-Royce SMR **3기** 채택 | 2026.08 | World Nuclear News |
-| **[소재/AI4Science]** | **Aalto SuperC 컨소시엄, ML 유도 스크리닝→제1원리 계산→합성·측정으로 카고메 초전도체 2종 신규 확증** — **YRu3B2(Tc 0.81K)·LuRu3B2(0.95K)**. AI 가속 초전도체 발견 워크플로 정립(상온초전도 2033 목표, 아직 저온) | 2026.08 | npj Computational Materials / ScienceDaily |
+| **[바이오]** | ★ **8월 FDA 승인 확정** = **Moderna mFLUSIVA(mRNA-1010) 독감 mRNA백신 8/5 승인**(50~64 정식+65+ 가속)·**Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(7/30 자문위 10:3→승인). 8월말 PDUFA 밀집(Ultragenyx DTX401 8/23·피하 lecanemab 8/24·Gilead 단일정 8/27·ITM 177Lu 8/28). **Amylyx avexitide Phase 3 -55% 저혈당** 충족(8/18) | 2026.08 | Entry to Regulatory / BiopharmaWatch / BioSpace |
+| **[AI4Science]** | ★ **GenBio AI(David Baker+Eric Xing) 첫 '가상세포 월드모델' AIDO Cell 공개**(8/18~19) = DNA→RNA→단백질→전세포 전 계층 시뮬레이션(multiscale+stateful), imatinib 백혈병 기전 예비 모델링, K562/HepG2 지원 = 전사체 중심 세포 파운데이션모델 넘어선 접근 | 2026.08 | STAT News / HPCwire / SynBioBeta |
+| **[합성생물]** | 생성AI가 자연 대비 우월한 **CRISPR 유전자편집 효소 설계**(합성 후보 수천종·서열 천연 대비 ~30% 상이, 다종 세포 편집 성공) = 7/16 Science SynTnpB 계보 연장. **Raygun** 단백질언어모델(기능 유지 재설계) | 2026.08 | EurekAlert / Technology Networks / phys.org |
+| **[소재]** | **나트륨이온** 진전 = NUS팀 graphitic carbon nitride(요소 550도)로 덴드라이트 억제·2,000시간+, U.Surrey 나트륨바나듐옥사이드 출력 ~2배(中 Hina Tesla 리튬 벤치마크 근접). **전고체** 연질 리튬 덴드라이트→세라믹 균열→단락 기전 규명 | 2026.08 | ScienceDaily / Live Science / Interesting Eng. |
+| **[기후과학]** | **2026 전지구 기온 전망 ~1.51도**(산업화前 대비)=역대 2번째 더운 해 전망(2024 1.52도 하회), Met Office 1.46도·4년 연속 1.4도 초과. **1.5도 잔여 탄소예산 ~130 GtCO2**(2026 초)=현 배출 ~3년 내 소진. 자연 탄소흡수원 효율 저하 | 2026.08 | Carbon Brief / Met Office / intelligentliving |
+| **[기초물리]** | 원자스케일 이중슬릿 간섭(STEM)·절대영도 근방 **첫 순환 양자열기관**·햇빛서 직접 양자얽힘 생성·Caltech 실리콘칩 초저손실 가시광 광경로·Cornell 탄탈럼 큐빗 증착온도 400→200도 | 2026.08 | Nature / ScienceDaily |
+| **[로보틱스]** | **Figure 03 BotQ 7/23 1,000번째 생산**(시간당 1대·BMW 물류)·**Tesla Optimus V3 Fremont 저물량 여름 착수**·Unitree 2026 1~2만대 목표·AgiBot 누적 1.5만대 | 2026.08 | Technology.org / humanoid.press |
+| **[프론티어 헤드라인]** | (전문=weekly-frontier 8/22) **中 Chang'e 7 8/24 발사 확정**(달남극 Shackleton 11월 착륙)·**SpaceX SPCX ~$140**(MS $300 목표 재확인)·**LUNR $600M+ 다위성 통신 ATP**·**Rolls-Royce SMR 유럽 원자로섬 부품에 두산에너빌리티·Škoda JS 선정** | 2026.08 | SpaceNews / 24-7 Wall St / WNN |
 
 ---
 
@@ -742,7 +750,7 @@ db_records: 1093
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1043건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1120건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
