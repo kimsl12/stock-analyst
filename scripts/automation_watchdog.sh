@@ -129,5 +129,22 @@ if [ -n "$ALGO_STATE" ]; then
   fi
 fi
 
+# 10. 본서버 배포 신선도 (로컬 pick_date vs 배포 사이트 — 8/13~25 12일 동결 무감지 사고 재발 차단) [v3.41]
+DEPLOYED_PICK=$(curl -s -m 15 "https://stock-analyst-jungwon1.vercel.app/" 2>/dev/null | grep -oE 'data-pick-date="[^"]*"' | head -1 | cut -d'"' -f2)
+LOCAL_PICK=$(jq -r '.pick_date // ""' web/src/data/daily_pick.json 2>/dev/null)
+if [ -z "$DEPLOYED_PICK" ]; then
+  log "WARN: 본서버 pick_date 추출 실패 (네트워크/마크업 변경?)"
+elif [ -n "$LOCAL_PICK" ] && [ "$DEPLOYED_PICK" != "$LOCAL_PICK" ]; then
+  # 하루 이상 괴리만 경고 (빌드 진행 중 수 분 괴리는 정상)
+  if [ "$DEPLOYED_PICK" \< "$(TZ=Asia/Seoul date -v-1d '+%Y-%m-%d' 2>/dev/null || date -d 'yesterday' '+%Y-%m-%d')" ]; then
+    log "WARN: 본서버 동결 의심 — 배포 $DEPLOYED_PICK vs 로컬 $LOCAL_PICK"
+    notify_warn "본서버 사이트 동결 의심 (배포 ${DEPLOYED_PICK} vs 로컬 ${LOCAL_PICK}) — vercel ls 로 배포 Error 확인 필요" high
+  else
+    log "OK: 본서버 신선도 허용 범위 (배포 $DEPLOYED_PICK)"
+  fi
+else
+  log "OK: 본서버 신선 ($DEPLOYED_PICK)"
+fi
+
 log "=== watchdog 완료 ==="
 exit 0
