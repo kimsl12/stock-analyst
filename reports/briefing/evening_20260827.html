@@ -1,0 +1,1695 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>이브닝 브리핑 — 2026-08-27</title>
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      .heatmap {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .heatmap .cell {
+        padding: 10px;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 13px;
+      }
+      .heatmap .green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .heatmap .yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .heatmap .red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+
+      .scenario-tree {
+        margin: 14px 0;
+      }
+      .scenario-tree .root {
+        text-align: center;
+        padding: 12px;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-radius: 8px;
+        margin-bottom: 14px;
+        border: 1px solid var(--border);
+      }
+      .scenario-tree .branches {
+        display: flex;
+        gap: 14px;
+      }
+      .scenario-tree .branch {
+        flex: 1;
+        padding: 14px;
+        border-radius: 8px;
+      }
+      .scenario-tree .branch.a {
+        background: color-mix(in srgb, var(--up) 6%, transparent);
+        border: 1px solid var(--up);
+      }
+      .scenario-tree .branch.b {
+        background: color-mix(in srgb, var(--down) 6%, transparent);
+        border: 1px solid var(--down);
+      }
+      .scenario-tree .prob-bar {
+        width: 100%;
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        height: 6px;
+        border-radius: 3px;
+        margin-top: 8px;
+      }
+      .scenario-tree .prob-bar .fill {
+        height: 6px;
+        border-radius: 3px;
+      }
+
+      .cascade {
+        margin: 14px 0;
+      }
+      .cascade .step {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 8px 0;
+      }
+      .cascade .first {
+        background: color-mix(in srgb, var(--text) 5%, transparent);
+        border-left: 3px solid var(--neutral);
+      }
+      .cascade .second {
+        background: color-mix(in srgb, var(--highlight) 8%, transparent);
+        border-left: 3px solid var(--highlight);
+      }
+      .cascade .third {
+        background: color-mix(in srgb, var(--warning) 8%, transparent);
+        border-left: 3px solid var(--warning);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin: 16px 0;
+      }
+      .portfolio-card {
+        background: color-mix(in srgb, var(--text) 4%, transparent);
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .portfolio-card h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      .tag-red {
+        background: color-mix(in srgb, var(--down) 14%, transparent);
+        color: var(--down);
+      }
+      .tag-green {
+        background: color-mix(in srgb, var(--up) 14%, transparent);
+        color: var(--up);
+      }
+      .tag-yellow {
+        background: color-mix(in srgb, var(--warning) 14%, transparent);
+        color: var(--warning);
+      }
+      .tag-blue {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+      }
+      .tag-purple {
+        background: color-mix(in srgb, var(--debate) 14%, transparent);
+        color: var(--debate);
+      }
+
+      .event-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .badge-critical {
+        background: color-mix(in srgb, var(--down) 18%, transparent);
+        color: var(--down);
+        border: 1px solid var(--down);
+      }
+      .badge-high {
+        background: color-mix(in srgb, var(--warning) 18%, transparent);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+      .badge-normal {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+        border: 1px solid var(--highlight);
+      }
+
+      .issue-card {
+        background: color-mix(in srgb, var(--text) 3%, transparent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 10px 0;
+        border-left: 3px solid var(--border);
+      }
+      .issue-card.critical {
+        border-left-color: var(--down);
+      }
+      .issue-card.high {
+        border-left-color: var(--warning);
+      }
+      .issue-card.normal {
+        border-left-color: var(--highlight);
+      }
+      .issue-title {
+        font-weight: 700;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+      .issue-secondary {
+        color: var(--sub);
+        font-size: 13px;
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px dashed color-mix(in srgb, var(--text) 7%, transparent);
+      }
+
+      .signal-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 6px 0;
+        font-size: 14px;
+      }
+      .signal-label {
+        width: 120px;
+        flex-shrink: 0;
+        color: var(--sub);
+      }
+      .signal-value {
+        width: 120px;
+        flex-shrink: 0;
+        font-weight: 600;
+      }
+      .signal-bar-wrap {
+        flex: 1;
+      }
+
+      .risk-gauge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+      }
+      .risk-dots {
+        display: flex;
+        gap: 4px;
+      }
+      .risk-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+      }
+      .risk-dot.active-1,
+      .risk-dot.active-2 {
+        background: var(--up);
+      }
+      .risk-dot.active-3 {
+        background: var(--warning);
+      }
+      .risk-dot.active-4,
+      .risk-dot.active-5 {
+        background: var(--down);
+      }
+
+      .premarket-badge {
+        display: inline-block;
+        background: rgba(88, 166, 255, 0.12);
+        border: 1px solid var(--highlight);
+        color: var(--highlight);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 6px;
+      }
+
+      .warning-13f {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .warning-13f::before {
+        content: "⚠️ ";
+      }
+
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      .prediction-bar {
+        margin: 6px 0;
+        height: 24px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .prediction-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .prediction-bar .fill.high {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .prediction-bar .fill.mid {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .prediction-bar .fill.low {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .prediction-bar .pct {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .pm-change-up {
+        color: var(--up);
+        font-size: 12px;
+      }
+      .pm-change-down {
+        color: var(--down);
+        font-size: 12px;
+      }
+      .pm-source {
+        color: var(--sub);
+        font-size: 11px;
+        font-style: italic;
+        margin-top: 6px;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .heatmap {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .scenario-tree .branches {
+          flex-direction: column;
+        }
+        .signal-label {
+          width: 80px;
+        }
+        .signal-value {
+          width: 90px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+    <div class="header">
+      <h1>🌙 이브닝 브리핑 — 2026-08-27 (목)</h1>
+      <div class="meta">
+        briefing-lead 작성 | KST 20:10 | 데이터 기준: 한국 정규장 8/27 종가 +
+        미국 프리마켓(ET 07:04, 정규장 시작 2.5시간 전·실측 아님)
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 중립 7일째 — 추세 횡보(MA20 −0.1%) · VIX 15.2(중) · 10Y
+        4.66%(중립) · CNN F&amp;G 55.2 → 가중치 횡보장
+      </div>
+      <div class="regime-strip">
+        <span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-29 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-07-30 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-07-31 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-01 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-02 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-03 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-04 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-05 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-06 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-07 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-08 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-09 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-10 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-11 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-12 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-13 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-14 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-15 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-16 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-17 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-18 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-19 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--up)"
+          title="2026-08-20 리스크온"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-21 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-22 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-23 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-24 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-25 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-26 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-08-27 중립"
+        ></span
+        ><span class="rg-label">레짐 최근 30일</span>
+      </div>
+    </div>
+
+    <div class="sec" style="border-left: 4px solid var(--highlight)">
+      <h2>오늘의 핵심 논지</h2>
+      <p>
+        <strong>주장:</strong> 관문②(NVDA)는 마이크로에서 완전히 상방 돌파했다 —
+        프리마켓 +6.78%($223.88)로 애프터장(+4.7%)보다 오히려 가속했고 반도체
+        전반(MU·TSM·AVGO·AMD)으로 확산됐다(HV3 대폭 강화). 이제 유일하게 남은
+        관문은 내일(8/28) 잭슨홀 Warsh 첫 기조다.
+      </p>
+      <p>
+        <strong>분기 조건:</strong> 오늘 밤 정규장(KST 22:30) NVDA 종가가 +4%
+        이상 유지되는가 + 내일 오전(ET) Warsh 톤이 중립(BofA 서베이 69%
+        컨센)인가 매파인가 — 둘 다 우호면 리스크온 연장, 하나라도 꺾이면 오늘의
+        랠리는 하루 만에 되돌려질 수 있다.
+      </p>
+      <p>
+        <strong>행동:</strong> 4종 포트폴리오 모두 현 배분 유지 — 신규 대량
+        진입은 정규장 지속성 확인 + 잭슨홀 확인 후로 유보.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>0. 핵심 요약</h2>
+      <p>
+        <strong
+          >관문②(NVDA)가 완전히 상방으로 뚫렸고, 반응은 절제가 아니라 가속
+          중이다 — 이제 유일하게 남은 관문은 내일(8/28) 잭슨홀 Warsh 첫
+          기조다.</strong
+        >
+        오늘 아침 모닝브리핑은 "전 라인 압승에도 애프터장 +4.7%는 재료 선반영
+        매수세 소진 신호일 수 있다"며 절제된 반응을 경계했다.
+        <strong>낮 동안 그 경계는 반증됐다</strong> — NVDA 프리마켓은
+        <strong>+6.78%($223.88)로 애프터장(+4.7%)보다 오히려 더 벌어졌고</strong
+        >, 랠리는 단일 종목을 넘어 <strong>반도체 전반으로 확산</strong>됐다(MU
+        +4.49%·TSM +1.78%·AVGO +1.86%·AMD +1.66%). 지수 선물도 이를 반영해
+        <strong>NQ +1.04%가 시장을 끌고</strong>(ES +0.44%·YM −0.05%·RTY −0.02%)
+        전형적인 "빅테크 편중 리스크온" 구도다. 한국·아시아는 이 훈풍을 낮에
+        먼저 반영했다 —
+        <strong>KOSPI는 개장 +2.76%(6,996, 7,000선 근접)로 출발</strong>했으나,
+        <strong
+          >오늘 BOK가 기준금리를 2.75%→3.00%로 25bp 인상(2회 연속·긴축 사이클
+          본격화)</strong
+        >하며 상승폭을 절반으로 줄여 <strong>+1.53%(6,912.37)</strong> 마감했다.
+        그럼에도 핵심은 <strong>외국인이 +1,456억 순매수로 복귀</strong>한 것 —
+        지난주(8/20~26) 6조 순매도 후 오늘 반전이다(삼성전자 +1.72%·SK하이닉스
+        +2.49%·삼성전기 +4.13%). 요컨대
+        <strong>관문②는 마이크로(AI 수요)에서 압승 확정</strong>됐고, 이제
+        승부는 <strong>관문③ 잭슨홀 Warsh의 통화정책 톤</strong>으로 온전히
+        넘어갔다 — BofA 서베이는 펀드매니저 69%가 <strong>중립 톤</strong>을
+        예상한다.
+      </p>
+
+      <h3>오늘 밤 관전 포인트 (분기 조건)</h3>
+      <ul style="margin-left: 18px; line-height: 1.9">
+        <li>
+          <strong>분기① 정규장(KST 22:30) NVDA 갭업 유지 여부.</strong> 프리마켓
+          +6.78%가 정규장에서 <strong>유지·확대</strong>되면 "가이던스
+          서프라이즈發 랠리 지속" 확정 → 반도체 밸류 상단 재개방. 반대로 개장 후
+          갭 상당분을 반납하면 여전히 재료 선반영 매수세의 지연된 소진.
+          <strong>관전 임계: NVDA 종가가 +4% 이상 유지되는가.</strong>
+        </li>
+        <li>
+          <strong>분기② 내일(8/28 오전 ET) Warsh 첫 잭슨홀 기조 톤.</strong>
+          중립(69% 컨센) → 리스크온 연장. 매파적("끈적한 물가 → 인하 신중") →
+          오늘 리스크온이 하루 만에 되돌려질 수 있음.
+          <strong>오늘 밤은 그 기조 前 마지막 포지셔닝 창</strong> — 프리마켓
+          강세만 보고 대량 추격 진입은 잭슨홀 확인 후로 유보.
+        </li>
+        <li>
+          <strong>분기③ BOK 3.00% 인상의 원화·한국 금융주 파급.</strong> 2회
+          연속 인상은 원화에 우호(1,381 안정 유지)이나 성장주·건설·가계부채 민감
+          섹터엔 역풍. 내일 한국장 개별 변수로 잔존.
+        </li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>B-1. 글로벌 이슈 Top 5 (각 2차 효과 1줄)</h2>
+
+      <div class="issue-card critical">
+        <div class="issue-title">
+          1. NVDA 프리마켓 +6.78%($223.88), 반도체 전반 확산
+          <span class="tag tag-red">상</span>
+        </div>
+        <p>
+          애프터장(+4.7%)보다 가속. MU +4.49%·TSM +1.78%·AVGO +1.86%·AMD +1.66%.
+        </p>
+        <div class="issue-secondary">
+          <strong>2차 효과:</strong> HV3(AI CapEx 실수요) 실물 재확인 → 오늘 낮
+          한국 삼전닉스 강세 촉발, 내일 아시아 반도체 심리 우호 연장.
+        </div>
+      </div>
+
+      <div class="issue-card critical">
+        <div class="issue-title">
+          2. BOK 기준금리 3.00% 인상 (2회 연속·긴축 본격화)
+          <span class="tag tag-red">상</span>
+        </div>
+        <p>
+          7/16 2.75% 인상 후 첫 회의에서 추가 25bp. "물가 튀기 전에
+          잡겠다"(파이낸셜뉴스).
+        </p>
+        <div class="issue-secondary">
+          <strong>2차 효과:</strong> 원화 방어(1,381 안정)이나 한국
+          건설·가계부채·성장주 할인율 부담 → KOSPI 개장 갭(+2.76%)의 절반 반납
+          요인.
+        </div>
+      </div>
+
+      <div class="issue-card critical">
+        <div class="issue-title">
+          3. 잭슨홀 개막(8/27), Warsh 첫 기조 8/28 오전
+          <span class="tag tag-red">상</span>
+        </div>
+        <p>
+          주제 "Financial Innovation". 신임 의장의 첫 잭슨홀 기조 = 통화정책
+          방향 최대 재료.
+        </p>
+        <div class="issue-secondary">
+          <strong>2차 효과:</strong> BofA 69% "중립" 컨센 → 매파 이탈 시
+          서프라이즈 폭 큼(포지셔닝 쏠림 = 반대 방향 충격 증폭).
+        </div>
+      </div>
+
+      <div class="issue-card normal">
+        <div class="issue-title">
+          4. 7월 PCE 소화 완료 (헤드라인 3.7%·코어 3.3%)
+          <span class="tag tag-blue">중</span>
+        </div>
+        <p>8/26 21:30 발표, 정규장·애프터장이 이미 소화(10Y 4.66% 안착).</p>
+        <div class="issue-secondary">
+          <strong>2차 효과:</strong> 헤드라인 끈적(과열)은 잭슨홀 매파 논거
+          잔존, 코어 부합(3.3%)은 급반전 리스크 완화 → 상관 #5(S&amp;P500↔10Y)의
+          방향타는 이제 PCE가 아닌 Warsh로 이동.
+        </div>
+      </div>
+
+      <div class="issue-card normal">
+        <div class="issue-title">
+          5. 트럼프 전력망 국가비상사태 선포 (8/26, IEEPA)
+          <span class="tag tag-blue">중</span>
+        </div>
+        <p>
+          중국산 대형 전력망(bulk-power) 전력장비(변압기·SW) 미국 그리드 배제.
+        </p>
+        <div class="issue-secondary">
+          <strong>2차 효과:</strong> 미국 국내 전력장비 제조 + 한국 변압기
+          수출업체(효성重 등, 중국 배제의 대안 공급처) 반사 수혜 테마 → 오늘
+          한국 전력·중전기주 강세 일부 설명.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>B-2. 아시아 시장 마감 (8/27 종가)</h2>
+      <table>
+        <tr>
+          <th>지수</th>
+          <th>종가</th>
+          <th>전일대비</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><strong>KOSPI</strong></td>
+          <td>6,912.37</td>
+          <td class="up">+1.53%</td>
+          <td>
+            개장 +2.76%(6,996·7천피 근접)→BOK 인상에 축소·삼성 +1.72%·SK하이닉스
+            +2.49%·외국인 순매수 복귀(+1,456억)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>KOSDAQ</strong></td>
+          <td>837.65</td>
+          <td class="up">+1.30%</td>
+          <td>반도체 훈풍 동조·이차전지 소재 강세</td>
+        </tr>
+        <tr>
+          <td>N225</td>
+          <td>66,131.98</td>
+          <td class="down">−0.20%</td>
+          <td>엔약세(USD/JPY 159.5) 지속·차익실현 소폭</td>
+        </tr>
+        <tr>
+          <td>SSE(상해)</td>
+          <td>3,956.57</td>
+          <td class="up">+1.13%</td>
+          <td>4,000선 재도전·정책 기대</td>
+        </tr>
+        <tr>
+          <td>HSI(항셍)</td>
+          <td>25,565.74</td>
+          <td class="down">−0.34%</td>
+          <td>기술주 차익실현 소폭 조정</td>
+        </tr>
+        <tr>
+          <td>SENSEX</td>
+          <td>76,933.59</td>
+          <td class="down">−0.70%</td>
+          <td>약세·외국인 매도</td>
+        </tr>
+        <tr>
+          <td>TWII(대만)</td>
+          <td>45,975.22</td>
+          <td class="up">+0.31%</td>
+          <td>TSMC 프리마켓 +1.78% 반영 강보합</td>
+        </tr>
+      </table>
+      <p>
+        <strong>해석</strong>: 아시아 반도체 라인(한국·대만)은 NVDA 훈풍을 낮에
+        선반영해 강세, 중화권은 혼조, 일본·인도는 소폭 약세로
+        <strong>명확히 반도체 밸류체인 중심의 차별화 장세</strong>였다. KOSPI의
+        핵심은 <strong>개장 갭(+2.76%)의 절반 반납</strong>이다 — 밤사이 NVDA
+        재료로 7,000선을 노렸으나
+        <strong>BOK의 25bp 인상(3.00%, 긴축 본격화)</strong>이 오후 상승분을
+        눌렀다. 그럼에도 <strong>외국인이 +1,456억 순매수로 복귀</strong>(주간
+        6조 순매도 후 반전)하고 기관도 +1,814억 순매수해
+        <strong>수급 개선 신호</strong>가 확인됐다(개인만 −1.91조 순매도로
+        차익실현). 원화는 1,381로 안정(BOK 인상 우호). ⚠️ 전일대비는 8/26 확정
+        종가 대비 메인 재계산 — yfinance prev-close 일치 검증 완료(KOSPI
+        6,808.21→6,912.37).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-3. 투자 방향 신호판 (6종)</h2>
+      <table>
+        <tr>
+          <th>신호</th>
+          <th>값</th>
+          <th>상태</th>
+          <th>방향</th>
+        </tr>
+        <tr>
+          <td>🎯 레짐</td>
+          <td>중립 7일째(횡보장)</td>
+          <td class="warning">🟡</td>
+          <td>
+            MA20 −0.1%·추세 부재. NVDA 리스크온이 레짐 전환 트리거 될지 잭슨홀
+            후 판별
+          </td>
+        </tr>
+        <tr>
+          <td>😱 VIX</td>
+          <td class="up">14.96 (−1.64%)</td>
+          <td class="up">🟢</td>
+          <td>15 하회 안정 — 이벤트(더블헤더) 통과로 변동성 프리미엄 해소</td>
+        </tr>
+        <tr>
+          <td>📈 US 10Y</td>
+          <td>4.66% (+2bp)</td>
+          <td class="warning">🟡</td>
+          <td>중립. PCE 소화 후 안착. 잭슨홀 매파 시 상방 재점화 리스크</td>
+        </tr>
+        <tr>
+          <td>😨 CNN F&amp;G</td>
+          <td>55.2 (greed 초입)</td>
+          <td class="warning">🟡</td>
+          <td>58.8→55.2 소폭 냉각. 과열 아님 — 추가 상승 여지</td>
+        </tr>
+        <tr>
+          <td>🪙 크립토 F&amp;G</td>
+          <td>71 (greed)</td>
+          <td class="warning">🟠</td>
+          <td>65→71 가열. BTC $80K 미돌파에도 심리 과열 = 괴리 관찰</td>
+        </tr>
+        <tr>
+          <td>🇺🇸 미국 선물</td>
+          <td class="up">NQ +1.04%/ES +0.44%</td>
+          <td class="up">🟢</td>
+          <td>빅테크 편중 리스크온(NVDA發). Dow 보합=로테이션</td>
+        </tr>
+      </table>
+      <p>
+        <strong>종합 신호</strong>: <strong>🟢 3 / 🟡 3 / 🟠 1</strong> — VIX
+        안정 + 프리마켓 강세 + F&amp;G 미과열로
+        <strong>리스크온 우위</strong>이나, 레짐은 여전히 중립(횡보)이고 크립토
+        심리만 과열권.
+        <strong>방향은 오늘 밤 정규장 NVDA 지속성 + 내일 잭슨홀이 확정</strong>
+        — 현 신호판은 "우호적이나 미확정" 상태.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-4. 경제 서프라이즈 인덱스</h2>
+      <p style="color: var(--sub); font-size: 13px">
+        방법론: 최근 발표 지표의 컨센 대비 상회(+)/하회(−) 누적. 8/21 완전재산출
+        베이스 + 8/26~27 신규 반영.
+      </p>
+      <table>
+        <tr>
+          <th>지표</th>
+          <th>발표</th>
+          <th>실측</th>
+          <th>컨센</th>
+          <th>서프라이즈</th>
+          <th>시장 반응</th>
+        </tr>
+        <tr>
+          <td>7월 PCE 헤드라인</td>
+          <td>8/26</td>
+          <td>+3.7%y</td>
+          <td>~3.6%</td>
+          <td class="down">🔴 상방(과열)</td>
+          <td>10Y +2bp·소폭 매파적</td>
+        </tr>
+        <tr>
+          <td>7월 PCE 코어</td>
+          <td>8/26</td>
+          <td>+3.3%y</td>
+          <td>3.3%</td>
+          <td class="neutral">⚪ 부합</td>
+          <td>급반전 회피</td>
+        </tr>
+        <tr>
+          <td>NVDA Q2(마이크로)</td>
+          <td>8/26 애프터장</td>
+          <td>전 라인 상회</td>
+          <td>—</td>
+          <td class="up">🟢 대폭 상회</td>
+          <td>프리마켓 +6.78%</td>
+        </tr>
+        <tr>
+          <td>BOK 기준금리</td>
+          <td>8/27</td>
+          <td>3.00%(+25bp)</td>
+          <td>인상/동결 분열</td>
+          <td class="warning">🟡 매파적(인상)</td>
+          <td>KOSPI 상승폭 축소</td>
+        </tr>
+      </table>
+      <p>
+        <strong>누적 방향</strong>:
+        <strong>인플레 축은 헤드라인 끈적(과열)·코어 부합</strong>으로 혼조 —
+        급반전은 없으나 잭슨홀 매파 논거를 완전히 지우진 못했다.
+        <strong>성장·기업이익 축은 NVDA 압승으로 강한 상방</strong>.
+        <strong>정책 축은 BOK가 매파적</strong>으로, 미국(잭슨홀 대기)과 방향이
+        엇갈린다. 종합하면
+        <strong>"AI 이익 서프라이즈가 인플레 끈적함을 상쇄하는" 국면</strong> —
+        관문③(Warsh)이 정책 축의 최종 판별자다.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-5. 자산 간 상관관계 변화 모니터</h2>
+      <p style="color: var(--sub); font-size: 13px">
+        ★ 미국 정규장 미개장(프리마켓 단계)으로 8/21 완전재산출 6쌍 값 승계.
+        오늘 신규가(NVDA 프리 +6.78%·KOSPI +1.53%·금 신고가권·크립토 F&amp;G
+        71·10Y 4.66%)는 방향 정성만 비고 반영. 다음 완전재산출은 정규장 정기
+        회차. <strong>🔴 1 / 🟡 4 / 🟢 1</strong>
+      </p>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>페어</th>
+          <th>r30</th>
+          <th>Z30</th>
+          <th>r90</th>
+          <th>Z90</th>
+          <th>Alert</th>
+          <th>비고 (오늘 프리마켓 정성)</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>VIX↔S&amp;P500</td>
+          <td>−0.713</td>
+          <td>+0.88σ 🟢</td>
+          <td>−0.764</td>
+          <td>+2.24σ 🔴</td>
+          <td class="down">🔴(90D)</td>
+          <td>
+            VIX 14.96(−1.64%)+NQ +1.04%=정상 음의 동조·90D 이상권 구조 잔존
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>NASDAQ↔BTC</td>
+          <td>+0.237</td>
+          <td>−0.96σ 🟢</td>
+          <td>+0.376</td>
+          <td>−1.01σ 🟡</td>
+          <td class="warning">🟡(90D)</td>
+          <td>HV6 유효·NQ +1.04% 강세 vs BTC $79.6K $80K 미돌파=탈동조 지속</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>WTI↔BEI</td>
+          <td>+0.762</td>
+          <td>+1.63σ 🟡</td>
+          <td>+0.645</td>
+          <td>+1.53σ 🟡</td>
+          <td class="warning">🟡</td>
+          <td>
+            WTI $82.34($80 테스트서 반등)=상방압력 재개 소지·PCE 소화 후 완화
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>USD/KRW↔KOSPI</td>
+          <td>−0.446</td>
+          <td>−0.88σ 🟢</td>
+          <td>−0.338</td>
+          <td>−0.45σ 🟢</td>
+          <td class="up">🟢</td>
+          <td>KOSPI +1.53% 강세+원화 1,381 안정=역상관 정상권 유지</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>S&amp;P500↔10Y</td>
+          <td>−0.317</td>
+          <td>−1.06σ 🟡</td>
+          <td>−0.479</td>
+          <td>−1.65σ 🟡</td>
+          <td class="warning">🟡</td>
+          <td>
+            10Y 4.66%에도 NQ +1.04%=NVDA가 금리민감도 압도(일시적)·잭슨홀이
+            방향타
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Gold↔DXY</td>
+          <td>−0.445</td>
+          <td>−0.44σ 🟢</td>
+          <td>−0.554</td>
+          <td>−1.0σ 🟡</td>
+          <td class="warning">🟡(90D)</td>
+          <td>금 $4,642 신고가권+DXY 99.2 보합·90D 구조 불변(HV5)</td>
+        </tr>
+      </table>
+      <p>
+        <strong>교차 시사점</strong>: 오늘의 관전 페어는
+        <strong>S&amp;P500↔10Y(#5)</strong>로 이동했다 — 10Y 4.66%로 금리 역풍이
+        상존함에도 NVDA發 NQ +1.04% 강세가 이를
+        <strong>일시적으로 압도</strong>하고 있다. 이 압도가 지속 가능한지는
+        <strong>잭슨홀 Warsh 톤</strong>이 판별한다(매파 시 10Y 상방→#5 재긴장).
+        <strong>WTI↔BEI(#3)</strong>는 WTI가 $80 테스트에서 $82로 반등해 상방
+        압력이 소폭 재개될 소지. <strong>VIX↔S&amp;P500 90D 🔴</strong>는 구조적
+        잔존(신규 악화 아님).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-6. 신규 투자 아이디어 (관찰 1건 · 매수 0건)</h2>
+      <p>
+        <strong
+          >관찰 — 한국 반도체(삼성전자·SK하이닉스) 외국인 순매수 복귀</strong
+        >: 오늘 외국인이 +1,456억 순매수로
+        <strong>주간 6조 순매도에서 반전</strong>하고, NVDA 압승으로 AI 메모리
+        수요축(HV3)이 실물 재확인됐다. 그러나
+        <strong
+          >① 오늘 밤 정규장 NVDA 갭업 지속 여부 미확인 ② 내일 잭슨홀 매파 리스크
+          ③ BOK 인상發 성장주 할인율 부담</strong
+        >으로 <strong>추격 진입 금지·관찰 지속</strong>. 정규장 NVDA +4% 유지 +
+        잭슨홀 중립 확인 시 재검토.
+      </p>
+      <p class="highlight">
+        → <code>/종목분석 삼성전자</code>,
+        <code>/종목분석 SK하이닉스</code> 명령으로 심층 분석 가능
+      </p>
+      <p style="margin-top: 10px">
+        <strong>매수 아이디어 없음</strong> — 프리마켓 강세는 이미 상당 부분
+        반영됐고(NVDA +6.78%), 오늘 밤 정규장 지속성과 내일 잭슨홀 前 신규 대량
+        베팅은 비대칭 리스크.
+        <strong
+          >금·크립토는 신고가권/greed(F&amp;G 71) 추격 금지(HV5·HV6)</strong
+        >. 전력망 테마(트럼프 IEEPA)는 재료 신선하나
+        <strong>정책 세부(대상 장비·시행규칙) 미확정</strong>으로 관찰만.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-7. 거물 투자자 동향 심화</h2>
+      <div class="warning-13f">
+        <strong>13F 시차 경고</strong>: Q2 13F(포지션일 6/30·공시마감 8/14)는
+        <strong>58일+ 지연 데이터</strong>. 6/30 이후 8월 롤러코스터(코스피
+        크래시·V반등·이란·크립토 랠리·삼성 급락·V회복·NVDA 실적)를 미반영 — 방향
+        참고용, 추종 금지. 오늘 NVDA 실적 후 거물 포지션 변화는 다음 분기(Q3)
+        13F에나 반영.
+      </div>
+      <p>
+        <strong>Buffett GOOGL/GOOG 합산 ~12.6%(Q2 13F)</strong> —
+        Berkshire+Druckenmiller+Tepper <strong>3인 GOOGL 동시매수</strong> vs
+        Ackman GOOGL 전량청산 다이버전스 유지.
+        <strong
+          >오늘 NVDA DC $89B(+117%y)·Q3 가이던스 $108B 압승으로 이 "AI 인프라
+          실수요" 베팅의 실물 방증이 강화</strong
+        >됐다(HV3). 단 GOOGL은 오늘 프리마켓 소폭 약세(−0.2%)로 개별 종목 온도차
+        존재.
+      </p>
+      <p style="margin-top: 10px">
+        <strong>인사이더 클러스터 매수(8/26·8/25 공시)</strong>: ACDC(Profrac,
+        오일서비스) $9.8M·BSX(Boston Scientific, 의료기기) $9.5M·<strong
+          >TTMI(TTM Technologies, PCB) $1.6M</strong
+        >(AI/데이터센터·방산 서플라이 연관)·AMRZ(Amrize, 시멘트)
+        $1.4M·PRE(Prenetics) $1.0M·NOMD(Nomad Foods) $954K.
+        <strong>성격: 오일서비스·의료기기·방어 실물 중심 — 빅테크 부재</strong>.
+        시장 축포(NVDA)와 별개로 내부자는 저변동 실물·서플라이체인에 베팅. 단
+        <strong>TTMI(PCB)는 AI 데이터센터 서플라이 연관</strong> = HV3 방증 병행
+        신호.
+      </p>
+      <p style="margin-top: 10px">
+        ⚠️ <strong>역방향 추적</strong>: Oracle CDS·AI 순환금융 기구 신용
+        프리미엄 — NVDA 가이던스가 강해도 "자금조달 지속가능성" 질문은 별개
+        트랙(강등 2트리거 미충족·유효).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-8. 4종 모델 포트폴리오 방향 (아침 대비 변화)</h2>
+      <table>
+        <tr>
+          <th>포트폴리오</th>
+          <th>아침 대비</th>
+          <th>방향</th>
+          <th>근거</th>
+        </tr>
+        <tr>
+          <td>🛡️ 안전형</td>
+          <td>변화 없음</td>
+          <td class="neutral">유지</td>
+          <td>
+            SGOV/단기채 대기 자금 + 금 보유(추격 금지·HV5). 10Y 4.66%·BOK 인상은
+            단기채 우호. 잭슨홀 前 방어축 유지(손대지 않음)
+          </td>
+        </tr>
+        <tr>
+          <td>⚖️ 중립형</td>
+          <td>미세 우호</td>
+          <td class="neutral">유지</td>
+          <td>
+            NVDA 압승으로 성장 비중 하방 리스크 완화. 그러나 잭슨홀 확인 前 신규
+            편입 보류·현 배분 유지
+          </td>
+        </tr>
+        <tr>
+          <td>🚀 공격형</td>
+          <td>우호(관망→보유 자신감)</td>
+          <td class="neutral">유지</td>
+          <td>
+            HV3 실물 재확인으로 반도체·빅테크 코어
+            <strong>보유 자신감 상향</strong>. 단 프리마켓 +6.78% 추격 신규
+            진입은 정규장 갭업 지속+잭슨홀 확인 후
+          </td>
+        </tr>
+        <tr>
+          <td>💰 배당형</td>
+          <td>미세 부담</td>
+          <td class="neutral">유지</td>
+          <td>
+            BOK 인상+10Y 4.66%로 금리 소폭 상승 국면 = 배당/리츠 상대 역풍 미세.
+            가치·방어는 견조 유지
+          </td>
+        </tr>
+      </table>
+      <p>
+        <strong>공통</strong>:
+        <strong>관문② 상방 해소로 "이벤트 前 관망" 근거는 소멸</strong>, 보유
+        자신감은 상향됐다. 그러나
+        <strong
+          >신규 대량 베팅은 오늘 밤 정규장 NVDA 지속성 + 내일 잭슨홀 Warsh 톤
+          확인 후</strong
+        >가 핵심 — 4종 모두 <strong>현 배분 유지</strong>가 정답이다. 아침 대비
+        방향성은 공격형(관망→보유 자신감)·중립형(미세 우호)이 개선, 배당형은 BOK
+        인상發 금리 부담으로 미세 후퇴.
+        <strong>한국 직접 익스포저 보유 시에만</strong> 외국인 순매수 지속 +
+        NVDA 정규장 갭업 확인 후 내일 판단.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>B-9. 글로벌 매크로 핵심 시사점</h2>
+      <p style="color: var(--sub); font-size: 13px">
+        하우스 뷰 v11 상태 (이브닝 = 점검만, 개정은 /주간리포트)
+      </p>
+      <ul style="margin-left: 18px; line-height: 1.9">
+        <li>
+          <strong>HV1</strong>(약한 스태그플레이션 하이브리드 = 약화·유지): 7월
+          PCE 헤드라인 3.7%(과열)로 인플레 '끈적' 축 소폭 지지, 코어 3.3% 부합.
+          WTI $82 반등으로 오일發 완화 경로는 후퇴. 반증선 10Y&lt;4.0%
+          원거리(4.66%). <strong>약화 유지</strong>(재점화 감시 지속).
+        </li>
+        <li>
+          <strong>HV2</strong>(금리發 디레이팅 = 유효): S&amp;P500↔10Y 90D
+          −1.65σ 지지. 오늘은 NVDA發 NQ 강세가 10Y 4.66% 역풍을 일시 압도하나,
+          <strong>잭슨홀 매파 시 10Y 상방→성장주 재압박 경로 유효</strong>. 명제
+          유효.
+        </li>
+        <li>
+          <strong>HV3</strong>(AI CapEx 실수요 = 유효·★강화): NVDA DC
+          $89B(+117%y)·Q3 가이던스 $108B·프리마켓 반도체 전반
+          확산(MU/TSM/AVGO/AMD)·TTMI 인사이더 =
+          <strong>수요축 실물 대폭 재확인</strong>. 순환금융 신용 강등 2트리거
+          미충족. <strong>유효(근거 대폭 강화)</strong>.
+        </li>
+        <li>
+          <strong>HV5</strong>(금 구조적 강세 = 유효): 금 $4,642
+          신고가권·Gold↔DXY 90D −1.0σ. 유효 유지. ⚠️ 추격 금지.
+        </li>
+        <li>
+          <strong>HV6</strong>(NASDAQ↔BTC 탈동조 = 유효): NQ +1.04% 강세 vs BTC
+          $79.6K·$80K 미돌파·ETH 보합. 크립토 F&amp;G 71 가열에도 가격은 미돌파
+          = 심리-가격 괴리. 탈동조 유효.
+        </li>
+      </ul>
+      <p style="margin-top: 12px">
+        <strong>30일 전망</strong>:
+        <strong>관문②(NVDA)가 마이크로에서 압승 확정</strong>되며 8월 최대
+        분수령의 절반이 상방으로 해소됐다. 남은 절반은
+        <strong>관문③(8/28 Warsh 첫 잭슨홀)</strong> — 이것이 정책 경로를
+        마무리한다.
+        <strong>비둘기파적 시나리오(Warsh 중립·69% 컨센 실현)</strong>면 NVDA發
+        리스크온이 연장되고 레짐이 중립(횡보)→리스크온으로 전환될 수 있다.
+        <strong>매파적 시나리오(Warsh "끈적한 물가→인하 신중")</strong>면 오늘의
+        리스크온이 하루 만에 되돌려지고 10Y 상방·성장주 압박·금/크립토 되돌림
+        위험. 여기에 <strong>BOK 매파(3.00%)가 한국 자산에 독립 변수</strong>로
+        더해진다. 핵심은
+        <strong
+          >오늘 밤 정규장에서 NVDA가 프리마켓 +6.78%를 얼마나 지키느냐</strong
+        >(가이던스 서프라이즈發 랠리의 지속성 검증) — 매출 상회를 넘어
+        <strong>가이던스($108B)가 살아있어야 랠리가 이어진다</strong>. 그리고 그
+        위험선호를 내일 Warsh가 인정하느냐 꺾느냐가 8월의 마지막 답이다.
+      </p>
+    </div>
+
+    <div class="debate-card">
+      <div class="card-title">
+        💬 핵심 논쟁 — NVDA 프리마켓 가속, 리더십 부활인가 잭슨홀 前 마지막
+        과열인가
+      </div>
+      <p>
+        <strong
+          >NVDA 프리마켓 +6.78% 가속 — 애프터장(+4.7%)을 넘어선 이 재점화는 AI
+          리더십의 부활인가, 잭슨홀 前 마지막 과열인가?</strong
+        >
+      </p>
+      <div class="bull">
+        <strong>강세(리더십 부활):</strong> 애프터장 +4.7%→프리마켓 +6.78%로
+        <strong>반응이 시간이 갈수록 강해지고</strong> 반도체 전반(MU +4.49%·TSM
+        +1.78%·AVGO +1.86%)으로 <strong>확산</strong>됐다 = 단발 종목 이벤트가
+        아닌 섹터 리레이팅. Q3 가이던스 $108B(컨센 상회)·Huang FY28 +70% = HV3
+        완전 재확인. VIX 14.96·F&amp;G 55(미과열)은 랠리 여력 잔존을 시사. 금리
+        역풍(10Y 4.66%)을 NQ +1.04%가 압도 중.
+      </div>
+      <div class="bear">
+        <strong>약세(마지막 과열):</strong> 프리마켓은
+        <strong>얇은 유동성</strong>에서 부풀려진 호가 — 정규장 개장 시 갭 반납
+        가능. 실적은 이미 나왔고 남은 건
+        <strong
+          >잭슨홀 매파 리스크(헤드라인 PCE 3.7% 과열·BofA 컨센 쏠림 69%
+          중립)</strong
+        >뿐이라 리스크는 하방 비대칭. 크립토 F&amp;G 71 가열·BTC $80K 미돌파의
+        심리-가격 괴리는 리스크온의 질적 취약성. GOOGL 프리 −0.2%·Dow 선물 보합
+        = 랠리 폭이 반도체로 좁음(확산성 결여).
+      </div>
+      <div class="verdict">
+        <strong>briefing-lead 판단:</strong> 분기는
+        <strong>오늘 정규장(KST 22:30) NVDA 종가가 +4% 이상 유지되는가</strong>
+        + <strong>내일 Warsh 톤(중립 vs 매파)</strong>. 둘 다 우호면 리더십 부활
+        확정, 하나라도 꺾이면 8월 마지막 과열로 판명.
+      </div>
+    </div>
+
+    <div class="contrarian-card">
+      <div class="card-title">
+        🔥 과소평가 포인트 — 오늘 나온 두 개의 매파 신호
+      </div>
+      <div class="assumption">
+        <strong>시장의 일반 가정:</strong> NVDA 프리마켓 +6.78% 축포가 오늘의
+        유일한 재료이며, 리스크온 흐름이 순탄하게 이어질 것이다.
+      </div>
+      <div class="signal">
+        <strong>반대 시그널:</strong> 시장의 시선이 NVDA 프리마켓 +6.78% 축포에
+        쏠린 사이, 오늘 나온 두 개의 "매파 신호"가 나란히 과소평가되고 있다.
+        첫째, <strong>BOK는 오늘 실제로 3.00%까지 인상(2회 연속)</strong>하며
+        "물가 튀기 전에 잡겠다"는 긴축 사이클 본격화를 선언했다 — KOSPI 개장
+        갭(+2.76%)의 절반을 반납시킨 실질 재료인데, NVDA 훈풍에 묻혀 "한국
+        성장주·건설·가계부채 민감 섹터의 할인율 부담"은 거의 언급되지 않는다.
+        둘째, <strong>BofA 서베이 69%가 잭슨홀 Warsh 중립을 예상</strong>한다 —
+        이 압도적 쏠림 자체가 위험이다. 7월 PCE 헤드라인은
+        <strong>3.7%로 예상보다 뜨거웠고</strong>, 7/29 FOMC 반대 3인은
+        <strong>전원 인상</strong>을 주장했으며, Warsh는 선제적 정책
+        안내(가이던스) 자체를 축소하는 스타일이라
+        <strong>"매파도 비둘기파도 아닌 원칙론"이 시장엔 실망</strong>으로 읽힐
+        수 있다. 컨센이 중립에 69% 쏠린 상태에서 Warsh가 조금이라도 인플레 경계
+        톤을 내면, NVDA가 촉발한 오늘의 리스크온은 내일 정규장에서 급속히
+        되돌려질 수 있다.
+        <strong
+          >프리마켓 +6.78%만 보고 오늘 밤 추격했다가 내일 아침 잭슨홀 매파 톤 +
+          BOK 긴축 이중 역풍에 노출되는 구도</strong
+        >를 경계해야 한다 — 오늘의 진짜 뉴스는 NVDA가 아니라, 정책 축이
+        미국(대기)·한국(긴축)으로 갈라진 것이다.
+      </div>
+      <div class="probability"><strong>확률:</strong> 중간</div>
+    </div>
+
+    <div class="footer">
+      <h3>📌 다른 브리핑도 확인해보세요</h3>
+      <table>
+        <tr>
+          <td><code>/모닝브리핑</code></td>
+          <td>→ 어젯밤 미국 시장 + 거물 + 4종 방향</td>
+        </tr>
+        <tr>
+          <td><code>/이브닝브리핑</code></td>
+          <td>→ 국제 이슈 + 서프라이즈 + 상관관계 + 거물 심화</td>
+        </tr>
+        <tr>
+          <td><code>/주간리포트</code></td>
+          <td>→ 한 주 심층 + 성과 추적(C-9)</td>
+        </tr>
+        <tr>
+          <td><code>/리밸런싱</code></td>
+          <td>→ 4종 모델 포트폴리오 재조정</td>
+        </tr>
+        <tr>
+          <td><code>/크립토브리핑</code></td>
+          <td>→ BTC/ETH/SOL + 온체인 + 규제</td>
+        </tr>
+        <tr>
+          <td><code>/모델포트폴리오</code></td>
+          <td>→ 4종 현재 구성 + 구체 종목·ETF</td>
+        </tr>
+        <tr>
+          <td><code>/글로벌인텔리전스</code></td>
+          <td>→ G-1~G-8 4축 교차 + 시나리오 플래닝</td>
+        </tr>
+        <tr>
+          <td><code>/풀브리핑</code></td>
+          <td>→ A+B+C+E 4편 동시</td>
+        </tr>
+        <tr>
+          <td><code>/성과리뷰</code></td>
+          <td>→ 1주/2주/1개월/3개월 적중률</td>
+        </tr>
+        <tr>
+          <td><code>/내포트폴리오</code></td>
+          <td>→ 사용자 보유 자산 (개인 데이터 격리)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="disclaimer">
+      <h4>⚠️ 주의사항</h4>
+      <ul style="margin-left: 16px">
+        <li>
+          본 리포트는 <strong>관찰·해석·시나리오 목적</strong>이며, 매수·매도
+          추천이 아닙니다.
+        </li>
+        <li>모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.</li>
+        <li>
+          미국 시장 데이터는 프리마켓(ET 07:04, 정규장 시작 2.5시간 전) 기준으로
+          <strong>실측 종가가 아니며</strong>, 정규장 개장 시 재조정될 수
+          있습니다. 반도체 프리마켓 호가는 얇은 유동성에서 형성돼 정규장 가격과
+          괴리될 수 있습니다.
+        </li>
+        <li>
+          거물 투자자 13F 데이터는 2026년 2분기(포지션일 6/30·공시마감 8/14)
+          기준 <strong>최대 58일+ 시차</strong>가 있는 지연 데이터입니다 — 추종
+          금지.
+        </li>
+        <li>과거 수익률·거물 전략이 미래 수익을 보장하지 않습니다.</li>
+        <li>본 브리핑은 공개 콘텐츠이며, 개인 맞춤 조언이 아닙니다.</li>
+        <li>세금·수수료·환율 변동 등 실제 투자 비용을 반드시 고려하세요.</li>
+      </ul>
+    </div>
+
+    <div class="footer" style="margin-top: 20px">
+      <h3>명령어 가이드</h3>
+      <div class="cmd-grid">
+        <div><code>/종목분석</code> 종목 심층 분석</div>
+        <div><code>/빠른분석</code> 핵심 지표+ATR</div>
+        <div><code>/비교분석</code> 두 종목 비교</div>
+        <div><code>/모닝브리핑</code> 오전 시장</div>
+        <div><code>/이브닝브리핑</code> 저녁 시장</div>
+        <div><code>/주간리포트</code> 주간 종합</div>
+        <div><code>/크립토브리핑</code> 크립토</div>
+        <div><code>/글로벌인텔리전스</code> 매크로 4축</div>
+        <div><code>/모델포트폴리오</code> 4종 모델</div>
+        <div><code>/내포트폴리오</code> 내 자산</div>
+        <div><code>/리밸런싱</code> 포트 조정</div>
+        <div><code>/성과리뷰</code> 적중률</div>
+        <div><code>/풀브리핑</code> A+B+C+E</div>
+        <div><code>/KB업데이트</code> KB 갱신</div>
+        <div><code>/KB점검</code> KB 건강 점검</div>
+        <div><code>/손절계산</code> ATR 계산</div>
+        <div><code>/리포트</code> HTML 재생성</div>
+        <div><code>/애널리스트PDF</code> IB PDF 드롭존</div>
+        <div><code>/애널리스트스크랩</code> 웹 자동 수집</div>
+        <div><code>/리서치업데이트</code> Research KB 갱신</div>
+        <div><code>/재분석실행</code> 자동 재분석</div>
+      </div>
+      <p style="margin-top: 14px; font-size: 11px; color: var(--sub)">
+        생성: briefing-report-generator | 모드: evening | 데이터 기준:
+        2026-08-27 KST 20:10 (한국 정규장 종가 + 미국 프리마켓)
+      </p>
+    </div>
+
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
