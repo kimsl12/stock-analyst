@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-22
-valid_until: 2026-09-21
+updated: 2026-08-29
+valid_until: 2026-09-28
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -191,10 +191,18 @@ sources:
     AlloyIndex,
     GII Research,
     EIN Presswire,
+    Defence Connect,
+    Metal Tech News,
+    Baltimore Sun,
+    Mining Frontier,
+    KED Global,
+    Solar Power World,
+    Magnetics Magazine,
+    Benchmark Minerals,
   ]
 confidence: high
-last_synced_from_db: 2026-08-22
-db_records: 467
+last_synced_from_db: 2026-08-29
+db_records: 479
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -203,6 +211,21 @@ db_records: 467
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.08.29 핵심 변화 요약 (8/22→8/29 윈도우)**:
+>
+> 1. **[중대·신규] 희토류 — USA Rare Earth 美정부 SPV $1.55B 자본화 완료(8/24)·Serra Verde 브라질 Pela Ema 오프테이크 + Dy/Tb/NdPr floor 구조 완성 + Energy Fuels 터븀 상업인증(中외 공급원 진전) + 中 지수 259 박스·11/10 유예종료 D-73** — **USA Rare Earth(USAR)가 8/24 미정부 후원 SPV(US SIIE LLC) 업사이즈 $1.55B 자본화 완료 발표. 구조: DoW(국방부) IBAS $750M(당초 $500M서 증액)+DLA(국방병참국) $300M 구매약정+주요 美은행 $500M=$1.55B. Serra Verde Group 브라질 Pela Ema 광산·정제 장기구매 지원 — Pela Ema는 아시아 외 유일 4대 자석 희토(Nd·Pr·Dy·Tb) 전량 공급가능 상업광산. USAR 주주 8/28 합병 표결.** 최저가격 floor 확정: **Tb $2,050/kg·Dy $575/kg·NdPr $110/kg(연 2% 상향), 시장가 초과분의 70% Serra Verde 수취** — 08.15 KB의 floor 신규설정이 자본화로 구조 완성. **Energy Fuels 화이트메사밀(유타) 터븀옥사이드가 中외 최대 日 자석 제조사 1곳과 전면 상업 자격인증 통과(주간 8/23)로 中외 중희토 다운스트림 진전.** 中 ACREI 가격지수는 259.1(8/18)이 확인된 최근치(8/3 267.4→8/5 264.6→8/12 260.1→8/18 259.1 하락경로), 8/19~8/28 신규 프린트 미확인(→confidence medium). NdPr oxide 中내 SMM $97.4/kg(8/4)로 펜타곤 $110 floor 하회 유지, 중희토 中내-역외 괴리(Dy 中내 $204-210 vs 역외 $575-2,500+/kg) 지속. **2025.10.9 확대 통제(역외 0.1% 룰) 12개월 유예가 2026.11.10 종료(8/29 D-73) — 2025.4 통제(Sm·Gd·Tb·Dy·Lu·Sc·Y 7종 라이선스)는 존속, IEA: 전면 재시행 시 中외 $6.5T 생산 리스크가 최대 forward 리스크** [GlobeNewswire/Defence Connect/Metal Tech News/Baltimore Sun(USAR $1.55B 8/24), Mining Frontier(floor 8/25-26), Rare Earth News/AmericasCoal(Energy Fuels Tb 8/23), Rare Earth Exchanges/SMM(지수), Yahoo Finance/Mining-technology/China Briefing(11/10)]
+>
+> 2. **[신규] 한국 소부장 — 8/27 LG전자 폐가전 냉매압축기 희토 영구자석 회수 시범 MOU(연 4만대→~1.6톤/y) + 폐PC HDD 자석 회수·비축 MOU + 재자원화 추경 예산** — **기후에너지환경부 8/27 수도권자원순환센터서 LG전자·이순환거버넌스와 폐에어컨·냉장고 냉매압축기서 희토 영구자석 분리·회수 시범사업 MOU 체결 — LG전자 연 ~4만대 폐가전서 ~1.6톤/y 회수 기대. 同日 평택 NH리사이텍서 폐컴퓨터 HDD 희토 자석 회수·비축 시범 MOU(한국환경공단·이순환거버넌스·한국금속재활용산업협회).** 예산: 2026 본예산 재자원화 시설지원 10억 신규+추경 원료확보 60억·양산능력검증 20.8억, 연내 원료 100톤 확보 목표(재활용은 1차생산 대비 환경부담 80%+ 감소) [아주경제/그린포스트코리아/KHARN(8/27)]
+>
+> 3. **MP Materials — Wall Street 지지로 랠리 연장(8/21)·Morgan Stanley PT $73 Overweight, Q1 NdPr record 917톤(+63% YoY)** — Morgan Stanley PT $73(71.5서 상향)·OW, DB·JPM PT 소폭↓하나 Buy/OW 유지. Q1 2026 NdPr 생산 record 917톤(+63%)·판매 1,006톤(+117%). Independence 자석 인증 진전·2H 2026 첫 자석매출·10X 시설 2028 commissioning ~7,000톤/y(Independence 3,000톤 합산 총 10,000톤/y)·Gd 항공방산 장기 오프테이크(08.22 KB 연장) [StocksToTrade/Nasdaq/Metalnomist(8/21)]
+>
+> 4. **리튬 — 배터리급 $18.31/kg CIF아시아(8/12)·中 148,000RMB/t, S&P 2026 잉여 109,000톤으로 축소** — Benchmark 배터리급 탄산리튬 $18,310/t(8/12, WoW -5%), 中내 평균 148,000 RMB/t. LC2609 선물 초旬 136,000→146,000 급등·8/12 장중 150,000 돌파(5월 ~199,000서 하락 후 재고재축적 종료·다운스트림 수요 예상하회). **S&P: 2026 LCE 잉여 109,000톤으로 축소(2025 141,000톤)·소비 +13.5% 1.48M mt·공급 +9.9% 1.58M mt, 단 2027 공급과잉 우려로 상단 제약**(가격레벨 confidence medium·방향 유효) [Benchmark Minerals/S&P Global(8/12)]
+>
+> 5. **폴리실리콘 232 관세 — 12/4/2026 발효 확정, 韓 태양광 온쇼어링 메이커엔 수혜(한화큐셀 긍정)** — 232 폴리실리콘·파생 15% 종가세+MIP(폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·셀 $0.22/W·모듈 $0.38/W), 8/6 포고·**12/4/2026 발효**(원료 폴리실리콘 MIP만, 다운스트림 MIP+15% 이중, 원산지 무관). **한화큐셀 Cartersville GA(웨이퍼·셀·패널 수십억 투자) 규칙 환영·풀 온쇼어링 진전 평가.** 세부는 semiconductor.md(08.22 KB 발효일 확정) [pv-magazine/Solar Power World/KED Global(8/6-7)]
+>
+> 6. **초전도/배터리소재 — 신규 델타 제한적(재확인)** — HTS(고온초전도) 테이프 글로벌 수요 2027까지 10배 성장 전망(핵융합 토카막), Faraday Factory·Fujikura Coherent LEAP excimer laser PLD 증설·Microsoft/VEIR 단일 케이블 3MW 파일럿(CFS PIT VIPER는 2024.10 발표건으로 신규서 제외). CATL Na-ion 2세대 175Wh/kg ~$70/kWh(LFP $40-45 대비)·2026 대량양산, CATL 전고체 R&D 1,000+명·2027 소량양산 목표 [Magnetics Magazine/Latitude Media, CnEVPost/PatSnap/Autonocion]
+
 
 > **2026.08.22 핵심 변화 요약 (8/15→8/22 윈도우)**:
 >

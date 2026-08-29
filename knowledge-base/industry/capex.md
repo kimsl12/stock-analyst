@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-22
-valid_until: 2026-09-21
+updated: 2026-08-29
+valid_until: 2026-09-28
 sector: capex
 confidence: high
 tags:
@@ -167,14 +167,41 @@ sources:
     TheValueist,
     EETimes,
     Globe and Mail,
+    Kiplinger,
+    moomoo,
+    techtimes,
+    metirai,
+    Dallas Fed,
+    streetstats,
+    primerates,
+    AlphaSpread,
+    Quartz,
+    Enverus,
+    valueaddvc,
+    Digitimes,
+    Counterpoint Research,
+    딜사이트,
+    글로벌이코노믹,
+    wccftech,
+    ServeTheHome,
   ]
-last_synced_from_db: 2026-08-22
+last_synced_from_db: 2026-08-29
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-08-22 | 신뢰도: high | 유효: ~2026-09-21
+> 갱신일: 2026-08-29 | 신뢰도: high | 유효: ~2026-09-28
 
+---
+
+## ★ 주간 델타 (8/29) — 직전 갱신(8/22) 이후 변화
+
+- **[핵심] NVIDIA Q2 FY27 블로우아웃(8/26) — DC $89B(+117%)·Q3 가이던스 $108B·백로그 $2T+, CapEx 슈퍼사이클 최상단 검증**: NVIDIA Q2 FY2027 확정(8/26): 총매출 **$96.22B(+106% YoY**, 컨센 $92.07B 상회), non-GAAP EPS $2.22, **DC 매출 $89B(+117% YoY, 전사 매출의 92%)**, Q3 FY27 가이던스 **$108B±2%**(컨센 $104.2B 상회). **Vera Rubin 이미 양산·8월초 출하 개시로 Blackwell Ultra→Rubin 무공백(air pocket 우려 해소)**. ACIE(AI클라우드·산업·엔터프라이즈) **$40.3B(+138% YoY, +25% QoQ)** — 수요가 4대 하이퍼스케일러 넘어 확산. **백로그 $2T+**, CFO FY2028 매출성장 **70%**(supply-constrained) 전망. **CFO: 하이퍼스케일러 capex 2026 >$800B·2027 top5 $1.3T 시그널** — CapEx 지출 지속성의 공급측 최상단 검증 [CNBC, 247WallSt, S&P Global, Kiplinger]
+- **[핵심] AI 신용 스트레스 재고조 — Oracle CDS ~215bps·CoreWeave ~855bps(50% 부도확률)로 7/4 회복서사 반전**: Oracle 5년 CDS **~215bps 돌파**(2025말 ~145bps 대비 급등) — KB 기존 8/22 '~125bps'/7/4 '~198bps' 혼선을 **최신 ~215bps로 정정**. **CoreWeave 5년 CDS 7월말 ~855bps 도달(~50% 5년 부도확률 내포), 스트레스 완화 아닌 확대** → **7/4 KB의 'CoreWeave 신용 회복(8.81→4.52pp)' 서사 반전**. CoreWeave $2.6B 시설이 스프레드 **+100~125bps 인상+유지약정(DSCR 1.35x·완전상각)** 수용 강요. **AI연계 CDS 거래량 Q2 ~$650M(+20% QoQ, +600% YoY, DTCC)**. 10년물 8/18 **4.74%+**·30년물 20년래 최고 — 금리 상승이 자금조달비·할인율 동시 압박(자기강화 루프) [moomoo, techtimes, MarketWise, valueaddvc]
+- **AMAT Q3 FY26 역대 실적(8/13) 그러나 중국 리스크 악화(8/26)**: Applied Materials Q3 FY2026(7/26 종료) **역대 매출 $9.115B(+25% YoY, +15% QoQ 사상 최대 QoQ 성장)·non-GAAP EPS $3.50(+41% YoY)**·SemiSystems $7.04B(OM 37.7%). Q4 가이던스 매출 **~$10.25B**·EPS ~$4.02(추가 상향), 2026 YTD +200%. **단 중국 리스크 악화(8/26): 신규 대중 수출규제로 중국 비중 ~45%→28%(FY25)·2년 $710M 타격. ASML도 2026 중국 'significant decline'. 반면 중국 장비 6사 WFE 점유 1.2%→6.5%($748M→$7.6B) 급등, 상하이 Aishengna 이머전 DUV 5대(2026)→20대(2027)** [Investing.com, 247WallSt, Yahoo Finance, Digitimes]
+- **금리 환경(8/27) — 10Y 4.68%·30Y 5.20%, Fed 9월 25bps 인하 기대 vs AI 부채 공급확대 병존**: 미국채 2Y 4.24%·5Y 4.40%·10Y 4.68%·30Y 5.20%. Fed funds 3.50-3.75% 유지, 9/16 또는 10월 FOMC서 **25bps 인하 시장 프라이싱**. Dallas Fed: **AI DC 파이낸싱 수요가 크고 지속적(large & persistent) — 듀레이션 공급이 미국 금리시장에 구조적 상방압력**. 잭슨홀 후 인하 기대와 AI 부채 공급확대가 병존, 고금리·장기물 상승이 neocloud·DC SPV 자금조달비·할인율 동시 악화 [streetstats, Dallas Fed, primerates, tradingeconomics]
+- **Micron HBM4 2배 램프·Broadcom AI 부킹 $30B+ — 추론·에이전트AI로 자본 이동**: Micron HBM4 12-high가 HBM3E 대비 **'2배 빠르게' 램프**(CEO Sanjay Mehrotra), HBM4 매출 **$1B+ 출하**, DRAM 가격 QoQ +60%·GM 역대 84.9%(직전 실적분기 기준). Micron '**AI 메모리 월 악화 — 컴퓨트가 HBM 대역폭을 2년마다 3배 초과**' 경고. **Broadcom AI 반도체 부킹 분기 $30B+ 초과**, XPU 커스텀실리콘 프로그램 Google TPU·Meta MTIA·OpenAI 실리콘·Anthropic 컴퓨트로 확장, 백로그 가시성 2028까지 [Yahoo Finance, 247WallSt, wccftech, ServeTheHome]
+- **Counterpoint Q2 2026 DRAM 재편 — 삼성 39% 선두·마이크론이 SK 1%p 격차 추격**: Counterpoint Q2 2026 DRAM 점유율 **삼성 39% 선두**, 마이크론이 SK하이닉스를 1%p 격차로 추격(2위 경쟁 심화). AI 수요 급증으로 범용 DRAM 가격 급등이 삼성 실적 견인, **2026말까지 DRAM 최대 +400%** 공급자 주도권. HBM 평균가는 전년비 하락(HBM3E 하락+HBM4 출시 지연). 삼성·SK HBM4 유사 가격 책정·2027 2Q 출하 전망(점유율은 소스별 기준차 존재) [Counterpoint, 글로벌이코노믹, 딜사이트]
 ---
 
 ## ★ 주간 델타 (8/22) — 직전 갱신(8/15) 이후 변화
@@ -218,8 +245,8 @@ last_synced_from_db: 2026-08-22
 
 | 발행자        | 5년 CDS                                      | 핵심                                                                                                                                                |
 | ------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Oracle**    | **~40bps(2025초)→~198bps(7/4, 기록적 최고)** | 16% 부도확률 내포(IG 발행자로선 극적 리프라이싱). 비유동부채 Q3말 **$124.7B**(전년 $85B), 순부채 $95B+ vs 9개월 OCF $17.3B. 주가 2026 YTD **-25%+** |
-| **CoreWeave** | **12월 8.81pp→7월 4.52pp 급락(신용 회복)**   | YTD $20B+ 조달($3.1B DDTL 5.0 Ba2/BB+ 초과청약). 신용 개선→DC 자금조달 비용 하락                                                                    |
+| **Oracle**    | **~40bps(2025초)→~145bps(2025말)→~215bps(8/29 최신)** | 'AI 부채 공포 프록시'. IG 발행자로선 극적 리프라이싱(2025말 ~145bps 대비 급등, 기존 KB 198bps 정정). 비유동부채 Q3말 **$124.7B**(전년 $85B), 순부채 $95B+ vs 9개월 OCF $17.3B. 주가 2026 YTD **-25%+**. S&P BBB- 강등(7/9) |
+| **CoreWeave** | **12월 8.81pp→7월초 4.52pp 회복→7월말 ~855bps 급반전(~50% 부도확률)**   | ★7/4 신용 회복 서사 반전 — CDS 스트레스 재확대(완화 아닌 확대 방향). $2.6B 시설 스프레드 +100~125bps+유지약정(DSCR 1.35x·완전상각) 강요. 2026 capex $31-35B vs TTM 매출 ~$6.2B. 10년물 4.74%+ 금리상승 압박 |
 
 - **CoreWeave 신용 반전 (7/4 신규)**: 12월 부도확률 지표(5년 CDS) **8.81pp 고점→7월 4.52pp 저점**으로 급락. $3.1B DDTL 5.0(5/18, 최초 공개 신디케이트 HPC담보 텀론, 50bps 타이트닝) 마감으로 YTD **$20B+ 부채·자본 조달**($8.5B DDTL 4.0 IG등급 GPU담보 포함). 신용 회복이 DC 자금조달 비용을 낮추는 선순환 — 6월까지의 '부도확률 42%' 서사 반전 [CoreWeave IR, Kirkland, Yahoo Finance]
 - **6월 CDS 전반 확대**: 6월 들어 하이퍼스케일러 부채 CDS 보험비용 전반 상승 — capex 실행 민감도 반영. **Oracle 스프레드 확대 두드러짐**(CoreWeave는 예외적 개선), Alphabet/Amazon/Microsoft는 소폭 확대 [Morgan Stanley, Mellon Investments]
@@ -267,7 +294,7 @@ last_synced_from_db: 2026-08-22
 - **자본집약도**: 매출 대비 45-57% — 역사적 미답 영역 [Morningstar]
 - **AWS 상향**: Yahoo $200B 유지, TrendForce $230B+(기존 $200B). 4사 중 Q1 CapEx $44.2B 최대 지출 [TrendForce, Yahoo Finance]
 - **빅테크 5사 CapEx > 글로벌 석유가스 상류 투자**: IEA 2026 확인 — 역사적 교차점 [IEA]
-- **2027 전망 (8/22 갱신)**: **Moody's 6대 하이퍼스케일러 capex 2026 $785B·2027 near-$1T로 상향(3월 대비 +$85B)** — 성장률 2026 +84%→2027 +22% 둔화. 애널리스트 컨센 2027 **$920B**(GS는 "너무 보수적"). Omdia **2027 DC CapEx 기본 $1.1T, 버블 시나리오 $1.4T**. GS **2025-27 하이퍼스케일러 합산 $1.15T**(2022-24 $477B 2배+). CNBC $1T+. Alphabet CFO "2027 유의미 증가". Oracle FY27 net cash CapEx $70B [Moody's, DCD, Omdia, Goldman Sachs, CNBC, Oracle IR]
+- **2027 전망 (8/22 갱신)**: **Moody's 6대 하이퍼스케일러 capex 2026 $785B·2027 near-$1T로 상향(3월 대비 +$85B)** — 성장률 2026 +84%→2027 +22% 둔화. 애널리스트 컨센 2027 **$920B**(GS는 "너무 보수적"). Omdia **2027 DC CapEx 기본 $1.1T, 버블 시나리오 $1.4T**. GS **2025-27 하이퍼스케일러 합산 $1.15T**(2022-24 $477B 2배+). CNBC $1T+. Alphabet CFO "2027 유의미 증가". Oracle FY27 net cash CapEx $70B. **[8/29] NVDA CFO(8/26): 하이퍼스케일러 capex 2026 >$800B·2027 top5 $1.3T. 2027 컨센 개별추정 Google $284.8B·Amazon $256.5B·MSFT $207.6B·Meta $185.6B=~$934.5B(추정치)** [Moody's, DCD, Omdia, Goldman Sachs, CNBC, NVIDIA IR, Oracle IR]
 - **장기 전망**: GS 2026 연간 AI CapEx **$765B**, 2031 **$1.6T/년**. McKinsey 2030 DC 전체 **$7T**(AI $5.2T + 전통IT $1.5T). DC 인프라(IT HW 제외) **$1.7T** [Goldman Sachs, McKinsey]
 - **FCF 리스크**: UBS — 2026 CapEx가 영업현금흐름의 **~100% 소진**(10년 평균 40% 대비). Amazon **2026 FCF -$17~-28B**(음전환), Alphabet FCF **$8.2B(-90%**, 2025 $73.3B 대비), **Oracle FY2026 FCF -$23.7B(확정)**, Meta 급감. Evercore ISI — 12개월 선행 FCF가 2022 사이클 저점 하회, **'red flag' 임박** 경고 [UBS, Pivotal Research, Evercore ISI, CNBC, Oracle IR]
 - **자금조달 구조 변화 (7/4 정밀화 → S0 참조)**: 현금조달→부채/사모대출 전환. AI 부채발행 **2026 $570B+(전년 2배+, 5월까지 $236B)**. **오프밸런스시트 SPV 합산 $120B+(Oracle·Meta·xAI·CoreWeave)**. 5사 2025 회사채 $121B(2020-24 연평균 $28B). 4사 Bloomberg US IG 지수 비중 **2.2%→4.1%**. Oracle FY27 $45-50B 조달계획 [Morgan Stanley, BIS, Blue Owl, Cryptopolitan, Investing.com]
@@ -344,11 +371,11 @@ Stargate ~10GW($500B): 조지아 $30B+ 3.2GW 신규+OpenAI-Oracle 4.5GW 추가($
 - **2027E**: 전체 장비 **$156B**(+11.4%, 기록) [SEMI]
 - **WFE 지배 5사**: ASML/AMAT/Lam/TEL/KLA 첨단노드 툴셋 사실상 독점. ASML 유일 EUV/High-NA EUV 공급. ASML 전체 WFE 점유 ~21% [SEMI, MarkWide Research]
 - **ASML**: Q1 매출 EUR 8.8B, GM 53%. **2026 가이던스 EUR 36-40B 유지**. Q2 가이던스 EUR 8.4-9.0B, GM 51-52%. 수주잔고 EUR 38.8B. High-NA EUV 2026 ~3대 전망(주문 둔화). EUV 리더십+백로그 견조 [ASML IR, SEMI]
-- **Applied Materials**: Q2 2026(5/14) 매출 $7.91B(+11% YoY, 역대최고). CEO Gary Dickerson — **반도체 장비 사업 CY2026 +30%+ 성장 전망**. 리딩엣지 파운드리/로직+DRAM+어드밴스드패키징 견인 [Applied Materials IR]
+- **Applied Materials**: Q2 2026(5/14) 매출 $7.91B(+11% YoY, 역대최고). CEO Gary Dickerson — **반도체 장비 사업 CY2026 +30%+ 성장 전망**. 리딩엣지 파운드리/로직+DRAM+어드밴스드패키징 견인. **[8/29 갱신] Q3 FY26 확정(8/13, 7/26 종료): 역대 매출 $9.115B(+25% YoY, +15% QoQ 사상 최대)·non-GAAP EPS $3.50(+41% YoY)·SemiSystems $7.04B(OM 37.7%). Q4 가이던스 매출 ~$10.25B·EPS ~$4.02(추가 상향), YTD +200%. 단 중국 리스크 악화(8/26): 신규 대중 수출규제로 중국 비중 ~45%→28%(FY25)·2년 $710M 타격, 중국 장비 6사 WFE 점유 1.2%→6.5%($748M→$7.6B) 급등** [Applied Materials IR, Investing.com, 247WallSt]
 - **Lam Research (LRCX) [8/8 신규]**: **Q4 FY2026 확정(7/29, 6월 분기) 매출 역대 $6.72B·희석 EPS $1.82(컨센 $1.68 상회 +8.3%)**. **Sep 2026 분기 가이던스 매출 $8.1B(±$400M)·GM 52%·EPS $2.15**. **CY2026 WFE 전망 low $150B로 상향**(NAND·DRAM·어드밴스드패키징 강한 수요). **2027 'extraordinary'** 전망. 장기 목표 GM mid-50%·OPM mid-40% [Investing.com, Seeking Alpha, BigGo Finance]
 - **한국**: 장비투자 $29.7B (42조원, +27.2% YoY) — 세계 2위 (중국 다음) [전자신문]
 - **HBM 시장**: BofA **$54.6B(+58% YoY)** [BofA]
-- **AI 가속기 시장**: **$200B+**(2026E). **NVIDIA Q1 FY27 DC매출 $75.2B(+92% YoY, +21% QoQ)**, FY2026 DC 매출 **$193.7B**. AI가속기 점유 **~70-75%**(2024 피크 ~87%에서 하락). **AMD DC $5.8B(+57% YoY)** — EPYC+Instinct MI350(HBM3E 288GB). HSBC AMD AI칩 연 ~$15B 전망. 점유 5-7% [NVIDIA IR, AMD IR, SiliconAnalysts, CNBC]
+- **AI 가속기 시장**: **$200B+**(2026E). **[8/29 갱신] NVIDIA Q2 FY27 확정(8/26): 총매출 $96.22B(+106%)·DC매출 $89B(+117% YoY, 전사 92%)·Q3 가이던스 $108B±2%·백로그 $2T+·Vera Rubin 8월초 출하(무공백 핸드오프)·ACIE $40.3B(+138%)·CFO FY28 매출성장 70%·하이퍼스케일러 capex 2026 >$800B/2027 top5 $1.3T 시그널**. Q1 FY27 DC매출 $75.2B(+92% YoY, +21% QoQ), FY2026 DC 매출 **$193.7B**. AI가속기 점유 **~70-75%**(2024 피크 ~87%에서 하락). **AMD DC $5.8B(+57% YoY)** — EPYC+Instinct MI350(HBM3E 288GB). HSBC AMD AI칩 연 ~$15B 전망. 점유 5-7% [NVIDIA IR, CNBC, 247WallSt, AMD IR, SiliconAnalysts]
 - **Broadcom AI**: **Q2 FY26 총매출 $22.2B(+48%, 역대최고), AI 반도체 $10.8B(+143% YoY)**. adj EBITDA $15.2B(+52%, 매출 69%). **AI 반도체 부킹 $30B+ 초과**(수요 가시성 확장). Q3 가이던스 AI $16.0B(+200%), 총매출 **$29.4B(+84%)**, OPM 67%. CEO Hock Tan FY2027 AI칩 **$100B** 재확인. XPU 커스텀ASIC(Google/Meta/OpenAI/Anthropic) [Broadcom IR, Motley Fool]
 
 ### 핵심 트렌드

@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-22
-valid_until: 2026-09-21
+updated: 2026-08-29
+valid_until: 2026-09-28
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -156,13 +156,24 @@ sources:
   - GlobeNewswire
   - Foreign Policy Journal
 confidence: high
-last_synced_from_db: 2026-08-22
+last_synced_from_db: 2026-08-29
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.08.29 핵심 변화 요약 (8/22 이후 델타)**:
+>
+> 1. **★SPCX 8월 +30% 랠리(~$138, IPO가 $135 회복)·1차 락업 무난 통과 vs ★AST 미끄러짐(~$58대·밸류 논쟁) -- D2C 양강 주가 디커플링** -- **SPCX(SpaceX) 8월 한 달 약 +30% 상승(Motley Fool 8/22 '8/1 이후 +37%', 8/27 '8월 +30% ~$138'), $135 IPO가 상회 유지(상장 첫날 개장가 $150은 하회). ★1차 락업해제(8/6, 약 9.115억주로 플로트 2배) 크래시 없이 통과 -- 공급 오버행 우려 해소가 랠리 촉매. 메인 180일 락업 2026.12.08 만료·머스크 약 64억주 366일 락업(조기해제 조항 전무). Q2 매출 +92% $7.8B·AI $2.56B(전년 $818M서 급증)·Connectivity(Starlink) $4.29B. ★반면 AST SpaceMobile(ASTS)은 8월 하순 약세 미끄러짐 -- 종가 약 $58대(Simply Wall St $58.29, 평균 목표 약 $83.32이나 공정가치 추정 $43.78로 하향 소스 존재·밸류 논쟁), 8/22 KB의 $71대·평균 $80.48서 하락. 상방론(D2D 기술 우위·Buy 최대 $115 Piper Sandler·Clear Street) vs 하방론(누적손실·현금소진·반복 EPS 미스). BB11/12/13 8/5 안착(표준폰 직접 피크 ~200Mbps)** [Motley Fool 8/27 SPCX +30% ~$138, TradingKey 8/6 lockup no crash, Simply Wall St ASTS $58.29 fair value $43.78, MarketBeat ASTS cash burn, Quiver Piper Sandler $115]
+> 2. **★AI-RAN 'NVIDIA GPU 필요성' 3사 충돌 표면화(Light Reading·TechTimes 8/27) -- Samsung/Ericsson '불필요' vs Nokia '필요', Samsung vRAN+NVIDIA 멀티셀 테스트 완료** -- **AI-RAN 하드웨어 노선 3분화 격화: Nokia는 NVIDIA GPU 기반 베팅(2028 스펙트럼효율 100%+ 목표), Ericsson은 '무선 물리 특성상 AI 모델 크기가 제한적이라 ASIC이 GPU보다 유리'며 GPU 불필요론, Samsung은 CPU-first 하드웨어 불가지론(hardware-agnostic). ★현재 상용 실측 우위는 Ericsson -- 'AI in RAN' SW(2026.06 상용, 구독형) 15개+ 사업자 라이브(SoftBank·Bell Canada·SK텔레콤·Rogers), GPU 없이 스펙트럼효율 ~10%·다운링크 처리량 ~20% 개선. Nokia AI-RAN 파일럿은 2026말 시작 예정(미가동). ★Samsung R&D센터서 vRAN SW + NVIDIA 가속컴퓨팅 결합 멀티셀 테스트 완료 발표(불가지론 실증). NVIDIA GPU 의존도가 6G 벤더 전략 핵심 분기점으로 부상** [Light Reading Ericsson Nokia Samsung clash 6G Nvidia, TechTimes 8/27 GPUs not essential Nokia disagrees, Ericsson AI in RAN 15 carriers live]
+> 3. **★6G Rel-21 마드리드 RAN#113(9/14~17) ~2주 임박 -- Option 1 vs 3·MRSS 9월 확정 + Qualcomm Snapdragon Summit 마우이 9/22~24(X105 탑재 유력)** -- **3GPP TSG RAN#113(마드리드 9/14~17)이 5G->6G 마이그레이션 옵션 가지치기 순간으로 지목 -- Option 1(6G-anchored DC with NR) vs Option 3(dual stack) 9월 확정(Option 2 배제), RAN1 예비 MRSS(Multi-RAT Spectrum Sharing) 성능평가 9월 데드라인 의무. 표준론자 vs 실용론자(coexistence) 대립이 6G 배치 속도·비용 좌우. 이번주 3GPP WG 회의(8/24~28)도 5G-Adv 진화·6G 표준작업 지속. ★Qualcomm Snapdragon Summit 2026 하와이 마우이 9/22~24 확정 -- Snapdragon 8 Elite Gen 6 + Elite Gen 6 Pro 공개(TSMC 2nm), X105 모뎀(세계최초 Rel-19, DL 14.8Gbps, NR-NTN, agentic AI)이 Pro 버전 탑재 유력 -- 6G 기반 기술. Rel-21 6GR WI 2027.03·물리계층 freeze 2028.09·ASN.1 freeze 2029.03, 프리커머셜 2028(LA올림픽)·상용 2029** [6G Futures RAN#112 Option 1 vs 3, Ericsson MRSS blog, IEEE ComSoc Rel-21 timelines, GSMArena/Gizmochina Snapdragon Summit Sep 22-24 X105]
+> 4. **★위성직결(NTN) 상용 -- Starlink Mobile 직접 소비자 도전(AT&T·Verizon)·완전음성/데이터 V2세대 2027 + 시장 재편(HughesNet 파산·Viasat 고전·AST 미끄러짐)** -- **Starlink Direct-to-Cell 650기+ 라이브·22개국·호환폰 약 60종·$10 애드온. ★SpaceX 8/4 실적콜서 'Starlink Mobile'(위성+지상 혼합) 직접 소비자 셀룰러 출시 열망 -- 종전 통신사 파트너십(사각지대 보완)서 AT&T·Verizon 직접 도전으로 전환. 음성은 2026 테스트·광범위 롤아웃 2027, 일반 셀룰러 동급 완전 음성/데이터는 Starlink V2 위성세대(2027 하반기)에 연동. T-Mobile 전고객 T-Satellite 911 무료 긴급문자(AT&T·Verizon도 무료 가입). Verizon·AT&T는 AST 의존(T-Mobile 대비 상용 지연). ★위성모바일 시장 재편: HughesNet 파산·Viasat 고전·AST 미끄러짐(RV Mobile 여름 업데이트)** [KeepTrack Starlink D2C 650 sats 22 countries, RV Mobile Internet summer 2026 Starlink Mobile HughesNet bankrupt AST slips, American Bazaar 8/9 Starlink targets ATT Verizon]
+> 5. **★광통신 FCC 중국산 금지 지속 -- Lumentum 완제 매출 6%나 상류 레이저 노출 큼(Counterpoint), 800G->1.6T/3.2T 2027~28 전환기 점유율 이동, 서방 12~24개월 램프갭** -- **FCC 중국산 광트랜시버 수입금지 규칙 진행(연내 확정 희망·초안 단계). ★수혜주 세부 재평가: Lumentum은 완제 모듈 매출 기준 약 6%에 불과하나 상류 레이저 부품 공급자로 훨씬 큰 노출 -- 6% 완제 점유율이 상류 익스포저 과소평가·중국 모듈 매출의 Lumentum 증분전환 가능분은 과대평가(Counterpoint). 로이터 8/4 보도 후 광부품주 급등(AOI +16~17%·Coherent +11~13%·Lumentum +6~11%). ★타임라인: 2026 즉효는 재고축적·막판구매·공급사 인증(중국 800G 급격제거 아님), 근본 점유율 이동은 2027~2028 1.6T·3.2T 신규 설계 전환기. 서방(Coherent·Lumentum)은 클린룸 capa·자동패키징·수율 부족으로 Innolight·Eoptolink 물량을 12~24개월 내 흡수 불가·InP 인듐 중국 의존** [Counterpoint Innolight Coherent Lumentum wins losers, Cignal AI 8월 FCC ban, 247WallSt 8/4 AOI +17% COHR +11% LITE +6%, TechTimes 8/5 60% supply cut]
+> 6. **Amazon Leo ~354~375기·Gen2 4,500기 승인(총 7,727)·초기서비스 2026 5개국 + 한국 통신3사 'AI시대 통신망 투자 협의체' 연내 종합대책** -- **Amazon Leo(구 Kuiper, 2026 리브랜딩) 8월 궤도 약 354~375기+(12개 미션, Atlas V·Falcon 9·Ariane 6, 3위권). FCC 의무 1,618기(7/30 미달·발사체 가용성 연장 신청)·3,236기(2029.07.30). ★2026.01 FCC Gen2 확장 4,500기 추가 승인->총 7,727기. 초기서비스 2026 타깃(미국·영국·프랑스·독일·캐나다). D2D 전용 5,105기 별도 군집(7/27 신청, 배치 2028, Globalstar MSS 스펙트럼). 배치 지연으로 Starlink·AST 대비 후발. ★한국: 과기정통부 통신3사 'AI시대 통신망 투자 협의체' 가동·연내 종합대책 발표, SKT AI RAN 얼라이언스 이사회·6G 기반 AI 네트워크 협력, KT 위성(KT SAT)+지상 결합 NTN 3차원 커버리지 추진** [aboutamazon 375+ Atlas V, orbitalradar Leo tracker 354+, Wikipedia Gen2 4500 approved total 7727, BusinessPost 과기정통부 AI 통신망 투자 협의체 연내 종합대책]
+>
+> **(이전 갱신 -- 8/22 핵심 요약, 참고용)**:
+>
 > **2026.08.22 핵심 변화 요약 (8/15 이후 델타)**:
 >
 > 1. **★SPCX 8/21 약 $134로 IPO가($135) 부근 회복 유지·8/20 추가 언락 눌림(-5%) 통과 + AST Q2 실적 미스(-$0.77 vs -$0.32)에도 백로그 $1.30B·목표가 혼조** -- **SPCX 8/21 종가 약 $134(장중 $130.39~$137.88, 52주 $104.83~$225.64), $135 IPO가 부근 회복 유지. 8/5 사상최저 이후 1차 락업해제(8/6) 통과 뒤 +26% 반등(24/7 Wall St '크래시 우려했으나 +21%'), 8/10 이후 IPO가 상회 지속, 8/20 추가 주식 언락 앞두고 화요일 개장 -5% 눌림 후 회복. Q2 매출 +92% $7.8B·Starlink 가입자 1,200만(Connectivity OP $1.66B 흑자)·CapEx $18.4B 논쟁 존치. ★AST SpaceMobile Q2(8/10): 손실 -$0.77/주(컨센 -$0.32 대폭 미스)·매출 $31.52M(하회)이나 FY2026 $150~200M 재확인·백로그 $1.30B. BB11/12/13 8/5 안착(피크 다운로드 초기 대비 약 2배·표준폰 직접 약 200Mbps·생산 42호). 애널 Cantor $80->$90 상향 vs BofA $95->$80·UBS $80->$78 하향, 평균 $80.48(+12% 상방)** [CNN Markets SPCX 8/21 $134, 247WallSt 8/11 up 21%, FMP ASTS Q2 Cantor $90, BusinessWire 8/5 BB11/12/13]
