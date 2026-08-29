@@ -33,7 +33,7 @@ lint_p2_count: 5
 | `macro/us_monetary_policy.md`   | 2026-07-07 | 47일    | kb-updater 재수집 위임 (updated 06-07 77일 전·7/29 FOMC 9-3 동결·워시 신임 의장 체제 미반영)                                                                                                                                                                                                                                                                                                                                  |
 | `market/prediction_markets.md`  | 2026-08-23 | 0일 D-0 | Kalshi(9월 FOMC·8월 CPI) 신규 갱신 성공·**Polymarket HTTP 451 지역차단 구조적 지속**(재수집으로 해소 불가) → 경기침체/지정학/미국정치/크립토 섹션 08-03 stale. Kalshi 단독 유효 인용 가능                                                                                                                                                                                                                                     |
 
-> **브리핑 진행 가능 여부:** industry KB 만료 76일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-24)·correlation_matrix(vu 08-28, 8/20 6쌍 재산출)·surprise_index(vu 08-22, 8/20 갱신)·economic_calendar(vu 08-29) 모두 최신 — **P0 제외**.
+> **브리핑 진행 가능 여부:** industry KB 만료 76일이나 주요 구조 유지 — 산업 섹션 인용 시 "6/8 기준" 주석 권장. market/daily_snapshot(vu 08-31, 8/29 모닝 재수집·D-1=8/28금 US종가+Warsh잭슨홀매파연설)·correlation_matrix(vu 08-28, 8/20 6쌍 재산출)·surprise_index(vu 08-22, 8/20 갱신)·economic_calendar(vu 08-29) 모두 최신 — **P0 제외**.
 
 > [유효 2026-08-23] market/economic_calendar.md — valid_until 2026-08-29 (직전 회차 8/16 kb-updater 재수집분·jsonl 57행) 유효, 이번 주 만료 없음 → auto-trigger 없음. CURRENT: 8/26 NVDA Q2 실적 + 7월 PCE 더블헤더·8/27 BOK 금통위·8/27~29 잭슨홀(Warsh 첫 기조 8/28). 예측시장 9월 FOMC 동결 ~68% vs 인상 ~32%(Kalshi).
 
