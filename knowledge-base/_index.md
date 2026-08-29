@@ -356,6 +356,9 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-08-29 | `macro/us_economy.md` | **Warsh 잭슨홀 매파 → 9월 인상 ~56% 반전** -- 7월 근원PCE 3.3%(FRED 3.34) 끈적·Q2 GDP +1.5% 불변·NVDA 블로우아웃 주가 3주만 반등·유가 반락(Brent $88) BEI 2.31↓ | +19 |
+| 2026-08-29 | `macro/korea_economy.md` | **한은 8/27 기준금리 3.00% 백투백 인상(6-1)·BOK GDP 3.3% 대폭 상향** -- 결정문 인상기조 문구 삭제(속도조절)·백투백에도 국고채 강세·KOSPI 8/28 6,788.88(주간 -1.79%)·원달러 8/28 1,375.67원 13개월래 최저권·삼성 주주환원 실망 8/24 -6% | +15 |
+| 2026-08-29 | `macro/supply_chain.md` | **호르무즈 급반전 de-escalation(8/26 Iran-Oman 합의)·유가 -5.5% Brent $88~89** -- 컨테이너 3주반등 종료 WCI $4,473(-1%)·BDI 2,776, 반도체 232 Phase 2 격화(DC면제 철회 검토·Lutnick 투자연동 cap), 폴리실리콘232 세부 명확화(파생품 15%·raw MIP만), REE지수 259.5·구리 $6.54·TTF €69.44↑, 희토류/흑연 D-73 | +16 |
 | 2026-08-29 | `industry/quantum.md` | **PASQAL SPAC 완료·Nasdaq PSQL 상장(08-28, 중성원자 최초 미 상장)** -- IBM 극저온 2기 연결(Starling 경로)·일본 Shunkai 중성원자 가동·TuringQ 중국 IPO·양자주 08-24 되돌림·내부자 $863M·한국 클러스터 3선정 임박·PQC 표준無 | +9 |
 | 2026-08-29 | `industry/space.md` | **창어7 8/24 발사 태풍으로 무기한 연기(→2027)·직전 '확정' 정정** -- Starship F14 9/15 슬립+catch 후퇴 가능성, SpaceX 플로리다 마지막 F9 Starlink(8/25)→Starship 전환, RKLB Neutron 2027 슬립 리스크, 우주주 8월 급반등(LUNR +35% MTD), 누리호 5차 10/7 확정(위성 15기) | +10 |
 | 2026-08-29 | `industry/smr.md` | **미국 SMR주 밸류 리셋 지속 vs 한국 두산 빌게이츠 훈풍 +17%** -- Oklo DOE Groves 가동승인·NuScale Paragon/Curio MOU·BWXT-Applied Atomics mPower 독점권·TerraPower 2호기 DC원자로 예고·우라늄 $90/lb 돌파 | +10 |
