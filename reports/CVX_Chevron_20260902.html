@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title> () 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1> ()</h1><div class="meta">주식 종합 분석 리포트 | </div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">74/100</span></div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">N/A</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">N/A</div></div><div class="ki"><div class="kl">PER</div><div class="kv">약 19.6x (trailing)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">N/A~N/A</div></div></div></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,70.0 187.0,85.3 197.1,131.5 206.6,171.6 175.3,198.5 140.0,230.0 93.0,214.7 63.9,174.7 73.4,128.4 98.9,93.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">사업모델/해자</text><circle cx="140.0" cy="70.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">성장성</text><circle cx="197.1" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="206.6" cy="171.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="175.3" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">경영진/자본배분</text><circle cx="93.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업포지션</text><circle cx="63.9" cy="174.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크관리</text><circle cx="73.4" cy="128.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="98.9" cy="93.4" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>사업모델/해자</td><td>8.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>8.0</td><td>/10</td></tr><tr><td>성장성</td><td>6.0</td><td>/10</td></tr><tr><td>수익성</td><td>7.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>8.0</td><td>/10</td></tr><tr><td>경영진/자본배분</td><td>8.0</td><td>/10</td></tr><tr><td>산업포지션</td><td>8.0</td><td>/10</td></tr><tr><td>리스크관리</td><td>7.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>7.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 74/100</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">강함</span></h2><p></p><h3>Moat 상세</h3><p>셰브론은 업스트림(탐사·생산)부터 다운스트림(정제·화학·마케팅)까지 아우르는 수직 통합형 메이저 오일컴퍼니로, 상류 부문의 원가 우위와 하류 부문의 마진 안정화 효과가 결합된 구조적 해자를 보유한다. 퍼미안 분지에서는 저비용·고생산성 셰일 자산을 대규모로 보유해 배럴당 손익분기점이 업계 최하위권에 속하며, 카자흐스탄 텐기즈 확장 프로젝트와 호주 LNG 자산은 장기 저원가 공급원을 제공한다. 여기에 헤스 인수를 통해 편입된 가이아나 스타브로크 광구는 매장량 대비 개발비가 낮은 세계 최고 수준의 심해 자산으로, 향후 수년간 생산량 증가의 핵심 축이 될 전망이다. 투자등급 신용도와 낮은 부채비율(부채/자본 18.96%)은 유가 하락기에도 배당·자사주 매입을 지속할 수 있는 재무 여력을 뒷받침하며, 이는 38년 이상 연속 배당 증액을 이어온 배당귀족 지위의 기반이다. 다만 원자재 가격 자체에 대한 가격결정력은 없고 장기적으로 에너지전환에 따른 수요 구조 변화 리스크에 노출돼 있어 '매우 강함'보다는 '강함' 등급이 적절하다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>12개월 목표주가는 forward PER 밴드(14~17배, 완만한 유가 환경인 WTI $65~75/배럴 박스권 가정)와 EV/EBITDA 밴드(8.0~10.0배)를 블렌드하여 산출했다. Forward EPS $13.24에 15.5배(블렌드 중심값)를 적용하면 약 $205, EBITDA 506.6억 달러에 9배 EV/EBITDA를 적용하고 순부채 285.5억 달러를 차감하면 주당 약 $218이 도출되며, 두 방법의 평균을 중심값 $213으로 설정했다. 하단($185)은 유가 하락 및 forward PER 14배·EV/EBITDA 8배로 압축되는 보수적 시나리오를, 상단($235)은 헤스 시너지 조기 실현과 유가 강세로 forward PER 17배·EV/EBITDA 10배까지 확장되는 낙관 시나리오를 반영한다. 배당수익률 3.53%(연간 주당 약 $7.35)를 더한 총수익 관점에서 보면 중심 시나리오 기준 12개월 예상 총수익률은 약 5~6% 수준으로, 주가 자체보다 안정적 배당 재투자가 총수익의 핵심 축이 된다. PEG 비율 0.77은 이익성장 대비 밸류에이션 부담이 크지 않음을 시사하지만, 성장률 자체가 헤스 편입발 일회성 요인에 왜곡돼 있어 액면 그대로 해석하기보다는 정상화 이익 기준 재점검이 필요하다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $208.25는 50일 이동평균선 $188.19와 200일 이동평균선 $180.01을 각각 10.7%, 15.7% 상회하고 있어 중장기 추세가 뚜렷한 상승 국면임을 시사한다. 52주 레인지 상 91% 구간에 위치해 고점($214.71)에 근접했으며, 최근 종가는 전일 대비 +1.02%($206.14→$208.25) 상승 마감했다. 베타 0.49로 시장 대비 변동성이 낮은 저베타 종목 특성을 보이며, 이는 안정적 현금흐름과 배당 중심 투자자 기반에 기인한다. 공매도 비중은 유통주식의 0.81%(숏 레이쇼 2.05일)에 불과해 약세 베팅이 매우 제한적이며, 기관 보유비중 71.1%로 기관 수급이 안정적으로 뒷받침되고 있다. 애널리스트 24명 중 컨센서스는 매수(평점 1.72)이며 평균 목표가 $218.29(현재가 대비 +4.8%)로 추가 상승 여력에 대한 시장 컨센서스도 긍정적이다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>셰브론의 최대 리스크는 여전히 유가 변동성이다. 현재 밸류에이션(forward PER 15.7배, EV/EBITDA 8.6배)은 WTI $65~75/배럴의 완만한 박스권을 전제로 하고 있어, 유가가 $55 이하로 급락할 경우 이익 추정치와 목표주가 밴드가 동반 하향될 위험이 크다. 2026년 2분기 순이익 급증은 헤스 인수 연결 편입과 인수회계 관련 일회성 요인이 혼재된 결과로 추정되며, 이를 정상 수익력으로 오인해 forward EPS를 과대평가할 경우 밸류에이션 오류로 이어질 수 있다. 가이아나 스타브로크 광구는 베네수엘라와의 해상 국경 분쟁 대상 해역에 인접해 있어 지정학 리스크가 상존하며, 카자흐스탄 자산 역시 지정학적 변수에 노출된다. 장기적으로는 에너지전환 정책 강화, 탄소 규제, ESG 압력이 자본배분과 자산가치 재평가에 부담을 줄 수 있다. 현재 주가가 52주 고점 부근에 위치한 만큼 단기 조정 시 낮은 베타에도 불구하고 되돌림 폭이 확대될 가능성을 염두에 두어야 한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="50" r="5" fill="var(--sell)"/><text x="189" y="54" fill="var(--text)" font-size="10">유가 변동성 리스크</text><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">헤스 인수 통합·회계 왜곡 리스크</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">지정학·에너지전환 정책 리스크</text><circle cx="180" cy="156" r="5" fill="var(--warn)"/><text x="189" y="160" fill="var(--text)" font-size="10">52주 고점 근접에 따른 밸류에이션 부담</text><circle cx="180" cy="174" r="5" fill="var(--warn)"/><text x="189" y="178" fill="var(--text)" font-size="10">정제·화학 부문 마진 변동성</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rh"><strong>유가 변동성 리스크</strong> (발생: 상, 영향: 고)<br><span style="color:var(--sub);font-size:13px">셰브론 영업이익의 상당 부분이 업스트림(원유·가스 생산)에서 창출되어 WTI/브렌트 유가에 직접 노출된다. 현재 forward EPS $13.24와 8.6배 EV/EBITDA는 완만한 유가 박스권을 전제로 하며, 유가 급락 시 이익 추정치와 밸류에이션이 동시에 하향될 수 있다.</span></div><div class="ri rm"><strong>헤스 인수 통합·회계 왜곡 리스크</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">2026년 2분기 순이익이 직전 분기 대비 5배 이상 급증했는데, 이는 헤스 연결 편입과 인수회계상 일회성 항목이 혼재된 결과로 추정된다. 통합 비용·시너지 실현 지연 시 향후 분기 실적의 눈높이 조정 리스크가 있다.</span></div><div class="ri rm"><strong>지정학·에너지전환 정책 리스크</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">가이아나 스타브로크 광구는 베네수엘라와의 국경 분쟁 대상 해역과 인접해 있고, 카자흐스탄 텐기즈 자산은 지정학 리스크에 노출된다. 장기적으로는 탈탄소 정책 강화 시 자본배분 제약과 자산 재평가 압력이 존재한다.</span></div><div class="ri rm"><strong>52주 고점 근접에 따른 밸류에이션 부담</strong> (발생: 중, 영향: 중)<br><span style="color:var(--sub);font-size:13px">현재가가 52주 레인지 상위 91% 구간에 위치해 추가 상승 여력이 제한적이며, 낮은 베타(0.49)가 하락 사이클에서도 방어력을 보장하지는 않는다. 단기 조정 시 되돌림 폭이 확대될 수 있다.</span></div><div class="ri rl"><strong>정제·화학 부문 마진 변동성</strong> (발생: 하, 영향: 중)<br><span style="color:var(--sub);font-size:13px">다운스트림 정제마진은 계절적·공급 요인에 따라 분기별 변동성이 크며, 업스트림 호조가 다운스트림 부진을 상쇄하지 못하는 구간에서는 통합모델의 안정화 효과가 약화될 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>현재가 $208.25 부근에서는 분할 진입을 권장하며, 1차 매수는 현재가 수준에서 소규모로 진행하고, 2차 매수는 50일 이동평균선($188) 부근 조정 시, 3차 매수는 200일 이동평균선($180) 부근까지 조정될 경우 확대하는 단계적 접근이 리스크 대비 효율적이다. 손절가는 2 ATR 기준 $200.76으로, 현재가 대비 약 -3.6% 지점에 설정하며 이는 최근 변동성(ATR 14 = $3.75, ATR% 1.8%)을 반영한 값이다. 12개월 목표주가는 중심값 $213(밴드 $185~$235)이며, 현재가 대비 중심 시나리오 기준 가격 상승 여력은 제한적이나 3.53% 배당수익률을 더한 총수익 관점에서는 연 5~7% 수준의 안정적 수익을 기대할 수 있다. 상방 트리거는 WTI 유가의 $80 이상 안착, 헤스 인수 시너지(가이아나 생산 확대) 조기 가시화, 자사주 매입 규모 확대 발표 등이며, 이 경우 목표가 상단($235) 시나리오로의 상향 조정이 가능하다. 하방 트리거는 WTI 유가 $55 이하 급락, 헤스 통합 비용 초과 또는 지연, 가이아나-베네수엘라 지정학 리스크 격화이며, 이 경우 손절가 $200.76 하향 이탈 시 기계적 손절 후 재진입 시점을 재평가해야 한다. 신규 진입 투자자는 현재가가 52주 고점에 근접한 만큼 추격매수보다는 눌림목 대기 전략이 유리하며, 기존 보유자는 배당 재투자를 병행한 장기 보유(홀드) 전략이 합리적이다.</p></div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-02 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="CVX_Chevron_20260902.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

@@ -126,6 +126,15 @@ async function buildRow(timeline, historyEntry, existingMap, isActive) {
   let body;
   if (existing && existing.body && !existing.body.startsWith('갱신 필요')) {
     body = existing.body;
+  } else if (historyEntry.score != null || historyEntry.grade || historyEntry.target_price) {
+    // timeline.json = 단일 진실 소스: cleanup 이 scorecard_parser.mjs 로 이미 정확히 추출한
+    // score/grade/target_price 를 우선 사용한다. scorecard.md 재추출은 본문 산문의
+    // 컨센서스 목표가("평균 목표가 $X")를 오추출하는 드리프트가 있어 fallback 으로만 둔다.
+    body = makeShortBody({
+      score: historyEntry.score != null ? String(historyEntry.score) : null,
+      grade: historyEntry.grade || null,
+      target_price: historyEntry.target_price || null,
+    });
   } else {
     const scContent = await tryReadScorecard(historyEntry.folder);
     const extracted = extractFromScorecard(scContent);
