@@ -1,7 +1,7 @@
 ---
 sector: macro
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
@@ -9,7 +9,7 @@ related_industry_kb:
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
 l1_index_count: 23
-l2_summary_count: 7
+l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 3
 ---
@@ -55,6 +55,7 @@ deep_dive_priority: 3
 
 ## L2 월간 요약 목록
 
+- 2026-09 `warsh_jackson_hole_2026_202609.md` — Warsh 첫 Jackson Hole 기조 'In Our Time'(8/28) 매파 확정: PCE 12M 3.7%·6M 4.1% 물가 최우선 + "otherwise we have work to do"(조건부 추가 긴축) + 사이클 금리 quasi-commitment 명시적 거부(가이던스 축소·데이터 의존) + 심포지엄 테마 '금융혁신·결제·정책'. 의장 교체 후에도 Fed 매파 컨센서스 지속 확증
 - 2026-08 `fomc_july_2026_hawkish_dissent_202608.md` — FOMC 7/29 5회 연속 동결(3.50~3.75%, 9-3) + 매파 반대 3인(Hammack·Kashkari·Logan 인상 선호) + 공급충격(에너지)·중동發 인플레 지속
 - 2026-06 `bok_may_hold_inflation_revision_202606.md` — 한국은행 5/28 기준금리 2.50% 동결(8회 연속) + 2026 CPI 2.2→2.7%·GDP 2.0→2.6% 상향 (중동 유가+원화 약세)
 - 2026-05 `boj_summary_april_2026_202605.md` — BOJ Summary of Opinions (4/27-28) 0.75% 동결 6-3 split + FY2026 Core CPI 1.9%→2.8% 상향

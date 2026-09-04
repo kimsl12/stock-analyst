@@ -1,13 +1,13 @@
 ---
 sector: tech_platform
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/industry/ai.md
   - knowledge-base/industry/tech_breakthrough.md
 l1_index_count: 6
-l2_summary_count: 2
+l2_summary_count: 3
 l3_deep_dive_count: 0
 deep_dive_priority: 7
 ---
@@ -68,6 +68,7 @@ deep_dive_priority: 7
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-09 `genai_enterprise_roi_gap_202609.md` — MIT NANDA 'The GenAI Divide'(2025-07): 엔터프라이즈 GenAI 파일럿 95%가 측정가능 P&L 무영향(임원52·설문153·배포300 분석)·투자 $300~400억·buy>build 2배·성공은 백오피스(연 $2~10M)·섀도우 AI → AI capex ROI 갭 contrarian 근거(수요측)
 - 2026-08 `eu_ai_act_gpai_enforcement_202608.md` — EU AI Act Chapter V: GPAI(범용 AI) 집행 권한 2026-08-02 발효 + 과징금 매출 3%/€15M + 구모델 2027-08-02 유예 → 빅테크 EU AI 컴플라이언스 비용·시장 접근 리스크
 - 2026-06 `eu_ai_act_omnibus_202606.md` — EU AI Act Omnibus: 독립형 고위험 AI 마감 2027-12-02 연장 + 생성형 AI 투명성 2026-12-02 + nudifier 금지 + 과징금 €35M/매출 7%(금지)·€15M/3%(투명성)
 

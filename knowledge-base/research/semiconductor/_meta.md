@@ -1,13 +1,13 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
 l1_index_count: 28
-l2_summary_count: 7
+l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 1
 ---
@@ -53,6 +53,7 @@ deep_dive_priority: 1
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-09 `hotchips_2026_memory_wall_202609.md` — Hot Chips 2026(HC38) 메모리 월 정량화(컴퓨트 ~3×/2년 vs HBM 대역폭 <2×) + 하이브리드 본딩 필수화·base die 선단 로직 전환 + 커스텀 ASIC 대량 등장(TPUv8·OpenAI Jalapeño 9개월·Rubin+Vera·MAIA200·Meta·Groq·Cerebras) + d-Matrix 3D-DRAM tensor engine 통합
 - 2026-08 `hbm4_massproduction_dram_supercycle_202608.md` — HBM4 2026-02 양산 개시(2048비트·2+TB/s·64GB) + 서버 DRAM +60~70%·장기계약 거부 + Stargate 월 90만 웨이퍼·$720억 증분 + SK Hynix 용인 600조원($410B) capex
 - 2026-06 `vlsi_symposium_2026_3d_memory_202606.md` — VLSI Symposium 2026 'memory is the bottleneck' + 3D Memory(Flash·HBM) 포커스 세션 + Micron 기조
 - 2026-05 `hbm4_samsung_isscc_202605.md` — Samsung 36GB HBM4 12-Hi 3.3 TB/s (ISSCC 2026)

@@ -1,13 +1,13 @@
 ---
 sector: energy
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
 l1_index_count: 19
-l2_summary_count: 7
+l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 2
 ---
@@ -51,6 +51,7 @@ deep_dive_priority: 2
 
 ## L2 월간 요약 목록
 
+- 2026-09 `gas_turbine_shortage_ai_datacenter_202609.md` — 가스터빈 공급난(AI DC 전력 근시일 최대 병목): 대형 터빈 리드타임 최대 7년·평균 5년(과거 1~~3년) + 신규 가스발전 원가 3배($800→$2,600~~2,800/kW)·2030~~31 터빈 +75% + GE Vernova 수주 46→83GW·Siemens 100→194기 + WoodMac 세계 캐파 60~~70GW vs 수주 110GW + DC 전력 미 전력의 6.7~12.0%(2028E). 원전/SMR 상대매력↑ vs AI capex 실현 지연 양면
 - 2026-08 `smr_commercialization_datacenter_ppa_202608.md` — Yale CEF SMR 상업화: FOAK→NOAK 원가 -50% + 2026 NRC 첫 상업 건설허가 2건(TerraPower Natrium 상반기)·NuScale 77MWe SDA + 하이퍼스케일러 10GW+ PPA(Amazon·Meta·Google·TVA) + IEA DC 1,100 TWh(+18%)
 - 2026-06 `oklo_aurora_doe_pilot_criticality_202606.md` — Oklo Aurora DOE Reactor Pilot 7/4/2026 임계 목표 + DOE OTA·NSDA·PDSA + NRC 우회 가속 트랙
 - 2026-05 `iea_key_questions_energy_ai_202605.md` — IEA Key Questions on Energy and AI (하이퍼스케일러 CapEx $400B+, +75%, 그리드 lead time 7~10년)

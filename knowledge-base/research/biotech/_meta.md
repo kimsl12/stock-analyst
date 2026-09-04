@@ -1,13 +1,13 @@
 ---
 sector: biotech
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
 l1_index_count: 16
-l2_summary_count: 7
+l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 4
 ---
@@ -51,6 +51,7 @@ deep_dive_priority: 4
 
 ## L2 월간 요약 목록
 
+- 2026-09 `wegovy_semaglutide_mash_fda_202609.md` — FDA Wegovy(세마글루타이드 2.4mg) 비경변성 MASH(F2-F3) 가속승인(2025-08) — 첫 GLP-1 간질환 적응증, ESSENCE 72주 MASH 관해 63% vs 위약 34%(+29%p)·섬유화 개선 37% vs 22% + 미국 MASH ~6%(1,500만명), Rezdiffra 이후 두 번째 (GLP-1 심대사→간질환 확장 축)
 - 2026-08 `oral_glp1_competition_h1_2026_202608.md` — 경구 GLP-1 경쟁: Wegovy Pill(경구 세마글루타이드 25mg) 2025-12 승인/2026-01 출시 ~16.6% 감량 vs Foundayo(오포글리프론) 첫 소분자 + GLP-1 비만 4제형(2026-07-30) + 지데삼티닙 ROS1 NSCLC(2026-07)
 - 2026-06 `rasolute_302_daraxonrasib_asco_202606.md` — ASCO 2026 Plenary RASolute 302 daraxonrasib(범-RAS) 전이성 췌장암 2차 mOS 13.2 vs 6.7개월, HR 0.40 (RVMD)
 - 2026-05 `veppanu_vepdegestrant_fda_202605.md` — FDA Veppanu (vepdegestrant) PROTAC 첫

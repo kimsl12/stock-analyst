@@ -1,13 +1,13 @@
 ---
 sector: defense
 created: 2026-05-12
-last_updated: 2026-08-08
+last_updated: 2026-09-05
 status: active
 related_industry_kb:
   - knowledge-base/industry/defense_industry.md
   - knowledge-base/macro/geopolitics.md
 l1_index_count: 6
-l2_summary_count: 2
+l2_summary_count: 3
 l3_deep_dive_count: 0
 deep_dive_priority: 6
 ---
@@ -18,7 +18,9 @@ deep_dive_priority: 6
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-- (L1 첫 수집 후 보강 예정 — 본 섹션은 status=active 전환 시 작성)
+- **NATO 5% GDP 목표 이행 → 조달 중심 유럽 재무장**: 2025 헤이그 합의(3.5% 전통국방+1.5% 광의안보, 2035 시한·2029 검토) 이행 국면. 2025 31개 동맹 전원 2% 달성(2022 7/29→전원), 유럽·캐나다 실질 +54%(2022~25), 장비지출 13%(2014)→~32%(2025). SIPRI 2025 글로벌 군사비 $2.89조(유럽 +14%, 미국 -7.5%). → 방산 대형·한국 방산 유럽 다년 수주 채널. (L2: nato_5pct_spending_ankara_summit)
+- **저가·대량 드론 위협 + counter-UAS 조달 과소투자**: CNAS 'Countering the Swarm' — 다층 능동방어(HPM·저가 요격·AI C2) 권고. 대드론·자율·EW 방산 신규 수요. (L2: counter_uas_drone_swarm_cnas)
+- **미·일 동맹 재편 + 미사일 공동개발**: 일본 방위비 GDP 2% 조기 + 미국 동맹 5% 새 기준 + AMRAAM/SM-3 공동개발. (L2: us_japan_alliance_csis)
 
 ## 종목 매핑 (커버 유니버스)
 
@@ -69,6 +71,7 @@ deep_dive_priority: 6
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-09 `nato_5pct_spending_ankara_summit_202609.md` — NATO 5% GDP 목표(3.5%+1.5%) 이행: 2025 31개 동맹 전원 2% 달성·유럽 실질 +54%(2022~25)·장비지출 32% + SIPRI 글로벌 군사비 $2.89조(유럽 +14%, 미국 -7.5%), 앙카라 서밋(2026-07) 로드맵 → 유럽 재무장 조달 중심·방산 다년 수주 채널
 - 2026-08 `counter_uas_drone_swarm_cnas_202608.md` — CNAS 'Countering the Swarm': 저가·대량 드론이 미국 제공권 독점 무력화 + counter-UAS 조달 과소투자 → 다층 능동방어(HPM 양산·저가 요격 비축·AI C2·전군 훈련) 권고 → 대드론·자율·EW 방산 신규 수요 채널
 - 2026-06 `us_japan_alliance_csis_202606.md` — CSIS US-Japan 동맹 우선순위: 일본 방위비 GDP 2% 조기 + 미국 동맹 5% 새 기준(군사 3.5%+안보 1.5%) + 미사일 공동개발(AMRAAM/SM-3)
 
