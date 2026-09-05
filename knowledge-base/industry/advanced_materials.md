@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-29
-valid_until: 2026-09-28
+updated: 2026-09-05
+valid_until: 2026-10-05
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -201,8 +201,8 @@ sources:
     Benchmark Minerals,
   ]
 confidence: high
-last_synced_from_db: 2026-08-29
-db_records: 479
+last_synced_from_db: 2026-09-05
+db_records: 491
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -211,6 +211,27 @@ db_records: 479
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.09.05 핵심 변화 요약 (8/29→9/5 윈도우)**:
+>
+> 1. **[중대·신규] 희토류 — USA Rare Earth-Serra Verde 합병 완료(9/3)로 아시아 외 유일 완전통합 플랫폼 출범 + 中내 9/3 가격(NdPr $131.02/kg -1.98%·Dy $239.12/kg +3.36%·Tb $1,097.08/kg +0.22%) + MIIT 하반기 쿼터 3개월 지연(전례없는 불투명) + 11/10 유예종료 D-66** — **USA Rare Earth(USAR)가 9/3 Serra Verde Group 합병 완료 발표(GlobeNewswire 9/4, 8/28 주주표결 후) — 08.29 KB의 오프테이크·주주표결 예고가 합병완료로 구조 확정. Serra Verde Pela Ema 광산(브라질 Goiás)은 아시아 외 유일 4대 자석 및 기타 중희토 스케일 생산자(2024.1 생산개시): Stage 1 ~4,000 tpa TREO(총희토산화물) by end 2026 → Stage 2 6,400 tpa TREO commissioning 12개월 내(Phase 2로 run-of-mine 배증 잠재). 결합체는 아시아 외 유일 완전통합(채굴-정제-금속화-자석) 희토류+영구자석 플랫폼(美-브라질-英). USAR Stillwater(오클라호마) 소결 NdFeB 자석 Phase 1a 600 MTPA by Q4 2026·Phase 1b 총 1,200 MTPA Q1 2027.** 中내 벤치마크(9/3): **NdPr alloy $131.02/kg(8월 대비 -1.98%)·Dy metal $239.12/kg(+3.36%)·Tb $1,097.08/kg(+0.22%)** — NdPr 금속·Pr 금속·NdPr alloy가 5월 이후 처음 동반 하락(-2.54%/-2.37%/-1.98%), Dy·Tb 디커플링(Dy↑·Tb 플랫)으로 8월 동조 이탈. **ACREI 지수 259.1(8/18)이 확인된 최근치, 8/19~9/3 신규 프린트 미확인(→confidence medium). MIIT 하반기 채굴·제련 쿼터가 통상 6-7월 윈도우 대비 ~3개월 지연·9월 시점까지 미발표(전례없는 가격 시그널 불투명)로 9월 시장 불확실성 주요 촉매.** **2025.10.9 확대통제(SmCo·Tb/Dy 함유 NdFeB 자석·0.1% 미량 中원산지 함유 부품까지, 역외 적용) 12개월 유예가 2026.11.10 종료(9/5 D-66) — 미연장 시 5개 추가 희토류+역외 0.1% 룰 자동 재시행, '연중 캘린더상 가장 명확한 단일 날짜'가 최대 forward 리스크** [GlobeNewswire/Simply Wall St(USAR-Serra Verde 9/3-4), rare-earth-mining/RareEarthExchanges/MacroMicro(9/3 가격), rare-earth-mining/China Briefing/Benchmark Minerals(쿼터 지연), mining-technology/InvestorNews/Carra Globe(11/10)]
+>
+> 2. **[신규] Energy Fuels — 화이트메사밀 $104M 중희토 확장 착공(7월말)·Tb옥사이드 99.9% 주당 ~1kg·상업 Dy/Tb/Sm Q4 2026 목표·Phase 2 연 NdPr 6,300t·Tb 80t·Dy 288t** — Energy Fuels(NYSE: UUUU)가 유타 화이트메사밀서 $104M 확장 착공(2026.7월말)으로 Dy·Tb 등 중희토 산화물 상업규모 생산 추진. 현재 99.9% Tb 산화물 주당 ~1kg 생산(美 수십년 만의 첫 1차 Tb 생산). 상업 Dy/Tb/Sm 조기 Q4 2026 목표(단 일부 소스는 Phase 2 permit 2027·commissioning 2028말~2029초로 시점 이견 → confidence medium). Phase 2 연 NdPr ~6,300t·Tb 80t·Dy 288t 목표 — 08.29 KB의 Energy Fuels Tb 상업인증 진전이 실물 확장 착공으로 이어짐 [Metal Tech News/Crux Investor/Energy Fuels IR]
+>
+> 3. **MP Materials — GM 인증용 자석 인도·첫 상업인도 Q4 2026, 10X 착공 가속(2028 commissioning ~7,000t/y + Independence 3,000 = 총 10,000t/y)** — 자석 GM 차내 인증·규제시험용 인도, 첫 상업인도 Q4 2026 기대. 10X 시설 착공 가속·2028 commissioning·연 ~7,000MT 자석 생산 추정, Independence 3,000MT 합산 총 10,000MT/y. 10X에 주·지방 인센티브 $200M+(텍사스 반도체혁신펀드 포함)·국방부 100% 오프테이크. Q2 2026 NdPr +41%·매출 $108.5M, Q3 NdPr >1,000MT 가이드·NdPr oxide high $90s/kg(재확인) [Investing.com/MP Materials IR/Rare Earth Exchanges]
+>
+> 4. **폴리실리콘 232 — 12/4/2026 발효 재확인 + 온쇼어링 관세면제 프로그램(2029.1.20까지 착공 자격)·韓/日/대만/EU 15% cap·英 10%** — 232 폴리실리콘·파생 12/4/2026 발효: 15% 종가세+MIP(폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·셀 $0.22/W·모듈 $0.38/W), MIP 미준수 인증 위반 시 영구 수입금지. **온쇼어링 관세면제 프로그램: 美 폴리실리콘·잉곳·웨이퍼·셀 생산시설 건설/개보수/확장 계획이 2029.1.20까지 착공 시 자격(Commerce 심사) — 한화큐셀 등 美 온쇼어링 메이커 수혜 논리 강화.** 韓·日·대만·스위스·EU는 Column1+232 합산 15% cap, 英 10%, 8/6/2026 이전 확정계약 인증 필요. 세부는 semiconductor.md [White & Case/BDO/Wiley/Crane Trade Advisory]
+>
+> 5. **리튬 — 中 배터리급 ~¥152,000/t(9/5)로 8월 ¥148,000서 상승 지속** — 中 탄산리튬 ~¥151,988/t(9/5, Trading Economics)로 8월 스팟 평균 ¥148,000/t(8/12 SMM)·LC2609 선물 8/12 15만 돌파 후 상승 흐름 유지. 5월 ~¥199,000서 하락 후 재고재축적 종료·다운스트림 수요로 반등. [주의: 시리즈·그레이드별 상이(Benchmark CIF아시아·SMM 中내 스팟·GFEX 선물 혼재) — 가격레벨 confidence medium·상승방향 confidence high]. 리튬 반등이 단기 Na-ion 코스트 인센티브 재강화 [Trading Economics/SMM/CEIC]
+>
+> 6. **[신규] 탄소섬유 — Hexcel Q2 2026 매출 $529.3M(+8% YoY)·조정 EPS $0.66(+32%)·복합재 마진 16.8%, FY 가이던스 상향($2.025-2.125B·EPS $2.30-2.40) + Boeing 공급계약 연장·SLC 라인 연말 재가동** — Hexcel(HXL) Q2 2026: 매출 $529.3M(+8.0% YoY)·조정 희석 EPS $0.66(+32%)·복합재 세그먼트 조정 영업마진 16.8%(전년 14.1%). A350·787 와이드바디+737 MAX/A320/A220 빌드레이트 상승 견인(세그먼트 매출 +18.3%). FY2026 가이던스 상향(매출 $2.025-2.125B·조정 EPS $2.30-2.40·FCF $195M+). **Boeing 상용·방산·우주 공급계약 연장(08.22 KB의 Hexcel-Boeing 장기계약 후속)·솔트레이크시티 유휴 탄소섬유 라인 1개 연말 재가동(팬데믹 후 복귀 4개 중 3번째)·목표레이트 달성 시 연 ~$500M 증분매출 잠재** [Motley Fool/Investing.com/The Globe and Mail]
+>
+> 7. **초전도 [시장 정량화 갱신] — HTS wire 시장 $815M(2026)→$1.6B(2034), CFS SPARC 18개 HTS 자석 중 1번째 설치(1월·24톤·20T), SPARC 총 10,000km HTS 소요** — 글로벌 HTS(고온초전도) wire 시장 ~$815M(2026)→$1.6B(2034), 단 핵융합 수요가 타임라인 압축 가능(08.29 KB의 '2027까지 10배 성장' 정성 전망과 정합). CFS SPARC(Devens MA): 18개 HTS 자석 중 1번째 설치(2026.1)·각 24톤·20테슬라(MRI ~13배), SPARC 총 10,000km REBCO 테이프 소요·공급 병목. First plasma ~2026 목표·net energy 이듬해 [TechTicker/Magnetics Magazine/IEEE Spectrum/CFS blog]
+>
+> 8. **CNT [시장 정량화 갱신] — CNT 시장 $2.7B(2026)·MWCNT ~68%, 전고체용 CNT 도전재 CAGR 25.0%(~2031), LG화학 4공장 6,100t/y** — 글로벌 CNT 시장 ~$2.7B(2026, 08.22 KB $1.78B는 배터리향 세그먼트 기준·본건은 전체시장 기준으로 스코프 상이), MWCNT ~68% 점유. 전고체 배터리용 CNT 도전재 CAGR 25.0%(~2031). LG화학 대산 4번째 CNT 공장 6,100톤/y·SWCNT 도전재 카본블랙 대체·도전율 ~10% 개선·첨가제 투입 최대 -30%. SWCNT가 Si계 음극 부피팽창 관리·사이클수명·급속충전 개선 [Persistence Market Research/Research and Markets/Global Info Research/LG Chem]
+>
+> 9. **한국 소부장 — 희토 영구자석 재활용 시범 2026.8~2027.8(연 4만대→~1.6t, 전국 300만대 적용시 최대 120t)·성림첨단산업 일괄공정·2027 국내 자급 원료 목표** — 08.27 MOU 후속: 기후에너지환경부 폐에어컨·폐냉장고 냉매압축기 희토 영구자석 분리·회수 시범사업 2026.8~2027.8(~1년) 추진, 연 ~4만대서 ~1,600kg(~1.6t) 회수 전망, 전국 연 ~300만대 폐가전 동일 적용시 최대 120톤 회수 가능 분석. 성림첨단산업이 정부과제로 폐자석 수거-정련-재활용 일괄공정 구축·2027년경 국내 자급 원료 확보 목표 [아주경제/그린포스트코리아/더나은미래]
+
 
 > **2026.08.29 핵심 변화 요약 (8/22→8/29 윈도우)**:
 >

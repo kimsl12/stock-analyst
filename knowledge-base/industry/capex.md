@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-29
-valid_until: 2026-09-28
+updated: 2026-09-05
+valid_until: 2026-10-05
 sector: capex
 confidence: high
 tags:
@@ -185,13 +185,23 @@ sources:
     wccftech,
     ServeTheHome,
   ]
-last_synced_from_db: 2026-08-29
+last_synced_from_db: 2026-09-05
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-08-29 | 신뢰도: high | 유효: ~2026-09-28
+> 갱신일: 2026-09-05 | 신뢰도: high | 유효: ~2026-10-05
 
+---
+
+## ★ 주간 델타 (9/5) — 직전 갱신(8/29) 이후 변화
+
+- **[핵심] Broadcom Q3 FY26 블로우아웃(9/2) — AI반도체 $16.7B(+221%)·FY2027 AI $115B/FY2028 $230B로 대폭 상향(직전 $100B FY27 목표 초과)**: Broadcom Q3 FY2026 확정(9/2): 총매출 **$29.6B(+86% YoY**, 직전 KB Q3 가이던스 $29.4B 상회), 영업이익 +92% YoY, 영업이익률 **역대 68%**. **AI 반도체 매출 $16.7B(+221% YoY**, 직전 가이던스 $16.0B 상회). **FY2026 AI 반도체 $58B(+186% YoY)**. **Q4 FY26 AI 가이던스 $21.7B(+236% YoY)**. CEO Hock Tan이 AI 반도체 매출 가시성(line of sight)을 **FY2027 $115B·FY2028 $230B**로 제시 — 직전 KB의 'FY2027 AI칩 $100B' 목표를 대폭 상향. 커스텀 XPU(Google TPU·Meta MTIA·OpenAI·Anthropic)가 견인, CapEx 슈퍼사이클 커스텀실리콘 축의 최상단 검증 [CNBC, 247WallSt, Seeking Alpha, Yahoo Finance, Investing.com]
+- **[핵심] BIS '순환금융'을 3대 금융안정 리스크로 공식 지목 + NVIDIA 오하이오 $105B 백스톱 — 서킬러 파이낸싱 격화**: BIS(국제결제은행) 2026 연차보고서가 **순환금융(circular financing)·AI capex 붕괴·국가부채 취약성**을 글로벌 금융안정 3대 리스크로 지목. **NVIDIA가 오하이오 Pike County 10GW DC 캠퍼스에 최대 $105B 파이낸싱 백킹**(NVIDIA 신용으로 OpenAI가 부채 조달, 8/17 발표) — 당초 최대 $250B 백스톱 논의→<$120B→$105B로 조정. 'NVIDIA가 자사 칩을 매입할 시설을 사실상 자금지원'하는 순환구조 비판(Jim Cramer '닷컴버블 회귀' 경고). 원 $100B LOI(2025.09)는 2026.02 무산→NVIDIA가 OpenAI $110B 라운드에 $30B 지분 참여로 대체된 이력 [BIS 2026 Annual Report, CNBC, Axios, Benzinga, Bloomberg]
+- **하이퍼스케일러 회사채 2026 YTD ~$244B(2025 2배)·히든차입 ~$1.65T + MS '5사 2026 capex ~$805B'**: Amazon·Alphabet·MSFT·Meta·Oracle 2026 YTD 회사채 발행 **~$244B**(2025 연간 $108B의 2배+), S&P Global은 NVIDIA 등 포함 ~$225B 집계 — 사상 최대 페이스. **단일 멀티트랜치 ~$53B(사상 최대급)+100년물(century bond) 포함**. Fortune(7/31): 오프밸런스시트 등 '숨겨진 차입' **~$1.65T**로 폭증(직전 KB SPV $120B는 4사 협의 집계, $1.65T는 광의). Morgan Stanley — **5대 하이퍼스케일러 2026 capex ~$805B**(2024 $261B의 3배+), 2027 개별 컨센 합산 ~$934.5B(Google $284.8B·Amazon $256.5B·MSFT $207.6B·Meta $185.6B), GS 2027 **$1.01T(+32% vs 2026 $765B)** [Cryptobriefing, S&P Global, Fortune, Morgan Stanley, Goldman Sachs, valueaddvc]
+- **WFE 전망 추가 상향 — Wells Fargo 2027 $190B·TEL $150-170B/년, MS AMAT 'Overweight' 상향·KLA 하향**: Wells Fargo가 2027 WFE를 **~$190B(기존 $180B)**·2028 $216B(기존 $191B)로 상향. Morgan Stanley 2026 글로벌 WFE $122B→**$128B(+10% YoY**, MS 협의 정의). **Tokyo Electron 최강세 — CY2026·2027 WFE 연 $150-170B** 제시. Lam ~$40B NAND 전환투자 대부분을 2027말 이전으로 pull-forward, AMAT CY2026 반도체 장비 +30%+ 재확인. **MS 투자의견: AMAT 'Overweight' 상향·Lam 'Equal-weight' 상향·KLA 'Equal-weight' 하향**. 사이클이 AI가속기 넘어 로직·DRAM·어드밴스드패키징으로 확장(broadening) 지속. 주: 소스별 WFE 정의 상이(SEMI 미드이어 $143.9B vs MS 협의 $128B) [Wells Fargo, techstock01, marklapedus, Futurum]
+- **전력 병목 GE Vernova Prolec 인수로 변압기 지배 + Stargate 미시간 추가로 8GW+/$450B**: GE Vernova가 **Prolec 인수로 변압기 시장 지배력 강화** — 가스터빈(전력갭 최대 해소 레버)+변압기+그리드 동시 지배, Electrification 부문 DC 주문 H1 2026 **$5B+(2025 연간 2배+)**. MS 미국 DC 2026-28 ~68GW 필요 vs **~38GW 갭**, 변압기 3-5년·스위치기어 2028까지 완판, 2026 미국 DC 30-50% 지연/취소. **OpenAI Stargate: 미시간 추가로 계획 용량 8GW+·3년 투자 $450B+**(신규 5개 사이트 ~7GW·$400B, NVIDIA 오하이오 Pike County 10GW $105B 백킹 별도). AI 최대 병목이 반도체→전력으로 이동 [Yahoo Finance, Motley Fool, 247WallSt, Data Center Frontier, OpenAI]
+- **NVIDIA 주문백로그 ~$500B(2026 $300B 인식)·Rubin GW당 $40B + AMD Helios 볼륨 출하**: Jensen Huang — Blackwell·Rubin·네트워킹 합산 **주문 백로그 ~$500B, 이 중 ~$300B가 2026 매출 인식** 전망(supply-constrained). **Vera Rubin GW당 매출기회 $40B**(Hopper $18B·Blackwell $25B 대비 2배+). 주: 이 $500B는 8/29 KB CFO '백로그 $2T+'(전체 AI 인프라 기회)와 다른 개념(특정 제품군 확정 주문). **AMD Helios 랙스케일(8월 공개, EPYC 9006+Instinct MI455X+Pensando+ROCm) 클라우드向 볼륨 출하 개시** — 구조적 2nd 소스가 랙 단위 통합솔루션으로 격상, 듀얼소싱 강화 [I/O Fund, Tom's Hardware, tech-insider, siliconanalysts]
 ---
 
 ## ★ 주간 델타 (8/29) — 직전 갱신(8/22) 이후 변화
@@ -376,7 +386,7 @@ Stargate ~10GW($500B): 조지아 $30B+ 3.2GW 신규+OpenAI-Oracle 4.5GW 추가($
 - **한국**: 장비투자 $29.7B (42조원, +27.2% YoY) — 세계 2위 (중국 다음) [전자신문]
 - **HBM 시장**: BofA **$54.6B(+58% YoY)** [BofA]
 - **AI 가속기 시장**: **$200B+**(2026E). **[8/29 갱신] NVIDIA Q2 FY27 확정(8/26): 총매출 $96.22B(+106%)·DC매출 $89B(+117% YoY, 전사 92%)·Q3 가이던스 $108B±2%·백로그 $2T+·Vera Rubin 8월초 출하(무공백 핸드오프)·ACIE $40.3B(+138%)·CFO FY28 매출성장 70%·하이퍼스케일러 capex 2026 >$800B/2027 top5 $1.3T 시그널**. Q1 FY27 DC매출 $75.2B(+92% YoY, +21% QoQ), FY2026 DC 매출 **$193.7B**. AI가속기 점유 **~70-75%**(2024 피크 ~87%에서 하락). **AMD DC $5.8B(+57% YoY)** — EPYC+Instinct MI350(HBM3E 288GB). HSBC AMD AI칩 연 ~$15B 전망. 점유 5-7% [NVIDIA IR, CNBC, 247WallSt, AMD IR, SiliconAnalysts]
-- **Broadcom AI**: **Q2 FY26 총매출 $22.2B(+48%, 역대최고), AI 반도체 $10.8B(+143% YoY)**. adj EBITDA $15.2B(+52%, 매출 69%). **AI 반도체 부킹 $30B+ 초과**(수요 가시성 확장). Q3 가이던스 AI $16.0B(+200%), 총매출 **$29.4B(+84%)**, OPM 67%. CEO Hock Tan FY2027 AI칩 **$100B** 재확인. XPU 커스텀ASIC(Google/Meta/OpenAI/Anthropic) [Broadcom IR, Motley Fool]
+- **Broadcom AI [9/5 갱신 — Q3 FY26 확정(9/2)]**: **Q3 FY26 총매출 $29.6B(+86% YoY, 역대최고), AI 반도체 $16.7B(+221% YoY)**, 영업이익률 **역대 68%**. **FY2026 AI 반도체 $58B(+186%)**. **Q4 FY26 AI 가이던스 $21.7B(+236% YoY)**. CEO Hock Tan **AI 반도체 line of sight FY2027 $115B·FY2028 $230B**(직전 'FY27 $100B' 목표 대폭 상향). XPU 커스텀ASIC(Google TPU·Meta MTIA·OpenAI·Anthropic). (직전 Q2 FY26: 총매출 $22.2B(+48%)·AI $10.8B(+143%)·부킹 $30B+) [CNBC, 247WallSt, Seeking Alpha, Broadcom IR]
 
 ### 핵심 트렌드
 

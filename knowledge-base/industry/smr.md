@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-29
-valid_until: 2026-09-28
+updated: 2026-09-05
+valid_until: 2026-10-05
 category: industry
 sub_category: science_tech
 topic: smr
@@ -46,17 +46,17 @@ sources:
   - 혁신형SMR기술개발사업단 / 한수원 (i-SMR)
   - yfinance (주가 스냅샷)
 confidence: high
-last_synced_from_db: 2026-08-29
+last_synced_from_db: 2026-09-05
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
 
 ## CURRENT
 
-> 이번 주(8/22 -> 8/29) 핵심 변화: **미국 SMR 개발주 밸류 리셋 지속 vs 한국 두산 독보 강세**. **Oklo+NuScale 연초대비 합산 -85.3%**(Motley Fool 8/27) -- 8/18 급락->8/25 오버솔드 반등->8/28 재하락 whipsaw. BofA "실제 SMR 채택 2030년+·유의미 2035~2040"+무매출·주주희석·연초 과대평가 정상화가 원인. **Oklo: DOE가 Groves 시험로 startup authorization(가동승인, 8/25)+첫 Aurora 원자로 설계·건설·운영 지원 협약** -- 규제·부지 진전에도 주가 $40.14(8/28, -5.62%). **NuScale: Paragon HIPS 최종설계 계약+Curio·Framatome 폐쇄형 연료 MOU(8/6)로 안전계통·연료 공급망 강화**. **BWXT-Applied Atomics mPower SMR 상용화 독점권 계약(NRC 설계인증 재개)** -- 2017 중단 IP 재활성화. **TerraPower: 연내 2호기(AI 데이터센터 원자로) 딜 공개 예고·2027 착공+Sabey Data Centers 협력** -- 용융염 저장이 DC 경쟁우위. **한국: 빌게이츠 방한(8/13)發 SMR 동맹 훈풍 -- 두산에너빌리티 73,300(8/21)->85,900원(8/27) 주간 +17.2% 급등**, HD현대·SK·현대건설 테라파워 동맹 강화. **우라늄 스팟 $90/lb 돌파($90.39, 8/28)** -- 유틸 장기공급 확보·BofA $130 목표 유지. 스톡(8/28): OKLO $40.14·NuScale $9.29·XE $17.22·BWXT $152.85·Centrus $175.78·Cameco $100.01·두산 85,900원(8/27). 핵융합 신규 메가딜 없음(CFS SPARC net gain 2026 후반·TAE He-3 유지).
+> 이번 주(8/29 -> 9/5) 핵심 변화: **원자력·SMR 섹터 광범위 랠리(9/2~9/4) -- DOE 대출 지원 시그널發**. 美 에너지장관이 의회에 "첫 5~10기 신규 원자로가 거의 확실히 DOE 대출 수혜" 발언+AI 데이터센터 전력수요가 촉매. **NuScale 9/4 약 +16%(8월말 TVA-ENTRA1 6GW 딜 이후 누적 +25%)**·Oklo 9/2 장중 +8% $43.05 반등 주도·NANO Nuclear +5%. **BWXT: 美 육군 Janus 프로그램 선정(8/26) -- 20MWe BANR 마이크로리액터 Fort Campbell 배치(2030년대 초)+BWXT Medical을 Nordic Capital에 최대 $800M 매각 계획(원자력 집중)**. **Rolls-Royce SMR-ČEZ 체코 첫 SMR Early Works Contract 체결(Temelin, 최대 3GW)** -- 8월 MOU서 격상. **Westinghouse IPO 절차 착수(S-1 비공개 제출, 잠재 밸류 ~$30B, Cameco 49%)**. **한국: SMR 특별법 9/11 시행 예정·첫 i-SMR 부지 선정 임박(경주 유력)** -- 두산에너빌리티는 빌게이츠 스파이크 되돌림(88,200 8/28 -> 79,200원 9/4). **우라늄 스팟 $89~90/lb 유지($89.32 9/1·$89.49 9/3)** -- Kazatomprom 감산·Cameco 운영차질로 구조적 공급부족 심화·Sprott 미너 랠리. 스톡(9/4): OKLO $39.84·NuScale $9.75·XE $17.88·BWXT $160.25·Centrus $170.46·Cameco $100.62·NANO $17.65·두산 79,200원·HD현대重 436,500원. 핵융합 신규 메가딜 없음(CFS SPARC net gain 2027·TAE He-3 유지).
 
-<!-- ARCHIVE 8/22 -->
-> (8/15 -> 8/22 이전 핵심): **한국 기업 SMR 밸류체인 계약 러시** -- **두산에너빌리티, 美 테라파워 SMR 핵심 기자재 실제 제작 계약 체결(8월)** -- 2024.12 설계검토 계약이 제작 계약으로 발전(지난주 KB '하반기 확정 여부 관건'이 실현), 나트륨 보호용기·지지구조물·내부구조물 제작 후 Kemmerer(345MW) 공급, **NH투자증권 목표가 130,000원 상향·매수**. **TerraPower, 현대건설(HDEC)과 최대 8기 Natrium EPC 파트너십(완공·가격·성능 보증) + SK이노베이션과 한국 첫 Natrium 배치 텀시트(ANS 8/17)** -- 한국 시장 본격 진입. **X-energy: DOE가 Long Mott(Seadrift)에 추가 $1B 통지 -> Seadrift 총 $2.15B DOE 지원 + 테네시주 $11M 보조금(ANS 8/17)**. **Oklo: DOE INL 부지사용허가+HALEU 5MT 배정, 애널리스트 TP 하향(8/11 Canaccord $100·Citi $57.50)로 주가 약 -8%**. **TAE: Black Moon Energy와 헬륨-3(He-3) 공급 협약(8/5)·첫 발전소 Da Vinci 50MWe 2031 목표**. 우라늄 스팟 **$88.29/lb(8/20)·$87.55(8/19, +1.10%)**로 박스권 상단 소폭 돌파(공급 타이트닝+AI DC 계약). 스톡(8/21 종가): OKLO $42.09·NuScale $9.40·XE $18.67·BWXT $156.78·Centrus(LEU) $186.26(+5.75%)·Cameco(CCJ) $102.51(+7.24%, 우라늄 강세)·**두산에너빌리티 73,300원(-3.43%, 8/14 82,600서 차익실현)**. BWXT Q2(8/3) EPS $1.07 비트·가이던스 재상향·컨센 TP $234.45. 핵융합 신규 메가딜 없음(CFS $4B·SPARC ~75%·first plasma 2026 유지). KSTAR 300초·ITER 진행 기존 유지.
+<!-- ARCHIVE 8/29 -->
+> (8/22 -> 8/29 이전 핵심): **미국 SMR 개발주 밸류 리셋 지속 vs 한국 두산 독보 강세** -- Oklo+NuScale 연초대비 합산 -85.3%(Motley Fool 8/27). **Oklo DOE Groves 가동승인(8/25)+첫 Aurora 설계·건설·운영 지원 협약**(주가 $40.14 8/28). **NuScale Paragon HIPS 최종설계 계약+Curio·Framatome 폐쇄형 연료 MOU(8/6)**. **BWXT-Applied Atomics mPower SMR 상용화 독점권 계약**(2017 중단 IP 재활성화). **TerraPower 2호기(AI DC 원자로) 연내 딜 공개 예고+Sabey Data Centers 협력**. **한국 빌게이츠 방한(8/13)發 SMR 훈풍 -- 두산 주간 +17.2% 급등(85,900원 8/27)**. 우라늄 스팟 $90/lb 돌파($90.39 8/28). 스톡(8/28): OKLO $40.14·NuScale $9.29·XE $17.22·BWXT $152.85·Centrus $175.78·Cameco $100.01. 핵융합 신규 메가딜 없음.
 
 ---
 
@@ -115,9 +115,9 @@ last_synced_from_db: 2026-08-29
 
 | 지표                     | 수치                                                                | 출처                                    |
 | ------------------------ | ------------------------------------------------------------------- | --------------------------------------- |
-| 우라늄 스팟 가격         | **~$90.39/lb (8/28, U3O8)·선물 ~$89.55** -- $90 상단 돌파(8/20 $88.29서 상승) | metalcharts / tradingeconomics / TradeTech |
+| 우라늄 스팟 가격         | **~$89.32/lb (9/1)·~$89.49/lb (9/3, U3O8)** -- $90 상단 인근 강세 유지(8/28 $90.39서 보합) | carboncredits / metalcharts / tradingeconomics |
 | Cameco 2026 실현가       | **$85~89/lb** (가이던스, 매출 $3.13~3.37B 유지)                     | Cameco                                  |
-| Cameco 주가 (CCJ)        | **$100.01** (8/28, -5.94% 당일이나 우라늄 $90 돌파로 구조 강세)     | yfinance                                |
+| Cameco 주가 (CCJ)        | **$100.62** (9/4, +4.40% -- 우라늄 강세·Westinghouse 49% 보유)     | yfinance                                |
 | 7월말 스팟               | $86.36/lb                                                           | Cameco                                  |
 | 2026.01.29 연중 최고가   | **$101.41/lb** (YTD 고점)                                           | INN                                     |
 | 2026 변동 레인지         | $80 ~ $101.41/lb (지정학·안전자산 선호로 등락)                      | INN / DiscoveryAlert                    |
@@ -131,7 +131,7 @@ last_synced_from_db: 2026-08-29
 - 러시아 우라늄 수입금지(2024.05) 이후 자국 농축 역량 확대가 급선무
 - HALEU는 SMR 설계의 50% 이상이 요구하는 핵심 연료 (5~20% 농축)
 - Centrus Energy(LEU)가 유일한 미국 상업 HALEU 생산자, 기술솔루션 부문 매출 +47%(HALEU 수요)
-- **우라늄 스팟 $90/lb 돌파 (8/28) [업데이트]**: **U3O8 스팟 ~$90.39/lb(8/28, -0.21% 당일)·선물 ~$89.55** -- 8/20 $88.29서 상승, 심리적 **$90 상단 돌파**(소스간 편차 존재). 유틸리티가 조용히 장기공급 확보 + AI 데이터센터 전력수요發 계약 급증이 상승 견인. **BofA 여전히 $130/lb 목표 유지**(Cameco 경고지표). ANS "강세 전망 속 공급 의문" 부각·Motley Fool 8/26 '차기 슈퍼사이클 前 우라늄주 매수' 부각. 우라늄주는 스팟 강세 반영하나 8/28 시장 조정에 CCJ $100.01(-5.94%)·LEU $175.78(-9.75%) 당일 동반 하락(구조 강세 vs 단기 차익실현 병존) [metalcharts/tradingeconomics/ANS article-8000/BofA/Motley Fool]
+- **우라늄 스팟 $89~90/lb 강세 유지 (9월 초) [업데이트]**: **U3O8 스팟 ~$89.32/lb(9/1)·~$89.49/lb(9/3)** -- 심리적 **$90 상단 인근**서 강세 유지(8/28 $90.39서 보합). **Kazatomprom 2026 생산 하향+Cameco 운영차질(Key Lake/McArthur River 홍수 복구·Cigar Lake 일시중단)發 구조적 공급부족 심화**. **Sprott: 우라늄 미너 강세 랠리·자금유입**(Northshore Global Uranium Mining Index 큰 폭 상승). **WNA 원자로 수요 2040년까지 2배+ 전망**(SMR·신규 진입사). **BofA 여전히 $130/lb 목표 유지**. Cameco 2026 생산 가이던스 **19.5~21.5Mlb 유지**·주가 CCJ $100.62(9/4, +4.40%) [carboncredits/metalcharts/Sprott/Cameco 6-K/BofA/WNA]
 - **Centrus HALEU 현황 (8/15~8/22, 대부분 기존 유지) [업데이트]**: DOE $900M HALEU 농축 계약(총 잠재 ~$1.07B)+X-energy LEU·HALEU 공급계약(8/6, 2030 납품·선급금)으로 계약조건부 LEU+HALEU 백로그 **$3.0B**. **Geiger Brothers를 오크리지 농축플랜트 대규모 증설 시공사로 선정**, 오크리지 **첫 신규 원심분리기 2026말 완공 예정**. 미국 유일 상업 HALEU 생산자 데모->상업 전환 진행 [Centrus/StockTitan/ANS article-8180/SEC 8-K]
 - **General Matter 공급망 확장 [기존 유지]**: DOE $900M 10년 마일스톤 계약(1월)+켄터키 Paducah 부지 임대. 美 수출입은행 LOI **최대 $4.2B** 부채금융으로 **일본·한국이 향후 10년 General Matter서 원자력연료 직접구매** 지원(3월). Centrus 외 두 번째 자국 HALEU 공급원
 - **Urenco 미국 농축시설 능력 ~50% 증설 (6월) [기존 유지]**: 단 미국 농축 4개 선정사 중 Urenco USA는 유일한 상업 가동 농축사이나 **DOE task order 미수령**
@@ -173,7 +173,7 @@ last_synced_from_db: 2026-08-29
 - **모듈 제조**: Albuquerque 제조 캠퍼스에서 모듈 제작 후 현장 조립
 - **장기 계획**: Google 500MW 함대 개발 계약 (2035 목표)
 
-#### NuScale Power (미국) -- Paragon HIPS 계약+Curio·Framatome 연료 MOU(8월), ENTRA1-TVA 진전, 주가 $9.29(8/28) [업데이트]
+#### NuScale Power (미국) -- TVA-ENTRA1 6GW 딜 랠리(9/4 +16%·TVA딜 이후 +25%), Paragon HIPS 계약+연료 MOU, 주가 $9.75(9/4) [업데이트]
 
 - **Paragon HIPS 최종설계 계약 + Curio·Framatome 연료 MOU (2026.08) [신규]**: (1) Paragon(Mirion Technologies)이 NuScale Power Module용 **HIPS(고집적 보호계통) 최종 설계 완료 계약** 수주 -- 이미 12개 파워모듈 일부 부품 생산 중, 데이터센터향 SMR 배치 뒷받침. (2) **Curio·NuScale·Framatome 3자 전략 MOU(8/6)** -- Curio **NuCycle** 재활용 기술 기반 폐쇄형 연료 솔루션 평가, 미국 핵연료 공급망 강화·차세대로 배치 지원 [NuScale 보도자료/PowerMag/Yahoo/Foreign Policy Journal]
 - **NRC 인증**: 77MWe 모듈 승인 (2025.05.29), 유일한 NRC 인증 SMR 설계
@@ -181,7 +181,7 @@ last_synced_from_db: 2026-08-29
 - **ENTRA1-TVA 6GW 진전 [업데이트]**: 경영진 8월 "협의 활발·진전" 재확인, 확정계약 시 즉시 착수. TS2 보도상 TVA 계약이 ENTRA1에 최대 **$1.18B** 지급 가능성. TVA 딜 2025.09 서명. CEO Hopkins **2026년말 TVA PPA 해결 기대** 재확인(확정 보장은 없음) -- PPA가 site-specific 서비스 매출·OEM 가속·연말 흑자전환 핵심 촉매 [ts2.tech/Seeking Alpha]
 - **BofA 커버리지 재개 (late June)**: **Neutral 등급, TP $12**. NRC 인증 first-mover 규제우위 인정하나 의미있는 원자로 매출은 **2030년대 초** 경고
 - **일본 $25B SMR 투자 약속 변수 (6/15) [기존 유지]**: US-Japan 무역딜 $550B 중 일부, NuScale/ENTRA1 대상 최대 **$25B**. 추부전력(Chubu Electric) NuScale 직접 투자. 자금 메커니즘·타이밍 미상
-- **주가 [업데이트]**: **$9.29**(8/28, -4.62% -- 8/21 $9.40서 소폭 하락, 8/25 오버솔드 반등 후 재조정). **Zacks Rank #3 (Hold) / BofA Neutral TP $12 / Northland Outperform TP $19 / Citi Sell TP $9**. NRC 인증·LEU 우위·낮은 밸류 강점이나 매출 가시성은 2030년대 초 -- **TVA PPA 확정이 분수령**
+- **주가 [업데이트]**: **$9.75**(9/4, +1.99% -- 8/28 $9.29서 회복, **9/4 장중 약 +16%·8월말 TVA-ENTRA1 6GW 딜 이후 누적 +25%** 섹터 랠리 동참). Motley Fool 9/4 '고점比 -84%, 숨은 저가주인가?'+'NuScale vs Oklo 페이스오프' 부각. **BofA Neutral TP $12 / Northland Outperform TP $19 / Citi Sell TP $9**. NRC 인증·LEU 우위 강점이나 매출 가시성은 2030년대 초 -- **연내 TVA PPA 확정이 분수령**(CEO 재확인, 확정 보장 없음)
 - **그리드 공급 전략 차별화**: 데이터센터 직거래(Oklo형)가 아닌 **계통(그리드) 공급** 중심 -- 가장 큰 프로젝트가 **TVA 6GW** 그리드급 배치
 - **루마니아 RoPower 진전**: RoPower **다음 단계 진행 승인** -- Doicesti 폐석탄부지 6개 NuScale 모듈
 - **Ebara Elliott Energy MOU / Framatome 연료 파트너십(유럽+미국 Richland, 2030년대 납품)**
@@ -200,7 +200,7 @@ last_synced_from_db: 2026-08-29
 - **Fluor Seadrift EPC 계약**: Dow Chemical 텍사스 Seadrift, **4기 Xe-100**, NRC 심사 중
 - **Amazon-Energy Northwest Cascade**: 4기 Xe-100(80MW, 320MW), Richland 인근, 2030 착공. Amazon $500M 투자, 5GW 목표
 
-#### Oklo (미국) -- DOE Groves 가동승인+Aurora 설계·건설 지원 협약(8/25), 주가 $40.14(8/28) [업데이트]
+#### Oklo (미국) -- 섹터 랠리 동조(9/2 장중 $43.05 +8%), Q2 첫 매출 $1.2M·유동성 $3.0B, 주가 $39.84(9/4) [업데이트]
 
 - **DOE Groves 시험로 startup authorization + Aurora 지원 협약 (2026.08.25) [신규/핵심]**: DOE가 텍사스 Groves Isotope Test Reactor에 **가동승인(startup authorization)** 부여 -- 연료장전·시험·가동 green light(8/6 첫 임계 후속). 동시에 DOE와 **첫 Aurora 상업로 설계·건설·운영 지원 협약** 체결로 Aurora가 정부 감독하 다음 실행단계 진입. 무매출·현금소진 우려로 주가 **$40.14(8/28, -5.62%)**. 창업자가 8/7 실적발표 4일前 $10.5M 지분매각 정황 논란 병존 [StocksToTrade 8/25/Yahoo Finance/Seeking Alpha/Basisreport]
 - **DOE INL 부지사용허가+HALEU 5MT 배정 (2026.08) [기존 유지]**: DOE가 Aurora 상업 파워하우스용 **아이다호국립연구소(INL) 부지사용허가(site use permit)** 발급 + **HALEU 5MT 배정**(INL EBR-II 조사후연료 회수우라늄 기반). 첫 Aurora 파워하우스 **2028 배치 목표 유지**. 연료·부지 리스크 동시 완화 [Benzinga/CoinCentral]
@@ -214,15 +214,17 @@ last_synced_from_db: 2026-08-29
 - **INL 첫 가동 목표**: 첫 상업전력 **2027년 말~2028년 초** (DOE 패스트트래킹 가능성)
 - **파이프라인 총 ~14GW**: Switch 12GW(다수십년 PPA)·Equinix 500MW($25M 선급, 20년 PPA)·Meta 오하이오 1.2GW(Pike County, 16기 Aurora, 2030)
 - **NVIDIA 전략적 파트너십**: AI 전력 + 첨단원자력 인프라 교차점
-- **주가 [업데이트]**: **$40.14(8/28, -5.62%)** -- 8/21 $42.09서 추가 하락(8/25 오버솔드 반등 후 8/28 재하락), 피크 $193.84 대비 **-79%**. DOE Groves 가동승인·Aurora 협약 호재에도 무매출·현금소진 부담이 우위
+- **주가 [업데이트]**: **$39.84(9/4, +0.81%)** -- 9/2 화요일 장중 **$43.05(+8%)로 섹터 랠리 주도** 후 되돌림, 피크 $193.84 대비 **-79%**. 9월 신규 대형 촉매 없이 DOE 대출 시그널發 섹터 랠리에 동조. 무매출·현금소진 부담이 밸류 상단 제약
 - **애널리스트 컨센서스 [업데이트]**: TP 레인지 **$14~$140**(편차 큼). **Canaccord $100·Citi $57.50(8/11 하향)**·24/7 Wall St $97.74·Guggenheim Hold $54.06·B.Riley Buy $92·Wedbush Outperform $110·UBS Neutral $55
 
-#### BWXT (BWX Technologies) -- Applied Atomics mPower 독점권 계약(8월)·Q2 가이던스 재상향, 컨센 TP $234.45, 주가 $152.85(8/28) [업데이트]
+#### BWXT (BWX Technologies) -- 육군 Janus/BANR 마이크로리액터 선정(8/26)·BWXT Medical Nordic Capital 매각 계획, mPower 독점권, 주가 $160.25(9/4) [업데이트]
 
-- **Applied Atomics-BWXT mPower SMR 상용화 독점권 계약 (2026.08) [신규]**: Applied Atomics가 BWXT **mPower SMR 기술의 미국·캐나다 등 지상 원자력시설 상용배치 독점권** 확보 -- **NRC 설계인증 프로세스 재개**+부지별 엔지니어링 프로토콜 개발 예정. mPower는 2017년 Bechtel JV 철수로 개발 중단됐으나 BWXT가 소유권·전부품 독점 제조권 보유 -- 유휴 IP 상업 재활성화, BWXT 위탁제조 수혜 기대 [ANS Nuclear Newswire article-8226]
+- **美 육군 Janus 프로그램 선정 -- 20MWe BANR 마이크로리액터 Fort Campbell 배치 (2026.08.26) [신규/핵심]**: 미 육군·국방혁신단(DIU)이 BWXT의 **BANR(BWXT Advanced Nuclear Reactor) 20MWe 마이크로리액터**를 Fort Campbell에 배치키로 선정 -- **2030년대 초 가동 목표**. mPower 지상 SMR 독점권(8월)에 이은 마이크로리액터 실배치 수주. Project Pele(2027 납품)와 함께 국방 마이크로리액터 포트폴리오 강화 [TimothySykes/StocksToTrade 9/1]
+- **BWXT Medical Nordic Capital 매각 계획 최대 $800M + Investor Day 9/29 (2026.08~09) [신규]**: BWXT Medical 및 아이소토프 자산을 **Nordic Capital에 최대 $800M**에 매각 계획 -- 원자력 코어(정부·상업 원자로 기자재) 집중 리포커싱. **BWXT Investor Day 2026-09-29** 예정 [Simply Wall St/247wallst]
+- **Applied Atomics-BWXT mPower SMR 상용화 독점권 계약 (2026.08) [기존 유지]**: Applied Atomics가 BWXT **mPower SMR 기술의 미국·캐나다 등 지상 원자력시설 상용배치 독점권** 확보 -- **NRC 설계인증 프로세스 재개**+부지별 엔지니어링 프로토콜 개발 예정. mPower는 2017년 Bechtel JV 철수로 개발 중단됐으나 BWXT가 소유권·전부품 독점 제조권 보유 -- 유휴 IP 상업 재활성화, BWXT 위탁제조 수혜 기대 [ANS Nuclear Newswire article-8226]
 - **Q2 2026 실적 (2026.08.03) [기존 유지]**: 매출 **$901.6M**(+18% YoY, 컨센 $891.8M 상회), non-GAAP EPS **$1.07**(컨센 $1.01 상회), 조정 EBITDA **$155.5M**(마진 17.2%). 상업부문 매출 **$302.5M**(+72% YoY), **수주잔고 +40% YoY($8.4B)**. **FY2026 가이던스 재상향**: 매출 ~$3.8B, EBITDA **$662~672M**, non-GAAP EPS **$4.70~4.80**, FCF **$345~360M** [Globe and Mail/Investing.com/StockTitan/SEC 8-K]
 - **애널리스트 [업데이트]**: 16인 평균 **Buy·목표가 $234.45**(현재가 대비 약 +50%). **Deutsche Bank TP $253로(기존 $255서 소폭 하향) Buy 유지**. CEO Geveden: AP1000·BWRX-300·캐나다 SMR 논의 언급, **원자력 기자재 최소 1건 수주 기대** [247wallst/Investing.com/stockanalysis]
-- **주가 [업데이트]**: **$152.85** (8/28, -1.92% -- 8/21 $156.78서 소폭 추가 조정)
+- **주가 [업데이트]**: **$160.25** (9/4, +2.94% -- 8/28 $152.85서 회복, 섹터 랠리·BANR 수주 반영)
 - **해군 핵추진 $1.4B 계약 (5/7)**: $1.285B 소재 + $165M Ford급 항모 원자로 부품
 - **DOE 우라늄 처리 $1.5B + 고순도 열화우라늄 10년 $1.6B + 국내 원심분리기 $1.5B**
 - **불가리아 Kozloduy 7·8호기**: BWXT 3자 컨소시엄 **Owner's Engineer**, Westinghouse AP1000 2기
@@ -243,15 +245,15 @@ last_synced_from_db: 2026-08-29
 - **AFRY 스웨덴 MSA 체결 (4/7) / Orlen Synthos Green Energy(폴란드) generic 설계 계약 (2/24) / UK GDA Step 3 진행**
 - **미·일 $40B BWRX-300 파트너십 (3월)**: 테네시·앨라배마 배치, 3GW 목표
 
-#### Rolls-Royce SMR (영국) -- 스웨덴 Vattenfall 3기(6/15)+체코 확대(8월), GBE-N 총비용 £8.5B+ [업데이트]
+#### Rolls-Royce SMR (영국) -- 체코 ČEZ Early Works Contract 체결(9월, Temelin 최대 3GW), 스웨덴 Vattenfall 3기, GBE-N 총비용 £8.5B+ [업데이트]
 
 - **스웨덴 Vattenfall 3기 SMR 선정 (2026.06.15) [배경]**: Videberg Kraft(Vattenfall·Industrikraft)가 GE Vernova 제치고 Rolls-Royce SMR 선정 -- 각 **470MW × 3기 = 1,410MW**, 연 약 12TWh, Värö 반도(Ringhals 인근). **스웨덴 약 50년래 첫 원자력 확대**, 2030년대 초 가동. 수십억 파운드 규모
-- **체코 ČEZ-Rolls-Royce SMR 사전준비 MOU (2026.08)**: 데트마로비체·투시미체 2개 폐석탄부지 **470MW급 SMR** 추가 -- 두산에너빌리티 RR 파트너 기자재 기대
+- **체코 ČEZ Early Works Contract 체결 (2026.09) [신규]**: RR SMR-ČEZ가 **Early Works Contract(초기공사 계약)** 체결 -- 8월 사전준비 MOU서 격상, **남부보헤미아 Temelin 부지 체코 첫 SMR** 대상 site-specific 설계·인허가·허가 개시(**최대 3GW** 배치 지원). 동시에 **데트마로비체·투시미체 2개 폐석탄부지 site preparation MOU** 병행 -- 두산에너빌리티 RR 파트너 기자재 수주기대 확대 [Rolls-Royce SMR/WNN/Balkan Green Energy]
 - **UK GBE-N Technology Partner 계약 (5/8 공시)**: Stage 1 **£359M** + Stage 2 **£8.17B** = 총 **£8.5B+**. UK 정부 정식 계약(4/13)·Nuclear Justification 승인(3월)·National Wealth Fund 대출 **£599M**
 - **Wylfa 3기**: 웨일스 앵글시, 1.4GWe, 최대 8기 호스팅. Amentum JV
 - **CEZ 체코 Temelin EWC (4/24)**: 최대 **3GW 배치**, 2030년대 후반
 - **GDA**: Step 3 진행 중, 완료 **2026년 12월** 예상. 유일하게 최종 평가단계 도달. **FID 2029년 예상**
-- **주가**: RYCEY(ADR) $20.52 (8/21, +0.88%)
+- **주가**: RYCEY(ADR) $20.12 (9/4, +0.25%)
 - **BWXT 계약**: 증기발생기 설계/제조 제휴
 
 #### 중국 Linglong One (ACP100) -- 세계 최초 육상 상업 SMR 임박 [기존 유지]
@@ -357,7 +359,7 @@ last_synced_from_db: 2026-08-29
 
 ## 4. 한국 관련
 
-### 두산에너빌리티 SMR/원전 수주 -- 빌게이츠 방한發 주가 +17%·85,900원(8/27), 테라파워 기자재·NH 목표가 13만원 [업데이트]
+### 두산에너빌리티 SMR/원전 수주 -- 빌게이츠 스파이크 되돌림(79,200원 9/4), SMR 특별법 9/11 시행, 목표가 122,000~165,000원 [업데이트]
 
 - **테라파워 SMR 핵심 기자재 제작계약 체결 (2026.08) [신규/핵심]**: 2024.12 설계검토 계약이 **실제 제작 계약**으로 발전(지난주 KB '하반기 미국 SMR 기자재 실제 공시 확정 여부 관건'이 실현). 두산이 나트륨 원자로 **보호용기·지지구조물·내부구조물** 제작 후 와이오밍 Kemmerer 첫 발전소(345MW)에 공급. **NH투자증권 목표주가 130,000원 상향·투자의견 매수 유지**(가스터빈·SMR 수주 확대 반영). 데일리머니: 2026 수주 약 14조·SMR 주기기 독점·영업익 2조 정조준 [아시아투데이 8/14/iMBC/인포스탁데일리]
 - **Q1 2026 실적**: 매출 4.26조원 (+13.7% YoY), **OP 2,335억원 (+63.9% YoY)**. Q1 수주 2.79조원, **수주잔고 24.13조원 (+46% YoY)**
@@ -368,8 +370,8 @@ last_synced_from_db: 2026-08-29
 - **SMR 전용공장**: 창원, **2026.03~2031.06 총 8,068억원 투입**, 연 20기+ 생산능력. 세계 최초 SMR 전용공장 착공
 - **글로벌 SMR Foundry**: NuScale/X-energy/TerraPower 주기기 위탁 생산 (2026H2 생산 시작)
 - **SMR 매출 전망**: 2026 2,000~3,000억 -> 2027 7,000억 -> 2028 1.14조 -> 2029 2.4조 -> **2030 3.3조원**
-- **주가 [업데이트]**: **85,900원(8/27 종가, 8/28 yfinance NaN)** -- 73,300원(8/21)->73,000(8/24)->80,700(8/25)->85,800(8/26)->85,900(8/27) **주간 +17.2% 급등**. **빌게이츠 8/13 방한發 SMR 동맹 훈풍 + KOSPI 반도체·AI 강세** 동반(CBC뉴스 '빌게이츠가 띄운 SMR 훈풍'). 52주 고점 139,200원 대비 -38%. 테라파워 기자재 제작계약·체코 수주 모멘텀 유효하나 트레일링 PER 고평가가 변동성 요인
-- **목표주가 [업데이트]**: **NH투자증권 130,000원 상향(매수)**, 컨센서스 평균 약 129,375원(8/4 기준). 대신증권도 상향, 일부 브로커는 밸류 부담에 목표가 줄하향 병존. 수주잔고 24조·2026 수주전망 14.3조 펀더멘털 유효
+- **주가 [업데이트]**: **79,200원(9/4 종가)** -- 8/28 피크 88,200원서 되돌림(88,200 8/28 -> 82,500 8/29 -> 81,400 9/1 -> 76,600 9/2 -> 79,200 9/3~9/4), 빌게이츠 스파이크 차익실현·주간 약 -8%. 52주 고점 139,200원 대비 -43%. 테라파워 기자재 제작계약·체코 수주·SMR 특별법 9/11 시행 모멘텀 유효하나 트레일링 PER 고평가가 변동성 요인
+- **목표주가 [업데이트]**: 컨센서스 **122,000~165,000원 폭넓게 분포** -- NH투자증권 130,000·신한투자 125,000·KB증권 110,000·교보증권 104,000. 2026 수주 전망 ~14조·SMR 주기기 독점·영업익 2조 정조준(데일리머니). 2027년 이후 북미 SMR DC 프로젝트 착공으로 매출 기여 확대 전망. 수주잔고 24조 펀더멘털 유효하나 밸류 부담 병존
 
 ### 한국 원전 수출 [기존 유지]
 
@@ -381,7 +383,7 @@ last_synced_from_db: 2026-08-29
 
 ### i-SMR (혁신형 소형모듈원전) [업데이트]
 
-- **표준설계인가(SDA) 심사 진행 중 [업데이트]**: SDA 신청(2026.02) 후 심사 진행 중, 인허가 **2026~2028** 예정, **2034 첫 운전 목표**(제11차 전력수급기본계획 첫 SMR). 한수원 **i-SMR 1호기 실증부지 경주 최적지** 검토 [투데이에너지/다음뉴스/sb.pe.kr]
+- **SMR 특별법 9/11 시행 + 첫 실증부지 선정 임박 (2026.09) [신규]**: **SMR 특별법이 2026-09-11 시행 예정** -- 국내 첫 i-SMR 실증부지(**경주 최적지 검토**) 선정 앞둠. SDA 신청(2026.02) 후 심사 진행 중(인허가 **2026~2028**), **2035 가동 목표**(제11차 전력수급기본계획 첫 SMR). 두산에너빌리티가 원자로·증기발생기·주기기 담당·글로벌 톱티어 SMR사 주기기 공급계약 다수 [다음뉴스/sb.pe.kr/두산 IR]
 - **K-ARDP 프로그램**: 2.5조원 투입 (2026~2034). 2026 예산: SMR 제조기술 3,000억 + 원전 육성 9,000억
 - **우리기술 i-SMR 참여**: MMIS 안전계통 표준 플랫폼 개발 협약 (5/22)
 - **최근 동향**: 국정원 'SMR 사이버보안 협의체' 발족. 삼성중공업 해상 소형원자로 미국선급(ABS) 인증 획득
@@ -400,7 +402,7 @@ last_synced_from_db: 2026-08-29
 
 ### 한국 SMR/핵융합 관련주 [업데이트]
 
-- 두산에너빌리티: SMR 주기기 제조 + 원전 EPC (주가 85,900원 8/27·주간 +17.2%, **빌게이츠 방한發 SMR 훈풍·테라파워 기자재 제작계약·NH 목표가 13만원**, 체코 주기기 5.6조, 테믈린 우선협상 5년·2030 확정·WEC 재경쟁)
+- 두산에너빌리티: SMR 주기기 제조 + 원전 EPC (주가 79,200원 9/4·빌게이츠 스파이크 되돌림, **SMR 특별법 9/11 시행·테라파워 기자재 제작계약·목표가 122,000~165,000원**, 체코 주기기 5.6조, 테믈린 우선협상 5년·2030 확정·WEC 재경쟁)
 - HD현대중공업: ITER 마지막 진공용기 섹터 제작완료(7/22, 9기 중 4기)·핵융합 진출, TerraPower Natrium 엔클로저 공급, MSR 원자력 추진선 2030 목표
 - 현대건설: **TerraPower와 최대 8기 Natrium EPC 파트너십(완공·가격·성능 보증, 8/17)·빌게이츠 방한 동맹 강화(8/13)·2호기 데이터센터 원자로 협업 관측** + KFE 핵융합 핵심기술 협약
 - SK이노베이션: **TerraPower와 한국 첫 Natrium 발전소 배치 텀시트(8/17)**
@@ -518,9 +520,9 @@ last_synced_from_db: 2026-08-29
 4. **HALEU 연료 공급**: 미국 글로벌 농축 **1% 미만**. Centrus DOE $900M·누적 1,900kg+·연 12MT 목표·Q2 백로그 $3.0B로 진전하나 미국 유일 상업 생산자 의존도 여전. Urenco 50% 증설·General Matter 다변화 진행 중이나 시간 필요
 5. **경제성 미입증**: 실제 건설/운영 비용 데이터 부족. Carnegie Endowment "hype vs reality" 경고
 6. **사회적 수용성**: 원전 안전 우려, 방사성폐기물 처리
-7. **주가 변동성**: Oklo $40.14(8/28, DOE Groves 가동승인 호재에도 무매출 부담·피크 대비 -79%), 컨센 TP 레인지 $14~$140. NuScale $9.29(BofA $12). **Oklo+NuScale 연초대비 합산 -85.3%(Motley Fool 8/27)** -- BofA '실제 채택 2030년+·유의미 2035~2040' 진단. 두산 85,900원(8/27, 빌게이츠 훈풍 주간 +17%로 예외 강세). 원자력주 단일 뉴스에 ±5~10% 급변
+7. **주가 변동성**: Oklo $39.84(9/4, 9/2 장중 $43.05 +8% 후 되돌림·피크 대비 -79%), 컨센 TP 레인지 $14~$140. NuScale $9.75(9/4, 9/4 +16%·TVA딜 이후 +25% 랠리, BofA $12). 9/2~9/4 섹터 광범위 랠리(DOE 대출 시그널)로 반등했으나 무매출·현금소진 부담 상존 -- BofA '실제 채택 2030년+·유의미 2035~2040' 진단 유효. 두산 79,200원(9/4, 빌게이츠 스파이크 되돌림). 원자력주 단일 뉴스·정책 시그널에 ±5~16% 급변
 8. **중국 경쟁**: Linglong One 2026 H1 가동 시 세계 최초 육상 상업 SMR 타이틀. 서구 대비 수년 선행
-9. **우라늄 가격**: **~$90.39/lb(8/28, $90 상단 돌파)**, BofA $130/lb 목표. Cameco 2026 실현가 $85~89/lb·연 ~28Mlb 인도 커밋. 구조적 공급부족·AI DC 수요가 하한 지지, 유틸 장기공급 확보 가속
+9. **우라늄 가격**: **~$89.32/lb(9/1)·~$89.49/lb(9/3, $90 상단 인근 강세)**, BofA $130/lb 목표. Cameco 2026 생산 가이던스 19.5~21.5Mlb 유지. Kazatomprom 감산·Cameco 운영차질로 구조적 공급부족 심화, 유틸 장기공급 확보 가속
 10. **체코 원전**: 두코바니 본계약 6/4 체결로 가처분 해소. 두산 주기기 2027.11~2032.08. **테믈린 3·4호기 우선협상 5년·2030 확정·EDF/웨스팅하우스 2차 경쟁**·폴란드 시프로위폴삿 탈퇴 변수 잔존
 
 ### 핵융합 리스크
@@ -538,7 +540,7 @@ last_synced_from_db: 2026-08-29
 
 ---
 
-_본 KB는 2026-08-29 웹검색 기반 갱신 (10회 검색, 10건 DB 추가). 최대 변화: **미국 SMR 개발주 밸류 리셋 지속(Oklo+NuScale 연초대비 -85.3%, Motley Fool 8/27) vs 한국 두산 빌게이츠 훈풍 주간 +17%** -- **Oklo DOE Groves 가동승인+Aurora 지원 협약(8/25)** · **NuScale Paragon HIPS+Curio·Framatome 연료 MOU** · **BWXT-Applied Atomics mPower 독점권** · **TerraPower 2호기 데이터센터 원자로 연내 공개 예고+Sabey 협력** · **우라늄 스팟 $90/lb 돌파($90.39, 8/28)**. 스톡(8/28): OKLO $40.14·NuScale $9.29·XE $17.22·BWXT $152.85·Centrus $175.78·Cameco $100.01·두산 85,900원(8/27). 핵융합 신규 메가딜 없음. 다음 갱신 권장: 2026-09-28 이전_
+_본 KB는 2026-09-05 웹검색 기반 갱신 (16회 검색, 12건 DB 추가). 최대 변화: **원자력·SMR 섹터 광범위 랠리(9/2~9/4) -- DOE 대출 지원 시그널發**(美 에너지장관 '첫 5~10기 DOE 대출 수혜' 발언) -- **NuScale 9/4 +16%(TVA딜 이후 +25%)** · **BWXT 육군 Janus/BANR 마이크로리액터 선정(8/26)+BWXT Medical Nordic Capital 매각 계획($800M)** · **Rolls-Royce SMR-ČEZ 체코 첫 SMR Early Works Contract(Temelin, 최대 3GW)** · **Westinghouse IPO 절차 착수(~$30B, Cameco 49%)** · **한국 SMR 특별법 9/11 시행·첫 i-SMR 부지 선정 임박**. 우라늄 스팟 $89~90/lb 유지($89.32 9/1). 스톡(9/4): OKLO $39.84·NuScale $9.75·XE $17.88·BWXT $160.25·Centrus $170.46·Cameco $100.62·NANO $17.65·두산 79,200원. 핵융합 신규 메가딜 없음. 다음 갱신 권장: 2026-10-05 이전_
 
-<!-- ARCHIVE 8/22 갱신 노트 -->
-_(직전) 본 KB는 2026-08-22 웹검색 기반 갱신 (16회 검색, 13건 DB 추가). 최대 변화: **한국 기업 SMR 밸류체인 계약 러시** -- **두산에너빌리티 테라파워 기자재 제작계약 체결(8월)·NH 목표가 13만원** · **TerraPower-현대건설 EPC 파트너십+SK이노베이션 한국 텀시트(ANS 8/17)** · \**X-energy DOE +$1B Long Mott(Seadrift 총 $2.15B)+TN $11M(8/17)** · **Oklo DOE INL 부지허가+HALEU 5MT·애널리스트 TP 하향(8/11)** · **TAE-Black Moon He-3(8/5)·Da Vinci 2031**. 우라늄 스팟 $88.29/lb(8/20 박스권 상단 돌파). 스톡(8/21): OKLO $42.09·NuScale $9.40·XE $18.67·BWXT $156.78·Centrus $186.26·Cameco $102.51·두산 73,300원(-3.43%). 핵융합 신규 메가딜 없음(CFS $4B·SPARC ~75%). 다음 갱신 권장: 2026-09-21 이전_
+<!-- ARCHIVE 8/29 갱신 노트 -->
+_(직전) 본 KB는 2026-08-29 웹검색 기반 갱신 (10회 검색, 10건 DB 추가). 최대 변화: 미국 SMR 개발주 밸류 리셋 지속(Oklo+NuScale -85.3%) vs 한국 두산 빌게이츠 훈풍 +17% -- Oklo DOE Groves 가동승인+Aurora 협약(8/25)·NuScale Paragon HIPS+Curio·Framatome 연료 MOU·BWXT-Applied Atomics mPower 독점권·TerraPower 2호기 DC 원자로 예고. 우라늄 $90/lb 돌파($90.39 8/28). 스톡(8/28): OKLO $40.14·NuScale $9.29·XE $17.22·BWXT $152.85·Cameco $100.01·두산 85,900원(8/27). 다음 갱신 권장: 2026-09-28 이전_
