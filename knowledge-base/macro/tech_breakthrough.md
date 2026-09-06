@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-23
-valid_until: 2026-09-22
+updated: 2026-09-06
+valid_until: 2026-10-06
 category: macro
 sources:
   [
@@ -296,9 +296,39 @@ sources:
     "keeptrack(Starship static fire 8/20)",
     "axis-intelligence(9.8GW nuclear DC)",
     "smrintel(nuclear DC deals 2026)",
+    "Webull(NVDA Q2 FY27)",
+    "SEC 8-K(q2fy27pr)",
+    "Investing.com(NVDA Q2 FY27 slides)",
+    "valueaddvc(hyperscaler $725B 2026)",
+    "Futurum(AI capex $690B 2026)",
+    "insight.factset(external financing)",
+    "Quinn Emanuel(AI DC financing litigation)",
+    "globaldatacenterhub(Q2 2026 DC debt)",
+    "DigitalApplied(frontier Q3 2026 forecast)",
+    "DCD(OpenAI-Broadcom 10GW)",
+    "openai.com(Broadcom collaboration)",
+    "whatledto(NVDA China export timeline 9/3)",
+    "semiconductorsinsight(H200 2026)",
+    "Introl(AI memory supercycle HBM 2026)",
+    "Momoview(HBM three-way war 2026)",
+    "SK hynix Newsroom(2026 HBM supercycle)",
+    "Motley Fool(SMR big tech 9/1)",
+    "IDTechEx(data centers go nuclear)",
+    "Goldman Sachs(DC power 31-66GW)",
+    "datacenterknowledge(2026 power revolution)",
+    "Teslarati(Starship F14 FCC orbital)",
+    "keeptrack(Starship F14 static fire 9/2)",
+    "XJTU(perovskite tandem Science 2026)",
+    "CAS Insights(2026 scientific breakthroughs)",
+    "BigGo(humanoid eve of mass production)",
+    "technology.org(humanoids deployed 2026)",
+    "TechTarget(GLP-1 FDA 2026)",
+    "BioSpace(CagriSema NDA)",
+    "thequantuminsider(trapped-ion 2026)",
+    "quantummarketcap(quantum roadmap 2026)",
   ]
 confidence: high
-last_synced_from_db: 2026-08-23
+last_synced_from_db: 2026-09-06
 ---
 
 # 첨단 기술 브레이크스루 트래커 (Tech Breakthrough)
@@ -326,8 +356,15 @@ last_synced_from_db: 2026-08-23
 | **⑥ 양자 미중 지정학**            | 🧪 선점 경쟁      | **[6/21] 글로벌 양자시장 $3B(2028, QED-C, CAGR 30%)·일부 2030 $20.2B(CAGR 41.8%).** **미국 CHIPS법 $2.013B**(IBM $1B 양자웨이퍼·GlobalFoundries $375M·잔여 $538M 7개사, 정부 소수지분). **중국 ~$15B·15차5개년(2026-30) 양자 6대 미래산업 최상위·국가펀드 CNY 121.8B.** IonQ Q1 $64.7M(가이던스 +30%)·2026 $235M·DARPA HARQ·**[7/5] 2큐빗 게이트 충실도 99.99%+ 'four-nines' 최초 돌파.** **PQC: CNSA2.0 2027.01 양자안전 의무·Google 2029 전환·2035 양자취약 금지.**            | 내결함성 선점 = 암호·소재·신약 **비대칭 우위**. PQC 전환은 전 산업 사이버보안 필수과제(은행·통신 라이브 배포). 중국 특허 우위 vs 미국 생태계 우위의 구도. 단기 시장 규모는 아직 작음(투기적).   | IONQ IBM GOOG QBTS RGTI / QTUM              | QED-C 2026, thequantuminsider, fortunebusinessinsights, postquantum 교차 |
 | **⑦ 휴머노이드 '양산 원년'**      | 🏭 상용화 진입    | **[7/12] 2026 양산 원년·中 글로벌 90% 점유.** Unitree 2025 5,500대+ 출하(美 전체 합산 초과)·**2026 1만~2만대 목표·G1 $16,000**. **[7/26 정정] Tesla Q2(7/22) 어닝콜: Optimus 생산대수 여전 0 — 1세대 라인 설치 중·초기 로봇 훈련데이터 수집용(고객배치 아님)·Optimus Academy·초기양산 Q3·머스크 '테슬라 역사상 가장 어려운 양산'.** 직전 주간 100-150대(7월)→1,000대(9월 목표) 가이던스 미실현. 양산은 텍사스 팹 2027·공개가 $20-30K(2027말, 현 원가 $50-100K). Figure 03 BMW 40대 상용배치($25/시간)·BotQ 시간당 1대. ⚠️ 단위경제 핵심: 中공급 배제시 BOM 3배($46K→$131K) — 中공급망 지배가 지정학 변수. **[8/2 재확인] Optimus 여전 양산 미개시** — 프리몬트 생산 7월 중순까지 미시작(가이던스 7월말~8월)·공개판매/예약/대기자 無·소비자 2027말 최선~2028-29 컨센. Unitree 2026 2만대 목표(Tesla+Figure+Agility 합산 미달)·G1 아마존 $17,990·Q1 이익 반토막. Figure 03 BMW 40대($25/시간) 지속. 中 선행 vs 美 슬립 심화.            | 노동력 부족·인건비 상승이 수요 동인 → 제조·물류 생산성 혁명. **중국 공급망 지배(90%)가 지정학 변수**. 단위경제 $15-20K 도달이 변곡점. Tesla·Figure는 미국 측 베팅. 양산 일정 슬립 리스크 상존.  | TSLA 005380.KS / BOTZ ROBO                  | CNBC(6/3), GS via 36kr, IDC, Rest of World 교차                          |
 
-#### 📌 매크로 종합 코멘트 [8/23]
+#### 📌 매크로 종합 코멘트 [9/6]
 
+- **[9/6 신규] NVDA Q2 FY27 실적 확정(8/26) — DC 사상 최대·서프라이즈 + 하이퍼스케일러 capex 재상향:** NVDA Q2 FY27(8/26 발표) 매출 $96.22B·**DC $89.0B(+117% YoY·+18% QoQ·전사 92%)**·non-GAAP EPS $2.22·**Q3 가이던스 $108B±2%**(LSEG 컨센 $92.17B 대비 +4.4% 서프라이즈·YoY +106%) — 직전 KB의 '가이던스 $91B 프리뷰'가 실측으로 상향 확정. 하이퍼스케일러 2026 capex: top-5 ~$750B(+67% YoY·CreditSights 상향)·4대 ~$725B(+77%, 2025 $410B)·**2027 $1조+ 전망.** capex/매출 극단: Oracle 86%·Meta 54%·MSFT 47%·Alphabet 46%·Amazon 25%. **자체조달→외부조달 전환 심화(Alphabet 6월 $84.75B 주식발행·FactSet 증분부채/capex 급등).** [Webull, SEC 8-K, Investing.com, valueaddvc, Futurum, FactSet 교차]
+- **[9/6 신규] AI 신용 스트레스 구조화 — Oracle 정크급 CDS + GPU담보 IG 편입 템플릿:** Oracle Baa2 부정적·부채/자본 ~500%·정크급 CDS(정크 2노치 위)로 하이퍼스케일러 신용우려 주도. CoreWeave가 첫 IG등급 GPU담보 금융시설 클로징 — **신평사가 급속 감가하는 GPU 담보를 정식 신용 카테고리로 수용, 향후 발행 템플릿화.** 순환금융 ~$1.4조(OpenAI 계약지출→Oracle 부채·NVDA 지분→CoreWeave GPU 매입 루프). Moody's: 무전례 AI 지출이 AMZN·META·GOOGL 신용도 위협. 재무수익 부재 국면의 신용 채널 테일리스크 지속. [Quinn Emanuel, globaldatacenterhub, CNBC(Moody's), Tom Tunguz 교차]
+- **[9/6 신규] 프론티어 모델 Q3 릴리스 홍수 정점 — 9월 초 다수 GA(모델 네이밍 소스간 불일치):** DigitalApplied: Q3 2026이 연중 최대 프론티어 릴리스 창·8월 중순~9월 말 6주에 5개 후보 중 3개 집중. 9월 초 복수 트래커가 Anthropic·Google(Gemini GA로 추격 신호)·OpenAI·Meta 신규 프론티어 출시 보도. **단 구체 모델명은 저품질 소스간 상충(기존 KB의 Opus 5·GPT-5.6·Gemini 3.5 Pro 라인과 불일치) — confidence medium·차기 교차검증 대기.** OpenAI-Broadcom 커스텀 추론칩(Jalapeño 6월·9개월 테이프아웃)+커스텀 가속기 10GW(2H26~2029)로 하이퍼스케일러 실리콘 내재화가 NVDA 의존도 변수화. [DigitalApplied, llm-stats, DCD, OpenAI/Broadcom IR; 네이밍 트래커 불일치 명시]
+- **[9/6 신규] 반도체 지정학 재긴장 — 中, 알리바바·바이트댄스에 NVDA 블랙웰 주문 금지:** 中 사이버공간관리국이 알리바바·바이트댄스 등에 **NVDA 中전용 RTX Pro 6000D 블랙웰 GPU 주문 금지 지시**(9월 초 보도) — 국산화 압박으로 NVDA 중국 매출 정책 리스크 재부상. H200 케이스별 라이선스+25% Section232 관세 유지. 애널리스트: 2026 美 AI컴퓨트가 中 대비 21-49x 우위. [whatledto(timeline 9/3), BIS, semiconductorsinsight, GPUSmith 교차]
+- **[9/6 신규] 메모리 슈퍼사이클 정점 — HBM4 ~$700 + 삼성 사상최고:** HBM4 계약가 ~$700/유닛(HBM3E 대비 +20-30%)·**삼성 주가 HBM4 가격 보도에 사상최고**·HBM 2026 전량매진·메모리 마진 >50%·**게이밍 GPU 40% 감산(수급 전이).** 삼성 커스텀 HBM 2nm 로직다이·SK 12nm 베이스다이·16단 Q4 2026·$100B TAM 2028. AI capex의 범용 IT 원가 인플레 전이 지속. [Introl, TrendForce, EETimes, Momoview, SK hynix Newsroom 교차]
+- **[9/6 신규] 전력이 AI의 1차 병목 — 원전/SMR offtake 가속 + 우주·바이오·양자·소재 근접 촉매:** GS: 美 DC 전력수요 31GW(2025)→66GW(2027E)·그리드 연결 7년+·Gartner 2027까지 DC 40% 전력부족 제약→온사이트 자가발전 전환. **ENTRA1-TVA NuScale SMR 최대 6GW(72모듈·첫가동 ~2030)·Oklo-Meta 오하이오 1.2GW**·빅테크 18개월 원전계약이 美 직전 20년 초과. **SpaceX Starship Flight 14 — FCC 신청상 9/15 첫 궤도 발사(Starlink V3 ~20기·각 ~1Tbps)·부스터21 33엔진 정적점화(9/2).** GLP-1: Novo CagriSema FDA 결정 ~10월(Phase3 25% 목표 미달)·Lilly orforglipron 2026 최초 승인 전망. 양자: Google Willow RL 논리안정성 +3.5x(<1/1000)·IBM Nighthawk 120큐빗·IonQ 800 논리큐빗(2027). 페로브스카이트/실리콘 탠덤 >34%·첫 상용 2026. [GS Research, Motley Fool(9/1), Teslarati(FCC), TechTarget, thequantuminsider, XJTU 교차]
+- **[9/6 신규] 휴머노이드 — Tesla Optimus 램프 가이던스 vs 실측 신호 혼재:** Tesla Optimus 램프 가이던스(6월 수십대/주→7월 100-150→8월 ~300→9월 1,000/주·프리몬트 연 100만대 캐파)이나 **머스크 '초기 극도로 느림'(신규부품 ~1만종 공급망 미성숙)·진정 양산 텍사스 2027** — 직전(8/23) 'Q2콜 생산 0' 신호와 혼재로 확인 필요(confidence medium). Figure BotQ 90분당 1대·BMW 40대($25/시간)·Unitree STAR IPO ~$14.7B(¥1000억). 엔터프라이즈 에이전틱: 프로덕션 31%(은행 47%·정부 14%)·앱 80% 내장·Gartner 2027 40%+ 취소·중앙값 가치실현 5.1개월. [BigGo, technology.org, humanoid.guide, DigitalApplied, Gartner 교차]
 - **[8/23 신규] AI Capex 추정 상향($775-800B)·신용 스트레스 지속 + '더블헤더' 매크로 주간:** CreditSights·AL Capital: Big-5(MSFT·GOOGL·AMZN·META·Oracle) 2026 AI 인프라 지출 ~$775-800B로 상향(CreditSights FY26 >$690B·+80% YoY·FY28 >$900B·~75% AI $450B). Oracle 5년 CDS ~218bps(S&P Global·2025중 ~40bps서 5배)·2027 FCF 전망 ~-$40B 접근으로 신용시장 최대 우려. CoreWeave 3월 $8.5B 지연인출시설은 파산격리 SPV(GPU·고객계약 담보·A3·~5.9% 고정·2032 만기)+8/10 $2.6B DDTL 클로징. FactSet 증분부채/capex FY24 9%→2026중 32%·PIMCO capex가 2026-27 하이퍼스케일러 영업현금흐름 ~94% 소진·투자자 경계('$1조 목전', The Hill). **8/26 NVDA Q2 FY27 실적(가이던스 ~$91B±2%·컨센 $93-95B·+67-75% YoY·Q1 매출 $81.6B/DC $75.2B +92%)+8/27-28 잭슨홀(신임 연준의장 Kevin Warsh 첫 기조연설 8/28) 더블헤더가 이번주 테크 밸류에이션 변곡점.** [CreditSights, alcapitaladvisory, biggo, FactSet, PIMCO, thehill, intellectia, tradingkey, techtimes 8/21]
 - **[8/23 신규] 프론티어 모델 5강 분할 + Google 리더십 공백 심화:** 태스크·가격별 5개 프론티어가 선두 분할(Opus 5·GPT-5.6·Grok 4.6·Kimi K3 등)·GPT-5.6 Luna가 ChatGPT 무료티어 기본으로 배치(8월)·Kimi K3(Moonshot 7/16·2.8T MoE/1M 컨텍스트·~$3/$15)·GLM-5.3(Z.ai 8/14 최신 프론티어). **Google Gemini 3.5 Pro는 8/8 시점 여전 일반출시 실패 — 코딩 성능 미달 + 학습데이터 리프레시 부진으로 '수개월 지연'·5월 I/O 6월 타깃 무산·7/21 3.6 Flash/3.5 Flash-Lite만 출시.** 릴리스 가속(Q3 최대 창) 속 Google 추격 과제(DeepMind Kavukcuoglu) 고착. [casrai, benchlm, aireleasetracker, techcrunch 7/21, futuresearch]
 - **[8/23 신규] 엔터프라이즈 에이전틱 '프로덕션 격차' 정량 확인:** 기업 79% AI 에이전트 도입 but 11%만 프로덕션 운영(보수적으로 31%가 ≥1개 프로덕션·은행/보험 47% 선도·헬스케어 18%/정부 14%)·Q1 2026 출시/업데이트 엔터프라이즈 앱 80%가 에이전트 내장(2024 33%서)·Gartner 2026말 앱 40% 태스크 에이전트. 중앙값 가치실현 5.1개월(SDR 3.4·재무/운영 8.9)·IBM 'AI 이니셔티브 25%만 기대 ROI'·Gartner '2027까지 에이전틱 40%+ 취소'·POC 88% 미확산. 채택-수익화 갭이 AI capex 회수 논쟁의 핵심 변수 지속. [digitalapplied, agenticaiinstitute, gartner, IBM]
@@ -485,6 +522,7 @@ last_synced_from_db: 2026-08-23
 
 | 날짜       | 에이전트   | 변경 내용                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09-06 | kb-updater | **주간 델타 갱신(18회 검색, +15 DB 레코드, tag=tech)** — 종합코멘트 9/6 블록 7개 추가(기존 메가트렌드 표 유지). **NVDA Q2 FY27 실측 확정(8/26): 매출 $96.22B·DC $89.0B(+117% YoY·+18% QoQ·92%)·EPS $2.22·Q3 가이던스 $108B±2%(컨센 $92.17B +4.4% 서프라이즈)—직전 '$91B 프리뷰' 상향. Capex: top5 ~$750B(+67%·CreditSights)·4대 ~$725B(+77%)·2027 $1조+·Alphabet 6월 $84.75B 주식발행·외부조달 전환. 신용: Oracle Baa2 부정적/부채자본 500%/정크급 CDS·CoreWeave 첫 IG등급 GPU담보 시설(감가담보 신용카테고리 편입 템플릿화)·순환금융 ~$1.4조·Moody's 신용도 위협. AI 모델: Q3 최대 릴리스 창(8월중~9월말 5중 3)·9월초 다수 프론티어 GA(Google Gemini GA 추격신호)—모델명 소스간 불일치로 confidence medium·OpenAI-Broadcom Jalapeño 추론칩(6월)+커스텀 10GW(2H26~29). 반도체 지정학: 中 사이버관리국 알리바바·바이트댄스에 NVDA RTX Pro 6000D 블랙웰 주문 금지·美 컴퓨트 21-49x 우위·H200 케이스별+25% 관세 유지. 메모리: HBM4 ~$700/유닛(+20-30%)·삼성 주가 사상최고·전량매진·마진>50%·게이밍 GPU 40% 감산·16단 Q4·$100B TAM(2028). 전력/에너지: GS 美 DC전력 31→66GW(27E)·Gartner 40% 전력부족(27)·ENTRA1-TVA NuScale 6GW(72모듈)·Oklo-Meta 1.2GW. 우주/바이오/양자/소재: Starship F14 FCC 9/15 첫 궤도(Starlink V3 ~20기·정적점화 9/2)·CagriSema FDA ~10월(25% 미달)·orforglipron 2026 최초 승인 전망·Google Willow RL +3.5x(<1/1000)·IBM Nighthawk 120큐빗·IonQ 800논리큐빗(27)·페로브스카이트 탠덤 >34% 첫 상용. 휴머노이드: Optimus 램프 가이던스(9월 1,000/주·프리몬트 100만대 캐파) vs 머스크 '극도로 느림'·양산 텍사스 2027—8/23 '생산 0'과 혼재(confidence medium)·Unitree STAR IPO ~$14.7B. 에이전틱: 프로덕션 31%(은행 47%·정부 14%)·앱 80% 내장·Gartner 40%+ 취소(27). science_tech 와 각도 분리(매크로 추상화·AI 프런티어 집중) |
 | 2026-08-23 | kb-updater | **주간 델타 갱신(12회 검색, +19 DB 레코드, tag=tech)** — 종합코멘트 8/23 블록 6개 추가(기존 메가트렌드 표 유지) + 프론티어LLM·HBM4·Intel18A·GLP-1·Waymo·Starship 행 [8/23] 갱신. **Capex/신용: Big-5(incl Oracle) 2026 AI인프라 ~$775-800B 상향(CreditSights FY26 >$690B·+80%·FY28 >$900B·~75% AI $450B)·Oracle 5Y CDS ~218bps(S&P·2027 FCF ~-$40B)·CoreWeave 3월 $8.5B DDTL 파산격리 SPV(A3·5.9%·2032)+8/10 $2.6B 클로징·FactSet 증분부채/capex 32%·PIMCO capex 94% OCF·8/26 NVDA Q2 FY27(가이던스 $91B±2%·컨센 $93-95B·Q1 $81.6B/DC $75.2B +92%)+8/27-28 잭슨홀(Warsh 첫 기조 8/28) 더블헤더. 모델: 프론티어 5강 분할(Opus5·GPT-5.6·Grok4.6·Kimi K3)·GPT-5.6 Luna 무료티어 기본·GLM-5.3(Z.ai 8/14)·Gemini 3.5 Pro 8/8 여전 미출시(코딩미달+데이터 수개월 지연). 에이전틱: 79% 도입/11% 프로덕션(31% ≥1·은행 47%)·앱 80% 내장(24년 33%)·Gartner 40%(26말)/40%+취소(27)·IBM ROI 25%. 메모리/파운드리: HBM4 ~$550/스택·삼성 수율 80%(DRAM 1위 탈환 시나리오)·SK 70% Rubin·TSMC 애리조나 3팹 착공+$100B·Intel 18A-P 리스크 프로덕션(+9%/-18%). 로보틱스: Waymo 전 라이더 LA/피닉스/SF(8/19)·CPUC 18카운티(8/14)·2,000만회+·3,000대 vs Optimus 생산 여전 0. 우주/바이오/양자: Starship F14 정적점화 8/20 NET 8/28(첫 궤도+타워캐치)·CagriSema FDA ~10월(22.7%)·IonQ #AQ64 800논리큐빗(27). 232조 DC칩 면제 8/23 미결 유지. science_tech 와 각도 분리(매크로 추상화·AI 프런티어 집중) |
 | 2026-08-16 | kb-updater | **주간 델타 갱신(9회 검색, +7 DB 레코드, tag=tech)** — 종합코멘트 8/16 블록 추가(기존 메가트렌드 표 유지). **신용: CoreWeave $2.6B 지연인출 텀론 정식 클로징(8/10, 8-K)—전주 대주단 코버넌트 요구서 계약 확정. Oracle 하이퍼스케일러 CDS 최대폭 확대 주도 5년 ~200-218bps(연초 40bps서 5배·디폴트확률 ~16%). FactSet: 5사 증분부채/capex FY24 9%→2026중 32%로 외부조달 전환·AI 지출 $1조 목전 경계감. AI 프런티어: Qwen3.8-27B(8/14 최신 프론티어)·Q3 최대 릴리스 창(5개 중 3개 8월중~9월말 집중)·Google DeepMind 신임 총괄 Kavukcuoglu 추격 과제(8/12)·Opus 5 리더보드 방어. 메모리: TrendForce 8/13 HBM4가 2H 실적 관전포인트·HBM4 ~$500/48GB·삼성 수율 ~80%·DRAM 1위 탈환 시나리오·SK 50-55%·전량선판매. 정책: 반도체 232조 DC칩 면제 8/16 미결 유지(8/12 관문 무수정 추정). 우주/양자/바이오: Starship Flight14 8월말(첫 궤도 Starlink V3+타워캐치 재시도)·IonQ Q2 +287% $80.1M/FY $290M 상향/DARPA $28M/Capella-NRO·GLP-1 BMJ 중단시 4배 빠른 재증가. science_tech 와 각도 분리(매크로 추상화·AI 프런티어 집중) |
 | 2026-08-09 | kb-updater | **주간 델타 갱신(11회 검색, +5 DB 레코드, tag=tech)** — 종합코멘트 8/9 블록 추가(기존 메가트렌드 표 유지). **신용: CoreWeave $2.6B 대출 대주단 코버넌트 요구(스프레드 100-125bps·DSCR 1.35x·전액상환, 8/3)·5Y CDS ~855bps·Oracle CDS 215bps+(S&P 7/9 BBB-)—'첫 균열→대주단 규율' 단계 진입. AI 모델: Qwen3.8 Max(8/2)·GPT-5.6 Luna -80% $0.20/$1.20·Terra -20% $2/$12(7/30)·DeepSeek V4-Flash 0731 $0.14/$0.28—가격전쟁. 정책: 반도체 232조 Phase2 DC칩 면제 8/12 결정 대기(8/9 미결·CCIA 철회시 美 연 $90B). 우주: AST BlueBird Block2 3기(8/5)·Falcon9 연 90회(8/4). 메모리: SK HBM4 베라루빈 60-70%·2026 전량선판매·PER<4x(8/5-6). science_tech 와 각도 분리(매크로 추상화·AI 프런티어 집중) |

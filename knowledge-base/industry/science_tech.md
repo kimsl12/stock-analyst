@@ -1,6 +1,6 @@
 ---
-updated: 2026-08-23
-valid_until: 2026-09-22
+updated: 2026-09-06
+valid_until: 2026-10-06
 sector: science_tech
 sources:
   [
@@ -250,8 +250,8 @@ sources:
     Life Science Daily,
   ]
 confidence: high
-last_synced_from_db: 2026-08-23
-db_records: 1120
+last_synced_from_db: 2026-09-06
+db_records: 1157
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -331,6 +331,7 @@ db_records: 1120
 | **D-Wave Q2 2026 실적 = 예약 +1,120%** [8/9 신규] | **8/6 D-Wave H1 예약 $35.5M(+1,120% YoY)**·**H1 RPO $40.7M(+668% YoY)**·H1 QCaaS 생산매출 비중 **37.3%**. 어닐링→게이트모델 확장 지속, 현금 견조(5월 $588M) | 2026.08.06 | D-Wave 8-K / SEC |
 | **★ D-Wave Nature 논문 = dual-rail 2큐빗 게이트** [8/9 신규] | **8/5 Nature** — dual-rail **erasure qubit** 아키텍처 **2큐빗 얽힘 게이트** 최초 시연: 충실도 **~99.9%**·게이트타임 **~500ns**·하드웨어 **native 에러검출**. '가장 흔한 에러가 가장 정정 쉬운' **유리한 에러 계층구조가 2큐빗 연산서 보존** 입증 = 게이트모델 FTQC 하드웨어 오버헤드 대폭 절감. D-Wave의 **게이트모델 진입**(어닐링 외) 하드웨어 증거 | 2026.08.05 | thequantuminsider / D-Wave Newsroom / Nature |
 
+> **2026.09.06 갱신**: ★ **IonQ 9/8 NYSE Investor Day = 근접 최대 촉매** — SkyWater 통합 결합 가이던스 + 'Broad Quantum Advantage' 로드맵(800 논리큐빗 2027·2M 물리/80k 논리 2030) + 다년치 매출 목표 제시 관측(애널 44/52 Buy·중간 PT $65 +63.5%, FY26 가이던스 $280~290M). ★★ 과학 = **IBM+시카고대 8/29 양자우위 시연**(70 논리큐빗·2,415 논리 2큐빗 연산·468 T게이트, 논리 에러율 물리 대비 10x↓, 고전 난제 15분 해결). 상업 = **Quantinuum-Aramco 9/3 MoU**(에너지 FTQC)+앨버커키 $1.5M 집적광학 R&D, **D-Wave NTT DOCOMO 2번째 프로덕션 양자앱**·**IonQ-CMC 캐나다 FABrIC**. 주가 = 8월말 셀오프(D-Wave 8/26 CFO 은퇴 -8%·IonQ -3%, RGTI ~$16, 3사 52주고점 -60~76%·월간 -30%)=하이프사이클 디플레이션+리스크오프.
 > **2026.08.09 갱신**: ★ **양자주 Q2 2026 실적 3사 발표** — **IonQ 8/5 매출 $80.1M(+287% YoY, 컨센 22.4% 상회)=더블비트**, FY26 가이던스 **$260~270M→$280~290M 상향**, SkyWater $1.8B 인수 완료 재확인, 주가 종가 -4.29% $39.93(실적 앞두고 8/1 $32→$40 반등). **Rigetti 8/6 매출 $5.1M(+183% YoY)·GAAP 손실 $52.6M→AH -5.56%**($100M 연방 LOI·HPE·Pittsburgh Supercomputing). **D-Wave 8/6 H1 예약 $35.5M(+1,120%)·RPO $40.7M(+668%)**. ★★ 과학 = **D-Wave 8/5 Nature 논문**(dual-rail erasure qubit 2큐빗 게이트 ~99.9%·~500ns·native 에러검출, 유리한 error hierarchy 2큐빗서 보존→게이트모델 FTQC 오버헤드 절감)=D-Wave 게이트모델 진입 증거. 실적 전반 = 매출 급성장 지속 vs 손실/희석 우려 병존, IonQ만 가이던스 상향.
 > **2026.08.01 갱신**: 신규 discrete 이벤트 다수 — **IonQ, SkyWater $1.8B 인수 7/31 완료**(7/28 최종 규제승인, 풀스택 수직통합 양자 플랫폼·'해외 칩 의존 종식', 6월 FTC 2차요청 미결→완결). **AT&T-D-Wave 7/27 네트워크 운영 확대 계약**(어닐링 최적화 ~1시간→15초, agentic AI 레이어링, D-Wave +7% 섹터 견인). **IBM 7/23 HRL 연구소 인수**(실리콘 스핀 큐빗→Anderon 파운드리)+**HRL Nature 18큐빗 실리콘 스핀 QPU 자율구동**(4K, 극저온 CMOS, ~0.2% 에러). **IBM Nighthawk r2**(리셋 25x)+**DOE Genesis $50M**. **Benchmark 7/27 IonQ Buy $60 커버리지 개시**→IonQ +9%. ★펀더멘털 촉매 = **양자주 Q2 실적**(IonQ 8/5 컨센 매출 $66.58M ~+222% YoY·EPS -$0.54·옵션 19.55% 스윙, D-Wave/Rigetti 8/6). 주가 = IonQ ~$32(52주고점 -62%)·그룹 -60~76%, IonQ 20애널 평균 PT $73.88. **[양자통신] QED-C/CQN 로드맵**(10 유즈케이스 중 2개만 지원). **[PQC] FIPS 140-3 CMVP 병목**(검증 ~18개월→2027.01 게이트 미달 우려, 9/21 140-2 종료·기존 EO 프레임 재순환). **[양자센서] DARPA RoQS**(Q-CTRL $24.4M·Safran 관성항법). (주의: PQC 9/21·CNSA 2.0·HQC 표준화는 기존 발표건 재순환 — 신규는 CMVP 파이프라인 병목 각도.)
 > **2026.07.26 갱신**: 양자주 조정 심화 지속 — **IonQ 7/24 종가 $32.84**(7/13 $39.52서 추가 -17%, 매크로 리프라이싱 연장). **Motley Fool 7/22 '$988M 경고'**(3사 합산 희석·현금소진, 5월 $931M→$988M 확대) = 라이브 매출 대비 밸류 과열 경고 재점화. 펀더멘털 촉매 = **IonQ Q2 2026 실적 8/5**(애널 ~60% 상승여력 컨센 유지). 신규 discrete 이벤트 = **Quantinuum-SoftBank 7/21 엔터프라이즈 양자 통합 로드맵 백서**(산업 양자화학·그래프분석 워크로드 고전→QPU 전환 타임라인, Helios→Sol 2027→Apollo 2029→Lumos 2030s). (주의: Quantinuum 'FTQC by 2030 로드맵'·비아벨리안 애니온 위상 게이트셋 보도는 기존 발표건 재순환 가능성 — 신규 확정 배제.)
@@ -453,6 +454,7 @@ db_records: 1120
 | **Waymo 2026 대확장**                 | 신규 11개 도시. 주간 **100만 탑승** 목표. 차량 **2,500~3,500대**. **런던+도쿄** 국제 테스트                                                                                                                                 | 2026   | TestMiles / TechCrunch                     |
 | 한국 로봇 산업 매출                   | 6조 원대                                                                                                                                                                                                                    | 2025년 | 산업부                                     |
 
+> **2026.09.06 갱신**: **젠슨 황 물리AI TAM '$50T' 상향 제시**(5월 $40T서)+Nvidia **Isaac Root 레퍼런스 휴머노이드**(총 31 DoF·손당 25 DoF)+로봇 브레인 개발사 110곳 생태계 = 'physical AI' 내러티브 격상(Goldman 휴머노이드 2035 $150B+·지능형로봇 $400B+). 생산 = Optimus Fremont 양산 7월말~8월 착수·연말 목표($20~30k), Figure 03 40대 BMW ~$25/robot-hr·연말 가정 파일럿, BD 전동 Atlas 연말 현대 조지아 출하(2026 물량 전량 현대 메타플랜트+Google DeepMind), Unitree 2025 5,500대→2026 1~2만대(Nvidia 플랫폼 파트너 선정).
 > **2026.08.23 갱신**: 양산 스케일업 지속 — **Figure 03 BotQ 7/23 1,000번째 생산**(시간당 1대·BMW 물류 확대), **Tesla Optimus V3 Fremont 저물량 여름 착수**(22-DoF손·AI5·Grok, 중순까지 미개시→여름 가이던스). **Unitree 2026 1~2만대 목표**(서구 대비 ~1/10 가격·최다 출하이나 Q1 이익 반감), **AgiBot 누적 1.5만대**. Figure+Agility 실배치 실적 최강.
 > **2026.07.05 갱신**: 상태 재확인 + 정밀화 — **Optimus Gen3 저물량 여름·Fremont 대량생산 7월말~8월**(V3 = 22-DoF 손·AI5 칩·Grok). **Figure AI Series C $39B 밸류**(2025.09, $1B+ 조달, NVIDIA/Intel/Qualcomm 참여) = Goldman 2035 전체 시장($38B) 초과 = 밸류 과열 시그널. Figure 03 BotQ 시간당 1대, BD 전기 Atlas 현대/DeepMind 첫 출하($140K~150K), Unitree 2025 5,500+대·2026 1~2만대. Goldman 2030 25만대+ 출하(산업용).
 > (6/28 배경) TrendForce 휴머노이드 출하 2026 5만대 돌파 전망(+700% YoY). Figure 03 BotQ 40대 BMW ~$25/robot-hour. Goldman 2035 $38B(6x 상향).
@@ -500,6 +502,7 @@ db_records: 1120
 | ARPA-E 핵융합                         | **$135M** 투자 -- 역대 최대 단일 투자                                                                                                                                                                                                           | 2026       | ARPA-E/FIA                        |
 | **핵융합 상업화 현실** [6/7]          | **2026 현재 어떤 기업도 전력망 공급 12개월 이내 도달 못함**. 초기 공격적 마일스톤 일부 지연되나 물리/공학/자본 궤적 의미있게 전진                                                                                                               | 2026       | pdpspectra / TechCrunch           |
 
+> **2026.09.06 갱신 (SMR)**: **트럼프 행정부 $200M DOE 이니셔티브** = Oklo·X-Energy가 Microsoft·Nvidia와 AI 데이터센터용 첨단원자로 개발 가속(발표에 OKLO·XE 시간외 급등). ★리스크 = **Oklo PJM 좌초**(750MW Meta 후원 오하이오 프로젝트 대기열 제외 → 14개월 지연 위협, OKLO -5%, FERC 대기열 복원 요청·PJM 답변 9/4, 인터커넥션이 라이선싱·건설과 함께 핵심 리스크로 부각). **OKLO YTD -41%·XE YTD -27%**(X-energy 4월 IPO가 하회). 글로벌 SMR 66개사·15개국(Tier1 32개사).
 > **2026.08.01 갱신 (SMR)**: 신규 대형 규제 이벤트 제한적(7/18 대규모 갱신 이후 소강) — **★ NuScale Q2 2026 실적 8/5(수) 장마감 후 발표 = 근접 최대 촉매**(TVA/ENTRA1 6GW PPA 연내 확정 시사). **Barclays 목표가 $15→$11 하향**(TVA 진행 완만), 주가 $8.36(7/15·52주 고점 대비 -85%)이나 7/30 원자력주 급등·Motley Fool '브레이크아웃 임박'(7/27). **Oklo 주가 ~$41 월간 -28% 조정**(Aurora-INL DOE OTA+NSDA 승인, 상업운전 late 2027~2028). **우라늄 장기계약가 $90/lb=2008 이래 최고**(현물 ~$85~86 횡보). **Rolls-Royce SMR-ČEZ Temelín 계약+두산에너빌리티 RPV 사전제작**(dual-supply, 대부분 5월 발표건 재확인). Centrus HALEU $900M DOE 태스크오더.
 > **2026.07.26 갱신 (SMR)**: 신규 discrete 이벤트 제한적(7/18 대규모 갱신 직후) — **Rolls-Royce SMR-체코 7/21 MOU 2개 부지 추가**(Tušimice·Dětmarovice, ČEZ·산업부) = 유럽 SMR 배치 확대 지속. **NuScale(SMR) 7/21 +11.0%**(첫 NRC 설계승인 재부각·'high-stakes proving ground', TVA PPA 연내 촉매 대기). Deployable Energy Unity 실증로 NRIC/INL 초기 임계(DOE 4개 마이크로원자로 zero-power 트랙 재확인).
 > **2026.08.01 갱신 (핵융합)**: **★ CFS(Commonwealth Fusion Systems) 7/30 $1B 추가 조달→누적 자본 $4B = 전 세계 민간 핵융합 투자의 ~30%**(연기금·국부펀드 참여=핵융합 첫 대규모 기관 라운드). SPARC ~80% 조립·18개 자석 2026 여름말 전량 설치·첫 플라즈마+과학적 손익분기 2027. **Helion 밸류에이션 $15.5B**($465M Series G, Thrive Capital 주도)·규제 라이선스(WA 보건부 RML+RAEL). **FIA 재확인: 56개사·$4.48B·종사자 16,000명+ 첫 돌파**(Proxima 누적 $727M·Pacific ~$900M). **한국 ITER 신규 수주 211억·누적 1조 173억원**. 2026 현실: 그리드 발전 12개월 내 기업 0.
@@ -716,7 +719,21 @@ db_records: 1120
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-08-23 신규)
+### 16-C. 주간 과학기술 동향 (2026-09-06 갱신)
+
+> **2026-08-30~09-06 주간 통합 수집(web_search 14회, global-data 일요런).** 프론티어 전문 갱신은 토요일 weekly-frontier 담당(우주 9/5 반영). 아래 표 = 통합 뷰 크로스커팅 최신값.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[양자]** | ★ **IonQ 9/8 NYSE Investor Day**(Broad Quantum Advantage 로드맵·800 논리큐빗 2027·SkyWater 결합 가이던스)·**IBM+시카고대 8/29 양자우위 시연**(70 논리큐빗·2,415 논리 2큐빗 연산·에러 10x↓·고전 난제 15분)·**Quantinuum-Aramco 9/3 MoU**·8월말 셀오프(D-Wave 8/26 CFO 은퇴 -8%) | 2026.09 | Motley Fool / ScienceDaily / QCR |
+| **[SMR]** | **트럼프 $200M DOE**(Oklo·X-Energy·MS·Nvidia AI DC 원자로)·**Oklo PJM 오하이오 좌초**(-14개월 위협·FERC 답변 9/4)·OKLO YTD -41% | 2026.09 | Yahoo / Benzinga / 24-7 Wall St |
+| **[핵융합]** | CFS 7/30 $1B→누적 $4B(민간 ~30%)·Nvidia+Siemens SPARC 디지털트윈·자석 18개 여름내 전량 설치·2027 가동(재확인). 민간 누적 $13B+ | 2026.09 | TechCrunch / CFS |
+| **[로보틱스]** | 젠슨 황 물리AI **$50T TAM**(5월 $40T서 상향)·Nvidia **Isaac Root** 레퍼런스 휴머노이드(31 DoF)·Optimus Fremont 양산 착수·BD Atlas 연말 현대 출하 | 2026.09 | Benzinga / Technology.org |
+| **[소재]** | 전고체 2026 산업화 본격(상업 400~500 Wh/kg·중국 첫 표준 2026.07)·CAS 유연 전고체 2만회 굽힘 +86% 밀도 | 2026.09 | IDTechEx / 36kr |
+| **[바이오]** | CASGEVY Q2 매출 $76M(+78% QoQ)·CRISPR Tx CTX310 ESC 8월 Phase 1a·Intellia lonvo-z BLA 하반기·출시 2027 상반기(재확인) | 2026.09 | BioSpace / Nature Biotech |
+| **[AI4Science]** | **Isomorphic Labs IsoDDE**('AlphaFold 4'급, 단백질-약물·항체 정밀 예측)·DeepMind **GNoME 220만 결정구조**(Li이온 전도체 5.2만·736 합성) | 2026.09 | Scientific American / DeepMind |
+
+#### (이전 주간) 2026-08-23 기록
 
 > 2026-08-16~08-23 주간 수집(web_search 10회). 프론티어 4종(양자/우주/SMR·핵융합/차세대통신)은 헤드라인 수준(전문 갱신은 토요일 weekly-frontier 담당, 8/22 반영). 개별 이벤트는 §3/5/9/12-B 및 jsonl 상세.
 
@@ -750,7 +767,7 @@ db_records: 1120
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1120건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1157건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
