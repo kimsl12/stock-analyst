@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>클로봇 — 재분석 v15 (이전 비교 미포함) (466100) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>클로봇 — 재분석 v15 (이전 비교 미포함) (466100)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-07</div><div style="margin-top:8px"><span class="badge b-sell">매도 (Sell)</span> <span class="badge b-score">48/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">대형 로봇 자동화 TAM·견고한 순현금 vs 지속 적자·과다 밸류·하락 추세의 긴장</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">애널리스트 커버리지 없음 (0명, 목표가·투자의견 부재)</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">자체 EV/Sales 시나리오(forward 매출 ~₩55B × EV/Rev ~9x + 순현금 ₩45B) → 목표가 ₩20,000, 현재가 대비 -18.9%</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull: 대형 계약 수주 + 분기 흑자 재전환으로 EV/Rev 재평가 시 ₩29,000+ / Bear: 현금소진 가속·희석·멀티플 6x 압축 시 ₩13,500</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">매도 / 신규 진입 회피, 보유자 ₩21,036 손절 규율</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">1) YoY +65% 성장이 방향성 유효하고 Q4 흑자 계절성 재현 시 매도가 조기 판단일 수 있음. 2) 순현금 ₩44.5B가 하방을 견고히 방어해 급락 시 밸류 지지선 형성. 3) 로봇 자동화 정책·계약 촉매가 소형주 특성상 급등 촉발 가능 — 숏 관점은 변동성 위험.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매도 (48점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">₩24,650.00</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">₩763.0B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing n/a (적자) / forward n/a</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">N/A~₩82,300.00</div></div><div class="ki"><div class="kl">P/S (TTM)</div><div class="kv">17.1x</div></div><div class="ki"><div class="kl">EV/Revenue</div><div class="kv">12.8x</div></div><div class="ki"><div class="kl">매출성장 YoY</div><div class="kv">+65% (분기 +12.9%로 둔화)</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">-30.8%</div></div><div class="ki"><div class="kl">순현금</div><div class="kv">+₩44.5B (부채 미미)</div></div><div class="ki"><div class="kl">FCF (TTM)</div><div class="kv">-₩8.25B (현금소진)</div></div><div class="ki"><div class="kl">현금 런웨이</div><div class="kv">~5년 (현 소진율 기준)</div></div><div class="ki"><div class="kl">52주 고점 대비</div><div class="kv">-70% (₩82,300→₩24,650)</div></div><div class="ki"><div class="kl">50/200일선</div><div class="kv">₩26,749 / ₩46,762 (둘 다 하회)</div></div><div class="ki"><div class="kl">애널 커버리지</div><div class="kv">없음 (0명)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">₩21,036.00</div><div class="dn" style="font-size:13px">-14.7%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">₩20,000.00</div><div class="up" style="font-size:13px">-18.9%</div></div></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): ₩1807.00 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>클로봇은 실내 자율주행 서비스·물류 로봇 소프트웨어를 제공하는 KOSDAQ 소형 성장주다. TTM 매출 ₩44.6B에 YoY +65% 헤드라인 성장을 기록했으나, Q2'26 분기 성장은 +12.9%로 둔화됐고 영업이익률 -30.8%로 H1'26 적자가 확대(Q1 -2.5B→Q2 -2.84B)됐다. 밸류에이션은 70% 급락 후에도 P/S 17.1x·EV/Rev 12.8x로 적자 기업치곤 과다하다. 유일한 방어선은 순현금 +₩44.5B(현금>연매출, 부채 미미)로 ~5년 런웨이를 확보한 점이다. 주가는 52주 고점 대비 -70%, 50·200일선 모두 하회하는 명백한 하락 추세이며 마지막날 +8.8% 반등은 고변동(ATR 7.3%) 노이즈로 판단된다. 애널 커버리지가 전무해 기관 검증도 부재하다. 자체 EV/Sales 시나리오 밸류로 공정가치 ₩20,000(-18.9%)를 도출, 매도 등급(48점). 고금리·매파 리프라이싱·중동 Brent $95의 매크로가 고베타 소형 성장주에 역풍으로 작용한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,85.0 157.6,125.7 216.1,125.3 168.5,159.3 160.6,178.3 140.0,190.0 113.5,186.4 68.7,173.2 111.5,140.7 110.6,109.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="85.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="157.6" cy="125.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="216.1" cy="125.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="168.5" cy="159.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">모멘텀</text><circle cx="160.6" cy="178.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">컨센서스</text><circle cx="140.0" cy="190.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">Moat</text><circle cx="113.5" cy="186.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업/TAM</text><circle cx="68.7" cy="173.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크관리</text><circle cx="111.5" cy="140.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매</text><circle cx="110.6" cy="109.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>6.5</td><td>/10</td></tr><tr><td>수익성</td><td>3.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>8.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>3.0</td><td>/10</td></tr><tr><td>모멘텀</td><td>3.5</td><td>/10</td></tr><tr><td>컨센서스</td><td>4.0</td><td>/10</td></tr><tr><td>Moat</td><td>4.5</td><td>/10</td></tr><tr><td>산업/TAM</td><td>7.5</td><td>/10</td></tr><tr><td>리스크관리</td><td>3.0</td><td>/10</td></tr><tr><td>촉매</td><td>5.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 48/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v12</td><td>2026-08-09</td><td>55</td><td>중립</td><td>—</td></tr><tr><td>v13</td><td>2026-08-19</td><td>47</td><td>매도</td><td>₩26,000</td></tr><tr><td>v14</td><td>2026-08-28</td><td>40</td><td>매도</td><td>₩21,000</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="dn">-7pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">좁음</span></h2><p><b>클로봇(CLOBOT)</b>은 실내 자율주행(AMR) 및 서비스·물류 로봇용 소프트웨어·플릿(fleet) 관리 솔루션을 제공하는 국내 로봇 소프트웨어 기업이다. <br> 로봇 자율주행 스택, 다기종 로봇 통합관제, 공간지능(공항·병원·물류센터 등) 응용에 집중한다. <br> 유통주식 30,953,739주, 내부자 지분 16.7%·기관 13.8%. 시가총액 ~₩763B의 소형주로, 매출 성장 테마 vs 지속 적자·희석 리스크가 공존한다.</p><h3>Moat 상세</h3><p>실내 자율주행·다기종 로봇 플릿관리 SW 스택과 레퍼런스 축적은 일부 전환비용·기술 차별화를 형성한다. 그러나 국내외 로봇 SW·통합관제 경쟁이 격심하고 기업 규모가 영세해 지속가능한 넓은 해자로 보기 어렵다. 대형 파트너·플랫폼 락인 확보 여부가 해자 심화의 관건.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>TTM 매출 ₩44.6B, YoY +65% (yfinance TTM 기준). <br> 그러나 분기 실적은 계절성·수익성 변동이 크다: 2025 Q4 매출 ₩17.9B·영업이익 +₩1.3B(흑자), Q3 +₩0.8B(흑자)였으나 <br> 2026 H1은 Q1 -₩2.5B·Q2 -₩2.84B로 영업적자가 확대됐다(전년동기 Q2'25 -₩1.9B 대비 악화). <br> 영업이익률 -30.8%·GPM 26.6%(SW치곤 낮아 HW·서비스 혼재 시사). <br> 재무구조는 견고: 순현금 +₩44.5B, 총부채 ₩0.65B로 거의 무차입, 현금이 연매출을 상회. <br> 다만 FCF -₩8.25B·영업현금흐름 -₩7.4B로 현금소진 중이며, 소진 가속 시 유상증자·희석 리스크가 상존한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>정량 밸류(PER 등) 산정 불가(적자). EV/Sales 시나리오 기반. 현재 P/S 17.1x·EV/Rev 12.8x는 적자·성장둔화 국면에서 과다. 기본 시나리오: forward 매출 ~₩55B에 EV/Rev ~9x 정상화 + 순현금 ₩45B → 시총 ~₩620B → 목표가 ₩20,000(-18.9%). 강세: EV/Rev ~14x → ₩29,000(+17.6%). 약세: 멀티플 6x 압축·현금소진 가속 → ₩13,500(-45.2%). 넓은 밴드는 적자 소형주 밸류의 근본적 불확실성을 반영.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>명백한 하락 추세. 현재가 ₩24,650은 50일선(₩26,749)·200일선(₩46,762)을 모두 하회하며 200일선과의 괴리가 크다(고점 대비 -70%). 마지막 거래일 +8.8%(₩22,650→₩24,650) 반등이 있으나 ATR 7.3%의 고변동 소형주 특성상 추세 전환 신호로 보기 어렵다. beta 데이터 부재(null)이나 낙폭·변동성으로 실질 고베타 추정. 수급: 애널 커버리지 부재로 기관 관심 낮음, 개인 수급 의존.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>서비스·물류 로봇 자동화는 인력난·임금 상승·자동화 메가트렌드에 힘입은 대형 성장 TAM(공항·병원·호텔·물류센터·리테일). 구조적으로 우호적이나 상용화·수익화 속도가 관건이며 경쟁이 격심하다. 계절성상 H2(특히 Q4) 매출·수익성이 강한 패턴을 보인다. 회사는 성장 초기 단계로 규모의 경제 도달 전이라 적자 지속 국면.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 위험 3가지: (1) 지속 영업적자·H1 손실 확대로 흑자 전환 시점 불확실, (2) 현금소진 지속 시 유상증자·전환사채 희석, (3) P/S 17x 고밸류의 멀티플 압축(고금리·매파 국면). 손절 규율: 보유자는 ₩21,036(현재가 −2×ATR14) 이탈 시 기계적 청산. 손절선이 공정가치(₩20,000)보다 위여서 위험/보상이 비대칭 — 매도·회피 스탠스가 규율상 타당.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">지속 적자 / 흑자 전환 지연</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">현금소진 → 희석(유증/CB)</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">고밸류 멀티플 압축</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">유동성·커버리지 부재</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>지속 적자 / 흑자 전환 지연</strong> (발생: 높음, 영향: -20~40%)<br><span style="color:var(--sub);font-size:13px">영업이익률 -30.8%, H1'26 적자 확대. 흑자 전환 지연 시 밸류 정당화 실패.</span></div><div class="ri rl"><strong>현금소진 → 희석(유증/CB)</strong> (발생: 중간, 영향: -15~30%)<br><span style="color:var(--sub);font-size:13px">FCF -₩8.25B/년. 순현금 방어선이지만 소진 가속 시 주주가치 희석.</span></div><div class="ri rl"><strong>고밸류 멀티플 압축</strong> (발생: 높음, 영향: -25~45%)<br><span style="color:var(--sub);font-size:13px">P/S 17x·EV/Rev 12.8x. 매파 리프라이싱·10Y 4.77%서 고베타 성장주 자금 이탈.</span></div><div class="ri rl"><strong>유동성·커버리지 부재</strong> (발생: 중간, 영향: -10~20%)<br><span style="color:var(--sub);font-size:13px">애널 0명·소형주 고변동(ATR 7.3%). 기관 검증 부재로 급등락 반복.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>매도 / 신규 진입 회피. 자체 EV/Sales 밸류로 공정가치 ₩20,000(-18.9%)가 현재가 하단. 보유자는 ₩21,036(−2×ATR14) 손절 규율 적용 — 손절선이 공정가치 위여서 상방 제한·하방 확대의 비대칭 구조. 신규 매수 부적합, 관망 시에도 비중 0~2% 이하. 상방 트리거: 대형 B2B/공공 로봇 도입 계약·분기 흑자 재전환·EV/Rev 유지한 매출 +40%↑. 하방 트리거: 현금 런웨이 <3년·희석 발생·200일선 회복 실패·매파 심화. 매크로(F&G 41.9 공포·고금리·Brent $95)가 방어적 스탠스를 지지.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>목표가 범위 ₩13,500 ~ ₩29,000 (중심 ₩20,000, 약 -45% ~ +18%). 스코어 밴드 ±6pt (42~54). 강세(EV/Rev 14x·흑자전환) ₩29,000 / 기본(EV/Rev 9x 정상화) ₩20,000 / 약세(멀티플 6x·소진 가속) ₩13,500. 넓은 밴드는 적자 소형주 밸류의 근본 불확실성 반영.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2>1) 현금소진율(~₩8.25B/년) 유지 — 가속 시 런웨이 <3년·희석으로 목표가 하향. 2) 적정 EV/Sales가 forward ~9x로 정상화 — 매파 지속 시 5~6x 압축→약세 시나리오 수렴. 3) YoY +65% 성장이 방향성 유효 — 분기 +12.9% 둔화가 추세면 성장성·촉매 추가 하향.</div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>이전 v14 미참조 독립 재분석(v15). 적자 소형주라 PER 정량 밸류 불가 → EV/Sales·성장·현금소진·수급 중심 정성 판단. 애널 커버리지 부재로 컨센서스 항목 저점수+confidence 대폭 하향. 데이터 한계: 52주 저가 0.0(이상치→null), P/S 17.1x vs EV/Rev 12.8x 산정 괴리(순현금·기준매출 차이 추정). 매크로(F&G 41.9·10Y 4.77%·매파·Brent $95)는 고베타 소형 성장주에 역풍.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-07 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="466100_클로봇_20260907.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
