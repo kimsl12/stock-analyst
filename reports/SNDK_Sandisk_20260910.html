@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>샌디스크 — 재분석 v17 (이전 비교 미포함) (SNDK) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>샌디스크 — 재분석 v17 (이전 비교 미포함) (SNDK)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-10</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">73/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">SNDK는 NAND·엔터프라이즈 SSD 업사이클 최대 수혜주로 forward EPS $264.72·순현금 $4.56B·강한 모멘텀을 근거로 12M $2050 여력. 단 사이클 정점 리스크로 소액 비중·타이트한 손절 전제의 매수.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">애널 23인 매수(rec 1.54), 평균목표 $2125 — AI 스토리지 수요·NAND 타이트 지속 낙관.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">컨센서스는 정점이익을 정상이익처럼 저PER로 정당화하나, 우리는 이를 사이클 함정으로 보고 base 목표를 컨센 median 하단($2050)으로 낮추고 약세 시 $950 정상화까지 큰 하방을 인정.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">NAND 계약가격(ASP)이 2개 분기 연속 하락 전환 + 삼성/마이크론 증설 가속으로 이익 정상화가 개시되면 매수 논지 무효.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">매수(소액 비중, 2ATR $1580 손절, 트레일링 스톱).</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① 사이클 정점에서 저PER 사이클주를 매수하는 것은 고전적 실수 — PER이 가장 쌀 때가 이익 붕괴 직전일 수 있다. ② 78% 영업마진은 회계·JV 지분법 왜곡 소지가 있어 실제 현금창출력이 과대평가됐을 가능성. ③ 컨센서스가 이미 강한 매수(rec 1.54)로 쏠려 있어 긍정 서프라이즈 여력은 작고, 실망 시 급락 대칭이 크다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (Buy) (73점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$1,772.07</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$259.5B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 24.0x / forward 6.7x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$72.03~$2,354.39</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">6.7x</div></div><div class="ki"><div class="kl">Trailing P/E</div><div class="kv">24.0x</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">20.2x</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">0%</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">91.6%</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">78.5%</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$1,579.71</div><div class="dn" style="font-size:13px">-10.9%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$2,050.00</div><div class="up" style="font-size:13px">+15.7%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="241" y="30" width="66" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="241" y1="26" x2="241" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="241" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$1,580</text><line x1="268" y1="24" x2="268" y2="52" stroke="var(--text)" stroke-width="3"/><text x="268" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$1,772</text><line x1="307" y1="26" x2="307" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="307" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$2,050</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $72</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $2,354</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $96.18 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>샌디스크(SNDK)는 WDC에서 분사한 NAND 플래시·SSD 순수 플레이어로, AI 서버·엔터프라이즈 SSD 수요가 촉발한 메모리 업사이클의 정점 국면 최대 수혜주다. 분기 매출이 4개 분기 만에 $1.9B(2025-06)에서 $8.97B(2026-06)로, 분기 EPS가 -$0.16에서 $43.97로 폭증했고 forward EPS는 $264.72(trailing $73.69의 3.6배)에 이른다. 현재가 $1772는 50일선($1543)·200일선($1011)을 크게 상회하고 컨센서스 23인 평균목표 $2125(매수, rec 1.54)가 약 20% 상방을 가리킨다. 다만 forward PER 6.7x라는 '싸 보이는' 밸류에이션은 정점이익에 기반한 전형적 사이클 함정이며, 78%대 영업마진과 91% ROE는 지속 불가한 피크 수준이다. 순현금 $4.56B·저부채·FCF $7.7B의 재무는 견고하나, 사이클 정점 리스크가 최대 하방 요인이다. 강한 모멘텀·컨센서스 지지를 근거로 매수 등급을 유지하되, 소액 비중과 2ATR 손절을 전제로 한 타이트한 리스크 관리가 필수다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,60.0 192.9,77.2 225.6,122.2 197.1,168.5 178.2,202.6 140.0,230.0 95.9,210.7 97.2,163.9 82.9,131.5 95.9,89.3" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="60.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="192.9" cy="77.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="225.6" cy="122.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="197.1" cy="168.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="178.2" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="95.9" cy="210.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="97.2" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="95.9" cy="89.3" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>9.0</td><td>/10</td></tr><tr><td>수익성</td><td>9.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>9.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.0</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>6.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>8.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>7.5</td><td>/10</td></tr><tr><td>리스크</td><td>4.5</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>7.5</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 73/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v14</td><td>2026-08-13</td><td>61</td><td>중립</td><td>$1,800</td></tr><tr><td>v15</td><td>2026-08-22</td><td>54</td><td>중립</td><td>$1,000</td></tr><tr><td>v16</td><td>2026-09-02</td><td>67</td><td>매수</td><td>$1,900</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+13pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">중간</span></h2><p>샌디스크(<b>Sandisk Corporation, NASDAQ: SNDK</b>)는 2025년 초 웨스턴디지털(WDC)에서 분사한 <b>NAND 플래시 메모리·저장장치 순수 플레이어</b>다. 사업은 (1) 클라이언트·엔터프라이즈 SSD, (2) 소비자 스토리지(메모리카드·USB·외장 SSD), (3) NAND 웨이퍼/컴포넌트 판매로 구성된다. 일본에서 <b>키오시아(구 도시바메모리)와의 제조 합작(JV)</b>을 통해 요카이치·기타카미 팹에서 <b>BiCS 3D NAND</b> 공정으로 웨이퍼를 생산·분배한다. AI 데이터센터의 고용량 엔터프라이즈 SSD 수요가 실적을 견인하고 있다. TTM 매출 $20.2B, 시가총액 약 $259B, 발행주식 1.46억주, 기관 보유 80.8%·내부자 0.96%.</p><h3>Moat 상세</h3><p>NAND는 삼성전자·SK하이닉스(+Solidigm)·마이크론·키오시아-샌디스크 JV의 5강 과점 구조로, 진입장벽은 (1) 극심한 자본집약도(팹 신설 수십억 달러), (2) BiCS 3D 적층 공정 기술, (3) 키오시아 JV의 규모의 경제, (4) 소비자·리테일 브랜드력이다. 다만 NAND는 DRAM/HBM 대비 제품 차별화가 낮고 전환비용이 작은 <b>상대적 범용재(commodity)</b> 성격으로, 가격이 사이클에 크게 좌우된다. 따라서 해자는 '중간'이며 HBM·DRAM 선도기업보다 좁다. JV 파트너십(키오시아 관계 변동)과 공급규율이 해자 지속성의 핵심 변수다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>실적은 극단적 사이클 상승을 보인다. 분기 매출: 2025-06 $1.90B → 2025-09 $2.31B → 2025-12 $3.03B → 2026-03 $5.95B → 2026-06 $8.97B. 분기 순이익: -$0.02B → $0.11B → $0.80B → $3.62B → $6.90B. TTM 매출 $20.25B(YoY +371.6%), TTM EBITDA $12.62B, FCF $7.72B, 영업현금흐름 $11.67B. 마진은 총이익률 71.5%, 영업이익률 78.5%, 순이익률 56.5%, ROE 91.6%로 메모리 업계로선 이례적 피크 수준이다. 재무건전성은 최상위권 — 총현금 $4.76B, 총부채 $0.20B, 순현금 $4.56B, 부채비율 약 1.3%. <b>trailing EPS $73.69 vs forward EPS $264.72(3.6배) 괴리</b>는 2025년 중반 적자 분기를 포함한 후행치와 최근 급등 런레이트의 차이로, 업사이클 이익 가속 신호다. 단, 영업이익률(78.5%)이 총이익률(71.5%)을 상회하는 이례치는 JV 지분법이익·기타수익 포함 또는 회계 표기 특성으로 추정되며 재확인이 필요하다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>1차: forward PER × forward EPS. 정점이익 $264.72에 사이클 반영 배수 적용. 사이클주 저PER=고점 함정에 유의해 정상화이익 관점을 병행한다. <b>기본(Base) 목표가 $2050</b> — forward EPS $264.72 × 약 7.7x(정점 프리미엄 할인) 및 컨센서스 median $2100 하단을 반영, 약 +16%. <b>강세(Bull) $2600</b> — 업사이클 연장·EPS 추가 상향·9~10x 재평가(AI 스토리지 수요 구조적). <b>약세(사이클 하강) $950</b> — NAND 가격 반락으로 이익 정상화(정상화 EPS를 TTM $73~90 수준으로 가정, 사이클 저점 배수 11~12x 적용), 컨센 low $1000 부근. EV/EBITDA 20.2x(TTM, 램프 초기 약분기 포함)는 forward PER 6.7x와 괴리 — 어느 단일 지표도 램프 중 기업엔 신뢰도가 낮아 밴드를 넓게 둔다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $1772.07은 50일선 $1543.20 대비 +14.8%, 200일선 $1011.43 대비 +75.2%로 강한 상승 추세다. 52주 범위 $72.03~$2354.39의 74% 지점에 위치(고점 대비 -24.7%). 전일 대비 +1.96%($1737.99→$1772.07). ATR(14) $96.18, ATR% 5.43%로 변동성이 매우 높다. 공매도 비중 8.24%(short ratio 0.46)로 매도 압력 존재. 컨센서스 23인 매수(rec 1.54), 평균목표 $2125(고 $3600·저 $1000). 베타는 null이나 사이클 메모리주 특성상 고베타로 취급.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>NAND 업사이클의 구조적 동인은 (1) AI 서버·추론 인프라의 고용량 엔터프라이즈 SSD 수요, (2) HBM 우선 투자로 인한 NAND 증설 지연 → 공급 타이트, (3) 5강의 공급규율(감산·가격 정상화 협조)이다. 샌디스크는 키오시아 JV·BiCS 기술로 이 수요를 흡수 중이다. 다만 경쟁은 치열하다 — 삼성전자·SK하이닉스(Solidigm 포함)·마이크론이 동일 수요를 겨냥하며, 업사이클 후반 증설 경쟁이 재개되면 공급 과잉·가격 하락으로 전환될 수 있다. NAND의 범용재적 특성상 가격 반락 시 마진이 급격히 훼손된다. 즉 현재의 78% 영업마진은 사이클 정점 신호이자 지속 불가 지표로, 향후 12~18개월 내 정상화 압력이 논지의 핵심 리스크다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 메모리 사이클 정점 리스크다. 현 이익·마진은 지속 불가한 피크 수준이며, NAND 가격 반락 또는 경쟁사 증설 재개 시 이익이 정상화되면서 '싸 보이는' forward PER의 근거가 소멸한다. 고변동성(ATR 5.4%)·8.24% 공매도·짧은 독립 트랙레코드가 하방을 증폭한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">메모리 사이클 정점 리스크</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">밸류에이션 함정(저 forward PER)</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">경쟁·공급 증설</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">고변동성·모멘텀 반전</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">스핀오프 신생·JV 의존</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>메모리 사이클 정점 리스크</strong> (발생: 높음, 영향: -40%)<br><span style="color:var(--sub);font-size:13px">NAND 가격·마진이 사이클 정점. 78% 영업마진·91% ROE는 지속 불가. 가격 반락 시 이익 정상화로 EPS·목표가 대폭 하향.</span></div><div class="ri rl"><strong>밸류에이션 함정(저 forward PER)</strong> (발생: 중간, 영향: -25%)<br><span style="color:var(--sub);font-size:13px">forward PER 6.7x는 정점이익 기반. 정상화이익 적용 시 실제 밸류는 오히려 비싸질 수 있음.</span></div><div class="ri rl"><strong>경쟁·공급 증설</strong> (발생: 중간, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">삼성·SK하이닉스·마이크론의 증설 경쟁. 공급규율 붕괴 시 NAND 가격 전쟁·과잉 재고.</span></div><div class="ri rl"><strong>고변동성·모멘텀 반전</strong> (발생: 중간, 영향: -15%)<br><span style="color:var(--sub);font-size:13px">ATR 5.4%, 52주 급등 후 되돌림 리스크. 공매도 8.24%가 하락 촉발 시 증폭.</span></div><div class="ri rl"><strong>스핀오프 신생·JV 의존</strong> (발생: 낮음, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">WDC 분사 후 독립 운영 트랙레코드 짧음. 키오시아 JV 관계 변동·무배당.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>진입: 현재가 $1772 근처 분할 매수, 되돌림 시($1600~1650, 50일선 $1543 부근) 추가. 손절: 2ATR = $1580(약 -11%) — 고변동 감안 기계적 손절 존중, 정점 반전 신호(계약가격 하락 전환) 시 조기 청산. 목표: 12개월 base $2050(+16%), 강세 $2600, 약세 $950. 비중: 고변동 사이클주 — 포트폴리오 소액 비중(2~4%)으로 제한, 트레일링 스톱으로 이익 보호. 큰 베팅 부적합, 사이클 위치 재점검 필수.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>12M 목표가 밴드 <b>$950 ~ $2600</b>(기본 $2050), 스코어 <b>73 ±8pt</b>. 사이클 정점의 어디에 위치했는지 판단이 목표가·스코어를 크게 흔들기 때문에 밴드가 매우 넓다. NAND 가격 방향이 확인될 때까지 base 신뢰도는 중간 수준으로, 강세/약세 어느 쪽으로도 빠르게 재조정될 수 있다.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>Forward EPS $264.72가 향후 12개월 실현된다 — NAND 가격이 정점 근처에서 유지된다는 가정. 반증(가격 하락) 시 EPS·목표가 -30% 이상.</li><li>Mid-cycle 정상화 이익을 TTM EPS $73~90 수준으로 가정 — 실제 정상화 수준이 더 낮으면 약세 목표($950) 추가 하향.</li><li>영업이익률 78.5%가 데이터 오류가 아닌 실제(정점 가격+JV 지분법 포함)라는 가정 — 회계 기준 재확인 필요. 과장됐다면 수익성·밸류에이션 재조정.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v17 독립 재분석, 이전 버전·리포트·timeline 미참조. 데이터 yfinance 2026-09-09 종가 $1772.07. 데이터 위생 교정: (1) forward PER 6.7x는 정점이익 기반 — 정상화(mid-cycle) 관점 병행, (2) 영업마진(78.5%)>총이익률(71.5%) 이례치 플래그(JV 지분법·기타수익 추정), (3) EV/EBITDA 20.2x(TTM, 램프 초기 약분기 포함)와 forward PER 6.7x 괴리 주의, (4) beta null → 고베타 사이클주로 취급.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-10 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="SNDK_Sandisk_20260910.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
