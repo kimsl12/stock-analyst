@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-08-29
+last_updated: 2026-09-12
 update_cycle: weekly
 status: active
-total_headlines: 132
+total_headlines: 141
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -63,6 +63,8 @@ total_headlines: 132
 - 📄 [Industry] TrendForce — HBM4 램프가 2H26 실적·메모리 가격 관건 (2026-08-13) — "HBM4 GPU당 원가 $31~32/GB로 HBM3e($17~18/GB)의 약 2배, Samsung HBM4 수율 약 80%로 개선 — HBM4 램프가 하반기 실적 핵심 드라이버" → SK하이닉스 상반기 NVIDIA향 매출 ₩17.61조(총매출의 13.35%)·Q2 HBM4 양산 개시·2027년 물량/가격 협상 진행 중. HBM 수요가 AMD·Google 등으로 다변화 + 서버 DDR5·SOCAMM(LPDDR)·eSSD도 실적 기여. 8/8 트래킹(삼성 하이브리드본딩 수율 개선·SK 2027 LTA 가격협상) 진전 실측 ([source](https://www.trendforce.com/news/2026/08/13/news-samsung-sk-hynixs-hbm4-push-puts-hbm-general-memory-pricing-in-the-spotlight-for-2h-earnings/) / [source2](https://finance.biggo.com/news/d7d00bd7-c503-448d-a813-dd8e16ab2acc))
 - 📄 [Industry] NVIDIA FY2Q27 실적 프리뷰 (2026-08-26 발표 예정) — "가이던스 매출 $91.0B(±2%, $89.2~~92.8B)·컨센 약 $91.7~~91.9B, Q1 FY27 매출 $81.6B·데이터센터 $75.2B(+92% YoY) 대비 순차 성장 — 가이던스는 중국 데이터센터 매출 0 가정" → GM 약 75% 유지·Blackwell Ultra 램프·하이퍼스케일러 수요 가속 여부가 관전 포인트. H200 중국 수출은 1월 케이스별 심사 허용에도 7월 Reuters "극소량만 중국 도달"·Blackwell 직수출 여전히 금지. 8/26 실적이 HBM4·AI 슈퍼사이클 지속성 방향타 — 8/15 트래킹(NVIDIA FY2Q27 실적·데이터센터 매출·H20 중국 재개) 일정 실측, 실제 실적 수치는 다음 회차 verify ([source](https://www.itechguides.com/nvidia-stock-earnings-preview-q2-fy27-report-date-estimates-and-key-risks/))
 - 📄 [Filing] NVIDIA Q2 FY2027 실적 (2026-08-26 발표) — "매출 US$96.2B(+106% YoY·+18% QoQ, 컨센 약 $92.1B·자체 가이던스 상단 상회), 데이터센터 매출 $89.0B(+117% YoY·총매출의 약 87%), GAAP EPS $2.46·Non-GAAP EPS $2.22(컨센 $2.09 상회), GM 75.0%, Q3 FY27 가이던스 $108.0B(±2%, 컨센 약 $104.2B 상회)" → 데이터센터 3자릿수 성장 지속·Blackwell/Blackwell Ultra 램프가 견인, Jensen Huang "수요 가속" 발언. 가이던스는 중국 데이터센터 컴퓨트 매출 0 가정("not assuming any Data Center compute revenue from China") — H200/Blackwell 對중국 수출 여전히 제약. 8/26 실적이 프리뷰(가이던스 $91.0B) 대폭 상회로 AI 슈퍼사이클 지속성·HBM4 수요 방향타 실측 확인 — 8/15·8/22 트래킹(NVIDIA FY2Q27) 실현, SK하이닉스·삼성·마이크론 HBM4 물량 thesis 직접 보강 (📄 NVIDIA 공식 릴리스 [source](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027) / [source2](https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html) / [source3](https://fortune.com/2026/08/26/nvidia-results-q2-earnings/))
+- 📄 [Filing] TSMC 8월 매출 (2026-09-10) — "8월 연결매출 NT$514.81B(+10.1% MoM·+53.3% YoY), 약 US$16.3B 사상 최고월 — 월 매출 NT$500B 첫 돌파, 1~~8월 누적 NT$3,386.87B(+39.3% YoY), 4개월 연속 강한 성장" → AI 실리콘 수요 + 신규 스마트폰 출시가 견인. 7월(US$14.49B, 8/10 회차) 신기록 재경신 — FY2026 USD 매출성장 가이던스 "40% 소폭 상회" 지지. Q2 실적(capex $60~~64B 상향)·NVIDIA/Oracle/Broadcom AI 수요와 정합, AI 슈퍼사이클 지속성 9월 실측 — 8/29 트래킹(TSMC 8월 매출 ~9/10) 실현 (📄 TSMC 공식 [source](https://pr.tsmc.com/english/news/3340) / [source2](https://www.cnbc.com/2026/09/10/tsmc-august-revenue-chip-ai.html))
+- 📄 [Filing] Broadcom Q3 FY2026 실적 (2026-09-04 발표) — "매출 US$29.59B(+86% YoY·컨센 $29.45B 상회), AI 반도체 매출 $16.7B(+221% YoY·+54% QoQ), Q4 AI 반도체 가이던스 $21.7B(+236% YoY), Non-GAAP 영업이익 $20.10B·영업이익률 67.9%" → 커스텀 AI 가속기(XPU)·네트워킹 칩이 성장 엔진, Google·Meta·OpenAI 등 커스텀 실리콘 고객 확대. AI 반도체 3자릿수 성장·Q4 재가속 가이던스로 커스텀 ASIC 수요 지속성 확인 — NVIDIA GPU와 병행하는 하이퍼스케일러 커스텀 칩 축, HBM4·CoWoS 수요 thesis 보강 (📄 Broadcom IR [source](https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial) / [source2](https://247wallst.com/cards/broadcom-q3-2026-earnings-avgo-01m1hx207g9d64z38jwrpy5fdm))
 
 ### 규제
 
@@ -95,6 +97,7 @@ total_headlines: 132
 - 📄 [White Paper] 유가 동향 — Houthi 홍해 공격 지속 속 Brent $80대 지지 (2026-08-05) — "Brent 8월 초 $80~82대 등락 — 7/23 $100 급등 후 되돌림했으나 Houthi의 사우디 유조선 반복 공격(홍해 Yanbu·아덴만)으로 $80 이상 지지" → The National 8/5 "Houthi 사우디 유조선 공격 후 Brent $80 재돌파". 이란 의회가 호르무즈 상업 통항 강화 조건(美·이스라엘 선박 통항 금지·적대국 배상 요구) 초안 심의 — 홍해가 페르시아만 우회로로서 위협받으며 전쟁 프리미엄 잔존. 7/22 회차 $100 급등 → 8월 $80대 부분 되돌림이나 지정학 리스크 재점화 상태 지속 ([source](https://www.thenationalnews.com/business/energy/2026/08/05/brent-oil-back-above-80-after-houthi-attack-on-saudi-tanker/) / [source2](https://oilprice.com/Energy/Oil-Prices/Oil-Prices-Climb-Toward-100-as-Red-Sea-Risks-Rise.html))
 - 📄 [White Paper] 유가 동향 — Houthi 홍해 사망 사고·호르무즈 재개통 회의론에 Brent $87~89대 반등 (2026-08-12) — "Brent 8월 중순 약 $87~89(장중 $90 근접)로 반등 — Houthi가 Bab el-Mandeb 해협서 화물선 공격, 1년여 만 첫 사망자 6명 발생·호르무즈 양방향 통항 정상화 협상 회의론 확산" → OPEC은 2026년 세계 수요증가 전망을 58만 b/d로 4개월 연속 하향. 공급측 정상화(OPEC+ 9월 증산 완료)에도 홍해·호르무즈 지정학 리스크가 전쟁 프리미엄 재점화 — 8/5 회차 $80대 지지에서 추가 상승, 중동發 인플레 상방 채널 재확대(7월 CPI 에너지 -1.5%MoM·+14.7%YoY와 상충). 8/8 트래킹(Houthi vs Brent $80~$100) 상방 실현 ([source](https://www.cnbc.com/2026/08/12/oil-prices-today-wti-brent-red-sea.html) / [source2](https://www.aljazeera.com/economy/2026/8/12/oil-prices-rise-as-attacks-dent-hopes-for-strait-of-hormuz-reopening))
 - 📄 [White Paper] 유가 동향 — 호르무즈 이란·오만 통항 합의로 Brent $88대 되돌림 (2026-08-24~27) — "Brent 약 $88/bbl로 3거래일 연속 하락(장중 $89 하회, 1주 최저) — 이란軍이 오만과 호르무즈 해협 통항 revenue-sharing 합의 발표로 공급 차질 완화 기대, 단 이란 '즉각 재개통 보장은 아니다' 단서로 불확실성 잔존" → 개선되는 호르무즈 공급 전망 vs 러시아 에너지 수출 차질(우크라 드론 공격)이 상충. 사우디는 Houthi 홍해 위협 회피 위해 페르시아만 터미널 선적 확대. EIA STEO는 3Q26 Brent 평균 약 $85/bbl 전망. 8/12 회차 $87~89대(호르무즈 재개통 회의론) 대비 이란·오만 합의로 방향 소폭 하방 반전 — 중동發 전쟁 프리미엄 완화 재개 신호, 단 합의 이행·통항 정상화엔 시차 ([source](https://tradingeconomics.com/commodity/brent-crude-oil) / [source2](https://www.bloomberg.com/news/articles/2026-08-24/latest-oil-market-news-and-analysis-for-aug-25) / [source3](https://www.eia.gov/outlooks/steo/))
+- 📄 [White Paper] 유가 재점화 — 이란 美 해군 함정 2차 공격·호르무즈 통항 급감에 Brent $99~~108 급등 (2026-09-08) — "Brent 9월 초 장중 $108/bbl(5/19 이후 최고) 터치 후 약 $99.05(+2%) 안착 — 이란이 美 해군 함정에 미공개 2차 공격했다는 보도, 호르무즈 통항이 5월 이후 최저(최근 10일 일평균 약 10척)로 급감" → Goldman Sachs "호르무즈·홍해 선박 공격 격화가 유가 상방 최대 드라이버"·Brent 2026년 말 전망 $85로 상향, 걸프 생산이 전쟁 전 대비 -4 mb/d 지속 시 2027년 $120 초과 경고. OPEC+(사우디·러시아·이라크·쿠웨이트·카자흐·알제리·오만)는 9월 쿼터를 10월까지 동결(10/4 재회의). 8/24 회차 이란·오만 통항 합의($88 되돌림)에서 불과 2주 만에 재긴장 — 중동發 전쟁 프리미엄 재점화, 8월 CPI 에너지 +2.1% MoM(가솔린 +3.9%)과 정합, 9/11 CPI 헤드라인 상방 채널 ([source](https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html) / [source2](https://tradingeconomics.com/commodity/brent-crude-oil))
 
 ### 컨퍼런스/백서
 
@@ -150,6 +153,9 @@ total_headlines: 132
 - 📄 [Data] BLS PPI — July 2026 (2026-08-13 발표) — "최종수요 PPI 계절조정 flat(MoM), 비조정 12개월 +4.7% — 단 코어(식품·에너지·무역서비스 제외) +0.4% MoM(6월 +0.1%서 가속)" → 최종수요 서비스 +0.2%·건설 +2.2%가 재화 -0.7%를 상쇄. 헤드라인은 잠잠하나 코어 도매물가 가속이 8/26 예정 PCE로의 전가 우려 부각 — 7월 CPI 둔화(8/12)와 상충하는 파이프라인 인플레 신호. 8/8 트래킹(8/14 7월 PPI) 실현 (📄 BLS [source](https://www.bls.gov/news.release/archives/ppi_08132026.htm) / [source2](https://qz.com/producer-price-index-july-2026-wholesale-inflation-081326))
 - 📄 [Policy] FOMC 의사록 (2026-08-19 공개) — "7/28-29 회의 의사록 — 9-3 동결 표결 이면의 매파 분열 상세, '인플레 미둔화 시 추가 긴축 필요' 다수 의견" → 반대 3인(Hammack·Kashkari·Logan) 전원 25bp 인상 선호. "Many participants assessed that policy tightening would likely be necessary if inflation did not decline" — 다수가 인플레 미둔화 시 긴축 불가피로 평가, 매파 잔존 확인. Warsh 의장이 연 8회 FOMC 회의를 6회로 축소하는 방안 논의 개진(회의 간 정보 축적 시간 확보 취지) — 커뮤니케이션·거버넌스 개혁 연장. 7/2·8/7 2연속 고용 급랭·8/12 CPI 둔화의 '냉각' 서사와 의사록의 '매파 잔존'이 상충 — 8/27~~29 Jackson Hole Warsh 첫 기조가 9월 경로 분수령. 8/15 트래킹(9월 FOMC 경로) 관련 실측 (📄 Fed 공식 [source](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260819a.htm) / [source2](https://www.cnbc.com/2026/08/19/fed-minutes-july-2026-officials-saw-need-for-rate-hike-if-inflation-doesnt-cool.html))
 - 📄 [Data] BEA PCE 물가·개인소득지출 — July 2026 (2026-08-26 발표) — "헤드라인 PCE +0.2% MoM·3.7% YoY(예상 +0.1%/3.6% 상회, 6월과 동일 연율 유지), 코어 PCE(식품·에너지 제외) +0.2% MoM·3.3% YoY(예상 부합), 실질 개인소비지출 전월비 flat(6월 +0.4%서 급둔화)" → Fed 선호 지표가 예상보다 뜨겁게 나오며 인플레 끈적함 확인 — 재화가격은 -0.1%(가솔린 등 에너지재 -2.7%)로 하락했으나 서비스가 상방. 개인소득 +0.4%·명목지출 +0.2%. 실질 소비 정체는 8/14 소매판매 -0.6%와 정합(소비 냉각). 인플레 상방(PCE 미둔화) vs 노동·소비 냉각의 매크로 축 상충 심화 — Jackson Hole Warsh 매파 기조(8/28)의 '물가 우선' 논거 보강, 9월 인하 재점화에 역풍 (📄 CNBC [source](https://www.cnbc.com/2026/08/26/feds-preferred-inflation-gauge-shows-core-prices-rose-3point3percent-annually-in-july.html) / [source2](https://www.cnn.com/2026/08/26/economy/pce-consumer-spending-inflation-july))
+- 📄 [Data] BLS 고용상황 — August 2026 (2026-09-05 발표) — "신규 비농업 고용 +162K(예상 상회·직전 12개월 평균 +31K 대비 대폭 반등), 실업률 4.1% 유지, 시간당임금 +0.3% MoM·$37.75 — 6월 +20K→+31K·7월 -23K→+21K 상향 수정(2연속 감소 서사 반전)" → 음식·주점업·지방정부 교육 증가, 정보산업 감소. 7/2·8/7 2연속 고용 급랭('노동 냉각' 축)을 정면 반전하는 하드데이터 — 고용 재가속으로 9월 인하 재점화 채널 약화, 9/11 CPI·9/16 FOMC 앞두고 매파 재부상 (📄 BLS 공식 [source](https://www.bls.gov/news.release/empsit.nr0.htm))
+- 📄 [Data] BLS CPI — August 2026 (2026-09-11 발표) — "헤드라인 +0.4% MoM·+3.4% YoY(7월과 동일), 코어(식품·에너지 제외) +0.3% MoM·+2.4% YoY(7월 2.5%서 소폭 둔화) — 단 코어 월간 +0.3%는 예상(+0.2%) 상회로 '9월 인상 재점화'" → 에너지 +2.1% MoM(가솔린 +3.9%가 헤드라인 상승의 1/3+ 기여·에너지 YoY +16.3%, 중동 재긴장 반영), 주거비 +0.3%(7월 +0.1%서 재가속). 헤드라인 완만하나 코어 예상 상회 — 8/26 PCE 미둔화(3.3%)에 이어 인플레 끈적함 재확인. 9/5 고용 반등(+162K)과 겹쳐 9/16 FOMC 인하 기대에 역풍, 매파 논거 강화 — 8/8·8/29 트래킹(8월 CPI) 실현 (📄 BLS 공식 [source](https://www.bls.gov/news.release/cpi.nr0.htm) / [source2](https://www.cnbc.com/2026/09/11/cpi-inflation-report-august-2026.html))
+- 📄 [Policy] FOMC 9/15-16 회의 프리뷰 (2026-09-12 기준, 결정·SEP 9/16 14:00 ET) — "정책금리 3.50~~3.75%, SEP 회의로 dot plot 갱신 — Warsh 의장 첫 SEP 제출 여부·'인하 트레이드 종식' 여부가 관건" → 6/17 dot plot 인상 반전 후 7/2·8/7 고용 급랭으로 인하 기대 재점화됐으나, 9/5 고용 반등(+162K)·9/11 코어 CPI 예상 상회·8/26 PCE 미둔화(3.3%)·8/28 Warsh Jackson Hole '물가 우선' 매파 기조로 시장 재조정. Warsh는 6월 첫 회의서 점도표 미제출(forward guidance 비판론자) — 이번 SEP 제출 여부·2026 말 중앙값 방향이 분수령. 직전 index '9/16~~17' 표기를 실제 일정 9/15-16(결정·SEP 9/16)로 정정, 실제 결정은 다음 회차 verify ([source](https://www.forex.com/en-us/news-and-analysis/fomc-meeting-preview-will-warsh-kill-the-rate-cut-trade-for-good/) / [source2](https://www.financecalendar.com/fomc-meetings/))
 
 ---
 
@@ -265,6 +271,7 @@ total_headlines: 132
 ### 컨퍼런스/백서
 
 - 📄 [Filing] Salesforce Q2 FY2027 실적 (2026-08-26 발표) — "매출 US$11.345B(+10.8% YoY·컨센 소폭 상회), 조정 EPS $5.90(컨센 대폭 상회), 순이익 $4.844B(+73% YoY) — Agentforce ARR $1.5B(+240% YoY)·에이전틱 워크플로 32억 액션(+97% QoQ), FY27 매출 가이던스 $46.1~46.4B로 상향" → 애그멘틱 AI 매출화 가시화가 실적 견인, Anthropic 제휴 'Claudeforce' 플러그인 출시. 발표 후 주가 약 +22.6% 급등. 같은 날 CrowdStrike Q2(FY 7/31 마감)도 조정 EPS $0.31·매출 $1.47B(+26% YoY)·FY 가이던스 $5.99~6.01B 상향으로 약 +20.5% 급등 — SaaS·사이버보안의 AI 매출 드라이버 입증, 하이퍼스케일러 capex 슈퍼사이클의 '소프트웨어 수요 측' 확인 (📄 Salesforce [source](https://www.cnbc.com/2026/08/26/salesforce-crm-q2-earnings-report-2027.html) / [source2](https://qz.com/salesforce-earnings-claudeforce-anthropic-ai-plugin-082726) / CrowdStrike [source3](https://www.startuphub.ai/ai-news/ai-stocks-daily/2026/ai-stocks-2026-08-27))
+- 📄 [Filing] Oracle Q1 FY2027 실적 (2026-09-10 발표) — "매출 US$19.3B(+30% YoY 사상 최대), 잔여이행의무(RPO) $664B(+$209B YoY·+$26B QoQ, 약 절반이 36개월 내 매출 전환), 클라우드(IaaS+SaaS) $11.6B(+62%)·OCI/IaaS $7.4B(+121% YoY), Q1 850MW AI 캐파·30만+ GPU 배치(가동률 97.9%), capex $28B·FY27 가이던스 $90~~95B, 신규 AI 계약 $30B+" → RPO 폭증(직전 $455B→$664B)·OCI 121% 성장으로 AI 클라우드 수요 폭발 실측, 신규 AI 계약 대부분이 선불·BYOH 구조라 증분 자본 불요. Alphabet(capex $195~~205B)·Broadcom(AI $16.7B)·NVIDIA($96.2B)와 함께 하이퍼스케일러 AI capex 슈퍼사이클 정점 — 반도체(HBM4·GPU)·에너지(DC 전력) 수요 thesis 직접 보강 (📄 [source](https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html) / [source2](https://erp.today/oracle-q1-fy27-results-664b-backlog-ai-contracts))
 
 ---
 
@@ -294,6 +301,8 @@ total_headlines: 132
 - 📄 [Filing] Target Q2 FY26 실적 (2026-08-19) — "순매출 +5.3%($26.5B)·조정 동일점 +3.8%(트래픽 +3.6%)·GAAP·조정 EPS $4.11 vs 전년 $2.05(+100%, 관세 환급분 $1.65/주 포함, 환급 제외 시 +20% YoY) — 2분기 이익 2배 이상·FY26 가이던스 상향" → 매장 동일점 +2.7%·디지털 +8.7%(당일배송 +25% 초과). FY26 매출성장 약 5%로 상향(+1%p), 영업이익률 약 6%(관세 효과 약 90bp 포함), EPS $9.90~~10.90. 컨센(동일점 +2.43%) 상회 — 관세 환급이 이익 급증 견인이나 트래픽 반등 등 기저 개선 동반. Q1(2026-05-20) 대비 턴어라운드 지속, 8/15 트래킹(8/21 WMT·TGT Q2) 실현 (📄 Target IR [source](https://corporate.target.com/press/release/2026/08/target-corporation-reports-second-quarter-earnings))
 - 📄 [Filing] Walmart Q2 FY26 실적 (2026-08-21) — "총매출 +4.8%(불변환율 +5.6%)·미국 동일점 +4.6%(연료 제외)·Sam's Club +5.9%·글로벌 이커머스 +25%·영업현금흐름 $18.4B·잉여현금흐름 $6.9B — 매출 상회·조정 EPS 컨센 하회, FY 가이던스 상향" → 미국 이커머스 +26%·약 7,400건 가격 인하(price rollback) 단행. 매출은 상회했으나 조정 EPS는 컨센 하회로 평가(Yahoo Finance 'sales beat, EPS miss') — 물량·트래픽 견조하나 관세·투자 비용이 마진 압박. Target(8/19)과 함께 미국 리테일 K자형 수요·관세 전가 국면 재확인, 8/15 트래킹(8/21 WMT·TGT Q2) 실현 (📄 Walmart IR [source](https://corporate.walmart.com/news/2025/08/21/walmart-releases-q2-fy26-earnings))
 - 📄 [Filing] 미국 리테일러 Q2 실적 2차 물결 (2026-08-26~~27 발표) — "Best Buy·Kohl's·Nordstrom 모두 컨센 상회·관세 환급 효과 — 관세 전가·환급이 이익 견인, 단 주가 반응은 엇갈림" → **Best Buy** Q2 FY27 동일점 +4.1%(가이던스 +1% 상회)·순이익 +69.4% $315M·희석 EPS $1.48(+70%)·미국 매출 +4.3% $9.07B(컴퓨팅·홈시어터·AI글래스 견인), 가이던스 상향에도 주가 하락. **Kohl's** Q2(8/1 마감) 동일점 -0.9% $3.32B이나 조정 EPS $1.28(컨센 $0.57 대폭 상회)·관세 환급 $150M·매장 트래픽 수년 내 최고(2019년 근접)로 FY 가이던스 상향($1.80~~2.40). **Nordstrom** 동일점 -1.2%(컨센 -3.3% 상회)·Nordstrom Rack 순매출 +11.2%·동일점 +5.3%. 8/19 Target·8/21 Walmart에 이은 관세 환급 이익 견인 국면 지속, K자형·오프프라이스 강세 재확인 (📄 Best Buy [source](https://www.cnbc.com/2026/08/27/best-buy-bby-q2-2027-earnings.html) / Kohl's [source2](https://finance.yahoo.com/markets/stocks/articles/kohls-q2-2026-earnings-stock-130535603.html) / Nordstrom [source3](https://www.retaildive.com/news/nordstrom-tops-expectations-buoyed-by-rack-unit-growth/424326))
+- 📄 [Filing] Dollar General Q2 FY2026 실적 (2026-08-28 발표, catch-up) — "순매출 +5.2% $11.3B·동일점매출 +3.5%·영업이익 +29.2% $769.2M·희석 EPS $2.48(+33.3%) — 5개 분기 연속 트래픽 성장·6개 분기 연속 4대 머천다이징 카테고리 전부 플러스 동일점" → 디스카운트 채널의 관세 전가 방어력·거래량 견조. 8/19 Target·8/21 Walmart·8/26 Best Buy/Kohl's에 이은 K자형 수요 재확인(저가·필수소비 강세). 직전 회차(8/29) 미포착 → catch-up 등재(date_published 8/28) ([source](https://www.sec.gov/Archives/edgar/data/0000029534/000110465926069198/tm2616084d1_ex99.htm))
+- 📄 [Filing] Lululemon Q2 FY2026 실적 (2026-09-11 발표) — "매출 -4% $2.4B(예상 $2.46B 하회)·동일점매출 -9%(미주·중국)·미주 순매출 -8%·동일점 -12%·희석 EPS $2.92(예상 $1.79 상회이나 전년 $3.10 하회)·순이익 $329.2M(전년 $370.9M) — 발표 후 주가 약 -18% 급락" → 핵심 시장(미주·중국) 동반 약화로 프리미엄 애슬레저 수요 냉각. EPS는 마진 관리로 컨센 상회했으나 매출·동일점 감소가 성장 우려 부각 — 8/14 소매판매 -0.6%와 정합, 재량소비 약세 vs 디스카운트(Dollar General·오프프라이스) 강세의 K자형 분화 심화 ([source](https://www.newsquawk.com/headlines/lululemon-lulu-q2-2026-usd-eps-292-exp-179-revenue-24bln-exp-246bln) / [source2](https://ng.investing.com/news/stock-market-news/lululemon-q2-2026-presentation-revenue-drops-4-stock-plunges-18-93CH-2685194))
 
 ---
 
@@ -347,27 +356,27 @@ total_headlines: 132
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-08-29 트래킹)
+## 차주 갱신 예상 항목 (2026-09-12 트래킹)
 
-- **반도체**: TSMC 8월 매출(~9/10), 삼성 HBM4E·하이브리드본딩 수율 진전, 16-Hi HBM4 Q4 2026 발주 3사 배분, SK하이닉스 2027 LTA 가격 협상, NVIDIA H200 중국 수출 심사·9월 Blackwell Ultra 광범위 램프, 후속 메모리 PIM/PNM preprint
-- **에너지**: 이란·오만 호르무즈 통항 합의 이행·정상화 시차, Houthi 홍해·Bab el-Mandeb 공격 지속 vs Brent $85~88 되돌림, 러시아 정제시설 드론 피격 공급 차질, DOE AP1000 $17.5B 개별 융자 confirm, OPEC+ 잔여 2026 쿼터 동결, IEA/EIA 9월 STEO
-- **매크로**: 9/5 예정 8월 고용(3연속 냉각 여부)·9/11 8월 CPI, 9/16~~17 FOMC(non-SEP→dot plot·인하 재점화 vs Warsh 매파 '물가 우선'), Jackson Hole 후속 커뮤니케이션, BOJ·한국은행, NBER SI 2026 트랙
-- **바이오**: camizestrant 연장 PDUFA 재심, gedatolisib PIK3CA 변이형 sNDA(Q3), BMS iberdomide 삼제 병용 RRMM 규제 결과 confirm(재시도), Teva ecopipam 소아 투렛 우선심사, 9월 ESMO 2026 종양학 발표, 차세대 GLP-1 후속, bioRxiv/medRxiv 신규 preprint
-- **핀테크**: OCC 11월 최종규칙 목표 후속(발행자 자격·준비금·무수익 금지 확정), FinCEN·OFAC AML 최종규칙, Tether Treasury reciprocity determination·$47B 준비금 이슈, Circle OCC 신탁은행 인가 후속
-- **방산**: FY27 NDAA 상원 본회의 처리(7/14 cloture 부결 후 계류·late autumn 전망), Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약, RUSI/CNAS 학술
-- **테크플랫폼**: 후속 SaaS(Okta·MongoDB 등) Q2, NeurIPS/ICML 트랙, EU AI Act Article 50 투명성·GPAI 집행 초기 사례, 하이퍼스케일러 합산 capex $725B+ 검증
-- **소비재**: 후속 리테일러(Dollar General·Lululemon 등) Q2 어닝, 관세 환급 효과 지속 vs 소멸, 소비 냉각 vs K자형 분화, 8/26 리테일 스코어카드
-- **산업재**: TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, 9월 초 8월 ISM 제조업
-- **자동차**: EV 크레딧 9/30 종료 전 3분기 인도 풀인(8월 EV 점유율 9.1% vs 종료 시점 논쟁·연도 확인 필요), Tesla 로보택시·에너지 후속, IRA 30D 요건 상향
+- **반도체**: 삼성 HBM4E·하이브리드본딩 수율(8/26 골든수율 80% 후속), SK하이닉스 2027 LTA 가격 협상, 16-Hi HBM4 Q4 2026 발주 3사 배분, NVIDIA Rubin 램프·H200 중국 수출, Micron FY4Q26 실적(9월 하순), 후속 메모리 PIM/PNM preprint
+- **에너지**: 이란 美 해군 재교전 확전 여부·호르무즈 통항 정상화, Houthi 홍해·Bab el-Mandeb 공격, 러시아 정제시설 드론 공급 차질, OPEC+ 10/4 회의(10월 이후 쿼터), IEA/EIA 9월 STEO 유가 전망, DOE AP1000 개별 융자 confirm
+- **매크로**: 9/15-16 FOMC(SEP·dot plot 갱신·인하 재점화 vs 매파 재부상), 9/16 결정·Warsh SEP 제출 여부, 8월 PCE(9월 하순), BOJ·한국은행 9월 회의, NBER 신규 WP
+- **바이오**: 9/18 Zidesamtinib(Nuvectis) ROS1+ NSCLC PDUFA, camizestrant 연장 PDUFA 재심, gedatolisib PIK3CA 변이형 sNDA(Q3), 10월 ESMO 2026 종양학, 차세대 GLP-1 후속, bioRxiv/medRxiv 신규 preprint
+- **핀테크**: OCC 11월 최종규칙 목표 후속(발행자 자격·준비금·무수익 금지 확정), FinCEN·OFAC AML 최종규칙, Circle OCC 신탁은행 인가 후속
+- **방산**: FY27 NDAA 상원 본회의 처리(계류 지속), Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약, RUSI/CNAS 학술
+- **테크플랫폼**: Apple iPhone 17 이벤트(9/9) 판매 초동, 후속 SaaS(Okta·MongoDB 등) Q2, NeurIPS/ICML 트랙, EU AI Act Article 50 투명성·GPAI 집행 초기 사례
+- **소비재**: 후속 리테일러 Q2 어닝(9월), 관세 환급 효과 지속 vs 소멸, K자형 분화(재량 약세[Lululemon] vs 디스카운트 강세[Dollar General·오프프라이스])
+- **산업재**: 9월 초 8월 ISM 제조업, TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정
+- **자동차**: 연방 EV 크레딧 종료 시점 소스 상충(웹 실측 9/30/2025 OBBBA vs 기존 KB 시뮬 전제 9/30/2026) 정합 확인 후 등재, Tesla 로보택시·에너지 후속, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-08-29 회차)
+## 폴백/미수집 (2026-09-12 회차)
 
-- WebSearch 정상 동작(예약 슬롯 바인딩됨, project_reanalysis_websearch_gap 우려와 달리 이번 슬롯은 바인딩) — 8회 검색으로 6섹터 7신규 헤드라인 실측 수집(반도체 1[NVIDIA 실적]·매크로 2[Warsh Jackson Hole·7월 PCE]·에너지 1[호르무즈 이란·오만 합의]·바이오 1[GENGLYCOS catch-up]·테크플랫폼 1[Salesforce/CrowdStrike]·소비재 1[Best Buy/Kohl's/Nordstrom]). 지난 회차(8/22) 이후 1주(8/23~8/29) 윈도우
-- **WebFetch 검증 현황**: NVIDIA(nvidianews 공식 릴리스) 1건 WebFetch 200 OK로 매출·데이터센터·EPS·GM·Q3 가이던스·중국 문구 직접 확인. Warsh 연설(federalreserve.gov 공식 speech URL)·7월 PCE(CNBC/CNN)·에너지(tradingeconomics/EIA)·GENGLYCOS(Ultragenyx globenewswire IR)·Salesforce/CrowdStrike(CNBC/qz)·리테일러(CNBC/Yahoo/RetailDive)는 각 2~3개 소스 WebSearch 결과 수치 일치로 교차검증 후 수록(8/22 회차 FOMC 의사록 처리와 동일 원칙)
-- **8/22 예고 트래킹 대거 실현**: 8/26 NVIDIA FY2Q27($96.2B·$108B 가이던스)·8/28 Warsh Jackson Hole 매파 기조·8/26 7월 PCE(코어 3.3%) — 예고 항목 전부 실측 확인
-- **매크로 축 상충 심화**: Warsh '물가 우선' 매파 기조·7월 PCE 미둔화(3.7%/3.3%) '인플레 상방' vs 8/7 고용 급랭·8/14 소매판매 -0.6%·7월 실질소비 flat '냉각' — 9/5 8월 고용·9/11 8월 CPI·9/16~~17 FOMC가 9월 경로 분수령
-- **바이오 catch-up**: 8/19 Ultragenyx GENGLYCOS(DTX401) GSD Ia 유전자치료 가속승인이 직전 회차(8/22) 미포착 → 첫 GSD Ia 근본치료제·희귀대사질환 AAV thesis로 이번 회차 catch-up 등재(date_published 8/19 명시). BMS iberdomide RRMM·Teva ecopipam은 이번에도 확정 소스 미특정 → 차주 재시도
-- **핀테크 실질 불변(스킵)**: OCC 11월 최종규칙 목표(8/19)는 이미 8/22 회차 등재, Tether Treasury reciprocity·$47B 준비금(techtimes 8/18)은 윈도우(8/23~) 밖·확정 아님 → '무리하게 채우지 말 것' 준수, 신규 헤드라인 스킵(차주 트래킹 이관)
-- **방산·산업재 미수집**: NDAA 상원은 7/14 cloture 부결 후 계류 지속으로 8/23~29 신규 이벤트 부재, 산업재도 신규 1차 자료 미특정 → 기존 헤드라인 유지, 차주 재개
-- **자동차 미등재(환각 방지)**: 8월 EV 판매 풀인(점유율 9.1%·전년比 +20%)이 표면화됐으나 연방 EV 크레딧 종료 시점이 소스별로 9/30/2025 vs 9/30/2026 상충(기존 index는 2026 종료 전제) → 날짜 정합 확인 전 신규 헤드라인 보류, 차주 1차 소스(Tesla IRA 페이지·Cox Automotive) 재확인
-- 12주 슬라이딩(84일=2026-06-06 이전): HBM4 ISSCC·NRC Part 53/TRISO-X·IMF WEO·GLP-1 승인 등 thesis 앵커(사실상 KEEP/L2 승격)로 유지 — '무리하게 정리하지 말 것' 준수, 이번 회차 삭제 0건
+- WebSearch 정상 바인딩 — 약 9회 검색 + 2회 WebFetch(BLS CPI 공식 verify 포함)로 5섹터 9신규 헤드라인 실측 수집. 직전 회차(8/29) 이후 2주(8/29~9/12) 윈도우
+- **수집 헤드라인(9건)**: 매크로 3(8월 고용 9/5·8월 CPI 9/11·FOMC 9/15-16 프리뷰), 반도체 2(TSMC 8월 매출 9/10·Broadcom Q3 FY26 9/4), 에너지 1(유가 재점화 9/8), 테크플랫폼 1(Oracle Q1 FY27 9/10), 소비재 2(Dollar General 8/28 catch-up·Lululemon 9/11)
+- **WebFetch 검증 현황**: 8월 CPI는 bls.gov 공식 cpi.nr0.htm WebFetch 200 OK로 헤드라인/코어/에너지/주거 수치 직접 확인. 8월 고용(bls.gov empsit.nr0)·TSMC(pr.tsmc.com+CNBC)·Oracle(CNBC+erp.today+SEC 8-K)·Broadcom(Broadcom IR+247wallst)·유가(CNBC+tradingeconomics)·Lululemon(Newsquawk+Investing)·DG(SEC 8-K)는 각 공식/2~3개 소스 교차검증 후 수록
+- **매크로 축 재역전(핵심 판단)**: 9/5 고용 반등(+162K, 6·7월 상향 수정)·9/11 코어 CPI 예상 상회·8/26 PCE 미둔화(3.3%)로 직전 '노동 냉각→인하' 서사가 '인플레 끈적+고용 재가속→매파' 방향으로 재역전 — 9/16 FOMC SEP가 분수령. 8월 CPI 에너지 +2.1%(가솔린 +3.9%)는 9/8 유가 재점화($99~~108)와 정합
+- **AI capex 슈퍼사이클 정점 확인**: Broadcom AI 반도체 $16.7B(+221% YoY)·Oracle RPO $664B(+$209B YoY)·TSMC 8월 $16.3B 사상 최고월 — 8/26 NVIDIA $96.2B에 이어 반도체(HBM4·GPU)·에너지(DC 전력) capex thesis 직접 보강
+- **바이오 신규 0건(환각 방지)**: 9/18 Zidesamtinib(Nuvectis, ROS1+ NSCLC) PDUFA는 미래 일정(윈도우 밖)·미확정 → 등재 보류(트래킹만). 검색이 실제(2025)·시뮬(2026) 승인 데이터 혼재 반환 → '확정 1차 승인만 등재' 원칙 준수, 이번 회차 바이오 신규 스킵
+- **자동차 미등재(날짜 정합 유보 지속)**: 연방 EV 크레딧 종료 시점이 웹 실측(9/30/2025, OBBBA 2025-07-04)과 기존 KB 시뮬 전제(9/30/2026) 상충 — 8/29 회차와 동일 사유로 신규 헤드라인 보류(환각·시뮬 타임라인 충돌 회피), 기존 Tesla Q2 헤드라인 유지
+- **핀테크·방산·산업재 미수집**: OCC 11월 최종규칙 목표(8/19 등재)·NDAA 상원 계류·산업재 1차 자료 모두 8/29 이후 신규 이벤트 미특정 → 기존 헤드라인 유지, 차주 재개
+- 12주 슬라이딩(84일=2026-06-20 이전): ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등 thesis 앵커 및 재점화 중인 오일-워 아크는 활성 인용가치로 유지 — KB '무리하게 정리하지 말 것' 원칙·삭제 0건 선례 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
