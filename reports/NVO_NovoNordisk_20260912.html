@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>노보노디스크 — 재분석 v15 (이전 비교 미포함) (NVO) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>노보노디스크 — 재분석 v15 (이전 비교 미포함) (NVO)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-12</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">65/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">품질 대비 과도하게 하락한 GLP-1 복점 리더의 방어적 가치 기회 — forward PER 12.6배·배당 4%·베타 0.34에서 하방 제한, 성장 안정화 시 $49로 리레이팅.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">시장은 성장 급감과 Lilly 대비 혁신 열위를 근거로 'hold'(평균 목표 $47.25)로 관망하며 성장 프리미엄을 완전히 제거한 상태.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">성장 둔화는 상당 부분 주가에 반영됐고, 82% 매출총이익률·60% ROE·강한 현금창출력은 훼손되지 않았다. 경구용 GLP-1·신제품이 매출을 안정화만 시켜도 10~12배 배수는 재정상화될 여지가 크다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">다음 2~3개 분기 매출 성장이 회복되지 않거나 Lilly에 점유율을 추가로 뺏겨 forward EPS가 하향 지속되면 밸류에이션 함정으로 확정 — 목표가 하향.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">$43 부근 분할 매수, 촉매 확인 시 비중 확대. 손절 $40.47, 목표 $49.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">반론: forward EPS < trailing EPS는 시장이 이익 감소를 이미 알고 있다는 뜻이며, PEG 3.1은 성장 대비 여전히 비싸다. 2026-03 분기의 이상 고이익이 TTM·PER을 왜곡해 '저평가'가 착시일 수 있다. Lilly 우위가 구조적이라면 배수는 10배 아래로도 갈 수 있어 '싼 데는 이유가 있는' 가치 함정 위험이 실재한다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (65점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$42.98</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$189.9B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 10.7x / forward 12.6x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$35.12~$64.16</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">12.6x</div></div><div class="ki"><div class="kl">Trailing P/E</div><div class="kv">10.7x</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">59.8%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">4.0%</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">42.5%</div></div><div class="ki"><div class="kl">매출성장(YoY)</div><div class="kv">2.1%</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$40.47</div><div class="dn" style="font-size:13px">-5.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$49.00</div><div class="up" style="font-size:13px">+14.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="89" y="30" width="94" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="89" y1="26" x2="89" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="89" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$40</text><line x1="117" y1="24" x2="117" y2="52" stroke="var(--text)" stroke-width="3"/><text x="117" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$43</text><line x1="183" y1="26" x2="183" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="183" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$49</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $35</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $64</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $1.25 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>노보노디스크는 GLP-1(위고비·오젬픽) 비만·당뇨 시장의 리더이나, 매출 성장이 YoY +2.1%로 급감하고 이익은 -20.6% 역성장하며 주가가 52주 고점 $64.16 대비 33% 하락한 $42.98(52주 레인지 27% 지점)까지 밀린 상태다. 반면 매출총이익률 82%·영업이익률 42.5%·ROE 59.8%의 압도적 수익성과 4.0% 배당·베타 0.34의 방어적 특성은 유지되고 있어, trailing PER 10.7배·forward PER 12.6배는 이 품질 대비 역사적 저평가 구간이다. 성장 둔화가 일시적이고 경구용 GLP-1·신제품이 매출을 재가속시킨다는 전제 하에 12개월 펀더멘털 목표가를 $49(약 14% 상승 여력, 배당 포함 총수익 ~18%)로 산출하며, 이미 크게 하락해 하방이 제한적이고 배당 쿠션이 있는 리스크/리워드를 근거로 투자등급 매수(Buy), 종합점수 65점을 제시한다. 다만 Lilly의 구조적 점유율 잠식과 음(-)의 모멘텀은 명확한 하방 리스크다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,105.0 192.9,77.2 211.3,126.8 206.6,171.6 187.0,214.7 140.0,180.0 90.0,218.8 87.7,167.0 78.2,129.9 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="105.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="192.9" cy="77.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="206.6" cy="171.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="187.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="180.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="90.0" cy="218.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="87.7" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="78.2" cy="129.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>4.5</td><td>/10</td></tr><tr><td>수익성</td><td>9.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>7.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>7.0</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>8.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>3.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>8.5</td><td>/10</td></tr><tr><td>리스크</td><td>5.5</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.5</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 65/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v12</td><td>2026-08-13</td><td>58</td><td>중립</td><td>$47</td></tr><tr><td>v13</td><td>2026-08-22</td><td>62</td><td>중립</td><td>—</td></tr><tr><td>v14</td><td>2026-09-02</td><td>64</td><td>중립</td><td>$48</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+2pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">넓음</span></h2><p>노보노디스크 A/S는 덴마크 본사의 글로벌 제약사로, 미국 시장에는 ADR(티커 NVO)로 상장돼 있다. 당뇨병 치료(인슐린·GLP-1)와 비만 치료(위고비)에 특화된 회사로 100년 가까운 대사질환 전문성을 보유한다. 매출의 대부분은 세마글루타이드 계열(오젬픽·위고비·리벨서스)에서 나오며, 희귀질환·혈우병 사업도 병행한다. 지배구조상 노보노디스크 재단(Novo Holdings)이 A주를 통해 의결권 과반을 통제하는 이원적 주식 구조를 갖는다. 시가총액은 약 $1,899억(A·B주 합산)이며, 발행주식 33.4억 주 기준이다. 재무 수치(매출·이익)는 덴마크 크로네(DKK) 기준으로 공시되는 반면 주가·PER·시총은 USD(ADR) 기준이라 해석 시 통화 구분이 필요하다.</p><h3>Moat 상세</h3><p>해자는 넓다(Wide). (1) GLP-1 시장을 Lilly와 사실상 양분하는 과점 구조, (2) 펩타이드 대량 생산 능력 — GLP-1 원료·주사제 생산은 자본·노하우 집약적이라 신규 진입 장벽이 높다(Catalent 인수로 CDMO 캐파 내재화), (3) 오젬픽·위고비의 강력한 브랜드와 처방 습관, (4) 수십 년 축적된 당뇨·대사질환 임상 데이터와 규제 관계. 다만 해자는 압박받고 있다 — Lilly(젭바운드·마운자로, 경구용 orforglipron)의 혁신 우위, 향후 경구제·바이오시밀러/컴파운딩 경쟁, 특허 만료 시계가 장기 해자 폭을 잠식할 수 있다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>재무 수치는 DKK 10억 기준(주가·PER은 USD ADR 기준이라 혼용 유의). 최근 분기(2026-06-30) 매출 78.5B DKK로 전년 동기 76.9B 대비 +2.1%에 그쳐 성장 둔화가 확인된다. 영업이익은 27.1B으로 전년 동기 33.4B 대비 -19% 감소, 영업이익률도 34.5%로 하락했다. 주목할 점은 2026-03-31 분기(매출 96.8B·영업이익 59.6B·영업이익률 61%·EPS 10.91 DKK)가 비정상적으로 높아 TTM 실적을 부풀리고 있다는 것 — 일회성 항목 가능성이 높으며, 이를 정상화하면 forward EPS $3.41(TTM $4.03 대비 -15%)이 더 현실적인 run-rate로 보인다. 대차대조표는 현금 45B DKK·총부채 140B DKK·순부채 95B DKK(D/E 63%)로 Catalent 인수 등으로 레버리지가 상승했으나, 영업현금흐름 132B DKK·FCF 38B DKK의 강력한 현금창출력 대비 충분히 감당 가능한 수준이다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>목표가는 정상화 forward EPS $3.41(ADR 기준)에 배수 14배를 적용해 $49로 산출했다(현재가 $42.98 대비 +14%). 배수 14배는 82% 매출총이익률·60% ROE·4% 배당의 품질 대비 보수적이며(글로벌 대형 제약 15~18배 대비 할인), 성장 둔화를 반영한 수준이다. 시나리오: 약세 forward EPS $3.41 × 11배 = $37(성장 둔화 지속·배수 추가 압축), 기준 $3.5 × 14배 = $49, 강세 $3.8 × 16배 = $61(경구 GLP-1·신제품 매출 재가속). 컨센서스 평균 목표가 $47.25·중앙값 $45.16 대비 소폭 상회하는데, 이는 이미 크게 하락한 밸류에이션과 품질을 근거로 한 독립적 상방 확신을 반영한다. PEG 3.1은 낮은 성장 탓에 높지만, 이는 성장주가 아닌 방어적 가치·배당주로 접근할 근거다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>모멘텀은 명확히 부정적이다. 현재가 $42.98은 50일선 $47.68과 200일선 $46.29를 모두 하회하며, 52주 레인지의 27% 지점(저점 $35.12 근처)에 위치한다. 52주 고점 $64.16 대비 33% 하락한 상태로 추세 자체가 하락 국면이다. 공매도 비중은 float의 1%·short ratio 2.23으로 낮아 숏스퀴즈 동력은 제한적이다. 컨센서스는 hold(recommendationMean 2.57, 애널리스트 12명)이며 평균 목표가 $47.25는 현재가 대비 약 10% 상방을 시사한다. 베타 0.34로 시장 변동성 민감도는 낮아 매크로 하락기 방어력은 있으나, 촉매 없는 한 기술적 반등 동력은 약하다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>비만·당뇨(GLP-1) 시장은 헬스케어에서 가장 매력적인 구조적 성장 시장 중 하나로, TAM은 $1,000억+로 추정되며 고령화·비만 유병률 증가·적응증 확대(심혈관·수면무호흡·MASH·알츠하이머 탐색)로 장기 성장이 유효하다. 노보노디스크는 Eli Lilly와 이 시장을 양분하는 사실상의 복점 구조를 형성한다. 그러나 경쟁 구도가 노보에 불리하게 기울고 있다 — Lilly의 마운자로/젭바운드가 점유율을 확대하고 경구용 orforglipron이 편의성 우위를 노린다. 노보의 대응은 경구용 위고비(세마글루타이드 경구 고용량)·CagriSema(카그리린타이드+세마글루타이드)·차세대 아밀린 계열이며, 이들의 임상 데이터와 출시 속도가 성장 재가속의 핵심 변수다. 최근 일부 후기 데이터가 시장 기대에 못 미쳐 성장 프리미엄이 크게 훼손됐다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 리스크는 경쟁·성장 둔화·파이프라인 실행이다. Lilly의 구조적 점유율 잠식이 지속되면 밸류에이션 함정(cheap for a reason)이 될 수 있으며, forward EPS가 이미 감소 추세라 이익 추가 하향 위험이 있다. 반면 강력한 대차대조표·4% 배당·베타 0.34의 방어적 특성이 하방을 완충한다. 손절가는 2ATR 기준 $40.47(현재가 대비 -5.8%)로 설정한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">경쟁 심화 (Eli Lilly)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">성장 둔화 고착 및 이익 하향</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">규제·가격 및 지배구조</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>경쟁 심화 (Eli Lilly)</strong> (발생: 높음, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">Lilly의 마운자로/젭바운드 점유율 확대와 경구용 orforglipron이 노보의 성장·마진을 구조적으로 잠식할 수 있음. 최근 CagriSema 등 데이터 실망으로 혁신 열위 우려 확대.</span></div><div class="ri rl"><strong>성장 둔화 고착 및 이익 하향</strong> (발생: 중간, 영향: -12%)<br><span style="color:var(--sub);font-size:13px">매출 성장 YoY +2.1%·이익 -20.6% 역성장. forward EPS가 trailing 대비 -15%로 감소 추세라 정상화 실패 시 배수·이익 동시 하향 가능.</span></div><div class="ri rl"><strong>규제·가격 및 지배구조</strong> (발생: 낮음, 영향: -8%)<br><span style="color:var(--sub);font-size:13px">미국 약가 인하 압력·컴파운딩/바이오시밀러 경쟁과, 재단의 A주 의결권 과반 통제라는 이원적 구조로 소액주주 영향력 제한.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>방어적 가치·배당 관점의 분할 매수 접근을 권고한다. 이미 52주 저점 근처(레인지 27%)·forward PER 12.6배·배당 4%·베타 0.34로 하방이 상대적으로 제한적이며, 매크로 매파 레짐에서 현금흐름·배당 방어주 선호와도 부합한다. 목표가 $49(+14%, 배당 포함 ~18% 총수익), 손절 $40.47(2ATR). 다만 음(-)의 모멘텀을 감안해 신규 진입은 분할하고, 경구용 GLP-1 승인·CagriSema 데이터·분기 실적 등 촉매 확인 시 비중 확대가 유효하다.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>12개월 목표가 밴드 <b>$44 ~ $56</b>(기준 $49), 스코어 <b>±5pt</b>. 하단은 성장 둔화 지속·배수 추가 압축(11배) 시나리오, 상단은 경구용 GLP-1·신제품 매출 재가속(16배) 시나리오. 컨센서스 평균 $47.25·중앙값 $45.16·고점 $64.06·저점 $39.93 대비 기준 목표가는 소폭 상회.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>정상화 EPS: 2026-03월 분기의 비정상적 고이익(영업이익률 61%, EPS 10.91 DKK)이 일회성이라 보고 forward EPS $3.41을 run-rate로 삼음. 이 분기가 반복 가능하면 저평가, 최근 분기(op margin 34.5%)가 뉴노멀이면 이익 추가 하향.</li><li>목표 배수 14배: 성장 둔화가 일시적이고 밸류에이션이 정상화된다는 전제. Lilly의 구조적 점유율 잠식 지속 시 10배 아래로 추가 압축 가능.</li><li>매출 재가속: 위고비/오젬픽·경구용 GLP-1·차세대 파이프라인이 +2.1% YoY 성장을 회복시킨다는 가정. 최근 CagriSema 데이터 실망이 반증 위험.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v15 독립 재분석, 이전 미참조. 데이터 yfinance 2026-09-11 종가. 재무 수치(매출·이익)는 DKK 기준, 주가·PER·시총은 USD(ADR) 기준으로 혼용에 유의해 해석함. WebSearch 미바인딩으로 data.json + 일반 지식 기반 분석.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-12 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="NVO_NovoNordisk_20260912.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
