@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SPDR S&P500 ETF — 재분석 v15 (이전 비교 미포함) (SPY) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>SPDR S&P500 ETF — 재분석 v15 (이전 비교 미포함) (SPY)</h1><div class="meta">ETF 종합 분석 리포트 | 2026-09-13</div><div style="margin-top:8px"><span class="badge b-hold">중립 (Hold)</span> <span class="badge b-score">64/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">SPY 의 장기 핵심보유 가치는 확고하나, 트레일링 24.7x·음(-)의 주식위험프리미엄·9/16 FOMC 인상 리스크가 겹친 현 진입점에서는 12M 상방이 +4%(목표 $795)로 제한적이라 중립(Hold)이 타당하다.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">컨센서스 목표가 없음(ETF). 지수 전략가 12M 상방은 통상 +5~8%이나, 매파 레짐·음의 ERP 하에서는 하향 여지가 있다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">차별적 관점 — 시장은 연착륙·이익 재가속을 이미 상당 부분 반영. 10Y 4.95% 급등과 음의 ERP 가 만드는 멀티플 압축 여지를 과소평가하고 있을 수 있다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull 반증 — Fed 동결/피벗 + 지수 EPS 두 자릿수 재가속 확인 시 24x대 유지·$865+ 로 '중립' 폐기. Bear 반증 — 9/16 인상 + 점도표 추가 인상 + 이익 컨센 하향 시 21x·$700 하회.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">신규 대량진입 보류·정액 분할(DCA) 유효. 되돌림 $758~$714 분할. 트레이딩 손절 $753.09, 12M 목표 $795.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① 인덱스는 구성종목 자기정화로 장기 우상향 — 밸류 부담은 늘 존재했고 타이밍 회피는 장기적으로 실패 확률이 높다(코어 자산엔 '계속 보유'가 정답). ② 음의 ERP 는 저금리기 기준의 지표일 뿐, 이익 성장률(g)을 감안한 PEG 관점에선 과도한 우려일 수 있다. ③ 코어 자산에 '중립'은 사실상 보유 유지를 의미하므로, 신규 자금은 DCA 지속이 현실적 해법이다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">중립 (64점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$764.29</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$811.9B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 24.7x (지수) / forward N/A</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$629.28~$779.37</div></div><div class="ki"><div class="kl">운용보수(비용율)</div><div class="kv">0.0945% (data.json 9.45 는 bp 표기 → 교정)</div></div><div class="ki"><div class="kl">분배수익률</div><div class="kv">약 1.1% (data.json 98.0 스케일 오류로 교정)</div></div><div class="ki"><div class="kl">추적지수</div><div class="kv">S&P 500 (미국 대형주 500)</div></div><div class="ki"><div class="kl">NAV / 프리미엄</div><div class="kv">NAV $762.19 · 시장가 대비 +0.27% 프리미엄</div></div><div class="ki"><div class="kl">지수 트레일링 PER</div><div class="kv">24.7x (역사적 상단 · 이익수익률 4.05%)</div></div><div class="ki"><div class="kl">YTD / 3Y 평균수익률</div><div class="kv">+13.1% / 연 +20.9%</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$753.09</div><div class="dn" style="font-size:13px">-1.5%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$795.00</div><div class="up" style="font-size:13px">+4.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="294" y="30" width="56" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="294" y1="26" x2="294" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="294" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$753</text><line x1="318" y1="24" x2="318" y2="52" stroke="var(--text)" stroke-width="3"/><text x="318" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$764</text><line x1="383" y1="26" x2="383" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="383" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$795</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $629</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $779</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $5.60 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>SPY 는 미국 대형주 500 벤치마크를 추종하는 세계 최대·최고 유동성 인덱스 ETF다. 현재가 $764.29(지수 ~7,640선), 종합 64점 중립(Hold). 장기 핵심보유 가치는 확고하나 진입 타이밍은 우호적이지 않다. 지수 트레일링 PER 24.7x 는 역사적 상단권이고, 이익수익률 4.05% 가 10Y 국채 4.95% 를 밑돌아 주식위험프리미엄이 사실상 음(-)으로 전환됐다. 여기에 9/16 FOMC 인상 ~70% 라이브·10Y 4.95% 1주 +0.18%p 급등·CNN 공포지수 33.3(공포 전환)이 겹쳐 고멀티플 지수의 리레이팅 압력이 크다. 반면 주가는 50일선($758.6)·200일선($714.2) 위 정배열, YTD +13.1%, 52주 90% 위치로 추세 자체는 견조하다. 12M 지수 목표가 $795(+4.0%, 완만한 이익성장을 소폭의 멀티플 압축이 상쇄)로 설정하되, 하방 밴드는 FOMC 매파·음의 ERP 를 반영해 $700(-8.4%)까지 열어둔다. 데이터 위생: 배당수익률 98.0·비용율 9.45 는 명백한 스케일 오류로 각각 ~1.1%·0.0945% 로 교정.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,85.0 184.1,89.3 211.3,126.8 178.0,162.4 181.1,206.6 140.0,215.0 101.8,202.6 82.9,168.5 73.4,128.4 107.7,105.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="85.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="184.1" cy="89.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="211.3" cy="126.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="178.0" cy="162.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="181.1" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="215.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="101.8" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="82.9" cy="168.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="73.4" cy="128.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="107.7" cy="105.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>6.5</td><td>/10</td></tr><tr><td>수익성</td><td>7.5</td><td>/10</td></tr><tr><td>재무건전성</td><td>7.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>4.0</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>7.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>6.5</td><td>/10</td></tr><tr><td>산업매력도</td><td>6.5</td><td>/10</td></tr><tr><td>리스크</td><td>6.0</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>7.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>5.5</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 64/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v12</td><td>2026-08-15</td><td>67</td><td>매수</td><td>$820</td></tr><tr><td>v13</td><td>2026-08-25</td><td>—</td><td>중립</td><td>$808</td></tr><tr><td>v14</td><td>2026-09-03</td><td>68</td><td>매수</td><td>$810</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+1pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">보통</span></h2><p>SPY(SPDR S&P 500 ETF Trust)는 State Street Global Advisors 가 운용하는 미국 최초(1993년 상장)·최대 규모의 상장지수펀드로, <b>S&P 500 지수</b>(미국 대형주 500종목 시가총액 가중)를 추종한다. 운용자산 약 $8,119억, 일 거래대금·옵션 시장에서 압도적 유동성을 보유해 기관·트레이더의 사실상 표준 벤치마크·헤지 수단으로 쓰인다. 구조상 개별 기업 해자가 아니라 <b>추적지수 밸류에이션·시장 폭(breadth)·상위 집중도(Mag7)·비용율·NAV 추적</b>이 평가의 핵심이다. 카테고리는 Large Blend. 운용보수 0.0945% 로 초저비용이나, VOO·IVV(0.03%)보다는 높아 장기 매수후보유(buy-and-hold) 관점에선 비용 열위가 있다(대신 유동성·옵션시장 우위).</p><h3>Moat 상세</h3><p>ETF 관점의 '해자'는 개별기업 경쟁력이 아니라 상품 구조에서 나온다. SPY 는 최대 AUM($8,119억)·최고 유동성·최대 옵션 시장 심도라는 강력한 <b>유동성·인프라 해자</b>를 갖춰 기관 트레이딩·헤지의 표준으로 굳어져 있다. 다만 순수 매수후보유 투자자에게는 비용율 0.0945% 가 VOO/IVV(0.03%)보다 높아 <b>비용 해자는 약하다</b>. 유동성 프리미엄과 비용 열위가 상쇄되어 종합 '보통'으로 평가한다. 추종 대상인 S&P 500 자체는 구성종목이 정기적으로 교체(자기정화)되어 장기 우상향 성향을 갖는 점이 지수 차원의 구조적 강점이다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>ETF 는 개별 재무제표 대신 추적지수·비용·추적품질로 평가한다.<br><br><b>비용/구조:</b> 운용보수 0.0945%(data.json 의 9.45 는 basis point 표기로 판단되어 교정). NAV $762.19 대비 시장가 $764.29 로 프리미엄 +0.27% — 초유동성 ETF 답게 괴리가 극히 작아 추적품질 우수.<br><br><b>추종 지수 밸류에이션:</b> 지수 트레일링 PER 24.7x 는 S&P 500 역사적 평균(~16~18x) 대비 상단권. 이익수익률(1/24.7)=4.05% 로 10Y 국채 4.95% 를 밑돌아 <b>주식위험프리미엄이 음(-)</b> — 무위험 대비 상대 매력이 약하다.<br><br><b>수익률:</b> YTD +13.1%, 3년 평균 연 +20.9% 로 강세장 성과가 누적. 분배수익률은 ~1.1%(data.json 98.0 은 스케일 오류로 교정).<br><br><b>구성 건전성:</b> 500종목 분산으로 개별 부도·회계 리스크는 낮으나, 상위 대형주(이른바 Mag7)가 지수의 약 3분의 1 이상을 차지해 '분산된 것처럼 보이는 집중' 위험이 내재한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>ETF 이므로 컨센서스 목표가는 없다(None). 추적지수(S&P 500) 전망으로 12M 목표가를 도출한다.<br><br>현재 SPY $764.29 ≈ 지수 7,640선, 트레일링 EPS(SPY 환산) ≈ $30.9. 향후 12개월 지수 EPS 성장은 완만한 +8% 전후로 가정(고금리 장기화가 이익 가속을 제약). 관건은 배수다 — 현 24.7x 는 음의 ERP·10Y 4.95% 급등·9/16 인상 리스크 하에서 유지되기 어려워 소폭 압축을 반영한다.<br><br><b>기본(Base) $795 (+4.0%):</b> 지수 EPS +8% 성장을 배수 24.7x→약 23.8x 완만 압축이 상쇄. 총수익은 배당 포함 +5% 내외.<br><b>약세(Bear) $700 (-8.4%):</b> 9/16 인상 + 점도표 추가 매파 + 이익 컨센 하향 → 배수 21x 대로 디레이팅.<br><b>강세(Bull) $865 (+13.2%):</b> Fed 동결/피벗 전환 + 이익 두 자릿수 재가속 → 배수 24x대 유지.<br><br>고밸류·매파 레짐을 반영해 기본값을 전략가 통상 상방(+5~8%)보다 보수적으로 설정했다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>추세는 견조하다 — 현재가 $764.29 는 50일선($758.6)·200일선($714.2)을 모두 상회하는 정배열이고, 52주 밴드에서 90% 위치(고점 $779.37 근접, 저점 $629.28 대비 +21.5%)로 상단권이다. YTD +13.1%. 다만 신호는 혼재한다: CNN 공포·탐욕 지수 33.3 으로 1주 전 45.2 에서 공포로 전환됐고, 10Y 4.95% 급등·9/16 FOMC 를 앞둔 관망 심리가 짙다. 즉 <b>강한 추세 + 고점 근접 + 악화되는 심리</b>가 공존해, 단기적으로는 되돌림(pullback) 리스크가 큰 국면이다. 베타 1.0(시장 그 자체), ATR 5.6($0.73%)로 지수 ETF 답게 개별주 대비 변동성은 낮다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>SPY 가 대변하는 '미국 대형주 지수' 라는 자산군은 장기적으로 세계 최고 수익 자산군 중 하나이나, 현재는 두 가지 구조적 논점이 지배한다. 첫째 <b>시장 폭(breadth)</b> — 지수 상승이 소수 초대형 AI·기술주(Mag7)에 편중되어 상위 7종목이 지수의 약 3분의 1 이상을 차지, 표면적 분산에도 실질 집중도가 높다. AI 대형주가 조정받으면 지수 전체가 동반 하락한다. 둘째 <b>매크로 레짐</b> — Fed 3.63% 동결·9/16 인상 ~70%·10Y 4.95% 급등·Core PCE 3.34% 의 고금리 장기화 국면은 고멀티플 지수의 할인율을 높인다. 반대로 미국 기업 이익의 절대 체력(높은 마진·자사주 매입·글로벌 매출)과 인덱스의 자기정화 메커니즘은 장기 우상향의 하방을 받친다. 결국 SPY 는 '무엇을 사느냐(자산군)'가 아니라 '지금 얼마에 사느냐(밸류·타이밍)'가 쟁점인 코어 자산이다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 (1) 9/16 FOMC 인상 및 매파 점도표로 인한 고멀티플 지수 리레이팅, (2) 트레일링 24.7x·음(-)의 주식위험프리미엄이라는 밸류에이션 부담이다. 이어 (3) 상위 Mag7 집중에 따른 '분산 착시' 리스크, (4) 고금리 장기화발 경기·이익 둔화, (5) 공포 심리 전환 속 52주 고점 근접에 따른 단기 되돌림이 뒤따른다. 코어 분산 자산이라 개별 종목 리스크는 낮으나, 시장·금리 시스템 리스크에 온전히 노출된다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">9/16 FOMC 인상 · 매파 점도표</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">고밸류 · 음(-)의 주식위험프리미엄</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">Mag7 집중 (분산 착시)</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">고금리 장기화발 경기·이익 둔화</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">심리 전환 · 고점 근접 되돌림</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>9/16 FOMC 인상 · 매파 점도표</strong> (발생: 높음, 영향: -6%)<br><span style="color:var(--sub);font-size:13px">인상 ~70% 라이브. 인상 확정 또는 점도표가 추가 인상을 시사하면 고멀티플 지수의 할인율이 상승해 단기 급락 트리거가 된다.</span></div><div class="ri rl"><strong>고밸류 · 음(-)의 주식위험프리미엄</strong> (발생: 높음, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">트레일링 24.7x, 이익수익률 4.05% < 10Y 4.95%. 무위험 대비 상대매력 열위로, 10Y 4.95% 급등이 지속되면 멀티플 압축 압력이 커진다.</span></div><div class="ri rl"><strong>Mag7 집중 (분산 착시)</strong> (발생: 중간, 영향: -8%)<br><span style="color:var(--sub);font-size:13px">상위 7종목이 지수 약 1/3 이상. 500종목 분산에도 실질 집중이 높아, AI 대형주 조정 시 지수가 동반 하락한다.</span></div><div class="ri rl"><strong>고금리 장기화발 경기·이익 둔화</strong> (발생: 중간, 영향: -12%)<br><span style="color:var(--sub);font-size:13px">Fed 3.63% 동결·Core PCE 3.34% 의 고금리 지속이 경기·기업이익을 둔화시키면 지수 EPS 컨센이 하향된다.</span></div><div class="ri rl"><strong>심리 전환 · 고점 근접 되돌림</strong> (발생: 중간, 영향: -7%)<br><span style="color:var(--sub);font-size:13px">F&G 33.3 공포 전환 + 52주 90% 위치 near-high. 추세는 강하나 단기 과열·되돌림 가능성이 높다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>SPY 는 장기 코어 자산으로 '보유 지속'이 기본이나, 현 진입점(고밸류·음의 ERP·9/16 FOMC 직전·고점 근접)에서는 신규 대량 진입을 보류한다. 신규 자금은 정액 분할매수(DCA)로 시간 분산하는 것이 유효하며, $758(50일선)~$714(200일선) 되돌림 구간을 분할 진입 기회로 활용한다. 코어 홀딩에는 손절 개념이 부적합하나, 트레이딩 포지션 기준 2ATR 손절 $753.09 를 참고한다. 12M 목표 $795. 9/16 FOMC 결과·점도표, 10Y 금리 방향, Mag7 이익 추세가 재평가 트리거다. 인상+매파 점도표 시 비중확대 보류, 동결/피벗 확인 시 분할 확대.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>목표가 중심 <b>$795</b>, 범위 약 -8.4% ~ +13.2% (약세 $700 / 기본 $795 / 강세 $865). 기본은 지수 EPS +8% 를 소폭 멀티플 압축(24.7x→약 23.8x)이 상쇄. 하단은 9/16 인상·음의 ERP 리레이팅(21x대), 상단은 Fed 피벗·이익 재가속(24x 유지)을 반영. 스코어 신뢰구간 ±5pt (59~69).</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>지수 EPS 향후 12M +8% 성장 — 고금리 장기화로 이익이 둔화되면 EPS 컨센 하향으로 목표가 훼손.</li><li>트레일링 24.7x 배수가 23.8x 수준까지만 완만 압축된다는 전제 — 9/16 매파 점도표·10Y 5%+ 돌파 시 21x대로 급격 디레이팅 위험.</li><li>Mag7 대형주가 현 이익·주가 체력을 유지한다는 가정 — 상위 집중 탓에 소수 종목 조정이 지수 전체를 끌어내릴 수 있음.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v15 독립 재분석, 이전 버전·리포트·timeline 미참조. 데이터 yfinance 2026-09-11 종가($764.29) 기준, WebSearch 미바인딩으로 data.json + 매크로 스냅샷 + 일반 지식만 사용. 데이터 위생 교정: 배당수익률 98.0 → ~1.1%(스케일 오류), 비용율 9.45 → 0.0945%(bp 표기). 컨센서스 목표가 없음(ETF) → 추적지수 S&P 500 전망으로 12M 목표가 $795 도출, 2ATR 손절 $753.09.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="SPY_SPDR_SP500_20260913.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>

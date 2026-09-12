@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>마이크론 — 재분석 v15 (이전 비교 미포함) (MU) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>마이크론 — 재분석 v15 (이전 비교 미포함) (MU)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-13</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">70/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">AI HBM 슈퍼사이클과 과점 구조가 마이크론의 이익력을 과거 대비 구조적으로 높였으나, 피크 EPS 착시·초고베타·매파 금리를 반영하면 공정가치는 컨센서스($1,513)보다 낮은 $1,150 이다.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">강력매수(추천평균 1.35, 애널리스트 45명)·평균목표 $1,513·중앙값 $1,540·범위 $361~$2,200 — 시장은 forward EPS $156 의 실현과 HBM 사이클 지속을 상당 부분 가격에 반영하고 있다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">차별적 관점 — forward PE 6.2x 의 '초저평가'는 사이클 정점 EPS 를 분모로 한 착시다. trailing 22x·EV/EBITDA 15.86x 로 보면 현 밸류는 완전에 가깝고, 시장이 과소평가하는 것은 사이클 하강 시의 이익 급감 폭이다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull 기각 조건 — HBM/DRAM 가격이 롤오버하고 다음 1~2분기 가이던스·forward EPS 컨센이 하향되면 성장 지속 논지는 무너진다. Bear 기각 조건 — HBM 수요가 예상을 상회하며 EPS 가 $156 이상으로 재상향되고 가격이 타이트하게 유지되면 보수 목표가는 상향돼야 한다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">분할 매수, $900~929 눌림 대응. 손절 $886.96, 목표 $1,150. 초고베타·피크사이클이므로 비중 보수적.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① HBM 은 커머디티 DRAM 과 달리 AI 전용 고부가 제품으로 과거 사이클 논리를 그대로 적용하면 저점 이익을 과소평가할 수 있다 — 구조적 수요가 저점을 크게 높였을 가능성. ② 순현금 $196억·영업CF $514억의 현금창출력은 사이클 하강도 견딜 완충이며 시총 대비 방어력이 크다. ③ 45명 강력매수·평균목표 $1,513 은 필자 목표가($1,150)가 지나치게 보수적일 위험을 시사한다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (70점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$975.26</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$1.10T</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 22.0x / forward 6.2x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$154.65~$1,255.00</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">6.2x (피크 EPS $156 기준 — 착시 주의)</div></div><div class="ki"><div class="kl">Trailing P/E</div><div class="kv">22.0x</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">15.86x</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">~0.05% (data.json 5.0% 는 ×100 스케일 오류로 교정)</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">66.6% (피크 사이클)</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">~80% (2026 5월 분기 실측 · 피크)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$886.96</div><div class="dn" style="font-size:13px">-9.1%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$1,150.00</div><div class="up" style="font-size:13px">+17.9%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="243" y="30" width="76" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="243" y1="26" x2="243" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="243" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$887</text><line x1="269" y1="24" x2="269" y2="52" stroke="var(--text)" stroke-width="3"/><text x="269" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$975</text><line x1="319" y1="26" x2="319" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="319" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$1,150</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $155</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $1,255</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $44.15 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>마이크론은 현재가 $975.26, 종합 70점 매수(Buy) 등급이다. AI HBM 수요가 촉발한 메모리 슈퍼사이클로 TTM 매출 $903억(+약 346% YoY), TTM EPS $44.28, ROE 66.6% 라는 폭발적 실적을 기록 중이다. 분기 매출은 4개 분기 만에 $93억→$415억으로 4.5배 급증했다. 문제는 밸류에이션 해석이다 — forward PE 6.2x 는 forward EPS $156(피크 가정)을 분모로 한 착시로, trailing PE 22x·EV/EBITDA 15.86x·PSR 12.2x 는 결코 싸지 않다. 메모리는 본질적으로 사이클 산업이라 정점 이익에 낮은 배수가 붙는 것이 정상이며, HBM 구조적 수요가 과거 사이클보다 저점을 높였더라도 피크 EPS 의 지속성은 검증되지 않았다. 베타 2.22 의 초고베타 종목이 10Y 4.95% 급등·9/16 FOMC 인상 리스크·CNN 공포(33.3) 매파 리스크오프 국면에 놓인 점도 냉정히 반영해야 한다. 순현금 $196억·영업현금흐름 $514억의 재무 체력은 최상급. 12M 목표가 $1,150(+18%)으로 컨센서스 평균 $1,513 대비 의도적으로 보수적이며, 2ATR 손절가 $886.96. 핵심 변수는 HBM/DRAM 가격 사이클의 지속성과 forward EPS 의 실현 여부다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,60.0 192.9,77.2 220.8,123.7 192.3,167.0 178.2,202.6 140.0,220.0 95.9,210.7 102.0,162.4 82.9,131.5 95.9,89.3" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="60.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="192.9" cy="77.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="220.8" cy="123.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="192.3" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="178.2" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="220.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="95.9" cy="210.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="102.0" cy="162.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="95.9" cy="89.3" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>9.0</td><td>/10</td></tr><tr><td>수익성</td><td>9.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>8.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>5.5</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>6.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>7.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>7.5</td><td>/10</td></tr><tr><td>리스크</td><td>4.0</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>7.5</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 70/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v12</td><td>2026-08-14</td><td>72</td><td>매수</td><td>$1,150</td></tr><tr><td>v13</td><td>2026-08-23</td><td>76</td><td>매수</td><td>$1,180</td></tr><tr><td>v14</td><td>2026-09-03</td><td>66</td><td>매수</td><td>$1,050</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="dn">-10pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">보통</span></h2><p>마이크론은 DRAM·NAND 플래시를 설계·제조하는 미국 최대 메모리 반도체 기업으로, 삼성전자·SK하이닉스와 함께 글로벌 메모리 시장을 과점한다. 최근 실적의 핵심 동력은 <b>HBM(고대역폭 메모리)</b> 으로, AI 가속기(엔비디아 등)에 탑재되는 이 고부가 제품이 DRAM 믹스를 끌어올리며 마진을 급등시켰다. 매출 구성은 데이터센터(AI·서버)·모바일·PC·오토모티브·산업으로 다각화돼 있으나, 사이클의 진폭은 데이터센터 HBM/DRAM 이 좌우한다. 자본집약도가 매우 높아(연 capex 수백억 달러) 설비투자·미세공정 전환 능력이 경쟁력의 원천이며, 미국 CHIPS Act 의 국내 팹 투자 수혜 대상이다. 섹터는 테크놀로지, 산업은 반도체다.</p><h3>Moat 상세</h3><p>해자는 보통(Narrow-to-Moderate)으로 평가한다. 전통적으로 DRAM·NAND 는 표준화된 커머디티라 가격 결정력이 약하고 사이클마다 이익이 급변하는 얕은 해자 산업이었다. 그러나 HBM 은 상황을 바꿨다 — 3D 스택·TSV·패키징의 높은 기술 장벽, 소수 3社(마이크론·SK하이닉스·삼성) 과점, AI 고객의 장기 공급계약·품질 인증(qualification)이 진입장벽과 교섭력을 끌어올렸다. 규모의 경제와 미세공정 리더십도 원천이다. 다만 메인스트림 DRAM/NAND 의 커머디티 특성, 사이클 하강 시 동반 가격 붕괴, 경쟁사 HBM 증설이 해자를 잠식할 수 있어 '넓음'까지는 부여하지 않는다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>분기 실적은 슈퍼사이클을 그대로 보여준다. 매출 추이는 2025 5월 $93.0억 → 2025 8월 $113.2억 → 2025 11월 $136.4억 → 2026 2월 $238.6억 → 2026 5월 $414.6억으로 폭증했고, 희석 EPS 는 $1.68 → $2.83 → $4.60 → $12.07 → $24.67 로 14배 이상 뛰었다.<br>수익성 지표는 피크 사이클 특유의 극단값이다 — 2026 5월 분기 영업이익률 80.4%($415억 매출 대 $333억 영업이익), 순이익률 68.1%, ROE 66.6%. <b>데이터 위생 주의</b>: data.json 의 grossMargins(72.6%)가 operatingMargins(80.4%)보다 낮아 회계상 불가능한 역전이 존재한다 — yfinance 필드 왜곡으로 판단하며, 분기 실측 영업이익률(~80%)을 신뢰값으로 사용한다.<br>재무구조는 최상급이다. 현금 $260.2억, 총부채 $63.8억으로 순현금 $196.5억, 부채비율(D/E) 6.33% 로 사실상 무차입에 가깝다. 영업현금흐름은 $514.3억으로 막대하나 FCF 는 $76.4억에 그쳐, 그 차이 약 $438억이 capex(팹·HBM 증설)로 투입됐다 — 메모리의 극단적 자본집약도를 반영한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>밸류에이션 해석이 이 종목의 핵심 쟁점이다. forward PE 6.2x·PEG 0.14 는 표면상 초저평가로 보이지만, 분모인 forward EPS $156.07 이 <b>사이클 정점 가정</b>이라 착시다. 현재 분기 연환산 EPS 는 약 $99($24.67×4)이며 컨센서스는 추가 급증($156)을 전제한다. 반면 trailing PE 22.0x·EV/EBITDA 15.86x·PSR 12.2x·P/B 10.9x 는 정점 이익 기준으로도 결코 싸지 않다 — 메모리 정점에는 시장이 하강을 선반영해 낮은 배수를 부여하는 것이 정상이라는 점을 감안하면 현 배수는 오히려 완전(full)에 가깝다.<br>목표가는 through-cycle 관점으로 산정했다. NTM EPS 를 현 연환산($99)과 컨센($156) 사이의 보수값 약 $115~130 으로 두고, 정점 사이클에 적용되는 낮은 배수 약 9x 를 곱해 <b>$1,150</b>(+18%)을 중심값으로 삼았다. 시나리오: 약세 $780(사이클 롤오버·EPS 하향·디레이팅), 기본 $1,150, 강세 $1,500(HBM 수요 지속·EPS $156 실현·컨센 근접). 애널리스트 컨센서스는 평균 $1,513·중앙값 $1,540·범위 $361~$2,200(45명, 강력매수 1.35)로, 내 기본 목표가는 컨센 평균을 약 24% 밑도는 의도적 보수 수준이다 — 매파 레짐·피크사이클·초고베타 리스크를 반영했다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $975.26 은 50일선($928.61)과 200일선($622.07)을 모두 상회하는 강한 정배열이다. 200일선 대비 +57% 로 장기 추세는 매우 강하나, 52주 밴드에서 위치는 75%(고점 $1,255 대비 약 -22%, 저점 $154.65 대비 +531%)로 전고점에서 조정 중이다. 기관 보유 79.9%, 공매도 비중 2.64%(낮음), 숏레이시오 0.95 로 수급은 양호하다. 다만 <b>베타 2.22 의 초고베타</b>가 관건이다 — 10Y 4.95% 급등·9/16 FOMC 인상 리스크·CNN 공포지수 33.3 의 리스크오프 국면에서 지수 하락 시 증폭된 낙폭이 나올 수 있다. ATR 4.53% 로 일간 변동성도 크다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>산업 동력은 AI 데이터센터의 HBM 수요다. AI 가속기 1대당 탑재 메모리 용량·대역폭 요구가 급증하며 HBM 은 공급이 수요를 따라가지 못하는 타이트한 국면이고, 소수 3社 과점이 가격·마진을 지지한다. 마이크론은 미세공정·전력효율 리더십과 미국 팹(CHIPS Act 수혜)으로 지정학적 공급망 재편의 수혜를 받는다. 그러나 메모리 산업의 본질은 사이클이다 — 증설 파이프라인이 2~3년 시차로 공급 과잉을 만들고 가격이 붕괴하는 패턴이 반복돼 왔다. 이번 사이클은 AI 구조 수요가 저점을 높일 가능성이 있으나, 메인스트림 DRAM/NAND 는 여전히 커머디티이고 경쟁사 HBM 증설·수율 개선이 진행되면 프리미엄이 희석될 수 있다. 즉 단기 실적 모멘텀은 최상이나, 중기 이익의 지속성·정점 위치 판별이 투자 판단의 핵심이다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 사이클 정점 판별이다 — forward EPS $156 이 피크라면 향후 가격 사이클 하강 시 이익이 급감(메모리는 정점 대비 80%+ 감익 이력)하고 밸류에이션이 동반 훼손된다. 베타 2.22 의 초고베타가 매파 금리(10Y 4.95%)·리스크오프 국면과 겹쳐 지수 하락 시 증폭 낙폭 위험, 고객·전방 수요(AI capex) 집중, 경쟁사 HBM 증설에 따른 공급 과잉, 극단적 자본집약도가 뒤를 잇는다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">메모리 사이클 정점 · 피크 EPS 착시</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">초고베타 · 매파 리스크오프 취약</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">AI capex 의존 · 전방 수요 집중</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">경쟁사 HBM 증설 · 공급 과잉</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>메모리 사이클 정점 · 피크 EPS 착시</strong> (발생: 높음, 영향: -25%)<br><span style="color:var(--sub);font-size:13px">forward EPS $156 이 사이클 정점이라면 HBM/DRAM 가격이 롤오버할 때 이익이 급감하고 forward PE 6.2x 의 '저평가'는 소멸한다. 메모리는 정점 대비 80%+ 감익 이력이 있어 하방 진폭이 크다.</span></div><div class="ri rl"><strong>초고베타 · 매파 리스크오프 취약</strong> (발생: 높음, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">베타 2.22 로 10Y 4.95% 급등·9/16 FOMC 인상 리스크·CNN 공포(33.3) 국면에서 지수 하락 시 증폭된 낙폭에 노출된다. ATR 4.53% 의 높은 일간 변동성도 동반된다.</span></div><div class="ri rl"><strong>AI capex 의존 · 전방 수요 집중</strong> (발생: 중간, 영향: -15%)<br><span style="color:var(--sub);font-size:13px">실적 급증이 소수 AI 고객의 데이터센터 capex 에 크게 의존한다. AI 투자 사이클이 둔화하거나 재고 조정이 오면 HBM 수요·가격이 빠르게 식을 수 있다.</span></div><div class="ri rl"><strong>경쟁사 HBM 증설 · 공급 과잉</strong> (발생: 중간, 영향: -12%)<br><span style="color:var(--sub);font-size:13px">SK하이닉스·삼성의 HBM 증설과 수율 개선이 본격화되면 과점 프리미엄이 희석되고, 메모리 특유의 증설-과잉-가격붕괴 패턴이 재현될 수 있다.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>폭발적 실적 모멘텀·최상급 재무(순현금 $196억)·HBM 구조 수요를 근거로 매수는 유효하나, 피크사이클·초고베타·매파 금리 리스크로 인해 공격적 추격매수는 지양한다. 진입은 50일선($929)~심리적 $900 눌림에서 분할 대응하고 2ATR 손절 $886.96 을 엄격히 준수한다(변동성이 크므로 비중은 포트폴리오 대비 보수적으로). 재평가 트리거는 다음 분기 HBM/DRAM 가격 동향과 forward EPS 컨센 방향이다 — 가격·가이던스가 지속 상향되면 홀딩/증량, 사이클 롤오버 신호(가격 하락·재고 증가)가 나오면 즉시 비중 축소. 목표가 $1,150 도달 시 부분 차익 실현.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>목표가 중심 <b>$1,150</b>, 범위 약 -32% ~ +30% (약세 $780 / 기본 $1,150 / 강세 $1,500). 밴드가 넓은 것은 메모리 사이클의 본질적 진폭 때문이다 — 상단은 HBM 수요 지속·forward EPS $156 실현·컨센 근접, 하단은 사이클 롤오버·EPS 하향·디레이팅을 반영한다. 스코어 신뢰구간 <b>±6pt</b> (64~76).</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>NTM EPS 약 $115~130 실현 — 실제로 HBM/DRAM 가격이 롤오버하면 이익이 이를 크게 밑돌아 목표가 하향 위험(반증 시 -25%+).</li><li>through-cycle 배수 9x 적용 — 시장이 구조적 수요를 인정해 배수를 유지하면 목표가는 상향 여지가 있으나, 사이클 하강을 선반영하면 더 낮은 배수도 가능.</li><li>AI capex 사이클이 향후 4개 분기 유지된다는 전제 — AI 투자 둔화·재고 조정 시 HBM 수요·가격이 빠르게 식음.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v15 독립 재분석, 이전 버전·리포트·timeline 미참조. 데이터 yfinance 2026-09-11 종가($975.26) 기준. WebSearch 미바인딩으로 data.json + 매크로 스냅샷 + 일반 지식만 사용. <b>교정한 데이터 위생 이슈</b>: (1) dividendYield_pct 5.0% 는 ×100 스케일 오류 → 실제 ~0.05% 로 교정. (2) grossMargins(72.6%) < operatingMargins(80.4%) 의 회계상 불가능한 역전 발견 → 분기 실측 영업이익률(~80%)을 신뢰값으로 사용. 12M 목표가 $1,150, 2ATR 손절 $886.96.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="MU_Micron_20260913.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
