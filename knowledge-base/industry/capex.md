@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-05
-valid_until: 2026-10-05
+updated: 2026-09-12
+valid_until: 2026-10-12
 sector: capex
 confidence: high
 tags:
@@ -184,16 +184,30 @@ sources:
     글로벌이코노믹,
     wccftech,
     ServeTheHome,
+    erp.today,
+    TwentyFour AM,
+    Advisor Perspectives,
+    Techzine,
+    Introl,
   ]
-last_synced_from_db: 2026-09-05
+last_synced_from_db: 2026-09-12
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-09-05 | 신뢰도: high | 유효: ~2026-10-05
+> 갱신일: 2026-09-12 | 신뢰도: high | 유효: ~2026-10-12
 
 ---
 
+## ★ 주간 델타 (9/12) — 직전 갱신(9/5) 이후 변화
+
+- **[핵심] Oracle Q1 FY2027 확정(9/10) — RPO $664B(+$26B)·OCI +121%·FY27 capex 가이던스 $90-95B·그러나 FCF -$5B**: Oracle Q1 FY2027(9/10 발표): 총매출 **$19.3B(+30% YoY)**, OCI(클라우드 인프라) **+121% YoY**. **RPO $664B**(전분기 대비 +$26B, 절반 36개월내 인식) — 직전 KB Oracle RPO $638B(Q4 FY26)에서 갱신. **Q1 capex $28B(net cash $18B), FY2027 총 capex 가이던스 $90-95B(net cash ≤$70B)**. OCI가 FY4Q말 이후 **850MW AI 용량+30만+ GPU 추가 배치·GPU 가동률 97.9%**. 영업현금흐름 역대 $23B이나 **FCF -$5B(빌드사이클 지속)**. FY27 총매출 가이던스 ≥$90B(+34%)·non-GAAP EPS $8.10. AI DC 캐파 전환이 실매출로 가시화되나 FCF는 여전히 음수 [Motley Fool, Yahoo Finance, erp.today, Seeking Alpha]
+- **[핵심] Oracle 어닝 후 파이낸싱 재해석 — 추가 $20-25B 점보본드에 2차시장 스프레드 ~30bps 랠리·'스트레스는 Oracle 특화 스토리'**: Oracle이 어닝 후 추가 **$20-25B 점보본드** 런칭했으나 공급 불확실성 해소(clarity)로 **2차시장 스프레드 커브 전반 ~30bps 랠리** — 대형 상시발행자로선 이례적(clarity가 리스크프리미엄 하락 유발). Oracle 5년 CDS **~200bps**(2025중반 <50bps→급등, 직전 KB 8/29 ~215bps와 유사·IG 발행자로선 여전히 극단적). **핵심 재해석: 4개 하이퍼스케일러(GOOGL·MSFT·META·AMZN) 스프레드는 AA지수 이하로 평탄 → 스트레스는 시스템 위기 아닌 'Oracle 특화 스토리'**. 6대 하이퍼스케일러 달러부채 총 footprint 9월 들어 2배+ >$360B·2026 발행분 ~$182B(+1300% YoY, Quartz). 단 **소송 웨이브 개시 — Oracle 채권자 소송+CoreWeave 증권 집단소송이 'AI DC 파이낸싱 소송 1탄'(Quinn Emanuel)**. CoreWeave YTD 부채+자본 $30B+ 조달 [TwentyFour AM, Advisor Perspectives, Quartz, Quinn Emanuel, CoreWeave IR]
+- **반도체/메모리 수요측 재확인 — TSMC 8월 매출 NT$514.8B(+53.3%) 사상최고·DRAM 2025-27 +275~300%·HBM 3사 완판**: TSMC 8월 매출 **NT$514.81B($16.35B) — YoY +53.3%·MoM +10.1% 사상 최고(9/10)**, AI칩 수요 견인. 메모리 슈퍼사이클 심화 — 범용 **DRAM 계약가 2025~2027 누적 +275~300%(2017-18 슈퍼사이클 +90%의 3배+)**, 1Q26 QoQ +90~95%. **Micron·삼성·SK 3사 모두 2026 HBM 캐파 완판(sold out)**, Micron 순익 +770.8% YoY. 주: WFE 전망 자체는 직전 9/5 갱신(Wells Fargo 2027 $190B·MS 2026 $128B·TEL $150-170B) 대비 큰 변동 없음 — 이번 주는 TSMC 매출·메모리 sold-out이 장비 수요측 재확인 [TSMC IR, CNBC, Tom's Hardware, ersaelectronics]
+- **전력장비 수혜 정량 확대 — Vertiv 2026 매출 ~$14B(+31% 유기)·MS 글로벌 DC 건설 2028까지 ~$2.9T·가스터빈 15-20GW**: **Vertiv 2026 매출 가이던스 중간값 ~$14B·유기적 성장 ~+31%**(전력관리·냉각). Eaton 미국 변압기·스위치기어 신규 증설에 수억달러 투자. **Morgan Stanley — 글로벌 DC 건설 2028까지 ~$2.9T**, 전력 공급망(그리드·터빈·변압기·케이블) 리드타임 2-3년 지속. MS: 천연가스 터빈이 최대 해법 — **2028까지 ~15-20GW 캐파** 공급 가능. GE Vernova Electrification DC 주문 H1 2026 $5B+(9/5 반영). 전력이 여전히 AI 최대 병목 [Motley Fool, Bloomberg, Energy News Beat]
+- **AI DC 운영용량 랭킹 — 1GW급 실가동 진입: Colossus 2 ~946MW·Anthropic-Amazon New Carlisle ~910MW·MSFT Fairwater ~636MW**: Epoch AI 집계 현재 가동 IT전력 기준 최대 DC — **xAI Colossus 2 ~946MW, Anthropic-Amazon New Carlisle ~910MW, Microsoft Fairwater Atlanta ~636MW**. xAI Colossus 2는 멤피스 3번째 건물 매입으로 **총 ~2GW·NVIDIA GPU 555,000개·$18B** 규모 확장(최대 단일 학습 사이트). Anthropic은 Colossus 1 컴퓨트 전량 임차. Stargate Abilene(TX) 2개동 가동·1.2GW 도달 예정·45만+ GB200. 계획이 아닌 실가동 1GW급 DC 시대 진입 [Epoch AI, Introl, Techzine, DCD]
+
+---
 ## ★ 주간 델타 (9/5) — 직전 갱신(8/29) 이후 변화
 
 - **[핵심] Broadcom Q3 FY26 블로우아웃(9/2) — AI반도체 $16.7B(+221%)·FY2027 AI $115B/FY2028 $230B로 대폭 상향(직전 $100B FY27 목표 초과)**: Broadcom Q3 FY2026 확정(9/2): 총매출 **$29.6B(+86% YoY**, 직전 KB Q3 가이던스 $29.4B 상회), 영업이익 +92% YoY, 영업이익률 **역대 68%**. **AI 반도체 매출 $16.7B(+221% YoY**, 직전 가이던스 $16.0B 상회). **FY2026 AI 반도체 $58B(+186% YoY)**. **Q4 FY26 AI 가이던스 $21.7B(+236% YoY)**. CEO Hock Tan이 AI 반도체 매출 가시성(line of sight)을 **FY2027 $115B·FY2028 $230B**로 제시 — 직전 KB의 'FY2027 AI칩 $100B' 목표를 대폭 상향. 커스텀 XPU(Google TPU·Meta MTIA·OpenAI·Anthropic)가 견인, CapEx 슈퍼사이클 커스텀실리콘 축의 최상단 검증 [CNBC, 247WallSt, Seeking Alpha, Yahoo Finance, Investing.com]

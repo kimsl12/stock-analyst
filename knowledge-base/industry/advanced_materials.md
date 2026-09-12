@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-05
-valid_until: 2026-10-05
+updated: 2026-09-12
+valid_until: 2026-10-12
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -199,10 +199,16 @@ sources:
     Solar Power World,
     Magnetics Magazine,
     Benchmark Minerals,
+    SunSirs,
+    Battery-Tech Network,
+    SodiumBatteryHub,
+    Tokamak Energy,
+    Interesting Engineering,
+    CAMX,
   ]
 confidence: high
-last_synced_from_db: 2026-09-05
-db_records: 491
+last_synced_from_db: 2026-09-12
+db_records: 498
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -211,6 +217,19 @@ db_records: 491
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.09.12 핵심 변화 요약 (9/5→9/12 윈도우)**:
+>
+> 1. **[중대·신규] 희토류 — Fastmarkets(9/10): 11/10 2차통제 재시행이 中외 정제·재활용 역량을 시험, 日本 2026년 Dy/Tb 산화물 수입 0건·역외 프리미엄 Dy 4.9배/Tb 3.8배·中 장비 의존·스크랩 조성 불확실 병목 + 中 지수 259.5·NdPr $141.79/kg(9/3 -2.54% MoM, 5월 이후 첫 하락)·유예종료 D-59** — **Fastmarkets 분석(2026.9.10, 신규): 中 공고 61호 통제가 11/10 재시행(가정) 임박하며 中외 정제·재활용 야망을 정면으로 시험. 핵심 신규 데이터 — (1) 日本은 2026년 中 라이선싱하에 Dy·Tb 산화물 수입 0건(중희토 조달 완전 봉쇄). (2) 역외-中내 괴리 재정량화: 유럽 Dy oxide $1,250-1,675/kg vs FOB中 $270-330/kg(4.9배), 유럽 Tb oxide $4,200-5,000/kg vs FOB中 $1,180-1,270/kg(3.8배)(8/27 기준). (3) 장비 의존 — 中산 특수 처리장비가 서방 대안의 ~1/3 가격, 대형 반응조(reaction vessel) 수출제한이 이미 서방 프로젝트 계획에 타격. (4) 피드스톡 — 스크랩상이 폐자석 조성 보장 불가로 재활용 표준화 난제.** 中 희토류 가격지수 ~259.5(최근 확인치, 전주 259.1서 소폭 상승). **NdPr metal 中내 $141.79/kg(9/3, -2.54% MoM)·NdPr alloy $131.02/kg(-1.98%)·Pr metal $150.69/kg(-2.37%)로 5월 이후 콤플렉스 전반 첫 하락(6·7·8월 4개월 상승 종료), 수출가 Nd metal $154/kg·Pr metal $162/kg(FOB China).** 2025.10.9 확대통제(SmCo·Tb/Dy 함유 NdFeB·역외 0.1% 룰) 12개월 유예가 2026.11.10 종료 → **9/12 기준 D-59(전주 D-66)**, IEA 전면 시행 시 中외 $6.5T 다운스트림 리스크. 정부투자 참고: USA Rare Earth $1.6B(2026.1)·Iluka Eneabba A$1.65B(2026.6)·MP Materials $550M(2025.7) [Fastmarkets/China Briefing/mining-technology(9/10), MacroMicro/rare-earth-mining/RareEarthExchanges(9/3 가격·지수)]
+>
+> 2. **[신규] 배터리소재 — CATL Na-ion(Naxtra) ESS 첫 상업인도 2026.9월 개시·2026 GWh급 출하 목표, 하드카본 음극 원가 6-7만→3.5-4만위안/t(2026)·2026말 LFP 원가패리티, 전고체는 CEO Zeng 성숙도 4/9로 신중** — CATL이 Na-ion(Naxtra) 배터리 에너지저장(ESS) 시스템 첫 고객 인도를 2026.9월 개시, 연 GWh급 출하 2026 목표. 에너지밀도 175Wh/kg(최상급 LFP와 동급)·2026말 LFP와 원가 패리티 도달 전망(스케일업으로 추가 하락). 하드카본 음극 원가 6만-7만위안/t(2024)→3.5만-4만위안/t(2026), Na-ion 양극재도 초기 LFP식 원가하락 경로. 전고체: CEO Robin Zeng 현 기술성숙도 9단계 중 **4단계**로 평가·대량양산 시기상조 신중론(Na-ion을 전고체보다 선행 채택 예상) — 09.05 KB의 전고체 낙관론 대비 톤다운 [Battery-Tech Network/CarNewsChina/battery-news/SodiumBatteryHub]
+>
+> 3. **리튬 방향 반전(하락) — 中 배터리급 탄산리튬 스팟 ¥145,750/t(9/9, -1.15%)·LC2701 선물 14만위안 저점(9/7), 예상외 재고 잉여+리스톡 종료 후 다운스트림 약세로 전주(9/5) ¥152,000 상승세서 조정** — 中 배터리급 탄산리튬 9/9 도메스틱 스팟 ¥145,750/t(-1.15%, 예상외 中 재고 잉여). LC2701 선물 9/7 개장 142,000위안→장중 저점 140,100위안. 초旬 EXW中 배터리급은 +0.3% ¥150,300-160,500/t(광의 레인지·그레이드/소스 상이). 9월 레인지 ~14만-16.05만위안/t, 배터리사 연초 리스톡 완료 후 다운스트림 약세로 하방압력 — **09.05 KB의 ¥152,000 상승 흐름서 방향 반전.** [시리즈·그레이드별 상이(SMM 中내 스팟·GFEX 선물 혼재)로 가격레벨 confidence medium·하락방향 confidence high]. 리튬 하락은 단기 Na-ion 코스트 인센티브 재약화 가능 [Trading Economics/SMM/CEIC/SunSirs]
+>
+> 4. **[신규] 탄소섬유 — Teijin Carbon America CAMX 2026(애틀랜타, 9월) 고속생산 포트폴리오 출품(급속경화 프리프레그·수지주입·TPC)·항공/방산 high-rate 대응, Hexcel-Boeing 7월 계약 재확인** — Teijin Carbon America가 CAMX 2026(2026.9월, 미 조지아 애틀랜타)서 산업화 복합재 제조용 소재 솔루션 포트폴리오 출품 — 급속경화(rapid-cure) 프리프레그·수지주입(resin infusion) 시스템·열가소성복합재(TPC), high-rate 생산환경 호환. CompositesWorld: 항공·방산급 탄소섬유 복합재 high-rate 대량생산용 엔지니어링. 항공우주 탄소섬유복합재 핵심 공급사 Mitsubishi Chemical·Toray·Solvay·DuPont·Formosa·Teijin·Hexcel. Hexcel-Boeing 상용·방산·우주 장기공급계약(7월 신규·연장, acoustic engineered-core 포함) 재확인(09.05 KB Hexcel Q2 후속) [CompositesWorld/Teijin/Research and Markets/GII Research]
+>
+> 5. **초전도/CNT [재확인·델타 제한] — CFS SPARC 18개 HTS 자석 중 1번째 설치(CES 2026 1월)·잔여 격주 인도·first plasma 2026/net energy 2027, Tokamak Energy ST80-HTS 2026 완료·Demo4 44코일·38km HTS 테이프 / SWCNT 분산액 사이클수명 MWCNT 대비 +83%·Si음극 파쇄방지** — CFS SPARC(Devens MA): 18개 D형 토로이달 필드 HTS 자석 중 1번째 설치(CES 2026, 1월 발표)·각 24톤·20테슬라, 잔여 자석 격주(fortnightly) 인도 스케줄, first plasma 2026 목표·net energy 이듬해(2027). Tokamak Energy(英): 차세대 HTS 자석 세트 완성·ST80-HTS 2026 완료로 pilot plant ST-E1(2030년대 초 순전력 200MW) 설계 정보화·Demo4 44개 코일·HTS 테이프 38km 사용. REBCO(희토바륨구리산화물) 테이프 공급 병목 지속. **CNT: SWCNT 분산액이 MWCNT 대비 사이클수명 +83%(Si계 음극 팽창 억제), CNT 도전재가 음극(Si 파쇄방지·급속충전)·양극(에너지밀도) 양용 확산(LG엔솔 2026.7).** 양 서브섹터 이번 주 신규 상업 델타는 제한적(재확인) [World Nuclear News/Tokamak Energy/Interesting Engineering/CFS(초전도), Wiley Carbon Energy/ACS Omega/IntechOpen/LG Energy Solution(CNT)]
+
 
 > **2026.09.05 핵심 변화 요약 (8/29→9/5 윈도우)**:
 >

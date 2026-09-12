@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-05
-valid_until: 2026-10-05
+updated: 2026-09-12
+valid_until: 2026-10-12
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -163,14 +163,33 @@ sources:
   - Android Authority
   - Telco Magazine
   - 뉴스천지
+  - SDxCentral
+  - Mobile Europe
+  - RocketLaunch.Live
+  - ULA
+  - azmth
+  - Rohde & Schwarz
+  - Gizbot
+  - Robinhood
+  - Investing.com
 confidence: high
-last_synced_from_db: 2026-09-05
+last_synced_from_db: 2026-09-12
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.09.12 핵심 변화 요약 (9/5 이후 델타)**:
+>
+> 1. **★6G RAN#113 마드리드(9/14~17) D-2 개최 임박(9/12 미개최)·이번주 초점 이동=FR3 'golden band' WRC-27 정렬 + Qualcomm Snapdragon Summit 9/22~24** -- **3GPP TSG RAN#113(마드리드 9/14~17)이 Option 1 vs 3·MRSS 최종결정 순간이나 9/12 기준 아직 미개최(결과 미발표). ★이번주 신규 델타=FR3 upper mid-band 'golden band'(7.125~8.4GHz, 7-8GHz대) WRC-27 IMT 지정으로 crystallize -- 규제당국 upper mid-band 확보로 정렬, WRC-27 신규 후보대역 4.4~4.8/7.125~8.4/14.8~15.35GHz(추가연구). FR3는 커버리지-용량 균형·글로벌 하모나이제이션 잠재로 '골든밴드'. Rohde & Schwarz+Qualcomm MWC서 FR1-FR3 carrier aggregation 실증, SoftBank+Nokia 도쿄 7GHz 옥외 트라이얼(일본 최초 6G), T-Mobile은 Ericsson 6G 프로토타입 테스트. ★Qualcomm Snapdragon Summit 마우이 9/22~24 확정 -- X105 모뎀(DL 14.8Gbps·UL 4.2Gbps·5G위성·NB-IoT폴백·전력 30%↓·SDR885)·Snapdragon 8 Elite Gen 6 Pro(TSMC 2nm)·Galaxy S27 Ultra/OnePlus 16 탑재 후보. Rel-21 6G 규격 2027.03~2028말** [6G Futures RAN#113 Sep 14-17, Nokia FR3 golden band WRC-27, Nature npj Wireless WRC-27 bands, RCR Wireless SoftBank Nokia 7GHz Tokyo, Light Reading T-Mobile Ericsson 6G, Android Central/wccftech Snapdragon X105, Gizbot Summit Sep 22-24]
+> 2. **★D2C 양강 강세 지속 -- SPCX 9/11 ~$148로 $148~150 박스 유지·약 5,900만주 락업 릴리즈 무난 흡수 vs ASTS 중앙값 목표 $83으로 상향** -- **SPCX(SpaceX) 9/11 종가 약 $148.18(장중 $145.92~$151.85, 다음 $150.15)로 9/5 KB(~$149.74·9/4) 수준 유지. ★약 5,900만주 포스트-IPO 락업 릴리즈에도 주가상승·평균거래량 상회로 오버행 무난 흡수(1차 대량락업 8/6 이후 소규모 트랜치). 메인 180일 락업 2026.12.08 만료·머스크 약 64억주 366일 락업. Starlink 가입자 약 1,030만(3/31 +105% YoY)·164개국. ★ASTS: 9/2~9/3 목표 상향 랠리(장중 $61.04) 뒤 중앙값 목표 $83으로 상향(14애널·레인지 $43~$108, 9/5 KB 평균 $78.48서 상승)·Cantor $90. BB11/12/13 8/5 안착(표준폰 직접 ~200Mbps), ★차기 미션 BB14/15/16 준비 중·2027초 약 45기·생산 BB42호까지·FY2026 매출 $150~200M 재확인. ★T-Satellite(Starlink D2C): 완전 음성/데이터는 Starlink V2(Starship 2027 발사·약 1,200기)에 연동, D2C 650기+·22개국·4억명+·$10/월** [CNN Markets SPCX 9/11 $148.18, Investing.com 59M shares lockup resilient, Simply Wall St ASTS median $83 14 analysts Cantor $90, StockTitan BB14/15/16 45 sats early 2027, KeepTrack Starlink D2C 650, 5Gstore T-Satellite V2 2027]
+> 3. **★AI-RAN 노선 대립이 상용 계약으로 구체화 -- Nokia-Indosat 전국단위 AI-RAN 롤아웃 확정·트라이얼 로스터 확대(T-Mobile·BT·Elisa·DOCOMO·Vodafone)·신규 Doksuri 라디오** -- **★Nokia-Indosat Ooredoo Hutchison 전국단위(nationwide) AI-RAN 롤아웃 계약 확정 -- Nokia가 Indosat 저·중대역 5G RAN 핵심공급사로 확정, NVIDIA GPU가속 AI-RAN 플랫폼을 AI강화 RAN기능+엣지AI 컴퓨트 기반으로 락인, 라이브망 필드트라이얼 2026말·광범위 상용 2027. Nokia 트라이얼 파트너 확대: 운영사 T-Mobile·Indosat·BT·Elisa·NTT DOCOMO·Vodafone + 인프라 Dell·Quanta·Red Hat·SuperMicro·NVIDIA, 신규 'Doksuri' 라디오. Nokia(anyRAN+NVIDIA AI Aerial): 파일럿 2026말·일반출시 2027·2028 스펙트럼효율 100%+(용량 2배). ★Ericsson 반대노선 구체화=자체 실리콘 'Many-Core Architecture'에 프로그래머블 매트릭스코어(NN 가속기) 내장으로 GPU 불필요, 'AI in RAN' 15개+ 배치 라이브(SoftBank·Bell·SK텔레콤·Rogers) GPU 없이 스펙트럼효율 ~10%·다운링크 ~20%↑. Samsung CPU-first 불가지론 유지. AI-RAN Alliance 140개+ 조직. Dell'Oro: AI-RAN 누적 $35B(2026~2030)이나 전체 RAN 확장은 아님** [RCR Wireless Nokia Indosat nationwide field trials end-2026 commercial 2027, DCD Indosat Nokia 5G RAN, SDxCentral Nokia Doksuri radios, Mobile Europe partner roster T-Mobile BT Elisa DOCOMO Vodafone, Light Reading Ericsson Many-Core GPU-free 15 deployments, ABI Research Alliance 140+, Dell'Oro $35B]
+> 4. **★광통신 2026 리더십 재편 -- AAOI가 최고 성과주 등극(YTD +203%)·1.6T 케이던스가 2027 순위 관건 + FCC 금지 '美 AI 대기업 역타격' 경고 부각(여전 초안)** -- **247WallSt 9/7: 광학주 2026 YTD AAOI(Applied Optoelectronics) +203% > Lumentum(LITE) +139% > Coherent(COHR) +53%, 셋 다 하이퍼스케일러 800G·1.6T 빌드아웃 편승. ★2027 순위 관건=1.6T 출하 케이던스(부품 공급제약이 변수). 리스크: AI 인프라 로테이션 시 AAOI 최우선·최대 타격(고베타), Coherent 다각화로 완충(업사이드 희생), Lumentum 중간. Fabrinet(FN)은 400/800G·1.6T 모듈 고급패키징 위탁생산 직접 수혜. [주의: 절대주가 AAOI $105.53·LITE $881.26·COHR $281.86은 247WallSt/Yahoo/AOL 동일 신디케이트 단일소스, LITE/COHR 절대치는 과거대비 괴리 커 검증필요 -- YTD 방향성만 신뢰]. ★FCC 중국산 광트랜시버 수입금지: 9월에도 여전히 초안(공식 NPRM 표결 미완료·연내 발표 희망하나 수정·보류 가능). ★신규 서사=금지가 美 AI 대기업 역타격 경고 부각 -- Google·MS·Amazon이 Innolight(Zhongji)·Eoptolink 의존, 발효 시 AI DC 광공급 최대 60% 차단, 중국 그룹 세계 광datacom 매출 약 60%(제조 capa 56%), 서방 대체품도 중국 수출통제 인듐(InP) 의존(상호의존)** [247WallSt 9/7 AAOI +203% LITE +139% COHR +53%, Yahoo report ban hurt US AI giants, Tom's Hardware FCC 56% China share, Cignal AI/Caixin FCC no NPRM, TechTimes 60% cut Chinese indium]
+> 5. **★저궤도 군집 규모 갱신 -- Starlink 11,133기(9/11)·고객 1,000만+ vs Amazon Leo ~372기·Vulcan LV-01 첫 발사 9월 임박(40기·630km)** -- **Starlink 2026.09.11 궤도 약 11,133기(가동 11,118기)·9/7 기준 11,124기 운용(9월초 동부 27기 추가)·고객 1,000만+·100개국+, 전세계 추적위성 16,500기+ 중 최대. Starlink V2(Starship 발사)는 2027 개시(Shotwell 재확인)로 완전 D2C 음성/데이터 전제. ★Amazon Leo(구 Kuiper) 생산위성 약 372기+ 궤도(12개 미션 성공, Atlas V·Falcon 9·Ariane 6). ★Vulcan Centaur LV-01(첫 Vulcan 발사) 2026.09 예정 -- 40기(일부 소스 45기)를 630km LEO 투입·38개 Vulcan 발사 첫 번째·LEO 최적화 Centaur V 상단 첫 사용(ULA 'New Centaur V readies for Amazon Leo'). FCC 라이선스 3,236기(3개 쉘 590·610·630km)·초기 3,000기+ 목표. Amazon 5개 발사체(Atlas V·Falcon 9·Ariane 6·Vulcan·New Glenn) 사상최대 상업발사 조달, 배치지연으로 Starlink 대비 후발 유지** [KeepTrack Starlink 11133 9/11 11118 working, KeepTrack X-report 11124 9/7 27 sats, azmth 16500+ tracked, orbitalradar Amazon Leo 372+, ULA blog New Centaur V, RocketLaunch.Live Vulcan LV-01 40 sats 630km, Wikipedia FCC 3236 five vehicles]
+>
+> **(이전 갱신 -- 9/05 핵심 요약, 참고용)**:
+>
 > **2026.09.05 핵심 변화 요약 (8/29 이후 델타)**:
 >
 > 1. **★SPCX 추가 급등 $149.74(9/4)·IPO가 $135 완전 상회 vs ★ASTS 반등 $61.04(+9.4%·목표 상향)로 8/29 '미끄러짐' 서사 반전 -- D2C 양강 동반 강세** -- **SPCX(SpaceX) 9/4 종가 약 $149.74(장중 $141.05~$152.30, 52주 $104.83~$225.64)로 8/29 KB(~$138)서 추가 상승 -- IPO가 $135 완전 상회 유지, 12개월 평균 목표 $222.32(고 $450·저 $117). 메인 180일 락업 2026.12.08 만료·8~10월 7% 트랜치 순차 언락 진행 중, Starlink 가입자 약 1,030만(2026.03.31, +105% YoY)·164개국. ★AST SpaceMobile(ASTS)은 9/2~9/3 애널 목표 상향에 장중 +9.39% $61.04로 반등 -- 8/29 KB의 '$58대 미끄러짐·공정가치 $43.78 하향' 서사 반전(연초대비 -23%는 여전). 컨센 평균 목표 $78.48(고 $120.75), Cantor $90 Overweight·Deutsche Bank $93(106서 하향). '$120 경로' 3조건: 2026말 상용 베타·BB14~46 생산 케이던스 유지·정부계약 반복프로그램 전환. 백로그 $1.3B·일본 J-LEO $1B·FY2026 매출 $150~200M 재확인·2027초 BB 약 45기. 하방: 추가 발사 실패(BB7 $125.9M 반복 시)** [CNN Markets SPCX 9/4 $149.74 avg $222.32, 247WallSt 9/3 ASTS path to $120, Foreign Policy Journal 9/3 Cantor $90 DB $93, MarketBeat ASTS $78.48]
