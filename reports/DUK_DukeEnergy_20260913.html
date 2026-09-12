@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>듀크에너지 — 재분석 v10 (이전 비교 미포함) (DUK) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>듀크에너지 — 재분석 v10 (이전 비교 미포함) (DUK)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-13</div><div style="margin-top:8px"><span class="badge b-hold">중립 (Hold)</span> <span class="badge b-score">56/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">규제 독점·안정 배당(3.63%)과 데이터센터 전력수요 순풍을 갖춘 방어주이나, 10Y 4.95% 신고점의 매파 레짐이 밸류에이션·레버리지를 정면으로 압박해 12개월 $129(+8.0%)의 제한적 상승에 그칠 전망.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">애널리스트 18인, 평균 목표가 $137.28·중앙값 $136.5·범위 $129~$147(투자의견 라벨은 data.json 상 'none'으로 미제공). 컨센서스 저점조차 현재가를 상회해 시장은 낙폭 이후 밸류 회복에 무게.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">컨센서스 대비 견해차는 목표가를 평균($137)보다 낮은 컨센 저점($129)에 맞춘 점 — 10Y 신고점·부채비율 162%의 차환 부담을 컨센서스보다 무겁게 반영해 멀티플 확장 여지를 보수적으로 제한.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull 반증: 9/16 FOMC 이후 금리 하락 전환 + 데이터센터 대형 전력공급 계약 확정 시 선행 19x·$136~138로 상향. Bear 반증: 10Y가 5%대로 추가 상승하거나 주요 rate case 부결·배당 성장 둔화 시 선행 16x·$111~115로 하향.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">9/16 FOMC 확인 전 분할·관망 + 배당 보유는 소량 진입 + 52주 저점 하회·펀더멘털 훼손 시 청산.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① 저베타·규제 독점의 방어 매력을 과소평가했을 수 있다 — 리스크오프(VIX 급등·F&G 공포)가 심화되면 유틸리티로의 방어적 자금 유입이 rate 압력을 상쇄할 수 있다. ② 컨센서스 18인이 저점 $129에서도 현재가를 상회로 보는데, 목표가를 컨센 저점에 맞춘 것이 과도하게 보수적일 수 있다. ③ 데이터센터 전력수요는 유틸리티 판매량 성장의 수십 년 정체를 깨뜨릴 수 있는 구조적 촉매로, 요금기반 성장 가속을 성장성 점수에 덜 반영했을 여지.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">중립 (56점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$119.42</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$93.1B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 18.0x / forward 16.7x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$113.90~$134.49</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">약 3.63% (data.json 값 정상 스케일 — 교정 불요)</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">16.7x (후행 18.0x)</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">약 11.1x</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">9.9% (규제 유틸리티 허용 ROE 수준)</div></div><div class="ki"><div class="kl">부채비율(D/E)</div><div class="kv">162% (자본집약 규제 유틸리티 구조)</div></div><div class="ki"><div class="kl">베타</div><div class="kv">0.36 (저변동 방어주)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$116.19</div><div class="dn" style="font-size:13px">-2.7%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$129.00</div><div class="up" style="font-size:13px">+8.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="66" y="30" width="199" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="66" y1="26" x2="66" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="66" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$116</text><line x1="116" y1="24" x2="116" y2="52" stroke="var(--text)" stroke-width="3"/><text x="116" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$119</text><line x1="265" y1="26" x2="265" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="265" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$129</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $114</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $134</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $1.61 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>듀크에너지는 미국 남동부(캐롤라이나·플로리다·인디애나 등)를 기반으로 하는 규제 전력 유틸리티로, 규제 독점에 따른 안정적 현금흐름과 약 3.63%의 견조한 배당이 핵심 매력이다. 후행 EPS 6.64달러·선행 PER 16.7x·ROE 9.9%로 규제 유틸리티 기준 정상 범위이며, 데이터센터·전기화에 따른 전력수요 확대가 요금기반(rate base) 성장의 구조적 순풍을 제공한다. 그러나 최대 역풍은 금리다. 10Y 국채금리가 4.95% 신고점까지 급등한 매파 레짐에서 유틸리티는 채권 프록시로서 상대 매력이 훼손되고, 총부채 922억 달러·부채비율 162%의 높은 레버리지가 이자비용·차환 부담을 키운다. 주가 $119.42는 50일선·200일선을 모두 하회하고 52주 밴드의 27% 지점에 머물러 모멘텀이 약하다. 12개월 펀더멘털 목표가를 $129(현재가 대비 +8.0%, 배당 포함 총수익 약 +11.6%)로 제시하며, 종합 56점·투자등급 '중립(Hold)'로 판단한다. 방어·배당 목적에는 유효하나, 9/16 FOMC 점도표와 금리 방향 확인 전까지 신규 대량 진입보다 분할·관망이 적절하다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,100.0 175.3,101.5 178.0,137.6 192.3,167.0 187.0,214.7 140.0,185.0 104.7,198.5 82.9,168.5 82.9,131.5 107.7,105.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="100.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="175.3" cy="101.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="178.0" cy="137.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="192.3" cy="167.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="187.0" cy="214.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="185.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="104.7" cy="198.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="82.9" cy="168.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="107.7" cy="105.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>5.0</td><td>/10</td></tr><tr><td>수익성</td><td>6.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>4.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>5.5</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>8.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>3.5</td><td>/10</td></tr><tr><td>산업매력도</td><td>6.0</td><td>/10</td></tr><tr><td>리스크</td><td>6.0</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>5.5</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 56/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v7</td><td>2026-08-14</td><td>72</td><td>매수</td><td>$135</td></tr><tr><td>v8</td><td>2026-08-24</td><td>63</td><td>중립</td><td>$135</td></tr><tr><td>v9</td><td>2026-09-04</td><td>63</td><td>중립</td><td>$128</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+0pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">넓음</span></h2><p>듀크에너지(Duke Energy Corporation)는 미국 최대급 규제 전력·가스 유틸리티 지주회사로, 캐롤라이나(노스·사우스)·플로리다·인디애나·오하이오·켄터키·테네시 등지에서 규제 territorial 독점 사업을 영위한다. 전력 발전·송배전(Electric Utilities & Infrastructure)과 천연가스 유통(Gas Utilities & Infrastructure)이 주력이며, 발전 포트폴리오는 원자력·천연가스·재생에너지로 전환 중이다. 시가총액 약 931억 달러, 발행주식 약 7.8억 주로 S&P500 유틸리티 섹터의 대표 종목이다. 규제 요금 결정(rate case)과 요금기반(rate base) 확대가 이익 성장의 핵심 메커니즘이며, 최근에는 남동부 지역 데이터센터·제조업 리쇼어링에 따른 전력수요 증가가 성장 서사의 중심에 있다.</p><h3>Moat 상세</h3><p>해자는 규제 독점 구조 그 자체에서 나온다. 첫째, 발전·송배전 인프라는 막대한 자본투자와 규제 인허가가 필요한 자연 독점 영역으로, 신규 진입이 사실상 불가능하다. 둘째, 각 주 규제기관과의 요금 결정 체계는 자본투자에 대한 허용 수익률(allowed ROE 약 10%)을 보장해 현금흐름의 예측 가능성이 매우 높다. 셋째, 전력은 필수재로 수요의 경기 민감도가 낮아 경기 침체기에도 매출이 방어된다. 71% 기관 보유·베타 0.36이 방어적 성격을 방증한다. 다만 유틸리티의 해자는 '수익성 상한'을 동반한다 — 규제 ROE가 상방을 제한해 초과이익이 어렵고, 자본조달(부채·증자)에 대한 금리 의존도가 커 매크로 금리 레짐이 밸류에이션의 결정적 변수가 된다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>분기 매출은 계절성(여름 냉방 수요 피크)을 반영한다: 2025-06 75.1억 → 2025-09 85.4억 → 2025-12 79.4억 → 2026-03 91.8억 달러. 희석 EPS는 2025-06 1.25 → 2025-09 1.81 → 2025-12 1.50 → 2026-03 1.97 → 2026-06 1.38달러로, 최근 4개 분기 합산 TTM EPS 약 6.66달러(후행 EPS 6.64와 정합). Q2 2026 EPS 1.38달러는 전년 동기 1.25달러 대비 +10.4%로, 연간 이익성장률 10.6%와 부합한다.<br><br>수익성은 규제 유틸리티 기준 양호하다 — 매출총이익률 52.0%·영업이익률 27.5%·순이익률 16.0%·ROE 9.9%. 반면 재무구조는 약점이다: 총부채 922억 달러·순부채 915억 달러·부채비율 162%로 자본집약 사업 특성상 레버리지가 높고, 대규모 설비투자(capex)로 잉여현금흐름이 -44.8억 달러(음수)다. 다만 영업현금흐름은 115.6억 달러로 견조해 배당·이자 지급의 원천 현금창출력은 확보돼 있다. 금리 상승기에는 이 높은 부채의 차환·신규 조달 비용이 이익에 직접적인 하방 압력으로 작용한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>밸류에이션은 규제 유틸리티 기준 대체로 '정상~소폭 저평가' 구간이다. 후행 PER 18.0x·선행 PER 16.7x·PBR 1.73x·EV/EBITDA 11.1x로, 유틸리티 섹터의 역사적 밴드(선행 16~19x) 하단부에 위치한다. 배당수익률 3.63%는 견조하나, 무위험 대체재인 10Y 국채가 4.95%까지 상승한 국면에서 상대 매력은 훼손된다.<br><br>목표가는 선행 EPS 7.17달러에 시나리오별 멀티플을 적용해 산출한다. (베이스) 데이터센터 전력수요가 요금기반 성장을 지지하되 고금리가 멀티플 확장을 제한 → 선행 18.0x 적용 → 약 $129. (강세) 9/16 FOMC 이후 금리 완화 기대 + 데이터센터 계약 가시화 → 19x → $136~138. (약세) 10Y 추가 상승·차환 부담 부각으로 멀티플 15.5~16x 압축 → $111~115(52주 저점권). 컨센서스 평균 목표가 $137.28(18인)은 선행 약 19.1x를 함의하는데, 현 매파·10Y 신고점 레짐에서는 다소 낙관적이라 판단해 베이스 목표가를 컨센서스 하단($129, 컨센 low와 동일)에 맞춰 보수적으로 확정한다. 현재가 대비 +8.0%, 배당 포함 총수익 약 +11.6%.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>모멘텀은 약세다. 주가 $119.42는 50일선 $124.17·200일선 $124.22를 모두 하회하며(역배열 근접), 52주 밴드(113.90~134.49)의 27% 지점에 위치해 하단부에 머문다. 이는 10Y 금리 급등에 따른 유틸리티 섹터 전반의 리레이팅 압력을 반영한다. 다만 공매도 비중은 유동주식의 2.44%·숏레이시오 3.75로 과도한 하방 베팅은 없고, 기관 보유 71.1%로 저변이 두텁다. 베타 0.36으로 지수 대비 변동성이 낮아 리스크오프 국면(VIX 17.84·F&G 33.3)에서는 상대적 방어력이 기대되나, 현 국면의 지배 변수는 금리이므로 방어 매력이 rate 리레이팅을 완전히 상쇄하지는 못한다. 컨센서스 목표가 저점($129)조차 현재가를 상회해, 애널리스트 저변은 낙폭 이후 밸류 매력을 인정하는 편이다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>성장 동력은 두 갈래다. (1) 요금기반(rate base) 확대: 노후 인프라 교체·송배전망 현대화·재생에너지 전환에 대한 대규모 capex가 규제 허용 수익률을 통해 이익으로 전환된다. (2) 전력수요 구조적 증가: 남동부(특히 캐롤라이나)는 미국 데이터센터·첨단 제조업의 신규 입지로 부상하며, AI 데이터센터의 전력 소비 급증이 유틸리티 판매량 성장의 오랜 정체(연 1% 매출성장)를 깨뜨릴 잠재적 촉매다. 규제 유틸리티는 이 수요를 요금기반 투자로 흡수해 EPS 성장률을 통상 5~7% 수준으로 끌어올릴 수 있다.<br><br>제약은 규제와 금리다. 요금 인상은 규제기관 승인이 필요해 즉각적이지 않고, 대규모 capex는 부채 조달에 의존하므로 고금리는 순현재가치와 이익률을 동시에 압박한다. 발전 전환(석탄 폐지·가스·원전·재생) 과정의 비용·정책 리스크도 상존한다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 금리 레짐이다. 10Y 4.95% 신고점 환경에서 유틸리티는 채권 프록시로서 밸류에이션 압박과 상대 매력 하락을 동시에 겪으며, 총부채 922억 달러·부채비율 162%의 높은 레버리지는 차환·신규 조달 비용 상승을 이익 감소로 직접 전이시킨다. 잉여현금흐름이 음수(-44.8억 달러)라 배당·capex를 위해 지속적 외부 조달이 필요한 구조도 금리 민감도를 키운다. 둘째, 규제 리스크 — 요금 결정(rate case)에서 허용 ROE·요금 인상이 기대에 못 미치면 이익 성장이 둔화된다. 셋째, 대형 capex 실행·발전 전환 비용, 허리케인 등 기상 재해에 따른 복구 비용이다. 반면 규제 독점·필수재·저베타(0.36)·안정 배당은 사업 리스크(부도·수요 붕괴)를 구조적으로 낮춰, '금리에 따른 가격 리스크는 크나 사업 리스크는 낮은' 방어주 특유의 구도를 형성한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">금리 상승·차환 부담(rate 리레이팅)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">규제 리스크(요금 결정·허용 ROE)</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">대규모 capex·음수 잉여현금흐름</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">발전 전환·기상 재해</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>금리 상승·차환 부담(rate 리레이팅)</strong> (발생: 높음, 영향: -13%)<br><span style="color:var(--sub);font-size:13px">10Y 4.95% 신고점 + 9/16 FOMC 매파 시나리오 시 유틸리티 멀티플이 선행 15.5~16x로 압축. 부채비율 162%의 이자·차환 비용 상승이 이익에 직접 전이되며 주가 $111~115(52주 저점권)로 되돌림.</span></div><div class="ri rl"><strong>규제 리스크(요금 결정·허용 ROE)</strong> (발생: 중간, 영향: -8%)<br><span style="color:var(--sub);font-size:13px">다수 주 규제기관의 rate case에서 요금 인상·허용 ROE(약 10%)가 기대를 하회하면 요금기반 성장의 이익 전환이 지연·훼손.</span></div><div class="ri rl"><strong>대규모 capex·음수 잉여현금흐름</strong> (발생: 중간, 영향: -7%)<br><span style="color:var(--sub);font-size:13px">FCF -44.8억 달러로 배당·설비투자를 위해 지속적 부채·증자 의존. 고금리에서 조달비용 상승 또는 배당 성장 둔화 우려.</span></div><div class="ri rl"><strong>발전 전환·기상 재해</strong> (발생: 낮음, 영향: -5%)<br><span style="color:var(--sub);font-size:13px">석탄 폐지·재생/원전 전환의 비용·정책 변동성, 허리케인 등 남동부 기상 재해에 따른 복구·정전 비용.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>방어·배당 목적에는 유효하나 현 금리 국면에서는 '관망 우위의 중립'으로 접근한다. 진입: 신규 대량 진입은 9/16 FOMC 점도표·금리 방향 확인 후로 유보하고, 배당 목적 장기 보유자는 현재가 $119 부근에서 소량 분할 매수. 52주 저점권($114) 접근 시 밸류·배당 매력이 강화되므로 추가 매수 관심 구간. 손절: 2ATR 기준 $116.19이나, 저베타(0.36)·저ATR(1.35%) 방어주 특성상 이 폭은 일상 변동에 쉽게 닿을 만큼 타이트하다 — 트레이딩 포지션이 아닌 배당 보유라면 52주 저점($113.90) 하회 또는 배당 삭감·규제 악재 등 펀더멘털 훼손을 청산 기준으로 삼는 편이 합리적. 목표: 12개월 $129(+8.0%), 배당 포함 총수익 약 +11.6%. 비중: 포트폴리오 방어·인컴 축으로 제한적 배분, 금리 하락 전환 시 비중 확대 여지.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>12M 목표가 밴드 <b>$111 ~ $138</b> (베이스 $129). 유틸리티는 금리에 대한 목표가 민감도가 높아, 밴드 폭은 주로 10Y 방향과 FOMC 결과에 좌우된다(약세 $111~115 / 기본 $129 / 강세 $136~138). 스코어 신뢰구간 <b>±5pt</b> (51~61) — 규제 독점·방어 품질은 견고하나 금리·모멘텀 변수로 중립↔매수 경계에 위치.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>선행 PER 18x의 멀티플 유지 가정 — 10Y가 5%대로 추가 상승하면 유틸리티 멀티플이 15.5~16x로 압축돼 목표가가 $111~115로 하락.</li><li>배당 성장·안정 지속 가정 — 음수 FCF·고금리 조달 부담이 지속되면 배당 성장률 둔화 우려가 밸류에이션 프리미엄을 훼손.</li><li>데이터센터 전력수요가 요금기반 성장으로 원활히 전환된다는 가정 — 규제 승인 지연·계약 불확실성 시 성장 서사의 실현이 지연.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v10 독립 재분석, 이전 버전·리포트·timeline 미참조. 데이터 yfinance 2026-09-11 종가 기준. 데이터 위생 노트: WebSearch 미바인딩으로 yfinance 단일 계열 데이터에 의존했으며, 목표가·시나리오는 data.json의 재무·컨센서스·이동평균과 일반 지식에 근거한 자체 산출. 배당수익률 필드(dividendYield_pct 3.63)는 연배당 약 4.28달러 기준 실제 수익률(약 3.6%)과 정합해 스케일 오류 없음(교정 불요). 부채비율(debtToEquity 162.155)은 백분율(약 162%)로 해석 — 총부채 922억 달러 구조와 정합. 컨센서스 목표가 평균 $137.28은 현재가와 극단 괴리가 아니어서 유효 참고치로 사용하되, 매파·10Y 신고점 레짐을 반영해 컨센 저점($129)에 목표가를 맞춤.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-13 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="DUK_DukeEnergy_20260913.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
