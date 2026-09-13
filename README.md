@@ -31,21 +31,25 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      7일 cutoff (KST 기준), 날짜 desc, reports/briefing/*.html 스캔.
 -->
 <!-- BEGIN AUTOGEN: recent-briefing -->
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260913.html) — 2026-09-13
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260912.html) — 2026-09-12
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260912.html) — 2026-09-12
+- [성과 리뷰 1M](https://stock-analyst-jungwon1.vercel.app/reports/briefing/performance_review_1m_20260912.html) — 2026-09-12
+- [내 포트폴리오](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260912.html) — 2026-09-12
+- [주간 리포트](https://stock-analyst-jungwon1.vercel.app/reports/briefing/weekly_20260912.html) — 2026-09-12
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260911.html) — 2026-09-11
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260911.html) — 2026-09-11
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260910.html) — 2026-09-10
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260910.html) — 2026-09-10
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260909.html) — 2026-09-09
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260909.html) — 2026-09-09
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260908.html) — 2026-09-08
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260908.html) — 2026-09-08
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260907.html) — 2026-09-07
+- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260907.html) — 2026-09-07
+- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260906.html) — 2026-09-06
+- [글로벌 인텔리전스](https://stock-analyst-jungwon1.vercel.app/reports/briefing/global_intelligence_20260906.html) — 2026-09-06
 - [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260906.html) — 2026-09-06
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260905.html) — 2026-09-05
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260905.html) — 2026-09-05
-- [성과 리뷰 1M](https://stock-analyst-jungwon1.vercel.app/reports/briefing/performance_review_1m_20260905.html) — 2026-09-05
-- [내 포트폴리오](https://stock-analyst-jungwon1.vercel.app/reports/briefing/user_portfolio_20260905.html) — 2026-09-05
-- [주간 리포트](https://stock-analyst-jungwon1.vercel.app/reports/briefing/weekly_20260905.html) — 2026-09-05
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260904.html) — 2026-09-04
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260904.html) — 2026-09-04
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260903.html) — 2026-09-03
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260903.html) — 2026-09-03
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260902.html) — 2026-09-02
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260902.html) — 2026-09-02
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260901.html) — 2026-09-01
-- [모닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/morning_20260901.html) — 2026-09-01
-- [이브닝 브리핑](https://stock-analyst-jungwon1.vercel.app/reports/briefing/evening_20260831.html) — 2026-08-31
 <!-- END AUTOGEN: recent-briefing -->
 
 ### 누적
@@ -57,7 +61,7 @@ ETF 6 (균형형 코어) → Tier 1 핵심 6 (NVDA/AAPL/MSFT/AVGO/JPM/LLY) → T
      데이터 소스: reports/*.html (직속) + reports/briefing/*.html + reports/analyst/items/ 디렉토리.
 -->
 <!-- BEGIN AUTOGEN: counts -->
-종목·ETF **172건** + 브리핑 **369건** + 애널리스트 **1489건** = 총 **2030건** (2026-09-06 기준)
+종목·ETF **152건** + 브리핑 **387건** + 애널리스트 **1577건** = 총 **2116건** (2026-09-13 기준)
 <!-- END AUTOGEN: counts -->
 
 ## 변경 이력
