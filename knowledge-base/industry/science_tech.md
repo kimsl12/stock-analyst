@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-06
-valid_until: 2026-10-06
+updated: 2026-09-13
+valid_until: 2026-10-13
 sector: science_tech
 sources:
   [
@@ -250,8 +250,8 @@ sources:
     Life Science Daily,
   ]
 confidence: high
-last_synced_from_db: 2026-09-06
-db_records: 1157
+last_synced_from_db: 2026-09-13
+db_records: 1170
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -331,6 +331,7 @@ db_records: 1157
 | **D-Wave Q2 2026 실적 = 예약 +1,120%** [8/9 신규] | **8/6 D-Wave H1 예약 $35.5M(+1,120% YoY)**·**H1 RPO $40.7M(+668% YoY)**·H1 QCaaS 생산매출 비중 **37.3%**. 어닐링→게이트모델 확장 지속, 현금 견조(5월 $588M) | 2026.08.06 | D-Wave 8-K / SEC |
 | **★ D-Wave Nature 논문 = dual-rail 2큐빗 게이트** [8/9 신규] | **8/5 Nature** — dual-rail **erasure qubit** 아키텍처 **2큐빗 얽힘 게이트** 최초 시연: 충실도 **~99.9%**·게이트타임 **~500ns**·하드웨어 **native 에러검출**. '가장 흔한 에러가 가장 정정 쉬운' **유리한 에러 계층구조가 2큐빗 연산서 보존** 입증 = 게이트모델 FTQC 하드웨어 오버헤드 대폭 절감. D-Wave의 **게이트모델 진입**(어닐링 외) 하드웨어 증거 | 2026.08.05 | thequantuminsider / D-Wave Newsroom / Nature |
 
+> **2026.09.13 갱신**: ★ **IonQ 9/8 NYSE Investor Day 개최 = 9/6 예고 이벤트 실현** — **Superion 로드맵 공개**(256큐빗 Superion 플랫폼, 고객 인도 2027, 수백→수천→수백만 큐빗 확장 설계) + **FY2026 매출 가이던스 $450~460M로 상향**(SkyWater 7/31~12/31 연결분 포함, 단독 $280~290M서 대폭 점프)=발표일 주가 **+12%**. SkyWater 수직통합 5대축(양자컴퓨팅·보안·센싱·네트워킹·반도체 파운드리)+집적광학·초전도 **전용 양자 파운드리 플랫폼**. 디지털서명 위협 **자원추정 논문**(FT 아키텍처로 256비트 ECC ~25.7일)+Congruity360 **$8.18M** 양자보안 계약. (프론티어 전문 갱신=토요 weekly-frontier 담당, 본 항목은 크로스커팅 헤드라인.)
 > **2026.09.06 갱신**: ★ **IonQ 9/8 NYSE Investor Day = 근접 최대 촉매** — SkyWater 통합 결합 가이던스 + 'Broad Quantum Advantage' 로드맵(800 논리큐빗 2027·2M 물리/80k 논리 2030) + 다년치 매출 목표 제시 관측(애널 44/52 Buy·중간 PT $65 +63.5%, FY26 가이던스 $280~290M). ★★ 과학 = **IBM+시카고대 8/29 양자우위 시연**(70 논리큐빗·2,415 논리 2큐빗 연산·468 T게이트, 논리 에러율 물리 대비 10x↓, 고전 난제 15분 해결). 상업 = **Quantinuum-Aramco 9/3 MoU**(에너지 FTQC)+앨버커키 $1.5M 집적광학 R&D, **D-Wave NTT DOCOMO 2번째 프로덕션 양자앱**·**IonQ-CMC 캐나다 FABrIC**. 주가 = 8월말 셀오프(D-Wave 8/26 CFO 은퇴 -8%·IonQ -3%, RGTI ~$16, 3사 52주고점 -60~76%·월간 -30%)=하이프사이클 디플레이션+리스크오프.
 > **2026.08.09 갱신**: ★ **양자주 Q2 2026 실적 3사 발표** — **IonQ 8/5 매출 $80.1M(+287% YoY, 컨센 22.4% 상회)=더블비트**, FY26 가이던스 **$260~270M→$280~290M 상향**, SkyWater $1.8B 인수 완료 재확인, 주가 종가 -4.29% $39.93(실적 앞두고 8/1 $32→$40 반등). **Rigetti 8/6 매출 $5.1M(+183% YoY)·GAAP 손실 $52.6M→AH -5.56%**($100M 연방 LOI·HPE·Pittsburgh Supercomputing). **D-Wave 8/6 H1 예약 $35.5M(+1,120%)·RPO $40.7M(+668%)**. ★★ 과학 = **D-Wave 8/5 Nature 논문**(dual-rail erasure qubit 2큐빗 게이트 ~99.9%·~500ns·native 에러검출, 유리한 error hierarchy 2큐빗서 보존→게이트모델 FTQC 오버헤드 절감)=D-Wave 게이트모델 진입 증거. 실적 전반 = 매출 급성장 지속 vs 손실/희석 우려 병존, IonQ만 가이던스 상향.
 > **2026.08.01 갱신**: 신규 discrete 이벤트 다수 — **IonQ, SkyWater $1.8B 인수 7/31 완료**(7/28 최종 규제승인, 풀스택 수직통합 양자 플랫폼·'해외 칩 의존 종식', 6월 FTC 2차요청 미결→완결). **AT&T-D-Wave 7/27 네트워크 운영 확대 계약**(어닐링 최적화 ~1시간→15초, agentic AI 레이어링, D-Wave +7% 섹터 견인). **IBM 7/23 HRL 연구소 인수**(실리콘 스핀 큐빗→Anderon 파운드리)+**HRL Nature 18큐빗 실리콘 스핀 QPU 자율구동**(4K, 극저온 CMOS, ~0.2% 에러). **IBM Nighthawk r2**(리셋 25x)+**DOE Genesis $50M**. **Benchmark 7/27 IonQ Buy $60 커버리지 개시**→IonQ +9%. ★펀더멘털 촉매 = **양자주 Q2 실적**(IonQ 8/5 컨센 매출 $66.58M ~+222% YoY·EPS -$0.54·옵션 19.55% 스윙, D-Wave/Rigetti 8/6). 주가 = IonQ ~$32(52주고점 -62%)·그룹 -60~76%, IonQ 20애널 평균 PT $73.88. **[양자통신] QED-C/CQN 로드맵**(10 유즈케이스 중 2개만 지원). **[PQC] FIPS 140-3 CMVP 병목**(검증 ~18개월→2027.01 게이트 미달 우려, 9/21 140-2 종료·기존 EO 프레임 재순환). **[양자센서] DARPA RoQS**(Q-CTRL $24.4M·Safran 관성항법). (주의: PQC 9/21·CNSA 2.0·HQC 표준화는 기존 발표건 재순환 — 신규는 CMVP 파이프라인 병목 각도.)
@@ -371,7 +372,9 @@ db_records: 1157
 | **Scribe Therapeutics 나스닥 IPO(SCTX)** [8/2 신규] | 유전자편집 스타트업 **Scribe Therapeutics 나스닥 IPO 신청(티커 SCTX)** = 심혈관대사질환 유전자의약, **Biogen·Sanofi·Lilly 협업** 보유. CRISPR 생태계 자본시장(IPO) 재개 신호 | 2026.07 | BioPharma Dive |
 | **★ FDA 8월 승인 확정(8/9 미확정 해소)** [8/23 갱신] | **Moderna mFLUSIVA(mRNA-1010) 계절독감 mRNA백신 8/5 승인**(성인 50~64 정식+65세 이상 가속). **Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(PDUFA 8/2→7/30 자문위 10:3 IGNYTE 인정→승인, 60일 내 출시). 8월말 PDUFA 잔여: **Ultragenyx DTX401 유전자치료(GSD Ia) 8/23·피하 lecanemab 개시용량 8/24·Gilead bictegravir/lenacapavir 단일정 8/27·ITM 177Lu-edotreotide GEP-NET 8/28** | 2026.08 | Entry to Regulatory / BiopharmaWatch / SEC 8-K / PharmaVoice |
 | **Amylyx avexitide Phase 3 충족 + 바이오 M&A 급증** [8/23 신규] | **Amylyx LUCIDITY(avexitide, 비만수술후 저혈당) 8/18 1차종점 충족 = Level2/3 저혈당 복합률 -55%**. 2026 바이오 M&A 급증 지속 = **Vertex-Crinetics $10B(7/6)·Actio Biosciences 선급 $820M·Scribe Therapeutics $129M IPO**(7월, 2026년 14번째 VC바이오 상장) | 2026.08 | BioSpace / STAT News / MedCity News / BioPharma Dive |
+| **Lilly-AtaiBeckley 사이키델릭 ~$3.8B + 9월 FDA PDUFA 밀집** [9/13 신규] | **Eli Lilly, AtaiBeckley $6.75/주 현금 인수(~$2.8B)+마일스톤 CVR 최대 $2.50/주(~$1.0B)=총 최대 ~$3.8B, 9월말 클로징 목표**(2026.07.16 발표). 리드 BPL-003(DMT계, 치료저항성 우울증 Phase 3)=사상 최대 사이키델릭 딜·Lilly 신경정신 진출. 9월 FDA 결정 = **UX111(MPS IIIA AAV9 유전자치료) PDUFA 9/19**·zilganersen(알렉산더병 안티센스)·levacetylleucine(A-T 우선심사) | 2026.09 | CNBC / BioPharma Dive / STAT News / BiopharmaWatch |
 
+> **2026.09.13 갱신**: 신규 대형 딜 = **Lilly-AtaiBeckley 사이키델릭 인수 ~$3.8B**(9월말 클로징 목표, 2026.07.16 발표, BPL-003 DMT계 치료저항성 우울증 Phase 3)=사상 최대 사이키델릭 M&A·Lilly 신경정신 진출. **9월 FDA PDUFA 밀집** = UX111(rebisufligene etisparvovec, MPS IIIA AAV9 유전자치료) 9/19(2025.07 CRL 후 재제출)·zilganersen(알렉산더병 안티센스)·levacetylleucine(모세혈관확장성 실조증 A-T 우선심사). (GLP-1·Intellia lonvo-z는 9/6 이후 신규 촉매 없음, 재확인.)
 > **2026.08.23 갱신**: ★ **8월 FDA 승인 확정** — 8/9 '결과 미확정'이던 **Moderna mFLUSIVA(mRNA-1010) 독감 mRNA백신 8/5 승인**(50~64 정식+65+ 가속)·**Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(7/30 자문위 10:3→승인, 60일 내 출시) 모두 해소. 8월말 PDUFA 잔여 밀집(Ultragenyx DTX401 8/23·피하 lecanemab 8/24·Gilead 단일정 8/27·ITM 177Lu 8/28). 임상 = **Amylyx avexitide Phase 3 -55% 저혈당** 충족. **바이오 M&A 급증 지속**(Vertex-Crinetics $10B·Actio $820M·Scribe $129M IPO). GLP-1 신규 대형딜 부재(Viking VK2735 인수후보 유지).
 > **2026.08.09 갱신**: 신규 확정 딜/임상 촉매 제한적 — **FDA 8월 결정 밀집**(Moderna mRNA-1010 독감백신 PDUFA 8/5·Replimune RP1 흑색종 8/2, 결과 미확정)이 근접 이벤트. GLP-1 신규 대형딜 부재(Viking VK2735 인수후보 유지). AstraZeneca-Algen·Scribe IPO(8/2 반영) 이후 신규 유전자편집 딜 없음.
 > **2026.08.02 갱신**: 신규 딜 2건 — **AstraZeneca-Algen Biotechnologies $555M AI 유전자편집 계약**(Algen=Doudna 버클리랩 스핀오프) = Lilly-Profluent/Verve에 이은 빅파마 AI 유전자편집 다변화. **Scribe Therapeutics 나스닥 IPO 신청(SCTX)**(심혈관대사 유전자의약, Biogen/Sanofi/Lilly 협업) = CRISPR 자본시장 재개 신호. (GLP-1·Intellia lonvo-z는 8/1 이후 신규 촉매 없음.)
@@ -719,9 +722,20 @@ db_records: 1157
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-09-06 갱신)
+### 16-C. 주간 과학기술 동향 (2026-09-13 갱신)
 
-> **2026-08-30~09-06 주간 통합 수집(web_search 14회, global-data 일요런).** 프론티어 전문 갱신은 토요일 weekly-frontier 담당(우주 9/5 반영). 아래 표 = 통합 뷰 크로스커팅 최신값.
+> **2026-09-06~09-13 주간 통합 수집(web_search 12회, global-data 일요런).** 프론티어 전문 갱신은 토요일 weekly-frontier 담당. 아래 표 = 통합 뷰 크로스커팅 최신값.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[양자]** | ★ **IonQ 9/8 Investor Day 실현** = **Superion 256큐빗 로드맵**(고객 인도 2027·→수천→수백만 큐빗)·**FY26 가이던스 $450~460M 상향**(SkyWater 연결, 단독 $280~290M서)·집적광학+초전도 전용 파운드리·디지털서명 위협 자원추정·Congruity360 $8.18M 보안계약·주가 +12% | 2026.09 | Quantum Insider / IonQ / Benzinga |
+| **[바이오]** | ★ **Lilly-AtaiBeckley 사이키델릭 ~$3.8B**(9월말 클로징 목표, BPL-003 DMT계 치료저항성 우울증 Phase 3)=사상 최대 사이키델릭 딜·Lilly 신경정신 진출. **9월 FDA PDUFA 밀집**(UX111 MPS IIIA AAV9 9/19·zilganersen 알렉산더병·levacetylleucine A-T) | 2026.09 | CNBC / BioPharma Dive / BiopharmaWatch |
+| **[기초물리]** | Carnegie Mellon **새 형태 홀효과**(수직 자기장 없이 발현, 통념 반박)·**기체 압력 유발 원자충돌 직접 관측**(9/10)·카고메 금속 **자발적 원자스케일 전류루프**(NQR/NMR 미시 증거)·변형유도 2D 위상결정절연체 bilayer SnTe | 2026.09 | ScienceDaily / Nature Physics / Nature Comms |
+| **[소재·핵융합]** | 신규 discrete 이벤트 제한적(전문=토요 weekly-frontier). 전고체 2026 산업화·CFS SPARC 2027 순에너지 경로 재확인 | 2026.09 | IDTechEx / FIA |
+
+#### (이전 주간) 2026-09-06 기록
+
+> 2026-08-30~09-06 주간 통합 수집(web_search 14회, global-data 일요런). 프론티어 전문 갱신은 토요일 weekly-frontier 담당(우주 9/5 반영). 아래 표 = 통합 뷰 크로스커팅 최신값.
 
 | 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
 | --- | --- | --- | --- |
@@ -767,7 +781,7 @@ db_records: 1157
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1157건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1170건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_

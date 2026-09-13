@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-06
-valid_until: 2026-10-06
+updated: 2026-09-13
+valid_until: 2026-10-13
 category: macro
 sources:
   [
@@ -288,6 +288,25 @@ sources:
     "techtarget(GLP-1 FDA 2026 CagriSema Oct)",
     "ionq.com(fault-tolerant blueprint)",
     "quantummarketcap(quantum roadmap 2026)",
+    "oracle.com(q1fy27 PR 9/10)",
+    "CNBC(Oracle Q1 FY27 9/10)",
+    "ERP Today(Oracle $664B RPO)",
+    "cryptobriefing(Oracle RPO)",
+    "investinglive(Oracle preview)",
+    "Broadcom IR(Q3 FY26 9/2)",
+    "CNBC(Broadcom Q3 9/2)",
+    "247wallst(Broadcom AI $16.7B)",
+    "Motley Fool(Broadcom 9/12)",
+    "networkworld(Samsung DDR5 +60%)",
+    "digitimes(DRAM Samsung Micron)",
+    "tech-insider(memory shortage 2030)",
+    "CNBC(Nvidia $105B OpenAI Ohio 8/17)",
+    "aifundingtracker(Nvidia AI bets)",
+    "tradingkey(Nvidia 2026 AI investments)",
+    "Starship Flight 14(Wikipedia)",
+    "keeptrack(Starship F14 orbital 9/2)",
+    "DigitalApplied(frontier Q3 2026)",
+    "llm-stats(Sept 2026 model updates)",
     "techcrunch(Waymo next-gen all riders 8/19)",
     "electrek(Waymo CPUC 18 counties 8/14)",
     "blog.robozaps(humanoid ranked 2026)",
@@ -328,7 +347,7 @@ sources:
     "quantummarketcap(quantum roadmap 2026)",
   ]
 confidence: high
-last_synced_from_db: 2026-09-06
+last_synced_from_db: 2026-09-13
 ---
 
 # 첨단 기술 브레이크스루 트래커 (Tech Breakthrough)
@@ -356,8 +375,14 @@ last_synced_from_db: 2026-09-06
 | **⑥ 양자 미중 지정학**            | 🧪 선점 경쟁      | **[6/21] 글로벌 양자시장 $3B(2028, QED-C, CAGR 30%)·일부 2030 $20.2B(CAGR 41.8%).** **미국 CHIPS법 $2.013B**(IBM $1B 양자웨이퍼·GlobalFoundries $375M·잔여 $538M 7개사, 정부 소수지분). **중국 ~$15B·15차5개년(2026-30) 양자 6대 미래산업 최상위·국가펀드 CNY 121.8B.** IonQ Q1 $64.7M(가이던스 +30%)·2026 $235M·DARPA HARQ·**[7/5] 2큐빗 게이트 충실도 99.99%+ 'four-nines' 최초 돌파.** **PQC: CNSA2.0 2027.01 양자안전 의무·Google 2029 전환·2035 양자취약 금지.**            | 내결함성 선점 = 암호·소재·신약 **비대칭 우위**. PQC 전환은 전 산업 사이버보안 필수과제(은행·통신 라이브 배포). 중국 특허 우위 vs 미국 생태계 우위의 구도. 단기 시장 규모는 아직 작음(투기적).   | IONQ IBM GOOG QBTS RGTI / QTUM              | QED-C 2026, thequantuminsider, fortunebusinessinsights, postquantum 교차 |
 | **⑦ 휴머노이드 '양산 원년'**      | 🏭 상용화 진입    | **[7/12] 2026 양산 원년·中 글로벌 90% 점유.** Unitree 2025 5,500대+ 출하(美 전체 합산 초과)·**2026 1만~2만대 목표·G1 $16,000**. **[7/26 정정] Tesla Q2(7/22) 어닝콜: Optimus 생산대수 여전 0 — 1세대 라인 설치 중·초기 로봇 훈련데이터 수집용(고객배치 아님)·Optimus Academy·초기양산 Q3·머스크 '테슬라 역사상 가장 어려운 양산'.** 직전 주간 100-150대(7월)→1,000대(9월 목표) 가이던스 미실현. 양산은 텍사스 팹 2027·공개가 $20-30K(2027말, 현 원가 $50-100K). Figure 03 BMW 40대 상용배치($25/시간)·BotQ 시간당 1대. ⚠️ 단위경제 핵심: 中공급 배제시 BOM 3배($46K→$131K) — 中공급망 지배가 지정학 변수. **[8/2 재확인] Optimus 여전 양산 미개시** — 프리몬트 생산 7월 중순까지 미시작(가이던스 7월말~8월)·공개판매/예약/대기자 無·소비자 2027말 최선~2028-29 컨센. Unitree 2026 2만대 목표(Tesla+Figure+Agility 합산 미달)·G1 아마존 $17,990·Q1 이익 반토막. Figure 03 BMW 40대($25/시간) 지속. 中 선행 vs 美 슬립 심화.            | 노동력 부족·인건비 상승이 수요 동인 → 제조·물류 생산성 혁명. **중국 공급망 지배(90%)가 지정학 변수**. 단위경제 $15-20K 도달이 변곡점. Tesla·Figure는 미국 측 베팅. 양산 일정 슬립 리스크 상존.  | TSLA 005380.KS / BOTZ ROBO                  | CNBC(6/3), GS via 36kr, IDC, Rest of World 교차                          |
 
-#### 📌 매크로 종합 코멘트 [9/6]
+#### 📌 매크로 종합 코멘트 [9/13]
 
+- **[9/13 신규] Oracle Q1 FY27 실적(9/10) — RPO 사상 최대 $664B, AI 백로그가 매크로 변곡점:** Oracle 회계 Q1 FY27(9/10 발표): 매출 $19.3B·클라우드 +62%($11.6B)·**OCI +121%**·멀티클라우드 DB 매출 +353%·**RPO $664B(+$209B YoY·전년 $455B서)**·**분기 중 신규 AI계약 $30B+ 체결(추가 자본조달 없이)**·non-GAAP EPS $1.92(컨센 $1.74)·주가 시간외 +4%. RPO의 50%+가 OpenAI(BofA)·FY26 FCF -$23.7B(대규모 capex 지속). 백로그 폭증이 'AI capex 슈퍼사이클 정점' 서사를 재점화 — 단 계약→실현매출 전환 + 음(-)의 FCF가 자금조달 리스크로 병존(신용 채널 테일리스크). [oracle.com(q1fy27 PR), CNBC(9/10), ERP Today, cryptobriefing, investinglive 교차]
+- **[9/13 신규] Broadcom Q3 FY26(9/2) — AI 반도체 +221%·커스텀 실리콘이 NVDA 의존도 변수화:** Broadcom Q3 FY26 매출 $29.6B(+86% YoY)·**AI 반도체 $16.7B(+221% YoY·+54% QoQ)**·Q4 AI 가이던스 $21.7B·FY26 AI ~$58B·**FY27 ~$115B·FY28 ~$230B 장기 전망.** OpenAI 커스텀 추론칩 Jalapeño + Meta MTIA 설계 파트너·Google·Anthropic·OpenAI·Meta 커밋 인용. 하이퍼스케일러 커스텀 ASIC 내재화 가속이 NVDA 단독 지배 구도의 구조적 변수로 부상(9/6 KB의 OpenAI-Broadcom 10GW 테마가 실적으로 확인). [Broadcom IR(Q3 FY26), CNBC(9/2), 247wallst, techtimes, Motley Fool(9/12) 교차]
+- **[9/13 신규] 메모리 슈퍼사이클 소비자 전이 심화 — 삼성 9월 DDR5 +60% 인상·SK '2030년+ 지속' 경고:** 삼성 32GB DDR5 모듈 가격 9월 $149→$239(+60%)·DDR5 계약가 YoY +100%+($7→$19.5/유닛)·DRAM 스팟 YoY ~+700%(Bloomberg). HBM 고마진 전환(HBM이 표준 DRAM 대비 웨이퍼 ~3배 소모)으로 범용 DRAM 캐파 축소·3사 2026 HBM 전량매진·**SK하이닉스 '부족 2030년+ 지속 가능' 경고**·마이크론 컨슈머 메모리 철수. AI capex의 범용 IT/PC/스마트폰 원가 인플레 전이가 실물화 — 다수 기관 '15년래 최악 메모리 부족' 판정. [networkworld(Samsung), digitimes, tech-insider(SK), SK hynix Newsroom, TrendForce 교차]
+- **[9/13 신규] 순환금융 심화 — Nvidia AI 지분베팅 ~$70B + IPO 직전 '마지막 사모투자' 신호:** Nvidia AI 스타트업 지분 누적 ~$70B(OpenAI $30B·Anthropic 최대 $10B·SSI $5B 등)·**OpenAI 오하이오 DC $105B 파이낸싱 백킹(8/17)**·자산운용사 6곳과 $500B DC 파이낸싱 플랫폼(8월). 젠슨 황(모건스탠리 TMT 컨퍼런스): OpenAI·Anthropic 대상 최근 투자가 양사 2026 IPO 전 '마지막 사모투자'일 것. Oracle 음(-)FCF·CoreWeave GPU담보 IG 편입과 결합해 'GPU 매입↔지분↔부채' 순환금융 구조가 신용 채널 테일리스크로 지속. [CNBC(8/17), Yahoo Finance, aifundingtracker, tradingkey 교차]
+- **[9/13 신규] 프론티어 모델 9월 초 릴리스 러시 지속(네이밍 트래커 상충·confidence medium):** 복수 트래커가 9월 초 72시간 내 4개 프론티어 릴리스 보도(Anthropic·Google·OpenAI·Meta) — 단 **구체 모델명이 저품질 소스간 심하게 상충**(Claude Fable/Opus 5·GPT-6/GPT-5.6·Gemini 3.8/3.5 불일치)해 명칭은 기록하지 않음. 확인 가능한 매크로 신호는 (1) Q3 2026이 연중 최대 프론티어 릴리스 창(DigitalApplied)·(2) 저가 추론 티어 경쟁 지속·(3) Google 추격 구도 고착. 실제 모델 라인업은 차기 교차검증 대기. [llm-stats, DigitalApplied, PromptZone; 네이밍 트래커 불일치 명시]
+- **[9/13 신규] SpaceX Starship Flight 14 첫 궤도비행 임박 — Starlink V3 상용 배치 시도:** SpaceX가 FAA 승인 대기 중 Flight 14를 **첫 궤도급 비행으로 신청**(NET ~9/15-18)·**Starlink V3 위성 ~20기 궤도 배치 시도**(각 다운링크 ~1Tbps·D2C 직접연결)·부스터 정적점화(9/2) 완료. 성공 시 저궤도 대용량·위성-스마트폰 직결 상용화의 변곡점(통신·우주 파생 축). 발사 시점은 규제·하드웨어 준비에 따라 유동적(미발사). [Starship Flight 14 Wikipedia, keeptrack(9/2), nextspaceflight, spacetv 교차]
 - **[9/6 신규] NVDA Q2 FY27 실적 확정(8/26) — DC 사상 최대·서프라이즈 + 하이퍼스케일러 capex 재상향:** NVDA Q2 FY27(8/26 발표) 매출 $96.22B·**DC $89.0B(+117% YoY·+18% QoQ·전사 92%)**·non-GAAP EPS $2.22·**Q3 가이던스 $108B±2%**(LSEG 컨센 $92.17B 대비 +4.4% 서프라이즈·YoY +106%) — 직전 KB의 '가이던스 $91B 프리뷰'가 실측으로 상향 확정. 하이퍼스케일러 2026 capex: top-5 ~$750B(+67% YoY·CreditSights 상향)·4대 ~$725B(+77%, 2025 $410B)·**2027 $1조+ 전망.** capex/매출 극단: Oracle 86%·Meta 54%·MSFT 47%·Alphabet 46%·Amazon 25%. **자체조달→외부조달 전환 심화(Alphabet 6월 $84.75B 주식발행·FactSet 증분부채/capex 급등).** [Webull, SEC 8-K, Investing.com, valueaddvc, Futurum, FactSet 교차]
 - **[9/6 신규] AI 신용 스트레스 구조화 — Oracle 정크급 CDS + GPU담보 IG 편입 템플릿:** Oracle Baa2 부정적·부채/자본 ~500%·정크급 CDS(정크 2노치 위)로 하이퍼스케일러 신용우려 주도. CoreWeave가 첫 IG등급 GPU담보 금융시설 클로징 — **신평사가 급속 감가하는 GPU 담보를 정식 신용 카테고리로 수용, 향후 발행 템플릿화.** 순환금융 ~$1.4조(OpenAI 계약지출→Oracle 부채·NVDA 지분→CoreWeave GPU 매입 루프). Moody's: 무전례 AI 지출이 AMZN·META·GOOGL 신용도 위협. 재무수익 부재 국면의 신용 채널 테일리스크 지속. [Quinn Emanuel, globaldatacenterhub, CNBC(Moody's), Tom Tunguz 교차]
 - **[9/6 신규] 프론티어 모델 Q3 릴리스 홍수 정점 — 9월 초 다수 GA(모델 네이밍 소스간 불일치):** DigitalApplied: Q3 2026이 연중 최대 프론티어 릴리스 창·8월 중순~9월 말 6주에 5개 후보 중 3개 집중. 9월 초 복수 트래커가 Anthropic·Google(Gemini GA로 추격 신호)·OpenAI·Meta 신규 프론티어 출시 보도. **단 구체 모델명은 저품질 소스간 상충(기존 KB의 Opus 5·GPT-5.6·Gemini 3.5 Pro 라인과 불일치) — confidence medium·차기 교차검증 대기.** OpenAI-Broadcom 커스텀 추론칩(Jalapeño 6월·9개월 테이프아웃)+커스텀 가속기 10GW(2H26~2029)로 하이퍼스케일러 실리콘 내재화가 NVDA 의존도 변수화. [DigitalApplied, llm-stats, DCD, OpenAI/Broadcom IR; 네이밍 트래커 불일치 명시]
