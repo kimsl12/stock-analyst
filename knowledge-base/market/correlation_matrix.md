@@ -1,17 +1,18 @@
 ---
-updated: 2026-09-14
-valid_until: 2026-09-21
+updated: 2026-09-15
+valid_until: 2026-09-22
 file: correlation_matrix
 category: market
-confidence: "medium-high (프리마켓 단계이나 ★6쌍 완전 재산출 수행 — 8/14 established 다주간 승계 해소[yfinance 90거래일 일별수익률 상관·established μ/σ 대비 Z]. WTI↔BEI만 FRED T10YIE 일별 미페치로 승계. 이전 회차 노트: 프리마켓 단계 — 미국 정규장 새 세션 재계산은 이번 회차도 보류[효율 우선 지시]. 6쌍 30D/90D Pearson r·Z-score는 2026-08-14 established 값을 3회째[8/17→8/18→8/20] 승계, 오늘 신규가[KOSPI·BTC·Gold·WTI·DXY·10Y·VIX]는 방향 정성만 CURRENT 비고에 반영. 8/18·8/19 미국 정규장은 실제 개장됐으나 본 회차 재계산 대상에서 제외 — 다음 정기(주간/모닝) 회차에서 8/14 이후 누적분 일괄 정밀 재계산 필요)"
-calculation_source: "★2026-08-21 완전 재산출(메인 스레드 폴백·yfinance 150일 history→공통 거래일 inner join→일별 pct_change 30D/90D Pearson r→established μ/σ 대비 Z). 5쌍 실측 갱신, WTI↔BEI만 승계(T10YIE 미페치). 직전 실측 재계산 2026-08-14 established."
-calculation_method: "각 레그 종가 시계열의 pct_change(일간 변동률) 산출 → 페어별 inner join(공통 거래일) 정렬 → tail(21)/tail(60)으로 30D/90D 윈도 구성 → Pearson r 계산 → Z=(r-μ)/σ(μ/σ는 각 페어 established 기준선, CURRENT 표 하단 각주 참조). [본 회차 미실행 — 값은 8/14 산출분 승계]"
-data_cutoff_note: "미국 레그[S&P500·NASDAQ·10Y·BEI·VIX] inner join 공통 거래일 마지막 = 2026-08-14(금) 고정 — 8/15(주말)·8/17(휴장)·8/18·8/19 정규장 미반영(승계 지속). 한국·크립토·상품·DXY 레그는 오늘(8/20) 프리마켓·아시아 마감 신규가를 CURRENT 비고에 방향 정성으로만 기록, 상관계수 수치 자체는 불변."
+confidence: "medium-high (이브닝 프리마켓 단계·★6쌍 전량 신규 실측 재산출 — yfinance Ticker.history(9mo)+FRED fredgraph.csv(T10YIE) 직접 페치→공통거래일 inner join→일별 pct_change→tail(21)/tail(60) Pearson r→established μ/σ 대비 Z. 미국 레그[S&P·NASDAQ·10Y·VIX] 공통거래일 마지막=9/14(월, 오늘 밤 22:30 cash 개장 前) — 한국(KOSPI)·원화(USDKRW)·크립토(BTC)·상품(Gold·WTI)·DXY 레그는 9/15(화) 오늘자 확정치 반영(한국 정규장 마감). BEI(FRED T10YIE)는 9/14 최신치 승계(9/15 미갱신, FRED 통상 1일 지연). ⚠️ yfinance ^KS11·KRW=X 타임스탬프가 실거래일보다 1일 선행 표기되는 구조적 오프셋 발견 — +1일 보정 적용(보정 후 9/14 KOSPI 6,684.37·USDKRW 1,344.64로 orchestrator 확정치와 정합 확인). ★핵심 발견: WTI↔BEI 90D +2.13σ 🔴 신규 진입 — HV4(유가 리스크 프리미엄, 현 폐기) 재활성 2조건[WTI $95+ 5거래일 고착 AND WTI↔BEI +2σ]이 잠정 동시 충족(WTI 9/9~9/15 5거래일 연속 $95+, BEI +2.13σ) → 주간 재심사 상신 필요)"
+calculation_source: "★2026-09-15 전량 신규 실측 재산출(correlation-monitor 직접 — yfinance+FRED 공공 CSV 직접 페치, 웹서치 아님). 6쌍 전부 갱신, 승계 없음(WTI↔BEI의 BEI 성분만 9/14 최신치, 상관계수 자체는 9/15 WTI 반영한 신규 계산)."
+calculation_method: "각 레그 종가 시계열 pct_change(일간 변동률) 산출 → 페어별 공통거래일 inner join(교집합) → tail(21)/tail(60)으로 30D/90D 윈도 구성 → Pearson r 계산 → Z=(r-μ)/σ(μ/σ는 established 기준선, CURRENT 표 하단 각주). KOSPI·USDKRW는 +1일 날짜보정 적용."
+data_cutoff_note: "미국 레그 공통거래일 마지막=2026-09-14(월, 오늘 밤 cash 개장 前) — VIX 9/15 라벨(17.14)은 실시간 프록시로 상관계산에서 자동 제외(공통거래일 교집합상 9/14 17.10만 사용). 한국·크립토·상품·DXY 레그=2026-09-15(화) 확정 반영. BEI(FRED)=9/14 최신치(9/15 미갱신)."
 sources:
-  - "본 파일 ARCHIVE(2026-08-18 화요일 이브닝) — 8/14 established 값 승계분(Δ 비교 기준)"
-  - "analysis/briefing/correlation_20260819.md — 전일(8/19) 정성 반영 패턴 계승"
-  - "orchestrator(briefing-lead) 제공 확정 데이터 — 2026-08-20 이브닝(미국 D-1 8/19 종가 확정 + 오늘 아시아 마감 + 미 프리마켓 ET 07시)"
-  - "knowledge-base/market/house_view.md — v10(2026-08-15 9차 전면 재심사), HV1~HV6 매핑"
+  - "yfinance Ticker.history(period=9mo) 직접 페치 — ^GSPC·^IXIC·^TNX·^VIX·BTC-USD·GC=F·DX-Y.NYB·CL=F·KRW=X·^KS11"
+  - "FRED(fredgraph.csv, T10YIE) 직접 페치 — 10Y 기대인플레(BEI), 9/14 최신치"
+  - "본 파일 ARCHIVE(2026-09-14 월요일 이브닝) — Δ 비교 기준 + established μ/σ 기준선"
+  - "orchestrator(briefing-lead) 제공 확정 데이터 — 2026-09-15 이브닝(D-1 9/14 종가 참고셋)"
+  - "knowledge-base/market/house_view.md — v12(2026-09-12 13차 전면 재심사), HV1~HV6 매핑"
 ---
 
 # 자산 상관관계 매트릭스 (Correlation Matrix)
@@ -22,7 +23,26 @@ sources:
 
 ---
 
-## CURRENT (2026-09-14 월요일 이브닝 — ★**6쌍 직접 재산출**(US 레그 공통거래일 9/11 컷·오늘 cash 밤 개장 前 / 한국·크립토·상품·DXY 9/14) / **🔴 1건 / 🟡 5건 / 🟢 0건**[NASDAQ↔BTC 90D −2.69σ🔴 재격상·USD/KRW↔KOSPI 30D −1.09σ🟡 심화·S&P500↔10Y 90D −1.00σ🟡 재긴장·Gold↔DXY −1.37σ🟡·WTI↔BEI +1.64σ🟡 승계·VIX↔S&P500 90D +1.34σ🟡] — 직전 9/9 🔴0/🟡4/🟢2 대비 ★NASDAQ↔BTC 🟡→🔴 재격상 + USD/KRW↔KOSPI·S&P500↔10Y 🟢→🟡 재긴장으로 경계 재가중)
+## CURRENT (2026-09-15 화요일 이브닝 — ★**6쌍 전량 신규 실측 재산출**[yfinance 9개월 history+FRED T10YIE 직접 페치, 미국 레그 공통거래일 9/14(월) 컷·오늘 밤 cash 개장 前 / 한국·크립토·상품·DXY 9/15(화) 확정] / **🔴 2건 / 🟡 3건 / 🟢 1건**[WTI↔BEI 90D +2.13σ🔴 ★신규 진입(HV4 재활성 2조건 잠정 동시충족)·NASDAQ↔BTC 90D −2.60σ🔴 유지(HV6)·USD/KRW↔KOSPI 30D −1.01σ🟡·Gold↔DXY 30D −1.41σ🟡·VIX↔S&P500 90D +1.51σ🟡·S&P500↔10Y 🟢 ★정상화(−1.00σ→−0.93σ)] — 직전 9/14 🔴1/🟡5/🟢0 대비 ★WTI↔BEI 🟡→🔴 신규 진입 + S&P500↔10Y 🟡→🟢 완화로 재편)
+
+> 작성: correlation-monitor mode=full (이브닝 슬롯, B-4/B-5). 데이터 컷오프: 미국 레그(VIX·S&P·NASDAQ·10Y) 공통거래일 마지막=9/14(월, 오늘 밤 22:30 cash 개장 前, S&P 7,619.98·NASDAQ 26,186.41·10Y 4.961%·VIX 17.10) + 한국·크립토·상품·DXY 레그=9/15(화) 확정(KOSPI 6,627.26[−0.85%]·USD/KRW 1,359.88[+1.13%, 원화 추가 약세]·BTC $77,171.83[−1.27%]·Gold $4,321.30[−0.70%]·WTI $102.54[+1.13%]·DXY 99.63[+0.17%]) + BEI(FRED T10YIE) 9/14 최신치 2.37% 승계(9/15 미갱신). yfinance Ticker.history(9mo)+FRED CSV 직접 페치→공통거래일 inner join→일별 pct_change→tail(21)/tail(60) Pearson r→established μ/σ 대비 Z. 상세는 analysis/briefing/correlation_20260915.md 참조.
+>
+> **금일 헤드라인**: ① ★★**WTI↔BEI 90D +1.64σ(승계)→+2.13σ🔴 신규 진입** — WTI $95+ 5거래일 연속 고착(9/9·9/10·9/11·9/14·9/15) + BEI 2.37%로 리플레이션 커플링이 이상권 진입. **HV4(유가 리스크 프리미엄, 현 폐기) 재활성 2조건[WTI $95+ 5일 고착 AND WTI↔BEI +2σ]이 잠정 동시 충족** — 주간 재심사 상신 필요(HV1 인플레 끈적 보강 동반). ② **NASDAQ↔BTC 90D −2.69σ→−2.60σ🔴 유지**(소폭 완화이나 이상권 잔존, BTC −1.27%로 탈동조 방향 유지, HV6). ③ **USD/KRW↔KOSPI 30D −1.09σ→−1.01σ🟡 유지**(KOSPI −0.85%+원화 −1.13% 동시 약세 — 어제와 달리 오늘은 정상방향 co-movement 심화, 환충격보단 반도체+원화 동반 압력). ④ **Gold↔DXY 30D −1.37σ→−1.41σ🟡 유지**(금 −0.70%+DXY +0.17% 정상 역상관 지속, HV5 유효 지지). ⑤ **VIX↔S&P500 90D +1.34σ→+1.51σ🟡 유지**(소폭 심화, 옵션시장 랠리 질 경계 지속). ⑥ ★**S&P500↔10Y 90D −1.00σ🟡→−0.93σ🟢 정상화**(금리민감도 경계선 이탈, HV2 완화 방향).
+
+| #   | 페어              | r30    | Z30       | r90    | Z90       | Alert   | 비고(9/15 신규 실측)                                              |
+| --- | ----------------- | ------ | --------- | ------ | --------- | ------- | ----------------------------------------------------------------- |
+| 1   | **VIX↔S&P500**    | −0.906 | −0.54σ 🟢 | −0.792 | +1.51σ 🟡 | 🟡(90D) | 30D 정상·90D 이탈 심화(9/14 +1.34σ→+1.51σ)·랠리 질 경계 지속      |
+| 2   | **NASDAQ↔BTC**    | +0.316 | −0.57σ 🟢 | +0.230 | −2.60σ 🔴 | 🔴(90D) | 탈동조 소폭 완화(−2.69→−2.60σ)이나 🔴 이상권 잔존·HV6 유지        |
+| 3   | **USD/KRW↔KOSPI** | −0.513 | −1.01σ 🟡 | −0.387 | −0.65σ 🟢 | 🟡(30D) | 역상관 소폭 완화(−1.09→−1.01σ)·KOSPI −0.85%+원화 −1.13% 동반 약세 |
+| 4   | **S&P500↔10Y**    | −0.369 | −0.77σ 🟢 | −0.279 | −0.93σ 🟢 | 🟢      | ★정상화(90D −1.00σ🟡→−0.93σ🟢)·금리민감도 경계선 이탈·HV2 완화    |
+| 5   | **Gold↔DXY**      | −0.742 | −1.41σ 🟡 | −0.535 | −0.90σ 🟢 | 🟡(30D) | 역상관 소폭 심화(−1.37→−1.41σ)·금 −0.70%+DXY +0.17% 정상 역상관   |
+| 6   | **WTI↔BEI**       | +0.682 | +1.22σ 🟡 | +0.724 | +2.13σ 🔴 | 🔴(90D) | ★신규 🔴 진입(승계 +1.64σ→신규실측 +2.13σ)·WTI $95+ 5일 고착·HV4  |
+
+> established μ/σ 기준선: VIX↔S&P500(μ90=−0.849·σ90=0.038·μ30=−0.833·σ30=0.136) / NASDAQ↔BTC(μ90=+0.469·σ90=0.092·μ30=+0.435·σ30=0.207) / WTI↔BEI(μ90=+0.443·σ90=0.132·μ30=+0.442·σ30=0.197) / USD/KRW↔KOSPI(μ90=−0.225·σ90=0.250·μ30=−0.198·σ30=0.311) / S&P500↔10Y(μ90=−0.020·σ90=0.279·μ30=−0.069·σ30=0.387) / Gold↔DXY(μ90=−0.359·σ90=0.194·μ30=−0.359·σ30=0.272). N: 30D=21거래일, 90D=60거래일(공통거래일 교집합 기준).
+
+---
+
+## ARCHIVE (2026-09-14 월요일 이브닝 — ★**6쌍 직접 재산출**(US 레그 공통거래일 9/11 컷·오늘 cash 밤 개장 前 / 한국·크립토·상품·DXY 9/14) / **🔴 1건 / 🟡 5건 / 🟢 0건**[NASDAQ↔BTC 90D −2.69σ🔴 재격상·USD/KRW↔KOSPI 30D −1.09σ🟡 심화·S&P500↔10Y 90D −1.00σ🟡 재긴장·Gold↔DXY −1.37σ🟡·WTI↔BEI +1.64σ🟡 승계·VIX↔S&P500 90D +1.34σ🟡] — 직전 9/9 🔴0/🟡4/🟢2 대비 ★NASDAQ↔BTC 🟡→🔴 재격상 + USD/KRW↔KOSPI·S&P500↔10Y 🟢→🟡 재긴장으로 경계 재가중)
 
 > 작성: 메인 스레드 직접 재산출 (스케줄 이브닝 슬롯 — correlation-monitor 원장 8/14 stale·maxTurns 폴백 / briefing-lead Task 위임 갭 회피). 데이터 컷오프: 미국 레그(VIX·S&P·NASDAQ·10Y) 공통거래일 마지막 = 9/11(금)(오늘 9/14 cash 밤 22:30 개장 前) + 한국·크립토·상품·DXY 레그 = 9/14(월) 확정. yfinance 150거래일 history→페어별 inner join→일별 pct_change→tail(21)/tail(60) 30D/90D Pearson r→9/9 established μ/σ 대비 Z. WTI↔BEI만 FRED T10YIE 미페치로 9/9 승계. 상세는 analysis/briefing/lead_evening_20260914.md B-5 참조.
 >
