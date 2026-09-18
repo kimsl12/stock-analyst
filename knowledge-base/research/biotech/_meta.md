@@ -1,12 +1,12 @@
 ---
 sector: biotech
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-09-19
 status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
-l1_index_count: 16
+l1_index_count: 17
 l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 4
@@ -47,7 +47,7 @@ deep_dive_priority: 4
 - 학술: 2
 - 씽크탱크: 0
 - 컨퍼런스: 1
-- 규제: 4
+- 규제: 5
 
 ## L2 월간 요약 목록
 

@@ -1,14 +1,14 @@
 ---
 sector: macro
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-09-19
 status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
   - knowledge-base/macro/us_monetary_policy.md
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
-l1_index_count: 23
+l1_index_count: 32
 l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 3
@@ -51,7 +51,7 @@ deep_dive_priority: 3
 - 학술: 2
 - 씽크탱크: 2
 - 컨퍼런스: 0
-- 규제: 6
+- 규제: 9
 
 ## L2 월간 요약 목록
 

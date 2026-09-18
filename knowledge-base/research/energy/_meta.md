@@ -1,12 +1,12 @@
 ---
 sector: energy
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-09-19
 status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
-l1_index_count: 19
+l1_index_count: 22
 l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 2
@@ -45,7 +45,7 @@ deep_dive_priority: 2
 ## L1 인덱스 카운트
 
 - 학술: 0
-- 씽크탱크/백서: 4
+- 씽크탱크/백서: 5
 - 컨퍼런스: 0
 - 규제: 4
 

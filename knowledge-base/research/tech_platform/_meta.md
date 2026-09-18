@@ -1,12 +1,12 @@
 ---
 sector: tech_platform
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-09-19
 status: active
 related_industry_kb:
   - knowledge-base/industry/ai.md
   - knowledge-base/industry/tech_breakthrough.md
-l1_index_count: 6
+l1_index_count: 9
 l2_summary_count: 3
 l3_deep_dive_count: 0
 deep_dive_priority: 7
@@ -63,7 +63,7 @@ deep_dive_priority: 7
 
 - 학술: 0
 - 씽크탱크: 0
-- 컨퍼런스: 0
+- 컨퍼런스: 1
 - 규제: 2
 
 ## L2 월간 요약 목록 (최신 → 과거)
