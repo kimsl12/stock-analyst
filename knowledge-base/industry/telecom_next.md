@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-12
-valid_until: 2026-10-12
+updated: 2026-09-19
+valid_until: 2026-10-19
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -172,14 +172,33 @@ sources:
   - Gizbot
   - Robinhood
   - Investing.com
+  - Berenberg Bank
+  - TechAfrica News
+  - HighSpeedInternet.com
+  - TBR
+  - 5G Americas
+  - nextspaceflight
+  - telecomstechnews
+  - stockanalysis.com
+  - 딜라이언
+  - 서플
 confidence: high
-last_synced_from_db: 2026-09-12
+last_synced_from_db: 2026-09-19
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.09.19 핵심 변화 요약 (9/12 이후 델타)**:
+>
+> 1. **★6G RAN#113 마드리드(9/14~17) 개최·종료(9/12 'D-2 미개최'서 진전)이나 공식 결정문·사후분석 9/19 미발행 + FR3 'golden band'(7.125~8.4GHz) 서사 강화 + Qualcomm Snapdragon Summit 9/22~24 D-3 임박** -- **3GPP TSG RAN#113이 예정대로 마드리드서 개최·9/17 종료 -- Option 1(6G-anchored DC with NR) vs Option 3(dual stack) 최종 가지치기·RAN1 예비 MRSS(Multi-RAT Spectrum Sharing) 성능평가 9월 데드라인이 핵심 의제(6월 RAN#112서 Younsun Kim 의장 '결정 불가'로 이월). ★단 9/19 기준 6G Futures/Ericsson 사후분석·공식 결정문 아직 미발행(플레너리 직후, 통상 1주 소요). NGMN 9/8 '5G 복잡성 반복 경계·단순화 우선(MRSS 베이스라인 유지+효율·구현타당성·HW요건·TCO 근거 필요)' 재촉구. 레거시 공존(E-UTRAN idle/connected inter-RAT·NB-IoT·eMTC) 대부분 수용. ★FR3=6G 'Goldilocks 스펙트럼'(7.125~24.25GHz), 그 중 7~15GHz 최적 'golden range'·7.125~8.400GHz만 글로벌 하모나이즈로 '6G 골든밴드'(정부·위성 인컴번트 공존이 규제이슈). ★Snapdragon Summit 마우이 9/22~24: 'Dual 8 Elites'(8 Elite Gen 6 + Gen 6 Pro) 티저, Pro=X105 모뎀·LPDDR6·UFS 5.0·Adreno 850(GMEM 18MB)·피크 5GHz(스마트폰 최초)·HPB 냉각. Rel-21 6G 규격 2027.03~2028말** [6G Futures RAN#113 Sep 14-17 pruning MRSS, IEEE ComSoc/Ericsson RAN#112 no decision Younsun Kim, Telecom Reseller 9/8 NGMN simpler migration, TBR/5G Americas FR3 golden band Goldilocks, GSMArena/Gizmochina Snapdragon Summit 9/22-24 X105]
+> 2. **★D2C 위성 -- SPCX 9/18 ~$152.71로 $150선 상회 유지·차기 대형 락업 9/24(최대 3.284억주) 임박 + ASTS Berenberg 신규 Buy $92에 +11% + Starlink 11,126기·Amazon Leo 375기+·Vulcan LV-01 9월** -- **SPCX(SpaceX) 9/18 종가 약 $152.71(52주 $104.83~$225.64·생애최고 대비 -34%)로 9/11 KB(~$148) 위 $150선 유지. ★차기 락업 9/24 D-5 -- 최대 3.284억주 언락(9/10 언락 후 퍼블릭 플로트 4~5%->약 17%, 9/9 언락일 -3.9% 동반, 과거 패턴상 매도압력 가능하나 확정 하락 아님·장기는 실적이 좌우 -- Motley Fool 9/15). 메인 180일 락업 12/8 만료·Starlink 가입자 1,200만(Q2·YoY 2배·QoQ +17%). ★AST SpaceMobile(ASTS): 컨센 14애널 평균 $79.61(Hold, 레인지 $42.5~$108, 9/12 중앙값 $83서 소폭 조정) -- ★Berenberg Bank 신규 커버리지 개시 Buy·목표 $92에 주가 수요일 +11% 급등(신규 촉매). BB11/12/13 8/5 안착·차기 BB14/15/16·2027초 약 45기·FY2026 매출 $150~200M. ★저궤도: Starlink 9/18 궤도 약 11,126기(9/17 11,127기·가동 11,112기)로 9/11(11,133) 소폭 감소(재진입 상쇄)·전세계 추적 16,500기+ 최대, Amazon Leo(구 Kuiper) 375기+(Atlas V 성공), ★Vulcan Centaur LV-01(VC6L·Cape Canaveral SLC-41) 2026.09 예정 40기(일부 45기)·38개 Vulcan 발사 첫 번째·LEO최적 Centaur V 첫 사용·美 우주군 인증비행 겸용. T-Satellite 완전 음성/데이터는 Starlink V2(Starship 2027·약 1,200기)에 연동** [CNN/Investing.com SPCX 9/18 $152.71, Motley Fool 9/15 9/24 unlock 328.4M shares, CNBC Starlink 12M subs, stockanalysis.com ASTS $79.61 Berenberg Buy $92 +11%, KeepTrack/HighSpeedInternet Starlink 11126 9/18, aboutamazon Leo 375+, nextspaceflight Vulcan VC6L LV-01]
+> 3. **★AI-RAN Nokia 모멘텀 추가 가속(9/16, D-3) -- 8개 운영사 확대(A1·Chunghwa·du·e&·Mobily·stc·TPG·Zain)로 Nokia +6%·실측 스펙트럼효율 20%+ 재확인 vs Ericsson GPU-free 노선 확대(Far EasTone·Virgin Media O2)** -- **★Nokia AI-RAN 프로그램 8개 운영사 추가(A1 Group·Chunghwa Telecom·du·e&·Mobily·stc·TPG Telecom·Zain Saudi) -- PoC·랩평가·라이브망 트라이얼 진입(NVIDIA 가속컴퓨팅·4개 지역), 기존 로스터(T-Mobile·Indosat·BT·Elisa·DOCOMO·Vodafone) 위 신규. ★Nokia 주가 9/16 +6%(NVIDIA·Ericsson 보합). Nokia 실측 스펙트럼효율 20%+ 재확인(테스트조건·운영사별 세부 비공개)·2027/2028 추가 SW 게인, anyRAN+NVIDIA Aerial RAN Computer·파일럿 2026말·상용 2027·2028 용량 2배. ★Ericsson 반대노선 확대=구독형 'AI in RAN'(2026.06 상용) 15개+ 라이브(SoftBank·Bell·SK텔레콤·Rogers)에 Far EasTone·Virgin Media O2 신규, GPU 없이 다운링크 ~20%↑·스펙트럼효율 ~10%↑. Samsung CPU-first 하드웨어 불가지론 유지. AI-RAN Alliance 130~140개+. ★한국: 과기정통부 2026 신규사업 AI-RAN·초고속초저지연망·AIDC간 연결망 예산 배정, 3사 축=SKT(AI-RAN+6G)·KT(AI엣지+해저케이블+저궤도위성, 공공주도 위성 마중물 요청)·LGU+(5G SA+AI 자율운영망), 정부-3사 'AI 통신망 투자' 민관협의체 연내 종합대책** [GlobeNewswire/ConvergeDigest/TechAfrica 9/16 Nokia AI-RAN 8 operators, 247WallSt 9/16 Nokia +6%, telecomstechnews 20% spectral efficiency, TechTimes Ericsson AI in RAN Far EasTone Virgin Media O2, 한국경제/딜라이언/서플 과기정통부 2026 AI-RAN 예산 통신3사]
+> 4. **★광통신 -- 9/12 대비 확정 신규 데이터 제한적, YTD 리더십 순위 유지(AAOI +203% > LITE +139% > COHR +53%)·AAOI 생산능력 가이던스(연말 월 93만개+·수요 2027중반까지 초과)나 8월말 유상증자로 -18%(1M) + FCC 여전 초안** -- **247WallSt 9/7 순위 유지(광학주 SOX ETF +73%·S&P +13% 압도). ★신규=AAOI(Applied Optoelectronics) CEO Thompson Lin '수요가 생산능력을 2027 중반까지 상회' 발언·연말 800G+1.6T 월 93만개+ 생산능력 목표, 단 8월말 대규모 유상증자(equity offering)로 랠리 중단·최근 1개월 -18%(YTD 우위는 유지). Lumentum Q1 FY2027 가이던스 중간값 $1.25B로 목표 영업모델 1분기+ 조기 달성, Coherent는 산업부문 희석으로 DC 익스포저 완충. AI 클러스터 광학 2026E $26B. ★FCC 중국산 광트랜시버 금지: 9월에도 여전히 초안(연내 발표·적용 희망하나 수정·철회 가능·공식 NPRM 표결/도켓 미확인), 신규모델 대상, 중국 800G 세계 약 60%·Innolight 27%, 발효 시 AI DC 광공급 최대 60% 차단·서방 대체품도 중국 인듐(InP) 의존(상호의존). [주의: 247WallSt/Yahoo/AOL 신디케이트 절대주가(예 6월 기사 AAOI $190·+439% 등)는 시점 혼재·괴리 커 신뢰 불가 -- YTD 방향성·순위만 유효]** [247WallSt 9/7 AAOI +203% LITE +139% COHR +53%, Yahoo AAOI 930k/month mid-2027 equity offering -18%, Lumentum Q1 FY2027 $1.25B, Cignal AI/Caixin/RANE FCC still draft no NPRM, TechTimes 60% cut Chinese InP]
+>
+> **(이전 갱신 -- 9/12 핵심 요약, 참고용)**:
+>
 > **2026.09.12 핵심 변화 요약 (9/5 이후 델타)**:
 >
 > 1. **★6G RAN#113 마드리드(9/14~17) D-2 개최 임박(9/12 미개최)·이번주 초점 이동=FR3 'golden band' WRC-27 정렬 + Qualcomm Snapdragon Summit 9/22~24** -- **3GPP TSG RAN#113(마드리드 9/14~17)이 Option 1 vs 3·MRSS 최종결정 순간이나 9/12 기준 아직 미개최(결과 미발표). ★이번주 신규 델타=FR3 upper mid-band 'golden band'(7.125~8.4GHz, 7-8GHz대) WRC-27 IMT 지정으로 crystallize -- 규제당국 upper mid-band 확보로 정렬, WRC-27 신규 후보대역 4.4~4.8/7.125~8.4/14.8~15.35GHz(추가연구). FR3는 커버리지-용량 균형·글로벌 하모나이제이션 잠재로 '골든밴드'. Rohde & Schwarz+Qualcomm MWC서 FR1-FR3 carrier aggregation 실증, SoftBank+Nokia 도쿄 7GHz 옥외 트라이얼(일본 최초 6G), T-Mobile은 Ericsson 6G 프로토타입 테스트. ★Qualcomm Snapdragon Summit 마우이 9/22~24 확정 -- X105 모뎀(DL 14.8Gbps·UL 4.2Gbps·5G위성·NB-IoT폴백·전력 30%↓·SDR885)·Snapdragon 8 Elite Gen 6 Pro(TSMC 2nm)·Galaxy S27 Ultra/OnePlus 16 탑재 후보. Rel-21 6G 규격 2027.03~2028말** [6G Futures RAN#113 Sep 14-17, Nokia FR3 golden band WRC-27, Nature npj Wireless WRC-27 bands, RCR Wireless SoftBank Nokia 7GHz Tokyo, Light Reading T-Mobile Ericsson 6G, Android Central/wccftech Snapdragon X105, Gizbot Summit Sep 22-24]
@@ -242,17 +261,6 @@ last_synced_from_db: 2026-09-12
 > 4. **광통신 1.6T 램프 가속 -- LightCounting 2026E $26B(+60%)·Jabil 1.6T 출시·Lumentum 200G/lane EML 단독양산** -- **AI 이더넷 광트랜시버 시장 2026E $26B(2025 $16.5B 대비 +60%), 전체 광트랜시버 세그먼트 2026E $9.15B(800G/1.6T가 AI DC 표준화). Jabil 4월 1.6T 트랜시버 출시. Lumentum 1.6T DR4 OSFP(400G 차동 EML x4)·200G/lane EML 유일 양산(1.6T 핵심부품)·3.2T 향 스테핑스톤. Coherent SiPho 1.6T-DR8(Marvell 3nm DSP). NVIDIA $4B 포토닉스(Lumentum/Coherent 각 $2B) 투자 존치** [LightCounting 2026E $26B, tech-insider.org NVIDIA $4B, Semiconductor Today Lumentum, C-LIGHT AI DC optical]
 > 5. **AI-RAN 상용화 진전(SoftBank AITRAS FY2026, Alliance 140+) + 6G Rel-21 마드리드 9월·Qualcomm X105 상용 H2 홀딩** -- **SoftBank AITRAS(NVIDIA GH200 Grace Hopper, AI Aerial, 캐리어급 L1 SW) FY2026부터 자사 상용망 도입·2026+ 글로벌 통신사 확대, GPU상 'SW 온리 Massive MIMO' 실현으로 PoC->상용 전환, NVIDIA 최대 수혜. AI-RAN Alliance 2026.07 기준 140+ 조직으로 확대. 6G Rel-21 마이그레이션은 TSG RAN#113 마드리드(9/14~17) 대기 유지(전주 대비 변동 없음) -- RAN1 예비 MRSS 성능평가 9월 제출 공식 의무, 9월 플레너리가 standalone·MRSS·NR<->6G inter-RAT 외 WG SI scope 확장 여부 결정, DT 'standalone+MRSS면 충분' 단순화론 유지. Qualcomm X105(Rel-19 준수, DL 14.8Gbps, NR-NTN, agentic AI) 고객 샘플 배포 중·상용 디바이스 2026 하반기·9월 Snapdragon Summit 공개** [SoftBank PoC to commercial, telecoms.com NVIDIA beneficiary, 6G Futures RAN#112, IEEE ComSoc Rel-21, Qualcomm PR X105]
 > 6. **Open RAN 2026 성장 5~10% 하단 착지(Dell'Oro) + 한국 KT 5년 18조 투자·8월 AI네트워크 민관협의체 가동** -- **Dell'Oro: 글로벌 RAN 시장 안정, Open RAN 성장하나 연 5~10% 목표의 하단(미·일 조건·유럽 채택 속도). AT&T 트래픽 약 50% 오픈가능 HW·1Finity/Fujitsu 라이브콜, Samsung-Vodafone 독일 첫 시장 수천 사이트·Wismar 첫 완전전환 도시·2027 UK 2,500사이트, Top5 벤더(Huawei·Ericsson·Nokia·ZTE·Samsung) 불변. ★KT 박윤영 대표 5년 18조 투자: AI DC 5조(수요 기반 1GW, 신규 약 20개 추가해 총 25개 센터) + 네트워크 8조 + 해저케이블 1조(국제 데이터 8배 대비 128TB+/90Tbps+·빅테크 공동조달). SKT 15GW/2035·LGU+ 파주 200MW. 배경훈 부총리, 8월 통신3사 'AI 네트워크 투자' 민관 협의체 가동 확정('통신사도 AI 기업, 6G·AI-RAN 투자 본격화')** [Dell'Oro RAN 2026 low end, dig.watch Vodafone Samsung Europe, 머니투데이 7/6 KT 18조, ZDNet KT 1GW, enewstoday 배경훈 부총리]
->
-> **(이전 갱신 -- 8/1 핵심 요약, 참고용)**:
->
-> **2026.08.01 핵심 변화 요약 (7/25 이후 델타)**:
->
-> 1. **★SPCX 붕괴 심화 -- 7/31 종가 $108.37(주간 -5.8%, 신규 종가 최저) + 8/4 상장 후 첫 실적·8/6 $116B 락업해제 임박** -- **7/31 $108.37(-3.4% 금요일), 상장가 $150 대비 -30%·피크 $225.64 대비 -50%. 주간 변동성 극심(장중 사상최저->급반등->재차 최저 마감). ★8/4(화) 상장 후 첫 Q2 실적(장 마감 후 16:30 ET 웹캐스트) -- 컨센 매출 약 $6.82~6.9B·순손실 약 -$0.26/주(AI·Space 비용). Morgan Stanley 가입자 2025 8.9M->2026 16.8M, HSBC 2026 Connectivity 매출 $15.6B·EBITDA $9.5B 전망. ★8/6 1차 락업해제 -- 약 9.115억주($116B) 매매가능(내부자 최대 20% 매도), 이후 2~4주마다 7% 트랜치·Q3 트리거 약 28%·잔여 180일물 12/8 전량, 머스크/핵심 내부자는 2027 중반까지 락업. 애널 평균 목표가 $231.83(+101% 상방)** [Yahoo Finance 7/31, Motley Fool 7/27·7/29, S&P Global earnings preview, Investing.com $123B unlock]
-> 2. **★통신장비 'AI 칩 크런치'로 재평가 반전 -- Nokia 어닝비트에도 4월來 최저 급락(H2 이익 72% 편중), Ericsson '메모리 부족 2027까지 지속' 경고** -- **Nokia는 Q2 비교영업이익 EUR 434M(+18%, 컨센 EUR 382M 상회)·AI&Cloud 매출 2배에도 주가 급락 -- 발표 후 4월 이후 최저 종가 $9.73(-5.35%)/EUR 9.10, 6월 피크(EUR 14.97/$17.45) 대비 약 -44%. 원인: (1)AI발 메모리/부품비 인플레 우려, (2)FY 이익의 72%가 하반기 편중(back-loaded) 부담. FY 비교영업이익 가이던스는 EUR 2.1~2.6B로 상향(기존 2.0~2.5B -- 7/25 '상단 상향' 표현을 구체 수치로 확정). Ericsson은 Q2(7/14) 후 3거래일 누적 -14.3%, 메모리 부족이 2027년까지 지속될 수 있다 경고(AI 기업의 DRAM 대량 흡수). ★7/25 KB의 Nokia '레거시->AI 인프라 재평가' 촉매 서사가 밸류/마진 논쟁으로 약화 -- 어닝 서프라이즈와 주가 반응 디커플링** [beincrypto Nokia lowest close since April, ts2.tech 72% H2 hurdle, euronext Nokia Q2, ad-hoc-news]
-> 3. **★AST BlueBird 11/12/13 8/5 발사 확정 + Amazon Leo FCC 7/30 절반배치 데드라인 미달** -- **AST 7/28 발표: BB11/12/13 발사 2026-08-05(케이프커내버럴 SFS, Falcon 9, 03:42 EDT·05:10 예비창). BB8/9/10(6월) 성공 후속, BB14/15/16 차기 준비·위성 42호(BB42)까지 생산 -- 스택형 아키텍처로 배치 스케일업, 2026 궤도 약 45기 목표. Amazon Leo는 7월 누적 약 394~396기(7/2 Atlas V +29기, 14개 미션)로 FCC 7/30 절반배치(1,618기) 의무 미달 확정 -- 1월 신청 24개월 연장(2028.07)이 조건부 승인(7월 이후 발사분 스펙트럼 우선순위 강등). '연내 초기 서비스' 온트랙(베타 미국·영국·프랑스·독일·캐나다 2026말~2027초)** [AST BusinessWire 7/28, StockTitan, The Register 7/3, Light Reading]
-> 4. **AI-RAN 에너지효율 진전 + 벤더 실리콘 전략 재조명** -- **KDDI Research+Nokia Bell Labs, 동일 처리량에서 전력 최대 40% 절감(또는 동일 전력에서 처리량 4배) 기지국 기술 실증. ABI Research: RAN 내 NVIDIA GPU·Intel CPU 불안감이 Ericsson 커스텀 실리콘을 '더 안전한 베팅'으로 부각(AI 칩 크런치와 연동). SoftBank AITRAS(NVIDIA GH200)는 FY2026 상용망 도입·AI DC GPU 클라우드 상용 2026.10(그룹 내부 우선) 목표 유지. Telstra-Ericsson 호주 6G 연구 LOI 체결** [ABI Research future of telecom, Cenerva 7/13 KDDI/Nokia Bell Labs, SoftBank AITRAS, ConvergeDigest]
-> 5. **6G Rel-21 마드리드 9월 홀딩 유지 + Qualcomm X105 'Snapdragon Summit 9월' 첫 탑재 구체화** -- **3GPP Rel-21 5G->6G 마이그레이션 결정은 TSG RAN#113(마드리드 9/14~17) 대기(전주 대비 변동 없음) -- 후보 Standalone 6G/MRSS/NR<->6GR inter-RAT가 Option 1(6G-anchored DC with NR) vs Option 3(dual stack)로 압축, RAN1 예비 MRSS 성능평가 9월 제출 공식 의무. Qualcomm X105 5G 모뎀-RF(Rel-19 준수, DL 14.8Gbps, RF -30% 전력, NR-NTN 위성)이 Snapdragon 8 Elite Gen 6 Pro(SM8975)에 첫 탑재 -- 2026.09 Snapdragon Summit 공개(LPDDR6 최초·2nm), Galaxy S27 Ultra·OnePlus 16 후보** [6G Futures RAN#112, 3GPP Rel-21 Timeline, WCCFTech, TechTimes 7/27]
-> 6. **유럽 첫 5G NTN(Hispasat) + Dell'Oro RAN 5분기 연속 안정 + SKT 'SK하이퍼' 5GW/2029·8월 민관협의체** -- **Horizon Europe 컨소시엄이 Hispasat 위성으로 유럽 최초 5G NTN 전송 성공(표준기반 D2D·5G-Adv·pre-6G 멀티오빗) -- 통신사가 위성 커넥티비티 통제권 확보 시도(파트너십·번들링). Dell'Oro Q1 2026 글로벌 RAN 저한자릿수 성장(5개 분기 연속 -4~+4% 밴드), Top5 불변(Huawei·Ericsson·Nokia·ZTE·Samsung), Samsung+Orange 유럽 AI-ready vRAN/Open RAN 트라이얼 넘어 확대. SKT 신설 자회사 'SK하이퍼'(7/23, 2030년까지 7,500억 출자, 대표 정석근 AI CIC장) 목표 구체화 -- 2029년까지 5GW->2035년 총 15GW. 과기정통부 배경훈 부총리, 8월 통신3사 'AI 네트워크 투자' 민관 협의체 구성·운영 확정** [IEEE ComSoc 5G NTN 7/14, Dell'Oro 1Q2026, 아시아경제 7/23, 파이낸셜뉴스 7/23]
 >
 ---
 

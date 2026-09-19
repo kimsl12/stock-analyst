@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-12
-valid_until: 2026-10-12
+updated: 2026-09-19
+valid_until: 2026-10-19
 sector: capex
 confidence: high
 tags:
@@ -189,16 +189,38 @@ sources:
     Advisor Perspectives,
     Techzine,
     Introl,
+    The Information,
+    Forkast,
+    Unite.AI,
+    e4ds,
+    The Elec,
+    FactSet,
+    TMT Finance,
+    Bloomberg Law,
+    Naked Capitalism,
+    invezz,
+    tradingeconomics,
+    uncoveralpha,
+    오늘경제,
   ]
-last_synced_from_db: 2026-09-12
+last_synced_from_db: 2026-09-19
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-09-12 | 신뢰도: high | 유효: ~2026-10-12
+> 갱신일: 2026-09-19 | 신뢰도: high | 유효: ~2026-10-19
 
 ---
 
+## ★ 주간 델타 (9/19) — 직전 갱신(9/12) 이후 변화
+
+- **[핵심] Anthropic 컴퓨트 약정 $517B로 폭증(The Information 9/6·9/13 보도) — 11개월만에 IPO 前 컴퓨트 군비경쟁 정점, +14.8GW 추가**: Anthropic이 confidential IPO를 앞두고 향후 ~10년 컴퓨트 계약을 **$517B**로 확정 — 직전 투자자 고지치(2029까지 서버리스 ~$180B)의 **2.9배**로 11개월만에 급증. **Amazon+Google ~11GW·$300B+, Microsoft 별도 ~1GW Azure $30B, Nscale $45B(8/26)** 포함. 기존 확보 1-2GW에 **최소 14.8GW 배치가능 캐파 추가**. $517B는 CoreWeave·Azure·AWS·Oracle Cloud·Nebius의 Vera Rubin 랙을 통해 흐르는 10년치 구매약정. 하이퍼스케일러 4사 2026 capex는 Futurum $690B·TMT Finance $700-745B로 집계. **수요측(AI 랩)이 하이퍼스케일러 capex와 별개로 폭증 → 순환·공급집중 리스크 심화** [The Information, 247WallSt, Forkast, Futurum, TMT Finance]
+- **[핵심] 전력 병목이 M&A·장비혁신 파도로 — Vertiv UIG $1.45B 인수(온사이트 발전 진입)·Eaton 800VDC MVSST·GE Vernova 백로그 $176B/터빈 리드타임 2031**: **Vertiv가 마이크로그리드 firm UtilityInnovation Group(UIG)을 $1.45B 현금(+실적연동 최대 $1.15B) 인수**(9/2 발표, Q4 2026 클로징) — 냉각·전력관리를 넘어 **온사이트 발전·BTM(behind-the-meter) 전력·마이크로그리드 오케스트레이션**으로 확장, 'time to power' 단축이 핵심. **Eaton Data Center Tech Day 2026(9/10): 800VDC AI DC 아키텍처용 중전압 고체변압기(MVSST) 공개**(효율 최대 98.5%·전력밀도 277.7kW/㎡·설치면적 최대 -50%). **GE Vernova 백로그 $176B·연말까지 가스장비 125GW 계약·가스터빈 신규주문 리드타임 2031년까지**(연산 20GW Q3'26→24GW'28→30GW'30), DC 주문 YTD $5B+. 미국 DC 전력수요 **31GW('25)→41GW('26)→66GW('27)**. 전력이 여전히 AI 최대 병목 [Vertiv IR, Unite.AI, e4ds, The Elec, Power-Eng, 247WallSt]
+- **[핵심] 파이낸싱 스트레스 계량화 — 증분부채 capex의 9%→32%·Oracle $18B 본드 완결(비금융 IG 최대 발행사)·CoreWeave 부채 $51.6B(전분기 $35.6B)·10Y 5.04% 19년래 최고 터치**: FactSet — 하이퍼스케일러 **증분 연간부채가 capex의 9%(FY24)→32%(mid-26 LTM)**로 급증(현금흐름 초과분 외부조달). Oracle 9월 **$18B 점보본드 완결**(6개 트랜치·희귀 40년물·수요 $88B 피크, Citi '비금융권 IG 최대 발행사') — 직전 KB 9/12 '$20-25B 런칭'의 실집행 규모로 추정(단 일부 소스가 2025년 딜과 혼재 가능·재확인 필요). **CoreWeave 총부채 $51.6B로 확대**(직전 KB Q2 $35.6B), Q2 순이자비용 $640M(+2배 YoY·영업이익 초과). BIS/사모대출 — AI向 사모대출 **$3B('10)→$40B+('25)**, '자산 다중담보(pledged multiple times)' 우려. **Mag7 합산 FCF 2024초 이후 최저**(AI capex +75% YoY). 금리: **10Y 국채 주중 5.04%(19년래·2007 이후 최고) 터치 후 ~4.94% 후퇴** — 조달비·할인율 동시 압박, 금리 인상 오즈 상승이 neocloud 리프라이싱 압박. Naked Capitalism — 오프밸런스시트 약정 2027-2028 '서브프라임식 리셋 월' 경고 [FactSet, Bloomberg Law, DCD, techtimes, tradingeconomics, Naked Capitalism]
+- **반도체 장비 사이클 추가 상향 — GS WFE 2026 $150B/2027 $218B/2028 $281B(8/25)·ASML low $150B·Lam $135B, DRAM 스팟 +700%·Q4 계약 +50-55%·BofA '1990년대급 슈퍼사이클'**: **Goldman Sachs가 글로벌 WFE를 2026 $150B·2027 $218B·2028 $281B로 대폭 상향(8/25)**. ASML CEO CY2026 WFE 'low $150B'(기존 $140B), Lam 2026 ~$135B. 리딩엣지 로직·DRAM·어드밴스드패키징이 2026-27 WFE 성장의 **~80%**, AMAT 반도체장비 CY2026 +30%+. 메모리: **DRAM 스팟가 1년간 +700%(Bloomberg), Q4 계약가 QoQ +50-55%·모바일 DRAM +80%, HBM4 ~$550/스택**(HBM3E ~$300). **BofA '1990년대 붐급 슈퍼사이클' — 2026 글로벌 DRAM 매출 +51%·NAND +45% YoY**. SK하이닉스 컨벤셔널 DRAM OM 역대 최고 高70%대. 주: WFE 정의별 상이(GS 2027 $218B vs 9/5 Wells Fargo $190B) [Goldman Sachs, ASML IR, 247WallSt, ersaelectronics, uncoveralpha]
+- **K-전력 3사 신규 수주 지속 — HD현대일렉 1.12조 북미 DC 장기공급·LS일렉 세계 첫 DC 전용공장 가동·효성重 백로그 17.5조**: **HD현대일렉트릭이 북미 DC 건설 글로벌 테크사와 최대 1.1212조원 배전·전력기기 장기공급 계약**. **LS일렉트릭 세계 첫 DC 전용공장 가동 + AWS 1700억원 배전(차단기/스위치) 계약·Q2 빅테크/AI DC 5연속 수주**. 효성중공업 호주 Ausnet 초고압 변압기·리액터 3100억원. 3사 수주잔고: 효성 **17.5조원**·HD현대 **$84.9B**·LS ~7조원 — 5년치 일감에도 미국 주문 지속 유입, 미 DC 변압기 부족이 K-전력기기 존재감 확대 [비즈니스포스트, 인베스트조선, 오늘경제]
+
+---
 ## ★ 주간 델타 (9/12) — 직전 갱신(9/5) 이후 변화
 
 - **[핵심] Oracle Q1 FY2027 확정(9/10) — RPO $664B(+$26B)·OCI +121%·FY27 capex 가이던스 $90-95B·그러나 FCF -$5B**: Oracle Q1 FY2027(9/10 발표): 총매출 **$19.3B(+30% YoY)**, OCI(클라우드 인프라) **+121% YoY**. **RPO $664B**(전분기 대비 +$26B, 절반 36개월내 인식) — 직전 KB Oracle RPO $638B(Q4 FY26)에서 갱신. **Q1 capex $28B(net cash $18B), FY2027 총 capex 가이던스 $90-95B(net cash ≤$70B)**. OCI가 FY4Q말 이후 **850MW AI 용량+30만+ GPU 추가 배치·GPU 가동률 97.9%**. 영업현금흐름 역대 $23B이나 **FCF -$5B(빌드사이클 지속)**. FY27 총매출 가이던스 ≥$90B(+34%)·non-GAAP EPS $8.10. AI DC 캐파 전환이 실매출로 가시화되나 FCF는 여전히 음수 [Motley Fool, Yahoo Finance, erp.today, Seeking Alpha]

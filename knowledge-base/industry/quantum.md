@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-12
-valid_until: 2026-10-12
+updated: 2026-09-19
+valid_until: 2026-10-19
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -162,13 +162,34 @@ sources:
   - SandboxAQ AQNav Northrop Grumman Lumberjack 소모성 일방공격 드론 세계최초 비행시험 09-09 (MagNav+비주얼 결합·1시간 미만 설치·수동 전천후 Alt-PNT, The Quantum Insider/PRNewswire/QCR/TechTimes)
   - 상하이자오퉁대 이종 CV-QKD 하이브리드 액세스망 실증 09-09 (Quantum Zeitgeist)
   - NIST 추가서명 HAWK 철회 (07-28 Anthropic AI 격자 취약점 발견 후 자진철회, 9후보→8) / FIPS 140-2 sunset 09-21 임박·EU NIS 12-31·NSA CNSA 2.0 2027-01-01 수렴 데드라인
+  - Sandia+Quantinuum+NVIDIA QUOPS 벤치마크 (09-10, IEEE QW Toronto 09-15: Helios-1 Q=1,504 vs Willow Q=216·ibm_boston Q=204, 유용성 최소치 대비 ~10만배 미달, CUDA-Q 통합)
+  - IonQ+ORNL+NVIDIA+테네시대 생성형AI 양자최적화 (09-16, 회로생성 ~28초 상수 vs 기존 12큐빗 11분+, arXiv:2607.20225, IONQ +9%)
+  - DOE Quantum Genesis Q $215M 경쟁 (SRQC 100논리큐빗 국가연구소 검증·제안마감 10-19, IonQ/Rigetti/D-Wave/Infleqtion/Quantinuum/Xanadu)
+  - Rigetti 큐빗효율 양자최적화 (09-14, 9큐빗 초전도 Sherrington-Kirkpatrick 스핀글라스)
+  - QKD 303km 세계기록 (스웨덴 Linköping-Stockholm, 270km SMF+33km 멀티코어, 초전도 나노와이어 검출기, arXiv:2606.06107)
+  - Q-SAFE Solutions EU-27 캐리어급 양자안전망 (09-17, QKD+PQC 하이브리드) / Q*Bird→Falqon Systems 리브랜딩 (09-16, MDI-QKD 엔드투엔드)
+  - QUBT ECOC 2026 통합 양자보안 플랫폼 시연 (09-21~23 말라가)
+  - FIPS 140-2 sunset 09-21 확정임박 (잔여 인증 Historical·신규 조달 FIPS 140-3만·검증 500일+ 12~18개월 갭)
+  - IEEE Quantum Week 2026 Toronto (09/13~18, 기조9·논문372, QUOPS+IonQ 생성형AI 발표무대)
+  - QX KOREA 2026 개최완료 (09/09~11 COEX, Quantinuum Marvin Lee 기조·IBM 박창희)
+  - 주가 09-18: IONQ ~$39.04·QNT $54.50·QUBT $8.36 / D-Wave $17.52·Rigetti $15.87 (09-17 +7~8% 랠리)
 confidence: high
-last_synced_from_db: 2026-09-12
+last_synced_from_db: 2026-09-19
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-09-12)
+## CURRENT (2026-09-19)
+
+> **최근 갱신 (2026-09-13~19)**
+> - **QUOPS 최초 교차플랫폼 벤치마크(09-10, IEEE QW Toronto)**: Sandia+Quantinuum+NVIDIA. Quantinuum Helios-1 트랩이온 **Q=1,504**(Google Willow Q=216·IBM ibm_boston Q=204의 ~7배), 단 3종 모두 유용 과학응용 최소치 대비 **~10만배 미달**. QUOPS score Q(회로크기)+rate Ω(처리량), NVIDIA CUDA-Q 통합.
+> - **IonQ+ORNL+NVIDIA+테네시대 생성형AI 양자최적화(09-16)**: 생성모델이 최적화 회로 직접 작성→파라미터 튜닝루프 제거, 회로생성시간 문제규모 무관 **~28초 상수**(기존 12큐빗 11분+). arXiv:2607.20225. 이 뉴스로 **09-17 섹터랠리 IONQ +9%·QBTS +8% $17.52·RGTI +7% $15.87**.
+> - **DOE Quantum Genesis Q $215M 경쟁**: SRQC(과학적 유의미 양자컴)=국가연구소 검증 **100 논리큐빗** 목표, 제안 마감 **10-19**. IonQ·Rigetti·D-Wave·Infleqtion·Quantinuum·Xanadu 참가. 국가연구소 테스트베드 독립 벤치마크(벤더 큐빗 주장 감사층). CHIPS $2B·DOE Genesis Mission과 별개 신규.
+> - **Rigetti 큐빗효율 최적화(09-14)**: 고전변수<물리큐빗(얽힘 매핑), 9큐빗 초전도 SK 스핀글라스 검증.
+> - **양자통신**: **QKD 303km 세계기록**(스웨덴 Linköping-Stockholm, 배치망 270km SMF+33km 멀티코어, 초전도 나노와이어 검출기, arXiv:2606.06107) / EU 상용화(Q-SAFE Solutions EU-27 09-17·Q*Bird→Falqon Systems 09-16 MDI-QKD).
+> - **PQC**: **FIPS 140-2 sunset 09-21 확정임박** — 잔여 인증 Historical, 신규 연방 조달은 FIPS 140-3 검증 모듈만(검증 평균 500일+ → 12~18개월 갭). HQC(코드기반 5번째) FIPS 2027, HAWK 철회 유지.
+> - **양자센서**: 09월 신규 대형 돌파 없음(09-08 MagNav·09-09 AQNav 이후 소강).
+> - **주가(09-18)**: IONQ ~$39.04·QNT $54.50·QUBT $8.36. 애널 컨센: IonQ Strong Buy $69.44·Quantinuum Strong Buy $97.17·Rigetti Moderate Buy $28.71.
 
 ---
 
@@ -507,11 +528,11 @@ last_synced_from_db: 2026-09-12
 | **밸류에이션 경고**              | P/S: IonQ **106x**, D-Wave **283x**, Rigetti **870x**. Motley Fool "함정 경고". 하지만 CHIPS 정부 지분 = 정당화 시그널                                                                   | [Motley Fool / TipRanks]           |
 | **애널리스트**                   | **08월 중순 컨센(금리發 매도에도 낙관 유지)**: IonQ 평균 12M **$69.44**(~55%↑), 10인 중 9 매수·1 홀드 **Strong Buy**(Rosenblatt $100). Rigetti 평균 **$27.19**(~53%↑), 8인 중 5 매수·3 홀드 **Moderate Buy**. D-Wave **1 Strong Buy·13 Buy·1 Hold·0 Sell**. Wedbush(08-03~04) 3사 Outperform IONQ $75·RGTI $40·QBTS $40 | [TipRanks 08-18 / 24/7 WallSt 08-19] |
 | QTUM ETF                         | YTD +6%, 1Y +62%. Quantinuum(QNT) 편입 시 재편                                                                                                                                           | [Defiance ETFs]                    |
-| **IonQ (IONQ)**                  | **Q2 2026(08-05) 레코드 매출 $80.1M(+287%)**·조정EPS $0.33·**FY26 가이던스 $280~290M 상향**·**SkyWater $1.8B 클로징**·**DARPA $28M 광원자시계+Capella NRO SAR(08-06)** 국방계약으로 실적 급등. 여름 저점 08-04 $41.72→7세션 ~20%+ 반등. 애널 컨센 Buy·목표 **$71.25**(Rosenblatt $100). 순수기업 시총 1위 유지. **FY26 조정EBITDA손실 가이던스 $310~330M**(2025 $186.75M서 확대, Q1 영업손실 $271.5M). 현금 $3.1B. CHIPS 미포함. **내부자 2년 순매도 $454.1M**(최대). 양자센싱(Vector Atomic·DARPA/NRO). **08-18 금리發 매도 -6% ~$44**(월가 컨센 $69.44/~55%↑, 9/10 Buy Strong Buy). **8월 3건 딜(CMC 캐나다 FABrIC 08-18·Sandia MOU·EPB 테네시)로 상업/연구/국방 풋프린트 확장**. **08-24 실적랠리 되돌림 -6% ~$42.27**. **Q2 RPO +297% YoY·SkyWater+Nexus 인수 클로징**(온쇼어 파운드리 수직통합). **09월초 ~$39(월간 -39%)**. **09-08 Investor Day: Superion 256 첫 256큐빗 QPU(SkyWater 제작)·FY26 combined $450~460M(standalone $280~290M+SkyWater)·클로징 후 $39.62(+9%)** | [IonQ Q2 2026 / Simply Wall St / IonQ Investor Day 09-08 / 24/7 WallSt 09월] |
-| **Quantinuum (QNT)**             | 06-04 Nasdaq 데뷔($60/주 업사이즈, $1.68B 조달, 20배 초과청약). **ATH $86.79(07-06)** 후 조정 → **09-04 ~$49.65**(52주 $46.54~$86.79). **Q2 2026 매출 +279% YoY $8.0M·FY26 가이던스 $28~32M 상향·부킹 Q2 $4.3M/YTD $81M**. **Quanta Computer 확장가능 양자HW 협약(08-14)**. **Aramco 비구속 MoU(09-03, 에너지 FTQC)**. 2025 매출 $30.9M/순손실 $192.6M. Honeywell ~82% 지분(유동주식 제한). 애널 평균 PT **$97.17**(12매수/0매도). **CHIPS $100M 최종확정(09-08)·정부 소수 지분·09-08 +3.9% $51.56 랠리(국내제조 파트너십 자금)·QX KOREA 2026 Helios 진공챔버 시연(09/09~11 COEX)** | [Investing.com QNT / Robinhood / Chartmill / Foreign Policy Journal 09-09] |
+| **IonQ (IONQ)**                  | **Q2 2026(08-05) 레코드 매출 $80.1M(+287%)**·조정EPS $0.33·**FY26 가이던스 $280~290M 상향**·**SkyWater $1.8B 클로징**·**DARPA $28M 광원자시계+Capella NRO SAR(08-06)** 국방계약으로 실적 급등. 여름 저점 08-04 $41.72→7세션 ~20%+ 반등. 애널 컨센 Buy·목표 **$71.25**(Rosenblatt $100). 순수기업 시총 1위 유지. **FY26 조정EBITDA손실 가이던스 $310~330M**(2025 $186.75M서 확대, Q1 영업손실 $271.5M). 현금 $3.1B. CHIPS 미포함. **내부자 2년 순매도 $454.1M**(최대). 양자센싱(Vector Atomic·DARPA/NRO). **08-18 금리發 매도 -6% ~$44**(월가 컨센 $69.44/~55%↑, 9/10 Buy Strong Buy). **8월 3건 딜(CMC 캐나다 FABrIC 08-18·Sandia MOU·EPB 테네시)로 상업/연구/국방 풋프린트 확장**. **08-24 실적랠리 되돌림 -6% ~$42.27**. **Q2 RPO +297% YoY·SkyWater+Nexus 인수 클로징**(온쇼어 파운드리 수직통합). **09월초 ~$39(월간 -39%)**. **09-08 Investor Day: Superion 256 첫 256큐빗 QPU(SkyWater 제작)·FY26 combined $450~460M(standalone $280~290M+SkyWater)·클로징 후 $39.62(+9%)**. **09-16 IonQ+ORNL+NVIDIA+테네시대 생성형AI 양자최적화(회로생성 ~28초 상수·arXiv:2607.20225)→09-17 +9% 랠리**. **09-18 ~$39.04(레인지 $37.77~$40.94)**. **DOE Quantum Genesis Q $215M 경쟁 참가(SRQC 100논리큐빗·마감 10-19)** | [IonQ Q2 2026 / Simply Wall St / IonQ Investor Day 09-08 / 24/7 WallSt 09월] |
+| **Quantinuum (QNT)**             | 06-04 Nasdaq 데뷔($60/주 업사이즈, $1.68B 조달, 20배 초과청약). **ATH $86.79(07-06)** 후 조정 → **09-04 ~$49.65**(52주 $46.54~$86.79). **Q2 2026 매출 +279% YoY $8.0M·FY26 가이던스 $28~32M 상향·부킹 Q2 $4.3M/YTD $81M**. **Quanta Computer 확장가능 양자HW 협약(08-14)**. **Aramco 비구속 MoU(09-03, 에너지 FTQC)**. 2025 매출 $30.9M/순손실 $192.6M. Honeywell ~82% 지분(유동주식 제한). 애널 평균 PT **$97.17**(12매수/0매도). **CHIPS $100M 최종확정(09-08)·정부 소수 지분·09-08 +3.9% $51.56 랠리(국내제조 파트너십 자금)·QX KOREA 2026 Helios 진공챔버 시연(09/09~11 COEX)**. **QUOPS(09-10 Sandia+NVIDIA): Helios-1 Q=1,504로 Willow(216)·ibm_boston(204) ~7배 우위**. **09-18 $54.50(전일 $52.01, 일중 $52.45~$55.72)** | [Investing.com QNT / Robinhood / Chartmill / Foreign Policy Journal 09-09] |
 | **Rigetti (RGTI)**               | **Q2 2026 실적(08-06)**: 매출 **$5.1M(+185%)**, GAAP 순손실 $52.6M. 여름 저점 08-04 $17.45→7세션 ~20%+ 반등. **Novera 9큐빗 Pittsburgh Supercomputing Center 테스트베드**(NSF $5M). HPE 하이브리드 양자 8파트너 초전도 HW. 현금 $569M, 무부채. **CHIPS $100M**. 내부자 2년 순매도 $71.5M. **08-18 -5% ~$18·08-20 -7% 금리發 매도**(월가 컨센 $27.19/~53%↑, 5/8 Buy Moderate Buy). C-DAC 인도 108큐빗 납품 2026. **08-24 실적랠리 되돌림 -7% ~$16.70**. **09월초 ~$15.2**(월간 -30%). **CHIPS $100M 최종확정(09-08)·정부 소수 지분·09-08 +7.4% $16.33 랠리(냉각+칩연결 자금)** | [StockTitan 08-06 / 24/7 WallSt 09월 / Foreign Policy Journal 09-09] |
 | **D-Wave (QBTS)**                | **Q2 2026 실적(08-06 장전)**: 매출 $3.1M(flat), 2Q 부킹 $2.1M(+59%), **상반기 부킹 $35.5M(+1,120%)**·RPO $40.7M(+668%), 현금 $588M(+93%). 부킹 급증 vs 매출 flat. **08-05 $21.39**(애널 상단 $37). **IDC MarketScape 리더(07-08)**(문제제출 2억건+·Advantage2 314% YoY↑). **Nasdaq Verafin 금융범죄탐지 파트너십(08-03: QBTS +11% $20 터치)**. NSF ERASE $1.57M(06-30). **CHIPS $100M**. 내부자 2년 순매도 $331.1M. **08-18 -6.4% ~$20 금리發 매도**(애널 1 Strong Buy·13 Buy·1 Hold·0 Sell). **08-24 실적랠리 되돌림 -7%**. **CFO John Markovich 09-02 은퇴**(Greg Golkov 임시 CFO, 이견 아님·발표 08-26 -8%). **FAU $20M Advantage2 어닐링 구매**(Boca Raton, D-Wave 미 본사 Boca Raton Innovation Center 이전)+Fortune 100 $10M QCaaS. **09월초 ~$16.5-16.8**(30일 -22.95%). **CHIPS $100M 최종확정(09-08)·정부 소수 지분·09-08 +5.4% $17.48 랠리(공급망+스케일링 자금)** | [SEC 8-K 08-06 / TQI 08-26 / 24/7 WallSt 09월 / Foreign Policy Journal 09-09] |
-| **QUBT**                         | QNT 데뷔일 **-8.57%**. Q1 $3.7M. 인수 기반. 현금 $1.4B                                                                                                                                   | [QUBT / GuruFocus]                 |
+| **QUBT**                         | QNT 데뷔일 **-8.57%**. Q1 $3.7M. 인수 기반. 현금 $1.4B. **09-18 $8.36(52주 $6.18~$25.84, 애널 중위 PT $18)**. **ECOC 2026(09-21~23 말라가) 통합 양자보안 플랫폼 시연**                                                                                                                                   | [QUBT / GuruFocus]                 |
 | **Infleqtion (INFQ)**            | Q1 $9.5M(+14%). FY $40M+. **CHIPS $100M**. Rb-Cs 세계기록. DoD $11M 항법                                                                                                                 | [Infleqtion]                       |
 | **Xanadu (XNDU)**                | Nasdaq/TSX 03-27. Q1 $2.8M(+305%). SPAC $302M                                                                                                                                            | [Xanadu]                           |
 | PsiQuantum                       | Victor Peng CEO. ~$7B. **CHIPS $100M**                                                                                                                                                   | [PsiQuantum]                       |
@@ -526,14 +547,14 @@ last_synced_from_db: 2026-09-12
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------ |
 | **밸류에이션 과열**        | P/S 100~870x. CHIPS 랠리 후에도 근본적 적자 지속. IonQ 유일 대규모 매출이나 EBITDA 적자                                           | 높음   |
 | **신규 상장 자금 사이펀**  | Quantinuum QNT 데뷔(06-04)로 기존 양자주 동반 급락(RGTI -10%, QBTS -8%, QUBT -9%). 신규 양자 IPO마다 섹터 자금 분산 반복 우려     | 중간   |
-| **바스켓 동조·금리 민감·랠리 반전**  | 4사가 뉴스 무관 10~15% 일간 변동·바스켓 동조매매. **09월초 추가 하락(IONQ ~$39 월간-39%·RGTI ~$15.2·QBTS ~$16.5-16.8 30일-22.95%·QNT ~$49.65), 52주고점 대비 60~76%↓**. 08-18·08-20 30년 국채 19년래 최고發 로테이션 매도(IONQ -6%·QBTS -6.4%·RGTI -5~7%). **Motley Fool 09-01 'AI 9월 조정 시 양자 먼저 급락' 경고**. **D-Wave CFO 09-02 은퇴**로 부킹-매출 전환 스토리 부담. 내부자 순매도 $863M(3년, 08-24) | 높음   |
+| **바스켓 동조·금리 민감·랠리 반전**  | 4사가 뉴스 무관 10~15% 일간 변동·바스켓 동조매매. **09월초 추가 하락(IONQ ~$39 월간-39%·RGTI ~$15.2·QBTS ~$16.5-16.8 30일-22.95%·QNT ~$49.65), 52주고점 대비 60~76%↓**. 08-18·08-20 30년 국채 19년래 최고發 로테이션 매도(IONQ -6%·QBTS -6.4%·RGTI -5~7%). **Motley Fool 09-01 'AI 9월 조정 시 양자 먼저 급락' 경고**. **D-Wave CFO 09-02 은퇴**로 부킹-매출 전환 스토리 부담. 내부자 순매도 $863M(3년, 08-24). **단 09-16 IonQ 생성형AI 최적화 뉴스로 09-17 반등(IONQ +9%·QBTS +8%·RGTI +7%)—뉴스發 급반등도 동조**. 09-18 IONQ ~$39.04·QNT $54.50·QUBT $8.36 | 높음   |
 | **Quantinuum IPO 후 보합** | $60 업사이즈 가격책정에도 **데뷔일 종가 보합**, 시총 $15.7B. 2025 매출 $30.9M/순손실 $192.6M = 밸류 부담. 락업 만료가 다음 시험대 | 중간   |
 | **정부 지분 희석**         | CHIPS $2B 조건으로 9개사 소수 지분 취득. 기존 주주 희석 우려                                                                      | 중간   |
 | **IonQ CHIPS 미포함**      | 9개 수혜사에서 제외. **SkyWater $1.8B 인수 클로징 완료(08월)**로 온쇼어 파운드리 수직통합. CHIPS 랠리서 상대적 약세(+12% vs +33%)                                           | 중간   |
 | **상용화 불확실성**        | Q-CTRL 3,000x 실용 우위 주장은 제한적 문제. 범용 킬러앱 부재. "양자 겨울" 우려                                                    | 중간   |
 | **오류보정 장벽**          | 100만 큐빗까지 장시간. 가속 촉매: D-Wave Lambda=10 로드맵 + PASQAL 50% 감소 + Infleqtion 0.975 + IonQ 99.99% + NVIDIA <1us        | 중간   |
 | **지정학적 리스크**        | 미중 양자 경쟁, 수출통제. 중국 $10B+. CHIPS 자금 = 미국 내 제조 강제                                                              | 중간   |
-| **HNDL**                   | Q-Day ~2030. **Google ECDSA-256 자원 20x 감소 백서로 Q-Day 경로 단축 신호** → Cloudflare/Google 2029 데드라인 가속. PQC 전환 지연 = 현재 데이터 위험 | 높음   |
+| **HNDL**                   | Q-Day ~2030. **Google ECDSA-256 자원 20x 감소 백서로 Q-Day 경로 단축 신호** → Cloudflare/Google 2029 데드라인 가속. **FIPS 140-2 sunset 09-21 확정(신규 연방조달 FIPS 140-3만·검증 500일+)**. PQC 전환 지연 = 현재 데이터 위험 | 높음   |
 | **한국 격차**              | 선도국 대비 5년. 풀스택 2028 목표. IQM 한국 진출이 기술 이전 촉매                                                                 | 중간   |
 | **펀딩**                   | VC 위축 가능. 단 CHIPS $2B + Quantinuum IPO $1.68B + 기업 현금(IonQ $3.1B, QUBT $1.4B 등) 확보                                    | 낮음   |
 

@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-12
-valid_until: 2026-10-12
+updated: 2026-09-19
+valid_until: 2026-10-19
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -205,10 +205,19 @@ sources:
     Tokamak Energy,
     Interesting Engineering,
     CAMX,
+    Referently,
+    Physics World,
+    MIT Sustainability,
+    The Business Research Company,
+    Verified Market Reports,
+    Newspim,
+    Mysteel,
+    eepower,
+    Northern Miner,
   ]
 confidence: high
-last_synced_from_db: 2026-09-12
-db_records: 498
+last_synced_from_db: 2026-09-19
+db_records: 509
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -217,6 +226,23 @@ db_records: 498
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.09.19 핵심 변화 요약 (9/12→9/19 윈도우)**:
+>
+> 1. **[중대·신규] 희토류 — 두 번째 D-day 확인: 갈륨·게르마늄·안티모니 수출통제 유예 2026.11.27 종료(희토류 11/10과 별개, 11월에 2개 D-day 집중) + 中 지수 262.0(9/17, 전주 259.5서 회복 상승) + 9월 임계광물 게르마늄 +10.04%(19종 최대상승)·스칸듐 -7.36%(최대하락) + 유예종료 D-52** — **[신규] 희토류 확대통제 11/10 유예종료와 별개로, 2023년 도입된 中 갈륨·게르마늄·안티모니 수출금지 유예가 2026.11.27 종료 — 11월에 두 개의 별도 D-day 집중(11/10 희토류 5종+역외 0.1% 룰, 11/27 Ga/Ge/Sb). 자석통제+Ga/Ge 통제 수렴이 EV·방산전자·첨단반도체 공급망을 동시 압박.** 中 희토류산업협회(ACREI) 가격지수 262.0(9/17, 9/16 261.8서 flat)로 **전주(9/12) 259.5서 회복·소폭 상승 전환.** 中내 벤치마크(9월중순): **Dy oxide RMB1,415-1,455/kg($212-218)·Tb oxide RMB6,610-6,670/kg($992-1,001)·NdPr SMM ~$96/kg(9/8)**, USA Rare Earth 공시 역외(non-China) 지시가 Dy ~$1,100/kg(5배)·Tb ~$4,000/kg(4배). **2026년 9월 임계광물 가격: 게르마늄 +10.04%(19종 중 최대 상승)·스칸듐 -7.36%(최대 하락)·19종 중 10 상승/8 하락/1 flat(갈륨).** 中 채굴 희토 ~61%·정제 91% 지배, 유럽 Ga·중희토(Dy/Tb) ~5배·게르마늄 ~3배 中내가 대비. 2025.10.9 확대통제(SmCo·Tb/Dy 함유 NdFeB·역외 0.1% 룰) 12개월 유예 2026.11.10 종료 -> **9/19 기준 D-52(전주 D-59)**, IEA Global Critical Minerals Outlook 2026: 전면 시행 시 中외 $6.5T 다운스트림 리스크 [rare-earth-mining/Referently/CSIS/IEA(11/27·9월 임계광물), MacroMicro/RareEarthExchanges/critical-minerals-news(지수·가격)]
+>
+> 2. **희토류 [보강] — MP Materials Q3 NdPr >1,000t 가이드(Q2 840t +41% YoY)·첫 상업 자석 인도 Q4 2026·Gd 9-figure 오프테이크, Pentagon 희토 자석 수요 2030 ~10,000t/y(3배·현 中외 생산 절반 흡수)** — MP Materials COO Rosenthal(Q2 콜): Q3 NdPr 생산 >1,000t 예상(신뢰성·처리량 개선), Magnetics 첫 상업 자석 인도 Q4 2026 개시·Gd 9-figure 장기 오프테이크 추진. **Pentagon(DoW) 희토 자석 수요 2030년까지 ~3배 10,000t/y로 증가 전망 — 현 中외 전체 생산의 근 절반 흡수 규모.** Pentagon MP NdPr 10년 $110/kg floor·2월 노스레이크 텍사스 $1.25B+ 10X 컴플렉스, USA Rare Earth 6월 Commerce $1.6B(연방 $277M+대출 최대 $1.3B) 재확인 [Seeking Alpha/Benzinga/MP Materials IR/mining.com/Northern Miner]
+>
+> 3. **배터리소재 [신규] — CATL Na-ion(Naxtra) ESS 첫 인도 2026.9월 개시·연내 GWh급·9/5 中 GB 38031-2025 안전인증 통과·60GWh 공급계약·2026말 대량양산, [신규 대비] 전고체 진영(Toyota/QS/Samsung) 공격 로드맵 vs CATL 신중론(4/9)** — CATL Na-ion(Naxtra) ESS 첫 고객 인도 2026.9월 개시·연내 GWh급 출하, **9/5 中 GB 38031-2025 'EV 동력배터리 안전요구' 인증 통과**·60GWh 공급계약·2026말 풀스케일 대량양산(재료원가 반감)·175Wh/kg·500km. **[신규 진영 온도차] 전고체: Toyota 日정부 인증·2026 생산개시(600+mi·10-80% <10분·$15B 투자·최다특허), QuantumScape Eagle라인 2026.2월 가동·QSE-5 844Wh/L·2027-28 양산, Samsung SDI 2027 양산·엔지니어링샘플 500Wh/kg·BMW 2026말 공급 — 09.12 KB의 CATL CEO Zeng 신중론(기술성숙 4/9)과 대비되는 서방/日/韓 진영 공격적 로드맵 유지** [CarNewsChina/CATL/BatteryTechOnline(CATL), eepower/QuantumScape SEC/tahaabbasi(전고체)]
+>
+> 4. **리튬 하락 심화 — 中 배터리급 탄산리튬 스팟 RMB133,200/t(9/17)·레인지 RMB132,000-141,000/t·LC2701 선물 142,100(-3.35%)·Benchmark CIF아시아 $19,750/t(9/2), 국경절 전 관망·고재고·가공능력 과잉으로 3주 연속 하락** — 中 배터리급 탄산리튬 스팟 RMB133,200/t(9/17), LC2701 선물 종가 -3.35% 142,100위안, Benchmark CIF아시아 $19,750/t($19.75/kg, 9/2, WoW -0.8%). 국경절(國慶) 연휴 전 다운스트림 신중구매·고재고·구조적 가공능력 과잉으로 하방. **09.12 KB RMB145,750/t(9/9)->RMB133,200/t(9/17), 09.05 RMB152,000 상승세서 방향 반전 후 3주 연속 하락 가속.** [시리즈·그레이드별 상이(SMM/Mysteel 中내 스팟·GFEX 선물 혼재)로 레벨 confidence medium·하락방향 high]. 리튬 하락이 단기 Na-ion 코스트 인센티브 재약화 [SMM/Mysteel/Benchmark Minerals/Trading Economics]
+>
+> 5. **탄소섬유 [델타] — CAMX 2026(9/21-24 애틀랜타) 출품: Teijin Carbon America 급속경화 프리프레그·수지주입·TPC, Toray U.S. Torayca CF·Cetex/CFRT 열가소성 프리프레그 + [신규] TC1810 고온 프리세라믹 시스템·EcoTerra 바이오기반 플랙스 패브릭** — CAMX 2026(2026.9.21-24, 미 조지아 애틀랜타): Teijin Carbon America 급속경화(rapid-cure) 프리프레그·수지주입 시스템·열가소성복합재(TPC) 출품(high-rate 항공/방산). **Toray 美사업부 Torayca 탄소섬유·Cetex/CFRT 열가소성 프리프레그 + 신규 TC1810 고온 프리세라믹(preceramic) 시스템·EcoTerra 바이오기반 플랙스(flax) 패브릭 추가(09.12 Teijin 출품 후속·Toray 신제품 델타).** 항공우주 CF 핵심 공급사 Mitsubishi Chemical·Toray·Solvay·DuPont·Formosa·Teijin·Hexcel(북미 최대지역 2025) [CompositesWorld/Teijin/Toray/GII Research]
+>
+> 6. **초전도/CNT/반도체소재 [재확인·정량화] — CFS SPARC REBCO ~20T 자석 재확인(신규 마일스톤 제한적) / CNT 도전재 시장 ~$2.04B by 2030 CAGR 13.3%·CNT 도전재시장 가치 ~55-65% 점유(2026) / 포토레지스트 $3.24B(2026)->$5.53B(2031)·JSR/TOK/Shin-Etsu EUV 물량 ~85%·232 변동없음** — CFS SPARC REBCO(희토바륨구리산화물) HTS 자석 ~20T·최대 20K 고전류밀도, 1번째 자석 완성(2026.1)·first plasma 2026/net energy 2027 재확인(9/19 신규 마일스톤 제한적)·REBCO 테이프 병목 지속. **CNT: CNT 도전재 시장 ~$2.04B by 2030 CAGR 13.3%, CNT가 도전재 시장 가치 ~55-65% 점유(2026·나머지 그래핀/하이브리드), Si-C 음극 셀 2024-2026 출하(주요 배터리사)·핵심공급 LG화학·Toray·Arkema·Resonac·Kumho.** 반도체소재: 포토레지스트 $3.24B(2026)->$5.53B(2031) CAGR 11.31%·JSR/TOK/Shin-Etsu EUV 레지스트 물량 ~85% 과점·JSR 대만 팹(5월)·폴리실리콘 232 12/4/2026 발효 9월 변동없음(재확인, 세부 semiconductor.md) [Physics World/CFS/MIT(초전도), Research and Markets/The Business Research Company(CNT), MarketsandMarkets/Mordor/Tom's Hardware/White & Case(반도체소재)]
+>
+> 7. **한국 소부장 [갱신] — 희토 재자원화 스케일업: 폐PC 연 ~9.5만대서 ~2t 희토 영구자석 회수 전망(기후부)·LG전자 연 4만대 폐가전->1.6t·408억원 재자원화 생태계(폐수소차+폐가전)·NdFeB 대중국 88.0%** — 기후에너지환경부: 연 ~9.5만대 폐컴퓨터에서 ~2t 희토 영구자석 회수 가능 전망(폐PC HDD 자석). LG전자 폐가전 회수기술 연 ~4만대서 1.6t. 정부 408억원 재자원화 생태계 구축 사업(폐수소차+폐가전)·희토 저감 자석 생산라인 소부장 투자보조금. 韓 NdFeB 대중국 수입비중 88.0%·세계 영구자석 정제·가공 80-90%+ 中 점유(09.05 KB 재활용 시범 후속 스케일업) [Newspim/아시아경제/아주경제/KDI]
+
 
 > **2026.09.12 핵심 변화 요약 (9/5→9/12 윈도우)**:
 >
