@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-13
-valid_until: 2026-10-13
+updated: 2026-09-20
+valid_until: 2026-10-20
 sector: science_tech
 sources:
   [
@@ -722,7 +722,18 @@ db_records: 1170
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-09-13 갱신)
+### 16-C. 주간 과학기술 동향 (2026-09-20 갱신)
+
+> **2026-09-13~09-20 주간 통합 수집(web_search 8회·WebFetch 2회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부) 갱신은 토요일 weekly-frontier 담당. 아래 표 = 통합 뷰 크로스커팅 최신값.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[양자]** | ★ **IEEE Quantum Week 2026(QCE26) 9/13~18 토론토** — **IonQ 피어리뷰 9편 발표**(단백질폴딩·임상데이터 결측보정·산업유체·화물물류)+7개 이벤트(9/14 공지)·**IQM NVIDIA CUDA-Q Logical 채택**(Halocene QEC)+LUMI-IQ EuroHPC 3단계 초전도 업그레이드→**2029 유럽 첫 논리큐빗** 목표·QC Design Plaquette-CUDA-Q Logical 통합. **DOE 'Quantum Genesis Q Competition' 최대 $215M**(9/17, 검증성과 연계·2028 과학적 유효성 목표) | 2026.09 | Quantum Insider / HPCwire / IEEE QCE26 |
+| **[바이오]** | ★ **9월 중순 PDUFA 밀집** = **Ultragenyx UX111**(rebisufligene, AAV9) **9/19 시한**=최초 Sanfilippo A형(MPS IIIA) 유전자치료제·최대 8년 추적데이터(NeurologyLive 승인 보도)·앞서 **DTX401(Genglycos, GSD Ia) 가속승인**. **Nuvectis 지데삼티닙 9/18 ROS1+ NSCLC**. 릴루트리진(SCN2A/8A DEE)은 major amendment로 9/27→**12/27 연기** | 2026.09 | BioSpace / BiopharmaWatch / NeurologyLive |
+| **[소재·물리]** | ★ **NC State 강성 하이브리드 페로브스카이트 초단열재**(9/18 Science Advances) = 열전도도 **~0.04 W/m·K**(실리콘 대비 5배 단열·700~1만배 강성)·벤젠고리 치환으로 강성·내열 정밀제어·박막코팅 산업화 가능. 그 외 Nature Materials 9월: 릴랙서 강유전체 적응형전자·하이브리드 페로브스카이트 나노결정 LED | 2026.09 | Science Advances / phys.org / Nature Materials |
+| **[AI4Science·반도체]** | IonQ 양자-과학 응용 논문(단백질폴딩·임상 결측보정)=양자머신러닝 실사용 진입. 반도체 기초연구: **imec+겐트대 300mm Si/SiGe 120층 적층**(3D DRAM·GAA)·**TSMC+양명교통대 2D 채널 버퍼공학**(sub-1nm 경로) 등 9월 진전(전문=semiconductor.md) | 2026.09 | IEEE QW / IEEE Spectrum / wccftech |
+
+#### (이전 주간) 2026-09-13 기록
 
 > **2026-09-06~09-13 주간 통합 수집(web_search 12회, global-data 일요런).** 프론티어 전문 갱신은 토요일 weekly-frontier 담당. 아래 표 = 통합 뷰 크로스커팅 최신값.
 
@@ -747,21 +758,6 @@ db_records: 1170
 | **[바이오]** | CASGEVY Q2 매출 $76M(+78% QoQ)·CRISPR Tx CTX310 ESC 8월 Phase 1a·Intellia lonvo-z BLA 하반기·출시 2027 상반기(재확인) | 2026.09 | BioSpace / Nature Biotech |
 | **[AI4Science]** | **Isomorphic Labs IsoDDE**('AlphaFold 4'급, 단백질-약물·항체 정밀 예측)·DeepMind **GNoME 220만 결정구조**(Li이온 전도체 5.2만·736 합성) | 2026.09 | Scientific American / DeepMind |
 
-#### (이전 주간) 2026-08-23 기록
-
-> 2026-08-16~08-23 주간 수집(web_search 10회). 프론티어 4종(양자/우주/SMR·핵융합/차세대통신)은 헤드라인 수준(전문 갱신은 토요일 weekly-frontier 담당, 8/22 반영). 개별 이벤트는 §3/5/9/12-B 및 jsonl 상세.
-
-| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
-| --- | --- | --- | --- |
-| **[바이오]** | ★ **8월 FDA 승인 확정** = **Moderna mFLUSIVA(mRNA-1010) 독감 mRNA백신 8/5 승인**(50~64 정식+65+ 가속)·**Replimune TUDRIQEV(RP1)+nivolumab 진행성 흑색종 승인**(7/30 자문위 10:3→승인). 8월말 PDUFA 밀집(Ultragenyx DTX401 8/23·피하 lecanemab 8/24·Gilead 단일정 8/27·ITM 177Lu 8/28). **Amylyx avexitide Phase 3 -55% 저혈당** 충족(8/18) | 2026.08 | Entry to Regulatory / BiopharmaWatch / BioSpace |
-| **[AI4Science]** | ★ **GenBio AI(David Baker+Eric Xing) 첫 '가상세포 월드모델' AIDO Cell 공개**(8/18~19) = DNA→RNA→단백질→전세포 전 계층 시뮬레이션(multiscale+stateful), imatinib 백혈병 기전 예비 모델링, K562/HepG2 지원 = 전사체 중심 세포 파운데이션모델 넘어선 접근 | 2026.08 | STAT News / HPCwire / SynBioBeta |
-| **[합성생물]** | 생성AI가 자연 대비 우월한 **CRISPR 유전자편집 효소 설계**(합성 후보 수천종·서열 천연 대비 ~30% 상이, 다종 세포 편집 성공) = 7/16 Science SynTnpB 계보 연장. **Raygun** 단백질언어모델(기능 유지 재설계) | 2026.08 | EurekAlert / Technology Networks / phys.org |
-| **[소재]** | **나트륨이온** 진전 = NUS팀 graphitic carbon nitride(요소 550도)로 덴드라이트 억제·2,000시간+, U.Surrey 나트륨바나듐옥사이드 출력 ~2배(中 Hina Tesla 리튬 벤치마크 근접). **전고체** 연질 리튬 덴드라이트→세라믹 균열→단락 기전 규명 | 2026.08 | ScienceDaily / Live Science / Interesting Eng. |
-| **[기후과학]** | **2026 전지구 기온 전망 ~1.51도**(산업화前 대비)=역대 2번째 더운 해 전망(2024 1.52도 하회), Met Office 1.46도·4년 연속 1.4도 초과. **1.5도 잔여 탄소예산 ~130 GtCO2**(2026 초)=현 배출 ~3년 내 소진. 자연 탄소흡수원 효율 저하 | 2026.08 | Carbon Brief / Met Office / intelligentliving |
-| **[기초물리]** | 원자스케일 이중슬릿 간섭(STEM)·절대영도 근방 **첫 순환 양자열기관**·햇빛서 직접 양자얽힘 생성·Caltech 실리콘칩 초저손실 가시광 광경로·Cornell 탄탈럼 큐빗 증착온도 400→200도 | 2026.08 | Nature / ScienceDaily |
-| **[로보틱스]** | **Figure 03 BotQ 7/23 1,000번째 생산**(시간당 1대·BMW 물류)·**Tesla Optimus V3 Fremont 저물량 여름 착수**·Unitree 2026 1~2만대 목표·AgiBot 누적 1.5만대 | 2026.08 | Technology.org / humanoid.press |
-| **[프론티어 헤드라인]** | (전문=weekly-frontier 8/22) **中 Chang'e 7 8/24 발사 확정**(달남극 Shackleton 11월 착륙)·**SpaceX SPCX ~$140**(MS $300 목표 재확인)·**LUNR $600M+ 다위성 통신 ATP**·**Rolls-Royce SMR 유럽 원자로섬 부품에 두산에너빌리티·Škoda JS 선정** | 2026.08 | SpaceNews / 24-7 Wall St / WNN |
-
 ---
 
 ### 17. 데이터 정합성 검증 (자동)
@@ -781,7 +777,7 @@ db_records: 1170
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1170건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1189건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_

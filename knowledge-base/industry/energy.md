@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-13
-valid_until: 2026-10-13
+updated: 2026-09-20
+valid_until: 2026-10-20
 sector: energy
 sources:
   [
@@ -96,15 +96,23 @@ sources:
     TradeTech,
     WorldOil,
     energyconnects,
+    Convex,
+    ANS,
+    carboncredits,
+    Newspim,
+    AsiaE,
+    한국투자증권,
   ]
 confidence: high
-last_synced_from_db: 2026-09-13
-db_records: 502
+last_synced_from_db: 2026-09-20
+db_records: 512
 ---
 
 # 에너지 섹터 Knowledge Base
 
 ## ★ CURRENT (에이전트는 이 파일의 데이터를 그대로 사용) ★
+
+> **핵심 변화 (09-13 -> 09-20):** **유가 주중 강세 후 되돌림 -- Brent 9/15 **$107.46**서 9/17 settle **$104.82**, WTI 9/17 **$101.91** 후 9/18 **$99.53**(-2.34% d/d). 주간 여전히 +~2%. 연초래 +50%+.** **Brent-WTI 스프레드 >$15로 2012래 최대 -- 사우디 East-West(Petroline) 송유관 이란계 세력 피격으로 폐쇄(~7Mb/d Red Sea 배정분 차단), 사우디 원유를 호르무즈로 우회 수송하며 WTI 상대 약세. 사우디 '수일 내 송유관 재가동 가능' 시사가 late-week(9/17~18) 되돌림 촉매.** **OPEC+: 9/6 JMMC 10월 쿼터 동결(Q4 증산 pause) 유지, 이번 주 신규 회의 없음. 2023 자발감산 1.65Mb/d 롤백 완료 후 pause, 2022-era ~2Mb/d 감산 잔존.** **가스: HH $2.8(9/14)~$2.91(9/18), 전주 $3.0서 소폭↓(美 생산·재고 견조). JKM mid-$28/MBtu(전주 mid-$25서↑, ~2.5년래 최고). TTF **$27.0/MBtu**(전주 $24.5서↑, 9/10 $28 상회) -- 정밀 spot 확정. 촉매: US-Iran 긴장·후티의 사우디 에너지시설 공격.** **원자력 롤러코스터: 9/17(목) House **Ratepayer Protection Act** 통과(데이터센터 등 대형수요자가 자체 발전·송전·그리드 업그레이드 비용 부담 -> 전용 SMR 전력 유리)에 Oklo +13%·NuScale +10% 랠리. 9/18(금) 반납 -- NuScale(SMR) **$8.27**(-8.52%, YTD -40%)·Oklo **$38.00**(-4.16%)·Centrus(LEU) **$145.23**(-3.08%)·URA -2%(SPY +0.13% -- 섹터 순환매도지 광범위 risk-off 아님).** **우라늄: 현물 ~$90/lb($89.99 9/11, +~20% YoY), 장기계약 명목 사상최고 **~$96.50/lb**(9월, 2007 record $95 경신). Kazatomprom '어떤 현물가에도 증산·확대 안함' 재확인 + 2026 명목 capacity ~3,000tU 감축(황산플랜트 지연) -- 구조적 공급부족 + AI DC 수요.** **한국: S-Oil **143,600원**(9/17, -3.43%; 9/16 144,100, 1년 +145.1%[58,800->144,100]), 신한 TP 20만->**22만** 상향(9/17)·한투 18만 -- 지난달 복합정제마진 $34/bbl(과거평균 4.8배·경유 4.3배), S-Oil 2~3Q26 >$41/bbl(발레로 $39 상회) record 지속. 두산에너빌리티 9/8 종가 **87,900원**(+10.98%, NXT 89,300) -- 젠슨 황 방한(AI DC 전력공급망) + 한불(마크롱) 원전 협력 기대, 9/15 미래에셋 Buy TP **12만원**·美 APR1400 2기·KEPCO 웨스팅하우스 인수 잠재·제12차 전기본 2040 최대전력수요 **158.4GW**(+26.6GW 상향). 정확 late-week 종가는 미확정(주중 강세 지속).** **핵심 분기점: Petroline 재가동·호르무즈 정상화 -> Brent $100 하방 압력. 교전 지속·정제 타이트·가스 겨울 프리미엄 -> $105~110 상방. 현재 지정학 상방 vs 수요약화(IEA -2.5Mb/d·EIA 2H26 ~$90) 대치 $99~107 고변동 국면.** [Convex/TradingEconomics/EIA STEO·Wikipedia oil chronology 9/15~18/Canada LNG Group 9/14/247WallSt 9/17~18/ANS·Sprott·DiscoveryAlert·carboncredits 9월/Newspim·AsiaE·신한·한투 9/16~17/CBC뉴스 9/8·9/15·미래에셋]
 
 > **핵심 변화 (09-06 -> 09-13):** **유가 주중 급등 후 외교 되돌림 -- Brent 9/4 $96.28서 9/11 개장 **$108.92** 후 settle **$104.61**(-2.81% d/d), 주간 **+~9%**. WTI 9/7 $92.30 -> 9/9 $96.24. 연초래 +50%+.** **촉매(1) US-Iran 호르무즈 교전 재개 -- 약 1개월 소강 후 주말(9/5~6) 양측 유조선 상호 타격으로 재점화. 사우디 East-West(Petroline) 송유관 다중 공격 후 일시 폐쇄로 급등 가속(연도 교차검증 완료·2026).** **되돌림 촉매(2) -- 9/12 GCC-이란 오만 회담(호르무즈 임시 통항 관리 협의) 소식에 late-week Brent $108->$104 되돌림.** **OPEC+ 9/6 JMMC: 10월 쿼터 9월 수준 **동결** 확정 -- 2023 자발감산 1.65Mb/d 롤백 완료 후 첫 pause. 10월 쿼터 예 RU 9.949·SA 10.478·이라크 4.431·쿠웨이트 2.676 Mb/d. Q4 추가증산 pause, 초점 2027 baseline 평가·capacity mechanism 합의.** **IEA 9월 OMR: 2026 글로벌 수요 **-2.5Mb/d 위축**(코로나 이후 최대 연간 감소), OPEC 수요증가 전망 5회 연속 하향. EIA: Brent 2H26 avg ~$90, 2027 美 생산 14.3Mb/d 상향 -- 중기 하방(수요약화+증산완료+2027 overhang) vs 단기 지정학 상방 대치.** **가스: HH $2.83(9/11, 전주 ~$2.97서 소폭↓~보합, LNG feedgas·냉방수요 지지). JKM mid-$25s/MBtu(9/2 high-$25s로 2023 Q1래 최고, 타이트+겨울경쟁+호르무즈). TTF 정밀 spot 미확정(caution).** **원자력: 9/8 NuScale(SMR) +13%(YTD -24%)·Oklo +7% $43.99(YTD -39%) -- 촉매없는 순환반등('셀오프 소진?'). 9/10 Piper Sandler 섹터 커버리지 분할로 Oklo·NuScale·X-Energy 동반 -5%. NuScale Q2 현금 $1.9B·ENTRA1 TVA 최대 6GW·유일 美 NRC 설계인증. Oklo Aurora(INL) 첫 상업발전 2027말~2028초·~14GW 파이프라인(Switch 12GW 앵커). URA ETF +4%. 우라늄 현물 $89.49/lb(9/3 기준, 신규수치 미확정).** **한국: S-Oil 150,900원(9/4 157,300서 되돌림·약세; 2~3Q26 복합정제마진 >$41/bbl로 발레로 $39 상회, 정유 고마진 내년까지 지속 전망), SK이노베이션 131,500원(138,300서 되돌림·차익실현, GS는 한 달 +42% 순환), 두산에너빌리티 '8만빌리티'(~80,000원) 회복 움직임(9/6 79,200서, 컨센 TP 129,375원).** **핵심 분기점: 호르무즈 교전 지속+오만 회담 결렬 -> Brent $105~115+ 상방. 오만 회담 타결·IEA 수요위축·2027 overhang -> 중기 하방(EIA $90). 현재 지정학 상방 vs 수요약화 대치 $100~108 고변동 국면.** [TradingEconomics·Vantage·Fortune·Buckhead 9/7~11/CNBC·Astana Times·energyconnects 9/6/IEA·EIA STEO Sep/Canada LNG Group 9/7/247WallSt·Yahoo 9/8~10/한국경제·CBC뉴스 9월]
 
