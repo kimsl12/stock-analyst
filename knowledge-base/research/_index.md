@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-09-19
+last_updated: 2026-09-26
 update_cycle: weekly
 status: active
-total_headlines: 148
+total_headlines: 152
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -68,6 +68,8 @@ total_headlines: 148
 
 - 📄 [Industry] SK hynix 16-Hi HBM4 고객 퀄리피케이션 진입 + Hot Chips 2026 하이브리드본딩 로드맵 (2026-09) — "12-Hi HBM4 정상 양산 중, 16-Hi는 고객 퀄 단계 진입(CES 2026 프로토타입 공개 후 공식 확인)·48GB 2TB/s 사양 — NVIDIA가 3사에 16-Hi HBM4 Q4 2026 공급 요청, 삼성은 '16단 고객 수요 제한적·상용화 불필요(기술은 보유)' 입장으로 SK 대비 소극적" → Hot Chips 2026서 SK하이닉스는 하이브리드본딩을 HBM4E엔 미적용(AI 메모리 775µm 높이 한계 도달)·MR-MUF를 NVIDIA Rubin 세대까지 연장, 하이브리드본딩은 HBM5/20-Hi 이후 적용 방침 공개. 7/02 3사 16-Hi 발주 3파전·7/13 SK 12단 NVIDIA 출하 개시 후속 — 16단 물량 배분 및 본딩 기술 로드맵 분화가 3사 경쟁 다음 관전 포인트 (📄 [source](https://www.benzinga.com/news/26/09/61800956/sk-hynix-16-layer-hbm4-nvidia-rubin-micron-samsung) / [source2](https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling))
 
+- 📄 [Industry] Micron FY4Q26 실적 프리뷰 (2026-09-30 발표 예정) — "자체 Q4 가이던스 매출 $50.0B±$1.0B(사상 첫 분기 $50B 마일스톤·FY3Q26 $41.46B 대비 약 +21% QoQ)·GAAP 총이익률 약 86%·Non-GAAP 희석 EPS $31.00±$1.00, HBM4 누적 매출 $1B 돌파·12단 HBM4 램프가 HBM3E 대비 약 2배 속도" → 마이크론이 히로시마에 ¥1.5조(약 $93억) HBM4 신규 라인 투자. FY3Q26(매출 $41.46B·+74% QoQ, DRAM +67%·NAND +99%) 실적에 이은 메모리 슈퍼사이클·HBM4 램프 실측 이벤트 — 9/30 실적이 SK하이닉스·삼성 대비 마이크론 HBM4 추격 방향타. 9/19·9/26 트래킹(Micron FY4Q26) 일정 실측, 실제 실적 수치는 다음 회차 verify (📄 [source](https://finance.biggo.com/news/95f33231-7a1d-4f9d-9b97-a9401d42fcc6) / [source2](https://www.stocktitan.net/news/MU/micron-technology-inc-reports-record-results-for-the-third-quarter-6f50161e5zxh.html))
+
 ### 규제
 
 - 📄 [Policy] US BIS / MATCH Act 입법 (2026-04) — "Multilateral Alignment of Technology Controls on Hardware Act" → 미국 단독 통제→동맹 다자 통제 전환, ASML/Nikon/Canon 우회 차단 명문화 시도
@@ -102,6 +104,8 @@ total_headlines: 148
 - 📄 [White Paper] 유가 재점화 — 이란 美 해군 함정 2차 공격·호르무즈 통항 급감에 Brent $99~~108 급등 (2026-09-08) — "Brent 9월 초 장중 $108/bbl(5/19 이후 최고) 터치 후 약 $99.05(+2%) 안착 — 이란이 美 해군 함정에 미공개 2차 공격했다는 보도, 호르무즈 통항이 5월 이후 최저(최근 10일 일평균 약 10척)로 급감" → Goldman Sachs "호르무즈·홍해 선박 공격 격화가 유가 상방 최대 드라이버"·Brent 2026년 말 전망 $85로 상향, 걸프 생산이 전쟁 전 대비 -4 mb/d 지속 시 2027년 $120 초과 경고. OPEC+(사우디·러시아·이라크·쿠웨이트·카자흐·알제리·오만)는 9월 쿼터를 10월까지 동결(10/4 재회의). 8/24 회차 이란·오만 통항 합의($88 되돌림)에서 불과 2주 만에 재긴장 — 중동發 전쟁 프리미엄 재점화, 8월 CPI 에너지 +2.1% MoM(가솔린 +3.9%)과 정합, 9/11 CPI 헤드라인 상방 채널 ([source](https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html) / [source2](https://tradingeconomics.com/commodity/brent-crude-oil))
 
 - 📄 [White Paper] 유가 동향 — 이란 美 함정·유조선 공격 확대·Houthi 예멘 항구 장악에 Brent $104~~108 고공, 사우디 우회 파이프라인 복구로 소폭 되돌림 (2026-09-17) — "Brent 9/10 약 $108(장중 최고)·9/17 약 $104로 소폭 하락 — 이란 IRGC 해군이 美 함정 2척·유조선 8척·기타 선박 10척 타격 발표, Houthi가 예멘 서해안 핵심 항구 장악, 사우디가 드론 피격된 호르무즈 우회 파이프라인 복구 계획 발표로 일부 되돌림" → Goldman Sachs Brent 2026년 말 전망 $85 상향·걸프 생산이 전쟁 전 대비 -4 mb/d 지속 시 2027년 $120 초과 경고 재확인. 9/8 회차($99~~108, 이란 2차 공격)에서 지정학 전선이 호르무즈+홍해(Bab el-Mandeb)+예멘 항구로 확대 — 중동發 전쟁 프리미엄 고착, 8월 CPI 에너지 +2.1%(가솔린 +3.9%)·9/16 FOMC 인상의 인플레 상방 논거와 정합. 9/12 트래킹(이란 재교전·호르무즈 통항) 상방 실현 (📄 [source](https://www.washingtontimes.com/news/2026/sep/10/oil-prices-rise-iran-targets-vessels-strait-hormuz-houthis-seize/) / [source2](https://www.cnbc.com/2026/09/09/oil-prices-today-wti-brent-us-iran-hormuz-attacks.html) / [source3](https://tradingeconomics.com/commodity/brent-crude-oil))
+
+- 📄 [White Paper] 유가 급등 — Houthi 사우디 Yanbu 항구 미사일 공격·이란 '인도양 확전' 위협에 Brent $106~~108 재급등, 美·이란 뉴욕 협상으로 소폭 되돌림 (2026-09-24~~25) — "Brent 9/24 종가 $106.60(+3.4%·장중 고점 $108.23)·WTI $94.61(+2.7%), 9월 누적 Brent +17%·WTI +10% — Houthi가 사우디 Yanbu(홍해 핵심 석유 수출터미널)·Taif에 탄도미사일 6발 발사(전량 요격), 이란軍 고위관계자 '공격받으면 인도양으로 전선 확대' 위협" → 다만 美·이란 협상단이 뉴욕서 호르무즈 통항 단계적 재개(↔ 美 해군 봉쇄 해제) 협상 중이란 보도로 장중 고점 대비 되돌림. 9/25 The National '이란 휴전·Houthi 공격 사이 유가 관망'. 9/17 회차($104~~108·사우디 우회 파이프라인 복구)에서 지정학 전선이 홍해 사우디 항구·인도양 위협으로 재확대 — 중동發 전쟁 프리미엄 고착, 8월 CPI 에너지 +2.1%·9/16 FOMC 인상 인플레 상방 논거와 정합. 9/19 트래킹(이란 함정 공격·호르무즈 통항) 상방 실현 (📄 [source](https://www.cnbc.com/2026/09/24/oil-iran-crude-kepler-trump-us-un-.html) / [source2](https://www.thenationalnews.com/business/energy/2026/09/25/oil-prices-waver-in-face-of-iran-war-truce-and-houthi-attacks/) / [source3](https://www.nationthailand.com/news/world/40071450) / [source4](https://tradingeconomics.com/commodity/brent-crude-oil))
 
 ### 컨퍼런스/백서
 
@@ -200,6 +204,8 @@ total_headlines: 148
 
 - 📄 [Policy] FDA zidesamtinib(Jideytro) 승인 (2026-07-22, PDUFA 9/18 앞당김·직전 회차 미포착 catch-up) — "ROS1 양성 국소진행성·전이성 NSCLC 2차 치료(1개 이상 ROS1 TKI 기치료) 승인 — GSK가 Nuvalent 인수로 편입한 제품, ARROS-1 다기관 시험(117명: 1개 선치료 59명·2개 이상 58명) 기반" → Breakthrough Therapy·Orphan Drug 지정 후 승인. 원래 목표시한(9/18)보다 약 2개월 앞당겨 7/22 승인 — 9/12 회차 '차주 갱신 예상'에 미래 일정(9/18)·발행사 오기(Nuvectis로 표기)로 트래킹만 하고 미등재했던 항목의 실측 정정(실제 발행사 GSK/Nuvalent, 승인일 7/22, 제품명 Jideytro). 차세대 ROS1 억제제 2차 표준요법 진입 (📄 FDA 공식 [source](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zidesamtinib-ros1-positive-non-small-cell-lung-cancer) / [source2](https://ascopost.com/news/july-2026/fda-approves-zidesamtinib-for-second-line-treatment-of-ros1-positive-nsclc/) / GSK [source3](https://www.gsk.com/en-gb/media/press-releases/jideytro-zidesamtinib-approved-in-the-us-for-previously-treated-ros1-positive-non-small-cell-lung-cancer/))
 
+- 📄 [Policy] FDA camizestrant(브랜드 Etcamah) 가속승인 (2026-09-04, 직전 회차 PDUFA 연장 추적 실측) — "AstraZeneca 카미제스트란트 + CDK4/6 억제제(아베마시클립·팔보시클립·리보시클립) 병용, HR+/HER2- 국소진행·전이성 유방암서 AI+CDK4/6i 치료 중 ESR1 변이 검출 시 조기 전환 적응증 가속승인 — FDA 최초로 방사선학적 진행 이전 순환종양DNA(ctDNA) 내성변이 검출 기반 승인" → 동반진단으로 Guardant360 CDx 동시 승인. 4월 ODAC 3-6 반대·PFS2 종료점 불수용으로 PDUFA 연장(6월 회차)됐던 건이 SERENA-6 ctDNA 클리어런스 데이터로 재설득 성공 — 'ctDNA 트리거 조기 전환'이라는 새 종양학 패러다임 첫 규제 인정, SERD/PROTAC 경구 분해제(Veppanu 등) 경쟁 구도에 영향. 9/12·9/19 회차 '차주 예상'(camizestrant 연장 PDUFA 재심)의 실측 답 (📄 FDA 공식 [source](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-camizestrant-cdk46-inhibitor-esr1-mutated-hr-positive-her2-negative) / ASCO Post [source2](https://ascopost.com/news/september-2026/fda-approves-camizestrant-combination-regimen-for-locally-advanced-or-metastatic-breast-cancer/) / ONS [source3](https://www.ons.org/publications-research/voice/news-views/09-2026/fda-grants-accelerated-approval-camizestrant-cdk46-inhibitor-esr1-variant-hr-positive-her2-negative))
+
 ---
 
 ## 💳 Fintech (핀테크)
@@ -228,6 +234,7 @@ total_headlines: 148
 - 📄 [Policy] GENIUS Act 최종규칙 법정시한 도과 — 6개 기관 미완, 제안규칙(NPRM) 단계 잔류 (2026-07-18) — "7/18 시행 1주년 법정시한을 넘겼으나 재무부·OCC·FDIC·NCUA·FinCEN·OFAC 모두 최종 구속력 규칙 미발표 — 전부 NPRM(제안) 상태로 잔류, 스테이블코인 규칙북 미완" → Section 13이 시행 1년 내 최종규칙 의무화했으나 조율된 최종규칙 부재. OCC 6/22자 39쪽 NPRM은 연방관보 게재됐으나 확정 아님. 발행자 자격·준비금·무수익 금지 등 핵심 규칙 불확실성 연장 — 6/26 트래커(35일 스프린트 전망) 후속, 예상과 달리 시한 내 미완으로 확정(직전 회차 '실제 발표문 다음 verify' 예고에 대한 실측 답) ([source](https://cryptodaily.co.uk/2026/07/genius-act-missed-deadline-stablecoin-uncertainty))
 - 📄 [Policy] GENIUS Act 시행규칙 — 발행자 CIP 공동 NPRM, 의견수렴 8/21까지 (2026-08, OCC Bulletin 2026-28) — "7/18 최종규칙 법정시한 도과 후에도 NPRM 단계 잔류 — FinCEN·OCC·Fed·FDIC·NCUA가 결제 스테이블코인 발행자(PPSI) 대상 고객확인프로그램(CIP) 공동 제안규칙 발표, 의견수렴 8/21 마감" → OCC는 6/22 연방관보에 상세 시행 제안 게재. AML/제재 컴플라이언스 NPRM(FinCEN·OFAC 공동)과 병행. 전면 시행은 시행 18개월 후 2027-01-18 — 최종규칙 지연으로 발행자 자격·준비금·무수익 금지 등 불확실성 연장, 7/18 도과(직전 회차) 후속으로 CIP 규칙 구체화 단계 (📄 OCC 공식 [source](https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-28.html) / [source2](https://www.chapman.com/publication-genius-act-rulemaking-tracker))
 - 📄 [Policy] OCC, GENIUS Act 스테이블코인 최종규칙 11월 목표 공언 (2026-08-19, Wyoming Blockchain Symposium) — "Jonathan Gould 통화감독청장 'We will have a final rule out by November, so we are working with great speed here' — 7/18 법정시한 도과 후 제안규칙(NPRM) 단계 잔류 중 최종규칙 시점 첫 구체 제시" → OCC는 2월·6월 두 차례 제안규칙 발표(발행자에 은행비밀법·GENIUS Act 준수 요구). Gould는 감독당국 역할을 1860년대 국법은행권 준비자산 품질보증 임무에 비유 — 스테이블코인 준비금 품질 감독 프레임. 8/21 CIP 의견마감(직전 회차) 후 최종규칙 확정 일정이 11월로 구체화 — 발행자 자격·준비금·무수익 금지 규칙 확정 임박, Circle·Tether 등 발행자 제도권 편입 가시화 (📄 [source](https://www.pymnts.com/legal/2026/occ-promises-final-rule-for-genius-act-by-november/))
+- 📄 [Policy] Fed, GENIUS Act 스테이블코인 준비금·자본 규칙 제안 (2026-09-24, 이사회 만장 승인) — "연준이 은행 발행 결제 스테이블코인 대상 2건의 제안규칙(NPRM)을 EDT 14:30 발표 — 1:1 준비금 백킹 + 발행잔액 $500억 초과 시 2%→1%로 체감하는 자본 부과·신규 발행자 첫 3년 최소자본 $500만·2일 상환 시한, 392쪽 준비금/자본/상환/커스터디 통합 규칙" → 만장일치 이사회 표결로 채택했으나 확정 규칙이 아닌 '제안'(연방관보 게재 후 60일 의견수렴). Michael Barr 이사는 '뱅크런 리스크·AML 집행 공백이 미해소인 채 2027-01 시한 임박' 경고. OCC(2·6월 NPRM)·FinCEN/OFAC(4월 AML NPRM)에 이어 연준 자체 자본·준비금 규칙 합류 — GENIUS Act 발행자 제도권 편입 프레임 완성 단계, 8/19 회차(OCC 11월 최종규칙 목표) 후속. Circle·Tether 등 발행자 자본요건 구체화 채널 (📄 [source](https://www.techtimes.com/articles/328038/20260925/federal-reserve-sets-stablecoin-capital-floor-barr-flags-run-risk-aml-gap.htm) / [source2](https://stablecoininsider.org/fed-genius-act-stablecoin-proposals/) / [source3](https://usethebitcoin.com/news/federal-reserve-stablecoin-reserve-capital-rules-genius-act/))
 
 ---
 
@@ -368,26 +375,25 @@ total_headlines: 148
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-09-19 트래킹)
+## 차주 갱신 예상 항목 (2026-09-26 트래킹)
 
-- **반도체**: Micron FY4Q26 실적(9월 하순, Q4 가이던스 $50B·HBM4 실측), 삼성 HBM4E·하이브리드본딩 수율 후속, SK하이닉스 16-Hi HBM4 퀄 진척·2027 LTA 가격, NVIDIA Rubin 램프·H200 중국 수출, 후속 메모리 PIM/PNM preprint
-- **에너지**: 이란 美 함정 공격 확전·호르무즈 통항 정상화, Houthi 예멘 항구·홍해 공격, 사우디 우회 파이프라인 복구 진척, OPEC+ 10/4 회의(10월 이후 쿼터), IEA WEO 2026(10월)·EIA STEO 유가 전망, DOE AP1000 개별 융자 confirm
-- **매크로**: FOMC 9/16 인상(3.75~~4.00%) 후속 시장 반응·연내 추가 인상 경로, 8월 PCE(9월 하순), 9월 소매판매·PPI, BOJ 1.25%·BOK 3.00% 이후 추가 인상 시그널, NBER/BIS 신규 WP
-- **바이오**: camizestrant 연장 PDUFA 재심, gedatolisib PIK3CA 변이형 sNDA(Q3), 10월 ESMO 2026 종양학, 차세대 GLP-1(오포글리프론/aleniglipron Phase 3) 후속, bioRxiv/medRxiv 신규 preprint
-- **핀테크**: OCC 11월 최종규칙 목표 후속(발행자 자격·준비금·무수익 금지 확정), FinCEN·OFAC AML 최종규칙, Circle OCC 신탁은행 인가 후속
+- **반도체**: Micron FY4Q26 실적(9/30 발표, $50B 가이던스·HBM4 실측), 삼성 HBM4E·하이브리드본딩 수율(80% 골든수율 후속), SK하이닉스 16-Hi HBM4 퀄 진척·2027 LTA 가격, NVIDIA Rubin 램프, 후속 메모리 PIM/PNM preprint
+- **에너지**: 이란 美 함정 공격·호르무즈 통항 정상화, 美·이란 뉴욕 협상 타결 여부(단계적 호르무즈 재개↔봉쇄 해제), Houthi 홍해·사우디 항구 공격, OPEC+ 10/4 회의(10월 이후 쿼터), IEA WEO 2026(10월)·EIA STEO 유가 전망, DOE AP1000 개별 융자 confirm
+- **매크로**: 8월 PCE(9/30)·Q2 GDP 3차 추정(9/30)·8월 소매판매·9월 PPI, FOMC 9/16 인상(3.75~~4.00%) 후속 Fed 위원 발언·연내 추가 인상 경로, BOJ 1.25%·BOK 3.00% 이후 추가 인상 시그널, NBER/BIS 신규 WP
+- **바이오**: camizestrant 가속승인(9/4 실측) 후속 상업화, gedatolisib PIK3CA 변이형 sNDA(Q3), 10월 ESMO 2026 종양학, 차세대 GLP-1(오포글리프론/aleniglipron Phase 3) 후속, bioRxiv/medRxiv 신규 preprint
+- **핀테크**: Fed 스테이블코인 준비금·자본 NPRM(9/24) 60일 의견수렴·최종화, OCC 11월 최종규칙 목표 후속(발행자 자격·준비금·무수익 금지 확정), FinCEN·OFAC AML 최종규칙, Circle OCC 신탁은행 인가 후속
 - **방산**: FY27 NDAA 상원 본회의 처리(계류 지속), Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약, RUSI/CNAS 학술
 - **테크플랫폼**: Adobe Q4 FY26 가이던스·CEO 교체(12/1) 후속, Apple iPhone 17 판매 초동, 후속 SaaS(Okta·MongoDB 등) 실적, NeurIPS/ICML 트랙, EU AI Act Article 50 투명성·GPAI 집행 초기 사례
-- **소비재**: 후속 리테일러 Q3 어닝, 관세 환급 효과 지속 vs 소멸, K자형 분화(재량 약세[Lululemon] vs 디스카운트 강세[Dollar General·오프프라이스])
-- **산업재**: 9월 ISM 제조업, TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, NBER Productivity 신규
+- **소비재**: 후속 리테일러 Q3 어닝(10월), 관세 환급 효과 지속 vs 소멸, K자형 분화(재량 약세[Lululemon] vs 디스카운트 강세[Dollar General·오프프라이스])
+- **산업재**: 9월 ISM 제조업(10/1), TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, NBER Productivity 신규
 - **자동차**: 연방 EV 크레딧 종료 시점 소스 상충(웹 실측 9/30/2025 OBBBA vs 기존 KB 시뮬 전제 9/30/2026) 정합 확인 후 등재, Tesla Q3 인도량(10월 초)·로보택시·에너지, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-09-19 회차)
+## 폴백/미수집 (2026-09-26 회차)
 
-- WebSearch 정상 바인딩 — 8회 검색 + 1회 WebFetch(Korea Herald BOK 날짜/표결 verify)로 5섹터 7신규 헤드라인 실측 수집. 직전 회차(9/12) 이후 1주(9/12~9/19) 윈도우
-- **수집 헤드라인(7건)**: 매크로 3(FOMC 9/16 인상·BOJ 9/18 인상·BOK 8/27 인상 catch-up), 에너지 1(유가 $104~~108 9/17), 반도체 1(SK hynix 16-Hi HBM4 퀄·Hot Chips 2026), 바이오 1(Zidesamtinib 7/22 catch-up), 테크플랫폼 1(Adobe Q3 FY26 9/10 catch-up)
-- **금주 핵심(3중앙은행 동반 인상)**: FOMC 9/16 +25bp(3.75~~4.00%, 2023년 7월 이후 첫 인상·SEP 중앙값 4.1%)·BOJ 9/18 +25bp(1.25%, 약 31년 만 최고)·BOK 8/27 +25bp(3.00%, 2차 연속) — 중동發 유가($104~~108)·인플레 끈적함에 글로벌 긴축 사이클 재개 동조. 매크로 축이 '노동 냉각→인하'에서 '인플레+긴축 사이클 재개'로 완전 확정(9/12 프리뷰 실측 답)
-- **WebFetch/교차검증 현황**: BOK는 Korea Herald 기사 WebFetch로 회의일(8/27)·표결(6-1, 황건일 동결)·인상폭(2.75→3.00%) 직접 확인 — 검색이 'September'로 반환했으나 실제 8/27 회의임을 fetch로 정정(환각 방지). FOMC(CNBC+TradingKey+TechTimes 3소스)·BOJ(CNBC+JapanTimes)·유가(WashingtonTimes+CNBC+TradingEconomics)·SK hynix(Benzinga+Tom's Hardware)·Zidesamtinib(FDA 공식+ASCO Post+GSK)는 2~3개 소스 교차검증 후 수록
-- **catch-up 3건(직전 회차 미포착 정정)**: ① BOK — 5/28(2.50% 동결) 이후 7/16·8/27 2회 인상을 KB가 미포착 → 8/27 3.00% 등재. ② Zidesamtinib — 9/12 '차주 예상'에 발행사 오기(Nuvectis→실제 GSK/Nuvalent)·미래 일정(9/18→실제 7/22 승인)으로 트래킹만 했던 항목 실측 정정. ③ Adobe — 9/10 발표(회계 8/28 종료) 미포착 → 등재(단일 소스 집계, 다음 회차 IR verify 플래그)
-- **바이오 정정**: 9/12 회차 '바이오 신규 0건, 9/18 Nuvectis PDUFA 미확정'으로 스킵했던 판단을 이번 검색으로 뒤집음 — 실제 발행사는 GSK(Nuvalent 인수), 승인일은 9/18보다 앞당긴 7/22. '확정 승인만 등재' 원칙에 부합해 catch-up 등재
-- **미수집 섹터(핀테크·방산·소비재·산업재·자동차)**: OCC 11월 최종규칙 목표(8/19 등재)·NDAA 상원 계류·리테일 Q3 어닝(10월)·산업재 1차 자료·자동차 EV 크레딧 날짜 상충 모두 9/12 이후 신규 확정 이벤트 미특정 → 기존 헤드라인 유지, 차주 재개. 자동차는 날짜 정합 유보 지속(웹 9/30/2025 OBBBA vs KB 시뮬 9/30/2026)
-- 12주 슬라이딩(84일=2026-06-27 이전): ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등 thesis 앵커 및 활성 인용가치 유지 — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
+- WebSearch 정상 바인딩 — 9회 검색으로 3섹터 4신규 헤드라인 실측 수집. 직전 회차(9/19) 이후 1주(9/19~9/26) 윈도우
+- **수집 헤드라인(4건)**: 에너지 1(유가 $106~~108 급등 9/24 — Houthi 사우디 Yanbu·이란 인도양 위협·美이란 뉴욕 협상), 바이오 1(camizestrant FDA 가속승인 9/4 catch-up), 핀테크 1(Fed 스테이블코인 준비금/자본 NPRM 9/24), 반도체 1(Micron FY4Q26 프리뷰·9/30 발표)
+- **금주 핵심(지정학 재점화 + 규제 프레임 진전)**: ① 유가 — Houthi의 사우디 Yanbu 홍해 수출터미널 미사일 공격·이란 인도양 확전 위협으로 Brent 9/24 $106.60(9월 누적 +17%), 단 美·이란 뉴욕 협상(단계적 호르무즈 재개)으로 장중 고점 대비 되돌림. ② Fed 스테이블코인 규칙 — 연준이 GENIUS Act 준비금·자본 NPRM 2건 만장 채택(1:1 준비금·자본 2%→1%·최소자본 $500만·2일 상환), OCC·FinCEN에 이어 연준 합류로 발행자 규제 프레임 완성 단계. ③ camizestrant — 4월 ODAC 부결·PFS2 불수용으로 연장됐던 PDUFA가 9/4 ctDNA 트리거 조기전환 세계 첫 가속승인으로 귀결
+- **교차검증 현황**: 유가(CNBC 9/24+The National 9/25+Nation Thailand+TradingEconomics)·camizestrant(FDA 공식+ASCO Post+ONS)·Fed 스테이블코인(TechTimes+stablecoininsider+usethebitcoin)·Micron(BigGo+StockTitan) 모두 2~4개 소스 교차검증 후 수록 — 단일 소스 플래그 항목 없음
+- **정정/실측 답(3건)**: ① Micron FY4Q26·8월 PCE·Q2 GDP 3차 추정 모두 9/30 발표로 이번 윈도우(9/26) 밖 — 검색이 PCE를 9/26로 반환했으나 BEA 실제 9/30 확인, 차주 이관(Micron만 프리뷰 등재). ② camizestrant는 9/12·9/19 '차주 예상'(연장 PDUFA 재심)의 실측 답으로 9/4 가속승인 확인·등재. ③ Fed 스테이블코인 규칙은 '제안(NPRM)'이며 확정 규칙 아님 — 60일 의견수렴 후 최종화(확정 이벤트=9/24 이사회 제안 만장 채택)
+- **미수집 섹터(매크로 신규 하드데이터·방산·테크플랫폼·소비재·산업재·자동차)**: 이번 윈도우 신규 확정 이벤트 미특정 — 대부분 10월 이벤트(8월 PCE·Q2 GDP 3차 9/30, 9월 ISM 10/1, 리테일 Q3 어닝·Tesla Q3 10월 초, NDAA 상원 계류). 기존 헤드라인 유지, 차주 재개. 자동차 EV 크레딧 날짜 상충 유보 지속(웹 9/30/2025 OBBBA vs KB 시뮬 9/30/2026)
+- 12주 슬라이딩(84일=2026-07-04 이전): ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등 thesis 앵커 및 활성 인용가치 유지 — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
