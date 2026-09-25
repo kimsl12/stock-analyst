@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>캐터필러 — 재분석 v17 (이전 비교 미포함) (CAT) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>캐터필러 — 재분석 v17 (이전 비교 미포함) (CAT)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-26</div><div style="margin-top:8px"><span class="badge b-hold">중립 (Hold)</span> <span class="badge b-score">63/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">캐터필러는 데이터센터 전력(E&T) 순풍으로 재평가받았으나, 경기민감 사업 특성 + 10Y 5.11% 고금리의 건설수요 압박 + 정점 부근 이익에 붙은 25x 고멀티플을 고려하면 현 주가의 업사이드는 제한적이다.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">26인 평균 $975.61 (targetMedian $980.5, 고 $1,225 / 저 $575, recMean 2.14 매수).</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">컨센은 E&T 재평가와 인프라 순풍에 +19%를 부여하나, 경기민감주가 정점 이익 위에서 25x를 지속 유지하기 어렵고 고금리가 건설 부문을 압박한다는 점에서 나는 +5.8%로 보수적이다. 딜러·부품 해자는 인정하되 사이클·멀티플 리스크를 컨센이 과소평가한다고 본다.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull 뒤집힘 — E&T/데이터센터 전력 수요가 예상보다 강해 백로그·마진이 확대되고 건설이 금리 고착에도 견조하면 컨센 $975+ 정당화. Bear 뒤집힘 — 건설 매출 둔화·광산 롤오버로 forward EPS 추정이 하향되면 사이클 디레이팅으로 $700 이하.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">조정 시 분할 매수, $776.41 손절 준수, 12M 목표 $865. 사이클·백로그 재확인 전 비중 확대 자제.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① E&T 데이터센터 전력은 구조적 다년 성장이라 25x가 '새 정상'일 수 있어 내 보수적 밸류가 기회손실이 될 수 있다. ② 강한 실적 모멘텀·마진 확대·백로그가 사이클 정점 우려를 예상보다 오래 늦출 수 있다. ③ 인프라·전력망·리쇼어링의 다년 순풍이 건설 부문의 금리 역풍을 상쇄할 수 있다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">중립 (63점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$817.38</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$375.7B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 35.2x / forward 25.2x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$462.38~$1,073.46</div></div><div class="ki"><div class="kl">Trailing P/E</div><div class="kv">35.2x</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">25.2x</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">25.5x</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">57.0%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">0.80%</div></div><div class="ki"><div class="kl">매출성장(YoY)</div><div class="kv">+24%</div></div><div class="ki"><div class="kl">EPS성장(YoY)</div><div class="kv">+68%</div></div><div class="ki"><div class="kl">베타</div><div class="kv">1.594</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$776.41</div><div class="dn" style="font-size:13px">-5.0%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$865.00</div><div class="up" style="font-size:13px">+5.8%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="194" y="30" width="46" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="194" y1="26" x2="194" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="194" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$776</text><line x1="216" y1="24" x2="216" y2="52" stroke="var(--text)" stroke-width="3"/><text x="216" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$817</text><line x1="241" y1="26" x2="241" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="241" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$865</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $462</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $1,073</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $20.49 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>2026-09-25 종가 <b>$817.38</b>, 시가총액 약 $375.7B. 핵심 논쟁은 <b>데이터센터 전력·인프라 capex 순풍 vs 고금리 건설수요 둔화·경기민감주 고밸류</b>다. 매출 +24% YoY·EPS +68% YoY·영업이익률 22.2%·ROE 57.0%로 사이클 정점 부근의 강한 실적을 내고 있으나, forward P/E 25.2x·EV/EBITDA 25.5x·P/B 19.4x는 건설·광산 경기민감 산업재로선 이례적 고밸류다. 베타 1.594·美 10Y 5.11% 매파 리플레이션 레짐에서 하방에 취약하다. 자체 밸류에이션으로 12M 목표가 <b>$865(forward EPS $32.38 × 26x, +5.8%)</b>, 등급 <b>중립 (Hold)</b>. 컨센서스 $975.61(+19%)보다 보수적이며, 정점 부근 이익에 붙은 고멀티플의 하방 비대칭을 반영해 분할 접근 + $776.41 손절을 전제로 한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,70.0 187.0,85.3 192.3,133.0 173.3,160.8 190.0,218.8 140.0,215.0 101.8,202.6 97.2,163.9 82.9,131.5 101.8,97.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="70.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="187.0" cy="85.3" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="192.3" cy="133.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="173.3" cy="160.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="190.0" cy="218.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="215.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="101.8" cy="202.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="97.2" cy="163.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="101.8" cy="97.4" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>8.0</td><td>/10</td></tr><tr><td>수익성</td><td>8.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>5.5</td><td>/10</td></tr><tr><td>밸류에이션</td><td>3.5</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>8.5</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>6.5</td><td>/10</td></tr><tr><td>산업매력도</td><td>6.5</td><td>/10</td></tr><tr><td>리스크</td><td>4.5</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>6.5</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 63/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v14</td><td>2026-08-28</td><td>71</td><td>매수</td><td>$890</td></tr><tr><td>v15</td><td>2026-09-07</td><td>65</td><td>중립</td><td>$910</td></tr><tr><td>v16</td><td>2026-09-17</td><td>68</td><td>매수</td><td>$890</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+3pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">넓음</span></h2><p>캐터필러는 세계 최대 건설·광산 장비 제조사다. 3대 사업부로 구성된다. <b>Construction Industries</b>(건설·인프라 장비 — 최대 매출), <b>Resource Industries</b>(광산·채굴 중장비), <b>Energy & Transportation(E&T)</b>(왕복엔진·가스터빈[Solar Turbines]·발전기·기관차 — 데이터센터 전력 수혜 부문). 여기에 <b>Cat Financial</b> 캡티브 금융이 판매를 지원한다. 세계 최대·독점적 딜러 네트워크가 핵심 자산으로 부품·서비스·중고장비·금융을 아우른다. TTM 매출 약 $74.7B, 시가총액 약 $375.7B. 지분은 기관 73.5%·내부자 0.22%.</p><h3>Moat 상세</h3><p>해자는 네 축이다. (1) 세계 최대·독점적 딜러 네트워크 — 부품·서비스·중고장비 유통·금융을 아우르는 압도적 진입장벽이자 유통 락인. (2) 애프터마켓/부품 반복 매출 — 방대한 설치 기반에서 나오는 경기 저항적 부품·서비스 현금흐름. (3) 브랜드·규모·내구성 — 광산·건설 현장의 신뢰와 총소유비용 우위. (4) E&T의 발전엔진·가스터빈 기술력(Solar Turbines). ROE 57.0%가 자본효율을 방증한다(다만 레버리지 가산 포함). 해자 자체는 '넓음'이되 최종 수요는 경기·원자재·금리 사이클에 노출되어 매출은 경기민감이라는 이중성을 갖는다.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>분기 매출은 강한 우상향으로 Q2'25 $16.569B → Q2'26 $20.543B(+24% YoY). 최근 분기(2026-06-30) 영업이익 $4.295B(영업이익률 20.9%, 전년 17.3%에서 확대)·순이익 $3.593B(+65% YoY)·희석 EPS $7.77로 강한 운영 레버리지를 보였다. TTM 매출 $74.7B·순이익 $10.84B·순이익률 14.5%·매출총이익률 29.7%·ROE 57.0%. 재무는 총현금 $5.94B·총부채 $45.1B·순부채 $39.2B·D/E 232%로 절대 레버리지가 높으나, 이는 Cat Financial 캡티브 금융을 포함한 수치로 산업부문 실질 레버리지는 이보다 완화된다. 영업현금흐름 $13.57B은 견조하나 TTM 잉여현금흐름 $5.05B으로 순이익 대비 전환율이 낮다(업사이클 운전자본·금융채권 증가·capex 부담). FCF수익률 약 1.3%로 현금창출력 대비 밸류 부담이 존재한다.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>밸류에이션의 축은 forward EPS $32.38(trailing $23.19 대비 +40%)이다. 현 주가는 forward 25.2x·EV/EBITDA 25.5x·P/B 19.4x·PEG 1.42로, 건설·광산 경기민감 산업재로선 이례적 고멀티플이다(과거 사이클 통상 12~18x). 이는 E&T/데이터센터 전력 재평가 기대가 상당 부분 선반영된 결과다. 시나리오 3분: <b>약세 $700</b>(약 21x — 고금리 건설수요 둔화·광산 롤오버·사이클 디레이팅), <b>기본 $865</b>(26x — 딜러·부품 해자와 E&T 순풍에 프리미엄을 부여하되 경기·금리 리스크로 컨센 함의 30x보다 할인), <b>강세 $1,010</b>(약 29x — 데이터센터 전력 수요 가속·재평가 지속). <b>12M 목표 $865(+5.8%)</b>. 컨센 $975.61(+19%)보다 보수적 — 정점 부근 사이클 이익에 붙은 고멀티플은 하방 비대칭이 크다는 판단.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>주가 $817.38은 MA200 $788.44를 상회(중기 상승추세 유지)하나 MA50 $830.35는 하회(단기 조정·횡보)한다. 52주 밴드(462.38~1073.46)의 58% 지점. 저점 대비 약 +77% 급등한 뒤 고점($1,073) 대비 약 24% 조정한 상태다. 공매도 비중 2.03%(short ratio 3.54)로 낮아 수급 부담은 크지 않고, 전일 대비 +1.5%. 종합 모멘텀은 <b>중립~완만한 강세</b>이나 고점권에서 조정 중이라는 점에서 신규 진입은 추세 재확인이 합리적이다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>핵심은 사업부별 사이클의 엇갈림이다. <b>Energy & Transportation(E&T)</b>은 데이터센터 백업·상시 전력용 왕복엔진·가스터빈 수요 급증으로 구조적 순풍을 받으며, 이 부문이 CAT 재평가의 동력이다. <b>Construction Industries</b>(최대 매출)는 10Y 5.11% 고금리가 건설·주택·인프라 파이낸싱을 압박해 수요 둔화 위험에 노출된다. <b>Resource Industries</b>(광산)는 원자재 가격·광산 capex 사이클에 의존한다. 인프라 투자·전력망 확충·리쇼어링은 중기 순풍이나, 매파 레짐의 고금리는 건설 부문에 뚜렷한 역풍이다. 향후 백로그·딜러 재고·가격결정력의 방향이 관전 포인트다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 경기·금리 사이클의 반전이다. 베타 1.594에 정점 부근 이익 위에 붙은 25x 고멀티플은 경기 둔화·고금리 지속 시 이익 추정 하향과 멀티플 압축의 이중 타격에 노출된다. 건설수요 둔화, 광산 capex 롤오버, FCF 전환율 저하, 고부채($45B)의 이자부담, 관세·글로벌 무역·강달러가 부가 위험이다. E&T 데이터센터 전력 순풍과 부품 반복 매출이 하방을 일부 완충한다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">경기 사이클 반전 / 건설수요 둔화</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">고밸류 멀티플 압축</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">광산 capex 롤오버</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">FCF 전환율 / 고부채 이자부담</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">관세·글로벌 무역·환율</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>경기 사이클 반전 / 건설수요 둔화</strong> (발생: 높음, 영향: -25%)<br><span style="color:var(--sub);font-size:13px">美 10Y 5.11% 고금리가 건설·주택·인프라 파이낸싱을 압박해 Construction Industries 매출이 둔화되면 정점 부근 이익 추정 하향 + 멀티플 압축으로 목표가 $700 이하로 하향.</span></div><div class="ri rl"><strong>고밸류 멀티플 압축</strong> (발생: 높음, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">경기민감주가 forward 25x를 유지하지 못하고 사이클 평균 18~20x로 회귀하면 EPS 유지에도 주가가 하락. 정점 이익에 붙은 고멀티플은 하방 비대칭.</span></div><div class="ri rl"><strong>광산 capex 롤오버</strong> (발생: 중간, 영향: -12%)<br><span style="color:var(--sub);font-size:13px">원자재 가격 약세·광산업체 투자 축소 시 Resource Industries 수요·마진이 감소해 실적 변동성 확대.</span></div><div class="ri rl"><strong>FCF 전환율 / 고부채 이자부담</strong> (발생: 중간, 영향: -8%)<br><span style="color:var(--sub);font-size:13px">TTM FCF $5.05B으로 순이익 대비 전환율이 낮고 순부채 $39.2B, 5%+ 금리 지속 시 이자비용 부담과 자사주 여력 제약.</span></div><div class="ri rl"><strong>관세·글로벌 무역·환율</strong> (발생: 낮음, 영향: -7%)<br><span style="color:var(--sub);font-size:13px">글로벌 매출 비중이 높아 무역장벽·관세와 강달러(DXY 101)가 해외 실적 및 가격경쟁력에 변동성을 유발.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>강한 실적 모멘텀과 E&T 데이터센터 전력 순풍은 긍정적이나, 경기민감·고밸류·고베타(1.594)·매파 레짐이 이를 상쇄하므로 <b>보수적 분할 접근</b>이 핵심이다. 신규는 조정(MA200 $788 근처)에서 분할 진입이 유효하며, 2ATR 손절 <b>$776.41</b>을 엄수한다(하회 시 사이클 하강·MA200 이탈 신호로 간주). 12M 목표 <b>$865</b> 도달 또는 기본 시나리오 훼손(건설 매출 둔화·백로그 감소) 시 재평가. 사이클 위치와 밸류를 고려해 비중은 중립 이하로 권고한다.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>목표가 중심 <b>$865</b>, 범위(약세 $700 / 기본 $865 / 강세 $1,010). 스코어 63 ± 5pt. 분산의 대부분이 경기 사이클과 E&T 재평가 지속 여부에서 발생한다. 건설수요 둔화·사이클 디레이팅이 현실화하면 성장·모멘텀·밸류 점수가 동반 하락해 종합 50대 후반으로, 데이터센터 전력 순풍이 가속되면 60대 후반으로 이동한다.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>forward EPS $32.38 추정이 대체로 유지된다 — 반증(건설 둔화·가이던스 하향) 시 목표가 비례 하락.</li><li>경기민감주가 forward 25~26x 멀티플을 유지한다 — 반증(사이클 평균 18~20x 회귀) 시 상단 제한·목표가 $700대.</li><li>E&T 데이터센터 전력 순풍이 지속된다 — 반증(전력 capex 둔화) 시 재평가 논리 훼손.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v17 독립 재분석. 이전 버전·리포트·timeline 미참조. 데이터 yfinance 2026-09-25 종가($817.38) 기준. analysis/CAT_Caterpillar_v17/data.json 실측치 + 2026-09-26 매크로 KB + 공개지식만 사용. 배당수익률은 dividendRate/price로 재계산 교정된 0.80%를 사용.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-26 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="CAT_Caterpillar_20260926.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
