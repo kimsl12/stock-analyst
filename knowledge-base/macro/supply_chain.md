@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-19
-valid_until: 2026-10-19
+updated: 2026-09-26
+valid_until: 2026-10-26
 category: macro
 sources:
   [
@@ -179,9 +179,16 @@ sources:
     "Nation Thailand",
     "BDO",
     "Hunton",
+    "US Treasury",
+    "Global LNG Hub",
+    "OreTrade",
+    "BalticDryIndex.com",
+    "rinnovabili",
+    "TariffsTool",
+    "Lexology",
   ]
 confidence: high
-last_synced_from_db: 2026-09-19
+last_synced_from_db: 2026-09-26
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -194,42 +201,42 @@ last_synced_from_db: 2026-09-19
 
 ## ★ CURRENT ★
 
-### 0. 이번 주 헤드라인 (9/19 갱신) — ★호르무즈 de-escalation 국면 전환·유가 되돌림: 사우디 FM 'Trump 외교 결정 환영·2/28 이전 호르무즈 항행자유 복원' 성명·이란 신중('everything precise'), Brent 3거래일 연속 하락. 유가 되돌림 Brent $99~103(9/18, yfinance BZ=F $98.77·TradingEconomics $103.29, 9/11 $105.7~108.9서)·WTI $95.5(9/18, 9/11 $100~104서), 사우디 East-West 파이프라인 수일내 재가동 시사(홍해 7M bpd)·셔틀선박 호르무즈 우회. TTF €78.95~80.97(9/18, 보합, 유럽저장 ~68% 20년래 최저)·JKM $24~27.76(상승)★ + ★컨테이너 WCI $4,500(9/17, +1% WoW, Transpacific Shanghai-LA +5%/NY +7% 강세·中국경절 blank sailing 9건)·벌크 BDI 3,336(9/17, 9/8 3,584서 되돌림)·수에즈 컨선톤수 +54.2% YoY(Maersk Gemini 4개서비스 추가 복귀)★ + ★반도체 232 Phase 2 진행·한국 'no less favorable' 조항★ + 슈퍼사이클: HBM4 ~$550/stack·16hi 현물 $3,500·Samsung +30% 협상, 구리 COMEX $6.63~6.72(9/18, 정제구리 232 결정 지연·주중 dip後 반등·yfinance HG=F $6.715 교차검증), 中 REE 현물 doldrums 지속(Pr-Nd 하락·Tb FOB -$12/kg)·Dy 유럽 $2,250/kg, FAO 133.3(8월, 9월 10월초 발표), 폴리실리콘232 12/4(D-76), 희토류/흑연 11/10 이중시한 D-52·대미흑연 11/27 D-69
+### 0. 이번 주 헤드라인 (9/26 갱신) — ★US-中 무역휴전 Jan 10 2027로 2개월 연장(Bessent 9/24·Xi 국빈방문): 中 희토류·배터리소재 수출통제 유예가 11월 만료서 ~Jan 10 2027로 이연(REE/흑연 Phase 2 D-day 11/10→D-106)·中 대두 3년 25M톤 구매·희토류는 최대 미결로 차기라운드 연기★ + ★유가 주중 랠리 후 금요일 급락: Brent $106.6(9/24)→$97.47(9/25 yfinance BZ=F, TradingEconomics ~$104.5)·WTI $92.44(9/25)·美-이란 phased deal 보도(UNGA·카타르중재)·이란 FM '7일내 호르무즈 재개+핵협상' 조건부 제안(봉쇄·동결자산·all fronts 해제)·호르무즈 원유flow 33.7M bbl★ + ★컨테이너 WCI $4,468(9/24, -1% WoW, 9/17 $4,500서 반락·Asia-Europe 견인·Transpacific 견조 Shanghai-LA $7,838 +2%/NY $10,373 보합·blank sailing 9→15건 국경절前) vs 벌크 BDI 3,430(9/23, 9/17 3,336서 +94 재강세·Guinea/Brazil 철광석·中 항만회복)★ + 슈퍼사이클 유지: HBM4 ~$550/stack·DRAM 재고 10일 미만·SK 50~55%, 구리 COMEX $6.779(9/25 yfinance HG=F), 中 REE 현물 doldrums 심화 NdPr oxide $96.69/kg(9/24, MP-DoD $110 하한 하회)·Dy oxide -14%, LNG TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27(9/18)·유럽저장 69.3%, FAO 133.3(8월, 9월치 10월초), 폴리실리콘232 12/4 불변 D-69
 
-- **★호르무즈 de-escalation 국면 전환·유가 되돌림 — 사우디 FM 'Trump 외교 결정 환영·2/28 이전 호르무즈 항행자유 복원' 성명, 이란 신중('everything has to be precise').** 유가 되돌림 Brent $99~103(9/18, yfinance BZ=F $98.77·TradingEconomics $103.29, 9/11 $105.7~108.9서 -5%)·WTI $95.5(yfinance CL=F $95.47, 9/11 $100~104서), Brent 3거래일 연속 하락. 사우디 East-West 파이프라인 수일내 재가동 시사(홍해 대체 7M bpd)·셔틀선박 호르무즈 우회 수출 재개. 여전히 routine 상선 사실상 봉쇄(Crisis Group)이나 외교 진전. OPEC+ 연말 동결. [yfinance/TradingEconomics/Fortune 09/18, Crisis Group]
-- **★반도체 Section 232 Phase 2 진행 — 9/2~3 Lutnick 'Build in America or pay' 확정 후 세부 개발 지속: DC 면제(>100MW·HTS 9903.79.03) Phase 2 승계 불투명, duty-free cap을 각 사 美 팹투자 물량에 연동, 노트북/게임콘솔/소비기기 면제 미승계 시사.** 온쇼어링 인센티브 구조('targeted, thoughtful') — 美 건설사 관세 0·미건설사 관세. 세부 개발 중·최종 미확정, AI 빌드아웃·한국(미-한 반도체 15%·DC 노출) material risk 지속. [International Trade Today 09/03, TechTimes 09/03, Global Policy Watch, GingerControl]
-- **컨테이너 WCI $4,500(9/17, +1% WoW)·Transpacific 강세(Shanghai-LA +5% $7,712/NY +7% $10,394)·벌크 BDI 3,336(9/17, 고점서 되돌림)·수에즈 복귀 가속(+54.2% YoY).** WCI $4,500(9/17, 9/10 $4,476서) — Transpacific가 中 국경절前 밀어내기·캐파관리(blank sailing 9건, 전주 8건서)로 반등 주도. 벌크 BDI 3,336(9/17, +9pt DoD, 9/8 3,584·9/4 3,628 2021.10 이후 최고서 되돌림). 수에즈 컨선 순톤수 8M 2026 72.1M tons(+54.2% YoY)·Maersk+Hapag Gemini 4개 서비스(AE5/AE11/AE12/ME2) 추가 복귀. [Drewry/The DCN 09/17, Baltic Exchange/Hellenic Shipping 09/17, Supply Chain Dive]
-- **반도체·핵심광물 슈퍼사이클 지속: HBM4 ~$550/stack·16hi 현물 $3,500·SK 50~55%(HBM4 Rubin 60~70%)·Samsung HBM4 +30% 협상·2026 완판, 구리 COMEX $6.63~6.72(9/18, 반등)·정제구리 232 결정 지연, 中 REE 현물 doldrums(Pr-Nd 하락·Tb FOB -$12/kg), LNG JKM $24~27.76·TTF €78.95~80.97.** HBM4 ~$550/stack·16hi 현물 $3,500·232 한국 'no less favorable' 조항(11월 joint fact sheet). 구리 COMEX $6.63~6.72(9/18, 9/11 $6.46서 반등·yfinance HG=F $6.715 교차검증)·Trump 정제구리 232 결정 지연·COMEX-LME 스프레드 >$800/t. 中 REE: Pr-Nd oxide/alloy 中내 하락 지속(9/16)·Tb oxide/metal FOB 각 -$12/kg·거래 부진·中추석前 sideways·NdPr ~$144/kg·Dy 유럽 $2,250/kg(YoY 8배). LNG JKM $24~27.76(9/16, 상승)·TTF €78.95~80.97(9/18, 보합)·유럽 저장 ~68%. [Silicon Analysts, SMM 09/16, TradingEconomics/yfinance 09/18]
-- **관세 레짐: 폴리실리콘 232(12/4 발효, D-76, 15% 파생품·raw는 MIP만)·반도체 232 Phase 2 진행(9/2~3 Lutnick)·희토류/흑연 11/10 이중시한 D-52.** 폴리실리콘 232 12/4 발효(D-76) — 15% 종가세는 파생품(잉곳/웨이퍼/셀/모듈)에만·raw 폴리실리콘은 MIP($21/kg, 中 3.4배)만, 中산 파생품 301+AD/CVD 중첩 >65%. 반도체 232 Phase 2 진행(DC 면제 존속 불투명, 위). 희토류 Phase 2 유예 11/10·흑연 11/10(배터리/음극재)+11/27(대미) 만료 D-52, 재개 시 heavy RE 프리미엄 >50% 전망. 제약 232 100%·301(한국 12.5%)·8/1 EU 30% 정착. [White House, pv-tech, SMM, HSF Kramer]
+- **★US-中 무역휴전 Jan 10 2027로 2개월 연장 — Bessent 9/24 발표(Xi 국빈방문 중), 中 희토류·배터리소재 수출통제 유예가 기존 11월 만료서 ~Jan 10 2027로 이연.** 트럼프-시 1년 휴전(작년 10월 합의, 11월 만료 예정)을 2개월 추가 연장. 中 희토류 수출통제 '추가 2개월 유예'·대두 3년 25M톤 구매 약속. 단 **희토류·관세·기술규제 등 최대 쟁점은 차기 라운드로 연기(최대 미결이 희토류)**. **D-day 재설정: REE/흑연 Phase 2 유예 11/10(구 D-52)→~Jan 10 2027(D-106).** [CNBC/TradingEconomics/IndexBox/rareearthexchanges 09/24, US Treasury 09/23]
+- **★유가 주중 랠리 후 금요일 급락 — Brent $106.6(9/24, 공격/파이프라인 우려)→$97.47(9/25 yfinance BZ=F, TradingEconomics ~$104.5)·WTI $92.44(9/25, 9/24 $94.61서), 美-이란 phased deal 보도로 2일 랠리 snapping.** UNGA 사이드라인 카타르 중재 협상 진행, 이란 FM '7일내 호르무즈 재개+핵협상 재개' 조건부 제안(美가 해상봉쇄 해제·동결자산 해제·all fronts 종전 수용 시). 호르무즈 원유flow 33.7M bbl(this week, 전주 수준). 시간봉 교차검증상 정산 아티팩트 없음. OPEC+ 연말 동결. [yfinance/TradingEconomics/CNBC/Al Jazeera 09/25]
+- **컨테이너 WCI $4,468(9/24, -1% WoW, 9/17 $4,500서 반락) vs 벌크 BDI 3,430(9/23, 9/17 3,336서 +94 재강세) — 이번주 방향 재역전.** WCI는 Asia-Europe 하락이 견인, Transpacific는 견조(Shanghai-LA $7,838 +2%/NY $10,373 보합). blank sailing 익주 15건(당주 9건서 급증) 中 국경절前 캐파관리, Drewry '국경절前 익주 운임 하락 전망'. BDI는 Guinea/Brazil 철광석·中 항만회복으로 9/4 고점(3,628) 재접근. [Drewry 09/24, The DCN, BalticDryIndex.com 09/23]
+- **슈퍼사이클 유지(9/19 대비 큰 변화 없음): HBM4 ~$550/stack·DRAM 재고 10일 미만·SK 50~55%/삼성 35~40%/마이크론 5~10%·2026 전량 매진, 구리 COMEX $6.779/lb(9/25 yfinance HG=F, 9/19 $6.63~6.72서 상승)·정제구리 232 결정 지연, 中 REE 현물 doldrums 심화 — NdPr oxide $96.69/kg(9/24, MP-DoD $110/kg 하한 하회)·Dy oxide -14%·Dy metal $235.57/kg 中내.** 휴전 연장으로 REE 근시일 D-day 압력 제거→中 현물 연화 지속. HBM3E 36GB 현물 ~$2,100(LTA 4~5배). [Silicon Analysts, SMM/OreTrade 09/24, yfinance]
+- **LNG 되돌림·관세 레짐 유지: TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27/MMBtu(9/18)·유럽저장 69.3%, 폴리실리콘 232 12/4 발효 불변(D-69, 美 조치라 中휴전 무관)·반도체 232 Phase 2(9/2~3 Lutnick) 세부 미확정.** TTF는 de-escalation+노르웨이 공급회복+온난기후로 완화. 폴리실리콘 15% 파생품+MIP($21/kg)·DC 면제 HTS 9903.79.03(>100MW). [Global LNG Hub 09/24, yfinance, Troutman/EY, White House]
 
 ---
 
 ### 1. 물류 및 해운 운임
 
-#### 1-1. 컨테이너 운임 지수 현황 — WCI 종합 $4,500(9/17, +1% WoW), Transpacific 강세(Shanghai-LA +5%/NY +7%)·中 국경절前 blank sailing 9건
+#### 1-1. 컨테이너 운임 지수 현황 — WCI 종합 $4,468(9/24, -1% WoW, 9/17 $4,500서 반락), Transpacific 견조(Shanghai-LA +2%/NY 보합)·中 국경절前 blank sailing 익주 15건
 
 | 지수               | 최신 수치       | 기준일     | 추세        | 비고                                                                                                 |
 | ------------------ | --------------- | ---------- | ----------- | ---------------------------------------------------------------------------------------------------- |
-| **WCI 종합**       | **$4,500**/40ft | 2026.09.17 | **+1% WoW** | Transpacific 강세 주도(9/10 $4,476서) [Drewry 09/17, The DCN] |
-| Shanghai-NY        | **$10,394**/40ft | 2026.09.17 | +7% WoW | Transpacific EC 반등(9/10 $9,726서) [Drewry 09/17] |
-| Shanghai-LA        | **$7,712**/40ft | 2026.09.17 | +5% WoW | Transpacific WC 반등(9/10 $7,352서) [Drewry 09/17] |
+| **WCI 종합**       | **$4,468**/40ft | 2026.09.24 | **-1% WoW** | Asia-Europe 하락 견인(9/17 $4,500서 반락) [Drewry 09/24, The DCN] |
+| Shanghai-NY        | **$10,373**/40ft | 2026.09.24 | 보합 | Transpacific EC 보합(9/17 $10,394서) [Drewry 09/24] |
+| Shanghai-LA        | **$7,838**/40ft | 2026.09.24 | +2% WoW | Transpacific WC 견조(9/17 $7,712서) [Drewry 09/24] |
 | Asia-Europe        | 하락 지속 | 2026.09.17 | ↓ | 수에즈 복귀 캐파 방출 지속 [Drewry 09/17] |
-| Golden Week        | blank sailing 9건 | 2026.09.17 | ↑ | 中 국경절前 캐파관리(전주 8건서, Maersk 3건) [Drewry/Container News 09/17] |
+| Golden Week        | blank sailing 익주 15건 | 2026.09.24 | ↑ | 中 국경절前 캐파관리 급증(당주 9건서) [Drewry/Container News 09/24] |
 
-**운임 방향성 (9/19 갱신):** **WCI 종합 $4,500(+1% WoW, 9/17, 9/10 $4,476서)** — Transpacific 강세 주도(Shanghai-LA +5% $7,712/NY +7% $10,394)가 상승 견인. (1) Transpacific는 中 국경절前 밀어내기·캐파관리(blank sailing 9건, 전주 8건서)로 반등, (2) Asia-Europe는 수에즈 복귀 캐파 방출로 하락 지속, (3) 호르무즈 de-escalation으로 EFS·war-risk 압력 일부 완화. Drewry는 국경절 물량 변동성 전망. [Drewry 09/17, The DCN, Container News]
+**운임 방향성 (9/26 갱신):** **WCI 종합 $4,468(-1% WoW, 9/24, 9/17 $4,500서 반락)** — Asia-Europe 하락이 지수 반락 견인, Transpacific는 견조 유지(Shanghai-LA +2% $7,838/NY 보합 $10,373). (1) Transpacific는 中 국경절前 밀어내기 지속이나 상승폭 둔화, (2) Asia-Europe는 수에즈 복귀 캐파 방출로 하락 지속, (3) blank sailing 익주 15건(당주 9건서 급증)으로 캐파관리 강화. **Drewry는 국경절前 익주 운임 하락 전망.** [Drewry 09/24, The DCN, Maritime Gateway]
 
-#### 1-1b. 벌크선 운임 지수 — BDI 3,336pt(9/17, +9pt DoD, 9/8 3,584·9/4 3,628 2021.10 이후 최고서 되돌림)
+#### 1-1b. 벌크선 운임 지수 — BDI 3,430pt(9/23, 9/17 3,336서 +94 재강세, 9/4 3,628 2021.10 이후 최고 재접근)
 
 | 지수               | 최신 수치   | 기준일     | 추세                      | 비고                                                                                        |
 | ------------------ | ----------- | ---------- | ------------------------- | ------------------------------------------------------------------------------------------- |
-| **BDI (발틱운임)** | **3,336pt** | 2026.09.17 | **되돌림(3,000+ 유지)** | 9/17 +9pt DoD, 9/8 3,584·9/4 3,628(2021.10 이후 최고)서 조정 [Baltic Exchange/Hellenic Shipping 09/17, Breakwave] |
+| **BDI (발틱운임)** | **3,430pt** | 2026.09.23 | **재강세(고점 재접근)** | 9/23 -2 DoD, 9/17 3,336서 +94, 9/4 3,628(2021.10 이후 최고) 재접근 [BalticDryIndex.com/Breakwave 09/23] |
 | Capesize (BCI)     | 강세 국면 | 2026.09월초 | 강세 | 철광석·석탄 실수요 강세+선복 타이트 [Baltic Exchange, Hellenic Shipping] |
 | Panamax (BPI)      | 개선 국면 | 2026.09월초 | 개선 | 곡물·석탄 중형선 개선 [Baltic Exchange, BigMint] |
 | Supramax/Handysize | 개선 국면 | 2026.09월초 | 개선 | 소형선 개선 지속 [Baltic Exchange, HandyBulk] |
 
-**벌크 방향성 (9/19 갱신):** **BDI 3,628pt(9/4 2021.10 이후 최고)·3,584(9/8) → 3,336(9/17, +9pt DoD) — 고점서 되돌림이나 3,000+ 유지.** 철광석·석탄 실수요는 견조하나 최근 고점 부담으로 조정. **컨테이너(+1% 반등)와 벌크(고점 되돌림)가 이번주 방향 역전** — 지속성은 철광석·석탄 실수요·中 수요에 좌우. [Baltic Exchange/Hellenic Shipping 09/17, Breakwave]
+**벌크 방향성 (9/26 갱신):** **BDI 3,336(9/17) → 3,430(9/23, -2 DoD) — 9/4 고점(3,628, 2021.10 이후 최고) 재접근.** Guinea/Brazil 철광석 물량(Guinea 8개월 10.0M mt)+中 항만활동 회복이 Capesize 견인. **컨테이너(-1% 반락)와 벌크(재강세)가 이번주 방향 재역전** — 벌크 지속성은 철광석·석탄 실수요·中 수요에 좌우. [BalticDryIndex.com/Breakwave/Finimize 09/23]
 
-#### 1-2. 호르무즈 해협 — de-escalation 국면 전환(사우디 FM Trump 외교 환영·이란 신중): 여전히 사실상 봉쇄나 유가 되돌림(Brent $99~103·WTI $95.5, 9/18), 사우디 East-West 파이프라인 수일내 재가동 시사·셔틀선박 우회
+#### 1-2. 호르무즈 해협 — 美-이란 phased deal 협상(UNGA·카타르중재): 유가 주중 랠리 후 금요일 급락(Brent $97.47·WTI $92.44, 9/25), 이란 FM '7일내 재개' 조건부 제안, 호르무즈 원유flow 33.7M bbl
 
 | 항목                    | 현황                                                                                                                                        | 출처                                         |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
@@ -238,19 +245,19 @@ last_synced_from_db: 2026-09-19
 | 8/17 임시휴전 만료      | 임시휴전 8/17 만료·이란 fully offensive 전환·8/18 선박 피격·US economic D-day 위협(전주 전면 재격화)                                        | CNN 08/18, Reuters                           |
 | **8/26 Iran-Oman 합의** | **IRGC 발표: 이란-오만 호르무즈 수역·통행료 revenue 분배 합의+제한적 군사통항. 항로 신설(inbound 전부 이란 수역, outbound 이란+오만 수역)** | Bloomberg 08/26, Marine Insight, Antiwar.com |
 | **재개 조건부**         | **이란 '美가 6월 MOU 이행(제재해제·해상봉쇄 해제·동결자산 해제) 전엔 정상 재개 불가' 고수 — 외교진전이나 조건부·불완전**                    | Bloomberg 08/26, Reuters                     |
-| 통항 현황               | **여전히 사실상 봉쇄(routine 상선 폐쇄 지속, Crisis Group)나 de-escalation 외교 진행. 사우디 셔틀선박으로 호르무즈 우회 수출 재개** | TradingEconomics/Fortune 09/18, Crisis Group |
-| 유가 반응               | **되돌림 Brent $99~103(9/18, yfinance BZ=F $98.77·TradingEconomics $103.29)·WTI $95.5(yfinance CL=F $95.47) — 9/11 $105.7~108.9/$100~104서 -5%. de-escalation 기대에 3거래일 연속 하락(교차검증)** | yfinance/TradingEconomics/Fortune 09/18 |
+| 통항 현황               | **호르무즈 원유flow 33.7M bbl(this week, 전주 수준 유지). 사우디 셔틀선박 우회+파이프라인 재가동으로 공급 정상화 궤도, de-escalation 외교 진행** | CNBC 09/25, Reuters |
+| 유가 반응               | **주중 랠리 후 금요일 급락 — Brent $106.6(9/24)→$97.47(9/25 yfinance BZ=F, TradingEconomics ~$104.5)·WTI $94.61(9/24)→$92.44(9/25). 美-이란 phased deal 보도로 2일 랠리 snapping. 시간봉 교차검증상 정산 아티팩트 없음** | yfinance/TradingEconomics/CNBC 09/25 |
 | 사우디 감산·공급회복     | **사우디 East-West 파이프라인 수일내 재가동 시사(홍해 대체 7M bpd)·호르무즈 셔틀선박 우회 수출 재개. 8월 생산 1990년 이후 최저 지속이나 공급 정상화 궤도. OPEC+ 연말 동결** | Fortune 09/18, worldoil/CNBC |
-| 완전정상화              | **사우디 FM 'Trump 외교 환영·2/28 이전 항행자유 복원' 성명·이란 신중('everything precise') — 외교 진전이나 조건부·불확실** | TradingEconomics 09/18, Crisis Group |
+| 완전정상화              | **이란 FM '7일내 호르무즈 재개+핵협상 재개' 조건부 제안(美가 해상봉쇄·동결자산 해제·all fronts 종전 수용 시). UNGA 사이드라인 카타르 중재 협상 진행 — 외교 진전이나 조건부·불확실** | CNBC/Al Jazeera 09/25, Reuters |
 
-**핵심 전환 (9/19 갱신):** **호르무즈가 '전면교전 격화'에서 'de-escalation 국면 전환'으로 반전** — (1) **외교 진전**: 사우디 FM 'Trump 외교 결정 환영·2/28 이전 호르무즈 항행자유 복원' 성명, 이란 신중('everything has to be precise'), (2) **유가 되돌림**: Brent $105.7~108.9→$99~103(9/18, yfinance BZ=F $98.77·TradingEconomics $103.29)·WTI $100~104→$95.5(3거래일 연속 하락, 교차검증), (3) **공급 회복 궤도**: 사우디 East-West 파이프라인 수일내 재가동 시사(홍해 7M bpd)·셔틀선박 호르무즈 우회 수출 재개, (4) **여전히 사실상 봉쇄**: routine 상선 통항 폐쇄 지속(Crisis Group)·완전정상화는 조건부. **봉쇄 프리미엄 일부 해소이나 재격화 리스크 잔존.** [yfinance/TradingEconomics/Fortune 09/18, Crisis Group, Al Jazeera]
+**핵심 전환 (9/26 갱신):** **호르무즈가 'de-escalation'에서 '美-이란 phased deal 협상'으로 진전** — (1) **외교 진전**: 이란 FM '7일내 호르무즈 재개+핵협상 재개' 조건부 제안(美가 해상봉쇄·동결자산 해제·all fronts 종전 수용 시), UNGA 사이드라인 카타르 중재, (2) **유가 주중 랠리 후 급락**: Brent $106.6(9/24, 공격/파이프라인 우려)→$97.47(9/25)·WTI $92.44(9/25), phased deal 보도로 2일 랠리 반납(시간봉 교차검증), (3) **공급 정상화 궤도**: 호르무즈 원유flow 33.7M bbl(전주 수준)·사우디 우회 지속, (4) **여전히 조건부**: 완전정상화는 美 조건 수용 전제·재격화 리스크 잔존. [yfinance/TradingEconomics/CNBC/Al Jazeera 09/25]
 
-**시나리오 재조정 (9/19):**
+**시나리오 재조정 (9/26 — 대체로 유지):**
 
 - **(Bull - 25%, ↑)** 급속 진화·美-이란 재협상 → 통항 정상화·에너지 프리미엄 해소. _de-escalation 외교 진전으로 상향(10%→25%)_
 - **(Base - 45%, ↑)** 저강도 교전+외교 병행 — 부분통항·프리미엄 완만 해소·유가 $95~105 박스. _조정(40%→45%)_
 - **(Bear - 30%, ↓)** 전면 봉쇄·확전 — 재타격 심화·해협 폐쇄 → 에너지 $110+. _de-escalation 국면 전환으로 하향(50%→30%)_
-- _변경: 사우디 FM Trump 외교 환영·유가 되돌림(Brent $105.7~108.9→$99~103)·사우디 파이프라인 재가동으로 Bull·Base 상향, Bear 하향._
+- _변경(9/26): 美-中 휴전 연장·美-이란 phased deal 협상(이란 FM 7일내 재개 제안)으로 Bull·Base 유지, 유가 $92~106 변동성(9/24 랠리→9/25 급락)에 Bear 잔존._
 
 #### 1-3. 수에즈 운하 및 홍해 위기 — 복귀 가속(컨선 순톤수 2026 1~8월 +54.2% YoY, Maersk Gemini 4개 서비스 추가 Cape→Suez), 후티 리스크 잔존
 
@@ -258,11 +265,11 @@ last_synced_from_db: 2026-09-19
 | --------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | **Maersk 재개** | **Maersk+Hapag Gemini AE5/AE11/AE12/ME2 4개 서비스 희망봉→수에즈 전환(기존 AE15/AE19 추가). CMA CGM/MSC/COSCO도 복귀** | Maritime Executive, Global Trade Magazine |
 | 통항 회복       | 이스라엘-가자 휴전 후 후티 위협 진정 판단. 대형컨선 통항 회복 궤도                                               | Horn Review, Container News               |
-| 리스크 재평가   | **후티 사우디-linked 공격 지속(VLCC Amzan Yanbu 피격)·war-risk 보험료 재급등 + 호르무즈 전면교전 격화로 리스크 축 재부각** | AGBI, gCaptain, WWD |
+| 리스크 재평가   | **후티 사우디-linked 공격 잔존이나 호르무즈 phased deal 협상(9/25)으로 리스크 축 완화 방향** | AGBI, gCaptain, CNBC 09/25 |
 | 복귀 취약성     | 단계적·조건부 복귀 — 일부 string은 수에즈, 나머지는 아프리카 우회 병행. MSC 등 신중                              | Maritime Gateway, Safety4Sea              |
 | 수에즈 부가금   | **수에즈운하청 부가금 인상 유지 — 드라이벌크 임시부가금 최대 22%**                                               | Maritime Gateway, Suez Canal Authority    |
 
-**핵심 변화 (9/19 갱신):** **홍해 복귀 가속 — 수에즈 컨선 순톤수 2026 1~8월 72.1M tons(+54.2% YoY), Maersk+Hapag Gemini 4개 서비스(AE5/AE11/AE12/ME2) 추가로 희망봉→수에즈 전환·CMA CGM/MSC/COSCO 복귀.** Asia-Europe 운임 하락 지속. 호르무즈 de-escalation으로 리스크 축 완화이나 **후티 사우디-linked 리스크 잔존.** 中 국경절前 Maersk 3건 blank sailing. 홍해 정상화(Asia-Europe 하방)와 호르무즈 완화 병행. [Supply Chain Dive, Container News, Drewry 09/17]
+**핵심 변화 (9/26 갱신):** **홍해 복귀 가속 지속 — 수에즈 컨선 순톤수 2026 1~8월 72.1M tons(+54.2% YoY), Maersk+Hapag Gemini 4개 서비스(AE5/AE11/AE12/ME2) 희망봉→수에즈 전환.** Asia-Europe 운임 하락이 WCI 반락(-1%, $4,468) 견인. 호르무즈 phased deal 협상으로 리스크 축 완화 방향이나 **후티 사우디-linked 리스크 잔존.** 홍해 정상화(Asia-Europe 하방)와 호르무즈 완화 병행. [Supply Chain Dive, Container News, Drewry 09/24]
 
 #### 1-4. 항공화물
 
@@ -271,21 +278,21 @@ last_synced_from_db: 2026-09-19
 | BAI00 글로벌 지수 | YoY **고운임 유지** (구조적)       | TAC Index, Air Cargo News |
 | 전용화물기 부족   | **2027~28년까지 구조적 부족** 지속 | C.H. Robinson             |
 
-**핵심 변화 (9/12):** 항공화물 구조적 고운임 유지. 호르무즈 전면교전 격화·유가 5월 이후 최고(Brent $105.7~108.9, 9/11)로 제트연료 상방 압력 재확대(9/4 $96서). 전용화물기 부족 2027~28까지 지속. [TAC Index, Air Cargo News, C.H. Robinson]
+**핵심 변화 (9/26):** 항공화물 구조적 고운임 유지. 호르무즈 de-escalation·유가 되돌림(Brent $97.47/WTI $92.44, 9/25, 9/24 $106.6서)으로 제트연료 상방 압력 완화. 전용화물기 부족 2027~28까지 지속. [TAC Index, Air Cargo News, C.H. Robinson]
 
 ---
 
 ### 2. 핵심광물 및 희토류
 
-#### 2-1. 희토류 — 中 REE 현물 연화 지속(9/16 Pr-Nd 하락·Tb FOB -$12/kg·거래 부진), Dy 유럽 spot $2,250/kg(YoY 8배), D-day 임박(11/10, D-52)에도 현물 doldrums
+#### 2-1. 희토류 — 中 REE 현물 doldrums 심화(NdPr oxide $96.69/kg 9/24 MP-DoD $110 하한 하회·Dy oxide -14%), ★D-day 이연(휴전 연장 11/10→~Jan 10 2027, D-106)★
 
 | 항목                 | 현황                                                                                                                                                                                      | 출처                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | 중국 지배력          | 원광 38~~60%, **정제 91~~92%**(NdPr 92%), **분리 heavy RE(Dy/Tb) 98~99%**, 자석제조 92%                                                                                                   | IEA, CSIS, rareearthexchanges                          |
 | Phase 1 (2025.04)    | 중희토류 **7종**(Tb/Dy/Sm/Gd/Lu/Sc/Y)+금속·산화물·합금·화합물·자석. 4/4 발효, **미해제** 지속, 라이선스 의무 유지                                                                         | White & Case, Clark Hill, CSIS                         |
-| Phase 2 (2025.10)    | 10/9 발표분 **1년 유예 ~2026.11.10** (Xi-Trump 합의). 역외관할+50% 룰. **D-52**                                                                                                           | White & Case, Clark Hill, informedclearly              |
-| **NdPr 가격**        | **NdPr ~$144/kg. Pr-Nd oxide/alloy 中내 하락 지속(9/16, 5월 이후 약세 연장)·downstream 수요 약세·거래 부진, 中추석前 sideways 전망. 서방 하한 $110/kg two-world**                                                                                   | SMM 09/03, rare-earth-mining            |
-| **Dy·Tb 가격**          | **Tb oxide FOB·Tb metal FOB 각 -$12/kg(9/16 SMM). Dy 유럽 spot $2,250/kg(YoY 8배)·中외 프리미엄 유지. 中 REE 현물 doldrums·거래 부진**(D-day 임박에도 현물 연화 지속) | SMM 09/03, rareearthexchanges, Aju Press |
+| Phase 2 (2025.10)    | 10/9 발표분 유예. **★US-中 휴전 Jan 10 2027 연장(Bessent 9/24)으로 REE 수출통제 유예 11/10→~Jan 10 2027 이연·D-106★**. 역외관할+50% 룰                                                    | White & Case, CNBC/rareearthexchanges 09/24            |
+| **NdPr 가격**        | **NdPr oxide $96.69/kg(9/24, ¥738,000/t SMM) — MP-DoD $110/kg 하한 하회. 中내 하락 지속·수출통제로 물량 中내 억류→中내가 약세·해외 프리미엄. 서방 하한 $110/kg two-world**                    | SMM/OreTrade/openpr 09/24, rareearthexchanges          |
+| **Dy·Tb 가격**          | **Dy oxide -14%(¥1.435M/t, 9/24)·Dy metal 中내 ~$235.57/kg. Dy 유럽 spot $2,250/kg(YoY 8배)·中외 프리미엄 유지. 中 REE 현물 doldrums 심화**(휴전 연장으로 근시일 D-day 압력 제거) | SMM/OreTrade 09/24, rareearthexchanges |
 | **Pentagon-MP 하한** | **Pentagon-MP Materials/Serra Verde 가격하한: NdPr $110/kg·Dy $575/kg·Tb $2,050/kg**                                                                                                      | rareearthexchanges 08/17, Crux Investor                |
 | **선적 감소**        | **Y/Dy/Tb 선적 pre-Apr2025 대비 ~50% 감소** 지속. 中외 물량 구조적 희박, 자석사 규제전 대비 최대 3배 지불                                                                                 | Oregon Group, S&P Global                               |
 | 자석 확보난          | 미·유럽 heavy RE oxide/metal/alloy 상업물량 확보난 지속 → 일부 가동률 감축 경험                                                                                                           | CSIS, IEA, S&P Global                                  |
@@ -293,13 +300,13 @@ last_synced_from_db: 2026-09-19
 | **한국 타격**        | 한국 희토류 중국 의존 **80%(자석)**, 일본 10%. 3~5월 대한국 자석수출 -93% 붕괴 경험. Sm-Co 자석(방산·항공) 위협                                                                           | CSIS, Asia Business Daily, East Asia Forum             |
 | 서방 대체 진전       | **MP Materials 국방부 $400M·Q1 매출 +49%, Independence(TX) 자석 생산 H2 2026·Northlake '10X' 2028(총 ~10,000t)**. Lynas·Energy Fuels. 정제 91%+자석 92% 해소엔 수년                       | MP Materials IR, National Defense Magazine, SFA Oxford |
 
-**핵심 리스크 (9/12 갱신):** (1) **中 REE 현물 연화 — Nd metal $141.79/kg(9/3, -2.54% MoM)·NdPr alloy -1.98%·Tb $1,097 中내가 5월 이후 첫 동반하락. 中 REE지수 259.5(8/17 이후 신규갱신 부재) — D-day(11/10, D-52) 임박에도 현물 안정**, (2) **Dy 유럽 spot $2,250/kg(YoY 8배)·中외 4.9배 프리미엄 — two-world 유지**, (3) **Y/Dy/Tb 선적 pre-Apr2025 대비 여전히 ~50% 감소**, (4) **4월 중희토류 7종(Tb/Dy/Sm/Gd/Lu/Sc/Y) 라이선스 규제 미해제** 지속→11월 Phase 2 만료(11/10, D-52)와 겹쳐 **이중 시한**, 재개 시 heavy RE 프리미엄 >50% 전망(현 고가는 물리적 부족 아닌 규제 희소성), (5) 中 분리 heavy RE(Dy/Tb) 98~99%·정제 NdPr 92% 지배로 서방 물량 구조적 희박, (6) **한국 타격 명확**: 희토류 의존 80%(자석), 3~5월 자석수출 -93% 경험, Sm-Co 자석(방산·항공) 직접 위협, (7) **서방 대체 진전 — Pentagon-MP 하한(NdPr $110/Dy $575/Tb $2,050)·MP 국방부 $400M·Independence 자석 H2 2026·Northlake '10X' 2028**, 단 정제·자석 의존 해소엔 수년. S&P 병목 2026 지속. [SMM 09/03, rareearthexchanges, Aju Press, Fastmarkets, CSIS, IEA]
+**핵심 리스크 (9/26 갱신):** (1) **中 REE 현물 doldrums 심화 — NdPr oxide $96.69/kg(9/24, ¥738,000/t SMM)로 MP-DoD $110/kg 하한 하회·Dy oxide -14%(¥1.435M/t)·Dy metal 中내 $235.57/kg. 수출통제로 물량 中내 억류→中내가 약세·해외 프리미엄·리드타임 지속**, (2) **★D-day 이연 — US-中 휴전 Jan 10 2027 연장(Bessent 9/24)으로 REE/흑연 Phase 2 유예 11/10→~Jan 10 2027(D-52→D-106). 희토류가 최대 미결로 차기 라운드 연기**, (3) **Dy 유럽 spot $2,250/kg(YoY 8배)·中외 4.9배 프리미엄 two-world 유지**, (4) **Y/Dy/Tb 선적 pre-Apr2025 대비 ~50% 감소** 지속, (5) 中 분리 heavy RE(Dy/Tb) 98~99%·정제 NdPr 92% 지배, (6) **한국 타격**: 희토류 의존 80%(자석), 3~5월 자석수출 -93% 경험(휴전 연장으로 근시일 완화), (7) **서방 대체 진전 — Pentagon-MP 하한(NdPr $110/Dy $575/Tb $2,050)·MP 국방부 $400M·Independence 자석 H2 2026**, 단 정제·자석 의존 해소엔 수년. REE는 COMEX 미거래(OTC). [SMM/OreTrade 09/24, rareearthexchanges, CNBC, CSIS, IEA]
 
-#### 2-2. 구리 — COMEX $6.63~6.72/lb(9/18, 9/11 $6.46서 반등·yfinance HG=F $6.715 교차검증), 정제구리 232 결정 지연, COMEX-LME 스프레드 >$800/t
+#### 2-2. 구리 — COMEX $6.779/lb(9/25 yfinance HG=F, 9/19 $6.63~6.72서 상승), 정제구리 232 결정 지연, COMEX-LME 스프레드 >$800/t
 
 | 항목                               | 수치                                                                                                                                                                          | 출처                                              |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| LME 3M / COMEX                     | **COMEX $6.63~6.72/lb(9/18, TradingEconomics $6.63 +0.72% DoD·metalcharts $6.62·yfinance HG=F $6.715). 9/11 $6.46서 반등, 주중 dip後 회복(교차검증)** | TradingEconomics 09/11, Sprott |
+| LME 3M / COMEX                     | **COMEX $6.779/lb(9/25 yfinance HG=F, 주간 $6.687→$6.779 상승). 9/19 $6.63~6.72서 추가 상승·물리적 긴축 지속** | yfinance 09/25, Sprott |
 | 사상최고                           | $6.65/lb (5/13). YTD 강세 유지                                                                                                                                                | Mexico Business, Crux Investor                    |
 | **Section 232 (6/1 proclamation)** | 반제품·가공 구리 품목 **50% 관세 6/8 발효** (2027.12.31까지). 메탈 파생품 full value 적용                                                                                     | White & Case, PwC, Congress.gov                   |
 | **정제구리 면제 지속(7/31)**       | **행정부 정제구리(캐소드·정광) Section 232 면제 유지 → COMEX-LME 글로벌 가격 재수렴 지속**                                                                                    | Fastmarkets 07/31, TradingEconomics, Sprott       |
@@ -309,7 +316,7 @@ last_synced_from_db: 2026-09-19
 | Grasberg 감산                      | 완전 재가동 2028 추가 지연 (산사태 불가항력)                                                                                                                                  | Crux Investor, Mining.com                         |
 | GS 전망                            | **관세 발효 시 $14,000/t 돌파** 전망                                                                                                                                          | Goldman Sachs via TradingKey                      |
 
-**투자 시사점 (9/19 갱신):** **COMEX 구리 $6.63~6.72/lb(9/18, 9/11 $6.46서 반등·+3.8% 주간, yfinance HG=F $6.715·TradingEconomics $6.63·metalcharts $6.62 교차검증).** **Trump 행정부 정제구리 232 결정 지연 보도로 주중 multi-week 저점 후 반등** — 불확실성 지속. COMEX-LME 스프레드 정상 $50→>$800/t. 반제품·가공구리 50%(6/8 발효)는 유지, 정제구리 단계관세(2027 15%→2028 30%) 시행 미결. **美 정제구리 수입 12년 최고·Chile/Peru 공급차질로 물리적 긴축 지속**, COMEX 재고 record ~650,000t. GS '발효 시 $14,000/t 돌파.' AI DC+방산+그리드 수요에 Grasberg 재가동 2028 지연+구조적 적자(150~600kt) 겹침. [TradingEconomics/metalcharts/yfinance 09/18, CNBC, Goldman Sachs]
+**투자 시사점 (9/26 갱신):** **COMEX 구리 $6.779/lb(9/25 yfinance HG=F, 주간 $6.687→$6.779, 9/19 $6.63~6.72서 상승).** **Trump 행정부 정제구리 232 결정 여전 지연** — 불확실성 지속. COMEX-LME 스프레드 정상 $50→>$800/t. 반제품·가공구리 50%(6/8 발효)는 유지, 정제구리 단계관세(2027 15%→2028 30%) 시행 미결. **美 정제구리 수입 12년 최고·Chile/Peru 공급차질로 물리적 긴축 지속**, COMEX 재고 record ~650,000t. GS '발효 시 $14,000/t 돌파.' AI DC+방산+그리드 수요에 Grasberg 재가동 2028 지연+구조적 적자(150~600kt) 겹침. [yfinance 09/25, CNBC, Goldman Sachs]
 
 #### 2-3. 식량 및 비료 — FAO 133.3(8월 확정, +1.9% MoM, 3년+ 최고), 곡물 116.3(+2.2%, 밀 +2.6%·옥수수 +2.5% 콘벨트 우려), 식용유 196.9(+1.1%, 3개월연속)
 
@@ -323,7 +330,7 @@ last_synced_from_db: 2026-09-19
 | 호르무즈 비료 차단 | 글로벌 요소수출 **~1/4** 경로 — 급반전이나 재차단 리스크 잔존                                                                 | World Bank, IFPRI                                                                              |
 | WFP 경고           | 식량불안정 인구 추가 위험(에너지·비료 변동)                                                                                   | WFP                                                                                            |
 
-**시사점 (9/12 갱신):** FAO **133.3pt(8월 확정, +1.9% MoM, 3년+ 최고)** — 곡물 116.3(+2.2%, 2024.5 이후 최고, 밀 +2.6%·옥수수 +2.5% 콘벨트 우려), 식용유 196.9(+1.1%, 2022.6 이후 최고 3개월연속, 팜/대두). **호르무즈 전면교전 격화·유가 5월 이후 최고($96→$105.7~108.9)로 질소(요소)비료 상방 재확대** — 호르무즈 글로벌 요소수출 ~1/4 경로. WB '호르무즈 지속시 2026 +30%+' 경고 재부각. 에너지-비료-식량 삼중 인플레 경로가 호르무즈 격화에 재연동(상방). [FAO 09/05, Xinhua, World Bank, PotatoPro]
+**시사점 (9/26 갱신):** FAO **133.3pt(8월 확정, +1.9% MoM, 3년+ 최고)** 유지 — 곡물 116.3(+2.2%)·식용유 196.9(+1.1%). **9월 지수는 10월초 발표(현재 N/A).** 호르무즈 de-escalation·유가 되돌림(Brent $97.47/WTI $92.44, 9/25)으로 질소(요소)비료 상방 압력 완화. 에너지-비료-식량 인플레 경로가 호르무즈 완화에 재연동(하방). [FAO 09/05, World Bank]
 
 ---
 
@@ -400,7 +407,7 @@ last_synced_from_db: 2026-09-19
 
 ---
 
-### 4. 관세 및 무역 정책 — 폴리실리콘 232(12/4 발효, D-76, 15% 파생품·raw는 MIP만), ★반도체 232 Phase 2 확정(9/2~3 Lutnick 'Build in America or pay')★, 8/1 EU 30%·제약 232 100% 7/31 정착(한국 우대 15%), 122 만료·301 발효 완결
+### 4. 관세 및 무역 정책 — ★US-中 휴전 Jan 10 2027 연장(REE/흑연 Phase 2 11/10→~Jan 10 이연)★, 폴리실리콘 232(12/4 발효, D-69, 15% 파생품·raw는 MIP만·美조치라 불변), 반도체 232 Phase 2(9/2~3 Lutnick), 8/1 EU 30%·제약 232 100% 정착
 
 #### 4-1. 미국 관세 체계 현황 (2026.09.12 기준)
 
@@ -418,7 +425,9 @@ last_synced_from_db: 2026-09-19
 | 자동차                 | **25%**                                                                         | Section 232 | 발효 중                                                                                        | 기한 없음                                |
 | 한국 반도체            | **15%**                                                                         | 미-한 합의  | 발효 중                                                                                        | --                                       |
 
-**핵심 변화 (9/12 갱신):**
+**핵심 변화 (9/26 갱신):**
+
+0. **★US-中 무역휴전 Jan 10 2027 연장(9/24 Bessent, Xi 국빈방문)★**: 中 희토류·배터리소재 수출통제 유예가 11월 만료서 ~Jan 10 2027로 2개월 이연(D-52→D-106). 中 대두 3년 25M톤 구매·희토류 등 최대 쟁점은 차기 라운드 연기. 폴리실리콘 232(12/4)는 美 Section 232 조치라 휴전과 무관·불변 [CNBC/TradingEconomics 09/24, US Treasury 09/23]
 
 1. **★반도체 232 Phase 2 확정(9/2~3)★**: Commerce Lutnick이 9/2~3 Phase 2 확정 — 'Build in America or pay'(美 건설사 관세 0·미건설사 관세), 온쇼어링 인센티브 구조. 1월 25% 관세의 DC 면제(>100MW·HTS 9903.79.03) Phase 2 존속 불투명, 232를 노트북·게임콘솔·DC서버로 확대 검토. 세부 개발 중·최종 미확정. AI 빌드아웃 material risk, 한국(미-한 반도체 15%·DC 노출) 협상 변수 [TechTimes 09/03, International Trade Today 09/03, Law360, CCIA]
 2. **폴리실리콘 Section 232 발효 확정(12/4) + 세부 명확화**: 15% 종가세는 파생품(잉곳·웨이퍼·태양전지·모듈)에만 적용·raw 폴리실리콘은 MIP($21/kg, 中 평균 3.4배)만 — 태양광+반도체 웨이퍼 이중 타격. 中산 파생품 301+AD/CVD 중첩 시 combined >65%(§4-3) [pv-tech, SMM, White & Case, Troutman Pepper]
@@ -452,7 +461,7 @@ last_synced_from_db: 2026-09-19
 | **발효**            | **2026.12.04**(포고~120일). 8/6 이전 체결 고정계약 면제                                    | White & Case, Troutman Pepper          |
 | **파급**            | **태양광(모듈·셀)+반도체(웨이퍼) 공급망 동시 타격** — 폴리실리콘은 반도체 웨이퍼 원료 겸용 | Troutman Pepper, gcn.com               |
 
-**핵심 함의 (9/12 갱신):** **폴리실리콘 Section 232는 태양광과 반도체 공급망을 동시에 겨냥** — 15% 종가세는 파생품(잉곳·웨이퍼·셀·모듈)에만·raw 폴리실리콘은 MIP($21/kg, 中 3.4배)만. 中산 파생품은 301+AD/CVD 중첩 시 combined >65%. **12/4 발효(D-76)** 전 조정창(8/6 이전 고정계약 면제). 中 폴리실리콘 지배(글로벌 ~80%)에 대한 온쇼어링 압박으로, §5 배터리 흑연·§2 희토류와 함께 핵심소재 무기화-관세 대응의 4분기 축. [pv-tech, SMM, BDO, White & Case, Hunton]
+**핵심 함의 (9/26 갱신):** **폴리실리콘 Section 232는 태양광과 반도체 공급망을 동시에 겨냥** — 15% 종가세는 파생품(잉곳·웨이퍼·셀·모듈)에만·raw 폴리실리콘은 MIP($21/kg, 中 3.4배)만. 中산 파생품은 301+AD/CVD 중첩 시 combined >65%. **12/4 발효(D-69, 2026-09-26 기준·美 Section 232라 中휴전 무관)** 전 조정창(8/6 이전 고정계약 면제). 中 폴리실리콘 지배(글로벌 ~80%)에 대한 온쇼어링 압박으로, §5 배터리 흑연·§2 희토류와 함께 핵심소재 무기화-관세 대응의 4분기 축. [pv-tech, SMM, BDO, White & Case, Hunton]
 
 ---
 
@@ -461,30 +470,30 @@ last_synced_from_db: 2026-09-19
 | 항목                  | 현황                                                                                          | 출처                                 |
 | --------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
 | 중국 흑연/음극재 통제 | 2025.11.07 리튬배터리·인조흑연 음극재 수출통제 유예(suspension) → 현재 **무규제** 상태        | HSF Kramer, Benchmark, Crux Investor |
-| **유예 시한 (이중)**  | 리튬배터리·인조흑연 음극재·장비/기술 **~2026.11.10 (D-52)**. 대미 흑연 별도 **~2026.11.27**    | HSF Kramer, Benchmark, Crux Investor |
+| **유예 시한 (이중)**  | 리튬배터리·인조흑연 음극재·장비/기술 유예 **★US-中 휴전 연장(9/24)으로 11/10→~Jan 10 2027 이연(D-106)★**. 대미 흑연 11/27 별도건은 휴전 우산 하(확인 필요)    | HSF Kramer, CNBC/rareearthexchanges 09/24 |
 | 중국 흑연 지배력      | **천연흑연 생산 ~75%** + 배터리급 흑연 사실상 전량 지배. 미국 **100% 수입의존**               | autonocion, Crux Investor            |
 | 미국 흑연 취약성      | 비중국산도 **중국 가공 경유**해 음극재화                                                      | autonocion, Crux Investor            |
 | 영향 기업             | LG에너지솔루션·삼성SDI·CATL·Tesla 등 주요 배터리 제조사                                       | Crux Investor, IEA                   |
 | 미국 대응             | **Lake Erie 사이트 확보** — 미국 첫 배터리급 흑연 광산 추진 (70년 만)                         | autonocion                           |
 
-**핵심 리스크 (9/12 갱신):** **흑연이 미국 배터리 공급망의 실질 취약점** — 중국 천연흑연 ~75% 생산+구형흑연 가공 사실상 전량 지배, 미국 100% 수입의존, 비중국산도 중국 가공 경유(서류상 다변화 무의미). 중국 흑연/배터리 수출통제는 2025.11.07 유예로 현재 무규제이나 **11/10(배터리·음극재, D-52)+11/27(대미 흑연) 이중 시한**이 희토류 Phase 2(~11.10)와 4분기 집중. 재개 여부는 당시 미중 무역관계에 좌우. 미국 Lake Erie 사이트로 70년 만에 자국 흑연 추진. LG에너지솔루션·삼성SDI 등 한국 배터리사 직접 노출. [HSF Kramer, Benchmark, Crux Investor, autonocion, IEA]
+**핵심 리스크 (9/26 갱신):** **흑연이 미국 배터리 공급망의 실질 취약점** — 중국 천연흑연 ~75% 생산+구형흑연 가공 사실상 전량 지배, 미국 100% 수입의존, 비중국산도 중국 가공 경유. 중국 흑연/배터리 수출통제는 2025.11.07 유예로 현재 무규제이며, **★US-中 휴전 Jan 10 2027 연장(Bessent 9/24)으로 배터리·음극재 Phase 2 유예 11/10→~Jan 10 2027 이연(D-52→D-106)★**(희토류 Phase 2와 동반). 대미 흑연 11/27 별도건은 휴전 우산 하(확인 필요). 재개 여부는 당시 미중 무역관계에 좌우. 미국 Lake Erie 사이트로 70년 만에 자국 흑연 추진. LG에너지솔루션·삼성SDI 등 한국 배터리사 직접 노출(근시일 완화). [HSF Kramer, CNBC/rareearthexchanges 09/24, autonocion, IEA]
 
 ---
 
 ### 6. 에너지·전력 공급망
 
-#### 6-1. LNG 가격 및 공급 차질 — JKM $24~27.76/MMBtu(9/16, 상승)·TTF €78.95~80.97/MWh(9/18, 보합), 유럽 저장 ~68%(20년래 최저)·겨울 대비 카고 경합
+#### 6-1. LNG 가격 및 공급 차질 — TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27/MMBtu(9/18), 유럽 저장 69.3%·겨울 대비 카고 경합
 
 | 항목                     | 수치                                                                                                                                                | 출처                                            |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| JKM (아시아)             | **$24~27.76/MMBtu** (9/16, 9월초 $23.76서 상승) — 아시아 매수경쟁·겨울 대비 카고 경합 | Gas Outlook/S&P Global 09/16 |
-| 유럽 가스 (TTF)          | **€78.95~80.97/MWh** (9/18, TradingEconomics €78.95 +3.4% DoD·energyriskiq €80.97·yfinance TTF=F $79.375) — 9/11 €80.75서 보합. 저장 ~68% 20년래 최저 | TradingEconomics/energyriskiq/yfinance 09/18 |
+| JKM (아시아)             | **~$27/MMBtu** (9/18, 11월물, 9/11 mid-$28s서 하락) — 재고 충분·spot 수요 둔화·리스크 프리미엄 완화 | Global LNG Hub 09/24 |
+| 유럽 가스 (TTF)          | **€72.08/MWh** (9/25 yfinance TTF=F, 9/18 €79~81서 완화) — de-escalation+노르웨이 공급회복+온난기후. 저장 69.3% | yfinance/Global LNG Hub 09/25 |
 | **Qatar 해상활동 회복**  | **Qatar Ras Laffan LNG outbound flow 점진 회복 — Energy Aspects: Qatar LNG 회복 gradual·uneven**                         | Discovery Alert, Wood Mackenzie, Energy Aspects |
-| **호르무즈 재격화**      | **전면교전 격화·사실상 봉쇄 지속(통항 6척 9/6)로 LNG 봉쇄 프리미엄 재확대. 호르무즈 글로벌 LNG ~20%(Ras Laffan) 경로** | Al Jazeera 09/06~07, EIA |
-| 한국 LNG 호르무즈 의존   | 약 **30%** 경유(호르무즈 글로벌 LNG ~20% 경로). 전면교전 격화(재봉쇄)로 카타르 계약 FM 리스크 재확대 | EIA, IEEFA |
+| **호르무즈 완화**      | **美-이란 phased deal 협상(9/25)·원유flow 33.7M bbl로 LNG 봉쇄 프리미엄 완화. 호르무즈 글로벌 LNG ~20%(Ras Laffan) 경로** | CNBC 09/25, EIA |
+| 한국 LNG 호르무즈 의존   | 약 **30%** 경유(호르무즈 글로벌 LNG ~20% 경로). phased deal 협상(9/25)으로 카타르 계약 FM 리스크 완화 방향 | EIA, IEEFA |
 | 정상화 전망              | Qatar Ras Laffan 회복+호르무즈 급반전으로 정상화 궤도 — 단 호르무즈 재개 美 조건부라 잔여 리스크                                              | Wood Mackenzie, Energy Aspects, IEA             |
 
-**시사점 (9/19 갱신):** **JKM $24~27.76/MMBtu(9/16, 상승)·유럽 TTF €78.95~80.97/MWh(9/18, 9/11 €80.75서 보합).** 호르무즈 de-escalation으로 봉쇄 프리미엄 일부 해소이나 **유럽 저장 ~68%(20년래 최저)·겨울 대비 아시아와 카고 경합으로 TTF 고수준 유지** — JKM은 아시아 매수경쟁에 상승. Qatar Ras Laffan LNG(글로벌 ~20% Hormuz 경유) 회복 점진. **한국 LNG 호르무즈 30% 의존 리스크는 완화 방향이나 잔존.** [TradingEconomics/energyriskiq/yfinance 09/18, Gas Outlook 09/16, EIA]
+**시사점 (9/26 갱신):** **TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27/MMBtu(9/18, 9/11 mid-$28s서 하락).** de-escalation+노르웨이 Asgard/Troll/Kollsnes 정비 종료·공급회복+온난기후 전망으로 되돌림. **유럽 저장 69.3%(과거평균 하회)·겨울 대비 아시아와 카고 경합은 잔존.** Qatar Ras Laffan LNG(글로벌 ~20% Hormuz 경유) 회복 점진. **한국 LNG 호르무즈 30% 의존 리스크는 완화 방향이나 잔존.** [yfinance/Global LNG Hub 09/25, EIA]
 
 #### 6-2. 전력/그리드 장비 — 변압기 substation 160+주로 확대, AI 데이터센터의 최대 병목
 
@@ -510,8 +519,8 @@ last_synced_from_db: 2026-09-19
 | ---------------------- | ----------------------------------------------------------------------- | ------------------------- |
 | 한국 반도체 중국 수출  | 전체의 약 **40%**                                                       | ITIF, KIEP                |
 | 한국 희토류 중국 의존  | **80%(자석)**, 일본 10%. 3~5월 자석수출 -93% 붕괴 경험                  | CSIS, East Asia Forum     |
-| 한국 배터리 흑연 노출  | LG엔솔·삼성SDI 중국 흑연 의존. 11.10/11.27 유예 시한(D-52)              | HSF Kramer, IEA           |
-| 한국 LNG 호르무즈      | 약 **30%** 경유. 호르무즈 전면교전 격화(사실상 봉쇄·통항 6척 9/6)로 FM 리스크 재확대 | EIA, Al Jazeera |
+| 한국 배터리 흑연 노출  | LG엔솔·삼성SDI 중국 흑연 의존. 유예 11/10→~Jan 10 2027 이연(휴전연장, D-106)·대미 11/27 확인필요 | HSF Kramer, CNBC 09/24    |
+| 한국 LNG 호르무즈      | 약 **30%** 경유. 호르무즈 美-이란 phased deal 협상(9/25)으로 FM 리스크 완화 방향이나 잔존 | EIA, CNBC 09/25 |
 | 한국 태양광 폴리실리콘 | 폴리실리콘 232(파생품 15%+MIP) 12/4 발효 — 한화솔루션 등 태양광 조달·수출 노출 | White House, pv-tech |
 | **한국 반도체 232 Phase 2** | **DC면제 존속 불투명·Lutnick 투자연동 duty-free cap — 미-한 반도체 15%·DC 노출 협상 변수** | International Trade Today, CCIA      |
 | **한국 301 노출**      | Section 301 forced-labor **12.5% 티어**(60개국군 포함)                  | tradelawcounsel, movargo  |
@@ -527,7 +536,7 @@ last_synced_from_db: 2026-09-19
 | 희토류 TF        | **범정부 희토류 공급망 TF** 가동                  | MOTIE, KIEP           |
 | 현대차 대응      | 완화기 비축(stockpiling)으로 Sm-Co 자석 수급 대응 | Asia Business Daily   |
 
-**핵심 딜레마 (9/12 갱신):** (1) **★호르무즈 de-escalation 국면 전환(사우디 FM Trump 외교 환영·이란 신중)·유가 되돌림(Brent $99~103·WTI $95.5, 9/18, 9/11 $105.7~108.9서)·사우디 파이프라인 재가동**: 한국 LNG 30% 의존 리스크 완화 방향이나 여전히 사실상 봉쇄, (2) **홍해 복귀 확대(운하 트래픽 2024.1 이후 최고·Asia-Europe Genoa -3%/Rotterdam -2%)이나 후티 사우디 공격·호르무즈 격화로 EFS·에너지 상방** — 리스크 축 中東 재부각, (3) **관세 레짐: ★반도체 232 Phase 2 진행(9/2~3 Lutnick)★+폴리실리콘 232 12/4(D-76)+8/1 EU 30%+제약 232 100%**: 반도체 232 DC면제 존속 불투명 시 한국 협상 변수, (4) **희토류+배터리 흑연 11월 이중·삼중 시한(D-52)**: 희토류 의존 80%(현물은 연화·NdPr/Tb 5월 이후 첫 동반하락·中지수 259.5)+흑연 11.10/11.27 유예, 재개 시 heavy RE 프리미엄 >50%, (5) **메모리·CoWoS 수퍼사이클은 한국 호재**: SK·삼성 HBM 50~55%/25~30%(DRAM 재고 10일 미만·HBM4 $550·16hi 현물 $3,500)+CoWoS 매진, (6) 범정부 TF+2,500억원+비축 100일이나 구조적 의존 해소엔 수년. [Al Jazeera, MOTIE, EIA, HSF Kramer, TrendForce, International Trade Today]
+**핵심 딜레마 (9/26 갱신):** (1) **★US-中 무역휴전 Jan 10 2027 연장(Bessent 9/24)★**: 中 희토류·배터리소재 수출통제 유예 11/10→~Jan 10 2027 이연(D-106)→한국 희토류 80%·흑연 노출 근시일 완화, (2) **★호르무즈 美-이란 phased deal 협상(이란 FM 7일내 재개 제안·UNGA 카타르중재)·유가 주중 랠리 후 급락(Brent $97.47·WTI $92.44, 9/25, 9/24 $106.6/$94.61서)**: 한국 LNG 30% 의존 리스크 완화 방향, (3) **컨테이너 WCI $4,468(-1%)·벌크 BDI 3,430(재강세) 재역전**, (4) **관세 레짐: 폴리실리콘 232 12/4(D-69, 美조치 불변)+반도체 232 Phase 2(9/2~3 Lutnick)+8/1 EU 30%+제약 232 100%**: 반도체 232 DC면제 존속 불투명 시 한국 협상 변수, (5) **메모리·CoWoS 수퍼사이클은 한국 호재**: SK·삼성 HBM 50~55%/35~40%(DRAM 재고 10일 미만·HBM4 $550)+CoWoS 매진, (6) 범정부 TF+2,500억원+비축 100일이나 구조적 의존 해소엔 수년. [CNBC 09/24, MOTIE, EIA, HSF Kramer, TrendForce]
 
 ---
 
@@ -535,16 +544,16 @@ last_synced_from_db: 2026-09-19
 
 | 품목/분야               | 단일 의존도     | 의존국     | 대체 경로                                                                                                                                       | 현실화 시 파급                                                                       | 관련 자산                       |
 | ----------------------- | --------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------- |
-| 희토류 정제             | **91%**         | 중국       | MP/Lynas/Energy Fuels 가동. 4월 7종 미해제. **11.10 Phase 2(D-52) + 한국 자석수출 -93% 경험**                                                    | 반도체 장비, 방산 부품                                                               | 한화에어로스페이스              |
-| 희토류 자석제조         | **92%**         | 중국       | Pentagon-MP 가격하한(NdPr $110/Dy $575/Tb $2,050)·Independence 자석 H2'26. **中 REE 현물 연화(NdPr/Tb 5월 이후 첫 동반하락)·中지수 259.5·Dy 유럽 $2,250/kg**, 선적 -50% 지속 | EV 모터/풍력발전기 생산 차질                                                         | 현대차, LG에너지솔루션          |
-| 배터리 흑연             | **100% 수입**   | 중국 가공  | Lake Erie 사이트(미국 첫 광산, 70년만). 비중국산도 중국 가공 경유. **11.10/11.27 유예 만료(D-52)**                                              | EV 배터리 음극재 생산 차질                                                           | LG에너지솔루션, 삼성SDI, Tesla  |
+| 희토류 정제             | **91%**         | 중국       | MP/Lynas/Energy Fuels 가동. 4월 7종 미해제. **★Phase 2 유예 11/10→~Jan 10 2027 이연(휴전연장, D-106)★ + 한국 자석수출 -93% 경험**                | 반도체 장비, 방산 부품                                                               | 한화에어로스페이스              |
+| 희토류 자석제조         | **92%**         | 중국       | Pentagon-MP 가격하한(NdPr $110/Dy $575/Tb $2,050)·Independence 자석 H2'26. **中 REE 현물 doldrums 심화(NdPr oxide $96.69/kg 9/24 하한 하회·Dy oxide -14%)·Dy 유럽 $2,250/kg**, 선적 -50% 지속 | EV 모터/풍력발전기 생산 차질                                                         | 현대차, LG에너지솔루션          |
+| 배터리 흑연             | **100% 수입**   | 중국 가공  | Lake Erie 사이트(미국 첫 광산, 70년만). 비중국산도 중국 가공 경유. **★유예 11/10→~Jan 10 2027 이연(휴전연장, D-106)·대미 11/27 확인필요★**       | EV 배터리 음극재 생산 차질                                                           | LG에너지솔루션, 삼성SDI, Tesla  |
 | **폴리실리콘 (태양광)** | **中 ~80%**     | 중국       | 8/6 Section 232(파생품 15%+MIP $21/kg) 12/4 발효. 온쇼어링 압박                                                                                 | 태양광 모듈·반도체 웨이퍼 조달비용 상승                                              | 한화솔루션, 태양광 개발사       |
 | 최첨단 반도체 (대만)    | **90%+**        | 대만       | TSMC Arizona $165B(Fab2 Q3'26 장비/2027양산)+Intel 18A Fab52. **★232 Phase 2 확정(9/2~3 Lutnick·DC면제 존속 불투명)**                                     | 글로벌 AI/전자 공급망 마비. 봉쇄 **$5T**/침공 $10.6T                                 | NVIDIA, Apple, 삼성전자         |
 | 첨단 패키징 (CoWoS)     | **NVIDIA 60%**  | 대만(TSMC) | TSMC 26말 120~~140K 웨이퍼/월+OSAT(ASE CoWoP) 보완. **CoWoS-S/L 40~~52주 매진(2027까지)**. 수급갭 20→10%. **첫 binding constraint**             | AI 가속기 생산 캐파 제약                                                             | NVIDIA, TSMC, ASE               |
 | 전력 변압기             | **리드 3~5년**  | 글로벌부족 | 국내 제조 증설(과소투자). GSU 144주/substation 160+주. switchgear 2028 매진. BYOP 우회                                                          | 2026 DC 절반 이상 지연/취소. CapEx 수퍼사이클 실물 제약                              | 변압기 OEM, 데이터센터 운영사   |
-| 호르무즈 원유/LNG/비료  | **20%/30%/30%** | 걸프       | **de-escalation 국면·유가 되돌림(사우디 FM Trump 외교 환영). 여전히 사실상 봉쇄이나 사우디 파이프라인 재가동**                                    | 에너지-비료-식량 인플레 완화 방향. Brent $99~103/WTI $95.5/TTF €78.95~80.97(9/18) | CJ제일제당, S-Oil, 한국가스공사 |
+| 호르무즈 원유/LNG/비료  | **20%/30%/30%** | 걸프       | **美-이란 phased deal 협상(이란 FM 7일내 재개 제안·UNGA 카타르중재). 원유flow 33.7M bbl·사우디 우회 지속**                                    | 에너지-비료-식량 인플레 완화 방향. Brent $97.47/WTI $92.44/TTF €72.08(9/25) | CJ제일제당, S-Oil, 한국가스공사 |
 | HBM 메모리 (NVIDIA)     | **~90%**        | SK하이닉스 | 삼성·SK Vera Rubin HBM4 인증(Micron 제외). HBM4 Rubin SK 60~70%·삼성 25~30%. DRAM 재고 10일 미만·HBM 현물 계약가 5배(~$550/stack·16hi $3,500)                                        | AI 가속기 생산 차질                                                                  | NVIDIA, SK하이닉스, 삼성전자    |
-| 구리 정제               | **50%**         | 중국 황산  | 대체 소싱(캐나다·호주). Grasberg 완전재가동 2028 지연                                                                                           | 구리 공급 추가 차질. COMEX $6.63~6.72(9/18, 반등)·**정제구리 232 결정 지연·COMEX-LME 스프레드 >$800/t** | Freeport, Southern Copper       |
+| 구리 정제               | **50%**         | 중국 황산  | 대체 소싱(캐나다·호주). Grasberg 완전재가동 2028 지연                                                                                           | 구리 공급 추가 차질. COMEX $6.779(9/25 yfinance)·**정제구리 232 결정 지연·COMEX-LME 스프레드 >$800/t** | Freeport, Southern Copper       |
 
 ---
 
@@ -552,6 +561,7 @@ last_synced_from_db: 2026-09-19
 
 | 날짜       | 에이전트   | 변경 내용                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09-26 | kb-updater | 주간 갱신(8회 검색+1 fetch, +9 DB레코드): **★US-中 무역휴전 Jan 10 2027로 2개월 연장(Bessent 9/24·Xi 국빈방문) — 中 희토류·배터리소재 수출통제 유예가 11월 만료서 ~Jan 10 2027로 이연(REE/흑연 Phase 2 D-day 11/10→D-106)·中 대두 3년 25M톤 구매·희토류는 최대 미결로 차기 라운드 연기.** 유가 주중 랠리 후 금요일 급락: Brent $106.6(9/24)→$97.47(9/25 yfinance BZ=F, TradingEconomics ~$104.5)·WTI $92.44(9/25, 시간봉 교차검증 정산아티팩트 없음), 美-이란 phased deal 보도(UNGA·카타르중재)·이란 FM '7일내 호르무즈 재개+핵협상' 조건부 제안·호르무즈 원유flow 33.7M bbl. 컨테이너 WCI $4,468(9/24, -1% WoW, 9/17 $4,500서 반락·Asia-Europe 견인·Transpacific 견조 Shanghai-LA $7,838 +2%/NY $10,373 보합·blank sailing 9→15건 국경절前) vs 벌크 BDI 3,430(9/23, 9/17 3,336서 +94 재강세·Guinea/Brazil 철광석·中 항만회복) 재역전. 中 REE 현물 doldrums 심화: NdPr oxide $96.69/kg(9/24, ¥738,000/t SMM, MP-DoD $110 하한 하회)·Dy oxide -14%(¥1.435M/t)·Dy metal $235.57/kg 中내. 구리 COMEX $6.779/lb(9/25 yfinance HG=F, 9/19 $6.63~6.72서 상승). LNG TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27/MMBtu(9/18)·유럽저장 69.3%. HBM4 ~$550/stack·DRAM 재고 10일 미만·SK 50~55% 유지. 폴리실리콘 232 12/4 불변(D-69, 美조치라 中휴전 무관). FAO 133.3(8월, 9월치 10월초 발표·N/A). **D-day 재계산(2026-09-26): 희토류/흑연 Phase 2 ~Jan 10 2027(D-106, 휴전연장)·폴리실리콘232 12/4 D-69·대미흑연 11/27 D-62(휴전 우산 확인필요).** |
 | 2026-09-19 | kb-updater | 주간 갱신(10회 검색, +23 DB레코드): **★호르무즈 de-escalation 국면 전환 — 사우디 FM 'Trump 외교 결정 환영·2/28 이전 호르무즈 항행자유 복원' 성명·이란 신중('everything precise'), Brent 3거래일 연속 하락. 유가 되돌림 Brent $99~103(9/18, yfinance BZ=F $98.77·TradingEconomics $103.29, 9/11 $105.7~108.9서)·WTI $95.5(yfinance CL=F $95.47, 9/11 $100~104서, 원자재 yfinance 교차검증). 사우디 East-West 파이프라인 수일내 재가동 시사(홍해 7M bpd)·셔틀선박 호르무즈 우회 수출 재개.** 컨테이너 WCI $4,500(9/17, +1% WoW, Transpacific 강세 Shanghai-LA +5% $7,712/NY +7% $10,394·中 국경절前 blank sailing 9건). 벌크 BDI 3,336(9/17, +9pt DoD, 9/8 3,584·9/4 3,628 2021.10 이후 최고서 되돌림). 홍해 복귀 가속: 수에즈 컨선 순톤수 2026 1~8월 72.1M tons(+54.2% YoY)·Maersk+Hapag Gemini 4개 서비스(AE5/AE11/AE12/ME2) 희망봉→수에즈 추가 전환. 구리 COMEX $6.63~6.72(9/18, yfinance HG=F $6.715·TradingEconomics $6.63 교차검증, 9/11 $6.46서 반등)·정제구리 232 결정 지연(주중 dip後 반등)·COMEX-LME 스프레드 >$800/t. 반도체: HBM4 ~$550/stack·16hi 현물 $3,500 유지·Samsung HBM4 +30% 협상·2026 완판·232 한국 'no less favorable' 조항(11월 joint fact sheet). 희토류: 中 REE 현물 doldrums 지속 — Pr-Nd oxide/alloy 中내 하락(9/16 SMM)·Tb oxide/metal FOB 각 -$12/kg·거래 부진·中추석前 sideways, NdPr ~$144/kg·Dy 유럽 $2,250/kg(YoY 8배). LNG: JKM $24~27.76(9/16, 상승)·TTF €78.95~80.97(9/18, 보합)·유럽 저장 ~68% 20년래 최저. FAO 133.3(8월 확정 유지, 9월 10월초 발표). 흑연 中 98% 지배·가격 억제. **D-day 재계산(2026-09-19 기준): 희토류/흑연 11/10 D-52·대미흑연 11/27 D-69·폴리실리콘232 12/4 D-76.** |
 | 2026-09-12 | kb-updater | 주간 갱신(16회 검색, +16 DB레코드): **★호르무즈 전면교전 격화·유가 5월 이후 최고 — 美-이란 tit-for-tat 지속(직전 24h 美 이란 원유탱커 3척 타격·이란 상선/美군함 탄도미사일 보복)·8월 상선 13척 피격(MT Sidr 선원 2명 사망)·후티 사우디 에너지시설 타격(분쟁 확산)·사우디 8월 생산 -1.9M bpd→6.238M(1990년 이후 최저). 통항 6척(9/6)·10일평균 13척(straits.live Day 195). 유가 급등 Brent $105.71~108.92(9/10~11, 5월19일 이후 최고, 9/4 $96서 +12%)·WTI $100~104, US원유재고 -300K, OPEC+ 9월 +188K 롤백 완료·연말 동결이나 실생산 급감 괴리.** 컨테이너 WCI $4,476(9/10, 2주연속 보합, Transpacific LA +2%/NY +1% vs Asia-Europe Genoa -3%/Rotterdam -2%·Intra-Asia $1,323). 벌크 BDI 3,628(9/4, +4% 주간, 2021.10 이후 최고)·3,584(9/8), 8/31 3,186서 급등(철광석·석탄 실수요). 홍해: MSC/Maersk/Ocean Alliance 복귀로 운하 트래픽 2024.1 이후 최고(정상比 -41%)·후티 VLCC Amzan 피격·war-risk 재급등. **★반도체 232 Phase 2 진행(9/2~3 Lutnick 'Build in America or pay') — DC 면제(HTS 9903.79.03) 승계 불투명·duty-free cap 투자연동·소비기기 면제 미승계 시사.** 핵심광물: 中 REE 현물 연화 — Nd metal $141.79/kg(9/3, -2.54% MoM)·NdPr alloy -1.98%·Tb $1,097 中내가 5월 이후 첫 동반하락, 中지수 259.5(8/17 이후 신규갱신 부재)·Dy 유럽 $2,250/kg(YoY 8배), D-day(11/10) 임박에도 현물 안정. 구리 COMEX $6.46(9/11, 9/4 $6.60서 -2.04% MoM·+41.05% YoY·정제구리 232 면제 유지·Chile/Peru 차질). 반도체: HBM4 ~$550/stack·16hi 현물 $3,500·삼성·SK 완제 DRAM 재고 10일 미만·HBM 현물 계약가 5배·SK '2030 이후까지 부족'·SK 50~55%/HBM4 Rubin 60~70%. TTF €80.75(9/11, 2022.12 이후 최고, 9/4 €72.73서 +11%)·JKM ~$23.76. FAO 133.3(8월 확정, +1.9% MoM 3년+ 최고, 곡물 116.3 +2.2%·밀 +2.6%·옥수수 +2.5%·식용유 196.9). 폴리실리콘 232 12/4(D-83). 희토류/흑연 11/10·11/27 이중시한 D-59 |
 | 2026-09-05 | kb-updater | 주간 갱신(15회 검색, +20 DB레코드): **★호르무즈 급반전 붕괴·전면 재격화 — 8/26 Iran-Oman de-escalation이 美 6월 MOU 이행 교착 속 붕괴, 9월초 美 대이란 신규 공습·이란 美기지 보복·48h내 사우디 원유 초대형탱커 2척 피격으로 사실상 재봉쇄(통항 6척 8/30 vs 정상 ~85/일, US군 86척 회항·3척 무력화). 유가 급반등 Brent $95.6~96(9/2~4, 주간 +7.6%)·WTI $91~92(주간 +10.4%, 8/28 $88/$82.5서 5주 최고, yfinance $95.83/$91.22 9/4), TTF €72.73(9/4, +127.5% YoY 3년+ 최고)·JKM $22.71(8/31), OPEC+ 9/6 동결 예상.** 컨테이너 WCI $4,465(9/3, 보합, Transpacific 재반등 LA +5%/NY +3% vs Asia-Europe 급락 Genoa -10%/Rotterdam -5% 노선 디커플링). 벌크 BDI ~3,056(9월초, 5일연속 상승 반등, 8/28 2,776서 회복). **★반도체 232 Phase 2 확정 — 9/2~3 Lutnick 'Build in America or pay'(美 건설사 관세 0·미건설사 관세), DC 면제(>100MW·HTS 9903.79.03) Phase 2 존속 불투명, 노트북/게임콘솔/DC서버 확대 검토(세부 개발 중·미확정).** 핵심광물: 中 REE지수 264.9(8/17 259.5서 반등, heavy RE 긴장 재고조)·Dy 유럽 spot $2,250/kg(YoY 8배)·Pentagon-MP 하한 불변. 구리 COMEX $6.60(9/4, 8/28 $6.54서·정제구리 232 미결정·美 수입 7월 12년 최고 LME -14%). 반도체: HBM4 ~$550/stack·삼성 수율 ~80%·SK 50~55%/삼성 35~40%(삼성 DRAM 1위 탈환 전망)·SK OpenAI Stargate 90만 웨이퍼/월·2026 매진. TSMC N2 booked·CoWoS AP8 26말 >40K 웨이퍼/월·수율 >98%. FAO 133.3(8월, +1.9% MoM 3년+ 최고, 곡물 +2.2%·식용유 196.9)·요소 반등 CBOT ~$475.50/mt(호르무즈 재봉쇄). 폴리실리콘 232 12/4(D-90) 유지. 희토류/흑연 11/10·11/27 이중시한 D-66 |
