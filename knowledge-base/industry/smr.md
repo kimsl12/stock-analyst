@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-19
-valid_until: 2026-10-19
+updated: 2026-09-26
+valid_until: 2026-10-26
 category: industry
 sub_category: science_tech
 topic: smr
@@ -46,15 +46,20 @@ sources:
   - Motley Fool / Simply Wall St (BWXT / Westinghouse)
   - 혁신형SMR기술개발사업단 / 한수원 (i-SMR)
   - yfinance (주가 스냅샷)
+  - [9/26 갱신] 24/7 Wall St / Foreign Policy Journal / Bloomberg / Motley Fool / DiscoveryAlert / The Oregon Group / World Nuclear News (Antares-Centrus) / ANS (Centrus article-8412) / Fluor / SlashGear (현대차그룹-CFS) / Proxima Fusion / NucNet / The Fusion Report / caproasia / 재경일보 / 다음뉴스 (한수원 경주)
 confidence: high
-last_synced_from_db: 2026-09-19
+last_synced_from_db: 2026-09-26
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
 
 ## CURRENT
 
-> 이번 주(9/12 -> 9/19) 핵심 변화: **美 하원 Ratepayer Protection Act 417-3 통과(9/16)發 SMR 개발주 9/17 급반등 -- 이원화 역전(美 개발주 강세 vs 우라늄·한국 밸류체인 상대약세)**. 법안은 **100MW 초과 데이터센터가 추가 전력망·전력공급 비용을 부담**토록 규정 -> 대안 청정전력(원자력) 수요 촉매로 해석. 9/17 **Oklo +13%(장중 $40.37)·NuScale +10%($9.14)·X-energy +12%($16.33)·NANO +8.5%·Centrus(LEU) +7.8%** 동반 급등('원자력 셀오프 소진?' 24/7 Wall St)하나 **우라늄 미너는 랠리 소외(URA ETF +4% vs 발전주 급등)** -- 시장이 '원자로 건설사'에 베팅, 공급망 전반 아님. **우라늄 장기계약가 ~$96~96.50/lb(9/10) 명목 사상최고 -- 2007년 기록 상회·스팟 대비 $6~7/lb 프리미엄(이례적 역전)·스팟 ~$90/lb(9/15, YoY +19.6%)**. **Westinghouse IPO 밸류 목표 $50B 초과로 상향(9/18 Bloomberg)·10월 공개 상장신청 목표**(기존 관측 ~$30B서 대폭 상향, Cameco 49%+Brookfield 공동소유). **한국: HD현대-테라파워-현대건설 최고경영진 서울 첫 회동(9/14, 빌게이츠·정기선·이한우 -- 나트륨 상용화·글로벌 확장)·SMR 특별법 시행(9/11)+연내 범정부 SMR 촉진위원회 출범**. 두산에너빌리티 **84,900원(9/18, -0.59%·9/11 90,800서 -6.5% 되돌림·대신 목표가 130,000 상향)**·HD현대重 460,000원(-2.02%). 스톡(9/17): OKLO $39.65·NuScale $9.04·BWXT $146.35·CCJ $92.80·LEU $149.85·XE $16.33·NNE $16.97·두산 84,900원(9/18)·HD현대重 460,000원(9/18). **핵융합: Helion Series G $500M 상향(6월 $465M서 증액·총 $1.5B+)+워싱턴주 방사성물질·대기배출 라이선스 취득('핵융합 발전소에 필요한 규제 라이선스 세계 최초')·Pacific Fusion 앨버커키 착공+NNSA 협력(Series A $1B 돌파)·Kyoto Fusioneering $105M+$57M**.
+> 이번 주(9/19 -> 9/26) 핵심 변화: **9/16 하원 데이터센터 전력표결(Ratepayer Protection Act 417-3) 랠리가 1주 만에 완전 라운드트립 -- SMR 개발주·한국 밸류체인·우라늄 3중 섹터 광범위 조정 마감**. 9/18(금) 셀오프(NuScale -7%·Oklo -5%·Centrus -3% 'post-vote gains 반납') -> 9/21(월) 오버솔드 반등(Oklo +5% $39.84·NuScale +4% $8.63·Uranium Energy +3% $10.14) -> 9/22~24 재차 약세. **신규 회사·프로젝트 뉴스 없이 정책기대만으로 등락 -- Oklo YTD -49%(피크 대비 -80%)·NuScale YTD -43%(피크 대비 -86%)**. 9/24 종가: OKLO $38.29·NuScale $8.47·X-energy(XE) $15.72·BWXT $138.68·CCJ $88.12·LEU $147.32·NNE $17.02·URA $40.86. **펀더멘털 진전(모멘텀과 디커플)**: (1) **Centrus 신규 HALEU 오프테이크 -- Antares Nuclear 다년 계약(9/17, 선급금 포함)+Radiant(9/9)·Fluor Piketon 농축플랜트 확장 EPC 선정**('원자력 붐 pick-and-shovel', Motley Fool 9/24) (2) **우라늄 공급부족 정량화 -- 소요 179M lb vs 광산생산 140~150M lb = 연 30~40M lb 구조적 부족·Kazatomprom nuclear OPEC(capacity 10% 하향)·장기계약가 ~$96/lb(스팟 ~$90 초과 역전 지속)·BofA $130 목표** (3) **Westinghouse IPO $50B+ 구체화 -- Cameco 49% 지분 $24.5B+·Citi/Goldman 주관·10월 상장신청·기술 417기 중 57% 채용** (4) **한국: 두산에너빌리티 목표가 140,000~150,000원 상향(대신·메리츠, 기존 130,000서)·i-SMR 실증부지 경주 감포(문무대왕과학연구소 2027)·컨센 122,000~165,000** (5) **핵융합: 현대차그룹-CFS 파트너십($1B 라운드 일부·ARC 스케일업)·Proxima-니더작센 HTS 테이프 MOU(€140M)·英美 Global Fusion Summit 2건 협정·美 의회 핵융합 법안 ~$8.8B(CFS 지지)**. 한국주 조정: 두산 81,700원(9/23, -5.55%)·HD현대중공업 441,000원(-3.18%)·한전기술 121,100원(-7.77%).
+
+<!-- ARCHIVE 9/19 -->
+
+> (9/12 -> 9/19 이전 핵심): **美 하원 Ratepayer Protection Act 417-3 통과(9/16)發 SMR 개발주 9/17 급반등 -- 이원화 역전(美 개발주 강세 vs 우라늄·한국 밸류체인 상대약세)**. 9/17 Oklo +13%($40.37)·NuScale +10%($9.14)·X-energy +12%($16.33)·Centrus(LEU) +7.8% 급등하나 우라늄 미너 소외(URA +4%). 우라늄 장기계약가 ~$96~96.50/lb(9/10) 명목 사상최고·스팟 ~$90/lb. Westinghouse IPO 밸류 $50B 초과 목표·10월 상장신청(9/18). 한국: HD현대-테라파워-현대건설 최고경영진 서울 회동(9/14)·SMR 특별법 시행(9/11)+연내 SMR 촉진위원회. 두산 84,900원(9/18)·대신 목표 130,000. 핵융합: Helion Series G $500M 상향+워싱턴주 방사성물질·대기배출 라이선스 세계 최초·Pacific Fusion 앨버커키 착공+NNSA·Kyoto Fusioneering $105M+$57M.
 
 <!-- ARCHIVE 9/12 -->
 
@@ -122,10 +127,10 @@ last_synced_from_db: 2026-09-19
 
 | 지표                     | 수치                                                                        | 출처                             |
 | ------------------------ | --------------------------------------------------------------------------- | -------------------------------- |
-| 우라늄 스팟 가격         | **~$90/lb (9/15, U3O8)** -- YoY +19.6%·9/11 $89.99                          | metalcharts / ANS / uranium.info |
+| 우라늄 스팟 가격         | **~$90/lb (9/22, 시$90.05·종$89.85)** -- 공급 연 30~40M lb 부족                          | metalcharts / ANS / uranium.info |
 | 우라늄 장기계약가        | **~$96~96.50/lb (9/10)** -- 명목 사상최고·2007 기록 상회·스팟 대비 +$6~7/lb | DiscoveryAlert / uranium.info    |
 | Cameco 2026 실현가       | **$85~89/lb** (가이던스, 매출 $3.13~3.37B 유지)                             | Cameco                           |
-| Cameco 주가 (CCJ)        | **$92.80** (9/17, +2.09% -- 9/11 $97.42서 하락·9/17 발전주 랠리에 소외)     | yfinance                         |
+| Cameco 주가 (CCJ)        | **$88.12** (9/24, -2.95% -- 9/17 $92.80서 하락·섹터 조정 동조·URA ETF $40.86 -2.69%)     | yfinance                         |
 | 7월말 스팟               | $86.36/lb                                                                   | Cameco                           |
 | 2026.01.29 연중 최고가   | **$101.41/lb** (YTD 고점)                                                   | INN                              |
 | 2026 변동 레인지         | $80 ~ $101.41/lb (지정학·안전자산 선호로 등락)                              | INN / DiscoveryAlert             |
@@ -140,7 +145,7 @@ last_synced_from_db: 2026-09-19
 - HALEU는 SMR 설계의 50% 이상이 요구하는 핵심 연료 (5~20% 농축)
 - Centrus Energy(LEU)가 유일한 미국 상업 HALEU 생산자, 기술솔루션 부문 매출 +47%(HALEU 수요)
 - **우라늄 장기계약가 명목 사상최고·스팟 초과 이례적 역전 (9/10) [업데이트/핵심]**: **장기계약가 ~$96~96.50/lb(9/10)로 명목 사상최고 -- 2007년 기록 상회**, 스팟(~$90/lb) 대비 **$6~7/lb 프리미엄**(이례적 역전). 장기가가 스팟을 상회한다는 것은 유틸리티가 **향후 공급이 현 스팟물량보다 구조적으로 더 타이트할 것으로 결론**내고 수년치 물량 선제 확보 중임을 의미. **Kazatomprom 'No Price Is High Enough' 공급 스탠스(2026 생산 하향)+Cameco 운영차질(Key Lake/McArthur River·Cigar Lake) 구조적 공급부족 지속**. 단 **9/17 SMR 발전주 랠리에 우라늄 미너는 소외(URA ETF +4% vs 발전주 +8~13%)** -- 시장이 '원자로 건설사'에 베팅, 공급망 전반 아님. Cameco(CCJ) $92.80(9/17)·Centrus(LEU) $149.85(9/17, +7.80%·발전주 랠리 동반). BofA $130/lb 목표 유지 [DiscoveryAlert/metalcharts/ANS/Yahoo/yfinance]
-- **Centrus HALEU 현황 [기존 유지]**: DOE $900M HALEU 농축 계약(총 잠재 ~$1.07B)+X-energy LEU·HALEU 공급계약(8/6)으로 LEU+HALEU 백로그 **$3.0B**. **Geiger Brothers를 오크리지 농축플랜트 대규모 증설 시공사로 선정**, 오크리지 **첫 신규 원심분리기 2026말 완공 예정**. 미국 유일 상업 HALEU 생산자 데모->상업 전환 진행 [Centrus/StockTitan/ANS article-8180/SEC 8-K]
+- **Centrus HALEU 신규 오프테이크 가속 (9월) [업데이트]**: **Antares Nuclear 다년 HALEU 공급계약 체결(9/17, 납품 2020년대말 개시·Antares 선급금으로 증설 자금 지원)+Radiant 다년 HALEU 계약(9/9)** -- ANS 9/21 'HALEU 계약서 unobligated(비의무) 자국산 우라늄 생산 강조'. **Fluor를 오하이오 Piketon 농축플랜트 확장 EPC 파트너로 선정**·오크리지 **$560M+ 투자(수천기 원심분리기 제작)**. DOE $900M HALEU 농축 계약(총 잠재 ~$1.07B, 2032.07까지 최대 1MT)+X-energy LEU·HALEU 공급계약(8/6)으로 LEU+HALEU 백로그 **$3.0B**. 서방권 유일 라이선스 HALEU 생산자 -- 연방 지원 첨단로 설계 10개 중 9개 HALEU 요구. Motley Fool 9/24 '원자력 붐 pick-and-shovel 최적주' [WNN/ANS article-8412/Fluor/Motley Fool 9/24/Centrus]
 - **General Matter 공급망 확장 [기존 유지]**: DOE $900M 10년 마일스톤 계약(1월)+켄터키 Paducah 부지 임대. 美 수출입은행 LOI **최대 $4.2B** 부채금융으로 **일본·한국이 향후 10년 General Matter서 원자력연료 직접구매** 지원(3월). Centrus 외 두 번째 자국 HALEU 공급원
 - **Urenco 미국 농축시설 능력 ~50% 증설 (6월) [기존 유지]**: 단 미국 농축 4개 선정사 중 Urenco USA는 유일한 상업 가동 농축사이나 **DOE task order 미수령**
 - **Centrus-Oklo HALEU 공급 LOI (6/18) [기존 유지]**: 남부 오하이오 **1.2GW Clean Energy Campus**용, Aurora **최대 5기 다년 운영분 자국산 HALEU를 2029년부터 공급**
@@ -190,7 +195,7 @@ last_synced_from_db: 2026-09-19
 - **ENTRA1-TVA 6GW 진전 [기존 유지]**: 확정계약 시 즉시 착수. TS2 보도상 TVA 계약이 ENTRA1에 최대 **$1.18B** 지급 가능성. TVA 딜 2025.09 서명. PPA가 site-specific 서비스 매출·OEM 가속·연말 흑자전환 핵심 촉매 [ts2.tech/Seeking Alpha]
 - **BofA 커버리지 (late June)**: **Neutral 등급, TP $12**. 의미있는 원자로 매출은 **2030년대 초** 경고. **B.Riley Buy TP $15(9월)** / Northland Outperform / Citi Sell
 - **일본 $25B SMR 투자 약속 변수 (6/15) [기존 유지]**: US-Japan 무역딜 $550B 중 일부, NuScale/ENTRA1 대상 최대 **$25B**. 추부전력 NuScale 직접 투자. 메커니즘·타이밍 미상
-- **주가 [업데이트]**: **$9.04**(9/17 종가, +8.92% -- 9/17 하원 Ratepayer Protection Act 통과로 장중 $9.14 +10% 급등, 9/11 $10.21 대비 주간 하락). 연중 고점 대비 -75%+. 매출 가시성 2030년대 초 -- **연내 TVA PPA 확정이 분수령**. **MillenniTEK와 passive 비상노심냉각계통용 first-of-a-kind 붕소산화물 펠릿 최초 제작(9/8)**
+- **주가 [업데이트 9/26]**: **$8.47**(9/24 종가, -2.42% -- 9/18 -7% 셀오프->9/21 +4% $8.63 반등->9/22~24 약세, Oklo와 동일 정책 트레이드에 near-lockstep). **YTD -43%·피크 대비 -86%**. 매출 가시성 2030년대 초 -- **연내 TVA PPA 확정이 분수령**. **MillenniTEK와 passive 비상노심냉각계통용 first-of-a-kind 붕소산화물 펠릿 최초 제작(9/8)** [24/7 Wall St 9/18·9/21/yfinance 9/24]
 - **그리드 공급 전략 차별화**: 데이터센터 직거래(Oklo형)가 아닌 **계통(그리드) 공급** 중심 -- 가장 큰 프로젝트가 **TVA 6GW** 그리드급 배치
 - **루마니아 RoPower 진전**: Doicesti 폐석탄부지 6개 NuScale 모듈, 다음 단계 진행 승인
 - **Ebara Elliott Energy MOU / Framatome 연료 파트너십(유럽+미국 Richland, 2030년대 납품)**
@@ -199,7 +204,7 @@ last_synced_from_db: 2026-09-19
 #### X-energy Xe-100 (미국) -- 9/17 +12%($16.33), DOE +$1B Long Mott(Seadrift 총 $2.15B), TX-1 수직건설 진행 [업데이트]
 
 - **IPO (2026.04.24)**: $23/주, **$1.02B 조달 / 순조달 ~$1.1B** (원자력 역대 최대), Nasdaq "XE" 상장
-- **주가 [업데이트]**: **$16.33**(9/17 종가, +12.08% -- 9/17 하원 Ratepayer Protection Act 통과 랠리를 개발주 중 최대폭 견인, 9/11 $15.84 대비 주간 상승). 발전주 중 유일하게 주간 기준 상승
+- **주가 [업데이트 9/26]**: **$15.72**(9/24 종가, -4.03% -- 9/17 $16.33 고점서 정책 트레이드 라운드트립에 되돌림). 개발주 중 9/24 낙폭 최대. TX-1 수직건설·Seadrift 총 $2.15B DOE 지원 등 펀더멘털 무변화 [yfinance 9/24]
 - **DOE 추가 $1B Long Mott 통지 + 테네시 $11M 보조금 (2026.08, Q2·ANS 8/17) [기존 유지]**: DOE가 **Long Mott(Dow Seadrift) 프로젝트에 추가 $1B 비용분담 자금 통지** -- 기존 $1B 합산 **Seadrift 총 약 $2.15B DOE 지원**. TRISO-X 오크리지 연료제조 캠퍼스 **$11M 경제개발 보조금** 확보 [GlobeNewswire 8/13/ANS 8/17]
 - **NRC 건설허가 심사 일정 (8/17) [기존 유지]**: Seadrift NRC 건설허가 심사 **2026 후반 완료·허가 결정 2027 H1** 유력. **Cascade(WA, Amazon·Energy Northwest) 건설허가 신청 2027 H1** 제출 계획 [ANS 8/17]
 - **Q2 2026 실적 (2026.08.13) [기존 유지]**: 매출+보조금 **$54.6M**(+154% YoY, 컨센 $49.9M 상회). non-GAAP **EPS -$0.15**(컨센 -$0.09 미스). **SGL Carbon 흑연 공급계약**+**Centrus·General Matter HALEU 농축계약**으로 공급망 다중 확보. TRISO-X TX-1 캠퍼스 +70에이커 인수(8/4) [GlobeNewswire/StockTitan/yfinance]
@@ -212,7 +217,7 @@ last_synced_from_db: 2026-09-19
 
 #### Oklo (미국) -- 9/17 +13%($40.37 장중), $1B ATM 여진(9/11 개시), 유동성 $3.0B [업데이트]
 
-- **주가 [업데이트]**: **$39.65(9/17 종가, +11.31%)** -- 9/17 하원 Ratepayer Protection Act 통과로 **장중 $40.37 +13% 급등**, 9/11 $1B ATM 개시(-9%) 여진서 반등. 피크 $193.84 대비 **-80%**. 무매출·현금소진 자금조달 채널 추가(2026중 ATM 누적 $1.9B 기조달)가 밸류 상단 제약
+- **주가 [업데이트 9/26]**: **$38.29(9/24 종가, -1.37%)** -- 9/16 하원 표결 랠리가 1주 만에 완전 라운드트립: 9/18(금) -5% 셀오프 -> 9/21(월) 오버솔드 반등(+5% $39.84) -> 9/22~24 재차 약세. 신규 회사·프로젝트 뉴스 없이 정책기대만으로 등락. **YTD -49%·피크 $193.84 대비 -80%**. 무매출·현금소진 자금조달 채널 추가(2026중 ATM 누적 $1.9B 기조달)가 밸류 상단 제약 [24/7 Wall St 9/18·9/21/yfinance 9/24]
 - **$1B ATM 신주발행 프로그램 개시 (2026.09.11) [기존 유지]**: **Goldman·BofA·Citi·JPMorgan·Morgan Stanley·Barclays·Cantor·Guggenheim·Canaccord·B.Riley** 등 10개 IB와 equity distribution agreement -- **기존 ~$1B 소진 ATM 대체**(2026 상반기 ATM 누적 $1.9B 기조달). 발표 직후 -9% 희석 우려. NRC Aurora Principal Design Criteria(PDC) 승인(5/6·아이다호)+INL **Aurora Fuel Fabrication Facility(연료제조시설)** DOE 승인·설계활동 진전이 자본조달-규제 진척 연동 [SEC 8-K FY2026/Simply Wall St/Stocktwits]
 - **DOE Groves 시험로 startup authorization + Aurora 지원 협약 (2026.08.25) [기존 유지]**: DOE가 텍사스 Groves Isotope Test Reactor에 **가동승인** 부여. 동시에 DOE와 **첫 Aurora 상업로 설계·건설·운영 지원 협약** 체결 [StocksToTrade 8/25/Yahoo/Seeking Alpha]
 - **DOE INL 부지사용허가+HALEU 5MT 배정 (2026.08) [기존 유지]**: Aurora 상업 파워하우스용 **INL 부지사용허가** 발급 + **HALEU 5MT 배정**. 첫 Aurora 파워하우스 **2028 배치 목표 유지** [Benzinga/CoinCentral]
@@ -233,7 +238,7 @@ last_synced_from_db: 2026-09-19
 - **Applied Atomics-BWXT mPower SMR 상용화 독점권 계약 (2026.08) [기존 유지]**: Applied Atomics가 BWXT **mPower SMR 기술의 미국·캐나다 등 지상 원자력시설 상용배치 독점권** 확보 [ANS Nuclear Newswire article-8226]
 - **Q2 2026 실적 (2026.08.03) [기존 유지]**: 매출 **$901.6M**(+18% YoY, 컨센 상회), non-GAAP EPS **$1.07**(컨센 상회), 조정 EBITDA **$155.5M**. 상업부문 매출 **$302.5M**(+72% YoY), **수주잔고 +40% YoY($8.4B)**. **FY2026 가이던스 재상향**: 매출 ~$3.8B, EBITDA **$662~672M**, non-GAAP EPS **$4.70~4.80** [Globe and Mail/StockTitan/SEC 8-K]
 - **애널리스트 [업데이트]**: 18인 평균 **Buy·목표주가 $223.63**(현재가 대비 약 +53.5%). **Deutsche Bank TP $253 Buy 유지**. CEO Geveden: AP1000·BWRX-300·캐나다 SMR 논의, **원자력 기자재 최소 1건 수주 기대** [247wallst/Simply Wall St/stockanalysis]
-- **주가 [업데이트]**: **$146.35** (9/17, +0.47% -- 9/11 $152.49 대비 하락, 9/17 개발주 랠리에 상대적 소외)
+- **주가 [업데이트 9/26]**: **$138.68** (9/24, -2.21% -- 9/17 $146.35 대비 하락, 정부 원자력 코어 수주에도 섹터 조정에 동반 약세. Investor Day 9/29 예정) [yfinance 9/24]
 - **해군 핵추진 $1.4B 계약 (5/7)** / **DOE 우라늄 처리 $1.5B + 고순도 열화우라늄 10년 $1.6B + 국내 원심분리기 $1.5B**
 - **불가리아 Kozloduy 7·8호기**: BWXT 3자 컨소시엄 **Owner's Engineer**, Westinghouse AP1000 2기
 - **PCG 인수**: Precision Components Group, **2026 H2 완료 예정**
@@ -241,7 +246,7 @@ last_synced_from_db: 2026-09-19
 
 #### Westinghouse AP1000/AP300 -- IPO 밸류 $50B 초과 목표·10월 상장신청(9/18), DOE $17.5B 공급망 파이낸싱(6/23) [업데이트]
 
-- **IPO 밸류 $50B 초과 목표·10월 공개 상장신청 (2026.09.18) [신규/핵심]**: Westinghouse가 미국 IPO에서 **밸류 $50B 초과** 추구 -- 기존 관측 ~$30B서 대폭 상향. **빠르면 10월 공개 상장신청 목표**. 주관사 **CIBC·JPMorgan Chase·Royal Bank of Canada** 참여. Westinghouse는 **Cameco(49%)+Brookfield Renewable Partners 공동소유**(7/31 비공개 draft registration statement 제출). Cameco 밸류 재평가 촉매이나 '공모주주가 원자력 부흥 최후순위' 우려(Forbes 8/2) 병존 [Bloomberg 9/18/Investing.com/WNN]
+- **IPO 밸류 $50B 초과 목표·10월 공개 상장신청 (2026.09.18~21) [업데이트]**: Westinghouse가 미국 IPO에서 **밸류 $50B 초과** 추구 -- 기존 관측 ~$30B서 대폭 상향. **빠르면 10월 공개 상장신청 목표**. 주관 **Citigroup·Goldman Sachs**(Bloomberg 9/18 기준·기존 관측 CIBC/JPMorgan/RBC와 병존). Westinghouse는 **Cameco(49%)+Brookfield 공동소유**(7/31 비공개 draft registration statement 제출) -- **Cameco 49% 지분 가치 $24.5B+ 평가**(Cameco 밸류 재평가 촉매, Motley Fool 9/21). Westinghouse 기술이 **전세계 417기 원자로 중 57% 채용·최신세대 원자로 최대 91건 기회 파이프라인**. 美 육군이 8월 Westinghouse 포함 5개사 발전소 건설·소유·운영 선정. '공모주주가 원자력 부흥 최후순위' 우려(Forbes 8/2) 병존 [Bloomberg 9/18/Motley Fool 9/21/caproasia/WNN]
 - **DOE 파트너십 $17.5B 조건부 약정 (2026.06.23)**: DOE **Office of Energy Dominance Financing**의 American Nuclear Supply Chain Loans에서 **조건부 $17.5B** -- AP1000 **최대 10기** long-lead 부품 자금
 - **미국 AP1000 $80B 거래**: 대형로 최대 **20기** 미국 내 건설 추진
 - **DOE HALEU 배분 1차 5개사 조건부 배정 포함** (Westinghouse Electric Co.)
@@ -273,7 +278,7 @@ last_synced_from_db: 2026-09-19
 
 #### Commonwealth Fusion Systems (CFS) -- 누적 $4B(7/30), SPARC ~80%, first plasma 2027 슬립 [기존 유지]
 
-- **누적 자본 $4B (2026.07.30)**: 2021 $1.8B 시리즈B 이후 **핵융합 최대 단일 라운드**(추가 $1B). 투자자에 **연기금(핵융합 업계 최초)·국부펀드·산업 파트너** 포함. 세계 최다 펀딩 민간 핵융합사 [PRNewswire/PowerMag/CFS]
+- **누적 자본 $4B (2026.07.30)·현대차그룹 파트너십 (9월) [업데이트]**: 2021 $1.8B 시리즈B 이후 **핵융합 최대 단일 라운드**(추가 $1B). 투자자에 **연기금(핵융합 업계 최초)·국부펀드·산업 파트너** 포함. **9월 현대자동차그룹이 CFS와 파트너십 체결 -- 금액 비공개, $1B 라운드의 일부**(CEO Bob Mumgaard 'ARC 발전소 사업 스케일업의 중요한 구성요소'). 세계 최다 펀딩 민간 핵융합사 [PRNewswire/PowerMag/SlashGear 9월/CFS]
 - **SPARC 조립 ~80%(7/30), first plasma 2027 슬립 [기존 유지]**: Devens(MA), 18개 초전도 TF 자석 여름말 설치 완료 목표. **first plasma 공식 목표 2026이나 현실적 2026말~2027 슬립 관측 확산**, **net energy gain Q>1 목표 2027**. 매사추세츠주 방사성물질 라이선스(2024.10, 브로드스코프) 보유. DOE Milestone 프로그램 선정 [cfs.energy/Prism News/World Nuclear News]
 - **ARC 물리기반 동료심사 논문 5편 발표 (6월 초)**: Journal of Plasma Physics 특별판. ARC는 **핵융합출력 1.1GW -> 연속 순전력 400MWe** 변환. 버지니아 Chesterfield, Dominion Energy offtake (2030대 초)
 - **SPARC 사양**: fusion gain 약 Q=11 목표, 25MW 입력 -> 50~100MW 핵융합출력. 자석 1기 24톤·20테슬라
@@ -380,8 +385,8 @@ last_synced_from_db: 2026-09-19
 - **SMR 전용공장**: 창원, **2026.03~2031.06 총 8,068억원 투입**, 연 20기+ 생산능력. 세계 최초 SMR 전용공장 착공
 - **글로벌 SMR Foundry**: NuScale/X-energy/TerraPower 주기기 위탁 생산 (2026H2 생산 시작)
 - **SMR 매출 전망**: 2026 2,000~3,000억 -> 2027 7,000억 -> 2028 1.14조 -> 2029 2.4조 -> **2030 3.3조원**
-- **주가 [업데이트]**: **84,900원(9/18 종가, -0.59%)** -- 9/11 90,800원서 **-6.5% 되돌림**, 미국 개발주 9/17 반등 국면과 대비되는 한국 밸류체인주 상대약세. 52주 고점 139,200원 대비 -39%. 트레일링 PER 고평가가 변동성 요인
-- **목표주가 [업데이트]**: **대신증권 목표가 130,000원 상향**(대형원전·SMR 수주 모멘텀 확장)·NH투자증권 130,000원(가스터빈·SMR 수주 확대)·신한투자 157,000원·컨센서스 129,375원(8/4). SMR 주기기 독점·영업익 2조 정조준(데일리머니). 수주잔고 24조 펀더멘털 유효하나 밸류 부담 병존
+- **주가 [업데이트 9/26]**: **81,700원(9/23 종가, -5.55%)** -- 9/18 84,900원서 추가 하락, 美 SMR 개발주 정책 트레이드 라운드트립·섹터 차익실현과 동조. 한전기술 121,100원(9/23, -7.77%)·HD현대중공업 441,000원(-3.18%) 동반 조정. 52주 고점 139,200원 대비 -41%. 트레일링 PER 고평가가 변동성 요인 [yfinance 9/23]
+- **목표주가 [업데이트 9/26]**: **대신·메리츠 등 목표가 140,000~150,000원선으로 일제히 상향**(9월, 기존 130,000서·대형원전·SMR 수주 모멘텀 확장)·신한투자 157,000원·**컨센서스 122,000~165,000원**. 2030년까지 SMR 70기+ 수주 전망·SMR 주기기 독점·영업익 2조 정조준(데일리머니). 수주잔고 24조 펀더멘털·목표가 상향 유효하나 주가 조정은 밸류 부담·섹터 동조 차익실현 [재경일보/인포스탁데일리/데일리머니 9월]
 
 ### 한국 원전 수출 [기존 유지]
 
@@ -460,7 +465,7 @@ last_synced_from_db: 2026-09-19
 
 | 프로젝트                    | 규모                                      | 비고                                                                |
 | --------------------------- | ----------------------------------------- | ------------------------------------------------------------------- |
-| Westinghouse IPO            | **밸류 $50B 초과 목표** (9/18)            | 10월 상장신청 목표, CIBC/JPMorgan/RBC, Cameco 49%+Brookfield [신규] |
+| Westinghouse IPO            | **밸류 $50B 초과 목표** (9/18)            | 10월 상장신청, Citi/Goldman 주관, Cameco 49% 지분 $24.5B·기술 417기 중 57% [업데이트] |
 | X-energy DOE Long Mott 추가 | **+$1B (Seadrift 총 $2.15B)** (8월)       | DOE 비용분담, TN $11M 보조금, 1GW 프로젝트 발표 예정                |
 | 두산-테라파워 기자재        | 미공개 (제작계약 체결, 8월)               | 나트륨 보호용기·지지구조물·내부구조물, Kemmerer 공급                |
 | TerraPower-현대건설 EPC     | 미공개 (최대 8기 Natrium)                 | 완공·가격·성능 보증, 최고경영진 서울 회동 9/14 [업데이트]           |
@@ -498,7 +503,7 @@ last_synced_from_db: 2026-09-19
 | ---------------------- | --------------------------------------- | ---------------------------------------------------------------- |
 | 민간 핵융합 누적 투자  | **$14.24B** (FIA 2026.07)               | 연 $4.48B 역대 최고(+69% YoY)                                    |
 | Helion Series G        | **$500M 상향 @ 밸류 $15.5B**            | 6월 $465M서 증액, 총조달 $1.5B+, WA 라이선스 세계최초 [업데이트] |
-| CFS 누적 펀딩          | **$4B** (7/30 추가 $1B)                 | 연기금 최초 참여, 2021 $1.8B 이후 최대 라운드                    |
+| CFS 누적 펀딩          | **$4B** (7/30 추가 $1B)                 | 연기금 최초·**현대차그룹 파트너십($1B 라운드 일부, 9월)** [업데이트] |
 | Proxima Fusion         | **$468M @ 밸류 $2.7B** (7/7)            | Google·RWE, 유럽 최고밸류                                        |
 | Pacific Fusion         | **$1B+** Series A                       | 앨버커키 착공+NNSA 협력, net facility gain 2030 [업데이트]       |
 | Kyoto Fusioneering     | **$105M 지분+$57M 부채** (Series D 1차) | UNITY 연료주기·블랭킷·열시스템 실증 [신규]                       |
@@ -532,7 +537,7 @@ last_synced_from_db: 2026-09-19
 4. **HALEU 연료 공급**: 미국 글로벌 농축 **1% 미만**. Centrus DOE $900M·누적 1,900kg+·연 12MT 목표·Q2 백로그 $3.0B로 진전하나 미국 유일 상업 생산자 의존도 여전
 5. **경제성 미입증**: 실제 건설/운영 비용 데이터 부족. Carnegie Endowment "hype vs reality" 경고
 6. **사회적 수용성**: 원전 안전 우려, 방사성폐기물 처리
-7. **주가 변동성**: Oklo $39.65(9/17, +11.31% -- 9/17 하원 Ratepayer Act 랠리로 장중 $40.37, 9/11 $1B ATM 희석 우려·피크 대비 -80%), 컨센 TP $14~$140(Piper Sandler OW $55). NuScale $9.04(9/17, +8.92%). 9/17 하원 표결 단일 이벤트에 +8~13% 급등 -- 무매출·현금소진·희석 부담 상존, BofA '유의미 매출 2035~2040' 진단 유효. 두산 84,900원(9/18, 되돌림). 원자력주 단일 정책·표결·자금조달 시그널에 ±5~13% 급변
+7. **주가 변동성**: 9/16 하원 표결 랠리가 1주 만에 완전 라운드트립 -- Oklo $38.29(9/24, YTD -49%·피크 -80%), NuScale $8.47(9/24, YTD -43%·피크 -86%), 컨센 TP $14~$140(Piper Sandler OW $55). 9/18 셀오프(Oklo -5%·NuScale -7%)->9/21 오버솔드 반등(+4~5%)->9/22~24 약세. 신규 펀더멘털 없이 정책기대만으로 ±4~13% 급변 -- 무매출·현금소진·희석 부담 상존, BofA '유의미 매출 2035~2040' 진단 유효. 두산 81,700원(9/23, -5.55%)·한전기술 -7.77%. 원자력주 단일 정책·표결·자금조달 시그널에 급변
 8. **중국 경쟁**: Linglong One 2026 H1 가동 시 세계 최초 육상 상업 SMR 타이틀. 서구 대비 수년 선행
 9. **우라늄 가격 구조적 상승 vs 미너 소외**: 장기계약가 **~$96~96.50/lb(9/10) 명목 사상최고(2007 기록 상회)·스팟 초과 이례적 역전**, 스팟 ~$90/lb. Kazatomprom·Cameco 공급차질 구조적 공급부족. 단 **9/17 발전주 랠리에 우라늄 미너 소외(URA +4%)** -- 발전소 건설주와 공급망주 디커플링. BofA $130/lb 목표
 10. **체코 원전**: 두코바니 본계약 6/4 체결로 가처분 해소. 두산 주기기 2027.11~2032.08. **테믈린 3·4호기 우선협상 5년·2030 확정·EDF/웨스팅하우스 2차 경쟁**·폴란드 시프로위폴삿 탈퇴 변수 잔존
@@ -552,8 +557,8 @@ last_synced_from_db: 2026-09-19
 
 ---
 
-_본 KB는 2026-09-19 웹검색 기반 갱신 (14회 검색, 10건 DB 추가). 최대 변화: **美 하원 Ratepayer Protection Act 417-3 통과(9/16)發 SMR 개발주 9/17 급반등 -- 이원화 역전(美 개발주 강세 vs 우라늄·한국 밸류체인 상대약세)**. 100MW 초과 데이터센터가 추가 전력망·전력공급 비용 부담토록 규정 -> 9/17 Oklo +13%($40.37)·NuScale +10%($9.14)·X-energy +12%($16.33)·NANO +8.5%·Centrus(LEU) +7.8% 급등하나 **우라늄 미너 소외(URA +4%)**. **우라늄 장기계약가 ~$96~96.50/lb(9/10) 명목 사상최고(2007 기록 상회·스팟 초과 역전)·스팟 ~$90/lb**. **Westinghouse IPO 밸류 $50B 초과 목표·10월 상장신청(9/18, 기존 ~$30B서 상향)**. **한국: HD현대-테라파워-현대건설 최고경영진 서울 회동(9/14, 빌게이츠·정기선·이한우)·SMR 특별법 시행(9/11)+연내 SMR 촉진위원회**. 두산 84,900원(9/18, 되돌림·대신 목표 130,000). **핵융합: Helion Series G $500M 상향+워싱턴주 방사성물질·대기배출 라이선스 세계 최초·Pacific Fusion 앨버커키 착공+NNSA·Kyoto Fusioneering $105M+$57M\**. 스톡(9/17): OKLO $39.65·NuScale $9.04·BWXT $146.35·CCJ $92.80·LEU $149.85·XE $16.33·NNE $16.97. 다음 갱신 권장: 2026-10-19 이전_
+_본 KB는 2026-09-26 웹검색 기반 갱신 (12회 검색, 8건 DB 추가). 최대 변화: **9/16 하원 데이터센터 전력표결(Ratepayer Protection Act 417-3) 랠리가 1주 만에 완전 라운드트립 -- SMR 개발주·한국 밸류체인·우라늄 3중 섹터 광범위 조정**. 9/18 셀오프(NuScale -7%·Oklo -5%·Centrus -3%)->9/21 오버솔드 반등(Oklo +5% $39.84·NuScale +4% $8.63)->9/22~24 약세. 펀더멘털 진전(모멘텀 디커플): Centrus 신규 HALEU 오프테이크(Antares 9/17 선급금+Radiant 9/9·Fluor Piketon EPC)·우라늄 공급갭 정량화(연 30~40M lb 부족·Kazatomprom nuclear OPEC)·Westinghouse IPO $50B+(Cameco 49% $24.5B·Citi/Goldman·10월)·두산 목표 140,000~150,000 상향(대신·메리츠)·핵융합 현대차그룹-CFS 파트너십+Proxima 니더작센 HTS MOU+英美 Global Fusion Summit+美 의회 핵융합 ~$8.8B 법안. 9/24 스톡: OKLO $38.29·NuScale $8.47·XE $15.72·BWXT $138.68·CCJ $88.12·LEU $147.32·NNE $17.02·URA $40.86·두산 81,700원(9/23)·HD현대重 441,000원·한전기술 121,100원. 다음 갱신 권장: 2026-10-26 이전_
 
-<!-- ARCHIVE 9/12 갱신 노트 -->
+<!-- ARCHIVE 9/19 갱신 노트 -->
 
-_(직전) 본 KB는 2026-09-12 웹검색 기반 갱신 (8회 검색, 7건 DB 추가). 최대 변화: **원자력·SMR 섹터 9/8 강한 반등 후 9/11 되돌림 -- 美 개발주 조정 vs 한국 밸류체인주 강세 이원화 심화**. 9/8 NuScale +11~15%·Oklo +6~7% 급등 후 \**Oklo 9/11 $1B ATM 신주발행 프로그램 개시**發 희석 우려 하락(-6.32% $39.88). \**Piper Sandler Oklo 신규 OW TP $55(9/9)** · **NuScale B.Riley TP $19->$15(Buy)+MillenniTEK 붕소산화물 펠릿 최초 제작** · **우라늄 스팟 $89.99/lb($90 임박)·장기계약가 2008년래 최고** · **두산에너빌리티 90,800원(+1.00%, 저점서 회복)·HD현대중공업 479,000원(+5.62%)**. 스톡(9/11): OKLO $39.88·NuScale $10.21·BWXT $152.49·CCJ $97.42·LEU $165.87·XE $15.84·NNE $17.36·두산 90,800원. 핵융합 신규 메가딜 없음(First Light Fusion £25M 1차 클로징·CFS SPARC first plasma 2027 슬립 관측). 다음 갱신 권장: 2026-10-12 이전_
+_(직전) 본 KB는 2026-09-19 웹검색 기반 갱신 (14회 검색, 10건 DB 추가). 최대 변화: 美 하원 Ratepayer Protection Act 417-3 통과(9/16)發 SMR 개발주 9/17 급반등(이원화 역전)·우라늄 장기계약가 ~$96/lb 명목 사상최고·Westinghouse IPO $50B 초과 목표(9/18)·HD현대-테라파워-현대건설 서울 회동(9/14)·SMR 특별법 시행(9/11)·핵융합 Helion Series G $500M+워싱턴주 라이선스 세계최초·Pacific Fusion 앨버커키 착공._

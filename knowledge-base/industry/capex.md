@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-19
-valid_until: 2026-10-19
+updated: 2026-09-26
+valid_until: 2026-10-26
 sector: capex
 confidence: high
 tags:
@@ -203,14 +203,22 @@ sources:
     uncoveralpha,
     오늘경제,
   ]
-last_synced_from_db: 2026-09-19
+last_synced_from_db: 2026-09-26
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-09-19 | 신뢰도: high | 유효: ~2026-10-19
+> 갱신일: 2026-09-26 | 신뢰도: high | 유효: ~2026-10-26
 
 ---
+
+## ★ 주간 델타 (9/26) — 직전 갱신(9/19) 이후 변화
+
+- **[핵심] 빅테크 AI capex 컨센 재집계 — 4대 하이퍼스케일러 2026 ~$725B(+77% YoY)·Amazon $200B 단독 최대·GS 누적 2026-2031 ~$7.6T·제약은 '의지'가 아닌 물리적 가용성**: 4대 하이퍼스케일러(Google·Amazon·Microsoft·Meta) 2026 capex 합산 **~$725B**(2025 $410B 대비 **+77%**). 기업별 2026: **Amazon ~$200B(단독 최대)·Alphabet $175-185B·Meta $115-135B**. 상위 5사 ~$750B(+67% YoY, **3년 연속 60%+ 성장**). 2027 컨센 4사 합산 ~$934.5B(Google $284.8B·Amazon $256.5B·Microsoft $207.6B·Meta $185.6B), **Goldman Sachs 2027 $1.01T**(+32% vs 2026 $765B)·GS **누적 AI capex 2026-2031 ~$7.6T**. Futurum는 2026 AI capex $690B로 별도 집계. 핵심 프레이밍 전환: 향후 capex 제약은 지출 의지가 아닌 **칩·전력·숙련 건설인력의 물리적 가용성**. 주: 소스별 집계기준(4사 vs 5사·capex 정의) 상이 [valueaddvc, Futurum, I/O Fund, CreditSights, Goldman Sachs, Yahoo Finance]
+- **[핵심] GW급 AI DC 대량 온라인 진입 — Microsoft 컴퓨트 +26GW(2032 캐파 38GW+, 현 ~12GW의 3배+)·2026 5개 GW급 DC 가동·xAI Colossus 2 최속 12개월 빌드아웃·Meta Hyperion 5GW**: **Microsoft가 AI 특화 DC로 ~26GW 컴퓨트 추가** — 글로벌 DC 캐파를 현재 ~12GW에서 **2032년 38GW+**로 확대(뉴욕주 피크 전력수요 초과 규모, Bloomberg 9/10). **2026년 5개 GW급 AI DC**가 각기 다른 하이퍼스케일러 운영으로 온라인 진입 전망. **xAI Colossus 2(멤피스)가 최속 빌드아웃 — GW급 도달까지 ~12개월** 목표. **Meta Hyperion(루이지애나) 5GW 설계**(1단계 2GW 2030 완공)+오하이오 1GW DC, Zuckerberg '이번 10년 수십 GW·장기 수백 GW+' 선언. 상위 5대 AI 클라우드가 올해 capex **>$750B** 집행. 계획이 아닌 실가동 GW급 DC 시대 본격화 [Bloomberg, The Silicon Review, The Data Center Engineer, InfotechLead, Epoch AI]
+- **전력 병목·원자력 조달 가속 — GE Vernova 오더북 2029 완판·주문 2031·가스터빈 슬롯 2030 타이트·MV-UPS 출시 + MS TMI 837MW 100%·Google-Kairos SMR 500MW·빅테크 원자력 13GW+·White House Ratepayer Pledge + K-전력 HD현대 2778억 765kV 텍사스 창사최대·효성 3900억**: **GE Vernova 오더북 2029까지 완전 예약·주문 2031년까지·가스터빈 슬롯 2030 타이트**, 중전압 UPS(MV-UPS) 신규 출시로 AI 팩토리 빌드아웃 가속. **원자력/SMR — Microsoft가 부활 Three Mile Island(Crane Clean Energy) 837MW 100% 인수(20년)·Google-Kairos 첫 미 기업 SMR 함대딜 500MW·빅테크 4사 누적 원자력 13GW+**(Meta 2.8GW Natrium 8기 포함 최대 6.6GW), BTM/co-location으로 계통연계 큐 우회. **White House 'Ratepayer Protection Pledge'**(Amazon·Google·Meta·Microsoft·OpenAI·Oracle·xAI 서명) — 테크사가 AI DC용 신규 발전 비용 전액 부담·가계 전기료 보호. **K-전력: HD현대일렉 9월 2778억원 765kV 초고압 변압기(미 텍사스 최대 전력사 24대, 창사 이래 최대 단일 수주)+1400억 BESS EPC, 효성중공업 3900억원 초고압 변압기('피크아웃 아직 멀어'), 3사 수주잔고 50조원 돌파 전망** [Power-Eng, GE Vernova News, DCD, WWT, whitehouse.gov, 오늘경제, 이투데이, socialvalue]
+- **메모리 슈퍼사이클 실적 임박(Micron 9/30) + WFE 상향 — Micron FY Q4 가이던스 매출 $50B±1·GM ~86%·EPS $31(삼성·SK 추격)·HBM4 $1B+·16 SCA(DRAM 20%/NAND 33%) + DRAM Q4 +50-55%·HBM4 ~$550/스택·삼성 완판 + SEMI WFE 2026 $135.2B·ASML Low-NA EUV +30%(2027)·Lam $135B**: **Micron FY Q4 2026 실적 9/30 발표 예정(프리뷰)** — 가이던스 매출 **$50B±$1B**(컨센 $50.42B, 직전 컨센 $43.45B 대비 **+$6.55B 상향**)·GM ~86%·non-GAAP EPS **$31±$1**. HBM4 이미 **$1B+ 매출**, 전략적 고객계약(SCA) 16건으로 **DRAM 물량 ~20%·NAND ~33% 커버**, $50B 매출로 삼성·SK하이닉스 추격. 메모리 가격: **DRAM 계약가 Q4 QoQ +50-55%**(vs Q4'25)·2025-2027 누적 +275-300%·**HBM4 ~$550/스택**(HBM3E ~$300), 삼성 2026 HBM 캐파 **완판**·추가 증설 검토, 삼성/SK 장기 고정가 거부·분기계약 고수. WFE: **SEMI 2026 +9.0%·2027 +7.3% $135.2B**(협의 정의)·**ASML 글로벌 WFE ~25% 점유·Low-NA EUV 캐파 2027 +30%**(TSMC/삼성/Intel 수요)·Lam 2026 WFE ~$135B. 주: WFE 정의별 상이(SEMI $135.2B vs GS 8/25 $150B) [Alphastreet, financefeeds, TrendForce, ersaelectronics, Digitimes, SEMI, marklapedus]
+- **[핵심] AI 부채 리스크 재점화(Axios 9/25) — Oracle 10Y ~6.5%(정크급 수익률)·FY26 FCF -$23.7B·AI 인프라 본드 목요일 스프레드 blowout·AI연계 115bps vs IG 78bps + 하이퍼스케일러 부채 2027 ~$420B 신기록 전망**: **Oracle 10년물 회사채 수익률 ~6.5%**로 상승(통상 IG 하위등급 수준) — S&P BBB-(7월 강등, 정크 1노치 위). **Oracle FY2026 FCF -$23.7B**(클라우드 수익 vs ~$250B AI 빌드아웃 격차). **Oracle이 테넌트인 AI 인프라 본드 스프레드가 목요일(9/24) 오전 급확대(blowout) 후 장중 일부 재타이트닝** — 투자자 우려 반영. **AI 연계 기업 부채 스프레드 ~115bps vs 광의 IG 시장 ~78bps**. Daily Caller(9/22): **하이퍼스케일러 부채 파이낸싱이 2027년 ~$420B 신기록** 도달 전망. Meta는 $27B Hyperion을 Blue Owl JV(Blue Owl 80%·Meta 20%)로 구조화해 Oracle 온밸런스시트 조달과 대조적 오프밸런스시트 경로 확보. 사모대출 불투명성으로 손실이 은행·보험·연기금 상류로 전이되기 전까지 미가시 우려(RMBS 위기 병렬) [Axios, Daily Caller, Startup Fortune, Quinn Emanuel, Fortune]
 
 ## ★ 주간 델타 (9/19) — 직전 갱신(9/12) 이후 변화
 

@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-19
-valid_until: 2026-10-19
+updated: 2026-09-26
+valid_until: 2026-10-26
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -214,10 +214,20 @@ sources:
     Mysteel,
     eepower,
     Northern Miner,
+    OpenPR,
+    Visual Capitalist,
+    Columbia CGEP,
+    US State Department,
+    EXIM,
+    Resource Recycling,
+    Textile World,
+    Composites UK,
+    KnowMade,
+    Energy Singularity,
   ]
 confidence: high
-last_synced_from_db: 2026-09-19
-db_records: 509
+last_synced_from_db: 2026-09-26
+db_records: 519
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -226,6 +236,23 @@ db_records: 509
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.09.26 핵심 변화 요약 (9/19→9/26 윈도우)**:
+>
+> 1. **[중대] 희토류 — 11월 2개 D-day 카운트다운(11/10 확대통제 유예종료 D-45[전주 D-52]·11/27 中 Ga/Ge/Sb 대미 수출금지 유예종료 D-62) + NdPr oxide SMM ¥738,000/t($96.69/kg, 9/24)로 DoD $110/kg floor 하회·Jan2025比 +79%·2월피크 ¥850,000比 -13% + Dy oxide ¥1.435M/t(YTD -14%·中내 $212-218/kg vs 北美 최대 $3,250/kg)·Tb 中내 ~$997 vs 北美 $7,500/kg** — 9월 임계광물 게르마늄 +10.04%(19종 최대상승)·갈륨 flat·Tb flat(+0.22% MoM $1,097.08/kg)·Dy +3.36%($239.12/kg), 19종 중 10 상승/8 하락/1 flat. 유럽 Ga·중희토(Dy/Tb) 中내가 ~5배·게르마늄 ~3배. **11/10 확대통제(SmCo·Tb/Dy 함유 NdFeB·역외 0.1% 룰) 12개월 유예종료 D-45(9/19 D-52), 11/27 中 Ga/Ge/Sb 대미 수출금지 유예종료 D-62 — 11월에 2개 별도 D-day 집중. 유예종료해도 라이선싱·군용 최종사용자 금지는 존속(수출관리 강화 방향).** NdPr $96.69/kg는 DoD 오프테이크 연동 $110/kg floor 하회(고점서 조정). [OpenPR/MacroMicro/rare-earth-mining/RareEarthExchanges(가격), TradingEconomics/Pillsbury/ClarkHill/TheOregonGroup/Referently(D-day), VisualCapitalist/IEA(임계광물)]
+>
+> 2. **희토류 [정량화] — MP Materials 10X 노스레이크(TX) 120에이커·$1.25B+·1,500+ 일자리·2028까지 연 ~10,000t 자석(수년전比 ~10배)·Mountain Pass 중희토(Dy/Tb) 분리 commissioning 개시·Gd 9-figure 美 항공/방산 장기 오프테이크·Q2 2026 매출 +89% $108.5M·NdPr +41%·판매량 2배+** — Fort Worth Independence서 <10마일, Pentagon NdPr $110/kg floor·100% 오프테이크. USA Rare Earth-Serra Verde 합병(9/3)으로 아시아 외 유일 완전통합(채굴-정제-금속화-자석) 플랫폼 병존. [MP Materials IR/SEC 8-K/InvestorPlace/Columbia CGEP]
+>
+> 3. **[재확인] 배터리소재 — CATL Na-ion(Naxtra) ESS 첫 고객 인도 9월 개시·연내 GWh급 출하·GWh 산업화 달성·2026말 풀스케일 대량양산(재료원가 반감)·175Wh/kg·500km+·CHANGAN 세계 첫 양산 Na-ion 승용차 전브랜드(AVATR/Deepal/Qiyuan/UNI) 공급 + [한국 소재] POSCO Si-C 음극 흑연比 ~5배·2027 양산·Ultra Hi-Ni 단결정 Ni>95%·LG화학 고전압 미드니켈 2026 인도·CNT 도전재 부피 -30%/전도율 +10% vs 카본블랙** — 9/5 中 GB 38031-2025 안전인증 통과(09.19 재확인). SWCNT가 Si계 복합음극 안정화 핵심. [CarNewsChina/CATL/BatteryTechOnline/EVTech.News(CATL), POSCO/LG Chem/KED Global/KnowMade(韓소재)]
+>
+> 4. **[신규 델타] 전고체 — QuantumScape QSE-5 셀 탑재 Ducati V21L 레이스바이크 IAA Mobility 뮌헨(9월) 데뷔로 실차(real-world EV) 세계 최초 전고체 Li-metal 탑재 시연(Eagle 파일럿라인 2026.2.4 가동 후속), Samsung SDI 울산 25조원·전고체 대량양산 H2 2027 타깃(파일럿라인 진입·초기배치 EV사 테스트中), Toyota 특허 1,300건·2027 SSB EV·10-80% <10분·600+마일** — 09.19 KB의 서방/日/韓 공격적 로드맵이 QS의 실차 세계 최초 시연으로 구체화. [QuantumScape SEC 8-K/eepower/tahaabbasi/exoswan]
+>
+> 5. **리튬 저위 안착 — 中 배터리급 탄산리튬 스팟 ¥133,151/t(9/24, 전주 ¥133,200 9/17서 사실상 flat)·글로벌 리튬 $19.83/kg(9/24, -1.18% WoW)·Benchmark CIF아시아 $19,750/t(9/2)** — 호주 광산 공급 램프업발 구조적 과잉·재고 누적·中 BESS commissioning 성장 둔화로 근월 수요심리 약화. **09.19 KB의 3주 연속 하락서 저위권 안착 전환(5월중순 피크 ¥199,000/MT比 대폭 하락).** [시리즈·그레이드별 상이로 레벨 confidence medium·약세방향 high]. 리튬 저위가 단기 Na-ion 코스트 인센티브 재약화. [SMM/Benchmark Minerals/carboncredits/SunSirs/Trading Economics]
+>
+> 6. **[신규 델타] 탄소섬유 — CAMX 2026(2026.9.21-24 미 애틀랜타 GWCC·7,000+ 참관·500+ 부스·100+ 세션) 개막: Hexcel(부스P4) 신규 — HexWeb HRH-10 항공 허니콤 NCAMP 인증(허니콤 코어재 첫 공개 데이터베이스)·HexPly M901 급속경화 프리프레그(4-5분 경화·SLC 美생산 확대·무인/방산/자동차/의료/산업)·HexWeb Vented Flex-Core 알루미늄 허니콤(차세대 우주발사체용). Toray(부스AA9) TORAYCA CF·thermoset prepreg·Cetex·CFRT, Teijin Carbon America 급속경화 프리프레그·수지주입·TPC, HS효성첨단소재 항공우주 탄소섬유 CAMX 첫 공개(韓 신규 진입)** — 09.12 Teijin·09.19 Toray 출품에 09.26 Hexcel(정성적 최대 델타)·HS효성 가세. 핵심공급 Mitsubishi/Toray/Solvay/DuPont/Formosa/Teijin/Hexcel. [CompositesWorld/Hexcel/Textile World/StockTitan/The Elec/Composites UK]
+>
+> 7. **[신규] 美 임계광물 정책 + 초전도/CNT [재확인] — 연방 Jan2025-Jun30 2026 $10B 투자·EXIM $14.8B Letters of Interest(희토 개발/정제 $455M·리튬 $400M)·Project Vault(2/2 2026, EXIM $10B 대출+민간 $2B, DLA 국방비축과 별개 임계광물 비축)·Commerce CHIPS $277M+$1.3B 대출 USA Rare Earth(美 유일 채굴→REO→금속→NdFeB 통합)·GAO(7월) 배터리 재활용 2-3년내 Cu/Co/Li/Ni 수입감축 / 초전도: CFS SPARC REBCO HTS first plasma ~2026·net energy 2027 재확인·테이프 방사선 열화 과제 지속·中 Energy Singularity HH70 ReBCO 토카막·RABiTS/IBAD km급 REBCO 생산·CNT 도전재 시장 ~$2.04B by 2030 CAGR 13.3%(신규 상업 델타 제한적)** — [State Dept/Columbia CGEP/EXIM/Resource Recycling(정책), ScienceDirect/IEEE Spectrum/strategicmetals/arXiv(초전도), Research and Markets(CNT)]
+
 
 > **2026.09.19 핵심 변화 요약 (9/12→9/19 윈도우)**:
 >

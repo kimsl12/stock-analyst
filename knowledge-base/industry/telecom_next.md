@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-19
-valid_until: 2026-10-19
+updated: 2026-09-26
+valid_until: 2026-10-26
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -182,14 +182,31 @@ sources:
   - stockanalysis.com
   - 딜라이언
   - 서플
+  - SamMobile
+  - 9to5Google
+  - eftm
+  - mobidevices
+  - Invezz
+  - TipRanks
+  - electronics360
+  - Network World
 confidence: high
-last_synced_from_db: 2026-09-19
+last_synced_from_db: 2026-09-26
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.09.26 핵심 변화 요약 (9/19 이후 델타)**:
+>
+> 1. **★6G RAN#113 마드리드 사후결과 확정=마이그레이션 옵션 결정 12월 보스턴 이월(9/19 '미발행' 해소)·MRSS 베이스라인 공식확정 + Snapdragon Summit 9/22~24 실현('8 Elite Gen 6'+'8 Elite Extreme Gen 6', 2nm·X105 '6G로 가는 길') + FR3 美 각서 '800MHz' 가속** -- **★3GPP RAN#113(마드리드 9/17 종료) 공식결과 발행 -- 5G->6G 마이그레이션 옵션 최종결정 실패로 ★12월 보스턴 RAN#114 이월(consensus 미달, '몇 개·어떤 옵션 허용할지' 미합의). 지지순위 Option 1(6G-anchored dual connectivity, 최강) > Option 3(dual-stack/dual registration, 중간) > Option 2(5G-anchored, 사실상 배제). ★MRSS(Multi-RAT Spectrum Sharing)가 5G NR·6G Radio 동일캐리어 공유 '베이스라인'으로 공식확정(RAN1 예비 성능평가 완료·9월 데드라인 충족), 6G Futures '이번 플레너리를 MRSS가 지배'. China Mobile '5G 교훈: 마이그레이션 옵션 과다가 파편화·롤아웃 지연·개조비 초래', 오판은 '수십억달러 실패' 소지. 스터디->스탠다드 페이즈 전환 2027.03. ★Qualcomm Snapdragon Summit 마우이 9/22~24 실현(9/19 'D-3 임박'서) -- 명칭 확정 'Snapdragon 8 Elite Gen 6 + 8 Elite Extreme Gen 6'(사전 티저 'Gen 6 Pro'서 'Extreme'로), 세계최초 2nm 스마트폰 SoC(TSMC N2P·Prime 2코어 피크 5.0GHz·Perf 6코어 4.0GHz), ★X105 5G 모뎀-RF(세계최초 3GPP Rel-19·mmWave+sub-6·DL 14.8Gbps·UL 4.2Gbps·6안테나 4x4 MIMO)로 '6G로 가는 길을 연다(paves way for 6G)' 명시, Extreme는 300억파라미터 AI 온디바이스 오프라인. 9개 OEM(HONOR·iQOO·Motorola·OnePlus·OPPO·Redmi·RedMagic·vivo·Xiaomi)·첫단말 2026 Q4·플래그십 물결 2027초·Galaxy S27 탑재후보. ★스펙트럼: 규제당국이 upper mid-band(7-24GHz) 6G 할당 '가치논쟁'서 '수량확정' 단계로 이동, 7.125~8.4GHz가 WRC-27 IMT 연구대상, 美 대통령 각서 'Winning the 6G Race' 최대 800MHz 추가 연구지시·7.125~7.4GHz 연구 2026말 완료의무·NTIA 밴드연구 공개추적 개시** [6G Futures 'MRSS dominates RAN#113 plenary', Light Reading '6G talks end no migration decision' next mtg Dec Boston Option 1 strongest China Mobile fragmentation multi-billion flop, IEEE ComSoc 9/22 Sept 3GPP updates ITU-R WP5D ATIS, 9to5Google/SamMobile/eftm/mobidevices/TechTimes Snapdragon 8 Elite Gen 6 + Extreme Gen 6 first 2nm N2P 5GHz X105 Rel-19 paves way 6G 9 OEM Q4 2026 Galaxy S27, tecknexus/PowerElectronicsNews FR3 7.125-8.4GHz WRC-27 US memo 800MHz NTIA 7.125-7.4GHz year-end]
+> 2. **★D2C -- SPCX 9/24 3.28억주 대형 락업 언락 크래시 없이 소화(~$148 안정)·ASTS ~$68.65로 90일 -35% 되돌림(BlueBird 45기 2027초 이연) + Starlink 11,154기·Vulcan LV-01 9월->10월 슬립** -- **★SPCX(SpaceX): 9/24 예정 3.284억주 대형 락업 언락 실제발생 -- 9/23 수요일 -4.11% $148.36 뒤 9/25 ~$148.03~$148.60(장중 $146.00~$149.80)로 $148선 안정, 크래시 없이 소화(9/9 언락 -3.9% 패턴 유사·확정 급락 아님), 퍼블릭 플로트 추가확대. 메인 180일 락업 2026.12.08 만료가 최대변수 잔존. ★AST SpaceMobile(ASTS): ★주가 ~$68.65(최근 90일 -35.2%)로 9/19 KB의 Berenberg Buy $92 +11%팝(~$79) 이후 상당폭 되돌림, 컨센 14애널 평균 $79.61(상방 +30%)·Berenberg $92 유지되나 주가는 목표하단. ★BlueBird 45기 궤도 목표 '2026말->2027초' 이연 확인(7월 filing)·임원 $3M 주식매도 신고(9/18, BlueBird 지연에 리테일 인내시험). Q1 2026 매출 $14.7M·FY2026 $150~200M·2027 첫상용연도 매출 ~$1B 목표(45기 궤도가 핵심 마일스톤). ★저궤도 군집: Starlink 9/24 궤도 11,154기·가동 11,139기(9/18 KB 11,126서 증가)·누적발사 12,962기(약 1,808기 재진입). Amazon Leo(구 Kuiper) 375기+. ★Vulcan Centaur LV-01(첫 Amazon Leo 발사·VC6 최강구성·LEO최적화 Centaur V)이 9월->★2026.10로 슬립 확인 -- 40기 투입·38개 Vulcan 발사 첫번째. Starlink V2(완전 D2C 음성/데이터, Starship 2027·약 1,200기) 대기** [Invezz/TipRanks 9/24 SPCX 328M shares unlock, Yahoo/GuruFocus 9/23 -4.11% $148.36 prior 9/9 -3.9%, Investing.com/CNN SPCX 9/25 $148.03-$148.60 range $146-$149.80, stockanalysis/SimplyWallSt ASTS $68.65 -35.2% 90d 14 analysts $79.61 Berenberg Buy $92, Yahoo ASTS 45 sats end-2026->early-2027 Q1 $14.7M FY $150-200M ~$1B 2027, Foreign Policy Journal 9/18 execs sell $3M, KeepTrack Starlink 11154 orbit 11139 working 9/24 12962 launched, Wikipedia/orbitalradar Vulcan LV-01 Oct 2026 40 sats first of 38 VC6 Centaur V]
+> 3. **★AI-RAN 9/19 대비 확정 신규 제한적(9/16 Nokia 8운영사 뉴스 소화됨)·신규 뉘앙스=Nokia 20%효율 주장에 애널 회의론 + 한국 종합대책 여전 미발표** -- **★Nokia AI-RAN 20%+ 스펙트럼효율 주장에 애널리스트 회의론 부각(Fierce Network 'ambitious but analysts skeptical' -- 테스트조건·운영사별 실측 미공개, 라이브망 상용검증 전 단계 지적). Nokia 주가 9/16 +6% $10.39(구체 레벨)·Ericsson +0.7%·NVIDIA 보합(시장이 카테고리 이벤트로 미가격 -- Nokia-특정 랠리). ★Ericsson GPU-free 'AI in RAN'(2026.06 Q2 상용) 기능셋=AI-native Scheduler for Link Adaptation·AI Macro Positioning·AI Beamforming·Multi-layer Coordination. ★Samsung-Orange 유럽 AI-powered vRAN 사이트 확대(2026 필드배치), Samsung-NVIDIA 멀티셀 AI-RAN 검증으로 운영사 조달기간 12~18->6~8개월 단축 주장. ★한국: 과기정통부-통신3사 'AI 시대 통신망 투자 촉진 민관 협의체' 8/27 서울서 발족(SKT AI-RAN+6G·KT 1GW AIDC+약 3,500개 국사 분산인프라·LGU+ 5G SA+AI 자율운영망 축), 연내 '차세대 통신망 투자·규제개선 종합대책' 수립·발표 예정(9/26 기준 미발표), 3G 등 레거시망 점진 전환·초기 실증예산·세제지원 검토** [Fierce Network 'Nokia AI-RAN claims ambitious analysts skeptical', Yahoo/247WallSt 9/16 Nokia +6% $10.39 Ericsson +0.7% NVIDIA flat, Nokia newsroom/GlobeNewswire 8 operators A1 Chunghwa du e& Mobily stc TPG Zain 20%+ spectral NVIDIA Aerial, Ericsson/telecomstechnews AI in RAN Q2 2026 Scheduler Positioning Beamforming, techHQ/techbuzz Samsung Orange vRAN Europe, themeridiem Samsung NVIDIA 12-18 to 6-8 months, 딜사이트/데일리안 과기정통부 8/27 민관협의체 연내 종합대책 미발표]
+> 4. **★광통신 -- Corning AI 광인터커넥트 시연(9/21) +6%로 광학복합체 랠리·AAOI ~$109.05 반등(유상증자 눌림서 회복) vs FCC 중국산 금지 여전 초안(NPRM 미표결)** -- **★신규 촉매(9/21)=Corning AI optical interconnect 시연이 자사 광섬유 부각시키며 +6% 급등, 이에 Lumentum·Coherent·AAOI 동반 +4%(광학 복합체 랠리 확산). ★AAOI(Applied Optoelectronics) ~$109.05로 반등 -- 9/19 KB의 '8월말 대규모 유상증자로 -18% MoM 눌림'서 회복(9/16 오버솔드 바운스 +3% -> 9/21 +4%). YTD 리더십 순위 유지(247WallSt 9/7: AAOI +203% > Lumentum +139% > Coherent +53%). 광학주는 하이퍼스케일러 AI인프라 CapEx 연동 상관그룹, AI 클러스터 광학 시장 $16.5B(2025)->$26B(2026, +60%). 1.6T 출하 케이던스가 2027 순위 관건(부품 공급제약 변수). ★FCC 중국산 광트랜시버 수입금지: 9/26에도 여전히 초안(9/19서 변동없음) -- NPRM 표결 미완료·연내 발표 희망하나 수정·철회 가능, 신규모델 대상. 중국 세계점유 약 56%(800G 60%·Innolight 27%), 발효 시 AI DC 광공급 최대 60% 차단·서방 대체품(Lumentum·Coherent)도 인듐인(InP) 중국의존(상호의존 존치). Lumentum·Coherent 지정학 리스크에 capa 증설 가속(TrendForce). [주의: 247WallSt/Yahoo 신디케이트 절대주가는 시점혼재 -- YTD 방향성·순위·이벤트 델타만 유효, 절대치 배제]** [247WallSt 9/21 Corning +6% AI optical interconnect demo Lumentum Coherent AAOI +4% AAOI $109.05, 247WallSt 9/16 optics oversold bounce COHR +6% LITE +5% AAOI +3%, 247WallSt 9/7 AAOI +203% LITE +139% COHR +53%, Cignal AI/Tom's Hardware/Caixin/Network World FCC still draft no NPRM China 56% 800G 60% Innolight 27%, TechTimes 60% cut Western InP, TrendForce Lumentum Coherent capacity expansion, LightCounting optics $16.5B 2025 $26B 2026]
+>
+> **(이전 갱신 -- 9/19 핵심 요약, 참고용)**:
+>
 > **2026.09.19 핵심 변화 요약 (9/12 이후 델타)**:
 >
 > 1. **★6G RAN#113 마드리드(9/14~17) 개최·종료(9/12 'D-2 미개최'서 진전)이나 공식 결정문·사후분석 9/19 미발행 + FR3 'golden band'(7.125~8.4GHz) 서사 강화 + Qualcomm Snapdragon Summit 9/22~24 D-3 임박** -- **3GPP TSG RAN#113이 예정대로 마드리드서 개최·9/17 종료 -- Option 1(6G-anchored DC with NR) vs Option 3(dual stack) 최종 가지치기·RAN1 예비 MRSS(Multi-RAT Spectrum Sharing) 성능평가 9월 데드라인이 핵심 의제(6월 RAN#112서 Younsun Kim 의장 '결정 불가'로 이월). ★단 9/19 기준 6G Futures/Ericsson 사후분석·공식 결정문 아직 미발행(플레너리 직후, 통상 1주 소요). NGMN 9/8 '5G 복잡성 반복 경계·단순화 우선(MRSS 베이스라인 유지+효율·구현타당성·HW요건·TCO 근거 필요)' 재촉구. 레거시 공존(E-UTRAN idle/connected inter-RAT·NB-IoT·eMTC) 대부분 수용. ★FR3=6G 'Goldilocks 스펙트럼'(7.125~24.25GHz), 그 중 7~15GHz 최적 'golden range'·7.125~8.400GHz만 글로벌 하모나이즈로 '6G 골든밴드'(정부·위성 인컴번트 공존이 규제이슈). ★Snapdragon Summit 마우이 9/22~24: 'Dual 8 Elites'(8 Elite Gen 6 + Gen 6 Pro) 티저, Pro=X105 모뎀·LPDDR6·UFS 5.0·Adreno 850(GMEM 18MB)·피크 5GHz(스마트폰 최초)·HPB 냉각. Rel-21 6G 규격 2027.03~2028말** [6G Futures RAN#113 Sep 14-17 pruning MRSS, IEEE ComSoc/Ericsson RAN#112 no decision Younsun Kim, Telecom Reseller 9/8 NGMN simpler migration, TBR/5G Americas FR3 golden band Goldilocks, GSMArena/Gizmochina Snapdragon Summit 9/22-24 X105]
