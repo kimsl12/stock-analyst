@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TotalEnergies (TTE) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>TotalEnergies (TTE)</h1><div class="meta">주식 종합 분석 리포트 | 2026-09-28</div><div style="margin-top:8px"><span class="badge b-buy">매수 (Buy)</span> <span class="badge b-score">65/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">저평가(선행 P/E 8.5·EV/EBITDA 5.85)+4.66% 커버된 배당+건전 재무+저베타(0.06) 방어력으로 12개월 $97(+6.7%, 총수익 ~+11%) 매수.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">시장은 유가 급락(-8%)·5% 국채 경쟁·강달러를 이유로 52주 고점권에서 상방을 제한.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">통합 포트폴리오(상류+하류+LNG+전력)가 유가 하락을 완충하고, EV/EBITDA 5.85·P/B 1.58의 저평가+배당이 하방을 방어 — 방어적 income·가치 관점에서 매력.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">유가 $80 이하 추가 하락 또는 선행 EPS $10.70 대폭 하회, 배당 FCF 커버리지(1.45배) 훼손 시 논지 무효.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">분할 매수·2ATR $87.91 손절, 유가·분기 상류 마진·LNG 궤적 점검.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">매출 +27.8%·순이익 +106%의 성장이 유가 순풍의 산물이라면 유가 하락 국면에서 되돌려질 수 있고, 5% 국채가 4.66% 배당의 상대 매력을 잠식하며, 저PER는 순환주 정점 신호일 수 있다.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (Buy) (65점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$90.94</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$200.8B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">8.5x (Fwd) · 11.4x (TTM)</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$57.39~$94.17</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">8.5x</div></div><div class="ki"><div class="kl">Trailing P/E</div><div class="kv">11.4x</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">4.66%</div></div><div class="ki"><div class="kl">EV/EBITDA</div><div class="kv">5.85x</div></div><div class="ki"><div class="kl">매출성장(YoY)</div><div class="kv">+27.8%</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">14.5%</div></div><div class="ki"><div class="kl">베타</div><div class="kv">0.06</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$87.91</div><div class="dn" style="font-size:13px">-3.3%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$97.00</div><div class="up" style="font-size:13px">+6.7%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="296" y="30" width="54" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="296" y1="26" x2="296" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="296" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$88</text><line x1="322" y1="24" x2="322" y2="52" stroke="var(--text)" stroke-width="3"/><text x="322" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$91</text><line x1="375" y1="26" x2="375" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="375" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$97</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $57</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $94</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $1.51 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>TotalEnergies(TTE)는 상류·하류·LNG·전력·재생을 아우르는 프랑스 통합 에너지 메이저로, 유가 회복이 견인한 강한 실적 반등(매출 +27.8%·순이익 +106% YoY)과 저평가(선행 P/E 8.5·EV/EBITDA 5.85·P/B 1.58)·4.66% 커버된 배당·건전한 재무(부채비율 48%·FCF $13.5B·배당 커버 1.45배)가 결합된 방어적 가치주다. 베타 0.06으로 시장 변동에 극히 둔감하고, 주가는 50·200일선 위 상승추세에 52주 밴드 91% 고점권에 있다. 핵심 역풍은 유가 급락(WTI $100→$92, -8%)에 따른 상류 마진 압박·실적 정점 신호이며, 5% 국채·강달러(DXY 101)가 배당의 상대 매력과 원자재를 동시에 압박한다. 다만 통합 포트폴리오가 유가 하락을 하류·LNG·전력으로 완충하고, 저밸류·고배당·저베타가 하방을 방어한다. 확률가중 3시나리오 기준 12개월 목표가 $97(현재가 대비 +6.7%, 배당 포함 총수익 ~+11%)로 컨센서스 평균($96.8)과 부합, 투자등급 매수(Buy) — 가격 상방은 제한적이나 저평가·배당·방어력이 매파 Fed·5% 국채·노랜딩 국면에서 상대적 매력을 제공한다. 진입은 분할·2ATR 손절·유가 점검을 전제로 한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,-400.0 492.7,-335.4 824.8,-72.5 900.8,397.2 492.7,635.4 140.0,810.0 -177.4,586.9 -411.6,329.2 -354.5,-10.7 -212.7,-335.4" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="-400.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="492.7" cy="-335.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="824.8" cy="-72.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="900.8" cy="397.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="492.7" cy="635.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="810.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="-177.4" cy="586.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="-411.6" cy="329.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="-354.5" cy="-10.7" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="-212.7" cy="-335.4" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>55.0</td><td>/10</td></tr><tr><td>수익성</td><td>60.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>72.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>80.0</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>60.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>66.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>54.0</td><td>/10</td></tr><tr><td>리스크</td><td>58.0</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>52.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>60.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 65/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v14</td><td>2026-09-02</td><td>70</td><td>매수</td><td>$97</td></tr><tr><td>v15</td><td>2026-09-10</td><td>69</td><td>중립</td><td>$100</td></tr><tr><td>v16</td><td>2026-09-19</td><td>68</td><td>매수</td><td>$98</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="dn">-1pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">중간</span></h2><p>TotalEnergies SE — Energy / Oil & Gas Integrated (파리·뉴욕 상장, NYQ ADR). 시가총액 약 $200.8B, 발행주식 ~22.08억주. 사업은 (1) 상류(Exploration & Production, 석유·가스), (2) 통합 LNG, (3) 통합 전력(Integrated Power, 재생·가스발전·전력판매), (4) 정제·화학(Refining & Chemicals), (5) 마케팅·서비스로 구성된 수직통합 포트폴리오. TTM 매출 $196.4B·EBITDA $39.7B. 지분구조는 내부자 8.9%·기관 54.2%·공매도 비중 0.22%(극저). 석유 메이저에서 LNG·전력·재생을 성장축으로 확장하며 에너지 전환을 추진 중.</p><h3>Moat 상세</h3><p>해자는 수직통합과 규모에서 나온다. (1) 통합 포트폴리오 — 상류·하류·LNG·전력을 결합해 유가 사이클의 상·하류 상쇄 효과로 실적 변동성을 완충(유가 하락 시 정제 마진 개선이 상류 손실을 일부 상쇄). (2) LNG 프랜차이즈 — 글로벌 상위권 LNG 트레이더로 장기계약·터미널·선단 네트워크가 진입장벽. (3) 통합 전력 — 재생·가스발전으로 전력화 수요를 흡수하며 전환기 성장축 확보. 다만 상류·정제는 본질적으로 유가·크랙스프레드 price-taker라 원가 해자가 제한적이고, EU 탄소규제·전환 capex가 구조적 부담. 종합 해자 등급 중간(통합·규모·LNG 강점 + 상품가격 노출).</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>성장 — 분기 매출 $44.7B→$43.8B→$45.9B→$49.5B→$57.1B(5분기)·YoY +27.8%, 순이익 $2.69B→$3.68B→$2.91B→$5.81B→$5.44B(YoY +106%). 유가 회복이 견인한 경기순환적 반등으로, 유가 급락 국면에서 되돌려질 수 있음.<br>수익성 — 매출총이익률 37.7%·영업이익률 12.8%·순이익률 9.1%·ROE 14.5%. 통합 에너지로선 견조하나 영업이익 분기 변동성 큼($3.48B~$10.16B, 유가·일회성 반영).<br>재무건전성(양호) — 총현금 $31.7B vs 총부채 $62.9B, 순부채 $31.2B, 부채비율 48%(에너지 메이저 중 건전). 영업현금흐름 +$33.0B·capex 반영 후 FCF +$13.5B.<br>주주환원 — 배당 $4.24/주(연 ~$9.4B)를 FCF가 1.45배 커버·배당성향 53%. FCF수익률 6.7%로 배당·자사주 여력 확보.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>확률가중 3시나리오.<br>Bear(30%, $80): 유가 $80 이하 추가 하락·상류 마진 압박, 선행 EPS ~$8.5로 하향·9x 적용, 배당수익률 5.3% 방어선. 52주 저점권까지는 아니나 조정.<br>Base(50%, $100): 유가 $88~95 박스 안정, 통합 포트폴리오 완충, LNG·전력 성장, EPS ~$9.7에 ~10x + 배당.<br>Bull(20%, $113): 유가 $100+ 반등·LNG 마진 확대·자사주 가속, 선행 EPS ~$10.5에 ~11x 재평가(컨센 고점 $109 상회).<br>가중 목표가 ≈ $97(현재가 대비 +6.7%, 배당 포함 총수익 ~+11%). 컨센서스 평균 $96.8(10인)과 부합. EV/EBITDA 5.85·P/B 1.58의 저평가가 하방을 방어하나, 저PER는 순환주 정점 신호일 수 있어 상방은 제한적.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>현재가 $90.94, 50일선 $88.24·200일선 $82.34 위(상승 정렬). 52주 밴드 $57.39~$94.17 중 91% 위치(고점권 — 상방 여지 좁음). 전일 대비 -1.03%. 공매도 비중 0.22%·숏레이시오 3.0(극저), 베타 0.06(시장 변동에 극히 둔감, 방어적). 기술적으로 상승추세 유지이나 고점권+유가 하락이 단기 조정 리스크.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>산업 — 에너지는 이중 국면. 단기적으로 유가 급락(WTI $100→$92, -8%)이 상류 실적 역풍이나 하류·소비엔 디스인플레 tailwind. 장기적으로 석유수요 정점 우려 vs LNG·전력·재생의 구조적 성장이 상충. 매크로 — 5% 국채·매파 Fed·강달러(DXY 101)는 (1) 4.66% 배당의 상대 매력을 5% 무위험 국채가 잠식, (2) 강달러가 달러표시 원자재를 압박하는 이중 역풍. 성장벡터 — 통합 LNG 트레이딩, 전력화 수요(재생·가스발전), 정제 마진, 유가 반등 옵션. 방어벡터 — 저베타 0.06·통합 완충·저밸류·건전 재무.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>최대 리스크는 (1) 유가 하락 — WTI $92(-8%)에서 추가 하락 시 상류 마진·실적 급감(순환 성장 되돌림), (2) 금리·달러 — 5% 국채가 4.66% 배당의 상대 매력 잠식·강달러가 원자재 압박, (3) 에너지 전환·규제 — 장기 석유수요 정점·전환 capex·EU 탄소규제, (4) 지정학·공급 — 호르무즈·OPEC+ 결정(양방향). 베타 0.06·건전 재무·통합 완충이 방어하나, 고점권 진입은 유가 하방에 취약.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">유가 하락 리스크</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">금리·달러 강세 리스크</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">에너지 전환·규제 리스크</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">지정학·공급 리스크</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>유가 하락 리스크</strong> (발생: 높음, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">WTI $100→$92(-8%). 달러 강세·수요 둔화·호르무즈 정상화로 $80 이하 추가 하락 시 상류 마진 압박·순환 성장 되돌림.</span></div><div class="ri rl"><strong>금리·달러 강세 리스크</strong> (발생: 중간, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">5% 국채(10Y 5.18%)가 4.66% 배당의 상대 매력 잠식. DXY 101 강세가 달러표시 원자재·해외실적 환산 압박.</span></div><div class="ri rl"><strong>에너지 전환·규제 리스크</strong> (발생: 중간, 영향: -12%)<br><span style="color:var(--sub);font-size:13px">장기 석유수요 정점·전환 capex 부담·EU 탄소규제. 재생·전력 전환의 수익성 입증이 관건.</span></div><div class="ri rl"><strong>지정학·공급 리스크</strong> (발생: 중간, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">호르무즈 phased deal 협상·OPEC+ 연말 동결 등이 유가를 양방향으로 흔듦. 재격화 시 상방, 정상화 시 하방.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>진입 — 고점권(밴드 91%)·유가 하락 국면에서 일괄매수 금지, 3분할 접근($91·$88·$85 부근). 손절 — 2ATR $87.91(-3.3%, 50일선 하단) 이탈 시 비중 축소, 200일선 $82.34 종가 이탈 시 재검토. 트리거 — 분기 실적서 상류 마진·LNG 트레이딩·전력 수익성 확인, 유가 $95+ 반등 시 비중 확대, $80 하회 시 방어. 목표 $97 도달 시 일부 차익 실현하되 4.66% 배당은 income 관점 보유. 방어적 income·저밸류 관점의 코어 홀딩.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>확률가중 — Bear 30% $80 / Base 50% $100 / Bull 20% $113 → 가중 목표가 ≈ $97. 스코어 65 ± 6pt(유가 경로·상류 마진·forward EPS 실현에 민감). 저PER·EV/EBITDA가 하방을 방어하나 순환주 특성상 유가 방향이 결과를 좌우 — 밸류에이션보다 유가 시나리오에 결과가 크게 의존.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li>선행 EPS $10.70 실현 가정 — 트레일링 $7.99 대비 +34%인데 유가 급락 국면에서 상류 마진 압박 시 하회 가능.</li><li>유가 $88~95 박스 안정 가정 — $80 이하 추가 하락 시 Base/Bull 무효, 상류 실적 급감.</li><li>배당($4.24)·자사주 지속 가정 — FCF $13.5B가 유가 하락으로 축소되면 커버리지(1.45배) 약화·자사주 축소 가능.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>v17 독립 재분석 — 이전 버전·기존 리포트·과거 스코어/목표가/등급 미참조. data.json 실측+매크로(2026-09-26)만. 데이터 yfinance 2026-09-25. 배당수익률 스케일 교차검증: $4.24 ÷ $90.94 = 4.66%로 dividendRate÷현재가와 일치, ×100 스케일 트랩 없음(정상). 2ATR 손절 검산: $90.94 - 2×1.515 = $87.91. 매크로 반영: WTI $92(9/18 $100서 -8%)·10Y 5.18%·매파 Fed·DXY 101 강세를 유가 역풍+배당 상대매력 잠식으로 평가.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-09-28 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="TTE_TotalEnergies_20260928.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
