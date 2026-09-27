@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-20
-valid_until: 2026-10-20
+updated: 2026-09-27
+valid_until: 2026-10-27
 sector: science_tech
 sources:
   [
@@ -248,10 +248,16 @@ sources:
     the-decoder,
     SpacePolicyOnline,
     Life Science Daily,
+    technology.org,
+    Communications Physics,
+    YolTech,
+    Prime Medicine,
+    NIMS,
+    World Nuclear News,
   ]
 confidence: high
-last_synced_from_db: 2026-09-13
-db_records: 1170
+last_synced_from_db: 2026-09-27
+db_records: 1206
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -722,7 +728,20 @@ db_records: 1170
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-09-20 갱신)
+### 16-C. 주간 과학기술 동향 (2026-09-27 갱신)
+
+> **2026-09-20~09-27 주간 통합 수집(web_search 12회·WebFetch 3회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick) 갱신은 토요일 weekly-frontier 담당. 본 표 = 범용 기초과학·첨단기술 우산 관점 크로스커팅 최신값(연구·기술 동향 중심).
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[양자·QEC]** | ★ **IonQ 9/22 업계 첫 실시간 QEC 디코더를 단일 표준 상용 CPU서 구동·검증** = 고전 하드웨어 오버헤드가 논리큐빗 폭·연산 깊이 확장에도 **지수적 증가 불필요** 입증(자체 Walking Cat 아키텍처 검증). 병행 = **'100 논리큐빗'이 2026 양자컴 신 벤치마크**로 부상. 9/25 Communications Physics = 하이브리드 큐빗-발진기 트랩이온으로 2-사이트 격자게이지이론 동적 시뮬(고에너지물리 경로) | 2026.09 | IonQ / technology.org / Communications Physics |
+| **[바이오·유전자]** | ★ **in vivo 유전자편집이 알파-1 항트립신결핍증(AATD/SERPINA1 PiZ)으로 수렴**(CMN 9/25) = **Beam BEAM-302**(29명·Z-AAT -84%·M-AAT 순환 93%)·**YolTech YOLT-202** 아데닌염기편집(AAT 5→20µM·편집 57%)·**Prime Medicine PM647** FDA Ph1/2 승인·Cellectis HEAL 전임상. **CRISPR Tx CTX310 Ph1a 1년 지속**(ANGPTL3 -79%·LDL -53%). 기술 = Prime 'Prime Assembly' 대형 DNA 편집(DSB無)·조밀 RNA수식 프라임에디팅 마우스 간 67%(80x)·유전자편집 돼지신장 이종이식 271일 | 2026.09 | CRISPR Medicine News / Beam·Prime·YolTech IR |
+| **[소재·나노]** | **NIMS+도쿄대 3D 나노계면 복합체(백금채널 매립)로 절연체 스핀구동 열전변환(spin Seebeck)을 벌크 거시재료서 관측**(Nature Comms) = 폐열회수 스핀칼로리트로닉스 스케일업 단서. 9/20 초고휘도 나노입자로 극미량 화학물질 검출·유사분자 구별(고감도 분자센싱) | 2026.09 | phys.org / Nature Communications / ScienceDaily |
+| **[핵융합]** | **일본 METI, 2030년대 발전실증 산업주도 4개 프로젝트 조건부 선정**(~$370M/600억엔, 2029.2까지·10월 최종확정) = 레이저(EX-Fusion+하마마츠)·스텔라레이터(Helical)·FRC(LINEA)·HTS 토카막(Starlight Engine+Kyoto Fusioneering) **복수 방식 병행 국가 포트폴리오**(전문 SMR/핵융합 종목=토요 frontier) | 2026.09 | World Nuclear News / Fusion Industry Association |
+| **[우주·기초과학]** | 9/21 **NASA JWST 베타 픽토리스 숨은 행성 'Beta Pic d' 발견**(계 내 최광궤도)·9/23 **JWST 우리은하 중심 Sgr A* 근방서 산소풍부 먼지·물 생존 확인**(항성 IRS 3, 강중력·복사 환경서도 유지) = 순수 천문 기초과학(우주 산업 tick=토요 frontier) | 2026.09 | NASA Science / Space.com |
+| **[AI4Science]** | 금주 독립 discrete AI4Science 발표 제한적 — **DeepMind Gemini Deep Think·Aletheia 자율 수학연구(Erdős 4문제 자율해결·AI 단독저술 논문)는 2026.02.11 발표건으로 신규 아님**(재확인). 금주 AI 신호는 응용 임베디드(in vivo 편집 효소·가이드RNA 설계·양자ML) | 2026.09 | DeepMind(2월 재확인) / CMN / IEEE QW |
+
+#### (이전 주간) 2026-09-20 기록
 
 > **2026-09-13~09-20 주간 통합 수집(web_search 8회·WebFetch 2회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부) 갱신은 토요일 weekly-frontier 담당. 아래 표 = 통합 뷰 크로스커팅 최신값.
 
@@ -777,7 +796,7 @@ db_records: 1170
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1189건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1206건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
