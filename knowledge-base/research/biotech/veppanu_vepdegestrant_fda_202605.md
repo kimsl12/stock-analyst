@@ -6,8 +6,9 @@ date_published: 2026-05-01
 date_collected: 2026-05-12
 source_type: Policy
 source: "FDA + Arvinas/Pfizer"
-url: https://www.arvinas.com/news/press-releases
-citation: "📄 [Policy] FDA (2026-05-01) — 'Veppanu (vepdegestrant) ESR1m ER+/HER2- 진행성 유방암 승인, 경구 PROTAC 분해제 종양학 첫'"
+url: https://ir.arvinas.com/news-releases/news-release-details/arvinas-announces-fda-approval-veppanu-vepdegestrant-treatment
+citation: "📄 [Policy] FDA (2026-05-01) — 'Arvinas Announces FDA Approval of VEPPANU (vepdegestrant)' ESR1m ER+/HER2- 진행성 유방암, 경구 PROTAC 분해제 종양학 첫 (PDUFA 6/5보다 조기 승인)"
+verify_note: "[verify 2026-10-03] 구 URL arvinas.com/news/press-releases(404 2회) → ir.arvinas.com 개별 승인 발표 퍼머링크. 승인 사실 확정(WebSearch): VEPPANU 브랜드명·2026-05-01 승인(PDUFA 6/5보다 조기)·첫 PROTAC 단백질분해제·ESR1m subgroup PFS 5.0 vs 2.1개월 모두 정확 — 환각 아님."
 key_finding: "FDA가 5/1 vepdegestrant(상품명 Veppanu)를 ESR1m ER+/HER2- 진행성 유방암 적응증으로 승인 — 경구 PROTAC 분해제로는 종양학 첫 승인, Arvinas/Pfizer 파트너십 가시화 + 표적단백질분해제(TPD) 신모달리티의 임상 검증 첫 사례"
 ---
 
@@ -23,14 +24,14 @@ key_finding: "FDA가 5/1 vepdegestrant(상품명 Veppanu)를 ESR1m ER+/HER2- 진
 
 ## 데이터·근거
 
-| 항목 | Veppanu (vepdegestrant) | 비교 (fulvestrant) |
-|---|---|---|
-| 기전 | PROTAC ER 분해제 | SERD ER 분해제 (수동) |
-| 제형 | 경구 | IM 주사 (월 1회) |
-| 적응증 | ESR1m ER+/HER2- 진행성 유방암 | ER+ 진행성 유방암 (광범위) |
-| 임상 단계 | Phase 3 VERITAC-2 → FDA 승인 | 2002 첫 승인, 광범위 사용 |
-| 표적 격하 효율 | PROTAC 메커니즘 (강력) | 수동 분해 (제한적) |
-| 제조사 | Arvinas + Pfizer | AstraZeneca |
+| 항목           | Veppanu (vepdegestrant)       | 비교 (fulvestrant)         |
+| -------------- | ----------------------------- | -------------------------- |
+| 기전           | PROTAC ER 분해제              | SERD ER 분해제 (수동)      |
+| 제형           | 경구                          | IM 주사 (월 1회)           |
+| 적응증         | ESR1m ER+/HER2- 진행성 유방암 | ER+ 진행성 유방암 (광범위) |
+| 임상 단계      | Phase 3 VERITAC-2 → FDA 승인  | 2002 첫 승인, 광범위 사용  |
+| 표적 격하 효율 | PROTAC 메커니즘 (강력)        | 수동 분해 (제한적)         |
+| 제조사         | Arvinas + Pfizer              | AstraZeneca                |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

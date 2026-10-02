@@ -5,9 +5,10 @@ topic: sec_cftc_token_taxonomy
 date_published: 2026-03-17
 date_collected: 2026-05-12
 source_type: Policy
-source: "SEC + CFTC Joint Statement"
-url: https://www.sec.gov/news/press-release/2026-30
-citation: "📄 [Policy] SEC Press Release 2026-30 + CFTC Joint Statement (2026-03-17) — 'token taxonomy: digital commodities/collectibles/tools/stablecoins/securities'"
+source: "SEC + CFTC Joint Interpretation"
+url: https://www.cftc.gov/PressRoom/PressReleases/9198-26
+citation: "📄 [Policy] SEC-CFTC Joint Interpretation (CFTC #9198-26, 2026-03-17) — 'CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets' — token taxonomy: digital commodities/collectibles/tools/stablecoins/securities"
+verify_note: "[verify 2026-10-03] 구 URL sec.gov/news/press-release/2026-30(403+번호 추정) → cftc.gov/PressRoom/PressReleases/9198-26 (안정, WebFetch 확인). 실제는 별도 'press release' 아닌 SEC-CFTC 공동 해석(interpretation). 5분류 taxonomy 내용 정확."
 key_finding: "SEC와 CFTC가 3/17 공동 발표로 암호자산의 연방증권법 적용 해석을 5분류 token taxonomy로 정립 — Atkins SEC 의장 '10년 불확실성 해소' 명시, 미국 암호자산 규제 명확화의 첫 공식 분기점"
 ---
 
@@ -28,13 +29,13 @@ key_finding: "SEC와 CFTC가 3/17 공동 발표로 암호자산의 연방증권�
 
 ## 데이터·근거
 
-| 분류 | 대표 자산 | 관할권 | 주요 규제 |
-|---|---|---|---|
-| Digital commodities | BTC, ETH, LTC (분산형) | CFTC | 상품 거래법, FinCEN AML |
-| Digital collectibles | NFT (OpenSea·Blur 등) | 일반 (case-by-case) | 소비자 보호 |
-| Digital tools | DEX governance token (UNI 등) | CFTC + 부분 SEC | 등록 의무 일부 |
-| Stablecoins | USDT, USDC, DAI | 별도 트랙 (GENIUS Act 입법 추진) | 준비금·redemption |
-| Digital securities | STO 토큰 (Securitize·tZERO) | SEC | 증권법 등록·공시 |
+| 분류                 | 대표 자산                     | 관할권                           | 주요 규제               |
+| -------------------- | ----------------------------- | -------------------------------- | ----------------------- |
+| Digital commodities  | BTC, ETH, LTC (분산형)        | CFTC                             | 상품 거래법, FinCEN AML |
+| Digital collectibles | NFT (OpenSea·Blur 등)         | 일반 (case-by-case)              | 소비자 보호             |
+| Digital tools        | DEX governance token (UNI 등) | CFTC + 부분 SEC                  | 등록 의무 일부          |
+| Stablecoins          | USDT, USDC, DAI               | 별도 트랙 (GENIUS Act 입법 추진) | 준비금·redemption       |
+| Digital securities   | STO 토큰 (Securitize·tZERO)   | SEC                              | 증권법 등록·공시        |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

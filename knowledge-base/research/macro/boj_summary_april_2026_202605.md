@@ -7,8 +7,9 @@ date_collected: 2026-05-12
 last_updated: 2026-05-12
 source_type: Policy
 source: "Bank of Japan — Summary of Opinions at the April 27-28 MPM"
-url: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260512.htm
-citation: "📄 [Policy] BOJ Summary of Opinions (2026-05-12) — '4월 27-28일 정책결정회의 의견 요약'"
+url: https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/index.htm
+citation: "📄 [Policy] BOJ Summary of Opinions (2026-05-12) — '4월 27-28일 정책결정회의 의견 요약' [link broken 2026-10-03: 개별 퍼머링크 미복구, 섹션 랜딩으로 대체]"
+verify_note: "[verify 2026-10-03] 구 URL .../opi260512.htm 및 .pdf 변형 모두 404(7/4·10/3 2회 연속). 개별 퍼머링크 미복구 → 섹션 랜딩(opinion_2026/index.htm)으로 대체. 내용(6-3 동결·0.75%·FY26 Core CPI 1.9→2.8% 상향)은 WebSearch 다수 매체로 실재 확정 — 환각 아님. 다음 회차 정확 퍼머링크 재탐색 권장."
 key_finding: "BOJ가 4월 회의에서 정책금리 0.75%를 동결했으나 6-3 양분 표결 (Takata·Tamura·Nakagawa가 1.0% 인상 반대) + FY2026 Core CPI 전망을 1.9%에서 2.8%로 대폭 상향한 매파적 동결 — 일본 통화정책 정상화 (YCC 해제 + 추가 인상) 6~7월 회의에서 임박"
 ---
 
@@ -24,16 +25,17 @@ key_finding: "BOJ가 4월 회의에서 정책금리 0.75%를 동결했으나 6-3
 
 ## 데이터·근거
 
-| 항목 | 2026-01 회의 | 2026-04 회의 (이번) | 변화 |
-|---|---|---|---|
-| 정책금리 | 0.75% (동결) | 0.75% (동결) | - |
-| 표결 | 만장일치 (9-0) | 6-3 split | 매파 dissent 등장 |
-| FY2026 Core CPI | 1.9% | 2.8% | +90bp 상향 |
-| FY2026 Core Core CPI | 1.9% | 2.5% | +60bp 상향 |
-| FY2027 Core CPI | 2.0% | 2.2% | +20bp 상향 |
-| GDP 성장률 FY2026 | 0.8% | 0.7% | -10bp |
+| 항목                 | 2026-01 회의   | 2026-04 회의 (이번) | 변화              |
+| -------------------- | -------------- | ------------------- | ----------------- |
+| 정책금리             | 0.75% (동결)   | 0.75% (동결)        | -                 |
+| 표결                 | 만장일치 (9-0) | 6-3 split           | 매파 dissent 등장 |
+| FY2026 Core CPI      | 1.9%           | 2.8%                | +90bp 상향        |
+| FY2026 Core Core CPI | 1.9%           | 2.5%                | +60bp 상향        |
+| FY2027 Core CPI      | 2.0%           | 2.2%                | +20bp 상향        |
+| GDP 성장률 FY2026    | 0.8%           | 0.7%                | -10bp             |
 
 매파 dissent 3인의 1.0% 인상 제안 논리 (BOJ Summary 5/12 본문 익명 발언 + Reuters/CNBC 5/12 매핑):
+
 - **Takata Hajime**: "물가 안정 목표가 대체로 달성되었고, 일본 물가 리스크는 해외發 2차 효과로 이미 상방으로 기울었다" (price stability target had been more or less achieved; risks already skewed upside)
 - **Tamura Naoki**: "물가 리스크가 상방으로 유의하게 기울고 있어, BOJ는 정책금리를 가능한 한 중립금리에 가깝게 설정해야 한다" (policy rate should be set as close to the neutral rate as possible)
 - **Nakagawa Junko**: "중동 정세가 불확실한 가운데에서도 경제 흐름을 고려할 때, 완화적 금융여건 하에서 물가 리스크가 상방으로 기울고 있다" (risks skewed upside under accommodative financial conditions)

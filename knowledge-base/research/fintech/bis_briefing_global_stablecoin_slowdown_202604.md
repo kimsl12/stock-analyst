@@ -4,10 +4,11 @@ sector: fintech
 topic: bis_briefing_global_stablecoin_slowdown
 date_published: 2026-04-20
 date_collected: 2026-05-12
-source_type: Think Tank
-source: "BIS Briefing"
-url: https://www.bis.org/cpmi/publ/d_briefing.htm
-citation: "📄 [Think Tank] BIS Briefing (2026-04-20) — 'Global Stablecoin Rulemaking Slowdown' → 글로벌 협력 촉구"
+source_type: Speech
+source: "BIS — Pablo Hernández de Cos (General Manager) Speech"
+url: https://www.bis.org/speeches/sp260420.htm
+citation: "📄 [Speech] BIS GM Hernández de Cos (2026-04-20, 日銀 세미나 도쿄) — 'Stablecoins: framing the debate' → 스테이블코인=ETF 성격, 분절화·규제차익 경고, 글로벌 협력 '결정적 중요'"
+verify_note: "[verify 2026-10-03] 구 URL bis.org/cpmi/publ/d_briefing.htm(404) → bis.org/speeches/sp260420.htm (WebSearch 확인). 실제는 CPMI briefing 아닌 BIS 총재 연설 'Stablecoins: framing the debate'(日銀 세미나). source_type Think Tank→Speech 정정. $300B 시장·Tether/Circle 85% 내용 정확."
 key_finding: "BIS 4/20 Briefing이 글로벌 스테이블코인 규제 진전 둔화를 경고하고 BIS 협력 촉구 — 미국 GENIUS Act·EU MiCA·UK 룰이 각각 진행되나 통합 표준 부재로 단편화 시 시장 리스크 증폭·규제 차익(arbitrage) 위험 경고"
 ---
 
@@ -28,14 +29,14 @@ key_finding: "BIS 4/20 Briefing이 글로벌 스테이블코인 규제 진전 �
 
 ## 데이터·근거
 
-| 관할권 | 규제 단계 | 핵심 룰 |
-|---|---|---|
-| 미국 | GENIUS Act 입법 + 시행령 | 발행사 등록·준비금 표준 (단기국채 위주) |
-| EU | MiCA 시행 | 발행사 등록 + 일별 redemption 의무 |
-| UK | FCA 정비 중 | 발행사 prudential 표준 입안 |
-| 홍콩 | HKMA 라이선스 첫 발급 | 발행사 등록 + 자기자본 요구 |
-| 싱가포르 | MAS 가이드라인 | 단일통화 페그 의무 + 100% 준비금 |
-| 한국 | 가상자산법 시행령 진행 | 거래소 위주, 스테이블코인 별도 트랙 |
+| 관할권   | 규제 단계                | 핵심 룰                                 |
+| -------- | ------------------------ | --------------------------------------- |
+| 미국     | GENIUS Act 입법 + 시행령 | 발행사 등록·준비금 표준 (단기국채 위주) |
+| EU       | MiCA 시행                | 발행사 등록 + 일별 redemption 의무      |
+| UK       | FCA 정비 중              | 발행사 prudential 표준 입안             |
+| 홍콩     | HKMA 라이선스 첫 발급    | 발행사 등록 + 자기자본 요구             |
+| 싱가포르 | MAS 가이드라인           | 단일통화 페그 의무 + 100% 준비금        |
+| 한국     | 가상자산법 시행령 진행   | 거래소 위주, 스테이블코인 별도 트랙     |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

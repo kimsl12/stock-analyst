@@ -2,12 +2,13 @@
 title: "NBER #34894 — Inflation vs Inclusion 팬데믹 후 정책 트레이드오프 정량 분석"
 sector: macro
 topic: nber_34894_inflation_inclusion
-date_published: 2026-04-15
+date_published: 2026-02
 date_collected: 2026-05-12
 source_type: Working Paper
-source: "NBER WP #34894 (Alves & Violante)"
+source: "NBER WP #34894 (Felipe Alves & Giovanni L. Violante)"
 url: https://www.nber.org/papers/w34894
-citation: "📄 [Working Paper] NBER #34894 (2026-04) — Alves & Violante 'Inflation vs Inclusion: Stabilization Policy in the Wake of the Pandemic'"
+citation: "📄 [Working Paper] NBER #34894 (2026-02) — Alves & Violante 'Inflation vs Inclusion: Stabilization Policy in the Wake of the Pandemic'"
+verify_note: "[verify 2026-10-03] 발행일 정규화: 2026-04-15 → 2026-02(NBER 실제 발행, 7/4 WebFetch 저자·제목 확인분 반영). URL·내용 정상."
 key_finding: "Alves & Violante가 팬데믹 후 인플레 통제와 포용적 노동시장 회복 간 정책 트레이드오프를 정량 분석 — Fed가 인플레 우선 시 저소득·소수자 노동시장 회복이 통계적으로 유의하게 지연됨을 정량 입증, '균등 회복' 정책 정당성에 학술 근거 부여"
 ---
 
@@ -25,13 +26,13 @@ key_finding: "Alves & Violante가 팬데믹 후 인플레 통제와 포용적 �
 
 (NBER WP paywall 또는 일부 abstract만 공개 — 본 자료는 abstract + NBER 카탈로그 기반 요약)
 
-| 변수 | 매파적 Fed (인플레 우선) | 비둘기적 Fed (포용 우선) |
-|---|---|---|
-| 인플레 회귀 속도 | 빠름 | 느림 |
-| 저소득 노동시장 회복 | 지연 (정량 측정) | 회복 가속 |
-| 소수자 실업률 격차 | 확대 | 축소 |
-| 단기 GDP 영향 | 약세 | 강세 |
-| 장기 인플레 기대 | 안정 | 끈적함 위험 |
+| 변수                 | 매파적 Fed (인플레 우선) | 비둘기적 Fed (포용 우선) |
+| -------------------- | ------------------------ | ------------------------ |
+| 인플레 회귀 속도     | 빠름                     | 느림                     |
+| 저소득 노동시장 회복 | 지연 (정량 측정)         | 회복 가속                |
+| 소수자 실업률 격차   | 확대                     | 축소                     |
+| 단기 GDP 영향        | 약세                     | 강세                     |
+| 장기 인플레 기대     | 안정                     | 끈적함 위험              |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

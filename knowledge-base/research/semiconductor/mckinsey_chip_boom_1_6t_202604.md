@@ -6,8 +6,9 @@ date_published: 2026-04-02
 date_collected: 2026-05-12
 source_type: Think Tank
 source: "McKinsey Global Institute"
-url: https://www.mckinsey.com/industries/semiconductors/our-insights/computing-to-propel-chip-boom
-citation: "📄 [Think Tank] McKinsey (2026-04-02) — 'Computing to Propel Chip Boom' → 2030년 $1.6T (CAGR 13%)"
+url: https://www.mckinsey.com/featured-insights/charts/computing-to-propel-chip-boom
+citation: "📄 [Think Tank] McKinsey (2026-04-02) — 'Computing to Propel Chip Boom' → 2030년 $1.6T (2024 $775B 대비 CAGR 13%), 컴퓨팅·스토리지 성장 55%($460B) 기여"
+verify_note: "[verify 2026-10-03] 구 URL .../industries/semiconductors/our-insights/...(404 2회 연속) → .../featured-insights/charts/computing-to-propel-chip-boom (WebSearch 확인). 원 리포트 'Hiding in plain sight: The underestimated size of the semiconductor industry' (2026-01-15). 수치 정확."
 key_finding: "McKinsey가 2030년 글로벌 반도체 시장 $1.6T 전망(2024년 $775B 대비 CAGR 13%) — 컴퓨팅·스토리지가 성장의 55%($460B) 기여, AI 인프라가 산업 thesis의 정량 앵커"
 ---
 
@@ -23,12 +24,12 @@ key_finding: "McKinsey가 2030년 글로벌 반도체 시장 $1.6T 전망(2024�
 
 ## 데이터·근거
 
-| 구분 | 2024 ($B) | 2030 ($B) | CAGR | 비중 변화 |
-|---|---|---|---|---|
-| 전체 반도체 | 775 | 1,600 | 13% | - |
-| 컴퓨팅·스토리지 (메모리·로직 합) | ~310 | ~770 | 16~17% | 40% → 48% |
-| 비컴퓨팅 (오토·산업·통신·소비) | ~465 | ~830 | 9% | 60% → 52% |
-| 성장 기여 ($460B) | - | - | - | 컴퓨팅·스토리지가 55% 기여 |
+| 구분                             | 2024 ($B) | 2030 ($B) | CAGR   | 비중 변화                  |
+| -------------------------------- | --------- | --------- | ------ | -------------------------- |
+| 전체 반도체                      | 775       | 1,600     | 13%    | -                          |
+| 컴퓨팅·스토리지 (메모리·로직 합) | ~310      | ~770      | 16~17% | 40% → 48%                  |
+| 비컴퓨팅 (오토·산업·통신·소비)   | ~465      | ~830      | 9%     | 60% → 52%                  |
+| 성장 기여 ($460B)                | -         | -         | -      | 컴퓨팅·스토리지가 55% 기여 |
 
 (출처: McKinsey 4/2 발표, 한국어 의역 재구성)
 

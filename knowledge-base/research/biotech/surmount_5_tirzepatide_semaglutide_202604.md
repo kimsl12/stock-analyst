@@ -2,12 +2,13 @@
 title: "NEJM SURMOUNT-5 — Tirzepatide vs Semaglutide head-to-head 우월성"
 sector: biotech
 topic: surmount_5_tirzepatide_semaglutide
-date_published: 2026-04-15
+date_published: 2025-05-11
 date_collected: 2026-05-12
 source_type: Journal
 source: "NEJM SURMOUNT-5"
-url: https://www.nejm.org/doi/full/10.1056/NEJMoa2502728
-citation: "📄 [Journal] NEJM SURMOUNT-5 (2026) — 'Tirzepatide vs Semaglutide Head-to-Head' → 72주 tirzepatide 우월"
+url: https://www.nejm.org/doi/full/10.1056/NEJMoa2416394
+citation: "📄 [Journal] NEJM SURMOUNT-5 (2025-05-11) — 'Tirzepatide vs Semaglutide Head-to-Head' → 72주 tirzepatide 우월(-20.2% vs -13.7%)"
+verify_note: "[verify 2026-10-03] DOI 오기재 교정: NEJMoa2502728(타 논문) → NEJMoa2416394. 발행일 2026-04-15 → 2025-05-11(실제 NEJM 게재+ECO 동시 발표). 결과값(tirzepatide 우월)은 정확 — 본문 유지."
 key_finding: "NEJM SURMOUNT-5에서 tirzepatide(Zepbound)가 semaglutide(Wegovy)를 head-to-head로 72주 시점 우월한 체중감소 달성 — LLY 마진·시장점유율 thesis가 RCT 직접 비교 데이터로 확정"
 ---
 
@@ -23,14 +24,14 @@ key_finding: "NEJM SURMOUNT-5에서 tirzepatide(Zepbound)가 semaglutide(Wegovy)
 
 ## 데이터·근거
 
-| 항목 | Tirzepatide (Zepbound) | Semaglutide (Wegovy) |
-|---|---|---|
-| 제조사 | Eli Lilly | Novo Nordisk |
-| 기전 | GLP-1 + GIP dual agonist | GLP-1 (펩타이드) |
-| 제형 | 주사 (주 1회) | 주사 (주 1회) |
-| 72주 감량 (SURMOUNT-5 head-to-head) | 더 큼 (통계적 유의) | 비교군 (열위) |
-| 부작용 | GI 동등 | GI 동등 |
-| FDA 승인 (비만) | 2023-11 | 2021-06 |
+| 항목                                | Tirzepatide (Zepbound)   | Semaglutide (Wegovy) |
+| ----------------------------------- | ------------------------ | -------------------- |
+| 제조사                              | Eli Lilly                | Novo Nordisk         |
+| 기전                                | GLP-1 + GIP dual agonist | GLP-1 (펩타이드)     |
+| 제형                                | 주사 (주 1회)            | 주사 (주 1회)        |
+| 72주 감량 (SURMOUNT-5 head-to-head) | 더 큼 (통계적 유의)      | 비교군 (열위)        |
+| 부작용                              | GI 동등                  | GI 동등              |
+| FDA 승인 (비만)                     | 2023-11                  | 2021-06              |
 
 (NEJM 본문 paywall — 정확한 % 수치는 별도 확인 필요. abstract + 학계 요약 기반)
 

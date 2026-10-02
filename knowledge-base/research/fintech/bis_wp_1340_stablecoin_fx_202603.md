@@ -2,12 +2,13 @@
 title: "BIS WP #1340 — 스테이블코인 자금 흐름의 FX 시장 스필오버 정량 측정"
 sector: fintech
 topic: bis_wp_1340_stablecoin_fx
-date_published: 2026-03-15
+date_published: 2026-03-27
 date_collected: 2026-05-12
 source_type: Working Paper
-source: "BIS WP #1340"
+source: "BIS WP #1340 (Aldasoro·Beltrán·Grinberg)"
 url: https://www.bis.org/publ/work1340.htm
-citation: "📄 [Working Paper] BIS WP #1340 (2026-03) — 'Stablecoin Flows and Spillovers to FX Markets' → EM 통화 영향 통계적 유의"
+citation: "📄 [Working Paper] BIS WP #1340 (2026-03-27) — Aldasoro·Beltrán·Grinberg 'Stablecoin Flows and Spillovers to FX Markets' → EM 통화 영향 통계적 유의"
+verify_note: "[verify 2026-10-03] 발행일 정규화: 2026-03-15 → 2026-03-27(BIS 실제, 7/4 WebFetch 확인분 반영) + 저자 표기 보강(Aldasoro·Beltrán·Grinberg). URL·내용 정상."
 key_finding: "BIS WP #1340가 스테이블코인 자금 흐름이 FX 시장(특히 EM 통화)에 통계적으로 유의한 스필오버를 만든다는 정량 증거 제시 — 스테이블코인이 거시 시장 변수로 격상되는 학술 첫 증거, BIS Papers #170 정책 논리의 기반"
 ---
 
@@ -25,13 +26,13 @@ key_finding: "BIS WP #1340가 스테이블코인 자금 흐름이 FX 시장(특�
 
 (BIS WP paywall 없음, 본문 PDF 공개. 본 자료는 abstract + 정책 요약 기반, 정확한 회귀계수는 본문 확인 필요)
 
-| 변수 | 측정 방식 | 결과 |
-|---|---|---|
-| 스테이블코인 자금 흐름 | USDT + USDC 발행·환매 일별 | 독립변수 |
-| EM 통화 변동성 | 일별 환율 변동 표준편차 | 종속변수 (유의 영향) |
-| 통제 변수 | 글로벌 risk-on/off, 미국 단기금리, 유가 등 | - |
-| 시간 범위 | 2020~2025 일별 데이터 (추정) | - |
-| 핵심 결론 | 스필오버 통계적 유의 | - |
+| 변수                   | 측정 방식                                  | 결과                 |
+| ---------------------- | ------------------------------------------ | -------------------- |
+| 스테이블코인 자금 흐름 | USDT + USDC 발행·환매 일별                 | 독립변수             |
+| EM 통화 변동성         | 일별 환율 변동 표준편차                    | 종속변수 (유의 영향) |
+| 통제 변수              | 글로벌 risk-on/off, 미국 단기금리, 유가 등 | -                    |
+| 시간 범위              | 2020~2025 일별 데이터 (추정)               | -                    |
+| 핵심 결론              | 스필오버 통계적 유의                       | -                    |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

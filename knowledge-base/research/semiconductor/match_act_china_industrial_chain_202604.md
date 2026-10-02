@@ -5,9 +5,10 @@ topic: match_act_china_industrial_chain
 date_published: 2026-04-30
 date_collected: 2026-05-12
 source_type: Policy
-source: "US BIS / MATCH Act + 중국 산업망·공급망 안전 통합 법령"
-url: https://www.csis.org/analysis/multilateral-alignment-technology-controls-hardware-act
-citation: "📄 [Policy] US BIS / MATCH Act 입법 + 중국 산업망 안전 통합 법령 (2026-04) — 미국 단독 통제→동맹 다자 통제 + 중국 자체 법령으로 대응"
+source: "US Congress S.4281 (MATCH Act) / H.R.8170 + 중국 산업망·공급망 안전 통합 법령"
+url: https://www.congress.gov/bill/119th-congress/senate-bill/4281
+citation: "📄 [Policy] MATCH Act S.4281 (119th, 2026-04-13 발의, 4-22 상원위 44-0 통과) / H.R.8170 + 중국 산업망 안전 통합 법령 — 미국 단독 통제→동맹 다자 통제 + 중국 자체 법령으로 대응"
+verify_note: "[verify 2026-10-03] 구 URL csis.org/.../multilateral-alignment-technology-controls-hardware-act(404) → 1차 입법 원문 congress.gov S.4281(WebSearch 확인). MATCH Act=S.4281(상원, Ricketts 발의)·H.R.8170(하원), 2026-04-13 발의·4-22 상원 은행위 44-0 통과. 동맹(네덜란드·일본)에 150일 내 미국 통제 매칭 요구."
 key_finding: "미국 MATCH Act가 ASML/Nikon/Canon 다자 통제를 입법화 시도하는 동시 중국이 4월 산업망·공급망 안전 통합 법령으로 응수 — 반도체 지정학 리스크가 단일 행정 명령에서 양국 법체계 격돌로 격상"
 ---
 
@@ -23,11 +24,11 @@ key_finding: "미국 MATCH Act가 ASML/Nikon/Canon 다자 통제를 입법화 �
 
 ## 데이터·근거
 
-| 입법·정책 | 시행/추진 시점 | 핵심 내용 | 영향 종목 (수혜·피해) |
-|---|---|---|---|
-| US MATCH Act | 2026 의회 추진 | ASML/Nikon/Canon 다자 통제 명문화 | 피해: ASML/Tokyo Electron; 수혜: AMAT/LRCX (미국 본사) |
-| 중국 산업망 통합 법령 | 2026-04 시행 | 핵심 광물·반도체·배터리 통합 통제 | 피해: 글로벌 OEM 중국 의존; 수혜: 중국 CXMT/YMTC |
-| EU DC 3배 플랜 | 2026~2032 (7개년) | EU 자체 클라우드·AI 컴퓨트 자립 | 수혜: ASML·NXP·STMicro·Infineon |
+| 입법·정책             | 시행/추진 시점    | 핵심 내용                         | 영향 종목 (수혜·피해)                                  |
+| --------------------- | ----------------- | --------------------------------- | ------------------------------------------------------ |
+| US MATCH Act          | 2026 의회 추진    | ASML/Nikon/Canon 다자 통제 명문화 | 피해: ASML/Tokyo Electron; 수혜: AMAT/LRCX (미국 본사) |
+| 중국 산업망 통합 법령 | 2026-04 시행      | 핵심 광물·반도체·배터리 통합 통제 | 피해: 글로벌 OEM 중국 의존; 수혜: 중국 CXMT/YMTC       |
+| EU DC 3배 플랜        | 2026~2032 (7개년) | EU 자체 클라우드·AI 컴퓨트 자립   | 수혜: ASML·NXP·STMicro·Infineon                        |
 
 ## 분석가 활용 가이드 — Bull / Bear / Contrarian
 

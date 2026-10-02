@@ -2,20 +2,21 @@
 title: "NRC TRISO-X 연료 시설 (X-energy) — SMR 연료 공급망 첫 가시화"
 sector: energy
 topic: triso_x_xenergy_fuel_facility
-date_published: 2026-05-10
+date_published: 2026-02-13
 date_collected: 2026-05-12
 source_type: Policy
 source: "US NRC + X-energy"
-url: https://www.x-energy.com/triso-x
-citation: "📄 [Policy] US NRC TRISO-X 연료 시설 (2026-05 예정) — 'X-energy TRISO-X Fuel Facility 최종 라이선스'"
-key_finding: "NRC가 X-energy TRISO-X 연료 시설 최종 라이선스를 5월 내 발급 예상 — HALEU/TRISO 연료 공급망의 첫 미국 내 양산급 시설로, SMR·MMR 양산 시나리오에서 가장 큰 병목인 연료 공급이 해소되는 첫 가시 신호"
+url: https://x-energy.com/news/triso-x-receives-first-ever-part-70-haleu-fuel-fabrication-license/
+citation: "📄 [Policy] US NRC TRISO-X 연료 시설 (2026-02-13) — 'TRISO-X Receives First-Ever Part 70 HALEU Fuel Fabrication License' (SNM-7007, 오크리지)"
+key_finding: "NRC가 X-energy TRISO-X 연료 시설에 첫 Part 70 HALEU 연료 제조 라이선스(SNM-7007)를 2026-02-13 발급 — 미국 내 첫 Category II 양산급 HALEU/TRISO 연료 시설로, SMR·MMR 양산 시나리오에서 가장 큰 병목인 연료 공급이 해소되는 첫 가시 신호"
+verify_note: "[verify 2026-10-03] 원 frontmatter '2026-05-10 발급 예정' 은 오기재 — 실제 2026-02-13 발급 완료(SNM-7007, 미국 첫 Category II 시설). URL 교체(구 /triso-x 404 → 뉴스 퍼머링크). 본문 예측 서술 사실화."
 ---
 
 # NRC TRISO-X 연료 시설 — SMR 연료 공급망 첫 가시화
 
 ## 핵심 발견 (5건)
 
-- X-energy TRISO-X 연료 시설(테네시 오크리지): **2025년 말 수직 시공 시작**, 2026년 **5월 내 NRC 최종 라이선스 발급 예상**.
+- X-energy TRISO-X 연료 시설(테네시 오크리지): **2025년 말 수직 시공 시작**, **2026-02-13 NRC 첫 Part 70 HALEU 연료 제조 라이선스 발급(SNM-7007)** — 미국 첫 Category II 핵연료 시설, 50여 년 만의 신규 연료 시설 라이선스.
 - TRISO(TRistructural ISOtropic particle fuel) = 흑연·SiC로 다층 코팅한 HALEU(High-Assay Low-Enriched Uranium) 연료. **고온·고압·중성자선 환경에서 자체 격납 무결성** 유지.
 - 현재 HALEU(20% 미만 농축 우라늄)는 미국 내 양산급 공급선 부재 — 러시아 Tenex 의존 + DOE 비상 비축 의존.
 - TRISO-X 시설 가동 시 **미국 내 첫 양산급 HALEU/TRISO 연료 공급선** 확보 — SMR·MMR(X-energy Xe-100, Oklo Aurora 등) 연료 공급 병목 해소.
@@ -23,12 +24,12 @@ key_finding: "NRC가 X-energy TRISO-X 연료 시설 최종 라이선스를 5월 
 
 ## 데이터·근거
 
-| 항목 | 현재 (2026 상반기) | TRISO-X 가동 후 |
-|---|---|---|
-| 미국 HALEU 양산급 공급선 | 0개 | 1개 (TRISO-X) |
-| HALEU 의존선 | 러시아 Tenex + DOE 비축 | 미국 자체 + Centrus Energy 신규 |
-| SMR 연료 lead time | 24~36개월 | 12~18개월 (가동 후 가정) |
-| SMR 양산 일정 영향 | 2028~2030 가동 시나리오 의문 | 2027~2028 가동 시나리오 가능성 ↑ |
+| 항목                     | 현재 (2026 상반기)           | TRISO-X 가동 후                  |
+| ------------------------ | ---------------------------- | -------------------------------- |
+| 미국 HALEU 양산급 공급선 | 0개                          | 1개 (TRISO-X)                    |
+| HALEU 의존선             | 러시아 Tenex + DOE 비축      | 미국 자체 + Centrus Energy 신규  |
+| SMR 연료 lead time       | 24~36개월                    | 12~18개월 (가동 후 가정)         |
+| SMR 양산 일정 영향       | 2028~2030 가동 시나리오 의문 | 2027~2028 가동 시나리오 가능성 ↑ |
 
 관련: Centrus Energy도 자체 HALEU 양산 라인 (American Centrifuge Plant, 오하이오 파이크튼) 가동 중 — DOE 첫 HALEU 인도 완료(2024).
 
