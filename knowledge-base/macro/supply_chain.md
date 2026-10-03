@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-26
-valid_until: 2026-10-26
+updated: 2026-10-03
+valid_until: 2026-11-02
 category: macro
 sources:
   [
@@ -188,7 +188,7 @@ sources:
     "Lexology",
   ]
 confidence: high
-last_synced_from_db: 2026-09-26
+last_synced_from_db: 2026-10-03
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -200,6 +200,24 @@ last_synced_from_db: 2026-09-26
 > **연계:** G-1(지정학 파워맵)의 하위 프레임. 공급망 재편의 근본 동인은 지정학.
 
 ## ★ CURRENT ★
+
+## [2026-10-03] 주간 델타 (9/27~10/3)
+
+> **교차검증 (yfinance, 10/02 기준·일봉=시간봉 일치, 이번 주 정산 아티팩트 없음):** WTI(CL=F) **$91.26** · Brent(BZ=F) **$102.70** · 구리(HG=F) **$6.579** · TTF 가스(TTF=F) **€76.50** · Henry Hub(NG=F) **$3.039**.
+> **정정 노트:** 직전 9/26 블록은 Brent 9/25를 **$97.47**(yfinance BZ=F)로 기록했으나 이는 **정산가 아티팩트**였고(실제 settle $104.32), 당주 **Brent $102.70은 일봉=시간봉 일치로 정상치**임.
+
+- **★美 연방정부 셧다운 10/1 발효 — 공급망 직접충격은 제한적.** CBP 무역운영 정상 지속(통관·관세징수 인력 exempted 분류, 일 ~$100M 관세 계속 징수), 232 신규관세 예정대로 진행. 단 통관 **환급(refund/drawback) 동결**·PGA(FDA·USDA·EPA) 인력감축으로 **수입검사 지연 리스크**. 항만 개방·화물통관 유지라 단기 충격 제한적이나, 장기화 시 cascading 지연 우려. [FreightWaves/GEODIS/Clark Hill/The Loadstar 10/01]
+- **★US-中 휴전 D-day 경과·당주 신규 발표 없음 — REE/흑연/배터리소재 Phase 2 수출통제 유예 ~Jan 10 2027 유지(10/3 기준 D-99, 9/26 D-106서 경과). 中 측 당주 추가 조치·발표 無.** Phase 1(2025.04) 중희토류 7종 통제는 미해제 지속. [CNBC/TradingEconomics, 09/24 베이스라인 승계]
+- **★벌크 급반락 — BDI 9/28 3,268(-4.6%, 9/1 이후 최저), 9/4 고점 3,628서 조정·9/23 3,430서 하락. Capesize 9/28 -7.5% 5,351(철광석 글로벌 공급과잉·가격 약세).** 직전 '벌크 재강세'(9/26)서 당주 '조정'으로 방향 재전환. 中 국경절(10/1~8일 공장휴무) 수요 공백 가세. [TradingEconomics/Breakwave/Mysteel 09/28]
+- **컨테이너 — 中 국경절前 blank sailing 확대·캐파 축소 지속, Drewry 국경절前 운임 하락 전망 유효. 당주 2026 신규 WCI 확정치 미확보(직전 $4,468·9/24 승계, 국경절 휴장으로 지수 갱신 공백) → confidence low.** [Drewry/Container News 승계]
+- **★반도체 — Micron FYQ4(9/30 발표) 매출 ~$50B(가이던스 $50B±1B)·HBM 매출 +33% QoQ 사상최고 ~$20억·HBM 고객 6사·HBM4 2027→2028까지 완판. HBM 시장 $35B(2025)→$100B(2028E) 전망.** 메모리 공급 초긴축 재확인. [Micron IR/parameter.io/InsiderFinance 09/30]
+- **★메모리 Q4 계약가 급등 — NAND 11월 계약가 전 카테고리 +20~60%(Micron ~+50% MoM)·엔터프라이즈 SSD +25% QoQ·삼성 Q4 +40% 프리미엄. NAND 공급사 재고 7~10주로 축소.** HBM3E 36GB 현물 ~$2,100(LTA $300~400 대비 4~5배) 유지. [TrendForce/iconnect007/NAND Research]
+- **희토류 가격 분화 — Pr-Nd 현물 doldrums 지속(NdPr oxide $110/kg CIF 北美 지지선 하회·거래 교착), 단 Dy·Ho 가격은 소폭 인상(SMM 일일 리뷰). Dy oxide FOB中 ~$265~305/kg 레인지.** 휴전 연장으로 근시일 D-day 압력 제거→中내 약세 지속·Dy만 반등. [SMM/metal.com/S&P Global 09월말]
+- **구리 COMEX $6.579/lb(10/02 yfinance HG=F, 9/25 $6.779서 소폭 반락) — 232 정제구리 결정 여전 지연·COMEX-LME 스프레드 >$800/t·물리적 긴축 지속.** [yfinance 10/02]
+- **에너지 완화 지속 — Brent $102.70·WTI $91.26(10/02)로 유가 $104→$102·$91대 박스, TTF 가스 €76.50(9/25 €72.08서 소폭 상승·초겨울 수요)·Henry Hub $3.039. 호르무즈 phased deal 협상 궤도·OPEC+ 연말 동결.** [yfinance 10/02]
+- **폴리실리콘 232 — 15% 관세+MIP(폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·셀 $0.22/W·모듈 $0.38/W) 12/4 발효 불변(10/3 기준 D-62, 9/26 D-69서 경과). 美 조치라 中 휴전 무관.** [GHY/White & Case/Wiley, White House 08/06]
+
+---
 
 ### 0. 이번 주 헤드라인 (9/26 갱신) — ★US-中 무역휴전 Jan 10 2027로 2개월 연장(Bessent 9/24·Xi 국빈방문): 中 희토류·배터리소재 수출통제 유예가 11월 만료서 ~Jan 10 2027로 이연(REE/흑연 Phase 2 D-day 11/10→D-106)·中 대두 3년 25M톤 구매·희토류는 최대 미결로 차기라운드 연기★ + ★유가 주중 랠리 후 금요일 급락: Brent $106.6(9/24)→$97.47(9/25 yfinance BZ=F, TradingEconomics ~$104.5)·WTI $92.44(9/25)·美-이란 phased deal 보도(UNGA·카타르중재)·이란 FM '7일내 호르무즈 재개+핵협상' 조건부 제안(봉쇄·동결자산·all fronts 해제)·호르무즈 원유flow 33.7M bbl★ + ★컨테이너 WCI $4,468(9/24, -1% WoW, 9/17 $4,500서 반락·Asia-Europe 견인·Transpacific 견조 Shanghai-LA $7,838 +2%/NY $10,373 보합·blank sailing 9→15건 국경절前) vs 벌크 BDI 3,430(9/23, 9/17 3,336서 +94 재강세·Guinea/Brazil 철광석·中 항만회복)★ + 슈퍼사이클 유지: HBM4 ~$550/stack·DRAM 재고 10일 미만·SK 50~55%, 구리 COMEX $6.779(9/25 yfinance HG=F), 中 REE 현물 doldrums 심화 NdPr oxide $96.69/kg(9/24, MP-DoD $110 하한 하회)·Dy oxide -14%, LNG TTF €72.08/MWh(9/25 yfinance, 9/18 €79~81서 완화)·JKM ~$27(9/18)·유럽저장 69.3%, FAO 133.3(8월, 9월치 10월초), 폴리실리콘232 12/4 불변 D-69
 
