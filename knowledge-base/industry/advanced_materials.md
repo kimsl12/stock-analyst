@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-26
-valid_until: 2026-10-26
+updated: 2026-10-03
+valid_until: 2026-11-02
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -226,8 +226,8 @@ sources:
     Energy Singularity,
   ]
 confidence: high
-last_synced_from_db: 2026-09-26
-db_records: 519
+last_synced_from_db: 2026-10-03
+db_records: 529
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -236,6 +236,21 @@ db_records: 519
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.10.03 핵심 변화 요약 (9/27→10/3 윈도우)**:
+>
+> 1. **[중대·정량화] 희토류 — Benchmark Q3 2026 가격리뷰로 ex-China 중희토 서지 확정: Dy oxide CIF유럽 9월평균 $3,500/kg(Q3 +150%·9월 단월 +56%)·中DDP比 16.3배(2Q말 6.8배서 급등)·Tb oxide CIF유럽 $6,745/kg(+23% 9월)·Yttrium CIF북미 中DDP ~196배 + NdPr oxide 中DDP ¥729,500/t($108,696)·ex-China CIF $106,500/t(9월 +12%)로 DoD $110/kg 지지선 하회(NdPr은 ex-China 생산분 많아 수급 균형~소폭 과잉)** — 경·중 희토류 양극화 심화(경희토 효율거래 vs 중희토 제약·프리미엄). **D-day 재계산(10/3 기준): 11/10 확대통제 유예종료 D-38(9/26 D-45)·11/27 中 Ga/Ge/Sb 대미금지 유예종료 D-55(9/26 D-62) — 11월 2개 별도 D-day 유지.** [Benchmark Minerals Q3 2026 Rare Earths Price Review/S&P Global/BMI]
+>
+> 2. **[신규 앵글] 희토류 11월 통제가 역외 정제·재활용 야망을 시험 — 11/10 통제는 희토 분리·합금·자석 제조 '설비·기술'까지 확장 적용, 역외 정제·재활용·자석업체 불확실성 급증** — Fastmarkets: 非중국 프로젝트는 中 설비 의존(서방 대비 1/3 원가)·기술인력 한계·추출제(extractant) 접근 제약·스크랩 피드스톡 경쟁이 핵심 장애. 통제가 자석 완제품을 넘어 공급망 상류(설비·노하우)로 심화돼 MP/USA Rare Earth 등 역외 통합 플랫폼의 실제 램프업 난도 상향. [Fastmarkets/TheOregonGroup]
+>
+> 3. **[방향전환] 리튬 — 9월 저위서 반등 국면 전환: Fastmarkets CIF中·日·韓 배터리급 탄산리튬 $20,000/t 상회로 재진입, 공급측 타이트닝(CATL Jianxiawo 광산 재가동 지연이 바닥 지지)·CSC Financial Q4 수급갭 피크·"현물 과잉 → 미래 타이트" 내러티브 전환** — 09.26 KB의 "저위 안착(¥133,151/t 스팟)"서 상방 반전. 시리즈·그레이드별 레벨 상이로 level confidence medium·반등방향 confidence medium-high. 리튬 반등은 단기 Na-ion 코스트 인센티브를 재강화. [Fastmarkets/Trading Economics/SunSirs/itiger(CSC Financial)]
+>
+> 4. **[신규 파트너십] 전고체 — QuantumScape, Honda(R&D arm) 공동개발 계약으로 배터리 플랫폼 고도화 추진(B-sample 844Wh/L·10-80% 12.2분·VW/Ducati 2027-28 양산 타깃), Toyota 2026/2027 Lexus 플래그십·Samsung SDI S-Line 파일럿·2027 양산** — 09.26 QS 실차(Ducati V21L) 시연 후속으로 OEM 협력 확장. 단 2026.3월 기준 구매가능 차량 탑재 전고체 셀은 전무·셀 원가 여전히 LFP의 3-5배(상업화 갭 지속). [QuantumScape SEC 10-Q/liveinthefuture(scorecard)]
+>
+> 5. **[재확인] 배터리소재 — CATL Na-ion(Naxtra) 2026년 양산품 시장 투입 공식화(수석과학자 Wu Kai, 2026 Equipment Powerhouse Forum — 제조 병목 해소)·Changan Nevo A06 세계 첫 Na-ion 양산 승용차(2026 중반)·60GWh 단일 최대 수주·175Wh/kg(LFP 근접)** — 09.26 KB 대비 신규 상업 델타 제한적(양산 타임라인 재확인). [Battery Tech Online/CarNewsChina/bestmag(CATL)]
+>
+> 6. **[신규 앵글] 탄소섬유 재활용 — Hexcel, Carbon Conversions(CCI·CFRP 재활용업체) 전략 투자로 재생 탄소섬유 항공/산업 응용 공동 추진 + Toray CFRP 열경화성 재활용(섬유강도 95%+ 보존·CO2 -50%)·HS효성첨단소재 韓 탄소섬유 지속 확장** — 09.26 CAMX 2026 출품 후속으로 '재활용·순환' 테마 부상(공급 희소성·ESG 대응). 핵심공급 Mitsubishi/Toray/Solvay/DuPont/Formosa/Teijin/Hexcel 유지. [CompositesWorld/CRA Recycle/Aerospace Manufacturing]
+
 
 > **2026.09.26 핵심 변화 요약 (9/19→9/26 윈도우)**:
 >

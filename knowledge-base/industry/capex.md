@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-26
-valid_until: 2026-10-26
+updated: 2026-10-03
+valid_until: 2026-11-02
 sector: capex
 confidence: high
 tags:
@@ -202,15 +202,35 @@ sources:
     tradingeconomics,
     uncoveralpha,
     오늘경제,
+    firstonline,
+    mitrade,
+    parameter.io,
+    longport,
+    Business Standard,
+    Korea JoongAng Daily,
+    Outlook Business,
+    aiweekly.co,
+    letsdatascience,
+    realinvestmentadvice,
+    Morningstar,
+    Barclays,
+    Bernstein,
   ]
-last_synced_from_db: 2026-09-26
+last_synced_from_db: 2026-10-03
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-09-26 | 신뢰도: high | 유효: ~2026-10-26
+> 갱신일: 2026-10-03 | 신뢰도: high | 유효: ~2026-11-02
 
 ---
+
+## ★ 주간 델타 (10/3) — 직전 갱신(9/26) 이후 변화
+
+- **[핵심] Micron FY Q4 2026 실적 확정(9/30) — 매출 $54.23B로 가이던스 $50B±1 상회·non-GAAP EPS $33.42·조정 GM ~86%·HBM 분기매출 ~$2B(연율 ~$8B)·HBM4 대량출하·Q1 FY27 컨센 ~$57B/EPS ~$35**: Micron FY Q4 2026(9/30 발표) 매출 **$54.23B**(직전 가이던스 $50B±$1B를 ~$4B 상회, 전분기 $41.46B 대비 **+31% QoQ**)·non-GAAP EPS **$33.42**(GAAP $32.87)·non-GAAP 순이익 $38.4B·조정 GM **~86%**(DRAM·NAND 사상 전례 없는 수준). **HBM 매출 분기 ~$2B(연율 환산 ~$8B 런레이트)**로 급증, **HBM4(1β) 선도 고객 플랫폼向 대량 출하 개시**·HBM4E(1γ) 2027 양산 진행. **Q1 FY2027 가이던스/컨센 매출 ~$57B·EPS ~$35**(또 QoQ 상향), Visible Alpha Q1 DRAM 매출 $42.8B(+12% QoQ). Barclays '슈퍼더블'로 2027 EPS **$100+** 전망(컨센 $54 대비 2배). 9/26 프리뷰(가이던스 $50B/$31)의 실적 확정 — 비트 [SEC 8-K, firstonline, mitrade, parameter.io, itiger, longport]
+- **[핵심] AI 순환금융 논쟁 재격화+하이퍼스케일러 capex 추가 상향 — OpenAI '순환 딜 웹'(NVIDIA $100B/10GW·AMD 지분·Oracle $300B·Broadcom $10B)·MS 2027 클라우드 capex $1.2T(+30%·+$170B)·GS 2027 최대 $1.4T**: OpenAI 중심 **순환 딜 웹** 부각 — **OpenAI-NVIDIA 최대 $100B/10GW(~$500B capex 상당)·OpenAI-AMD(OpenAI가 AMD 상당 지분/워런트 취득)·OpenAI-Oracle $300B 클라우드·OpenAI-Broadcom $10B 커스텀칩** — '한 기업이 타 기업에 자사 제품 구매 자금을 대주는' 상호의존이 닷컴/통신 버블 비유 재점화. **UBS: OpenAI-NVIDIA 딜은 NVIDIA 2026 매출 컨센($272B)의 ~13%**, 단 Meta·Alphabet·MSFT·Amazon 4사는 비AI 본업 현금흐름 보유로 순환 우려 완화. capex 추가 상향: **Morgan Stanley 2027 클라우드 capex $1.2T(+30% YoY·종전 대비 +$170B·4사 2026 대비 +57%)·Goldman Sachs 2027 최대 $1.4T(2025 ~$405B→2026 ~$750B→2027 $1.2T+)**, GS는 '$1.7T AI capex 정당화 필요매출' 역산 제시. 직전 9/26 컨센(4사 2027 $934.5B·GS $1.01T) 대비 상향. 주: 소스별 집계기준(클라우드 vs 하이퍼스케일러 capex) 상이 [UBS CIO, Business Standard, Korea JoongAng Daily, Morgan Stanley, Goldman Sachs, cryptobriefing]
+- **AI 인프라 신용 스트레스·금리 압박 지속 — CoreWeave 5년물 수익률 ~13%(2030/2031 노트 9.25%/9% 10월초 매도압력)·Oracle 분기 이자비용 +55% $1.43B·미 10Y ~5.17% 접근**: **CoreWeave 5년물 회사채 수익률 ~13%**, 기존 2030·2031 만기 노트(쿠폰 9.25%·9%)가 10월초 매도 압력 — floating 금리부채로 **100bp 상승당 이자 +$30M**. **Oracle IG 회사채 커브 전반 스프레드 확대·분기 이자비용 전년비 +55% $1.43B**. **미 10년물 국채 ~5.17% 접근**(직전 9/19 KB 5.04% 대비 추가 상승) — 조달비·할인율 동시 압박. AI DC 부채가 2차시장에서 연속 가격형성되며 금리 민감도가 neocloud 최대 취약점으로 지속. 주: 일부 CDS 수치는 소스간 시점 혼재(CoreWeave 4.52pp 개선 vs 7월 재확대 855bps)로 재확인 필요 [aiweekly.co, letsdatascience, Sherwood News, Bloomberg, realinvestmentadvice]
+- **WFE 2027 전망·메모리 per-GB 가격 추가 구체화 — SEMI 2027 WFE $151B(+20%)·TEL/Lam/KLA 모두 '$150B+'·ASML Low-NA EUV 2027 '최소 80대'·HBM4 ~$31-32/GB(HBM3E의 2배)**: **SEMI 2027 WFE $151B(+20% YoY)** 전망이나 5대 장비사는 상향 — **Tokyo Electron·Lam·KLA 모두 2027 '$150B+'**, **ASML 2027 Low-NA EUV '최소 80대' 출하** 가이드. Goldman Sachs 2027 $218B·Bernstein +18.2%(DRAM·NAND capex 핵심 드라이버), 리딩엣지 로직·DRAM·어드밴스드패키징이 2026·2027 WFE 성장의 **~80%**. 메모리 per-GB: **HBM4 ~$31-32/GB(NVIDIA向, HBM3E ~$17-18/GB의 약 2배)·타 GPU/커스텀ASIC向 ~$35-36/GB**. 삼성·SK 2~3년 LTA 거부·분기계약 고수로 단계적 인상. 주: WFE 정의별 상이(SEMI $151B vs GS $218B) [SEMI, letsdatascience, techstock01, Morningstar, cryptobriefing, TrendForce]
 
 ## ★ 주간 델타 (9/26) — 직전 갱신(9/19) 이후 변화
 

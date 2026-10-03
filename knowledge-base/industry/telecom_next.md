@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-26
-valid_until: 2026-10-26
+updated: 2026-10-03
+valid_until: 2026-11-02
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -190,14 +190,24 @@ sources:
   - TipRanks
   - electronics360
   - Network World
+  - WION
+  - SCMP
 confidence: high
-last_synced_from_db: 2026-09-26
+last_synced_from_db: 2026-10-03
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.10.03 핵심 변화 요약 (9/26 이후 델타)**:
+>
+> 1. **★D2C 위성 -- AST SpaceMobile BlueBird 6 발사 캠페인 본격 가동(9/26 '45기 2027초 이연'서 적극 출하로 전환): BB6 최종조립 완료·10/12 인도 출하->ISRO LVM3로 12월 발사 가능·LEO 최대 상용 위상배열 2,400 sq ft에 주가 +16% + SPCX 10/9·10/24 락업 임박** -- **★AST SpaceMobile(ASTS): BlueBird 6 최종 조립·시험 완료, 10/12 인도로 출하(Antonov 화물기로 Chennai 공수 -> 트럭으로 약 85km 북쪽 ISRO Satish Dhawan Space Centre 이송). ★ISRO 최대 로켓 LVM3가 6,500kg BB6를 약 550km 궤도 투입 -- 인도 로켓이 쏘아올리는 역대 최중량 위성. 도착(10월 중순) 후 발사까지 30~45일 -> ★BB6 2026.12 발사 가능. BB6=기존 위성 대비 3.5배 크기·10배 데이터 용량·LEO 최대 상용 위상배열 안테나(2,400 sq ft/약 223m^2). 발사 캠페인 개시 뉴스에 주가 +16% 급등·YTD +265%+·Zacks Rank #3(Hold)·$1B 매출 파이프라인. ★BB7 10월 Cape Canaveral로 출하·BB8~16 생산 각 단계·평균 1~2개월마다 발사·2026말 궤도 45~60기 목표(9/26 '2027초'서 상향 재확인). ★SPCX(SpaceX): 9/24 대형 락업(3.28억주) 크래시 없이 소화 뒤 ★다음 락업 10/9(약 3.19억주)·10/24 임박, Q3 실적 2거래일 후 최대 ~1.3억주, 메인 180일 락업 2026.12.08 만료가 최대변수. 주가 ~$140~142대 맥락(9/26 KB ~$148, 신규 확정치 없어 소프트 처리). Starlink 11,154기(9/26)·Vulcan LV-01 10월 슬립 승계** [MarketBeat/TipRanks·thefly BB6 final assembly, WION 10/2 ship India mid-Oct Antonov Chennai ISRO Satish Dhawan LVM3 6500kg 550km heaviest Indian payload Dec launch, Yahoo ASTS +16% 3.5x 10x 2400 sq ft, Nasdaq +265% YTD Zacks 3 $1B pipeline BB7 Cape Canaveral Oct BB8-16 45-60 year-end 2026, Sovereign/SeekingAlpha SPCX lockup 10/9 10/24 Q3 ~1.3B Dec 8, kucoin SPCX ~$140-142 target $220-225]
+> 2. **★6G 표준 확정 신규 제한적(델타 적음) -- 마이그레이션 옵션 최종결정은 여전히 12월 보스턴 RAN#114 대기(이번주 신규 결정문 없음)·구조 재확인(Rel-20 스터디 2026말·Rel-21 규격 2027.03~2028말·첫 표준 2029·상용 2030)** -- **5G->6G 마이그레이션 옵션 최종결정 이번주 신규 결정문 없음(9/26대로 12월 보스턴 이월). ★3GPP는 6G에 2개 릴리스 필요로 결론 -- Release 20(스터디, 첫 6G 피처 스터디·2026말 완료 예정)·Release 21(노멀티브/규격작성 2027.03~2028말). 6G 라디오·시스템 아키텍처 종합 스터디는 (프라하 TSG 개시) 2027 Q1 완료 목표·SA1 Release 20 스터디 2026.03 준비 목표. ★첫 6G 표준 2029 확정 -> 상용 6G 2030. MRSS(Multi-RAT Spectrum Sharing) 베이스라인·FR3 upper mid-band(7.125~8.4GHz) WRC-27 연구는 9/26 승계(변동 없음)** [Fierce Network '6G begins take-off as 3GPP starts radio and system study', 3GPP Release 20 two-release Rel-20 study end-2026 study complete Q1 2027, Ericsson '6G standardization key milestones and RAN decisions' 2029 standard 2030 commercial Rel-21 March 2027-end 2028, 6GWorld '3GPP 6G moves closer to real standards work']
+> 3. **★AI-RAN 확정 신규 딜 제한적(델타 적음) -- 벤더 노선 대립(Nokia GPU 3경로 vs Ericsson silicon-agnostic) 재확인·승자가 3GPP·O-RAN 레퍼런스 아키텍처 좌우** -- **9/26 대비 신규 대형 운영사 계약 없음. ★Nokia=3개 GPU 중심 하드웨어 경로(AirScale ABIG 플러그인 카드·독립형 Accelerated AI-RAN 노드·COTS 기반 Cloud AI-RAN), NVIDIA 실리콘(Aerial·Grace·Blackwell) 활용·스펙트럼효율 20% 실증 -> 2027 50% -> 2028 100%+·파일럿 2026말·일반출시(GA) 2027. ★Ericsson=기존 Intel/AMD/ASIC 실리콘 구동·GPU 및 신규 HW 불필요·벤더 락인 회피 silicon-agnostic·스펙트럼효율 ~10%·다운링크 최대 20%·15개+ 라이브. ★전략적 의미=승자가 3GPP·O-RAN이 수렴할 레퍼런스 아키텍처를 좌우. Nokia 20% 효율 주장 애널 회의론(9/26)·한국 종합대책 미발표(9/26) 승계** [LinkedIn/IEEE Spectrum 'Nokia vs Ericsson AI-RAN two incompatible hardware bets same 5G-to-6G destination', daily.dev 'AI-RAN trials hint at 6G AI-native future', 파트너 Dell·Quanta·Red Hat·SuperMicro·NVIDIA + T-Mobile·Indosat·BT·Elisa·DOCOMO·Vodafone]
+> 4. **★광통신/FCC 델타=규제 뉘앙스 변화(주가 신규 촉매 제한적) -- FCC 중국산 광트랜시버 금지 여전 초안, 애널 '온건(mild)·실행난이도·영향제한' 평가로 중국 광모듈주 반등** -- **FCC 중국산 광트랜시버 수입금지는 9/26대로 여전히 초안(공식 NPRM 표결 미완료, 당국은 연내 확정·발효 희망하나 수정·철회 가능). ★신규 뉘앙스=애널리스트·기관들이 제안된 AI 규제를 'mild(온건)'로 평가·실행 난이도 높고 발효해도 영향 제한적이라는 견해 부각 -> 중국 광모듈주 반등(SCMP 'Chinese optical-module stocks rebound as analysts downplay mild AI curbs'). 중국 Zhongji Innolight 세계 DC 트랜시버 27% 점유(6월 펜타곤 군사연계기업 리스트 유지). 발효 시 하이퍼스케일러(AWS 등) 비용상승·Coherent·Lumentum 등 대체공급 전환 압력. 8월 랠리(AAOI +16%·COHR +13%·LITE +11%·Corning +8%)·YTD 리더십(AAOI > LITE > COHR)은 9/26 맥락 승계, 이번주 신규 순위변동·대형 실적 촉매 없음. [주의: 절대주가 신디케이트 시점혼재 -- 방향성·이벤트 델타만 유효]** [SCMP 'Chinese optical-module stocks rebound as analysts downplay mild AI curbs proposed by US' policy hard to implement impact limited, Investing.com 'Optical component stocks rally on proposed US ban', Cryptobriefing/Stocktwits COHR LITE POET AAOI MRVL gain on reported China ban, vocus 'FCC Eyes Chinese Optical Modules' Innolight 27% Pentagon list June, hyperscalers AWS higher costs Coherent Lumentum alternatives]
+>
+> **(이전 갱신 -- 9/26 핵심 요약, 참고용)**:
 > **2026.09.26 핵심 변화 요약 (9/19 이후 델타)**:
 >
 > 1. **★6G RAN#113 마드리드 사후결과 확정=마이그레이션 옵션 결정 12월 보스턴 이월(9/19 '미발행' 해소)·MRSS 베이스라인 공식확정 + Snapdragon Summit 9/22~24 실현('8 Elite Gen 6'+'8 Elite Extreme Gen 6', 2nm·X105 '6G로 가는 길') + FR3 美 각서 '800MHz' 가속** -- **★3GPP RAN#113(마드리드 9/17 종료) 공식결과 발행 -- 5G->6G 마이그레이션 옵션 최종결정 실패로 ★12월 보스턴 RAN#114 이월(consensus 미달, '몇 개·어떤 옵션 허용할지' 미합의). 지지순위 Option 1(6G-anchored dual connectivity, 최강) > Option 3(dual-stack/dual registration, 중간) > Option 2(5G-anchored, 사실상 배제). ★MRSS(Multi-RAT Spectrum Sharing)가 5G NR·6G Radio 동일캐리어 공유 '베이스라인'으로 공식확정(RAN1 예비 성능평가 완료·9월 데드라인 충족), 6G Futures '이번 플레너리를 MRSS가 지배'. China Mobile '5G 교훈: 마이그레이션 옵션 과다가 파편화·롤아웃 지연·개조비 초래', 오판은 '수십억달러 실패' 소지. 스터디->스탠다드 페이즈 전환 2027.03. ★Qualcomm Snapdragon Summit 마우이 9/22~24 실현(9/19 'D-3 임박'서) -- 명칭 확정 'Snapdragon 8 Elite Gen 6 + 8 Elite Extreme Gen 6'(사전 티저 'Gen 6 Pro'서 'Extreme'로), 세계최초 2nm 스마트폰 SoC(TSMC N2P·Prime 2코어 피크 5.0GHz·Perf 6코어 4.0GHz), ★X105 5G 모뎀-RF(세계최초 3GPP Rel-19·mmWave+sub-6·DL 14.8Gbps·UL 4.2Gbps·6안테나 4x4 MIMO)로 '6G로 가는 길을 연다(paves way for 6G)' 명시, Extreme는 300억파라미터 AI 온디바이스 오프라인. 9개 OEM(HONOR·iQOO·Motorola·OnePlus·OPPO·Redmi·RedMagic·vivo·Xiaomi)·첫단말 2026 Q4·플래그십 물결 2027초·Galaxy S27 탑재후보. ★스펙트럼: 규제당국이 upper mid-band(7-24GHz) 6G 할당 '가치논쟁'서 '수량확정' 단계로 이동, 7.125~8.4GHz가 WRC-27 IMT 연구대상, 美 대통령 각서 'Winning the 6G Race' 최대 800MHz 추가 연구지시·7.125~7.4GHz 연구 2026말 완료의무·NTIA 밴드연구 공개추적 개시** [6G Futures 'MRSS dominates RAN#113 plenary', Light Reading '6G talks end no migration decision' next mtg Dec Boston Option 1 strongest China Mobile fragmentation multi-billion flop, IEEE ComSoc 9/22 Sept 3GPP updates ITU-R WP5D ATIS, 9to5Google/SamMobile/eftm/mobidevices/TechTimes Snapdragon 8 Elite Gen 6 + Extreme Gen 6 first 2nm N2P 5GHz X105 Rel-19 paves way 6G 9 OEM Q4 2026 Galaxy S27, tecknexus/PowerElectronicsNews FR3 7.125-8.4GHz WRC-27 US memo 800MHz NTIA 7.125-7.4GHz year-end]

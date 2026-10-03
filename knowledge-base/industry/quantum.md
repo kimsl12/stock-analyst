@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-26
-valid_until: 2026-10-26
+updated: 2026-10-03
+valid_until: 2026-11-02
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -179,15 +179,24 @@ sources:
   - QUBT ECOC 2026 통합 양자보안 플랫폼 라이브 시연(09/21~23 말라가, 고차원 QKD+HW 양자신원인증 QIA 단일플랫폼 최초) / UPenn 상온 다이아몬드 4큐빗 GHZ 14.8us 10x
   - 양자항법 시장(GlobeNewswire 09-24): Fortune BI 2026 $1.3B→2034 $7.4B(CAGR 24.27%)·Grand View 2026 $1.64B→2033 $8.0B / DIU+Honeywell MagNav C-17 Globemaster 연내 시연
   - FIPS 140-2 sunset 09-21 발효(CMVP 잔여 인증서 Historical 이관·신규 연방조달 FIPS 140-3만) / PQC 신규 NIST 표준 없음·OMB M-26-15 120일 마이그레이션 계획 ~2026-10 도래
+  - 주간델타 09-27~10-03 (양자주 소강·디커플: 10-01 IONQ $43.99·QBTS $16.56·RGTI $15.62·QUBT $8.39·QNT $46.68 52주저점근접, SOX/NASDAQ 랠리에 미동조 / OMB M-26-15 PQC계획 제출기한 ~10-22 구체화 / Classiq Fault Tolerance Engine 09-30 / Quantum eMotion QNC→Plurilock 인수 09-30 / SQC+Schneider 에너지예측·BCG 저전력 배출저감 10-02 / PASQAL CLO Florence Lao·Quanome QNME $15M 10-01 / Paderborn·Basel·Ruhr 단일광자·Tohoku+NIMS ZnO스핀큐빗 / Florida 국방주도 양자허브 09-30)
 confidence: high
-last_synced_from_db: 2026-09-26
+last_synced_from_db: 2026-10-03
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-09-26)
+## CURRENT (2026-10-03)
 
-> **최근 갱신 (2026-09-20~26)**
+> **최근 갱신 (2026-09-27~10-03)**
+> - **양자주 주간 소강·디커플(09-29~10-03)**: 09-24 IonQ 실시간 QEC 디코더·Superion 256 랠리 후 차익실현으로 바스켓 소폭 조정. **10-01 종가 IONQ $43.99(5거래일 -2.2%)·QBTS $16.56(-5.3%)·RGTI $15.62(-5.3%)·QUBT $8.39(-8.4%)·QNT $46.68(-5.5%, 52주 저점 $46.54 근접)**. 같은 주 쿨 NFP(+29K·실업률 4.2%)에 **SOX·NASDAQ는 랠리했으나 양자 바스켓은 동반 못하고 뒤처짐**(금리 매파 고수·고밸류 부담, 신규 개별 촉매 부재 속 동조 약세).
+> - **PQC — OMB M-26-15 제출기한 ~10-22 구체화**: 연방기관 PQC 마이그레이션 계획 120일 기한이 **~2026-10-22**로 명확화(직전 '~2026-10' 추정 정밀화). 리스크기반 우선순위·자동 인벤토리·crypto-agility 포함 계획을 OMB·ONCD에 제출. 5단계(2026~2035) 재확인, **12월 FAR Council 계약자 PQC 규칙안 예정**. 신규 NIST 표준 없음(FIPS 140-2 sunset 09-21 발효 유지).
+> - **양자SW/보안 M&A**: **Classiq 'Fault Tolerance Engine'(09-30)** — 최적화 양자앱을 FTQC 하드웨어 배포용으로 변환하는 SW 레이어(알고리즘↔하드웨어 격차 축소). **Quantum eMotion(QNC) Plurilock Security 인수(09-30)** — QRNG·양자안전 + AI 사이버보안 결합.
+> - **산업 응용/서사**: **Silicon Quantum Computing(SQC)+Schneider Electric 양자강화 에너지예측(10-02)**. **BCG 연구(10-02)**: 양자컴퓨팅이 **AI의 막대한 전력부담 없이 산업 탄소배출 저감** 가능 — 저전력 ROI 서사 부각(소재·화학·물류 최적화).
+> - **상장 양자기업 코퍼릿(10-01)**: **PASQAL(PSQL) 최고법률책임자(CLO) Florence Lao 선임**(08-28 상장 후 조직 정비) / **Quanome(QNME) 최대 $15M 비희석 성장자본**. 상장 양자 유니버스 확대.
+> - **기초연구·지역생태계**: Paderborn·Basel·Ruhr **구별불가 단일광자 생성 기법**·Tohoku+NIMS **ZnO 스핀큐빗 구성요소**(포토닉·고체스핀 경로 진전). **The Quantum Insider: 플로리다 국방주도 양자허브 부상(09-30)** — D-Wave Boca Raton 본사이전·FAU Advantage2 $20M 연계.
+
+> **직전 갱신 (2026-09-20~26)**
 > - **IonQ 실시간 QEC 디코더+Superion 256 NVIDIA AQRC(09-23~24)**: IonQ가 **표준 CPU서 구동되는 실시간 양자오류보정 디코더** 시연(FTQC 실시간 디코딩 병목 해소) + 첫 256큐빗 QPU **Superion 256을 NVIDIA Accelerated Quantum Research Center(AQRC)에 배치**(금융모델링·소재과학·신약발견). 첫 고객 인도 **2027**(근시일 상승=상업매출 아닌 기술진전). 09-16 ORNL/NVIDIA 생성형AI 최적화 후속 촉매로 **09-24 IONQ $44.08(+4%)·QBTS $17.23(+3%)·RGTI $16.28(+2%) 돌파후 매수 지속**.
 > - **Quantum World Congress 2026 개최(09/23~25 College Park MD)**: 글로벌 **2,000+ 리더**(매진), **University of Maryland 2026 리드 학술파트너**. 플래티넘 8사(Atom·Classiq·D-Wave·IBM·Infleqtion·IonQ·Microsoft·Quantinuum). **DARPA Capital Quantum Benchmarking Hub**를 College Park에 설립(국가안보+상업 양자시스템 검증·표준화 — QUOPS·DOE Genesis 독립 벤치마킹 흐름과 정합), **Microsoft Discovery District 양자연구센터 신설**. 워싱턴DC·타이슨스(VA) 이후 이전.
 > - **내부자 순매도 경고 재상향(Motley Fool 09-22)**: 양자 4사 **2년 순매도 $895.1M**(08-24 3년기준 $863M서 2년 기준 재산정): IonQ **$454.45M**·D-Wave **$331.14M**·Rigetti **$75.68M**·QUBT **$33.84M**. 매수 극소(IonQ $2.25M·D-Wave $1,795·Rigetti $0·QUBT $0). **P/S(09-18): IonQ 55.7·Rigetti 391.2·D-Wave 494.1·QUBT 183.3**. 30년간 P/S 30 초과 장기지속 사례 부재 경고.
