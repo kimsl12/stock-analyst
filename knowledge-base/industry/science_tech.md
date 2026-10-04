@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-27
-valid_until: 2026-10-27
+updated: 2026-10-04
+valid_until: 2026-11-03
 sector: science_tech
 sources:
   [
@@ -254,10 +254,22 @@ sources:
     Prime Medicine,
     NIMS,
     World Nuclear News,
+    NobelPrize.org,
+    Falling Walls,
+    NEJM,
+    Science Corporation,
+    OphthalmologyTimes,
+    eyewire.news,
+    PNNL,
+    CATL,
+    UW IPD,
+    Northwestern,
+    Fusion Energy Base,
+    humanoid.guide,
   ]
 confidence: high
-last_synced_from_db: 2026-09-27
-db_records: 1206
+last_synced_from_db: 2026-10-04
+db_records: 1221
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -728,7 +740,21 @@ db_records: 1206
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-09-27 갱신)
+### 16-C. 주간 과학기술 동향 (2026-10-04 갱신)
+
+> **2026-09-27~10-04 주간 통합 수집(web_search 15회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick) 갱신은 토요일 weekly-frontier 담당. 본 표 = 범용 기초과학·첨단기술 우산 관점 크로스커팅 최신값(연구·기술 동향 중심).
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[기초과학·노벨]** | ★ **2026 노벨상 발표 주간 개막** — 생리의학 **10/5**·물리학 **10/6**·화학 **10/7**(CEST 오전). 병행 **Falling Walls 'Science Breakthrough of the Year 2026' 100 파이널리스트 10/1 공개**(서밋 11/6~9 베를린)·후보 = 스탠퍼드 AI설계 박테리오파지(항생제내성 극복)·본대 PRIMA 망막임플란트 등. 기초연구 연례 수확기 진입(다음 주 분기점) | 2026.10 | NobelPrize.org / Falling Walls |
+| **[바이오·신경]** | ★ **PRIMA 망막 임플란트**(Science Corp·스탠퍼드 Palanker 원천기술·본대 Holz 주도) **NEJM 피벗** = 지도형위축(건성 AMD) **38명 ETDRS 평균 +25.5자(>5줄)**·**84% 글자/숫자/단어 재독** 회복. '형태시(form vision) 복원' **세계 첫 BCI 승인**·CE 마크로 유럽 30개국 상용(무선칩+전용안경) | 2026.09~10 | NEJM / OphthalmologyTimes / eyewire |
+| **[소재·배터리]** | **나트륨이온 lab→멀티GWh 상업화 교차** = CATL **9월 60GWh/3년 공급계약**(2월 세계 첫 양산 Na-ion 승용차 175Wh/kg 후속)·PNNL DOE 정치형 Na-ion($100/kWh·250사이클 80% 목표, 9/22). 전고체 = **QS-Honda 공동연구**(6/18 다년)·Cobra Raptor 대비 **~25x**·Eagle 핵심툴 90%+·H2 산출 2배 | 2026.09~10 | CATL / PNNL / QS IR |
+| **[AI4Science·단백질]** | ★ **David Baker 연구소(UW IPD) RFdiffusion으로 전장(full-length) 항체 완전 컴퓨터 설계**(중쇄+경쇄 가변영역, 동물면역·대량스크리닝 無) = **$2000억 항체신약 산업 재편** 가능성(Nature). Baker **2026 Croonian Medal**·美 공학한림원(NAE) 선출 | 2026 | Nature / IPD UW / GeekWire |
+| **[핵융합]** | **Type One Energy+TVA 테네시 첫 상업 핵융합(Bull Run) 초기 인허가 신청**·1단계 2029 커미셔닝. UK Infinity Fusion Consortium(Type One+Tokamak+AECOM). CFS SPARC ~75% 완성·2026말~2027초 첫 플라즈마(전문 종목 tick=토요 frontier) | 2026.09 | Fusion Energy Base / ANS / pdpspectra |
+| **[로보틱스]** | 휴머노이드 밸류·양산 재확인 = **Figure AI $15억 조달협의·밸류 $395억**(이전 $26억서 ~15x)·**Unitree 2025 5,500+대→2026 목표 2만대·8월 中 A주 첫 휴머노이드 상장**. Tesla Optimus Fremont 7월 중순 미개시. 1X 가정용 美 선주문($2만/월 $499) | 2026.09~10 | humanoid.guide / TipRanks |
+| **[신경·재생]** | Northwestern(Stupp CRN) **인간 척수 오가노이드로 척수손상(세포사·염증·교질반흔) 정밀 모델링 + '댄싱 분자'(제어형 나노섬유 젤) 치료로 신경돌기 재생·교질반흔 감소**(Nat Biomed Eng 2/11)·FDA 희귀의약품 지정 = 마비 치료 전임상 전진 | 2026 | Nature Biomed Eng / Northwestern |
+
+#### (이전 주간) 2026-09-27 기록
 
 > **2026-09-20~09-27 주간 통합 수집(web_search 12회·WebFetch 3회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick) 갱신은 토요일 weekly-frontier 담당. 본 표 = 범용 기초과학·첨단기술 우산 관점 크로스커팅 최신값(연구·기술 동향 중심).
 
@@ -763,20 +789,6 @@ db_records: 1206
 | **[기초물리]** | Carnegie Mellon **새 형태 홀효과**(수직 자기장 없이 발현, 통념 반박)·**기체 압력 유발 원자충돌 직접 관측**(9/10)·카고메 금속 **자발적 원자스케일 전류루프**(NQR/NMR 미시 증거)·변형유도 2D 위상결정절연체 bilayer SnTe | 2026.09 | ScienceDaily / Nature Physics / Nature Comms |
 | **[소재·핵융합]** | 신규 discrete 이벤트 제한적(전문=토요 weekly-frontier). 전고체 2026 산업화·CFS SPARC 2027 순에너지 경로 재확인 | 2026.09 | IDTechEx / FIA |
 
-#### (이전 주간) 2026-09-06 기록
-
-> 2026-08-30~09-06 주간 통합 수집(web_search 14회, global-data 일요런). 프론티어 전문 갱신은 토요일 weekly-frontier 담당(우주 9/5 반영). 아래 표 = 통합 뷰 크로스커팅 최신값.
-
-| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
-| --- | --- | --- | --- |
-| **[양자]** | ★ **IonQ 9/8 NYSE Investor Day**(Broad Quantum Advantage 로드맵·800 논리큐빗 2027·SkyWater 결합 가이던스)·**IBM+시카고대 8/29 양자우위 시연**(70 논리큐빗·2,415 논리 2큐빗 연산·에러 10x↓·고전 난제 15분)·**Quantinuum-Aramco 9/3 MoU**·8월말 셀오프(D-Wave 8/26 CFO 은퇴 -8%) | 2026.09 | Motley Fool / ScienceDaily / QCR |
-| **[SMR]** | **트럼프 $200M DOE**(Oklo·X-Energy·MS·Nvidia AI DC 원자로)·**Oklo PJM 오하이오 좌초**(-14개월 위협·FERC 답변 9/4)·OKLO YTD -41% | 2026.09 | Yahoo / Benzinga / 24-7 Wall St |
-| **[핵융합]** | CFS 7/30 $1B→누적 $4B(민간 ~30%)·Nvidia+Siemens SPARC 디지털트윈·자석 18개 여름내 전량 설치·2027 가동(재확인). 민간 누적 $13B+ | 2026.09 | TechCrunch / CFS |
-| **[로보틱스]** | 젠슨 황 물리AI **$50T TAM**(5월 $40T서 상향)·Nvidia **Isaac Root** 레퍼런스 휴머노이드(31 DoF)·Optimus Fremont 양산 착수·BD Atlas 연말 현대 출하 | 2026.09 | Benzinga / Technology.org |
-| **[소재]** | 전고체 2026 산업화 본격(상업 400~500 Wh/kg·중국 첫 표준 2026.07)·CAS 유연 전고체 2만회 굽힘 +86% 밀도 | 2026.09 | IDTechEx / 36kr |
-| **[바이오]** | CASGEVY Q2 매출 $76M(+78% QoQ)·CRISPR Tx CTX310 ESC 8월 Phase 1a·Intellia lonvo-z BLA 하반기·출시 2027 상반기(재확인) | 2026.09 | BioSpace / Nature Biotech |
-| **[AI4Science]** | **Isomorphic Labs IsoDDE**('AlphaFold 4'급, 단백질-약물·항체 정밀 예측)·DeepMind **GNoME 220만 결정구조**(Li이온 전도체 5.2만·736 합성) | 2026.09 | Scientific American / DeepMind |
-
 ---
 
 ### 17. 데이터 정합성 검증 (자동)
@@ -796,7 +808,7 @@ db_records: 1206
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1206건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1221건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_

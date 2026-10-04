@@ -1,6 +1,6 @@
 ---
-updated: 2026-09-27
-valid_until: 2026-10-27
+updated: 2026-10-04
+valid_until: 2026-11-03
 category: macro
 sources:
   [
@@ -263,9 +263,22 @@ sources:
     "오마이뉴스",
     "굿모닝경제",
     "The Conversation",
+    "Emerson College Polling",
+    "COSSA",
+    "WGCU",
+    "fedmanager",
+    "AOL",
+    "MercoPress",
+    "Global Agriculture",
+    "Newsquawk",
+    "cnhinews",
+    "Les Echos",
+    "Korea Times",
+    "Khaleej Times",
+    "roic.ai",
   ]
 confidence: high
-last_synced_from_db: 2026-09-27
+last_synced_from_db: 2026-10-04
 ---
 
 # 정치 사이클 & 정책 트래커 (Political Cycle)
@@ -276,6 +289,18 @@ last_synced_from_db: 2026-09-27
 > **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
 
 ## CURRENT (에이전트는 이 섹션만 사용)
+
+### ★ 2026-10-04 주간 갱신 (9/27~10/4 신규 사실) ★
+
+- **★★ 美 연방정부 10/1 셧다운 돌입—FY2027 자금 lapse·ACA 보조금 쟁점·9/27 '회피' 전제 붕괴 [10-04 신규·핵심]**: **10/1 00:01 ET FY2027 자금 lapse로 연방정부 셧다운 개시—상원이 하원 통과 CR(11월말까지 자금)에 60표 미달(10/3 54-44·민주 3인만 이탈)**. **핵심 쟁점: 만료 예정 ACA(오바마케어) 보험료 보조금 연장—민주 요구(11/1 가입기간 前 사수)·공화 '정부 재개 前 협상 불가'**. 트럼프 행정부 '셧다운 기회로 연방인력 해고(RIF)' 위협. **★10/3 월간 고용보고서 발표 지연(경제지표 공백)**. 여론 6 in 10이 공화·트럼프 책임론. ★9/27 KB '10/1 셧다운 회피(CR P.L.119-103 12/11)' 전제 붕괴—하원 CR이 상원 60표 벽 못 넘어 정정. D+3 시점(역대최장 아님) [COSSA, WGCU/NPR 10/3, Yahoo 10/3, fedmanager, ABC News]
+- **★ 트럼프 지지율 신저점 지속·셧다운 추가 하방·Generic 민주 우위 유지 [10-04 갱신]**: **집계 저공비행—개별 37%/60%(net -23, uspollingdata)~41%/49%(net -8, Emerson)·RCP 'approval falls to new low, Dem lead grows'(셧다운 중 추가 하락)**. **Generic Ballot 민주 우위 유지(RCP ~D+4.8·uspollingdata D+7.4)—중앙 ~D+5~7**. 셧다운 책임 6 in 10이 공화·트럼프. 중간선거 D-4주(11/3) [Emerson College Polling, uspollingdata, RealClearPolling, AOL]
+- **★ 상원 베팅시장 첫 민주 다수 favor로 전환—남부 경합지 민주 트렌드 [10-04 신규]**: **RealClearPolling 'Betting markets now favor Democrats to win Senate in 26'—9/27 Decision Desk 52%서 베팅시장 민주 우위로 진전**. 남부 배틀그라운드 민주 쪽 이동. **GA Ossoff +5 vs Collins·MI 접전—Cook 양주 여전 toss-up**. 하원(민주 유리)에 상원 경합 심화 중첩, '공화 구조적 우위' 프레임 추가 후퇴 [RealClearPolling, Yahoo, AOL, Cook Political Report]
+- **★★ 미중 휴전 2개월 연장 확인—11/10→2027.1.10 [10-04 신규·핵심]**: **Bessent, 미중 무역휴전 2개월 연장 발표(9/24 시진핑 방미 계기)—만료 11/10→2027.1.10로 이동**. **$30B씩 선별 관세 인하·희토류 공급·농산물·AI 세이프가드 포괄 협의·中 희토류/마그넷 라이선스 규제 1년 유예**. 대두 25MMT/yr~2028(부산 2025) 유지. 더 큰 합의 위한 시간 확보 [Korea Times 9/24, Global Agriculture, roic.ai 9/21, Khaleej Times]
+- **★ 브라질 대선 1라운드 오늘(10/4) 투표—Lula 리드 5pt 확대·런오프 여전 동률 [10-04 신규]**: **1라운드 오늘(10/4·폴 17:00 BRT 마감·TSE 전자개표 당일 결과)**. **직전 BTG/Nexus(9/28~29): Lula 1라운드 리드 5pt로 확대(Lula 42 vs Flávio Bolsonaro 37·Cury 5·Caiado 5·Santos 4)·런오프 Lula 46 vs Bolsonaro 44(오차범위 내 동률)**. 2002래 모든 대선 런오프행—런오프 10/25 [MercoPress 9/29, Reuters/BTG-Nexus 9/28, Rio Times]
+- **★ 佛 2027 예산—르코르뉘 '2027 지출 2026 수준 동결' 방침·재정취약 지속 [10-04 갱신]**: **르코르뉘, 2027 정부지출을 2026 수준으로 '정확히' 동결 계획(Les Echos 서한)·2026 적자 5.5% 하회 목표**. 부채 GDP ~117.5%(WWII래 최고)·OAT 고공행진(9/27 4.5%+ 수준 잔존)—2027 예산 연말까지 통과 필요. 신뢰 가능한 재정건전화 착수 여부가 OAT 변수. 2027 봄 대선 前 정치 취약성 지속 [Newsquawk/Les Echos, cnhinews, Amundi]
+- **日 다카이치·韓 이재명 지지율: 신규 델타 N/A [10-04]**: **日—소스 연도혼재(코메이토 연정 이탈·LDP 총재 선출 등 real-world 2025 맥락이 2026으로 표기)로 KB '2026.02 총선 316석 정부' 전제와 충돌 → 9/27 상태(9/17 개각 소화·62% Nikkei·슬러시펀드 연루 기용 68.6% 반대) 유지**. **韓—최신(9월말/10월초) 리얼미터·갤럽 조사 미공개(검색 stale) → 9/27 값(이재명 34.8% 10주만 반등·민주 40.2 vs 국힘 38.5) 유지** [N/A 사유 명시]
+
+> ※ 美 셧다운 D+3 진행중(ACA 보조금 교착·고용보고서 등 지표 공백·11/1 ACA 가입 데드라인 압박)·브라질 1라운드 10/4(런오프 10/25)·美 중간선거 11/3(D-4주·상원 베팅 민주 우위)·미중 휴전 2027.1.10로 연장·佛 2027 예산 연말 통과 시한.
 
 ### ★ 2026-09-27 주간 갱신 (9/20~9/27 신규 사실) ★
 
