@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>이브닝 브리핑 — 2026-10-04</title>
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      /* 라이트 모드 — 토큰만 교체 (컴포넌트는 color-mix 가 자동 추종) */
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+
+      /* 레짐 스트립 [v3.29] — 최근 30일 위험선호 레짐 (regime.json strip_html 그대로 삽입) */
+      .regime-strip {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin-top: 9px;
+      }
+      .regime-strip .rg-cell {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        display: inline-block;
+        opacity: 0.85;
+      }
+      .regime-strip .rg-label {
+        font-size: 11px;
+        color: var(--sub);
+        margin-left: 7px;
+      }
+
+      /* 색상 클래스 */
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      /* 셀 배경 */
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      /* 섹션 카드 */
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      /* 표 — 금융 데이터 표준 (소형 헤더 + tabular 숫자) */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      /* debate-card (보라) — 핵심 논쟁 */
+      .debate-card {
+        background: color-mix(in srgb, var(--debate) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--debate) 22%, transparent);
+        border-left: 4px solid var(--debate);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .debate-card .card-title {
+        color: var(--debate);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .debate-card .bull {
+        color: var(--up);
+        margin-top: 6px;
+      }
+      .debate-card .bear {
+        color: var(--down);
+        margin-top: 6px;
+      }
+      .debate-card .verdict {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--debate) 30%, transparent);
+      }
+
+      /* contrarian-card (주황) — 과소평가 포인트 */
+      .contrarian-card {
+        background: color-mix(in srgb, var(--contrarian) 6%, transparent);
+        border: 1px solid color-mix(in srgb, var(--contrarian) 22%, transparent);
+        border-left: 4px solid var(--contrarian);
+        border-radius: 0 10px 10px 0;
+        padding: 15px 18px;
+        margin: 14px 0;
+      }
+      .contrarian-card .card-title {
+        color: var(--contrarian);
+        font-weight: 750;
+        margin-bottom: 8px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+      }
+      .contrarian-card .assumption {
+        color: var(--neutral);
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .contrarian-card .signal {
+        margin-top: 6px;
+      }
+      .contrarian-card .probability {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed
+          color-mix(in srgb, var(--contrarian) 30%, transparent);
+      }
+
+      /* 시그널 바 */
+      .signal-bar {
+        margin: 8px 0;
+        height: 8px;
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .signal-bar .fill {
+        height: 100%;
+        border-radius: 4px;
+      }
+      .signal-bar.up .fill {
+        background: linear-gradient(90deg, var(--up), #2ea043);
+      }
+      .signal-bar.down .fill {
+        background: linear-gradient(90deg, var(--down), #da3633);
+      }
+      .signal-bar.warning .fill {
+        background: linear-gradient(90deg, var(--warning), #b08800);
+      }
+      .signal-bar.neutral .fill {
+        background: linear-gradient(90deg, var(--neutral), #6e7681);
+      }
+
+      /* 이벤트 배지 */
+      .event-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .badge-critical {
+        background: color-mix(in srgb, var(--down) 18%, transparent);
+        color: var(--down);
+        border: 1px solid var(--down);
+      }
+      .badge-high {
+        background: color-mix(in srgb, var(--warning) 18%, transparent);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+      .badge-normal {
+        background: color-mix(in srgb, var(--highlight) 14%, transparent);
+        color: var(--highlight);
+        border: 1px solid var(--highlight);
+      }
+
+      /* 13F 시차 경고 */
+      .warning-13f {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border: 1px solid var(--warning);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 14px 0;
+        color: var(--warning);
+        font-size: 14px;
+      }
+      .warning-13f::before {
+        content: "⚠️ ";
+      }
+
+      /* 푸터 */
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      /* 주의사항 (F-7, G-9) */
+      .disclaimer {
+        margin-top: 24px;
+        padding: 16px;
+        border-top: 1px solid var(--border);
+        color: var(--sub);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .disclaimer h4 {
+        color: var(--warning);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* 모듈 전용 */
+      .thesis-box p {
+        margin: 6px 0;
+      }
+      .hv-table td:nth-child(2) {
+        white-space: nowrap;
+        font-weight: 650;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+    <div class="header">
+      <h1>
+        🌙 이브닝 브리핑 — 2026-10-04 (일 · 내일 개장 D-1 — 주말 내내 firming한
+        크립토(토 −2%→일 +0.7~1.7%)만이 유일 신규 신호 / ★모닝의 '9월 NFP
+        +29K'를 '10/1 셧다운發 BLS 미발표·ADP −32K'로 교정)
+      </h1>
+      <div class="meta">
+        작성: 메인 스레드 직접 종합 (스케줄 이브닝 슬롯 · briefing-lead Task
+        위임 갭 폴백 · correlation-monitor 주말 무세션 승계 · 중앙 yfinance 수집
+        · ★/KB점검 교정 SSOT 반영) | KST 일요일 20:2x ≈ ET 07:2x — ★<strong
+          >오늘 2026-10-04(일) 미·한·아시아 정규장 전면 휴장·주말 프리마켓
+          없음</strong
+        >(당일 세션 없음) · 다음 세션 = <strong>내일 10/5(월)</strong>
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        데이터: 지수·채권·FX·원자재 = 10/2(금) 확정 종가 승계(yfinance date=10/2
+        전종목 동결 재확인) · 크립토 = 10/4 20:1x KST 라이브(24h·유일 live 시장)
+        · ★상관 6쌍 = 주말 무세션 → 토요일(10/3) 재산출(10/2 종가 반영)
+        <strong>그대로 승계</strong>
+        (다음 재산출 10/5 월 미 종가)
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        ★★<strong class="down">데이터 교정(/KB점검 10/4)</strong>: 모닝·토요일
+        이브닝의 '9월 NFP +29K·실업률 4.2%'는 <strong>오기</strong> — 10/1 연방
+        셧다운으로 BLS 9월 고용보고서 <strong>미발표(블랙아웃)</strong>·실측
+        민간 = <strong>ADP −32K</strong>(둔화). FOMC는 us_economy SSOT
+        <strong>인상 ~66%</strong>(인상 base case) 우선·dovish 웹 ~17% 기각
+      </div>
+      <div class="meta" style="margin-top: 4px">
+        레짐: 중립 17일째 · 횡보(MA20 +0.69%) ·
+        <span class="down"
+          >10Y 5.28%(+4bp·20D +51bp)·30Y 2004년래 신고가권</span
+        >
+        · VIX 15.31(저·금 −6.6%) · F&amp;G 31.2 공포(크립토 65 탐욕·67→65 추가
+        냉각) · ★10/1 셧다운 블랙아웃 · 中 국경절 휴장(10/1~8)
+      </div>
+      <div class="regime-strip">
+        <span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-05 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-06 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-07 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-08 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-09 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-10 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-09-11 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-12 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-13 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-14 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-15 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-09-16 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--down)"
+          title="2026-09-17 리스크오프"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-18 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-19 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-20 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-21 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-22 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-23 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-24 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-25 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-26 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-27 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-28 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-29 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-09-30 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-10-01 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-10-02 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-10-03 중립"
+        ></span
+        ><span
+          class="rg-cell"
+          style="background: var(--neutral)"
+          title="2026-10-04 중립"
+        ></span
+        ><span class="rg-label">레짐 최근 30일</span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>
+        🎯 오늘 밤이 아니라 내일(10/5 월) 개장 D-1 분기점 — 주말은 디커플을
+        정지시킨 채 크립토만 '하방 소진→firming'을 증언, 그 사이 /KB점검이 노동
+        데이터를 '셧다운發 미발표·ADP −32K'로 교정
+      </h2>
+      <p>
+        <strong>주장.</strong> 내일(10/5 월)이면 미·한·아시아가 전면
+        재개장한다(약 13시간 후 아시아 09시 → KST 17시 미 프리마켓 → KST 22:30
+        미 정규장). 그 직전 주말에 유일 live 시장인 크립토가
+        <strong class="up"
+          >토요일 −2%에서 일요일 저녁 +0.7~1.7%로 firming(BTC $85,259·+0.71%
+          24h·ETH $2,701·+0.64%·SOL $121.3·+1.66%)</strong
+        >하며 $85K를 재탈환했다 — 단 금요일 주식 랠리(NASDAQ +1.19%)엔 동참하지
+        않았다 (NASDAQ↔BTC 90D −1.26σ 탈동조 승계). 지수·채권·FX·원자재는
+        10/2(금) 종가 그대로 정지(yfinance date=10/2 재확인).
+      </p>
+      <p class="warning">
+        ★★<strong>이번 회차의 유일한 실질 신규 작업 = 데이터 교정.</strong>
+        모닝·토요일 이브닝이 쓴 '9월 NFP +29K·실업률 4.2%'는
+        <strong>오기</strong>였다. 10/1 연방정부 셧다운으로 BLS 9월 고용보고서가
+        <strong>미발표(블랙아웃)</strong>됐고, 실측 민간 하드데이터는
+        <strong class="down">ADP −32K</strong>(9월·2023.03래 최대 감소)로 고용
+        <strong>둔화</strong>를 가리킨다(us_economy.md SSOT·/KB점검 10/4
+        플래그). 따라서 금요일 주식 랠리는 'cool NFP 반응'이 아니라
+        <strong>'셧다운+ADP 둔화發 인하기대 반사'</strong>이며, 채권(10Y
+        5.28%·30Y 2004년래)이 이를 거부한 디커플 구조 자체는 유지된다.
+      </p>
+      <p>
+        <strong>FOMC 교정.</strong> 10/27~28 FOMC 인상 확률은
+        <strong>us_economy SSOT 인상 ~66%(인상 base case·매파 레짐)</strong>를
+        쓴다. economic_calendar 웹수집치 '~17% 인상(동결 ~84%)'은 셧다운 교란 +
+        real-world 오염(dovish_reflex 패턴)으로 /KB점검이
+        <strong>기각</strong>했다. 공통 가드 =
+        <span class="highlight">인하 피벗 아님</span> — bond rout(10Y 5.28%·30Y
+        2004년래)이 인하를 거부하고, Fed 이동은 '지연 인상'(10월 skip 시 12월
+        ~62%)일 뿐 인하가 아니다. ⚠️ cool 지표(ADP −32K·Core PCE +3.0% 둔화)를
+        '비둘기 반사'로 오독 금지(시뮬 2026 = Warsh 의장 매파).
+      </p>
+      <p>
+        <strong>행동.</strong> 4종 포트폴리오 공통 =
+        <strong
+          >관망 유지·디커플 미해소·셧다운 블랙아웃·10/14 CPI(발표 불확실)
+          대기·추격 금지.</strong
+        >
+        성장·듀레이션 신규 추격 금지(채권·크립토가 금요일 주식 랠리 미확증).
+        <span class="highlight">SGOV dry powder(캐리 5%대)</span>가 디커플 양쪽
+        꼬리 + 셧다운 불확실성에 중립. 금($4,162)은 지지이나 추격 금지. 큰
+        베팅은 10/5(월) 방향 + 10/14 CPI 확인 후.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>📌 0. 핵심 요약</h2>
+      <ol>
+        <li>
+          ★<strong
+            >오늘은 일요일 — 미·한·아시아 전면 휴장·주말 프리마켓 없음.</strong
+          >
+          유일 live 크립토가 주말 내내
+          <strong class="up">하방 소진 후 firming</strong>(토 $84,620·−2.07% →
+          일 저녁 BTC $85,259·+0.71%·ETH +0.64%·SOL +1.66%)으로 $85K 재탈환. 단
+          금요일 주식 랠리엔 미참여(NASDAQ↔BTC 90D −1.26σ 탈동조 승계). 지수·
+          채권·FX·원자재는 10/2 금 종가 동결(yfinance 재확인).
+        </li>
+        <li>
+          ★★<strong class="down">데이터 교정(/KB점검 10/4):</strong> 모닝·토요일
+          이브닝의 '9월 NFP +29K·실업률 4.2%'는 <strong>오기</strong> — 10/1
+          연방 셧다운으로 BLS 9월 고용보고서
+          <strong>미발표(블랙아웃)</strong>·실측 민간 =
+          <strong>ADP −32K</strong>(둔화). 금요일 주식 랠리 = 'cool NFP'가
+          아니라 <strong>'셧다운+ADP 둔화發 인하기대 반사'</strong>.
+          <strong>10월 FOMC = SSOT 인상 ~66%</strong>(dovish 웹 ~17% 기각)·인하
+          피벗 아님. 8월 Core PCE +3.0%(컨센 3.7% 하회·둔화)·헤드라인 PCE
+          +3.4%·Q2 GDP 3차 +2.2%(9/30·셧다운 前 유효).
+        </li>
+        <li>
+          ★<strong>내일(10/5 월) = 디커플 해소 판별 시작</strong> — 약 13시간 후
+          아시아 개장 → KST 17시 미 프리마켓 → KST 22:30 미 정규장.
+          <strong>KOSPI 7천 갭 + 재개장 10Y 방향</strong>이 1차 신호. 이후
+          10/5~6 ISM 서비스 → 10/8 중국 재개장 →
+          <strong>10/14 9월 CPI(발표 셧다운 변수)</strong> → 10/22 BOK →
+          10/27~28 FOMC(인상 ~66% base case·동결도 라이브). 상관 6쌍
+          🔴1/🟡3/🟢2·서프라이즈 미 +5 승계. 4종 공통 관망·추격 금지·SGOV/금
+          방어.
+        </li>
+      </ol>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🌍 B-1. 글로벌 이슈 탑 5 (주말·내일 개장 前 영향 순 · 각 2차 효과 ·
+        ★교정 반영)
+      </h2>
+      <ol>
+        <li>
+          <strong class="down"
+            >★10/1 연방정부 셧다운 — 공식 데이터 블랙아웃(모닝 누락분
+            신규).</strong
+          >
+          ~65만명 무급휴직·60만명 급여지연. BLS(9월
+          고용보고서)·DOL(주간청구)·Census 공식 지표 블랙아웃. CBO: 4~8주 지속
+          시 Q4 실질GDP 연율 −1.0~2.0%p.<br /><span class="sub"
+            >→ 2차: 10/28 FOMC까지 공식 노동·소비 데이터 공백 → 판단 흐림.
+            ★10/14 9월 CPI 발표 자체가 지연 가능. 민간(ADP·ISM)·가격지표만
+            가용(셧다운 기간 confidence medium·금리/증시 yfinance high).</span
+          >
+        </li>
+        <li>
+          <strong class="down"
+            >★9월 BLS 고용보고서 미발표·실측 ADP −32K — '+29K'는 교정.</strong
+          >
+          모닝의 '+29K·4.2%'는 미발표 지표 오인용(/KB점검 교정). 실측 민간 = ADP
+          −32K(9월·2023.03래 최대 감소·연임금 +4.5%).<br /><span class="sub"
+            >→ 2차: 금요일 주식 랠리(SOX +2.40%)의 촉매는 '소프트 민간 지표發
+            인하기대 반사'. 둔화가 '좋은 디스인플레'인지 '나쁜 성장 둔화'인지는
+            10/14 CPI(발표 시)·이익 추정으로 사후 판별. 디커플 구조는
+            유지(채권이 거부).</span
+          >
+        </li>
+        <li>
+          <strong class="down"
+            >★채권, 소프트 지표에도 매파 고수 — 10Y 5.28%·30Y 2004년래.</strong
+          >
+          ADP −32K·Core PCE +3.0% 둔화에도 전 구간 수익률 상승(30Y 장중
+          ~5.50%).<br /><span class="sub"
+            >→ 2차: 금요일 주식 랠리가 '금리 하락 없이' 이뤄져 되돌림 리스크.
+            상관 S&amp;P↔10Y −1.36σ로 금리 코어 긴장 유지(HV2). 5%대 고착이
+            멀티플 상단 제약·인하 거부 신호.</span
+          >
+        </li>
+        <li>
+          <strong class="up"
+            >★주말 크립토 하방 소진→firming — BTC $85.3K(+0.71% 24h·SOL
+            +1.66%).</strong
+          >
+          토 −2%에서 일 저녁 +0.7~1.7%로 $85K 재탈환. 단 금요일 NASDAQ +1.19%엔
+          미참여(90D −1.26σ 탈동조 승계).<br /><span class="sub"
+            >→ 2차: 유일 live 시장이 '추가 리스크오프 없음 + 소폭 리스크온'을
+            증언 — 10/5 주식 재개 시 크립토 동조하면 HV6 재커플 단서. 저유동
+            드리프트인지 선행 신호인지는 10/5 판별. 크립토 F&amp;G 67→65 추가
+            냉각. QuantTrader 영역·관찰만.</span
+          >
+        </li>
+        <li>
+          <strong
+            >★10/27~28 FOMC 향 매파 레짐 불변 — 인상 ~66%(SSOT·dovish 웹
+            기각).</strong
+          >
+          us_economy SSOT 인상 ~66%(Kalshi 66.5·Polymarket 64.5). ★웹 '~17%
+          인상'은 셧다운 교란 + real-world 오염으로 기각.<br /><span class="sub"
+            >→ 2차: 10월 skip 시에도 12월 인상 base case ~62%='지연 인상'이지
+            인하 아님. cool 지표 1건이 비둘기 전환 아님(Warsh 의장·dot 추가
+            인상). 10/14 CPI(발표 시)가 방향 재확인.</span
+          >
+        </li>
+      </ol>
+      <p class="sub">
+        보조 트래킹: 10/8 중국 국경절 휴장 종료(재개장·역내 유동성 복귀)·10/22
+        BOK 금통위·HY 스프레드 3.24%(+44bp WoW)·금 $4,162($4,200 재하회이나 HV5
+        구조론 유효). ★셧다운 해제/BLS 재개 시 데이터 재수집 교정 필요.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        📉 B-2. 아시아 시장 마감 (직전 거래일 10/2 금 확정 종가 · 오늘 10/4 일
+        휴장 · '내일 10/5 월 개장' 프레임)
+      </h2>
+      <table>
+        <tr>
+          <th>지수</th>
+          <th>종가(10/2 금)</th>
+          <th>등락</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><strong>KOSPI</strong></td>
+          <td>7,003.74</td>
+          <td class="up">+0.47%</td>
+          <td>
+            ★7,000선 첫 안착 — 내일 미 랠리 전이 vs 되돌림·셧다운 불확실 관건
+          </td>
+        </tr>
+        <tr>
+          <td><strong>KOSDAQ</strong></td>
+          <td>893.29</td>
+          <td class="down">−0.11%</td>
+          <td>급등 후 숨고르기(보합)</td>
+        </tr>
+        <tr>
+          <td><strong>닛케이225</strong></td>
+          <td>68,309.46</td>
+          <td class="down">−0.94%</td>
+          <td>되돌림</td>
+        </tr>
+        <tr>
+          <td><strong>대만 가권</strong></td>
+          <td>48,475.74</td>
+          <td class="up">+0.25%</td>
+          <td>반도체 소폭 강세 지속</td>
+        </tr>
+        <tr>
+          <td><strong>홍콩 HSI</strong></td>
+          <td>23,972.29</td>
+          <td class="down">−2.60%</td>
+          <td>재개장 첫날 하락(중국 본토 휴장·역내 유동성 얇음)</td>
+        </tr>
+        <tr>
+          <td><strong>상해종합</strong></td>
+          <td>휴장</td>
+          <td>—</td>
+          <td>★중국 국경절 골든위크 휴장(10/1~8)·10/8(목) 재개장</td>
+        </tr>
+      </table>
+      <p class="sub">
+        ★오늘은 일요일 휴장 — 다음 세션 <strong>내일 10/5(월)</strong>. 직전
+        10/2(금) 아시아는 <strong>KOSPI +0.47%로 7,000선 첫 안착</strong>.
+        <strong>내일 개장이 소화할 과제</strong> = ① 금요일 미 랠리(SOX +2.40%)
+        전이 + 주말 크립토 firming + 원화 강세(1,342.51) vs ② 채권 미확증(10Y
+        5.28%)·★미 셧다운 불확실성·중국 휴장 유동성 공백·되돌림 리스크.
+        진성/왜곡 판별은 10/8 중국 재개장·외국인 연속성까지 보류. 외인·기관
+        순매수: 미수집(주말).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🚦 B-3. 투자 방향 신호판 (Signal Dashboard 6종 · ★주말 = 금요일 10/2
+        종가 기준·크립토만 일 저녁 라이브)
+      </h2>
+      <table>
+        <tr>
+          <th>신호</th>
+          <th>상태</th>
+          <th>판정</th>
+          <th>코멘트</th>
+        </tr>
+        <tr>
+          <td><strong>추세</strong></td>
+          <td>S&amp;P MA20 +0.69%·횡보 17일째</td>
+          <td>🟡</td>
+          <td>
+            regime 중립 17일째·changed_today=false·금요일 랠리는 '인하기대 반사'
+          </td>
+        </tr>
+        <tr>
+          <td><strong>변동성(VIX)</strong></td>
+          <td>15.31(금 −6.6% 급락)·이벤트 통과 저변동</td>
+          <td>🟡</td>
+          <td>거짓안정(VIX↔S&amp;P +2.58σ🔴)·저VIX 안심 아님</td>
+        </tr>
+        <tr>
+          <td><strong>금리 방향</strong></td>
+          <td class="down">10Y 5.28%(+4bp)·30Y 2004년래 신고가권</td>
+          <td>🔴</td>
+          <td>소프트 지표에도 상승 = 인하 거부·매파 고수(20D +51bp)</td>
+        </tr>
+        <tr>
+          <td><strong>심리(F&amp;G)</strong></td>
+          <td class="down">CNN 31.2 공포(10/2 stale·전일 28.1)</td>
+          <td>🔴</td>
+          <td>공포 고착·크립토 F&amp;G 65 탐욕(67→65 추가 냉각)과 괴리</td>
+        </tr>
+        <tr>
+          <td><strong>달러/환율</strong></td>
+          <td>DXY 101.93(102 지지권)·원화 1,342 강세</td>
+          <td>🟡</td>
+          <td>혼조 — 달러 소폭 약세 BUT 원화 강세 방향</td>
+        </tr>
+        <tr>
+          <td><strong>크립토</strong></td>
+          <td class="up">BTC $85.3K(+0.71% 24h)·토 −2%서 firming</td>
+          <td>🟡</td>
+          <td>
+            하방 소진→소폭 리스크온이나 금요일 주식 랠리 불참·HV6 탈동조 −1.26σ
+          </td>
+        </tr>
+      </table>
+      <p class="sub">
+        종합: 🟡4(추세·VIX·달러/원화·크립토)·🔴2(금리·심리). ★핵심 =
+        <strong
+          >금리 🔴 5%대 재상승 + 심리 공포(31.2) + VIX 저변동 거짓안정 = '거짓
+          안정' 프로파일</strong
+        >(저VIX가 ★셧다운 블랙아웃·금리 고착·민간 고용 둔화 리스크를 과소반영).
+        크립토 🟡 유지(토 −2%→일 저녁 firming이나 여전 탈동조). 신호판은
+        <strong>방어·관망 편향</strong>.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        📊 B-4. 경제 서프라이즈 인덱스 ★ (미국 +5 승계·★근거 교정 · 한국 −1 ·
+        중국 +3 · 유로존 0)
+      </h2>
+      <p>
+        <strong>미국 +5</strong>(승계·근거 교정) · 한국 −1 · 중국 +3 · 유로존 0.
+        ★주말 무세션·신규 확정 거시지표 없음(셧다운 블랙아웃) → 스코어 변경 없이
+        토요일 +5 승계. 단 ★<strong>근거 교정 필수:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong class="down"
+            >★미국 +5 — 근거 교정(NFP MISS → ADP 둔화·셧다운 블랙아웃):</strong
+          >
+          토요일은 '9월 NFP +29K cool MISS'로 +6→+5 하향을 기재했으나, 실제로는
+          <strong>BLS 9월 보고서가 셧다운으로 미발표</strong>다. 교정된 +5 근거
+          = ① 9/23 flash PMI 58.4 shock(+6 상방 드라이버) ↔ ②
+          <strong>ADP −32K</strong> 민간 고용 둔화 + ISM 소프트(제조 49.1
+          수축·서비스 50.0 경계·confidence medium) +
+          <strong>8월 Core PCE +3.0%</strong>(컨센 3.7% 하회·둔화 서프라이즈)가
+          상쇄 → <strong>+5 유지</strong>. ★셧다운 블랙아웃으로 공식 노동·소비
+          데이터 공백 → <strong>confidence 하향</strong>. 채권이 소프트 지표에도
+          수익률 상승(10Y 5.28%)으로 인하 거부.
+        </li>
+        <li>
+          <strong>한국 −1 유지:</strong> 주말·국경절 휴장으로 신규 확정 거시지표
+          없음.
+        </li>
+        <li>
+          <strong>중국 +3 유지:</strong> 국경절 휴장(10/1~8)으로 신규 지표
+          공백(10/8까지).
+        </li>
+        <li>
+          <strong>★다음 실질 트리거</strong> = 10/5~6 ISM 서비스 → 10/8 중국
+          재개장 → 10/14 9월 CPI(★셧다운 지속 시 발표 지연 가능). CPI 발표·둔화
+          시 소프트 지표가 '좋은 디스인플레'로 확증(미 +5→완화), 끈적/미발표 시
+          블랙아웃 불확실성 지속.
+        </li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🔗 B-5. 자산 간 상관관계 변화 모니터 ★ (6쌍 Z-score · ★주말 무세션 →
+        토요일 재산출(10/2 금 종가 반영) 그대로 승계) · 🔴1/🟡3/🟢2
+      </h2>
+      <p class="sub">
+        ★주말(토·일)은 신규 정규장 종가가 발생하지 않으므로 상관 재산출
+        입력(일별 pct_change 시계열)이 토요일과 동일 → 토요일(10/3)
+        재산출치(10/2 금 종가 반영·메인 폴백 tz-naive 정규화) 그대로 승계.
+        크립토는 주말 firming했으나 NASDAQ 동결이라 NASDAQ↔BTC 상관도
+        미갱신(공통거래일 마지막 = 10/2 불변). ★다음 재산출 =
+        <strong>10/5(월) 미 종가 반영</strong>(월요일 미 정규장이 firming
+        크립토와 동조하는지가 90D −1.26σ 탈동조 반전 여부 판별).
+      </p>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>페어</th>
+          <th>r30</th>
+          <th>Z30</th>
+          <th>r90</th>
+          <th>Z90</th>
+          <th>Alert</th>
+          <th>비고(토요일 재산출 승계)</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><strong>VIX↔S&amp;P500</strong></td>
+          <td>−0.788</td>
+          <td>+0.33σ 🟢</td>
+          <td>−0.751</td>
+          <td class="down">+2.58σ 🔴</td>
+          <td>🔴(90D)</td>
+          <td>거짓안정 잔존·금요일 VIX −6.6% 15.31 저변동·안심 아님</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>NASDAQ↔BTC</strong></td>
+          <td>+0.657</td>
+          <td>+1.07σ 🟡</td>
+          <td>+0.353</td>
+          <td>−1.26σ 🟡</td>
+          <td>🟡</td>
+          <td>★90D 탈동조 승계·HV6 반증 유력·주말 firming은 10/5 판별</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>USD/KRW↔KOSPI</strong></td>
+          <td>−0.060</td>
+          <td>+0.44σ 🟢</td>
+          <td>−0.282</td>
+          <td>−0.23σ 🟢</td>
+          <td>🟢</td>
+          <td>정상 역상관·원화 강세(1,342)+KOSPI 7천 안착 정합</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>S&amp;P500↔10Y</strong></td>
+          <td>−0.595</td>
+          <td>−1.36σ 🟡</td>
+          <td>−0.398</td>
+          <td>−1.36σ 🟡</td>
+          <td>🟡</td>
+          <td>금리 코어 긴장 유지·30Y 2004년래·HV2 명제 유효</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Gold↔DXY</strong></td>
+          <td>−0.330</td>
+          <td>+0.11σ 🟢</td>
+          <td>−0.497</td>
+          <td>−0.71σ 🟢</td>
+          <td>🟢</td>
+          <td>정상 역상관·금 $4,162($4,200 재하회)+DXY 101.9·HV5 구조론</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>WTI↔BEI</strong></td>
+          <td>+0.656</td>
+          <td>+1.09σ 🟡</td>
+          <td>+0.682</td>
+          <td>+1.81σ 🟡</td>
+          <td>🟡(90D)</td>
+          <td>FRED 10/1 승계·WTI $91.1 보합(리플레이션 방향 불변)</td>
+        </tr>
+      </table>
+      <p class="sub">
+        <strong>교차 시사점:</strong> 🔴1(VIX↔S&amp;P
+        +2.58σ)/🟡3(NASDAQ↔BTC·S&amp;P↔10Y·WTI↔BEI)/🟢2. ★주말 무세션이라 토요일
+        재산출치 전면 승계 — 세 메시지 불변: ① 거짓안정 잔존(VIX↔S&amp;P
+        +2.58σ🔴) ② 금리 코어 긴장 유지(S&amp;P↔10Y −1.36σ·30Y 2004년래) ③
+        크립토 탈동조 심화 승계(NASDAQ↔BTC 90D −1.26σ·HV6 반증 유력·단 주말
+        firming이 10/5 재커플 단서). HV 매핑: HV1(약화
+        유지·셧다운)·HV2(유효)·HV3(유효·SOX 리더십)·HV4(폐기)·HV5(유효·금 $4,200
+        재하회이나 구조론)·HV6(유효·★반증 유력).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        💡 B-6. 신규 투자 아이디어 (0건 — 주말·셧다운 블랙아웃·10/14 CPI
+        前·디커플 미해소 前 신규 진입 최소화)
+      </h2>
+      <p>
+        <strong>신규 진입 아이디어 0건.</strong> 사유: ① 오늘은
+        주말(휴장)·★셧다운發 공식 데이터 블랙아웃으로 촉매 불확실, ② 금요일
+        디커플(주식 인하기대 반사 ↔ 채권 매파)이 미해소·'금리 하락 없는 랠리'로
+        되돌림 리스크, ③ 반도체는 breadth 전면회복 미확인(10/8 중국 재개장
+        보류)·크립토는 QuantTrader 영역이라 종목 신규 권고 부적절.
+      </p>
+      <p class="sub">
+        <strong>관찰 후보(진입 아님):</strong> ① 단기채(SGOV·BIL — 캐리 5%대,
+        10Y 5.28% 재상승+셧다운 불확실성에 dry powder·디커플 양쪽 꼬리 중립), ②
+        금(GLD/IAU — $4,162 지지·추격 금지·HV5 구조론), ③ 한국 반도체·KOSPI(내일
+        10/5 갭 관찰). 신규는 10/5(월) 방향 확정 + 10/14 CPI(발표 시) 확인 후.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🐋 B-7. 거물 투자자 동향 (8인 워치리스트 · Q2 2026 13F · ★시차 경고)
+      </h2>
+      <table>
+        <tr>
+          <th>투자자</th>
+          <th>최근 포지션(6/30 기준)</th>
+          <th>현 레짐 정합성(셧다운·디커플·금리 5%대·크립토 firming·탈동조)</th>
+        </tr>
+        <tr>
+          <td>Buffett(Berkshire)</td>
+          <td>GOOGL 신규·현금·결제 캐시카우</td>
+          <td>
+            🟢 현금·방어 = 금리 고지·F&amp;G 31 공포·셧다운 불확실성에 우위
+          </td>
+        </tr>
+        <tr>
+          <td>Ackman(Pershing)</td>
+          <td>GOOGL 청산 → Visa·MC·SPGI·NFLX</td>
+          <td>🟢 결제·퀄리티 정합</td>
+        </tr>
+        <tr>
+          <td>Druckenmiller</td>
+          <td>GOOGL 매수(AI 선별)</td>
+          <td>🟢 AI 선별 = SOX 리더십 복귀 정합</td>
+        </tr>
+        <tr>
+          <td>Tepper(Appaloosa)</td>
+          <td>GOOGL 매수</td>
+          <td>🟢</td>
+        </tr>
+        <tr>
+          <td>Dalio(Bridgewater)</td>
+          <td>금 장기론(HV5)</td>
+          <td>🟢 금 $4,162 $4,200 재하회이나 구조론·셧다운 헤지</td>
+        </tr>
+        <tr>
+          <td>Marks(Oaktree)</td>
+          <td>신용·현금 보수</td>
+          <td>🟢 HY +44bp WoW 확대·셧다운 Q4 GDP drag에 선별 신용</td>
+        </tr>
+        <tr>
+          <td>Cathie Wood(ARK)</td>
+          <td>AI·디지털자산</td>
+          <td>
+            🟡 SOX +2.4% 우호 BUT 금리 5%대 역풍·크립토 탈동조(−1.26σ) 잔존
+          </td>
+        </tr>
+        <tr>
+          <td>Burry</td>
+          <td>숏·헤지 성향</td>
+          <td>
+            🟡 거짓안정(VIX 15.3)·셧다운 불확실성·'금리 하락 없는 랠리'와 정합
+          </td>
+        </tr>
+      </table>
+      <p class="warning-13f">
+        ⚠️ <strong>13F 시차:</strong> 포지션 기준일 2026-06-30 · 공시 마감 8/14
+        → 오늘(10/4) 기준 96일 경과. 추종 매매 금지·방향 참고만. 차기 Q3 13F
+        ~11월 중순.
+      </p>
+      <p class="sub">
+        <strong>인사이더 클러스터(10/2 filing):</strong> ★GME(Ryan Cohen 추가·총
+        클러스터 $76.3M 최대)·BBD(브라질 Bradesco 은행·22인
+        $28.0M)·PAM(전력유틸·$16.4M)·REIT(ADC·CLPR·BPRE)·제약(HELP/XENE)·DKS(스포츠용품
+        소매). → 은행·소매·유틸·REIT·제약 = 가치/방어·투기 혼재(AI·반도체
+        클러스터 여전히 부재). ⚠️ GME는 밈/스퀴즈 성격·반도체 가격 랠리와
+        인사이더 매수 테마의 괴리 지속.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🧭 B-8. 모델 포트폴리오 4종 방향 (아침 대비 변화 · 주말 정지 · ★셧다운
+        불확실성 추가 반영)
+      </h2>
+      <table>
+        <tr>
+          <th>유형</th>
+          <th>아침(10/4)</th>
+          <th>저녁(10/4)</th>
+          <th>변화</th>
+          <th>근거</th>
+        </tr>
+        <tr>
+          <td>🛡️ 안전형</td>
+          <td>유지</td>
+          <td>유지</td>
+          <td>—</td>
+          <td>
+            10Y 5.28% 재상승·SGOV 캐리 5%대·★셧다운 블랙아웃 불확실성·디커플
+            양쪽 꼬리 중립·dry powder 유지
+          </td>
+        </tr>
+        <tr>
+          <td>⚖️ 균형형</td>
+          <td>방어 유지</td>
+          <td>방어 유지</td>
+          <td>—</td>
+          <td>
+            주식 랠리 우호이나 채권 미확증·F&amp;G 31 공포·★셧다운 불확실·디커플
+            미해소·주말 정지 → 관망
+          </td>
+        </tr>
+        <tr>
+          <td>🔥 성장/공격형</td>
+          <td>신중(관망)</td>
+          <td>신중(관망)</td>
+          <td>—</td>
+          <td>
+            SOX +2.4% 리더십 우호 BUT '인하기대 반사 1일 반응'·'금리 하락 없는
+            랠리'·추격 금지·크립토 탈동조
+          </td>
+        </tr>
+        <tr>
+          <td>💰 배당형</td>
+          <td>중립</td>
+          <td>중립</td>
+          <td>—</td>
+          <td>
+            belly 되돌림(+4bp)·금리 5%대 재상승 = 듀레이션 숨통 축소·중립 유지
+          </td>
+        </tr>
+      </table>
+      <p class="sub">
+        ★<strong
+          >주말은 디커플 정지 — 아침 대비 포지션 변화 없음(새 세션
+          없음).</strong
+        >
+        ★단 /KB점검 교정으로
+        <strong
+          >셧다운發 데이터 블랙아웃(10/28 FOMC까지 판단 흐림)이 방어 스탠스의 새
+          근거로 추가</strong
+        >
+        — 불확실성 상승 시 SGOV dry powder·방어가 더 유리. 성장·듀레이션 신규
+        추격 금지. 큰 베팅은 10/5(월) 방향 + 10/14 CPI(발표 시) 확인 후.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>🌐 B-9. 글로벌 매크로 핵심 시사점 (MODULE G 연계 · ★교정 반영)</h2>
+      <p>
+        <strong
+          >① Fed — 소프트 지표를 '인하 반사'로 오독 금지(매파 레짐 불변·★셧다운
+          블랙아웃):</strong
+        >
+        ADP −32K·8월 Core PCE +3.0% 둔화는 소프트 증거이나 채권이 수익률
+        상승으로 응답(인하 미반영). 10/27~28 FOMC 인상 ~66%(SSOT·인상 base case)
+        + dot 추가 인상 불변. ★웹 '~17% 인상'은 셧다운 교란 + real-world
+        오염으로 기각(/KB점검). 3중 교차검증: 10Y 5.28%·30Y 2004년래 + Core PCE
+        3.0%(>2%) + DXY 101.93 지지권. 소프트 ≠ 비둘기 전환(sim 2026 Warsh
+        의장). ★셧다운 블랙아웃 → 10/28 FOMC까지 판단 흐림·'지연 인상'(10월 skip
+        시 12월 ~62%)이지 인하 아님.
+      </p>
+      <p>
+        <strong>② 채권 자경단 — 매파 고수:</strong> 소프트 지표에도 전 구간
+        수익률 상승(10Y 5.28%·30Y 2004년래 장중 ~5.50%). S&amp;P↔10Y −1.36σ로
+        금리 코어 긴장 유지(HV2). 5%대 고착으로 피크아웃 단정 불가. 다음 판별 =
+        10/14 CPI(발표 시).
+      </p>
+      <p>
+        <strong
+          >③ 주식·채권 디커플 — 주말 정지·★촉매 교정(cool NFP →
+          셧다운+ADP):</strong
+        >
+        금요일 주식은 소프트 민간 지표(ADP −32K)를 '금리 피크아웃 호재'로
+        베팅(SOX +2.4%), 채권은 '인하 미반영'으로 거부. 둘 중 하나는 틀렸다.
+        ★주말 크립토는 토 −2%에서 일 저녁 +0.7~1.7%로 firming했으나 금요일 주식
+        랠리엔 미참여(탈동조 −1.26σ) = '참여 폭 좁음' 유지·단 '추가 리스크오프
+        없음'. 해소 방향이 다음 주 핵심. 1일 반응을 추세로 단정 금지.
+      </p>
+      <p>
+        <strong>④ AI CapEx — SOX 리더십 복귀(HV3 지지)·breadth 보류:</strong>
+        금요일 SOX +2.40%·NASDAQ +1.19% = 실수요 무손상. 한국·대만 반도체 월요일
+        동조 기대. 단 breadth 전면회복은 10/8 중국 재개장·외국인 연속성까지
+        보류.
+      </p>
+      <p class="warning">
+        <strong>⑤ ★셧다운 데이터 블랙아웃(신규 축):</strong> 10/1 셧다운 →
+        BLS·DOL·Census 공식 지표 공백. CBO: 4~8주 지속 시 Q4 실질GDP −1.0~2.0%p.
+        10/14 CPI 발표 지연 가능. 시장이 '데이터 없는 상태'로 10/28 FOMC를 맞는
+        불확실성 = 방어 스탠스·dry powder 정당화. 셧다운 해제 시 데이터 재수집
+        교정.
+      </p>
+      <p>
+        <strong>⑥ 로드맵:</strong> 10/5(월) 재개장 → 10/5~6 ISM 서비스 → 10/8
+        중국 재개장 →
+        <strong>10/14 9월 CPI(HV1 정면·★셧다운 지속 시 발표 지연 가능)</strong>
+        → 10/22 BOK → 10/27~28 FOMC(인상 ~66% base case·동결도 라이브·인하
+        아님). ※오늘 10/4(일) 미·한·아시아 전면 휴장(크립토만 24h).
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>📅 다음 캘린더 (2026-10-05 ~ 10-28) — ★킬러</h2>
+      <table>
+        <tr>
+          <th>시점(KST)</th>
+          <th>이벤트</th>
+          <th>중요도</th>
+          <th>분기 조건</th>
+        </tr>
+        <tr>
+          <td>10/4(일)</td>
+          <td>★미·한·아시아 전면 휴장</td>
+          <td>—</td>
+          <td>크립토만 24h · 다음 세션 내일 10/5(월)</td>
+        </tr>
+        <tr>
+          <td><strong>10/5(월)</strong></td>
+          <td>아시아·미국 재개장</td>
+          <td>★★★</td>
+          <td>
+            금요일 미 랠리(SOX +2.4%) 전이 vs 채권 미확증·셧다운 되돌림·KOSPI
+            7천 갭·10Y 방향
+          </td>
+        </tr>
+        <tr>
+          <td>10/5~6</td>
+          <td>ISM 서비스 PMI</td>
+          <td>★★★</td>
+          <td>
+            서비스 물가·고용 성분(ISM 민간·셧다운 무관)·8월 서비스 50.0 경계 뒤
+            확인
+          </td>
+        </tr>
+        <tr>
+          <td>10/8(목)</td>
+          <td>★중국 국경절 휴장 종료(재개장)</td>
+          <td>★★★</td>
+          <td>
+            역내 유동성·가격발견 복귀 → 아시아 등락 순도·외국인 연속성 재검증
+          </td>
+        </tr>
+        <tr>
+          <td><strong>10/14(수)</strong></td>
+          <td>9월 CPI</td>
+          <td>★★★★</td>
+          <td>
+            ★HV1 인플레 정면 판별·★셧다운 지속 시 발표 지연 가능·디커플 해소
+            방향
+          </td>
+        </tr>
+        <tr>
+          <td>10/22(목)</td>
+          <td>BOK 금통위</td>
+          <td>★★★</td>
+          <td>8/27 3.00% 인상 후 추가 여부</td>
+        </tr>
+        <tr>
+          <td>10/27~28</td>
+          <td>FOMC</td>
+          <td>★★★★★</td>
+          <td>
+            ★인상 ~66%(SSOT base case)·동결도 라이브·인하 아님(dovish 웹 ~17%
+            기각)
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="sec debate-card">
+      <h2>
+        🟣 debate-card — 주말 크립토 firming(토 −2%→일 저녁 +0.7~1.7%·SOL
+        +1.66%): 10/5 주식 재개에 앞선 재커플 선행 신호인가, 주말 저유동
+        드리프트인가?
+      </h2>
+      <p class="bull">
+        <strong>선행 신호론(재커플):</strong> 크립토가 토요일 급락을 멈추고
+        일요일 저녁 +0.7~1.7%(SOL 리드)로 $85K를 재탈환했다 = 금요일 주식
+        인하기대 반사 랠리의 리스크온이 유일 live 시장으로 뒤늦게 스며드는 초입.
+        24시간 리드하는 크립토가 먼저 돌아선 것이면 10/5 주식 개장 시 동조
+        상승하며 HV6(재커플) 반증을 되돌릴 수 있다.
+      </p>
+      <p class="bear">
+        <strong>저유동 드리프트론(탈동조):</strong> 주말 크립토는 거래량이 얇아
+        +0.7~1.7%는 '방향'보다 '정지에서의 소폭 복원'이다. NASDAQ이 동결이라
+        NASDAQ↔BTC 90D −1.26σ는 미갱신이고, 금요일 주식 랠리에 동참하지 않았다는
+        사실 자체가 미변. 크립토 F&amp;G는 67→65로 탐욕이 오히려 추가 냉각 =
+        열기가 아니다. firming은 '수렴'이 아니라 '하방 소진'까지만.
+      </p>
+      <p class="verdict">
+        <strong>판단(약 55:45 저유동 드리프트 우세·단 선행 단서 상향):</strong>
+        주말 저유동에서 0.7~1.7% 복원을 '추세 수렴'으로 단정하는 건 과잉이나,
+        토요일(토 −2%·순수 리스크오프)보다 firming 방향이 뚜렷해진 점은
+        <strong>중립→소폭 리스크온</strong>으로 한 칸 이동시킨다. 탈동조
+        지표(−1.26σ)는 NASDAQ 동결로 확인 불가 →
+        <strong>10/5 미 정규장이 firming 크립토와 동조하는지</strong>가 유일한
+        판별. 주말 firming 1건으로 재커플을 선언하지 말되, 토요일의 '순수
+        미참여'보다 재검증 조건을 상향해 관찰할 것.
+      </p>
+    </div>
+
+    <div class="sec contrarian-card">
+      <h2>
+        🟠 contrarian-card — 모두가 '금요일 SOX +2.4% = cool 고용發 인하기대
+        랠리'로 읽는데, 그 '고용 지표'는 애초에 발표되지도 않았고(셧다운)
+        채권·FOMC 확률은 인하를 거부한다
+      </h2>
+      <p class="assumption">
+        <strong>일반 가정:</strong> cool 9월 고용(+29K로 알려짐) → 금리 피크아웃
+        → SOX +2.40%·NASDAQ +1.19% 랠리 → 인하 임박. VIX −6.6% 급락이 안도를
+        확증.
+      </p>
+      <p class="signal">
+        <strong>반대 시그널:</strong> ① ★그 '9월 NFP +29K'는
+        <strong class="down">발표된 적이 없다</strong> — 10/1 셧다운으로 BLS
+        보고서가 블랙아웃됐고, 실측 민간은 ADP −32K다(/KB점검 교정). 랠리의
+        '씨앗'이 미발표 지표였다. ② 채권(10Y 5.28%·30Y 2004년래)은 소프트
+        지표에도 수익률을 올려 인하를 거부. ③ 10/27~28 FOMC 인상 확률은 SSOT
+        ~66%(인상 base case)이고 웹 '~17% 인상'은 real-world 오염으로 기각. ④
+        주말 크립토는 firming했으나 금요일 주식 랠리엔 동참하지 않았다(−1.26σ).
+      </p>
+      <p class="probability">
+        <strong>함의:</strong> 금요일 랠리를 '인하 임박 추세 복귀'로 추격하면
+        위험 — ① 랠리의 근거(cool NFP)가 미발표·오인용이었고, ② 채권·FOMC
+        확률(~66% 인상)·달러 모두 인하를 거부하며, ③ '금리 하락 없는 멀티플
+        확장'은 역사적 지속성이 낮다. ★셧다운 블랙아웃은 '좋은 뉴스의 부재'가
+        아니라 <span class="highlight">'나쁜 뉴스도 안 보이는 안개'</span> —
+        10/28 FOMC까지 데이터 공백이 리스크를 가린다. 되돌림 시 SGOV dry
+        powder·방어 유리. 추격이 아니라 관찰.
+      </p>
+    </div>
+
+    <div class="sec">
+      <h2>
+        🏠 하우스 뷰 점검 (v14 · 2026-09-26 15차 재심사 승계 · 이브닝 권한: 증거
+        기록·개정 제안)
+      </h2>
+      <ul>
+        <li>
+          <strong>HV1. 인플레 재가속·Fed 매파 [약화 유지·★근거 교정]:</strong>
+          ⚖️ 중립. ★토요일 'cool NFP(+29K)' 증거는
+          <strong>미발표 지표 오인용으로 철회</strong> — 교정된 소프트 증거 =
+          ADP −32K + 8월 Core PCE +3.0% 둔화(컨센 3.7% 하회). 단 채권 매파
+          고수(10Y 5.28%·30Y 2004년래)·FOMC 인상 ~66% base case로 'Fed 매파'
+          불변. ★셧다운 블랙아웃이 판단을 10/28까지 흐림.
+          <strong>증거 기록(근거 교정) + 상태 변경은 주간 몫.</strong>
+        </li>
+        <li>
+          <strong>HV2. 금리發 멀티플 압축 [유효]:</strong> ⚖️ 중립(명제 유효).
+          금리 주말 동결(10Y 5.28%·30Y 2004년래). S&amp;P↔10Y −1.36σ 승계(여전
+          🟡). 레벨(5%대 고착)이 멀티플 상단 제약. 개정은 주간 몫.
+        </li>
+        <li>
+          <strong
+            >HV3. AI CapEx 실수요 무손상·협소화 [유효·★SOX 리더십 복귀
+            지지]:</strong
+          >
+          ⚖️ 중립~지지. 금요일 SOX +2.40%·NASDAQ +1.19% 리더십 복귀 지지. 단
+          breadth 전면회복은 10/8 중국 재개장·외국인 연속성·인사이더 AI 클러스터
+          부재로 보류.
+        </li>
+        <li>
+          <strong>HV4. 유가 리스크 프리미엄 [폐기 유지]:</strong> 📉 WTI
+          $91(주말 동결)·재활성 문턱 $95 하회 지속. 폐기 유지(증거 변화 없음).
+        </li>
+        <li>
+          <strong>HV5. Gold 구조적 강세 [유효·$4,200 재하회 플래그]:</strong> 📈
+          금 $4,162($4,200 재하회·주말 동결)·Gold↔DXY −0.71σ 정상 역상관.
+          구조론(debasement 독립수요) 유효·셧다운 리스크 헤지. GLD 추격
+          금지(매매 분리).
+        </li>
+        <li>
+          <strong
+            >HV6. 크립토-나스닥 재커플링 관찰 [유효·★반증 유력·단 10/5 재검증
+            조건부]:</strong
+          >
+          ⚖️ NASDAQ↔BTC 90D −1.26σ 탈동조 승계(주말 NASDAQ 동결로 미갱신)·주말
+          BTC firming(토 −2%→일 +0.7~1.7%).
+          <strong>증거 기록 + 개정 제안(주간용):</strong> 15차 '반증 처리 예고'
+          승계 → 반증 처리 유력. ★단 주말 firming이 10/5 주식 재개 시 재커플
+          선행 신호일 소지 → 개정 제안에 '반증 처리하되 10/5 미 종가 반영
+          상관으로 재검증' 조건 병기. 사용자 액션 대상 아님(QuantTrader).
+        </li>
+      </ul>
+      <p>
+        <strong>점검 결론:</strong> ★<strong
+          >이브닝 증거 기록 = (1) ★HV1 근거 교정 — 'cool NFP +29K'는 셧다운發
+          미발표 오인용으로 철회, 교정 소프트 증거 = ADP −32K + Core PCE +3.0%
+          둔화(단 Fed 매파·FOMC ~66% 불변·셧다운 블랙아웃). (2) HV2 금리 긴장
+          유지. (3) HV3 SOX 리더십 복귀 지지(breadth 보류). (4) HV5 $4,200
+          재하회이나 구조론 유효. (5) HV6 탈동조 승계·반증 유력 — 단 주말
+          firming으로 10/5 재검증 조건 병기.</strong
+        >
+        상태 변경·개정은 주간(개정 권한) 몫. 이브닝은 증거 기록·개정 제안만.
+        다음 판별 = 10/5(월) 방향 → 10/5~6 ISM 서비스 → 10/8 중국 재개장 → 10/14
+        CPI(발표 시).
+      </p>
+    </div>
+
+    <div class="sec footer">
+      <h2>ℹ️ 주의사항 / Disclaimer</h2>
+      <ul>
+        <li>
+          본 브리핑은 KST 일요일 20:2x 작성. ★<strong
+            >오늘 2026-10-04(일) 미국·한국·아시아 정규장 전면 휴장</strong
+          >(당일 세션 없음·주말 프리마켓 없음). 다음 세션 = 내일 10/5(월). "오늘
+          밤 미국 개장/마감" 류 표현 없음(휴장).
+        </li>
+        <li>
+          지수·채권·FX·원자재 = 직전 거래일
+          <strong>10/2(금) 확정 종가 승계</strong>(yfinance date=10/2 전종목
+          동결 재확인). ★모닝(일)이 이미 주말 상태·다음 주 캘린더를 회고했으므로
+          이브닝은 재탕 금지 — 내일 개장 D-1 포지셔닝 + 크립토 주말 궤적 +
+          데이터 교정 집중.
+        </li>
+        <li>
+          ★★<strong class="down">데이터 교정(/KB점검 10/4):</strong> 모닝·토요일
+          이브닝의 '9월 NFP +29K·실업률 4.2%'는 <strong>오기</strong> — 10/1
+          연방 셧다운으로 BLS 미발표(블랙아웃)·실측 민간 =
+          <strong>ADP −32K</strong>.
+          <strong
+            >10월 FOMC = us_economy SSOT 인상 ~66%(인상 base case) 우선</strong
+          >·웹수집 dovish '~17%'는 셧다운 교란 + real-world 오염으로 기각. 8월
+          Core PCE +3.0%·헤드라인 PCE +3.4%·Q2 GDP 3차 +2.2%(9/30·셧다운 前
+          유효). ★셧다운 해제/BLS 재개 시 재수집 교정 필요 (confidence: 셧다운
+          기간 ISM·GDP medium·금리/증시/FX yfinance high).
+        </li>
+        <li>
+          ★상관 6쌍은 <strong>주말 무세션</strong>이라 토요일(10/3)
+          재산출치(10/2 금 종가 반영·메인 폴백) <strong>그대로 승계</strong> —
+          주말엔 신규 정규장 종가가 없어 입력 시계열 불변. 크립토 firming했으나
+          NASDAQ 동결로 NASDAQ↔BTC도 미갱신. 다음 재산출 = 10/5(월) 미 종가.
+        </li>
+        <li>
+          경제 서프라이즈 미국 <strong>+5 승계·근거 교정</strong> = 'NFP MISS'
+          철회, ADP −32K + ISM 소프트 + Core PCE +3.0% 둔화가 flash PMI 58.4
+          shock 상쇄 → +5 유지(셧다운 블랙아웃으로 confidence 하향).
+        </li>
+        <li>
+          크립토(BTC/ETH/SOL)는 10/4 20:1x KST 라이브(24h·주말 무중단) · BTC
+          $85,259(+0.71% 24h·토 −2%서 firming) · QuantTrader 자동매매
+          영역·사용자 액션 대상 아님.
+        </li>
+        <li>
+          ⚠️ cool 지표(ADP −32K·Core PCE +3.0%)를 '비둘기 반사'로 오독 금지(시뮬
+          2026 매파 레짐·bond rout이 인하 거부).
+          예측시장(prediction_markets.md)은 8/22 stale로 본 회차 미인용.
+        </li>
+        <li>
+          하우스 뷰 상태 변경·개정은 /주간리포트 권한. 이브닝은 증거 기록·개정
+          제안만. 투자 판단은 본인 책임. 13F는 96일 시차 — 추종 매매 금지.
+        </li>
+      </ul>
+      <p style="margin-top: 12px" class="sub">
+        명령어: /모닝브리핑 · /이브닝브리핑 · /주간리포트 · /글로벌인텔리전스 ·
+        /크립토브리핑 · /내포트폴리오
+      </p>
+    </div>
+    <script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
