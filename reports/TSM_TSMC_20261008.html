@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Taiwan Semiconductor (TSM) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>Taiwan Semiconductor (TSM)</h1><div class="meta">주식 종합 분석 리포트 | 2026-10-08</div><div style="margin-top:8px"><span class="badge b-buy">매수</span> <span class="badge b-score">80/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">엘리트급 펀더멘털(해자·수익성·성장성)과 PEG 0.86의 매력적 밸류에이션을 보유하나, 52주 고가 93% 근접 + '금리 하락 없는 신고가' 긴축재개 레짐의 고멀티플 Tech 비선호가 상단을 제약한다. 질적 강력매수 요건을 레짐 역풍으로 한 단계 할인해 '매수'·목표가 $530(+12%)으로 본다.</div><div style="margin-top:8px;font-size:13px;color:var(--sub)">매수 (80점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$473.07</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$2.45T</div></div><div class="ki"><div class="kl">PER</div><div class="kv">34.4x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$266.82~$487.47</div></div><div class="ki"><div class="kl">Forward P/E</div><div class="kv">21.6x</div></div><div class="ki"><div class="kl">PEG</div><div class="kv">0.86</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">40.0%</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">60.3%</div></div><div class="ki"><div class="kl">순현금</div><div class="kv">약 $78B</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">0.8%</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$453.08</div><div class="dn" style="font-size:13px">-4.2%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$530.00</div><div class="up" style="font-size:13px">+12.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="300" y="30" width="50" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="300" y1="26" x2="300" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="300" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$453</text><line x1="329" y1="24" x2="329" y2="52" stroke="var(--text)" stroke-width="3"/><text x="329" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$473</text><line x1="412" y1="26" x2="412" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="412" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$530</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $267</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $487</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $9.99 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>TSMC는 AI 파운드리 사실상 독점(파운드리 ~67% 과점)을 바탕으로 매출 +36%·EPS +77% YoY의 고성장과 영업이익률 60.3%·ROE 40%의 엘리트급 수익성을 동시에 시현 중이다. forward P/E 21.6x·PEG 0.86으로 성장 대비 밸류에이션은 저평가 영역이며 순현금 약 $78B의 압도적 재무체력을 갖췄다. 다만 현재가 $473.07은 52주 고가 $487.47의 93% 지점으로, 2026-10-08 매크로 레짐(10Y 5.31%·Fed 10/28 인상 ~66%·긴축재개·고멀티플 Tech 비선호)이 장기 듀레이션 디레이팅 압력으로 작용한다. 펀더멘털만 보면 강력매수 요건이나 레짐 역풍을 반영해 투자등급 '매수', 12개월 목표가 $530(+12.0%)을 제시한다.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,60.0 198.8,69.1 225.6,122.2 197.1,168.5 198.8,230.9 140.0,230.0 87.1,222.8 92.4,165.5 82.9,131.5 93.0,85.3" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="60.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="198.8" cy="69.1" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="225.6" cy="122.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="197.1" cy="168.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자·경쟁력</text><circle cx="198.8" cy="230.9" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀·수급</text><circle cx="140.0" cy="230.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="87.1" cy="222.8" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="92.4" cy="165.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG·지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매·이벤트</text><circle cx="93.0" cy="85.3" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>9.0</td><td>/10</td></tr><tr><td>수익성</td><td>10.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>9.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.0</td><td>/10</td></tr><tr><td>해자·경쟁력</td><td>10.0</td><td>/10</td></tr><tr><td>모멘텀·수급</td><td>8.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>9.0</td><td>/10</td></tr><tr><td>리스크</td><td>5.0</td><td>/10</td></tr><tr><td>ESG·지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매·이벤트</td><td>8.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 80/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v15</td><td>2026-09-10</td><td>84</td><td>매수</td><td>$505</td></tr><tr><td>v16</td><td>2026-09-18</td><td>83</td><td>강력매수</td><td>$525</td></tr><tr><td>v17</td><td>2026-09-28</td><td>80</td><td>강력매수</td><td>$545</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="dn">-3pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">강함</span></h2><p>대만 신주 본사의 세계 최대 순수 파운드리(위탁생산) 기업으로 NYSE에 ADR 상장. 로직 반도체 선단공정(N3·N2)과 CoWoS 선단 패키징에서 독보적 기술·점유 우위를 보유한다. 2026Q2 매출 NT$1,270B·영업이익 NT$767B(영업이익률 60.3%)·순이익 NT$707B으로 분기 기준 사상 최대 수준을 경신 중이며, TTM 매출 약 $141B·FCF 약 $23B. NVIDIA·Apple·AMD·Broadcom 등 AI·모바일 선도 고객의 선단 물량을 사실상 전량 수주한다.</p><h3>Moat 상세</h3><p>해자 '강함'. (1) 공정 리더십: N2(2nm) 2026-01 양산 개시, defect density 개선 속도가 N3 대비 빠름 — Samsung·Intel 대비 1~2노드 실질 격차. (2) 선단 패키징 독점: CoWoS 2026 capa +80% YoY, 5.5x reticle 양산(수율 98%+)로 AI 가속기 패키징 병목의 유일 해소처. (3) 고객 락인·규모의 경제: 선단 팹 투자($56B/년 capex)·수율 노하우의 진입장벽이 신규 경쟁 사실상 차단. 전환비용·네트워크 효과가 결합된 폭넓은 해자.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>수익성·재무 모두 최상위. 매출총이익률 64.2%·영업이익률 60.3%·순이익률 49.9%·ROE 40.0%는 반도체 제조 전체에서 글로벌 최고 수준. 분기 실적은 가속(EPS: 87.2→97.5→110.4→136.25 TWD/ADR)하며 매출 +36%·EPS +77% YoY. 재무건전성은 순현금 약 $78B(순부채 음수)·부채비율(D/E) 16.5%로 레버리지가 극히 낮고, 영업현금흐름 약 $84B·FCF 약 $23B TTM으로 공격적 capex($56B)를 자체 조달 가능. 배당수익률 0.8%(배당금 $3.77).</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>forward EPS $21.93 기준 시나리오. Bear(25%, 디레이팅 18x) $400 / Base(50%, 23x·실적 안착) $540 / Bull(25%, 27x+ 리레이팅) $640. 확률가중 기대값 $530, 68% 신뢰구간 $435~$625. forward 21.6x·PEG 0.86은 성장 대비 저렴하나, 10Y 5.31%·긴축재개 레짐이 고멀티플 할인율을 끌어올려 멀티플 상단을 제약 → 컨센서스 평균 $555보다 보수적인 $530 채택. trailing 34.4x는 부담.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>강한 상승추세: 현재가 $473.07이 50일선 $428.21 대비 +10.5%, 200일선 $389.19 대비 +21.6% 상회. 52주 레인지 위치 93%로 고가 근접. 애널리스트 컨센서스 strong_buy(recommendationMean 1.38, 20인), 공매도 비중 float 대비 0.57%로 미미. 다만 당일 -1.9%(전일 $482.3→$473.07) 조정·고가 근접으로 단기 과열·변동성 확대 소지. 베타 1.24.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>AI 설비투자 슈퍼사이클의 중심축. KB(capex): 하이퍼스케일러 4사 2026 capex ~$725B(+77% YoY)·상위 5사 ~$750B, Morgan Stanley 2027 클라우드 capex $1.2T·Goldman Sachs 최대 $1.4T 전망. WFE 2027 $151B+(SEMI)·GS $218B로 상향. TSMC 8월 매출 NT$514.8B(+53.3% YoY) 사상 최고로 수요측 재확인. KB(semiconductor): HBM 수요 +77% YoY, NVIDIA Rubin Q3 2026 출하, CoWoS capa +80%. 단 capex KB는 AI 인프라 부채 스트레스(CoreWeave 5년물 ~13%·Oracle 이자비용 +55%·10Y 5%대)와 BIS의 순환금융 리스크 경고를 동시에 플래그 — AI 투자 지속성의 꼬리 변수로, 파운드리 수요가 이에 직접 연동된다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>핵심 하방은 (1) 대만 생산 집중(80%+) 지정학 꼬리리스크, (2) 금리 레짐(10Y 5.31%·Fed 인상)에 따른 고멀티플·장기듀레이션 멀티플 압축, (3) AI capex 자금조달·순환금융 스트레스에 따른 수요 둔화 가능성, (4) NVIDIA·Apple 고객 집중 및 Section 232 25% logic IC 관세(narrow scope) 간접 노출, (5) USD 강세·TWD/ADR 환 효과. 레짐이 (2)·(3)을 증폭시켜 리스크 점수를 끌어내린다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--warn)"/><text x="189" y="124" fill="var(--text)" font-size="10">대만 지정학 집중</text><circle cx="260" cy="120" r="5" fill="var(--sell)"/><text x="269" y="124" fill="var(--text)" font-size="10">금리 레짐 멀티플 압축</text><circle cx="260" cy="138" r="5" fill="var(--sell)"/><text x="269" y="142" fill="var(--text)" font-size="10">AI capex 순환금융·자금조달 스트레스</text><circle cx="180" cy="138" r="5" fill="var(--warn)"/><text x="189" y="142" fill="var(--text)" font-size="10">고객 집중·관세</text><circle cx="100" cy="120" r="5" fill="var(--buy)"/><text x="109" y="124" fill="var(--text)" font-size="10">환율(TWD/USD)·ADR</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rm"><strong>대만 지정학 집중</strong> (발생: 중, 영향: -35%)<br><span style="color:var(--sub);font-size:13px">생산의 80%+가 대만 집중. 양안 긴장 격화 시 공급망 단절 꼬리리스크 — 발생확률은 낮으나 충격 극대.</span></div><div class="ri rh"><strong>금리 레짐 멀티플 압축</strong> (발생: 고, 영향: -15%)<br><span style="color:var(--sub);font-size:13px">10Y 5.31%·Fed 10/28 인상 ~66%·긴축재개 레짐에서 고멀티플 Tech 할인율 상승. forward 21.6x→18x 디레이팅 가능.</span></div><div class="ri rh"><strong>AI capex 순환금융·자금조달 스트레스</strong> (발생: 고, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">하이퍼스케일러·neocloud 부채 급증(10Y 5%대)·BIS 순환금융 경고. AI 설비투자 둔화 시 파운드리 가동률·선단 가격 직격.</span></div><div class="ri rm"><strong>고객 집중·관세</strong> (발생: 중, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">NVIDIA·Apple 등 상위 고객 의존. Section 232 25% logic IC 관세(narrow scope) 간접 노출.</span></div><div class="ri rl"><strong>환율(TWD/USD)·ADR</strong> (발생: 저, 영향: -5%)<br><span style="color:var(--sub);font-size:13px">USD 강세 레짐에서 ADR 환산·TWD 원가 영향. 매출은 USD 연동으로 부분 헤지.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>ATR(14) $9.995(2.11%), 2ATR 손절가 $453.08(현재가 대비 -4.22%). 강한 상승추세·고가 근접 구간 — 신규 진입은 분할 매수, $453.08 이탈 시 추세 훼손으로 손절. 목표가 $530($555 컨센서스 하회) 도달 시 일부 차익 실현. 긴축재개 레짐상 고멀티플 변동성 확대 가능 → 포지션 사이즈 보수적.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2><p>forward EPS $21.93(ADR) 기준 3-시나리오. 금리 레짐(10Y 5.31%)의 멀티플 압축을 가정에 반영.</p><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:100%'><thead><tr><th>시나리오</th><th>확률</th><th>fwd P/E</th><th>목표가</th><th>핵심 가정</th></tr></thead><tbody><tr><td>Bear</td><td>25%</td><td>18x</td><td>$400</td><td>AI capex 자금조달 스트레스 / 금리 쇼크 / 지정학 노이즈 디레이팅</td></tr><tr><td>Base</td><td>50%</td><td>23x</td><td>$540</td><td>실적 forward 추정 안착, 멀티플 22~24x 유지, AI 수요 견조</td></tr><tr><td>Bull</td><td>25%</td><td>27x+</td><td>$640</td><td>AI 슈퍼사이클 가속·N2/CoWoS 가격결정력·FY27 EPS 상회 리레이팅</td></tr></tbody></table><p><b>확률가중 기대값: $530</b> (현재가 $473.07 대비 +12.0%)<br><b>68% 신뢰구간: 약 $435 ~ $625</b><br><b>종합점수: 80 ± 6 pt (74 ~ 86)</b></p></div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li><b>AI capex 슈퍼사이클 수요가 2027까지 견조하게 유지된다</b> — 하이퍼스케일러 2026 ~$725B capex가 순환금융·부채조달 스트레스(10Y 5%대·BIS 순환금융 경고)로 꺾이지 않는다는 가정. <b>반증 시 영향: -20%</b></li><li><b>대만 양안 현상유지가 지속된다</b> — 생산의 80%+가 대만 집중. <b>반증 시 영향: -35%+</b> (꼬리리스크)</li><li><b>forward 멀티플이 18x 아래로 추가 압축되지 않는다</b> — 긴축재개 레짐에서 고멀티플·장기듀레이션 Tech의 할인율 상승이 제한적이라는 가정. <b>반증 시 영향: -15%</b></li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2><ul><li><b>데이터 소스</b>: yfinance 2026-10-07 종가 중앙 수집분(data.json). 배당수익률 스케일 아티팩트(78.0→0.8) 교정 완료분 신뢰. P/B 97.4·P/S 0.55는 ADR·통화 혼재 아티팩트로 판단 제외. 이전 버전 스코어카드·리포트·timeline 미참조.</li><li><b>판단 근거 1</b>: 펀더멘털 엘리트급(해자 10·수익성 10·성장성 9, PEG 0.86) — 질적으로는 강력매수 요건.</li><li><b>판단 근거 2</b>: 2026-10-08 레짐이 '고멀티플 Tech·장기 듀레이션' 명시적 비선호 → 밸류에이션(6)·리스크(5)에 레짐 페널티 반영, 등급을 강력매수→매수로 한 단계 조정.</li><li><b>판단 근거 3</b>: AI capex 슈퍼사이클 직접 수혜(산업 9)이나 자금조달·순환금융 스트레스가 수요측 꼬리 변수 → 목표가를 컨센서스($555) 대비 보수적 $530으로 설정.</li></ul></div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-10-08 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="TSM_TSMC_20261008.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
