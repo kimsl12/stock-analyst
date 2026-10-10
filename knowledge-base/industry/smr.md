@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-03
-valid_until: 2026-11-02
+updated: 2026-10-10
+valid_until: 2026-11-09
 category: industry
 sub_category: science_tech
 topic: smr
@@ -48,13 +48,18 @@ sources:
   - yfinance (주가 스냅샷)
   - [9/26 갱신] 24/7 Wall St / Foreign Policy Journal / Bloomberg / Motley Fool / DiscoveryAlert / The Oregon Group / World Nuclear News (Antares-Centrus) / ANS (Centrus article-8412) / Fluor / SlashGear (현대차그룹-CFS) / Proxima Fusion / NucNet / The Fusion Report / caproasia / 재경일보 / 다음뉴스 (한수원 경주)
   - [10/3 갱신] ANS Nuclear Newswire (govt shutdown/furlough) / power-eng / exchangemonitor / Morgan Lewis Up and Atom / neimagazine (NRC 셧다운) / MarketBeat (9/27 nuclear watchlist) / Bloomberg / ZeroHedge / Northern Miner / E&E News (Westinghouse IPO 10월) / skillings.net / purepoint / Sprott (우라늄) / alphasquare / mt.co.kr (두산) / yfinance (10/1~10/2 주가)
+  - [10/10 갱신] yfinance (10/8 일봉+10/9 1시간봉 종가) / power-eng / neimagazine / Morgan Lewis Up and Atom (NRC 셧다운 day-10 furlough) / exchangemonitor / 247wallst / stocktwits (Piper Sandler 섹터 TP컷) / barchart / mining.com / northernminer / cryptobriefing / tikr (Westinghouse IPO) / skillings.net (우라늄) / Cameco Q2 / proximafusion / orrick / neutronbytes (Type One-TVA) / FIA 2026 / 하나·유진·신한 (두산 TP)
 confidence: high
-last_synced_from_db: 2026-10-03
+last_synced_from_db: 2026-10-10
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
 
 ## CURRENT
+
+> 이번 주(10/3 -> 10/10) 핵심 변화: **美 연방 셧다운 2주차 진입 -- NRC 예산소진 데드라인(10/10경) 도달로 licensing/inspections/permitting 중단·대규모 furlough 임박이 규제 오버행 고착**. 10/1 자정 개시 셧다운이 10/10 현재 **10일차** -- NRC 1주치 carryover 소진 시점 도달, 과거 셧다운 전례상 day-10 전후 carryover 고갈 -> 핵심 안전인력(거주검사관·커미셔너·IG)만 유지하고 **대다수 직원 furlough·licensing/inspections/permitting 중단**(2025 전례 ~1,837명 furlough/571명 유지). X-energy Seadrift 건설허가(2027 H1)·Oklo Aurora·GEV Clinch River 등 NRC/DOE 의존 촉매 지연 리스크 지속. **주가: SMR 개발주 추가 약세 vs 우라늄·정부원자력(BWXT) 상대강세로 이원화 심화**. 주중 10/6 섹터 광범위 기술적 반등(OKLO +7% $38.55·LEU +9% $153.88·CCJ +6% $93.02·URA $41.80·BWXT $145.70) 후 10/7~8 급속 되돌림 -- 하드 촉매 없는 센티먼트 라운드트립 반복. 10/9(금) 종가: **OKLO $34.68(주간 -4.0%)·NuScale $7.20(-7.6% 개발주 낙폭최대)·X-energy(XE) $13.70(-1.8%)·NANO(NNE) $15.33(-2.5%)**. 반면 **BWXT $143.85(주간 +5.2%)·Cameco(CCJ) $88.07(+2.8%)·Centrus(LEU) $142.38(+2.4%)·URA $38.89(-1.8%)** -- 무매출·현금소진·희석 부담 큰 SMR 개발주는 셧다운 규제 리스크에 더 취약, 수익·정부계약 백로그 보유한 BWXT·연료사이클(CCJ·LEU)은 방어. 한국(10/9 한글날 휴장, 10/8 종가): **두산에너빌리티 78,000원(주간 -5%·10/8 하루 -3.1%)·HD현대중공업 384,000원(주간 -9.9% 낙폭최대)·현대건설 107,800원(-5.8%)·한전기술 123,000원(10/6 128,800 고점서 되돌림)** -- 미 SMR 개발주 약세·섹터 차익실현 동조로 한국 밸류체인 일제 조정, HD현대중공업 급락. **펀더멘털 서사 불변**: (1) **Westinghouse IPO 공개 S-1 아직 미제출** -- 비공개 S-1(7/31)의 '빠르면 10월' 공개전환 대기(셧다운이 SEC 심사 변수). $50B+ 밸류 목표이나 **애널리스트는 $26~30B 현실론·Cameco 49% 지분 가치 $10.8B(Desjardins)~$24.5B(bull) 편차** -- 美 정부 옵션(2029.01까지 $30B 밸류 달성 시 최대 20% 지분 취득 조항) 병존 (2) **우라늄 구조적 공급부족 재확인** -- 스팟 ~$85~90/lb·장기계약가 ~$90~94/lb·Kazatomprom 2026 가이던스 -10%(85M->71~75M lb·황산부족 ISR 지연)·Cameco 2026 19.5~21.5M lb (3) **두산 수주 서사 유지** -- 2Q 수주잔고 ~26.4조·2026 가이던스 ~14조·SMR 주기기(테라파워·뉴스케일·RR SMR) 독점, 목표가 110,000~165,000 편차(유진 110,000·하나/신한 165,000) (4) **핵융합 신규 메가딜 없음** -- FIA $14.24B 누적·CFS $4B·Helion $15.5B 기존 유지, Type One Energy-TVA Bull Run 350MW 핵융합 LOI(Infinity Two)·Infinity One 프로토타입 스텔러레이터 2026 착공 희망은 기존 맥락.
+
+<!-- ARCHIVE 10/3 -->
 
 > 이번 주(9/26 -> 10/3) 핵심 변화: **美 연방정부 셧다운(10/1 개시)發 NRC/DOE 규제 오버행 + SMR·원자력 복합 추가 약세 -- 신규 회사·프로젝트 촉매 없이 섹터 차익실현에 셧다운 리스크 가세**. **NRC 10/1 '약 1주일치 예산으로 정상 가동, 10/10(목)경 소진 전망' -- 소진 시 licensing·inspections·permitting 중단·minimal maintenance 모드 전환, 10/7 Commission 회의 연기·공개회의 취소. DOE도 수천명 furlough·축소 가동**. 셧다운 장기화 시 X-energy Seadrift 건설허가(2027 H1)·Oklo Aurora·GEV Clinch River 등 NRC/DOE 의존 촉매 지연 우려. 10/1 종가: **OKLO $36.14(주간 -5.6%)·NuScale $7.79(-8.0%)·X-energy(XE) $13.95(-11.3% 낙폭최대)·BWXT $136.79·NANO(NNE) $15.73(-7.6%)·CCJ $85.69·LEU $139.11(-5.6%)·URA $39.59**. 한국(10/2): 두산에너빌리티 81,100원(-1.22%·9/23 81,700서 보합권)·HD현대중공업 426,000원(주간 -3.4%)·현대건설 114,400원·한전기술 127,100원(+1.03%, 유일 상승). **펀더멘털 서사 불변**: (1) **Westinghouse IPO $50B+ 비공개 S-1(7/31)이 '빠르면 10월' 공개 전환 임박**(Citi/Goldman·Brookfield 51%+Cameco 49%·2023 ~$8B 인수가 6배+·기술 전세계 원자로 57% 채용·파이프라인 91건) -- 단 셧다운이 SEC 심사 변수 (2) **우라늄 구조적 공급부족 재확인** -- 스팟 ~$90/lb·장기계약가 18년 최고($94~96/lb)·Kazatomprom 2026 가이던스 ~10% 하향(85M->71~75M lb·황산부족 ISR 지연) (3) **두산 2026 수주 가이던스 13.3~15.5조·SMR 파운드리 본격화·체코 두코바니·웨스팅하우스향 주기기** 서사 유지(신규 대형수주·목표가 변동 없음) (4) **핵융합 신규 메가딜 없음** -- FIA 연 $4.48B 역대최고·CFS $4B·Helion $15.5B 기존 유지. X-energy는 9/30 Wolfe·10/1 Investing in Advanced Nuclear Energy·10/8 TD Cowen 투자자 컨퍼런스 서킷(하드 촉매 없음).
 
@@ -543,7 +548,7 @@ last_synced_from_db: 2026-10-03
 4. **HALEU 연료 공급**: 미국 글로벌 농축 **1% 미만**. Centrus DOE $900M·누적 1,900kg+·연 12MT 목표·Q2 백로그 $3.0B로 진전하나 미국 유일 상업 생산자 의존도 여전
 5. **경제성 미입증**: 실제 건설/운영 비용 데이터 부족. Carnegie Endowment "hype vs reality" 경고
 6. **사회적 수용성**: 원전 안전 우려, 방사성폐기물 처리
-7. **주가 변동성 + 셧다운 오버행**: 추가 약세 지속 -- Oklo $36.14(10/1, 주간 -5.6%·YTD -45~49%), NuScale $7.79(10/1, YTD -27%대), X-energy $13.95(10/1, 주간 -11% 낙폭최대), NANO $15.73, 컨센 TP $14~$140(Piper Sandler OW $55). 9/27~10/3 신규 촉매 없이 섹터 차익실현에 **10/1 연방 셧다운(NRC 10/10경 예산소진->licensing/inspections 중단 우려) 규제 오버행 가세**. 무매출·현금소진·희석 부담 상존, BofA '유의미 매출 2035~2040' 진단 유효. 두산 81,100원(10/2)·HD현대중공업 426,000원·한전기술 127,100원(+1.03%). 원자력주 단일 정책·셧다운·자금조달 시그널에 급변
+7. **주가 변동성 + 셧다운 오버행 심화**: SMR 개발주 vs 우라늄·정부원자력 이원화 -- 10/9(금) OKLO $34.68(주간 -4.0%·YTD -48%대)·NuScale $7.20(-7.6%)·X-energy $13.70(-1.8%)·NANO $15.33 vs **BWXT $143.85(+5.2%)·CCJ $88.07(+2.8%)·LEU $142.38(+2.4%)·URA $38.89**. 10/6 섹터 기술적 반등(OKLO $38.55·LEU $153.88·CCJ $93.02) 후 급속 되돌림(하드 촉매 없는 센티먼트 라운드트립). **10/1 개시 연방 셧다운이 10/10 현재 10일차 -- NRC carryover 소진 데드라인 도달로 licensing/inspections/permitting 중단·대규모 furlough 임박(2025 전례 ~1,837명)**. 무매출·현금소진·희석 부담 큰 개발주가 규제 리스크에 더 취약. 한국(10/9 한글날 휴장·10/8 종가): 두산 78,000원(-5%)·HD현대중공업 384,000원(-9.9%)·현대건설 107,800원·한전기술 123,000원. BofA '유의미 매출 2035~2040' 진단 유효. 원자력주 단일 정책·셧다운·자금조달 시그널에 급변
 8. **중국 경쟁**: Linglong One 2026 H1 가동 시 세계 최초 육상 상업 SMR 타이틀. 서구 대비 수년 선행
 9. **우라늄 가격 구조적 상승 vs 미너 소외**: 장기계약가 **~$96~96.50/lb(9/10) 명목 사상최고(2007 기록 상회)·스팟 초과 이례적 역전**, 스팟 ~$90/lb. Kazatomprom·Cameco 공급차질 구조적 공급부족. 단 **9/17 발전주 랠리에 우라늄 미너 소외(URA +4%)** -- 발전소 건설주와 공급망주 디커플링. BofA $130/lb 목표
 10. **체코 원전**: 두코바니 본계약 6/4 체결로 가처분 해소. 두산 주기기 2027.11~2032.08. **테믈린 3·4호기 우선협상 5년·2030 확정·EDF/웨스팅하우스 2차 경쟁**·폴란드 시프로위폴삿 탈퇴 변수 잔존
@@ -562,6 +567,10 @@ last_synced_from_db: 2026-10-03
 10. **SPAC 상장 리스크**: newcleo 등 SPAC 상장 확대 -- 밸류 변동성·희석 우려
 
 ---
+
+_본 KB는 2026-10-10 웹검색+yfinance 기반 갱신 (8회 검색, 5건 DB 추가). 최대 변화: **美 연방 셧다운 2주차 -- NRC 예산소진 데드라인(10/10경) 도달로 licensing/inspections/permitting 중단·대규모 furlough 임박**. 주가 이원화 심화: SMR 개발주 약세(10/9 OKLO $34.68 주간-4.0%·NuScale $7.20 -7.6%·XE $13.70) vs 우라늄·정부원자력 상대강세(BWXT $143.85 +5.2%·CCJ $88.07 +2.8%·LEU $142.38 +2.4%). 10/6 섹터 기술적 반등 후 급속 되돌림. 한국(10/9 한글날 휴장, 10/8 종가): 두산 78,000원(-5%)·HD현대중공업 384,000원(-9.9%)·현대건설 107,800원·한전기술 123,000원. 펀더멘털 불변: Westinghouse IPO 공개 S-1 미제출(애널 $26~30B 현실론 vs $50B 목표)·우라늄 스팟~$85~90/장기~$90~94·Kazatomprom -10% 가이던스·두산 수주 서사 유지·핵융합 신규 메가딜 없음. 다음 갱신 권장: 2026-11-09 이전_
+
+<!-- ARCHIVE 10/3 갱신 노트 -->
 
 _본 KB는 2026-10-03 웹검색 기반 갱신 (13회 검색, 4건 DB 추가). 최대 변화: **美 연방정부 셧다운(10/1 개시)發 NRC/DOE 규제 오버행 + SMR·원자력 복합 추가 약세**. NRC 1주 런웨이(10/10경 소진)->licensing/inspections/permitting 중단 우려·10/7 Commission 회의 연기. 신규 회사·프로젝트 촉매 부재. 10/1 종가: OKLO $36.14(주간 -5.6%)·NuScale $7.79(-8.0%)·XE $13.95(-11.3%)·BWXT $136.79·NNE $15.73·CCJ $85.69·LEU $139.11·URA $39.59. 한국(10/2): 두산 81,100원·HD현대중공업 426,000원·현대건설 114,400원·한전기술 127,100원(+1.03%). 펀더멘털 서사 불변: Westinghouse IPO $50B+ '빠르면 10월' 공개 S-1 임박(Citi/Goldman·Brookfield51%/Cameco49%)·우라늄 스팟~$90/장기 18년최고·Kazatomprom -10% 가이던스·두산 수주 13.3~15.5조·핵융합 신규 메가딜 없음. 다음 갱신 권장: 2026-11-02 이전_
 

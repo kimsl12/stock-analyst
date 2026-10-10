@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-03
-valid_until: 2026-11-02
+updated: 2026-10-10
+valid_until: 2026-11-09
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -192,14 +192,27 @@ sources:
   - Network World
   - WION
   - SCMP
+  - iPhoneInCanada
+  - SpaceNexus
+  - XTB
+  - Sovereign Magazine
 confidence: high
-last_synced_from_db: 2026-10-03
+last_synced_from_db: 2026-10-10
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.10.10 핵심 변화 요약 (10/03 이후 델타)**:
+>
+> 1. **★D2C -- ASTS BlueBird 6 발사 캠페인 스펙 정밀화(실질량 ~6,100kg·투입 ~520km·10/12 인도 출하 승계 -> 발사 ~12월)·10월 확정 주가 미확보 + SPCX 10월 락업 트랜치(10/10·10/25)와 Q3 실적後 28% 트랜치 임박 + Amazon Leo 396기로 '브로드밴드 개시 충분' 선언(9/26 KB 375+서 증가)** -- **★ASTS: BlueBird 6 발사 캠페인 진행 -- 스펙 정밀화로 실제 질량 약 6,100kg(기존 6,500kg 투입추정서 하향)·투입고도 약 520km(기존 550km서 조정)·LEO 최대 상용 위상배열 223 sq m(2,400 sq ft) 재확인, ISRO LVM3('Baahubali')가 인도 역대 최중량 LEO 페이로드로 투입. 10/12 인도 출하(9/26~10/03 승계) -> 도착(10월 중순)+30~45일 -> ★발사 ~2026.12 전망(이번주 발사 미발생·발사 전 단계), 2026말 궤도 45~60기 목표. 10월 확정 주가 미확보(Q2 매출 $31.52M·순손실 $230.91M·FY2026 가이던스 $150~200M 재확인·'연내 베타 서비스' 목표 8월치 승계). ★SPCX: 10월 락업 트랜치 10/10·10/25(각 7%)·★Q3 실적 10월말~11월초 -> 2일후 최대 28% 트랜치 언락이 최대 변수·메인 180일 락업 2026.12.08 만료·머스크 풀락업 2027.06.12, 8/6 1차 대형 언락(약 9.1억주) 크래시 없이 소화. 주가 ~$140~142대 맥락(신규 확정치 없어 소프트). ★저궤도: Starlink ~11,100기+(9/26 11,154 승계)·★Amazon Leo 396기(7/2 LA-08 Atlas V)로 '브로드밴드 서비스 개시 충분' 선언·3위권(9/26 KB 375+서 증가·트래커 392기 9/24)·FCC 1,616기(7/30) 의무 조건부 유예·Vulcan VC6L LV-01(첫 Amazon Leo Vulcan 발사·40기) 2026.10 일정 유지(슬립 미기록)** [WION/jang/ianslive BB6 ~6100kg 520km 223 sq m LVM3 heaviest Indian LEO payload ship India mid-Oct launch ~Dec, Simply Wall St ASTS Q2 $31.52M net loss $230.91M FY $150-200M beta, MarketBeat/TipRanks launch campaign, Sovereign/Webull/StartupHub SPCX tranches 10/10 10/25 Q3 28% Dec8 Musk Jun12 2027 Aug6 911M absorbed, iPhoneInCanada/MobileWorldLive/BroadbandBreakfast Amazon Leo 396 LA-08 July2 enough for broadband, SpaceNexus 392 Sep24 Vulcan VC6L Oct no slip]
+> 2. **★6G 표준 -- RAN#114 공식 일정 확정(2026.12.07~12.10 미국)·TR 38.914(시나리오·요구사항) 승인으로 ITU-R M.2160 정렬 + 후속 FS_6G_Radio 승인은 TSG#116(RAN#114보다 늦음)으로 마이그레이션 12월 단일회의 종결 불확실** -- **★3GPP RAN#114 공식 일정 2026.12.07~12.10 미국 개최 확정(3GPP 미팅 리스트 RP-114, 장소 '미국'·보스턴은 9/26 승계로 도시 미명기). ★TR 38.914(6G 시나리오·요구사항 스터디) 승인·완료 -> ITU-R M.2160(6G 프레임워크) 정렬·첫 6G 규격 타임라인 합의. ★후속 FS_6G_Radio(TR 38.960, 6G 라디오 스터디) 승인 목표는 TSG#116(RAN#114보다 늦음) -> 마이그레이션 옵션 최종 가지치기가 12월 단일 회의로 종결되지 않을 가능성 시사. ★구조 재확인: Rel-20=스터디 릴리스(SA Stage 2 freeze 2026 Q4)·Rel-21=노멀티브 규격(RAN/CT Stage 3 2027.03~2028말)·첫 6G 표준 2028말->상용 2030. MRSS 베이스라인·FR3 upper mid-band(7.125~8.4GHz·WRC-27 후보대역 4.4~15.35GHz) 9/26~10/03 승계(이번주 변동 없음)** [3GPP meetings RP-114 US 2026-12-07~12-10, Ericsson '6G standardization key milestones and RAN decisions' TR 38.914 approved ITU-R M.2160 Rel-21 Mar2027-end2028 commercial 2030 SA Stage2 Q4 2026, 3GPP news 6G-38914 FS_6G_Radio TR 38.960 TSG#116, Samsung Research FR3]
+> 3. **★AI-RAN 델타 적음(신규 대형 운영사 딜 미확인) -- Nokia-NVIDIA $1B(2.9%) 전략축 vs Ericsson silicon-agnostic 노선 대립 재확인·SoftBank Aitras 양사 협력** -- **9/26~10/03 벤더 노선 대립 서사 재확인(신규 대형 계약 미확인). ★Nokia-NVIDIA $1B 전략투자(지분 2.9%·비독점으로 NVIDIA 타 벤더 협력 여지), Nokia=GPU 중심 3경로(AirScale ABIG 카드·독립형 Accelerated AI-RAN 노드·COTS Cloud AI-RAN)·NVIDIA Aerial/Grace/Blackwell·스펙트럼효율 20% 실증->2027 50%->2028 100%+·파일럿 2026말·GA 2027. ★Ericsson=silicon-agnostic(Intel/AMD/ASIC·GPU 불필요)·~10% 스펙트럼효율·다운링크 최대 20%·15개+ 라이브, ABI Research는 Ericsson이 MWC 바르셀로나 2026 전 자체 NVIDIA ARC 파트너십 발표 예상(미확인 전망). ★SoftBank Aitras 융합형 AI-RAN(NVIDIA 플랫폼) Nokia·Ericsson 양사 협력. 승자가 3GPP·O-RAN 레퍼런스 아키텍처 좌우(9/26 승계)** [ComSoc 'Nvidia $1 billion stake in Nokia' 2.9% nonexclusive 5G-Adv 6G SW upgrade, Mobile Europe, ABI Research Ericsson NVIDIA ARC before MWC Barcelona 2026 (prediction), SoftBank Aitras, LinkedIn/IEEE Spectrum Nokia 3 GPU paths vs Ericsson silicon-agnostic (carry 10/03)]
+> 4. **★광통신 델타=실적 보강(규제 변동 없음) -- FCC 중국산 광트랜시버 금지 여전 초안·Lumentum 회계 Q1 FY2027(9월분기) 가이던스 중간값 $1.25B(+130% YoY)·1.6T 램프·OCS 출하 2배** -- **★FCC 중국산 광트랜시버 수입금지는 8/4 로이터 보도 이래 여전히 초안(공식 NPRM 미표결·연내 확정 희망하나 수정·철회 가능, 신규모델 수입금지+비중국 공급사 면제·기존 인증모델 면제). 중국 Zhongji Innolight DC 트랜시버 세계 27% 점유. ★실적축=Lumentum 회계 Q1 FY2027(9월분기) 가이던스 $1.225~1.275B(중간값 $1.25B·YoY +130%+·3월 OFC 가이던스比 중간값 +$2.5억 상향)·1.6T 트랜시버 램프·광회선스위치(OCS) 출하 전분기 대비 2배·차기 OCS 매출 $1억 초과 전망, 직전 회계 Q2 FY2026 매출 $1.0B+(YoY +109%·QoQ +24%)·EPS $3.23. ★Coherent 회계 Q2 FY2026 매출 $1.7B(+17.5% YoY)·DC/통신 $1.2B(+33.6% YoY)·800G/1.6T 믹스전환·OCS·CPO 트랙션. ★AAOI 첫 대량 800G 하이퍼스케일러 출하(펀더멘털). AI 광학 $16.5B(2025)->$26B(2026)·밸류 과열·InP 공급제약 경고 상존. [주의: 절대주가·YTD 신디케이트 시점혼재 -- 방향성·실적 델타만 유효]** [Reuters/247WallSt/Cryptobriefing FCC draft Aug4 Innolight 27% new-model ban non-Chinese exempt, XTB/Semiconductor Today Lumentum Q1 FY27 $1.225-1.275B $1.25B +130% +$250M 1.6T OCS doubled >$100M Q2 FY26 $1.0B+ +109% EPS $3.23, Futurum Coherent Q2 FY26 $1.7B +17.5% DC $1.2B +33.6%, Vocus AAOI 800G hyperscaler, LightCounting optics $16.5B->$26B]
+> 5. **★한국 통신정책 델타 없음 -- 과기정통부 'AI 통신망 투자 민·관 협의체'(8/27 발족) 연내 종합대책 10/10 기준 여전 미발표(SKT 6G/AI-RAN·KT 해저케이블 1조+3,500 국사 AI엣지·LGU+ 5G SA 축 승계)** -- **과기정통부 'AI 시대 통신망 투자 촉진 민·관 협의체'(8/27 발족)의 연내 '차세대 통신망 투자·규제개선 종합대책' 수립·발표 계획 유지, ★2026.10.10 기준 미발표 재확인(7/23 CEO 간담회·8/27 협의체 발족 이후 신규 정책문 없음). 통신3사 축: SKT=AI-RAN+6G(2026 Pre-6G 시연)·KT=해저케이블 1조원 선제투자+전국 ~3,500개 통신국사 AI 엣지 전환·LGU+=연내 5G SA+AI 자율운영망. 통신사 건의=AI DC 인허가 창구 일원화·투자세액공제 확대(배경훈 부총리 '규제 특례 포함 제도개선안 마련 중'), 고물가 대응 요금혜택 병행** [머니투데이 7/23 배경훈 CEO간담회, dealsite/segye/한국경제 8/27 민관협의체 연내 종합대책, sateconomy 6G 해저케이블 5G SA, SBS Biz 10/10 미발표]
+>
+> **(이전 갱신 -- 10/03 핵심 요약, 참고용)**:
 > **2026.10.03 핵심 변화 요약 (9/26 이후 델타)**:
 >
 > 1. **★D2C 위성 -- AST SpaceMobile BlueBird 6 발사 캠페인 본격 가동(9/26 '45기 2027초 이연'서 적극 출하로 전환): BB6 최종조립 완료·10/12 인도 출하->ISRO LVM3로 12월 발사 가능·LEO 최대 상용 위상배열 2,400 sq ft에 주가 +16% + SPCX 10/9·10/24 락업 임박** -- **★AST SpaceMobile(ASTS): BlueBird 6 최종 조립·시험 완료, 10/12 인도로 출하(Antonov 화물기로 Chennai 공수 -> 트럭으로 약 85km 북쪽 ISRO Satish Dhawan Space Centre 이송). ★ISRO 최대 로켓 LVM3가 6,500kg BB6를 약 550km 궤도 투입 -- 인도 로켓이 쏘아올리는 역대 최중량 위성. 도착(10월 중순) 후 발사까지 30~45일 -> ★BB6 2026.12 발사 가능. BB6=기존 위성 대비 3.5배 크기·10배 데이터 용량·LEO 최대 상용 위상배열 안테나(2,400 sq ft/약 223m^2). 발사 캠페인 개시 뉴스에 주가 +16% 급등·YTD +265%+·Zacks Rank #3(Hold)·$1B 매출 파이프라인. ★BB7 10월 Cape Canaveral로 출하·BB8~16 생산 각 단계·평균 1~2개월마다 발사·2026말 궤도 45~60기 목표(9/26 '2027초'서 상향 재확인). ★SPCX(SpaceX): 9/24 대형 락업(3.28억주) 크래시 없이 소화 뒤 ★다음 락업 10/9(약 3.19억주)·10/24 임박, Q3 실적 2거래일 후 최대 ~1.3억주, 메인 180일 락업 2026.12.08 만료가 최대변수. 주가 ~$140~142대 맥락(9/26 KB ~$148, 신규 확정치 없어 소프트 처리). Starlink 11,154기(9/26)·Vulcan LV-01 10월 슬립 승계** [MarketBeat/TipRanks·thefly BB6 final assembly, WION 10/2 ship India mid-Oct Antonov Chennai ISRO Satish Dhawan LVM3 6500kg 550km heaviest Indian payload Dec launch, Yahoo ASTS +16% 3.5x 10x 2400 sq ft, Nasdaq +265% YTD Zacks 3 $1B pipeline BB7 Cape Canaveral Oct BB8-16 45-60 year-end 2026, Sovereign/SeekingAlpha SPCX lockup 10/9 10/24 Q3 ~1.3B Dec 8, kucoin SPCX ~$140-142 target $220-225]

@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-03
-valid_until: 2026-11-02
+updated: 2026-10-10
+valid_until: 2026-11-09
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -226,8 +226,8 @@ sources:
     Energy Singularity,
   ]
 confidence: high
-last_synced_from_db: 2026-10-03
-db_records: 529
+last_synced_from_db: 2026-10-10
+db_records: 540
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -236,6 +236,21 @@ db_records: 529
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.10.10 핵심 변화 요약 (10/4→10/10 윈도우)**:
+>
+> 1. **[방향전환·최중대] 희토류 11월 D-day 소멸 → 2027년 1월로 이동: 美 재무장관 Bessent 9/23 발표(트럼프-시진핑 워싱턴 정상회담 후속)·中 상무부 9/28 공식화로 中 확대 희토류 수출통제 유예 종료일이 11/10 → 2027.01.10 로 2개월 연장(10/10 기준 D-92). 동시에 美측 자체 DFARS 252.225-7052가 2027.01.01 발효(美 국방조달서 中산 NdFeB 영구자석 채굴-자석 전 공급망 금지, D-83)로 '2027년 1월 데드라인 클러스터' 형성** — 원 Busan 휴전(2025.10.30)의 10/9 2025 조치 1년 유예(→11/10) + 美 affiliates rule 1년 유예 맞교환을 2개월 추가 연장. 기대(6개월~1년)보다 짧은 2개월 — Bessent "아직 조율할 게 많다", 워싱턴 정상회담서 임계광물 서면합의 無·中 희토 인도 여전히 약속 미달·BIS affiliates rule도 동반 유예. **직전 2회 KB(09.26 11/10 D-45·10.03 11/10 D-38)가 유지한 '11월 11/10 단일 D-day' 프레임을 대체·수정 — 11/10 확대통제는 1/10/2027로 명확히 이동. 단 11/27 中 Ga/Ge/Sb 대미 수출금지 유예(별도 트랙)의 1월 흡수 여부는 이번 주 소스 미확인(확인 필요).** 2025.4 7종 라이선스·군용 최종사용자 금지는 유예와 무관하게 존속. [AmericasCoal/Rinnovabili/StartupFortune/TheStreet/RareEarthExchanges/BISI(연장), Clark Hill/CSET MOFCOM 61호(원 조치)]
+>
+> 2. **[재확인·정량] 희토류 가격 — 경·중 양극화 지속(Benchmark Q3 2026): 중희토 ex-China 서지 — Dy oxide CIF유럽 中DDP比 16.3배(Q2말 6.8배서 급등)·분기말 +150%·Yttrium CIF북미 中DDP ~196배(Q2 188배). Platts 9월: Dy oxide $3,250/kg CIP북미·Tb oxide $7,500/kg CIP북미(소량딜 $12,000/kg 초과 보고·8월 "Tb 사실상 구득불가"). vs 경희토 NdPr DDP中 Q3 -1%(거의 flat)·CIF유럽/북미는 MP·Lynas DoD $110/kg floor 하회 지속(ex-China 균형~소폭 과잉)** — Benchmark: ex-China 중희토 프리미엄이 신규 중희토 capacity 유인 경제신호로 지속 전망, 경희토 ex-China 과잉은 '안정화 중'. D-day 1월 연장에도 중희토 물리적 희소성·프리미엄 구조는 유지(09.26/10.03 KB 추세 연속). [Benchmark Minerals Q3 2026 Rare Earths Price Review/S&P Global Platts/REEx]
+>
+> 3. **[재확인·뉘앙스] 배터리소재 — 리튬 반등 유지하나 '단명' 경계: 배터리급 탄산리튬 ~$19,750/t CIF아시아(9/2 Benchmark, 2025 美계약평균 $9,000比 +119%)·스포듀민 SC6 FOB호주 ~$2,254/t, '좁아지는 과잉(narrowing surplus)'(2025 과잉 141kt → 2026 ~109kt LCE)로 상방 유지되나 Argonaut 경고 — 스포듀민 late 2026 ~$1,500/t 피크 시 기존 capacity 재가동 유발로 회복 단명 가능. CATL Na-ion(Naxtra) 2026말 풀스케일 양산 재확인(수석과학자 Wu Kai 제조병목 해소·하드카본 음극 공급망 페이스가 미해결 과제)** — 10.03 KB의 '$20,000/t 상회 반등' 흐름 대체로 유지(level confidence medium — 벤치마크 base 상이). [韓] 포스코퓨처엠 전고체용 양극재 개발 사실상 완료·양산준비(美 Factorial 테스트)·Sila 실리콘 음극 협업·POSTECH+LG에너지솔루션 고강도 실리콘 음극(6월·연구단계). [Benchmark/Argonaut/Axis Intelligence(리튬), BatteryTechOnline/CarNewsChina(CATL), POSCO/한경(韓소재)]
+>
+> 4. **[재확인] 전고체 — 신규 상업 델타 제한적, QuantumScape Q3 2026 실적(late Oct 예정)으로 다음 마일스톤 대기: QS B-sample(844Wh/L·301Wh/kg·10C·-30도)·분리막 공장 완공·VW PowerCo 라이선스(로열티+$130M 선지급)·Honda R&D 공동연구(6월, 상업공급 약정 아님). 삼성SDI 울산 25조원·황화물 전고체 H2 2027 양산·>900Wh/L(시제품 EV/임바디드AI/휴머노이드 로봇사 테스트)·BMW+Solid Power 공동개발. Toyota 2027-28 상업화** — QS 여전히 pre-revenue·양산차 탑재 미발표. 09.26(Ducati 실차 시연)·10.03(Honda 공동개발) KB 대비 당월 신규 상업 델타 없음. [QuantumScape SEC/battery-tech.net(QS), KED Global/ess-news(삼성SDI), eepower(Toyota)]
+>
+> 5. **[정량화] 탄소섬유 — 재생 탄소섬유 시장 $224.62M(2026) → $427M(2031)(Mordor, 9월)·항공우주 CF 재활용 세그먼트 $142.6M(2024) CAGR 12.1%(~2034), 비용장벽: Airbus 재생CF 항공부품 프리미엄 €50-75/kg·IRA $7/t 크레딧 불충분 비판** — 10.03 KB의 Hexcel-Carbon Conversions·Toray 열경화 CFRP 재활용(섬유강도 95%+) '재활용·순환' 테마의 시장 정량화 후속. Toray 세계 CF 1위(항공급 >50%). [韓] HS효성첨단소재 CCE 2026(상하이, 9/1-3) 탄섬·수소/산소 용기·드론·자동차 휠 전시·한중베트남 3개국 거점·T-1000급 H3065(세계 3번째)·당월 신규 수주 델타 없음. 핵심공급 Mitsubishi/Toray/Solvay/DuPont/Formosa/Teijin/Hexcel 유지. [Mordor Intelligence/ResearchAndMarkets(재활용), 한국경제/kidd(HS효성)]
+>
+> 6. **[신규 앵글·정합] 美 임계광물 정책 — '2027년 1월 데드라인 클러스터' 수렴: 中 희토 유예 종료 1/10/2027 + DFARS 252.225-7052 1/1/2027(中 NdFeB 국방조달 금지) + 7/20/2026 EO의 모든 DoD 계약사 임계광물 공급망 전면 매핑·中 waiver 면제 폐지·항공방산 대형사 '2027 초까지 공급망 개편' 의무가 수렴. 7/30 대통령 결정(DPA §101): 회수성 임계광물(블랙매스·폐NdFeB 자석·swarf·스크랩)을 국방 필수 희소자원 분류** — 지원패키지 재확인: Project Vault 비축(~$12B 정부대출보증+민간, USGS 임계 60+종)·MP Materials JPM/GS $1B 2번째 美 자석공장(2028)·DoD $150M Mountain Pass 중희토 분리 대출·DoD $400M 지분(7월)·NdPr $110/kg 10년 floor, Lynas-DoW $96M(4년)·NdPr $110 floor·JARE 5,000t/y ~2038. 8월 Rio Tinto/BHP/Freeport/MP/USA Rare Earth 행정부 임계광물 회의 초청. [smallcaps/Columbia CGEP/Skillings(정책·MP), Capital Brief/EngineeringNews(Lynas)]
+
 
 > **2026.10.03 핵심 변화 요약 (9/27→10/3 윈도우)**:
 >

@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-03
-valid_until: 2026-11-02
+updated: 2026-10-10
+valid_until: 2026-11-09
 sector: capex
 confidence: high
 tags:
@@ -215,15 +215,34 @@ sources:
     Morningstar,
     Barclays,
     Bernstein,
+    JPMorgan,
+    Needham,
+    RBC,
+    Citigroup,
+    the-decoder,
+    tomtunguz,
+    implicator.ai,
+    morethanmoore,
+    livewiremarkets,
+    traderinsights,
+    pulse2,
   ]
-last_synced_from_db: 2026-10-03
+last_synced_from_db: 2026-10-10
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-10-03 | 신뢰도: high | 유효: ~2026-11-02
+> 갱신일: 2026-10-10 | 신뢰도: high | 유효: ~2026-11-09
 
 ---
+
+## ★ 주간 델타 (10/10) — 직전 갱신(10/3) 이후 변화
+
+- **[핵심] 빅테크 AI capex 추가 상향·Q3 어닝 프리뷰 — S&P Global 6사 2027 capex ~$1.3T(Alphabet $357B·Amazon $319.1B·Microsoft $189B·Meta $164B + Oracle·SpaceX)·Amazon 2026 $200B→$220B(메모리 부품가)·Q3 어닝 10월말**: S&P Global 집계 6사(Alphabet·Amazon·Microsoft·Meta·Oracle·SpaceX) **2027 capex 합산 ~$1.3T** — 기업별 2027E **Alphabet ~$357B·Amazon ~$319.1B·Microsoft ~$189B·Meta ~$164B**(+Oracle·SpaceX). **Amazon이 2026 현금 capex를 ~$200B→~$220B로 상향**(메모리 등 부품가 상승 반영), Microsoft 2026 ~$190B(이 중 $25B가 부품가 상승분). 4사 2026 합산 ~$725B(+77% YoY·2025 $410B). **Q3 2026 어닝 라운드가 10월말 예정** — 메모리 비용이 capex 추가 상향의 핵심 드라이버로 지목, S&P 전망서 6사 중 1사만 2027 FCF 플러스 예상. 직전 9/26 KB(4사 2027 ~$934.5B)·10/3 KB(MS 2027 클라우드 $1.2T) 대비 S&P 6사 집계가 $1.3T로 확장. 주: 소스별 집계기준(4사 vs 6사·클라우드 vs 하이퍼스케일러 capex) 상이 [Motley Fool/S&P Global, Yahoo Finance, aiweekly.co, traderinsights, livewiremarkets]
+- **[핵심] OpenAI '순환 딜 웹' $1T·26GW로 전면 집계+버블 회의론 격화 — AMD 6GW/$90B/160M주 워런트(AMD ~10%)·벤더별(Tunguz) Broadcom $350B·Oracle $300B·MS $250B·Nvidia $100B·AMD $90B·GW당 $50B(OpenAI)/$35B(벤치)·JPM AI부채 2030까지 ~$4.1T**: OpenAI가 Nvidia·Broadcom·AMD·Oracle 등과 맺은 컴퓨트 계약이 **~$1T 규모·26GW**(Nvidia+Broadcom+AMD 칩)+Oracle $300B Stargate로 전면 집계 — GW당 **~$50B(OpenAI 추산)·~$35B(업계 벤치마크)**. Tunguz 모델 벤더별(2025-2035 $1.15T): **Broadcom $350B·Oracle $300B·Microsoft $250B·Nvidia $100B·AMD $90B·AWS $38B·CoreWeave $22B**. **OpenAI-AMD 딜 구체화: 최대 6GW Instinct GPU(MI450 H2 2026 개시)·잠재 매출 $90B·AMD가 OpenAI에 160M주(완전행사 시 AMD ~10%) 워런트($0.01/주) 부여**. **JPMorgan: AI 연계 부채가 2030까지 ~$4.1T 발행** 전망. 회의론 격화 — **DA Davidson Gil Luria 'OpenAI는 이런 약정을 할 처지가 아니다'(올해 ~$10B 손실 가능), Bernstein Stacy Rasgon 'Altman이 세계경제를 10년 붕괴시키거나 약속의 땅으로 데려갈 힘'**. 주: 벤더별 금액은 애널리스트 모델링(미공시), 일부 소스는 AMD 딜 원발표를 2025.10로 기재(시점 재확인 필요) [the-decoder, tomtunguz, Yahoo Finance/Citi, implicator.ai, morethanmoore, JPMorgan]
+- **반도체 WFE 2027 전망 분산 상향 — JPMorgan $225B(+38%)·Morgan Stanley $202B(from $191B, 2028 ~$250B 접근)·Needham $201B·Bernstein +18.2%·SEMI $151B·ASML Low-NA EUV 2027 '최소 80대'(2026 60대)·rev EUR 36-40B·Lam 9월분기 +21% QoQ**: 2027 WFE 추정이 상단으로 확장 — **JPMorgan $225B(+38%, 종전 +29% 가정서 9월 상향 — DRAM·TSMC capex·NAND·로직 상향 반영)·Morgan Stanley $202B(종전 $191B서 상향, 2028 $227B→~$250B 접근)·Needham $201B(종전 $149.6B, 단 2028 성장 일시정체 $191.6B)·Bernstein +18.2%·SEMI $151B(+20%)**. **ASML 2026 매출 가이던스 EUR 36-40B로 상향, Low-NA EUV 2026 '최소 60대'→2027 '최소 80대' 출하**. Lam 9월 분기 매출 +21% QoQ(시스템 출하 +30%+), AMAT 2026 반도체시스템 +30%+ 유지·고객 2027·2028 동시 검토. 직전 10/3 KB(SEMI $151B·GS $218B) 대비 JPM $225B·MS $202B가 상단 확장. 주: WFE 정의별 상이($151B~$225B) [JPMorgan, Morgan Stanley, Needham, Bernstein, SEMI, ASML IR, techstock01]
+- **메모리 슈퍼사이클 가격·캐파 재확인(9/30 Micron 실적 소화) — HBM4 HBM3E 대비 +30~50%·Micron 2026 HBM 100% 비취소 완판·범용 DRAM 삼성 Q1 +100%/Micron Q2 +40%·RBC Micron TP $525**: HBM4 가격이 **HBM3E 대비 +30~50%**(2027 계약 재협상 시 추가 상승 전망), **Micron 2026 HBM 캐파 100%가 비취소 계약으로 완판**. 범용 DRAM 계약가: **삼성 Q1 2026 +100% 주도·Micron Q2 2026 ~+40% 추종**(HBM이 범용 DRAM 대비 웨이퍼 3~4배 소모→범용 공급 구축·가격 상승). **RBC Micron 목표가 $525로 상향**(슈퍼사이클 지속성 가시화), 사이클은 2026 전구간 지속·2027까지 지지(DDR는 점진 완화 가능). 직전 10/3 KB(Micron FY Q4 2026 실적·HBM4 $31-32/GB) 대비 이번 주는 가격 스프레드·완판 재확인 중심. 주: HBM4 ±%(vs HBM3E) vs 절대가격($/GB)은 소스별 기준 상이 [RBC, Citigroup, TrendForce, itiger]
+- **전력 인프라 GE Vernova Q3 2026 프리뷰 — 가스터빈 Q3 20GW 연산 도달·백로그 $176B·$200B 목표 2027 앞당김(from 2028)·Electrification $40.6B(+69%, Prolec $5B)·DC주문 H1 $5B+·슬롯 56GW/계약 100GW + 금리 10Y ~5.17%**: GE Vernova Q3 2026 어닝(10월말 발표 예정) 프리뷰 — **Q2 2026 총 백로그 $176B(+$13B QoQ)**, **가스터빈 연산 능력이 Q3 2026 중 20GW 도달 궤도**(2028 24GW·2030 30GW 목표), 가스터빈 **계약 100GW·슬롯예약 56GW**. **Electrification(변압기·그리드) 장비 백로그 $40.6B(+69% YoY, Prolec GE ~$5B 포함)**, 데이터센터 주문 H1 2026 $5B+(2025 연간의 2배+). **총 백로그 $200B 도달 시점을 2028→2027로 앞당김**. 금리 환경: **미 10년물 ~5.17% 접근·Oracle 분기 이자비용 +55% $1.43B·CoreWeave 총부채 $35.6B**(2031 무담보채 저십대% 수익률)로 조달비 압박 지속. 전력이 여전히 AI 최대 병목. 주: Q3 실적 미발표(프리뷰), Q1/Q2 집계기준 상이 [GE Vernova IR, Utility Dive, Morningstar, pulse2, aiweekly.co]
 
 ## ★ 주간 델타 (10/3) — 직전 갱신(9/26) 이후 변화
 
