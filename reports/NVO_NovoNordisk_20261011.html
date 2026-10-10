@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>노보 노디스크 — 재분석 v18 (이전 비교 미포함) (NVO) 종합 분석</title>
+<style>
+/* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+   reference/briefing_css.html 과 동일 토큰 — 두 파일이 같은 팔레트·타이포를 공유한다.
+   변수명·클래스명은 검증 게이트(검증 4)·명세 호환을 위해 보존. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+:root{--bg:#0A1118;--card:#121B26;--card2:#0E151E;--text:#E9EDF3;--sub:#93A1B3;--border:#22303F;
+--up:#2FBF71;--down:#F4576A;--warning:#E5A43B;--highlight:#5B9DFF;--neutral:#8B97A5;
+--debate:#9D7BFF;--contrarian:#F08C4A;
+--buy:var(--up);--sell:var(--down);--warn:var(--warning);--blue:var(--highlight)}
+[data-theme="light"]{--bg:#F3F5F9;--card:#FFFFFF;--card2:#F7F9FC;--text:#19222E;--sub:#5C6878;--border:#D9E1EA;
+--up:#15803D;--down:#CE2F40;--warning:#A16207;--highlight:#1D6FE0;--neutral:#5C6878;
+--debate:#6644CC;--contrarian:#C2571F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;padding:20px 18px 28px;max-width:920px;margin:0 auto;font-size:15.5px;line-height:1.66;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+/* 마스트헤드 — 리서치 노트 스타일 (좌측 정렬 + 액센트 룰) */
+.header{text-align:left;padding:26px 0 18px;border-bottom:1px solid var(--border);margin-bottom:22px;position:relative}
+.header::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--highlight),transparent)}
+.header h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+.meta{color:var(--sub);font-size:13.5px;letter-spacing:.01em}
+.badge{display:inline-block;padding:4px 12px;border-radius:7px;font-size:12.5px;font-weight:700;margin:6px 6px 0 0;letter-spacing:.02em;border:1px solid transparent}
+.b-buy{background:color-mix(in srgb,var(--buy) 13%,transparent);color:var(--buy);border-color:color-mix(in srgb,var(--buy) 35%,transparent)}
+.b-sell{background:color-mix(in srgb,var(--sell) 13%,transparent);color:var(--sell);border-color:color-mix(in srgb,var(--sell) 35%,transparent)}
+.b-hold{background:color-mix(in srgb,var(--warn) 13%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.b-score{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 30%,transparent)}
+/* 섹션 카드 */
+.sec{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border)}
+.sec h2{font-size:16.5px;font-weight:750;letter-spacing:-.01em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+.sec h2::before{content:"";width:3.5px;height:15px;border-radius:2px;background:var(--highlight);flex:none}
+.sec h3{font-size:14.5px;font-weight:700;color:var(--highlight);margin:16px 0 8px}
+/* KPI 그리드 */
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.ki{background:var(--card2);padding:12px 14px;border-radius:9px;text-align:left;border:1px solid var(--border)}
+.ki .kl{font-size:11.5px;color:var(--sub);margin-bottom:3px;letter-spacing:.04em}
+.ki .kv{font-size:19px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.up{color:var(--buy)}.dn{color:var(--sell)}.nt{color:var(--warn)}
+/* 표 — 금융 데이터 표준 (소형 대문자 헤더 + tabular 숫자) */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+th{background:transparent;padding:8px 10px;text-align:left;font-weight:650;font-size:12px;color:var(--sub);letter-spacing:.05em;border-bottom:1.5px solid var(--border)}
+td{padding:8px 10px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--text) 2.5%,transparent)}
+tr:hover{background:color-mix(in srgb,var(--highlight) 7%,transparent)}
+.tbl-fold summary{cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0}
+.tbl-fold summary:hover{color:var(--highlight)}
+/* 손절/목표 카드 */
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sb,.tb{padding:16px;border-radius:10px;text-align:center}
+.sb{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 40%,transparent)}
+.tb{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 40%,transparent)}
+.sb .sp{font-size:22px;font-weight:800;color:var(--sell);font-variant-numeric:tabular-nums}
+.tb .tp{font-size:22px;font-weight:800;color:var(--buy);font-variant-numeric:tabular-nums}
+.sl{font-size:11.5px;color:var(--sub);letter-spacing:.04em}
+.cb{margin:14px 0;text-align:center}
+.mw{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--buy) 14%,transparent);color:var(--buy)}
+.mn{display:inline-block;padding:4px 10px;border-radius:7px;font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+/* 리스크 아이템 */
+.ri{padding:10px 14px;margin:7px 0;border-radius:0 8px 8px 0;border-left:3px solid var(--warn);background:var(--card2)}
+.rh{border-left-color:var(--sell);background:color-mix(in srgb,var(--sell) 5%,transparent)}
+.rm{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 5%,transparent)}
+.rl{border-left-color:var(--buy);background:color-mix(in srgb,var(--buy) 5%,transparent)}
+.disc{font-size:12px;color:var(--sub);text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border)}
+/* 푸터·카드류 — 통합 토큰 기반 (테마는 color-mix 가 자동 처리) */
+.footer{margin-top:24px;padding:18px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.footer h3{color:var(--highlight);margin-bottom:10px;font-size:15px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.footer table{font-size:13px}
+.footer code{background:color-mix(in srgb,var(--text) 7%,transparent);padding:2px 8px;border-radius:4px;color:var(--warning)}
+.disclaimer{margin-top:20px;padding:14px 16px;border-top:1px solid var(--border);color:var(--sub);font-size:12px;line-height:1.6}
+.disclaimer h4{color:var(--warning);margin-bottom:6px;font-size:13px}
+.disclaimer ul{padding-left:18px}
+.disclaimer li{margin:3px 0}
+.debate-card{background:color-mix(in srgb,var(--debate) 6%,transparent);border:1px solid color-mix(in srgb,var(--debate) 22%,transparent);border-left:4px solid var(--debate);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.debate-card .card-title{color:var(--debate);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.contrarian-card{background:color-mix(in srgb,var(--contrarian) 6%,transparent);border:1px solid color-mix(in srgb,var(--contrarian) 22%,transparent);border-left:4px solid var(--contrarian);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0}
+.contrarian-card .card-title{color:var(--contrarian);font-weight:750;margin-bottom:8px;font-size:13px;letter-spacing:.05em}
+.strong-buy{background:color-mix(in srgb,var(--buy) 7%,transparent);border:1px solid color-mix(in srgb,var(--buy) 45%,transparent);border-left:4px solid var(--buy);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-buy h4{color:var(--buy);font-size:15.5px;margin-bottom:8px}
+.strong-buy h4::before{content:"🟢 "}
+.strong-sell{background:color-mix(in srgb,var(--sell) 7%,transparent);border:1px solid color-mix(in srgb,var(--sell) 45%,transparent);border-left:4px solid var(--sell);border-radius:8px;padding:15px 18px;margin:12px 0}
+.strong-sell h4{color:var(--sell);font-size:15.5px;margin-bottom:8px}
+.strong-sell h4::before{content:"🔴 "}
+.dl-bar{position:sticky;top:0;z-index:99;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;justify-content:flex-end;gap:8px;margin:-20px -18px 18px}
+.dl-btn{background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dl-btn:hover{opacity:0.85}
+.dl-btn svg{width:14px;height:14px;fill:currentColor}
+.theme-toggle{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text);border:1px solid var(--border);padding:6px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.theme-toggle:hover{border-color:var(--highlight)}
+.cmd-guide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:20px}
+.cmd-guide h2{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--blue)}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cmd-item{background:var(--card2);padding:8px 10px;border-radius:6px;font-size:12px;border:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.cmd-item code{color:var(--blue);font-weight:600;font-size:12px}
+.cmd-item span{color:var(--sub);display:block;margin-top:2px}
+/* 리스크 히트맵 셀 — 다크 */
+.hm-ll{fill:rgba(63,185,80,0.13)}.hm-mm{fill:rgba(210,153,34,0.16)}.hm-mh{fill:rgba(248,81,73,0.16)}.hm-hh{fill:rgba(248,81,73,0.28)}
+/* 리스크 히트맵 셀 — 라이트 (opacity 강화) */
+[data-theme="light"] .hm-ll{fill:rgba(0,160,80,0.22)}
+[data-theme="light"] .hm-mm{fill:rgba(180,100,0,0.22)}
+[data-theme="light"] .hm-mh{fill:rgba(200,30,30,0.22)}
+[data-theme="light"] .hm-hh{fill:rgba(200,30,30,0.38)}
+/* 라이트 모드 SVG 범용 보정 */
+[data-theme="light"] .radar-fill{fill:rgba(13,124,102,0.18)}
+@media print{.dl-bar{display:none}.cmd-guide{display:none}}
+@media(max-width:600px){.kg{grid-template-columns:repeat(2,1fr)}.sc{grid-template-columns:1fr}.cmd-grid{grid-template-columns:1fr 1fr}body{padding:10px;font-size:15px}.header h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="dl-bar"><button class="theme-toggle" onclick="toggleTheme()" title="라이트/다크 모드"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4C13.92 3.04 13.46 3 13 3h-1z"/></svg><span id="theme-label">라이트</span></button><button class="dl-btn" onclick="downloadReport()" title="HTML 다운로드"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L12 14.17V2z"/></svg>다운로드</button><button class="dl-btn" style="background:var(--border)" onclick="window.print()" title="PDF 인쇄"><svg viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/></svg>PDF</button></div>
+<div class="header"><h1>노보 노디스크 — 재분석 v18 (이전 비교 미포함) (NVO)</h1><div class="meta">주식 종합 분석 리포트 | 2026-10-11</div><div style="margin-top:8px"><span class="badge b-hold">중립 (Hold)</span> <span class="badge b-score">60/100</span></div></div>
+<div class="sec" style="border-left:4px solid var(--highlight,#58a6ff);padding:18px 20px;margin-bottom:14px"><div style="font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.5px">투자 논지</div><div style="font-size:18px;font-weight:800;line-height:1.45;margin:6px 0 10px 0">노보 노디스크는 매출총이익률 82%·ROE 60%의 최상위 제약 프랜차이즈가 GLP-1 성장 급감속(매출 +2.1%·이익 -20.6% YoY)으로 디레이팅돼 forward 11.7x·배당 4.65%의 밸류 지지를 확보했으나, 감속의 구조성 여부가 밸류트랩/저평가를 가른다.</div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">컨센서스</div><div style="font-size:14px">12인 애널리스트 'hold'(평균 2.71), 평균 목표 $46.09(+19%). 저점 목표 $39.78이 현재가 바로 위 — 시장은 하방을 제한적으로 보되 적극 매수는 유보.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">우리 견해</div><div style="font-size:14px">시장은 forward EPS를 trailing보다 낮게($3.31<$4.09) 책정 — 이익 추가 감소를 선반영. 승부처는 CagriSema·경구 세마글루티드 성과와 미국 약가 안정화 여부.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">반증 조건</div><div style="font-size:14px" style="color:#f5a623">Bull— 이익 안정화 + 비만 TAM 재가속 + 신규 적응증(CV·MASH)으로 멀티플 정상화 시 $55+. Bear— 릴리 점유율 추가 잠식 + 약가 압박 지속으로 이익 두 자릿수 감소 고착 시 $32 이하(52주 저점 하회).</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">행동</div><div style="font-size:14px" style="color:#7ed321">신규는 분할·소량 관망 매수, 기보유는 $37.17 2ATR 손절 하 홀드, $35 저점 이탈 시 재평가.</div></div><div style="display:flex;gap:10px;margin:7px 0;align-items:baseline"><div style="flex:none;min-width:96px;font-size:12px;color:var(--sub);font-weight:700">적대 게이트</div><div style="font-size:14px">① forward EPS<trailing — '저PER'이 저평가가 아니라 이익 감소의 반영일 수 있음(밸류트랩). ② 200일선 -15% 하회·범위 12% — 떨어지는 칼 매수 위험. ③ DKK 매출/USD 시총 혼재로 raw P/S 0.52x·EV/EBITDA 1.53x는 통화 아티팩트 — '초저평가' 착시 경계.</div></div><div style="margin-top:8px;font-size:13px;color:var(--sub)">중립 (60점 / 100)</div></div>
+<div class="sec"><h2>핵심 지표</h2><div class="kg"><div class="ki"><div class="kl">현재가</div><div class="kv">$38.64</div></div><div class="ki"><div class="kl">시가총액</div><div class="kv">$170.6B</div></div><div class="ki"><div class="kl">PER</div><div class="kv">trailing 9.4x / forward 11.7x</div></div><div class="ki"><div class="kl">52주 범위</div><div class="kv">$35.12~$64.16</div></div><div class="ki"><div class="kl">매출성장 YoY</div><div class="kv">+2.1%</div></div><div class="ki"><div class="kl">순이익성장 YoY</div><div class="kv">-20.6%</div></div><div class="ki"><div class="kl">영업이익률</div><div class="kv">42.5%</div></div><div class="ki"><div class="kl">ROE</div><div class="kv">59.8%</div></div><div class="ki"><div class="kl">배당수익률</div><div class="kv">4.65%</div></div><div class="ki"><div class="kl">FCF (TTM)</div><div class="kv">약 $5.5B (캐파 피크)</div></div><div class="ki"><div class="kl">컨센서스 평균목표</div><div class="kv">$46.09 (+19%)</div></div><div class="ki"><div class="kl">52주 위치</div><div class="kv">12% (저점권)</div></div></div></div>
+<div class="sec"><h2>손절/목표가 (ATR 기반)</h2><div class="sc"><div class="sb"><div class="sl">손절가 (ATR 2x)</div><div class="sp">$37.17</div><div class="dn" style="font-size:13px">-3.8%</div></div><div class="tb"><div class="sl">목표가 (R:R 1:2)</div><div class="tp">$46.00</div><div class="up" style="font-size:13px">+19.0%</div></div></div><div class="cb"><svg viewBox="0 0 380 85" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;"><rect x="30" y="30" width="320" height="16" fill="var(--border)" rx="8"/><rect x="53" y="30" width="97" height="16" fill="rgba(66,165,245,0.15)" rx="8"/><line x1="53" y1="26" x2="53" y2="50" stroke="var(--sell)" stroke-width="2"/><text x="53" y="22" fill="var(--sell)" font-size="10" text-anchor="middle">$37</text><line x1="69" y1="24" x2="69" y2="52" stroke="var(--text)" stroke-width="3"/><text x="69" y="66" fill="var(--text)" font-size="11" font-weight="600" text-anchor="middle">$39</text><line x1="150" y1="26" x2="150" y2="50" stroke="var(--buy)" stroke-width="2"/><text x="150" y="22" fill="var(--buy)" font-size="10" text-anchor="middle">$46</text><text x="30" y="80" fill="var(--sub)" font-size="9">52주 저: $35</text><text x="350" y="80" fill="var(--sub)" font-size="9" text-anchor="end">52주 고: $64</text></svg></div><p style="color:var(--sub);font-size:13px;text-align:center">ATR(14): $0.74 | R:R 1:2</p></div>
+<div class="sec"><h2>Executive Summary</h2><p>노보 노디스크는 매출총이익률 82.0%·영업이익률 42.5%·ROE 59.8%의 최상위 제약 프랜차이즈이나, GLP-1 성장 엔진이 매출 +2.1%·순이익 -20.6% YoY로 급감속하며 주가가 52주 고점 대비 -40%, 범위 12% 저점권($38.64)까지 디레이팅됐다. forward PE 11.7x·배당수익률 4.65%는 품질 대비 밸류 지지를 제공하나, forward EPS($3.31)가 trailing($4.09)보다 낮아 시장은 이익 추가 감소를 가격에 반영 중이다. 핵심 쟁점은 감속이 일라이릴리 경쟁·미국 약가에 따른 <b>구조적</b> 현상인지, 재고·공급 정상화에 따른 <b>일시적 air-pocket</b>인지다. 밸류 2방법(forward P/E + 간이 DCF) 교차 12M 목표가 <b>$46(+19%)</b>은 컨센서스 평균($46.09)과 일치한다. 200일선 -15% 하회·이익 감소 모멘텀·밸류트랩 리스크가 적극 매수를 제약한다. 투자등급 <b>중립(Hold), 60점</b> — 최상위 품질 + 밸류·배당 지지 vs 급감속 + 하락 추세.</p></div>
+<div class="sec"><h2>스코어카드</h2><div class="cb"><svg viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;"><polygon points="140.0,100.0 169.4,109.5 187.6,134.5 187.6,165.5 169.4,190.5 140.0,200.0 110.6,190.5 92.4,165.5 92.4,134.5 110.6,109.5" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/><polygon points="140.0,50.0 198.8,69.1 235.1,119.1 235.1,180.9 198.8,230.9 140.0,250.0 81.2,230.9 44.9,180.9 44.9,119.1 81.2,69.1" fill="none" stroke="var(--border)" stroke-width="1"/><polygon class="radar-fill" points="140.0,110.0 192.9,77.2 206.6,128.4 197.1,168.5 181.1,206.6 140.0,180.0 98.9,206.6 102.0,162.4 82.9,131.5 104.7,101.5" fill="rgba(38,166,154,0.22)" stroke="var(--buy)" stroke-width="2"/><line x1="140" y1="150" x2="140.0" y2="50.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="25.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">성장성</text><circle cx="140.0" cy="110.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">수익성</text><circle cx="192.9" cy="77.2" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="111.4" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">재무건전성</text><circle cx="206.6" cy="128.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="235.1" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="258.9" y="188.6" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">밸류에이션</text><circle cx="197.1" cy="168.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="198.8" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="213.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="start" dominant-baseline="middle">해자/경쟁력</text><circle cx="181.1" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="140.0" y2="250.0" stroke="var(--border)" stroke-width="0.5"/><text x="140.0" y="275.0" fill="var(--sub)" font-size="11" text-anchor="middle" dominant-baseline="middle">모멘텀/수급</text><circle cx="140.0" cy="180.0" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="230.9" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="251.1" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">산업매력도</text><circle cx="98.9" cy="206.6" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="180.9" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="188.6" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">리스크</text><circle cx="102.0" cy="162.4" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="44.9" y2="119.1" stroke="var(--border)" stroke-width="0.5"/><text x="21.1" y="111.4" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">ESG/지배구조</text><circle cx="82.9" cy="131.5" r="3" fill="var(--buy)"/><line x1="140" y1="150" x2="81.2" y2="69.1" stroke="var(--border)" stroke-width="0.5"/><text x="66.5" y="48.9" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">촉매/이벤트</text><circle cx="104.7" cy="101.5" r="3" fill="var(--buy)"/></svg></div><details class="tbl-fold"><summary style="cursor:pointer;color:var(--sub);font-size:13px;padding:4px 0">상세 데이터 표 펼치기 (10행)</summary><table><thead><tr><th>항목</th><th>점수</th><th>만점</th></tr></thead><tbody><tr><td>성장성</td><td>4.0</td><td>/10</td></tr><tr><td>수익성</td><td>9.0</td><td>/10</td></tr><tr><td>재무건전성</td><td>7.0</td><td>/10</td></tr><tr><td>밸류에이션</td><td>6.0</td><td>/10</td></tr><tr><td>해자/경쟁력</td><td>7.0</td><td>/10</td></tr><tr><td>모멘텀/수급</td><td>3.0</td><td>/10</td></tr><tr><td>산업매력도</td><td>7.0</td><td>/10</td></tr><tr><td>리스크</td><td>4.0</td><td>/10</td></tr><tr><td>ESG/지배구조</td><td>6.0</td><td>/10</td></tr><tr><td>촉매/이벤트</td><td>6.0</td><td>/10</td></tr></tbody></table></details><p style="text-align:right;font-weight:700;margin-top:8px">종합: 60/100</p></div>
+<div class="sec"><h2>버전 추이</h2><table><thead><tr><th>버전</th><th>분석일</th><th>점수</th><th>등급</th><th>목표가</th></tr></thead><tbody><tr><td>v15</td><td>2026-09-12</td><td>65</td><td>매수</td><td>$49</td></tr><tr><td>v16</td><td>2026-09-22</td><td>60</td><td>중립</td><td>$43</td></tr><tr><td>v17</td><td>2026-10-02</td><td>62</td><td>중립</td><td>$44</td></tr></tbody></table><p style="color:var(--sub);font-size:12.5px;margin-top:6px">최근 3개 버전 <span class="up">+2pt (직전 대비)</span> — 각 버전은 BLIND 재분석(이전 결론 미참조) 독립 산출</p></div>
+<div class="sec"><h2>기업개요 & Moat <span class="mn">넓음 (침식 진행)</span></h2><p>노보 노디스크(NVO, NYSE ADR)는 덴마크 기반 글로벌 제약사로, 당뇨·비만 치료제 GLP-1 계열(오젬픽·위고비·리벨서스)이 매출의 핵심 축이다. 섹터는 Healthcare, 산업은 Drug Manufacturers - General. 시가총액 $170.6B, 발행주식(ADR) 33.4억주. TTM 매출 DKK 329B(약 $48B 환산), 매출총이익률 82.0%의 초고마진 구조다. 노보 노디스크 재단(Novo Holdings)이 다수 의결권을 보유해 장기 지향 지배구조를 갖는다. 미국이 최대 시장이자 약가 압박의 진앙이며, 비만·당뇨 양축의 GLP-1 집중 포트폴리오가 성장과 리스크를 동시에 규정한다.</p><h3>Moat 상세</h3><p>해자의 핵심은 (1) GLP-1 펩타이드 대량생산 캐파와 주사제 충전·완제 제조 노하우, (2) 오젬픽·위고비의 강력한 브랜드·처방 관성, (3) 100년 축적된 당뇨 R&D와 방대한 임상 데이터, (4) 보험 등재·유통 네트워크다. 전환비용과 규모의 경제, 규제 승인 장벽이 신규 진입을 어렵게 한다. 다만 일라이릴리의 티르제파타이드(젭바운드·마운자로)가 체중감량 효능 우위로 해자의 '폭'을 적극 침식 중이며, 경구 제형 경쟁·컴파운딩·향후 바이오시밀러가 '지속성'을 위협한다. 종합 평가는 <b>넓음</b>이되 경쟁 심화로 침식이 진행되는 상태.</p></div>
+<div class="sec"><h2>재무분석</h2><h3>분석</h3><p>손익: TTM 매출 DKK 329B(+2.1% YoY), 매출총이익률 82.0%, 영업이익률 42.5%, 순이익률 35.3%. 그러나 순이익이 YoY <b>-20.6%</b>로 감소 전환했고, 분기 영업이익률이 Q2'25 43.5%(33.45/76.86)→Q2'26 34.5%(27.06/78.49)로 압축됐다. Q1'26(3월)은 OpInc 59.6·NI 48.6·EPS 10.91로 타 분기 대비 2배+ 이상값(일회성 추정)이라 trailing 지표를 부풀린다. 재무상태: 총현금 DKK 45B·총부채 DKK 140B·순부채 DKK 95B(약 $13.8B 환산), 부채비율 63%로 순현금은 아니나 감당 가능 수준. 현금흐름: 영업현금흐름 DKK 132B로 견조하나 FCF는 DKK 37.7B(약 $5.5B)로 대규모 캐파 증설 capex에 눌려 있다. ROE 59.8%는 제약 최상위 밴드. 배당 $1.80(수익률 4.65%, trailing EPS 대비 약 44% 지급)로 커버리지 안정적.</p></div>
+<div class="sec"><h2>밸류에이션</h2><p>trailing PE 9.4x는 Q1'26 일회성 이익으로 왜곡되어 forward PE 11.7x를 앵커로 채택한다. forward EPS $3.31이 trailing $4.09보다 낮아 시장이 이익의 추가 감소를 가격에 반영 중이며 PEG 4.32(저성장)가 이를 뒷받침한다. <b>방법론 교차(2개):</b> (1) Forward P/E 앵커 — 품질 제약 적정 13~14x를 forward EPS $3.31에 적용, 고금리 레짐 할인 반영 → $42~$47. (2) 간이 DCF — 캐파 피크 후 정상화 FCF·할인율 ~9%(고금리)·터미널 성장 2.5%로 보수적 산출 → $46~$50. 두 방법 중앙 교차 $46으로 수렴, 컨센서스 평균 $46.09와 일치한다. <b>12M 목표가 $46</b>(+19%). 단 raw P/S 0.52x·EV/EBITDA 1.53x·EV/Rev 0.81x는 매출·EBITDA(DKK)와 시총(USD)의 통화 혼재 아티팩트이므로 밸류 판단에서 배제했다.</p></div>
+<div class="sec"><h2>모멘텀 & 컨센서스</h2><p>가격 모멘텀은 명백한 하락세다. 현재가 $38.64는 50일선 $43.43·200일선 $45.40을 큰 폭 하회하고, 52주 범위(35.12~64.16)의 12% 저점권으로 고점 대비 -40%다. 전일 대비 +1.2%($38.18→$38.64)의 소폭 반등에 그친다. 수급: 기관 보유 9.9%·내부자 0.003%(재단 지배 구조 특성)·공매도 비중 1%(short ratio 2.34)로 공매도 압력은 낮다. 베타 0.384로 시장 민감도가 매우 낮은 방어주이며 ATR 1.9%의 저변동 종목이다. 매크로(F&G 45·VIX 15.4·강달러 121.4) 자체는 방어주에 치명적이지 않으나, 추세가 하락이라 저점 매수는 '떨어지는 칼' 위험을 내포한다.</p></div>
+<div class="sec"><h2>산업 & 경쟁구도</h2><p>사업은 당뇨(오젬픽·리벨서스)와 비만(위고비) 양축의 GLP-1 집중 구조다. 비만 TAM은 비만 인구 증가와 적응증 확대(심혈관·MASH·수면무호흡·알츠하이머 탐색)로 구조적 메가트렌드이나, 사실상 노보-릴리 복점 경쟁이 가격과 점유율을 동시에 압박한다. 미국이 최대 시장이자 약가 압박(IRA 메디케어 협상·PBM 리베이트·340B)의 진앙이다. 성장 동력은 (a) 경구 제형 확대, (b) 신규 적응증 승인, (c) 공급 정상화와 신흥국 침투다. 핵심 리스크는 릴리의 효능 우위, 차세대 파이프라인 성과, 미국 순가격 하락, 그리고 강달러에 따른 USD 보고 실적 희석이다.</p></div>
+<div class="sec"><h2>리스크 분석</h2><p>리스크는 '성장 급감속이 구조적인가'에 집중된다. <b>forward EPS가 trailing보다 낮다</b>는 사실은 시장이 이익의 추가 감소를 이미 가격에 담고 있음을 의미하며, 이 경우 forward 11.7x·trailing 9.4x의 '저PER'은 저평가가 아니라 밸류트랩의 징후일 수 있다. 가장 무거운 역풍은 일라이릴리의 효능 우위에 따른 점유율 잠식과 미국 약가·규제 압박이며, 둘 다 영업이익률을 추가 압축할 수 있다. 다만 베타 0.384·배당 4.65%·52주 저점권(12%)은 상당한 악재 선반영과 하방 완충을 시사한다. 상방(+19%)과 2ATR 손절(-3.8%)의 비대칭은 제한적이나, 52주 저점 $35.12 이탈 시 하락 가속 위험이 꼬리 리스크로 남는다.</p><div class="cb"><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;"><rect class="hm-ll" x="60" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="60" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="60" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mm" x="140" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="140" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="170" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-mh" x="220" y="100" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><rect class="hm-hh" x="220" y="30" width="80" height="70" stroke="var(--border)" stroke-width="0.5"/><circle cx="180" cy="120" r="5" fill="var(--buy)"/><text x="189" y="124" fill="var(--text)" font-size="10">경쟁 심화 (일라이릴리 GLP-1)</text><circle cx="180" cy="138" r="5" fill="var(--buy)"/><text x="189" y="142" fill="var(--text)" font-size="10">미국 약가·규제 압박</text><circle cx="180" cy="156" r="5" fill="var(--buy)"/><text x="189" y="160" fill="var(--text)" font-size="10">이익 감소 모멘텀 고착 (밸류트랩)</text><circle cx="180" cy="174" r="5" fill="var(--buy)"/><text x="189" y="178" fill="var(--text)" font-size="10">파이프라인/임상 리스크</text><circle cx="180" cy="192" r="5" fill="var(--buy)"/><text x="189" y="196" fill="var(--text)" font-size="10">강달러·특허 절벽</text><text x="100" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">저</text><text x="50" y="205" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">저</text><text x="180" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">중</text><text x="50" y="135" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">중</text><text x="260" y="258" fill="var(--sub)" font-size="11" text-anchor="middle">고</text><text x="50" y="65" fill="var(--sub)" font-size="11" text-anchor="end" dominant-baseline="middle">고</text><text x="180.0" y="272" fill="var(--sub)" font-size="12" text-anchor="middle">발생가능성 →</text></svg></div><div class="ri rl"><strong>경쟁 심화 (일라이릴리 GLP-1)</strong> (발생: 높음, 영향: -25%)<br><span style="color:var(--sub);font-size:13px">티르제파타이드(젭바운드·마운자로)의 체중감량 효능 우위로 점유율 잠식. 차세대 경구·복합제 위협으로 해자 폭 침식.</span></div><div class="ri rl"><strong>미국 약가·규제 압박</strong> (발생: 높음, 영향: -20%)<br><span style="color:var(--sub);font-size:13px">IRA 메디케어 협상·PBM 리베이트·340B 압박으로 미국 순가격 하락. 최대 시장에서 영업이익률 추가 압축.</span></div><div class="ri rl"><strong>이익 감소 모멘텀 고착 (밸류트랩)</strong> (발생: 높음, 영향: -18%)<br><span style="color:var(--sub);font-size:13px">forward EPS<trailing. 감속이 구조적이면 저PER이 함정으로 전환, forward 10x 이하 추가 디레이팅.</span></div><div class="ri rl"><strong>파이프라인/임상 리스크</strong> (발생: 중간, 영향: -15%)<br><span style="color:var(--sub);font-size:13px">CagriSema·경구 세마글루티드 등 차세대 비만약 데이터 실망 시 성장 서사와 멀티플 정상화 가정 훼손.</span></div><div class="ri rl"><strong>강달러·특허 절벽</strong> (발생: 중간, 영향: -10%)<br><span style="color:var(--sub);font-size:13px">USD 121.4 강세로 DKK 실적의 USD 보고 EPS 희석. 세마글루티드 특허 만료(2030년대 초) 장기 침식.</span></div></div>
+<div class="sec"><h2>매매 전략</h2><p>신규 공격 진입은 유보하고 밸류·배당 지지를 근거로 분할·소량 관망 매수로 접근한다 — 상방(+19%)이 매력적이나 200일선 -15% 하회·이익 감소 모멘텀·밸류트랩 리스크가 적극 매수를 제약한다. 기보유 포지션은 <b>2ATR 손절 $37.17</b> 규율 하에 홀드하되, 저변동(ATR 1.9%)으로 손절폭이 -3.8%로 타이트하므로 52주 저점 $35.12 이탈을 추가 재평가 트리거로 둔다. 추가 매수는 분기 매출 성장 재가속 또는 이익 안정화 확인 후, 혹은 $35 근방 조정 시 분할로. 방어주 특성(베타 0.38)·4.65% 배당은 보유 비용을 낮춘다.</p></div>
+<div class="sec"><h2>📊 Confidence Interval</h2>12개월 목표가 밴드는 '감속의 구조성' 불확실성으로 넓다. 기본 시나리오(확률 ~50%) <b>$46</b> — 이익 감소가 -20%대에서 안정화, forward 13~14x 정상화, 컨센 평균 수렴. 낙관(확률 ~25%) <b>$55</b> — 비만 TAM 재가속 + 신규 적응증 + 멀티플 15x+ 회복. 비관(확률 ~25%) <b>$33</b> — 릴리 점유율 추가 잠식 + 미국 약가 압박으로 이익 두 자릿수 감소 고착, forward 10x 이하 → 52주 저점 $35.12 이탈. 90% 신뢰구간 대략 <b>$33 ~ $55</b>(-15% ~ +42%). 하방은 저점에 근접, 상방은 품질 재평가에 의존하는 비대칭 구조.</div>
+<div class="sec"><h2>⚠️ 약한 가정 3개 (Most Fragile Assumptions)</h2><ol><li><b>forward EPS $3.31 안정화</b> — 이익 감소가 -20%대에서 멈춘다는 전제. 일라이릴리 점유율·미국 순가격 하락으로 추가 감소 시 목표가 하향, '저PER'은 저평가가 아니라 함정으로 판명.</li><li><b>13~14x forward 멀티플 정상화</b> — 고금리·강달러 레짐에서도 품질 프리미엄이 회복된다는 가정. 성장 재가속 실패 시 10~11x 고착 → $35 내외 재평가.</li><li><b>설비투자 피크 후 FCF 정상화</b> — 현재 FCF(약 $5.5B)가 대규모 캐파 증설 capex에 눌린 상태이며 정상화를 가정. 수요 둔화기에 증설이 과잉이 되면 ROIC·FCF 회복 경로 훼손.</li></ol></div>
+<div class="sec"><h2>🔁 BLIND 재분석 노트</h2>본 분석은 <b>data.json 단일 소스</b>(yfinance, 가격 기준일 2026-10-09)만으로 과거 버전·리포트·timeline 미참조 독립 수행. <b>통화 아티팩트 경고</b>: totalRevenue(DKK 329B)·EBITDA(DKK 174B)·대차대조표는 DKK, 가격·시총은 USD → raw P/S 0.52x·EV/EBITDA 1.53x·EV/Rev 0.81x는 통화 혼재 아티팩트로 밸류 판단서 배제. 유효 지표는 마진·ROE·성장률·PE(ADR)·배당수익률. Q1'26(3월) OpInc 59.6·NI 48.6·EPS 10.91은 타 분기 대비 2배+ 일회성 추정 이상값 → trailing EPS $4.09·trailing PE 9.4x를 부풀려 forward 앵커 채택. 핵심 긴장은 품질(수익성 9·재무 7·해자 7)과 성장(4)·모멘텀(3)·리스크(4)의 괴리이며, 60점은 '최상위 품질 + 밸류·배당 지지 vs 급감속 + 하락 추세'를 중립으로 번역한 결과다. 재검증 트리거: (a) 분기 매출 성장 음전환 시 밸류트랩 가정 강화, (b) CagriSema/경구 세마 데이터, (c) 미국 약가 정책 변화, (d) 52주 저점 $35.12 이탈 시 2ATR 손절($37.17) 재평가.</div>
+<div class="disc disclaimer"><h4 style="display:none">⚠️ 주의사항</h4>이 리포트는 AI가 자동 생성한 참고 자료이며, 투자 권유가 아닙니다.<br>투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.<br>생성일: 2026-10-11 | 종목분석 에이전트 v3.5 (Generated by report-generator)</div>
+
+<div class="cmd-guide footer">
+<h2>명령어 가이드</h2>
+<div class="cmd-grid">
+<div class="cmd-item"><code>/종목분석</code><span>종목 심층 분석</span></div>
+<div class="cmd-item"><code>/빠른분석</code><span>핵심 지표 + ATR</span></div>
+<div class="cmd-item"><code>/비교분석</code><span>두 종목 비교</span></div>
+<div class="cmd-item"><code>/손절계산</code><span>ATR 손절/목표가</span></div>
+<div class="cmd-item"><code>/리포트</code><span>HTML 재생성</span></div>
+<div class="cmd-item"><code>/모닝브리핑</code><span>오전 시장 브리핑</span></div>
+<div class="cmd-item"><code>/이브닝브리핑</code><span>저녁 시장 브리핑</span></div>
+<div class="cmd-item"><code>/주간리포트</code><span>주간 종합 분석</span></div>
+<div class="cmd-item"><code>/크립토브리핑</code><span>크립토 시장</span></div>
+<div class="cmd-item"><code>/글로벌인텔리전스</code><span>매크로 4축 분석</span></div>
+<div class="cmd-item"><code>/모델포트폴리오</code><span>4종 모델 비교</span></div>
+<div class="cmd-item"><code>/내포트폴리오</code><span>내 자산 분석</span></div>
+<div class="cmd-item"><code>/리밸런싱</code><span>포트폴리오 조정</span></div>
+<div class="cmd-item"><code>/성과리뷰</code><span>과거 제안 적중률</span></div>
+<div class="cmd-item"><code>/풀브리핑</code><span>A+B+C+E 4편</span></div>
+<div class="cmd-item"><code>/KB업데이트</code><span>섹터 KB 갱신</span></div>
+<div class="cmd-item"><code>/KB점검</code><span>KB 건강 점검</span></div>
+<div class="cmd-item"><code>/애널리스트PDF</code><span>IB PDF 드롭존 처리</span></div>
+<div class="cmd-item"><code>/애널리스트스크랩</code><span>웹 자동 수집 (IB·미디어·한국·YT)</span></div>
+<div class="cmd-item"><code>/리서치업데이트</code><span>Research KB 갱신 (학술·씽크탱크)</span></div>
+<div class="cmd-item"><code>/재분석실행</code><span>대상 자동 검출 + 일괄 재분석</span></div>
+<div class="cmd-item"><code>/재분석점검</code><span>재분석 후보 미리보기</span></div>
+</div>
+</div>
+
+<script>function toggleTheme(){var b=document.body,t=b.getAttribute("data-theme")==="light"?"dark":"light";if(t==="light"){b.setAttribute("data-theme","light");document.getElementById("theme-label").textContent="다크";}else{b.removeAttribute("data-theme");document.getElementById("theme-label").textContent="라이트";}localStorage.setItem("theme",t);}function downloadReport(){var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(document.documentElement.outerHTML);a.download="NVO_NovoNordisk_20261011.html";a.click();}(function(){var t=localStorage.getItem("theme");if(t==="light"){document.body.setAttribute("data-theme","light");var l=document.getElementById("theme-label");if(l)l.textContent="다크";}})();</script>
+</body>
+</html>
