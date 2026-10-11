@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-04
-valid_until: 2026-11-03
+updated: 2026-10-11
+valid_until: 2026-11-10
 category: macro
 sources:
   [
@@ -276,9 +276,19 @@ sources:
     "Korea Times",
     "Khaleej Times",
     "roic.ai",
+    "Mainichi",
+    "Il Sole 24 Ore",
+    "Benchmark Minerals",
+    "implicator.ai",
+    "SupplyChainDive",
+    "BHFS",
+    "TSE",
+    "Jamaica Observer",
+    "DailySignal",
+    "Quinnipiac",
   ]
 confidence: high
-last_synced_from_db: 2026-10-04
+last_synced_from_db: 2026-10-11
 ---
 
 # 정치 사이클 & 정책 트래커 (Political Cycle)
@@ -289,6 +299,18 @@ last_synced_from_db: 2026-10-04
 > **읽기 권한:** briefing-lead, global-macro-analyst, 종목분석 9개 에이전트
 
 ## CURRENT (에이전트는 이 섹션만 사용)
+
+### ★ 2026-10-11 주간 갱신 (10/4~10/11 신규 사실) ★
+
+- **★★ 美 연방정부 셧다운 D+10 지속—ACA 교착·트럼프 RIF 개시·10/15 군 급여 명령 [10-11 갱신·핵심]**: **10/1 개시 셧다운이 10/11 현재 D+10 지속—해결 無·상원 CR 반복 부결(60표 벽 미달 지속·10/3 54-44 이래 복수 회차)·Schumer 민주 ACA 사수 결집 유지**. **★트럼프 행정부 RIF(정리해고) 개시—Vought 'RIF 시작'·~4,200명 해고통지(상무·교육·HHS·DHS·HUD·재무·EPA)·단 샌프란시스코 연방판사 가처분으로 집행 차단**. **★트럼프 10/11 군 급여 10/15 지급 행정명령(미사용 R&D $6.5B 전용)·'민주당이 정부 열어라' 압박**. ACA 보조금 연장 교착 지속(11/1 가입 데드라인 압박)·경제지표 공백 지속·일부 연방 프로그램 중단 개시. 여론 공화·트럼프 책임론 유지. 역대최장(2025 43일) 미도달. 중간선거 D-3주 [DailySignal 10/3, CBS, fedweek, govexec, kuow/NPR, Yahoo/Jamaica Observer 10/11]
+- **★★ 미중 희토류 분쟁 재점화—中 10/9 수출통제 전면확대·트럼프 '시진핑 만날 이유 없다'·대규모 추가관세 위협 [10-11 신규·핵심]**: **中 MOFCOM ~10/9 희토류 수출통제 전면 확대—허가제 전환·'>0.1% 中산 함유 또는 中 채굴/정제/마그넷/재활용 기술 사용 외국제품'까지 역외 적용**. **트럼프 10/10~11 '적대적' 규정·'대규모 관세 인상' 위협·APEC 시진핑 회담 '만날 이유 없다'(freeze)**. ★9/24 합의한 미중 휴전 2개월 연장(→2027.1.10)이 2주만에 심각한 시험대—희토류/마그넷 공급망 직접 리스크 재점화. 신규 통제 시행일 11/8 또는 12/1 보도 혼재 [organiser 10/11, implicator.ai, enca, MNI, Benchmark Minerals, Profit Pakistan]
+- **★ 트럼프 지지율 신저점 고착·베팅시장 민주 상하원 스윕 전망 확대 [10-11 갱신]**: **Quinnipiac(중간선거 D-5주) 승인 34%/반대 61%(2기 최저 타이)·경제 처리 31%(역대최저)·하원 민주 선호 51-39·Economist/YouGov 33%/62%**. **Generic Ballot 민주 ~D+5 안팎(RCP ~D+5.8·Morning Consult D+4(46-42))**. ★베팅시장(Kalshi·Polymarket) 민주 상원 62%·하원 91~93%로 급등(9월중순 53~54%서)·Nate Silver 상원 민주 58.6%(9/6 50.6%서)·Cook 6 toss-up(5 R석·1 D석). '공화 구조적 우위' 프레임 추가 후퇴 [Quinnipiac(Newsweek·JNS·waow), Economist/YouGov, RealClearPolitics(Newsweek), defirate(Kalshi·Polymarket), Nate Silver, Cook Political Report]
+- **★★ 브라질 대선 1라운드 Flávio Bolsonaro 충격 1위—Lula 역전패·런오프 10/25 [10-11 신규·핵심]**: **10/4 1라운드 개표(TSE 99.7%): Flávio Bolsonaro(PL) 47.09% 1위 vs Lula(PT) 45.09% 2위—50% 미달로 런오프 10/25행**. **사전 여론조사 Lula 우위를 뒤집은 충격—반-Lula 저항표가 Flávio 1위 견인·Flávio 득표 2018·2022 자이르 보우소나루 상회**. 제3후보(Caiado·Santos) 런오프 중립. 런오프 사실상 동률—신흥국·원자재 변수 [Outlook India, MercoPress 10/5, Al Jazeera 10/5, TASS(TSE)]
+- **★ 트럼프 행정부 232조 품목관세 전면 확대—트럭·가구·목재·의약품(IEEPA 무효 대체) [10-11 신규]**: **2/20 SCOTUS IEEPA 관세 무효 판결(6-3) 후 트럼프가 Section 232로 법적근거 전환·품목관세 확대**. **트럭 25%(중대형차·부품)·버스 10%(11/1 발효)·목재 10%·주방캐비닛/욕실/소파 가구 25%(10/14 발효, 1/1 비협상국 30~50% 인상)·의약품 100%(美 공장 건설사 면제)**. IEEPA 기수납 관세 환급은 CIT 미결(셧다운 중 CBP 환급 처리 동결과 중첩) [BHFS, SupplyChainDive, Hawaii Tribune, WION, Jones Day(IEEPA 2/20)]
+- **★ 佛 2027 예산안 공개—10Y OAT ~4.75~4.96% 2002래 최고·OAT-Bund 132bp 2011래 최고 [10-11 갱신]**: **르코르뉘 정부 2027 예산안 공개—적자 2027 5% 목표(2026 5.4%서)·€43B 신규/€54B 총 긴축·강제징수율 44.2%(2026 43.9%서)**. **10Y OAT 예산 전야 4.96%(2002래 최고)·OAT-Bund 스프레드 132bp(2011 유로위기래 최고)→10/6 4.75%로 소폭 완화**. 정부 생존이 사회당 지지(증세·긴축완화 조건)에 의존—2027 봄 대선 前 재정 취약성 지속 [Il Sole 24 Ore, Trading Economics, Boursedirect/AFP, Newsquawk]
+- **★ 日 다카이치 내각 45%로 하락(취임래 최저권)·韓 이재명 37.9% 2주 연속 반등 [10-11 갱신]**: **日—마이니치(10/4 보도·9월 조사) 45%/부정 40%(취임 65%서 -20%p)·보수기반 ~40% 지지 지속·기관 분산(요미우리 56%·Jiji 48.4%)·중앙 ~48~50% 하락세(이례치 배제)**. **韓—리얼미터(9/28 발표) 이재명 37.9%(+3.1%p·9월2주 33.8% 저점서 2주 연속 반등)·부정 60.1%·정당 국힘 39.4% vs 민주 38.7%(국힘 오차범위 내 재역전)**. 추석 연휴로 10월 첫주 조사 지연 [Mainichi(asianews·herald), Yomiuri, Jiji; 리얼미터(에너지경제·kbmaeil 9/28)]
+
+> ※ 美 셧다운 D+10 지속(ACA 교착·RIF 개시 but 가처분 차단·군급여 10/15 명령·역대최장 2025 43일 미도달)·미중 희토류 재충돌로 휴전(2027.1.10) 시험대·브라질 런오프 10/25(Flávio 1위 충격)·佛 2027 예산 OAT 2002래 최고·美 중간선거 11/3(D-3주·베팅시장 민주 상하원 스윕 62%/91%+).
 
 ### ★ 2026-10-04 주간 갱신 (9/27~10/4 신규 사실) ★
 

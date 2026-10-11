@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-04
-valid_until: 2026-11-03
+updated: 2026-10-11
+valid_until: 2026-11-10
 sector: science_tech
 sources:
   [
@@ -266,10 +266,14 @@ sources:
     Northwestern,
     Fusion Energy Base,
     humanoid.guide,
+    RCR Wireless,
+    SMM,
+    Sumitomo Chemical,
+    SafeLogic,
   ]
 confidence: high
-last_synced_from_db: 2026-10-04
-db_records: 1221
+last_synced_from_db: 2026-10-11
+db_records: 1234
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -349,6 +353,7 @@ db_records: 1221
 | **D-Wave Q2 2026 실적 = 예약 +1,120%** [8/9 신규] | **8/6 D-Wave H1 예약 $35.5M(+1,120% YoY)**·**H1 RPO $40.7M(+668% YoY)**·H1 QCaaS 생산매출 비중 **37.3%**. 어닐링→게이트모델 확장 지속, 현금 견조(5월 $588M) | 2026.08.06 | D-Wave 8-K / SEC |
 | **★ D-Wave Nature 논문 = dual-rail 2큐빗 게이트** [8/9 신규] | **8/5 Nature** — dual-rail **erasure qubit** 아키텍처 **2큐빗 얽힘 게이트** 최초 시연: 충실도 **~99.9%**·게이트타임 **~500ns**·하드웨어 **native 에러검출**. '가장 흔한 에러가 가장 정정 쉬운' **유리한 에러 계층구조가 2큐빗 연산서 보존** 입증 = 게이트모델 FTQC 하드웨어 오버헤드 대폭 절감. D-Wave의 **게이트모델 진입**(어닐링 외) 하드웨어 증거 | 2026.08.05 | thequantuminsider / D-Wave Newsroom / Nature |
 
+> **2026.10.11 갱신**: 양자 섹터 신규 discrete 이벤트 제한적(9/22 IonQ 실시간 QEC 디코더 CPU 구동 이후 소강, Q3 실적 미발표) — **★ PQC 연방 컴플라이언스 게이트 Q4 임박 = 실질 촉매**: 전 기관 PQC 마이그레이션 계획 **OMB 제출 10/22(T-11일)**·**CMMC 2.0 Phase 2 집행 11/10**·**CNSA 2.0 신규 NSS 조달 PQC 의무 2027-01-01**·FIPS 140-2 종료(잔여 인증서 Historical) **9/21 완료**→신규 연방조달 FIPS 140-3만. EO 14412 2단계 데드라인(키확립 2030·서명 2031) 유지, 기업 PQC 배포율 ~13% 저조. **양자주 Q3 2026 실적(~11월)이 다음 펀더멘털 촉매**(Q2 리캡: IonQ $80.1M +287%·FY26 가이던스 $450~460M / Rigetti $5.1M +185% / D-Wave $3.1M·상업 62%, 전반 적자 지속). (주의: **Google 'Quantum Echoes' 검증가능 양자우위는 2025.10 발표건으로 신규 아님** — 재순환 배제.)
 > **2026.09.13 갱신**: ★ **IonQ 9/8 NYSE Investor Day 개최 = 9/6 예고 이벤트 실현** — **Superion 로드맵 공개**(256큐빗 Superion 플랫폼, 고객 인도 2027, 수백→수천→수백만 큐빗 확장 설계) + **FY2026 매출 가이던스 $450~460M로 상향**(SkyWater 7/31~12/31 연결분 포함, 단독 $280~290M서 대폭 점프)=발표일 주가 **+12%**. SkyWater 수직통합 5대축(양자컴퓨팅·보안·센싱·네트워킹·반도체 파운드리)+집적광학·초전도 **전용 양자 파운드리 플랫폼**. 디지털서명 위협 **자원추정 논문**(FT 아키텍처로 256비트 ECC ~25.7일)+Congruity360 **$8.18M** 양자보안 계약. (프론티어 전문 갱신=토요 weekly-frontier 담당, 본 항목은 크로스커팅 헤드라인.)
 > **2026.09.06 갱신**: ★ **IonQ 9/8 NYSE Investor Day = 근접 최대 촉매** — SkyWater 통합 결합 가이던스 + 'Broad Quantum Advantage' 로드맵(800 논리큐빗 2027·2M 물리/80k 논리 2030) + 다년치 매출 목표 제시 관측(애널 44/52 Buy·중간 PT $65 +63.5%, FY26 가이던스 $280~290M). ★★ 과학 = **IBM+시카고대 8/29 양자우위 시연**(70 논리큐빗·2,415 논리 2큐빗 연산·468 T게이트, 논리 에러율 물리 대비 10x↓, 고전 난제 15분 해결). 상업 = **Quantinuum-Aramco 9/3 MoU**(에너지 FTQC)+앨버커키 $1.5M 집적광학 R&D, **D-Wave NTT DOCOMO 2번째 프로덕션 양자앱**·**IonQ-CMC 캐나다 FABrIC**. 주가 = 8월말 셀오프(D-Wave 8/26 CFO 은퇴 -8%·IonQ -3%, RGTI ~$16, 3사 52주고점 -60~76%·월간 -30%)=하이프사이클 디플레이션+리스크오프.
 > **2026.08.09 갱신**: ★ **양자주 Q2 2026 실적 3사 발표** — **IonQ 8/5 매출 $80.1M(+287% YoY, 컨센 22.4% 상회)=더블비트**, FY26 가이던스 **$260~270M→$280~290M 상향**, SkyWater $1.8B 인수 완료 재확인, 주가 종가 -4.29% $39.93(실적 앞두고 8/1 $32→$40 반등). **Rigetti 8/6 매출 $5.1M(+183% YoY)·GAAP 손실 $52.6M→AH -5.56%**($100M 연방 LOI·HPE·Pittsburgh Supercomputing). **D-Wave 8/6 H1 예약 $35.5M(+1,120%)·RPO $40.7M(+668%)**. ★★ 과학 = **D-Wave 8/5 Nature 논문**(dual-rail erasure qubit 2큐빗 게이트 ~99.9%·~500ns·native 에러검출, 유리한 error hierarchy 2큐빗서 보존→게이트모델 FTQC 오버헤드 절감)=D-Wave 게이트모델 진입 증거. 실적 전반 = 매출 급성장 지속 vs 손실/희석 우려 병존, IonQ만 가이던스 상향.
@@ -515,7 +520,7 @@ db_records: 1221
 | **CFS SPARC 첫 플라즈마 2027 + $1B 조달** [8/1 갱신] | **★ 7/30 $1B 추가 조달→누적 $4B**(연기금·국부펀드 참여=핵융합 첫 대규모 기관 라운드). SPARC(Devens MA) **~80% 조립**, **18개 초전도 자석 2026 여름말 전량 설치**, **첫 플라즈마+과학적 손익분기(Q>1) 2027** 목표. NVIDIA+Siemens AI 디지털 트윈. ARC 상업 발전소(400MWe) 준비 | 2026~2027 | TechCrunch / Fortune / CFS |
 | **Pacific Fusion 440GW 마일스톤** [7/18 신규] | **2026.06 2차 기술 마일스톤** = 컨테이너 크기 스케일 모듈 프로토타입 **440GW+ 피크출력·~1.1MV** 80나노초 초고속 펄스 → **Series A $1B+** 추가 트랜치 언락. 관성밀폐(pulser-driven) 방식 | 2026.06 | TechCrunch / PowerMag / PitchBook |
 | CFS ARC 상업 발전소                   | 400MWe. Eni $1B+ PPA. Google 200MW PPA. **2030년대 초** 버지니아 Chesterfield 계통 연결                                                                                                                                                         | 2030E      | CFS/ANS / Fortune                 |
-| **★ Helion 세계 첫 융합 규제 라이선스 + $15.5B 밸류** [8/1 갱신]     | **★ Helion = 세계 최초 융합발전소 규제 라이선스 확보**(워싱턴주 보건부 **방사성물질(RML)+방사성 대기배출(RAEL)** 라이선스, 6월). **$465M Series G(6월, Thrive Capital 주도)→밸류에이션 $15.5B·누적 자본 ~$1.5B**. Sam Altman 후원, **MS Orion PPA(2028년까지 50MW 공급 의무)**, 스타트업 중 최공격적. Orion(세계 첫 상업 핵융합 발전소, Malaga WA) 발전기동 초기 토목 2026 봄 착공                                                      | 2026 | GeekWire / BusinessWire / Helion |
+| **★ Helion 세계 첫 융합 규제 라이선스 + $15.5B 밸류** [10/11 갱신]     | **★ Helion = 세계 최초 융합발전소 규제 라이선스 확보**(워싱턴주 보건부 **방사성물질(RML)+방사성 대기배출(RAEL)** 라이선스, 6월). **$465M Series G(6월 1차)→2026-09 $500M 최종 클로징(Thrive Capital 주도)→밸류에이션 $15.5B·누적 자본 ~$1.5B+**. Sam Altman 후원, **MS Orion PPA(2028년까지 50MW 공급 의무)**, 스타트업 중 최공격적. Orion(세계 첫 상업 핵융합 발전소, Malaga WA) 발전기동 초기 토목 2026 봄 착공                                                      | 2026 | GeekWire / BusinessWire / Helion |
 | **DOE Fusion S&T 로드맵** [6/21 신규] | **DOE Fusion Science & Technology 로드맵 2026.06 발행**. DOE Milestone 프로그램 확대 시 핵융합 에너지 촉매 가능 평가                                                                                                                            | 2026.06    | DOE / pdpspectra / CFS            |
 | **TAE beam-driven FRC** [6/7]         | Norman 장치 운영 + Copernicus 후속 건설(순에너지 이득 목표). **TAE-TMTG $6B 합병** 2026 중반 마감 = 최초 상장 핵융합 기업                                                                                                                       | 2026       | pdpspectra / TAE / ANS            |
 | **ITER 대폭 지연**                    | First plasma **2033-34**. D-T **2039**. 추가 비용 **E5B** 초과                                                                                                                                                                                  | 2033~2039E | Science\|Business                 |
@@ -523,6 +528,8 @@ db_records: 1221
 | ARPA-E 핵융합                         | **$135M** 투자 -- 역대 최대 단일 투자                                                                                                                                                                                                           | 2026       | ARPA-E/FIA                        |
 | **핵융합 상업화 현실** [6/7]          | **2026 현재 어떤 기업도 전력망 공급 12개월 이내 도달 못함**. 초기 공격적 마일스톤 일부 지연되나 물리/공학/자본 궤적 의미있게 전진                                                                                                               | 2026       | pdpspectra / TechCrunch           |
 
+> **2026.10.11 갱신 (핵융합)**: **★ Helion Series G 2026-09 $500M 최종 클로징**(6월 1차 보고 $465M서 상향, Thrive Capital 주도)·밸류에이션 $15.5B·누적자본 ~$1.5B+·Orion 2028 MS 50MW 공급 의무 유지. 포워드 = **TechCrunch Disrupt 2026(10/13~15 SF) CFS Brandon Sorbom+Helion David Kirtley '그리드 핵융합' 패널**(SPARC/Polaris 진전·VA/WA 첫 계통연결 경로). CFS 누적 $4B(7월 $1B) 재확인. (9/27 Type One+TVA Bull Run 초기 인허가·METI 4개 프로젝트 조건부 선정은 기반영, 신규 아님.)
+> **2026.10.11 갱신 (SMR)**: 신규 대형 규제/딜 이벤트 제한적(SMR Q3 실적 미발표·우라늄 현물 ~$85~86/lb 횡보 지속) — NRC TerraPower Natrium 건설(4/24~)·Oklo Aurora-INL(late 2027~2028)·NuScale TVA/ENTRA1 6GW PPA 연내 촉매 진행형. 글로벌 SMR 66개사·15개국.
 > **2026.09.06 갱신 (SMR)**: **트럼프 행정부 $200M DOE 이니셔티브** = Oklo·X-Energy가 Microsoft·Nvidia와 AI 데이터센터용 첨단원자로 개발 가속(발표에 OKLO·XE 시간외 급등). ★리스크 = **Oklo PJM 좌초**(750MW Meta 후원 오하이오 프로젝트 대기열 제외 → 14개월 지연 위협, OKLO -5%, FERC 대기열 복원 요청·PJM 답변 9/4, 인터커넥션이 라이선싱·건설과 함께 핵심 리스크로 부각). **OKLO YTD -41%·XE YTD -27%**(X-energy 4월 IPO가 하회). 글로벌 SMR 66개사·15개국(Tier1 32개사).
 > **2026.08.01 갱신 (SMR)**: 신규 대형 규제 이벤트 제한적(7/18 대규모 갱신 이후 소강) — **★ NuScale Q2 2026 실적 8/5(수) 장마감 후 발표 = 근접 최대 촉매**(TVA/ENTRA1 6GW PPA 연내 확정 시사). **Barclays 목표가 $15→$11 하향**(TVA 진행 완만), 주가 $8.36(7/15·52주 고점 대비 -85%)이나 7/30 원자력주 급등·Motley Fool '브레이크아웃 임박'(7/27). **Oklo 주가 ~$41 월간 -28% 조정**(Aurora-INL DOE OTA+NSDA 승인, 상업운전 late 2027~2028). **우라늄 장기계약가 $90/lb=2008 이래 최고**(현물 ~$85~86 횡보). **Rolls-Royce SMR-ČEZ Temelín 계약+두산에너빌리티 RPV 사전제작**(dual-supply, 대부분 5월 발표건 재확인). Centrus HALEU $900M DOE 태스크오더.
 > **2026.07.26 갱신 (SMR)**: 신규 discrete 이벤트 제한적(7/18 대규모 갱신 직후) — **Rolls-Royce SMR-체코 7/21 MOU 2개 부지 추가**(Tušimice·Dětmarovice, ČEZ·산업부) = 유럽 SMR 배치 확대 지속. **NuScale(SMR) 7/21 +11.0%**(첫 NRC 설계승인 재부각·'high-stakes proving ground', TVA PPA 연내 촉매 대기). Deployable Energy Unity 실증로 NRIC/INL 초기 임계(DOE 4개 마이크로원자로 zero-power 트랙 재확인).
@@ -544,13 +551,14 @@ db_records: 1221
 
 | 항목                   | 내용                                                                          | 시점      | 출처                 |
 | ---------------------- | ----------------------------------------------------------------------------- | --------- | -------------------- |
-| 3GPP Rel-21 결정점     | **TSGs#112(6월)** 타임라인 최종 결정. 규범 **21개월**, ASN.1 동결 **2029.03** | 2026.06   | 3GPP / Ericsson      |
+| 3GPP Rel-21 결정점     | **2026-06 싱가포르 플레너리 전체 동결일정 확정**: 1차 기능동결 **2027-03**·중간 체크포인트 **2028-03(80%)**·2차 기능동결 **2028-06**·스테이지3 최종 **2028-12**·전체 코드(ASN.1) 동결 **2029-03** → 6G 상용 ~2030 | 2026.06   | 3GPP / RCR Wireless / comsoc |
 | **Rel-20 듀얼트랙**    | Rel-20_5GA(5G-Adv) + **Rel-20_6G**(초기 6G 연구) = 병행 체제                  | 2026      | 3GPP / One 6G Summit |
 | Rel-21 = 최초 6G 사양  | IMT-2030 제출 정렬. 규범 작업 2027.03~2029.03                                 | 2026~2029 | 3GPP                 |
 | 삼성 3GPP TSG RAN 의장 | **김연선 마스터** 선출 (한국인 최초)                                          | 2026.03   | Samsung Newsroom     |
 | 6G 핵심 연구 분야      | AI 기반 파형 최적화, **RIS**, sub-THz(100~300GHz)                             | 2026      | 3GPP / Ericsson      |
 | 6G 상용화 목표         | 약 2030년                                                                     | 2030      | 글로벌 컨센서스      |
 
+> **2026.10.11 갱신**: **★ Rel-21(최초 6G 사양) 전체 동결일정 확정**(2026-06 싱가포르 플레너리) — 1차 기능동결 **2027-03**, 체크포인트 2028-03(80%), 2차 동결 2028-06, 스테이지3 최종 2028-12, 코드 동결 **2029-03**→상용 ~2030. Qualcomm: '전면 재설계 아닌 측정가능 이득 중심 점진적'(상향링크·에너지효율·미드밴드). **마이그레이션 아키텍처**(통신사 1년+ 대기 핵심 미결)는 6월 '결정 불가'(RAN 의장 삼성 Younsun Kim)→**TSG RAN#113 마드리드(9/15~17) 이관**(Vodafone 지연중단 압박), 9월 플레너리 종료+ITU-R WP 5D 제출(ATIS 경유) 타임라인 정리되었으나 옵션 최종 채택/재이관 여부는 공개 미확정.
 > **2026.06.21 갱신**: 6G/통신 섹터 주요 신규 이벤트 없음. 6월 TSGs#112 결정점 대기.
 > 전문 세부: `industry/telecom_next.md` 참조.
 
@@ -587,6 +595,7 @@ db_records: 1221
 | **전고체 전지 -- Samsung SDI**         | SDI+**BMW+Solid Power** 공동개발. **황화물계 고체전해질**. **2027 양산**. 80% 충전 9분. 프로토타입 965km 주행거리                                                                                                                                                                                      | 2026~2027 | IDTechEx / eepower / to7motor                    |
 | **전고체 양산 진입 신호** [6/7]        | 2026 SSB **최초 상업 규모 도달**: 오토바이 Q1 인도(첫 상용 적용). **중국 2026.07 최초 SSB 표준** 발표. 유럽 Argylium(Syensqo+Axens) 황화물 산업화. **단 2030 이전 대규모 상업화 업계 비관적**                                                                                                          | 2026      | to7motor / engineerlive / 36kr / technoolab      |
 
+> **2026.10.11 갱신**: **전고체·차세대 배터리 '랩→양산 간극' 현실 재확인** — 완전 전고체 셀 고객 인도 누적 **0**(2026 스코어카드)·대규모 전고체 ESS 배치 **'5년+ 이후'**(SMM). **Sumitomo Chemical 할라이드계 전고체 전지소재 양산 2028 계획**. QS/삼성SDI/도요타 양산 목표 2027~2028 유지. 페로브스카이트 태양전지 = 랩기록→GW급 제조/유연/파일럿으로 초점 이동(CAS 페로브스카이트-유기 적층 인증효율 **28.04%** 정상상태 기록 경신, 단 결정질 실리콘 완전대체 아직 요원). (CATL 60GWh 나트륨이온 9월 공급계약·QS-Honda 공동연구는 10/04 주간 기반영.)
 > **2026.08.23 갱신**: 배터리 소재 연구 진전(양산 아닌 랩 단계) — **나트륨이온**: NUS팀 graphitic carbon nitride(GCN, 요소 550도)로 덴드라이트 억제·2,000시간+ 구동, U.Surrey 나트륨바나듐옥사이드 조성변경 출력 ~2배(中 Hina 나트륨전지 Tesla 리튬 벤치마크 근접) = 저비용·공급안보 그리드저장 부각. **전고체**: 연질 리튬 덴드라이트가 경질 세라믹 균열→단락 유발 기전 규명(안전·장수명 설계 단서). 완전 전고체 양산차는 2026 현재 0(재확인).
 > **2026.07.19 갱신**: 신규 discrete 이벤트 제한적, 스펙 정밀화 — **中 2026.07 최초 국가 SSB 표준 발표 확정**(KB 예고건 확인). **Samsung SDI 900Wh/L 프로토타입**(현 리튬이온 ~2x)·2027 9분 80%충전. **QuantumScape 4C rate 400사이클 후 80% 용량유지**(랩). 3사(QS/삼성/도요타) 2027~2028 생산 목표. 완전 전고체 양산차는 2026 현재 0.
 > **2026.07.05 갱신**: 신규 discrete 이벤트 없음, 상태 재확인 — 전고체 2026 lab→public road 전환(Factorial-Mercedes EQS **1,205km** 주행), SSB 2036 **$10B** 시장(IDTechEx). 고곡률 그래핀 네트워크 기록적 에너지/전력밀도. 페로브스카이트 빛 형태 가역변화.
@@ -808,7 +817,7 @@ db_records: 1221
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1221건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1234건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
