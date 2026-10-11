@@ -1,6 +1,6 @@
 ---
 updated: 2026-10-04
-valid_until: 2026-10-11
+valid_until: 2026-10-18
 file: economic_calendar
 sources:
   - "Kiplinger week of July 6-10 2026 economic calendar"
@@ -118,6 +118,8 @@ collection_status: OK
 > - **9월 NFP:** 본 파일은 '+29K 발표'로 기재했으나 `us_economy.md`는 **10/1 연방정부 셧다운으로 BLS 9월 고용보고서 미발표·연기**로 판정(셧다운=BLS 폐쇄→구조적 발표 불가)하고 **'+29K'를 미발표 지표 오인용으로 명시 교정**. 실측 민간 하드데이터 = **ADP −32K(9월·둔화)**. → 고용 인용은 ADP −32K 우선.
 > - **10월 FOMC(10/27~28) 인상 확률:** 본 파일 웹수집치 **~17~21%**(동일 '+29K' 서사 + 'Weak Jobs Report Cuts Odds' 헤드라인 기반)는 셧다운 교란 + real-world 오염 소지(project_briefing_dovish_reflex_error 패턴). `us_economy.md` SSOT는 **~66%**(10/28 인상 base case 유지). → Fed 방향은 us_economy SSOT 우선.
 > - **공통 가드(양 파일 일치):** 어느 수치든 **인하 피벗 아님** — bond rout 지속(10Y 5.28%·30Y 2004년래)=인하 거부, 2026 인하 배제, Fed 이동은 '지연 인상'(12월 ~62%). **cool 지표를 비둘기 반사로 오독 금지**(시뮬 2026 매파). BLS 보고서 실제 발표/셧다운 해제 시 재수집 교정 필요.
+
+> ✅ **[2026-10-11 /KB점검 재검증 — 재수집 DEFER, SSOT 대조 통과]** valid_until 10-11 D-0 재도달(auto-trigger 조건 재충족)이나 **이번 회차 재수집 미실행(의도적 defer)**. 근거: (1) ★**셧다운 D+11 데이터 블랙아웃** — `macro/us_economy.md`(10-10 SSOT) 확인: BLS 9월 고용·주간청구 여전 미발표, 10/14 9월 CPI·10/15 PPI 발표 지연/취소 리스크(백악관 'may never be released'). **신규 확정 하드데이터 없음 → 재수집해도 새 수치 없음**. (2) ★**재수집=비둘기 오염 재유입 위험**(project_econ_calendar_recollect_dovish_contamination, 10-04 발견) — WebSearch가 real-world(2025 셧다운+인하) '9월 NFP +29K·10월 인상 17%·비둘기 피벗' 서사를 재흡입. (3) SSOT 대조 결과 **본 파일 CURRENT(10/5~10/18 캘린더) + 위 10-04 교정 플래그가 여전히 유효** — us_economy(10-10)가 '+29K 오염 배제·10월 인상 ~66% 유지·12월 ~72%·2026 인하 배제·셧다운 블랙아웃'을 재확인하여 본 플래그와 완전 정합. 포워드 캘린더(10/14 CPI·10/15 PPI[둘 다 셧다운 지연 리스크]·10/22 BOK·10/27~28 FOMC 동결 유력)는 10-18까지 forward-valid → valid_until 10-18 연장(검증 전용, updated 10-04 유지=마지막 재수집일 정직 표기). **셧다운 해제/BLS 발표 시 즉시 정식 재수집 교정.**
 
 ## 확정 결과 — 2026-07-14 (화) 6월 CPI 서프라이즈 + 대형은행 Q2 실적 동시 발표
 
