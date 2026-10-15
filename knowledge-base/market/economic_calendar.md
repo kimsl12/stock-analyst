@@ -1,5 +1,5 @@
 ---
-updated: 2026-10-04
+updated: 2026-10-15
 valid_until: 2026-10-18
 file: economic_calendar
 sources:
@@ -569,6 +569,8 @@ collection_status: OK
 ---
 
 ## CURRENT — 다음 일정 (2026-10-05~10-18, 2026-10-04 토요일 kb-updater 재수집)
+
+> **[2026-10-15 이브닝 KST 20시 보정 노트 — market-data-collector]** (1) ★아래 10/4 재수집 표의 '10월 인상 ~17~21%·동결 79~84%·NFP +29K'는 WebSearch real-world 오염(us_economy SSOT 10/10 가 배제 판정). **SSOT = 셧다운 블랙아웃(10/1~, ~17일째)·9월 NFP/CPI 공식 미발표·10월 인상 ~66%·12월 ~72%·2026 인하 배제(매파 레짐)**. 본 표의 FOMC 확률 행은 SSOT 로 읽을 것. (2) 오늘(10/15 목) 08:30 ET(KST 21:30) 9월 PPI·소매판매는 일정상 예정이나 셧다운으로 발표 지연/취소 리스크 — 발표 여부 미확인(발표 시 수치 확인 전 해석 금지). 10/14 9월 CPI 도 발표 확인 못함(WebSearch 미노출·SSOT 블랙아웃). (3) 10/15 늦은 밤~10/16: Warsh 의장 IMF/세계은행 연차총회 Georgieva 대담(검색 단일 소스·confidence low-medium, 시각 미확정) · 주중 Waller·Bowman·Hammack·Barkin·Collins 등 Fed 인사 발언(10/27~28 FOMC 블랙아웃 직전 마지막 주; 단일 소스 low-medium). 10/15 21:30 KST 신규 실업수당·필라델피아 연은지수는 셧다운 영향 미확인. (4) 한국: 10/22 BOK(3연속 인상 여부) — 10/15 KOSPI -7.57%·USD/KRW 1,344 맥락에서 부담. 10/16(금) 별도 한국 주요 지표 미확인.
 
 > **오늘(10/4, 토) 상태**: 주말 휴장(미국·한국 정규장 모두 휴장, 경제캘린더는 일정 데이터라 재수집 유효). 이번 재수집은 valid_until 2026-10-04 만료(D-0) + 일요 /KB점검 P1 auto-trigger 대응. WebSearch 5회 교차검증(CME FedWatch/defirate/Polymarket/Kalshi·TradingEconomics/CNBC·BEA/Wichita Liberty·BLS Schedule/fedratecalc·ISM). 직전(9/27) 이후 최대 변화: **cool NFP(+29K)+cool Core PCE(3.0%)로 10월 FOMC 인상 확률 대붕괴(73~76%→~17~21%)** — 단 bond rout(10Y 5.28%·30Y 2004년래) 지속 → 위 '확정 결과 2026-09-28~10-03' 섹션 신설.
 > **★ 정책금리 상태**: 미국 목표범위 = **3.75~4.00%(9/16 인상 실행, DFF 3.88)**. 다음 초점 = **10/27~28 FOMC**. ★프라이싱 대전환: 9/27 KB 'CME 73~76%·Polymarket 65%(인상)' → **10/2~3 CME ~17~21%·Polymarket ~17%·Kalshi ~17%(인상)/동결 ~79~84%**(cool NFP+PCE). **그러나 12월 인상 base case 유지 ~62%** — 'Fed, 10월 skip 후 12월 인상'. 2026 인하 배제 지속. bond rout(디스인플레조차 장기금리 못 내림)이 매파 환경 고착. **'인하 피벗' 오독 절대 금지 — 10월 skip은 인상 시점 이동이지 완화 전환이 아니다. 시뮬 2026 레짐 매파.**
