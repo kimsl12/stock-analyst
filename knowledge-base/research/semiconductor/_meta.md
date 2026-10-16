@@ -1,12 +1,12 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-10-10
+last_updated: 2026-10-17
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
-l1_index_count: 34
+l1_index_count: 36
 l2_summary_count: 8
 l3_deep_dive_count: 1
 deep_dive_priority: 1
@@ -22,6 +22,7 @@ deep_dive_priority: 1
 - **시장 규모 thesis 보강**: McKinsey 4/2 — 2030년 $1.6T (CAGR 13%), 컴퓨팅·스토리지가 성장의 55%($460B). 메모리·로직 3강 (SK하이닉스·Samsung·Micron + NVIDIA·AMD·AVGO) 직접 베타. (L2: mckinsey_chip_boom_1_6t)
 - **지정학 리스크 격상 (입법 단계 진입)**: 미 MATCH Act 입법 + 중국 산업망·공급망 안전 통합 법령(4월 시행) + EU 데이터센터 3배 확장 플랜(5월). 행정 명령에서 양국 법체계 격돌로 격상 — 정권 교체 후퇴 가능성 ↓. (L2: match_act_china_industrial_chain)
 - **차세대 메모리 아키텍처 학술 신호**: arXiv:2511.12286 Sangam — Chiplet-DRAM-PIM + CXL이 LLM 추론에서 H100 대비 디코딩 10.3×·쿼리지연 4.22×. GPU 단일 의존 thesis에 학술 도전 (2028~2030 양산 가능성). (L2: sangam_chiplet_pim_cxl)
+- **파운드리·장비 측 capex 실측 확인(2026-10 Q3 실적)**: TSMC Q3 2026 매출 US$46.72B(+41.2% YoY)·GM 66.4%·웨이퍼 첨단 7nm이하 79%(2nm 8%)·Q4 가이던스 US$52.3~54.3B(분기 첫 $50B+) + ASML Q3 2026 매출 €11.7B·CEO "고객 2029~2030 발주 희망, 2028 +30% 캐파 이상 증설 검토". AI capex 슈퍼사이클이 전공정(TSMC 가동률)·장비(ASML EUV 리드타임)까지 2030년 가시성으로 확장 — HBM4/CoWoS·SK하이닉스 thesis 다운스트림 보강. (L1만, L2 미승격)
 
 ## Key Uncertainties (지속 추적)
 
@@ -48,7 +49,7 @@ deep_dive_priority: 1
 
 - 학술: 6
 - 씽크탱크: 2
-- 컨퍼런스/백서·산업: 10
+- 컨퍼런스/백서·산업: 12
 - 규제: 3
 
 ## L2 월간 요약 목록 (최신 → 과거)

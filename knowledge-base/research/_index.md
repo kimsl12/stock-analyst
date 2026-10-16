@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-10-10
+last_updated: 2026-10-17
 update_cycle: weekly
 status: active
-total_headlines: 156
+total_headlines: 158
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -71,6 +71,9 @@ total_headlines: 156
 - 📄 [Industry] Micron FY4Q26 실적 프리뷰 (2026-09-30 발표 예정) — "자체 Q4 가이던스 매출 $50.0B±$1.0B(사상 첫 분기 $50B 마일스톤·FY3Q26 $41.46B 대비 약 +21% QoQ)·GAAP 총이익률 약 86%·Non-GAAP 희석 EPS $31.00±$1.00, HBM4 누적 매출 $1B 돌파·12단 HBM4 램프가 HBM3E 대비 약 2배 속도" → 마이크론이 히로시마에 ¥1.5조(약 $93억) HBM4 신규 라인 투자. FY3Q26(매출 $41.46B·+74% QoQ, DRAM +67%·NAND +99%) 실적에 이은 메모리 슈퍼사이클·HBM4 램프 실측 이벤트 — 9/30 실적이 SK하이닉스·삼성 대비 마이크론 HBM4 추격 방향타. 9/19·9/26 트래킹(Micron FY4Q26) 일정 실측, 실제 실적 수치는 다음 회차 verify (📄 [source](https://finance.biggo.com/news/95f33231-7a1d-4f9d-9b97-a9401d42fcc6) / [source2](https://www.stocktitan.net/news/MU/micron-technology-inc-reports-record-results-for-the-third-quarter-6f50161e5zxh.html))
 
 - 📄 [Filing] Micron FY4Q26 실적 (2026-09-30 발표, 회계분기 9/3 종료) — "매출 US$54.23B(전분기 $41.46B·전년 $11.32B 대비 폭증, 컨센 $51.07B[LSEG] 상회), Non-GAAP 희석 EPS $33.42·GAAP $32.87, GAAP 총이익률 약 87%, FY2026 연매출 $133.19B — Q1 FY27 가이던스 매출 약 $61.5B±$1.5B" → 코어 데이터센터(AI 서버·HBM) 매출 $18.00B(총이익률 90%·영업이익률 85%), DRAM $39.77B·NAND $14.1B. HBM4 램프 'apace' 진행·경영진 "2027년(캘린더) HBM 비트 공급 대부분 선계약 완료, 가격 전년 대비 대폭 인상" 발언 — 메모리 슈퍼사이클·HBM 가격 레버리지 실측, SK하이닉스·삼성 대비 마이크론 HBM4 추격 방향타. 9/26 프리뷰($50B 가이던스) 대폭 상회로 실측 답(분기 HBM4 단독 매출 미공시) (📄 [source](https://pulse2.com/micron-reports-record-fiscal-q4-revenue-of-54-23-billion-and-fy2026-revenue-of-133-19-billion/) / [source2](https://biz.heraldcorp.com/article/10889696) / [source3](https://www.nextplatform.com/a/5300701))
+
+- 📄 [Filing] TSMC Q3 2026 실적 (2026-10-15 발표, 회계분기 9/30 종료) — "매출 NT$1,494.24B(US$46.72B, +50.9% YoY NT$·+41.2% YoY US$·+17.6% QoQ NT$·+16.2% QoQ US$), 순이익 NT$763.06B(+68.7% YoY·+8.0% QoQ), 희석 EPS NT$29.43(US$4.60/ADR), GM 66.4%·OM 58.7%·순이익률 51.1% — 자체 가이던스(US$44.6~~45.8B)·컨센(LSEG NT$1.46조) 상회" → 웨이퍼매출 기술믹스 2nm 8%·3nm 33%·5nm 28%·7nm 10%(첨단 7nm이하 79%). Q4 2026 가이던스 매출 US$52.3~~54.3B·GM 65~~67%·OM 56.5~~58.5%(환율 NT$31.8/US$ 가정) — 분기 매출 첫 US$50B+ 돌파 전망, 2nm 램프·AI 가속기 수요 지속. 9월 매출(NT$511.86B·+54.6% YoY, 10/8 발표)에 이은 분기 실측, 9/26·10/10 트래킹(TSMC 9월 매출·Q3 실적 10월 중순) 실현 — AI 슈퍼사이클 지속성·HBM4/CoWoS 수요 thesis 직접 보강(연간 capex·FY 성장률 가이던스는 본 릴리스 미포함·이사회 미승인) (📄 TSMC SEC 6-K [source](https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000726/a3q26e_withguidancexfinal.htm))
+- 📄 [Filing] ASML Q3 2026 실적 (2026-10-14 발표) — "총매출 €11,662M(€11.7B)·순이익 €4,960M(€5.0B)·GM 57.5%·신규 리소그래피 시스템 113대 판매 — Q4 2026 가이던스 매출 €14.2~~15.2B·GM 약 57%, FY2026 매출 €44~~45B·GM 약 56%" → CEO Christophe Fouquet "일부 고객이 2029~~2030년 발주 희망·2027~~2028년 계획 공급이 수요를 완전히 충족하지 못해 2028년 기존 +30% 캐파 증설 이상 검토". Q3 자사주 약 €4.1B 매입(2026-2028 프로그램)·중간배당 €1.88/주(11/4 지급). EUV 장비 수요가 2029~~2030년까지 가시화 — AI capex 슈퍼사이클의 '장비 측' 선행지표, 반도체 전공정 capex thesis 보강(넷부킹 수치는 공식 릴리스 미포함) (📄 ASML SEC 6-K [source](https://www.sec.gov/Archives/edgar/data/0000937966/000162828026065813/pressreleasefinancialresul.htm))
 
 ### 규제
 
@@ -381,9 +384,9 @@ total_headlines: 156
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-10-10 트래킹)
+## 차주 갱신 예상 항목 (2026-10-17 트래킹)
 
-- **반도체**: Micron 2027 HBM 가격협상·히로시마 HBM4 신규 라인, 삼성 HBM4E 샘플·하이브리드본딩 수율, SK하이닉스 16-Hi HBM4 퀄·2027 LTA, TSMC 9월 매출(10월 중순)·Q3 실적, NVIDIA Rubin 램프, 후속 메모리 PIM/PNM preprint
+- **반도체**: SK하이닉스 Q3 실적(10월 하순 예정)·2027 LTA 가격, 삼성전자 Q3 실적(10월 하순)·HBM4E 샘플·하이브리드본딩 수율, Micron 2027 HBM 가격협상·히로시마 HBM4 신규 라인, SK하이닉스 16-Hi HBM4 퀄, TSMC 10월 매출(11월 초)·2nm 램프 GM 희석, NVIDIA Rubin 램프, 후속 메모리 PIM/PNM preprint
 - **에너지**: OPEC+ 11/1 회의(12월 쿼터), 호르무즈·홍해 지정학·Brent $100 내외 유지 여부, 美·이란 협상(단계적 호르무즈 재개↔봉쇄 해제), IEA WEO 2026(10월)·Oil Market Report·EIA STEO
 - **매크로**: ★셧다운(10/1 개시) 지속·공식 데이터 블랙아웃 — BLS 9월 NFP 발표 재개 시점, 9월 CPI(셧다운 해제 조건부), 10/27~~28 FOMC(추가 25bp 인상 ~66% 프라이싱), 민간지표 ADP·ISM★. ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백 참조)
 - **바이오**: ESMO Congress 2026(10/23~~27 Madrid) LBA·OS/PFS 실측 데이터, gedatolisib PIK3CA 변이형 sNDA(Q3), 차세대 GLP-1(aleniglipron Phase 3) 후속, bioRxiv/medRxiv 신규 preprint
@@ -394,12 +397,12 @@ total_headlines: 156
 - **산업재**: 9월 ISM 제조업 49.1(수축 지속)·서비스 50.0 후속 민간지표, TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, NBER Productivity 신규
 - **자동차**: Tesla Q3 재무실적(10/21 발표)·마진·로보택시·에너지, 연방 EV 크레딧 종료(9/30) 후 Q4 수요 절벽, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-10-10 회차)
+## 폴백/미수집 (2026-10-17 회차)
 
-- WebSearch 정상 바인딩 — 9회 검색으로 4섹터 4신규 헤드라인 실측 수집. 직전 회차(9/26) 이후 2주(9/26~~10/10) 윈도우
-- **수집 헤드라인(4건)**: 반도체 1(Micron FY4Q26 9/30 발표·매출 $54.23B 컨센 상회), 에너지 1(OPEC+ 10/4 11월 쿼터 동결·31.01 mb/d), 바이오 1(ESMO Congress 2026 프리뷰·10/23 개막), 자동차 1(Tesla Q3 인도 486,532대·10/2 8-K)
-- **금주 핵심**: ① Micron — FY4Q26 매출 $54.23B(컨센 $51.07B 상회)·Non-GAAP EPS $33.42·FY26 $133.19B, "2027년 HBM 비트 공급 대부분 선계약 완료(가격 대폭 인상)" — HBM 가격 레버리지 실측, 9/26 프리뷰($50B) 대폭 상회. ② OPEC+ — 11월 쿼터 31.01 mb/d 동결(증산 정지 11월로 연장, 다음 회의 11/1), Brent $102~~108 호르무즈 프리미엄 지속. ③ Tesla — Q3 인도 486,532대(컨센 +5%)이나 YoY -2.1%·에너지 13.7 GWh 둔화, 재무 10/21. ④ ESMO 2026 — 10/23 개막 전 프리뷰(LBA 마감 9/8·Incyte·Immatics)
-- **★매크로 — 실세계(2025) 데이터 오염 차단(신규 헤드라인 등재 보류)**: WebSearch가 '9월 NFP +29K·실업률 4.2%·셧다운 회피(12/11 CR)·Fed 인상 붕괴'의 비둘기 서사를 반환했으나, 이는 `knowledge-base/macro/us_economy.md` SSOT(10/3 갱신)와 정면 충돌. 시뮬 2026 실제: ①10/1 연방 셧다운 개시·공식 지표 블랙아웃(BLS 9월 NFP 미발표·연기) ②민간 하드데이터 ADP -32K(고용 둔화) ③ISM 제조 49.1·서비스 50.0 ④10Y 5.28%·10/28 FOMC 추가 25bp 인상 ~66% 프라이싱(Kalshi 66.5·Polymarket 64.5) ⑤WTI $91.26·Brent $102.70(10/2). '+29K/no-shutdown'은 2025 실세계 혼입(2026-10-04 /KB점검 contamination 메모와 동일 패턴) — 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조
-- **교차검증 현황**: Micron(pulse2+herald+nextplatform)·OPEC+(gulfnews+nairametrics+shipandbunker)·Tesla(SEC 8-K+teslanorth+driveteslacanada)·ESMO(esmo.org+immatics IR+thepathologist) 모두 2~3개 소스 교차검증 후 수록. 단일 소스 플래그: OPEC+ 헤드라인 중 Brent 가격만 TradingEconomics 단일 2차 소스(ICE 정산가 권장), 나머지 항목 단일 소스 없음
-- **미수집 섹터(매크로 신규·핀테크·방산·테크플랫폼·소비재·산업재)**: 이번 2주 윈도우 신규 확정 1차자료 이벤트 미특정 — 핀테크(OCC 11월 최종규칙 목표·Fed NPRM 의견수렴 진행, 둘 다 기존 KB), 방산(NDAA 상원 cloture 50-46 부결 계류, CRS 9/1 윈도우 밖), 테크플랫폼(AMD-OpenAI 6GW 딜은 2025 real-world 혼입·2026 신규 미확인, 하이퍼스케일러 Q3 10월 말), 소비재(Q3 리테일 11월), 산업재(9월 ISM은 매크로 SSOT 수록·1차자료 컨퍼런스/페이퍼 아님). 기존 헤드라인 유지, 차주 재개
-- 12주 슬라이딩(84일=2026-07-18 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
+- WebSearch 정상 바인딩 — 8회 검색으로 반도체 2신규 헤드라인 실측 수집. 직전 회차(10/10) 이후 1주(10/10~~10/17) 윈도우. 반도체 외 섹터는 이번 주 신규 확정 1차자료 미특정(아래 사유)
+- **수집 헤드라인(2건, 모두 반도체·SEC 6-K 교차 인증)**: ① TSMC Q3 2026 실적(10/15, SEC 6-K), ② ASML Q3 2026 실적(10/14, SEC 6-K)
+- **금주 핵심**: ① TSMC — Q3 매출 US$46.72B(NT$1,494.24B, +41.2% YoY US$)·순이익 NT$763.06B(+68.7% YoY)·GM 66.4%, 가이던스(US$44.6~~45.8B)·컨센(NT$1.46조) 상회, 웨이퍼믹스 2nm 8%·3nm 33%·첨단 7nm이하 79%, Q4 가이던스 US$52.3~~54.3B(분기 첫 $50B+) — AI 슈퍼사이클 지속성·HBM4/CoWoS 수요 thesis 직접 보강(연간 capex·FY 성장률 릴리스 미포함). ② ASML — Q3 매출 €11.7B·순이익 €5.0B·GM 57.5%·신규 리소 113대, CEO Fouquet "고객 2029~~2030 발주 희망·2027~~2028 공급이 수요 미충족 → 2028 +30% 캐파 이상 증설 검토" — EUV 장비 수요 2030년까지 가시화, 반도체 전공정 capex 선행지표(넷부킹 수치 릴리스 미포함·2차 소스 미인용)
+- **★매크로 — 실세계(2025) 데이터 오염 차단(신규 헤드라인 등재 계속 보류)**: 10/10 회차와 동일 가드 유지. WebSearch는 여전히 '셧다운 회피·Fed 인하·NFP 플러스'의 비둘기 서사를 혼입할 위험 — `knowledge-base/macro/us_economy.md` SSOT(10/3 갱신) 기준 시뮬 2026은 ①10/1 연방 셧다운 지속·공식 지표 블랙아웃 ②10/27~~28 FOMC 추가 25bp 인상 ~66% 프라이싱 ③Brent 호르무즈 프리미엄 고착. 이번 주 매크로 WebSearch 미실시(셧다운 블랙아웃으로 신규 공식 1차자료 부재 + 오염 리스크) — 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조
+- **교차검증 현황**: TSMC·ASML 모두 SEC EDGAR 6-K 원문을 WebFetch로 직접 확인(1차 공시). WebSearch 2차 소스에서 본 수치(ASML 넷부킹 €5.39B·+105%, TSMC 'FY 성장 40%+' 등)는 6-K 미포함이라 인용 제외(환각 방지 룰 준수)
+- **미수집 섹터(에너지·바이오·매크로·핀테크·방산·테크플랫폼·소비재·산업재)**: 이번 1주 윈도우 신규 확정 1차자료 미특정 — **에너지**(OPEC+ 다음 회의 11/1, IEA WEO 2026 공식 릴리스/날짜 미확인, 유가 WebSearch는 '호르무즈 정상화·Brent $84대 전망 하향'의 2025 real-world 혼입 의심 vs SSOT 전쟁프리미엄 고착 — 등재 보류), **바이오**(ESMO 2026 10/23 개막 前 주·FDA 10/17 PDUFA[Viatris 노안]·10/10 액션[Merck ifinatamab deruxtecan]은 승인 확정 미확인 — 다음 회차 verify), **테크플랫폼**(하이퍼스케일러 Q3·Netflix 10/21 모두 차주), **자동차**(Tesla Q3 재무 10/21 차주), **핀테크**(OCC 11월 최종규칙·Fed NPRM 의견수렴 진행, 기존 KB), **방산·소비재·산업재**(신규 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개
+- 12주 슬라이딩(84일=2026-07-25 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
