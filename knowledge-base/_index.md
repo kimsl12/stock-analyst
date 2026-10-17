@@ -357,6 +357,9 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-10-17 | `macro/us_economy.md` | **셧다운 17일째 데이터 블랙아웃 지속·반도체發 리스크오프 flight-to-quality로 10Y 5.22→5.10%·곡선 bull flattening·VIX 16.46↑ (weekly-macro)** -- Williams(10/14) '연내 1회 추가면 충분·2027 미상정'=12월 인상 재확인(비둘기 피벗 아님)·미시간 10월 예비 46.3(1년 기대 4.7%↑)·9월 CPI(10/14~15)·PPI(10/15) 셧다운 미발표·real-world 9월 CPI 3.72%/NFP +29K/실업 4.2% 전면 배제·매파 레짐 불변(10월 인상 ~66%/12월 >72%) | +19 |
+| 2026-10-17 | `macro/korea_economy.md` | **★반도체發 증시 대폭락 주간 — 코스피 10/16 5,668.05(주간 -14.46%·장중저점 10/15 5,554.22)·코스닥 794.78(-10.93%)·외국인 10월 ~13조 순매도 (weekly-macro)** -- 메인 yfinance ^KS11·^KQ11·KRW=X 확정(中 CXMT DDR5 경쟁+AI 자금조달 우려 트리거). 반면 실물 10월1~10일 수출 $261억(+102%)·반도체 $122억(+170.9%·비중 46.7%)·8월 경상수지 $461.1억(역대2위)·원/달러 10/16 1,340.95(주간 보합)·기준금리 3.00%(10/22 금통위 분수령) | +8 |
+| 2026-10-17 | `macro/supply_chain.md` | **★벌크 급락 가속 BDI 2,515(10/16, -14% 주간·6/30래 최저)+WFE 공급부족 공식 확인(ASML Q3 '27·28 양년 수요 미충족·TSMC Q3 사상최고) (weekly-macro)** -- LNG 상방전환 TTF $26.7/MBtu·메모리 초긴축(HP BOM 35%). 메인 yfinance 유가 확정: Brent $109.69/WTI $99.04(10/16·주간 랠리 +4.7%/+7.8%·정산 아티팩트 없음). D-카운트: 대미흑연 D-41·폴리실리콘232 D-48·DFARS D-76·REE Phase2 D-85 | +11 |
 | 2026-10-17 | `industry/quantum.md` | **IonQ $2.0B 유상증자 + Google 매직스테이트 컬티베이션(Science 40x)** -- IBM AI QEC디코더 204x·Anderon 첫 초전도PDK·DOE QC3 $37M·독일 PQC가이드라인·OMB M-26-15 D-5~10-22, 양자주 반도체발 리스크오프 주간 -12~21% | +19 |
 | 2026-10-17 | `industry/space.md` | **우주주 주간 급락 + ASTS FCC 삼중 오버행** -- RKLB -25%·ASTS -29%(1년+최저)·SPCX -11% 리스크오프 매도, FCC 10/6 SpaceX 15,000기 D2D 인가+10/29 경매 agenda, Starship F15 11월 슬립, Amazon Vulcan 10/29, BlueOrigin 12월 Blue Ring | +6 |
 | 2026-10-17 | `industry/smr.md` | **셧다운 3주차+AI 리스크오프에 SMR·원자력 전면 급락 (이원화 붕괴)** -- 10/16 OKLO -19.4%·NuScale -19%·XE -24.5%·Centrus -19.4%·CCJ -7.4%, BWXT -4.8%만 방어, 한국 두산 -17.2%·한전기술 -18%. NRC furlough 전면화·Westinghouse S-1 미제출·핵융합 메가딜 없음 | +6 |
