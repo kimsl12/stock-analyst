@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-11
-valid_until: 2026-11-10
+updated: 2026-10-18
+valid_until: 2026-11-17
 sector: science_tech
 sources:
   [
@@ -272,8 +272,8 @@ sources:
     SafeLogic,
   ]
 confidence: high
-last_synced_from_db: 2026-10-11
-db_records: 1234
+last_synced_from_db: 2026-10-18
+db_records: 1242
 ---
 
 # 과학기술(Science & Technology) Knowledge Base
@@ -749,7 +749,17 @@ db_records: 1234
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-10-04 갱신)
+### 16-C. 주간 과학기술 동향 (2026-10-18 갱신)
+
+> **2026-10-11~10-18 주간 통합 수집(web_search 9회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(10/17 space·10/11 양자 jsonl 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 노벨 시즌 수확(전 부문 수상자 확정)**·웹 인덱스 희소로 범용 신규 discrete 돌파는 제한적.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[기초과학·노벨]** | ★ **2026 노벨상 수상자 전원 확정**(발표 10/5~12) — **생리의학**: Deisseroth·Hegemann·Nagel = **광유전학(optogenetics)**·빛-게이트 이온채널로 빛으로 신경세포 제어(뇌연구 혁신). **물리학**: Francis Halzen = **IceCube 중성미자 관측소**·고에너지 천체기원 중성미자 발견(남극 얼음 활용). **화학**: Kagan·Soai = 비대칭 **자가촉매(autocatalysis)**로 균일키랄성(homochirality) 구동. ★**경제학(10/12·델타윈도우 내)**: Robert Hall·Michael Woodford = '거시안정화의 미시경제 기초'(중앙은행·정부 정책모델 이론토대)·상금 1200만 SEK·연내 마지막 노벨 | 2026.10 | nobelprize.org / Reuters / businesstoday |
+| **[바이오·FDA]** | FDA **2026 신약 승인 페이스 가속** = 1~9월 신약 **44개**(2025 동기 32개 대비 **+37.5%**)·10월 PDUFA 캘린더 경량(소수 결정). 리더십 = Makary 커미셔너 5월 사임→**Kyle Diamantas 대행**·지명자 Heidi Overton 상원 HELP 청문 9/24. 9월 유전자치료 승인 모멘텀 지속(Ultragenyx Fayuvi AAV9 산필리포A·Ionis Zanvastro 알렉산더병·Egetis Emcitate MCT8결핍) | 2026.10 | RTTNews / BioSpace / BioCentury |
+| **[프론티어·중복주의]** | 본 주 범용 우산 신규 discrete 돌파 제한적(web index 희소). **우주주 주간 급락·Starship Flight15 11월 슬립·Amazon Leo Vulcan LV-01 10/29·Blue Origin NG RTF 12월**은 **10/17 토요 weekly-frontier**가 기록(space sector·중복 금지). **양자 PQC 연방 컴플라이언스 게이트(OMB 10/22)·양자주 Q3 실적 포워드(~11월)**는 **10/11 jsonl** 기수록. AI4Science·소재·핵융합 금주 신규 발표 미확인(스테일 2023 GNoME·기발표분 재기록 배제) | 2026.10 | weekly-frontier(10/17) / 10/11 jsonl |
+
+#### (이전 주간) 2026-10-04 기록
 
 > **2026-09-27~10-04 주간 통합 수집(web_search 15회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick) 갱신은 토요일 weekly-frontier 담당. 본 표 = 범용 기초과학·첨단기술 우산 관점 크로스커팅 최신값(연구·기술 동향 중심).
 
