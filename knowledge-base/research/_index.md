@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-10-17
+last_updated: 2026-10-24
 update_cycle: weekly
 status: active
-total_headlines: 158
+total_headlines: 161
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -198,6 +198,7 @@ total_headlines: 158
 - 📄 [Conference] ADA 86th Scientific Sessions (2026-06-05~08, New Orleans) — Structure Therapeutics "aleniglipron ACCESS II Phase 2b 데이터" → 경구 소분자 GLP-1 수용체 작용제. 120mg 용량서 36주차 placebo 대비 11.3% 체중감소(placebo-adjusted). Phase 3는 Q3 2026 개시 예정. Lilly orforglipron(기승인)·Novo CagriSema에 도전하는 차세대 경구 GLP-1 경쟁자 — 경구 비만치료제 시장 확장 thesis 보강 ([source](https://www.biospace.com/lilly-novo-face-off-at-ada-2026-as-others-seek-to-compete-in-obesity))
 - 📄 [Conference] ADA 86th Scientific Sessions (2026-06-05~08, New Orleans) — Novo Nordisk "CagriSema(카그릴린타이드+세마글루타이드) REIMAGINE-1/2/3 데이터" → 아밀린 유사체+GLP-1 복합. T2D 환자서 혈당·체중 모두 세마글루타이드 단독 대비 우월하나, 체중감소는 tirzepatide(LLY) 대비 열위. retatrutide(triple agonist) 후기 데이터·survodutide·경구 elecoglipron 등 차세대 라인업 동반 발표 — 비만·당뇨 차세대 경쟁 구도 격화 ([source](https://www.medscape.com/viewarticle/latest-glp-1-based-therapy-be-featured-ada-2026a1000i3q))
 - 📄 [Conference] ESMO Congress 2026 프리뷰 (본회의 10/23~~27, IFEMA Madrid) — "유럽종양학회 연례 최대 학회(개막 10/23), Fabrice André 의장·Yelena Janjigian·James Larkin 공동 과학위원장 — late-breaking 초록 마감 9/8(CEST 21:00), 초록 접수 2025 대비 +10%, 참가 3만명+ 예상, '실무 변경 가능성 있는 데이터 첫 공개' 표방" → 개별 기업 프리뷰: Incyte 종양 포트폴리오 다건 발표, Immatics IMA203CD8(PRAME 표적 TCR-T) Phase 1 구연(10/23, 초록 1946O)·anzu-cel 흑색종 반응 지속 포스터(10/24, 2128P). 실제 LBA·OS/PFS 데이터는 10/23 개막 후 다음 회차 verify — 종양학 파이프라인 가치 재평가 트래킹 앵커 (📄 [source](https://esmo.org/meeting-calendar/esmo-congress-2026) / [source2](https://investors.immatics.com/events/event-details/esmo-2026-congress) / [source3](https://thepathologist.com/events/esmo-congress-2026-leading-global-oncology-innovation/))
+- 📄 [Conference] ESMO Congress 2026 개막 (2026-10-23~~27 IFEMA Madrid) — "Presidential Symposium late-breaking 12건 중심 — ① INTerpath-001(Merck/Moderna, 개인맞춤 mRNA 백신 intismeran autogene+Keytruda vs Keytruda, 절제 2B~4기 흑색종 1,137명, 10/24 발표): 스폰서 발표상 무재발생존[RFS]·원격전이무병생존[DMFS] 유의 연장·주평가변수 충족 ② SAFFRON(HUTCHMED, savolitinib+Tagrisso vs 백금-페메트렉세드 화학요법, Tagrisso 진행 EGFR변이 MET+ NSCLC, 10/25): PFS·OS 모두 병용 우위 ③ HARMONi-GI1(Akeso ivonescimab PD-1/VEGF 이중항체 vs Imfinzi+화학, 1차 진행성 담도암 682명 전원 중국, 10/25): OS 목표 충족 ④ CLARITY-Gastric01(sonesitatug vedotin claudin18.2 ADC vs 의사선택요법, 기치료 위·GEJ·식도선암, 10/25): OS 충족(2차+ 치료군) ⑤ TroFuse-005(Merck sac-TMT TROP2 ADC vs doxorubicin/paclitaxel, 진행·재발 자궁내막암 776명, 10/26): OS·PFS 개선" → 전부 스폰서 사전발표(효과크기·HR 미공개) — 실제 OS/PFS 수치는 각 LBA 발표 후 verify 필요. 10/17 트래킹(ESMO 2026 LBA) 개막 실현, 직전 프리뷰(라인업 미특정) 대비 Presidential LBA 5건 구체화 (📄 CURE 프리뷰 [source](https://www.curetoday.com/view/esmo-2026-preview-5-late-breaking-trials-patients-should-watch))
 
 ### 규제
 
@@ -299,6 +300,7 @@ total_headlines: 158
 - 📄 [Filing] Oracle Q1 FY2027 실적 (2026-09-10 발표) — "매출 US$19.3B(+30% YoY 사상 최대), 잔여이행의무(RPO) $664B(+$209B YoY·+$26B QoQ, 약 절반이 36개월 내 매출 전환), 클라우드(IaaS+SaaS) $11.6B(+62%)·OCI/IaaS $7.4B(+121% YoY), Q1 850MW AI 캐파·30만+ GPU 배치(가동률 97.9%), capex $28B·FY27 가이던스 $90~~95B, 신규 AI 계약 $30B+" → RPO 폭증(직전 $455B→$664B)·OCI 121% 성장으로 AI 클라우드 수요 폭발 실측, 신규 AI 계약 대부분이 선불·BYOH 구조라 증분 자본 불요. Alphabet(capex $195~~205B)·Broadcom(AI $16.7B)·NVIDIA($96.2B)와 함께 하이퍼스케일러 AI capex 슈퍼사이클 정점 — 반도체(HBM4·GPU)·에너지(DC 전력) 수요 thesis 직접 보강 (📄 [source](https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html) / [source2](https://erp.today/oracle-q1-fy27-results-664b-backlog-ai-contracts))
 
 - 📄 [Filing] Adobe Q3 FY2026 실적 (2026-09-10 발표, 회계분기 8/28 종료·catch-up) — "매출 +13% $6.76B(컨센 $6.70B 상회), Non-GAAP EPS $6.13(컨센 $6.09 상회) — 4분기 매출 가이던스 $6.80~~6.85B 중간값이 컨센($6.85B) 소폭 하회로 시간외 약 -1.9%" → AI(Firefly·GenStudio) 매출화 진전에도 가이던스 눈높이 미달. 12/1자 CEO 교체(Shantanu Narayen→Anil Chakravarthy, Narayen은 이사회 의장으로) 발표 동반. Salesforce(8/26 Agentforce)·Oracle(9/10 RPO $664B)에 이은 SaaS AI 매출 드라이버 점검 — 하이퍼스케일러 capex 슈퍼사이클의 '소프트웨어 수요 측' 신호이나 Adobe는 상대적 성장 둔화. 9/12 회차 미포착 catch-up(단일 소스 집계 — 다음 회차 IR verify) (📄 [source](https://finance.yahoo.com/markets/stocks/articles/adobe-announce-q3-fy2026-earnings-170000618.html))
+- 📄 [Filing] Netflix Q3 2026 실적 (2026-10-20 발표, 회계분기 9/30 종료) — "매출 $12,874M(+11.8% YoY, 전년 $11.51B)·영업이익 $4,459M·영업이익률 34.6%·순이익 $3,664M·희석 EPS $0.87(전년 $0.59, 컨센 약 $0.82 상회) — Q4 2026 가이던스 매출 $13,442M(+11.5% YoY), FY2026 매출 $51.1B(+13% YoY)" → 멤버십 증가·구독료 인상이 성장 견인. 단 2026 광고매출 전망을 약 $3B → 약 $2.7B로 하향(광고 상품 롤아웃 지연)하며 실적 서프라이즈에도 주가 시간외 약 -6%. 10/17 트래킹(테크플랫폼 Q3 어닝) 선두 실현 — 하이퍼스케일러 Q3(10월 말 MSFT·GOOGL·META·AMZN capex)에 앞선 스트리밍 수요·가격결정력 확인 (📄 SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0001065280/000106528026000290/ex991_q326.htm))
 
 ---
 
@@ -373,6 +375,7 @@ total_headlines: 158
 - 📄 [Policy] IRA 30D 신차 EV 크레딧 (확정 적용) — "2026년 배터리 부품 70% / 핵심광물 70% 요건 단계 상향" → 부품 80%('27)→90%('28)→100%('29), 광물 80%('27~). Tesla 공지 "연방 EV 크레딧 9/30 종료" 시나리오 동시 부상 — 사이클 후반부 수요 풀인 ([source](https://www.tesla.com/IRA))
 - 📄 [Filing] Tesla Q2 2026 재무실적 (2026-07-22) — "매출 $28.24B(+26% YoY·컨센 $25.71B 상회), 조정 EPS $0.33(컨센 $0.51 대폭 하회), GAAP 순이익 $1.11B(-5%), GAAP 영업이익 $398M(-57% YoY·영업이익률 1.4%로 축소), 자동차 매출 $20.52B(+23%)·자동차 총이익률 16.9%(크레딧 제외 16.3%)" → 인도 480,126대(+25%, 7/02 8-K) 기록 분기에도 영업비용 +47%($4.35B, AI 인프라·R&D 증액)로 이익 급감. 매출 서프라이즈 vs 이익 쇼크 — IRA EV 크레딧 9/30 종료 전 수요 풀인이 물량은 끌어올렸으나 마진·수익성은 사이클 후반부 압박 확인 ([source](https://electrek.co/2026/07/22/tesla-tsla-q2-2026-financial-results/) / [source2](https://www.cnbc.com/2026/07/22/tesla-tsla-q2-2026-earnings-report.html))
 - 📄 [Filing] Tesla Q3 2026 인도량 (2026-10-02, 8-K) — "인도 486,532대(컨센 461,974대 +5% 상회)·생산 464,391대·에너지저장 13.7 GWh(예상 약 15.9 GWh 하회) — 전분기(Q2 480,126) 대비 +1.3% QoQ·전년(Q3 2025 497,099, EV 크레딧 종료 전 수요 풀인으로 기록 분기) 대비 -2.1% YoY" → Model 3/Y 478,237대(+2% QoQ·-1% YoY)·기타 모델(S/X/사이버트럭/세미) 8,295대(-33% QoQ). 인도가 생산을 22,141대 상회 → 재고 약 2.2만대 인출. Q3 재무실적은 10/21 장 마감 후 발표 예정. 9/26 트래킹(Tesla Q3 인도량 10월 초) 실현 — 인도 컨센 상회이나 YoY 감소·에너지 둔화로 성장 성숙 신호 (📄 SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0001318605/000162828026064366/exhibit991111111.htm) / [source2](https://teslanorth.com/2026/10/02/tesla-q3-2026-deliveries/) / [source3](https://driveteslacanada.ca/?p=124427))
+- 📄 [Filing] Tesla Q3 2026 재무실적 (2026-10-21, 8-K Exhibit 99.1) — "매출 $28,046M(전년비 대체로 flat '~$28.0B')·총이익 $5,494M(총이익률 약 19.6%, GAAP 총이익률 전년비 +160bp)·영업이익 $718M(영업이익률 약 2.6%, 전년비 -322bp)·GAAP 순이익 $787M·GAAP 희석 EPS $0.22·Non-GAAP 순이익 $1,697M·Non-GAAP 희석 EPS $0.48·FCF $1,531M·capex $4,732M" → 인도 486,532대(10/2 8-K) 기록에도 영업비용 급증(AI/R&D 투자 지속)으로 영업이익률 전년비 축소, 단 총이익률은 +160bp 개선. 연간 capex 수치 가이던스 미제시(Outlook은 공장가동률 극대화·SI 컴퓨팅/솔라/배터리소재/반도체 제조 투자 지속 등 정성적 서술). 9/26·10/17 트래킹(Tesla Q3 재무 10/21) 실현 — Q2 영업이익률 1.4%→Q3 약 2.6%로 QoQ 소폭 회복이나 전년비 하락, 매출 정체 + 이익 질 논쟁 지속 (📄 SEC 8-K Exhibit 99.1 [source](https://www.sec.gov/Archives/edgar/data/0001318605/000162828026066738/exhibit9914.htm))
 
 ---
 
@@ -384,25 +387,25 @@ total_headlines: 158
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-10-17 트래킹)
+## 차주 갱신 예상 항목 (2026-10-24 트래킹)
 
-- **반도체**: SK하이닉스 Q3 실적(10월 하순 예정)·2027 LTA 가격, 삼성전자 Q3 실적(10월 하순)·HBM4E 샘플·하이브리드본딩 수율, Micron 2027 HBM 가격협상·히로시마 HBM4 신규 라인, SK하이닉스 16-Hi HBM4 퀄, TSMC 10월 매출(11월 초)·2nm 램프 GM 희석, NVIDIA Rubin 램프, 후속 메모리 PIM/PNM preprint
-- **에너지**: OPEC+ 11/1 회의(12월 쿼터), 호르무즈·홍해 지정학·Brent $100 내외 유지 여부, 美·이란 협상(단계적 호르무즈 재개↔봉쇄 해제), IEA WEO 2026(10월)·Oil Market Report·EIA STEO
-- **매크로**: ★셧다운(10/1 개시) 지속·공식 데이터 블랙아웃 — BLS 9월 NFP 발표 재개 시점, 9월 CPI(셧다운 해제 조건부), 10/27~~28 FOMC(추가 25bp 인상 ~66% 프라이싱), 민간지표 ADP·ISM★. ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백 참조)
-- **바이오**: ESMO Congress 2026(10/23~~27 Madrid) LBA·OS/PFS 실측 데이터, gedatolisib PIK3CA 변이형 sNDA(Q3), 차세대 GLP-1(aleniglipron Phase 3) 후속, bioRxiv/medRxiv 신규 preprint
-- **핀테크**: OCC GENIUS Act 최종규칙(11월 목표 — 발행자 자격·준비금·무수익 금지 확정), Fed 준비금·자본 NPRM(9/24) 60일 의견수렴, FinCEN·OFAC AML 최종규칙, Circle/Tether 컴플라이언스
-- **방산**: FY27 NDAA 상원 cloture 재시도(50-46 부결 후 계류·motion to reconsider), Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약, RUSI/CNAS 학술
-- **테크플랫폼**: 하이퍼스케일러 Q3 어닝(10월 말, MSFT·GOOGL·META·AMZN capex), Apple iPhone 17 판매, AMD-OpenAI MI450 1GW 배치(2H26) 상태, EU AI Act Article 50 투명성·GPAI 집행 초기 사례
-- **소비재**: 리테일러 Q3 어닝(11월), 관세 환급 효과 지속 vs 소멸, K자형 분화(재량 약세[Lululemon] vs 디스카운트 강세[Dollar General·오프프라이스])
-- **산업재**: 9월 ISM 제조업 49.1(수축 지속)·서비스 50.0 후속 민간지표, TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, NBER Productivity 신규
-- **자동차**: Tesla Q3 재무실적(10/21 발표)·마진·로보택시·에너지, 연방 EV 크레딧 종료(9/30) 후 Q4 수요 절벽, IRA 30D 요건 상향
+- **반도체**: SK하이닉스 Q3 실적(10/29 예정)·2027 LTA 가격, 삼성전자 Q3 확정 실적(10/29 전후 — 10/8 잠정 가이던스 매출 약 195조원·영업이익 약 107.4조원 K-IFRS, DS 반도체 견인)·HBM4E 샘플·하이브리드본딩 수율, Micron 2027 HBM 가격협상, TSMC 10월 매출(11월 초), NVIDIA Rubin 램프, 후속 메모리 PIM/PNM preprint
+- **에너지**: OPEC+ 11/1 회의(12월 쿼터), 호르무즈·홍해 지정학·Brent $100 내외 유지 여부, IEA WEO 2026(10월 발표 여부 미확인)·Oil Market Report·EIA STEO
+- **매크로**: ★셧다운(10/1~) 지속·공식 데이터 블랙아웃 — BLS NFP·CPI 발표 재개 시점, 10/27~~28 FOMC(추가 25bp 인상 ~66% 프라이싱·결과 10/28), 민간 ADP·ISM★. ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백 참조)
+- **바이오**: ESMO 2026 LBA 실측 수치 verify — INTerpath-001(10/24)·SAFFRON/HARMONi-GI1/CLARITY-Gastric01(10/25)·TroFuse-005(10/26)의 OS/PFS·HR 공개값, bioRxiv/medRxiv 신규 preprint
+- **핀테크**: OCC GENIUS Act 최종규칙(11월 목표 — 발행자 자격·준비금·무수익 금지), Fed 준비금·자본 NPRM 의견수렴, FinCEN·OFAC AML, Circle/Tether 컴플라이언스
+- **방산**: FY27 NDAA 상원 cloture 재시도, Golden Dome 조정예산 배분, 한국 방사청 3축 신규 계약, RUSI/CNAS 학술
+- **테크플랫폼**: 하이퍼스케일러 Q3 어닝(10월 말, MSFT·GOOGL·META·AMZN capex), Apple iPhone 17 판매, AMD-OpenAI MI450 1GW 배치(2H26) 상태, EU AI Act Article 50 투명성·GPAI 집행 사례
+- **소비재**: 리테일러 Q3 어닝(11월), 관세 환급 효과 지속 vs 소멸, K자형 분화(재량 약세 vs 디스카운트 강세)
+- **산업재**: 9월 ISM 제조업 49.1·서비스 50.0 후속 민간지표, TSMC AZ Phase 2·$100B 추가투자, Samsung Taylor 양산 일정, NBER Productivity
+- **자동차**: Tesla Q4 수요 절벽(연방 EV 크레딧 9/30 종료 후)·로보택시/Cybercab 램프·마진 회복 지속 여부, 타 OEM Q3 실적, IRA 30D 요건 상향
 
-## 폴백/미수집 (2026-10-17 회차)
+## 폴백/미수집 (2026-10-24 회차)
 
-- WebSearch 정상 바인딩 — 8회 검색으로 반도체 2신규 헤드라인 실측 수집. 직전 회차(10/10) 이후 1주(10/10~~10/17) 윈도우. 반도체 외 섹터는 이번 주 신규 확정 1차자료 미특정(아래 사유)
-- **수집 헤드라인(2건, 모두 반도체·SEC 6-K 교차 인증)**: ① TSMC Q3 2026 실적(10/15, SEC 6-K), ② ASML Q3 2026 실적(10/14, SEC 6-K)
-- **금주 핵심**: ① TSMC — Q3 매출 US$46.72B(NT$1,494.24B, +41.2% YoY US$)·순이익 NT$763.06B(+68.7% YoY)·GM 66.4%, 가이던스(US$44.6~~45.8B)·컨센(NT$1.46조) 상회, 웨이퍼믹스 2nm 8%·3nm 33%·첨단 7nm이하 79%, Q4 가이던스 US$52.3~~54.3B(분기 첫 $50B+) — AI 슈퍼사이클 지속성·HBM4/CoWoS 수요 thesis 직접 보강(연간 capex·FY 성장률 릴리스 미포함). ② ASML — Q3 매출 €11.7B·순이익 €5.0B·GM 57.5%·신규 리소 113대, CEO Fouquet "고객 2029~~2030 발주 희망·2027~~2028 공급이 수요 미충족 → 2028 +30% 캐파 이상 증설 검토" — EUV 장비 수요 2030년까지 가시화, 반도체 전공정 capex 선행지표(넷부킹 수치 릴리스 미포함·2차 소스 미인용)
-- **★매크로 — 실세계(2025) 데이터 오염 차단(신규 헤드라인 등재 계속 보류)**: 10/10 회차와 동일 가드 유지. WebSearch는 여전히 '셧다운 회피·Fed 인하·NFP 플러스'의 비둘기 서사를 혼입할 위험 — `knowledge-base/macro/us_economy.md` SSOT(10/3 갱신) 기준 시뮬 2026은 ①10/1 연방 셧다운 지속·공식 지표 블랙아웃 ②10/27~~28 FOMC 추가 25bp 인상 ~66% 프라이싱 ③Brent 호르무즈 프리미엄 고착. 이번 주 매크로 WebSearch 미실시(셧다운 블랙아웃으로 신규 공식 1차자료 부재 + 오염 리스크) — 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조
-- **교차검증 현황**: TSMC·ASML 모두 SEC EDGAR 6-K 원문을 WebFetch로 직접 확인(1차 공시). WebSearch 2차 소스에서 본 수치(ASML 넷부킹 €5.39B·+105%, TSMC 'FY 성장 40%+' 등)는 6-K 미포함이라 인용 제외(환각 방지 룰 준수)
-- **미수집 섹터(에너지·바이오·매크로·핀테크·방산·테크플랫폼·소비재·산업재)**: 이번 1주 윈도우 신규 확정 1차자료 미특정 — **에너지**(OPEC+ 다음 회의 11/1, IEA WEO 2026 공식 릴리스/날짜 미확인, 유가 WebSearch는 '호르무즈 정상화·Brent $84대 전망 하향'의 2025 real-world 혼입 의심 vs SSOT 전쟁프리미엄 고착 — 등재 보류), **바이오**(ESMO 2026 10/23 개막 前 주·FDA 10/17 PDUFA[Viatris 노안]·10/10 액션[Merck ifinatamab deruxtecan]은 승인 확정 미확인 — 다음 회차 verify), **테크플랫폼**(하이퍼스케일러 Q3·Netflix 10/21 모두 차주), **자동차**(Tesla Q3 재무 10/21 차주), **핀테크**(OCC 11월 최종규칙·Fed NPRM 의견수렴 진행, 기존 KB), **방산·소비재·산업재**(신규 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개
-- 12주 슬라이딩(84일=2026-07-25 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·NRC Part 53/TRISO-X[KEEP]·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
+- WebSearch 정상 바인딩 — **메인 중앙 수집** 방식(스케줄 슬롯 서브에이전트의 WebSearch 미바인딩·maxTurns 리스크 회피, 10/17 회차와 동일). 직전 회차(10/17) 이후 1주(10/17~~10/24) 윈도우.
+- **수집 헤드라인(3건, 모두 1차 공시/학회 교차 인증)**: ① Tesla Q3 2026 재무실적(10/21, SEC 8-K Exhibit 99.1 WebFetch) — 자동차, ② Netflix Q3 2026(10/20, SEC 8-K WebFetch) — 테크플랫폼, ③ ESMO Congress 2026 개막(10/23, Presidential Symposium LBA 라인업, CURE 프리뷰 WebFetch) — 바이오
+- **금주 핵심**: ① Tesla — 매출 $28,046M(전년비 대체로 flat)·GAAP 순이익 $787M·GAAP EPS $0.22·Non-GAAP EPS $0.48·총이익률 약 19.6%(+160bp YoY)·영업이익률 약 2.6%(-322bp YoY)·FCF $1,531M — 인도 486,532대 기록에도 AI/R&D opex 급증으로 영업이익률 하락, 매출 정체+이익 질 논쟁. ② Netflix — 매출 $12,874M(+11.8%)·OM 34.6%·순이익 $3,664M·EPS $0.87·FY2026 $51.1B(+13%), 단 2026 광고전망 $3B→$2.7B 하향·시간외 약 -6%. ③ ESMO — INTerpath-001(Merck/Moderna 개인맞춤 mRNA 흑색종 백신, 10/24 발표·RFS/DMFS 유의) 외 LBA 4건 — 전부 스폰서 사전발표(효과크기·HR 미공개)로 각 발표 후 verify 대기
+- **★매크로 — 실세계(2025) 비둘기 데이터 오염 차단(신규 등재 보류 유지)**: 10/10·10/17 가드 지속. 셧다운(10/1~~) 블랙아웃으로 공식 1차자료 부재 + WebSearch '셧다운 회피·Fed 인하·NFP 플러스' 비둘기 서사 혼입 리스크. `knowledge-base/macro/us_economy.md` SSOT 기준 시뮬 2026은 ①10/1 연방 셧다운 지속·공식 지표 블랙아웃 ②10/27~~28 FOMC 추가 25bp 인상 ~66% 프라이싱 ③Brent 호르무즈 프리미엄 고착 — 이번 주 매크로 WebSearch 미실시, 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조
+- **교차검증 현황**: Tesla·Netflix 모두 SEC EDGAR 8-K Exhibit 99.1 원문을 WebFetch로 직접 확인(1차 공시). ESMO는 학회 개막 전 스폰서 topline 발표를 종합한 CURE 프리뷰 인용 — 효과크기·HR은 미공개로 명시, 실측은 각 LBA 발표(10/24~~26) 후 verify
+- **미수집 섹터(반도체·에너지·매크로·핀테크·방산·소비재·산업재)**: **반도체**(SK하이닉스·삼성 확정 Q3 모두 10/29 차주 — 삼성 10/8 잠정 가이던스는 윈도우 밖[16일 경과]이라 L1 미등재, 차주 확정 실적과 함께 반영), **에너지**(OPEC+ 11/1·IEA WEO 2026 공식 릴리스/날짜 미확인, 유가 WebSearch는 '호르무즈 정상화·Brent 하향'의 2025 real-world 혼입 의심 vs SSOT 전쟁프리미엄 고착 — 등재 보류), **매크로**(위 가드), **핀테크**(OCC 11월 최종규칙·Fed NPRM 의견수렴 진행, 기존 KB), **방산·소비재·산업재**(신규 확정 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개
+- 12주 슬라이딩(84일=2026-08-01 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건
