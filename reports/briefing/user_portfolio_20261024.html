@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>내 포트폴리오 — 강력 처방 v2 — 2026-10-24</title>
+    <style>
+      /* ===== JW Research 통합 디자인 시스템 v1 (2026-06-11) =====
+     report_template.py 와 동일 토큰 — 종목·브리핑 리포트가 같은 팔레트·타이포 공유.
+     변수명·클래스명은 generator 명세 호환을 위해 보존. */
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+      :root {
+        --bg: #0a1118;
+        --card: #121b26;
+        --card2: #0e151e;
+        --text: #e9edf3;
+        --sub: #93a1b3;
+        --border: #22303f;
+        --up: #2fbf71;
+        --down: #f4576a;
+        --neutral: #8b97a5;
+        --highlight: #5b9dff;
+        --warning: #e5a43b;
+        --debate: #9d7bff;
+        --contrarian: #f08c4a;
+      }
+
+      [data-theme="light"] {
+        --bg: #f3f5f9;
+        --card: #ffffff;
+        --card2: #f7f9fc;
+        --text: #19222e;
+        --sub: #5c6878;
+        --border: #d9e1ea;
+        --up: #15803d;
+        --down: #ce2f40;
+        --neutral: #5c6878;
+        --highlight: #1d6fe0;
+        --warning: #a16207;
+        --debate: #6644cc;
+        --contrarian: #c2571f;
+      }
+      [data-theme="light"] .warning-13f {
+        background: #fff8c5 !important;
+        color: #a16207;
+        border-color: #a16207;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Pretendard Variable",
+          Pretendard,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          sans-serif;
+        padding: 20px 18px 28px;
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: 15.5px;
+        line-height: 1.66;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        text-align: left;
+        padding: 26px 0 18px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 22px;
+        position: relative;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--highlight), transparent);
+      }
+      .header h1 {
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+      .header .meta {
+        color: var(--sub);
+        font-size: 13.5px;
+        letter-spacing: 0.01em;
+      }
+      .header .subtitle {
+        font-size: 14px;
+        color: var(--sub);
+        margin-top: 6px;
+        line-height: 1.55;
+      }
+      .header .date-badge {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 4px 12px;
+        border-radius: 6px;
+        background: var(--card2);
+        border: 1px solid var(--border);
+        font-size: 12.5px;
+        color: var(--sub);
+      }
+
+      .up {
+        color: var(--up);
+      }
+      .down {
+        color: var(--down);
+      }
+      .neutral {
+        color: var(--neutral);
+      }
+      .highlight {
+        color: var(--highlight);
+      }
+      .warning {
+        color: var(--warning);
+      }
+
+      .bg-up {
+        background: color-mix(in srgb, var(--up) 10%, transparent);
+      }
+      .bg-down {
+        background: color-mix(in srgb, var(--down) 10%, transparent);
+      }
+      .bg-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+      }
+      .bg-highlight {
+        background: color-mix(in srgb, var(--highlight) 10%, transparent);
+      }
+
+      .sec {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 22px 24px;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .sec h2 {
+        font-size: 16.5px;
+        font-weight: 750;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .sec h2::before {
+        content: "";
+        width: 3.5px;
+        height: 15px;
+        border-radius: 2px;
+        background: var(--highlight);
+        flex: none;
+      }
+      .sec h3 {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: var(--highlight);
+        margin: 16px 0 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: transparent;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 650;
+        font-size: 12px;
+        color: var(--sub);
+        letter-spacing: 0.05em;
+        border-bottom: 1.5px solid var(--border);
+      }
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid
+          color-mix(in srgb, var(--border) 55%, transparent);
+      }
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--text) 2.5%, transparent);
+      }
+      tr:hover {
+        background: color-mix(in srgb, var(--highlight) 7%, transparent);
+      }
+
+      .footer {
+        margin-top: 32px;
+        padding: 20px;
+        background: var(--card);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
+      .footer h3 {
+        color: var(--highlight);
+        margin-bottom: 12px;
+        font-size: 16px;
+      }
+      .footer table {
+        font-size: 13px;
+      }
+      .footer code {
+        background: color-mix(in srgb, var(--text) 7%, transparent);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--warning);
+      }
+      .cmd-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 12px;
+          font-size: 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .cmd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* ===== 모듈 전용 — user_portfolio_v2 (2026-10-03) ===== */
+      :root {
+        --bg-primary: #0d1117;
+        --bg-secondary: #161b22;
+        --bg-tertiary: #21262d;
+        --v2-border: #30363d;
+        --text-primary: #e6edf3;
+        --text-secondary: #8b949e;
+        --text-muted: #484f58;
+        --accent-blue: #58a6ff;
+        --accent-green: #3fb950;
+        --accent-red: #f85149;
+        --accent-orange: #d29922;
+        --accent-purple: #8b5cf6;
+        --accent-gold: #f0c040;
+        --accent-cyan: #39d2c0;
+      }
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin: 14px 0;
+      }
+      .metric-card {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--v2-border);
+        border-radius: 10px;
+        padding: 14px;
+      }
+      .metric-card .label {
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+      }
+      .metric-card .value {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--text-primary);
+      }
+      .metric-card .change {
+        font-size: 12px;
+        margin-top: 4px;
+        color: var(--text-secondary);
+      }
+      .metric-card .change.up {
+        color: var(--accent-green);
+      }
+      .metric-card .change.down {
+        color: var(--accent-red);
+      }
+
+      .donut-wrap {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 14px 0;
+      }
+      .donut-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 13px;
+      }
+      .donut-legend .sw {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        margin-right: 6px;
+      }
+
+      .bar-chart {
+        margin: 14px 0;
+      }
+      .bar-row {
+        margin: 14px 0;
+      }
+      .bar-row .bar-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        margin-bottom: 4px;
+        color: var(--text-secondary);
+      }
+      .bar-track {
+        position: relative;
+        height: 18px;
+        background: var(--bg-tertiary);
+        border-radius: 5px;
+        margin-top: 2px;
+      }
+      .bar-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        border-radius: 5px;
+      }
+      .bar-target {
+        position: absolute;
+        top: -4px;
+        bottom: -4px;
+        width: 2px;
+        background: var(--accent-gold);
+      }
+      .bar-target-label {
+        position: absolute;
+        top: -17px;
+        font-size: 10px;
+        color: var(--accent-gold);
+        white-space: nowrap;
+      }
+
+      .alert-box {
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 12px 0;
+        font-size: 13.5px;
+        border: 1px solid;
+        line-height: 1.6;
+      }
+      .alert-box.warn {
+        background: color-mix(in srgb, var(--accent-orange) 12%, transparent);
+        border-color: var(--accent-orange);
+        color: var(--accent-orange);
+      }
+      .alert-box.success {
+        background: color-mix(in srgb, var(--accent-green) 12%, transparent);
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+      }
+      .alert-box.info-box {
+        background: color-mix(in srgb, var(--accent-blue) 12%, transparent);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
+      }
+
+      .strong-buy,
+      .strong-sell {
+        border-radius: 10px;
+        padding: 16px 18px;
+        margin: 14px 0;
+        border: 1px solid;
+      }
+      .strong-buy {
+        background: color-mix(in srgb, var(--accent-red) 8%, transparent);
+        border-color: var(--accent-red);
+      }
+      .strong-sell {
+        background: color-mix(in srgb, var(--accent-blue) 8%, transparent);
+        border-color: var(--accent-blue);
+      }
+      .strong-buy .ticker-head,
+      .strong-sell .ticker-head {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+      }
+      .strong-buy .what,
+      .strong-buy .why,
+      .strong-buy .how,
+      .strong-sell .what,
+      .strong-sell .why,
+      .strong-sell .how {
+        margin: 8px 0;
+        font-size: 13.5px;
+        color: var(--text-primary);
+      }
+      .strong-buy .score,
+      .strong-sell .score {
+        margin-top: 10px;
+        font-weight: 700;
+        color: var(--accent-gold);
+      }
+
+      .timeline {
+        margin: 14px 0;
+        border-left: 2px solid var(--v2-border);
+        padding-left: 16px;
+      }
+      .timeline-item {
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -21px;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-blue);
+      }
+      .timeline-item .time {
+        font-weight: 700;
+        font-size: 13px;
+        color: var(--accent-blue);
+        margin-bottom: 3px;
+      }
+      .timeline-item .content {
+        font-size: 13.5px;
+        color: var(--text-primary);
+      }
+
+      .risk-meter {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .risk-meter .risk-level {
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .risk-bar {
+        width: 12px;
+        height: 20px;
+        border-radius: 3px;
+        background: var(--bg-tertiary);
+      }
+      .risk-bar.active-low {
+        background: var(--accent-green);
+      }
+      .risk-bar.active-mid {
+        background: var(--accent-orange);
+      }
+      .risk-bar.active-high {
+        background: var(--accent-red);
+      }
+
+      .action-card {
+        border: 2px solid var(--accent-green);
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin: 12px 0;
+        background: color-mix(in srgb, var(--accent-green) 6%, transparent);
+      }
+
+      @media (max-width: 600px) {
+        .metric-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .donut-wrap {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+<body>
+
+    <div
+      style="
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 16px;
+        display: flex;
+        justify-content: flex-end;
+      "
+    >
+      <button
+        onclick="toggleTheme()"
+        style="
+          background: transparent;
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          cursor: pointer;
+          font-family: inherit;
+        "
+      >
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">라이트 모드</span>
+      </button>
+    </div>
+
+<div class="header">
+<h1>👤 내 포트폴리오 — 강력 처방 v2</h1>
+<div class="subtitle">휩소 안정의 주 — 지난주 반도체 크래시 뒤 미 지수 WoW는 −0.7~+0.4%로 완만해졌으나 CNN 공포탐욕 21(극단 공포)과 FOMC(10/28, 인상 약 66%)가 하방 비대칭을 만든다. 금 되돌림(GLD −4.03%)을 배당(SCHD +2.68%)이 상쇄해 계좌는 −0.51%에 그쳤다. 월 적립 200만원은 이번 주도 SGOV 14주로 채권축 복원을 잇고, 추격 매수는 FOMC 통과 전까지 금지한다. 신호등 🟡 관망·방어 치우침.</div>
+<div class="date-badge">2026-10-24 (토) | 환율 $1 ≈ 1,324원</div>
+</div>
+
+<div class="sec" style="border: 2px solid var(--warning); border-left-width: 6px; background: color-mix(in srgb, var(--warning) 10%, var(--card))">
+<h2 style="color: var(--warning); font-size: 20px">🟡 한 번 봐두세요 (관망·방어 치우침)</h2>
+<p style="font-size:14.5px;line-height:1.8">휩소는 안정됐고 가격은 완만하지만, 극공포(F&amp;G 21)와 FOMC(10/28) 단일 분기점이 하방 비대칭으로 겹친다. <strong>급매 아님 · 추격 금지 · 실탄 유지</strong>가 이번 주 규율이다.</p>
+</div>
+
+<div class="sec" style="border: 2px solid var(--accent-orange); border-left-width: 6px">
+<h2 style="color: var(--accent-orange)">★ 토스 알고엔진 드리프트 주의 — 리플레이션 게이트 개방 지속</h2>
+<div class="alert-box warn" style="color: var(--text-primary)">macro_regime.json(생성 10/24 15:25 KST)은 <strong>리플레이션(max_holdings=5 · position_multiplier=1.1 · falsecalm_streak=0)</strong> 상태로 10/3 재개방 이후 이어지고 있다. 거짓안정(게이트 닫힘)이 아니므로 알고 신규 매매 차단이 해제된 상태이고, <strong>드리프트 가능성이 거짓안정 기간보다 높게 유지</strong>된다.</div>
+<ul style="margin-left: 18px; font-size: 13.5px; line-height: 1.9">
+<li>⚠️ 사용자 부재(토 22시 스케줄)로 최신 토스 스크린샷을 재확인할 수 없다. 본 처방은 <strong>7/1 수량 + 10/23 가격</strong> 기준이다.</li>
+<li>비보호 BAC+AVGO 합산 0.65%(계좌 내) 소액은 리플레이션 레짐(기술주·리츠 비선호) 재편 대상일 수 있으나 규모가 미미하다. 보호종목 9종은 알고 접촉 금지(no-touch)다.</li>
+<li>다음 로그인 시 <strong>① SGOV 기존 편입·누적 집행분 ② 알고 채널 BAC·AVGO 변동 ③ 유휴 현금 잔액</strong> 확인 후 수량을 미세 조정하길 권한다.</li>
+</ul>
+</div>
+
+<div class="sec">
+<h2>1. 투자자 프로파일</h2>
+<div class="metric-grid">
+<div class="metric-card"><div class="label">보유 USD (해외계좌)</div><div class="value">$12,683.50</div><div class="change down">vs 10/17 −0.51% · vs 7/1 +3.97%</div></div>
+<div class="metric-card"><div class="label">보유 KRW (ISA)</div><div class="value">₩7,305,948</div><div class="change">5/25 기준 · 미갱신</div></div>
+<div class="metric-card"><div class="label">투자 성향</div><div class="value">균형형 (Balanced+)</div><div class="change">v3, 2026-05-12</div></div>
+<div class="metric-card"><div class="label">투자 가능 금액</div><div class="value">매월 200만원</div><div class="change">적립식 · 5년+ 장기</div></div>
+</div>
+<table><tr><th>항목</th><th>값</th></tr>
+<tr><td>관심 테마</td><td>배당 + 성장 + 분산 균형 (ISA 절세 + 일반계좌 팩터 베팅)</td></tr>
+<tr><td>모델 참조</td><td>균형형 (model_portfolios F-3)</td></tr></table>
+<p style="color: var(--text-secondary); font-size: 12.5px; margin-top: 8px">※ ISA·크립토(업비트)는 5/25 기준 미갱신이며 QuantTrader 별도 운용 영역이라 본 처방 범위 밖이다.</p>
+</div>
+
+<div class="sec">
+<h2>2. 보유 종목 재평가 (10/23 금 확정 종가, 수량 무변동)</h2>
+<p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 10px">보유 수량은 토스증권 7/1 스냅샷 기준이며 가격만 10/23 확정 종가로 재평가했다. 알고엔진 드리프트 미반영분이 상시 존재한다.</p>
+<table>
+<tr><th>티커</th><th>종목명</th><th>유형</th><th>수량</th><th>10/23 종가</th><th>평가금</th><th>비중</th><th>vs 7/1</th></tr>
+<tr><td>VOO</td><td>Vanguard S&amp;P 500</td><td>ETF</td><td>10.469743</td><td>$698.58</td><td>$7,313.96</td><td>57.66%</td><td class="up">+2.24%</td></tr>
+<tr><td>SCHD</td><td>Schwab US Dividend</td><td>ETF</td><td>60.434539</td><td>$35.27</td><td>$2,131.53</td><td>16.81%</td><td class="up">+11.51% ⚠️</td></tr>
+<tr><td>NVDA</td><td>NVIDIA</td><td>개별주</td><td>8</td><td>$210.96</td><td>$1,687.68</td><td>13.31%</td><td class="up">+6.66% ⚠️</td></tr>
+<tr><td>GLD</td><td>SPDR Gold Shares</td><td>ETF</td><td>4.001475</td><td>$366.61</td><td>$1,466.98</td><td>11.57%</td><td class="up">+0.73%</td></tr>
+<tr><td>BAC</td><td>Bank of America</td><td>개별주</td><td>0.859914</td><td>$50.56</td><td>$43.48</td><td>0.34%</td><td class="down">−10.97% ⚠️</td></tr>
+<tr><td>AVGO</td><td>Broadcom</td><td>개별주</td><td>0.123927</td><td>$321.68</td><td>$39.87</td><td>0.31%</td><td class="down">−14.40% ⚠️</td></tr>
+<tr style="font-weight: 700"><td colspan="5">해외주식 합계</td><td>$12,683.50</td><td>100%</td><td class="up">+3.97%</td></tr>
+</table>
+<ul style="margin-left: 18px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.8">
+<li>⚠️ <strong style="color: var(--text-primary)">5% 초과 4종(가격만 변동·수량 무변동, vs 7/1 입력가):</strong> SCHD +11.51% · NVDA +6.66% · BAC −10.97% · AVGO −14.40%. 수량 불일치가 아니라 7/1 입력가와의 시간 경과 괴리이므로 경고 표기만 하고 추가 조치는 불필요하다.</li>
+<li><strong style="color: var(--text-primary)">직전 10/17 재평가 대비:</strong> 합계 $12,748.04 → $12,683.50 (<span class="down">−$64.54 · −0.51%</span>). 금 되돌림(GLD <span class="down">−4.03%</span>)이 손실을 주도했고 배당(SCHD <span class="up">+2.68%</span>)이 대부분 상쇄한 완만한 주다. 종목별 WoW: AVGO −2.15% · NVDA −1.48% · BAC −1.31% · VOO −0.43%.</li>
+<li>NVDA 손절 2ATR <strong>$199.00</strong>, 현재가 $210.96 대비 여유 <strong class="up">+5.89%</strong> (52주 고가 $243.37 대비 −13.3%).</li>
+</ul>
+
+<h3>보유 비중 (해외계좌 6종)</h3>
+<div class="donut-wrap">
+<svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="none" stroke="var(--bg-tertiary)" stroke-width="32"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-blue)" stroke-width="32" stroke-dasharray="289.83 212.82" stroke-dashoffset="0.00" transform="rotate(-90 100 100)"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-green)" stroke-width="32" stroke-dasharray="84.50 418.15" stroke-dashoffset="-289.83" transform="rotate(-90 100 100)"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-red)" stroke-width="32" stroke-dasharray="66.90 435.75" stroke-dashoffset="-374.33" transform="rotate(-90 100 100)"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-gold)" stroke-width="32" stroke-dasharray="58.15 444.50" stroke-dashoffset="-441.23" transform="rotate(-90 100 100)"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-purple)" stroke-width="32" stroke-dasharray="1.71 500.94" stroke-dashoffset="-499.38" transform="rotate(-90 100 100)"/>
+<circle cx="100" cy="100" r="80" fill="none" stroke="var(--accent-cyan)" stroke-width="32" stroke-dasharray="1.56 501.09" stroke-dashoffset="-501.09" transform="rotate(-90 100 100)"/>
+</svg>
+<div class="donut-legend">
+<div><span class="sw" style="background: var(--accent-blue)"></span>VOO 57.66%</div>
+<div><span class="sw" style="background: var(--accent-green)"></span>SCHD 16.81%</div>
+<div><span class="sw" style="background: var(--accent-red)"></span>NVDA 13.31%</div>
+<div><span class="sw" style="background: var(--accent-gold)"></span>GLD 11.57%</div>
+<div><span class="sw" style="background: var(--accent-purple)"></span>BAC 0.34%</div>
+<div><span class="sw" style="background: var(--accent-cyan)"></span>AVGO 0.31%</div>
+</div>
+</div>
+
+<h3>자산군 갭 (균형형 목표 대비, 총액 기준)</h3>
+<div class="bar-chart">
+<div class="bar-row"><div class="bar-label"><span>S&amp;P500/전체시장 (VOO) — 35.7%</span><span>목표 25~35%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 89.3%; background: var(--accent-blue)"></div><div class="bar-target" style="left: 75.0%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>채권(중기+단기) — 0.0%</span><span>목표 12~18%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 0.0%; background: var(--accent-green)"></div><div class="bar-target" style="left: 37.5%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>글로벌 Quality/Factor — 0.0%</span><span>목표 8~12%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 0.0%; background: var(--accent-orange)"></div><div class="bar-target" style="left: 25.0%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>미국 배당(SCHD) — 10.4%</span><span>목표 8~15%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 26.0%; background: var(--accent-cyan)"></div><div class="bar-target" style="left: 28.7%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>금+원자재(GLD) — 7.2%</span><span>목표 7~10%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 18.0%; background: var(--accent-gold)"></div><div class="bar-target" style="left: 21.2%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>AI/반도체(NVDA+AVGO) — 8.4%</span><span>목표 5~8%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 21.0%; background: var(--accent-red)"></div><div class="bar-target" style="left: 16.2%"></div></div></div>
+<div class="bar-row"><div class="bar-label"><span>현금/MMF — ~10.7%</span><span>목표 4~8%</span></div>
+<div class="bar-track"><div class="bar-fill" style="width: 26.8%; background: var(--accent-purple)"></div><div class="bar-target" style="left: 15.0%"></div></div></div>
+</div>
+<table>
+<tr><th>자산군</th><th>현재 보유</th><th>비중(총액)</th><th>목표</th><th>갭</th><th>상태</th></tr>
+<tr><td>S&amp;P500/전체시장</td><td>VOO</td><td>35.7%</td><td>25~35%</td><td class="warning">+0.7%p</td><td>상단 — 적립 희석 대상</td></tr>
+<tr class="bg-down"><td>채권(중기+단기)</td><td>—</td><td>0.0%</td><td>12~18%</td><td class="down">−15%p</td><td>🔴 알고 청산 후 공백 (SGOV 처방 재원)</td></tr>
+<tr><td>글로벌 Quality/Factor</td><td>—</td><td>0.0%</td><td>8~12%</td><td class="down">−10%p</td><td>공백 — 관망·유보</td></tr>
+<tr><td>금+원자재</td><td>GLD</td><td>7.2%</td><td>7~10%</td><td class="neutral">적정 하단</td><td>유지 (추격 금지 · HV5 약화)</td></tr>
+<tr><td>미국 배당</td><td>SCHD</td><td>10.4%</td><td>8~15%</td><td class="neutral">적정</td><td>유지 (이번 주 방어 선방 +2.68%)</td></tr>
+<tr><td>AI/반도체</td><td>NVDA+AVGO</td><td>8.4%</td><td>5~8%</td><td class="warning">+0.4%p</td><td>상단 — 보유 유지·추격 금지</td></tr>
+<tr><td>현금/MMF</td><td>달러+원화</td><td>~10.7%</td><td>4~8%</td><td class="warning">+3%p</td><td>과대 — SGOV 전환 지속 대상</td></tr>
+<tr><td>크립토(BTC)</td><td>업비트</td><td>4.5%</td><td>3~6%</td><td class="neutral">적정</td><td>QuantTrader 별도 · 관찰만</td></tr>
+<tr><td>ISA(삼성증권)</td><td>미상세</td><td>22.9%</td><td>—</td><td>—</td><td>별도 계좌 (5/25 기준 미갱신)</td></tr>
+</table>
+</div>
+
+<div class="sec">
+<h2>3. 이번 주 매크로 요약 (주간 리포트 C-1 · 하우스 뷰 19차)</h2>
+<ol style="margin-left: 20px; line-height: 1.9; font-size: 14.5px">
+<li>🟡 <strong>"휩소 안정의 주".</strong> 지난주 반도체發 크래시(SOX −11.4%·KOSPI −14.5%) 뒤 이번 주는 목요일(10/22) AI 인프라 디레버리징 재발작(IMF가 'AI 투자 붐 종료'를 금융안정 리스크로 공식화) 후 금요일 되감김으로 급락이 소강됐다. <strong>미 지수 WoW 완만(S&amp;P −0.47% · NASDAQ −0.71% · Dow +0.41%) · KOSPI −2.08%</strong>. 바닥은 미확정이고 분기점은 <strong>FOMC(10/28)</strong>이다.</li>
+<li><strong>'가격 완만 vs 심리 극공포'의 역대급 괴리.</strong> 지수 WoW는 −0.7~+0.4%인데 CNN 공포탐욕 지수는 <strong>21(극단 공포)</strong>, 레짐은 <strong>리스크오프 1일째 플립</strong>이다. 공포는 헤드라인과 심리에 있고 가격에는 아직 없다.</li>
+<li><strong>금리 5%+ 고착(HV2 강력 재확증).</strong> 주중 10Y가 5%를 하회(성장 공포)했으나 금요일 <strong>4.99%</strong>로 되올랐다. 리스크오프에도 금리가 내리지 않는 구조의 재확인이며, 매파 레짐은 불변(10월 인상 약 66% · 12월 72% 초과 · 2026 인하 배제)이다.</li>
+<li><strong>★하우스 뷰 19차 상태 변경 2건.</strong> HV4 유가 리스크 프리미엄 <strong>[폐기 → 유효 재활성]</strong>(WTI $103로 $100 완전 돌파 · 연초 대비 +45% · Petroline offline) / HV5 금 구조적 강세 <strong>[유효 → 약화]</strong>(금 $4,181 → <strong>$4,010</strong> · $4,200 상실 · 주간 −4.1%). HV6 크립토 탈동조는 재커플 관찰(BTC가 주식과 동반 하락)이다.</li>
+</ol>
+<div class="alert-box warn">🟡 신호등은 지난주 🔴에서 한 틱 완화(크래시 소강)됐다. 다만 <strong>FOMC(10/28) 약 66% 매파 인상이 극공포 시장과 겹치는 하방 비대칭</strong>이며 유가 $103(HV4)이 매파를 보강한다. 급매 아님 · 추격 금지 · 실탄 유지.</div>
+</div>
+
+<div class="sec">
+<h2>4. 이번 주 등장 종목 풀 (적합도 점수)</h2>
+<p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 8px">적합도 = 절대매력도(0.35) + 갭매칭(0.30) + 등장빈도(0.20) + 최근성(0.15). 후보 풀 = 보유 6종 + 방어·채권축(SGOV·VIG·QUAL·RSP·VEA) + 에너지 관찰(XLE). 12종 전량 조회 성공.</p>
+<table>
+<tr><th>종목</th><th>10/23 종가</th><th>적합도</th><th>주간 함의</th><th>판정</th></tr>
+<tr class="bg-warning"><td><strong>SGOV</strong></td><td>$100.66</td><td class="up"><strong>90</strong></td><td>안전형 🟢 유지·강화</td><td>🔴 강력 매수 — 단독</td></tr>
+<tr><td>XLE (에너지)</td><td>$69.33</td><td>67</td><td>HV4 재활성 · 우호</td><td>🟡 관찰 (52주 고가 추격 주의)</td></tr>
+<tr><td>VIG</td><td>$243.12</td><td>65</td><td>배당·방어</td><td>유보</td></tr>
+<tr><td>QUAL</td><td>$222.82</td><td>61</td><td>Quality 팩터</td><td>유보</td></tr>
+<tr><td>RSP</td><td>$216.54</td><td>56</td><td>동일가중</td><td>유보</td></tr>
+<tr><td>VEA</td><td>$69.05</td><td>53</td><td>국제 분산</td><td>유보</td></tr>
+</table>
+<p style="color: var(--text-secondary); font-size: 13px; margin-top: 8px">SGOV 단독 Top. 방어·팩터(VIG·QUAL·RSP·VEA)는 <strong>FOMC(10/28) 통과 확인 전 유보</strong>한다. XLE는 HV4 재활성과 리플레이션 우호 섹터라 매력은 유지되나, 52주 신고가권($69.33 / 고가 $69.72)에서 리스크오프·FOMC 전 추격은 규율 위반이므로 관찰만 한다(주간 C-10 "에너지는 추격 아닌 기존 비중 점검"과 정합).</p>
+<p class="highlight">→ <code>/종목분석 SGOV</code> 명령으로 심층 분석 가능</p>
+<p class="highlight">→ <code>/종목분석 XLE</code> 명령으로 심층 분석 가능</p>
+</div>
+
+<div class="sec">
+<h2>5. 포트 갭 분석 종합</h2>
+<div class="alert-box warn">🔴 <strong>채권축 0% (목표 12~18%, −15%p).</strong> 7월 알고엔진 전량 청산이 남긴 공백이다. 레짐 리스크오프 플립과 FOMC 주간에서 가장 아픈 구멍(실탄 부재)이며, SGOV 처방으로 연속 복원한다.</div>
+<ul style="margin-left: 18px; font-size: 13.5px; line-height: 1.9">
+<li><strong>현금 과대 약 10.7% (목표 4~8%, +3%p):</strong> 월 적립 재원 대기분. 5% 캐리 SGOV로 전환하면 과대 현금과 채권 공백이 동시에 해소된다.</li>
+<li><strong>VOO 과집중 (계좌 내 57.66%):</strong> 매도가 아닌 <strong>적립 희석</strong>으로 관리한다. 신규 자금은 SGOV·채권축을 우선한다.</li>
+<li><strong>Quality/Factor 공백(−10%p):</strong> FOMC 전 유보한다(바닥·방향 미확인).</li>
+</ul>
+</div>
+
+<div class="sec">
+<h2>6. 🔴 강력 매수 권고 (4요소)</h2>
+<div class="strong-buy">
+<div class="ticker-head">SGOV — iShares 0-3 Month Treasury Bond ETF · 14주 매수</div>
+<div class="what"><strong>① 무엇:</strong> SGOV 14주 (약 $1,409.24 @ $100.66).</div>
+<div class="why"><strong>② 왜:</strong> 주간 C-10 안전형 <strong>🟢 유지·강화</strong> — "레짐 리스크오프 플립 + FOMC 주간 → 실탄(SGOV) 재정당화 · 현금 옵션 가치 상승". 주간 전략 C-7의 세 시나리오 모두 기본값이 '관망·균형·실탄 유지'다. 포트폴리오 <strong>채권축 0%(목표 12~18%, −15%p)</strong> 구조적 공백과 현금 과대(+3%p)를 동시에 해소하며 <strong>5% 단기 캐리</strong>를 확보한다. 안전처 3대 축(금·크립토·국채)이 동반 균열한 국면에서 현금·초단기국채가 유일한 무상관 자산이다.</div>
+<div class="how"><strong>③ 어떻게:</strong> 14주 매수. 재원 = <strong>월 적립 ₩2,000,000 (≈$1,511 @ 1,323.66원)</strong> 내에서 집행하고 잔여는 약 $102 이월. 진입가 $100.66 (단기 국채 ETF · NAV 약 $100 · 가격 변동 거의 없음). 현금등가물이라 손절·목표가는 무의미하다. 효과: 계좌 내 채권축 약 13%+ 연속 복원 (9/19 +20주 → 9/26·10/3·10/10·10/17 각 +14주 → 금주 +14주, 6주 연속).</div>
+<div class="what"><strong>④ 적합도:</strong> 갭 매칭(채권 0% → 목표 12~18%) + 절대매력도 A등급.</div>
+<div class="score">적합도 90 — 단독</div>
+</div>
+<div class="alert-box info-box">매수 근거가 적립 재원이라 원화 밴드나 시점과 무관하게 강건하다. 위험자산 추격이 아니라 방어축 복원이므로 🟡 신호등·FOMC 전 관망 기조와 완전히 정합한다.</div>
+</div>
+
+<div class="sec">
+<h2>7. 🔵 강력 매도/축소 권고</h2>
+<div class="strong-sell">
+<div class="ticker-head">매도/축소 대상 — 0건 (보유 6종 전량 유지)</div>
+<div class="what"><strong>매도 0건 · 신규 진입 0건.</strong> 보호종목 축 + 이번 주 규율에 따라 SGOV 신규 매수 한 건 외에는 전량 보유한다.</div>
+<div class="why">
+<strong>NVDA $210.96:</strong> 반도체 '휩소 안정'(WoW −1.48% 상대 방어). 손절 2ATR <strong>$199.00</strong>, 현재가 대비 여유 +5.89%로 보유. 52주 고가 $243.37 대비 −13.3%. 추가 매수 0 — 진앙(MU·하이닉스) 바닥과 FOMC 선결. "덜컥 저가 매수"도, "덜컥 매도"도 금지.<br />
+<strong>AVGO $321.68:</strong> 고밸류 반도체이나 0.31% 소액이라 매도 비용 대비 무의미. 보유.<br />
+<strong>GLD $366.61:</strong> ★HV5 약화(금 $4,010 · $4,200 상실 · 안전처 미입찰). <strong>추격 매수 금지</strong>(성과 병목 · 중기 miss 18주 고착). 보유 유지만.<br />
+<strong>VOO:</strong> 과집중(계좌 내 57.66%)은 매도가 아닌 <strong>적립 희석</strong>으로 관리.<br />
+<strong>SCHD · BAC:</strong> 유지 (SCHD는 이번 주 방어 선방 +2.68%).
+</div>
+</div>
+<p style="font-size:13.5px;margin-top:8px"><strong>이유:</strong> 🟡 관망·리스크오프 레짐 + 바닥 미확정 + FOMC(10/28) 하방 비대칭이므로 방어적 보유가 최적이다. 반도체는 "신규 추격 금지"이지 "보유분 투매"가 아니다(금요일 과매도 반등 vs 디레이팅 본장 미결).</p>
+</div>
+
+<div class="sec">
+<h2>8. 다음 주 모니터링 포인트 (진입·손절 트리거)</h2>
+<div class="timeline">
+<div class="timeline-item"><div class="time">★ 10/27(월) 한국·아시아 재개장</div><div class="content">주말 2일치 갭. 금요일 미 반도체 안정(SOX +0.44%) 승계 vs 주말 뉴스 갭이 1차 리트머스다. <strong>반도체 저가 덜컥 매수 금지.</strong></div></div>
+<div class="timeline-item"><div class="time">★ 10/28(수) FOMC 금리 결정</div><div class="content">약 66% 인상, 단일 지배 이벤트. 극공포 시장과 하방 비대칭. 시나리오 ③(in-line 통과 + 반도체 재확인) = 선별 분할 재개, 시나리오 ②(매파 서프라이즈) = 방어 강화. 그 전엔 관망·실탄.</div></div>
+<div class="timeline-item"><div class="time">★ 10/29(목) SK하이닉스 3Q26 실적</div><div class="content">컨센서스 영업이익 약 77~80조. 메모리 수요축 직접 판별 · FOMC 주간 중첩.</div></div>
+<div class="timeline-item"><div class="time">빅테크 3Q capex 가이던스</div><div class="content">MSFT·GOOGL·META·AMZN. HV3 '수요 vs 옥석' 직접 판별.</div></div>
+<div class="timeline-item"><div class="time">NVDA 손절선 $199.00 (2ATR)</div><div class="content">이탈 시 재점검. 현재 여유 +5.89%.</div></div>
+<div class="timeline-item"><div class="time">GLD</div><div class="content">HV5 약화 — 추격 금지, 보유 유지만. 금 $4,000 사수 여부 주시.</div></div>
+<div class="timeline-item"><div class="time">XLE · 에너지 관찰</div><div class="content">유가 $103로 $100 돌파(HV4 재활성). 52주 고가 추격은 FOMC 통과 후. WTI↔BEI −3.54σ(기대인플레 전이 미확인)가 HV4 강화/약화 판별자다.</div></div>
+<div class="timeline-item"><div class="time">★ HY 스프레드 3.40%</div><div class="content">전이 발화선 3.5% 주시 (신용 전이 초입).</div></div>
+<div class="timeline-item"><div class="time">SGOV 집행 + 알고 채널 변동</div><div class="content">다음 로그인 시 실보유를 재확인한다.</div></div>
+</div>
+</div>
+
+<div class="sec">
+<h2>9. 4종 모델 포트폴리오 비교 (주간 C-10)</h2>
+<table>
+<tr><th>유형</th><th>이번 주 시사점</th><th>방향</th><th>참고</th></tr>
+<tr><td>🛡️ 안전형</td><td>레짐 리스크오프 플립 + FOMC 주간 → 실탄(SGOV) 재정당화 · 현금 옵션 가치 상승</td><td class="up">유지·강화 ↑</td><td>본 처방 SGOV와 일치</td></tr>
+<tr><td>⚖️ 중립형</td><td>가격 완만하나 레짐 리스크오프 · FOMC 수요일 전 추격 금지 · 품질 치우침</td><td class="warning">중립(방어)</td><td>사용자 기준 모델(균형형)</td></tr>
+<tr><td>🔥 공격형</td><td>반도체 하루 안정은 우호이나 극공포 + FOMC 전 진입 보류, 시나리오 ③ 확인 후</td><td class="down">관망(추격 금지)</td><td>추격 금지</td></tr>
+<tr><td>💰 배당형</td><td>10Y 4.99% 되오름 듀레이션 역풍 + 금요일 배당·방어 직격(KO·LLY 하락)</td><td class="warning">상대 우위 후퇴</td><td>SCHD·VIG 축</td></tr>
+</table>
+<p style="font-size:13.5px">사용자 균형형은 안전형(SGOV)·배당형(SCHD 축)에 이미 노출돼 있다. 이번 처방(SGOV +14주)은 안전형 유지·강화 방향과 완전히 일치하며, 공격형·반도체 추격은 FOMC 전 전면 보류한다.</p>
+
+<h3>처방 요약 (실행 체크리스트)</h3>
+<table>
+<tr><th>액션</th><th>종목</th><th>수량</th><th>금액</th><th>비고</th></tr>
+<tr class="bg-up"><td>🔴 매수</td><td>SGOV</td><td>14주</td><td>$1,409.24</td><td>재원 = 월 적립 200만원(≈$1,511) · 채권축 연속 복원</td></tr>
+<tr><td>🟢 유지</td><td>VOO·SCHD·NVDA·GLD·BAC·AVGO</td><td>무변동</td><td>$12,683.50</td><td>적립 희석 · 추격 금지 · NVDA 손절선 $199.00</td></tr>
+<tr><td>🔵 종목 매도</td><td>—</td><td>0건</td><td>—</td><td>방어적 보유가 최적</td></tr>
+<tr><td>⬜ 신규 진입</td><td>—</td><td>0건</td><td>—</td><td>XLE 관찰 · VIG·QUAL 등은 FOMC 통과 후</td></tr>
+</table>
+<div class="alert-box warn">★ 스케줄 자동 실행(비인터랙티브) — 사용자 부재로 최신 토스 스크린샷 재확인이 불가했다. 리플레이션 게이트 개방 지속으로 드리프트 가능성이 높으니 <strong>실행 전 실보유(SGOV 누적 집행분 · 알고 채널 BAC·AVGO 변동 · 유휴 현금)를 확인</strong>하길 권한다. ISA·크립토는 5/25 기준 미갱신이며 본 처방 범위 밖이다.</div>
+</div>
+
+<div class="footer">
+<h3>명령어 가이드</h3>
+<div class="cmd-grid">
+<div><code>/모닝브리핑</code> 오전 시장</div>
+<div><code>/이브닝브리핑</code> 저녁 시장</div>
+<div><code>/주간리포트</code> 주간 종합</div>
+<div><code>/크립토브리핑</code> 암호화폐</div>
+<div><code>/모델포트폴리오</code> 4종 모델</div>
+<div><code>/리밸런싱</code> 비중 재조정</div>
+<div><code>/글로벌인텔리전스</code> 매크로</div>
+<div><code>/성과리뷰</code> 적중률</div>
+<div><code>/내포트폴리오</code> 개인 처방</div>
+<div><code>/풀브리핑</code> A+B+C+E 4편</div>
+<div><code>/종목분석</code> 종목 심층 분석</div>
+<div><code>/빠른분석</code> 핵심 지표 + ATR</div>
+<div><code>/애널리스트PDF</code> IB PDF 드롭존 처리</div>
+<div><code>/애널리스트스크랩</code> 웹 자동 수집 (IB·미디어·한국·YT)</div>
+<div><code>/리서치업데이트</code> Research KB 갱신 (학술·씽크탱크)</div>
+<div><code>/재분석실행</code> 대상 자동 검출 + 일괄 재분석</div>
+<div><code>/KB업데이트</code> 섹터 KB 갱신</div>
+<div><code>/KB점검</code> KB 건강 점검</div>
+</div>
+<p style="margin-top: 14px; font-size: 12px; color: var(--sub)">생성: briefing-report-generator | 모드: user_포트폴리오_v2 (private) | 데이터 기준: fetch_price.py 2026-10-24 22:06 KST</p>
+</div>
+
+<script>
+      function applyTheme(light) {
+        if (light) {
+          document.body.setAttribute("data-theme", "light");
+          document.getElementById("theme-icon").textContent = "🌙";
+          document.getElementById("theme-label").textContent = "다크 모드";
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.getElementById("theme-icon").textContent = "☀️";
+          document.getElementById("theme-label").textContent = "라이트 모드";
+        }
+        localStorage.setItem("theme", light ? "light" : "dark");
+      }
+      function toggleTheme() {
+        applyTheme(document.body.getAttribute("data-theme") !== "light");
+      }
+      (function () {
+        applyTheme(localStorage.getItem("theme") === "light");
+      })();
+    </script>
+  </body>
+</html>
