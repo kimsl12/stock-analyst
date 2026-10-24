@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-17
-valid_until: 2026-11-16
+updated: 2026-10-24
+valid_until: 2026-11-23
 category: industry
 sub_category: science_tech
 topic: quantum
@@ -182,15 +182,25 @@ sources:
   - 주간델타 09-27~10-03 (양자주 소강·디커플: 10-01 IONQ $43.99·QBTS $16.56·RGTI $15.62·QUBT $8.39·QNT $46.68 52주저점근접, SOX/NASDAQ 랠리에 미동조 / OMB M-26-15 PQC계획 제출기한 ~10-22 구체화 / Classiq Fault Tolerance Engine 09-30 / Quantum eMotion QNC→Plurilock 인수 09-30 / SQC+Schneider 에너지예측·BCG 저전력 배출저감 10-02 / PASQAL CLO Florence Lao·Quanome QNME $15M 10-01 / Paderborn·Basel·Ruhr 단일광자·Tohoku+NIMS ZnO스핀큐빗 / Florida 국방주도 양자허브 09-30)
   - 주간 10-04~10-10 (IonQ 양자인터커넥트 초당 1,000 얽힘이벤트 시연 10-09 / 상온 다이아몬드 3큐빗 Grover 탐색 SAXON Q+Fraunhofer IWU+Leipzig arXiv:2609.13022 충실도 99.98% / Quobly+SiPearl 유럽 CPU-QPU 통합 주권양자 10-09 / BTQ+MoonPay Korea PQC 스테이블코인 10-09 / OMB M-26-15 PQC계획 제출기한 ~10-22 D-12 / 오클랜드大 광원자시계 레이저 소형화·QXL 원자냉각 특허 10-09 / izmo+IIT마드라스 실리콘포토닉스 Phase II ₹99.94cr / Chattanooga Quantum Ready 첫 코호트 / 주중 양자주 종가 N/A-검색미수집)
   - 주간 10-11~10-17 (IonQ $2.0B 유상증자 10-14 Heights Capital·보통주20.5M+선지급워런트29.5M 각 $40.00/7년워런트 1억주 $69.46 / Google 매직스테이트 컬티베이션 Willow 40x·T-상태 99.99(1)% Science 10-15 + Google·DeepMind·MIT 모듈형쌍곡코드 30x / IBM AI QEC 디코더칩설계 204x·Riverlane+NVIDIA GPU 71x 10-14~15 / Anderon 첫 초전도 PDK 300mm 10-15~16 / DOE ARPA-E QC3 $37M 10팀 QuEra 3팀 10-15 / SkyWater+D-Wave 제조연장·NYC+NYU $284M QFab 10-14 / IonQ+케임브리지 Superion256·D-Wave 이탈리아 Lombardy €10M Advantage2·ORCA PT-3 광자 런던 10-15 / 독일 연방 PQC 가이드라인 10-15·OMB M-26-15 D-5 ~10-22·WTO Quantum101 암호화창 5년 10-16 / Dirac Labs Wisconsin 양자PNT 10-15 / Terra Quantum QuEra Alliance+PQC블록체인 10-15 / 양자주 주간 -12~21% 반도체발 리스크오프 yfinance)
+  - 주간 10-18~10-24 (Quantinuum Helios 논리충실도 99.9995% 세계기록 10-19 컬러코드·자사9월比 10배↓·他모달리티 100배↓·Apollo 2029 진입 / Rutgers+IBM 100큐빗 실시간제어 Nature Physics 10-21 / Alice&Bob PROQCIMA 캣큐빗 Phase1 10-20·Google Kaggle $15만 자원절감경진 10-23 / Qblox+NVIDIA DGX Spark·NVIDIA 율리히 FTQC시뮬 NVIDIA GTC Berlin 10-19~22 / Quandela 베트남 최초 양자컴·IQM 마드리드·ZuriQ 극저온IC 10-21~23 / OMB M-26-15 연방 PQC계획 제출기한 10-22 도래 / 양자주 주간 저점권 보합 IONQ $31.27·QBTS $11.65·RGTI $11.52·QUBT $6.55·QNT $36.47 yfinance)
 confidence: high
-last_synced_from_db: 2026-10-17
+last_synced_from_db: 2026-10-24
 ---
 
 # Quantum Technology Knowledge Base
 
-## CURRENT (2026-10-17)
+## CURRENT (2026-10-24)
 
-> **최근 갱신 (2026-10-11~10-17)**
+> **최근 갱신 (2026-10-18~10-24)**
+> - **양자주 주간 저점권 보합 — 전주 급락 후 바닥 다지기(10-19~10-23)**: 전주 금요일(10-16) 대비 대체로 보합. **IONQ $31.28→$31.27(-0.0%)·QBTS $11.78→$11.65(-1.1%)·RGTI $11.80→$11.52(-2.4%)·QUBT $6.36→$6.55(+3.0%)·QNT $36.55→$36.47(-0.2%)** [yfinance]. 주중 고점 **수요일 10-21**(QNT $38.65·IONQ $32.28) 후 목·금 소폭 되돌림. 전주 반도체발 리스크오프 -12~21% 급락 후 **52주 저점권서 안정** — 신규 바스켓 촉매 부재, 반도체/나스닥 레짐에 연동.
+> - **[QEC·FTQC] Quantinuum Helios 논리충실도 99.9995% 세계기록(10-19)**: 백만 연산당 오류 **~5회**. 자사 09월 기록(Helix, 논리큐빗당 ~10물리큐빗) 대비 **10배↓**·타 모든 하드웨어 모달리티 최고치(Google 초전도) 대비 **100배↓**. **컬러코드(color code)** 사용, 코드거리 증가 시 논리오류 지수적 감소(증가당 ~12배 억제), 저오류 위해 논리큐빗당 **최대 37물리큐빗**. **2029 범용 FTQC Apollo 목표 정확도 범위 진입**. 피어리뷰·독립검증 전 자사 발표치(다수 매체 교차보도) — QCCD 트랩이온 QEC 리더십 재확인.
+> - **[실시간 제어·FTQC] Rutgers+IBM 100큐빗 실시간 제어 시연(10-21, Nature Physics)**: 156큐빗 IBM Heron 프로세서서 최대 **100큐빗 체인** 대상, 연산 중 부분 측정·리셋(중간회로측정 MCM)을 **실시간** 수행 — 역대 최대급 실시간 양자 피드백 제어 실증. FTQC(오류내성) 필수 요건. 07월 Univ Sydney+IBM MCM 병목 규명의 대규모 후속.
+> - **[자원효율 AI] Google $150,000 Kaggle 경진(10-23)+Alice&Bob PROQCIMA Phase1(10-20)**: Google Quantum AI가 핵융합·최적화·화학 작업의 **큐빗/게이트 수 절감**을 겨루는 상금 $15만 AI 경진 출범(10-15 매직스테이트·모듈형 쌍곡코드 자원효율 드라이브 연장). Alice&Bob은 프랑스 국방조달청 **PROQCIMA 캣큐빗 Phase1** 3종 HW 데모 보고(측정 논리오류율 아직 임계치 상회 — FTQC 미달).
+> - **[양자-HPC 하이브리드] NVIDIA GTC Berlin(10/20~22) 가속 집중**: Qblox+NVIDIA **DGX Spark** 양자제어 통합(왕복 레이턴시 RTX PRO 6000 Blackwell **<4.0μs**·DGX Spark <7.2μs, NVQLink, 10-22) / NVIDIA **율리히 슈퍼컴퓨팅센터 FTQC 시뮬레이션**(10-19) / QCentroid Missions 기업용 고전-양자 솔버 비교툴 데모 — GPU-QPU 하이브리드 제어·벤치마킹 생태계 확대.
+> - **[배치·공급망] 글로벌 양자컴 배치 확대(10-21~23)**: **Quandela+Quanova 베트남 최초 양자컴**(MosaiQ 광자, Quang Trung University, 10-21 호찌민 발표) / **IQM+Telefónica 마드리드공대** IQM Spark 설치(연내) / **ZuriQ+Rhonexum 다년 극저온 집적회로** 계약(트랩이온 로드맵, 첫 제품 2026말).
+> - **[PQC 정책] OMB M-26-15 연방 PQC 마이그레이션 계획 제출기한 ~10-22 도래**: 연방 민간기관이 OMB·ONCD에 리스크기반 우선순위·자동 인벤토리·crypto-agility 아키텍처·마이그레이션 리드 지정 포함 계획 제출(EO 14412 06-22·M-26-15 06-24 기점 120일 만기). **5단계(2026~2035)**·키확립 2030-12-31/디지털서명 2031-12-31 우선 데드라인·NSS 제외·**12월 FAR Council 계약자 PQC 규칙안** 예정. 실제 기관 제출·준수 현황은 미확인. 신규 NIST 표준 없음·FIPS 140-2 sunset(09-21) 유지.
+
+> **직전 갱신 (2026-10-11~10-17)**
 > - **양자주 주간 급락 — 반도체발 리스크오프 + IonQ $2.0B 유상증자 희석(10-12~10-16)**: 직전 금요일(10-09) 대비 **IONQ $39.89→~$31.3(-21%)·QBTS $14.57→$11.79(-19%)·RGTI $14.03→$11.79(-16%)·QUBT $7.44→$6.36(-15%)·QNT $41.30→$36.55(-12%)** [yfinance]. 주중 저점 **10-14**(IONQ $31.42·QBTS $12.03·RGTI $11.68·QUBT $6.31·QNT $33.03), 10-15 반등 후 10-16 재하락. 미 세션 **반도체 매도(SOX -3.83%·MU -5.65%·나스닥 -2.15%·VIX +21%)로 레짐 리스크오프 전환** — 무현금흐름 고밸류 양자주 고베타 매도. **IonQ 10-14 $2.0B 유상증자 공시**(희석)가 추가 하방.
 > - **[자본] IonQ $2.0B 유상증자 가격책정(10-14, 교차검증)**: J.P.Morgan 인수분을 **Heights Capital Management** 운용 엔티티가 매입. 보통주 20.5M주+선지급워런트 29.5M주 각 **$40.00**(10-13 종가 $34.78 대비 ~15%↑)+7년 워런트 **100,000,000주 행사가 $69.46**(100%↑). 용도=풀스택 양자 상업화·제조·배치 가속. 단기 대규모 희석 → 주가 하방. (※2025-10-10 유사 $2.0B 딜 $93/주·워런트 $155와 구분) [IonQ IR/BusinessWire/QCR/TQI]
 > - **[FTQC·QEC] Google 매직스테이트 컬티베이션 Willow 실증(10-15, Science)**: 초전도 프로세서서 **오류율 40배 감소·T-상태 논리충실도 99.99(1)%**(시도 8% 유지·서피스코드 코드스위칭). 2024 Gidney/Shutty/Jones 제안(qubit·round 오더매그니튜드 절감) 실험 입증 — **매직스테이트 증류/배양은 FTQC 비클리퍼드 게이트 핵심 병목**, 실용 FTQC 자원 오버헤드 대폭 절감. 동반 **Google+DeepMind+MIT 모듈형 쌍곡선 코드**(2D 서피스코드 대비 QEC 오버헤드 30배+ 절감, 시뮬) — Google FTQC 자원효율 이중 발표.
@@ -200,16 +210,6 @@ last_synced_from_db: 2026-10-17
 > - **[자금·DOE] DOE ARPA-E QC3 $37M·10팀 발족(10-15, QuEra 3팀 파트너)**: 양자화학·소재 시뮬 고전 대비 100배 목표. DOE Quantum Genesis(FTQC 2028)와 별개 응용 연구 자금. **Terra Quantum QuEra Quantum Alliance 합류(TQ42)+PQC 블록체인 백서(FN-DSA)**.
 > - **[PQC 정책] OMB M-26-15 PQC계획 제출기한 ~10-22 D-5 임박**: 연방 민간기관 리스크기반 우선순위·자동 인벤토리·crypto-agility 계획 OMB·ONCD 제출. 5단계(2026~2035)·NSS 제외·12월 FAR Council 계약자 규칙안. **독일 연방 PQC 마이그레이션 가이드라인 발표(10-15, 고리스크 2030·전체 2035, EU 로드맵 정합)** — 주요국 PQC 데드라인 수렴. **WTO 'Quantum 101'(10-16): 암호화 창 5년 내 폐쇄 경고** — 국제무역 거버넌스로 양자위협 인식 확산. 신규 NIST 표준 없음·FIPS 140-2 sunset(09-21) 유지.
 > - **[양자센서] Dirac Labs Wisconsin Security Research Consortium 합류(10-15)**: 다이아몬드 기반 양자센서 자율 국방 플랫폼 GPS 비의존 PNT — DIU/EO 14413 국방 수요 저변.
-
-> **직전 갱신 (2026-10-04~10-10)**
-> - **양자주 주간 — 주중 일별 종가 미수집(N/A, 검색 폴백)**: 이번 주(10-05~10-09) IONQ·QBTS·RGTI·QUBT·QNT 일별 종가는 웹검색으로 확정 불가(소스 미인덱싱 — 확정 시 yfinance/브로커 이력 교차검증 필요). **직전 확정치(10-01: IONQ $43.99·QBTS $16.56·RGTI $15.62·QUBT $8.39·QNT $46.68, 52주 저점권)에서 승계**. 주중 대형 개별 촉매는 **10-09 IonQ 양자 인터커넥트 마일스톤**(아래)에 집중, 바스켓 신규 레벨은 미확인.
-> - **[양자네트워킹] IonQ 양자 인터커넥트 초당 1,000 얽힘 이벤트 시연(10-09, 보도자료)**: **04-14 두 상용 트랩이온 시스템 간 포토닉 원격얽힘 최초 시연(AFRL·DARPA HARQ)** 대비 **얽힘 생성률(entanglement rate) 대폭 향상**. 분산형(멀티노드) 양자컴퓨팅·양자네트워크 인터커넥트의 핵심 병목인 **얽힘 분배율** 개선 지표 — 모듈형 스케일링 경로. (투자자향 보도로 거리·충실도 등 세부지표는 미공개 — 참고: 2024 Duke/Monroe 원격얽힘 250Hz 대비 진전 맥락)
-> - **[기초연구·상온 고체스핀] 상온 다이아몬드 3큐빗 Grover 탐색**(SAXON Q GmbH+Fraunhofer IWU+라이프치히大, **arXiv:2609.13022** 09월 프리프린트 / TQI 10-09 'Quantum Computing's Transistor Moment' 게스트포스트 조명): 상온(ambient) NV센터 핵스핀 3큐빗, **게이트 충실도 최대 99.98%**, 8상태 탐색 성공률 **77.3%(1마킹)/87.0%(2마킹)** — 초전도·여타 상온 양자컴 공개결과 상회 주장. 소규모(3큐빗)·미피어리뷰지만 **상온 고체스핀 플랫폼** 진전.
-> - **[PQC 정책] OMB M-26-15 PQC 마이그레이션 계획 제출기한 ~10-22 D-12 임박**: 연방 민간기관이 OMB·ONCD에 **리스크기반 우선순위·자동 인벤토리·crypto-agility 아키텍처·제3자 조율·자원/거버넌스** 포함 계획을 제출해야 하는 120일 기한(EO 14412 06-22·M-26-15 06-24 기점)이 **~2026-10-22**로 약 2주 앞. **5단계(2026~2035)** 재확인, **12월 FAR Council 계약자 PQC 규칙안** 예정. 국가안보시스템(NSS) 제외, 신규 NIST 표준 없음·FIPS 140-2 sunset(09-21) 유지.
-> - **[PQC·한국] BTQ+MoonPay Korea 포스트양자 스테이블코인 보안(10-09)**: BTQ(Nasdaq: BTQ)의 **한국 스테이블코인 PQC 전략 확장** — iM뱅크 KRW 스테이블코인 PoC(05월, ECDSA+ML-DSA 하이브리드·Kaia 네트워크)·LINE NEXT/Kaia 지갑·결제 인프라 연계 후속. 소비자 결제/지갑 인프라에 **양자저항 서명** 적용 확대(한국 PQC 상용화 저변).
-> - **[유럽 주권] Quobly+SiPearl 유럽 CPU-QPU 통합 탐색(10-09)**: 프랑스 실리콘 스핀큐빗(Quobly, €115M 시리즈A·OVHcloud 소버린클라우드·Inria·STMicro 28nm·SEALSQ)+유럽 HPC CPU(SiPearl) 결합 **주권형 양자-HPC 스택**. 유럽 양자주권(EuroQCI·EU산 HW) 흐름 강화.
-> - **[양자센서/PNT] 오클랜드大 광원자시계 레이저 소형화(10-09)**: 광원자시계(optical atomic clock) 핵심 레이저 광학계 미니어처화 — **실험실→소비자 확장 경로**(양자 타이밍/PNT 저변 — 원자시계가 양자센서 PNT 최대 제품군). + **Quantum X Labs(QXL) 구조화빔 원자냉각 시스템 미 특허출원**(중성원자 냉각 IP).
-> - **[생태계·인력·기타] (10-09)**: Chattanooga Quantum Collaborative 첫 **'Quantum Ready' 수료 코호트**(테네시 16社 17명 — IonQ-EPB 테네시 양자통신센터 연계 지역 인력양성) / **izmo Microsystems+IIT 마드라스** 실리콘 포토닉스 Phase II(**₹99.94 crore**, 인도) / Quantum Elements 'Constellation'(FTQC SW) **TMCnet 2026 양자컴퓨팅 제품상**.
 
 
 ---

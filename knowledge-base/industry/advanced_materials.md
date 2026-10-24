@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-17
-valid_until: 2026-11-16
+updated: 2026-10-24
+valid_until: 2026-11-23
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -231,8 +231,8 @@ sources:
     EnvironmentEnergyLeader,
   ]
 confidence: high
-last_synced_from_db: 2026-10-17
-db_records: 547
+last_synced_from_db: 2026-10-24
+db_records: 554
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -241,6 +241,23 @@ db_records: 547
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.10.24 핵심 변화 요약 (10/18→10/24 윈도우)**:
+>
+> ⚠️ **[윈도우 성격] 3주 연속 첨단소재 펀더멘털 조용한 주 — 1차 소스 신규 확정 델타 없음.** 웹검색 10회 전부 윈도우 외(2025.10 APEC/中 통제 또는 ~2026.9 데이터)를 재노출, 10/18~10/24 첨단소재 특정 신규 뉴스는 surface되지 않음. 아래는 **재확인(status-quo) 중심** 갱신이며 미확인 항목은 N/A로 명기. 일부 커멘터리(Substack 등)가 '11/10 유예종료' 舊프레임을 재노출했으나 **本 KB는 2개월 연장분(유예종료 2027.01.10·Bessent 9/23·中 MOFCOM 9/28)을 현 기준으로 유지 — 11/10 회귀 아님.**
+>
+> 1. **[재확인·프레임 유지] 희토류 D-day = 2027.01.10(D-78) + DFARS 1/1/2027(D-69): 당주 신규 가격/정책 확정 델타 없음.** 10월 하순 희토류 스팟(NdPr·Dy·Tb) 1차 소스(SMM/Fastmarkets/Argus) 당주 미갱신 → 직전 10/1주 Fastmarkets ex-China 중희토 서지 유효(Tb oxide 99.99% CIP global $5,000-8,000/kg·Dy oxide 99.5% $2,500-3,500/kg·美 2027.1 조달금지 선반영). 역외(ex-China)와 中 도메스틱 FOB 간 3.8~4.9배 프리미엄 구조 지속(8월말 Dy oxide ex-whs Rotterdam $1,250-1,675/kg vs FOB China $270-330/kg·Tb oxide Rotterdam $4,200-5,000 vs FOB China $1,180-1,270). NdPr $110/kg floor(美 DoD, MP+Lynas) 유지. [Fastmarkets/WisdomTree(재확인)]
+>
+> 2. **[재확인·forward] MP Materials — GM向 첫 非中산 NdFeB 자석 '정규 상업 인도 Q4 2026 시작' 가이던스 유지, 당주 첫 선적 공식 확인 없음.** GM 자동차 인증시험용 자석은 인도 완료(8월 SMM)·상업 선적 Q4 개시 대기. Independence(Fort Worth TX) 3,000MT/y·GM 계약 ~1,000MT/y·precursor 잔여 의무 $62.1M(3/31 기준). 10X Northlake 2028 가동 시 美 총 ~10,000MT/y. Q3 2026 실적 ~11월 초 forward. [247wallst(10/5)/metal.com/SMM(재확인)]
+>
+> 3. **[재확인·forward] 전고체 — QuantumScape Q3 2026 실적 ~2026-10-28 예정(D-4, 당주 미발표): 당주 신규 상업 델타 없음.** QS Q2 2026(7/22): GAAP 순손실 $98.2M·유동성 $859M·FY2026 조정EBITDA손실 가이던스 $250-275M 유지·QSE-5 안전성 시험(못관통·단락·300°C 열안정) 통과·美 방산 contractor向 QSE-5 선적·Honda 다년 파트너십·PowerCo 마일스톤 기반 개정(7월). Samsung SDI 황화물 2H 2027 울산 양산(>900Wh/L·25조원 2026-2040 중 울산 16조·LFP/Na-ion 라인 병설)·수원 파일럿 검증 완료·시료 EV/임바디드AI/휴머노이드 평가중. Toyota 2027-28. QS-Samsung SDI 직접 제휴는 없음(각자 독립 프로그램). [QuantumScape IR/Quartr/battery-news.de/gasgoo(재확인)]
+>
+> 4. **[재확인·윈도우갭] 배터리소재 — 탄산리튬 10월 하순 스팟 1차 소스 미갱신, 당주 확정 레벨 N/A: 직전 흐름(2026.4 中 가격 전년比 ~+190%·>150,000 RMB/t) 유효.** CATL Na-ion: 2026년 탑재 EV 최대 ~20,000대 전망·여객차 Q2 2026 전개(Aion Y Plus)·배터리스왑/상용차/ESS 확산·리튬 변동성 헤지('alternative risk management'). BYD 30GWh Na-ion 라인 가동. 10월 SMM/GFEX 탄산리튬 확정 스팟 당주 미확인. [Caixin/CnEVPost/CarNewsChina/electrive(재확인)]
+>
+> 5. **[재확인] 탄소섬유 — 당주 신규 수주/가격 델타 없음.** Syensqo-Toray Composite Materials America 5년 CF 공급계약(2026.1 발효, 항공·우주·방산) 유효. Toray 4월 surcharge(호르무즈 봉쇄·中東분쟁發 PAN 원료 급등, 영구 인상 아닌 임시·정기 재검토) 구조 유지(신규 인상 없음). 핵심 항공 CF 공급 Toray/Hexcel/Mitsubishi/Teijin/Syensqo 유지. [CompositesWorld/PlasticsToday(재확인)]
+>
+> 6. **[재확인] 美 임계광물 정책 — '2027년 초 데드라인 클러스터' 유지, 당주 신규 정책/금액 델타 없음.** DFARS 252.225-7052(10 U.S.C. §4872, 2024 NDAA §854) 1/1/2027 mine-to-magnet 금지(NdFeB·SmCo·텅스텐·탄탈륨) + 中 확대통제 유예종료 1/10/2027 수렴. 2차 DFARS 연기 로비 지속(FT 보도, mid-2026 출처·당주 승인 확인 없음)·펜타곤 'Deal Team Six'(경제방위국) ~3년 $200B 지분/구매/대출 권한으로 비중국 희토·자석 생산자 지원. 업계는 데드라인 충족 회의적(中 자석 ~95% 지배·美 2025 국내공급 300t vs 수요 ~48,000t, trade-press 단일 출처). 지원 재확인: USA Rare Earth $1.6B·EXIM $58M·美-호주 $8.5B. APEC 2026(中 주최)이 美中 희토 데탕트 잠재 무대이나 당주 확정 합의 미확인. [Adamas Intelligence/EnvironmentEnergyLeader/metal-powder.tech/mining.com(재확인)]
+
 
 > **2026.10.17 핵심 변화 요약 (10/11→10/17 윈도우)**:
 >

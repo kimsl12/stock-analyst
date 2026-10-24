@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-17
-valid_until: 2026-11-16
+updated: 2026-10-24
+valid_until: 2026-11-23
 sector: capex
 confidence: high
 tags:
@@ -227,15 +227,31 @@ sources:
     livewiremarkets,
     traderinsights,
     pulse2,
+    Newsquawk,
+    PrimeXBT,
+    briefing.com,
+    Mizuho,
+    roic.ai,
+    tikr,
+    admiralmarkets,
+    investinglive,
+    hudson-labs,
+    startupmap,
   ]
-last_synced_from_db: 2026-10-17
+last_synced_from_db: 2026-10-24
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-10-17 | 신뢰도: high | 유효: ~2026-11-16
+> 갱신일: 2026-10-24 | 신뢰도: high | 유효: ~2026-11-23
 
 ---
+
+## ★ 주간 델타 (10/24) — 직전 갱신(10/17) 이후 변화
+
+- **[핵심] 반도체 WFE 2027 전망이 장비사 실적으로 재확인 — Lam Research Q1 FY2027(10/21) CY2027 예비 WFE 전망 '$200B 초과'(CY2026 ~$150B 대비)·DRAM·NAND·파운드리/로직 수요 견인·분기 매출 ~$8.22B(콘센 $8.13B)·조정 EPS $2.20(콘센 $2.18) 비트**: Lam Research가 **10월 21일 Q1 FY2027 실적**에서 **CY2027 예비 WFE(전공정 장비) 전망을 '$200B 초과'로 제시**(CY2026 ~$150B 대비) — **DRAM·NAND·파운드리/로직 수요**가 동반 견인. 분기 매출 **~$8.22B(콘센 $8.13B)·조정 EPS $2.20(콘센 $2.18)로 상회**. 직전 KB(10/3·10/10)의 **전망치** JPMorgan $225B·Morgan Stanley $202B·Needham $201B·Bernstein +18.2%와 달리, 이번 주는 **장비사 본인(Lam)이 CY27 $200B+를 공식 가이드** — 수요처(TSMC 10/16·ASML 10/15 실적) 재확인에 이어 **공급측(장비) 가이던스로 2027 WFE $200B+ 레벨이 교차확인**. 주: $200B+·$150B WFE 정의와 분기 매출/EPS 수치는 소스간 재확인 요(newsquawk/primexbt 2소스) [Newsquawk(2026.10.21), PrimeXBT, briefing.com, hudson-labs]
+- **[핵심] AI 인프라 신용 스트레스 급격 재점화 — CoreWeave 5년 CDS 1,000bps+ 돌파(피크 ~1,194bps·내재 디폴트확률 5년 ~63%)·2031채권 수익률 16%+·주가 주간 -25%($82→$61)·Oracle 5년 CDS 역대 288bps·HY DC 프로젝트본드 ~20건 $45.6B(MS)·Nvidia 고객 칩구매 파이낸싱 보증**: 10월 중순(주간 종료 10/16) **CoreWeave 신용 스트레스가 급격 심화** — **5년 CDS가 전일 ~600bps에서 1,000bps+로 급등(주간 피크 ~1,194.5bps, 시장 내재 5년 디폴트확률 ~63% by Reuters)**, **2031 만기 채권 수익률 16%+**(9.625% 2032노트 ~79.5센트)·**주가 주간 -25%(10/9 $82→10/16 $61)**. **Oracle 5년 CDS가 overnight +26bps 역대 288bps**(대형 발행사 중 유일 비IG). **HY 시장에 프로젝트 파이낸스 DC 본드 ~20건·총부채 $45.6B(Morgan Stanley), CoreWeave가 최대 테넌트**. **Nvidia가 자사 AI칩 구매 고객의 파이낸싱을 보증**하며 신용 리스크 노출. 촉매 — **뜨거운 인플레 지표로 Citi 등 12월 Fed 인상 베팅**(조달·리프라이싱비 압박). 피크 후 일부 반등(2031본드 +3.3센트 82.8), CEO는 '비이성적' 반응이라며 백로그가 채무 커버 주장. 직전 KB(10/3 CoreWeave 5년물 ~13%·Oracle 10Y ~6.5%) 대비 **2차시장 리프라이싱이 디폴트확률 수준으로 급등** — AI DC 부채가 금리·버블 논쟁의 최전선. 주: CDS·수익률·부채($50B Reuters vs $72.1B NYT) 수치는 소스·시점별 상이, 피크는 윈도우 직전(10/13~16)이나 10/17 KB 미수록 [letsdatascience, roic.ai(2026.10.15), tikr, admiralmarkets, investinglive, itiger, Reuters(2차)]
+- **빅테크 capex·전력(GE Vernova)·메모리(SK하이닉스) — 이번 주(10/18~24) 신규 가이던스 없음, 10월말 Q3 어닝 집중 구간**: 빅테크 4사(Microsoft·Meta·Alphabet·Amazon) **Q3 2026 어닝이 10월말(~10/28~30)** 집중 — capex 추가 상향 관측 속 이번 주 신규 수치 미발표. **GE Vernova Q3는 ~10/28 발표 예정**(Mizuho 프리뷰 백로그 추정 ~$189B, 종전 $176B 대비 / 종전 KB의 'GEV 10/22' 일정은 **~10/28로 정정** — 10/24 현재 미발표)·**SK하이닉스 Q3 10/29**. 기조 승계 — 빅테크 2026 capex(Amazon ~$220B·Microsoft ~$190B·Alphabet $180~205B·Meta $125~145B)·HBM4 가격 HBM3E 대비 +60~70%·범용 DRAM/NAND 슈퍼사이클·전력 병목(변압기 공급 ~15% 부족·리드타임 3~5년·가스터빈 멀티이어 슬롯). 다음 촉매=10월말 어닝 러시 [wealthprofessional, startupmap, Mizuho, oilprice, TrendForce]
 
 ## ★ 주간 델타 (10/17) — 직전 갱신(10/10) 이후 변화
 
