@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-17
-valid_until: 2026-10-24
+updated: 2026-10-24
+valid_until: 2026-10-31
 category: macro
 sources:
   [
@@ -193,7 +193,7 @@ sources:
     "METI",
   ]
 confidence: high
-last_synced_from_db: 2026-10-17
+last_synced_from_db: 2026-10-24
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -205,6 +205,21 @@ last_synced_from_db: 2026-10-17
 > **연계:** G-1(지정학 파워맵)의 하위 프레임. 공급망 재편의 근본 동인은 지정학.
 
 ## ★ CURRENT ★
+
+## [2026-10-24] 주간 델타 (10/18~10/24)
+
+> **교차검증 (운임·가격, 10/16~10/23 기준):** **BDI 2,660**(10/23, 주간 +5.9%·2주 연속 반등, 10/16 저점 2,515서 회복, TradingEconomics+Hellenic 2소스·Capesize 3,791 철광석·中 철강 증산 견인·Panamax 2,109 8/24 이후 최저) · **WCI $4,351 승계**(10/9, October 신규 release 공백·confidence low·참고 Drewry 9/14 $4,476 2주 보합·SCFI 3,662·blank sailing Transpacific 차주 8건) · **TTF $28.9/MBtu·JKM high-$29s/MBtu·HH $3.1**(10/16, GlobalLNGHub 19 Oct·10/9 $26.7/low-$26s/$3.2서 2주 연속 상승). 유가는 **메인 yfinance 확정 앵커** — WTI **$103.44**/Brent **$111.66**(10/23 settle·CL=F/BZ=F 일봉=시간봉 교차검증→정산 아티팩트 없음·주중 Brent 10/22 $113.17 고점·10/16 $99/$110서 상승). 구리는 October 신선 — LME cash ~$14,566/t·COMEX ~$6.89/lb(9/9 기록). 희토류는 October release 공백 승계(confidence low).
+> **D-카운트 재계산 (2026-10-24 기준):** 희토류 추가통제 유예 만료 11/10 **D-17** · 대미흑연 11/27 **D-34** · 폴리실리콘232 12/4 **D-41** · DFARS 252.225-7052 1/1/2027 **D-69** · REE/흑연 Phase 2 유예 ~Jan 10 2027 **D-78**.
+
+- **★벌크 반등 — BDI 10/23 2,660(주간 +5.9%·2주 연속 상승, 10/16 저점 2,515서 회복). 4일 연속 상승 후 10/23 -1.2% 소폭 되돌림. Capesize 3,791(10/19 10일 연속 하락 종료·철광석價 상승+中 철강 증산+예상상회 성장 견인)·Panamax 2,109(8/24 이후 최저·-2%)·Supramax 1,887.** 지난주 '급락 가속'(10/16 2,515·10일 연속 하락·6/30 이후 최저)서 대형선 주도 반등으로 방향 전환. [TradingEconomics 10/23, Hellenic Shipping News]
+- **컨테이너 — WCI October 신규 release 공백으로 $4,351(10/9) 승계(confidence low). 참고: Drewry 9/14 $4,476/FEU(2주 보합)·SCFI 3,662(9/12 +2%)·NYFI Asia-USEC +8.55%. blank sailing Transpacific 차주 8건(7건서 증가)·동서항로 전반 blank sailing 급증. 캐리어 11/1·11/15 GRI + FAK $2,600~2,700/FEU 도입 시도.** 국경절 後 FAK 인상 시도 vs 수급완화 하방압력 병존. [Drewry 승계, Container News 9/14]
+- **★LNG 상방 지속 — TTF $28.9/MBtu(10/16, 10/9 $26.7서)·JKM high-$29s/MBtu(10/16 Dec del, 10/9 low-$26s서)·Henry Hub $3.1(미 온난 전망에 10/9 $3.2서 하락). 노르웨이 Troll 등 공급제약+유럽 한파 전망+호르무즈 리스크로 TTF/JKM 2주 연속 상승. EU 저장 74.3%(10/16·전년比 -10.9%·5년평균比 -16.5%)·日 전력용 LNG재고 2.64Mt(10/11).** Goldman 겨울 기본 TTF €70/MWh·JKM $25, 호르무즈 제약 지속시 €105/$35 상단. 직전(10/17 $26.7/$26) 상방 기조 가속. [GlobalLNGHub 19 Oct, Goldman Sachs 09월]
+- **★메모리 초긴축 — TrendForce Q4 일반 DRAM +10~15% QoQ·HBM포함 종합 DRAM +15~20%(10/20 업데이트 ~20%, Q2 ~80%·Q3 ~40%서 둔화)·NAND +15~20% QoQ. HBM4 고속본 +30~40% 프리미엄(Nomura)·HBM3E 36GB 현물 ~$2,100(LTA 4~5배)·DDR5 32GB 리테일 ~$550~650(1년전 $110~140)·HBM 웨이퍼 점유 23%(2024 8%서). HBM 계약가 2027 +50% 전망. 점유 SK하이닉스 57%·삼성 22%·마이크론 21%.** 공급사 HBM/서버 DRAM 집중→레거시 캐파 구축, 2028~29 신증설 전까지 물리적 공급난 지속. [TrendForce 9/23·10/20, Nomura]
+- **반도체 장비·실적 — SK하이닉스 3Q26 실적발표 10/29 예정 대기(Hana증권 10/13 OP 77.9조원·매출 99.2조원·DRAM價 +19→21% 상향·조선 컨센 OP 78.8조원). ASML Q3(10/14 WFE 2027~28 수요 충족 불가 명시)·TSMC Q3(10/15 사상최고·capex $60~64B) 서사 유지. 삼성 HBM4 양산 개선이 SK하이닉스 공급 프리미엄 희석 변수.** 장비 리드타임 ~24개월 병목 지속. [Hana증권 10/13, 승계]
+- **희토류·구리 — 구리 October 신선: COMEX 美창고 글로벌 가시재고 ~70% 보유(10/14·재고 >714,185t·Feb2025比 +750%)·LME cash ~$14,566/t·COMEX ~$6.89/lb(9/9 기록 settle)·COMEX-LME 스프레드 ~$310/t(2025.7 $3,000+서 축소)·refined 232 미결(15%/30% 1/1/2027·2028 권고). 희토류 October release 공백 승계(confidence low): NdPr DoD floor $110/kg(Lynas 2026-03 동일보장)·Platts 3/31 Dy oxide CIF NA $1,200/kg·Tb $4,900/kg. MP Materials Q3 Pr-Nd >1,000mt(Q2 840mt +41% YoY)·Dy/Tb 분리라인 연내 가동·텍사스 자석공장 GM 인증.** [Crux Investor 10/14, S&P/Platts 승계, MP Q2]
+- **무역휴전·규제 — US-中 휴전 Jan 10 2027 유효(MOFCOM 9/28 연장, 단 희토류 통제 미명시)·희토류 추가통제 유예 11/10 만료가 핵심 불확실성(D-17)·BIS 50% 소유규칙 1년 유예·트럼프-시 정상회담 변수. [교정 플래그] 흑연 EV음극재 AD 93.5%(Commerce 2026-02-11 최종)는 ITC 2026-03-12 '실질적 피해 없음'으로 발효 무산 → KB '대미흑연 11/27' 데드라인은 신규 절차/연례재심 또는 中 수출통제 기준일로 재확인 필요. 폴리실리콘232 12/4·DFARS 1/1/2027 유효.** [MOFCOM 9/28, eenews/Barchart 02~03월, Federal Register 승계]
+
+---
 
 ## [2026-10-17] 주간 델타 (10/11~10/17)
 
