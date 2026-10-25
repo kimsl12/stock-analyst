@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-18
-valid_until: 2026-11-17
+updated: 2026-10-25
+valid_until: 2026-11-24
 sector: science_tech
 sources:
   [
@@ -749,7 +749,17 @@ db_records: 1242
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-10-18 갱신)
+### 16-C. 주간 과학기술 동향 (2026-10-25 갱신)
+
+> **2026-10-18~10-25 주간 통합 수집(web_search 6회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(10/24 space subtag — SpaceX Q3 실적·Starship Flight15·ASTS FCC 10/29·우주주 안정화 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 10월말 FDA PDUFA 집중(베피로비르센 10/26 등) 구체화**·양자/AI프런티어/기초과학 범용 신규 discrete 돌파는 제한적(웹 인덱스 희소).
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[바이오·FDA]** | ★ **10월말 FDA PDUFA 집중 — 직전 주 '경량 캘린더'서 구체 날짜 확정**. ★**GSK 베피로비르센(bepirovirsen·Ionis 라이선스·안티센스 올리고)** PDUFA **10/26** = 만성 B형간염 **'first-in-class 기능적 완치'** 후보·우선심사+혁신치료제(BTD, 2024-02 Fast Track 상위)·Phase III **B-Well 1&2** 전 순위 엔드포인트서 SoC병용>SoC단독 기능적완치율 우위(저baseline HBsAg서 효과 증폭)·현재 전세계 미승인. **INOVIO INO-3107**(DNA 메디슨) PDUFA **10/30** 재발성호흡기유두종증(RRP) 가속승인 심사. 10월 캘린더 전반은 여전히 경량 | 2026.10 | GSK 6-K(SEC) / Ionis IR / GSK PR / businesswire |
+| **[바이오·규제일정]** | FDA 심사일정·파이프라인 이동 = **데라미오셀(deramiocel·뒤센근이영양증 DMD)** 추가데이터 수용 후 심사기한 **2026-11-22로 연장**·**PTC Therapeutics**가 파산경매서 **Sangamo의 BLA단계 파브리병 유전자치료제 ST-920**을 **$111M** 인수. FDA 리더십 = Diamantas 대행·지명자 Overton 9/24 청문(기록분) | 2026.10 | RAPS / Quartr / BioSpace |
+| **[프론티어·중복주의]** | 양자 = 10월 신규 discrete 발표 미확인(IBM-시카고대 70논리큐빗 7월·QuEra 100논리큐빗 로드맵 등 기발표분 재기록 배제). AI프런티어 = 10월 대형랩(OpenAI/Google/Anthropic/xAI) 플래그십 신규 출시 미확인(10/14~15 Grok Voice 3.0·Meta Muse Spark 등은 증분·window 이전). 기초과학 = Falling Walls 'Breakthrough of the Year 2026' 150 숏리스트(서밋 11/9 베를린)는 **10/04 기록분**(중복 배제). 우주 Q3 실적·Starship·ASTS FCC는 **10/24 토요 weekly-frontier** 기록(space sector·중복 금지) | 2026.10 | weekly-frontier(10/24) / BenchLM / Falling Walls |
+
+#### (이전 주간) 2026-10-18 기록
 
 > **2026-10-11~10-18 주간 통합 수집(web_search 9회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(10/17 space·10/11 양자 jsonl 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 노벨 시즌 수확(전 부문 수상자 확정)**·웹 인덱스 희소로 범용 신규 discrete 돌파는 제한적.
 
@@ -827,7 +837,7 @@ db_records: 1242
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1234건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1249건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
