@@ -1,6 +1,6 @@
 ---
 updated: 2026-10-15
-valid_until: 2026-10-25
+valid_until: 2026-11-01
 file: economic_calendar
 sources:
   - "Kiplinger week of July 6-10 2026 economic calendar"
@@ -122,6 +122,8 @@ collection_status: OK
 > ✅ **[2026-10-11 /KB점검 재검증 — 재수집 DEFER, SSOT 대조 통과]** valid_until 10-11 D-0 재도달(auto-trigger 조건 재충족)이나 **이번 회차 재수집 미실행(의도적 defer)**. 근거: (1) ★**셧다운 D+11 데이터 블랙아웃** — `macro/us_economy.md`(10-10 SSOT) 확인: BLS 9월 고용·주간청구 여전 미발표, 10/14 9월 CPI·10/15 PPI 발표 지연/취소 리스크(백악관 'may never be released'). **신규 확정 하드데이터 없음 → 재수집해도 새 수치 없음**. (2) ★**재수집=비둘기 오염 재유입 위험**(project_econ_calendar_recollect_dovish_contamination, 10-04 발견) — WebSearch가 real-world(2025 셧다운+인하) '9월 NFP +29K·10월 인상 17%·비둘기 피벗' 서사를 재흡입. (3) SSOT 대조 결과 **본 파일 CURRENT(10/5~10/18 캘린더) + 위 10-04 교정 플래그가 여전히 유효** — us_economy(10-10)가 '+29K 오염 배제·10월 인상 ~66% 유지·12월 ~72%·2026 인하 배제·셧다운 블랙아웃'을 재확인하여 본 플래그와 완전 정합. 포워드 캘린더(10/14 CPI·10/15 PPI[둘 다 셧다운 지연 리스크]·10/22 BOK·10/27~28 FOMC 동결 유력)는 10-18까지 forward-valid → valid_until 10-18 연장(검증 전용, updated 10-04 유지=마지막 재수집일 정직 표기). **셧다운 해제/BLS 발표 시 즉시 정식 재수집 교정.**
 
 > ✅ **[2026-10-18 /KB점검 재검증 — 재수집 DEFER 재적용(3주 연속), SSOT 대조 통과]** valid_until 10-18 D-0 재도달(auto-trigger 조건 재충족)이나 **이번 회차도 재수집 미실행(의도적 defer 재적용)**. 근거: (1) ★**셧다운 D+17 데이터 블랙아웃 지속** — `macro/us_economy.md`(10-17 SSOT) 확인: 셧다운 17일째·BLS 9월 CPI(10/14~15)·PPI(10/15)·고용보고서 **여전 미발표**(CPI만 SSA COLA 법정의무로 ~10/23~24 특별발표 가능성·PPI 무기한). **신규 확정 하드데이터 없음 → 재수집해도 새 수치 없음**. (2) ★**재수집=비둘기 오염 재유입 위험**(project_econ_calendar_recollect_dovish_contamination) — WebSearch가 real-world(2025) '+29K·10월 인상 17%·비둘기 피벗' 재흡입. (3) SSOT 대조 통과 — us_economy(10-17)가 'FRED 스냅샷 9월 CPI 3.72%/NFP +29K/실업 4.2%는 real-world 누수 전면 배제·10월 인상 ~66%·12월 >72%·2026 인하 배제·Williams(10/14) 12월 인상 재확인=비둘기 피벗 아님·10Y 5.22→5.10% 하락은 반도체 리스크오프 flight-to-quality'를 재확인하여 본 파일 CURRENT + 3중 교정 플래그(10-04·10-11·10-15 이브닝 보정)와 완전 정합. (4) ★**10-15 이브닝 보정 노트가 SSOT 정합 재강화**(updated 10-15 bump의 실체 = 전면 재수집 아님·market-data-collector의 SSOT 지시 보정 노트 삽입). 포워드 캘린더(10/22 BOK·10/27~28 FOMC 동결 유력·'깜깜이')는 10-25까지 forward-valid → **valid_until 10-25 연장(검증 전용, updated 10-15 유지=마지막 touch일 정직 표기)**. **셧다운 해제/BLS 발표 시 즉시 정식 재수집 교정.**
+
+> ✅ **[2026-10-25 /KB점검 재검증 — 재수집 DEFER 재적용(4주 연속), SSOT 대조 통과]** valid_until 10-25 D-0 재도달(auto-trigger 조건 재충족)이나 **이번 회차도 재수집 미실행(의도적 defer 재적용)**. 근거: (1) ★**셧다운 D+24 데이터 블랙아웃 장기화** — `macro/us_economy.md`(10-24 SSOT) 확인: 셧다운 ~24일째·BLS 9월 CPI/PPI/고용보고서 **여전 미발표**·COLA CPI 특별발표說(9월 CPI-U 3.7% HOT)은 real-world 오염 의심 **audit-only(채택 보류)**. **신규 확정 하드데이터 없음 → 재수집해도 새 수치 없음**. (2) ★**재수집=비둘기 오염 재유입 위험**(project_econ_calendar_recollect_dovish_contamination) — WebSearch가 real-world(2025) '+29K·10월 인상 17%·비둘기 피벗' 재흡입. (3) SSOT 대조 통과 — us_economy(10-24)가 'FRED 스냅샷 9월 CPI 3.72%/NFP +29K/실업 4.2%는 real-world 누수 전면 배제·10월 인상 ~66%·12월 >72%·2026 인하 배제·10Y 4.96%(5% 하회)=flight-to-quality지 비둘기 피벗 아님·Williams 12월 인상 재확인'을 재확인하여 본 파일 CURRENT + 3중 교정 플래그(10-04·10-11·10-15)와 완전 정합. 포워드 캘린더(10/27~28 FOMC 깜깜이 동결 유력·셧다운 종료 시점)는 11-01까지 forward-valid → **valid_until 11-01 연장(검증 전용, updated 10-15 유지=마지막 touch일 정직 표기)**. **셧다운 해제/BLS 발표 시 즉시 정식 재수집 교정.**
 
 ## 확정 결과 — 2026-07-14 (화) 6월 CPI 서프라이즈 + 대형은행 Q2 실적 동시 발표
 
