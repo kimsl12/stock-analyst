@@ -1,13 +1,13 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-10-17
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
-l1_index_count: 36
-l2_summary_count: 8
+l1_index_count: 39
+l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 1
 ---
@@ -22,7 +22,8 @@ deep_dive_priority: 1
 - **시장 규모 thesis 보강**: McKinsey 4/2 — 2030년 $1.6T (CAGR 13%), 컴퓨팅·스토리지가 성장의 55%($460B). 메모리·로직 3강 (SK하이닉스·Samsung·Micron + NVIDIA·AMD·AVGO) 직접 베타. (L2: mckinsey_chip_boom_1_6t)
 - **지정학 리스크 격상 (입법 단계 진입)**: 미 MATCH Act 입법 + 중국 산업망·공급망 안전 통합 법령(4월 시행) + EU 데이터센터 3배 확장 플랜(5월). 행정 명령에서 양국 법체계 격돌로 격상 — 정권 교체 후퇴 가능성 ↓. (L2: match_act_china_industrial_chain)
 - **차세대 메모리 아키텍처 학술 신호**: arXiv:2511.12286 Sangam — Chiplet-DRAM-PIM + CXL이 LLM 추론에서 H100 대비 디코딩 10.3×·쿼리지연 4.22×. GPU 단일 의존 thesis에 학술 도전 (2028~2030 양산 가능성). (L2: sangam_chiplet_pim_cxl)
-- **파운드리·장비 측 capex 실측 확인(2026-10 Q3 실적)**: TSMC Q3 2026 매출 US$46.72B(+41.2% YoY)·GM 66.4%·웨이퍼 첨단 7nm이하 79%(2nm 8%)·Q4 가이던스 US$52.3~54.3B(분기 첫 $50B+) + ASML Q3 2026 매출 €11.7B·CEO "고객 2029~2030 발주 희망, 2028 +30% 캐파 이상 증설 검토". AI capex 슈퍼사이클이 전공정(TSMC 가동률)·장비(ASML EUV 리드타임)까지 2030년 가시성으로 확장 — HBM4/CoWoS·SK하이닉스 thesis 다운스트림 보강. (L1만, L2 미승격)
+- **파운드리·장비 측 capex 실측 확인(2026-10 Q3 실적) — L2 승격**: TSMC Q3 2026 매출 US$46.72B(+41.2% YoY)·GM 66.4%·웨이퍼 첨단 7nm이하 79%(2nm 8%)·Q4 가이던스 US$52.3~54.3B(분기 첫 $50B+) + ASML Q3 2026 매출 €11.7B·GM 57.5%·CEO "2027·2028 공급으로 수요 미충족, 일부 고객 2029~2030 발주 희망, 2028 +30% 캐파 이상 증설 검토". AI capex 슈퍼사이클이 전공정(TSMC 가동률)·장비(ASML EUV 리드타임)까지 2030년 가시성으로 확장. (L2: foundry_equipment_q3_2026_capex)
+- **메모리 슈퍼사이클 Q3 2026 실적 확정 — SK하이닉스·삼성 사상 최대(규모 이례적, 예비·비감사)**: SK하이닉스 분기 매출 첫 100조원 돌파(규모 이례적) + HBM4 가 4Q26 HBM3E 추월 + '캐파 2029까지 약정·2027~2028 50%+ 장기계약·공급부족 2030까지' + ~100조원 주주환원. 삼성 영업이익 +782.5% YoY 사상 최대(DS가 전사 OP의 ~99%) + HBM4 매출 기여 개시·HBM 출하 +50% QoQ·Vera Rubin 수요, 그러나 파운드리 적자 지속·DX 적자 확대 + **사상 최대 실적에도 주가 -2.42%(가격·마진 지속성 의구심)**. 메모리 3강 lock-in 가시성 3년+ 로 확장되나, '사상 최대 실적 vs 주가 하락' 디버전스가 피크 경고 신호. 단, 예비·비감사 + 규모가 역사적 상식 상회 → 공식 IR 대조 필수. (L2: skhynix_q3_2026_memory_supercycle / samsung_q3_2026_memory_foundry)
 
 ## Key Uncertainties (지속 추적)
 
@@ -49,11 +50,14 @@ deep_dive_priority: 1
 
 - 학술: 6
 - 씽크탱크: 2
-- 컨퍼런스/백서·산업: 12
+- 컨퍼런스/백서·산업: 15
 - 규제: 3
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-11 `foundry_equipment_q3_2026_capex_202611.md` — 파운드리·장비 Q3 2026: TSMC 매출 US$46.72B(+41.2% YoY)·GM 66.4%·Q4 첫 $52B+·선단 ≤7nm 79%(2nm 8%) + ASML 분기 €11.7B·GM 57.5%·"2027·2028 공급으로 수요 미충족, 일부 고객 2029~2030 발주 희망, 2028 +30% 이상 증설 검토" (SEC 6-K 1차 공시)
+- 2026-11 `skhynix_q3_2026_memory_supercycle_202611.md` — SK하이닉스 Q3 2026 예비: 분기 매출 첫 100조원 돌파(규모 이례적, 비감사) + HBM4 4Q26 HBM3E 추월 + 캐파 2029까지 약정·2027~2028 50%+ LTA·공급부족 2030까지 + ~100조원 주주환원 (000660)
+- 2026-11 `samsung_q3_2026_memory_foundry_202611.md` — 삼성 Q3 2026 예비: 영업이익 +782.5% YoY 사상 최대(DS가 OP ~99%)·HBM4 기여 개시·HBM 출하 +50% QoQ·Vera Rubin, 그러나 파운드리 적자 지속·DX 적자 확대 + 사상 최대 실적에도 주가 -2.42%(지속성 의구심) (005930)
 - 2026-09 `hotchips_2026_memory_wall_202609.md` — Hot Chips 2026(HC38) 메모리 월 정량화(컴퓨트 ~3×/2년 vs HBM 대역폭 <2×) + 하이브리드 본딩 필수화·base die 선단 로직 전환 + 커스텀 ASIC 대량 등장(TPUv8·OpenAI Jalapeño 9개월·Rubin+Vera·MAIA200·Meta·Groq·Cerebras) + d-Matrix 3D-DRAM tensor engine 통합
 - 2026-08 `hbm4_massproduction_dram_supercycle_202608.md` — HBM4 2026-02 양산 개시(2048비트·2+TB/s·64GB) + 서버 DRAM +60~70%·장기계약 거부 + Stargate 월 90만 웨이퍼·$720억 증분 + SK Hynix 용인 600조원($410B) capex
 - 2026-06 `vlsi_symposium_2026_3d_memory_202606.md` — VLSI Symposium 2026 'memory is the bottleneck' + 3D Memory(Flash·HBM) 포커스 세션 + Micron 기조

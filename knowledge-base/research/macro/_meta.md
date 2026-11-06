@@ -1,7 +1,7 @@
 ---
 sector: macro
 created: 2026-05-12
-last_updated: 2026-09-19
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/macro/us_economy.md
@@ -9,7 +9,7 @@ related_industry_kb:
   - knowledge-base/macro/global_risk_factors.md
   - knowledge-base/macro/korea_economy.md
 l1_index_count: 32
-l2_summary_count: 8
+l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 3
 ---
@@ -20,6 +20,8 @@ deep_dive_priority: 3
 
 ## 현재 thesis
 
+- **IMF 2026-10 연차총회: 'AI 한 다리로 선 경제' + 물가 목표 상회 지속**: 10월 WEO('Resilience Under Strain, Urgent Choices')는 글로벌 성장 3.1%(2026)·3.4%(2027)로 소폭 상향했으나 동력은 AI 투자 단일 의존(Georgieva "one leg, the AI leg"), 헤드라인 물가는 4.7%→4.1%로 2% 목표 크게 상회. 동반 GFSR('Resilience, Risk, and Transformation')은 금융안정 리스크 'elevated' + 3대 현저 리스크(AI 자산가격 조정·국채금리 쇼크·사이버)를 제시 — AI 조정이 레버리지·집중으로 증폭. (L2: imf_weo_october_2026_resilience_strain / imf_gfsr_october_2026_ai_correction)
+- **아시아 긴축 지속 — 한국은행 10/22 3.0% 매파 동결**: 여름 7·8월 연속 인상(→3.0%) 후 숨고르기 동결(만장일치 7-0). Shin 총재 "제약적 기조 지속·2% 수렴까지 대응" 매파 가이던스, 시장은 11월 3.25% 추가 인상 전망. 성명이 인용한 미 금리 상단 3.75~4.0%(한·미 격차 1.0%p). 의장 교체 후 Fed 매파 레짐 + 글로벌 중앙은행 긴축 지속과 정합. (L2: bok_october_2026_hawkish_hold)
 - **Fed 내 컨센서스 붕괴 + Powell 마지막 회의 가능성**: 4/29 FOMC 8-4 양방향 dissent (1992년 10월 이후 최대) — Miran 인하·Hammack/Kashkari/Logan 매파. 시장-Fed 정책 경로 괴리 격상. Powell 임기 만료 가능성으로 6/16-17이 후임 의장 첫 회의 가능. (L2: fomc_8_4_dissent_april)
 - **IMF WEO 글로벌 성장 하향 + adverse 2.0% 시나리오**: 2026년 3.1%·2027년 3.2% (4/14), EM -0.3%p. "Global Economy in the Shadow of War" — adverse 2.5%·인플레 5.4%, severe 2.0%·인플레 6%+. EM·developing 피해는 advanced 2배. (L2: imf_weo_shadow_of_war)
 - **시장 로테이션 가속 (M7 → 밸류·시클리컬)**: BIS QR 3월 "Markets recalibrate amid shifting currents" — 달러 약세 + M7·고모멘텀 테크 → 밸류/시클리컬, EME 강세 + 일본·호주 장기금리 급등. AI 단일 동력 thesis 첫 균열 신호. (L2: bis_qr_market_rotation)
@@ -49,12 +51,15 @@ deep_dive_priority: 3
 ## L1 인덱스 카운트
 
 - 학술: 2
-- 씽크탱크: 2
+- 씽크탱크: 4
 - 컨퍼런스: 0
-- 규제: 9
+- 규제: 10
 
 ## L2 월간 요약 목록
 
+- 2026-10 `imf_weo_october_2026_resilience_strain_202611.md` — IMF WEO 10/13 'Resilience Under Strain, Urgent Choices' 글로벌 성장 3.1%(2026)·3.4%(2027, 7월 3.0%서 +0.1%p), 헤드라인 물가 4.7%→4.1%(2% 목표 상회), 성장 동력=AI 투자 단일 의존(Georgieva "one leg, the AI leg"), 2027 반등은 호르무즈 재개통 가정 조건부(유가 $130 지속 시 -0.5%p), 기술 밸류체인 밖 에너지 수입국 최악 전망
+- 2026-10 `imf_gfsr_october_2026_ai_correction_202611.md` — IMF GFSR 10/13 'Resilience, Risk, and Transformation' 금융안정 리스크 'elevated' + 3대 현저 리스크(①AI 자산가격 조정 — 레버리지·집중이 증폭 ②국채금리 쇼크 ③사이버), AI 투자 급락 시 글로벌 GDP -1.1%(2028)·미국 -1.8%, J.Wu "주식가치 소멸·부채 상환난", Georgieva 재정 취약 선진국 "negligent"
+- 2026-10 `bok_october_2026_hawkish_hold_202611.md` — 한국은행 10/22 기준금리 3.0% 만장일치(7-0) 동결, 여름 7·8월 연속 인상 후 숨고르기, 동결 사유=중동·주요국 정책·미 중간선거 불확실성, Shin 총재 "제약적 기조 지속·2% 수렴까지 대응" 매파 가이던스(11월 3.25% 시장 전망), 한·미 금리차 1.0%p
 - 2026-09 `warsh_jackson_hole_2026_202609.md` — Warsh 첫 Jackson Hole 기조 'In Our Time'(8/28) 매파 확정: PCE 12M 3.7%·6M 4.1% 물가 최우선 + "otherwise we have work to do"(조건부 추가 긴축) + 사이클 금리 quasi-commitment 명시적 거부(가이던스 축소·데이터 의존) + 심포지엄 테마 '금융혁신·결제·정책'. 의장 교체 후에도 Fed 매파 컨센서스 지속 확증
 - 2026-08 `fomc_july_2026_hawkish_dissent_202608.md` — FOMC 7/29 5회 연속 동결(3.50~3.75%, 9-3) + 매파 반대 3인(Hammack·Kashkari·Logan 인상 선호) + 공급충격(에너지)·중동發 인플레 지속
 - 2026-06 `bok_may_hold_inflation_revision_202606.md` — 한국은행 5/28 기준금리 2.50% 동결(8회 연속) + 2026 CPI 2.2→2.7%·GDP 2.0→2.6% 상향 (중동 유가+원화 약세)

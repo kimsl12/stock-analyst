@@ -1,14 +1,14 @@
 ---
 sector: consumer
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/consumer_retail.md
   - knowledge-base/industry/luxury.md
   - knowledge-base/industry/food_agriculture.md
-l1_index_count: 9
-l2_summary_count: 3
+l1_index_count: 13
+l2_summary_count: 6
 l3_deep_dive_count: 0
 deep_dive_priority: 8
 ---
@@ -19,7 +19,9 @@ deep_dive_priority: 8
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-- (L1 첫 수집 후 보강 예정 — 본 섹션은 status=active 전환 시 작성)
+- **2026 홀리데이: 명목 +4%대 '유지'이나 실질·카테고리 편차**: NRF $1.013조(+4.2%)·Bain $1,016B(+4.5%, 첫 1조 돌파)로 총수요는 견조하나, 성장의 상당분이 인플레 기여. 채널은 온라인(+9%)이 주도, 식음료·가구·가전·백화점은 보합(<1%). McKinsey ConsumerWise: 47% '작년과 비슷'·인플레 우려 53%·AI 쇼핑 46%·넷지출의향 홈데코/가구/의류 약세. → 리더(COST·WMT)·온라인·가치지향 수혜 vs KO·PEP 볼륨·홈/재량 역풍. (L2: holiday_2026_forecast_nrf_bain / mckinsey_consumerwise_holiday_sentiment)
+- **럭셔리 스윙 팩터는 여전히 중국**: LVMH Q3 2026 그룹 유기성장 +1%로 둔화, 핵심 패션·가죽제품 -5%(중국 약세) vs 미국 강세·셀렉티브리테일 +8%·워치주얼리 +6% 상쇄. 수요 약세가 중국 특정(글로벌 붕괴 아님) → 중국 추세가 LVMUY·럭셔리 전반 방향성 결정. (L2: lvmh_q3_2026_china_luxury)
+- **K자형·관세 전가·GLP-1 식음료 영향 지속**: 상위 소득 견조 vs 저소득 압박(저축률 2.7%·카드 연체 상승), 관세 가격 전가 본격화, GLP-1 사용가구 식료품·QSR 지출 구조 감소. (L2: k_shaped_spending_tariff_back_to_school / q1_fy26_retail_tariff_passthrough / glp1_grocery_food_spending_shift)
 
 ## 종목 매핑 (커버 유니버스)
 
@@ -63,12 +65,15 @@ deep_dive_priority: 8
 ## L1 인덱스 카운트 (현재)
 
 - 학술: 0
-- 씽크탱크: 0
+- 씽크탱크: 3 (NRF 홀리데이·Bain 홀리데이·McKinsey ConsumerWise)
 - 컨퍼런스: 0
-- 규제: 1 (Filing: Walmart Q1 FY26)
+- 규제: 2 (Filing: Walmart Q1 FY26·LVMH Q3 2026)
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-11 `holiday_2026_forecast_nrf_bain_202611.md` — 2026 미국 홀리데이 전망: NRF $1.013조(+4.2%, 11-12월 자동차·주유·외식 제외)·Bain $1,016B(+4.5%, 첫 1조 돌파), 비매장 +9%(~$321B)·매장 +2.5%(~$695B), 식음료·가구·가전·백화점 보합(<1%), 명목성장 상당분 인플레 기여·소득계층별 상이(PwC는 -2% 발산)
+- 2026-11 `lvmh_q3_2026_china_luxury_202611.md` — LVMH Q3 2026: 그룹 유기성장 +1%(둔화)·패션가죽제품 -5%(중국 약세)·미국 강세·셀렉티브리테일 +8%·워치주얼리 +6% 상쇄, 9개월 매출 €57.15B(+2% 유기) → 럭셔리 스윙 팩터는 여전히 중국(LVMUY 베타)
+- 2026-11 `mckinsey_consumerwise_holiday_sentiment_202611.md` — McKinsey ConsumerWise 2026 홀리데이: 지출 '비슷' 47%/'더' 23%/'덜' 21%, 인플레 최대 우려 53%, AI 쇼핑 46%, 넷지출의향 홈데코(최저)·가구·의류 약세, 3분기 심리 혼재 41%/낙관 34%/비관 25% → 방어적·가치지향 + AI 쇼핑 전환
 - 2026-09 `glp1_grocery_food_spending_shift_202609.md` — Cornell/JMR(2025-12) 실증: GLP-1 개시 6개월 내 식료품 -5.3%(고소득 -8%↑)·QSR -8%·짠스낵 -10%, 요거트·생과일·육류스낵 증가(Numerator ~15만 가구), 1년+ 지속 → KO·PEP·MCD·SBUX 볼륨 장기 역풍 vs 헬시 스낵 재편(biotech GLP-1 교차)
 - 2026-08 `k_shaped_spending_tariff_back_to_school_202608.md` — BofA K자형 카드지출(고소득 +2.4% vs 저소득 +0.4%) + NRF 백투스쿨 $433억(+9.89%, 응답자 73% 관세發 인상 예상)·저소득 축소구매 + 노동시장 스윙 팩터
 - 2026-06 `q1_fy26_retail_tariff_passthrough_202606.md` — Q1 FY26 미국 리테일 어닝 관세 가격 전가 본격화 (Walmart 5~6월 인상 명시 / Target 반전·가이던스 상향 / Home Depot 선별 인상)

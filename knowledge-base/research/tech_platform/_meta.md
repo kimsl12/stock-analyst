@@ -1,13 +1,13 @@
 ---
 sector: tech_platform
 created: 2026-05-12
-last_updated: 2026-10-24
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/ai.md
   - knowledge-base/industry/tech_breakthrough.md
-l1_index_count: 10
-l2_summary_count: 3
+l1_index_count: 13
+l2_summary_count: 6
 l3_deep_dive_count: 0
 deep_dive_priority: 7
 ---
@@ -18,7 +18,10 @@ deep_dive_priority: 7
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-- (L1 첫 수집 후 보강 예정 — 본 섹션은 status=active 전환 시 작성)
+- **AI CapEx 슈퍼사이클 Q3 2026 재가속 — 2027 추가 증가 확약**: 하이퍼스케일러 5사(AMZN·GOOGL·META·MSFT·SpaceX) 합산 FY26 CapEx $803~828B(Q3 ~$227B·+20% QoQ). Amazon Q3 현금 CapEx $75.9B(FY ~$220B)·최대, Microsoft 는 서드파티 DC 지연으로 CY26 ~$170B 하향. Alphabet "2027 CapEx 유의미 증가"·Amazon "meaningfully more", 애널리스트 2027 추정 $1T+. AI 인프라 수요의 최상류 트리거 — 반도체(HBM·GPU·CoWoS)·energy(DC 전력) 수요 직결. (L2: hyperscaler_capex_q3_2026)
+- **거시·금융안정 상단 리스크 격상 — IMF가 AI 조정을 3대 위험으로**: IMF GFSR·WEO(2026-10-13) — AI 주식 급락을 금융안정 3대 salient risk 로 지목, 총재 "경제가 AI 한 다리로 섰다", 투자 급감 시 2028 글로벌 GDP -1.1%·미국 -1.8%, AI 생태계 레버리지 상승 경고. AI capex 낙관(수요 무한)에 대한 top-down risk-off 앵커. (L2: imf_gfsr_ai_financial_stability)
+- **수요측 ROI 갭 지속 — 투자-실현 디버전스**: MIT NANDA 'GenAI Divide'(엔터프라이즈 파일럿 95% P&L 무영향)가 CapEx 가속($803~828B)과 정면 대비. 공급측 가속 vs 수요측 ROI 미입증 + IMF '통화화 의문 시 주식 가치 소멸' = contrarian 3각. (L2: genai_enterprise_roi_gap)
+- **규제 2축 — AI 규제(EU AI Act) + 빅테크 반독점(미 법원)**: EU AI Act GPAI 집행(2026-08) + Google 애드테크 반독점 구제(2026-09, Brinkema 판사)에서 AdX 강제분할 기각·행위적 구제로 귀결(퍼블리셔 락인 금지·6년 모니터). 미 법원이 '구조적 분할'보다 '행위적 구제' 선호 패턴 — 빅테크 분할 테일리스크 완화, 단 저강도·장기 규제 뉴노멀. (L2: eu_ai_act_gpai_enforcement / google_adtech_antitrust_remedy)
 
 ## 종목 매핑 (커버 유니버스)
 
@@ -62,12 +65,16 @@ deep_dive_priority: 7
 ## L1 인덱스 카운트 (현재)
 
 - 학술: 0
-- 씽크탱크: 0
+- 씽크탱크: 1
 - 컨퍼런스: 1
-- 규제: 2
+- 산업/Filing: 1
+- 규제: 4
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-11 `hyperscaler_capex_q3_2026_202611.md` — 하이퍼스케일러 CapEx Q3 2026: 5사 합산 FY26 $803~828B(Q3 ~$227B·+20% QoQ)·Amazon Q3 $75.9B·FY ~$220B·MSFT CY26 ~$170B(서드파티 지연 하향) + Alphabet "2027 유의미 증가"·Amazon "meaningfully more"·2027 추정 $1T+ (AI 인프라 최상류 트리거, 반도체·energy 교차)
+- 2026-11 `imf_gfsr_ai_financial_stability_202611.md` — IMF GFSR·WEO(2026-10-13): AI 조정을 금융안정 3대 salient risk 로 격상·"경제가 AI 한 다리로 섰다"(게오르기에바)·AI 투자 급감 시 2028 GDP -1.1%·미국 -1.8%·"통화화 의문 시 주식 가치 소멸·부채 상환난"(Jason Wu) (AI 베타 전반 top-down risk-off 앵커)
+- 2026-11 `google_adtech_antitrust_remedy_202611.md` — Google 애드테크 반독점 구제(2026-09, Brinkema 판사): AdX 강제분할 기각·행위적 구제(퍼블리셔 결합요구 금지·락인 중단·내부 준법 모니터 6년)·Google 책임판결 항소·DOJ 법적선택 검토 (빅테크 '분할 회피' 선례, GOOGL 직접)
 - 2026-09 `genai_enterprise_roi_gap_202609.md` — MIT NANDA 'The GenAI Divide'(2025-07): 엔터프라이즈 GenAI 파일럿 95%가 측정가능 P&L 무영향(임원52·설문153·배포300 분석)·투자 $300~400억·buy>build 2배·성공은 백오피스(연 $2~10M)·섀도우 AI → AI capex ROI 갭 contrarian 근거(수요측)
 - 2026-08 `eu_ai_act_gpai_enforcement_202608.md` — EU AI Act Chapter V: GPAI(범용 AI) 집행 권한 2026-08-02 발효 + 과징금 매출 3%/€15M + 구모델 2027-08-02 유예 → 빅테크 EU AI 컴플라이언스 비용·시장 접근 리스크
 - 2026-06 `eu_ai_act_omnibus_202606.md` — EU AI Act Omnibus: 독립형 고위험 AI 마감 2027-12-02 연장 + 생성형 AI 투명성 2026-12-02 + nudifier 금지 + 과징금 €35M/매출 7%(금지)·€15M/3%(투명성)

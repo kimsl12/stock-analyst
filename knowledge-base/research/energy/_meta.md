@@ -1,13 +1,13 @@
 ---
 sector: energy
 created: 2026-05-12
-last_updated: 2026-10-10
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/energy.md
   - knowledge-base/industry/capex.md
-l1_index_count: 23
-l2_summary_count: 8
+l1_index_count: 26
+l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 2
 ---
@@ -18,6 +18,9 @@ deep_dive_priority: 2
 
 ## 현재 thesis
 
+- **DOE LPO disbursement 현실화 — '업레이트'가 가장 빠른 신규 원자력**: DOE EDF, Constellation 8기 기존 원전 업레이트에 최대 $5B 조건부 대출(10/27) — +~1.1GW(PJM·MISO). UPRISE(3월 출범) 기존로 5GW 목표의 95% 이미 식별. 신규 건설·SMR(2028~) 대비 기존 가동로 증설이 근시일 최저가 신규 공급. CEG 직접 수혜. (L2: constellation_doe_uprise_uprates)
+- **우라늄 가격 강세 ≠ 즉각 실적**: Cameco Q3 2026 — 현물 US$89.63·장기 US$96.50/lb 강세이나 조정순손실 C$(2)M. 계약 래그(실현가 후행)+Key Lake 정비 셧다운(생산 -20%)+Westinghouse 변동성이 완충. 단위원가 가이던스 C$67~70/lb 상향. CCJ 베타는 가격·실적 괴리 유의. (L2: cameco_q3_uranium_cycle)
+- **단기 에너지 가격 엇갈린 레그**: EIA STEO 10월판 — Brent $96(2026)·4Q26 $105, 美 원유 13.9→14.3Mb/d 사상최고, Henry Hub $3.48→$3.16(-9%). 그러나 도매 전력 +11%·PJM +41% — DC 전력 수요의 가격 전이. 유가↑·가스↓·전력↑ 레그 분해 필요. (L2: eia_steo_oct2026_oil_gas_power)
 - **DC 전력 수요 thesis 격상**: IEA Electricity 2026 (4월) — DC 전력 2030년 2배·AI DC 3배, 2025년 미국 전력 수요 증가의 약 50%가 DC. 하이퍼스케일러 CapEx $400B → 2026년 +75% 추가. (L2: dc_power_iea_electricity)
 - **NRC 라이선싱 패러다임 전환**: Part 53 발효(4/29) — PRA·SRE 기반 + 25,000명+ 고밀도 입지 + 제조지 연료 주입·운반·GLRO 신설. SMR/AP1000 양산 일정 2년 단축 시나리오 가능. (L2: nrc_part53_smr_licensing)
 - **DOE 자금 트랙 가시화 + 마이크로원자로 별도 룰**: 에너지 장관 의회 증언(4월) — 첫 5~10기 신규 원전 DOE LPO 대출 거의 확정. SMR·CEG·VST·BWXT 자금 리스크 완화. 5/1 Federal Register 마이크로원자로 라이선싱 룰 별도 게재. (L2: doe_loan_5_10_new_reactors)
@@ -45,12 +48,16 @@ deep_dive_priority: 2
 ## L1 인덱스 카운트
 
 - 학술: 0
-- 씽크탱크/백서: 5
+- 씽크탱크/백서: 6
 - 컨퍼런스: 0
-- 규제: 4
+- 규제: 5
+- 기업 공시: 1
 
 ## L2 월간 요약 목록
 
+- 2026-11 `cameco_q3_uranium_cycle_202611.md` — Cameco Q3 2026: 우라늄 현물 US$89.63·장기 US$96.50/lb 강세인데 조정순손실 C$(2)M — 계약 래그·Key Lake 정비 셧다운(생산 3.5Mlb, -20%)·Westinghouse 변동성(지분 순손실 C$(24)M, EBITDA 기여 C$143M)의 3중 괴리. 매출 C$619M·조정EBITDA C$267M(-14%). 2026 생산 가이던스 19.5~20.5Mlb(상단 하향)·단위원가 C$67~70/lb 상향. CCJ 베타 '가격 강세 ≠ 실적'
+- 2026-11 `constellation_doe_uprise_uprates_202611.md` — DOE EDF, Constellation 8기 기존 원전 업레이트 최대 $5B 조건부 대출(10/27) → +~1.1GW(PJM·MISO, 93만+ 가구, 1만+ 일자리). UPRISE(3월 출범) 기존로 5GW 목표 95% 식별. 신규 건설·SMR 아닌 '기존 가동로 증설'이 가장 빠른 신규 원자력. CEG 직접 수혜. 조건부+추가 시설 옵션. (energy 카탈리스트 Q4 DOE disbursement 현실화)
+- 2026-11 `eia_steo_oct2026_oil_gas_power_202611.md` — EIA STEO 10월판: Brent $96(2026)·4Q26 $105·2027 $84, 美 원유 13.9→14.3Mb/d 사상최고, Henry Hub $3.48→$3.16(-9%), 도매 전력 ~$52/MWh(+11%)·PJM +41%. 유가↑·가스↓·전력↑ 엇갈린 3레그 — DC 전력 수요의 PJM 가격 전이
 - 2026-09 `gas_turbine_shortage_ai_datacenter_202609.md` — 가스터빈 공급난(AI DC 전력 근시일 최대 병목): 대형 터빈 리드타임 최대 7년·평균 5년(과거 1~~3년) + 신규 가스발전 원가 3배($800→$2,600~~2,800/kW)·2030~~31 터빈 +75% + GE Vernova 수주 46→83GW·Siemens 100→194기 + WoodMac 세계 캐파 60~~70GW vs 수주 110GW + DC 전력 미 전력의 6.7~12.0%(2028E). 원전/SMR 상대매력↑ vs AI capex 실현 지연 양면
 - 2026-08 `smr_commercialization_datacenter_ppa_202608.md` — Yale CEF SMR 상업화: FOAK→NOAK 원가 -50% + 2026 NRC 첫 상업 건설허가 2건(TerraPower Natrium 상반기)·NuScale 77MWe SDA + 하이퍼스케일러 10GW+ PPA(Amazon·Meta·Google·TVA) + IEA DC 1,100 TWh(+18%)
 - 2026-06 `oklo_aurora_doe_pilot_criticality_202606.md` — Oklo Aurora DOE Reactor Pilot 7/4/2026 임계 목표 + DOE OTA·NSDA·PDSA + NRC 우회 가속 트랙

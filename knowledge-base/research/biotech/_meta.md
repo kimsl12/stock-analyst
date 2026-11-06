@@ -1,13 +1,13 @@
 ---
 sector: biotech
 created: 2026-05-12
-last_updated: 2026-10-24
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/biotech.md
   - knowledge-base/industry/healthcare.md
-l1_index_count: 19
-l2_summary_count: 8
+l1_index_count: 22
+l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 4
 ---
@@ -21,6 +21,7 @@ deep_dive_priority: 4
 - **GLP-1 시장 구조 재편 + LLY 압도적 지배력**: FDA Foundayo (orforglipron) 4/1 승인 — 경구 GLP-1 first-in-class, 식음 제약 없음, ATTAIN-1 72주 -12.4% (-27.3 lbs). NEJM SURMOUNT-5에서 tirzepatide가 semaglutide head-to-head 우월. LLY 비만 시장 압도적 지배력 격상. (L2: orforglipron_foundayo_fda / surmount_5_tirzepatide_semaglutide)
 - **종양학 PROTAC 신모달리티 약진**: FDA Veppanu (vepdegestrant) 5/1 ESR1m ER+/HER2- 진행성 유방암 승인 — 경구 PROTAC 분해제 종양학 첫 승인 (Arvinas/Pfizer). TPD 모달리티 전체 임상 검증 첫 사례. (L2: veppanu_vepdegestrant_fda)
 - **IRA 3차 협상 본격화**: CMS 4/20 — 15개 약물 (Part B + Part D), 2028-01-01 가격 효력. Part B 약물 첫 포함. 대형 제약사 (LLY·NVO·MRK·BMS·ABBV) 2028 P&L 침식 가능. (L2: cms_ira_3rd_negotiation)
+- **ESMO 2026 종양학 3상 웨이브 + FDA 가속승인 가속화 (2026-10)**: (1) DLL3 BiTE가 1차 유지로 전진 — DeLLphi-305 tarlatamab(Imdelltra, AMGN)+durvalumab 진행성 SCLC mOS 21.1 vs 12.7개월·HR 0.42(사망 58%↓), NEJM 동시게재. (2) PD-1 면역단독 '장기보존' — FDA dostarlimab(Jemperli, GSK) MSI-H/dMMR 국소진행성 직장암 가속승인(AZUR-1 cCR12 47% ICR), NPRV 파일럿으로 4개월 조기. (3) 보조 CDK4/6 OS 신호 — NATALEE 6년 ribociclib(Kisqali, NVS) OS HR 0.809(~19%↓, 명목적). (L2: dellphi305_tarlatamab_sclc_esmo / dostarlimab_rectal_cancer_fda / natalee_ribociclib_os_breast_esmo)
 
 ## Key Uncertainties
 
@@ -46,11 +47,14 @@ deep_dive_priority: 4
 
 - 학술: 2
 - 씽크탱크: 0
-- 컨퍼런스: 1
-- 규제: 5
+- 컨퍼런스: 3
+- 규제: 6
 
 ## L2 월간 요약 목록
 
+- 2026-11 `dellphi305_tarlatamab_sclc_esmo_202611.md` — ESMO 2026 Presidential LBA3 / Amgen DeLLphi-305: tarlatamab(Imdelltra, DLL3 BiTE)+durvalumab 1차 유지 진행성 SCLC mOS 21.1 vs 12.7개월·HR 0.42(사망 58%↓)·1년생존 ~80% vs 53%·PFS 7.4 vs 1.9개월·CRS 49.6%(치명 없음), NEJM 동시게재(DLL3 BiTE 2차→1차 전진)
+- 2026-11 `dostarlimab_rectal_cancer_fda_202611.md` — FDA dostarlimab(Jemperli, GSK) MSI-H/dMMR 2·3기 국소진행성 직장암 가속승인(10-19): AZUR-1(n=154) cCR12 47%(ICR)·68%(연구자)·ORR 79%, 보조시험 cCR12 93%, NPRV 파일럿·4개월 조기(수술·방사선 없는 면역단독 장기보존 패러다임)
+- 2026-11 `natalee_ribociclib_os_breast_esmo_202611.md` — ESMO 2026 LBA25 NATALEE 6년: 보조 ribociclib(Kisqali, NVS)+NSAI HR+/HER2- 2·3기 조기 유방암(n=5,101) OS HR 0.809(~19%↓, 명목적 P=.019)·중앙추적 66.5개월·6년 iDFS HR ~0.74(광범위 고위험 보조 CDK4/6 OS 신호, abemaciclib/LLY 경쟁)
 - 2026-09 `wegovy_semaglutide_mash_fda_202609.md` — FDA Wegovy(세마글루타이드 2.4mg) 비경변성 MASH(F2-F3) 가속승인(2025-08) — 첫 GLP-1 간질환 적응증, ESSENCE 72주 MASH 관해 63% vs 위약 34%(+29%p)·섬유화 개선 37% vs 22% + 미국 MASH ~6%(1,500만명), Rezdiffra 이후 두 번째 (GLP-1 심대사→간질환 확장 축)
 - 2026-08 `oral_glp1_competition_h1_2026_202608.md` — 경구 GLP-1 경쟁: Wegovy Pill(경구 세마글루타이드 25mg) 2025-12 승인/2026-01 출시 ~16.6% 감량 vs Foundayo(오포글리프론) 첫 소분자 + GLP-1 비만 4제형(2026-07-30) + 지데삼티닙 ROS1 NSCLC(2026-07)
 - 2026-06 `rasolute_302_daraxonrasib_asco_202606.md` — ASCO 2026 Plenary RASolute 302 daraxonrasib(범-RAS) 전이성 췌장암 2차 mOS 13.2 vs 6.7개월, HR 0.40 (RVMD)

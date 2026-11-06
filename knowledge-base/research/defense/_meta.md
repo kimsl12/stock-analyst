@@ -1,13 +1,13 @@
 ---
 sector: defense
 created: 2026-05-12
-last_updated: 2026-09-05
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/defense_industry.md
   - knowledge-base/macro/geopolitics.md
 l1_index_count: 6
-l2_summary_count: 3
+l2_summary_count: 6
 l3_deep_dive_count: 0
 deep_dive_priority: 6
 ---
@@ -21,6 +21,9 @@ deep_dive_priority: 6
 - **NATO 5% GDP 목표 이행 → 조달 중심 유럽 재무장**: 2025 헤이그 합의(3.5% 전통국방+1.5% 광의안보, 2035 시한·2029 검토) 이행 국면. 2025 31개 동맹 전원 2% 달성(2022 7/29→전원), 유럽·캐나다 실질 +54%(2022~25), 장비지출 13%(2014)→~32%(2025). SIPRI 2025 글로벌 군사비 $2.89조(유럽 +14%, 미국 -7.5%). → 방산 대형·한국 방산 유럽 다년 수주 채널. (L2: nato_5pct_spending_ankara_summit)
 - **저가·대량 드론 위협 + counter-UAS 조달 과소투자**: CNAS 'Countering the Swarm' — 다층 능동방어(HPM·저가 요격·AI C2) 권고. 대드론·자율·EW 방산 신규 수요. (L2: counter_uas_drone_swarm_cnas)
 - **미·일 동맹 재편 + 미사일 공동개발**: 일본 방위비 GDP 2% 조기 + 미국 동맹 5% 새 기준 + AMRAAM/SM-3 공동개발. (L2: us_japan_alliance_csis)
+- **FY2027 미 국방예산 $1.5조 토플라인 + 재정절벽 리스크**: 기본세출 $1.15조 + 재정조정 $3,500억, FY26 대비 실질 +38%이나 FY27→FY28 실질 -16% 절벽. 재정조정 확보 불확실(예산결의 반영 $600억, 탄약 ~$210억), 중간선거 후 CR(12/11 만료)·셧다운·전액세출 분기점. → 미국 방산 대형 국내 매출 모멘텀 핵심 변수. (L2: fy2027_defense_budget_topline_reconciliation)
+- **Golden Dome 본토 미사일방어 메가 프로그램**: CBO 추정 20년 $1.2조(취득 $1조+), 우주기반요격기(SBI)가 비용 70%(위성 7,800기·$7,200억). 행정부 편성 $185억과 6배 괴리·아키텍처 미확정. → 미사일방어·우주 방산(LMT·RTX·NOC·L3Harris·KTOS) 초대형 수요풀이나 비용·기술·정치 리스크. (L2: golden_dome_cbo_cost_sbi)
+- **한국 방산 유럽 수출 구조화**: 폴란드 앵커(유럽물량 46%, K9 672+K2 180+180/$65억), 루마니아 H-ACE 현지조립(2026-02 착공)·폴란드 K2 820대 라이선스 생산, 연 ~$100억 수출. NATO 재무장의 실수주 전환 경로 → 한화에어로(012450)·KAI·LIG넥스원·현대로템. (L2: korea_defense_exports_europe_poland)
 
 ## 종목 매핑 (커버 유니버스)
 
@@ -71,13 +74,16 @@ deep_dive_priority: 6
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-11 `fy2027_defense_budget_topline_reconciliation_202611.md` — FY2027 미 국방예산 $1.5조 토플라인(기본세출 $1.15조+재정조정 $3,500억), FY26 대비 실질 +38%이나 FY27→FY28 -16% 재정절벽. 재정조정 확보 불확실(예산결의 $600억·탄약 ~$210억), 중간선거 후 CR(12/11)·셧다운·전액세출 분기점 (CSIS/Daniels 2건)
+- 2026-11 `golden_dome_cbo_cost_sbi_202611.md` — Golden Dome 본토 미사일방어 CBO 추정 20년 $1.2조(취득 $1조+), 우주기반요격기(SBI)가 비용 70%(위성 7,800기·$7,200억). 행정부 $185억과 6배 괴리·아키텍처 미확정 → 미사일방어·우주 방산 초대형 수요풀 vs 비용·기술 리스크 (CBO via DefenseScoop·SpacePolicyOnline)
+- 2026-11 `korea_defense_exports_europe_poland_202611.md` — 한국 방산 유럽 수출 구조화: 폴란드 앵커(유럽물량 46%, K9 672+K2 180+180/$65억), 루마니아 H-ACE 현지조립(2026-02 착공)·K2 820대 라이선스 생산, 연 ~$100억 수출 → NATO 재무장 실수주 전환·한화에어로/KAI/LIG넥스원/현대로템 (Militarnyi·StrategyPage)
 - 2026-09 `nato_5pct_spending_ankara_summit_202609.md` — NATO 5% GDP 목표(3.5%+1.5%) 이행: 2025 31개 동맹 전원 2% 달성·유럽 실질 +54%(2022~25)·장비지출 32% + SIPRI 글로벌 군사비 $2.89조(유럽 +14%, 미국 -7.5%), 앙카라 서밋(2026-07) 로드맵 → 유럽 재무장 조달 중심·방산 다년 수주 채널
 - 2026-08 `counter_uas_drone_swarm_cnas_202608.md` — CNAS 'Countering the Swarm': 저가·대량 드론이 미국 제공권 독점 무력화 + counter-UAS 조달 과소투자 → 다층 능동방어(HPM 양산·저가 요격 비축·AI C2·전군 훈련) 권고 → 대드론·자율·EW 방산 신규 수요 채널
 - 2026-06 `us_japan_alliance_csis_202606.md` — CSIS US-Japan 동맹 우선순위: 일본 방위비 GDP 2% 조기 + 미국 동맹 5% 새 기준(군사 3.5%+안보 1.5%) + 미사일 공동개발(AMRAAM/SM-3)
 
 ## L3 분기 Deep Dive 이력
 
-- (없음 — 2026 Q3 첫 분기 발행 목표, L2 5건 누적 후)
+- (없음 — L2 6건 누적으로 분기 Deep Dive 발행 요건(L2 ≥5건) 충족, 다음 분기 발행 후보)
 
 ## 분석 에이전트 활용 가이드
 

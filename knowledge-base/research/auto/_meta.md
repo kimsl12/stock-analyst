@@ -1,13 +1,13 @@
 ---
 sector: auto
 created: 2026-05-12
-last_updated: 2026-10-24
+last_updated: 2026-11-07
 status: active
 related_industry_kb:
   - knowledge-base/industry/auto.md
   - knowledge-base/industry/battery.md
 l1_index_count: 6
-l2_summary_count: 3
+l2_summary_count: 6
 l3_deep_dive_count: 0
 deep_dive_priority: 10
 ---
@@ -18,7 +18,11 @@ deep_dive_priority: 10
 
 ## 현재 thesis (research-curator weekly/monthly 갱신)
 
-- (L1 첫 수집 후 보강 예정 — 본 섹션은 status=active 전환 시 작성)
+- **글로벌 EV 성장 둔화 + 지역 편차**: IEA GEVO 2026 — 2026 EV 2,300만대(신차 28%), 2026 1분기 -8%(중국·미국 둔화) 첫 역성장. 중국 OEM이 세계 EV의 ~60% 공급, 유럽 +30%(신차 3대 중 1대). 유럽 노출 OEM 순풍 vs 미국 집중 OEM 역풍. (L2: iea_global_ev_outlook_2026)
+- **미국 Section 232 자동차 관세 25%→15% 협상**: 기본 25%, 일본·한국·EU 15%·영국 10%. USMCA 준수 콘텐츠·부품 면제 + 미국 생산차 MSRP 3.75% 오프셋. 2026 USMCA 재검토가 다음 분기점 — 한국(현대차·기아)·일본(TM·HMC) 대미 수출 마진 변수. (L2: section232_auto_tariff_15pct)
+- **중국 EV 가격전쟁·과잉설비·브랜드 대퇴출**: BYD 할인 2026-03 사상 최고 10%, 가동률 ~50%(캐파 5,550만 vs 내수 2,300만), 2년간 ¥4,710억($690억) 매출 증발, 130개 브랜드 중 '십수 개'만 생존(AlixPartners ~15개 흑자). 과잉분 수출 분출 → 글로벌 OEM 공통 디플레 압력. (L2: china_ev_price_war_overcapacity)
+- **미국 EV 세액공제(§30D/§25E) 조기 종료 → 수요 절벽**: OBBBA(P.L.119-21)로 2025-09-30 종료, Q3 풀포워드 후 절벽. (L2: ev_tax_credit_30d_sunset_demand_cliff)
+- **중국 EV 유럽 침투 + EU 관세·현지화**: 관세는 통했으나 침투 못 막음, BYD 판매 2배↑·현지생산 0→100만대. (L2: china_ev_export_eu_tariff_localization)
 
 ## 종목 매핑 (커버 유니버스)
 
@@ -69,13 +73,16 @@ deep_dive_priority: 10
 
 ## L2 월간 요약 목록 (최신 → 과거)
 
+- 2026-11 `iea_global_ev_outlook_2026_202611.md` — IEA Global EV Outlook 2026: 2026 EV 2,300만대(신차 28%), 2026 1분기 -8%(중국·미국 둔화) 첫 역성장, 2025 2,000만대 초과(+20%), 중국 OEM 세계 EV ~60% 공급, 유럽 +30%(420만대·신차 3대 중 1대) → 성장 둔화+지역 편차 앵커 데이터 (IEA via Down To Earth)
+- 2026-11 `section232_auto_tariff_15pct_202611.md` — Section 232 자동차 관세: 기본 25%, 일본·한국·EU 15%·영국 10%, USMCA 준수 콘텐츠·부품 면제+미국 생산차 MSRP 3.75% 오프셋, 2025 미국 수입 800만대($2,080억)·5개국 96%, 2026 USMCA 재검토가 분기점. 한국 25%→15% 전환 궤적 (CRS IN12545·Korea Times)
+- 2026-11 `china_ev_price_war_overcapacity_202611.md` — 중국 EV 가격전쟁·과잉설비: BYD 할인 2026-03 사상 최고 10%, 가동률 ~50%(캐파 5,550만 vs 내수 2,300만), 2년간 ¥4,710억($690억) 매출 증발, 130개 브랜드 중 '십수개'만 생존(AlixPartners ~15개 흑자), 2026 중국 -3~5% 전망·과잉분 수출 분출 (Automotive World·SCMP)
 - 2026-09 `ev_tax_credit_30d_sunset_demand_cliff_202609.md` — OBBBA(P.L.119-21, 2025-07): §30D $7,500·§25E 중고 EV 세액공제 2025-09-30 조기 종료(2032→앞당김) → Q3(7~8월) 풀포워드 급증 후 수요 절벽·정상화(Baker Tilly Mader). 미국 EV 침투율 역풍·딜러 리베이트 소멸(기존 ira_30d 산업정책 관점의 반전)
 - 2026-08 `china_ev_export_eu_tariff_localization_202608.md` — T&E 중국 EV 유럽: 관세는 통했으나 침투 못 막음 + BYD(17%) 판매 2배↑·SAIC(35%) 반토막 + 현지생산 0→100만대(터키·헝가리·스페인) + PHEV 우회 37%→60% + BYD 해외판매 43%
 - 2026-06 `ira_30d_industrial_policy_siepr_202606.md` — IRA 30D 클린비클 크레딧 = 신산업정책, 이원 $3,750 + 북미조립 요건, 미국 EV 제조 리쇼어링 함의 (SIEPR)
 
 ## L3 분기 Deep Dive 이력
 
-- (없음 — 2026 Q3 첫 분기 발행 목표)
+- (없음 — L2 6건 누적으로 분기 Deep Dive 발행 요건(L2 ≥5건) 충족, 발행 우선순위 10순위라 반도체·에너지 등 선순위 후)
 
 ## 분석 에이전트 활용 가이드
 

@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-10-24
+last_updated: 2026-11-07
 update_cycle: weekly
 status: active
-total_headlines: 161
+total_headlines: 191
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -74,6 +74,8 @@ total_headlines: 161
 
 - 📄 [Filing] TSMC Q3 2026 실적 (2026-10-15 발표, 회계분기 9/30 종료) — "매출 NT$1,494.24B(US$46.72B, +50.9% YoY NT$·+41.2% YoY US$·+17.6% QoQ NT$·+16.2% QoQ US$), 순이익 NT$763.06B(+68.7% YoY·+8.0% QoQ), 희석 EPS NT$29.43(US$4.60/ADR), GM 66.4%·OM 58.7%·순이익률 51.1% — 자체 가이던스(US$44.6~~45.8B)·컨센(LSEG NT$1.46조) 상회" → 웨이퍼매출 기술믹스 2nm 8%·3nm 33%·5nm 28%·7nm 10%(첨단 7nm이하 79%). Q4 2026 가이던스 매출 US$52.3~~54.3B·GM 65~~67%·OM 56.5~~58.5%(환율 NT$31.8/US$ 가정) — 분기 매출 첫 US$50B+ 돌파 전망, 2nm 램프·AI 가속기 수요 지속. 9월 매출(NT$511.86B·+54.6% YoY, 10/8 발표)에 이은 분기 실측, 9/26·10/10 트래킹(TSMC 9월 매출·Q3 실적 10월 중순) 실현 — AI 슈퍼사이클 지속성·HBM4/CoWoS 수요 thesis 직접 보강(연간 capex·FY 성장률 가이던스는 본 릴리스 미포함·이사회 미승인) (📄 TSMC SEC 6-K [source](https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000726/a3q26e_withguidancexfinal.htm))
 - 📄 [Filing] ASML Q3 2026 실적 (2026-10-14 발표) — "총매출 €11,662M(€11.7B)·순이익 €4,960M(€5.0B)·GM 57.5%·신규 리소그래피 시스템 113대 판매 — Q4 2026 가이던스 매출 €14.2~~15.2B·GM 약 57%, FY2026 매출 €44~~45B·GM 약 56%" → CEO Christophe Fouquet "일부 고객이 2029~~2030년 발주 희망·2027~~2028년 계획 공급이 수요를 완전히 충족하지 못해 2028년 기존 +30% 캐파 증설 이상 검토". Q3 자사주 약 €4.1B 매입(2026-2028 프로그램)·중간배당 €1.88/주(11/4 지급). EUV 장비 수요가 2029~~2030년까지 가시화 — AI capex 슈퍼사이클의 '장비 측' 선행지표, 반도체 전공정 capex thesis 보강(넷부킹 수치는 공식 릴리스 미포함) (📄 ASML SEC 6-K [source](https://www.sec.gov/Archives/edgar/data/0000937966/000162828026065813/pressreleasefinancialresul.htm))
+- 📄 [Filing] SK hynix 3Q26 예비실적 (2026-10-28, 예비·비감사) — 분기 매출 첫 100조원대·영업이익률 ~80%, HBM4 4Q26 HBM3E 추월, 캐파 2029까지 약정·2027~2028 50%+ LTA·공급부족 2030까지, ~100조원 주주환원 (규모 이례적·공식 IR 대조 필요) ([source](https://www.koreatimes.co.kr/business/companies/20261028/sk-hynix-logs-record-q3-operating-profit-of-628-bil))
+- 📄 [Filing] 삼성전자 3Q26 예비 (2026-10-08) — 영업이익 약 107.4조원(+782.5% YoY)·매출 약 195조원·컨센 106.1조 상회, HBM4 매출 기여 개시·HBM 출하 +50% QoQ·NVIDIA Vera Rubin 수요, 파운드리 적자 지속 (예비·규모 이례적·공식 IR 대조 필요) ([source](https://trendforce.com/news/2026/10/08/news-samsung-sees-3q26-operating-profit-soaring-783-to-record-krw-107-4-trillion-on-hbm4-memory-price-gains))
 
 ### 규제
 
@@ -115,8 +117,8 @@ total_headlines: 161
 - 📄 [White Paper] OPEC+ 10/4 회의 — 11월 생산 쿼터 동결 (2026-10-04) — "7개국(사우디·러시아·이라크·쿠웨이트·카자흐스탄·알제리·오만)이 화상회의서 11월 required production을 9월 수준 31.01 mb/d로 동결 — 4~9월 4개월 연속 증산(2023년 자발적 감산 롤백)을 마친 뒤 10월에 이미 적용한 일시중단(pause)을 11월로 연장, 복원 물량의 시장 영향 평가 시간 확보" → 다음 회의 11/1(12월 쿼터 결정). UAE는 5월 OPEC 탈퇴로 월간 결정 불참. Brent는 호르무즈 분쟁 프리미엄으로 약 $102~~108 고착(10/2 WTI $91.26·Brent $102.70 — us_economy SSOT yfinance / 10/5 TradingEconomics ~$102.60, Brent 가격은 단일 2차 소스로 ICE 정산가 교차검증 권장). 9/26 트래킹(OPEC+ 10/4 회의) 실현 — 공급측 증산 정지 유지 vs 지정학 리스크 상존 (📄 [source](https://gulfnews.com/business/energy/opec-keeps-october-oil-output-quota-unchanged-from-september-levels-1.500665366) / [source2](https://nairametrics.com/2026/10/05/opec-keeps-november-oil-production-unchanged-at-31-01-million-bpd/) / [source3](https://shipandbunker.com/news/world/818090-seven-opec-members-keep-october-oil-output-unchanged))
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음 — IEA WEO 2026 발표 10월 예정, ANS·BP Outlook 부재)
+- 📄 [White Paper] EIA STEO (2026-10) — "Short-Term Energy Outlook 10월판" → Brent $96(2026)·4Q26 $105·美 원유 13.9→14.3 Mb/d 사상최고·Henry Hub -9%, 도매 전력 +11%·PJM +41% ([source](https://www.eia.gov/outlooks/steo/report))
+- 📄 [Filing] Cameco SEC 6-K Q3 2026 (2026-10) — "Q3 2026 Results" → 우라늄 현물 US$89.63·장기 US$96.50/lb 강세 vs 조정순손실 C$(2)M, 생산 -20%(Key Lake), 단위원가 가이던스 C$67~70/lb 상향 ([source](https://www.sec.gov/Archives/edgar/data/0001009001/000119312526439858/d106072dex992.htm))
 
 ### 규제
 
@@ -128,6 +130,7 @@ total_headlines: 161
 - 📄 [Policy] US DOE Office of Energy Dominance Financing — AP1000 대형원전 $17.5B 조건부 약정 (2026-06-23) — "Westinghouse AP1000 최대 10기 long-lead 장비 조달에 $17.5B 융자 약정 (American Supply Chain Loans)" → 최대 5건 융자(건당 원자로 2기 지원)로 2030년까지 10기 착공 목표. 원자로 압력용기 등 장납기 핵심 부품을 다수 프로젝트 일괄 구매 → 공급망 효율화·부품원가 절감·배치 일정 최대 3년 단축. Westinghouse 소유: Brookfield+기관 파트너 51%·Cameco 49% (8-K 공시). 본 약정은 SMR이 아닌 대형 경수로 본격 재가동 — capex 원자력 thesis(SMR→대형 동시 확장) 강화. 단 기술·법무·환경·재무 조건 충족 전까지 확정 자금 미집행 ([source](https://www.power-eng.com/nuclear/doe-commits-17-5-billion-to-finance-long-lead-equipment-for-u-s-fleet-of-westinghouse-ap1000-reactors/))
 
 ---
+- 📄 [Policy] US DOE EDF (2026-10) — "Constellation 8기 원전 업레이트 최대 $5B 조건부 대출" → +~1.1GW(PJM·MISO), UPRISE 기존로 5GW 목표 95% 식별, '업레이트=최저가 신규 원자력' ([source](https://www.energy.gov/articles/energy-department-announces-5-billion-loan-boost-nuclear-power-and-help-lower-costs))
 
 ## 🌍 Macro (매크로)
 
@@ -140,6 +143,8 @@ total_headlines: 161
 
 - 📄 [White Paper] IMF WEO (2026-04-14) — "Global Economy in the Shadow of War" → 글로벌 성장 2026년 3.1%·2027년 3.2% (전망 하향), EM 3.9% (1월 4.2% 대비 하향), 중동 전쟁 인플레 상방 압력
 - 📄 [White Paper] BIS Quarterly Review (2026-03) — "Markets recalibrate amid shifting currents" → 달러 약세 + EME 강세, M7·고모멘텀 테크→밸류/시클리컬 로테이션, 일본·호주 장기금리 급등
+- 📄 [White Paper] IMF WEO (2026-10) — "Resilience Under Strain, Urgent Choices" → 글로벌 성장 3.1%(2026)·3.4%(2027), 물가 4.7%→4.1%, 성장은 AI 투자 단일 의존 ([source](https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026))
+- 📄 [White Paper] IMF GFSR (2026-10) — "Resilience, Risk, and Transformation" → 금융안정 리스크 elevated, 3대 현저 리스크(AI 조정·국채금리 쇼크·사이버), AI 급락 시 글로벌 GDP -1.1%(2028) ([source](https://www.imf.org/en/publications/gfsr/issues/2026/10/13/global-financial-stability-report-october-2026))
 
 ### 컨퍼런스/백서
 
@@ -177,6 +182,7 @@ total_headlines: 161
 - 📄 [Policy] 한국은행 MPC (2026-08-27, 직전 회차 미포착 catch-up) — "기준금리 +25bp 2.75%→3.00% 인상 (2차 연속 인상, 6-1 표결) — 7/16 첫 인상(2.50%→2.75%, 3년여 만)에 이은 연속 인상" → 황건일 위원만 동결(2.75%) 소수의견. 중동發 유가 상승·인플레 압력 확산 선제 차단·예상 상회 경기회복을 근거로 매파 기조 강화, 2026년 성장전망 3.3%로 상향. "추가 인상 시점·속도는 대내외 여건 변화 점검하며 결정". 5/28(2.50% 동결, 신현송 총재 첫 회의) 이후 KB 미포착 2회 인상(7/16·8/27) catch-up 등재 — 글로벌 긴축 동조(FOMC 9/16·BOJ 9/18 인상)와 정합 (📄 [source](https://www.koreaherald.com/article/10854054) / [source2](https://www.cnbc.com/2026/07/16/bok-interest-rate-monetary-policy-markets-kospi-skhynix.html))
 
 ---
+- 📄 [Policy] 한국은행 금통위 (2026-10) — 기준금리 3.0% 만장일치 동결 → 여름 연속 인상 후 숨고르기, Shin 매파 가이던스(11월 추가 인상 유력), 한·미 금리차 1.0%p ([source](https://www.khan.co.kr/en/article/202610221648047))
 
 ## 🧬 Biotech (바이오)
 
@@ -199,6 +205,8 @@ total_headlines: 161
 - 📄 [Conference] ADA 86th Scientific Sessions (2026-06-05~08, New Orleans) — Novo Nordisk "CagriSema(카그릴린타이드+세마글루타이드) REIMAGINE-1/2/3 데이터" → 아밀린 유사체+GLP-1 복합. T2D 환자서 혈당·체중 모두 세마글루타이드 단독 대비 우월하나, 체중감소는 tirzepatide(LLY) 대비 열위. retatrutide(triple agonist) 후기 데이터·survodutide·경구 elecoglipron 등 차세대 라인업 동반 발표 — 비만·당뇨 차세대 경쟁 구도 격화 ([source](https://www.medscape.com/viewarticle/latest-glp-1-based-therapy-be-featured-ada-2026a1000i3q))
 - 📄 [Conference] ESMO Congress 2026 프리뷰 (본회의 10/23~~27, IFEMA Madrid) — "유럽종양학회 연례 최대 학회(개막 10/23), Fabrice André 의장·Yelena Janjigian·James Larkin 공동 과학위원장 — late-breaking 초록 마감 9/8(CEST 21:00), 초록 접수 2025 대비 +10%, 참가 3만명+ 예상, '실무 변경 가능성 있는 데이터 첫 공개' 표방" → 개별 기업 프리뷰: Incyte 종양 포트폴리오 다건 발표, Immatics IMA203CD8(PRAME 표적 TCR-T) Phase 1 구연(10/23, 초록 1946O)·anzu-cel 흑색종 반응 지속 포스터(10/24, 2128P). 실제 LBA·OS/PFS 데이터는 10/23 개막 후 다음 회차 verify — 종양학 파이프라인 가치 재평가 트래킹 앵커 (📄 [source](https://esmo.org/meeting-calendar/esmo-congress-2026) / [source2](https://investors.immatics.com/events/event-details/esmo-2026-congress) / [source3](https://thepathologist.com/events/esmo-congress-2026-leading-global-oncology-innovation/))
 - 📄 [Conference] ESMO Congress 2026 개막 (2026-10-23~~27 IFEMA Madrid) — "Presidential Symposium late-breaking 12건 중심 — ① INTerpath-001(Merck/Moderna, 개인맞춤 mRNA 백신 intismeran autogene+Keytruda vs Keytruda, 절제 2B~4기 흑색종 1,137명, 10/24 발표): 스폰서 발표상 무재발생존[RFS]·원격전이무병생존[DMFS] 유의 연장·주평가변수 충족 ② SAFFRON(HUTCHMED, savolitinib+Tagrisso vs 백금-페메트렉세드 화학요법, Tagrisso 진행 EGFR변이 MET+ NSCLC, 10/25): PFS·OS 모두 병용 우위 ③ HARMONi-GI1(Akeso ivonescimab PD-1/VEGF 이중항체 vs Imfinzi+화학, 1차 진행성 담도암 682명 전원 중국, 10/25): OS 목표 충족 ④ CLARITY-Gastric01(sonesitatug vedotin claudin18.2 ADC vs 의사선택요법, 기치료 위·GEJ·식도선암, 10/25): OS 충족(2차+ 치료군) ⑤ TroFuse-005(Merck sac-TMT TROP2 ADC vs doxorubicin/paclitaxel, 진행·재발 자궁내막암 776명, 10/26): OS·PFS 개선" → 전부 스폰서 사전발표(효과크기·HR 미공개) — 실제 OS/PFS 수치는 각 LBA 발표 후 verify 필요. 10/17 트래킹(ESMO 2026 LBA) 개막 실현, 직전 프리뷰(라인업 미특정) 대비 Presidential LBA 5건 구체화 (📄 CURE 프리뷰 [source](https://www.curetoday.com/view/esmo-2026-preview-5-late-breaking-trials-patients-should-watch))
+- 📄 [Conference] ESMO 2026 LBA3 / Amgen (2026-10) — "DeLLphi-305" → tarlatamab+durvalumab 1차 유지 진행성 SCLC mOS 21.1 vs 12.7개월·HR 0.42(사망 58%↓)·1년생존 ~80% vs 53%, NEJM 동시게재 ([source](https://www.amgen.com/newsroom/press-releases/2026/10/imdelltra-in-combination-with-imfinzi-reduced-risk-of-death-by-an-unprecedented-58-in-firstline-extensive-stage-small-cell-lung-cancer))
+- 📄 [Conference] ESMO 2026 LBA25 (2026-10) — "NATALEE 6년" → 보조 ribociclib(Kisqali)+NSAI HR+/HER2- 조기 유방암 OS HR 0.809(~19%↓, 명목적) ([source](https://www.cancernetwork.com/view/adjuvant-ribociclib-improves-os-at-6-years-in-hr-her2--early-breast-cancer))
 
 ### 규제
 
@@ -216,6 +224,7 @@ total_headlines: 161
 - 📄 [Policy] FDA camizestrant(브랜드 Etcamah) 가속승인 (2026-09-04, 직전 회차 PDUFA 연장 추적 실측) — "AstraZeneca 카미제스트란트 + CDK4/6 억제제(아베마시클립·팔보시클립·리보시클립) 병용, HR+/HER2- 국소진행·전이성 유방암서 AI+CDK4/6i 치료 중 ESR1 변이 검출 시 조기 전환 적응증 가속승인 — FDA 최초로 방사선학적 진행 이전 순환종양DNA(ctDNA) 내성변이 검출 기반 승인" → 동반진단으로 Guardant360 CDx 동시 승인. 4월 ODAC 3-6 반대·PFS2 종료점 불수용으로 PDUFA 연장(6월 회차)됐던 건이 SERENA-6 ctDNA 클리어런스 데이터로 재설득 성공 — 'ctDNA 트리거 조기 전환'이라는 새 종양학 패러다임 첫 규제 인정, SERD/PROTAC 경구 분해제(Veppanu 등) 경쟁 구도에 영향. 9/12·9/19 회차 '차주 예상'(camizestrant 연장 PDUFA 재심)의 실측 답 (📄 FDA 공식 [source](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-camizestrant-cdk46-inhibitor-esr1-mutated-hr-positive-her2-negative) / ASCO Post [source2](https://ascopost.com/news/september-2026/fda-approves-camizestrant-combination-regimen-for-locally-advanced-or-metastatic-breast-cancer/) / ONS [source3](https://www.ons.org/publications-research/voice/news-views/09-2026/fda-grants-accelerated-approval-camizestrant-cdk46-inhibitor-esr1-variant-hr-positive-her2-negative))
 
 ---
+- 📄 [Policy] FDA (2026-10) — "dostarlimab 직장암 가속승인" → MSI-H/dMMR 2·3기 국소진행성 직장암, AZUR-1 cCR12 47%(ICR)·ORR 79%, 수술·방사선 없는 면역단독 ([source](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-dostarlimab-locally-advanced-rectal-cancer))
 
 ## 💳 Fintech (핀테크)
 
@@ -229,8 +238,7 @@ total_headlines: 161
 - 📄 [Think Tank] BIS Briefing (2026-04-20) — "Global Stablecoin Rulemaking Slowdown" → 글로벌 스테이블코인 규제 진전 둔화, BIS 협력 촉구, 단편화 시 시장 리스크 증폭·규제 차익 경고
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음 — Money 20/20 10월 예정, Davos WEF 1월 완료 후속 부재)
+- 📄 [Conference] Money 20/20 USA 2026 (2026-10) — 스테이블코인 "파일럿 종료·생산 시대" → 상반 8개월 결제량 $400B+·Visa Direct 국경간 상업 생산, 에이전틱 커머스 부상 ([source](https://forkast.news/money20-20-just-programmed-six-stablecoin-sessions-in-two-days-that-tells-you-the-pilot-phase-is-over/))
 
 ### 규제
 
@@ -246,6 +254,8 @@ total_headlines: 161
 - 📄 [Policy] Fed, GENIUS Act 스테이블코인 준비금·자본 규칙 제안 (2026-09-24, 이사회 만장 승인) — "연준이 은행 발행 결제 스테이블코인 대상 2건의 제안규칙(NPRM)을 EDT 14:30 발표 — 1:1 준비금 백킹 + 발행잔액 $500억 초과 시 2%→1%로 체감하는 자본 부과·신규 발행자 첫 3년 최소자본 $500만·2일 상환 시한, 392쪽 준비금/자본/상환/커스터디 통합 규칙" → 만장일치 이사회 표결로 채택했으나 확정 규칙이 아닌 '제안'(연방관보 게재 후 60일 의견수렴). Michael Barr 이사는 '뱅크런 리스크·AML 집행 공백이 미해소인 채 2027-01 시한 임박' 경고. OCC(2·6월 NPRM)·FinCEN/OFAC(4월 AML NPRM)에 이어 연준 자체 자본·준비금 규칙 합류 — GENIUS Act 발행자 제도권 편입 프레임 완성 단계, 8/19 회차(OCC 11월 최종규칙 목표) 후속. Circle·Tether 등 발행자 자본요건 구체화 채널 (📄 [source](https://www.techtimes.com/articles/328038/20260925/federal-reserve-sets-stablecoin-capital-floor-barr-flags-run-risk-aml-gap.htm) / [source2](https://stablecoininsider.org/fed-genius-act-stablecoin-proposals/) / [source3](https://usethebitcoin.com/news/federal-reserve-stablecoin-reserve-capital-rules-genius-act/))
 
 ---
+- 📄 [Policy] ECB 디지털유로 (2026-10) — 파일럿 모집 본격화 → 가맹점 마감 10/27·혁신 11/9, 파일럿 2027 중반·발행 준비 2029, 최종 발행은 EU 입법 전제 ([source](https://www.ecb.europa.eu/press/govcdec/otherdec/2026/html/ecb.gc261002~54c6b5672b.en.html))
+- 📄 [Policy] US Senate CLARITY Act (2026-09) — 크립토 시장구조 법안 본회의 교착 → 은행위 15-9 통과 후 cloture 9/15 예약(60표 필요), CFTC 디지털상품 관할·SEC 증권 토큰 ([source](https://decrypt.co/375174/senate-keeps-clarity-act-alive-with-crypto-bill-vote-set-for-september))
 
 ## 🛡️ Defense (방산·항공)
 
@@ -258,6 +268,8 @@ total_headlines: 161
 - 📄 [Think Tank] CSIS (2026-05-08) — "Deepening Strategic Alignment: Priorities for the U.S.-Japan Alliance" (Johnstone & Rubinstein) → 일본 5개년 방위비 +60%·1년차 +25% 단계 진입, 장사거리 정밀타격·능동 사이버·우주 자산 투자 확대 — 한미일 통합 억제·역할분담 재정립 ([source](https://www.csis.org/analysis/deepening-strategic-alignment-priorities-us-japan-alliance))
 - 📄 [Think Tank] SIPRI Fact Sheet (2026-04) — "2025 World Military Expenditure" → 글로벌 군사비 사상 최고 갱신, 한국 2025년 $47.8B (+2.6%) — 3축 체계 (미사일방어·선제타격·보복능력) 지속 투자 ([source](https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf))
 - 📄 [Think Tank] CSIS (2026-04) — "Unpacking the $1.5 Trillion FY 2027 Defense Budget Topline" → 사상 최대 $1.5T 국방예산 요청(역대 최대). 재량 $1.15T + 조정(reconciliation) $350B 구조. Golden Dome 미사일방어 약 $17.5B 중 거의 전액 의무·조정예산(base는 약 $400M) — 우주기반 센서·요격체·층상 본토방어. 조정 절차 의존도가 높아 의회 통과 불확실성 동반 ([source](https://www.csis.org/analysis/unpacking-15-trillion-fy-2027-defense-budget-topline))
+- 📄 [Think Tank] CSIS/Seamus P. Daniels (2026-10) — "FY2027 Defense Funding: Potential Post-Midterm Outcomes" → FY27 국방 $1.5조(기본세출 $1.15조+재정조정 $3,500억), 예산결의 재정조정 $600억·탄약 ~$210억, DoD 12/11 CR 운영 ([source](https://www.csis.org/analysis/fy-2027-defense-funding-potential-post-midterm-outcomes))
+- 📄 [Think Tank] Militarnyi (2026-02) — "Europe Under the Influence of South Korea's Defense Industry" → 폴란드가 2020~24 한국 유럽행 무기물량 46%(SIPRI), K9 672문·K2 180+180($65억), 루마니아 H-ACE 2026-02 착공 ([source](https://militarnyi.com/en/articles/europe-south-korea-defense-industry/))
 
 ### 컨퍼런스/백서
 
@@ -270,6 +282,7 @@ total_headlines: 161
 - 📄 [Policy] FY2027 NDAA — 하원 통과·상원 계류 (2026-07) — "하원 H.R.8800 FY27 NDAA 본회의 통과, 상원은 계류 중 — SASC 6/10 마크업 완료(18-9 표결)·본회의 상정 대기" → Golden Dome 미사일방어·AI·조선·자율무기가 핵심 논점. 양원 모두 재량 국방비 약 $1.14T 인가(FY26 대비 +$250B) 수준 유지. 상원 처리 지연으로 양원 협의(conference) 및 세부 무기체계 배분 확정은 후속 — Golden Dome 조정예산 의존 구조(7/4 회차)와 맞물려 실집행 불확실성 지속 (📄 Breaking Defense [source](https://breakingdefense.com/2026/07/house-passes-2027-ndaa-while-measure-remains-stalled-in-the-senate/) / [source2](https://www.congress.gov/crs-product/IN12704))
 
 ---
+- 📄 [Policy] CBO (2026-05) — "Potential Costs of a National Missile Defense System"(Golden Dome) → 20년 $1.2조(취득 $1조+), SBI가 비용 70%(위성 7,800기·$7,200억), 행정부 $185억과 6배 괴리 ([source](https://spacepolicyonline.com/news/cbo-estimates-golden-dome-at-1-2-trillion-space-based-interceptors-biggest-cost/))
 
 ## 💻 Tech / Platform (빅테크·SaaS·플랫폼)
 
@@ -282,8 +295,7 @@ total_headlines: 161
 - (이번 주 신규 없음)
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음 — Google I/O 5월 완료, MS Build 5월말 예정 후속)
+- 📄 [Filing] Big Tech Q3 2026 CapEx 집계 (2026-10-30) — 5사 Q3 ~$227B(+20% QoQ)·FY26 $803~828B, Amazon Q3 $75.9B·FY ~$220B, MSFT CY26 ~$170B, Alphabet "2027 유의미 증가", 2027 추정 $1T+ ([source](https://www.hl.co.uk/news/ai-hyperscalers-are-expected-to-finish-the-year-spending-a-whopping-828-billion-on-capex))
 
 ### 규제
 
@@ -293,6 +305,8 @@ total_headlines: 161
 - 📄 [Filing] Alphabet Q2 2026 실적 (2026-07-22) — "매출 $119.80B(+24% YoY), 영업이익 $40.77B(+30%·마진 34%), Google Cloud $24.77B(+82% YoY·컨센 $22.42B 상회)·백로그 $514B(+$50B QoQ), 2026 capex 가이던스 $180~190B→$195~205B 상향" → 분기 capex $44.9B(+100% YoY)·잉여현금흐름 -$5.9B. 클라우드 초강세에도 AI 인프라 공격적 지출 우려로 주가 시간외 약 -4%. 하이퍼스케일러 4사(AMZN·GOOGL·META·MSFT) 2026 합산 AI capex 약 $725B(+77% YoY) 전망의 선봉 — 반도체·에너지 capex 슈퍼사이클 thesis 직접 보강. MSFT·META Q2는 7/29 발표 예정 ([source](https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html))
 - 📄 [Filing] Meta Q2 2026 실적 (2026-07-29) — "매출 $60.8B(+28% YoY·컨센 약 $60.2~~60.3B 상회), 광고매출 $59.4B(+27%), 분기 capex $31.1B(영업현금흐름의 약 98% 소진)·잉여현금흐름 $784M로 급감 → capex 우려로 시간외 약 -8~10%" → 광고 머신 견조에도 AI 인프라 공격적 지출이 주가 발목. 같은 날 발표한 Microsoft는 Azure 소비 매출 연동으로 익일 약 +8~9% 상승 — 하이퍼스케일러 capex의 '외부 매출 연동 여부'가 시장 반응 분수령. Alphabet(7/22 capex $195~~205B 상향)에 이어 AI capex 슈퍼사이클 지속 — 반도체·에너지 thesis 직접 보강 ([source](https://www.digitalapplied.com/blog/meta-q2-2026-earnings-ad-strength-capex-selloff) / [source2](https://www.digitalapplied.com/blog/ai-capex-scorecard-earnings-week-july-2026))
 - 📄 [Policy] EU AI Act — 8/2 투명성·GPAI 집행권 발효, Annex III 고위험 의무는 2027-12-02로 연기 (2026-08-02) — "5/7 Digital Omnibus 합의로 Annex III 고위험 시스템(고용·신용·바이오인식) 의무가 2026-08-02 → 2027-12-02로 연기 — 8/2에는 Article 50 투명성 의무(챗봇 고지·AI 생성물 기계판독 표시·딥페이크 라벨)와 GPAI 조사·과징금 집행권만 발효" → 직전 회차(7/4) '8/2 고위험 의무 발효 임박' 예고에 대한 실측 정정: 핵심 고위험 의무는 대폭 이연, 8/2 발효분은 투명성 + GPAI 집행권한 활성화. 위반 시 최대 €35M 또는 글로벌 매출 7% 과징금 프레임은 유지 — 미국 빅테크 EU 컴플라이언스 부담은 완화·이연 방향 ([source](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/) / [source2](https://www.digitalapplied.com/blog/eu-ai-act-august-2026-transparency-obligations-agency-checklist))
+- 📄 [Policy] IMF GFSR·WEO (2026-10-13) — AI 주식 급락을 금융안정 3대 salient risk로 지목, 총재 "경제가 AI 한 다리로 섰다", 투자 급감 시 2028 GDP -1.1%·미국 -1.8% ([source](https://www.businessday.co.za/world/americas/2026-10-13-imf-warns-of-risks-from-ai-market-correction-and-war/))
+- 📄 [Policy] US v. Google 애드테크 구제 (E.D. Va., Brinkema 판사, 2026-09) — AdX 강제분할 기각·행위적 구제(퍼블리셔 결합요구 금지·락인 중단·준법 모니터 6년), Google 항소·DOJ 검토 ([source](https://www.thestar.com.my/tech/tech-news/2026/09/17/google-should-relax-ad-tech-rules-appoint-antitrust-monitor-us-judge-finds))
 
 ### 컨퍼런스/백서
 
@@ -311,12 +325,12 @@ total_headlines: 161
 - (이번 주 신규 없음 — NBER Industrial Organization·SSRN Retail 4월 마지막 주 신규 부재)
 
 ### 씽크탱크
-
-- (이번 주 신규 없음)
+- 📄 [Think Tank] NRF (2026-10) — "2026 홀리데이 예측" → 11-12월(자동차·주유·외식 제외) 매출 $1.013조, 전년比 +4.2% ([source](https://nrf.com/media-center/press-releases/nrf-forecasts-2026-holiday-sales-growth-as-consumers-remain-resilient))
+- 📄 [Think Tank] Bain & Company (2026-09) — "2026 홀리데이 전망" → $1,016B(+4.5%, 첫 1조 돌파), 비매장 +9%·매장 +2.5%, 식음료·가구·가전 보합 ([source](https://www.bain.com/insights/2026-holiday-shopping-outlook-infographic/))
+- 📄 [Think Tank] McKinsey ConsumerWise (2026-08) — "2026 홀리데이 소비자 설문" → 지출 '비슷' 47%, 인플레 최대 우려 53%, AI 쇼핑 46%, 넷지출의향 홈데코/가구/의류 약세 ([source](https://timesofoman.com//article/176146-us-consumers-wary-of-economy-but-plan-steady-holiday-spending-mckinsey))
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음 — Shoptalk 3월 완료, NRF Big Show 1월 완료)
+- 📄 [Filing] LVMH Q3 2026 (2026-10) — "LVMH 3분기" → 그룹 유기성장 +1%(둔화), 패션·가죽제품 -5%(중국 약세)·미국 강세, 9개월 매출 €57.15B(+2% 유기) ([source](https://fashionunited.uk/news/business/lvmh-q3-organic-revenue-growth-slows-amid-china-downturn/2026101390823))
 
 ### 규제
 
@@ -346,14 +360,14 @@ total_headlines: 161
 - 📄 [Think Tank] Westside Construction / CHIPS Act 건설 (2026-05) — "America's Semiconductor Construction Boom" → TSMC AZ Phase 2 완공·장비 입고 Q3 2026, Samsung Taylor 장비 이전 중, Intel 18A AZ 가동 — 미국 첨단 제조 클러스터 본격 전환기 ([source](https://www.buildwcg.com/blog-posts/semiconductor-fab-construction-boom-2026))
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음)
+- 📄 [White Paper] ISM 제조업 PMI (2026-10) — "Manufacturing Report on Business 10월판"(발표 11/03) → PMI 55.5(+1.0, 확장 10개월), 생산 59.0, 가격 75.2(25개월 상승), 기계류 DC·인프라 주도 강세·관세/이란戰 역풍 ([source](https://www.miningstockeducation.com/2026/11/manufacturing-pmi-at-55-5-october-2026-ism-manufacturing-pmi-report/))
+- 📄 [White Paper] IFR World Robotics 2026 (2026-09) — "Five Million Robots now Operate in Factories Globally"(9/24) → 공장 로봇 500만대(+9%)·2025 설치 60만+대(+11%), 중국 59%(354천대)·美 2위로 日 추월, 2026E 65.5만대 ([source](https://ifr.org/ifr-press-releases/five-million-robots-now-operate-in-factories-globally))
 
 ### 규제
 
-- (이번 주 신규 없음)
 
 ---
+- 📄 [Policy] STB UP–NS 합병 심사 (2026-11) — "Union Pacific–Norfolk Southern $85B 합병" → 美 첫 대륙횡단 단일노선(5만+ 마일·43개 주), 의견서 마감 2026-11-18·반론 2027-02-16, 목표 완료 2027 상반기 ([source](https://pulse2.com/stb-restarts-union-pacific-norfolk-southern-merger-review-and-sets-november-18-comment-deadline/amp/))
 
 ## 🚗 Auto / Mobility (자동차·EV·배터리)
 
@@ -362,12 +376,10 @@ total_headlines: 161
 - 📄 [Working Paper] SIEPR Stanford Policy Brief (2026) — "Clean vehicle tax credit: The new industrial policy and its impact" → IRA 30D 신차 EV 크레딧이 산업정책 회귀 사례. Tesla/GM은 30D 후속 IRA 적격 재진입 (Model 3/Y + Lyriq/Bolt/Bolt EUV) ([source](https://siepr.stanford.edu/publications/policy-brief/clean-vehicle-tax-credit-new-industrial-policy-and-its-impact))
 
 ### 씽크탱크
-
-- (이번 주 신규 없음 — McKinsey Mobility 4월 게재물 부재)
+- 📄 [Think Tank] Automotive World/AlixPartners (2026-04) — "China's EV price war rages on as BYD sets record discounts" → BYD 할인 3월 10% 사상최고·가동률 ~50%·2년간 ¥4,710억($690억) 매출 증발·130개 중 '십수개'만 생존 ([source](https://www.automotiveworld.com/news-releases/chinas-ev-price-war-rages-on-as-byd-sets-record-discounts/))
 
 ### 컨퍼런스/백서
-
-- (이번 주 신규 없음 — Auto Shanghai 4월 완료, Munich IAA 9월 예정)
+- 📄 [White Paper] IEA Global EV Outlook 2026 (2026-05) — 2026 글로벌 EV ~2,300만대(신차 28%), 2026 1분기 -8%(중국·미국 둔화) 첫 역성장, 중국 OEM 세계 EV ~60%, 유럽 +30% ([source](https://www.downtoearth.org.in/air/electric-vehicle-sales-projected-to-reach-23-million-globally-in-2026-iea-report))
 
 ### 규제
 
@@ -378,6 +390,7 @@ total_headlines: 161
 - 📄 [Filing] Tesla Q3 2026 재무실적 (2026-10-21, 8-K Exhibit 99.1) — "매출 $28,046M(전년비 대체로 flat '~$28.0B')·총이익 $5,494M(총이익률 약 19.6%, GAAP 총이익률 전년비 +160bp)·영업이익 $718M(영업이익률 약 2.6%, 전년비 -322bp)·GAAP 순이익 $787M·GAAP 희석 EPS $0.22·Non-GAAP 순이익 $1,697M·Non-GAAP 희석 EPS $0.48·FCF $1,531M·capex $4,732M" → 인도 486,532대(10/2 8-K) 기록에도 영업비용 급증(AI/R&D 투자 지속)으로 영업이익률 전년비 축소, 단 총이익률은 +160bp 개선. 연간 capex 수치 가이던스 미제시(Outlook은 공장가동률 극대화·SI 컴퓨팅/솔라/배터리소재/반도체 제조 투자 지속 등 정성적 서술). 9/26·10/17 트래킹(Tesla Q3 재무 10/21) 실현 — Q2 영업이익률 1.4%→Q3 약 2.6%로 QoQ 소폭 회복이나 전년비 하락, 매출 정체 + 이익 질 논쟁 지속 (📄 SEC 8-K Exhibit 99.1 [source](https://www.sec.gov/Archives/edgar/data/0001318605/000162828026066738/exhibit9914.htm))
 
 ---
+- 📄 [Policy] CRS IN12545 (2026-05) — "Section 232 Automotive Tariffs: Issues for Congress" → 자동차 기본 25%, 일본·한국·EU 15%·영국 10%, USMCA 준수분 면제·미국 생산차 3.75% 오프셋, 2026 USMCA 재검토가 분기점 ([source](https://www.everycrsreport.com/files/2026-05-07_IN12545_15cb313066f38ab6fe31bc671402b9da40e9cb35.html))
 
 ## 보존 룰 (12주 슬라이딩 윈도우)
 
