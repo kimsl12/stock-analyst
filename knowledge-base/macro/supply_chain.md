@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-24
-valid_until: 2026-10-31
+updated: 2026-11-07
+valid_until: 2026-12-07
 category: macro
 sources:
   [
@@ -193,7 +193,7 @@ sources:
     "METI",
   ]
 confidence: high
-last_synced_from_db: 2026-10-24
+last_synced_from_db: 2026-11-07
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -206,6 +206,20 @@ last_synced_from_db: 2026-10-24
 
 ## ★ CURRENT ★
 
+## [2026-11-07] 주간 델타 (11/1~11/7)
+
+> **교차검증 (운임·가격, 10/22~11/6 기준):** **BDI 2,648**(11/2, -2.4%·10/27 이후 최저, 10/30 2,714로 10/13 이후 최고 찍고 반락·TradingEconomics+Hellenic 2소스·Capesize 10/29 3,886 +5% 2주최고·Panamax 10/27 2,021 7/29 이후 최저·Supramax 1,856) · **WCI $4,429**(10/29 Drewry, -3% WoW·2주 연속 상승 종료·Transpacific 급락·美 수입수요 둔화·Drewry 차주 추가약세 전망·November 신규 release 공백) · **TTF 장중 €100/MWh 돌파**(10/28 ICE·~$30/MBtu·10/16 $28.9서 상승)·**JKM Dec $30.76/MMBtu**(10/22 Platts·2022.12 이후 최고·JKM>TTF 프리미엄 지속→카고 아시아 흡인). 유가는 **메인 yfinance 확정 앵커** — WTI **$90.34**/Brent **$97.76**(11/6·CL=F/BZ=F 일봉=시간봉 교차검증→정산 아티팩트 없음·주간 -13.2%/-16.9% 급락·11/2 settle WTI $96.46/Brent $104.77). ★유가 급락 서사 교정★: AI/반도체 버블發 수요둔화가 아니라 **이란 평화협상 기대(카타르중재·테헤란 신호)+美 중간선거에 따른 전쟁프리미엄 되돌림**(Brent 10/30 $117.64 6개월최고서 반납·Goldman Dec Brent $90→$105 상향). 구리 HG=F $6.26/lb(11/6·10/23 ~$6.89서 하락)·금 GC=F $4,079.50(리스크오프 피난). 희토류 11/3 신선(Benchmark Q3·rareearthexchanges).
+> **D-카운트 재계산 (2026-11-07 기준):** 희토류 추가통제 유예 만료 11/10 **D-3**(연장여부 미확인·핵심 불확실성) · 대미흑연 11/27 **D-20**(교정 플래그 유지) · 폴리실리콘232 12/4 **D-27** · DFARS 252.225-7052 1/1/2027 **D-55** · REE/흑연 Phase 2 유예 ~Jan 10 2027 **D-64**.
+
+- **★유가 주간 급락 — WTI $90.34/Brent $97.76(11/6, 메인 yfinance 앵커·주간 -13.2%/-16.9%). 11/2 하루 Brent -7.63%(-$8.66 $104.77)·WTI -7.36%($96.46), 4월 이후 최대 낙폭. Brent는 10/30 $117.64(6개월 최고)서 급반전.** [서사 교정] 급락 동인은 수요둔화/AI버블이 아니라 **이란 평화협상 기대(카타르 중재·테헤란 '7일내 재개' 신호)+美 중간선거發 전쟁프리미엄 되돌림**. Goldman은 오히려 Dec2026 Brent 전망을 $90→$105로 상향(공급측 긴축 인식). CL=F/BZ=F 일봉=시간봉 일치로 정산 아티팩트 없음. [yfinance 11/6, Nation Thailand/XTB/oilprice 11/2, Goldman Sachs]
+- **★벌크 고점 반락 — BDI 2,648(11/2, -2.4%·10/27 이후 최저). 10/30 2,714(10/13 이후 최고) 찍고 반락. Capesize 10/29 3,886(+5% 2주최고·3연속 하락 반전)이 주초 견인했으나 Panamax 2,021(10/27·7/29 이후 최저, -2.6%)·Supramax 1,856(10/15 이후 최저) 중소형선 약세가 지수 상쇄.** 직전(10/23 2,660·2주연속 반등)서 대형선·중소형선 디커플링 심화 국면. [TradingEconomics 11/2, Hellenic Shipping News]
+- **컨테이너 — WCI $4,429(10/29 Drewry, -3% WoW·2주 연속 상승 종료). Transpacific 급락이 지수 견인(美 수입수요 둔화)·Drewry 차주 Transpacific 추가 약세 전망. November 신규 release 공백.** 10/9 $4,351→10/29 $4,429 소폭 상승 후 재하락 전환. [Drewry 10/29, FreightWaves]
+- **★LNG 상방 가속 — TTF 10/28 장중 €100/MWh 돌파(~$30/MBtu·record-low 저장+겨울 임박·10/16 $28.9서 상승)·JKM Dec계약 $30.76/MMBtu(10/22 Platts·2022.12 이후 최고). JKM>TTF 프리미엄 H2 9월 이후 지속→유럽 주입 저조·카고 아시아로 흡인. 北아시아 겨울 restocking 견인.** Morgan Stanley 겨울 avg TTF €85/MWh(한파+카타르차질시 >€100). November 신규 release 공백(10/22~28 승계·confidence medium). [S&P Global 10/22·10/28, Morgan Stanley]
+- **★메모리 초긴축 지속·HBM 2027 ASP 상향 — TrendForce Q4 2026 일반DRAM +10~15% QoQ·NAND +15~20%·HBM포함 종합DRAM +15~20%·엔터SSD +23~28% QoQ. ★HBM 2027 blended ASP +121% YoY로 상향(종전 +50% 전환서 대폭)★·NAND 누적 +600%(HBM이 AI메모리 공급 구축). 공급사 선단공정 캐파를 서버 고성능에 집중→물리적 공급난 지속. Team Group '최악은 Q4 2026~Q2 2027'.** 소비수요는 약세(split market). Samsung Q4 DRAM +30%/NAND +10% 보도. [TrendForce 9/30·10/20, evertiq/aiweekly]
+- **희토류 — 11/3 신선: 中내 NdPr oxide 하락·Dy/Tb 보합, 서방 Dy $2,500~5,500/kg. ★CIF Europe Dy oxide ~16.3배 DDP China(Q2말 6.8배서 급등)★ two-world 괴리 심화. 추가통제 유예 11/10 만료 D-3이 핵심 불확실성(연장여부 미확인). NdPr은 $110/kg(DoD 하한) 지지·中외 생산 다수라 공급난 제한적.** 11/10 후 통제 재개 시 heavy RE 프리미엄 추가 확대 리스크. [Benchmark Minerals Q3 2026, rareearthexchanges 11/3, Fastmarkets/SMM]
+- **구리·규제 — 구리 HG=F $6.26/lb(11/6·10/23 ~$6.89서 하락, 유가·원자재 동반 리스크오프). 규제 데드라인 클러스터: 희토류 11/10 D-3·대미흑연 11/27 D-20(교정 플래그 유지)·폴리실리콘232 12/4 D-27·DFARS 1/1/2027 D-55·REE/흑연 Phase 2 ~Jan 10 2027 D-64. US-中 휴전 Jan 10 2027 유효.** [yfinance 11/6, Federal Register 승계, MOFCOM 승계]
+
+---
 ## [2026-10-24] 주간 델타 (10/18~10/24)
 
 > **교차검증 (운임·가격, 10/16~10/23 기준):** **BDI 2,660**(10/23, 주간 +5.9%·2주 연속 반등, 10/16 저점 2,515서 회복, TradingEconomics+Hellenic 2소스·Capesize 3,791 철광석·中 철강 증산 견인·Panamax 2,109 8/24 이후 최저) · **WCI $4,351 승계**(10/9, October 신규 release 공백·confidence low·참고 Drewry 9/14 $4,476 2주 보합·SCFI 3,662·blank sailing Transpacific 차주 8건) · **TTF $28.9/MBtu·JKM high-$29s/MBtu·HH $3.1**(10/16, GlobalLNGHub 19 Oct·10/9 $26.7/low-$26s/$3.2서 2주 연속 상승). 유가는 **메인 yfinance 확정 앵커** — WTI **$103.44**/Brent **$111.66**(10/23 settle·CL=F/BZ=F 일봉=시간봉 교차검증→정산 아티팩트 없음·주중 Brent 10/22 $113.17 고점·10/16 $99/$110서 상승). 구리는 October 신선 — LME cash ~$14,566/t·COMEX ~$6.89/lb(9/9 기록). 희토류는 October release 공백 승계(confidence low).

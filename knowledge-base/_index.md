@@ -359,6 +359,9 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-11-07 | `macro/us_economy.md` | **11/5 AI·반도체 버블 우려發 리스크오프(SOX 주간 -12.15%·VIX 28.18·S&P -2.68%·10Y flight-to-quality 4.84%)지 비둘기 피벗 아님 (weekly-macro)** -- 매파 레짐(12/9 FOMC·12월 인상 >72%·2026 인하 배제·Warsh) 불변·셧다운 ~38일째 블랙아웃(9·10월 BLS 미발표)·real-world 2025 비둘기 오염 전면 배제·FRED/yfinance 1차 소스 | +15 |
+| 2026-11-07 | `macro/korea_economy.md` | **코스피 반도체發 주간 -11.71%(11/6 5,059.69·5천선 위협·외국인 엑소더스) (weekly-macro)** -- 메인 yfinance ^KS11·^KQ11·KRW=X 확정·원/달러 1,356.34(주간 +18.36원 약세 반전). 10월 수출 $1,152.8억(+93.7%)·1~10월 $9,300억 첫 돌파·SK하이닉스 3Q26 영업익 83.3조(OPM 80%)·기준금리 3.00% 동결 확정(10/22 만장일치)·10월 CPI +2.8%. 「N주 연속」 배제(10/30주 +3.25% 반등) | +8 |
+| 2026-11-07 | `macro/supply_chain.md` | **유가 주간 급락 WTI $90.34/Brent $97.76(-13~17%)은 이란 평화협상+美 중간선거發 전쟁프리미엄 되돌림 — AI버블 수요둔화설 반증 (weekly-macro)** -- 메인 yfinance 확정(정산 아티팩트 없음)·Goldman Dec Brent $90→$105 상향·BDI 2,648 고점반락·WCI $4,429·LNG 상방(TTF €100/JKM $30.76)·HBM 2027 ASP +121% 상향·희토류 11/10 통제만료 D-3 | +10 |
 | 2026-11-07 | `industry/quantum.md` | **IonQ Q3 매출 $173.8M +336%(SkyWater 연결)·FY $505~515M 상향** -- NIST IR 8547 최종 PQC 전환가이드 + 양자주 2주 지속하락(IONQ $26.43·QBTS $9.05, AI 리스크오프·실적 뉴스매도) | +4 |
 | 2026-11-07 | `industry/space.md` | **우주주 11/5 capitulation 저점→11/6 반등(ASTS -18.9% 신저가 ~$30)** -- RKLB·ASTS Q3 실적 11/9 동시발표 예정·FCC 10/29 SCS 확대 NPRM 채택(482MHz)·Starship F15 NET ~11/8 미발사·Amazon Leo LV-01 11월중순 슬립·Starlink 활성 ~11,160 | +6 |
 | 2026-11-07 | `industry/smr.md` | **SMR·원자력 3주 약세 끝 11/5 capitulation -> 11/6 Q3·DOE 연료시설 호재 V자 반등** -- Oklo/NuScale/Cameco 10/30 Q3·두산 3Q 영업익 +47%·한국 밸류체인 2주 -25%·셧다운 ~38일차 record 미해소 | +7 |
