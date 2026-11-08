@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-25
-valid_until: 2026-11-24
+updated: 2026-11-08
+valid_until: 2026-12-08
 category: macro
 sources:
   [
@@ -382,9 +382,29 @@ sources:
     "fnnews(Samsung Q3 preview 컨센)",
     "TrendForce(Q4 2026 DRAM/NAND 전망)",
     "메리츠증권(삼성 2027 OP 전망)",
+    "news.skhynix.co.kr(Q3 2026 results 10/28)",
+    "counterpointresearch(SK hynix Q3 record)",
+    "letsdatascience(SK hynix 100T payout)",
+    "newstomato(SK하이닉스 Q3 사상최대)",
+    "koreancenter(SK hynix Q3 HBM4 net cash)",
+    "wealthprofessional(Big Tech earnings night Q3)",
+    "fourweekmba(AI capex 590B·930B drop)",
+    "universalassetowners(hyperscaler Q3 capex)",
+    "adn.com(AI wipeout DC moratorium 11/5)",
+    "brookings(data centers 2026 midterms)",
+    "oodaloop(Democratic sweep AI DC boom)",
+    "trefis(Democrats slow $800B AI boom 11/5)",
+    "roic.ai(NVDA red 2026 11/5)",
+    "koreatimes(tech darkest day 11/6)",
+    "TrendForce(HBM 2027 ASP +121% 9/29)",
+    "capital.com(HBM blended ASP 121%)",
+    "releases.sh(frontier labs digest 10/26)",
+    "thequantuminsider(Infleqtion 30 logical qubits)",
+    "pharmashots(CagriSema NDA)",
+    "lifesciencedaily(CagriSema FDA timeline)",
   ]
 confidence: high
-last_synced_from_db: 2026-10-25
+last_synced_from_db: 2026-11-08
 ---
 
 # 첨단 기술 브레이크스루 트래커 (Tech Breakthrough)
@@ -412,8 +432,12 @@ last_synced_from_db: 2026-10-25
 | **⑥ 양자 미중 지정학**            | 🧪 선점 경쟁      | **[6/21] 글로벌 양자시장 $3B(2028, QED-C, CAGR 30%)·일부 2030 $20.2B(CAGR 41.8%).** **미국 CHIPS법 $2.013B**(IBM $1B 양자웨이퍼·GlobalFoundries $375M·잔여 $538M 7개사, 정부 소수지분). **중국 ~$15B·15차5개년(2026-30) 양자 6대 미래산업 최상위·국가펀드 CNY 121.8B.** IonQ Q1 $64.7M(가이던스 +30%)·2026 $235M·DARPA HARQ·**[7/5] 2큐빗 게이트 충실도 99.99%+ 'four-nines' 최초 돌파.** **PQC: CNSA2.0 2027.01 양자안전 의무·Google 2029 전환·2035 양자취약 금지.**            | 내결함성 선점 = 암호·소재·신약 **비대칭 우위**. PQC 전환은 전 산업 사이버보안 필수과제(은행·통신 라이브 배포). 중국 특허 우위 vs 미국 생태계 우위의 구도. 단기 시장 규모는 아직 작음(투기적).   | IONQ IBM GOOG QBTS RGTI / QTUM              | QED-C 2026, thequantuminsider, fortunebusinessinsights, postquantum 교차 |
 | **⑦ 휴머노이드 '양산 원년'**      | 🏭 상용화 진입    | **[7/12] 2026 양산 원년·中 글로벌 90% 점유.** Unitree 2025 5,500대+ 출하(美 전체 합산 초과)·**2026 1만~2만대 목표·G1 $16,000**. **[7/26 정정] Tesla Q2(7/22) 어닝콜: Optimus 생산대수 여전 0 — 1세대 라인 설치 중·초기 로봇 훈련데이터 수집용(고객배치 아님)·Optimus Academy·초기양산 Q3·머스크 '테슬라 역사상 가장 어려운 양산'.** 직전 주간 100-150대(7월)→1,000대(9월 목표) 가이던스 미실현. 양산은 텍사스 팹 2027·공개가 $20-30K(2027말, 현 원가 $50-100K). Figure 03 BMW 40대 상용배치($25/시간)·BotQ 시간당 1대. ⚠️ 단위경제 핵심: 中공급 배제시 BOM 3배($46K→$131K) — 中공급망 지배가 지정학 변수. **[8/2 재확인] Optimus 여전 양산 미개시** — 프리몬트 생산 7월 중순까지 미시작(가이던스 7월말~8월)·공개판매/예약/대기자 無·소비자 2027말 최선~2028-29 컨센. Unitree 2026 2만대 목표(Tesla+Figure+Agility 합산 미달)·G1 아마존 $17,990·Q1 이익 반토막. Figure 03 BMW 40대($25/시간) 지속. 中 선행 vs 美 슬립 심화.            | 노동력 부족·인건비 상승이 수요 동인 → 제조·물류 생산성 혁명. **중국 공급망 지배(90%)가 지정학 변수**. 단위경제 $15-20K 도달이 변곡점. Tesla·Figure는 미국 측 베팅. 양산 일정 슬립 리스크 상존.  | TSLA 005380.KS / BOTZ ROBO                  | CNBC(6/3), GS via 36kr, IDC, Rest of World 교차                          |
 
-#### 📌 매크로 종합 코멘트 [10/25]
+#### 📌 매크로 종합 코멘트 [11/8]
 
+- **[11/8 신규] 메모리 — SK하이닉스 Q3 2026 실적 사상 최대·분기 영업이익 83조·OPM 80%(10/28), HBM4 본격 양산 개시로 메모리 슈퍼사이클 실측 심화:** SK하이닉스 CY2026 Q3(10/28 발표) 매출 104.6조원(첫 분기 100조 돌파)·영업이익 83.3조원(영업이익률 80%·+632.1% YoY·시장 컨센 ~78조 상회)·순이익 39.8조원. **HBM4가 3분기 본격 양산·출하를 개시**했고 서버용 DDR5 출하 +40% QoQ·회사는 4분기에 HBM4가 출하량·매출 비중 모두에서 HBM3E를 추월할 것으로 전망. 순현금 98.7조로 확대·이사회 3분기 현금배당(주당 2만원·키옥시아 투자수익 특별배당 포함)+자사주 매입 20조 결의·'선단공정 난이도+신규 팹 건설 기간으로 2030년까지 메모리 수요가 공급 초과' 전망. 직전 KB의 삼성 Q3 OP 100조(10/8)·Micron FQ4(10/4)·Barclays 삼성/SK 목표가 상향(10/4) 서사가 SK 확정 실적으로 재확인 — 메가트렌드 ①(AI Capex)·메모리 슈퍼사이클 실물 정점 심화(잠정 아닌 확정 실적). [news.skhynix.co.kr(Q3 2026)·counterpointresearch·newstomato·letsdatascience·fnnews 교차]
+- **[11/8 신규] AI Capex — 빅테크 Q3 2026 실적·2026 capex 가이던스 재확인(10/28~29), 자본배분 슈퍼사이클 지속 but FCF 압박 병존(confidence medium):** 하이퍼스케일러 Q3 2026(10/28~29 발표) — **Alphabet 2026 capex $195-205B 가이던스 유지(10/28)·CFO 2027 '상당폭 추가 증가' 시사**·**Amazon ~$220B 현금 capex(10/29·직전 $200-220B 상단서·메모리 비용 상승 반영)**·**Microsoft CY2026 ~$170B**(회계변경 반영)·Meta는 직전 $130-145B 가이던스 승계(Q3 신규 수치 미확인). AMZN+GOOG+MSFT 3사 합산 ~$590B 추정(2차 요약 자체 산술). 직전 KB의 '4사 2026 ~$725B(+77% YoY)' 서사가 Q3 실적으로 대체로 유지되나, 분기 capex·FCF 수치는 2차 소스간 상충(개별 10-Q 대조 필요)·매출 대비 capex 갭 지속으로 밸류 리프라이싱 압력 병존. 메가트렌드 ①(AI Capex 슈퍼사이클)·②(버블 vs 혁명)의 분기 실적 검증 분기점 통과. [wealthprofessional·fourweekmba(725B)·tomshardware·letsdatascience·universalassetowners 교차 — 일부 수치 상충]
+- **[11/8 신규] AI 버블·정치 — 11/3 중간선거 민주당 스윕 + DC 모라토리엄 공포 → 11/5~6 AI·반도체 사상 최대급 리스크오프:** 11/3 미 중간선거에서 **민주당이 데이터센터 모라토리엄을 공약으로 내세워 텍사스·조지아 주지사직을 수십 년 만에 탈환**(계획 DC 전력의 ~44%가 민주당 주지사 선출 주·텍사스 선두·지역 제한안 다수 통과·NY 7월 1년 모라토리엄·TX 8월 승인 일시중단). 이 규제 리스크가 **11/5 AI 12개 종목 ~$930B 시총 증발(NVDA ~$259B·-8%)**·후속 세션 **필라델피아 반도체지수(SOX) -11.2%(6개월래 최저)·NVDA -9%·AMD -15%·CoreWeave -12%·NVDA 2026 YTD 적자 전환**으로 증폭. 복합 촉매: 파이낸싱 우려·DC 건설 지연·AI 투자 회수 의문 + 정치 규제. 노출 차등: **네오클라우드·텍사스 전력생산자 최대·범용 칩메이커(어디나 판매) 최소.** 메가트렌드 ②(AI 버블 vs 혁명)·③(AI x 에너지)에 **정치/규제 채널(DC 모라토리엄)이 신규 매크로 변수로 격상** — 밸류 인플레+신용 스트레스에 정책 테일리스크 가중(수치는 단기 시장 2차 집계·일부 자체 산술·confidence medium). [adn.com·fourweekmba·roic.ai·koreatimes·brookings·thestandard.hk·oodaloop·trefis 교차]
+- **[11/8 참고] 프런티어 모델·양자·바이오 — window(10/25~11/08) 내 교차검증 가능한 신규 확정 돌파 미확인:** (a) **프런티어 모델**: 트래커간 심한 상충(Qwen3.6 10/21·Kimi K3.1 Pro 10/23·Claude Duet 리서치프리뷰 10/21·GPT-6 Rosalind Research 생명과학용 week-of-10/26·Gemini 4 Argon 사이버방어 한정 월말)으로 **명칭·날짜 모두 미검증** — 직전 확정분(Claude Opus 5.5·GPT-6 Sol/Luna 9/22) 승계(confidence low). (b) **양자**: Quantinuum Helios 논리정확도 99.9995%(10/19)가 직전 KB 최신·Infleqtion 중성원자 30 논리큐빗(상업 최초·2028 100큐빗 목표)은 날짜 모호(confidence low)·메가트렌드 ⑥ 내결함성 선점 경쟁 연장선. (c) **바이오**: Novo CagriSema FDA 결정 ~2026 Q4 대기(PDUFA 미공개·미발표)·Intellia lonvo-z PDUFA 2027-03-10 승계. 근접 대기 촉매: NVDA Q3 FY27(~11월 중순)·CagriSema FDA 결정(Q4). 웹검색 다수가 실세계 2025 stale(Google 'Quantum Echoes'·Gemini 3 2025-11·NVIDIA-OpenAI 2025 딜) 반환분은 배제. [releases.sh·thequantuminsider·hpcwire·pharmashots·lifesciencedaily 교차 — 다수 미검증/stale]
 - **[10/25 신규] AI 신용 순환금융 — CoreWeave 5Y CDS 사상최고 ~1,117bps·순환금융 매핑 $3.6조로 확대(10월 중순), 메가트렌드 ②(AI 버블 vs 혁명) 신용 사이클 리스크 가속:** AI 인프라 신용 스트레스가 직전 KB(10/4 Oracle 5Y CDS 125→215bps+·CoreWeave 773bps·Bloomberg 순환금융 $1.4조) 대비 급가속. **CoreWeave 5Y CDS 기록적 ~1,117bps·무담보채 수익률 ~15%·2032 만기 9.625% 노트 ~14%·2031 노트 >16%(디스트레스 신호)**(Goldesel ~10/15·Deep News ~10/16). Oracle 5Y CDS ~300bps로 추가 확대·AMZN/GOOGL/META CDS도 사상최고(eu.36kr·도이체방크 신용맵). **Sona Asset Management: AI 연계 금융 $3.6조/176딜 매핑·이 중 ~120딜이 '고순환'(동일 기업이 투자자·고객·공급자로 중복)**·CoreWeave·Oracle이 공급망 최고 레버리지로 지목(Benzinga/Webull). CoreWeave는 HY 시장 $14B+ DC 본드의 세입자 기반·$3B 전환사채 조달(+$500M 옵션). 메가트렌드 ①(AI Capex 슈퍼사이클)·②의 신용 사이클 전이 경로가 window 내 실측 확대 — 밸류에이션 인플레 리스크·신용긴축 첫 균열 심화. (정확 bps·$3.6조 수치는 2차 요약 소스 기준·confidence medium·2025년 11월 technews.tw stale분 배제) [Goldesel·Deep News·eu.36kr·Benzinga/Webull 교차]
 - **[10/25 신규] 양자 — Quantinuum Helios 논리 정확도 99.9995% 기록(10/19), 내결함성 양자컴퓨팅 QEC 마일스톤 전진:** Quantinuum이 상용 양자컴퓨터 Helios에서 **논리 큐빗 정확도 99.9995%(37개 물리 큐빗 1개 논리 큐빗·100만 연산당 5오류)** 기록 발표·color code 기반 자체 QEC 아키텍처. **전월 자체 기록 대비 10배·타 하드웨어 모달리티 최고 공개치 대비 100배**·코드 크기 증가마다 잔여 논리오류 ×12 감소(λ~10 vs Google 2024 Nature λ~2). 단 단일 논리 큐빗 한정·완성형 Apollo(내결함성 FT 목표 2029)가 아닌 Helios QEC 실증. 직전 KB 양자 최신(IonQ Superion256 9/8·실시간 QEC 9/22) 대비 window 내 신규 확정 돌파 — 메가트렌드 ⑥(양자 미중 지정학) 내결함성 선점 경쟁에 부합(Sandia Blume-Kohout 진전 확인). [Quantinuum 발표(10/19) via ColoradoBiz·ScienceNews 교차]
 - **[10/25 참고] 빅테크 Q3 2026 어닝·메모리·프런티어 모델 — window 내 발표 전 '근접 대기 촉매' 다수, 확정 델타 미도달:** (a) **SK하이닉스 Q3 2026 실적 10/29 발표 예정(미발표)** — FnGuide Q3 영업이익 컨센 ~76.96조·DS증권 9/29 노트 매출 ~89.5조/OP ~70.1조(원/달러 약세·DRAM 출하 하향 반영 추정 하향)·HBM4 Vera Rubin 매출 Q3 본격 반영·2026 capex 40조대 후반 상향. (b) **빅테크 Q3 2026(MSFT·Alphabet·Meta·Amazon) 10월 말~11월 초 발표 대기** — 2026 합산 capex ~$725B(+77% YoY) 가이던스 기반 매출 검증 분기점(직전 KB 승계). (c) **GE Vernova Q3**(AI 전력수요·가스터빈+슬롯예약 백로그 110GW+ 연말 목표) 발표 대기. (d) **프런티어 모델**: window 내 신규 확정 릴리스 교차검증 미확인(직전 Claude Opus 5.5·GPT-6 Astra/Sol/Luna 9/22 최신·Gemini 4 '2026말·10월 날짜 미발표'·루머 10/5 배치 미확정·Google Gemini 3 2025년 11월분은 real-world stale 배제). 반도체 수출통제(NVDA H200 對中·Rubin NVL72 $5~7M/랙)는 3~4월분 stale 반복·window 신규 미확인. 근접 촉매 캘린더: SK하이닉스 10/29·빅테크 Q3 10월말~11월초·GE Vernova Q3. [FnGuide·DS증권·mt.co.kr(10/19)·UBS 교차 — 다수 pending/2025 stale]

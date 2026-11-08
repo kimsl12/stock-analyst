@@ -1,6 +1,6 @@
 ---
-updated: 2026-10-25
-valid_until: 2026-11-24
+updated: 2026-11-08
+valid_until: 2026-12-08
 sector: science_tech
 sources:
   [
@@ -272,7 +272,7 @@ sources:
     SafeLogic,
   ]
 confidence: high
-last_synced_from_db: 2026-10-18
+last_synced_from_db: 2026-11-08
 db_records: 1242
 ---
 
@@ -749,7 +749,17 @@ db_records: 1242
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-10-25 갱신)
+### 16-C. 주간 과학기술 동향 (2026-11-08 갱신)
+
+> **2026-10-25~11-08 주간 통합 수집(web_search 6회, global-data 일요런·11/01 스킵으로 ~2주 윈도우).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(11/07 space subtag — 우주주 11/5 capitulation→11/6 반등·Starship Flight15 NET 11/8 임박·RKLB/ASTS Q3 11/9·FCC SCS 확대 NPRM 채택 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 바이오 FDA 촉매 집중**(베피로비르센 10/20 조기 승인 해소 + 11월 PDUFA 클러스터 확정)·양자/AI프런티어/기초과학 범용 신규 discrete는 희소(억지 패딩 배제).
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[바이오·FDA 승인]** | ★ **GSK 베피로비르센(bepirovirsen·상품명 Hibsago·Ionis 라이선스 안티센스 올리고) FDA 승인 2026-10-20**(목표 PDUFA 10/26보다 조기) = **만성 B형간염 세계 첫 안티센스 치료제·first-in-class 기능적 완치 계열**. 적응증 = 뉴클레오사이드 유사체(NA) 6개월+·바이러스 억제·HBsAg ≤3,000 IU/mL·비간경변 성인 **add-on**. Phase III **B-Well 1&2** 근거·6개월 후 기능적완치율 **~19% vs 위약 0%**. **Boxed warning**(중증 간반응·혈소판감소). **Roche Elecsys HBsAg II quant II** 동반진단 동시 승인. 日 2026-08 선승인. **10-25 KB 'PDUFA 10/26 대기'건 조기 승인 해소**(직전 run이 승인을 pending으로 기록) | 2026.10.20 | pharmexec / Healio / pharmashots / biopharma-asia |
+| **[바이오·11월 PDUFA]** | ★ **11월 FDA PDUFA 클러스터 확정** — Nov 1 **Agios 미타피바트** 겸상적혈구·Nov 14 **Summit 이보네스시맙**(EGFR변이 비편평 NSCLC·HARMONi)+**Cytokinetics 아피캄텐(MYQORZO)** 비후성심근증 확대·Nov 17 **Beren adrabetadex** 영아 니만픽C형·★Nov 22 **Capricor 데라미오셀** DMD(**7/29 자문위 9-3 반대**·8/22서 연장된 최대 쟁점건)+**Savara amolgramostim** 폐포단백증·Nov 25 **Sanofi 벤글루스타트** 고셔 3형·Nov 27 **Nuvalent 넬라달킵(NVL-655)** ALK+ NSCLC·Nov 30 **Vertex 포베타시셉트** IgA신증(가속)+**Roche 지레데스트란트** 조기 유방암+**Roche 오비누투주맙(Gazyva)** 원발막성신증·**Bayer 아순덱시안** = 美 첫 Factor XIa 2차뇌졸중예방. 윈도우 내 승인(날짜 미확정): **J&J Imaavy(nipocalimab)** wAIHA 첫 치료제·**AZ Inluriyo(imlunestrant)** ESR1 유방암 정식 | 2026.11 | pharmacytimes / biopharmawatch / Prime Therapeutics / rttnews |
+| **[프론티어·기초과학·중복주의]** | 범용 신규 discrete 희소. 기초과학 = **中 톈궁 루비듐 원자 동일 가속도=아인슈타인 등가원리 재확인**(Science News 11월호)·**Stanford AI 식별 천연분자 동물 식욕억제·지방감소**(ScienceDaily)·★**OpenAI 수천 에이전트 Navier-Stokes 난제 'AI 해결' 주장은 학계 논쟁·미검증**(독립검증 전). 양자 = 윈도우 내 신규 discrete 미확인(**Quantinuum Helios 99.9995% 논리충실도·10x 에러율 감소는 10/19** = 이전 window·토요 weekly-frontier 소관). AI 단백질 = RFdiffusion3·효소설계 10/22(이전 window). 소재·핵융합 신규 발표 미확인(패딩 배제) | 2026.11 | Science News / ScienceDaily / thequantuminsider(10/19) |
+
+#### (이전 주간) 2026-10-25 기록
 
 > **2026-10-18~10-25 주간 통합 수집(web_search 6회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(10/24 space subtag — SpaceX Q3 실적·Starship Flight15·ASTS FCC 10/29·우주주 안정화 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 10월말 FDA PDUFA 집중(베피로비르센 10/26 등) 구체화**·양자/AI프런티어/기초과학 범용 신규 discrete 돌파는 제한적(웹 인덱스 희소).
 

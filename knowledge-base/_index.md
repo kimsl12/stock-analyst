@@ -359,6 +359,12 @@ SUPPLY_CHAIN_PLACEHOLDER
 ## 📝 KB 업데이트 이력 (최근 3주 — 초과분 `knowledge-db/_index_kb_history_archive.md` 회전)
 
 | 날짜 | 파일 | 변경 | 레코드 |
+| 2026-11-08 | `macro/geopolitics.md` | **北 미사일 시험 군집·中 희토류 유예 만료 D-2·연방셧다운 D+38 (weekly-global)** -- 北 10.31~11.5 전술BM 자탄·전략순항 분산탄두·신형 방공체계 시험 군집, 中 확대 희토류 통제 유예 11.10 만료 D-2(재연장 N/A), 연방셧다운 D+38·BLS 블랙아웃, 러-우/이란/대만/가자 carry-forward | +8 |
+| 2026-11-08 | `macro/global_risk_factors.md` | **AI·반도체 버블發 리스크오프 쇼크 (weekly-global)** -- VIX 28.18(+9.15·20·25 돌파)·SOX 주간 -12.15%·$1조+ 증발·10Y 4.84%(안전자산 랠리)·HY 3.48%(3주째)·10/28 동결 확인·12/9 인상 >72%·고용 반등(NFP +165K)·희토류 11/10 통제만료 D-2 | +19 |
+| 2026-11-08 | `macro/political_cycle.md` | **美 중간선거 민주 상·하원 스윕·셧다운 D+38·佛 2027 예산 부결 (weekly-global)** -- 트럼프 32%·브라질 Lula 4선·美中 데탕트 유지 | +8 |
+| 2026-11-08 | `macro/tech_breakthrough.md` | **SK하이닉스 Q3 사상최대·빅테크 Q3 capex·중간선거發 AI 리스크오프 (weekly-global)** -- 메모리 슈퍼사이클 실측 심화 + DC 모라토리엄 정치채널 격상 | +6 |
+| 2026-11-08 | `industry/energy.md` | **유가 전쟁프리미엄 되돌림 급락 (weekly-global)** -- WTI $90.83/Brent $98.32 주간 -~13%(US-이란 호르무즈 재개안+11/3 중간선거), GS 12월 Brent $105 상향·SMR 11/5 투매→11/6 V반등·韓 정유 -20%/한전 +6% | +7 |
+| 2026-11-08 | `industry/science_tech.md` | **베피로비르센(Hibsago) B형간염 첫 안티센스 FDA 조기승인 + 11월 PDUFA 클러스터 확정 (weekly-global)** -- 양자/AI프런티어/기초과학 범용 신규 discrete 희소(패딩 배제) | +3 |
 | 2026-11-07 | `macro/us_economy.md` | **11/5 AI·반도체 버블 우려發 리스크오프(SOX 주간 -12.15%·VIX 28.18·S&P -2.68%·10Y flight-to-quality 4.84%)지 비둘기 피벗 아님 (weekly-macro)** -- 매파 레짐(12/9 FOMC·12월 인상 >72%·2026 인하 배제·Warsh) 불변·셧다운 ~38일째 블랙아웃(9·10월 BLS 미발표)·real-world 2025 비둘기 오염 전면 배제·FRED/yfinance 1차 소스 | +15 |
 | 2026-11-07 | `macro/korea_economy.md` | **코스피 반도체發 주간 -11.71%(11/6 5,059.69·5천선 위협·외국인 엑소더스) (weekly-macro)** -- 메인 yfinance ^KS11·^KQ11·KRW=X 확정·원/달러 1,356.34(주간 +18.36원 약세 반전). 10월 수출 $1,152.8억(+93.7%)·1~10월 $9,300억 첫 돌파·SK하이닉스 3Q26 영업익 83.3조(OPM 80%)·기준금리 3.00% 동결 확정(10/22 만장일치)·10월 CPI +2.8%. 「N주 연속」 배제(10/30주 +3.25% 반등) | +8 |
 | 2026-11-07 | `macro/supply_chain.md` | **유가 주간 급락 WTI $90.34/Brent $97.76(-13~17%)은 이란 평화협상+美 중간선거發 전쟁프리미엄 되돌림 — AI버블 수요둔화설 반증 (weekly-macro)** -- 메인 yfinance 확정(정산 아티팩트 없음)·Goldman Dec Brent $90→$105 상향·BDI 2,648 고점반락·WCI $4,429·LNG 상방(TTF €100/JKM $30.76)·HBM 2027 ASP +121% 상향·희토류 11/10 통제만료 D-3 | +10 |
