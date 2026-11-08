@@ -1,24 +1,25 @@
 ---
-updated: 2026-11-07
-valid_until: 2026-11-09
+updated: 2026-11-08
+valid_until: 2026-11-10
 category: market
 collection_status: SUCCESS
-confidence: high (★토요일 저녁 — 전 시장 휴장·프리마켓 없음. 크립토만 live[yfinance fast_info 11/7 20:13 KST]. 지수·금리·FX·원자재 = 금 11/6 확정 종가 승계[모닝 정리]·상관 6쌍 = 금요일 이브닝 실측 승계)
+confidence: high (★일요일 아침 — 전 시장 휴장·프리마켓 없음·다음 세션 월 11/9[24h 앞]. 크립토만 live[yfinance fast_info 11/8 09:0x KST·주말 48h flat 완성]. 지수·금리·FX·원자재 = 금 11/6 확정 종가 승계[모닝 정리]·상관 6쌍 = 금요일 이브닝 실측 승계)
 last_synced_from_db: 2026-11-07
 evening_update: 2026-11-07T20:20:00+09:00
+morning_update: 2026-11-08T09:10:00+09:00
 ---
 
 # Daily Market Snapshot
 
-## CURRENT (2026-11-07 · 이브닝 KST 20시 · ★토요일 = 미·한·아시아 전면 휴장·프리마켓 없음 · 다음 세션 = 월 11/9 · 주말 유일 live = 크립토 — ★금요일 안도 반등[SOX +4.21%·AMD +11%]을 크립토가 미동참[BTC $75.9K flat·F&G 25 악화] = HV6 균열 지속 · 다음 주 분기점: 월 11/9 아시아 캐치업 갭·SOX 9,390 지지·VIX 20선 안정·크립토 동참)
+## CURRENT (2026-11-08 · 모닝 KST 09시 · ★일요일 = 미·한·아시아 전면 휴장·프리마켓 없음 · 다음 세션 = 월 11/9[24h 앞] · 주말 유일 live = 크립토 — ★금요일 안도 반등[SOX +4.21%·AMD +11%]을 크립토가 주말 48시간 full-window 끝내 미확인[BTC $75.7K flat·F&G 25 악화] = HV6 균열 완결 · 월 11/9 분기점: 아시아 캐치업 갭·SOX 9,390 지지·VIX 20선 안정·크립토 $78K+ 동참)
 
-### 크립토 (★주말 유일 24/7 live · 11/7 20:13 KST · fast_info · QuantTrader 영역 · 사용자 액션 권고 대상 아님)
+### 크립토 (★주말 유일 24/7 live · 11/8 09:0x KST · fast_info · 주말 48h flat 완성 · QuantTrader 영역 · 사용자 액션 권고 대상 아님)
 
-| 항목     | 가격   | 등락                                  | 기준일     |
-| -------- | ------ | ------------------------------------- | ---------- |
-| Bitcoin  | 75,884 | +0.2% · ★주말 flat·금요일 반등 미동참 | 2026-11-07 |
-| Ethereum | 2,243  | +0.36% · flat                         | 2026-11-07 |
-| Solana   | 89.8   | −0.21% · flat                         | 2026-11-07 |
+| 항목     | 가격   | 등락                                       | 기준일     |
+| -------- | ------ | ------------------------------------------ | ---------- |
+| Bitcoin  | 75,707 | +0.09% · ★주말 48h flat·금요일 반등 미확인 | 2026-11-08 |
+| Ethereum | 2,235  | +0.25% · flat                              | 2026-11-08 |
+| Solana   | 89.6   | +0.52% · flat                              | 2026-11-08 |
 
 > ★크립토 비동조 지속 — 금요일 주식 안도 반등(S&P +0.31%·NASDAQ +1.09%·SOX +4.21%) 이후 주말 내내 flat. 크립토 F&G 25(extreme fear·금요일 28서 악화). 리스크 선호의 24/7 선행 지표가 금요일 반등을 확인하지 않음 = HV6(NASDAQ↔BTC 재커플) 균열·'바닥 확정' 신중 신호. $70K 반증선 −8% 여유.
 
@@ -85,11 +86,11 @@ evening_update: 2026-11-07T20:20:00+09:00
 
 ### 센티먼트 / 레짐 (11/7 자동갱신)
 
-- CNN Fear & Greed: **22.1 (extreme fear)** [prev_close 19.9·1w 26.3·1m 47·source 11/6 23:59·극공포 소폭 개선] / Crypto F&G: **25 (extreme fear·금요일 28서 악화)**
-- 레짐(11/7 regime.json): **리스크오프 2일째** · 추세 **하락**(SPX MA20 −3.67%) · VIX 25.6(고변동·목 28서 냉각) · 10Y 4.86%(20d −38bp) · 가중치 **하락장** · streak 2 · changed_today=false
+- CNN Fear & Greed: **22.1 (extreme fear)** [prev_close 19.9·1w 26.3·1m 47·source 11/8 03:39·극공포 소폭 개선] / Crypto F&G: **25 (extreme fear·금요일 28서 악화·주말 내내 유지)**
+- 레짐(11/8 regime.json): **리스크오프 3일째** · 추세 **하락**(SPX MA20 −3.67%) · VIX 25.6(고변동) · 10Y 4.86%(20d −38bp) · 가중치 **하락장** · streak 3 · changed_today=false
 - FRED(11/7): Core PCE 3.12%(9월·셧다운 미발표 의심)·CPI 3.72%(9월·미발표·real-world 누수 배제) · DFF 3.88% · DGS2 4.58 · HY 3.48% · 셧다운 ~D+38 블랙아웃
 - ★상관 6쌍(금요일 이브닝 실측 승계·주말 수학적 불변): VIX↔S&P −0.87/−0.81 🔴 · NASDAQ↔BTC +0.567 🟢(★반등 구간 균열 — 금요일 반등 BTC 미참여) · S&P↔10Y +0.468 🟡 · 금↔달러 −0.413 🟢 · USDKRW↔KOSPI +0.127 🟡 · WTI↔BEI −3.5σ 🔴(완화·$90 안정)
-- ★핵심: 금요일 안도 반등(SOX +4.21%)에도 레짐 여전 risk-off 2일째(VIX 25.6·F&G 22·하락장 가중치)·크립토 비동조 지속. 하루 반등 ≠ 레짐 전환.
+- ★핵심: 금요일 안도 반등(SOX +4.21%)에도 레짐 여전 risk-off 3일째(VIX 25.6·F&G 22·하락장 가중치)·크립토 주말 48h 비동조 완결. 하루 반등 ≠ 레짐 전환.
 - ★다음 판별자: 월 11/9 아시아 반도체 캐치업 갭 → SOX 9,390 지지·1만 재탈환 → VIX 25.6→20선 안정 → 크립토 $78K+ 동참 vs $75K 이탈 → 13F 11/14(9/30 포지션) → 셧다운 ~D+38 협상 → 12/9 FOMC(인상 >72% SSOT)
 
-[출처: ★토요일 저녁 전 시장 휴장·크립토만 live. 메인 yfinance fast_info 2026-11-07 20:13 KST(BTC/ETH/SOL) + 금 11/6 확정 종가 승계(모닝 정리)·상관 6쌍 금요일 이브닝 실측 승계 / FRED·regime.json·fear_greed.json·insider_signals.json(2026-11-07) / us_economy.md SSOT(매파·셧다운 ~D+38·12/9 FOMC 인상 >72%). WebSearch 2025 비둘기 오염 배제(이 환경 진실 소스 = yfinance + KB SSOT).]
+[출처: ★일요일 아침 전 시장 휴장·크립토만 live. 메인 yfinance fast_info 2026-11-08 09:0x KST(BTC/ETH/SOL·주말 48h flat 완성) + 금 11/6 확정 종가 승계(모닝 정리)·상관 6쌍 금요일 이브닝 실측 승계 / regime.json(11/8 06:40)·fear_greed.json(11/8 03:39) / us_economy.md SSOT(매파·셧다운 ~D+38·12/9 FOMC 인상 >72%). WebSearch 2025 비둘기 오염 배제(이 환경 진실 소스 = yfinance + KB SSOT).]
