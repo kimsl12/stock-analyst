@@ -38,9 +38,27 @@ async function fetchWithTimeout(url, options = {}, ms = 10000) {
   }
 }
 
+// 그래프용 일별 이력 — 위젯이 '추이' 전환 시 lazy fetch (대시보드 첫 로딩 무게 미포함)
+const HISTORY_OUTPUT = path.join(PROJECT_ROOT, 'web', 'public', 'fear_greed_history.json');
+const HISTORY_DAYS = 5 * 365 + 10; // 5년 + 여유
+
+function isoDay(ms) {
+  return new Date(ms).toISOString().slice(0, 10);
+}
+
+/** [[YYYY-MM-DD, score], ...] 오름차순 + 같은 날 중복은 마지막 값 유지 */
+function normalizeSeries(pairs) {
+  const byDay = new Map();
+  for (const [d, v] of pairs) {
+    if (d && Number.isFinite(v)) byDay.set(d, Math.round(v * 10) / 10);
+  }
+  return [...byDay.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1));
+}
+
 async function fetchCnn() {
+  const start = isoDay(Date.now() - HISTORY_DAYS * 86400000);
   const res = await fetchWithTimeout(
-    'https://production.dataviz.cnn.io/index/fearandgreed/graphdata',
+    `https://production.dataviz.cnn.io/index/fearandgreed/graphdata/${start}`,
     {
       headers: {
         'User-Agent': BROWSER_UA,
@@ -62,12 +80,15 @@ async function fetchCnn() {
     prev_1m: Math.round(fg.previous_1_month * 10) / 10,
     prev_1y: Math.round(fg.previous_1_year * 10) / 10,
     source_ts: fg.timestamp,
+    _history: normalizeSeries(
+      (j?.fear_and_greed_historical?.data ?? []).map((p) => [isoDay(p.x), Number(p.y)]),
+    ),
   };
 }
 
 async function fetchCrypto() {
-  // limit=370 → 오늘 + 369일 전까지 확보 (1년 비교 + 여유분)
-  const res = await fetchWithTimeout('https://api.alternative.me/fng/?limit=370');
+  // limit=HISTORY_DAYS → 5년 일별 (전일/1주/1개월/1년 비교도 같은 배열에서 산출)
+  const res = await fetchWithTimeout(`https://api.alternative.me/fng/?limit=${HISTORY_DAYS}`);
   if (!res.ok) throw new Error(`Crypto HTTP ${res.status}`);
   const j = await res.json();
   const data = j?.data;
@@ -83,7 +104,37 @@ async function fetchCrypto() {
     prev_1m: at(30),
     prev_1y: at(365),
     source_ts: cur.timestamp ? new Date(Number(cur.timestamp) * 1000).toISOString() : null,
+    _history: normalizeSeries(data.map((p) => [isoDay(Number(p.timestamp) * 1000), Number(p.value)])),
   };
+}
+
+async function loadExistingHistory() {
+  if (!existsSync(HISTORY_OUTPUT)) return null;
+  try {
+    return JSON.parse(await readFile(HISTORY_OUTPUT, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
+/** 이력 파일 갱신 — 실패한 시장은 기존 이력 보존. 이력이 기존보다 크게 짧으면(응답 잘림) 기존 유지. */
+async function writeHistory(cnnRes, cryptoRes) {
+  const prev = await loadExistingHistory();
+  const pick = (res, key) => {
+    const fresh = res.status === 'fulfilled' ? res.value._history : null;
+    const old = prev?.[key] ?? null;
+    if (fresh && fresh.length >= 20 && fresh.length >= (old?.length ?? 0) * 0.8) return fresh;
+    return old;
+  };
+  const out = {
+    updated_at: nowKstIsoShort(),
+    updated_tz: 'Asia/Seoul',
+    cnn: pick(cnnRes, 'cnn'),
+    crypto: pick(cryptoRes, 'crypto'),
+  };
+  await mkdir(path.dirname(HISTORY_OUTPUT), { recursive: true });
+  await writeFile(HISTORY_OUTPUT, JSON.stringify(out), 'utf-8');
+  return out;
 }
 
 async function loadExisting() {
@@ -99,6 +150,11 @@ async function main() {
   const existing = await loadExisting();
 
   const [cnnRes, cryptoRes] = await Promise.allSettled([fetchCnn(), fetchCrypto()]);
+
+  const hist = await writeHistory(cnnRes, cryptoRes);
+  // _history 는 별도 파일로만 — fear_greed.json(kb.json 경유 전 페이지 번들)에는 미포함
+  if (cnnRes.status === 'fulfilled') delete cnnRes.value._history;
+  if (cryptoRes.status === 'fulfilled') delete cryptoRes.value._history;
 
   const cnn =
     cnnRes.status === 'fulfilled'
@@ -130,6 +186,8 @@ async function main() {
     ? `${crypto.score} (${crypto.rating})${crypto._stale ? ' [stale]' : ''}`
     : '실패';
   console.log(`OK: F&G 페치 — CNN=${cnnTxt}, Crypto=${cryptoTxt} → ${rel}`);
+  const span = (s) => (s?.length ? `${s.length}일 ${s[0][0]}~${s[s.length - 1][0]}` : '없음');
+  console.log(`    이력: CNN ${span(hist.cnn)} / Crypto ${span(hist.crypto)} → ${path.relative(PROJECT_ROOT, HISTORY_OUTPUT)}`);
 
   if (cnnRes.status === 'rejected') console.error(`  CNN 페치 실패: ${cnnRes.reason?.message}`);
   if (cryptoRes.status === 'rejected') console.error(`  Crypto 페치 실패: ${cryptoRes.reason?.message}`);
