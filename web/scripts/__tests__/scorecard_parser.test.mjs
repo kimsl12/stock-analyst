@@ -117,3 +117,32 @@ test('[v3.38] 목표주가 표 행 + 원화 변형', () => {
   assert.equal(parseTargetPrice('| 목표주가 | $412.50 | 근거 |'), 412.5);
   assert.equal(parseTargetPrice('목표주가: 285,000원 (컨센 중앙값)'), 285000);
 });
+
+test('[v3.39] "기본 목표가" 요약 라인 — 2026-09 이후 BLIND 스코어카드 드리프트', () => {
+  assert.equal(
+    parseTargetPrice('**기본 목표가: $300** · **손절(2ATR): $189.97** · (ATR14 6.42 · 범위 164.27~243.37)'),
+    300,
+  );
+  assert.equal(parseTargetPrice('**기본 목표가: ₩178,000** · **손절(2ATR): ₩152,300**'), 178000);
+});
+
+test('[v3.39] 자유형 줄 머리 목표가 — META/GEV/LLY/CCJ 실측', () => {
+  assert.equal(parseTargetPrice('- 목표가: $750 (현재가 $640.98 대비 +17.0%)'), 750);
+  assert.equal(parseTargetPrice('- 12개월 목표가 **$920**(현재比 +11.7%), forward EPS $25.86 × 약 35x'), 920);
+  assert.equal(parseTargetPrice('- **목표가 점추정: $1,470** (Fwd EPS $50.35 × 목표 Fwd PE ~29.2x)'), 1470);
+  assert.equal(parseTargetPrice('- 12개월 목표가(독립 산출): **$86** (+20.6%) — 컨센 평균 $118.46'), 86);
+  assert.equal(parseTargetPrice('- 중심 목표가 **$57** (현재가 $50.85 대비 +12%).'), 57);
+});
+
+test('[v3.39] 자유형 패턴 오매치 차단 — 산문 중간·컨센서스·표 헤더', () => {
+  assert.equal(parseTargetPrice('1. **성장 지속** — 반증 시 기본 목표가가 약세($138)로 수렴.'), null);
+  assert.equal(parseTargetPrice('- 컨센서스 목표 $81.36(+117%)는 상단 밖'), null);
+  assert.equal(parseTargetPrice('| 시나리오 | 목표가 | 조건 |\n| 약세 | $180 | ... |'), null);
+});
+
+test('[v3.39] 손절 통화기호 누락 "**손절(2ATR): 358.73**" — GLD v21 실측', () => {
+  assert.equal(
+    parseStopLoss('**기본 목표가: $390** · **손절(2ATR): 358.73** · (ATR14 6.68 · 범위 354.67~509.7)'),
+    358.73,
+  );
+});
