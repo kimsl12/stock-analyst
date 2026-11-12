@@ -2,123 +2,27 @@
 import Base from '../../layouts/Base.astro';
 import manifest from '../../data/manifest.json';
 
-interface Outcome {
-  evaluated_at?: string;
-  actual_price?: number;
-  hit?: boolean;
-  error_pct?: number;
-  thesis_validity?: 'logic_chain_correct' | 'logic_chain_partial' | 'logic_chain_incorrect';
-  notes?: string;
-}
+// [v3.40 — 2026-11-12] 집계 기준 통일: 개인/기관 분리 + 동일인 병합 + 진행자·패널 제외 + 평가 5건 미만 순위 제외.
+// 판정 로직은 scripts/lib/analyst_identity.mjs (단위 테스트: scripts/__tests__/analyst_identity.test.mjs)
+import { buildAnalystBoard, WEIGHTS } from '../../../scripts/lib/analyst_identity.mjs';
 
-interface AnalystItem {
-  type: string;
-  date: string;
-  url_path: string;
-  source?: string;
-  source_type?: string;
-  analyst_name?: string;
-  rating?: string;
-  target_price?: number | null;
-  target_currency?: string;
-  period?: string;
-  target?: string | null;
-  target_name?: string | null;
-  outcome?: Outcome | null;
-}
-
-const all = manifest.items.filter((it: any) => it.type === 'analyst') as AnalystItem[];
+const all = manifest.items.filter((it: any) => it.type === 'analyst') as any[];
 const evaluated = all.filter((it) => it.outcome && it.outcome.evaluated_at);
 const pending = all.length - evaluated.length;
 
 const ACTIVATION_THRESHOLD = 5;
 const isActive = evaluated.length >= ACTIVATION_THRESHOLD;
+const MIN_EVALS = 5; // 개인·기관별 순위 산정 최소 평가 건수
 
-// 분석가별 집계
-type Agg = {
-  key: string;
-  display_name: string;
-  source: string | null;
-  count: number;
-  hits: number;
-  avg_error_pct: number;
-  thesis_score: number;
-};
+const board = buildAnalystBoard(all, { minEvals: MIN_EVALS });
+const excludedTotal = Object.values(board.excluded).reduce((a: number, b: any) => a + b, 0);
 
-// [v3.32] 분석가명 정규화 — "Tom Lee" vs "Tom Lee (Fundstrat)" vs "Dan Ives (Wedbush ... 총괄)"
-// 처럼 같은 인물이 표기 차이로 분할되던 문제. 후미 괄호(소속·직함)·" — 직함" 접미 제거 후
-// 소문자 키로 병합. 'N/A' 류는 결측 취급 → source 로 폴백 (가짜 분석가 행 방지).
-function canonicalAnalyst(it: AnalystItem): { key: string; display: string } {
-  let raw = (it.analyst_name ?? '').trim();
-  if (!raw || /^(n\/a|없음|미상|미확인|unknown|-)$/i.test(raw) || /^(구체|출연진|확인\s*불가)/.test(raw)) raw = '';
-  let name = raw
-    .replace(/\s*[(（][^)）]*[)）]\s*/g, ' ') // 괄호 소속·직함
-    .replace(/\s+[—–]\s+.*$/, '') // " — 직함·수식" 접미 (이름 내 하이픈은 보존)
-    .replace(/\s{2,}/g, ' ')
-    .trim();
-  if (!name) {
-    const src = (it.source ?? 'unknown').trim();
-    return { key: `src:${src.toLowerCase()}`, display: src };
-  }
-  return { key: name.toLowerCase(), display: name };
-}
-
-function aggregate(items: AnalystItem[]): Agg[] {
-  const groups = new Map<string, AnalystItem[]>();
-  const displayOf = new Map<string, string>();
-  for (const it of items) {
-    const { key, display } = canonicalAnalyst(it);
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key)!.push(it);
-    // 표시명: 가장 짧은 변형 채택 (괄호 제거 후라 보통 동일)
-    const cur = displayOf.get(key);
-    if (!cur || display.length < cur.length) displayOf.set(key, display);
-  }
-  const aggs: Agg[] = [];
-  for (const [key, list] of groups) {
-    const count = list.length;
-    const hits = list.filter((it) => it.outcome?.hit).length;
-    const errors = list
-      .map((it) => it.outcome?.error_pct)
-      .filter((e): e is number => typeof e === 'number');
-    const avg_error = errors.length
-      ? errors.reduce((a, b) => a + Math.abs(b), 0) / errors.length
-      : 0;
-    const thesis_pts = list.reduce((sum, it) => {
-      const tv = it.outcome?.thesis_validity;
-      if (tv === 'logic_chain_correct') return sum + 1;
-      if (tv === 'logic_chain_partial') return sum + 0.5;
-      return sum;
-    }, 0);
-    aggs.push({
-      key,
-      display_name: displayOf.get(key) ?? key,
-      source: list[0].source ?? null,
-      count,
-      hits,
-      avg_error_pct: avg_error,
-      thesis_score: count ? thesis_pts / count : 0,
-    });
-  }
-  return aggs;
-}
-
-const aggs = aggregate(evaluated);
-
-// composite_score = 0.5 * hit_rate + 0.3 * (1 - error_pct/100 capped 0~1) + 0.2 * thesis
-function composite(a: Agg): number {
-  const hit_rate = a.count ? a.hits / a.count : 0;
-  const error_norm = Math.max(0, 1 - a.avg_error_pct / 100);
-  return 0.5 * hit_rate + 0.3 * error_norm + 0.2 * a.thesis_score;
-}
-
-const ranked = aggs
-  .map((a) => ({ ...a, composite: composite(a) }))
-  .sort((a, b) => b.composite - a.composite);
-
-const fmtPct = (n: number) => `${(n * 100).toFixed(1)}%`;
+const pct = (n: number | null) => (n === null ? '—' : `${(n * 100).toFixed(1)}%`);
+const err = (n: number | null) => (n === null ? '—' : `${n.toFixed(1)}%`);
+const sc = (n: number | null) => (n === null ? '—' : (n * 100).toFixed(0));
+const comp = (n: number | null) => (n === null ? '—' : (n * 100).toFixed(1));
 ---
-<Base title="애널리스트 순위·평가" lede={`누적 ${all.length}건 · 평가 완료 ${evaluated.length}건 · 활성 임계 ${ACTIVATION_THRESHOLD}건`} active="analyst">
+<Base title="애널리스트 순위·평가" lede={`누적 ${all.length}건 · 평가 완료 ${evaluated.length}건 · 순위 산정 기준 평가 ${MIN_EVALS}건 이상`} active="analyst">
 
   {!isActive ? (
     <section class="collecting">
@@ -168,34 +72,105 @@ const fmtPct = (n: number) => `${(n * 100).toFixed(1)}%`;
     </section>
   ) : (
     <section class="ranked">
-      <table class="rank-table">
-        <thead>
-          <tr>
-            <th class="rank-col">#</th>
-            <th>애널리스트</th>
-            <th>Source</th>
-            <th class="num">평가</th>
-            <th class="num">적중률</th>
-            <th class="num">평균 오차</th>
-            <th class="num">논리</th>
-            <th class="num composite">종합</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ranked.map((a, i) => (
+      <h2 class="sec-title">개인 순위 <span class="dim">평가 {MIN_EVALS}건 이상 · {board.individuals.length}명</span></h2>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
             <tr>
-              <td class="rank-col"><span class:list={['rank-badge', i < 3 && 'top']}>{i + 1}</span></td>
-              <td><b>{a.display_name}</b></td>
-              <td><span class="badge t-analyst">{a.source ?? '-'}</span></td>
-              <td class="num">{a.count}</td>
-              <td class="num">{fmtPct(a.hits / Math.max(1, a.count))}</td>
-              <td class="num">{a.avg_error_pct.toFixed(1)}%</td>
-              <td class="num">{(a.thesis_score * 100).toFixed(0)}</td>
-              <td class="num composite">{(a.composite * 100).toFixed(1)}</td>
+              <th class="rank-col">#</th>
+              <th>애널리스트</th>
+              <th>소속</th>
+              <th class="num">평가</th>
+              <th class="num">적중률</th>
+              <th class="num">평균 오차</th>
+              <th class="num">논리</th>
+              <th class="num composite">종합</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {board.individuals.map((a: any, i: number) => (
+              <tr>
+                <td class="rank-col"><span class:list={['rank-badge', i < 3 && 'top']}>{i + 1}</span></td>
+                <td><b>{a.name}</b></td>
+                <td class="firm">{a.firm ?? '—'}</td>
+                <td class="num">{a.count}</td>
+                <td class="num">{pct(a.hit_rate)}<span class="n">{a.n_hit}건</span></td>
+                <td class="num">{err(a.avg_error_pct)}<span class="n">{a.n_error}건</span></td>
+                <td class="num">{sc(a.thesis)}</td>
+                <td class="num composite">{comp(a.composite)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sec-title">기관 순위 <span class="dim">평가 {MIN_EVALS}건 이상 · {board.firms.length}곳</span></h2>
+      <div class="table-wrap">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th class="rank-col">#</th>
+              <th>기관</th>
+              <th class="num">개인</th>
+              <th class="num">평가</th>
+              <th class="num">적중률</th>
+              <th class="num">평균 오차</th>
+              <th class="num">논리</th>
+              <th class="num composite">종합</th>
+            </tr>
+          </thead>
+          <tbody>
+            {board.firms.map((a: any, i: number) => (
+              <tr>
+                <td class="rank-col"><span class:list={['rank-badge', i < 3 && 'top']}>{i + 1}</span></td>
+                <td><b>{a.name}</b></td>
+                <td class="num">{a.people}명</td>
+                <td class="num">{a.count}</td>
+                <td class="num">{pct(a.hit_rate)}<span class="n">{a.n_hit}건</span></td>
+                <td class="num">{err(a.avg_error_pct)}<span class="n">{a.n_error}건</span></td>
+                <td class="num">{sc(a.thesis)}</td>
+                <td class="num composite">{comp(a.composite)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <details class="fold">
+        <summary>표본 부족 — 평가 {MIN_EVALS}건 미만 (순위 미산정) · 개인 {board.lowSample.individuals.length}명 · 기관 {board.lowSample.firms.length}곳</summary>
+        <div class="low-grid">
+          <div>
+            <h3>개인</h3>
+            <ul class="low-list">
+              {board.lowSample.individuals.map((a: any) => (
+                <li><span class="nm">{a.name}</span>{a.firm && <span class="dim"> · {a.firm}</span>}<span class="meta">{a.count}건 · 적중 {pct(a.hit_rate)}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>기관</h3>
+            <ul class="low-list">
+              {board.lowSample.firms.map((a: any) => (
+                <li><span class="nm">{a.name}</span><span class="meta">{a.count}건 · 적중 {pct(a.hit_rate)}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>집계 기준</summary>
+        <ul class="criteria rules">
+          <li><b>개인</b> — 실명 1인 단위. 괄호 속 소속·직함, 쉼표 뒤 직함은 이름에서 떼고 같은 사람으로 합칩니다 (예: "Tom Lee (Fundstrat)" = "Tom Lee", "Michael Wilson" = "Mike Wilson", "마이클 하트넷" = "Michael Hartnett").</li>
+          <li><b>진행자 제외</b> — 방송 진행자·앵커·기자는 예측 주체가 아니므로 빼고 봅니다. 진행자를 뺀 뒤 실명이 1인인 항목만 그 사람에게 산입합니다.</li>
+          <li><b>공동 저자·패널</b> — 2인 이상은 개인 순위에 넣지 않습니다. 전원이 같은 기관(증권사 공동 리포트 등)이면 그 기관에만 산입하고, 기관이 섞인 방송 패널은 제외합니다.</li>
+          <li><b>기관</b> — 소속 개인의 단독 항목과 팀·기관 명의 리포트를 합산합니다. 기관명은 표기를 통일하고(JP Morgan·JP모간·JPMorgan AM → JPMorgan, 하나금융투자 → 하나증권) 계열사는 모그룹으로 묶습니다. 한 사람은 항상 대표 소속(가장 많이 표기된 소속) 하나로만 집계합니다.</li>
+          <li><b>순위 제외</b> — 매체 진행진·편집부, 컨센서스 종합, 익명·출처 미상 항목. 현재 {excludedTotal}건 (패널 {board.excluded.panel ?? 0} · 매체 {board.excluded.media ?? 0} · 익명 {board.excluded.anonymous ?? 0} · 컨센서스 {board.excluded.consensus ?? 0}).</li>
+          <li><b>최소 표본</b> — 평가 완료 {MIN_EVALS}건 미만은 순위를 매기지 않고 위 "표본 부족" 목록에만 표시합니다.</li>
+          <li><b>종합 점수</b> — 적중률 {WEIGHTS.hit} · 정확도(1 − 평균 오차%) {WEIGHTS.error} · 논리 {WEIGHTS.thesis}. 적중 판정·오차·논리 판정이 없는 항목은 그 지표에서 빼고, 데이터가 없는 지표는 가중치를 나머지에 재배분합니다(빈 값을 만점·0점으로 채우지 않음). 부분 적중은 0.5.</li>
+        </ul>
+      </details>
+
       {pending > 0 && (
         <p class="dim small">※ 추가로 {pending} 건이 평가 대기 중입니다 (목표 기간 미도달).</p>
       )}
@@ -343,4 +318,65 @@ const fmtPct = (n: number) => `${(n * 100).toFixed(1)}%`;
     font-weight: 600;
   }
   .small { font-size: 0.78rem; margin-top: 1rem; }
+
+  .sec-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2rem 0 0.75rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .ranked > .sec-title:first-child { margin-top: 0; }
+  .sec-title .dim { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .ranked .rank-table tr:last-child td { border-bottom: none; }
+  .ranked th, .ranked td.num { white-space: nowrap; }
+  .ranked td.firm { color: var(--muted); font-size: 0.82rem; }
+  .ranked .n {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .fold {
+    margin-top: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+  .fold summary {
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .fold[open] summary { border-bottom: 1px solid var(--border); }
+  .low-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem 2rem;
+    padding: 0.8rem 1rem 1rem;
+  }
+  .low-grid h3 { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.4rem; font-weight: 600; }
+  .low-list { list-style: none; margin: 0; padding: 0; font-size: 0.82rem; }
+  .low-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.3rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .low-list .nm { color: var(--text); font-weight: 600; }
+  .low-list .meta { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .criteria.rules { padding: 0.8rem 1rem 1rem 2.2rem; margin: 0; max-width: none; }
 </style>

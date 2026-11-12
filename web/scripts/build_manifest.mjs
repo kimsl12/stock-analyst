@@ -452,6 +452,7 @@ async function main() {
           source: meta.source_full || meta.source,
           source_type: meta.source_type,
           analyst_name: meta.analyst,
+          analyst_firm: meta.firm || meta.analyst_firm || null, // 순위 집계 소속 판정용 (analyst_identity.mjs)
           rating: meta.rating,
           target_price: meta.target_price,
           target_currency: meta.target_currency,
