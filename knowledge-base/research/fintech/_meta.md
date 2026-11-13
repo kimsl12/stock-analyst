@@ -1,12 +1,12 @@
 ---
 sector: fintech
 created: 2026-05-12
-last_updated: 2026-11-07
+last_updated: 2026-11-14
 status: active
 related_industry_kb:
   - knowledge-base/industry/fintech.md
   - knowledge-base/industry/financial_services.md
-l1_index_count: 12
+l1_index_count: 13
 l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 5
@@ -48,7 +48,7 @@ deep_dive_priority: 5
 - 학술: 2
 - 씽크탱크: 1
 - 컨퍼런스: 1
-- 규제: 4
+- 규제: 5
 
 ## L2 월간 요약 목록
 
