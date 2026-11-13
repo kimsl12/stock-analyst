@@ -102,7 +102,8 @@ export function parseTargetPrice(md) {
 
 /** 분석일 (scorecard 본문 "분석일: 2026-06-06"). 미발견 시 null. */
 export function parseAnalysisDate(md) {
-  const m = md.match(/분석일\s*[:：]\s*(\d{4}-\d{2}-\d{2})/);
+  // 분석일/기준일 헤더(마크다운 볼드 ** 허용) → 날짜. 미매칭 시 호출부 mtime 폴백(UTC 롤백 주의).
+  const m = md.match(/(?:분석일|기준일)\s*[:：]?\s*\*{0,2}\s*(\d{4}-\d{2}-\d{2})/);
   return m ? m[1] : null;
 }
 
