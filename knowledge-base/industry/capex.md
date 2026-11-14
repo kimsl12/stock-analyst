@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-07
-valid_until: 2026-12-07
+updated: 2026-11-14
+valid_until: 2026-12-14
 sector: capex
 confidence: high
 tags:
@@ -237,15 +237,28 @@ sources:
     investinglive,
     hudson-labs,
     startupmap,
+    KLA IR,
+    Finimize,
+    chartmill,
+    rallies.ai,
   ]
-last_synced_from_db: 2026-11-07
+last_synced_from_db: 2026-11-14
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-11-07 | 신뢰도: high | 유효: ~2026-12-07
+> 갱신일: 2026-11-14 | 신뢰도: high | 유효: ~2026-12-14
 
 ---
+
+## ★ 주간 델타 (11/14) — 직전 갱신(11/07) 이후 변화 (윈도우 11/08~11/14)
+
+> 배경: AI 버블 우려發 디레이팅이 반도체 옥석가리기에서 고베타 무차별 디레버리징으로 확산(11/14 모닝 AMD -8.75%). 빅테크 Q3 capex 가이던스 상향은 직전 11/07 KB 기수록 — 이번 윈도우 델타는 IB의 2027 전망 추가 상향·시장 디레이팅 실현·AI 신용 실적 검증.
+
+- **[핵심] 하이퍼스케일 2027 capex 전망 추가 상향(IB) — Morgan Stanley 11/08 노트 2027 ~$1.6T·2028 ~$1.8T 유지(기업별 2027E Google $375B·Amazon $355B·Microsoft $269B·SpaceX $236B·Meta $225B)·직전 KB S&P 6사 2027 $1.3T 대비 MS 더 공격적·Evercore/BofA도 4사 2027 $1T 초과·Q3 실측 분기 capex Amazon $77.3B·Alphabet $51.4B·Microsoft $39.4B·Meta $33.9B·4사 2026 합산 ~$735B(+79% YoY)**: 빅테크 Q3 어닝 capex 가이던스 상향은 직전 11/07 KB에 실측 기수록. 이번 윈도우 델타는 **IB의 2027 전망 추가 상향** — **Morgan Stanley가 11/08 노트에서 2027 하이퍼스케일 capex ~$1.6T·2028 ~$1.8T 전망 유지**, 기업별 2027E로 **Google $375B·Amazon $355B·Microsoft $269B·SpaceX $236B·Meta $225B** 제시. 직전 KB의 **S&P Global 6사 2027 집계 ~$1.3T보다 공격적**이며 Evercore·BofA도 4사 합산 2027 $1T 초과 모델링. **Q3 2026 실측 분기 capex는 Amazon $77.3B·Alphabet $51.4B·Microsoft $39.4B·Meta $33.9B로 Amazon 주도**, 4사 2026 합산 ~$735B(+79% YoY, 2025 ~$410B). 단 **2027 기업 공식 가이던스는 미제시**(Alphabet CFO 'significant increase'·Amazon CEO 'meaningfully more'·Meta 예산 수립 중·Microsoft 미제시) — 2027 수치는 전부 애널리스트 모델. 주: MS vs S&P 집계기준(4사/6사·하이퍼스케일/클라우드) 상이, Microsoft CY2026 $170B~$190B 소스간 혼재 [Morgan Stanley(2026.11.08), fourweekmba, Motley Fool/S&P Global, finance.yahoo, paasa]
+- **[핵심] AI 버블 우려發 디레이팅 확산·고베타 무차별 디레버리징 — 11/05 대형 셀오프(나스닥100 시총 ~$2.5T 증발·S&P500 2025/04 이후 최악 세션·Nvidia -9.3%/~$448B·AMD -17%·CoreWeave -10%·Nebius -15%)에서 윈도우 내 고베타 디레버리징으로 확산(11/14 모닝 AMD -8.75%)·CoreWeave 11월 누적 ~-45%·Nvidia 11/17 실적이 다음 분기점**: 직전 11/07 KB(IMF 'AI 투자붐 종료' 리스크·BIS 순환금융·CoreWeave CDS)에서 경고된 밸류에이션 리스크가 **시장 디레이팅으로 실현**. **11/05 대형 셀오프로 나스닥100 시총 ~$2.5T 증발(S&P500 2025/04 이후 최악 세션), Nvidia -9.3%(~$448B·2026 상승분 소멸)·AMD -17%·CoreWeave -10%·Nebius -15%**. 이후 윈도우(11/08~14) 내 '반도체 옥석가리기'에서 **고베타 무차별 디레버리징으로 확산** — **11/14 모닝 AMD -8.75%**·CoreWeave 11월 누적 ~-45%. 촉발요인=하이퍼스케일 capex 지속가능성(capex가 OCF 초과하는 현금소진)·AI 인프라 부채/순환금융 우려. '데이터센터 capex $10B 삭감 시 칩·서버·광통신·전력장비 연쇄 지연' 내러티브가 재평가 동인. **다음 촉매=Nvidia 11/17 실적(capex 수요 검증)**. 주: 11/05 셀오프는 윈도우 직전 트리거(배경), 윈도우 델타는 디레이팅 확산 지속·11/14 고베타 디레버리징, 지수/종목 등락률은 2차 소스 근사치 [Finimize, vestedfinance, yourstory, finance.yahoo, nasdaq, techzine(2026.11.05~14)]
+- **[핵심] AI 인프라 신용 실적 검증 — CoreWeave Q3 2026(~11/10) 매출 $3.66B(+168% YoY·컨센 $3.55B 상회)·백로그 $132.5B(Q2말 $104B에서 +27%)·2026 매출 가이드 $13.0~13.3B 상향·총부채 ~$47B·분기 이자비용 ~$846M(매출의 20%+)·비유동부채 $10.3B+유동 $3.7B+미래 DC 리스 약정 $39.1B·주가 AH +8% 반등 but YTD -32%·직전 1개월 ~-45%**: 직전 10/24·11/07 KB(CoreWeave 5년 CDS 1,000bps+·무담보 ~15%·Baird 2027 ~$30B 추가조달 필요·FY2026 capex 가이드 $35~39B) 대비 이번 윈도우는 **Q3 실적 실측으로 펀더멘털 검증**. **매출 $3.66B(+168% YoY, 컨센 $3.55B 상회)·백로그 $132.5B(Q2말 $104B에서 +27%)·2026 매출 가이드 $13.0~13.3B로 상향**. **총부채 ~$47B(end Q3)·분기 이자비용 ~$846M(매출의 20% 초과 궤도)·비유동부채 $10.3B+유동부채 $3.7B+미래 DC 리스 약정 $39.1B**. **주가는 실적 후 AH +8% 반등했으나 YTD -32%·직전 1개월 ~-45%**(AI 인프라 디레이팅+금리). 백로그가 채무를 커버한다는 사측 주장 vs 레버리지·이자부담 논쟁 지속 — AI 신용이 '매출 급증 but 이자/리스 부담' 양면성으로 집약. 주: 부채 ~$47B(Q3 earnings 집계) vs 온밸런스 ~$14B($3.7B+$10.3B)+오프밸런스 리스 $39.1B로 소스간 범위 상이 [implicator.ai, fourweekmba, 247WallSt, aiweekly.co, rallies.ai, investinglive(2026.11.10)]
+- **반도체 WFE 2027 전망 분산 — KLA fiscal Q1 2027 CY2027 예비 WFE '$200B 초과(~+30%)'·CY2026 mid-$150B대 상향 vs BofA CY2027 $183B·CY2030 $250B dissent·수요 리딩엣지 로직/DRAM(HBM)/어드밴스드패키징 WFE 성장 ~80%·AMAT fiscal Q4 FY2026(~11/13 due·가이드 매출 ~$10.25B·EPS $4.02·반도체시스템 ~$7.9B) 윈도우 촉매**: 직전 10/24 KB(Lam Research CY27 WFE $200B+ 단독 가이드) 대비 델타=**KLA가 CY2027 예비 WFE '$200B 초과(~+30%)'로 교차확인**(CY2026 mid-$150B대 상향, 7월 ~$190B·5월 $140B+에서 재상향)해 공급측 2개사(Lam·KLA) $200B+ 레벨 수렴. 반면 **BofA는 CY2027 WFE $183B·CY2030 $250B로 더 보수적(dissent)** — 장비사 vs IB 전망 괴리. 수요구성은 **리딩엣지 로직·DRAM(HBM)·어드밴스드 패키징이 2026~2027 WFE 성장의 ~80%**. **윈도우 촉매=Applied Materials fiscal Q4 FY2026(~11/13 due)** — 가이드 매출 ~$10.25B·EPS $4.02·반도체시스템 ~$7.9B(실측은 미확인, 가이던스 기준). 주: KLA fiscal Q1 2027은 10월말 보고(윈도우 직전 confirm), WFE 정의·수치 소스간 상이, AMAT Q4 실측 미확인 [KLA IR, chartmill, Zacks, hudson-labs, BofA(2026.10~11)]
 
 ## ★ 주간 델타 (11/07) — 직전 갱신(10/24) 이후 변화 (10/31 런 스킵, 윈도우 ~2주)
 

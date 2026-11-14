@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-07
-valid_until: 2026-12-07
+updated: 2026-11-14
+valid_until: 2026-12-14
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -236,8 +236,8 @@ sources:
     pulse.bot,
   ]
 confidence: high
-last_synced_from_db: 2026-11-07
-db_records: 561
+last_synced_from_db: 2026-11-14
+db_records: 571
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -246,6 +246,27 @@ db_records: 561
 
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
+
+> **2026.11.14 핵심 변화 요약 (11/08→11/14 윈도우, 직전 11/07 이후 1주)**:
+>
+> ⚠️ **[윈도우 성격] 희토류 '11/10 D-day' 실측 결판 + 전력반도체(SiC/GaN) 실적 델타가 2대 신규.** 中 상무부 11/9 확대 희토류 수출통제 유예를 공식 2개월 연장(11/10 종료→2027.01.10)으로 **공식화** — 本 KB의 2027.01.10 프레임이 11/10 당일 회귀 없이 공식 확정됨(11/10 재발동·무산 아님). 전력반도체는 Wolfspeed·Navitas 분기 실적으로 'AI 데이터센터 피벗' 가속. 탄산리튬은 10월말 상방전환이 11월 초 반락으로 되돌림. 전고체(QS/삼성SDI)·MP Materials·탄소섬유·美 임계광물은 재확인.
+>
+> 1. **[신규·중대·실측] 희토류 11/10 D-day — 中 상무부 11/9 확대통제 유예 '2개월 연장(→2027.01.10)' 공식화: 11/10 회귀 아님, 오히려 KB 2027.01.10 프레임 공식 확정.** 2025.10.9 확대 수출통제(SmCo·Dy/Tb 함유 NdFeB·역외 0.1% 룰 등)의 유예 종료일이 당초 11/10에서 2027.01.10으로 공식 연장(워싱턴 트럼프-시진핑 정상회담 후속 9월 합의의 공식 고시화). 2025.4 7종(Dy·Tb·Sm·Gd·Lu·Sc·Y) 라이선싱·군용 최종사용자 금지는 유예와 무관하게 존속. 美측은 178개 Section 301 대중 관세 예외 연장 등 상호 완화. ex-China 중희토 프리미엄·NdPr $110/kg floor 구조 유지. [S&P Global(11/9)/The Star/Tom's Hardware/ThePrint/The National]
+>
+> 2. **[신규·실적확정] 전력반도체(첨단세라믹 SiC/GaN) — Wolfspeed FQ1 2027(11/4)·Navitas Q3 2026(11/3) 실적: 'AI 데이터센터 전력' 피벗 가속.** Wolfspeed: EPS -$2.22(컨센 -$2.18 소폭 하회)·매출 $155.0M(컨센 상회)·차분기 가이던스 $155-175M·분기말 유동성 ~$995M·조건부 美 국방부(DoW) $1.5B·30년 대출(채무 재융자+GaN 전력/RF 확장 재원)·BorgWarner 800V SiC 인버터 공급·Infineon 200mm 웨이퍼 계약 확대. 소재/자동차 수요·가격 압박 지속하나 AI DC·산업/에너지가 성장동력. Navitas(NVTS): 매출 ~$14.0M(+38% YoY)·조정 EPS -$0.03(컨센 상회)·차분기 가이던스 ~$16.0M(중간값)·10월 Claros 인수완료(전압조정 기술로 GaN/SiC 포트폴리오 확장)·AI 인프라向 성장 비중 확대. [finviz/MarketBeat/247wallst/pulse2]
+>
+> 3. **[방향전환] 배터리소재 — 탄산리튬 11월 초 반락: 직전 KB '10월말 상방전환'서 되돌림.** SMM 11/5 배터리급 평균 91,700위안/t(전주 96,100위안서 -4.6% WoW)·11/10 Mysteel 선물 약세·Jianxiawo 광산 재가동 기대가 상단 제약·근월 레인지권 전망(펀더멘털이 추가 급등 미지지·11월 탄산리튬 생산스케줄 증가·양극재 스케줄 둔화). CATL Na-ion(Naxtra) 테마 유지. [SMM(11/5)/Mysteel(11/9·11/10)/Trading Economics]
+>
+> 4. **[재확인·정량] 희토류 가격 — 11/3 NdPr oxide 中내 하락·Dy/Tb 中내 견조, ex-China 프리미엄 최대 ~10배(유럽 Dy oxide ~4.9배·Tb oxide ~3.8배) 유지.** 연말 수요 약세 속 Pr-Nd 고위권 횡보·중희토 서방 프리미엄 구조 지속. NdPr은 ex-China CIF 기준 $110/kg floor 부근. [Rare Earth Exchanges(11/3)/Fastmarkets/SMM]
+>
+> 5. **[재확인] 전고체 — QuantumScape Q3 2026(10/21, 직전 11/07 KB 반영분)·Samsung SDI 황화물 2H 2027 울산 양산(>900Wh/L)·Toyota 2027-28 유지: 당주 신규 상업 델타 없음.** QS-Samsung SDI 직접 제휴 없음(각자 독립 프로그램). [eepower/QuantumScape(재확인)]
+>
+> 6. **[재확인] MP Materials — Q3 2026(11/5, 직전 11/07 KB 반영분) GM 자석 인증 완료·Q4 자석매출 개시 확정·NdPr 생산 1,018MT(+41% YoY): 당주 추가 델타 없음.** Independence 3,000MT/y·10X Northlake 2028 유지. [MP Materials 8-K(재확인)]
+>
+> 7. **[재확인] 탄소섬유 — 11/08~11/14 신규 수주/가격 델타 없음.** Syensqo-Toray Composite Materials America 5년 CF 공급계약(2026.1 발효) 유효·핵심 항공 CF 공급 Toray/Hexcel/Mitsubishi/Teijin/Syensqo 유지. [CompositesWorld(재확인)]
+>
+> 8. **[재확인] 美 임계광물 정책 — DFARS 252.225-7052 1/1/2027(mine-to-magnet 금지)·'2027년 초 데드라인 클러스터' 유지, 당주 신규 정책/금액 델타 없음.** 中 유예종료 1/10/2027과 수렴. 펜타곤 'Deal Team Six'·USA Rare Earth·EXIM 지원 재확인. [BISI/DefensePost(재확인)]
+
 
 > **2026.11.07 핵심 변화 요약 (10/25→11/07 윈도우, 2주·10/31 런 스킵)**:
 >
