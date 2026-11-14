@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-07
-valid_until: 2026-12-07
+updated: 2026-11-14
+valid_until: 2026-12-14
 category: macro
 sources:
   [
@@ -193,7 +193,7 @@ sources:
     "METI",
   ]
 confidence: high
-last_synced_from_db: 2026-11-07
+last_synced_from_db: 2026-11-14
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -205,6 +205,21 @@ last_synced_from_db: 2026-11-07
 > **연계:** G-1(지정학 파워맵)의 하위 프레임. 공급망 재편의 근본 동인은 지정학.
 
 ## ★ CURRENT ★
+
+## [2026-11-14] 주간 델타 (11/8~11/14)
+
+> **교차검증 (운임·가격, 11/6~11/13 기준):** 유가는 **메인 yfinance 확정 앵커** — WTI **$88.92**/Brent **$96.08**(11/13·CL=F/BZ=F 일봉=시간봉 일치→정산 아티팩트 없음·전주말 WTI $90.83/Brent $98.32서 **-2.1%/-2.3% WoW**·10/26주 Brent $117.64 고점서 **~18% 누적 하락**). 동인: 호르무즈 flow 강세+OPEC 10월 증산+JPM 10월 ~1.4M bpd 글로벌 공급과잉+美-이란 평화협상 초안 회람(카타르 중재). **LNG 반락** — TTF **$28.0/MBtu**(11/6, 10/30 $34.0서 급락)·JKM **low-$32s/MBtu**(11/6, 10/30 low-$34s서)·평화협상+온화날씨+안정공급(globallnghub 11/9·단 Kpler 11/5 한파·재기화 제약 상방 리스크 병존). **벌크·컨테이너 November 신규 read 미확보** — BDI 10/26 Capesize 3,726/Panamax 2,075(7/30 이후 최저)/Supramax 1,888 승계 참고(confidence low)·10/22 BDI 종합 2,693·WCI November release 공백 승계. 구리 신규 가격 미확보(11/6 HG=F $6.26 승계·cathode 232 제외로 US copper 가격 붕괴 서사). DXY **103.41** 상승·金 **$3,887.6** 하락(리스크·달러 강세).
+> **D-카운트 재계산 (2026-11-14 기준):** ★**희토류 추가통제 유예 11/10 만료 → 中 11/9 Jan 10 2027로 연장 공식화**(11/7 블록 D-3 핵심 불확실성 **해소**·대상 5종 Ho/Er/Tm/Eu/Yb+가공 기술/장비·April 2025 7종 통제는 유지)★ · 대미흑연 수출통제 유예 11/27 **D-13**(교정: 中 흑연 음극재 수출통제 기준일·Crux 확인, REE 연장과 동반 Jan 10 이연 가능성 플래그) · 폴리실리콘232 12/4 **D-20** · DFARS 252.225-7052 1/1/2027 **D-48** · REE/흑연 Phase 2 유예 ~Jan 10 2027 **D-57** · US-中 휴전 Jan 10 2027 유효.
+
+- **★희토류 통제 유예 Jan 10 2027로 연장 확정(D-3 불확실성 해소) — 中 11/9 Nov 10 만료 예정이던 추가 수출통제 유예를 Jan 10 2027로 2개월 연장 공식화.** 대상은 5종(홀뮴·에르븀·툴륨·유로퓸·이터븀)+희토류 가공 기술/장비. **April 2025 7종 통제는 유지**(라이선싱 잔존). US-中 휴전(Jan 10 2027)과 연동한 조치. 11/7 블록의 '11/10 만료 D-3 핵심 불확실성'이 '연장'으로 결판 — 근시일 heavy RE 프리미엄 추가 확대 리스크는 Jan로 이연. [S&P Global/mining-technology/CTV/thestar/theprint 11/9]
+- **★유가 추가 하락·디스인플레 압력 — WTI $88.92/Brent $96.08(11/13 메인 yfinance 앵커·전주말 $90.83/$98.32서 -2.1%/-2.3% WoW). 10/26주 Brent $117.64 고점서 ~18% 누적 하락.** 동인: (1) 호르무즈 원유 flow 강세, (2) OPEC 10월 증산, (3) JPM 10월 ~1.4M bpd 글로벌 공급과잉, (4) 美-이란 평화협상 초안 회람(카타르 중재). **OPEC+ 11/1 12월 목표 동결·2027 생산틀을 11/29 장관회의로 연기**(~2M bpd 복귀 재개 변수). CL=F/BZ=F 일봉=시간봉 일치로 정산 아티팩트 없음. DXY 103.41 상승·金 $3,887.6 하락. [yfinance 11/13, Nation Thailand/Crux Investor 11/9, OPEC+ 11/1]
+- **★LNG 반락 전환 — TTF $28.0/MBtu(11/6, 10/30 $34.0서 급락)·JKM low-$32s/MBtu(11/6, 10/30 low-$34s서).** 평화협상 기대(美-이란·우크라)+온화날씨+안정공급으로 급락. **11/7 블록 '상방 가속(TTF 10/28 장중 €100/MWh 돌파)'서 조기 반락 전환**. 단 Kpler 11/5은 한파·재기화 제약으로 상방 리스크 병존 지적 — 겨울 restocking vs 평화협상 디에스컬레이션 줄다리기. [globallnghub 11/9, Kpler 11/5, MNI Markets]
+- **★美-中 무역 '이행 국면' — 美 상호관세 유예·Section 301 면제·선박수수료 유예·50% 소유규칙 유예를 Jan 10 2027 휴전틀 하에 이행. 中은 24% 추가관세 유예 2개월 연장·fentanyl 관세 인하 상응.** 희토류·흑연 유예 연장이 패키지 핵심. **단 폴리실리콘232 12/4(D-20)·DFARS 1/1/2027(D-48)은 美 Section 232/방산 조치라 中휴전 무관 불변.** [strtrade 11월, theprint 11/9]
+- **메모리 초긴축 지속(승계) — TrendForce Q4 2026 일반DRAM +10~15% QoQ·NAND +15~20%·HBM포함 종합DRAM +15~20%·엔터SSD +23~28%. HBM 2027 blended ASP +121% YoY 상향 유지.** Team Group '최악은 Q4 2026~Q2 2027'(11/2). 소비수요 약세 split market. November 신규 TrendForce 업데이트 공백으로 9/30 발표치 승계(confidence medium). [TrendForce 9/30, evertiq 10/2, Team Group 11/2]
+- **흑연·배터리소재 — 대미 흑연 음극재 수출통제 유예 11/27 D-13(교정 완결: 흑연 EV음극재 AD 무산 교정 후 中 수출통제 기준일로 재확인·Crux Investor 확인).** REE 유예 Jan 10 2027 연장과 동반 이연 가능성 플래그(10/9/2025 배터리소재 통제 패키지 일부). 수입업체 통제 전 밀어내기 관측. [Crux Investor, mining.com, Global Trade Alert]
+- **벌크·컨테이너·구리 — BDI/WCI November 신규 read 미확보 승계(confidence low): 10/26 Capesize 3,726/Panamax 2,075(7/30 이후 최저)/Supramax 1,888·10/22 BDI 종합 2,693(10/13 이후 최고). WCI November release 공백. 구리 신규 settle 미확보(11/6 HG=F $6.26 승계) — cathode(정제구리) imports Section 232 제외로 US copper 가격 붕괴·COMEX-LME 스프레드 축소(SMM 11월 COMEX 프리미엄 ~$38.99/mt·종전 record >$3,000/t서, date 불명확 confidence low).** [Hellenic 10/22·10/26 승계, Benchmark Minerals/SMM]
+
+---
 
 ## [2026-11-07] 주간 델타 (11/1~11/7)
 
