@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-08
-valid_until: 2026-12-08
+updated: 2026-11-15
+valid_until: 2026-12-15
 sector: science_tech
 sources:
   [
@@ -749,7 +749,16 @@ db_records: 1242
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-11-08 갱신)
+### 16-C. 주간 과학기술 동향 (2026-11-15 갱신)
+
+> **2026-11-08~11-15 주간 통합 수집(web_search 8회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(11/14 space subtag — 우주주 11/9~13 반등·Starship Flight 15 11/13 발사·Amazon Leo Vulcan LV-01 11/14 기록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 11월 FDA PDUFA 클러스터 '1차 결정기' 진입**(직전 run이 11월 캘린더 확정 → 금주 델타 = 첫 2개 결정일(11/1·11/14) 경과·공식 outcome 미인덱스)·양자/AI프런티어/기초과학 범용 신규 discrete는 희소(희소 섹터 억지 패딩 배제·2건 정직 처리).
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[바이오·FDA 결정기]** | ★ **11월 PDUFA 클러스터 1차 결정일 경과**(캘린더 자체는 11/08 run 기록 → 금주 델타 = 결정일 도래·공식 outcome 미인덱스). ① **Nov 1 Agios 미타피바트(mitapivat) 겸상적혈구병(SCD) 가속승인** 보충신청 결정일 경과 — 근거 **RISE UP Ph2/3**(16세+): 평균 적혈구 수혈량 상대 **-55.9%**, 단 통증위기 연간율(2차 엔드포인트)은 수치감소·**통계유의 미달**. 확증시험 REIGNITE Ph3(12세+) 진행. 기승인명 Pyrukynd(PK결핍)·Aqvesme(지중해빈혈). ② **Nov 14 Summit 이보네스시맙(ivonescimab)** EGFRm 비편평 NSCLC(post-TKI·화학병용) 결정일(11/14) 경과 — **HARMONi Ph3: OS 16.8 vs 14.0개월 HR 0.79(p=0.057·OS 1차 엔드포인트 미달)·PFS HR 0.52(p<0.00001)**. 쟁점 = 데이터 **중국 단독**·안전성. 글로벌 HARMONi-3 진행. **양건 모두 11/15 현재 승인/CRL 공식확인 미인덱스**(결정 직후 지연 가능) | 2026.11 | barchart / sicklecellanemianews / drugs.com / onclive / fiercepharma |
+| **[기초과학·프론티어·중복주의]** | 범용 신규 discrete **희소**(희소 섹터 정직 처리). 물리 = 상온(room-temp)서 결정 구조 + 무마찰 흐름을 동시 지닌 **'초고체형(supersolid-유사)' 양자 물질 상태 관측** 보고(ScienceDaily 11/9·일자 근사·medium). 그 외 11월초 물리 로드업(altermagnet 기계적 압축 자성제어·300아토초 X선 펄스·전자 시공간 추적 양자한계)은 다수 **11/8 이전**(window 경계 밖)→재기록 배제. **우주/양자/SMR 종목 tick = 토요 weekly-frontier 소관**(11/14 space jsonl: 우주주 11/9~13 반등·Starship Flight 15 11/13·Amazon Leo Vulcan LV-01 11/14 → 중복 금지). AI4Science·소재·핵융합 범용 신규 발표 미확인(패딩 배제) | 2026.11 | ScienceDaily / weekly-frontier(11/14 jsonl) |
+
+#### (이전 주간) 2026-11-08 기록
 
 > **2026-10-25~11-08 주간 통합 수집(web_search 6회, global-data 일요런·11/01 스킵으로 ~2주 윈도우).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(11/07 space subtag — 우주주 11/5 capitulation→11/6 반등·Starship Flight15 NET 11/8 임박·RKLB/ASTS Q3 11/9·FCC SCS 확대 NPRM 채택 기수록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 바이오 FDA 촉매 집중**(베피로비르센 10/20 조기 승인 해소 + 11월 PDUFA 클러스터 확정)·양자/AI프런티어/기초과학 범용 신규 discrete는 희소(억지 패딩 배제).
 
@@ -847,7 +856,7 @@ db_records: 1242
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1249건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1265건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_
