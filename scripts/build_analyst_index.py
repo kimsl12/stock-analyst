@@ -190,5 +190,9 @@ def main(out_path: Path) -> int:
 
 
 if __name__ == "__main__":
+    # '-' 로 시작하는 인자는 출력 경로가 아님 ('--help' 가 파일명으로 저장되던 사고 방지)
+    if len(sys.argv) > 1 and sys.argv[1].startswith("-"):
+        print(f"usage: python {sys.argv[0]} [OUT_PATH]  (default: {INDEX_PATH})")
+        raise SystemExit(0)
     target = Path(sys.argv[1]) if len(sys.argv) > 1 else INDEX_PATH
     raise SystemExit(main(target))

@@ -11,9 +11,14 @@ function fmtPrice(value: number | null | undefined, currency: string): string {
   return `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
-const reportUrl = p
-  ? `/reports/${p.ticker}_${p.name}${p.version ? '_' + p.version : ''}_${(p.analysis_date ?? '').replace(/-/g, '')}.html`
+// report_url: 빌드 시 실존 파일로 검증된 경로 (null = 리포트 미발견 → 링크 숨김).
+// 필드 자체가 없는 구버전 JSON 은 파일명 규칙으로 fallback (버전 세그먼트 없음 — 실제 파일명에 v 미포함).
+const reportUrl: string | null = p
+  ? p.report_url !== undefined
+    ? p.report_url
+    : `/reports/${p.ticker}_${p.name}_${(p.analysis_date ?? '').replace(/-/g, '')}.html`
   : null;
+const reasons: string[] = (p?.reasons ?? []).filter((r) => typeof r === 'string' && r.trim()).slice(0, 3);
 ---
 
 {p && (
@@ -47,13 +52,18 @@ const reportUrl = p
           <span class="pick-analysis-date">분석일 {p.analysis_date}</span>
         </div>
 
-        {p.reasons && p.reasons.length > 0 && (
-          <ul class="pick-reasons">
-            {p.reasons.slice(0, 3).map((r: string) => <li>{r}</li>)}
-          </ul>
+        {reasons.length > 0 && (
+          <div class="pick-why">
+            <span class="pick-why-label">추천 이유</span>
+            <ul class="pick-reasons">
+              {reasons.map((r) => <li>{r}</li>)}
+            </ul>
+          </div>
         )}
-        {(!p.reasons || p.reasons.length === 0) && (
-          <p class="pick-empty-reasons">분석 본문 참조 → <a href={reportUrl}>리포트 열기</a></p>
+        {reasons.length === 0 && (
+          <p class="pick-empty-reasons">
+            {reportUrl ? <>분석 본문 참조 → <a href={reportUrl}>리포트 열기</a></> : '추천 이유 요약 없음'}
+          </p>
         )}
       </div>
 
@@ -226,14 +236,30 @@ const reportUrl = p
   .pick-score strong { color: #fbbf24; font-variant-numeric: tabular-nums; }
   [data-theme="light"] .pick-score strong { color: #b45309; }
 
+  .pick-why {
+    border-top: 1px dashed var(--border);
+    padding-top: 0.7rem;
+  }
+  .pick-why-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--t-morning); /* 전역 테마 토큰: 다크 #fbbf24 / 라이트 #b45309 */
+    margin-bottom: 0.45rem;
+  }
   .pick-reasons {
     margin: 0;
-    padding-left: 1.1rem;
+    padding-left: 1.15rem;
     color: var(--text);
-    font-size: 0.85rem;
-    line-height: 1.55;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
-  .pick-reasons li { margin-bottom: 0.18rem; }
+  .pick-reasons li { margin-bottom: 0.4rem; padding-left: 0.15rem; }
+  .pick-reasons li:last-child { margin-bottom: 0; }
+  .pick-reasons li::marker { color: var(--muted); }
   .pick-empty-reasons { font-size: 0.8rem; color: var(--muted); margin: 0; }
 
   .pick-prices {

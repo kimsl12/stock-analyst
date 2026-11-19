@@ -24,6 +24,8 @@ export interface DailyPickItem {
   tp_price: number | null;
   holding_period_days: number | null;
   reasons: string[];
+  /** 빌드 시 실존 파일로 검증된 리포트 경로. null = 미발견. 구버전 JSON 은 필드 없음. */
+  report_url?: string | null;
 }
 
 export interface DailyPickJson {

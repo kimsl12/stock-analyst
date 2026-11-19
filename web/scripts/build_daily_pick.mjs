@@ -13,7 +13,9 @@
  *  - analysis/_history/{TICKER}_*_timeline.json (재분석 시스템 단일 진실 — 후보·점수·날짜)
  *    ⚠️ 구 소스 session-bootstrap.md 는 재분석 전 옛 버전 점수가 잔류해 후보 풀이 부풀려지고
  *    라이브 재검증에서 전멸하던 원인 (bootstrap 81~86 vs live 63~78, 2026-07-02 실측).
- *  - analysis/{ticker}_*_v{N}/scorecard.md (최신 v — 등급·가격·이유 라이브 보정)
+ *  - analysis/{ticker}_*_v{N}/scorecard.md (최신 v — 등급·가격 라이브 보정)
+ *  - analysis/{ticker}_*_v{N}/_report_data.json (추천 이유 — thesis/executive_summary) [v3.40]
+ *  - reports/{TICKER}_*_{YYYYMMDD}.html (리포트 링크 — 실제 파일 기준 최신 날짜) [v3.40]
  */
 import { readFile, writeFile, readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -29,6 +31,7 @@ const PROJECT_ROOT = path.resolve(WEB_DIR, '..');
 const ANALYSIS_DIR = path.join(PROJECT_ROOT, 'analysis');
 const HISTORY_DIR = path.join(ANALYSIS_DIR, '_history');
 const OUTPUT_JSON = path.join(WEB_DIR, 'src', 'data', 'daily_pick.json');
+const REPORTS_DIR = path.join(PROJECT_ROOT, 'reports');
 
 const MIN_SCORE = 75; // [v3.35 하이브리드] 등급 필터(매수 이상)와 결합된 질 하한
 const BUY_GRADE = /강력\s?매수|매수/; // 매수 이상만 추천 (중립/보유/매도 제외)
@@ -197,6 +200,153 @@ export function extractScorecardMeta(text) {
 }
 
 // ---------------------------------------------------------------------------
+// 3.5 [v3.40] _report_data.json → 추천 이유 (최대 3개, 각 ~90자)
+//   BLIND 재분석 스코어카드는 "투자 논지/결론" 섹션이 없어 scorecard.md 정규식이 reasons=[] 를
+//   반환 → 위젯이 "분석 본문 참조"만 표시하던 문제 (2026-11-19). 구조화 필드 우선 사용:
+//   thesis.claim(핵심 문장) → executive_summary(중복 제외) → thesis.variant → "다만…" 단서는 마지막.
+//   드리프트 방어: thesis 문자열/누락, executive_summary 문자열/배열/누락.
+// ---------------------------------------------------------------------------
+const REASON_MAX = 90;
+const CAVEAT_RE = /^(?:다만|단|그러나|하지만|반면)[,\s]/;
+
+function stripMd(s) {
+  return String(s)
+    .replace(/\*\*|__|`/g, '')
+    .replace(/^\s*(?:[-•*>]|#+)\s+/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// 문장 분리 — 마침표/물음표 뒤 공백 기준 (소수점 "0.39" 는 공백이 없어 안전).
+// 문장 중간의 ", 단 …" / ", 다만 …" 단서절도 별도 조각으로 분리.
+export function splitSentences(text) {
+  if (typeof text !== 'string') return [];
+  const out = [];
+  for (const sent of stripMd(text).split(/(?<=[.!?。])\s+/)) {
+    for (const part of sent.split(/,\s*(?=(?:다만|단|그러나|하지만)\s)/)) {
+      const t = part.trim();
+      if (t.length >= 8) out.push(t);
+    }
+  }
+  return out;
+}
+
+// 길이 초과 시 ① 괄호 보충설명 "(선행 PER 15.4·PEG 0.65)" 제거 → ② 그래도 길면 절 경계
+// (쉼표·대시·연결어미 며/고/서·가운뎃점·공백 순)에서 자르고 "…" 부착. 단어 중간 절단 금지.
+// 역접 "…이나 " 경계는 뒷절(핵심 판단)이 잘려 의미가 뒤집히므로 연결어미 후보에서 제외.
+export function shortenReason(s, max = REASON_MAX) {
+  let t = stripMd(s);
+  if (t.length <= max) return t;
+  t = t.replace(/\s*\([^()]*\)/g, '').replace(/\s+([,.])/g, '$1');
+  if (t.length <= max) return t;
+  const head = t.slice(0, max);
+  const min = Math.floor(max * 0.4);
+  const boundaries = [
+    /(?<!나)[,;]\s/g,       // 쉼표·세미콜론 (역접 "…이나," 제외)
+    /\s[—–-]\s/g,           // 대시
+    /(?<=[며고서])\s/g,      // 연결어미 "…하며 / …하고 / …해서"
+    /[,;]\s/g,              // 역접 쉼표 "…이나," (가운뎃점 나열 중간 절단보단 나음)
+    /·/g,                   // 가운뎃점 나열
+    /\s/g,                  // 최후: 공백
+  ];
+  for (const re of boundaries) {
+    let cut = -1;
+    for (const m of head.matchAll(re)) if (m.index >= min) cut = m.index;
+    if (cut > 0) return head.slice(0, cut).replace(/[\s,;·:—–-]+$/, '') + '…';
+  }
+  return head.replace(/[\s,;·:]+$/, '') + '…';
+}
+
+// claim ↔ ES 재진술 제거: 수치 토큰(38.6% 등) 공유 또는 글자 bigram 50%+ 포함이면 중복으로 간주
+function numTokens(s) {
+  return new Set((s.match(/\d+(?:[.,]\d+)*%?/g) ?? []).filter((n) => /[.%]/.test(n) || n.length >= 3));
+}
+function bigrams(s) {
+  const t = s.replace(/[\s·,.'"()]/g, '');
+  const out = new Set();
+  for (let i = 0; i < t.length - 1; i++) out.add(t.slice(i, i + 2));
+  return out;
+}
+function overlaps(prev, cand) {
+  const tp = numTokens(prev);
+  for (const n of numTokens(cand)) if (tp.has(n)) return true;
+  const bc = bigrams(cand);
+  if (bc.size === 0) return false;
+  const bp = bigrams(prev);
+  let hit = 0;
+  for (const b of bc) if (bp.has(b)) hit++;
+  return hit / bc.size >= 0.5;
+}
+// "종합 77점·목표가 $445(+23%) 매수" / "목표가 $205(+11.0%)." 류 메타 문장 — 위젯이 점수/목표가를 따로 표시하므로 제외
+// + "…매수 의견(종합 76/100)을 부여한다" 처럼 종합 점수를 서술하는 문장도 메타로 간주.
+const META_RE = /^(?:종합\s*(?:점수\s*)?\d+|목표(?:주?가)?\s*[$₩\d])|종합\s*(?:점수\s*)?\d+(?:\.\d+)?\s*(?:\/\s*100|점)/;
+
+export function extractReasonsFromReportData(obj) {
+  if (!obj || typeof obj !== 'object') return [];
+  const th = obj.thesis;
+  const claim = typeof th === 'string' ? th : typeof th?.claim === 'string' ? th.claim : '';
+  const variant = th && typeof th === 'object' && typeof th.variant === 'string' ? th.variant : '';
+  const es = obj.executive_summary;
+  const esText = Array.isArray(es) ? es.filter((x) => typeof x === 'string').join(' ') : typeof es === 'string' ? es : '';
+
+  const claimSents = splitSentences(claim).filter((s) => !META_RE.test(s));
+  const core = claimSents.filter((s) => !CAVEAT_RE.test(s));
+  const caveat = claimSents.find((s) => CAVEAT_RE.test(s)) ?? null;
+
+  const picked = [];
+  const tryAdd = (s) => {
+    if (!s || picked.length >= 3) return;
+    if (picked.some((p) => p === s || overlaps(p, s))) return;
+    picked.push(s);
+  };
+  const positiveLimit = caveat ? 2 : 3;
+  for (const s of core) if (picked.length < positiveLimit) tryAdd(s);
+  for (const s of splitSentences(esText).slice(0, 5)) {
+    if (picked.length >= positiveLimit) break;
+    if (!CAVEAT_RE.test(s) && !META_RE.test(s)) tryAdd(s);
+  }
+  if (picked.length < positiveLimit) tryAdd(splitSentences(variant).find((s) => !CAVEAT_RE.test(s)));
+  if (caveat && picked.length > 0) picked.push(caveat); // 단서는 근거가 1개 이상일 때만 마지막에
+  return picked.slice(0, 3).map((s) => shortenReason(s));
+}
+
+async function readReportDataReasons(dir) {
+  const p = path.join(ANALYSIS_DIR, dir, '_report_data.json');
+  if (!existsSync(p)) return [];
+  try {
+    return extractReasonsFromReportData(JSON.parse(await readFile(p, 'utf-8')));
+  } catch {
+    return [];
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3.6 [v3.40] 리포트 링크 — reports/ 직속 실제 파일 중 `${ticker}_` 접두 + 최신 _YYYYMMDD.html
+//   위젯이 `${ticker}_${name}_${version}_${date}.html` 을 조립했으나 실제 파일명엔 버전이 없고
+//   (LLY_EliLilly_20261119.html) 구 날짜 파일은 재분석 cleanup 으로 삭제돼 404 였다.
+//   접두는 "_" 까지 포함해 MU_ ↔ MUU_ 혼동 방지.
+// ---------------------------------------------------------------------------
+export function resolveReportUrl(ticker, filenames) {
+  if (!ticker || !Array.isArray(filenames)) return null;
+  const prefix = `${ticker}_`;
+  let best = null;
+  for (const raw of filenames) {
+    const fn = String(raw).normalize('NFC'); // Linux(Vercel) NFD 한글 파일명 대비
+    if (!fn.startsWith(prefix)) continue;
+    const m = fn.match(/_(\d{8})\.html$/);
+    if (!m) continue;
+    if (!best || m[1] > best.date || (m[1] === best.date && fn > best.fn)) best = { fn, date: m[1] };
+  }
+  return best ? `/reports/${best.fn}` : null;
+}
+
+async function findReportUrl(ticker) {
+  if (!existsSync(REPORTS_DIR)) return null;
+  const entries = await readdir(REPORTS_DIR, { withFileTypes: true });
+  return resolveReportUrl(ticker, entries.filter((e) => e.isFile()).map((e) => e.name));
+}
+
+// ---------------------------------------------------------------------------
 // 4. 시장 추정 (ticker 패턴)
 // ---------------------------------------------------------------------------
 function guessMarket(ticker) {
@@ -264,6 +414,9 @@ async function pickToday(candidates) {
     const market = guessMarket(c.ticker);
     const currency = market === 'KRX' ? 'KRW' : market === 'US' ? 'USD' : meta.currency;
 
+    // [v3.40] 추천 이유: _report_data.json 우선, 비면 scorecard.md 정규식(구형 카드) 폴백
+    const rdReasons = await readReportDataReasons(sc.dir);
+
     const pick = {
       ticker: c.ticker,
       name: c.name,
@@ -279,7 +432,8 @@ async function pickToday(candidates) {
       stop_price: meta.stop_price,
       tp_price: meta.tp_price,
       holding_period_days: meta.holding_period_days,
-      reasons: meta.reasons,
+      reasons: rdReasons.length > 0 ? rdReasons : meta.reasons,
+      report_url: await findReportUrl(c.ticker),
     };
 
     // 이력 갱신 (최근 30일만 보존, 같은 날 중복 push 금지 — 멱등 재실행 대비)
@@ -298,6 +452,23 @@ async function pickToday(candidates) {
   return null;
 }
 
+// [v3.40] committed JSON 사용 경로(Vercel / analysis 부재)에서도 report_url 만은 reports/ 실파일로 재해석.
+// 픽 산출 후 같은 날 재분석 cleanup 이 구 리포트를 지우면 committed 링크가 404 가 되기 때문.
+// reasons 등 나머지 필드는 손대지 않고, 해석 실패(null)면 committed 값 유지 (덮어쓰기 금지).
+async function refreshCommittedReportUrl() {
+  try {
+    const payload = JSON.parse(await readFile(OUTPUT_JSON, 'utf-8'));
+    if (!payload?.pick?.ticker) return;
+    const url = await findReportUrl(payload.pick.ticker);
+    if (!url || url === payload.pick.report_url) return;
+    payload.pick.report_url = url;
+    await writeFile(OUTPUT_JSON, JSON.stringify(payload, null, 2), 'utf-8');
+    console.log(`OK: daily_pick report_url 재해석 → ${url}`);
+  } catch (err) {
+    console.warn(`WARN: daily_pick report_url 재해석 실패 (committed 유지): ${err.message}`);
+  }
+}
+
 // ---------------------------------------------------------------------------
 // 메인
 // ---------------------------------------------------------------------------
@@ -309,12 +480,14 @@ async function main() {
   if (process.env.VERCEL && existsSync(OUTPUT_JSON)) {
     const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
     console.log(`OK: Vercel 빌드 환경 감지 — committed ${rel} 그대로 사용 (로컬 빌드가 갱신 담당)`);
+    await refreshCommittedReportUrl();
     return;
   }
   // 추가 안전망: analysis/ 부재 시 commit된 결과 그대로
   if (!existsSync(ANALYSIS_DIR) && existsSync(OUTPUT_JSON)) {
     const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
     console.log(`OK: analysis/ 부재 — committed ${rel} 그대로 사용`);
+    await refreshCommittedReportUrl();
     return;
   }
 
