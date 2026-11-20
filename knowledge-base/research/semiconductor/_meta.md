@@ -1,12 +1,12 @@
 ---
 sector: semiconductor
 created: 2026-05-12
-last_updated: 2026-11-14
+last_updated: 2026-11-21
 status: active
 related_industry_kb:
   - knowledge-base/industry/semiconductor.md
   - knowledge-base/industry/capex.md
-l1_index_count: 41
+l1_index_count: 42
 l2_summary_count: 11
 l3_deep_dive_count: 1
 deep_dive_priority: 1

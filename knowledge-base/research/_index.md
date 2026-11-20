@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-11-14
+last_updated: 2026-11-21
 update_cycle: weekly
 status: active
-total_headlines: 196
+total_headlines: 203
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -78,6 +78,7 @@ total_headlines: 196
 - 📄 [Filing] 삼성전자 3Q26 예비 (2026-10-08) — 영업이익 약 107.4조원(+782.5% YoY)·매출 약 195조원·컨센 106.1조 상회, HBM4 매출 기여 개시·HBM 출하 +50% QoQ·NVIDIA Vera Rubin 수요, 파운드리 적자 지속 (예비·규모 이례적·공식 IR 대조 필요) ([source](https://trendforce.com/news/2026/10/08/news-samsung-sees-3q26-operating-profit-soaring-783-to-record-krw-107-4-trillion-on-hbm4-memory-price-gains))
 - 📄 [Filing] TSMC 10월 매출 (2026-11-10 발표, SEC 6-K) — "10월 연결매출 NT$586.89B(약 US$18.4B, +59.7% YoY·+14.7% MoM) — 월간 사상 최고(8월 NT$514.81B 경신), 1~10월 누적 NT$4,485.62B(+43.3% YoY)" → 월 매출 첫 NT$580B+ 돌파·2개월 만에 최고치 경신. Q4 2026 가이던스 US$52.3~54.3B(10월 IR)로 11·12월 월평균 NT$538~570B 필요(분기 첫 US$50B+ 궤도). 2nm 램프·AI 가속기 수요 견인(본 릴리스는 공정·고객·제품 구성 미공개 — 2nm 귀속은 추론). 10/24 트래킹(TSMC 10월 매출 11월 초) 실현 — AI 슈퍼사이클 지속성·HBM4/CoWoS 수요 thesis 직접 보강 (📄 TSMC SEC 6-K [source](https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000796/tsm-revenue20261110.htm))
 - 📄 [Industry] TrendForce 4Q26 메모리 계약가 전망 상향 (2026-10-20) — "통상(conventional) DRAM 4Q26 계약가 약 +20% QoQ 전망(9/30판 +10~15%서 상향)·NAND +15~20% — AI 서버 수요가 생산캐파를 잠식하며 가격 고수준 바닥 형성, 소비자(모바일/PC) DRAM은 flat~소폭 상승으로 격차 확대" → 2027 HBM 블렌디드 ASP +121% YoY 전망(공급 제약 지속). AI發 메모리 믹스 쏠림이 범용 DRAM까지 가격 견인 — SK하이닉스·삼성·마이크론 메모리 슈퍼사이클 thesis 보강(수치는 TrendForce 추정·공급사 공식 계약가 미공개) ([source](https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand))
+- 📄 [Filing] NVIDIA Q3 FY2027 실적 (2026-11-17 발표, 분기종료 10-25) — "총매출 US$115.84B(+103% YoY·+20% QoQ, 자체 가이던스 $108B 중간값·컨센 $109.1B 상회), Data Center 매출 $107.6B(+110% YoY·+21% QoQ·총매출의 약 93%), GAAP 희석 EPS $2.70·Non-GAAP $2.68(컨센 상회), GAAP 총이익률 74.8%, Q4 FY27 가이던스 매출 $130.0B±3%(Q4 1주 추가 기간 포함·GM 71~72%·중국 DC 컴퓨트 매출 0 가정)" → Vera Rubin NVL72 초도 출하·급속 램프 견인, 하이퍼스케일러 $60.1B(+71%)·AI Clouds/Industrial/Enterprise $47.5B(+195%). 가이던스는 "not assuming any Data Center compute revenue from China" 명시 — H200/Blackwell 對중국 제약 지속. 11/14 트래킹(NVIDIA Q3 FY2027 11/19) 실현, 프리뷰(가이던스 $108B) 대폭 상회로 AI 슈퍼사이클·HBM4 수요 지속성 방향타 실측 — SK하이닉스·삼성·마이크론 HBM4 물량 thesis 직접 보강 (📄 NVIDIA 공식 릴리스 [source](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027))
 
 ### 규제
 
@@ -118,6 +119,7 @@ total_headlines: 196
 
 - 📄 [White Paper] OPEC+ 10/4 회의 — 11월 생산 쿼터 동결 (2026-10-04) — "7개국(사우디·러시아·이라크·쿠웨이트·카자흐스탄·알제리·오만)이 화상회의서 11월 required production을 9월 수준 31.01 mb/d로 동결 — 4~9월 4개월 연속 증산(2023년 자발적 감산 롤백)을 마친 뒤 10월에 이미 적용한 일시중단(pause)을 11월로 연장, 복원 물량의 시장 영향 평가 시간 확보" → 다음 회의 11/1(12월 쿼터 결정). UAE는 5월 OPEC 탈퇴로 월간 결정 불참. Brent는 호르무즈 분쟁 프리미엄으로 약 $102~~108 고착(10/2 WTI $91.26·Brent $102.70 — us_economy SSOT yfinance / 10/5 TradingEconomics ~$102.60, Brent 가격은 단일 2차 소스로 ICE 정산가 교차검증 권장). 9/26 트래킹(OPEC+ 10/4 회의) 실현 — 공급측 증산 정지 유지 vs 지정학 리스크 상존 (📄 [source](https://gulfnews.com/business/energy/opec-keeps-october-oil-output-quota-unchanged-from-september-levels-1.500665366) / [source2](https://nairametrics.com/2026/10/05/opec-keeps-november-oil-production-unchanged-at-31-01-million-bpd/) / [source3](https://shipandbunker.com/news/world/818090-seven-opec-members-keep-october-oil-output-unchanged))
 - 📄 [White Paper] OPEC+ 11/1 회의 — 12월 생산 쿼터 동결 (2026-11-01) — "7개국(사우디·러시아·이라크·쿠웨이트·카자흐스탄·알제리·오만)이 화상회의서 12월 생산목표를 동결 — 美·이란 전쟁發 수출 차질 지속·걸프 회원국 다수가 목표치 하회 생산 중" → 10월에 적용한 증산 일시중단(pause)을 12월로 연장. 다음 회의 11/29(일부 보도 11/30) — 2027년 생산 프레임워크 설정 + 2022년 중단 물량 복원 여부(캐파 감사 진행 중)가 최대 분기점. 10/24 트래킹(OPEC+ 11/1 회의) 실현 — 공급측 증산 정지 유지 vs 지정학 리스크 상존 (📄 [source](https://www.staradvertiser.com/2026/11/01/breaking-news/opec-keeps-december-oil-output-targets-steady-as-iran-war-disrupt-flows/) / [source2](https://worldoil.com/news/2026/11/1/opec-subgroup-keeps-oil-production-quotas-unchanged-for-december/) / [source3](https://www.enerdata.net/publications/daily-energy-news/opec-maintains-crude-oil-production-targets-december-2026.html))
+- 📄 [White Paper] IEA Oil Market Report November 2026 "Straightening out" (2026-11-13) — "4Q26 공급 과잉 전환·2027 더 큰 재고 빌드 전망 — 이란戰 개시 이후 처음으로 공급이 수요 상회, 2026 세계 수요 전망 10월판 대비 -90 kb/d 하향한 102.3 mb/d, 제약은 원유 아닌 정제품(디젤)·IEA 비상 디젤재고 가속 방출로 브리지" → Brent 11/16 정산 $92.44(-3.55%)·WTI $85.72, Goldman Sachs(11/15) 2027 Brent 평균 $88 전망. 공급측은 정상화 방향이나 호르무즈·중동 지정학 프리미엄으로 근월 유가 $90대 고착 지속(EIA STEO 11월판·이란 수출 제약과 정합). OPEC+ 11/29 회의(2027 생산 프레임·2022 중단물량 복원 캐파 감사) 앞 — 11/14 트래킹(IEA Oil Market Report) 실현 (📄 IEA [source](https://www.iea.org/reports/oil-market-report-november-2026) / 2차 [source2](https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/111326-world-oil-market-set-for-q4-surplus-as-gulf-supply-rebounds-iea))
 
 ### 컨퍼런스/백서
 
@@ -233,6 +235,7 @@ total_headlines: 196
 ---
 
 - 📄 [Policy] FDA (2026-10) — "dostarlimab 직장암 가속승인" → MSI-H/dMMR 2·3기 국소진행성 직장암, AZUR-1 cCR12 47%(ICR)·ORR 79%, 수술·방사선 없는 면역단독 ([source](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-dostarlimab-locally-advanced-rectal-cancer))
+- 📄 [Policy] FDA Roche 경구 SERD 후기 유방암 승인 + Gazyva 신장질환 적응증 (2026-11-17, RAPS Recon) — "FDA가 Roche의 경구 SERD(선택적 에스트로겐 수용체 분해제)를 후기(late-stage) 유방암에 승인 + Gazyva(obinutuzumab)가 원발성 막성신병증(primary membranous nephropathy)에 첫 FDA 승인으로 3번째 면역 적응증 확보" → 동시에 Eli Lilly가 Stipple Bio와 최대 $5.9B 규모 항암 딜 체결. 경구 SERD는 Veppanu(Arvinas/Pfizer)·camizestrant(AstraZeneca, 9/4 ctDNA 기반 가속승인) 등 SERD/PROTAC 경구 분해제 경쟁 구도 확대 — 11/14 트래킹(FDA 11월 novel 승인) 실현. 단 Roche 경구 SERD의 brand·성분명은 브리핑에 미기재, 다음 회차 verify (📄 RAPS Recon [source](https://www.raps.org/resource/recon-fda-approves-roche-s-oral-serd-for-late-stage-breast-cancer-lilly-strikes-up-to-5-9b-cancer-deal-with-stipple-bio.html))
 
 ## 💳 Fintech (핀테크)
 
@@ -328,6 +331,7 @@ total_headlines: 196
 
 - 📄 [Filing] Adobe Q3 FY2026 실적 (2026-09-10 발표, 회계분기 8/28 종료·catch-up) — "매출 +13% $6.76B(컨센 $6.70B 상회), Non-GAAP EPS $6.13(컨센 $6.09 상회) — 4분기 매출 가이던스 $6.80~~6.85B 중간값이 컨센($6.85B) 소폭 하회로 시간외 약 -1.9%" → AI(Firefly·GenStudio) 매출화 진전에도 가이던스 눈높이 미달. 12/1자 CEO 교체(Shantanu Narayen→Anil Chakravarthy, Narayen은 이사회 의장으로) 발표 동반. Salesforce(8/26 Agentforce)·Oracle(9/10 RPO $664B)에 이은 SaaS AI 매출 드라이버 점검 — 하이퍼스케일러 capex 슈퍼사이클의 '소프트웨어 수요 측' 신호이나 Adobe는 상대적 성장 둔화. 9/12 회차 미포착 catch-up(단일 소스 집계 — 다음 회차 IR verify) (📄 [source](https://finance.yahoo.com/markets/stocks/articles/adobe-announce-q3-fy2026-earnings-170000618.html))
 - 📄 [Filing] Netflix Q3 2026 실적 (2026-10-20 발표, 회계분기 9/30 종료) — "매출 $12,874M(+11.8% YoY, 전년 $11.51B)·영업이익 $4,459M·영업이익률 34.6%·순이익 $3,664M·희석 EPS $0.87(전년 $0.59, 컨센 약 $0.82 상회) — Q4 2026 가이던스 매출 $13,442M(+11.5% YoY), FY2026 매출 $51.1B(+13% YoY)" → 멤버십 증가·구독료 인상이 성장 견인. 단 2026 광고매출 전망을 약 $3B → 약 $2.7B로 하향(광고 상품 롤아웃 지연)하며 실적 서프라이즈에도 주가 시간외 약 -6%. 10/17 트래킹(테크플랫폼 Q3 어닝) 선두 실현 — 하이퍼스케일러 Q3(10월 말 MSFT·GOOGL·META·AMZN capex)에 앞선 스트리밍 수요·가격결정력 확인 (📄 SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0001065280/000106528026000290/ex991_q326.htm))
+- 📄 [Filing] NVIDIA Q3 FY2027 실적 — 하이퍼스케일러 capex 수요 검증 (2026-11-17 발표) — "총매출 $115.84B(+103% YoY)·Data Center $107.6B(+110% YoY·총매출 93%)·Q4 가이던스 $130.0B±3% — 하이퍼스케일러 매출 $60.1B(+71%)·AI Clouds/Enterprise $47.5B(+195%)" → Big Tech Q3 capex(10/30 집계 ~$227B·FY26 $803~828B)·Oracle RPO $664B(9/10)와 정합 — AI 인프라 수요 둔화 신호 부재, 하이퍼스케일러 capex 슈퍼사이클 지속 확인. 상세는 반도체 섹션 참조. 11/14 트래킹(NVIDIA 11/19·하이퍼스케일러 capex 검증) 실현 (📄 NVIDIA 공식 [source](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027))
 
 ---
 
@@ -361,6 +365,9 @@ total_headlines: 196
 - 📄 [Filing] 미국 리테일러 Q2 실적 2차 물결 (2026-08-26~~27 발표) — "Best Buy·Kohl's·Nordstrom 모두 컨센 상회·관세 환급 효과 — 관세 전가·환급이 이익 견인, 단 주가 반응은 엇갈림" → **Best Buy** Q2 FY27 동일점 +4.1%(가이던스 +1% 상회)·순이익 +69.4% $315M·희석 EPS $1.48(+70%)·미국 매출 +4.3% $9.07B(컴퓨팅·홈시어터·AI글래스 견인), 가이던스 상향에도 주가 하락. **Kohl's** Q2(8/1 마감) 동일점 -0.9% $3.32B이나 조정 EPS $1.28(컨센 $0.57 대폭 상회)·관세 환급 $150M·매장 트래픽 수년 내 최고(2019년 근접)로 FY 가이던스 상향($1.80~~2.40). **Nordstrom** 동일점 -1.2%(컨센 -3.3% 상회)·Nordstrom Rack 순매출 +11.2%·동일점 +5.3%. 8/19 Target·8/21 Walmart에 이은 관세 환급 이익 견인 국면 지속, K자형·오프프라이스 강세 재확인 (📄 Best Buy [source](https://www.cnbc.com/2026/08/27/best-buy-bby-q2-2027-earnings.html) / Kohl's [source2](https://finance.yahoo.com/markets/stocks/articles/kohls-q2-2026-earnings-stock-130535603.html) / Nordstrom [source3](https://www.retaildive.com/news/nordstrom-tops-expectations-buoyed-by-rack-unit-growth/424326))
 - 📄 [Filing] Dollar General Q2 FY2026 실적 (2026-08-28 발표, catch-up) — "순매출 +5.2% $11.3B·동일점매출 +3.5%·영업이익 +29.2% $769.2M·희석 EPS $2.48(+33.3%) — 5개 분기 연속 트래픽 성장·6개 분기 연속 4대 머천다이징 카테고리 전부 플러스 동일점" → 디스카운트 채널의 관세 전가 방어력·거래량 견조. 8/19 Target·8/21 Walmart·8/26 Best Buy/Kohl's에 이은 K자형 수요 재확인(저가·필수소비 강세). 직전 회차(8/29) 미포착 → catch-up 등재(date_published 8/28) ([source](https://www.sec.gov/Archives/edgar/data/0000029534/000110465926069198/tm2616084d1_ex99.htm))
 - 📄 [Filing] Lululemon Q2 FY2026 실적 (2026-09-11 발표) — "매출 -4% $2.4B(예상 $2.46B 하회)·동일점매출 -9%(미주·중국)·미주 순매출 -8%·동일점 -12%·희석 EPS $2.92(예상 $1.79 상회이나 전년 $3.10 하회)·순이익 $329.2M(전년 $370.9M) — 발표 후 주가 약 -18% 급락" → 핵심 시장(미주·중국) 동반 약화로 프리미엄 애슬레저 수요 냉각. EPS는 마진 관리로 컨센 상회했으나 매출·동일점 감소가 성장 우려 부각 — 8/14 소매판매 -0.6%와 정합, 재량소비 약세 vs 디스카운트(Dollar General·오프프라이스) 강세의 K자형 분화 심화 ([source](https://www.newsquawk.com/headlines/lululemon-lulu-q2-2026-usd-eps-292-exp-179-revenue-24bln-exp-246bln) / [source2](https://ng.investing.com/news/stock-market-news/lululemon-q2-2026-presentation-revenue-drops-4-stock-plunges-18-93CH-2685194))
+- 📄 [Filing] Home Depot Q3 FY2026 실적 (2026-11-17 발표, 분기종료 11-01) — "매출 US$43.4B(+4.9%)·동일점매출 +2.2%(미국 +2.2%, 전년 +0.2% 대비 가속)·평균 티켓 +3.0%($93.09)·거래건수 -0.5%·GAAP 희석 EPS $3.72·조정 $3.86(전년 $3.74) — FY2026 가이던스 갱신(총매출 ~+4.5%·동일점 ~+1.4%·매출총이익률 ~33.0%·영업이익률 ~12.4%·조정 EPS 성장 ~2.0%)" → 평균 티켓 상승이 거래건수 소폭 감소 상쇄, 대형 리모델링·주택 관련 재량지출은 여전히 완만. Walmart·Target의 필수·일반소비 강세 대비 주택 연동 빅티켓 둔화 — 리테일 내부 분화 확인, 11/14 트래킹(Home Depot ~11/18) 실현 (📄 Home Depot SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0000354950/000035495026000184/hd_exhibit991x11012026.htm))
+- 📄 [Filing] Target Q3 2026 실적 (2026-11-18 발표, 분기종료 10-31) — "순매출 US$27.07B(+7.1%, 컨센 ~$26.5B 상회)·동일점매출 +5.6%(기존매장 +4.6%·디지털 +9.8%, 트래픽 +5.0%)·GAAP·조정 EPS $2.65(전년 GAAP $1.51·조정 $1.78) — 단 IEEPA 관세 환급 세전 $301M(순익 $228M·EPS $0.50 기여) 포함, 환급 제외 시 조정 EPS +21% YoY, FY26 가이던스 상향(순매출 ~+6%·EPS $10.65~11.40·2027 capex $5~6B)" → 트래픽 반등·전 카테고리 성장으로 기저 개선 동반(Q2 턴어라운드 지속), 경영진 '10월 소프트 후 11월 매출 가속·예상 부합'. Walmart(11/19)·Home Depot(11/17)와 함께 리테일 K자형·관세 환급 이익 국면 재확인 — 11/14 트래킹(리테일러 Q3) 실현 (📄 Target IR [source](https://corporate.target.com/press/release/2026/11/target-corporation-reports-third-quarter-earnings))
+- 📄 [Filing] Walmart Q3 FY2027 실적 (2026-11-19 발표, 분기종료 10-31) — "총매출 US$188.8B(+5.2% 보고·+4.5% 불변환율)·순매출 $186.8B(+5.1%, cc +4.4%, 자체 가이던스 cc +3.0~3.75% 상회), Walmart US 순매출 $125.0B(+3.6%·동일점 ex-fuel +2.9%)·International $35.9B(+7.0%)·글로벌 eCommerce +17%(US +23%), 조정 EPS $0.65(컨센 $0.64 소폭 상회)·GAAP $0.62, FY27 가이던스 상향(순매출 cc +4.9~5.2%·조정 EPS $2.84~2.89)" → 고소득층 점유율 확대·eCommerce 가속 견인, 3분기 연속 가이던스 상향. Target(11/18)·Home Depot(11/17)와 함께 홀리데이 시즌 진입 리테일 K자형 수요 재확인 — 11/14 트래킹(리테일러 Q3 ~11/20) 실현 (📄 Walmart SEC EX-99.1 [source](https://www.sec.gov/Archives/edgar/data/104169/000010416926000168/earningsreleasefy27q3.htm))
 
 ---
 
@@ -419,25 +426,25 @@ total_headlines: 196
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-11-14 트래킹)
+## 차주 갱신 예상 항목 (2026-11-21 트래킹)
 
-- **반도체**: NVIDIA Q3 FY2027 실적(11/19 예정 — AI capex 수요 방향타·DC 매출), Micron 2027 HBM 가격협상, TSMC 11월 매출(12월 초), SK하이닉스·삼성 HBM4E 샘플·하이브리드본딩 수율, 후속 메모리 PIM/PNM preprint(arXiv cs.AR)
-- **에너지**: OPEC+ 11/29 회의(2027 생산 프레임워크·2022 중단물량 복원 여부·캐파 감사), 호르무즈·이란 지정학·Brent 유지 여부, IEA Oil Market Report, EIA Weekly
-- **매크로**: ★셧다운(10/1~) 지속·데이터 블랙아웃 재개 시점, 12/9 FOMC(인상 >72% 프라이싱·Warsh 매파), 11/5 AI버블發 리스크오프(SOX -12.2%·VIX 28) 여파·VIX 정상화 여부★. ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백·us_economy SSOT 참조)
-- **바이오**: ASH 2026(68회) — 일반 abstract 공개·late-breaking abstract 온라인 12/7·본회의 12/12~15 New Orleans, FDA 11월 novel 승인, bioRxiv/medRxiv 신규 preprint
-- **핀테크**: FinCEN/OFAC AML 최종규칙·Fed 준비금·자본 NPRM 의견수렴(60일), CLARITY Act 상원 진전, OCC 최종규칙(10/21) 발효(1/18/27) 전 발행자 대응
-- **방산**: FY27 NDAA 상·하원 conference 협상 진전, Golden Dome 조정예산 배분, 한국 방사청 유럽 수출 후속, RUSI/CNAS 학술
-- **테크플랫폼**: NVIDIA 11/19 실적(하이퍼스케일러 capex 수요 검증), AMD-OpenAI MI450 1GW 배치(2H26) 상태, EU AI Act Article 50·GPAI 집행 사례, Apple iPhone 17 판매
-- **소비재**: 리테일러 Q3 어닝 본격화(Walmart ~11/20·Target·Home Depot ~11/18-20), 홀리데이 수요(NRF·Bain 전망 대비 실측), K자형 분화 지속 여부
-- **산업재**: 10월 ISM(제조·서비스) 후속 민간지표, TSMC AZ Phase 2·$100B 추가투자, 전력장비 리드타임·그리드 인터커넥션, NBER Productivity
-- **자동차**: Tesla Q4 수요(연방 EV 크레딧 9/30 종료 후)·로보택시/Cybercab 램프, 타 OEM Q3 실적, 중국 EV 수출·관세
+- **반도체**: TSMC 11월 매출(12월 초), SK하이닉스·삼성 16-Hi HBM4 고객 퀄·HBM4E 샘플 진전, Micron 2027 HBM LTA 가격, 후속 메모리 PIM/PNM preprint(arXiv cs.AR). ⚠️ 추수감사절 주간(11/26 휴장·11/27 반장)으로 거래·발표 축소
+- **에너지**: ★OPEC+ 11/29 회의(2027 생산 프레임워크·2022 중단물량 복원 여부·캐파 감사 결과)★, 호르무즈·이란 지정학·Brent $90대 유지 여부, EIA Weekly, 디젤 재고 방출 효과
+- **매크로**: ★셧다운(10/1~) 지속·데이터 블랙아웃·지연 지표 재개 시점, 12/9 FOMC(인상 >72% 프라이싱·Warsh 매파), 11월 중간선거 후 정치 지형★. ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백·us_economy SSOT 참조)
+- **바이오**: ASH 2026(68회) — late-breaking abstract 온라인 12/7·본회의 12/12~15 New Orleans, FDA 11월 말 novel 승인, bioRxiv/medRxiv 신규 preprint, Roche 경구 SERD 성분·brand 확정 verify
+- **핀테크**: FinCEN/OFAC AML 최종규칙·Fed 준비금/자본 NPRM 의견수렴(60일), OCC 최종규칙(10/21) 발효(1/18/27) 전 발행자 대응, CLARITY Act 중간선거 후 재점화 여부(9/15 cloture 49-50 부결)
+- **방산**: FY27 NDAA 상·하원 conference 협상 진전(H.R.8800 7/22 하원 통과·S.4784 상원 계류), Golden Dome 배분, RUSI/CNAS 학술
+- **테크플랫폼**: 추수감사절·블랙프라이데이 이커머스(Adobe Analytics·Salesforce·Mastercard SpendingPulse), 잔여 테크 어닝(Dell·HPE·Workday·CrowdStrike 등), AMD MI450 배치, EU AI Act Article 50 집행
+- **소비재**: ★블랙프라이데이·사이버먼데이(11/27~30) 홀리데이 실측(NRF $1.013조·Bain $1,016B 전망 대비)★, Deere Q4(~11/26)·잔여 리테일러(Dick's·Burlington·Best Buy), K자형 분화 지속
+- **산업재**: Deere FY4Q26(~11/26)·10월 내구재주문·11월 PMI 플래시, TSMC AZ Phase 2·전력장비 리드타임, NBER Productivity
+- **자동차**: Tesla Q4 수요(연방 EV 크레딧 종료 후)·로보택시 램프, 중국 EV 수출·관세, 타 OEM 연말 판매
 
-## 폴백/미수집 (2026-11-14 회차)
+## 폴백/미수집 (2026-11-21 회차)
 
-- WebSearch 정상 바인딩 — **메인 중앙 수집** 방식(스케줄 슬롯 서브에이전트의 WebSearch 미바인딩·maxTurns 리스크 회피, 10/17·10/24 회차와 동일). 직전 전용 주간 L1 런 10/24(10/31 미실행·11/7 월간 L2) 이후 윈도우 11/7~11/14 — 10/24 워치리스트 해소분 포함.
-- **수집 헤드라인(5건, 모두 1차 공시/공식 릴리스/로펌 1차 분석 교차 인증)**: ① TSMC 10월 매출(11/10, SEC 6-K WebFetch) — 반도체, ② TrendForce 4Q26 메모리 계약가 전망(10/20) — 반도체, ③ OPEC+ 11/1 12월 쿼터 동결(11/1) — 에너지, ④ EIA STEO 11월판(11/10) — 에너지, ⑤ OCC GENIUS Act 최종규칙(10/21 발표·1/18/27 발효, Mayer Brown WebFetch) — 핀테크
-- **금주 핵심**: ① TSMC — 10월 연결매출 NT$586.89B(+59.7% YoY·+14.7% MoM) 월간 사상 최고·1~10월 누적 NT$4,485.62B(+43.3%), Q4 US$52.3~54.3B 궤도 — AI 슈퍼사이클 지속성 확인. ② TrendForce — 통상 DRAM 4Q26 +20% QoQ(상향)·NAND +15~20%·2027 HBM 블렌디드 ASP +121% YoY — 메모리 슈퍼사이클 보강. ③ OPEC+ — 12월 쿼터 동결(이란 전쟁發 수출 차질·목표치 하회 생산), 11/29 회의가 2027 프레임 분기점. ④ EIA STEO — 2027 Brent $86 상향·이란 수출 제약 명시(호르무즈 레짐 정합). ⑤ OCC — 1:1 준비금+하이브리드 분산(요구불 ≥5%)·2영업일 상환·무수익 금지 최종규칙 확정, Circle·Tether 제도권 편입 본격화.
-- **★매크로 — 실세계(2025) 비둘기 데이터 오염 차단(신규 L1 등재 보류 유지)**: 10/10·10/17·10/24 가드 지속. `knowledge-base/macro/us_economy.md` SSOT(11/7 갱신) 기준 시뮬 2026은 ①셧다운(10/1~) ~45일째 지속·BLS 9월/10월 지표 미발표('may never be released') ②10/28 FOMC 동결·12/9 live(인상 >72%·2026 인하 배제·Warsh 매파) ③11/5 AI·반도체 버블 우려發 리스크오프(SOX 일간 -12.2%·VIX 28·10Y flight-to-quality 4.84%) — 단 리스크오프지 비둘기 피벗 아님 ④Brent 호르무즈 프리미엄 고착. WebSearch '셧다운 조기종료·Senate/CR 예산타결·9월·10월 CPI/NFP 발표·비둘기 피벗·2026 인하'류는 real-world 2025 오염 — 배제. 이번 주 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조.
-- **미도래/미수집 섹터(바이오·방산·테크플랫폼·소비재·산업재·자동차)**: **바이오**(ASH 2026 late-breaking abstract 12/7 온라인·본회의 12/12~15, FDA 11월 novel 종양/비만 특이 승인 미확인 — Epocrates 10월 roundup은 신장질환·희귀호흡기 중심), **테크플랫폼**(NVIDIA Q3 FY2027 11/19 미도래·AMD MI450 1GW 실제 배치 미확정, 하이퍼스케일러 Q3 capex는 11/7 월간 L2 반영), **방산**(FY27 NDAA 9월 이후 상원 floor 액션 없음·conference 진행, 신규 확정 이벤트 윈도우 밖), **소비재**(리테일러 Q3 어닝 ~11/17-20 차주 도래), **산업재**(10월 ISM는 11/7 월간 L2 `ism_manufacturing_pmi_oct2026` 반영), **자동차**(Tesla Q3는 10/24 등재·신규 확정 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개.
-- **교차검증 현황**: TSMC는 SEC EDGAR 6-K 원문 WebFetch로 직접 확인(1차 공시·NT$586.89B/+59.7%/+14.7%/누적 NT$4,485.62B/+43.3% 확정). OCC 최종규칙은 Mayer Brown 로펌 1차 분석 WebFetch(발효일·준비금·상환·무수익 조항 상세, 2차 Davis Polk/Sheppard 교차). OPEC+·EIA는 다수 매체 교차(OPEC+ staradvertiser/worldoil/enerdata·EIA는 Morningstar/Dow Jones 2차+EIA 원문). TrendForce는 공급사 공식 계약가 미공개로 추정치 명시.
-- 12주 슬라이딩(84일=2026-08-22 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건.
+- WebSearch 정상 바인딩 — **메인 중앙 수집** 방식(스케줄 슬롯 서브에이전트 WebSearch 미바인딩·maxTurns 리스크 회피, 10/17·10/24·11/14 회차와 동일). 윈도우 11/15~11/21 — 11/14 워치리스트 해소분 포함.
+- **수집 헤드라인(7건, 1차 공시/공식 릴리스 WebFetch 교차 인증)**: ① NVIDIA Q3 FY2027(11/17, NVIDIA 공식 WebFetch) — 반도체+테크플랫폼, ② Walmart Q3 FY27(11/19, SEC EX-99.1 WebFetch) — 소비재, ③ Target Q3(11/18, Target IR WebFetch) — 소비재, ④ Home Depot Q3(11/17, SEC 8-K WebFetch) — 소비재, ⑤ IEA Oil Market Report 11월판(11/13) — 에너지, ⑥ FDA Roche 경구 SERD 유방암 승인(11/17, RAPS) — 바이오
+- **금주 핵심**: ① NVIDIA — Q3 $115.84B(+103% YoY)·DC $107.6B(+110%)·Q4 가이던스 $130.0B, 중국 DC 0 가정에도 대폭 상회 — AI 슈퍼사이클·HBM4 수요 지속성 재확인. ② 리테일 트리오 — Walmart(+5.2%·가이던스 상향)·Target($27.1B·관세환급 $301M)·Home Depot($43.4B·가이던스 하향): 필수·일반소비 강세 vs 주택 빅티켓 둔화 = K자형 내부 분화. ③ IEA — 4Q26 공급과잉 전환(이란戰 후 첫 공급>수요)·디젤이 제약·Brent $92대, OPEC+ 11/29가 2027 프레임 분기점. ④ FDA Roche 경구 SERD 승인 — SERD/PROTAC 경구 분해제 경쟁 확대.
+- **★매크로 — 실세계(2025) 비둘기 데이터 오염 차단(신규 L1 등재 보류 유지)**: 10/10~11/14 가드 지속. `knowledge-base/macro/us_economy.md` SSOT 기준 시뮬 2026은 ①셧다운(10/1~) 지속·BLS 지표 미발표 ②10/28 FOMC 동결·12/9 live(인상 >72%·2026 인하 배제·Warsh 매파) ③중동 지정학 프리미엄으로 Brent $90대 고착. WebSearch '셧다운 조기종료·9월/10월 CPI·NFP 발표·비둘기 피벗·2026 인하'류는 real-world 2025 오염 — 배제. 이번 주 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조.
+- **미수집 섹터(핀테크·방산·산업재·자동차)**: **핀테크**(CLARITY Act 9/15 cloture 49-50 부결 후 11월 신규 floor 액션 없음·OCC 최종규칙은 11/14 등재, FinCEN/OFAC·Fed NPRM 의견수렴 중), **방산**(FY27 NDAA conference 진행 중·신규 확정 이벤트 윈도우 밖), **산업재**(Deere Q4·내구재 등 차주 ~11/26 도래·10월 ISM은 11/7 월간 L2 반영), **자동차**(Tesla Q4 차기 분기·신규 확정 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개.
+- **교차검증 현황**: NVIDIA·Walmart·Target·Home Depot는 각 공식 릴리스/SEC 파일링 WebFetch로 직접 확인(HTTP 200, 수치 원문 대조). IEA는 보고서 페이지 + S&P Global 2차. FDA Roche는 RAPS Recon 1차 브리핑(약물 brand명 미확정 — 다음 회차 verify). 매크로 섹터는 가드로 신규 등재 0건.
+- 12주 슬라이딩(84일=2026-08-29 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건.
