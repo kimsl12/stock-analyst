@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-14
-valid_until: 2026-12-14
+updated: 2026-11-21
+valid_until: 2026-12-21
 category: macro
 sources:
   [
@@ -193,7 +193,7 @@ sources:
     "METI",
   ]
 confidence: high
-last_synced_from_db: 2026-11-14
+last_synced_from_db: 2026-11-21
 ---
 
 # 글로벌 공급망 재편 트래커 (Supply Chain)
@@ -205,6 +205,24 @@ last_synced_from_db: 2026-11-14
 > **연계:** G-1(지정학 파워맵)의 하위 프레임. 공급망 재편의 근본 동인은 지정학.
 
 ## ★ CURRENT ★
+
+## [2026-11-21] 주간 델타 (11/14~11/21)
+
+> **교차검증 (운임·가격, 11/13~11/20 기준):** 유가는 **메인 yfinance 확정 앵커** — WTI **$83.62**/Brent **$89.87**(11/20·CL=F/BZ=F 일봉=시간봉 일치→정산 아티팩트 없음·11/13 $88.56/$95.84서 **-5.6%/-6.2% WoW**·10/26주 Brent $117.64 고점서 **~24% 누적 하락**). 동인: OPEC/IEA 2027 공급과잉 전망+호르무즈 수출 정상화+AI 디레버리징 리스크오프 동조(11/16 Brent $92.44/WTI $85.72 -3% 당일). **LNG 소폭 반등** — TTF **$29.5/MBtu**(11/13·11/6 $28.0서 +5%·11/12 ~$30.0 고점)·JKM **low-$30s**(11/13·11/10 high-$27s 저점서 반등)·Henry Hub **$3.2**(12월물)·EU 저장 **70.8%**(11/13·5년평균比 -20.3%·Rystad 2020년대 최저). **벌크 랠리 후 반락** — BDI ~2,980(최근 금 -1.3%·7거래일 상승 마감)/ShipUniverse 3,020(11/12)·Capesize 주간 +8.6% 견인. **컨테이너 WCI $4,305/40ft**(11/12·-2% WoW·3주 연속 하락). 구리 LME >$14,000/mt(Q4 전망 $14,250)·탄산리튬 中 ~¥90,000/t(2026 신저점). ★AI 디레버리징(SOX 주간 -17.1%·대만 가권 -12%·VIX 36)은 금융 이벤트 — 물리적 공급망 불변★.
+> **D-카운트 재계산 (2026-11-21 기준):** 대미흑연 수출통제 유예 11/27 **D-6**(MOFCOM No.72·REE 유예 Jan 10 2027 동반 이연 가능성 플래그) · 폴리실리콘232 12/4 **D-13** · DFARS 252.225-7052 1/1/2027 **D-41** · REE/흑연 Phase 2 유예 ~Jan 10 2027 **D-50** · 희토류 추가통제 유예 Jan 10 2027 연장 확정분 유지(11/9) · US-中 휴전 Jan 10 2027 유효.
+
+- **★유가 추가 하락 심화 — WTI $83.62/Brent $89.87(11/20 메인 yfinance 앵커·11/13 $88.56/$95.84서 -5.6%/-6.2% WoW). 10/26주 Brent $117.64 고점서 ~24% 누적 하락.** [서사] 주동인은 공급측 — OPEC/IEA 2027 '상당한 공급과잉' 전망+호르무즈 원유 수출 정상화. AI 디레버리징發 리스크오프(SOX -17.1%·VIX 36)는 동조 압력이나 주원인 아님. 11/16 Brent $92.44/WTI $85.72(-3% 당일·호르무즈 수출 회복). Goldman 2027 Brent avg $88→Dec $78. **OPEC+ 11/29 장관회의서 2027 생산틀 결정 대기.** CL=F/BZ=F 일봉=시간봉 일치로 정산 아티팩트 없음. [yfinance 11/20, Nation Thailand 11/16, Goldman, OPEC+ 11/29]
+- **★AI 디레버리징 2차효과 — 금융 이벤트 vs 물리적 공급난 괴리가 핵심.** 대만 가권 주간 -12%(진앙·11/19 38,426.89)·SOX -17.1%·VIX 36 패닉에도 반도체 **물리적 공급망은 불변**. SemiAnalysis 11/13 2028 AI 가속기 capex -28% 하향(2026 ~$392B 불변·2030 $923B 유지·동인=비확약 하이퍼스케일러 프로젝트 투자심리 약화·일부는 칩·메모리 단가 하락 반영). 단 **메모리 주문 견조·HBM 출하 지속·하이퍼스케일러 2026 capex ~$725B**(Deloitte). Micron 11/5 -17%·Sandisk -22%는 밸류에이션 되돌림. OpenAI 지출 삭감發 메모리價 하락설(Telegraph)엔 아직 실물 증거 부재. [SemiAnalysis 11/13, Deloitte, NewMarketPitch, 메인 yfinance]
+- **메모리 초긴축 지속·상승폭 둔화 — TrendForce 11/11: PC DRAM 계약가 4Q26 +13~18% QoQ(3Q26 +18~23%서 둔화). 종합DRAM(HBM포함) +15~20%·NAND +15~20%·일반DRAM +10~15%(9/30 유지). 2026 bit 수요 +80% YoY.** 2027 PC DRAM 공급 감소 가능(캐파 서버 전환). **YMTC 글로벌 메모리 공급난 최소 3년 지속 전망.** 상승폭 둔화는 소비단 약세(split market) 반영이나 서버/HBM 긴축은 불변. [TrendForce 11/11·9/30, YMTC, iconnect007]
+- **TSMC/CoWoS 캐파 확장·가격 인상 — capex 2026 $60~64B·2026~28 합계 >2023~25 합계. CoWoS 5.5-reticle 양산 수율 >98%·14-reticle(10 compute die+20 HBM) 2028 양산. 월 CoWoS 캐파 2026 >130,000 wafer→2027 200,000(Goldman 보수적 ~106,000).** CoWoS 가격 **최대 +20% 인상 검토**. 병목=메모리+ABF 기판(TSMC VP). 공급난 2027+ 지속(C.C. Wei). AI 디레버리징에도 선단 패키징 발주 지속. [TSMC Q3 승계, TrendForce, Commercial Times, Goldman, tweaktown]
+- **★희토류 ex-China 품귀 심화 + 통제 유예 유지 — CIF Europe Dy oxide ~16.3배 DDP China(Q2말 6.8배서 급등·11/14 블록 유지). 서방 Dy oxide $2,500~5,500/kg·Tb oxide $10,000~13,000/kg. 이트륨 괴리 최대**(Rotterdam ~78배·中 수출 2023~24 평균比 ~40%·對日 거의 전무·日 연말 심각 품귀 경고)**. CREIA 中내 지수 10월 평균 261.6→11월초 ~254.7 저점→259.6(11/18) 반등.** 中 추가통제(Ho/Er/Tm/Eu/Yb 5종+가공기술) 유예 Jan 10 2027 연장 유지(11/9 확정)·**April 2025 7종(Dy/Tb/Y) 라이선싱 통제 유지가 two-world 괴리 지속 동인**. [Benchmark Q3, rareearthexchanges 11/18, Fastmarkets, CRU, MOFCOM]
+- **★한국 脫中 희토류 가속 — 고려아연·POSCO인터·LS전선 美 진출 본격화.** 고려아연-Alta Resources 폐자석 재활용 JV+美 11종 핵심광물 제련소(對美 안티모니 100t→240t↑·韓 유일 생산)·POSCO인터내셔널 REEtec $200M JV(美 6,000mt REO/자석·2028 양산)+ReElement JV·LS전선 버지니아 ~$689M 영구자석공장(2027말 양산)·LS에코에너지 베트남 금속화. **中 비중 韓 희토류 수입 47.5%(7월 누계·전년 49.0%서 하락)**·美 비중 급증. 韓 美주도 FORGE 초대 의장. [Korea JoongAng Daily, Korea Times, Asia Business Daily, KDB]
+- **LNG 소폭 반등 — TTF $29.5/MBtu(11/13·11/6 $28.0서 +5%·11/12 ~$30.0 고점)·JKM low-$30s(11/13·11/10 high-$27s 저점서 반등)·Henry Hub $3.2(12월물).** 동인: 北유럽 한파+겨울 첫 Dunkelflaute(저풍·저일조)+노르웨이 Troll/Asgard 돌발정비+중동 긴장. **EU 저장 70.8%(11/13·5년평균比 -20.3%·Rystad: 2020년대 최저 재고)** 겨울 상방 리스크. 11/14 블록 'TTF $28.0 급락'서 소폭 반등 전환. [globallnghub 16 Nov(JOGMEC), Rystad 11/11]
+- **벌크·컨테이너 — BDI 랠리 후 반락: ~2,980(최근 금 -1.3%·7거래일 연속 상승 마감)/ShipUniverse 3,020(11/12·11/6서 +215)·Capesize 주간 +8.6%(5TC $42,798/day 11/13)가 견인·Supramax 1,836(11/13 최고)·Panamax 1,956(11/4). WCI $4,305/40ft(11/12·-2% WoW·3주 연속 하락·Shanghai-NY $9,020 -3%·美 수입수요 둔화).** November 19+ 신규 release 공백. 中 최대 게이트웨이 선박 대기시간 급증 병존. [TradingEconomics/ShipUniverse 11/12~13, Drewry 11/12, Green Worldwide W47]
+- **리튬·구리 — 탄산리튬 中 ~¥90,000/t(11/12 Mysteel·2026 신저점): Jianxiawo 재가동+해외광석 급증+수요약세. 11월 생산 121,800t(+3.5% MoM)·광저우거래소 수산화리튬 선물 11/26 상장.** 구리 LME >$14,000/mt(Q4 전망 $14,250·COMEX $6.85/lb)·COMEX-LME 스프레드 ~$310/t(11월물 프리미엄 겨우 $38.99/mt). **정제구리 Section 232(15%/30%) 미결정·美 중간선거 민주당 승리로 관세 가능성 축소.** [Mysteel 11/12, SMM, BMI 11/6, Northern Miner]
+- **규제 데드라인 클러스터 — ★폴리실리콘232 12/4 D-13 세부 확정: 15% 관세+최저수입가(폴리실리콘 $21/kg·잉곳/웨이퍼 $100/kg·셀 $0.22/W·모듈 $0.38/W)·日/韓/대만/EU 15% 상한·英 10%·온쇼어링 설비 면제·Section 201(2026-02 만료) 대체.** 대미흑연 11/27 D-6(MOFCOM No.72·REE 유예 동반 이연 플래그)·DFARS 1/1/2027 D-41·REE/흑연 Phase2 ~Jan 10 2027 D-50. US-中 휴전 Jan 10 2027 유효. [Federal Register 2026-16400, Thomson Reuters/BDO/pv-tech, DFARS, MOFCOM]
+
+---
 
 ## [2026-11-14] 주간 델타 (11/8~11/14)
 
