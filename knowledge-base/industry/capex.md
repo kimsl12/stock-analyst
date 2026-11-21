@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-14
-valid_until: 2026-12-14
+updated: 2026-11-21
+valid_until: 2026-12-21
 sector: capex
 confidence: high
 tags:
@@ -241,15 +241,40 @@ sources:
     Finimize,
     chartmill,
     rallies.ai,
+    247wallst,
+    credenceresearch,
+    guptadeepak,
+    iconnect007,
+    sfstandard,
+    officechai,
+    trefis,
+    devdiscourse,
+    Morgan Private Bank,
+    techpowerup,
+    heraldcorp,
+    sateconomy,
+    datacenterdynamics,
+    swissinfo,
   ]
-last_synced_from_db: 2026-11-14
+last_synced_from_db: 2026-11-21
 ---
 
 # 글로벌 설비투자(CapEx) 트래커
 
-> 갱신일: 2026-11-14 | 신뢰도: high | 유효: ~2026-12-14
+> 갱신일: 2026-11-21 | 신뢰도: high | 유효: ~2026-12-21
 
 ---
+
+## ★ 주간 델타 (11/21) — 직전 갱신(11/14) 이후 변화 (윈도우 11/14~11/21)
+
+> 배경: AI 버블 디레버리징 2막 — 직전 윈도우(고베타 무차별 디레버리징) 이후, capex 수요의 최종 검증대인 NVIDIA Q3 FY2027(11/17)이 전면 비트(매출 $115.8B·+103%·6연속 비트·데이터센터 $107.6B·+110%)에도 실적후 랠리가 소멸하고 11/21 세미 캐피툴레이션(SOX -10.73%·NVDA 주간 -14%·VIX 36)으로 귀결. 펀더멘털(수요: capex 가이던스·WFE +30%·HBM 완판)과 금융(밸류/신용 디레이팅)의 디커플이 당주 핵심 긴장. 2026 시뮬 레짐 매파(고금리·美 10Y ~5.1%) 전제 — real-world 2025 비둘기 서사 아님.
+
+- **[핵심] NVIDIA Q3 FY2027(11/17) capex 수요 검증 — 전면 비트에도 실적후 랠리 소멸·세미 캐피툴레이션: 매출 $115.8B(+103% YoY·6연속 비트)·데이터센터 $107.6B(+110%, 하이퍼스케일 $60.1B+AI클라우드/산업/기업 $47.5B)·Q4 가이드 ~$130B(±3%)·GM 71~72%·FY2028 매출성장 ~75%로 상향·off밸런스 클라우드서비스약정+DC리스 $102B(from $74B)·공급약정 ~$390B·자사주 바이백 증액·중국 DC컴퓨트 가이드 제외(Q3 Hopper $2.4B 출하 후 중단)·but 11/19 ~-3%(5연속 S&P 하락)→11/21 SOX -10.73%·NVDA 주간 -14%·VIX 36·forward P/E ~12x(2012/11 이후 최저)·10월 고점 대비 ~$1.4T 증발**: capex 수요의 최종 검증대였던 NVDA 실적은 **전면 비트** — 매출 **$115.8B(+103%)**·**데이터센터 $107.6B(+110%)**·Q4 가이드 **~$130B(±3%)**·FY2028 성장 ~75% 상향. 특히 **off밸런스시트 클라우드서비스약정+DC리스가 $102B로 전분기 $74B에서 급증·공급약정 ~$390B**로 capex 파이프라인 가시성이 재확인(하이퍼스케일 $60.1B vs AI클라우드/산업/기업 $47.5B — 후자가 더 빠른 성장). 그러나 **실적후 랠리가 소멸** — 밸류/신용 디레이팅이 지배하며 11/19 ~-3%(S&P 5연속 하락), **11/21 세미 캐피툴레이션(SOX -10.73%·NVDA 주간 -14%·VIX 36, 내부 모닝브리핑)**. NVDA **forward P/E ~12x(2012/11 이후 최저)**·10월 고점 대비 ~$1.4T 증발. **수요(펀더멘털) 검증 vs 금융 디레버리징의 디커플**이 당주 서사의 핵심. 주: 11/21 SOX/VIX 수치는 내부 모닝브리핑+2차소스 근사, 컨센(~$109B)·FY2028 +75%는 소스별 상이 [247wallst, aiweekly, letsdatascience, credenceresearch, guptadeepak, wealthprofessional, swissinfo, decrypt, 내부 모닝브리핑(2026.11.17~21)]
+- **[핵심] Jensen Huang 사임(11/12)·Colette Kress 임시 CEO — 리더십 충격이 AI capex 디레버리징 증폭**: NVIDIA 창업자 **Jensen Huang이 11/12 CEO·사장·이사직에서 즉시 사임(33년 재임 종료)**, **CFO Colette Kress가 CFO 겸임한 채 임시 CEO** 선임·**Harvey C. Jones가 초대 이사회 의장**. 사유 미공개(일부 보도 미검증 사생활/외국정보 조사 연루설, 익명 소스)·이사회 영구 CEO 물색 중. 11/17 Q3 FY2027이 신임 체제 첫 실적. **AI 인프라 capex의 최대 수혜/상징 기업의 리더십 공백**이 11월 세미 디레버리징·밸류에이션 공포를 증폭(실적 비트에도 주가 약세). 주: 사임 사유는 미검증 보도, 영구 CEO 미정 [iconnect007, wccftech, sfstandard, americanbazaar, officechai, yourstory(2026.11.12)]
+- **[핵심] AI 신용 디레버리징 2막·조달 실패 실사례 구체화 — CoreWeave 11/13 -6.1%·8/17 대비 -49.9%·부채 ~$46.9~52B·2030~32노트 수익률 15~16%·Blue Owl 지원 펜실베이니아 DC 부채조달 실패(렌더 non-IG AI 차주 기피) + Oracle 11월 -23%·세션 -8.8%·Blue Owl이 $10B 오라클-OpenAI 미시간 DC 백스톱 거부 보도(오라클 부인)·AI DC주 ~$80B 증발**: 직전 11/14 KB(CoreWeave Q3 beat·백로그 $132.5B·이자부담)에서 경고된 레버리지 리스크가 **조달 실패 실사례로 구체화** — **Blue Owl 지원 펜실베이니아 DC가 부채조달 실패**(렌더가 투자등급 미만 AI 차주 기피), **CoreWeave 11/13 -6.1%·8/17 대비 -49.9%·2030~2032 노트 수익률 15~16% 궤도**. **Oracle 11월 -23%·세션 -8.8%, Blue Owl이 $10B 오라클-OpenAI 미시간 DC 백스톱을 거부했다는 보도(오라클 부인)**. AI DC주(Oracle·Dell 등) ~$80B 시총 증발. **'data center capex $10B 삭감 시 칩/서버/전력 연쇄 지연' 내러티브 지속** — AI 인프라 프로젝트 파이낸스 균열이 capex 지속가능성 논쟁의 최전선. 주: 부채규모 소스상이, Blue Owl 거부 보도는 오라클 부인(미확정) [trefis, cryptobriefing, aol, nasdaq, devdiscourse, siliconangle(2026.11.13~16)]
+- **반도체 WFE 2027 +30% 장비 3사 수렴 — AMAT Q4 FY2026(11/12) 사상최대 매출 $10.41B(+53% YoY)·adj EPS $4.16(exp $4.06)·FY $34.45B(+21%)·CEO Dickerson WFE 2027 +30% 초과 전망(어드밴스드 파운드리-로직·DRAM·패키징)·Q1 FY27 가이드 $11.1B(±$500M)/EPS $4.35(±$0.20, 14주 분기)·AH +3%**: 직전 11/14 KB(AMAT fiscal Q4 due·가이던스 기준 실측 미확인) 대비 **실측 확정** — 사상최대 분기 매출 $10.41B(+53%)·adj EPS $4.16(exp $4.06 비트)·FY 매출 $34.45B(+21%). **CEO Gary Dickerson이 WFE 2027 +30% 초과 성장 전망**(어드밴스드 파운드리-로직·DRAM·패키징 견인). 직전 KLA/Lam CY2027 WFE $200B+ 가이드에 **AMAT +30%가 더해져 공급 장비 3사 수렴** — 수요(장비사) 검증. 반면 **BofA CY2027 $183B/CY2030 $250B dissent** 구도 지속(장비사 vs IB 괴리). 디레이팅 국면에도 장비 수주 가이던스는 견조. 주: WFE 정의 소스간 상이, 2027은 CEO 정성 전망 [zacks, newsquawk, techpowerup, finviz, cryptobriefing, investinglive, nasdaq(2026.11.12)]
+- **하이퍼스케일 2027 capex·HBM 가격 재확인(수요측 견조 vs 시장 디레이팅 괴리) — Morgan Private Bank 11월 outlook 5사(GOOGL·AMZN·MSFT·META·ORCL) 2027 ~$1.125T vs 2026 $792B + TrendForce HBM 계약가 2027 +70~140%(일부 LTA 가격상한)·SK하이닉스 사장 '2027 공급상 최악의 해'·HBM 2027 top3 DRAM캐파 ~30%(비트 13%)·TrendForce 빅테크 AI인프라 2027 +60%**: capex 가이던스/부킹은 **수요측 견조** — Morgan Private Bank 5사 2027 ~$1.125T(vs 2026 $792B, 직전 KB MS 5사 $1.6T는 SpaceX/CoreWeave/Nebius 포함 광의·집계기준 상이). **HBM**: TrendForce 2027 계약가 **+70~140%**(일부 LTA 가격상한)·SK하이닉스 사장 2027을 **공급상 최악의 해**로 지칭·**HBM이 2027 top3 메이커 DRAM 캐파의 ~30% 소모(비트 13%)**·빅테크 AI인프라 2027 +60%. **capex(수요)는 견조한데 시장은 밸류/신용 디레이팅** — 괴리 지속이 당주 핵심 긴장. 주: 2027 수치는 애널리스트/장비사 모델·집계기준 소스상이 [zacks/Morgan Private Bank, fourweekmba, heraldcorp/TrendForce, tomshardware, guru3d(2026.11.08~18)]
+- **전력 인프라가 AI 최대 병목 지속·한국 전력기기 수주 기록 — 한국 3사 Q3말 수주잔고 합산 38조원 초과(효성중공업 18.9조·LS일렉트릭 7.04조·HD현대일렉트릭 $88.4억)·빅4 33조 돌파(11/18)·HD현대일렉트릭 9월 미국 최대 송전망사 765kV 풀패키지+배전 빅테크 공급계약 11월말 확정 예상·효성 북미/중동 초고압변압기+호주 HVDC/STATCOM·LS일렉트릭 미 유타/텍사스 DC배전 반복수주 (참고 ~10/28: Vertiv Q3 매출 +61% $4.31B·유기오더 +100%·FY 가이드 상향)**: 한국 전력기기 **3사 Q3말 수주잔고 38조원 초과**(효성중공업 18.9조·LS일렉트릭 7.04조·HD현대일렉트릭 $88.4억)·**빅4 합산 33조 돌파(11/18)**. **HD현대일렉트릭 9월 미국 최대 송전망 운영사와 765kV 초고압변압기 풀패키지 계약·배전 글로벌 빅테크 공급계약 11월 말 확정 예상**. 효성 북미/중동 초고압변압기 확대+호주 HVDC/STATCOM·LS일렉트릭 미 유타/텍사스 DC배전 반복수주. 참고(윈도우 직전 ~10/28): **Vertiv Q3 2026 매출 +61% $4.31B(유기 +55%)·adj EPS $2.21(exp $1.82)·유기오더 +100% 초과·FY 가이드 $14.45~14.85B/EPS $7.10~7.20로 상향**. 변압기 리드타임 128주+/대형 3~5년 구조 지속 — 디레버리징 국면에도 전력 병목은 미완화. 주: 한국 수주잔고 통화/시점별 상이, Vertiv는 윈도우 직전 실적 [sateconomy, v.daum, inews24, datacenterdynamics, 247wallst, fourweekmba(2026.11.04~18)]
 
 ## ★ 주간 델타 (11/14) — 직전 갱신(11/07) 이후 변화 (윈도우 11/08~11/14)
 

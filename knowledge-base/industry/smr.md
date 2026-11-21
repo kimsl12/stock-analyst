@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-14
-valid_until: 2026-12-14
+updated: 2026-11-21
+valid_until: 2026-12-21
 category: industry
 sub_category: science_tech
 topic: smr
@@ -53,13 +53,18 @@ sources:
   - [10/24 갱신] yfinance (10/23 1시간봉 US+한국 종가) / tikr·247wallst 2026-10-20 (Oklo·NuScale 주간 -15%·10/14 핫CPI 10Y 5.26% 금리發 디레이팅) / WNN·offshoresource·finviz 2026-10-13 (Oklo Groves 2 Forge DOE Nuclear Energy Launch Pad·Lu-177) / power-eng·morganlewis·bgov (셋다운 4주차 NRC furlough) / northernminer·mining.com·panabee·tikr (Westinghouse 비공개 S-1·Scotiabank C$24.6B·Desjardins 2029) / Cameco 9/30·TradingEconomics·skillings (우라늄 스팯 $89.63·장기 $96.50) / dealroom·geekwire (핵융합 신규 라운드 없음)
   - [11/07 갱신] yfinance (11/6 1시간봉 US종가 + 11/6 한국종가·11/5 capitulation 저점) / finviz·itiger·cmcmarkets·earningswhispers (Oklo Q3 11/6 적자확대·가이던스 상향·DOE Aurora A3F 연료시설 승인) / WNN·datacenterdynamics·exchangemonitor·ans (Oklo Aurora Fuel Fabrication Facility DOE 승인 시퀀스) / marketbeat·finviz·trefis·simplywall (NuScale Q3 11/5·TVA PPA 미체결) / barchart·cp24·bnnbloomberg·tikr·panabee·pulse2·zacks·hl.co.uk (Cameco Q3 10/30 생산 3.5M lb·실현가 $91.76·가이던스 19.5~20.5M lb·Westinghouse +15% EBITDA) / dealsite·daum·sateconomy·mtn 10/29 (두산 3Q 누적 영업익 +47%·수주잔고 26.58조·체코 두코바니 협상 결렬 노이즈·한수원 5.6조 정상) / foxnews·yahoo·cbs·mondaq·benton (셧다운 ~38일차 record·상원 진전 [2025 타결보도 미채택]) / canarymedia·techcrunch·thenextweb (핵융합 신규 메가딜 없음)
   - [11/14 갱신] yfinance (11/10~11/13 일봉+1시간봉 US종가·11/13 한국종가) / tikr·nasdaq·marketbeat (SMR 고베타 디레버리징·AI 센티먼트) / cruxinvestor·skillings·engineeringnews (우라늄 장기 US$99 10/31 1996년래 최고·UEC unhedged 2개 유틸리티 11/5·2026 18% 공급부족) / mining·northernminer·power-eng·panabee (Westinghouse 비공개 draft S-1 7/31·IPO 윈도우 2029·Cameco 49%/Brookfield 51%) / globalventuring·ans article-8526 10/28 (핵융합 연방 R&D LOI CFS $85M·Helion $175M·신규 메가딜 없음) / infostockdaily·mt.co.kr·theguru (두산 체코 불발 노이즈·목표가 줄하향·키움 급락과도·메리츠 뉴스케일 발주 연내)
+  - [11/21 갱신] yfinance (11/12~11/19 일봉 US종가·11/13->11/20 한국종가 전수 실측) / ans.org article-8573·energy.gov·world-nuclear-news·power-eng·canarymedia (Dow/X-energy Long Mott 건설허가 NRC 11/9·Xe-100 4기·DOE $21.5억·최초 산업부지/pebble-bed HTGR) / cruxinvestor·ans (우라늄 장기 US$99.00 TradeTech 10/31·차기 11/30·Cameco 3Q 실현가 $65.78) / infostockdaily·mt.co.kr (두산 10/29 뉴스케일 상부모듈 제작계약 체결·키움 체코불발 급락과도) / techcrunch·dealroom·globalventuring·thenextweb (핵융합 2026 $4.0B 역대최고·CFS ~$3-4B·신규 메가딜 없음) / bnnbloomberg·northernminer·globalnews (Westinghouse 비공개 draft S-1 7/31·$50B+·Brookfield 51%/Cameco 49%) / 2026-11-21 모닝브리핑 (AI·반도체 캐피툴레이션 SOX -10.73%·NVDA -14%·VIX 36)
 confidence: high
-last_synced_from_db: 2026-11-14
+last_synced_from_db: 2026-11-21
 ---
 
 # SMR (소형모듈원전) & 핵융합 Knowledge Base
 
 ## CURRENT
+
+> 이번 주(11/14 -> 11/21) 핵심 변화: **AI·반도체 전면 캐피툴레이션(2026-11-21 모닝: SOX -10.73%·NVDA -14%·VIX 36 패닉 돌파·4일만에 채권 비드 첫 복귀)에 SMR·원자력·연료사이클 複合 무차별 디레버리징 -- 고베타 개발주부터 지난주 상대방어였던 우라늄·Cameco까지 방어처 소멸, 전 종목 두 자릿수 급락**. 11/13 종가 대비 **美 전 종목 급락(yfinance 일봉 11/19): OKLO ~$20.84(-12.9%·수개월래 최저권)·NuScale(SMR) ~$3.81(-18.2%·신저점 경신·$4 하회·낙폭최대)·X-energy(XE) ~$9.70(-12.5%·$10 하회·상대강세 소멸)·NANO(NNE) ~$9.97(-10.3%·$10 하회)·BWXT ~$117.06(-4.6%·정부 백로그로 유일 상대방어)**. **연료사이클도 방어 상실: Centrus(LEU) ~$89.70(-13.6%·$90 하회)·Cameco(CCJ) ~$61.42(-13.2%)·URA ~$28.67(-10.0%)** -- 지난주 플러스였던 LEU·CCJ가 금주 최대 낙폭권, 섹터 전반 리스크 자산 동반 청산(펀더멘털 아닌 리스크오프發). **한국 밸류체인도 글로벌 리스크오프 동조 급락(11/13 -> 11/20): 두산에너빌리티 40,750원(-13.0%·4만원대 초반·52주 고점 139,200 대비 -71%)·HD현대중공업 247,000원(-8.9%)·현대건설 72,700원(-13.2%)·한전기술 63,000원(-13.0%)**. **펀더멘털은 오히려 진전·불변 -- 주가-촉매 디커플 심화**: (1) **[금주 포착·11/14 미반영 보정] Dow·X-energy Long Mott(Seadrift, TX) 건설허가 NRC 발급(11/9)** -- Xe-100 4기(각 80MWe·200MWth)로 Dow 공장에 전력+고온스팀, DOE 비용분담 ~$21.5억·**NRC 최초의 산업부지 원자로 건설허가·美 최초 pebble-bed HTGR 설계 승인**(ANS article-8573·energy.gov·WNN·power-eng 교차검증). 허가는 Dow 자회사 Long Mott Energy·FID 2027·상업운전 2030년대 초, 운영허가(연료장전) 별도 필요. **그간 '2027 H1 예상'으로 추적하던 Seadrift 촉매가 조기 materialize -- X-energy 11/14 주간 상대강세(+6.3%)의 실질 동인으로 재해석**. NRC가 우선순위 선진원자로 인허가는 진행했음을 시사(셧다운發 NRC 전면 halt 서사 완화)하나, **광범위 셧다운 해소 자체는 us_economy SSOT상 미확인 유지**[연도혼재 차단: real-world 2025 '11/12 재개'·NRC halt 보도 미채택·ANS 8xxx=2026 sim 이벤트로만 채택] (2) **두산에너빌리티-뉴스케일 SMR 상부 원자로 모듈 제작계약 체결 확인(10/29)** -- 전주 '뉴스케일향 발주 연내 기대'가 체결로 확정, 단 '제작계약 체결 != 최종 상업운전 확정' 구분 필요(인포스탁)·키움 '체코 두코바니 불발發 급락 과도'·4Q~내년 가스터빈/웨스팅하우스 기자재/SMR 모듈 현실화 전망 유지 (3) **우라늄 장기계약가 US$99.00/lb(TradeTech 10/31) 1996년래 최고 유지** -- 차기 공표 11/30 예정·스팟 ~$88-90/lb·장단기 역전 지속·구조적 공급부족(Kazatomprom -10%·2026 ~18% 부족) 불변, 금주 CCJ·LEU·URA 급락은 펀더멘털 아닌 리스크오프發 (4) **Westinghouse IPO 상태 무변화** -- 비공개 draft S-1(7/31) 유지·공모가/주식수/타이밍 미결정·$50B+ 목표·Brookfield 51%/Cameco 49%·Westinghouse Cameco EBITDA ~25% 기여 (5) **핵융합 신규 메가딜 없음** -- CFS ~$3-4B(SPARC ~75%·Google/Eni/현대차그룹)·Helion $1.5B($15.5B 밸류·MS 2028)·TAE-TMTG 합병·Dealroom 2026 누적 $4.0B 역대최고 유지, 11월 신규 라운드 미확인·비상장 중심 센티먼트 영향 제한적.
+
+<!-- ARCHIVE 11/14 -->
 
 > 이번 주(11/07 -> 11/14) 핵심 변화: **11/6 V반등이 주초(11/10~11/11)까지 연장됐다가 주중반(11/12~13) AI·반도체발 디레이팅 확산·고베타 무차별 디레버리징에 되돌려진 휩소 주간 -- SMR·원자력 고베타 개발주는 반등분 대부분 반납, 상대강세·방어주(X-energy·BWXT)와 11/6 급등 미반영분을 따라잡은 한국 밸류체인만 소폭 플러스**. 반도체 '옥석가리기'가 고베타 전반의 무차별 디레버리징(AMD 11/13 -8.75%, 2026-11-14 모닝 프레임)으로 확산되며 11/10~11 안도 연장(OKLO 11/11 $25.87·Centrus(LEU) 11/11 $112.09)이 11/12~13 급반납. **美 종목 11/13 종가(yfinance): OKLO ~$23.93(11/11 고점 $25.87서 -7.5%·11/6 대비 +1.6% 라운드트립)·NuScale(SMR) ~$4.66(-8.3%·신저점권)·X-energy(XE) ~$11.08(+6.3%·상대강세 유지)·NANO(NNE) ~$11.11(보합)**. **연료사이클도 고점 반납: Centrus(LEU) ~$103.88(11/11 $112.09서 -7.3%·11/6 대비 -0.7%)·Cameco(CCJ) ~$70.72(-0.8%)·URA ~$31.86(-1.5%)·BWXT ~$123.01(+3.0%·정부 백로그로 상대 방어)**. **한국 밸류체인 11/6 급락서 부분 반등(11/13 종가, KRX 11/7 토요일 휴장으로 11/6 美 반등 미반영분 따라잡기)**: **두산에너빌리티 46,850원(11/6 대비 +4.8%)·HD현대중공업 271,000원(+3.2%)·현대건설 83,800원(+7.3%)·한전기술 72,400원(-2.0% 지연)**. **펀더멘털 서사 불변·일부 진전**: (1) **우라늄 장기계약가 US$99.00/lb(TradeTech 10/31) 1996년 이후 최고 경신** -- 전주 ~$96.50서 추가 상승·스팟 ~$88-90/lb 대비 term premium ~$9-11/lb로 확대·장단기 역전 지속(유틸리티 구조적 공급부족 결론)·UEC 美 유틸리티 2곳과 unhedged 장기계약(11/5)·2026 ~18% 공급부족 전망 -- 계약 웨이브 지속, Kazatomprom -10%(85M->71~75M lb)·Cameco 운영차질 구조적 서사 불변 (2) **셧다운 지속·NRC 오버행 고착** -- 10/1 개시 셧다운이 11/14 현재 ~44일차 record 영역 지속·NRC carryover 소진 후 furlough/licensing halt 지속 [주의: real-world 2025 '11/12 서명·43일 종료' 보도는 2025 연도로 미채택 -- 2026 sim 재개 확정 미확인, 셧다운發 데이터 미발표·NRC 중단 전제 유지] (3) **Westinghouse IPO 상태 무변화** -- 비공개 draft S-1(7/31) 유지·공모가/주식수/타이밍 미결정·IPO 윈도우 2029까지 연장 가능(애널)·Brookfield 51%/Cameco 49% (4) **핵융합 신규 메가딜 없음** -- FIA $14.24B·CFS $4B(SPARC ~75%·Google/Eni/현대차그룹)·Helion $15.5B 기존 유지·11월 신규 라운드 미확인. 단 **핵융합사 연방 R&D LOI 체결(ANS 10/28): CFS 반도체 최대 $85M·Helion 고전압 전력반도체 최대 $175M** (5) **두산** -- 체코 두코바니 신규원전 시공계약 불발 노이즈 지속·3Q 호실적에도 증권가 목표가 줄하향, 단 키움 '체코 불발發 급락 과도'·메리츠 '뉴스케일향 기자재 발주 연내 기대'·2026 원자력 수주목표 4.9조 중 SMR 1.1조·SMR 주기기 서사 불변.
 
@@ -157,10 +162,10 @@ last_synced_from_db: 2026-11-14
 
 | 지표                     | 수치                                                                        | 출처                             |
 | ------------------------ | --------------------------------------------------------------------------- | -------------------------------- |
-| 우라늄 스팟 가격         | **~$90/lb (9/22, 시$90.05·종$89.85)** -- 공급 연 30~40M lb 부족                          | metalcharts / ANS / uranium.info |
+| 우라늄 스팟 가격         | **~$88-90/lb (11월·장기계약가 $99 대비 역전 지속)** -- 공급 연 30~40M lb 부족                          | metalcharts / ANS / uranium.info |
 | 우라늄 장기계약가        | **~US$99.00/lb (TradeTech 10/31)** -- 1996년 이후 최고·스팟(~$88-90) 대비 term premium +$9-11/lb(장단기 역전) | DiscoveryAlert / uranium.info    |
 | Cameco 2026 실현가       | **$85~89/lb** (가이던스, 매출 $3.13~3.37B 유지)                             | Cameco                           |
-| Cameco 주가 (CCJ)        | **$88.12** (9/24, -2.95% -- 9/17 $92.80서 하락·섹터 조정 동조·URA ETF $40.86 -2.69%)     | yfinance                         |
+| Cameco 주가 (CCJ)        | **$61.42** (11/19, 주간 -13.2% -- 리스크오프發 급락·펀더멘털 아님·9월 $88서 되돌림·URA ETF $28.67 -10.0%)     | yfinance                         |
 | 7월말 스팟               | $86.36/lb                                                                   | Cameco                           |
 | 2026.01.29 연중 최고가   | **$101.41/lb** (YTD 고점)                                                   | INN                              |
 | 2026 변동 레인지         | $80 ~ $101.41/lb (지정학·안전자산 선호로 등락)                              | INN / DiscoveryAlert             |

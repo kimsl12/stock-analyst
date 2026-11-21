@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-14
-valid_until: 2026-12-14
+updated: 2026-11-21
+valid_until: 2026-12-21
 category: industry
 sub_category: advanced_materials
 topic: advanced_materials
@@ -234,10 +234,17 @@ sources:
     finsee,
     BISI,
     pulse.bot,
+    GFEX,
+    electrive,
+    CarNewsChina,
+    Korea JoongAng Daily,
+    뉴스토마토,
+    딜사이트,
+    ReElement Technologies,
   ]
 confidence: high
-last_synced_from_db: 2026-11-14
-db_records: 571
+last_synced_from_db: 2026-11-21
+db_records: 577
 ---
 
 # 첨단소재(Advanced Materials) Knowledge Base
@@ -247,6 +254,17 @@ db_records: 571
 > 본 KB는 탄소나노튜브(CNT), 그래핀, 초전도체, 첨단세라믹(SiC/GaN/압전/DC열관리), 희토류/핵심광물, 리튬, 배터리 소재, 탄소섬유/항공우주 소재, 첨단소재 정책 9개 서브섹터를 다룬다.
 > 반도체 공정 세부는 `semiconductor.md`, AI 반도체는 `ai.md`, 디스플레이는 `display.md`, EDA는 `eda.md` 참조.
 
+> **2026.11.21 핵심 변화 요약 (11/14→11/21 윈도우, 직전 11/14 이후 1주)**:
+>
+> ⚠️ **[윈도우 성격] 희토류 中 가격지수 '반등 재개' + 탄산리튬 中내 연저점 + 한국 희토류 脫中 본격화가 3대 신규.** 中 희토류협회(CREIA) 지수가 11월초 저점(254.7, 11/9)서 259.6(11/18)으로 반등 — Dy·Tb·이트륨 ex-China 극심 품귀가 견인(11/9 유예 2027.01.10 연장 후에도 4월 7종 라이선스 존속). 탄산리튬은 中내 현물 2026 연저점(~¥90,000/t, Mysteel 11/12)으로 광산 재가동發 하방 심화. 한국은 고려아연·포스코·LS의 美 희토류 공급망 진출과 LS에코에너지 사마륨 양산으로 脫中 가속. 전력반도체(Infineon-NVIDIA GaN 800V·Wolfspeed·Navitas)·전고체(CATL/Toyota/삼성SDI)·800VDC·탄소소재는 재확인. QuantumScape Osprey(11/11)는 직전 윈도우 미기재분 보완.
+>
+> 1. **[신규·중대·실측] 희토류 中 CREIA 가격지수 11월초 저점서 반등 재개 — 254.7(11/9)→259.3(11/16)→259.6(11/18), 중희토(Dy·Tb)·이트륨 ex-China 품귀가 견인.** 유예 2027.01.10 연장(11/9 공식화) 직후 지수가 254.7(11/9)로 저점을 찍은 뒤 259대로 회복. Dy·Tb oxide 상승+서방 이트륨 조달난 심화가 상승동력, NdPr은 中내 혼조(11/3 하락)이나 SMM 11/17 Pr-Nd oxide 오전 인상 후 보합으로 견조 유지. ex-China 中희토 프리미엄 극단 지속: Dy oxide $2,500-5,500/kg·Tb oxide $10,000-13,000/kg vs 中내 Tb ~$945-954/kg, Benchmark Q3 리뷰 Dy oxide CIF Europe=DDP中 16.3배(Q2말 6.8배서 대폭 확대). 4월 7종(Dy·Tb·Sm·Gd·Lu·Sc·Y) 라이선스·군용 최종사용자 금지는 유예와 무관하게 존속→구조적 타이트. [Rare Earth Exchanges(11/16·11/18·11/9), SMM/metal.com(11/17), Benchmark Minerals(Q3), S&P Global]
+>
+> 2. **[신규·방향] 배터리급 탄산리튬 中내 현물 2026 연저점(~¥90,000/t, Mysteel 11/12) — 광산 재가동+해외 광석 유입이 하방, GFEX 수산화리튬 선물 11/26 신규 상장.** Mysteel 11/12 기준 中 탄산리튬 ~¥90,000/t로 2026 최저 경신(10월 이후 하락), 11월 생산 추정 121,800t(+3.5% MoM)·월간 재고소진 지속에도 공급 우위. 광저우선물거래소(GFEX)가 11/26 수산화리튬 선물 상장(탄산리튬 선물 해외개방에 이은 파생 확대)→헤징·가격발견 심화. ※SMM 배터리급 스팟 벤치마크(10/9 ¥122,350/t)와 레벨 상이 — 8월 'TE/GFEX 1년최고 surge'는 벤치마크 상이 현상으로, 中내 현물 추적선은 연저점 회귀(방향성 confidence high, 레벨 medium). 리튬 저가 지속이 단기 Na-ion 코스트 인센티브 완화 요인(중장기 전환 논리 유효). [Mysteel(11/12), GFEX(11/26 수산화리튬), SMM(10/9)]
+>
+> 3. **[신규] 한국 희토류 공급망 脫中 본격화 — 고려아연·포스코·LS 美 진출(딜사이트 11/16) + LS에코에너지 베트남 사마륨 대량양산(12월 시양산·세계최초·Lynas 협력).** LS에코에너지가 베트남 116억원 투자로 세계 최초 사마륨(Sm) 대량 양산 추진, 12월 시양산 진입. 포스코인터내셔널-美 ReElement Technologies 희토류·영구자석 통합 생산기지 구축 지속, 과기정통부 희토류 산학연 협의체(10/1 출범) 가동. 美 2027.01.01 DFARS mine-to-magnet 中산 금지(NdFeB·SmCo·텅스텐)와 수렴하는 공급망 재편. [딜사이트(11/16), 뉴스토마토(11/6), 다음/한경(포스코인터-ReElement), KDI(10/1)]
+>
+> 4. **[보완·재확인] 전력반도체·전고체·800VDC·탄소소재 — 당주 신규 실적/계약 델타 없음.** 전력반도체: Infineon-NVIDIA GaN 800V DC IBC 협업(10/21 GTC Berlin, 최대 1MHz·800V→50/12/6V, CoolSiC JFET 핫스왑)·Wolfspeed FQ1'27·Navitas Q3'26 AI DC 피벗 유효. 전고체: QuantumScape 11/11 Osprey 오픈 ASSB 플랫폼(sulfide 캐소드 1 atm 1,000 사이클 첫 공개·라이선싱 개방, 직전 윈도우 미기재 보완), CATL 20Ah ASSB 샘플(소량 2027·대량 ~2030)·Toyota+Idemitsu sulfide 2027-2028·삼성SDI 'SolidStack' 2027 하반기 양산(>360Wh/kg) 유지. 800VDC(Vertiv H2'26 상용화)·CNT/그래핀/초전도는 당주 신규 돌파 N/A. [Infineon/DCD(10/21), electrive(11/12 Osprey), CarNewsChina(10/28), 코리아중앙데일리]
 > **2026.11.14 핵심 변화 요약 (11/08→11/14 윈도우, 직전 11/07 이후 1주)**:
 >
 > ⚠️ **[윈도우 성격] 희토류 '11/10 D-day' 실측 결판 + 전력반도체(SiC/GaN) 실적 델타가 2대 신규.** 中 상무부 11/9 확대 희토류 수출통제 유예를 공식 2개월 연장(11/10 종료→2027.01.10)으로 **공식화** — 本 KB의 2027.01.10 프레임이 11/10 당일 회귀 없이 공식 확정됨(11/10 재발동·무산 아님). 전력반도체는 Wolfspeed·Navitas 분기 실적으로 'AI 데이터센터 피벗' 가속. 탄산리튬은 10월말 상방전환이 11월 초 반락으로 되돌림. 전고체(QS/삼성SDI)·MP Materials·탄소섬유·美 임계광물은 재확인.

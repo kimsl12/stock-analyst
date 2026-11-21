@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-14
-valid_until: 2026-12-14
+updated: 2026-11-21
+valid_until: 2026-12-21
 category: industry
 sub_category: telecom
 topic: telecom_next
@@ -218,14 +218,38 @@ sources:
   - Tokenomist
   - finance.technews.tw
   - The Wealth Advisor
+  - Axios
+  - Boston Globe
+  - iconnect007
+  - GovConWire
+  - letsdatascience
+  - xenospectrum
+  - gamesbeat
+  - Constellation Research
+  - Lightwave Online
+  - IBTimes
+  - indmoney
+  - heygotrade
+  - techpowerup
+  - Stifel
 confidence: high
-last_synced_from_db: 2026-11-14
+last_synced_from_db: 2026-11-21
 ---
 
 # Telecom Next (6G / 5G Advanced / Open RAN / 위성통신 / NTN / AI-RAN) Knowledge Base
 
 ## CURRENT
 
+> **2026.11.21 핵심 변화 요약 (11/14 이후 델타, 커버리지 윈도우 11/14~11/21 1주 -- NVIDIA 젠슨 황 CEO 사임(11/12)+Q3 FY27 기록 비트(11/17) 후 광범위 AI/반도체 캐피츌레이션(NVDA -14%·SOX -10.73%·VIX 36)·Marvell-Lumentum 115B달러 인수(11/2 발표·gap-fill 소급)·LGU+ Q3 AIDC가 SKT 추월이 굵은 델타, 6G·D2C는 델타 얇아 carry·종합 confidence medium~high)**:
+>
+> 1. **★AI-RAN -- NVIDIA 젠슨 황 CEO 전격 사임(11/12·CFO Colette Kress 임시 CEO·Harvey C. Jones 초대 의장) + Q3 FY2027 실적(11/17) 기록 비트(매출 115.8B달러 +103%·DC 107.6B달러 +110%·Q4 가이드 130B달러)에도 광범위 AI/반도체 캐피츌레이션(NVDA -14%·SOX -10.73%·VIX 36)·AI-RAN은 NVIDIA GPU 플랫폼 연동으로 리더십 공백+디레이팅에 직접 노출** -- **★이번주 최대 델타(NVIDIA 사실관계 confidence high·AI-RAN 직접영향 medium). ★젠슨 황 NVIDIA CEO 2026.11.12 즉시 사임(33년·president/CEO/이사, NYT '본인 보고 직원과 부적절 관계' 사유, 독립이사진 Joon H. Kim+Wachtell Lipton 조사)·CFO Colette Kress 임시 CEO 겸임·Harvey C. Jones 초대 이사회 의장·영구 CEO 물색. ★NVIDIA Q3 FY2027(10/25 종료) 2026.11.17 예정대로 발표(Kress 주재): 매출 115.8B달러(YoY +103%·QoQ +20%·기록)·Data Center 107.6B달러(YoY +110%·총매출 ~93%)·Q4 가이던스 130.0B달러 ±3%(중국 DC 컴퓨트 0 가정·엑스트라위크 비청정비교)·네트워킹 견조. ★배경=기록적 비트에도 셀오프 지속: NVDA 10월 ATH 대비 >30%↓(186.64->155.46달러·AH 일시 +2% 159.47달러), 11/21 모닝 NVDA -14%·SOX -10.73%·VIX 36 패닉 돌파. AI-RAN은 NVIDIA GPU/Aerial RAN Computer(Nokia anyRAN 앵커) 연동 -> 리더십 공백+주가 디레이팅+AI capex 심판대에 직접 노출(단 DC 107.6B·Q4 130B 가이드로 capex 펀더멘털은 구조적 견조). 이번 윈도우 신규 대형 운영사 AI-RAN 딜 미발생(GTC Berlin 10/21 carry).** [nvidianews/axios/bostonglobe/yourstory/govconwire Huang resigns Nov12 Kress interim Harvey Jones chair NYT affair Kim/Wachtell inquiry -30% from ATH, techpowerup/letsdatascience/xenospectrum/gamesbeat Q3 FY27 Nov17 rev 115.8B +103% DC 107.6B +110% Q4 130B no China, 11/21 모닝 NVDA -14% SOX -10.73% VIX 36]
+> 2. **★광통신 -- Marvell의 Lumentum 인수(2026.11.02 발표·11/07·11/14 KB 누락분 gap-fill 소급)·전액주식 ~115B달러(교환비 4.5주·~1,132달러/주·프리미엄 ~23.9%·2028 상반기 종료)·Lumentum FQ1 FY27 조정 EPS 4.57달러(컨센 4.22 상회)·옵틱스 1개월 급락(LITE -40%·COHR -16~17%) 후 반등·BofA COHR 400->240달러 하향** -- **★델타(딜 gap-fill confidence high). ★Marvell이 Lumentum 전액주식 인수(암묵 기업가치 ~115B달러·교환비 Lumentum 1주당 Marvell 4.5주 ~1,132달러·미영향가 대비 ~23.9% 프리미엄·합병후 Marvell 67%/Lumentum 33%·2028 상반기 종료·Matt Murphy 통합 CEO·Hurlston+2인 이사 합류·TAM 550B달러·Lumentum InP/레이저/트랜시버/OCS 기여). 우려=고객충돌(트랜시버 보유->실리콘 고객과 경쟁)·Stifel '발표후 Marvell 하락으로 실질 오퍼 ~824달러/주(~84B달러)로 축소'. ★Lumentum FQ1 FY27 조정 EPS 4.57달러(컨센 4.22·11/14 GAAP 3.54달러 보완)·매출 1.26B달러(+136.5%)·Coherent FQ1 FY27 매출 2.37B달러(+50%)·EPS 2.09달러(+80%)·Q2 2.55~2.75B달러 11/14 승계. ★옵틱스 급락-반등: Lumentum 1개월 -40%(987.99->592.82달러)·Coherent -16~17%(AI HW 셀오프=민주당 중간선거 승리로 DC 규제강화 우려+차익실현)·이후 하루 COHR +13%·LITE +11% 반등·BofA Coherent 400->240달러. [날짜 미상 절대주가 시점혼재 배제].** [lightreading/constellationr/fierce-network/hpcwire/ibtimes/lightwaveonline Marvell-Lumentum 115B all-stock Nov2 4.5x 1132/share close H1 2028 Murphy CEO TAM 550B Stifel ~824/84B customer conflict, 247wallst LITE FQ1 adj EPS 4.57 rev 1.26B +136.5% -40% 987.99->592.82, tikr COHR 2.37B +50% EPS 2.09 Democrats midterm BofA 400->240 rebound +13%/+11%]
+> 3. **★한국통신 -- LGU+ Q3(11/4) 영업이익 2,976억원(+84.1% 인건비 기저)·AIDC 매출 1,317억원(+27.7%)이 SKT 1,261억원을 한 분기 만에 추월(SKT GPUaaS 공백)·통신3사 AIDC 증설 경쟁 본격화(SKT 15GW·KT 1GW·LGU+ 파주 200MW)·통신3사 Q3 완성(SKT +1040.3%·KT -6.1%·LGU+ +84.1% 모두 기저효과)** -- **★델타(LGU+ Q3+AIDC 역전 confidence high). ★LGU+ Q3 2026(2026.11.04): 매출 3조9,813억원(YoY -0.7%)·영업이익 2,976억원(YoY +84.1%·작년 희망퇴직 일회성 인건비 기저+효율화)·OPM 9.6%(+4.4%p)·CAPEX 5,698억원(+30.1%). ★AIDC 역전: 3Q AIDC LGU+ 1,317억원(+27.7%) > SKT 1,261억원(SKT 2Q 1,362억->GPUaaS 공백)·LGU+ 코로케이션+DBO·기업인프라 4,722억원(+10.4%). ★통신3사 AIDC 증설 경쟁(zdnet 11/10 '데이터센터 매출 동반성장'): SKT 15GW·KT 1GW·LGU+ 파주 200MW·LGU+ 코람코 DBO 협업. ★통신3사 Q3 완성 대조: SKT(11/4) 5,523억(+1040.3% 해킹기저)·KT(11/10) 5,053억(-6.1% 부동산기저)·LGU+(11/4) 2,976억(+84.1% 인건비기저)·3사 공통=기저효과+통신 본업 회복+AIDC 성장. ★과기정통부 종합대책 11/21 여전 미발표(연내 예정)·AINA(6G 표준 2028·상용 2030·점유율 5%->20%·AI-RAN 1,287억원)·12월 5G SA 전국 상용화 검증 승계.** [lg.co.kr/etnews/fnnews/newstomato/ceoscoredaily LGU+ Q3 Nov4 매출 3.9813조 -0.7% OP 2976 +84.1% OPM 9.6% CAPEX 5698 +30.1% AIDC 1317 +27.7% 기업인프라 4722 +10.4%, newstomato AIDC LGU+ 1317>SKT 1261 GPUaaS 공백, zdnet 11/10 SKT 15GW KT 1GW LGU+ 파주 200MW 코람코, carry SKT 5523 KT 5053 종합대책 미발표 AINA 5->20% 1287억 5G SA 12월]
+> 4. **★D2C -- T-Mobile CEO Srini Gopalan이 SpaceX 광역 이동통신 네트워크 딜 재거부('소비자 무선·물리/엣지 AI 딜 여지 없음', T-Satellite는 유지)·EchoStar 협상설(11/3 SPCX +3.6%)·Barclays 'T-Mobile이 SpaceX 바이아웃 cleanest fit'·Starlink Mobile 2028초 이연·Dec 8 락업 잔여(~798M주) D-17·ASTS BB6 발사 前 단계(⚠️'발사완료' 연도혼재 배제)** -- **★델타(confidence medium). ★SPCX(SpaceX): T-Mobile CEO Srini Gopalan이 SpaceX 광역 네트워크 딜 재차 거부('소비자 무선·물리/엣지 AI 모두 딜 여지 없음')·SPCX 약세·단 기존 T-Satellite(Starlink->호환폰) 파트너십 유지(T-Mobile 지상망 통한 SpaceX 자체판매는 불가). ★인수설: EchoStar 협상 보도(11/3 SPCX +3.6%)·Barclays 'T-Mobile 잠재 바이아웃 cleanest fit'. Starlink Mobile=AT&T/Verizon 보완·타임라인 이연(발사/지상국 2027~·서비스 최신목표 2028초). ★Dec 8 180일 락업 잔여 풀(~798M주[TIKR]~1.1B주[KuCoin]·규모 소스 상충) 해제 D-17 접근('float 3배 가능')·머스크 2027.06·8/6~10월 트랜치 무사소화 승계. ★ASTS: BlueBird 6 시뮬 2026상 발사 前 단계(⚠️'BB6 12/23~24 ISRO LVM3 발사완료·6,100kg·521km' 류 다수 기사=2025 연도혼재 아티팩트 배제)·발사 목표 ~2026.12 승계. [SPCX ~139달러(11/13)·IPO 135달러·피크 -31%는 시점혼재 참고만]. 2026말 궤도 45~60기·Starlink ~11,100기+·Amazon Leo ~396기 승계.** [indmoney/stocktwits T-Mobile Gopalan rejects broader deal again no room consumer wireless edge AI T-Satellite stays, heygotrade EchoStar talks Nov3 +3.6%, stocktwits Barclays T-Mobile cleanest fit buyout, stocktitan Starlink Mobile early 2028, tikr/webull/kucoin Dec8 lockup ~798M-1.1B float triple Musk Jun2027, (⚠️ space.com/satnews BB6 'launched Dec23/24' = 2025 year-mix excluded), fourweekmba SPCX ~139 Nov13]
+> 5. **★6G -- RAN#114(2026.12.07~12.10 미국) D-16 대기로 마이그레이션 옵션 최종결정 여전 12월 이월(델타 없음)·Rel-21 타임라인 안정(WI 2027.03·freeze 2028말·ASN.1 2029.03·상용 ~2030)·O-RAN Alliance 6G 6트랙+NVIDIA nGRG 공동의장·AI-RAN Alliance·PQC 배경(GSMA MWC Doha 11/8) 신규 트래킹** -- **★델타 없음(confidence medium). RAN#114(2026.12.07~12.10 미국) D-16 대기로 5G->6G 마이그레이션 옵션 최종결정 여전 12월 이월·이번 윈도우 신규 플레너리/결정문 없음. RAN#113(9월) 컨센 미도달·옵션 테이블(Option 1 6G-anchored 최강/Option 2 배제/Option 3 dual-stack SA2 이관) 승계. Rel-21 타임라인 안정: WI 2027.03·physical freeze 2028.09·stage3 freeze 2028.12·ASN.1 2029.03·첫 완전규격 ~2029초·상용 ~2030. ★O-RAN Alliance 6G 스터디 6개 트랙(유스케이스/아키텍처/프론트홀/관리자동화/O-Cloud/보안)·3GPP 6G 정렬·NVIDIA nGRG 공동의장·운영사 '6G는 disruptive new box 아닌 5G서 실용적 진화'·AI-RAN Alliance 의장 Alex Jinsung Choi(SoftBank) 승계. Qualcomm 'Release 21'·NGMN '단순화 우선' 승계. ★PQC 배경(신규): GSMA MWC Doha 양자안전망 라운드테이블(11/8)·3GPP SA3 PQC(GSMA PQ.03·6G Rel-20 TR 33.771 256-bit AEAD)·Samsung Knox PQC(Galaxy S25/One UI) -- 6G 보안 장기 마이그레이션 테마. [RAN#114 결과는 12월 중 발행 예정].** [qualcomm/rcrwireless Release 21 RAN#113 no consensus postponed Dec RAN#114 Dec7-10 US Option 1 strongest Option 3 SA2, techblog.comsoc WI Mar2027 stage3 Dec2028 ASN.1 Mar2029 commercial 2030, o-ran.org/telecomtv/nvidia O-RAN 6G 6 tracks NVIDIA nGRG co-chair '6G not disruptive box', computerweekly AI-RAN Alliance Alex Jinsung Choi SoftBank, gsma MWC Doha PQC Nov8 3GPP SA3 PQ.03 TR 33.771 Samsung Knox]
+>
+> **(이전 갱신 -- 11/14 핵심 요약, 참고용)**:
+>
 > **2026.11.14 핵심 변화 요약 (11/07 이후 델타, 커버리지 윈도우 11/08~11/14 1주 -- 광통신의 Lumentum·Coherent Q1 FY2027 동반 어닝비트+Q2 대폭 상향·한국 KT 3분기 실적(통신3사 Q3 완성)이 굵은 델타, AI-RAN·6G·D2C는 델타 얇아 carry·당주 배경=AI·반도체 디레이팅·고베타 무차별 디레버리징·종합 confidence medium)**:
 >
 > 1. **★광통신 -- Lumentum·Coherent Q1 FY2027 동반 어닝비트+Q2 대폭 상향(11/07 KB 'Lumentum Q1 FY27 미보고'·'Coherent Q4 FY26 승계(11/4 Q1 보고 미포착)' 공백 해소)·Lumentum 매출 $1.26B(가이드 중간값·컨센 $1.16B 상회)·GAAP EPS $3.54·non-GAAP OPM 42.3%·★Q2 가이드 $1.575~1.625B(QoQ ~+27%)·EPS $5.90~6.20·Coherent(11/4) 매출 $2.37B(+49.9% YoY·컨센 상회)·non-GAAP EPS $2.09·AI DC 광학 매출 82%·InP 내부생산 YoY 2배·Q2 가이드 $2.55~2.75B·FY27 성장 60%+** -- **★델타(광통신축 confidence high). 11/07 KB가 'Lumentum Q1 FY27 미보고(~11월 중순)'로 남긴 공백 + Coherent Q1 FY27(11/4 보고) 미포착분이 이번 윈도우서 해소. ★Lumentum Q1 FY2027(9월분기 종료 9/26): 매출 $1.26B(가이던스 $1.225~1.275B 중간값·컨센 $1.16B 대폭 상회)·GAAP 순이익 $360.3M·GAAP 희석 EPS $3.54·non-GAAP 영업이익률 42.3%(가이던스 39.5~40.5% 상회). Q2 FY2027 가이던스=매출 $1.575~1.625B(QoQ ~+27% 급증)·non-GAAP OPM 45~46%·non-GAAP 희석 EPS $5.90~6.20·1.6T 채택 CY2027 가속·첫 OCS 매출 $100M+ 분기. ★Coherent Q1 FY2027(2026.11.04 보고): 매출 $2.37B(컨센 $2.30B 상회·YoY +49.9%·DC/통신 +79%)·non-GAAP EPS $2.09(컨센 $1.97 상회)·AI DC 광학이 매출 82%·DC간 광링크 $200M+(QoQ +53%·YoY ~4배)·InP 내부생산 YoY 2배(계획比 1분기 선행·CY27말 재차 2배+ 목표)·Q2 가이드 $2.55~2.75B·FY27 프로포르마 성장 60%+·FY말 첫 $3B 분기·영업현금흐름 ~-$92.7M(공격적 capex). ★배경=당주 AI·반도체 디레이팅·고베타 무차별 디레버리징(Nasdaq Composite 11/5 -5.52% 조정권·칩 62종 10/6 이후 ~$5T 소실) 속에서도 광학 펀더멘털(실적)은 견조 -- 주가변동성 vs 실적괴리 상존. FCC 중국산 광트랜시버 금지 여전 초안(SCMP '당분간 피함') 승계. [주의: 날짜 미상 절대주가는 디레버리징 변동성 시점혼재로 배제·실적/가이던스 델타만 유효].** [pulse2 Lumentum Q1 FY27 rev $1.26B GAAP EPS $3.54 non-GAAP OPM 42.3% Q2 guide $1.575-1.625B EPS $5.90-6.20, investor.lumentum.com Q1 FY27 release, futurumgroup/247WallSt/finance.technews.tw Coherent Q1 FY27 Nov4 rev $2.37B +49.9% non-GAAP EPS $2.09 DC optics 82% InP 2x Q2 $2.55-2.75B FY27 >60% first $3B qtr OCF -$92.7M, thewealthadvisor/investinglive chip selloff Nasdaq -5.52% $5T]
