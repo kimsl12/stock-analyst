@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-15
-valid_until: 2026-12-15
+updated: 2026-11-22
+valid_until: 2026-12-22
 sector: science_tech
 sources:
   [
@@ -272,7 +272,7 @@ sources:
     SafeLogic,
   ]
 confidence: high
-last_synced_from_db: 2026-11-08
+last_synced_from_db: 2026-11-22
 db_records: 1242
 ---
 
@@ -749,7 +749,16 @@ db_records: 1242
 
 ---
 
-### 16-C. 주간 과학기술 동향 (2026-11-15 갱신)
+### 16-C. 주간 과학기술 동향 (2026-11-22 갱신)
+
+> **2026-11-15~11-22 주간 통합 수집(web_search 8회, 수동 스케줄런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(11/21 jsonl — 우주주 11/14~20 -26~32% 급락·Vulcan LV-01 11/15 발사실패(40기 전손)·Starship Flight15 Ship 상단 타워 catch 11/14 확정·RKLB 100번째 Electron 11/14·양자주 캐피툴레이션 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 11월 FDA PDUFA 클러스터 outcome 확정기 진입**(직전 run이 'outcome 미인덱스'로 남긴 건들 해소 — 이보네스시맙 CRL·adrabetadex 승인)·양자/AI프런티어/기초과학 범용 신규 discrete는 극희소(희소 섹터 억지 패딩 배제)·금주 복합군 지배 서사는 AI/반도체 캐피툴레이션發 고베타 리스크오프(SOX -10.73%·VIX 36)로 토요 weekly-frontier 소관.
+
+| 분야 | 이번 주 핵심 전개 | 기준 | 출처 |
+| --- | --- | --- | --- |
+| **[바이오·FDA outcome 확정]** | ★ **11월 PDUFA 클러스터 outcome 해소**(직전 run의 '미인덱스' 2건 결과 확정). ① **Summit 이보네스시맙(ivonescimab) FDA 거절(CRL)** — 11/14 PDUFA 후 **11/16 보도**, EGFR변이 비편평 NSCLC(post-TKI·화학병용) 불승인. 사유 = **OS 통계유의 미달**(HARMONi OS 16.8 vs 14.0mo HR 0.79 p=0.057·PFS HR 0.52 강력에도 '실질적 유효성 미입증')·데이터 중국 단독. = 美 much-hyped **PD-1xVEGF 이중항체 계열 첫 미국 진입 좌절**·재제출 일정 미제시. ② ★ **Beren adrabetadex(상품명 Lembaz) 11/17 FDA 승인** — 영아발병 니만픽C형(I-NPC·6세 이전 신경증상·≥7kg) = **생존연장 입증 첫 NPC 치료제**. 근거 OS 분석 = 외부대조군 대비 **사망위험 -55%**(36명 I-NPC). 단 유일 무작위 임상(12개월) 결과로 FDA가 첫 혁신치료제(BTD) 지정 철회·당초 8/17서 major amendment 연장. 12월초 전국 치료거점 공급. ③ **11/22(日) 데라미오셀(Capricor·DMD 심근병증·7/29 자문위 9-3 반대 최대쟁점건)+Savara amolgramostim(폐포단백증 PAP)** 결정일 도래 — **11/22 현재 outcome 미인덱스**(영업일 앞당김 시 11/20 가능). ④ Cytokinetics 아피캄텐(MYQORZO) 11/14 비후성심근증 적응증확대(기본승인 2025-12-19 완료) outcome 미인덱스 | 2026.11 | healio / fiercepharma / pharmaphorum / biospace / neurologylive / pharmacytimes / rttnews |
+| **[기초과학·프론티어·중복주의]** | 범용 신규 discrete **극희소**(희소 섹터 정직 처리). 물리 = **단일 원자핵 내부 자기스핀을 라디오파로 제어** 방법 예상외 발견 보고(ScienceDaily 11/15·양자센싱/양자메모리 경로 단서·medium). 그 외 11월 물리 로드업(그래핀 금지대역 전자 100% 확률 천이 11/13·상온 양자센서용 다이아몬드 소재 고속탐색 11/13·CERN 100억회 1회 희귀붕괴 11/9·전자 시공간 추적 양자한계 11/7)은 다수 **11/15 이전**(window 경계 밖)→재기록 배제. **우주/양자/SMR 종목 tick = 토요 weekly-frontier 소관**(11/21 jsonl: 우주주 11/14~20 -26~32% 급락·Vulcan LV-01 11/15 발사실패·Starship Flight15 Ship catch 11/14·RKLB 100th Electron 11/14 → 중복 금지). AI4Science = 11월 신규 대형랩 discrete 미확인(DeepMind AlphaProteo/GNoME 등 기발표·2025.11 재확인건 배제). 소재·핵융합 범용 신규 미확인(패딩 배제) | 2026.11 | ScienceDaily / weekly-frontier(11/21 jsonl) |
+
+#### (이전 주간) 2026-11-15 기록
 
 > **2026-11-08~11-15 주간 통합 수집(web_search 8회, global-data 일요런).** 프론티어 전문(우주/양자·SMR 세부 종목 tick)은 토요일 weekly-frontier 담당(11/14 space subtag — 우주주 11/9~13 반등·Starship Flight 15 11/13 발사·Amazon Leo Vulcan LV-01 11/14 기록 → 본 블록 중복 배제). 본 표 = 범용 기초과학·첨단기술 우산 크로스커팅. **금주 특징 = 11월 FDA PDUFA 클러스터 '1차 결정기' 진입**(직전 run이 11월 캘린더 확정 → 금주 델타 = 첫 2개 결정일(11/1·11/14) 경과·공식 outcome 미인덱스)·양자/AI프런티어/기초과학 범용 신규 discrete는 희소(희소 섹터 억지 패딩 배제·2건 정직 처리).
 
@@ -856,7 +865,7 @@ db_records: 1242
 
 ---
 
-_이 파일은 knowledge-db/science_tech_2026.jsonl (1265건)에서 자동 생성됩니다._
+_이 파일은 knowledge-db/science_tech_2026.jsonl (1272건)에서 자동 생성됩니다._
 _HISTORY는 knowledge-db/에 영구 보관됩니다._
 _상호 참조: AI 세부 -> industry/ai.md / 반도체 -> semiconductor.md / 에너지/SMR -> industry/energy.md / 한국경제 -> macro/korea_economy.md_
 _전문 세부: 양자 -> industry/quantum.md / 우주 -> industry/space.md / SMR -> industry/smr.md / 통신 -> industry/telecom_next.md / CapEx -> industry/capex.md_

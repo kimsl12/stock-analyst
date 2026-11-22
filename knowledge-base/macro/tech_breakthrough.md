@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-15
-valid_until: 2026-12-15
+updated: 2026-11-22
+valid_until: 2026-12-22
 category: macro
 sources:
   [
@@ -402,9 +402,40 @@ sources:
     "thequantuminsider(Infleqtion 30 logical qubits)",
     "pharmashots(CagriSema NDA)",
     "lifesciencedaily(CagriSema FDA timeline)",
+    "NVDA 8-K(Q3 FY2027 11/17)",
+    "streetinsider(NVDA Q3 FY2027)",
+    "247wallst(NVDA six straight beats)",
+    "quartr(NVDA Q3 FY2027)",
+    "guru3d(NVDA 115.8B)",
+    "aiweekly(NVDA Q3 103%)",
+    "investor.nvidia(CEO Transition 11/12)",
+    "hothardware(Huang resigns 33 years)",
+    "wealthprofessional.ca(NVDA 52-week low 11/12)",
+    "credenceresearch(NVDA Q3 interim CEO Kress)",
+    "citybiz(Huang resigns Kress interim)",
+    "AP/wfsb(Wall St wipeout 11/17)",
+    "newstribune(Wall St ahead of NVDA 11/18)",
+    "decrypt(NVDA stellar quarter fails to quell bears)",
+    "zacks(stock market news Nov 19 2026)",
+    "newkerala(Anthropic Nasdaq debut 11/19)",
+    "kuwaittimes(Anthropic 81bn IPO)",
+    "dealstreetasia(Anthropic 1.5T valuation)",
+    "cryptobriefing(Anthropic IPO Nov 19)",
+    "spglobal(Anthropic nears debut 11/13)",
+    "koreaherald(Korean memory higher costs DC buyers)",
+    "biz.heraldcorp(TrendForce HBM 70-140% 2027)",
+    "aol(Samsung HBM4 premium)",
+    "tweaktown(SK hynix HBM4 price war)",
+    "newkerala(Samsung HBM prices double 2027)",
+    "techcrunch(Tesla Optimus Fremont production)",
+    "driveteslacanada(Optimus 20000/week)",
+    "robotaxitracker(TX registry 11/10 Tesla>Waymo)",
+    "blog.mean.ceo(Nov 2026 model releases)",
+    "implicator(LLM meter week Nov 12 2026)",
+    "futurumgroup(MSFT-Quantinuum logical qubits)",
   ]
 confidence: high
-last_synced_from_db: 2026-11-15
+last_synced_from_db: 2026-11-22
 ---
 
 # 첨단 기술 브레이크스루 트래커 (Tech Breakthrough)
@@ -432,7 +463,14 @@ last_synced_from_db: 2026-11-15
 | **⑥ 양자 미중 지정학**            | 🧪 선점 경쟁      | **[6/21] 글로벌 양자시장 $3B(2028, QED-C, CAGR 30%)·일부 2030 $20.2B(CAGR 41.8%).** **미국 CHIPS법 $2.013B**(IBM $1B 양자웨이퍼·GlobalFoundries $375M·잔여 $538M 7개사, 정부 소수지분). **중국 ~$15B·15차5개년(2026-30) 양자 6대 미래산업 최상위·국가펀드 CNY 121.8B.** IonQ Q1 $64.7M(가이던스 +30%)·2026 $235M·DARPA HARQ·**[7/5] 2큐빗 게이트 충실도 99.99%+ 'four-nines' 최초 돌파.** **PQC: CNSA2.0 2027.01 양자안전 의무·Google 2029 전환·2035 양자취약 금지.**            | 내결함성 선점 = 암호·소재·신약 **비대칭 우위**. PQC 전환은 전 산업 사이버보안 필수과제(은행·통신 라이브 배포). 중국 특허 우위 vs 미국 생태계 우위의 구도. 단기 시장 규모는 아직 작음(투기적).   | IONQ IBM GOOG QBTS RGTI / QTUM              | QED-C 2026, thequantuminsider, fortunebusinessinsights, postquantum 교차 |
 | **⑦ 휴머노이드 '양산 원년'**      | 🏭 상용화 진입    | **[7/12] 2026 양산 원년·中 글로벌 90% 점유.** Unitree 2025 5,500대+ 출하(美 전체 합산 초과)·**2026 1만~2만대 목표·G1 $16,000**. **[7/26 정정] Tesla Q2(7/22) 어닝콜: Optimus 생산대수 여전 0 — 1세대 라인 설치 중·초기 로봇 훈련데이터 수집용(고객배치 아님)·Optimus Academy·초기양산 Q3·머스크 '테슬라 역사상 가장 어려운 양산'.** 직전 주간 100-150대(7월)→1,000대(9월 목표) 가이던스 미실현. 양산은 텍사스 팹 2027·공개가 $20-30K(2027말, 현 원가 $50-100K). Figure 03 BMW 40대 상용배치($25/시간)·BotQ 시간당 1대. ⚠️ 단위경제 핵심: 中공급 배제시 BOM 3배($46K→$131K) — 中공급망 지배가 지정학 변수. **[8/2 재확인] Optimus 여전 양산 미개시** — 프리몬트 생산 7월 중순까지 미시작(가이던스 7월말~8월)·공개판매/예약/대기자 無·소비자 2027말 최선~2028-29 컨센. Unitree 2026 2만대 목표(Tesla+Figure+Agility 합산 미달)·G1 아마존 $17,990·Q1 이익 반토막. Figure 03 BMW 40대($25/시간) 지속. 中 선행 vs 美 슬립 심화.            | 노동력 부족·인건비 상승이 수요 동인 → 제조·물류 생산성 혁명. **중국 공급망 지배(90%)가 지정학 변수**. 단위경제 $15-20K 도달이 변곡점. Tesla·Figure는 미국 측 베팅. 양산 일정 슬립 리스크 상존.  | TSLA 005380.KS / BOTZ ROBO                  | CNBC(6/3), GS via 36kr, IDC, Rest of World 교차                          |
 
-#### 📌 매크로 종합 코멘트 [11/15]
+#### 📌 매크로 종합 코멘트 [11/22]
+
+- **[11/22 신규] AI·반도체 — 젠슨 황 엔비디아 CEO 전격 사임(11/12)·CFO 콜레트 크레스 임시 CEO 체제, AI 트레이드 최대 거버넌스 리스크:** 엔비디아가 11/12 젠슨 황의 **대표이사·이사직 즉시 사임**을 발표(33년 재임 종료)·CFO 콜레트 크레스가 CFO 겸임한 채 임시 CEO 선임·해리 존스(Harvey C. Jones) 초대 이사회 의장 선임·영구 CEO 서치 개시. 사임 사유는 공식 미공개이나 언론은 황이 **中 스파이 의혹 여성과의 혼외관계**를 인정한 개인 사안으로 보도(11/8 이사회 독립조사 착수·국가안보/무역컴플 이사회 위원회 신설·황 '이사회가 주주이익에 부합한다 판단 시 복귀 의향' 언급). 발표 당일(11/12) NVDA 장중 -14.3%·종가 -4.3%·52주 신저가·시총 4조달러 하회(2025-07 이래 최초·한 달간 -1조달러↑)·12M 선행 PER 12배(2012-11래 최저). 메가트렌드 ②(AI 버블 vs 혁명) 디레버리징 2막에 **지배구조/거버넌스 테일리스크 가중**. [NVDA 8-K·investor.nvidia(CEO Transition)·hothardware·wealthprofessional.ca·credenceresearch·citybiz 교차]
+- **[11/22 신규] AI Capex — 엔비디아 FY2027 Q3 blowout 실적(11/17)에도 'sell the news'·실물 수요 vs 밸류 디레이팅 괴리 심화(당국면 핵심 서사):** 엔비디아 회계 Q3 FY2027(10/25 종료, 임시 CEO 크레스 체제 첫 발표) **매출 $115.8B(+103% YoY·컨센 ~$109B 상회·6분기 연속 비트)·데이터센터 $107.6B(+110% YoY)·Edge Computing $8.2B(+42%)·GAAP EPS $2.70/non-GAAP $2.68·FCF $43.8B(전년 $22.1B)**. 고객믹스: 하이퍼스케일러 $60.1B(+71%)·AI클라우드/산업/엔터프라이즈 $47.5B(**+195% YoY**, 하이퍼스케일러 성장률 추월). **Q4 가이던스 $130.0B±3%(추가 1주 포함·中 DC컴퓨트 매출 0 가정)·GM 71~72%**·Q3 中 Hopper 선적 $2.4B(라이선스 Hopper 출하 중단)·자사주 확대. **그럼에도 어닝은 AI 투자둔화 우려/버블 공포를 진정시키지 못해** S&P500 5거래일 연속 하락(6월래 최장·11/18 종가 7,323.63)·발표 후 상승분 소멸·반도체 약세·KOSPI 2월래 최저 종가·10Y 수익률 ~5.10%·리스크환경 VIX ~36·공포탐욕지수 한 자릿수 극공포. 메가트렌드 ①(AI Capex 슈퍼사이클)의 **실물 수요는 역대급 검증 vs 주가는 밸류/신용 디레이팅이 지배**하는 당국면 시그니처 확정(시장 수치 일부 2차 집계·confidence medium). [NVDA 8-K/streetinsider(Q3 FY2027)·247wallst·quartr·AP(wfsb/newstribune)·decrypt·zacks 교차]
+- **[11/22 신규] AI Capex·버블 — Anthropic 나스닥 상장(11/19) 사상 최대 ~$81B IPO·밸류 ~$1.5조, 디레버리징 쇼크 와중 AI 신규상장 기록:** Anthropic이 11/19 나스닥(티커 ANT) 데뷔 — **공모 ~$81B 조달(사상 최대 IPO)·밸류에이션 ~$1.5조**(공모가 $83, 당초 밴드 $70~78 상회·825M주·수요 ~6배 초과청약·11/18 저녁 가격확정). 디레버리징 2막 한복판에서도 프라이빗 AI 선두의 대형 상장이 성사되며 **1차 AI 자본조달 수요는 견조함을 재확인**하나, 동시에 '밸류 인플레' 논쟁의 상징 이벤트. 메가트렌드 ②(버블 vs 혁명)의 양면성(실수요 vs 밸류 과열) 집약(공모규모/밸류 수치는 2차 소스간 상충·±·confidence medium). [newkerala(Anthropic Nasdaq debut)·kuwaittimes($81bn)·dealstreetasia($1.5T)·cryptobriefing·spglobal 교차]
+- **[11/22 신규] 메모리 — HBM4·DRAM ASP 상승 지속(디레버리징 쇼크 속 실물 디커플링), 2027 HBM 계약가 +70~140% 전망:** 반도체 시총 급락 국면에도 메모리 실물 가격은 상승 지속 — TrendForce **2027 HBM 계약가 +70~140% YoY**(일부 LT계약 가격상한 포함)·Goldman **2027 HBM 평균판가 $17/GB(+44% YoY)**·KB증권 **삼성 HBM 판가 2027 +100%↑**(삼성 HBM4가 3社 중 최고가 계약 가능성)·SK하이닉스 엔비디아向 HBM4 mid-$500대서 삼성 상향 매칭 검토. CSP capex 중 메모리 비중 **47%→68%(2027E)**·엔비디아 AI서버 시스템 +15%↑ 가격인상 추진. 직전 KB(SK하이닉스 Q3 OP 83조·삼성 Q3 OP 107조)의 메모리 슈퍼사이클이 ASP 상승으로 연장 — **밸류 리프라이싱(주가)과 실물 ASP 상승의 디커플링**이 메가트렌드 ①·②의 핵심(2027 forecast·2차 소스 다수·confidence medium). [koreaherald·biz.heraldcorp(TrendForce 70-140%)·aol(Samsung HBM4 premium)·tweaktown·newkerala 교차]
+- **[11/22 신규] 로보틱스·자율주행 — Tesla Optimus 프리몬트 양산 개시·로보택시 텍사스 등록대수 Waymo 근소 추월(11/10):** Tesla가 **프리몬트(구 EV 공장)서 Optimus 첫 '양산 사양' 유닛 생산 개시**(생산량/고객인도/가격 미공개·기가텍사스 1,000만대/년 설비 증설 중·주 2만대는 '약 1년 후' 목표). 로보택시: 텍사스주 등록 스냅샷(11/10) **Tesla 1,302대(Model Y 729+Cybercab 573)로 Waymo 1,297대 근소 추월**(단 Waymo는 5개 지역 ~2,500대 운영·텍사스 외 선행). 중국 휴머노이드 선행·미국 로보택시 점진 확장 구도 지속 — 상용화는 분기별 완만 전진(파괴적 변곡 미도달·등록대수는 운행량 아닌 등록 기준·confidence medium). [techcrunch(Optimus Fremont)·driveteslacanada·teslarati·robotaxitracker(TX registry 11/10) 교차]
+- **[11/22 참고] 프런티어 모델·양자·바이오·DC전력 — window(11/15~11/22) 내 교차검증 가능한 신규 확정 돌파 미확인:** (a) **프런티어 모델**: 비공식 트래커간 심한 상충(Claude Fable 5.2+Mythos 5.2 11/9·Gemini 4 Hydrogen 11/12/Carbon 11/10·GPT-6.1 Terra/Terra Pro 10/26)으로 **명칭·날짜·정식출시 여부 모두 미검증** — 직전 확정분(Claude Opus 5.5·GPT-6 Sol/Luna 9/22) 승계(confidence low). (b) **양자**: Quantinuum Helios 논리정확도 99.9995%(10/19)·Microsoft-Atom Magne(1,200+물리큐빗·2027초 가동 예정)가 최신·window 내 신규 확정 돌파 미확인(confidence low). (c) **바이오**: Novo CagriSema FDA 결정 ~2026 Q4 대기(PDUFA 미공개·REDEFINE 1 68주 -22.7%)·Intellia lonvo-z PDUFA 2027-03-10 승계. (d) **DC 전력/인프라**: window 내 신규 하이퍼스케일러 원전/SMR 딜 미확정(10월 Google-Constellation 890MW·Oklo Groves가 최신)·CoreWeave 신용스트레스는 직전 KB(11/15 Q3·5Y CDS) 및 메가트렌드 ③ 승계. 근접 촉매: CagriSema FDA 결정(Q4)·빅테크 추가 자본조달. 웹검색 다수 실세계 2025 stale(Gemini 3·NVIDIA-OpenAI 2025 딜) 반환분은 배제. [blog.mean.ceo·implicator·futurumgroup·novonordisk·ans.org 교차—다수 미검증/stale]
 
 - **[11/15 신규] AI 버블·신용 — 소프트뱅크 엔비디아 지분 전량 매각 공개(11월 실적공시) + 고베타 디레버리징 2주차:** 소프트뱅크가 보유 **엔비디아 지분 전량($5.83B·32.1M주)을 10월 중 매도**하고 11월 실적공시로 공개 — CFO Goto '엔비디아 자체와 무관'·매각대금은 **12월 예정 OpenAI $22.5B 투자(총 약정 $40B 중)**의 재원(T-모바일 일부 매각·Arm 마진론과 함께). 공개 직후 NVDA -2~3%·2017년 매입 후 두 번째 완전 청산(단 Stargate 통해 엔비디아 의존 지속). 직전 KB의 11/5 'AI 12종 ~$930B 증발'·SOX -11.2% 리스크오프가 **2주차로 연장** — 반도체·메모리 시총 10/6 고점 대비 ~$3.7조 증발(11/3 기준)·**메모리株 최대 -26% 하락하나 DRAM 가격은 상승 지속(SK하이닉스 11/6 종가 1,132,000원·10/29 1,526,000원 대비 -25.8%, Q3 사상최대 실적 익일부터 급락·Counterpoint Q3 DRAM 매출 ~$200B)**. 밸류 리프라이싱(주가)과 실물 ASP 상승의 **디커플링**이 당국면 시그니처 — 메가트렌드 ②(버블 vs 혁명) 디레버리징 심화(수치 2차 집계·일부 자체 산술·confidence medium). [techradar·thenightly·capitalbrief·qz·fourweekmba·stockanalysis 교차]
 - **[11/15 신규] AI Capex 실수요 재확인 — CoreWeave Q3 2026(11/10) 가이던스 상향·백로그 $132.5B가 AI 트레이드 재점화:** CoreWeave Q3(11/10) **매출 $3.66B(+168% YoY·컨센 $3.55B 상회)·백로그 $132.5B(6/30 $104B서 +27% QoQ)·FY2026 매출 가이던스 $13.0~13.3B 상향(8월 $12.4~13.2B서)·연말 연환산 런레이트 목표 $20~21B**·순손실 $709M(-$1.27/주)·capex 가이던스 $37~39B·총부채 ~$47B. 주가 시간외 +8%(단 직전 한 달 -40%) — 발표 후 **MU/AMD/AVGO 급등·Nasdaq-100 11/9 +3.3%·SOX +6.6% 반등(직전주 반도체지수 3월래 최악)**. 실수요(백로그 급증) vs 신용 스트레스(부채 $47B·5Y CDS 10월 중순 >1,000bps)의 긴장이 한 종목에 공존 — 메가트렌드 ①(AI Capex 슈퍼사이클)·②의 '실물 수요는 견조하나 자금조달이 binding' 서사 재확인(2차 소스·RTTNews $8.3B 매출은 오류 배제·confidence medium). [fourweekmba·implicator·247wallst·investinglive·stocktwits 교차]

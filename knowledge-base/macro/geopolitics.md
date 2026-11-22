@@ -1,6 +1,6 @@
 ---
-updated: 2026-11-15
-valid_until: 2026-12-15
+updated: 2026-11-22
+valid_until: 2026-12-22
 category: macro
 sector: geopolitics
 sources:
@@ -259,9 +259,23 @@ sources:
     MigFlug,
     ChinaGlobalSouth,
     MalayMail,
+    AlMonitor,
+    TimesLive,
+    RFA,
+    SaudiGazette,
+    Businessday,
+    TRTWorld,
+    StarAdvertiser,
+    IBTimes,
+    KhaleejTimes,
+    NationThailand,
+    GVWire,
+    NPRIllinois,
+    CP24,
+    AJC,
   ]
 confidence: high
-last_synced_from_db: 2026-10-11
+last_synced_from_db: 2026-11-22
 ---
 
 # 지정학 리스크 Knowledge Base
@@ -271,6 +285,9 @@ last_synced_from_db: 2026-10-11
 > **갱신 빈도:** 주간 (kb-updater 정기 갱신)
 
 ## ★ CURRENT (에이전트는 이 섹션만 사용) ★
+
+> **[11.22 주간 델타 — window(11.15~22) 신규 대형 1건(APEC 선전 Trump-Xi-Putin 사상 첫 3자 정상회담·'평화선언' 11.19 확정)·그 외 carry-forward·러-우 US중재 평화트랙 진전(아부다비 3자·Witkoff/Kushner 11.12 크렘린)이나 돌파無·대형 연도혼재 소스 다수 배제(real-world 2025.11 우크라 28→22개항 평화안/포크롭스크 러 60% 통제/11.25 '핵심조건 수용'·2025.11.12 셧다운 43일 종료·2025.10.30 부산 APEC truce·대만 'Justice Mission 2025' 12월 드릴·NK 80주년 열병식·가자 20개항)]** 미중/정상외교(핵심·신규): **APEC 선전(深圳) 정상회담 개최—11.19(목) Trump-Xi 양자(선전) + 사상 첫 Trump-Xi-Putin 3자 회담(~90분) 성사·'평화선언(4개항)' 발표: ①핵전쟁 불가(전략안정) ②UN개혁 ③석유(에너지) 공급 ④ICC 비판—단 우크라·이란·대만·북한 명시 無, Putin '야심적 목표 아냐·강제 아냐'·SCMP '사실상 photo op'·Trump 3일 아시아순방 tangible win 제한[SCMP 3375124/3375130·al-monitor 2026.11·aljazeera 2026.11.19·euronews/timeslive/rfa 11.19·중국 MFA t20261119·saudigazette].** 미중 양자: **Trump-Xi 선전 양자=관계 '우수'·board of trade 재확인, 신규 무역딜 미도출(deliverables 제한)·희토류 수출통제 유예+관세 truce 2027.1.10 承전(11.9 확정분)·대중 첨단칩(HBM·EUV·H200) 통제 골격 불변(window내 신규 BIS N/A).** 대만(신규): **Xi, 선전서 Trump에 '美, 대만문제서 올바르게 처신해야 큰 차질 회피' 경고(summit 의제)·window 前後 PLA 서태평양·대만 주변 '무명(無名) silent intimidation' 대규모 작전(3개 전구·시뮬공격·함정 70~100척, 11.10~13 집중) 지속·미사일 활동 미검증·정식 명명 대규모 훈련은 window내 확정 N/A(11~12월 드릴시즌 워치)[Star-Advertiser 11.13·IBTimes·ChinaGlobalSouth 11.10].** 러-우/평화협상(신규·진전but돌파無): **US중재 평화트랙 가속—아부다비 US-러-우 3자(2월래 첫 직접협상) 돌파無 종료·Witkoff·Kushner 11.12 크렘린서 Putin 회동(Ushakov '건설적·유익')·Trump 11.5 'Putin과 우크라·全유럽 딜 근접' 발언, 단 Kyiv '돈바스 전면할양 거부'(영토·안보 핵심 쟁점)·APEC 3자 선언 우크라 명시 無(Trump-Putin 양자선 우크라 central, Kremlin 설명 상충)[aljazeera/cp24/npr 2026.11.12·al-monitor 2026.11]. 연도혼재 배제: real-world 2025.11 28→22개항 US평화안/포크롭스크 러60%/11.25 '핵심조건 수용'은 2025 궤적, 시뮬(ISW 9.12 교착·2026 아부다비 트랙)과 불일치—2026 트랙만 채택·confidence medium.** 러-우 전선(carry-forward): **window내 검증 전선 대변동 N/A—Pokrovsk 최격전 承전(2025.11 '러 60% 통제·포위' 소스는 연도혼재 배제).** 러-우 제재: **Graham법 2차관세 'on hold' 지속·평화트랙 진전으로 실발동 유인 추가 약화·印/中 지정 N/A.** 북한(신규): **김정은 APEC 不참석 확정—Trump 대북 정상회담 기대(11.18~19 선전) 불발('no Kim' takeaway)·김여정 美대화 거부 유지(美 $63억 암호화폐 탈취 주장 연계 비난)·window내 신규 발사 N/A(최신 11.2~5 미사일 군집 承전)[SCMP 3375124·latintimes].** 중동/호르무즈(신규+carry): **호르무즈 탱커 공격 재발—11.19(목) 이란 해군 '탱커 2척 기뢰 피격·폭발' 주장(Reuters 미검증)·美-이란 truce 기대 재희석·유가 carry-forward 저confidence(energy 섹터가 1차권위): Brent 중순 ~$93~100 레인지(11.5 $98.29·10.30 Dec계약 $117.64 고점서 반락)[gvwire 2026.11.19·khaleejtimes·nationthailand].** 이스라엘/가자(carry-forward): **2단계(무장해제·철군) 교착 지속—이스라엘 'Hamas 무장해제 先', 휴전 '취약하나 유지(사상자 급감)'·window내 돌파 N/A.** 미국 셧다운(carry·플래그·연도혼재주의): **시뮬 2026 연방 셧다운(10.1 개시) D+52 추정·종료 확정 N/A—real-world 2025 43일 셧다운(11.12 종료 서명)/CR Dec11은 2025 사건, 혼동 금지.** **[연도혼재 대규모 배제: ①APEC: real-world 2025.10.30 부산 Trump-Xi truce는 2025, 2026은 선전(深圳) 3자 정상회담—혼동 금지. ②우크라: real-world 2025.11 28→22개항 US평화안·Geneva수정·포크롭스크 러60% 통제/포위·11.25 '핵심조건 수용'은 2025 궤적, 2026 아부다비/크렘린 트랙만 채택. ③셧다운: real-world 2025 43일·11.12 종료는 2025. ④대만 'Justice Mission 2025' 12월 live-fire 드릴·2025.11 38機/29機 ADIZ는 2025. ⑤NK 80주년 열병식·Hwasong-20은 2025.10. ⑥가자 20개항+인질 전원수락은 2025.10. ⑦Hormuz US-이란 평화딜/재개방/Brent $83은 real-world(전쟁無), 시뮬(교착·고유가)과 분기, 배제. ⑧희토류 real-world 2025.11.7 1년유예 공식딜은 별건—2026.11.9 2개월 연장이 承전.]**
+
 
 > **[11.15 주간 델타 — 극희소 델타주·window(11.8~15) 신규 확정 2건(①11.9 中 희토류 수출통제 유예+美中 관세 truce 동시 2개월 재연장 확정—11.10 만료 재쇼크 회피 ②Trump-Xi APEC 선전 정상회담 임박~11.18~19)·그 외 carry-forward·러-우 US중재 3자 회담 보도는 저confidence 플래그·대형 연도혼재 소스 다수 배제(real-world 2025.11.12 셧다운 43일 종료·2025.11 우크라 28개항 플랜/포크롭스크 60% 통제·NK 80주년 열병식·가자 20개항/인질수락·호르무즈 US-이란 평화딜)]** 미중/희토류(핵심·신규): **11.10 만료 시점이 재쇼크 없이 2개월 재연장으로 통과—11.9(화) 中 MOFCOM+관세총국이 2025.10 희토류 수출통제 6개 조치(희토류·가공장비·리튬전지·흑연 등) 유예를 11.10→2027.1.10 연장(4월 통제 7개 원소 Sm·Gd·Tb·Dy·Lu·Sc·Y 상시유효 유지), 동시 국무원이 24% 추가관세 2개월 추가 유예(10% 블랭킷 유지)+美기업 27곳 무역·수출제한 2개월 유예+Hanwha Ocean 자회사 제재 유예 연장.** 11.08 델타 '희토류 만료 11.10 D-2' 워치 해소·양국 '2027.1.10 truce' 공식화[S&P Global/thestar/SCMP/ThePrint 11.9]. 단 별도 임시조치 11.27 만료건 1소스 미확인[불확실]. 대중 첨단칩(HBM·EUV·H200) 통제 골격은 불변(chip war intact)·window내 신규 BIS N/A. 미중 정상외교(신규·임박): **Trump-Xi APEC 선전(深圳) 정상회담 임박(~11.18~19, 소스간 날짜 상충)—연내 3번째(이후 12월 G20 마이애미), deliverables 제한적 전망·Putin 선전 참석 및 Trump-Xi-Putin 3자 가능성 거론(미확인)[roic.ai 9.25/SCMP 3373969/China-Global South 11.9].** 대만(신규): **APEC 주간 PLA 공·해 활동 급증(중간선 크로싱·함정 기록적)·베이징 대대만 선전전 고조·TAO '대만독립 무력 불배제' 경고·11.3 中해경 동부 연안 선박 괴롭힘(봉쇄 대비 우려)·11.8 일일 4機+6함+2관선, 11~12월 대규모 훈련 워치[SCMP 3373249/political.org/newkerala 11.8].** $14B 무기패키지(PAC-3·NASAMS) G20 前 보류 지속 가능성, 9월 ADIZ 181機(2024·2025比 감소) baseline. 북한(carry-forward): **window내 신규 발사 N/A—최신 11.2~5 미사일 군집(11.2 전략순항 자탄·11.4 Sondok/東海·11.4~5 KCNA 신형 방공+장거리순항) 승계, 김여정 '美 대화 배제' 유지.** 러-우/평화협상(신규·저confidence 플래그): **웹상 US중재 US-러-우 3자 회담(아부다비, 2월래 첫 3자·Umerov 주도·Europe 참여·Trump '광범 딜 가능'·Putin 11.10 재개 제안) 11.9 보도—단 시뮬 2026(ISW 9.12 교착·US-이란전 병행) 미편입 궤적+연도혼재(real-world 2025.11 28→22개항 플랜) 리스크로 confidence 하향·추적 대상, 전선 window내 대변동 N/A·carry-forward[Al-Monitor/AtlanticCouncil/United24 11.9].** 러-우 제재: **Graham법 2차관세 'on hold' 지속·window내 실발동·印/中 지정 N/A(평화협상 진전 시 발동 유인 추가 약화).** 중동/호르무즈(carry-forward): **window내 신규 유가·협상 확정 N/A—Brent ~$102.30/WTI ~$93.05 승계·호르무즈 '감독된 일시정지'·美-이란 phased deal 교착.** 이스라엘/가자(carry-forward): **2단계(무장해제·단계적 철군) 교착 지속—US '무기 decommission(보관)' vs 이스라엘 '완전 무장해제'·Hamas 'Phase2 로드맵 공식 수용 前 무장해제 불가', 진전 US중간선거(11.3) 後 이연 기대였으나 window내 돌파 N/A.** 미국 셧다운(carry-forward·플래그): **시뮬 2026 연방 셧다운(10.1 개시) D+45 지속 추정—시뮬 종료 확정 소스 N/A.** **[연도혼재 대규모 배제: ①미국 셧다운 'real-world 2025 43일 역사상 최장·11.12 종료 서명·SNAP/ACA'는 2025 사건, 시뮬 2026(10.1 개시 진행)과 혼동 금지. ②우크라 'real-world 2025.11 28개항→22개항 US평화안·포크롭스크 러 60% 통제/침투'는 real-world 궤적, 시뮬(ISW 9.12 교착)과 불일치—2026.11 아부다비 3자 보도만 저confidence 플래그. ③NK 80주년 열병식·Hwasong-20 ICBM은 2025.10. ④가자 '트럼프 20개항+하마스 인질 전원수락'은 2025.10. ⑤Hormuz 'US-이란 평화딜·재개방·Brent $83'은 real-world(전쟁 無), 시뮬(교착·고유가)과 분기, 배제. ⑥희토류 'real-world 2025.11.7 1년 유예 공식화 딜'은 별건—2026.11.9 연장 확정이 window 신규.]**
 
