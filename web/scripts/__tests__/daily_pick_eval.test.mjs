@@ -175,12 +175,13 @@ test('implausible tp (> entry×1.8) → tp_status none, 달성 없음', () => {
 });
 
 test('frozen horizons after close', () => {
-  const closes = flat(130, 100);
-  const highs = flat(130, 100);
+  // 250일 칸까지 실제로 지나야 집계되므로 260바 공급 (C1)
+  const closes = flat(260, 100);
+  const highs = flat(260, 100);
   highs[40] = 125; // 40바째 달성 → 청산가 120 (+20%)
-  const bench = flat(130, 100);
-  for (let i = 30; i < 130; i++) bench[i] = 110; // 마감일 벤치 +10%
-  for (let i = 100; i < 130; i++) bench[i] = 200; // 마감 이후 벤치 변동은 무시돼야 함
+  const bench = flat(260, 100);
+  for (let i = 30; i < 260; i++) bench[i] = 110; // 마감일 벤치 +10%
+  for (let i = 100; i < 260; i++) bench[i] = 200; // 마감 이후 벤치 변동은 무시돼야 함
   const p = px(mkSeries('2026-11-02', closes, { highs }), mkSeries('2026-11-02', bench));
   const { recs } = buildRecommendations([row({ tp_price: 120 })], p, [], {});
   assert.equal(recs[0].close.bars, 40);
@@ -189,6 +190,28 @@ test('frozen horizons after close', () => {
     assert.ok(near(recs[0].h[k].excess, 10), k);
     assert.equal(recs[0].h[k].hit, true);
   }
+});
+
+test('C1: 조기 달성(bar3)·이력 10바 → 60일 칸 미집계, 마감은 달성', () => {
+  const highs = flat(10, 100);
+  highs[3] = 120;
+  const { recs } = buildRecommendations([row({ tp_price: 110 })], px(mkSeries('2026-11-02', flat(10, 100), { highs })), [], {});
+  assert.equal(recs[0].close.reason, '달성');
+  assert.equal(recs[0].h['60'], null);
+  assert.equal(recs[0].h['120'], null);
+  assert.equal(recs[0].h['250'], null);
+});
+
+test('C1: 조기 달성(bar3)·이력 70바 → 60일 칸은 달성 값 고정, 120일 칸 미집계', () => {
+  const closes = flat(70, 100);
+  for (let i = 4; i < 70; i++) closes[i] = 90; // 마감 이후 하락은 무시돼야 함
+  const highs = flat(70, 100);
+  highs[3] = 120;
+  const { recs } = buildRecommendations([row({ tp_price: 110 })], px(mkSeries('2026-11-02', closes, { highs })), [], {});
+  assert.equal(recs[0].close.reason, '달성');
+  assert.ok(recs[0].h['60'] != null && near(recs[0].h['60'].ret, 10));
+  assert.equal(recs[0].h['120'], null);
+  assert.equal(recs[0].h['250'], null);
 });
 
 test('repick after closed rec starts new rec without judgment', () => {

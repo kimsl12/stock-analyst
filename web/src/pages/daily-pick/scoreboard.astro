@@ -25,12 +25,17 @@ const cell = (c: any) => (c == null ? null : c);
 const shortVerdict = (r: any) =>
   r.status === 'pending' ? '진입 전' : r.status === 'no_price' ? '가격 없음' : r.h['20'] == null ? '대기' : r.h['20'].hit ? '적중' : '미적중';
 
-// 장기 마감 수익 (마감 후 칸 = 마감 값 고정 → 가장 긴 기간 칸이 마감 값)
-const closeRet = (r: any) => {
-  if (!r.close) return null;
-  for (const k of ['250', '120', '60']) if (r.h[k]) return r.h[k].ret;
-  return null;
-};
+// 장기 마감 수익 — 청산가 / 진입가 (기간 칸은 기간이 지나야 채워지므로 직접 계산)
+const closeRet = (r: any) =>
+  r.close?.price != null && r.entry_price ? (r.close.price / r.entry_price - 1) * 100 : null;
+
+// 데이터 기준일 (generated_at → KST 날짜)
+const asOf = (() => {
+  const t = Date.parse(e.generated_at);
+  if (Number.isNaN(t)) return null;
+  const k = new Date(t + 9 * 3600 * 1000).toISOString();
+  return `${Number(k.slice(5, 7))}/${Number(k.slice(8, 10))} KST`;
+})();
 
 const shortRows = [...short.rows].sort((a: any, b: any) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 const longRecs = [...long.recs].sort((a: any, b: any) => (a.anchor_date < b.anchor_date ? 1 : -1));
@@ -40,7 +45,7 @@ const tpSub = `마감 ${closedWithTp}건 중 달성 ${long.close_reasons['달성
   (long.avg_bars_to_tp != null ? ` · 평균 ${long.avg_bars_to_tp.toFixed(1)}거래일` : '') +
   (long.close_reasons['만기'] === 0 ? ' · 만기 사례 없음' : '');
 ---
-<Base title="데일리픽 성적표" lede={`픽 ${counts.picks}건 · 단기 평가완료 ${counts.evaluated_short}건 · 추천 ${counts.recs}건 · 판정 대기 ${pendingCount}건`} active="home">
+<Base title="데일리픽 성적표" lede={`픽 ${counts.picks}건 · 단기 평가완료 ${counts.evaluated_short}건 · 추천 ${counts.recs}건 · 판정 대기 ${pendingCount}건${asOf ? ` · 기준 ${asOf}` : ''}`} active="home">
 
   <div class="tabs">
     <input type="radio" name="dp-tab" id="tab-short" checked />
@@ -216,8 +221,10 @@ const tpSub = `마감 ${closedWithTp}건 중 달성 ${long.close_reasons['달성
         <li><b>표본 적음</b>: 집계 n &lt; 10 이면 표식을 붙입니다(숫자는 그대로 표시). 점수대는 75–77 / 78–80 / 81+.</li>
         <li><b>단기</b>: 모든 픽을 개별 평가(같은 종목 재픽도 각각). 5일·20일.</li>
         <li><b>장기</b>: 같은 종목의 첫 픽(또는 직전 추천 마감 뒤 첫 픽)이 새 추천의 시작. 열려 있는 동안 재픽되면 논지가 같은지 판정해 <b>동일·보강</b>은 재추천으로 편입, <b>전환</b>은 기존 추천을 마감하고 새 추천을 시작합니다. 판정 전 픽은 <b>판정 대기</b>이며 해당 구간은 확정 전까지 장기 집계에서 제외합니다. 같은 분석 폴더의 재픽은 자동으로 '동일'(같은 분석) 처리합니다.</li>
-        <li><b>마감</b>: 시간상 먼저 오는 것. 달성(일중 고가 ≥ 목표가, 청산가 = 목표가, 그 바 시가가 이미 목표가 이상이면 시가) / 논지 교체(전환 픽 진입 바 종가) / 만기(진입 후 250번째 바 종가). 마감 후 기간 칸은 마감 값으로 고정됩니다.</li>
+        <li><b>마감</b>: 시간상 먼저 오는 것. 달성(일중 고가 ≥ 목표가, 청산가 = 목표가, 그 바 시가가 이미 목표가 이상이면 시가) / 논지 교체(전환 픽 진입 바 종가) / 만기(진입 후 250번째 바 종가).</li>
+        <li><b>기간 칸</b>: 기간 칸은 그 기간이 실제로 지난 뒤에만 집계(마감된 추천은 마감 값으로 고정)합니다. 일찍 목표가에 닿은 추천만 먼저 집계돼 적중률이 부풀려지는 것을 막기 위해서이며, 그 전에는 마감됐더라도 <b>대기</b>로 표시합니다.</li>
         <li><b>목표가</b>: 각 추천 시작 시점 분석의 목표가. 없거나 진입가 대비 비현실적인 값이면 '목표가 없음'으로 두고 달성 마감은 발생하지 않습니다.</li>
+        <li><b>수익률</b>: 배당 제외 가격 기준입니다(배당형 ETF는 실제보다 낮게 보임).</li>
         <li>가격 이력이 없는 종목은 <b>가격 없음</b>, 진입 바가 아직 없는 픽은 <b>진입 전</b>으로 표시하며 집계에서 제외합니다.</li>
       </ul>
     </div>

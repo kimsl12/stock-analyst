@@ -156,10 +156,12 @@ function finalizeRec(rec, stock, bench) {
     const j = _idx + n;
     // 잠정 추천: 미판정 재픽 진입 바 이후 기간은 미확정 → null
     if (rec.provisional && _provIdx != null && j > _provIdx) continue;
-    // 마감 바가 N번째 바 이하면 마감 값 고정, 아니면 N번째 바 종가, 미도달이면 null
+    // N번째 바가 실제로 생기기 전이면 null (마감 여부 무관 — 조기 달성만 먼저 집계되는 생존편향 방지)
+    if (j >= stock.dates.length) continue;
+    // 마감 바가 N번째 바 이하면 마감 값 고정, 아니면 N번째 바 종가
     if (closeIdx != null && closeIdx <= j) {
       out.h[String(n)] = perfCell(rec.entry_price, close.price, benchEntry, closeOnOrBefore(bench, close.date));
-    } else if (j < stock.dates.length) {
+    } else {
       out.h[String(n)] = perfCell(rec.entry_price, stock.close[j], benchEntry, closeOnOrBefore(bench, stock.dates[j]));
     }
   }
