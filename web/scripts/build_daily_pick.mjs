@@ -23,6 +23,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { nowKstIsoShort, todayKst } from './_kst.mjs';
 import { parseScore, parseGrade, parseStopLoss, parseTargetPrice } from './lib/scorecard_parser.mjs';
+import { ledgerRowFromPick, upsertLedgerRow } from './lib/daily_pick_ledger.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,6 +33,8 @@ const ANALYSIS_DIR = path.join(PROJECT_ROOT, 'analysis');
 const HISTORY_DIR = path.join(ANALYSIS_DIR, '_history');
 const OUTPUT_JSON = path.join(WEB_DIR, 'src', 'data', 'daily_pick.json');
 const REPORTS_DIR = path.join(PROJECT_ROOT, 'reports');
+const LEDGER_JSON = path.join(WEB_DIR, 'src', 'data', 'daily_pick_ledger.json');
+const REGIME_JSON = path.join(PROJECT_ROOT, 'knowledge-base', 'market', 'regime.json');
 
 const MIN_SCORE = 75; // [v3.35 하이브리드] 등급 필터(매수 이상)와 결합된 질 하한
 const BUY_GRADE = /강력\s?매수|매수/; // 매수 이상만 추천 (중립/보유/매도 제외)
@@ -506,6 +509,24 @@ async function main() {
   };
 
   await writeFile(OUTPUT_JSON, JSON.stringify(payload, null, 2), 'utf-8');
+
+  // 원장 append — 같은 date 는 upsert (픽 없는 날은 건드리지 않음)
+  let regime = null;
+  try {
+    regime = JSON.parse(await readFile(REGIME_JSON, 'utf-8'));
+  } catch {
+    /* regime 부재 시 null */
+  }
+  const ledgerRow = ledgerRowFromPick(payload, regime);
+  if (ledgerRow) {
+    let ledger = [];
+    try {
+      ledger = JSON.parse(await readFile(LEDGER_JSON, 'utf-8'));
+    } catch {
+      /* 원장 없으면 신규 */
+    }
+    await writeFile(LEDGER_JSON, JSON.stringify(upsertLedgerRow(ledger, ledgerRow), null, 2), 'utf-8');
+  }
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
   if (top) {
