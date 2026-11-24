@@ -6,7 +6,7 @@
 #   1. 외장 SSD 마운트 확인
 #   2. git pull (원격 최신)
 #   3. build_daily_pick.mjs 재실행 → web/src/data/daily_pick.json
-#   4. 변경 있으면 commit + push + Vercel + Cloudflare deploy
+#   4. 변경 있으면(daily_pick·원장·eval — eval 은 generated_at 제외 비교) commit + push + Vercel + Cloudflare deploy
 #   5. 변경 없으면 skip (어제 픽 그대로)
 #
 # launchd 등록:
@@ -86,8 +86,17 @@ fi
 
 # 4. 변경 있는지 확인 (daily_pick.json·원장·eval 또는 KB 본문 신규 변경)
 KB_CHANGED=$(git status --porcelain knowledge-base/market/ 2>/dev/null | wc -l | tr -d ' ')
+# eval 은 generated_at 이 매 실행 갱신되므로 비교에서 제외 (HEAD 버전 부재 시 "변경"으로 간주).
+# 타임스탬프만 바뀐 eval 은 되돌리지 않고 둔다 (watchdog 이 로컬 generated_at 신선도를 본다)
+EVAL_PATH=web/src/data/daily_pick_eval.json
+EVAL_SAME=0
+if EVAL_HEAD=$(git show "HEAD:$EVAL_PATH" 2>/dev/null | jq -S 'del(.generated_at)' 2>/dev/null) \
+   && EVAL_NOW=$(jq -S 'del(.generated_at)' "$EVAL_PATH" 2>/dev/null) \
+   && [ -n "$EVAL_HEAD" ] && [ "$EVAL_HEAD" = "$EVAL_NOW" ]; then
+  EVAL_SAME=1
+fi
 PICK_UNCHANGED=0
-if git diff --quiet web/src/data/daily_pick.json web/src/data/daily_pick_ledger.json web/src/data/daily_pick_eval.json; then
+if [ "$EVAL_SAME" -eq 1 ] && git diff --quiet web/src/data/daily_pick.json web/src/data/daily_pick_ledger.json; then
   PICK_UNCHANGED=1
 fi
 if [ "$PICK_UNCHANGED" -eq 1 ] && [ "$KB_CHANGED" -eq 0 ]; then
