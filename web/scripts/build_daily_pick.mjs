@@ -520,12 +520,20 @@ async function main() {
   const ledgerRow = ledgerRowFromPick(payload, regime);
   if (ledgerRow) {
     let ledger = [];
+    let ledgerOk = true;
     try {
       ledger = JSON.parse(await readFile(LEDGER_JSON, 'utf-8'));
-    } catch {
-      /* 원장 없으면 신규 */
+      if (!Array.isArray(ledger)) throw new Error('원장이 배열이 아님');
+    } catch (err) {
+      if (err?.code !== 'ENOENT') {
+        // 손상/읽기 실패 — 덮어쓰면 append-only 이력 소실 → 원장 쓰기 건너뜀
+        ledgerOk = false;
+        console.error(`WARN: 원장 읽기 실패 — 원장 갱신 건너뜀 (${err.message})`);
+      }
     }
-    await writeFile(LEDGER_JSON, JSON.stringify(upsertLedgerRow(ledger, ledgerRow), null, 2), 'utf-8');
+    if (ledgerOk) {
+      await writeFile(LEDGER_JSON, JSON.stringify(upsertLedgerRow(ledger, ledgerRow), null, 2), 'utf-8');
+    }
   }
 
   const rel = path.relative(PROJECT_ROOT, OUTPUT_JSON);
