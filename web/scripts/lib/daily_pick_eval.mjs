@@ -6,7 +6,8 @@ export const BENCH = { US: '^GSPC', KRX: '^KS11' };
 
 const SMALL_SAMPLE_N = 10;
 const EXPIRY_BARS = 250; // 장기 만기 거래일
-const TP_RANGE = [0.2, 1.8]; // 목표가 유효 범위 (진입가 배수)
+const TP_MAX_MULT = 1.8; // 목표가 상한 (진입가 배수) — 진입가 이하·상한 초과 tp 는 무효
+const VERDICTS = new Set(['동일', '보강', '전환']); // 유효 판정 값
 
 const isEmpty = (s) => !s || !Array.isArray(s.dates) || s.dates.length === 0;
 
@@ -112,8 +113,8 @@ function newRec(pick, stock, idx) {
   const status = stock == null ? 'no_price' : idx < 0 ? 'pending' : 'ok';
   const entryPrice = status === 'ok' ? stock.close[idx] : null;
   const tp = pick.tp_price ?? null;
-  // tp 유효성: null 이거나 진입가×[0.2,1.8] 밖이면 무효 (진입가 미확정이면 판단 보류 → 유효 취급)
-  const tpValid = tp != null && (entryPrice == null || (tp >= entryPrice * TP_RANGE[0] && tp <= entryPrice * TP_RANGE[1]));
+  // tp 유효성: 진입가 < tp ≤ 진입가×1.8 일 때만 유효 (진입가 미확정이면 검증 불가 → 무효)
+  const tpValid = tp != null && entryPrice != null && tp > entryPrice && tp <= entryPrice * TP_MAX_MULT;
   return {
     ticker: pick.ticker,
     name: pick.name,
@@ -130,18 +131,21 @@ function newRec(pick, stock, idx) {
     close: null,
     status,
     provisional: false,
+    provisional_from: null,
     // 내부 상태 (출력 전 제거)
     _dir: pick.analysis_dir,
     _idx: idx,
+    _provIdx: null, // 미판정 재픽의 진입 바 인덱스
     _pc: status === 'ok' ? priceClose(stock, idx, tpValid ? tp : null) : null,
   };
 }
 
 /** 추천 확정 — 마감·기간 값 계산 후 내부 상태 제거 */
 function finalizeRec(rec, stock, bench) {
-  const { _dir, _idx, _pc, ...out } = rec;
-  // 논지 교체 마감이 없으면 가격 기준 마감 적용
-  const close = rec.close ?? _pc;
+  const { _dir, _idx, _pc, _provIdx, ...out } = rec;
+  // 논지 교체 마감이 없으면 가격 기준 마감 적용.
+  // 잠정 추천은 미판정 재픽 이후가 미확정 → 진행 중 처리 (R4 상 가격 마감은 항상 재픽 진입 바 이후)
+  const close = rec.provisional ? null : rec.close ?? _pc;
   out.close = close ? { reason: close.reason, date: close.date, price: close.price, bars: close.bars } : null;
   if (close?.reason === '달성') out.tp_status = 'hit';
   out.h = Object.fromEntries(LONG_HORIZONS.map((n) => [String(n), null]));
@@ -150,6 +154,8 @@ function finalizeRec(rec, stock, bench) {
   const closeIdx = close ? close.idx : null;
   for (const n of LONG_HORIZONS) {
     const j = _idx + n;
+    // 잠정 추천: 미판정 재픽 진입 바 이후 기간은 미확정 → null
+    if (rec.provisional && _provIdx != null && j > _provIdx) continue;
     // 마감 바가 N번째 바 이하면 마감 값 고정, 아니면 N번째 바 종가, 미도달이면 null
     if (closeIdx != null && closeIdx <= j) {
       out.h[String(n)] = perfCell(rec.entry_price, close.price, benchEntry, closeOnOrBefore(bench, close.date));
@@ -202,15 +208,17 @@ export function buildRecommendations(ledger, symbols, judgments = [], overrides 
       // 판정 결정: override > 같은 analysis_dir 자동 동일 > anchor 일치 판정 행
       let rep = null;
       const ov = overrides[`${ticker}@${pick.date}`];
-      if (ov) {
-        rep = { verdict: ov, rationale: null, judged_by: 'override' };
+      if (ov != null) {
+        // 비정상 override 값 → 미판정 취급 (하위 규칙으로 넘어가지 않음)
+        if (VERDICTS.has(ov)) rep = { verdict: ov, rationale: null, judged_by: 'override' };
       } else if (pick.analysis_dir && pick.analysis_dir === open._dir) {
         rep = { verdict: '동일', rationale: null, judged_by: 'auto-same-version' };
       } else {
         for (const j of judgments) {
           if (j.ticker !== ticker || j.date !== pick.date) continue;
-          if (j.anchor_date === open.anchor_date) rep ??= { verdict: j.verdict, rationale: j.rationale ?? null, judged_by: j.judged_by };
-          else invalid.push(j); // 옛 anchor 기준 판정 → 무효
+          // 옛 anchor 기준 판정 또는 비정상 판정 값 → 무효
+          if (j.anchor_date !== open.anchor_date || !VERDICTS.has(j.verdict)) invalid.push(j);
+          else rep ??= { verdict: j.verdict, rationale: j.rationale ?? null, judged_by: j.judged_by };
         }
       }
 
@@ -221,6 +229,8 @@ export function buildRecommendations(ledger, symbols, judgments = [], overrides 
           anchor_date: open.anchor_date, anchor_version: open.anchor_version, anchor_analysis_dir: open._dir,
         });
         open.provisional = true;
+        open.provisional_from = stock ? stock.dates[idx] : pick.date;
+        open._provIdx = stock ? idx : null;
         break;
       }
 

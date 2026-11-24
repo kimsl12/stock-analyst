@@ -160,7 +160,7 @@ test('no tp → never 달성', () => {
   assert.ok(near(recs[0].h['250'].ret, 30));
 });
 
-test('implausible tp (entry×[0.2,1.8] 밖) → tp_status none, 달성 없음', () => {
+test('implausible tp (> entry×1.8) → tp_status none, 달성 없음', () => {
   const highs = flat(10, 100);
   highs[4] = 5000;
   const stock = mkSeries('2026-11-02', flat(10, 100), { highs });
@@ -223,6 +223,7 @@ test('unjudged repick → pending, later picks skipped', () => {
   assert.equal(recs.length, 1);
   assert.equal(recs[0].provisional, true);
   assert.equal(recs[0].repicks.length, 0);
+  assert.equal(recs[0].provisional_from, '2026-11-04');
   assert.deepEqual(pending, [{
     ticker: 'AAA', date: '2026-11-04', version: 'v2', analysis_dir: 'A_v2',
     anchor_date: '2026-11-02', anchor_version: 'v1', anchor_analysis_dir: 'A_v1',
@@ -259,8 +260,9 @@ test('repick without entry bar yet → stop, no pending; sole new pick → pendi
   assert.equal(a.recs[0].repicks.length, 0);
   assert.equal(a.recs[0].provisional, false);
   assert.equal(a.pending.length, 0);
-  const b = buildRecommendations([row({ date: '2026-11-10' })], px(stock), [], {});
+  const b = buildRecommendations([row({ date: '2026-11-10', tp_price: 110 })], px(stock), [], {});
   assert.equal(b.recs[0].status, 'pending');
+  assert.equal(b.recs[0].tp_status, 'none'); // 진입가 미확정 → tp 검증 불가
   assert.equal(b.recs[0].entry_price, null);
   assert.equal(b.recs[0].h['60'], null);
 });
@@ -275,4 +277,72 @@ test('no price series → no_price recs, bundling still applies', () => {
   assert.deepEqual(recs[0].close, { reason: '논지 교체', date: '2026-11-09', price: null, bars: null });
   assert.equal(recs[0].h['120'], null);
   assert.equal(recs[1].status, 'no_price');
+  assert.equal(buildRecommendations([row({ tp_price: 110 })], {}, [], {}).recs[0].tp_status, 'none');
+});
+
+test('provisional rec: close null and horizons after unjudged repick null (R10b)', () => {
+  // anchor tp 110, 미판정 재픽 bar5(11-09), 이후 bar8 에서 tp 도달 → 진행 중 처리
+  const highs = flat(130, 100);
+  highs[8] = 120;
+  const stock = mkSeries('2026-11-02', flat(130, 100), { highs });
+  const ledger = [row({ tp_price: 110 }), row({ date: '2026-11-09', version: 'v2', analysis_dir: 'A_v2' })];
+  const a = buildRecommendations(ledger, px(stock), [], {});
+  assert.equal(a.recs[0].provisional, true);
+  assert.equal(a.recs[0].provisional_from, '2026-11-09');
+  assert.equal(a.recs[0].close, null);
+  assert.equal(a.recs[0].tp_status, 'open');
+  assert.equal(a.recs[0].h['60'], null);
+  // 재픽이 bar70 → 60일 칸(재픽 이전)은 유지, 120일 칸은 null
+  const s2 = mkSeries('2026-11-02', flat(130, 100));
+  const b = buildRecommendations([row(), row({ date: s2.dates[70], version: 'v2', analysis_dir: 'A_v2' })], px(s2), [], {});
+  assert.equal(b.recs[0].provisional_from, s2.dates[70]);
+  assert.ok(b.recs[0].h['60'] != null && near(b.recs[0].h['60'].ret, 0));
+  assert.equal(b.recs[0].h['120'], null);
+  assert.equal(b.recs[0].h['250'], null);
+  // 비잠정 추천은 provisional_from null
+  assert.equal(buildRecommendations([row()], px(s2), [], {}).recs[0].provisional_from, null);
+});
+
+test('tp at or below entry → tp_status none, no 달성 (R1)', () => {
+  // 실제 사례: VOO 진입 685.26, tp 600 → 1바째 달성 기록되던 문제
+  const stock = mkSeries('2026-11-02', flat(10, 100));
+  for (const tp of [90, 100]) {
+    const { recs } = buildRecommendations([row({ tp_price: tp })], px(stock), [], {});
+    assert.equal(recs[0].tp_status, 'none', String(tp));
+    assert.equal(recs[0].close, null, String(tp));
+  }
+});
+
+test('invalid verdict values → unjudged; bad judgment rows → invalid', () => {
+  const ledger = [row(), row({ date: '2026-11-04', version: 'v2', analysis_dir: 'A_v2' })];
+  const stock = mkSeries('2026-11-02', flat(10, 100));
+  const bad = judg({ verdict: '같음' });
+  const a = buildRecommendations(ledger, px(stock), [bad], {});
+  assert.deepEqual(a.invalid, [bad]);
+  assert.equal(a.pending.length, 1);
+  assert.equal(a.recs[0].provisional, true);
+  // 비정상 override 값 → 미판정 (유효 판정 행으로 넘어가지 않음)
+  const b = buildRecommendations(ledger, px(stock), [judg({ verdict: '보강' })], { 'AAA@2026-11-04': '전환!' });
+  assert.equal(b.pending.length, 1);
+  assert.equal(b.recs.length, 1);
+  assert.equal(b.recs[0].repicks.length, 0);
+});
+
+test('frozen horizons after 논지 교체 close at bar 40', () => {
+  const closes = flat(300, 100);
+  closes[40] = 120;
+  for (let i = 41; i < 300; i++) closes[i] = 150; // 마감 이후 종목 변동 무시
+  const bench = flat(300, 100);
+  for (let i = 30; i < 300; i++) bench[i] = 110;
+  for (let i = 100; i < 300; i++) bench[i] = 200;
+  const stock = mkSeries('2026-11-02', closes);
+  const ledger = [row(), row({ date: stock.dates[40], version: 'v2', analysis_dir: 'A_v2' })];
+  const j = judg({ date: stock.dates[40], verdict: '전환' });
+  const { recs } = buildRecommendations(ledger, px(stock, mkSeries('2026-11-02', bench)), [j], {});
+  assert.deepEqual(recs[0].close, { reason: '논지 교체', date: stock.dates[40], price: 120, bars: 40 });
+  for (const k of ['60', '120', '250']) {
+    assert.ok(near(recs[0].h[k].ret, 20), k);
+    assert.ok(near(recs[0].h[k].excess, 10), k);
+    assert.equal(recs[0].h[k].hit, true, k);
+  }
 });
