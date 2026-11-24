@@ -43,3 +43,22 @@ test('upsert replaces same date', () => {
   const out2 = upsertLedgerRow(out, { date: '2026-11-19', ticker: 'D' });
   assert.deepEqual(out2.map((r) => r.date), ['2026-11-18', '2026-11-19', '2026-11-20']);
 });
+
+import { findArchiveName } from '../lib/analysis_archive.mjs';
+
+test('findArchiveName — 접두 충돌 방지·최신 날짜·무매칭 null', () => {
+  assert.equal(
+    findArchiveName('MU_Micron_v2', ['MU_Micron_v20_20261001.tar.gz', 'MU_Micron_v2_20260601.tar.gz']),
+    'MU_Micron_v2_20260601.tar.gz',
+  );
+  assert.equal(
+    findArchiveName('MU_Micron_v2', ['MU_Micron_v2_20260601.tar.gz', 'MU_Micron_v2_20260701.tar.gz']),
+    'MU_Micron_v2_20260701.tar.gz',
+  );
+  assert.equal(findArchiveName('MU_Micron_v2', ['MU_Micron_v20_20261001.tar.gz']), null);
+});
+
+test('findArchiveName — NFC/NFD 한글 정규화 매칭, 실제 이름 반환', () => {
+  const nfd = '000660_SK하이닉스_v10_20260903.tar.gz'.normalize('NFD');
+  assert.equal(findArchiveName('000660_SK하이닉스_v10'.normalize('NFC'), [nfd]), nfd);
+});
