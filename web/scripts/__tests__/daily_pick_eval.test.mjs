@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   entryIndex, closeOnOrBefore, scoreBand, buildShortRows, summarize, buildRecommendations,
+  breakdown, concentration, buildEval,
 } from '../lib/daily_pick_eval.mjs';
 
 // 영업일(월~금)만 생성하는 합성 시계열
@@ -345,4 +346,46 @@ test('frozen horizons after 논지 교체 close at bar 40', () => {
     assert.ok(near(recs[0].h[k].excess, 10), k);
     assert.equal(recs[0].h[k].hit, true, k);
   }
+});
+
+// ───────── 집계 (Task 6) ─────────
+
+const cell = (hit) => ({ ret: hit ? 5 : -5, excess: hit ? 5 : -5, hit });
+
+test('breakdown: null key → 기록 없음, 키 오름차순', () => {
+  const rows = [
+    { k: 'b', h: { 20: cell(true) } },
+    { k: null, h: { 20: cell(false) } },
+    { k: 'a', h: { 20: cell(true) } },
+  ];
+  const out = breakdown(rows, (r) => r.k, '20');
+  assert.deepEqual(out.map((o) => o.key), ['a', 'b', '기록 없음']);
+  assert.equal(out[0].n, 1);
+});
+
+test('concentration: A 3픽 적중, B 1픽 실패', () => {
+  const mk = (t, hit) => ({ ticker: t, h: { 20: cell(hit) } });
+  const c = concentration([mk('A', true), mk('A', true), mk('A', true), mk('B', false)], '20');
+  assert.equal(c.equal_weight_hit_rate, 0.5);
+  assert.equal(c.top5_share, 1);
+  assert.deepEqual(c.by_ticker[0], { ticker: 'A', picks: 3, hit_rate: 1 });
+});
+
+test('buildEval 스모크: 원장 3행·합성 가격', () => {
+  const closes = Array.from({ length: 30 }, (_, i) => 100 + i);
+  const symbols = { AAA: mkSeries('2026-10-01', closes), '^GSPC': mkSeries('2026-10-01', closes.map(() => 100)) };
+  const ledger = [
+    row({ date: '2026-10-01', ticker: 'AAA' }),
+    row({ date: '2026-10-05', ticker: 'AAA', analysis_dir: 'A_v1' }),
+    row({ date: '2026-10-06', ticker: 'AAA', analysis_dir: 'A_v1' }),
+  ];
+  const now = new Date('2026-11-24T00:00:00Z');
+  const ev = buildEval({ ledger, symbols, judgments: [], overrides: {}, now });
+  assert.equal(ev.counts.picks, 3);
+  assert.equal(ev.short.summary['5'].n, 3);
+  assert.equal(ev.counts.evaluated_short, 3);
+  assert.equal(ev.generated_at, now.toISOString());
+  assert.equal(ev.long.recs.length, 1);
+  assert.deepEqual(Object.keys(ev.long.close_reasons), ['달성', '논지 교체', '만기', '진행중']);
+  assert.equal(ev.pending.oldest_unjudged_date, null);
 });

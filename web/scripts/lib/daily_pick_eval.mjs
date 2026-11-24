@@ -252,3 +252,89 @@ export function buildRecommendations(ledger, symbols, judgments = [], overrides 
   pending.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
   return { recs, pending, invalid };
 }
+
+// ───────── 집계 ─────────
+
+const NO_KEY = '기록 없음';
+const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+
+/** keyFn 값별 summarize — key 오름차순, null key → '기록 없음' */
+export function breakdown(rows, keyFn, horizonKey) {
+  const groups = new Map();
+  for (const r of rows) {
+    const k = keyFn(r) ?? NO_KEY;
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(r);
+  }
+  return [...groups.keys()].sort(cmp).map((key) => ({ key, ...summarize(groups.get(key), horizonKey) }));
+}
+
+/** 종목 쏠림 — 종목별 픽 수·적중률, 동일가중 적중률, 상위5 종목 비중 */
+export function concentration(shortRows, horizonKey = '20') {
+  const byT = new Map();
+  for (const r of shortRows) {
+    if (!byT.has(r.ticker)) byT.set(r.ticker, { picks: 0, ev: 0, hits: 0 });
+    const g = byT.get(r.ticker);
+    g.picks++;
+    const c = r.h?.[horizonKey];
+    if (c != null) {
+      g.ev++;
+      if (c.hit) g.hits++;
+    }
+  }
+  const by_ticker = [...byT.entries()]
+    .map(([ticker, g]) => ({ ticker, picks: g.picks, hit_rate: g.ev ? g.hits / g.ev : null }))
+    .sort((a, b) => b.picks - a.picks || cmp(a.ticker, b.ticker));
+  const rates = by_ticker.filter((t) => t.hit_rate != null).map((t) => t.hit_rate);
+  const total = by_ticker.reduce((a, t) => a + t.picks, 0);
+  return {
+    equal_weight_hit_rate: rates.length ? rates.reduce((a, b) => a + b, 0) / rates.length : null,
+    top5_share: total ? by_ticker.slice(0, 5).reduce((a, t) => a + t.picks, 0) / total : null,
+    by_ticker,
+  };
+}
+
+/** 성적표 전체 집계 (eval JSON) */
+export function buildEval({ ledger, symbols, judgments = [], overrides = {}, now = new Date() }) {
+  const rows = buildShortRows(ledger, symbols);
+  const { recs, pending, invalid } = buildRecommendations(ledger, symbols, judgments, overrides);
+  const shortOk = rows.filter((r) => r.status === 'ok');
+  const okRecs = recs.filter((r) => r.status === 'ok');
+
+  const close_reasons = { 달성: 0, '논지 교체': 0, 만기: 0, 진행중: 0 };
+  for (const r of okRecs) close_reasons[r.close?.reason ?? '진행중']++;
+  const tpDen = okRecs.filter((r) => r.close != null && r.tp_status !== 'none');
+  const hits = okRecs.filter((r) => r.close?.reason === '달성');
+  const tpDenCount = tpDen.length;
+
+  return {
+    generated_at: now.toISOString(),
+    counts: {
+      picks: ledger.length,
+      evaluated_short: rows.filter((r) => r.h['20'] != null).length,
+      recs: recs.length,
+      pending: pending.length,
+    },
+    short: {
+      rows,
+      summary: Object.fromEntries(SHORT_HORIZONS.map((n) => [String(n), summarize(shortOk, String(n))])),
+      by_band: breakdown(shortOk, (r) => r.band, '20'),
+      by_regime: breakdown(shortOk, (r) => r.weight_set, '20'),
+    },
+    long: {
+      recs,
+      summary: Object.fromEntries(LONG_HORIZONS.map((n) => [String(n), summarize(okRecs, String(n))])),
+      by_band: breakdown(okRecs, (r) => r.band, '120'),
+      by_regime: breakdown(okRecs, (r) => r.weight_set, '120'),
+      close_reasons,
+      tp_hit_rate: tpDenCount ? hits.length / tpDenCount : null,
+      avg_bars_to_tp: hits.length ? hits.reduce((a, r) => a + r.close.bars, 0) / hits.length : null,
+    },
+    concentration: concentration(shortOk, '20'),
+    pending: {
+      items: pending,
+      invalid_count: invalid.length,
+      oldest_unjudged_date: pending.length ? pending.map((p) => p.date).sort(cmp)[0] : null,
+    },
+  };
+}

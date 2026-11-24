@@ -44,3 +44,29 @@ export async function readAnalysisFile(projectRoot, analysisDir, filename) {
   }
   return null;
 }
+
+/** 파일 위치 확인 — 'live:analysis/<dir>/<file>' | 'archive:analysis/_archive/<tar>' | 'missing' */
+export async function locateAnalysisFile(projectRoot, analysisDir, filename) {
+  const base = path.join(projectRoot, 'analysis');
+  try {
+    await readFile(path.join(base, analysisDir, filename));
+    return `live:analysis/${analysisDir}/${filename}`;
+  } catch {}
+  let names;
+  try {
+    names = await readdir(path.join(base, '_archive'));
+  } catch {
+    return 'missing';
+  }
+  const arch = findArchiveName(analysisDir, names);
+  if (!arch) return 'missing';
+  for (const d of new Set([analysisDir, analysisDir.normalize('NFC'), analysisDir.normalize('NFD')])) {
+    try {
+      const { stdout } = await execFileP('tar', ['-xzOf', path.join(base, '_archive', arch), `${d}/${filename}`], {
+        maxBuffer: 64 * 1024 * 1024,
+      });
+      if (stdout) return `archive:analysis/_archive/${arch}`;
+    } catch {}
+  }
+  return 'missing';
+}
