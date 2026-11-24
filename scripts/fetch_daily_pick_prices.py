@@ -11,6 +11,7 @@ import math
 import os
 import sys
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 import yfinance as yf
 
@@ -29,6 +30,28 @@ def to_symbol(ticker, market, suffix=".KS"):
     if market == "KRX" or (ticker.isdigit() and len(ticker) == 6):
         return ticker + suffix
     return ticker
+
+
+def session_open(market, last_date, now=None):
+    """마지막 바 날짜가 거래소 현지 오늘이고 장이 아직 안 닫혔으면 True (미완성 바).
+    US: 뉴욕 16:15 이후 마감 / KRX: 서울 15:45 이후 마감."""
+    now = now or datetime.now(timezone.utc)
+    if market == "KRX":
+        local, close = now.astimezone(ZoneInfo("Asia/Seoul")), (15, 45)
+    else:
+        local, close = now.astimezone(ZoneInfo("America/New_York")), (16, 15)
+    if local.strftime("%Y-%m-%d") != last_date:
+        return False
+    return (local.hour, local.minute) < close
+
+
+def drop_open_bar(series, market, now=None):
+    """진행 중인 당일 바 제거. 남는 바가 없으면 None."""
+    if series is None or not series["dates"]:
+        return series
+    if session_open(market, series["dates"][-1], now):
+        series = {k: v[:-1] for k, v in series.items()}
+    return series if series["dates"] else None
 
 
 def extract(df, sym, multi):
@@ -94,13 +117,15 @@ def main():
         sym_of[b] = b
 
     first = download(list(dict.fromkeys(sym_of.values())), start, end)
+    bench_market = {"^GSPC": "US", "^KS11": "KRX"}
+    mkt_of = dict(tickers, **bench_market)
 
-    symbols = {}
+    fetched = {}
     kq_retry = []
     for key, sym in sym_of.items():
         series = first.get(sym)
         if series is not None:
-            symbols[key] = dict(symbol=sym, **series)
+            fetched[key] = (sym, series)
         elif sym.endswith(".KS"):
             kq_retry.append(key)
         else:
@@ -112,24 +137,45 @@ def main():
         for key, sym in zip(kq_retry, kq_syms):
             series = second.get(sym)
             if series is not None:
-                symbols[key] = dict(symbol=sym, **series)
+                fetched[key] = (sym, series)
             else:
                 warn("가격 없음: %s (.KS/.KQ 모두 빈 응답)" % key)
 
-    total = len(sym_of)
+    # 진행 중인 당일 바 제거 (장 마감 전 라이브 바를 종가로 저장 방지)
+    symbols = {}
+    for key, (sym, series) in fetched.items():
+        series = drop_open_bar(series, mkt_of.get(key), None)
+        if series is not None:
+            symbols[key] = dict(symbol=sym, **series)
+
+    # 벤치마크 누락 시 기존 캐시를 건드리지 않고 종료
     missing_bench = [b for b in BENCH if b not in symbols]
+    if missing_bench:
+        print("[fail] 벤치마크 누락: " + ", ".join(missing_bench), file=sys.stderr)
+        sys.exit(1)
+
+    # 이번에 실패한 종목은 기존 캐시 항목 승계
+    prior = {}
+    try:
+        with open(OUT, encoding="utf-8") as f:
+            prior = json.load(f).get("symbols", {})
+    except (OSError, ValueError):
+        pass
+    for key in sym_of:
+        if key not in symbols and key in prior:
+            symbols[key] = prior[key]
+            warn("이전 캐시 승계(stale): %s" % key)
+
     os.makedirs(OUT_DIR, exist_ok=True)
     out = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "symbols": symbols,
     }
-    with open(OUT, "w", encoding="utf-8") as f:
+    tmp = OUT + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, allow_nan=False)
-
-    if missing_bench:
-        print("[fail] 벤치마크 누락: " + ", ".join(missing_bench), file=sys.stderr)
-        sys.exit(1)
-    print("[ok] prices: %d/%d symbols" % (len(symbols), total))
+    os.replace(tmp, OUT)
+    print("[ok] prices: %d/%d symbols" % (len(symbols), len(sym_of)))
 
 
 if __name__ == "__main__":
