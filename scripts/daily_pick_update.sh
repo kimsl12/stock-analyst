@@ -77,8 +77,9 @@ fi
 cd "$PROJECT_ROOT" || exit 0
 
 # 3.5 성적표 채점 — 가격 수집 + eval 재생성. 실패해도 픽 발행은 계속 (기존 eval 유지)
-log "fetch_daily_pick_prices.py + build_daily_pick_eval.mjs 실행"
-if ! { python3 scripts/fetch_daily_pick_prices.py 2>&1 && (cd web && node scripts/build_daily_pick_eval.mjs 2>&1); }; then
+# timeout 가드 — 가격 수집(300s)·채점(120s) 행이 픽 발행을 막지 않도록
+log "fetch_daily_pick_prices.py (timeout 300s) + build_daily_pick_eval.mjs (timeout 120s) 실행"
+if ! { timeout 300 python3 scripts/fetch_daily_pick_prices.py 2>&1 && (cd web && timeout 120 node scripts/build_daily_pick_eval.mjs 2>&1); }; then
   log "WARN: 성적표 채점 실패 — 기존 eval 유지, 픽 발행은 계속"
   notify_fail "성적표 채점 실패 — 기존 eval 유지"
   git checkout -- web/src/data/daily_pick_eval.json 2>/dev/null || true

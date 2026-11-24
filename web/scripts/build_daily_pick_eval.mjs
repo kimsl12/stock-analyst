@@ -10,7 +10,7 @@
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildEval, buildRecommendations } from './lib/daily_pick_eval.mjs';
+import { buildEval, buildRecommendations, BENCH } from './lib/daily_pick_eval.mjs';
 import { locateAnalysisFile } from './lib/analysis_archive.mjs';
 
 const WEB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -56,6 +56,10 @@ if (!prices?.symbols) {
   process.exit(1);
 }
 const symbols = prices.symbols;
+
+// 벤치마크 없는 시장의 티커는 no_price 로 조용히 빠지므로 경고
+const noBench = [...new Set(ledger.filter((r) => !BENCH[r.market]).map((r) => `${r.ticker}(${r.market ?? '시장 없음'})`))];
+if (noBench.length) console.error(`경고: 벤치마크 없는 시장 — 채점 제외(no_price): ${noBench.join(', ')}`);
 
 if (flag('--queue')) {
   const { pending } = buildRecommendations(ledger, symbols, judgments, overrides);

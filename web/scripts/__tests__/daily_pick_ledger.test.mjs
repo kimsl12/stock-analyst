@@ -28,6 +28,14 @@ test('ledgerRowFromPick — 행 구성 + regime 5키만', () => {
   assert.deepEqual(Object.keys(row.regime).sort(), ['fear_greed', 'risk_regime', 'trend', 'vol_regime', 'weight_set']);
 });
 
+test('ledgerRowFromPick — version 은 analysis_dir 끝 _vN 우선, 없으면 pick.version (M2)', () => {
+  const mk = (version, analysis_dir) =>
+    ledgerRowFromPick({ pick_date: '2026-11-19', pick: { ticker: 'TSM', name: 'TSMC', version, analysis_dir } }, null);
+  assert.equal(mk('v21', 'TSM_TSMC_v22').version, 'v22');
+  assert.equal(mk('v5', 'TSM_TSMC').version, 'v5');
+  assert.equal(mk('v5', null).version, 'v5');
+});
+
 test('ledgerRowFromPick — pick null 이면 null', () => {
   assert.equal(ledgerRowFromPick({ pick_date: '2026-11-20', pick: null }, null), null);
 });

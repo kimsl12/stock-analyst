@@ -12,6 +12,8 @@ export function normalizeGrade(raw) {
 export function ledgerRowFromPick(payload, regime) {
   const p = payload?.pick;
   if (!p) return null;
+  // 버전 진실 소스는 analysis_dir (spec §5.2) — 끝 _vN 이 있으면 그것, 없으면 pick.version
+  const dirVer = typeof p.analysis_dir === 'string' ? p.analysis_dir.match(/_(v\d+)$/)?.[1] : null;
   return {
     date: payload.pick_date,
     ticker: p.ticker,
@@ -19,7 +21,7 @@ export function ledgerRowFromPick(payload, regime) {
     market: p.market,
     score: p.score,
     grade: normalizeGrade(p.grade),
-    version: p.version,
+    version: dirVer ?? p.version,
     analysis_dir: p.analysis_dir,
     analysis_date: p.analysis_date,
     tp_price: p.tp_price ?? null,
