@@ -35,6 +35,10 @@ const closeRet = (r: any) => {
 const shortRows = [...short.rows].sort((a: any, b: any) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 const longRecs = [...long.recs].sort((a: any, b: any) => (a.anchor_date < b.anchor_date ? 1 : -1));
 const pendingCount = counts.pending;
+const closedWithTp = long.recs.filter((r: any) => r.status === 'ok' && r.close != null && r.tp_status !== 'none').length;
+const tpSub = `마감 ${closedWithTp}건 중 달성 ${long.close_reasons['달성']} · 진행 중 ${long.close_reasons['진행중']}건` +
+  (long.avg_bars_to_tp != null ? ` · 평균 ${long.avg_bars_to_tp.toFixed(1)}거래일` : '') +
+  (long.close_reasons['만기'] === 0 ? ' · 만기 사례 없음' : '');
 ---
 <Base title="데일리픽 성적표" lede={`픽 ${counts.picks}건 · 단기 평가완료 ${counts.evaluated_short}건 · 추천 ${counts.recs}건 · 판정 대기 ${pendingCount}건`} active="home">
 
@@ -123,7 +127,7 @@ const pendingCount = counts.pending;
         <div class="kpi"><div class="k-label">120일 적중률</div><div class="k-val">{pct(lS['120'].hit_rate)}</div><div class="k-sub">n={lS['120'].n} {lS['120'].small_sample && <span class="badge">표본 적음</span>}</div></div>
         <div class="kpi"><div class="k-label">120일 평균 수익</div><div class={`k-val ${cls(lS['120'].avg_return)}`}>{ret(lS['120'].avg_return)}</div><div class="k-sub">절대 수익률</div></div>
         <div class="kpi"><div class="k-label">120일 시장 대비</div><div class={`k-val ${cls(lS['120'].avg_excess)}`}>{pp(lS['120'].avg_excess)}</div><div class="k-sub">초과수익 평균</div></div>
-        <div class="kpi"><div class="k-label">목표가 도달률</div><div class="k-val">{pct(long.tp_hit_rate)}</div><div class="k-sub">{long.avg_bars_to_tp != null ? `평균 ${long.avg_bars_to_tp.toFixed(1)}거래일 소요` : '마감 건 기준'}</div></div>
+        <div class="kpi"><div class="k-label">목표가 도달률</div><div class="k-val">{pct(long.tp_hit_rate)}</div><div class="k-sub">{tpSub}</div></div>
       </section>
       <p class="note">마감 사유: 달성 {long.close_reasons['달성']} · 논지 교체 {long.close_reasons['논지 교체']} · 만기 {long.close_reasons['만기']} · 진행 중 {long.close_reasons['진행중']}</p>
 
