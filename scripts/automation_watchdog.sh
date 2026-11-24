@@ -8,6 +8,7 @@
 #   3. git 미푸시 커밋 (push 실패 잔존 감지 — 사이트 stale)
 #   4. holdings_health.json 재생성 (최신 분석 반영)
 #   5. portfolio_watch.py — 손절/목표가 도달 + 리밸런싱 드리프트 알림
+#   11. 데일리픽 성적표 신선도(2일) + 논지 판정 대기(14일)
 #
 # 알림: scripts/notify.sh (macOS 알림센터)
 # 로그: scripts/launchd/watchdog.log
@@ -144,6 +145,39 @@ elif [ -n "$LOCAL_PICK" ] && [ "$DEPLOYED_PICK" != "$LOCAL_PICK" ]; then
   fi
 else
   log "OK: 본서버 신선 ($DEPLOYED_PICK)"
+fi
+
+# 11. 데일리픽 성적표 신선도 + 논지 판정 대기 (eval 경로는 DAILY_PICK_EVAL_JSON 로 override 가능 — 테스트용)
+EVAL_JSON="${DAILY_PICK_EVAL_JSON:-web/src/data/daily_pick_eval.json}"
+EVAL_STATE=$(python3 - "$EVAL_JSON" <<'PY' 2>/dev/null || echo ""
+import json, sys
+from datetime import date, datetime, timedelta, timezone
+today = datetime.now(timezone(timedelta(hours=9))).date()
+d = json.load(open(sys.argv[1]))
+gen = (d.get("generated_at") or "")[:10]
+old = ((d.get("pending") or {}).get("oldest_unjudged_date") or "")[:10]
+gen_age = (today - date.fromisoformat(gen)).days if gen else -1
+old_age = (today - date.fromisoformat(old)).days if old else 0
+print(gen or "-", gen_age, old or "-", old_age)
+PY
+)
+if [ -z "$EVAL_STATE" ]; then
+  log "WARN: daily_pick_eval.json 읽기 실패"
+  notify_warn "데일리픽 성적표 파일 읽기 실패 — eval.json 확인" high
+else
+  read -r EVAL_GEN EVAL_GEN_AGE EVAL_OLD EVAL_OLD_AGE <<< "$EVAL_STATE"
+  if [ "$EVAL_GEN_AGE" -lt 0 ] || [ "$EVAL_GEN_AGE" -gt 2 ]; then
+    log "WARN: 데일리픽 성적표 stale (generated_at=$EVAL_GEN)"
+    notify_warn "데일리픽 성적표 미갱신 (generated_at=${EVAL_GEN})" high
+  else
+    log "OK: 데일리픽 성적표 신선 ($EVAL_GEN)"
+  fi
+  if [ "$EVAL_OLD_AGE" -gt 14 ]; then
+    log "WARN: 논지 판정 대기 ${EVAL_OLD_AGE}일 (oldest=$EVAL_OLD)"
+    notify_warn "데일리픽 논지 판정 대기 14일 초과 — 토요일 /성과리뷰 확인"
+  else
+    log "OK: 논지 판정 대기 정상 (oldest=$EVAL_OLD)"
+  fi
 fi
 
 log "=== watchdog 완료 ==="

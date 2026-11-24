@@ -76,14 +76,26 @@ if ! node scripts/build_kb.mjs 2>&1; then
 fi
 cd "$PROJECT_ROOT" || exit 0
 
-# 4. 변경 있는지 확인 (daily_pick.json 또는 KB 본문 신규 변경)
+# 3.5 성적표 채점 — 가격 수집 + eval 재생성. 실패해도 픽 발행은 계속 (기존 eval 유지)
+log "fetch_daily_pick_prices.py + build_daily_pick_eval.mjs 실행"
+if ! { python3 scripts/fetch_daily_pick_prices.py 2>&1 && (cd web && node scripts/build_daily_pick_eval.mjs 2>&1); }; then
+  log "WARN: 성적표 채점 실패 — 기존 eval 유지, 픽 발행은 계속"
+  notify_fail "성적표 채점 실패 — 기존 eval 유지"
+  git checkout -- web/src/data/daily_pick_eval.json 2>/dev/null || true
+fi
+
+# 4. 변경 있는지 확인 (daily_pick.json·원장·eval 또는 KB 본문 신규 변경)
 KB_CHANGED=$(git status --porcelain knowledge-base/market/ 2>/dev/null | wc -l | tr -d ' ')
-if git diff --quiet web/src/data/daily_pick.json && [ "$KB_CHANGED" -eq 0 ]; then
+PICK_UNCHANGED=0
+if git diff --quiet web/src/data/daily_pick.json web/src/data/daily_pick_ledger.json web/src/data/daily_pick_eval.json; then
+  PICK_UNCHANGED=1
+fi
+if [ "$PICK_UNCHANGED" -eq 1 ] && [ "$KB_CHANGED" -eq 0 ]; then
   log "변경 없음 — commit/deploy 스킵 (어제 픽 유지 + KB 본문 무변경)"
   log "=== 완료 (skip) ==="
   exit 0
 fi
-if git diff --quiet web/src/data/daily_pick.json && [ "$KB_CHANGED" -gt 0 ]; then
+if [ "$PICK_UNCHANGED" -eq 1 ] && [ "$KB_CHANGED" -gt 0 ]; then
   log "daily_pick 무변경이나 KB 본문 ${KB_CHANGED}건 변경 감지 — vercel deploy 강제 (본서버 past 필터 재계산용)"
   # daily_pick commit 없이 deploy 만
   log "vercel --prod --yes (KB 본문 트리거)"
@@ -103,7 +115,8 @@ log "갱신 감지: $PICK_DATE / $PICK_TICKER / $PICK_SCORE $PICK_GRADE"
 
 # 6. commit + push
 # [v3.32] 로테이션 이력 동반 커밋 — 미커밋 시 Vercel 컨테이너 재빌드마다 픽이 굴러가는 버그
-git add web/src/data/daily_pick.json web/src/data/daily_pick_history.json
+git add web/src/data/daily_pick.json web/src/data/daily_pick_history.json \
+  web/src/data/daily_pick_ledger.json web/src/data/daily_pick_eval.json
 if ! git commit -m "chore(daily_pick): 자동 갱신 ${PICK_DATE} — ${PICK_TICKER} ${PICK_SCORE}점 ${PICK_GRADE} (launchd)"; then
   log "ERROR: git commit 실패"
   notify_fail "git commit 실패 — 픽은 생성됐으나 미발행"
