@@ -40,6 +40,7 @@ DRY_RUN = "--dry-run" in sys.argv
 
 HIT_THRESHOLD = 3.0  # ±3%
 MIN_DAYS = {"단기": 30, "중기": 90, "장기": 180}
+STALE_WARN_DAYS = 14  # 추천 로그 최신 추천일이 이보다 오래되면 경고
 
 # 토큰 → yfinance 심볼
 TOKEN_MAP = {"BTC": "BTC-USD", "ETH": "ETH-USD", "SOL": "SOL-USD", "XRP": "XRP-USD"}
@@ -48,8 +49,14 @@ TOKEN_MAP = {"BTC": "BTC-USD", "ETH": "ETH-USD", "SOL": "SOL-USD", "XRP": "XRP-U
 def extract_ticker(target: str, category: str) -> str | None:
     """대상 컬럼에서 티커 추출. 실패 시 None (= 측정 불가)."""
     target = target.strip()
+    # 0. S-Oil 가드 — 선두 "S" 가 미국 티커 S 로 조회돼 허수 수익률이 Top 에 오르던 문제
+    if re.search(r"(?<![A-Za-z])S-Oil|에쓰오일", target, re.IGNORECASE):
+        return "010950.KS"
     # 1. 선두 토큰이 티커 형태 (미국 1~5자 대문자 / 한국 6자리)
     m = re.match(r"^([A-Z]{1,5}|\d{6})(?:\s|$|\b)", target)
+    # 단문자 + 하이픈/& 결합(X-Energy, S&P)은 명칭의 일부 — 티커 아님 → 괄호 안 티커로 넘김
+    if m and len(m.group(1)) == 1 and re.match(r"[A-Z][-&]\w", target):
+        m = None
     cand = None
     if m:
         cand = m.group(1)
@@ -103,6 +110,16 @@ def direction_sign(direction: str):
 
 def main() -> None:
     rows = parse_rows()
+    # 추천 로그 정지 감지 — 신규 append 가 끊기면 적중률은 같은 표본의 재채점일 뿐
+    latest_rec = max((r["date"] for r in rows), default=None)
+    log_stale_days = (
+        (datetime.now(KST).date() - datetime.strptime(latest_rec, "%Y-%m-%d").date()).days if latest_rec else None
+    )
+    if log_stale_days is not None and log_stale_days > STALE_WARN_DAYS:
+        print(
+            f"[scoring] WARN: 추천 로그 최신 추천일 {latest_rec} — {log_stale_days}일째 신규 추천 없음. "
+            "아래 적중률은 정지된 표본의 재채점임"
+        )
     priceable = []
     for r in rows:
         if r["category"] not in ("종목", "ETF", "토큰"):
@@ -218,6 +235,8 @@ def main() -> None:
         "total_rows": len(rows),
         "priced_rows": len(results),
         "skipped_rows": len(rows) - len(results),
+        "latest_recommendation_date": latest_rec,
+        "log_stale_days": log_stale_days,
         "summary": {
             "hit": hits,
             "miss": misses,
