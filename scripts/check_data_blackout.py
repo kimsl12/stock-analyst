@@ -43,15 +43,20 @@ OTHER_SENSE = re.compile(
     r"|(?<!셧다운 )(?<!데이터 )블랙아웃\s*(?:기간|~?\s*\d{1,2}/\d{1,2}\s*개시)"
     r"|(?:전력|전력망|정전)[^|\n]{0,6}?블랙아웃"
 )
+# 셧다운 주장: 지속 일수(N일째·D+N)·미발표, 또는 지표·데이터 발표가 밀렸다는 서술.
+# "셧다운 → 조달 집행 지연" 같은 일반 지연·가정 시나리오는 데이터 주장이 아니라 세지 않는다.
+SHUT = r"셧다운(?!\s*(?:회피|리스크|우려|가능성|시한|데드라인|무관))"
 CLAIM = re.compile(
     r"블랙아웃"
-    r"|셧다운(?!\s*(?:회피|리스크|우려|가능성|시한|데드라인|무관))[^|\n]{0,30}?(?:미발표|지연|연기|중단|공백|부재|깜깜이|일째)"
+    rf"|{SHUT}[^|\n]{{0,30}}?(?:미발표|깜깜이|일째|D\+\d)"
+    rf"|{SHUT}[^|\n]{{0,30}}?(?:지표|데이터|발표|통계|보고서|BLS|BEA|EIA)[^|\n]{{0,12}}?(?:지연|연기|중단|공백|부재)"
     r"|미발표[^|\n]{0,10}?셧다운"
 )
 # "9·10월 CPI/NFP 미발표" 처럼 특정 월 지표가 안 나왔다는 주장 → 그 월 관측이 FRED 에 있으면 모순
 MONTH_CLAIM = re.compile(r"(?<![\d/.])(\d{1,2})(?:[·,~](\d{1,2}))?월((?:(?!\d월)[^\n]){0,30}?)미발표")
 INDICATOR = re.compile(r"CPI|PCE|NFP|BLS|고용|실업률|물가|지표")
-NON_US = re.compile(r"한국|국내|통계청|한은|중국|일본|유로|독일|영국")  # FRED 계열은 미국 지표만 판정 가능
+# FRED 계열은 미국 지표만 판정 가능 — 다른 나라 지표·한국 통계명이 앞에 있으면 월 주장 판정에서 뺀다
+NON_US = re.compile(r"한국|국내|통계청|한은|금통위|관세청|고용동향|산업활동|코스피|중국|일본|유로|독일|영국")
 
 
 def month_back(today, months):
@@ -82,7 +87,7 @@ def month_claim_hit(text, observed, today):
     """'N월 … 미발표' 가 FRED 에 이미 있는 월을 가리키면 그 매치를 돌려준다."""
     for m in MONTH_CLAIM.finditer(text):
         ctx = m.group(3)
-        if not INDICATOR.search(ctx) or NON_US.search(text[max(0, m.start() - 20):m.end()]):
+        if not INDICATOR.search(ctx) or NON_US.search(text[max(0, m.start() - 40):m.end()]):
             continue
         only_pce = "PCE" in ctx and not re.search(r"CPI|NFP|BLS|고용|실업률", ctx)
         obs = observed["PCEPILFE"] if only_pce else min(observed[k] for k in ("UNRATE", "PAYEMS", "CPIAUCSL"))
