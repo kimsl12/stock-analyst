@@ -208,8 +208,10 @@ extras: {
 <!-- ★ debate-card -->
 <div class="debate-card">
   <div class="card-title">💜 핵심 논쟁 — {주제}</div>
-  <div class="bull"><strong>Bull 측:</strong> {3줄}</div>
-  <div class="bear"><strong>Bear 측:</strong> {3줄}</div>
+  <!-- 표시 라벨은 한글 고정 (class="bull"/"bear" 는 유지). lead_*.md 의 Bull·Bear·약Bull·약Bear·Beat/Miss 는
+       강세·약세·약한 강세·약한 약세·상회/하회 로 옮긴다 — korean_translation_rules.md 매핑 사전 -->
+  <div class="bull"><strong>강세 측:</strong> {3줄}</div>
+  <div class="bear"><strong>약세 측:</strong> {3줄}</div>
   <div class="verdict"><strong>briefing-lead 판단:</strong> {1줄}</div>
 </div>
 

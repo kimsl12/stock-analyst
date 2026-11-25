@@ -63,9 +63,12 @@ applies_to:
 | --------------------- | ----------------------------------- |
 | Bull / Bullish        | 강세 (또는 상승)                    |
 | Bear / Bearish        | 약세 (또는 하락)                    |
-| Bull case             | 강세 시나리오                       |
-| Bear case             | 약세 시나리오                       |
-| Base case             | 기본 시나리오                       |
+| Bull case / Bull Case | 강세 시나리오                       |
+| Bear case / Bear Case | 약세 시나리오                       |
+| Base case / Base Case | 기본 시나리오                       |
+| Base                  | 기본 (시나리오 라벨 — `Base $135`)  |
+| 약Bull                | 약한 강세 (논쟁 카드 판정 톤)       |
+| 약Bear                | 약한 약세 (논쟁 카드 판정 톤)       |
 | Tail risk / Tail case | 꼬리 위험 (또는 극단 시나리오)      |
 | Stress case           | 스트레스 시나리오                   |
 | Devil's Advocate      | 반대 관점 (또는 회의론)             |
@@ -161,6 +164,17 @@ applies_to:
 | exposure              | 노출도 (또는 비중)    |
 | allocation            | 배분 (또는 비중)      |
 | hedging               | 헤지 (또는 헤지 거래) |
+
+### 리포트 고정 라벨 (섹션 제목)
+
+> 2026-11-25 실측(감사 `analysis/_audit/briefing_audit.md` §4 후속): 종목 리포트 전수에 남던 영문 섹션 제목.
+> 템플릿·에이전트가 고정 출력하는 라벨도 본문과 동일하게 한글로 쓴다.
+
+| 영어                     | 한글             |
+| ------------------------ | ---------------- |
+| Executive Summary        | 핵심 요약        |
+| Confidence Interval      | 신뢰 구간        |
+| Most Fragile Assumptions | 가장 취약한 가정 |
 
 ## 자가 검증 (HTML 출력 후)
 

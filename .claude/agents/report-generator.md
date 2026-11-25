@@ -404,6 +404,10 @@ scorecard.md 본문에 § Confidence Interval, § 약한 가정 3개 섹션이 �
 report_template.py 의 `data['confidence_interval']`, `data['fragile_assumptions']` 슬롯이 있으면 채움.
 없으면 본문 마크다운 그대로 변환 (extra section).
 
+**표시 라벨 한글 고정 [2026-11-25]**: HTML 의 섹션 제목(`custom_sections[].title`)·시나리오 라벨은 한글로 쓴다 —
+`§ 신뢰 구간` / `§ 약한 가정 3개` / `약세·기본·강세`(Bear·Base·Bull 금지). scorecard.md 의 `§ Confidence Interval`
+헤더는 파서(grep) 호환을 위해 그대로 두고 HTML 로 옮길 때만 바꾼다 (매핑: korean_translation_rules.md).
+
 ### 비교표는 작성하지 않음
 
 본 에이전트는 신규 분석 결과만 HTML 변환한다. 신규 vs 이전 비교표는 **reanalysis-tracker** 가 별도 회차 표(`analysis/_reanalysis_runs/{YYYYMMDD}_run.md`)로 작성하므로, 본 에이전트는 비교 시도 금지.
