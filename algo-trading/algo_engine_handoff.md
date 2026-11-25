@@ -45,7 +45,8 @@ Gate 3 — 기술적 필터 (선택, 권장)
 
 - 스코어: `analysis/{ticker}/scorecard.md` 또는 `web/src/data/daily_pick.json`
 - 매크로 레짐: `knowledge-base/macro/fred_snapshot.json` (FRED 15종)
-- VIX/USD/KRW: `knowledge-base/market/daily_snapshot.md`
+- VIX: `knowledge-base/market/regime.json` (기준일 3일 이내면 우선) → `knowledge-base/market/daily_snapshot.md` 폴백 [2026-11-25 변경]
+- USD/KRW: `knowledge-base/market/daily_snapshot.md`
 - RSI: yfinance 또는 토스 API 실시간
 
 ### A2. 포지션 크기
@@ -562,6 +563,15 @@ stock_scores.json 의 각 종목에 `sector`(엔진 11종 분류) + `sector_raw`
 - GLD/IAU → `Gold` (Stagflation 우호 섹터 매칭 ✓), Communication Services(GOOGL/META/VZ) → `Tech` 로 묶음 (레짐 차단은 보수 측).
 - 소스: `algo-trading/data/sector_map.json` 캐시 (yfinance GICS + ETF 수동 표). 신규 분석 티커는 15:25 일일 빌드가 증분 조회 — 조회 실패 시 null(중립 통과)이라 안전.
 - 커버리지: 111종 중 확정 98 + 의도적 null 13, 미상 0.
+
+### 추가 (2026-11-25): macro_regime.json 입력값 교정 + 추가 필드 (additive, 엔진 소비 불필요)
+
+기존 키·의미·임계(레짐 판정, emergency VIX_25/VIX_30 등)는 전부 불변 — 입력값만 교정. 아래 신규 필드는 참고용이며 엔진이 읽지 않아도 된다.
+
+- `indicators.vix_source` (`regime.json` | `daily_snapshot.md`) · `indicators.vix_as_of` (소스 파일 기준일) · `indicators.vix_stale` (두 소스 모두 3일 초과 stale 이면 true — 값은 그대로 기록). `indicators.vix` 는 watchdog 이 매일 갱신하는 regime.json 값을 우선 사용 (이전: 브리핑 때만 갱신되는 daily_snapshot.md → stale VIX 로 emergency 계산).
+- `risk_reference` `{risk_regime, trend, vol_regime, as_of, source}` — 브리핑용 리스크온/오프 레짐(`knowledge-base/market/regime.json`)을 나란히 노출. 엔진용 4레짐(`regime`)과 별개 체계이며 Gate 판정에 쓰이지 않는다.
+- `indicators.fear_greed_cnn` / `fear_greed_crypto` — 필드명 오독으로 상시 null 이던 것 복구 (스키마 동일).
+- earnings_calendar.json (스키마 동일) — `ticker` 는 stock_scores 유니버스 티커만, `date` 는 빌드일(KST) 이후만 출력. 한 줄에 유니버스 티커가 여럿이면 티커별 1건. 해당 일정이 없으면 `event_count: 0`.
 
 ---
 

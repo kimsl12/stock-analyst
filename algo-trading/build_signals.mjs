@@ -119,6 +119,22 @@ function buildMacroRegime() {
     }
   }
 
+  // 브리핑용 리스크 레짐 (regime.json — watchdog 이 매일 scripts/regime_classifier.py 로 갱신) [2026-11-25 추가]
+  // 엔진용 4레짐(result.regime)과 별개 체계 — 판정에는 쓰지 않고 참고용으로 나란히 노출 + VIX 입력 소스로만 사용.
+  const todayKst = kst.toISOString().slice(0, 10);
+  const ageDays = (d) => d ? (new Date(todayKst) - new Date(d)) / 86400_000 : Infinity;
+  let riskRegime = null;
+  try { riskRegime = JSON.parse(readFileSync(join(ROOT, 'knowledge-base/market/regime.json'), 'utf8')); } catch {}
+  if (riskRegime) {
+    result.risk_reference = {
+      risk_regime: riskRegime.risk_regime ?? null,
+      trend: riskRegime.trend ?? null,
+      vol_regime: riskRegime.vol_regime ?? null,
+      as_of: riskRegime.date ?? null,
+      source: 'knowledge-base/market/regime.json',
+    };
+  }
+
   // daily_snapshot에서 VIX, USD/KRW 추출
   const snapPath = join(ROOT, 'knowledge-base/market/daily_snapshot.md');
   if (existsSync(snapPath)) {
@@ -127,10 +143,21 @@ function buildMacroRegime() {
     const vixMatch = snap.match(/VIX\s*\|\s*([\d.]+)/);
     const krwMatch = snap.match(/USD\/KRW\s*\|\s*([\d,.]+)/);
 
-    const vix = vixMatch ? parseFloat(vixMatch[1]) : null;
+    // VIX 소스: regime.json(기준일 3일 이내) 우선 → daily_snapshot.md 폴백.
+    // daily_snapshot.md 는 브리핑이 쓸 때만 갱신 — 4일 묵은 VIX 로 emergency 가 계산된 사고 (2026-11-25).
+    const snapDate = snap.match(/^updated:\s*(\d{4}-\d{2}-\d{2})/m)?.[1] ?? null;
+    const useRegime = riskRegime?.vix != null && ageDays(riskRegime.date) <= 3;
+
+    const vix = useRegime ? riskRegime.vix : (vixMatch ? parseFloat(vixMatch[1]) : null);
     const usdkrw = krwMatch ? parseFloat(krwMatch[1].replace(/,/g, '')) : null;
 
     result.indicators.vix = vix;
+    result.indicators.vix_source = useRegime ? 'regime.json' : 'daily_snapshot.md';
+    result.indicators.vix_as_of = useRegime ? riskRegime.date : snapDate;
+    result.indicators.vix_stale = !useRegime && ageDays(snapDate) > 3;
+    if (result.indicators.vix_stale) {
+      console.warn(`WARN: VIX stale — regime.json(${riskRegime?.date ?? '없음'})·daily_snapshot.md(${snapDate ?? '기준일 없음'}) 모두 3일 초과, 스냅샷 값 ${vix} 사용`);
+    }
     result.indicators.usd_krw = usdkrw;
 
     // 거짓 안정 최종 판정 (히스테리시스 — 원조건이 CONFIRM_DAYS 연속 충족 시에만 halt 확정, 경계 whipsaw 방지) [2026-08-06]
@@ -140,7 +167,6 @@ function buildMacroRegime() {
       result.indicators.core_pce_yoy != null && result.indicators.core_pce_yoy > 3;
 
     // 직전 macro_regime.json 에서 연속 카운터 이어받기 (필드 없으면 콜드스타트: 기존이 FalseCalm 이면 확정으로 시드)
-    const todayKst = kst.toISOString().slice(0, 10);
     let prevStreak = 0, prevDate = null;
     try {
       const prevRegime = JSON.parse(readFileSync(join(OUT, 'macro_regime.json'), 'utf8'));
@@ -193,8 +219,9 @@ function buildMacroRegime() {
   if (existsSync(fgPath)) {
     try {
       const fg = JSON.parse(readFileSync(fgPath, 'utf8'));
-      result.indicators.fear_greed_cnn = fg.cnn?.value ?? null;
-      result.indicators.fear_greed_crypto = fg.crypto?.value ?? null;
+      // fear_greed.json 필드명은 score (구 필드 value 는 폴백) — value 만 읽어 상시 null 이던 결함 (2026-11-25)
+      result.indicators.fear_greed_cnn = fg.cnn?.score ?? fg.cnn?.value ?? null;
+      result.indicators.fear_greed_crypto = fg.crypto?.score ?? fg.crypto?.value ?? null;
     } catch {}
   }
 
@@ -308,23 +335,40 @@ function buildStockScores() {
 // ============================================================
 // 3. 실적 캘린더 JSON
 // ============================================================
-function buildEarningsCalendar() {
+function buildEarningsCalendar(scores) {
   const calPath = join(ROOT, 'knowledge-base/market/economic_calendar.md');
   const events = [];
+  // 유니버스(stock_scores 와 동일 집합) 티커 + KST 오늘 이후 일정만 출력 [2026-11-25]
+  // 구버전: 줄의 첫 대문자 단어를 티커로 취해 ET·CNBC·FOMC 등 비티커 + 지난 일정이 섞임.
+  const universe = new Set((scores?.stocks ?? []).map(s => s.ticker));
+  const today = kst.toISOString().slice(0, 10);
 
   if (existsSync(calPath)) {
-    const content = readFileSync(calPath, 'utf8');
+    // frontmatter 제외 — sources: 인용줄의 "(검색일) … NVDA 실적" 이 검색 당일 일정으로 오인되는 것 방지
+    const content = readFileSync(calPath, 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '');
+    // 연도 없는 M/D: 올해 날짜가 이미 지났고 내년 같은 날이 90일 이내면 내년 일정으로 본다 (12월에 적힌 1월 실적).
+    // 그보다 먼 과거 M/D 는 지난 로그로 보고 올해 날짜 유지 → 아래 과거 필터에서 제외.
+    const inferDate = (m, d) => {
+      const y = Number(today.slice(0, 4));
+      const md = `${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
+      const next = `${y + 1}-${md}`;
+      return `${y}-${md}` < today && (new Date(next) - new Date(today)) / 86400_000 <= 90 ? next : `${y}-${md}`;
+    };
     // 실적 관련 라인 추출 (earnings, 실적, Q1, Q2 등)
     const lines = content.split('\n');
     for (const line of lines) {
       if (/실적|earnings|Q[1-4]|분기/i.test(line) && /\d{1,2}\/\d{1,2}|\d{4}-\d{2}-\d{2}/.test(line)) {
         const dateMatch = line.match(/(\d{4}-\d{2}-\d{2})|(\d{1,2})\/(\d{1,2})/);
-        const tickerMatch = line.match(/([A-Z]{1,5})\b/);
-        if (dateMatch || tickerMatch) {
+        const date = dateMatch ? (dateMatch[1] || inferDate(dateMatch[2], dateMatch[3])) : null;
+        if (!date || Number.isNaN(Date.parse(date)) || date < today) continue; // 과거·비정상 날짜 제외
+        // 티커 토큰: 앞뒤가 문자·숫자가 아닌 대문자 2~5자 / 6자리 코드 (HD현대·MA20·3M 오인 방지).
+        // 1글자 티커(C·O·T·V)는 일반 대문자와 구분이 안 돼 괄호 표기 "(V)" 만 인정.
+        const tokens = line.match(/(?<![\p{L}\p{N}])(?:[A-Z]{2,5}|\d{6})(?![\p{L}\p{N}])|(?<=\()[A-Z](?=\))/gu) ?? [];
+        for (const ticker of new Set(tokens.filter(t => universe.has(t)))) {
           events.push({
             raw: line.trim().replace(/^\||\|$/g, '').trim(),
-            date: dateMatch ? (dateMatch[1] || `2026-${dateMatch[2]?.padStart(2,'0')}-${dateMatch[3]?.padStart(2,'0')}`) : null,
-            ticker: tickerMatch ? tickerMatch[1] : null,
+            date,
+            ticker,
           });
         }
       }
@@ -506,7 +550,7 @@ function buildScoreChanges(currentScores) {
 console.log('=== algo-trading signal build ===');
 buildMacroRegime();
 const scores = buildStockScores();
-buildEarningsCalendar();
+buildEarningsCalendar(scores);
 buildPolymarketAlerts();
 buildScoreChanges(scores);
 console.log('=== done ===');
