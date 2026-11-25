@@ -9,6 +9,9 @@
 #   4. holdings_health.json 재생성 (최신 분석 반영)
 #   5. portfolio_watch.py — 손절/목표가 도달 + 리밸런싱 드리프트 알림
 #   11. 데일리픽 성적표 신선도(2일) + 논지 판정 대기(14일)
+#   12. 브리핑 발행 점검 (앱 스케줄 생존 카나리아)
+#   13. 점수 이력 원장 append
+#   14. 목표 비중 동기화 지연(10일)
 #
 # 알림: scripts/notify.sh (macOS 알림센터)
 # 로그: scripts/launchd/watchdog.log
@@ -177,6 +180,56 @@ else
     notify_warn "데일리픽 논지 판정 대기 14일 초과 — 토요일 /성과리뷰 확인"
   else
     log "OK: 논지 판정 대기 정상 (oldest=$EVAL_OLD)"
+  fi
+fi
+
+# 12. 브리핑 발행 점검 — 앱 스케줄 생존 카나리아 (2026-10-29~11-02 앱 스케줄 4일 공백 무감지 재발 차단)
+#     06:40 회차: 전일 이브닝 / 10:30 회차: 당일 모닝(09:03 스케줄). 일간 브리핑을 중단하면 이 단계 제거.
+if (( 10#$(TZ=Asia/Seoul date '+%H') >= 10 )); then
+  BRIEF_FILE="reports/briefing/morning_$(TZ=Asia/Seoul date '+%Y%m%d').html"
+  BRIEF_LABEL="오늘 모닝 브리핑"
+else
+  BRIEF_FILE="reports/briefing/evening_$(TZ=Asia/Seoul date -v-1d '+%Y%m%d' 2>/dev/null || date -d 'yesterday' '+%Y%m%d').html"
+  BRIEF_LABEL="전일 이브닝 브리핑"
+fi
+if [ -f "$BRIEF_FILE" ]; then
+  log "OK: ${BRIEF_LABEL} 발행 확인 ($BRIEF_FILE)"
+else
+  log "WARN: ${BRIEF_LABEL} 미발행 ($BRIEF_FILE 없음)"
+  notify_warn "${BRIEF_LABEL} 미발행 — Claude 앱 스케줄 중단 의심 (앱 실행·로그인 상태 확인)" high
+fi
+
+# 13. 점수 이력 원장 append (timeline 은 종목당 최근 3건만 보존 → 과거 점수 유실 차단. 멱등)
+if [ -f scripts/score_ledger.py ]; then
+  if python3 scripts/score_ledger.py append 2>&1 | tail -2; then
+    log "OK: score_ledger append 완료"
+  else
+    log "WARN: score_ledger append 실패"
+    notify_warn "점수 이력 원장 append 실패 — scripts/score_ledger.py 확인"
+  fi
+fi
+
+# 14. 목표 비중 동기화 지연 (/내포트폴리오 주 1회 → 10일 초과 시 드리프트 감시가 옛 목표 기준으로 도는 상태.
+#     8/29~11/25 88일 미동기화 무감지 재발 차단)
+TGT_AGE=$(python3 - <<'PY' 2>/dev/null || echo ""
+import json, re
+from datetime import date, datetime, timedelta, timezone
+d = json.load(open("scripts/portfolio_targets.json"))
+m = re.search(r"(\d{8})", d.get("source") or "")
+s = f"{m.group(1)[:4]}-{m.group(1)[4:6]}-{m.group(1)[6:]}" if m else (d.get("seeded_at") or "")[:10]
+today = datetime.now(timezone(timedelta(hours=9))).date()
+print(s, (today - date.fromisoformat(s)).days)
+PY
+)
+if [ -z "$TGT_AGE" ]; then
+  log "WARN: portfolio_targets.json 기준일 읽기 실패"
+else
+  read -r TGT_DATE TGT_DAYS <<< "$TGT_AGE"
+  if [ "$TGT_DAYS" -gt 10 ]; then
+    log "WARN: 목표 비중 ${TGT_DAYS}일 미동기화 (기준 $TGT_DATE)"
+    notify_warn "포트폴리오 목표 비중 ${TGT_DAYS}일 미동기화 (기준 ${TGT_DATE}) — /내포트폴리오 실행 필요"
+  else
+    log "OK: 목표 비중 동기화 정상 (기준 $TGT_DATE, ${TGT_DAYS}일 전)"
   fi
 fi
 

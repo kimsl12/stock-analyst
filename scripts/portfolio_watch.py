@@ -14,6 +14,7 @@ portfolio_watch.py — 보유 종목 감시 (손절/목표가 도달 + 리밸런
     [default] |실제 비중 − 목표 비중| > 임계(기본 5%p) → "리밸런싱 드리프트"
 
 디듀프: scripts/launchd/.watch_state.json — 같은 알림 키는 KST 기준 하루 1회.
+    드리프트만 같은 키(이탈 종목 구성)에 대해 7일 1회 — 구성이 바뀌면 키가 달라져 즉시 재알림.
 
 사용:
     python3 scripts/portfolio_watch.py            # 감시 + 알림
@@ -36,6 +37,7 @@ NOTIFY = ROOT / "scripts/notify.sh"
 
 KST = timezone(timedelta(hours=9))
 DRY_RUN = "--dry-run" in sys.argv
+DRIFT_DEDUPE_DAYS = 7  # 드리프트 알림만 주 1회 (손절/목표가는 하루 1회 유지)
 
 
 def today_kst() -> str:
@@ -56,9 +58,21 @@ def save_state(state: dict) -> None:
     STATE_JSON.write_text(json.dumps(state, ensure_ascii=False, indent=2))
 
 
-def notify(title: str, body: str, priority: str = "default", *, state: dict, key: str) -> None:
-    """하루 1회 디듀프 후 notify.sh 호출."""
-    if state.get(key) == today_kst():
+def days_since(ymd) -> "int | None":
+    """상태 파일의 'YYYY-MM-DD' → 오늘(KST)까지 경과일. 형식 불명이면 None (디듀프 안 함)."""
+    try:
+        last = datetime.strptime(str(ymd), "%Y-%m-%d").date()
+    except ValueError:
+        return None
+    return (datetime.now(KST).date() - last).days
+
+
+def notify(
+    title: str, body: str, priority: str = "default", *, state: dict, key: str, dedupe_days: int = 1
+) -> None:
+    """dedupe_days 일 1회(기본 하루 1회) 디듀프 후 notify.sh 호출. state[key] = 마지막 알림일."""
+    elapsed = days_since(state.get(key))
+    if elapsed is not None and 0 <= elapsed < dedupe_days:
         print(f"  (디듀프) {title}: {body}")
         return
     state[key] = today_kst()
@@ -111,9 +125,11 @@ def main() -> None:
         if price is None:
             continue
         stop, target = a.get("stop_loss"), a.get("target_price")
+        # 래칫 유지 중이면 손절가 출처가 최신 분석(v)이 아님 — 알림에 명시
+        ratchet = f" · 래칫 유지(최신 산출 ${a.get('stop_loss_raw')})" if a.get("stop_ratcheted") else ""
         line = f"{t:5} ${price}"
         if stop:
-            line += f" | 손절 ${stop}"
+            line += f" | 손절 ${stop}{ratchet}"
         if target:
             line += f" | 목표 ${target}"
         print(f"  {line}")
@@ -121,7 +137,7 @@ def main() -> None:
         if stop and price <= stop:
             notify(
                 f"손절선 도달: {t}",
-                f"현재 ${price} ≤ 손절 ${stop} (분석 v{a.get('v')}, {a.get('date')})",
+                f"현재 ${price} ≤ 손절 ${stop} (분석 v{a.get('v')}, {a.get('date')}){ratchet}",
                 "high",
                 state=state,
                 key=f"stop_hit:{t}",
@@ -173,6 +189,7 @@ def main() -> None:
                     "default",
                     state=state,
                     key="drift:" + ",".join(sorted(d.split()[0] for d in drifted)),
+                    dedupe_days=DRIFT_DEDUPE_DAYS,
                 )
     else:
         print("[watch] portfolio_targets.json 없음 — 드리프트 점검 스킵")
