@@ -77,10 +77,15 @@ def extract_body_text(html: str) -> str:
     return body
 
 
+# 펀드 고유명사 예외 — "Direxion Daily Semiconductor Bull 3X Shares" 처럼 뒤에 배수(3X·2X·1.5X)가 붙은
+# Bull/Bear 는 상품명이므로 위반으로 세지 않고 --fix 로도 바꾸지 않는다.
+FUND_NAME_GUARD = r"(?!\s+\d(?:\.\d)?[Xx]\b)"
+
+
 def find_violations(text: str, mapping: list) -> list:
     out = []
     for en, ko in mapping + [(k, "") for k in EXTRA_KEYWORDS]:
-        if re.search(r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])", text):
+        if re.search(r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])" + FUND_NAME_GUARD, text):
             out.append(en)
     return out
 
@@ -116,7 +121,7 @@ def fix_html(html: str, mapping: list):
         nonlocal changed
         seg = m.group(0)
         for en, ko in mapping:
-            seg2 = re.sub(r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])", ko, seg)
+            seg2 = re.sub(r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])" + FUND_NAME_GUARD, ko, seg)
             if seg2 != seg:
                 changed += 1
                 seg = seg2

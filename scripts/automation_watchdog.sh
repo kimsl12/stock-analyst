@@ -194,6 +194,12 @@ else
 fi
 if [ -f "$BRIEF_FILE" ]; then
   log "OK: ${BRIEF_LABEL} 발행 확인 ($BRIEF_FILE)"
+  # 발행본 사실 전제 사후 점검 — 커맨드의 '발행 전 게이트'가 생략됐을 때의 안전망 (exit 2 = 경고)
+  python3 scripts/check_data_blackout.py --strict "analysis/briefing/lead_$(basename "$BRIEF_FILE" .html).md" "$BRIEF_FILE" >/dev/null 2>&1
+  if [ $? -eq 2 ]; then
+    log "WARN: ${BRIEF_LABEL}에 '지표 미발표·블랙아웃' 서술 잔존"
+    notify_warn "${BRIEF_LABEL}에 '지표 미발표·블랙아웃' 서술 잔존 — FRED 는 발표 지속 (scripts/check_data_blackout.py 로 확인)"
+  fi
 else
   log "WARN: ${BRIEF_LABEL} 미발행 ($BRIEF_FILE 없음)"
   notify_warn "${BRIEF_LABEL} 미발행 — Claude 앱 스케줄 중단 의심 (앱 실행·로그인 상태 확인)" high
