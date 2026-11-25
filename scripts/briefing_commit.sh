@@ -49,6 +49,13 @@ if ! python3 scripts/check_confidence.py; then
     bash scripts/notify.sh "확신 라벨 게이트 실패" "${TYPE}_${DATE} 확신 높음 남발/반증 트리거 누락 — 산정 체크리스트 재적용 필요" || true
 fi
 
+# ── 데이터 블랙아웃 전제 게이트 [2026-11-25] — FRED 스냅샷은 지표 발표가 이어지는데 lead/HTML 이
+#    '미발표·블랙아웃·셧다운발 지연'을 현재 사실로 쓰면 경고 (없는 파일은 스크립트가 건너뜀)
+if ! python3 scripts/check_data_blackout.py --strict "analysis/briefing/lead_${TYPE}_${DATE}.md" "$HTML_FILE"; then
+    echo "[warn] 데이터 블랙아웃 전제 게이트 WARN — 발행은 진행, 알림 발송"
+    bash scripts/notify.sh "블랙아웃 전제 경고" "${TYPE}_${DATE} FRED 는 지표 발표 지속 — 미발표·블랙아웃 서술 재확인 필요" || true
+fi
+
 # ── 처방 → 목표 비중 동기화 [v3.37] — /내포트폴리오 산출물의 "## 목표 비중" 블록을
 #    portfolio_targets.json 에 반영 (드리프트 감시·웹 표시가 처방을 자동 추종)
 if [[ "$TYPE" == "user_portfolio" ]]; then
