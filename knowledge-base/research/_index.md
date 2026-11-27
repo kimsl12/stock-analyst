@@ -2,10 +2,10 @@
 title: Research KB — L1 주간 헤드라인 인덱스
 description: 10개 섹터(반도체·에너지·매크로·바이오·핀테크·방산·테크플랫폼·소비재·산업재·자동차) × 4개 소스군(학술·씽크탱크·컨퍼런스/백서·규제) 주간 헤드라인 통합 인덱스
 created: 2026-05-12
-last_updated: 2026-11-21
+last_updated: 2026-11-28
 update_cycle: weekly
 status: active
-total_headlines: 203
+total_headlines: 208
 ---
 
 # Research KB — L1 주간 헤드라인 인덱스
@@ -332,6 +332,8 @@ total_headlines: 203
 - 📄 [Filing] Adobe Q3 FY2026 실적 (2026-09-10 발표, 회계분기 8/28 종료·catch-up) — "매출 +13% $6.76B(컨센 $6.70B 상회), Non-GAAP EPS $6.13(컨센 $6.09 상회) — 4분기 매출 가이던스 $6.80~~6.85B 중간값이 컨센($6.85B) 소폭 하회로 시간외 약 -1.9%" → AI(Firefly·GenStudio) 매출화 진전에도 가이던스 눈높이 미달. 12/1자 CEO 교체(Shantanu Narayen→Anil Chakravarthy, Narayen은 이사회 의장으로) 발표 동반. Salesforce(8/26 Agentforce)·Oracle(9/10 RPO $664B)에 이은 SaaS AI 매출 드라이버 점검 — 하이퍼스케일러 capex 슈퍼사이클의 '소프트웨어 수요 측' 신호이나 Adobe는 상대적 성장 둔화. 9/12 회차 미포착 catch-up(단일 소스 집계 — 다음 회차 IR verify) (📄 [source](https://finance.yahoo.com/markets/stocks/articles/adobe-announce-q3-fy2026-earnings-170000618.html))
 - 📄 [Filing] Netflix Q3 2026 실적 (2026-10-20 발표, 회계분기 9/30 종료) — "매출 $12,874M(+11.8% YoY, 전년 $11.51B)·영업이익 $4,459M·영업이익률 34.6%·순이익 $3,664M·희석 EPS $0.87(전년 $0.59, 컨센 약 $0.82 상회) — Q4 2026 가이던스 매출 $13,442M(+11.5% YoY), FY2026 매출 $51.1B(+13% YoY)" → 멤버십 증가·구독료 인상이 성장 견인. 단 2026 광고매출 전망을 약 $3B → 약 $2.7B로 하향(광고 상품 롤아웃 지연)하며 실적 서프라이즈에도 주가 시간외 약 -6%. 10/17 트래킹(테크플랫폼 Q3 어닝) 선두 실현 — 하이퍼스케일러 Q3(10월 말 MSFT·GOOGL·META·AMZN capex)에 앞선 스트리밍 수요·가격결정력 확인 (📄 SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0001065280/000106528026000290/ex991_q326.htm))
 - 📄 [Filing] NVIDIA Q3 FY2027 실적 — 하이퍼스케일러 capex 수요 검증 (2026-11-17 발표) — "총매출 $115.84B(+103% YoY)·Data Center $107.6B(+110% YoY·총매출 93%)·Q4 가이던스 $130.0B±3% — 하이퍼스케일러 매출 $60.1B(+71%)·AI Clouds/Enterprise $47.5B(+195%)" → Big Tech Q3 capex(10/30 집계 ~$227B·FY26 $803~828B)·Oracle RPO $664B(9/10)와 정합 — AI 인프라 수요 둔화 신호 부재, 하이퍼스케일러 capex 슈퍼사이클 지속 확인. 상세는 반도체 섹션 참조. 11/14 트래킹(NVIDIA 11/19·하이퍼스케일러 capex 검증) 실현 (📄 NVIDIA 공식 [source](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027))
+- 📄 [Filing] Dell Technologies Q3 FY2027 실적 (2026-11-24 발표, 분기종료 10-30) — "총매출 US$54.9B(+103% YoY)·ISG(인프라) $42.0B(+198%)·AI-최적화 서버 $22.0B(+291%)·AI 백로그 $132.3B(기록)·non-GAAP 희석 EPS $9.45(+265%, 컨센 $6.59 대폭 상회)·GAAP EPS $8.82 — FY27 가이던스 상향(매출 $192B→$202B·non-GAAP EPS $25.50→$29.68·AI서버 $74B→$78B)·자사주 승인 +$25B" → AI 서버 수요 폭발로 ISG 매출 약 3배·AI 백로그 사상 최대. NVIDIA Q3(11/17 DC $107.6B)·HPE Q4(11/23 Server +94.7%)와 정합 — 하이퍼스케일러·엔터프라이즈 AI 인프라 슈퍼사이클 하드웨어 측 수요 재확인, 반도체(GPU·HBM) thesis 보강. 11/21 트래킹(잔여 테크 어닝 Dell) 실현 (📄 Dell IR [source](https://investors.delltechnologies.com/news-events/press-releases/detail/1665/dell-technologies-delivers-third-quarter-fiscal-2027-financial-results))
+- 📄 [Filing] HPE(Hewlett Packard Enterprise) Q4 FY2026 실적 (2026-11-23 발표, 분기종료 10-31) — "총매출 US$14.5B(+50% YoY)·Cloud & AI 세그먼트 $11.3B(+68.6%, 그중 Server $8.8B +94.7%·Storage $1.5B +33.8%)·Networking $3.1B(+12.3%, Juniper 통합)·non-GAAP 희석 EPS $1.43(컨센 $1.29 상회)·GAAP EPS $1.26 — FY26 연간 매출 $46.7B(+36%)·FCF $4.5B, FY27 가이던스 상향(매출 성장 27~35% $59.4~63.1B·non-GAAP EPS $5.05~5.35·FCF ≥$5.5B)·자사주 +$5B" → AI 서버 거의 2배 성장으로 Dell(11/24)과 함께 AI 인프라 업그레이드 사이클 확인(FY25 Q4 '서버 매출 감소' 서사에서 급반전). 11/21 트래킹(잔여 테크 어닝 HPE) 실현 (📄 HPE IR [source](https://investors.hpe.com/))
 
 ---
 
@@ -368,6 +370,7 @@ total_headlines: 203
 - 📄 [Filing] Home Depot Q3 FY2026 실적 (2026-11-17 발표, 분기종료 11-01) — "매출 US$43.4B(+4.9%)·동일점매출 +2.2%(미국 +2.2%, 전년 +0.2% 대비 가속)·평균 티켓 +3.0%($93.09)·거래건수 -0.5%·GAAP 희석 EPS $3.72·조정 $3.86(전년 $3.74) — FY2026 가이던스 갱신(총매출 ~+4.5%·동일점 ~+1.4%·매출총이익률 ~33.0%·영업이익률 ~12.4%·조정 EPS 성장 ~2.0%)" → 평균 티켓 상승이 거래건수 소폭 감소 상쇄, 대형 리모델링·주택 관련 재량지출은 여전히 완만. Walmart·Target의 필수·일반소비 강세 대비 주택 연동 빅티켓 둔화 — 리테일 내부 분화 확인, 11/14 트래킹(Home Depot ~11/18) 실현 (📄 Home Depot SEC 8-K [source](https://www.sec.gov/Archives/edgar/data/0000354950/000035495026000184/hd_exhibit991x11012026.htm))
 - 📄 [Filing] Target Q3 2026 실적 (2026-11-18 발표, 분기종료 10-31) — "순매출 US$27.07B(+7.1%, 컨센 ~$26.5B 상회)·동일점매출 +5.6%(기존매장 +4.6%·디지털 +9.8%, 트래픽 +5.0%)·GAAP·조정 EPS $2.65(전년 GAAP $1.51·조정 $1.78) — 단 IEEPA 관세 환급 세전 $301M(순익 $228M·EPS $0.50 기여) 포함, 환급 제외 시 조정 EPS +21% YoY, FY26 가이던스 상향(순매출 ~+6%·EPS $10.65~11.40·2027 capex $5~6B)" → 트래픽 반등·전 카테고리 성장으로 기저 개선 동반(Q2 턴어라운드 지속), 경영진 '10월 소프트 후 11월 매출 가속·예상 부합'. Walmart(11/19)·Home Depot(11/17)와 함께 리테일 K자형·관세 환급 이익 국면 재확인 — 11/14 트래킹(리테일러 Q3) 실현 (📄 Target IR [source](https://corporate.target.com/press/release/2026/11/target-corporation-reports-third-quarter-earnings))
 - 📄 [Filing] Walmart Q3 FY2027 실적 (2026-11-19 발표, 분기종료 10-31) — "총매출 US$188.8B(+5.2% 보고·+4.5% 불변환율)·순매출 $186.8B(+5.1%, cc +4.4%, 자체 가이던스 cc +3.0~3.75% 상회), Walmart US 순매출 $125.0B(+3.6%·동일점 ex-fuel +2.9%)·International $35.9B(+7.0%)·글로벌 eCommerce +17%(US +23%), 조정 EPS $0.65(컨센 $0.64 소폭 상회)·GAAP $0.62, FY27 가이던스 상향(순매출 cc +4.9~5.2%·조정 EPS $2.84~2.89)" → 고소득층 점유율 확대·eCommerce 가속 견인, 3분기 연속 가이던스 상향. Target(11/18)·Home Depot(11/17)와 함께 홀리데이 시즌 진입 리테일 K자형 수요 재확인 — 11/14 트래킹(리테일러 Q3 ~11/20) 실현 (📄 Walmart SEC EX-99.1 [source](https://www.sec.gov/Archives/edgar/data/104169/000010416926000168/earningsreleasefy27q3.htm))
+- 📄 [Data] Adobe Analytics 홀리데이 온라인 프리시즌 (2026-11-25 발표) — "11/1~11/22 미국 온라인 지출 $82.5B+(+9.1% YoY, 기간 중 2일 $4B+ 돌파 — 블랙프라이데이 前 최초) / BFCM 전망: Black Friday $12.9B(+9.2%)·Thanksgiving $6.9B(+8.5%)·Cyber Monday $15.1B(+6.2%)·Cyber 5 합계 $47.5B(+7.4%)·시즌 전체(11/1~12/31) $275.1B / BNPL $6.1B(+6.5%)·AI 유입 트래픽 +127%" → 홀리데이 온라인 수요 두 자릿수 근접 성장, AI 쇼핑 어시스턴트 유입 급증(추수감사절 +159% 전망)이 신규 동인. 실측 BF·CM 집계는 차주 도래 — Walmart/Target/Home Depot Q3 실적과 함께 홀리데이 소비 관전 (📄 Digital Commerce 360/Adobe [source](https://www.digitalcommerce360.com/2026/11/25/adobe-online-holiday-spending-data/))
 
 ---
 
@@ -385,12 +388,14 @@ total_headlines: 203
 
 - 📄 [White Paper] ISM 제조업 PMI (2026-10) — "Manufacturing Report on Business 10월판"(발표 11/03) → PMI 55.5(+1.0, 확장 10개월), 생산 59.0, 가격 75.2(25개월 상승), 기계류 DC·인프라 주도 강세·관세/이란戰 역풍 ([source](https://www.miningstockeducation.com/2026/11/manufacturing-pmi-at-55-5-october-2026-ism-manufacturing-pmi-report/))
 - 📄 [White Paper] IFR World Robotics 2026 (2026-09) — "Five Million Robots now Operate in Factories Globally"(9/24) → 공장 로봇 500만대(+9%)·2025 설치 60만+대(+11%), 중국 59%(354천대)·美 2위로 日 추월, 2026E 65.5만대 ([source](https://ifr.org/ifr-press-releases/five-million-robots-now-operate-in-factories-globally))
+- 📄 [Data] 美 10월 내구재주문 (2026-11-25 발표, Census CB 26-185) — "신규 내구재주문 전월비 +0.2%($346.7B, +$0.8B)·운송 제외 +0.5%·국방 제외 +0.4%·기계류 +1.8%($46.8B)가 증가 주도, 9월 +2.0%" → 기계류(DC·설비투자 연동) 강세가 전체 견인, 운송 제외 +0.5%로 Continuum 프리뷰(+0.5%) 부합 — 제조 신규수주 완만한 확장 지속(ISM PMI 55.5 10월판과 정합). 핵심 자본재(비국방 ex-항공기) 개별치는 상세표 미대조(차주 verify). 11/21 트래킹(10월 내구재) 실현 (📄 Census [source](https://www.census.gov/manufacturing/m3/adv/current/index.html))
 
 ### 규제
 
 ---
 
 - 📄 [Policy] STB UP–NS 합병 심사 (2026-11) — "Union Pacific–Norfolk Southern $85B 합병" → 美 첫 대륙횡단 단일노선(5만+ 마일·43개 주), 의견서 마감 2026-11-18·반론 2027-02-16, 목표 완료 2027 상반기 ([source](https://pulse2.com/stb-restarts-union-pacific-norfolk-southern-merger-review-and-sets-november-18-comment-deadline/amp/))
+- 📄 [Filing] Deere & Company FY2026 Q4 실적 (2026-11-25 발표) — "순이익(귀속) US$1.05B(-1% YoY)·희석 EPS $3.89(전년 $3.93)·전사 순매출·수익 $12.12B(-2%)·순매출 $10.51B — 부문: Production & Precision Ag -15% $4.02B(출하량 감소)·Small Ag & Turf +10% $2.70B·Construction & Forestry +12% $3.79B·Financial Services 순익 -11% $1.38B, FY2027 순이익 가이던스 $4.50~5.25B(일회성 연금정산 비현금비용 $0.25~0.40B 포함)" → 대형 농기계(large ag) 사이클 저점 통과 국면, CEO May '북미 주도 개선 초기 신호'. 직전기 실적엔 2026년 관세 환급 $383M 반영. 발표일 장전 DE -3.0%. 11/21 트래킹(Deere FY4Q ~11/26) 실현 (📄 RTTNews 실적 [source](https://www.rttnews.com/3717998/deere-q4-profit-revenue-edge-lower.aspx) / FY27 가이던스 [source2](https://www.rttnews.com/3717935/deere-initiates-fy27-net-income-outlook-update.aspx))
 
 ## 🚗 Auto / Mobility (자동차·EV·배터리)
 
@@ -426,25 +431,25 @@ total_headlines: 203
   - capex.md / industry KB 의 thesis 와 연결됨
   - 사용자가 명시적으로 표시 (`[KEEP]` 태그 부착)
 
-## 차주 갱신 예상 항목 (2026-11-21 트래킹)
+## 차주 갱신 예상 항목 (2026-11-28 트래킹)
 
-- **반도체**: TSMC 11월 매출(12월 초), SK하이닉스·삼성 16-Hi HBM4 고객 퀄·HBM4E 샘플 진전, Micron 2027 HBM LTA 가격, 후속 메모리 PIM/PNM preprint(arXiv cs.AR). ⚠️ 추수감사절 주간(11/26 휴장·11/27 반장)으로 거래·발표 축소
-- **에너지**: ★OPEC+ 11/29 회의(2027 생산 프레임워크·2022 중단물량 복원 여부·캐파 감사 결과)★, 호르무즈·이란 지정학·Brent $90대 유지 여부, EIA Weekly, 디젤 재고 방출 효과
-- **매크로**: ★12/9 FOMC(인상 >72% 프라이싱 [미검증 — 재수집 필요]·Warsh 매파), 11월 중간선거 후 정치 지형★. [2026-11-25 정정] 종전 '셧다운(10/1~) 지속·데이터 블랙아웃·지연 지표 재개 시점' 항목은 폐기 -- 9·10월 고용·물가 지표는 FRED 관측상 발표됨(`macro/us_economy.md` 정정 블록). ⚠️ 실세계(2025) 비둘기 데이터 혼입 주의(아래 폴백·us_economy SSOT 참조)
-- **바이오**: ASH 2026(68회) — late-breaking abstract 온라인 12/7·본회의 12/12~15 New Orleans, FDA 11월 말 novel 승인, bioRxiv/medRxiv 신규 preprint, Roche 경구 SERD 성분·brand 확정 verify
-- **핀테크**: FinCEN/OFAC AML 최종규칙·Fed 준비금/자본 NPRM 의견수렴(60일), OCC 최종규칙(10/21) 발효(1/18/27) 전 발행자 대응, CLARITY Act 중간선거 후 재점화 여부(9/15 cloture 49-50 부결)
-- **방산**: FY27 NDAA 상·하원 conference 협상 진전(H.R.8800 7/22 하원 통과·S.4784 상원 계류), Golden Dome 배분, RUSI/CNAS 학술
-- **테크플랫폼**: 추수감사절·블랙프라이데이 이커머스(Adobe Analytics·Salesforce·Mastercard SpendingPulse), 잔여 테크 어닝(Dell·HPE·Workday·CrowdStrike 등), AMD MI450 배치, EU AI Act Article 50 집행
-- **소비재**: ★블랙프라이데이·사이버먼데이(11/27~30) 홀리데이 실측(NRF $1.013조·Bain $1,016B 전망 대비)★, Deere Q4(~11/26)·잔여 리테일러(Dick's·Burlington·Best Buy), K자형 분화 지속
-- **산업재**: Deere FY4Q26(~11/26)·10월 내구재주문·11월 PMI 플래시, TSMC AZ Phase 2·전력장비 리드타임, NBER Productivity
-- **자동차**: Tesla Q4 수요(연방 EV 크레딧 종료 후)·로보택시 램프, 중국 EV 수출·관세, 타 OEM 연말 판매
+- **반도체**: TSMC 11월 매출(~12/10), SK하이닉스·삼성 16-Hi HBM4 고객 퀄·HBM4E 샘플 진전, Micron 2027 HBM LTA 가격, 후속 메모리 PIM/PNM preprint(arXiv cs.AR), Marvell·Broadcom ASIC 어닝 전후
+- **에너지**: ★OPEC+ 11/29 회의 결과(2027 쿼터·2022 중단물량 복원·캐파 리뷰·2027 베이스라인)★, EIA Weekly(추수감사절 지연분), Brent $90대·호르무즈 지정학, 디젤 재고
+- **매크로**: ★12/9~10 FOMC(인상 여부·Warsh 매파)★, 11월 고용(12/5 NFP 예정 여부 확인), 베이지북. ⚠️ 매크로 L1 신규 보류 가드 유지(real-world 2025 비둘기 오염 차단, `macro/us_economy.md` SSOT 참조)
+- **바이오**: ASH 2026(68회) — late-breaking abstract 온라인 12/7·본회의 12/12~15 New Orleans, FDA 11월 말~12월 초 novel 승인, bioRxiv/medRxiv 신규 preprint, Roche 경구 SERD 성분·brand 확정 verify
+- **핀테크**: FinCEN/OFAC AML 최종규칙·Fed 준비금/자본 NPRM 의견수렴, OCC 최종규칙(10/21) 발효(1/18/27) 전 발행자 대응, CLARITY Act 재점화 여부(9/15 cloture 49-50 부결)
+- **방산**: FY27 NDAA 상·하원 conference 타결 진전(H.R.8800 하원 통과·S.4784 상원 계류), Golden Dome 배분, RUSI/CNAS 학술
+- **테크플랫폼**: ★사이버먼데이(11/30) 실측(Adobe·Salesforce·Mastercard SpendingPulse)★, 잔여 SaaS/보안 어닝(CrowdStrike·Marvell·Zscaler 등), AMD MI450 배치, EU AI Act Article 50 집행
+- **소비재**: ★블랙프라이데이·사이버먼데이 실측 집계(Adobe BF $12.9B·CM $15.1B 전망 대비, NRF 홀리데이 실측)★, 잔여 리테일러(Dollar Tree·Ulta·Kroger), K자형 분화 지속
+- **산업재**: 11월 ISM 제조업 PMI(12/1)·10월 공장주문·11월 PMI 플래시, TSMC AZ Phase 2·전력장비 리드타임, NBER Productivity
+- **자동차**: Tesla Q4 수요(연방 EV 크레딧 종료 후)·로보택시 램프, 11월 미국 자동차 판매, 중국 EV 수출·관세
 
-## 폴백/미수집 (2026-11-21 회차)
+## 폴백/미수집 (2026-11-28 회차)
 
-- WebSearch 정상 바인딩 — **메인 중앙 수집** 방식(스케줄 슬롯 서브에이전트 WebSearch 미바인딩·maxTurns 리스크 회피, 10/17·10/24·11/14 회차와 동일). 윈도우 11/15~11/21 — 11/14 워치리스트 해소분 포함.
-- **수집 헤드라인(7건, 1차 공시/공식 릴리스 WebFetch 교차 인증)**: ① NVIDIA Q3 FY2027(11/17, NVIDIA 공식 WebFetch) — 반도체+테크플랫폼, ② Walmart Q3 FY27(11/19, SEC EX-99.1 WebFetch) — 소비재, ③ Target Q3(11/18, Target IR WebFetch) — 소비재, ④ Home Depot Q3(11/17, SEC 8-K WebFetch) — 소비재, ⑤ IEA Oil Market Report 11월판(11/13) — 에너지, ⑥ FDA Roche 경구 SERD 유방암 승인(11/17, RAPS) — 바이오
-- **금주 핵심**: ① NVIDIA — Q3 $115.84B(+103% YoY)·DC $107.6B(+110%)·Q4 가이던스 $130.0B, 중국 DC 0 가정에도 대폭 상회 — AI 슈퍼사이클·HBM4 수요 지속성 재확인. ② 리테일 트리오 — Walmart(+5.2%·가이던스 상향)·Target($27.1B·관세환급 $301M)·Home Depot($43.4B·가이던스 하향): 필수·일반소비 강세 vs 주택 빅티켓 둔화 = K자형 내부 분화. ③ IEA — 4Q26 공급과잉 전환(이란戰 후 첫 공급>수요)·디젤이 제약·Brent $92대, OPEC+ 11/29가 2027 프레임 분기점. ④ FDA Roche 경구 SERD 승인 — SERD/PROTAC 경구 분해제 경쟁 확대.
-- **★매크로 — 실세계(2025) 비둘기 데이터 오염 차단(신규 L1 등재 보류 유지)**: 10/10~11/14 가드 지속. `knowledge-base/macro/us_economy.md` SSOT 기준 시뮬 2026은 ①[2026-11-25 정정] '셧다운(10/1~) 지속·BLS 지표 미발표'는 폐기(9·10월 고용·CPI 는 FRED 관측상 발표됨·셧다운 발생 여부 [미검증 — 재수집 필요]) ②10/28 FOMC 동결·12/9 live(인상 >72%·2026 인하 배제·Warsh 매파) ③중동 지정학 프리미엄으로 Brent $90대 고착. WebSearch '비둘기 피벗·2026 인하'류는 real-world 2025 오염 — 배제(종전 배제 목록의 '9월/10월 CPI·NFP 발표'는 2026-11-25 정정으로 배제 해제, '셧다운 조기종료'는 [미검증 — 재수집 필요]). 이번 주 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조.
-- **미수집 섹터(핀테크·방산·산업재·자동차)**: **핀테크**(CLARITY Act 9/15 cloture 49-50 부결 후 11월 신규 floor 액션 없음·OCC 최종규칙은 11/14 등재, FinCEN/OFAC·Fed NPRM 의견수렴 중), **방산**(FY27 NDAA conference 진행 중·신규 확정 이벤트 윈도우 밖), **산업재**(Deere Q4·내구재 등 차주 ~11/26 도래·10월 ISM은 11/7 월간 L2 반영), **자동차**(Tesla Q4 차기 분기·신규 확정 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개.
-- **교차검증 현황**: NVIDIA·Walmart·Target·Home Depot는 각 공식 릴리스/SEC 파일링 WebFetch로 직접 확인(HTTP 200, 수치 원문 대조). IEA는 보고서 페이지 + S&P Global 2차. FDA Roche는 RAPS Recon 1차 브리핑(약물 brand명 미확정 — 다음 회차 verify). 매크로 섹터는 가드로 신규 등재 0건.
-- 12주 슬라이딩(84일=2026-08-29 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건.
+- WebSearch 정상 바인딩 — **메인 중앙 수집** 방식(스케줄 슬롯 서브에이전트 WebSearch 미바인딩·maxTurns 리스크 회피, 10/17·10/24·11/14·11/21 회차와 동일). web-fetch 에이전트 2기 병렬로 1차 공시/IR WebFetch 교차 인증. 윈도우 11/22~11/28 — ⚠️ 추수감사절 주간(11/26 휴장·11/27 반장)으로 거래·발표 축소.
+- **수집 헤드라인(5건, 전부 1차 공시/IR WebFetch 교차 인증)**: ① Dell Q3 FY27(11/24, Dell IR WebFetch) — 테크플랫폼, ② HPE Q4 FY26(11/23, HPE IR WebFetch) — 테크플랫폼, ③ Deere FY26 Q4(11/25, RTTNews ×2 WebFetch) — 산업재, ④ 美 10월 내구재주문(11/25, Census CB 26-185 WebFetch) — 산업재, ⑤ Adobe 홀리데이 프리시즌(11/25, Digital Commerce 360 WebFetch) — 소비재.
+- **금주 핵심**: ① Dell/HPE — AI 서버 폭발(Dell AI서버 $22.0B +291%·백로그 $132.3B / HPE Server $8.8B +94.7%), 양사 FY27 가이던스 상향 — NVIDIA Q3(11/17)와 정합, AI 인프라 슈퍼사이클 하드웨어 수요 재확인. ② Deere — FY26 Q4 매출·순익 소폭 감소(large ag 저점)이나 FY27 가이던스 $4.50~5.25B로 회복 기대·북미 개선 초기 신호. ③ 내구재주문 +0.2%(기계류 +1.8% 주도) — 제조 완만 확장 지속(ISM 55.5와 정합). ④ Adobe — 홀리데이 프리시즌 $82.5B(+9.1%), AI 쇼핑 유입 +127% 신규 동인.
+- **★매크로 — 실세계(2025) 비둘기 데이터 오염 차단(신규 L1 등재 보류 유지)**: 10/10~11/21 가드 지속. `knowledge-base/macro/us_economy.md` SSOT 기준. WebSearch '비둘기 피벗·2026 인하'류는 real-world 2025 오염 — 배제. 12/9~10 FOMC(인상 여부·Warsh 매파)가 live. [2026-11-25 정정 반영: 종전 '셧다운(10/1~)·지표 미발표' 전제 폐기 — 9·10월 고용·CPI는 FRED 관측상 발표됨, 셧다운 발생 여부 [미검증]]. 이번 주 매크로 L1 신규 등재 보류, 다운스트림은 us_economy SSOT 참조.
+- **미수집/이월 섹터(반도체·에너지·매크로·핀테크·방산·자동차)**: **반도체**(TSMC 11월 매출 12월 초·HBM 고객 퀄 진행 중·추수감사절 주간 preprint 부재), **에너지**(★OPEC+ 11/29 내일 — 미발생·차주 결과 등재★·EIA 지연), **핀테크**(신규 확정 floor 액션 없음·FinCEN/OFAC·Fed NPRM 의견수렴 중), **방산**(FY27 NDAA conference 진행 중·확정 이벤트 윈도우 밖), **자동차**(Tesla Q4 차기 분기·확정 이벤트 윈도우 밖). 기존 헤드라인 유지, 차주 재개.
+- **교차검증 현황**: Dell·HPE는 각 IR 보도자료/재무표 WebFetch 직접 확인(수치 원문 대조; HPE는 구IR 메인 본문 기준 — Constellation 2차 '$15.5B' 표기 오류를 1차 $14.5B로 교정). Deere는 RTTNews 2건(11/25 실적+FY27 가이던스) 교차(seekingalpha 403·deere.com 403·nasdaq timeout으로 1차 IR 미대조 — 차주 verify). 내구재는 Census 공식 페이지(CB 26-185, 핵심 자본재 개별치는 상세표 미대조). Adobe는 Digital Commerce 360(Adobe 인용·시즌 +6.7%·모바일 비중은 기사 외). 매크로 섹터는 가드로 신규 등재 0건.
+- 12주 슬라이딩(84일=2026-09-05 이전): thesis 앵커·활성 인용가치 유지(ISSCC HBM·IMF WEO·GLP-1 승인·McKinsey 칩붐 등) — KB '무리하게 정리하지 말 것' 원칙 준수. 정기 정리는 월간 L2 승격·분기 verify(Mode E)로 이관, 이번 회차 삭제 0건.
