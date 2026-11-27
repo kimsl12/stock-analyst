@@ -39,6 +39,9 @@ def fetch_korean(ticker: str) -> dict:
 
     current_price = int(latest["종가"])
     name = krx.get_market_ticker_name(ticker)
+    # ETF 등 주식 목록 밖 코드는 str 대신 빈 DataFrame 반환 → 아래 yfinance 로 대체
+    if not isinstance(name, str) or not name:
+        name = None
 
     # 52주 고저
     start_52w = (today - timedelta(days=365)).strftime("%Y%m%d")
@@ -50,12 +53,15 @@ def fetch_korean(ticker: str) -> dict:
     try:
         import yfinance as yf
         info = yf.Ticker(f"{ticker}.KS").info
+        name = name or info.get("shortName") or info.get("longName")
         market_cap = info.get("marketCap")
         if not market_cap:
             info = yf.Ticker(f"{ticker}.KQ").info
+            name = name or info.get("shortName") or info.get("longName")
             market_cap = info.get("marketCap")
     except Exception:
         market_cap = None
+    name = name or ticker
 
     return {
         "ticker": ticker,
